@@ -9107,10 +9107,6 @@ msgid "Inactive Groups"
 msgstr "Vikundi Visivyo Hai"
 
 #: 
-msgid "Language & Localization"
-msgstr "Lugha na Ujanibishaji"
-
-#: 
 msgid "Map"
 msgstr "Ramani"
 
@@ -10905,10 +10901,6 @@ msgstr "— Chagua kikundi —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Chagua aina (si lazima) —"
-
-#: 
-msgid "Active Events"
-msgstr "Matukio Yanayoendelea"
 
 #: 
 msgid "Add Event"
@@ -16271,4 +16263,264 @@ msgstr "— Chagua Nchi —"
 #: 
 msgid "— Select State —"
 msgstr "— Chagua Mkoa —"
+
+#: 
+msgid "Account options"
+msgstr "Chaguo za akaunti"
+
+#: 
+msgid "Register"
+msgstr "Jiandikishe"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Kislowaki"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d tukio lililopita"
+msgstr[1] "%d matukio yaliyopita"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d%% ya maandishi ya kiolesura imetafsiriwa kwa lugha hii."
+
+#: 
+msgid "Access denied"
+msgstr "Ufikiaji umekataliwa"
+
+#: 
+msgid "All times shown in"
+msgstr "Nyakati zote zinaonyeshwa katika"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Siku za kuzaliwa na miaka ya harusi. Chaguo-msingi: m/s"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Haiwezekani kufuta kalenda: matukio %d bado yamepangiwa. Yaondoe au uyanye upya kwanza."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Muundo wa Simu ya Mkononi"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Nambari za uumbaji wa kawaida (mifano: Ijumaa, 7 Machi 2025, 3:09 PM)"
+
+#: 
+msgid "Current Events"
+msgstr "Matukio ya Sasa"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Muundo wa Tarehe na Saa"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Miundo ya Tarehe na Saa"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Muundo wa Kichaguzi cha Tarehe"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Msimbo wa Kichaguzi cha Tarehe"
+
+#: 
+msgid "Date Without Year"
+msgstr "Tarehe Bila Mwaka"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Siku, tarakimu 2"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Siku, bila sifuri ya mwanzo"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Chaguo-msingi: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Chaguo-msingi: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Mfano: \"l, j F Y\" inatoa \"Ijumaa, 7 Machi 2025\". Herufi nyingine yoyote (nafasi, mkato, msalaba) zinaonekana kama zilivyoandikwa."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Muundo wa Tarehe kwa Jina la Faili"
+
+#: 
+msgid "Fully translated."
+msgstr "Imetafsiriwa kikamilifu."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Maandishi ya kidokezo katika maeneo ya tarehe. Chaguo-msingi: mmmm-mm-ss"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Muundo wa Simu ya Nyumbani/Kazi"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Saa 12, tarakimu 2"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Saa 12, bila sifuri"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Saa 24, tarakimu 2"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Inajumuisha kipengele cha wakati. Chaguo-msingi: m/s/M g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Lugha na Mkoa"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Lugha, muda wa eneo, miundo ya tarehe na simu"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Ujanibishaji na Miundo"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Mipangilio ya ujanibishaji imehifadhiwa"
+
+#: 
+msgid "Long Date Format"
+msgstr "Muundo wa Tarehe Ndefu"
+
+#: 
+msgid "Minutes"
+msgstr "Dakika"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Mwezi na Mwaka"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Mwezi, tarakimu 2"
+
+#: 
+msgid "Month, full"
+msgstr "Mwezi, jina kamili"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Mwezi, bila sifuri ya mwanzo"
+
+#: 
+msgid "Month, short"
+msgstr "Mwezi, kifupi"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Haikusakinishwa kwenye seva — tarehe na nambari zinaweza kutokuwekwa vizuri. Omba mwenyeji wako kuisakinisha (mfano: locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Muundo wa PHP kwa kichaguzi cha tarehe. Chaguo-msingi: M-m-s"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Miundo ya Nambari za Simu"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Simu na Kipengele"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Hifadhi Mipangilio ya Ujanibishaji"
+
+#: 
+msgid "Selected Language"
+msgstr "Lugha Iliyochaguliwa"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Msaada wa eneo la seva haukuweza kuchunguzwa (exec imezimwa)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Inasaidiwa — eneo hili limesakinishwa kwenye seva."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Lugha ya mfumo, muda wa eneo, miundo ya tarehe/saa na miundo ya nambari za simu"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Maeneo haya hutumia nambari za uumbaji (herufi zinazowakilisha sehemu za tarehe). Chagua mpangilio ulioandaliwa chini ya kila eneo, au uunde wako mwenyewe ukitumia kumbukumbu. Onyesho la moja kwa moja linaonyesha hasa jinsi itakavyoonekana. Acha tupu kutumia chaguo-msingi la mfumo."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Hivi ndivyo tarehe na nambari za simu zitakavyoonekana katika mfumo wote."
+
+#: 
+msgid "Translation completeness"
+msgstr "Ukamilisho wa Tafsiri"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Ufuatiliaji wa tafsiri haupatikani kwa lugha hii."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Tumia 9 kama msimbo wa tarakimu (mfano: (999) 999-9999). Acha tupu kutumia chaguo-msingi la mfumo."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Hutumiwa katika majina ya faili iliyosafirishwa. Chaguo-msingi: Mms-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Hutumiwa katika ripoti na orodha za wanachama. Chaguo-msingi: m/s/M"
+
+#: 
+msgid "Weekday, full"
+msgstr "Siku ya wiki, kamili"
+
+#: 
+msgid "Weekday, short"
+msgstr "Siku ya wiki, kifupi"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Nambari hizi zinamaanisha nini?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Mwaka, tarakimu 2"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Mwaka, tarakimu 4"
+
+#: 
+msgid "past"
+msgstr "iliyopita"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kikroeshia"
 

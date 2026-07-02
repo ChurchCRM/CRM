@@ -9075,10 +9075,6 @@ msgid "Inactive Groups"
 msgstr "Inactieve groepen"
 
 #: 
-msgid "Language & Localization"
-msgstr "Taal en lokalisatie"
-
-#: 
 msgid "Map"
 msgstr "Kaart"
 
@@ -10873,10 +10869,6 @@ msgstr "— Selecteer een groep —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Selecteer type (optioneel) —"
-
-#: 
-msgid "Active Events"
-msgstr "Actieve Evenementen"
 
 #: 
 msgid "Add Event"
@@ -15303,6 +15295,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "Groeps-ID vereist voor prompt rolselectie"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML-URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Zorg dat uw authenticator-app gereed is (Google Authenticator, Microsoft Authenticator, Authy, enz.)"
 
@@ -15313,6 +15309,10 @@ msgstr "Geavanceerde opties verbergen"
 #: 
 msgid "Home phone is required"
 msgstr "Thuistelefoon is verplicht"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS-URL"
 
 #: 
 msgid "Ignored"
@@ -16227,4 +16227,264 @@ msgstr "— Selecteer land —"
 #: 
 msgid "— Select State —"
 msgstr "— Selecteer provincie —"
+
+#: 
+msgid "Account options"
+msgstr "Accountopties"
+
+#: 
+msgid "Register"
+msgstr "Registreren"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slowaaks"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d afgelopen gebeurtenis"
+msgstr[1] "%d afgelopen gebeurtenissen"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% van de interfacetekst is vertaald voor deze taal."
+
+#: 
+msgid "Access denied"
+msgstr "Toegang geweigerd"
+
+#: 
+msgid "All times shown in"
+msgstr "Alle tijden weergegeven in"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Verjaardagen en jubilea. Standaard: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Kalender kan niet worden verwijderd: %d evenement(en) zijn er nog aan toegewezen. Verwijder of herbestem ze eerst."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Mobiel telefoonformaat"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Gangbare opmaakcodes (voorbeelden: vrijdag 7 maart 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Huidige evenementen"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Datum- en tijdnotatie"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Datum- en tijdnotaties"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Datumkiezerformaat"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Datumkiezer-plaatshouder"
+
+#: 
+msgid "Date Without Year"
+msgstr "Datum zonder jaar"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Dag, 2 cijfers"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Dag, zonder voorloopnul"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Standaard: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Standaard: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Voorbeeld: \"l, j F Y\" geeft \"Vrijdag, 7 Maart 2025\". Alle andere tekens (spaties, komma's, slashes) verschijnen zoals getypt."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Datumnotatie voor bestandsnamen"
+
+#: 
+msgid "Fully translated."
+msgstr "Volledig vertaald."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Hinttekst in datumvelden. Standaard: jjjj-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Thuis-/werktelefoonformaat"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Uur 12u, 2 cijfers"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Uur 12u, zonder nul"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Uur 24u, 2 cijfers"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Bevat tijdcomponent. Standaard: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Taal en regio"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Taal, tijdzone, datum- en telefoonformaten"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalisatie en indelingen"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Lokalisatie-instellingen succesvol opgeslagen"
+
+#: 
+msgid "Long Date Format"
+msgstr "Lang datumformaat"
+
+#: 
+msgid "Minutes"
+msgstr "Minuten"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Maand en jaar"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Maand, 2 cijfers"
+
+#: 
+msgid "Month, full"
+msgstr "Maand, volledig"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Maand, zonder voorloopnul"
+
+#: 
+msgid "Month, short"
+msgstr "Maand, afgekorte notatie"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Niet geïnstalleerd op de server — datums en getallen worden mogelijk niet correct opgemaakt voor deze taalinstelling. Vraag uw host om het te installeren (bijv. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP-indeling voor datumkiezervelden. Standaard: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Telefoonnummerindelingen"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefoon met toestel"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Lokalisatie-instellingen opslaan"
+
+#: 
+msgid "Selected Language"
+msgstr "Geselecteerde taal"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Serverlocale-ondersteuning kon niet worden gecontroleerd (exec is uitgeschakeld)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Ondersteund — deze locale is geïnstalleerd op de server."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Systeemtaal, tijdzone, datum-/tijdnotaties en telefoonnummerindelingen"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Deze velden gebruiken opmaakcodes (letters die staan voor delen van een datum). Kies een voorinstelling onder elk veld of bouw uw eigen met behulp van de referentie. De live-preview toont exact hoe het eruit ziet. Laat leeg om de systeemstandaard te gebruiken."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Zo worden datums en telefoonnummers in het hele systeem weergegeven."
+
+#: 
+msgid "Translation completeness"
+msgstr "Vertaalvolledigheid"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Vertaaltracking is niet beschikbaar voor deze taal."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Gebruik 9 als cijferplaatshouder (bijv. (999) 999-9999). Laat leeg om de systeemstandaard te gebruiken."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Gebruikt in geëxporteerde bestandsnamen. Standaard: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Gebruikt in rapporten en ledenlijsten. Standaard: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Weekdag, volledig"
+
+#: 
+msgid "Weekday, short"
+msgstr "Weekdag, afgekorte notatie"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Wat betekenen deze codes?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Jaar, 2 cijfers"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Jaar, 4 cijfers"
+
+#: 
+msgid "past"
+msgstr "verleden"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroatisch"
 

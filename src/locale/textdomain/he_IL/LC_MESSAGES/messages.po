@@ -9109,10 +9109,6 @@ msgid "Inactive Groups"
 msgstr "קבוצות לא פעילות"
 
 #: 
-msgid "Language & Localization"
-msgstr "שפה ולוקליזציה"
-
-#: 
 msgid "Map"
 msgstr "מפה"
 
@@ -10907,10 +10903,6 @@ msgstr "— בחרו קבוצה —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— בחרו סוג (אופציונלי) —"
-
-#: 
-msgid "Active Events"
-msgstr "אירועים פעילים"
 
 #: 
 msgid "Add Event"
@@ -16273,4 +16265,272 @@ msgstr "— בחר מדינה —"
 #: 
 msgid "— Select State —"
 msgstr "— בחר מחוז —"
+
+#: 
+msgid "Account options"
+msgstr "אפשרויות חשבון"
+
+#: 
+msgid "Register"
+msgstr "הרשם"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "סלובקית"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d אירוע עבר"
+msgstr[1] "%d אירועים עברו"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d%% מטקסט הממשק מתורגם לשפה זו."
+
+#: 
+msgid "AM / PM"
+msgstr "לפנה\"צ / אחה\"צ"
+
+#: 
+msgid "Access denied"
+msgstr "הגישה נדחית"
+
+#: 
+msgid "All times shown in"
+msgstr "כל השעות מוצגות ב"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "ימי הולדת ויובלות. ברירת מחדל: ח/י"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "לא ניתן למחוק לוח שנה: %d אירוע/ים עדיין מוקצים לו. הסר או הקצה מחדש תחילה."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "פורמט טלפון נייד"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "קודי עיצוב נפוצים (דוגמאות: שישי, 7 מרץ 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "אירועים נוכחיים"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "פורמט תאריך ושעה"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "פורמטי תאריך ושעה"
+
+#: 
+msgid "Date Picker Format"
+msgstr "פורמט בורר תאריך"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "טקסט מציין מקום לבורר תאריך"
+
+#: 
+msgid "Date Without Year"
+msgstr "תאריך ללא שנה"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "יום, 2 ספרות"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "יום, ללא אפס מוביל"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "ברירת מחדל: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "ברירת מחדל: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "דוגמה: \"l, j F Y\" מייצר \"שישי, 7 מרץ 2025\". כל תו אחר (רווחים, פסיקים, לוכסנים) מופיע כפי שהוקלד."
+
+#: 
+msgid "Filename Date Format"
+msgstr "פורמט תאריך לשם קובץ"
+
+#: 
+msgid "Fully translated."
+msgstr "מתורגם במלואו."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "טקסט עזר בשדות תאריך. ברירת מחדל: שנה-חודש-יום"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "פורמט טלפון בית/עבודה"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "שעה 12ש, 2 ספרות"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "שעה 12ש, ללא אפס"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "שעה 24ש, 2 ספרות"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "כולל רכיב שעה. ברירת מחדל: ח/י/שנה g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "שפה ואזור"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "שפה, אזור זמן, פורמטי תאריך וטלפון"
+
+#: 
+msgid "Localization & Formats"
+msgstr "לוקליזציה ופורמטים"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "הגדרות הלוקליזציה נשמרו בהצלחה"
+
+#: 
+msgid "Long Date Format"
+msgstr "פורמט תאריך ארוך"
+
+#: 
+msgid "Minutes"
+msgstr "דקות"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "חודש ושנה"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "חודש, 2 ספרות"
+
+#: 
+msgid "Month, full"
+msgstr "חודש, שם מלא"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "חודש, ללא אפס מוביל"
+
+#: 
+msgid "Month, short"
+msgstr "חודש, מקוצר"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "לא מותקן בשרת — תאריכים ומספרים עשויים שלא להיות מעוצבים כראוי. בקש מהמארח להתקין (לדוגמה locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "פורמט PHP לבורר תאריכים. ברירת מחדל: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "פורמטי מספר טלפון"
+
+#: 
+msgid "Phone with Extension"
+msgstr "טלפון עם שלוחה"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "שמור הגדרות לוקליזציה"
+
+#: 
+msgid "Selected Language"
+msgstr "שפה נבחרת"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "לא ניתן לבדוק תמיכת לוקאל של השרת (exec מושבת)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "נתמך — לוקאל זה מותקן בשרת."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "שפת המערכת, אזור זמן, פורמטי תאריך/שעה ופורמטי מספר טלפון"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "שדות אלה משתמשים בקודי עיצוב (אותיות המייצגות חלקי תאריך). בחר ערך מוגדר מראש מתחת לכל שדה, או בנה משלך עם המדריך. תצוגה מקדימה חיה מראה בדיוק איך זה ייראה. השאר ריק לשימוש בברירת המחדל של המערכת."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "כך יופיעו תאריכים ומספרי טלפון בכל המערכת."
+
+#: 
+msgid "Translation completeness"
+msgstr "שלמות התרגום"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "מעקב תרגום אינו זמין לשפה זו."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "השתמש ב-9 כמציין מקום לספרה (לדוגמה (999) 999-9999). השאר ריק לשימוש בברירת המחדל של המערכת."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "משמש בשמות קבצים מיוצאים. ברירת מחדל: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "משמש בדוחות ורשימות חברים. ברירת מחדל: ח/י/שנה"
+
+#: 
+msgid "Weekday, full"
+msgstr "יום שבוע, מלא"
+
+#: 
+msgid "Weekday, short"
+msgstr "יום שבוע, מקוצר"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "מה המשמעות של קודים אלה?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "שנה, 2 ספרות"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "שנה, 4 ספרות"
+
+#: 
+msgid "am / pm"
+msgstr "לפנה\"צ / אחה\"צ"
+
+#: 
+msgid "past"
+msgstr "עבר"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "קרואטית"
 

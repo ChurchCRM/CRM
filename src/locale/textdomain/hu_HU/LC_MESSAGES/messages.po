@@ -9145,10 +9145,6 @@ msgid "Inactive Groups"
 msgstr "Inaktív csoportok"
 
 #: 
-msgid "Language & Localization"
-msgstr "Nyelv és lokalizáció"
-
-#: 
 msgid "Map"
 msgstr "Térkép"
 
@@ -10943,10 +10939,6 @@ msgstr "— Válasszon csoportot —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Válasszon típust (nem kötelező) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktív események"
 
 #: 
 msgid "Add Event"
@@ -16301,4 +16293,272 @@ msgstr "— Ország kiválasztása —"
 #: 
 msgid "— Select State —"
 msgstr "— Megye kiválasztása —"
+
+#: 
+msgid "Account options"
+msgstr "Fiók beállításai"
+
+#: 
+msgid "Register"
+msgstr "Regisztráció"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Szlovák"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d elmúlt esemény"
+msgstr[1] "%d elmúlt esemény"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "Az interfész szövegének %d%-a le van fordítva erre a nyelvre."
+
+#: 
+msgid "AM / PM"
+msgstr "DE / DU"
+
+#: 
+msgid "Access denied"
+msgstr "Hozzáférés megtagadva"
+
+#: 
+msgid "All times shown in"
+msgstr "Minden idő megjelenítve:"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Születésnapok és évfordulók. Alapértelmezett: h/n"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "A naptár nem törölhető: %d esemény még hozzá van rendelve. Először távolítsa el vagy rendelje át őket."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Mobiltelefon formátuma"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Általános formázási kódok (példák: péntek, 2025. március 7., 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Aktuális események"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Dátum- és időformátum"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Dátum- és időformátumok"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Dátumválasztó formátuma"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Dátumválasztó helyőrzője"
+
+#: 
+msgid "Date Without Year"
+msgstr "Dátum év nélkül"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Nap, 2 számjegy"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Nap, vezető nulla nélkül"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Alapértelmezett: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Alapértelmezett: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Példa: \"l, j F Y\" eredménye: \"Péntek, 7. Március 2025\". Minden más karakter (szóközök, vesszők, perjelek) pontosan úgy jelenik meg, ahogy beírta."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Dátumformátum fájlnévhez"
+
+#: 
+msgid "Fully translated."
+msgstr "Teljesen lefordítva."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Dátummezőkben megjelenő súgószöveg. Alapértelmezett: éééé-hh-nn"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Otthoni/munkahelyi telefon formátuma"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Óra 12h, 2 számjegy"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Óra 12h, nulla nélkül"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Óra 24h, 2 számjegy"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Tartalmaz időkomponenst. Alapértelmezett: h/n/É ó:p de/du"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Nyelv és régió"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Nyelv, időzóna, dátum- és telefonformátumok"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Honosítás és formátumok"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "A honosítási beállítások mentése sikeres"
+
+#: 
+msgid "Long Date Format"
+msgstr "Hosszú dátumformátum"
+
+#: 
+msgid "Minutes"
+msgstr "Percek"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Hónap és év"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Hónap, 2 számjegy"
+
+#: 
+msgid "Month, full"
+msgstr "Hónap, teljes név"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Hónap, vezető nulla nélkül"
+
+#: 
+msgid "Month, short"
+msgstr "Hónap, rövidített"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nincs telepítve a szerveren — a dátumok és számok esetleg nem formázódnak helyesen. Kérje a tárhelyszolgáltatót a telepítésre (pl. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP formátum a dátumválasztóhoz. Alapértelmezett: É-h-n"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Telefonszám-formátumok"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon mellékkel"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Honosítási beállítások mentése"
+
+#: 
+msgid "Selected Language"
+msgstr "Kiválasztott nyelv"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "A szerver területi beállításait nem lehetett ellenőrizni (az exec le van tiltva)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Támogatott — ez a területi beállítás telepítve van a szerveren."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Rendszernyelv, időzóna, dátum-/időformátumok és telefonszám-formátumok"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Ezek a mezők formázási kódokat használnak (betűk a dátum részeit jelölik). Válasszon egy előbeállítást minden mező alatt, vagy hozzon létre sajátot a referencia segítségével. Az élő előnézet pontosan megmutatja a végeredményt. Hagyja üresen a rendszer alapértelmezéséhez."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Így fognak megjelenni a dátumok és telefonszámok az egész rendszerben."
+
+#: 
+msgid "Translation completeness"
+msgstr "Fordítás teljessége"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "A fordítás nyomon követése nem érhető el erre a nyelvre."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Használja a 9-et számjegy-helyőrzőként (pl. (999) 999-9999). Hagyja üresen a rendszer alapértelmezéséhez."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Exportált fájlnevekben használatos. Alapértelmezett: Éhn-Óps"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Jelentésekben és taglistákban használatos. Alapértelmezett: h/n/É"
+
+#: 
+msgid "Weekday, full"
+msgstr "Hét napja, teljes név"
+
+#: 
+msgid "Weekday, short"
+msgstr "Hét napja, rövidített"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Mit jelentenek ezek a kódok?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Év, 2 számjegy"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Év, 4 számjegy"
+
+#: 
+msgid "am / pm"
+msgstr "de / du"
+
+#: 
+msgid "past"
+msgstr "elmúlt"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Horvát"
 

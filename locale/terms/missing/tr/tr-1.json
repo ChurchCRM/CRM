@@ -1,10 +1,4 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "",
   "HTML URL": "",
-  "ICS URL": "",
-  "Account options": "",
-  "Register": "",
-  "Slovak": ""
+  "ICS URL": ""
 }

@@ -9111,10 +9111,6 @@ msgid "Inactive Groups"
 msgstr "Passiivsed rühmad"
 
 #: 
-msgid "Language & Localization"
-msgstr "Keel ja lokaliseerimine"
-
-#: 
 msgid "Map"
 msgstr "Kaart"
 
@@ -10909,10 +10905,6 @@ msgstr "— Valige grupp —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Valige tüüp (valikuline) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktiivsed sündmused"
 
 #: 
 msgid "Add Event"
@@ -15355,6 +15347,10 @@ msgid "Home phone is required"
 msgstr "Kodune telefon on nõutav"
 
 #: 
+msgid "ICS URL"
+msgstr "ICS-URL"
+
+#: 
 msgid "Ignored"
 msgstr "Ignoreeritud"
 
@@ -16271,4 +16267,272 @@ msgstr "— Vali riik —"
 #: 
 msgid "— Select State —"
 msgstr "— Vali maakond —"
+
+#: 
+msgid "Account options"
+msgstr "Konto sätted"
+
+#: 
+msgid "Register"
+msgstr "Registreeri"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovaki"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d möödunud sündmus"
+msgstr[1] "%d möödunud sündmust"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% liidese tekstist on selle keele jaoks tõlgitud."
+
+#: 
+msgid "AM / PM"
+msgstr "EL / PL"
+
+#: 
+msgid "Access denied"
+msgstr "Juurdepääs keelatud"
+
+#: 
+msgid "All times shown in"
+msgstr "Kõik ajad kuvatakse"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Sünnipäevad ja aastapäevad. Vaikimisi: p/k"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Kalendrit ei saa kustutada: sellele on veel %d sündmus(t) määratud. Eemaldage või määrake need ümber."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Mobiiltelefoni vorming"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Levinud vormindamiskoodid (näited: reede, 7. märts 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Praegused sündmused"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Kuupäeva ja kellaaja vorming"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Kuupäeva ja kellaaja vormingud"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Kuupäevavalija vorming"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Kuupäevavalija kohahoidja"
+
+#: 
+msgid "Date Without Year"
+msgstr "Kuupäev ilma aastata"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Päev, 2 numbrit"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Päev, ilma nullita"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Vaikimisi: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Vaikimisi: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Näide: \"l, j F Y\" annab \"Reede, 7. Märts 2025\". Kõik muud märgid (tühikud, komad, kaldkriipsud) ilmuvad nii nagu sisestatud."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Kuupäevavorming failinimedes"
+
+#: 
+msgid "Fully translated."
+msgstr "Täielikult tõlgitud."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Vijetekst kuupäevaväljades. Vaikimisi: aaaa-kk-pp"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Kodu/töö telefoni vorming"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Tund 12h, 2 numbrit"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Tund 12h, ilma nullita"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Tund 24h, 2 numbrit"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Sisaldab kellaaega. Vaikimisi: p/k/A g:i el/pl"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Keel ja piirkond"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Keel, ajavöönd, kuupäeva ja telefoni vormingud"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokaliseerimine ja vormingud"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Lokaliseerimise seaded salvestati edukalt"
+
+#: 
+msgid "Long Date Format"
+msgstr "Pikk kuupäevavorming"
+
+#: 
+msgid "Minutes"
+msgstr "Minutid"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Kuu ja aasta"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Kuu, 2 numbrit"
+
+#: 
+msgid "Month, full"
+msgstr "Kuu, täisnimi"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Kuu, ilma nullita"
+
+#: 
+msgid "Month, short"
+msgstr "Kuu, lühend"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Pole serverile installitud — kuupäevad ja numbrid ei pruugi selle lokaadi jaoks korrektselt vorminduda. Paluge hostil see installida (nt locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP vorming kuupäevavalija jaoks. Vaikimisi: A-k-p"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Telefoninumbrite vormingud"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon lisanumbriga"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Salvesta lokaliseerimise seaded"
+
+#: 
+msgid "Selected Language"
+msgstr "Valitud keel"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Serveri lokaadi tuge ei saanud kontrollida (exec on keelatud)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Toetatud — see lokaad on serverile installitud."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Süsteemikeel, ajavöönd, kuupäeva-/kellaajavormingud ja telefoninumbrite vormingud"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Need väljad kasutavad vormindamiskoode (tähed, mis tähistavad kuupäeva osi). Valige eelseadistus iga välja alt või looge oma viite abil. Reaalajas eelvaade näitab täpselt, kuidas see välja näeb. Jätke tühjaks süsteemi vaikeväärtuse kasutamiseks."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Nii ilmuvad kuupäevad ja telefoninumbrid kogu süsteemis."
+
+#: 
+msgid "Translation completeness"
+msgstr "Tõlke täielikkus"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Tõlkejälgimine ei ole selle keele jaoks saadaval."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Kasutage 9 numbrikohatäitena (nt (999) 999-9999). Jätke tühjaks süsteemi vaikeväärtuse kasutamiseks."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Kasutatakse eksporditud failinimedes. Vaikimisi: Akp-Tms"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Kasutatakse aruannetes ja liikmeloendites. Vaikimisi: p/k/A"
+
+#: 
+msgid "Weekday, full"
+msgstr "Nädalapäev, täisnimi"
+
+#: 
+msgid "Weekday, short"
+msgstr "Nädalapäev, lühend"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Mida need koodid tähendavad?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Aasta, 2 numbrit"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Aasta, 4 numbrit"
+
+#: 
+msgid "am / pm"
+msgstr "el / pl"
+
+#: 
+msgid "past"
+msgstr "minevik"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Horvaadi"
 

@@ -9191,10 +9191,6 @@ msgid "Inactive Groups"
 msgstr "Grupuri inactive"
 
 #: 
-msgid "Language & Localization"
-msgstr "Limbă și localizare"
-
-#: 
 msgid "Map"
 msgstr "Hartă"
 
@@ -10990,10 +10986,6 @@ msgstr "— Selectați un grup —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Selectați tipul (opțional) —"
-
-#: 
-msgid "Active Events"
-msgstr "Evenimente active"
 
 #: 
 msgid "Add Event"
@@ -16353,4 +16345,265 @@ msgstr "— Selectați țara —"
 #: 
 msgid "— Select State —"
 msgstr "— Selectați județul —"
+
+#: 
+msgid "Account options"
+msgstr "Opțiuni cont"
+
+#: 
+msgid "Register"
+msgstr "Înregistrare"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovac"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d eveniment trecut"
+msgstr[1] "%d evenimente trecute"
+msgstr[2] "%d evenimente trecute"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% din textul interfeței este tradus pentru această limbă."
+
+#: 
+msgid "Access denied"
+msgstr "Acces refuzat"
+
+#: 
+msgid "All times shown in"
+msgstr "Toate orele afișate în"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Zile de naștere și aniversări. Implicit: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Calendarul nu poate fi șters: %d eveniment(e) îi sunt încă atribuite. Eliminați-le sau reatribuiți-le mai întâi."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Format telefon mobil"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Coduri de formatare comune (exemple: vineri, 7 martie 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Evenimente curente"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Format dată și oră"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formate dată și oră"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Format selector dată"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Text indicativ selector dată"
+
+#: 
+msgid "Date Without Year"
+msgstr "Dată fără an"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Zi, 2 cifre"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Zi, fără zero inițial"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Implicit: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Implicit: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Exemplu: \"l, j F Y\" produce \"Vineri, 7 Martie 2025\". Orice alt caracter (spații, virgule, bare) apare ca atare."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Format dată pentru numele fișierului"
+
+#: 
+msgid "Fully translated."
+msgstr "Complet tradus."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Text indicativ afișat în câmpurile de dată. Implicit: aaaa-ll-zz"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Format telefon acasă/muncă"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Oră 12h, 2 cifre"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Oră 12h, fără zero"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Oră 24h, 2 cifre"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Include componenta oră. Implicit: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Limbă și regiune"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Limbă, fus orar, formate dată și telefon"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Localizare și formate"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Setările de localizare au fost salvate cu succes"
+
+#: 
+msgid "Long Date Format"
+msgstr "Format dată lungă"
+
+#: 
+msgid "Minutes"
+msgstr "Minute"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Lună și an"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Lună, 2 cifre"
+
+#: 
+msgid "Month, full"
+msgstr "Lună, completă"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Lună, fără zero inițial"
+
+#: 
+msgid "Month, short"
+msgstr "Lună, prescurtată"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nu este instalat pe server — datele și numerele pot să nu se formateze corect. Solicitați furnizorului să îl instaleze (ex: locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Format PHP pentru selectorul de dată. Implicit: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formate număr de telefon"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon cu extensie"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Salvați setările de localizare"
+
+#: 
+msgid "Selected Language"
+msgstr "Limbă selectată"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Suportul pentru parametrii regionali ai serverului nu a putut fi verificat (exec este dezactivat)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Suportat — această localizare este instalată pe server."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Limbă sistem, fus orar, formate dată/oră și formate număr de telefon"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Aceste câmpuri folosesc coduri de formatare (litere care reprezintă părți dintr-o dată). Alegeți o presetare sub fiecare câmp sau creați-vă propria folosind referința. Previzualizarea arată exact cum va arăta. Lăsați gol pentru a folosi valoarea implicită a sistemului."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Astfel vor apărea datele și numerele de telefon în tot sistemul."
+
+#: 
+msgid "Translation completeness"
+msgstr "Completitudinea traducerii"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Urmărirea traducerii nu este disponibilă pentru această limbă."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Folosiți 9 ca substituent pentru cifre (ex: (999) 999-9999). Lăsați gol pentru valoarea implicită a sistemului."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Folosit în numele fișierelor exportate. Implicit: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Folosit în rapoarte și liste de membri. Implicit: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Zi a săptămânii, completă"
+
+#: 
+msgid "Weekday, short"
+msgstr "Zi a săptămânii, prescurtată"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Ce înseamnă aceste coduri?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "An, 2 cifre"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "An, 4 cifre"
+
+#: 
+msgid "past"
+msgstr "trecut"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Croată"
 

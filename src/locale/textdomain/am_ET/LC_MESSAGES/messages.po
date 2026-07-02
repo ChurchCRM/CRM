@@ -9119,10 +9119,6 @@ msgid "Inactive Groups"
 msgstr "ንቁ ያልሆኑ ቡድኖች"
 
 #: 
-msgid "Language & Localization"
-msgstr "ቋንቋ እና ስፍራ ማስተካከያ"
-
-#: 
 msgid "Map"
 msgstr "ካርታ"
 
@@ -10917,10 +10913,6 @@ msgstr "— ቡድን ምረጫ —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— ዓይነት ምረጫ (ተንብርካካ) —"
-
-#: 
-msgid "Active Events"
-msgstr "ነቅል ሁነታ"
 
 #: 
 msgid "Add Event"
@@ -16280,4 +16272,272 @@ msgstr "— ሀገር ምረጥ —"
 #: 
 msgid "— Select State —"
 msgstr "— ክልል ምረጥ —"
+
+#: 
+msgid "Account options"
+msgstr "የሂሳብ ምርጫዎች"
+
+#: 
+msgid "Register"
+msgstr "ይመዝገቡ"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "ስሎቫክ"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d ያለፈ ክስተት"
+msgstr[1] "%d ያለፉ ክስተቶች"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "ለዚህ ቋንቋ %d%% የኢንተርፌስ ጽሑፍ ተተርጉሟል።"
+
+#: 
+msgid "AM / PM"
+msgstr "ጥዋት / ከሰዓት"
+
+#: 
+msgid "Access denied"
+msgstr "መዳረሻ ተከልክሏል"
+
+#: 
+msgid "All times shown in"
+msgstr "ሁሉም ጊዜዎች የሚታዩት"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "የልደት ቀናት እና ዓመታዊ ክብረ በዓላት። ነባሪ: ወ/ቀ"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "ቀን መቁጠሪያ መሰረዝ አይቻልም: %d ክስተት(ዎች) አሁንም ተመድበዋል። መጀመሪያ ያስወግዷቸው ወይም እንደገና ይመድቧቸው።"
+
+#: 
+msgid "Cell Phone Format"
+msgstr "የሴሉላር ስልክ ቅርጸት"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "የተለመዱ ቅርጸት ኮዶች (ምሳሌዎች: ዓርብ፣ ማርች 7, 2025, ከሰዓት 3:09)"
+
+#: 
+msgid "Current Events"
+msgstr "የአሁን ክስተቶች"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "የቀን እና ጊዜ ቅርጸት"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "የቀን እና ጊዜ ቅርጸቶች"
+
+#: 
+msgid "Date Picker Format"
+msgstr "የቀን ምረጫ ቅርጸት"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "የቀን ምረጫ ምትክ ጽሑፍ"
+
+#: 
+msgid "Date Without Year"
+msgstr "ያለ ዓመት ቀን"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "ቀን, 2 አሃዞች"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "ቀን, ቀዳሚ ዜሮ ሳይኖር"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "ነባሪ: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "ነባሪ: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "ምሳሌ: \"l, j F Y\" \"ዓርብ, 7 ማርች 2025\" ያስከትላል። ሌሎች ፊደሎች (ክፍተቶች, ነጥቦች, ሰያፎች) እንደተፃፉ ይታያሉ።"
+
+#: 
+msgid "Filename Date Format"
+msgstr "ለፋይል ስም የቀን ቅርጸት"
+
+#: 
+msgid "Fully translated."
+msgstr "ሙሉ ለሙሉ ተተርጉሟል።"
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "በቀን ግቤቶች ውስጥ የሚታይ ፍንጭ ጽሑፍ። ነባሪ: ዓዓዓዓ-ወወ-ቀቀ"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "የቤት/ሥራ ስልክ ቅርጸት"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "ሰዓት 12ሰ, 2 አሃዞች"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "ሰዓት 12ሰ, ዜሮ ሳይኖር"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "ሰዓት 24ሰ, 2 አሃዞች"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "የጊዜ ክፍልን ይጨምራል። ነባሪ: ወ/ቀ/ዓ g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "ቋንቋ እና ክልል"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "ቋንቋ፣ ሰዓት ዞን፣ የቀን እና ስልክ ቅርጸቶች"
+
+#: 
+msgid "Localization & Formats"
+msgstr "ቦታዊ ቅምጥ እና ቅርጸቶች"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "የቦታዊ ቅምጥ ቅንብሮች በተሳካ ሁኔታ ተቀምጠዋል"
+
+#: 
+msgid "Long Date Format"
+msgstr "ረዥም የቀን ቅርጸት"
+
+#: 
+msgid "Minutes"
+msgstr "ደቂቃዎች"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "ወር እና ዓመት"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "ወር, 2 አሃዞች"
+
+#: 
+msgid "Month, full"
+msgstr "ወር, ሙሉ ስም"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "ወር, ቀዳሚ ዜሮ ሳይኖር"
+
+#: 
+msgid "Month, short"
+msgstr "ወር, አጭር"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "በሰርቨር ላይ አልተጫነም — ቀኖች እና ቁጥሮች ለዚህ ቦታ ቅምጥ በትክክል ላይቀረጹ ይችላሉ። አስተናጋጅዎን ለመጫን ይጠይቁ (ለምሳሌ locale-gen)።"
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "ለቀን ምረጫ ግቤቶች PHP ቅርጸት። ነባሪ: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "የስልክ ቁጥር ቅርጸቶች"
+
+#: 
+msgid "Phone with Extension"
+msgstr "ስልክ ከቅጥያ ጋር"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "የቦታዊ ቅምጥ ቅንብሮችን አስቀምጥ"
+
+#: 
+msgid "Selected Language"
+msgstr "የተመረጠ ቋንቋ"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "የሰርቨር ቦታ ቅምጥ ድጋፍ ሊረጋገጥ አልቻለም (exec ተሰናክሏል)።"
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "ይደገፋል — ይህ ቦታ ቅምጥ በሰርቨር ላይ ተጭኗል።"
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "የሥርዓት ቋንቋ፣ ሰዓት ዞን፣ የቀን/ጊዜ ቅርጸቶች እና የስልክ ቁጥር ቅርጸቶች"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "እነዚህ መስኮች የቅርጸት ኮዶችን ይጠቀማሉ (የቀን ክፍሎችን የሚወክሉ ፊደሎች)። ከእያንዳንዱ መስክ በታች ቅድሜ-ቅምጥ ይምረጡ፣ ወይም ማጣቀሻ ተጠቅመው የራስዎን ይፍጠሩ። የቀጥታ ቅድሚ-እይታ ትክክለኛ ሁኔታውን ያሳያል። ለስርዓቱ ነባሪ ይጠቀሙ ካልሆነ ባዶ ያስቀምጡ።"
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "ቀኖች እና ስልክ ቁጥሮች በሙሉ ሥርዓቱ ውስጥ እንዲህ ይታያሉ።"
+
+#: 
+msgid "Translation completeness"
+msgstr "የትርጉም ሙሉነት"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "ለዚህ ቋንቋ የትርጉም ክትትል አይገኝም።"
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "9ን እንደ አሃዝ ምትክ ይጠቀሙ (ለምሳሌ (999) 999-9999)። ለስርዓቱ ነባሪ ይጠቀሙ ካልሆነ ባዶ ያስቀምጡ።"
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "ወደ ውጭ በሚላኩ ፋይል ስሞች ይጠቀምበታል። ነባሪ: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "በሪፖርቶች እና የአባላት ዝርዝሮች ይጠቀምበታል። ነባሪ: ወ/ቀ/ዓ"
+
+#: 
+msgid "Weekday, full"
+msgstr "የሳምንት ቀን, ሙሉ"
+
+#: 
+msgid "Weekday, short"
+msgstr "የሳምንት ቀን, አጭር"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "እነዚህ ኮዶች ምን ማለት ናቸው?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "ዓመት, 2 አሃዞች"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "ዓመት, 4 አሃዞች"
+
+#: 
+msgid "am / pm"
+msgstr "ጥዋት / ከሰዓት"
+
+#: 
+msgid "past"
+msgstr "ያለፈ"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "ክሮኤሽያኛ"
 

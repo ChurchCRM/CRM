@@ -9071,10 +9071,6 @@ msgid "Inactive Groups"
 msgstr "നിഷ്ക്രിയ ഗ്രൂപ്പുകൾ"
 
 #: 
-msgid "Language & Localization"
-msgstr "ഭാഷ & പ്രാദേശീകരണം"
-
-#: 
 msgid "Map"
 msgstr "മാപ്പ്"
 
@@ -10869,10 +10865,6 @@ msgstr "— ഒരു ഗ്രൂപ്പ് തിരഞ്ഞെടുക്
 #: 
 msgid "— Select type (optional) —"
 msgstr "— തരം തിരഞ്ഞെടുക്കുക (ഐച്ഛികം) —"
-
-#: 
-msgid "Active Events"
-msgstr "സജീവ ഇവന്റുകൾ"
 
 #: 
 msgid "Add Event"
@@ -16235,4 +16227,264 @@ msgstr "— രാജ്യം തിരഞ്ഞെടുക്കൂ —"
 #: 
 msgid "— Select State —"
 msgstr "— സംസ്ഥാനം തിരഞ്ഞെടുക്കൂ —"
+
+#: 
+msgid "Account options"
+msgstr "അക്കൗണ്ട് ഓപ്ഷനുകൾ"
+
+#: 
+msgid "Register"
+msgstr "രജിസ്ട്രർ"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "സ്ലോവാക്"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d കഴിഞ്ഞ ഇവന്‍റ്"
+msgstr[1] "%d കഴിഞ്ഞ ഇവന്‍റുകൾ"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "ഈ ഭാഷക്ക് ഇന്‍റർഫേസ് ടെക്സ്റ്റിന്‍റെ %d%% വിവർത്തനം ചെയ്തിരിക്കുന്നു."
+
+#: 
+msgid "Access denied"
+msgstr "ആക്സസ് നിരസിക്കപ്പെട്ടു"
+
+#: 
+msgid "All times shown in"
+msgstr "എല്ലാ സമയങ്ങളും ഇതിൽ കാണിക്കുന്നു:"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "ജന്മദിനങ്ങളും വാർഷികങ്ങളും. ഡിഫോൾട്ട്: മാ/ദി"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "കലണ്ടർ ഇല്ലാതാക്കാൻ കഴിയില്ല: %d ഇവന്‍റ്(കൾ) ഇപ്പോഴും നിയോഗിച്ചിരിക്കുന്നു. ആദ്യം അവ നീക്കുക അല്ലെങ്കിൽ വീണ്ടും നിയോഗിക്കുക."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "മൊബൈൽ ഫോൺ ഫോർമാറ്റ്"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "സാധാരണ ഫോർമാറ്റിംഗ് കോഡുകൾ (ഉദാഹരണങ്ങൾ: വെള്ളിയാഴ്ച, 7 മാർച്ച് 2025, ഉച്ചതിരിഞ്ഞ് 3:09)"
+
+#: 
+msgid "Current Events"
+msgstr "നിലവിലെ ഇവന്‍റുകൾ"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "തീയതിയും സമയ ഫോർമാറ്റും"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "തീയതിയും സമയ ഫോർമാറ്റുകളും"
+
+#: 
+msgid "Date Picker Format"
+msgstr "ഡേറ്റ് പിക്കർ ഫോർമാറ്റ്"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "ഡേറ്റ് പിക്കർ പ്ലേസ്ഹോൾഡർ"
+
+#: 
+msgid "Date Without Year"
+msgstr "വർഷം കൂടാതെ തീയതി"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "ദിവസം, 2 അക്കങ്ങൾ"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "ദിവസം, പ്രാരംഭ പൂജ്യം ഇല്ലാതെ"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "ഡിഫോൾട്ട്: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "ഡിഫോൾട്ട്: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "ഉദാഹരണം: \"l, j F Y\" എന്നത് \"Friday, 7 March 2025\" ഉൽപ്പാദിപ്പിക്കുന്നു. മറ്റ് ഏതൊരു അക്ഷരവും (ഇടങ്ങൾ, കോമകൾ, സ്ലാഷുകൾ) ടൈപ്പ് ചെയ്തതുപോലെ ദൃശ്യമാകുന്നു."
+
+#: 
+msgid "Filename Date Format"
+msgstr "ഫയൽ നാമ തീയതി ഫോർമാറ്റ്"
+
+#: 
+msgid "Fully translated."
+msgstr "പൂർണ്ണമായും വിവർത്തനം ചെയ്തു."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "തീയതി ഇൻപുട്ടുകളിൽ കാണിക്കുന്ന സൂചന ടെക്സ്റ്റ്. ഡിഫോൾട്ട്: yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "വീട്/ജോലി ഫോൺ ഫോർമാറ്റ്"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "മണിക്കൂർ 12h, 2 അക്കങ്ങൾ"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "മണിക്കൂർ 12h, പൂജ്യം ഇല്ലാതെ"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "മണിക്കൂർ 24h, 2 അക്കങ്ങൾ"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "സമയ ഘടകം ഉൾക്കൊള്ളുന്നു. ഡിഫോൾട്ട്: മാ/ദി/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "ഭാഷയും പ്രദേശവും"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "ഭാഷ, സമയ മേഖല, തീയതിയും ഫോൺ ഫോർമാറ്റുകളും"
+
+#: 
+msgid "Localization & Formats"
+msgstr "ലോക്കലൈസേഷനും ഫോർമാറ്റുകളും"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "ലോക്കലൈസേഷൻ ക്രമീകരണങ്ങൾ വിജയകരമായി സംരക്ഷിച്ചു"
+
+#: 
+msgid "Long Date Format"
+msgstr "ദീർഘ തീയതി ഫോർമാറ്റ്"
+
+#: 
+msgid "Minutes"
+msgstr "മിനിറ്റുകൾ"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "മാസവും വർഷവും"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "മാസം, 2 അക്കങ്ങൾ"
+
+#: 
+msgid "Month, full"
+msgstr "മാസം, പൂർണ്ണ നാമം"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "മാസം, പ്രാരംഭ പൂജ്യം ഇല്ലാതെ"
+
+#: 
+msgid "Month, short"
+msgstr "മാസം, ചുരുക്കം"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "സെർവറിൽ ഇൻസ്‌റ്റോൾ ചെയ്തിട്ടില്ല — ഈ ലൊക്കേലിനായി തീയതികളും നമ്പറുകളും ശരിയായി ഫോർമാറ്റ് ചെയ്‌തേക്കില്ല. ഹോസ്‌റ്റ് ഇൻസ്‌റ്റോൾ ചെയ്‌ക്കാൻ ആവശ്യപ്പെടുക (ഉദാ. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "ഡേറ്റ് പിക്കർ ഇൻപുട്ടുകൾക്കുള്ള PHP ഫോർമാറ്റ്. ഡിഫോൾട്ട്: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "ഫോൺ നമ്പർ ഫോർമാറ്റുകൾ"
+
+#: 
+msgid "Phone with Extension"
+msgstr "എക്‌സ്‌റ്റൻഷൻ സഹിതം ഫോൺ"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "ലോക്കലൈസേഷൻ ക്രമീകരണങ്ങൾ സേവ് ചെയ്യുക"
+
+#: 
+msgid "Selected Language"
+msgstr "തിരഞ്ഞെടുത്ത ഭാഷ"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "സെർവർ ലൊക്കേൽ പിന്തുണ പരിശോധിക്കാൻ കഴിഞ്ഞില്ല (exec പ്രവർത്തനരഹിതമാക്കി)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "പിന്തുണ ഉണ്ട് — ഈ ലൊക്കേൽ സെർവറിൽ ഇൻസ്‌റ്റോൾ ചെയ്‌തിരിക്കുന്നു."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "സിസ്‌റ്റം ഭാഷ, സമയ മേഖല, തീയതി/സമയ ഫോർമാറ്റുകൾ, ഫോൺ നമ്പർ ഫോർമാറ്റുകൾ"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "ഈ ഫീൽഡുകൾ ഫോർമാറ്റിംഗ് കോഡുകൾ ഉപയോഗിക്കുന്നു (തീയതിയുടെ ഭാഗങ്ങൾ പ്രതിനിധീകരിക്കുന്ന അക്ഷരങ്ങൾ). ഓരോ ഫീൽഡിനും ചുവടെ ഒരു പ്രീസെറ്റ് തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ റഫറൻസ് ഉപയോഗിച്ച് നിങ്ങളുടേത് നിർമ്മിക്കുക. ലൈവ് പ്രിവ്യൂ കൃത്യമായി എങ്ങനെ കാണപ്പെടുമെന്ന് കാണിക്കുന്നു. സിസ്റ്റം ഡിഫോൾട്ട് ഉപയോഗിക്കാൻ ശൂന്യമാക്കി ഇടുക."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "സിസ്‌റ്റം മുഴുവനിലും തീയതികളും ഫോൺ നമ്പറുകളും ഇങ്ങനെ കാണപ്പെടും."
+
+#: 
+msgid "Translation completeness"
+msgstr "വിവർത്തന പൂർണ്ണത"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "ഈ ഭാഷയ്ക്ക് വിവർത്തന ട്രാക്കിംഗ് ലഭ്യമല്ല."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "അക്ക പ്ലേസ്‌ഹോൾഡറായി 9 ഉപയോഗിക്കുക (ഉദാ. (999) 999-9999). സിസ്റ്റം ഡിഫോൾട്ട് ഉപയോഗിക്കാൻ ശൂന്യമാക്കി ഇടുക."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "എക്‌സ്‌പോർട്ട് ചെയ്‌ത ഫയൽ നാമങ്ങളിൽ ഉപയോഗിക്കുന്നു. ഡിഫോൾട്ട്: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "റിപ്പോർട്ടുകളിലും അംഗ ലിസ്‌റ്റുകളിലും ഉപയോഗിക്കുന്നു. ഡിഫോൾട്ട്: മാ/ദി/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "ആഴ്‌ചദിവസം, പൂർണ്ണ"
+
+#: 
+msgid "Weekday, short"
+msgstr "ആഴ്‌ചദിവസം, ചുരുക്കം"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "ഈ കോഡുകൾ എന്തർഥമാക്കുന്നു?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "വർഷം, 2 അക്കങ്ങൾ"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "വർഷം, 4 അക്കങ്ങൾ"
+
+#: 
+msgid "past"
+msgstr "കഴിഞ്ഞത്"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "ക്രൊയേഷ്യൻ"
 

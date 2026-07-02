@@ -9189,10 +9189,6 @@ msgid "Inactive Groups"
 msgstr "Nieaktywne grupy"
 
 #: 
-msgid "Language & Localization"
-msgstr "Język i lokalizacja"
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -10988,10 +10984,6 @@ msgstr "— Wybierz grupę —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Wybierz typ (opcjonalne) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktywne wydarzenia"
 
 #: 
 msgid "Add Event"
@@ -15435,6 +15427,10 @@ msgid "Home phone is required"
 msgstr "Telefon domowy jest wymagany"
 
 #: 
+msgid "ICS URL"
+msgstr "Adres URL ICS"
+
+#: 
 msgid "Ignored"
 msgstr "Zignorowane"
 
@@ -16351,4 +16347,265 @@ msgstr "— Wybierz kraj —"
 #: 
 msgid "— Select State —"
 msgstr "— Wybierz województwo —"
+
+#: 
+msgid "Account options"
+msgstr "Opcje konta"
+
+#: 
+msgid "Register"
+msgstr "Zarejestruj się"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Słowacki"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d minione wydarzenie"
+msgstr[1] "%d minione wydarzenia"
+msgstr[2] "%d minionych wydarzeń"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% tekstu interfejsu jest przetłumaczone dla tego języka."
+
+#: 
+msgid "Access denied"
+msgstr "Brak dostępu"
+
+#: 
+msgid "All times shown in"
+msgstr "Wszystkie godziny wyświetlane w"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Urodziny i rocznice. Domyślnie: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Nie można usunąć kalendarza: %d wydarzenie/a są nadal do niego przypisane. Najpierw je usuń lub przypisz ponownie."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Format telefonu komórkowego"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Wspólne kody formatowania (przykłady: piątek, 7 marca 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Bieżące wydarzenia"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Format daty i godziny"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formaty daty i godziny"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Format selektora daty"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Tekst zastępczy selektora daty"
+
+#: 
+msgid "Date Without Year"
+msgstr "Data bez roku"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Dzień, 2 cyfry"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Dzień, bez zera wiodącego"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Domyślnie: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Domyślnie: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Przykład: \"l, j F Y\" daje \"Piątek, 7 Marca 2025\". Wszelkie inne znaki (spacje, przecinki, ukośniki) pojawiają się tak jak wpisane."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Format daty nazwy pliku"
+
+#: 
+msgid "Fully translated."
+msgstr "W pełni przetłumaczone."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Tekst podpowiedzi w polach daty. Domyślnie: rrrr-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Format telefonu domowego/służbowego"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Godzina 12h, 2 cyfry"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Godzina 12h, bez zera"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Godzina 24h, 2 cyfry"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Zawiera składnik czasu. Domyślnie: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Język i region"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Język, strefa czasowa, formaty daty i telefonu"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalizacja i formaty"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Ustawienia lokalizacji zostały pomyślnie zapisane"
+
+#: 
+msgid "Long Date Format"
+msgstr "Długi format daty"
+
+#: 
+msgid "Minutes"
+msgstr "Minuty"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Miesiąc i rok"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Miesiąc, 2 cyfry"
+
+#: 
+msgid "Month, full"
+msgstr "Miesiąc, pełny"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Miesiąc, bez zera wiodącego"
+
+#: 
+msgid "Month, short"
+msgstr "Miesiąc, skrócony"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nie zainstalowano na serwerze — daty i liczby mogą się nieprawidłowo formatować. Poproś hosta o instalację (np. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Format PHP dla pól selektora daty. Domyślnie: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formaty numerów telefonów"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon z wewnętrznym"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Zapisz ustawienia lokalizacji"
+
+#: 
+msgid "Selected Language"
+msgstr "Wybrany język"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Nie można sprawdzić obsługi ustawień regionalnych serwera (exec jest wyłączony)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Obsługiwane — to ustawienie regionalne jest zainstalowane na serwerze."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Język systemowy, strefa czasowa, formaty daty/godziny i numerów telefonów"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Te pola używają kodów formatowania (liter reprezentujących części daty). Wybierz ustawienie wstępne pod każdym polem lub zbuduj własne za pomocą dokumentacji. Podgląd na żywo pokazuje dokładnie jak będzie wyglądać. Pozostaw puste, aby użyć domyślnego systemu."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Tak będą wyglądać daty i numery telefonów w całym systemie."
+
+#: 
+msgid "Translation completeness"
+msgstr "Kompletność tłumaczenia"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Śledzenie tłumaczeń nie jest dostępne dla tego języka."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Użyj 9 jako symbolu zastępczego cyfry (np. (999) 999-9999). Pozostaw puste, aby użyć domyślnego systemu."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Używane w nazwach eksportowanych plików. Domyślnie: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Używane w raportach i listach członków. Domyślnie: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Dzień tygodnia, pełny"
+
+#: 
+msgid "Weekday, short"
+msgstr "Dzień tygodnia, skrócony"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Co oznaczają te kody?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Rok, 2 cyfry"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Rok, 4 cyfry"
+
+#: 
+msgid "past"
+msgstr "minione"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Chorwacki"
 

@@ -9112,10 +9112,6 @@ msgid "Inactive Groups"
 msgstr "Aktif Olmayan Gruplar"
 
 #: 
-msgid "Language & Localization"
-msgstr "Dil ve Yerelleştirme"
-
-#: 
 msgid "Map"
 msgstr "Harita"
 
@@ -10910,10 +10906,6 @@ msgstr "— Bir grup seçin —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Tür seçin (isteğe bağlı) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktif Etkinlikler"
 
 #: 
 msgid "Add Event"
@@ -14655,6 +14647,18 @@ msgid "seconds"
 msgstr "saniye"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Etkinlik silinemez: %d kişi şu anda giriş yapmıştır."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Etkinlik silinemez: etkinlik şu anda bir kioyska atanmıştır."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Grup silinemez: %d etkinlik(ler) için kitledir ve %d etkinlik türü(nü) için varsayılan gruptur. Önce bunları yeniden atayın."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Bir takvim erişim belirteci oluşturuldu ve kaydedildi."
 
@@ -16256,4 +16260,272 @@ msgstr "— Ülke Seçin —"
 #: 
 msgid "— Select State —"
 msgstr "— İl Seçin —"
+
+#: 
+msgid "Account options"
+msgstr "Hesap seçenekleri"
+
+#: 
+msgid "Register"
+msgstr "Kayıt Ol"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakça"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d geçmiş etkinlik"
+msgstr[1] "%d geçmiş etkinlik"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "Bu dil için arayüz metninin %d%%'si çevrilmiştir."
+
+#: 
+msgid "AM / PM"
+msgstr "ÖÖ / ÖS"
+
+#: 
+msgid "Access denied"
+msgstr "Erişim reddedildi"
+
+#: 
+msgid "All times shown in"
+msgstr "Tüm saatler şurada gösteriliyor:"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Doğum günleri ve yıldönümleri. Varsayılan: a/g"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Takvim silinemiyor: %d etkinlik hâlâ buna atanmış. Önce bunları kaldırın veya yeniden atayın."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Cep Telefonu Biçimi"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Yaygın biçimlendirme kodları (örnekler: Cuma, 7 Mart 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Mevcut Etkinlikler"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Tarih ve Saat Biçimi"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Tarih ve Saat Biçimleri"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Tarih Seçici Biçimi"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Tarih Seçici Yer Tutucu"
+
+#: 
+msgid "Date Without Year"
+msgstr "Yılsız Tarih"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Gün, 2 basamak"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Gün, başında sıfır yok"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Varsayılan: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Varsayılan: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Örnek: \"l, j F Y\" → \"Cuma, 7 Mart 2025\". Diğer karakterler (boşluklar, virgüller, eğik çizgiler) yazıldığı gibi görünür."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Dosya Adı Tarih Biçimi"
+
+#: 
+msgid "Fully translated."
+msgstr "Tamamen çevrildi."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Tarih alanlarında gösterilen ipucu metni. Varsayılan: yyyy-aa-gg"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Ev/İş Telefon Biçimi"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Saat 12s, 2 basamak"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Saat 12s, sıfır yok"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Saat 24s, 2 basamak"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Saat bileşeni içerir. Varsayılan: a/g/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Dil ve Bölge"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Dil, saat dilimi, tarih ve telefon biçimleri"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Yerelleştirme ve Biçimler"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Yerelleştirme ayarları başarıyla kaydedildi"
+
+#: 
+msgid "Long Date Format"
+msgstr "Uzun Tarih Biçimi"
+
+#: 
+msgid "Minutes"
+msgstr "Dakikalar"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Ay ve Yıl"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Ay, 2 basamak"
+
+#: 
+msgid "Month, full"
+msgstr "Ay, tam adı"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Ay, başında sıfır yok"
+
+#: 
+msgid "Month, short"
+msgstr "Ay, kısaltma"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Sunucuya yüklü değil — tarihler ve sayılar bu yerel ayar için doğru biçimlenmeyebilir. Barındırıcınızdan yüklemesini isteyin (ör. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Tarih seçici için PHP biçimi. Varsayılan: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Telefon Numarası Biçimleri"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Dahili Numaralı Telefon"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Yerelleştirme Ayarlarını Kaydet"
+
+#: 
+msgid "Selected Language"
+msgstr "Seçilen Dil"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Sunucu yerel ayarı desteği kontrol edilemedi (exec devre dışı)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Destekleniyor — bu yerel ayar sunucuya yüklü."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Sistem dili, saat dilimi, tarih/saat biçimleri ve telefon numarası biçimleri"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Bu alanlar biçimlendirme kodları kullanır (tarihin bölümlerini temsil eden harfler). Her alanın altından bir ön ayar seçin ya da referansı kullanarak kendinizinkini oluşturun. Canlı önizleme tam olarak nasıl görüneceğini gösterir. Sistem varsayılanını kullanmak için boş bırakın."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Tarihler ve telefon numaraları sistem genelinde bu şekilde görünecektir."
+
+#: 
+msgid "Translation completeness"
+msgstr "Çeviri Tamlığı"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Bu dil için çeviri takibi mevcut değil."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Rakam yer tutucu olarak 9 kullanın (ör. (999) 999-9999). Sistem varsayılanını kullanmak için boş bırakın."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Dışa aktarılan dosya adlarında kullanılır. Varsayılan: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Raporlarda ve üye listelerinde kullanılır. Varsayılan: a/g/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Haftanın Günü, tam"
+
+#: 
+msgid "Weekday, short"
+msgstr "Haftanın Günü, kısa"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Bu kodlar ne anlama geliyor?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Yıl, 2 basamak"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Yıl, 4 basamak"
+
+#: 
+msgid "am / pm"
+msgstr "öö / ös"
+
+#: 
+msgid "past"
+msgstr "geçmiş"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Hırvatça"
 

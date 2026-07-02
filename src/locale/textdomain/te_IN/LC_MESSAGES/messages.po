@@ -9083,10 +9083,6 @@ msgid "Inactive Groups"
 msgstr "నిష్క్రియ గ్రూప్‌లు"
 
 #: 
-msgid "Language & Localization"
-msgstr "భాష & స్థానికీకరణ"
-
-#: 
 msgid "Map"
 msgstr "మ్యాప్"
 
@@ -10881,10 +10877,6 @@ msgstr "— సమూహాన్ని ఎంచుకోండి —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— రకాన్ని ఎంచుకోండి (ఐచ్ఛికం) —"
-
-#: 
-msgid "Active Events"
-msgstr "సక్రియ ఈవెంట్‌లు"
 
 #: 
 msgid "Add Event"
@@ -16239,4 +16231,272 @@ msgstr "— దేశం ఎంచుకోండి —"
 #: 
 msgid "— Select State —"
 msgstr "— రాష్ట్రం ఎంచుకోండి —"
+
+#: 
+msgid "Account options"
+msgstr "ఖాతా ఎంపికలు"
+
+#: 
+msgid "Register"
+msgstr "నమోదు చేయండి"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "స్లోవాక్"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d గత సంఘటన"
+msgstr[1] "%d గత సంఘటనలు"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "ఈ భాషకు ఇంటర్‌ఫేస్ వచనంలో %d%% అనువదించబడింది."
+
+#: 
+msgid "AM / PM"
+msgstr "పూర్వాహ్న / అపరాహ్న"
+
+#: 
+msgid "Access denied"
+msgstr "యాక్సెస్ నిరాకరించబడింది"
+
+#: 
+msgid "All times shown in"
+msgstr "అన్ని సమయాలు చూపబడతాయి"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "పుట్టినరోజులు మరియు వార్షికోత్సవాలు. డిఫాల్ట్: నె/రో"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "క్యాలెండర్ తొలగించడం సాధ్యం కాదు: %d ఈవెంట్(లు) ఇంకా దానికి కేటాయించబడ్డాయి. ముందు వాటిని తొలగించండి లేదా మళ్ళీ కేటాయించండి."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "సెల్ ఫోన్ ఫార్మాట్"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "సాధారణ ఫార్మాటింగ్ కోడ్‌లు (ఉదాహరణలు: శుక్రవారం, 7 మార్చి 2025, మధ్యాహ్నం 3:09)"
+
+#: 
+msgid "Current Events"
+msgstr "ప్రస్తుత సంఘటనలు"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "తేదీ మరియు సమయ ఫార్మాట్"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "తేదీ మరియు సమయ ఫార్మాట్‌లు"
+
+#: 
+msgid "Date Picker Format"
+msgstr "తేదీ పికర్ ఫార్మాట్"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "తేదీ పికర్ ప్లేస్‌హోల్డర్"
+
+#: 
+msgid "Date Without Year"
+msgstr "సంవత్సరం లేని తేదీ"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "రోజు, 2 అంకెలు"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "రోజు, ముందు సున్నా లేకుండా"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "డిఫాల్ట్: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "డిఫాల్ట్: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "ఉదాహరణ: \"l, j F Y\" \"Friday, 7 March 2025\" ని ఉత్పత్తి చేస్తుంది. ఇతర అక్షరాలు (స్పేస్‌లు, కామాలు, స్లాష్‌లు) టైప్ చేసినట్టే కనిపిస్తాయి."
+
+#: 
+msgid "Filename Date Format"
+msgstr "ఫైల్ పేరు తేదీ ఫార్మాట్"
+
+#: 
+msgid "Fully translated."
+msgstr "పూర్తిగా అనువదించబడింది."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "తేదీ ఇన్‌పుట్‌లలో చూపబడే హింట్ టెక్స్ట్. డిఫాల్ట్: yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "ఇంటి/పని ఫోన్ ఫార్మాట్"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "గంట 12 గ., 2 అంకెలు"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "గంట 12 గ., సున్నా లేకుండా"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "గంట 24 గ., 2 అంకెలు"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "సమయ భాగం కలిగి ఉంటుంది. డిఫాల్ట్: నె/రో/సం g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "భాష మరియు ప్రాంతం"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "భాష, సమయ మండలం, తేదీ మరియు ఫోన్ ఫార్మాట్‌లు"
+
+#: 
+msgid "Localization & Formats"
+msgstr "స్థానికీకరణ మరియు ఫార్మాట్‌లు"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "స్థానికీకరణ సెట్టింగ్‌లు విజయవంతంగా సేవ్ చేయబడ్డాయి"
+
+#: 
+msgid "Long Date Format"
+msgstr "దీర్ఘ తేదీ ఫార్మాట్"
+
+#: 
+msgid "Minutes"
+msgstr "నిమిషాలు"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "నెల మరియు సంవత్సరం"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "నెల, 2 అంకెలు"
+
+#: 
+msgid "Month, full"
+msgstr "నెల, పూర్తి పేరు"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "నెల, ముందు సున్నా లేకుండా"
+
+#: 
+msgid "Month, short"
+msgstr "నెల, సంక్షిప్తం"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "సర్వర్‌లో ఇన్‌స్టాల్ చేయబడలేదు — ఈ లోకేల్ కోసం తేదీలు మరియు సంఖ్యలు సరిగ్గా ఫార్మాట్ కాకపోవచ్చు. మీ హోస్ట్‌ను దానిని ఇన్‌స్టాల్ చేయమని అడగండి (ఉదా. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "తేదీ పికర్ ఇన్‌పుట్‌ల కోసం PHP ఫార్మాట్. డిఫాల్ట్: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "ఫోన్ నంబర్ ఫార్మాట్‌లు"
+
+#: 
+msgid "Phone with Extension"
+msgstr "ఎక్స్‌టెన్షన్‌తో ఫోన్"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "స్థానికీకరణ సెట్టింగ్‌లను సేవ్ చేయండి"
+
+#: 
+msgid "Selected Language"
+msgstr "ఎంచుకున్న భాష"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "సర్వర్ లోకేల్ మద్దతును తనిఖీ చేయడం సాధ్యమవలేదు (exec నిలిపివేయబడింది)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "మద్దతు ఉంది — ఈ లోకేల్ సర్వర్‌లో ఇన్‌స్టాల్ చేయబడింది."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "సిస్టమ్ భాష, సమయ మండలం, తేదీ/సమయ ఫార్మాట్‌లు మరియు ఫోన్ నంబర్ ఫార్మాట్‌లు"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "ఈ ఫీల్డ్‌లు ఫార్మాటింగ్ కోడ్‌లను ఉపయోగిస్తాయి (తేదీ భాగాలను సూచించే అక్షరాలు). ప్రతి ఫీల్డ్ క్రింద ప్రీసెట్ ఎంచుకోండి లేదా సూచన ఉపయోగించి మీ స్వంతది నిర్మించండి. లైవ్ ప్రివ్యూ ఖచ్చితంగా ఎలా కనిపిస్తుందో చూపుతుంది. సిస్టమ్ డిఫాల్ట్ ఉపయోగించడానికి ఖాళీగా వదిలండి."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "సిస్టమ్ అంతటా తేదీలు మరియు ఫోన్ నంబర్లు ఇలా కనిపిస్తాయి."
+
+#: 
+msgid "Translation completeness"
+msgstr "అనువాద సంపూర్ణత"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "ఈ భాషకు అనువాద ట్రాకింగ్ అందుబాటులో లేదు."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "అంకె ప్లేస్‌హోల్డర్‌గా 9 ఉపయోగించండి (ఉదా. (999) 999-9999). సిస్టమ్ డిఫాల్ట్ ఉపయోగించడానికి ఖాళీగా వదిలండి."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "ఎగుమతి చేసిన ఫైల్ పేర్లలో ఉపయోగించబడుతుంది. డిఫాల్ట్: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "నివేదికలు మరియు సభ్యుల జాబితాలలో ఉపయోగించబడుతుంది. డిఫాల్ట్: నె/రో/సం"
+
+#: 
+msgid "Weekday, full"
+msgstr "వారపు రోజు, పూర్తి పేరు"
+
+#: 
+msgid "Weekday, short"
+msgstr "వారపు రోజు, సంక్షిప్తం"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "ఈ కోడ్‌లు ఏమి అర్థం?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "సంవత్సరం, 2 అంకెలు"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "సంవత్సరం, 4 అంకెలు"
+
+#: 
+msgid "am / pm"
+msgstr "పూర్వాహ్న / అపరాహ్న"
+
+#: 
+msgid "past"
+msgstr "గత"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "క్రొయేషియన్"
 

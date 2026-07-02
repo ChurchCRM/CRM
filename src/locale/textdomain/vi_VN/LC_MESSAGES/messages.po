@@ -9108,10 +9108,6 @@ msgid "Inactive Groups"
 msgstr "Nhóm không hoạt động"
 
 #: 
-msgid "Language & Localization"
-msgstr "Ngôn ngữ & Bản địa hóa"
-
-#: 
 msgid "Map"
 msgstr "Bản đồ"
 
@@ -10905,10 +10901,6 @@ msgstr "— Chon mot nhom —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Chon loai (tuy chon) —"
-
-#: 
-msgid "Active Events"
-msgstr "Su kien dang hoat dong"
 
 #: 
 msgid "Add Event"
@@ -16270,4 +16262,271 @@ msgstr "— Chọn quốc gia —"
 #: 
 msgid "— Select State —"
 msgstr "— Chọn tỉnh/thành phố —"
+
+#: 
+msgid "Account options"
+msgstr "Tùy chọn tài khoản"
+
+#: 
+msgid "Register"
+msgstr "Đăng ký"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakia"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d sự kiện trong quá khứ"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% văn bản giao diện đã được dịch cho ngôn ngữ này."
+
+#: 
+msgid "AM / PM"
+msgstr "SA / CH"
+
+#: 
+msgid "Access denied"
+msgstr "Từ chối truy cập"
+
+#: 
+msgid "All times shown in"
+msgstr "Tất cả thời gian hiển thị theo"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Sinh nhật và kỷ niệm. Mặc định: n/g"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Không thể xóa lịch: %d sự kiện vẫn được gán cho nó. Hãy xóa hoặc gán lại trước."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Định dạng điện thoại di động"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Mã định dạng thông thường (ví dụ: Thứ Sáu, 7 tháng 3 năm 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Sự kiện hiện tại"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Định dạng ngày giờ"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Các định dạng ngày giờ"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Định dạng chọn ngày"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Văn bản gợi ý chọn ngày"
+
+#: 
+msgid "Date Without Year"
+msgstr "Ngày không có năm"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Ngày, 2 chữ số"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Ngày, không có số 0 đứng đầu"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Mặc định: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Mặc định: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Ví dụ: \"l, j F Y\" tạo ra \"Thứ Sáu, 7 Tháng Ba 2025\". Mọi ký tự khác (khoảng trắng, dấu phẩy, dấu gạch chéo) xuất hiện như đã nhập."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Định dạng ngày trong tên tệp"
+
+#: 
+msgid "Fully translated."
+msgstr "Đã dịch đầy đủ."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Văn bản gợi ý trong các trường ngày. Mặc định: nnnn-tt-nn"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Định dạng điện thoại nhà/công ty"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Giờ 12h, 2 chữ số"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Giờ 12h, không có số 0"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Giờ 24h, 2 chữ số"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Bao gồm thành phần giờ. Mặc định: n/g/N g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Ngôn ngữ và khu vực"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Ngôn ngữ, múi giờ, định dạng ngày và điện thoại"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Bản địa hóa và định dạng"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Cài đặt bản địa hóa đã được lưu thành công"
+
+#: 
+msgid "Long Date Format"
+msgstr "Định dạng ngày dài"
+
+#: 
+msgid "Minutes"
+msgstr "Phút"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Tháng và năm"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Tháng, 2 chữ số"
+
+#: 
+msgid "Month, full"
+msgstr "Tháng, tên đầy đủ"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Tháng, không có số 0 đứng đầu"
+
+#: 
+msgid "Month, short"
+msgstr "Tháng, viết tắt"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Chưa được cài đặt trên máy chủ — ngày và số có thể không được định dạng đúng. Hãy yêu cầu nhà cung cấp cài đặt (ví dụ: locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Định dạng PHP cho bộ chọn ngày. Mặc định: N-t-n"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Định dạng số điện thoại"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Điện thoại có số nhánh"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Lưu cài đặt bản địa hóa"
+
+#: 
+msgid "Selected Language"
+msgstr "Ngôn ngữ đã chọn"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Không thể kiểm tra hỗ trợ ngôn ngữ địa phương của máy chủ (exec bị vô hiệu hóa)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Được hỗ trợ — ngôn ngữ địa phương này đã được cài đặt trên máy chủ."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Ngôn ngữ hệ thống, múi giờ, định dạng ngày/giờ và định dạng số điện thoại"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Các trường này sử dụng mã định dạng (các chữ cái đại diện cho các phần của ngày tháng). Chọn cài đặt sẵn bên dưới mỗi trường hoặc tự tạo theo tài liệu tham khảo. Xem trước trực tiếp cho thấy chính xác giao diện. Để trống để sử dụng mặc định hệ thống."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Đây là cách ngày tháng và số điện thoại sẽ hiển thị trong toàn hệ thống."
+
+#: 
+msgid "Translation completeness"
+msgstr "Mức độ hoàn chỉnh của bản dịch"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Theo dõi bản dịch không khả dụng cho ngôn ngữ này."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Dùng 9 làm ký tự giữ chỗ cho chữ số (ví dụ: (999) 999-9999). Để trống để sử dụng mặc định hệ thống."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Dùng trong tên tệp xuất. Mặc định: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Dùng trong báo cáo và danh sách thành viên. Mặc định: n/g/N"
+
+#: 
+msgid "Weekday, full"
+msgstr "Ngày trong tuần, tên đầy đủ"
+
+#: 
+msgid "Weekday, short"
+msgstr "Ngày trong tuần, viết tắt"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Các mã này có nghĩa là gì?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Năm, 2 chữ số"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Năm, 4 chữ số"
+
+#: 
+msgid "am / pm"
+msgstr "sa / ch"
+
+#: 
+msgid "past"
+msgstr "quá khứ"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Tiếng Croatia"
 
