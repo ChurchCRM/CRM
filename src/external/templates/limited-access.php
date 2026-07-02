@@ -31,7 +31,11 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           <?php else: ?>
           <h1><?= gettext('Welcome') ?></h1>
           <?php endif; ?>
+          <?php if (!empty($verifyUrl)): ?>
           <p><?= gettext('You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.') ?></p>
+          <?php else: ?>
+          <p><?= gettext('If you need additional access, please contact your church administrator.') ?></p>
+          <?php endif; ?>
         </div>
 
         <!-- Action Buttons -->
