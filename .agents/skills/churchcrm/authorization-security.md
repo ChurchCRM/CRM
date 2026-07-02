@@ -47,6 +47,38 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
 - `true` for Admin/EditRecords; EditSelf users restricted to their own family.
 - Enforced centrally in `FamilyMiddleware::process()` (overrides the base to run after entity load), so every route using `FamilyMiddleware` is scoped automatically.
 
+## Low-Sensitivity Family Read Endpoints — FamilyMiddleware(false) <!-- learned: 2026-07-02 -->
+
+Not all family API routes need the `canViewFamily()` scope restriction. Avatar, nav (prev/next IDs),
+and photo GET are considered non-sensitive metadata; they are accessible to any authenticated user
+who passes `hasNoAdminPermissions()` in `AuthMiddleware` (i.e. has at least Notes, EditRecords, etc.).
+
+Use `new FamilyMiddleware(false)` on a separate route group for these endpoints. The entity is still
+loaded (so nonexistent family IDs still return 404), but authorization uses `canReadFamily()` instead
+of `canViewFamily()`. This mirrors the person pattern where avatar/photo GET routes are registered
+without `PersonMiddleware` at all.
+
+```php
+// Low-sensitivity group — read baseline, no EditSelf scope restriction
+$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    $group->get('/avatar', ...);
+    $group->get('/nav', ...);
+    $group->get('/photo', ...)->add(new Cache(...));
+})->add(new FamilyMiddleware(false));
+
+// Sensitive group — canViewFamily() scope enforced (GHSA-jjcj-h3cm-p7x7)
+$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    $group->get('', ...);
+    $group->get('/geolocation', ...);
+    // write routes ...
+})->add(FamilyMiddleware::class); // default enforceViewScope=true
+```
+
+Endpoints that remain fully scoped (EditSelf restricted to own family):
+- `GET /family/{id}` — full profile (address/phone/email)
+- `GET /family/{id}/geolocation` — lat/lng of family address
+- Notes, timeline, write operations
+
 ## Two-Layer EditSelf Authorization (entry gate + object-level) <!-- learned: 2026-06-14 -->
 
 EditSelf scoping is enforced in **two layers** — know which one applies:
