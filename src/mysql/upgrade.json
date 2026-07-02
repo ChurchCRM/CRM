@@ -60,7 +60,7 @@
   },
   "pre-7.4.1": {
     "versions": ["7.3.1", "7.3.2", "7.3.3", "7.4.0"],
-    "scripts": ["/mysql/upgrade/7.4.2-editself-exclusive.sql"],
+    "scripts": ["/mysql/upgrade/7.4.2-editself-exclusive.sql", "/mysql/upgrade/7.4.1-manage-fundraisers.sql"],
     "dbVersion": "7.4.1"
   },
   "current": {

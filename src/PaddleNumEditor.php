@@ -10,8 +10,7 @@ use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
-// Security: User must have finance permission to use this page
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageFundraisersEnabled(), 'ManageFundraisers');
 
 $iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');

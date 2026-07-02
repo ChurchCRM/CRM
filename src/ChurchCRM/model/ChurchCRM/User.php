@@ -148,6 +148,11 @@ class User extends BaseUser
         return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance());
     }
 
+    public function isManageFundraisersEnabled(): bool
+    {
+        return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFundraiser') && $this->isManageFundraisers());
+    }
+
     public function isAddEventEnabled(): bool
     {
         if ($this->isEditSelfExclusive()) {
@@ -213,6 +218,7 @@ class User extends BaseUser
             'menuOptions'         => $this->isMenuOptionsEnabled(),
             'manageGroups'        => $this->isManageGroupsEnabled(),
             'finance'             => $this->isFinanceEnabled(),
+            'manageFundraisers'   => $this->isManageFundraisersEnabled(),
             'notes'               => $this->isNotesEnabled(),
             'editSelf'            => $this->isEditSelfEnabled(),
             // Module permissions (userconfig_ucfg rows)
@@ -223,6 +229,29 @@ class User extends BaseUser
             'canViewEvents'       => $this->canViewEvents(),
             'canManageEvents'     => $this->canManageEvents(),
         ];
+    }
+
+    /**
+     * Check if the user lacks all functional admin permissions.
+     * Users with no permissions (or only EditSelf) cannot use the admin interface
+     * and should be redirected to a self-service flow or blocked.
+     *
+     * @see https://github.com/ChurchCRM/CRM/issues/8617
+     */
+    public function hasNoAdminPermissions(): bool
+    {
+        if ($this->isAdmin()) {
+            return false;
+        }
+
+        return !$this->isAddRecords()
+            && !$this->isEditRecords()
+            && !$this->isDeleteRecords()
+            && !$this->isMenuOptions()
+            && !$this->isManageGroups()
+            && !$this->isFinance()
+            && !$this->isManageFundraisers()
+            && !$this->isNotes();
     }
 
     /**

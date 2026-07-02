@@ -5,9 +5,12 @@ namespace ChurchCRM\Reports;
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
+
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageFundraisersEnabled(), 'ManageFundraisers');
 
 if (!isset($_GET['CurrentFundraiser'])) {
     throw new \InvalidArgumentException('Missing required CurrentFundraiser parameter');

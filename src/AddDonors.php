@@ -7,8 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-// Security: User must have finance permission to use this page
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageFundraisersEnabled(), 'ManageFundraisers');
 
 $linkBack = RedirectUtils::getLinkBackFromRequest('');
 $iFundRaiserID = InputUtils::filterInt($_GET['FundRaiserID']);

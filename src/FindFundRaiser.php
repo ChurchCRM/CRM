@@ -10,8 +10,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-// Security: User must have finance permission to use this page
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageFundraisersEnabled(), 'ManageFundraisers');
 
 $sPageTitle = gettext('Fundraiser Listing');
 $sPageSubtitle = gettext('Browse and search fundraiser campaigns');
