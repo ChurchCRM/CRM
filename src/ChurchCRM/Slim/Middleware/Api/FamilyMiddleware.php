@@ -17,10 +17,11 @@ class FamilyMiddleware extends AbstractEntityMiddleware
      * for EditSelf-scoped users via User::canViewFamily() — as required by the
      * GHSA-jjcj-h3cm-p7x7 security fix.
      *
-     * Pass false for low-sensitivity endpoints (avatar, nav, photo GET) that should
-     * be accessible to any authenticated user with at least one admin permission.
-     * Entity loading and 404-on-missing-family are preserved; only the view-scope
-     * restriction is relaxed to the read-default baseline (User::canReadFamily()).
+     * Pass false for low-sensitivity endpoints (avatar, nav, photo GET). In this mode
+     * FamilyMiddleware only calls User::canReadFamily() (currently always true) and does
+     * not itself enforce any additional access gate. The entry-level permission check is
+     * handled upstream by AuthMiddleware::hasNoAdminPermissions(). Entity loading and
+     * 404-on-missing-family are preserved; only the view-scope restriction is relaxed.
      */
     public function __construct(private bool $enforceViewScope = true)
     {
@@ -56,8 +57,9 @@ class FamilyMiddleware extends AbstractEntityMiddleware
      *   data. Now restricted to their own family only.
      *
      * When $enforceViewScope is false (read-baseline mode):
-     *   Uses canReadFamily() — any authenticated user with at least one admin permission
-     *   may read this family's low-sensitivity metadata (avatar, nav, photo).
+     *   Uses canReadFamily() (currently always true). Access is gated upstream by
+     *   AuthMiddleware::hasNoAdminPermissions(); this middleware does not add an
+     *   additional permission requirement beyond that entry gate.
      *   Entity existence is still validated (404 if family not found above).
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
