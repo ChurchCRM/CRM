@@ -16512,3 +16512,8 @@ msgstr "Viti, 4 shifra"
 msgid "past"
 msgstr "e kaluar"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroate"
+

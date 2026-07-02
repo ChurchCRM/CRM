@@ -16604,3 +16604,8 @@ msgstr "Rok, 4 cyfry"
 msgid "past"
 msgstr "minione"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Chorwacki"
+

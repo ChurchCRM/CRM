@@ -16495,3 +16495,8 @@ msgstr "పూర్వాహ్న / అపరాహ్న"
 msgid "past"
 msgstr "గత"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "క్రొయేషియన్"
+

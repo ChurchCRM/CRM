@@ -16252,6 +16252,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "ข้อความส่วนติดต่อผู้ใช้ถูกแปลแล้ว %d%% สำหรับภาษานี้"
 
 #: 
+msgid "AM / PM"
+msgstr "ก่อนเที่ยง / หลังเที่ยง"
+
+#: 
 msgid "Access denied"
 msgstr "ปฏิเสธการเข้าถึง"
 
@@ -16480,6 +16484,15 @@ msgid "Year, 4 digits"
 msgstr "ปี, 4 หลัก"
 
 #: 
+msgid "am / pm"
+msgstr "ก่อนเที่ยง / หลังเที่ยง"
+
+#: 
 msgid "past"
 msgstr "ที่ผ่านมา"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "โครเอเชีย"
 

@@ -16524,3 +16524,8 @@ msgstr "öö / ös"
 msgid "past"
 msgstr "geçmiş"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Hırvatça"
+
