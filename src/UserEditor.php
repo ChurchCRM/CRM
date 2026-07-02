@@ -104,6 +104,11 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         } else {
             $Finance = 0;
         }
+        if (isset($_POST['ManageFundraisers'])) {
+            $ManageFundraisers = 1;
+        } else {
+            $ManageFundraisers = 0;
+        }
         if (isset($_POST['Notes'])) {
             $Notes = 1;
         } else {
@@ -143,6 +148,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                         ->setMenuOptions($MenuOptions)
                         ->setManageGroups($ManageGroups)
                         ->setFinance($Finance)
+                        ->setManageFundraisers($ManageFundraisers)
                         ->setNotes($Notes)
                         ->setAdmin($Admin)
                         ->setDefaultFY($defaultFY)
@@ -173,6 +179,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                         ->setMenuOptions($MenuOptions)
                         ->setManageGroups($ManageGroups)
                         ->setFinance($Finance)
+                        ->setManageFundraisers($ManageFundraisers)
                         ->setNotes($Notes)
                         ->setAdmin($Admin)
                         ->setUserName($sUserName)
@@ -206,6 +213,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                 $usr_MenuOptions = $user->getMenuOptions();
                 $usr_ManageGroups = $user->getManageGroups();
                 $usr_Finance = $user->getFinance();
+                $usr_ManageFundraisers = $user->getManageFundraisers();
                 $usr_Notes = $user->getNotes();
                 $usr_Admin = $user->getAdmin();
                 $usr_EditSelf = $user->getEditSelf();
@@ -228,6 +236,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $usr_MenuOptions = 0;
             $usr_ManageGroups = 0;
             $usr_Finance = 0;
+            $usr_ManageFundraisers = 0;
             $usr_Notes = 0;
             $usr_Admin = 0;
             $usr_EditSelf = 1;
@@ -244,6 +253,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_MenuOptions = 0;
         $usr_ManageGroups = 0;
         $usr_Finance = 0;
+        $usr_ManageFundraisers = 0;
         $usr_Notes = 0;
         $usr_Admin = 0;
         $usr_EditSelf = 1;
@@ -428,6 +438,7 @@ require_once __DIR__ . '/Include/Header.php';
             ['name' => 'MenuOptions', 'label' => gettext('Manage Properties and Classifications'), 'checked' => $usr_MenuOptions, 'hint' => ''],
             ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'), 'checked' => $usr_ManageGroups, 'hint' => ''],
             ['name' => 'Finance', 'label' => gettext('Manage Donations and Finance'), 'checked' => $usr_Finance, 'hint' => ''],
+            ['name' => 'ManageFundraisers', 'label' => gettext('Manage Fundraisers'), 'checked' => $usr_ManageFundraisers, 'hint' => ''],
             ['name' => 'Notes', 'label' => gettext('View, Add and Edit Notes'), 'checked' => $usr_Notes, 'hint' => ''],
             ['name' => 'EditSelf', 'label' => gettext('Edit Self'), 'checked' => $usr_EditSelf, 'hint' => gettext('Edit own family only')],
         ];

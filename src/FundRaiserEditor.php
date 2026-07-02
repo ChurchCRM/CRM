@@ -13,6 +13,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageFundraisersEnabled(), 'ManageFundraisers');
+
 $sPageTitle = gettext('Create New Fund Raiser');
 
 // Check if linkBack was explicitly provided (not the fallback)
