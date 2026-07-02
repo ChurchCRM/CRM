@@ -16571,3 +16571,8 @@ msgstr "ص / م"
 msgid "past"
 msgstr "الماضي"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "الكرواتية"
+

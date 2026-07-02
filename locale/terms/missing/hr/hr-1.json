@@ -47,108 +47,21 @@
   "KioskVisibilityTimestamp": "",
   "URL": "",
   "PDF": "",
-  "%d month old": {
-    "one": "%d mjesec star",
-    "few": "",
-    "other": "%d mjeseca star"
-  },
-  "%d year old": {
-    "one": "%d godinu star",
-    "few": "",
-    "other": "%d godina star"
-  },
   "Afrikaans": "",
-  "%d event in %s": {
-    "one": "%d događaj u %s",
-    "few": "",
-    "other": "%d događaja u %s"
-  },
-  "person": {
-    "one": "osoba",
-    "few": "",
-    "other": "osoba"
-  },
   "ID": "",
   "M": "",
-  "%d Person added to the Cart.": {
-    "one": "%d osoba dodana u košaricu.",
-    "few": "",
-    "other": "%d osoba dodano u košaricu."
-  },
-  "%d Person successfully added to selected Family.": {
-    "one": "%d osoba uspješno dodana u odabranu obitelj.",
-    "few": "",
-    "other": "%d osoba uspješno dodano u odabranu obitelj."
-  },
-  "%d Person successfully added to selected Group.": {
-    "one": "%d osoba uspješno dodana u odabranu skupinu.",
-    "few": "",
-    "other": "%d osoba uspješno dodano u odabranu skupinu."
-  },
-  "%d person": {
-    "one": "%d osoba",
-    "few": "",
-    "other": "%d osoba"
-  },
-  "%d hour": {
-    "one": "%d sat",
-    "few": "",
-    "other": "%d sati"
-  },
   "manifest.": "",
   "2FA": "",
-  "%d result for \"%s\"": {
-    "one": "%d rezultat za \"%s\"",
-    "few": "",
-    "other": "%d rezultata za \"%s\""
-  },
   "Administrator": "",
   "Format": "",
   "Kiosk": "",
   "Minimum": "",
   "Indigo": "",
-  "%d repeat event created successfully.": {
-    "one": "%d ponavljajući događaj uspješno kreiran.",
-    "few": "",
-    "other": "%d ponavljajućih događaja uspješno kreirano."
-  },
   "4. Kiosk": "",
   "Online": "",
   "Test": "",
   "HTML URL": "",
   "ICS URL": "",
-  "%d past event": {
-    "one": "%d prošli događaj",
-    "few": "",
-    "other": "%d prošlih događaja"
-  },
   "AM / PM": "",
-  "Month, 2 digits": "",
-  "Month, full": "",
-  "Month, no leading zero": "",
-  "Month, short": "",
-  "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen).": "",
-  "PHP format for date picker inputs. Default: Y-m-d": "",
-  "Phone Number Formats": "",
-  "Phone with Extension": "",
-  "Save Localization Settings": "",
-  "Selected Language": "",
-  "Server locale support could not be checked (exec is disabled).": "",
-  "Supported — this locale is installed on the server.": "",
-  "System language, time zone, date/time formats, and phone number formats": "",
-  "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default.": "",
-  "This is how dates and phone numbers will appear throughout the system.": "",
-  "Translation completeness": "",
-  "Translation tracking is not available for this language.": "",
-  "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default.": "",
-  "Used in exported file names. Default: Ymd-Gis": "",
-  "Used on reports and member lists. Default: m/d/Y": "",
-  "Weekday, full": "",
-  "Weekday, short": "",
-  "What do these codes mean?": "",
-  "Year, 2 digits": "",
-  "Year, 4 digits": "",
-  "am / pm": "",
-  "past": "",
-  "Croatian": ""
+  "am / pm": ""
 }

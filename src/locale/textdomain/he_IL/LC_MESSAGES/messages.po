@@ -16529,3 +16529,8 @@ msgstr "לפנה\"צ / אחה\"צ"
 msgid "past"
 msgstr "עבר"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "קרואטית"
+

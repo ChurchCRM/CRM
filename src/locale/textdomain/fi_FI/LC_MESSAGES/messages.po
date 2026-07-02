@@ -16493,3 +16493,8 @@ msgstr "ap / ip"
 msgid "past"
 msgstr "mennyt"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroatialainen"
+

@@ -16532,3 +16532,8 @@ msgstr "πμ / μμ"
 msgid "past"
 msgstr "παρελθόν"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Κροατικά"
+

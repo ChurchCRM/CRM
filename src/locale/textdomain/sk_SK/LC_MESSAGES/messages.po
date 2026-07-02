@@ -16516,3 +16516,8 @@ msgstr "dop. / pop."
 msgid "past"
 msgstr "minulosť"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Chorvátsky"
+

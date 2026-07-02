@@ -16556,3 +16556,8 @@ msgstr "дп / пп"
 msgid "past"
 msgstr "минуле"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Хорватська"
+
