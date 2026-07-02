@@ -448,7 +448,9 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     <div class="dropdown">
                                         <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                         <div class="dropdown-menu dropdown-menu-end">
+                                            <?php if ($bOkToEdit) { ?>
                                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                                            <?php } ?>
                                             <button class="dropdown-item AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                                             <?php if ($bOkToEdit) { ?>
                                             <div class="dropdown-divider"></div>

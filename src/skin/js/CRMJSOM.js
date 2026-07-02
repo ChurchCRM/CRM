@@ -436,14 +436,16 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
     '<i class="ti ti-eye me-2"></i>' +
     i18next.t("View") +
     "</a>" +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/PersonEditor.php?PersonID=" +
-    personId +
-    '">' +
-    '<i class="ti ti-pencil me-2"></i>' +
-    i18next.t("Edit") +
-    "</a>" +
+    (window.CRM.permissions && window.CRM.permissions.editRecords
+      ? '<a class="dropdown-item" href="' +
+        root +
+        "/PersonEditor.php?PersonID=" +
+        personId +
+        '">' +
+        '<i class="ti ti-pencil me-2"></i>' +
+        i18next.t("Edit") +
+        "</a>"
+      : "") +
     familyItem +
     '<div class="dropdown-divider"></div>' +
     '<button class="dropdown-item ' +
@@ -505,14 +507,16 @@ window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
     '<i class="ti ti-eye me-2"></i>' +
     i18next.t("View") +
     "</a>" +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/FamilyEditor.php?FamilyID=" +
-    familyId +
-    '">' +
-    '<i class="ti ti-pencil me-2"></i>' +
-    i18next.t("Edit") +
-    "</a>" +
+    (window.CRM.permissions && window.CRM.permissions.editRecords
+      ? '<a class="dropdown-item" href="' +
+        root +
+        "/FamilyEditor.php?FamilyID=" +
+        familyId +
+        '">' +
+        '<i class="ti ti-pencil me-2"></i>' +
+        i18next.t("Edit") +
+        "</a>"
+      : "") +
     '<div class="dropdown-divider"></div>' +
     '<button class="dropdown-item ' +
     (inCart ? "RemoveFromCart text-danger" : "AddToCart") +

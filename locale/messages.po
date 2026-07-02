@@ -474,6 +474,9 @@ msgstr ""
 msgid "Add Records"
 msgstr ""
 
+msgid "Add Records (People & Families)"
+msgstr ""
+
 msgid "Add Recurring Event"
 msgstr ""
 
@@ -3526,6 +3529,9 @@ msgid "Edit Property Type"
 msgstr ""
 
 msgid "Edit Records"
+msgstr ""
+
+msgid "Edit Records (People & Families)"
 msgstr ""
 
 msgid "Edit Settings"
