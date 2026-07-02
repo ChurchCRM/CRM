@@ -212,6 +212,13 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family = $request->getAttribute('family');
         $currentUser = AuthenticationManager::getCurrentUser();
 
+        // EditSelf-only scope: restrict to own family.
+        // Mirrors the person notes GET guard — prevents EditSelf+Notes=1 users
+        // from enumerating notes on families they don't belong to.
+        if (!$currentUser->canViewFamily((int) $family->getId())) {
+            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        }
+
         $notes = NoteQuery::create()
             ->filterByFamId($family->getId())
             ->filterByType('note')
