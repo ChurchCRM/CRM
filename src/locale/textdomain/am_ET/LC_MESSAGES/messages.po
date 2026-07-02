@@ -16536,3 +16536,8 @@ msgstr "ጥዋት / ከሰዓት"
 msgid "past"
 msgstr "ያለፈ"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "ክሮኤሽያኛ"
+

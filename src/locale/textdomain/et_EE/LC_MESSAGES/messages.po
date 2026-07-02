@@ -16531,3 +16531,8 @@ msgstr "el / pl"
 msgid "past"
 msgstr "minevik"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Horvaadi"
+

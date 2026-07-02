@@ -16482,3 +16482,8 @@ msgstr "पूर्वाह्न / अपराह्न"
 msgid "past"
 msgstr "बीता हुआ"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "क्रोएशियाई"
+

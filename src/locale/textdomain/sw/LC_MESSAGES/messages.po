@@ -16519,3 +16519,8 @@ msgstr "Mwaka, tarakimu 4"
 msgid "past"
 msgstr "iliyopita"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kikroeshia"
+

@@ -16525,3 +16525,8 @@ msgstr "sa / ch"
 msgid "past"
 msgstr "quá khứ"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Tiếng Croatia"
+

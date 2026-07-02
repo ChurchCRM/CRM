@@ -16528,3 +16528,8 @@ msgstr "vm / nm"
 msgid "past"
 msgstr "verlede"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroaties"
+
