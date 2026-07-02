@@ -10,7 +10,9 @@
  * including the user's OWN family and OWN person record.
  *
  * Test user: amanda.black (user ID 99, `selfedit.api.key`)
- *   - Permissions: EditSelf=1 ONLY (all others = 0, enforced by model + DB)
+ *   - Permissions: EditSelf=1 ONLY (all others = 0)
+ *   - DB invariant enforced by model (User::isEditSelfExclusive()) AND by
+ *     the 7.4.2 data migration (src/mysql/upgrade/7.4.2-editself-exclusive.sql)
  *   - Belongs to: family ID 20 (Black family)
  *
  * Expected: 403 on EVERY internal endpoint. The only self-service surface for an
