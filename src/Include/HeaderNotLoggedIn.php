@@ -48,6 +48,12 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     // Extend window.CRM with server-side configuration (preserving existing properties like notify)
     Object.assign(window.CRM, {
       root:"<?= SystemURLs::getRootPath() ?>",
-      churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>
+      churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
+      lang:"<?= $localeInfo->getLanguageCode() ?>",
+      isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
+      systemLocale:"<?= $localeInfo->getSystemLocale() ?>",
+      locale:"<?= $localeInfo->getLocale() ?>",
+      shortLocale:"<?= $localeInfo->getShortLocale() ?>",
+      version:"<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>"
     });
   </script>
