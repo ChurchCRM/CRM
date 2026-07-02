@@ -6,6 +6,25 @@
 window.CRM = window.CRM || {};
 
 /**
+ * Run a callback once locale files have finished loading.
+ * Available on both authenticated and pre-auth pages (login, public
+ * calendar, etc.) since this loader is included by both footers.
+ * Footer.js defines an identical helper for authenticated pages; this
+ * copy ensures pre-auth pages that never load Footer.js can gate their
+ * initialization on locale readiness too.
+ *
+ * @param {() => void} callback - Runs immediately if locales are already
+ *   loaded, otherwise on the "CRM.localesReady" event.
+ */
+window.CRM.onLocalesReady = (callback) => {
+  if (window.CRM.localesLoaded) {
+    callback();
+  } else {
+    window.addEventListener("CRM.localesReady", callback, { once: true });
+  }
+};
+
+/**
  * Dynamically load a script file
  * @param {string} url - The URL of the script to load
  * @returns {Promise<void>}

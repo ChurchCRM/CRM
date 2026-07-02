@@ -50,6 +50,11 @@ require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.addEventListener('DOMContentLoaded', function() {
+  // Wait for the FullCalendar locale file (e.g. pt-br.js) to finish loading
+  // and register before building the calendar, otherwise the toolbar buttons
+  // (today / month / week / day / list) render with English defaults even
+  // though the dates format correctly via the native Intl locale.
+  window.CRM.onLocalesReady(function() {
   window.CRM.fullcalendar =  new FullCalendar.Calendar(document.getElementById('calendar'), {
       headerToolbar: {
         start: 'prev,next today',
@@ -98,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   window.CRM.fullcalendar.render();
+  });
 });
 </script>
 
