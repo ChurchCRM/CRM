@@ -1,0 +1,73 @@
+{#
+  _label-sheet.html.twig
+  ----------------------
+  Extends _base.html.twig.  Provides CSS for a fixed-size label grid suitable
+  for Avery-style address / name-tag label sheets.
+
+  Because Twig blocks are rendered once and cannot be per-iteration, the `items`
+  loop is NOT handled in this base template.  Instead, child templates override
+  `label_content` and render their own `<table>` with a loop, using the provided
+  CSS classes for consistent sizing.
+
+  Variables expected:
+    - labelColumns  (int, default 3)       : number of columns per row
+    - labelWidth    (string, default "63mm"): width of each label cell
+    - labelHeight   (string, default "25mm"): height of each label cell
+    - labelPadding  (string, default "2mm") : inner padding for each cell
+    - items         (array)                 : passed through to child template
+
+  Blocks:
+    - label_style   : extra CSS for label content (override in child)
+    - label_content : the full label table — child template renders items loop
+                      and builds the <table> using .label-grid / .label-cell classes
+#}
+{% extends "_base.html.twig" %}
+
+{% block page_style %}
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+    margin-left: 10mm;
+    margin-right: 10mm;
+{% endblock %}
+
+{% block extra_style %}
+    .label-grid {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .label-cell {
+        width: {{ labelWidth|default('63mm') }};
+        height: {{ labelHeight|default('25mm') }};
+        padding: {{ labelPadding|default('2mm') }};
+        vertical-align: top;
+        overflow: hidden;
+    }
+    {% block label_style %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% block label_content %}
+    {#
+      Child templates override this block and render a <table class="label-grid">
+      with a Twig loop over `items`, placing each item inside a <td class="label-cell">.
+      Example:
+
+          {% block label_content %}
+              {% set cols = labelColumns|default(3) %}
+              {% set col  = 0 %}
+              <table class="label-grid">
+                  {% for item in items %}
+                      {% if col == 0 %}<tr>{% endif %}
+                      <td class="label-cell">{{ item.name }}<br>{{ item.address }}</td>
+                      {% set col = col + 1 %}
+                      {% if col == cols %}</tr>{% set col = 0 %}{% endif %}
+                  {% endfor %}
+                  {% if col > 0 %}
+                      {% for _i in range(col, (labelColumns|default(3)) - 1) %}<td class="label-cell"></td>{% endfor %}
+                      </tr>
+                  {% endif %}
+              </table>
+          {% endblock %}
+    #}
+    {% endblock %}
+{% endblock %}
