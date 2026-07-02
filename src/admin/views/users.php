@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\InputUtils;
@@ -132,7 +133,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                     <?php foreach ($rsUsers as $user) { ?>
                         <tr>
                             <td>
-                                <a href="<?= Person::getViewURIForId($user->getId()) ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
+                                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
                             </td>
                             <td>
                                 <code><?= InputUtils::escapeHTML($user->getUserName()) ?></code>
@@ -164,6 +165,16 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">
                                             <i class="ti ti-eye me-2"></i><?= gettext('View Details') ?>
                                         </a>
+                                        <?php if ($user->getPerson() !== null) { ?>
+                                        <a class="dropdown-item" href="<?= Person::getViewURIForId($user->getId()) ?>">
+                                            <i class="ti ti-user me-2"></i><?= gettext('View Person') ?>
+                                        </a>
+                                        <?php if ((int) $user->getPerson()->getFamId() > 0) { ?>
+                                        <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $user->getPerson()->getFamId()) ?>">
+                                            <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                        </a>
+                                        <?php } ?>
+                                        <?php } ?>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/user/<?= $user->getId() ?>/changePassword">
                                             <i class="ti ti-tool me-2"></i><?= gettext('Change Password') ?>
