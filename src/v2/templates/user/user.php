@@ -93,14 +93,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="col-sm-4 text-body-secondary"><?= gettext("Name") ?></div>
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getFullName()) ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->canEditPerson($personId, $user->getPerson()?->getFamId() ?? 0)): ?>
                     <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <?php endif; ?>
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col-sm-4 text-body-secondary"><?= gettext("Email") ?></div>
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getEmail() ?? '') ?: '<span class="text-body-secondary">' . gettext("Not set") . '</span>' ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->canEditPerson($personId, $user->getPerson()?->getFamId() ?? 0)): ?>
                     <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
@@ -320,8 +324,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <?php
             $permissions = [
                 ['label' => gettext("Administrator"), 'granted' => $user->isAdmin()],
-                ['label' => gettext("Add Records"), 'granted' => $user->isAdmin() || $user->isAddRecords()],
-                ['label' => gettext("Edit Records"), 'granted' => $user->isAdmin() || $user->isEditRecords()],
+                ['label' => gettext("Add Records (People & Families)"), 'granted' => $user->isAdmin() || $user->isAddRecords()],
+                ['label' => gettext("Edit Records (People & Families)"), 'granted' => $user->isAdmin() || $user->isEditRecords()],
                 ['label' => gettext("Delete Records"), 'granted' => $user->isAdmin() || $user->isDeleteRecords()],
                 ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isAdmin() || $user->isMenuOptions()],
                 ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isAdmin() || $user->isManageGroups()],

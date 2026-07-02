@@ -411,9 +411,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             <a class="dropdown-item" href="<?= $person->getViewURI() ?>">
                                 <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                             </a>
+                            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
                                 <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                             </a>
+                            <?php endif; ?>
                             <?php if ($person->getFamId()): ?>
                             <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $person->getFamId()) ?>">
                                 <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
