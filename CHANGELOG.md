@@ -10,6 +10,9 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.4.1](./changelog/7.4.1.md) | July 2026 | ChurchCRM 7.4.1 enhances security and simplifies user management with clearer permissions
+
+Clearer permission labels, intelligent button hiding based on user access, EditSelf mode disabled by default, fixed user deletion bugs, airtight notes protection, Croatian language support added |
 | [7.4.0](./changelog/7.4.0.md) | June 2026 | ChurchCRM 7.4.0 refines security and improves user experience with UI enhancements
 
 Redesigned single-card login interface, enhanced password reset security with cryptographic tokens, export controls limited to administrators, Slovak language support added, Docker images now run as non-root user |
