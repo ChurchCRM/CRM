@@ -261,17 +261,28 @@ Cypress.Commands.add('tomSelectByText', (selector, text) => {
  * @example cy.tomSelectByValue('#Country', 'us')
  */
 Cypress.Commands.add('tomSelectByValue', (selector, value) => {
-    // Wait for TomSelect to finish initializing before setting the value.
-    // Using .should() enables Cypress's built-in retry (up to the default
-    // assertion timeout) so this doesn't silently no-op when called before
-    // the JS has run TomSelect.init() on the element.
-    cy.get(selector)
-        .should(($select) => {
-            expect($select[0].tomselect, `TomSelect not yet initialized on ${selector}`).to.exist;
-        })
-        .then(($select) => {
-            $select[0].tomselect.setValue(value);
-        });
+    // Definitive fix for the TomSelect timing race:
+    // Put setValue() AND the getValue() verification inside a single .should()
+    // block. Cypress retries the ENTIRE callback on assertion failure, so if
+    // setValue() fires but the value doesn't register (e.g. change-event race
+    // or transient initialization window), both the setValue call and the
+    // assertion are re-executed on the next retry — until the value is confirmed
+    // held by TomSelect or the assertion timeout expires.
+    //
+    // Empty-string calls (clearing a selection) skip the getValue() check
+    // because '' is a valid clear-all operation with no option to verify.
+    cy.get(selector).should(($select) => {
+        const ts = $select[0].tomselect;
+        expect(ts, `TomSelect not yet initialized on ${selector}`).to.exist;
+        ts.setValue(value);
+        if (value !== '' && value !== null && value !== undefined) {
+            const selected = [].concat(ts.getValue());
+            expect(
+                selected,
+                `TomSelect setValue("${value}") did not take effect on ${selector} — retrying`,
+            ).to.include(String(value));
+        }
+    });
 });
 
 /**
