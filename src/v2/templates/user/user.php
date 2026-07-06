@@ -2,7 +2,6 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\LocaleInfo;
-use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
@@ -26,15 +25,6 @@ if (AuthenticationManager::getCurrentUser()->isAdmin()) {
         ['label' => gettext('Edit'), 'url' => '/UserEditor.php?PersonID=' . $viewedPersonId, 'icon' => 'fa-pencil'],
     ]);
 }
-$viewedPhoto = new Photo('Person', $viewedPersonId);
-$viewedHasUploadedPhoto = $viewedPhoto->hasUploadedPhoto();
-// Append the photo file mtime as a cache-busting version token. The
-// /api/person/{id}/photo endpoint sends a 2-hour public Cache-Control
-// header, so without this the browser shows the stale image after an
-// upload + page reload. See #8662.
-$viewedPhotoVersion = $viewedPhoto->getPhotoModifiedTime();
-$viewedAvatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $viewedPersonId . '/photo'
-    . ($viewedPhotoVersion > 0 ? ('?v=' . $viewedPhotoVersion) : '');
 // Use a distinct variable so Header.php's reassignment of $localeInfo
 // (which always reads the logged-in user's locale) cannot clobber this.
 $viewedUserLocaleInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), $user->getSetting('ui.locale'));
@@ -85,17 +75,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Profile -->
             <div class="row mb-4">
               <div class="col-sm-3 text-center">
-                <?php if ($viewedHasUploadedPhoto): ?>
-                <img id="userAvatar" src="<?= $viewedAvatarApiUrl ?>" class="avatar avatar-xl rounded-circle mb-2" alt="<?= InputUtils::escapeAttribute($user->getFullName()) ?>">
-                <?php else: ?>
-                <?php
-                $nameParts = preg_split('/\s+/', trim($user->getFullName()));
-                $initials = count($nameParts) >= 2
-                    ? mb_strtoupper(mb_substr($nameParts[0], 0, 1) . mb_substr(end($nameParts), 0, 1))
-                    : mb_strtoupper(mb_substr($nameParts[0] ?? '', 0, 2));
-                ?>
-                <span id="userAvatar" class="avatar avatar-xl rounded-circle mb-2" style="font-size: 1.5rem;"><?= InputUtils::escapeHTML($initials) ?></span>
-                <?php endif; ?>
+                <img id="userAvatar"
+                     data-image-entity-type="person"
+                     data-image-entity-id="<?= $viewedPersonId ?>"
+                     class="avatar avatar-xl rounded-circle mb-2"
+                     alt="<?= InputUtils::escapeAttribute($user->getFullName()) ?>">
                 <div>
                   <button id="uploadPhotoBtn" class="btn btn-sm btn-outline-primary">
                     <i class="ti ti-camera me-1"></i><?= gettext("Change Photo") ?>
