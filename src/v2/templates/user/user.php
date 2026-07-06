@@ -330,6 +330,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <h3 class="card-title"><?= gettext("Permissions") ?></h3>
             <p class="text-body-secondary"><?= gettext("Your current access levels (read-only)") ?></p>
 
+            <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext("Built-in Permissions") ?></p>
+            <p class="text-body-secondary small mb-3"><?= gettext("These permissions are granted to all users and cannot be removed.") ?></p>
+            <div class="row mb-2">
+              <div class="col-sm-6"><?= gettext("Manage Congregation") ?></div>
+              <div class="col-sm-6 d-flex flex-wrap gap-1">
+                <span class="badge bg-success-lt text-success"><i class="ti ti-plus me-1"></i><?= gettext("Add") ?></span>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-pencil me-1"></i><?= gettext("Edit") ?></span>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-trash me-1"></i><?= gettext("Delete") ?></span>
+                <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext("Always granted") ?></span>
+              </div>
+            </div>
+
+            <hr>
             <?php
             $permissions = [
                 ['label' => gettext("Administrator"), 'granted' => $user->isAdmin()],
@@ -351,24 +364,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php else: ?>
                 <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-x me-1"></i><?= gettext("No") ?></span>
                 <?php endif; ?>
-              </div>
-            </div>
-            <?php endforeach; ?>
-
-            <hr>
-            <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext("Built-in Permissions") ?></p>
-            <p class="text-body-secondary small mb-3"><?= gettext("These permissions are granted to all users and cannot be removed.") ?></p>
-            <?php
-            $builtinPerms = [
-                gettext("Read People"),
-                gettext("Read Family"),
-            ];
-            foreach ($builtinPerms as $builtinLabel):
-            ?>
-            <div class="row mb-2">
-              <div class="col-sm-6"><?= $builtinLabel ?></div>
-              <div class="col-sm-6">
-                <span class="badge bg-success-lt text-success"><i class="ti ti-lock me-1"></i><?= gettext("Always granted") ?></span>
               </div>
             </div>
             <?php endforeach; ?>

@@ -487,23 +487,15 @@ require_once __DIR__ . '/Include/Header.php';
 
         <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext('Built-in Permissions') ?></p>
         <p class="text-body-secondary small mb-3"><?= gettext('These permissions are granted to all users and cannot be removed.') ?></p>
-        <?php
-        $builtinPerms = [
-            gettext('Read People'),
-            gettext('Read Family'),
-        ];
-        foreach ($builtinPerms as $builtinLabel):
-        ?>
         <div class="row mb-2 permission-row">
-            <label class="col-sm-5 col-form-label text-body-secondary"><?= $builtinLabel ?></label>
-            <div class="col-sm-7 d-flex align-items-center">
-                <label class="form-check form-switch mb-0 me-2">
-                    <input class="form-check-input" type="checkbox" disabled checked aria-label="<?= InputUtils::escapeAttribute($builtinLabel) ?>">
-                </label>
-                <span class="badge bg-success-lt text-success"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+            <label class="col-sm-5 col-form-label text-body-secondary"><?= gettext('Manage Congregation') ?></label>
+            <div class="col-sm-7 d-flex align-items-center gap-2 flex-wrap">
+                <span class="badge bg-success-lt text-success"><i class="ti ti-plus me-1"></i><?= gettext('Add') ?></span>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-pencil me-1"></i><?= gettext('Edit') ?></span>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-trash me-1"></i><?= gettext('Delete') ?></span>
+                <span class="badge bg-secondary-lt text-secondary ms-1"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
             </div>
         </div>
-        <?php endforeach; ?>
 
         <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <hr>
