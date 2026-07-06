@@ -169,10 +169,14 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                 <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="<?= $person->getViewURI() ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>
+                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getID() ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                    <?php endif; ?>
                     <button class="dropdown-item AddToCart" data-cart-id="<?= $person->getId() ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
+                    <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
                     <div class="dropdown-divider"></div>
                     <button class="dropdown-item text-danger delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $person->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php }
@@ -310,7 +314,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i> <?= gettext("Family Members") ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= $memberCount ?></span>
-                <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+                <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
                 <a class="btn btn-sm btn-outline-primary ms-auto" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>">
                     <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Member') ?>
                 </a>

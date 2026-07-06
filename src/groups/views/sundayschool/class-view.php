@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
@@ -304,7 +305,9 @@ if ($bCanManageGroups) {
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item" href="<?= Person::getViewURIForId($child['kidId']) ?>"><i class="ti ti-eye me-2"></i><?= gettext('View') ?></a>
+                                            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>"><i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?></a>
+                                            <?php endif; ?>
                                             <?php if ($child['fam_id']): ?>
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= (int) $child['fam_id'] ?>"><i class="ti ti-users me-2"></i><?= gettext('View Family') ?></a>
                                             <?php endif; ?>
