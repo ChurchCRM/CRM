@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 04:52+0000\n"
+"POT-Creation-Date: 2026-07-06 05:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -469,9 +469,6 @@ msgid "Add Pledge"
 msgstr ""
 
 msgid "Add Property Type"
-msgstr ""
-
-msgid "Add Records"
 msgstr ""
 
 msgid "Add Records (People & Families)"
@@ -3526,9 +3523,6 @@ msgid "Edit Property"
 msgstr ""
 
 msgid "Edit Property Type"
-msgstr ""
-
-msgid "Edit Records"
 msgstr ""
 
 msgid "Edit Records (People & Families)"
