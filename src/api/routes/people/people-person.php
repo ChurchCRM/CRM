@@ -47,7 +47,10 @@ use Slim\HttpCache\Cache;
  *         @OA\JsonContent(type="object",
  *             @OA\Property(property="hasPhoto", type="boolean"),
  *             @OA\Property(property="initials", type="string", example="JS"),
- *             @OA\Property(property="gravatarUrl", type="string", nullable=true)
+ *             @OA\Property(property="gravatarUrl", type="string", nullable=true),
+ *             @OA\Property(property="photoUrl", type="string", nullable=true),
+ *             @OA\Property(property="email", type="string", nullable=true),
+ *             @OA\Property(property="photoVersion", type="integer", example=1718000000, description="Unix mtime of the uploaded photo file; 0 when hasPhoto is false. Append as ?v=<photoVersion> to the /photo URL to bust the 2-hour public Cache-Control header after an upload.")
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized")
