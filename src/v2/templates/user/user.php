@@ -350,11 +350,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
               <p class="text-body-secondary mb-0"><?= gettext("Administrators have full access to all features and data. Individual permissions do not apply.") ?></p>
             </div>
-            <?php elseif ($isOwnProfile): ?>
-            <!-- Case 2: own non-admin account — contact-admin note only, no permission rows -->
-            <div class="alert alert-info d-flex align-items-center mb-3">
-              <i class="ti ti-info-circle me-2 flex-shrink-0"></i>
-              <span><?= gettext("You are viewing your own account. Contact an administrator to change your permissions.") ?></span>
+            <?php elseif ($user->isEditSelf()): ?>
+            <!-- Case 2: self-service user — no individual permission rows -->
+            <div class="text-center py-4">
+              <div class="mb-3">
+                <span class="badge bg-info-lt text-info px-3 py-2" style="font-size:1rem;">
+                  <i class="ti ti-user-check me-2"></i><?= gettext("Self-service only") ?>
+                </span>
+              </div>
+              <p class="text-body-secondary mb-0"><?= gettext("This user can only review and update their own family profile. Individual permissions do not apply.") ?></p>
+              <?php if ($isOwnProfile): ?>
+              <p class="text-body-secondary mt-2 mb-0 small"><?= gettext("Contact an administrator to change your permissions.") ?></p>
+              <?php endif; ?>
             </div>
             <?php else: ?>
             <!-- Case 3: admin viewing another non-admin user — show full permissions -->
