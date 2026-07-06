@@ -343,4 +343,78 @@ describe("Notes Visibility Policy (#9036)", () => {
             });
         });
     });
+
+    // -----------------------------------------------------------------------
+    // Admin bypass — admin can DELETE and PUT any note regardless of authorship
+    // Rule: DELETE handler checks `isAdmin() || isAuthor`. Admin purity passes
+    // NotesRoleAuthMiddleware (isAdmin() → isNotesEnabled()=true), so admins can
+    // delete notes they did not write. Same authorship bypass applies to PUT.
+    // -----------------------------------------------------------------------
+    describe("Admin authorship bypass — DELETE and PUT any note (purity rule)", () => {
+        it("Admin can DELETE a public note authored by another user → 200", () => {
+            // tony.wade (Notes=1+EditRecords, non-admin) creates a public note on person 2
+            cy.makePrivateUserAPICall("POST", "/api/person/2/note",
+                { text: "<p>Note by non-admin — admin delete bypass test</p>", private: false }, 201)
+                .then((createResp) => {
+                    const noteId = createResp.body.note.id;
+                    // Admin (different author) deletes — isAdmin() bypass in DELETE handler
+                    cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200)
+                        .then((deleteResp) => {
+                            expect(deleteResp.body).to.have.property("success", true);
+                        });
+                    // Confirm gone
+                    cy.makePrivateAdminAPICall("GET", `/api/note/${noteId}`, null, 404);
+                });
+        });
+
+        it("Admin can DELETE a private note authored by another user → 200", () => {
+            // tony.wade creates a PRIVATE note
+            cy.makePrivateUserAPICall("POST", "/api/person/2/note",
+                { text: "<p>Private note by non-admin — admin delete test</p>", private: true }, 201)
+                .then((createResp) => {
+                    const noteId = createResp.body.note.id;
+                    // Admin purity: isAdmin() → isNotesEnabled()=true passes middleware;
+                    // DELETE handler: isAdmin()=true bypasses authorship check
+                    cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200)
+                        .then((deleteResp) => {
+                            expect(deleteResp.body).to.have.property("success", true);
+                        });
+                    // Confirm actually gone from DB
+                    cy.makePrivateAdminAPICall("GET", `/api/note/${noteId}`, null, 404);
+                });
+        });
+
+        it("Admin can PUT (edit) a public note authored by another user → 200", () => {
+            // tony.wade creates a public note
+            cy.makePrivateUserAPICall("POST", "/api/person/2/note",
+                { text: "<p>Original by non-admin — admin PUT test</p>", private: false }, 201)
+                .then((createResp) => {
+                    const noteId = createResp.body.note.id;
+                    // PUT handler: `isAuthor || isAdmin()` — admin passes the second branch
+                    cy.makePrivateAdminAPICall("PUT", `/api/note/${noteId}`,
+                        { text: "<p>Edited by admin</p>", private: false }, 200)
+                        .then((putResp) => {
+                            expect(putResp.body).to.have.property("note");
+                            expect(putResp.body.note.id).to.equal(noteId);
+                            expect(putResp.body.note.text).to.include("Edited by admin");
+                            expect(putResp.body.note.dateLastEdited).to.not.be.null;
+                        });
+                    cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200);
+                });
+        });
+
+        it("Admin can PUT (edit) a private note authored by another user → 200", () => {
+            cy.makePrivateUserAPICall("POST", "/api/person/2/note",
+                { text: "<p>Private original by non-admin</p>", private: true }, 201)
+                .then((createResp) => {
+                    const noteId = createResp.body.note.id;
+                    cy.makePrivateAdminAPICall("PUT", `/api/note/${noteId}`,
+                        { text: "<p>Admin edited private note</p>", private: true }, 200)
+                        .then((putResp) => {
+                            expect(putResp.body.note.text).to.include("Admin edited");
+                        });
+                    cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200);
+                });
+        });
+    });
 });
