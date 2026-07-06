@@ -123,6 +123,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                     <tr>
                         <th><?= gettext('Name') ?></th>
                         <th><?= gettext('Login Name') ?></th>
+                        <th class="text-center"><?= gettext('Access') ?></th>
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
                         <th class="text-center"><?= gettext('2FA') ?></th>
@@ -137,6 +138,15 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                             </td>
                             <td>
                                 <code><?= InputUtils::escapeHTML($user->getUserName()) ?></code>
+                            </td>
+                            <td class="text-center">
+                                <?php if ($user->isAdmin()): ?>
+                                <span class="badge bg-danger"><i class="ti ti-shield-check me-1"></i><?= gettext('Admin') ?></span>
+                                <?php elseif ($user->isEditSelf()): ?>
+                                <span class="badge bg-warning"><i class="ti ti-user-check me-1"></i><?= gettext('Self-service') ?></span>
+                                <?php else: ?>
+                                <span class="badge bg-azure-lt text-azure"><i class="ti ti-settings me-1"></i><?= gettext('Custom') ?></span>
+                                <?php endif; ?>
                             </td>
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
                             <td class="text-center">
