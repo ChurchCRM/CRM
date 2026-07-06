@@ -4,9 +4,11 @@
  * UI tests for Private Notes Timeline Visibility
  *
  * Tests that the timeline UI correctly displays:
- * - Private notes show "[Private Note]" placeholder to admins
- * - Full content visible to note creator
- * - Edit button hidden for admins viewing private notes they didn't create
+ * - Admin sees FULL CONTENT of all private notes (no [Private Note] placeholder)
+ * - Note creator sees full content of their own private notes
+ * - Private badge still displays on private notes visible to the current user
+ * - Edit button is present for admins on any note (they can edit all)
+ * - Edit button present for note author
  *
  * Note-creation happens in before() — before beforeEach() establishes the
  * cy.session — so cy.request() never runs with an active session cookie and
@@ -73,20 +75,18 @@ describe("UI Private Notes Timeline", () => {
     // Person Timeline - Private Notes
     // -----------------------------------------------------------------------
     describe("Person Timeline - Private Note Visibility", () => {
-        it("Admin sees placeholder for another user's private note", () => {
+        it("Admin sees FULL CONTENT of another user's private note (no placeholder)", () => {
             cy.visit("/people/view/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
             cy.get("#nav-item-timeline", { timeout: 10000 }).click();
 
-            cy.contains("[Private Note", { timeout: 5000 }).should("be.visible");
-            cy.contains("Secret user note content").should("not.exist");
-
-            cy.contains("[Private Note").parent().parent().within(() => {
-                cy.get('[data-note-id]').should("exist");
-            });
+            // Admin now sees actual note content (policy change from #9036)
+            cy.contains("Secret user note content", { timeout: 5000 }).should("be.visible");
+            // Old placeholder should NOT appear
+            cy.contains("[Private Note").should("not.exist");
         });
 
-        it("Note creator sees full content of their private note", () => {
+        it("Admin sees full content of their own private note", () => {
             cy.visit("/people/view/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
             cy.get("#nav-item-timeline", { timeout: 10000 }).click();
@@ -112,19 +112,17 @@ describe("UI Private Notes Timeline", () => {
     // Family Timeline - Private Notes
     // -----------------------------------------------------------------------
     describe("Family Timeline - Private Note Visibility", () => {
-        it("Admin sees placeholder for another user's private family note", () => {
+        it("Admin sees FULL CONTENT of another user's private family note (no placeholder)", () => {
             cy.visit("/people/family/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
 
-            cy.contains("[Private Note").should("be.visible");
-            cy.contains("Confidential family information").should("not.exist");
-
-            cy.contains("[Private Note").parent().parent().within(() => {
-                cy.get('[data-note-id]').should("exist");
-            });
+            // Admin now sees actual content
+            cy.contains("Confidential family information").should("be.visible");
+            // Old placeholder should NOT appear
+            cy.contains("[Private Note").should("not.exist");
         });
 
-        it("Note creator sees full content of their private family note", () => {
+        it("Admin sees full content of their own private family note", () => {
             cy.visit("/people/family/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
 
@@ -149,14 +147,14 @@ describe("UI Private Notes Timeline", () => {
     // Edit Button Visibility
     // -----------------------------------------------------------------------
     describe("Edit button visibility for private notes", () => {
-        it("Edit button hidden when admin views non-owned private note on person timeline", () => {
+        it("Edit button IS visible when admin views non-owned private note (admins can edit any note)", () => {
             cy.visit("/people/view/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
             cy.get("#nav-item-timeline", { timeout: 10000 }).click();
 
-            // For a private note the admin doesn't own: no Edit link, but Delete button present.
-            cy.contains("[Private Note").closest(".card-body").within(() => {
-                cy.get("a[href*='NoteEditor.php']").should("not.exist");
+            // Admin can now edit private notes they don't own — edit link should exist.
+            cy.contains("User private").closest(".card-body").within(() => {
+                cy.get("a[href*='NoteEditor.php']").should("exist");
                 cy.get("button[data-note-id]").should("exist");
             });
         });
@@ -166,7 +164,6 @@ describe("UI Private Notes Timeline", () => {
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
             cy.get("#nav-item-timeline", { timeout: 10000 }).click();
 
-            // Admin owns this note: both Edit link and Delete button should be inline.
             cy.contains("Admin private").closest(".card-body").within(() => {
                 cy.get("a[href*='NoteEditor.php']").should("be.visible");
                 cy.get("button[data-note-id]").should("be.visible");

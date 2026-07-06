@@ -63,9 +63,12 @@ if (empty($timeline)) { ?>
                                 <small class="text-muted flex-shrink-0"><?= $item['datetime'] ?></small>
                             </div>
                         <?php } else {
+                            // Treat an empty deleteLink/editLink as "no action" — note-type
+                            // items always set these keys, so a redacted private-note
+                            // placeholder (no delete for non-admins) carries deleteLink="".
                             $hasActions = AuthenticationManager::getCurrentUser()->isNotesEnabled()
-                                && (!empty($item["editLink"]) || isset($item["deleteLink"]));
-                            $noteId = isset($item["deleteLink"])
+                                && (!empty($item["editLink"]) || !empty($item["deleteLink"]));
+                            $noteId = !empty($item["deleteLink"])
                                 ? str_replace('api-delete-note-', '', $item['deleteLink'])
                                 : null;
                         ?>
