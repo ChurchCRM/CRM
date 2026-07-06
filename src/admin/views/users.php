@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\InputUtils;
@@ -116,12 +117,18 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
             <span class="badge bg-info text-white"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
         </div>
     </div>
+    <div class="card-body border-bottom py-2 text-body-secondary small">
+        <span class="me-3"><i class="ti ti-shield-check text-danger me-1"></i><?= gettext('Admin') ?></span>
+        <span class="me-3"><i class="ti ti-user-check text-warning me-1"></i><?= gettext('Self-service') ?></span>
+        <span><i class="ti ti-adjustments text-azure me-1"></i><?= gettext('Custom') ?></span>
+    </div>
     <div class="card-body" style="overflow: visible;">
         <table class="table table-hover w-100" id="user-listing-table">
                 <thead>
                     <tr>
                         <th><?= gettext('Name') ?></th>
                         <th><?= gettext('Login Name') ?></th>
+                        <th class="text-center"><?= gettext('Access') ?></th>
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
                         <th class="text-center"><?= gettext('2FA') ?></th>
@@ -132,10 +139,19 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                     <?php foreach ($rsUsers as $user) { ?>
                         <tr>
                             <td>
-                                <a href="<?= Person::getViewURIForId($user->getId()) ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
+                                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
                             </td>
                             <td>
                                 <code><?= InputUtils::escapeHTML($user->getUserName()) ?></code>
+                            </td>
+                            <td class="text-center">
+                                <?php if ($user->isAdmin()): ?>
+                                <i class="ti ti-shield-check text-danger fs-4" title="<?= gettext('Administrator') ?>"></i>
+                                <?php elseif ($user->isEditSelf()): ?>
+                                <i class="ti ti-user-check text-warning fs-4" title="<?= gettext('Self-service only') ?>"></i>
+                                <?php else: ?>
+                                <i class="ti ti-adjustments text-azure fs-4" title="<?= gettext('Custom permissions') ?>"></i>
+                                <?php endif; ?>
                             </td>
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
                             <td class="text-center">
@@ -164,6 +180,16 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">
                                             <i class="ti ti-eye me-2"></i><?= gettext('View Details') ?>
                                         </a>
+                                        <?php if ($user->getPerson() !== null) { ?>
+                                        <a class="dropdown-item" href="<?= Person::getViewURIForId($user->getId()) ?>">
+                                            <i class="ti ti-user me-2"></i><?= gettext('View Person') ?>
+                                        </a>
+                                        <?php if ((int) $user->getPerson()->getFamId() > 0) { ?>
+                                        <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $user->getPerson()->getFamId()) ?>">
+                                            <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                        </a>
+                                        <?php } ?>
+                                        <?php } ?>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/user/<?= $user->getId() ?>/changePassword">
                                             <i class="ti ti-tool me-2"></i><?= gettext('Change Password') ?>

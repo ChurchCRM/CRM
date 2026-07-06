@@ -375,6 +375,10 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Users'), '/admin/system/users'],
     [gettext('Edit User')],
 ]);
+$sPageHeaderButtons = PageHeader::buttons(array_filter([
+    $iPersonID > 0 && !$bNewUser ? ['label' => gettext('View User'), 'url' => '/v2/user/' . (int)$iPersonID, 'icon' => 'fa-eye'] : null,
+    ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
+]));
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
@@ -482,18 +486,63 @@ require_once __DIR__ . '/Include/Header.php';
         <input type="checkbox" class="d-none" name="Admin" id="Admin" value="1"<?= $usr_Admin ? ' checked' : '' ?>>
         <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $usr_EditSelf ? ' checked' : '' ?>>
 
+        <!-- P&F panel: hidden by default; JS shows it when Custom mode is selected -->
+        <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
+            <div class="px-3 py-2 border-bottom bg-light">
+                <strong><i class="ti ti-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
+                <p class="text-body-secondary small mb-0 mt-1"><?= gettext('All users can view congregation members. This permission cannot be removed.') ?></p>
+            </div>
+            <!-- View: always granted, read-only -->
+            <div class="row align-items-center px-3 py-2">
+                <label class="col-sm-5 col-form-label text-body-secondary"><?= gettext('View') ?></label>
+                <div class="col-sm-7 d-flex align-items-center gap-2">
+                    <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext('View') ?></span>
+                    <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+                </div>
+            </div>
+            <!-- Add / Edit / Delete / Notes: editable checkboxes (panel only visible in custom mode) -->
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="AddRecords"><?= gettext('Add') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="AddRecords" id="AddRecords" value="1"<?= $usr_AddRecords ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="EditRecords"><?= gettext('Edit') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="EditRecords" id="EditRecords" value="1"<?= $usr_EditRecords ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="DeleteRecords"><?= gettext('Delete') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1"<?= $usr_DeleteRecords ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="Notes"><?= gettext('Notes') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="Notes" id="Notes" value="1"<?= $usr_Notes ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+        </div>
+
         <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <hr>
             <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions:') ?></p>
             <?php
             $permissions = [
-                ['name' => 'AddRecords', 'label' => gettext('Add Records (People & Families)'), 'checked' => $usr_AddRecords],
-                ['name' => 'EditRecords', 'label' => gettext('Edit Records (People & Families)'), 'checked' => $usr_EditRecords],
-                ['name' => 'DeleteRecords', 'label' => gettext('Delete Records'), 'checked' => $usr_DeleteRecords],
                 ['name' => 'MenuOptions', 'label' => gettext('Manage Properties and Classifications'), 'checked' => $usr_MenuOptions],
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'), 'checked' => $usr_ManageGroups],
                 ['name' => 'Finance', 'label' => gettext('Manage Donations and Finance'), 'checked' => $usr_Finance],
-                ['name' => 'Notes', 'label' => gettext('View, Add and Edit Notes'), 'checked' => $usr_Notes],
             ];
             foreach ($permissions as $perm):
             ?>
@@ -595,10 +644,12 @@ require_once __DIR__ . '/Include/Header.php';
         const adminCb     = document.getElementById('Admin');
         const editSelfCb  = document.getElementById('EditSelf');
         const customBlock = document.getElementById('customPermissions');
+        const pfPanel     = document.getElementById('pfPanel');
         const modeRadios  = document.querySelectorAll('input[name="accessMode"]');
 
         function applyMode(mode, clearModules) {
             if (customBlock) customBlock.style.display = mode === 'custom' ? '' : 'none';
+            if (pfPanel)     pfPanel.style.display     = mode === 'custom' ? '' : 'none';
             if (adminCb) adminCb.checked = mode === 'admin';
             if (editSelfCb) editSelfCb.checked = mode === 'self';
             if (mode !== 'custom' && clearModules) {

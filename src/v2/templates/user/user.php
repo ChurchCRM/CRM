@@ -1,15 +1,33 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Bootstrapper;
+use ChurchCRM\dto\LocaleInfo;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext("Settings");
 $sPageSubtitle = $user->getFullName();
 $isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
-$personId = $user->getPersonId();
-$localeInfo = Bootstrapper::getCurrentLocale();
+// Use distinct variable names so Header.php's reassignment of $personId,
+// $avatarApiUrl, $hasUploadedPhoto, and $photo (always reads the logged-in
+// user's values) cannot clobber the viewed user's values. Same pattern as
+// $viewedUserLocaleInfo used for the locale identity-leak fix.
+$viewedPersonId = $user->getPersonId();
+$firstName = $user->getPerson() ? $user->getPerson()->getFirstName() : '';
+$accountLabel = $isOwnProfile
+    ? gettext('My Account')
+    : ($firstName !== '' ? sprintf(gettext("%s's Account"), $firstName) : gettext('Account'));
+if (AuthenticationManager::getCurrentUser()->isAdmin()) {
+    $sPageHeaderButtons = PageHeader::buttons([
+        ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
+        ['label' => gettext('Edit'), 'url' => '/UserEditor.php?PersonID=' . $viewedPersonId, 'icon' => 'fa-pencil'],
+    ]);
+}
+// Use a distinct variable so Header.php's reassignment of $localeInfo
+// (which always reads the logged-in user's locale) cannot clobber this.
+$viewedUserLocaleInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), $user->getSetting('ui.locale'));
 
 // Read user settings server-side so controls are pre-populated without JS API calls
 $_userStyle = $user->getSettingValue('ui.style');
@@ -26,7 +44,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="card-body">
         <div class="list-group list-group-transparent" id="settingsNav">
           <a href="#tab-account" class="list-group-item list-group-item-action d-flex align-items-center active" data-bs-toggle="list">
-            <i class="ti ti-user me-2"></i><?= gettext("My Account") ?>
+            <i class="ti ti-user me-2"></i><?= InputUtils::escapeHTML($accountLabel) ?>
           </a>
           <a href="#tab-appearance" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
             <i class="ti ti-palette me-2"></i><?= gettext("Appearance") ?>
@@ -51,7 +69,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
           <!-- =============== MY ACCOUNT =============== -->
           <div class="tab-pane active show" id="tab-account">
-            <h3 class="card-title"><?= gettext("My Account") ?></h3>
+            <h3 class="card-title"><?= InputUtils::escapeHTML($accountLabel) ?></h3>
             <p class="text-body-secondary"><?= gettext("Profile and security") ?></p>
 
             <!-- Profile -->
@@ -59,7 +77,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-3 text-center">
                 <img id="userAvatar"
                      data-image-entity-type="person"
-                     data-image-entity-id="<?= $personId ?>"
+                     data-image-entity-id="<?= $viewedPersonId ?>"
                      class="avatar avatar-xl rounded-circle mb-2"
                      alt="<?= InputUtils::escapeAttribute($user->getFullName()) ?>">
                 <div>
@@ -69,7 +87,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
               </div>
               <div class="col-sm-9">
-                <?php $canEditUserPerson = AuthenticationManager::getCurrentUser()->canEditPerson($personId, $user->getPerson()?->getFamId() ?? 0); ?>
+                <?php $canEditUserPerson = AuthenticationManager::getCurrentUser()->canEditPerson($viewedPersonId, $user->getPerson()?->getFamId() ?? 0); ?>
                 <div class="row mb-2">
                   <div class="col-sm-4 text-body-secondary"><?= gettext("Username") ?></div>
                   <div class="col-sm-8"><?= InputUtils::escapeHTML($user->getUserName()) ?></div>
@@ -79,7 +97,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getFullName()) ?>
                     <?php if ($canEditUserPerson): ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -88,7 +106,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getEmail() ?? '') ?: '<span class="text-body-secondary">' . gettext("Not set") . '</span>' ?>
                     <?php if ($canEditUserPerson): ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -220,22 +238,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <select id="user-locale-setting" class="form-select">
                 </select>
-                <small class="form-hint"><?= gettext("Override the system default locale") ?>: <strong><?= $localeInfo->getSystemLocale() ?></strong></small>
+                <small class="form-hint"><?= gettext("Override the system default locale") ?>: <strong><?= $viewedUserLocaleInfo->getSystemLocale() ?></strong></small>
               </div>
             </div>
 
-            <?php if ($localeInfo->shouldShowTranslationPercentage()): ?>
+            <?php if ($viewedUserLocaleInfo->shouldShowTranslationPercentage()): ?>
             <div class="row mb-3">
               <label class="col-sm-3 col-form-label"><?= gettext("Translation Progress") ?></label>
               <div class="col-sm-9">
                 <div class="progress mb-2" style="height: 1.25rem;">
-                  <div class="progress-bar bg-<?= $localeInfo->getTranslationPercentage() >= 90 ? 'success' : ($localeInfo->getTranslationPercentage() >= 50 ? 'warning' : 'danger') ?>"
+                  <div class="progress-bar bg-<?= $viewedUserLocaleInfo->getTranslationPercentage() >= 90 ? 'success' : ($viewedUserLocaleInfo->getTranslationPercentage() >= 50 ? 'warning' : 'danger') ?>"
                        role="progressbar"
-                       style="width: <?= $localeInfo->getTranslationPercentage() ?>%"
-                       aria-valuenow="<?= $localeInfo->getTranslationPercentage() ?>"
+                       style="width: <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%"
+                       aria-valuenow="<?= $viewedUserLocaleInfo->getTranslationPercentage() ?>"
                        aria-valuemin="0"
                        aria-valuemax="100">
-                    <?= $localeInfo->getTranslationPercentage() ?>%
+                    <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%
                   </div>
                 </div>
                 <small class="form-hint"><?= gettext("Percentage of strings translated for your current language") ?></small>
@@ -306,16 +324,70 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <h3 class="card-title"><?= gettext("Permissions") ?></h3>
             <p class="text-body-secondary"><?= gettext("Your current access levels (read-only)") ?></p>
 
+            <?php if ($user->isAdmin()): ?>
+            <!-- Case 1: admin — full access, no individual rows -->
+            <div class="text-center py-4">
+              <div class="mb-3">
+                <span class="badge bg-warning-lt text-warning px-3 py-2" style="font-size:1rem;">
+                  <i class="ti ti-shield-check me-2"></i><?= gettext("Administrator") ?>
+                </span>
+              </div>
+              <p class="text-body-secondary mb-0"><?= gettext("Administrators have full access to all features and data. Individual permissions do not apply.") ?></p>
+            </div>
+            <?php elseif ($user->isEditSelf()): ?>
+            <!-- Case 2: self-service user — no individual permission rows -->
+            <div class="text-center py-4">
+              <div class="mb-3">
+                <span class="badge bg-info-lt text-info px-3 py-2" style="font-size:1rem;">
+                  <i class="ti ti-user-check me-2"></i><?= gettext("Self-service only") ?>
+                </span>
+              </div>
+              <p class="text-body-secondary mb-0"><?= gettext("This user can only review and update their own family profile. Individual permissions do not apply.") ?></p>
+              <?php if ($isOwnProfile): ?>
+              <p class="text-body-secondary mt-2 mb-0 small"><?= gettext("Contact an administrator to change your permissions.") ?></p>
+              <?php endif; ?>
+            </div>
+            <?php else: ?>
+            <!-- Case 3: admin viewing another non-admin user — show full permissions -->
+
+            <!-- People & Families group -->
+            <div class="border rounded mb-3">
+              <div class="px-3 py-2 border-bottom bg-light">
+                <strong><i class="ti ti-users me-2"></i><?= gettext("People &amp; Families") ?></strong>
+                <p class="text-body-secondary small mb-0 mt-1"><?= gettext("All users can view congregation members. This permission cannot be removed.") ?></p>
+              </div>
+              <div class="row align-items-center px-3 py-2">
+                <div class="col-sm-6 text-body-secondary"><?= gettext("View") ?></div>
+                <div class="col-sm-6 d-flex flex-wrap gap-1">
+                  <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext("View") ?></span>
+                  <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext("Always granted") ?></span>
+                </div>
+              </div>
+              <?php foreach ([
+                [gettext("Add"), $user->isAddRecords()],
+                [gettext("Edit"), $user->isEditRecords()],
+                [gettext("Delete"), $user->isDeleteRecords()],
+                [gettext("Notes"), $user->isNotes()],
+              ] as [$capLabel, $capGranted]): ?>
+              <div class="row align-items-center border-top px-3 py-2">
+                <div class="col-sm-6"><?= InputUtils::escapeHTML($capLabel) ?></div>
+                <div class="col-sm-6">
+                  <?php if ($capGranted): ?>
+                  <span class="badge bg-success-lt text-success"><i class="ti ti-check me-1"></i><?= gettext("Yes") ?></span>
+                  <?php else: ?>
+                  <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-x me-1"></i><?= gettext("No") ?></span>
+                  <?php endif; ?>
+                </div>
+              </div>
+              <?php endforeach; ?>
+            </div>
+
+            <hr>
             <?php
             $permissions = [
-                ['label' => gettext("Administrator"), 'granted' => $user->isAdmin()],
-                ['label' => gettext("Add Records (People & Families)"), 'granted' => $user->isAdmin() || $user->isAddRecords()],
-                ['label' => gettext("Edit Records (People & Families)"), 'granted' => $user->isAdmin() || $user->isEditRecords()],
-                ['label' => gettext("Delete Records"), 'granted' => $user->isAdmin() || $user->isDeleteRecords()],
-                ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isAdmin() || $user->isMenuOptions()],
-                ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isAdmin() || $user->isManageGroups()],
-                ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isAdmin() || $user->isFinance()],
-                ['label' => gettext("Manage Notes"), 'granted' => $user->isAdmin() || $user->isNotes()],
+                ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isMenuOptions()],
+                ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isManageGroups()],
+                ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isFinance()],
             ];
             foreach ($permissions as $perm):
             ?>
@@ -330,6 +402,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
             </div>
             <?php endforeach; ?>
+            <?php endif; ?>
           </div>
 
         </div><!-- /.tab-content -->
@@ -344,7 +417,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.viewUserId = <?= $user->getId() ?>;
-    window.CRM.viewPersonId = <?= $personId ?>;
+    window.CRM.viewPersonId = <?= $viewedPersonId ?>;
+    window.CRM.viewIsOwnProfile = <?= $isOwnProfile ? 'true' : 'false' ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/user.js') ?>"></script>
 <?php

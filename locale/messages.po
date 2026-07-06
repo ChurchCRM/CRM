@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 05:19+0000\n"
+"POT-Creation-Date: 2026-07-06 13:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,6 +148,10 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d% of interface text is translated for this language."
+msgstr ""
+
+#, php-format
+msgid "%s's Account"
 msgstr ""
 
 msgid "(Enter state/province for countries without predefined states)"
@@ -317,6 +321,9 @@ msgstr ""
 msgid "Accepted format: .csv"
 msgstr ""
 
+msgid "Access"
+msgstr ""
+
 msgid "Access Denied"
 msgstr ""
 
@@ -471,9 +478,6 @@ msgstr ""
 msgid "Add Property Type"
 msgstr ""
 
-msgid "Add Records (People & Families)"
-msgstr ""
-
 msgid "Add Recurring Event"
 msgstr ""
 
@@ -621,6 +625,9 @@ msgid "Administrator"
 msgstr ""
 
 msgid "Administrator privileges"
+msgstr ""
+
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
 msgstr ""
 
 msgid "Adult/Child"
@@ -794,6 +801,9 @@ msgstr ""
 msgid "All uploaded photos and documents"
 msgstr ""
 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr ""
+
 msgid "Allow Pre-release Upgrades"
 msgstr ""
 
@@ -832,6 +842,9 @@ msgid "Already in a family"
 msgstr ""
 
 msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr ""
+
+msgid "Always granted"
 msgstr ""
 
 #. Context: countries
@@ -2431,6 +2444,9 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
+msgid "Contact an administrator to change your permissions."
+msgstr ""
+
 msgid "Contact info, family roles, and key dates"
 msgstr ""
 
@@ -2768,6 +2784,9 @@ msgstr ""
 msgid "Custom message for church greeter email 2, max 255 characters"
 msgstr ""
 
+msgid "Custom permissions"
+msgstr ""
+
 msgid "Custom port:"
 msgstr ""
 
@@ -3067,9 +3086,6 @@ msgid "Delete Photo"
 msgstr ""
 
 msgid "Delete Pledge"
-msgstr ""
-
-msgid "Delete Records"
 msgstr ""
 
 msgid "Delete Selected"
@@ -3523,9 +3539,6 @@ msgid "Edit Property"
 msgstr ""
 
 msgid "Edit Property Type"
-msgstr ""
-
-msgid "Edit Records (People & Families)"
 msgstr ""
 
 msgid "Edit Settings"
@@ -6547,9 +6560,6 @@ msgstr ""
 msgid "Manage Links"
 msgstr ""
 
-msgid "Manage Notes"
-msgstr ""
-
 msgid "Manage Orphaned Files"
 msgstr ""
 
@@ -8007,6 +8017,9 @@ msgid "Pending Self Verify"
 msgstr ""
 
 msgid "People"
+msgstr ""
+
+msgid "People &amp; Families"
 msgstr ""
 
 msgid "People Checked In"
@@ -9562,6 +9575,9 @@ msgstr ""
 msgid "Self Verify"
 msgstr ""
 
+msgid "Self-service"
+msgstr ""
+
 msgid "Self-service only"
 msgstr ""
 
@@ -10612,6 +10628,9 @@ msgstr ""
 msgid "This title will be used for all generated events."
 msgstr ""
 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr ""
+
 msgid "This value cannot be less than "
 msgstr ""
 
@@ -11278,6 +11297,9 @@ msgstr ""
 msgid "User Editor"
 msgstr ""
 
+msgid "User List"
+msgstr ""
+
 msgid "User authenticated via API Key: "
 msgstr ""
 
@@ -11507,6 +11529,9 @@ msgstr ""
 msgid "View People"
 msgstr ""
 
+msgid "View Person"
+msgstr ""
+
 msgid "View Person Page"
 msgstr ""
 
@@ -11568,9 +11593,6 @@ msgid "View query results"
 msgstr ""
 
 msgid "View transaction details for a pledge payment"
-msgstr ""
-
-msgid "View, Add and Edit Notes"
 msgstr ""
 
 msgid "Visit Our Website"
