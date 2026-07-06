@@ -261,12 +261,17 @@ Cypress.Commands.add('tomSelectByText', (selector, text) => {
  * @example cy.tomSelectByValue('#Country', 'us')
  */
 Cypress.Commands.add('tomSelectByValue', (selector, value) => {
-    cy.get(selector).then($select => {
-        const el = $select[0];
-        if (el.tomselect) {
-            el.tomselect.setValue(value);
-        }
-    });
+    // Wait for TomSelect to finish initializing before setting the value.
+    // Using .should() enables Cypress's built-in retry (up to the default
+    // assertion timeout) so this doesn't silently no-op when called before
+    // the JS has run TomSelect.init() on the element.
+    cy.get(selector)
+        .should(($select) => {
+            expect($select[0].tomselect, `TomSelect not yet initialized on ${selector}`).to.exist;
+        })
+        .then(($select) => {
+            $select[0].tomselect.setValue(value);
+        });
 });
 
 /**
