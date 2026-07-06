@@ -506,6 +506,15 @@ PUT    /note/{noteId}             — update text/private (author or admin only)
 DELETE /note/{noteId}             — delete + write type=delete-note audit entry
 ```
 
+**Permission model (confirmed 2026-07-06):**
+- All routes require `NotesRoleAuthMiddleware` → `isNotesEnabled()` must be true.
+- `isAdmin()` → `isNotesEnabled()` always returns `true` (admin purity), so admins pass the middleware.
+- Notes=1 (non-admin): can view public notes and own private notes. Cannot view private notes authored by others (returns 404 to avoid existence leak).
+- Admin: can view all notes but private notes authored by others show full content via `canReadPrivateNotes()` = `isAdmin()`. The TimelineService still renders `[Private Note]` placeholders in the timeline view.
+- DELETE: checked by `isAdmin() OR note.getEnteredBy() === currentUser.getId()`. Admin can delete any note, non-admin can only delete their own. This works without a separate admin-bypass because admin purity already passes NotesRoleAuthMiddleware.
+- PUT: author or admin only (`isAdmin() OR isAuthor`).
+- **Without Notes permission**: zero access to Note API routes — all blocked at middleware.
+
 **Delete audit trail pattern** — capture author name BEFORE deleting, then write a `type='delete-note'` Note so the timeline stays auditable:
 
 ```php
