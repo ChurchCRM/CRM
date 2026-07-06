@@ -375,6 +375,9 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Users'), '/admin/system/users'],
     [gettext('Edit User')],
 ]);
+$sPageHeaderButtons = PageHeader::buttons([
+    ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
@@ -482,6 +485,26 @@ require_once __DIR__ . '/Include/Header.php';
         <input type="checkbox" class="d-none" name="Admin" id="Admin" value="1"<?= $usr_Admin ? ' checked' : '' ?>>
         <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $usr_EditSelf ? ' checked' : '' ?>>
 
+        <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext('Built-in Permissions') ?></p>
+        <p class="text-body-secondary small mb-3"><?= gettext('These permissions are granted to all users and cannot be removed.') ?></p>
+        <?php
+        $builtinPerms = [
+            gettext('Read People'),
+            gettext('Read Family'),
+        ];
+        foreach ($builtinPerms as $builtinLabel):
+        ?>
+        <div class="row mb-2 permission-row">
+            <label class="col-sm-5 col-form-label text-body-secondary"><?= $builtinLabel ?></label>
+            <div class="col-sm-7 d-flex align-items-center">
+                <label class="form-check form-switch mb-0 me-2">
+                    <input class="form-check-input" type="checkbox" disabled checked aria-label="<?= InputUtils::escapeAttribute($builtinLabel) ?>">
+                </label>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+            </div>
+        </div>
+        <?php endforeach; ?>
+
         <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <hr>
             <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions:') ?></p>
@@ -507,27 +530,6 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
             <?php endforeach; ?>
         </div>
-
-        <hr>
-        <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext('Built-in Permissions') ?></p>
-        <p class="text-body-secondary small mb-3"><?= gettext('These permissions are granted to all users and cannot be removed.') ?></p>
-        <?php
-        $builtinPerms = [
-            gettext('Read People'),
-            gettext('Read Family'),
-        ];
-        foreach ($builtinPerms as $builtinLabel):
-        ?>
-        <div class="row mb-2 permission-row">
-            <label class="col-sm-5 col-form-label text-body-secondary"><?= $builtinLabel ?></label>
-            <div class="col-sm-7 d-flex align-items-center">
-                <label class="form-check form-switch mb-0 me-2">
-                    <input class="form-check-input" type="checkbox" disabled checked aria-label="<?= InputUtils::escapeAttribute($builtinLabel) ?>">
-                </label>
-                <span class="badge bg-success-lt text-success"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
-            </div>
-        </div>
-        <?php endforeach; ?>
     </div>
     <div class="card-footer text-end">
         <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn btn-secondary me-2"><?= gettext('Cancel') ?></a>
