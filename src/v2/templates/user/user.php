@@ -350,32 +350,49 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
               <p class="text-body-secondary mb-0"><?= gettext("Administrators have full access to all features and data. Individual permissions do not apply.") ?></p>
             </div>
-            <?php else: ?>
-            <!-- Case 2 (own account, non-admin) or Case 3 (admin viewing another user) -->
-
-            <?php if ($isOwnProfile): ?>
+            <?php elseif ($isOwnProfile): ?>
+            <!-- Case 2: own non-admin account — contact-admin note only, no permission rows -->
             <div class="alert alert-info d-flex align-items-center mb-3">
               <i class="ti ti-info-circle me-2 flex-shrink-0"></i>
               <span><?= gettext("You are viewing your own account. Contact an administrator to change your permissions.") ?></span>
             </div>
-            <?php endif; ?>
+            <?php else: ?>
+            <!-- Case 3: admin viewing another non-admin user — show full permissions -->
 
-            <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext("Built-in Permissions") ?></p>
-            <p class="text-body-secondary small mb-3"><?= gettext("All users can view congregation members (People and Families). This permission cannot be removed.") ?></p>
-            <div class="row mb-2">
-              <div class="col-sm-6"><?= gettext("View Congregation (People &amp; Families)") ?></div>
-              <div class="col-sm-6 d-flex flex-wrap gap-1">
-                <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext("View") ?></span>
-                <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext("Always granted") ?></span>
+            <!-- People & Families group -->
+            <div class="border rounded mb-3">
+              <div class="px-3 py-2 border-bottom bg-light">
+                <strong><i class="ti ti-users me-2"></i><?= gettext("People &amp; Families") ?></strong>
+                <p class="text-body-secondary small mb-0 mt-1"><?= gettext("All users can view congregation members. This permission cannot be removed.") ?></p>
               </div>
+              <div class="row align-items-center px-3 py-2">
+                <div class="col-sm-6 text-body-secondary"><?= gettext("View") ?></div>
+                <div class="col-sm-6 d-flex flex-wrap gap-1">
+                  <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext("View") ?></span>
+                  <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext("Always granted") ?></span>
+                </div>
+              </div>
+              <?php foreach ([
+                [gettext("Add"), $user->isAddRecords()],
+                [gettext("Edit"), $user->isEditRecords()],
+                [gettext("Delete"), $user->isDeleteRecords()],
+              ] as [$capLabel, $capGranted]): ?>
+              <div class="row align-items-center border-top px-3 py-2">
+                <div class="col-sm-6"><?= $capLabel ?></div>
+                <div class="col-sm-6">
+                  <?php if ($capGranted): ?>
+                  <span class="badge bg-success-lt text-success"><i class="ti ti-check me-1"></i><?= gettext("Yes") ?></span>
+                  <?php else: ?>
+                  <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-x me-1"></i><?= gettext("No") ?></span>
+                  <?php endif; ?>
+                </div>
+              </div>
+              <?php endforeach; ?>
             </div>
 
             <hr>
             <?php
             $permissions = [
-                ['label' => gettext("Add Congregation (People & Families)"), 'granted' => $user->isAddRecords()],
-                ['label' => gettext("Edit Congregation (People & Families)"), 'granted' => $user->isEditRecords()],
-                ['label' => gettext("Delete Congregation (People & Families)"), 'granted' => $user->isDeleteRecords()],
                 ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isMenuOptions()],
                 ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isManageGroups()],
                 ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isFinance()],

@@ -486,24 +486,60 @@ require_once __DIR__ . '/Include/Header.php';
         <input type="checkbox" class="d-none" name="Admin" id="Admin" value="1"<?= $usr_Admin ? ' checked' : '' ?>>
         <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $usr_EditSelf ? ' checked' : '' ?>>
 
-        <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext('Built-in Permissions') ?></p>
-        <p class="text-body-secondary small mb-3"><?= gettext('All users can view congregation members (People and Families). This permission cannot be removed.') ?></p>
-        <div class="row mb-2 permission-row">
-            <label class="col-sm-5 col-form-label text-body-secondary"><?= gettext('View Congregation (People &amp; Families)') ?></label>
-            <div class="col-sm-7 d-flex align-items-center gap-2">
-                <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext('View') ?></span>
-                <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+        <?php
+        // People & Families group: only shown when the viewed user is not an admin
+        // and not the same person as the logged-in user (Case 3 equivalent).
+        $isEditingSelf = ($iPersonID > 0 && $iPersonID === AuthenticationManager::getCurrentUser()->getPersonId());
+        ?>
+        <?php if (!$usr_Admin && !$isEditingSelf): ?>
+        <div class="border rounded mb-3">
+            <div class="px-3 py-2 border-bottom bg-light">
+                <strong><i class="ti ti-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
+                <p class="text-body-secondary small mb-0 mt-1"><?= gettext('All users can view congregation members. This permission cannot be removed.') ?></p>
+            </div>
+            <!-- View: always granted, read-only -->
+            <div class="row align-items-center px-3 py-2">
+                <label class="col-sm-5 col-form-label text-body-secondary"><?= gettext('View') ?></label>
+                <div class="col-sm-7 d-flex align-items-center gap-2">
+                    <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext('View') ?></span>
+                    <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+                </div>
+            </div>
+            <!-- Add / Edit / Delete: only editable in custom access mode -->
+            <div id="pfCustomPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
+                <div class="row align-items-center border-top px-3 py-2 permission-row">
+                    <label class="col-sm-5 col-form-label" for="AddRecords"><?= gettext('Add') ?></label>
+                    <div class="col-sm-7">
+                        <label class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="AddRecords" id="AddRecords" value="1"<?= $usr_AddRecords ? ' checked' : '' ?>>
+                        </label>
+                    </div>
+                </div>
+                <div class="row align-items-center border-top px-3 py-2 permission-row">
+                    <label class="col-sm-5 col-form-label" for="EditRecords"><?= gettext('Edit') ?></label>
+                    <div class="col-sm-7">
+                        <label class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="EditRecords" id="EditRecords" value="1"<?= $usr_EditRecords ? ' checked' : '' ?>>
+                        </label>
+                    </div>
+                </div>
+                <div class="row align-items-center border-top px-3 py-2 permission-row">
+                    <label class="col-sm-5 col-form-label" for="DeleteRecords"><?= gettext('Delete') ?></label>
+                    <div class="col-sm-7">
+                        <label class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1"<?= $usr_DeleteRecords ? ' checked' : '' ?>>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
+        <?php endif; ?>
 
         <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <hr>
             <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions:') ?></p>
             <?php
             $permissions = [
-                ['name' => 'AddRecords', 'label' => gettext('Add Records (People & Families)'), 'checked' => $usr_AddRecords],
-                ['name' => 'EditRecords', 'label' => gettext('Edit Records (People & Families)'), 'checked' => $usr_EditRecords],
-                ['name' => 'DeleteRecords', 'label' => gettext('Delete Records'), 'checked' => $usr_DeleteRecords],
                 ['name' => 'MenuOptions', 'label' => gettext('Manage Properties and Classifications'), 'checked' => $usr_MenuOptions],
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'), 'checked' => $usr_ManageGroups],
                 ['name' => 'Finance', 'label' => gettext('Manage Donations and Finance'), 'checked' => $usr_Finance],
@@ -608,11 +644,13 @@ require_once __DIR__ . '/Include/Header.php';
         const modulePerms = ['AddRecords', 'EditRecords', 'DeleteRecords', 'MenuOptions', 'ManageGroups', 'Finance', 'Notes'];
         const adminCb     = document.getElementById('Admin');
         const editSelfCb  = document.getElementById('EditSelf');
-        const customBlock = document.getElementById('customPermissions');
-        const modeRadios  = document.querySelectorAll('input[name="accessMode"]');
+        const customBlock   = document.getElementById('customPermissions');
+        const pfCustomBlock = document.getElementById('pfCustomPermissions');
+        const modeRadios    = document.querySelectorAll('input[name="accessMode"]');
 
         function applyMode(mode, clearModules) {
-            if (customBlock) customBlock.style.display = mode === 'custom' ? '' : 'none';
+            if (customBlock)   customBlock.style.display   = mode === 'custom' ? '' : 'none';
+            if (pfCustomBlock) pfCustomBlock.style.display = mode === 'custom' ? '' : 'none';
             if (adminCb) adminCb.checked = mode === 'admin';
             if (editSelfCb) editSelfCb.checked = mode === 'self';
             if (mode !== 'custom' && clearModules) {
