@@ -8,7 +8,6 @@ use ChurchCRM\Slim\SlimUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 class FamilyMiddleware extends AbstractEntityMiddleware
 {
@@ -33,34 +32,20 @@ class FamilyMiddleware extends AbstractEntityMiddleware
     }
 
     /**
-     * Override process() to add object-level authorization check after loading
-     * the entity but before invoking the route handler.
+     * Enforce the family-scope restriction for EditSelf-only users.
      *
      * Fixes GHSA-jjcj-h3cm-p7x7: EditSelf users were able to access any
      * family's data. Now restricted to their own family only.
+     *
+     * Admin and EditRecords users pass through unrestricted (canViewFamily()
+     * returns true for them).
      */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    protected function postEntityLoad(ServerRequestInterface $request, mixed $entity): ?ResponseInterface
     {
-        $response = new Response();
-        $id = SlimUtils::getRouteArgument($request, $this->getRouteParamName());
-
-        if (empty(trim($id))) {
-            return SlimUtils::renderErrorJSON($response, gettext('Missing') . ' ' . $this->getRouteParamName(), [], 412);
-        }
-
-        $entity = $this->loadEntity($id);
-
-        if (empty($entity)) {
-            return SlimUtils::renderErrorJSON($response, $this->getNotFoundMessage(), [], 404);
-        }
-
-        // Authorization: enforce family-scope for EditSelf-only users.
-        // Admin and EditRecords users pass through unrestricted.
         $currentUser = AuthenticationManager::getCurrentUser();
-        if (!$currentUser->canViewFamily((int) $id)) {
-            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        if (!$currentUser->canViewFamily($entity->getId())) {
+            return SlimUtils::renderErrorJSON(new Response(), gettext('Access denied'), [], 403);
         }
-
-        return $handler->handle($request->withAttribute($this->getAttributeName(), $entity));
+        return null;
     }
 }

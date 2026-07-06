@@ -90,7 +90,7 @@
         "@uppy/image-editor": "^4.2.0",
         "@uppy/webcam": "^5.1.0",
         "@uppy/xhr-upload": "^5.2.0",
-        "apexcharts": "^5.15.2",
+        "apexcharts": "^5.16.0",
         "avatar-initials": "^6.0.0",
         "bootbox": "^6.0.4",
         "bootstrap": "^5.3.8",
@@ -108,7 +108,7 @@
         "dompurify": "^3.4.11",
         "flag-icons": "^7.5.0",
         "fullcalendar": "^6.1.21",
-        "i18next": "^26.3.3",
+        "i18next": "^26.3.4",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
         "just-validate": "^4.3.0",
@@ -121,7 +121,7 @@
         "tom-select": "^2.6.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.5.1",
+        "@biomejs/biome": "^2.5.2",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
@@ -133,7 +133,7 @@
         "grunt": "^1.6.2",
         "grunt-cli": "^1.5.0",
         "grunt-contrib-copy": "^1.0.0",
-        "i18next-cli": "^1.64.2",
+        "i18next-cli": "^1.65.0",
         "i18next-conv": "^17.0.0",
         "mini-css-extract-plugin": "^2.10.2",
         "mysql2": "^3.22.5",
@@ -144,8 +144,8 @@
         "style-loader": "^4.0.0",
         "ts-loader": "^9.6.2",
         "typescript": "^6.0.3",
-        "webpack": "^5.108.1",
-        "webpack-cli": "^7.1.0"
+        "webpack": "^5.108.4",
+        "webpack-cli": "^7.2.1"
     },
     "overrides": {
         "archiver": {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-29 14:28+0000\n"
+"POT-Creation-Date: 2026-07-06 13:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,6 +148,10 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d% of interface text is translated for this language."
+msgstr ""
+
+#, php-format
+msgid "%s's Account"
 msgstr ""
 
 msgid "(Enter state/province for countries without predefined states)"
@@ -317,6 +321,9 @@ msgstr ""
 msgid "Accepted format: .csv"
 msgstr ""
 
+msgid "Access"
+msgstr ""
+
 msgid "Access Denied"
 msgstr ""
 
@@ -324,6 +331,9 @@ msgid "Access Token"
 msgstr ""
 
 msgid "Access denied"
+msgstr ""
+
+msgid "Access level"
 msgstr ""
 
 #. plugin:mailchimp:section:2:content
@@ -466,9 +476,6 @@ msgid "Add Pledge"
 msgstr ""
 
 msgid "Add Property Type"
-msgstr ""
-
-msgid "Add Records"
 msgstr ""
 
 msgid "Add Recurring Event"
@@ -618,6 +625,9 @@ msgid "Administrator"
 msgstr ""
 
 msgid "Administrator privileges"
+msgstr ""
+
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
 msgstr ""
 
 msgid "Adult/Child"
@@ -791,6 +801,9 @@ msgstr ""
 msgid "All uploaded photos and documents"
 msgstr ""
 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr ""
+
 msgid "Allow Pre-release Upgrades"
 msgstr ""
 
@@ -829,6 +842,9 @@ msgid "Already in a family"
 msgstr ""
 
 msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr ""
+
+msgid "Always granted"
 msgstr ""
 
 #. Context: countries
@@ -1643,6 +1659,9 @@ msgstr ""
 msgid "Campaigns Sent"
 msgstr ""
 
+msgid "Can only review and verify their own family. No other access."
+msgstr ""
+
 msgid "Can't delete yourself"
 msgstr ""
 
@@ -1976,6 +1995,9 @@ msgid "Choose map provider"
 msgstr ""
 
 msgid "Choose opportunities..."
+msgstr ""
+
+msgid "Choose specific permissions below."
 msgstr ""
 
 #. plugin:gravatar:section:1:content
@@ -2422,6 +2444,9 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
+msgid "Contact an administrator to change your permissions."
+msgstr ""
+
 msgid "Contact info, family roles, and key dates"
 msgstr ""
 
@@ -2759,6 +2784,9 @@ msgstr ""
 msgid "Custom message for church greeter email 2, max 255 characters"
 msgstr ""
 
+msgid "Custom permissions"
+msgstr ""
+
 msgid "Custom port:"
 msgstr ""
 
@@ -3058,9 +3086,6 @@ msgid "Delete Photo"
 msgstr ""
 
 msgid "Delete Pledge"
-msgstr ""
-
-msgid "Delete Records"
 msgstr ""
 
 msgid "Delete Selected"
@@ -3516,12 +3541,6 @@ msgstr ""
 msgid "Edit Property Type"
 msgstr ""
 
-msgid "Edit Records"
-msgstr ""
-
-msgid "Edit Self"
-msgstr ""
-
 msgid "Edit Settings"
 msgstr ""
 
@@ -3535,9 +3554,6 @@ msgid "Edit a category name and click Save, or use the trash icon to remove. New
 msgstr ""
 
 msgid "Edit custom properties for a group member"
-msgstr ""
-
-msgid "Edit own family only"
 msgstr ""
 
 msgid "Edit records permission"
@@ -4946,6 +4962,9 @@ msgstr ""
 msgid "Full Path"
 msgstr ""
 
+msgid "Full access — grants all privileges."
+msgstr ""
+
 msgid "Fully translated."
 msgstr ""
 
@@ -5182,7 +5201,7 @@ msgstr ""
 msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
 msgstr ""
 
-msgid "Grants all privileges"
+msgid "Grant individual permissions:"
 msgstr ""
 
 msgid "Graphic"
@@ -6541,9 +6560,6 @@ msgstr ""
 msgid "Manage Links"
 msgstr ""
 
-msgid "Manage Notes"
-msgstr ""
-
 msgid "Manage Orphaned Files"
 msgstr ""
 
@@ -7684,9 +7700,6 @@ msgstr ""
 msgid "Only the note author or an admin may delete this note"
 msgstr ""
 
-msgid "Only the note author or an admin may edit this note"
-msgstr ""
-
 msgid "Oops! Page not found."
 msgstr ""
 
@@ -8004,6 +8017,9 @@ msgid "Pending Self Verify"
 msgstr ""
 
 msgid "People"
+msgstr ""
+
+msgid "People &amp; Families"
 msgstr ""
 
 msgid "People Checked In"
@@ -9559,6 +9575,12 @@ msgstr ""
 msgid "Self Verify"
 msgstr ""
 
+msgid "Self-service"
+msgstr ""
+
+msgid "Self-service only"
+msgstr ""
+
 msgid "Sell to everyone"
 msgstr ""
 
@@ -10399,6 +10421,9 @@ msgstr ""
 msgid "The month that starts your organization's fiscal year"
 msgstr ""
 
+msgid "The note you are trying to edit no longer exists."
+msgstr ""
+
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
 msgstr ""
 
@@ -10601,6 +10626,9 @@ msgid "This report lists every event whose end date has passed but which is stil
 msgstr ""
 
 msgid "This title will be used for all generated events."
+msgstr ""
+
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
 msgstr ""
 
 msgid "This value cannot be less than "
@@ -11269,6 +11297,9 @@ msgstr ""
 msgid "User Editor"
 msgstr ""
 
+msgid "User List"
+msgstr ""
+
 msgid "User authenticated via API Key: "
 msgstr ""
 
@@ -11498,6 +11529,9 @@ msgstr ""
 msgid "View People"
 msgstr ""
 
+msgid "View Person"
+msgstr ""
+
 msgid "View Person Page"
 msgstr ""
 
@@ -11559,9 +11593,6 @@ msgid "View query results"
 msgstr ""
 
 msgid "View transaction details for a pledge payment"
-msgstr ""
-
-msgid "View, Add and Edit Notes"
 msgstr ""
 
 msgid "Visit Our Website"
@@ -11949,7 +11980,16 @@ msgstr ""
 msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
 msgstr ""
 
+msgid "You do not have permission to add a note for this family."
+msgstr ""
+
+msgid "You do not have permission to add a note for this person."
+msgstr ""
+
 msgid "You do not have permission to delete this note."
+msgstr ""
+
+msgid "You do not have permission to edit this note"
 msgstr ""
 
 msgid "You do not have permission to edit this note."
@@ -12136,9 +12176,6 @@ msgid "Zip code is required"
 msgstr ""
 
 msgid "ZipArchive extension required for upgrades"
-msgstr ""
-
-msgid "[Private Note — visible only to creator]"
 msgstr ""
 
 msgid "active"

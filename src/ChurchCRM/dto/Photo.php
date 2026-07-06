@@ -414,6 +414,7 @@ class Photo
             'photoUrl' => null,
             'initials' => $entityInfo['initials'],
             'email' => $entityInfo['email'],
+            'photoVersion' => $photo->getPhotoModifiedTime(),
         ];
     }
 }

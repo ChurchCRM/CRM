@@ -60,34 +60,63 @@ class User extends BaseUser
     // ─────────────────────────────────────────────────────────────────
 
     // -- Per-user permissions (backed by user_usr columns) --
+    //
+    // EditSelf is an exclusive mode: when a non-admin user has EditSelf=1,
+    // all module permissions (AddRecords, EditRecords, …, Notes, Finance) are
+    // treated as false regardless of what is stored in the database. This
+    // ensures hasNoAdminPermissions() correctly blocks EditSelf users from
+    // the internal API surface and every consumer sees a consistent view.
+
+    private function isEditSelfExclusive(): bool
+    {
+        return !$this->isAdmin() && $this->isEditSelf();
+    }
 
     public function isAddRecordsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isAddRecords();
     }
 
     public function isEditRecordsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEditRecords();
     }
 
     public function isDeleteRecordsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isDeleteRecords();
     }
 
     public function isMenuOptionsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isMenuOptions();
     }
 
     public function isManageGroupsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isManageGroups();
     }
 
     public function isNotesEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isNotes();
     }
 
@@ -102,6 +131,9 @@ class User extends BaseUser
 
     public function isFinanceEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance());
     }
 
@@ -112,16 +144,25 @@ class User extends BaseUser
 
     public function isAddEventEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
     public function isEmailEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
     }
 
     public function isCreateDirectoryEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
     }
 
@@ -191,7 +232,10 @@ class User extends BaseUser
         if ($this->isAdmin()) {
             return false;
         }
-
+        if ($this->isEditSelf()) {
+            // EditSelf is exclusive — no module permissions apply
+            return true;
+        }
         return !$this->isAddRecords()
             && !$this->isEditRecords()
             && !$this->isDeleteRecords()
@@ -287,6 +331,53 @@ class User extends BaseUser
             return $familyId > 0 && $familyId === (int) $person->getFamId();
         }
         return true;
+    }
+
+    /**
+     * Returns true if the current user may read non-private notes on the given object.
+     * Requires the Notes role (or Admin via isNotesEnabled()).
+     *
+     * $personId / $familyId are reserved for future row-level security (e.g.
+     * pastoral-confidentiality flags). Pass them at every call site so that
+     * adding ABAC checks later requires no call-site changes.
+     *
+     * @param int|null $personId Reserved for future ABAC use
+     * @param int|null $familyId Reserved for future ABAC use
+     */
+    public function canReadNotes(?int $personId = null, ?int $familyId = null): bool
+    {
+        return $this->isNotesEnabled();
+    }
+
+    /**
+     * Returns true if the current user may read private notes authored by other users.
+     *
+     * Policy: admins may read any private note (full content visible in timeline,
+     * API, and NoteEditor). Non-admin users may only read their own private notes;
+     * that author-equality check is handled in Note::isVisibleTo(), so this method
+     * governs only the "read someone else's private note" case.
+     *
+     * $personId / $familyId are reserved for future ABAC extensions (e.g. a future
+     * per-record delegate granted read access to specific private notes).
+     *
+     * @param int|null $personId Reserved for future ABAC use
+     * @param int|null $familyId Reserved for future ABAC use
+     */
+    public function canReadPrivateNotes(?int $personId = null, ?int $familyId = null): bool
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Returns true if the current user may create a note on the given family.
+     * Notes=1 or Admin currently grants cross-family write (intentional, see #9036/#9003).
+     * Parameter is reserved as the ABAC hook for future per-family privacy holds.
+     *
+     * @param int|null $familyId Reserved for future ABAC use
+     */
+    public function canWriteNoteOnFamily(?int $familyId = null): bool
+    {
+        return $this->isNotesEnabled();
     }
 
     /**
