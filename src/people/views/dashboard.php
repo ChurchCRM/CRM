@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
@@ -91,12 +92,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap" style="gap: .5rem;">
+                <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()): ?>
                 <a href="<?= $sRootPath ?>/PersonEditor.php" class="btn btn-primary">
                     <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Person') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/FamilyEditor.php" class="btn btn-secondary">
                     <i class="fa-solid fa-house-user me-1"></i><?= gettext('Add Family') ?>
                 </a>
+                <?php endif; ?>
                 <a href="<?= $sRootPath ?>/people/list" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-list me-1"></i><?= gettext('People List') ?>
                 </a>

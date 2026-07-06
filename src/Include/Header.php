@@ -162,6 +162,10 @@ $MenuFirst = 1;
                   ]
               }
           },
+          permissions: {
+              addRecords: <?= json_encode($currentUser->isAddRecordsEnabled()) ?>,
+              editRecords: <?= json_encode($currentUser->isEditRecordsEnabled()) ?>,
+          },
           PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
       });
       // Initialize moment locale if available

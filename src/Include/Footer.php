@@ -50,6 +50,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
   <!-- Floating Action Buttons -->
   <div class="fab-container" id="fab-container">
+    <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()): ?>
     <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php" class="fab-button fab-person">
       <span class="fab-label" id="fab-person-label"></span>
       <div class="fab-icon">
@@ -62,6 +63,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
         <i class="fa-solid fa-people-roof"></i>
       </div>
     </a>
+    <?php endif; ?>
     <button class="fab-menu-toggle d-xl-none" id="fab-menu-toggle" type="button"
             data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
             aria-controls="sidebar-menu" aria-expanded="false"
