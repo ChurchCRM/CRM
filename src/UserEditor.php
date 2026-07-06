@@ -492,7 +492,8 @@ require_once __DIR__ . '/Include/Header.php';
         $isEditingSelf = ($iPersonID > 0 && $iPersonID === AuthenticationManager::getCurrentUser()->getPersonId());
         ?>
         <?php if (!$usr_Admin && !$isEditingSelf): ?>
-        <div class="border rounded mb-3">
+        <!-- P&F panel: shown only when access mode is Custom (JS also controls via #pfPanel) -->
+        <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <div class="px-3 py-2 border-bottom bg-light">
                 <strong><i class="ti ti-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
                 <p class="text-body-secondary small mb-0 mt-1"><?= gettext('All users can view congregation members. This permission cannot be removed.') ?></p>
@@ -505,31 +506,37 @@ require_once __DIR__ . '/Include/Header.php';
                     <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
                 </div>
             </div>
-            <!-- Add / Edit / Delete: only editable in custom access mode -->
-            <div id="pfCustomPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
-                <div class="row align-items-center border-top px-3 py-2 permission-row">
-                    <label class="col-sm-5 col-form-label" for="AddRecords"><?= gettext('Add') ?></label>
-                    <div class="col-sm-7">
-                        <label class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="AddRecords" id="AddRecords" value="1"<?= $usr_AddRecords ? ' checked' : '' ?>>
-                        </label>
-                    </div>
+            <!-- Add / Edit / Delete / Notes: editable checkboxes (panel only visible in custom mode) -->
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="AddRecords"><?= gettext('Add') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="AddRecords" id="AddRecords" value="1"<?= $usr_AddRecords ? ' checked' : '' ?>>
+                    </label>
                 </div>
-                <div class="row align-items-center border-top px-3 py-2 permission-row">
-                    <label class="col-sm-5 col-form-label" for="EditRecords"><?= gettext('Edit') ?></label>
-                    <div class="col-sm-7">
-                        <label class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="EditRecords" id="EditRecords" value="1"<?= $usr_EditRecords ? ' checked' : '' ?>>
-                        </label>
-                    </div>
+            </div>
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="EditRecords"><?= gettext('Edit') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="EditRecords" id="EditRecords" value="1"<?= $usr_EditRecords ? ' checked' : '' ?>>
+                    </label>
                 </div>
-                <div class="row align-items-center border-top px-3 py-2 permission-row">
-                    <label class="col-sm-5 col-form-label" for="DeleteRecords"><?= gettext('Delete') ?></label>
-                    <div class="col-sm-7">
-                        <label class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1"<?= $usr_DeleteRecords ? ' checked' : '' ?>>
-                        </label>
-                    </div>
+            </div>
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="DeleteRecords"><?= gettext('Delete') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1"<?= $usr_DeleteRecords ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="Notes"><?= gettext('Notes') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="Notes" id="Notes" value="1"<?= $usr_Notes ? ' checked' : '' ?>>
+                    </label>
                 </div>
             </div>
         </div>
@@ -543,7 +550,6 @@ require_once __DIR__ . '/Include/Header.php';
                 ['name' => 'MenuOptions', 'label' => gettext('Manage Properties and Classifications'), 'checked' => $usr_MenuOptions],
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'), 'checked' => $usr_ManageGroups],
                 ['name' => 'Finance', 'label' => gettext('Manage Donations and Finance'), 'checked' => $usr_Finance],
-                ['name' => 'Notes', 'label' => gettext('View, Add and Edit Notes'), 'checked' => $usr_Notes],
             ];
             foreach ($permissions as $perm):
             ?>
@@ -644,13 +650,13 @@ require_once __DIR__ . '/Include/Header.php';
         const modulePerms = ['AddRecords', 'EditRecords', 'DeleteRecords', 'MenuOptions', 'ManageGroups', 'Finance', 'Notes'];
         const adminCb     = document.getElementById('Admin');
         const editSelfCb  = document.getElementById('EditSelf');
-        const customBlock   = document.getElementById('customPermissions');
-        const pfCustomBlock = document.getElementById('pfCustomPermissions');
-        const modeRadios    = document.querySelectorAll('input[name="accessMode"]');
+        const customBlock = document.getElementById('customPermissions');
+        const pfPanel     = document.getElementById('pfPanel');
+        const modeRadios  = document.querySelectorAll('input[name="accessMode"]');
 
         function applyMode(mode, clearModules) {
-            if (customBlock)   customBlock.style.display   = mode === 'custom' ? '' : 'none';
-            if (pfCustomBlock) pfCustomBlock.style.display = mode === 'custom' ? '' : 'none';
+            if (customBlock) customBlock.style.display = mode === 'custom' ? '' : 'none';
+            if (pfPanel)     pfPanel.style.display     = mode === 'custom' ? '' : 'none';
             if (adminCb) adminCb.checked = mode === 'admin';
             if (editSelfCb) editSelfCb.checked = mode === 'self';
             if (mode !== 'custom' && clearModules) {

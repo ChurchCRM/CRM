@@ -376,6 +376,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 [gettext("Add"), $user->isAddRecords()],
                 [gettext("Edit"), $user->isEditRecords()],
                 [gettext("Delete"), $user->isDeleteRecords()],
+                [gettext("Notes"), $user->isNotes()],
               ] as [$capLabel, $capGranted]): ?>
               <div class="row align-items-center border-top px-3 py-2">
                 <div class="col-sm-6"><?= $capLabel ?></div>
@@ -396,7 +397,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isMenuOptions()],
                 ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isManageGroups()],
                 ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isFinance()],
-                ['label' => gettext("Manage Notes"), 'granted' => $user->isNotes()],
             ];
             foreach ($permissions as $perm):
             ?>
