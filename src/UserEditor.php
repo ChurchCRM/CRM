@@ -487,12 +487,11 @@ require_once __DIR__ . '/Include/Header.php';
         <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $usr_EditSelf ? ' checked' : '' ?>>
 
         <?php
-        // People & Families group: only shown when the viewed user is not an admin
-        // and not the same person as the logged-in user (Case 3 equivalent).
+        // $isEditingSelf is used by the server-side POST handler; pfPanel is
+        // always rendered so JS can show it when Custom mode is selected.
         $isEditingSelf = ($iPersonID > 0 && $iPersonID === AuthenticationManager::getCurrentUser()->getPersonId());
         ?>
-        <?php if (!$usr_Admin && !$isEditingSelf): ?>
-        <!-- P&F panel: shown only when access mode is Custom (JS also controls via #pfPanel) -->
+        <!-- P&F panel: hidden by default; JS shows it when Custom mode is selected -->
         <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <div class="px-3 py-2 border-bottom bg-light">
                 <strong><i class="ti ti-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
@@ -540,18 +539,6 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
             </div>
         </div>
-        <?php else: ?>
-        <?php
-        // pfPanel is not rendered for admins/self-edit; emit hidden inputs so
-        // AddRecords/EditRecords/DeleteRecords/Notes are always present in the
-        // form POST. The server uses isset() (presence = 1, absence = 0), so
-        // only include the input when the current value IS 1.
-        ?>
-        <?php if ($usr_AddRecords): ?><input type="hidden" name="AddRecords" value="1"><?php endif; ?>
-        <?php if ($usr_EditRecords): ?><input type="hidden" name="EditRecords" value="1"><?php endif; ?>
-        <?php if ($usr_DeleteRecords): ?><input type="hidden" name="DeleteRecords" value="1"><?php endif; ?>
-        <?php if ($usr_Notes): ?><input type="hidden" name="Notes" value="1"><?php endif; ?>
-        <?php endif; ?>
 
         <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <hr>
