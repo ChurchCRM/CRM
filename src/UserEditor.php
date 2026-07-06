@@ -376,7 +376,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Edit User')],
 ]);
 $sPageHeaderButtons = PageHeader::buttons(array_filter([
-    $iPersonID > 0 ? ['label' => gettext('View User'), 'url' => '/v2/user/' . (int)$iPersonID, 'icon' => 'fa-eye'] : null,
+    $iPersonID > 0 && !$bNewUser ? ['label' => gettext('View User'), 'url' => '/v2/user/' . (int)$iPersonID, 'icon' => 'fa-eye'] : null,
     ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
 ]));
 require_once __DIR__ . '/Include/Header.php';
@@ -486,11 +486,6 @@ require_once __DIR__ . '/Include/Header.php';
         <input type="checkbox" class="d-none" name="Admin" id="Admin" value="1"<?= $usr_Admin ? ' checked' : '' ?>>
         <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $usr_EditSelf ? ' checked' : '' ?>>
 
-        <?php
-        // $isEditingSelf is used by the server-side POST handler; pfPanel is
-        // always rendered so JS can show it when Custom mode is selected.
-        $isEditingSelf = ($iPersonID > 0 && $iPersonID === AuthenticationManager::getCurrentUser()->getPersonId());
-        ?>
         <!-- P&F panel: hidden by default; JS shows it when Custom mode is selected -->
         <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <div class="px-3 py-2 border-bottom bg-light">
