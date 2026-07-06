@@ -375,9 +375,10 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Users'), '/admin/system/users'],
     [gettext('Edit User')],
 ]);
-$sPageHeaderButtons = PageHeader::buttons([
+$sPageHeaderButtons = PageHeader::buttons(array_filter([
+    $iPersonID > 0 ? ['label' => gettext('View User'), 'url' => '/v2/user/' . (int)$iPersonID, 'icon' => 'fa-eye'] : null,
     ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
-]);
+]));
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
@@ -486,14 +487,12 @@ require_once __DIR__ . '/Include/Header.php';
         <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $usr_EditSelf ? ' checked' : '' ?>>
 
         <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext('Built-in Permissions') ?></p>
-        <p class="text-body-secondary small mb-3"><?= gettext('These permissions are granted to all users and cannot be removed.') ?></p>
+        <p class="text-body-secondary small mb-3"><?= gettext('All users can view congregation members (People and Families). This permission cannot be removed.') ?></p>
         <div class="row mb-2 permission-row">
-            <label class="col-sm-5 col-form-label text-body-secondary"><?= gettext('Manage Congregation') ?></label>
-            <div class="col-sm-7 d-flex align-items-center gap-2 flex-wrap">
-                <span class="badge bg-success-lt text-success"><i class="ti ti-plus me-1"></i><?= gettext('Add') ?></span>
-                <span class="badge bg-success-lt text-success"><i class="ti ti-pencil me-1"></i><?= gettext('Edit') ?></span>
-                <span class="badge bg-success-lt text-success"><i class="ti ti-trash me-1"></i><?= gettext('Delete') ?></span>
-                <span class="badge bg-secondary-lt text-secondary ms-1"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+            <label class="col-sm-5 col-form-label text-body-secondary"><?= gettext('View Congregation (People &amp; Families)') ?></label>
+            <div class="col-sm-7 d-flex align-items-center gap-2">
+                <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext('View') ?></span>
+                <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
             </div>
         </div>
 
