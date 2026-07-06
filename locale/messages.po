@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 13:37+0000\n"
+"POT-Creation-Date: 2026-07-06 16:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5609,6 +5609,9 @@ msgid "If you delete this type, you will also remove all properties using it and
 msgstr ""
 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr ""
+
+msgid "If you need additional access, please contact your church administrator."
 msgstr ""
 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
