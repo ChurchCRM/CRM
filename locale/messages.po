@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-02 04:17+0000\n"
+"POT-Creation-Date: 2026-07-06 04:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7690,9 +7690,6 @@ msgstr ""
 msgid "Only the note author or an admin may delete this note"
 msgstr ""
 
-msgid "Only the note author or an admin may edit this note"
-msgstr ""
-
 msgid "Oops! Page not found."
 msgstr ""
 
@@ -10408,6 +10405,9 @@ msgstr ""
 msgid "The month that starts your organization's fiscal year"
 msgstr ""
 
+msgid "The note you are trying to edit no longer exists."
+msgstr ""
+
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
 msgstr ""
 
@@ -11958,7 +11958,16 @@ msgstr ""
 msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
 msgstr ""
 
+msgid "You do not have permission to add a note for this family."
+msgstr ""
+
+msgid "You do not have permission to add a note for this person."
+msgstr ""
+
 msgid "You do not have permission to delete this note."
+msgstr ""
+
+msgid "You do not have permission to edit this note"
 msgstr ""
 
 msgid "You do not have permission to edit this note."
@@ -12145,9 +12154,6 @@ msgid "Zip code is required"
 msgstr ""
 
 msgid "ZipArchive extension required for upgrades"
-msgstr ""
-
-msgid "[Private Note — visible only to creator]"
 msgstr ""
 
 msgid "active"
