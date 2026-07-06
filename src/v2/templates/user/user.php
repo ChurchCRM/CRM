@@ -11,25 +11,30 @@ use ChurchCRM\view\PageHeader;
 $sPageTitle = gettext("Settings");
 $sPageSubtitle = $user->getFullName();
 $isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
-$personId = $user->getPersonId();
+// Use distinct variable names so Header.php's reassignment of $personId,
+// $avatarApiUrl, $hasUploadedPhoto, and $photo (always reads the logged-in
+// user's values) cannot clobber the viewed user's values. Same pattern as
+// $viewedUserLocaleInfo used for the locale identity-leak fix.
+$viewedPersonId = $user->getPersonId();
 $firstName = $user->getPerson() ? $user->getPerson()->getFirstName() : '';
 $accountLabel = $isOwnProfile
     ? gettext('My Account')
     : ($firstName !== '' ? sprintf(gettext("%s's Account"), $firstName) : gettext('Account'));
 if (AuthenticationManager::getCurrentUser()->isAdmin()) {
     $sPageHeaderButtons = PageHeader::buttons([
-        ['label' => gettext('Edit'), 'url' => '/UserEditor.php?PersonID=' . $personId, 'icon' => 'fa-pencil'],
+        ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
+        ['label' => gettext('Edit'), 'url' => '/UserEditor.php?PersonID=' . $viewedPersonId, 'icon' => 'fa-pencil'],
     ]);
 }
-$photo = new Photo('Person', $personId);
-$hasUploadedPhoto = $photo->hasUploadedPhoto();
+$viewedPhoto = new Photo('Person', $viewedPersonId);
+$viewedHasUploadedPhoto = $viewedPhoto->hasUploadedPhoto();
 // Append the photo file mtime as a cache-busting version token. The
 // /api/person/{id}/photo endpoint sends a 2-hour public Cache-Control
 // header, so without this the browser shows the stale image after an
 // upload + page reload. See #8662.
-$photoVersion = $photo->getPhotoModifiedTime();
-$avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo'
-    . ($photoVersion > 0 ? ('?v=' . $photoVersion) : '');
+$viewedPhotoVersion = $viewedPhoto->getPhotoModifiedTime();
+$viewedAvatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $viewedPersonId . '/photo'
+    . ($viewedPhotoVersion > 0 ? ('?v=' . $viewedPhotoVersion) : '');
 // Use a distinct variable so Header.php's reassignment of $localeInfo
 // (which always reads the logged-in user's locale) cannot clobber this.
 $viewedUserLocaleInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), $user->getSetting('ui.locale'));
@@ -80,8 +85,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Profile -->
             <div class="row mb-4">
               <div class="col-sm-3 text-center">
-                <?php if ($hasUploadedPhoto): ?>
-                <img id="userAvatar" src="<?= $avatarApiUrl ?>" class="avatar avatar-xl rounded-circle mb-2" alt="<?= InputUtils::escapeAttribute($user->getFullName()) ?>">
+                <?php if ($viewedHasUploadedPhoto): ?>
+                <img id="userAvatar" src="<?= $viewedAvatarApiUrl ?>" class="avatar avatar-xl rounded-circle mb-2" alt="<?= InputUtils::escapeAttribute($user->getFullName()) ?>">
                 <?php else: ?>
                 <?php
                 $nameParts = preg_split('/\s+/', trim($user->getFullName()));
@@ -98,7 +103,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
               </div>
               <div class="col-sm-9">
-                <?php $canEditUserPerson = AuthenticationManager::getCurrentUser()->canEditPerson($personId, $user->getPerson()?->getFamId() ?? 0); ?>
+                <?php $canEditUserPerson = AuthenticationManager::getCurrentUser()->canEditPerson($viewedPersonId, $user->getPerson()?->getFamId() ?? 0); ?>
                 <div class="row mb-2">
                   <div class="col-sm-4 text-body-secondary"><?= gettext("Username") ?></div>
                   <div class="col-sm-8"><?= InputUtils::escapeHTML($user->getUserName()) ?></div>
@@ -108,7 +113,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getFullName()) ?>
                     <?php if ($canEditUserPerson): ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -117,7 +122,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getEmail() ?? '') ?: '<span class="text-body-secondary">' . gettext("Not set") . '</span>' ?>
                     <?php if ($canEditUserPerson): ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -335,6 +340,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <h3 class="card-title"><?= gettext("Permissions") ?></h3>
             <p class="text-body-secondary"><?= gettext("Your current access levels (read-only)") ?></p>
 
+            <?php if ($user->isAdmin()): ?>
+            <!-- Case 1: admin — full access, no individual rows -->
+            <div class="text-center py-4">
+              <div class="mb-3">
+                <span class="badge bg-warning-lt text-warning px-3 py-2" style="font-size:1rem;">
+                  <i class="ti ti-shield-check me-2"></i><?= gettext("Administrator") ?>
+                </span>
+              </div>
+              <p class="text-body-secondary mb-0"><?= gettext("Administrators have full access to all features and data. Individual permissions do not apply.") ?></p>
+            </div>
+            <?php else: ?>
+            <!-- Case 2 (own account, non-admin) or Case 3 (admin viewing another user) -->
+
+            <?php if ($isOwnProfile): ?>
+            <div class="alert alert-info d-flex align-items-center mb-3">
+              <i class="ti ti-info-circle me-2 flex-shrink-0"></i>
+              <span><?= gettext("You are viewing your own account. Contact an administrator to change your permissions.") ?></span>
+            </div>
+            <?php endif; ?>
+
             <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext("Built-in Permissions") ?></p>
             <p class="text-body-secondary small mb-3"><?= gettext("All users can view congregation members (People and Families). This permission cannot be removed.") ?></p>
             <div class="row mb-2">
@@ -348,14 +373,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <hr>
             <?php
             $permissions = [
-                ['label' => gettext("Administrator"), 'granted' => $user->isAdmin()],
-                ['label' => gettext("Add Records (People & Families)"), 'granted' => $user->isAdmin() || $user->isAddRecords()],
-                ['label' => gettext("Edit Records (People & Families)"), 'granted' => $user->isAdmin() || $user->isEditRecords()],
-                ['label' => gettext("Delete Records"), 'granted' => $user->isAdmin() || $user->isDeleteRecords()],
-                ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isAdmin() || $user->isMenuOptions()],
-                ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isAdmin() || $user->isManageGroups()],
-                ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isAdmin() || $user->isFinance()],
-                ['label' => gettext("Manage Notes"), 'granted' => $user->isAdmin() || $user->isNotes()],
+                ['label' => gettext("Add Congregation (People & Families)"), 'granted' => $user->isAddRecords()],
+                ['label' => gettext("Edit Congregation (People & Families)"), 'granted' => $user->isEditRecords()],
+                ['label' => gettext("Delete Congregation (People & Families)"), 'granted' => $user->isDeleteRecords()],
+                ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isMenuOptions()],
+                ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isManageGroups()],
+                ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isFinance()],
+                ['label' => gettext("Manage Notes"), 'granted' => $user->isNotes()],
             ];
             foreach ($permissions as $perm):
             ?>
@@ -370,6 +394,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
             </div>
             <?php endforeach; ?>
+            <?php endif; ?>
           </div>
 
         </div><!-- /.tab-content -->
@@ -384,7 +409,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.viewUserId = <?= $user->getId() ?>;
-    window.CRM.viewPersonId = <?= $personId ?>;
+    window.CRM.viewPersonId = <?= $viewedPersonId ?>;
     window.CRM.viewIsOwnProfile = <?= $isOwnProfile ? 'true' : 'false' ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/user.js') ?>"></script>
