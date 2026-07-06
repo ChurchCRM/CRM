@@ -370,7 +370,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 [gettext("Notes"), $user->isNotes()],
               ] as [$capLabel, $capGranted]): ?>
               <div class="row align-items-center border-top px-3 py-2">
-                <div class="col-sm-6"><?= $capLabel ?></div>
+                <div class="col-sm-6"><?= InputUtils::escapeHTML($capLabel) ?></div>
                 <div class="col-sm-6">
                   <?php if ($capGranted): ?>
                   <span class="badge bg-success-lt text-success"><i class="ti ti-check me-1"></i><?= gettext("Yes") ?></span>

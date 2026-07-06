@@ -540,6 +540,17 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
             </div>
         </div>
+        <?php else: ?>
+        <?php
+        // pfPanel is not rendered for admins/self-edit; emit hidden inputs so
+        // AddRecords/EditRecords/DeleteRecords/Notes are always present in the
+        // form POST. The server uses isset() (presence = 1, absence = 0), so
+        // only include the input when the current value IS 1.
+        ?>
+        <?php if ($usr_AddRecords): ?><input type="hidden" name="AddRecords" value="1"><?php endif; ?>
+        <?php if ($usr_EditRecords): ?><input type="hidden" name="EditRecords" value="1"><?php endif; ?>
+        <?php if ($usr_DeleteRecords): ?><input type="hidden" name="DeleteRecords" value="1"><?php endif; ?>
+        <?php if ($usr_Notes): ?><input type="hidden" name="Notes" value="1"><?php endif; ?>
         <?php endif; ?>
 
         <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
