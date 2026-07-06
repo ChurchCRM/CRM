@@ -80,6 +80,44 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivateLimitedAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // limited.user (id=4): usr_Notes=0, usr_Admin=0, usr_EditRecords=0,
+        // usr_EditSelf=0 — truly zero-permission user. Blocked by
+        // AuthMiddleware::hasNoAdminPermissions() → always returns 403.
+        // Use this fixture ONLY to verify that Notes-gated endpoints return 403.
+        // Do NOT use for routes that should return 200 for authenticated users
+        // (e.g. timeline) — use makePrivateEditRecordsAPICall instead.
+        return cy.makePrivateAPICall(
+            Cypress.env("limited.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
+    "makePrivateEditRecordsAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // judith.matthews (id=95): usr_EditRecords=1, usr_Notes=0, usr_Admin=0.
+        // Passes AuthMiddleware (has EditRecords permission) but canReadNotes()
+        // returns false (no Notes flag). Use for testing routes that should
+        // return 200 to authenticated users but strip note items (e.g. timeline).
+        return cy.makePrivateAPICall(
+            Cypress.env("editrecords.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivateAPICall",
     (key, method, url, body, expectedStatus = 200, timeoutMs) => {
         const requestOptions = {
