@@ -1,8 +1,9 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Bootstrapper;
+use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -29,7 +30,7 @@ $hasUploadedPhoto = $photo->hasUploadedPhoto();
 $photoVersion = $photo->getPhotoModifiedTime();
 $avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo'
     . ($photoVersion > 0 ? ('?v=' . $photoVersion) : '');
-$localeInfo = Bootstrapper::getCurrentLocale();
+$localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), $user->getSetting('ui.locale'));
 
 // Read user settings server-side so controls are pre-populated without JS API calls
 $_userStyle = $user->getSettingValue('ui.style');
@@ -351,6 +352,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
             </div>
             <?php endforeach; ?>
+
+            <hr>
+            <p class="text-body-secondary small fw-medium mb-2"><i class="ti ti-lock me-1"></i><?= gettext("Built-in Permissions") ?></p>
+            <p class="text-body-secondary small mb-3"><?= gettext("These permissions are granted to all users and cannot be removed.") ?></p>
+            <?php
+            $builtinPerms = [
+                gettext("Read People"),
+                gettext("Read Family"),
+            ];
+            foreach ($builtinPerms as $builtinLabel):
+            ?>
+            <div class="row mb-2">
+              <div class="col-sm-6"><?= $builtinLabel ?></div>
+              <div class="col-sm-6">
+                <span class="badge bg-success-lt text-success"><i class="ti ti-lock me-1"></i><?= gettext("Always granted") ?></span>
+              </div>
+            </div>
+            <?php endforeach; ?>
           </div>
 
         </div><!-- /.tab-content -->
@@ -366,6 +385,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.viewUserId = <?= $user->getId() ?>;
     window.CRM.viewPersonId = <?= $personId ?>;
+    window.CRM.viewIsOwnProfile = <?= $isOwnProfile ? 'true' : 'false' ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/user.js') ?>"></script>
 <?php
