@@ -89,9 +89,11 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                     <a class="dropdown-item" href="<?= $Person->getViewURI() ?>">
                       <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                     </a>
+                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $Person->getId() ?>">
                       <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                     </a>
+                    <?php endif; ?>
                     <?php if ($Person->getFamId()) { ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $Person->getFamId() ?>">
                       <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>

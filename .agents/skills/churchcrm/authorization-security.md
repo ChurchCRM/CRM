@@ -23,7 +23,74 @@ The `User` class provides permission checking methods located in `src/ChurchCRM/
 - `isEditRecords()` / `isDeleteRecords()` / `isAddRecords()` - Specific record permissions
 - `isManageGroupsEnabled()` - Can manage groups
 - `isFinanceEnabled()` - Can access finance module
-- `isNotesEnabled()` - Can add/edit notes
+- `isNotesEnabled()` - Can view/edit notes (see detailed semantics below)
+
+## Admin Purity — `isAdmin()` Implies All Permissions <!-- learned: 2026-07-06 -->
+
+When `isAdmin()` returns `true`, **every** permission-check method also returns `true`, regardless of the DB column values. This is code-enforced in `User.php`:
+
+```php
+// Confirmed pattern in every isXxxEnabled() method:
+public function isNotesEnabled(): bool
+{
+    if ($this->isEditSelfExclusive()) { return false; }
+    return $this->isAdmin() || $this->isNotes(); // isAdmin() short-circuits
+}
+// Same for isEditRecordsEnabled(), isFinanceEnabled(), isManageGroupsEnabled(), etc.
+```
+
+**Exception — private-note content**: even when `isAdmin()=true`, admins:
+- CANNOT view or edit the content of other users' private notes via the API (`canReadPrivateNotes()` → `isAdmin()`, BUT `Note::isVisibleTo()` gates the *content* read — the TimelineService renders a `[Private Note]` placeholder instead of the content for notes the admin did not write).
+- CAN see that a private note exists (the placeholder appears in the timeline).
+- CAN delete any note — the delete handler checks `isAdmin() || isAuthor`. Admins pass both `NotesRoleAuthMiddleware` (because `isAdmin() → isNotesEnabled()=true`) and the inner author/admin check.
+
+## Notes Permission (`isNotesEnabled()`) Semantics <!-- learned: 2026-07-06 -->
+
+`isNotesEnabled()` returns `true` for admin users (admin purity) and for users where `usr_Notes=1`. What it grants:
+
+| Action | Notes=1 (non-admin) | Admin |
+|--------|--------------------|--------------|
+| View public notes by others | ✅ | ✅ |
+| Edit public notes | ✅ | ✅ |
+| View own private notes | ✅ (author check via `getEnteredBy()`) | ✅ |
+| Edit own private notes | ✅ | ✅ |
+| View private notes by other users | ❌ | ❌ (placeholder only) |
+| Edit private notes by other users | ❌ | ✅ (admin bypass in handler) |
+| Delete any note | ❌ (author only) | ✅ |
+| Access Note API routes at all | ✅ | ✅ |
+
+**Without Notes permission**: users cannot access any Note API routes — all Note routes are wrapped with `NotesRoleAuthMiddleware` which calls `isNotesEnabled()`. A user without Notes cannot see any notes at all, including public ones.
+
+## Zero-Permission User (All Flags = 0) <!-- learned: 2026-07-06 -->
+
+A user where `usr_Admin=0`, `usr_EditSelf=0`, and all other permission columns are 0 passes `hasNoAdminPermissions()` returning `true`:
+
+```php
+public function hasNoAdminPermissions(): bool
+{
+    if ($this->isAdmin()) { return false; }     // admin → has permissions
+    if ($this->isEditSelf()) { return true; }  // pure EditSelf → no admin perms
+    return !$this->isAddRecords() && ...;       // all-zero → no admin perms
+}
+```
+
+`AuthMiddleware` redirects such users to `/external/limited-access`. They can log in but gain NO CRM access — all internal pages and API routes return 403 or redirect.
+
+## Self-Service User Scope (EditSelf-Only) <!-- learned: 2026-07-06 -->
+
+A user with `usr_EditSelf=1` and all other permission columns `= 0` ("EditSelf-only") is gated by the entry-gate rule:
+- `hasNoAdminPermissions()` returns `true` for EditSelf-only users → redirected to `/external/limited-access` on every internal CRM page
+- Their only self-service surface is the token-scoped `/external/verify/{token}` flow
+- `canViewFamily()` is true only for their own family; `canEditPerson()` scoped to their own family members
+- **`usr_EditSelf` defaults to `0` on new user creation** (must be explicitly granted in the UI — `UserEditor.php`)
+
+**EditSelf is NOT a default right**. A user without explicit `usr_EditSelf=1` does NOT get the "Verify Family Info" link on the limited-access page, even if they belong to a family (enforced in `src/external/routes/system.php` via `isEditSelfEnabled()` check before issuing the verify token).
+
+## Family/Person View Access <!-- learned: 2026-07-06 -->
+
+- **Any user where `hasNoAdminPermissions()` returns `false`** (i.e. they have at least one module permission OR they are admin) can view ALL families and persons in the CRM.
+- **EditSelf-only users** are restricted to their own family via `canViewFamily(int $familyId)` — returns `true` only when `$familyId === $person->getFamId()`.
+- **Zero-permission users** (all flags 0) are redirected away from CRM pages before any family/person check runs.
 
 ### Object-level method (check permission for specific person)
 

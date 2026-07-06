@@ -501,8 +501,8 @@ require_once __DIR__ . '/Include/Header.php';
             <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions:') ?></p>
             <?php
             $permissions = [
-                ['name' => 'AddRecords', 'label' => gettext('Add Records'), 'checked' => $usr_AddRecords],
-                ['name' => 'EditRecords', 'label' => gettext('Edit Records'), 'checked' => $usr_EditRecords],
+                ['name' => 'AddRecords', 'label' => gettext('Add Records (People & Families)'), 'checked' => $usr_AddRecords],
+                ['name' => 'EditRecords', 'label' => gettext('Edit Records (People & Families)'), 'checked' => $usr_EditRecords],
                 ['name' => 'DeleteRecords', 'label' => gettext('Delete Records'), 'checked' => $usr_DeleteRecords],
                 ['name' => 'MenuOptions', 'label' => gettext('Manage Properties and Classifications'), 'checked' => $usr_MenuOptions],
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'), 'checked' => $usr_ManageGroups],
