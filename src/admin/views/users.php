@@ -117,6 +117,11 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
             <span class="badge bg-info text-white"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
         </div>
     </div>
+    <div class="card-body border-bottom py-2 text-body-secondary small">
+        <span class="me-3"><i class="ti ti-shield-check text-danger me-1"></i><?= gettext('Admin') ?></span>
+        <span class="me-3"><i class="ti ti-user-check text-warning me-1"></i><?= gettext('Self-service') ?></span>
+        <span><i class="ti ti-adjustments text-azure me-1"></i><?= gettext('Custom') ?></span>
+    </div>
     <div class="card-body" style="overflow: visible;">
         <table class="table table-hover w-100" id="user-listing-table">
                 <thead>
@@ -141,11 +146,11 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                             </td>
                             <td class="text-center">
                                 <?php if ($user->isAdmin()): ?>
-                                <span class="badge bg-danger"><i class="ti ti-shield-check me-1"></i><?= gettext('Admin') ?></span>
+                                <i class="ti ti-shield-check text-danger fs-4" title="<?= gettext('Administrator') ?>"></i>
                                 <?php elseif ($user->isEditSelf()): ?>
-                                <span class="badge bg-warning"><i class="ti ti-user-check me-1"></i><?= gettext('Self-service') ?></span>
+                                <i class="ti ti-user-check text-warning fs-4" title="<?= gettext('Self-service only') ?>"></i>
                                 <?php else: ?>
-                                <span class="badge bg-azure-lt text-azure"><i class="ti ti-settings me-1"></i><?= gettext('Custom') ?></span>
+                                <i class="ti ti-adjustments text-azure fs-4" title="<?= gettext('Custom permissions') ?>"></i>
                                 <?php endif; ?>
                             </td>
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
