@@ -39,10 +39,11 @@ public function isNotesEnabled(): bool
 // Same for isEditRecordsEnabled(), isFinanceEnabled(), isManageGroupsEnabled(), etc.
 ```
 
-**Exception — private-note content**: even when `isAdmin()=true`, admins:
-- CANNOT view or edit the content of other users' private notes via the API (`canReadPrivateNotes()` → `isAdmin()`, BUT `Note::isVisibleTo()` gates the *content* read — the TimelineService renders a `[Private Note]` placeholder instead of the content for notes the admin did not write).
-- CAN see that a private note exists (the placeholder appears in the timeline).
-- CAN delete any note — the delete handler checks `isAdmin() || isAuthor`. Admins pass both `NotesRoleAuthMiddleware` (because `isAdmin() → isNotesEnabled()=true`) and the inner author/admin check.
+**Private-note content — admin sees full content (no placeholder)**: `Note::isVisibleTo()` calls `canReadPrivateNotes()` which returns `isAdmin()`. So admins:
+- CAN view full content of any private note authored by another user (code-verified in `Note::isVisibleTo()` → `canReadPrivateNotes()` → `isAdmin()=true` returns full item, no placeholder).
+- CAN edit any private note — the PUT handler checks `$isAuthor || $adminMayEdit` where `$adminMayEdit = $currentUser->isAdmin()`.
+- CAN delete any note — the DELETE handler checks `isAdmin() || isAuthor`. Admins pass both `NotesRoleAuthMiddleware` (because `isAdmin() → isNotesEnabled()=true`) and the inner author/admin check.
+- The old `[Private Note]` placeholder is NOT present in the current codebase — `noteToTimelineItem()` returns `null` (note absent) for non-admin non-author viewers; admin gets the full item.
 
 ## Notes Permission (`isNotesEnabled()`) Semantics <!-- learned: 2026-07-06 -->
 
@@ -54,7 +55,7 @@ public function isNotesEnabled(): bool
 | Edit public notes | ✅ | ✅ |
 | View own private notes | ✅ (author check via `getEnteredBy()`) | ✅ |
 | Edit own private notes | ✅ | ✅ |
-| View private notes by other users | ❌ | ❌ (placeholder only) |
+| View private notes by other users | ❌ (absent from list/timeline — not a 403) | ✅ (admin sees full content via `canReadPrivateNotes()→isAdmin()`) |
 | Edit private notes by other users | ❌ | ✅ (admin bypass in handler) |
 | Delete any note | ❌ (author only) | ✅ |
 | Access Note API routes at all | ✅ | ✅ |
@@ -84,7 +85,7 @@ A user with `usr_EditSelf=1` and all other permission columns `= 0` ("EditSelf-o
 - `canViewFamily()` is true only for their own family; `canEditPerson()` scoped to their own family members
 - **`usr_EditSelf` defaults to `0` on new user creation** (must be explicitly granted in the UI — `UserEditor.php`)
 
-**EditSelf is NOT a default right**. A user without explicit `usr_EditSelf=1` does NOT get the "Verify Family Info" link on the limited-access page, even if they belong to a family (enforced in `src/external/routes/system.php` via `isEditSelfEnabled()` check before issuing the verify token).
+**EditSelf is NOT a default right**. The `$verifyUrl` on the limited-access page is only rendered when it is non-empty (`!empty($verifyUrl)` in `limited-access.php`). ⚠️ **Current master gap**: `src/external/routes/system.php` unconditionally sets `$verifyUrl` for any user who belongs to a family (no `isEditSelfEnabled()` check), so zero-permission users with a family are shown the Verify button. There is currently no effective code-level protection against this for users in a family. An `isEditSelfEnabled()` guard before token creation is the intended fix (pending PR #9081).
 
 ## Family/Person View Access <!-- learned: 2026-07-06 -->
 
@@ -457,7 +458,7 @@ Any PR that touches the files listed below **must be reviewed against the confir
 | `src/ChurchCRM/Slim/Middleware/AuthMiddleware.php` | Entry gate for all internal CRM and API routes |
 | `src/ChurchCRM/Slim/Middleware/Api/FamilyMiddleware.php` | `canViewFamily()` — GHSA-jjcj-h3cm-p7x7 scope fix |
 | `src/ChurchCRM/Slim/Middleware/Api/FamilyReadMiddleware.php` | `canReadFamily()` — low-sensitivity read baseline |
-| `src/ChurchCRM/Slim/AbstractEntityMiddleware.php` | `postEntityLoad()` hook — base class for all entity middleware |
+| `src/ChurchCRM/Slim/Middleware/Api/AbstractEntityMiddleware.php` | `postEntityLoad()` hook — base class for all entity middleware |
 | `src/Include/PageInit.php` | Legacy page permission gate |
 | `src/api/routes/people/notes.php` | Notes visibility and privacy rules |
 | `src/external/routes/system.php` | verifyFamily token — EditSelf gate |
@@ -468,20 +469,20 @@ Any PR that touches the files listed below **must be reviewed against the confir
 
 **1. Admin purity**
 - [ ] `isAdmin()=true` still causes every `isXxxEnabled()` method to return `true` regardless of DB value
-- [ ] Admin still cannot view or edit the *content* of another user's private note (`Note::isVisible()` still restricts)
-- [ ] Admin can still see the `[Private Note]` placeholder in TimelineService
+- [ ] Admin can still see **full content** of private notes authored by others (no placeholder; `Note::isVisibleTo()` → `canReadPrivateNotes()` → `isAdmin()` returns the full item)
 - [ ] Admin can still delete any note (admin purity passes `NotesRoleAuthMiddleware`; DELETE handler checks `isAdmin() || isAuthor`)
+- [ ] Admin can still PUT (edit) any note (PUT handler checks `isAuthor || isAdmin()`; admin always passes)
 
 **2. EditSelf exclusivity**
 - [ ] `hasNoAdminPermissions()` still returns `true` for any user with `isEditSelf()=true` (EditSelf is excluded from the 7-flag check deliberately)
 - [ ] EditSelf-only users are still redirected to `/external/limited-access` by `AuthMiddleware`
 - [ ] EditSelf-only users still cannot reach any internal CRM or API route
 - [ ] `usr_EditSelf` still defaults to `0` for new users in `UserEditor.php`
-- [ ] `isEditSelfEnabled()` guard is still required before issuing a verifyFamily token in `system.php`
+- [ ] `isEditSelfEnabled()` guard before token creation in `system.php` is present (⚠️ NOT YET implemented in current master — pending PR #9081; audit this item only after that PR merges)
 
 **3. Notes permission (`isNotesEnabled()`)**
 - [ ] `NotesRoleAuthMiddleware` still gates all Note API routes (list, create, edit, delete)
-- [ ] `Note::isVisible($userId)` still restricts private note content to the creator (`getEnteredBy() === $userId`)
+- [ ] `Note::isVisibleTo(User $user)` correctly enforces: public notes visible to all Notes=1 users; private notes visible to the author and admins only (`canReadPrivateNotes()` → `isAdmin()`); non-admin non-author callers get `null` (note absent from list/timeline, not a 403)
 - [ ] Users without Notes permission still have zero access to notes created by others
 - [ ] A user can still view and edit their own private notes regardless of whether Notes is enabled (author exception)
 
