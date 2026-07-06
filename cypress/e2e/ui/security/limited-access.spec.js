@@ -3,7 +3,7 @@
 /**
  * Tests for limited-access users (EditSelf only, no admin permissions).
  *
- * Seed data: user "limited.user" (person ID 4, family 2) has
+ * Seed data: user "limited.user" (person ID 4, family 1 — Campbell) has
  * usr_EditSelf=1 and all other permissions=0.
  * Password: "changeme" (same as admin).
  *
