@@ -131,6 +131,29 @@ describe("Read-default policy — plain authenticated user can read any family/p
     });
 
     // -----------------------------------------------------------------------
+    // GET /api/family/{familyId}/nav — Family navigation
+    // -----------------------------------------------------------------------
+    describe("GET /api/family/{familyId}/nav - Family navigation", () => {
+        it("plain-auth user can read family 1 nav → 200", () => {
+            cy.makePrivatePlainAuthAPICall("GET", "/api/family/1/nav", null, 200).then(
+                (response) => {
+                    expect(response.body).to.have.property("PreFamilyId");
+                    expect(response.body).to.have.property("NextFamilyId");
+                },
+            );
+        });
+
+        it("plain-auth user can read family 20 nav → 200", () => {
+            cy.makePrivatePlainAuthAPICall("GET", "/api/family/20/nav", null, 200).then(
+                (response) => {
+                    expect(response.body).to.have.property("PreFamilyId");
+                    expect(response.body).to.have.property("NextFamilyId");
+                },
+            );
+        });
+    });
+
+    // -----------------------------------------------------------------------
     // GET /api/family/{familyId}/notes — requires Notes permission
     // -----------------------------------------------------------------------
     describe("GET /api/family/{familyId}/notes - Family notes", () => {

@@ -446,6 +446,10 @@ it by removing the hook or bypassing.
 contributors pushed before CI feedback arrived. The pre-push hook closes
 that loop locally so feedback is instant and the master branch stays green.
 
+### Permission-Sensitive Files — Mandatory Audit Before Merge <!-- learned: 2026-07-06 -->
+
+If a PR diff touches any file listed in `authorization-security.md → PR Permission Audit`, the reviewer **must** run through the permission audit checklist in that section before recommending merge. No exceptions.
+
 **Examples:**
 
 ```

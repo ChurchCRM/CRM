@@ -79,6 +79,34 @@ Cypress.Commands.add(
     },
 );
 
+/**
+ * EditSelf+Notes user — regression sentinel for FamilyReadMiddleware vs FamilyMiddleware.
+ *
+ * User: lena.black (ID 100, family 20) with usr_EditSelf=1, usr_Notes=1 in DB.
+ *
+ * Post-PR#9016 (EditSelf exclusive mode): hasNoAdminPermissions() returns true for any
+ * user with isEditSelf()=true, regardless of Notes. AuthMiddleware therefore blocks this
+ * user (403) before reaching FamilyReadMiddleware or FamilyMiddleware.
+ *
+ * Future use: if EditSelf exclusivity is ever relaxed to permit EditSelf+Notes, this user
+ * should get 200 on avatar/nav/photo (FamilyReadMiddleware, canReadFamily=true) and 403 on
+ * full profile/notes for non-own family 1 (FamilyMiddleware, canViewFamily=false). That
+ * would make these tests detect a FamilyReadMiddleware→FamilyMiddleware regression.
+ */
+Cypress.Commands.add(
+    "makePrivateEditSelfPlusNotesAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        return cy.makePrivateAPICall(
+            Cypress.env("selfedit.plus.notes.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
 Cypress.Commands.add(
     "makePrivateLimitedAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {

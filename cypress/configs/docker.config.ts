@@ -19,6 +19,7 @@ export default defineConfig({
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
     'nofinance.api.key': 'M_5K4ZWTdBTmMOTGTfLWCmXFbETgHNG6_6FNZXJJulicn_WweBjm',
     'selfedit.api.key': 'amandaBlackEditSelfOnlyApiKey12345678901',
+    'selfedit.plus.notes.api.key': 'editSelfPlusNotesApiKeyForTesting12345678901',
     'plainauth.api.key': 'plainAuthReadOnlyApiKeyForTesting12345678901',
     'limited.api.key': 'limitedUserApiKeyForTesting123456789012345678',
     'editrecords.api.key': 'judithMatthewsEditRecordsNoNotesApiKey1234',

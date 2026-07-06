@@ -114,6 +114,42 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
 - `true` for Admin/EditRecords; EditSelf users restricted to their own family.
 - Enforced centrally in `FamilyMiddleware::process()` (overrides the base to run after entity load), so every route using `FamilyMiddleware` is scoped automatically.
 
+## Low-Sensitivity Family Read Endpoints — FamilyReadMiddleware <!-- learned: 2026-07-02 -->
+
+Not all family API routes need the `canViewFamily()` scope restriction. Avatar, nav (prev/next IDs),
+and photo GET are considered non-sensitive metadata; they are accessible to any authenticated user
+who passes `hasNoAdminPermissions()` in `AuthMiddleware` (i.e. has at least Notes, EditRecords, etc.).
+
+Use a **separate `FamilyReadMiddleware` class** (not a constructor parameter on `FamilyMiddleware`)
+for these endpoints. The entity is still loaded (404 on missing family), but authorisation uses
+`canReadFamily()` instead of `canViewFamily()`. This mirrors the person pattern where avatar/photo
+GET routes are registered without `PersonMiddleware`.
+
+**Anti-pattern:** Do NOT add a constructor parameter to `FamilyMiddleware` (e.g. `new FamilyMiddleware(false)`).
+Slim 4 resolves `FamilyMiddleware::class` by calling `new FamilyMiddleware()` at request time; a
+non-injected constructor parameter causes all family routes to return 500.
+
+```php
+// Low-sensitivity group — read baseline, no EditSelf scope restriction
+$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    $group->get('/avatar', ...);
+    $group->get('/nav', ...);
+    $group->get('/photo', ...)->add(new Cache(...));
+})->add(FamilyReadMiddleware::class);
+
+// Sensitive group — canViewFamily() scope enforced (GHSA-jjcj-h3cm-p7x7)
+$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    $group->get('', ...);
+    $group->get('/geolocation', ...);
+    // write routes ...
+})->add(FamilyMiddleware::class);
+```
+
+Endpoints that remain fully scoped (EditSelf restricted to own family):
+- `GET /family/{id}` — full profile (address/phone/email)
+- `GET /family/{id}/geolocation` — lat/lng of family address
+- Notes, timeline, write operations
+
 ## Two-Layer EditSelf Authorization (entry gate + object-level) <!-- learned: 2026-06-14 -->
 
 EditSelf scoping is enforced in **two layers** — know which one applies:
@@ -408,3 +444,55 @@ This ensures security vulnerabilities are not publicly disclosed and directs rep
 - [Security Best Practices](./security-best-practices.md) - HTML sanitization, XSS protection, TLS/SSL verification, API error handling, CVE vulnerability handling
 - [Code Standards](./code-standards.md) - General code quality and standards
 - [API Development](./api-development.md) - API error handling and security response patterns
+
+## PR Permission Audit — Required Before Merge <!-- learned: 2026-07-06 -->
+
+Any PR that touches the files listed below **must be reviewed against the confirmed permission model** before it can be recommended for merge. This is a hard gate, not a suggestion.
+
+### Trigger files — any change to these requires a permission audit
+
+| File | Why |
+|------|-----|
+| `src/ChurchCRM/model/ChurchCRM/User.php` | Admin purity shortcut, `hasNoAdminPermissions()`, all `isXxxEnabled()` methods |
+| `src/ChurchCRM/Slim/Middleware/AuthMiddleware.php` | Entry gate for all internal CRM and API routes |
+| `src/ChurchCRM/Slim/Middleware/Api/FamilyMiddleware.php` | `canViewFamily()` — GHSA-jjcj-h3cm-p7x7 scope fix |
+| `src/ChurchCRM/Slim/Middleware/Api/FamilyReadMiddleware.php` | `canReadFamily()` — low-sensitivity read baseline |
+| `src/ChurchCRM/Slim/AbstractEntityMiddleware.php` | `postEntityLoad()` hook — base class for all entity middleware |
+| `src/Include/PageInit.php` | Legacy page permission gate |
+| `src/api/routes/people/notes.php` | Notes visibility and privacy rules |
+| `src/external/routes/system.php` | verifyFamily token — EditSelf gate |
+| `src/UserEditor.php` | New user permission defaults |
+| `cypress/data/seed.sql` | Test user permission flags must match intended model |
+
+### Checklist — verify all rules still hold after the change
+
+**1. Admin purity**
+- [ ] `isAdmin()=true` still causes every `isXxxEnabled()` method to return `true` regardless of DB value
+- [ ] Admin still cannot view or edit the *content* of another user's private note (`Note::isVisible()` still restricts)
+- [ ] Admin can still see the `[Private Note]` placeholder in TimelineService
+- [ ] Admin can still delete any note (admin purity passes `NotesRoleAuthMiddleware`; DELETE handler checks `isAdmin() || isAuthor`)
+
+**2. EditSelf exclusivity**
+- [ ] `hasNoAdminPermissions()` still returns `true` for any user with `isEditSelf()=true` (EditSelf is excluded from the 7-flag check deliberately)
+- [ ] EditSelf-only users are still redirected to `/external/limited-access` by `AuthMiddleware`
+- [ ] EditSelf-only users still cannot reach any internal CRM or API route
+- [ ] `usr_EditSelf` still defaults to `0` for new users in `UserEditor.php`
+- [ ] `isEditSelfEnabled()` guard is still required before issuing a verifyFamily token in `system.php`
+
+**3. Notes permission (`isNotesEnabled()`)**
+- [ ] `NotesRoleAuthMiddleware` still gates all Note API routes (list, create, edit, delete)
+- [ ] `Note::isVisible($userId)` still restricts private note content to the creator (`getEnteredBy() === $userId`)
+- [ ] Users without Notes permission still have zero access to notes created by others
+- [ ] A user can still view and edit their own private notes regardless of whether Notes is enabled (author exception)
+
+**4. Family / person view access**
+- [ ] Any user with ≥1 module permission (i.e., `hasNoAdminPermissions()=false`) can view ALL families and persons
+- [ ] `canViewFamily()` still restricts EditSelf-only users to their own family and family members
+- [ ] Low-sensitivity family endpoints (avatar, photo, nav) still use `FamilyReadMiddleware::class`
+- [ ] Sensitive / write family endpoints still use `FamilyMiddleware::class` (`canViewFamily()`)
+
+**5. Seed data integrity (Cypress)**
+- [ ] Every test user's `user_usr` row permission flags match the stated intent in comments/spec headers
+- [ ] Zero-permission user (`noperm.user`, ID 901): all 8 flags = 0 including `usr_EditSelf=0`
+- [ ] EditSelf-only user: `usr_EditSelf=1`, all other flags = 0
+- [ ] EditSelf+Notes sentinel (`lena.black`, ID 100): `usr_EditSelf=1`, `usr_Notes=1`, all others = 0
