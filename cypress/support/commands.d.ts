@@ -140,6 +140,31 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * Make API request as limited.user (id=4) — usr_Notes=0, usr_Admin=0,
+     * usr_EditRecords=0, usr_EditSelf=0. Blocked by hasNoAdminPermissions()
+     * → always returns 403. Use ONLY for Notes-gated 403 assertions.
+     */
+    makePrivateLimitedAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number
+    ): Chainable<any>;
+
+    /**
+     * Make API request as judith.matthews (id=95) — usr_EditRecords=1,
+     * usr_Notes=0, usr_Admin=0. Passes AuthMiddleware (has EditRecords) but
+     * canReadNotes() returns false. Use for timeline "200 but notes stripped"
+     * assertions.
+     */
+    makePrivateEditRecordsAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number
+    ): Chainable<any>;
+
+    /**
      * Make API request with specific API key
      * @param key - API key to use
      * @param method - HTTP method
