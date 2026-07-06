@@ -30,7 +30,9 @@ $hasUploadedPhoto = $photo->hasUploadedPhoto();
 $photoVersion = $photo->getPhotoModifiedTime();
 $avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo'
     . ($photoVersion > 0 ? ('?v=' . $photoVersion) : '');
-$localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), $user->getSetting('ui.locale'));
+// Use a distinct variable so Header.php's reassignment of $localeInfo
+// (which always reads the logged-in user's locale) cannot clobber this.
+$viewedUserLocaleInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), $user->getSetting('ui.locale'));
 
 // Read user settings server-side so controls are pre-populated without JS API calls
 $_userStyle = $user->getSettingValue('ui.style');
@@ -242,22 +244,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <select id="user-locale-setting" class="form-select">
                 </select>
-                <small class="form-hint"><?= gettext("Override the system default locale") ?>: <strong><?= $localeInfo->getSystemLocale() ?></strong></small>
+                <small class="form-hint"><?= gettext("Override the system default locale") ?>: <strong><?= $viewedUserLocaleInfo->getSystemLocale() ?></strong></small>
               </div>
             </div>
 
-            <?php if ($localeInfo->shouldShowTranslationPercentage()): ?>
+            <?php if ($viewedUserLocaleInfo->shouldShowTranslationPercentage()): ?>
             <div class="row mb-3">
               <label class="col-sm-3 col-form-label"><?= gettext("Translation Progress") ?></label>
               <div class="col-sm-9">
                 <div class="progress mb-2" style="height: 1.25rem;">
-                  <div class="progress-bar bg-<?= $localeInfo->getTranslationPercentage() >= 90 ? 'success' : ($localeInfo->getTranslationPercentage() >= 50 ? 'warning' : 'danger') ?>"
+                  <div class="progress-bar bg-<?= $viewedUserLocaleInfo->getTranslationPercentage() >= 90 ? 'success' : ($viewedUserLocaleInfo->getTranslationPercentage() >= 50 ? 'warning' : 'danger') ?>"
                        role="progressbar"
-                       style="width: <?= $localeInfo->getTranslationPercentage() ?>%"
-                       aria-valuenow="<?= $localeInfo->getTranslationPercentage() ?>"
+                       style="width: <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%"
+                       aria-valuenow="<?= $viewedUserLocaleInfo->getTranslationPercentage() ?>"
                        aria-valuemin="0"
                        aria-valuemax="100">
-                    <?= $localeInfo->getTranslationPercentage() ?>%
+                    <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%
                   </div>
                 </div>
                 <small class="form-hint"><?= gettext("Percentage of strings translated for your current language") ?></small>

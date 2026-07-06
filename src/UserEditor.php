@@ -522,9 +522,9 @@ require_once __DIR__ . '/Include/Header.php';
             <label class="col-sm-5 col-form-label text-body-secondary"><?= $builtinLabel ?></label>
             <div class="col-sm-7 d-flex align-items-center">
                 <label class="form-check form-switch mb-0 me-2">
-                    <input class="form-check-input" type="checkbox" disabled checked>
+                    <input class="form-check-input" type="checkbox" disabled checked aria-label="<?= InputUtils::escapeAttribute($builtinLabel) ?>">
                 </label>
-                <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
             </div>
         </div>
         <?php endforeach; ?>
