@@ -27,6 +27,7 @@
 | `vi` | Vietnamese | 3929 | 100% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 3928 | 99.97% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 3928 | 99.97% | 🟢 Complete | ✅ Yes |
+| `ml` | Malayalam | 3928 | 99.97% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
@@ -34,7 +35,6 @@
 | `id` | Indonesian | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
 | `ko` | Korean | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `ml` | Malayalam | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
 | `pl` | Polish | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
