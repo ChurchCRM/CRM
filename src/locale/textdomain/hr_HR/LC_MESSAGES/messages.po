@@ -2002,18 +2002,6 @@ msgid "Login Name"
 msgstr "Korisničko ime"
 
 #: 
-msgid "Add Records"
-msgstr "Dodaj zapise"
-
-#: 
-msgid "Edit Records"
-msgstr "Uredi zapise"
-
-#: 
-msgid "Delete Records"
-msgstr "Obriši zapise"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Upravljaj svojstvima i klasifikacijama"
 
@@ -2024,14 +2012,6 @@ msgstr "Upravljaj skupinama i ulogama"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Upravljaj darovima i financijama"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Pregledaj, dodaj i uredi bilješke"
-
-#: 
-msgid "Edit Self"
-msgstr "Uredi sebe"
 
 #: 
 msgid "Admin"
@@ -5317,10 +5297,6 @@ msgstr "Hebrejski"
 #: 
 msgid "Permissions"
 msgstr "Dozvole"
-
-#: 
-msgid "Manage Notes"
-msgstr "Upravljaj bilješkama"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -10745,10 +10721,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Samo autor bilješke ili administrator može obrisati ovu bilješku"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Samo autor bilješke ili administrator može urediti ovu bilješku"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Pregled župnih događaja, prisutnosti i aktivnosti"
 
@@ -12355,10 +12327,6 @@ msgstr "Samo baza podataka (.sql) ili potpuna arhiva (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Zadani broj redaka prikazanih u tablicama podataka. Stupa na snagu pri sljedećem učitavanju stranice."
 
-#: 
-msgid "Edit own family only"
-msgstr "Uredi samo vlastitu obitelj"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12371,10 +12339,6 @@ msgstr "Ispravljanje netočnih ili nezgrapnih prijevoda na vašem jeziku"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Pronašli ste grešku s prijevodima?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Daje sve privilegije"
 
 #: 
 msgid "Green"
@@ -14319,10 +14283,6 @@ msgstr "Nemate dozvolu za brisanje ove bilješke."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nemate dozvolu za uređivanje ove bilješke."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privatna bilješka — vidljiva samo kreatoru]"
 
 #: 
 msgid "seconds"

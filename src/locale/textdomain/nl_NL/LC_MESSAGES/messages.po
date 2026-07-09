@@ -2006,18 +2006,6 @@ msgid "Login Name"
 msgstr "Login Naam"
 
 #: 
-msgid "Add Records"
-msgstr "Voeg items toe"
-
-#: 
-msgid "Edit Records"
-msgstr "Bewerk Records"
-
-#: 
-msgid "Delete Records"
-msgstr "Verwijder Records"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Beheer kenmerken"
 
@@ -2028,14 +2016,6 @@ msgstr "Beheer groepen en rollen"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Beheer donaties en financiën"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Bekijk, Maak en bewerk Notities"
-
-#: 
-msgid "Edit Self"
-msgstr "Bewerk Eigen Gegevens"
 
 #: 
 msgid "Admin"
@@ -5552,10 +5532,6 @@ msgstr "Hebreeuws"
 #: 
 msgid "Permissions"
 msgstr "Rechten"
-
-#: 
-msgid "Manage Notes"
-msgstr "Notities beheren"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11011,10 +10987,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Alleen de auteur van de notitie of een beheerder mag deze notitie verwijderen"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Alleen de auteur van de notitie of een beheerder mag deze notitie bewerken"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Overzicht van kerkelijke evenementen, aanwezigheid en activiteiten"
 
@@ -12621,10 +12593,6 @@ msgstr "Alleen database (.sql) of volledig archief (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Standaard aantal rijen weergegeven in datatabellen. Van kracht bij het laden van de volgende pagina."
 
-#: 
-msgid "Edit own family only"
-msgstr "Alleen eigen gezin bewerken"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12637,10 +12605,6 @@ msgstr "Onjuiste of onhandige vertalingen in uw taal corrigeren"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Een fout gevonden in de vertalingen?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Verleent alle rechten"
 
 #: 
 msgid "Green"
@@ -14600,10 +14564,6 @@ msgstr "U heeft geen toestemming om deze notitie te verwijderen."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "U heeft geen toestemming om deze notitie te bewerken."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privénotitie — alleen zichtbaar voor de auteur]"
 
 #: 
 msgid "seconds"

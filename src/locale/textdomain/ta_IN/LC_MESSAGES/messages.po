@@ -2027,18 +2027,6 @@ msgid "Login Name"
 msgstr "உள்நுழைவு பெயர்"
 
 #: 
-msgid "Add Records"
-msgstr "பதிவுகளைச் சேர்க்கவும்"
-
-#: 
-msgid "Edit Records"
-msgstr "பதிவுகளைத் திருத்து"
-
-#: 
-msgid "Delete Records"
-msgstr "பதிவுகளை நீக்கு"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "பண்புகள் மற்றும் வகைப்பாடுகளை நிர்வகிக்கவும்"
 
@@ -2049,14 +2037,6 @@ msgstr "குழுக்கள் மற்றும் வேலைகளை/
 #: 
 msgid "Manage Donations and Finance"
 msgstr "நன்கொடைகள் மற்றும் நிதியை நிர்வகிக்கவும்"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "குறிப்புகளைப் பார்க்கவும், சேர்க்கவும் மற்றும் தகவல் திருத்தம் செய்யவும்"
-
-#: 
-msgid "Edit Self"
-msgstr "தன்னை பற்றிய தகவல் திருத்தம் செய்யவும்"
 
 #: 
 msgid "Admin"
@@ -5588,10 +5568,6 @@ msgstr "ஹீப்ரு"
 #: 
 msgid "Permissions"
 msgstr "அனுமதிகள்"
-
-#: 
-msgid "Manage Notes"
-msgstr "குறிப்புகளை நிர்வகிக்கவும்"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11054,10 +11030,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "குறிப்பின் ஆசிரியர் அல்லது நிர்வாகி மட்டுமே இந்தக் குறிப்பை நீக்க முடியும்"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "குறிப்பின் ஆசிரியர் அல்லது நிர்வாகி மட்டுமே இந்தக் குறிப்பைத் திருத்த முடியும்"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "திருச்சபை நிகழ்வுகள், வருகை மற்றும் நடவடிக்கைகளின் மேலோட்டம்"
 
@@ -12668,10 +12640,6 @@ msgstr "தரவுத்தளம் மட்டும் (.sql) அல்ல
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "தரவு அட்டவணைகளில் காட்டப்படும் இயல்பு வரிசைகளின் எண்ணிக்கை. அடுத்த பக்க ஏற்றத்தில் செயல்படும்."
 
-#: 
-msgid "Edit own family only"
-msgstr "சொந்த குடும்பத்தை மட்டும் திருத்து"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12684,10 +12652,6 @@ msgstr "உங்கள் மொழியில் தவறான அல்ல
 #: 
 msgid "Found a bug with translations?"
 msgstr "மொழிபெயர்ப்புகளில் பிழை கண்டீர்களா?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "அனைத்து சலுகைகளும் வழங்கப்படுகின்றன"
 
 #: 
 msgid "Green"
@@ -14647,10 +14611,6 @@ msgstr "இந்த குறிப்பை நீக்க உங்களு
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "இந்த குறிப்பை திருத்த உங்களுக்கு அனுமதி இல்லை."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[தனிப்பட்ட குறிப்பு — உருவாக்குநருக்கு மட்டும் காணப்படும்]"
 
 #: 
 msgid "seconds"

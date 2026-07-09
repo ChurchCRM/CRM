@@ -2013,18 +2013,6 @@ msgid "Login Name"
 msgstr "Kirjautumistunnus"
 
 #: 
-msgid "Add Records"
-msgstr "Lisää tietoja"
-
-#: 
-msgid "Edit Records"
-msgstr "Muokkaa tietoja"
-
-#: 
-msgid "Delete Records"
-msgstr "Poista tietoja"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Hallitse ominaisuuksia ja luokitteluja"
 
@@ -2035,14 +2023,6 @@ msgstr "Hallitse ryhmiä ja rooleja"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Hallitse lahjoituksia ja taloutta"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Näytä, lisää ja muokkaa huomautuksia"
-
-#: 
-msgid "Edit Self"
-msgstr "Muokkaa itseään"
 
 #: 
 msgid "Admin"
@@ -5551,10 +5531,6 @@ msgstr "Heprea"
 #: 
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
-
-#: 
-msgid "Manage Notes"
-msgstr "Hallitse muistiinpanoja"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11009,10 +10985,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Vain muistiinpanon kirjoittaja tai ylläpitäjä voi poistaa tämän muistiinpanon"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Vain muistiinpanon kirjoittaja tai ylläpitäjä voi muokata tätä muistiinpanoa"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Yleiskatsaus seurakunnan tapahtumista, läsnäolosta ja toiminnasta"
 
@@ -12619,10 +12591,6 @@ msgstr "Pelkkä tietokanta (.sql) tai täydellinen arkisto (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Oletusmäärä rivejä tietotauluissa. Tulee voimaan seuraavalla sivun latauksella."
 
-#: 
-msgid "Edit own family only"
-msgstr "Muokkaa vain omaa perhettä"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12635,10 +12603,6 @@ msgstr "Virheellisten tai kömpelöiden käännösten korjaaminen omalla kielell
 #: 
 msgid "Found a bug with translations?"
 msgstr "Löysitkö virheen käännöksissä?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Myöntää kaikki käyttöoikeudet"
 
 #: 
 msgid "Green"
@@ -14598,10 +14562,6 @@ msgstr "Sinulla ei ole oikeutta poistaa tätä muistiinpanoa."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Yksityinen muistiinpano — näkyvissä vain luojalle]"
 
 #: 
 msgid "seconds"

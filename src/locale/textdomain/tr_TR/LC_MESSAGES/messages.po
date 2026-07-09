@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Kullanıcı adı"
 
 #: 
-msgid "Add Records"
-msgstr "Kayıt ekle"
-
-#: 
-msgid "Edit Records"
-msgstr "Kayıtları Düzenle"
-
-#: 
-msgid "Delete Records"
-msgstr "Kayıtları Sil"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Özellikleri ve sınıflandırmaları yönetin"
 
@@ -2050,14 +2038,6 @@ msgstr "Grupları ve rolleri yönetin"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Bağışları ve finansmanı yönetin"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Notları görüntüleyin, ekle ve düzenleyin"
-
-#: 
-msgid "Edit Self"
-msgstr "Kendini düzenle"
 
 #: 
 msgid "Admin"
@@ -5590,10 +5570,6 @@ msgstr "İbranice"
 #: 
 msgid "Permissions"
 msgstr "İzin"
-
-#: 
-msgid "Manage Notes"
-msgstr "Notları Yönetin"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11048,10 +11024,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Yalnızca not yazarı veya bir yönetici bu notu silebilir"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Yalnızca not yazarı veya bir yönetici bu notu düzenleyebilir"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Kilise etkinlikleri, yoklama ve faaliyetlere genel bakış"
 
@@ -12658,10 +12630,6 @@ msgstr "Yalnızca veritabanı (.sql) veya tam arşiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Veri tablolarında gösterilen varsayılan satır sayısı. Bir sonraki sayfa yüklemesinde geçerli olur."
 
-#: 
-msgid "Edit own family only"
-msgstr "Yalnızca kendi ailesini düzenle"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12674,10 +12642,6 @@ msgstr "Dilinizdeki yanlış veya garip çevirileri düzeltme"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Çevirilerde bir hata mı buldunuz?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Tüm ayrıcalıkları verir"
 
 #: 
 msgid "Green"
@@ -14637,10 +14601,6 @@ msgstr "Bu notu silme izniniz yok."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Bu notu düzenleme izniniz yok."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Özel Not — yalnızca oluşturan kişi tarafından görülebilir]"
 
 #: 
 msgid "seconds"

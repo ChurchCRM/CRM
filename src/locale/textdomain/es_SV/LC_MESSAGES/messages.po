@@ -2006,18 +2006,6 @@ msgid "Login Name"
 msgstr "Nombre de usuario"
 
 #: 
-msgid "Add Records"
-msgstr "Añadir registros"
-
-#: 
-msgid "Edit Records"
-msgstr "Editar registros"
-
-#: 
-msgid "Delete Records"
-msgstr "Eliminar registros"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Administrar propiedades y clasificaciones"
 
@@ -2028,14 +2016,6 @@ msgstr "Administrar grupos y roles"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Administrar Donaciones y Finanzas"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Ver, Añadir y Editar Notas"
-
-#: 
-msgid "Edit Self"
-msgstr "Editarse a sí mismo"
 
 #: 
 msgid "Admin"
@@ -5549,10 +5529,6 @@ msgstr "Hebreo"
 #: 
 msgid "Permissions"
 msgstr "Permisos"
-
-#: 
-msgid "Manage Notes"
-msgstr "Administrar Notas"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11007,10 +10983,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Solo el autor de la nota o un administrador puede eliminar esta nota"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Solo el autor de la nota o un administrador puede editar esta nota"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Resumen de eventos parroquiales, asistencia y actividad"
 
@@ -12617,10 +12589,6 @@ msgstr "Solo base de datos (.sql) o archivo completo (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Número predeterminado de filas mostradas en las tablas de datos. Tiene efecto al cargar la próxima página."
 
-#: 
-msgid "Edit own family only"
-msgstr "Editar solo su propia familia"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12633,10 +12601,6 @@ msgstr "Corregir traducciones incorrectas o torpes en su idioma"
 #: 
 msgid "Found a bug with translations?"
 msgstr "¿Encontró un error en las traducciones?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Otorga todos los privilegios"
 
 #: 
 msgid "Green"
@@ -14596,10 +14560,6 @@ msgstr "No tiene permiso para eliminar esta nota."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "No tiene permiso para editar esta nota."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Nota privada — visible solo para el creador]"
 
 #: 
 msgid "seconds"

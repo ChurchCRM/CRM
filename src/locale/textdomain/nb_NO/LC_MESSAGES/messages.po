@@ -2106,20 +2106,6 @@ msgstr "Logg Navn"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Legg Records"
-
-#: 
-msgid "Edit Records"
-msgstr "Rediger poster"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Slett Records"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Administrere Egenskaper og klassifikasjoner"
 
@@ -2132,16 +2118,6 @@ msgstr "Administrere grupper og roller"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Administrere Donasjoner og finans"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Vise, til og redigere notater"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Rediger deg selv"
 
 #: 
 msgid "Admin"
@@ -5674,10 +5650,6 @@ msgstr "Hebraisk"
 #: 
 msgid "Permissions"
 msgstr "Tillatelser"
-
-#: 
-msgid "Manage Notes"
-msgstr "Administrer notater"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11132,10 +11104,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Bare notatforfatteren eller en administrator kan slette dette notatet"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Bare notatforfatteren eller en administrator kan redigere dette notatet"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Oversikt over kirkens arrangementer, oppmøte og aktivitet"
 
@@ -12742,10 +12710,6 @@ msgstr "Kun database (.sql) eller fullstendig arkiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Standard antall rader vist i datatabeller. Trer i kraft ved neste sideinnlasting."
 
-#: 
-msgid "Edit own family only"
-msgstr "Rediger kun egen familie"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12758,10 +12722,6 @@ msgstr "Rette feilaktige eller klønete oversettelser på ditt språk"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Fant en feil med oversettelser?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Gir alle rettigheter"
 
 #: 
 msgid "Green"
@@ -14721,10 +14681,6 @@ msgstr "Du har ikke tillatelse til å slette dette notatet."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Du har ikke tillatelse til å redigere dette notatet."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privat notat — kun synlig for oppretteren]"
 
 #: 
 msgid "seconds"

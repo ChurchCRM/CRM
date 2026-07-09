@@ -2027,18 +2027,6 @@ msgid "Login Name"
 msgstr "שם משתמש"
 
 #: 
-msgid "Add Records"
-msgstr "הוסף רשומות"
-
-#: 
-msgid "Edit Records"
-msgstr "ערוך רשומות"
-
-#: 
-msgid "Delete Records"
-msgstr "מחק רשומות"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "נהל מאפיינים וסיווגים"
 
@@ -2049,14 +2037,6 @@ msgstr "נהל קבוצות ותפקידים"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "נהל תרומות וכספים"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "צפה, הוסף וערוך הערות"
-
-#: 
-msgid "Edit Self"
-msgstr "ערוך את עצמך"
 
 #: 
 msgid "Admin"
@@ -5587,10 +5567,6 @@ msgstr "עברית"
 #: 
 msgid "Permissions"
 msgstr "הרשאות"
-
-#: 
-msgid "Manage Notes"
-msgstr "נהל הערות"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11045,10 +11021,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "רק מחבר ההערה או מנהל מערכת יכולים למחוק הערה זו"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "רק מחבר ההערה או מנהל מערכת יכולים לערוך הערה זו"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "סקירת אירועי הקהילה, נוכחות ופעילות"
 
@@ -12655,10 +12627,6 @@ msgstr "בסיס נתונים בלבד (.sql) או ארכיון מלא (.tar.gz)
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "מספר השורות המוצגות כברירת מחדל בטבלאות נתונים. ייכנס לתוקף בטעינת הדף הבאה."
 
-#: 
-msgid "Edit own family only"
-msgstr "עריכת המשפחה שלי בלבד"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12671,10 +12639,6 @@ msgstr "תיקון תרגומים שגויים או מסורבלים בשפתך"
 #: 
 msgid "Found a bug with translations?"
 msgstr "מצאת באג בתרגומים?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "מעניק את כל ההרשאות"
 
 #: 
 msgid "Green"
@@ -14634,10 +14598,6 @@ msgstr "אין לך הרשאה למחוק פתק זה."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "אין לך הרשאה לערוך פתק זה."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[פתק פרטי — גלוי ליוצר בלבד]"
 
 #: 
 msgid "seconds"

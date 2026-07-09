@@ -2006,18 +2006,6 @@ msgid "Login Name"
 msgstr "ログイン名"
 
 #: 
-msgid "Add Records"
-msgstr "レコードを追加"
-
-#: 
-msgid "Edit Records"
-msgstr "レコードを編集"
-
-#: 
-msgid "Delete Records"
-msgstr "レコードを削除"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "プロパティと分類を管理"
 
@@ -2028,14 +2016,6 @@ msgstr "グループと役割を管理"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "寄付と財務を管理"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "ノートの表示、追加、編集"
-
-#: 
-msgid "Edit Self"
-msgstr "自分の情報を編集"
 
 #: 
 msgid "Admin"
@@ -5547,10 +5527,6 @@ msgstr "ヘブライ語"
 #: 
 msgid "Permissions"
 msgstr "権限"
-
-#: 
-msgid "Manage Notes"
-msgstr "メモの管理"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -10997,10 +10973,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "メモの作成者または管理者のみがこのメモを削除できます"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "メモの作成者または管理者のみがこのメモを編集できます"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "教会のイベント、出席、活動の概要"
 
@@ -12607,10 +12579,6 @@ msgstr "データベースのみ（.sql）またはフルアーカイブ（.tar.
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "データテーブルに表示されるデフォルトの行数。次回のページ読み込み時に有効になります。"
 
-#: 
-msgid "Edit own family only"
-msgstr "自分の家族のみ編集"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12623,10 +12591,6 @@ msgstr "お使いの言語の不正確または不自然な翻訳の修正"
 #: 
 msgid "Found a bug with translations?"
 msgstr "翻訳にバグを見つけましたか？"
-
-#: 
-msgid "Grants all privileges"
-msgstr "すべての権限を付与"
 
 #: 
 msgid "Green"
@@ -14585,10 +14549,6 @@ msgstr "このメモを削除する権限がありません。"
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "このメモを編集する権限がありません。"
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[プライベートメモ — 作成者のみ閲覧可能]"
 
 #: 
 msgid "seconds"

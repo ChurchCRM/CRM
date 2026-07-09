@@ -2006,18 +2006,6 @@ msgid "Login Name"
 msgstr "Prihlasovacie meno"
 
 #: 
-msgid "Add Records"
-msgstr "Pridávať záznamy"
-
-#: 
-msgid "Edit Records"
-msgstr "Upravovať záznamy"
-
-#: 
-msgid "Delete Records"
-msgstr "Odstraňovať záznamy"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Spravovať vlastnosti a klasifikácie"
 
@@ -2028,14 +2016,6 @@ msgstr "Spravovať skupiny a roly"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Spravovať dary a financie"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Zobraziť, pridať a upraviť poznámky"
-
-#: 
-msgid "Edit Self"
-msgstr "Upraviť vlastný profil"
 
 #: 
 msgid "Admin"
@@ -5555,10 +5535,6 @@ msgstr "Hebrejčina"
 #: 
 msgid "Permissions"
 msgstr "Oprávnenia"
-
-#: 
-msgid "Manage Notes"
-msgstr "Spravovať poznámky"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11028,10 +11004,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Iba autor poznámky alebo správca môže odstrániť túto poznámku"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Iba autor poznámky alebo správca môže upraviť túto poznámku"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Prehľad cirkevných podujatí, dochádzky a aktivity"
 
@@ -12638,10 +12610,6 @@ msgstr "Iba databáza (.sql) alebo plný archív (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Predvolený počet riadkov zobrazených v tabuľkách dát. Nadobúda účinnosť pri ďalšom načítaní stránky."
 
-#: 
-msgid "Edit own family only"
-msgstr "Upraviť iba vlastnú rodinu"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12654,10 +12622,6 @@ msgstr "Opravovanie nesprávnych alebo neobratných prekladov vo vašom jazyku"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Našli ste chybu v prekladoch?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Udeľuje všetky oprávnenia"
 
 #: 
 msgid "Green"
@@ -14619,10 +14583,6 @@ msgstr "Nemáte oprávnenie na odstránenie tejto poznámky."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nemáte oprávnenie na úpravu tejto poznámky."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Súkromná poznámka — viditeľná iba pre tvorcu]"
 
 #: 
 msgid "seconds"

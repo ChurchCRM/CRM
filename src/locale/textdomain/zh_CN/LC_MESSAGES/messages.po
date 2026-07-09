@@ -2081,21 +2081,6 @@ msgstr "登录用户名"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "添加记录"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "编辑记录"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "删除记录"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "管理属性和分类"
 
@@ -2108,16 +2093,6 @@ msgstr "管理组和角色"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "管理捐款和金融"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "查看，添加和编辑备注"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "编辑自"
 
 #: 
 #, fuzzy
@@ -5669,10 +5644,6 @@ msgstr "希伯来语"
 #: 
 msgid "Permissions"
 msgstr "权限"
-
-#: 
-msgid "Manage Notes"
-msgstr "管理笔记"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11119,10 +11090,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "只有备注作者或管理员才能删除此备注"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "只有备注作者或管理员才能编辑此备注"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "教会活动、出席和动态概览"
 
@@ -12729,10 +12696,6 @@ msgstr "仅数据库（.sql）或完整存档（.tar.gz）"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "数据表中默认显示的行数。在下次页面加载时生效。"
 
-#: 
-msgid "Edit own family only"
-msgstr "仅编辑自己的家庭信息"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12745,10 +12708,6 @@ msgstr "修正您语言中不正确或不自然的翻译"
 #: 
 msgid "Found a bug with translations?"
 msgstr "发现翻译错误？"
-
-#: 
-msgid "Grants all privileges"
-msgstr "授予所有权限"
 
 #: 
 msgid "Green"
@@ -14707,10 +14666,6 @@ msgstr "您没有权限删除此备注。"
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "您没有权限编辑此备注。"
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[私人备注 — 仅创建者可见]"
 
 #: 
 msgid "seconds"
