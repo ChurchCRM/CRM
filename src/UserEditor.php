@@ -278,7 +278,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $usr_ManageFundraisers = 0;
             $usr_Notes = 0;
             $usr_Admin = 0;
-            $usr_EditSelf = 0;
+            $usr_EditSelf = 0; // Default off — self-edit must be explicitly granted (#9079)
         }
 
         // New user without person selected yet
@@ -295,7 +295,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_ManageFundraisers = 0;
         $usr_Notes = 0;
         $usr_Admin = 0;
-        $usr_EditSelf = 0;
+        $usr_EditSelf = 0; // Default off — self-edit must be explicitly granted (#9079)
         $sUserName = '';
         $vNewUser = 'true';
 
