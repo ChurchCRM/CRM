@@ -16480,6 +16480,10 @@ msgid "Year, 4 digits"
 msgstr "വർഷം, 4 അക്കങ്ങൾ"
 
 #: 
+msgid "am / pm"
+msgstr "രാവിലെ /വൈകുന്നേരം"
+
+#: 
 msgid "past"
 msgstr "കഴിഞ്ഞത്"
 
