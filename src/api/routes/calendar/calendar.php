@@ -10,6 +10,7 @@ use ChurchCRM\Slim\Middleware\Api\CalendarMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\Collection\ObjectCollection;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -75,7 +76,7 @@ function getSystemCalendars(Request $request, Response $response, array $args): 
  */
 function getSystemCalendarEvents(Request $request, Response $response, array $args): Response
 {
-    $Calendar = SystemCalendars::getCalendarById($args['id']);
+    $Calendar = SystemCalendars::getCalendarById((int) $args['id']);
     if (!$Calendar) {
         throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
@@ -104,12 +105,15 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
  */
 function getSystemCalendarEventById(Request $request, Response $response, array $args): Response
 {
-    $Calendar = SystemCalendars::getCalendarById($args['id']);
+    $Calendar = SystemCalendars::getCalendarById((int) $args['id']);
     if (!$Calendar) {
         throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
 
-    $event = $Calendar->getEventById($args['eventid']);
+    $event = $Calendar->getEventById((int) $args['eventid']);
+    if ($event === null) {
+        throw new HttpNotFoundException($request, 'Event not found!');
+    }
 
     return SlimUtils::renderJSON($response, $event->toArray());
 }
@@ -280,7 +284,7 @@ function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar
 function NewAccessToken(Request $request, Response $response, array $args): Response
 {
     $Calendar = $request->getAttribute('calendar');
-    $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
+    $Calendar->setAccessToken(MiscUtils::randomToken());
     $Calendar->save();
 
     return SlimUtils::renderJSON($response, $Calendar->toArray());
@@ -330,10 +334,25 @@ function DeleteAccessToken(Request $request, Response $response, array $args): R
 function NewCalendar(Request $request, Response $response, $args): Response
 {
     $input = $request->getParsedBody();
+
+    // Validate required color fields
+    if (!isset($input['ForegroundColor']) || !isset($input['BackgroundColor'])) {
+        return SlimUtils::renderErrorJSON($response, gettext('ForegroundColor and BackgroundColor are required.'), [], 400);
+    }
+
+    // Validate color format to prevent stored XSS (only allow valid CSS hex colors: #RGB or #RRGGBB)
+    $colorPattern = '/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/';
+    $fgColor = $input['ForegroundColor'];
+    $bgColor = $input['BackgroundColor'];
+    if (!is_string($fgColor) || !is_string($bgColor) || !preg_match($colorPattern, $fgColor) || !preg_match($colorPattern, $bgColor)) {
+        return SlimUtils::renderErrorJSON($response, gettext('Invalid color format. Use hex colors like #FF0000.'), [], 400);
+    }
+
     $Calendar = new Calendar();
     $Calendar->setName($input['Name']);
-    $Calendar->setForegroundColor($input['ForegroundColor']);
-    $Calendar->setBackgroundColor($input['BackgroundColor']);
+    // Strip leading '#' — the DB column stores 6-char hex; FullCalendarEvent.php prepends '#' on read.
+    $Calendar->setForegroundColor(ltrim($fgColor, '#'));
+    $Calendar->setBackgroundColor(ltrim($bgColor, '#'));
     $Calendar->save();
 
     return SlimUtils::renderJSON($response, $Calendar->toArray());
@@ -351,12 +370,28 @@ function NewCalendar(Request $request, Response $response, $args): Response
  *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
  *     ),
  *     @OA\Response(response=400, description="Missing or invalid calendar ID"),
- *     @OA\Response(response=401, description="Unauthorized")
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=409, description="Calendar still has events assigned; remove them first")
  * )
  */
 function deleteUserCalendar(Request $request, Response $response, array $args): Response
 {
-    $request->getAttribute('calendar')->delete();
+    $calendar = $request->getAttribute('calendar');
+
+    $eventCount = $calendar->countCalendarEvents();
+    if ($eventCount > 0) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            sprintf(
+                gettext('Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first.'),
+                $eventCount
+            ),
+            [],
+            409
+        );
+    }
+
+    $calendar->delete();
 
     return SlimUtils::renderSuccessJSON($response);
 }
@@ -385,5 +420,10 @@ function deleteUserCalendar(Request $request, Response $response, array $args): 
  */
 function getEventsCounters(Request $request, Response $response, array $args): Response
 {
-    return SlimUtils::renderJSON($response, EventsMenuItems::getDashboardItemValue());
+    $dateParam = $request->getQueryParams()['date'] ?? null;
+    $date = null;
+    if ($dateParam !== null && preg_match('/^\d{4}-\d{2}-\d{2}$/', $dateParam)) {
+        $date = new \DateTime($dateParam);
+    }
+    return SlimUtils::renderJSON($response, EventsMenuItems::getDashboardItemValue($date));
 }

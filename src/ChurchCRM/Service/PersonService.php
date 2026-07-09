@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
@@ -43,7 +44,7 @@ class PersonService
                     } else {
                         $familyRole .= gettext('Part');
                     }
-                    $familyRole .= gettext(' of the') . ' <a href="v2/family/' . $values['familyID'] . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
+                    $familyRole .= gettext(' of the') . ' <a href="people/family/' . $values['familyID'] . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
                 } else {
                     $familyRole = gettext('(No assigned family)');
                 }
@@ -81,7 +82,10 @@ class PersonService
                 $group = $membership->getGroup();
                 if ($group !== null) {
                     $roleName = '';
-                    $roleList = $group->getListOptionById($membership->getRoleId());
+                    $roleList = ListOptionQuery::create()
+                        ->filterById($group->getRoleListId())
+                        ->filterByOptionId($membership->getRoleId())
+                        ->findOne();
                     if ($roleList !== null) {
                         $roleName = $roleList->getOptionName();
                     }

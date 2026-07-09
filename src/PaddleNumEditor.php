@@ -1,11 +1,12 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
@@ -21,7 +22,7 @@ if ($iPaddleNumID > 0) {
     $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
 }
 
-if ($iCurrentFundraiser == '') {
+if ($iCurrentFundraiser === '') {
     Bootstrapper::systemFailure('No active Fundraiser', 'System Error');
 }
 
@@ -164,11 +165,11 @@ require_once __DIR__ . '/Include/Header.php';
               while ($aRow = mysqli_fetch_array($rsPeople)) {
                   extract($aRow);
                   echo '<option value="' . (int)$per_ID . '"';
-                  if ($iPerID == $per_ID) {
+                  if ($iPerID === $per_ID) {
                       echo ' selected';
                   }
                   echo '>' . InputUtils::escapeHTML($per_LastName) . ', ' . InputUtils::escapeHTML($per_FirstName);
-                  echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
+                  echo ' ' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
               }
               ?>
             </select>

@@ -10,6 +10,13 @@
       white-space: normal;
     }
   }
+
+  // On mobile, allow all cells to wrap to prevent horizontal overflow
+  @media (max-width: 767.98px) {
+    td {
+      white-space: normal;
+    }
+  }
 }
 
 // Dashboard metric cards

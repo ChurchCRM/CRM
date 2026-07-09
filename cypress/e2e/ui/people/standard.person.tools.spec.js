@@ -14,7 +14,7 @@ describe("People Tools", () => {
     });
 
     it("verify people", () => {
-        cy.visit("v2/people/verify");
+        cy.visit("people/verify");
         cy.contains("People Verify Dashboard");
     });
 

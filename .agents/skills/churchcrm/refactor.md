@@ -59,6 +59,9 @@ summary: |
   existing ones into Perpl ORM queries or Service methods.
 - **i18n:** Add `gettext()` strings and after changes run `npm run locale:build`
   and `npm run build` before opening a PR.
+- **Strict comparisons:** When converting `==`/`!=` to `===`/`!==`, always cast
+  `mysqli_fetch_array()` / `extract()` / `$_GET` / `$_POST` values to the expected
+  type first (e.g., `(int)$type_ID === 11`). See `code-standards.md` → "Strict vs Loose Comparisons".
 
 **Per-Feature Checklist (apply to each feature)**
 
@@ -176,6 +179,51 @@ summary: |
 
 - See `src/Include/Functions.php` for global helpers used during migration.
 - Follow Perpl ORM patterns described in the repository's standards docs.
+
+## SQL Upgrade Files — modification policy
+
+- **Do not modify historical upgrade scripts.** Only edit SQL files under `src/mysql/upgrade/` that correspond to the release you are preparing. Historical upgrade files (previous release numbers) must remain immutable once published to avoid altering upgrade paths for existing installations.
+- **How to determine the current release file to edit:** Use the project's release version (tag or CHANGELOG) to identify the target upgrade file (e.g., `src/mysql/upgrade/7.3.0.sql`). If you cannot find a matching file for the release you're preparing, create a new release-specific migration file instead of editing older ones.
+- **Why:** Upgrades run using the old release's in-memory code while new files are moved into place on disk. Changing prior-release SQL files can cause inconsistencies for users upgrading from older versions and may invalidate tested upgrade paths.
+- **Quick commands:**
+
+  - List existing upgrade files:
+
+    ```bash
+    ls -1 src/mysql/upgrade | sort
+    ```
+
+  - Find the release tag or changelog entry for the target release and match the filename (example using git tags):
+
+    ```bash
+    git tag --list | sort --version-sort
+    grep -i "^## \[" CHANGELOG.md | head -n 10
+    ```
+
+  - If you must introduce a DB change for the current release, add a new `src/mysql/upgrade/<new-version>.sql` migration and reference it in the release notes. Do not patch older `<x.y.z>.sql` files.
+
+If a genuine emergency requires modifying a historical upgrade script (very rare), document the change in the PR body, explain the risk, and get explicit approval from a maintainer before merging.
+
+## Removing Methods Called From `ChurchCRMReleaseManager::doUpgrade()` <!-- learned: 2026-04-22 -->
+
+`ChurchCRMReleaseManager::doUpgrade()` runs inside a single PHP request that:
+
+1. Loads the **old** `ChurchCRMReleaseManager` class from the installed version into PHP memory.
+2. Extracts and moves the **new** version's files into place on disk.
+3. Continues executing the **old** (in-memory) `doUpgrade()` method, which autoloads any class it references *from the new files on disk*.
+
+Consequence: if the old `doUpgrade()` calls `SomeService::someMethod()` and you have removed `someMethod()` from `SomeService` in the new release, the upgrade will throw a fatal `Call to undefined method` — *after* file moves and DB migrations already succeeded. The upgrade has actually completed; the user just sees a red banner.
+
+This hit issue #8729 (6.8.1 → 7.2.1): commit `9ab2326d7` removed `AppIntegrityService::clearIntegrityCache()` and the caller at `ChurchCRMReleaseManager.php:542`, but installs on 6.8.1 still held the old caller in memory during the jump, so they hit the fatal despite the upgrade succeeding.
+
+**Rules before removing a public static method from `src/ChurchCRM/Service/*` or any class `ChurchCRMReleaseManager` touches:**
+
+- Grep the *previous three minor release tags* for callers, not just current master:
+  ```bash
+  git grep -n "MyClass::myMethod\b" <tag-of-previous-release>
+  ```
+- If any older release's `ChurchCRMReleaseManager` calls it: **keep the method as a no-op shim** until all supported upgrade sources have moved past it, or explicitly test the upgrade path from the oldest supported version.
+- If keeping a shim is not viable, update release notes to warn that the upgrade will show a harmless error toast but did succeed, and that the user should reload.
 
 ---
 Generated: Refactor skill for feature-by-feature CRM migration.

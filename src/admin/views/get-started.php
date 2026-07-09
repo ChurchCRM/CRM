@@ -21,7 +21,13 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
         <!-- Explore with Demo Data -->
         <div class="col-sm-6 mb-4">
             <!-- <a> wrapping the whole card; JS intercepts the click via id -->
-            <a href="#" id="importDemoDataV2" role="button" class="gs-card gs-card--green">
+            <a href="#" id="importDemoDataV2" role="button"
+               class="gs-card gs-card--green"
+               data-has-existing-data="<?= !empty($hasExistingData) ? 'true' : 'false' ?>"
+               data-person-count="<?= (int)($personCount ?? 0) ?>"
+               data-family-count="<?= (int)($familyCount ?? 0) ?>"
+               data-person-list-url="<?= SystemURLs::getRootPath() ?>/people/list"
+               data-family-list-url="<?= SystemURLs::getRootPath() ?>/family/">
                 <div class="gs-card-icon">
                     <i class="fa-solid fa-flask"></i>
                 </div>
@@ -115,7 +121,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
            class="gs-plugin-badge"
            data-bs-toggle="tooltip"
            title="<?= gettext('Browse all available plugins') ?>">
-            <i class="fa-solid fa-grid-2 text-muted"></i>
+            <i class="fa-solid fa-grid-2 text-body-secondary"></i>
             <?= gettext('Browse all plugins') ?>
         </a>
     </div>

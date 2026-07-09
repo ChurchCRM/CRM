@@ -3,11 +3,11 @@
 /**
  * ChurchCRM Plugin Help Terms Extraction Script
  * 
- * Extracts translatable strings from plugin help.json files for localization.
+ * Extracts translatable strings from core plugin help.json files for localization.
+ * Community plugins are excluded.
  * 
  * Scans:
  *   src/plugins/core/{plugin}/help.json
- *   src/plugins/community/{plugin}/help.json
  * 
  * Extracts:
  *   summary text
@@ -25,9 +25,12 @@ class PluginHelpExtractor {
     constructor() {
         this.projectRoot = config.projectRoot;
         this.pluginsDir = path.join(this.projectRoot, 'src/plugins');
-        this.tempDir = path.join(config.temp.root, 'churchcrm-locale-plugin-help');
+        this.tempDir = config.temp.pluginHelp;
         this.outputFile = path.join(this.tempDir, 'plugin-help-terms.po');
-        this.terms = new Set();
+        // Map<text, string[]> — keyed by text so the same string from multiple
+        // plugins is deduplicated (duplicate msgids cause msgcat fatal errors).
+        // All contexts are collected so translators see every usage.
+        this.terms = new Map();
     }
 
     /**
@@ -51,12 +54,16 @@ class PluginHelpExtractor {
      */
     findHelpFiles() {
         const helpFiles = [];
-        const pluginTypes = ['core', 'community'];
+        // Only collect help.json from core plugins, exclude community plugins
+        const pluginTypes = ['core'];
 
         for (const type of pluginTypes) {
             const typeDir = path.join(this.pluginsDir, type);
             
+            this.log('🔍', `Checking ${type} plugins directory: ${typeDir}`);
+            
             if (!fs.existsSync(typeDir)) {
+                this.log('⚠️', `${type} plugins directory does not exist: ${typeDir}`);
                 continue;
             }
 
@@ -64,14 +71,19 @@ class PluginHelpExtractor {
                 .filter(dirent => dirent.isDirectory())
                 .map(dirent => dirent.name);
 
+            this.log('📁', `Found ${plugins.length} ${type} plugins: ${plugins.join(', ')}`);
+
             for (const plugin of plugins) {
                 const helpFile = path.join(typeDir, plugin, 'help.json');
                 if (fs.existsSync(helpFile)) {
+                    this.log('✓', `Found help.json: ${plugin}`);
                     helpFiles.push({
                         path: helpFile,
                         plugin: plugin,
                         type: type
                     });
+                } else {
+                    this.log('·', `No help.json for ${plugin}`);
                 }
             }
         }
@@ -89,9 +101,16 @@ class PluginHelpExtractor {
 
         // Normalize whitespace but preserve newlines for multiline content
         const normalized = text.trim();
-        
+
+        // Deduplicate by text — the same string appearing across multiple plugins
+        // must only produce one msgid entry, or msgcat will report fatal errors.
+        // All contexts are collected so translators see every plugin that uses the term.
         if (normalized.length > 0) {
-            this.terms.add(JSON.stringify({ text: normalized, context }));
+            if (!this.terms.has(normalized)) {
+                this.terms.set(normalized, [context]);
+            } else if (context) {
+                this.terms.get(normalized).push(context);
+            }
         }
     }
 
@@ -163,23 +182,23 @@ msgstr ""
 `;
 
         const entries = [];
-        
-        for (const termJson of this.terms) {
-            const { text, context } = JSON.parse(termJson);
-            
+
+        for (const [text, contexts] of this.terms) {
             let entry = '';
-            
-            // Add context as a comment
-            if (context) {
-                entry += `#. ${context}\n`;
+
+            // Add all contexts as comments
+            for (const ctx of contexts) {
+                if (ctx) {
+                    entry += `#. ${ctx}\n`;
+                }
             }
-            
+
             // Handle multiline strings
             const escaped = this.escapePOString(text);
-            
+
             entry += `msgid "${escaped}"\n`;
             entry += `msgstr ""\n`;
-            
+
             entries.push(entry);
         }
 
@@ -205,7 +224,10 @@ msgstr ""
             return;
         }
 
-        this.log('🔌', 'Extracting plugin help terms...');
+        this.log('🔌', `Plugin help extraction starting...`);
+        this.log('📂', `Project root: ${this.projectRoot}`);
+        this.log('📂', `Plugins directory: ${this.pluginsDir}`);
+        this.log('📂', `Temp directory: ${this.tempDir}`);
 
         this.ensureTempDir();
 

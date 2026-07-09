@@ -342,11 +342,11 @@ msgstr ""
         
         console.log('📋 **Next Steps:**\n');
         console.log('1. **Download translations from POEditor:**');
-        console.log('   npm run locale-download');
+        console.log('   npm run locale:download');
         console.log('   (This will populate the actual translations)\n');
-        
+
         console.log('2. **Verify the setup:**');
-        console.log('   npm run locale-audit');
+        console.log('   npm run locale:audit');
         console.log('   (Should show the new language in supported locales)\n');
         
         console.log('3. **Test the new locale:**');

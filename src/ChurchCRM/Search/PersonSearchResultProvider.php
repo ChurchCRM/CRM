@@ -42,7 +42,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
                 _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
                 _or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
                 _or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
-                limit(SystemConfig::getValue('bSearchIncludePersonsMax'))->find();
+                limit(SystemConfig::getIntValue('bSearchIncludePersonsMax'))->find();
 
             if ($people->count() > 0) {
                 $id++;

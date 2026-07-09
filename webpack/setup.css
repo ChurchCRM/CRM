@@ -347,8 +347,8 @@ body {
   background: #fff5f5;
 }
 
-.integrity-details-row td {
-  padding: 16px 20px !important;
+.check-details .integrity-details-row > td {
+  padding: 16px 20px;
 }
 
 .integrity-details-header {
@@ -413,11 +413,11 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.form-card .form-group {
+.form-card .mb-3 {
   margin-bottom: 1.25rem;
 }
 
-.form-card .form-group:last-child {
+.form-card .mb-3:last-child {
   margin-bottom: 0;
 }
 
@@ -671,8 +671,8 @@ body {
   background: rgba(var(--bs-danger-rgb), 0.05);
 }
 
-.integrity-details-row td {
-  padding: 1rem 1.25rem !important;
+.check-details .integrity-details-row > td {
+  padding: 1rem 1.25rem;
 }
 
 .integrity-details-header {

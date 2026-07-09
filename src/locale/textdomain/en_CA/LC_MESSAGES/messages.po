@@ -51,21 +51,8 @@ msgstr "Default Province - Must be 2-letter abbreviation!"
 msgid "Zip Code"
 msgstr "Postal Code"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Enter any part of the following: Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
-
 #: 
 #, fuzzy
 msgid "Show neighbors with these classifications"
 msgstr "Show neighbours with these classifications"
-
-#: 
-msgid "Foreground Color"
-msgstr "Foreground Colour"
-
-#: 
-msgid "Background Color"
-msgstr "Background Colour"
 

@@ -31,7 +31,7 @@ function getMapNeighbors(Request $request, Response $response, array $args) {
 
 Current MVCs (folders & primary route files)
 - **API (`/api`)**: [src/api/routes](src/api/routes) — REST endpoints used by the frontend and external clients (people, families, calendar, finance, auth-related endpoints). Security: authenticated via app auth middleware; uses JSON error handling via centralized helpers. Keep backward-compatible API surface while migrating.
-- **v2 UI (`/v2`)**: [src/v2/routes](src/v2/routes) — new(er) UI routes, server-side endpoints supporting React/TS frontend (people, person, family, cart, calendar, user). Security: page-level permission checks and server-side rendering of initial state; interacts with services.
+- **v2 UI (`/v2`)**: [src/v2/routes](src/v2/routes) — new(er) UI routes, server-side endpoints supporting JS/TS frontend (people, person, family, cart, calendar, user). Security: page-level permission checks and server-side rendering of initial state; interacts with services.
 - **Admin (`/admin`)**: [src/admin/routes](src/admin/routes) — Admin pages and admin-only API endpoints (system config, logs, upgrade, user-admin). Security: requires admin roles; sensitive operations.
 - **Finance (`/finance`)**: [src/finance/routes](src/finance/routes) — Finance-specific MVC for dashboards, pledges, reports, deposit/payment APIs. Security: finance role gating; audit-sensitive.
 - **Kiosk (`/kiosk`)**: [src/kiosk/routes](src/kiosk/routes) — Kiosk UI and kiosk-scoped `/api` group. Security: kiosk token/cookie flows and limited actions.
@@ -47,7 +47,7 @@ Notes about how routes are organized
 
 Security & operational considerations (general)
 - **Auth & permissions:** Many routes rely on role-based checks (admin, finance, edit records). When moving routes between MVCs, ensure the same middleware and permission checks remain or are migrated.
-- **Backward compatibility:** External clients or the React frontend may call `/api` or `/v2` endpoints. Maintain stable routes (or provide compatibility redirects/shims) during migration.
+- **Backward compatibility:** External clients or the frontend may call `/api` or `/v2` endpoints. Maintain stable routes (or provide compatibility redirects/shims) during migration.
 - **Locale / i18n:** Adding gettext() strings requires running `npm run locale:build` and `npm run build` before committing translations. Migration that changes UI strings must follow this process.
 - **Tests & CI:** Update or add Cypress tests for new endpoints; clear logs before running tests per repo policy.
 - **Plugin compatibility:** Plugins register routes; changing core route namespaces may break plugins. Provide compatibility layer or plugin migration docs.
@@ -75,7 +75,7 @@ Cost, Risk & Effort estimate
   - Adding adapters/wrappers that route `api` calls to new group APIs while keeping original `/api` routes as compatibility shims.
 - **Medium effort / moderate risk:**
   - Extracting service logic from route handlers into `Service` classes when logic currently lives inline; requires tests and regression validation.
-  - Updating frontend code (v2 React) to call new group endpoints; moderate work if the frontend is modular.
+  - Updating frontend code (v2 JS/TS) to call new group endpoints; moderate work if the frontend is modular.
 - **High effort / high risk:**
   - Removing or renaming existing `/api` routes used by external integrations — breaking API clients and plugins.
   - Migrating authentication/authorization semantics between route namespaces (must preserve security semantics exactly).

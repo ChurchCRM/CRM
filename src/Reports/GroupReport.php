@@ -1,11 +1,14 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfGroupDirectory;
+use ChurchCRM\dto\Cart;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 
 $bOnlyCartMembers = $_POST['OnlyCart'];
 $iGroupID = InputUtils::legacyFilterInput($_POST['GroupID'], 'int');
@@ -65,7 +68,7 @@ if ($iRoleID > 0) {
 }
 
 if ($bOnlyCartMembers && count($_SESSION['aPeopleCart']) > 0) {
-    $sSQL .= ' AND person_per.per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')';
+    $sSQL .= ' AND person_per.per_ID IN (' . Cart::getCartIdString() . ')';
 }
 
 $sSQL .= ' ORDER BY per_LastName';
@@ -75,7 +78,7 @@ $rsRecords = RunQuery($sSQL);
 while ($aRow = mysqli_fetch_array($rsRecords)) {
     $OutStr = '';
 
-    $pdf->sFamily = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], $aRow['per_MiddleName'], $aRow['per_LastName'], $aRow['per_Suffix'], 3);
+    $pdf->sFamily = MiscUtils::formatFullName($aRow['per_Title'], $aRow['per_FirstName'], $aRow['per_MiddleName'], $aRow['per_LastName'], $aRow['per_Suffix'], 3);
 
     // Use person data only - each person must enter their own information
     $sAddress1 = $aRow['per_Address1'] ?? '';
@@ -153,7 +156,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         while ($aPropRow = mysqli_fetch_array($rsProps)) {
             if (isset($_POST[$aPropRow['prop_Field'] . 'enable'])) {
                 $currentData = trim($aRow[$aPropRow['prop_Field']]);
-                $OutStr .= $aPropRow['prop_Name'] . ': ' . displayCustomField($aPropRow['type_ID'], $currentData, $aPropRow['prop_Special']) ."\n";
+                $OutStr .= $aPropRow['prop_Name'] . ': ' . CustomFieldUtils::display($aPropRow['type_ID'], $currentData, $aPropRow['prop_Special']) ."\n";
             }
         }
         mysqli_data_seek($rsProps, 0);

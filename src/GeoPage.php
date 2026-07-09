@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
@@ -113,7 +113,7 @@ $sCoordFileName = '';
 if (isset($_POST['FindNeighbors']) || isset($_POST['DataFile']) || isset($_POST['PersonIDList'])) {
     //Get all the variables from the request object and assign them locally
     $iFamily = InputUtils::legacyFilterInput($_POST['Family']);
-    $iNumNeighbors = InputUtils::legacyFilterInput($_POST['NumNeighbors']);
+    $iNumNeighbors = InputUtils::legacyFilterInput($_POST['NumNeighbors'], 'int');
     $nMaxDistance = InputUtils::legacyFilterInput($_POST['MaxDistance']);
     $sCoordFileName = InputUtils::legacyFilterInput($_POST['CoordFileName']);
     if (array_key_exists('CoordFileFormat', $_POST)) {
@@ -154,7 +154,7 @@ if (isset($_POST['DataFile'])) {
 
     foreach ($resultsByDistance as $oneResult) {
         if ($sCoordFileFamilies === 'NeighborFamilies') {
-            if ($counter++ == $iNumNeighbors) {
+            if ($counter++ === $iNumNeighbors) {
                 break;
             }
             if ($oneResult['Distance'] > $nMaxDistance) {
@@ -163,7 +163,7 @@ if (isset($_POST['DataFile'])) {
         }
 
         // Skip over the ones with no data
-        if ($oneResult['fam_Latitude'] == 0) {
+        if ((float)$oneResult['fam_Latitude'] === 0.0) {
             continue;
         }
 
@@ -201,7 +201,7 @@ $families = FamilyQuery::create()
                         <?php
                         foreach ($families as $family) {
                             echo"\n<option value=\"" . $family->getId() . '"';
-                            if ($iFamily == $family->getId()) {
+                            if ($iFamily === $family->getId()) {
                                 echo ' selected';
                             }
                             echo '>' . $family->getName() . '&nbsp;-&nbsp;' . $family->getAddress();
@@ -212,13 +212,13 @@ $families = FamilyQuery::create()
             </div>
             <div class="mb-3">
                 <label for="NumNeighbors" class="form-label"><?= gettext('Maximum number of neighbors') ?>:</label>
-                <input type="text" class="form-control" name="NumNeighbors" value="<?= $iNumNeighbors ?>" style="max-width:120px">
+                <input type="text" class="form-control" name="NumNeighbors" value="<?= InputUtils::escapeAttribute((string)$iNumNeighbors) ?>" style="max-width:120px">
             </div>
             <div class="mb-3">
                 <label for="MaxDistance" class="form-label">
                     <?= gettext('Maximum distance') . ' (' . gettext(SystemConfig::getValue('sDistanceUnit')) . '):' ?>
                 </label>
-                <input type="text" class="form-control" name="MaxDistance" value="<?= $nMaxDistance ?>" style="max-width:120px">
+                <input type="text" class="form-control" name="MaxDistance" value="<?= InputUtils::escapeAttribute((string)$nMaxDistance) ?>" style="max-width:120px">
             </div>
             <div class="mb-3">
                 <label class="form-label"><?= gettext('Show neighbors with these classifications') ?>:</label>
@@ -272,7 +272,7 @@ $families = FamilyQuery::create()
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="CoordFileFormat" id="fmt_sa"
                                 value="StreetAtlasUSA" <?= ($sCoordFileFormat === 'StreetAtlasUSA' ? 'checked' : '') ?>>
-                            <label class="form-check-label" for="fmt_sa"><?= gettext('Street Atlas USA') ?></label>
+                            <label class="form-check-label" for="fmt_sa">Street Atlas USA</label>
                         </div>
                     </div>
                 </div>
@@ -307,7 +307,7 @@ $families = FamilyQuery::create()
         $aPersonIDs = [];
 
         if (
-            $iFamily != 0 &&
+            $iFamily !== 0 &&
             (isset($_POST['FindNeighbors']) ||
                 isset($_POST['PersonIDList']))
         ) {

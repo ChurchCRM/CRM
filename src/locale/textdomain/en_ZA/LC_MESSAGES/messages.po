@@ -63,10 +63,6 @@ msgid "Unk"
 msgstr "-"
 
 #: 
-msgid "NonDeductible"
-msgstr "Non-deductible"
-
-#: 
 msgid "You are about to email copy of the family information to the following emails"
 msgstr "You are about to email a copy of the family information to the following emails"
 
@@ -90,10 +86,6 @@ msgstr "Neighbour Families"
 #: 
 msgid "Show Neighbors"
 msgstr "Show Neighbours"
-
-#: 
-msgid "GroupRole"
-msgstr "Group Role"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -152,10 +144,6 @@ msgid "Mobile"
 msgstr "Cell"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "To select multiple press Ctrl key"
-
-#: 
 msgid "Total $"
 msgstr "Total R"
 
@@ -176,29 +164,10 @@ msgstr "Default Province - Must be 2-letter abbreviation!"
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Number of cheques for Deposit Slip Report"
 
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Set true to enable use of scanned cheques"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"
 msgstr "Postcode"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Work Email"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Enter any part of the following: Name, City, Province, Postcode, Home Phone, Email, or Work Email."
-
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Custom Search"
 
 #: 
 msgid "Page not fond"
@@ -222,10 +191,6 @@ msgid "KioskVisibilityTimestamp"
 msgstr "Kiosk Visibility Timestamp"
 
 #: 
-msgid "Check Number"
-msgstr "Cheque Number"
-
-#: 
 msgid "Show Family Head of House Names"
 msgstr "Show Family Head of Household Names"
 
@@ -241,14 +206,6 @@ msgstr "Set the encryption system to use - SSL (deprecated) or TLS"
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "not found or user without an email"
-
-#: 
-msgid "Foreground Color"
-msgstr "Foreground Colour"
-
-#: 
-msgid "Background Color"
-msgstr "Background Colour"
 
 #: 
 msgid "invalid event type id"

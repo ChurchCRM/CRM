@@ -24,7 +24,7 @@
  * - photo-profile: 200px (profile pages)
  */
 
-import Avatar from "avatar-initials";
+import Avatar, { type AvatarOptions } from "avatar-initials";
 import { buildAPIUrl } from "./api-utils";
 
 interface AvatarInfo {
@@ -32,6 +32,7 @@ interface AvatarInfo {
   photoUrl: string | null;
   initials: string;
   email: string | null;
+  photoVersion?: number;
 }
 
 interface AvatarConfig {
@@ -51,12 +52,12 @@ const avatarInfoCache = new Map<string, AvatarInfo>();
  */
 function isGravatarEnabled(): boolean {
   // First try the new plugin config structure
-  const plugins = (window as any).CRM?.plugins;
+  const plugins = window.CRM?.plugins;
   if (plugins?.gravatar?.enabled !== undefined) {
     return plugins.gravatar.enabled;
   }
   // Fall back to legacy config for backward compatibility
-  return (window as any).CRM?.bEnableGravatarPhotos ?? false;
+  return window.CRM?.bEnableGravatarPhotos ?? false;
 }
 
 /**
@@ -64,7 +65,7 @@ function isGravatarEnabled(): boolean {
  * Gravatar supports: mp, identicon, monsterid, wavatar, retro, robohash, blank
  */
 function getGravatarDefaultImage(): string {
-  const plugins = (window as any).CRM?.plugins;
+  const plugins = window.CRM?.plugins;
   return plugins?.gravatar?.defaultImage ?? "blank";
 }
 
@@ -124,11 +125,14 @@ class AvatarLoader {
   }
 
   /**
-   * Build the API URL for the actual photo (uploaded photos only)
+   * Build the API URL for the actual photo (uploaded photos only).
+   * Appends ?v=<photoVersion> when provided to bust the 2-hour
+   * Cache-Control on the /photo endpoint after an upload. See #8662.
    */
-  private buildPhotoUrl(config: AvatarConfig): string {
+  private buildPhotoUrl(config: AvatarConfig, photoVersion?: number): string {
     const { entityType, entityId } = config;
-    return buildAPIUrl(`${entityType}/${entityId}/photo`);
+    const base = buildAPIUrl(`${entityType}/${entityId}/photo`);
+    return photoVersion && photoVersion > 0 ? `${base}?v=${photoVersion}` : base;
   }
 
   /**
@@ -159,7 +163,15 @@ class AvatarLoader {
     if (img.classList.contains("photo-small")) return 85;
     if (img.classList.contains("photo-medium")) return 100;
     if (img.classList.contains("photo-large")) return 200;
-    if (img.classList.contains("photo-profile")) return 200;
+    if (img.classList.contains("photo-profile")) {
+      // Render at actual displayed size × devicePixelRatio so initials stay crisp
+      // on HiDPI screens and on wide cards (e.g. 300px+ family photo). Cap at 600
+      // to keep the PNG payload reasonable.
+      const rect = img.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const target = Math.ceil(Math.max(rect.width, rect.height, 120) * dpr);
+      return Math.min(600, target);
+    }
 
     // Default size
     return 100;
@@ -173,7 +185,7 @@ class AvatarLoader {
 
     // Check cache first
     if (avatarInfoCache.has(cacheKey)) {
-      return avatarInfoCache.get(cacheKey)!;
+      return avatarInfoCache.get(cacheKey) as AvatarInfo;
     }
 
     const url = this.buildAvatarInfoUrl(config);
@@ -196,7 +208,7 @@ class AvatarLoader {
    */
   private updateViewPhotoButton(img: HTMLImageElement, hasPhoto: boolean): void {
     // Try to find the button - look up to the image-container's parent and search for the button
-    let imageContainer = img.closest(".image-container");
+    const imageContainer = img.closest(".image-container");
     let viewBtn = imageContainer?.querySelector("#view-larger-image-btn") as HTMLElement;
 
     // If not found, try looking in parent containers
@@ -219,6 +231,12 @@ class AvatarLoader {
       }
     }
     // No button found — normal on list/dashboard pages where no view-larger-image button exists
+
+    // Show/hide the inline overlay icon button (inside the photo container)
+    const overlay = img.closest(".position-relative")?.querySelector<HTMLElement>(".photo-view-overlay");
+    if (overlay) {
+      overlay.classList.toggle("d-none", !hasPhoto);
+    }
   }
 
   /**
@@ -272,7 +290,7 @@ class AvatarLoader {
    * Load an uploaded photo
    */
   private loadUploadedPhoto(img: HTMLImageElement, config: AvatarConfig, avatarInfo: AvatarInfo): void {
-    const photoUrl = this.buildPhotoUrl(config);
+    const photoUrl = this.buildPhotoUrl(config, avatarInfo.photoVersion);
 
     // Load the image directly - browser will send authentication cookies automatically
     img.onload = () => {
@@ -296,6 +314,17 @@ class AvatarLoader {
         // For inline/list photos, keep as circular avatar but use the uploaded photo
         img.classList.add("uploaded-photo");
         img.style.objectFit = "cover";
+      }
+
+      // Add click-to-view class so lightbox handlers can detect this photo.
+      // Only uploaded photos get this — initials and failed loads do not.
+      // Skip images inside upload buttons (profile pages handle their own click).
+      if (!img.closest("#uploadImageButton, #uploadImageTrigger")) {
+        const viewClass = config.entityType === "person" ? "view-person-photo" : "view-family-photo";
+        const dataAttr = config.entityType === "person" ? "data-person-id" : "data-family-id";
+        img.classList.add(viewClass);
+        img.setAttribute(dataAttr, String(config.entityId));
+        img.style.cursor = "pointer";
       }
 
       this.cleanupDataAttributes(img);
@@ -323,7 +352,7 @@ class AvatarLoader {
     const useGravatarFallback = defaultImage !== "blank";
 
     // Build settings object with all required fields
-    const settings: any = {
+    const settings: AvatarOptions = {
       useGravatar: true,
       useGravatarFallback: useGravatarFallback, // Use Gravatar's fallback (identicon, monsterid, etc.)
       size: size,
@@ -385,7 +414,9 @@ class AvatarLoader {
    */
   private loadAllImages(): void {
     const images = document.querySelectorAll<HTMLImageElement>("[data-image-entity-type]");
-    images.forEach((img) => this.loadAvatar(img));
+    images.forEach((img) => {
+      this.loadAvatar(img);
+    });
   }
 
   /**
@@ -396,7 +427,7 @@ class AvatarLoader {
 
     if (this.observer) {
       images.forEach((img) => {
-        this.observer!.observe(img);
+        this.observer?.observe(img);
       });
     } else {
       this.loadAllImages();
@@ -424,7 +455,7 @@ class AvatarLoader {
       const images = document.querySelectorAll<HTMLImageElement>("[data-image-entity-type]");
       images.forEach((img) => {
         if (!img.src || img.src.includes("data:")) {
-          this.observer!.observe(img);
+          this.observer?.observe(img);
         }
       });
     } else {
@@ -453,6 +484,44 @@ class AvatarLoader {
 // Create singleton instance
 const avatarLoader = new AvatarLoader();
 
+// Global delegated click handler for avatar lightbox.
+// avatar-loader adds .view-person-photo / .view-family-photo + cursor:pointer
+// to uploaded photos. This handler opens the lightbox when clicked.
+document.addEventListener("click", (e) => {
+  const target = (e.target as HTMLElement).closest<HTMLElement>(".view-person-photo, .view-family-photo");
+  if (!target) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const showLightbox = window.CRM?.showPhotoLightbox;
+  if (!showLightbox) return;
+
+  if (target.classList.contains("view-person-photo")) {
+    const personId = target.dataset.personId;
+    if (personId) showLightbox("person", parseInt(personId, 10));
+  } else if (target.classList.contains("view-family-photo")) {
+    const familyId = target.dataset.familyId;
+    if (familyId) showLightbox("family", parseInt(familyId, 10));
+  }
+});
+
+// Delegated click handler for the inline overlay magnifying-glass button on profile pages.
+document.addEventListener("click", (e) => {
+  const btn = (e.target as HTMLElement).closest<HTMLElement>(".photo-view-overlay");
+  if (!btn) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const showLightbox = window.CRM?.showPhotoLightbox;
+  if (!showLightbox) return;
+
+  const type = btn.dataset.entityType;
+  const id = btn.dataset.entityId;
+  if (type && id) showLightbox(type, parseInt(id, 10));
+});
+
 // Auto-initialize when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
@@ -466,7 +535,7 @@ if (document.readyState === "loading") {
 export default avatarLoader;
 
 // Also attach to window for legacy code
-(window as any).CRM = (window as any).CRM || {};
-(window as any).CRM.avatarLoader = avatarLoader;
+window.CRM = window.CRM || {};
+window.CRM.avatarLoader = avatarLoader;
 // Keep backward compatibility with old name
-(window as any).CRM.peopleImageLoader = avatarLoader;
+window.CRM.peopleImageLoader = avatarLoader;

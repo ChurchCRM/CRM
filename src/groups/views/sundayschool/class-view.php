@@ -1,6 +1,8 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 
@@ -11,8 +13,8 @@ $totalStudents = count($thisClassChildren);
 $maleCount     = 0;
 $femaleCount   = 0;
 foreach ($thisClassChildren as $child) {
-    if ($child['kidGender'] == 1) { $maleCount++; }
-    elseif ($child['kidGender'] == 2) { $femaleCount++; }
+    if ($child['kidGender'] === 1) { $maleCount++; }
+    elseif ($child['kidGender'] === 2) { $femaleCount++; }
 }
 $teacherCount = count($rsTeachers);
 
@@ -38,7 +40,7 @@ if ($bCanManageGroups) {
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto"><span class="bg-primary text-white avatar rounded-circle"><i class="fa-solid fa-users icon"></i></span></div>
-                    <div class="col"><div class="fw-medium"><?= $totalStudents ?></div><div class="text-muted"><?= gettext('Enrolled') ?></div></div>
+                    <div class="col"><div class="fw-medium"><?= $totalStudents ?></div><div class="text-body-secondary"><?= gettext('Enrolled') ?></div></div>
                 </div>
             </div>
         </div>
@@ -48,7 +50,7 @@ if ($bCanManageGroups) {
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto"><span class="bg-azure text-white avatar rounded-circle"><i class="fa-solid fa-child icon"></i></span></div>
-                    <div class="col"><div class="fw-medium"><?= $maleCount ?></div><div class="text-muted"><?= gettext('Boys') ?></div></div>
+                    <div class="col"><div class="fw-medium"><?= $maleCount ?></div><div class="text-body-secondary"><?= gettext('Boys') ?></div></div>
                 </div>
             </div>
         </div>
@@ -58,7 +60,7 @@ if ($bCanManageGroups) {
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto"><span class="bg-danger text-white avatar rounded-circle"><i class="fa-solid fa-child-dress icon"></i></span></div>
-                    <div class="col"><div class="fw-medium"><?= $femaleCount ?></div><div class="text-muted"><?= gettext('Girls') ?></div></div>
+                    <div class="col"><div class="fw-medium"><?= $femaleCount ?></div><div class="text-body-secondary"><?= gettext('Girls') ?></div></div>
                 </div>
             </div>
         </div>
@@ -68,7 +70,7 @@ if ($bCanManageGroups) {
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto"><span class="bg-success text-white avatar rounded-circle"><i class="fa-solid fa-person-chalkboard icon"></i></span></div>
-                    <div class="col"><div class="fw-medium"><?= $teacherCount ?></div><div class="text-muted"><?= gettext('Teachers') ?></div></div>
+                    <div class="col"><div class="fw-medium"><?= $teacherCount ?></div><div class="text-body-secondary"><?= gettext('Teachers') ?></div></div>
                 </div>
             </div>
         </div>
@@ -92,7 +94,7 @@ if ($bCanManageGroups) {
                             <span class="badge bg-danger-lt text-danger"><?= gettext('Inactive') ?></span>
                             <?php endif; ?>
                         </div>
-                        <div class="text-muted"><?= gettext('Status') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Status') ?></div>
                     </div>
                 </div>
             </div>
@@ -105,10 +107,13 @@ if ($bCanManageGroups) {
     <div class="col-lg-8">
 
         <!-- Action Toolbar (ghost buttons — matches group view) -->
-        <div class="d-flex align-items-center mb-3 gap-2 flex-wrap">
+        <div id="ss-action-toolbar" class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <a class="btn btn-ghost-success" href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>">
                 <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Students') ?>
             </a>
+            <button class="btn btn-ghost-secondary" id="printClass" title="<?= gettext('Print') ?>">
+                <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
+            </button>
             <?php if ($bCanManageGroups): ?>
             <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Class') ?>
@@ -119,19 +124,22 @@ if ($bCanManageGroups) {
             </a>
             <?php if ($canEmail): ?>
             <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssEmailDropdownBtn">
                     <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
                 </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(mb_substr($sEmailLink, 0, -3)) ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
-                    <?php foreach ($roleEmails as $roleName => $emails): ?>
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(urlencode(rtrim($emails, ','))) ?>"><?= InputUtils::escapeHTML($roleName) ?></a>
-                    <?php endforeach; ?>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute(mb_substr($sEmailLink, 0, -3)) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?></a>
+                <div class="dropdown-menu" id="ssEmailDropdownMenu">
+                    <div class="text-center py-2 text-body-secondary"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
                 </div>
             </div>
             <?php endif; ?>
+            <div class="dropdown">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssTextDropdownBtn">
+                    <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
+                </button>
+                <div class="dropdown-menu" id="ssTextDropdownMenu">
+                    <div class="text-center py-2 text-body-secondary"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
+                </div>
+            </div>
             <?php if ($bCanManageGroups): ?>
             <div class="dropdown ms-auto">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
@@ -175,7 +183,7 @@ if ($bCanManageGroups) {
                 <div class="list-group-item p-3 ss-member" data-person-id="<?= $teacher->getId() ?>" data-role="Teacher">
                     <div class="row align-items-center">
                         <div class="col-auto">
-                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
+                            <a href="<?= $teacher->getViewURI() ?>">
                                 <span class="avatar avatar-md">
                                     <img data-image-entity-type="person" data-image-entity-id="<?= $teacher->getId() ?>"
                                          alt="<?= InputUtils::escapeAttribute($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?>" />
@@ -183,14 +191,14 @@ if ($bCanManageGroups) {
                             </a>
                         </div>
                         <div class="col">
-                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
+                            <a href="<?= $teacher->getViewURI() ?>">
                                 <strong><?= InputUtils::escapeHTML($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?></strong>
                             </a>
-                            <div class="text-muted small"><?= gettext('Teacher') ?></div>
+                            <div class="text-body-secondary small"><?= gettext('Teacher') ?></div>
                         </div>
                         <div class="col-auto d-flex gap-2">
                             <?php if ($teacher->getEmail()): ?>
-                            <a href="mailto:<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" class="btn btn-sm btn-ghost-primary" title="<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>">
+                            <a href="mailto:<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" class="btn btn-sm btn-ghost-primary" title="<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-solid fa-envelope"></i>
                             </a>
                             <?php endif; ?>
@@ -240,13 +248,13 @@ if ($bCanManageGroups) {
                             <tr class="ss-member" data-person-id="<?= (int) $child['kidId'] ?>" data-role="Student">
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
-                                        <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+                                        <a href="<?= Person::getViewURIForId($child['kidId']) ?>">
                                             <span class="avatar avatar-sm">
                                                 <img data-image-entity-type="person" data-image-entity-id="<?= (int) $child['kidId'] ?>"
                                                      alt="<?= InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>" />
                                             </span>
                                         </a>
-                                        <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+                                        <a href="<?= Person::getViewURIForId($child['kidId']) ?>">
                                             <strong><?= InputUtils::escapeHTML($child['LastName'] . ', ' . $child['firstName']) ?></strong>
                                         </a>
                                     </div>
@@ -256,38 +264,38 @@ if ($bCanManageGroups) {
                                     <?php if ($child['mobilePhone']): ?>
                                     <a href="tel:<?= urlencode($child['mobilePhone']) ?>"><?= InputUtils::escapeHTML($child['mobilePhone']) ?></a>
                                     <?php else: ?>
-                                    <span class="text-muted">—</span>
+                                    <span class="text-body-secondary">—</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
                                     <?php if ($child['kidEmail']): ?>
-                                    <a href="mailto:<?= InputUtils::escapeAttribute($child['kidEmail']) ?>"><i class="fa-solid fa-envelope text-primary"></i></a>
+                                    <a href="mailto:<?= InputUtils::escapeAttribute($child['kidEmail']) ?>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-envelope text-primary"></i></a>
                                     <?php else: ?>
-                                    <span class="text-muted">—</span>
+                                    <span class="text-body-secondary">—</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
                                     <?php if ($child['dadFirstName']): ?>
-                                    <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['dadId'] ?>">
+                                    <a href="<?= Person::getViewURIForId((int) $child['dadId']) ?>">
                                         <?= InputUtils::escapeHTML($child['dadFirstName'] . ' ' . $child['dadLastName']) ?>
                                     </a>
                                     <?php if ($child['dadCellPhone']): ?>
                                     <br><small><a href="tel:<?= urlencode($child['dadCellPhone']) ?>"><?= InputUtils::escapeHTML($child['dadCellPhone']) ?></a></small>
                                     <?php endif; ?>
                                     <?php else: ?>
-                                    <span class="text-muted">—</span>
+                                    <span class="text-body-secondary">—</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
                                     <?php if ($child['momFirstName']): ?>
-                                    <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['momId'] ?>">
+                                    <a href="<?= Person::getViewURIForId((int) $child['momId']) ?>">
                                         <?= InputUtils::escapeHTML($child['momFirstName'] . ' ' . $child['momLastName']) ?>
                                     </a>
                                     <?php if ($child['momCellPhone']): ?>
                                     <br><small><a href="tel:<?= urlencode($child['momCellPhone']) ?>"><?= InputUtils::escapeHTML($child['momCellPhone']) ?></a></small>
                                     <?php endif; ?>
                                     <?php else: ?>
-                                    <span class="text-muted">—</span>
+                                    <span class="text-body-secondary">—</span>
                                     <?php endif; ?>
                                 </td>
                                 <td class="w-1">
@@ -296,10 +304,12 @@ if ($bCanManageGroups) {
                                             <i class="ti ti-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><i class="ti ti-eye me-2"></i><?= gettext('View') ?></a>
+                                            <a class="dropdown-item" href="<?= Person::getViewURIForId($child['kidId']) ?>"><i class="ti ti-eye me-2"></i><?= gettext('View') ?></a>
+                                            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>"><i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?></a>
+                                            <?php endif; ?>
                                             <?php if ($child['fam_id']): ?>
-                                            <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= (int) $child['fam_id'] ?>"><i class="ti ti-users me-2"></i><?= gettext('View Family') ?></a>
+                                            <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= (int) $child['fam_id'] ?>"><i class="ti ti-users me-2"></i><?= gettext('View Family') ?></a>
                                             <?php endif; ?>
                                             <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>"><i class="ti ti-info-circle me-2"></i><?= gettext('Details') ?></button>
                                             <div class="dropdown-divider"></div>
@@ -349,44 +359,44 @@ if ($bCanManageGroups) {
                                             <dt class="col-sm-5"><?= gettext('Birth Date') ?>:</dt>
                                             <dd class="col-sm-7"><?= InputUtils::escapeHTML($birthDate) ?></dd>
                                             <dt class="col-sm-5"><?= gettext('Email') ?>:</dt>
-                                            <dd class="col-sm-7"><?= $child['kidEmail'] ? '<a href="mailto:' . InputUtils::escapeAttribute($child['kidEmail']) . '">' . InputUtils::escapeHTML($child['kidEmail']) . '</a>' : '<span class="text-muted">—</span>' ?></dd>
+                                            <dd class="col-sm-7"><?= $child['kidEmail'] ? '<a href="mailto:' . InputUtils::escapeAttribute($child['kidEmail']) . '" target="_blank" rel="noopener noreferrer">' . InputUtils::escapeHTML($child['kidEmail']) . '</a>' : '<span class="text-body-secondary">—</span>' ?></dd>
                                             <dt class="col-sm-5"><?= gettext('Mobile') ?>:</dt>
-                                            <dd class="col-sm-7"><?= $child['mobilePhone'] ? '<a href="tel:' . urlencode($child['mobilePhone']) . '">' . InputUtils::escapeHTML($child['mobilePhone']) . '</a>' : '<span class="text-muted">—</span>' ?></dd>
+                                            <dd class="col-sm-7"><?= $child['mobilePhone'] ? '<a href="tel:' . urlencode($child['mobilePhone']) . '">' . InputUtils::escapeHTML($child['mobilePhone']) . '</a>' : '<span class="text-body-secondary">—</span>' ?></dd>
                                             <dt class="col-sm-5"><?= gettext('Home Phone') ?>:</dt>
-                                            <dd class="col-sm-7"><?= $child['homePhone'] ? '<a href="tel:' . urlencode($child['homePhone']) . '">' . InputUtils::escapeHTML($child['homePhone']) . '</a>' : '<span class="text-muted">—</span>' ?></dd>
+                                            <dd class="col-sm-7"><?= $child['homePhone'] ? '<a href="tel:' . urlencode($child['homePhone']) . '">' . InputUtils::escapeHTML($child['homePhone']) . '</a>' : '<span class="text-body-secondary">—</span>' ?></dd>
                                         </dl>
                                     </div>
                                     <div class="col-md-6">
                                         <h6 class="mb-3"><i class="fa-solid fa-home me-1"></i> <?= gettext('Address') ?></h6>
-                                        <address><?= $address ? InputUtils::escapeHTML($address) : '<span class="text-muted">—</span>' ?></address>
+                                        <address><?= $address ? InputUtils::escapeHTML($address) : '<span class="text-body-secondary">—</span>' ?></address>
                                         <h6 class="mb-3 mt-4"><i class="fa-solid fa-users me-1"></i> <?= gettext('Parents/Guardians') ?></h6>
                                         <?php if ($child['dadFirstName'] || $child['momFirstName']): ?>
                                         <dl class="row">
                                             <?php if ($child['dadFirstName']): ?>
                                             <dt class="col-sm-5"><?= gettext('Father') ?>:</dt>
                                             <dd class="col-sm-7">
-                                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['dadId'] ?>"><?= InputUtils::escapeHTML($child['dadFirstName'] . ' ' . $child['dadLastName']) ?></a>
+                                                <a href="<?= Person::getViewURIForId((int) $child['dadId']) ?>"><?= InputUtils::escapeHTML($child['dadFirstName'] . ' ' . $child['dadLastName']) ?></a>
                                                 <?php if ($child['dadCellPhone']): ?><br><small><a href="tel:<?= urlencode($child['dadCellPhone']) ?>"><?= InputUtils::escapeHTML($child['dadCellPhone']) ?></a></small><?php endif; ?>
-                                                <?php if ($child['dadEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['dadEmail']) ?>"><?= InputUtils::escapeHTML($child['dadEmail']) ?></a></small><?php endif; ?>
+                                                <?php if ($child['dadEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['dadEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['dadEmail']) ?></a></small><?php endif; ?>
                                             </dd>
                                             <?php endif; ?>
                                             <?php if ($child['momFirstName']): ?>
                                             <dt class="col-sm-5"><?= gettext('Mother') ?>:</dt>
                                             <dd class="col-sm-7">
-                                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['momId'] ?>"><?= InputUtils::escapeHTML($child['momFirstName'] . ' ' . $child['momLastName']) ?></a>
+                                                <a href="<?= Person::getViewURIForId((int) $child['momId']) ?>"><?= InputUtils::escapeHTML($child['momFirstName'] . ' ' . $child['momLastName']) ?></a>
                                                 <?php if ($child['momCellPhone']): ?><br><small><a href="tel:<?= urlencode($child['momCellPhone']) ?>"><?= InputUtils::escapeHTML($child['momCellPhone']) ?></a></small><?php endif; ?>
-                                                <?php if ($child['momEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['momEmail']) ?>"><?= InputUtils::escapeHTML($child['momEmail']) ?></a></small><?php endif; ?>
+                                                <?php if ($child['momEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['momEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['momEmail']) ?></a></small><?php endif; ?>
                                             </dd>
                                             <?php endif; ?>
                                         </dl>
                                         <?php else: ?>
-                                        <span class="text-muted">—</span>
+                                        <span class="text-body-secondary">—</span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>" class="btn btn-primary"><i class="fa-solid fa-user me-1"></i><?= gettext('View Profile') ?></a>
+                                <a href="<?= Person::getViewURIForId($child['kidId']) ?>" class="btn btn-primary"><i class="fa-solid fa-user me-1"></i><?= gettext('View Profile') ?></a>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close') ?></button>
                             </div>
                         </div>
@@ -421,16 +431,16 @@ if ($bCanManageGroups) {
             </div>
             <div class="card-body">
                 <?php if ($thisGroup && $thisGroup->getDescription()): ?>
-                <p class="text-muted mb-0"><?= InputUtils::escapeHTML($thisGroup->getDescription()) ?></p>
+                <p class="text-body-secondary mb-0"><?= InputUtils::escapeHTML($thisGroup->getDescription()) ?></p>
                 <?php else: ?>
-                <p class="text-muted mb-0"><em><?= gettext('No description set.') ?></em></p>
+                <p class="text-body-secondary mb-0"><em><?= gettext('No description set.') ?></em></p>
                 <?php endif; ?>
             </div>
             <div class="card-footer">
                 <div class="d-flex gap-3">
                     <div>
-                        <i class="fa-solid fa-envelope me-1 text-muted"></i>
-                        <span class="text-muted"><?= gettext('Email Export') ?>:</span>
+                        <i class="fa-solid fa-envelope me-1 text-body-secondary"></i>
+                        <span class="text-body-secondary"><?= gettext('Email Export') ?>:</span>
                         <?php if ($thisGroup && $thisGroup->isIncludeInEmailExport()): ?>
                         <span class="badge bg-success-lt text-success"><?= gettext('Included') ?></span>
                         <?php else: ?>
@@ -448,7 +458,7 @@ if ($bCanManageGroups) {
                 <span class="badge bg-primary-lt text-primary ms-2"><?= count($rsAssignedRows) ?></span>
             </div>
             <?php if (empty($rsAssignedRows)): ?>
-            <div class="card-body text-center text-muted py-4">
+            <div class="card-body text-center text-body-secondary py-4">
                 <i class="fa-solid fa-inbox fa-2x mb-2 d-block"></i>
                 <?= gettext('No properties assigned.') ?>
             </div>
@@ -461,10 +471,10 @@ if ($bCanManageGroups) {
                             <div class="fw-bold"><?= InputUtils::escapeHTML($aRow['pro_Name']) ?></div>
                             <span class="badge bg-secondary-lt text-secondary me-1"><?= InputUtils::escapeHTML($aRow['prt_Name']) ?></span>
                             <?php if (!empty($aRow['r2p_Value'])): ?>
-                            <span class="text-muted"><?= InputUtils::escapeHTML($aRow['r2p_Value']) ?></span>
+                            <span class="text-body-secondary"><?= InputUtils::escapeHTML($aRow['r2p_Value']) ?></span>
                             <?php endif; ?>
                             <?php if (!empty($aRow['pro_Prompt'])): ?>
-                            <div class="text-muted small mt-1"><i class="fa-solid fa-circle-question me-1"></i><?= InputUtils::escapeHTML($aRow['pro_Prompt']) ?></div>
+                            <div class="text-body-secondary small mt-1"><i class="fa-solid fa-circle-question me-1"></i><?= InputUtils::escapeHTML($aRow['pro_Prompt']) ?></div>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -474,7 +484,7 @@ if ($bCanManageGroups) {
             <?php endif; ?>
             <?php if ($bCanManageGroups && !empty($availableProperties)): ?>
             <div class="card-footer">
-                <div class="text-muted small">
+                <div class="text-body-secondary small">
                     <i class="fa-solid fa-info-circle me-1"></i><?= gettext('Manage properties from the') ?>
                     <a href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>"><?= gettext('full group view') ?></a>.
                 </div>
@@ -495,7 +505,7 @@ if ($bCanManageGroups) {
                     <div class="fw-bold"><?= InputUtils::escapeHTML($prop->getName()) ?></div>
                     <span class="badge bg-secondary-lt text-secondary me-1"><?= InputUtils::escapeHTML($aPropTypes[$prop->getTypeId()] ?? '') ?></span>
                     <?php if ($prop->getDescription()): ?>
-                    <span class="text-muted small"><?= InputUtils::escapeHTML($prop->getDescription()) ?></span>
+                    <span class="text-body-secondary small"><?= InputUtils::escapeHTML($prop->getDescription()) ?></span>
                     <?php endif; ?>
                 </div>
                 <?php endforeach; ?>
@@ -506,13 +516,49 @@ if ($bCanManageGroups) {
         <!-- Events Card -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-calendar-days me-1"></i> <?= gettext('Events') ?></h3>
+                <h3 class="card-title m-0"><i class="ti ti-calendar me-1"></i> <?= gettext('Events') ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= count($groupEvents) ?></span>
+                <?php if ($todayEvent !== null): ?>
+                <a href="<?= $sRootPath ?>/event/checkin/<?= (int) $todayEvent->getId() ?>"
+                   class="btn btn-sm btn-success ms-auto">
+                    <i class="ti ti-clipboard-check me-1"></i><?= gettext('Take Attendance') ?>
+                </a>
+                <?php else: ?>
+                <button
+                    type="button"
+                    class="btn btn-sm btn-primary ms-auto"
+                    id="quickCreateTodaysEventBtn"
+                    data-group-id="<?= (int) $iGroupId ?>"
+                    title="<?= gettext("Create today's class event and link it to this class for kiosk check-in") ?>">
+                    <i class="ti ti-plus me-1"></i><?= gettext("Create Today's Event") ?>
+                </button>
+                <?php endif; ?>
             </div>
+
+            <?php if ($todayEvent !== null): ?>
+            <!-- Today's event banner -->
+            <div class="card-body py-2 border-bottom bg-success-lt">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="ti ti-calendar-check me-1 text-success"></i>
+                        <strong><?= InputUtils::escapeHTML($todayEvent->getTitle()) ?></strong>
+                        <span class="text-body-secondary ms-2"><?= $todayEvent->getStart() ? $todayEvent->getStart()->format('g:i A') : '' ?></span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success"><?= $todayEventAttendance ?> <?= gettext('checked in') ?></span>
+                        <span class="text-body-secondary small"><?= gettext('of') ?> <?= $totalStudents ?></span>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <?php if (count($groupEvents) === 0): ?>
-            <div class="card-body text-center text-muted py-4">
-                <i class="fa-solid fa-calendar-xmark fa-2x mb-2 d-block"></i>
-                <?= gettext('No events linked to this class.') ?>
+            <div class="card-body text-center text-body-secondary py-4">
+                <i class="ti ti-calendar-off mb-2 d-block" style="font-size: 2rem;"></i>
+                <p class="mb-2"><?= gettext('No events linked to this class.') ?></p>
+                <p class="small text-body-secondary mb-0">
+                    <?= gettext("Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster.") ?>
+                </p>
             </div>
             <?php else: ?>
             <div class="list-group list-group-flush">
@@ -521,26 +567,42 @@ if ($bCanManageGroups) {
                     $hasKiosk  = isset($kioskEventSet[(int) $evt->getId()]);
                     $startDate = $evt->getStart() ? $evt->getStart()->format('M j, Y') : '';
                     $startTime = $evt->getStart() ? $evt->getStart()->format('g:i A') : '';
+                    $eventId   = (int) $evt->getId();
+                    $isToday   = $todayEvent !== null && $eventId === (int) $todayEvent->getId();
                 ?>
-                <div class="list-group-item">
-                    <div class="d-flex align-items-start">
+                <div class="list-group-item<?= $isToday ? ' bg-success-lt' : '' ?>">
+                    <div class="d-flex align-items-center gap-2">
                         <div class="me-auto">
-                            <div class="fw-bold"><?= InputUtils::escapeHTML($evt->getTitle()) ?></div>
+                            <a href="<?= $sRootPath ?>/event/view/<?= $eventId ?>" class="fw-bold text-reset">
+                                <?= InputUtils::escapeHTML($evt->getTitle()) ?>
+                            </a>
                             <?php if ($startDate): ?>
-                            <span class="text-muted small"><?= InputUtils::escapeHTML($startDate) ?></span>
-                            <span class="text-muted small ms-1"><?= InputUtils::escapeHTML($startTime) ?></span>
+                            <div>
+                                <span class="text-body-secondary small"><?= InputUtils::escapeHTML($startDate) ?></span>
+                                <span class="text-body-secondary small ms-1"><?= InputUtils::escapeHTML($startTime) ?></span>
+                            </div>
                             <?php endif; ?>
                         </div>
-                        <div class="d-flex gap-1 align-items-center">
-                            <?php if ($hasKiosk): ?>
-                            <span class="badge bg-success-lt text-success" title="<?= gettext('Kiosk Enabled') ?>">
-                                <i class="fa-solid fa-tablet-screen-button me-1"></i><?= gettext('Kiosk') ?>
-                            </span>
-                            <?php endif; ?>
-                            <?php if (!$isActive): ?>
-                            <span class="badge bg-danger-lt text-danger"><?= gettext('Inactive') ?></span>
-                            <?php endif; ?>
-                        </div>
+                        <?php if ($hasKiosk): ?>
+                        <span class="badge bg-success-lt text-success" title="<?= gettext('Kiosk Enabled') ?>">
+                            <i class="ti ti-device-ipad me-1"></i><?= gettext('Kiosk') ?>
+                        </span>
+                        <?php endif; ?>
+                        <?php if (!$isActive): ?>
+                        <span class="badge bg-secondary-lt"><?= gettext('Inactive') ?></span>
+                        <?php endif; ?>
+                        <?php if ($isActive): ?>
+                        <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>"
+                           class="btn btn-sm btn-outline-primary"
+                           title="<?= gettext('Take Attendance') ?>">
+                            <i class="ti ti-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+                        </a>
+                        <?php endif; ?>
+                        <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>"
+                           class="btn btn-sm btn-ghost-secondary"
+                           title="<?= gettext('Edit Event') ?>">
+                            <i class="ti ti-pencil"></i>
+                        </a>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -556,7 +618,6 @@ if ($bCanManageGroups) {
     window.CRM.currentGroupName = <?= json_encode($iGroupName, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 </script>
 <script src="<?= $sRootPath ?>/skin/js/sundayschool-actions.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/sundayschool-actions.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-class-view.min.js"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

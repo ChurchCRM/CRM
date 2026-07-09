@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -18,7 +19,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
     <!-- Stat Cards Row -->
     <div class="row mb-3">
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -29,13 +30,13 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= $totalGroups ?></div>
-                            <div class="text-muted"><?= gettext('Total Groups') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Total Groups') ?></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -46,13 +47,13 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= $activeGroups ?></div>
-                            <div class="text-muted"><?= gettext('Active Groups') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Active Groups') ?></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -63,13 +64,13 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= $inactiveGroups ?></div>
-                            <div class="text-muted"><?= gettext('Inactive Groups') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Inactive Groups') ?></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -80,7 +81,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= $totalMemberships ?></div>
-                            <div class="text-muted"><?= gettext('Memberships') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Memberships') ?></div>
                         </div>
                     </div>
                 </div>
@@ -120,13 +121,13 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                             <select class="form-select" id="groupType" name="groupType">
                                 <option value=""><?= gettext('— Select type (optional) —') ?></option>
                                 <?php foreach ($groupTypes as $type): ?>
-                                    <option value="<?= (int) $type['id'] ?>"><?= \ChurchCRM\Utils\InputUtils::escapeHTML($type['name']) ?></option>
+                                    <option value="<?= (int) $type['id'] ?>"><?= InputUtils::escapeHTML($type['name']) ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="col-12 col-md-3">
                             <button type="button" class="btn btn-primary w-100" id="addNewGroup">
-                                <i class="fa fa-plus"></i> <?= gettext('Add Group') ?>
+                                <i class="fa fa-plus"></i><?= gettext('Add Group') ?>
                             </button>
                         </div>
                     </div>
@@ -154,8 +155,6 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupList.js"></script>
 
-<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
-
 <?php if ($isAdmin): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
@@ -163,21 +162,22 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 $(document).ready(function () {
     window.CRM.settingsPanel.init({
         container: '#groupSettings',
-        title: i18next.t('Group Settings'),
+        title: <?= json_encode(gettext('Group Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
             {
                 name: 'bEnabledSundaySchool',
-                label: i18next.t('Sunday School Module'),
                 type: 'boolean',
-                tooltip: i18next.t('Enable or disable the Sunday School module and sidebar menu.')
+                label: <?= json_encode(gettext('Sunday School Module'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                tooltip: <?= json_encode(gettext('Enable or disable the Sunday School module and sidebar menu.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             }
         ],
         onSave: function () {
-            window.CRM.notify(i18next.t('Settings saved successfully'), { type: 'success' });
             setTimeout(function () { window.location.reload(); }, 1500);
         }
     });
 });
 </script>
 <?php endif; ?>
+
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

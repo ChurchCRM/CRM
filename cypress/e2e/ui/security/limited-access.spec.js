@@ -1,0 +1,123 @@
+/// <reference types="cypress" />
+
+/**
+ * Tests for limited-access users (EditSelf only, no admin permissions).
+ *
+ * Seed data: user "limited.user" (person ID 4, family 1 — Campbell) has
+ * usr_EditSelf=1 and all other permissions=0.
+ * Password: "changeme" (same as admin).
+ *
+ * The exclusive-permission invariant (EditSelf=1 → all module perms = 0) is
+ * enforced at two levels:
+ *   1. PHP model: User::isEditSelfExclusive() suppresses module perms at runtime
+ *   2. DB migration: src/mysql/upgrade/7.4.2-editself-exclusive.sql clears any
+ *      orphaned module permissions left from pre-PR-9016 installations.
+ */
+describe("Self-only access — EditSelf account user (limited.user)", () => {
+    const limitedUser = "limited.user";
+    const limitedPassword = "changeme";
+
+    it("Login redirects to /external/limited-access", () => {
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+
+        // Should end up on the limited access page, not the dashboard
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+        cy.contains("Welcome");
+    });
+
+    it("Shows Verify Family Info button and Log Out button", () => {
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+        cy.contains("Verify Family Info").should("exist");
+        cy.contains("Log Out").should("exist");
+    });
+
+    it("Verify Family Info link goes to /external/verify/{token}", () => {
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+        cy.contains("Verify Family Info").click();
+        cy.url({ timeout: 10000 }).should("include", "/external/verify/");
+        // Verify page should show the family name (Campbell — person 4, family 1)
+        cy.get("body", { timeout: 10000 }).should("contain.text", "Campbell");
+    });
+
+    it("Log Out returns to login page", () => {
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+        cy.contains("Log Out").click();
+        cy.url().should("include", "/session/begin");
+    });
+
+    it("Direct visit to /v2/dashboard redirects to limited-access", () => {
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+
+        // Try to access an admin page directly
+        cy.visit("v2/dashboard", { failOnStatusCode: false });
+        cy.url().should("include", "/external/limited-access");
+    });
+
+    it("Direct visit to other internal MVC apps also redirects to limited-access", () => {
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+
+        // The "external pages only" guarantee must hold across every internal
+        // MVC app, not just /v2 — each is gated by AuthMiddleware via MvcAppFactory.
+        cy.visit("people/dashboard", { failOnStatusCode: false });
+        cy.url().should("include", "/external/limited-access");
+    });
+
+    it("Session-based internal API call is blocked with 403", () => {
+        // Complements the api-key 403 test: a logged-in browser SESSION for a
+        // limited user must also be rejected from internal APIs (AuthMiddleware
+        // hasNoAdminPermissions gate), so they can't pivot via the cookie.
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+
+        cy.request({
+            method: "GET",
+            url: "/api/person/2",
+            failOnStatusCode: false,
+        }).then((resp) => {
+            expect(resp.status).to.eq(403);
+        });
+    });
+
+    it("API call with limited user key returns 403", () => {
+        cy.apiRequest({
+            method: "GET",
+            url: "/api/person/1",
+            headers: {
+                "x-api-key": "limitedUserApiKeyForTesting123456789012345678",
+            },
+            failOnStatusCode: false,
+        }).then((resp) => {
+            expect(resp.status).to.eq(403);
+        });
+    });
+});

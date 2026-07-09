@@ -6,8 +6,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: {
-    'calendar-event-editor': './react/calendar-event-editor.tsx',
-    'two-factor-enrollment': './react/two-factor-enrollment.tsx',
+    'calendar-event-editor': './webpack/calendar-event-editor.js',
+    'two-factor-enrollment': './webpack/two-factor-enrollment.js',
     churchcrm: './webpack/skin-main',
     'churchcrm-rtl': './webpack/skin-rtl',
     'photo-uploader': './webpack/photo-uploader-entry',
@@ -23,6 +23,7 @@ module.exports = {
     'admin-dashboard': './webpack/admin-dashboard',
     'get-started': './webpack/get-started',
     'church-info': './webpack/church-info',
+    localization: './webpack/localization',
     'system-settings-panel': './webpack/system-settings-panel',
     'kiosk-registration-closed': './webpack/kiosk-registration-closed',
     kiosk: './webpack/kiosk',
@@ -30,8 +31,16 @@ module.exports = {
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',
     'people-person-view': './webpack/people/person-view',
+    'error': './webpack/error',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
+    'repeat-event-editor': './webpack/repeat-event-editor',
+    'event-checkin': './webpack/event-checkin',
+    'event-calendars': './webpack/event-calendars',
+    'event-types': './webpack/event-types',
+    'event-editor': './webpack/event-editor',
+    'event-types-list': './webpack/event-types-list',
+    'event-cart-to-event': './webpack/event-cart-to-event',
   },
   output: {
     path: path.resolve('./src/skin/v2'),
@@ -60,13 +69,6 @@ module.exports = {
     moduleIds: 'deterministic',
     chunkIds: 'deterministic',
   },
-  // Silence react-datepicker dynamic require warning while keeping other warnings visible
-  ignoreWarnings: [
-    {
-      module: /react-datepicker/,
-      message: /Critical dependency: the request of a dependency is an expression/,
-    },
-  ],
   module: {
     rules: [
       {

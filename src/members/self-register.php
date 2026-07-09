@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 $sPageTitle = gettext('Self Registrations');
 require_once __DIR__ . '/../Include/Header.php';
@@ -60,7 +60,7 @@ use ChurchCRM\dto\SystemURLs;
                     data: 'Id',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href="' + window.CRM.root + '/v2/family/' + encodeURIComponent(data) + '">' + data + '</a>';
+                        return '<a href="' + window.CRM.root + '/people/family/' + encodeURIComponent(data) + '">' + data + '</a>';
                     }
                 },
                 {
@@ -110,7 +110,7 @@ use ChurchCRM\dto\SystemURLs;
                     data: 'Id',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + encodeURIComponent(data) + '">' + data + '</a>';
+                        return '<a href="' + window.CRM.root + '/people/view/' + encodeURIComponent(data) + '">' + data + '</a>';
                     }
                 },
                 {

@@ -1,10 +1,9 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -15,7 +14,7 @@ $sPageSubtitle = gettext('Browse and search fundraiser campaigns');
 
 $sDateFormat = SystemConfig::getValue('sDatePickerFormat');
 
-$fundraisersQuery = FundraiserQuery::Create()    
+$fundraisersQuery = FundRaiserQuery::Create()
     ->orderByDate('desc');
 
 if (array_key_exists('DateStart', $_GET)) {

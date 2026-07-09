@@ -1,0 +1,7 @@
+id,name,address,room,capacity,latitude,longitude
+loc-1,Main Sanctuary,123 Church St,Sanctuary,300,,
+loc-2,Education Wing,123 Church St,Classrooms,120,,
+loc-3,Fellowship Hall,123 Church St,Hall,150,,
+loc-4,Retreat Center,456 Camp Rd,,80,,
+loc-5,Music Room,123 Church St,Room 201,40,,
+loc-6,Conference Room,123 Church St,Room 105,30,,

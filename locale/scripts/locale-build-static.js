@@ -68,19 +68,6 @@ class StaticDataExtractor {
         
         // Write PO file
         this.writePoFile(poFile, entries);
-        
-        // Also save a copy into locale/terms/base for review
-        try {
-            const termsBaseDir = config.terms.base;
-            if (!fs.existsSync(termsBaseDir)) {
-                fs.mkdirSync(termsBaseDir, { recursive: true });
-            }
-            const dest = config.termsOutput.staticPo;
-            fs.copyFileSync(poFile, dest);
-            console.log(`${dest} created (copy of static terms)`);
-        } catch (err) {
-            console.error('Failed to copy static terms to terms/base:', err.message);
-        }
         return poFile;
     }
 

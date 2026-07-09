@@ -2,7 +2,7 @@
 
 describe("Fund Raiser", () => {
     beforeEach(() => cy.setupStandardSession());
-    
+
     it("View All ", () => {
         cy.visit("FundRaiserEditor.php?FundRaiserID=-1");
         cy.contains("Create New Fund Raiser");
@@ -13,8 +13,8 @@ describe("Fund Raiser", () => {
         cy.contains("Fundraiser Listing");
         cy.contains("2016 Car Wash");
     });
-    
-    
+
+
     it("New Fund Raiser with url param -1 ", () => {
         cy.visit("FundRaiserEditor.php?FundRaiserID=-1");
         cy.contains("Create New Fund Raiser");
@@ -29,7 +29,8 @@ describe("Fund Raiser", () => {
         // Click the form submit input (Save)
         cy.get('input[name="FundRaiserSubmit"]').click();
 
-        cy.url().should('include', 'FundRaiserEditor.php');
+        // After a successful save the editor reloads with a FundRaiserID query param
+        cy.url().should('include', 'FundRaiserID=');
         // Click the Add Donated Item link (avoid relying on an id)
         cy.contains('a', 'Add Donated Item').click();
 

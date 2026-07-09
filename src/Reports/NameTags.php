@@ -1,18 +1,20 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfLabel;
+use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 
 $sLabelFormat = InputUtils::legacyFilterInput($_GET['labeltype']);
 setcookie('labeltype', $sLabelFormat, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 $pdf = new PdfLabel($sLabelFormat);
 
-$sFontInfo = FontFromName($_GET['labelfont']);
+$sFontInfo = MiscUtils::fontFromName($_GET['labelfont']);
 setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $sFontSize = $_GET['labelfontsize'];
 setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
@@ -22,7 +24,7 @@ if ($sFontSize != 'default') {
     $pdf->setCharSize($sFontSize);
 }
 
-$sSQL = 'SELECT * FROM person_per WHERE per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_LastName';
+$sSQL = 'SELECT * FROM person_per WHERE per_ID IN (' . Cart::getCartIdString() . ') ORDER BY per_LastName';
 $rsPersons = RunQuery($sSQL);
 
 while ($aPer = mysqli_fetch_array($rsPersons)) {

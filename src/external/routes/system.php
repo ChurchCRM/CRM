@@ -1,11 +1,51 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\VersionUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+
+// Limited access page for users with no admin permissions (GHSA-5w59-32c8-933v)
+$app->get('/limited-access', function (Request $request, Response $response): Response {
+    $renderer = new PhpRenderer(__DIR__ . '/../templates/');
+    $userName = '';
+    $churchName = ChurchMetaData::getChurchName();
+    $verifyUrl = '';
+
+    // Try to get the user info from the active session
+    try {
+        if (AuthenticationManager::validateUserSessionIsActive(false)) {
+            $user = AuthenticationManager::getCurrentUser();
+            $person = $user->getPerson();
+            $userName = $person ? ($person->getFirstName() . ' ' . $person->getLastName()) : $user->getUserName();
+
+            // Only generate the verify link when EditSelf is explicitly enabled.
+            // Users with EditSelf=0 must not receive a family-verification token even
+            // when they belong to a family — the verify flow is a self-edit capability
+            // that requires the explicit permission flag. (Fixes #9079)
+            $familyId = $person ? $person->getFamId() : 0;
+            if ($familyId > 0 && $user->isEditSelfEnabled()) {
+                $token = new \ChurchCRM\model\ChurchCRM\Token();
+                $token->build('verifyFamily', $familyId);
+                $token->save();
+                $verifyUrl = SystemURLs::getRootPath() . '/external/verify/' . $token->getToken();
+            }
+        }
+    } catch (\Throwable $e) {
+        // Session might be invalid — that's OK, just show the page without user info
+    }
+
+    return $renderer->render($response, 'limited-access.php', [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'userName' => $userName,
+        'churchName' => $churchName,
+        'verifyUrl' => $verifyUrl,
+    ]);
+});
 
  $app->group('/system', function (RouteCollectorProxy $group): void {
     $renderer = new PhpRenderer(__DIR__ . '/../templates/');

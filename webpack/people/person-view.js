@@ -14,10 +14,12 @@
 import L from "leaflet";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
 import { initGroupManager } from "./person-group-manager";
+import { initTimelineFilter } from "./timeline-filter";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
   // Map initialisation
-  const config = window.CRM && window.CRM.personMapConfig;
+  const config = window.CRM?.personMapConfig;
   if (config) {
     function initMap(lat, lng) {
       const map = L.map("person-map", {
@@ -40,14 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
       initMap(config.lat, config.lng);
     } else if (config.address) {
       // Unaffiliated person with own address — geocode client-side via Nominatim (free, no key)
-      fetch(
-        "https://nominatim.openstreetmap.org/search?q=" + encodeURIComponent(config.address) + "&format=json&limit=1",
-        { headers: { "Accept-Language": "en", Accept: "application/json" } },
-      )
-        .then(function (r) {
-          return r.json();
-        })
-        .then(function (data) {
+      fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(config.address)}&format=json&limit=1`, {
+        headers: { "Accept-Language": "en", Accept: "application/json" },
+      })
+        .then((r) => r.json())
+        .then((data) => {
           if (!data.length) {
             return;
           }

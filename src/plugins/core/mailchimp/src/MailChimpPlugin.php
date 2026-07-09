@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Plugins\MailChimp;
 
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugin\AbstractPlugin;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
@@ -320,7 +321,7 @@ class MailChimpPlugin extends AbstractPlugin
         }
 
         // Get person email from ID
-        $person = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk($personId);
+        $person = PersonQuery::create()->findPk($personId);
         if ($person === null || empty($person->getEmail())) {
             return;
         }

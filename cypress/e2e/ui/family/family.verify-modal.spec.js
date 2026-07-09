@@ -4,7 +4,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
         // Navigate to a family view with verification modal
-        cy.visit("v2/family/1");
+        cy.visit("people/family/1");
     });
 
     it("should display verify option in Actions dropdown", () => {

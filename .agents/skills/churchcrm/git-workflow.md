@@ -26,7 +26,8 @@ feature/{description}
 - Include issue number for bug fixes: `fix/issue-{NUMBER}`
 - No spaces or underscores
 - Keep descriptions concise (< 50 chars)
-- One branch per issue
+- **ONE ISSUE PER BRANCH** — never mix multiple issues/bug fixes into one branch. Each issue gets its own branch, even if related
+- For test-only additions tied to a specific issue: use `test/issue-{NUMBER}` prefix instead of `fix/`
 
 ### Branch Lifecycle
 
@@ -52,6 +53,28 @@ git checkout -b fix/issue-1234-description
   [Delete feature branch]
      git branch -d fix/issue-1234-description
 ```
+
+### Git Worktree — Parallel Branch Work Without Switching <!-- learned: 2026-04-25 -->
+
+When you need to commit to a different branch (e.g., update a skill file on `master`) while staying on a feature or locale branch, use `git worktree`. No branch switch = no risk of clobbering in-progress work, and the branch-switch gate hook won't fire.
+
+```bash
+# Create a private checkout of master in a temp directory
+git worktree add /tmp/crm-master master
+
+# Edit files using absolute paths inside the worktree
+# e.g. nano /tmp/crm-master/.agents/skills/churchcrm/some-skill.md
+
+# Commit and push from the worktree (no cd needed — use -C flag)
+git -C /tmp/crm-master add .agents/skills/
+git -C /tmp/crm-master commit -m "docs: update skill with ..."
+git -C /tmp/crm-master push origin master
+
+# Remove the worktree when done
+git worktree remove /tmp/crm-master
+```
+
+Current branch, staged changes, and working tree are completely unaffected.
 
 ---
 
@@ -191,6 +214,32 @@ Fixes #7698
 - **Testing** - How to verify, test commands
 - **Related Issues** - Links to related issues/PRs
 
+### Keeping PR Descriptions Up to Date <!-- learned: 2026-03-29 -->
+
+After the initial PR is created, **update the PR description whenever the scope of changes evolves** — e.g., after addressing review comments that add/remove files or features, or after merging master resolves conflicts that affect the stated changes.
+
+Use `gh pr edit` to update in place:
+
+```bash
+gh pr edit 1234 --body "$(cat <<'EOF'
+## Summary
+...updated summary...
+
+## Changes
+- Original change
+- New change added during review
+
+## Why
+...
+
+## Testing
+...
+EOF
+)"
+```
+
+**Rule:** The description must always accurately reflect *what the PR actually contains* at the time of review — not just what it contained when first opened. A reviewer reading the description should not be surprised by the diff.
+
 ### Keeping Branches Up to Date
 
 **Always merge master into a PR branch before reviewing or testing it.** A branch that has diverged from master may have hidden conflicts or stale code that makes the review misleading.
@@ -236,7 +285,7 @@ Before marking PR ready for review, ensure:
 
 ### Code Quality
 - [ ] PHP syntax validation passed (`npm run build:php`)
-- [ ] No linting errors (`npm run lint`)
+- [ ] **Biome lint passed (`npm run lint`) — also enforced by `.githooks/pre-push`**
 - [ ] Code follows project standards (read nearby files)
 
 ### Database & ORM
@@ -362,6 +411,45 @@ Remove every reference found before (or as part of) the deletion commit:
 8. git add → git commit → git push
 ```
 
+### Mandatory Pre-Push Biome Check <!-- learned: 2026-04-09 -->
+
+**Biome lint MUST pass before any `git push`.** This is enforced two ways
+so neither humans nor agents can ship code that fails CI lint:
+
+1. **Git hook** — `.githooks/pre-push` runs `npm run lint` automatically.
+   The hooks path is wired up by the `prepare` script in `package.json`
+   (`git config core.hooksPath .githooks`), so `npm install` enables it
+   for every clone. The hook is a no-op inside CI (`$CI` / `$GITHUB_ACTIONS`)
+   because the lint job runs there as a separate step.
+
+2. **Agent checklist** — agents must run `npm run lint` themselves before
+   even *asking* for push approval. Do not rely on the hook to catch
+   failures; surface them in the conversation so the user sees them.
+
+**Bypass policy:**
+
+```bash
+# ❌ NEVER (silent bypass — hides failing lint from reviewer)
+git push --no-verify
+
+# ✅ Only acceptable when:
+#    - The user explicitly authorizes it for an emergency hot-fix, AND
+#    - The PR description calls out exactly which rule was bypassed and why
+git push --no-verify   # bypassing lint per user approval — see PR body
+```
+
+If `npm run lint` ever times out or fails for an unrelated reason
+(e.g. missing `node_modules`), fix the root cause — never paper over
+it by removing the hook or bypassing.
+
+**Why this is hardcoded:** Lint failures used to land on master because
+contributors pushed before CI feedback arrived. The pre-push hook closes
+that loop locally so feedback is instant and the master branch stays green.
+
+### Permission-Sensitive Files — Mandatory Audit Before Merge <!-- learned: 2026-07-06 -->
+
+If a PR diff touches any file listed in `authorization-security.md → PR Permission Audit`, the reviewer **must** run through the permission audit checklist in that section before recommending merge. No exceptions.
+
 **Examples:**
 
 ```
@@ -387,6 +475,38 @@ Build and lint passed. Please review the changes above. Shall I commit with:
 **Not approval:** silence, a follow-up question, or continuing the conversation.
 
 **No exceptions** — not even for "small" or "obvious" changes.
+
+### CRITICAL: Never Push Without User Approval <!-- learned: 2026-05-13 -->
+
+**Golden rule: NEVER `git push` without explicit user approval.**
+
+This is non-negotiable. Even when changes are correct, tested, and ready, the user must see the diff and explicitly approve before pushing. The cost of an accidental bad push is higher than the inconvenience of waiting for approval.
+
+**Before push, always:**
+1. Run lint + build
+2. Show the full `git diff` output to the user
+3. Ask for approval explicitly: "Build and lint passed. Please review the changes above. Ready to push?"
+4. **Wait for explicit "yes"** — silence, follow-up questions, or continuing the conversation are NOT approval
+
+**Why this matters:**
+- Users need visibility into what's being pushed to their repo
+- A wrong branch or unintended commits can cause serious issues
+- Approval is the gate that prevents mistakes from reaching production CI
+
+**What counts as explicit approval:**
+- "yes"
+- "looks good"
+- "lgtm" (looks good to me)
+- "commit it" / "push it"
+- "go ahead" / "ship it"
+
+**What does NOT count:**
+- Silence or no response
+- Follow-up questions
+- Continuing the conversation
+- "ok" without context (ambiguous)
+
+**Exception:** User can establish standing instructions (in CLAUDE.md or via memory) like "always push without asking for this repository" — but this is rare and must be explicit.
 
 ### When User Asks to Commit
 
@@ -478,6 +598,34 @@ $users = UserQuery::create()
 
 ---
 
+## Branch Consolidation — Merging Multiple Feature Branches <!-- learned: 2026-04-07 -->
+
+When consolidating multiple feature branches into one:
+
+1. **Audit each branch** before merging:
+   - `git log master..branch --oneline` — identify unique commits per branch
+   - `git diff master...branch --name-only` — find overlapping files
+   - `git branch --merged master` — identify already-merged branches (safe to delete)
+
+2. **Merge in order of increasing conflict risk** (clean merges first)
+
+3. **Conflict resolution patterns:**
+   - Modify/delete conflicts where the file was refactored away in master — accept the deletion
+   - Import conflicts from merges — keep all imports from both sides
+   - Overlapping edits to the same file — manually review and combine intent from both branches
+
+```bash
+# Example: consolidating branch-a and branch-b into branch-combined
+git checkout -b branch-combined master
+git merge branch-a            # clean merge first
+git merge branch-b            # higher-conflict merge second
+# Resolve any conflicts, then:
+git add <resolved-files>
+git commit -m "Merge branch-b into branch-combined"
+```
+
+---
+
 ## Troubleshooting
 
 ### Commit Message Mistakes
@@ -533,6 +681,80 @@ git push origin fix/issue-1234-description --force-with-lease
 
 ---
 
+## Dependabot Workflow <!-- learned: 2026-04-21 -->
+
+The repo uses grouped Dependabot updates configured in [.github/dependabot.yml](../../../.github/dependabot.yml). When reviewing or maintaining these PRs:
+
+### Pinning away from a specific version
+
+When a published release has regressions we don't want, add a scoped `ignore:` under the npm `updates` entry — **never** rely on `@dependabot ignore` PR comments alone. Comments live in Dependabot's internal state and can be lost when the config is rewritten; the YAML is durable.
+
+```yaml
+# .github/dependabot.yml
+- package-ecosystem: "npm"
+  directory: "/"
+  open-pull-requests-limit: 5
+  ignore:
+    # Pinned: quill 2.0.3 has regressions we don't want to pick up.
+    # Remove this entry when a newer 2.x release addresses them.
+    - dependency-name: "quill"
+      versions: ["2.0.3"]    # blocks just 2.0.3 — 2.0.4+ still proposed
+```
+
+Variants: `update-types: ["version-update:semver-patch"]` to block *all* patches of a package, or a bare `dependency-name` with no `versions`/`update-types` to pin the package entirely.
+
+### Detecting deprecated `@types/*` stubs
+
+Many libraries (e.g. `dompurify@3.x`) now ship their own `.d.ts` via the `types`/`exports` fields in their own `package.json`, which makes the `@types/*` companion obsolete. `npm` marks these stubs deprecated in `package-lock.json`:
+
+```jsonc
+"node_modules/@types/dompurify": {
+  "deprecated": "This is a stub types definition. dompurify provides its own type definitions, so you do not need this installed."
+}
+```
+
+**Action on a Dependabot `@types/*` bump:** before merging, grep `package-lock.json` for `"deprecated":` on that entry. If it's a stub, open a follow-up PR that **removes** the stub from `package.json` instead of bumping it. Verify by checking the real package's `node_modules/<pkg>/package.json` for a `types` or `exports.types` field.
+
+### Concurrent Dependabot PR conflicts
+
+Dependabot groups touch overlapping regions of `package.json` / `package-lock.json`, so once one group PR merges, sibling PRs (or follow-up branches cut from the pre-merge master) hit merge conflicts on those two files. Recipe to resolve:
+
+```bash
+git checkout <your-branch>
+git fetch origin master
+git merge origin/master                                 # conflict in package.json / package-lock.json
+git checkout --theirs package.json package-lock.json    # take master's full state
+# Re-apply your surgical edit (e.g. delete a single line)
+npm install --no-audit --no-fund                        # regenerate lockfile cleanly
+git add package.json package-lock.json
+git commit                                              # merge commit
+```
+
+Do not hand-edit the lockfile merge markers — `npm install` is the source of truth. Running `npm run lint` + `npm run build:webpack` after resolution catches any missed constraint conflicts.
+
+### Reviewing grouped `npm-minor-patch` PRs
+
+Grouped bumps lump patch and minor updates into one PR. Scan-review approach:
+
+1. **Sort by risk:** patches ≤ dev-deps < minors < majors. Dev-only deps (in `devDependencies` or used only in `locale/scripts/`, `scripts/`, etc.) are low-risk regardless of semver — they never ship to end users.
+2. **Call out every minor explicitly:** the group label says "minor-patch" but a single minor bump in a UI library (e.g. `tom-select`) can change DOM behavior. Link its release notes in the review.
+3. **Cross-check against MEMORY.md Critical Patterns:** many libraries here have workarounds documented (TomSelect `value=""` bug, `marked.parse()` XSS, etc.). A bump may invalidate or re-validate those workarounds.
+4. **Green CI is the gate:** the UI Cypress suites (`test-root ui`, `test-subdir ui`) exercise TomSelect, DataTables, and calendar-event-editor directly. A fully-green run is sufficient sign-off for grouped patch/minor bumps.
+
+### Dependabot PR state fields
+
+```bash
+gh pr view <n> --json mergeable,mergeStateStatus
+```
+
+- `mergeable: MERGEABLE` — **git** conflicts absent, says nothing about CI.
+- `mergeStateStatus: UNSTABLE` — failing or pending required checks. A re-run may clear it.
+- `mergeStateStatus: CLEAN` — all required checks pass; safe to merge.
+
+Dependabot force-pushes its own branches frequently (rebase/re-resolve). If `git merge origin/master` against a Dependabot branch reports "Already up to date" when you expected conflicts, Dependabot likely just rebased it under you.
+
+---
+
 ## Related Skills
 
 - [Routing & Project Architecture](./routing-architecture.md) - Where to put code
@@ -541,4 +763,4 @@ git push origin fix/issue-1234-description --force-with-lease
 
 ---
 
-Last updated: March 3, 2026
+Last updated: April 21, 2026

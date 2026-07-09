@@ -7,7 +7,6 @@
 ## Flags: []
 ## AutocompleteTerminators: []
 ## CanRunGlobally: false
-## OSTypes: []
 
 set -e
 

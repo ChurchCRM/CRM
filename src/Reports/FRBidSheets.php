@@ -3,7 +3,7 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
@@ -57,7 +57,7 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
     if ($di_estprice > 0) {
         $pdf->Write(8, gettext('Estimated value ') . '$' . $di_estprice . '.  ');
     }
-    if ($per_LastName != '') {
+    if ($per_LastName !== '') {
         $pdf->Write(8, gettext('Donated by ') . $per_FirstName . ' ' . $per_LastName .".\n");
     }
     $pdf->Write(8,"\n");

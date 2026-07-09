@@ -12,8 +12,8 @@ vendor
 node_modules
 temp
 
-# Locale build artifacts
-locale/terms/base
+# Locale build artifacts (all intermediate build output in one place)
+locale/.work
 
 # Uploaded Images
 src/Images/Family/*
@@ -33,6 +33,11 @@ orm/propel.php
 # Perpl/Propel generated config
 src/generated-conf/
 
+# Community plugins are installed at runtime — not committed to git
+src/plugins/community/*
+# ...except the checked-in .htaccess deny block (GHSA-37mf-vq43-5qp9)
+!src/plugins/community/.htaccess
+
 src/admin/data/signatures.json
 src/ChurchCRM/model/ChurchCRM/Base
 src/ChurchCRM/model/ChurchCRM/Map
@@ -46,3 +51,9 @@ cypress/downloads
 cypress.config.ts
 cypress.env.json
 
+# DDEV — Composer credentials (not covered by .ddev/.gitignore)
+# See https://ddev.readthedocs.io/en/stable/users/extend/in-container-configuration/
+.ddev/**/auth.json
+
+.claude/settings.json
+cy.log

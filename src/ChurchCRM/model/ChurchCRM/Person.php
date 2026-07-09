@@ -9,6 +9,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -28,6 +30,7 @@ class Person extends BasePerson implements PhotoInterface
     public const SELF_REGISTER = -1;
     public const SELF_VERIFY = -2;
     private ?Photo $photo = null;
+    private bool $skipPostUpdateNote = false;
 
     public function getFullName(): string
     {
@@ -91,9 +94,14 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
+    public static function getViewURIForId(int $id): string
+    {
+        return SystemURLs::getRootPath() . '/people/view/' . $id;
+    }
+
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->getId();
+        return self::getViewURIForId($this->getId());
     }
 
     public function getFamilyRole()
@@ -143,19 +151,22 @@ class Person extends BasePerson implements PhotoInterface
     public function postInsert(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('create');
-        if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
-            $NotificationEmail = new NewPersonOrFamilyEmail($this);
-            if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext('New Person Notification Email Error') . ' :' . $NotificationEmail->getError());
-            }
+
+        // Unaffiliated persons only — Family::postInsert() sends one email per family.
+        if (empty($this->getFamId())) {
+            NewPersonOrFamilyEmail::sendIfConfigured($this);
         }
+
+        HookManager::doAction(Hooks::PERSON_CREATED, $this);
     }
 
     public function postUpdate(?ConnectionInterface $con = null): void
     {
-        if (!empty($this->getDateLastEdited())) {
+        if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
+
+        HookManager::doAction(Hooks::PERSON_UPDATED, $this);
     }
 
     private function createTimeLineNote(string $type): void
@@ -348,6 +359,29 @@ class Person extends BasePerson implements PhotoInterface
         return GeoUtils::buildDirectionsUrl($family->getAddress());
     }
 
+    /**
+     * Apple Maps companion to {@see self::getDirectionsUrl()}. Mirrors the
+     * same address/lat/lng precedence rules so the two links resolve to the
+     * same destination.
+     */
+    public function getAppleMapsDirectionsUrl(): string
+    {
+        if (!empty($this->getAddress1())) {
+            return GeoUtils::buildAppleMapsDirectionsUrl($this->getAddress());
+        }
+
+        $family = $this->getFamily();
+        if ($family === null) {
+            return '';
+        }
+
+        if ($family->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildAppleMapsDirectionsUrl('', (float) $family->getLatitude(), (float) $family->getLongitude());
+        }
+
+        return GeoUtils::buildAppleMapsDirectionsUrl($family->getAddress());
+    }
+
     public function deletePhoto(): bool
     {
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
@@ -384,11 +418,15 @@ class Person extends BasePerson implements PhotoInterface
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setPerId($this->getId());
         $note->save();
-        
-        // Update person's last edited date and editor
+
         $this->setDateLastEdited(new \DateTime());
         $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
-        $this->save();
+        $this->skipPostUpdateNote = true;
+        try {
+            $this->save();
+        } finally {
+            $this->skipPostUpdateNote = false;
+        }
     }
 
     /**
@@ -536,7 +574,11 @@ class Person extends BasePerson implements PhotoInterface
 
     public function preDelete(?ConnectionInterface $con = null): bool
     {
-        $this->deletePhoto();
+        // Remove the uploaded image from disk. Call Photo::delete() directly
+        // rather than $this->deletePhoto(), which gates on the current user's
+        // delete-records permission and writes a Note that NoteQuery below
+        // would immediately delete. See GH issue #1697.
+        $this->getPhoto()->delete();
 
         $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
         if ($obj->count() > 0) {
@@ -689,7 +731,7 @@ class Person extends BasePerson implements PhotoInterface
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
-        $now = $date == null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+        $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
         $age = date_diff($now, $birthDate);
 
         if ($age->y < 1) {
@@ -734,9 +776,9 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getEmail(): ?string
     {
-        if (parent::getEmail() == null) {
+        if (parent::getEmail() === null) {
             $family = $this->getFamily();
-            if ($family != null) {
+            if ($family !== null) {
                 return $family->getEmail();
             }
         }
@@ -763,5 +805,77 @@ class Person extends BasePerson implements PhotoInterface
         }
 
         return $initialString;
+    }
+
+    /**
+     * Resolve address fields with family fallback (issue #7937).
+     *
+     * When a person doesn't have personal address/contact data, falls back to their family's data.
+     * Ensures complete address coverage for single-member households and people without personal address entries.
+     * Returns empty string if neither person nor family has the value.
+     *
+     * @return string Resolved address field with family fallback
+     */
+    public function getResolvedAddress1(): string
+    {
+        if (!empty(parent::getAddress1())) {
+            return parent::getAddress1();
+        }
+        $family = $this->getFamily();
+        return $family?->getAddress1() ?? '';
+    }
+
+    public function getResolvedAddress2(): string
+    {
+        if (!empty(parent::getAddress2())) {
+            return parent::getAddress2();
+        }
+        $family = $this->getFamily();
+        return $family?->getAddress2() ?? '';
+    }
+
+    public function getResolvedCity(): string
+    {
+        if (!empty(parent::getCity())) {
+            return parent::getCity();
+        }
+        $family = $this->getFamily();
+        return $family?->getCity() ?? '';
+    }
+
+    public function getResolvedState(): string
+    {
+        if (!empty(parent::getState())) {
+            return parent::getState();
+        }
+        $family = $this->getFamily();
+        return $family?->getState() ?? '';
+    }
+
+    public function getResolvedZip(): string
+    {
+        if (!empty(parent::getZip())) {
+            return parent::getZip();
+        }
+        $family = $this->getFamily();
+        return $family?->getZip() ?? '';
+    }
+
+    public function getResolvedCountry(): string
+    {
+        if (!empty(parent::getCountry())) {
+            return parent::getCountry();
+        }
+        $family = $this->getFamily();
+        return $family?->getCountry() ?? '';
+    }
+
+    public function getResolvedHomePhone(): string
+    {
+        if (!empty(parent::getHomePhone())) {
+            return parent::getHomePhone();
+        }
+        $family = $this->getFamily();
+        return $family?->getHomePhone() ?? '';
     }
 }

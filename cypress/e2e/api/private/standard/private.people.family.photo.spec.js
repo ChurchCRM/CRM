@@ -149,16 +149,14 @@ describe("API Private Photo and Avatar - Family", () => {
         });
 
         it("should handle invalid family ID gracefully", () => {
+            // FamilyMiddleware performs an existence check before the handler runs,
+            // so a nonexistent familyId now correctly returns 404.
             cy.makePrivateAdminAPICall(
                 "GET",
                 `/api/family/${invalidFamilyId}/avatar`,
                 null,
-                200
-            ).then((response) => {
-                // Should return 200 with fallback data
-                expect(response.body).to.have.property("hasPhoto");
-                expect(response.body).to.have.property("initials");
-            });
+                404
+            );
         });
     });
 
@@ -203,17 +201,20 @@ describe("API Private Photo and Avatar - Family", () => {
             });
         });
 
-        it("should validate image size limits", () => {
-            // Create a large (but valid) image data - 10MB of zeros (will be rejected)
-            const largeBase64 = "data:image/png;base64," + "A".repeat(15000000);
-            
+        it("should reject uploads that exceed the server size limit", () => {
+            // Repeat a valid 1×1 PNG base64 payload to produce a body larger than most
+            // configured limits. The server rejects it with 413 (size) or 400 (invalid image).
+            const smallPngBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
+            const largeBase64 = "data:image/png;base64," + smallPngBase64.repeat(200000);
+
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/family/${testFamilyId}/photo`,
                 JSON.stringify({ imgBase64: largeBase64 }),
-                400
+                [400, 413]
             ).then((response) => {
                 expect(response.body.success).to.eq(false);
+                expect(response.body).to.have.property("message");
             });
         });
     });

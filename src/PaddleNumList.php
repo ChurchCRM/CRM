@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -9,7 +9,7 @@ use ChurchCRM\view\PageHeader;
 
 $linkBack = RedirectUtils::getLinkBackFromRequest('');
 
-$iFundRaiserID = $_SESSION['iCurrentFundraiser'];
+$iFundRaiserID = (int) ($_SESSION['iCurrentFundraiser'] ?? 0);
 
 if ($iFundRaiserID > 0) {
     //Get the paddlenum records for this fundraiser
@@ -64,10 +64,10 @@ require_once __DIR__ . '/Include/Header.php';
                 ?>
                 <tr>
                     <td>
-                        <input type="checkbox" name="Chk<?= (int)$pn_ID . '"';
+                        <input class="form-check-input" type="checkbox" name="Chk<?= (int)$pn_ID . '"';
                         if (isset($_GET['SelectAll'])) {
                             echo ' checked="yes"';
-                        } ?>></input>
+                        } ?>>
             </td>
             <td>
                 <?= '<a href="PaddleNumEditor.php?PaddleNumID=' . (int)$pn_ID . '&linkBack=PaddleNumList.php"> ' . (int)$pn_Num ."</a>\n" ?>

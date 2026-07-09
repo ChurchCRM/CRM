@@ -24,17 +24,70 @@ Backward compatibility:
 Rollback strategy:
 - Have explicit down-migration scripts; snapshot DB; monitor replication lag.
 
-### upgrade.json Must List New SQL Files <!-- learned: 2026-03-27 -->
+### Adding a New Version with DB Changes <!-- learned: 2026-04-27 -->
 
-New `.sql` migration files must be listed in `src/mysql/upgrade.json` under `current.scripts` or they will **never run** on upgrade.
+When a new release ships with a DB migration SQL file, use a **two-block pattern** in `upgrade.json`:
+
+1. **Rename `current` → `pre-X.Y.Z`** where X.Y.Z is the version being released. Set `dbVersion` to the intermediate stepping-stone version (the version just before the new release):
 
 ```json
-// src/mysql/upgrade.json
-"current": {
-  "versions": ["7.0.5"],
-  "scripts": ["7.1.0-config.sql"],   // ← add your file here
-  "dbVersion": "7.1.0"
+"pre-7.3.1": {
+  "versions": ["7.2.0", "7.2.1", "7.2.2", "7.2.3"],
+  "scripts": [],
+  "dbVersion": "7.3.0"
 }
 ```
 
-Name files after the target version: `7.1.0-<description>.sql`. If multiple scripts exist for the same version, list them all in execution order.
+2. **Create a new `current` block** that runs the SQL file and sets `dbVersion` to the new release:
+
+```json
+"current": {
+  "versions": ["7.3.0"],
+  "scripts": ["/mysql/upgrade/7.3.1-cleanup.sql"],
+  "dbVersion": "7.3.1"
+}
+```
+
+**Why this works:** `UpgradeService` calls `VersionUtils::getDBVersion()` fresh on every iteration (live DB query). So a 7.2.x install first matches `pre-7.3.1` (no scripts → DB set to 7.3.0), then on the next iteration matches `current` (runs the SQL → DB set to 7.3.1). Installs already on 7.3.0 skip `pre-7.3.1` entirely and go straight to `current`.
+
+Name SQL files after the target version: `7.3.1-<description>.sql`. Use full paths: `/mysql/upgrade/7.3.1-cleanup.sql`.
+
+### Removing a Dead Table: Full Checklist <!-- learned: 2026-04-27 -->
+
+When removing an unused DB table, touch **all four locations** — missing any leaves dead schema or broken installs:
+
+| File | Action |
+|------|--------|
+| `src/mysql/install/Install.sql` | Delete the `CREATE TABLE` block (new installs must not create it) |
+| `cypress/data/seed.sql` | Delete the `DROP/CREATE TABLE` + data block (Cypress resets must not recreate it) |
+| `orm/schema.xml` | Delete the `<table>` element (or its commented-out wrapper if already disabled) |
+| `src/mysql/upgrade/X.Y.Z-cleanup.sql` | Add `DROP TABLE IF EXISTS` (existing installs need the cleanup on upgrade) |
+
+Register the cleanup script in `upgrade.json` `current` block using the two-block pattern above. Use `DROP TABLE IF EXISTS` so the script is idempotent on fresh installs.
+
+### Keep Install.sql in Sync with Every Migration <!-- learned: 2026-04-29 -->
+
+`src/mysql/install/Install.sql` is the canonical schema for **new installs**. Whenever you add an upgrade SQL that alters a table (charset, new column, dropped column, index change), you **must also apply the same change in Install.sql** so fresh installations are identical to upgraded ones.
+
+**Always update Install.sql. Ask the user before editing seed.sql** — it contains Cypress test data that may need regeneration.
+
+Checklist for any `ALTER TABLE` migration:
+
+| File | Action |
+|------|--------|
+| `src/mysql/upgrade/X.Y.Z-<desc>.sql` | The `ALTER TABLE` statement |
+| `src/mysql/install/Install.sql` | Apply the same change to the `CREATE TABLE` block — required |
+| `cypress/data/seed.sql` | Update the `CREATE TABLE` block — **ask user first** |
+| `orm/schema.xml` | Update column/table attributes if Propel schema tracks this |
+
+### Use utf8mb4 for All User-Content Tables <!-- learned: 2026-04-29 -->
+
+MySQL `utf8` / `utf8mb3` is 3-byte max and silently fails on emoji and other 4-byte Unicode (`SQLSTATE[22007] Incorrect string value`). Any table that stores user-generated text must use `utf8mb4_unicode_ci`.
+
+```sql
+-- ✅ New tables
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- ✅ Upgrading existing tables
+ALTER TABLE `note_nte` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```

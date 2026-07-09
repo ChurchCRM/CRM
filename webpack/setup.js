@@ -24,24 +24,22 @@ window.moment = moment;
 const Stepper = require("bs-stepper");
 window.Stepper = Stepper;
 
-(function () {
-  "use strict";
-
+(() => {
   // Get root path from global CRM config and ensure it's properly formatted
-  let rootPath = window.CRM && window.CRM.root ? window.CRM.root : "";
+  let rootPath = window.CRM?.root ? window.CRM.root : "";
 
-  console.log("Setup.js - Original rootPath from window.CRM.root:", window.CRM && window.CRM.root);
+  console.log("Setup.js - Original rootPath from window.CRM.root:", window.CRM?.root);
 
   // Ensure rootPath doesn't end with slash (we'll add it in URLs)
   rootPath = rootPath.replace(/\/$/, "");
 
   // Ensure rootPath starts with slash for absolute URLs (unless it's empty for root install)
   if (rootPath && !rootPath.startsWith("/")) {
-    rootPath = "/" + rootPath;
+    rootPath = `/${rootPath}`;
   }
 
   console.log("Setup.js - Processed rootPath:", rootPath);
-  console.log("Setup.js - Will use URL:", rootPath + "/setup/SystemPrerequisiteCheck");
+  console.log("Setup.js - Will use URL:", `${rootPath}/setup/SystemPrerequisiteCheck`);
 
   // Setup state
   const state = {
@@ -76,7 +74,7 @@ window.Stepper = Stepper;
   };
 
   let setupStepper;
-  let validators = {};
+  const validators = {};
 
   function skipCheck() {
     $("#prerequisites-war").hide();
@@ -96,7 +94,7 @@ window.Stepper = Stepper;
   function updateStatusBanner(status, title, detail) {
     const $banner = $("#status-banner");
     $banner.removeClass("status-checking status-success status-warning status-error");
-    $banner.addClass("status-" + status);
+    $banner.addClass(`status-${status}`);
 
     let icon = "";
     switch (status) {
@@ -123,7 +121,7 @@ window.Stepper = Stepper;
     if (state.checksComplete) {
       let allPassed = true;
       for (const key in state.prerequisites) {
-        if (Object.prototype.hasOwnProperty.call(state.prerequisites, key)) {
+        if (Object.hasOwn(state.prerequisites, key)) {
           if (state.prerequisites[key] !== true) {
             allPassed = false;
             break;
@@ -203,7 +201,7 @@ window.Stepper = Stepper;
       .append($("<td>", { text: prerequisite.Name }))
       .append($("<td>", td));
 
-    const $existing = $("#" + rowId);
+    const $existing = $(`#${rowId}`);
     if ($existing.length) {
       $existing.replaceWith($prerequisiteRow);
     } else {
@@ -216,7 +214,7 @@ window.Stepper = Stepper;
 
   function toggleCollapse(group, action) {
     const groupConfig = GROUP_CONFIG[group];
-    if (!groupConfig || !groupConfig.collapse) {
+    if (!groupConfig?.collapse) {
       return;
     }
     const $target = $(groupConfig.collapse);
@@ -258,7 +256,7 @@ window.Stepper = Stepper;
       .html('<i class="fa-solid fa-file-circle-exclamation mr-2"></i>Files with issues');
     const list = $("<ul>").addClass("integrity-files-list");
 
-    items.forEach(function (fileName) {
+    items.forEach((fileName) => {
       list.append($("<li>").text(fileName));
     });
 
@@ -300,7 +298,7 @@ window.Stepper = Stepper;
     const $table = $(config.table);
     $table.empty();
 
-    orphanedItems.forEach(function (fileName) {
+    orphanedItems.forEach((fileName) => {
       const $row = $("<tr>").append($("<td>").addClass("text-danger").text(fileName));
       $table.append($row);
     });
@@ -373,7 +371,7 @@ window.Stepper = Stepper;
       url: "./SystemIntegrityCheck",
       method: "GET",
     })
-      .done(function (data) {
+      .done((data) => {
         const status = data && typeof data === "object" && data.status ? String(data.status).toLowerCase() : "";
         const satisfied = status === "success";
         const statusInfo = satisfied ? statusConfig.true : statusConfig.false;
@@ -390,7 +388,7 @@ window.Stepper = Stepper;
           .append($("<td>", { text: "Signature Validation" }))
           .append(buildStatusCell(statusInfo, message));
 
-        $("#" + rowId).replaceWith(resultRow);
+        $(`#${rowId}`).replaceWith(resultRow);
         state.prerequisites[rowId] = satisfied;
 
         appendIntegrityDetails(config.table, rowId, data);
@@ -403,7 +401,7 @@ window.Stepper = Stepper;
         updatePrerequisitesUI();
         updateGroupStatus(groupKey);
       })
-      .fail(function () {
+      .fail(() => {
         const resultRow = $("<tr>", {
           id: rowId,
         })
@@ -412,7 +410,7 @@ window.Stepper = Stepper;
             buildStatusCell(statusConfig.false, "Unable to contact integrity endpoint. Check web server error logs."),
           );
 
-        $("#" + rowId).replaceWith(resultRow);
+        $(`#${rowId}`).replaceWith(resultRow);
         state.prerequisites[rowId] = false;
         appendIntegrityDetails(config.table, rowId, null);
 
@@ -428,7 +426,7 @@ window.Stepper = Stepper;
     state.prerequisitesStatus = false;
     state.checksComplete = false;
 
-    Object.keys(GROUP_CONFIG).forEach(function (key) {
+    Object.keys(GROUP_CONFIG).forEach((key) => {
       const config = GROUP_CONFIG[key];
       $(config.table).empty();
       $(config.status).html('<i class="fa-solid fa-spinner fa-spin text-muted"></i>');
@@ -439,13 +437,13 @@ window.Stepper = Stepper;
       method: "GET",
       contentType: "application/json",
     })
-      .done(function (data) {
-        $.each(data, function (index, prerequisite) {
+      .done((data) => {
+        $.each(data, (_index, prerequisite) => {
           renderPrerequisite(prerequisite, "php");
         });
         checkFilesystem();
       })
-      .fail(function () {
+      .fail(() => {
         renderPrerequisite(
           {
             Name: "Unable to load PHP prerequisite checks",
@@ -463,13 +461,13 @@ window.Stepper = Stepper;
       method: "GET",
       contentType: "application/json",
     })
-      .done(function (data) {
-        $.each(data, function (index, prerequisite) {
+      .done((data) => {
+        $.each(data, (_index, prerequisite) => {
           renderPrerequisite(prerequisite, "filesystem");
         });
         checkLocales();
       })
-      .fail(function () {
+      .fail(() => {
         renderPrerequisite(
           {
             Name: "Unable to verify filesystem permissions",
@@ -487,11 +485,11 @@ window.Stepper = Stepper;
       method: "GET",
       contentType: "application/json",
     })
-      .done(function (data) {
+      .done((data) => {
         renderLocaleInfo(data);
         checkIntegrity();
       })
-      .fail(function () {
+      .fail(() => {
         renderLocaleInfoError();
         checkIntegrity();
       });
@@ -533,7 +531,7 @@ window.Stepper = Stepper;
 
       // Create table body
       const $tbody = $("<tbody>");
-      locales.forEach(function (locale) {
+      locales.forEach((locale) => {
         const statusBadge = locale.systemAvailable
           ? `<span class="badge bg-success text-white"><i class="fa-solid fa-check me-1"></i>Available</span>`
           : `<span class="badge bg-secondary text-white"><i class="fa-solid fa-times me-1"></i>Not Available</span>`;
@@ -596,7 +594,7 @@ window.Stepper = Stepper;
     let hasFields = false;
 
     // Process all input fields and build validation rules
-    stepElement.querySelectorAll("input, select, textarea").forEach(function (field) {
+    stepElement.querySelectorAll("input, select, textarea").forEach((field) => {
       if (!field.id || !field.name) return;
 
       const errorContainer = field.parentElement.querySelector(".invalid-feedback");
@@ -684,7 +682,7 @@ window.Stepper = Stepper;
             try {
               const url = new URL(value);
               return url.protocol === "http:" || url.protocol === "https:";
-            } catch (e) {
+            } catch (_e) {
               return false;
             }
           },
@@ -730,14 +728,14 @@ window.Stepper = Stepper;
     getModal("setupModal").show();
 
     $.ajax({
-      url: rootPath + "/setup/",
+      url: `${rootPath}/setup/`,
       method: "POST",
       data: JSON.stringify(formData),
       contentType: "application/json",
     })
-      .done(function (response) {
+      .done((response) => {
         // Check if response contains errors (backend bug workaround)
-        if (response && response.errors) {
+        if (response?.errors) {
           // Treat as failure
           $("#setup-progress").addClass("d-none");
           $("#setup-error").removeClass("d-none");
@@ -753,9 +751,9 @@ window.Stepper = Stepper;
           $("#continue-to-login")
             .text("Close")
             .off("click")
-            .on("click", function () {
+            .on("click", () => {
               bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
-              setTimeout(function () {
+              setTimeout(() => {
                 $("#setup-progress").removeClass("d-none");
                 $("#setup-success").addClass("d-none");
                 $("#setup-error").addClass("d-none");
@@ -773,11 +771,11 @@ window.Stepper = Stepper;
         // Handle Continue to Login button
         $("#continue-to-login")
           .off("click")
-          .on("click", function () {
-            location.replace(rootPath + "/");
+          .on("click", () => {
+            location.replace(`${rootPath}/`);
           });
       })
-      .fail(function (xhr) {
+      .fail((xhr) => {
         // Hide progress, show error
         $("#setup-progress").addClass("d-none");
         $("#setup-error").removeClass("d-none");
@@ -785,7 +783,7 @@ window.Stepper = Stepper;
 
         // Parse error message
         let errorMessage = "An unknown error occurred.";
-        if (xhr.responseJSON && xhr.responseJSON.errors) {
+        if (xhr.responseJSON?.errors) {
           errorMessage = "<ul class='mb-0'>";
           for (const [field, error] of Object.entries(xhr.responseJSON.errors)) {
             errorMessage += `<li><strong>${field}:</strong> ${error}</li>`;
@@ -803,10 +801,10 @@ window.Stepper = Stepper;
         $("#continue-to-login")
           .text("Close")
           .off("click")
-          .on("click", function () {
+          .on("click", () => {
             bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
             // Reset modal state for next attempt
-            setTimeout(function () {
+            setTimeout(() => {
               $("#setup-progress").removeClass("d-none");
               $("#setup-success").addClass("d-none");
               $("#setup-error").addClass("d-none");
@@ -819,12 +817,12 @@ window.Stepper = Stepper;
   // Note: skipCheck is intentionally NOT exposed globally to prevent accidental calls
   // It should only be called via the Force Install confirmation flow
 
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("setup-form");
     const stepperElement = document.getElementById("setup-stepper");
 
     // Prevent form submission (we handle it via AJAX)
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
       return false;
     });
@@ -832,7 +830,6 @@ window.Stepper = Stepper;
     // Real-time password matching validation
     const passwordField = document.getElementById("DB_PASSWORD");
     const confirmPasswordField = document.getElementById("DB_PASSWORD_CONFIRM");
-    const submitButton = document.getElementById("submit-setup");
 
     function validatePasswordMatch() {
       const password = passwordField.value;
@@ -876,7 +873,7 @@ window.Stepper = Stepper;
     validators["step-database"] = initializeStepValidation("step-database");
 
     // Custom navigation logic with validation
-    stepperElement.addEventListener("show.bs-stepper", function (event) {
+    stepperElement.addEventListener("show.bs-stepper", (event) => {
       const currentStep = event.detail.from;
       const nextStep = event.detail.to;
 
@@ -897,7 +894,7 @@ window.Stepper = Stepper;
     });
 
     // Update UI when steps are shown (after navigation completes)
-    stepperElement.addEventListener("shown.bs-stepper", function (event) {
+    stepperElement.addEventListener("shown.bs-stepper", (event) => {
       const shownStep = event.detail.to;
 
       // If returning to prerequisites step, update UI
@@ -908,12 +905,12 @@ window.Stepper = Stepper;
     });
 
     // Handle finish button
-    document.getElementById("submit-setup").addEventListener("click", function (event) {
+    document.getElementById("submit-setup").addEventListener("click", (event) => {
       event.preventDefault(); // Prevent any default behavior
 
       // Validate database step before submission
       if (validators["step-database"]) {
-        validators["step-database"].revalidate().then(function (isValid) {
+        validators["step-database"].revalidate().then((isValid) => {
           if (isValid) {
             submitSetupData();
           } else {
@@ -929,14 +926,14 @@ window.Stepper = Stepper;
     });
 
     // Handle prerequisites Next button
-    document.getElementById("prerequisites-next-btn").addEventListener("click", function () {
+    document.getElementById("prerequisites-next-btn").addEventListener("click", () => {
       if (setupStepper) {
         setupStepper.next();
       }
     });
 
     // Handle database step Previous button
-    document.getElementById("database-prev-btn").addEventListener("click", function () {
+    document.getElementById("database-prev-btn").addEventListener("click", () => {
       if (setupStepper) {
         setupStepper.previous();
       }
@@ -945,7 +942,7 @@ window.Stepper = Stepper;
     // Handle Force Install button click - show confirmation modal
     const forceBtn = document.getElementById("prerequisites-force-btn");
     if (forceBtn) {
-      forceBtn.addEventListener("click", function (e) {
+      forceBtn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
         getModal("forceInstallModal").show();
@@ -955,11 +952,11 @@ window.Stepper = Stepper;
     // Handle Force Install confirmation
     const confirmBtn = document.getElementById("confirm-force-install");
     if (confirmBtn) {
-      confirmBtn.addEventListener("click", function (e) {
+      confirmBtn.addEventListener("click", (e) => {
         e.preventDefault();
         bootstrap.Modal.getInstance(document.getElementById("forceInstallModal"))?.hide();
         // Wait for modal to hide before proceeding
-        setTimeout(function () {
+        setTimeout(() => {
           skipCheck();
         }, 300);
       });

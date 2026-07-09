@@ -6,6 +6,7 @@
  * - $trackingId: The GA4 Measurement ID (G-XXXXXXXXXX)
  */
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 if (empty($trackingId)) {
@@ -21,7 +22,7 @@ if ($trackingIdJs === false) {
 ?>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?= $trackingIdAttr ?>"></script>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

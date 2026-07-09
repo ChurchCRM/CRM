@@ -1,11 +1,12 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfDirectory;
+use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -15,7 +16,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 // Get and filter the classifications selected
 $aClasses = [];
-if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] != '') {
+if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] !== '') {
     foreach ($_POST['sDirClassifications'] as $Cls) {
         $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
     }
@@ -135,7 +136,7 @@ if ($bExcludeInactive) {
 }
 
 if (array_key_exists('cartdir', $_POST)) {
-    $sWhereExt .= 'AND per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')';
+    $sWhereExt .= 'AND per_ID IN (' . Cart::getCartIdString() . ')';
 }
 
 $mysqlinfo = mysqli_get_server_info($cnInfoCentral);
@@ -246,16 +247,19 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $pdf->sRecordName .= ' ' . MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $per_Flags);
         }
 
-        // Use person data only - each person must enter their own information
-        $sAddress1 = $per_Address1 ?? '';
-        $sAddress2 = $per_Address2 ?? '';
-        $sCity = $per_City ?? '';
-        $sState = $per_State ?? '';
-        $sZip = $per_Zip ?? '';
-        $sHomePhone = $per_HomePhone ?? '';
+        // Use Person entity methods with family fallback (issue #7937)
+        // Note: The Person object is already loaded from extract($aRow) via the database query
+        // The PDF rendering uses raw variables from extract(), but we still have access to
+        // the person's database row data. We'll compute resolved values directly here.
+        $sAddress1 = !empty($per_Address1) ? $per_Address1 : ($fam_Address1 ?? '');
+        $sAddress2 = !empty($per_Address2) ? $per_Address2 : ($fam_Address2 ?? '');
+        $sCity = !empty($per_City) ? $per_City : ($fam_City ?? '');
+        $sState = !empty($per_State) ? $per_State : ($fam_State ?? '');
+        $sZip = !empty($per_Zip) ? $per_Zip : ($fam_Zip ?? '');
+        $sHomePhone = !empty($per_HomePhone) ? $per_HomePhone : ($fam_HomePhone ?? '');
         $sWorkPhone = $per_WorkPhone ?? '';
         $sCellPhone = $per_CellPhone ?? '';
-        $sEmail = $per_Email ?? '';
+        $sEmail = !empty($per_Email) ? $per_Email : ($fam_Email ?? '');
 
         if ($bDirAddress) {
             if (strlen($sAddress1)) {

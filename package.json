@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.1.0",
+    "version": "7.4.2",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -18,7 +18,7 @@
     },
     "homepage": "https://churchcrm.io",
     "engines": {
-        "node": ">=24.0.0 <25.0.0"
+        "node": ">=24.0.0"
     },
     "scripts": {
         "audit": "npm audit fix --only=prod --audit-level=high",
@@ -29,7 +29,7 @@
         "build:webpack": "webpack",
         "build:webpack:watch": "webpack --watch",
         "build:php": "run-s composer:install build:php:validate",
-        "build:openapi": "cd src && composer install --no-interaction --prefer-dist && composer run openapi-public && composer run openapi-private",
+        "build:openapi": "cd src && composer install --no-interaction --prefer-dist && composer run openapi:public && composer run openapi:private",
         "build:orm": "cd src/ && ./vendor/bin/propel build --config-dir=propel",
         "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external src/locale/vendor ai-notes/ src/logs/*.log",
         "composer:install": "cd src/ && composer validate --no-check-publish && composer install --no-dev && find vendor -type d \\( -name 'tests' -o -name 'Tests' -o -name 'test' -o -name 'docs' -o -name 'examples' -o -name 'example' \\) -exec rm -rf {} + 2>/dev/null || true",
@@ -66,11 +66,12 @@
         "format:web": "biome format --write .",
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-build.js",
-        "locale:download": "node locale/scripts/poeditor-downloader.js && npm run locale:audit",
+        "locale:download": "node locale/scripts/poeditor-downloader.js",
         "locale:translate:list": "node locale/scripts/locale-translate.js --list",
         "locale:upload:missing": "node locale/scripts/poeditor-upload-missing.js",
-        "lint": "biome check react/",
-        "lint:fix": "biome check --write react/",
+        "lint": "biome check webpack/",
+        "lint:fix": "biome check --write webpack/",
+        "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
         "locale:lint": "node scripts/locale-check.js",
         "logs:clear": "rm -rf src/logs/*.log",
         "package": "npm run build && node scripts/package-release.js",
@@ -81,21 +82,22 @@
         "test:new-system": "npx cypress run --config-file cypress/configs/new-system.config.ts"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^7.2.0",
+        "@fortawesome/fontawesome-free": "^7.3.0",
         "@tabler/core": "^1.4.0",
-        "@tabler/icons-webfont": "^3.40.0",
+        "@tabler/icons-webfont": "^3.44.0",
         "@uppy/core": "^5.2.0",
-        "@uppy/dashboard": "^4.4.3",
+        "@uppy/dashboard": "^5.1.1",
+        "@uppy/image-editor": "^4.2.0",
         "@uppy/webcam": "^5.1.0",
-        "@uppy/xhr-upload": "^5.1.1",
-        "apexcharts": "^5.10.4",
+        "@uppy/xhr-upload": "^5.2.0",
+        "apexcharts": "^5.16.0",
         "avatar-initials": "^6.0.0",
         "bootbox": "^6.0.4",
         "bootstrap": "^5.3.8",
         "bootstrap-datepicker": "^1.10.1",
         "bs-stepper": "^1.7.0",
-        "datatables.net": "^2.3.7",
-        "datatables.net-bs5": "^2.3.7",
+        "datatables.net": "^2.3.8",
+        "datatables.net-bs5": "^2.3.8",
         "datatables.net-buttons": "^3.2.6",
         "datatables.net-buttons-bs5": "^3.2.6",
         "datatables.net-responsive": "^3.0.8",
@@ -103,51 +105,73 @@
         "datatables.net-select": "^3.1.3",
         "datatables.net-select-bs5": "^3.1.3",
         "daterangepicker": "^3.1.0",
+        "dompurify": "^3.4.11",
         "flag-icons": "^7.5.0",
-        "fullcalendar": "^6.1.19",
-        "i18next": "^25.8.18",
+        "fullcalendar": "^6.1.21",
+        "i18next": "^26.3.4",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
         "just-validate": "^4.3.0",
         "leaflet": "^1.9.4",
+        "marked": "^18.0.5",
         "moment": "^2.30.1",
         "notyf": "^3.10.0",
-        "pdfmake": "^0.3.6",
+        "pdfmake": "^0.3.11",
         "quill": "2.0.2",
-        "react": "^19.2.4",
-        "react-bootstrap": "^2.10.10",
-        "react-datepicker": "^9.1.0",
-        "react-dom": "^19.2.4",
-        "react-select": "^5.10.2",
-        "tom-select": "^2.5.2"
+        "tom-select": "^2.6.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.8",
+        "@biomejs/biome": "^2.5.2",
         "@types/jquery": "^3.5.33",
-        "@types/react": "^19.2.14",
-        "@types/react-dom": "^19.2.3",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
-        "cypress": "^15.12.0",
+        "cypress": "^15.18.0",
         "cypress-terminal-report": "^7.3.3",
         "datatables.net-plugins": "^2.3.2",
-        "dotenv": "^17.3.1",
-        "grunt": "^1.6.1",
+        "dotenv": "^17.4.2",
+        "grunt": "^1.6.2",
         "grunt-cli": "^1.5.0",
         "grunt-contrib-copy": "^1.0.0",
-        "i18next-conv": "^16.0.0",
-        "i18next-parser": "^9.4.0",
-        "mini-css-extract-plugin": "^2.10.1",
-        "mysql2": "^3.20.0",
+        "i18next-cli": "^1.65.0",
+        "i18next-conv": "^17.0.0",
+        "mini-css-extract-plugin": "^2.10.2",
+        "mysql2": "^3.22.5",
         "node-sha1": "^1.0.1",
         "npm-run-all": "^4.1.5",
-        "sass": "^1.98.0",
-        "sass-loader": "^16.0.7",
+        "sass": "^1.101.0",
+        "sass-loader": "^17.0.0",
         "style-loader": "^4.0.0",
-        "ts-loader": "^9.5.4",
-        "typescript": "^5.9.3",
-        "webpack": "^5.105.4",
-        "webpack-cli": "^7.0.2"
+        "ts-loader": "^9.6.2",
+        "typescript": "^6.0.3",
+        "webpack": "^5.108.4",
+        "webpack-cli": "^7.2.1"
+    },
+    "overrides": {
+        "archiver": {
+            "archiver-utils": {
+                "glob": {
+                    "minimatch": "9.0.7"
+                }
+            },
+            "readdir-glob": {
+                "minimatch": "5.1.8"
+            }
+        },
+        "lodash": "4.18.1",
+        "lodash-es": "4.18.1",
+        "@xmldom/xmldom": "0.9.10",
+        "picomatch": "4.0.4",
+        "grunt": {
+            "minimatch": "3.1.4",
+            "brace-expansion": "1.1.13"
+        },
+        "npm-run-all": {
+            "minimatch": "3.1.4",
+            "brace-expansion": "1.1.13"
+        },
+        "svgicons2svgfont": {
+            "brace-expansion": "5.0.5"
+        }
     }
 }

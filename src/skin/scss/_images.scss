@@ -48,31 +48,35 @@ img[data-image-entity-type].error {
 
 
 /* =========================
-   Photo Gallery Styles
+   Image Overlay Styles
+   (merged from _imageOverlay.scss)
    ========================= */
-.photo-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid #dee2e6;
+.image-container {
+  position: relative;
 }
-.photo-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.image-container .after {
+  position: absolute;
+  bottom: 0;
+  left: 1px;
+  width: 100%;
+  height: 44px;
+  display: block;
+  color: #fff;
 }
-
-.photo-container {
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: #f8f9fa;
+.image-container:hover .after .buttons {
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
 }
-
-photo-thumbnail { max-height: 140px; max-width: 100%; object-fit: cover; }
-
-/* Avatar/profile placeholders moved to _avatars.scss */
-
-@media (max-width: 576px) {
-  .photo-container { height: 120px; }
-  .photo-thumbnail { max-height: 110px; }
+.image-container .after .buttons {
+  font-size: 1.7em;
+  width: 80%;
+  max-width: 180px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.image-container .after .buttons a {
+  color: #eee;
 }

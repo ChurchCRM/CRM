@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -22,17 +23,17 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
       if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
         <a href="<?= SystemURLs::getRootPath() ?>/CartToFamily.php" class="btn btn-outline-success" title="<?= gettext('Add cart items to a family') ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext('To Family') ?></a>
       <?php } ?>
-      <a href="<?= SystemURLs::getRootPath() ?>/CartToEvent.php" class="btn btn-outline-info" title="<?= gettext('Check in to an event') ?>"><i class="fa-solid fa-ticket-alt me-2"></i><?= gettext('Check In') ?></a>
+      <a href="<?= SystemURLs::getRootPath() ?>/event/cart-to-event" class="btn btn-outline-info" title="<?= gettext('Check in to an event') ?>"><i class="fa-solid fa-ticket-alt me-2"></i><?= gettext('Check In') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/map?groupId=0" class="btn btn-outline-info" title="<?= gettext('Map cart items') ?>"><i class="fa-solid fa-map-marker me-2"></i><?= gettext('Map') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-outline-secondary" title="<?= gettext('Print name tags') ?>"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Tags') ?></a>
     </div>
     <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
       <div class="btn-group" role="group">
-        <a href="mailto:<?= $sEmailLink ?>" class="btn btn-outline-info" title="<?= gettext('Email cart items') ?>">
+        <a href="mailto:<?= InputUtils::escapeAttribute($sEmailLink) ?>" class="btn btn-outline-info" title="<?= gettext('Email cart items') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
         </a>
-        <a href="mailto:?bcc=<?= $sEmailLink ?>" class="btn btn-outline-secondary" title="<?= gettext('Email with hidden recipients') ?>">
-          <i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC') ?>
+        <a href="mailto:?bcc=<?= InputUtils::escapeAttribute($sEmailLink) ?>" class="btn btn-outline-secondary" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-user-secret me-2"></i>BCC
         </a>
       </div>
     <?php } ?>
@@ -48,7 +49,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     <h3 class="card-title"><?= $ListTitleText ?></h3>
   </div>
   <div class="card-body">
-    <div class="table-responsive">
+    <div style="overflow: visible;">
       <table class="table table-hover w-100" id="cart-listing-table">
         <thead>
           <tr>
@@ -72,7 +73,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                     // fetch avatar info and set photo/initials as appropriate.
                     echo '<img data-image-entity-type="person" data-image-entity-id="' . $Person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2" alt="" />';
                   ?>
-                  <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $Person->getId() ?>"><?= $Person->getFullName() ?></a>
+                  <a href="<?= $Person->getViewURI() ?>"><?= $Person->getFullName() ?></a>
                 </div>
               </td>
               <td><?= $Person->getAddress() ?></td>
@@ -85,14 +86,16 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                     <i class="ti ti-dots-vertical"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $Person->getId() ?>">
+                    <a class="dropdown-item" href="<?= $Person->getViewURI() ?>">
                       <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                     </a>
+                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $Person->getId() ?>">
                       <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                     </a>
+                    <?php endif; ?>
                     <?php if ($Person->getFamId()) { ?>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $Person->getFamId() ?>">
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $Person->getFamId() ?>">
                       <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
                     </a>
                     <?php } ?>
@@ -117,7 +120,6 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
   </div>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {
     $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);

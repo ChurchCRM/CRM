@@ -40,12 +40,16 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | Skill | When to Use |
 |-------|------------|
 | [Table Action Menu](./table-action-menu.md) | **Required for every table with row-level actions** — dropdown pattern, overflow fix, cart buttons, checklist |
-| [Frontend Development](./frontend-development.md) | **Settings Panel (gold-standard pattern), UI changes, Bootstrap 5, React, i18n, notifications, confirmations, modals, asset management** |
+| [Frontend Development](./frontend-development.md) | **Settings Panel (gold-standard pattern), UI changes, Bootstrap 5, i18n, notifications, confirmations, modals, asset management** |
+| [Timezone Handling](./timezone-handling.md) | **Required for any datetime-aware change** — wall-clock-in-sTimeZone storage, FullCalendar marker quirks, Propel space format Chrome misparse, kiosk timing, cross-tz banner. Read before touching event-form.js, event-calendars.js, calendar-event-editor.js, kiosk-jsom.ts, KioskDevice::heartbeat(), or events.php API |
+| [Responsive Design Guidelines](./responsive-design-guidelines.md) | **Canonical mobile / tablet / laptop form factors, breakpoints, grid patterns, touch targets — read before any page layout or responsive bug fix** |
 | [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts, icons |
 | [Bootstrap 5 Migration](./bootstrap-5-migration.md) | Complete BS4→BS5 migration reference: data attributes, class renames, JS API, components |
-| [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, React, asset management |
+| [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, vanilla JS/TS modules, asset management |
 | [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
 | [AI Locale Translation](./locale-ai-translation.md) | Translating missing terms via Claude AI before a release |
+| [Locale Stack Ranking](./locale-stack-ranking.md) | **NEW** — Prioritize translation effort by impact (TIER-1: 53% world pop, TIER-2: 80%, etc.) |
+| [Currency Localization](./currency-localization.md) | **NEW** — Displaying money with configurable symbol / position / separators (PHP, JS, DataTables, Chart.js, CSS, PDFs). Required for any finance-adjacent change. Epic: [#8459](https://github.com/ChurchCRM/CRM/issues/8459) |
 
 ## Tabler Migration (Vision 2026)
 
@@ -66,15 +70,20 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | Skill | When to Use |
 |-------|------------|
 | [Authorization & Security](./authorization-security.md) | Permission checks, authentication |
-| [Security Best Practices](./security-best-practices.md) | Security features, sensitive operations |
+| [Security Best Practices](./security-best-practices.md) | Security features, sensitive operations, output escaping (incl. data-* attributes) |
+| [Security Advisory Review](./security-advisory-review.md) | Analyzing/fixing GitHub security advisories — access draft advisories via gh CLI, understand vulnerability scope, write tests, create PRs |
+| [GitHub Interaction](./github-interaction.md) | Security Advisory lifecycle: draft → publish → CVE request, notifying reporters |
 
 ## Plugins
 
-| Skill | When to Use |
-|-------|------------|
-| [Plugin System](./plugin-system.md) | Plugin architecture, hooks, PluginManager |
-| [Plugin Development](./plugin-development.md) | Creating/modifying plugins |
-| [Plugin Migration](./plugin-migration.md) | Migrating plugins to new structure |
+| Skill | Audience | When to Use |
+|-------|----------|------------|
+| [Plugin System](./plugin-system.md) | All | Runtime architecture — PluginManager, hooks, install flow, plugin-local localization loader |
+| [Plugin Development](./plugin-development.md) | Plugin authors | Building a plugin end-to-end. **Start here, and read the security-scan preamble at the top before writing code.** Covers allowed/forbidden capabilities, hooks, sandboxed config, and plugin-local translations. |
+| [Plugin Create (Community)](./plugin-create.md) | Community plugin authors | Quickstart + submission flow: scaffold a community plugin, run the security scan against your own tree, build a reproducible zip, and open the `approved-plugins.json` PR |
+| [Plugin Migration (Core only)](./plugin-migration.md) | Core plugin maintainers | Checklist when a core API change affects `src/plugins/core/*`. **Not for community plugins** — they follow `plugin-create.md` instead |
+| [Plugin Security Scan](./plugin-security-scan.md) | ChurchCRM maintainers | **Required** review checklist before approving a community plugin for `src/plugins/approved-plugins.json`. Covers intake, static analysis, risk classification, and the 2026 plugin standards reference. |
+| [Plugin Compliance (Admin Audit)](./plugin-compliance.md) | Site admins | Monthly/quarterly scans of already-installed community plugins. Read the approved list, verify on-disk state, re-run the orphan scan, respond to revoked plugins. |
 
 ## Testing
 
@@ -185,13 +194,18 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 - **New API endpoint**: `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` → `cypress-testing.md` → `git-workflow.md`
 - **Migrate legacy page**: `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` → `database-operations.md` → `git-workflow.md`
 - **Fix security issue**: `security-best-practices.md` → `authorization-security.md` → `php-best-practices.md` → `git-workflow.md`
-- **Add plugin**: `plugin-system.md` → `plugin-development.md` → `api-development.md` → `git-workflow.md`
+- **Add a community plugin**: `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` → `git-workflow.md`
+- **Update a core plugin** (`src/plugins/core/*`): `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` → `git-workflow.md`
+- **Audit installed plugins (admin)**: `plugin-compliance.md`
 - **Optimize queries**: `performance-optimization.md` → `database-operations.md` → `service-layer.md`
 - **Add UI text**: `i18n-localization.md` → `frontend-development.md` → `git-workflow.md`
+- **Render money / currency anywhere**: `currency-localization.md` → `configuration-management.md` → `frontend-development.md` → `git-workflow.md`
+- **Manage security advisory** (publish GHSA, request CVE, notify reporters): `github-interaction.md` (Security Advisory Management section) → `security-best-practices.md`
 - **Write release notes**: `release-notes.md` → `github-interaction.md`
 - **Publish a release**: `release-notes.md` → `social-media-release.md` → `github-interaction.md`
 - **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
 - **Address PR comments**: `pr-review.md` → `github-interaction.md` → `git-workflow.md`
+- **Add print support to a page**: `frontend-development.md` (Print Support section) → `security-best-practices.md` (CSP) → `git-workflow.md`
 - **Migrate a page to Tabler**: `tabler-migration-playbook.md` → `tabler-components.md` → `table-action-menu.md` → `bootstrap-5-migration.md` → `git-workflow.md`
 - **Add or edit a table with row actions**: `table-action-menu.md` → `tabler-components.md` → `git-workflow.md`
 - **Swap a 3rd-party library**: `tabler-library-replacement.md` → `webpack-typescript.md` → `git-workflow.md`

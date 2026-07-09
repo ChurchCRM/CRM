@@ -63,7 +63,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
 
-        return array_slice($searchResults, 0, SystemConfig::getValue('bSearchIncludePaymentsMax')); // since Propel ORM won't handle limit() nicely, do it in PHP
+        return array_slice($searchResults, 0, SystemConfig::getIntValue('bSearchIncludePaymentsMax')); // since Propel ORM won't handle limit() nicely, do it in PHP
     }
 
     /**
@@ -79,7 +79,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
             ->filterByCheckNo("$SearchQuery", Criteria::EQUAL)
             ->withColumn('CONCAT("#",' . PledgeTableMap::COL_PLG_PLGID . ')', 'displayName')
             ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . PledgeTableMap::COL_PLG_DEPID . ')', 'uri')
-            ->limit(SystemConfig::getValue('bSearchIncludePaymentsMax'))
+            ->limit(SystemConfig::getIntValue('bSearchIncludePaymentsMax'))
             ->groupByGroupKey()
             ->find();
 

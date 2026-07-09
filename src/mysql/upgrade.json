@@ -254,13 +254,28 @@
     "dbVersion": "7.0.2"
   },
   "pre-7.1.0": {
-    "versions": ["7.0.2", "7.0.3", "7.0.4"],
-    "scripts": [],
-    "dbVersion": "7.0.5"
-  },
-  "current": {
-    "versions": ["7.0.5"],
+    "versions": ["7.0.2", "7.0.3", "7.0.4", "7.0.5"],
     "scripts": ["/mysql/upgrade/7.1.0-config.sql"],
     "dbVersion": "7.1.0"
+  },
+  "pre-7.2.0": {
+    "versions": ["7.1.0", "7.1.1", "7.1.2"],
+    "scripts": ["/mysql/upgrade/7.2.0.sql"],
+    "dbVersion": "7.2.0"
+  },
+  "pre-7.3.1": {
+    "versions": ["7.2.0", "7.2.1", "7.2.2", "7.2.3", "7.3.0"],
+    "scripts": ["/mysql/upgrade/7.3.1-cleanup.sql"],
+    "dbVersion": "7.3.1"
+  },
+  "pre-7.4.1": {
+    "versions": ["7.3.1", "7.3.2", "7.3.3", "7.4.0"],
+    "scripts": ["/mysql/upgrade/7.4.2-editself-exclusive.sql"],
+    "dbVersion": "7.4.1"
+  },
+  "current": {
+    "versions": ["7.4.1"],
+    "scripts": [],
+    "dbVersion": "7.4.2"
   }
 }

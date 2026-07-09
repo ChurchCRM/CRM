@@ -88,26 +88,20 @@ class PledgeQuery extends BasePledgeQuery
         $this->filterByPledgeOrPayment('Payment');
 
         // Apply date filtering based on selected datetype
-        // CRITICAL: Use innerJoinWithDeposit (INNER JOIN) when filtering by deposit date
-        // This ensures deposits exist and date filtering works correctly (matches 5.22.0 SQL behavior)
         if ($datetype === 'Deposit') {
-            // Inner join with deposit and filter by deposit date.
-            // Both date conditions must be applied within a single useDepositQuery() block.
-            // Calling useDepositQuery() twice generates two separate query contexts with
-            // different aliases (e.g. deposit_1, deposit_2), making it impossible for a
-            // single pledge row to satisfy both conditions simultaneously — every deposit
-            // date filter query would return no results.
-            $this->innerJoinWithDeposit();
-            if (!empty($dateStart) || !empty($dateEnd)) {
-                $depositQuery = $this->useDepositQuery();
-                if (!empty($dateStart)) {
-                    $depositQuery->filterByDate($dateStart, Criteria::GREATER_EQUAL);
-                }
-                if (!empty($dateEnd)) {
-                    $depositQuery->filterByDate($dateEnd, Criteria::LESS_EQUAL);
-                }
-                $depositQuery->endUse();
+            // Filter by deposit date using a single useDepositQuery() block.
+            // IMPORTANT: Do NOT call innerJoinWithDeposit() before useDepositQuery() —
+            // useDepositQuery() overwrites any prior join registered under the same key,
+            // causing conditions from separate useDepositQuery() calls to reference stale
+            // aliases that no longer match the generated SQL (returning no rows).
+            $depositQuery = $this->useDepositQuery(null, Criteria::INNER_JOIN);
+            if (!empty($dateStart)) {
+                $depositQuery->filterByDate($dateStart, Criteria::GREATER_EQUAL);
             }
+            if (!empty($dateEnd)) {
+                $depositQuery->filterByDate($dateEnd, Criteria::LESS_EQUAL);
+            }
+            $depositQuery->endUse();
         } else {
             // Filter by payment date
             if (!empty($dateStart)) {

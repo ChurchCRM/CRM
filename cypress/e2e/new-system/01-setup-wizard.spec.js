@@ -173,28 +173,25 @@ describe('01 - Setup Wizard', () => {
 
             cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
 
-            // Basic Information tab (active by default)
+            // Wait for page to fully load — country defaults to US and populates state dropdown
+            cy.get('#sChurchCountry', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
+
+
+            // Fill required fields (single-page layout, no tabs)
             cy.get('#sChurchName').clear().type('Test Community Church');
             cy.get('#sChurchPhone').clear().type('(555) 123-4567');
             cy.get('#sChurchEmail').clear().type('info@testchurch.org');
-
-            // Switch to Location tab and fill required address fields
-            cy.get('#location-tab').click();
             cy.get('#sChurchAddress').clear().type('123 Main Street');
             cy.get('#sChurchCity').clear().type('Springfield');
 
-            // Wait for TomSelect-initialised country dropdown then pick US
-            cy.get('#sChurchCountry', { timeout: 5000 }).siblings('.ts-wrapper').should('exist');
-            cy.tomSelectByValue('#sChurchCountry', 'US');
-
-            // State dropdown appears after country selection
+            // Country defaults to US — wait for state dropdown then select state
             cy.get('#sChurchState', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
             cy.tomSelectByValue('#sChurchState', 'IL');
+            cy.get('#sChurchState').should('have.value', 'IL');
 
             cy.get('#sChurchZip').clear().type('62701');
 
             // Submit the form
-            cy.wait(500);
             cy.get('#church-info-form').submit();
 
             // Should remain on church-info and show success notification
@@ -268,6 +265,53 @@ describe('01 - Setup Wizard', () => {
             cy.get('#NewPassword2').type(adminCredentials.password);
             cy.get('input[type=submit]').click();
             cy.contains('Password Change Successful', { timeout: 10000 }).should('be.visible');
+        });
+    });
+
+    describe('Email Disabled UI (fresh install has no SMTP)', () => {
+        // In a fresh install, SMTP is unconfigured, so SystemConfig::isEmailEnabled()
+        // returns false. All UI that depends on sending email must hide or warn.
+
+        const loginAsAdmin = () => {
+            cy.visit('/login');
+            cy.get('input[name=User]').type(adminCredentials.username);
+            cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
+            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+        };
+
+        it('should not show "Forgot password?" link on the login page', () => {
+            cy.visit('/login');
+            cy.contains('Forgot password?').should('not.exist');
+        });
+
+        it('should return an email-disabled error when hitting the reset-request route', () => {
+            cy.visit('/session/forgot-password/reset-request', { failOnStatusCode: false });
+            cy.contains('Password reset is unavailable because email is disabled').should('be.visible');
+        });
+
+        it('should return success (for enumeration safety) without minting a token on the public API', () => {
+            cy.request({
+                method: 'POST',
+                url: '/api/public/user/password-reset',
+                body: { userName: 'admin' },
+                failOnStatusCode: false,
+            }).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.body).to.have.property('success', true);
+            });
+        });
+
+        it('should show the "Email is disabled" banner on the admin users page', () => {
+            loginAsAdmin();
+            cy.visit('/admin/system/users');
+            cy.contains('Email is disabled').should('be.visible');
+            cy.contains('Set up Email').should('be.visible');
+        });
+
+        it('should hide the "Reset Password via Email" action from user dropdowns', () => {
+            loginAsAdmin();
+            cy.visit('/admin/system/users');
+            cy.contains('Reset Password via Email').should('not.exist');
         });
     });
 });

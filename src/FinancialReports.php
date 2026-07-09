@@ -1,12 +1,13 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security
@@ -18,7 +19,7 @@ if (array_key_exists('ReportType', $_POST)) {
     $sReportType = InputUtils::legacyFilterInput($_POST['ReportType']);
 }
 
-if ($sReportType == '' && array_key_exists('ReportType', $_GET)) {
+if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
 }
 
@@ -66,7 +67,7 @@ if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] === 'NoRo
     echo '</div>';
 }
 
-if ($sReportType == '') {
+if ($sReportType === '') {
     // First Pass - Choose report type
     ?>
     <form method="post" id="FinancialReports" action="FinancialReports.php">
@@ -160,7 +161,7 @@ if ($sReportType == '') {
               if (array_key_exists($fam_ID, $aHead)) {
                   echo ', ' . InputUtils::escapeHTML($aHead[$fam_ID]);
               }
-              echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
+              echo ' ' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
           } ?>
         </select>
         <div class="d-flex gap-2 mt-2">
@@ -208,7 +209,7 @@ if ($sReportType == '') {
     <?php if (in_array($sReportType, ['Pledge Summary', 'Pledge Reminders', 'Pledge Family Summary', 'Voting Members'])) : ?>
       <div class="mb-3">
         <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
-        <?php PrintFYIDSelect('FYID', $iFYID); ?>
+        <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID); ?>
       </div>
     <?php endif; ?>
 
@@ -241,7 +242,7 @@ if ($sReportType == '') {
           <?php while ($aRow = mysqli_fetch_array($rsFunds)) {
               extract($aRow);
               echo '<option value="' . (int)$fun_ID . '">' . InputUtils::escapeHTML($fun_Name);
-              if ($fun_Active == 'false') {
+              if ($fun_Active === 'false') {
                   echo ' — INACTIVE';
               }
               echo '</option>';
@@ -376,7 +377,7 @@ if ($sReportType == '') {
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="output" value="csv" id="outputCsv">
-            <label class="form-check-label" for="outputCsv"><?= gettext('CSV') ?></label>
+            <label class="form-check-label" for="outputCsv">CSV</label>
           </div>
         </div>
       </div>

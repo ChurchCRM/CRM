@@ -1,7 +1,9 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -11,8 +13,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     <!-- Stat Cards Row -->
     <div class="row mb-3">
-        <div class="col-sm-6 col-lg-3">
-            <div class="card card-sm">
+        <div class="col-6 col-lg-3">
+            <a href="<?= $sRootPath ?>/people/family" class="card card-sm text-decoration-none">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -21,15 +23,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </span>
                         </div>
                         <div class="col">
-                            <div class="fw-medium"><?= $familyCount['familyCount'] ?></div>
-                            <div class="text-muted"><?= gettext('Families') ?></div>
+                            <div class="fw-medium text-body"><?= $familyCount['familyCount'] ?></div>
+                            <div class="text-body-secondary"><?= gettext('Families') ?></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <div class="col-sm-6 col-lg-3">
-            <div class="card card-sm">
+        <div class="col-6 col-lg-3">
+            <a href="<?= $sRootPath ?>/people/list" class="card card-sm text-decoration-none">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -38,16 +40,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </span>
                         </div>
                         <div class="col">
-                            <div class="fw-medium"><?= $personCount ?></div>
-                            <div class="text-muted"><?= gettext('People') ?></div>
+                            <div class="fw-medium text-body"><?= $personCount ?></div>
+                            <div class="text-body-secondary"><?= gettext('People') ?></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <?php if (SystemConfig::getValue('bEnabledSundaySchool')) { ?>
-        <div class="col-sm-6 col-lg-3">
-            <div class="card card-sm">
+        <div class="col-6 col-lg-3">
+            <a href="<?= $sRootPath ?>/groups/sundayschool" class="card card-sm text-decoration-none">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -56,16 +58,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </span>
                         </div>
                         <div class="col">
-                            <div class="fw-medium"><?= $groupStats['sundaySchoolkids'] ?></div>
-                            <div class="text-muted"><?= gettext('Sunday School Kids') ?></div>
+                            <div class="fw-medium text-body"><?= $groupStats['sundaySchoolkids'] ?></div>
+                            <div class="text-body-secondary"><?= gettext('Sunday School Kids') ?></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <?php } ?>
-        <div class="col-sm-6 col-lg-3">
-            <div class="card card-sm">
+        <div class="col-6 col-lg-3">
+            <a href="<?= $sRootPath ?>/groups/dashboard" class="card card-sm text-decoration-none">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -74,12 +76,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </span>
                         </div>
                         <div class="col">
-                            <div class="fw-medium"><?= $groupStats['groups'] ?></div>
-                            <div class="text-muted"><?= gettext('Groups') ?></div>
+                            <div class="fw-medium text-body"><?= $groupStats['groups'] ?></div>
+                            <div class="text-body-secondary"><?= gettext('Groups') ?></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -90,25 +92,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap" style="gap: .5rem;">
+                <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()): ?>
                 <a href="<?= $sRootPath ?>/PersonEditor.php" class="btn btn-primary">
                     <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Person') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/FamilyEditor.php" class="btn btn-secondary">
                     <i class="fa-solid fa-house-user me-1"></i><?= gettext('Add Family') ?>
                 </a>
-                <a href="<?= $sRootPath ?>/v2/people" class="btn btn-outline-secondary">
+                <?php endif; ?>
+                <a href="<?= $sRootPath ?>/people/list" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-list me-1"></i><?= gettext('People List') ?>
                 </a>
-                <a href="<?= $sRootPath ?>/v2/family" class="btn btn-outline-secondary">
+                <a href="<?= $sRootPath ?>/people/family" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-home me-1"></i><?= gettext('Family List') ?>
                 </a>
-                <a href="<?= $sRootPath ?>/v2/people/verify" class="btn btn-outline-info">
+                <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
-                <div class="btn btn-outline-secondary disabled" style="pointer-events:none;">
-                    <span class="badge <?= $selfRegColor ?> me-1"><?= $selfRegText ?></span>
-                    <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Self Register') ?>
-                </div>
                 <?php if ($sEmailLink && $canEmail):
                     $emailHref    = 'mailto:' . mb_substr($sEmailLink, 0, -3);
                     $emailBccHref = 'mailto:?bcc=' . mb_substr($sEmailLink, 0, -3);
@@ -118,7 +118,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= $emailHref ?>"><?= gettext('All People') ?></a>
+                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($emailHref) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
                             <div class="dropdown-divider"></div>
                             <?php foreach ($roleEmails as $role => $roleEmail):
                                 $defaultTo = SystemConfig::getValue('sToEmailAddress');
@@ -127,7 +127,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 }
                                 $encoded = urlencode($roleEmail);
                                 ?>
-                                <a class="dropdown-item" href="mailto:<?= mb_substr($encoded, 0, -3) ?>"><?= $role ?></a>
+                                <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(mb_substr($encoded, 0, -3)) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -136,7 +136,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <i class="fa-solid fa-user-secret me-1"></i><?= gettext('Email BCC') ?>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= $emailBccHref ?>"><?= gettext('All People') ?></a>
+                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($emailBccHref) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
                             <div class="dropdown-divider"></div>
                             <?php foreach ($roleEmails as $role => $roleEmail):
                                 $defaultTo = SystemConfig::getValue('sToEmailAddress');
@@ -145,7 +145,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 }
                                 $encoded = urlencode($roleEmail);
                                 ?>
-                                <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($encoded, 0, -3) ?>"><?= $role ?></a>
+                                <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute(mb_substr($encoded, 0, -3)) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -180,7 +180,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 ?>
                                 <tr>
                                     <td class="text-nowrap">
-                                        <a href="<?= $sRootPath ?>/v2/people?Classification=<?= $classificationStats[$key]['id'] ?>">
+                                        <a href="<?= $sRootPath ?>/people/list?Classification=<?= $classificationStats[$key]['id'] ?>">
                                             <?= gettext($key) ?>
                                         </a>
                                     </td>
@@ -189,7 +189,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <div class="progress flex-grow-1 me-2" style="height:6px;">
                                                 <div class="progress-bar bg-primary" style="width:<?= $pct ?>%"></div>
                                             </div>
-                                            <span class="text-muted small" style="min-width:2.5rem;"><?= $pct ?>%</span>
+                                            <span class="text-body-secondary small" style="min-width:2.5rem;"><?= $pct ?>%</span>
                                         </div>
                                     </td>
                                     <td class="text-end">
@@ -226,7 +226,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 ?>
                                 <tr>
                                     <td class="text-nowrap">
-                                        <a href="<?= $sRootPath ?>/v2/people?Gender=<?= $genderId ?>&FamilyRole=<?= $roleId ?>">
+                                        <a href="<?= $sRootPath ?>/people/list?Gender=<?= $genderId ?>&FamilyRole=<?= $roleId ?>">
                                             <?= $key ?>
                                         </a>
                                     </td>
@@ -235,7 +235,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <div class="progress flex-grow-1 me-2" style="height:6px;">
                                                 <div class="progress-bar bg-success" style="width:<?= $pct ?>%"></div>
                                             </div>
-                                            <span class="text-muted small" style="min-width:2.5rem;"><?= $pct ?>%</span>
+                                            <span class="text-body-secondary small" style="min-width:2.5rem;"><?= $pct ?>%</span>
                                         </div>
                                     </td>
                                     <td class="text-end">
@@ -250,8 +250,42 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         </div>
 
-        <!-- Right column: Gender Demographics + Age Histogram + Reports -->
+        <!-- Right column: Reports + Gender Demographics + Age Histogram -->
         <div class="col-lg-6">
+
+            <!-- Reports -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fa-solid fa-file-lines me-2"></i><?= gettext('Reports') ?></h3>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="<?= $sRootPath ?>/members/self-register.php" class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="fa-solid fa-user-clock fa-fw text-body-secondary me-3"></i>
+                        <div>
+                            <div class="fw-medium"><?= gettext('Self Registration Report') ?></div>
+                            <div class="text-body-secondary small"><?= gettext('List families created via self registration') ?></div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
+                    </a>
+
+                    <a href="<?= $sRootPath ?>/DirectoryReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="fa-solid fa-address-book fa-fw text-body-secondary me-3"></i>
+                        <div>
+                            <div class="fw-medium"><?= gettext('People Directory') ?></div>
+                            <div class="text-body-secondary small"><?= gettext('Printable directory of all people, grouped by family') ?></div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
+                    </a>
+                    <a href="<?= $sRootPath ?>/LettersAndLabels.php" class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="fa-solid fa-envelope-open-text fa-fw text-body-secondary me-3"></i>
+                        <div>
+                            <div class="fw-medium"><?= gettext('Letters & Mailing Labels') ?></div>
+                            <div class="text-body-secondary small"><?= gettext('Generate letters and mailing labels') ?></div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
+                    </a>
+                </div>
+            </div>
 
             <!-- Gender Demographics -->
             <div class="card mb-3">
@@ -283,7 +317,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         </div>
                                     </td>
                                     <td class="text-end"><strong><?= $count ?></strong></td>
-                                    <td class="text-end text-muted"><?= $pct ?>%</td>
+                                    <td class="text-end text-body-secondary"><?= $pct ?>%</td>
                                 </tr>
                             <?php endforeach; ?>
                             <tr class="table-light">
@@ -306,40 +340,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
 
-            <!-- Reports -->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fa-solid fa-file-lines me-2"></i><?= gettext('Reports') ?></h3>
-                </div>
-                <div class="list-group list-group-flush">
-                    <a href="<?= $sRootPath ?>/members/self-register.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-user-clock fa-fw text-muted me-3"></i>
-                        <div>
-                            <div class="fw-medium"><?= gettext('Self Registration Report') ?></div>
-                            <div class="text-muted small"><?= gettext('List families created via self registration') ?></div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
-                    </a>
-
-                    <a href="<?= $sRootPath ?>/DirectoryReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-address-book fa-fw text-muted me-3"></i>
-                        <div>
-                            <div class="fw-medium"><?= gettext('People Directory') ?></div>
-                            <div class="text-muted small"><?= gettext('Printable directory of all people, grouped by family') ?></div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
-                    </a>
-                    <a href="<?= $sRootPath ?>/LettersAndLabels.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-envelope-open-text fa-fw text-muted me-3"></i>
-                        <div>
-                            <div class="fw-medium"><?= gettext('Letters & Mailing Labels') ?></div>
-                            <div class="text-muted small"><?= gettext('Generate letters and mailing labels') ?></div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
-                    </a>
-                </div>
-            </div>
-
         </div>
 
     </div>
@@ -359,12 +359,36 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 series: [{ name: "<?= gettext('People') ?>", data: ageGroupValues }],
                 xaxis: { categories: ageGroupLabels, labels: { rotate: -45 } },
                 yaxis: { title: { text: "<?= gettext('Count') ?>" }, forceNiceScale: true },
-                colors: ['#3366ff'],
                 dataLabels: { enabled: false },
                 grid: { borderColor: '#f0f0f0' }
             }).render();
         }
     });
 </script>
+
+<?php if ($isAdmin): ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function () {
+    window.CRM.settingsPanel.init({
+        container: '#peopleSettings',
+        title: <?= json_encode(gettext('People Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        icon: 'fa-solid fa-sliders',
+        settings: [
+            {
+                name: 'bEnableSelfRegistration',
+                type: 'boolean',
+                label: <?= json_encode(gettext('Self Registration'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                tooltip: <?= json_encode(gettext('Allow visitors to self-register as new families.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+            }
+        ],
+        onSave: function () {
+            setTimeout(function () { window.location.reload(); }, 1500);
+        }
+    });
+});
+</script>
+<?php endif; ?>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

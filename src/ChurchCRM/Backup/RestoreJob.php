@@ -129,21 +129,90 @@ class RestoreJob extends JobBase
         LoggerUtils::getAppLogger()->debug('Extracting ' . $this->RestoreFile . ' to ' . $extractDir);
         $phar->extractTo($extractDir);
         LoggerUtils::getAppLogger()->debug('Finished extraction');
-        $sqlFile = $extractDir . '/ChurchCRM-Database.sql';
-        if (file_exists($sqlFile)) {
-            $this->restoreSQLBackup($sqlFile);
-            LoggerUtils::getAppLogger()->debug('Removing images from live instance');
-            FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
-            LoggerUtils::getAppLogger()->debug('Removal complete; Copying restored images to live instance');
-            FileSystemUtils::recursiveCopyDirectory($extractDir . '/Images/', SystemURLs::getImagesRoot());
-            LoggerUtils::getAppLogger()->debug('Finished copying images');
-        } else {
-            throw new Exception(gettext('Backup archive does not contain a database') . ': ' . $this->RestoreFile);
+
+        try {
+            $sqlFile = $extractDir . '/ChurchCRM-Database.sql';
+            if (file_exists($sqlFile)) {
+                $this->restoreSQLBackup($sqlFile);
+
+                // Security: Validate extracted images before copying to live webroot
+                $imagesDir = $extractDir . '/Images';
+                if (is_dir($imagesDir)) {
+                    $this->validateExtractedImages($imagesDir);
+                }
+
+                LoggerUtils::getAppLogger()->debug('Removing images from live instance');
+                FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
+                LoggerUtils::getAppLogger()->debug('Removal complete; Copying restored images to live instance');
+                FileSystemUtils::recursiveCopyDirectory($extractDir . '/Images/', SystemURLs::getImagesRoot());
+                LoggerUtils::getAppLogger()->debug('Finished copying images');
+            } else {
+                throw new Exception(gettext('Backup archive does not contain a database') . ': ' . $this->RestoreFile);
+            }
+        } finally {
+            // Always clean up extraction directory, even on validation failure
+            FileSystemUtils::recursiveRemoveDirectory($extractDir, false);
+            LoggerUtils::getAppLogger()->debug('Cleaned up extraction directory');
         }
-        
-        // Clean up extraction directory
-        FileSystemUtils::recursiveRemoveDirectory($extractDir, false);
         LoggerUtils::getAppLogger()->debug('Finished restoring full archive');
+    }
+
+    /**
+     * Validate that extracted Images directory contains only image files.
+     * Prevents RCE by removing any PHP/script files that may have been
+     * embedded in a malicious backup archive.
+     *
+     * @param string $dir Path to the extracted Images directory
+     * @throws Exception If executable PHP files are found (aborts restore)
+     */
+    private function validateExtractedImages(string $dir): void
+    {
+        // Aligned with Photo.php allowed types — no SVG (XSS risk) or BMP
+        $allowedMimeTypes = [
+            'image/jpeg',
+            'image/jpg',
+            'image/png',
+            'image/gif',
+            'image/webp',
+        ];
+
+        // Executable extensions that must never be copied to the webroot
+        $dangerousExtensions = ['php', 'phtml', 'php3', 'php4', 'php5', 'php7', 'phps', 'phar', 'shtml'];
+
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::LEAVES_ONLY
+        );
+
+        // Create finfo instance once outside loop
+        $finfo = new \finfo(FILEINFO_MIME_TYPE);
+
+        foreach ($iterator as $file) {
+            if (!$file->isFile()) {
+                continue;
+            }
+
+            $filePath = $file->getPathname();
+            $extension = strtolower($file->getExtension());
+
+            // Immediately abort if any executable file is found
+            if (\in_array($extension, $dangerousExtensions, true)) {
+                LoggerUtils::getAppLogger()->error('Restore aborted: dangerous file found in backup archive: ' . $filePath);
+                throw new Exception('Restore aborted: backup archive contains a potentially dangerous file (' . $file->getFilename() . '). This may indicate a compromised backup.');
+            }
+
+            // Check MIME type for all other files — remove non-images
+            $mimeType = $finfo->file($filePath);
+            if (!\in_array($mimeType, $allowedMimeTypes, true)) {
+                LoggerUtils::getAppLogger()->warning('Restore: removing non-image file from backup: ' . $filePath . ' (MIME: ' . $mimeType . ')');
+                if (!unlink($filePath)) {
+                    // Cannot remove non-image file — abort to prevent it reaching the webroot
+                    throw new Exception('Restore aborted: could not remove non-image file from backup (' . $file->getFilename() . '). Check file permissions.');
+                }
+            }
+        }
+
+        LoggerUtils::getAppLogger()->debug('Image validation passed for: ' . $dir);
     }
 
     private function restoreGZSQL(): void

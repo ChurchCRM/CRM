@@ -1,9 +1,34 @@
-# DDEV auto-generated gitignore — do not delete
-# User-specific settings that should not be shared
-.env
-.env.*
-auth.json
-import-db
-db_snapshots/
-sequelpro.spf
-.DS_Store
+#ddev-generated: Automatically generated ddev .gitignore.
+# You can remove the above line if you want to edit and maintain this file yourself.
+/.gitignore
+
+/**/*.example
+/.dbimageBuild
+/.ddev-docker-*.yaml
+/.*downloads
+/.homeadditions
+/.importdb*
+/.sshimageBuild
+/.webimageBuild
+/apache/apache-site.conf
+/commands/.gitattributes
+/config.local.y*ml
+/config.*.local.y*ml
+/db_snapshots
+/mutagen/mutagen.yml
+/mutagen/.start-synced
+/nginx_full/nginx-site.conf
+/postgres/postgresql.conf
+/providers/acquia.yaml
+/providers/lagoon.yaml
+/providers/pantheon.yaml
+/providers/platform.yaml
+/providers/upsun.yaml
+/sequelpro.spf
+/share-providers/cloudflared.sh
+/share-providers/ngrok.sh
+/traefik/config/churchcrm.yaml
+/traefik/certs/churchcrm.crt
+/traefik/certs/churchcrm.key
+/xhprof/xhprof_prepend.php
+/**/README.*

@@ -3,6 +3,7 @@
 namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
@@ -18,52 +19,153 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
+use Slim\Views\PhpRenderer;
 
 class PublicCalendarMiddleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = new Response();
+
         if (!SystemConfig::getBooleanValue('bEnableExternalCalendarAPI')) {
-            return $response->withStatus(403, gettext('External Calendar API is disabled'));
+            return $this->renderError(
+                $request,
+                $response,
+                403,
+                gettext('External calendar sharing is disabled'),
+                gettext('The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error.'),
+                'ti-lock',
+            );
         }
 
         $CAT = SlimUtils::getRouteArgument($request, 'CalendarAccessToken');
         if (empty(trim($CAT))) {
-            return SlimUtils::renderJSON($response, ['message' => gettext('Missing calendar access token')], 400);
+            return $this->renderError(
+                $request,
+                $response,
+                400,
+                gettext('Missing calendar access token'),
+                gettext('The calendar link is incomplete. Please check the URL with the person who sent it to you.'),
+                'ti-link-off',
+            );
         }
 
         $calendar = CalendarQuery::create()
             ->filterByAccessToken($CAT)
             ->findOne();
         if (empty($calendar)) {
-            return SlimUtils::renderJSON($response, ['message' => gettext('Calendar access token not found')], 404);
+            return $this->renderError(
+                $request,
+                $response,
+                404,
+                gettext('Calendar not found'),
+                gettext('This calendar link is invalid or has been revoked. Ask the church for a current link.'),
+                'ti-calendar-off',
+            );
         }
 
         $request = $request->withAttribute('calendar', $calendar);
         $events = $this->getEvents($request, $calendar);
         if ($events === null) {
-            return SlimUtils::renderJSON($response, ['message' => gettext('Invalid date format in start parameter')], 400);
+            return $this->renderError(
+                $request,
+                $response,
+                400,
+                gettext('Invalid date format'),
+                gettext('The start or end date in the link could not be understood. Try the base calendar link without date parameters.'),
+                'ti-calendar-question',
+            );
         }
         $request = $request->withAttribute('events', $events);
 
         return $handler->handle($request);
     }
 
+    /**
+     * Render an error for the public calendar flow. JSON routes
+     * (`/api/public/calendar/...`) get a JSON body; the browser-facing
+     * HTML route (`/external/calendars/...`) gets a friendly HTML page
+     * rendered with the unauthenticated header so the user sees the
+     * church branding and a plain explanation instead of a raw status code.
+     */
+    private function renderError(
+        ServerRequestInterface $request,
+        ResponseInterface $response,
+        int $status,
+        string $title,
+        string $message,
+        string $icon = 'ti-calendar-off',
+    ): ResponseInterface {
+        if ($this->prefersJson($request)) {
+            return SlimUtils::renderJSON(
+                $response,
+                ['error' => $title, 'message' => $message],
+                $status,
+            );
+        }
+
+        $renderer = new PhpRenderer(SystemURLs::getDocumentRoot() . '/external/templates/calendar/');
+
+        return $renderer->render(
+            $response->withStatus($status),
+            'error.php',
+            ['title' => $title, 'message' => $message, 'icon' => $icon],
+        );
+    }
+
+    /**
+     * JSON for the `/api/public/calendar/...` endpoints (machine clients
+     * and the embedded FullCalendar fetch), HTML for everything else.
+     * Falls back to JSON if the client explicitly asks for it via Accept.
+     */
+    private function prefersJson(ServerRequestInterface $request): bool
+    {
+        $path = $request->getUri()->getPath();
+        if (str_contains($path, '/api/')) {
+            return true;
+        }
+        $accept = strtolower($request->getHeaderLine('Accept'));
+        if ($accept !== '' && str_contains($accept, 'application/json') && !str_contains($accept, 'text/html')) {
+            return true;
+        }
+
+        return false;
+    }
+
     private function getEvents(ServerRequestInterface $request, Calendar $calendar): mixed
     {
         $params = $request->getQueryParams();
+
+        // Note: FullCalendar also sends a `timeZone` query param when using a named timezone.
+        // We intentionally ignore it — all dates are stored and served in the church timezone
+        // (sTimeZone / DateTimeUtils::getConfiguredTimezone()), which is what we told FullCalendar
+        // to use in the first place. Reading it from the client would open a spoofing vector.
+
+        // Uses ?: (not ??) because DateTime::createFromFormat() returns false (not null) on failure.
+        // ATOM format includes timezone in the string (P specifier), so $churchTz is only needed
+        // for the fallback formats where FullCalendar omits the offset.
+        $churchTz = DateTimeUtils::getConfiguredTimezone();
+
+        $start_date = null;
         if (isset($params['start'])) {
-            $start_date = DateTime::createFromFormat('Y-m-d', $params['start'], DateTimeUtils::getConfiguredTimezone());
-            if ($start_date === false) {
-                // Invalid date format - return null to indicate error
+            $start_date = DateTime::createFromFormat(DateTime::ATOM, $params['start'])
+                ?: DateTime::createFromFormat('Y-m-d\TH:i:s', $params['start'], $churchTz)
+                ?: DateTime::createFromFormat('Y-m-d', $params['start'], $churchTz);
+            if ($start_date === false || $start_date === null) {
                 return null;
             }
-        } else {
-            // Use configured timezone for default start date
-            $start_date = DateTimeUtils::getStartOfToday();
+            $start_date->setTime(0, 0, 0);
         }
-        $start_date->setTime(0, 0, 0);
+
+        $end_date = null;
+        if (isset($params['end'])) {
+            $end_date = DateTime::createFromFormat(DateTime::ATOM, $params['end'])
+                ?: DateTime::createFromFormat('Y-m-d\TH:i:s', $params['end'], $churchTz)
+                ?: DateTime::createFromFormat('Y-m-d', $params['end'], $churchTz);
+            if ($end_date === false || $end_date === null) {
+                return null;
+            }
+        }
 
         $events = EventQuery::create()
             ->joinCalendarEvent()
@@ -72,11 +174,17 @@ class PublicCalendarMiddleware implements MiddlewareInterface
             ->endUse()
             ->orderBy(EventTableMap::COL_EVENT_START);
 
-        if ($start_date) {
-            $events->filterByStart($start_date, Criteria::GREATER_EQUAL);
+        if ($start_date !== null) {
+            // Keep events that overlap the view: event ends after view starts, or has no end (all-day/open)
+            $events->where('events_event.event_end IS NULL OR events_event.event_end >= ?', $start_date->format('Y-m-d H:i:s'));
         }
 
-        if (array_key_exists('max', $params)) {
+        if ($end_date !== null) {
+            // Keep events that start before the view ends
+            $events->filterByStart($end_date, Criteria::LESS_THAN);
+        }
+
+        if (\array_key_exists('max', $params)) {
             $max_events = InputUtils::filterInt($params['max']);
             $events->limit($max_events);
         }

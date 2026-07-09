@@ -7,10 +7,13 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Utils\PHPToMomentJSConverter;
+use ChurchCRM\Service\NotificationService;
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\InputUtils;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
 
@@ -23,11 +26,22 @@ require_once __DIR__ . '/Header-Security.php';
 $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
 PluginManager::init($pluginsPath);
 
+// Resolve theme attributes from user settings
+$_themeUser = AuthenticationManager::getCurrentUser();
+$_themeAttrs = '';
+$_themeStyle = $_themeUser->getSettingValue('ui.style');
+if ($_themeStyle === 'dark') {
+    $_themeAttrs .= ' data-bs-theme="dark"';
+}
+$_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
+if ($_themePrimary !== '') {
+    $_themeAttrs .= ' data-bs-theme-primary="' . InputUtils::escapeAttribute($_themePrimary) . '"';
+}
 // Top level menu index counter
 $MenuFirst = 1;
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -43,7 +57,7 @@ $MenuFirst = 1;
     <div class="modal-dialog">
       <div class="modal-content" id="bugForm">
         <form name="issueReport">
-          <input type="hidden" name="pageName" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
+          <input type="hidden" name="pageName" value="<?= InputUtils::escapeAttribute($_SERVER['REQUEST_URI'] ?? '') ?>"/>
           <div class="modal-header">
             <h5 class="modal-title"><i class="ti ti-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
@@ -53,8 +67,8 @@ $MenuFirst = 1;
               <i class="ti ti-info-circle me-1"></i>
               <?= gettext('Clicking "Open GitHub Issue" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it.') ?>
             </div>
-            <div class="form-group">
-              <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-muted fw-normal">(<?= gettext('optional') ?>)</span></label>
+            <div class="mb-3">
+              <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-body-secondary fw-normal">(<?= gettext('optional') ?>)</span></label>
               <textarea id="issueDescription" class="form-control" rows="4" placeholder="<?= gettext('What went wrong? What did you expect to happen?') ?>"></textarea>
             </div>
           </div>
@@ -93,17 +107,22 @@ $MenuFirst = 1;
           lang:"<?= $localeInfo->getLanguageCode() ?>",
           isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
           userId:"<?= AuthenticationManager::getCurrentUser()->getId() ?>",
+          userName:<?= json_encode(AuthenticationManager::getCurrentUser()->getPerson()?->getFullName() ?? '') ?>,
           version:"<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>",
           systemLocale:"<?= $localeInfo->getSystemLocale() ?>",
           locale:"<?= $localeInfo->getLocale() ?>",
           shortLocale:"<?= $localeInfo->getShortLocale() ?>",
-          timeZone:"<?= SystemConfig::getValue('sTimeZone') ?>",
+          timeZone:<?= SystemConfig::getValueForJs('sTimeZone') ?>,
           maxUploadSize:"<?= SystemService::getMaxUploadFileSize(true) ?>",
           maxUploadSizeBytes:"<?= SystemService::getMaxUploadFileSize(false) ?>",
-          datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
-          churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>",
+          datePickerformat:<?= SystemConfig::getValueForJs('sDatePickerPlaceHolder') ?>,
+          churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
           systemConfigs: {
-            sDateTimeFormat:"<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
+            sDateTimeFormat:<?= DateTimeUtils::getDateTimeFormatForJs() ?>,
+          },
+          comm: {
+            smtpConfigured: <?= json_encode(SystemConfig::hasValidMailServerSettings()) ?>,
+            vonageEnabled: <?= json_encode(PluginManager::getPlugin('vonage')?->isConfigured() ?? false) ?>,
           },
           // Plugin configs from active plugins (via getClientConfig())
           plugins: <?= json_encode(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,
@@ -143,7 +162,11 @@ $MenuFirst = 1;
                   ]
               }
           },
-          PageName:"<?= $_SERVER['REQUEST_URI']; ?>"
+          permissions: {
+              addRecords: <?= json_encode($currentUser->isAddRecordsEnabled()) ?>,
+              editRecords: <?= json_encode($currentUser->isEditRecordsEnabled()) ?>,
+          },
+          PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
       });
       // Initialize moment locale if available
       if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
@@ -151,11 +174,12 @@ $MenuFirst = 1;
       }
   </script>
   <script src="<?= SystemURLs::assetVersioned('/skin/js/CRMJSOM.js') ?>"></script>
+  <script src="<?= SystemURLs::assetVersioned('/skin/js/CommunicationUtils.js') ?>"></script>
 
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
   <!-- ============================================================ -->
-  <aside class="navbar navbar-vertical navbar-expand-xl" id="sidebar">
+  <aside class="navbar navbar-vertical navbar-expand-xl d-print-none" id="sidebar">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
@@ -163,13 +187,13 @@ $MenuFirst = 1;
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand navbar-brand-autodark py-2">
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
-             alt="<?= htmlspecialchars(ChurchMetaData::getChurchName() ?: gettext('ChurchCRM')) ?>"
-             class="navbar-brand-image"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             class="navbar-brand-image rounded"
              style="height: 42px; width: auto;">
         <span class="navbar-brand-text ps-2 fs-4 fw-bold">
-          <?= ChurchMetaData::getChurchName() ?: gettext('ChurchCRM') ?>
+          <?= ChurchMetaData::getChurchName() ?: 'ChurchCRM' ?>
         </span>
       </a>
       <div class="collapse navbar-collapse" id="sidebar-menu">
@@ -192,8 +216,10 @@ $MenuFirst = 1;
     <div class="container-xl">
 
       <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-        <span class="navbar-toggler-icon"></span>
+              data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+              aria-controls="navbar-menu" aria-expanded="false"
+              aria-label="<?= gettext('Toggle search') ?>">
+        <i class="ti ti-search"></i>
       </button>
 
       <!-- Right-side nav items -->
@@ -228,29 +254,19 @@ $MenuFirst = 1;
           </div>
         </div>
 
-        <!-- Locale -->
-        <div class="nav-item dropdown ms-1">
-          <a class="nav-link px-0" data-bs-toggle="dropdown" href="#">
-            <i class="fi fi-<?= $localeInfo->getCountryFlagCode() ?> fi-squared"></i>
-            <?php if ($localeInfo->shouldShowTranslationBadge()) { ?>
-            <span class="badge bg-warning text-dark ms-1" title="<?= gettext('Translation incomplete') ?>">!</span>
-            <?php } ?>
+        <!-- Locale: flag links directly to the localization tab on the profile page -->
+        <?php
+        $flagCode    = $localeInfo->getCountryFlagCode();
+        $nativeName  = $localeInfo->getNativeName();
+        $englishName = $localeInfo->getName();
+        $hasNative   = $nativeName !== '' && $nativeName !== $englishName;
+        $localeUrl   = SystemURLs::getRootPath() . '/v2/user/' . AuthenticationManager::getCurrentUser()->getId() . '#tab-localization';
+        ?>
+        <div class="nav-item ms-1">
+          <a class="nav-link px-0" href="<?= $localeUrl ?>"
+             title="<?= InputUtils::escapeAttribute($hasNative ? $nativeName . ' — ' . $englishName : $englishName) ?>">
+            <i class="fi fi-<?= $flagCode ?> fi-squared"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <span class="dropdown-item disabled">
-              <i class="fi fi-<?= $localeInfo->getCountryFlagCode() ?> me-2"></i>
-              <?= $localeInfo->getName() ?> [<?= $localeInfo->getLocale() ?>]
-              <?php if ($localeInfo->shouldShowTranslationPercentage()) { ?>
-              <span class="badge bg-<?= $localeInfo->getTranslationPercentage() < 90 ? 'warning' : 'success' ?> ms-1">
-                <?= $localeInfo->getTranslationPercentage() ?>%
-              </span>
-              <?php } ?>
-            </span>
-            <div class="dropdown-divider"></div>
-            <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" class="dropdown-item" target="_blank">
-              <i class="ti ti-users me-2"></i><?= gettext("Help translate this project") ?>
-            </a>
-          </div>
         </div>
 
         <!-- Cart -->
@@ -338,7 +354,7 @@ $MenuFirst = 1;
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $currentUser->getPersonId() ?>"
+            <a href="<?= Person::getViewURIForId($currentUser->getPersonId()) ?>"
                class="dropdown-item">
               <i class="ti ti-user me-2"></i><?= gettext("Profile") ?>
             </a>
@@ -391,10 +407,10 @@ $MenuFirst = 1;
     $sPageHeaderButtons = $sPageHeaderButtons ?? '';
     $sSettingsCollapseId = $sSettingsCollapseId ?? '';
     ?>
-    <div class="page-header d-print-none">
+    <div class="page-header">
       <div class="container-xl">
         <?php if (!empty($aBreadcrumbs) || !empty($sPageHeaderButtons)) : ?>
-        <div class="row g-2 align-items-center mb-1">
+        <div class="row g-2 align-items-center mb-1 d-print-none">
           <div class="col">
             <?php if (!empty($aBreadcrumbs)) : ?>
             <ol class="breadcrumb mb-0" aria-label="breadcrumbs">
@@ -422,7 +438,7 @@ $MenuFirst = 1;
           <div class="col">
             <h2 class="page-title"><?= $sPageTitle ?></h2>
             <?php if (!empty($sPageSubtitle)) : ?>
-            <div class="text-muted mt-1"><?= $sPageSubtitle ?></div>
+            <div class="text-body-secondary mt-1"><?= $sPageSubtitle ?></div>
             <?php endif; ?>
           </div>
         </div>
@@ -435,3 +451,33 @@ $MenuFirst = 1;
     <?php endif; ?>
     <div class="page-body">
       <div class="container-xl">
+<?php
+// Hydrate registry from session-cached remote notifications (no HTTP calls)
+NotificationService::loadSessionNotifications();
+
+// Render all active notifications as dismissible alerts
+foreach (NotificationService::getNotifications() as $notification) {
+?>
+      <div class="alert alert-<?= InputUtils::escapeHTML($notification->getType()) ?> alert-dismissible"
+           role="alert"
+           <?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
+           <?= $notification->getDismissSettingKey() ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notification->getDismissSettingKey()) . '"' : '' ?>>
+        <div class="d-flex">
+          <div><i class="ti ti-<?= InputUtils::escapeHTML($notification->getIcon()) ?> me-2"></i></div>
+          <div>
+            <strong><?= InputUtils::escapeHTML($notification->getTitle()) ?></strong>
+            <?php if ($notification->getMessage()): ?>
+              <div class="text-secondary"><?= InputUtils::escapeHTML($notification->getMessage()) ?></div>
+            <?php endif; ?>
+            <?php if ($notification->getUrl()): ?>
+              <a href="<?= InputUtils::escapeAttribute($notification->getUrl()) ?>" class="alert-link">
+                <?= gettext('Learn more') ?>
+              </a>
+            <?php endif; ?>
+          </div>
+        </div>
+        <?php if ($notification->getDismissSettingKey()): ?>
+          <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" aria-label="<?= gettext('Dismiss') ?>"></button>
+        <?php endif; ?>
+      </div>
+<?php } ?>

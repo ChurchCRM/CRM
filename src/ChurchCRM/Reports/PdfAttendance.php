@@ -127,9 +127,9 @@ class PdfAttendance extends ChurchInfoReport
             // Write the names down the page and draw lines between
             $this->SetLineWidth(0.25);
             for ($row = $pRowStart; $row < $pRowEnd; $row++) {
-                $this->writeAt($nameX, $y + (($with_img == true) ? 3 : 1), $NameList[$row]);
+                $this->writeAt($nameX, $y + (($with_img === true) ? 3 : 1), $NameList[$row]);
 
-                if ($with_img == true) {
+                if ($with_img === true) {
                     $this->Line($nameX - $yIncrement, $y, $nameX, $y);
                     $this->Line($nameX - $yIncrement, $y + $yIncrement, $nameX, $y + $yIncrement);
                     $this->Line($nameX - $yIncrement, $y, $nameX, $y);

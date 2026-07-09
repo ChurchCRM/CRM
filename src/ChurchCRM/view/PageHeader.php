@@ -76,13 +76,22 @@ class PageHeader
                     . ' data-bs-toggle="collapse" data-bs-target="' . $target . '"'
                     . ' aria-expanded="false" aria-controls="' . ltrim($target, '#') . '">'
                     . $icon . $label . '</button>';
+            } elseif (isset($btn['offcanvas'])) {
+                // Offcanvas trigger button
+                $target = $btn['offcanvas'];
+                $html .= '<button class="btn btn-sm btn-outline-secondary" type="button"'
+                    . ' data-bs-toggle="offcanvas" data-bs-target="' . $target . '"'
+                    . ' aria-controls="' . ltrim($target, '#') . '">'
+                    . $icon . $label . '</button>';
             } else {
                 // Link button
                 $url = $btn['url'] ?? '#';
-                if ($url !== '#' && !str_starts_with($url, 'http')) {
+                $isExternal = $url !== '#' && str_starts_with($url, 'http');
+                if (!$isExternal && $url !== '#') {
                     $url = SystemURLs::getRootPath() . $url;
                 }
-                $html .= '<a href="' . $url . '" class="btn btn-sm btn-outline-secondary">'
+                $targetAttr = $isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+                $html .= '<a href="' . $url . '" class="btn btn-sm btn-outline-secondary"' . $targetAttr . '>'
                     . $icon . $label . '</a>';
             }
         }

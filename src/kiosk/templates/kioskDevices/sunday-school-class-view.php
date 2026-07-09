@@ -2,17 +2,17 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-$sPageTitle ="ChurchCRM - Sunday School Device Kiosk";
-require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
+$sPageTitle = 'ChurchCRM - Kiosk';
+require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 ?>
 
 <!-- Kiosk Status Container - shown when waiting for event or acceptance -->
-<div id="noEvent" class="kiosk-status-container d-none">
+<div id="noEvent" class="kiosk-status-container">
   <!-- Content populated by JavaScript -->
 </div>
 
 <!-- Event Display Container -->
-<div id="event" class="d-none">
+<div id="event">
   <div class="kiosk-container">
     <!-- Tablet Warning -->
     <div class="tablet-warning">
@@ -26,21 +26,36 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         <div>
           <h1 id="eventTitle"></h1>
           <div class="kiosk-time-info">
+            <i class="fa-solid fa-tablet-screen-button me-1"></i>
+            <span id="kioskName"></span>
+            <span class="mx-2">|</span>
             <i class="fa-solid fa-users me-1"></i>
             <span class="kiosk-group-name"></span>
             <span class="mx-2">|</span>
             <i class="fa-solid fa-clock me-1"></i>
             <span id="startTime"></span> &mdash; <span id="endTime"></span>
+            <span id="timeRemaining" class="badge bg-warning-lt text-warning ms-2 d-none"></span>
           </div>
         </div>
-        <div class="kiosk-stats mt-2 mt-md-0">
-          <div class="kiosk-stat checked-in">
-            <i class="fa-solid fa-check me-1"></i>
-            <span id="checkedInCount">0</span> <?= gettext('Here') ?>
+        <div class="d-flex flex-column align-items-end mt-2 mt-md-0">
+          <div class="kiosk-stats mb-2">
+            <div class="kiosk-stat checked-in">
+              <i class="fa-solid fa-check me-1"></i>
+              <span id="checkedInCount">0</span> <?= gettext('Here') ?>
+            </div>
+            <div class="kiosk-stat not-here">
+              <i class="fa-solid fa-clock me-1"></i>
+              <span id="notCheckedInCount">0</span> <?= gettext('Expected') ?>
+            </div>
           </div>
-          <div class="kiosk-stat not-here">
-            <i class="fa-solid fa-clock me-1"></i>
-            <span id="notCheckedInCount">0</span> <?= gettext('Expected') ?>
+          <!-- Check-in By toggle -->
+          <div class="kiosk-checkin-by-toggle">
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="checkinByToggle">
+              <label class="form-check-label text-white" for="checkinByToggle">
+                <i class="fa-solid fa-user-check me-1"></i><?= gettext('Check-in By') ?>
+              </label>
+            </div>
           </div>
         </div>
       </div>
@@ -50,7 +65,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
     <div class="row" id="classMemberContainer">
       <!-- Birthday Banner (Top, full width when has birthdays) -->
       <div class="col-12 mb-3" id="birthdayBannerContainer">
-        <div class="kiosk-birthday-banner d-none" id="birthdayBanner">
+        <div class="kiosk-birthday-banner" id="birthdayBanner">
           <div class="birthday-banner-header">
             <i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Upcoming Birthdays') ?>
             <span class="badge bg-light text-dark ms-2" id="birthdayCount">0</span>
@@ -105,14 +120,59 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
   <button type="button" class="kiosk-fab kiosk-fab-refresh" id="refreshBtn" title="Refresh member list">
     <i class="fa-solid fa-arrows-rotate"></i>
   </button>
-  <button type="button" class="kiosk-fab kiosk-fab-alert d-none" id="alertAllBtn" title="Send alert to all families">
+  <button type="button" class="kiosk-fab kiosk-fab-alert" id="alertAllBtn" title="Send alert to all families">
     <i class="fa-solid fa-bullhorn"></i>
   </button>
-  <button type="button" class="kiosk-fab kiosk-fab-checkout d-none" id="checkoutAllBtn" title="Checkout all students">
+  <button type="button" class="kiosk-fab kiosk-fab-checkout" id="checkoutAllBtn" title="Checkout all students">
     <i class="fa-solid fa-right-from-bracket"></i>
   </button>
 </div>
 
+<!-- Refresh Warning Modal -->
+<div class="modal fade" id="refreshWarningModal" tabindex="-1" aria-labelledby="refreshWarningModalLabel" aria-modal="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="refreshWarningModalLabel">
+          <i class="fa-solid fa-arrows-rotate me-2"></i><?= gettext('Refreshing Soon') ?>
+        </h5>
+      </div>
+      <div class="modal-body text-center py-4">
+        <p class="mb-1"><?= gettext('Refreshing in') ?></p>
+        <div class="display-4 fw-bold text-warning" id="refreshWarningCountdown">10</div>
+        <p class="text-muted small mt-1"><?= gettext('seconds') ?></p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" id="cancelRefreshBtn">
+          <i class="fa-solid fa-ban me-1"></i><?= gettext('Cancel — wait 1 more minute') ?>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Check-in By Modal -->
+<div class="modal fade" id="checkinByModal" tabindex="-1" aria-labelledby="checkinByModalTitle" aria-modal="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="checkinByModalTitle"><?= gettext('Who is bringing them in?') ?></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="<?= gettext('Cancel') ?>"></button>
+      </div>
+      <div class="modal-body" id="checkinByModalBody">
+        <div class="text-center py-4">
+          <i class="fa-solid fa-spinner fa-spin fa-2x text-primary"></i>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="checkinBySkipBtn">
+          <i class="fa-solid fa-forward me-1"></i><?= gettext('Skip') ?>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/kiosk.min.js') ?>"></script>
 <?php
-require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");
+require SystemURLs::getDocumentRoot() . '/Include/FooterNotLoggedIn.php';

@@ -18,15 +18,31 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 | New API endpoint | `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` |
 | Migrate legacy page | `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` |
 | Database / ORM work | `database-operations.md` → `db-schema-migration.md` |
-| UI / frontend changes | `bootstrap-adminlte.md` → `frontend-development.md` → `webpack-typescript.md` |
-| i18n / translations | `i18n-localization.md` → `frontend-development.md` |
+| UI / frontend changes | `responsive-design-guidelines.md` → `bootstrap-5-migration.md` → `frontend-development.md` → `webpack-typescript.md` |
+| Datetime / timezone work | `timezone-handling.md` (event editor, calendar, kiosk, anything cross-tz) |
+| i18n / translations | `i18n-localization.md` → `locale-translation-workflow.md` → `frontend-development.md` |
 | Security issue | `security-best-practices.md` → `authorization-security.md` |
-| Plugin work | `plugin-system.md` → `plugin-development.md` |
+| New community plugin | `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` |
+| Core plugin update (`src/plugins/core/*`) | `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` |
+| Admin-side plugin audit | `plugin-system.md` → `plugin-compliance.md` |
 | Testing | `testing.md` → `cypress-testing.md` |
 | Commit / PR | `git-workflow.md` → `github-interaction.md` |
 | Refactor | `refactor.md` → `service-layer.md` |
 | Performance | `performance-optimization.md` → `database-operations.md` |
 | Configuration | `configuration-management.md` |
+
+---
+
+## Context Optimization
+
+The Claude Code system loads **150+ agent types + 40+ MCP tool schemas** by default (~15-20KB overhead per session). ChurchCRM uses only **8-10 tools** across all workflows.
+
+**Per-Workflow Tool Allowlists** (documented in [`.claude/churchcrm-tools-config.json`](./.claude/churchcrm-tools-config.json)) trim unused tools:
+- **Removed:** Google services, email/Slack, Sentry, DataForSEO, all language-specific agents (Rust, Go, Java, etc.), AI media gen, SEO/marketing tools
+- **Kept:** GitHub tools (PR/issue ops), Web tools (documentation), Bash (build/git), core code tools, workflow-specific agents
+- **Savings:** ~10-13KB per session = **~250K tokens/month** freed for productive work
+
+Workflows automatically load only their required tools (see config file for mapping). No user action needed — this is documentation of what's actually used.
 
 ---
 
@@ -66,27 +82,16 @@ Update the relevant skill file immediately when you:
 4. **Keep it concise** — one paragraph max, prefer code examples over prose
 5. **Date the entry** — append `<!-- learned: YYYY-MM-DD -->` as an HTML comment on the section header line
 
-### Example Auto-Update (what to write)
-
-```markdown
-### Casting Foreign Keys in Propel Relations <!-- learned: 2026-02-28 -->
-
-When traversing Propel relations via `->getXxx()`, always cast the FK to `(int)`
-before passing to query methods — Propel does not auto-cast string inputs from
-`$_POST`/route params.
-
-```php
-// ✅ CORRECT
-$group = GroupQuery::create()->findPk((int)$groupId);
-
-// ❌ WRONG — silently returns null when $groupId is a string "42"
-$group = GroupQuery::create()->findPk($groupId);
-```
-```
-
 ### Memory File Sync
 
 After updating a skill file, also check if [`.claude/projects/.../memory/MEMORY.md`] needs a one-line summary added under **Critical Patterns**.
+
+---
+
+## After PR Review Sessions
+
+- After completing PR review fixes and pushing, always update the relevant skill files in `.claude/skills/` with new learnings (cypress-testing.md, api-development.md, git-workflow.md, etc.) before ending the session
+- If no genuine new learnings emerged, explicitly say so rather than padding with trivia
 
 ---
 
@@ -98,35 +103,37 @@ These rules apply to **every code change** in this project.
 
 ---
 
-## Mandatory Code Review Before Any Commit
-
-**NEVER commit or push without first showing the user the diff and getting explicit approval.**
-
-This applies even when the user asks you to "fix" or "make changes" — finishing the code is not permission to commit.
-
-### Required sequence for every commit:
-
-1. Make the changes
-2. Run `git diff` and show the output to the user
-3. Explicitly ask: *"Please review the changes above. Shall I commit?"*
-4. Wait for explicit approval (e.g. "yes", "looks good", "commit it")
-5. Only then run `git add` + `git commit` + `git push`
-
-### What counts as explicit approval
-
-✅ "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
-
-❌ Silence, continuing the conversation, asking follow-up questions — these are NOT approval
-
-### No exceptions
-
-Even if you are confident the changes are correct, even if the user said "fix the bug" — always show the diff and wait for approval before committing.
-
----
-
 ## Git & PR Workflow
 
 @.agents/skills/churchcrm/git-workflow.md
+
+### Branch Hygiene
+
+- Before committing skill/memory/doc updates, always verify current branch with `git branch --show-current` and switch to master or a dedicated docs branch if on a feature branch
+- Never commit cross-cutting documentation changes onto an unrelated feature branch
+- If uncommitted changes exist when starting a new task, stash or commit them first and confirm branch state before proceeding
+
+### Always Resolve PR Comments After Push
+
+After every push to a PR branch, resolve the open review threads that the just-pushed commit addresses.
+
+1. Fetch the PR review threads (`pull_request_read` → `get_review_comments`).
+2. For each thread that the new commit fixes, resolve it via `mcp__github__resolve_review_thread`.
+3. If the MCP tool can't surface the thread node ID (current limitation of `get_review_comments`), fall back to posting a single PR comment listing each addressed thread by URL + the commit SHA that fixed it.
+
+Never leave addressed-but-unresolved review threads dangling after a push.
+
+### Feature Adds and Big Refactors Require a Docs Task
+
+Any PR that adds a user-visible feature, renames/moves a route, or materially refactors behavior users interact with MUST be accompanied by a sibling GitHub issue for updating the user docs at [docs.churchcrm.io](https://docs.churchcrm.io).
+
+Before opening the PR:
+
+1. Open (or identify) a `documentation` issue in the same project/milestone as the feature issue, scoped to the user-doc changes needed.
+2. Link the docs issue from the PR description ("Docs: #XXXX").
+3. The feature issue / milestone cannot be closed until the docs issue is also resolved.
+
+Rule of thumb: if a user's workflow, on-screen terminology, CSV format, route URL, or setting changes, a docs issue is required. Internal refactors with no user-visible surface change are exempt.
 
 ---
 
@@ -154,10 +161,16 @@ When fixing a failed test:
 
 - `cypress-testing.md` — API patterns, session setup, data handling
 - `database-operations.md` — ORM query patterns
-- `webpack-typescript.md` — React/component patterns
+- `webpack-typescript.md` — JS/TS module patterns
 - `code-standards.md` — General best practices
 
 **Remember: Skills get documented the moment you learn something. Never defer skill updates.**
+
+### Test Data Assumptions
+
+- Never assume Cypress test fixtures or library data (e.g., Yasumi holidays) have specific shapes without verifying — check the actual data source first
+- Always include leading slashes in `cy.visit()` URLs
+- When tests reference country/locale-specific data, prefer locales with documented variety (e.g., Netherlands for multi-category holidays)
 
 ---
 
@@ -193,3 +206,19 @@ When fixing a failed test:
 - Do not skip build/lint even for "small" or "obvious" fixes
 - Do not commit even when the user says "fix it" — build + review first
 - Silence or follow-up questions from the user are NOT approval to commit
+
+### Pre-push enforcement (Biome lint)
+
+**Biome lint must pass before any `git push`.** This is enforced both ways:
+
+- **Git hook**: `.githooks/pre-push` runs `npm run lint` automatically. The
+  hook is wired up by the `prepare` script in `package.json` (sets
+  `core.hooksPath=.githooks`), so `npm install` enables it for every clone.
+  The hook is a no-op in CI (`$CI`/`$GITHUB_ACTIONS`).
+- **Agent rule**: agents must run `npm run lint` themselves *before* asking
+  for push approval — never rely on the hook to surface failures. Show the
+  output in the conversation.
+
+**Never use `git push --no-verify`** unless the user explicitly authorizes
+it for an emergency hot-fix AND the PR description names the rule that was
+bypassed and why. See [`git-workflow.md → Mandatory Pre-Push Biome Check`](.agents/skills/churchcrm/git-workflow.md).

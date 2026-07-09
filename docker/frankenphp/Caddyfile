@@ -52,6 +52,17 @@
     @tmp_attach path /tmp_attach/*
     respond @tmp_attach 404
 
+    # Block access to install-time configuration (Config.php, config-values.json,
+    # bootstrap scripts). Nothing under Include/ should ever be served directly.
+    # See GHSA-mp2w-4q3r-ppx7.
+    @include path /Include /Include/*
+    respond @include 404
+
+    # Block direct HTTP execution of community/core plugin PHP files (GHSA-37mf-vq43-5qp9).
+    # Caddy does not honour .htaccess — this explicit rule is required.
+    @pluginPhp path_regexp pluginphp ^/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
+    respond @pluginPhp 404
+
     # ── Slim sub-application routing ──────────────────────────────────────
     #
     # Each block below handles one of ChurchCRM's Slim 4 sub-applications.
@@ -143,6 +154,10 @@
 #     respond @logs 404
 #     @tmp_attach path /churchcrm/tmp_attach/*
 #     respond @tmp_attach 404
+#     @include path /churchcrm/Include/*
+#     respond @include 404
+#     @pluginPhp path_regexp pluginphp ^/churchcrm/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
+#     respond @pluginPhp 404
 #
 #     handle /churchcrm/session/* {
 #         try_files {path} /churchcrm/session/index.php

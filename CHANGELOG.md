@@ -10,6 +10,33 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.4.1](./changelog/7.4.1.md) | July 2026 | ChurchCRM 7.4.1 enhances security and simplifies user management with clearer permissions
+
+Clearer permission labels, intelligent button hiding based on user access, EditSelf mode disabled by default, fixed user deletion bugs, airtight notes protection, Croatian language support added |
+| [7.4.0](./changelog/7.4.0.md) | June 2026 | ChurchCRM 7.4.0 refines security and improves user experience with UI enhancements
+
+Redesigned single-card login interface, enhanced password reset security with cryptographic tokens, export controls limited to administrators, Slovak language support added, Docker images now run as non-root user |
+| [7.3.3](./changelog/7.3.3.md) | May 2026 | ChurchCRM 7.3.3 strengthens stability with security hardening and installation fixes
+
+Subdirectory navigation fixes, automatic database port defaults, configuration file access blocking, safe event/group deletions, CSV country auto-detection |
+| [7.3.2](./changelog/7.3.2.md) | May 2026 | ChurchCRM 7.3.2 hardens security and refines data workflows
+
+Configuration file access blocking, safe group/event deletion with orphan cleanup, member import respects default country setting, kiosk event dropdown displays dates, 1760 translation updates across 40 locales |
+| [7.3.1](./changelog/7.3.1.md) | April 2026 | ChurchCRM 7.3.1 enhances security and modernizes note management for congregations
+
+Shared family timeline with synchronized notes, professional-grade REST API security for pastoral notes, API lockout and 2FA protection restored, Kiosk 60-second smart-refresh reduces network load, lazy-loading plugin system with remote registry |
+| [7.3.0](./changelog/7.3.0.md) | April 2026 | ChurchCRM 7.3.0 expands customization with plugins and fixes timezone issues, Community Plugin System, Timezone refactoring for wall-clock precision, Kiosk support for all group types, Timeline filters on member profiles, Regional language grouping |
+| [7.2.2](./changelog/7.2.2.md) | April 2026 | CSRF hardening (GHSA-3xq9-c86x-cwpp), person delete fix, orphaned images cleanup, 41 locales |
+| [7.2.1](./changelog/7.2.1.md) | April 2026 | Permission consolidation, admin menu bypass fix, photo cache bust, FrankenPHP redirect fix |
+| [7.2.0](./changelog/7.2.0.md) | April 2026 | Event MVC epic, responsive design guidelines, 27 locales translated, GA4 tracking, mobile UX |
+| [7.1.2](./changelog/7.1.2.md) | April 2026 | User settings redesign, CSV import fields, MvcAppFactory, React removal |
+| [7.1.1](./changelog/7.1.1.md) | April 2026 | Stored XSS fix, CSP hardening, notification system redesign, CSS cleanup |
+| [7.1.0](./changelog/7.1.0.md) | April 2026 | Tabler/BS5 UI overhaul, 46 locales, security hardening, export hub, Functions.php removal |
+| [7.0.5](./changelog/7.0.5.md) | March 2026 | Effortless upgrades, mapping precision, 100% translations |
+| [7.0.4](./changelog/7.0.4.md) | March 2026 | Smoother upgrades, standardized logging, geocoding refinements |
+| [7.0.3](./changelog/7.0.3.md) | March 2026 | Maps improvements, Church Info page, FrankenPHP support |
+| [7.0.2](./changelog/7.0.2.md) | March 2026 | Bug fixes, form validation, timezone handling |
+| [7.0.1](./changelog/7.0.1.md) | March 2026 | API docs, bug fixes, developer workflow improvements |
 | [7.0.0](./changelog/7.0.0.md) | February 2026 | Plugin system, Leaflet maps, PHP 8.4, 10th anniversary |
 | [6.8.1](./changelog/6.8.1.md) | February 2026 | XSS fix, timezone precision, safer upgrades |
 | [6.8.0](./changelog/6.8.0.md) | January 2026 | Redesigned Check-in Kiosk, CSV export open to all users |

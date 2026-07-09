@@ -1,0 +1,272 @@
+<?php
+
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
+use ChurchCRM\model\ChurchCRM\EventCountsQuery;
+use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\view\PageHeader;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Views\PhpRenderer;
+
+// GET /event/dashboard — events dashboard page
+$app->get('/dashboard', function (Request $request, Response $response) {
+    $now = DateTimeUtils::getToday();
+    $params = $request->getQueryParams();
+    $canEditEvents = AuthenticationManager::getCurrentUser()->isAddEvent();
+
+    $eType = 'All';
+    if (!empty($params['type']) && $params['type'] !== 'All') {
+        $eType = (int) $params['type'];
+    }
+
+    $EventYear = !empty($params['year'])
+        ? (int) $params['year']
+        : (int) DateTimeUtils::getCurrentYear();
+
+    // --- Dashboard Stats (Propel ORM) ---
+    $yearMin = $EventYear . '-01-01 00:00:00';
+    $yearMax = $EventYear . '-12-31 23:59:59';
+
+    $totalEventsThisYear = EventQuery::create()
+        ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
+        ->count();
+
+    $totalCheckInsThisYear = EventAttendQuery::create()
+        ->useEventQuery()
+            ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
+        ->endUse()
+        ->filterByCheckinDate(null, Criteria::ISNOTNULL)
+        ->count();
+
+    // Total number of event types defined in the system (not filtered by year).
+    $totalEventTypes = EventTypeQuery::create()->count();
+
+    // Event types that have at least one event. Two-step query — get distinct
+    // type IDs from EventQuery, then fetch the EventType rows. (The previous
+    // EventTypeQuery::create()->useEventTypeQuery() chain was nonsense — the
+    // self-relation method doesn't exist on EventTypeQuery.)
+    $typeIdsWithEvents = EventQuery::create()
+        ->select('Type')
+        ->distinct()
+        ->find()
+        ->getData();
+    $eventTypesWithEvents = !empty($typeIdsWithEvents)
+        ? EventTypeQuery::create()
+            ->filterById($typeIdsWithEvents, Criteria::IN)
+            ->orderById()
+            ->find()
+        : EventTypeQuery::create()->limit(0)->find();
+
+    // Available years
+    $yearQuery = EventQuery::create()
+        ->addAsColumn('EventYear', 'YEAR(event_start)')
+        ->select(['EventYear']);
+    if ($eType !== 'All') {
+        $yearQuery->filterByType((int) $eType);
+    }
+    $availableYears = $yearQuery
+        ->groupBy('EventYear')
+        ->orderBy('EventYear', Criteria::DESC)
+        ->find()
+        ->toArray();
+
+    // --- Build monthly event data (all Propel ORM — replaces 6 RunQuery calls) ---
+    $allMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    $monthlyData = [];
+    // $now is defined once outside the foreach loop to avoid re-instantiation
+    // and to use the church-configured timezone via DateTimeUtils::getToday().
+
+    foreach ($allMonths as $mVal) {
+        $daysInMonth = DateTimeUtils::getDaysInMonth($mVal, $EventYear);
+        $monthMin = sprintf('%04d-%02d-01 00:00:00', $EventYear, $mVal);
+        $monthMax = sprintf('%04d-%02d-%02d 23:59:59', $EventYear, $mVal, $daysInMonth);
+
+        $eventQuery = EventQuery::create()
+            ->leftJoinWithEventType()
+            ->filterByStart(['min' => $monthMin, 'max' => $monthMax])
+            ->orderByStart();
+
+        if ($eType !== 'All') {
+            $eventQuery->filterByType((int) $eType);
+        }
+
+        $monthEvents = $eventQuery->find();
+
+        if ($monthEvents->count() === 0) {
+            continue;
+        }
+
+        $currentEvents = [];
+        $pastEvents    = [];
+        foreach ($monthEvents as $evt) {
+            $eventId = (int) $evt->getId();
+
+            // Attendance counts (Propel ORM)
+            $attendeeCount = EventAttendQuery::create()
+                ->filterByEventId($eventId)
+                ->count();
+
+            $checkedInCount = EventAttendQuery::create()
+                ->filterByEventId($eventId)
+                ->filterByCheckoutDate(null, Criteria::ISNULL)
+                ->filterByCheckinDate(null, Criteria::ISNOTNULL)
+                ->count();
+
+            $checkedOutCount = EventAttendQuery::create()
+                ->filterByEventId($eventId)
+                ->filterByCheckoutDate(null, Criteria::ISNOTNULL)
+                ->count();
+
+            // Event counts (Propel ORM)
+            $eventCounts = EventCountsQuery::create()
+                ->filterByEvtcntEventid($eventId)
+                ->orderByEvtcntCountid()
+                ->find();
+
+            $countsArray = [];
+            foreach ($eventCounts as $count) {
+                $countsArray[] = [
+                    'name' => $count->getEvtcntCountname(),
+                    'count' => (int) $count->getEvtcntCountcount(),
+                ];
+            }
+
+            $row = [
+                'id'                => $eventId,
+                'type_name'         => $evt->getEventType() ? $evt->getEventType()->getName() : '',
+                'title'             => $evt->getTitle(),
+                'desc'              => $evt->getDesc(),
+                'text'              => $evt->getText(),
+                'start'             => $evt->getStart(),
+                'end'               => $evt->getEnd(),
+                'inactive'          => (int) $evt->getInActive(),
+                'attendee_count'    => $attendeeCount,
+                'checked_in_count'  => $checkedInCount,
+                'checked_out_count' => $checkedOutCount,
+                'counts'            => $countsArray,
+            ];
+
+            // An event is "past" when it has ended chronologically OR was deactivated.
+            $isPast = ((int) $evt->getInActive() === 1)
+                || ($evt->getEnd() !== null && $evt->getEnd() < $now);
+
+            if ($isPast) {
+                $pastEvents[] = $row;
+            } else {
+                $currentEvents[] = $row;
+            }
+        }
+
+        // Monthly averages — computed in PHP from the per-event counts data
+        // already fetched above. This avoids a separate DB query, and is always
+        // computed regardless of the event-type filter (fixes issue #2509).
+        // Average is taken only over events that have a given count name, so
+        // events without that count name do not dilute the average.
+        $averages = [];
+        $allMonthEvents = array_merge($currentEvents, $pastEvents);
+        if (!empty($allMonthEvents)) {
+            $countTotals = []; // ['Adults' => ['total' => 60, 'n' => 2], ...]
+            foreach ($allMonthEvents as $evt) {
+                foreach ($evt['counts'] ?? [] as $c) {
+                    $name = $c['name'];
+                    if (!isset($countTotals[$name])) {
+                        $countTotals[$name] = ['total' => 0, 'n' => 0];
+                    }
+                    $countTotals[$name]['total'] += (int) $c['count'];
+                    $countTotals[$name]['n']++;
+                }
+            }
+            ksort($countTotals); // Sort by name for deterministic output across months
+            foreach ($countTotals as $name => $data) {
+                if ($data['n'] > 0) {
+                    $averages[] = [
+                        'name'      => $name,
+                        'avg_count' => $data['total'] / $data['n'],
+                    ];
+                }
+            }
+        }
+
+        $monthlyData[] = [
+            'month'         => $mVal,
+            'monthName'     => date('F', mktime(0, 0, 0, $mVal, 1, $EventYear)),
+            'count'         => $monthEvents->count(),
+            'currentCount'  => count($currentEvents),
+            'pastCount'     => count($pastEvents),
+            'currentEvents' => $currentEvents,
+            'pastEvents'    => $pastEvents,
+            'averages'      => $averages,
+        ];
+    }
+
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+    // Aggregate current/past counts across all months for the stat card.
+    $totalCurrentEvents = array_sum(array_column($monthlyData, 'currentCount'));
+    $totalPastEvents    = array_sum(array_column($monthlyData, 'pastCount'));
+
+    return $renderer->render($response, 'list-events.php', [
+        'sRootPath'              => SystemURLs::getRootPath(),
+        'sPageTitle'             => gettext('Events Dashboard'),
+        'sPageSubtitle'          => gettext('Overview of church events, attendance, and activity'),
+        'aBreadcrumbs'           => PageHeader::breadcrumbs([[gettext('Events')]]),
+        'sPageHeaderButtons'     => $canEditEvents ? PageHeader::buttons([
+            ['label' => gettext('Manage Event Types'), 'url' => '/event/types', 'icon' => 'fa-tags', 'adminOnly' => false],
+            ['label' => gettext('Audit Events'), 'url' => '/event/audit', 'icon' => 'fa-triangle-exclamation', 'adminOnly' => false],
+        ]) : '',
+        'canEditEvents'          => $canEditEvents,
+        'eType'                  => $eType,
+        'EventYear'              => $EventYear,
+        'totalEventsThisYear'    => $totalEventsThisYear,
+        'totalCheckInsThisYear'  => $totalCheckInsThisYear,
+        'totalCurrentEvents'     => $totalCurrentEvents,
+        'totalPastEvents'        => $totalPastEvents,
+        'totalEventTypes'        => $totalEventTypes,
+        'eventTypesWithEvents'   => $eventTypesWithEvents,
+        'availableYears'         => $availableYears,
+        'monthlyData'            => $monthlyData,
+    ]);
+});
+
+// POST /event/dashboard — handle delete/activate actions. Requires AddEvent permission.
+$app->post('/dashboard', function (Request $request, Response $response) {
+    $body = $request->getParsedBody();
+
+    if (!empty($body['Action']) && !empty($body['EID'])) {
+        $eID = (int) $body['EID'];
+        $action = $body['Action'];
+
+        if ($action === 'Delete' && $eID > 0) {
+            $event = EventQuery::create()->findOneById($eID);
+            if ($event !== null) {
+                $event->delete();
+            }
+        } elseif ($action === 'Activate' && $eID > 0) {
+            $event = EventQuery::create()->findOneById($eID);
+            if ($event !== null) {
+                $event->setInActive(0);
+                $event->save();
+            }
+        }
+    }
+
+    $query = [];
+    if (!empty($body['type'])) {
+        $query['type'] = $body['type'];
+    }
+    if (!empty($body['year'])) {
+        $query['year'] = $body['year'];
+    }
+    $target = SystemURLs::getRootPath() . '/event/dashboard';
+    if (!empty($query)) {
+        $target .= '?' . http_build_query($query);
+    }
+
+    return $response->withHeader('Location', $target)->withStatus(302);
+})->add(new AddEventsRoleAuthMiddleware());

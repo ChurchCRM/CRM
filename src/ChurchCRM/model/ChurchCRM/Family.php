@@ -10,6 +10,8 @@ use ChurchCRM\Emails\verify\FamilyVerificationEmail;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Family as BaseFamily;
 use ChurchCRM\PhotoInterface;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -30,6 +32,7 @@ use Propel\Runtime\Map\TableMap;
 class Family extends BaseFamily implements PhotoInterface
 {
     private ?Photo $photo = null;
+    private bool $skipPostUpdateNote = false;
 
     public function getAddress(): string
     {
@@ -60,9 +63,14 @@ class Family extends BaseFamily implements PhotoInterface
         return implode(' ', $address);
     }
 
+    public static function getFamilyViewURIForId(int $id): string
+    {
+        return SystemURLs::getRootPath() . '/people/family/' . $id;
+    }
+
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/v2/family/' . $this->getId();
+        return self::getFamilyViewURIForId($this->getId());
     }
 
     public function getWeddingDay()
@@ -86,19 +94,30 @@ class Family extends BaseFamily implements PhotoInterface
     public function postInsert(ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('create');
-        if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
-            $NotificationEmail = new NewPersonOrFamilyEmail($this);
-            if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext('New Family Notification Email Error') . ' :' . $NotificationEmail->getError());
-            }
-        }
+        NewPersonOrFamilyEmail::sendIfConfigured($this);
+
+        HookManager::doAction(Hooks::FAMILY_CREATED, $this);
     }
 
     public function postUpdate(ConnectionInterface $con = null): void
     {
-        if (!empty($this->getDateLastEdited())) {
+        if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
+
+        HookManager::doAction(Hooks::FAMILY_UPDATED, $this);
+    }
+
+    /**
+     * Ensure the family's uploaded photo is removed from disk whenever the
+     * record is deleted — on any code path, not just the API route.
+     * See GH issue #1697.
+     */
+    public function preDelete(?ConnectionInterface $con = null): bool
+    {
+        $this->getPhoto()->delete();
+
+        return parent::preDelete($con);
     }
 
     public function getPeopleSorted(): array
@@ -180,11 +199,11 @@ class Family extends BaseFamily implements PhotoInterface
         }
         foreach ($this->getPeopleSorted() as $person) {
             $email = $person->getEmail();
-            if ($email != null) {
+            if ($email !== null) {
                 $emails[] = $email;
             }
             $email = $person->getWorkEmail();
-            if ($email != null) {
+            if ($email !== null) {
                 $emails[] = $email;
             }
         }
@@ -244,7 +263,7 @@ class Family extends BaseFamily implements PhotoInterface
                 $note->setText(gettext('Profile Image Deleted'));
                 $note->setType('photo');
                 $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-                $note->setPerId($this->getId());
+                $note->setFamId($this->getId());
                 $note->save();
 
                 return true;
@@ -263,11 +282,15 @@ class Family extends BaseFamily implements PhotoInterface
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setFamId($this->getId());
         $note->save();
-        
-        // Update family's last edited date and editor
+
         $this->setDateLastEdited(new \DateTime());
         $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
-        $this->save();
+        $this->skipPostUpdateNote = true;
+        try {
+            $this->save();
+        } finally {
+            $this->skipPostUpdateNote = false;
+        }
     }
 
     public function verify(): void
@@ -313,7 +336,7 @@ class Family extends BaseFamily implements PhotoInterface
         $html = '<a href="' . $this->getViewURI() . '">' . $name . '</a>';
 
         if ($includePhoto && $this->getPhoto() && $this->getPhoto()->hasUploadedPhoto()) {
-            $html .= ' <button class="btn btn-sm btn-outline-secondary view-family-photo ml-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+            $html .= ' <button class="btn btn-sm btn-outline-secondary view-family-photo ms-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
         }
 
         return $html;
@@ -361,6 +384,19 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
+     * Apple Maps companion to {@see self::getDirectionsUrl()}. Used
+     * alongside the Google Maps link so users on iOS/macOS can open
+     * directions natively in the Maps app.
+     */
+    public function getAppleMapsDirectionsUrl(): string
+    {
+        if ($this->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildAppleMapsDirectionsUrl('', (float) $this->getLatitude(), (float) $this->getLongitude());
+        }
+        return GeoUtils::buildAppleMapsDirectionsUrl($this->getAddress());
+    }
+
+    /**
      * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
      */
     public function updateLanLng(): void
@@ -389,7 +425,7 @@ class Family extends BaseFamily implements PhotoInterface
         return [
             'Id'          => $this->getId(),
             'displayName' => $this->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')),
-            'uri'         => SystemURLs::getRootPath() . '/v2/family/' . $this->getId(),
+            'uri'         => SystemURLs::getRootPath() . '/people/family/' . $this->getId(),
         ];
     }
 

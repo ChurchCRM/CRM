@@ -4,7 +4,7 @@ describe("Standard Family List", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("Listing all families shows correct columns", () => {
-        cy.visit("v2/family");
+        cy.visit("people/family");
         // If the families table is present, verify headers. Otherwise assert Page Not Found UI.
         cy.get("body").then($body => {
             if ($body.find('#families').length) {
@@ -25,7 +25,7 @@ describe("Standard Family List", () => {
     });
 
     it("Family list displays family data", () => {
-        cy.visit("v2/family");
+        cy.visit("people/family");
         // If families table present, verify rows and dropdown. Otherwise assert Page Not Found UI.
         cy.get('body').then($body => {
             if ($body.find('#families').length) {
@@ -50,7 +50,7 @@ describe("Standard Family List", () => {
     });
 
     it("Family list search works", () => {
-        cy.visit("v2/family");
+        cy.visit("people/family");
         // If families table present, run search; otherwise assert Page Not Found UI.
         cy.get('body').then($body => {
             if ($body.find('#families').length) {

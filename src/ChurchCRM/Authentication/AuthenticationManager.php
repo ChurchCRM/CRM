@@ -9,7 +9,6 @@ use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\Authentication\Requests\AuthenticationRequest;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
-use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Service\NotificationService;
@@ -123,7 +122,7 @@ class AuthenticationManager
                 }
                 break;
             default:
-                $logger->critical('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => $AuthenticationRequest::class]);
+                $logger->error('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => $AuthenticationRequest::class]);
                 break;
         }
 
@@ -135,16 +134,14 @@ class AuthenticationManager
         }
 
         if ($result->isAuthenticated && !$result->preventRedirect) {
-            $redirectLocation = null;
-            if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
-                $redirectLocation = $AuthenticationRequest->redirectPath;
-            }
-            $redirectLocation ??= $_SESSION['location'] ?? 'v2/dashboard';
-            NotificationService::updateNotifications();
+            $redirectLocation = self::validateRedirectPath($_SESSION['location'] ?? null);
+            unset($_SESSION['location']); // clear post-login redirect (one-time use)
+            $redirectLocation ??= 'v2/dashboard';
             
-            // Check for system updates once on login for admin users
+            // One-time login tasks: check for system updates and fetch remote notifications
             self::checkSystemUpdates();
-            
+            NotificationService::fetchRemoteNotifications();
+
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
             );
@@ -197,26 +194,18 @@ class AuthenticationManager
                     'Session not authenticated.  Redirecting to login page'
                 );
 
-                $redirectPath = $_GET['location'] ?? $_SESSION['location'] ?? null;
-                $loginUrl = self::getSessionBeginURL();
-                if (!empty($redirectPath)) {
-                    $queryParams = http_build_query([
-                        'location' => $redirectPath,
-                    ]);
-                    $loginUrl .= '?' . $queryParams;
+                // Store the originally requested URL in the session for post-login redirect.
+                // Using the session (server-side) prevents open-redirect attacks via a crafted query parameter.
+                $safeUri = RedirectUtils::stripAndValidatePath($_SERVER['REQUEST_URI'] ?? '');
+                if ($safeUri !== '') {
+                    $_SESSION['location'] = $safeUri;
                 }
-                RedirectUtils::redirect($loginUrl);
+
+                RedirectUtils::redirect(self::getSessionBeginURL());
             } elseif (null !== $result->nextStepURL) {
                 LoggerUtils::getAuthLogger()->debug(
                     'Session authenticated, but redirect requested by authentication provider.'
                 );
-                $redirectPath = $_GET['location'] ?? $_SESSION['location'] ?? null;
-                if (!empty($redirectPath)) {
-                    $queryParams = http_build_query([
-                        'location' => $redirectPath,
-                    ]);
-                    $result->nextStepURL .= '?' . $queryParams;
-                }
                 RedirectUtils::redirect($result->nextStepURL);
             }
             LoggerUtils::getAuthLogger()->debug('Session valid');
@@ -229,14 +218,9 @@ class AuthenticationManager
         }
     }
 
-    public static function getSessionBeginURL(?string $redirectPath = null): string
+    public static function getSessionBeginURL(): string
     {
-        $url = SystemURLs::getRootPath() . '/session/begin';
-        if (!empty($redirectPath)) {
-            $url .= '?location=' . urlencode($redirectPath);
-        }
-
-        return $url;
+        return SystemURLs::getRootPath() . '/session/begin';
     }
 
     public static function getForgotPasswordURL(): string
@@ -262,8 +246,23 @@ class AuthenticationManager
     }
 
     /**
-     * Check for system updates and store result in session
-     * Only runs for admin users on login
+     * Validates a redirect URL and returns it, or null if it is invalid/empty.
+     * Used to consolidate the validate-then-nullify pattern for post-login redirects.
+     */
+    private static function validateRedirectPath(?string $url): ?string
+    {
+        if (empty($url)) {
+            return null;
+        }
+        $validated = RedirectUtils::validateRedirectUrl($url, '');
+
+        return $validated !== '' ? $validated : null;
+    }
+
+    /**
+     * Check for system updates and store result in session.
+     * Only runs for admin users on login. The upgrade notification is
+     * rendered on page load by NotificationService::loadSessionNotifications().
      */
     private static function checkSystemUpdates(): void
     {

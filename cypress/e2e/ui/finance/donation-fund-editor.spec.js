@@ -188,7 +188,7 @@ describe("Donation Fund Editor - Delete Safety (Regression: Bug 3)", () => {
             });
     });
 
-    it("should delete a fund when both Action=delete and Fund param are present", () => {
+    it("should delete a fund when FundID and Action=delete are passed to DonationFundRowOps", () => {
         const disposableName = "CyDel" + Date.now();
 
         // Create fund via UI
@@ -208,9 +208,9 @@ describe("Donation Fund Editor - Delete Safety (Regression: Bug 3)", () => {
                 expect(match).to.not.be.null;
                 const fundId = match[1];
 
-                // Visit with BOTH params — should delete
+                // Delete goes through DonationFundRowOps (redirects back to DonationFundEditor)
                 cy.visit(
-                    `/DonationFundEditor.php?Fund=${fundId}&Action=delete`,
+                    `/DonationFundRowOps.php?FundID=${fundId}&Action=delete`,
                 );
 
                 // Fund should no longer exist

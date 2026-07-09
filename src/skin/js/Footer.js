@@ -78,12 +78,19 @@ function initializeApp() {
           '<i class="ti ' +
           icon +
           ' me-1"></i> ' +
-          group.text +
+          window.CRM.escapeHtml(group.text) +
           "</div>";
         (group.children || []).forEach((item) => {
           var idx = currentItems.length;
           currentItems.push(item);
-          html += '<a href="' + item.uri + '" class="dropdown-item" data-idx="' + idx + '">' + item.text + "</a>";
+          html +=
+            '<a href="' +
+            window.CRM.escapeHtml(item.uri) +
+            '" class="dropdown-item" data-idx="' +
+            idx +
+            '">' +
+            window.CRM.escapeHtml(item.text) +
+            "</a>";
         });
       });
 
@@ -186,13 +193,18 @@ function initializeApp() {
   // Load event counters once on page load (no polling needed - values only change at midnight)
   window.CRM.dashboard.loadEventCounters();
 
-  window.CRM.APIRequest({
-    path: "system/notification",
-  }).done((data) => {
-    data.notifications.forEach((item) => {
-      window.CRM.notify(item.title, {
-        delay: item.delay,
-        type: item.type,
+  // Initialize notification dismissal handlers
+  document.querySelectorAll(".js-dismiss-notification").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const alert = btn.closest("[data-notification-id]");
+      const dismissKey = alert?.dataset.dismissKey;
+      if (!dismissKey) {
+        return;
+      }
+      window.CRM.APIRequest({
+        path: `user/${window.CRM.userId}/setting/${encodeURIComponent(dismissKey)}`,
+        method: "POST",
+        data: JSON.stringify({ value: "true" }),
       });
     });
   });
@@ -235,6 +247,9 @@ function showGlobalMessage(message, callOutClass) {
     type: callOutClass,
   });
 }
+
+// Expose to global scope so inline <script> tags in Footer.php can call it
+window.showGlobalMessage = showGlobalMessage;
 
 /**
  * Initialize form validation for all forms with data-validate attribute

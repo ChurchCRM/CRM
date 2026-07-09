@@ -11,17 +11,8 @@ import TomSelect from "tom-select";
 window.TomSelect = TomSelect;
 
 // Expose a global initializer for server-rendered variables
-window.initializePeopleListFromServer = function (serverVars) {
-  const {
-    RoleList,
-    PropertyList,
-    CustomList,
-    GroupList,
-    filterByGender,
-    filterByClsId,
-    filterByFmrId,
-    familyActiveStatus,
-  } = serverVars;
+window.initializePeopleListFromServer = (serverVars) => {
+  const { RoleList, PropertyList, CustomList, GroupList } = serverVars;
 
   // Classification - use DOM APIs to escape server values and prevent XSS
   if (Array.isArray(serverVars.ClassificationList)) {

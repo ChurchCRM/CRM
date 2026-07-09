@@ -1,53 +1,22 @@
 $(document).ready(function () {
   // Initialize Country and State dropdowns using DropdownManager
-  DropdownManager.initializeCountry("Country", "State", {
+  DropdownManager.initializeCountryState("Country", "State", {
     userSelected: $("#Country").data("user-selected"),
     systemDefault: $("#Country").data("system-default"),
-    cascadeState: true,
-    initTomSelect: true,
-    onCountryChange: function (countryCode) {
-      // Update state type field based on whether states exist
-      const stateSelect = $("#State");
-      if (stateSelect.find("option").length > 1) {
-        $("#stateType").val("dropDown");
-      } else {
-        $("#stateType").val("input");
-      }
-    },
+    stateOptionDivId: "stateOptionDiv",
+    stateInputDivId: "stateInputDiv",
+    stateTextboxId: "StateTextbox",
   });
 
-  // Manual initialization of state dropdown on country change
-  $("#Country")
-    .off("change")
-    .on("change", function () {
-      $.ajax({
-        type: "GET",
-        url: window.CRM.root + "/api/public/data/countries/" + this.value.toLowerCase() + "/states",
-      }).done(function (data) {
-        let stateSelect = $("#State");
-        if (Object.keys(data).length > 0) {
-          stateSelect.empty();
-          $.each(data, function (code, name) {
-            let selected = false;
-            if (stateSelect.data("user-selected") == "") {
-              selected = stateSelect.data("system-default") == name;
-            } else if (stateSelect.data("user-selected") == name || stateSelect.data("user-selected") == code) {
-              selected = true;
-            }
-            stateSelect.append(new Option(name, code, selected, selected));
-          });
-          stateSelect.change();
-          $("#stateInputDiv").addClass("d-none");
-          $("#StateTextbox").val("");
-          $("#stateType").val("dropDown");
-          $("#stateOptionDiv").removeClass("d-none");
-        } else {
-          $("#stateInputDiv").removeClass("d-none");
-          $("#stateOptionDiv").addClass("d-none");
-          $("#stateType").val("input");
-        }
-      });
-    });
+  // Update state type field when state dropdown visibility changes
+  $(document).on("change", "#State", function () {
+    const stateSelect = $("#State");
+    if (stateSelect.find("option").length > 1) {
+      $("#stateType").val("dropDown");
+    } else {
+      $("#stateType").val("input");
+    }
+  });
 
   // Initialize phone mask toggles FIRST, before applying masks globally
   // This ensures phone fields with "No format" checked don't get masked
@@ -57,11 +26,6 @@ $(document).ready(function () {
 
   // Apply inputmask to non-phone fields (fields without a "No format" checkbox)
   $("[data-mask]").inputmask();
-
-  var countryEl = document.getElementById("Country");
-  if (countryEl && !countryEl.tomselect) new TomSelect(countryEl);
-  var stateEl = document.getElementById("State");
-  if (stateEl && !stateEl.tomselect) new TomSelect(stateEl);
 
   // Add Family Member Row functionality
   if (window.CRM.initialFamilyMemberCount !== undefined) {

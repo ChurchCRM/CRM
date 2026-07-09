@@ -513,7 +513,7 @@ Poor wiki candidates:
 - Single method documentation (use code comments instead)
 - Simple how-to guides (< 3 steps - use README)
 - API method reference (use OpenAPI spec or inline documentation)
-- Quick fixes (use GitHub issues/discussions instead)
+- Quick fixes (use GitHub issues instead)
 
 ---
 

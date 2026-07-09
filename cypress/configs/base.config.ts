@@ -22,6 +22,12 @@ export default defineConfig({
     },
     // default baseUrl can be overridden by CYPRESS_BASE_URL env var
     baseUrl: process.env.CYPRESS_BASE_URL || 'http://localhost/',
+    // cypress/e2e/new-system/** is intentionally excluded — those specs
+    // cover the first-run setup wizard, demo-data import, backup/restore,
+    // and destructive system reset. They are expensive (~3 minutes wall
+    // time), mutate global state, and must run against a clean DB. They
+    // live in cypress/configs/new-system.config.ts and are run via a
+    // dedicated nightly / manual job, not on every PR.
     specPattern: [
       'cypress/e2e/api/**/*.spec.js',
       'cypress/e2e/ui/**/*.spec.js'

@@ -35,9 +35,6 @@ import "daterangepicker/daterangepicker.css";
 // bs-stepper CSS
 import "bs-stepper/dist/css/bs-stepper.min.css";
 
-// Import React DatePicker CSS - required for calendar styling
-import "react-datepicker/dist/react-datepicker.min.css";
-
 // Import Quill editor CSS
 import "quill/dist/quill.snow.css";
 

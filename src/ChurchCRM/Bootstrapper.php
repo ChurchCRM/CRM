@@ -8,8 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
-use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\SystemService;
+use Ramsey\Uuid\Uuid;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -19,6 +18,7 @@ use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
+use Monolog\LogRecord;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Connection\ConnectionWrapper;
 use Propel\Runtime\Connection\DebugPDO;
@@ -117,6 +117,15 @@ class Bootstrapper
         if (!SystemConfig::isInitialized()) {
             SystemConfig::init(ConfigQuery::create()->find());
         }
+
+        // Auto-generate a stable anonymous installation UUID on first boot.
+        // A very narrow race window exists if two requests arrive simultaneously
+        // on a brand-new install, but the last writer wins in the DB and every
+        // subsequent request reads the persisted value — identical to the
+        // sTwoFASecretKey auto-generation pattern in LoadConfigs.php.
+        if (empty(SystemConfig::getValue('sSystemID'))) {
+            SystemConfig::setValue('sSystemID', Uuid::uuid4()->toString());
+        }
         
         self::configureLogging();
         self::configureUserEnvironment();
@@ -139,7 +148,6 @@ class Bootstrapper
                     try {
                         self::$bootStrapLogger->info("Auto-upgrading database from $dbVersion to $softwareVersion");
                         UpgradeService::upgradeDatabaseVersion();
-                        AppIntegrityService::clearIntegrityCache();
                         self::$bootStrapLogger->info('Database auto-upgrade completed successfully');
                     } catch (\Exception $e) {
                         // Issue 2 fix: log the full exception detail but store only a generic
@@ -442,6 +450,28 @@ class Bootstrapper
      */
     public static function initSession(): void
     {
+        // Configure secure session cookie options before starting the session.
+        // HttpOnly prevents client-side JavaScript from reading the cookie (mitigates XSS cookie theft).
+        // SameSite=Lax blocks the cookie from being sent on cross-site POST requests (mitigates CSRF).
+        // Secure flag is set when the connection is HTTPS — either directly via $_SERVER['HTTPS']
+        // or behind a TLS-terminating reverse proxy that sets X-Forwarded-Proto (common in
+        // Docker/Kubernetes deployments where the web server sees plain HTTP).
+        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+
+        // The cookie path is scoped to the application root so the cookie is sent for all
+        // ChurchCRM routes. getRootPath() returns the admin-configured $sRootPath from Config.php
+        // (e.g. '/churchcrm' for a subdirectory install, '' for a root install). Fall back to '/'
+        // for root-level installs where getRootPath() returns an empty string.
+        $cookiePath = SystemURLs::getRootPath() ?: '/';
+
+        session_set_cookie_params([
+            'httponly' => true,
+            'samesite' => 'Lax',
+            'secure'   => $isHttps,
+            'path'     => $cookiePath,
+        ]);
+
         // Initialize the session
         $sessionName = self::SESSION_PREFIX . hash("md5", SystemURLs::getDocumentRoot());
         session_cache_limiter('private_no_expire:');
@@ -449,10 +479,8 @@ class Bootstrapper
         session_start();
         self::$bootStrapLogger->debug("Session initialized: " . $sessionName);
         
-        // Cache the installed version in the session (only once per session)
-        if (!isset($_SESSION['sSoftwareInstalledVersion'])) {
-            $_SESSION['sSoftwareInstalledVersion'] = VersionUtils::getInstalledVersion();
-        }
+        // Always refresh the installed version in the session so it stays current after upgrades
+        $_SESSION['sSoftwareInstalledVersion'] = VersionUtils::getInstalledVersion();
     }
     private static function configureLogging(): void
     {
@@ -476,9 +504,9 @@ class Bootstrapper
 
             // Remap INFO → DEBUG: Propel hardcodes ->info() for all SQL queries.
             // Without this, every SQL entry appears as INFO regardless of log level config.
-            $ormLogger->pushProcessor(function (\Monolog\LogRecord $record): \Monolog\LogRecord {
+            $ormLogger->pushProcessor(function (LogRecord $record): LogRecord {
                 if ($record->level === Level::Info) {
-                    return new \Monolog\LogRecord(
+                    return new LogRecord(
                         datetime: $record->datetime,
                         channel: $record->channel,
                         level: Level::Debug,

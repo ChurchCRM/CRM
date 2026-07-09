@@ -3,7 +3,7 @@
  * QuillEditorHelper.php - Shared helper functions for Quill rich text editor
  * 
  * Provides reusable functions for initializing Quill editors across the application.
- * Used by: NoteEditor.php, EventEditor.php, and other pages with rich text fields.
+ * Used by: NoteEditor.php, /event/editor, /event/repeat-editor, and other pages with rich text fields.
  * 
  * Benefits:
  * - Eliminates duplicate code (75+ lines consolidated)
@@ -42,22 +42,32 @@ use ChurchCRM\Utils\InputUtils;
  *   '300px'                       // Min height
  * ) ?>
  */
-function getQuillEditorContainer($editorId, $inputId, $content = '', $cssClasses = '', $minHeight = '300px')
+function getQuillEditorContainer(string $editorId, string $inputId, ?string $content = '', string $cssClasses = '', string $size = 'default'): string
 {
     // Sanitize IDs to prevent HTML injection
     $editorId = InputUtils::escapeAttribute($editorId);
     $inputId = InputUtils::escapeAttribute($inputId);
     $cssClasses = InputUtils::escapeAttribute($cssClasses);
-    $minHeight = InputUtils::escapeAttribute($minHeight);
-    
-    // Merge CSS classes with base editor class
+    $content = $content ?? '';
+
+    // Normalise size: compact | default | tall. Anything else falls back to default.
+    // Legacy callers may pass a pixel string (e.g. "100px") — translate those to
+    // the nearest named size so we keep a single source of truth for heights.
+    $size = is_string($size) ? strtolower(trim($size)) : 'default';
+    if (preg_match('/^(\d+)px$/', $size, $m)) {
+        $px = (int) $m[1];
+        $size = $px <= 150 ? 'compact' : ($px >= 280 ? 'tall' : 'default');
+    }
+    if (!in_array($size, ['compact', 'default', 'tall'], true)) {
+        $size = 'default';
+    }
+
+    // Merge CSS classes with base editor class. Styling (border, radius, height,
+    // focus ring, RTL, print) lives in scss/_quill.scss — no inline styles here.
     $classes = trim($cssClasses . ' quill-editor-container');
-    
-    // Build inline styles for editor
-    $style = "min-height: {$minHeight}; border: 1px solid #ccc; border-radius: 4px;";
-    
+
     return <<<HTML
-<div id="{$editorId}" class="{$classes}" style="{$style}">{$content}</div>
+<div id="{$editorId}" class="{$classes}" data-editor-size="{$size}">{$content}</div>
 <input type="hidden" name="{$inputId}" id="{$inputId}">
 HTML;
 }

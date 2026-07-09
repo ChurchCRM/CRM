@@ -1,43 +1,111 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<div class="row">
-  <div class="col-lg-4 col-md-6 col-sm-12">
-    <div class="card">
-      <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= gettext('Kiosk Manager') ?></h3>
-      </div>
-      <div class="card-body">
-        <div class="mb-3">
-          <label><?= gettext('Enable New Kiosk Registration') ?>:</label>
-          <div class="form-check form-switch">
-            <input type="checkbox" class="form-check-input" id="isNewKioskRegistrationActive">
-            <label class="form-check-label" for="isNewKioskRegistrationActive">
-              <span id="kioskRegistrationStatus"><?= gettext('Inactive') ?></span>
-            </label>
-          </div>
-          <small class="form-text text-muted"><?= gettext('When enabled, new kiosk devices can register for 30 seconds.') ?></small>
+<!-- Dashboard Stat Cards -->
+<div class="row row-cards mb-4 g-2" id="kioskStats">
+    <div class="col-6 col-md-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto"><span class="bg-primary text-white avatar rounded-circle"><i class="fa-solid fa-desktop icon"></i></span></div>
+                    <div class="col"><div class="fw-medium" id="statTotal">0</div><div class="text-body-secondary"><?= gettext('Total Kiosks') ?></div></div>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto"><span class="bg-success text-white avatar rounded-circle"><i class="fa-solid fa-circle-check icon"></i></span></div>
+                    <div class="col"><div class="fw-medium" id="statOnline">0</div><div class="text-body-secondary"><?= gettext('Online') ?></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto"><span class="bg-warning text-dark avatar rounded-circle"><i class="fa-solid fa-clock icon"></i></span></div>
+                    <div class="col"><div class="fw-medium" id="statPending">0</div><div class="text-body-secondary"><?= gettext('Pending') ?></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto"><span class="bg-azure text-white avatar rounded-circle"><i class="fa-solid fa-calendar-check icon"></i></span></div>
+                    <div class="col"><div class="fw-medium" id="statAssigned">0</div><div class="text-body-secondary"><?= gettext('Assigned') ?></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Registration + Setup -->
+<div class="card mb-4">
+  <div class="card-body py-3">
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input" type="checkbox" id="isNewKioskRegistrationActive">
+          <label class="form-check-label visually-hidden" for="isNewKioskRegistrationActive"><?= gettext('Enable new kiosk registration') ?></label>
+        </div>
+      </div>
+      <div class="col">
+        <strong><?= gettext('Register New Device') ?></strong>
+        <span class="text-body-secondary ms-1"><?= gettext('Opens a 2-minute window for devices to register at:') ?></span>
+        <code class="ms-1"><?= InputUtils::escapeHTML(SystemURLs::getURL()) ?>/kiosk</code>
+      </div>
+      <div class="col-auto">
+        <span id="kioskRegistrationStatus" class="badge bg-secondary-lt text-secondary"><?= gettext('Inactive') ?></span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= gettext('Active Kiosks') ?></h3>
-      </div>
-      <div class="card-body p-0">
-        <table id="KioskTable" class="table table-vcenter table-hover card-table">
-        </table>
-      </div>
+<div class="card mb-3" id="eventsOverviewCard" style="display:none;">
+  <div class="card-header d-flex align-items-center">
+    <h3 class="card-title">
+      <i class="fa-solid fa-calendar-check me-2"></i><?= gettext('Upcoming Events') ?>
+    </h3>
+    <div class="card-options">
+      <span class="badge bg-secondary-lt text-secondary" id="eventsOverviewCount"></span>
     </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-vcenter card-table">
+      <thead>
+        <tr>
+          <th><?= gettext('Event') ?></th>
+          <th><?= gettext('Class / Group') ?></th>
+          <th><?= gettext('Date & Time') ?></th>
+          <th><?= gettext('Assigned Kiosk') ?></th>
+          <th><?= gettext('Status') ?></th>
+        </tr>
+      </thead>
+      <tbody id="eventsOverviewBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header d-flex align-items-center">
+    <h3 class="card-title">
+      <i class="fa-solid fa-desktop me-2"></i><?= gettext('Kiosk Devices') ?>
+    </h3>
+  </div>
+  <div class="table-responsive">
+    <table id="KioskTable" class="table table-vcenter table-hover card-table">
+    </table>
   </div>
 </div>
 
@@ -95,8 +163,36 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     },
     delete: function(id) {
       return this.request('/devices/' + id, 'DELETE');
+    },
+    rename: function(id, name) {
+      return this.request('/devices/' + id + '/name', 'POST', { name: name });
     }
   };
+
+  function renameKiosk(id, currentName) {
+    bootbox.prompt({
+      title: i18next.t('Rename Kiosk'),
+      value: currentName,
+      callback: function(result) {
+        if (result === null) return;
+        var name = result.trim();
+        if (!name) {
+          window.CRM.notify(i18next.t('Name cannot be empty'), { type: 'error' });
+          return;
+        }
+        window.CRM.kioskAPI.rename(id, name).then(function(data) {
+          if (data.success) {
+            window.CRM.notify(i18next.t('Kiosk renamed'), { type: 'success' });
+            window.CRM.kioskDataTable.ajax.reload(null, false);
+          } else {
+            window.CRM.notify(data.message || i18next.t('Failed to rename kiosk'), { type: 'error' });
+          }
+        }).catch(function() {
+          window.CRM.notify(i18next.t('Failed to rename kiosk'), { type: 'error' });
+        });
+      }
+    });
+  }
 
   function renderKioskAssignment(data) {
     if (data.Accepted) {
@@ -109,8 +205,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               var event = window.CRM.events.futureEvents[i];
               var selected = (currentAssignment && currentAssignment.EventId === event.Id) ? 'selected' : '';
               
-              // Build event label with group name if available
+              // Build event label with date and group name if available
               var eventLabel = window.CRM.escapeHtml(event.Title);
+              
+              // Add start date if available
+              if (event.Start) {
+                  var eventDate = moment(event.Start).format('MMM D, YYYY');
+                  eventLabel += ' - ' + eventDate;
+              }
+              
+              // Add group names if available
               if (event.Groups && event.Groups.length > 0) {
                   var groupNames = event.Groups.map(function(g) { return g.Name; }).join(', ');
                   eventLabel += ' [' + window.CRM.escapeHtml(groupNames) + ']';
@@ -125,7 +229,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       
       // Add edit link if an event is assigned
       if (currentEventId) {
-        html += '<a href="' + window.CRM.root + '/EventEditor.php?EID=' + currentEventId + '" class="btn btn-sm btn-outline-primary" title="' + i18next.t('Edit Event') + '">';
+        html += '<a href="' + window.CRM.root + '/event/editor/' + currentEventId + '" class="btn btn-sm btn-outline-primary" title="' + i18next.t('Edit Event') + '">';
         html += '<i class="fa-solid fa-pen-to-square"></i>';
         html += '</a>';
       }
@@ -133,28 +237,51 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       
       return html;
     } else {
-        return '<span class="text-muted">' + i18next.t('Kiosk must be accepted') + '</span>';
+        return '<span class="text-body-secondary">' + i18next.t('Kiosk must be accepted') + '</span>';
     }
   }
 
   $('#isNewKioskRegistrationActive').change(function() {
     if ($("#isNewKioskRegistrationActive").prop('checked')) {
-      $("#kioskRegistrationStatus").text(i18next.t('Active'));
+      $("#kioskRegistrationStatus").text(i18next.t('Active')).removeClass('bg-secondary-lt text-secondary').addClass('bg-success-lt text-success');
+      if (window.CRM.discoverInterval) {
+        clearInterval(window.CRM.discoverInterval);
+      }
       window.CRM.kioskAPI.enableRegistration().then(function(data) {
-        window.CRM.secondsLeft = moment(data.visibleUntil.date).unix() - moment().unix();
+        // The API returns visibleUntil as an ISO 8601 string (DateTime::ATOM),
+        // not the legacy {date, timezone_type, timezone} object — reading
+        // .date silently produced undefined → moment(undefined) → NaN
+        // secondsLeft → toggle flipped back to Inactive on first tick.
+        // Also fall back to the known 120s window length if the diff is
+        // missing/out-of-range (defensive against client/server clock skew).
+        var REGISTRATION_WINDOW_SECONDS = 120;
+        var diff = moment(data.visibleUntil).unix() - moment().unix();
+        window.CRM.secondsLeft = (diff > 0 && diff <= REGISTRATION_WINDOW_SECONDS * 2)
+          ? diff
+          : REGISTRATION_WINDOW_SECONDS;
         window.CRM.discoverInterval = setInterval(function() {
           window.CRM.secondsLeft -= 1;
           if (window.CRM.secondsLeft > 0) {
-            $("#kioskRegistrationStatus").text(i18next.t('Active for') + ' ' + window.CRM.secondsLeft + ' ' + i18next.t('seconds'));
+            $("#kioskRegistrationStatus").text(i18next.t('Active for {{count}} seconds', { count: window.CRM.secondsLeft })).removeClass('bg-secondary-lt text-secondary').addClass('bg-success-lt text-success');
           } else {
             clearInterval(window.CRM.discoverInterval);
             $('#isNewKioskRegistrationActive').prop('checked', false);
-            $("#kioskRegistrationStatus").text(i18next.t('Inactive'));
+            $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success-lt text-success').addClass('bg-secondary-lt text-secondary');
           }
         }, 1000);
+      }).catch(function() {
+        if (window.CRM.discoverInterval) {
+          clearInterval(window.CRM.discoverInterval);
+        }
+        $('#isNewKioskRegistrationActive').prop('checked', false);
+        $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success-lt text-success').addClass('bg-secondary-lt text-secondary');
+        window.CRM.notify(i18next.t('Failed to enable kiosk registration'), { type: 'error' });
       });
     } else {
-      $("#kioskRegistrationStatus").text(i18next.t('Inactive'));
+      if (window.CRM.discoverInterval) {
+        clearInterval(window.CRM.discoverInterval);
+      }
+      $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success-lt text-success').addClass('bg-secondary-lt text-secondary');
     }
   });
 
@@ -164,7 +291,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     var assignmentSplit = selected.split("-");
     var assignmentType = assignmentSplit[0];
     var eventId = assignmentSplit.length > 1 ? assignmentSplit[1] : null;
-    window.CRM.kioskAPI.setAssignment(kioskId, assignmentType, eventId);
+    window.CRM.kioskAPI.setAssignment(kioskId, assignmentType, eventId).then(function() {
+      window.CRM.kioskDataTable.ajax.reload(null, false);
+    });
   });
 
   function confirmDeleteKiosk(id, name) {
@@ -221,12 +350,90 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     });
   }
 
+  function renderEventsOverview(events, kiosks) {
+    if (!events || events.length === 0) {
+      $('#eventsOverviewCard').hide();
+      return;
+    }
+
+    var now = new Date();
+    var tbody = $('#eventsOverviewBody');
+    tbody.empty();
+
+    events.forEach(function(event) {
+      // Find accepted kiosk assigned to this event
+      var assignedKiosk = null;
+      kiosks.forEach(function(kiosk) {
+        if (kiosk.Accepted && kiosk.KioskAssignments && kiosk.KioskAssignments.length > 0) {
+          if (parseInt(kiosk.KioskAssignments[0].EventId, 10) === event.Id) {
+            assignedKiosk = kiosk;
+          }
+        }
+      });
+
+      var start = new Date(event.Start);
+      var end = new Date(event.End);
+      var isActive = now >= start && now < end;
+
+      var statusBadge = isActive
+        ? '<span class="badge bg-success-lt text-success"><i class="fa-solid fa-circle-dot me-1"></i>' + i18next.t('Active Now') + '</span>'
+        : '<span class="badge bg-blue-lt text-blue">' + i18next.t('Upcoming') + '</span>';
+
+      var kioskCell = assignedKiosk
+        ? '<span class="d-flex align-items-center"><i class="fa-solid fa-desktop text-secondary me-2"></i>' + window.CRM.escapeHtml(assignedKiosk.Name) + '</span>'
+        : '<span class="badge bg-warning text-dark">' + i18next.t('Not assigned') + '</span>';
+
+      var groupNames = event.Groups.map(function(g) { return window.CRM.escapeHtml(g.Name); }).join(', ');
+      var dateStr = moment(event.Start).format('ddd MMM D, h:mm A') + '–' + moment(event.End).format('h:mm A');
+
+      tbody.append(
+        '<tr>' +
+        '<td class="fw-medium">' + window.CRM.escapeHtml(event.Title) + '</td>' +
+        '<td class="text-secondary">' + groupNames + '</td>' +
+        '<td class="text-secondary text-nowrap">' + dateStr + '</td>' +
+        '<td>' + kioskCell + '</td>' +
+        '<td>' + statusBadge + '</td>' +
+        '</tr>'
+      );
+    });
+
+    var label = events.length === 1 ? i18next.t('event') : i18next.t('events');
+    $('#eventsOverviewCount').text(events.length + ' ' + label);
+    $('#eventsOverviewCard').show();
+  }
+
   $(document).ready(function() {
-    // Load future events first, then initialize the DataTable
-    loadFutureEvents().always(function() {
+    var eventsLoaded = new Promise(function(resolve) {
+      loadFutureEvents().always(resolve);
+    });
+
+    var kiosksLoaded = window.CRM.kioskAPI.getDevices()
+      .then(function(data) { return (data && data.KioskDevices) ? data.KioskDevices : []; })
+      .catch(function() { return []; });
+
+    Promise.all([eventsLoaded, kiosksLoaded]).then(function(results) {
+      renderEventsOverview(window.CRM.events.futureEvents, results[1]);
       initKioskTable();
     });
   });
+
+  // Update dashboard stat cards from kiosk data
+  function updateDashboardStats(kiosks) {
+    var total = kiosks ? kiosks.length : 0;
+    var pending = 0;
+    var online = 0;
+    var assigned = 0;
+    var now = moment();
+    (kiosks || []).forEach(function(k) {
+      if (!k.Accepted) pending++;
+      if (k.LastHeartbeat && now.diff(moment(k.LastHeartbeat), 'minutes') < 5) online++;
+      if (k.Accepted && k.KioskAssignments && k.KioskAssignments.length > 0 && k.KioskAssignments[0].EventId) assigned++;
+    });
+    $('#statTotal').text(total);
+    $('#statOnline').text(online);
+    $('#statPending').text(pending);
+    $('#statAssigned').text(assigned);
+  }
 
   function initKioskTable() {
     var dataTableConfig = {
@@ -243,14 +450,29 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       columns: [
         {
           width: 'auto',
-          title: i18next.t('Id'),
-          data: 'Id',
-          searchable: false
+          title: i18next.t('Status'),
+          data: 'LastHeartbeat',
+          searchable: false,
+          render: function(data, type, full, meta) {
+            var isOnline = full.LastHeartbeat && moment().diff(moment(full.LastHeartbeat), 'minutes') < 5;
+            if (!full.Accepted) {
+              return '<span class="badge bg-warning text-dark">' + i18next.t('Pending') + '</span>';
+            }
+            if (isOnline) {
+              return '<span class="badge bg-success">' + i18next.t('Online') + '</span>';
+            }
+            return '<span class="badge bg-secondary-lt">' + i18next.t('Offline') + '</span>';
+          }
         },
         {
           width: 'auto',
           title: i18next.t('Kiosk Name'),
-          data: 'Name'
+          data: 'Name',
+          render: function(data, type, full, meta) {
+            var heartbeat = full.LastHeartbeat ? moment(full.LastHeartbeat).fromNow() : i18next.t('Never');
+            return '<div><span class="fw-medium">' + window.CRM.escapeHtml(data) + '</span></div>' +
+                   '<div class="text-body-secondary small">' + i18next.t('Last seen') + ': ' + heartbeat + '</div>';
+          }
         },
         {
           width: 'auto',
@@ -268,41 +490,27 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         },
         {
           width: 'auto',
-          title: i18next.t('Last Heartbeat'),
-          data: 'LastHeartbeat',
-          render: function(data, type, full, meta) {
-            if (full.LastHeartbeat) {
-              return moment(full.LastHeartbeat).fromNow();
-            }
-            return i18next.t('Never');
-          }
-        },
-        {
-          width: 'auto',
-          title: i18next.t('Accepted'),
-          data: 'Accepted',
-          render: function(data, type, full, meta) {
-            if (full.Accepted) {
-              return '<span class="badge bg-green-lt text-green">' + i18next.t('Yes') + '</span>';
-            } else {
-              return '<span class="badge bg-warning text-dark">' + i18next.t('No') + '</span>';
-            }
-          }
-        },
-        {
-          width: 'auto',
           title: i18next.t('Actions'),
           data: null,
           defaultContent: '',
           orderable: false,
           render: function(data, type, full, meta) {
+            // Inline onclick handlers can't safely interpolate user-controlled
+            // strings (kiosk Name) into a JS string context — escapeHtml emits
+            // HTML entities that show literally in the rename prompt, and
+            // backslashes / newlines / closing-script tags can still break
+            // out. Use data-* attributes (HTML-attr context, safely escaped)
+            // and a delegated click handler attached after the DataTable is
+            // built. Also CSP-clean (no inline JS), per project rule.
+            var nameAttr = window.CRM.escapeHtml(full.Name);
             var buttons = '<div class="btn-group btn-group-sm" role="group">';
-            buttons += '<button class="btn btn-outline-primary" onclick="window.CRM.kioskAPI.reload(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Reload command sent\'), {type: \'success\'}); })" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
-            buttons += '<button class="btn btn-outline-info" onclick="window.CRM.kioskAPI.identify(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Identify command sent\'), {type: \'success\'}); })" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
             if (!full.Accepted) {
-              buttons += '<button class="btn btn-outline-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check"></i></button>';
+              buttons += '<button class="btn btn-success" data-kiosk-action="accept" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check me-1"></i>' + i18next.t('Accept') + '</button>';
             }
-            buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g,"\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
+            buttons += '<button class="btn btn-outline-secondary" data-kiosk-action="rename" data-kiosk-id="' + full.Id + '" data-kiosk-name="' + nameAttr + '" title="' + i18next.t('Rename') + '"><i class="fa-solid fa-pen"></i></button>';
+            buttons += '<button class="btn btn-outline-primary" data-kiosk-action="reload" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
+            buttons += '<button class="btn btn-outline-info" data-kiosk-action="identify" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
+            buttons += '<button class="btn btn-outline-danger" data-kiosk-action="delete" data-kiosk-id="' + full.Id + '" data-kiosk-name="' + nameAttr + '" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
             buttons += '</div>';
             return buttons;
           }
@@ -310,11 +518,45 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       ]
     };
 
+    dataTableConfig.drawCallback = function() {
+      var kiosks = window.CRM.kioskDataTable
+        ? window.CRM.kioskDataTable.rows().data().toArray()
+        : [];
+      renderEventsOverview(window.CRM.events.futureEvents, kiosks);
+      updateDashboardStats(kiosks);
+    };
+
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
     window.CRM.kioskDataTable = $("#KioskTable").DataTable(dataTableConfig);
 
-    setInterval(function() { window.CRM.kioskDataTable.ajax.reload(null, false); }, 30000);
+    // Delegated click handler for the action buttons in the Actions column.
+    // Replaces inline onclick handlers — see the render() comment above.
+    $("#KioskTable").on("click", "[data-kiosk-action]", function() {
+      var action = $(this).data("kiosk-action");
+      var id = parseInt($(this).data("kiosk-id"), 10);
+      var name = $(this).data("kiosk-name") || "";
+      if (action === "accept") {
+        window.CRM.kioskAPI.accept(id).then(function() {
+          window.CRM.kioskDataTable.ajax.reload();
+          window.CRM.notify(i18next.t("Kiosk accepted"), { type: "success" });
+        });
+      } else if (action === "rename") {
+        renameKiosk(id, String(name));
+      } else if (action === "reload") {
+        window.CRM.kioskAPI.reload(id).then(function() {
+          window.CRM.notify(i18next.t("Reload command sent"), { type: "success" });
+        });
+      } else if (action === "identify") {
+        window.CRM.kioskAPI.identify(id).then(function() {
+          window.CRM.notify(i18next.t("Identify command sent"), { type: "success" });
+        });
+      } else if (action === "delete") {
+        confirmDeleteKiosk(id, String(name));
+      }
+    });
+
+    setInterval(function() { window.CRM.kioskDataTable.ajax.reload(null, false); }, 10000);
   }
 
 </script>

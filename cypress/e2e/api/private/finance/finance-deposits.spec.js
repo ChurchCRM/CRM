@@ -29,7 +29,7 @@ describe("API Private Deposit Operations", () => {
                 "GET",
                 `/api/deposits/${depositID}`,
                 null,
-                [200, 404, 500]
+                [200, 404]
             ).then((resp) => {
                 if (resp.status === 200) {
                     expect(resp.body).to.have.property("Id");
@@ -58,7 +58,7 @@ describe("API Private Deposit Operations", () => {
                 "GET",
                 `/api/deposits/${depositID}/csv`,
                 null,
-                [200, 404, 500]
+                [200, 404]
             ).then((resp) => {
                 if (resp.status === 200) {
                     expect(resp.body).to.exist;
@@ -72,7 +72,7 @@ describe("API Private Deposit Operations", () => {
                 "GET",
                 `/api/deposits/${depositID}/pdf`,
                 null,
-                [200, 404, 500]
+                [200, 404]
             );
         });
 
@@ -82,7 +82,7 @@ describe("API Private Deposit Operations", () => {
                 "GET",
                 `/api/deposits/${depositID}/ofx`,
                 null,
-                [200, 404, 500]
+                [200, 404]
             ).then((resp) => {
                 if (resp.status === 200) {
                     expect(resp.body).to.have.property("content");
@@ -122,7 +122,7 @@ describe("API Private Deposit Operations", () => {
                     depositDate: today,
                     depositClosed: false,
                 },
-                [200, 404, 500]
+                [200, 404]
             );
         });
 
@@ -216,6 +216,21 @@ describe("API Private Deposit Operations", () => {
             cy.makePrivateNoFinanceAPICall(
                 "DELETE",
                 `/api/deposits/${depositID}`,
+                null,
+                [401, 403]
+            );
+        });
+
+        // Regression for PR #8562: the main dashboard JS used to hit
+        // /api/deposits/dashboard unconditionally, producing a bootbox error
+        // for non-finance users. The JS fix prevents the call client-side,
+        // but we also assert the server-side FinanceRoleAuthMiddleware
+        // (applied to the /deposits route group) denies the request so the
+        // fix is defense-in-depth, not the only line of defense.
+        it("Non-finance user denied getting deposit dashboard data", () => {
+            cy.makePrivateNoFinanceAPICall(
+                "GET",
+                `/api/deposits/dashboard`,
                 null,
                 [401, 403]
             );

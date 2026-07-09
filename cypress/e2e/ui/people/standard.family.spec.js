@@ -4,9 +4,19 @@ describe("Standard Family", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("View invalid Family", () => {
-        cy.visit("v2/family/9999");
+        cy.visit("people/family/9999");
         cy.location("pathname").should("include", "family/not-found");
         cy.contains("Family not found");
+    });
+
+    it("Print button triggers window.print", () => {
+        cy.visit("people/family/1");
+
+        cy.window().then((win) => {
+            cy.stub(win, "print").as("printStub");
+        });
+        cy.get("#printFamily").should("be.visible").click();
+        cy.get("@printStub").should("have.been.calledOnce");
     });
 
     it("Entering a new Family", () => {
@@ -51,10 +61,10 @@ describe("Standard Family", () => {
         cy.get('select[name="Classification6"]').select("2", { force: true });
 
         // Click FAB save button (on FamilyEditor page, not family view)
-        cy.get(".fab-save").click();
+        cy.get('button[name="FamilySubmit"]').click();
 
         // Should redirect to family view page
-        cy.location("pathname").should("include", "/v2/family/");
+        cy.location("pathname").should("include", "/people/family/");
         // Page subtitle shows Family Profile
         cy.contains("Family Profile");
         // Family members table should show all members
@@ -75,10 +85,93 @@ describe("Standard Family", () => {
         cy.get("#WeddingDate").clear();
 
         // Click FAB save button (on FamilyEditor page)
-        cy.get(".fab-save").click();
+        cy.get('button[name="FamilySubmit"]').click();
 
-        cy.location("pathname").should("include", "/v2/family/");
+        cy.location("pathname").should("include", "/people/family/");
         cy.get('body').should('not.contain', 'mike@example.com');
         cy.get('body').should('not.contain', `${weddingMonth}/${weddingDay}/${weddingYear}`);
+    });
+});
+
+describe("Family Wedding Date Edit Workflow", () => {
+    beforeEach(() => cy.setupStandardSession());
+
+    it("Create family without wedding date, then add wedding date via edit", () => {
+        cy.visit("FamilyEditor.php");
+        cy.contains("Family Info");
+
+        const familyName = "Smith" + Cypress._.random(0, 1e6);
+        cy.get("#FamilyName").type(familyName);
+        cy.get('input[name="Address1"]').type("123 Main Street");
+        cy.get('input[name="City"]').clear().type("Springfield");
+        cy.get('select[name="State"]').select("IL", { force: true });
+        cy.get('input[name="Email"]').type("test@example.com");
+        cy.get('input[name="FirstName1"]').type("John");
+        cy.get('select[name="Classification1"]').select("1", { force: true });
+
+        cy.get('button[name="FamilySubmit"]').click();
+
+        cy.location("pathname").should("include", "/people/family/");
+        cy.contains("Family Profile");
+        cy.get("i.fa-ring").should("not.exist");
+        cy.contains(familyName).should("exist");
+
+        cy.get('a.btn-ghost-primary').contains("Edit").click();
+        cy.contains("Family Info");
+
+        const weddingYear = "2020";
+        const weddingMonth = "06";
+        const weddingDay = "15";
+        cy.get("#WeddingDate").type(`${weddingYear}-${weddingMonth}-${weddingDay}`);
+
+        cy.get('button[name="FamilySubmit"]').click();
+
+        cy.location("pathname").should("include", "/people/family/");
+        cy.contains("Family Profile");
+        cy.get("i.fa-ring").should("be.visible");
+        cy.contains(`${weddingMonth}/${weddingDay}/${weddingYear}`).should("be.visible");
+        cy.get("li").contains(`${weddingMonth}/${weddingDay}/${weddingYear}`).find("i.fa-ring").should("be.visible");
+    });
+});
+
+describe("Standard Family Activation", () => {
+    beforeEach(() => {
+        // Reset family 3 to active BEFORE registering intercepts so the setup
+        // call is not captured by @updateToActive — only UI-triggered requests
+        // should resolve those aliases.
+        cy.makePrivateUserAPICall("POST", "/api/family/3/activate/true", "", 200);
+
+        cy.intercept("POST", "**/api/family/3/activate/true").as("updateToActive");
+        cy.intercept("POST", "**/api/family/3/activate/false").as("updateToInActive");
+
+        cy.setupStandardSession({ forceLogin: true });
+    });
+
+    it("Family activation flow", () => {
+        cy.visit("people/family");
+        cy.contains("Family Listing");
+
+        cy.visit("people/family?mode=inactive");
+        cy.contains("Lewis").should("not.exist");
+
+        cy.visit("people/family/3");
+        cy.contains("This Family is Inactive").should("not.be.visible");
+        cy.get("#family-actions-dropdown").click();
+        cy.get("#activateDeactivate").click();
+        cy.get(".bootbox-accept").should("be.visible").click();
+        cy.wait("@updateToInActive");
+
+        cy.visit("people/family?mode=inactive");
+        cy.contains("Lewis");
+
+        cy.visit("people/family/3");
+        cy.contains("This Family is Inactive").should("be.visible");
+        cy.get("#family-actions-dropdown").click();
+        cy.get("#activateDeactivate").click();
+        cy.get(".bootbox-accept").should("be.visible").click();
+        cy.wait("@updateToActive");
+
+        cy.visit("people/family?mode=inactive");
+        cy.contains("Lewis").should("not.exist");
     });
 });

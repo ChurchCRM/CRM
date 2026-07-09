@@ -1,10 +1,10 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Password Reset");
+$sBodyClass = 'page-auth page-login';
 require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 
@@ -56,7 +56,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         return;
                     }
 
-                    $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> ' + i18next.t('Sending...'));
+                    $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i>' + i18next.t('Sending...'));
                     $.ajax({
                         method: 'POST',
                         url: window.CRM.root + '/api/public/user/password-reset',

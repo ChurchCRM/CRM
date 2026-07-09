@@ -6,33 +6,40 @@ use JsonSerializable;
 
 class UiNotification implements JsonSerializable
 {
+    private string $id;
+    private string $dismissSettingKey;
     private string $title;
     private string $message;
     private string $url;
     private string $type;
     private string $icon;
-    private int $delay;
-    private string $placement;
-    private string $align;
 
     public function __construct(
+        string $id,
+        string $dismissSettingKey,
         string $title,
-        string $icon,
-        string $url = '',
         string $message = '',
+        string $url = '',
         string $type = 'info',
-        int $delay = 4000,
-        string $placement = 'top',
-        string $align = 'right'
+        string $icon = 'info-circle'
     ) {
+        $this->id = $id;
+        $this->dismissSettingKey = $dismissSettingKey;
         $this->title = $title;
         $this->message = $message;
         $this->url = $url;
         $this->type = $type;
         $this->icon = $icon;
-        $this->delay = $delay;
-        $this->placement = $placement;
-        $this->align = $align;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function getDismissSettingKey(): string
+    {
+        return $this->dismissSettingKey;
     }
 
     public function getTitle(): string
@@ -60,23 +67,16 @@ class UiNotification implements JsonSerializable
         return $this->icon;
     }
 
-    public function getDelay(): int
-    {
-        return $this->delay;
-    }
-
-    public function getPlacement(): string
-    {
-        return $this->placement;
-    }
-
-    public function getAlign(): string
-    {
-        return $this->align;
-    }
-
     public function jsonSerialize(): array
     {
-        return get_object_vars($this);
+        return [
+            'id'                => $this->id,
+            'dismissSettingKey' => $this->dismissSettingKey,
+            'title'             => $this->title,
+            'message'           => $this->message,
+            'url'               => $this->url,
+            'type'              => $this->type,
+            'icon'              => $this->icon,
+        ];
     }
 }

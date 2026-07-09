@@ -93,8 +93,8 @@ describe('Plugin Management API', () => {
         });
 
         it('should return error for non-existent plugin', () => {
-            // Non-existent plugin ID causes a Throwable error when trying to set config
-            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/non-existent-plugin/disable', null, 500);
+            // Non-existent plugin ID is a bad request (400)
+            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/non-existent-plugin/disable', null, 400);
         });
     });
 

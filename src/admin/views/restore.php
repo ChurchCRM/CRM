@@ -56,7 +56,7 @@ $isOnboarding = $isOnboarding ?? false;
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="ti ti-upload me-2"></i><?= gettext('Restore Database') ?></h3>
     </div>
-    <form id="restoredatabase" action="<?= SystemURLs::getRootPath() ?>/api/database/restore" method="POST" enctype="multipart/form-data">
+    <form id="restoredatabase" action="<?= SystemURLs::getRootPath() ?>/admin/api/database/restore" method="POST" enctype="multipart/form-data">
         <div class="card-body">
             <!-- File Upload Area -->
             <div class="mb-3">

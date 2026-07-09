@@ -29,7 +29,7 @@ SCSS → churchcrm.min.css  (all CSS combined)
 ```
 
 **Grunt** copies pre-built vendor files to `src/skin/external/` for direct `<script>` loading.
-**Webpack** bundles TypeScript/React modules and SCSS into `src/skin/v2/`.
+**Webpack** bundles TypeScript/JS modules and SCSS into `src/skin/v2/`.
 
 ---
 
@@ -71,13 +71,9 @@ SCSS → churchcrm.min.css  (all CSS combined)
 
 | Library | npm Package | Reason |
 |---------|-------------|--------|
-| **Quill** | `quill@2.0.3` | Zero imports found. Dead code. |
-| **react-datepicker** | `react-datepicker@^9.1.0` | No imports found. |
-| **react-select** | `react-select@^5.10.2` | No imports found. |
-| **react-bootstrap** | `react-bootstrap@^2.10.10` | No imports found. |
 | **select2-bootstrap4-theme** | `@ttskch/select2-bootstrap4-theme@^1.5.2` | Obsolete with Select2 removal. |
 
-> **Status update (2026-03-22):** `@ttskch/select2-bootstrap4-theme` already removed from package.json. Dead deps (`quill`, `react-datepicker`, `react-select`, `react-bootstrap`) are **still in package.json** and need removal. DataTables BS4→BS5 upgrade is **complete**.
+> **Status update (2026-04-06):** React fully removed (react, react-dom, react-bootstrap, react-datepicker, react-select). `@ttskch/select2-bootstrap4-theme` already removed. DataTables BS4→BS5 upgrade is **complete**.
 
 ---
 
@@ -483,10 +479,6 @@ npm install @tabler/core @tabler/icons-webfont
 "bootbox": "^6.0.4",
 "moment": "^2.30.1",
 "notyf": "^3.10.0",
-"quill": "2.0.3",
-"react-datepicker": "^9.1.0",
-"react-select": "^5.10.2",
-"react-bootstrap": "^2.10.10",
 "datatables.net-bs4": "^2.3.7",
 "datatables.net-buttons-bs4": "^3.2.6",
 "datatables.net-responsive-bs4": "^3.0.8",
@@ -606,7 +598,7 @@ npm install @tabler/core @tabler/icons-webfont
 | Phase | Library Swap | Files | Risk | Status |
 |-------|-------------|-------|------|--------|
 | **0** | Install `@tabler/core` + `@tabler/icons-webfont`, Grunt copy | 3 config files | Low | ✅ Done |
-| **1** | Remove dead deps: quill, react-datepicker, react-select, react-bootstrap | package.json only | Zero | ⬜ Not started |
+| **1** | ~~Remove dead deps: react, react-datepicker, react-select, react-bootstrap~~ | package.json only | Zero | ✅ Done (7.2.0) |
 | **2** | DataTables BS4 → BS5 | Gruntfile + SCSS + Footer.php | Low | ✅ Done |
 | **2.5** | Chart.js → ApexCharts | 7 JS files | Low | ✅ Done |
 | **3** | bootstrap-datepicker → flatpickr | 8 PHP files | Low | ⬜ Not started |

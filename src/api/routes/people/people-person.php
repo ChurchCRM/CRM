@@ -3,7 +3,11 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
@@ -43,7 +47,10 @@ use Slim\HttpCache\Cache;
  *         @OA\JsonContent(type="object",
  *             @OA\Property(property="hasPhoto", type="boolean"),
  *             @OA\Property(property="initials", type="string", example="JS"),
- *             @OA\Property(property="gravatarUrl", type="string", nullable=true)
+ *             @OA\Property(property="gravatarUrl", type="string", nullable=true),
+ *             @OA\Property(property="photoUrl", type="string", nullable=true),
+ *             @OA\Property(property="email", type="string", nullable=true),
+ *             @OA\Property(property="photoVersion", type="integer", example=1718000000, description="Unix mtime of the uploaded photo file; 0 when hasPhoto is false. Append as ?v=<photoVersion> to the /photo URL to bust the 2-hour public Cache-Control header after an upload.")
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized")
@@ -118,7 +125,22 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/photo', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $input = $request->getParsedBody();
-        
+
+        // Detect when PHP discarded the request body because post_max_size was exceeded
+        if (empty($input) || !isset($input['imgBase64'])) {
+            $contentLength = (int)($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
+            $maxSize = SystemService::getMaxUploadFileSize(false);
+            if ($contentLength > 0 && $contentLength > $maxSize) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
+                    [],
+                    413
+                );
+            }
+            return SlimUtils::renderErrorJSON($response, gettext('Missing image data in request'), [], 400);
+        }
+
         try {
             $person->setImageFromBase64($input['imgBase64']);
             // Refresh photo status and return updated info
@@ -127,6 +149,8 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
                 'success' => true,
                 'hasPhoto' => $person->getPhoto()->hasUploadedPhoto()
             ]);
+        } catch (PhotoSizeException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 413, $e, $request);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to upload person photo'), [], 400, $e, $request);
         }
@@ -188,9 +212,14 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
-    // Get person by ID
+    // Get person by ID — read-baseline check via canReadPerson (all authenticated users)
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $personFamilyId = (int) $person->getFamId();
+        if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
+            throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
+        }
         return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
     });
 
@@ -200,7 +229,9 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         if (AuthenticationManager::getCurrentUser()->getId() === (int) $person->getId()) {
             throw new HttpForbiddenException($request, gettext("Can't delete yourself"));
         }
+        $personId = $person->getId();
         $person->delete();
+        HookManager::doAction(Hooks::PERSON_DELETED, $personId);
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);

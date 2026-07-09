@@ -24,20 +24,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-plus me-2"></i><?= gettext('Add Link') ?></h3>
-            </div>
-            <div class="card-body">
-                <form id="link-form" novalidate>
+<div class="card">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-plus me-2"></i><?= gettext('Add Link') ?></h3>
+    </div>
+    <div class="card-body">
+        <form id="link-form" novalidate>
                     <div class="mb-3">
                         <label for="LINK_NAME"><?= gettext('Link Name') ?></label>
                         <input type="text" name="LINK_NAME" id="LINK_NAME" class="form-control"
                                aria-describedby="LINK_NAME_HELP" required minlength="2" maxlength="50"
                                placeholder="<?= gettext('e.g., Church Website') ?>">
-                        <small id="LINK_NAME_HELP" class="form-text text-muted"><?= gettext('2-50 characters') ?></small>
+                        <small id="LINK_NAME_HELP" class="form-text text-body-secondary"><?= gettext('2-50 characters') ?></small>
                         <div class="invalid-feedback"><?= gettext('Please enter a link name (2-50 characters)') ?></div>
                     </div>
                     <div class="mb-3">
@@ -45,43 +43,39 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <input type="url" name="LINK_URL" id="LINK_URL" class="form-control"
                                aria-describedby="LINK_URL_HELP" required 
                                placeholder="https://example.com">
-                        <small id="LINK_URL_HELP" class="form-text text-muted"><?= gettext('Must start with http:// or https://') ?></small>
+                        <small id="LINK_URL_HELP" class="form-text text-body-secondary"><?= gettext('Must start with http:// or https://') ?></small>
                         <div class="invalid-feedback"><?= gettext('Please enter a valid URL starting with http:// or https://') ?></div>
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-success" id="add-link">
-                            <i class="fa-solid fa-plus"></i> <?= gettext('Add Link') ?>
+                            <i class="fa-solid fa-plus"></i><?= gettext('Add Link') ?>
                         </button>
                     </div>
-                </form>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-link me-2"></i><?= gettext('Menu Links') ?></h3>
-            </div>
-            <div class="card-body p-0">
-                <p class="text-muted mb-3 px-3 pt-3">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <?= gettext('These links appear in the"Links" menu in the navigation sidebar when this plugin is enabled.') ?>
-                </p>
-                    <table id="links-table" class="table table-vcenter table-hover card-table">
-                        <thead>
-                            <tr>
-                                <th><?= gettext('Name') ?></th>
-                                <th><?= gettext('URL') ?></th>
-                                <th class="no-export w-1"><?= gettext('Actions') ?></th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-link me-2"></i><?= gettext('Menu Links') ?></h3>
+    </div>
+    <div class="card-body">
+        <p class="text-body-secondary mb-0">
+            <i class="fa-solid fa-circle-info"></i>
+            <?= gettext('These links appear in the "Links" menu in the navigation sidebar when this plugin is enabled.') ?>
+        </p>
+    </div>
+    <div class="table-responsive">
+        <table id="links-table" class="table table-vcenter table-hover card-table">
+            <thead>
+                <tr>
+                    <th><?= gettext('Name') ?></th>
+                    <th><?= gettext('URL') ?></th>
+                    <th class="no-export w-1"><?= gettext('Actions') ?></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 </div>
 
@@ -225,7 +219,7 @@ $(document).ready(function() {
         // Disable button during submission
         $button.prop('disabled', true);
         var originalText = $button.html();
-        $button.html('<i class="fa-solid fa-spinner fa-spin"></i> ' + i18next.t('Adding...'));
+        $button.html('<i class="fa-solid fa-spinner fa-spin"></i>' + i18next.t('Adding...'));
         
         fetch(window.CRM.root + '/plugins/custom-links/api/links', {
             method: 'POST',

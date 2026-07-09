@@ -2,9 +2,18 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Event as BaseEvent;
+use ChurchCRM\model\ChurchCRM\CalendarEventQuery;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
+use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
+use ChurchCRM\model\ChurchCRM\EventCountsQuery;
+use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Map\TableMap;
 
 /**
@@ -19,6 +28,38 @@ use Propel\Runtime\Map\TableMap;
 class Event extends BaseEvent
 {
     private bool $editable = true;
+
+    /**
+     * Cascade-delete child rows that reference this event before the row
+     * itself is removed.
+     *
+     * Event child tables (all FK'd to events_event.event_id) are semantically
+     * owned by the event and have no independent meaning once the event is
+     * gone. Propel does not auto-cascade these FKs, so if we do not clean them
+     * up explicitly they become orphaned rows that break integrity reports
+     * and surface as "phantom" check-ins, audience links, etc.
+     *
+     * Handled here:
+     *  - calendar_event         (which calendars the event appears on)
+     *  - event_audience         (group audience links — cross-ref table)
+     *  - eventattend_event_attend (attendance records)
+     *  - kioskassignment_kasm    (kiosk → event pins)
+     *  - eventcounts_evtcnt      (attendance summary — no FK at DB level)
+     *
+     * See #8670.
+     */
+    public function preDelete(ConnectionInterface $con = null): bool
+    {
+        $eventId = (int) $this->getId();
+
+        CalendarEventQuery::create()->filterByEventId($eventId)->delete($con);
+        EventAudienceQuery::create()->filterByEventId($eventId)->delete($con);
+        EventAttendQuery::create()->filterByEventId($eventId)->delete($con);
+        EventCountsQuery::create()->filterByEvtcntEventid($eventId)->delete($con);
+        KioskAssignmentQuery::create()->filterByEventId($eventId)->delete($con);
+
+        return parent::preDelete($con);
+    }
 
     public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
     {
@@ -41,7 +82,7 @@ class Event extends BaseEvent
         $this->editable = $editable;
     }
 
-    public function checkInPerson($PersonId): array
+    public function checkInPerson(int $PersonId, ?int $CheckedInById = null): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
@@ -51,13 +92,25 @@ class Event extends BaseEvent
         $AttendanceRecord->setEvent($this)
         ->setPersonId($PersonId)
         ->setCheckinDate(date('Y-m-d H:i:s'))
-        ->setCheckoutDate(null)
-        ->save();
+        ->setCheckoutDate(null);
+
+        if ($CheckedInById !== null) {
+            $AttendanceRecord->setCheckinId($CheckedInById);
+        }
+
+        $AttendanceRecord->save();
+        HookManager::doAction(Hooks::EVENT_CHECKIN, $AttendanceRecord, $this, $PersonId);
+
+        $this->addTimelineNote(
+            $PersonId,
+            sprintf(gettext('Checked in to event: %s'), $this->getTitle()),
+            $CheckedInById
+        );
 
         return ['status' => 'success'];
     }
 
-    public function checkOutPerson($PersonId): array
+    public function checkOutPerson(int $PersonId, ?int $CheckedOutById = null): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
@@ -65,16 +118,64 @@ class Event extends BaseEvent
             ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
             ->findOne();
 
+        if ($AttendanceRecord === null) {
+            return ['status' => 'not_checked_in'];
+        }
+
         $AttendanceRecord->setEvent($this)
         ->setPersonId($PersonId)
-        ->setCheckoutDate(date('Y-m-d H:i:s'))
-        ->save();
+        ->setCheckoutDate(date('Y-m-d H:i:s'));
+
+        if ($CheckedOutById !== null) {
+            $AttendanceRecord->setCheckoutId($CheckedOutById);
+        }
+
+        $AttendanceRecord->save();
+        HookManager::doAction(Hooks::EVENT_CHECKOUT, $AttendanceRecord, $this, $PersonId);
+
+        $this->addTimelineNote(
+            $PersonId,
+            sprintf(gettext('Checked out from event: %s'), $this->getTitle()),
+            $CheckedOutById
+        );
 
         return ['status' => 'success'];
     }
 
+    /**
+     * Add a timeline note for event check-in/out on a person's timeline.
+     *
+     * Kiosk device routes call Event::checkInPerson()/checkOutPerson() with no
+     * authenticated user (the kiosk has its own cookie, not a User session).
+     * Falling through to AuthenticationManager::getCurrentUser() in that case
+     * throws and breaks the kiosk flow. If no actor id is supplied AND no user
+     * is logged in, fall back to the recorded person themself so the note
+     * still gets created without a fatal error.
+     */
+    private function addTimelineNote(int $personId, string $text, ?int $actionById, string $type = 'event'): void
+    {
+        if ($actionById === null) {
+            if (AuthenticationManager::isUserAuthenticated()) {
+                $actionById = AuthenticationManager::getCurrentUser()->getId();
+            } else {
+                // Kiosk device path — no User session. Attribute the note to
+                // the person themself so the timeline still records it.
+                $actionById = $personId;
+            }
+        }
+
+        $note = new Note();
+        $note->setPerId($personId);
+        $note->setFamId(0);
+        $note->setText($text);
+        $note->setType($type);
+        $note->setPrivate(0);
+        $note->setEntered($actionById);
+        $note->save();
+    }
+
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/EventEditor.php?calendarAction=' . $this->getID();
+        return SystemURLs::getRootPath() . '/event/view/' . $this->getID();
     }
 }

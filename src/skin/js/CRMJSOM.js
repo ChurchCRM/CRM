@@ -13,16 +13,16 @@ if (!window.jQuery) {
  * @param {string} text - The text to escape
  * @returns {string} - HTML-escaped text safe for DOM insertion
  */
-window.CRM.escapeHtml = function (text) {
+window.CRM.escapeHtml = (text) => {
   if (text === null || text === undefined) {
     return "";
   }
-  var div = document.createElement("div");
+  const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
 };
 
-window.CRM.APIRequest = function (options) {
+window.CRM.APIRequest = (options) => {
   // Guard against jQuery not being available
   if (!window.jQuery || typeof window.jQuery.ajax !== "function") {
     console.error("[CRMJSOM.APIRequest] jQuery.ajax not available");
@@ -35,12 +35,16 @@ window.CRM.APIRequest = function (options) {
   options.dataType = "json";
   options.url = window.CRM.root + "/api/" + options.path;
   options.contentType = "application/json";
-  options.beforeSend = function (jqXHR, settings) {
+  options.beforeSend = (jqXHR, settings) => {
     jqXHR.url = settings.url;
   };
-  options.error = function (jqXHR, textStatus, errorThrown) {
-    window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
-  };
+  // Only install the default error handler if the caller did not supply one —
+  // otherwise the caller's handler was silently discarded.
+  if (typeof options.error !== "function") {
+    options.error = (jqXHR, textStatus, errorThrown) => {
+      window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+    };
+  }
   return window.jQuery.ajax(options);
 };
 
@@ -49,7 +53,7 @@ window.CRM.APIRequest = function (options) {
  * Used for endpoints in /admin/api/* - does NOT add /api prefix
  * Endpoint paths should be like "upgrade/download-latest-release" which becomes "/admin/api/upgrade/download-latest-release"
  */
-window.CRM.AdminAPIRequest = function (options) {
+window.CRM.AdminAPIRequest = (options) => {
   // Guard against jQuery not being available
   if (!window.jQuery || typeof window.jQuery.ajax !== "function") {
     console.error("[CRMJSOM.AdminAPIRequest] jQuery.ajax not available");
@@ -62,171 +66,90 @@ window.CRM.AdminAPIRequest = function (options) {
   options.dataType = "json";
   options.url = window.CRM.root + "/admin/api/" + options.path;
   options.contentType = "application/json";
-  options.beforeSend = function (jqXHR, settings) {
+  options.beforeSend = (jqXHR, settings) => {
     jqXHR.url = settings.url;
   };
-  options.error = function (jqXHR, textStatus, errorThrown) {
-    window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
-  };
+  // Only install the default error handler if the caller did not supply one —
+  // otherwise the caller's handler was silently discarded.
+  if (typeof options.error !== "function") {
+    options.error = (jqXHR, textStatus, errorThrown) => {
+      window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+    };
+  }
   return window.jQuery.ajax(options);
 };
 
-window.CRM.DisplayErrorMessage = function (endpoint, error) {
-  // Handle different error response formats (message, error, msg)
-  var errorText =
-    error && (error.message || error.error || error.msg)
-      ? error.message || error.error || error.msg
-      : i18next.t("Unknown error");
+window.CRM.VerifyThenLoadAPIContent = (url) => {
+  const fallbackError = i18next.t("There was a problem retrieving the requested object");
 
-  var message =
-    "<p>" +
-    i18next.t("Error making API Call to") +
-    ": " +
-    endpoint +
-    "</p>" +
-    "<p>" +
-    i18next.t("Error text") +
-    ": " +
-    errorText +
-    "</p>";
-
-  // Never include server side traces in the UI
-  bootbox.alert({
-    title: i18next.t("ERROR"),
-    message: message,
-  });
-};
-
-window.CRM.VerifyThenLoadAPIContent = function (url) {
-  var error = i18next.t("There was a problem retrieving the requested object");
-
-  // Helper function to fetch error message from JSON response
-  function fetchErrorMessage(targetUrl, fallbackError, callback) {
-    try {
-      if (!window.jQuery) {
-        callback(fallbackError);
-        return;
-      }
-      window.jQuery.ajax({
-        method: "GET",
-        url: targetUrl,
-        async: false,
-        dataType: "json",
-        success: function (data) {
-          var msg = data && data.message ? data.message : fallbackError;
-          callback(msg);
-        },
-        error: function () {
-          callback(fallbackError);
-        },
-      });
-    } catch (e) {
-      callback(fallbackError);
+  const showError = (msg) => {
+    if (window.CRM && typeof window.CRM.notify === "function") {
+      window.CRM.notify(msg, { type: "danger", delay: 6000 });
+    } else if (typeof alert === "function") {
+      alert(msg);
     }
-  }
+  };
 
   if (!window.jQuery) {
-    window.CRM.DisplayErrorMessage(url, { message: error });
+    showError(fallbackError);
     return;
   }
 
-  window.jQuery.ajax({
-    method: "HEAD",
-    url: url,
-    async: false,
-    statusCode: {
-      200: function () {
-        window.open(url);
-      },
-      404: function () {
-        fetchErrorMessage(url, error, function (msg) {
-          window.CRM.DisplayErrorMessage(url, { message: msg });
-        });
-      },
-      500: function () {
-        fetchErrorMessage(url, error, function (msg) {
-          window.CRM.DisplayErrorMessage(url, { message: msg });
-        });
-      },
-    },
-  });
-};
+  // Pre-open a blank tab synchronously so browsers tie it to the originating
+  // user gesture — popup blockers reject `window.open` from async callbacks.
+  // We navigate it on success, or close it on failure. Setting `opener = null`
+  // prevents reverse-tabnabbing; we can't pass `noopener` here because that
+  // would force `window.open` to return null and leave us nothing to navigate.
+  const pendingWindow = window.open("", "_blank");
+  if (pendingWindow) {
+    pendingWindow.opener = null;
+  }
 
-window.CRM.kiosks = {
-  assignmentTypes: {
-    1: "Event Attendance",
-    2: "Self Registration",
-    3: "Self Checkin",
-    4: "General Attendance",
-  },
-  reload: function (id) {
-    window.CRM.APIRequest({
-      path: "kiosks/" + id + "/reloadKiosk",
-      method: "POST",
-    }).done(function (data) {});
-  },
-  enableRegistration: function () {
-    return window.CRM.APIRequest({
-      path: "kiosks/allowRegistration",
-      method: "POST",
+  // HEAD the URL first: if 2xx, navigate the pre-opened tab. Otherwise GET
+  // the JSON body so we can surface the server's error message. Both requests
+  // are async (Chrome deprecates `async: false`).
+  window.jQuery
+    .ajax({ method: "HEAD", url: url })
+    .done(() => {
+      if (pendingWindow && !pendingWindow.closed) {
+        pendingWindow.location = url;
+      } else {
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
+    })
+    .fail(() => {
+      if (pendingWindow && !pendingWindow.closed) {
+        pendingWindow.close();
+      }
+      window.jQuery
+        .ajax({ method: "GET", url: url, dataType: "json" })
+        .done((data) => {
+          const msg = data && data.message ? data.message : fallbackError;
+          showError(msg);
+        })
+        .fail(() => {
+          showError(fallbackError);
+        });
     });
-  },
-  accept: function (id) {
-    window.CRM.APIRequest({
-      path: "kiosks/" + id + "/acceptKiosk",
-      method: "POST",
-    }).done(function (data) {
-      window.CRM.kioskDataTable.ajax.reload();
-    });
-  },
-  identify: function (id) {
-    window.CRM.APIRequest({
-      path: "kiosks/" + id + "/identifyKiosk",
-      method: "POST",
-    }).done(function (data) {
-      //do nothing...
-    });
-  },
-  setAssignment: function (id, assignmentId) {
-    let assignmentSplit = assignmentId.split("-");
-    let assignmentType, eventId;
-    if (assignmentSplit.length > 0) {
-      assignmentType = assignmentSplit[0];
-      eventId = assignmentSplit[1];
-    } else {
-      assignmentType = assignmentId;
-    }
-
-    window.CRM.APIRequest({
-      path: "kiosks/" + id + "/setAssignment",
-      method: "POST",
-      data: JSON.stringify({
-        assignmentType: assignmentType,
-        eventId: eventId,
-      }),
-    }).done(function (data) {});
-  },
 };
 
 window.CRM.groups = {
-  get: function () {
-    return window.CRM.APIRequest({
+  get: () =>
+    window.CRM.APIRequest({
       path: "groups/",
       method: "GET",
-    });
-  },
-  getRoles: function (GroupID) {
-    return window.CRM.APIRequest({
+    }),
+  getRoles: (GroupID) =>
+    window.CRM.APIRequest({
       path: "groups/" + GroupID + "/roles",
       method: "GET",
-    });
-  },
+    }),
   selectTypes: {
     Group: 1,
     Role: 2,
   },
-  promptSelection: function (selectOptions, selectionCallback) {
-    var options = {
+  promptSelection: (selectOptions, selectionCallback) => {
+    const options = {
       message:
         '<div class="modal-body">\
                   <input type="hidden" id="targetGroupAction">',
@@ -241,7 +164,23 @@ window.CRM.groups = {
         },
       },
     };
-    let initFunction = function () {};
+    let initFunction = () => {};
+
+    // Read a value from a TomSelect-wrapped (or plain) select. TomSelect does
+    // not always mirror its current selection back onto the underlying
+    // <option selected> attribute, so `option:selected` is unreliable here —
+    // always prefer the TomSelect instance API when available. Returns "" if
+    // nothing is selected.
+    const readSelectValue = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return "";
+      if (el.tomselect) {
+        const v = el.tomselect.getValue();
+        return v == null ? "" : String(v);
+      }
+      const jqVal = window.jQuery(el).val();
+      return jqVal == null ? "" : String(jqVal);
+    };
 
     if (selectOptions.Type & window.CRM.groups.selectTypes.Group) {
       options.title = i18next.t("Select Group");
@@ -250,10 +189,13 @@ window.CRM.groups = {
         i18next.t("Please select target group for members") +
         ':</span>\
                   <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>';
-      options.buttons.confirm.callback = function () {
-        selectionCallback({
-          GroupID: window.jQuery("#targetGroupSelection option:selected").val(),
-        });
+      options.buttons.confirm.callback = () => {
+        const groupId = readSelectValue("targetGroupSelection");
+        if (!groupId) {
+          bootbox.alert(i18next.t("Please select a group."));
+          return false;
+        }
+        selectionCallback({ GroupID: groupId });
       };
     }
     if (selectOptions.Type & window.CRM.groups.selectTypes.Role) {
@@ -263,10 +205,13 @@ window.CRM.groups = {
         i18next.t("Please select target Role for members") +
         ':</span>\
                   <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>';
-      options.buttons.confirm.callback = function () {
-        selectionCallback({
-          RoleID: window.jQuery("#targetRoleSelection option:selected").val(),
-        });
+      options.buttons.confirm.callback = () => {
+        const roleId = readSelectValue("targetRoleSelection");
+        if (!roleId) {
+          bootbox.alert(i18next.t("Please select a role."));
+          return false;
+        }
+        selectionCallback({ RoleID: roleId });
       };
     }
 
@@ -274,23 +219,21 @@ window.CRM.groups = {
       if (!selectOptions.GroupID) {
         throw i18next.t("GroupID required for role selection prompt");
       }
-      initFunction = function () {
+      initFunction = () => {
         // Remove tabindex from bootbox so TomSelect dropdown can receive focus
         window.jQuery(".bootbox").removeAttr("tabindex");
-        window.CRM.groups.getRoles(selectOptions.GroupID).done(function (rdata) {
-          let roleEl = document.getElementById("targetRoleSelection");
+        window.CRM.groups.getRoles(selectOptions.GroupID).done((rdata) => {
+          const roleEl = document.getElementById("targetRoleSelection");
           if (roleEl && roleEl.tomselect) roleEl.tomselect.destroy();
           new TomSelect(roleEl, {
             valueField: "id",
             labelField: "text",
             searchField: "text",
-            options: rdata.map(function (item) {
-              return {
-                // i18next-disable-next-line
-                text: i18next.t(item.OptionName),
-                id: String(item.OptionId),
-              };
-            }),
+            options: rdata.map((item) => ({
+              // i18next-disable-next-line
+              text: i18next.t(item.OptionName),
+              id: String(item.OptionId),
+            })),
             dropdownParent: document.querySelector(".bootbox"),
           });
         });
@@ -298,47 +241,45 @@ window.CRM.groups = {
     }
     if (selectOptions.Type === (window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role)) {
       options.title = i18next.t("Select Group and Role");
-      options.buttons.confirm.callback = function () {
-        selection = {
-          RoleID: window.jQuery("#targetRoleSelection option:selected").val(),
-          GroupID: window.jQuery("#targetGroupSelection option:selected").val(),
-        };
-        selectionCallback(selection);
+      options.buttons.confirm.callback = () => {
+        const groupId = readSelectValue("targetGroupSelection");
+        const roleId = readSelectValue("targetRoleSelection");
+        if (!groupId || !roleId) {
+          bootbox.alert(i18next.t("Please select both a group and a role."));
+          return false;
+        }
+        selectionCallback({ GroupID: groupId, RoleID: roleId });
       };
     }
     options.message += "</div>";
     bootbox.dialog(options).init(initFunction).show();
 
-    window.CRM.groups.get().done(function (rdata) {
-      var groupsList = rdata.map(function (item) {
-        return {
-          text: item.Name,
-          id: String(item.Id),
-        };
-      });
+    window.CRM.groups.get().done((rdata) => {
+      const groupsList = rdata.map((item) => ({
+        text: item.Name,
+        id: String(item.Id),
+      }));
       window.jQuery("#targetGroupSelection").parents(".bootbox").removeAttr("tabindex");
-      var groupEl = document.getElementById("targetGroupSelection");
+      const groupEl = document.getElementById("targetGroupSelection");
       if (groupEl && groupEl.tomselect) groupEl.tomselect.destroy();
-      var groupTS = new TomSelect(groupEl, {
+      new TomSelect(groupEl, {
         valueField: "id",
         labelField: "text",
         searchField: "text",
         options: groupsList,
         dropdownParent: document.querySelector(".bootbox"),
-        onChange: function (value) {
+        onChange: (value) => {
           if (!value) return;
-          var roleEl = document.getElementById("targetRoleSelection");
+          const roleEl = document.getElementById("targetRoleSelection");
           if (roleEl && roleEl.tomselect) roleEl.tomselect.destroy();
           // Clear existing options
           while (roleEl && roleEl.options.length) roleEl.remove(0);
-          window.CRM.groups.getRoles(value).done(function (rdata) {
-            var rolesList = rdata.map(function (item) {
-              return {
-                // i18next-disable-next-line
-                text: i18next.t(item.OptionName),
-                id: String(item.OptionId),
-              };
-            });
+          window.CRM.groups.getRoles(value).done((rdata) => {
+            const rolesList = rdata.map((item) => ({
+              // i18next-disable-next-line
+              text: i18next.t(item.OptionName),
+              id: String(item.OptionId),
+            }));
             new TomSelect(roleEl, {
               valueField: "id",
               labelField: "text",
@@ -351,9 +292,9 @@ window.CRM.groups = {
       });
     });
   },
-  addPerson: function (GroupID, PersonID, RoleID) {
-    params = {
-      method: "POST", // define the type of HTTP verb we want to use (POST for our form)
+  addPerson: (GroupID, PersonID, RoleID) => {
+    const params = {
+      method: "POST",
       path: "groups/" + GroupID + "/addperson/" + PersonID,
     };
     if (RoleID) {
@@ -363,13 +304,12 @@ window.CRM.groups = {
     }
     return window.CRM.APIRequest(params);
   },
-  removePerson: function (GroupID, PersonID) {
-    return window.CRM.APIRequest({
+  removePerson: (GroupID, PersonID) =>
+    window.CRM.APIRequest({
       method: "DELETE", // define the type of HTTP verb we want to use (POST for our form)
       path: "groups/" + GroupID + "/removeperson/" + PersonID,
-    });
-  },
-  addGroup: function (callbackM) {
+    }),
+  addGroup: (callbackM) => {
     bootbox.prompt({
       title: i18next.t("Add A Group Name"),
       value: i18next.t("Default Name Group"),
@@ -385,61 +325,54 @@ window.CRM.groups = {
           className: "btn-danger",
         },
       },
-      callback: function (result) {
-        if (result) {
-          var newGroup = { groupName: result };
-
-          if (!window.jQuery) {
-            return;
-          }
-
-          window.jQuery
-            .ajax({
-              method: "POST",
-              url: window.CRM.root + "/api/groups/", //call the groups api handler located at window.CRM.root
-              data: JSON.stringify(newGroup), // stringify the object we created earlier, and add it to the data payload
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-            })
-            .done(function (data) {
-              //yippie, we got something good back from the server
-              window.CRM.cartManager.refreshCartCount();
-              if (callbackM) {
-                callbackM(data);
-              }
-            });
+      callback: (result) => {
+        if (!result) {
+          return;
         }
+        window.CRM.APIRequest({
+          method: "POST",
+          path: "groups/",
+          data: JSON.stringify({ groupName: result }),
+        }).done((data) => {
+          if (window.CRM.cartManager && typeof window.CRM.cartManager.refreshCartCount === "function") {
+            window.CRM.cartManager.refreshCartCount();
+          }
+          if (callbackM) {
+            callbackM(data);
+          }
+        });
       },
     });
   },
 };
 
 window.CRM.system = {
-  runTimerJobs: function () {
+  runTimerJobs: () => {
     window.CRM.APIRequest({
       method: "POST",
       path: "background/timerjobs",
       suppressErrorDialog: true,
     });
   },
-  handlejQAJAXError: function (jqXHR, textStatus, errorThrown, suppressErrorDialog) {
+  handlejQAJAXError: (jqXHR, textStatus, errorThrown, suppressErrorDialog) => {
     if (jqXHR.status === 401) {
       window.location = window.CRM.root + "/session/begin?location=" + window.location.pathname;
     }
-    try {
-      var CRMResponse = JSON.parse(jqXHR.responseText);
-    } catch (err) {
-      var errortext = textStatus + " " + errorThrown;
+    if (textStatus === "abort" || suppressErrorDialog) {
+      return;
     }
-
-    if (!(textStatus === "abort" || suppressErrorDialog)) {
-      if (CRMResponse) {
-        window.CRM.DisplayErrorMessage(jqXHR.url, CRMResponse);
-      } else {
-        window.CRM.DisplayErrorMessage(jqXHR.url, {
-          message: errortext,
-        });
-      }
+    let parsedResponse = null;
+    try {
+      parsedResponse = JSON.parse(jqXHR.responseText);
+    } catch (_err) {
+      parsedResponse = null;
+    }
+    const message =
+      (parsedResponse && (parsedResponse.message || parsedResponse.error || parsedResponse.msg)) ||
+      `${textStatus || i18next.t("Error")} ${errorThrown || ""}`.trim() ||
+      i18next.t("Unknown error");
+    if (window.CRM && typeof window.CRM.notify === "function") {
+      window.CRM.notify(message, { type: "danger", delay: 6000 });
     }
   },
 };
@@ -448,12 +381,15 @@ window.CRM.dashboard = {
   /**
    * Load event counters once on page load (birthdays, anniversaries, events today)
    */
-  loadEventCounters: function () {
+  loadEventCounters: () => {
+    // Pass the browser's local date so the counter matches the calendar's "today" cell.
+    // FullCalendar highlights today using the browser local date, not the server timezone.
+    const today = new Date().toLocaleDateString("en-CA"); // yields YYYY-MM-DD
     window.CRM.APIRequest({
       method: "GET",
-      path: "calendar/events-counters",
+      path: "calendar/events-counters?date=" + today,
       suppressErrorDialog: true,
-    }).done(function (data) {
+    }).done((data) => {
       document.getElementById("BirthdateNumber").innerText = data.Birthdays;
       document.getElementById("AnniversaryNumber").innerText = data.Anniversaries;
       document.getElementById("EventsNumber").innerText = data.Events;
@@ -470,16 +406,16 @@ window.CRM.dashboard = {
  * @param {boolean} [options.inCart=false] - Whether person is already in cart
  * @returns {string} HTML string
  */
-window.CRM.renderPersonActionMenu = function (personId, personName, options) {
+window.CRM.renderPersonActionMenu = (personId, personName, options) => {
   options = options || {};
-  var inCart = options.inCart || false;
-  var familyId = options.familyId || null;
-  var root = window.CRM.root;
-  var escapedName = window.CRM.escapeHtml(personName || "");
-  var familyItem = familyId
+  const inCart = options.inCart || false;
+  const familyId = options.familyId || null;
+  const root = window.CRM.root;
+  const escapedName = window.CRM.escapeHtml(personName || "");
+  const familyItem = familyId
     ? '<a class="dropdown-item" href="' +
       root +
-      "/v2/family/" +
+      "/people/family/" +
       familyId +
       '">' +
       '<i class="ti ti-users me-2"></i>' +
@@ -494,20 +430,22 @@ window.CRM.renderPersonActionMenu = function (personId, personName, options) {
     '<div class="dropdown-menu dropdown-menu-end">' +
     '<a class="dropdown-item" href="' +
     root +
-    "/PersonView.php?PersonID=" +
+    "/people/view/" +
     personId +
     '">' +
     '<i class="ti ti-eye me-2"></i>' +
     i18next.t("View") +
     "</a>" +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/PersonEditor.php?PersonID=" +
-    personId +
-    '">' +
-    '<i class="ti ti-pencil me-2"></i>' +
-    i18next.t("Edit") +
-    "</a>" +
+    (window.CRM.permissions && window.CRM.permissions.editRecords
+      ? '<a class="dropdown-item" href="' +
+        root +
+        "/PersonEditor.php?PersonID=" +
+        personId +
+        '">' +
+        '<i class="ti ti-pencil me-2"></i>' +
+        i18next.t("Edit") +
+        "</a>"
+      : "") +
     familyItem +
     '<div class="dropdown-divider"></div>' +
     '<button class="dropdown-item ' +
@@ -551,10 +489,10 @@ window.CRM.renderPersonActionMenu = function (personId, personName, options) {
  * @param {boolean} [options.inCart=false] - Whether family is already in cart
  * @returns {string} HTML string
  */
-window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
+window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
   options = options || {};
-  var inCart = options.inCart || false;
-  var root = window.CRM.root;
+  const inCart = options.inCart || false;
+  const root = window.CRM.root;
   return (
     '<div class="dropdown">' +
     '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
@@ -563,20 +501,22 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
     '<div class="dropdown-menu dropdown-menu-end">' +
     '<a class="dropdown-item" href="' +
     root +
-    "/v2/family/" +
+    "/people/family/" +
     familyId +
     '">' +
     '<i class="ti ti-eye me-2"></i>' +
     i18next.t("View") +
     "</a>" +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/FamilyEditor.php?FamilyID=" +
-    familyId +
-    '">' +
-    '<i class="ti ti-pencil me-2"></i>' +
-    i18next.t("Edit") +
-    "</a>" +
+    (window.CRM.permissions && window.CRM.permissions.editRecords
+      ? '<a class="dropdown-item" href="' +
+        root +
+        "/FamilyEditor.php?FamilyID=" +
+        familyId +
+        '">' +
+        '<i class="ti ti-pencil me-2"></i>' +
+        i18next.t("Edit") +
+        "</a>"
+      : "") +
     '<div class="dropdown-divider"></div>' +
     '<button class="dropdown-item ' +
     (inCart ? "RemoveFromCart text-danger" : "AddToCart") +
@@ -609,6 +549,148 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
   );
 };
 
+/**
+ * Render a standard event action dropdown menu.
+ * Standard order: View → Edit → Check-in → [divider] → Activate/Deactivate → [divider] → Delete
+ *
+ * @param {number} eventId
+ * @param {string} eventTitle - Used in delete confirmation
+ * @param {Object} [options]
+ * @param {boolean} [options.inactive=false] - Current event status (controls Activate vs Deactivate)
+ * @returns {string} HTML string
+ */
+window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
+  options = options || {};
+  const inactive = options.inactive || false;
+  const root = window.CRM.root;
+  const escapedTitle = window.CRM.escapeHtml(eventTitle || "");
+
+  const statusButton = inactive
+    ? '<button type="button" class="dropdown-item activate-event" data-event_id="' +
+      eventId +
+      '">' +
+      '<i class="ti ti-circle-check me-2"></i>' +
+      i18next.t("Activate") +
+      "</button>"
+    : '<button type="button" class="dropdown-item deactivate-event" data-event_id="' +
+      eventId +
+      '">' +
+      '<i class="ti ti-circle-x me-2"></i>' +
+      i18next.t("Deactivate") +
+      "</button>";
+
+  return (
+    '<div class="dropdown">' +
+    '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
+    '<i class="ti ti-dots-vertical"></i>' +
+    "</button>" +
+    '<div class="dropdown-menu dropdown-menu-end">' +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/event/view/" +
+    eventId +
+    '">' +
+    '<i class="ti ti-eye me-2"></i>' +
+    i18next.t("View") +
+    "</a>" +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/event/editor/" +
+    eventId +
+    '">' +
+    '<i class="ti ti-pencil me-2"></i>' +
+    i18next.t("Edit") +
+    "</a>" +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/event/checkin/" +
+    eventId +
+    '">' +
+    '<i class="ti ti-clipboard-check me-2"></i>' +
+    i18next.t("Check-in") +
+    "</a>" +
+    '<div class="dropdown-divider"></div>' +
+    statusButton +
+    '<div class="dropdown-divider"></div>' +
+    '<button type="button" class="dropdown-item text-danger delete-event"' +
+    ' data-event_id="' +
+    eventId +
+    '" data-event_title="' +
+    escapedTitle +
+    '">' +
+    '<i class="ti ti-trash me-2"></i>' +
+    i18next.t("Delete") +
+    "</button>" +
+    "</div></div>"
+  );
+};
+
+// Global delegated handlers for .delete-event / .activate-event / .deactivate-event
+// rendered by renderEventActionMenu in DataTables and PHP templates.
+(function setupEventActionHandlers() {
+  function register() {
+    if (!window.jQuery) return;
+    const $ = window.jQuery;
+
+    $(document).on("click", ".delete-event", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const $btn = $(this);
+      const eventId = $btn.data("event_id");
+      // jQuery's .data() returns the browser-decoded attribute value, so the
+      // escaping applied by renderEventActionMenu() is undone here. Re-escape
+      // before embedding into the bootbox HTML message to prevent XSS.
+      const eventTitle = window.CRM.escapeHtml(String($btn.data("event_title") || ""));
+      bootbox.confirm({
+        title: i18next.t("Delete this event?"),
+        message:
+          i18next.t("Deleting an event will also delete all attendance counts. This cannot be undone.") +
+          " <b>" +
+          eventTitle +
+          "</b>",
+        buttons: {
+          cancel: { label: '<i class="ti ti-x"></i>' + i18next.t("Cancel") },
+          confirm: { label: '<i class="ti ti-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+        },
+        callback: (result) => {
+          if (result) {
+            window.CRM.APIRequest({ method: "DELETE", path: "events/" + eventId }).done(() => {
+              location.reload();
+            });
+          }
+        },
+      });
+    });
+
+    function setEventStatus(eventId, active) {
+      window.CRM.APIRequest({
+        method: "POST",
+        path: "events/" + eventId + "/status",
+        data: JSON.stringify({ active: active }),
+      }).done(() => {
+        location.reload();
+      });
+    }
+
+    $(document).on("click", ".activate-event", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setEventStatus($(this).data("event_id"), true);
+    });
+
+    $(document).on("click", ".deactivate-event", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setEventStatus($(this).data("event_id"), false);
+    });
+  }
+  if (window.CRM && window.CRM.localesLoaded) {
+    register();
+  } else {
+    window.addEventListener("CRM.localesReady", register, { once: true });
+  }
+})();
+
 // Global delegated handler for .delete-person buttons (rendered in DataTables or PHP templates).
 // Set up after locales are ready so i18next.t() is available in the confirmation dialog.
 (function setupPersonDeleteHandler() {
@@ -617,9 +699,9 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
     window.jQuery(document).on("click", ".delete-person", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      var $btn = window.jQuery(this);
-      var personId = $btn.data("person_id");
-      var personName = $btn.data("person_name");
+      const $btn = window.jQuery(this);
+      const personId = $btn.data("person_id");
+      const personName = $btn.data("person_name");
       bootbox.confirm({
         title: i18next.t("Delete this person?"),
         message:
@@ -628,13 +710,13 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
           window.CRM.escapeHtml(String(personName || "")) +
           "</b>",
         buttons: {
-          cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel") },
-          confirm: { label: '<i class="ti ti-trash"></i> ' + i18next.t("Delete"), className: "btn-danger" },
+          cancel: { label: '<i class="ti ti-x"></i>' + i18next.t("Cancel") },
+          confirm: { label: '<i class="ti ti-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
         },
-        callback: function (result) {
+        callback: (result) => {
           if (result) {
-            window.CRM.APIRequest({ method: "DELETE", path: "person/" + personId }).done(function () {
-              location.reload();
+            window.CRM.APIRequest({ method: "DELETE", path: "person/" + personId }).done(() => {
+              window.location.href = window.CRM.root + "/people/list";
             });
           }
         },
@@ -648,16 +730,23 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
   }
 })();
 
-function LimitTextSize(theTextArea, size) {
-  if (theTextArea.value.length > size) {
-    theTextArea.value = theTextArea.value.substr(0, size);
+/**
+ * Copy text to the clipboard with a success toast, falling back to a prompt dialog.
+ * @param {string} text - The text to copy
+ * @param {string} [successMsg] - Optional toast message on success
+ */
+window.CRM.copyToClipboard = (text, successMsg) => {
+  const msg = successMsg || i18next.t("Copied to clipboard");
+  if (navigator.clipboard) {
+    return navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        window.CRM.notify(msg, { type: "success", delay: 3000 });
+      })
+      .catch(() => {
+        prompt(i18next.t("Press CTRL + C to copy"), text);
+      });
   }
-}
-
-function popUp(URL) {
-  window.open(
-    URL,
-    "popup-window",
-    "toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left=100,top=50,noopener,noreferrer",
-  );
-}
+  prompt(i18next.t("Press CTRL + C to copy"), text);
+  return Promise.resolve();
+};

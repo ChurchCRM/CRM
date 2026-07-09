@@ -1,0 +1,8 @@
+id,event_id,first_name,last_name,email,status,tickets
+att-1,evt-2,John,Doe,john.doe@example.com,registered,2
+att-2,evt-1-c1,Emily,Clark,emily.clark@example.com,registered,1
+att-3,evt-3,Marcus,Reed,marcus.reed@example.com,registered,1
+att-4,evt-7,Sarah,Lee,sarah.lee@example.com,registered,1
+att-5,evt-10,Ava,Scott,ava.scott@example.com,registered,1
+att-6,evt-2,Olivia,Brown,olivia.brown@example.com,attended,1
+att-7,evt-2,Noah,Nguyen,noah.nguyen@example.com,cancelled,0

@@ -12,15 +12,15 @@ function initializeDepositSlip() {
     $("#deleteSelectedRows").text("Delete (" + selectedRows + ") Selected Rows");
     $("#exportSelectedRows").prop("disabled", !selectedRows);
     $("#exportSelectedRows").html(
-      '<i class="fa-solid fa-download"></i> Export (' + selectedRows + ") Selected Rows (OFX)",
+      '<i class="fa-solid fa-download"></i>Export (' + selectedRows + ") Selected Rows (OFX)",
     );
     $("#exportSelectedRowsCSV").prop("disabled", !selectedRows);
     $("#exportSelectedRowsCSV").html(
-      '<i class="fa-solid fa-download"></i> Export (' + selectedRows + ") Selected Rows (CSV)",
+      '<i class="fa-solid fa-download"></i>Export (' + selectedRows + ") Selected Rows (CSV)",
     );
     $("#generateDepositSlip").prop("disabled", !selectedRows);
     $("#generateDepositSlip").html(
-      '<i class="fa-solid fa-download"></i> Generate Deposit Split for Selected (' + selectedRows + ") Rows (PDF)",
+      '<i class="fa-solid fa-download"></i>Generate Deposit Split for Selected (' + selectedRows + ") Rows (PDF)",
     );
   }
 

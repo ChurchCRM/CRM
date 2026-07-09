@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -94,7 +94,7 @@ require_once __DIR__ . '/Include/Header.php';
                     if ($thisGroup->getType() == $groupType->getOptionId()) {
                         echo ' selected';
                     }
-                    echo '>' . $groupType->getOptionName() . '</option>';
+                    echo '>' . InputUtils::escapeHTML($groupType->getOptionName()) . '</option>';
                 } ?>
             </select>
             <?php
@@ -122,8 +122,10 @@ require_once __DIR__ . '/Include/Header.php';
                 ?>
               <b><?= gettext('Group Member Roles') ?>:</b>
 
-                <?= gettext('Clone roles') ?>:
-              <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
+                <label class="form-check-label" for="cloneGroupRole"><?= gettext('Clone roles') ?></label>
+              </div>
             </div>
             <div class="col-sm-3" id="selectGroupIDDiv">
                 <?= gettext('from group') ?>:
@@ -161,7 +163,7 @@ require_once __DIR__ . '/Include/Header.php';
           <div class="col-sm-6">
             <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="' . gettext('Save') . '"' ?> Name="GroupSubmit">
             <a href="<?= SystemURLs::getRootPath() ?>/groups/dashboard" class="btn btn-secondary">
-              <i class="fa fa-arrow-left"></i> <?= gettext('Back to Group List') ?>
+              <i class="fa fa-arrow-left"></i><?= gettext('Back to Group List') ?>
             </a>
           </div>
         </div>

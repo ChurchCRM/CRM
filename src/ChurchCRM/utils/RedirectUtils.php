@@ -68,6 +68,35 @@ class RedirectUtils
     }
 
     /**
+     * Strips the application root path from a URI and validates it as a safe redirect target.
+     *
+     * Use this when capturing a raw server URI (e.g. $_SERVER['REQUEST_URI'] or a PSR-7 path)
+     * to store as a post-login return URL.  The root path is removed so the result can be passed
+     * directly to RedirectUtils::redirect().
+     *
+     * @param string $uri     The full request URI (absolute-path, may include query string)
+     * @param string $fallback Returned unchanged when the stripped path fails validation (default: '')
+     *
+     * @return string A root-relative path safe for redirect, or $fallback
+     */
+    public static function stripAndValidatePath(string $uri, string $fallback = ''): string
+    {
+        // Split path and query before stripping to avoid matching the root path inside a query string.
+        $path  = parse_url($uri, PHP_URL_PATH) ?? '';
+        $query = parse_url($uri, PHP_URL_QUERY) ?? '';
+
+        $rootPath = SystemURLs::getRootPath();
+        if ($rootPath !== '' && ($path === $rootPath || str_starts_with($path, $rootPath . '/'))) {
+            $path = substr($path, strlen($rootPath));
+        }
+
+        // Reconstruct and validate the stripped URI.
+        $stripped = $query !== '' ? $path . '?' . $query : $path;
+
+        return self::validateRedirectUrl($stripped, $fallback);
+    }
+
+    /**
      * Validates and sanitizes a redirect URL to prevent open redirect attacks.
      *
      * This method ensures the URL is safe for redirection by:

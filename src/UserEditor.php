@@ -1,9 +1,10 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\NewAccountEmail;
 use ChurchCRM\view\PageHeader;
@@ -12,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserConfig;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -50,6 +52,13 @@ if (isset($_POST['NewUser'])) {
 
 // Has the form been submitted?
 if (isset($_POST['save']) && $iPersonID > 0) {
+    // Security: CSRF token validation (GHSA-3xq9-c86x-cwpp)
+    if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
+        // Preserve add-vs-edit context — NewUser is "true"/"false" string from form
+        $idParam = ($NewUser ?? 'false') === 'true' ? 'NewPersonID' : 'PersonID';
+        RedirectUtils::redirect('UserEditor.php?' . $idParam . '=' . $iPersonID . '&ErrorText=Invalid+security+token.+Please+try+again.');
+    }
+
     // Assign all variables locally
     $sAction = $_POST['Action'];
 
@@ -57,7 +66,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
     $sUserName = InputUtils::legacyFilterInput($_POST['UserName']);
 
     if (strlen($sUserName) < 3) {
-        if ($NewUser == false) {
+        if ($NewUser === false) {
             //Report error for current user creation
             RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         } else {
@@ -111,7 +120,44 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         } else {
             $Admin = 0;
         }
-        $Style = InputUtils::legacyFilterInput($_POST['Style']);
+
+        // accessMode radio is the authoritative source when present. Derive
+        // Admin/EditSelf and clear module perms for non-custom modes so that
+        // the DB stays consistent even when JS is unavailable.
+        if (isset($_POST['accessMode'])) {
+            $accessModePost = $_POST['accessMode'];
+            if ($accessModePost === 'admin') {
+                $Admin      = 1;
+                $EditSelf   = 0;
+            } elseif ($accessModePost === 'self') {
+                $Admin        = 0;
+                $EditSelf     = 1;
+                $AddRecords   = 0;
+                $EditRecords  = 0;
+                $DeleteRecords = 0;
+                $MenuOptions  = 0;
+                $ManageGroups = 0;
+                $Finance      = 0;
+                $Notes        = 0;
+            } else {
+                // 'custom' or any unrecognised value: use submitted module perms as-is.
+                $Admin    = 0;
+                $EditSelf = 0;
+            }
+        }
+
+        // EditSelf is exclusive: a non-admin EditSelf user has no other permissions.
+        // Enforce this server-side so the DB is always consistent regardless of what
+        // the UI submits (defense-in-depth behind the JS that disables other fields).
+        if ($EditSelf === 1 && $Admin === 0) {
+            $AddRecords = 0;
+            $EditRecords = 0;
+            $DeleteRecords = 0;
+            $MenuOptions = 0;
+            $ManageGroups = 0;
+            $Finance = 0;
+            $Notes = 0;
+        }
 
         // Initialize error flag
         $bErrorFlag = false;
@@ -121,8 +167,8 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $undupCount = UserQuery::create()->filterByUserName($sUserName)->_and()->filterByPersonId($iPersonID, Criteria::NOT_EQUAL)->count();
 
             // Write the SQL depending on whether we're adding or editing
-            if ($sAction == 'add') {
-                if ($undupCount == 0) {
+            if ($sAction === 'add') {
+                if ($undupCount === 0) {
                     $rawPassword = User::randomPassword();
 
                     // Use ORM to create new user
@@ -138,7 +184,6 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                         ->setFinance($Finance)
                         ->setNotes($Notes)
                         ->setAdmin($Admin)
-                        ->setUserStyle($Style)
                         ->setDefaultFY($defaultFY)
                         ->setUserName($sUserName)
                         ->setEditSelf($EditSelf);
@@ -147,8 +192,10 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $newUser->save();
 
                     $newUser->createTimeLineNote("created");
-                    $email = new NewAccountEmail($newUser, $rawPassword);
-                    $email->send();
+                    if (SystemConfig::isEmailEnabled()) {
+                        $email = new NewAccountEmail($newUser, $rawPassword);
+                        $email->send();
+                    }
 
                     RedirectUtils::redirect('admin/system/users');
                 } else {
@@ -156,7 +203,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     RedirectUtils::redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             } else {
-                if ($undupCount == 0) {
+                if ($undupCount === 0) {
                     $user = UserQuery::create()->findOneByPersonId($iPersonID);
                     $user
                         ->setAddRecords($AddRecords)
@@ -167,7 +214,6 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                         ->setFinance($Finance)
                         ->setNotes($Notes)
                         ->setAdmin($Admin)
-                        ->setUserStyle($Style)
                         ->setUserName($sUserName)
                         ->setEditSelf($EditSelf);
                     $user->save();
@@ -202,13 +248,12 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                 $usr_Notes = $user->getNotes();
                 $usr_Admin = $user->getAdmin();
                 $usr_EditSelf = $user->getEditSelf();
-                $usr_Style = $user->getUserStyle();
                 $sAction = 'edit';
             }
         } else {
             $dbPerson = PersonQuery::create()->findPk($iPersonID);
             $sUser = $dbPerson->getFullName();
-            if ($dbPerson->getEmail() != '') {
+            if ($dbPerson->getEmail() !== '') {
                 $sUserName = $dbPerson->getEmail();
             } else {
                 $sUserName = $dbPerson->getFirstName() . $dbPerson->getLastName();
@@ -224,8 +269,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $usr_Finance = 0;
             $usr_Notes = 0;
             $usr_Admin = 0;
-            $usr_EditSelf = 1;
-            $usr_Style = '';
+            $usr_EditSelf = 0; // Default off — self-edit must be explicitly granted (#9079)
         }
 
         // New user without person selected yet
@@ -241,26 +285,13 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_Finance = 0;
         $usr_Notes = 0;
         $usr_Admin = 0;
-        $usr_EditSelf = 1;
+        $usr_EditSelf = 0; // Default off — self-edit must be explicitly granted (#9079)
         $sUserName = '';
-        $usr_Style = '';
         $vNewUser = 'true';
 
         // Get all the people who are NOT currently users
         $sSQL = 'SELECT * FROM person_per LEFT JOIN user_usr ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID IS NULL ORDER BY per_LastName';
         $rsPeople = RunQuery($sSQL);
-    }
-}
-
-// Style sheet (CSS) file selection options (legacy field — kept for data compatibility)
-function StyleSheetOptions($currentStyle)
-{
-    foreach (['default', 'dark'] as $stylename) {
-        echo '<option value="' . $stylename . '"';
-        if ($stylename == $currentStyle || ($currentStyle === '' && $stylename === 'default')) {
-            echo ' selected';
-        }
-        echo '>' . $stylename . '</option>';
     }
 }
 
@@ -344,149 +375,202 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Users'), '/admin/system/users'],
     [gettext('Edit User')],
 ]);
+$sPageHeaderButtons = PageHeader::buttons(array_filter([
+    $iPersonID > 0 && !$bNewUser ? ['label' => gettext('View User'), 'url' => '/v2/user/' . (int)$iPersonID, 'icon' => 'fa-eye'] : null,
+    ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
+]));
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
+<form method="post" action="UserEditor.php">
+<?= CSRFUtils::getTokenInputField('user_editor') ?>
+<input type="hidden" name="Action" value="<?= $sAction ?>">
+<input type="hidden" name="NewUser" value="<?= $vNewUser ?>">
+
+<?php if (!empty($sErrorText)): ?>
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <i class="ti ti-alert-circle me-2"></i><?= InputUtils::escapeHTML($sErrorText) ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<?php endif; ?>
+
+<?php if (!SystemConfig::isEmailEnabled()): ?>
+<div class="alert alert-warning d-flex align-items-center" role="alert">
+    <i class="fa-solid fa-triangle-exclamation me-2 fs-3"></i>
+    <div class="flex-grow-1">
+        <strong><?= gettext('Email is disabled') ?></strong>
+        <div class="text-secondary"><?= gettext('New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first.') ?></div>
+    </div>
+    <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
+        <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
+    </a>
+</div>
+<?php endif; ?>
+
 <div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?= gettext('Account') ?></h3>
+    </div>
     <div class="card-body">
-        <div class="alert alert-info">
-            <?= gettext('Note: Changes will not take effect until next logon.') ?>
-        </div>
-        <form method="post" action="UserEditor.php">
-            <input type="hidden" name="Action" value="<?= $sAction ?>">
-            <input type="hidden" name="NewUser" value="<?= $vNewUser ?>">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <?php
-
-                    // Are we adding?
-                    if ($bShowPersonSelect) {
-                        //Yes, so display the people drop-down
-                    ?>
-                        <tr>
-                            <td><?= gettext('Person to Make User') ?>:</td>
-                            <td>
-                                <select name="PersonID" size="30" id="personSelect" class="form-select">
-                                    <?php
-                                    // Loop through all the people
-                                    while ($aRow = mysqli_fetch_array($rsPeople)) {
-                                        extract($aRow); ?>
-                                        <option value="<?= $per_ID ?>" <?php if ($per_ID == $iPersonID) {
-                                                                            echo ' selected';
-                                                                        } ?>><?= $per_LastName . ', ' . $per_FirstName ?></option>
-                                    <?php
-                                    } ?>
-                                </select>
-                            </td>
-                        </tr>
-
-                    <?php
-                    } else { // No, just display the user name
-                    ?>
-                        <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
-                        <tr>
-                            <td><?= gettext('User') ?>:</td>
-                            <td><?= $sUser ?></td>
-                        </tr>
-                    <?php
-                    } ?>
-
-                    <?php if (isset($sErrorText) !== '') {
-                    ?>
-                        <tr>
-                            <td class="text-center" colspan="2">
-                                <span class="text-danger" id="PasswordError"><?= $sErrorText ?></span>
-                            </td>
-                        </tr>
-                    <?php
-                    } ?>
-                    <tr>
-                        <td><?= gettext('Login Name') ?>:</td>
-                        <td><input type="text" name="UserName" id="UserName" value="<?= $sUserName ?>" class="form-control" width="32"></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Admin') ?>:</td>
-                        <td><input type="checkbox" name="Admin" id="Admin" value="1" <?php if ($usr_Admin) {
-                                                                                            echo ' checked';
-                                                                                        } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Add Records') ?>:</td>
-                        <td><input type="checkbox" name="AddRecords" id="AddRecords" value="1" <?php if ($usr_AddRecords) {
-                                                                                                    echo ' checked';
-                                                                                                } ?>></td>
-                    </tr>
-
-                    <tr>
-                        <td><?= gettext('Edit Records') ?>:</td>
-                        <td><input type="checkbox" name="EditRecords" id="EditRecords" value="1" <?php if ($usr_EditRecords) {
-                                                                                                        echo ' checked';
-                                                                                                    } ?>></td>
-                    </tr>
-
-                    <tr>
-                        <td><?= gettext('Delete Records') ?>:</td>
-                        <td><input type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1" <?php if ($usr_DeleteRecords) {
-                                                                                                            echo ' checked';
-                                                                                                        } ?>></td>
-                    </tr>
-
-                    <tr>
-                        <td><?= gettext('Manage Properties and Classifications') ?>:</td>
-                        <td><input type="checkbox" name="MenuOptions" id="MenuOptions" value="1" <?php if ($usr_MenuOptions) {
-                                                                                                        echo ' checked';
-                                                                                                    } ?>></td>
-                    </tr>
-
-                    <tr>
-                        <td><?= gettext('Manage Groups and Roles') ?>:</td>
-                        <td><input type="checkbox" name="ManageGroups" id="ManageGroups" value="1" <?php if ($usr_ManageGroups) {
-                                                                                                        echo ' checked';
-                                                                                                    } ?>></td>
-                    </tr>
-
-                    <tr>
-                        <td><?= gettext('Manage Donations and Finance') ?>:</td>
-                        <td><input type="checkbox" name="Finance" id="Finance" value="1" <?php if ($usr_Finance) {
-                                                                                                echo ' checked';
-                                                                                            } ?>></td>
-                    </tr>
-
-                    <tr>
-                        <td><?= gettext('View, Add and Edit Notes') ?>:</td>
-                        <td><input type="checkbox" name="Notes" id="Notes" value="1" <?php if ($usr_Notes) {
-                                                                                            echo ' checked';
-                                                                                        } ?>></td>
-                    </tr>
-
-                    <tr>
-                        <td><?= gettext('Edit Self') ?>:</td>
-                        <td><input type="checkbox" name="EditSelf" id="EditSelf" value="1" <?php if ($usr_EditSelf) {
-                                                                                                echo ' checked';
-                                                                                            } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Style') ?>:</td>
-                        <td>
-                            <select class="form-select" name="Style" id="Style">
-                                <?php StyleSheetOptions($usr_Style); ?>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="text-center">
-                            <input type="submit" class="btn btn-primary" id="SaveButton" value="<?= gettext('Save') ?>" name="save">&nbsp;<input
-                                type="button" class="btn btn-secondary" id="CancelButton" name="Cancel" value="<?= gettext('Cancel') ?>"
-                                onclick="javascript:document.location='<?= SystemURLs::getRootPath() ?>/admin/system/users';">
-                        </td>
-                    </tr>
-                </table>
+        <?php if ($bShowPersonSelect): ?>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label"><?= gettext('Person') ?></label>
+            <div class="col-sm-9">
+                <select name="PersonID" id="personSelect" class="form-select">
+                    <?php while ($aRow = mysqli_fetch_array($rsPeople)): extract($aRow); ?>
+                    <option value="<?= $per_ID ?>"<?= $per_ID == $iPersonID ? ' selected' : '' ?>><?= InputUtils::escapeHTML($per_LastName . ', ' . $per_FirstName) ?></option>
+                    <?php endwhile; ?>
+                </select>
             </div>
+        </div>
+        <?php else: ?>
+        <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label"><?= gettext('User') ?></label>
+            <div class="col-sm-9">
+                <div class="form-control-plaintext"><?= InputUtils::escapeHTML($sUser) ?></div>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" for="UserName"><?= gettext('Login Name') ?></label>
+            <div class="col-sm-9">
+                <input type="text" name="UserName" id="UserName" value="<?= InputUtils::escapeAttribute($sUserName) ?>" class="form-control">
+            </div>
+        </div>
     </div>
 </div>
+
 <div class="card mt-3">
+    <div class="card-header">
+        <h3 class="card-title"><?= gettext('Permissions') ?></h3>
+    </div>
     <div class="card-body">
-        <div class="alert alert-info"><?= gettext('Set Permission True to give this user the ability to change their current value.') ?></div>
+        <div class="alert alert-info mb-3">
+            <i class="ti ti-info-circle me-2"></i><?= gettext('Changes will not take effect until next logon.') ?>
+        </div>
+
+        <?php
+        // Access level is a single choice. EditSelf is exclusive by design, so it
+        // is its own mode rather than a toggle alongside module permissions.
+        $accessMode = $usr_Admin ? 'admin' : ($usr_EditSelf ? 'self' : 'custom');
+        $accessModes = [
+            ['value' => 'admin', 'icon' => 'ti-shield-check', 'label' => gettext('Administrator'), 'desc' => gettext('Full access — grants all privileges.')],
+            ['value' => 'self', 'icon' => 'ti-user-check', 'label' => gettext('Self-service only'), 'desc' => gettext('Can only review and verify their own family. No other access.')],
+            ['value' => 'custom', 'icon' => 'ti-adjustments', 'label' => gettext('Custom'), 'desc' => gettext('Choose specific permissions below.')],
+        ];
+        ?>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Access level') ?></label>
+            <div class="form-selectgroup form-selectgroup-boxes d-flex flex-column flex-md-row gap-2" id="accessModeGroup">
+                <?php foreach ($accessModes as $mode): ?>
+                <label class="form-selectgroup-item flex-fill">
+                    <input type="radio" name="accessMode" value="<?= $mode['value'] ?>" class="form-selectgroup-input"<?= $accessMode === $mode['value'] ? ' checked' : '' ?>>
+                    <span class="form-selectgroup-label d-block text-start p-3">
+                        <span class="d-flex align-items-center mb-1">
+                            <i class="ti <?= $mode['icon'] ?> me-2 text-primary fs-3"></i>
+                            <span class="fw-bold"><?= $mode['label'] ?></span>
+                        </span>
+                        <span class="d-block text-body-secondary small"><?= $mode['desc'] ?></span>
+                    </span>
+                </label>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <?php
+        // Real flags the server reads. Admin/EditSelf are hidden and driven by the
+        // access-level selector above; module switches live in the Custom panel.
+        ?>
+        <input type="checkbox" class="d-none" name="Admin" id="Admin" value="1"<?= $usr_Admin ? ' checked' : '' ?>>
+        <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $usr_EditSelf ? ' checked' : '' ?>>
+
+        <!-- P&F panel: hidden by default; JS shows it when Custom mode is selected -->
+        <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
+            <div class="px-3 py-2 border-bottom bg-light">
+                <strong><i class="ti ti-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
+                <p class="text-body-secondary small mb-0 mt-1"><?= gettext('All users can view congregation members. This permission cannot be removed.') ?></p>
+            </div>
+            <!-- View: always granted, read-only -->
+            <div class="row align-items-center px-3 py-2">
+                <label class="col-sm-5 col-form-label text-body-secondary"><?= gettext('View') ?></label>
+                <div class="col-sm-7 d-flex align-items-center gap-2">
+                    <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext('View') ?></span>
+                    <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+                </div>
+            </div>
+            <!-- Add / Edit / Delete / Notes: editable checkboxes (panel only visible in custom mode) -->
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="AddRecords"><?= gettext('Add') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="AddRecords" id="AddRecords" value="1"<?= $usr_AddRecords ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="EditRecords"><?= gettext('Edit') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="EditRecords" id="EditRecords" value="1"<?= $usr_EditRecords ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="DeleteRecords"><?= gettext('Delete') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1"<?= $usr_DeleteRecords ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+            <div class="row align-items-center border-top px-3 py-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="Notes"><?= gettext('Notes') ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="Notes" id="Notes" value="1"<?= $usr_Notes ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
+            <hr>
+            <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions:') ?></p>
+            <?php
+            $permissions = [
+                ['name' => 'MenuOptions', 'label' => gettext('Manage Properties and Classifications'), 'checked' => $usr_MenuOptions],
+                ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'), 'checked' => $usr_ManageGroups],
+                ['name' => 'Finance', 'label' => gettext('Manage Donations and Finance'), 'checked' => $usr_Finance],
+            ];
+            foreach ($permissions as $perm):
+            ?>
+            <div class="row mb-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="<?= $perm['name'] ?>"><?= $perm['label'] ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="<?= $perm['name'] ?>" id="<?= $perm['name'] ?>" value="1"<?= $perm['checked'] ? ' checked' : '' ?>>
+                    </label>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="card-footer text-end">
+        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn btn-secondary me-2"><?= gettext('Cancel') ?></a>
+        <button type="submit" class="btn btn-primary" id="SaveButton" name="save"><?= gettext('Save') ?></button>
+    </div>
+</div>
+<?php if (!$bShowPersonSelect && !$bNewUser): ?>
+<div class="card mt-3">
+    <div class="card-header">
+        <h3 class="card-title"><?= gettext('User Config') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-info mb-3">
+            <i class="ti ti-info-circle me-2"></i><?= gettext('Set Permission to True to allow this user to change the setting themselves.') ?>
+        </div>
         <div class="table-responsive">
             <table class="table table-hover align-middle">
                 <thead>
@@ -499,109 +583,92 @@ require_once __DIR__ . '/Include/Header.php';
                 </thead>
                 <tbody>
                 <?php
-
-                //First get default settings, then overwrite with settings from this user
-
-                // Get default settings
-                $sSQL ="SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
+                $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
                 $rsDefault = RunQuery($sSQL);
-                $r = 1;
-                // List Default Settings
                 while ($aDefaultRow = mysqli_fetch_row($rsDefault)) {
-                    list(
-                        $ucfg_per_id,
-                        $ucfg_id,
-                        $ucfg_name,
-                        $ucfg_value,
-                        $ucfg_type,
-                        $ucfg_tooltip,
-                        $ucfg_permission
-                    ) = $aDefaultRow;
+                    list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = $aDefaultRow;
 
-                    // Overwrite with user settings if they already exist
-                    $sSQL ="SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='$usr_per_ID'"
-                        ."AND ucfg_id='$ucfg_id'";
+                    $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='" . (int)$usr_per_ID . "' AND ucfg_id='" . (int)$ucfg_id . "'";
                     $rsUser = RunQuery($sSQL);
                     while ($aUserRow = mysqli_fetch_row($rsUser)) {
-                        list(
-                            $ucfg_per_id,
-                            $ucfg_id,
-                            $ucfg_name,
-                            $ucfg_value,
-                            $ucfg_type,
-                            $ucfg_tooltip,
-                            $ucfg_permission
-                        ) = $aUserRow;
+                        list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = $aUserRow;
                     }
-
-                    // Default Permissions
-                    if ($ucfg_permission == 'TRUE') {
-                        $sel2 = 'SELECTED';
-                        $sel1 = '';
-                    } else {
-                        $sel1 = 'SELECTED';
-                        $sel2 = '';
-                    }
-                    echo"\n<tr>";
-                    echo"<td><select name=\"new_permission[$ucfg_id]\">";
-                    echo"<option value=\"FALSE\" $sel1>" . gettext('False');
-                    echo"<option value=\"TRUE\" $sel2>" . gettext('True');
-                    echo '</select></td>';
-
-                    // Variable Name & Type
-                    echo"<td>$ucfg_name</td>";
-
-                    // Current Value
-                    if ($ucfg_type == 'text') {
-                        echo"<td>
-            <input type=\"text\" size=\"30\" maxlength=\"255\" name=\"new_value[$ucfg_id]\"
-            value=\"" . InputUtils::escapeAttribute($ucfg_value) . '\"></td>';
-                    } elseif ($ucfg_type == 'textarea') {
-                        echo"<td>
-            <textarea rows=\"4\" cols=\"30\" name=\"new_value[$ucfg_id]\">"
-                            . InputUtils::escapeHTML($ucfg_value) . '</textarea></td>';
-                    } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
-                        echo '<td><input type="text" size="15"'
-                            ." maxlength=\"15\" name=\"new_value[$ucfg_id]\" value=\"$ucfg_value\"></td>";
-                    } elseif ($ucfg_type == 'boolean') {
-                        if ($ucfg_value) {
-                            $sel2 = 'SELECTED';
-                            $sel1 = '';
-                        } else {
-                            $sel1 = 'SELECTED';
-                            $sel2 = '';
-                        }
-                        echo"<td><select name=\"new_value[$ucfg_id]\">";
-                        echo"<option value=\"\" $sel1>" . gettext('False');
-                        echo"<option value=\"1\" $sel2>" . gettext('True');
-                        echo '</select></td>';
-                    }
-
-                    // Notes
-                    echo"<td><input type=\"hidden\" name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
-" . gettext($ucfg_tooltip) . '</td></tr>';
-
-                    $r++;
-                }
-
-                // Cancel, Save Buttons
                 ?>
-
+                <tr>
+                    <td>
+                        <select class="form-select form-select-sm" name="new_permission[<?= (int)$ucfg_id ?>]">
+                            <option value="FALSE"<?= $ucfg_permission !== 'TRUE' ? ' selected' : '' ?>><?= gettext('False') ?></option>
+                            <option value="TRUE"<?= $ucfg_permission === 'TRUE' ? ' selected' : '' ?>><?= gettext('True') ?></option>
+                        </select>
+                    </td>
+                    <td><?= InputUtils::escapeHTML($ucfg_name) ?></td>
+                    <td>
+                        <?php if ($ucfg_type === 'text'): ?>
+                        <input type="text" class="form-control form-control-sm" maxlength="255" name="new_value[<?= (int)$ucfg_id ?>]" value="<?= InputUtils::escapeAttribute($ucfg_value) ?>">
+                        <?php elseif ($ucfg_type === 'textarea'): ?>
+                        <textarea class="form-control form-control-sm" rows="3" name="new_value[<?= (int)$ucfg_id ?>]"><?= InputUtils::escapeHTML($ucfg_value) ?></textarea>
+                        <?php elseif ($ucfg_type === 'number' || $ucfg_type === 'date'): ?>
+                        <input type="text" class="form-control form-control-sm" maxlength="15" name="new_value[<?= (int)$ucfg_id ?>]" value="<?= InputUtils::escapeAttribute($ucfg_value) ?>">
+                        <?php elseif ($ucfg_type === 'boolean'): ?>
+                        <select class="form-select form-select-sm" name="new_value[<?= (int)$ucfg_id ?>]">
+                            <option value=""<?= !$ucfg_value ? ' selected' : '' ?>><?= gettext('False') ?></option>
+                            <option value="1"<?= $ucfg_value ? ' selected' : '' ?>><?= gettext('True') ?></option>
+                        </select>
+                        <?php endif; ?>
+                        <input type="hidden" name="type[<?= (int)$ucfg_id ?>]" value="<?= InputUtils::escapeAttribute($ucfg_type) ?>">
+                    </td>
+                    <td class="text-body-secondary"><?= gettext($ucfg_tooltip) ?></td>
+                </tr>
+                <?php } ?>
                 </tbody>
             </table>
         </div>
-        <div class="d-flex gap-2 mt-3">
-            <input type="submit" class="btn btn-primary" name="save" value="<?= gettext('Save Settings') ?>">
-            <input type="submit" class="btn btn-secondary" name="cancel" value="<?= gettext('Cancel') ?>">
-        </div>
-        </form>
+    </div>
+    <div class="card-footer text-end">
+        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn btn-secondary me-2"><?= gettext('Cancel') ?></a>
+        <button type="submit" class="btn btn-primary" name="save"><?= gettext('Save') ?></button>
     </div>
 </div>
+<?php endif; ?>
+</form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
         var personSelectEl = document.getElementById("personSelect");
         if (personSelectEl && !personSelectEl.tomselect) new TomSelect(personSelectEl);
+
+        // Access level is one of three mutually exclusive modes. The radio
+        // selector drives the hidden Admin/EditSelf flags and the Custom panel,
+        // so EditSelf can never coexist with module or admin permissions.
+        const modulePerms = ['AddRecords', 'EditRecords', 'DeleteRecords', 'MenuOptions', 'ManageGroups', 'Finance', 'Notes'];
+        const adminCb     = document.getElementById('Admin');
+        const editSelfCb  = document.getElementById('EditSelf');
+        const customBlock = document.getElementById('customPermissions');
+        const pfPanel     = document.getElementById('pfPanel');
+        const modeRadios  = document.querySelectorAll('input[name="accessMode"]');
+
+        function applyMode(mode, clearModules) {
+            if (customBlock) customBlock.style.display = mode === 'custom' ? '' : 'none';
+            if (pfPanel)     pfPanel.style.display     = mode === 'custom' ? '' : 'none';
+            if (adminCb) adminCb.checked = mode === 'admin';
+            if (editSelfCb) editSelfCb.checked = mode === 'self';
+            if (mode !== 'custom' && clearModules) {
+                modulePerms.forEach(function(name) {
+                    const el = document.getElementById(name);
+                    if (el) el.checked = false;
+                });
+            }
+        }
+
+        modeRadios.forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                if (this.checked) applyMode(this.value, true);
+            });
+        });
+
+        // On load, only sync visibility — keep the stored module switch states.
+        const initial = document.querySelector('input[name="accessMode"]:checked');
+        if (initial) applyMode(initial.value, false);
     });
 </script>
 <?php

@@ -1,7 +1,7 @@
 ---
 title: "Frontend Development"
-intent: "Guidance for frontend work, React/TypeScript, and asset management"
-tags: ["frontend","react","webpack","i18n"]
+intent: "Guidance for frontend work, vanilla JS/TypeScript, and asset management"
+tags: ["frontend","webpack","i18n"]
 prereqs: ["webpack-typescript.md","i18n-localization.md"]
 complexity: "intermediate"
 ---
@@ -14,7 +14,7 @@ This skill covers frontend patterns, UI components, notifications, international
 ## Stack <!-- updated: 2026-03-22 -->
 
 - **Tabler + Bootstrap 5.3.8** — Primary UI framework (migrated from AdminLTE/BS4)
-- **React + TypeScript** — Modern components
+- **Vanilla JS + TypeScript** — Frontend modules (React removed in 7.2.0)
 - **Webpack** — Build system
 - **ApexCharts** — Charting (replaced Chart.js)
 - **i18next** — Frontend internationalization
@@ -24,7 +24,6 @@ This skill covers frontend patterns, UI components, notifications, international
 - `@tabler/icons-webfont` ^3.40.0
 - `bootstrap` ^5.3.8
 - `apexcharts` ^5.10.4
-- `react` ^19.2.4, `react-dom` ^19.2.4
 - `typescript` ^5.9.3
 - `webpack` ^5.105.4
 
@@ -128,6 +127,37 @@ For tables with many potential columns:
 
 **Example:** Sunday School class view shows (Name, Age, Mobile, Email, Father, Mother) with info icon opening modal for address/parent details.
 
+## DataTables: Always Inherit the User's Page-Length Preference <!-- learned: 2026-04-22 -->
+
+Every user has a **"Rows per page"** preference (Edit Profile → Preferences → Tables). It's stored in the `ui.table.size` user setting and exposed globally as `window.CRM.plugin.dataTable` by [src/Include/Header.php](src/Include/Header.php#L85-L163). Every list-page DataTable MUST merge this global config so the user's choice wins.
+
+**Correct pattern** — put any local defaults *first*, then extend with the global config so `window.CRM.plugin.dataTable.pageLength` overrides them:
+
+```js
+let dataTableConfig = {
+  paging: true,
+  pageLength: 10,        // fallback only — extend overwrites this
+  columnDefs: [...],
+};
+$.extend(dataTableConfig, window.CRM.plugin.dataTable);
+$("#mytable").DataTable(dataTableConfig);
+```
+
+**Anti-pattern** — setting `pageLength` *after* the extend silently ignores the user's preference:
+
+```js
+// ❌ WRONG — locks every user to 25 rows regardless of their setting
+$.extend(dataTableConfig, window.CRM.plugin.dataTable);
+dataTableConfig.pageLength = 25;
+```
+
+**Intentional exceptions** (do NOT copy these for list pages):
+
+- Home dashboard widgets in [MainDashboard.js](src/skin/js/MainDashboard.js#L47-L57) set `paging: false` via `dataTableDashboardDefaults` — compact widgets, not paginated lists.
+- Birthdays / Anniversaries dashboard widgets override back to `pageLength: 5` *after* the extend on purpose (tight widget constraint).
+
+**Quick audit**: `grep -rEn "pageLength" src/ --include="*.js" --include="*.php"` — any `pageLength` line that appears *after* `$.extend(..., window.CRM.plugin.dataTable)` is a bug unless it's a dashboard widget.
+
 ## Asset Paths (SystemURLs)
 
 **ALWAYS use SystemURLs::getRootPath() for asset references:**
@@ -145,7 +175,6 @@ For tables with many potential columns:
 **Asset locations:**
 - **CSS/JS**: `src/skin/v2/` (compiled from Webpack)
 - **Images**: `src/images/`
-- **React components**: `react/`
 - **Webpack entry points**: `webpack/`
 
 ## Notifications (CRITICAL)
@@ -179,7 +208,7 @@ alert('Operation completed');
 
 ## Confirmations (CRITICAL)
 
-**ALWAYS use bootbox.confirm() for confirmations, NEVER confirm():**
+**For simple confirmations, use bootbox.confirm() — NEVER use confirm() or alert():** <!-- learned: 2026-04-28 -->
 
 ```javascript
 // ✅ CORRECT - Use bootbox.confirm
@@ -204,11 +233,69 @@ bootbox.confirm({
     }
 });
 
-// ❌ WRONG - Never use confirm()
+// ❌ WRONG - Never use browser's confirm() or alert()
 if (confirm('Are you sure?')) {
     performDeletion();
 }
 ```
+
+**For styled confirmations, use Bootstrap modals instead of alert():** <!-- learned: 2026-04-28 -->
+
+When a confirmation requires formatted text, multiple sections, or custom styling, use a Bootstrap modal
+with event listeners instead of bootbox:
+
+```html
+<!-- Modal HTML -->
+<div class="modal fade" id="deleteNoteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><?= gettext('Confirm Delete') ?></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p><?= gettext('Are you sure you want to delete this note?') ?></p>
+                <p><small class="text-muted"><?= gettext('This action cannot be undone.') ?></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <?= gettext('Cancel') ?>
+                </button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                    <?= gettext('Delete') ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+```javascript
+document.addEventListener("DOMContentLoaded", function() {
+    let modal = new bootstrap.Modal(document.getElementById("deleteNoteModal"));
+    let pendingItemId;
+
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            pendingItemId = btn.getAttribute("data-id");
+            modal.show();
+        });
+    });
+
+    document.getElementById("confirmDeleteBtn").addEventListener("click", async () => {
+        modal.hide();
+        const response = await fetch(`/api/note/${pendingItemId}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${sessionStorage.getItem("apiKey")}` }
+        });
+        if (response.ok) location.reload();
+    });
+});
+```
+
+**Rule of thumb:** Use bootbox for simple yes/no confirmations; use Bootstrap modals for anything
+that needs custom formatting or more control.
 
 ## Modals (Bootstrap 5 / Tabler) <!-- updated: 2026-03-22 -->
 
@@ -265,6 +352,48 @@ $('#myModal').on('hidden.bs.modal', function() {
     // Modal is now hidden
 });
 ```
+
+### Dynamic Content Modals (Single-Instance Pattern) <!-- learned: 2026-04-06 -->
+
+When building modals with dynamically loaded/swapped content (e.g., loading spinner → form),
+use **one Bootstrap Modal instance** and swap `innerHTML` of header/body/footer. Never
+destroy and recreate the Modal instance — Bootstrap's transition callbacks fire on the
+disposed element (`null.style` TypeError).
+
+```javascript
+// ✅ CORRECT — single modal, content swap
+function createAndShowModal() {
+  container.innerHTML = `<div class="modal fade" id="myModal">...</div>`;
+  modalEl = document.getElementById("myModal");
+  modal = new bootstrap.Modal(modalEl, { backdrop: "static" });
+  modal.show();
+}
+function swapContent(html) {
+  modalEl.querySelector(".modal-body").innerHTML = html;
+}
+
+// ❌ WRONG — dispose + recreate causes transition race
+cleanup();          // dispose() mid-transition
+buildNewModal();    // new Modal instance → TypeError
+```
+
+**Close/dismiss gotcha:** `data-bs-dismiss="modal"` does NOT reliably fire on
+dynamically swapped buttons. Use explicit click handlers:
+
+```javascript
+// ✅ CORRECT — explicit close handler
+function closeModal() {
+  cleanup();   // dispose + remove element from DOM
+  refreshData();
+}
+document.getElementById("cancelBtn").addEventListener("click", closeModal);
+
+// ❌ WRONG — data-bs-dismiss silently fails on swapped content
+<button data-bs-dismiss="modal">Cancel</button>
+```
+
+**Widget cleanup before swap:** Destroy TomSelect/Quill instances BEFORE replacing
+innerHTML, otherwise they hold references to removed DOM nodes.
 
 ## Internationalization (i18n)
 
@@ -472,7 +601,7 @@ For critical settings that users should see at a glance, display the current val
 ```php
 <!-- PHP: Log Level Stat Card (always visible) -->
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -533,6 +662,130 @@ $(document).ready(function() {
 3. On settings panel save, **fetch fresh value** via GET `/api/system/config/{key}`
 4. **Update stat card text** with the new label
 5. Users immediately see the change without page reload
+
+### Settings Panel: Scripts Before Footer <!-- learned: 2026-03-30 -->
+
+Settings panel CSS/JS **must** be loaded before `Include/Footer.php` — Footer closes `</body></html>`, so assets loaded after it produce invalid markup. Place the `<link>`, `<script>`, and init block between your page content and the Footer include. **Footer must be the last line of the file.**
+
+```php
+// ✅ CORRECT — settings panel before Footer; Footer is last line
+<?php if ($isAdmin): ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function () { window.CRM.settingsPanel.init({ ... }); });
+</script>
+<?php endif; ?>
+
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+
+// ❌ WRONG — scripts after Footer produce invalid markup (outside </html>)
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+<link rel="stylesheet" ...>
+<script ...></script>
+```
+
+### Settings Panel: Do Not Duplicate the Success Notification in onSave <!-- learned: 2026-03-30 -->
+
+The component already fires `window.CRM.notify("Settings saved successfully")` internally after a successful save. Do **not** call `window.CRM.notify` again inside `onSave` — it will show two toasts.
+
+```javascript
+// ✅ CORRECT — component handles the notification; onSave just reloads
+onSave: function () {
+    setTimeout(function () { window.location.reload(); }, 1500);
+}
+
+// ❌ WRONG — double notification
+onSave: function () {
+    window.CRM.notify(i18next.t('Settings saved successfully'), { type: 'success' });
+    setTimeout(function () { window.location.reload(); }, 1500);
+}
+```
+
+Exception: if your `onSave` does something extra (e.g., "Refreshing upgrade info...") a custom message with distinct text is fine — users understand it's a follow-on action, not a duplicate.
+
+### Settings Panel: Pass Full Config for Custom Settings <!-- learned: 2026-03-30 -->
+
+For settings not in the built-in `SettingDefinitions` dictionary, pass full config objects instead of just setting names:
+
+```javascript
+settings: [{
+    name: 'bAllowPrereleaseUpgrade',
+    type: 'boolean',
+    label: i18next.t('Allow Pre-release Upgrades'),
+    tooltip: i18next.t("Description here")
+}]
+```
+
+This avoids coupling page-specific settings into the generic `system-settings-panel.js`.
+
+### TomSelect Boolean Dropdown: value="" Bug <!-- learned: 2026-03-30 -->
+
+TomSelect hides options with `value=""` (treats them as placeholder/clear state). For boolean `<select>` elements, use `value="0"` for False, not `value=""`. The save logic already handles this — any non-`"1"` value is treated as false.
+
+### TomSelect dropdownParent for Cards <!-- learned: 2026-03-30 -->
+
+When TomSelect is inside a card with `table-responsive` or constrained overflow, dropdowns get clipped. Fix: pass `dropdownParent: 'body'` to TomSelect init and add a `body > .ts-dropdown` SCSS rule in `_tabler-bridge.scss` to preserve Tabler styling.
+
+### Uppy v5 XHRUpload: Parse `response.responseText` to Surface Server Errors <!-- learned: 2026-04-21 -->
+
+Uppy v5 wraps **every** non-2xx HTTP response in a `NetworkError` whose `.message` is **hardcoded** to `"This looks like a network error, the endpoint might be blocked by an internet provider or a firewall."` — regardless of the actual status code or response body. The `getResponseError` option from v3/v4 is **not wired up in v5** (the option name appears in a comment in `@uppy/xhr-upload/lib/index.js` but is never read).
+
+If your endpoint returns a clean JSON 400 like `{ message: "Your CSV has duplicate column names…" }`, the user will still see the useless "network error" banner unless you parse `response.responseText` yourself inside `upload-error`:
+
+```js
+uppy.on("upload-error", (_file, error, response) => {
+  // response (3rd arg) is the raw xhr — read responseText for the JSON body.
+  let msg = null;
+  const responseText = response?.responseText;
+  if (responseText) {
+    try {
+      const parsed = JSON.parse(responseText);
+      if (parsed && typeof parsed.message === "string" && parsed.message.length > 0) {
+        msg = parsed.message;
+      }
+    } catch (_e) {
+      // not JSON — fall through
+    }
+  }
+  // error.isNetworkError is Uppy's hardcoded wrapper — ignore it.
+  if (!msg && error && !error.isNetworkError && typeof error.message === "string") {
+    msg = error.message;
+  }
+  setStatus("error", msg || i18next.t("Upload failed. Please check the file and try again."));
+});
+```
+
+**Do NOT** try the documented `getResponseError` option — it's silently ignored. Confirmed in `node_modules/@uppy/xhr-upload/lib/index.js`: `this.opts.getResponseError` is never read, and `buildResponseError()` wraps 4xx/5xx in `NetworkError` which has a fixed message string.
+
+See `webpack/csv-import.js` for a working example.
+
+### Reading TomSelect values: never use jQuery `option:selected` <!-- learned: 2026-04-09 -->
+
+TomSelect does **not** reliably mirror its current selection back onto the underlying `<option selected>` attribute — `$("#mySelect option:selected").val()` may return `undefined` even when the user has clearly picked an item. Always read the value via the TomSelect instance API:
+
+```js
+const el = document.getElementById("targetRoleSelection");
+const value = el.tomselect ? el.tomselect.getValue() : window.jQuery(el).val();
+```
+
+This bit `promptSelection` in `CRMJSOM.js` (issue #8570 — "Cart empty to group" sent `groupID` only because `RoleID` was undefined and `JSON.stringify` silently dropped it, yielding a confusing `Invalid request data` 400). When forwarding select values into a payload, **also validate before sending** — `JSON.stringify({ a: undefined })` becomes `"{}"`, so missing values become silent server-side errors.
+
+### marked.parse() XSS Prevention <!-- learned: 2026-03-30 -->
+
+When rendering user-supplied markdown (e.g., GitHub release notes) with `marked`, strip raw HTML to prevent XSS:
+
+```javascript
+marked.use({
+  renderer: {
+    html() { return ""; },
+    link({ href, text }) {
+      const safeHref = href && /^https?:\/\//i.test(href) ? href : "#";
+      return `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+    },
+  },
+});
+```
 
 ## Async Button Handlers with i18next <!-- learned: 2026-03-08 -->
 
@@ -657,10 +910,574 @@ Include the script after your page content:
 <script src="<?= SystemURLs::assetVersioned('/skin/js/importDemoData.js') ?>"></script>
 ```
 
+## Print Support (Native Browser Print) <!-- learned: 2026-03-28 -->
+
+ChurchCRM uses native `window.print()` instead of separate print pages. Tabler/Bootstrap 5 handles the heavy lifting via `d-print-none` classes already on the navbar, sidebar, page-header breadcrumbs, and footer.
+
+### Global Print CSS (`_utility-classes.scss`)
+
+The `@media print` block in `src/skin/scss/_utility-classes.scss` hides interactive elements globally:
+
+```scss
+@media print {
+  button.btn, a.btn, input.btn,  // narrowed — not bare .btn (preserves non-interactive styled spans)
+  .dropdown, .modal, .fab-container,
+  input, select, textarea, .form-control, .form-select,
+  .dataTables_filter, .dataTables_length, .ts-wrapper,
+  .nav-pills, .nav-tabs { display: none !important; }
+
+  .tab-pane { display: block !important; opacity: 1 !important; }  // show ALL tab content
+}
+```
+
+### Adding a Print Button to a Page
+
+1. Add a `<button>` with a unique `id` (no `onclick` — CSP blocks inline handlers):
+   ```php
+   <button class="btn btn-ghost-secondary" id="printMyPage" title="<?= gettext('Print') ?>">
+       <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
+   </button>
+   ```
+2. Bind `window.print()` in the page's JS file:
+   ```js
+   $("#printMyPage").on("click", function () { window.print(); });
+   ```
+3. Mark the toolbar `d-print-none` so it hides when printing.
+4. Any extra elements to hide: add `d-print-none` class (e.g., property assignment forms).
+
+### Key Rules
+
+- **Never use `onclick="window.print()"`** — CSP enforcement blocks inline scripts.
+- **Never create separate print pages** — use `window.print()` from the existing page.
+- Use `d-print-none` for page-specific elements not covered by the global rules.
+- The page title (`<h2 class="page-title">`) is visible on print — breadcrumbs/buttons row is hidden.
+
+### Pages with Print Buttons
+
+| Page | Button ID | JS File |
+|------|-----------|---------|
+| PersonView | `#printPerson` | `skin/js/PersonView.js` |
+| FamilyView | `#printFamily` | `skin/js/FamilyView.js` |
+| GroupView | `#printGroup` | `skin/js/GroupView.js` |
+| SS ClassView | `#printClass` | `skin/js/sundayschool-actions.js` |
+
+---
+
+## Forms — No Nested `<form>` Elements <!-- learned: 2026-03-29 -->
+
+HTML does not allow nesting `<form>` inside another `<form>`. Nested forms cause unpredictable submission behaviour in browsers. A common mistake is wrapping a GET link in a POST form wrapper.
+
+```html
+<!-- ❌ WRONG — nested form inside outer form, has no effect and is invalid HTML -->
+<form name="FilterForm" method="POST" action="ListEvents.php">
+  ...
+  <form method="POST" action="ListEvents.php" class="d-inline">
+    <a href="ListEvents.php">Clear Filter</a>
+  </form>
+</form>
+
+<!-- ✅ CORRECT — link is its own element, no form wrapper needed -->
+<form name="FilterForm" method="POST" action="ListEvents.php">
+  ...
+  <a href="ListEvents.php" class="btn btn-sm btn-ghost-secondary">Clear Filter</a>
+</form>
+```
+
+**Rule:** If an action is a plain link (GET navigation), use `<a>` directly — no `<form>` wrapper needed.
+
+---
+
+### Avatar Click-to-View Lightbox <!-- learned: 2026-03-30 -->
+
+Clicking an avatar with an uploaded photo opens a lightbox overlay. **avatar-loader.ts is the single source of truth** for adding click classes — PHP templates should NOT add `.view-person-photo` / `.view-family-photo` manually.
+
+**How it works:**
+1. `avatar-loader.ts` fetches `/api/{type}/{id}/avatar` → gets `hasPhoto`
+2. If `hasPhoto === true`, `loadUploadedPhoto.onload` adds `.view-person-photo` (or `.view-family-photo`) + `data-person-id` (or `data-family-id`) + `cursor: pointer`
+3. Images inside `#uploadImageButton` or `#uploadImageTrigger` are skipped (profile upload buttons)
+4. Initials and failed photo loads never get click classes
+5. **`avatar-loader.ts` itself registers a single global delegated click handler** for `.view-person-photo` / `.view-family-photo` that calls `window.CRM.showPhotoLightbox()`. Per-page handlers are forbidden — they cause double-lightbox bugs.
+
+**Rules:**
+- Never add `.view-person-photo` / `.view-family-photo` in PHP templates that use avatar-loader
+- **Never register a `.view-person-photo` / `.view-family-photo` click handler in any other file** — `avatar-loader.ts` owns it
+- Dashboard handles its own click classes via `generatePhotoImg()` (sets `src` directly, avatar-loader skips it) but the global handler in avatar-loader still routes the click
+
+**Exception:** Pages that render photos inline (not via avatar-loader) — like `verify-family-info.php` — must check `hasUploadedPhoto()` in PHP before adding click classes.
+
+---
+
+### Never Use `form-switch` for Functional Toggles <!-- learned: 2026-03-31 -->
+
+`form-check form-switch` (Bootstrap 5 toggle/pill) must **not** be used when the checkbox functionally changes other form fields (like hiding/showing time pickers). Use Tabler's `form-selectgroup-pills` pattern instead.
+
+**Why:** The switch style is confusing — it looks like a power toggle, not a data choice. When it drives side-effects (e.g. "All Day" stripping time), users expect a radio group or checkbox, not a toggle.
+
+```html
+<!-- ✅ CORRECT — Tabler selectgroup pills for mutually exclusive options -->
+<div class="form-selectgroup form-selectgroup-pills">
+  <label class="form-selectgroup-item">
+    <input type="radio" name="eventDayType" value="timed" class="form-selectgroup-input" checked>
+    <span class="form-selectgroup-label"><i class="fa-regular fa-clock me-1"></i>Timed</span>
+  </label>
+  <label class="form-selectgroup-item">
+    <input type="radio" name="eventDayType" value="allday" class="form-selectgroup-input">
+    <span class="form-selectgroup-label"><i class="fa-regular fa-sun me-1"></i>All Day</span>
+  </label>
+</div>
+```
+
+**Rule:** Reserve `form-switch` for pure settings toggles (enable/disable a feature). Use `form-selectgroup-pills` or plain `form-check` for any control that conditionally shows/hides or modifies other fields.
+
+---
+
+### Modal Edit Header Pattern <!-- learned: 2026-03-31 -->
+
+When a modal's title is an editable input (create/edit forms), use a borderless underline input with a helper label above — not a plain `form-control` boxed input.
+
+```html
+<!-- ✅ CORRECT — breathing room, visual hierarchy, no box border noise -->
+<div class="modal-header pb-0 border-bottom-0">
+  <div class="w-100 me-3 pt-1">
+    <label class="form-label text-muted small mb-1">Event Title</label>
+    <input name="Title"
+      class="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0"
+      style="box-shadow:none" placeholder="e.g. Sunday Service">
+  </div>
+  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body pt-3" style="overflow:visible">
+```
+
+**Key classes:** `border-bottom-0` on header removes the divider line; `border-0 border-bottom rounded-0 px-0` on input gives an underline-only field; `pb-0` removes header bottom padding; `pt-3` on body adds breathing room.
+
+---
+
+### Calendar Badge Contrast Pattern <!-- learned: 2026-03-31 -->
+
+When displaying coloured calendar name badges with user-defined `BackgroundColor`/`ForegroundColor`, always add a coloured dot + `border` class for contrast on light backgrounds.
+
+```tsx
+<span
+  className="badge border"
+  style={{
+    backgroundColor: `#${calendar.BackgroundColor}`,
+    color: `#${calendar.ForegroundColor}`,
+    borderColor: `#${calendar.BackgroundColor}`,
+  }}
+>
+  <span
+    className="d-inline-block rounded-circle me-1"
+    style={{ width: "8px", height: "8px", backgroundColor: `#${calendar.ForegroundColor}`, opacity: 0.7 }}
+  />
+  {calendar.Name}
+</span>
+```
+
+---
+
+## Comparing IANA Timezones in JS — Canonicalize Both Sides <!-- learned: 2026-04-22 -->
+
+Never compare a server-supplied timezone string (`sTimeZone`) to
+`Intl.DateTimeFormat().resolvedOptions().timeZone` with `===`. The browser
+returns canonical IANA names (`America/New_York`, `UTC`) but the configured
+value may be an alias (`US/Eastern`, `Etc/UTC`, `US/Pacific`) — all equivalent
+zones, but a strict string compare fires a false "timezone mismatch" warning.
+
+**Rule:** run the configured zone through
+`Intl.DateTimeFormat(undefined, { timeZone: configured }).resolvedOptions().timeZone`
+before comparing. The browser resolves the alias to its canonical form, and both
+sides are then directly comparable. Wrap in `try/catch` — an invalid/unknown
+zone throws `RangeError`.
+
+```js
+// ❌ WRONG — fires false warning for US/Eastern vs America/New_York
+if (browser === configured) { /* show mismatch warning */ }
+
+// ✅ CORRECT — canonicalize configured via Intl, then compare
+let browser, canonicalConfigured;
+try {
+    browser = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    canonicalConfigured = Intl.DateTimeFormat(undefined, { timeZone: configured })
+        .resolvedOptions().timeZone;
+} catch (e) {
+    return; // unknown zone — fail closed, no warning
+}
+if (browser === canonicalConfigured) return; // equivalent zones
+```
+
+See `src/event/views/calendar.php` for the calendar-badge mismatch warning.
+Cypress stubs for this check must **pass through** when the caller supplies
+an explicit `timeZone` option — see `cypress-testing.md` → "Stubbing the
+Browser Timezone for UI Tests" for the stub gotcha.
+
+---
+
+## Collapse triggers must be `<button>`, not `<h4 data-bs-toggle>` <!-- learned: 2026-04-21 -->
+
+Bootstrap 5 lets you put `data-bs-toggle="collapse"` on any element, but
+headings are not keyboard-focusable — keyboard-only users can't expand or
+collapse the section. Use a `<button>` (or add `role="button"`, `tabindex="0"`,
+and Enter/Space key handlers) so the control is reachable.
+
+```html
+<!-- ❌ WRONG — <h4> is not focusable; keyboard users cannot toggle -->
+<div class="card-header">
+    <h4 data-bs-toggle="collapse" data-bs-target="#collapseDebug"
+        aria-expanded="false" aria-controls="collapseDebug"
+        style="cursor: pointer;">
+        <i class="fa fa-terminal me-2"></i> SMTP Debug Log
+    </h4>
+</div>
+
+<!-- ✅ CORRECT — <button> is focusable and gets Enter/Space for free -->
+<div class="card-header p-0">
+    <button type="button"
+            class="btn btn-link w-100 text-start text-decoration-none text-reset p-3 m-0"
+            data-bs-toggle="collapse" data-bs-target="#collapseDebug"
+            aria-expanded="false" aria-controls="collapseDebug">
+        <span class="h4 mb-0 d-flex align-items-center">
+            <i class="fa fa-terminal me-2"></i> SMTP Debug Log
+            <i class="fa fa-chevron-down ms-auto"></i>
+        </span>
+    </button>
+</div>
+```
+
+Keep the `h4 mb-0` typography on the inner `<span>` so visual weight is
+preserved. The card-header's `p-0` + the button's `p-3` keeps the hit target
+filling the whole header, so clicking the icon still toggles.
+
+---
+
+## Safe hash lookup: `getElementById(hash.slice(1))`, not `querySelector(hash)` <!-- learned: 2026-04-21 -->
+
+`document.querySelector(window.location.hash)` parses the hash as a CSS
+selector — any fragment with chars that aren't valid in a selector (pasted
+URLs, `.` inside an id, etc.) throws `DOMException` and kills the rest of
+the page initializer. Use `getElementById` with the leading `#` stripped —
+no selector parsing, never throws:
+
+```js
+// ❌ WRONG — throws DOMException on malformed hashes
+var target = document.querySelector(window.location.hash);
+
+// ✅ CORRECT — always safe; returns null for unknown ids
+if (!window.location.hash) return;
+var target = document.getElementById(window.location.hash.slice(1));
+if (!target) return;
+```
+
+Apply this anywhere a page does deep-link / scroll-to-anchor handling.
+Example site: `src/admin/views/debug.php` (the init code that opens a
+tab-pane or collapse when `location.hash` matches its id).
+
+---
+
+## Maps Modernization — Roadmap Status <!-- learned: 2026-05-10 -->
+
+The Maps Modernization epic (MAPS-00 through MAPS-18) is substantially complete. MAPS-01 through MAPS-11 are all closed (Google Maps → Leaflet+OSM migration done). The roadmap for the remaining tickets:
+
+| Ticket | Title | Status |
+|--------|-------|--------|
+| [#8055](https://github.com/ChurchCRM/CRM/issues/8055) MAPS-12 | Radius search UX improvement | **Open — 7.4.0** |
+| [#8056](https://github.com/ChurchCRM/CRM/issues/8056) MAPS-13 | Marker clustering | **Closed — won't do** |
+| [#8057](https://github.com/ChurchCRM/CRM/issues/8057) MAPS-14 | Color-coded care status pins | **Closed — won't do** |
+| [#8058](https://github.com/ChurchCRM/CRM/issues/8058) MAPS-15 | Small group assignment overlay | **Closed — won't do** |
+
+**Do not reopen or re-implement MAPS-13/14/15** without explicit user approval — closed as out-of-scope during 7.4.0 milestone review (2026-05-10). MAPS-12 (#8055) is the only remaining maps enhancement.
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`
-**React Components:** `react/`
 **Webpack Entry Points:** `webpack/`
 **Locale Files:** `locale/messages.json`, `locale/terms/messages.po`
 **Build Config:** `webpack.config.js`, `package.json`
+
+### Quill 2 — Toolbar is a Sibling, Not a Child <!-- learned: 2026-04-22 -->
+
+Unlike Quill 1, Quill 2 inserts `.ql-toolbar` as a **previous sibling** of
+the container element, not a child. Three gotchas:
+
+1. **Double-border seam**: toolbar and container each render a full border,
+   showing a 2px seam where they meet. Fix by removing the toolbar's
+   bottom border and squaring the container's top corners so they read as
+   one unified control.
+
+   ```scss
+   .ql-toolbar.ql-snow {
+     border: 1px solid var(--tblr-border-color) !important;
+     border-bottom-width: 0 !important;
+     border-top-left-radius: var(--tblr-border-radius, 4px);
+     border-top-right-radius: var(--tblr-border-radius, 4px);
+   }
+   .quill-editor-container.ql-container {
+     border-top-left-radius: 0;
+     border-top-right-radius: 0;
+   }
+   ```
+
+2. **Double-init guard fails**: `container.querySelector('.ql-toolbar')` in
+   the init function returns `null` because the toolbar isn't a descendant.
+   Check the previous sibling instead: `container.previousElementSibling?.classList.contains('ql-toolbar')`.
+
+3. **Height: 100% stretches to flex parent**: Quill's default
+   `.ql-container { height: 100% }` makes the editor fill any flex-column
+   ancestor, pushing sibling rows off the page. Override in SCSS:
+
+   ```scss
+   .quill-editor-container.ql-container,
+   .ql-container.ql-snow {
+     height: auto !important;
+   }
+   .quill-editor-container {
+     min-height: 200px;
+     max-height: 400px;   // cap even if content overflows — editor scrolls internally
+     overflow: hidden;    // scrollbar lives inside .ql-editor
+   }
+   .quill-editor-container .ql-editor {
+     min-height: inherit;
+     max-height: inherit;
+     overflow-y: auto;
+   }
+   ```
+
+### Quill Container Sizing — `data-editor-size` Attribute <!-- learned: 2026-04-22 -->
+
+The Quill container uses a `data-editor-size` data attribute for
+compact / default / tall sizing instead of inline `style="min-height:..."`.
+`QuillEditorHelper::getQuillEditorContainer()` accepts a named size and
+auto-translates legacy pixel strings (e.g. `"100px"` → `"compact"`) for
+back-compat:
+
+```scss
+.quill-editor-container {
+  min-height: 200px; max-height: 400px;  // default
+  &[data-editor-size="compact"] { min-height: 120px; max-height: 240px; }
+  &[data-editor-size="tall"]    { min-height: 300px; max-height: 520px; }
+}
+```
+
+Call sites ask for `'compact' | 'default' | 'tall'`, never inline px.
+
+### Shared Form Renderer for Modal + Page Surfaces <!-- learned: 2026-04-22 -->
+
+When the same form lives in two surfaces (e.g. a Bootstrap modal AND a
+full-page editor), extract it into a **standalone ES module** that
+exports a renderer returning a controller object. Both surfaces pass a
+container element + callbacks; they own their own chrome (modal header/
+footer vs page header/footer buttons):
+
+```js
+// webpack/event-form.js
+export function renderEventEditor(container, event, calendars, eventTypes, options = {}) {
+  const { titleHost = null, onValidityChange = null, groups = [] } = options;
+  container.innerHTML = fieldsMarkup;
+  // ... wire TomSelect/Quill/datetime/radios — all the same
+  return {
+    getEvent: () => event,
+    validate,
+    destroy: () => { /* tear down TomSelect/Quill */ },
+  };
+}
+```
+
+```js
+// webpack/calendar-event-editor.js — modal caller
+formController = renderEventEditor(modalBody, event, cals, types, {
+  titleHost: modalHeader,
+  groups,
+  onValidityChange: (valid) => { saveBtn.disabled = !valid; },
+});
+
+// webpack/event-editor.js — full-page caller
+const controller = renderEventEditor(mount, event, cals, types, {
+  titleHost: inlineTitleDiv, groups,
+  onValidityChange: (valid) => { if (saveBtn) saveBtn.disabled = !valid; },
+});
+```
+
+The modal wraps it in Bootstrap chrome + `#eventSaveBtn`; the page wraps
+it in a card + redirect-on-success. Net effect: **zero field-set drift
+possible by construction** because there's one renderer. Both save paths
+go to `POST /api/events` via a shared `saveEvent()` helper in the module.
+
+### `titleHost` Option for Header-Embedded Title Input <!-- learned: 2026-04-22 -->
+
+The modal renders the event title as a big bold input inside the
+`.modal-header`, while the full-page renders it inline in the card body.
+Same renderer, two placements: pass an optional `titleHost` element in
+the options; if set, the title markup goes there; if not, it's prepended
+to the container body. Keeps the split cleanly separated.
+
+### New Events Need Default Start/End or Save Stays Disabled <!-- learned: 2026-04-22 -->
+
+The unified event form validates `event.Start != null && event.End != null`.
+The calendar modal gets these pre-filled from the clicked calendar day,
+but the full-page surface has no click context — without a seed, Save
+stays disabled forever:
+
+```js
+// webpack/event-editor.js — page mount
+const defaultStart = new Date();
+defaultStart.setMinutes(0, 0, 0);
+defaultStart.setHours(defaultStart.getHours() + 1);
+const defaultEnd = new Date(defaultStart);
+defaultEnd.setHours(defaultEnd.getHours() + 1);
+const event = { Id: 0, Title: '', Type: 0, PinnedCalendars: [], Start: defaultStart, End: defaultEnd, ... };
+```
+
+Always seed a sensible default time range when bootstrapping a form with
+validation that depends on it.
+
+### PinnedCalendars is Optional — Surface Empty State via Hint <!-- learned: 2026-04-22 -->
+
+The data model allows events without pinned calendars (they just don't
+appear on calendar views — matches legacy editor behaviour). Don't make
+it hard-required in `validate()`; instead surface the empty state with
+a warning hint that auto-shows/hides via TomSelect's change event:
+
+```js
+function updateCalendarsEmptyHint() {
+  const hint = document.getElementById("calendarsEmptyHint");
+  if (!hint) return;
+  const empty = !event.PinnedCalendars || event.PinnedCalendars.length === 0;
+  hint.classList.toggle("d-none", !empty);
+}
+tsCalendars.on("change", () => {
+  event.PinnedCalendars = tsCalendars.getValue().map((v) => parseInt(v, 10));
+  updateCalendarsEmptyHint();
+  fireValidity();
+});
+updateCalendarsEmptyHint(); // initial sync
+```
+
+Hint markup:
+```html
+<div class="form-text text-warning d-none" id="calendarsEmptyHint">
+  <i class="ti ti-info-circle me-1"></i>No calendar selected — this event will be saved but won't appear on any calendar view.
+</div>
+```
+
+### Title Required-Feedback: Don't Flash on Mount <!-- learned: 2026-04-22 -->
+
+Showing "This field is required" immediately on mount for an empty Title
+input is visual noise — the user hasn't had a chance to type yet. Track
+a `titleTouched` flag and only surface the error after the first `input`
+or `blur` event:
+
+```js
+let titleTouched = Boolean(event.Title && event.Title.length > 0);
+titleInput.addEventListener("input", () => {
+  event.Title = titleInput.value;
+  titleTouched = true;
+  fireValidity();
+});
+titleInput.addEventListener("blur", () => {
+  titleTouched = true;
+  updateTitleFeedback();
+});
+function updateTitleFeedback() {
+  // Only show when the user has interacted AND the title is empty.
+  const show = titleTouched && event.Title !== undefined && event.Title.length === 0;
+  titleFb.style.display = show ? "block" : "none";
+}
+```
+
+### Direct jQuery Click Bindings Override Global Delegated Handlers <!-- learned: 2026-04-22 -->
+
+jQuery direct bindings (`$(".class").click(fn)`) fire **before** delegated handlers
+(`$(document).on("click", ".class", fn)`). When a global handler is registered in
+`CRMJSOM.js` and a page-specific JS file also binds the same selector directly,
+the page-specific handler wins — and the global handler never runs.
+
+The CI failure in `standard.person.delete.spec.js` traced to a stale handler
+in `MemberView.js` that redirected to `/v2/dashboard` instead of `/people/list`,
+overriding the correct delegated handler in `CRMJSOM.js`.
+
+**Rule:** When moving a click handler from a per-page JS file into the global
+delegated handler in `CRMJSOM.js`, **search and remove every direct binding for
+that selector across all page-specific JS files** before shipping.
+
+```bash
+# Find all direct bindings for a selector across webpack/ and src/skin/js/
+grep -r '\.delete-person\|\.AddToCart' webpack/ src/skin/js/ --include="*.js" --include="*.ts"
+```
+
+If the page-specific file no longer needs any code, replace it with a comment
+header only (never leave empty files — Webpack may warn):
+
+```js
+// Click handlers are registered globally in CRMJSOM.js.
+```
+
+### Literal `</script>` Inside an Inline `<script>` Block Closes the Tag <!-- learned: 2026-04-25 -->
+
+The HTML parser scans an inline `<script>` body for `</script>` *as text* — it
+doesn't understand JS comments, string literals, or template literals. A stray
+`</script>` anywhere in the script — even inside `// ...` or `/* ... */` — ends
+the script tag at that position, and everything after it is treated as HTML.
+Symptom: `SyntaxError: Unexpected end of input` for every page that loads the
+file, and the latter half of the script never executes (DataTables, click
+handlers, polling intervals all silently dead).
+
+This bit PR #8805: a comment explaining a security rationale read
+`// backslashes / newlines / </script> can still break out.` — the literal
+`</script>` killed the entire Kiosk Manager page and failed 9 Cypress UI specs.
+
+**Rule:** Never write the literal characters `</script>` inside any inline
+`<script nonce="...">` block. Reword (`closing-script tag`), split (`</scr` +
+`ipt>`), or escape (`<\/script>`).
+
+```php
+<script nonce="...">
+  // ❌ BREAKS THE PAGE
+  // backslashes / newlines / </script> can still break out
+
+  // ✅ SAFE — same meaning, no closing tag
+  // backslashes / newlines / closing-script tags can still break out
+</script>
+```
+
+Inline `<script>` blocks are common in Slim views (`src/**/views/*.php`,
+`src/**/templates/*.php`). When working in those, scan your edits for any
+literal `</script>` before saving.
+
+### User-Controlled Strings in Inline `onclick` — Data-Attrs + Delegated Handler <!-- learned: 2026-04-25 -->
+
+`onclick="myFunc('${escapeHtml(name)}')"` looks safe but isn't:
+
+1. `escapeHtml()` produces HTML entities (`&#039;`, `&amp;`). Inside an
+   `onclick` JS string, those entities show up **literally** at runtime
+   (e.g. the rename prompt prefills with `O&#039;Brien` instead of `O'Brien`).
+2. JS-string breakout characters (`'`, `\`, newlines, `</script>`) aren't
+   escaped by `escapeHtml()`. A name like `\'); alert(1); //` still breaks out.
+3. CSP forbids inline `onclick` outright (the project rule lives in
+   MEMORY.md → "no inline `onclick` (CSP)").
+
+**Pattern:** put the user string into an HTML attribute (`escapeHtml()` IS the
+right encoding here — attribute context), then read it from a delegated click
+handler.
+
+```js
+// In the row renderer (DataTables, list, etc.)
+var nameAttr = window.CRM.escapeHtml(row.Name);  // attribute-safe
+var html = '<button class="btn btn-outline-secondary"' +
+  ' data-row-action="rename"' +
+  ' data-row-id="' + row.Id + '"' +
+  ' data-row-name="' + nameAttr + '"' +
+  ' title="Rename"><i class="fa-solid fa-pen"></i></button>';
+
+// Once, after the table is initialized
+$("#MyTable").on("click", "[data-row-action]", function() {
+  var action = $(this).data("row-action");
+  var id = parseInt($(this).data("row-id"), 10);
+  var name = String($(this).data("row-name") || "");  // jQuery decodes HTML entities back to the original
+  if (action === "rename") {
+    renameRow(id, name);
+  }
+});
+```
+
+`$(...).data()` decodes the attribute value back to the original string — the
+JS-context concerns disappear because the string never enters a JS literal.

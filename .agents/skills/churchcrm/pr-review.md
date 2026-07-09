@@ -212,7 +212,7 @@ Work through each section that applies to the changed files.
 - [ ] If endpoint changed: annotations updated
 - [ ] Named functions annotated above the `function` keyword
 - [ ] Closures: standalone `@OA\` docblock above the `$group->get(...)` call with explicit `operationId`
-- [ ] After annotation changes: `composer run openapi-public` or `openapi-private` regenerated
+- [ ] After annotation changes: `composer run openapi:public` or `openapi:private` regenerated
 
 ### Testing
 
@@ -252,7 +252,7 @@ For each type of change, determine what docs need updating:
 
 ```bash
 # Has the feature touched user-facing UI text, settings, or API contracts?
-git diff origin/master...origin/<branch> -- 'src/**/*.php' 'src/**/*.js' 'react/**/*.tsx'
+git diff origin/master...origin/<branch> -- 'src/**/*.php' 'src/**/*.js' 'webpack/**/*.js'
 
 # Are there new routes?
 git diff origin/master...origin/<branch> -- 'src/api/routes/' 'src/admin/routes/'
@@ -423,6 +423,27 @@ All threads resolved."
 
 **Rule:** Never leave addressed threads unresolved. Always resolve them after pushing fixes.
 
+### Review comments may reference older commits <!-- learned: 2026-03-29 -->
+
+A PR with multiple commits will have review comments pinned to the commit SHA they were posted on. **Comments posted on an earlier commit may already be fixed by a later commit.** Before making any code changes, always verify the issue still exists in the current branch state:
+
+```bash
+# Check current branch file state
+git show origin/<branch>:<path/to/file>
+
+# Then compare to what the review comment describes
+# If the issue is already fixed: just resolve the thread, don't re-edit the code
+```
+
+**Workflow when review comments exist:**
+1. Fetch open threads (GraphQL above)
+2. `git show origin/<branch>:<file>` to read the current branch state
+3. For each thread: determine if it's **already fixed**, **needs a code change**, or **should be accepted as-is**
+4. Make any needed code changes, push, then resolve ALL addressed threads
+5. Post a single follow-up comment summarising each thread's resolution
+
+Resolving a thread without pushing code is valid when the issue was already fixed in a later commit — explain this in the follow-up comment.
+
 ---
 
 ## Phase 8 — Capture Learnings Back to Skills
@@ -495,4 +516,39 @@ Add to `tabler-components.md` under a "Cards" section:
 
 ---
 
-Last updated: 2026-03-03
+## Phase 7 — Post-PR Skill Updates (MANDATORY) <!-- learned: 2026-03-28 -->
+
+**After every PR is merged or ready for merge, update skill files with learnings from the session.**
+
+This is not optional — every PR teaches something. Capture it immediately while context is fresh.
+
+### What to Capture
+
+- **New patterns** discovered during implementation (e.g., print support, CSP-safe event binding)
+- **Gotchas** caught by PR reviewers (e.g., inline `onclick` blocked by CSP)
+- **Architecture decisions** made (e.g., global `@media print` vs per-page rules)
+- **Narrowed selectors** or corrections from review feedback
+- **New files/conventions** introduced (e.g., print button IDs, JS file mappings)
+
+### How to Update
+
+1. Identify which skill files are relevant to the PR's learnings
+2. Add a subsection with `<!-- learned: YYYY-MM-DD -->` on the heading
+3. Include a short explanation + code example (prefer examples over prose)
+4. Update the SKILL.md index if a new category was added
+5. Check if `MEMORY.md` needs a one-liner under Critical Patterns
+
+### Example Learnings by PR Type
+
+| PR Type | Skills to Update |
+|---------|-----------------|
+| UI/UX change | `frontend-development.md`, `tabler-components.md` |
+| Security fix | `security-best-practices.md`, `authorization-security.md` |
+| API change | `api-development.md`, `service-layer.md` |
+| CSP/inline JS fix | `security-best-practices.md`, `frontend-development.md` |
+| Test fix | `cypress-testing.md`, `testing.md` |
+| Print/PDF | `frontend-development.md` (Print Support section) |
+
+---
+
+Last updated: 2026-03-28

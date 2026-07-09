@@ -1,19 +1,21 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security: user must be administrator to use this page
 AuthenticationManager::redirectHomeIfNotAdmin();
+
+$aPropTypes = CustomFieldUtils::getPropTypes();
 
 $sPageTitle = gettext('Custom Person Fields Editor');
 $sPageSubtitle = gettext('Define custom fields to collect additional person data');
@@ -66,7 +68,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             if (isset($_POST[$iFieldID . 'special'])) {
                 $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
 
-                if ($aSpecialFields[$iFieldID] == 0) {
+                if ($aSpecialFields[$iFieldID] === 0) {
                     $aSpecialErrors[$iFieldID] = true;
                     $bErrorFlag = true;
                 } else {
@@ -86,7 +88,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     $customField
                         ->setName($aNameFields[$iFieldID])
                         ->setSpecial($aSpecialFields[$iFieldID])
-                        ->setFieldSec((int)$aFieldSecurity[$iFieldID])
+                        ->setFieldSecurity((int)$aFieldSecurity[$iFieldID])
                         ->save();
                 }
             }
@@ -303,6 +305,11 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             return false;
         }
 
+        $(document).on('click', '.js-delete-field', function () {
+            var btn = $(this);
+            confirmDeleteField(btn.data('field-name'), btn.data('field-id'));
+        });
+
         <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
         $(document).ready(function() {
             window.CRM.notify(
@@ -363,7 +370,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         </div>
 
         <?php
-        if ($numRows == 0) {
+        if ($numRows === 0) {
         ?>
             <div class="alert alert-info" role="alert">
                 <i class="fa-solid fa-circle-info"></i>
@@ -446,7 +453,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         echo '<small class="text-danger d-block mt-1">' . gettext('You must select a group.') . '</small>';
                                     }
                                 } elseif ($aTypeFields[$row] == 12) {
-                                    echo '<a href="javascript:void(0)" onclick="window.open(\'OptionManager.php?mode=custom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '\',\'ListOptions\',\'toolbar=no,status=no,width=400,height=500\')">' . gettext('Edit List Options') . '</a>';
+                                    echo '<a href="' . SystemURLs::getRootPath() . '/admin/system/options?mode=custom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '" target="_blank">' . gettext('Edit List Options') . '</a>';
                                 } else {
                                     echo '&nbsp;';
                                 } ?>
@@ -461,10 +468,6 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 } ?>
                             </td>
                             <td class="w-1">
-                                <?php
-                                $fieldNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
-                                $fieldIdJs = htmlspecialchars(json_encode($aFieldFields[$row]), ENT_QUOTES, 'UTF-8');
-                                ?>
                                 <div class="dropdown">
                                     <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                         <i class="ti ti-dots-vertical"></i>
@@ -481,7 +484,9 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                             echo '<div class="dropdown-divider"></div>';
                                         }
                                         ?>
-                                        <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $fieldIdJs ?>)">
+                                        <button type="button" class="dropdown-item text-danger js-delete-field"
+                                            data-field-name="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>"
+                                            data-field-id="<?= InputUtils::escapeAttribute($aFieldFields[$row]) ?>">
                                             <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                         </button>
                                     </div>

@@ -18,23 +18,41 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 <?php endif; ?>
 
 <div class="container-fluid py-4">
+    <!-- Navigation Bar for logged-in limited users -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-0">
+                <i class="fa-solid fa-clipboard-check me-2 text-primary"></i><?= gettext('Family Verification') ?>
+            </h2>
+            <p class="text-body-secondary mb-0"><?= gettext('Please review your family information below and confirm or request changes.') ?></p>
+        </div>
+        <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="btn btn-outline-secondary">
+            <i class="fa-solid fa-right-from-bracket me-1"></i><?= gettext('Log Out') ?>
+        </a>
+    </div>
+
     <!-- Header Section -->
     <div class="card shadow-sm mb-4">
         <div class="card-body">
             <div class="row align-items-center">
                 <div class="col-auto">
-                            <div class="avatar avatar-lg" data-image-entity-type="family" data-image-entity-id="<?= $family->getId() ?>">
-                        <?php if ($family->getPhoto()->hasUploadedPhoto()) { ?>
-                            <img src="data:<?= $family->getPhoto()->getPhotoContentType() ?>;base64,<?= base64_encode($family->getPhoto()->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($family->getName()) ?>" class="avatar-img">
-                            <span class="avatar-initials d-none"><?= substr($family->getName(), 0, 2) ?></span>
+                    <?php // Photos render inline as base64: this token page has no session, so the avatar API would 403. ?>
+                    <?php $familyPhoto = $family->getPhoto(); ?>
+                    <div class="avatar avatar-lg">
+                        <?php if ($familyPhoto->hasUploadedPhoto()) { ?>
+                            <?php try { ?>
+                                <img src="data:<?= $familyPhoto->getPhotoContentType() ?>;base64,<?= base64_encode($familyPhoto->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($family->getName()) ?>" class="avatar-img">
+                            <?php } catch (\Exception $e) { ?>
+                                <span class="avatar-title initials"><?= htmlspecialchars(substr($family->getName(), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
+                            <?php } ?>
                         <?php } else { ?>
-                            <span class="avatar-title initials"><?= substr($family->getName(), 0, 2) ?></span>
+                            <span class="avatar-title initials"><?= htmlspecialchars(substr($family->getName(), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
                         <?php } ?>
                     </div>
                 </div>
                 <div class="col">
                     <h1 class="mb-2"><?= InputUtils::escapeHTML($family->getName()) ?></h1>
-                    <div class="text-muted">
+                    <div class="text-body-secondary">
                         <div class="mb-2">
                             <i class="fa-solid fa-fw fa-map-marker text-primary"></i>
                             <?= InputUtils::escapeHTML($family->getAddress()) ?>
@@ -91,14 +109,17 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                 <div class="col-lg-4 col-md-6">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
-                            <!-- Avatar with Initials -->
                             <div class="mb-3">
-                                <div class="avatar avatar-xlg mx-auto" data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>">
-                                    <?php if ($person->getPhoto()->hasUploadedPhoto()) { ?>
-                                        <img src="data:<?= $person->getPhoto()->getPhotoContentType() ?>;base64,<?= base64_encode($person->getPhoto()->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" class="avatar-img">
-                                        <span class="avatar-initials d-none"><?= substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2) ?></span>
+                                <?php $personPhoto = $person->getPhoto(); ?>
+                                <div class="avatar avatar-xlg mx-auto">
+                                    <?php if ($personPhoto->hasUploadedPhoto()) { ?>
+                                        <?php try { ?>
+                                            <img src="data:<?= $personPhoto->getPhotoContentType() ?>;base64,<?= base64_encode($personPhoto->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" class="avatar-img">
+                                        <?php } catch (\Exception $e) { ?>
+                                            <span class="avatar-title initials"><?= htmlspecialchars(substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
+                                        <?php } ?>
                                     <?php } else { ?>
-                                        <span class="avatar-title initials"><?= substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2) ?></span>
+                                        <span class="avatar-title initials"><?= htmlspecialchars(substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -106,11 +127,11 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                             <!-- Name and Role -->
                             <h5 class="card-title mb-1">
                                 <?php if (!empty($person->getTitle())) { ?>
-                                    <small class="text-muted"><?= InputUtils::escapeHTML($person->getTitle()) ?></small><br>
+                                    <small class="text-body-secondary"><?= InputUtils::escapeHTML($person->getTitle()) ?></small><br>
                                 <?php } ?>
                                 <?= InputUtils::escapeHTML($person->getFullName()) ?>
                             </h5>
-                            <p class="text-muted mb-3">
+                            <p class="text-body-secondary mb-3">
                                 <i class="fa-solid fa-<?= ($person->isMale() ?"mars" :"venus") ?> me-1"></i>
                                 <?= InputUtils::escapeHTML($person->getFamilyRoleName()) ?>
                             </p>
@@ -169,7 +190,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                                 <p class="mb-2"><strong><?= gettext("Groups") ?></strong></p>
                                 <div class="text-start">
                                     <?php foreach ($person->getPerson2group2roleP2g2rs() as $groupMembership) {
-                                        if ($groupMembership->getGroup() != null) {
+                                        if ($groupMembership->getGroup() !== null) {
                                             $listOption = ListOptionQuery::create()
                                                 ->filterById($groupMembership->getGroup()->getRoleListId())
                                                 ->filterByOptionId($groupMembership->getRoleId())
@@ -195,12 +216,13 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
     </div>
 </div>
 
-<!-- Floating Action Buttons -->
-<div class="fab-container">
-    <button type="button" class="fa-brands fab-success" id="confirmVerifyBtn" data-bs-toggle="modal" data-bs-target="#confirm-Verify" title="<?= gettext('Confirm family information') ?>">
-        <i class="fa-solid fa-check"></i>
-        <span class="fab-label"><?= gettext('Confirm') ?></span>
-    </button>
+<!-- Action Bar -->
+<div class="container-fluid mb-4">
+    <div class="d-flex justify-content-center gap-2">
+        <button type="button" class="btn btn-success btn-lg" id="confirmVerifyBtn" data-bs-toggle="modal" data-bs-target="#confirm-Verify">
+            <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Confirm Family Info') ?>
+        </button>
+    </div>
 </div>
 
 <!-- Verification Modal -->
@@ -257,7 +279,8 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                 <button type="button" class="btn btn-success" id="onlineVerifyBtn">
                     <i class="fa-solid fa-paper-plane me-2"></i><?= gettext("Submit Verification") ?>
                 </button>
-                <a href="<?= ChurchMetaData::getChurchWebSite() ?>" id="onlineVerifySiteBtn" class="btn btn-primary" target="_blank">
+                <?php $churchWebsite = ChurchMetaData::getChurchWebSite(); ?>
+                <a href="<?= !empty($churchWebsite) ? htmlspecialchars($churchWebsite) : '#' ?>" id="onlineVerifySiteBtn" class="btn btn-primary d-none" target="_blank">
                     <i class="fa-solid fa-globe me-2"></i><?= gettext("Visit Our Website") ?>
                 </a>
             </div>

@@ -1,0 +1,3 @@
+id,name,slug,description,timezone
+cal-1,Church Events,church-events,Main church calendar,America/Chicago
+cal-2,Youth Ministry,youth,Youth ministry events,America/Chicago

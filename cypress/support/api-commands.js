@@ -52,6 +52,100 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivatePlainAuthAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        return cy.makePrivateAPICall(
+            Cypress.env("plainauth.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
+    "makePrivateEditSelfAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        return cy.makePrivateAPICall(
+            Cypress.env("selfedit.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+/**
+ * EditSelf+Notes user — regression sentinel for FamilyReadMiddleware vs FamilyMiddleware.
+ *
+ * User: lena.black (ID 100, family 20) with usr_EditSelf=1, usr_Notes=1 in DB.
+ *
+ * Post-PR#9016 (EditSelf exclusive mode): hasNoAdminPermissions() returns true for any
+ * user with isEditSelf()=true, regardless of Notes. AuthMiddleware therefore blocks this
+ * user (403) before reaching FamilyReadMiddleware or FamilyMiddleware.
+ *
+ * Future use: if EditSelf exclusivity is ever relaxed to permit EditSelf+Notes, this user
+ * should get 200 on avatar/nav/photo (FamilyReadMiddleware, canReadFamily=true) and 403 on
+ * full profile/notes for non-own family 1 (FamilyMiddleware, canViewFamily=false). That
+ * would make these tests detect a FamilyReadMiddleware→FamilyMiddleware regression.
+ */
+Cypress.Commands.add(
+    "makePrivateEditSelfPlusNotesAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        return cy.makePrivateAPICall(
+            Cypress.env("selfedit.plus.notes.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
+    "makePrivateLimitedAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // limited.user (id=4): usr_Notes=0, usr_Admin=0, usr_EditRecords=0,
+        // usr_EditSelf=0 — truly zero-permission user. Blocked by
+        // AuthMiddleware::hasNoAdminPermissions() → always returns 403.
+        // Use this fixture ONLY to verify that Notes-gated endpoints return 403.
+        // Do NOT use for routes that should return 200 for authenticated users
+        // (e.g. timeline) — use makePrivateEditRecordsAPICall instead.
+        return cy.makePrivateAPICall(
+            Cypress.env("limited.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
+    "makePrivateEditRecordsAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // judith.matthews (id=95): usr_EditRecords=1, usr_Notes=0, usr_Admin=0.
+        // Passes AuthMiddleware (has EditRecords permission) but canReadNotes()
+        // returns false (no Notes flag). Use for testing routes that should
+        // return 200 to authenticated users but strip note items (e.g. timeline).
+        return cy.makePrivateAPICall(
+            Cypress.env("editrecords.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivateAPICall",
     (key, method, url, body, expectedStatus = 200, timeoutMs) => {
         const requestOptions = {
@@ -63,6 +157,12 @@ Cypress.Commands.add(
                 "x-api-key": key,
             },
             body: body,
+            // Prevent the browser session cookie from being sent alongside the API key.
+            // cy.request() shares the browser cookie jar by default; sending both the
+            // session cookie and x-api-key causes PHP's AuthenticationManager to
+            // overwrite $_SESSION['AuthenticationProvider'] with APITokenAuthentication,
+            // which breaks subsequent browser page loads on the same session.
+            withCredentials: false,
         };
 
         if (typeof timeoutMs === 'number') {

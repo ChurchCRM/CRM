@@ -44,5 +44,10 @@ abstract class BaseUserEmail extends BaseEmail
         return $this->user->getUserName();
     }
 
+    protected function getPreheader(): string
+    {
+        return $this->getSubSubject();
+    }
+
     abstract protected function buildMessageBody(): string;
 }

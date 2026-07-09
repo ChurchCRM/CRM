@@ -36,7 +36,7 @@ This directory now serves as a human-friendly index. All skill files are in `.ag
 
 ### Frontend & UI
 - [Frontend Development](../../.agents/skills/churchcrm/frontend-development.md)
-- [Bootstrap 4.6.2 & AdminLTE](../../.agents/skills/churchcrm/bootstrap-adminlte.md)
+- [Bootstrap 5 & Tabler Migration](../../.agents/skills/churchcrm/bootstrap-5-migration.md)
 - [Webpack & TypeScript](../../.agents/skills/churchcrm/webpack-typescript.md)
 - [i18n & Localization](../../.agents/skills/churchcrm/i18n-localization.md)
 

@@ -15,49 +15,95 @@ ChurchCRM uses Slim 4 for API routes and modern MVC features. This skill covers 
 
 ## Application Setup Pattern
 
+### MVC Modules — Use MvcAppFactory <!-- learned: 2026-04-07 -->
+
+All HTML-serving Slim apps (admin, finance, groups, people, v2) **must** use
+`MvcAppFactory::create()`. This centralises base path, body parsing, routing,
+error handling (Tabler-styled HTML pages), and the standard middleware stack.
+
 ```php
-// Entry point: src/api/index.php or src/finance/index.php
-use Slim\Factory\AppFactory;
-use Slim\Views\PhpRenderer;
-use DI\Container;
+// ✅ CORRECT — MVC entry points
+use ChurchCRM\Slim\MvcAppFactory;
+use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
-$container = new Container();
-$container->set('view', fn() => new PhpRenderer($viewDir));
-AppFactory::setContainer($container);
+$app = MvcAppFactory::create('/finance', [
+    'dashboardUrl'  => '/finance/',
+    'dashboardText' => gettext('Back to Finance Dashboard'),
+    'roleMiddleware' => FinanceRoleAuthMiddleware::class, // optional
+]);
+
+require __DIR__ . '/routes/dashboard.php';
+$app->run();
+
+// ❌ WRONG — Don't copy-paste AppFactory + middleware + error handler
 $app = AppFactory::create();
+$app->setBasePath(...);
+// ... 50+ lines of boilerplate ...
+```
 
-// Middleware (LIFO order - last added runs FIRST!)
+Config options:
+- `dashboardUrl` — path (relative to root) for error page "go back" button
+- `dashboardText` — label for the button
+- `roleMiddleware` — FQCN of role-auth middleware (omit for no role check)
+
+`MvcAppFactory` does NOT include `VersionMiddleware` (only useful for API
+response headers, invisible in browser).
+
+### API Module — Direct AppFactory
+
+`api/index.php` is the only entry point that uses `AppFactory` directly
+with `registerDefaultJsonErrorHandler()`. It includes `VersionMiddleware`.
+
+```php
+// API entry point — NOT MvcAppFactory
+$app = AppFactory::create();
+$app->setBasePath(SlimUtils::getBasePath('/api'));
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
-$app->add(new CorsMiddleware());         // Last added, runs first
-$app->add(new AuthMiddleware());
-$app->add(new VersionMiddleware());      // First added, runs last
-
-// Routes
-$app->group('/api', function(RouteCollectorProxy $group) {
-    $group->get('/endpoint', fn($req, $res) => $res->withJson($data));
-});
-
-$app->run();
+// Error middleware AFTER routing — Slim 4 LIFO means it wraps routing and catches HttpNotFoundException
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+// ... custom middleware, routes, run
 ```
 
-## Middleware Order (CRITICAL)
+## Middleware Order (CRITICAL) <!-- learned: 2026-04-07 -->
 
-Slim 4 uses **Last In, First Out (LIFO)** ordering. Middleware added LAST executes FIRST:
+Slim 4 uses **Last In, First Out (LIFO)** ordering. Middleware added LAST executes FIRST.
+
+### The #1 Rule: Error middleware AFTER routing
+
+`addErrorMiddleware()` **MUST** be called **AFTER** `addRoutingMiddleware()`. This is because
+LIFO means it then wraps routing and catches `HttpNotFoundException` / `HttpMethodNotAllowedException`.
+If error middleware is added BEFORE routing, routing exceptions escape uncaught → **raw PHP 500**.
+
+```php
+// ✅ CORRECT — error middleware wraps routing (LIFO)
+$app->addBodyParsingMiddleware();  // 1st added → innermost
+$app->addRoutingMiddleware();      // 2nd added → wraps body parsing
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);  // 3rd added → wraps routing (outermost of these 3)
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);   // or registerDefaultHtmlErrorHandler()
+
+// Then custom middleware (added after error middleware, so they run BEFORE error handling)
+$app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
+
+// ❌ WRONG — error middleware BEFORE routing → 404s become raw 500s
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);  // Added first
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();  // Added after → routing exceptions NOT caught by error middleware
+```
+
+### Full execution order (request flows top-to-bottom)
 
 ```
-Order Added               Execution Order
-1. addBodyParsingMiddleware()   → 4th (processes body after routing)
-2. addRoutingMiddleware()       → 3rd (routes request)
-3. add(CorsMiddleware)          → 1st (first middleware to run)
-4. add(AuthMiddleware)          → 2nd (runs after CORS)
-5. add(VersionMiddleware)       → Last added, runs last
+Code order (add)          LIFO execution order (request)
+─────────────────         ──────────────────────────────
+1. addBodyParsing()       5th — innermost (parses body)
+2. addRouting()           4th — matches route or throws HttpNotFoundException
+3. addErrorMiddleware()   3rd — catches exceptions from routing + inner middleware
+4. add(CorsMiddleware)    2nd — CORS headers
+5. add(AuthMiddleware)    1st — outermost, runs first on request
 ```
-
-**Why it matters:**
-- Auth should run before routes (check permissions)
-- CORS should run first (allow/deny early)
-- Body parsing last (only needed after routing)
 
 ### Documenting Execution Order in Code <!-- learned: 2026-03-15 -->
 
@@ -248,6 +294,47 @@ echo $notification?->title ?? 'No Title';
 // ❌ WRONG - TypeError if null
 echo $notification->title;
 ```
+
+## Error Handler Architecture <!-- learned: 2026-04-07 -->
+
+ChurchCRM has two error handler registration methods in `SlimUtils`:
+
+| Method | Used by | Renders |
+|--------|---------|---------|
+| `registerDefaultHtmlErrorHandler()` | `MvcAppFactory` (all MVC modules) | Tabler HTML page (Header + error-page.php + Footer) for browsers, JSON for AJAX/API |
+| `registerDefaultJsonErrorHandler()` | `api/index.php` | JSON for API requests, HTML partial for browser requests |
+
+Both methods:
+- Call `setDefaultErrorHandler()` on the error middleware — **only one handler can exist**
+- Log via `LoggerUtils::getAppLogger()` (not a separate Monolog logger)
+- Sanitize messages via `sanitizeErrorMessage()`
+- Map exceptions to proper HTTP status (404, 403, 405, 500)
+- Detect API vs browser via `isApiRequest()` (Accept header, X-Requested-With, /api/ path)
+
+### Never rethrow in error handlers <!-- learned: 2026-04-07 -->
+
+Slim 4's `setDefaultErrorHandler` does NOT chain handlers — calling it
+twice overwrites the first. But if the first handler **rethrows**, the
+rethrown exception may bypass the replacement handler entirely and surface
+as a raw 500.
+
+```php
+// ❌ WRONG — rethrow causes 500 even if a real handler is registered after
+$errorMiddleware->setDefaultErrorHandler(function (...) use ($logger) {
+    $logger->error($exception->getMessage());
+    throw $exception; // ← THIS BREAKS EVERYTHING
+});
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware); // overwritten but too late
+
+// ✅ CORRECT — only one handler, no rethrow
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+```
+
+**`setupErrorLogger()` has been removed** — it was dead code that set a
+rethrowing handler always overwritten by the real handler. All logging is
+handled inside `registerDefaultHtmlErrorHandler` and
+`registerDefaultJsonErrorHandler`.
 
 ## API Error Handling (Critical)
 

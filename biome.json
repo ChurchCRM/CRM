@@ -7,7 +7,6 @@
   },
   "files": {
     "includes": [
-      "react/**",
       "src/**",
       "webpack/**",
       "!src/skin/v2",

@@ -24,6 +24,7 @@ use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
@@ -52,7 +53,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
 
 // Public plugin status endpoint - no admin required
 // Used by PersonView.js/FamilyView.js to check if MailChimp tab should be shown
-$app->get('/status/{pluginId}', function (Request $request, \Psr\Http\Message\ResponseInterface $response, array $args) {
+$app->get('/status/{pluginId}', function (Request $request, Response $response, array $args) {
     $pluginId = $args['pluginId'];
     $plugin = PluginManager::getPlugin($pluginId);
 
@@ -75,7 +76,6 @@ $app->addRoutingMiddleware();
 // Error middleware - use config-driven display (false in production)
 $displayErrors = \ChurchCRM\dto\SystemConfig::debugEnabled();
 $errorMiddleware = $app->addErrorMiddleware($displayErrors, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
 
 // Custom error handler for HTML pages
 $errorMiddleware->setDefaultErrorHandler(function (

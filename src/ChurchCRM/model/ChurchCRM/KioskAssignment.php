@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\Base\KioskAssignment as BaseKioskAssignment;
 use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\Join;
+use Propel\Runtime\Collection\ArrayCollection;
 
 /**
  * Skeleton subclass for representing a row from the 'kioskassginment_kasm' table.
@@ -39,7 +40,7 @@ class KioskAssignment extends BaseKioskAssignment
             
             if ($groups->count() === 0) {
                 // No groups linked to this event - return empty collection
-                return new \Propel\Runtime\Collection\ArrayCollection();
+                return new ArrayCollection();
             }
             
             // Get the first linked group for role list

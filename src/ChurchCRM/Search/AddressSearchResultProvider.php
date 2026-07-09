@@ -43,7 +43,7 @@ class AddressSearchResultProvider extends BaseSearchResultProvider
                 ->filterByZip($searchLikeString, Criteria::LIKE)
                 ->_or()
                 ->filterByState($searchLikeString, Criteria::LIKE)
-                ->limit(SystemConfig::getValue('bSearchIncludeAddressesMax'))
+                ->limit(SystemConfig::getIntValue('bSearchIncludeAddressesMax'))
                 ->find();
 
             if ($addresses->count() > 0) {

@@ -1,6 +1,9 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 
@@ -9,8 +12,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Stat Cards Row -->
-<div class="row mb-3">
-    <div class="col-sm-6 col-lg-2">
+<div class="row row-cards mb-3 g-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -21,13 +24,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $classes ?></div>
-                        <div class="text-muted"><?= gettext('Classes') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Classes') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -38,13 +41,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $teachers ?></div>
-                        <div class="text-muted"><?= gettext('Teachers') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Teachers') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -55,13 +58,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $kids ?></div>
-                        <div class="text-muted"><?= gettext('Students') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Students') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -72,13 +75,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $families ?></div>
-                        <div class="text-muted"><?= gettext('Families') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Families') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -89,13 +92,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $maleKids ?></div>
-                        <div class="text-muted"><?= gettext('Boys') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Boys') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -106,9 +109,68 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $femaleKids ?></div>
-                        <div class="text-muted"><?= gettext('Girls') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Girls') ?></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How Sunday School works (collapsible explainer) -->
+<div class="card mb-3" id="ssExplainerCard">
+    <div class="card-status-top bg-blue"></div>
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="ti ti-info-circle me-2 text-blue"></i><?= gettext('How Sunday School + Events + Kiosks fit together') ?>
+        </h3>
+        <button class="btn btn-sm btn-ghost-secondary ms-auto" type="button"
+                data-bs-toggle="collapse" data-bs-target="#ssExplainerBody"
+                aria-expanded="false" aria-controls="ssExplainerBody">
+            <i class="ti ti-chevron-down"></i>
+        </button>
+    </div>
+    <div class="collapse" id="ssExplainerBody">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <div class="text-secondary fw-bold mb-1">
+                        <i class="ti ti-users me-1 text-blue"></i><?= gettext('1. Sunday School Class') ?>
+                    </div>
+                    <div class="small text-body-secondary">
+                        <?= gettext("A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles).") ?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-secondary fw-bold mb-1">
+                        <i class="ti ti-tags me-1 text-orange"></i><?= gettext('2. Event Type') ?>
+                    </div>
+                    <div class="small text-body-secondary">
+                        <?= gettext('An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience.') ?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-secondary fw-bold mb-1">
+                        <i class="ti ti-calendar me-1 text-green"></i><?= gettext('3. Event') ?>
+                    </div>
+                    <div class="small text-body-secondary">
+                        <?= gettext("A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against.") ?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-secondary fw-bold mb-1">
+                        <i class="ti ti-device-ipad me-1 text-purple"></i><?= gettext('4. Kiosk') ?>
+                    </div>
+                    <div class="small text-body-secondary">
+                        <?= gettext('A tablet assigned to one event. The kiosk pulls the event\'s linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display.') ?>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="alert alert-info mb-0">
+                <i class="ti ti-rocket me-1"></i>
+                <strong><?= gettext('Fastest workflow:') ?></strong>
+                <?= gettext("Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance.") ?>
             </div>
         </div>
     </div>
@@ -129,8 +191,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-outline-primary">
                 <i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Reports') ?>
             </a>
-            <a href="<?= $sRootPath ?>/groups/sundayschool/export" class="btn btn-outline-info">
-                <i class="fa-solid fa-file-csv me-1"></i><?= gettext('Export to CSV') ?>
+            <a href="<?= $sRootPath ?>/api/groups/sundayschool/export/classlist" class="btn btn-outline-info">
+                <i class="fa-solid fa-file-csv me-1"></i><?= gettext('Class List Export') ?>
+            </a>
+            <a href="<?= $sRootPath ?>/api/groups/sundayschool/export/email" class="btn btn-outline-info">
+                <i class="fa-solid fa-table me-1"></i><?= gettext('Email Export') ?>
             </a>
         </div>
     </div>
@@ -165,6 +230,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td><?= $class['teachers'] ?></td>
                         <td><?= $class['kids'] ?></td>
                         <td class="w-1">
+                            <div class="d-flex gap-1 align-items-center">
+                            <button type="button" class="btn btn-sm btn-success start-checkin-btn"
+                                data-group-id="<?= $class['id'] ?>"
+                                data-group-name="<?= InputUtils::escapeAttribute($class['name']) ?>"
+                                title="<?= gettext('Start Check-in') ?>">
+                                <i class="ti ti-clipboard-check me-1"></i><?= gettext('Check In') ?>
+                            </button>
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     <i class="ti ti-dots-vertical"></i>
@@ -202,10 +274,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <button type="button"
                                         class="dropdown-item text-danger delete-ss-class"
                                         data-group-id="<?= $class['id'] ?>"
-                                        data-group-name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($class['name']) ?>">
+                                        data-group-name="<?= InputUtils::escapeAttribute($class['name']) ?>">
                                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>
+                            </div>
                             </div>
                         </td>
                     </tr>
@@ -250,37 +323,37 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         LoggerUtils::getAppLogger()->error("Failed to retrieve student's age", ['exception' => $ex]);
                     }
 
-                    $personPhoto = new \ChurchCRM\dto\Photo('person', $kidId);
-                    $photoIcon   = '';
-                    if ($personPhoto->hasUploadedPhoto()) {
-                        $photoIcon = ' <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
-                    }
                     $inCart = isset($_SESSION['aPeopleCart']) && in_array($kidId, $_SESSION['aPeopleCart'], false);
                     ?>
                     <tr>
                         <td>
-                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
-                                <?= \ChurchCRM\Utils\InputUtils::escapeHTML($firstName) ?>
-                            </a><?= $photoIcon ?>
+                            <div class="d-flex align-items-center">
+                                <img data-image-entity-type="person" data-image-entity-id="<?= $kidId ?>" class="avatar avatar-xs rounded-circle me-2" alt="" />
+                                <a href="<?= Person::getViewURIForId($kidId) ?>">
+                                    <?= InputUtils::escapeHTML($firstName) ?>
+                                </a>
+                            </div>
                         </td>
-                        <td><?= \ChurchCRM\Utils\InputUtils::escapeHTML($LastName) ?></td>
+                        <td><?= InputUtils::escapeHTML($LastName) ?></td>
                         <td><?= $birthDate ?></td>
                         <td><?= $age ?></td>
-                        <td><?= \ChurchCRM\Utils\InputUtils::escapeHTML($Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip) ?></td>
+                        <td><?= InputUtils::escapeHTML($Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip) ?></td>
                         <td class="w-1">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     <i class="ti ti-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
+                                    <a class="dropdown-item" href="<?= Person::getViewURIForId($kidId) ?>">
                                         <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                                     </a>
+                                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                                     <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $kidId ?>">
                                         <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
+                                    <?php endif; ?>
                                     <?php if ($famId): ?>
-                                    <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= $famId ?>">
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= $famId ?>">
                                         <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
                                     </a>
                                     <?php endif; ?>
@@ -298,7 +371,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <button type="button"
                                         class="dropdown-item text-danger delete-person"
                                         data-person_id="<?= $kidId ?>"
-                                        data-person_name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($firstName . ' ' . $LastName) ?>">
+                                        data-person_name="<?= InputUtils::escapeAttribute($firstName . ' ' . $LastName) ?>">
                                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>
@@ -336,7 +409,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 
-    <script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <?php } ?>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-dashboard.min.js"></script>

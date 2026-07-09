@@ -1,9 +1,10 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -35,7 +36,7 @@ if (isset($_POST['Submit'])) {
     <form method="post" action="Reports/ReminderReport.php">
       <div class="mb-3">
         <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
-        <?php PrintFYIDSelect('FYID', $iFYID) ?>
+        <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID) ?>
       </div>
 
       <div class="d-flex gap-2">

@@ -34,7 +34,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
 <div class="container-fluid">
     <!-- Stat Cards Row -->
     <div class="row mb-3">
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -45,14 +45,14 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                         </div>
                         <div class="col">
                             <div class="fw-medium" id="currentLogLevelDisplay"><?= $currentLevelLabel ?></div>
-                            <div class="text-muted"><?= gettext('Log Level') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Log Level') ?></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <?php if (!empty($logFiles)): ?>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -63,13 +63,13 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= $totalLogFiles ?></div>
-                            <div class="text-muted"><?= gettext('Log Files') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Log Files') ?></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -80,13 +80,13 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= number_format($totalLogSize / 1024 / 1024, 2) ?> MB</div>
-                            <div class="text-muted"><?= gettext('Total Size') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Total Size') ?></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -392,8 +392,6 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
 
 </script>
 
-<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
-
 <!-- System Settings Panel Component -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
@@ -412,7 +410,16 @@ var logLevelMap = {
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#logSettings',
-        settings: [ 'sLogLevel' ],
+        title: <?= json_encode(gettext('Log Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        settings: [
+            {
+                name: 'sLogLevel',
+                type: 'choice',
+                label: <?= json_encode(gettext('Log Level'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                tooltip: <?= json_encode(SystemConfig::getTooltip('sLogLevel'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                choices: <?= json_encode(SystemConfig::getChoices('sLogLevel'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+            }
+        ],
         onSave: function() {
             window.CRM.notify(i18next.t('Log settings saved'), { type: 'success' });
             // Update the current log level display
@@ -429,3 +436,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

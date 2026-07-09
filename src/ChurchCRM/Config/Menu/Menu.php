@@ -33,21 +33,30 @@ class Menu
         $isAdmin = $currentUser->isAdmin();
         $isMenuOptions = $currentUser->isMenuOptionsEnabled();
         $isManageGroups = $currentUser->isManageGroupsEnabled();
+        $canViewEvents = $currentUser->canViewEvents();
         $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
-            'Calendar'     => self::getCalendarMenu(),
+            'Calendar'     => self::getCalendarMenu($canViewEvents),
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin),
-            'Email'        => self::getEmailMenu(),
-            'Events'       => self::getEventsMenu(isAddEventEnabled: $currentUser->isAddEventEnabled()),
+            'Communication' => self::getCommunicationMenu(),
+            'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
-            'Fundraiser'   => self::getFundraisersMenu(),
+            'Fundraiser'   => self::getFundraisersMenu($isAdmin),
             'Reports'      => self::getReportsMenu(),
         ];
         
+        // Backward compatibility: plugins that declare parent 'Email' still attach to Communication
+        if (isset($menus['Communication'])) {
+            $menus['Email'] = $menus['Communication'];
+        }
+
         // Add plugin menu items to their parent menus
         self::addPluginMenuItems($menus);
+
+        // Remove the backward-compat alias so it doesn't appear as a duplicate menu
+        unset($menus['Email']);
         
         // Allow plugins to add top-level menus via the MENU_BUILDING hook
         $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
@@ -61,9 +70,9 @@ class Menu
 
     }
 
-    private static function getCalendarMenu(): MenuItem
+    private static function getCalendarMenu(bool $canViewEvents): MenuItem
     {
-        $calendarMenu = new MenuItem(gettext('Calendar'), 'v2/calendar', true, 'fa-calendar');
+        $calendarMenu = new MenuItem(gettext('Calendar'), 'event/calendars', $canViewEvents, 'fa-calendar');
         // Anniversaries calendar (ID 1) - black background
         $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark', 0, gettext("Today's Wedding Anniversaries")));
         // Birthdays calendar (ID 0) - blue background  
@@ -79,18 +88,18 @@ class Menu
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-people-group');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'people/dashboard', true, 'fa-gauge'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New') . ' ' . gettext('Person'), 'PersonEditor.php', $isAddRecordsEnabled, 'fa-user-plus'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Person Listing'), 'v2/people', true, 'fa-person-half-dress'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Photo Directory'), 'v2/people/photos', true, 'fa-images'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Person Listing'), 'people/list', true, 'fa-person-half-dress'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Photo Directory'), 'people/photos', true, 'fa-images'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New') . ' ' . gettext('Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-people-roof'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'v2/family', true, 'fa-people-roof'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'people/family', true, 'fa-people-roof'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Map'), 'v2/map', true, 'fa-map'));
 
         if ($isAdmin || $isMenuOptions) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'OptionManager.php?mode=famroles', $isMenuOptions, 'fa-people-roof'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'admin/system/options?mode=famroles', $isAdmin, 'fa-people-roof'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), 'PropertyList.php?Type=f', $isMenuOptions, 'fa-people-roof'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Custom Fields'), 'FamilyCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Person Classifications'), 'OptionManager.php?mode=classes', $isMenuOptions, 'fa-tags'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Person Classifications'), 'admin/system/options?mode=classes', $isAdmin, 'fa-tags'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Properties'), 'PropertyList.php?Type=p', $isMenuOptions, 'fa-person-half-dress'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin, 'fa-handshake-angle'));
@@ -157,7 +166,8 @@ class Menu
         if ($canSeeGroupAdmin) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
             $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-users'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'OptionManager.php?mode=grptypes', true, 'fa-tags'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
 
             $groupMenu->addSubMenu($adminMenu);
         }
@@ -167,9 +177,8 @@ class Menu
 
     private static function getSundaySchoolMenu(bool $isAdmin): MenuItem
     {
-        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-school');
+        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-school');
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/sundayschool/dashboard', true, 'fa-gauge'));
-        $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
         $classes = GroupQuery::create()->filterByType(4)->orderByName()->select(['Id','Name'])->find()->toArray();
         if (!empty($classes)) {
             foreach ($classes as $group) {
@@ -180,13 +189,13 @@ class Menu
         return $sundaySchoolMenu;
     }
 
-    private static function getEmailMenu(): MenuItem
+    private static function getCommunicationMenu(): MenuItem
     {
-        $emailMenu = new MenuItem(gettext('Email'), '', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope');
-        $emailMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'v2/email/dashboard', true, 'fa-gauge'));
-        // Plugin-provided menu items will be added by addPluginMenuItems()
+        $commMenu = new MenuItem(gettext('Communication'), '', true, 'fa-comments');
+        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', true, 'fa-envelope'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', true, 'fa-comment-sms'));
 
-        return $emailMenu;
+        return $commMenu;
     }
 
     /**
@@ -234,20 +243,26 @@ class Menu
         }
     }
 
-    private static function getEventsMenu(bool $isAddEventEnabled): MenuItem
+    private static function getEventsMenu(bool $isAddEventEnabled, bool $canViewEvents): MenuItem
     {
-        $eventsMenu = new MenuItem(gettext('Events'), '', SystemConfig::getBooleanValue('bEnabledEvents'), 'fa-ticket');
-        $eventsMenu->addSubMenu(new MenuItem(gettext('List Church Events'), 'ListEvents.php', true, 'fa-list'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'EventEditor.php', $isAddEventEnabled, 'fa-circle-plus'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'Checkin.php', true, 'fa-user-check'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('List Event Types'), 'EventNames.php', $isAddEventEnabled, 'fa-tags'));
+        $eventsMenu = new MenuItem(gettext('Events'), '', $canViewEvents, 'fa-ticket');
+        $eventsMenu->addSubMenu(new MenuItem(gettext('Events Dashboard'), 'event/dashboard', true, 'fa-gauge'));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'event/editor', $isAddEventEnabled, 'fa-circle-plus'));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'event/checkin', true, 'fa-user-check'));
+
+        if ($isAddEventEnabled) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Event Types'), 'event/types', true, 'fa-tags'));
+            $eventsMenu->addSubMenu($adminMenu);
+        }
 
         return $eventsMenu;
     }
 
     private static function getDepositsMenu(bool $isAdmin, bool $isFinanceEnabled): MenuItem
     {
-        $depositsMenu = new MenuItem(gettext('Finance'), '', SystemConfig::getBooleanValue('bEnabledFinance') && $isFinanceEnabled, 'fa-cash-register');
+        // $isFinanceEnabled already includes admin bypass and checks bEnabledFinance
+        $depositsMenu = new MenuItem(gettext('Finance'), '', $isFinanceEnabled, 'fa-cash-register');
         $depositsMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'finance/', $isFinanceEnabled, 'fa-gauge'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'FindDepositSlip.php', $isFinanceEnabled, 'fa-list'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice'));
@@ -264,9 +279,9 @@ class Menu
         return $depositsMenu;
     }
 
-    private static function getFundraisersMenu(): MenuItem
+    private static function getFundraisersMenu(bool $isAdmin): MenuItem
     {
-        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', SystemConfig::getBooleanValue('bEnabledFundraiser'), 'fa-money-bill-1');
+        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledFundraiser'), 'fa-money-bill-1');
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'FindFundRaiser.php', true, 'fa-list'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'FundRaiserEditor.php?FundRaiserID=-1', true, 'fa-circle-plus'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), 'AddDonors.php', true, 'fa-user-plus'));
@@ -318,11 +333,12 @@ class Menu
         $menu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
         $menu->addSubMenu(new MenuItem(gettext('Admin Dashboard'), 'admin/', $isAdmin, 'fa-gauge'));
         $menu->addSubMenu(new MenuItem(gettext('Church Information'), 'admin/system/church-info', $isAdmin, 'fa-church'));
+        $menu->addSubMenu(new MenuItem(gettext('Localization & Formats'), 'admin/system/localization', $isAdmin, 'fa-globe'));
         $menu->addSubMenu(new MenuItem(gettext('Get Started'), 'admin/get-started', $isAdmin, 'fa-rocket'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));
         $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));
-        $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', $isAdmin, 'fa-file-export'));
+        $menu->addSubMenu(new MenuItem(gettext('Export'), 'admin/export', $isAdmin, 'fa-file-export'));
 
         return $menu;
     }

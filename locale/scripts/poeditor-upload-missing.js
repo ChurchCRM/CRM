@@ -10,10 +10,18 @@
  *
  * Usage:
  *   node locale/scripts/poeditor-upload-missing.js           # all locales
+ *   node locale/scripts/poeditor-upload-missing.js te        # positional locale (like downloader)
  *   node locale/scripts/poeditor-upload-missing.js --locale es-co,uk,hi
  *   node locale/scripts/poeditor-upload-missing.js --dry-run
+ *   node locale/scripts/poeditor-upload-missing.js --yes     # skip confirmation prompts
+ *   node locale/scripts/poeditor-upload-missing.js --no-download  # skip post-upload refresh
  *   npm run locale:upload:missing
  *   npm run locale:upload:missing -- --locale uk
+ *   npm run locale:upload:missing -- te
+ *
+ * After each upload, the script re-fetches missing (untranslated) terms from
+ * POEditor and updates the local batch files so you can see what's left.
+ * Use --no-download to skip this step.
  *
  * Requires:
  *   POEDITOR_TOKEN environment variable (from .env or shell)
@@ -26,7 +34,6 @@ const path = require('path');
 const https = require('https');
 const readline = require('readline');
 const { URLSearchParams } = require('url');
-const { spawnSync } = require('child_process');
 
 const localeConfig = require('./locale-config');
 
@@ -36,14 +43,24 @@ const POEDITOR_API_BASE = 'https://api.poeditor.com/v2';
 const PROJECT_ID = '77079';
 const MISSING_DIR = localeConfig.terms.missing;
 const LOCALES_FILE = localeConfig.localesJson;
+
+// File containing terms that are intentionally English for a locale
+// (e.g. brand names, country names). This allowlist lets the uploader
+// send translations that are identical to the source key.
+const ENGLISH_OK_FILE = localeConfig.terms.englishOk;
 const SAMPLE_SIZE = 5;
-// Pause between processing locales to stay well under POEditor rate limits.
-// The downloader itself already adds ~1.5 s of inter-format delay, so this
-// extra gap gives the API time to breathe before the next upload.
-const BETWEEN_LOCALES_DELAY_MS = 30_000;
+
+// POEditor rate limits (free tier):
+//   - Uploads: 1 request per 20 seconds
+//   - General: 100 requests/min, 2000 requests/hour
+//   - Paid tier: uploads 1 per 10s, 200 req/min, 6000 req/hour
+// Per-locale cycle: upload (1 req) + 3s pause + refresh export (1 req) = 2 API calls
+// 22s gap between locales keeps uploads ≥20s apart on free tier.
+const BETWEEN_LOCALES_DELAY_MS = 22_000;
 
 // Sanitize untrusted strings before logging to prevent log injection
-const sanitize = (str) => String(str).replace(/[\r\n]/g, ' ');
+// eslint-disable-next-line no-control-regex
+const sanitize = (str) => String(str).replace(/[\x00-\x1f\x7f]/g, ' ').slice(0, 200);
 
 const apiToken = process.env.POEDITOR_TOKEN;
 if (!apiToken) {
@@ -143,6 +160,34 @@ function buildLocaleMap() {
     return map;
 }
 
+// ── English-OK allowlist ─────────────────────────────────────────────────────
+
+/**
+ * Loads locale/terms/english-ok.json and returns a Map from locale code
+ * (lowercase) to a Set of term keys that are intentionally English (e.g.
+ * country names, brand names, universal tech terms).  Terms in this set are
+ * safe to upload to POEditor even though their translation is identical to the
+ * source key.
+ *
+ * Returns an empty Map if the file does not exist.
+ */
+function loadEnglishOkAllowlist() {
+    if (!fs.existsSync(ENGLISH_OK_FILE)) return new Map();
+    try {
+        const raw = JSON.parse(fs.readFileSync(ENGLISH_OK_FILE, 'utf8'));
+        const result = new Map();
+        for (const [locale, terms] of Object.entries(raw)) {
+            if (Array.isArray(terms)) {
+                result.set(locale.toLowerCase(), new Set(terms));
+            }
+        }
+        return result;
+    } catch (err) {
+        console.warn(`  ⚠️  Could not load english-ok allowlist: ${sanitize(err.message)}`);
+        return new Map();
+    }
+}
+
 // ── Term analysis ────────────────────────────────────────────────────────────
 
 /**
@@ -175,11 +220,15 @@ function isNotIdenticalToKey(termKey, value) {
 
 /**
  * Analyzes a single batch file and splits its terms into three buckets:
- *   localizedTerms – have translations that differ from the source key
- *   suspectTerms   – translation is identical to the source key
+ *   localizedTerms – have translations that differ from the source key,
+ *                    OR are in the english-ok allowlist (intentionally English)
+ *   suspectTerms   – translation is identical to the source key and NOT in allowlist
  *   emptyTerms     – no translation found at all
+ *
+ * @param {string} filePath - path to the batch JSON file
+ * @param {Set<string>} [englishOkSet] - optional set of terms safe to upload as-is
  */
-function analyzeFile(filePath) {
+function analyzeFile(filePath, englishOkSet = new Set()) {
     const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     const localizedTerms = {};
     const suspectTerms = {};
@@ -189,7 +238,12 @@ function analyzeFile(filePath) {
         if (!hasAnyTranslation(value)) {
             emptyTerms[term] = value;
         } else if (!isNotIdenticalToKey(term, value)) {
-            suspectTerms[term] = value;
+            // Value is identical to the source key — check the allowlist
+            if (englishOkSet.has(term)) {
+                localizedTerms[term] = value;
+            } else {
+                suspectTerms[term] = value;
+            }
         } else {
             localizedTerms[term] = value;
         }
@@ -325,10 +379,11 @@ async function uploadTranslations(poEditorCode, terms) {
         updating: 'translations',
         overwrite: '1',
         sync_terms: '0',
+        type: 'key_value_json',
     };
 
     const MAX_UPLOAD_RETRIES = 5;
-    const UPLOAD_BASE_DELAY_MS = 15_000; // 15 s base, doubles each attempt (15, 30, 60, 120, 120 s)
+    const UPLOAD_BASE_DELAY_MS = 20_000; // 20s base (matches free-tier upload limit), doubles: 20, 40, 80, 120, 120s
 
     let result;
     for (let attempt = 1; attempt <= MAX_UPLOAD_RETRIES; attempt++) {
@@ -362,63 +417,118 @@ async function uploadTranslations(poEditorCode, terms) {
     };
 }
 
+// ── Post-upload missing-terms refresh ───────────────────────────────────────
+
+const POEDITOR_EXPORT_API = `${POEDITOR_API_BASE}/projects/export`;
+const TERMS_PER_FILE = localeConfig.settings?.missingTermsBatchSize || 150;
+
 /**
- * Runs the existing poeditor-downloader.js for one locale so we reuse
- * all its logic (JSON + PO + MO + missing-terms rebuild) without a second
- * independent API call.
- *
- * The downloader accepts "locale" format (e.g. "es_AR") but not POEditor dash
- * format (e.g. "es-AR"), so we pass the underscore locale code here.
+ * Fetch untranslated (missing) terms for a POEditor locale.
+ * Returns an object mapping term → empty string.
  */
-function runDownloaderForLocale(localeCode) {
-    const downloaderScript = path.join(__dirname, 'poeditor-downloader.js');
-    const result = spawnSync(process.execPath, [downloaderScript, '--locale', localeCode], {
-        env: process.env,
-        stdio: 'inherit',
+async function fetchUntranslatedTerms(poEditorCode) {
+    const postData = new URLSearchParams({
+        api_token: apiToken,
+        id: PROJECT_ID,
+        language: poEditorCode,
+        type: 'key_value_json',
+        filters: 'untranslated',
+    }).toString();
+
+    const response = await makeRequest(POEDITOR_EXPORT_API, postData);
+    const result = JSON.parse(response.data);
+
+    if (result.response.status !== 'success') {
+        throw new Error(result.response.message || 'Unknown POEditor error');
+    }
+
+    const downloadUrl = result.result.url;
+
+    return new Promise((resolve, reject) => {
+        https.get(downloadUrl, (res) => {
+            let data = '';
+            res.on('data', (d) => { data += d; });
+            res.on('end', () => {
+                if (res.statusCode < 200 || res.statusCode >= 300) {
+                    reject(new Error(`Download failed: HTTP ${res.statusCode}`));
+                    return;
+                }
+                const trimmed = (data || '').trim();
+                if (trimmed.length === 0) { resolve({}); return; }
+                try { resolve(JSON.parse(data)); }
+                catch (err) { reject(new Error(`JSON parse error: ${err.message}`)); }
+            });
+        }).on('error', reject);
     });
-    if (result.status !== 0) {
-        throw new Error(`Downloader exited with code ${result.status}`);
-    }
 }
 
-// ── Display helpers ──────────────────────────────────────────────────────────
+/**
+ * Save missing terms in batched JSON files under MISSING_DIR/{poEditorCode}/
+ * Clears existing batch files first for a clean rebuild.
+ */
+function saveBatchedMissingTerms(poEditorCode, missingTerms) {
+    const localeOutDir = path.join(MISSING_DIR, poEditorCode);
+    if (!fs.existsSync(localeOutDir)) fs.mkdirSync(localeOutDir, { recursive: true });
 
-function displaySample(localizedTerms, sampleSize) {
-    const entries = Object.entries(localizedTerms);
-    const sample = entries.slice(0, sampleSize);
+    // Remove existing batch files
+    try {
+        fs.readdirSync(localeOutDir).filter(f => f.endsWith('.json'))
+            .forEach(f => { try { fs.unlinkSync(path.join(localeOutDir, f)); } catch (_) {} });
+    } catch (_) {}
 
-    console.log(`\n  📝 Sample translations (showing ${sample.length} of ${entries.length}):\n`);
+    const entries = Object.entries(missingTerms);
+    const files = [];
+    let batchNumber = 1;
 
-    for (const [term, value] of sample) {
-        const shortTerm = term.length > 55 ? term.slice(0, 52) + '...' : term;
+    for (let i = 0; i < entries.length; i += TERMS_PER_FILE) {
+        const batch = Object.fromEntries(entries.slice(i, i + TERMS_PER_FILE));
+        const filename = path.join(localeOutDir, `${poEditorCode}-${batchNumber}.json`);
+        fs.writeFileSync(filename, JSON.stringify(batch, null, 2) + '\n');
+        files.push(filename);
+        batchNumber++;
+    }
 
-        if (typeof value === 'string') {
-            console.log(`    Key:  "${shortTerm}"`);
-            console.log(`    Val:  "${value}"`);
+    return files;
+}
+
+/**
+ * Remove stale missing-term batch files when a locale has 0 remaining.
+ */
+function removeBatchedMissingTerms(poEditorCode) {
+    const localeOutDir = path.join(MISSING_DIR, poEditorCode);
+    if (!fs.existsSync(localeOutDir)) return 0;
+
+    const existing = fs.readdirSync(localeOutDir).filter(f => f.endsWith('.json'));
+    let removed = 0;
+    for (const f of existing) {
+        try { fs.unlinkSync(path.join(localeOutDir, f)); removed++; } catch (_) {}
+    }
+    try {
+        if (fs.readdirSync(localeOutDir).length === 0) fs.rmdirSync(localeOutDir);
+    } catch (_) {}
+    return removed;
+}
+
+/**
+ * After upload, re-fetch missing terms from POEditor and update local batch files.
+ */
+async function refreshMissingTerms(poEditorCode) {
+    const missing = await fetchUntranslatedTerms(poEditorCode);
+    const termCount = Object.keys(missing).length;
+
+    if (termCount === 0) {
+        const removed = removeBatchedMissingTerms(poEditorCode);
+        if (removed > 0) {
+            console.log(`  🧹 0 missing terms remaining — removed ${removed} stale batch file(s)`);
         } else {
-            const filledForms = Object.entries(value)
-                .filter(([, v]) => v && v.trim())
-                .map(([k, v]) => `${k}: "${v}"`)
-                .join(', ');
-            console.log(`    Key:  "${shortTerm}"`);
-            console.log(`    Val:  { ${filledForms} }`);
+            console.log(`  ✅ 0 missing terms remaining — locale fully translated!`);
         }
-        console.log();
+    } else {
+        const written = saveBatchedMissingTerms(poEditorCode, missing);
+        console.log(`  📄 ${termCount} missing term(s) remaining → ${written.length} file(s) updated`);
     }
-}
 
-function displaySuspects(suspectTerms) {
-    const count = Object.keys(suspectTerms).length;
-    if (count === 0) return;
-
-    console.log(`  ⚠️  Skipping ${count} term(s) where translation is identical to the source key:`);
-    const preview = Object.keys(suspectTerms).slice(0, 3);
-    for (const term of preview) {
-        const shortTerm = term.length > 60 ? term.slice(0, 57) + '...' : term;
-        console.log(`     - "${shortTerm}"`);
-    }
-    if (count > 3) console.log(`     ... and ${count - 3} more`);
-    console.log();
+    return termCount;
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
@@ -426,19 +536,33 @@ function displaySuspects(suspectTerms) {
 async function main() {
     const args = process.argv.slice(2);
     const dryRun = args.includes('--dry-run');
+    const autoYes = args.includes('--yes') || args.includes('-y');
+    const skipDownload = args.includes('--no-download');
     const localeFilter = (() => {
-        const idx = args.indexOf('--locale');
-        if (idx === -1) return null;
-        // Support comma-separated list: --locale hi,ko,uk
-        return new Set(args[idx + 1].toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
+        // Support: --locale hi,ko,uk  OR positional: node script.js te
+        for (let i = 0; i < args.length; i++) {
+            if (args[i] === '--locale' && args[i + 1]) {
+                return new Set(args[i + 1].toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
+            } else if (!args[i].startsWith('-')) {
+                return new Set(args[i].toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
+            }
+        }
+        return null;
     })();
 
     const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
     console.log('🔍 POEditor Missing Terms Uploader\n');
     if (dryRun) console.log('  🔸 DRY RUN — no changes will be sent to POEditor\n');
+    if (autoYes) console.log('  🔸 AUTO-CONFIRM — skipping confirmation prompts\n');
 
     const localeMap = buildLocaleMap();
+    const englishOkAllowlist = loadEnglishOkAllowlist();
+
+    if (fs.existsSync(ENGLISH_OK_FILE)) {
+        const totalAllowlisted = [...englishOkAllowlist.values()].reduce((n, s) => n + s.size, 0);
+        console.log(`  📋 English-OK allowlist loaded: ${totalAllowlisted} term(s) across ${englishOkAllowlist.size} locale(s)\n`);
+    }
 
     if (!fs.existsSync(MISSING_DIR)) {
         console.log('  No missing terms directory found. Run: npm run locale:download');
@@ -469,14 +593,22 @@ async function main() {
     let totalSkipped = 0;
     let abortAll = false;
 
-    for (const folder of localeFolders) {
+    // Per-locale results for final report
+    const results = [];
+
+    const totalLocales = localeFolders.length;
+
+    for (let localeIdx = 0; localeIdx < totalLocales; localeIdx++) {
+        const folder = localeFolders[localeIdx];
         if (abortAll) break;
 
+        const localeNum = localeIdx + 1;
         const folderKey = folder.toLowerCase();
         const localeEntry = localeMap[folderKey];
 
         if (!localeEntry) {
-            console.warn(`\n  ⚠️  Folder "${folder}" does not match any locale in locales.json — skipping.`);
+            console.warn(`\n  ⚠️  [${localeNum}/${totalLocales}] Folder "${folder}" does not match any locale in locales.json — skipping.`);
+            results.push({ locale: folder, name: folder, status: 'no-match', uploaded: 0, empty: 0, remaining: '?' });
             totalSkipped++;
             continue;
         }
@@ -484,7 +616,7 @@ async function main() {
         const { poEditorCode, locale: localeCode, name: localeName } = localeEntry;
 
         console.log(`\n${'─'.repeat(62)}`);
-        console.log(`📂  ${localeName}  (${poEditorCode})`);
+        console.log(`📂  [${localeNum}/${totalLocales}]  ${localeName}  (${poEditorCode})`);
         console.log(`${'─'.repeat(62)}`);
 
         const folderPath = path.join(MISSING_DIR, folder);
@@ -494,6 +626,7 @@ async function main() {
 
         if (jsonFiles.length === 0) {
             console.log('  No JSON batch files found, skipping.\n');
+            results.push({ locale: poEditorCode, name: localeName, status: 'no-files', uploaded: 0, empty: 0, remaining: '?' });
             continue;
         }
 
@@ -502,9 +635,12 @@ async function main() {
         const allSuspect = {};
         let totalEmpty = 0;
 
+        const englishOkSet = englishOkAllowlist.get(folderKey) ?? new Set();
+        const englishOkCount = englishOkSet.size;
+
         for (const file of jsonFiles) {
             const filePath = path.join(folderPath, file);
-            const { localizedTerms, suspectTerms, emptyTerms } = analyzeFile(filePath);
+            const { localizedTerms, suspectTerms, emptyTerms } = analyzeFile(filePath, englishOkSet);
             Object.assign(allLocalized, localizedTerms);
             Object.assign(allSuspect, suspectTerms);
             totalEmpty += Object.keys(emptyTerms).length;
@@ -516,41 +652,43 @@ async function main() {
         console.log(
             `  Files: ${jsonFiles.length}` +
             `  |  Ready to upload: ${localizedCount}` +
+            (englishOkCount > 0 ? `  |  English-OK (allowlisted): ${englishOkCount}` : '') +
             `  |  Suspect (skipped): ${suspectCount}` +
             `  |  Empty: ${totalEmpty}`
         );
 
         if (localizedCount === 0) {
             console.log('  No valid translated terms found — nothing to upload.\n');
+            results.push({ locale: poEditorCode, name: localeName, status: 'nothing-to-upload', uploaded: 0, empty: totalEmpty, remaining: '?' });
             totalSkipped++;
             continue;
         }
 
-        // Show sample and suspect warnings
-        displaySample(allLocalized, SAMPLE_SIZE);
-        displaySuspects(allSuspect);
+        // Prompt the user — Enter alone defaults to yes; --yes skips the prompt
+        if (!autoYes) {
+            const answer = await prompt(
+                rl,
+                `  Upload ${localizedCount} term(s) to POEditor for "${poEditorCode}"? [Y/n/skip-all] `
+            );
+            const choice = answer.trim().toLowerCase();
 
-        // Prompt the user — Enter alone defaults to yes
-        const answer = await prompt(
-            rl,
-            `  Upload ${localizedCount} term(s) to POEditor for "${poEditorCode}"? [Y/n/skip-all] `
-        );
-        const choice = answer.trim().toLowerCase();
+            if (choice === 'skip-all' || choice === 'q') {
+                console.log('\n  ⏭️  Stopping — no further locales will be processed.');
+                abortAll = true;
+                break;
+            }
 
-        if (choice === 'skip-all' || choice === 'q') {
-            console.log('\n  ⏭️  Stopping — no further locales will be processed.');
-            abortAll = true;
-            break;
-        }
-
-        if (choice !== '' && choice !== 'y' && choice !== 'yes') {
-            console.log('  ⏭️  Skipped.');
-            totalSkipped++;
-            continue;
+            if (choice !== '' && choice !== 'y' && choice !== 'yes') {
+                console.log('  ⏭️  Skipped.');
+                results.push({ locale: poEditorCode, name: localeName, status: 'user-skipped', uploaded: 0, empty: totalEmpty, remaining: '?' });
+                totalSkipped++;
+                continue;
+            }
         }
 
         if (dryRun) {
             console.log(`  🔸 DRY RUN: would upload ${localizedCount} term(s) to "${poEditorCode}"`);
+            results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: '(dry run)' });
             totalUploaded += localizedCount;
             continue;
         }
@@ -566,18 +704,27 @@ async function main() {
             console.log(`  ✅ Upload complete — parsed: ${parsed}, added: ${added}, updated: ${updated}`);
             totalUploaded += localizedCount;
         } catch (err) {
-            console.error(`  ❌ Upload failed: ${sanitize(err.message)}`);
+            console.error(`  ❌ Upload failed: ${sanitize(err.message)}`); // lgtm[js/log-injection] Error message sanitized before logging
+            results.push({ locale: poEditorCode, name: localeName, status: 'upload-failed', uploaded: 0, empty: totalEmpty, remaining: '?' });
             totalSkipped++;
             continue;
         }
 
-        // ── Download (reuse existing downloader — no extra API cost) ─────────
-        console.log(`\n  ⬇️  Running locale downloader for "${poEditorCode}"...`);
-        try {
-            runDownloaderForLocale(localeCode);
-        } catch (err) {
-            console.warn(`  ⚠️  Download step failed: ${err.message}`);
+        // ── Refresh missing terms ────────────────────────────────────────────
+        let remainingCount = '?';
+        if (!skipDownload) {
+            console.log(`\n  ⬇️  Refreshing missing terms from POEditor...`);
+            try {
+                await sleep(3000); // brief pause before download to let POEditor process
+                remainingCount = await refreshMissingTerms(poEditorCode);
+            } catch (err) {
+                console.warn(`  ⚠️  Failed to refresh missing terms: ${sanitize(err.message)}`); // lgtm[js/log-injection] Error message sanitized before logging
+            }
+        } else {
+            console.log(`\n  ⏭️  Skipping download (--no-download)`);
         }
+
+        results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: remainingCount });
 
         // ── Rate-limit guard ─────────────────────────────────────────────────
         console.log(`  ⏱️  Waiting ${BETWEEN_LOCALES_DELAY_MS / 1000}s before next locale...`);
@@ -586,9 +733,66 @@ async function main() {
 
     rl.close();
 
-    console.log(`\n${'═'.repeat(62)}`);
-    console.log(`📊  Done — ${totalUploaded} term(s) uploaded, ${totalSkipped} locale(s) skipped`);
-    console.log(`${'═'.repeat(62)}\n`);
+    // ── Final report ─────────────────────────────────────────────────────────
+    console.log(`\n${'═'.repeat(72)}`);
+    console.log(`📊  Final Report — ${results.length} locale(s) processed`);
+    console.log(`${'═'.repeat(72)}`);
+
+    if (results.length > 0) {
+        // Table header
+        const colLocale = 18;
+        const colStatus = 18;
+        const colUp = 10;
+        const colEmpty = 8;
+        const colLeft = 10;
+        const header =
+            'Locale'.padEnd(colLocale) +
+            'Status'.padEnd(colStatus) +
+            'Uploaded'.padStart(colUp) +
+            'Empty'.padStart(colEmpty) +
+            'Remaining'.padStart(colLeft);
+        console.log(`\n  ${header}`);
+        console.log(`  ${'─'.repeat(header.length)}`);
+
+        const statusIcon = {
+            'uploaded':           '✅ uploaded',
+            'upload-failed':     '❌ failed',
+            'nothing-to-upload': '⚪ no terms',
+            'user-skipped':      '⏭️  skipped',
+            'no-match':          '⚠️  no match',
+            'no-files':          '⚪ no files',
+        };
+
+        for (const r of results) {
+            const label = `${r.name} (${r.locale})`.slice(0, colLocale - 1);
+            const status = (statusIcon[r.status] || r.status).slice(0, colStatus - 1);
+            const up = String(r.uploaded).padStart(colUp);
+            const empty = String(r.empty).padStart(colEmpty);
+            const left = String(r.remaining).padStart(colLeft);
+            console.log(`  ${label.padEnd(colLocale)}${status.padEnd(colStatus)}${up}${empty}${left}`);
+        }
+
+        console.log(`  ${'─'.repeat(header.length)}`);
+
+        // Totals
+        const totalUp = results.reduce((s, r) => s + r.uploaded, 0);
+        const successCount = results.filter(r => r.status === 'uploaded').length;
+        const failCount = results.filter(r => r.status === 'upload-failed').length;
+        const skipCount = results.filter(r => r.status !== 'uploaded' && r.status !== 'upload-failed').length;
+
+        console.log(`\n  Total uploaded: ${totalUp} term(s) across ${successCount} locale(s)`);
+        if (failCount > 0) console.log(`  Failed: ${failCount} locale(s)`);
+        if (skipCount > 0) console.log(`  Skipped: ${skipCount} locale(s)`);
+    }
+
+    if (!skipDownload) {
+        console.log(`\n📝  Missing-terms files have been refreshed locally.`);
+        console.log(`    Run "node locale/scripts/locale-translate.js --list" to see what's left.`);
+    }
+    console.log(`\n📝  Next steps:`);
+    console.log(`  1. Share translations with POEditor reviewers`);
+    console.log(`  2. Run locale-release workflow to download full translations (JSON + PO/MO)`);
+    console.log(`${'═'.repeat(72)}\n`);
 }
 
 main().catch((err) => {

@@ -3,10 +3,11 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -200,7 +201,7 @@ if ($output === 'pdf') {
     $curY += 2 * SystemConfig::getValue('incrementY');
 
     $blurb = SystemConfig::getValue('sPledgeSummary1') . ' ';
-    $blurb .= MakeFYString($iFYID) . ' ';
+    $blurb .= FinancialService::formatFiscalYear($iFYID) . ' ';
     $blurb .= SystemConfig::getValue('sPledgeSummary2') . ' ' . date('Y-m-d') . '.';
     $pdf->writeAt($nameX, $curY, $blurb);
 

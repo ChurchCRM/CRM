@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\EventType as BaseEventType;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 
 /**
  * Skeleton subclass for representing a row from the 'event_types' table.
@@ -15,4 +16,15 @@ use ChurchCRM\model\ChurchCRM\Base\EventType as BaseEventType;
  */
 class EventType extends BaseEventType
 {
+    public function isSundaySchool(): bool
+    {
+        $groupId = $this->getGroupId();
+        if (empty($groupId)) {
+            return false;
+        }
+
+        $group = GroupQuery::create()->findPk((int) $groupId);
+
+        return $group !== null && $group->isSundaySchool();
+    }
 }

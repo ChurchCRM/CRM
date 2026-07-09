@@ -8,7 +8,7 @@ tags: ["frontend", "tabler", "tables", "dropdowns", "cart", "ux"]
 
 ## Rule
 
-Every table row that has per-row actions **must** use the standard Tabler action dropdown. No exceptions. This applies to PHP templates, JS-rendered DataTables columns, and React tables alike.
+Every table row that has per-row actions **must** use the standard Tabler action dropdown. No exceptions. This applies to PHP templates and JS-rendered DataTables columns alike.
 
 ---
 
@@ -108,27 +108,42 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 
 ---
 
-## Overflow / Dropdown Clipping <!-- learned: 2026-03-26 -->
+## Overflow / Dropdown Clipping <!-- learned: 2026-03-26, updated: 2026-05-01 -->
 
-Bootstrap's `.table-responsive` sets `overflow-x: auto`, which clips dropdown menus.
+**Best practice: Use `.table-responsive` with `data-bs-display="static"` on the button.**
 
-**Preferred fix: `data-bs-display="static"` on the dropdown trigger button.** This tells Bootstrap to render the dropdown in-place (no Popper positioning) so it isn't clipped by `overflow` containers. Works in both PHP templates and JS-rendered DataTable columns.
+The `data-bs-display="static"` attribute tells Popper.js to position the dropdown relative to the viewport using `position: fixed` instead of relative to the scrolling container. This prevents clipping even inside `.table-responsive`, and also prevents horizontal scroll on the entire document (keeping scroll scoped to the table only).
+
+```html
+<!-- ✅ CORRECT — dropdown visible, table scrolls independently -->
+<div class="table-responsive">
+    <table class="table table-vcenter table-hover card-table">
+        <tbody>
+            <tr>
+                <td>...</td>
+                <td class="w-1">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">
+                            <i class="ti ti-dots-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">...</div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+```
+
+**`data-bs-display="static"` IS required** on the button:
 
 ```html
 <!-- PHP template -->
 <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">
 
-<!-- JS DataTable render -->
+<!-- JS DataTable render (used by window.CRM.renderPersonActionMenu / renderFamilyActionMenu) -->
 '<button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">'
 ```
-
-**Fallback (only if `data-bs-display="static"` causes positioning issues):**
-
-| Situation | Fix |
-|-----------|-----|
-| Table has ≤ 5 columns — no real horizontal scroll needed | **Remove** `table-responsive` wrapper entirely |
-| Table genuinely needs horizontal scroll | Add `style="overflow: visible;"` to **both** the `card-body` and `.table-responsive` divs |
-| DataTables-managed table inside a card | Add `style="overflow: visible;"` to the `card-body` only |
 
 **Never** add `z-index` or `position: relative` to the `<td>` or `.dropdown` container — they do not fix clipping.
 

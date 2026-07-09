@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -91,7 +91,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $per_fam_ID = $person->getFamId();
 
             // Make sure they are not already in a family
-            if ($per_fam_ID != 0) {
+            if ($per_fam_ID !== 0) {
                 throw new \Exception(sprintf('person (%d) is already assigned to family (%s)', $iPersonID, $per_fam_ID));
             }
             $iFamilyRoleID = InputUtils::legacyFilterInput($_POST['role' . $iPersonID], 'int');
@@ -110,7 +110,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $_SESSION['sGlobalMessage'] = sprintf(ngettext('%d Person successfully added to selected Family.', '%d People successfully added to selected Family.', $iCount), $iCount);
         $_SESSION['sGlobalMessageClass'] = 'success';
 
-        RedirectUtils::redirect('v2/family/' . $iFamilyID . '&Action=EmptyCart');
+        RedirectUtils::redirect('people/family/' . $iFamilyID . '?Action=EmptyCart');
     }
 }
 
@@ -143,7 +143,7 @@ echo $sError;
                 $sRoleOptionsHTML .= sprintf(
                     '<option value="%s">%s</option>',
                     $roleOption->getOptionId(),
-                    $roleOption->getOptionName()
+                    InputUtils::escapeHTML($roleOption->getOptionName())
                 );
             }
 
@@ -165,15 +165,13 @@ echo $sError;
 
                 echo '<tr>';
                 echo '<td class="text-center">' . $count++ . '</td>';
-                $personPhoto = new \ChurchCRM\dto\Photo('person', $cartPerson->getId());
-                $photoIcon = '';
-                if ($personPhoto->hasUploadedPhoto()) {
-                    $photoIcon = ' <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="' . $cartPerson->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
-                }
-                echo '<td><a href="PersonView.php?PersonID=' . $cartPerson->getId() . '">' . FormatFullName($cartPerson->getTitle(), $cartPerson->getFirstName(), $cartPerson->getMiddleName(), $cartPerson->getLastName(), $cartPerson->getSuffix(), 1) . '</a>' . $photoIcon . '</td>';
+                echo '<td><div class="d-flex align-items-center">';
+                echo '<img data-image-entity-type="person" data-image-entity-id="' . $cartPerson->getId() . '" class="avatar avatar-sm rounded-circle me-2" alt="" />';
+                echo '<a href="' . $cartPerson->getViewURI() . '">' . InputUtils::escapeHTML($cartPerson->getFullName()) . '</a>';
+                echo '</div></td>';
 
                 echo '<td class="text-center">';
-                if ($cartPerson->getFamId() == 0) {
+                if ($cartPerson->getFamId() === 0) {
                     echo '<select name="role' . $cartPerson->getId() . '">' . $sRoleOptionsHTML . '</select>';
                 } else {
                     echo gettext('Already in a family');
@@ -196,7 +194,7 @@ echo $sError;
             }
             echo '</select>'; ?>
         </div>
-        <p class="text-muted"><?= gettext('If adding a new family, enter data below.') ?></p>
+        <p class="text-body-secondary"><?= gettext('If adding a new family, enter data below.') ?></p>
         <div class="mb-3">
             <label class="form-label"><?= gettext('Family Name') ?>:</label>
             <input type="text" class="form-control" name="FamilyName" value="<?= InputUtils::escapeAttribute($sName ?? '') ?>" maxlength="48">
@@ -214,7 +212,7 @@ echo $sError;
             echo '<option value="0">' . gettext('Only the new data below') . '</option>';
             mysqli_data_seek($rsCartItems, 0);
             while ($aRow = mysqli_fetch_array($rsCartItems)) {
-                if ($per_fam_ID == 0) {
+                if ($per_fam_ID === 0) {
                     echo sprintf('<option value="%s">%s %s</option>', $aRow['per_ID'], InputUtils::escapeHTML($aRow['per_FirstName']), InputUtils::escapeHTML($aRow['per_LastName']));
                 }
             }
@@ -240,7 +238,7 @@ echo $sError;
             </div>
             <div id="stateInputDiv" class="d-none">
                 <input type="text" class="form-control" name="StateTextbox" id="StateTextbox" value="" maxlength="30">
-                <small class="text-muted"><?= gettext('(Enter state/province for countries without predefined states)') ?></small>
+                <small class="text-body-secondary"><?= gettext('(Enter state/province for countries without predefined states)') ?></small>
             </div>
         </div>
         <div class="mb-3">
@@ -254,7 +252,7 @@ echo $sError;
         </div>
         <div class="mb-3">
             <label class="form-label"><?= gettext('Home Phone') ?>:</label>
-            <input type="text" class="form-control" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone ?? '') ?>" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+            <input type="text" class="form-control" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone ?? '') ?>" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"' data-mask>
             <div class="form-check mt-1">
                 <input class="form-check-input" type="checkbox" name="NoFormat_HomePhone" value="1" id="NoFormat_HomePhone" <?= (!empty($bNoFormat_HomePhone)) ? 'checked' : '' ?>>
                 <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('Do not auto-format') ?></label>
@@ -277,9 +275,7 @@ echo $sError;
 
 <script src="<?= SystemURLs::assetVersioned('/skin/js/DropdownManager.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/CartToFamily.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
-
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     document.addEventListener('DOMContentLoaded', function() {
         if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.togglePhoneMask === 'function') {
             try {

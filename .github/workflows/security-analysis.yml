@@ -48,19 +48,25 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   # CodeQL: Semantic analysis for JavaScript/TypeScript
   # Understands data flow, tracks tainted input through function calls
   codeql-analysis:
     name: 'CodeQL (JS/TS)'
     runs-on: ubuntu-latest
+    env:
+      CODEQL_ACTION_FILE_COVERAGE_ON_PRS: 'true'
     permissions:
       security-events: write
       contents: read
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
@@ -91,12 +97,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Cache DevSkim rules
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.devskim
           key: devskim-rules-${{ runner.os }}-${{ hashFiles('**/*.json') }}
@@ -228,4 +234,4 @@ jobs:
         with:
           name: devskim-security-results
           path: devskim-results.sarif
-          retention-days: 30
+          retention-days: 15

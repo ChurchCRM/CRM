@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Utils\VersionUtils;
 use ChurchCRM\Utils\URLValidator;
 use ChurchCRM\Slim\SlimUtils;
@@ -49,7 +50,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
     });
 
     $group->get('SystemLocaleCheck', function (Request $request, Response $response, array $args): Response {
-        $localeInfo = AppIntegrityService::getLocaleSetupInfo();
+        $localeInfo = LocaleService::getLocaleSetupInfo();
 
         return SlimUtils::renderJSON($response, $localeInfo);
     });

@@ -15,6 +15,11 @@ updates:
     commit-message:
       prefix: "chore(deps)"
     open-pull-requests-limit: 5
+    ignore:
+      # Pinned: quill 2.0.3 has regressions we don't want to pick up.
+      # Remove this entry when a newer 2.x release addresses them.
+      - dependency-name: "quill"
+        versions: ["2.0.3"]
     groups:
       # Group all minor/patch updates together
       npm-minor-patch:

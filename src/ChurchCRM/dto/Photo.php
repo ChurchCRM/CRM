@@ -2,8 +2,10 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\SystemService;
 
 /**
  * Photo class handles uploaded photos for Person and Family entities.
@@ -118,9 +120,22 @@ class Photo
         if (!$this->hasUploadedPhoto || !$this->photoURI) {
             return null;
         }
-        
-        $finfo = new \finfo(FILEINFO_MIME_TYPE);
-        $this->photoContentType = $finfo->file($this->photoURI);
+
+        if (function_exists('finfo_open')) {
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $this->photoContentType = $finfo->file($this->photoURI);
+        } else {
+            // Fallback: derive from file extension (all new uploads are saved as .png)
+            $ext = strtolower(pathinfo($this->photoURI, PATHINFO_EXTENSION));
+            $mimeMap = [
+                'jpg'  => 'image/jpeg',
+                'jpeg' => 'image/jpeg',
+                'png'  => 'image/png',
+                'gif'  => 'image/gif',
+                'webp' => 'image/webp',
+            ];
+            $this->photoContentType = $mimeMap[$ext] ?? null;
+        }
 
         return $this->photoContentType;
     }
@@ -131,23 +146,50 @@ class Photo
     }
 
     /**
+     * Return the last-modified timestamp of the uploaded photo file, or 0 if
+     * no photo exists. Useful as a cache-busting version token for <img src>
+     * so that re-uploading the same file URL produces a fresh browser fetch.
+     * See #8662.
+     */
+    public function getPhotoModifiedTime(): int
+    {
+        if (!$this->hasUploadedPhoto || !$this->photoURI || !is_file($this->photoURI)) {
+            return 0;
+        }
+
+        $mtime = @filemtime($this->photoURI);
+        return $mtime === false ? 0 : $mtime;
+    }
+
+    /**
      * Save an uploaded image from base64 data
      */
     public function setImageFromBase64(string $base64): void
     {
         $this->ensurePhotoDirsExist();
-        
-        // Decode base64 data
-        $base64Data = preg_replace('/^data:image\/\w+;base64,/', '', $base64);
-        $fileData = base64_decode($base64Data);
-        
+
+        // Parse data URI with a single consistent pattern — handles all valid MIME subtypes
+        // (including those with +, -, . such as image/svg+xml or image/vnd.ms-photo)
+        if (!preg_match('/^data:([\w+.\/-]+);base64,(.+)$/s', $base64, $uriParts)) {
+            throw new \Exception('Invalid image data: expected a base64-encoded data URI');
+        }
+
+        $uriMimeType = $uriParts[1];
+        $fileData = base64_decode($uriParts[2], true);
+
         if ($fileData === false) {
             throw new \Exception('Invalid base64 data');
         }
-        
-        // Validate file is actually an image using finfo
-        $finfo = new \finfo(FILEINFO_MIME_TYPE);
-        $mimeType = $finfo->buffer($fileData);
+
+        // Validate MIME type from binary content when fileinfo is available (preferred);
+        // otherwise trust the data URI prefix — imagecreatefromstring() still enforces
+        // the actual binary format, so non-images are rejected regardless.
+        if (function_exists('finfo_open')) {
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mimeType = $finfo->buffer($fileData);
+        } else {
+            $mimeType = $uriMimeType;
+        }
         
         // Allowed image types
         $allowedMimeTypes = [
@@ -162,10 +204,12 @@ class Photo
             throw new \Exception('Invalid image type. Only JPEG, PNG, GIF, and WebP images are allowed.');
         }
         
-        // Validate file size (check against max upload size)
-        $maxSize = $this->parseSize(ini_get('upload_max_filesize'));
+        // Validate file size against the effective server limit (min of upload/post/memory)
+        $maxSize = SystemService::getMaxUploadFileSize(false);
         if (strlen($fileData) > $maxSize) {
-            throw new \Exception('Image file size exceeds maximum allowed size');
+            throw new PhotoSizeException(
+                sprintf('Image file size exceeds maximum allowed size of %s', SystemService::getMaxUploadFileSize(true))
+            );
         }
         
         // Create GD image from uploaded data
@@ -177,24 +221,28 @@ class Photo
         // Get original dimensions
         $sourceWidth = imagesx($sourceImage);
         $sourceHeight = imagesy($sourceImage);
-        
-        // Create resized image at standard dimensions
-        $resizedImage = imagecreatetruecolor(self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
+
+        // Scale down to fit within PHOTO_WIDTH × PHOTO_HEIGHT, preserving aspect ratio.
+        // Never upscale — images smaller than the max are stored at their natural size.
+        $scale = min(1.0, self::PHOTO_WIDTH / $sourceWidth, self::PHOTO_HEIGHT / $sourceHeight);
+        $destWidth = (int) round($sourceWidth * $scale);
+        $destHeight = (int) round($sourceHeight * $scale);
+
+        $resizedImage = imagecreatetruecolor($destWidth, $destHeight);
         if ($resizedImage === false) {
             throw new \Exception('Failed to create resized image');
         }
-        
+
         // Preserve transparency for PNG/GIF
         imagealphablending($resizedImage, false);
         imagesavealpha($resizedImage, true);
-        
-        // Resize image to standard dimensions
+
         if (!imagecopyresampled(
             $resizedImage,
             $sourceImage,
             0, 0, 0, 0,
-            self::PHOTO_WIDTH,
-            self::PHOTO_HEIGHT,
+            $destWidth,
+            $destHeight,
             $sourceWidth,
             $sourceHeight
         )) {
@@ -366,6 +414,7 @@ class Photo
             'photoUrl' => null,
             'initials' => $entityInfo['initials'],
             'email' => $entityInfo['email'],
+            'photoVersion' => $photo->getPhotoModifiedTime(),
         ];
     }
 }

@@ -6,7 +6,6 @@ use ChurchCRM\model\ChurchCRM\Config;
 
 class ConfigItem
 {
-    private $id;
     private $name;
     private $value;
     private $type;
@@ -18,20 +17,14 @@ class ConfigItem
     private $section;
     private $category;
 
-    public function __construct($id, $name, $type, $default, $tooltip = '', $url = '', $data = '')
+    public function __construct($name, $type, $default, $tooltip = '', $url = '', $data = '')
     {
-        $this->id = $id;
         $this->name = $name;
         $this->type = $type;
         $this->default = $default;
         $this->tooltip = $tooltip;
         $this->data = $data;
         $this->url = $url;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function getName()
@@ -82,7 +75,6 @@ class ConfigItem
             if (!isset($this->dbConfigItem)) {
                 //create the item if it doesn't exist
                 $this->dbConfigItem = new Config();
-                $this->dbConfigItem->setId($this->getId());
                 $this->dbConfigItem->setName($this->getName());
             }
             //set the values, and save it

@@ -4,7 +4,7 @@ describe("Standard People", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("Person Not Found", () => {
-        cy.visit("PersonView.php?PersonID=9999");
+        cy.visit("/people/view/9999");
         cy.location("pathname").should("include", "person/not-found");
         // New UX: show standard error title and message
         cy.contains("Person not found");
@@ -17,11 +17,11 @@ describe("Standard People", () => {
         cy.get('#errorReportBtn').click();
         cy.get('#IssueReportModal').should('be.visible');
         // pageName input should contain the not-found URL
-        cy.get('input[name="pageName"]').invoke('val').should('include', '/v2/person/not-found');
+        cy.get('input[name="pageName"]').invoke('val').should('include', '/people/person/not-found');
     });
 
     it("Listing all persons", () => {
-        cy.visit("v2/people");
+        cy.visit("people/list");
 
         // Wait for DataTable to initialize
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
@@ -40,7 +40,7 @@ describe("Standard People", () => {
     });
 
     it("Listing all persons with gender url filter", () => {
-        cy.visit("v2/people?Gender=0");
+        cy.visit("people/list?Gender=0");
 
         // Wait for DataTable to initialize
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
@@ -59,7 +59,7 @@ describe("Standard People", () => {
     });
 
     it("Multiple filter combinations", () => {
-        cy.visit("v2/people");
+        cy.visit("people/list");
 
         // Wait for DataTable and TomSelect to initialize
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
@@ -67,10 +67,12 @@ describe("Standard People", () => {
 
         // Apply gender filter using TomSelect
         cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-control").click();
+        cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-dropdown").should("be.visible");
         cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-dropdown .ts-dropdown-content .option").contains("Female").click();
 
         // Apply classification filter using TomSelect
         cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-control").click();
+        cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-dropdown").should("be.visible");
         cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-dropdown .ts-dropdown-content .option").contains("Member").click();
 
         // Table should show filtered results
@@ -81,5 +83,33 @@ describe("Standard People", () => {
 
         // Verify filters are cleared
         cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-control .item").should("not.exist");
+    });
+
+    it("Add individual person to cart", () => {
+        cy.request({
+            method: "DELETE",
+            url: "/api/cart/",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({}),
+        });
+
+        cy.visit("people/list");
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
+
+        cy.get("#members tbody tr:first").within(() => {
+            cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle').first().click();
+        });
+        cy.get(".dropdown-menu.show .AddToCart").first().click({ force: true });
+
+        cy.request({ method: "GET", url: "/api/cart/" }).then((resp) => {
+            expect(resp.status).to.eq(200);
+            if (resp.body.Persons) {
+                expect(resp.body.Persons.length).to.be.greaterThan(0);
+            } else if (resp.body.PeopleCart) {
+                expect(resp.body.PeopleCart.length).to.be.greaterThan(0);
+            } else {
+                expect(Object.keys(resp.body).length).to.be.greaterThan(0);
+            }
+        });
     });
 });

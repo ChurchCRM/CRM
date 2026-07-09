@@ -1,8 +1,9 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\WhyCame;
 use ChurchCRM\model\ChurchCRM\WhyCameQuery;
@@ -47,7 +48,7 @@ if (isset($_POST['Submit'])) {
 
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-        if ($linkBack != '') {
+        if ($linkBack !== '') {
             RedirectUtils::redirect($linkBack);
         } else {
             //Send to the view of this pledge
@@ -99,7 +100,7 @@ require_once __DIR__ . '/Include/Header.php';
         <textarea name="HearOfUs" class="form-control" rows="3"><?= InputUtils::escapeHTML($tHearOfUs) ?></textarea>
       </div>
       <div class="d-flex justify-content-between mt-4">
-        <a href="<?= RedirectUtils::escapeRedirectUrl($linkBack, 'PersonView.php?PersonID=' . $iPerson) ?>" class="btn btn-secondary">
+        <a href="<?= RedirectUtils::escapeRedirectUrl($linkBack, Person::getViewURIForId($iPerson)) ?>" class="btn btn-secondary">
           <i class="fa-solid fa-ban me-1"></i>
           <?= gettext('Cancel') ?>
         </a>

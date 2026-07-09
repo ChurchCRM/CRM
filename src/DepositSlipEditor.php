@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -76,13 +76,13 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="col-12">
     <div class="d-flex justify-content-between align-items-center">
       <a href="FindDepositSlip.php" class="btn btn-outline-secondary">
-        <i class="fa-solid fa-arrow-left"></i> <?= gettext('Back to Deposits'); ?>
+        <i class="fa-solid fa-arrow-left"></i><?= gettext('Back to Deposits'); ?>
       </a>
       <div class="btn-group" role="group" aria-label="<?= gettext('Deposit Navigation'); ?>">
         <a href="<?= $prevDeposit ? 'DepositSlipEditor.php?DepositSlipID=' . $prevDeposit->getId() : '#'; ?>" 
            class="btn btn-outline-primary <?= $prevDeposit ? '' : 'disabled'; ?>"
            <?= $prevDeposit ? '' : 'aria-disabled="true"'; ?>>
-          <i class="fa-solid fa-chevron-left"></i> <?= gettext('Previous'); ?>
+          <i class="fa-solid fa-chevron-left"></i><?= gettext('Previous'); ?>
         </a>
         <a href="<?= $nextDeposit ? 'DepositSlipEditor.php?DepositSlipID=' . $nextDeposit->getId() : '#'; ?>" 
            class="btn btn-outline-primary <?= $nextDeposit ? '' : 'disabled'; ?>"
@@ -142,17 +142,17 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="d-flex flex-wrap align-items-center">
                   <!-- Primary Actions -->
                   <button type="submit" class="btn btn-primary me-2" name="DepositSlipSubmit">
-                    <i class="fa-solid fa-floppy-disk"></i> <?= gettext('Save'); ?>
+                    <i class="fa-solid fa-floppy-disk"></i><?= gettext('Save'); ?>
                   </button>
                   <?php if (!$thisDeposit->getClosed()): ?>
                   <a href="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success me-2">
-                    <i class="fa-solid fa-circle-plus"></i> <?= gettext('Add Payment'); ?>
+                    <i class="fa-solid fa-circle-plus"></i><?= gettext('Add Payment'); ?>
                   </a>
                   <?php endif; ?>
                   
                   <!-- Secondary Action -->
                   <button type="button" class="btn btn-outline-secondary ms-auto" name="DepositSlipGeneratePDF" data-deposit-id="<?= $thisDeposit->getId() ?>">
-                    <i class="fa-solid fa-file-pdf"></i> <?= gettext('Generate Report'); ?>
+                    <i class="fa-solid fa-file-pdf"></i><?= gettext('Generate Report'); ?>
                   </button>
                 </div>
               </div>
@@ -183,11 +183,11 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="mb-3">
               <i class="fa-solid fa-money-bill fa-2x text-success mb-2"></i>
               <div class="fw-bold h5 text-success">$<?= number_format($thisDeposit->getTotalCash(), 2); ?></div>
-              <div class="small text-muted"><?= gettext('Cash'); ?> (<?= $thisDeposit->getCountCash(); ?>)</div>
+              <div class="small text-body-secondary"><?= gettext('Cash'); ?> (<?= $thisDeposit->getCountCash(); ?>)</div>
             </div>
             <?php endif; ?>
             <?php if (!$thisDeposit->getCountCash()): ?>
-            <div class="text-muted small">
+            <div class="text-body-secondary small">
               <i class="fa-solid fa-money-bill fa-2x mb-2 opacity-25"></i>
               <div><?= gettext('No Cash'); ?></div>
             </div>
@@ -201,11 +201,11 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="mb-3">
               <i class="fa-solid fa-money-check fa-2x text-info mb-2"></i>
               <div class="fw-bold h5 text-info">$<?= number_format($thisDeposit->getTotalChecks(), 2); ?></div>
-              <div class="small text-muted"><?= gettext('Checks'); ?> (<?= $thisDeposit->getCountChecks(); ?>)</div>
+              <div class="small text-body-secondary"><?= gettext('Checks'); ?> (<?= $thisDeposit->getCountChecks(); ?>)</div>
             </div>
             <?php endif; ?>
             <?php if (!$thisDeposit->getCountChecks()): ?>
-            <div class="text-muted small">
+            <div class="text-body-secondary small">
               <i class="fa-solid fa-money-check fa-2x mb-2 opacity-25"></i>
               <div><?= gettext('No Checks'); ?></div>
             </div>
@@ -234,10 +234,10 @@ require_once __DIR__ . '/Include/Header.php';
       <div class="card-header bg-light d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">
           <i class="fa-solid fa-chart-bar"></i> <?= gettext('Funds'); ?>
-          <small class="text-muted ms-2"><?= gettext('Click a bar to filter payments'); ?></small>
+          <small class="text-body-secondary ms-2"><?= gettext('Click a bar to filter payments'); ?></small>
         </h5>
         <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="clearFundFilter">
-          <i class="fa-solid fa-times"></i> <?= gettext('Clear Filter'); ?>
+          <i class="fa-solid fa-times"></i><?= gettext('Clear Filter'); ?>
         </button>
       </div>
       <div class="card-body" style="padding: 1rem 0.75rem 1rem 1.5rem;">
@@ -257,10 +257,10 @@ require_once __DIR__ . '/Include/Header.php';
     <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
     <div class="btn-group" role="group">
       <button type="submit" class="btn btn-sm btn-primary" name="DepositSlipLoadAuthorized">
-        <i class="fa-solid fa-sync"></i> <?= gettext('Load Authorized'); ?>
+        <i class="fa-solid fa-sync"></i><?= gettext('Load Authorized'); ?>
       </button>
       <button type="submit" class="btn btn-sm btn-warning" name="DepositSlipRunTransactions">
-        <i class="fa-solid fa-play-circle"></i> <?= gettext('Run Transactions'); ?>
+        <i class="fa-solid fa-play-circle"></i><?= gettext('Run Transactions'); ?>
       </button>
     </div>
     <?php endif; ?>
@@ -278,7 +278,7 @@ require_once __DIR__ . '/Include/Header.php';
             ?>
     <div class="card-footer">
       <button type="button" id="deleteSelectedRows" class="btn btn-sm btn-danger" disabled>
-        <i class="fa-solid fa-trash-can"></i> <?php echo gettext('Delete Selected'); ?>
+        <i class="fa-solid fa-trash-can"></i><?php echo gettext('Delete Selected'); ?>
       </button>
     </div>
             <?php
@@ -420,16 +420,10 @@ code {
 <?php
   $fundLabels = [];
   $fundData = [];
-  $fundBackgroundColor = [];
-  
-  foreach ($thisDeposit->getFundTotals() as $tmpfund) {
-    $label = $tmpfund['Name'];
-    $data = (float)$tmpfund['Total'];
-    $backgroundColor = '#' . random_color();
 
-    $fundLabels[] = $label;
-    $fundData[] = $data;
-    $fundBackgroundColor[] = $backgroundColor;
+  foreach ($thisDeposit->getFundTotals() as $tmpfund) {
+    $fundLabels[] = $tmpfund['Name'];
+    $fundData[] = (float)$tmpfund['Total'];
   }
 
 ?>
@@ -440,23 +434,17 @@ code {
   var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed(); ?>);
   var fundLabels = <?= json_encode(array_values($fundLabels)) ?>;
   var fundData = <?= json_encode(array_values($fundData)) ?>;
-  var fundBackgroundColor = <?= json_encode(array_values($fundBackgroundColor)) ?>;
   $(document).ready(function() {
     window.CRM.onLocalesReady(function() {
       initPaymentTable();
-      initCharts(null,
-                 null,
-                 null,
-                 fundLabels,
-                 fundData,
-                 fundBackgroundColor);
+      initCharts(null, null, fundLabels, fundData);
       initDepositSlipEditor();
 
       $('#deleteSelectedRows').click(function() {
         var deletedRows = dataT.rows('.selected').data();
         bootbox.confirm({
           title:'<?= gettext("Confirm Delete")?>',
-          message: '<p><?= gettext("Are you sure you want to delete the selected")?> ' + deletedRows.length + ' <?= gettext("payments(s)?") ?></p>' +
+          message: '<p><?= gettext("Are you sure you want to delete the selected")?> ' + deletedRows.length + ' <?= gettext("payments?") ?></p>' +
           '<p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>'+
           '<p><?= gettext("Please ensure this what you want to do.") ?></p>',
           buttons: {

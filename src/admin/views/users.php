@@ -3,6 +3,8 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\InputUtils;
 
@@ -16,11 +18,25 @@ $rsUsers = $userService->getAllUsers();
 $userStats = $userService->getUserStats();
 $userSettingsConfig = $userService->getUserSettingsConfig();
 
+$bEmailEnabled = SystemConfig::isEmailEnabled();
+
 ?>
 <div class="container-fluid">
+    <?php if (!$bEmailEnabled) { ?>
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i class="fa-solid fa-triangle-exclamation me-2 fs-3"></i>
+        <div class="flex-grow-1">
+            <strong><?= gettext('Email is disabled') ?></strong>
+            <div class="text-secondary"><?= gettext('Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically.') ?></div>
+        </div>
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
+            <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
+        </a>
+    </div>
+    <?php } ?>
     <!-- Stat Cards Row -->
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -31,13 +47,13 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $userStats['total'] ?></div>
-                        <div class="text-muted"><?= gettext('Total Users') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Total Users') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -48,13 +64,13 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $userStats['active'] ?></div>
-                        <div class="text-muted"><?= gettext('Active Users') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Active Users') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -65,13 +81,13 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $userStats['locked'] ?></div>
-                        <div class="text-muted"><?= gettext('Locked Users') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Locked Users') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -82,7 +98,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $userStats['twoFactor'] ?></div>
-                        <div class="text-muted"><?= gettext('2FA Enabled') ?></div>
+                        <div class="text-body-secondary"><?= gettext('2FA Enabled') ?></div>
                     </div>
                 </div>
             </div>
@@ -101,12 +117,18 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             <span class="badge bg-info text-white"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
         </div>
     </div>
+    <div class="card-body border-bottom py-2 text-body-secondary small">
+        <span class="me-3"><i class="ti ti-shield-check text-danger me-1"></i><?= gettext('Admin') ?></span>
+        <span class="me-3"><i class="ti ti-user-check text-warning me-1"></i><?= gettext('Self-service') ?></span>
+        <span><i class="ti ti-adjustments text-azure me-1"></i><?= gettext('Custom') ?></span>
+    </div>
     <div class="card-body" style="overflow: visible;">
         <table class="table table-hover w-100" id="user-listing-table">
                 <thead>
                     <tr>
                         <th><?= gettext('Name') ?></th>
                         <th><?= gettext('Login Name') ?></th>
+                        <th class="text-center"><?= gettext('Access') ?></th>
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
                         <th class="text-center"><?= gettext('2FA') ?></th>
@@ -117,17 +139,26 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                     <?php foreach ($rsUsers as $user) { ?>
                         <tr>
                             <td>
-                                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $user->getId() ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
+                                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
                             </td>
                             <td>
                                 <code><?= InputUtils::escapeHTML($user->getUserName()) ?></code>
+                            </td>
+                            <td class="text-center">
+                                <?php if ($user->isAdmin()): ?>
+                                <i class="ti ti-shield-check text-danger fs-4" title="<?= gettext('Administrator') ?>"></i>
+                                <?php elseif ($user->isEditSelf()): ?>
+                                <i class="ti ti-user-check text-warning fs-4" title="<?= gettext('Self-service only') ?>"></i>
+                                <?php else: ?>
+                                <i class="ti ti-adjustments text-azure fs-4" title="<?= gettext('Custom permissions') ?>"></i>
+                                <?php endif; ?>
                             </td>
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
                             <td class="text-center">
                                 <?php if ($user->getFailedLogins() > 0) { ?>
                                     <span class="badge text-white <?= $user->isLocked() ? 'bg-danger' : 'bg-warning' ?>"><?= $user->getFailedLogins() ?></span>
                                 <?php } else { ?>
-                                    <span class="text-muted">—</span>
+                                    <span class="text-body-secondary">—</span>
                                 <?php } ?>
                             </td>
                             <td class="text-center">
@@ -149,11 +180,21 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">
                                             <i class="ti ti-eye me-2"></i><?= gettext('View Details') ?>
                                         </a>
+                                        <?php if ($user->getPerson() !== null) { ?>
+                                        <a class="dropdown-item" href="<?= Person::getViewURIForId($user->getId()) ?>">
+                                            <i class="ti ti-user me-2"></i><?= gettext('View Person') ?>
+                                        </a>
+                                        <?php if ((int) $user->getPerson()->getFamId() > 0) { ?>
+                                        <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $user->getPerson()->getFamId()) ?>">
+                                            <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                        </a>
+                                        <?php } ?>
+                                        <?php } ?>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>/changePassword">
+                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/user/<?= $user->getId() ?>/changePassword">
                                             <i class="ti ti-tool me-2"></i><?= gettext('Change Password') ?>
                                         </a>
-                                        <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) { ?>
+                                        <?php if ($bEmailEnabled && $user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) { ?>
                                             <a class="dropdown-item" href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
                                                 <i class="ti ti-send me-2"></i><?= gettext('Reset Password via Email') ?>
                                             </a>
@@ -193,7 +234,7 @@ $(document).ready(function() {
     // Initialize the user settings panel
     window.CRM.settingsPanel.init({
         container: '#userSettingsPanel',
-        title: i18next.t('Quick Settings'),
+        title: <?= json_encode(gettext('Quick Settings')) ?>,
         icon: 'fa-solid fa-user-cog',
         headerClass: 'bg-primary',
         settings: <?= json_encode($userSettingsConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,

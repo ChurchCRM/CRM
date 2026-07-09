@@ -13,7 +13,6 @@ use ChurchCRM\Emails\users\LockedEmail;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\DateTimeUtils;
-use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Endroid\QrCode\QrCode;
 use PragmaRX\Google2FA\Google2FA;
@@ -83,6 +82,12 @@ class LocalAuthentication implements IAuthenticationProvider
 
     private function prepareSuccessfulLoginOperations(): void
     {
+        // Regenerate session ID to prevent session fixation attacks.
+        // delete_old_session=true ensures the old session file is removed.
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_regenerate_id(true);
+        }
+
         // Set the LastLogin and Increment the LoginCount
         $date = new \DateTimeImmutable('now', DateTimeUtils::getConfiguredTimezone());
         $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
@@ -171,7 +176,8 @@ class LocalAuthentication implements IAuthenticationProvider
             } else {
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1';
+                $recoveryParam = $AuthenticationRequest->isRecoveryMode ? '&recovery' : '';
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1' . $recoveryParam;
             }
         }
 
@@ -222,8 +228,19 @@ class LocalAuthentication implements IAuthenticationProvider
         }
 
         // Next, if this user needs to change password, send to that page
-        // but don't redirect them if they're already on the password change page
-        $IsUserOnPasswordChangePageNow = $_SERVER['REQUEST_URI'] === $this->getPasswordChangeURL();
+        // but don't redirect them if they're already on the password change page.
+        //
+        // NOTE: previously this used strict === against getPasswordChangeURL(),
+        // which is fragile — a trailing slash, a query string, or path
+        // normalization differences between web servers (FrankenPHP in
+        // particular reports REQUEST_URI slightly differently from Apache)
+        // cause the comparison to fail, the user gets redirected to the
+        // password change page, the check fails again, and the browser hits
+        // "too many redirects". See #8405.
+        //
+        // Use str_contains for a tolerant check, matching the pattern used by
+        // the 2FA enrollment branch a few lines below.
+        $IsUserOnPasswordChangePageNow = str_contains($_SERVER['REQUEST_URI'] ?? '', '/v2/user/current/changepassword');
         if ($this->currentUser->getNeedPasswordChange() && !$IsUserOnPasswordChangePageNow) {
             LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);
             $authenticationResult->isAuthenticated = false;

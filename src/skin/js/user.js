@@ -1,116 +1,156 @@
-$("#regenApiKey").on("click", function () {
+// ── Helper: save a user setting via API ──────────────────────────
+function saveUserSetting(settingName, value) {
+  return window.CRM.APIRequest({
+    method: "POST",
+    path: "user/" + window.CRM.viewUserId + "/setting/" + settingName,
+    dataType: "json",
+    data: JSON.stringify({ value: value }),
+  });
+}
+
+function getUserSetting(settingName) {
+  return window.CRM.APIRequest({
+    method: "GET",
+    path: "user/" + window.CRM.viewUserId + "/setting/" + settingName,
+  });
+}
+
+function notifySuccess() {
+  window.CRM.notify(i18next.t("Setting updated successfully"), {
+    type: "success",
+    delay: 3000,
+  });
+}
+
+function notifyError() {
+  window.CRM.notify(i18next.t("Failed to save setting"), {
+    type: "danger",
+    delay: 5000,
+  });
+}
+
+// ── API Key Regeneration ──────────────────────────────────────────
+$("#regenApiKey").on("click", () => {
   $.ajax({
     type: "POST",
     url: window.CRM.root + "/api/user/" + window.CRM.viewUserId + "/apikey/regen",
-  }).done(function (data, textStatus, xhr) {
-    if (xhr.status === 200) {
+  })
+    .done((data) => {
       $("#apiKey").val(data.apiKey);
-    } else {
-      showGlobalMessage(i18next.t("Failed generate a new API Key"), "danger");
-    }
-  });
-});
-
-$(".user-setting-checkbox").on("click", function () {
-  let thisCheckbox = $(this);
-  let setting = thisCheckbox.data("setting-name");
-  let cssClass = thisCheckbox.data("layout");
-  let targetCSS = thisCheckbox.data("css");
-  let enabled = thisCheckbox.prop("checked") ? cssClass : "";
-  let data = JSON.stringify({ value: enabled });
-
-  window.CRM.APIRequest({
-    method: "POST",
-    path: "user/" + window.CRM.userId + "/setting/" + setting,
-    dataType: "json",
-    data: data,
-  }).done(function () {
-    if (enabled !== "") {
-      $(targetCSS).addClass(cssClass);
-    } else {
-      $(targetCSS).removeClass(cssClass);
-    }
-    window.CRM.notify(i18next.t("Setting updated successfully"), {
-      type: "success",
-      delay: 3000,
-    });
-  });
-});
-
-$(".user-setting-select").on("focusout", function () {
-  let thisCheckbox = $(this);
-  let optionSelected = $(this).find("option:selected");
-  let setting = thisCheckbox.data("setting-name");
-  let data = JSON.stringify({ value: optionSelected.val() });
-
-  window.CRM.APIRequest({
-    method: "POST",
-    path: "user/" + window.CRM.userId + "/setting/" + setting,
-    dataType: "json",
-    data: data,
-  }).done(function () {
-    let reload = thisCheckbox.data("reload");
-    if (reload) {
-      let languageName = optionSelected.text();
-      window.CRM.notify(i18next.t("Language updated to") + " " + languageName, {
-        type: "success",
-        delay: 5000,
-      });
-      setTimeout(function () {
-        window.location.reload();
-      }, 5000);
-    } else {
-      // Show notification for other settings (like page size)
-      window.CRM.notify(i18next.t("Setting updated successfully"), {
+      window.CRM.notify(i18next.t("API key regenerated"), {
         type: "success",
         delay: 3000,
       });
-    }
-  });
+    })
+    .fail(notifyError);
 });
 
-$(document).ready(function () {
-  let localeOptions = $("#user-locale-setting");
-  $.ajax({
-    url: window.CRM.root + "/locale/locales.json",
-    dataType: "json",
-    type: "GET",
-    success: function (data) {
-      $.each(data, function (localeName, localeData) {
-        let selected = false;
-        if (window.CRM.systemLocale === localeData.locale) {
-          selected = true;
+// ── Theme Mode (Light / Dark) ────────────────────────────────────
+$('input[name="themeMode"]').on("change", function () {
+  const value = $(this).val();
+  saveUserSetting("ui.style", value)
+    .done(() => {
+      if (window.CRM.viewIsOwnProfile) {
+        if (value === "dark") {
+          document.documentElement.setAttribute("data-bs-theme", "dark");
+        } else {
+          document.documentElement.removeAttribute("data-bs-theme");
         }
-        let newOption = new Option(localeName, localeData.locale, false, selected);
-        localeOptions.append(newOption);
+      }
+      notifySuccess();
+    })
+    .fail(notifyError);
+});
+
+// ── Primary Color Picker ─────────────────────────────────────────
+$("#primaryColorPicker .btn-color-swatch").on("click", function () {
+  const swatch = $(this);
+  const color = swatch.data("color");
+
+  saveUserSetting("ui.theme.primary", color)
+    .done(() => {
+      $("#primaryColorPicker .btn-color-swatch").removeClass("active");
+      swatch.addClass("active");
+      if (window.CRM.viewIsOwnProfile) {
+        if (color) {
+          document.documentElement.setAttribute("data-bs-theme-primary", color);
+        } else {
+          document.documentElement.removeAttribute("data-bs-theme-primary");
+        }
+      }
+      notifySuccess();
+    })
+    .fail(notifyError);
+});
+
+// ── Table Page Length ─────────────────────────────────────────────
+$("#tablePageLength").on("change", function () {
+  const value = $(this).val();
+  saveUserSetting("ui.table.size", value).done(notifySuccess).fail(notifyError);
+});
+
+// ── Locale ───────────────────────────────────────────────────────
+// Handled separately because it populates from JSON and triggers reload.
+// The change handler is bound AFTER initial value is set to avoid reload loop.
+function initLocaleDropdown() {
+  const dropdown = $("#user-locale-setting");
+  const savedLocale = getUserSetting("ui.locale");
+
+  savedLocale.done((settingResult) => {
+    const userLocale = settingResult?.value || window.CRM.systemLocale || "";
+
+    window.CRM.populateLocaleDropdown(dropdown[0], userLocale)
+      .then(() => {
+        dropdown.on("change", function () {
+          const selected = $(this).find("option:selected");
+          saveUserSetting("ui.locale", selected.val())
+            .done(() => {
+              window.CRM.notify(i18next.t("Language updated to") + " " + selected.text(), {
+                type: "success",
+                delay: 3000,
+              });
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+            })
+            .fail(notifyError);
+        });
+      })
+      .catch((e) => {
+        console.error("Failed to load locale dropdown:", e);
       });
-      localeOptions.trigger("select");
-    },
   });
+}
 
-  $(".user-setting-checkbox").each(function () {
-    let thisCheckbox = $(this);
-    let setting = thisCheckbox.data("setting-name");
-    window.CRM.APIRequest({
-      method: "GET",
-      path: "user/" + window.CRM.userId + "/setting/" + setting,
-    }).done(function (data) {
-      if (data.value !== "") {
-        thisCheckbox.prop("checked", true);
+// ── Initialize on page load ──────────────────────────────────────
+$(document).ready(() => {
+  // Activate the tab matching the URL hash (e.g. #tab-localization from locale banner link).
+  if (window.location.hash) {
+    const tabEl = document.querySelector(`[data-bs-toggle="list"][href="${window.location.hash}"]`);
+    if (tabEl && window.bootstrap?.Tab) {
+      window.bootstrap.Tab.getOrCreateInstance(tabEl).show();
+    }
+  }
+
+  initLocaleDropdown();
+
+  // Photo uploader
+  if (typeof window._CRM_createPhotoUploader === "function") {
+    window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+  }
+  if (typeof window.CRM.createPhotoUploader === "function") {
+    window.CRM.photoUploader = window.CRM.createPhotoUploader({
+      uploadUrl: window.CRM.root + "/api/person/" + window.CRM.viewPersonId + "/photo",
+      maxFileSize: window.CRM.maxUploadSizeBytes,
+      onComplete: () => {
+        window.location.reload();
+      },
+    });
+    $("#uploadPhotoBtn").on("click", (e) => {
+      e.preventDefault();
+      if (window.CRM.photoUploader) {
+        window.CRM.photoUploader.show();
       }
     });
-  });
-
-  $(".user-setting-select").each(function () {
-    let thisSelect = $(this);
-    let setting = thisSelect.data("setting-name");
-    window.CRM.APIRequest({
-      method: "GET",
-      path: "user/" + window.CRM.userId + "/setting/" + setting,
-    }).done(function (data) {
-      if (data.value !== "") {
-        thisSelect.val(data.value).change();
-      }
-    });
-  });
+  }
 });

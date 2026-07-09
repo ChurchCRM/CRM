@@ -23,7 +23,7 @@ if ($bCanManageGroups) {
 
 <!-- Stat Cards Row -->
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -34,13 +34,13 @@ if ($bCanManageGroups) {
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= InputUtils::escapeHTML($sGroupType) ?></div>
-                        <div class="text-muted"><?= gettext('Group Type') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Group Type') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -51,13 +51,13 @@ if ($bCanManageGroups) {
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $defaultRole !== null ? InputUtils::escapeHTML($defaultRole->getOptionName()) : gettext('None') ?></div>
-                        <div class="text-muted"><?= gettext('Default Role') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Default Role') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -68,13 +68,13 @@ if ($bCanManageGroups) {
                     </div>
                     <div class="col">
                         <div class="fw-medium"><span id="iTotalMembers">0</span></div>
-                        <div class="text-muted"><?= gettext('Members') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Members') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -93,7 +93,7 @@ if ($bCanManageGroups) {
                             <span class="badge bg-danger-lt text-danger"><?= gettext('Inactive') ?></span>
                             <?php endif; ?>
                         </div>
-                        <div class="text-muted"><?= gettext('Status') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Status') ?></div>
                     </div>
                 </div>
             </div>
@@ -105,12 +105,15 @@ if ($bCanManageGroups) {
     <!-- LEFT COLUMN: Actions, Members -->
     <div class="col-lg-8">
         <!-- Action Toolbar (ghost buttons, family-view pattern) -->
-        <div class="d-flex align-items-center mb-3 gap-2 flex-wrap">
+        <div id="group-view-toolbar" class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <?php if ($bCanManageGroups): ?>
             <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupID ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
             </a>
             <?php endif; ?>
+            <button class="btn btn-ghost-secondary" id="printGroup" title="<?= gettext('Print') ?>">
+                <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
+            </button>
             <div class="dropdown">
                 <button class="btn btn-ghost-success dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
                     <i class="fa-solid fa-cart-plus me-1"></i><?= gettext('Cart') ?>
@@ -131,29 +134,24 @@ if ($bCanManageGroups) {
                 <i class="fa-solid fa-chalkboard-user me-1"></i><?= gettext('Sunday School') ?>
             </a>
             <?php endif; ?>
-            <?php if (!empty($sEmailLink) && $bEmailEnabled): ?>
+            <?php if ($bEmailEnabled): ?>
             <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="emailDropdownBtn">
                     <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
                 </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute($sEmailLink) ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
-                    <?php foreach ($roleEmails as $roleName => $encodedEmails): ?>
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute($encodedEmails) ?>"><i class="fa-solid fa-user me-2"></i><?= InputUtils::escapeHTML($roleName) ?></a>
-                    <?php endforeach; ?>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute($sEmailLink) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?></a>
-                    <?php foreach ($roleEmails as $roleName => $encodedEmails): ?>
-                    <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute($encodedEmails) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC') ?>: <?= InputUtils::escapeHTML($roleName) ?></a>
-                    <?php endforeach; ?>
+                <div class="dropdown-menu" id="emailDropdownMenu">
+                    <div class="text-center py-2 text-body-secondary"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
                 </div>
             </div>
             <?php endif; ?>
-            <?php if (!empty($sPhoneLink) && $bEmailEnabled): ?>
-            <button class="btn btn-ghost-secondary" id="textGroupBtn" data-phones="<?= InputUtils::escapeAttribute($sPhoneLink) ?>">
-                <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
-            </button>
-            <?php endif; ?>
+            <div class="dropdown">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="textDropdownBtn">
+                    <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
+                </button>
+                <div class="dropdown-menu" id="textDropdownMenu">
+                    <div class="text-center py-2 text-body-secondary"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
+                </div>
+            </div>
             <?php if ($bCanManageGroups): ?>
             <div class="dropdown ms-auto">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
@@ -211,7 +209,7 @@ if ($bCanManageGroups) {
                 <?php endif; ?>
 
                 <!-- DataTable -->
-                <div style="overflow: visible;">
+                <div class="table-responsive">
                     <table class="table table-hover table-vcenter table-sm" id="membersTable"></table>
                 </div>
             </div>
@@ -228,16 +226,16 @@ if ($bCanManageGroups) {
             </div>
             <div class="card-body">
                 <?php if ($thisGroup->getDescription()): ?>
-                <p class="text-muted mb-0"><?= InputUtils::escapeHTML($thisGroup->getDescription()) ?></p>
+                <p class="text-body-secondary mb-0"><?= InputUtils::escapeHTML($thisGroup->getDescription()) ?></p>
                 <?php else: ?>
-                <p class="text-muted mb-0"><em><?= gettext('No description set.') ?></em></p>
+                <p class="text-body-secondary mb-0"><em><?= gettext('No description set.') ?></em></p>
                 <?php endif; ?>
             </div>
             <div class="card-footer">
                 <div class="d-flex gap-3">
                     <div>
-                        <i class="fa-solid fa-envelope me-1 text-muted"></i>
-                        <span class="text-muted"><?= gettext('Email Export') ?>:</span>
+                        <i class="fa-solid fa-envelope me-1 text-body-secondary"></i>
+                        <span class="text-body-secondary"><?= gettext('Email Export') ?>:</span>
                         <?php if ($thisGroup->isIncludeInEmailExport()): ?>
                         <span class="badge bg-success-lt text-success"><?= gettext('Included') ?></span>
                         <?php else: ?>
@@ -255,7 +253,7 @@ if ($bCanManageGroups) {
                 <span class="badge bg-primary-lt text-primary ms-2"><?= count($rsAssignedRows) ?></span>
             </div>
             <?php if (empty($rsAssignedRows)): ?>
-            <div class="card-body text-center text-muted py-4">
+            <div class="card-body text-center text-body-secondary py-4">
                 <i class="fa-solid fa-inbox fa-2x mb-2 d-block"></i>
                 <?= gettext('No properties assigned.') ?>
             </div>
@@ -268,10 +266,10 @@ if ($bCanManageGroups) {
                             <div class="fw-bold"><?= InputUtils::escapeHTML($aRow['pro_Name']) ?></div>
                             <span class="badge bg-secondary-lt text-secondary me-1"><?= InputUtils::escapeHTML($aRow['prt_Name']) ?></span>
                             <?php if (!empty($aRow['r2p_Value'])): ?>
-                            <span class="text-muted"><?= InputUtils::escapeHTML($aRow['r2p_Value']) ?></span>
+                            <span class="text-body-secondary"><?= InputUtils::escapeHTML($aRow['r2p_Value']) ?></span>
                             <?php endif; ?>
                             <?php if (!empty($aRow['pro_Prompt'])): ?>
-                            <div class="text-muted small mt-1">
+                            <div class="text-body-secondary small mt-1">
                                 <i class="fa-solid fa-circle-question me-1"></i><?= InputUtils::escapeHTML($aRow['pro_Prompt']) ?>
                             </div>
                             <?php endif; ?>
@@ -333,7 +331,7 @@ if ($bCanManageGroups) {
                 <?php endif; ?>
             </div>
             <?php if ($groupSpecificProps->count() === 0): ?>
-            <div class="card-body text-center text-muted py-4">
+            <div class="card-body text-center text-body-secondary py-4">
                 <i class="fa-solid fa-inbox fa-2x mb-2 d-block"></i>
                 <?= gettext('No member properties defined.') ?>
             </div>
@@ -344,7 +342,7 @@ if ($bCanManageGroups) {
                     <div class="fw-bold"><?= InputUtils::escapeHTML($prop->getName()) ?></div>
                     <span class="badge bg-secondary-lt text-secondary me-1"><?= InputUtils::escapeHTML($aPropTypes[$prop->getTypeId()] ?? '') ?></span>
                     <?php if ($prop->getDescription()): ?>
-                    <span class="text-muted small"><?= InputUtils::escapeHTML($prop->getDescription()) ?></span>
+                    <span class="text-body-secondary small"><?= InputUtils::escapeHTML($prop->getDescription()) ?></span>
                     <?php endif; ?>
                 </div>
                 <?php endforeach; ?>

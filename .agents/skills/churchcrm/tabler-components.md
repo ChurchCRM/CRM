@@ -338,6 +338,43 @@ Colors: `bg-primary`, `bg-success`, `bg-danger`, `bg-warning`, `bg-info`.
 | `.card-table` | Remove card-body padding for full-width table |
 | `.w-1` | Shrink column to content width (for action buttons) |
 
+### DataTable Card Structure — Use `table-responsive`, Not `card-body p-0` <!-- learned: 2026-03-29 -->
+
+The correct Tabler pattern for a card containing a full-width DataTable is `table-responsive` directly on the card. The legacy `card-body p-0` + `overflow:visible` hack is an **anti-pattern** — remove it whenever found.
+
+```html
+<!-- ✅ CORRECT -->
+<div class="card">
+  <div class="card-header d-flex align-items-center">
+    <h3 class="card-title">Title</h3>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-vcenter table-hover card-table">
+      ...
+    </table>
+  </div>
+</div>
+
+<!-- ❌ WRONG — legacy anti-pattern -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body p-0" style="overflow: visible;">
+        <table ...>
+```
+
+**Rules:**
+- `table-responsive` replaces `card-body p-0` for DataTable wrappers — no padding hacks needed
+- Remove the `row > col-*` wrapper around single full-width cards — they add nothing
+- If the card has a descriptive paragraph before the table, put it in a proper `card-body`, then follow with `table-responsive`
+- Maps, calendars, and full-bleed content that legitimately need `p-0` are exempt
+
+**Finding violations:**
+```bash
+grep -r "card-body p-0" src/ --include="*.php" -l
+grep -r "overflow: visible" src/ --include="*.php" -l
+```
+
 ### DataTables Integration
 
 DataTables.net works with Tabler. Use Bootstrap 5 DataTables integration (`dataTables.bootstrap5`), not Bootstrap 4.
@@ -954,18 +991,46 @@ toast.show();
 }
 ```
 
-### Dark Mode
+### Tabler Theme System <!-- learned: 2026-04-07 -->
 
-```html
-<body data-bs-theme="dark">
-```
+Theme attributes go on `<html>`, not `<body>`. Applied server-side in `Header.php` / `Header-Minimal.php` from user settings.
 
-Toggle via JS:
+| Attribute | CSS file needed | Values |
+|-----------|----------------|--------|
+| `data-bs-theme="dark"` | `tabler.min.css` (built-in) | `dark` (omit for light) |
+| `data-bs-theme-primary="purple"` | `tabler-themes.min.css` (separate import!) | `blue`, `azure`, `indigo`, `purple`, `pink`, `red`, `orange`, `yellow`, `lime`, `green`, `teal`, `cyan` |
+
+**Critical**: `tabler-themes.min.css` must be imported in webpack — it's NOT part of `tabler.min.css`. Without it, `data-bs-theme-primary` does nothing.
+
 ```js
-document.body.setAttribute('data-bs-theme',
-  document.body.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark'
-);
+// webpack/skin-main.js
+import "@tabler/core/dist/css/tabler.min.css";
+import "@tabler/core/dist/css/tabler-themes.min.css"; // ← required for theme-primary
 ```
+
+**Bridge override trap**: If `_tabler-bridge.scss` sets `--tblr-primary` in `:root`, it overrides `data-bs-theme-primary`. Scope the override:
+```scss
+// ✅ Yields to theme attribute
+:root:not([data-bs-theme-primary]) {
+  --tblr-primary: #206bc4;
+}
+
+// ❌ Always wins, theme attribute ignored
+:root {
+  --tblr-primary: #206bc4;
+}
+```
+
+**Non-functional Tabler layout toggles (don't expose to users)**:
+- `sidebar-collapse` — AdminLTE class, doesn't exist in Tabler
+- `navbar-overlap` — requires `bg-dark`/`bg-primary` on `<header>`, breaks with transparent navbar
+- `layout-boxed` — works technically but no visible value in this app's layout
+
+**`navbar-brand-autodark` logo inversion**: Applies `filter: brightness(0) invert(1)` in dark mode. Only works for black-on-**transparent** logos. White-background PNGs (like `CRM_50x50.png`) become invisible — remove the class for those.
+
+### User Settings API Pattern <!-- learned: 2026-04-07 -->
+
+Settings saved via `POST /api/user/{userId}/setting/{settingName}` with `{value: "..."}`. Always use `window.CRM.viewUserId` (the viewed user) not `window.CRM.userId` (the logged-in user) — critical when admin views another user's settings.
 
 ---
 
@@ -1404,3 +1469,78 @@ Use `form-selectgroup form-selectgroup-pills` any time the user picks one or mor
 ### Fiscal Year Filter
 
 For finance tables, offer "All Time" / "FY {year}" pills instead of a date picker. Pass `$currentFY` from the route (computed via `FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId())`). Filter client-side on the Fiscal Year column.
+
+## FontAwesome 5 → 6 Migration Cheatsheet <!-- learned: 2026-04-25 -->
+
+The project uses Tabler + FA6. Older code (and code newly migrated from
+AdminLTE/BS4 islands) often still has FA5 strings, which won't render or will
+render an empty box on FA6 unless the v5 shim is loaded. When you migrate a
+module to FA6, do the **prefix swap** AND check the **renamed glyphs** —
+several of the most-used icons were renamed in FA6.
+
+### Prefix swap (every icon)
+
+| FA5 | FA6 |
+|---|---|
+| `fas` | `fa-solid` |
+| `far` | `fa-regular` |
+| `fab` | `fa-brands` |
+| `fal` | `fa-light` (Pro only — replace with `fa-regular` in this project) |
+
+### Renamed glyphs you'll hit in this codebase
+
+| FA5 name | FA6 name |
+|---|---|
+| `fa-info-circle` | `fa-circle-info` |
+| `fa-exclamation-triangle` | `fa-triangle-exclamation` |
+| `fa-exclamation-circle` | `fa-circle-exclamation` |
+| `fa-question-circle` | `fa-circle-question` |
+| `fa-check-circle` | `fa-circle-check` |
+| `fa-times-circle` | `fa-circle-xmark` |
+| `fa-times` | `fa-xmark` |
+| `fa-sign-in-alt` | `fa-right-to-bracket` |
+| `fa-sign-out-alt` | `fa-right-from-bracket` |
+| `fa-tablet-alt` | `fa-tablet-screen-button` |
+| `fa-mobile-alt` | `fa-mobile-screen-button` |
+| `fa-trash-alt` | `fa-trash-can` |
+| `fa-edit` | `fa-pen-to-square` |
+| `fa-birthday-cake` | `fa-cake-candles` |
+| `fa-arrows-alt-h` | `fa-arrows-left-right` |
+| `fa-arrows-alt-v` | `fa-arrows-up-down` |
+| `fa-male` | `fa-person` (FA6 Free; `fa-male` removed) |
+| `fa-female` | `fa-person-dress` |
+
+### BS4 → BS5 spacing while you're in there
+
+Inline FA elements often carry sibling Bootstrap-4 spacing classes. The project
+runs on Bootstrap 5; switch them in the same edit:
+
+| BS4 | BS5 |
+|---|---|
+| `mr-{n}` | `me-{n}` |
+| `ml-{n}` | `ms-{n}` |
+| `pr-{n}` | `pe-{n}` |
+| `pl-{n}` | `ps-{n}` |
+| `text-left` | `text-start` |
+| `text-right` | `text-end` |
+| `float-left` | `float-start` |
+| `float-right` | `float-end` |
+
+### Find-and-fix recipe
+
+```bash
+# Inventory FA5 strings in a file
+grep -nE 'class=["'\''](fas|far|fab) fa-' path/to/file.ts
+
+# Inventory BS4 spacing on the same elements
+grep -nE 'm[lr]-[0-9]|p[lr]-[0-9]' path/to/file.ts
+
+# Verify clean after migration
+grep -c "fas fa-\|mr-[0-9]\|ml-[0-9]" path/to/file.ts  # should be 0
+```
+
+When the file is large (e.g. `webpack/kiosk/kiosk-jsom.ts` had ~24 FA5
+strings), do the unique strings first with `Edit replace_all`, then handle
+the inline-HTML strings (which carry trailing classes like `mr-2`) with
+targeted edits. Biome will flag long single-line concatenated strings that
+became too wide after prefix expansion — accept its multi-line suggestion.

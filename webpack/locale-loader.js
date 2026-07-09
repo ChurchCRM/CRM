@@ -6,6 +6,25 @@
 window.CRM = window.CRM || {};
 
 /**
+ * Run a callback once locale files have finished loading.
+ * Available on both authenticated and pre-auth pages (login, public
+ * calendar, etc.) since this loader is included by both footers.
+ * Footer.js defines an identical helper for authenticated pages; this
+ * copy ensures pre-auth pages that never load Footer.js can gate their
+ * initialization on locale readiness too.
+ *
+ * @param {() => void} callback - Runs immediately if locales are already
+ *   loaded, otherwise on the "CRM.localesReady" event.
+ */
+window.CRM.onLocalesReady = (callback) => {
+  if (window.CRM.localesLoaded) {
+    callback();
+  } else {
+    window.addEventListener("CRM.localesReady", callback, { once: true });
+  }
+};
+
+/**
  * Dynamically load a script file
  * @param {string} url - The URL of the script to load
  * @returns {Promise<void>}
@@ -41,10 +60,6 @@ function checkBrowserLocale() {
   const browserLangCode = browserLocale.split("-")[0].split("_")[0];
   const crmLangCode = window.CRM.shortLocale || "";
 
-  console.log("[Locale Detection] Browser:", browserLocale, "->", browserLangCode);
-  console.log("[Locale Detection] CRM:", window.CRM.locale, "->", crmLangCode);
-  console.log("[Locale Detection] Match:", browserLangCode === crmLangCode);
-
   // Compare language codes only (ignore region variants)
   if (browserLangCode === crmLangCode) {
     return;
@@ -62,7 +77,7 @@ function checkBrowserLocale() {
     alert.className = "alert alert-info alert-dismissible";
     alert.style.marginBottom = "1rem";
 
-    const userSettingsUrl = window.CRM.root + "/v2/user/" + window.CRM.userId;
+    const userSettingsUrl = `${window.CRM.root}/v2/user/${window.CRM.userId}#tab-localization`;
 
     alert.innerHTML = `
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -84,7 +99,7 @@ function checkBrowserLocale() {
       markDismissed();
       alert.remove();
     });
-    alert.querySelector(".close").addEventListener("click", markDismissed);
+    alert.querySelector(".btn-close").addEventListener("click", markDismissed);
   };
 
   if (document.readyState === "loading") {
@@ -142,7 +157,6 @@ async function loadLocaleFiles(localeConfig) {
           .then(() => {
             if (typeof moment !== "undefined" && typeof moment.locale === "function") {
               moment.locale(localeConfig.momentLocale);
-              console.log(`Loaded moment locale: ${localeConfig.momentLocale}`);
             }
           })
           .catch((e) => console.warn(`Failed to load moment locale ${localeConfig.momentLocale}:`, e)),
@@ -156,29 +170,29 @@ async function loadLocaleFiles(localeConfig) {
     if (localeConfig.datePicker) {
       const dpPath = `${rootPath}/locale/vendor/bootstrap-datepicker/bootstrap-datepicker.${localeConfig.languageCode}.min.js`;
       promises.push(
-        loadScript(dpPath)
-          .then(() => console.log(`Loaded DatePicker locale: ${localeConfig.languageCode}`))
-          .catch((e) => console.warn(`Failed to load DatePicker locale ${localeConfig.languageCode}:`, e)),
+        loadScript(dpPath).catch((e) =>
+          console.warn(`Failed to load DatePicker locale ${localeConfig.languageCode}:`, e),
+        ),
       );
     }
 
-    // Load FullCalendar locale if configured
-    if (localeConfig.fullCalendar) {
+    // Load FullCalendar locale only when FullCalendar is available.
+    // FooterNotLoggedIn.php (login page) runs this loader but never loads
+    // index.global.min.js, so ar.js / other locale IIFEs would throw
+    // "FullCalendar is not defined" if loaded there.
+    if (localeConfig.fullCalendar && typeof FullCalendar !== "undefined") {
       let fcLocale = localeConfig.languageCode.toLowerCase();
       if (localeConfig.fullCalendarLocale) {
         fcLocale = localeConfig.fullCalendarLocale;
       }
       const fcPath = `${rootPath}/locale/vendor/fullcalendar/${fcLocale}.js`;
       promises.push(
-        loadScript(fcPath)
-          .then(() => console.log(`Loaded FullCalendar locale: ${fcLocale}`))
-          .catch((e) => console.warn(`Failed to load FullCalendar locale ${fcLocale}:`, e)),
+        loadScript(fcPath).catch((e) => console.warn(`Failed to load FullCalendar locale ${fcLocale}:`, e)),
       );
     }
 
     // Wait for all locale files to load
     await Promise.all(promises);
-    console.log(`All locale files loaded for: ${localeConfig.locale}`);
 
     // Initialize i18next after locale keys are loaded
     if (typeof i18next !== "undefined" && window.CRM.i18keys) {
@@ -199,9 +213,13 @@ async function loadLocaleFiles(localeConfig) {
       // Detect browser locale and prompt user if different
       checkBrowserLocale();
 
-      // Dispatch event to signal that locales are ready
-      window.dispatchEvent(new Event("CRM.localesReady"));
+      // Set flag BEFORE dispatching so synchronous event listeners see it as true
       window.CRM.localesLoaded = true;
+      window.dispatchEvent(new Event("CRM.localesReady"));
+    } else {
+      // i18next unavailable (not loaded); locale files are done — unblock waiters
+      window.CRM.localesLoaded = true;
+      window.dispatchEvent(new Event("CRM.localesReady"));
     }
   } catch (error) {
     console.error("Error loading locale files:", error);
@@ -213,3 +231,47 @@ async function loadLocaleFiles(localeConfig) {
 
 // Export for use in other scripts
 window.CRM.loadLocaleFiles = loadLocaleFiles;
+
+/**
+ * Populate a <select> with locale options grouped by region.
+ * Shared by church-info and user-settings pages.
+ *
+ * @param {HTMLSelectElement} selectEl       - Target element to populate.
+ * @param {string}            selectedLocale - Locale code to pre-select.
+ * @returns {Promise<void>}
+ */
+async function populateLocaleDropdown(selectEl, selectedLocale) {
+  const root = window.CRM.root || "";
+  const response = await fetch(`${root}/locale/locales.json`);
+  if (!response.ok) {
+    throw new Error(`Failed to load locales.json: ${response.status}`);
+  }
+  const locales = await response.json();
+
+  const byRegion = {};
+  for (const [englishName, data] of Object.entries(locales)) {
+    const region = data.region || "Other";
+    if (!byRegion[region]) byRegion[region] = [];
+    byRegion[region].push({ englishName, data });
+  }
+
+  for (const region of Object.keys(byRegion).sort()) {
+    const group = document.createElement("optgroup");
+    group.label = region;
+    for (const { englishName, data } of byRegion[region]) {
+      const native = data.nativeName || "";
+      const nativeFirstWord = native.split(/[\s(-]/)[0].toLowerCase();
+      const englishFirstWord = englishName.split(/[\s(-]/)[0].toLowerCase();
+      const sameLanguage = nativeFirstWord === englishFirstWord;
+      const label =
+        native && native !== englishName && !sameLanguage
+          ? `${native} \u2014 ${englishName} [${data.locale}]`
+          : `${englishName} [${data.locale}]`;
+      const option = new Option(label, data.locale, false, data.locale === selectedLocale);
+      group.appendChild(option);
+    }
+    selectEl.appendChild(group);
+  }
+}
+
+window.CRM.populateLocaleDropdown = populateLocaleDropdown;

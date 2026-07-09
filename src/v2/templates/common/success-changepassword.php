@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 $isForced = $isForced ?? false;
 $sPageTitle = gettext("Change Password") .":" . $user->getFullName();
 if ($isForced) {
+    $sBodyClass = 'page-auth page-login';
     require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 } else {
     require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -23,7 +24,7 @@ if ($isForced) {
             <p class="login-box-msg">
                 <i class="fa fa-circle-check text-success" style="font-size:2rem;"></i><br>
                 <strong><?= gettext('Password Changed') ?></strong><br>
-                <small class="text-muted"><?= gettext('Your password has been updated successfully.') ?></small>
+                <small class="text-body-secondary"><?= gettext('Your password has been updated successfully.') ?></small>
             </p>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-success w-100">
                 <?= gettext('Continue to Dashboard') ?>

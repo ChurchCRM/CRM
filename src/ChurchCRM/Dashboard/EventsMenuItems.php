@@ -2,10 +2,12 @@
 
 namespace ChurchCRM\Dashboard;
 
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use DateTime;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -14,41 +16,54 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 class EventsMenuItems
 {
-    public static function getDashboardItemValue(): array
+    public static function getDashboardItemValue(?DateTime $clientDate = null): array
     {
+        // If the client passed its local date (browser "today"), use that so the
+        // counter matches the calendar's highlighted day. Fall back to the
+        // church-configured timezone when no date is provided.
+        $today = $clientDate ?? DateTimeUtils::getStartOfToday();
+
         return [
-            'Events'        => self::getNumberEventsOfToday(),
-            'Birthdays'     => self::getNumberBirthDates(),
-            'Anniversaries' => self::getNumberAnniversaries(),
+            'Events'        => self::getNumberEventsOfToday($today),
+            'Birthdays'     => self::getNumberBirthDates($today),
+            'Anniversaries' => self::getNumberAnniversaries($today),
         ];
     }
 
-    private static function getNumberEventsOfToday(): int
+    private static function getNumberEventsOfToday(DateTime $today): int
     {
-        $start_date = date('Y-m-d ') . ' 00:00:00';
-        $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' +1 day'));
+        // today_start is midnight on the given date, tomorrow_start is the day after.
+        $today_start = clone $today;
+        $today_start->setTime(0, 0, 0);
 
+        // Tomorrow at midnight for boundary checking
+        $tomorrow_start = clone $today_start;
+        $tomorrow_start->modify('+1 day');
+
+        // Use ORM with parameterized queries instead of raw SQL
+        // An event occurs today if: event_start <= tomorrow_start AND event_end >= today_start
+        // This correctly includes all-day events that end at midnight (event_end = tomorrow_start)
         return EventQuery::create()
-            ->where("event_start <= '" . $start_date . "' AND event_end >= '" . $end_date . "'") /* the large events */
-            ->_or()->where("event_start>='" . $start_date . "' AND event_end <= '" . $end_date . "'") /* the events of the day */
+            ->filterByStart($tomorrow_start, Criteria::LESS_EQUAL)
+            ->filterByEnd($today_start, Criteria::GREATER_EQUAL)
             ->count();
     }
 
-    private static function getNumberBirthDates(): int
+    private static function getNumberBirthDates(DateTime $today): int
     {
         return PersonQuery::create()
-            ->filterByBirthMonth(date('m'))
-            ->filterByBirthDay(date('d'))
+            ->filterByBirthMonth($today->format('m'))
+            ->filterByBirthDay($today->format('d'))
             ->count();
     }
 
-    private static function getNumberAnniversaries(): int
+    private static function getNumberAnniversaries(DateTime $today): int
     {
-        return $families = FamilyQuery::create()
+        return FamilyQuery::create()
             ->filterByDateDeactivated(null)
             ->filterByWeddingdate(null, Criteria::ISNOTNULL)
-            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'MONTH(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . date('m'), Criteria::CUSTOM)
-            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'DAY(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . date('d'), Criteria::CUSTOM)
+            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'MONTH(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . $today->format('m'), Criteria::CUSTOM)
+            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'DAY(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . $today->format('d'), Criteria::CUSTOM)
             ->orderByWeddingdate('DESC')
             ->count();
     }

@@ -26,6 +26,9 @@
   overflow: hidden;
   background-color: var(--tblr-gray-100, #f8f9fa);
   color: var(--tblr-body-color, #212529);
+  /* Lock the circle: never let a flex parent squash an avatar into an oval. */
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
 }
 
 .avatar-sm { width: var(--avatar-sm); height: var(--avatar-sm); font-size: 0.875rem; }

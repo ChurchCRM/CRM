@@ -20,7 +20,7 @@ class PropertyMiddleware extends AbstractEntityMiddleware
 
     protected function loadEntity(string $id): mixed
     {
-        $property = PropertyQuery::create()->findPk($id);
+        $property = PropertyQuery::create()->findPk((int) $id);
         if ($property !== null && $property->getPropertyType()->getPrtClass() !== $this->type) {
             return null;
         }

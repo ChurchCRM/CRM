@@ -98,7 +98,7 @@ class Notification
     {
         $methods = [];
 
-        if (SystemConfig::hasValidMailServerSettings()) {
+        if (SystemConfig::isEmailEnabled()) {
             $sendEmail = false;
             try {
                 $sendEmail = $this->sendEmail();
