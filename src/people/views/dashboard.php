@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
@@ -92,14 +91,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap" style="gap: .5rem;">
-                <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()): ?>
                 <a href="<?= $sRootPath ?>/PersonEditor.php" class="btn btn-primary">
                     <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Person') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/FamilyEditor.php" class="btn btn-secondary">
                     <i class="fa-solid fa-house-user me-1"></i><?= gettext('Add Family') ?>
                 </a>
-                <?php endif; ?>
                 <a href="<?= $sRootPath ?>/people/list" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-list me-1"></i><?= gettext('People List') ?>
                 </a>
@@ -109,44 +106,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
-                <?php if ($sEmailLink && $canEmail):
-                    $emailHref    = 'mailto:' . mb_substr($sEmailLink, 0, -3);
-                    $emailBccHref = 'mailto:?bcc=' . mb_substr($sEmailLink, 0, -3);
-                    ?>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($emailHref) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
-                            <div class="dropdown-divider"></div>
-                            <?php foreach ($roleEmails as $role => $roleEmail):
-                                $defaultTo = SystemConfig::getValue('sToEmailAddress');
-                                if ($defaultTo !== '' && !stristr($roleEmail, $defaultTo)) {
-                                    $roleEmail .= $sMailtoDelimiter . $defaultTo;
-                                }
-                                $encoded = urlencode($roleEmail);
-                                ?>
-                                <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(mb_substr($encoded, 0, -3)) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
-                            <?php endforeach; ?>
+                <?php if ($canEmail): ?>
+                    <!-- Email dropdowns populated asynchronously by /api/people/emails -->
+                    <div id="people-email-actions" class="d-none" data-label-all="<?= InputUtils::escapeAttribute(gettext('All People')) ?>">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
+                            </button>
+                            <div class="dropdown-menu" id="email-all-menu"></div>
                         </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-user-secret me-1"></i><?= gettext('Email BCC') ?>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($emailBccHref) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
-                            <div class="dropdown-divider"></div>
-                            <?php foreach ($roleEmails as $role => $roleEmail):
-                                $defaultTo = SystemConfig::getValue('sToEmailAddress');
-                                if ($defaultTo !== '' && !stristr($roleEmail, $defaultTo)) {
-                                    $roleEmail .= $sMailtoDelimiter . $defaultTo;
-                                }
-                                $encoded = urlencode($roleEmail);
-                                ?>
-                                <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute(mb_substr($encoded, 0, -3)) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
-                            <?php endforeach; ?>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-user-secret me-1"></i><?= gettext('Email BCC') ?>
+                            </button>
+                            <div class="dropdown-menu" id="email-bcc-menu"></div>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -389,6 +362,10 @@ $(document).ready(function () {
     });
 });
 </script>
+<?php endif; ?>
+
+<?php if ($canEmail): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/people-dashboard.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php endif; ?>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

@@ -6,6 +6,31 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
+/**
+ * @OA\Get(
+ *     path="/cart/emails",
+ *     summary="Get email addresses for all people currently in the session cart",
+ *     tags={"Cart"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Email list for the current cart",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="emails", type="array", @OA\Items(type="string"),
+ *                 description="Unique email addresses (including sToEmailAddress if configured)")
+ *         )
+ *     ),
+ *     @OA\Response(response=403, description="User does not have email permission")
+ * )
+ */
+$app->get('/cart/emails', function (Request $request, Response $response): Response {
+    if (!$_SESSION['user']->isEmailEnabled()) {
+        return SlimUtils::renderErrorJSON($response, gettext('Email is disabled for this user'), [], 403, null, $request);
+    }
+    if (!isset($_SESSION['aPeopleCart'])) {
+        $_SESSION['aPeopleCart'] = [];
+    }
+    return SlimUtils::renderJSON($response, ['emails' => Cart::getEmails()]);
+});
+
 $app->group('/cart', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
