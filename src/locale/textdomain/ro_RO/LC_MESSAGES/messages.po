@@ -2079,21 +2079,6 @@ msgstr "Nume acces"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Adauga Records"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Editare Records"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Șterge înregistrări"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Gestionarea proprietăților și clasificări"
 
@@ -2106,16 +2091,6 @@ msgstr "Gestionarea grupurilor și roluri"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Gestionați Donații și Finanțe"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Vizualizați, adăugați și editați Note"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Editare Auto"
 
 #: 
 msgid "Admin"
@@ -5662,10 +5637,6 @@ msgstr "Ebraică"
 #: 
 msgid "Permissions"
 msgstr "Permisiuni"
-
-#: 
-msgid "Manage Notes"
-msgstr "Administrați notițele"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11128,10 +11099,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Doar autorul notei sau un administrator poate șterge această notă"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Doar autorul notei sau un administrator poate edita această notă"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Prezentare generală a evenimentelor parohiale, prezenței și activității"
 
@@ -12738,10 +12705,6 @@ msgstr "Doar baza de date (.sql) sau arhivă completă (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Numărul implicit de rânduri afișate în tabelele de date. Intră în vigoare la următoarea încărcare a paginii."
 
-#: 
-msgid "Edit own family only"
-msgstr "Editați doar propria familie"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12754,10 +12717,6 @@ msgstr "Corectarea traducerilor incorecte sau necorespunzătoare în limba dvs."
 #: 
 msgid "Found a bug with translations?"
 msgstr "Ați găsit o eroare în traduceri?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Acordă toate privilegiile"
 
 #: 
 msgid "Green"
@@ -14718,10 +14677,6 @@ msgstr "Nu aveți permisiunea de a șterge această notă."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nu aveți permisiunea de a edita această notă."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Notă privată — vizibilă doar creatorului]"
 
 #: 
 msgid "seconds"

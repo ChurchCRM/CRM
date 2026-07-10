@@ -2029,18 +2029,6 @@ msgid "Login Name"
 msgstr "Nama login"
 
 #: 
-msgid "Add Records"
-msgstr "Tambahkan Catatan"
-
-#: 
-msgid "Edit Records"
-msgstr "Edit Catatan"
-
-#: 
-msgid "Delete Records"
-msgstr "Hapus Catatan"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Kelola Properti dan Klasifikasi"
 
@@ -2051,14 +2039,6 @@ msgstr "Kelola Grup dan Peran"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Kelola Sumbangan dan Keuangan"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Lihat, Tambah, dan Edit Catatan"
-
-#: 
-msgid "Edit Self"
-msgstr "Edit Diri"
 
 #: 
 msgid "Admin"
@@ -5582,10 +5562,6 @@ msgstr "Ibrani"
 #: 
 msgid "Permissions"
 msgstr "Izin"
-
-#: 
-msgid "Manage Notes"
-msgstr "Kelola Catatan"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11032,10 +11008,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Hanya penulis catatan atau admin yang boleh menghapus catatan ini"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Hanya penulis catatan atau admin yang boleh mengedit catatan ini"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Ringkasan acara gereja, kehadiran, dan aktivitas"
 
@@ -12642,10 +12614,6 @@ msgstr "Hanya basis data (.sql) atau arsip lengkap (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Jumlah baris default yang ditampilkan dalam tabel data. Berlaku pada pemuatan halaman berikutnya."
 
-#: 
-msgid "Edit own family only"
-msgstr "Edit keluarga sendiri saja"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12658,10 +12626,6 @@ msgstr "Memperbaiki terjemahan yang salah atau canggung dalam bahasa Anda"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Menemukan bug pada terjemahan?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Memberikan semua hak akses"
 
 #: 
 msgid "Green"
@@ -14620,10 +14584,6 @@ msgstr "Anda tidak memiliki izin untuk menghapus catatan ini."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Anda tidak memiliki izin untuk mengedit catatan ini."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Catatan Pribadi — hanya terlihat oleh pembuat]"
 
 #: 
 msgid "seconds"

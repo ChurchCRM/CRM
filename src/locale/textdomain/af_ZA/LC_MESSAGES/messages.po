@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Aanmeldingsnaam"
 
 #: 
-msgid "Add Records"
-msgstr "Voeg rekords by"
-
-#: 
-msgid "Edit Records"
-msgstr "Wysig rekords"
-
-#: 
-msgid "Delete Records"
-msgstr "Skrap rekords"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Bestuur eiendomme en klassifikasies"
 
@@ -2050,14 +2038,6 @@ msgstr "Bestuur groepe en rolle"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Bestuur donasies en finansies"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Bekyk, voeg by en wysig notas"
-
-#: 
-msgid "Edit Self"
-msgstr "Wysig self"
 
 #: 
 msgid "Admin"
@@ -5590,10 +5570,6 @@ msgstr "Hebreeus"
 #: 
 msgid "Permissions"
 msgstr "Toestemming"
-
-#: 
-msgid "Manage Notes"
-msgstr "Bestuur notas"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11048,10 +11024,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Slegs die noot-outeur of 'n beheerder mag hierdie noot verwyder"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Slegs die noot-outeur of 'n beheerder mag hierdie noot wysig"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Oorsig van kerkgebeurtenisse, bywoning, en aktiwiteit"
 
@@ -12658,10 +12630,6 @@ msgstr "Slegs databasis (.sql) of volledige argief (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Verstekgetal rye wat in datatabelle gewys word. Tree in werking by volgende bladsylading."
 
-#: 
-msgid "Edit own family only"
-msgstr "Wysig slegs eie gesin"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12674,10 +12642,6 @@ msgstr "Regmaak van verkeerde of onhandige vertalings in u taal"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Het u 'n fout in vertalings gevind?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Verleen alle voorregte"
 
 #: 
 msgid "Green"
@@ -14637,10 +14601,6 @@ msgstr "Jy het nie toestemming om hierdie nota uit te vee nie."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Jy het nie toestemming om hierdie nota te wysig nie."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privaatnota — slegs sigbaar vir skepper]"
 
 #: 
 msgid "seconds"

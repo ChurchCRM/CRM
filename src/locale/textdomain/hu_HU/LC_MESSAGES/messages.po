@@ -2052,20 +2052,6 @@ msgid "Login Name"
 msgstr "Bejelentkezés Név"
 
 #: 
-msgid "Add Records"
-msgstr "Rekordok hozzáadása"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Szerkesztés Records"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Törlés rekordok"
-
-#: 
 #, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Kezelése Tulajdonságok és szempontok"
@@ -2079,16 +2065,6 @@ msgstr "Csoportok kezelése és Szerep"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Kezelése Adományok és pénzügyek"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Megtekintése, hozzáadása és szerkesztése Megjegyzés"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Szerkesztés Self"
 
 #: 
 msgid "Admin"
@@ -5623,10 +5599,6 @@ msgstr "Héber"
 #: 
 msgid "Permissions"
 msgstr "Jogosultságok"
-
-#: 
-msgid "Manage Notes"
-msgstr "Jegyzetek kezelése"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11081,10 +11053,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Csak a megjegyzés szerzője vagy egy adminisztrátor törölheti ezt a megjegyzést"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Csak a megjegyzés szerzője vagy egy adminisztrátor szerkesztheti ezt a megjegyzést"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Gyülekezeti események, jelenlét és tevékenységek áttekintése"
 
@@ -12691,10 +12659,6 @@ msgstr "Csak adatbázis (.sql) vagy teljes archívum (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Az adattáblákban megjelenített alapértelmezett sorok száma. A következő oldalletöltéskor lép életbe."
 
-#: 
-msgid "Edit own family only"
-msgstr "Csak saját család szerkesztése"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12707,10 +12671,6 @@ msgstr "Helytelen vagy ügyetlen fordítások javítása az Ön nyelvén"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Hibát talált a fordításokban?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Minden jogosultságot megad"
 
 #: 
 msgid "Green"
@@ -14670,10 +14630,6 @@ msgstr "Nincs jogosultsága törölni ezt a megjegyzést."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nincs jogosultsága szerkeszteni ezt a megjegyzést."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privát megjegyzés — csak az alkotó láthatja]"
 
 #: 
 msgid "seconds"

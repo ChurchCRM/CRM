@@ -2029,18 +2029,6 @@ msgid "Login Name"
 msgstr "Identifikohu Emri"
 
 #: 
-msgid "Add Records"
-msgstr "Shto regjistrime"
-
-#: 
-msgid "Edit Records"
-msgstr "Edit shenime"
-
-#: 
-msgid "Delete Records"
-msgstr "Fshi regjistrime"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Menaxho Prona dhe klasifikime"
 
@@ -2051,14 +2039,6 @@ msgstr "Menaxhuar grupet dhe Rolet"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Menaxho Donacionet dhe Financave"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Shiko, Shto dhe Edit Shënime"
-
-#: 
-msgid "Edit Self"
-msgstr "Edit Vetë"
 
 #: 
 msgid "Admin"
@@ -5578,10 +5558,6 @@ msgstr "Hebraisht"
 #: 
 msgid "Permissions"
 msgstr "Lejet"
-
-#: 
-msgid "Manage Notes"
-msgstr "Menaxho shënimet"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11036,10 +11012,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Vetëm autori i shënimit ose një administrues mund ta fshijë këtë shënim"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Vetëm autori i shënimit ose një administrues mund ta redaktojë këtë shënim"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Vështrim i përgjithshëm i ngjarjeve të kishës, prezencës dhe aktivitetit"
 
@@ -12646,10 +12618,6 @@ msgstr "Vetëm baza e të dhënave (.sql) ose arkiv i plotë (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Numri i parazgjedhur i rreshtave të shfaqura në tabelat e të dhënave. Hyn në fuqi me ngarkimin e faqes tjetër."
 
-#: 
-msgid "Edit own family only"
-msgstr "Ndrysho vetëm familjen tënde"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12662,10 +12630,6 @@ msgstr "Korrigjoni përkthimet e pasakta ose të vështira në gjuhën tuaj"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Gjetët një defekt me përkthimet?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Jep të gjitha privilegjet"
 
 #: 
 msgid "Green"
@@ -14625,10 +14589,6 @@ msgstr "Nuk keni leje për të fshirë këtë shënim."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nuk keni leje për të redaktuar këtë shënim."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Shënim Privat — i dukshëm vetëm për krijuesin]"
 
 #: 
 msgid "seconds"

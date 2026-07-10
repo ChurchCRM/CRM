@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Kasutaja nimi"
 
 #: 
-msgid "Add Records"
-msgstr "Lisage kirje"
-
-#: 
-msgid "Edit Records"
-msgstr "Redigeeri kirjeid"
-
-#: 
-msgid "Delete Records"
-msgstr "Kustuta kirjed"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Halda atribuutie ja klassifikatsioone"
 
@@ -2050,14 +2038,6 @@ msgstr "Halda rühmi ja rolle"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Annetuste ja raha haldamine"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Märkmete kuvamine, lisamine ja muutmine"
-
-#: 
-msgid "Edit Self"
-msgstr "Redigeeri iseennast"
 
 #: 
 msgid "Admin"
@@ -5589,10 +5569,6 @@ msgstr "heebrea keel"
 #: 
 msgid "Permissions"
 msgstr "Õigused"
-
-#: 
-msgid "Manage Notes"
-msgstr "Halda märkmeid"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11047,10 +11023,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Ainult märkme autor või administraator saab selle märkme kustutada"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Ainult märkme autor või administraator saab seda märget muuta"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Ülevaade kiriku sündmustest, kohalolekust ja tegevusest"
 
@@ -12657,10 +12629,6 @@ msgstr "Ainult andmebaas (.sql) või täielik arhiiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Andmetabelites kuvatavate ridade vaikearv. Jõustub järgmisel lehelaadimise korral."
 
-#: 
-msgid "Edit own family only"
-msgstr "Muuda ainult oma perekonda"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12673,10 +12641,6 @@ msgstr "Vigaste või kohmakate tõlgete parandamine oma keeles"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Leidsite tõlkevea?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Annab kõik õigused"
 
 #: 
 msgid "Green"
@@ -14636,10 +14600,6 @@ msgstr "Teil puudub luba selle märkuse kustutamiseks."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Teil puudub luba selle märkuse muutmiseks."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privaatne märkus — nähtav ainult loojale]"
 
 #: 
 msgid "seconds"

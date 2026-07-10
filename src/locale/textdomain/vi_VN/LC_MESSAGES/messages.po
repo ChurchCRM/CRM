@@ -2040,18 +2040,6 @@ msgid "Login Name"
 msgstr "Tên đăng nhập"
 
 #: 
-msgid "Add Records"
-msgstr "Thêm bản ghi"
-
-#: 
-msgid "Edit Records"
-msgstr "Chỉnh sửa bản ghi"
-
-#: 
-msgid "Delete Records"
-msgstr "Xóa bản ghi"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Quản lý thuộc tính và phân loại"
 
@@ -2062,14 +2050,6 @@ msgstr "Quản lý Nhóm và Vai trò"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Quản lý các khoản đóng góp và tài chính"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Xem, thêm và chỉnh sửa ghi chú"
-
-#: 
-msgid "Edit Self"
-msgstr "Chỉnh sửa bản thân"
 
 #: 
 msgid "Admin"
@@ -5593,10 +5573,6 @@ msgstr "Tiếng Do Thái"
 #: 
 msgid "Permissions"
 msgstr "Quyền"
-
-#: 
-msgid "Manage Notes"
-msgstr "Quản lý ghi chú"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11043,10 +11019,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Chi tac gia ghi chu hoac quan tri vien moi co the xoa ghi chu nay"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Chi tac gia ghi chu hoac quan tri vien moi co the chinh sua ghi chu nay"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Tong quan su kien giao hoi, diem danh va hoat dong"
 
@@ -12653,10 +12625,6 @@ msgstr "Chỉ cơ sở dữ liệu (.sql) hoặc lưu trữ đầy đủ (.tar.g
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Số hàng mặc định hiển thị trong bảng dữ liệu. Có hiệu lực khi tải trang tiếp theo."
 
-#: 
-msgid "Edit own family only"
-msgstr "Chỉ chỉnh sửa gia đình của mình"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12669,10 +12637,6 @@ msgstr "Sửa các bản dịch không chính xác hoặc lạ trong ngôn ngữ
 #: 
 msgid "Found a bug with translations?"
 msgstr "Phát hiện lỗi trong bản dịch?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Cấp tất cả quyền hạn"
 
 #: 
 msgid "Green"
@@ -14631,10 +14595,6 @@ msgstr "Bạn không có quyền xóa ghi chú này."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Bạn không có quyền chỉnh sửa ghi chú này."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Ghi Chú Riêng Tư — chỉ người tạo mới thấy]"
 
 #: 
 msgid "seconds"

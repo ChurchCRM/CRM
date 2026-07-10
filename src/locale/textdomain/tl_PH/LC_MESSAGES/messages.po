@@ -2006,18 +2006,6 @@ msgid "Login Name"
 msgstr "Pangalan sa Login"
 
 #: 
-msgid "Add Records"
-msgstr "Magdagdag ng mga Rekord"
-
-#: 
-msgid "Edit Records"
-msgstr "I-edit ang mga Rekord"
-
-#: 
-msgid "Delete Records"
-msgstr "Burahin ang mga Rekord"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Pamahalaan ang mga Katangian at Klasipikasyon"
 
@@ -2028,14 +2016,6 @@ msgstr "Pamahalaan ang mga Grupo at Papel"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Pamahalaan ang mga Donasyon at Pananalapi"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Tingnan, Magdagdag at Mag-edit ng mga Tala"
-
-#: 
-msgid "Edit Self"
-msgstr "I-edit ang Sarili"
 
 #: 
 msgid "Admin"
@@ -5549,10 +5529,6 @@ msgstr "Hebreo"
 #: 
 msgid "Permissions"
 msgstr "Mga Pahintulot"
-
-#: 
-msgid "Manage Notes"
-msgstr "Pamahalaan ang mga Tala"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11007,10 +10983,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Ang may-akda ng tala o isang admin lamang ang maaaring burahin ang talang ito"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Ang may-akda ng tala o isang admin lamang ang maaaring i-edit ang talang ito"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Pangkalahatang-tanaw ng mga kaganapan ng simbahan, presensya, at aktibidad"
 
@@ -12617,10 +12589,6 @@ msgstr "Database lamang (.sql) o kumpletong archive (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Default na bilang ng mga hanay na ipinapakita sa mga talahanayan ng datos. Magkakabisa sa susunod na pag-load ng pahina."
 
-#: 
-msgid "Edit own family only"
-msgstr "I-edit ang sariling pamilya lamang"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12633,10 +12601,6 @@ msgstr "Pagwawasto ng mga maling o hindi angkop na pagsasalin sa inyong wika"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Nakahanap ng bug sa mga pagsasalin?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Nagbibigay ng lahat ng pribilehiyo"
 
 #: 
 msgid "Green"
@@ -14596,10 +14560,6 @@ msgstr "Wala kang pahintulot na burahin ang talang ito."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Wala kang pahintulot na i-edit ang talang ito."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Pribadong Tala — nakikita lamang ng tagalikha]"
 
 #: 
 msgid "seconds"

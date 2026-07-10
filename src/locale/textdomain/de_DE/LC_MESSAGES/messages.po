@@ -2090,21 +2090,6 @@ msgstr "Login Name"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Eintrag hinzufügen"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Eintrag bearbeiten"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Eintrag löschen"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Einstellungen und Einordnungen verwalten"
 
@@ -2117,16 +2102,6 @@ msgstr "Gruppen und Rollen verwalten"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Spenden und Finanzen verwalten"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Anzeigen, hinzufügn und bearbeiten von Notizen"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Kann eigene Daten verändern"
 
 #: 
 #, fuzzy
@@ -5683,10 +5658,6 @@ msgstr "Hebräisch"
 #: 
 msgid "Permissions"
 msgstr "Berechtigungen"
-
-#: 
-msgid "Manage Notes"
-msgstr "Notizen verwalten"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11141,10 +11112,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Nur der Autor der Notiz oder ein Administrator darf diese Notiz löschen"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Nur der Autor der Notiz oder ein Administrator darf diese Notiz bearbeiten"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Übersicht über Gemeindeveranstaltungen, Anwesenheit und Aktivitäten"
 
@@ -12751,10 +12718,6 @@ msgstr "Nur Datenbank (.sql) oder vollständiges Archiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Standardanzahl der angezeigten Zeilen in Datentabellen. Wird beim nächsten Seitenaufruf wirksam."
 
-#: 
-msgid "Edit own family only"
-msgstr "Nur eigene Familie bearbeiten"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12767,10 +12730,6 @@ msgstr "Fehlerhafte oder unpassende Übersetzungen in Ihrer Sprache korrigieren"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Einen Fehler in den Übersetzungen gefunden?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Gewährt alle Berechtigungen"
 
 #: 
 msgid "Green"
@@ -14730,10 +14689,6 @@ msgstr "Sie haben keine Berechtigung, diese Notiz zu löschen."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Sie haben keine Berechtigung, diese Notiz zu bearbeiten."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Private Notiz – nur für den Ersteller sichtbar]"
 
 #: 
 msgid "seconds"

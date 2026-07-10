@@ -2027,18 +2027,6 @@ msgid "Login Name"
 msgstr "Jina la Kuingia"
 
 #: 
-msgid "Add Records"
-msgstr "Ongeza Rekodi"
-
-#: 
-msgid "Edit Records"
-msgstr "Hariri Rekodi"
-
-#: 
-msgid "Delete Records"
-msgstr "Futa Rekodi"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Dhibiti Sifa na Ainisho"
 
@@ -2049,14 +2037,6 @@ msgstr "Dhibiti Vikundi na Majukumu"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Dhibiti Michango na Fedha"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Tazama, Ongeza na Hariri Vidokezo"
-
-#: 
-msgid "Edit Self"
-msgstr "Hariri Binafsi"
 
 #: 
 msgid "Admin"
@@ -5585,10 +5565,6 @@ msgstr "Kiebrania"
 #: 
 msgid "Permissions"
 msgstr "Ruhusa"
-
-#: 
-msgid "Manage Notes"
-msgstr "Dhibiti Vidokezo"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11043,10 +11019,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Mwandishi wa dokezo au msimamizi pekee anaweza kufuta dokezo hili"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Mwandishi wa dokezo au msimamizi pekee anaweza kuhariri dokezo hili"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Muhtasari wa matukio ya kanisa, mahudhurio, na shughuli"
 
@@ -12653,10 +12625,6 @@ msgstr "Hifadhidata peke yake (.sql) au kumbukumbu kamili (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Idadi ya kawaida ya safu zinazoonyeshwa kwenye jedwali la data. Itafanya kazi ukurasa ujao unapopakiwa."
 
-#: 
-msgid "Edit own family only"
-msgstr "Hariri familia yako peke yako"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12669,10 +12637,6 @@ msgstr "Kurekebisha tafsiri zisizo sahihi au ngumu katika lugha yako"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Umegundua hitilafu katika tafsiri?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Inakupa mamlaka yote"
 
 #: 
 msgid "Green"
@@ -14632,10 +14596,6 @@ msgstr "Huna ruhusa ya kufuta kumbukumbu hii."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Huna ruhusa ya kuhariri kumbukumbu hii."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Kumbukumbu ya Siri — inaonekana kwa muumbaji pekee]"
 
 #: 
 msgid "seconds"

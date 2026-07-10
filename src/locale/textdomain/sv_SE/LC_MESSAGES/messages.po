@@ -2108,21 +2108,6 @@ msgstr "Inloggningsnamn"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Lägg till poster"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Redigera poster"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Radera poster"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Underhålla egenskaper och klassificeringer"
 
@@ -2135,16 +2120,6 @@ msgstr "Hantera grupper och roller"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Underhålla bidragsgivare och financer"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Se, lätt till och redigera anteckningar"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Redigera dig själv"
 
 #: 
 msgid "Admin"
@@ -5697,10 +5672,6 @@ msgstr "Hebreiska"
 #: 
 msgid "Permissions"
 msgstr "Behörigheter"
-
-#: 
-msgid "Manage Notes"
-msgstr "Hantera anteckningar"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11155,10 +11126,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Endast anteckningens författare eller en administratör kan ta bort denna anteckning"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Endast anteckningens författare eller en administratör kan redigera denna anteckning"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Översikt över kyrkans evenemang, närvaro och aktivitet"
 
@@ -12765,10 +12732,6 @@ msgstr "Endast databas (.sql) eller fullständigt arkiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Standardantalet rader som visas i datatabeller. Träder i kraft vid nästa sidinläsning."
 
-#: 
-msgid "Edit own family only"
-msgstr "Redigera endast den egna familjen"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12781,10 +12744,6 @@ msgstr "Korrigera felaktiga eller klumpiga översättningar på ditt språk"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Hittade du ett fel med översättningarna?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Ger alla behörigheter"
 
 #: 
 msgid "Green"
@@ -14744,10 +14703,6 @@ msgstr "Du har inte behörighet att ta bort den här anteckningen."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Du har inte behörighet att redigera den här anteckningen."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privat anteckning — synlig endast för skaparen]"
 
 #: 
 msgid "seconds"
