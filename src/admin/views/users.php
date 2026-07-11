@@ -131,6 +131,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                         <th class="text-center"><?= gettext('Access') ?></th>
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
+                        <th class="text-center"><?= gettext('Status') ?></th>
                         <th class="text-center"><?= gettext('2FA') ?></th>
                         <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                     </tr>
@@ -160,6 +161,18 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                 <?php } else { ?>
                                     <span class="text-body-secondary">—</span>
                                 <?php } ?>
+                            </td>
+                            <td class="text-center">
+                                <?php $locked = $user->isLocked(); $mustChange = $user->getNeedPasswordChange(); ?>
+                                <?php if ($locked): ?>
+                                    <span class="badge rounded-pill bg-danger text-white me-1" title="<?= gettext('Account locked due to too many failed login attempts') ?>"><i class="fa-solid fa-lock me-1"></i><?= gettext('Locked') ?></span>
+                                <?php endif; ?>
+                                <?php if ($mustChange): ?>
+                                    <span class="badge rounded-pill bg-warning text-white" title="<?= gettext('User must change their password at next login') ?>"><i class="fa-solid fa-key me-1"></i><?= gettext('Must change password') ?></span>
+                                <?php endif; ?>
+                                <?php if (!$locked && !$mustChange): ?>
+                                    <span class="text-body-secondary">—</span>
+                                <?php endif; ?>
                             </td>
                             <td class="text-center">
                                 <?php if ($user->is2FactorAuthEnabled()) { ?>
