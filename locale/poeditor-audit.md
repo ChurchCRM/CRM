@@ -52,7 +52,7 @@
 | `pt-br` | Portuguese (BR) | 3939 | 99.92% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 3939 | 99.92% | 🟢 Complete | ✅ Yes |
 | `fil` | Filipino | 3936 | 99.85% | 🟢 Complete | ✅ Yes |
-| `hr` | Croatian | 3854 | 97.77% | 🟢 Complete | ✅ Yes |
+| `hr` | Croatian | 3877 | 98.35% | 🟢 Complete | ✅ Yes |
 | `my` | Burmese | 66 | 1.67% | 🟠 Needs Work | ❌ No |
 | `sl` | Slovenian | 65 | 1.65% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.47% | 🟠 Needs Work | ❌ No |
