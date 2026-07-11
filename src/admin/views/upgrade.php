@@ -35,7 +35,12 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                     <?php else: ?>
                         <span class="badge bg-secondary-lt"><?= gettext('Latest version unknown') ?></span>
                     <?php endif; ?>
-                    <div class="ms-auto">
+                    <div class="ms-auto d-flex align-items-center gap-2">
+                        <?php if (!$isUpdateAvailable && $latestGitHubVersion !== null): ?>
+                        <button type="button" class="btn btn-ghost-warning btn-sm" id="forceReinstallCurrent">
+                            <i class="fa fa-redo me-1"></i><?= gettext('Force Re-install') ?>
+                        </button>
+                        <?php endif; ?>
                         <button type="button" class="btn btn-ghost-primary btn-sm" id="refreshFromGitHub">
                             <i class="fa fa-sync me-1"></i><?= gettext('Refresh') ?>
                         </button>

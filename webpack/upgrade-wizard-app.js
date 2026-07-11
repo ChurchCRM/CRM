@@ -36,6 +36,10 @@ let selectedTargetVersion = null;
 // Stores changelog URL for the installed version after upgrade completes
 let installedChangelogUrl = null;
 
+// Set to true when the admin triggers a force-reinstall so the What's New step
+// keeps the proceed button visible even when the system is already up to date.
+let forceReinstallMode = false;
+
 // Ensure AdminAPIRequest is available - fallback to regular APIRequest if not defined
 if (window.CRM && !window.CRM.AdminAPIRequest) {
   window.CRM.AdminAPIRequest = (options) => {
@@ -271,20 +275,44 @@ function setWhatsNewHeading(version) {
 function renderWhatsNew(data) {
   const { nextVersion, nextReleaseNotes, nextChangelogUrl, releasesAhead, upgradePath } = data;
 
-  // Already up-to-date: show a clear message and hide the proceed button
+  // Already up-to-date: show banner, then render the current version's release notes.
+  // In force-reinstall mode the proceed button is kept visible so the wizard can continue.
   if (releasesAhead === 0) {
-    $("#whatsNewHeading").empty();
-    $("#whatsNewNotes").html("");
-    $("#whatsNewChangelogLink").addClass("d-none");
+    const latestNotes = data.latestReleaseNotes || "";
+    const latestUrl = data.latestChangelogUrl || null;
+    const latestVer = data.latestVersion || "";
+
     $("#upgradePathPanel").addClass("d-none");
     $("#advancedVersionCollapse").closest(".mb-4").addClass("d-none");
-    $("#proceedToDownload").addClass("d-none");
-    $("#whatsNewContent").prepend(
-      `<div class="alert alert-success d-flex align-items-center gap-2 mb-3">
-        <i class="fa fa-circle-check fa-lg"></i>
-        <span><strong>${i18next.t("You're up to date!")}</strong> ${i18next.t("No upgrades are available for your current version.")}</span>
-      </div>`,
-    );
+
+    const upToDateBanner = `<div class="alert alert-success d-flex align-items-center gap-2 mb-3">
+      <i class="fa fa-circle-check fa-lg"></i>
+      <span><strong>${i18next.t("You're up to date!")}</strong> ${i18next.t("No upgrades are available for your current version.")}</span>
+    </div>`;
+    $("#whatsNewContent").prepend(upToDateBanner);
+
+    // Render current release notes so admins can review what's already installed.
+    if (latestNotes) {
+      setWhatsNewHeading(latestVer);
+      $("#whatsNewNotes").html(marked.parse(latestNotes));
+      if (latestUrl) {
+        $("#whatsNewChangelogLink").attr("href", latestUrl).removeClass("d-none");
+      } else {
+        $("#whatsNewChangelogLink").addClass("d-none");
+      }
+      installedChangelogUrl = latestUrl;
+    } else {
+      $("#whatsNewHeading").empty();
+      $("#whatsNewNotes").html("");
+      $("#whatsNewChangelogLink").addClass("d-none");
+    }
+
+    if (forceReinstallMode) {
+      // Allow the admin to proceed with reinstalling the current version.
+      $("#proceedToDownload").text(i18next.t("Re-install current version")).removeClass("d-none");
+    } else {
+      $("#proceedToDownload").addClass("d-none");
+    }
     return;
   }
 
@@ -663,7 +691,10 @@ function setupRefreshButton() {
  * Setup force reinstall button
  */
 function setupForceReinstallButton() {
-  $("#forceReinstall").click(() => {
+  // Bind both buttons: the integrity-failure button (#forceReinstall) inside the
+  // pre-flight step and the version-card button (#forceReinstallCurrent) shown
+  // when the system is already up to date.
+  $("#forceReinstall, #forceReinstallCurrent").click(() => {
     const modal = new bootstrap.Modal(document.getElementById("forceReinstallModal"));
     modal.show();
   });
@@ -672,6 +703,10 @@ function setupForceReinstallButton() {
     // Use getOrCreateInstance to safely close the modal even when the instance
     // was not created via Bootstrap's normal data-API (e.g. in tests).
     bootstrap.Modal.getOrCreateInstance(document.getElementById("forceReinstallModal")).hide();
+
+    // Signal that force-reinstall mode is active so the What's New step keeps
+    // the proceed button visible even when the system is already up to date.
+    forceReinstallMode = true;
 
     // Clear stale download state so the Download & Apply step starts fresh
     window.CRM.updateFile = null;
