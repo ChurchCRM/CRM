@@ -127,7 +127,11 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
             $logger->error('Restore failed', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
 
             $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
-            return SlimUtils::renderErrorJSON($response, gettext('Database restore failed'), [], $status, $e, $request);
+
+            // RestoreJob throws an actionable, translated message; fall back to a
+            // generic one for anything thrown before it gets that far.
+            $message = $e->getMessage() ?: gettext('Database restore failed');
+            return SlimUtils::renderErrorJSON($response, $message, [], $status, $e, $request);
         }
     });
 
