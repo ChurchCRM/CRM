@@ -16484,3 +16484,95 @@ msgstr "iliyopita"
 msgid "Croatian"
 msgstr "Kikroeshia"
 
+#: 
+msgid "%s's Account"
+msgstr "Akaunti ya %s"
+
+#: 
+msgid "Access"
+msgstr "Ufikiaji"
+
+#: 
+msgid "Access level"
+msgstr "Kiwango cha ufikiaji"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Wasimamizi wana ufikiaji kamili wa vipengele na data vyote. Ruhusa za mtu binafsi hazitumiki."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Watumiaji wote wanaweza kuona wanakongregesheni. Ruhusa hii haiwezi kuondolewa."
+
+#: 
+msgid "Always granted"
+msgstr "Daima imetolewa"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Anaweza tu kukagua na kuthibitisha familia yake mwenyewe. Hakuna ufikiaji mwingine."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Chagua ruhusa maalum hapa chini."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Wasiliana na msimamizi kubadilisha ruhusa zako."
+
+#: 
+msgid "Custom permissions"
+msgstr "Ruhusa maalum"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Ufikiaji kamili — hutoa mamlaka yote."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Toa ruhusa za mtu binafsi:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ikiwa unahitaji ufikiaji zaidi, tafadhali wasiliana na msimamizi wa kanisa lako."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Watu &amp; Familia"
+
+#: 
+msgid "Self-service"
+msgstr "Huduma ya kibinafsi"
+
+#: 
+msgid "Self-service only"
+msgstr "Huduma ya kibinafsi tu"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Kumbukumbu unayojaribu kuhariri haipo tena."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Mtumiaji huyu anaweza tu kukagua na kusasisha wasifu wa familia yake mwenyewe. Ruhusa za mtu binafsi hazitumiki."
+
+#: 
+msgid "User List"
+msgstr "Orodha ya Watumiaji"
+
+#: 
+msgid "View Person"
+msgstr "Ona Mtu"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Huna ruhusa ya kuongeza kumbukumbu kwa familia hii."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Huna ruhusa ya kuongeza kumbukumbu kwa mtu huyu."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Huna ruhusa ya kuhariri kumbukumbu hii"
+

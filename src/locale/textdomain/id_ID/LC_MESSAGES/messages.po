@@ -16471,3 +16471,95 @@ msgstr "lalu"
 msgid "Croatian"
 msgstr "Kroasia"
 
+#: 
+msgid "%s's Account"
+msgstr "Akun %s"
+
+#: 
+msgid "Access"
+msgstr "Akses"
+
+#: 
+msgid "Access level"
+msgstr "Tingkat akses"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administrator memiliki akses penuh ke semua fitur dan data. Izin individu tidak berlaku."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Semua pengguna dapat melihat anggota jemaat. Izin ini tidak dapat dihapus."
+
+#: 
+msgid "Always granted"
+msgstr "Selalu diberikan"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Hanya dapat meninjau dan memverifikasi keluarga sendiri. Tidak ada akses lain."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Pilih izin tertentu di bawah ini."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Hubungi administrator untuk mengubah izin Anda."
+
+#: 
+msgid "Custom permissions"
+msgstr "Izin khusus"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Akses penuh — memberikan semua hak istimewa."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Berikan izin individu:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Jika Anda memerlukan akses tambahan, silakan hubungi administrator gereja Anda."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Anggota &amp; Keluarga"
+
+#: 
+msgid "Self-service"
+msgstr "Layanan mandiri"
+
+#: 
+msgid "Self-service only"
+msgstr "Hanya layanan mandiri"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Catatan yang ingin Anda edit sudah tidak ada."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Pengguna ini hanya dapat meninjau dan memperbarui profil keluarga mereka sendiri. Izin individu tidak berlaku."
+
+#: 
+msgid "User List"
+msgstr "Daftar Pengguna"
+
+#: 
+msgid "View Person"
+msgstr "Lihat Anggota"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk keluarga ini."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk anggota ini."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Anda tidak memiliki izin untuk mengedit catatan ini"
+

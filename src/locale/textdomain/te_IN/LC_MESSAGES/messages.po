@@ -16460,3 +16460,95 @@ msgstr "గత"
 msgid "Croatian"
 msgstr "క్రొయేషియన్"
 
+#: 
+msgid "%s's Account"
+msgstr "%s యొక్క ఖాతా"
+
+#: 
+msgid "Access"
+msgstr "యాక్సెస్"
+
+#: 
+msgid "Access level"
+msgstr "యాక్సెస్ స్థాయి"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "నిర్వాహకులకు అన్ని ఫీచర్లు మరియు డేటాకు పూర్తి యాక్సెస్ ఉంటుంది. వ్యక్తిగత అనుమతులు వర్తించవు."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "అందరు వినియోగదారులూ సంఘ సభ్యులను చూడగలరు. ఈ అనుమతిని తొలగించడం సాధ్యం కాదు."
+
+#: 
+msgid "Always granted"
+msgstr "ఎల్లప్పుడూ మంజూరు చేయబడింది"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "వారి స్వంత కుటుంబాన్ని మాత్రమే సమీక్షించి ధృవీకరించగలరు. మరే ఇతర యాక్సెస్ లేదు."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "దిగువన నిర్దిష్ట అనుమతులను ఎంచుకోండి."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "మీ అనుమతులను మార్చడానికి నిర్వాహకుని సంప్రదించండి."
+
+#: 
+msgid "Custom permissions"
+msgstr "అనుకూల అనుమతులు"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "పూర్తి యాక్సెస్ — అన్ని హక్కులను మంజూరు చేస్తుంది."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "వ్యక్తిగత అనుమతులు మంజూరు చేయండి:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "మీకు అదనపు యాక్సెస్ అవసరమైతే, దయచేసి మీ చర్చి నిర్వాహకుని సంప్రదించండి."
+
+#: 
+msgid "People &amp; Families"
+msgstr "వ్యక్తులు &amp; కుటుంబాలు"
+
+#: 
+msgid "Self-service"
+msgstr "స్వయం సేవ"
+
+#: 
+msgid "Self-service only"
+msgstr "స్వయం సేవ మాత్రమే"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "మీరు సవరించడానికి ప్రయత్నిస్తున్న గమనిక ఇకపై లేదు."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "ఈ వినియోగదారు తమ స్వంత కుటుంబ ప్రొఫైల్‌ను మాత్రమే సమీక్షించి నవీకరించగలరు. వ్యక్తిగత అనుమతులు వర్తించవు."
+
+#: 
+msgid "User List"
+msgstr "వినియోగదారు జాబితా"
+
+#: 
+msgid "View Person"
+msgstr "వ్యక్తిని చూడండి"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "ఈ కుటుంబానికి గమనిక జోడించడానికి మీకు అనుమతి లేదు."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "ఈ వ్యక్తికి గమనిక జోడించడానికి మీకు అనుమతి లేదు."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "ఈ గమనికను సవరించడానికి మీకు అనుమతి లేదు"
+

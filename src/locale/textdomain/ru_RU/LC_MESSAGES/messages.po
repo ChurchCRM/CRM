@@ -16580,3 +16580,95 @@ msgstr "прошлое"
 msgid "Croatian"
 msgstr "Хорватский"
 
+#: 
+msgid "%s's Account"
+msgstr "Аккаунт %s"
+
+#: 
+msgid "Access"
+msgstr "Доступ"
+
+#: 
+msgid "Access level"
+msgstr "Уровень доступа"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Администраторы имеют полный доступ ко всем функциям и данным. Индивидуальные разрешения не применяются."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Все пользователи могут просматривать членов прихода. Это разрешение нельзя отозвать."
+
+#: 
+msgid "Always granted"
+msgstr "Всегда предоставлено"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Может просматривать и редактировать только свою семью. Другой доступ отсутствует."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Выберите конкретные разрешения ниже."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Обратитесь к администратору для изменения ваших разрешений."
+
+#: 
+msgid "Custom permissions"
+msgstr "Настраиваемые разрешения"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Полный доступ — предоставляет все привилегии."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Назначить индивидуальные разрешения:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Если вам необходим дополнительный доступ, пожалуйста, обратитесь к администратору вашего прихода."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Прихожане &amp; Семьи"
+
+#: 
+msgid "Self-service"
+msgstr "Самообслуживание"
+
+#: 
+msgid "Self-service only"
+msgstr "Только самообслуживание"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Заметка, которую вы пытаетесь редактировать, больше не существует."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Этот пользователь может просматривать и обновлять только профиль своей семьи. Индивидуальные разрешения не применяются."
+
+#: 
+msgid "User List"
+msgstr "Список пользователей"
+
+#: 
+msgid "View Person"
+msgstr "Просмотр прихожанина"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "У вас нет разрешения добавлять заметку для этой семьи."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "У вас нет разрешения добавлять заметку для этого прихожанина."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "У вас нет разрешения редактировать эту заметку"
+

@@ -16493,3 +16493,95 @@ msgstr "verlede"
 msgid "Croatian"
 msgstr "Kroaties"
 
+#: 
+msgid "%s's Account"
+msgstr "%s se Rekening"
+
+#: 
+msgid "Access"
+msgstr "Toegang"
+
+#: 
+msgid "Access level"
+msgstr "Toegangsvlak"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administrateurs het volle toegang tot alle funksies en data. Individuele toestemmings is nie van toepassing nie."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Alle gebruikers kan gemeentelede besigtig. Hierdie toestemming kan nie verwyder word nie."
+
+#: 
+msgid "Always granted"
+msgstr "Altyd toegestaan"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Kan slegs hul eie gesin hersien en bevestig. Geen ander toegang nie."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Kies spesifieke toestemmings hieronder."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontak 'n administrateur om u toestemmings te wysig."
+
+#: 
+msgid "Custom permissions"
+msgstr "Aangepaste toestemmings"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Volle toegang — verleen alle voorregte."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Verleen individuele toestemmings:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "As u addisionele toegang benodig, kontak asseblief u kerkadministrateur."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Mense &amp; Gesinne"
+
+#: 
+msgid "Self-service"
+msgstr "Selfbediening"
+
+#: 
+msgid "Self-service only"
+msgstr "Slegs selfbediening"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Die nota wat u probeer wysig, bestaan nie meer nie."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Hierdie gebruiker kan slegs hul eie gesinsprofiel hersien en opdateer. Individuele toestemmings is nie van toepassing nie."
+
+#: 
+msgid "User List"
+msgstr "Gebruikerslys"
+
+#: 
+msgid "View Person"
+msgstr "Bekyk Persoon"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "U het nie toestemming om 'n nota vir hierdie gesin by te voeg nie."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "U het nie toestemming om 'n nota vir hierdie persoon by te voeg nie."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "U het nie toestemming om hierdie nota te wysig nie"
+

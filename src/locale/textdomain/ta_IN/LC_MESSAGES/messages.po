@@ -16509,3 +16509,95 @@ msgstr "கடந்த"
 msgid "Croatian"
 msgstr "குரோஷியன்"
 
+#: 
+msgid "%s's Account"
+msgstr "%s இன் கணக்கு"
+
+#: 
+msgid "Access"
+msgstr "அணுகல்"
+
+#: 
+msgid "Access level"
+msgstr "அணுகல் நிலை"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "நிர்வாகிகளுக்கு அனைத்து அம்சங்கள் மற்றும் தரவுகளுக்கும் முழு அணுகல் உள்ளது. தனிப்பட்ட அனுமதிகள் பொருந்தாது."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "அனைத்து பயனர்களும் சபை உறுப்பினர்களை பார்க்கலாம். இந்த அனுமதியை அகற்ற முடியாது."
+
+#: 
+msgid "Always granted"
+msgstr "எப்போதும் வழங்கப்பட்டது"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "தங்கள் சொந்த குடும்பத்தை மட்டுமே மதிப்பாய்வு செய்து சரிபார்க்க முடியும். வேறு அணுகல் இல்லை."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "கீழே குறிப்பிட்ட அனுமதிகளைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "உங்கள் அனுமதிகளை மாற்ற ஒரு நிர்வாகியை தொடர்பு கொள்ளவும்."
+
+#: 
+msgid "Custom permissions"
+msgstr "தனிப்பயன் அனுமதிகள்"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "முழு அணுகல் — அனைத்து சலுகைகளையும் வழங்குகிறது."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "தனிப்பட்ட அனுமதிகளை வழங்குக:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "உங்களுக்கு கூடுதல் அணுகல் தேவைப்பட்டால், உங்கள் திருச்சபை நிர்வாகியை தொடர்பு கொள்ளுங்கள்."
+
+#: 
+msgid "People &amp; Families"
+msgstr "நபர்கள் &amp; குடும்பங்கள்"
+
+#: 
+msgid "Self-service"
+msgstr "சுய சேவை"
+
+#: 
+msgid "Self-service only"
+msgstr "சுய சேவை மட்டும்"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "நீங்கள் திருத்த முயற்சிக்கும் குறிப்பு இனி இல்லை."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "இந்த பயனர் தங்கள் சொந்த குடும்ப சுயவிவரத்தை மட்டுமே மதிப்பாய்வு செய்து புதுப்பிக்க முடியும். தனிப்பட்ட அனுமதிகள் பொருந்தாது."
+
+#: 
+msgid "User List"
+msgstr "பயனர் பட்டியல்"
+
+#: 
+msgid "View Person"
+msgstr "நபரைப் பார்க்கவும்"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "இந்த குடும்பத்திற்கு குறிப்பு சேர்க்க உங்களுக்கு அனுமதி இல்லை."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "இந்த நபருக்கு குறிப்பு சேர்க்க உங்களுக்கு அனுமதி இல்லை."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "இந்த குறிப்பை திருத்த உங்களுக்கு அனுமதி இல்லை"
+

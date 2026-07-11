@@ -16477,3 +16477,95 @@ msgstr "e kaluar"
 msgid "Croatian"
 msgstr "Kroate"
 
+#: 
+msgid "%s's Account"
+msgstr "Llogaria e %s"
+
+#: 
+msgid "Access"
+msgstr "Qasje"
+
+#: 
+msgid "Access level"
+msgstr "Niveli i qasjes"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratorët kanë qasje të plotë në të gjitha funksionet dhe të dhënat. Lejet individuale nuk zbatohen."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Të gjithë përdoruesit mund të shohin anëtarët e kongregacionit. Kjo leje nuk mund të hiqet."
+
+#: 
+msgid "Always granted"
+msgstr "Gjithmonë e dhënë"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Mund të rishikojë dhe verifikojë vetëm familjen e vet. Asnjë qasje tjetër."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Zgjidhni lejet specifike më poshtë."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontaktoni një administrator për të ndryshuar lejet tuaja."
+
+#: 
+msgid "Custom permissions"
+msgstr "Leje të personalizuara"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Qasje e plotë — jep të gjitha privilegjet."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Jepni leje individuale:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Nëse keni nevojë për qasje shtesë, ju lutemi kontaktoni administratorin e kishës suaj."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Njerëz &amp; Familje"
+
+#: 
+msgid "Self-service"
+msgstr "Vetëshërbim"
+
+#: 
+msgid "Self-service only"
+msgstr "Vetëm vetëshërbim"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Shënimi që po përpiqeni të redaktoni nuk ekziston më."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Ky përdorues mund të rishikojë dhe përditësojë vetëm profilin e familjes së vet. Lejet individuale nuk zbatohen."
+
+#: 
+msgid "User List"
+msgstr "Lista e Përdoruesve"
+
+#: 
+msgid "View Person"
+msgstr "Shiko Personin"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nuk keni leje për të shtuar një shënim për këtë familje."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nuk keni leje për të shtuar një shënim për këtë person."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nuk keni leje për të redaktuar këtë shënim"
+

@@ -16456,3 +16456,95 @@ msgstr "ที่ผ่านมา"
 msgid "Croatian"
 msgstr "โครเอเชีย"
 
+#: 
+msgid "%s's Account"
+msgstr "บัญชีของ %s"
+
+#: 
+msgid "Access"
+msgstr "การเข้าถึง"
+
+#: 
+msgid "Access level"
+msgstr "ระดับการเข้าถึง"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "ผู้ดูแลระบบมีสิทธิ์เข้าถึงฟีเจอร์และข้อมูลทั้งหมดอย่างสมบูรณ์ สิทธิ์รายบุคคลไม่มีผลบังคับใช้"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "ผู้ใช้ทุกคนสามารถดูรายชื่อสมาชิกคริสตจักรได้ สิทธิ์นี้ไม่สามารถถอดถอนได้"
+
+#: 
+msgid "Always granted"
+msgstr "ได้รับสิทธิ์เสมอ"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "สามารถตรวจสอบและยืนยันข้อมูลครอบครัวของตนเองเท่านั้น ไม่มีสิทธิ์เข้าถึงอื่น"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "เลือกสิทธิ์เฉพาะด้านล่าง"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "ติดต่อผู้ดูแลระบบเพื่อเปลี่ยนแปลงสิทธิ์ของคุณ"
+
+#: 
+msgid "Custom permissions"
+msgstr "สิทธิ์กำหนดเอง"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "การเข้าถึงแบบเต็ม — ให้สิทธิ์ทั้งหมด"
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "มอบสิทธิ์รายบุคคล:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "หากคุณต้องการสิทธิ์เพิ่มเติม โปรดติดต่อผู้ดูแลระบบคริสตจักรของคุณ"
+
+#: 
+msgid "People &amp; Families"
+msgstr "ผู้คน &amp; ครอบครัว"
+
+#: 
+msgid "Self-service"
+msgstr "บริการด้วยตนเอง"
+
+#: 
+msgid "Self-service only"
+msgstr "บริการด้วยตนเองเท่านั้น"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "บันทึกที่คุณพยายามแก้ไขไม่มีอยู่อีกต่อไปแล้ว"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "ผู้ใช้นี้สามารถตรวจสอบและอัปเดตโปรไฟล์ครอบครัวของตนเองเท่านั้น สิทธิ์รายบุคคลไม่มีผลบังคับใช้"
+
+#: 
+msgid "User List"
+msgstr "รายชื่อผู้ใช้"
+
+#: 
+msgid "View Person"
+msgstr "ดูข้อมูลบุคคล"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับครอบครัวนี้"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับบุคคลนี้"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "คุณไม่มีสิทธิ์แก้ไขบันทึกนี้"
+
