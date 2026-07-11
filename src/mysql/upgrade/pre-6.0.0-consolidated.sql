@@ -1,11 +1,17 @@
 -- pre-6.0.0-consolidated.sql
 -- Consolidates all pre-6.0.0 migration steps into a single file.
 --
--- SUPPORTED PATH: ChurchInfo 1.2.14 / 1.3.0 / 1.3.1 → ChurchCRM 5.9.0
--- (The untouched "pre-6.0.0" upgrade.json entry then advances 5.9.0 → 6.0.0.)
+-- SUPPORTED PATH: ChurchInfo 1.2.14 / 1.3.0 / 1.3.1 / 1.3.2 → ChurchCRM 6.0.0
+-- in one step, via the "consolidated-pre-6.0.0" upgrade.json entry. The
+-- built-in upgrader then continues unattended from 6.0.0 to the latest release.
 --
--- Installs already at an intermediate version (2.x–5.x) should first upgrade
--- to 6.0.0, then to the current release — that path is tested separately.
+-- OUT OF SCOPE: installs already at an intermediate 2.x/3.x/4.x/5.x version are
+-- NOT matched by "consolidated-pre-6.0.0" and have no automated upgrade path in
+-- this file — running the full merged script against a DB that already applied
+-- some of these changes would error (referencing already-dropped columns) or
+-- destroy data (unconditional DROP TABLE on tables that already hold real rows).
+-- Those installs must be manually brought forward to an intermediate release
+-- first; from there the built-in upgrader can take over.
 --
 -- COMPACTION (objects removed because they cancel out within this window):
 --   • 4.2.0-perms.sql omitted: permissions/roles tables are dropped by 6.5.0 (IF EXISTS).
@@ -557,3 +563,18 @@ DELETE FROM list_lst WHERE lst_OptionName = 'bCanvasser';
 DELETE FROM query_qry WHERE qry_ID = '27';
 ALTER TABLE user_usr DROP COLUMN IF EXISTS usr_Canvasser;
 -- "DELETE FROM permissions ..." omitted: table is omitted (see compaction notes).
+
+
+-- ===== from 6.0.0.sql =====
+
+-- Remove obsolete photo size configuration items
+-- These were replaced with hardcoded values for optimal bandwidth/storage efficiency
+-- The application never displays photos larger than 200px, so 400x400 storage was wasteful
+
+-- iPhotoHeight (cfg_id 2034)
+-- iPhotoWidth (cfg_id 2035)
+-- iThumbnailWidth (cfg_id 2036)
+-- iInitialsPointSize (cfg_id 2037)
+-- iPhotoClientCacheDuration (cfg_id 2038) - Replaced with hardcoded 2-hour cache via Slim HttpCache middleware
+-- bBackupExtraneousImages (cfg_id 2062) - Initials and remote images are never backed up (can be regenerated)
+DELETE FROM config_cfg WHERE cfg_id IN (2034, 2035, 2036, 2037, 2038, 2062);
