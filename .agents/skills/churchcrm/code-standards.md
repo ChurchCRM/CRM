@@ -448,7 +448,7 @@ Before committing code changes, verify:
 - [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)
 - [ ] TLS verification enabled by default for HTTPS requests
 - [ ] No O(N*M) algorithms - use hash-based lookups for set membership
-- [ ] **If new gettext() strings added**: Run `npm run locale:build` to extract terms
+- [ ] **If new gettext() strings added**: wrap the string only — **never run `npm run locale:build`** (term extraction is automated outside this repo; see `i18n-localization.md`)
 - [ ] Tests pass (if available) - run relevant tests before committing
 - [ ] Commit message follows imperative mood (< 72 chars, no file paths)
 - [ ] Branch name follows kebab-case format
