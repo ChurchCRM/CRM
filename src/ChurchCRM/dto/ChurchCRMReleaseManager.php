@@ -760,7 +760,7 @@ class ChurchCRMReleaseManager
         }
 
         $nextVersionStr = $nextRelease !== null ? $nextRelease->__toString() : null;
-        $latestVersionStr = !empty($releasesAhead) ? end($releasesAhead)->__toString() : $installedVersionStr;
+        $latestVersionStr = !empty($releasesAhead) ? end($releasesAhead)->__toString() : ($latestKnownRelease !== null ? $latestKnownRelease->__toString() : $installedVersionStr);
 
         // Fetch notes for the latest known GitHub release so the frontend can display
         // them when the system is already up to date (releasesAhead === 0).
