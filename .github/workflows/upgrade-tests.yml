@@ -30,9 +30,11 @@ jobs:
       php-versions: ${{ steps.set-matrix.outputs.php-versions }}
     steps:
     - id: set-matrix
+      env:
+        PHP_VERSIONS_INPUT: ${{ github.event.inputs.php-versions }}
       run: |
         if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-          echo 'php-versions=${{ github.event.inputs.php-versions }}' >> $GITHUB_OUTPUT
+          echo "php-versions=$PHP_VERSIONS_INPUT" >> $GITHUB_OUTPUT
         else
           echo 'php-versions=["8.4","8.5"]' >> $GITHUB_OUTPUT
         fi
@@ -96,8 +98,9 @@ jobs:
       run: npm run build:php:validate
 
     - name: Build Docker images
+      env:
+        PHP_VERSIONS: ${{ needs.configure.outputs.php-versions }}
       run: |
-        PHP_VERSIONS='${{ needs.configure.outputs.php-versions }}'
         for version in $(echo "$PHP_VERSIONS" | jq -r '.[]'); do
           echo "Building Docker image for PHP $version..."
           docker build --target test \
