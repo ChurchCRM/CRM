@@ -36,8 +36,9 @@ describe('Upgrade via Restore', () => {
     const upgradeAdminUser = Cypress.env('UPGRADE_ADMIN_USER') || 'Admin';
     const upgradeAdminPass = Cypress.env('UPGRADE_ADMIN_PASS') || 'changeme';
 
-    // New password set during forced password change on the fresh install
-    const newAdminPassword = 'AdminP@ss1234!';
+    // New password set during forced password change on the fresh install.
+    // Configured in upgrade.config.ts so it can be overridden without editing this file.
+    const newAdminPassword = Cypress.env('admin.new.password') || 'AdminP@ss1234!';
 
     describe('Step 1: Fresh Install via Setup Wizard', () => {
         it('should complete setup wizard', () => {
@@ -103,7 +104,7 @@ describe('Upgrade via Restore', () => {
             // Wait for the form submit button to be interactive before submitting
             cy.get('#church-info-form button[type=submit], #church-info-form input[type=submit]').should('not.be.disabled');
             cy.get('#church-info-form').submit();
-            cy.url({ timeout: 10000 }).should('include', 'church-info');
+            // Assert on the visible success message, not the URL (which already contains 'church-info')
             cy.contains('Church information saved successfully', { timeout: 10000 }).should('be.visible');
         });
 
