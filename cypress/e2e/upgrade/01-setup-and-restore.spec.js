@@ -1,32 +1,26 @@
 /// <reference types="cypress" />
 
 /**
- * Upgrade Restore Test
+ * Upgrade Restore Test — ChurchCRM 6.0.0 → current
  *
- * Installs a fresh ChurchCRM via the setup wizard, then restores an older
- * database backup and verifies the auto-upgrade completes successfully.
+ * Installs a fresh ChurchCRM via the setup wizard, then restores a
+ * ChurchCRM 6.0.0 database backup and verifies the auto-upgrade completes
+ * successfully.
  *
- * Supports two upgrade sources, selected by environment variables:
- *
- *   ChurchCRM 6.0.0 → current
- *     Password format: SHA-256 salted (migrated silently to bcrypt on first login;
- *     no forced password change required)
- *
- *   ChurchInfo 1.3.1 → current
- *     Password format: MD5 unsalted (migrated to bcrypt on first login AND forces a
- *     mandatory password change via CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE=true)
+ * Upgrade source: ChurchCRM 6.0.0 → current
+ *   Password format: SHA-256 salted (migrated silently to bcrypt on first login;
+ *   no forced password change required)
  *
  * Environment variables:
  *   CYPRESS_UPGRADE_SQL_FILE              — path to the SQL file to restore (relative to project root)
  *   CYPRESS_UPGRADE_ADMIN_USER            — admin username in the restored database (default: Admin)
  *   CYPRESS_UPGRADE_ADMIN_PASS            — admin password in the restored database (default: changeme)
- *   CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE — set to "true" for sources that force a password change
- *                                           after the first post-migration login (e.g. ChurchInfo 1.x)
+ *   CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE — set to "true" when the restored source forces a
+ *                                           mandatory password change after the first post-migration login
  *
  * Password hash formats supported after migration:
  *   - bcrypt ($2y$)   — current format (all new hashes)
  *   - SHA-256 salted  — ChurchCRM 6.x legacy (migrated on login, no forced change)
- *   - MD5 unsalted    — ChurchInfo 1.x legacy (migrated on login + forced change)
  */
 
 describe('Upgrade via Restore', () => {
