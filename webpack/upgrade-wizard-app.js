@@ -102,11 +102,10 @@ $(document).ready(() => {
       setTimeout(() => autoDownloadUpdate(), 300);
     }
 
-    // If the admin navigates back to step 0 (pre-flight), reset force-reinstall
-    // mode so a subsequent pass through the wizard behaves normally.
-    if (event.detail.to === 0) {
-      forceReinstallMode = false;
-    }
+    // forceReinstallMode is reset explicitly in the places that clear it
+    // (module initialisation, or when the page reloads after a completed upgrade).
+    // Resetting here would create a timing dependency with the setTimeout in
+    // setupForceReinstallButton, breaking under animation or slow event dispatch.
   });
 });
 
@@ -311,9 +310,17 @@ function renderWhatsNew(data) {
       }
       installedChangelogUrl = latestUrl;
     } else {
-      $("#whatsNewHeading").empty();
-      $("#whatsNewNotes").html("");
-      $("#whatsNewChangelogLink").addClass("d-none");
+      // GitHub release body is absent — show a short user-facing notice so the
+      // section is not silently blank, and still link to the changelog if available.
+      setWhatsNewHeading(latestVer);
+      $("#whatsNewNotes").html(
+        `<p class="text-secondary">${i18next.t("No release notes available for this version.")}</p>`,
+      );
+      if (latestUrl) {
+        $("#whatsNewChangelogLink").attr("href", latestUrl).removeClass("d-none");
+      } else {
+        $("#whatsNewChangelogLink").addClass("d-none");
+      }
     }
 
     if (forceReinstallMode) {
@@ -721,13 +728,22 @@ function setupForceReinstallButton() {
     $("#applyButtonContainer").addClass("d-none");
     $("#applyStatus").empty();
 
-    // Navigate back to Pre-flight (step 1, 1-indexed), then to Backup (step 2).
-    // forceReinstallMode is set inside the setTimeout so it takes effect AFTER
-    // the show.bs-stepper event for to(1) has already fired (and would otherwise
-    // reset the flag via the step-0 guard in the event listener).
+    // Restore the Backup step UI — both buttons may have been hidden by a
+    // prior backup/skip action and must be visible for the reinstall pass.
+    $("#doBackup")
+      .removeClass("d-none")
+      .prop("disabled", false)
+      .html(`<i class="fa fa-database me-1"></i>${i18next.t("Create Backup")}`);
+    $("#skipBackup").removeClass("d-none");
+    $("#backupStatus").empty();
+    $("#resultFiles").empty();
+
+    // Set forceReinstallMode before navigating so it is already true when
+    // show.bs-stepper fires — no setTimeout ordering dependency required
+    // now that the step-0 guard no longer resets the flag.
+    forceReinstallMode = true;
     upgradeStepper.to(1);
     setTimeout(() => {
-      forceReinstallMode = true;
       upgradeStepper.to(2);
     }, 100);
 
