@@ -7,7 +7,7 @@ services:
   # Root path database (separate from subdirectory)
   database-root:
     profiles: [ci-root]
-    image: mariadb
+    image: mariadb:10.11
     ports:
       - ${DATABASE_PORT:-3306}:3306
     environment:
@@ -26,7 +26,7 @@ services:
   # Subdirectory path database (separate from root)
   database-subdir:
     profiles: [ci-subdir]
-    image: mariadb
+    image: mariadb:10.11
     ports:
       - ${DATABASE_SUBDIR_PORT:-3307}:3306
     environment:
@@ -115,7 +115,7 @@ services:
   # New system test database (empty - no demo data, for fresh install testing)
   database-new-system:
     profiles: [ci-new-system]
-    image: mariadb
+    image: mariadb:10.11
     ports:
       - ${DATABASE_NEW_SYSTEM_PORT:-3308}:3306
     environment:
