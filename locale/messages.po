@@ -5861,6 +5861,9 @@ msgstr ""
 msgid "Installed on Server"
 msgstr ""
 
+msgid "Installing next release"
+msgstr ""
+
 msgid "Installing…"
 msgstr ""
 
@@ -11878,7 +11881,7 @@ msgstr ""
 msgid "What's New"
 msgstr ""
 
-msgid "What's New in"
+msgid "What's New in {{version}}"
 msgstr ""
 
 #. plugin:mailchimp:section:3:content
@@ -12012,7 +12015,7 @@ msgstr ""
 msgid "Yes, delete this record"
 msgstr ""
 
-msgid "You are"
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
 msgstr ""
 
 msgid "You are about to add a new deposit without a comment"
@@ -12386,9 +12389,6 @@ msgstr ""
 msgid "in cart"
 msgstr ""
 
-msgid "installing next"
-msgstr ""
-
 msgid "invalid calendar pinning"
 msgstr ""
 
@@ -12542,9 +12542,6 @@ msgid "record(s) successfully deleted from the selected Group."
 msgstr ""
 
 msgid "records"
-msgstr ""
-
-msgid "releases behind. Here's what you'll gain:"
 msgstr ""
 
 msgid "risk"

@@ -218,7 +218,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <h4 class="mb-0">
                                         <i class="fa fa-tag me-1 text-primary"></i>
-                                        <?= gettext("What's New in") ?> <span id="whatsNewVersion" class="text-primary"></span>
+                                        <span id="whatsNewHeading"></span>
                                     </h4>
                                     <a id="whatsNewChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm d-none">
                                         <i class="fa fa-external-link me-1"></i><?= gettext('Full changelog') ?>
