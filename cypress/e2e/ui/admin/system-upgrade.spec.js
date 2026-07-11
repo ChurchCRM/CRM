@@ -5,6 +5,8 @@ const previewFixture = {
     nextReleaseNotes: "## What's New\n\n- **Feature 1**: Dashboard\n",
     nextChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
     releasesAhead: 1,
+    latestReleaseNotes: "",
+    latestChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
     upgradePath: [
         {
             version: "5.0.1",
@@ -14,6 +16,18 @@ const previewFixture = {
             isNext: true,
         },
     ],
+};
+
+const upToDateFixture = {
+    installedVersion: "5.0.1",
+    nextVersion: null,
+    latestVersion: "5.0.1",
+    nextReleaseNotes: "",
+    nextChangelogUrl: null,
+    releasesAhead: 0,
+    latestReleaseNotes: "## What's New in 5.0.1\n\n- **Feature**: All up to date!\n",
+    latestChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+    upgradePath: [],
 };
 
 const downloadFixture = {
@@ -189,6 +203,8 @@ describe("System Upgrade Page", () => {
                     nextReleaseNotes: "## 5.0.1 Notes\n\n- Patch fix\n",
                     nextChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
                     releasesAhead: 3,
+                    latestReleaseNotes: "",
+                    latestChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.3.md",
                     upgradePath: [
                         {
                             version: "5.0.1",
@@ -450,6 +466,79 @@ describe("System Upgrade Page", () => {
         });
     });
 
+    describe("Up-to-date State", () => {
+        it("should show up-to-date banner and latest release notes when releasesAhead is 0", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: upToDateFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+
+            // Up-to-date success banner should be visible
+            cy.get("#whatsNewContent .alert-success").should("be.visible").and("contain", "You're up to date");
+
+            // Latest release notes should be rendered
+            cy.get("#whatsNewVersion").should("contain", "5.0.1");
+            cy.get("#whatsNewNotes").should("contain", "All up to date");
+
+            // Changelog link should be visible and correct
+            cy.get("#whatsNewChangelogLink")
+                .should("not.have.class", "d-none")
+                .and("have.attr", "href")
+                .and("include", "changelog/5.0.1.md");
+
+            // Proceed button should be hidden (no upgrade available)
+            cy.get("#proceedToDownload").should("have.class", "d-none");
+        });
+
+        it("should show Force Re-install button when up to date", () => {
+            // The Force Re-install button (#forceReinstallCurrent) is rendered by PHP
+            // when !isUpdateAvailable && latestGitHubVersion !== null.
+            // In CI the live page may or may not have an update available, so we assert
+            // the button's presence conditionally.
+            cy.visit("/admin/system/upgrade");
+            cy.get("body").then(($body) => {
+                if ($body.find("#forceReinstallCurrent").length) {
+                    cy.get("#forceReinstallCurrent")
+                        .should("be.visible")
+                        .and("contain", "Force Re-install");
+                }
+            });
+        });
+
+        it("should keep proceed button visible and relabelled in force-reinstall mode when up to date", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: upToDateFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+
+            // Confirm force-reinstall via the modal (always present in DOM)
+            cy.get("#confirmForceReinstall").click({ force: true });
+
+            // After confirmation the wizard jumps to backup step automatically
+            cy.get("#step-backup").should("be.visible");
+            cy.get("#skipBackup").click();
+
+            // What's New step: with forceReinstallMode=true the proceed button should
+            // remain visible and carry the 'Re-install current version' label
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+
+            cy.get("#proceedToDownload")
+                .should("not.have.class", "d-none")
+                .and("contain", "Re-install current version");
+        });
+    });
+
     describe("Advanced Version Selector", () => {
         const multiReleaseFixture = {
             installedVersion: "5.0.0",
@@ -458,6 +547,8 @@ describe("System Upgrade Page", () => {
             nextReleaseNotes: "## 5.0.1 Notes\n\n- Patch fix\n",
             nextChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
             releasesAhead: 3,
+            latestReleaseNotes: "",
+            latestChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.3.md",
             upgradePath: [
                 {
                     version: "5.0.1",

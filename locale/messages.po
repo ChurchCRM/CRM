@@ -4926,6 +4926,9 @@ msgstr ""
 msgid "Force re-install initiated. Please backup your database before applying."
 msgstr ""
 
+msgid "Re-install current version"
+msgstr ""
+
 msgid "Foreground Color"
 msgstr ""
 

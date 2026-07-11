@@ -17,7 +17,7 @@ class UpgradeAPIService
      * Get upgrade preview data for the "What's New" wizard step.
      * Returns release notes, upgrade path, and version list without downloading anything.
      *
-     * @return array{installedVersion: string, nextVersion: string|null, latestVersion: string, nextReleaseNotes: string, nextChangelogUrl: string|null, releasesAhead: int, upgradePath: array}
+     * @return array{installedVersion: string, nextVersion: string|null, latestVersion: string, nextReleaseNotes: string, nextChangelogUrl: string|null, releasesAhead: int, upgradePath: array, latestReleaseNotes: string, latestChangelogUrl: string}
      * @throws \Exception
      */
     public static function getUpgradePreview(): array

@@ -101,6 +101,12 @@ $(document).ready(() => {
     if (event.detail.to === 3) {
       setTimeout(() => autoDownloadUpdate(), 300);
     }
+
+    // If the admin navigates back to step 0 (pre-flight), reset force-reinstall
+    // mode so a subsequent pass through the wizard behaves normally.
+    if (event.detail.to === 0) {
+      forceReinstallMode = false;
+    }
   });
 });
 

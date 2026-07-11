@@ -766,7 +766,11 @@ class ChurchCRMReleaseManager
         // them when the system is already up to date (releasesAhead === 0).
         $latestKnownRelease = !empty($_SESSION['ChurchCRMReleases']) ? $_SESSION['ChurchCRMReleases'][0] : null;
         $latestReleaseNotes = $latestKnownRelease !== null ? $latestKnownRelease->getReleaseNotes() : '';
-        $latestChangelogUrl = $changelogBaseUrl . $latestVersionStr . '.md';
+        // Use the version string from the actual latest release object so the changelog
+        // URL stays accurate on dev builds where $installedVersionStr may be ahead of
+        // any published stable release.
+        $latestReleaseVersionStr = $latestKnownRelease !== null ? $latestKnownRelease->__toString() : $latestVersionStr;
+        $latestChangelogUrl = $changelogBaseUrl . $latestReleaseVersionStr . '.md';
 
         return [
             'installedVersion' => $installedVersionStr,
