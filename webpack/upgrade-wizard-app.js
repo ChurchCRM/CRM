@@ -710,10 +710,6 @@ function setupForceReinstallButton() {
     // was not created via Bootstrap's normal data-API (e.g. in tests).
     bootstrap.Modal.getOrCreateInstance(document.getElementById("forceReinstallModal")).hide();
 
-    // Signal that force-reinstall mode is active so the What's New step keeps
-    // the proceed button visible even when the system is already up to date.
-    forceReinstallMode = true;
-
     // Clear stale download state so the Download & Apply step starts fresh
     window.CRM.updateFile = null;
     selectedTargetVersion = null;
@@ -722,9 +718,14 @@ function setupForceReinstallButton() {
     $("#applyButtonContainer").addClass("d-none");
     $("#applyStatus").empty();
 
-    upgradeStepper.to(0);
+    // Navigate back to Pre-flight (step 1, 1-indexed), then to Backup (step 2).
+    // forceReinstallMode is set inside the setTimeout so it takes effect AFTER
+    // the show.bs-stepper event for to(1) has already fired (and would otherwise
+    // reset the flag via the step-0 guard in the event listener).
+    upgradeStepper.to(1);
     setTimeout(() => {
-      upgradeStepper.to(1);
+      forceReinstallMode = true;
+      upgradeStepper.to(2);
     }, 100);
 
     $("html, body").animate({ scrollTop: $("#upgrade-wizard-card").offset().top - 20 }, 500);
