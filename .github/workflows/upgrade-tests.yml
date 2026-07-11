@@ -192,7 +192,7 @@ jobs:
       with:
         command: npx cypress run --config-file cypress/configs/upgrade.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-upgrade-6-[hash].xml
       env:
-        CYPRESS_UPGRADE_SQL_FILE: cypress/data/churchcrm-6.0.0.sql
+        CYPRESS_UPGRADE_SQL_FILE: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
         CYPRESS_UPGRADE_ADMIN_USER: Admin
         CYPRESS_UPGRADE_ADMIN_PASS: changeme
 
