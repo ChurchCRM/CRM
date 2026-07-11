@@ -291,7 +291,10 @@ function renderWhatsNew(data) {
     $("#upgradePathPanel").addClass("d-none");
     $("#advancedVersionCollapse").closest(".mb-4").addClass("d-none");
 
-    const upToDateBanner = `<div class="alert alert-success d-flex align-items-center gap-2 mb-3">
+    // Remove any banner left from a previous render (e.g. wizard re-entry or preview re-fetch)
+    $("#whatsNewContent .js-uptodate-banner").remove();
+
+    const upToDateBanner = `<div class="alert alert-success d-flex align-items-center gap-2 mb-3 js-uptodate-banner">
       <i class="fa fa-circle-check fa-lg"></i>
       <span><strong>${i18next.t("You're up to date!")}</strong> ${i18next.t("No upgrades are available for your current version.")}</span>
     </div>`;
