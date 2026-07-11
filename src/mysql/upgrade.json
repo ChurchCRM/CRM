@@ -1,15 +1,7 @@
 {
   "consolidated-pre-6.0.0": {
-    "versions": [
-      "1.2.14",
-      "1.3.0",
-      "1.3.1",
-      "1.3.2"
-    ],
-    "scripts": [
-      "/mysql/upgrade/pre-6.0.0-consolidated.sql",
-      "/mysql/upgrade/2.9.0-InnoDB.php"
-    ],
+    "versions": ["1.2.14", "1.3.0", "1.3.1", "1.3.2"],
+    "scripts": ["/mysql/upgrade/pre-6.0.0-consolidated.sql", "/mysql/upgrade/2.9.0-InnoDB.php"],
     "dbVersion": "6.0.0"
   },
   "pre-6.2.0": {
