@@ -15,6 +15,10 @@ export default defineConfig({
     // Password set during forced-change on fresh install (Step 1 of the upgrade spec).
     // Must match the value used in 01-setup-and-restore.spec.js.
     'admin.new.password': 'AdminP@ss1234!',
+    // Password set during the forced-change that follows MD5->bcrypt migration
+    // (Step 2.5 of the upgrade spec, restored ChurchInfo/legacy accounts only).
+    // Must match the value used in 01-setup-and-restore.spec.js.
+    'admin.post.upgrade.password': 'PostMigrateP@ss9012!',
   },
   pageLoadTimeout: 120000,
   defaultCommandTimeout: 60000,

@@ -40,6 +40,11 @@ describe('Upgrade via Restore', () => {
     // Configured in upgrade.config.ts so it can be overridden without editing this file.
     const newAdminPassword = Cypress.env('admin.new.password') || 'AdminP@ss1234!';
 
+    // Password set during the forced-change that follows MD5->bcrypt migration of the
+    // restored legacy account (see User::isPasswordValid()). Restored ChurchInfo/legacy
+    // credentials are only valid for a single login before this change is required.
+    const postUpgradePassword = Cypress.env('admin.post.upgrade.password') || 'PostMigrateP@ss9012!';
+
     describe('Step 1: Fresh Install via Setup Wizard', () => {
         it('should complete setup wizard', () => {
             cy.visit('/');
@@ -161,15 +166,37 @@ describe('Upgrade via Restore', () => {
         });
     });
 
+    describe('Step 2.5: Complete Forced Password Change (MD5 Migration)', () => {
+        // The restored legacy account authenticates via the MD5 fallback in
+        // User::isPasswordValid(), which forces a password change on that first
+        // login (the weak, potentially-compromised MD5 plaintext must not remain
+        // in use just because the stored hash got upgraded to bcrypt). This is the
+        // one and only login that uses the original restored credentials — every
+        // later login in this spec uses postUpgradePassword.
+        it('should force a password change after the MD5-migrated login', () => {
+            cy.visit('/login');
+            cy.get('input[name=User]').type(upgradeAdminUser);
+            cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
+            cy.url({ timeout: 30000 }).should('include', '/changepassword');
+
+            cy.get('#OldPassword').type(upgradeAdminPass);
+            cy.get('#NewPassword1').type(postUpgradePassword);
+            cy.get('#NewPassword2').type(postUpgradePassword);
+            cy.get('button[type=submit]').click();
+
+            cy.url({ timeout: 15000 }).should('not.include', '/changepassword');
+        });
+    });
+
     describe('Step 3: Verify Upgraded System', () => {
-        // Establish (and cache) a login session with the restored admin credentials.
-        // cy.session() in beforeEach restores from cache on subsequent tests,
-        // so the full login round-trip only happens once.
+        // Establish (and cache) a login session with the post-migration admin
+        // credentials set in Step 2.5. cy.session() in beforeEach restores from
+        // cache on subsequent tests, so the full login round-trip only happens once.
         beforeEach(() => {
             cy.session('upgraded-admin', () => {
                 cy.visit('/login');
                 cy.get('input[name=User]').type(upgradeAdminUser);
-                cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
+                cy.get('input[name=Password]').type(postUpgradePassword + '{enter}');
                 cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
             });
         });
@@ -182,13 +209,13 @@ describe('Upgrade via Restore', () => {
             cy.get('input[name=Password]').should('be.visible');
         });
 
-        it('should login with the restored admin credentials', () => {
+        it('should login with the post-migration admin credentials', () => {
             cy.clearCookies();
             cy.clearLocalStorage();
             cy.visit('/login');
             cy.get('input[name=User]').type(upgradeAdminUser);
-            cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
-            // After a successful upgrade, the admin credentials must work.
+            cy.get('input[name=Password]').type(postUpgradePassword + '{enter}');
+            // After a successful upgrade + forced password change, the new credentials must work.
             cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
         });
 

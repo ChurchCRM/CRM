@@ -397,10 +397,13 @@ class User extends BaseUser
         }
 
         // Legacy MD5 check — pre-6.x / ChurchInfo 1.x stored passwords as unsalted
-        // md5(password). MD5 is cryptographically weak; we accept it here only to
-        // allow migrated accounts to log in once, then immediately re-hash to bcrypt.
+        // md5(password). MD5 is cryptographically weak and unsalted MD5 plaintexts are
+        // in public rainbow tables, so we accept it here only to let migrated accounts
+        // log in once, immediately re-hash to bcrypt, and force a new password — the
+        // weak plaintext must not remain in use just because the hash got stronger.
         if ($this->isMd5Hash($storedHash) && hash_equals($storedHash, md5($password))) {
             $this->setPassword($this->hashPassword($password));
+            $this->setNeedPasswordChange(true);
             $this->save();
             return true;
         }
