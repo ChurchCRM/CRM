@@ -600,6 +600,119 @@ jobs:
       if: always()
       run: npm run docker:ci:new-system:subdir:down
 
+  # Upgrade test — only runs on push to master/develop (not PRs).
+  # Installs a fresh ChurchCRM, restores a ChurchInfo 1.3.1 SQL backup, and
+  # verifies that the auto-upgrade and post-migration smoke checks pass.
+  # Requires MD5 legacy password support in User::isPasswordValid() (added in this PR).
+  test-upgrade-from-churchinfo:
+    needs: [configure, build]
+    if: github.event_name == 'push'
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    - name: Generate file signatures
+      run: node scripts/generate-signatures-node.js
+
+    - name: Remove Config.php for fresh install
+      run: rm -f src/Include/Config.php
+
+    - name: Start Docker (upgrade from ChurchInfo)
+      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
+
+    - name: Wait for server
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run Cypress upgrade test (ChurchInfo 1.3.1 → current, PHP ${{ matrix.php-version }})
+      uses: cypress-io/github-action@v7
+      with:
+        command: npx cypress run --config-file cypress/configs/upgrade.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-upgrade-churchinfo-[hash].xml
+      env:
+        CYPRESS_UPGRADE_SQL_FILE: cypress/data/churchinfo-1.3.1.sql
+        CYPRESS_UPGRADE_ADMIN_USER: Admin
+        CYPRESS_UPGRADE_ADMIN_PASS: churchinfoadmin
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-upgrade-churchinfo.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-upgrade-churchinfo.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-php${{ matrix.php-version }}-upgrade-churchinfo-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 15
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: Upgrade from ChurchInfo 1.3.1'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-upgrade-churchinfo-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:new-system:down
+
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
     timeout-minutes: 15

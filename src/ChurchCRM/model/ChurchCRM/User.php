@@ -383,8 +383,9 @@ class User extends BaseUser
 
     /**
      * Validate password against stored hash.
-     * Supports both legacy SHA-256 and new bcrypt formats for migration.
-     * If legacy hash matches, upgrades to bcrypt on successful validation.
+     * Supports bcrypt (current), legacy SHA-256 (6.x migration), and legacy MD5
+     * (pre-6.x / ChurchInfo 1.x migration) formats.
+     * On any legacy match, the stored hash is transparently upgraded to bcrypt.
      */
     public function isPasswordValid(string $password): bool
     {
@@ -393,6 +394,15 @@ class User extends BaseUser
         // Check if this is a bcrypt hash (starts with $2y$)
         if ($this->isBcryptHash($storedHash)) {
             return password_verify($password, $storedHash);
+        }
+
+        // Legacy MD5 check — pre-6.x / ChurchInfo 1.x stored passwords as unsalted
+        // md5(password). MD5 is cryptographically weak; we accept it here only to
+        // allow migrated accounts to log in once, then immediately re-hash to bcrypt.
+        if ($this->isMd5Hash($storedHash) && hash_equals($storedHash, md5($password))) {
+            $this->setPassword($this->hashPassword($password));
+            $this->save();
+            return true;
         }
 
         // Legacy SHA-256 check for migration period
@@ -431,6 +441,15 @@ class User extends BaseUser
     private function isBcryptHash(string $hash): bool
     {
         return str_starts_with($hash, '$2y$') || str_starts_with($hash, '$2b$') || str_starts_with($hash, '$2a$');
+    }
+
+    /**
+     * Check if a hash looks like an unsalted MD5 digest (32 lowercase hex chars).
+     * Used during the ChurchInfo → ChurchCRM upgrade migration path.
+     */
+    private function isMd5Hash(string $hash): bool
+    {
+        return (bool) preg_match('/^[a-f0-9]{32}$/', $hash);
     }
 
     // isAddEvent() is kept as an alias for isAddEventEnabled() since it's
