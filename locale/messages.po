@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 16:17+0000\n"
+"POT-Creation-Date: 2026-07-11 15:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -646,6 +646,9 @@ msgid "Advanced Settings"
 msgstr ""
 
 msgid "Advanced filtering by group, classification, and role"
+msgstr ""
+
+msgid "Advanced: choose a specific target version"
 msgstr ""
 
 msgid "Affected Files"
@@ -1549,6 +1552,9 @@ msgstr ""
 msgid "Brunei"
 msgstr ""
 
+msgid "Bug Fix"
+msgstr ""
+
 #. Context: countries
 msgid "Bulgaria (България)"
 msgstr ""
@@ -1586,6 +1592,9 @@ msgid "Buyers for this fundraiser:"
 msgstr ""
 
 msgid "By"
+msgstr ""
+
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
 msgstr ""
 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
@@ -1839,6 +1848,9 @@ msgid "Change role"
 msgstr ""
 
 msgid "Change this in System Settings."
+msgstr ""
+
+msgid "Changelog"
 msgstr ""
 
 msgid "Changes not saved! Please correct and try again!"
@@ -2456,6 +2468,9 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
+msgid "Continue Anyway"
+msgstr ""
+
 msgid "Continue to Dashboard"
 msgstr ""
 
@@ -2541,6 +2556,9 @@ msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
 msgid "Could not load note."
+msgstr ""
+
+msgid "Could not load release information."
 msgstr ""
 
 msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
@@ -3410,6 +3428,9 @@ msgstr ""
 msgid "Download & Apply"
 msgstr ""
 
+msgid "Download & Install"
+msgstr ""
+
 msgid "Download Backup & Continue"
 msgstr ""
 
@@ -3426,13 +3447,16 @@ msgstr ""
 msgid "Download the latest release and apply it to your installation."
 msgstr ""
 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr ""
+
 msgid "Downloaded"
 msgstr ""
 
 msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
 msgstr ""
 
-msgid "Downloading latest release from GitHub..."
+msgid "Downloading release from GitHub..."
 msgstr ""
 
 msgid "Drag and drop your CSV file here"
@@ -4330,6 +4354,9 @@ msgstr ""
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
 msgstr ""
 
+msgid "Failed to fetch upgrade preview"
+msgstr ""
+
 msgid "Failed to generate QR code. Please try again."
 msgstr ""
 
@@ -4613,6 +4640,9 @@ msgid "Fastest workflow:"
 msgstr ""
 
 msgid "Father"
+msgstr ""
+
+msgid "Feature"
 msgstr ""
 
 #. plugin:mailchimp:section:1:title
@@ -4963,6 +4993,9 @@ msgid "Full Path"
 msgstr ""
 
 msgid "Full access — grants all privileges."
+msgstr ""
+
+msgid "Full changelog"
 msgstr ""
 
 msgid "Fully translated."
@@ -5928,6 +5961,9 @@ msgstr ""
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr ""
 
+msgid "Invalid file path"
+msgstr ""
+
 msgid "Invalid format"
 msgstr ""
 
@@ -5953,6 +5989,9 @@ msgid "Invalid status"
 msgstr ""
 
 msgid "Invalid target family"
+msgstr ""
+
+msgid "Invalid version format"
 msgstr ""
 
 msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
@@ -6370,6 +6409,9 @@ msgstr ""
 msgid "Loading recovery codes"
 msgstr ""
 
+msgid "Loading release information..."
+msgstr ""
+
 msgid "Loading..."
 msgstr ""
 
@@ -6490,6 +6532,9 @@ msgid "Mailchimp Not Configured"
 msgstr ""
 
 msgid "Mailchimp is not active"
+msgstr ""
+
+msgid "Major"
 msgstr ""
 
 msgid "Make Data File"
@@ -6916,6 +6961,9 @@ msgstr ""
 
 #, php-format
 msgid "Missing required field: %s"
+msgstr ""
+
+msgid "Missing required fields: fullPath and sha1"
 msgstr ""
 
 #, php-format
@@ -7472,6 +7520,9 @@ msgid "No settings provided"
 msgstr ""
 
 msgid "No timeline events yet."
+msgstr ""
+
+msgid "No upgrades are available for your current version."
 msgstr ""
 
 msgid "No volunteer opportunities have been added yet"
@@ -9197,6 +9248,9 @@ msgstr ""
 msgid "SHA-256 must be a 64-character hex string."
 msgstr ""
 
+msgid "SHA1 Hash"
+msgstr ""
+
 msgid "SMS Integration"
 msgstr ""
 
@@ -9773,6 +9827,9 @@ msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr ""
 
 msgid "Show all"
+msgstr ""
+
+msgid "Show full upgrade path"
 msgstr ""
 
 msgid "Show in"
@@ -11595,6 +11652,9 @@ msgstr ""
 msgid "View query results"
 msgstr ""
 
+msgid "View release notes"
+msgstr ""
+
 msgid "View transaction details for a pledge payment"
 msgstr ""
 
@@ -11815,6 +11875,12 @@ msgstr ""
 msgid "What went wrong? What did you expect to happen?"
 msgstr ""
 
+msgid "What's New"
+msgstr ""
+
+msgid "What's New in"
+msgstr ""
+
 #. plugin:mailchimp:section:3:content
 msgid ""
 "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
@@ -11946,6 +12012,9 @@ msgstr ""
 msgid "Yes, delete this record"
 msgstr ""
 
+msgid "You are"
+msgstr ""
+
 msgid "You are about to add a new deposit without a comment"
 msgstr ""
 
@@ -11981,6 +12050,9 @@ msgid "You can reset your ChurchCRM password by clicking this link"
 msgstr ""
 
 msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr ""
+
+msgid "You can still proceed with the upgrade without viewing release notes."
 msgstr ""
 
 msgid "You do not have permission to add a note for this family."
@@ -12041,6 +12113,9 @@ msgid "You will be logged out and redirected to the login page."
 msgstr ""
 
 msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr ""
+
+msgid "You're up to date!"
 msgstr ""
 
 msgid "Your Account was Deleted"
@@ -12311,6 +12386,9 @@ msgstr ""
 msgid "in cart"
 msgstr ""
 
+msgid "installing next"
+msgstr ""
+
 msgid "invalid calendar pinning"
 msgstr ""
 
@@ -12464,6 +12542,9 @@ msgid "record(s) successfully deleted from the selected Group."
 msgstr ""
 
 msgid "records"
+msgstr ""
+
+msgid "releases behind. Here's what you'll gain:"
 msgstr ""
 
 msgid "risk"
