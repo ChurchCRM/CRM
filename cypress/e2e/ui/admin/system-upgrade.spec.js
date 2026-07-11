@@ -222,6 +222,7 @@ describe("System Upgrade Page", () => {
             cy.wait("@previewRequest", { timeout: 10000 });
             cy.get("#upgradePathPanel").should("not.have.class", "d-none");
             cy.get("#upgradePathSummary").should("contain", "3");
+            cy.get("#upgradePathAccordion .badge.bg-primary-lt.text-primary").should("contain", "Installing next release");
             cy.get("#proceedToDownload").should("be.visible");
         });
 

@@ -686,6 +686,97 @@ echo sprintf(gettext('%d record(s) returned'), mysqli_num_rows($rs));
 
 **Checklist addition:** Add `- [ ] No gettext() fragments — full sentence per call, sprintf for values` to your pre-commit review.
 
+### Never Split a Sentence in JavaScript (i18next template literals) <!-- learned: 2026-07-11 -->
+
+The same anti-pattern occurs in JS where two `i18next.t()` calls are concatenated in a template literal, often with HTML or a runtime value in between. The extracted msgids are short, decontextualised fragments that translators cannot understand.
+
+```javascript
+// ❌ WRONG — three fragments; count bolded via HTML between two t() calls
+$("#upgradePathSummary").html(
+  `${i18next.t("You are")} <strong>${count}</strong> ${i18next.t("releases behind. Here's what you'll gain:")}`,
+);
+// Produces msgids: "You are" and "releases behind. Here's what you'll gain:"
+
+// ✅ CORRECT — single parameterised msgid; HTML emphasis kept inside the template key
+$("#upgradePathSummary").html(
+  i18next.t("You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:", {
+    releaseCount: count,
+  }),
+);
+```
+
+**Detection — grep for JS template-literal split patterns:**
+```bash
+# Detects: `...${i18next.t(...)} ... ${i18next.t(...)}...`
+grep -rn '\${i18next\.t(' webpack/src/skin/js/ | grep -v '//' | head
+# Multiple i18next.t hits on the same line = likely fragment concatenation
+grep -rn 'i18next\.t(' webpack/ | awk -F: '{if (gsub(/i18next\.t\(/, "&", $2) > 1) print}'
+```
+
+**i18next `count` reserved key — use named alternatives:**
+i18next treats `count` as a special interpolation key that triggers plural-form lookup. When injecting a plain integer that is *not* a plural selector, use a distinct name to avoid unintended plural behaviour:
+```javascript
+// ❌ WRONG — triggers i18next plural lookup
+i18next.t("{{count}} releases behind", { count })
+
+// ✅ CORRECT — named interpolation, no plural side-effect
+i18next.t("{{releaseCount}} releases behind", { releaseCount: count })
+```
+
+**HTML-valued interpolation (i18next `escapeValue: false`):**
+When an interpolated value must contain HTML (e.g. a `<span>` to keep an element ID stable for Cypress), sanitize the inner text with `escapeHtml()` yourself, then disable escaping per-call:
+```javascript
+function setWhatsNewHeading(version) {
+  const versionHtml = `<span id="whatsNewVersion" class="text-primary">${escapeHtml(version || "")}</span>`;
+  $("#whatsNewHeading").html(
+    i18next.t("What's New in {{version}}", {
+      version: versionHtml,
+      interpolation: { escapeValue: false }, // safe: inner text manually escaped
+    }),
+  );
+}
+```
+This is a per-call option; it does not affect other `i18next.t()` calls.
+
+**HTML in msgid keys is established precedent** in this codebase (e.g. `msgid "Ends with a <strong>trailing slash</strong> (/)"`). Using `<strong>` inside a msgid for emphasis that must be preserved by translators is acceptable. Keep it minimal — body paragraphs should use `%d`/`{{n}}` interpolation without markup.
+
+### Trailing-Preposition / Cross-Language Split (PHP prefix + JS suffix) <!-- learned: 2026-07-11 -->
+
+A subtle variant of the split-sentence anti-pattern occurs when **PHP renders a translatable prefix** and **JavaScript appends the dynamic suffix** at runtime. The PHP msgid ends in a dangling preposition or incomplete phrase:
+
+```php
+// ❌ WRONG — "What's New in" ends in a preposition; JS appends the version
+<?= gettext("What's New in") ?> <span id="whatsNewVersion" class="text-primary"></span>
+// JS later: $("#whatsNewVersion").text(nextVersion)
+// Translator sees msgid "What's New in" with no idea what follows.
+```
+
+**Detection in messages.po:**
+```bash
+# Short msgids (≤ 5 words) that end in a preposition or article suggest a suffix will be appended
+grep '^msgid ' locale/messages.po | awk '{if (NF <= 6) print}' | grep -iE '" ?(in|of|for|to|a|the|an)"$'
+```
+
+**Fix:** Move the *complete* sentence into a single JS `i18next.t()` call with a named placeholder, and remove the PHP `gettext()` call entirely:
+```php
+<!-- PHP: static shell only, no translatable prefix -->
+<h4 class="mb-0">
+    <i class="fa fa-tag me-1 text-primary"></i>
+    <span id="whatsNewHeading"></span>
+</h4>
+```
+```javascript
+// JS: full sentence, single msgid
+$("#whatsNewHeading").html(
+  i18next.t("What's New in {{version}}", {
+    version: versionHtml,
+    interpolation: { escapeValue: false },
+  }),
+);
+```
+
+**Rule:** If a PHP `gettext()` key ends in a preposition (`in`, `of`, `for`, `to`) or an article and the rendered element is later updated by JS, it is a cross-language split. Consolidate into one JS (or PHP) parameterised string.
+
 ### Plural Forms
 
 ```php
@@ -759,6 +850,8 @@ Before committing:
 - [ ] No hardcoded user-facing strings
 - [ ] No brand / technical literals wrapped — see ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) (brand names, config keys, protocol acronyms, `name@example.com`-style placeholders all stay as bare literals)
 - [ ] No split-sentence fragments — each `gettext()` call wraps a complete sentence; dynamic values use `sprintf()` — see ["Never Split a Sentence"](#never-split-a-sentence-across-multiple-gettext-calls----learned-2026-04-22-)
+- [ ] No JS template-literal split — no `${i18next.t(...)} ... ${i18next.t(...)}` concatenation; use single parameterised `i18next.t()` with `{{placeholder}}` — see ["Never Split in JavaScript"](#never-split-a-sentence-in-javascript-i18next-template-literals----learned-2026-07-11-)
+- [ ] No trailing-preposition PHP msgid followed by JS runtime suffix — use a single JS `i18next.t('... {{version}}')` instead — see ["Trailing-Preposition"](#trailing-preposition--cross-language-split-php-prefix--js-suffix----learned-2026-07-11-)
 - [ ] If strings added: Ran `npm run locale:build`
 - [ ] If strings added: Ran `npm run build`
 - [ ] Committed `locale/terms/messages.po`

@@ -251,6 +251,21 @@ function fetchUpgradePreview() {
 }
 
 /**
+ * Set the "What's New in <version>" heading, keeping #whatsNewVersion
+ * accessible for Cypress and other selectors while using a single
+ * parameterised i18n string instead of two concatenated fragments.
+ */
+function setWhatsNewHeading(version) {
+  const versionHtml = `<span id="whatsNewVersion" class="text-primary">${escapeHtml(version || "")}</span>`;
+  $("#whatsNewHeading").html(
+    i18next.t("What's New in {{version}}", {
+      version: versionHtml,
+      interpolation: { escapeValue: false },
+    }),
+  );
+}
+
+/**
  * Render the What's New content from preview API response
  */
 function renderWhatsNew(data) {
@@ -258,7 +273,7 @@ function renderWhatsNew(data) {
 
   // Already up-to-date: show a clear message and hide the proceed button
   if (releasesAhead === 0) {
-    $("#whatsNewVersion").text("");
+    $("#whatsNewHeading").empty();
     $("#whatsNewNotes").html("");
     $("#whatsNewChangelogLink").addClass("d-none");
     $("#upgradePathPanel").addClass("d-none");
@@ -274,7 +289,7 @@ function renderWhatsNew(data) {
   }
 
   // Version heading
-  $("#whatsNewVersion").text(nextVersion || "");
+  setWhatsNewHeading(nextVersion);
 
   // Changelog link
   if (nextChangelogUrl) {
@@ -291,7 +306,9 @@ function renderWhatsNew(data) {
   if (releasesAhead >= 2 && upgradePath && upgradePath.length >= 2) {
     const count = upgradePath.length;
     $("#upgradePathSummary").html(
-      `${i18next.t("You are")} <strong>${count}</strong> ${i18next.t("releases behind. Here's what you'll gain:")}`,
+      i18next.t("You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:", {
+        releaseCount: count,
+      }),
     );
     renderUpgradePath(upgradePath);
     $("#upgradePathPanel").removeClass("d-none");
@@ -311,7 +328,7 @@ function renderUpgradePath(upgradePath) {
     const collapseId = `upgradePath-${idx}`;
     const typeBadge = badgeForType(entry.type);
     const isNextBadge = entry.isNext
-      ? `<span class="badge bg-primary-lt text-primary ms-1">${i18next.t("installing next")}</span>`
+      ? `<span class="badge bg-primary-lt text-primary ms-1">${i18next.t("Installing next release")}</span>`
       : "";
     const changelogLink = entry.changelogUrl
       ? `<a href="${escapeHtml(entry.changelogUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm ms-auto">
@@ -366,7 +383,7 @@ function renderVersionSelector(upgradePath, defaultNextVersion) {
       // Reset to default next version notes
       const defaultEntry = upgradePath.find((e) => e.isNext);
       if (defaultEntry) {
-        $("#whatsNewVersion").text(defaultEntry.version);
+        setWhatsNewHeading(defaultEntry.version);
         $("#whatsNewNotes").html(marked.parse(defaultEntry.notes || ""));
         if (defaultEntry.changelogUrl) {
           $("#whatsNewChangelogLink").attr("href", defaultEntry.changelogUrl).removeClass("d-none");
@@ -376,7 +393,7 @@ function renderVersionSelector(upgradePath, defaultNextVersion) {
     } else {
       const entry = upgradePath.find((e) => e.version === ver);
       if (entry) {
-        $("#whatsNewVersion").text(entry.version);
+        setWhatsNewHeading(entry.version);
         $("#whatsNewNotes").html(marked.parse(entry.notes || ""));
         if (entry.changelogUrl) {
           $("#whatsNewChangelogLink").attr("href", entry.changelogUrl).removeClass("d-none");
