@@ -16471,3 +16471,95 @@ msgstr "과거"
 msgid "Croatian"
 msgstr "크로아티아어"
 
+#: 
+msgid "%s's Account"
+msgstr "%s의 계정"
+
+#: 
+msgid "Access"
+msgstr "접근"
+
+#: 
+msgid "Access level"
+msgstr "접근 수준"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "관리자는 모든 기능과 데이터에 대한 전체 접근 권한을 가집니다. 개별 권한은 적용되지 않습니다."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "모든 사용자는 교인 목록을 볼 수 있습니다. 이 권한은 제거할 수 없습니다."
+
+#: 
+msgid "Always granted"
+msgstr "항상 허용됨"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "본인 가족만 확인하고 검토할 수 있습니다. 다른 접근 권한은 없습니다."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "아래에서 특정 권한을 선택하세요."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "권한 변경을 위해 관리자에게 문의하세요."
+
+#: 
+msgid "Custom permissions"
+msgstr "사용자 지정 권한"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "전체 접근 — 모든 권한이 부여됩니다."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "개별 권한 부여:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "추가 접근 권한이 필요하면 교회 관리자에게 문의하세요."
+
+#: 
+msgid "People &amp; Families"
+msgstr "교인 및 가족"
+
+#: 
+msgid "Self-service"
+msgstr "셀프서비스"
+
+#: 
+msgid "Self-service only"
+msgstr "셀프서비스 전용"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "수정하려는 메모가 더 이상 존재하지 않습니다."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "이 사용자는 본인의 가족 프로필만 확인하고 업데이트할 수 있습니다. 개별 권한은 적용되지 않습니다."
+
+#: 
+msgid "User List"
+msgstr "사용자 목록"
+
+#: 
+msgid "View Person"
+msgstr "교인 보기"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "이 가족에 대한 메모를 추가할 권한이 없습니다."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "이 메모를 수정할 권한이 없습니다"
+

@@ -16561,3 +16561,95 @@ msgstr "过去"
 msgid "Croatian"
 msgstr "克罗地亚语"
 
+#: 
+msgid "%s's Account"
+msgstr "%s的账户"
+
+#: 
+msgid "Access"
+msgstr "访问权限"
+
+#: 
+msgid "Access level"
+msgstr "访问级别"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "管理员可完全访问所有功能和数据，个人权限设置不适用。"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "所有用户均可查看会众成员，此权限不可移除。"
+
+#: 
+msgid "Always granted"
+msgstr "始终授予"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "只能查看和核实自己的家庭信息，无其他访问权限。"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "请在下方选择具体权限。"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "请联系管理员更改您的权限。"
+
+#: 
+msgid "Custom permissions"
+msgstr "自定义权限"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "完全访问——授予所有权限。"
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "授予个人权限："
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "如需更多访问权限，请联系您的教会管理员。"
+
+#: 
+msgid "People &amp; Families"
+msgstr "人员与家庭"
+
+#: 
+msgid "Self-service"
+msgstr "自助服务"
+
+#: 
+msgid "Self-service only"
+msgstr "仅限自助服务"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "您尝试编辑的备注已不存在。"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "此用户只能查看和更新自己的家庭档案，个人权限设置不适用。"
+
+#: 
+msgid "User List"
+msgstr "用户列表"
+
+#: 
+msgid "View Person"
+msgstr "查看人员"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "您没有权限为此家庭添加备注。"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "您没有权限为此人添加备注。"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "您没有权限编辑此备注"
+

@@ -16446,3 +16446,95 @@ msgstr "passado"
 msgid "Croatian"
 msgstr "Croata"
 
+#: 
+msgid "%s's Account"
+msgstr "Conta de %s"
+
+#: 
+msgid "Access"
+msgstr "Acesso"
+
+#: 
+msgid "Access level"
+msgstr "Nível de acesso"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Os administradores têm acesso completo a todos os recursos e dados. As permissões individuais não se aplicam."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Todos os usuários podem visualizar os membros da congregação. Esta permissão não pode ser removida."
+
+#: 
+msgid "Always granted"
+msgstr "Sempre concedido"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Pode apenas revisar e verificar sua própria família. Sem nenhum outro acesso."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Escolha as permissões específicas abaixo."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Entre em contato com um administrador para alterar suas permissões."
+
+#: 
+msgid "Custom permissions"
+msgstr "Permissões personalizadas"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Acesso total — concede todos os privilégios."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Conceder permissões individuais:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Se precisar de acesso adicional, entre em contato com o administrador da sua paróquia."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Pessoas &amp; Famílias"
+
+#: 
+msgid "Self-service"
+msgstr "Autoatendimento"
+
+#: 
+msgid "Self-service only"
+msgstr "Somente autoatendimento"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "A nota que você está tentando editar não existe mais."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Este usuário pode apenas revisar e atualizar o perfil de sua própria família. As permissões individuais não se aplicam."
+
+#: 
+msgid "User List"
+msgstr "Lista de Usuários"
+
+#: 
+msgid "View Person"
+msgstr "Visualizar Pessoa"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Você não tem permissão para adicionar uma nota para esta família."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Você não tem permissão para adicionar uma nota para esta pessoa."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Você não tem permissão para editar esta nota"
+

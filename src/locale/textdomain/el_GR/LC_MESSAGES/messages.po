@@ -16497,3 +16497,95 @@ msgstr "παρελθόν"
 msgid "Croatian"
 msgstr "Κροατικά"
 
+#: 
+msgid "%s's Account"
+msgstr "Λογαριασμός του %s"
+
+#: 
+msgid "Access"
+msgstr "Πρόσβαση"
+
+#: 
+msgid "Access level"
+msgstr "Επίπεδο πρόσβασης"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Οι διαχειριστές έχουν πλήρη πρόσβαση σε όλες τις λειτουργίες και τα δεδομένα. Οι επιμέρους άδειες δεν ισχύουν."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Όλοι οι χρήστες μπορούν να βλέπουν τα μέλη της ενορίας. Αυτή η άδεια δεν μπορεί να αφαιρεθεί."
+
+#: 
+msgid "Always granted"
+msgstr "Πάντα χορηγείται"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Μπορεί να ελέγχει και να επαληθεύει μόνο τη δική του οικογένεια. Καμία άλλη πρόσβαση."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Επιλέξτε συγκεκριμένες άδειες παρακάτω."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Επικοινωνήστε με έναν διαχειριστή για να αλλάξετε τις άδειές σας."
+
+#: 
+msgid "Custom permissions"
+msgstr "Προσαρμοσμένες άδειες"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Πλήρης πρόσβαση — παρέχει όλα τα δικαιώματα."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Χορήγηση επιμέρους αδειών:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Εάν χρειάζεστε πρόσθετη πρόσβαση, επικοινωνήστε με τον διαχειριστή της ενορίας σας."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Ενορίτες &amp; Οικογένειες"
+
+#: 
+msgid "Self-service"
+msgstr "Αυτοεξυπηρέτηση"
+
+#: 
+msgid "Self-service only"
+msgstr "Μόνο αυτοεξυπηρέτηση"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Η σημείωση που προσπαθείτε να επεξεργαστείτε δεν υπάρχει πλέον."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Αυτός ο χρήστης μπορεί να ελέγχει και να ενημερώνει μόνο το προφίλ της δικής του οικογένειας. Οι επιμέρους άδειες δεν ισχύουν."
+
+#: 
+msgid "User List"
+msgstr "Λίστα Χρηστών"
+
+#: 
+msgid "View Person"
+msgstr "Προβολή Μέλους"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτήν την οικογένεια."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτό το μέλος."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Δεν έχετε άδεια να επεξεργαστείτε αυτήν τη σημείωση"
+

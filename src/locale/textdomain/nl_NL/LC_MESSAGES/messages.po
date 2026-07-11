@@ -16448,3 +16448,95 @@ msgstr "verleden"
 msgid "Croatian"
 msgstr "Kroatisch"
 
+#: 
+msgid "%s's Account"
+msgstr "Account van %s"
+
+#: 
+msgid "Access"
+msgstr "Toegang"
+
+#: 
+msgid "Access level"
+msgstr "Toegangsniveau"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Beheerders hebben volledige toegang tot alle functies en gegevens. Individuele machtigingen zijn niet van toepassing."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Alle gebruikers kunnen gemeenteleden bekijken. Deze machtiging kan niet worden verwijderd."
+
+#: 
+msgid "Always granted"
+msgstr "Altijd verleend"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Kan alleen de eigen familie inzien en verifiëren. Geen andere toegang."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Kies hieronder specifieke machtigingen."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Neem contact op met een beheerder om uw machtigingen te wijzigen."
+
+#: 
+msgid "Custom permissions"
+msgstr "Aangepaste machtigingen"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Volledige toegang — verleent alle bevoegdheden."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Individuele machtigingen verlenen:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Als u extra toegang nodig heeft, neem dan contact op met uw kerkbeheerder."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Personen &amp; Gezinnen"
+
+#: 
+msgid "Self-service"
+msgstr "Zelfbediening"
+
+#: 
+msgid "Self-service only"
+msgstr "Alleen zelfbediening"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "De notitie die u probeert te bewerken bestaat niet meer."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Deze gebruiker kan alleen het eigen gezinsprofiel inzien en bijwerken. Individuele machtigingen zijn niet van toepassing."
+
+#: 
+msgid "User List"
+msgstr "Gebruikerslijst"
+
+#: 
+msgid "View Person"
+msgstr "Persoon bekijken"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "U heeft geen toestemming om een notitie toe te voegen voor dit gezin."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "U heeft geen toestemming om een notitie toe te voegen voor deze persoon."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "U heeft geen toestemming om deze notitie te bewerken"
+

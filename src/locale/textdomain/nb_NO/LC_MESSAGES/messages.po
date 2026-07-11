@@ -16577,3 +16577,95 @@ msgstr "fortid"
 msgid "Croatian"
 msgstr "Kroatisk"
 
+#: 
+msgid "%s's Account"
+msgstr "%s sin konto"
+
+#: 
+msgid "Access"
+msgstr "Tilgang"
+
+#: 
+msgid "Access level"
+msgstr "Tilgangsnivå"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratorer har full tilgang til alle funksjoner og data. Individuelle tillatelser gjelder ikke."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Alle brukere kan se menighetsmedlemmer. Denne tillatelsen kan ikke fjernes."
+
+#: 
+msgid "Always granted"
+msgstr "Alltid innvilget"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Kan kun gjennomgå og bekrefte sin egen familie. Ingen annen tilgang."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Velg spesifikke tillatelser nedenfor."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontakt en administrator for å endre tillatelsene dine."
+
+#: 
+msgid "Custom permissions"
+msgstr "Egendefinerte tillatelser"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Full tilgang — gir alle rettigheter."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Gi individuelle tillatelser:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Hvis du trenger ytterligere tilgang, kan du kontakte kirkens administrator."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Personer &amp; familier"
+
+#: 
+msgid "Self-service"
+msgstr "Selvbetjening"
+
+#: 
+msgid "Self-service only"
+msgstr "Kun selvbetjening"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Notatet du prøver å redigere eksisterer ikke lenger."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Denne brukeren kan kun gjennomgå og oppdatere sin egen familieprofil. Individuelle tillatelser gjelder ikke."
+
+#: 
+msgid "User List"
+msgstr "Brukerliste"
+
+#: 
+msgid "View Person"
+msgstr "Vis person"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Du har ikke tillatelse til å legge til et notat for denne familien."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Du har ikke tillatelse til å legge til et notat for denne personen."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Du har ikke tillatelse til å redigere dette notatet"
+

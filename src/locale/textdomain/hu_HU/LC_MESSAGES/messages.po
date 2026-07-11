@@ -16518,3 +16518,95 @@ msgstr "elmúlt"
 msgid "Croatian"
 msgstr "Horvát"
 
+#: 
+msgid "%s's Account"
+msgstr "%s fiókja"
+
+#: 
+msgid "Access"
+msgstr "Hozzáférés"
+
+#: 
+msgid "Access level"
+msgstr "Hozzáférési szint"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "A rendszergazdák teljes hozzáféréssel rendelkeznek az összes funkcióhoz és adathoz. Az egyéni jogosultságok nem vonatkoznak rájuk."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Minden felhasználó megtekintheti a gyülekezet tagjait. Ez a jogosultság nem vonható vissza."
+
+#: 
+msgid "Always granted"
+msgstr "Mindig megadva"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Csak a saját családját tekintheti meg és ellenőrizheti. Más hozzáférése nincs."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Válasszon egyéni jogosultságokat az alábbiakban."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Jogosultságai módosításához forduljon egy rendszergazdához."
+
+#: 
+msgid "Custom permissions"
+msgstr "Egyéni jogosultságok"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Teljes hozzáférés – minden jogosultságot megad."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Egyéni jogosultságok megadása:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ha további hozzáférésre van szüksége, forduljon a gyülekezet rendszergazdájához."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Személyek &amp; Családok"
+
+#: 
+msgid "Self-service"
+msgstr "Önkiszolgáló"
+
+#: 
+msgid "Self-service only"
+msgstr "Csak önkiszolgáló"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "A szerkeszteni kívánt megjegyzés már nem létezik."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Ez a felhasználó csak a saját családi profilját tekintheti meg és frissítheti. Az egyéni jogosultságok nem vonatkoznak rá."
+
+#: 
+msgid "User List"
+msgstr "Felhasználók listája"
+
+#: 
+msgid "View Person"
+msgstr "Személy megtekintése"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a családhoz."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nincs jogosultsága ennek a megjegyzésnek a szerkesztéséhez"
+

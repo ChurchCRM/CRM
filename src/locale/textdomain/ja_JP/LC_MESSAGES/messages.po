@@ -16436,3 +16436,95 @@ msgstr "過去"
 msgid "Croatian"
 msgstr "クロアチア語"
 
+#: 
+msgid "%s's Account"
+msgstr "%sのアカウント"
+
+#: 
+msgid "Access"
+msgstr "アクセス"
+
+#: 
+msgid "Access level"
+msgstr "アクセスレベル"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "管理者はすべての機能とデータにフルアクセスできます。個別の権限は適用されません。"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "すべてのユーザーが会衆のメンバーを閲覧できます。この権限は削除できません。"
+
+#: 
+msgid "Always granted"
+msgstr "常に付与"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "自分の家族の確認と検証のみ可能です。その他のアクセスはありません。"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "以下から特定の権限を選択してください。"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "権限を変更するには管理者にお問い合わせください。"
+
+#: 
+msgid "Custom permissions"
+msgstr "カスタム権限"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "フルアクセス — すべての権限を付与します。"
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "個別権限を付与する："
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "追加のアクセスが必要な場合は、教会の管理者にお問い合わせください。"
+
+#: 
+msgid "People &amp; Families"
+msgstr "人々 &amp; 家族"
+
+#: 
+msgid "Self-service"
+msgstr "セルフサービス"
+
+#: 
+msgid "Self-service only"
+msgstr "セルフサービスのみ"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "編集しようとしているメモはすでに存在しません。"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "このユーザーは自分の家族プロフィールの確認と更新のみ可能です。個別の権限は適用されません。"
+
+#: 
+msgid "User List"
+msgstr "ユーザー一覧"
+
+#: 
+msgid "View Person"
+msgstr "人物を表示"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "この家族へのメモを追加する権限がありません。"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "この人物へのメモを追加する権限がありません。"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "このメモを編集する権限がありません"
+
