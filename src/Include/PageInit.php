@@ -17,9 +17,12 @@ $systemService = new SystemService();
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
 
-    // Block users with no admin permissions (GHSA-5w59-32c8-933v / #8617)
+    // Confine EditSelf-only users to the self-service flow. Zero-permission users
+    // are NOT blocked here — they keep read-only access to people and family
+    // records (read-default policy, #9003). Writes are denied by the per-page
+    // permission guards.
     $currentUser = AuthenticationManager::getCurrentUser();
-    if ($currentUser->hasNoAdminPermissions()) {
+    if ($currentUser->isEditSelfExclusive()) {
         RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
     }
 

@@ -260,7 +260,7 @@ describe("Notes Visibility Policy (#9036)", () => {
         });
 
         it("limited.user (Notes=0, all flags=0) CANNOT GET person timeline → 403", () => {
-            // limited.user is blocked by AuthMiddleware::hasNoAdminPermissions() → 403.
+            // limited.user is an EditSelf-only user blocked by AuthMiddleware (User::isEditSelfExclusive()) → 403.
             // This is different from the 'authenticated but no notes' case above.
             cy.makePrivateLimitedAPICall("GET", "/api/timeline/person/2", null, 403);
         });

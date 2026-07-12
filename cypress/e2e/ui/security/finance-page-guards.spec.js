@@ -4,8 +4,8 @@
  * Tests the Finance permission guard on the fundraiser and pledge pages.
  *
  * Background: these pages previously had NO top-of-file access guard. The only
- * thing keeping users off them was the coarse hasNoAdminPermissions() entry gate
- * in PageInit.php, which blocks a user only when they have ZERO permissions. Any
+ * thing keeping users off them was the coarse User::isEditSelfExclusive() entry gate
+ * in PageInit.php, which now only blocks EditSelf-exclusive users. Any
  * user with a single unrelated permission (e.g. AddRecords) cleared that gate and
  * reached fundraiser, donor, paddle-number and pledge data. They are now gated on
  * isFinanceEnabled(), which redirects to /v2/access-denied?role=Finance.

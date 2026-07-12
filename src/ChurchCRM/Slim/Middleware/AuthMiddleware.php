@@ -51,9 +51,13 @@ class AuthMiddleware implements MiddlewareInterface
                     'path' => $request->getUri()->getPath()
                 ]);
 
-                // Block users with no admin permissions from API access (GHSA-5w59-32c8-933v)
+                // Confine EditSelf-only users to the self-service flow — they have no
+                // module permissions and no business on the internal API surface.
+                // Zero-permission users are NOT blocked: they retain read-only access
+                // to people/family records (read-default policy, #9003). Writes are
+                // denied by the per-route role middleware.
                 $apiUser = AuthenticationManager::getCurrentUser();
-                if ($apiUser->hasNoAdminPermissions()) {
+                if ($apiUser->isEditSelfExclusive()) {
                     $response = new Response();
                     $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
                     return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
@@ -62,11 +66,14 @@ class AuthMiddleware implements MiddlewareInterface
                 // validate the user session; however, do not update tLastOperation if the requested path is "/background"
                 // since /background operations do not connotate user activity.
 
-                // Block users with no admin permissions from MVC/API access (GHSA-5w59-32c8-933v)
+                // Confine EditSelf-only users to the self-service flow.
                 // BUT allow them through if they need to change their password — blocking
                 // the change-password page locks new users out permanently. See #8680.
+                // Zero-permission users are NOT redirected: they retain read-only access
+                // to people/family records (read-default policy, #9003). Writes are denied
+                // by the per-route role middleware and the per-page permission guards.
                 $sessionUser = AuthenticationManager::getCurrentUser();
-                if ($sessionUser->hasNoAdminPermissions() && !$this->isAuthFlowExemptPath($request)) {
+                if ($sessionUser->isEditSelfExclusive() && !$this->isAuthFlowExemptPath($request)) {
                     if ($this->isBrowserRequest($request)) {
                         $rootPath = SystemURLs::getRootPath();
                         return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');

@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -7,6 +8,9 @@ use ChurchCRM\dto\SystemURLs;
 
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
+
+// Security: User must have menu options permission to use this page
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
 
 $eidQueryParam = $_GET['EID'];
 $sanitizedEidQueryParam = InputUtils::filterInt($eidQueryParam);

@@ -32,9 +32,9 @@ use Slim\HttpCache\Cache;
 // FamilyReadMiddleware which enforces entity existence (404 if family not
 // found) but applies the read-default baseline (canReadFamily) instead of the
 // family-scope restriction. This makes them accessible to any authenticated
-// user who has passed the hasNoAdminPermissions() check in AuthMiddleware —
-// including EditSelf+Notes users who are otherwise scoped to their own family
-// for sensitive data.
+// user who has passed the isEditSelfExclusive() check in AuthMiddleware —
+// including zero-permission users, who retain read-only access to people and
+// family records under the read-default policy (#9003).
 //
 // Sensitive endpoints (full profile, geolocation, write ops, notes, timeline)
 // remain in the FamilyMiddleware group below which enforces canViewFamily()
