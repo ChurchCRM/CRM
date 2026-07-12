@@ -13,6 +13,9 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
+// Security: User must have finance permission to use this page
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+
 $sPageTitle = gettext('Create New Fund Raiser');
 
 // Check if linkBack was explicitly provided (not the fallback)
