@@ -3,7 +3,7 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
@@ -33,8 +33,11 @@ if ($familyId <= 0 || $year <= 1990 || $year > (int) date('Y')) {
     RedirectUtils::redirect('FinancialReports.php');
 }
 
-// Validate CSRF token (year-scoped form ID matches the token embedded in the form)
-if (!CSRFUtils::verifyRequest($_POST, 'tax_email_' . $year)) {
+// Validate CSRF token (year-scoped form ID, consume=true prevents double-send within session)
+if (
+    !isset($_POST['csrf_token']) ||
+    !CSRFUtils::validateToken($_POST['csrf_token'], 'tax_email_' . $year, true)
+) {
     RedirectUtils::redirect('FinancialReports.php');
 }
 
