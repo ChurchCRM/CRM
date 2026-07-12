@@ -84,9 +84,9 @@ Cypress.Commands.add(
  *
  * User: lena.black (ID 100, family 20) with usr_EditSelf=1, usr_Notes=1 in DB.
  *
- * Post-PR#9016 (EditSelf exclusive mode): hasNoAdminPermissions() returns true for any
- * user with isEditSelf()=true, regardless of Notes. AuthMiddleware therefore blocks this
- * user (403) before reaching FamilyReadMiddleware or FamilyMiddleware.
+ * Post-PR#9016 (EditSelf exclusive mode): User::isEditSelfExclusive() (checked by AuthMiddleware)
+ * returns true for any non-admin user with isEditSelf()=true, regardless of Notes. AuthMiddleware
+ * therefore blocks this user (403) before reaching FamilyReadMiddleware or FamilyMiddleware.
  *
  * Future use: if EditSelf exclusivity is ever relaxed to permit EditSelf+Notes, this user
  * should get 200 on avatar/nav/photo (FamilyReadMiddleware, canReadFamily=true) and 403 on

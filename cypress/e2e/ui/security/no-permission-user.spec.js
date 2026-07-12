@@ -82,9 +82,11 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         beforeEach(login);
 
         // Write pages are gated on AddRecords / EditRecords, which are 0.
+        // PersonEditor.php redirects denied users to the dashboard (not access-denied);
+        // FamilyEditor.php uses securityRedirect → access-denied (tested separately below).
         it("PersonEditor (add/edit person) is denied", () => {
             cy.visit("PersonEditor.php?PersonID=2", { failOnStatusCode: false });
-            cy.url().should("include", "/v2/access-denied");
+            cy.url().should("include", "/v2/dashboard");
         });
 
         it("FamilyEditor (add/edit family) is denied", () => {
@@ -163,7 +165,9 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
 
         it("Log Out returns to the login page", () => {
             cy.visit("v2/dashboard");
-            cy.contains("Log Out").click();
+            // Open the user-menu dropdown, then click the 'Sign out' link
+            cy.get('[aria-label="Open user menu"]').click();
+            cy.contains("Sign out").click();
             cy.url().should("include", "/session/begin");
         });
     });

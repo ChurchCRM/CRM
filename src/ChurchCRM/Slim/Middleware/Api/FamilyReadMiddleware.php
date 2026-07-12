@@ -19,7 +19,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * This middleware:
  *   - Loads the family entity and returns 404 if it does not exist (same as FamilyMiddleware).
  *   - Uses User::canReadFamily() for authorisation (currently always true — the
- *     entry gate is AuthMiddleware::isEditSelfExclusive(), NOT this middleware).
+ *     entry gate is User::isEditSelfExclusive() (checked by AuthMiddleware), NOT this middleware).
  *   - Does NOT enforce the family-scope restriction from GHSA-jjcj-h3cm-p7x7.
  *     That restriction belongs on FamilyMiddleware (sensitive/write endpoints only).
  *
@@ -52,7 +52,7 @@ class FamilyReadMiddleware extends AbstractEntityMiddleware
      *
      * Unlike FamilyMiddleware, this does NOT call canViewFamily() and therefore
      * never restricts EditSelf-scoped users to their own family. Access is still
-     * gated by AuthMiddleware upstream (isEditSelfExclusive()).
+     * gated by AuthMiddleware upstream (User::isEditSelfExclusive()).
      *
      * The canReadFamily() call exists for defence-in-depth and as a hook point
      * for future row-level security (e.g. pastoral-confidentiality holds). It
