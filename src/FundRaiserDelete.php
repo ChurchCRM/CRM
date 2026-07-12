@@ -8,8 +8,8 @@ use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-// Security: User must have Delete records permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
+// Security: User must have finance permissions
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 $iFundRaiserID = (int) InputUtils::legacyFilterInput($_GET['FundRaiserID'], 'int');
 $linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
