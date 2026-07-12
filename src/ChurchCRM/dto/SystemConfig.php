@@ -555,7 +555,7 @@ class   SystemConfig
      */
     private static function insertDynamicConfigRow(string $name, string $value): void
     {
-        $connection = Propel::getWriteConnection('churchcrm');
+        $connection = Propel::getWriteConnection('default');
 
         // Discover all NOT NULL columns that have no column-level default.
         // On a modern schema the query returns no extra columns (cfg_name has
