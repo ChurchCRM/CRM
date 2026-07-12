@@ -133,7 +133,8 @@
     "versions": [
       "7.3.1",
       "7.3.2",
-      "7.3.3"
+      "7.3.3",
+      "7.4.0"
     ],
     "scripts": [
       "/mysql/upgrade/7.4.0-2fa-grace-period.sql"
