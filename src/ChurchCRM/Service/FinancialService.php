@@ -835,25 +835,30 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
 
-        $dates = PledgeQuery::create()
+        // Use YEAR() aggregation so the DB returns only distinct years, not every row.
+        // withColumn() emits the expression as a SELECT column; groupBy() de-duplicates;
+        // orderByDate DESC puts the most-recent year first.
+        $query = PledgeQuery::create()
             ->filterByFamId($familyId)
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(null, Criteria::ISNOTNULL)
-            ->select(['Date'])
+            ->withColumn('YEAR(pledge_plg.plg_date)', 'PaymentYear')
+            ->groupBy('PaymentYear')
             ->orderByDate(Criteria::DESC)
-            ->find()
-            ->getArrayCopy();
+            ->select(['PaymentYear']);
 
+        if ($maxYears > 0) {
+            $query->limit($maxYears);
+        }
+
+        $rawYears = $query->find()->toArray();
+
+        // Filter out any non-sensical years (before 1991) and cast to int
         $years = [];
-        foreach ($dates as $date) {
-            if (!empty($date)) {
-                $year = (int) substr((string) $date, 0, 4);
-                if ($year > 1990 && !in_array($year, $years, true)) {
-                    $years[] = $year;
-                    if ($maxYears > 0 && count($years) >= $maxYears) {
-                        break;
-                    }
-                }
+        foreach ($rawYears as $year) {
+            $y = (int) $year;
+            if ($y > 1990) {
+                $years[] = $y;
             }
         }
 

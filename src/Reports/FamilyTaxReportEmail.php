@@ -11,6 +11,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\BaseEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -18,11 +19,22 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: Finance role required
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
-// Input: familyId and year are required
-$familyId = (int) InputUtils::legacyFilterInput($_GET['familyId'] ?? '', 'int');
-$year     = (int) InputUtils::legacyFilterInput($_GET['year'] ?? '', 'int');
+// Require POST to prevent CSRF on this state-changing (email-sending) action
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    RedirectUtils::redirect('FinancialReports.php');
+}
 
+// Input: familyId and year are required
+$familyId = (int) InputUtils::legacyFilterInput($_POST['familyId'] ?? '', 'int');
+$year     = (int) InputUtils::legacyFilterInput($_POST['year'] ?? '', 'int');
+
+// Basic range validation before CSRF lookup (year must be sane to build form ID)
 if ($familyId <= 0 || $year <= 1990 || $year > (int) date('Y')) {
+    RedirectUtils::redirect('FinancialReports.php');
+}
+
+// Validate CSRF token (year-scoped form ID matches the token embedded in the form)
+if (!CSRFUtils::verifyRequest($_POST, 'tax_email_' . $year)) {
     RedirectUtils::redirect('FinancialReports.php');
 }
 
@@ -276,7 +288,8 @@ if ($cnt > 0) {
 }
 
 // Capture PDF as string and email it
-$filename  = 'TaxStatement-' . $family->getName() . '-' . $year . '.pdf';
+$safeName  = preg_replace('/[^a-zA-Z0-9._-]/u', '_', $family->getName());
+$filename  = 'TaxStatement-' . $safeName . '-' . $year . '.pdf';
 $pdfString = $pdf->Output($filename, 'S');
 
 $mail = new class($emailList) extends BaseEmail {
