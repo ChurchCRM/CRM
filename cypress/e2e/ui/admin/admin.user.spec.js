@@ -15,12 +15,11 @@ describe("Admin User Password", () => {
 
     it("Shows em-dash in Status column for a normal active user", () => {
         cy.visit("admin/system/users");
-        // The seed admin (Church Admin) has no failed logins and no must-change flag,
-        // so the Status cell for that row should show the em-dash placeholder.
+        // Status is the 6th column (Name, Login Name, Access, Last Login, Failed Logins, Status).
+        // Target it by position to avoid matching the pre-existing em-dash in Failed Logins (col 5).
         cy.contains("#user-listing-table tbody tr", "Church Admin")
-            .find("td")
-            .contains("—")
-            .should("exist");
+            .find("td:nth-child(6)")
+            .should("contain.text", "—");
     });
 
     it("Admin Change password", () => {

@@ -175,7 +175,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-3 text-body-secondary"><?= gettext('Failed login attempts') ?></div>
               <div class="col-sm-9">
                 <?php if ($failedLogins > 0): ?>
-                <span class="badge <?= $isLocked ? 'bg-danger-lt text-danger' : 'bg-warning-lt text-warning' ?>"><?= $failedLogins ?><?php if ($maxFailedLogins > 0): ?>&nbsp;/&nbsp;<?= $maxFailedLogins ?><?php endif; ?></span>
+                <span class="badge <?= $isLocked ? 'bg-danger-lt text-danger' : 'bg-warning-lt text-warning' ?>"><?= InputUtils::escapeHTML($failedLogins) ?><?php if ($maxFailedLogins > 0): ?>&nbsp;/&nbsp;<?= InputUtils::escapeHTML($maxFailedLogins) ?><?php endif; ?></span>
                 <?php else: ?>
                 <span class="text-body-secondary"><?= gettext('None') ?></span>
                 <?php endif; ?>

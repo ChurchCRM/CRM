@@ -49,8 +49,10 @@ describe("Standard User Settings Page", () => {
         cy.get("#tab-account").within(() => {
             // Should NOT show the locked alert banner
             cy.get(".alert-danger").should("not.exist");
-            // Account status badge should say Active
-            cy.contains("Active").should("exist");
+            // Scope to the Account status row to avoid matching the 2FA 'Active' badge
+            cy.contains(".row", "Account status")
+                .contains("Active")
+                .should("exist");
         });
     });
 
