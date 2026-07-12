@@ -51,7 +51,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </a>
                 <div class="dropdown-divider"></div>
                 <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= $fundraiser->getId() ?>/delete" class="d-inline"
-                      onsubmit="return confirm('<?= gettext('Are you sure you want to delete this fundraiser?') ?>')">
+                      onsubmit="return confirm(<?= htmlspecialchars(json_encode(gettext('Are you sure you want to delete this fundraiser?'))) ?>)">
                   <?= \ChurchCRM\Utils\CSRFUtils::getTokenInputField('fundraiser_delete') ?>
                   <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
                     <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
