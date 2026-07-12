@@ -43,7 +43,7 @@ class Menu
             'Communication' => self::getCommunicationMenu(),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
-            'Fundraiser'   => self::getFundraisersMenu($isAdmin),
+            'Fundraiser'   => self::getFundraisersMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Reports'      => self::getReportsMenu(),
         ];
         
@@ -279,13 +279,16 @@ class Menu
         return $depositsMenu;
     }
 
-    private static function getFundraisersMenu(bool $isAdmin): MenuItem
+    private static function getFundraisersMenu(bool $isAdmin, bool $isFinanceEnabled): MenuItem
     {
-        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledFundraiser'), 'fa-money-bill-1');
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'FindFundRaiser.php', true, 'fa-list'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'FundRaiserEditor.php?FundRaiserID=-1', true, 'fa-circle-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), 'AddDonors.php', true, 'fa-user-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('View Buyers'), 'PaddleNumList.php', true, 'fa-users'));
+        // Fundraiser pages are gated on the Finance permission until a dedicated
+        // fundraiser permission exists. $isFinanceEnabled already includes the admin bypass.
+        $isFundraiserVisible = $isFinanceEnabled && ($isAdmin || SystemConfig::getBooleanValue('bEnabledFundraiser'));
+        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $isFundraiserVisible, 'fa-money-bill-1');
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'FindFundRaiser.php', $isFundraiserVisible, 'fa-list'));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'FundRaiserEditor.php?FundRaiserID=-1', $isFundraiserVisible, 'fa-circle-plus'));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), 'AddDonors.php', $isFundraiserVisible, 'fa-user-plus'));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('View Buyers'), 'PaddleNumList.php', $isFundraiserVisible, 'fa-users'));
         $iCurrentFundraiser = 0;
         if (array_key_exists('iCurrentFundraiser', $_SESSION)) {
             $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
