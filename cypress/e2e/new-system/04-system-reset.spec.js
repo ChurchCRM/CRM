@@ -123,7 +123,7 @@ describe('04 - System Reset', () => {
             }).then((listResp) => {
                 expect(listResp.status).to.equal(200);
                 expect(listResp.body.people.length).to.be.greaterThan(0);
-                const personId = listResp.body.people[0].id;
+                const personId = listResp.body.people[0].PersonId;
                 cy.log(`Using person ID ${personId} for photo cleanup regression test`);
 
                 // 2. Upload a minimal 1x1 PNG so a photo file is written to Images/Person/.
