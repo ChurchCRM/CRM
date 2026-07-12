@@ -200,6 +200,58 @@ $app->post('/types/{id}', $saveTypeHandler)
 
 **Defense in depth**: it's still fine for `AddEventsRoleAuthMiddleware` to additionally enforce the system-wide feature flag (`bEnabledEvents`), so writes are blocked even if a route is missing the per-route middleware.
 
+## Menu Visibility Must Mirror Route Middleware <!-- learned: 2026-07-11 -->
+
+Every `MenuItem` visibility flag must be the **same permission the route's middleware enforces**. A menu entry linking to a page the user is bounced out of reads as a broken app; a menu entry with *no* guard behind it is an open door.
+
+Audit both directions whenever you touch `src/ChurchCRM/Config/Menu/Menu.php`:
+
+```php
+// ❌ WRONG — menu says "true", but every /groups route is behind
+// ManageGroupRoleAuthMiddleware → user clicks, gets /v2/access-denied.
+$groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
+
+// ✅ CORRECT — gate on the permission the middleware checks, and bail early
+// so the submenu's DB lookups don't run for users who can't see it.
+$groupMenu = new MenuItem(gettext('Groups'), '', $isManageGroups, 'fa-users');
+if (!$isManageGroups) {
+    return $groupMenu;
+}
+```
+
+**The inverse bug is worse.** `/v2/email` and `/v2/text` had *no* role middleware at all — the `bEmailMailto` permission existed on `User::isEmailEnabled()` but nothing enforced it, so any logged-in user could open the dashboards. Hiding the menu alone is **not** a fix; add the middleware too.
+
+```php
+// src/v2/routes/email.php — group-level middleware on a shared MVC app.
+// /v2 has no app-level roleMiddleware (dashboard/map/search must stay open),
+// so gate the individual route group instead.
+$app->group('/email', function (RouteCollectorProxy $group): void {
+    $group->get('/dashboard', 'getEmailDashboardMVC');
+})->add(EmailRoleAuthMiddleware::class);
+```
+
+**Sub-app inheritance is easy to miss:** Sunday School pages live under `/groups/sundayschool/*`, so they inherit `/groups`' `ManageGroupRoleAuthMiddleware` — its menu needs the ManageGroups check *in addition to* the `bEnabledSundaySchool` feature flag.
+
+**Single-child menus:** if a top-level menu wraps exactly one child, point the top-level entry at the child's URI instead of nesting. `MenuItem::isVisible()` returns true when `hasPermission && (uri || hasVisibleSubMenus())`, so a parent with an empty URI and zero visible children hides itself automatically — that is what makes the early-return pattern above work.
+
+## Legacy Pages: Undefined Globals Silently Disable Filters <!-- learned: 2026-07-11 -->
+
+Legacy `src/*.php` pages sometimes read a bare global that no longer exists (a leftover from the old `Config.php`). PHP 8 does not fatal on this — it emits a deprecation and yields a useless value, so a **security filter can silently become a no-op**.
+
+```php
+// ❌ REAL BUG (QueryList.php) — $aFinanceQueries was never defined anywhere.
+// explode(',', null) → [''] → in_array(28, ['']) is false → finance-only
+// queries (IDs 28, 30) were listed for EVERY user, including zero-permission.
+$aFinanceQueries = explode(',', $aFinanceQueries);
+if ($user->isFinanceEnabled() || !in_array($query->getQryId(), $aFinanceQueries)) { ... }
+
+// ✅ CORRECT — read from SystemConfig, cast to int, compare strictly
+$aFinanceQueries = array_map('intval', explode(',', SystemConfig::getValue('aFinanceQueries')));
+if ($isFinanceEnabled || !in_array((int) $query->getQryId(), $aFinanceQueries, true)) { ... }
+```
+
+**When a permission filter looks present but never fires, grep the variable name across the file first** — if it has no assignment from `SystemConfig` or a query, it is an undefined global and the filter is dead. Note the guard on the *detail* page (`QueryView.php`) worked, which masked the leak: only the *listing* exposed the rows.
+
 ## Authorization Redirect Pattern
 
 **For permission checks, use this pattern:**
