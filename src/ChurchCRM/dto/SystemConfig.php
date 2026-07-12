@@ -492,7 +492,7 @@ class   SystemConfig
                     // strict-mode error 1364. Use a schema-aware raw INSERT instead that
                     // supplies every NOT NULL column lacking a default value (e.g. cfg_default).
                     // See: https://github.com/ChurchCRM/CRM/issues/9117
-                    self::insertDynamicConfigRow($name, $value);
+                    self::insertDynamicConfigRow($name, (string) $value);
                 }
                 return;
             }
@@ -583,7 +583,7 @@ class   SystemConfig
             }
         }
 
-        $colList    = implode(', ', array_map(fn (string $c): string => "`{$c}`", array_keys($columns)));
+        $colList    = implode(', ', array_map(fn (string $c): string => '`' . str_replace('`', '``', $c) . '`', array_keys($columns)));
         $paramList  = implode(', ', array_fill(0, count($columns), '?'));
         $insert = $connection->prepare("INSERT INTO config_cfg ({$colList}) VALUES ({$paramList})");
         $insert->execute(array_values($columns));
