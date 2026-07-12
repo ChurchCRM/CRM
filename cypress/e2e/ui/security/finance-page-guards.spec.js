@@ -21,7 +21,8 @@
  *
  * Note: FundRaiserDelete.php requires BOTH DeleteRecords AND ManageFundraisers.
  * judith lacks DeleteRecords, so she is bounced before the ManageFundraisers
- * check. That page is excluded from the ManageFundraisers denial suite.
+ * check. A dedicated seed user (per_ID=96: finance.nofundraiser) with
+ * DeleteRecords=1 / Finance=1 / ManageFundraisers=0 is used to cover that gate.
  *
  * The positive path (a ManageFundraisers user can still use these pages) is
  * additionally covered by cypress/e2e/ui/fundraiser/*.spec.js (tony.wade).
@@ -71,6 +72,20 @@ describe("ManageFundraisers permission guard on fundraiser pages", () => {
             cy.contains("a", "Create New Fundraiser").should("not.exist");
             cy.contains("a", "Add Donors to Buyer List").should("not.exist");
             cy.contains("a", "View Buyers").should("not.exist");
+        });
+    });
+
+    describe("User WITH DeleteRecords but WITHOUT ManageFundraisers (finance.nofundraiser: DeleteRecords=1, Finance=1, ManageFundraisers=0)", () => {
+        beforeEach(() => {
+            cy.setupNoManageFundraisersSession();
+        });
+
+        it("denies FundRaiserDelete.php?FundRaiserID=999999", () => {
+            // This user passes the DeleteRecords gate and is blocked by the
+            // ManageFundraisers gate — proving the second guard is enforced.
+            cy.visit("/FundRaiserDelete.php?FundRaiserID=999999", { failOnStatusCode: false });
+            cy.url().should("include", ACCESS_DENIED);
+            cy.url().should("include", "role=ManageFundraisers");
         });
     });
 

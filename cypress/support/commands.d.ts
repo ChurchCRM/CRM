@@ -68,6 +68,7 @@ declare namespace Cypress {
      * Used to test that finance pages correctly deny access to non-finance users
      */
     setupNoFinanceSession(options?: { forceLogin?: boolean }): Chainable<void>;
+    setupNoManageFundraisersSession(options?: { forceLogin?: boolean }): Chainable<void>;
 
     /**
      * Wait for page to be fully loaded
