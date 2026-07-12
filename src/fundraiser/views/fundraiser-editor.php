@@ -12,6 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card-body">
     <form method="post" action="<?= $sRootPath ?>/fundraiser/editor<?= $fundraiserId > 0 ? '/' . $fundraiserId : '' ?>" name="FundRaiserEditor">
 
+      <?= CSRFUtils::getTokenInputField('fundraiser_editor') ?>
       <div class="mb-3">
         <label class="form-label" for="Date"><?= gettext('Date') ?>:</label>
         <input type="text" name="Date" value="<?= InputUtils::escapeAttribute($dateValue) ?>" maxlength="10" id="Date" class="form-control date-picker" style="max-width:180px">

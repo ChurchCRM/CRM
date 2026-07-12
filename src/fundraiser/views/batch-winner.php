@@ -1,5 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
@@ -8,6 +9,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="card">
   <div class="card-body">
     <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/batch-winner" name="BatchWinnerEntry">
+      <?= \ChurchCRM\Utils\CSRFUtils::getTokenInputField('batch_winner_entry') ?>
       <div class="table-responsive">
         <table class="table table-bordered align-middle">
           <thead>

@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -40,6 +41,12 @@ $app->get('/{fundraiserId}/donors', function (Request $request, Response $respon
 // POST /fundraiser/{fundraiserId}/donors — add donor paddle numbers (migrated from AddDonors.php)
 $app->post('/{fundraiserId}/donors', function (Request $request, Response $response, array $args): Response {
     $fundraiserId = (int) $args['fundraiserId'];
+    $body = (array) $request->getParsedBody();
+
+    if (!CSRFUtils::verifyRequest($body, 'add_donors')) {
+        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
+    }
 
     if ($fundraiserId <= 0) {
         return $response
@@ -67,7 +74,7 @@ $app->post('/{fundraiserId}/donors', function (Request $request, Response $respo
 
     // For each donor who does not yet have a paddle number, add one
     while ($donorRow = mysqli_fetch_array($rsDonors)) {
-        $donorID = $donorRow['donorID'];
+        $donorID = (int) $donorRow['donorID'];
 
         $sSQL = "SELECT pn_per_id FROM paddlenum_pn WHERE pn_per_id='$donorID' AND pn_FR_ID = '$fundraiserId'";
         $rsBuyer = RunQuery($sSQL);

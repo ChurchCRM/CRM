@@ -1,5 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
@@ -12,6 +13,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </p>
     <p><strong><?= InputUtils::escapeHTML($fundraiser->getTitle()) ?></strong></p>
     <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/donors">
+      <?= \ChurchCRM\Utils\CSRFUtils::getTokenInputField('add_donors') ?>
       <div class="d-flex gap-2">
         <input type="submit" class="btn btn-primary" value="<?= gettext('Add Donors to Buyer List') ?>">
         <a href="<?= $sRootPath ?>/fundraiser/editor/<?= (int) $fundraiserId ?>" class="btn btn-secondary">

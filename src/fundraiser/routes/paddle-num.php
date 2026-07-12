@@ -159,6 +159,11 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
+    if (!CSRFUtils::verifyRequest($body, 'paddle_num_editor')) {
+        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
+    }
+
     $iNum   = (int) InputUtils::legacyFilterInput($body['Num'] ?? '0');
     $iPerID = (int) InputUtils::legacyFilterInput($body['PerID'] ?? '0');
 
@@ -230,9 +235,8 @@ $app->post('/{fundraiserId}/paddle-numbers/{paddleId}/delete', function (Request
     $body = (array) $request->getParsedBody();
 
     if (!CSRFUtils::verifyRequest($body, 'paddle_num_delete')) {
-        return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/' . $args['fundraiserId'] . '/paddle-numbers')
-            ->withStatus(302);
+        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+        return $response->withStatus(403)->withHeader('Content-Type', 'text/plain');
     }
 
     $fundraiserId = (int) $args['fundraiserId'];
