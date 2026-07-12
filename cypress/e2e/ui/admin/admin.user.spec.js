@@ -8,6 +8,20 @@ describe("Admin User Password", () => {
         cy.contains("Church Admin");
     });
 
+    it("Shows Status column header in the users table", () => {
+        cy.visit("admin/system/users");
+        cy.get("#user-listing-table thead th").contains("Status").should("exist");
+    });
+
+    it("Shows em-dash in Status column for a normal active user", () => {
+        cy.visit("admin/system/users");
+        // Status is the 6th column (Name, Login Name, Access, Last Login, Failed Logins, Status).
+        // Target it by position to avoid matching the pre-existing em-dash in Failed Logins (col 5).
+        cy.contains("#user-listing-table tbody tr", "Church Admin")
+            .find("td:nth-child(6)")
+            .should("contain.text", "—");
+    });
+
     it("Admin Change password", () => {
         cy.visit("admin/system/user/99/changePassword");
         cy.contains("Change Password");
