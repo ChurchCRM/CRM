@@ -281,15 +281,20 @@ class Menu
 
     private static function getFundraisersMenu(bool $canManageFundraisers): MenuItem
     {
-        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $canManageFundraisers, 'fa-money-bill-1');
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'FindFundRaiser.php', true, 'fa-list'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'FundRaiserEditor.php?FundRaiserID=-1', true, 'fa-circle-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), 'AddDonors.php', true, 'fa-user-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('View Buyers'), 'PaddleNumList.php', true, 'fa-users'));
         $iCurrentFundraiser = 0;
         if (array_key_exists('iCurrentFundraiser', $_SESSION)) {
-            $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
+            $iCurrentFundraiser = (int) $_SESSION['iCurrentFundraiser'];
         }
+
+        // Build context-aware URLs for actions that require an active fundraiser
+        $addDonorsUrl   = $iCurrentFundraiser > 0 ? 'fundraiser/' . $iCurrentFundraiser . '/donors' : 'fundraiser/';
+        $viewBuyersUrl  = $iCurrentFundraiser > 0 ? 'fundraiser/' . $iCurrentFundraiser . '/paddle-numbers' : 'fundraiser/';
+
+        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $canManageFundraisers, 'fa-money-bill-1');
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'fundraiser/', true, 'fa-list'));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'fundraiser/editor', true, 'fa-circle-plus'));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), $addDonorsUrl, true, 'fa-user-plus'));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('View Buyers'), $viewBuyersUrl, true, 'fa-users'));
         $fundraiserMenu->addCounter(new MenuCounter('iCurrentFundraiser', 'bg-blue', $iCurrentFundraiser));
 
         return $fundraiserMenu;
