@@ -139,11 +139,12 @@
     "scripts": [
       "/mysql/upgrade/7.4.0-2fa-grace-period.sql"
     ],
-    "dbVersion": "7.4.0"
+    "dbVersion": "7.4.0-r1"
   },
   "pre-7.4.1": {
     "versions": [
-      "7.4.0"
+      "7.4.0",
+      "7.4.0-r1"
     ],
     "scripts": [
       "/mysql/upgrade/7.4.2-editself-exclusive.sql"
