@@ -41,7 +41,11 @@ $app->get('/{fundraiserId}/donated-items/editor[/{itemId}]', function (Request $
     $sPictureURL   = '';
 
     if ($itemId > 0) {
-        $donatedItemRecord = DonatedItemQuery::create()->findPk($itemId);
+        // Scope to fundraiserId to prevent cross-fundraiser item editing
+        $donatedItemRecord = DonatedItemQuery::create()
+            ->filterById($itemId)
+            ->filterByFrId($fundraiserId)
+            ->findOne();
         if ($donatedItemRecord === null) {
             return $response
                 ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/editor/' . $fundraiserId)
@@ -166,14 +170,17 @@ $app->post('/{fundraiserId}/donated-items/editor[/{itemId}]', function (Request 
         $donatedItem->save();
         $itemId = $donatedItem->getId();
     } else {
-        $donatedItem = DonatedItemQuery::create()->findOneById($itemId);
+        // Scope to fundraiserId to prevent cross-fundraiser writes or moving items between fundraisers
+        $donatedItem = DonatedItemQuery::create()
+            ->filterById($itemId)
+            ->filterByFrId($fundraiserId)
+            ->findOne();
         if ($donatedItem === null) {
             return $response
                 ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/editor/' . $fundraiserId)
                 ->withStatus(302);
         }
         $donatedItem
-            ->setFrId($fundraiserId)
             ->setItem($sItem)
             ->setMultibuy($bMultibuy)
             ->setDonorId($iDonor)
@@ -213,7 +220,11 @@ $app->post('/{fundraiserId}/donated-items/{itemId}/replicate', function (Request
 
     $iCount       = (int) InputUtils::legacyFilterInput($body['Count'] ?? '0', 'int');
 
-    $donatedItem = DonatedItemQuery::create()->findPk($itemId);
+    // Scope to fundraiserId to prevent cross-fundraiser replication
+    $donatedItem = DonatedItemQuery::create()
+        ->filterById($itemId)
+        ->filterByFrId($fundraiserId)
+        ->findOne();
     if ($donatedItem === null) {
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/editor/' . $fundraiserId)

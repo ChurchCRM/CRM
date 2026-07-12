@@ -91,6 +91,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </thead>
       <tbody>
         <?php if ($donatedItems !== null && $donatedItems->count() > 0): ?>
+          <?php
+          // Generate delete token ONCE before the loop — CSRFUtils keeps only one token per formId;
+          // generating it inside the loop would overwrite the session token on each iteration.
+          $csrfItemDeleteField = CSRFUtils::getTokenInputField('donated_item_delete');
+          ?>
           <?php foreach ($donatedItems as $item): ?>
             <?php
               $itemName = $item->getItem() ?: '~';
@@ -129,7 +134,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="dropdown-divider"></div>
                     <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/<?= (int) $item->getId() ?>/delete"
                           onsubmit="return confirm(<?= htmlspecialchars(json_encode(gettext('Delete this item?'))) ?>)">
-                      <?= CSRFUtils::getTokenInputField('donated_item_delete') ?>
+                      <?= $csrfItemDeleteField ?>
                       <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                       </button>
