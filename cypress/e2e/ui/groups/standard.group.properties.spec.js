@@ -8,26 +8,10 @@
  * - Group with ID=1 must exist
  * - At least one group property definition must exist (pro_Class='g')
  *
- * Design rule: NO cy.request() / makePrivateAdminAPICall() calls after the
- * user is logged in. All API-based data setup runs BEFORE freshAdminLogin(),
- * and any teardown runs at the END of the test (after UI assertions).
+ * API setup uses makePrivateAdminAPICall, which sends withCredentials:false — the
+ * API key can no longer clobber $_SESSION, so the cached cy.session() stays valid
+ * and cy.setupAdminSession() works even after data setup has run.
  */
-
-/**
- * Direct login helper — bypasses cy.session() cache entirely.
- * Call this after all API setup is complete; it clears cookies so the
- * PHP session created by cy.request() is discarded and a real browser
- * session is established instead.
- */
-function freshAdminLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(
-        Cypress.env("admin.password") + "{enter}"
-    );
-    cy.url().should("not.include", "/session/begin");
-}
 
 // ------------------------------------------------------------------ //
 // Group Property Assignment — /groups/view/{id}
@@ -109,7 +93,7 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
             });
 
             // Step 2: Login after all API setup
-            freshAdminLogin();
+            cy.setupAdminSession();
 
             // Step 3: UI only from here
             cy.get("@prop").then((prop) => {
@@ -165,7 +149,7 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
             });
 
             // Login AFTER API setup
-            freshAdminLogin();
+            cy.setupAdminSession();
         });
 
         afterEach(() => {
@@ -374,7 +358,7 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
         );
 
         // Now login and create a test field via UI
-        freshAdminLogin();
+        cy.setupAdminSession();
         cy.visit(`GroupPropsFormEditor.php?GroupID=${groupID}`);
         cy.get("select#newFieldType").select("1");
         cy.get("input#newFieldName").clear().type(fieldName);
@@ -383,7 +367,7 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
     });
 
     beforeEach(() => {
-        freshAdminLogin();
+        cy.setupAdminSession();
         cy.visit(`GroupPropsFormEditor.php?GroupID=${groupID}`);
     });
 

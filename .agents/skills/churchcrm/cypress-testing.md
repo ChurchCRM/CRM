@@ -278,14 +278,33 @@ Check the actual route implementation before choosing `allowedStatuses`.
 - ✅ Use `freshAdminLogin()` (clear cookies + direct form login) before `cy.visit()`
 - ✅ Each test should be self-contained — set up its own data, then re-login, then visit
 
-### `freshAdminLogin` Is a Local Function, NOT a Cypress Command <!-- learned: 2026-03-29 -->
+### `freshAdminLogin` is GONE — `cy.setupAdminSession()` is safe after API setup <!-- learned: 2026-07-11 -->
 
-`freshAdminLogin()` is a **plain JS function** defined locally in individual spec files (e.g. `standard.group.properties.spec.js`). It is **not** registered via `Cypress.Commands.add`.
+> ⚠️ Older guidance described a hand-rolled `freshAdminLogin()` copy-pasted into individual
+> specs to bypass `cy.session()`. **That workaround has been deleted.** It existed because
+> `cy.request()` shares the browser cookie jar, so sending the session cookie alongside
+> `x-api-key` made PHP overwrite `$_SESSION['AuthenticationProvider']` and kill the
+> server-side session.
 
-- ❌ `cy.freshAdminLogin()` — throws `TypeError: cy.freshAdminLogin is not a function`, fails the entire describe block
-- ✅ `freshAdminLogin()` — call as a plain JS function, only inside the spec file that defines it
+`makePrivateAPICall` now sets **`withCredentials: false`** (see `support/api-commands.js`),
+so the API key can no longer clobber the session. The cached `cy.session()` survives API
+setup, and `cy.setupAdminSession()` is the single correct way to log in — even when API
+data setup runs first.
 
-**API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall` authenticate via `x-api-key` header — no session or cookies needed. Never add `freshAdminLogin()` or `setupAdminSession()` to `beforeEach` in a pure API spec.
+```javascript
+// ✅ CORRECT — one session command; API setup before or after no longer matters
+beforeEach(() => {
+    cy.setupAdminSession();
+});
+
+// ❌ GONE — do not reintroduce a local freshAdminLogin(), a
+//    Cypress.session.clearAllSavedSessions(), or a cy.wait(1000)
+//    "to let the fresh PHP session propagate"
+```
+
+**API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall`
+authenticate via the `x-api-key` header — no session or cookies. Never put
+`cy.setupAdminSession()` in `beforeEach` of a pure API spec; it is a wasted login per test.
 
 ```javascript
 // ✅ CORRECT — API test, no login setup needed
