@@ -76,12 +76,14 @@ RUN npm ci && npm run build
 FROM php:${PHP_VERSION}-apache AS runtime
 
 # Runtime system libraries + PHP extensions in a single layer.
-# The runtime .so libraries (libfreetype6, libjpeg62-turbo, libpng16-16, libzip4)
+# The runtime .so libraries (libfreetype6, libjpeg62-turbo, libpng16-16t64, libzip5)
 # are listed explicitly BEFORE the purge so apt marks them as manually-installed
 # and does NOT remove them when --auto-remove cleans up the -dev header packages.
 # Without this, --auto-remove treats the .so files as auto-installed transitive
 # deps of the -dev packages and removes them too, causing dlopen() failures for
 # gd.so and zip.so at PHP startup.
+# Note: php:8.4-apache uses Debian 13 (Trixie) where libpng16-16 → libpng16-16t64
+# and libzip4 → libzip5 due to the time_t 64-bit transition.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         gettext \
         locales \
@@ -90,11 +92,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libfreetype6-dev \
         libjpeg62-turbo \
         libjpeg-dev \
-        libpng16-16 \
+        libpng16-16t64 \
         libpng-dev \
         libxml2 \
         libxml2-dev \
-        libzip4 \
+        libzip5 \
         libzip-dev \
     && docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
