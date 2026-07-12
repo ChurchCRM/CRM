@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\PropertyService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -763,6 +764,13 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
     });
 </script>
 <!-- Photos end -->
+
+
+<!-- Hidden form for CSRF-protected email PDF POST -->
+<form id="verifyEmailPDFForm" method="post" action="<?= SystemURLs::getRootPath() ?>/v2/people/report/verify/email" class="d-none">
+    <?= CSRFUtils::getTokenInputField('people_report_verify_email') ?>
+    <input type="hidden" name="familyId" value="">
+</form>
 
 <div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
      aria-hidden="true">
