@@ -186,11 +186,16 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
 
             $logger->info("Database reset completed - dropped $droppedCount objects (tables and views)");
 
-            // Remove uploaded images for people and families from Images root
+            // Remove uploaded images for people and families from Images root.
+            // NOTE: On case-sensitive filesystems (Linux), the directory names must
+            // match the case used when photos are stored. Photos are written using
+            // the Photo class with type names 'Person' and 'Family' (uppercase), so
+            // the directories are Images/Person and Images/Family — not lowercase.
+            // Using the wrong case silently skips cleanup (GHSA-r68j-h5c6-w6gh).
             try {
                 $imagesRoot = SystemURLs::getImagesRoot();
-                $personDir = $imagesRoot . '/person';
-                $familyDir = $imagesRoot . '/family';
+                $personDir = $imagesRoot . '/Person';
+                $familyDir = $imagesRoot . '/Family';
 
                 // Remove and recreate person dir
                 if (is_dir($personDir)) {
