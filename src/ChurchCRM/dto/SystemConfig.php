@@ -555,7 +555,7 @@ class   SystemConfig
      */
     private static function insertDynamicConfigRow(string $name, string $value): void
     {
-        $connection = Propel::getConnection();
+        $connection = Propel::getWriteConnection('churchcrm');
 
         // Discover all NOT NULL columns that have no column-level default.
         // On a modern schema the query returns no extra columns (cfg_name has
@@ -575,18 +575,21 @@ class   SystemConfig
         $columns = ['cfg_name' => $name, 'cfg_value' => $value];
 
         // For every additional NOT NULL / no-default column found (e.g. cfg_default,
-        // cfg_tooltip on a legacy schema), supply the written value as a placeholder.
-        // These columns are dropped by the pre-6.0.0 migration before normal app use.
+        // cfg_tooltip on a legacy schema), supply an empty string as a neutral filler.
+        // Using '' rather than $value avoids writing sensitive config values (e.g.
+        // API secrets) into semantically unrelated columns. TEXT NOT NULL is fully
+        // satisfied by ''; these columns are dropped by the pre-6.0.0 migration.
         foreach ($requiredColumns as $col) {
             if (!array_key_exists($col, $columns)) {
-                $columns[$col] = $value;
+                $columns[$col] = '';
             }
         }
 
         $colList    = implode(', ', array_map(fn (string $c): string => '`' . str_replace('`', '``', $c) . '`', array_keys($columns)));
         $paramList  = implode(', ', array_fill(0, count($columns), '?'));
         $insert = $connection->prepare("INSERT INTO config_cfg ({$colList}) VALUES ({$paramList})");
-        $insert->execute(array_values($columns));
+        $insert->execute(array_values($columns))
+            || throw new \RuntimeException('insertDynamicConfigRow: INSERT into config_cfg failed for key: ' . $name);
     }
 
 
