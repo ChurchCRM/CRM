@@ -3,6 +3,4 @@
 #   GET /api/family/{familyId}/photo
 # See: GHSA-r286-h493-ppwj
 
-<IfModule mod_authz_core.c>
-    Require all denied
-</IfModule>
+Require all denied
