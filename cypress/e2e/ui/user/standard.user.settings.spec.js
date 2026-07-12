@@ -62,8 +62,10 @@ describe("Standard User Settings Page", () => {
         cy.get("#tab-account").within(() => {
             // Should NOT show the must-change-password alert banner
             cy.get(".alert-warning").should("not.exist");
-            // Password status badge should say OK
-            cy.contains("OK").should("exist");
+            // Scope to the Password status row to avoid future ambiguous matches
+            cy.contains(".row", "Password status")
+                .contains("OK")
+                .should("exist");
         });
     });
 
