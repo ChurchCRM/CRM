@@ -1,21 +1,26 @@
 /// <reference types="cypress" />
 
 /**
- * Upgrade Restore Test
+ * Upgrade Restore Test — ChurchCRM 6.0.0 → current
  *
- * Installs a fresh ChurchCRM via the setup wizard, then restores an older
- * database backup (ChurchInfo 1.3.1 or ChurchCRM 6.0.0) and verifies
- * the auto-upgrade completes successfully.
+ * Installs a fresh ChurchCRM via the setup wizard, then restores a
+ * ChurchCRM 6.0.0 database backup and verifies the auto-upgrade completes
+ * successfully.
+ *
+ * Upgrade source: ChurchCRM 6.0.0 → current
+ *   Password format: SHA-256 salted (migrated silently to bcrypt on first login;
+ *   no forced password change required)
  *
  * Environment variables:
- *   CYPRESS_UPGRADE_SQL_FILE   — path to the SQL file to restore (relative to project root)
- *   CYPRESS_UPGRADE_ADMIN_USER — admin username in the restored database (default: Admin)
- *   CYPRESS_UPGRADE_ADMIN_PASS — admin password in the restored database (default: changeme)
+ *   CYPRESS_UPGRADE_SQL_FILE              — path to the SQL file to restore (relative to project root)
+ *   CYPRESS_UPGRADE_ADMIN_USER            — admin username in the restored database (default: Admin)
+ *   CYPRESS_UPGRADE_ADMIN_PASS            — admin password in the restored database (default: changeme)
+ *   CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE — set to "true" when the restored source forces a
+ *                                           mandatory password change after the first post-migration login
  *
  * Password hash formats supported after migration:
- *   - bcrypt ($2y$)         — current format
- *   - SHA-256 salted        — ChurchCRM 6.x legacy (migrated on login)
- *   - MD5 unsalted          — ChurchInfo 1.x legacy (migrated on login)
+ *   - bcrypt ($2y$)   — current format (all new hashes)
+ *   - SHA-256 salted  — ChurchCRM 6.x legacy (migrated on login, no forced change)
  */
 
 describe('Upgrade via Restore', () => {
@@ -40,10 +45,17 @@ describe('Upgrade via Restore', () => {
     // Configured in upgrade.config.ts so it can be overridden without editing this file.
     const newAdminPassword = Cypress.env('admin.new.password') || 'AdminP@ss1234!';
 
-    // Password set during the forced-change that follows MD5->bcrypt migration of the
-    // restored legacy account (see User::isPasswordValid()). Restored ChurchInfo/legacy
-    // credentials are only valid for a single login before this change is required.
+    // Whether the restored source forces a password change on the first post-migration
+    // login (true for ChurchInfo 1.x MD5 accounts). Absent/false for ChurchCRM 6.x,
+    // which migrates SHA-256 → bcrypt silently without requiring a change.
+    const forcesPasswordChange = String(Cypress.env('UPGRADE_FORCE_PASSWORD_CHANGE')).toLowerCase() === 'true';
+
+    // Password configured for the post-forced-change login (ChurchInfo 1.x / MD5 path only).
     const postUpgradePassword = Cypress.env('admin.post.upgrade.password') || 'PostMigrateP@ss9012!';
+
+    // Effective password for all Step 3 verification logins: the forced-change value when
+    // the source requires it, otherwise the original restored password (silent migration).
+    const verifyPassword = forcesPasswordChange ? postUpgradePassword : upgradeAdminPass;
 
     describe('Step 1: Fresh Install via Setup Wizard', () => {
         it('should complete setup wizard', () => {
@@ -166,7 +178,9 @@ describe('Upgrade via Restore', () => {
         });
     });
 
-    describe('Step 2.5: Complete Forced Password Change (MD5 Migration)', () => {
+    // Step 2.5 only runs for sources that force a password change after migration
+    // (ChurchInfo 1.x / MD5). For ChurchCRM 6.x (SHA-256 silent migration) it is skipped.
+    (forcesPasswordChange ? describe : describe.skip)('Step 2.5: Complete Forced Password Change (MD5 Migration)', () => {
         // The restored legacy account authenticates via the MD5 fallback in
         // User::isPasswordValid(), which forces a password change on that first
         // login (the weak, potentially-compromised MD5 plaintext must not remain
@@ -189,16 +203,12 @@ describe('Upgrade via Restore', () => {
     });
 
     describe('Step 3: Verify Upgraded System', () => {
-        // Establish (and cache) a login session with the post-migration admin
-        // credentials set in Step 2.5. cy.session() in beforeEach restores from
-        // cache on subsequent tests, so the full login round-trip only happens once.
+        // Establish (and cache) a login session with the upgraded admin credentials.
+        // Uses the post-forced-change password for MD5-migration sources, or the original
+        // restored password for sources with silent migration (e.g. ChurchCRM 6.0.0).
+        // cy.setupLoginSession() validates the session cookie so stale caches are detected.
         beforeEach(() => {
-            cy.session('upgraded-admin', () => {
-                cy.visit('/login');
-                cy.get('input[name=User]').type(upgradeAdminUser);
-                cy.get('input[name=Password]').type(postUpgradePassword + '{enter}');
-                cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
-            });
+            cy.setupLoginSession('upgraded-admin', upgradeAdminUser, verifyPassword);
         });
 
         it('should show the login page after upgrade', () => {
@@ -209,13 +219,14 @@ describe('Upgrade via Restore', () => {
             cy.get('input[name=Password]').should('be.visible');
         });
 
-        it('should login with the post-migration admin credentials', () => {
+        it('should login with the upgraded admin credentials', () => {
             cy.clearCookies();
             cy.clearLocalStorage();
             cy.visit('/login');
             cy.get('input[name=User]').type(upgradeAdminUser);
-            cy.get('input[name=Password]').type(postUpgradePassword + '{enter}');
-            // After a successful upgrade + forced password change, the new credentials must work.
+            cy.get('input[name=Password]').type(verifyPassword + '{enter}');
+            // After a successful upgrade, admin credentials must work (post-change for MD5,
+            // original restored password for SHA-256 silent migration).
             cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
         });
 
