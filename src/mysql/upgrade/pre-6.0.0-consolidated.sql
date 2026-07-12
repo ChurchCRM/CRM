@@ -99,6 +99,16 @@ INSERT IGNORE INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, 
 (1041, 'sExternalBackupAutoInterval', '', 'Text', '', 'Interval in Hours for Automatic Remote Backups', 'General', 'Step5'),
 (1042, 'sLastBackupTimeStamp', '', 'Text', '', 'Last Backup Timestamp', 'General', 'Step5');
 
+-- Not part of the original 2.1.8.sql — seeded here to fix #9117. On a legacy ChurchInfo 1.x
+-- database, config_cfg.cfg_default is NOT NULL with no column-level default (dropped further
+-- below). RestoreJob::postRestoreCleanup() writes plugin.external-backup.enabled=0 right after
+-- a restore, before this migration runs, and Propel's bare (cfg_name, cfg_value) INSERT fails
+-- under strict SQL mode (error 1364). The write is caught/logged and non-fatal, but the row
+-- then never gets created. Seed it here — with every legacy NOT NULL column supplied — so the
+-- row exists (disabled by default, matching the restore's intent) once this migration completes.
+INSERT IGNORE INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`) VALUES
+(1049, 'plugin.external-backup.enabled', '0', 'boolean', '0', 'Enable the External Backup (WebDAV) plugin', 'General', 'Step5');
+
 
 -- ===== from 2.2.0.sql =====
 
