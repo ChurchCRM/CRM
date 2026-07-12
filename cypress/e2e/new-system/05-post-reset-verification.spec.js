@@ -164,18 +164,28 @@ describe('05 - Post-Reset Verification', () => {
                 failOnStatusCode: false,
                 timeout: 10000
             }).then((resp) => {
-                if (resp.status !== 200) {
+                if (resp.status === 404) {
+                    // Photo is verifiably absent — either the fix deleted it correctly
+                    // or spec 02 never ran and the file was never created. Either way
+                    // the pre-condition for the regression assertion is not met.
+                    // Skip rather than produce a vacuous pass.
                     cy.log(
-                        'Pre-condition not met: /api/person/2/photo returned ' +
-                        resp.status +
-                        ' — photo was either correctly deleted by the reset fix or ' +
+                        'Pre-condition not met: /api/person/2/photo returned 404 — ' +
+                        'photo was either correctly deleted by the reset fix or ' +
                         'spec 02 never ran. Skipping regression assertion.'
                     );
                     this.skip();
                     return;
                 }
-                // Photo survived the DB reset — the cleanup fix is NOT working.
-                // Assert 404 to fail the test and surface the regression.
+                // Surface unexpected status codes (401, 500, etc.) as test failures
+                // rather than silently skipping. Only 200 (bug present) or 404
+                // (fix applied / spec 02 never ran) are expected here.
+                expect(resp.status).to.equal(200,
+                    'Unexpected status ' + resp.status + ' from /api/person/2/photo — ' +
+                    'expected 200 (photo survived reset, regression present) or ' +
+                    '404 (photo deleted, fix applied or spec 02 never ran)');
+                // status === 200: photo survived the DB reset — the cleanup fix is NOT
+                // working. Assert 404 to fail the test and surface the regression.
                 expect(resp.status).to.equal(404,
                     'Person 2 photo file must be deleted from disk after DB reset (GHSA-r68j-h5c6-w6gh)');
             });
