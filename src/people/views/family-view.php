@@ -767,7 +767,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 
 
 <!-- Hidden form for CSRF-protected email PDF POST -->
-<form id="verifyEmailPDFForm" method="post" action="<?= SystemURLs::getRootPath() ?>/v2/people/report/verify/email" class="d-none">
+<form id="verifyEmailPDFForm" method="post" action="<?= SystemURLs::getRootPath() ?>/people/report/verify/email" class="d-none">
     <?= CSRFUtils::getTokenInputField('people_report_verify_email') ?>
     <input type="hidden" name="familyId" value="">
 </form>

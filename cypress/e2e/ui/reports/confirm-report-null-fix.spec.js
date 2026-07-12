@@ -13,6 +13,12 @@
  * tax-report-pdf.spec.js always does cy.visit() before intercepting the PDF.
  * cy.request() alone does NOT carry session cookies for auth-protected legacy
  * PHP pages; the browser context must be established first via cy.visit().
+ *
+ * MVC route (primary):
+ *   GET /people/report/verify[?familyId=<int>]  → download PDF
+ *
+ * Note: the legacy /Reports/ConfirmReport.php now redirects (302) to the MVC
+ * route, so these tests exercise the MVC route directly.
  */
 describe("Confirm Report PDF Generation - Null Value Fix", () => {
     beforeEach(() => {
@@ -23,10 +29,10 @@ describe("Confirm Report PDF Generation - Null Value Fix", () => {
     });
 
     it("should generate Confirm Report PDF for all families without null conversion error", () => {
-        cy.intercept("GET", "**/Reports/ConfirmReport.php").as("confirmReportAll");
+        cy.intercept("GET", "**/people/report/verify").as("confirmReportAll");
 
         cy.window().then((win) => {
-            win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php`;
+            win.location.href = `${win.CRM.root}/people/report/verify`;
         });
 
         cy.wait("@confirmReportAll", { timeout: 15000 }).then((interception) => {
@@ -55,12 +61,12 @@ describe("Confirm Report PDF Generation - Null Value Fix", () => {
         // Hardcoded to avoid makePrivateAdminAPICall() which resets PHP sessions.
         const familyId = 1;
 
-        cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}`).as(
+        cy.intercept("GET", `**/people/report/verify?familyId=${familyId}`).as(
             "confirmReportSingle"
         );
 
         cy.window().then((win) => {
-            win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php?familyId=${familyId}`;
+            win.location.href = `${win.CRM.root}/people/report/verify?familyId=${familyId}`;
         });
 
         cy.wait("@confirmReportSingle", { timeout: 15000 }).then((interception) => {
@@ -76,12 +82,12 @@ describe("Confirm Report PDF Generation - Null Value Fix", () => {
     it("should handle families with missing address fields (null values)", () => {
         const familyId = 1;
 
-        cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}`).as(
+        cy.intercept("GET", `**/people/report/verify?familyId=${familyId}`).as(
             "confirmReportNullFields"
         );
 
         cy.window().then((win) => {
-            win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php?familyId=${familyId}`;
+            win.location.href = `${win.CRM.root}/people/report/verify?familyId=${familyId}`;
         });
 
         cy.wait("@confirmReportNullFields", { timeout: 15000 }).then((interception) => {
@@ -102,10 +108,10 @@ describe("Confirm Report PDF Generation - Null Value Fix", () => {
     it("should not return a server error when generating Confirm Report", () => {
         // A 200 application/pdf response proves no PHP fatal error occurred —
         // fatal errors produce a 500 HTML error page, not a valid PDF.
-        cy.intercept("GET", "**/Reports/ConfirmReport.php").as("confirmReport");
+        cy.intercept("GET", "**/people/report/verify").as("confirmReport");
 
         cy.window().then((win) => {
-            win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php`;
+            win.location.href = `${win.CRM.root}/people/report/verify`;
         });
 
         cy.wait("@confirmReport", { timeout: 15000 }).then((interception) => {
