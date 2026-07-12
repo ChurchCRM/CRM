@@ -8,6 +8,21 @@ describe("Admin User Password", () => {
         cy.contains("Church Admin");
     });
 
+    it("Shows Status column header in the users table", () => {
+        cy.visit("admin/system/users");
+        cy.get("#user-listing-table thead th").contains("Status").should("exist");
+    });
+
+    it("Shows em-dash in Status column for a normal active user", () => {
+        cy.visit("admin/system/users");
+        // The seed admin (Church Admin) has no failed logins and no must-change flag,
+        // so the Status cell for that row should show the em-dash placeholder.
+        cy.contains("#user-listing-table tbody tr", "Church Admin")
+            .find("td")
+            .contains("—")
+            .should("exist");
+    });
+
     it("Admin Change password", () => {
         cy.visit("admin/system/user/99/changePassword");
         cy.contains("Change Password");
