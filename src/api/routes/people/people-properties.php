@@ -23,11 +23,17 @@ $app->group('/people/properties', function (RouteCollectorProxy $group): void {
     $familyAPIMiddleware = new FamilyMiddleware();
     $group->get('/person', 'getAllPersonProperties');
     $group->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);
-    $group->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware)->add(new InputSanitizationMiddleware(['value' => 'text']));
+    $group->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')
+        ->add(new InputSanitizationMiddleware(['value' => 'text']))
+        ->add($personAPIMiddleware)
+        ->add($personPropertyAPIMiddleware);
     $group->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
     $group->get('/family', 'getAllFamilyProperties');
     $group->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware);
-    $group->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware)->add(new InputSanitizationMiddleware(['value' => 'text']));
+    $group->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')
+        ->add(new InputSanitizationMiddleware(['value' => 'text']))
+        ->add($familyAPIMiddleware)
+        ->add($familyPropertyAPIMiddleware);
     $group->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
 
     $group->delete('/definition/{propertyId}', 'deletePropertyDefinition');

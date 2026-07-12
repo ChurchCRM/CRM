@@ -1052,10 +1052,35 @@ function createFund(Request $request, Response $response): Response
 }
 ```
 
-**Middleware order:** attach it so it runs *after* auth/entity middleware
-(auth first, then sanitize). In Slim, later `->add()` calls run outermost, so
-put `InputSanitizationMiddleware` in the chain and let the auth middleware wrap
-it — the field is sanitized just before the handler.
+**Middleware order (LIFO rule):** In Slim 4, `->add()` is Last-In-First-Out —
+the **last** `->add()` call is outermost and runs **first**. Therefore:
+
+- Add `InputSanitizationMiddleware` **first** (`->add()` call #1) so it is
+  innermost and runs **just before the handler** (sanitize-then-handle).
+- Add auth/entity middleware **after** it so they are outer layers and run
+  **before** sanitization.
+
+Concrete pattern (follows `groups-properties.php`):
+
+```php
+$group->post('/{id}/resource/{resId}', 'myHandler')
+    ->add(new InputSanitizationMiddleware(['name' => 'text'])) // 1st = innermost = runs last
+    ->add($entityMiddleware)                                   // 2nd = runs before sanitize
+    ->add(SomeAuthMiddleware::class);                          // 3rd = outermost = runs first
+// Execution order: SomeAuthMiddleware → $entityMiddleware → InputSanitizationMiddleware → handler
+```
+
+❌ **Wrong** — adding `InputSanitizationMiddleware` last makes it outermost
+(runs before auth), defeating the purpose of sanitizing input that only
+arrives after entity resolution:
+
+```php
+// WRONG — sanitize runs before auth/entity (inverted LIFO order)
+$group->post('/…', 'handler')
+    ->add($entityMiddleware)
+    ->add(SomeAuthMiddleware::class)
+    ->add(new InputSanitizationMiddleware(['name' => 'text'])); // last = outermost = wrong
+```
 
 **Routes using this pattern** (`src/ChurchCRM/Slim/Middleware/InputSanitizationMiddleware.php`):
 calendar events/`calendar.php`, group create + roles (`people-groups.php`),
