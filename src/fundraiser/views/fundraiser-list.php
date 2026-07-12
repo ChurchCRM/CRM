@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php foreach ($fundraisers as $fundraiser): ?>
         <tr>
           <td><?= InputUtils::escapeHTML($fundraiser->getTitle()) ?></td>
-          <td><?= $fundraiser->getDate()->format($sDateFormat) ?></td>
+          <td><?= $fundraiser->getDate()?->format($sDateFormat) ?? '' ?></td>
           <td class="w-1">
             <div class="dropdown">
               <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
