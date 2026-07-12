@@ -8,10 +8,6 @@
  * The query was changed to `WHERE fam_WeddingDate IS NOT NULL`.
  */
 describe("API Private Admin Anniversaries Calendar", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/systemcalendars/1/fullcalendar", () => {
         it("Returns 200 and valid event array (regression: MySQL 8.0 strict-mode DATE error)", () => {
             const start = "2026-01-01T00:00:00";

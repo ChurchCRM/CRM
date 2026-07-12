@@ -10,10 +10,6 @@
  * - Notes=1 non-admin sees only their own private notes; other users' private notes are absent
  */
 describe("API Private Notes Timeline Visibility", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     // -----------------------------------------------------------------------
     // Timeline privacy: Creator can see private note in full
     // -----------------------------------------------------------------------

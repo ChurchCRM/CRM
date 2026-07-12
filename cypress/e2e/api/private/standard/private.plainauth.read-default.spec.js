@@ -24,10 +24,6 @@
  * private.selfedit.family-scope.spec.js and must be unaffected by this change.
  */
 describe("Read-default policy — plain authenticated user can read any family/person", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     // -----------------------------------------------------------------------
     // GET /api/person/{personId} — Person profile
     // Person 2 is in family 1 (Campbell). Person 99 is in family 20 (Black).
