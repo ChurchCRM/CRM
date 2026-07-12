@@ -6,6 +6,7 @@ use ChurchCRM\Utils\InputUtils;
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
+<div class="card">
 <div class="card-body">
   <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/reports/statement">
     <div class="d-flex flex-wrap gap-2 mb-3">
@@ -71,5 +72,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </tbody>
     </table>
   </form>
+</div>
 </div>
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

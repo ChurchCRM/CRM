@@ -1,13 +1,13 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -142,6 +142,11 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
     $fundraiserId = (int) ($args['fundraiserId'] ?? 0);
     $body         = (array) $request->getParsedBody();
 
+    if (!CSRFUtils::verifyRequest($body, 'fundraiser_editor')) {
+        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
+    }
+
     $dDate        = InputUtils::legacyFilterInput($body['Date'] ?? '');
     $sTitle       = InputUtils::legacyFilterInput($body['Title'] ?? '');
     $sDescription = InputUtils::legacyFilterInput($body['Description'] ?? '');
@@ -199,7 +204,7 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
             ]),
             'fundraiserId'  => $fundraiserId,
             'fundraiser'    => $fundraiser,
-            'dDate'         => date_create('now'),
+            'dDate'         => $dDate,
             'sTitle'        => $sTitle,
             'sDescription'  => $sDescription,
             'donatedItems'  => $donatedItems,
@@ -258,9 +263,8 @@ $app->post('/{fundraiserId}/delete', function (Request $request, Response $respo
     $body = (array) $request->getParsedBody();
 
     if (!CSRFUtils::verifyRequest($body, 'fundraiser_delete')) {
-        return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/')
-            ->withStatus(302);
+        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+        return $response->withStatus(403)->withHeader('Content-Type', 'text/plain');
     }
 
     $fundraiserId = (int) $args['fundraiserId'];

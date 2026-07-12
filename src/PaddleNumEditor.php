@@ -6,8 +6,20 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-$iPaddleNumID  = (int) InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
-$iFundRaiserID = array_key_exists('iCurrentFundraiser', $_SESSION) ? (int) $_SESSION['iCurrentFundraiser'] : 0;
+$iPaddleNumID = (int) InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
+
+// Derive the fundraiser ID from the paddle record (most accurate) or fall back to session
+$iFundRaiserID = 0;
+if ($iPaddleNumID > 0) {
+    $rsPN = RunQuery("SELECT pn_fr_ID FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'");
+    if ($rsPN && mysqli_num_rows($rsPN) > 0) {
+        $pnRow = mysqli_fetch_array($rsPN);
+        $iFundRaiserID = (int) $pnRow['pn_fr_ID'];
+    }
+}
+if ($iFundRaiserID <= 0) {
+    $iFundRaiserID = array_key_exists('iCurrentFundraiser', $_SESSION) ? (int) $_SESSION['iCurrentFundraiser'] : 0;
+}
 
 if ($iFundRaiserID <= 0) {
     RedirectUtils::redirect('fundraiser/');

@@ -10,6 +10,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/donated-items/editor<?= $itemId > 0 ? '/' . $itemId : '' ?>" name="DonatedItemEditor">
   <div class="card">
     <div class="card-body">
+      <?= CSRFUtils::getTokenInputField('donated_item_editor') ?>
       <div class="mb-3">
         <div class="row">
           <div class="col-md-4 col-6">
@@ -102,6 +103,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   var form = document.createElement('form');
                   form.method = 'post';
                   form.action = '<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/donated-items/<?= (int) $itemId ?>/replicate';
+                  var csrfInput = document.createElement('input');
+                  csrfInput.type = 'hidden';
+                  csrfInput.name = 'csrf_token';
+                  csrfInput.value = '<?= CSRFUtils::generateToken("donated_item_replicate") ?>';
+                  form.appendChild(csrfInput);
                   var input = document.createElement('input');
                   input.type = 'hidden';
                   input.name = 'Count';

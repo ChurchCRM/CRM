@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -64,6 +65,11 @@ $app->get('/{fundraiserId}/batch-winner', function (Request $request, Response $
 $app->post('/{fundraiserId}/batch-winner', function (Request $request, Response $response, array $args): Response {
     $fundraiserId = (int) $args['fundraiserId'];
     $body         = (array) $request->getParsedBody();
+
+    if (!CSRFUtils::verifyRequest($body, 'batch_winner_entry')) {
+        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
+    }
 
     $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
     if ($fundraiser === null) {
