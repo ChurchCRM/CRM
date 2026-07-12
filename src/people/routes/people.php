@@ -115,14 +115,14 @@ function sendVerifyReportEmail(Request $request, Response $response, array $args
         $familiesEmailed = $service->sendFamilyEmails($familyId, $updated);
     } catch (\Throwable $e) {
         LoggerUtils::getAppLogger()->error('sendVerifyReportEmail error: ' . $e->getMessage(), ['exception' => $e]);
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/people/verify?EmailsError=true');
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=true');
     }
 
     if ($familyId !== null) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/family/' . $familyId . '?PDFEmailed=' . $familiesEmailed);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/family/' . $familyId . '?PDFEmailed=' . $familiesEmailed);
     }
 
-    return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/people/verify?AllPDFsEmailed=' . $familiesEmailed);
+    return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?AllPDFsEmailed=' . $familiesEmailed);
 }
 
 function listPeople(Request $request, Response $response, array $args): Response
