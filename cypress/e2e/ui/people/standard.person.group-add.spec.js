@@ -19,9 +19,9 @@ const personId = 2;
 const multiRoleGroupId = 1; // Angels class — has Teacher (1) + Student (2)
 const specialPropsGroupId = 23; // has grp_hasSpecialProps = 1
 
-// API setup uses makePrivateAdminAPICall, which sends withCredentials:false — the API
-// key can no longer clobber $_SESSION, so the cached cy.session() survives data setup
-// and cy.setupAdminSession() is safe to call after it.
+// API-based data setup runs BEFORE freshAdminLogin(). Despite withCredentials:false
+// on makePrivateAPICall, CI confirmed that cy.setupAdminSession() is not sufficient —
+// the PHP session is still killed by cy.request(). freshAdminLogin() is required.
 
 /**
  * Direct login — bypasses cy.session() cache so that earlier

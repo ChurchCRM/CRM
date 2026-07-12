@@ -8,9 +8,9 @@
  * - Group with ID=1 must exist
  * - At least one group property definition must exist (pro_Class='g')
  *
- * API setup uses makePrivateAdminAPICall, which sends withCredentials:false — the
- * API key can no longer clobber $_SESSION, so the cached cy.session() stays valid
- * and cy.setupAdminSession() works even after data setup has run.
+ * API-based data setup runs BEFORE freshAdminLogin(). Despite withCredentials:false
+ * on makePrivateAPICall, CI confirmed that cy.setupAdminSession() is not sufficient —
+ * the PHP session is still killed by cy.request(). freshAdminLogin() is required.
  */
 
 /**
