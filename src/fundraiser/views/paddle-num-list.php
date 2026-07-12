@@ -36,6 +36,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </tr>
     </thead>
     <tbody>
+      <?php
+      // Generate delete token ONCE before the loop — CSRFUtils keeps only one token per formId;
+      // generating it inside the loop would overwrite the session token on each iteration.
+      $csrfPaddleDeleteField = CSRFUtils::getTokenInputField('paddle_num_delete');
+      ?>
       <?php foreach ($paddleNums as $aRow): ?>
         <?php
           $pn_ID          = (int) $aRow['pn_ID'];
@@ -74,7 +79,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <form method="post"
                       action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/paddle-numbers/<?= $pn_ID ?>/delete"
                       onsubmit="return confirm(<?= htmlspecialchars(json_encode(gettext('Delete this paddle number?'))) ?>)">
-                  <?= CSRFUtils::getTokenInputField('paddle_num_delete') ?>
+                  <?= $csrfPaddleDeleteField ?>
                   <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
                     <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                   </button>

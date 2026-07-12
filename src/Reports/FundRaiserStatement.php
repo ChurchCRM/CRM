@@ -7,7 +7,8 @@ require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Utils\RedirectUtils;
 
-$iFundRaiserID = array_key_exists('iCurrentFundraiser', $_SESSION) ? (int) $_SESSION['iCurrentFundraiser'] : 0;
+// Legacy params: CurrentFundraiser (query string) takes priority, then session
+$iFundRaiserID = (int) ($_GET['CurrentFundraiser'] ?? $_SESSION['iCurrentFundraiser'] ?? 0);
 // Forward single-paddle parameter if present
 $iPaddleNumID  = (int) ($_GET['PaddleNumID'] ?? 0);
 

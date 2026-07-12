@@ -36,6 +36,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </tr>
       </thead>
       <tbody>
+      <?php
+      // Generate delete token ONCE before the loop — CSRFUtils keeps only one token per formId;
+      // generating it inside the loop would overwrite the session token on each iteration.
+      $csrfFundraiserDeleteField = \ChurchCRM\Utils\CSRFUtils::getTokenInputField('fundraiser_delete');
+      ?>
         <?php foreach ($fundraisers as $fundraiser): ?>
         <tr>
           <td><?= InputUtils::escapeHTML($fundraiser->getTitle()) ?></td>
@@ -52,7 +57,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="dropdown-divider"></div>
                 <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= $fundraiser->getId() ?>/delete" class="d-inline"
                       onsubmit="return confirm(<?= htmlspecialchars(json_encode(gettext('Are you sure you want to delete this fundraiser?'))) ?>)">
-                  <?= \ChurchCRM\Utils\CSRFUtils::getTokenInputField('fundraiser_delete') ?>
+                  <?= $csrfFundraiserDeleteField ?>
                   <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
                     <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                   </button>

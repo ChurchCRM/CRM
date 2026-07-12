@@ -86,7 +86,11 @@ $app->post('/{fundraiserId}/batch-winner', function (Request $request, Response 
         $price = InputUtils::legacyFilterInput($body["SellPrice$row"] ?? '0');
 
         if ($buyer > 0 && $di > 0 && (float) $price > 0) {
-            $donatedItem = DonatedItemQuery::create()->findOneById($di);
+            // Scope to fundraiserId to prevent cross-fundraiser item updates
+            $donatedItem = DonatedItemQuery::create()
+                ->filterById($di)
+                ->filterByFrId($fundraiserId)
+                ->findOne();
             if ($donatedItem !== null) {
                 $donatedItem
                     ->setBuyerId($buyer)
