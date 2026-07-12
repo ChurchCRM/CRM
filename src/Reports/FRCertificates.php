@@ -1,56 +1,18 @@
 <?php
-
+// Legacy redirect shim — migrated to /fundraiser/{fundraiserId}/reports/certificates
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
-use ChurchCRM\Reports\PdfCertificatesReport;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageFundraisersEnabled(), 'ManageFundraisers');
-
-if (!isset($_GET['CurrentFundraiser'])) {
-    throw new \InvalidArgumentException('Missing required CurrentFundraiser parameter');
-}
-$iCurrentFundraiser = (int) InputUtils::legacyFilterInput($_GET['CurrentFundraiser'], 'int');
-
-$fundraiser = FundRaiserQuery::create()->findOneById($iCurrentFundraiser);
-if ($fundraiser === null) {
-    throw new \InvalidArgumentException('No results found for provided CurrentFundraiser parameter');
+$iCurrentFundraiser = (int) InputUtils::legacyFilterInput($_GET['CurrentFundraiser'] ?? 0, 'int');
+if ($iCurrentFundraiser <= 0 && array_key_exists('iCurrentFundraiser', $_SESSION)) {
+    $iCurrentFundraiser = (int) $_SESSION['iCurrentFundraiser'];
 }
 
-$curY = 0;
-
-// Get all the donated items
-$sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $fundraiser->getId() . ' ORDER BY di_item';
-$rsItems = RunQuery($sSQL);
-
-$pdf = new PdfCertificatesReport();
-$pdf->SetTitle($fundraiser->getTitle());
-
-// Loop through items
-while ($oneItem = mysqli_fetch_array($rsItems)) {
-    extract($oneItem);
-
-    $pdf->addPage();
-
-    $pdf->SetFont('Times', 'B', 24);
-    $pdf->Write(8, $di_item .":\t");
-    $pdf->Write(8, stripslashes($di_title) ."\n\n");
-    $pdf->SetFont('Times', '', 16);
-    $pdf->Write(8, stripslashes($di_description) ."\n");
-    if ($di_estprice > 0) {
-        $pdf->Write(8, gettext('Estimated value ') . '$' . $di_estprice . '.  ');
-    }
-    if ($per_LastName !== '') {
-        $pdf->Write(8, gettext('Donated by ') . $per_FirstName . ' ' . $per_LastName .".\n\n");
-    }
-}
-
-if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
-    $pdf->Output('FRCertificates' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
+if ($iCurrentFundraiser > 0) {
+    RedirectUtils::absoluteRedirect(rtrim(\ChurchCRM\dto\SystemURLs::getRootPath(), '/') . '/fundraiser/' . $iCurrentFundraiser . '/reports/certificates');
 } else {
-    $pdf->Output();
+    RedirectUtils::redirect('fundraiser/');
 }
