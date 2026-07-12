@@ -5,12 +5,19 @@
  *   GET  /finance/reports/tax-statements  (configuration form)
  *   POST /finance/reports/tax-report      (PDF generation)
  *
- * SCAFFOLDING: Tax report routes exist as framework proof-of-concept only.
- * Re-enable when the tax report is officially released in the UI navigation.
+ * Routes are reachable via direct URL even though they are not yet wired into
+ * the navigation menu (scaffolding stage).  Tests validate the form UI and
+ * basic PDF-generation paths; they require a running ChurchCRM instance with
+ * the standard seed database (cypress/data/seed.sql).
+ *
+ * TODO (infrastructure gate): Once the routes are officially added to the
+ * Finance navigation menu, remove the @todo comment in reports.php and update
+ * the OpenAPI scaffolding annotations accordingly.  No Cypress changes will be
+ * needed — the tests already exercise the live routes.
  */
 
 // eslint-disable-next-line no-undef
-describe.skip("Tax Statements mPDF — Configuration Form (scaffolding — not yet in UI)", () => {
+describe("Tax Statements mPDF — Configuration Form", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -69,7 +76,7 @@ describe.skip("Tax Statements mPDF — Configuration Form (scaffolding — not y
 });
 
 // eslint-disable-next-line no-undef
-describe.skip("Tax Statements mPDF — PDF Generation (scaffolding — not yet in UI)", () => {
+describe("Tax Statements mPDF — PDF Generation", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -128,7 +135,7 @@ describe.skip("Tax Statements mPDF — PDF Generation (scaffolding — not yet i
 });
 
 // eslint-disable-next-line no-undef
-describe.skip("Tax Statements mPDF — Access Control (scaffolding — not yet in UI)", () => {
+describe("Tax Statements mPDF — Access Control", () => {
     it("should deny access to users without finance permission", () => {
         cy.setupNoFinanceSession();
         cy.visit("/finance/reports/tax-statements", {

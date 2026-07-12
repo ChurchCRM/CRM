@@ -69,11 +69,15 @@ class MpdfRenderer implements PdfRendererInterface
         $pdfContent = $this->renderToString($template, $data);
         $outputMode = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
 
+        // Sanitize filename to prevent HTTP header injection:
+        // strip CR, LF, and double-quotes which could fold or terminate the header.
+        $safeFilename = str_replace(['"', "\r", "\n"], ['', '', ''], $filename);
+
         $response->getBody()->write($pdfContent);
 
         return $response
             ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', $outputMode . '; filename="' . $filename . '.pdf"')
+            ->withHeader('Content-Disposition', $outputMode . '; filename="' . $safeFilename . '.pdf"')
             ->withHeader('Content-Length', (string) mb_strlen($pdfContent, '8bit'));
     }
 

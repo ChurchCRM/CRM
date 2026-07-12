@@ -47,23 +47,15 @@
   Blocks:
     - letter_body : the main content area between address block and closing
     - closing     : signature block (default: sConfirmSincerely + sTaxSigner)
+
+  CSS convention:
+    This partial does NOT emit its own <style> tag.  All CSS it depends on
+    (.letterhead-text, .date-line, .recipient-block, .letter-content,
+    .closing-block) MUST be provided by the parent template that embeds it,
+    via its own {% block extra_style %} in _base.html.twig.  This keeps all
+    stylesheets in the document <head> and prevents them from being injected
+    once per {% embed %} iteration into the <body>.
 #}
-<style>
-    .letterhead-text { margin-bottom: 6mm; }
-    .letterhead-text .church-name { font-size: 14pt; font-weight: bold; }
-    .letterhead-text .church-contact { font-size: 9pt; }
-
-    .date-line { text-align: right; margin-bottom: 4mm; }
-
-    .recipient-block { margin-bottom: 8mm; }
-    .recipient-block p { margin: 0; line-height: 5mm; }
-
-    .letter-content { margin-top: 4mm; }
-
-    .closing-block { margin-top: 8mm; }
-    .closing-block .signature { margin-top: 8mm; }
-</style>
-
 {# ── Letterhead ─────────────────────────────────────────────────────── #}
 {% if letterhead == 'graphic' and letterheadImage %}
     <div style="text-align:center; margin-bottom:6mm;">
