@@ -138,10 +138,10 @@ class PersonService
                 continue;
             }
             $email = (string) $person->getEmail();
-            if ($email === '' || isset($emailsSeen[$email])) {
+            if ($email === '' || isset($emailsSeen[strtolower($email)])) {
                 continue;
             }
-            $emailsSeen[$email] = true;
+            $emailsSeen[strtolower($email)] = true;
             $all[] = $email;
 
             $roleName = $roleNameMap[(int) $person->getClsId()] ?? gettext('Member');
