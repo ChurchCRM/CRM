@@ -68,6 +68,10 @@ declare namespace Cypress {
      * Used to test that finance pages correctly deny access to non-finance users
      */
     setupNoFinanceSession(options?: { forceLogin?: boolean }): Chainable<void>;
+    /**
+     * Ensure a no-ManageFundraisers user session is active (optionally forcing a fresh login)
+     * Used to test that fundraiser pages correctly deny access to users without ManageFundraisers permission
+     */
     setupNoManageFundraisersSession(options?: { forceLogin?: boolean }): Chainable<void>;
 
     /**
