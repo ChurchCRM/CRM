@@ -186,32 +186,50 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
 
             $logger->info("Database reset completed - dropped $droppedCount objects (tables and views)");
 
-            // Remove uploaded images for people and families from Images root.
-            // NOTE: On case-sensitive filesystems (Linux), the directory names must
-            // match the case used when photos are stored. Photos are written using
-            // the Photo class with type names 'Person' and 'Family' (uppercase), so
-            // the directories are Images/Person and Images/Family — not lowercase.
-            // Using the wrong case silently skips cleanup (GHSA-r68j-h5c6-w6gh).
+            // Remove uploaded person and family photos from the Images directory.
+            // We clean both the canonical uppercase paths (Person / Family) that
+            // the Photo class uses, and legacy lowercase variants (person / family)
+            // written by older ChurchCRM versions. realpath() deduplicates the list
+            // on case-insensitive filesystems (e.g. macOS) so we never clean the
+            // same physical directory twice.
+            // Fix for GHSA-r68j-h5c6-w6gh: the original code used only lowercase
+            // paths which silently skipped cleanup on Linux (case-sensitive FS).
             try {
                 $imagesRoot = SystemURLs::getImagesRoot();
-                $personDir = $imagesRoot . '/Person';
-                $familyDir = $imagesRoot . '/Family';
+                $canonicalDirs = [$imagesRoot . '/Person', $imagesRoot . '/Family'];
 
-                // Clear visible photo files from person dir (hidden files like .gitkeep prevent
-                // rmdir() from removing the directory itself; @mkdir is then a no-op).
-                if (is_dir($personDir)) {
-                    FileSystemUtils::recursiveRemoveDirectory($personDir);
+                // Build deduplicated list of real paths to delete.
+                $dirsToClean = [];
+                foreach ([
+                    $imagesRoot . '/Person', $imagesRoot . '/person',
+                    $imagesRoot . '/Family', $imagesRoot . '/family',
+                ] as $candidate) {
+                    if (is_dir($candidate)) {
+                        $real = realpath($candidate);
+                        if ($real !== false && !in_array($real, $dirsToClean, true)) {
+                            $dirsToClean[] = $real;
+                        }
+                    }
                 }
-                @mkdir($personDir, 0755, true);
 
-                // Clear visible photo files from family dir (hidden files like .gitkeep prevent
-                // rmdir() from removing the directory itself; @mkdir is then a no-op).
-                if (is_dir($familyDir)) {
-                    FileSystemUtils::recursiveRemoveDirectory($familyDir);
+                foreach ($dirsToClean as $dir) {
+                    FileSystemUtils::recursiveRemoveDirectory($dir);
                 }
-                @mkdir($familyDir, 0755, true);
 
-                $logger->info('Database reset: cleared person and family Images directories', ['personDir' => $personDir, 'familyDir' => $familyDir]);
+                // Recreate only the canonical uppercase directories.
+                // mkdir() failure is non-fatal but must be logged: a missing
+                // directory causes subsequent photo uploads to fail silently.
+                foreach ($canonicalDirs as $dir) {
+                    if (!is_dir($dir) && !@mkdir($dir, 0755, true)) {
+                        $logger->warning('DB reset: failed to recreate images directory', ['dir' => $dir]);
+                    }
+                }
+
+                $logger->info('Database reset: cleared person and family Images directories', [
+                    'personDir' => $imagesRoot . '/Person',
+                    'familyDir' => $imagesRoot . '/Family',
+                    'dirsCleared' => count($dirsToClean),
+                ]);
             } catch (\Throwable $e) {
                 $logger->warning('Failed to clear Images directories during DB reset', ['error' => $e->getMessage()]);
             }

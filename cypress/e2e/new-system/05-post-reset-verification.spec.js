@@ -142,6 +142,29 @@ describe('05 - Post-Reset Verification', () => {
                 cy.log('No groups found after reset (as expected)');
             });
         });
+
+        it('should have deleted person photo files from disk after DB reset (GHSA-r68j-h5c6-w6gh)', () => {
+            // Demo data imported in spec 02 wrote a photo for person ID 2 into
+            // Images/Person/. After a DB reset the handler must wipe that directory.
+            // This test catches the case-sensitivity bug fixed by GHSA-r68j-h5c6-w6gh:
+            // the handler used lowercase 'Images/person' which silently skipped
+            // cleanup on Linux (case-sensitive) filesystems.
+            //
+            // The /api/person/{id}/photo endpoint uses Photo::hasUploadedPhoto() which
+            // only checks file existence on disk — no PersonMiddleware, no DB lookup.
+            // So even though person 2 no longer exists in the reset DB, this call
+            // correctly returns 200 when the file is still on disk (bug present) or
+            // 404 when it has been deleted (fix working).
+            cy.request({
+                method: 'GET',
+                url: '/api/person/2/photo',
+                failOnStatusCode: false,
+                timeout: 10000
+            }).then((resp) => {
+                expect(resp.status).to.equal(404,
+                    'Person 2 photo file must be deleted from disk after DB reset (GHSA-r68j-h5c6-w6gh)');
+            });
+        });
     });
 
     describe('Step 10e: Final Verification', () => {
