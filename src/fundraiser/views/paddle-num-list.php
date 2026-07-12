@@ -18,7 +18,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <a class="btn btn-secondary" href="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/paddle-numbers/editor">
       <?= gettext('Add Buyer') ?>
     </a>
-    <?php /* Generate-statements form wraps ONLY the button; JS populates hidden Chk* inputs on submit */ ?>
+    <?php /* Generate-statements form wraps ONLY the button; JS guards selection and populates hidden Chk* inputs */ ?>
     <form id="generateStatementsForm" method="post"
           action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/reports/statement">
       <input type="submit" class="btn btn-primary" value="<?= gettext('Generate Statements for Selected') ?>"
@@ -73,7 +73,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php /* Standalone form — NOT nested inside the statement form above */ ?>
                 <form method="post"
                       action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/paddle-numbers/<?= $pn_ID ?>/delete"
-                      onsubmit="return confirm('<?= gettext('Delete this paddle number?') ?>')">
+                      onsubmit="return confirm(<?= htmlspecialchars(json_encode(gettext('Delete this paddle number?'))) ?>)">
                   <?= CSRFUtils::getTokenInputField('paddle_num_delete') ?>
                   <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
                     <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
@@ -90,19 +90,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-// Collect checked paddle IDs and inject as hidden Chk* fields before statement form submits
-document.getElementById('generateStatementsForm').addEventListener('submit', function (e) {
-  // Remove any previously added hidden fields
-  this.querySelectorAll('input[type="hidden"][name^="Chk"]').forEach(function (el) { el.remove(); });
-  // Add one hidden field per checked checkbox
-  document.querySelectorAll('.pledge-select:checked').forEach(function (cb) {
-    var input = document.createElement('input');
-    input.type  = 'hidden';
-    input.name  = 'Chk' + cb.dataset.pnId;
-    input.value = '1';
-    document.getElementById('generateStatementsForm').appendChild(input);
+(function () {
+  var noSelectionMsg = <?= json_encode(gettext('Please select at least one buyer to generate statements.')) ?>;
+
+  document.getElementById('generateStatementsForm').addEventListener('submit', function (e) {
+    var checked = document.querySelectorAll('.pledge-select:checked');
+
+    // Guard: require at least one checkbox selected
+    if (!checked.length) {
+      e.preventDefault();
+      window.CRM.notify(noSelectionMsg, { type: 'warning' });
+      return;
+    }
+
+    // Remove any previously injected hidden fields to avoid duplicates on re-submit
+    this.querySelectorAll('input[type="hidden"][name^="Chk"]').forEach(function (el) { el.remove(); });
+
+    // Inject one hidden field per selected paddle so the server knows which ones to include
+    var form = this;
+    checked.forEach(function (cb) {
+      var input   = document.createElement('input');
+      input.type  = 'hidden';
+      input.name  = 'Chk' + cb.dataset.pnId;
+      input.value = '1';
+      form.appendChild(input);
+    });
   });
-});
+}());
 </script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
