@@ -77,13 +77,19 @@ $app->get('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reques
     $iPerID = 0;
 
     if ($paddleId > 0) {
+        // Scope to fundraiserId to prevent cross-fundraiser editing
         $sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
                         a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName
                  FROM paddlenum_pn
                  LEFT JOIN person_per a ON pn_per_ID=a.per_ID
-                 WHERE pn_ID = '" . $paddleId . "'";
-        $rsPaddleNum = RunQuery($sSQL);
+                 WHERE pn_ID = '" . $paddleId . "' AND pn_fr_ID = " . $fundraiserId;
+        $rsPaddleNum  = RunQuery($sSQL);
         $thePaddleNum = mysqli_fetch_array($rsPaddleNum);
+        if (!$thePaddleNum) {
+            return $response
+                ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/' . $fundraiserId . '/paddle-numbers')
+                ->withStatus(302);
+        }
         $iNum   = (int) ($thePaddleNum['pn_Num'] ?? 0);
         $iPerID = (int) ($thePaddleNum['pn_per_ID'] ?? 0);
     } else {
@@ -201,7 +207,8 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
         $newRow   = mysqli_fetch_array($rsNew);
         $paddleId = (int) $newRow['iPaddleNumID'];
     } else {
-        $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = ' . $fundraiserId . ', pn_Num = ' . $iNum . ', pn_per_ID = ' . $iPerID . ' WHERE pn_ID = ' . $paddleId;
+        // Scope update to fundraiserId to prevent cross-fundraiser writes
+        $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = ' . $fundraiserId . ', pn_Num = ' . $iNum . ', pn_per_ID = ' . $iPerID . ' WHERE pn_ID = ' . $paddleId . ' AND pn_fr_ID = ' . $fundraiserId;
         RunQuery($sSQL);
     }
 

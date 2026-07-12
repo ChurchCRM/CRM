@@ -8,7 +8,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 $iPaddleNumID = (int) InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 
-// Derive the fundraiser ID from the paddle record (most accurate) or fall back to session
+// Derive the fundraiser ID: from paddle record (most accurate), then legacy query param, then session
 $iFundRaiserID = 0;
 if ($iPaddleNumID > 0) {
     $rsPN = RunQuery("SELECT pn_fr_ID FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'");
@@ -18,7 +18,8 @@ if ($iPaddleNumID > 0) {
     }
 }
 if ($iFundRaiserID <= 0) {
-    $iFundRaiserID = array_key_exists('iCurrentFundraiser', $_SESSION) ? (int) $_SESSION['iCurrentFundraiser'] : 0;
+    // Also honour the legacy CurrentFundraiser GET param (e.g. PaddleNumEditor.php?CurrentFundraiser=123)
+    $iFundRaiserID = (int) ($_GET['CurrentFundraiser'] ?? $_SESSION['iCurrentFundraiser'] ?? 0);
 }
 
 if ($iFundRaiserID <= 0) {
