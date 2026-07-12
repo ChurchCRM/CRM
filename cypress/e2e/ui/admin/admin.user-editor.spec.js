@@ -43,14 +43,25 @@ describe("Admin bypass - module feature-flag checks (#8667)", () => {
     let savedFinanceEnabled;
 
     before(() => {
+        // Clear cookies first so the API calls below do NOT send any browser
+        // session cookie. When cy.request() sends both an x-api-key header AND
+        // a session cookie, PHP overwrites $_SESSION['AuthenticationProvider']
+        // with APITokenAuthentication, which breaks subsequent cy.visit() calls.
+        cy.clearCookies();
         cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/bEnabledEvents", null, 200)
             .then((resp) => { savedEventsEnabled = resp.body.value; });
         cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/bEnabledFinance", null, 200)
             .then((resp) => { savedFinanceEnabled = resp.body.value; });
+        // Clearing saved sessions forces the next setupAdminSession() call to
+        // do a full fresh login rather than restoring a (possibly corrupted)
+        // cached session.
+        cy.then(() => Cypress.session.clearAllSavedSessions());
     });
 
     afterEach(() => {
-        // Restore flags regardless of test outcome so other tests are not affected.
+        // Clear cookies before restoring flags for the same session-corruption
+        // reason as in before().
+        cy.clearCookies();
         cy.makePrivateAdminAPICall(
             "POST",
             "/admin/api/system/config/bEnabledEvents",
@@ -63,34 +74,41 @@ describe("Admin bypass - module feature-flag checks (#8667)", () => {
             { value: savedFinanceEnabled ?? "1" },
             200,
         );
-    });
-
-    beforeEach(() => {
-        cy.setupAdminSession();
+        // Clear saved sessions so the ORM Migration describe block that follows
+        // this describe always gets a fresh PHP login, not the potentially-
+        // corrupted cached session.
+        cy.then(() => Cypress.session.clearAllSavedSessions());
     });
 
     it("Admin should access /event/dashboard even when bEnabledEvents is off", () => {
-        // Explicitly disable bEnabledEvents, then assert the admin bypass works:
-        // canViewEvents() must return true for admins regardless of the flag.
+        // Step 1: Disable the flag with NO active browser session so PHP cannot
+        //         overwrite the browser session's AuthenticationProvider.
+        cy.clearCookies();
         cy.makePrivateAdminAPICall(
             "POST",
             "/admin/api/system/config/bEnabledEvents",
             { value: "0" },
             200,
         );
+        // Step 2: Establish a fresh admin browser session now that the flag is set.
+        cy.setupAdminSession({ forceLogin: true });
+
+        // Step 3: Verify that the admin bypass works — admins can always see events.
         cy.visit('event/dashboard');
         cy.url().should('not.include', 'access-denied');
         cy.contains('Events Dashboard').should('exist');
     });
 
     it("Admin should access /finance/ even when bEnabledFinance is off", () => {
-        // Explicitly disable bEnabledFinance, then assert the admin bypass works.
+        cy.clearCookies();
         cy.makePrivateAdminAPICall(
             "POST",
             "/admin/api/system/config/bEnabledFinance",
             { value: "0" },
             200,
         );
+        cy.setupAdminSession({ forceLogin: true });
+
         cy.visit('finance/');
         cy.url().should('not.include', 'access-denied');
         cy.contains('Finance Dashboard').should('exist');
