@@ -139,8 +139,8 @@ class ConfirmEmailPdf extends ChurchInfoReport
  *  - src/Reports/ConfirmReportEmail.php (email PDF per family)
  *
  * Both legacy entry-points now redirect to the MVC routes
- *  GET /people/report/verify        → generateDownloadPDF()
- *  GET /people/report/verify/email  → sendFamilyEmails()
+ *  GET  /people/report/verify        → generateDownloadPDF()
+ *  POST /people/report/verify/email  → sendFamilyEmails()
  */
 class ConfirmReportService
 {
