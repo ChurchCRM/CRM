@@ -13,6 +13,22 @@
  * and cy.setupAdminSession() works even after data setup has run.
  */
 
+/**
+ * Direct login helper — bypasses cy.session() cache entirely.
+ * Call this after all API setup is complete; it clears cookies so the
+ * PHP session created by cy.request() is discarded and a real browser
+ * session is established instead.
+ */
+function freshAdminLogin() {
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(
+        Cypress.env("admin.password") + "{enter}"
+    );
+    cy.url().should("not.include", "/session/begin");
+}
+
 // ------------------------------------------------------------------ //
 // Group Property Assignment — /groups/view/{id}
 // ------------------------------------------------------------------ //
@@ -93,7 +109,7 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
             });
 
             // Step 2: Login after all API setup
-            cy.setupAdminSession();
+            freshAdminLogin();
 
             // Step 3: UI only from here
             cy.get("@prop").then((prop) => {
@@ -149,7 +165,7 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
             });
 
             // Login AFTER API setup
-            cy.setupAdminSession();
+            freshAdminLogin();
         });
 
         afterEach(() => {
@@ -358,7 +374,7 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
         );
 
         // Now login and create a test field via UI
-        cy.setupAdminSession();
+        freshAdminLogin();
         cy.visit(`GroupPropsFormEditor.php?GroupID=${groupID}`);
         cy.get("select#newFieldType").select("1");
         cy.get("input#newFieldName").clear().type(fieldName);
@@ -367,7 +383,7 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
     });
 
     beforeEach(() => {
-        cy.setupAdminSession();
+        freshAdminLogin();
         cy.visit(`GroupPropsFormEditor.php?GroupID=${groupID}`);
     });
 

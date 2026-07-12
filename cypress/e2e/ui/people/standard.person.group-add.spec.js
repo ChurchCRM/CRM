@@ -24,6 +24,20 @@ const specialPropsGroupId = 23; // has grp_hasSpecialProps = 1
 // and cy.setupAdminSession() is safe to call after it.
 
 /**
+ * Direct login — bypasses cy.session() cache so that earlier
+ * cy.request() calls (which reset the PHP session) don't interfere.
+ */
+function freshAdminLogin() {
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(
+        Cypress.env("admin.password") + "{enter}",
+    );
+    cy.url().should("not.include", "/session/begin");
+}
+
+/**
  * Remove person from a group via API (ignores 404 if not a member).
  */
 function removePersonFromGroup(groupId) {
@@ -49,7 +63,7 @@ describe("PersonView: Add to group with multiple roles", () => {
 
     it("should show role picker when selecting a multi-role group and add successfully", () => {
         // Login after API setup
-        cy.setupAdminSession();
+        freshAdminLogin();
 
         // Visit PersonView and open Add to Group modal
         cy.visit(`/people/view/${personId}`);
@@ -83,7 +97,7 @@ describe("PersonView: Add to group with multiple roles", () => {
 
     it("should allow selecting a specific role before adding", () => {
         // Login after API setup
-        cy.setupAdminSession();
+        freshAdminLogin();
 
         // Visit PersonView and open modal
         cy.visit(`/people/view/${personId}`);
@@ -135,7 +149,7 @@ describe("PersonView: Update Properties for group with special props", () => {
         );
 
         // Login after API setup
-        cy.setupAdminSession();
+        freshAdminLogin();
 
         // Visit PersonView and go to Groups tab
         cy.visit(`/people/view/${personId}`);
@@ -181,7 +195,7 @@ describe("PersonView: Update Properties for group with special props", () => {
         );
 
         // Login
-        cy.setupAdminSession();
+        freshAdminLogin();
 
         // Navigate directly to GroupPropsEditor
         cy.visit(

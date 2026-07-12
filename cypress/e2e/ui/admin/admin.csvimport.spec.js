@@ -7,12 +7,31 @@ describe(
         },
     },
     () => {
-        // Verification runs through makePrivateAdminAPICall (withCredentials:false, so
-        // the API key can no longer clobber $_SESSION) and plain cy.request (which just
-        // reuses the session cookie). Neither kills the server-side PHP session any
-        // more, so the cached cy.session() from setupAdminSession stays valid.
+        // Every test ends with cy.request()/makePrivateAdminAPICall() to verify
+        // imported state, which resets the PHP session on the server. The next
+        // test's cached cy.session() cookie then points at a dead server session
+        // and cy.visit() lands on the login page — "#csvFile never found". The
+        // cy.session() cache (with or without forceLogin) does NOT fix this
+        // because it only restores the client cookie, not the server-side PHP
+        // session. Bypass cy.session() entirely with a direct form login:
+        // clearCookies → POST /session/begin → verify we landed past login.
+        const freshAdminLogin = () => {
+            const username = Cypress.env("admin.username");
+            const password = Cypress.env("admin.password");
+            cy.clearCookies();
+            // Match setupLoginSession's canonical path: /login resolves to the
+            // session/begin form but goes through the front-controller, which
+            // is the path the app's session cookie gets minted on.
+            cy.visit("/login");
+            cy.get("input[name=User]", { timeout: 10000 })
+                .should("be.visible")
+                .type(username);
+            cy.get("input[name=Password]").type(`${password}{enter}`);
+            cy.url().should("not.include", "/session/begin");
+        };
+
         beforeEach(() => {
-            cy.setupAdminSession();
+            freshAdminLogin();
         });
 
         it("Verify CSV Import", () => {
