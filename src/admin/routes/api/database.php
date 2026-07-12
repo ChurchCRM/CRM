@@ -197,13 +197,15 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
                 $personDir = $imagesRoot . '/Person';
                 $familyDir = $imagesRoot . '/Family';
 
-                // Clear visible photo files from person dir (hidden files like .gitkeep are preserved)
+                // Clear visible photo files from person dir (hidden files like .gitkeep prevent
+                // rmdir() from removing the directory itself; @mkdir is then a no-op).
                 if (is_dir($personDir)) {
                     FileSystemUtils::recursiveRemoveDirectory($personDir);
                 }
                 @mkdir($personDir, 0755, true);
 
-                // Clear visible photo files from family dir (hidden files like .gitkeep are preserved)
+                // Clear visible photo files from family dir (hidden files like .gitkeep prevent
+                // rmdir() from removing the directory itself; @mkdir is then a no-op).
                 if (is_dir($familyDir)) {
                     FileSystemUtils::recursiveRemoveDirectory($familyDir);
                 }

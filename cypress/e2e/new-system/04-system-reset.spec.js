@@ -93,6 +93,90 @@ describe('04 - System Reset', () => {
     });
 
     describe('Step 10b: Perform System Reset', () => {
+        /**
+         * Regression test for GHSA-r68j-h5c6-w6gh — DB reset must delete uploaded photos.
+         *
+         * Before the fix, the reset endpoint used lowercase '/Images/person' and
+         * '/Images/family' while uploaded photos are stored in uppercase '/Images/Person'
+         * and '/Images/Family'. On Linux (case-sensitive FS) the reset silently left all
+         * uploaded photos on disk even though it reported success.
+         *
+         * This test:
+         *   1. Picks the first person from the pre-reset database.
+         *   2. Uploads a 1-pixel PNG photo to that person.
+         *   3. Confirms the photo file is accessible at /Images/Person/{id}.png.
+         *   4. Calls the DB reset endpoint.
+         *   5. Immediately confirms the photo file returns 404 — meaning it was
+         *      removed from disk by the reset handler.
+         *
+         * The photo URL does not require authentication, so step 5 works without
+         * a valid session even after the reset destroys the current session.
+         */
+        it('should delete uploaded person photos during database reset (GHSA-r68j-h5c6-w6gh)', () => {
+            manualLogin();
+
+            // 1. Get the first person in the database to use as our test subject.
+            cy.request({
+                method: 'GET',
+                url: '/api/persons/latest',
+                timeout: 15000
+            }).then((listResp) => {
+                expect(listResp.status).to.equal(200);
+                expect(listResp.body.people.length).to.be.greaterThan(0);
+                const personId = listResp.body.people[0].id;
+                cy.log(`Using person ID ${personId} for photo cleanup regression test`);
+
+                // 2. Upload a minimal 1x1 PNG so a photo file is written to Images/Person/.
+                const base64Photo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
+                cy.request({
+                    method: 'POST',
+                    url: `/api/person/${personId}/photo`,
+                    body: JSON.stringify({ imgBase64: base64Photo }),
+                    headers: { 'Content-Type': 'application/json' },
+                    timeout: 15000
+                }).then((uploadResp) => {
+                    expect(uploadResp.status).to.equal(200);
+
+                    // 3. Confirm the uploaded photo is now accessible as a static file.
+                    cy.request({
+                        method: 'GET',
+                        url: `/Images/Person/${personId}.png`,
+                        failOnStatusCode: false,
+                        timeout: 10000
+                    }).then((beforeResp) => {
+                        expect(beforeResp.status).to.equal(200,
+                            `Photo should be accessible at /Images/Person/${personId}.png before reset`);
+
+                        // 4. Navigate to the reset page then call the reset endpoint.
+                        cy.visit('/admin/system/reset');
+                        cy.contains('.alert-danger', 'Destructive Operation', { timeout: 15000 })
+                            .should('be.visible');
+
+                        cy.request({
+                            method: 'DELETE',
+                            url: '/admin/api/database/reset',
+                            timeout: 60000
+                        }).then((resetResp) => {
+                            expect(resetResp.status).to.equal(200);
+                            expect(resetResp.body).to.have.property('success', true);
+
+                            // 5. After reset, the uploaded photo file must be gone from disk.
+                            //    The static-file path does not require authentication.
+                            cy.request({
+                                method: 'GET',
+                                url: `/Images/Person/${personId}.png`,
+                                failOnStatusCode: false,
+                                timeout: 10000
+                            }).then((afterResp) => {
+                                expect(afterResp.status).to.equal(404,
+                                    `Photo /Images/Person/${personId}.png must be deleted after DB reset (GHSA-r68j-h5c6-w6gh)`);
+                            });
+                        });
+                    });
+                });
+            });
+        });
+
         it('should reset the database via API', () => {
             manualLogin();
 
