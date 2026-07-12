@@ -40,6 +40,9 @@ let installedChangelogUrl = null;
 // keeps the proceed button visible even when the system is already up to date.
 let forceReinstallMode = false;
 
+// Stores the stable version to reinstall when running a prerelease build ahead of latest stable
+let prereleaseTargetVersion = null;
+
 // Ensure AdminAPIRequest is available - fallback to regular APIRequest if not defined
 if (window.CRM && !window.CRM.AdminAPIRequest) {
   window.CRM.AdminAPIRequest = (options) => {
@@ -124,7 +127,9 @@ function setupNavigationHandlers() {
   // "Download & Install" — stores the selected version then advances to download step
   $("#proceedToDownload").click(() => {
     const sel = $("#targetVersionSelect").val();
-    selectedTargetVersion = sel && sel !== "" ? sel : null;
+    // For the prerelease reinstall case there is no version selector; fall back
+    // to the stable version stored by renderWhatsNew().
+    selectedTargetVersion = sel && sel !== "" ? sel : prereleaseTargetVersion;
     upgradeStepper.next();
   });
 
@@ -278,16 +283,48 @@ function setWhatsNewHeading(version) {
  * Render the What's New content from preview API response
  */
 function renderWhatsNew(data) {
-  const { nextVersion, nextReleaseNotes, nextChangelogUrl, releasesAhead, upgradePath } = data;
+  const { nextVersion, nextReleaseNotes, nextChangelogUrl, releasesAhead, upgradePath, isAheadOfStable } = data;
 
-  // Already up-to-date: show banner, then render the current version's release notes.
-  // In force-reinstall mode the proceed button is kept visible so the wizard can continue.
+  // --- Bug fix: reset stale UI state before every render ---
+  $("#whatsNewChangelogLink").addClass("d-none").attr("href", "#");
+  $("#upgradePathPanel").addClass("d-none");
+  $("#advancedVersionCollapse").closest(".mb-4").addClass("d-none");
+  $("#whatsNewContent .alert-success, #whatsNewContent .alert-warning, #whatsNewContent .js-uptodate-banner").remove();
+  $("#proceedToDownload")
+    .removeClass("d-none")
+    .html(`<i class="fa fa-cloud-arrow-down me-1"></i>${i18next.t("Download & Install")}`);
+  prereleaseTargetVersion = null;
+
+  // Case 1: Running a prerelease/dev build ahead of latest stable
+  if (isAheadOfStable && nextVersion) {
+    prereleaseTargetVersion = nextVersion;
+    setWhatsNewHeading(nextVersion);
+    $("#whatsNewNotes").html(marked.parse(nextReleaseNotes || ""));
+    if (nextChangelogUrl) {
+      $("#whatsNewChangelogLink").attr("href", nextChangelogUrl).removeClass("d-none");
+    }
+    installedChangelogUrl = nextChangelogUrl || null;
+    $("#whatsNewContent").prepend(
+      `<div class="alert alert-warning d-flex align-items-center gap-2 mb-3">
+        <i class="fa fa-triangle-exclamation fa-lg"></i>
+        <span>
+          <strong>${i18next.t("You are running a pre-release version.")}</strong>
+          ${i18next.t("The latest stable release is {{version}}. You can reinstall it below.", { version: escapeHtml(nextVersion) })}
+        </span>
+      </div>`,
+    );
+    $("#proceedToDownload").html(
+      `<i class="fa fa-cloud-arrow-down me-1"></i>${i18next.t("Install stable {{version}}", { version: escapeHtml(nextVersion) })}`,
+    );
+    return;
+  }
+
+  // Case 2: Truly up to date — no releases ahead, not a prerelease
   if (releasesAhead === 0) {
     const latestNotes = data.latestReleaseNotes || "";
     const latestUrl = data.latestChangelogUrl || null;
     const latestVer = data.latestVersion || "";
 
-    $("#upgradePathPanel").addClass("d-none");
     $("#advancedVersionCollapse").closest(".mb-4").addClass("d-none");
 
     // Remove any banner left from a previous render (e.g. wizard re-entry or preview re-fetch)
@@ -332,21 +369,14 @@ function renderWhatsNew(data) {
     return;
   }
 
-  // Version heading
+  // Case 3: Normal upgrade — one or more releases ahead
   setWhatsNewHeading(nextVersion);
-
-  // Changelog link
   if (nextChangelogUrl) {
     $("#whatsNewChangelogLink").attr("href", nextChangelogUrl).removeClass("d-none");
   }
-
-  // Release notes
   $("#whatsNewNotes").html(marked.parse(nextReleaseNotes || ""));
-
-  // Store the changelog URL for the completion screen (use the version being installed)
   installedChangelogUrl = nextChangelogUrl || null;
 
-  // Upgrade path panel (only when ≥ 2 releases ahead)
   if (releasesAhead >= 2 && upgradePath && upgradePath.length >= 2) {
     const count = upgradePath.length;
     $("#upgradePathSummary").html(
@@ -358,7 +388,6 @@ function renderWhatsNew(data) {
     $("#upgradePathPanel").removeClass("d-none");
   }
 
-  // Target version selector
   renderVersionSelector(upgradePath, nextVersion);
 }
 
@@ -375,7 +404,7 @@ function renderUpgradePath(upgradePath) {
       ? `<span class="badge bg-primary-lt text-primary ms-1">${i18next.t("Installing next release")}</span>`
       : "";
     const changelogLink = entry.changelogUrl
-      ? `<a href="${escapeHtml(entry.changelogUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm ms-auto">
+      ? `<a href="${escapeHtml(entry.changelogUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm ms-2 flex-shrink-0">
            <i class="fa fa-external-link me-1"></i>${i18next.t("Changelog")}
          </a>`
       : "";
@@ -384,14 +413,16 @@ function renderUpgradePath(upgradePath) {
 
     $accordion.append(`
       <div class="upgrade-path-entry">
-        <button class="upgrade-path-header collapse-toggle d-flex align-items-center gap-2 w-100 text-start py-2 px-3 border-0 bg-transparent"
-            data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="false">
-          <i class="fa fa-chevron-down upgrade-path-chevron text-secondary small"></i>
-          <span class="fw-semibold">${escapeHtml(entry.version)}</span>
-          ${typeBadge}
-          ${isNextBadge}
+        <div class="d-flex align-items-center w-100">
+          <button class="upgrade-path-header collapse-toggle d-flex align-items-center gap-2 flex-grow-1 text-start py-2 px-3 border-0 bg-transparent"
+              data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="false">
+            <i class="fa fa-chevron-down upgrade-path-chevron text-secondary small"></i>
+            <span class="fw-semibold">${escapeHtml(entry.version)}</span>
+            ${typeBadge}
+            ${isNextBadge}
+          </button>
           ${changelogLink}
-        </button>
+        </div>
         <div id="${collapseId}" class="collapse upgrade-path-notes px-3 pb-2">
           <div class="release-notes p-3 border rounded">${notes}</div>
         </div>
@@ -420,8 +451,12 @@ function renderVersionSelector(upgradePath, defaultNextVersion) {
     $select.append(`<option value="${escapeHtml(entry.version)}">${escapeHtml(label)}</option>`);
   });
 
-  // Update the "What's New" notes when selection changes
-  $select.on("change", function () {
+  // Re-show the advanced selector panel (hidden by the reset block in renderWhatsNew).
+  $("#advancedVersionCollapse").closest(".mb-4").removeClass("d-none");
+
+  // Update the "What's New" notes when selection changes; deregister any
+  // stale listener from a previous call before attaching a fresh one.
+  $select.off("change").on("change", function () {
     const ver = $(this).val();
     if (!ver) {
       // Reset to default next version notes
@@ -723,6 +758,7 @@ function setupForceReinstallButton() {
     // Clear stale download state so the Download & Apply step starts fresh
     window.CRM.updateFile = null;
     selectedTargetVersion = null;
+    prereleaseTargetVersion = null;
     $("#downloadStatus").empty();
     $("#updateDetails").addClass("d-none");
     $("#applyButtonContainer").addClass("d-none");

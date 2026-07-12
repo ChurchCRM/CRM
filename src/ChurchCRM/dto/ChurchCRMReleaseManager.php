@@ -734,6 +734,23 @@ class ChurchCRMReleaseManager
         $nextRelease = self::getNextReleaseStep($installedRelease);
         $releasesAhead = self::getReleasesAhead($installedVersionStr);
 
+        // Detect the prerelease/dev-build case: installed version is strictly
+        // ahead of the latest stable release known from GitHub.  In that case
+        // getReleasesAhead() returns [] (nothing is strictly ahead of the
+        // installed build) and getNextReleaseStep() also returns null, leaving
+        // the wizard blank.  We treat latest stable as the "reinstall" target.
+        $latestStable = !empty($_SESSION['ChurchCRMReleases']) ? $_SESSION['ChurchCRMReleases'][0] : null;
+        $isAheadOfStable = false;
+
+        if (empty($releasesAhead) && $latestStable !== null) {
+            if (version_compare($installedVersionStr, $latestStable->__toString()) > 0) {
+                // Running a prerelease/dev build ahead of latest stable.
+                // Offer latest stable as a "reinstall" target.
+                $isAheadOfStable = true;
+                $nextRelease = $latestStable;
+                // $releasesAhead stays [] — there truly are no releases strictly ahead.
+            }
+        }
         $githubBaseUrl = 'https://github.com/' . self::GITHUB_USER_NAME . '/' . self::GITHUB_REPOSITORY_NAME;
         $changelogBaseUrl = $githubBaseUrl . '/blob/master/changelog/';
 
@@ -760,16 +777,18 @@ class ChurchCRMReleaseManager
         }
 
         $nextVersionStr = $nextRelease !== null ? $nextRelease->__toString() : null;
-        $latestVersionStr = !empty($releasesAhead) ? end($releasesAhead)->__toString() : ($latestKnownRelease !== null ? $latestKnownRelease->__toString() : $installedVersionStr);
+        $latestVersionStr = !empty($releasesAhead)
+            ? end($releasesAhead)->__toString()
+            : ($latestStable !== null ? $latestStable->__toString() : $installedVersionStr);
 
         // Fetch notes for the latest known GitHub release so the frontend can display
         // them when the system is already up to date (releasesAhead === 0).
-        $latestKnownRelease = !empty($_SESSION['ChurchCRMReleases']) ? $_SESSION['ChurchCRMReleases'][0] : null;
-        $latestReleaseNotes = $latestKnownRelease !== null ? $latestKnownRelease->getReleaseNotes() : '';
+        // $latestStable is already computed above; reuse it here to avoid a redundant assignment.
+        $latestReleaseNotes = $latestStable !== null ? $latestStable->getReleaseNotes() : '';
         // Use the version string from the actual latest release object so the changelog
         // URL stays accurate on dev builds where $installedVersionStr may be ahead of
         // any published stable release.
-        $latestReleaseVersionStr = $latestKnownRelease !== null ? $latestKnownRelease->__toString() : $latestVersionStr;
+        $latestReleaseVersionStr = $latestStable !== null ? $latestStable->__toString() : $latestVersionStr;
         $latestChangelogUrl = $changelogBaseUrl . $latestReleaseVersionStr . '.md';
 
         return [
@@ -782,6 +801,7 @@ class ChurchCRMReleaseManager
             'upgradePath'      => $pathEntries,
             'latestReleaseNotes' => $latestReleaseNotes,
             'latestChangelogUrl' => $latestChangelogUrl,
+            'isAheadOfStable'    => $isAheadOfStable,
         ];
     }
 
