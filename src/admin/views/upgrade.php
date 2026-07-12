@@ -27,6 +27,9 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             <?php if ($isUpdateAvailable): ?>
                                 <span class="badge bg-success-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
                                 <span class="badge bg-success"><?= gettext('Update Available') ?></span>
+                            <?php elseif (isset($isAheadOfStable) && $isAheadOfStable): ?>
+                                <span class="badge bg-primary-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
+                                <span class="badge bg-warning-lt text-warning"><?= gettext('Running Pre-release') ?></span>
                             <?php else: ?>
                                 <span class="badge bg-primary-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
                                 <span class="badge bg-success-lt text-success"><?= gettext('Up to Date') ?></span>
