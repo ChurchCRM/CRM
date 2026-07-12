@@ -201,16 +201,22 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         // A menu entry must not advertise a page the user is bounced out of.
         it("Hides Groups and Sunday School (ManageGroups=0)", () => {
             cy.visit("v2/dashboard");
-            cy.get(".navbar-nav").within(() => {
-                cy.contains("Groups").should("not.exist");
-                cy.contains("Sunday School").should("not.exist");
+            // .navbar-nav matches multiple elements (main menu + header navs);
+            // iterate each so cy.within() receives a single element at a time.
+            cy.get(".navbar-nav").each(($nav) => {
+                cy.wrap($nav).within(() => {
+                    cy.contains("Groups").should("not.exist");
+                    cy.contains("Sunday School").should("not.exist");
+                });
             });
         });
 
         it("Hides Communication (EmailMailto=0)", () => {
             cy.visit("v2/dashboard");
-            cy.get(".navbar-nav").within(() => {
-                cy.contains("Communication").should("not.exist");
+            cy.get(".navbar-nav").each(($nav) => {
+                cy.wrap($nav).within(() => {
+                    cy.contains("Communication").should("not.exist");
+                });
             });
         });
 
