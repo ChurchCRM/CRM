@@ -266,15 +266,14 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ### Every POST/delete page must validate a CSRF token <!-- learned: 2026-04-21 -->
 
-Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The rule is **validate before any DB write**; legacy pages may reject an invalid token using either of two patterns — pick the one that matches the page's existing error-surfacing style. Applied in `PledgeDelete.php`, `DonatedItemDelete.php`, `PaddleNumDelete.php` (GHSA-3xq9-c86x-cwpp). For MVC routes, use `CSRFMiddleware` added to POST routes and `CSRFUtils::getTokenInputField()` in the view — the middleware **throws `HttpForbiddenException` on token failure** (the caller receives a 403 response); if you want inline re-rendering on failure, catch `HttpForbiddenException` in the route handler yourself:
+Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The rule is **validate before any DB write**; legacy pages may reject an invalid token using either of two patterns — pick the one that matches the page's existing error-surfacing style. Applied in `UserEditor.php`, `PledgeDelete.php` (GHSA-3xq9-c86x-cwpp). `DonatedItemDelete.php` and `PaddleNumDelete.php` used this pattern too but were removed in the fundraiser MVC migration (PR #9124); their Slim equivalents (`/fundraiser/{id}/donated-items/{itemId}/delete` and `/fundraiser/{id}/paddle-numbers/{paddleId}/delete`) use `CSRFUtils::verifyRequest()` in the POST handler directly:
 
 ```php
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Pattern A — 403 + exit. Preferred for delete/confirmation pages where there
-// is no persistent form to redirect back to. Used by PledgeDelete.php,
-// DonatedItemDelete.php, PaddleNumDelete.php.
+// is no persistent form to redirect back to. Used by PledgeDelete.php.
 if (!CSRFUtils::verifyRequest($_POST, 'pledge_delete')) {
     http_response_code(403);
     exit(gettext('Invalid security token. Please try again.'));
@@ -307,7 +306,7 @@ A GET-based delete endpoint (`<a href="Foo.php?id=X">Delete</a>`) is exploitable
 1. **GET** — renders a confirmation `<form method="post">` with the CSRF token and Delete/Cancel buttons.
 2. **POST** — validates the token, then performs the delete and redirects.
 
-The caller's link stays a plain GET (`<a href="FooDelete.php?id=X">`), but the landing page now shows the confirmation form instead of silently deleting. This is what `PledgeDelete.php` already did before the CSRF fix; `DonatedItemDelete.php` and `PaddleNumDelete.php` were migrated to this pattern in the GHSA-3xq9-c86x-cwpp fix.
+The caller's link stays a plain GET (`<a href="FooDelete.php?id=X">`), but the landing page now shows the confirmation form instead of silently deleting. This is what `PledgeDelete.php` already did before the CSRF fix; `DonatedItemDelete.php` and `PaddleNumDelete.php` also used this pattern after GHSA-3xq9-c86x-cwpp, but were removed in the fundraiser MVC migration (PR #9124). The new Slim routes enforce the same security guarantee structurally: delete endpoints are POST-only with `CSRFUtils::verifyRequest()`, and the confirmation step is a client-side `confirm()` dialog.
 
 ### Role checks belong on every delete page <!-- learned: 2026-04-21 -->
 
@@ -325,11 +324,11 @@ For pages that both render (GET) and perform (POST) a destructive action, read t
 ```php
 // ✅ CORRECT — read from $_POST on POST, $_GET on GET
 $isPostAction = isset($_POST['Delete']) || isset($_POST['Cancel']);
-$idSource = $isPostAction ? ($_POST['PaddleNumID'] ?? 0) : ($_GET['PaddleNumID'] ?? 0);
-$iPaddleNumID = (int) InputUtils::legacyFilterInput($idSource, 'int');
+$idSource = $isPostAction ? ($_POST['GroupKey'] ?? '') : ($_GET['GroupKey'] ?? '');
+$sGroupKey = InputUtils::legacyFilterInput($idSource, 'string');
 
 // ❌ WRONG — $_REQUEST can resolve to $_COOKIE based on request_order
-$iPaddleNumID = (int) InputUtils::legacyFilterInput($_REQUEST['PaddleNumID'] ?? 0, 'int');
+$sGroupKey = InputUtils::legacyFilterInput($_REQUEST['GroupKey'] ?? '', 'string');
 ```
 
 ### Pass `linkBack` as a hidden input, not a query-string param on the form action <!-- learned: 2026-04-22 -->
@@ -339,9 +338,9 @@ $iPaddleNumID = (int) InputUtils::legacyFilterInput($_REQUEST['PaddleNumID'] ?? 
 ```php
 // ✅ CORRECT — post linkBack as a hidden field, revalidate on the server
 // Form:
-<form method="post" action="PaddleNumDelete.php">
-    <?= CSRFUtils::getTokenInputField('paddle_num_delete') ?>
-    <input type="hidden" name="PaddleNumID" value="<?= $iPaddleNumID ?>">
+<form method="post" action="PledgeDelete.php">
+    <?= CSRFUtils::getTokenInputField('pledge_delete') ?>
+    <input type="hidden" name="GroupKey" value="<?= InputUtils::escapeAttribute($sGroupKey) ?>">
     <input type="hidden" name="linkBack" value="<?= InputUtils::escapeAttribute($linkBack) ?>">
     ...
 </form>
@@ -349,11 +348,11 @@ $iPaddleNumID = (int) InputUtils::legacyFilterInput($_REQUEST['PaddleNumID'] ?? 
 // Handler:
 $linkBack = RedirectUtils::validateRedirectUrl(
     InputUtils::legacyFilterInput($_POST['linkBack'] ?? '', 'string') ?? '',
-    'FindFundRaiser.php'
+    'v2/dashboard'
 );
 
 // ❌ WRONG — `$linkBack` containing `&` truncates; raw `&` in attribute is invalid HTML
-<form action="PaddleNumDelete.php?PaddleNumID=<?= $iPaddleNumID ?>&linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>">
+<form action="PledgeDelete.php?GroupKey=<?= htmlspecialchars($sGroupKey) ?>&linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>">
 ```
 
 ---
