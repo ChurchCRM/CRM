@@ -109,7 +109,7 @@ summary: |
     events and errors.
 
 - **Acceptance Criteria (to mark feature refactor complete)**
-  - All legacy pages for the feature are removed or stubbed with redirects.
+  - All legacy pages for the feature are **deleted** (not stubbed or shimmed). Every caller updated to use the new MVC route.
   - Service methods cover all business logic previously in pages.
   - All `RunQuery()` instances for the feature are replaced with ORM or
     documented exceptions (with security justification).
