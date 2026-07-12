@@ -1021,4 +1021,85 @@ external/templates/registration/family-register.php.
 
 ---
 
-Last updated: April 5, 2026
+### InputSanitizationMiddleware Is the Standard for API Write Routes <!-- learned: 2026-07-11 -->
+
+For Slim API/MVC write routes (`post`/`put`/`patch`), sanitize free-text body
+fields with **`InputSanitizationMiddleware`** attached to the route — do **not**
+call `InputUtils::sanitizeText()` / `sanitizeHTML()` inline in the handler. The
+middleware sanitizes the parsed body **before** the handler runs, so every code
+path in the handler (storage, logging, echo-back) sees the clean value and no
+field can be forgotten.
+
+```php
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
+
+// Field map: 'text' → InputUtils::sanitizeText() (strip tags);
+//            'html' → InputUtils::sanitizeHTML() (HTMLPurifier, safe rich text).
+$group->post('', 'createFund')
+    ->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
+
+$group->put('', 'updateNote')
+    ->add(new InputSanitizationMiddleware(['text' => 'html']));
+
+// Handler reads the already-sanitized field directly — cast for type safety,
+// keep validation (empty/length/uniqueness) which now runs on the clean value:
+function createFund(Request $request, Response $response): Response
+{
+    $input = (array) $request->getParsedBody();
+    $name  = (string) ($input['name'] ?? '');   // already sanitized by middleware
+    if ($name === '') { /* 400 */ }
+    // ...
+}
+```
+
+**Middleware order:** attach it so it runs *after* auth/entity middleware
+(auth first, then sanitize). In Slim, later `->add()` calls run outermost, so
+put `InputSanitizationMiddleware` in the chain and let the auth middleware wrap
+it — the field is sanitized just before the handler.
+
+**Routes using this pattern** (`src/ChurchCRM/Slim/Middleware/InputSanitizationMiddleware.php`):
+calendar events/`calendar.php`, group create + roles (`people-groups.php`),
+finance deposits/donation-funds/fundraisers, property-types,
+volunteer-opportunities, list options (`admin/api/options.php`), person/family
+notes (`html`), and person/group property values. When adding a **new** write
+route that stores free text, add the middleware — never a bare `getParsedBody()`
+value into a setter.
+
+> Note: legacy `src/*.php` pages still sanitize inline with `InputUtils` because
+> they are not Slim routes — the middleware only applies to the Slim apps.
+
+### Input Sanitization Is Not Output Escaping — Escape Names Client-Side Too <!-- learned: 2026-07-11 -->
+
+`InputSanitizationMiddleware` / `sanitizeText()` strips tags **on the primary
+write paths**, but it is **not** a complete XSS defense on its own. Values can
+still contain markup when they arrive by a path that bypasses the middleware —
+data migrated from older versions, SQL/backup restore, CSV import, or a future
+route that forgets the middleware. **Output escaping is the authoritative
+control**, and it must be applied on the **client side** too, not only in PHP.
+
+The server-side ListOption/`OptionName` escaping was fixed in GHSA-j9gv-26c7-3qrh,
+but the **JavaScript** renderings of the same values were missed (draft
+GHSA-mfmp-q643-vj39): `src/skin/js/GroupView.js` and `GroupRoles.js` injected
+group-role names into the DOM as raw HTML via `.html()` / `.append()`.
+
+```js
+// ❌ WRONG — role name injected as raw HTML (executes if it contains markup)
+html += '<a class="nav-link" href="#">' + i18next.t(role.OptionName) + '</a>';
+$pills.html(html);
+
+// ✅ CORRECT — escape every DB/API-sourced string before it becomes HTML
+html += '<a class="nav-link" href="#">' +
+        window.CRM.escapeHtml(i18next.t(role.OptionName)) + '</a>';
+$pills.html(html);
+```
+
+**Rule:** any DB/API-sourced string (names, titles, `OptionName`, `getName()`,
+custom-field labels) inserted into the DOM via `.html()`, `.append()`,
+`innerHTML`, or a template literal MUST be wrapped in `window.CRM.escapeHtml()`
+— even when the write path sanitizes input. When reviewing JS, grep for
+`.OptionName`, `.Name`, `.title` near `.html(`/`.append(`/`innerHTML` and confirm
+`escapeHtml` wraps each one. `$("<div>").text(x).html()` is an equivalent escape.
+
+---
+
+Last updated: July 11, 2026

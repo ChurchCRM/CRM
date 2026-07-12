@@ -8,8 +8,8 @@ use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PropertyMiddleware;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -23,11 +23,11 @@ $app->group('/people/properties', function (RouteCollectorProxy $group): void {
     $familyAPIMiddleware = new FamilyMiddleware();
     $group->get('/person', 'getAllPersonProperties');
     $group->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);
-    $group->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
+    $group->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware)->add(new InputSanitizationMiddleware(['value' => 'text']));
     $group->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
     $group->get('/family', 'getAllFamilyProperties');
     $group->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware);
-    $group->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
+    $group->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware)->add(new InputSanitizationMiddleware(['value' => 'text']));
     $group->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
 
     $group->delete('/definition/{propertyId}', 'deletePropertyDefinition');
@@ -246,9 +246,9 @@ function addProperty(Request $request, Response $response, $id, $property): Resp
     $propertyValue = '';
     if (!empty($property->getProPrompt())) {
         $data = $request->getParsedBody();
-        // GHSA-8r36-fvxj-26qv: Sanitize property value to prevent stored XSS
-        $rawValue = empty($data['value']) ? 'N/A' : $data['value'];
-        $propertyValue = InputUtils::sanitizeText($rawValue);
+        // GHSA-8r36-fvxj-26qv: property value is sanitized upstream by
+        // InputSanitizationMiddleware(['value' => 'text']) on the route.
+        $propertyValue = empty($data['value']) ? 'N/A' : (string) $data['value'];
         LoggerUtils::getAppLogger()->debug('final value is: ' . $propertyValue);
     }
 
