@@ -124,6 +124,11 @@ $app->post('/{fundraiserId}/donated-items/editor[/{itemId}]', function (Request 
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
+    if (!CSRFUtils::verifyRequest($body, 'donated_item_editor')) {
+        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
+    }
+
     $sItem         = InputUtils::legacyFilterInput($body['Item'] ?? '');
     $bMultibuy     = (int) InputUtils::legacyFilterInput($body['Multibuy'] ?? '0', 'int');
     $iDonor        = (int) InputUtils::legacyFilterInput($body['Donor'] ?? '0', 'int');
@@ -201,6 +206,11 @@ $app->post('/{fundraiserId}/donated-items/{itemId}/replicate', function (Request
     $fundraiserId = (int) $args['fundraiserId'];
     $itemId       = (int) $args['itemId'];
     $body         = (array) $request->getParsedBody();
+    if (!CSRFUtils::verifyRequest($body, 'donated_item_replicate')) {
+        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
+    }
+
     $iCount       = (int) InputUtils::legacyFilterInput($body['Count'] ?? '0', 'int');
 
     $donatedItem = DonatedItemQuery::create()->findPk($itemId);
@@ -249,9 +259,8 @@ $app->post('/{fundraiserId}/donated-items/{itemId}/delete', function (Request $r
     $body = (array) $request->getParsedBody();
 
     if (!CSRFUtils::verifyRequest($body, 'donated_item_delete')) {
-        return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/editor/' . $args['fundraiserId'])
-            ->withStatus(302);
+        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+        return $response->withStatus(403)->withHeader('Content-Type', 'text/plain');
     }
 
     $fundraiserId = (int) $args['fundraiserId'];

@@ -1,5 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 
@@ -10,6 +11,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card-body">
     <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/paddle-numbers/editor<?= $paddleId > 0 ? '/' . $paddleId : '' ?>" name="PaddleNumEditor">
 
+      <?= CSRFUtils::getTokenInputField('paddle_num_editor') ?>
       <div class="d-flex gap-2 mb-4">
         <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
         <input type="submit" class="btn btn-secondary" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">

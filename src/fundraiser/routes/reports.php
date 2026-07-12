@@ -9,24 +9,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 // ---------------------------------------------------------------------------
-// PDF helper: write PDF to PSR-7 response, honoring iPDFOutputType
-// ---------------------------------------------------------------------------
-function fundraiserRenderPdf(Response $response, \FPDF $pdf, string $fileName): Response
-{
-    $pdfContent = $pdf->Output($fileName, 'S');
-    if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
-        $disposition = 'attachment; filename="' . $fileName . '"';
-    } else {
-        $disposition = 'inline; filename="' . $fileName . '"';
-    }
-    $response->getBody()->write($pdfContent);
-
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', $disposition);
-}
-
-// ---------------------------------------------------------------------------
 // PDF class: Bid Sheets (migrated from src/Reports/FRBidSheets.php)
 // ---------------------------------------------------------------------------
 class PdfFRBidSheetsReport extends ChurchInfoReport
@@ -124,7 +106,7 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
             ->withStatus(302);
     }
 
-    $sSQL   = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID'
+    $sSQL    = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID'
         . ' WHERE di_FR_ID=' . $fundraiser->getId()
         . ' ORDER BY SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)';
     $rsItems = RunQuery($sSQL);
@@ -133,7 +115,13 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
     $pdf->SetTitle($fundraiser->getTitle());
 
     while ($oneItem = mysqli_fetch_array($rsItems)) {
-        extract($oneItem);
+        $di_item        = $oneItem['di_item'];
+        $di_title       = $oneItem['di_title'];
+        $di_description = $oneItem['di_description'];
+        $di_estprice    = $oneItem['di_estprice'];
+        $di_minimum     = $oneItem['di_minimum'];
+        $per_LastName   = $oneItem['per_LastName'];
+        $per_FirstName  = $oneItem['per_FirstName'];
 
         $pdf->addPage();
 
@@ -172,9 +160,14 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
         }
     }
 
-    $fileName = 'FRBidSheets' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $fileName   = 'FRBidSheets' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $pdfContent = $pdf->Output($fileName, 'S');
+    $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
+    $response->getBody()->write($pdfContent);
 
-    return fundraiserRenderPdf($response, $pdf, $fileName);
+    return $response
+        ->withHeader('Content-Type', 'application/pdf')
+        ->withHeader('Content-Disposition', $disposition . '; filename="' . $fileName . '"');
 });
 
 // ---------------------------------------------------------------------------
@@ -196,14 +189,19 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
     $fr_description = $fundraiser->getDescription();
     $curY           = 0;
 
-    $sSQL   = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $fundraiser->getId() . ' ORDER BY di_item';
+    $sSQL    = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $fundraiser->getId() . ' ORDER BY di_item';
     $rsItems = RunQuery($sSQL);
 
     $pdf = new PdfCertificatesReport();
     $pdf->SetTitle($fundraiser->getTitle());
 
     while ($oneItem = mysqli_fetch_array($rsItems)) {
-        extract($oneItem);
+        $di_item        = $oneItem['di_item'];
+        $di_title       = $oneItem['di_title'];
+        $di_description = $oneItem['di_description'];
+        $di_estprice    = $oneItem['di_estprice'];
+        $per_LastName   = $oneItem['per_LastName'];
+        $per_FirstName  = $oneItem['per_FirstName'];
 
         $pdf->addPage();
 
@@ -220,9 +218,14 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
         }
     }
 
-    $fileName = 'FRCertificates' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $fileName   = 'FRCertificates' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $pdfContent = $pdf->Output($fileName, 'S');
+    $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
+    $response->getBody()->write($pdfContent);
 
-    return fundraiserRenderPdf($response, $pdf, $fileName);
+    return $response
+        ->withHeader('Content-Type', 'application/pdf')
+        ->withHeader('Content-Disposition', $disposition . '; filename="' . $fileName . '"');
 });
 
 // ---------------------------------------------------------------------------
@@ -238,7 +241,7 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
             ->withStatus(302);
     }
 
-    $sSQL   = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $fundraiser->getId()
+    $sSQL    = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $fundraiser->getId()
         . ' ORDER BY SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)';
     $rsItems = RunQuery($sSQL);
 
@@ -248,7 +251,14 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
     $idFirstChar = '';
 
     while ($oneItem = mysqli_fetch_array($rsItems)) {
-        extract($oneItem);
+        $di_item        = $oneItem['di_item'];
+        $di_title       = $oneItem['di_title'];
+        $di_picture     = $oneItem['di_picture'];
+        $di_description = $oneItem['di_description'];
+        $di_minimum     = $oneItem['di_minimum'];
+        $di_estprice    = $oneItem['di_estprice'];
+        $per_LastName   = $oneItem['per_LastName'];
+        $per_FirstName  = $oneItem['per_FirstName'];
 
         $newIdFirstChar = mb_substr($di_item, 0, 1);
         $maxYNewPage    = 220;
@@ -285,14 +295,19 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
         $pdf->Write(6, "\n");
     }
 
-    $fileName = 'FRCatalog' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $fileName   = 'FRCatalog' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $pdfContent = $pdf->Output($fileName, 'S');
+    $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
+    $response->getBody()->write($pdfContent);
 
-    return fundraiserRenderPdf($response, $pdf, $fileName);
+    return $response
+        ->withHeader('Content-Type', 'application/pdf')
+        ->withHeader('Content-Disposition', $disposition . '; filename="' . $fileName . '"');
 });
 
 // ---------------------------------------------------------------------------
 // GET+POST /fundraiser/{fundraiserId}/reports/statement — PDF statements
-// GET: single paddle (paddleId query param)
+// GET: single paddle (?paddleId=X query param)
 // POST: selected paddles from PaddleNumList form (Chk* body params)
 // ---------------------------------------------------------------------------
 $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Request $request, Response $response, array $args): Response {
@@ -330,7 +345,19 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
     $pdf = new PdfFundRaiserStatement();
 
     while ($row = mysqli_fetch_array($rsPaddleNums)) {
-        extract($row);
+        $pn_ID          = $row['pn_ID'];
+        $pn_Num         = $row['pn_Num'];
+        $pn_per_ID      = $row['pn_per_ID'];
+        $paddleFirstName = $row['paddleFirstName'];
+        $paddleLastName  = $row['paddleLastName'];
+        $fam_ID          = $row['fam_ID'];
+        $fam_Name        = $row['fam_Name'];
+        $fam_Address1    = $row['fam_Address1'];
+        $fam_Address2    = $row['fam_Address2'];
+        $fam_City        = (string) $row['fam_City'];
+        $fam_State       = (string) $row['fam_State'];
+        $fam_Zip         = $row['fam_Zip'];
+        $fam_Country     = $row['fam_Country'];
 
         // If running for a specific paddle, always include; otherwise check POST checkboxes
         if ($iPaddleNumId || isset($body["Chk$pn_ID"])) {
@@ -370,7 +397,14 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
             $pdf->SetFont('Times', '', 10);
 
             while ($itemRow = mysqli_fetch_array($rsDonatedItems)) {
-                extract($itemRow);
+                $di_item      = $itemRow['di_item'];
+                $di_title     = $itemRow['di_title'];
+                $di_sellprice = $itemRow['di_sellprice'];
+                $buyerFirstName = $itemRow['buyerFirstName'];
+                $buyerLastName  = $itemRow['buyerLastName'];
+                $buyerEmail     = $itemRow['buyerEmail'];
+                $buyerPhone     = $itemRow['buyerPhone'];
+
                 $nextY = $curY;
                 $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
@@ -412,7 +446,14 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
             $curY += SystemConfig::getValue('incrementY');
 
             while ($itemRow = mysqli_fetch_array($rsPurchasedItems)) {
-                extract($itemRow);
+                $di_item        = $itemRow['di_item'];
+                $di_title       = $itemRow['di_title'];
+                $di_sellprice   = $itemRow['di_sellprice'];
+                $donorFirstName = $itemRow['donorFirstName'];
+                $donorLastName  = $itemRow['donorLastName'];
+                $donorEmail     = $itemRow['donorEmail'];
+                $donorPhone     = $itemRow['donorPhone'];
+
                 $nextY = $curY;
                 $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
@@ -423,7 +464,7 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$' . $di_sellprice, 0, 'R');
                 $curY  = $nextY;
-                $totalAmount += $di_sellprice;
+                $totalAmount += (float) $di_sellprice;
             }
 
             $iPnPerID    = (int) $pn_per_ID;
@@ -464,7 +505,7 @@ SQL;
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$' . ($mb_count * $di_sellprice), 0, 'R');
                 $curY  = $nextY;
-                $totalAmount += $mb_count * $di_sellprice;
+                $totalAmount += $mb_count * (float) $di_sellprice;
             }
 
             $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Total of all purchases: $') . $totalAmount);
@@ -483,7 +524,12 @@ SQL;
         }
     }
 
-    $fileName = 'FundRaiserStatement' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $fileName    = 'FundRaiserStatement' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $pdfContent  = $pdf->Output($fileName, 'S');
+    $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
+    $response->getBody()->write($pdfContent);
 
-    return fundraiserRenderPdf($response, $pdf, $fileName);
+    return $response
+        ->withHeader('Content-Type', 'application/pdf')
+        ->withHeader('Content-Disposition', $disposition . '; filename="' . $fileName . '"');
 });
