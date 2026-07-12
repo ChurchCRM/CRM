@@ -24,7 +24,9 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="nextReleaseNotes", type="string"),
      *             @OA\Property(property="nextChangelogUrl", type="string", nullable=true),
      *             @OA\Property(property="releasesAhead", type="integer"),
-     *             @OA\Property(property="upgradePath", type="array", @OA\Items(type="object"))
+     *             @OA\Property(property="upgradePath", type="array", @OA\Items(type="object")),
+     *             @OA\Property(property="latestReleaseNotes", type="string", description="Release notes for the latest known GitHub release; empty if release notes are unavailable or GitHub could not be reached"),
+     *             @OA\Property(property="latestChangelogUrl", type="string", description="Changelog URL for the latest known release")
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),

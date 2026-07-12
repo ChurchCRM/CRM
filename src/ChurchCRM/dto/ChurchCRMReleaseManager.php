@@ -707,7 +707,20 @@ class ChurchCRMReleaseManager
 
     /**
      * Build preview data for the "What's New" wizard step.
-     * Returns next release notes, upgrade path (all releases ahead), and version selector list.
+     * Returns next release notes, upgrade path (all releases ahead), version selector list,
+     * and the latest known release's notes (shown when the system is already up to date).
+     *
+     * @return array{
+     *   installedVersion: string,
+     *   nextVersion: string|null,
+     *   latestVersion: string,
+     *   nextReleaseNotes: string,
+     *   nextChangelogUrl: string|null,
+     *   releasesAhead: int,
+     *   upgradePath: array,
+     *   latestReleaseNotes: string,
+     *   latestChangelogUrl: string
+     * }
      */
     public static function getUpgradePreviewData(): array
     {
@@ -747,7 +760,17 @@ class ChurchCRMReleaseManager
         }
 
         $nextVersionStr = $nextRelease !== null ? $nextRelease->__toString() : null;
-        $latestVersionStr = !empty($releasesAhead) ? end($releasesAhead)->__toString() : $installedVersionStr;
+        $latestVersionStr = !empty($releasesAhead) ? end($releasesAhead)->__toString() : ($latestKnownRelease !== null ? $latestKnownRelease->__toString() : $installedVersionStr);
+
+        // Fetch notes for the latest known GitHub release so the frontend can display
+        // them when the system is already up to date (releasesAhead === 0).
+        $latestKnownRelease = !empty($_SESSION['ChurchCRMReleases']) ? $_SESSION['ChurchCRMReleases'][0] : null;
+        $latestReleaseNotes = $latestKnownRelease !== null ? $latestKnownRelease->getReleaseNotes() : '';
+        // Use the version string from the actual latest release object so the changelog
+        // URL stays accurate on dev builds where $installedVersionStr may be ahead of
+        // any published stable release.
+        $latestReleaseVersionStr = $latestKnownRelease !== null ? $latestKnownRelease->__toString() : $latestVersionStr;
+        $latestChangelogUrl = $changelogBaseUrl . $latestReleaseVersionStr . '.md';
 
         return [
             'installedVersion' => $installedVersionStr,
@@ -757,6 +780,8 @@ class ChurchCRMReleaseManager
             'nextChangelogUrl' => $nextVersionStr !== null ? $changelogBaseUrl . $nextVersionStr . '.md' : null,
             'releasesAhead'    => count($releasesAhead),
             'upgradePath'      => $pathEntries,
+            'latestReleaseNotes' => $latestReleaseNotes,
+            'latestChangelogUrl' => $latestChangelogUrl,
         ];
     }
 
