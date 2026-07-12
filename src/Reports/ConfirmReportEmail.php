@@ -3,7 +3,7 @@
 /**
  * Legacy entry point — redirects to the MVC route.
  *
- * @deprecated Use GET /people/report/verify/email[?familyId=<int>&updated=1] instead.
+ * @deprecated Use POST /people/report/verify/email[?familyId=<int>&updated=1] instead.
  */
 
 require_once __DIR__ . '/../Include/Config.php';
