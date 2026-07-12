@@ -7,7 +7,11 @@ describe("User Editor - Permission Visibility and Persistence Tests", () => {
         // These were previously hidden in the User Config table below the
         // main Permissions card — #8458. They must now appear as checkboxes
         // in the Permissions card for discoverability.
-        cy.visit('admin/system/users/1/edit');
+        // Use PersonID=3 (tony.wade, usr_Admin=0 usr_EditSelf=0) — a seeded user
+        // in "Custom" access mode so that #customPermissions is visible.
+        // PersonID=1 (admin) loads in Administrator mode where #customPermissions
+        // is intentionally hidden, causing a be.visible assertion failure.
+        cy.visit('admin/system/users/3/edit');
         cy.contains("User Editor");
 
         cy.get('#ucfg_AddEvent').should('exist').and('be.visible');
@@ -16,9 +20,11 @@ describe("User Editor - Permission Visibility and Persistence Tests", () => {
     });
 
     it("Should persist module-level permission toggle (AddEvent)", () => {
-        cy.intercept('POST', '**/admin/system/users/1/edit*').as('saveUser');
+        // Use PersonID=3 (tony.wade, Custom mode) so #customPermissions is
+        // visible and the ucfg_AddEvent checkbox is interactable without force.
+        cy.intercept('POST', '**/admin/system/users/3/edit*').as('saveUser');
 
-        cy.visit('admin/system/users/1/edit');
+        cy.visit('admin/system/users/3/edit');
 
         // Toggle AddEvent and save
         cy.get('#ucfg_AddEvent').check();
@@ -26,10 +32,10 @@ describe("User Editor - Permission Visibility and Persistence Tests", () => {
         cy.wait('@saveUser');
 
         // Verify it persisted
-        cy.visit('admin/system/users/1/edit');
+        cy.visit('admin/system/users/3/edit');
         cy.get('#ucfg_AddEvent').should('be.checked');
 
-        // Clean up
+        // Clean up — restore original unchecked state
         cy.get('#ucfg_AddEvent').uncheck();
         cy.get('#SaveButton').click();
         cy.wait('@saveUser');
