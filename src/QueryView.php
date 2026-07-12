@@ -16,9 +16,9 @@ $sPageSubtitle = gettext('View query results');
 // Get the QueryID from the querystring
 $iQueryID = InputUtils::legacyFilterInput($_GET['QueryID'], 'int');
 
-$aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
+$aFinanceQueries = array_map('intval', explode(',', SystemConfig::getValue('aFinanceQueries')));
 
-if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array((int) $iQueryID, $aFinanceQueries, true)) {
     RedirectUtils::redirect('v2/dashboard');
 }
 

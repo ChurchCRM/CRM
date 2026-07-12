@@ -2085,21 +2085,6 @@ msgstr "登錄用戶名"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "添加記錄"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "編輯記錄"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "刪除記錄"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "管理的屬性和分類"
 
@@ -2112,16 +2097,6 @@ msgstr "管理組和角色"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "管理捐款和金融"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "查看，添加和編輯備註"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "編輯自"
 
 #: 
 #, fuzzy
@@ -5729,11 +5704,6 @@ msgstr "希伯來書"
 #, fuzzy
 msgid "Permissions"
 msgstr "許可權"
-
-#: 
-#, fuzzy
-msgid "Manage Notes"
-msgstr "管理筆記"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11202,10 +11172,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "只有備註作者或管理員才能刪除此備註"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "只有備註作者或管理員才能編輯此備註"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "教會活動、出席和動態總覽"
 
@@ -12812,10 +12778,6 @@ msgstr "僅資料庫 (.sql) 或完整備份 (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "資料表格預設顯示的列數，下次載入頁面後生效。"
 
-#: 
-msgid "Edit own family only"
-msgstr "僅可編輯自己的家庭"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12828,10 +12790,6 @@ msgstr "修正您所用語言中不正確或不自然的翻譯"
 #: 
 msgid "Found a bug with translations?"
 msgstr "發現翻譯問題？"
-
-#: 
-msgid "Grants all privileges"
-msgstr "授予全部權限"
 
 #: 
 msgid "Green"
@@ -14792,10 +14750,6 @@ msgid "You do not have permission to edit this note."
 msgstr "您沒有編輯此備註的權限。"
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "【私人備註 — 僅限建立者查看】"
-
-#: 
 msgid "seconds"
 msgstr "秒"
 
@@ -16688,4 +16642,96 @@ msgstr "過去"
 #: 
 msgid "Croatian"
 msgstr "克羅埃西亞語"
+
+#: 
+msgid "%s's Account"
+msgstr "%s 的帳戶"
+
+#: 
+msgid "Access"
+msgstr "存取權限"
+
+#: 
+msgid "Access level"
+msgstr "存取層級"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "管理員擁有所有功能和資料的完整存取權限，個別權限設定不適用。"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "所有使用者皆可檢視會眾成員，此權限無法移除。"
+
+#: 
+msgid "Always granted"
+msgstr "永久授予"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "僅能檢視和確認自己的家庭資料，無其他存取權限。"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "請於下方選擇特定權限。"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "請聯繫管理員以變更您的權限。"
+
+#: 
+msgid "Custom permissions"
+msgstr "自訂權限"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "完整存取權限——授予所有權限。"
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "授予個別權限："
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "若需要額外存取權限，請聯繫您的教會管理員。"
+
+#: 
+msgid "People &amp; Families"
+msgstr "會眾與家庭"
+
+#: 
+msgid "Self-service"
+msgstr "自助服務"
+
+#: 
+msgid "Self-service only"
+msgstr "僅限自助服務"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "您嘗試編輯的備註已不存在。"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "此使用者僅能檢視和更新自己的家庭資料，個別權限設定不適用。"
+
+#: 
+msgid "User List"
+msgstr "使用者清單"
+
+#: 
+msgid "View Person"
+msgstr "檢視成員"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "您沒有為此家庭新增備註的權限。"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "您沒有為此成員新增備註的權限。"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "您沒有編輯此備註的權限"
 

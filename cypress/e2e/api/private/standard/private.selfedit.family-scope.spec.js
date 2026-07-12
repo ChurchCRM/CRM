@@ -5,8 +5,7 @@
  *
  * EditSelf is now an exclusive permission mode: a non-admin user with EditSelf=1
  * has ALL other module permissions suppressed at the model layer
- * (User::isEditSelfExclusive()), which causes hasNoAdminPermissions() to return
- * true. AuthMiddleware therefore blocks every internal API request with 403 —
+ * (User::isEditSelfExclusive()). AuthMiddleware therefore blocks every internal API request with 403 —
  * including the user's OWN family and OWN person record.
  *
  * Test user: amanda.black (user ID 99, `selfedit.api.key`)
@@ -21,7 +20,7 @@
  *
  * Note: avatar, nav, and photo GET endpoints use FamilyReadMiddleware (canReadFamily())
  * instead of FamilyMiddleware (canViewFamily()), making them accessible to plain-auth
- * users. They still return 403 here because AuthMiddleware::hasNoAdminPermissions()
+ * users. They still return 403 here because AuthMiddleware (User::isEditSelfExclusive())
  * blocks EditSelf-exclusive users before FamilyReadMiddleware is ever reached.
  * See private.plainauth.read-default.spec.js for 200-response coverage of those endpoints.
  */
@@ -81,7 +80,7 @@ describe("GHSA-jjcj-h3cm-p7x7 - EditSelf is exclusive: all internal APIs return 
  *     but has canViewFamily(nonOwnFamily)=false would start receiving 403 instead of 200.
  *
  * CURRENT STATE — PR #9016 EditSelf exclusive constraint:
- *   hasNoAdminPermissions() returns true for ANY user with isEditSelf()=true, regardless
+ *   User::isEditSelfExclusive() returns true for ANY non-admin user with isEditSelf()=true, regardless
  *   of Notes=1. AuthMiddleware therefore blocks this user (403) before FamilyReadMiddleware
  *   or FamilyMiddleware is ever reached. All assertions below reflect this current state.
  *

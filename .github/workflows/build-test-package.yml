@@ -599,7 +599,6 @@ jobs:
     - name: Stop Docker
       if: always()
       run: npm run docker:ci:new-system:subdir:down
-
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
     timeout-minutes: 15

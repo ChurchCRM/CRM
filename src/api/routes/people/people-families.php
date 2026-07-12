@@ -9,6 +9,8 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -166,7 +168,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
             ->find();
 
         return SlimUtils::renderJSON($response, ['families' => $verificationNotes->toArray()]);
-    });
+    })->add(new EditRecordsRoleAuthMiddleware());
 
     /**
      * @OA\Get(
@@ -191,7 +193,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
             ->find();
 
         return SlimUtils::renderJSON($response, ['families' => $pendingTokens->toArray()]);
-    });
+    })->add(new EditRecordsRoleAuthMiddleware());
 
     /**
      * @OA\Get(
@@ -209,7 +211,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         $financialService = new FinancialService();
 
         return SlimUtils::renderJSON($response, $financialService->getMemberByScanString($scanString));
-    });
+    })->add(FinanceRoleAuthMiddleware::class);
 });
 
 /**

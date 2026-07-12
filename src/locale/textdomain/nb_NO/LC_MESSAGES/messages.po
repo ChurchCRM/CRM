@@ -2106,20 +2106,6 @@ msgstr "Logg Navn"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Legg Records"
-
-#: 
-msgid "Edit Records"
-msgstr "Rediger poster"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Slett Records"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Administrere Egenskaper og klassifikasjoner"
 
@@ -2132,16 +2118,6 @@ msgstr "Administrere grupper og roller"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Administrere Donasjoner og finans"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Vise, til og redigere notater"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Rediger deg selv"
 
 #: 
 msgid "Admin"
@@ -5674,10 +5650,6 @@ msgstr "Hebraisk"
 #: 
 msgid "Permissions"
 msgstr "Tillatelser"
-
-#: 
-msgid "Manage Notes"
-msgstr "Administrer notater"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11132,10 +11104,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Bare notatforfatteren eller en administrator kan slette dette notatet"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Bare notatforfatteren eller en administrator kan redigere dette notatet"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Oversikt over kirkens arrangementer, oppmøte og aktivitet"
 
@@ -12742,10 +12710,6 @@ msgstr "Kun database (.sql) eller fullstendig arkiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Standard antall rader vist i datatabeller. Trer i kraft ved neste sideinnlasting."
 
-#: 
-msgid "Edit own family only"
-msgstr "Rediger kun egen familie"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12758,10 +12722,6 @@ msgstr "Rette feilaktige eller klønete oversettelser på ditt språk"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Fant en feil med oversettelser?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Gir alle rettigheter"
 
 #: 
 msgid "Green"
@@ -14723,10 +14683,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Du har ikke tillatelse til å redigere dette notatet."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privat notat — kun synlig for oppretteren]"
-
-#: 
 msgid "seconds"
 msgstr "sekunder"
 
@@ -16620,4 +16576,96 @@ msgstr "fortid"
 #: 
 msgid "Croatian"
 msgstr "Kroatisk"
+
+#: 
+msgid "%s's Account"
+msgstr "%s sin konto"
+
+#: 
+msgid "Access"
+msgstr "Tilgang"
+
+#: 
+msgid "Access level"
+msgstr "Tilgangsnivå"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratorer har full tilgang til alle funksjoner og data. Individuelle tillatelser gjelder ikke."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Alle brukere kan se menighetsmedlemmer. Denne tillatelsen kan ikke fjernes."
+
+#: 
+msgid "Always granted"
+msgstr "Alltid innvilget"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Kan kun gjennomgå og bekrefte sin egen familie. Ingen annen tilgang."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Velg spesifikke tillatelser nedenfor."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontakt en administrator for å endre tillatelsene dine."
+
+#: 
+msgid "Custom permissions"
+msgstr "Egendefinerte tillatelser"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Full tilgang — gir alle rettigheter."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Gi individuelle tillatelser:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Hvis du trenger ytterligere tilgang, kan du kontakte kirkens administrator."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Personer &amp; familier"
+
+#: 
+msgid "Self-service"
+msgstr "Selvbetjening"
+
+#: 
+msgid "Self-service only"
+msgstr "Kun selvbetjening"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Notatet du prøver å redigere eksisterer ikke lenger."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Denne brukeren kan kun gjennomgå og oppdatere sin egen familieprofil. Individuelle tillatelser gjelder ikke."
+
+#: 
+msgid "User List"
+msgstr "Brukerliste"
+
+#: 
+msgid "View Person"
+msgstr "Vis person"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Du har ikke tillatelse til å legge til et notat for denne familien."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Du har ikke tillatelse til å legge til et notat for denne personen."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Du har ikke tillatelse til å redigere dette notatet"
 

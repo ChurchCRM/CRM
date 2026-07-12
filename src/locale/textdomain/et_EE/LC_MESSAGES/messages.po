@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Kasutaja nimi"
 
 #: 
-msgid "Add Records"
-msgstr "Lisage kirje"
-
-#: 
-msgid "Edit Records"
-msgstr "Redigeeri kirjeid"
-
-#: 
-msgid "Delete Records"
-msgstr "Kustuta kirjed"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Halda atribuutie ja klassifikatsioone"
 
@@ -2050,14 +2038,6 @@ msgstr "Halda rühmi ja rolle"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Annetuste ja raha haldamine"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Märkmete kuvamine, lisamine ja muutmine"
-
-#: 
-msgid "Edit Self"
-msgstr "Redigeeri iseennast"
 
 #: 
 msgid "Admin"
@@ -5589,10 +5569,6 @@ msgstr "heebrea keel"
 #: 
 msgid "Permissions"
 msgstr "Õigused"
-
-#: 
-msgid "Manage Notes"
-msgstr "Halda märkmeid"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11047,10 +11023,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Ainult märkme autor või administraator saab selle märkme kustutada"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Ainult märkme autor või administraator saab seda märget muuta"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Ülevaade kiriku sündmustest, kohalolekust ja tegevusest"
 
@@ -12657,10 +12629,6 @@ msgstr "Ainult andmebaas (.sql) või täielik arhiiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Andmetabelites kuvatavate ridade vaikearv. Jõustub järgmisel lehelaadimise korral."
 
-#: 
-msgid "Edit own family only"
-msgstr "Muuda ainult oma perekonda"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12673,10 +12641,6 @@ msgstr "Vigaste või kohmakate tõlgete parandamine oma keeles"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Leidsite tõlkevea?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Annab kõik õigused"
 
 #: 
 msgid "Green"
@@ -14638,10 +14602,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Teil puudub luba selle märkuse muutmiseks."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privaatne märkus — nähtav ainult loojale]"
-
-#: 
 msgid "seconds"
 msgstr "sekundit"
 
@@ -16535,4 +16495,96 @@ msgstr "minevik"
 #: 
 msgid "Croatian"
 msgstr "Horvaadi"
+
+#: 
+msgid "%s's Account"
+msgstr "%s konto"
+
+#: 
+msgid "Access"
+msgstr "Juurdepääs"
+
+#: 
+msgid "Access level"
+msgstr "Juurdepääsu tase"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administraatoritel on täielik juurdepääs kõikidele funktsioonidele ja andmetele. Individuaalsed load ei kehti."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Kõik kasutajad saavad vaadata koguduse liikmeid. Seda luba ei saa eemaldada."
+
+#: 
+msgid "Always granted"
+msgstr "Alati antud"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Saab vaadata ja kinnitada ainult oma perekonda. Muud juurdepääsu ei ole."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Valige allpool konkreetsed load."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Lubade muutmiseks võtke ühendust administraatoriga."
+
+#: 
+msgid "Custom permissions"
+msgstr "Kohandatud load"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Täielik juurdepääs — annab kõik õigused."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Anna individuaalsed load:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Kui vajate lisajuurdepääsu, võtke palun ühendust koguduse administraatoriga."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Inimesed &amp; Perekonnad"
+
+#: 
+msgid "Self-service"
+msgstr "Iseteenindus"
+
+#: 
+msgid "Self-service only"
+msgstr "Ainult iseteenindus"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Märkus, mida proovite muuta, ei ole enam olemas."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "See kasutaja saab vaadata ja uuendada ainult oma perekonna profiili. Individuaalsed load ei kehti."
+
+#: 
+msgid "User List"
+msgstr "Kasutajate loend"
+
+#: 
+msgid "View Person"
+msgstr "Vaata isikut"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Teil ei ole luba lisada märkust sellele perele."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Teil ei ole luba lisada märkust sellele isikule."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Teil ei ole luba seda märkust muuta"
 

@@ -404,6 +404,13 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         if (isset($_SESSION['systemLatestVersion']) && $_SESSION['systemLatestVersion'] !== null) {
             $latestGitHubVersion = $_SESSION['systemLatestVersion']->__toString();
         }
+
+        // Detect "running ahead of stable" — e.g. a prerelease or dev build installed
+        // that is newer than the latest stable release known from GitHub.
+        $isAheadOfStable = false;
+        if ($latestGitHubVersion !== null && !$isUpdateAvailable) {
+            $isAheadOfStable = version_compare($currentVersion, $latestGitHubVersion) > 0;
+        }
         
         $pageArgs = [
             'sRootPath'             => SystemURLs::getRootPath(),
@@ -425,6 +432,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'availableVersion'      => $availableVersion,
             'latestGitHubVersion'   => $latestGitHubVersion,
             'isUpdateAvailable'     => $isUpdateAvailable,
+            'isAheadOfStable'       => $isAheadOfStable,
         ];
 
         return $renderer->render($response, 'upgrade.php', $pageArgs);

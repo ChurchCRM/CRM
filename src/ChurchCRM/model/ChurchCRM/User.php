@@ -63,11 +63,22 @@ class User extends BaseUser
     //
     // EditSelf is an exclusive mode: when a non-admin user has EditSelf=1,
     // all module permissions (AddRecords, EditRecords, …, Notes, Finance) are
-    // treated as false regardless of what is stored in the database. This
-    // ensures hasNoAdminPermissions() correctly blocks EditSelf users from
-    // the internal API surface and every consumer sees a consistent view.
+    // treated as false regardless of what is stored in the database, so every
+    // consumer sees a consistent view.
 
-    private function isEditSelfExclusive(): bool
+    /**
+     * True when the user is confined to the self-service flow.
+     *
+     * A non-admin user with EditSelf=1 has no module permissions and cannot use
+     * the CRM interface — PageInit and AuthMiddleware redirect them to
+     * /external/limited-access.
+     *
+     * Deliberately NOT true for a zero-permission user (all flags 0). Those users
+     * retain read-only access to people and family records under the read-default
+     * policy (#9003); writes are denied by the per-page and per-route permission
+     * checks.
+     */
+    public function isEditSelfExclusive(): bool
     {
         return !$this->isAdmin() && $this->isEditSelf();
     }
@@ -215,31 +226,6 @@ class User extends BaseUser
     }
 
     /**
-     * Check if the user lacks all functional admin permissions.
-     * Users with no permissions (or only EditSelf) cannot use the admin interface
-     * and should be redirected to a self-service flow or blocked.
-     *
-     * @see https://github.com/ChurchCRM/CRM/issues/8617
-     */
-    public function hasNoAdminPermissions(): bool
-    {
-        if ($this->isAdmin()) {
-            return false;
-        }
-        if ($this->isEditSelf()) {
-            // EditSelf is exclusive — no module permissions apply
-            return true;
-        }
-        return !$this->isAddRecords()
-            && !$this->isEditRecords()
-            && !$this->isDeleteRecords()
-            && !$this->isMenuOptions()
-            && !$this->isManageGroups()
-            && !$this->isFinance()
-            && !$this->isNotes();
-    }
-
-    /**
      * Returns true if the current user may read basic metadata for any family.
      * All authenticated users have this capability by default (read-default policy).
      *
@@ -383,8 +369,9 @@ class User extends BaseUser
 
     /**
      * Validate password against stored hash.
-     * Supports both legacy SHA-256 and new bcrypt formats for migration.
-     * If legacy hash matches, upgrades to bcrypt on successful validation.
+     * Supports bcrypt (current), legacy SHA-256 (6.x migration), and legacy MD5
+     * (pre-6.x / ChurchInfo 1.x migration) formats.
+     * On any legacy match, the stored hash is transparently upgraded to bcrypt.
      */
     public function isPasswordValid(string $password): bool
     {
@@ -393,6 +380,18 @@ class User extends BaseUser
         // Check if this is a bcrypt hash (starts with $2y$)
         if ($this->isBcryptHash($storedHash)) {
             return password_verify($password, $storedHash);
+        }
+
+        // Legacy MD5 check — pre-6.x / ChurchInfo 1.x stored passwords as unsalted
+        // md5(password). MD5 is cryptographically weak and unsalted MD5 plaintexts are
+        // in public rainbow tables, so we accept it here only to let migrated accounts
+        // log in once, immediately re-hash to bcrypt, and force a new password — the
+        // weak plaintext must not remain in use just because the hash got stronger.
+        if ($this->isMd5Hash($storedHash) && hash_equals($storedHash, md5($password))) {
+            $this->setPassword($this->hashPassword($password));
+            $this->setNeedPasswordChange(true);
+            $this->save();
+            return true;
         }
 
         // Legacy SHA-256 check for migration period
@@ -431,6 +430,15 @@ class User extends BaseUser
     private function isBcryptHash(string $hash): bool
     {
         return str_starts_with($hash, '$2y$') || str_starts_with($hash, '$2b$') || str_starts_with($hash, '$2a$');
+    }
+
+    /**
+     * Check if a hash looks like an unsalted MD5 digest (32 lowercase hex chars).
+     * Used during the ChurchInfo → ChurchCRM upgrade migration path.
+     */
+    private function isMd5Hash(string $hash): bool
+    {
+        return (bool) preg_match('/^[a-f0-9]{32}$/', $hash);
     }
 
     // isAddEvent() is kept as an alias for isAddEventEnabled() since it's

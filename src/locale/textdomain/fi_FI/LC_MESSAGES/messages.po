@@ -2013,18 +2013,6 @@ msgid "Login Name"
 msgstr "Kirjautumistunnus"
 
 #: 
-msgid "Add Records"
-msgstr "Lisää tietoja"
-
-#: 
-msgid "Edit Records"
-msgstr "Muokkaa tietoja"
-
-#: 
-msgid "Delete Records"
-msgstr "Poista tietoja"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Hallitse ominaisuuksia ja luokitteluja"
 
@@ -2035,14 +2023,6 @@ msgstr "Hallitse ryhmiä ja rooleja"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Hallitse lahjoituksia ja taloutta"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Näytä, lisää ja muokkaa huomautuksia"
-
-#: 
-msgid "Edit Self"
-msgstr "Muokkaa itseään"
 
 #: 
 msgid "Admin"
@@ -5551,10 +5531,6 @@ msgstr "Heprea"
 #: 
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
-
-#: 
-msgid "Manage Notes"
-msgstr "Hallitse muistiinpanoja"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11009,10 +10985,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Vain muistiinpanon kirjoittaja tai ylläpitäjä voi poistaa tämän muistiinpanon"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Vain muistiinpanon kirjoittaja tai ylläpitäjä voi muokata tätä muistiinpanoa"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Yleiskatsaus seurakunnan tapahtumista, läsnäolosta ja toiminnasta"
 
@@ -12619,10 +12591,6 @@ msgstr "Pelkkä tietokanta (.sql) tai täydellinen arkisto (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Oletusmäärä rivejä tietotauluissa. Tulee voimaan seuraavalla sivun latauksella."
 
-#: 
-msgid "Edit own family only"
-msgstr "Muokkaa vain omaa perhettä"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12635,10 +12603,6 @@ msgstr "Virheellisten tai kömpelöiden käännösten korjaaminen omalla kielell
 #: 
 msgid "Found a bug with translations?"
 msgstr "Löysitkö virheen käännöksissä?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Myöntää kaikki käyttöoikeudet"
 
 #: 
 msgid "Green"
@@ -14600,10 +14564,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Yksityinen muistiinpano — näkyvissä vain luojalle]"
-
-#: 
 msgid "seconds"
 msgstr "sekuntia"
 
@@ -16497,4 +16457,96 @@ msgstr "mennyt"
 #: 
 msgid "Croatian"
 msgstr "Kroatialainen"
+
+#: 
+msgid "%s's Account"
+msgstr "%s:n tili"
+
+#: 
+msgid "Access"
+msgstr "Käyttöoikeus"
+
+#: 
+msgid "Access level"
+msgstr "Käyttöoikeustaso"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Järjestelmänvalvojilla on täysi pääsy kaikkiin ominaisuuksiin ja tietoihin. Yksilölliset käyttöoikeudet eivät ole voimassa."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Kaikki käyttäjät voivat tarkastella seurakunnan jäseniä. Tätä käyttöoikeutta ei voi poistaa."
+
+#: 
+msgid "Always granted"
+msgstr "Aina myönnetty"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Voi tarkastella ja vahvistaa vain oman perheensä tiedot. Ei muita käyttöoikeuksia."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Valitse tarkemmat käyttöoikeudet alta."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Ota yhteyttä järjestelmänvalvojaan käyttöoikeuksien muuttamiseksi."
+
+#: 
+msgid "Custom permissions"
+msgstr "Mukautetut käyttöoikeudet"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Täysi käyttöoikeus — myöntää kaikki käyttöoikeudet."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Myönnä yksilölliset käyttöoikeudet:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Jos tarvitset lisää käyttöoikeuksia, ota yhteyttä seurakunnan järjestelmänvalvojaan."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Henkilöt &amp; Perheet"
+
+#: 
+msgid "Self-service"
+msgstr "Itsepalvelu"
+
+#: 
+msgid "Self-service only"
+msgstr "Vain itsepalvelu"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Muokattavaksi yritettävää muistiinpanoa ei enää ole olemassa."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Tämä käyttäjä voi tarkastella ja päivittää vain oman perheensä profiilia. Yksilölliset käyttöoikeudet eivät ole voimassa."
+
+#: 
+msgid "User List"
+msgstr "Käyttäjäluettelo"
+
+#: 
+msgid "View Person"
+msgstr "Tarkastele henkilöä"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tähän perheeseen."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tälle henkilölle."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa"
 

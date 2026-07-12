@@ -333,6 +333,35 @@ git push origin --delete locale/7.2.0-2026-04-27-143015
 
 ---
 
+## Detecting i18n Anti-Patterns Before Locale Extraction <!-- learned: 2026-07-11 -->
+
+Run these grep recipes on the source tree **before** `npm run locale:build` to catch split-sentence patterns early — they are much cheaper to fix at the source than after extraction has already committed broken msgids to the PO file.
+
+### JS template-literal split (`i18next.t()` fragments)
+```bash
+# Lines with 2+ i18next.t() calls = likely template-literal concatenation
+grep -rn 'i18next\.t(' webpack/ src/skin/js/ 2>/dev/null \
+  | awk -F: '{ line=$0; n=split(line,_,"i18next.t("); if (n>2) print }'
+```
+A hit means two translation fragments are concatenated in the same expression. Merge them into one `i18next.t("full sentence {{var}}", { var })` call.
+
+### PHP gettext() trailing-preposition split
+```bash
+# msgids that end in a preposition/article suggest a runtime suffix is appended
+grep -rn "gettext('" src/ | grep -iE "gettext\('[^']{1,40} (in|of|for|to|a|the|an)'\)"
+# Also check messages.po after extraction:
+grep '^msgid ' locale/messages.po | grep -iE '" ?(in|of|for|to|a|the|an)"$'
+```
+
+### Short unexplained msgids in messages.po
+```bash
+# One-to-three word msgids that are lower-case are frequently JS badge/label fragments
+grep '^msgid "[a-z][a-z ]\{1,30\}"$' locale/messages.po
+```
+Inspect each hit: if it reads like half a sentence (e.g. `"installing next"`, `"You are"`), trace it to the source and merge into a full parameterised string.
+
+---
+
 ## Troubleshooting
 
 **Q: How do I resume if interrupted during translation?**

@@ -2040,18 +2040,6 @@ msgid "Login Name"
 msgstr "Tên đăng nhập"
 
 #: 
-msgid "Add Records"
-msgstr "Thêm bản ghi"
-
-#: 
-msgid "Edit Records"
-msgstr "Chỉnh sửa bản ghi"
-
-#: 
-msgid "Delete Records"
-msgstr "Xóa bản ghi"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Quản lý thuộc tính và phân loại"
 
@@ -2062,14 +2050,6 @@ msgstr "Quản lý Nhóm và Vai trò"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Quản lý các khoản đóng góp và tài chính"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Xem, thêm và chỉnh sửa ghi chú"
-
-#: 
-msgid "Edit Self"
-msgstr "Chỉnh sửa bản thân"
 
 #: 
 msgid "Admin"
@@ -5593,10 +5573,6 @@ msgstr "Tiếng Do Thái"
 #: 
 msgid "Permissions"
 msgstr "Quyền"
-
-#: 
-msgid "Manage Notes"
-msgstr "Quản lý ghi chú"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11043,10 +11019,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Chi tac gia ghi chu hoac quan tri vien moi co the xoa ghi chu nay"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Chi tac gia ghi chu hoac quan tri vien moi co the chinh sua ghi chu nay"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Tong quan su kien giao hoi, diem danh va hoat dong"
 
@@ -12653,10 +12625,6 @@ msgstr "Chỉ cơ sở dữ liệu (.sql) hoặc lưu trữ đầy đủ (.tar.g
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Số hàng mặc định hiển thị trong bảng dữ liệu. Có hiệu lực khi tải trang tiếp theo."
 
-#: 
-msgid "Edit own family only"
-msgstr "Chỉ chỉnh sửa gia đình của mình"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12669,10 +12637,6 @@ msgstr "Sửa các bản dịch không chính xác hoặc lạ trong ngôn ngữ
 #: 
 msgid "Found a bug with translations?"
 msgstr "Phát hiện lỗi trong bản dịch?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Cấp tất cả quyền hạn"
 
 #: 
 msgid "Green"
@@ -14633,10 +14597,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Bạn không có quyền chỉnh sửa ghi chú này."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Ghi Chú Riêng Tư — chỉ người tạo mới thấy]"
-
-#: 
 msgid "seconds"
 msgstr "giây"
 
@@ -16529,4 +16489,96 @@ msgstr "quá khứ"
 #: 
 msgid "Croatian"
 msgstr "Tiếng Croatia"
+
+#: 
+msgid "%s's Account"
+msgstr "Tài khoản của %s"
+
+#: 
+msgid "Access"
+msgstr "Quyền truy cập"
+
+#: 
+msgid "Access level"
+msgstr "Cấp độ truy cập"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Quản trị viên có toàn quyền truy cập vào tất cả các tính năng và dữ liệu. Quyền riêng lẻ không áp dụng."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Tất cả người dùng có thể xem danh sách hội viên. Quyền này không thể xóa bỏ."
+
+#: 
+msgid "Always granted"
+msgstr "Luôn được cấp"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Chỉ có thể xem xét và xác nhận thông tin gia đình của mình. Không có quyền truy cập nào khác."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Chọn các quyền cụ thể bên dưới."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Liên hệ quản trị viên để thay đổi quyền của bạn."
+
+#: 
+msgid "Custom permissions"
+msgstr "Quyền tùy chỉnh"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Toàn quyền truy cập — cấp tất cả các đặc quyền."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Cấp quyền riêng lẻ:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Nếu bạn cần quyền truy cập bổ sung, vui lòng liên hệ quản trị viên hội thánh của bạn."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Cá nhân &amp; Gia đình"
+
+#: 
+msgid "Self-service"
+msgstr "Tự phục vụ"
+
+#: 
+msgid "Self-service only"
+msgstr "Chỉ tự phục vụ"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Ghi chú bạn đang cố chỉnh sửa không còn tồn tại."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Người dùng này chỉ có thể xem xét và cập nhật hồ sơ gia đình của mình. Quyền riêng lẻ không áp dụng."
+
+#: 
+msgid "User List"
+msgstr "Danh sách người dùng"
+
+#: 
+msgid "View Person"
+msgstr "Xem thông tin cá nhân"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Bạn không có quyền thêm ghi chú cho gia đình này."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Bạn không có quyền thêm ghi chú cho người này."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Bạn không có quyền chỉnh sửa ghi chú này"
 

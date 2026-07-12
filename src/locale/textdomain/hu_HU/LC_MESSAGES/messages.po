@@ -2052,20 +2052,6 @@ msgid "Login Name"
 msgstr "Bejelentkezés Név"
 
 #: 
-msgid "Add Records"
-msgstr "Rekordok hozzáadása"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Szerkesztés Records"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Törlés rekordok"
-
-#: 
 #, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Kezelése Tulajdonságok és szempontok"
@@ -2079,16 +2065,6 @@ msgstr "Csoportok kezelése és Szerep"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Kezelése Adományok és pénzügyek"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Megtekintése, hozzáadása és szerkesztése Megjegyzés"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Szerkesztés Self"
 
 #: 
 msgid "Admin"
@@ -5623,10 +5599,6 @@ msgstr "Héber"
 #: 
 msgid "Permissions"
 msgstr "Jogosultságok"
-
-#: 
-msgid "Manage Notes"
-msgstr "Jegyzetek kezelése"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11081,10 +11053,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Csak a megjegyzés szerzője vagy egy adminisztrátor törölheti ezt a megjegyzést"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Csak a megjegyzés szerzője vagy egy adminisztrátor szerkesztheti ezt a megjegyzést"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Gyülekezeti események, jelenlét és tevékenységek áttekintése"
 
@@ -12691,10 +12659,6 @@ msgstr "Csak adatbázis (.sql) vagy teljes archívum (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Az adattáblákban megjelenített alapértelmezett sorok száma. A következő oldalletöltéskor lép életbe."
 
-#: 
-msgid "Edit own family only"
-msgstr "Csak saját család szerkesztése"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12707,10 +12671,6 @@ msgstr "Helytelen vagy ügyetlen fordítások javítása az Ön nyelvén"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Hibát talált a fordításokban?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Minden jogosultságot megad"
 
 #: 
 msgid "Green"
@@ -14672,10 +14632,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Nincs jogosultsága szerkeszteni ezt a megjegyzést."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privát megjegyzés — csak az alkotó láthatja]"
-
-#: 
 msgid "seconds"
 msgstr "másodperc"
 
@@ -16561,4 +16517,96 @@ msgstr "elmúlt"
 #: 
 msgid "Croatian"
 msgstr "Horvát"
+
+#: 
+msgid "%s's Account"
+msgstr "%s fiókja"
+
+#: 
+msgid "Access"
+msgstr "Hozzáférés"
+
+#: 
+msgid "Access level"
+msgstr "Hozzáférési szint"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "A rendszergazdák teljes hozzáféréssel rendelkeznek az összes funkcióhoz és adathoz. Az egyéni jogosultságok nem vonatkoznak rájuk."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Minden felhasználó megtekintheti a gyülekezet tagjait. Ez a jogosultság nem vonható vissza."
+
+#: 
+msgid "Always granted"
+msgstr "Mindig megadva"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Csak a saját családját tekintheti meg és ellenőrizheti. Más hozzáférése nincs."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Válasszon egyéni jogosultságokat az alábbiakban."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Jogosultságai módosításához forduljon egy rendszergazdához."
+
+#: 
+msgid "Custom permissions"
+msgstr "Egyéni jogosultságok"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Teljes hozzáférés – minden jogosultságot megad."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Egyéni jogosultságok megadása:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ha további hozzáférésre van szüksége, forduljon a gyülekezet rendszergazdájához."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Személyek &amp; Családok"
+
+#: 
+msgid "Self-service"
+msgstr "Önkiszolgáló"
+
+#: 
+msgid "Self-service only"
+msgstr "Csak önkiszolgáló"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "A szerkeszteni kívánt megjegyzés már nem létezik."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Ez a felhasználó csak a saját családi profilját tekintheti meg és frissítheti. Az egyéni jogosultságok nem vonatkoznak rá."
+
+#: 
+msgid "User List"
+msgstr "Felhasználók listája"
+
+#: 
+msgid "View Person"
+msgstr "Személy megtekintése"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a családhoz."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nincs jogosultsága ennek a megjegyzésnek a szerkesztéséhez"
 
