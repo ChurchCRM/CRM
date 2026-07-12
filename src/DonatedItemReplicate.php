@@ -1,42 +1,15 @@
 <?php
-
+// Legacy redirect shim — DonatedItemReplicate mutation now handled by POST /fundraiser/{id}/donated-items/{itemId}/replicate.
+// Redirect to the fundraiser editor; the replicate action requires using the new UI.
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageFundraisersEnabled(), 'ManageFundraisers');
+$iFundRaiserID = array_key_exists('iCurrentFundraiser', $_SESSION) ? (int) $_SESSION['iCurrentFundraiser'] : 0;
 
-$iFundRaiserID = $_SESSION['iCurrentFundraiser'];
-$iDonatedItemID = InputUtils::legacyFilterInputArr($_GET, 'DonatedItemID', 'int');
-$iCount = InputUtils::legacyFilterInputArr($_GET, 'Count', 'int');
-
-$sLetter = 'a';
-
-$donatedItem = DonatedItemQuery::create()->findPk((int) $iDonatedItemID);
-if ($donatedItem === null) {
-    RedirectUtils::redirect("FundRaiserEditor.php?FundRaiserID=$iFundRaiserID");
+if ($iFundRaiserID > 0) {
+    RedirectUtils::redirect('fundraiser/editor/' . $iFundRaiserID);
+} else {
+    RedirectUtils::redirect('fundraiser/');
 }
-$startItem = $donatedItem->getItem();
-
-if (strlen($startItem) === 2) { // replicated items will sort better if they have a two-digit number
-    $letter = mb_substr($startItem, 0, 1);
-    $number = mb_substr($startItem, 1, 1);
-    $startItem = $letter . '0' . $number;
-}
-
-$letterNum = ord('a');
-
-for ($i = 0; $i < $iCount; $i++) {
-    $sSQL = 'INSERT INTO donateditem_di (di_item,di_FR_ID,di_donor_ID,di_multibuy,di_title,di_description,di_sellprice,di_estprice,di_minimum,di_materialvalue,di_EnteredBy,di_EnteredDate,di_picture)';
-    $sSQL .="SELECT '" . $startItem . chr($letterNum) ."',di_FR_ID,di_donor_ID,di_multibuy,di_title,di_description,di_sellprice,di_estprice,di_minimum,di_materialvalue,";
-    $sSQL .= AuthenticationManager::getCurrentUser()->getId() .",'" . date('YmdHis') ."',";
-    $sSQL .= 'di_picture';
-    $sSQL .=" FROM donateditem_di WHERE di_ID=$iDonatedItemID";
-    $ret = RunQuery($sSQL);
-    $letterNum += 1;
-}
-RedirectUtils::redirect("FundRaiserEditor.php?FundRaiserID=$iFundRaiserID");
