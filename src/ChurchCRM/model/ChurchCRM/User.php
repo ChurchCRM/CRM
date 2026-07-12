@@ -63,11 +63,22 @@ class User extends BaseUser
     //
     // EditSelf is an exclusive mode: when a non-admin user has EditSelf=1,
     // all module permissions (AddRecords, EditRecords, …, Notes, Finance) are
-    // treated as false regardless of what is stored in the database. This
-    // ensures hasNoAdminPermissions() correctly blocks EditSelf users from
-    // the internal API surface and every consumer sees a consistent view.
+    // treated as false regardless of what is stored in the database, so every
+    // consumer sees a consistent view.
 
-    private function isEditSelfExclusive(): bool
+    /**
+     * True when the user is confined to the self-service flow.
+     *
+     * A non-admin user with EditSelf=1 has no module permissions and cannot use
+     * the CRM interface — PageInit and AuthMiddleware redirect them to
+     * /external/limited-access.
+     *
+     * Deliberately NOT true for a zero-permission user (all flags 0). Those users
+     * retain read-only access to people and family records under the read-default
+     * policy (#9003); writes are denied by the per-page and per-route permission
+     * checks.
+     */
+    public function isEditSelfExclusive(): bool
     {
         return !$this->isAdmin() && $this->isEditSelf();
     }
@@ -212,31 +223,6 @@ class User extends BaseUser
             'canViewEvents'       => $this->canViewEvents(),
             'canManageEvents'     => $this->canManageEvents(),
         ];
-    }
-
-    /**
-     * Check if the user lacks all functional admin permissions.
-     * Users with no permissions (or only EditSelf) cannot use the admin interface
-     * and should be redirected to a self-service flow or blocked.
-     *
-     * @see https://github.com/ChurchCRM/CRM/issues/8617
-     */
-    public function hasNoAdminPermissions(): bool
-    {
-        if ($this->isAdmin()) {
-            return false;
-        }
-        if ($this->isEditSelf()) {
-            // EditSelf is exclusive — no module permissions apply
-            return true;
-        }
-        return !$this->isAddRecords()
-            && !$this->isEditRecords()
-            && !$this->isDeleteRecords()
-            && !$this->isMenuOptions()
-            && !$this->isManageGroups()
-            && !$this->isFinance()
-            && !$this->isNotes();
     }
 
     /**
