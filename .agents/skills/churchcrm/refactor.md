@@ -177,8 +177,10 @@ summary: |
 
 **References**
 
-- See `src/Include/Functions.php` for global helpers used during migration.
-- Follow Perpl ORM patterns described in the repository's standards docs.
+- `src/Include/Functions.php` **no longer exists** — its helpers now live in `ChurchCRM\Utils\*`
+  (`DateTimeUtils`, `MiscUtils`, `CustomFieldUtils`, `FiscalYearUtils`, `FunctionsUtils`).
+  See the migration map in `php-best-practices.md`.
+- Follow Propel ORM patterns described in the repository's standards docs.
 
 ## SQL Upgrade Files — modification policy
 
