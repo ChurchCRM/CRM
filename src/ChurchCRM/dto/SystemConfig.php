@@ -568,7 +568,8 @@ class   SystemConfig
             . ' AND IS_NULLABLE = \'NO\' AND COLUMN_DEFAULT IS NULL'
             . ' AND EXTRA NOT LIKE \'%auto_increment%\''
         );
-        $stmt->execute([':table' => 'config_cfg']);
+        $stmt->execute([':table' => 'config_cfg'])
+            || throw new \RuntimeException('insertDynamicConfigRow: INFORMATION_SCHEMA query failed');
         $requiredColumns = $stmt->fetchAll(\PDO::FETCH_COLUMN);
 
         // Always include the two columns the Propel model knows about.
@@ -588,8 +589,15 @@ class   SystemConfig
         $colList    = implode(', ', array_map(fn (string $c): string => '`' . str_replace('`', '``', $c) . '`', array_keys($columns)));
         $paramList  = implode(', ', array_fill(0, count($columns), '?'));
         $insert = $connection->prepare("INSERT INTO config_cfg ({$colList}) VALUES ({$paramList})");
-        $insert->execute(array_values($columns))
-            || throw new \RuntimeException('insertDynamicConfigRow: INSERT into config_cfg failed for key: ' . $name);
+        try {
+            $insert->execute(array_values($columns));
+        } catch (\PDOException $e) {
+            throw new \RuntimeException(
+                'insertDynamicConfigRow: INSERT into config_cfg failed for key: ' . $name,
+                0,
+                $e
+            );
+        }
     }
 
 
