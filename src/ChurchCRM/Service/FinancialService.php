@@ -408,9 +408,10 @@ class FinancialService
                 if (!empty($payment->iAutID)) {
                     $pledge->setAutId($payment->iAutID);
                 }
-                if (!empty($Fund->NonDeductible)) {
-                    $pledge->setNondeductible($Fund->NonDeductible);
-                }
+                // Always set NonDeductible — the column is NOT NULL with no default.
+                // Using empty() here would skip 0, leaving the property null and
+                // causing a MySQL constraint error on INSERT.
+                $pledge->setNondeductible((float) ($Fund->NonDeductible ?? 0));
                 $pledge->save();
                 HookManager::doAction(Hooks::DONATION_RECEIVED, $pledge);
                 // Do NOT return here — continue to save all fund rows before returning.
