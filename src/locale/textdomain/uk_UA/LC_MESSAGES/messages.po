@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Логін"
 
 #: 
-msgid "Add Records"
-msgstr "Додати записи"
-
-#: 
-msgid "Edit Records"
-msgstr "Редагувати записи"
-
-#: 
-msgid "Delete Records"
-msgstr "Видалити записи"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Управління властивостями та класифікаціями"
 
@@ -2050,14 +2038,6 @@ msgstr "Управління групами та ролями"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Управління пожертвами та фінансами"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Перегляд, додавання та редагування нотаток"
-
-#: 
-msgid "Edit Self"
-msgstr "Редагувати себе"
 
 #: 
 msgid "Admin"
@@ -5594,10 +5574,6 @@ msgstr "Іврит"
 #: 
 msgid "Permissions"
 msgstr "Дозволи"
-
-#: 
-msgid "Manage Notes"
-msgstr "Керування нотатками"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11068,10 +11044,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Тільки автор нотатки або адміністратор можуть видалити цю нотатку"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Тільки автор нотатки або адміністратор можуть редагувати цю нотатку"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Огляд церковних подій, присутності та діяльності"
 
@@ -12678,10 +12650,6 @@ msgstr "Лише база даних (.sql) або повний архів (.tar
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Кількість рядків за замовчуванням у таблицях даних. Набуває чинності при наступному завантаженні сторінки."
 
-#: 
-msgid "Edit own family only"
-msgstr "Редагувати лише власну родину"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12694,10 +12662,6 @@ msgstr "Виправлення неточних або незручних пер
 #: 
 msgid "Found a bug with translations?"
 msgstr "Знайшли помилку в перекладах?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Надає всі привілеї"
 
 #: 
 msgid "Green"
@@ -14661,10 +14625,6 @@ msgid "You do not have permission to edit this note."
 msgstr "У вас немає дозволу на редагування цієї нотатки."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Приватна нотатка — видима лише автору]"
-
-#: 
 msgid "seconds"
 msgstr "секунд"
 
@@ -16560,4 +16520,96 @@ msgstr "минуле"
 #: 
 msgid "Croatian"
 msgstr "Хорватська"
+
+#: 
+msgid "%s's Account"
+msgstr "Обліковий запис %s"
+
+#: 
+msgid "Access"
+msgstr "Доступ"
+
+#: 
+msgid "Access level"
+msgstr "Рівень доступу"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Адміністратори мають повний доступ до всіх функцій і даних. Індивідуальні дозволи не застосовуються."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Усі користувачі можуть переглядати членів парафії. Цей дозвіл не можна скасувати."
+
+#: 
+msgid "Always granted"
+msgstr "Завжди надається"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Може лише переглядати та підтверджувати дані своєї родини. Інший доступ відсутній."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Виберіть конкретні дозволи нижче."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Зверніться до адміністратора для зміни ваших дозволів."
+
+#: 
+msgid "Custom permissions"
+msgstr "Індивідуальні дозволи"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Повний доступ — надає всі привілеї."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Надати індивідуальні дозволи:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Якщо вам потрібен додатковий доступ, будь ласка, зверніться до адміністратора вашої церкви."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Люди &amp; Родини"
+
+#: 
+msgid "Self-service"
+msgstr "Самообслуговування"
+
+#: 
+msgid "Self-service only"
+msgstr "Лише самообслуговування"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Нотатка, яку ви намагаєтесь редагувати, більше не існує."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Цей користувач може лише переглядати та оновлювати профіль своєї родини. Індивідуальні дозволи не застосовуються."
+
+#: 
+msgid "User List"
+msgstr "Список користувачів"
+
+#: 
+msgid "View Person"
+msgstr "Переглянути особу"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "У вас немає дозволу додавати нотатку для цієї родини."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "У вас немає дозволу додавати нотатку для цієї особи."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "У вас немає дозволу редагувати цю нотатку"
 

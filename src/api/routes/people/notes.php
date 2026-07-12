@@ -85,7 +85,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         // EditSelf-only scope: restrict to own family.
         // (ABAC hook for future per-record holds — EditSelf+Notes users
-        //  are not currently allowed past hasNoAdminPermissions() entry gate,
+        //  are not currently allowed past the isEditSelfExclusive() entry gate,
         //  but this check ensures correctness if that ever changes.)
         $personFamilyId = (int) $person->getFamId();
         if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {

@@ -141,8 +141,12 @@ declare namespace Cypress {
 
     /**
      * Make API request as limited.user (id=4) — usr_Notes=0, usr_Admin=0,
-     * usr_EditRecords=0, usr_EditSelf=0. Blocked by hasNoAdminPermissions()
-     * → always returns 403. Use ONLY for Notes-gated 403 assertions.
+     * usr_EditRecords=0, usr_EditSelf=1. An EditSelf-ONLY user, blocked by
+     * AuthMiddleware::isEditSelfExclusive() → always returns 403.
+     * Use ONLY for Notes-gated 403 assertions.
+     *
+     * NOT a zero-permission user — that is noperm.user (id=901, EditSelf=0),
+     * which now passes the gate with read-only access (read-default policy).
      */
     makePrivateLimitedAPICall(
       method: string,

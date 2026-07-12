@@ -20,6 +20,9 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
+// Security: User must have finance permission to use this page
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+
 if (SystemConfig::getBooleanValue('bUseScannedChecks')) { // Instantiate the MICR class
     $micrObj = new MICRUtils();
 }

@@ -9,7 +9,8 @@
  *
  * Test user: john.plainauth (user ID 900, `plainauth.api.key`)
  *   - Permissions: Notes=1 only (Admin=0, EditRecords=0, EditSelf=0, AddRecords=0)
- *   - Notes=1 is required to pass the hasNoAdminPermissions() check in AuthMiddleware.
+ *   - Not being EditSelf-exclusive, this user passes the AuthMiddleware entry gate
+ *     (User::isEditSelfExclusive() is false for non-EditSelf users).
  *   - No EditSelf flag, so canViewFamily() / canReadPerson() must grant access via the
  *     read-default baseline (canReadFamily() / canReadPerson() both return true).
  *

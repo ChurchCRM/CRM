@@ -2027,18 +2027,6 @@ msgid "Login Name"
 msgstr "로그인 이름"
 
 #: 
-msgid "Add Records"
-msgstr "레코드 추가"
-
-#: 
-msgid "Edit Records"
-msgstr "레코드 수정"
-
-#: 
-msgid "Delete Records"
-msgstr "레코드 삭제"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "속성 및 분류 관리"
 
@@ -2049,14 +2037,6 @@ msgstr "그룹 및 역할 관리"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "헌금 및 재정 관리"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "메모 보기/추가/수정"
-
-#: 
-msgid "Edit Self"
-msgstr "본인 정보 수정"
 
 #: 
 msgid "Admin"
@@ -5581,10 +5561,6 @@ msgstr "히브리어"
 #: 
 msgid "Permissions"
 msgstr "권한"
-
-#: 
-msgid "Manage Notes"
-msgstr "메모 관리"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11032,10 +11008,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "메모 작성자 또는 관리자만 이 메모를 삭제할 수 있습니다"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "메모 작성자 또는 관리자만 이 메모를 편집할 수 있습니다"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "교회 행사, 출석 및 활동 개요"
 
@@ -12642,10 +12614,6 @@ msgstr "데이터베이스 전용 (.sql) 또는 전체 아카이브 (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "데이터 표에 표시되는 기본 행 수입니다. 다음 페이지 로드 시 적용됩니다."
 
-#: 
-msgid "Edit own family only"
-msgstr "본인 가족만 편집"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12658,10 +12626,6 @@ msgstr "해당 언어의 잘못되거나 어색한 번역 수정"
 #: 
 msgid "Found a bug with translations?"
 msgstr "번역에서 버그를 발견하셨나요?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "모든 권한 부여"
 
 #: 
 msgid "Green"
@@ -14622,10 +14586,6 @@ msgid "You do not have permission to edit this note."
 msgstr "이 메모를 편집할 권한이 없습니다."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[비공개 메모 — 작성자에게만 표시됩니다]"
-
-#: 
 msgid "seconds"
 msgstr "초"
 
@@ -16510,4 +16470,96 @@ msgstr "과거"
 #: 
 msgid "Croatian"
 msgstr "크로아티아어"
+
+#: 
+msgid "%s's Account"
+msgstr "%s의 계정"
+
+#: 
+msgid "Access"
+msgstr "접근"
+
+#: 
+msgid "Access level"
+msgstr "접근 수준"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "관리자는 모든 기능과 데이터에 대한 전체 접근 권한을 가집니다. 개별 권한은 적용되지 않습니다."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "모든 사용자는 교인 목록을 볼 수 있습니다. 이 권한은 제거할 수 없습니다."
+
+#: 
+msgid "Always granted"
+msgstr "항상 허용됨"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "본인 가족만 확인하고 검토할 수 있습니다. 다른 접근 권한은 없습니다."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "아래에서 특정 권한을 선택하세요."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "권한 변경을 위해 관리자에게 문의하세요."
+
+#: 
+msgid "Custom permissions"
+msgstr "사용자 지정 권한"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "전체 접근 — 모든 권한이 부여됩니다."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "개별 권한 부여:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "추가 접근 권한이 필요하면 교회 관리자에게 문의하세요."
+
+#: 
+msgid "People &amp; Families"
+msgstr "교인 및 가족"
+
+#: 
+msgid "Self-service"
+msgstr "셀프서비스"
+
+#: 
+msgid "Self-service only"
+msgstr "셀프서비스 전용"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "수정하려는 메모가 더 이상 존재하지 않습니다."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "이 사용자는 본인의 가족 프로필만 확인하고 업데이트할 수 있습니다. 개별 권한은 적용되지 않습니다."
+
+#: 
+msgid "User List"
+msgstr "사용자 목록"
+
+#: 
+msgid "View Person"
+msgstr "교인 보기"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "이 가족에 대한 메모를 추가할 권한이 없습니다."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "이 메모를 수정할 권한이 없습니다"
 

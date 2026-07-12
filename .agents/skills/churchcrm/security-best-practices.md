@@ -361,35 +361,65 @@ $linkBack = RedirectUtils::validateRedirectUrl(
 
 ## Authorization & Access Control
 
-### Block Users With No Admin Permissions <!-- learned: 2026-04-12 -->
+### The Entry Gate: `isEditSelfExclusive()` (read-default policy) <!-- learned: 2026-07-11 -->
 
-Users with `EditSelf=1` and **all other permissions at 0** can log in but have no functional admin access. They must NOT see the full admin UI — instead they should be redirected to a limited-access page.
+> ⚠️ **`hasNoAdminPermissions()` was REMOVED in #9121.** If you find it referenced
+> anywhere, that guidance is stale. Do not reintroduce it.
 
-Use `User::hasNoAdminPermissions()` to detect this state. The check fires in two places:
-
-1. **`PageInit.php`** — for legacy `*.php` pages
-2. **`AuthMiddleware`** — for MVC routes (`/people/`, `/admin/`, `/v2/`) and API endpoints
+The entry gate bounces a user out of the whole CRM and into `/external/limited-access`.
+Only **EditSelf-exclusive** users hit it:
 
 ```php
-// In PageInit.php — runs for legacy pages
-if (AuthenticationManager::getCurrentUser()->hasNoAdminPermissions()) {
-    RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
-}
-
-// In AuthMiddleware (session branch) — runs for MVC pages
-if ($sessionUser->hasNoAdminPermissions()) {
-    if ($this->isBrowserRequest($request)) {
-        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
-    }
-    return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+// src/ChurchCRM/model/ChurchCRM/User.php
+public function isEditSelfExclusive(): bool
+{
+    return !$this->isAdmin() && $this->isEditSelf();
 }
 ```
 
-The `/external/limited-access` page is in the external module (no auth required) and shows:
-- A "Verify Family Info" button (generates time-limited token bound to user's family)
-- A "Log Out" button
+**The semantics inverted, not just the name.** Under the old `hasNoAdminPermissions()`,
+a **zero-permission user (all flags 0) was also bounced**. Under the **read-default
+policy (#9003 / #9121) they are not** — reading people and family records is now a
+default capability of any authenticated user. Writes are still denied, by the per-page
+and per-route permission checks rather than by the gate.
 
-**Reference**: GHSA-5w59-32c8-933v / PR #8616 / Issue #237
+| User | Entry gate | Effect |
+|------|-----------|--------|
+| Admin | passes | full access |
+| Any module permission (Notes, Finance, …) | passes | read all; write per permission |
+| **Zero-permission (all flags 0)** | **passes** | **read-only people/family; no writes** |
+| **EditSelf-exclusive (EditSelf=1, rest 0)** | **blocked** | confined to `/external/limited-access` |
+
+Note EditSelf is **exclusive**, not additive: an EditSelf+Notes user is *not*
+EditSelf-exclusive, so they pass the gate and are then scoped by object-level checks.
+Every `isXxxEnabled()` getter also short-circuits to `false` for EditSelf-exclusive users.
+
+The gate fires in two places — a check added to only one leaves a hole:
+
+```php
+// src/Include/PageInit.php — legacy *.php pages
+if ($currentUser->isEditSelfExclusive()) {
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
+}
+
+// src/ChurchCRM/Slim/Middleware/AuthMiddleware.php — MVC + API
+if ($sessionUser->isEditSelfExclusive() && !$this->isAuthFlowExemptPath($request)) {
+    // browser → 302 /external/limited-access; API → 403 JSON
+}
+```
+
+`isAuthFlowExemptPath()` keeps login/password-change/logout reachable — without it an
+EditSelf-exclusive user redirects in a loop.
+
+**Read is a default capability.** `canReadPerson(int $personId)` and
+`canReadFamily(int $familyId = 0)` both `return true` for any authenticated user. The ID
+parameters are **deliberate ABAC hooks** — pass the real ID at every call site so that
+adding row-level rules later (pastoral-confidentiality holds, privacy flags) needs no
+call-site changes. Do not "simplify" them away because they look unused.
+
+**Reference**: GHSA-5w59-32c8-933v / PR #8616 / Issue #237 (original gate);
+#9003 / #9121 (read-default policy). Covered by
+`cypress/e2e/ui/security/no-permission-user.spec.js` and `limited-access.spec.js`.
 
 ### MVC vs Legacy Auth Enforcement Points <!-- learned: 2026-04-12 -->
 

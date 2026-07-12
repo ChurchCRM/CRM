@@ -2002,18 +2002,6 @@ msgid "Login Name"
 msgstr "Korisničko ime"
 
 #: 
-msgid "Add Records"
-msgstr "Dodaj zapise"
-
-#: 
-msgid "Edit Records"
-msgstr "Uredi zapise"
-
-#: 
-msgid "Delete Records"
-msgstr "Obriši zapise"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Upravljaj svojstvima i klasifikacijama"
 
@@ -2024,14 +2012,6 @@ msgstr "Upravljaj skupinama i ulogama"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Upravljaj darovima i financijama"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Pregledaj, dodaj i uredi bilješke"
-
-#: 
-msgid "Edit Self"
-msgstr "Uredi sebe"
 
 #: 
 msgid "Admin"
@@ -5317,10 +5297,6 @@ msgstr "Hebrejski"
 #: 
 msgid "Permissions"
 msgstr "Dozvole"
-
-#: 
-msgid "Manage Notes"
-msgstr "Upravljaj bilješkama"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -10745,10 +10721,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Samo autor bilješke ili administrator može obrisati ovu bilješku"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Samo autor bilješke ili administrator može urediti ovu bilješku"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Pregled župnih događaja, prisutnosti i aktivnosti"
 
@@ -12355,10 +12327,6 @@ msgstr "Samo baza podataka (.sql) ili potpuna arhiva (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Zadani broj redaka prikazanih u tablicama podataka. Stupa na snagu pri sljedećem učitavanju stranice."
 
-#: 
-msgid "Edit own family only"
-msgstr "Uredi samo vlastitu obitelj"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12371,10 +12339,6 @@ msgstr "Ispravljanje netočnih ili nezgrapnih prijevoda na vašem jeziku"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Pronašli ste grešku s prijevodima?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Daje sve privilegije"
 
 #: 
 msgid "Green"
@@ -14321,10 +14285,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Nemate dozvolu za uređivanje ove bilješke."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privatna bilješka — vidljiva samo kreatoru]"
-
-#: 
 msgid "seconds"
 msgstr "sekundi"
 
@@ -16203,4 +16163,96 @@ msgstr "prošlo"
 #: 
 msgid "Croatian"
 msgstr "Hrvatski"
+
+#: 
+msgid "%s's Account"
+msgstr "Račun korisnika %s"
+
+#: 
+msgid "Access"
+msgstr "Pristup"
+
+#: 
+msgid "Access level"
+msgstr "Razina pristupa"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratori imaju potpun pristup svim funkcijama i podacima. Pojedinačne dozvole se ne primjenjuju."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Svi korisnici mogu pregledavati članove župe. Ova dozvola ne može biti uklonjena."
+
+#: 
+msgid "Always granted"
+msgstr "Uvijek dodijeljena"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Može pregledati i potvrditi samo vlastitu obitelj. Bez drugog pristupa."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Odaberite specifične dozvole u nastavku."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Obratite se administratoru za promjenu vaših dozvola."
+
+#: 
+msgid "Custom permissions"
+msgstr "Prilagođene dozvole"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Puni pristup — dodjeljuje sve ovlasti."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Dodijeli pojedinačne dozvole:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ako trebate dodatni pristup, obratite se župnom administratoru."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Osobe i obitelji"
+
+#: 
+msgid "Self-service"
+msgstr "Samousluga"
+
+#: 
+msgid "Self-service only"
+msgstr "Samo samousluga"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Bilješka koju pokušavate urediti više ne postoji."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Ovaj korisnik može pregledati i ažurirati samo vlastiti obiteljski profil. Pojedinačne dozvole se ne primjenjuju."
+
+#: 
+msgid "User List"
+msgstr "Popis korisnika"
+
+#: 
+msgid "View Person"
+msgstr "Pregled osobe"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nemate dozvolu za dodavanje bilješke za ovu obitelj."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nemate dozvolu za dodavanje bilješke za ovu osobu."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nemate dozvolu za uređivanje ove bilješke"
 

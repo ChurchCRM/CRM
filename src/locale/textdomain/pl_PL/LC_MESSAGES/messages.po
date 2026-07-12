@@ -2079,21 +2079,6 @@ msgstr "Nazwa Użytkownika (Login)"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Dodaj Użytkownika"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Edytuj Użytkownika"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Usuń Użytkownika"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Zarządzaj Właściwościami i Klasyfikacją"
 
@@ -2106,16 +2091,6 @@ msgstr "Zarządzaj Grupami i Rolami"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Zarządzaj Datkami i Finansami"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Pokaż, Dodaj i Edytuj Notatki"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Edytuj Swoje Dane"
 
 #: 
 #, fuzzy
@@ -5660,10 +5635,6 @@ msgstr "Hebrajski"
 #: 
 msgid "Permissions"
 msgstr "Uprawnienia"
-
-#: 
-msgid "Manage Notes"
-msgstr "Zarządzaj Notatkami"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11126,10 +11097,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Tylko autor notatki lub administrator może usunąć tę notatkę"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Tylko autor notatki lub administrator może edytować tę notatkę"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Przegląd wydarzeń parafialnych, frekwencji i aktywności"
 
@@ -12736,10 +12703,6 @@ msgstr "Tylko baza danych (.sql) lub pełne archiwum (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Domyślna liczba wierszy wyświetlanych w tabelach danych. Zaczyna obowiązywać po następnym załadowaniu strony."
 
-#: 
-msgid "Edit own family only"
-msgstr "Edytuj tylko własną rodzinę"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12752,10 +12715,6 @@ msgstr "Poprawianie nieprawidłowych lub niezręcznych tłumaczeń w swoim języ
 #: 
 msgid "Found a bug with translations?"
 msgstr "Znalazłeś błąd w tłumaczeniach?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Przyznaje wszystkie uprawnienia"
 
 #: 
 msgid "Green"
@@ -14718,10 +14677,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Nie masz uprawnień do edytowania tej notatki."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Notatka prywatna — widoczna tylko dla twórcy]"
-
-#: 
 msgid "seconds"
 msgstr "sekund"
 
@@ -16608,4 +16563,96 @@ msgstr "minione"
 #: 
 msgid "Croatian"
 msgstr "Chorwacki"
+
+#: 
+msgid "%s's Account"
+msgstr "Konto użytkownika %s"
+
+#: 
+msgid "Access"
+msgstr "Dostęp"
+
+#: 
+msgid "Access level"
+msgstr "Poziom dostępu"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratorzy mają pełny dostęp do wszystkich funkcji i danych. Indywidualne uprawnienia nie mają zastosowania."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Wszyscy użytkownicy mogą przeglądać członków parafii. Tego uprawnienia nie można usunąć."
+
+#: 
+msgid "Always granted"
+msgstr "Zawsze przyznane"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Może jedynie przeglądać i weryfikować własną rodzinę. Brak innego dostępu."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Wybierz poniżej konkretne uprawnienia."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Skontaktuj się z administratorem, aby zmienić swoje uprawnienia."
+
+#: 
+msgid "Custom permissions"
+msgstr "Niestandardowe uprawnienia"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Pełny dostęp — przyznaje wszystkie uprawnienia."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Przyznaj indywidualne uprawnienia:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Jeśli potrzebujesz dodatkowego dostępu, skontaktuj się z administratorem parafii."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Wierni i rodziny"
+
+#: 
+msgid "Self-service"
+msgstr "Samoobsługa"
+
+#: 
+msgid "Self-service only"
+msgstr "Tylko samoobsługa"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Notatka, którą próbujesz edytować, już nie istnieje."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Ten użytkownik może jedynie przeglądać i aktualizować profil własnej rodziny. Indywidualne uprawnienia nie mają zastosowania."
+
+#: 
+msgid "User List"
+msgstr "Lista użytkowników"
+
+#: 
+msgid "View Person"
+msgstr "Podgląd osoby"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nie masz uprawnień do dodania notatki dla tej rodziny."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nie masz uprawnień do dodania notatki dla tej osoby."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nie masz uprawnień do edytowania tej notatki"
 

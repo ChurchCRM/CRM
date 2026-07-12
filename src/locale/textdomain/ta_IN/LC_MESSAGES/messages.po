@@ -2027,18 +2027,6 @@ msgid "Login Name"
 msgstr "உள்நுழைவு பெயர்"
 
 #: 
-msgid "Add Records"
-msgstr "பதிவுகளைச் சேர்க்கவும்"
-
-#: 
-msgid "Edit Records"
-msgstr "பதிவுகளைத் திருத்து"
-
-#: 
-msgid "Delete Records"
-msgstr "பதிவுகளை நீக்கு"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "பண்புகள் மற்றும் வகைப்பாடுகளை நிர்வகிக்கவும்"
 
@@ -2049,14 +2037,6 @@ msgstr "குழுக்கள் மற்றும் வேலைகளை/
 #: 
 msgid "Manage Donations and Finance"
 msgstr "நன்கொடைகள் மற்றும் நிதியை நிர்வகிக்கவும்"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "குறிப்புகளைப் பார்க்கவும், சேர்க்கவும் மற்றும் தகவல் திருத்தம் செய்யவும்"
-
-#: 
-msgid "Edit Self"
-msgstr "தன்னை பற்றிய தகவல் திருத்தம் செய்யவும்"
 
 #: 
 msgid "Admin"
@@ -5588,10 +5568,6 @@ msgstr "ஹீப்ரு"
 #: 
 msgid "Permissions"
 msgstr "அனுமதிகள்"
-
-#: 
-msgid "Manage Notes"
-msgstr "குறிப்புகளை நிர்வகிக்கவும்"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11054,10 +11030,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "குறிப்பின் ஆசிரியர் அல்லது நிர்வாகி மட்டுமே இந்தக் குறிப்பை நீக்க முடியும்"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "குறிப்பின் ஆசிரியர் அல்லது நிர்வாகி மட்டுமே இந்தக் குறிப்பைத் திருத்த முடியும்"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "திருச்சபை நிகழ்வுகள், வருகை மற்றும் நடவடிக்கைகளின் மேலோட்டம்"
 
@@ -12668,10 +12640,6 @@ msgstr "தரவுத்தளம் மட்டும் (.sql) அல்ல
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "தரவு அட்டவணைகளில் காட்டப்படும் இயல்பு வரிசைகளின் எண்ணிக்கை. அடுத்த பக்க ஏற்றத்தில் செயல்படும்."
 
-#: 
-msgid "Edit own family only"
-msgstr "சொந்த குடும்பத்தை மட்டும் திருத்து"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12684,10 +12652,6 @@ msgstr "உங்கள் மொழியில் தவறான அல்ல
 #: 
 msgid "Found a bug with translations?"
 msgstr "மொழிபெயர்ப்புகளில் பிழை கண்டீர்களா?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "அனைத்து சலுகைகளும் வழங்கப்படுகின்றன"
 
 #: 
 msgid "Green"
@@ -14649,10 +14613,6 @@ msgid "You do not have permission to edit this note."
 msgstr "இந்த குறிப்பை திருத்த உங்களுக்கு அனுமதி இல்லை."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[தனிப்பட்ட குறிப்பு — உருவாக்குநருக்கு மட்டும் காணப்படும்]"
-
-#: 
 msgid "seconds"
 msgstr "வினாடிகள்"
 
@@ -16548,4 +16508,96 @@ msgstr "கடந்த"
 #: 
 msgid "Croatian"
 msgstr "குரோஷியன்"
+
+#: 
+msgid "%s's Account"
+msgstr "%s இன் கணக்கு"
+
+#: 
+msgid "Access"
+msgstr "அணுகல்"
+
+#: 
+msgid "Access level"
+msgstr "அணுகல் நிலை"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "நிர்வாகிகளுக்கு அனைத்து அம்சங்கள் மற்றும் தரவுகளுக்கும் முழு அணுகல் உள்ளது. தனிப்பட்ட அனுமதிகள் பொருந்தாது."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "அனைத்து பயனர்களும் சபை உறுப்பினர்களை பார்க்கலாம். இந்த அனுமதியை அகற்ற முடியாது."
+
+#: 
+msgid "Always granted"
+msgstr "எப்போதும் வழங்கப்பட்டது"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "தங்கள் சொந்த குடும்பத்தை மட்டுமே மதிப்பாய்வு செய்து சரிபார்க்க முடியும். வேறு அணுகல் இல்லை."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "கீழே குறிப்பிட்ட அனுமதிகளைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "உங்கள் அனுமதிகளை மாற்ற ஒரு நிர்வாகியை தொடர்பு கொள்ளவும்."
+
+#: 
+msgid "Custom permissions"
+msgstr "தனிப்பயன் அனுமதிகள்"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "முழு அணுகல் — அனைத்து சலுகைகளையும் வழங்குகிறது."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "தனிப்பட்ட அனுமதிகளை வழங்குக:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "உங்களுக்கு கூடுதல் அணுகல் தேவைப்பட்டால், உங்கள் திருச்சபை நிர்வாகியை தொடர்பு கொள்ளுங்கள்."
+
+#: 
+msgid "People &amp; Families"
+msgstr "நபர்கள் &amp; குடும்பங்கள்"
+
+#: 
+msgid "Self-service"
+msgstr "சுய சேவை"
+
+#: 
+msgid "Self-service only"
+msgstr "சுய சேவை மட்டும்"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "நீங்கள் திருத்த முயற்சிக்கும் குறிப்பு இனி இல்லை."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "இந்த பயனர் தங்கள் சொந்த குடும்ப சுயவிவரத்தை மட்டுமே மதிப்பாய்வு செய்து புதுப்பிக்க முடியும். தனிப்பட்ட அனுமதிகள் பொருந்தாது."
+
+#: 
+msgid "User List"
+msgstr "பயனர் பட்டியல்"
+
+#: 
+msgid "View Person"
+msgstr "நபரைப் பார்க்கவும்"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "இந்த குடும்பத்திற்கு குறிப்பு சேர்க்க உங்களுக்கு அனுமதி இல்லை."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "இந்த நபருக்கு குறிப்பு சேர்க்க உங்களுக்கு அனுமதி இல்லை."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "இந்த குறிப்பை திருத்த உங்களுக்கு அனுமதி இல்லை"
 

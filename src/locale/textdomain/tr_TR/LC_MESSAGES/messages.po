@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Kullanıcı adı"
 
 #: 
-msgid "Add Records"
-msgstr "Kayıt ekle"
-
-#: 
-msgid "Edit Records"
-msgstr "Kayıtları Düzenle"
-
-#: 
-msgid "Delete Records"
-msgstr "Kayıtları Sil"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Özellikleri ve sınıflandırmaları yönetin"
 
@@ -2050,14 +2038,6 @@ msgstr "Grupları ve rolleri yönetin"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Bağışları ve finansmanı yönetin"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Notları görüntüleyin, ekle ve düzenleyin"
-
-#: 
-msgid "Edit Self"
-msgstr "Kendini düzenle"
 
 #: 
 msgid "Admin"
@@ -5590,10 +5570,6 @@ msgstr "İbranice"
 #: 
 msgid "Permissions"
 msgstr "İzin"
-
-#: 
-msgid "Manage Notes"
-msgstr "Notları Yönetin"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11048,10 +11024,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Yalnızca not yazarı veya bir yönetici bu notu silebilir"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Yalnızca not yazarı veya bir yönetici bu notu düzenleyebilir"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Kilise etkinlikleri, yoklama ve faaliyetlere genel bakış"
 
@@ -12658,10 +12630,6 @@ msgstr "Yalnızca veritabanı (.sql) veya tam arşiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Veri tablolarında gösterilen varsayılan satır sayısı. Bir sonraki sayfa yüklemesinde geçerli olur."
 
-#: 
-msgid "Edit own family only"
-msgstr "Yalnızca kendi ailesini düzenle"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12674,10 +12642,6 @@ msgstr "Dilinizdeki yanlış veya garip çevirileri düzeltme"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Çevirilerde bir hata mı buldunuz?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Tüm ayrıcalıkları verir"
 
 #: 
 msgid "Green"
@@ -14639,10 +14603,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Bu notu düzenleme izniniz yok."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Özel Not — yalnızca oluşturan kişi tarafından görülebilir]"
-
-#: 
 msgid "seconds"
 msgstr "saniye"
 
@@ -16528,4 +16488,96 @@ msgstr "geçmiş"
 #: 
 msgid "Croatian"
 msgstr "Hırvatça"
+
+#: 
+msgid "%s's Account"
+msgstr "%s Hesabı"
+
+#: 
+msgid "Access"
+msgstr "Erişim"
+
+#: 
+msgid "Access level"
+msgstr "Erişim düzeyi"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Yöneticiler tüm özelliklere ve verilere tam erişime sahiptir. Bireysel izinler geçerli değildir."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Tüm kullanıcılar cemaat üyelerini görüntüleyebilir. Bu izin kaldırılamaz."
+
+#: 
+msgid "Always granted"
+msgstr "Her zaman verilir"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Yalnızca kendi ailesini inceleyebilir ve doğrulayabilir. Başka erişim yoktur."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Aşağıdan belirli izinleri seçin."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "İzinlerinizi değiştirmek için bir yöneticiyle iletişime geçin."
+
+#: 
+msgid "Custom permissions"
+msgstr "Özel izinler"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Tam erişim — tüm ayrıcalıkları verir."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Bireysel izinler ver:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ek erişime ihtiyaç duyarsanız lütfen kilise yöneticinizle iletişime geçin."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Kişiler &amp; Aileler"
+
+#: 
+msgid "Self-service"
+msgstr "Self servis"
+
+#: 
+msgid "Self-service only"
+msgstr "Yalnızca self servis"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Düzenlemeye çalıştığınız not artık mevcut değil."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Bu kullanıcı yalnızca kendi aile profilini inceleyebilir ve güncelleyebilir. Bireysel izinler geçerli değildir."
+
+#: 
+msgid "User List"
+msgstr "Kullanıcı Listesi"
+
+#: 
+msgid "View Person"
+msgstr "Kişiyi Görüntüle"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Bu aile için not ekleme izniniz yok."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Bu kişi için not ekleme izniniz yok."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Bu notu düzenleme izniniz yok"
 

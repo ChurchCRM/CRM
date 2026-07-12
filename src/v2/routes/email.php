@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -15,7 +16,7 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
     $group->get('/missing', 'getPeopleWithoutEmailsMVC');
     $group->get('', 'getEmailDashboardMVC');
     $group->get('/', 'getEmailDashboardMVC');
-});
+})->add(EmailRoleAuthMiddleware::class);
 
 function getEmailDashboardMVC(Request $request, Response $response, array $args): Response
 {

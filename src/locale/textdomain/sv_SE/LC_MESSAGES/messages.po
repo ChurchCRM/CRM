@@ -2108,21 +2108,6 @@ msgstr "Inloggningsnamn"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Lägg till poster"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Redigera poster"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Radera poster"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Underhålla egenskaper och klassificeringer"
 
@@ -2135,16 +2120,6 @@ msgstr "Hantera grupper och roller"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Underhålla bidragsgivare och financer"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Se, lätt till och redigera anteckningar"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Redigera dig själv"
 
 #: 
 msgid "Admin"
@@ -5697,10 +5672,6 @@ msgstr "Hebreiska"
 #: 
 msgid "Permissions"
 msgstr "Behörigheter"
-
-#: 
-msgid "Manage Notes"
-msgstr "Hantera anteckningar"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11155,10 +11126,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Endast anteckningens författare eller en administratör kan ta bort denna anteckning"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Endast anteckningens författare eller en administratör kan redigera denna anteckning"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Översikt över kyrkans evenemang, närvaro och aktivitet"
 
@@ -12765,10 +12732,6 @@ msgstr "Endast databas (.sql) eller fullständigt arkiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Standardantalet rader som visas i datatabeller. Träder i kraft vid nästa sidinläsning."
 
-#: 
-msgid "Edit own family only"
-msgstr "Redigera endast den egna familjen"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12781,10 +12744,6 @@ msgstr "Korrigera felaktiga eller klumpiga översättningar på ditt språk"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Hittade du ett fel med översättningarna?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Ger alla behörigheter"
 
 #: 
 msgid "Green"
@@ -14746,10 +14705,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Du har inte behörighet att redigera den här anteckningen."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privat anteckning — synlig endast för skaparen]"
-
-#: 
 msgid "seconds"
 msgstr "sekunder"
 
@@ -16643,4 +16598,96 @@ msgstr "förfluten"
 #: 
 msgid "Croatian"
 msgstr "Kroatiska"
+
+#: 
+msgid "%s's Account"
+msgstr "%s:s konto"
+
+#: 
+msgid "Access"
+msgstr "Åtkomst"
+
+#: 
+msgid "Access level"
+msgstr "Åtkomstnivå"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratörer har full åtkomst till alla funktioner och all data. Individuella behörigheter gäller inte."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Alla användare kan visa församlingsmedlemmar. Denna behörighet kan inte tas bort."
+
+#: 
+msgid "Always granted"
+msgstr "Alltid beviljad"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Kan bara granska och verifiera sin egen familj. Ingen annan åtkomst."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Välj specifika behörigheter nedan."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontakta en administratör för att ändra dina behörigheter."
+
+#: 
+msgid "Custom permissions"
+msgstr "Anpassade behörigheter"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Full åtkomst — ger alla rättigheter."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Bevilja individuella behörigheter:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Om du behöver ytterligare åtkomst, kontakta din kyrkas administratör."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Personer &amp; familjer"
+
+#: 
+msgid "Self-service"
+msgstr "Självbetjäning"
+
+#: 
+msgid "Self-service only"
+msgstr "Endast självbetjäning"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Anteckningen du försöker redigera finns inte längre."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Denna användare kan bara granska och uppdatera sin egen familjeprofil. Individuella behörigheter gäller inte."
+
+#: 
+msgid "User List"
+msgstr "Användarlista"
+
+#: 
+msgid "View Person"
+msgstr "Visa person"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Du har inte behörighet att lägga till en anteckning för denna familj."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Du har inte behörighet att lägga till en anteckning för denna person."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Du har inte behörighet att redigera denna anteckning"
 

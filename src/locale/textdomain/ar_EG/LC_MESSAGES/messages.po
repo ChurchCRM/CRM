@@ -2026,18 +2026,6 @@ msgid "Login Name"
 msgstr "اسم المستخدم"
 
 #: 
-msgid "Add Records"
-msgstr "اضافة سجل"
-
-#: 
-msgid "Edit Records"
-msgstr "تعديل السجل"
-
-#: 
-msgid "Delete Records"
-msgstr "مسح سجلات"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "إدارة خصائص وتصنيفات"
 
@@ -2048,14 +2036,6 @@ msgstr "إدارة المجموعات والأدوار"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "إدارة التبرعات والتمويل"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "عرض، إضافة وتحرير الملاحظات"
-
-#: 
-msgid "Edit Self"
-msgstr "تحرير الذات"
 
 #: 
 msgid "Admin"
@@ -5589,10 +5569,6 @@ msgstr "اللغة العبرية"
 #: 
 msgid "Permissions"
 msgstr "أذونات"
-
-#: 
-msgid "Manage Notes"
-msgstr "إدارة الملاحظات"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11079,10 +11055,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "فقط مؤلف الملاحظة أو المسؤول يمكن حذف هذه الملاحظة"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "فقط مؤلف الملاحظة أو المسؤول يمكن تحرير هذه الملاحظة"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "نظرة عامة على أحداث الكنيسة والحضور والنشاط"
 
@@ -12689,10 +12661,6 @@ msgstr "قاعدة البيانات فقط (.sql) أو الأرشيف الكام
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "العدد الافتراضي للصفوف المعروضة في جداول البيانات. يسري عند تحميل الصفحة التالية."
 
-#: 
-msgid "Edit own family only"
-msgstr "تعديل العائلة الخاصة فقط"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12705,10 +12673,6 @@ msgstr "تصحيح الترجمات الخاطئة أو غير الملائمة 
 #: 
 msgid "Found a bug with translations?"
 msgstr "هل وجدت خطأً في الترجمات؟"
-
-#: 
-msgid "Grants all privileges"
-msgstr "منح جميع الصلاحيات"
 
 #: 
 msgid "Green"
@@ -14674,10 +14638,6 @@ msgid "You do not have permission to edit this note."
 msgstr "ليس لديك صلاحية تعديل هذه الملاحظة."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[ملاحظة خاصة — مرئية للمنشئ فقط]"
-
-#: 
 msgid "seconds"
 msgstr "ثوانٍ"
 
@@ -16575,4 +16535,96 @@ msgstr "الماضي"
 #: 
 msgid "Croatian"
 msgstr "الكرواتية"
+
+#: 
+msgid "%s's Account"
+msgstr "حساب %s"
+
+#: 
+msgid "Access"
+msgstr "الوصول"
+
+#: 
+msgid "Access level"
+msgstr "مستوى الوصول"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "يتمتع المسؤولون بصلاحية وصول كاملة إلى جميع الميزات والبيانات. لا تُطبَّق الأذونات الفردية."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "يمكن لجميع المستخدمين عرض أعضاء الكنيسة. لا يمكن إلغاء هذا الإذن."
+
+#: 
+msgid "Always granted"
+msgstr "ممنوح دائمًا"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "يمكنه فقط مراجعة والتحقق من بيانات عائلته. لا يوجد وصول آخر."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "اختر الأذونات المحددة أدناه."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "تواصل مع المسؤول لتغيير صلاحياتك."
+
+#: 
+msgid "Custom permissions"
+msgstr "أذونات مخصصة"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "وصول كامل — يمنح جميع الصلاحيات."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "منح أذونات فردية:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "إذا كنت بحاجة إلى صلاحيات إضافية، يرجى التواصل مع مسؤول كنيستك."
+
+#: 
+msgid "People &amp; Families"
+msgstr "الأفراد والعائلات"
+
+#: 
+msgid "Self-service"
+msgstr "الخدمة الذاتية"
+
+#: 
+msgid "Self-service only"
+msgstr "الخدمة الذاتية فقط"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "الملاحظة التي تحاول تعديلها لم تعد موجودة."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "يمكن لهذا المستخدم فقط مراجعة وتحديث ملف عائلته. لا تُطبَّق الأذونات الفردية."
+
+#: 
+msgid "User List"
+msgstr "قائمة المستخدمين"
+
+#: 
+msgid "View Person"
+msgstr "عرض الشخص"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "ليس لديك صلاحية إضافة ملاحظة لهذه العائلة."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "ليس لديك صلاحية إضافة ملاحظة لهذا الشخص."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "ليس لديك صلاحية تعديل هذه الملاحظة"
 

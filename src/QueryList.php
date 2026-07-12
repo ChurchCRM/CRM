@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\PredefinedReportsQuery;
 use ChurchCRM\view\PageHeader;
 
@@ -12,7 +13,8 @@ $sPageSubtitle = gettext('View and run saved database queries');
 
 $queries = PredefinedReportsQuery::create()->orderByQryName()->find();
 
-$aFinanceQueries = explode(',', $aFinanceQueries);
+$aFinanceQueries = array_map('intval', explode(',', SystemConfig::getValue('aFinanceQueries')));
+$isFinanceEnabled = AuthenticationManager::getCurrentUser()->isFinanceEnabled();
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Data & Reports')],
@@ -23,7 +25,7 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="card">
     <div class="list-group list-group-flush">
         <?php foreach ($queries as $query) :
-            if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() || !in_array($query->getQryId(), $aFinanceQueries)) : ?>
+            if ($isFinanceEnabled || !in_array((int) $query->getQryId(), $aFinanceQueries, true)) : ?>
         <div class="list-group-item">
             <div class="row align-items-center">
                 <div class="col">
