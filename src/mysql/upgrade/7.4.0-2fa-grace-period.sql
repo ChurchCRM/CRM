@@ -6,5 +6,5 @@
 -- Installs without bRequire2FA are unaffected — nothing stamps the column.
 
 ALTER TABLE `user_usr`
-    ADD COLUMN `usr_TwoFactorAuthGracePeriodStart` TIMESTAMP NULL DEFAULT NULL
+    ADD COLUMN IF NOT EXISTS `usr_TwoFactorAuthGracePeriodStart` TIMESTAMP NULL DEFAULT NULL
         AFTER `usr_TwoFactorAuthRecoveryCodes`;
