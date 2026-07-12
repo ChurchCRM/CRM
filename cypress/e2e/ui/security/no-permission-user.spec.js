@@ -121,6 +121,45 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
                 expect(resp.status).to.eq(403);
             });
         });
+
+        // ManageGroups=0 — the whole /groups app is behind ManageGroupRoleAuthMiddleware.
+        it("Groups dashboard is denied", () => {
+            cy.visit("groups/dashboard", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/access-denied");
+        });
+
+        it("Sunday School dashboard is denied", () => {
+            cy.visit("groups/sundayschool/dashboard", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/access-denied");
+        });
+
+        // EmailMailto=0 — /v2/email and /v2/text are behind EmailRoleAuthMiddleware.
+        it("Email dashboard is denied", () => {
+            cy.visit("v2/email/dashboard", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/access-denied");
+        });
+
+        it("Text dashboard is denied", () => {
+            cy.visit("v2/text/dashboard", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/access-denied");
+        });
+    });
+
+    describe("Query list hides finance-only queries", () => {
+        beforeEach(login);
+
+        // aFinanceQueries defaults to "28,30" — those rows require Finance=1.
+        it("Query list renders without the finance queries", () => {
+            cy.visit("QueryList.php");
+            cy.get('a[href*="QueryView.php"]').should("have.length.greaterThan", 0);
+            cy.get('a[href*="QueryID=28"]').should("not.exist");
+            cy.get('a[href*="QueryID=30"]').should("not.exist");
+        });
+
+        it("Opening a finance query directly redirects away", () => {
+            cy.visit("QueryView.php?QueryID=28", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/dashboard");
+        });
     });
 
     describe("API-key access", () => {
@@ -157,6 +196,30 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             // No write actions.
             cy.contains("a", "Add New Person").should("not.exist");
             cy.contains("a", "Add New Family").should("not.exist");
+        });
+
+        // A menu entry must not advertise a page the user is bounced out of.
+        it("Hides Groups and Sunday School (ManageGroups=0)", () => {
+            cy.visit("v2/dashboard");
+            cy.get(".navbar-nav").within(() => {
+                cy.contains("Groups").should("not.exist");
+                cy.contains("Sunday School").should("not.exist");
+            });
+        });
+
+        it("Hides Communication (EmailMailto=0)", () => {
+            cy.visit("v2/dashboard");
+            cy.get(".navbar-nav").within(() => {
+                cy.contains("Communication").should("not.exist");
+            });
+        });
+
+        it("Data/Reports links straight to the query list", () => {
+            cy.visit("v2/dashboard");
+            cy.get(".navbar-nav")
+                .contains("a", "Data/Reports")
+                .should("have.attr", "href")
+                .and("include", "QueryList.php");
         });
     });
 
