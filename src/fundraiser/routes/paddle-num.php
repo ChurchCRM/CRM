@@ -203,7 +203,7 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
         $sSQL       = 'INSERT INTO paddlenum_pn (pn_fr_ID, pn_Num, pn_per_ID) VALUES (' . $fundraiserId . ',' . $iNum . ',' . $iPerID . ')';
         RunQuery($sSQL);
         // Get the new paddle ID
-        $rsNew    = RunQuery('SELECT MAX(pn_ID) AS iPaddleNumID FROM paddlenum_pn');
+        $rsNew    = RunQuery('SELECT LAST_INSERT_ID() AS iPaddleNumID');
         $newRow   = mysqli_fetch_array($rsNew);
         $paddleId = (int) $newRow['iPaddleNumID'];
     } else {
