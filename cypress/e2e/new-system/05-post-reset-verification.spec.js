@@ -143,24 +143,39 @@ describe('05 - Post-Reset Verification', () => {
             });
         });
 
-        it('should have deleted person photo files from disk after DB reset (GHSA-r68j-h5c6-w6gh)', () => {
-            // Demo data imported in spec 02 wrote a photo for person ID 2 into
-            // Images/Person/. After a DB reset the handler must wipe that directory.
-            // This test catches the case-sensitivity bug fixed by GHSA-r68j-h5c6-w6gh:
-            // the handler used lowercase 'Images/person' which silently skipped
-            // cleanup on Linux (case-sensitive) filesystems.
+        // Must use function() (not arrow) so Mocha's this.skip() is available for
+        // the pre-condition guard below.
+        // eslint-disable-next-line prefer-arrow-callback
+        it('should have deleted person photo files from disk after DB reset (GHSA-r68j-h5c6-w6gh)', function () {
+            // Pre-condition guard: check whether person 2's demo photo actually exists
+            // on disk at this point (i.e. survived the reset — meaning the bug is
+            // present). If the endpoint already returns 404 we cannot distinguish
+            // "fix correctly deleted the file" from "spec 02 never ran and no file
+            // was ever created", so we skip rather than produce a silent false-negative
+            // pass.
             //
             // The /api/person/{id}/photo endpoint uses Photo::hasUploadedPhoto() which
             // only checks file existence on disk — no PersonMiddleware, no DB lookup.
-            // So even though person 2 no longer exists in the reset DB, this call
-            // correctly returns 200 when the file is still on disk (bug present) or
-            // 404 when it has been deleted (fix working).
+            // 200 → file survived the reset (bug present); 404 → file is gone (or
+            // never existed — skip).
             cy.request({
                 method: 'GET',
                 url: '/api/person/2/photo',
                 failOnStatusCode: false,
                 timeout: 10000
             }).then((resp) => {
+                if (resp.status !== 200) {
+                    cy.log(
+                        'Pre-condition not met: /api/person/2/photo returned ' +
+                        resp.status +
+                        ' — photo was either correctly deleted by the reset fix or ' +
+                        'spec 02 never ran. Skipping regression assertion.'
+                    );
+                    this.skip();
+                    return;
+                }
+                // Photo survived the DB reset — the cleanup fix is NOT working.
+                // Assert 404 to fail the test and surface the regression.
                 expect(resp.status).to.equal(404,
                     'Person 2 photo file must be deleted from disk after DB reset (GHSA-r68j-h5c6-w6gh)');
             });

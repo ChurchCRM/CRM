@@ -216,6 +216,26 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
                     FileSystemUtils::recursiveRemoveDirectory($dir);
                 }
 
+                // After removing the real target directories, clean up any dangling symlinks
+                // so the recreation loop can create real directories at the canonical paths.
+                // The blocking scenario: the canonical uppercase path (e.g. Images/Person)
+                // was itself a symlink to the real directory. After recursiveRemoveDirectory()
+                // deleted the target, the symlink entry at that canonical path remains and
+                // would cause mkdir('Images/Person') to fail because the path is already
+                // occupied. On a case-sensitive filesystem, a dangling symlink at
+                // 'Images/person' (lowercase) does NOT block 'mkdir(Images/Person)' — those
+                // are distinct paths — but we include all four candidates for completeness.
+                foreach ([
+                    $imagesRoot . '/Person', $imagesRoot . '/person',
+                    $imagesRoot . '/Family', $imagesRoot . '/family',
+                ] as $candidate) {
+                    if (is_link($candidate) && !is_dir($candidate)) {
+                        if (!unlink($candidate)) {
+                            $logger->warning('DB reset: failed to remove dangling symlink', ['path' => $candidate]);
+                        }
+                    }
+                }
+
                 // Recreate only the canonical uppercase directories.
                 // mkdir() failure is non-fatal but must be logged: a missing
                 // directory causes subsequent photo uploads to fail silently.
