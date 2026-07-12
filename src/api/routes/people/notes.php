@@ -9,9 +9,9 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\NoteMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\NotesRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -151,7 +151,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
         }
 
-        $text = InputUtils::sanitizeHTML($input['text'] ?? '');
+        $text = (string) ($input['text'] ?? '');
         if ($text === '') {
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
@@ -168,7 +168,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $note->save();
 
         return SlimUtils::renderJSON($response, ['note' => noteToArray($note)], 201);
-    });
+    })->add(new InputSanitizationMiddleware(['text' => 'html']));
 })->add(new PersonMiddleware())->add(NotesRoleAuthMiddleware::class);
 
 // ---------------------------------------------------------------------------
@@ -272,7 +272,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
         }
 
-        $text = InputUtils::sanitizeHTML($input['text'] ?? '');
+        $text = (string) ($input['text'] ?? '');
         if ($text === '') {
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
@@ -289,7 +289,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $note->save();
 
         return SlimUtils::renderJSON($response, ['note' => noteToArray($note)], 201);
-    });
+    })->add(new InputSanitizationMiddleware(['text' => 'html']));
 })->add(FamilyMiddleware::class)->add(NotesRoleAuthMiddleware::class);
 
 // ---------------------------------------------------------------------------
@@ -367,7 +367,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         }
 
         $input = (array) $request->getParsedBody();
-        $text = InputUtils::sanitizeHTML($input['text'] ?? '');
+        $text = (string) ($input['text'] ?? '');
         if ($text === '') {
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
@@ -381,7 +381,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note->save();
 
         return SlimUtils::renderJSON($response, ['note' => noteToArray($note)]);
-    });
+    })->add(new InputSanitizationMiddleware(['text' => 'html']));
 
     /**
      * @OA\Delete(

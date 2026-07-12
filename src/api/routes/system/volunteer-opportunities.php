@@ -3,9 +3,9 @@
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -89,8 +89,8 @@ $app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): v
     $group->post('', function (Request $request, Response $response, array $args): Response {
         try {
             $input = (array) $request->getParsedBody();
-            $name = InputUtils::sanitizeText($input['name'] ?? '');
-            $description = InputUtils::sanitizeText($input['description'] ?? '');
+            $name = (string) ($input['name'] ?? '');
+            $description = (string) ($input['description'] ?? '');
             $active = array_key_exists('active', $input)
                 ? filter_var($input['active'], FILTER_VALIDATE_BOOLEAN)
                 : true;
@@ -125,7 +125,7 @@ $app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): v
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create volunteer opportunity'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Get(
@@ -181,7 +181,7 @@ $app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): v
             $input = (array) $request->getParsedBody();
 
             if (array_key_exists('name', $input)) {
-                $name = InputUtils::sanitizeText($input['name']);
+                $name = (string) $input['name'];
                 if ($name === '') {
                     return SlimUtils::renderErrorJSON($response, gettext('You must enter a name'), [], 400);
                 }
@@ -196,7 +196,7 @@ $app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): v
             }
 
             if (array_key_exists('description', $input)) {
-                $desc = InputUtils::sanitizeText($input['description']);
+                $desc = (string) $input['description'];
                 if (strlen($desc) > 100) {
                     return SlimUtils::renderErrorJSON($response, gettext('Description cannot exceed 100 characters'), [], 400);
                 }
@@ -213,7 +213,7 @@ $app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): v
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update volunteer opportunity'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Delete(
