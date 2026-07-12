@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use Exception;
 use Monolog\Level;
+use Propel\Runtime\Propel;
 
 class   SystemConfig
 {
@@ -476,14 +477,23 @@ class   SystemConfig
         if (!isset(self::$configs[$name])) {
             // For dynamic config keys (like plugin.*), handle directly via database
             if (strpos($name, 'plugin.') === 0) {
-                // Find or create the config row by name
+                // Find or create the config row by name.
                 $dbConfig = ConfigQuery::create()->findOneByName($name);
-                if (!$dbConfig) {
-                    $dbConfig = new Config();
-                    $dbConfig->setName($name);
+                if ($dbConfig) {
+                    // Row exists: Propel UPDATE only touches cfg_value — safe on any schema
+                    // (both modern 2-column and legacy ChurchInfo 1.x schemas with extra
+                    // NOT NULL columns such as cfg_default).
+                    $dbConfig->setValue($value);
+                    $dbConfig->save();
+                } else {
+                    // Row does not exist: Propel's INSERT emits only (cfg_name, cfg_value).
+                    // On a legacy ChurchInfo 1.x config_cfg schema (pre-upgrade migration),
+                    // cfg_default is NOT NULL with no column-level default, causing MySQL
+                    // strict-mode error 1364. Use a schema-aware raw INSERT instead that
+                    // supplies every NOT NULL column lacking a default value (e.g. cfg_default).
+                    // See: https://github.com/ChurchCRM/CRM/issues/9117
+                    self::insertDynamicConfigRow($name, $value);
                 }
-                $dbConfig->setValue($value);
-                $dbConfig->save();
                 return;
             }
             throw new \Exception(gettext('An invalid configuration name has been requested') . ': ' . $name);
@@ -512,7 +522,72 @@ class   SystemConfig
         $configItem->setValue($value);
     }
 
-    
+    /**
+     * Schema-aware raw INSERT for dynamic plugin.* config rows.
+     *
+     * Propel's Config model only maps (cfg_name, cfg_value). On a legacy
+     * ChurchInfo 1.x database (before the pre-6.0.0 upgrade migration runs),
+     * config_cfg contains additional NOT NULL columns without column-level
+     * defaults. Propel's two-column INSERT fails with MySQL strict-mode error
+     * 1364 ("Field 'cfg_default' doesn't have a default value").
+     *
+     * This method queries INFORMATION_SCHEMA.COLUMNS to discover every NOT NULL,
+     * no-default, non-auto_increment column in config_cfg and supplies those
+     * columns in the INSERT, ensuring it succeeds on both modern and legacy schemas.
+     *
+     * Schema notes:
+     * - Modern schema (post-migration): cfg_name has COLUMN_DEFAULT='' (not NULL),
+     *   cfg_value is nullable. The INFORMATION_SCHEMA query returns no extra rows,
+     *   so the INSERT is a plain two-column (cfg_name, cfg_value) statement.
+     * - Legacy ChurchInfo 1.x schema (pre-migration): both cfg_default (TEXT NOT NULL)
+     *   and cfg_tooltip (TEXT NOT NULL) lack column-level defaults and are returned
+     *   by the query. Both are filled with $value — a harmless placeholder, since the
+     *   pre-6.0.0 migration drops these columns before normal operation begins.
+     * - cfg_id on legacy schemas is the PRIMARY KEY with DEFAULT '0', so it is
+     *   excluded by the COLUMN_DEFAULT IS NULL predicate and MySQL fills it as 0.
+     *   Only the first new plugin.* row per session can succeed on a legacy schema
+     *   before the migration runs (a second INSERT would produce a cfg_id=0 duplicate);
+     *   this is a pre-existing limitation shared with the original Propel save() path
+     *   and does not affect the single-row plugin.external-backup.enabled scenario.
+     *
+     * @param string $name  Full config key (e.g. "plugin.external-backup.enabled")
+     * @param string $value Value to store
+     */
+    private static function insertDynamicConfigRow(string $name, string $value): void
+    {
+        $connection = Propel::getConnection();
+
+        // Discover all NOT NULL columns that have no column-level default.
+        // On a modern schema the query returns no extra columns (cfg_name has
+        // COLUMN_DEFAULT=''; cfg_value is nullable). On the legacy ChurchInfo 1.x
+        // schema the query returns cfg_default and cfg_tooltip — both TEXT NOT NULL
+        // with no column-level default — which must receive explicit values.
+        $stmt = $connection->prepare(
+            'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS'
+            . ' WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = :table'
+            . ' AND IS_NULLABLE = \'NO\' AND COLUMN_DEFAULT IS NULL'
+            . ' AND EXTRA NOT LIKE \'%auto_increment%\''
+        );
+        $stmt->execute([':table' => 'config_cfg']);
+        $requiredColumns = $stmt->fetchAll(\PDO::FETCH_COLUMN);
+
+        // Always include the two columns the Propel model knows about.
+        $columns = ['cfg_name' => $name, 'cfg_value' => $value];
+
+        // For every additional NOT NULL / no-default column found (e.g. cfg_default,
+        // cfg_tooltip on a legacy schema), supply the written value as a placeholder.
+        // These columns are dropped by the pre-6.0.0 migration before normal app use.
+        foreach ($requiredColumns as $col) {
+            if (!array_key_exists($col, $columns)) {
+                $columns[$col] = $value;
+            }
+        }
+
+        $colList    = implode(', ', array_map(fn (string $c): string => "`{$c}`", array_keys($columns)));
+        $paramList  = implode(', ', array_fill(0, count($columns), '?'));
+        $insert = $connection->prepare("INSERT INTO config_cfg ({$colList}) VALUES ({$paramList})");
+        $insert->execute(array_values($columns));
+    }
 
 
     public static function hasValidMailServerSettings(): bool
