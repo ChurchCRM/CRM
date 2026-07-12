@@ -232,7 +232,7 @@ describe('Upgrade via Restore', () => {
 
         it('should report current software version and healthy API after upgrade', () => {
             // VersionMiddleware stamps every /api response with the installed version.
-            // A non-empty CRM_VERSION header confirms the app is upgraded and serving.
+            // A non-empty X-CRM-Version header confirms the app is upgraded and serving.
             cy.request({
                 method: 'GET',
                 url: '/api/persons/latest',
@@ -240,9 +240,9 @@ describe('Upgrade via Restore', () => {
             }).then((response) => {
                 expect(response.status).to.equal(200);
                 expect(response.body).to.be.an('object');
-                const version = response.headers['crm_version'];
-                expect(version, 'CRM_VERSION header must be present').to.exist;
-                expect(String(version), 'CRM_VERSION must be non-empty').to.not.equal('');
+                const version = response.headers['x-crm-version'];
+                expect(version, 'X-CRM-Version header must be present').to.exist;
+                expect(String(version), 'X-CRM-Version must be non-empty').to.not.equal('');
                 cy.log(`Upgraded system reporting version: ${version}`);
             });
         });
