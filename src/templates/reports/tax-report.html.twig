@@ -59,6 +59,23 @@
 {% extends "_base.html.twig" %}
 
 {% block extra_style %}
+    {# ── Letter partial styles (hoisted from _letter.html.twig so they appear
+       once in <head>, not once per {% embed %} iteration in <body>) ── #}
+    .letterhead-text { margin-bottom: 6mm; }
+    .letterhead-text .church-name { font-size: 14pt; font-weight: bold; }
+    .letterhead-text .church-contact { font-size: 9pt; }
+
+    .date-line { text-align: right; margin-bottom: 4mm; }
+
+    .recipient-block { margin-bottom: 8mm; }
+    .recipient-block p { margin: 0; line-height: 5mm; }
+
+    .letter-content { margin-top: 4mm; }
+
+    .closing-block { margin-top: 8mm; }
+    .closing-block .signature { margin-top: 8mm; }
+
+    {# ── Report-specific styles ── #}
     table.payments {
         width: 100%;
         border-collapse: collapse;
@@ -99,7 +116,15 @@
 {# ── Embed the shared _letter.html.twig partial for this family.
    Override letter_body to insert the donation payment table.
    All letterhead, date, recipient-address, and closing markup
-   comes from _letter.html.twig with no duplication. ── #}
+   comes from _letter.html.twig with no duplication. ──
+
+   SCOPE NOTE: The `with` clause passes only the per-family variables that
+   differ between iterations.  About 10 report-level variables (letterhead,
+   churchName, churchAddress, churchCity, churchState, churchZip, churchPhone,
+   churchEmail, letterheadImage, today, defaultCountry) are NOT listed here
+   because Twig's {% embed %} tag implicitly inherits the full outer scope
+   when `only` is omitted (default).  If you ever add `only` to this embed
+   call you must explicitly forward those variables too. #}
 {% embed "_letter.html.twig" with {
     salutation:         family.salutation,
     recipientAddress1:  family.recipientAddress1,
