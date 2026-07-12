@@ -1,10 +1,15 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 
 $sPageTitle = gettext('People Verify Dashboard');
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
+
+<form id="verifyEmailAllForm" method="post" action="<?= SystemURLs::getRootPath() ?>/v2/people/report/verify/email" class="d-none">
+    <?= CSRFUtils::getTokenInputField('people_report_verify_email') ?>
+</form>
 
 <div class="card">
     <div class="card-header d-flex align-items-center">
@@ -61,7 +66,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location= window.CRM.root +"/Reports/ConfirmReportEmail.php";
+                        document.getElementById('verifyEmailAllForm').submit();
                     }
                 }
             });

@@ -10,6 +10,14 @@
  * cy.visit() cannot be used on PDF endpoints (content-type must be text/html).
  * makePrivateAdminAPICall() resets PHP sessions, so family IDs are hardcoded
  * to demo data (family 1) rather than fetched via API calls before PDF tests.
+ *
+ * MVC routes (primary):
+ *   GET /v2/people/report/verify[?familyId=<int>]        → download PDF
+ *   POST /v2/people/report/verify/email (CSRF-protected)  → email PDFs + redirect
+ *
+ * Legacy routes (backwards compatibility — redirect to MVC):
+ *   GET /Reports/ConfirmReport.php[?familyId=<int>]      → 302 → MVC
+ *   GET /Reports/ConfirmReportEmail.php[?familyId=<int>] → 302 → MVC
  */
 describe("Confirmation Reports - ConfirmReport & ConfirmReportEmail", () => {
     beforeEach(() => {
@@ -101,20 +109,58 @@ describe("Confirmation Reports - ConfirmReport & ConfirmReportEmail", () => {
         });
     });
 
-    describe("ConfirmReportEmail - PDF Generation & Email", () => {
-        it("should generate confirmation report email without errors", () => {
-            // LettersAndLabels.php is the entry point for confirmation report emails
-            cy.contains("Letters and Mailing Labels");
-            cy.get("body").should("not.contain", "Fatal error");
-            cy.get("body").should("not.contain", "500");
+    describe("MVC route - Email PDF (POST /v2/people/report/verify/email)", () => {
+        it("should redirect after email attempt (success or SMTP error redirect)", () => {
+            // The email endpoint is now a CSRF-protected POST.
+            // Visit the verify page to obtain the rendered CSRF token, then POST it.
+            cy.visit("v2/people/verify");
+            cy.get('#verifyEmailAllForm input[name="csrf_token"]').invoke("val").then((token) => {
+                cy.request({
+                    method: "POST",
+                    url: "v2/people/report/verify/email",
+                    form: true,
+                    // Use familyId=1 so only one family is processed; email will likely fail
+                    // in CI without SMTP, which triggers redirect to ?EmailsError=true.
+                    body: { csrf_token: token, familyId: 1 },
+                    followRedirect: false,
+                    failOnStatusCode: false,
+                }).then((resp) => {
+                    // Route always redirects (302): success → verify page, SMTP error → verify?EmailsError=true
+                    expect([200, 302]).to.include(resp.status);
+                    if (resp.body && typeof resp.body === "string") {
+                        expect(resp.body).to.not.include("Fatal error");
+                    }
+                });
+            });
         });
 
-        it("should handle confirmation report email with custom fields", () => {
-            // Verify page loaded without errors — no API call here to avoid PHP session pollution
-            // (makePrivateAdminAPICall resets the session cookie, breaking subsequent PDF navigations)
-            cy.get("body").should("not.contain", "Fatal error");
-            cy.get("body").should("not.contain", "500");
+        it("should reject POST without CSRF token with 403 Forbidden", () => {
+            cy.request({
+                method: "POST",
+                url: "v2/people/report/verify/email",
+                form: true,
+                body: { familyId: 1 },  // no csrf_token
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.equal(403);
+            });
         });
+    });
+
+    describe("Backwards Compatibility - legacy URLs redirect to MVC", () => {
+        it("legacy /Reports/ConfirmReport.php redirects", () => {
+            cy.intercept("GET", "**/Reports/ConfirmReport.php").as("legacyRedirect");
+
+            cy.window().then((win) => {
+                win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php`;
+            });
+
+            cy.wait("@legacyRedirect", { timeout: 15000 }).then((interception) => {
+                // The redirect stub issues a 302 to the MVC route
+                expect([200, 302]).to.include(interception.response.statusCode);
+            });
+        });
+
     });
 
     describe("Report Data Integrity", () => {
