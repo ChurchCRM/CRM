@@ -837,14 +837,14 @@ class FinancialService
 
         // Use YEAR() aggregation so the DB returns only distinct years, not every row.
         // withColumn() emits the expression as a SELECT column; groupBy() de-duplicates;
-        // orderByDate DESC puts the most-recent year first.
+        // addDescendingOrderByColumn orders by the virtual column (not raw plg_date).
         $query = PledgeQuery::create()
             ->filterByFamId($familyId)
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(null, Criteria::ISNOTNULL)
             ->withColumn('YEAR(pledge_plg.plg_date)', 'PaymentYear')
             ->groupBy('PaymentYear')
-            ->orderByDate(Criteria::DESC)
+            ->addDescendingOrderByColumn('PaymentYear')
             ->select(['PaymentYear']);
 
         if ($maxYears > 0) {

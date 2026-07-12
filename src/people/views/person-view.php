@@ -350,7 +350,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             </div>
         </div>
 
-        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && !empty($per_fam_ID)) { ?>
+        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && !empty($fam_ID)) { ?>
         <!-- Giving History Card (Finance role only) -->
         <div class="card mb-3" id="giving-history-card">
             <div class="card-header d-flex align-items-center">
@@ -373,7 +373,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         </li>
                     </ul>
                     <div class="px-3 pb-2">
-                        <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= (int)$per_fam_ID ?>#giving-history" class="btn btn-sm btn-outline-primary w-100">
+                        <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= (int)$fam_ID ?>#giving-history" class="btn btn-sm btn-outline-primary w-100">
                             <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("View Full Family Giving") ?>
                         </a>
                     </div>
@@ -803,7 +803,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
         <script src="<?= SystemURLs::assetVersioned('/skin/js/PersonView.js') ?>"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM.currentPersonID = <?= $iPersonID ?>;
-            window.CRM.personFamId = <?= (int)$per_fam_ID ?>;
+            window.CRM.personFamId = <?= (int)$fam_ID ?>;
             window.CRM.currentFY = <?= json_encode(FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId() ?? 1)) ?>;
 
             $("#deletePhoto").click(function() {
