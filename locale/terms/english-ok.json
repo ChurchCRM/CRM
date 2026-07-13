@@ -86,6 +86,7 @@
     "2FA",
     "4. Kiosk",
     "A",
+    "AM / PM",
     "API Access",
     "API Key",
     "Access Token",
@@ -177,6 +178,8 @@
     "Database",
     "Database:",
     "Default",
+    "Default: (999) 999-9999",
+    "Default: (999) 999-9999 x99999",
     "Denmark (Danmark)",
     "Diego Garcia",
     "Discord Chat",
@@ -373,6 +376,8 @@
     "Russia (Россия)",
     "Rwanda",
     "Réunion (La Réunion)",
+    "SHA-256 checksum",
+    "SHA1 Hash",
     "SMTP Configuration",
     "SMTP Debug Log",
     "SMTP Host",
@@ -469,12 +474,12 @@
     "Zambia",
     "Zimbabwe",
     "Zip Code",
+    "am / pm",
     "manifest.",
     "page",
     "s",
     "user:",
-    "Åland Islands (Åland)",
-    "SHA-256 checksum"
+    "Åland Islands (Åland)"
   ],
   "fr": [
     "AM / PM",
@@ -499,8 +504,13 @@
     "page",
     "page."
   ],
-  "hi": [],
+  "hi": [
+    "HTML URL",
+    "ICS URL",
+    "SHA1 Hash"
+  ],
   "id": [
+    "AM / PM",
     "Administrator",
     "Audit",
     "Azure",
@@ -511,13 +521,21 @@
     "Manual",
     "Minimum",
     "Online",
-    "Server"
+    "SHA1 Hash",
+    "Server",
+    "am / pm"
   ],
   "ja": [
-    "Azure"
+    "Azure",
+    "HTML URL",
+    "ICS URL",
+    "SHA1 Hash"
   ],
   "ko": [
-    "Azure"
+    "Azure",
+    "HTML URL",
+    "ICS URL",
+    "SHA1 Hash"
   ],
   "nl": [
     "4. Kiosk",
@@ -581,13 +599,16 @@
   ],
   "vi": [
     "Azure",
-    "Email BCC"
+    "Email BCC",
+    "SHA1 Hash"
   ],
   "zh-CN": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "zh-TW": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "hu": [
     "Azure",
@@ -704,7 +725,8 @@
     "Indigo"
   ],
   "ta": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "te": [
     "App",
@@ -714,13 +736,16 @@
     "Database",
     "Display Errors",
     "Error Reporting",
+    "HTML URL",
     "Hit Rate",
     "Host",
+    "ICS URL",
     "Locale",
     "Max Execution Time",
     "Max POST Size",
     "Max Upload Size",
     "Memory Limit",
+    "SHA1 Hash",
     "Server",
     "Test",
     "Timeout"
