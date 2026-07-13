@@ -953,6 +953,13 @@ function adminUserEditorNew(Request $request, Response $response): Response
             $userService->createUser($personId, $perms, $userName);
             return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/system/users');
         } catch (\Throwable $e) {
+            \ChurchCRM\Utils\LoggerUtils::getAppLogger()->error('createUser failed: ' . $e->getMessage(), [
+                'personId'  => $personId,
+                'userName'  => $userName,
+                'exception' => get_class($e),
+                'file'      => $e->getFile(),
+                'line'      => $e->getLine(),
+            ]);
             $pageArgs['sErrorText'] = $e->getMessage();
             return $renderer->render($response, 'user-editor.php', $pageArgs);
         }
