@@ -4,7 +4,16 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
+// Header.php runs in the same scope and sets $personId = currentUser->getPersonId(),
+// which would overwrite the page-specific $personId (the person being created/edited).
+// Capture it first so the form hidden field renders the correct value.
+$_editorPersonId = $personId;
+
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+// Restore the editor's person ID after Header.php may have clobbered it.
+$personId = $_editorPersonId;
+unset($_editorPersonId);
 
 // Derive the access mode for the UI
 $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom');

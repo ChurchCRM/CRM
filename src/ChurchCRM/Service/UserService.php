@@ -144,8 +144,11 @@ class UserService
         // Fetch only the PersonId column to avoid hydrating full User model objects.
         // The User table's primary key phpName is 'PersonId' (not 'Id').
         $existingUserPersonIds = [];
-        foreach (UserQuery::create()->select(['PersonId'])->find() as $id) {
-            $existingUserPersonIds[] = (int) $id;
+        foreach (UserQuery::create()->select(['PersonId'])->find() as $row) {
+            // Propel select() returns associative arrays when columns are named,
+            // e.g. ['PersonId' => 1]. Casting directly to int always yields 1
+            // for any non-empty array; extract the scalar value explicitly.
+            $existingUserPersonIds[] = is_array($row) ? (int) ($row['PersonId'] ?? 0) : (int) $row;
         }
 
         // Fetch persons NOT in that set
