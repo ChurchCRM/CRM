@@ -7,11 +7,14 @@
     "Minimum"
   ],
   "cs": [
+    "AM / PM",
     "Audit",
     "Azure",
     "Online",
+    "SHA1 Hash",
     "Server",
-    "Test"
+    "Test",
+    "am / pm"
   ],
   "el": [
     "Azure"
@@ -36,11 +39,14 @@
     "am / pm"
   ],
   "es-CO": [
+    "AM / PM",
     "Azure",
     "Host",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "es-MX": [
     "AM / PM",
@@ -53,11 +59,14 @@
     "am / pm"
   ],
   "es-SV": [
+    "AM / PM",
     "Azure",
     "Host",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "et": [
     "Audit",
@@ -466,6 +475,7 @@
     "SHA-256 checksum"
   ],
   "fr": [
+    "AM / PM",
     "Audit",
     "Azure",
     "Communication",
@@ -477,10 +487,13 @@
     "Format",
     "Indigo",
     "Minimum",
+    "Minutes",
     "Orange",
     "Parents",
     "Photo",
+    "SHA1 Hash",
     "Test",
+    "am / pm",
     "page",
     "page."
   ],
@@ -543,7 +556,8 @@
     "am / pm"
   ],
   "ru": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "sq": [
     "4. Kiosk",
@@ -571,9 +585,13 @@
   ],
   "hu": [
     "Azure",
-    "Online"
+    "HTML URL",
+    "ICS URL",
+    "Online",
+    "SHA1 Hash"
   ],
   "it": [
+    "AM / PM",
     "Account",
     "App",
     "Audit",
@@ -585,9 +603,12 @@
     "Locale",
     "Malayalam - India",
     "Online",
+    "SHA1 Hash",
     "Server",
     "Test",
-    "Timeout"
+    "Timeout",
+    "am / pm",
+    "in"
   ],
   "ml": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
@@ -624,6 +645,7 @@
   ],
   "pl": [
     "4. Kiosk",
+    "AM / PM",
     "Administrator",
     "Azure",
     "Format",
@@ -631,10 +653,13 @@
     "Kiosk",
     "Minimum",
     "Online",
+    "SHA1 Hash",
+    "System",
     "Test",
-    "System"
+    "am / pm"
   ],
   "ro": [
+    "AM / PM",
     "Administrator",
     "Audit",
     "Azure",
@@ -645,8 +670,10 @@
     "Manual",
     "Material",
     "Online",
+    "SHA1 Hash",
     "Server",
-    "Test"
+    "Test",
+    "am / pm"
   ],
   "sv": [
     "4. Kiosk",
@@ -705,7 +732,8 @@
     "Timeout"
   ],
   "uk": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "de": [
     "App",
