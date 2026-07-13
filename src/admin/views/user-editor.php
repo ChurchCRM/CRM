@@ -4,16 +4,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
-// Header.php runs in the same scope and sets $personId = currentUser->getPersonId(),
-// which would overwrite the page-specific $personId (the person being created/edited).
-// Capture it first so the form hidden field renders the correct value.
-$_editorPersonId = $personId;
-
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
-
-// Restore the editor's person ID after Header.php may have clobbered it.
-$personId = $_editorPersonId;
-unset($_editorPersonId);
 
 // Derive the access mode for the UI
 $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom');
@@ -53,6 +44,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
             <label class="col-sm-3 col-form-label"><?= gettext('Person') ?></label>
             <div class="col-sm-9">
                 <select name="PersonID" id="personSelect" class="form-select">
+                    <option value="" disabled selected><?= gettext('— Select a person —') ?></option>
                     <?php foreach ($people as $p): ?>
                     <option value="<?= $p->getId() ?>"><?= InputUtils::escapeHTML($p->getLastName() . ', ' . $p->getFirstName()) ?></option>
                     <?php endforeach; ?>
@@ -60,7 +52,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
             </div>
         </div>
         <?php else: ?>
-        <input type="hidden" name="PersonID" value="<?= (int) $personId ?>">
+        <input type="hidden" name="PersonID" value="<?= (int) $editorPersonId ?>">
         <div class="row mb-3">
             <label class="col-sm-3 col-form-label"><?= gettext('User') ?></label>
             <div class="col-sm-9">

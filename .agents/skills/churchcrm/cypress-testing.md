@@ -528,7 +528,7 @@ describe("Group property management", () => {
 it("creates a user via the form", () => {
     cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 404]);
     cy.setupAdminSession({ forceLogin: true });  // required — API call above invalidated the session
-    cy.visit("UserEditor.php?NewPersonID=25");
+    cy.visit("admin/system/users/new?personId=25");
     // ...
 });
 

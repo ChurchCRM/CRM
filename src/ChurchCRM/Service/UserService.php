@@ -141,21 +141,21 @@ class UserService
      */
     public function getAssignablePeople()
     {
-        // Fetch only the PersonId column to avoid hydrating full User model objects.
-        // The User table's primary key phpName is 'PersonId' (not 'Id').
-        $existingUserPersonIds = [];
-        foreach (UserQuery::create()->select(['PersonId'])->find() as $row) {
-            // Propel select() returns associative arrays when columns are named,
-            // e.g. ['PersonId' => 1]. Casting directly to int always yields 1
-            // for any non-empty array; extract the scalar value explicitly.
-            $existingUserPersonIds[] = is_array($row) ? (int) ($row['PersonId'] ?? 0) : (int) $row;
-        }
+        // Fetch IDs of all persons who already have a user account.
+        // select()->find()->toArray() returns a flat array of scalar values for a
+        // single-column select — consistent with the SundaySchoolService pattern.
+        $existingUserPersonIds = UserQuery::create()
+            ->select(['PersonId'])
+            ->find()
+            ->toArray();
 
-        // Fetch persons NOT in that set
-        return PersonQuery::create()
-            ->filterById($existingUserPersonIds ?: [0], Criteria::NOT_IN)
-            ->orderByLastName()
-            ->find();
+        // Fetch persons NOT in that set; skip the NOT_IN filter when there are
+        // no existing users (empty IN list produces invalid SQL on some drivers).
+        $query = PersonQuery::create()->orderByLastName();
+        if (!empty($existingUserPersonIds)) {
+            $query->filterById($existingUserPersonIds, Criteria::NOT_IN);
+        }
+        return $query->find();
     }
 
     /**

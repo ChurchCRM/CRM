@@ -102,7 +102,7 @@ $app->get('/admin/system/users', function (Request $request, Response $response)
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
             ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#userSettings'],
-            ['label' => gettext('Add User'), 'url' => '/UserEditor.php', 'icon' => 'fa-user-plus'],
+            ['label' => gettext('Add User'), 'url' => '/admin/system/users/new', 'icon' => 'fa-user-plus'],
         ]),
         'sSettingsCollapseId' => 'userSettings',
         'stats'    => $userService->getUserStats(),

@@ -929,7 +929,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
         $person = $personId > 0 ? PersonQuery::create()->findPk($personId) : null;
         $sUser  = $person ? ($person->getLastName() . ', ' . $person->getFirstName()) : '';
 
-        $pageArgs['personId']          = $personId;
+        $pageArgs['editorPersonId']      = $personId;
         $pageArgs['sUser']             = $sUser;
         $pageArgs['sUserName']         = $userName;
         $pageArgs['perms']             = $perms;
@@ -977,14 +977,14 @@ function adminUserEditorNew(Request $request, Response $response): Response
         $sUser    = $person->getLastName() . ', ' . $person->getFirstName();
         $email    = $person->getEmail();
         $userName = !empty($email) ? $email : $person->getFirstName() . '.' . $person->getLastName();
-        $pageArgs['personId']         = $personId;
+        $pageArgs['editorPersonId']        = $personId;
         $pageArgs['sUser']            = $sUser;
         $pageArgs['sUserName']        = $userName;
         $pageArgs['showPersonSelect'] = false;
         $pageArgs['people']           = [];
     } else {
         // No person pre-selected — show person picker
-        $pageArgs['personId']         = 0;
+        $pageArgs['editorPersonId']        = 0;
         $pageArgs['sUser']            = '';
         $pageArgs['sUserName']        = '';
         $pageArgs['showPersonSelect'] = true;
@@ -1038,7 +1038,7 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
             ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
         ])),
         'isNew'            => false,
-        'personId'         => $personId,
+        'editorPersonId'   => $personId,
         'sUser'            => $sUser,
         'showPersonSelect' => false,
         'people'           => [],
@@ -1054,9 +1054,13 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
 
         $pageArgs['sUserName'] = $userName;
         $pageArgs['perms']     = $perms;
-        $pageArgs['configRows'] = $userService->getUserConfigRows($personId);
+        // configRows is initialised to [] here so the template always has the
+        // key; getUserConfigRows() is called inside the try so that a DB error
+        // during the load is also caught and surfaced via sErrorText.
+        $pageArgs['configRows'] = [];
 
         try {
+            $pageArgs['configRows'] = $userService->getUserConfigRows($personId);
             $newValue      = (array) ($body['new_value'] ?? []);
             $newPermission = (array) ($body['new_permission'] ?? []);
             $types         = (array) ($body['type'] ?? []);

@@ -110,7 +110,7 @@ app (`/v2`, `/people`, `/event`, `/groups`, …) even when no `roleMiddleware` i
 - `canViewFamily()` is true only for their own family; `canEditPerson()` is scoped to their
   own family members.
 - **`usr_EditSelf` defaults to `0` on new user creation** — it must be explicitly granted
-  in `UserService::normalizeAccessMode()` (formerly `UserEditor.php`). EditSelf is NOT a default right.
+  in `UserService::normalizeAccessMode()` (the legacy `UserEditor.php` was removed in PR #9173). EditSelf is NOT a default right.
 - The "Verify Family Info" button renders only when `$verifyUrl` is non-empty.
   `src/external/routes/system.php` now guards token creation with
   `$familyId > 0 && $user->isEditSelfEnabled()`, so a user without EditSelf is never offered
