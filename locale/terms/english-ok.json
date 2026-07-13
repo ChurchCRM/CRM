@@ -71,12 +71,14 @@
   "et": [
     "Audit",
     "Host",
+    "SHA1 Hash",
     "Server",
     "Test",
     "risk"
   ],
   "fi": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "fil": [
     "(PHP default)",
@@ -519,6 +521,7 @@
   ],
   "nl": [
     "4. Kiosk",
+    "AM / PM",
     "Account",
     "App",
     "Audit",
@@ -529,9 +532,12 @@
     "Indigo",
     "Malayalam - India",
     "Online",
+    "SHA1 Hash",
     "Server",
     "Test",
-    "Vonage Dashboard"
+    "Vonage Dashboard",
+    "am / pm",
+    "in"
   ],
   "pt": [
     "AM / PM",
@@ -638,10 +644,11 @@
     "Malayalam - India",
     "Minimum",
     "Online",
+    "SHA1 Hash",
     "Server",
+    "System",
     "Test",
-    "Vonage Dashboard",
-    "System"
+    "Vonage Dashboard"
   ],
   "pl": [
     "4. Kiosk",
@@ -685,10 +692,11 @@
     "Material",
     "Online",
     "Orange",
+    "SHA1 Hash",
     "Server",
+    "System",
     "Test",
     "Vonage Dashboard",
-    "System",
     "risk"
   ],
   "sw": [
@@ -736,12 +744,16 @@
     "SHA1 Hash"
   ],
   "de": [
+    "AM / PM",
     "App",
     "Host",
     "Online",
+    "SHA1 Hash",
     "Server",
+    "System",
     "Test",
-    "System"
+    "am / pm",
+    "in"
   ],
   "hr": [
     "Côte d'Ivoire"
