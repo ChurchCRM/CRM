@@ -19,7 +19,7 @@ describe("People Tools", () => {
     });
 
     it("self-register", () => {
-        cy.visit("members/self-register.php");
+        cy.visit("people/self-register");
         cy.contains("Self Registrations");
         cy.contains("People");
         cy.contains("Families");

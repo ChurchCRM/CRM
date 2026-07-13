@@ -1,12 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/PageInit.php';
-
-$sPageTitle = gettext('Self Registrations');
-require_once __DIR__ . '/../Include/Header.php';
-
 use ChurchCRM\dto\SystemURLs;
+
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
@@ -222,4 +218,4 @@ use ChurchCRM\dto\SystemURLs;
     });
 </script>
 <?php
-require_once __DIR__ . '/../Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
