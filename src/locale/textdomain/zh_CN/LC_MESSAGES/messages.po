@@ -3022,10 +3022,6 @@ msgid "Data/Reports"
 msgstr "数据/报告"
 
 #: 
-msgid "Query Menu"
-msgstr "查询菜单"
-
-#: 
 msgid "Family Properties"
 msgstr "家庭财产"
 
@@ -15066,10 +15062,6 @@ msgstr "下载备份并继续"
 #: 
 msgid "Downloaded"
 msgstr "已下载"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "正在从 GitHub 下载最新版本..."
 
 #: 
 msgid "Duration"

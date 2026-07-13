@@ -3017,10 +3017,6 @@ msgid "Data/Reports"
 msgstr "Данные / отчеты"
 
 #: 
-msgid "Query Menu"
-msgstr "Меню запросов"
-
-#: 
 msgid "Family Properties"
 msgstr "Семейные свойства"
 
@@ -15082,10 +15078,6 @@ msgstr "Скачать резервную копию и продолжить"
 #: 
 msgid "Downloaded"
 msgstr "Загружено"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Загрузка последнего релиза с GitHub..."
 
 #: 
 msgid "Duration"

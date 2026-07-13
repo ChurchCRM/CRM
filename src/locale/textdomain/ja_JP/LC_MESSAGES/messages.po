@@ -2919,10 +2919,6 @@ msgid "Data/Reports"
 msgstr "データ/レポート"
 
 #: 
-msgid "Query Menu"
-msgstr "クエリメニュー"
-
-#: 
 msgid "Family Properties"
 msgstr "家族のプロパティ"
 
@@ -14949,10 +14945,6 @@ msgstr "バックアップをダウンロードして続行"
 #: 
 msgid "Downloaded"
 msgstr "ダウンロード済み"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "GitHubから最新リリースをダウンロード中..."
 
 #: 
 msgid "Duration"

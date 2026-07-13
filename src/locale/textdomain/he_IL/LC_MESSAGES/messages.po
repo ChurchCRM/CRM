@@ -2946,10 +2946,6 @@ msgid "Data/Reports"
 msgstr "נתונים/דוחות"
 
 #: 
-msgid "Query Menu"
-msgstr "תפריט שאילתות"
-
-#: 
 msgid "Family Properties"
 msgstr "מאפייני משפחה"
 
@@ -14998,10 +14994,6 @@ msgstr "הורדת גיבוי והמשך"
 #: 
 msgid "Downloaded"
 msgstr "הורד"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "מוריד את הגרסה האחרונה מ-GitHub..."
 
 #: 
 msgid "Duration"

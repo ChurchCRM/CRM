@@ -2947,10 +2947,6 @@ msgid "Data/Reports"
 msgstr "بيانات / تقارير"
 
 #: 
-msgid "Query Menu"
-msgstr "القائمة الاستعلام"
-
-#: 
 msgid "Family Properties"
 msgstr "خصائص الأسرة"
 
@@ -15036,10 +15032,6 @@ msgstr "تحميل النسخة الاحتياطية والمتابعة"
 #: 
 msgid "Downloaded"
 msgstr "تم التحميل"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "جاري تنزيل أحدث إصدار من GitHub..."
 
 #: 
 msgid "Duration"

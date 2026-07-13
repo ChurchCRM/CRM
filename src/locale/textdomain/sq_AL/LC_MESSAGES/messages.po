@@ -2948,10 +2948,6 @@ msgid "Data/Reports"
 msgstr "Të dhëna/Raporte"
 
 #: 
-msgid "Query Menu"
-msgstr "Menuja e kërkesave"
-
-#: 
 msgid "Family Properties"
 msgstr "Veçoritë e familjes"
 
@@ -14989,10 +14985,6 @@ msgstr "Shkarko Rezervën & Vazhdoje"
 #: 
 msgid "Downloaded"
 msgstr "Shkarkuar"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Duke shkarkuar versionin e fundit nga GitHub..."
 
 #: 
 msgid "Duration"

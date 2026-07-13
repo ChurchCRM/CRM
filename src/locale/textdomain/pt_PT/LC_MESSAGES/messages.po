@@ -3058,10 +3058,6 @@ msgid "Data/Reports"
 msgstr "Dados/Relatórios"
 
 #: 
-msgid "Query Menu"
-msgstr "Menu de consulta"
-
-#: 
 msgid "Family Properties"
 msgstr "Propriedades (Família)"
 
@@ -15132,10 +15128,6 @@ msgstr "Transferir cópia de segurança e continuar"
 #: 
 msgid "Downloaded"
 msgstr "Baixado"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Baixando a versão mais recente do GitHub..."
 
 #: 
 msgid "Duration"

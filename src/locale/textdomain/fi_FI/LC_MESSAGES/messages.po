@@ -2926,10 +2926,6 @@ msgid "Data/Reports"
 msgstr "Tiedot/Raportit"
 
 #: 
-msgid "Query Menu"
-msgstr "Kyselyvalikko"
-
-#: 
 msgid "Family Properties"
 msgstr "Perheen ominaisuudet"
 
@@ -14962,10 +14958,6 @@ msgstr "Lataa varmuuskopio ja jatka"
 #: 
 msgid "Downloaded"
 msgstr "Ladattu"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Ladataan uusinta julkaisua GitHubista..."
 
 #: 
 msgid "Duration"

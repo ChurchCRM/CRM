@@ -2945,10 +2945,6 @@ msgid "Data/Reports"
 msgstr "Data/Sestavy"
 
 #: 
-msgid "Query Menu"
-msgstr "Nabídka dotazů"
-
-#: 
 msgid "Family Properties"
 msgstr "Vlastnosti rodin"
 
@@ -14999,10 +14995,6 @@ msgstr "Stáhnout zálohu a pokračovat"
 #: 
 msgid "Downloaded"
 msgstr "Staženo"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Stahování nejnovější verze z GitHubu..."
 
 #: 
 msgid "Duration"

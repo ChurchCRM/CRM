@@ -2919,10 +2919,6 @@ msgid "Data/Reports"
 msgstr "ഡേറ്റ/റിപ്പോർട്ടുകൾ"
 
 #: 
-msgid "Query Menu"
-msgstr "ക്വറി മെനു"
-
-#: 
 msgid "Family Properties"
 msgstr "കുടുംബ സ്വഭാവങ്ങൾ"
 
@@ -14960,10 +14956,6 @@ msgstr "ബാക്കപ്പ് ഡൗൺലോഡ് ചെയ്ത് ത
 #: 
 msgid "Downloaded"
 msgstr "ഡൗൺലോഡ് ചെയ്തു"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "GitHub-ൽ നിന്ന് ഏറ്റവും പുതിയ റിലീസ് ഡൗൺലോഡ് ചെയ്യുന്നു..."
 
 #: 
 msgid "Duration"

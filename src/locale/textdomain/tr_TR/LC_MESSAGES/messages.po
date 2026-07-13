@@ -2949,10 +2949,6 @@ msgid "Data/Reports"
 msgstr "Veri/Raporlar"
 
 #: 
-msgid "Query Menu"
-msgstr "Sorgu Menüsü"
-
-#: 
 msgid "Family Properties"
 msgstr "Aile Mülkleri"
 
@@ -15001,10 +14997,6 @@ msgstr "Yedeği İndir ve Devam Et"
 #: 
 msgid "Downloaded"
 msgstr "İndirildi"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "En son sürüm GitHub'dan indiriliyor..."
 
 #: 
 msgid "Duration"
