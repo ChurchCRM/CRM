@@ -3045,10 +3045,6 @@ msgid "Data/Reports"
 msgstr "Data/Rapporter"
 
 #: 
-msgid "Query Menu"
-msgstr "Spørringsmeny"
-
-#: 
 msgid "Family Properties"
 msgstr "Familieegenskaper"
 
@@ -15081,10 +15077,6 @@ msgstr "Last ned sikkerhetskopi og fortsett"
 #: 
 msgid "Downloaded"
 msgstr "Nedlastet"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Laster ned siste utgivelse fra GitHub..."
 
 #: 
 msgid "Duration"

@@ -2946,10 +2946,6 @@ msgid "Data/Reports"
 msgstr "Data/Ripoti"
 
 #: 
-msgid "Query Menu"
-msgstr "Menyu ya Maswali"
-
-#: 
 msgid "Family Properties"
 msgstr "Mali ya Familia"
 
@@ -14996,10 +14992,6 @@ msgstr "Pakua Nakala na Endelea"
 #: 
 msgid "Downloaded"
 msgstr "Imepakuliwa"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Inapakua toleo jipya kutoka GitHub..."
 
 #: 
 msgid "Duration"

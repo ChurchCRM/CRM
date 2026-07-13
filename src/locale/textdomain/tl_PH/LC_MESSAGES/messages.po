@@ -2919,10 +2919,6 @@ msgid "Data/Reports"
 msgstr "Data/Mga Ulat"
 
 #: 
-msgid "Query Menu"
-msgstr "Menu ng Query"
-
-#: 
 msgid "Family Properties"
 msgstr "Mga Katangian ng Pamilya"
 
@@ -14960,10 +14956,6 @@ msgstr "I-download ang Backup at Magpatuloy"
 #: 
 msgid "Downloaded"
 msgstr "Na-download"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Dina-download ang pinakabagong release mula sa GitHub..."
 
 #: 
 msgid "Duration"

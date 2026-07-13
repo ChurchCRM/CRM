@@ -2931,10 +2931,6 @@ msgid "Data/Reports"
 msgstr "డేటా/నివేదికలు"
 
 #: 
-msgid "Query Menu"
-msgstr "క్వరీ మెనూ"
-
-#: 
 msgid "Family Properties"
 msgstr "కుటుంబ లక్షణాలు"
 
@@ -14972,10 +14968,6 @@ msgstr "బ్యాకప్ డౌన్‌లోడ్ చేసి కొన
 #: 
 msgid "Downloaded"
 msgstr "డౌన్‌లోడ్ చేయబడిన"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "GitHub నుండి తాజా విడుదలను డౌన్‌లోడ్ చేస్తోంది..."
 
 #: 
 msgid "Duration"

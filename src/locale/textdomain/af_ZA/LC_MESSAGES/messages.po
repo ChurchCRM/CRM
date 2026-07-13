@@ -2949,10 +2949,6 @@ msgid "Data/Reports"
 msgstr "Data / verslae"
 
 #: 
-msgid "Query Menu"
-msgstr "Navraag-menu"
-
-#: 
 msgid "Family Properties"
 msgstr "Gesins eiendomme"
 
@@ -15001,10 +14997,6 @@ msgstr "Laai Rugsteun Af & Gaan Voort"
 #: 
 msgid "Downloaded"
 msgstr "Afgelaai"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Laai nuutste vrylating van GitHub af..."
 
 #: 
 msgid "Duration"

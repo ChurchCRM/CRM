@@ -2949,10 +2949,6 @@ msgid "Data/Reports"
 msgstr "Дані / Звіти"
 
 #: 
-msgid "Query Menu"
-msgstr "Меню запитів"
-
-#: 
 msgid "Family Properties"
 msgstr "Сімейні властивості"
 
@@ -15023,10 +15019,6 @@ msgstr "Завантажити резервну копію та продовжи
 #: 
 msgid "Downloaded"
 msgstr "Завантажено"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Завантаження останнього релізу з GitHub..."
 
 #: 
 msgid "Duration"

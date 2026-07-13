@@ -3017,10 +3017,6 @@ msgid "Data/Reports"
 msgstr "Dată/Rapoarte"
 
 #: 
-msgid "Query Menu"
-msgstr "Meniu întrebări"
-
-#: 
 msgid "Family Properties"
 msgstr "Proprietăți familie"
 
@@ -15077,10 +15073,6 @@ msgstr "Descarcă copia de siguranță și continuă"
 #: 
 msgid "Downloaded"
 msgstr "Descărcat"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Se descarcă cea mai recentă lansare de pe GitHub..."
 
 #: 
 msgid "Duration"

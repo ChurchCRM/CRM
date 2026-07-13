@@ -3035,10 +3035,6 @@ msgid "Data/Reports"
 msgstr "Daten/Berichte"
 
 #: 
-msgid "Query Menu"
-msgstr "Anfragenmenü"
-
-#: 
 msgid "Family Properties"
 msgstr "Familieneigenschaften"
 
@@ -15089,10 +15085,6 @@ msgstr "Sicherung herunterladen & Fortfahren"
 #: 
 msgid "Downloaded"
 msgstr "Heruntergeladen"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Neueste Version wird von GitHub heruntergeladen..."
 
 #: 
 msgid "Duration"

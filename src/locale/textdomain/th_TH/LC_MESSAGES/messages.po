@@ -2931,10 +2931,6 @@ msgid "Data/Reports"
 msgstr "ข้อมูล/รายงาน"
 
 #: 
-msgid "Query Menu"
-msgstr "เมนูคิวรี"
-
-#: 
 msgid "Family Properties"
 msgstr "คุณสมบัติครอบครัว"
 
@@ -14961,10 +14957,6 @@ msgstr "ดาวน์โหลดข้อมูลสำรองและด
 #: 
 msgid "Downloaded"
 msgstr "ดาวน์โหลดแล้ว"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "กำลังดาวน์โหลดเวอร์ชันล่าสุดจาก GitHub..."
 
 #: 
 msgid "Duration"

@@ -2907,10 +2907,6 @@ msgid "Data/Reports"
 msgstr "Podaci/Izvještaji"
 
 #: 
-msgid "Query Menu"
-msgstr "Izbornik upita"
-
-#: 
 msgid "Family Properties"
 msgstr "Obiteljska svojstva"
 
@@ -14683,10 +14679,6 @@ msgstr "Preuzmi sigurnosnu kopiju i nastavi"
 #: 
 msgid "Downloaded"
 msgstr "Preuzeto"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Preuzimanje najnovijeg izdanja s GitHuba..."
 
 #: 
 msgid "Duration"

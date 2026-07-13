@@ -3051,10 +3051,6 @@ msgid "Data/Reports"
 msgstr "Data / Rapporter"
 
 #: 
-msgid "Query Menu"
-msgstr "Fråga-meny"
-
-#: 
 msgid "Family Properties"
 msgstr "Familjegenskaper"
 
@@ -15103,10 +15099,6 @@ msgstr "Ladda ner säkerhetskopia och fortsätt"
 #: 
 msgid "Downloaded"
 msgstr "Nedladdad"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Laddar ner senaste versionen från GitHub..."
 
 #: 
 msgid "Duration"

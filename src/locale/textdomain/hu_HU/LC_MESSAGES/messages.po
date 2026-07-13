@@ -2989,10 +2989,6 @@ msgid "Data/Reports"
 msgstr "Adatok/Jelentések"
 
 #: 
-msgid "Query Menu"
-msgstr "Lekérdezés menü"
-
-#: 
 msgid "Family Properties"
 msgstr "Családi tulajdonságok"
 
@@ -15030,10 +15026,6 @@ msgstr "Mentés letöltése és folytatás"
 #: 
 msgid "Downloaded"
 msgstr "Letöltve"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "A legújabb kiadás letöltése a GitHubról..."
 
 #: 
 msgid "Duration"

@@ -2949,10 +2949,6 @@ msgid "Data/Reports"
 msgstr "Δεδομένα/Αναφορές"
 
 #: 
-msgid "Query Menu"
-msgstr "Μενού ερωτήματος"
-
-#: 
 msgid "Family Properties"
 msgstr "Οικογενειακές ιδιότητες"
 
@@ -15001,10 +14997,6 @@ msgstr "Λήψη αντιγράφου ασφαλείας & συνέχεια"
 #: 
 msgid "Downloaded"
 msgstr "Λήφθηκε"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Λήψη τελευταίας έκδοσης από GitHub..."
 
 #: 
 msgid "Duration"

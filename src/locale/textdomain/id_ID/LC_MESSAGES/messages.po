@@ -2950,10 +2950,6 @@ msgid "Data/Reports"
 msgstr "Data / Laporan"
 
 #: 
-msgid "Query Menu"
-msgstr "Menu Permintaan"
-
-#: 
 msgid "Family Properties"
 msgstr "Properti Keluarga"
 
@@ -14984,10 +14980,6 @@ msgstr "Unduh Cadangan & Lanjutkan"
 #: 
 msgid "Downloaded"
 msgstr "Telah Diunduh"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Mengunduh rilis terbaru dari GitHub..."
 
 #: 
 msgid "Duration"
