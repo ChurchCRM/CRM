@@ -4,7 +4,9 @@
     "Azure",
     "Indigo",
     "Kiosk",
-    "Minimum"
+    "Minimum",
+    "SHA1 Hash",
+    "in"
   ],
   "cs": [
     "AM / PM",
@@ -17,7 +19,8 @@
     "am / pm"
   ],
   "el": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "es": [
     "AM / PM",
@@ -585,15 +588,21 @@
   ],
   "sq": [
     "4. Kiosk",
+    "AM / PM",
     "Azure",
     "Indigo",
     "Online",
-    "Test"
+    "SHA1 Hash",
+    "Test",
+    "am / pm"
   ],
   "tr": [
     "4. Kiosk",
     "Azure",
+    "HTML URL",
+    "ICS URL",
     "Kiosk",
+    "SHA1 Hash",
     "Test",
     "risk"
   ],
@@ -640,6 +649,7 @@
   "ml": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
     "2FA",
+    "AM / PM",
     "Azure",
     "Charset",
     "Collation",
@@ -648,6 +658,7 @@
     "ID",
     "OpenLP API v2 Source",
     "PDF",
+    "SHA1 Hash",
     "URL",
     "manifest."
   ],
@@ -721,8 +732,11 @@
     "risk"
   ],
   "sw": [
+    "AM / PM",
     "Azure",
-    "Indigo"
+    "Indigo",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "ta": [
     "Azure",
@@ -759,6 +773,7 @@
     "Hit Rate",
     "Host",
     "Locale",
+    "SHA1 Hash",
     "Server",
     "Session Handler",
     "Test",
@@ -781,6 +796,85 @@
     "in"
   ],
   "hr": [
-    "Côte d'Ivoire"
+    "-----------------------------------------------------------------------------------------------------------------------------------------------",
+    "2FA",
+    "4. Kiosk",
+    "A",
+    "AM / PM",
+    "Administrator",
+    "Afrikaans",
+    "Angola",
+    "Argentina",
+    "Aruba",
+    "Barbados",
+    "Belize",
+    "Bermuda",
+    "Burkina Faso",
+    "Curaçao",
+    "Côte d'Ivoire",
+    "Diego Garcia",
+    "El Salvador",
+    "Font",
+    "Format",
+    "Gabon",
+    "Gibraltar",
+    "Grenada",
+    "Guam",
+    "Guernsey",
+    "HTML URL",
+    "Haiti",
+    "Honduras",
+    "ICS URL",
+    "ID",
+    "Indigo",
+    "Jersey",
+    "Kiosk",
+    "KioskVisibilityTimestamp",
+    "Kiribati",
+    "M",
+    "Mali",
+    "Malta",
+    "Mayotte",
+    "Minimum",
+    "Montserrat",
+    "Nauru",
+    "Niue",
+    "Online",
+    "PDF",
+    "Palau",
+    "Portugal",
+    "SHA1 Hash",
+    "Samoa",
+    "San Marino",
+    "Sint Maarten",
+    "Status",
+    "Test",
+    "Timor-Leste",
+    "Togo",
+    "Tokelau",
+    "Tonga",
+    "Tristan da Cunha",
+    "Turkmenistan",
+    "Tuvalu",
+    "URL",
+    "Uganda",
+    "Vanuatu",
+    "Venezuela",
+    "am / pm",
+    "manifest.",
+    "s"
+  ],
+  "am": [
+    "HTML URL",
+    "SHA1 Hash"
+  ],
+  "ar": [
+    "SHA1 Hash"
+  ],
+  "he": [
+    "SHA1 Hash"
+  ],
+  "sk": [
+    "SHA1 Hash"
   ]
 }
