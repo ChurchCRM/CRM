@@ -48,8 +48,8 @@ describe("Admin User Password", () => {
         // Re-login after API call to restore session (necessary after makePrivateAdminAPICall)
         cy.setupAdminSession({ forceLogin: true });
         
-        // Go directly to UserEditor to create a user for PersonID=25
-        cy.visit('UserEditor.php?NewPersonID=25');
+        // Go directly to user editor to create a user for PersonID=25
+        cy.visit('admin/system/users/new?personId=25');
         cy.contains("User Editor");
         
         // Check that the form has pre-populated the UserName field with a value

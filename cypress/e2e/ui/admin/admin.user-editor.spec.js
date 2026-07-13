@@ -21,8 +21,8 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.setupAdminSession();
         // Small wait to allow the fresh PHP session to fully propagate before visiting.
         cy.wait(1000);
-        cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
-        cy.visit(`UserEditor.php?NewPersonID=${throwawayPersonId}`);
+        cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
+        cy.visit(`admin/system/users/new?personId=${throwawayPersonId}`);
         cy.contains("User Editor");
         cy.get("#customPermissions").should("be.visible");
     }
@@ -38,8 +38,8 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.then(() => Cypress.session.clearAllSavedSessions());
         cy.setupAdminSession();
         cy.wait(1000);
-        cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
-        cy.visit(`UserEditor.php?NewPersonID=${throwawayPersonId2}`);
+        cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
+        cy.visit(`admin/system/users/new?personId=${throwawayPersonId2}`);
         cy.contains("User Editor");
         cy.get("#customPermissions").should("be.visible");
     }
@@ -55,7 +55,7 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get("#SaveButton").click();
         cy.wait("@saveUser");
 
-        cy.visit(`UserEditor.php?PersonID=${throwawayPersonId}`);
+        cy.visit(`admin/system/users/${throwawayPersonId}/edit`);
         cy.get("#customPermissions").should("be.visible");
         cy.get("#Finance").should("be.checked");
         deleteUser();
@@ -68,7 +68,7 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.wait("@saveUser");
         cy.wait(500);
 
-        cy.visit(`UserEditor.php?PersonID=${throwawayPersonId2}`);
+        cy.visit(`admin/system/users/${throwawayPersonId2}/edit`);
         cy.get("#customPermissions").should("be.visible");
         cy.get("#EditRecords").should("be.checked");
         deleteUser2();
@@ -80,8 +80,8 @@ describe("User Editor - ORM Migration Tests", () => {
         //
         // Reset to canonical username first in case a prior run was interrupted
         // after mutating to 'admin_orm_test' but before restoring.
-        cy.intercept("POST", "**/UserEditor.php*").as("resetIfNeeded");
-        cy.visit("UserEditor.php?PersonID=1");
+        cy.intercept("POST", "**/admin/system/users/1/edit*").as("resetIfNeeded");
+        cy.visit("admin/system/users/1/edit");
         cy.contains("User Editor");
         cy.get("#UserName").then(($input) => {
             if ($input.val() !== "Admin") {
@@ -92,18 +92,39 @@ describe("User Editor - ORM Migration Tests", () => {
         });
 
         const newUsername = "admin_orm_test";
-        cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
+        cy.intercept("POST", "**/admin/system/users/1/edit*").as("saveUser");
         cy.get("#UserName").clear().type(newUsername);
         cy.get("#SaveButton").click();
         cy.wait("@saveUser");
 
-        cy.visit("UserEditor.php?PersonID=1");
+        cy.visit("admin/system/users/1/edit");
         cy.get("#UserName").should("have.value", newUsername);
 
         // Restore to canonical seed username
-        cy.intercept("POST", "**/UserEditor.php*").as("restoreUser");
+        cy.intercept("POST", "**/admin/system/users/1/edit*").as("restoreUser");
         cy.get("#UserName").clear().type("Admin");
         cy.get("#SaveButton").click();
         cy.wait("@restoreUser");
+    });
+});
+
+describe("User Editor - Person picker (no ?personId)", () => {
+    before(() => {
+        cy.setupAdminSession();
+    });
+
+    it("Shows the person-picker dropdown when no personId is given", () => {
+        cy.visit("admin/system/users/new");
+        cy.contains("User Editor");
+        // The native <select> stays in DOM after TomSelect hides it
+        cy.get("#personSelect").should("exist");
+        // TomSelect renders its custom wrapper when it initialises
+        cy.get(".ts-wrapper").should("exist");
+        // Username field present
+        cy.get("#UserName").should("exist");
+        // Access level radios present
+        cy.get('input[name="accessMode"]').should("have.length", 3);
+        // Save button present
+        cy.get("#SaveButton").should("exist");
     });
 });

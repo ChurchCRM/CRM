@@ -266,7 +266,7 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ### Every POST/delete page must validate a CSRF token <!-- learned: 2026-04-21 -->
 
-Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The rule is **validate before any DB write**; legacy pages may reject an invalid token using either of two patterns — pick the one that matches the page's existing error-surfacing style. Applied in `UserEditor.php`, `PledgeDelete.php`, `DonatedItemDelete.php`, `PaddleNumDelete.php` (GHSA-3xq9-c86x-cwpp):
+Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The rule is **validate before any DB write**; legacy pages may reject an invalid token using either of two patterns — pick the one that matches the page's existing error-surfacing style. Applied in `PledgeDelete.php`, `DonatedItemDelete.php`, `PaddleNumDelete.php` (GHSA-3xq9-c86x-cwpp). For MVC routes, use `CSRFMiddleware` added to POST routes and `CSRFUtils::getTokenInputField()` in the view — the middleware re-renders the form inline on token failure rather than redirecting:
 
 ```php
 use ChurchCRM\Utils\CSRFUtils;
@@ -280,14 +280,12 @@ if (!CSRFUtils::verifyRequest($_POST, 'pledge_delete')) {
     exit(gettext('Invalid security token. Please try again.'));
 }
 
-// Pattern B — redirect back with an ErrorText query param. Preferred for
-// editor pages that already render an inline error banner (UserEditor.php).
-if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
-    RedirectUtils::redirect(
-        'UserEditor.php?PersonID=' . $iPersonID
-        . '&ErrorText=' . urlencode(gettext('Invalid security token. Please try again.'))
-    );
-}
+// Pattern B (MVC routes) — CSRFMiddleware throws HttpForbiddenException on failure;
+// preferred for modern Slim 4 routes. Token included via CSRFUtils::getTokenInputField().
+// The form re-renders inline with sErrorText on validation error (no ErrorText query param).
+// Example: /admin/system/users/{personId}/edit in src/admin/routes/system.php.
+$group->post('/users/{personId:[0-9]+}/edit', 'adminUserEditorEdit')
+    ->add(new CSRFMiddleware('user_editor'));
 
 // In the form HTML (same for both patterns):
 <form method="post" action="...">

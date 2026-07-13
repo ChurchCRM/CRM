@@ -110,7 +110,7 @@ app (`/v2`, `/people`, `/event`, `/groups`, …) even when no `roleMiddleware` i
 - `canViewFamily()` is true only for their own family; `canEditPerson()` is scoped to their
   own family members.
 - **`usr_EditSelf` defaults to `0` on new user creation** — it must be explicitly granted
-  in `UserEditor.php`. EditSelf is NOT a default right.
+  in `UserService::normalizeAccessMode()` (formerly `UserEditor.php`). EditSelf is NOT a default right.
 - The "Verify Family Info" button renders only when `$verifyUrl` is non-empty.
   `src/external/routes/system.php` now guards token creation with
   `$familyId > 0 && $user->isEditSelfEnabled()`, so a user without EditSelf is never offered
@@ -558,7 +558,7 @@ Any PR that touches the files listed below **must be reviewed against the confir
 | `src/Include/PageInit.php` | Legacy page permission gate |
 | `src/api/routes/people/notes.php` | Notes visibility and privacy rules |
 | `src/external/routes/system.php` | verifyFamily token — EditSelf gate |
-| `src/UserEditor.php` | New user permission defaults |
+| `src/admin/routes/system.php` (`adminUserEditorNew`) | New user permission defaults |
 | `cypress/data/seed.sql` | Test user permission flags must match intended model |
 
 ### Checklist — verify all rules still hold after the change
@@ -575,7 +575,7 @@ Any PR that touches the files listed below **must be reviewed against the confir
 - [ ] Menu visibility for any newly-guarded route matches the permission its middleware enforces (see *Menu Visibility Must Mirror Route Middleware*)
 - [ ] EditSelf-only users are still redirected to `/external/limited-access` by `AuthMiddleware`
 - [ ] EditSelf-only users still cannot reach any internal CRM or API route
-- [ ] `usr_EditSelf` still defaults to `0` for new users in `UserEditor.php`
+- [ ] `usr_EditSelf` still defaults to `0` for new users in `UserService::createUser()` (via `adminUserEditorNew`)
 - [ ] `isEditSelfEnabled()` guard before token creation in `external/routes/system.php` is still present (landed via #9081 — do not regress it)
 
 **3. Notes permission (`isNotesEnabled()`)**
