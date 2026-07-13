@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-10 14:37+0000\n"
+"POT-Creation-Date: 2026-07-12 15:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -358,7 +358,16 @@ msgstr ""
 msgid "Account Unlocked"
 msgstr ""
 
+msgid "Account locked"
+msgstr ""
+
+msgid "Account locked due to too many failed login attempts"
+msgstr ""
+
 msgid "Account options"
+msgstr ""
+
+msgid "Account status"
 msgstr ""
 
 msgid "Action"
@@ -1842,6 +1851,9 @@ msgid "Change Settings"
 msgstr ""
 
 msgid "Change Your Locale"
+msgstr ""
+
+msgid "Change required"
 msgstr ""
 
 msgid "Change role"
@@ -4216,6 +4228,9 @@ msgstr ""
 msgid "Failed Logins"
 msgstr ""
 
+msgid "Failed login attempts"
+msgstr ""
+
 msgid "Failed to add family to cart"
 msgstr ""
 
@@ -4924,12 +4939,6 @@ msgid "Force Re-install?"
 msgstr ""
 
 msgid "Force re-install initiated. Please backup your database before applying."
-msgstr ""
-
-msgid "Re-install current version"
-msgstr ""
-
-msgid "No release notes available for this version."
 msgstr ""
 
 msgid "Foreground Color"
@@ -5855,6 +5864,9 @@ msgstr ""
 msgid "Install from URL"
 msgstr ""
 
+msgid "Install stable {{version}}"
+msgstr ""
+
 msgid "Installation ID"
 msgstr ""
 
@@ -6225,6 +6237,9 @@ msgstr ""
 msgid "Last campaign"
 msgstr ""
 
+msgid "Last login"
+msgstr ""
+
 msgid "Last name"
 msgstr ""
 
@@ -6446,6 +6461,9 @@ msgid "Location"
 msgstr ""
 
 msgid "Location & Contact Information"
+msgstr ""
+
+msgid "Locked"
 msgstr ""
 
 msgid "Locked Users"
@@ -7123,6 +7141,9 @@ msgstr ""
 msgid "Must be an immutable release URL served over HTTPS."
 msgstr ""
 
+msgid "Must change password"
+msgstr ""
+
 msgid "Must specify non-zero check number"
 msgstr ""
 
@@ -7520,6 +7541,9 @@ msgid "No property types found"
 msgstr ""
 
 msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr ""
+
+msgid "No release notes available for this version."
 msgstr ""
 
 msgid "No results found"
@@ -8025,6 +8049,9 @@ msgstr ""
 msgid "Password Reset Successful"
 msgstr ""
 
+msgid "Password change required"
+msgstr ""
+
 msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
 msgstr ""
 
@@ -8038,6 +8065,9 @@ msgid "Password reset is unavailable because email is disabled. Please contact y
 msgstr ""
 
 msgid "Password reset not available.  Please contact your system administrator"
+msgstr ""
+
+msgid "Password status"
 msgstr ""
 
 msgid "Password successfully changed for"
@@ -8702,9 +8732,6 @@ msgstr ""
 msgid "Private"
 msgstr ""
 
-msgid "Private Calendar"
-msgstr ""
-
 msgid "Profile"
 msgstr ""
 
@@ -8763,9 +8790,6 @@ msgstr ""
 msgid "Provide any corrections or additional information here..."
 msgstr ""
 
-msgid "Public Calendar"
-msgstr ""
-
 msgid "Public calendar"
 msgstr ""
 
@@ -8790,9 +8814,6 @@ msgid "Quarterly"
 msgstr ""
 
 msgid "Query Listing"
-msgstr ""
-
-msgid "Query Menu"
 msgstr ""
 
 msgid "Query View"
@@ -8847,6 +8868,9 @@ msgid "RangeEnd must be on or after RangeStart"
 msgstr ""
 
 msgid "Re-install"
+msgstr ""
+
+msgid "Re-install current version"
 msgstr ""
 
 msgid "Read more"
@@ -9112,10 +9136,16 @@ msgstr ""
 msgid "Restore backup"
 msgstr ""
 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr ""
+
 msgid "Restore failed."
 msgstr ""
 
 msgid "Restore failed. Please check the backup file and try again."
+msgstr ""
+
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
 msgstr ""
 
 msgid "Restore from a backup file. Erases existing data."
@@ -9227,6 +9257,9 @@ msgid "Run Query Again"
 msgstr ""
 
 msgid "Run Transactions"
+msgstr ""
+
+msgid "Running Pre-release"
 msgstr ""
 
 #. Context: countries
@@ -10475,6 +10508,9 @@ msgstr ""
 msgid "The gender for which you would like records returned."
 msgstr ""
 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "The maximum age for which you want records returned."
 msgstr ""
@@ -10616,6 +10652,9 @@ msgstr ""
 msgid "This Family is Inactive"
 msgstr ""
 
+msgid "This account is locked because of too many failed login attempts."
+msgstr ""
+
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr ""
 
@@ -10698,6 +10737,9 @@ msgid "This title will be used for all generated events."
 msgstr ""
 
 msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr ""
+
+msgid "This user must set a new password the next time they sign in."
 msgstr ""
 
 msgid "This value cannot be less than "
@@ -11381,6 +11423,9 @@ msgstr ""
 msgid "User must be an Admin or have Finance permission"
 msgstr ""
 
+msgid "User must change their password at next login"
+msgstr ""
+
 msgid "User must have Add Event permission and the Events module must be enabled"
 msgstr ""
 
@@ -11388,6 +11433,9 @@ msgid "User must have Delete Records permission"
 msgstr ""
 
 msgid "User must have Edit Records permission"
+msgstr ""
+
+msgid "User must have Email permission"
 msgstr ""
 
 msgid "User must have Manage Groups permission"
@@ -12031,6 +12079,9 @@ msgid "You are about to delete the profile photo, this procedure is irreversible
 msgstr ""
 
 msgid "You are about to email copy of the family information to the following emails"
+msgstr ""
+
+msgid "You are running a pre-release version."
 msgstr ""
 
 #. plugin:external-backup:section:3:content
