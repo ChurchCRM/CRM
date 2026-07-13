@@ -1,8 +1,8 @@
 {
-  "AM / PM": "",
-  "Default: (999) 999-9999": "",
-  "Default: (999) 999-9999 x99999": "",
-  "am / pm": "",
-  "Access": "",
-  "Self-service": ""
+  "AM / PM": "AM / PM",
+  "Default: (999) 999-9999": "Default: (999) 999-9999",
+  "Default: (999) 999-9999 x99999": "Default: (999) 999-9999 x99999",
+  "am / pm": "am / pm",
+  "Access": "Access",
+  "Self-service": "Self-service"
 }
