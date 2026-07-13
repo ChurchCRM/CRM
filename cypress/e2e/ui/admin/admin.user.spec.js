@@ -64,8 +64,10 @@ describe("Admin User Password", () => {
         // Verify the page loaded and has the user table
         cy.get('#user-listing-table').should('exist');
         
-        // Verify Peyton was created as a user
-        cy.get('body').should('contain.text', 'Peyton Ray');
+        // Use DataTable search to find Peyton Ray regardless of pagination
+        // (12 users in the fixture exceeds the default pageLength of 10)
+        cy.get('#user-listing-table_filter input').type('Peyton Ray');
+        cy.get('#user-listing-table tbody').should('contain.text', 'Peyton Ray');
 
         // Clean up: remove user status for PersonID=25 via API so test can be re-run
         cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 204, 404]);

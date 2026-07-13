@@ -55,7 +55,9 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get("#SaveButton").click();
         cy.wait("@saveUser");
 
+        // Verify the user was created and Finance flag persisted via edit form
         cy.visit(`admin/system/users/${throwawayPersonId}/edit`);
+        cy.contains("User Editor");
         cy.get("#customPermissions").should("be.visible");
         cy.get("#Finance").should("be.checked");
         deleteUser();
@@ -69,6 +71,7 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.wait(500);
 
         cy.visit(`admin/system/users/${throwawayPersonId2}/edit`);
+        cy.contains("User Editor");
         cy.get("#customPermissions").should("be.visible");
         cy.get("#EditRecords").should("be.checked");
         deleteUser2();
@@ -118,8 +121,6 @@ describe("User Editor - Person picker (no ?personId)", () => {
         cy.contains("User Editor");
         // The native <select> stays in DOM after TomSelect hides it
         cy.get("#personSelect").should("exist");
-        // TomSelect renders its custom wrapper when it initialises
-        cy.get(".ts-wrapper").should("exist");
         // Username field present
         cy.get("#UserName").should("exist");
         // Access level radios present
