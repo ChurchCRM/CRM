@@ -260,7 +260,7 @@ class UserService
 
         $dupCount = UserQuery::create()
             ->filterByUserName($userName)
-            ->filterByPersonId($personId, Criteria::NOT_EQUAL)
+            ->filterById($personId, Criteria::NOT_EQUAL)
             ->count();
 
         if ($dupCount > 0) {
@@ -366,7 +366,7 @@ class UserService
 
         $dupCount = UserQuery::create()
             ->filterByUserName($userName)
-            ->filterByPersonId($personId, Criteria::NOT_EQUAL)
+            ->filterById($personId, Criteria::NOT_EQUAL)
             ->count();
 
         if ($dupCount > 0) {

@@ -13,9 +13,12 @@ describe("User Editor - ORM Migration Tests", () => {
 
     function createCustomUser() {
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
-        // Use forceLogin to always create a fresh PHP session — avoids Cypress
-        // session-cache stale-state issues in CI after the API call.
-        cy.setupAdminSession({ forceLogin: true });
+        // The API call's response Set-Cookie will overwrite the browser's session cookie
+        // and contaminate the Cypress 'admin-session' cache when cy.session() implicitly
+        // saves the current browser state. Clear all saved sessions then force a fresh
+        // admin login to rebuild the 'admin-session' cache with a valid admin cookie.
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+        cy.setupAdminSession();
         cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
         cy.visit(`admin/system/users/new?personId=${throwawayPersonId}`);
         cy.contains("User Editor");
@@ -23,13 +26,18 @@ describe("User Editor - ORM Migration Tests", () => {
     }
 
     function deleteUser() {
-        // withCredentials:false prevents session contamination — no clearAllSavedSessions needed.
+        // withCredentials:false prevents sending the session cookie on the request
+        // but the response Set-Cookie still updates the browser jar, contaminating
+        // the 'admin-session' Cypress cache. Clear all sessions after cleanup so
+        // the next test's beforeEach re-establishes a clean admin session.
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
     }
 
     function createCustomUser2() {
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}`, null, [200, 204, 404]);
-        cy.setupAdminSession({ forceLogin: true });
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+        cy.setupAdminSession();
         cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
         cy.visit(`admin/system/users/new?personId=${throwawayPersonId2}`);
         cy.contains("User Editor");
@@ -38,6 +46,7 @@ describe("User Editor - ORM Migration Tests", () => {
 
     function deleteUser2() {
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
     }
 
     it("Should persist a single Custom permission via ORM", () => {
