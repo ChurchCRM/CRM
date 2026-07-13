@@ -17,17 +17,23 @@
     "Azure"
   ],
   "es": [
+    "AM / PM",
     "Azure",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "es-AR": [
+    "AM / PM",
     "Azure",
     "Host",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "es-CO": [
     "Azure",
@@ -37,11 +43,14 @@
     "Material"
   ],
   "es-MX": [
+    "AM / PM",
     "Azure",
     "Host",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "es-SV": [
     "Azure",
@@ -512,19 +521,26 @@
     "Vonage Dashboard"
   ],
   "pt": [
+    "AM / PM",
     "Azure",
     "Host",
     "Manual",
     "Material",
-    "Online"
+    "Online",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "pt-BR": [
     "Azure"
   ],
   "pt-br": [
+    "AM / PM",
     "Azure",
     "Host",
-    "Online"
+    "Manual",
+    "Online",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "ru": [
     "Azure"
