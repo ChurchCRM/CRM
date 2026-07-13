@@ -73,7 +73,16 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
+        exclude: /node_modules/,
+        use: {
+          loader: 'swc-loader',
+          options: {
+            jsc: {
+              parser: { syntax: 'typescript' },
+              target: 'es2020',
+            },
+          },
+        },
       },
       {
         test: /\.(sa|sc|c)ss$/,

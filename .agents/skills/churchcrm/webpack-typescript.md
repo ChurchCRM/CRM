@@ -4,10 +4,36 @@
 ChurchCRM uses Webpack to bundle frontend JavaScript/TypeScript and CSS. This skill covers entry points, API utilities, type safety, and best practices for building modern webpack modules.
 
 **Verified versions in this repo (package.json):**
-- `typescript` 5.9.3
-- `webpack` 5.105.4
-- `webpack-cli` 7.0.2
-- `ts-loader` 9.5.4
+- `typescript` 7.0.2
+- `webpack` 5.108.4
+- `webpack-cli` 7.2.1
+- `swc-loader` 0.2.7 + `@swc/core` 1.15.43 (replaces ts-loader — see note below)
+
+## TypeScript 7 Compatibility — swc-loader replaces ts-loader <!-- learned: 2026-07-13 -->
+
+TypeScript 7 is a Go-native rewrite; the npm package no longer exposes `typescript.sys`, so `ts-loader` 9.x fails with:
+```
+TypeError: Cannot read properties of undefined (reading 'fileExists')
+    at findConfigFile (.../ts-loader/dist/config.js:105:30)
+```
+No ts-loader ≥ 10 exists. **Replace ts-loader with swc-loader + @swc/core** (swc has zero dependency on the `typescript` package — it only strips types). Configure the webpack rule:
+```js
+{
+  test: /\.tsx?$/,
+  exclude: /node_modules/,
+  use: {
+    loader: 'swc-loader',
+    options: {
+      jsc: {
+        parser: { syntax: 'typescript' },
+        target: 'es2020',
+      },
+    },
+  },
+},
+```
+Also add devDeps: `@swc/core`, `@swc/helpers` (peer of @swc/core), `swc-loader`; remove `ts-loader`.
+Type-checking is no longer bundled with the webpack build — add a standalone `"type-check": "tsc --noEmit"` script to preserve it. `npx tsc --noEmit` continues to work with TS7's native `tsc` binary.
 
 > **Note:** React was removed in 7.2.0. All interactive UI uses vanilla JS + Bootstrap 5.
 
