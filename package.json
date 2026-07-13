@@ -121,7 +121,7 @@
         "tom-select": "^2.6.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.5.2",
+        "@biomejs/biome": "^2.5.3",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
