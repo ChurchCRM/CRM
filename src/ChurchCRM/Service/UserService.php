@@ -141,9 +141,10 @@ class UserService
      */
     public function getAssignablePeople()
     {
-        // Fetch only the ID column to avoid hydrating full User model objects
+        // Fetch only the PersonId column to avoid hydrating full User model objects.
+        // The User table's primary key phpName is 'PersonId' (not 'Id').
         $existingUserPersonIds = [];
-        foreach (UserQuery::create()->select(['Id'])->find() as $id) {
+        foreach (UserQuery::create()->select(['PersonId'])->find() as $id) {
             $existingUserPersonIds[] = (int) $id;
         }
 
@@ -259,7 +260,7 @@ class UserService
 
         $dupCount = UserQuery::create()
             ->filterByUserName($userName)
-            ->filterById($personId, Criteria::NOT_EQUAL)
+            ->filterByPersonId($personId, Criteria::NOT_EQUAL)
             ->count();
 
         if ($dupCount > 0) {
@@ -365,7 +366,7 @@ class UserService
 
         $dupCount = UserQuery::create()
             ->filterByUserName($userName)
-            ->filterById($personId, Criteria::NOT_EQUAL)
+            ->filterByPersonId($personId, Criteria::NOT_EQUAL)
             ->count();
 
         if ($dupCount > 0) {

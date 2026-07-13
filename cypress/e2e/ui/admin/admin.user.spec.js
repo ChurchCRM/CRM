@@ -64,9 +64,9 @@ describe("Admin User Password", () => {
         // Verify the page loaded and has the user table
         cy.get('#user-listing-table').should('exist');
         
-        // Use DataTable search to find Peyton Ray regardless of pagination
-        // (12 users in the fixture exceeds the default pageLength of 10)
-        cy.get('#user-listing-table_filter input').type('Peyton Ray');
+        // DataTables v2 uses class .dt-search (not #table_id_filter) for the search wrapper.
+        // Search so Peyton Ray is visible regardless of pagination page.
+        cy.get('.dt-search input').type('Peyton Ray');
         cy.get('#user-listing-table tbody').should('contain.text', 'Peyton Ray');
 
         // Clean up: remove user status for PersonID=25 via API so test can be re-run
