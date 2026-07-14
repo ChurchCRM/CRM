@@ -173,6 +173,24 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
     $iNum   = (int) InputUtils::legacyFilterInput($body['Num'] ?? '0');
     $iPerID = (int) InputUtils::legacyFilterInput($body['PerID'] ?? '0');
 
+    // On reassignment: delete the old owner's multibuy rows so their statement
+    // no longer shows items from a paddle they no longer hold.
+    if ($paddleId > 0) {
+        $rsCurrentPaddle = RunQuery(
+            'SELECT pn_per_ID FROM paddlenum_pn WHERE pn_ID=' . $paddleId . ' AND pn_fr_ID=' . $fundraiserId
+        );
+        $currentRow = mysqli_fetch_array($rsCurrentPaddle);
+        $iOldPerID  = $currentRow ? (int) $currentRow['pn_per_ID'] : 0;
+        if ($iOldPerID > 0 && $iOldPerID !== $iPerID) {
+            $sSQL = 'DELETE mb FROM multibuy_mb mb'
+                . ' INNER JOIN donateditem_di di ON mb.mb_item_ID = di.di_ID'
+                . ' WHERE di.di_FR_ID = ' . $fundraiserId
+                . '   AND di.di_multibuy = 1'
+                . '   AND mb.mb_per_ID = ' . $iOldPerID;
+            RunQuery($sSQL);
+        }
+    }
+
     // Handle multibuy items
     $sMultibuyItemsSQL = "SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $fundraiserId;
     $rsMBItems         = RunQuery($sMultibuyItemsSQL);

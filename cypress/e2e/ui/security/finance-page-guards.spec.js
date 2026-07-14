@@ -81,8 +81,11 @@ describe("ManageFundraisers permission guard on fundraiser pages", () => {
         });
 
         it("denies fundraiser/", () => {
-            // This user has DeleteRecords and Finance but lacks ManageFundraisers.
-            // Any /fundraiser/* GET route should be blocked by the module middleware.
+            // finance.nofundraiser (per_ID=96) has DeleteRecords=1 and Finance=1
+            // but ManageFundraisers=0. Visiting any /fundraiser/* GET route is
+            // blocked by the module-level ManageFundraisersRoleAuthMiddleware
+            // before any route handler runs, confirming the module gate enforces
+            // the ManageFundraisers permission regardless of other grants.
             cy.visit("/fundraiser/", { failOnStatusCode: false });
             cy.url().should("include", ACCESS_DENIED);
             cy.url().should("include", "role=ManageFundraisers");
