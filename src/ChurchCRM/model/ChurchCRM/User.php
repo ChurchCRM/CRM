@@ -150,6 +150,9 @@ class User extends BaseUser
 
     public function isManageFundraisersEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFundraiser') && $this->isManageFundraisers());
     }
 
@@ -247,6 +250,7 @@ class User extends BaseUser
             // EditSelf is exclusive — no module permissions apply
             return true;
         }
+
         return !$this->isAddRecords()
             && !$this->isEditRecords()
             && !$this->isDeleteRecords()
