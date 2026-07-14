@@ -4,10 +4,10 @@ describe("User Editor - ORM Migration Tests", () => {
     // and test-subdir) never race on the same DB row.
     // Test 1: PersonID=6 (Constance Hart, constance.hart@example.com, family 2)
     // Test 2: PersonID=5 (Albert Campbell, albert.garcia@example.com, family 1)
-    // Test 3: PersonID=7 (Manage Events test — distinct ID to avoid CI races)
+    // Test 3: PersonID=9 (Jean Hart — no seeded user account, avoids PersonID 7 which is 'locked.user')
     const throwawayPersonId = 6;
     const throwawayPersonId2 = 5;
-    const throwawayPersonId3 = 7;
+    const throwawayPersonId3 = 9;   // Jean Hart — no seeded user account
 
     beforeEach(() => {
         cy.setupAdminSession();
