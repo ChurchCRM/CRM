@@ -4,8 +4,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
@@ -38,7 +38,7 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
         $listId = (int) $args['listId'];
         $input = (array) $request->getParsedBody();
 
-        $name = InputUtils::sanitizeText($input['name'] ?? '');
+        $name = (string) ($input['name'] ?? '');
         if (empty($name)) {
             throw new HttpBadRequestException($request, gettext('Option name is required'));
         }
@@ -73,7 +73,7 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
             'optionName' => $option->getOptionName(),
             'optionSequence' => $option->getOptionSequence(),
         ]);
-    });
+    })->add(new InputSanitizationMiddleware(['name' => 'text']));
 
     // Update option name
     $group->patch('/{listId:[0-9]+}/{optionId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -90,7 +90,7 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
         }
 
         if (isset($input['name'])) {
-            $name = InputUtils::sanitizeText($input['name']);
+            $name = (string) $input['name'];
             if (empty($name)) {
                 throw new HttpBadRequestException($request, gettext('Option name is required'));
             }
@@ -113,7 +113,7 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
             'optionName' => $option->getOptionName(),
             'optionSequence' => $option->getOptionSequence(),
         ]);
-    });
+    })->add(new InputSanitizationMiddleware(['name' => 'text']));
 
     // Delete an option
     $group->delete('/{listId:[0-9]+}/{optionId:[0-9]+}', function (Request $request, Response $response, array $args): Response {

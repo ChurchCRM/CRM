@@ -2946,10 +2946,6 @@ msgid "Data/Reports"
 msgstr "데이터/보고서"
 
 #: 
-msgid "Query Menu"
-msgstr "쿼리 메뉴"
-
-#: 
 msgid "Family Properties"
 msgstr "가족 속성"
 
@@ -14984,10 +14980,6 @@ msgstr "백업 다운로드 후 계속"
 #: 
 msgid "Downloaded"
 msgstr "다운로드됨"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "GitHub에서 최신 릴리스를 다운로드하는 중..."
 
 #: 
 msgid "Duration"

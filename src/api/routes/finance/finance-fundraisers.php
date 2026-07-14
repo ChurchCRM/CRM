@@ -4,10 +4,10 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -83,8 +83,8 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
     $group->post('', function (Request $request, Response $response, array $args): Response {
         try {
             $input = (array) $request->getParsedBody();
-            $title = InputUtils::sanitizeText($input['title'] ?? '');
-            $description = InputUtils::sanitizeText($input['description'] ?? '');
+            $title = (string) ($input['title'] ?? '');
+            $description = (string) ($input['description'] ?? '');
             $date = trim((string) ($input['date'] ?? ''));
 
             if ($title === '') {
@@ -112,7 +112,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create fundraiser'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['title' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Get(
@@ -167,7 +167,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             $input = (array) $request->getParsedBody();
 
             if (array_key_exists('title', $input)) {
-                $title = InputUtils::sanitizeText($input['title']);
+                $title = (string) $input['title'];
                 if ($title === '') {
                     return SlimUtils::renderErrorJSON($response, gettext('Title is required'), [], 400);
                 }
@@ -175,7 +175,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             if (array_key_exists('description', $input)) {
-                $fr->setDescription(InputUtils::sanitizeText($input['description']));
+                $fr->setDescription((string) $input['description']);
             }
 
             if (array_key_exists('date', $input)) {
@@ -195,7 +195,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update fundraiser'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['title' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Delete(

@@ -2960,10 +2960,6 @@ msgid "Data/Reports"
 msgstr "Dati / Report"
 
 #: 
-msgid "Query Menu"
-msgstr "Menu di query"
-
-#: 
 msgid "Family Properties"
 msgstr "Proprietà familiari"
 
@@ -15021,10 +15017,6 @@ msgstr "Scarica Backup e Continua"
 #: 
 msgid "Downloaded"
 msgstr "Scaricato"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Download della versione più recente da GitHub..."
 
 #: 
 msgid "Duration"

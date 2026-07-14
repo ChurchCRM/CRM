@@ -2948,10 +2948,6 @@ msgid "Data/Reports"
 msgstr "Andmed / aruanded"
 
 #: 
-msgid "Query Menu"
-msgstr "Päringumenüü"
-
-#: 
 msgid "Family Properties"
 msgstr "Perekonna omadused"
 
@@ -15000,10 +14996,6 @@ msgstr "Laadi varukoopia alla ja jätka"
 #: 
 msgid "Downloaded"
 msgstr "Alla laaditud"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Uusima väljaande allalaadimine GitHub-ist..."
 
 #: 
 msgid "Duration"

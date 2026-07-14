@@ -2922,10 +2922,6 @@ msgid "Data/Reports"
 msgstr "Data & prints"
 
 #: 
-msgid "Query Menu"
-msgstr "Rapporten"
-
-#: 
 msgid "Family Properties"
 msgstr "Gezinseigenschappen"
 
@@ -14964,10 +14960,6 @@ msgstr "Back-up Downloaden & Doorgaan"
 #: 
 msgid "Downloaded"
 msgstr "Gedownload"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "De meeste recente release wordt nu van Github gedownload ..."
 
 #: 
 msgid "Duration"

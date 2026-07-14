@@ -2949,10 +2949,6 @@ msgid "Data/Reports"
 msgstr "ውሂብ/ሪፖርቶች"
 
 #: 
-msgid "Query Menu"
-msgstr "የጥያቄ ምናሌ"
-
-#: 
 msgid "Family Properties"
 msgstr "የቤተሰብ ንብረቶች"
 
@@ -15008,10 +15004,6 @@ msgstr "ተጠቀጥብ ዝጁ እና ተቀጥል"
 #: 
 msgid "Downloaded"
 msgstr "ወረደ"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "የቅርብ ጊዜውን ልቀት ከGitHub በማውረድ ላይ..."
 
 #: 
 msgid "Duration"

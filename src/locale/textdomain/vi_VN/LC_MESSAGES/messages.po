@@ -2961,10 +2961,6 @@ msgid "Data/Reports"
 msgstr "Dữ liệu/Báo cáo"
 
 #: 
-msgid "Query Menu"
-msgstr "Menu truy vấn"
-
-#: 
 msgid "Family Properties"
 msgstr "Thuộc tính Gia đình"
 
@@ -14995,10 +14991,6 @@ msgstr "Tai sao luu va tiep tuc"
 #: 
 msgid "Downloaded"
 msgstr "Đã tải xuống"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Đang tải xuống phiên bản mới nhất từ GitHub..."
 
 #: 
 msgid "Duration"

@@ -3038,10 +3038,6 @@ msgid "Data/Reports"
 msgstr "數據/報告"
 
 #: 
-msgid "Query Menu"
-msgstr "查詢菜單"
-
-#: 
 #, fuzzy
 msgid "Family Properties"
 msgstr "家庭屬性"
@@ -15148,10 +15144,6 @@ msgstr "下載備份並繼續"
 #: 
 msgid "Downloaded"
 msgstr "已下載"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "正在從 GitHub 下載最新版本..."
 
 #: 
 msgid "Duration"

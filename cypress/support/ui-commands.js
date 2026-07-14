@@ -429,12 +429,13 @@ Cypress.Commands.add('clearQuill', (editorId) => {
 Cypress.Commands.add('setDatePickerValue', (selector, dateString) => {
     // Type the date and blur to trigger datepicker's change event
     cy.get(selector).clear().type(dateString);
-    
+
     // Click elsewhere to blur the field and trigger change event
     cy.get('body').click();
-    
-    // Wait for event handlers to process
-    cy.wait(100);
+
+    // Assert the committed value rather than sleeping: .should() retries until the
+    // datepicker's change handler has settled, and fails loudly if it never does.
+    cy.get(selector).should('have.value', dateString);
 });
 
 /**

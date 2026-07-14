@@ -6,10 +6,6 @@
  * does not break API functionality
  */
 describe("API Private Family", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/families/latest - Latest Families", () => {
         it("Returns 200 with families data", () => {
             cy.makePrivateAdminAPICall("GET", "/api/families/latest", null, 200).then(
