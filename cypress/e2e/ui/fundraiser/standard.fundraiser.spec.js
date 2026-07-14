@@ -218,8 +218,10 @@ describe("Fund Raiser", () => {
         cy.contains("At a Glance");
         // Donated Items card (even when empty)
         cy.contains("Donated Items");
-        // Edit button is visible to a user with ManageFundraisers role
-        cy.contains("a", "Edit").should("be.visible");
+        // Edit button is visible to a user with ManageFundraisers role.
+        // Scope to .btn-primary to avoid matching the hidden sidebar nav link
+        // that also contains "Edit" (set via $_SESSION['iCurrentFundraiser']).
+        cy.contains("a.btn-primary", "Edit").should("be.visible");
     });
 
     it("view page redirects to listing for unknown fundraiser", () => {
