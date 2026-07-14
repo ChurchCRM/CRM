@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-14 06:36+0000\n"
+"POT-Creation-Date: 2026-07-14 14:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -433,6 +433,9 @@ msgstr ""
 msgid "Add Donated Item"
 msgstr ""
 
+msgid "Add Donors"
+msgstr ""
+
 msgid "Add Donors to Buyer List"
 msgstr ""
 
@@ -578,6 +581,9 @@ msgid "Add staff and volunteers"
 msgstr ""
 
 msgid "Add staff or volunteers as system users"
+msgstr ""
+
+msgid "Add to Buyer List"
 msgstr ""
 
 msgid "Add to Cart"
@@ -1050,12 +1056,6 @@ msgstr ""
 msgid "Are you sure you want to move"
 msgstr ""
 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr ""
-
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr ""
-
 msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr ""
 
@@ -1204,6 +1204,9 @@ msgid "Auto-Backup"
 msgstr ""
 
 msgid "Auto-Backup Interval"
+msgstr ""
+
+msgid "Auto-assign paddle numbers to all item donors"
 msgstr ""
 
 msgid "Auto-mapped"
@@ -1589,9 +1592,6 @@ msgid "Buyer"
 msgstr ""
 
 msgid "Buyer # "
-msgstr ""
-
-msgid "Buyer Number"
 msgstr ""
 
 msgid "Buyer Number Editor"
@@ -3088,9 +3088,6 @@ msgstr ""
 msgid "Delete Confirmation"
 msgstr ""
 
-msgid "Delete Donated Item"
-msgstr ""
-
 msgid "Delete Event"
 msgstr ""
 
@@ -3107,9 +3104,6 @@ msgid "Delete Family Record ONLY"
 msgstr ""
 
 msgid "Delete Group"
-msgstr ""
-
-msgid "Delete Paddle Number"
 msgstr ""
 
 msgid "Delete Person"
@@ -3143,6 +3137,12 @@ msgid "Delete records permission"
 msgstr ""
 
 msgid "Delete this event?"
+msgstr ""
+
+msgid "Delete this item?"
+msgstr ""
+
+msgid "Delete this paddle number?"
 msgstr ""
 
 msgid "Delete this person?"
@@ -3527,6 +3527,9 @@ msgid "Ecuador"
 msgstr ""
 
 msgid "Edit"
+msgstr ""
+
+msgid "Edit Buyer"
 msgstr ""
 
 msgid "Edit Class"
@@ -6635,6 +6638,9 @@ msgstr ""
 msgid "Manage Event Types"
 msgstr ""
 
+msgid "Manage Fundraisers"
+msgstr ""
+
 msgid "Manage Funds"
 msgstr ""
 
@@ -8532,6 +8538,9 @@ msgstr ""
 msgid "Please select another family with whom to associate these donations:"
 msgstr ""
 
+msgid "Please select at least one buyer to generate statements."
+msgstr ""
+
 msgid "Please select both a group and a role."
 msgstr ""
 
@@ -9188,6 +9197,9 @@ msgid "Return to Families"
 msgstr ""
 
 msgid "Return to Family View"
+msgstr ""
+
+msgid "Return to Fundraiser Dashboard"
 msgstr ""
 
 msgid "Return to Groups"
@@ -10676,6 +10688,9 @@ msgstr ""
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr ""
 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr ""
+
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
 msgstr ""
 
@@ -11436,6 +11451,9 @@ msgid "User must be an Admin"
 msgstr ""
 
 msgid "User must be an Admin or have Finance permission"
+msgstr ""
+
+msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr ""
 
 msgid "User must change their password at next login"
