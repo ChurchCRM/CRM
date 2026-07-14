@@ -74,7 +74,9 @@
         {% for entry in entries %}
             {% if col == 0 %}<tr>{% endif %}
             <td class="directory-cell" style="width:{{ (100 / cols)|round(1) }}%;">
-                {# entry is pre-sanitised HTML — do NOT remove |raw #}
+                {# entry is pre-sanitised HTML — do NOT remove |raw.
+                   TODO (follow-up): enforce sanitization at the service layer so future callers
+                   cannot inadvertently pass unsanitized user content through to mPDF. #}
                 {{ entry|raw }}
             </td>
             {% set col = col + 1 %}

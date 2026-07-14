@@ -85,7 +85,9 @@
             {% for row in rows %}
                 <tr>
                     {% for cell in row %}
-                        {# cell is pre-sanitised HTML — do NOT remove |raw #}
+                        {# cell is pre-sanitised HTML — do NOT remove |raw.
+                           TODO (follow-up): enforce sanitization at the service layer so future callers
+                           cannot inadvertently pass unsanitized user content through to mPDF. #}
                         <td>{{ cell|raw }}</td>
                     {% endfor %}
                 </tr>
@@ -95,7 +97,8 @@
         <tfoot>
             <tr class="totals-row">
                 {% for cell in totals %}
-                    {# cell is pre-sanitised HTML — do NOT remove |raw #}
+                    {# cell is pre-sanitised HTML — do NOT remove |raw.
+                       TODO (follow-up): enforce sanitization at the service layer (see rows comment above). #}
                     <td>{{ cell|raw }}</td>
                 {% endfor %}
             </tr>
