@@ -12,7 +12,17 @@ $(document).ready(() => {
   //
   // EditSelf is exclusive: cannot coexist with module permissions or admin.
   // The JS enforces this invariant so the server-side check is defense-in-depth.
-  const modulePerms = ["AddRecords", "EditRecords", "DeleteRecords", "MenuOptions", "ManageGroups", "Finance", "Notes", "ManageFundraisers", "AddEvent"];
+  const modulePerms = [
+    "AddRecords",
+    "EditRecords",
+    "DeleteRecords",
+    "MenuOptions",
+    "ManageGroups",
+    "Finance",
+    "Notes",
+    "ManageFundraisers",
+    "AddEvent",
+  ];
   const adminCb = document.getElementById("Admin");
   const editSelfCb = document.getElementById("EditSelf");
   const customBlock = document.getElementById("customPermissions");
