@@ -65,7 +65,10 @@
   },
   "current": {
     "versions": ["7.4.1", "7.4.2"],
-    "scripts": ["/mysql/upgrade/7.4.3-manage-fundraisers.sql"],
+    "scripts": [
+      "/mysql/upgrade/7.4.3-manage-fundraisers.sql",
+      "/mysql/upgrade/7.4.3-remove-directory-csv-permissions.sql"
+    ],
     "dbVersion": "7.4.3"
   }
 }

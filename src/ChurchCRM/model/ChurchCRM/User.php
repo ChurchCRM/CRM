@@ -172,14 +172,6 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
     }
 
-    public function isCreateDirectoryEnabled(): bool
-    {
-        if ($this->isEditSelfExclusive()) {
-            return false;
-        }
-        return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
-    }
-
     // -- Module view/manage permissions (combine feature flag + per-user) --
 
     public function canViewEvents(): bool
@@ -227,7 +219,6 @@ class User extends BaseUser
             // Module permissions (userconfig_ucfg rows)
             'addEvent'            => $this->isAddEventEnabled(),
             'emailMailto'         => $this->isEmailEnabled(),
-            'createDirectory'     => $this->isCreateDirectoryEnabled(),
             // Computed module-level gates
             'canViewEvents'       => $this->canViewEvents(),
             'canManageEvents'     => $this->canManageEvents(),
