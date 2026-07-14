@@ -57,7 +57,9 @@ describe("Fund Raiser", () => {
         cy.contains('a', 'Add Donated Item').click();
 
         cy.url().should('include', '/donated-items/editor');
-        // Wait up to 10 s for the form to render (page loads TomSelect for Donor dropdown)
+        // Wait for the donated-item editor form to fully load (page initialises
+        // TomSelect for the Donor dropdown which can delay rendering)
+        cy.get('form[name="DonatedItemEditor"]').should('exist');
         cy.get('#Item', { timeout: 10000 }).should('be.visible').type('Soap for the Car wash');
         cy.get('#Title').type('Soap');
         cy.get('#EstPrice').type('20');

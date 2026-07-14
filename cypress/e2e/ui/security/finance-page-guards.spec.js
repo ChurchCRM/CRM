@@ -7,7 +7,8 @@
  * Background: fundraiser pages are now served by the Slim MVC module at
  * /fundraiser/* (ManageFundraisersRoleAuthMiddleware on every route). Visiting
  * any route in the module as a user without ManageFundraisers redirects to
- * /v2/access-denied?role=ManageFundraisers.
+ * /v2/access-denied?role=ManageFundraisers. The middleware runs before route
+ * matching, so GET requests to POST-only routes are also blocked.
  *
  * Seed users (cypress/configs/docker.config.ts -> cypress/data/seed.sql):
  *  - standard  = tony.wade@example.com        ManageFundraisers=1, Finance=1 -> ALLOWED
@@ -46,7 +47,7 @@ const ACCESS_DENIED = "/v2/access-denied";
 //   BatchWinnerEntry.php        → fundraiser/1/batch-winner (GET = form only)
 //
 // Mutation routes (DonatedItemReplicate, FundRaiserDelete) are now POST-only;
-// their ManageFundraisers gate is tested separately via cy.request below.
+// their ManageFundraisers gate is tested separately below.
 const FUNDRAISER_PAGES = [
     "fundraiser/",
     "fundraiser/editor",
