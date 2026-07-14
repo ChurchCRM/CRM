@@ -172,62 +172,53 @@ class UserService
      * @param array $body POST body
      * @return array Normalized permission flags keyed by camelCase name
      */
+    /**
+     * Resolves access mode and all permissions from the submitted form body.
+     *
+     * Mode logic (admin/editSelf) is enforced here; individual module permissions
+     * are read generically from the body and default to 0 when absent. EditSelf
+     * is exclusive — no module permissions apply when it is set (#9079).
+     */
     public function normalizeAccessMode(array $body): array
     {
-        $addRecords   = isset($body['AddRecords'])   ? 1 : 0;
-        $editRecords  = isset($body['EditRecords'])  ? 1 : 0;
-        $deleteRecords = isset($body['DeleteRecords']) ? 1 : 0;
-        $menuOptions  = isset($body['MenuOptions'])  ? 1 : 0;
-        $manageGroups = isset($body['ManageGroups']) ? 1 : 0;
-        $finance      = isset($body['Finance'])      ? 1 : 0;
-        $notes        = isset($body['Notes'])        ? 1 : 0;
-        $admin        = isset($body['Admin'])        ? 1 : 0;
-        $editSelf     = isset($body['EditSelf'])     ? 1 : 0;
-
         $accessMode = $body['accessMode'] ?? 'custom';
 
         if ($accessMode === 'admin') {
             $admin    = 1;
             $editSelf = 0;
         } elseif ($accessMode === 'self') {
-            $admin        = 0;
-            $editSelf     = 1;
-            $addRecords   = 0;
-            $editRecords  = 0;
-            $deleteRecords = 0;
-            $menuOptions  = 0;
-            $manageGroups = 0;
-            $finance      = 0;
-            $notes        = 0;
+            $admin    = 0;
+            $editSelf = 1;
         } else {
-            // 'custom' or any unrecognised value: use submitted module perms as-is
             $admin    = 0;
             $editSelf = 0;
         }
 
-        // Defense-in-depth: EditSelf is exclusive; a non-admin EditSelf user has no
-        // other permissions regardless of what the UI submitted (#9079).
-        if ($editSelf === 1 && $admin === 0) {
-            $addRecords   = 0;
-            $editRecords  = 0;
-            $deleteRecords = 0;
-            $menuOptions  = 0;
-            $manageGroups = 0;
-            $finance      = 0;
-            $notes        = 0;
-        }
-
-        return compact(
-            'admin',
-            'editSelf',
-            'addRecords',
-            'editRecords',
-            'deleteRecords',
-            'menuOptions',
-            'manageGroups',
-            'finance',
-            'notes'
+        return array_merge(
+            ['admin' => $admin, 'editSelf' => $editSelf],
+            $this->extractModulePerms($body, (bool) $editSelf)
         );
+    }
+
+    /**
+     * Reads individual module permissions from the form body.
+     * All default to 0 if absent. Zeroes everything when editSelf is active
+     * because EditSelf is exclusive — no module permissions apply (#9079).
+     * Adding a new permission only requires adding it here.
+     */
+    private function extractModulePerms(array $body, bool $editSelf): array
+    {
+        $allow = !$editSelf;
+        return [
+            'addRecords'        => $allow && isset($body['AddRecords'])        ? 1 : 0,
+            'editRecords'       => $allow && isset($body['EditRecords'])       ? 1 : 0,
+            'deleteRecords'     => $allow && isset($body['DeleteRecords'])     ? 1 : 0,
+            'menuOptions'       => $allow && isset($body['MenuOptions'])       ? 1 : 0,
+            'manageGroups'      => $allow && isset($body['ManageGroups'])      ? 1 : 0,
+            'finance'           => $allow && isset($body['Finance'])           ? 1 : 0,
+            'manageFundraisers' => $allow && isset($body['ManageFundraisers']) ? 1 : 0,
+            'notes'             => $allow && isset($body['Notes'])             ? 1 : 0,
+        ];
     }
 
     /**
@@ -286,6 +277,7 @@ class UserService
                 ->setMenuOptions($perms['menuOptions'])
                 ->setManageGroups($perms['manageGroups'])
                 ->setFinance($perms['finance'])
+                ->setManageFundraisers($perms['manageFundraisers'])
                 ->setNotes($perms['notes'])
                 ->setAdmin($perms['admin'])
                 ->setDefaultFY($defaultFY)
@@ -387,6 +379,7 @@ class UserService
             ->setMenuOptions($perms['menuOptions'])
             ->setManageGroups($perms['manageGroups'])
             ->setFinance($perms['finance'])
+            ->setManageFundraisers($perms['manageFundraisers'])
             ->setNotes($perms['notes'])
             ->setAdmin($perms['admin'])
             ->setUserName($userName)

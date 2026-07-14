@@ -162,7 +162,8 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
             $permissions = [
                 ['name' => 'MenuOptions',  'label' => gettext('Manage Properties and Classifications'), 'checked' => $perms['menuOptions']],
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'),               'checked' => $perms['manageGroups']],
-                ['name' => 'Finance',      'label' => gettext('Manage Donations and Finance'),           'checked' => $perms['finance']],
+                ['name' => 'Finance',            'label' => gettext('Manage Donations and Finance'),  'checked' => $perms['finance']],
+                ['name' => 'ManageFundraisers', 'label' => gettext('Manage Fundraisers'),              'checked' => $perms['manageFundraisers']],
             ];
             foreach ($permissions as $perm):
             ?>

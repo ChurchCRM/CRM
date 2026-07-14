@@ -4,15 +4,27 @@ namespace ChurchCRM\Utils;
 
 /**
  * CSRF (Cross-Site Request Forgery) protection utility.
- * Provides methods to generate and validate CSRF tokens for protecting
- * against CSRF attacks on state-changing operations.
+ *
+ * Implements the standard synchronizer-token pattern: a single, stable token
+ * per user session. The token is:
+ *   - generated lazily on first use and reused (not rotated) for the rest of
+ *     its lifetime, so rendering any number of forms — across pages, tabs, or
+ *     duplicate/prefetch requests — never invalidates a token already embedded
+ *     in an outstanding form;
+ *   - validated with a timing-safe comparison;
+ *   - expired after TOKEN_LIFETIME and refreshable via regenerateToken().
+ *
+ * The `$formId` parameters on the public methods are retained for backward
+ * compatibility with existing call sites but are ignored: every form shares
+ * the one session-wide token, matching how mainstream MVC frameworks
+ * (Laravel, Django, Rails) implement CSRF protection.
  */
 class CSRFUtils
 {
     /**
-     * Session key for storing CSRF tokens
+     * Session key for storing the CSRF token
      */
-    private const SESSION_KEY = 'csrf_tokens';
+    private const SESSION_KEY = 'csrf_token';
 
     /**
      * Token lifetime in seconds (default: 2 hours)
@@ -20,153 +32,123 @@ class CSRFUtils
     private const TOKEN_LIFETIME = 7200;
 
     /**
-     * Generate a new CSRF token and store it in the session.
-     * Each token is associated with a form identifier to allow multiple forms
-     * on the same page.
-     *
-     * @param string $formId Unique identifier for the form (e.g., 'changePassword')
-     * @return string The generated CSRF token
+     * Ensure a PHP session is active before touching $_SESSION.
      */
-    public static function generateToken(string $formId = 'default'): string
+    private static function ensureSession(): void
     {
-        // Ensure session is started
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }
+    }
 
-        // Initialize token storage if needed
-        if (!isset($_SESSION[self::SESSION_KEY])) {
-            $_SESSION[self::SESSION_KEY] = [];
+    /**
+     * Return the session-wide CSRF token, generating one on first use and
+     * reusing the existing (non-expired) token thereafter.
+     *
+     * @param string $formId Ignored — retained for backward compatibility.
+     * @return string The CSRF token
+     */
+    public static function generateToken(string $formId = 'default'): string
+    {
+        self::ensureSession();
+
+        $existing = $_SESSION[self::SESSION_KEY] ?? null;
+        if (
+            is_array($existing)
+            && isset($existing['token'], $existing['timestamp'])
+            && (time() - $existing['timestamp']) <= self::TOKEN_LIFETIME
+        ) {
+            return $existing['token'];
         }
 
-        // Generate a cryptographically secure random token
+        // Generate a cryptographically secure random token.
         // 32 bytes = 256 bits of entropy, which becomes 64 hex characters after bin2hex()
         $token = bin2hex(random_bytes(32));
-        
-        // Store token with timestamp for expiration checking
-        $_SESSION[self::SESSION_KEY][$formId] = [
-            'token' => $token,
-            'timestamp' => time()
-        ];
 
-        // Clean up old tokens
-        self::cleanupExpiredTokens();
+        $_SESSION[self::SESSION_KEY] = [
+            'token' => $token,
+            'timestamp' => time(),
+        ];
 
         return $token;
     }
 
     /**
-     * Validate a CSRF token against the stored token for a specific form.
+     * Validate a submitted token against the session-wide token.
      *
-     * @param string $token The token to validate
-     * @param string $formId The form identifier
-     * @param bool $consume Whether to consume the token after validation (default: false)
+     * @param string $token   The token to validate
+     * @param string $formId  Ignored — retained for backward compatibility.
+     * @param bool   $consume Whether to consume the token after a successful validation
      * @return bool True if the token is valid, false otherwise
      */
     public static function validateToken(string $token, string $formId = 'default', bool $consume = false): bool
     {
-        // Ensure session is started
-        if (session_status() !== PHP_SESSION_ACTIVE) {
-            session_start();
-        }
+        self::ensureSession();
 
-        // Check if tokens exist in session
-        if (!isset($_SESSION[self::SESSION_KEY][$formId])) {
+        $stored = $_SESSION[self::SESSION_KEY] ?? null;
+        if (!is_array($stored) || !isset($stored['token'], $stored['timestamp'])) {
             return false;
         }
 
-        $storedData = $_SESSION[self::SESSION_KEY][$formId];
-        $storedToken = $storedData['token'] ?? null;
-        $storedTime = $storedData['timestamp'] ?? null;
-        $currentTime = time();
-        $timeDiff = $currentTime - $storedTime;
-        
-        // Check if token has expired
-        if ($timeDiff > self::TOKEN_LIFETIME) {
-            // Remove expired token
-            unset($_SESSION[self::SESSION_KEY][$formId]);
+        // Check if the token has expired
+        if ((time() - $stored['timestamp']) > self::TOKEN_LIFETIME) {
+            unset($_SESSION[self::SESSION_KEY]);
             return false;
         }
 
-        // Validate token using timing-safe comparison
-        $isValid = hash_equals($storedToken, $token);
+        // Timing-safe comparison
+        $isValid = hash_equals((string) $stored['token'], $token);
 
-        // Optionally consume token after validation
-        // By default, tokens are NOT consumed to allow form resubmission on validation errors
-        // The form templates regenerate a new token when re-rendered, so if validation fails
-        // and the form is shown again with errors, a fresh token will be automatically generated.
-        // Set $consume = true when you want one-time use (e.g., after successful operation)
+        // Tokens are NOT consumed by default so a form can be resubmitted after a
+        // validation error. Pass $consume = true for one-time use (e.g. after a
+        // successful privileged operation).
         if ($isValid && $consume) {
-            unset($_SESSION[self::SESSION_KEY][$formId]);
+            unset($_SESSION[self::SESSION_KEY]);
         }
 
         return $isValid;
     }
 
     /**
-     * Regenerate a CSRF token for a specific form.
-     * Useful after successful form submission to get a fresh token.
+     * Force a fresh session-wide token. Useful after a successful privileged
+     * operation (e.g. a password change) when the old token should be retired.
      *
-     * @param string $formId The form identifier
-     * @return string The new generated CSRF token
+     * @param string $formId Ignored — retained for backward compatibility.
+     * @return string The new CSRF token
      */
     public static function regenerateToken(string $formId = 'default'): string
     {
-        // Remove old token
-        if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION[self::SESSION_KEY][$formId])) {
-            unset($_SESSION[self::SESSION_KEY][$formId]);
-        }
-        
-        // Generate and return new token
-        return self::generateToken($formId);
+        self::ensureSession();
+        unset($_SESSION[self::SESSION_KEY]);
+
+        return self::generateToken();
     }
 
     /**
-     * Clean up expired tokens from the session to prevent memory bloat.
+     * Get the CSRF token hidden-input HTML for inclusion in forms.
      *
-     * @return void
-     */
-    private static function cleanupExpiredTokens(): void
-    {
-        if (!isset($_SESSION[self::SESSION_KEY])) {
-            return;
-        }
-
-        $currentTime = time();
-        foreach ($_SESSION[self::SESSION_KEY] as $formId => $data) {
-            if ($currentTime - $data['timestamp'] > self::TOKEN_LIFETIME) {
-                unset($_SESSION[self::SESSION_KEY][$formId]);
-            }
-        }
-    }
-
-    /**
-     * Get the CSRF token input field HTML for inclusion in forms.
-     *
-     * @param string $formId The form identifier
-     * @return string HTML input field with CSRF token
+     * @param string $formId Ignored — retained for backward compatibility.
+     * @return string HTML input field with the CSRF token
      */
     public static function getTokenInputField(string $formId = 'default'): string
     {
-        $token = self::generateToken($formId);
+        $token = self::generateToken();
         return '<input type="hidden" name="csrf_token" value="' . InputUtils::escapeAttribute($token) . '">';
     }
 
     /**
-     * Verify CSRF token from request data.
-     * This is a convenience method that extracts the token from request data
-     * and validates it.
+     * Verify the CSRF token carried in request data.
      *
-     * @param array $requestData The request data (typically $_POST or parsed body)
-     * @param string $formId The form identifier
+     * @param array  $requestData The request data (typically $_POST or the parsed body)
+     * @param string $formId      Ignored — retained for backward compatibility.
      * @return bool True if the token is valid, false otherwise
      */
     public static function verifyRequest(array $requestData, string $formId = 'default'): bool
     {
-        if (!isset($requestData['csrf_token'])) {
+        if (!isset($requestData['csrf_token']) || !is_string($requestData['csrf_token'])) {
             return false;
         }
 
-        return self::validateToken($requestData['csrf_token'], $formId);
+        return self::validateToken($requestData['csrf_token']);
     }
 }

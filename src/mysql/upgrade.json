@@ -65,7 +65,7 @@
   },
   "current": {
     "versions": ["7.4.1", "7.4.2"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.4.3-manage-fundraisers.sql"],
     "dbVersion": "7.4.3"
   }
 }

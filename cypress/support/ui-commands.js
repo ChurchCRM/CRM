@@ -101,6 +101,21 @@ Cypress.Commands.add('setupNoFinanceSession', (options = {}) => {
 });
 
 /**
+ * Sets up a cached session for a user WITH Finance + DeleteRecords but WITHOUT
+ * ManageFundraisers (per_ID=96: finance.nofundraiser). Used to test that
+ * FundRaiserDelete.php correctly denies on the ManageFundraisers gate even when
+ * the caller has passed the DeleteRecords gate.
+ */
+Cypress.Commands.add('setupNoManageFundraisersSession', (options = {}) => {
+    const username = Cypress.env('nofundraiser.username');
+    const password = Cypress.env('nofundraiser.password');
+    if (!username || !password) {
+        throw new Error('No-ManageFundraisers user credentials not configured in cypress/configs/docker.config.ts env: nofundraiser.username and nofundraiser.password required');
+    }
+    cy.setupLoginSession('nofundraiser-session', username, password, options);
+});
+
+/**
  * cy.loginWithCredentials(username, password, sessionName, expectSuccess = true)
  * Login with custom credentials (for testing password changes, etc.)
  * Creates a new session with the provided credentials
