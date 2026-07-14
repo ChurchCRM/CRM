@@ -23,8 +23,11 @@ describe('MVC Error Pages — HTML (admin)', () => {
 
     it('should display the 404 code and Page Not Found title', () => {
       cy.visit('/admin/this-route-does-not-exist', { failOnStatusCode: false });
-      cy.contains('404').should('be.visible');
-      cy.contains('Page Not Found').should('be.visible');
+      // Scope to .card-body to avoid matching nav sidebar badges (e.g. a people
+      // count that happens to equal 404), which are <a.nav-link> elements that
+      // Cypress may find first and which are not visible at CI viewport sizes.
+      cy.get('.card-body').contains('404').should('be.visible');
+      cy.get('.card-body').contains('Page Not Found').should('be.visible');
     });
 
     it('should display a Back to Admin Dashboard button', () => {
@@ -59,8 +62,11 @@ describe('MVC Error Pages — HTML (v2)', () => {
 
     it('should display the 404 code and Page Not Found title', () => {
       cy.visit('/v2/this-route-does-not-exist', { failOnStatusCode: false });
-      cy.contains('404').should('be.visible');
-      cy.contains('Page Not Found').should('be.visible');
+      // Scope to .card-body to avoid matching nav sidebar badges (e.g. a people
+      // count that happens to equal 404), which are <a.nav-link> elements that
+      // Cypress may find first and which are not visible at CI viewport sizes.
+      cy.get('.card-body').contains('404').should('be.visible');
+      cy.get('.card-body').contains('Page Not Found').should('be.visible');
     });
 
     it('should display a Return to Dashboard button', () => {
@@ -86,7 +92,7 @@ describe('MVC Error Pages — HTML (v2)', () => {
   describe('v2 403 — access denied page', () => {
     it('should display the Permission Required page', () => {
       cy.visit('/v2/access-denied', { failOnStatusCode: false });
-      cy.contains('Permission Required').should('be.visible');
+      cy.get('.card-body').contains('Permission Required').should('be.visible');
     });
 
     it('should display a Go to Dashboard button', () => {
