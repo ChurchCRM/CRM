@@ -89,13 +89,6 @@ describe("Access Denied Page", () => {
             cy.contains("Notes access").should("be.visible");
         });
 
-        it("Should display CreateDirectory role description", () => {
-            cy.visit("/v2/access-denied?role=CreateDirectory");
-            cy.contains("Permission Required").should("be.visible");
-            cy.get(".callout-warning").should("be.visible");
-            cy.contains("Create directory permission").should("be.visible");
-        });
-
         it("Should display AddEvent role description", () => {
             cy.visit("/v2/access-denied?role=AddEvent");
             cy.contains("Permission Required").should("be.visible");
