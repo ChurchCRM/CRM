@@ -133,7 +133,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <textarea name="PictureURL" rows="1" cols="90" class="form-control"><?= InputUtils::escapeHTML($sPictureURL) ?></textarea>
             </div>
 
-            <?php if (!empty($sPictureURL)): ?>
+            <?php if (!empty($sPictureURL) && preg_match('~^https?://~i', $sPictureURL)): ?>
               <div class="mb-3"><img src="<?= InputUtils::escapeAttribute($sPictureURL) ?>" alt=""></div>
             <?php endif; ?>
           </div>

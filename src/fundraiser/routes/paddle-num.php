@@ -6,7 +6,6 @@ use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\model\ChurchCRM\Multibuy;
 use ChurchCRM\model\ChurchCRM\MultibuyQuery;
-use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\model\ChurchCRM\PaddleNum;
 use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
@@ -186,11 +185,6 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
-    if (!CSRFUtils::verifyRequest($body, 'paddle_num_editor')) {
-        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
-        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
-    }
-
     $iNum   = (int) InputUtils::legacyFilterInput($body['Num'] ?? '0');
     $iPerID = (int) InputUtils::legacyFilterInput($body['PerID'] ?? '0');
 
@@ -280,13 +274,6 @@ $app->post('/{fundraiserId}/paddle-numbers/{paddleId}/delete', function (Request
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/v2/access-denied?role=DeleteRecords')
             ->withStatus(302);
-    }
-
-    $body = (array) $request->getParsedBody();
-
-    if (!CSRFUtils::verifyRequest($body, 'paddle_num_delete')) {
-        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
-        return $response->withStatus(403)->withHeader('Content-Type', 'text/plain');
     }
 
     $fundraiserId = (int) $args['fundraiserId'];

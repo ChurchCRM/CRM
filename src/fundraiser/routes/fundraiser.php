@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
@@ -142,11 +141,6 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
     $fundraiserId = (int) ($args['fundraiserId'] ?? 0);
     $body         = (array) $request->getParsedBody();
 
-    if (!CSRFUtils::verifyRequest($body, 'fundraiser_editor')) {
-        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
-        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
-    }
-
     $dDate        = InputUtils::legacyFilterInput($body['Date'] ?? '');
     $sTitle       = InputUtils::legacyFilterInput($body['Title'] ?? '');
     $sDescription = InputUtils::legacyFilterInput($body['Description'] ?? '');
@@ -258,13 +252,6 @@ $app->post('/{fundraiserId}/delete', function (Request $request, Response $respo
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/v2/access-denied?role=DeleteRecords')
             ->withStatus(302);
-    }
-
-    $body = (array) $request->getParsedBody();
-
-    if (!CSRFUtils::verifyRequest($body, 'fundraiser_delete')) {
-        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
-        return $response->withStatus(403)->withHeader('Content-Type', 'text/plain');
     }
 
     $fundraiserId = (int) $args['fundraiserId'];

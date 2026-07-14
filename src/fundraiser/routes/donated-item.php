@@ -7,7 +7,6 @@ use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\view\PageHeader;
@@ -153,11 +152,6 @@ $app->post('/{fundraiserId}/donated-items/editor[/{itemId}]', function (Request 
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
-    if (!CSRFUtils::verifyRequest($body, 'donated_item_editor')) {
-        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
-        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
-    }
-
     $sItem         = InputUtils::legacyFilterInput($body['Item'] ?? '');
     $bMultibuy     = (int) InputUtils::legacyFilterInput($body['Multibuy'] ?? '0', 'int');
     $iDonor        = (int) InputUtils::legacyFilterInput($body['Donor'] ?? '0', 'int');
@@ -238,11 +232,6 @@ $app->post('/{fundraiserId}/donated-items/{itemId}/replicate', function (Request
     $fundraiserId = (int) $args['fundraiserId'];
     $itemId       = (int) $args['itemId'];
     $body         = (array) $request->getParsedBody();
-    if (!CSRFUtils::verifyRequest($body, 'donated_item_replicate')) {
-        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
-        return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
-    }
-
     $iCount       = (int) InputUtils::legacyFilterInput($body['Count'] ?? '0', 'int');
 
     // Scope to fundraiserId to prevent cross-fundraiser replication
@@ -291,13 +280,6 @@ $app->post('/{fundraiserId}/donated-items/{itemId}/delete', function (Request $r
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/v2/access-denied?role=DeleteRecords')
             ->withStatus(302);
-    }
-
-    $body = (array) $request->getParsedBody();
-
-    if (!CSRFUtils::verifyRequest($body, 'donated_item_delete')) {
-        $response->getBody()->write(gettext('Invalid security token. Please try again.'));
-        return $response->withStatus(403)->withHeader('Content-Type', 'text/plain');
     }
 
     $fundraiserId = (int) $args['fundraiserId'];

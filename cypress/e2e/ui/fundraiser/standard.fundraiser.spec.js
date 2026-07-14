@@ -98,6 +98,81 @@ describe("Fund Raiser", () => {
     });
 
     // -----------------------------------------------------------------------
+    // CSRF protection (regression for "Invalid security token" on save)
+    //
+    // Root cause of the original bug: CSRFUtils rotated the token on every
+    // render, so a second GET of the editor (e.g. from a relative <img> src
+    // that re-hit the route, a prefetch, or a second tab) invalidated the
+    // token already embedded in the on-screen form, and the subsequent POST
+    // failed with "Invalid security token." The fix makes the token a stable,
+    // session-wide synchronizer token and validates every POST via a single
+    // group-level CSRFMiddleware instead of per-route inline checks.
+    // -----------------------------------------------------------------------
+
+    const extractCsrf = (html) => {
+        const m = html.match(/name="csrf_token"\s+value="([a-f0-9]+)"/i);
+        expect(m, "csrf_token hidden field present in editor HTML").to.not.be.null;
+        return m[1];
+    };
+
+    it("reuses one stable CSRF token across repeated editor renders", () => {
+        // Two separate GETs of the same editor must return the SAME token.
+        // Before the fix each render rotated the token, invalidating the form.
+        cy.request("/fundraiser/1/donated-items/editor").then((first) => {
+            const tokenA = extractCsrf(first.body);
+            cy.request("/fundraiser/1/donated-items/editor").then((second) => {
+                const tokenB = extractCsrf(second.body);
+                expect(tokenB, "token is reused, not rotated, between renders").to.eq(tokenA);
+            });
+        });
+    });
+
+    it("saves a donated item with a valid CSRF token (no 'Invalid security token')", () => {
+        cy.request("/fundraiser/1/donated-items/editor").then((res) => {
+            const token = extractCsrf(res.body);
+            cy.request({
+                method: "POST",
+                url: "/fundraiser/1/donated-items/editor",
+                form: true,
+                followRedirect: false,
+                body: {
+                    csrf_token: token,
+                    Item: "CSRF Regression Item",
+                    Title: "Regression",
+                    Description: "",
+                    Donor: 0,
+                    Buyer: 0,
+                    Multibuy: 0,
+                    SellPrice: 0,
+                    EstPrice: 0,
+                    MaterialValue: 0,
+                    MinimumPrice: 0,
+                    PictureURL: "",
+                    DonatedItemSubmit: "Save",
+                },
+            }).then((post) => {
+                // Success redirects back to the fundraiser editor; a CSRF failure
+                // would instead be a 4xx with the "Invalid security token" body.
+                expect(post.status).to.eq(302);
+                expect(post.headers.location).to.include("/fundraiser/editor/1");
+                expect(post.body).to.not.include("Invalid security token");
+            });
+        });
+    });
+
+    it("rejects a donated-item save with a missing CSRF token (403)", () => {
+        cy.request({
+            method: "POST",
+            url: "/fundraiser/1/donated-items/editor",
+            form: true,
+            failOnStatusCode: false,
+            body: { Item: "No token", DonatedItemSubmit: "Save" },
+        }).then((post) => {
+            expect(post.status).to.eq(403);
+        });
+    });
+
+    // -----------------------------------------------------------------------
     // Donors
     // -----------------------------------------------------------------------
 
