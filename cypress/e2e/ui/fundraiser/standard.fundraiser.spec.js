@@ -160,6 +160,40 @@ describe("Fund Raiser", () => {
         });
     });
 
+    it("saves a donated item with empty price fields (no 500 on blank DECIMAL columns)", () => {
+        // Regression: blank price inputs arrive as '' and were passed straight to
+        // ->setSellprice('') etc., which the DECIMAL columns reject with a 500
+        // (Incorrect decimal value: ''). The route now coerces blanks to 0.0.
+        cy.request("/fundraiser/1/donated-items/editor").then((res) => {
+            const token = extractCsrf(res.body);
+            cy.request({
+                method: "POST",
+                url: "/fundraiser/1/donated-items/editor",
+                form: true,
+                followRedirect: false,
+                failOnStatusCode: false,
+                body: {
+                    csrf_token: token,
+                    Item: "Empty Price Item",
+                    Title: "No Prices",
+                    Description: "",
+                    Donor: 0,
+                    Buyer: 0,
+                    Multibuy: 0,
+                    SellPrice: "",
+                    EstPrice: "",
+                    MaterialValue: "",
+                    MinimumPrice: "",
+                    PictureURL: "",
+                    DonatedItemSubmit: "Save",
+                },
+            }).then((post) => {
+                expect(post.status, "blank prices must not 500").to.eq(302);
+                expect(post.headers.location).to.include("/fundraiser/editor/1");
+            });
+        });
+    });
+
     it("rejects a donated-item save with a missing CSRF token (403)", () => {
         cy.request({
             method: "POST",

@@ -158,10 +158,11 @@ $app->post('/{fundraiserId}/donated-items/editor[/{itemId}]', function (Request 
     $iBuyer        = (int) InputUtils::legacyFilterInput($body['Buyer'] ?? '0', 'int');
     $sTitle        = InputUtils::legacyFilterInput($body['Title'] ?? '');
     $sDescription  = InputUtils::legacyFilterInput($body['Description'] ?? '');
-    $nSellPrice    = InputUtils::legacyFilterInput($body['SellPrice'] ?? '');
-    $nEstPrice     = InputUtils::legacyFilterInput($body['EstPrice'] ?? '');
-    $nMaterialValue = InputUtils::legacyFilterInput($body['MaterialValue'] ?? '');
-    $nMinimumPrice = InputUtils::legacyFilterInput($body['MinimumPrice'] ?? '');
+    // DECIMAL columns reject empty/non-numeric strings, so coerce blank price fields to 0.0.
+    $nSellPrice     = (float) InputUtils::legacyFilterInput($body['SellPrice'] ?? '');
+    $nEstPrice      = (float) InputUtils::legacyFilterInput($body['EstPrice'] ?? '');
+    $nMaterialValue = (float) InputUtils::legacyFilterInput($body['MaterialValue'] ?? '');
+    $nMinimumPrice  = (float) InputUtils::legacyFilterInput($body['MinimumPrice'] ?? '');
     $sPictureURL   = InputUtils::legacyFilterInput($body['PictureURL'] ?? '');
 
     if (!$bMultibuy) { $bMultibuy = 0; }
