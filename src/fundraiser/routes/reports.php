@@ -325,9 +325,11 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
 
         if ($di_picture !== '') {
             $s = getimagesize($di_picture);
-            $h = (100.0 / $s[0]) * $s[1];
-            $pdf->Image($di_picture, $pdf->GetX(), $pdf->GetY(), 100.0, $h);
-            $pdf->SetY($pdf->GetY() + $h);
+            if ($s !== false && $s[0] > 0) {
+                $h = (100.0 / $s[0]) * $s[1];
+                $pdf->Image($di_picture, $pdf->GetX(), $pdf->GetY(), 100.0, $h);
+                $pdf->SetY($pdf->GetY() + $h);
+            }
         }
 
         $pdf->SetFont('Times', '', 12);
