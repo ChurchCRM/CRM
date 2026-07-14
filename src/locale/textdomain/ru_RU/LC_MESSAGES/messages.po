@@ -16664,3 +16664,199 @@ msgstr "У вас нет разрешения добавлять заметку 
 msgid "You do not have permission to edit this note"
 msgstr "У вас нет разрешения редактировать эту заметку"
 
+#: 
+msgid "Account locked"
+msgstr "Аккаунт заблокирован"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Аккаунт заблокирован из-за слишком большого количества неудачных попыток входа"
+
+#: 
+msgid "Account status"
+msgstr "Статус аккаунта"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Дополнительно: выбрать конкретную целевую версию"
+
+#: 
+msgid "Bug Fix"
+msgstr "Исправление ошибок"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "По умолчанию мастер загружает следующий рекомендуемый выпуск. Вместо этого вы можете выбрать любую доступную версию ниже."
+
+#: 
+msgid "Change required"
+msgstr "Требуется изменение"
+
+#: 
+msgid "Changelog"
+msgstr "Журнал изменений"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Всё равно продолжить"
+
+#: 
+msgid "Could not load release information."
+msgstr "Не удалось загрузить информацию о выпуске."
+
+#: 
+msgid "Download & Install"
+msgstr "Скачать и установить"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Скачать версию {{version}} и применить её к вашей установке."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Загрузка выпуска с GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Неудачные попытки входа"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Не удалось получить предварительный просмотр обновления"
+
+#: 
+msgid "Feature"
+msgstr "Новая возможность"
+
+#: 
+msgid "Full changelog"
+msgstr "Полный журнал изменений"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Установить стабильную версию {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Установка следующего выпуска"
+
+#: 
+msgid "Invalid file path"
+msgstr "Неверный путь к файлу"
+
+#: 
+msgid "Invalid version format"
+msgstr "Неверный формат версии"
+
+#: 
+msgid "Last login"
+msgstr "Последний вход"
+
+#: 
+msgid "Loading release information..."
+msgstr "Загрузка информации о выпуске..."
+
+#: 
+msgid "Locked"
+msgstr "Заблокирован"
+
+#: 
+msgid "Major"
+msgstr "Основное"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Отсутствуют обязательные поля: fullPath и sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Необходимо сменить пароль"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Примечания к выпуску для этой версии отсутствуют."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Обновления для вашей текущей версии недоступны."
+
+#: 
+msgid "Password change required"
+msgstr "Требуется смена пароля"
+
+#: 
+msgid "Password status"
+msgstr "Статус пароля"
+
+#: 
+msgid "Re-install current version"
+msgstr "Переустановить текущую версию"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Восстановление не удалось, и база данных может находиться в неполном состоянии. Проверьте журнал приложения для получения подробной информации, затем восстановите заведомо рабочую резервную копию перед использованием системы."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Восстановление не удалось: файл резервной копии неполный или не является допустимой резервной копией SQL. База данных находится в неполном состоянии — восстановите заведомо рабочую резервную копию перед использованием системы."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Запущена предварительная версия"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Показать полный путь обновления"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Последний стабильный выпуск — {{version}}. Вы можете переустановить его ниже."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Этот аккаунт заблокирован из-за слишком большого количества неудачных попыток входа."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Этот пользователь должен установить новый пароль при следующем входе в систему."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Пользователь должен сменить пароль при следующем входе"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Пользователь должен иметь разрешение на Email"
+
+#: 
+msgid "View release notes"
+msgstr "Просмотр примечаний к выпуску"
+
+#: 
+msgid "What's New"
+msgstr "Что нового"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Что нового в версии {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Вы отстаёте на <strong>{{releaseCount}}</strong> выпусков. Вот что вы получите:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Вы используете предварительную версию."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Вы всё равно можете продолжить обновление, не просматривая примечания к выпуску."
+
+#: 
+msgid "You're up to date!"
+msgstr "У вас актуальная версия!"
+

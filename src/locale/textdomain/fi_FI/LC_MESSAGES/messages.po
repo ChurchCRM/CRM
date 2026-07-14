@@ -16542,3 +16542,199 @@ msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tälle henkilölle."
 msgid "You do not have permission to edit this note"
 msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa"
 
+#: 
+msgid "Account locked"
+msgstr "Tili lukittu"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Tili lukittu liian monien epäonnistuneiden kirjautumisyritysten vuoksi"
+
+#: 
+msgid "Account status"
+msgstr "Tilin tila"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Lisäasetukset: valitse tietty kohdeversio"
+
+#: 
+msgid "Bug Fix"
+msgstr "Vikorjaus"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Oletuksena ohjattu toiminto lataa seuraavan suositellun julkaisun. Voit myös valita minkä tahansa saatavilla olevan version alla."
+
+#: 
+msgid "Change required"
+msgstr "Muutos vaaditaan"
+
+#: 
+msgid "Changelog"
+msgstr "Muutosloki"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Jatka silti"
+
+#: 
+msgid "Could not load release information."
+msgstr "Julkaisutietoja ei voitu ladata."
+
+#: 
+msgid "Download & Install"
+msgstr "Lataa ja asenna"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Lataa versio {{version}} ja ota se käyttöön asennuksessasi."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Ladataan julkaisua GitHubista..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Epäonnistuneet kirjautumisyritykset"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Päivityksen esikatselun hakeminen epäonnistui"
+
+#: 
+msgid "Feature"
+msgstr "Ominaisuus"
+
+#: 
+msgid "Full changelog"
+msgstr "Täydellinen muutosloki"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Asenna vakaa versio {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Asennetaan seuraavaa julkaisua"
+
+#: 
+msgid "Invalid file path"
+msgstr "Virheellinen tiedostopolku"
+
+#: 
+msgid "Invalid version format"
+msgstr "Virheellinen versiomuoto"
+
+#: 
+msgid "Last login"
+msgstr "Viimeisin kirjautuminen"
+
+#: 
+msgid "Loading release information..."
+msgstr "Ladataan julkaisutietoja..."
+
+#: 
+msgid "Locked"
+msgstr "Lukittu"
+
+#: 
+msgid "Major"
+msgstr "Pääversio"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Puuttuvat pakolliset kentät: fullPath ja sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Salasana on vaihdettava"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Tälle versiolle ei ole julkaisutietoja saatavilla."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nykyiselle versiolle ei ole päivityksiä saatavilla."
+
+#: 
+msgid "Password change required"
+msgstr "Salasanan vaihto vaaditaan"
+
+#: 
+msgid "Password status"
+msgstr "Salasanan tila"
+
+#: 
+msgid "Re-install current version"
+msgstr "Asenna nykyinen versio uudelleen"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Palautus epäonnistui ja tietokanta saattaa olla epätäydellisessä tilassa. Tarkista sovelluksen lokitiedot ja palauta tunnetusti toimiva varmuuskopio ennen järjestelmän käyttöä."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Palautus epäonnistui: varmuuskopiotiedosto näyttää olevan epätäydellinen tai se ei ole kelvollinen SQL-varmuuskopio. Tietokanta on nyt epätäydellisessä tilassa — palauta tunnetusti toimiva varmuuskopio ennen järjestelmän käyttöä."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Käynnissä esijulkaisuversio"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Näytä koko päivityspolku"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Uusin vakaa julkaisu on {{version}}. Voit asentaa sen uudelleen alla."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tämä tili on lukittu liian monien epäonnistuneiden kirjautumisyritysten vuoksi."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tämän käyttäjän on asetettava uusi salasana seuraavalla kirjautumiskerralla."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Käyttäjän on vaihdettava salasanansa seuraavalla kirjautumiskerralla"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Käyttäjällä on oltava sähköpostioikeus"
+
+#: 
+msgid "View release notes"
+msgstr "Näytä julkaisutiedot"
+
+#: 
+msgid "What's New"
+msgstr "Uutta"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Uutta versiossa {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Olet <strong>{{releaseCount}}</strong> julkaisua jäljessä. Tässä mitä saat:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Käytät esijulkaisuversiota."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Voit silti jatkaa päivitystä katsomatta julkaisutietoja."
+
+#: 
+msgid "You're up to date!"
+msgstr "Olet ajan tasalla!"
+

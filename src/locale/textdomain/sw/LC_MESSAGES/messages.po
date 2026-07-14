@@ -16240,6 +16240,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d%% ya maandishi ya kiolesura imetafsiriwa kwa lugha hii."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Ufikiaji umekataliwa"
 
@@ -16468,6 +16472,10 @@ msgid "Year, 4 digits"
 msgstr "Mwaka, tarakimu 4"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "iliyopita"
 
@@ -16567,4 +16575,200 @@ msgstr "Huna ruhusa ya kuongeza kumbukumbu kwa mtu huyu."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Huna ruhusa ya kuhariri kumbukumbu hii"
+
+#: 
+msgid "Account locked"
+msgstr "Akaunti imefungwa"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Akaunti imefungwa kwa sababu ya majaribio mengi ya kuingia yaliyoshindwa"
+
+#: 
+msgid "Account status"
+msgstr "Hali ya akaunti"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Hali ya juu: chagua toleo maalum la lengo"
+
+#: 
+msgid "Bug Fix"
+msgstr "Kurekebisha hitilafu"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Kwa chaguo-msingi, msaidizi hupakulia toleo lijalo linalopendekezwa. Unaweza badala yake kuchagua toleo lolote linalopatikana hapa chini."
+
+#: 
+msgid "Change required"
+msgstr "Mabadiliko yanahitajika"
+
+#: 
+msgid "Changelog"
+msgstr "Kumbukumbu ya mabadiliko"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Endelea Hata Hivyo"
+
+#: 
+msgid "Could not load release information."
+msgstr "Haikuweza kupakia maelezo ya toleo."
+
+#: 
+msgid "Download & Install"
+msgstr "Pakua na Usakinishe"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Pakua toleo {{version}} na uliomba kwenye usakinishaji wako."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Inapakua toleo kutoka GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Majaribio ya kuingia yaliyoshindwa"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Imeshindwa kupata hakiki ya uboreshaji"
+
+#: 
+msgid "Feature"
+msgstr "Kipengele"
+
+#: 
+msgid "Full changelog"
+msgstr "Kumbukumbu kamili ya mabadiliko"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Sakinisha toleo thabiti {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Inasanikisha toleo lijalo"
+
+#: 
+msgid "Invalid file path"
+msgstr "Njia ya faili si sahihi"
+
+#: 
+msgid "Invalid version format"
+msgstr "Muundo wa toleo si sahihi"
+
+#: 
+msgid "Last login"
+msgstr "Kuingia mara ya mwisho"
+
+#: 
+msgid "Loading release information..."
+msgstr "Inapakia maelezo ya toleo..."
+
+#: 
+msgid "Locked"
+msgstr "Imefungwa"
+
+#: 
+msgid "Major"
+msgstr "Mkuu"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Sehemu zinazohitajika hazipo: fullPath na sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Lazima ubadilishe nenosiri"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Hakuna maelezo ya toleo yanayopatikana kwa toleo hili."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Hakuna uboreshaji unaopatikana kwa toleo lako la sasa."
+
+#: 
+msgid "Password change required"
+msgstr "Mabadiliko ya nenosiri yanahitajika"
+
+#: 
+msgid "Password status"
+msgstr "Hali ya nenosiri"
+
+#: 
+msgid "Re-install current version"
+msgstr "Sakinisha tena toleo la sasa"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Urejesho umeshindwa na hifadhidata inaweza kuwa katika hali isiyokamilika. Angalia kumbukumbu ya programu kwa maelezo, kisha rejesha nakala rudufu inayojulikana kuwa nzuri kabla ya kutumia mfumo."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Urejesho umeshindwa: faili la nakala rudufu linaonekana kutokukamilika au si nakala rudufu halali ya SQL. Hifadhidata sasa iko katika hali isiyokamilika — rejesha nakala rudufu inayojulikana kuwa nzuri kabla ya kutumia mfumo."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Inafanya kazi kwa Toleo la awali"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Onyesha njia kamili ya uboreshaji"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Toleo thabiti jipya zaidi ni {{version}}. Unaweza kulisanikisha tena hapa chini."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Akaunti hii imefungwa kwa sababu ya majaribio mengi sana ya kuingia yaliyoshindwa."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Mtumiaji huyu lazima aweke nenosiri jipya wakati wa kuingia ijayo."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Mtumiaji lazima abadilishe nenosiri lake wakati wa kuingia ijayo"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Mtumiaji lazima awe na ruhusa ya Barua pepe"
+
+#: 
+msgid "View release notes"
+msgstr "Tazama maelezo ya toleo"
+
+#: 
+msgid "What's New"
+msgstr "Mambo Mapya"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Mambo Mapya katika {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Uko nyuma ya matoleo <strong>{{releaseCount}}</strong>. Hapa kile utakachopata:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Unafanya kazi kwa toleo la awali."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Bado unaweza kuendelea na uboreshaji bila kutazama maelezo ya toleo."
+
+#: 
+msgid "You're up to date!"
+msgstr "Uko sawa!"
 

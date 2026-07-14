@@ -16645,3 +16645,199 @@ msgstr "您没有权限为此人添加备注。"
 msgid "You do not have permission to edit this note"
 msgstr "您没有权限编辑此备注"
 
+#: 
+msgid "Account locked"
+msgstr "账户已锁定"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "由于登录失败次数过多，账户已被锁定"
+
+#: 
+msgid "Account status"
+msgstr "账户状态"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "高级：选择特定目标版本"
+
+#: 
+msgid "Bug Fix"
+msgstr "错误修复"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "默认情况下，向导会下载下一个推荐版本。您也可以在下方选择任意可用版本。"
+
+#: 
+msgid "Change required"
+msgstr "需要更改"
+
+#: 
+msgid "Changelog"
+msgstr "更新日志"
+
+#: 
+msgid "Continue Anyway"
+msgstr "仍然继续"
+
+#: 
+msgid "Could not load release information."
+msgstr "无法加载版本信息。"
+
+#: 
+msgid "Download & Install"
+msgstr "下载并安装"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "下载版本 {{version}} 并应用到您的安装。"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "正在从 GitHub 下载版本……"
+
+#: 
+msgid "Failed login attempts"
+msgstr "登录失败次数"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "获取升级预览失败"
+
+#: 
+msgid "Feature"
+msgstr "新功能"
+
+#: 
+msgid "Full changelog"
+msgstr "完整更新日志"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "安装稳定版 {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "正在安装下一个版本"
+
+#: 
+msgid "Invalid file path"
+msgstr "无效的文件路径"
+
+#: 
+msgid "Invalid version format"
+msgstr "无效的版本格式"
+
+#: 
+msgid "Last login"
+msgstr "上次登录"
+
+#: 
+msgid "Loading release information..."
+msgstr "正在加载版本信息……"
+
+#: 
+msgid "Locked"
+msgstr "已锁定"
+
+#: 
+msgid "Major"
+msgstr "重大更新"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "缺少必填字段：fullPath 和 sha1"
+
+#: 
+msgid "Must change password"
+msgstr "必须更改密码"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "此版本没有可用的发行说明。"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "您当前版本没有可用的升级。"
+
+#: 
+msgid "Password change required"
+msgstr "需要更改密码"
+
+#: 
+msgid "Password status"
+msgstr "密码状态"
+
+#: 
+msgid "Re-install current version"
+msgstr "重新安装当前版本"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "恢复失败，数据库可能处于不完整状态。请查看应用日志了解详情，然后在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "恢复失败：备份文件似乎不完整或不是有效的 SQL 备份。数据库现在处于不完整状态——请在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Running Pre-release"
+msgstr "正在运行预发布版本"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "显示完整升级路径"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "最新稳定版本为 {{version}}。您可以在下方重新安装。"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "由于登录失败次数过多，此账户已被锁定。"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "此用户下次登录时必须设置新密码。"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "用户下次登录时必须更改密码"
+
+#: 
+msgid "User must have Email permission"
+msgstr "用户必须具有电子邮件权限"
+
+#: 
+msgid "View release notes"
+msgstr "查看发行说明"
+
+#: 
+msgid "What's New"
+msgstr "新增内容"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} 新增内容"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "您落后了 <strong>{{releaseCount}}</strong> 个版本。以下是您将获得的内容："
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "您正在运行预发布版本。"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "您仍然可以在不查看发行说明的情况下继续升级。"
+
+#: 
+msgid "You're up to date!"
+msgstr "您已是最新版本！"
+

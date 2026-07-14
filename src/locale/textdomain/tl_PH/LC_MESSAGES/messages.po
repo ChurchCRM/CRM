@@ -16204,6 +16204,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% ng teksto ng interface ay isinalin para sa wikang ito."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Hindi pinahintulutan ang access"
 
@@ -16258,6 +16262,14 @@ msgstr "Araw, 2 digit"
 #: 
 msgid "Day, no leading zero"
 msgstr "Araw, walang nangunguna na zero"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Default: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Default: (999) 999-9999 x99999"
 
 #: 
 msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
@@ -16424,6 +16436,10 @@ msgid "Year, 4 digits"
 msgstr "Taon, 4 digit"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "nakaraan"
 
@@ -16515,4 +16531,188 @@ msgstr "Wala kang pahintulot na magdagdag ng tala para sa taong ito."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Wala kang pahintulot na i-edit ang talang ito"
+
+#: 
+msgid "Account locked"
+msgstr "Naka-lock ang account"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Naka-lock ang account dahil sa napakaraming nabigong pagtatangkang mag-login"
+
+#: 
+msgid "Account status"
+msgstr "Katayuan ng account"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Advanced: pumili ng partikular na target na bersyon"
+
+#: 
+msgid "Bug Fix"
+msgstr "Pag-aayos ng bug"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Sa default, dina-download ng wizard ang susunod na inirerekomendang release. Maaari kang pumili ng anumang available na bersyon sa ibaba."
+
+#: 
+msgid "Change required"
+msgstr "Kinakailangan ang pagbabago"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Magpatuloy Kahit Paano"
+
+#: 
+msgid "Could not load release information."
+msgstr "Hindi ma-load ang impormasyon ng release."
+
+#: 
+msgid "Download & Install"
+msgstr "I-download at I-install"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "I-download ang bersyon {{version}} at ilapat ito sa iyong installation."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Dina-download ang release mula sa GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Mga nabigong pagtatangkang mag-login"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nabigo sa pagkuha ng preview ng upgrade"
+
+#: 
+msgid "Full changelog"
+msgstr "Buong changelog"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "I-install ang stable {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Ini-install ang susunod na release"
+
+#: 
+msgid "Invalid file path"
+msgstr "Di-wastong file path"
+
+#: 
+msgid "Invalid version format"
+msgstr "Di-wastong format ng bersyon"
+
+#: 
+msgid "Last login"
+msgstr "Huling login"
+
+#: 
+msgid "Loading release information..."
+msgstr "Nilo-load ang impormasyon ng release..."
+
+#: 
+msgid "Locked"
+msgstr "Naka-lock"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Nawawalang mga kinakailangang field: fullPath at sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Kailangang baguhin ang password"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Walang available na release notes para sa bersyong ito."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Walang available na upgrade para sa iyong kasalukuyang bersyon."
+
+#: 
+msgid "Password change required"
+msgstr "Kinakailangan ang pagbabago ng password"
+
+#: 
+msgid "Password status"
+msgstr "Katayuan ng password"
+
+#: 
+msgid "Re-install current version"
+msgstr "I-re-install ang kasalukuyang bersyon"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Nabigo ang pag-restore at maaaring nasa hindi kumpletong estado ang database. Suriin ang application log para sa mga detalye, pagkatapos ay i-restore ang isang kilalang-magandang backup bago gamitin ang sistema."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Nabigo ang pag-restore: tila hindi kumpleto ang backup file o hindi ito isang valid na SQL backup. Nasa hindi kumpletong estado na ang database — i-restore ang isang kilalang-magandang backup bago gamitin ang sistema."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Nagpapatakbo ng Pre-release"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Ipakita ang buong upgrade path"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Ang pinakabagong stable na release ay {{version}}. Maaari mo itong i-reinstall sa ibaba."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Naka-lock ang account na ito dahil sa napakaraming nabigong pagtatangkang mag-login."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Kailangang magtakda ng bagong password ang user na ito sa susunod na pag-sign in nila."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Kailangang baguhin ng user ang kanilang password sa susunod na login"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Ang user ay dapat may pahintulot sa Email"
+
+#: 
+msgid "View release notes"
+msgstr "Tingnan ang mga release notes"
+
+#: 
+msgid "What's New"
+msgstr "Ano ang Bago"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Ano ang Bago sa {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Ikaw ay <strong>{{releaseCount}}</strong> na release ang napalampas. Narito ang makukuha mo:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Nagpapatakbo ka ng pre-release na bersyon."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Maaari ka pa ring magpatuloy sa upgrade nang hindi tinitingnan ang mga release notes."
+
+#: 
+msgid "You're up to date!"
+msgstr "Napapanahon ka na!"
 

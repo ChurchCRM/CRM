@@ -16593,3 +16593,199 @@ msgstr "இந்த நபருக்கு குறிப்பு சேர
 msgid "You do not have permission to edit this note"
 msgstr "இந்த குறிப்பை திருத்த உங்களுக்கு அனுமதி இல்லை"
 
+#: 
+msgid "Account locked"
+msgstr "கணக்கு பூட்டப்பட்டது"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "அதிகமான தோல்வியுற்ற உள்நுழைவு முயற்சிகள் காரணமாக கணக்கு பூட்டப்பட்டது"
+
+#: 
+msgid "Account status"
+msgstr "கணக்கு நிலை"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "மேம்பட்டது: குறிப்பிட்ட இலக்கு பதிப்பைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Bug Fix"
+msgstr "பிழை திருத்தம்"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "இயல்பாக, வழிகாட்டி அடுத்த பரிந்துரைக்கப்பட்ட வெளியீட்டை பதிவிறக்குகிறது. அதற்கு பதிலாக கீழே உள்ள எந்த கிடைக்கக்கூடிய பதிப்பையும் தேர்ந்தெடுக்கலாம்."
+
+#: 
+msgid "Change required"
+msgstr "மாற்றம் தேவை"
+
+#: 
+msgid "Changelog"
+msgstr "மாற்றப் பதிவு"
+
+#: 
+msgid "Continue Anyway"
+msgstr "எப்படியும் தொடரவும்"
+
+#: 
+msgid "Could not load release information."
+msgstr "வெளியீட்டு தகவலை ஏற்ற முடியவில்லை."
+
+#: 
+msgid "Download & Install"
+msgstr "பதிவிறக்கு & நிறுவு"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "பதிப்பு {{version}} ஐ பதிவிறக்கி உங்கள் நிறுவலில் பயன்படுத்தவும்."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHub இலிருந்து வெளியீட்டை பதிவிறக்குகிறது..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "தோல்வியுற்ற உள்நுழைவு முயற்சிகள்"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "மேம்படுத்தல் முன்னோட்டத்தை பெற முடியவில்லை"
+
+#: 
+msgid "Feature"
+msgstr "அம்சம்"
+
+#: 
+msgid "Full changelog"
+msgstr "முழு மாற்றப் பதிவு"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "நிலையான {{version}} ஐ நிறுவு"
+
+#: 
+msgid "Installing next release"
+msgstr "அடுத்த வெளியீட்டை நிறுவுகிறது"
+
+#: 
+msgid "Invalid file path"
+msgstr "தவறான கோப்பு பாதை"
+
+#: 
+msgid "Invalid version format"
+msgstr "தவறான பதிப்பு வடிவம்"
+
+#: 
+msgid "Last login"
+msgstr "கடைசி உள்நுழைவு"
+
+#: 
+msgid "Loading release information..."
+msgstr "வெளியீட்டு தகவலை ஏற்றுகிறது..."
+
+#: 
+msgid "Locked"
+msgstr "பூட்டப்பட்டது"
+
+#: 
+msgid "Major"
+msgstr "பெரிய"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "தேவையான புலங்கள் இல்லை: fullPath மற்றும் sha1"
+
+#: 
+msgid "Must change password"
+msgstr "கடவுச்சொல்லை மாற்ற வேண்டும்"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "இந்த பதிப்பிற்கு வெளியீட்டு குறிப்புகள் எதுவும் இல்லை."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "உங்கள் தற்போதைய பதிப்பிற்கு மேம்படுத்தல்கள் எதுவும் இல்லை."
+
+#: 
+msgid "Password change required"
+msgstr "கடவுச்சொல் மாற்றம் தேவை"
+
+#: 
+msgid "Password status"
+msgstr "கடவுச்சொல் நிலை"
+
+#: 
+msgid "Re-install current version"
+msgstr "தற்போதைய பதிப்பை மீண்டும் நிறுவு"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "மீட்டெடுப்பு தோல்வியுற்றது மற்றும் தரவுத்தளம் முழுமையற்ற நிலையில் இருக்கலாம். விவரங்களுக்கு பயன்பாட்டு பதிவை சரிபார்க்கவும், பின்னர் கணினியை பயன்படுத்துவதற்கு முன் அறியப்பட்ட நல்ல காப்பு நகலை மீட்டெடுக்கவும்."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "மீட்டெடுப்பு தோல்வியுற்றது: காப்பு கோப்பு முழுமையற்றதாக தோன்றுகிறது அல்லது சரியான SQL காப்பு அல்ல. தரவுத்தளம் இப்போது முழுமையற்ற நிலையில் உள்ளது — கணினியை பயன்படுத்துவதற்கு முன் அறியப்பட்ட நல்ல காப்பு நகலை மீட்டெடுக்கவும்."
+
+#: 
+msgid "Running Pre-release"
+msgstr "முன்-வெளியீட்டை இயக்குகிறது"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "முழு மேம்படுத்தல் பாதையை காட்டு"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "சமீபத்திய நிலையான வெளியீடு {{version}} ஆகும். கீழே மீண்டும் நிறுவலாம்."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "அதிகமான தோல்வியுற்ற உள்நுழைவு முயற்சிகள் காரணமாக இந்த கணக்கு பூட்டப்பட்டுள்ளது."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "இந்த பயனர் அடுத்த முறை உள்நுழையும்போது புதிய கடவுச்சொல்லை அமைக்க வேண்டும்."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "பயனர் அடுத்த உள்நுழைவின்போது கடவுச்சொல்லை மாற்ற வேண்டும்"
+
+#: 
+msgid "User must have Email permission"
+msgstr "பயனருக்கு மின்னஞ்சல் அனுமதி இருக்க வேண்டும்"
+
+#: 
+msgid "View release notes"
+msgstr "வெளியீட்டு குறிப்புகளை பார்க்கவும்"
+
+#: 
+msgid "What's New"
+msgstr "புதியது என்ன"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} இல் புதியது என்ன"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "நீங்கள் <strong>{{releaseCount}}</strong> வெளியீடுகள் பின்தங்கியுள்ளீர்கள். நீங்கள் பெறுவது இதோ:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "நீங்கள் முன்-வெளியீட்டு பதிப்பை இயக்குகிறீர்கள்."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "வெளியீட்டு குறிப்புகளை பார்க்காமலும் மேம்படுத்தலை தொடரலாம்."
+
+#: 
+msgid "You're up to date!"
+msgstr "நீங்கள் புதுப்பித்த நிலையில் உள்ளீர்கள்!"
+

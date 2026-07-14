@@ -16318,6 +16318,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% din textul interfeței este tradus pentru această limbă."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Acces refuzat"
 
@@ -16546,6 +16550,10 @@ msgid "Year, 4 digits"
 msgstr "An, 4 cifre"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "trecut"
 
@@ -16645,4 +16653,196 @@ msgstr "Nu aveți permisiunea de a adăuga o notă pentru această persoană."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Nu aveți permisiunea de a edita această notă"
+
+#: 
+msgid "Account locked"
+msgstr "Cont blocat"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Cont blocat din cauza prea multor încercări eșuate de autentificare"
+
+#: 
+msgid "Account status"
+msgstr "Starea contului"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avansat: alegeți o versiune țintă specifică"
+
+#: 
+msgid "Bug Fix"
+msgstr "Corecție de erori"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "În mod implicit, expertul descarcă următoarea versiune recomandată. Puteți alege în schimb orice versiune disponibilă de mai jos."
+
+#: 
+msgid "Change required"
+msgstr "Modificare necesară"
+
+#: 
+msgid "Changelog"
+msgstr "Jurnal de modificări"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Continuați oricum"
+
+#: 
+msgid "Could not load release information."
+msgstr "Informațiile despre versiune nu au putut fi încărcate."
+
+#: 
+msgid "Download & Install"
+msgstr "Descărcare și instalare"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Descărcați versiunea {{version}} și aplicați-o la instalarea dvs."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Se descarcă versiunea de pe GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Încercări eșuate de autentificare"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Previzualizarea actualizării nu a putut fi obținută"
+
+#: 
+msgid "Feature"
+msgstr "Funcționalitate"
+
+#: 
+msgid "Full changelog"
+msgstr "Jurnal complet de modificări"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Instalați versiunea stabilă {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Se instalează următoarea versiune"
+
+#: 
+msgid "Invalid file path"
+msgstr "Cale de fișier nevalidă"
+
+#: 
+msgid "Invalid version format"
+msgstr "Format de versiune nevalid"
+
+#: 
+msgid "Last login"
+msgstr "Ultima autentificare"
+
+#: 
+msgid "Loading release information..."
+msgstr "Se încarcă informațiile despre versiune..."
+
+#: 
+msgid "Locked"
+msgstr "Blocat"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Câmpuri obligatorii lipsă: fullPath și sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Parola trebuie schimbată"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Nu există note de versiune disponibile pentru această versiune."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nu există actualizări disponibile pentru versiunea dvs. curentă."
+
+#: 
+msgid "Password change required"
+msgstr "Schimbarea parolei este obligatorie"
+
+#: 
+msgid "Password status"
+msgstr "Starea parolei"
+
+#: 
+msgid "Re-install current version"
+msgstr "Reinstalați versiunea curentă"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Restaurarea a eșuat și baza de date poate fi într-o stare incompletă. Verificați jurnalul aplicației pentru detalii, apoi restaurați o copie de rezervă validă înainte de a utiliza sistemul."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Restaurarea a eșuat: fișierul de rezervă pare incomplet sau nu este o copie de rezervă SQL validă. Baza de date este acum într-o stare incompletă — restaurați o copie de rezervă validă înainte de a utiliza sistemul."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Se rulează o versiune pre-lansare"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Afișați calea completă de actualizare"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Cea mai recentă versiune stabilă este {{version}}. O puteți reinstala mai jos."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Acest cont este blocat din cauza prea multor încercări eșuate de autentificare."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Acest utilizator trebuie să seteze o nouă parolă la următoarea autentificare."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Utilizatorul trebuie să își schimbe parola la următoarea autentificare"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Utilizatorul trebuie să aibă permisiunea pentru e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Vizualizați notele de versiune"
+
+#: 
+msgid "What's New"
+msgstr "Noutăți"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Noutăți în {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Aveți <strong>{{releaseCount}}</strong> versiuni în urmă. Iată ce veți câștiga:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Rulați o versiune pre-lansare."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Puteți continua actualizarea fără a vizualiza notele de versiune."
+
+#: 
+msgid "You're up to date!"
+msgstr "Aveți cea mai recentă versiune!"
 

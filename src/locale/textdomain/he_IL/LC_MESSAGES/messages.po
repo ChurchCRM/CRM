@@ -16578,3 +16578,199 @@ msgstr "אין לך הרשאה להוסיף הערה עבור אדם זה."
 msgid "You do not have permission to edit this note"
 msgstr "אין לך הרשאה לערוך הערה זו"
 
+#: 
+msgid "Account locked"
+msgstr "חשבון נעול"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "החשבון ננעל עקב יותר מדי ניסיונות כניסה כושלים"
+
+#: 
+msgid "Account status"
+msgstr "סטטוס חשבון"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "מתקדם: בחר גרסת יעד ספציפית"
+
+#: 
+msgid "Bug Fix"
+msgstr "תיקון באג"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "כברירת מחדל, האשף מוריד את הגרסה המומלצת הבאה. באפשרותך לבחור כל גרסה זמינה מהרשימה למטה."
+
+#: 
+msgid "Change required"
+msgstr "נדרש שינוי"
+
+#: 
+msgid "Changelog"
+msgstr "יומן שינויים"
+
+#: 
+msgid "Continue Anyway"
+msgstr "המשך בכל זאת"
+
+#: 
+msgid "Could not load release information."
+msgstr "לא ניתן לטעון את פרטי הגרסה."
+
+#: 
+msgid "Download & Install"
+msgstr "הורד והתקן"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "הורד את גרסה {{version}} והחל אותה על ההתקנה שלך."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "מוריד גרסה מ-GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "ניסיונות כניסה כושלים"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "נכשל אחזור תצוגה מקדימה של שדרוג"
+
+#: 
+msgid "Feature"
+msgstr "תכונה"
+
+#: 
+msgid "Full changelog"
+msgstr "יומן שינויים מלא"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "התקן גרסה יציבה {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "מתקין את הגרסה הבאה"
+
+#: 
+msgid "Invalid file path"
+msgstr "נתיב קובץ לא חוקי"
+
+#: 
+msgid "Invalid version format"
+msgstr "פורמט גרסה לא חוקי"
+
+#: 
+msgid "Last login"
+msgstr "כניסה אחרונה"
+
+#: 
+msgid "Loading release information..."
+msgstr "טוען פרטי גרסה..."
+
+#: 
+msgid "Locked"
+msgstr "נעול"
+
+#: 
+msgid "Major"
+msgstr "מרכזי"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "שדות חובה חסרים: fullPath ו-sha1"
+
+#: 
+msgid "Must change password"
+msgstr "חובה לשנות סיסמה"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "אין הערות גרסה זמינות עבור גרסה זו."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "אין שדרוגים זמינים עבור הגרסה הנוכחית שלך."
+
+#: 
+msgid "Password change required"
+msgstr "נדרש שינוי סיסמה"
+
+#: 
+msgid "Password status"
+msgstr "סטטוס סיסמה"
+
+#: 
+msgid "Re-install current version"
+msgstr "התקן מחדש את הגרסה הנוכחית"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "השחזור נכשל וייתכן שמסד הנתונים במצב חלקי. בדוק את יומן היישום לפרטים, ולאחר מכן שחזר גיבוי תקין לפני השימוש במערכת."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "השחזור נכשל: קובץ הגיבוי נראה חלקי או שאינו גיבוי SQL חוקי. מסד הנתונים נמצא כעת במצב חלקי — שחזר גיבוי תקין לפני השימוש במערכת."
+
+#: 
+msgid "Running Pre-release"
+msgstr "מריץ גרסת טרום-שחרור"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "הצג נתיב שדרוג מלא"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "הגרסה היציבה האחרונה היא {{version}}. באפשרותך להתקין אותה מחדש למטה."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "חשבון זה ננעל עקב יותר מדי ניסיונות כניסה כושלים."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "משתמש זה חייב להגדיר סיסמה חדשה בכניסה הבאה שלו."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "המשתמש חייב לשנות את סיסמתו בכניסה הבאה"
+
+#: 
+msgid "User must have Email permission"
+msgstr "למשתמש חייבת להיות הרשאת דוא\"ל"
+
+#: 
+msgid "View release notes"
+msgstr "צפה בהערות הגרסה"
+
+#: 
+msgid "What's New"
+msgstr "מה חדש"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "מה חדש ב-{{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "אתה מפגר ב-<strong>{{releaseCount}}</strong> גרסאות. הנה מה שתרוויח:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "אתה מריץ גרסת טרום-שחרור."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "עדיין באפשרותך להמשיך עם השדרוג מבלי לצפות בהערות הגרסה."
+
+#: 
+msgid "You're up to date!"
+msgstr "אתה מעודכן!"
+

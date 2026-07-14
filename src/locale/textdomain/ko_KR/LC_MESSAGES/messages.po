@@ -15267,6 +15267,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "역할 선택에는 GroupID가 필요합니다"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "인증 앱을 준비하세요 (Google Authenticator, Microsoft Authenticator, Authy 등)"
 
@@ -15277,6 +15281,10 @@ msgstr "고급 옵션 숨기기"
 #: 
 msgid "Home phone is required"
 msgstr "집 전화번호는 필수입니다"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16554,4 +16562,200 @@ msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "이 메모를 수정할 권한이 없습니다"
+
+#: 
+msgid "Account locked"
+msgstr "계정 잠금"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "로그인 시도 실패가 너무 많아 계정이 잠겼습니다"
+
+#: 
+msgid "Account status"
+msgstr "계정 상태"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "고급: 특정 대상 버전 선택"
+
+#: 
+msgid "Bug Fix"
+msgstr "버그 수정"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "기본적으로 마법사는 다음 권장 릴리즈를 다운로드합니다. 아래에서 사용 가능한 버전을 직접 선택할 수도 있습니다."
+
+#: 
+msgid "Change required"
+msgstr "변경 필요"
+
+#: 
+msgid "Changelog"
+msgstr "변경 로그"
+
+#: 
+msgid "Continue Anyway"
+msgstr "그래도 계속"
+
+#: 
+msgid "Could not load release information."
+msgstr "릴리즈 정보를 불러올 수 없습니다."
+
+#: 
+msgid "Download & Install"
+msgstr "다운로드 및 설치"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "버전 {{version}}을(를) 다운로드하여 설치에 적용합니다."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHub에서 릴리즈를 다운로드하는 중..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "로그인 시도 실패 횟수"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "업그레이드 미리보기를 가져오지 못했습니다"
+
+#: 
+msgid "Feature"
+msgstr "기능"
+
+#: 
+msgid "Full changelog"
+msgstr "전체 변경 로그"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "안정 버전 {{version}} 설치"
+
+#: 
+msgid "Installing next release"
+msgstr "다음 릴리즈 설치 중"
+
+#: 
+msgid "Invalid file path"
+msgstr "잘못된 파일 경로"
+
+#: 
+msgid "Invalid version format"
+msgstr "잘못된 버전 형식"
+
+#: 
+msgid "Last login"
+msgstr "마지막 로그인"
+
+#: 
+msgid "Loading release information..."
+msgstr "릴리즈 정보를 불러오는 중..."
+
+#: 
+msgid "Locked"
+msgstr "잠금"
+
+#: 
+msgid "Major"
+msgstr "주요"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "필수 필드 누락: fullPath 및 sha1"
+
+#: 
+msgid "Must change password"
+msgstr "비밀번호 변경 필요"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "이 버전에 대한 릴리즈 노트가 없습니다."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "현재 버전에 사용 가능한 업그레이드가 없습니다."
+
+#: 
+msgid "Password change required"
+msgstr "비밀번호 변경 필요"
+
+#: 
+msgid "Password status"
+msgstr "비밀번호 상태"
+
+#: 
+msgid "Re-install current version"
+msgstr "현재 버전 재설치"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "복원에 실패했으며 데이터베이스가 불완전한 상태일 수 있습니다. 자세한 내용은 애플리케이션 로그를 확인한 후, 시스템을 사용하기 전에 정상적인 백업을 복원하십시오."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "복원 실패: 백업 파일이 불완전하거나 유효한 SQL 백업이 아닌 것 같습니다. 데이터베이스가 현재 불완전한 상태입니다 — 시스템을 사용하기 전에 정상적인 백업을 복원하십시오."
+
+#: 
+msgid "Running Pre-release"
+msgstr "프리릴리즈 실행 중"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "전체 업그레이드 경로 표시"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "최신 안정 릴리즈는 {{version}}입니다. 아래에서 재설치할 수 있습니다."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "로그인 시도 실패가 너무 많아 이 계정이 잠겼습니다."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "이 사용자는 다음번 로그인 시 새 비밀번호를 설정해야 합니다."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "사용자는 다음 로그인 시 비밀번호를 변경해야 합니다"
+
+#: 
+msgid "User must have Email permission"
+msgstr "사용자에게 이메일 권한이 있어야 합니다"
+
+#: 
+msgid "View release notes"
+msgstr "릴리즈 노트 보기"
+
+#: 
+msgid "What's New"
+msgstr "새로운 기능"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}}의 새로운 기능"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong>개의 릴리즈가 뒤처져 있습니다. 업그레이드하면 얻을 수 있는 것:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "프리릴리즈 버전을 실행 중입니다."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "릴리즈 노트를 보지 않고도 업그레이드를 계속 진행할 수 있습니다."
+
+#: 
+msgid "You're up to date!"
+msgstr "최신 상태입니다!"
 

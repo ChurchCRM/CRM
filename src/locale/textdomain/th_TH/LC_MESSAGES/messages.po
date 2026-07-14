@@ -16540,3 +16540,199 @@ msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึ
 msgid "You do not have permission to edit this note"
 msgstr "คุณไม่มีสิทธิ์แก้ไขบันทึกนี้"
 
+#: 
+msgid "Account locked"
+msgstr "บัญชีถูกล็อก"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "บัญชีถูกล็อกเนื่องจากพยายามเข้าสู่ระบบผิดพลาดมากเกินไป"
+
+#: 
+msgid "Account status"
+msgstr "สถานะบัญชี"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "ขั้นสูง: เลือกเวอร์ชันเป้าหมายที่ต้องการ"
+
+#: 
+msgid "Bug Fix"
+msgstr "แก้ไขข้อผิดพลาด"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "โดยค่าเริ่มต้น ตัวช่วยสร้างจะดาวน์โหลดรุ่นที่แนะนำถัดไป คุณสามารถเลือกเวอร์ชันที่มีให้ด้านล่างแทนได้"
+
+#: 
+msgid "Change required"
+msgstr "จำเป็นต้องเปลี่ยนแปลง"
+
+#: 
+msgid "Changelog"
+msgstr "บันทึกการเปลี่ยนแปลง"
+
+#: 
+msgid "Continue Anyway"
+msgstr "ดำเนินการต่อไป"
+
+#: 
+msgid "Could not load release information."
+msgstr "ไม่สามารถโหลดข้อมูลรุ่นได้"
+
+#: 
+msgid "Download & Install"
+msgstr "ดาวน์โหลดและติดตั้ง"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "ดาวน์โหลดเวอร์ชัน {{version}} และนำไปใช้กับการติดตั้งของคุณ"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "กำลังดาวน์โหลดรุ่นจาก GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "ความพยายามเข้าสู่ระบบที่ล้มเหลว"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "ไม่สามารถดึงข้อมูลตัวอย่างการอัปเกรดได้"
+
+#: 
+msgid "Feature"
+msgstr "คุณสมบัติ"
+
+#: 
+msgid "Full changelog"
+msgstr "บันทึกการเปลี่ยนแปลงทั้งหมด"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "ติดตั้งเวอร์ชันเสถียร {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "กำลังติดตั้งรุ่นถัดไป"
+
+#: 
+msgid "Invalid file path"
+msgstr "เส้นทางไฟล์ไม่ถูกต้อง"
+
+#: 
+msgid "Invalid version format"
+msgstr "รูปแบบเวอร์ชันไม่ถูกต้อง"
+
+#: 
+msgid "Last login"
+msgstr "เข้าสู่ระบบล่าสุด"
+
+#: 
+msgid "Loading release information..."
+msgstr "กำลังโหลดข้อมูลรุ่น..."
+
+#: 
+msgid "Locked"
+msgstr "ล็อก"
+
+#: 
+msgid "Major"
+msgstr "หลัก"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "ขาดข้อมูลที่จำเป็น: fullPath และ sha1"
+
+#: 
+msgid "Must change password"
+msgstr "ต้องเปลี่ยนรหัสผ่าน"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "ไม่มีบันทึกรุ่นสำหรับเวอร์ชันนี้"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "ไม่มีการอัปเกรดสำหรับเวอร์ชันปัจจุบันของคุณ"
+
+#: 
+msgid "Password change required"
+msgstr "จำเป็นต้องเปลี่ยนรหัสผ่าน"
+
+#: 
+msgid "Password status"
+msgstr "สถานะรหัสผ่าน"
+
+#: 
+msgid "Re-install current version"
+msgstr "ติดตั้งเวอร์ชันปัจจุบันใหม่"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "การกู้คืนล้มเหลวและฐานข้อมูลอาจอยู่ในสถานะไม่สมบูรณ์ ตรวจสอบบันทึกแอปพลิเคชันสำหรับรายละเอียด จากนั้นกู้คืนข้อมูลสำรองที่ดีก่อนใช้งานระบบ"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "การกู้คืนล้มเหลว: ไฟล์สำรองดูเหมือนไม่สมบูรณ์หรือไม่ใช่ข้อมูลสำรอง SQL ที่ถูกต้อง ฐานข้อมูลอยู่ในสถานะไม่สมบูรณ์ — กู้คืนข้อมูลสำรองที่ดีก่อนใช้งานระบบ"
+
+#: 
+msgid "Running Pre-release"
+msgstr "กำลังใช้งานเวอร์ชันก่อนเผยแพร่"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "แสดงเส้นทางการอัปเกรดทั้งหมด"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "รุ่นเสถียรล่าสุดคือ {{version}} คุณสามารถติดตั้งใหม่ได้ด้านล่าง"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "บัญชีนี้ถูกล็อกเนื่องจากพยายามเข้าสู่ระบบผิดพลาดมากเกินไป"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "ผู้ใช้นี้ต้องตั้งรหัสผ่านใหม่ในครั้งถัดไปที่เข้าสู่ระบบ"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "ผู้ใช้ต้องเปลี่ยนรหัสผ่านเมื่อเข้าสู่ระบบครั้งถัดไป"
+
+#: 
+msgid "User must have Email permission"
+msgstr "ผู้ใช้ต้องมีสิทธิ์อีเมล"
+
+#: 
+msgid "View release notes"
+msgstr "ดูบันทึกรุ่น"
+
+#: 
+msgid "What's New"
+msgstr "มีอะไรใหม่"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "มีอะไรใหม่ใน {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "คุณล้าหลัง <strong>{{releaseCount}}</strong> รุ่น นี่คือสิ่งที่คุณจะได้รับ:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "คุณกำลังใช้งานเวอร์ชันก่อนเผยแพร่"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "คุณยังสามารถดำเนินการอัปเกรดต่อไปได้โดยไม่ต้องดูบันทึกรุ่น"
+
+#: 
+msgid "You're up to date!"
+msgstr "คุณอัปเดตแล้ว!"
+
