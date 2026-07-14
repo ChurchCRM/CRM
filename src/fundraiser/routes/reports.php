@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Reports\PdfCertificatesReport;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -317,6 +318,14 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
     $fundraiserId = (int) $args['fundraiserId'];
     $params       = $request->getQueryParams();
     $body         = (array) $request->getParsedBody();
+
+    // CSRF guard: POST (bulk-select form) carries a token; GET (single-paddle link) is read-only.
+    if ($request->getMethod() === 'POST') {
+        if (!CSRFUtils::verifyRequest($body, 'statement_report')) {
+            $response->getBody()->write(gettext('Invalid security token. Please try again.'));
+            return $response->withStatus(400)->withHeader('Content-Type', 'text/plain');
+        }
+    }
 
     $iPaddleNumId = (int) ($params['paddleId'] ?? 0);
 

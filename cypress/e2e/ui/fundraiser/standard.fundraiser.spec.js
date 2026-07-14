@@ -3,9 +3,9 @@
 describe("Fund Raiser", () => {
     beforeEach(() => cy.setupStandardSession());
 
-    it("View All ", () => {
-        cy.visit("/fundraiser/editor");
-        cy.contains("Create New Fund Raiser");
+    it("View All", () => {
+        cy.visit("/fundraiser/");
+        cy.contains("Fundraiser Listing");
     });
 
     it("View By Filter Date ", () => {
@@ -14,8 +14,7 @@ describe("Fund Raiser", () => {
         cy.contains("2016 Car Wash");
     });
 
-
-    it("New Fund Raiser with url param -1 ", () => {
+    it("Create form renders at /fundraiser/editor", () => {
         cy.visit("/fundraiser/editor");
         cy.contains("Create New Fund Raiser");
     });

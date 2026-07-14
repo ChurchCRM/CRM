@@ -21,6 +21,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <?php /* Generate-statements form wraps ONLY the button; JS guards selection and populates hidden Chk* inputs */ ?>
     <form id="generateStatementsForm" method="post"
           action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/reports/statement">
+      <?= CSRFUtils::getTokenInputField('statement_report') ?>
       <input type="submit" class="btn btn-primary" value="<?= gettext('Generate Statements for Selected') ?>"
              name="GenerateStatements">
     </form>
