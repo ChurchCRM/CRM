@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-14 14:02+0000\n"
+"POT-Creation-Date: 2026-07-14 22:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2670,9 +2670,6 @@ msgid "Create and edit family information and relationships"
 msgstr ""
 
 msgid "Create and manage church events and activities"
-msgstr ""
-
-msgid "Create directory permission"
 msgstr ""
 
 msgid "Create new family"
@@ -11484,10 +11481,6 @@ msgid "User not found"
 msgstr ""
 
 msgid "User not found."
-msgstr ""
-
-#. Context: userconfig_ucfg
-msgid "User permission to create directories"
 msgstr ""
 
 #. Context: userconfig_ucfg
