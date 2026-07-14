@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-12 15:20+0000\n"
+"POT-Creation-Date: 2026-07-14 06:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -292,6 +292,9 @@ msgid "A system update is available. Please upgrade your installation."
 msgstr ""
 
 msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr ""
+
+msgid "A valid person must be selected."
 msgstr ""
 
 msgid "AM / PM"
@@ -2657,6 +2660,9 @@ msgstr ""
 msgid "Create a new family (using last name)"
 msgstr ""
 
+msgid "Create a new user account"
+msgstr ""
+
 msgid "Create an Audience in MailChimp"
 msgstr ""
 
@@ -3026,9 +3032,6 @@ msgid "Default State"
 msgstr ""
 
 msgid "Default State - Must be 2-letter abbreviation!"
-msgstr ""
-
-msgid "Default User Settings"
 msgstr ""
 
 msgid "Default Zip"
@@ -6496,6 +6499,12 @@ msgstr ""
 msgid "Login Name is required"
 msgstr ""
 
+msgid "Login already in use, please select a different login!"
+msgstr ""
+
+msgid "Login must be at least 3 characters!"
+msgstr ""
+
 msgid "Login to your account"
 msgstr ""
 
@@ -7285,6 +7294,9 @@ msgid "New Release"
 msgstr ""
 
 msgid "New Role"
+msgstr ""
+
+msgid "New User"
 msgstr ""
 
 #. Context: countries
@@ -8506,6 +8518,9 @@ msgid "Please select a group."
 msgstr ""
 
 msgid "Please select a person to check in."
+msgstr ""
+
+msgid "Please select a person to create a user account for."
 msgstr ""
 
 msgid "Please select a role."
@@ -9762,9 +9777,6 @@ msgstr ""
 msgid "Set New Password"
 msgstr ""
 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr ""
-
 msgid "Set Permission to True to allow this user to change the setting themselves."
 msgstr ""
 
@@ -9775,9 +9787,6 @@ msgid "Set an admin user email so you can reset passwords and receive notificati
 msgstr ""
 
 msgid "Set default check account number for family"
-msgstr ""
-
-msgid "Set default preferences for new user accounts"
 msgstr ""
 
 msgid "Set the accent color used for buttons, links, and active elements"
@@ -10585,6 +10594,9 @@ msgstr ""
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr ""
 
+msgid "The selected person was not found."
+msgstr ""
+
 msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
 msgstr ""
 
@@ -10704,6 +10716,9 @@ msgid "This option requires at least version 3.22 of MySQL!  Hit browser back bu
 msgstr ""
 
 msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr ""
+
+msgid "This person already has a user account."
 msgstr ""
 
 msgid "This plugin does not support connection testing."
@@ -11448,6 +11463,9 @@ msgid "User must have Notes permission"
 msgstr ""
 
 msgid "User not found"
+msgstr ""
+
+msgid "User not found."
 msgstr ""
 
 #. Context: userconfig_ucfg
@@ -12687,6 +12705,9 @@ msgid "— Select State —"
 msgstr ""
 
 msgid "— Select a group —"
+msgstr ""
+
+msgid "— Select a person —"
 msgstr ""
 
 msgid "— Select type (optional) —"
