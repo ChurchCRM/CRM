@@ -4,8 +4,10 @@ describe("User Editor - ORM Migration Tests", () => {
     // and test-subdir) never race on the same DB row.
     // Test 1: PersonID=6 (Constance Hart, constance.hart@example.com, family 2)
     // Test 2: PersonID=5 (Albert Campbell, albert.garcia@example.com, family 1)
+    // Test 3: PersonID=9 (Jean Hart — no seeded user account, avoids PersonID 7 which is 'locked.user')
     const throwawayPersonId = 6;
     const throwawayPersonId2 = 5;
+    const throwawayPersonId3 = 9;   // Jean Hart — no seeded user account
 
     beforeEach(() => {
         cy.setupAdminSession();
@@ -108,6 +110,54 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get("#UserName").clear().type("Admin");
         cy.get("#SaveButton").click();
         cy.wait("@restoreUser");
+    });
+
+    it("Should persist Manage Events permission for new Custom user", () => {
+        // bEnabledEvents defaults to '1' in the seed — the #AddEvent toggle is present.
+        // This test covers both states:
+        //   - new user WITHOUT Manage Events → AddEvent unchecked after load (explicit FALSE row)
+        //   - edit to enable Manage Events → AddEvent checked after reload (TRUE row)
+        //   - switching to self-service mode clears the toggle (JS exclusivity)
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId3}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+        cy.setupAdminSession();
+
+        // --- Part 1: Create user WITHOUT Manage Events (AddEvent unchecked) ---
+        cy.intercept("POST", "**/admin/system/users/new*").as("saveUser");
+        cy.visit(`admin/system/users/new?personId=${throwawayPersonId3}`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+        // Manage Events toggle is present and unchecked by default
+        cy.get("#AddEvent").should("exist").should("not.be.checked");
+        // Save without checking AddEvent
+        cy.get("#SaveButton").click();
+        cy.wait("@saveUser");
+
+        // Reload edit — AddEvent must remain unchecked (explicit FALSE row was written)
+        cy.visit(`admin/system/users/${throwawayPersonId3}/edit`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+        cy.get("#AddEvent").should("not.be.checked");
+
+        // --- Part 2: Edit to grant Manage Events (AddEvent checked) ---
+        cy.intercept("POST", `**/admin/system/users/${throwawayPersonId3}/edit*`).as("editUser");
+        cy.get("#AddEvent").check();
+        cy.get("#SaveButton").click();
+        cy.wait("@editUser");
+
+        // Reload edit — AddEvent must now be checked (TRUE row was written)
+        cy.visit(`admin/system/users/${throwawayPersonId3}/edit`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+        cy.get("#AddEvent").should("be.checked");
+
+        // --- Part 3: JS exclusivity — switching to self-service must clear AddEvent ---
+        cy.get('input[name="accessMode"][value="self"]').check();
+        cy.get("#AddEvent").should("not.be.checked");
+
+        // Cleanup
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId3}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
     });
 });
 

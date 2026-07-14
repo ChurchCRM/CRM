@@ -218,6 +218,7 @@ class UserService
             'finance'           => $allow && isset($body['Finance'])           ? 1 : 0,
             'manageFundraisers' => $allow && isset($body['ManageFundraisers']) ? 1 : 0,
             'notes'             => $allow && isset($body['Notes'])             ? 1 : 0,
+            'addEvent'          => $allow && isset($body['AddEvent'])          ? 1 : 0,
         ];
     }
 
@@ -285,6 +286,9 @@ class UserService
                 ->setEditSelf($perms['editSelf']);
             $newUser->updatePassword($rawPassword);
             $newUser->save();
+            // Always write an explicit TRUE/FALSE bAddEvent row for the new user
+            // so they never silently inherit the shared default (peronId=0) value.
+            $this->saveAddEventPermission($personId, (bool) ($perms['addEvent'] ?? false));
             $newUser->createTimeLineNote('created');
             $con->commit();
         } catch (\Throwable $e) {
@@ -334,6 +338,9 @@ class UserService
             if ($types !== []) {
                 $this->saveUserConfig($personId, $newValue, $newPermission, $types);
             }
+            // Write bAddEvent last so the Permissions-card checkbox always wins
+            // over the raw User Config table permission dropdown for the same row.
+            $this->saveAddEventPermission($personId, (bool) ($perms['addEvent'] ?? false));
             $con->commit();
         } catch (\Throwable $e) {
             $con->rollBack();
@@ -389,6 +396,66 @@ class UserService
         $user->createTimeLineNote('updated');
 
         return $user;
+    }
+
+    /**
+     * Get the raw bAddEvent (Manage Events) permission for a user.
+     *
+     * Reads the per-user UserConfig row directly — no admin bypass — so the
+     * Permissions-card checkbox reflects the stored grant, not the effective
+     * computed value (which always returns true for admins).
+     *
+     * @param int $personId Person ID of the user to query
+     * @return bool True if the bAddEvent permission row is set to 'TRUE'
+     */
+    public function getAddEventPermission(int $personId): bool
+    {
+        $row = UserConfigQuery::create()
+            ->filterByPeronId($personId)
+            ->filterByName('bAddEvent')
+            ->findOne();
+        return $row !== null && $row->getPermission() === 'TRUE';
+    }
+
+    /**
+     * Upsert the per-user bAddEvent (Manage Events) UserConfig permission row.
+     *
+     * No-op when the Events module is disabled system-wide or when the default
+     * (peronId=0) seed row is missing. Clones field metadata from the default
+     * row on first write — identical to the saveUserConfig() clone pattern.
+     *
+     * @param int  $personId Person ID of the user
+     * @param bool $enabled  Whether to grant (TRUE) or deny (FALSE) the permission
+     */
+    private function saveAddEventPermission(int $personId, bool $enabled): void
+    {
+        if (!User::isEventsEnabled()) {
+            return;
+        }
+        $default = UserConfigQuery::create()
+            ->filterByPeronId(0)
+            ->filterByName('bAddEvent')
+            ->findOne();
+        if ($default === null) {
+            return;
+        }
+        $permission = $enabled ? 'TRUE' : 'FALSE';
+        $row = UserConfigQuery::create()
+            ->filterByPeronId($personId)
+            ->filterById($default->getId())
+            ->findOne();
+        if ($row === null) {
+            $row = new UserConfig();
+            $row->setPeronId($personId)
+                ->setId($default->getId())
+                ->setName($default->getName())
+                ->setValue($default->getValue())
+                ->setType($default->getType())
+                ->setTooltip($default->getTooltip())
+                ->setCat($default->getCat());
+        }
+        $row->setPermission($permission);
+        $row->save();
     }
 
     /**
