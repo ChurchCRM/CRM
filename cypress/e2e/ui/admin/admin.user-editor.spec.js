@@ -13,23 +13,24 @@ describe("User Editor - ORM Migration Tests", () => {
 
     function createCustomUser() {
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
-        // The API call sends the session cookie alongside x-api-key, causing PHP to
-        // overwrite $_SESSION['AuthenticationProvider'] with APITokenAuthentication.
-        // Clear all cy.session() caches so that setupAdminSession() is forced to
-        // run the full setup function (fresh PHP login), creating a clean session.
+        // The API call's response Set-Cookie will overwrite the browser's session cookie
+        // and contaminate the Cypress 'admin-session' cache when cy.session() implicitly
+        // saves the current browser state. Clear all saved sessions then force a fresh
+        // admin login to rebuild the 'admin-session' cache with a valid admin cookie.
         cy.then(() => Cypress.session.clearAllSavedSessions());
         cy.setupAdminSession();
-        // Small wait to allow the fresh PHP session to fully propagate before visiting.
-        cy.wait(1000);
-        cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
-        cy.visit(`UserEditor.php?NewPersonID=${throwawayPersonId}`);
+        cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
+        cy.visit(`admin/system/users/new?personId=${throwawayPersonId}`);
         cy.contains("User Editor");
         cy.get("#customPermissions").should("be.visible");
     }
 
     function deleteUser() {
+        // withCredentials:false prevents sending the session cookie on the request
+        // but the response Set-Cookie still updates the browser jar, contaminating
+        // the 'admin-session' Cypress cache. Clear all sessions after cleanup so
+        // the next test's beforeEach re-establishes a clean admin session.
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
-        // Same: clear all session caches so the next test's beforeEach re-logs in fresh.
         cy.then(() => Cypress.session.clearAllSavedSessions());
     }
 
@@ -37,9 +38,8 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}`, null, [200, 204, 404]);
         cy.then(() => Cypress.session.clearAllSavedSessions());
         cy.setupAdminSession();
-        cy.wait(1000);
-        cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
-        cy.visit(`UserEditor.php?NewPersonID=${throwawayPersonId2}`);
+        cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
+        cy.visit(`admin/system/users/new?personId=${throwawayPersonId2}`);
         cy.contains("User Editor");
         cy.get("#customPermissions").should("be.visible");
     }
@@ -55,7 +55,9 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get("#SaveButton").click();
         cy.wait("@saveUser");
 
-        cy.visit(`UserEditor.php?PersonID=${throwawayPersonId}`);
+        // Verify the user was created and Finance flag persisted via edit form
+        cy.visit(`admin/system/users/${throwawayPersonId}/edit`);
+        cy.contains("User Editor");
         cy.get("#customPermissions").should("be.visible");
         cy.get("#Finance").should("be.checked");
         deleteUser();
@@ -68,7 +70,8 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.wait("@saveUser");
         cy.wait(500);
 
-        cy.visit(`UserEditor.php?PersonID=${throwawayPersonId2}`);
+        cy.visit(`admin/system/users/${throwawayPersonId2}/edit`);
+        cy.contains("User Editor");
         cy.get("#customPermissions").should("be.visible");
         cy.get("#EditRecords").should("be.checked");
         deleteUser2();
@@ -80,8 +83,8 @@ describe("User Editor - ORM Migration Tests", () => {
         //
         // Reset to canonical username first in case a prior run was interrupted
         // after mutating to 'admin_orm_test' but before restoring.
-        cy.intercept("POST", "**/UserEditor.php*").as("resetIfNeeded");
-        cy.visit("UserEditor.php?PersonID=1");
+        cy.intercept("POST", "**/admin/system/users/1/edit*").as("resetIfNeeded");
+        cy.visit("admin/system/users/1/edit");
         cy.contains("User Editor");
         cy.get("#UserName").then(($input) => {
             if ($input.val() !== "Admin") {
@@ -92,18 +95,37 @@ describe("User Editor - ORM Migration Tests", () => {
         });
 
         const newUsername = "admin_orm_test";
-        cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
+        cy.intercept("POST", "**/admin/system/users/1/edit*").as("saveUser");
         cy.get("#UserName").clear().type(newUsername);
         cy.get("#SaveButton").click();
         cy.wait("@saveUser");
 
-        cy.visit("UserEditor.php?PersonID=1");
+        cy.visit("admin/system/users/1/edit");
         cy.get("#UserName").should("have.value", newUsername);
 
         // Restore to canonical seed username
-        cy.intercept("POST", "**/UserEditor.php*").as("restoreUser");
+        cy.intercept("POST", "**/admin/system/users/1/edit*").as("restoreUser");
         cy.get("#UserName").clear().type("Admin");
         cy.get("#SaveButton").click();
         cy.wait("@restoreUser");
+    });
+});
+
+describe("User Editor - Person picker (no ?personId)", () => {
+    before(() => {
+        cy.setupAdminSession();
+    });
+
+    it("Shows the person-picker dropdown when no personId is given", () => {
+        cy.visit("admin/system/users/new");
+        cy.contains("User Editor");
+        // The native <select> stays in DOM after TomSelect hides it
+        cy.get("#personSelect").should("exist");
+        // Username field present
+        cy.get("#UserName").should("exist");
+        // Access level radios present
+        cy.get('input[name="accessMode"]').should("have.length", 3);
+        // Save button present
+        cy.get("#SaveButton").should("exist");
     });
 });

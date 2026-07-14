@@ -197,7 +197,7 @@ class User extends BaseUser
 
     /**
      * Return a structured map of all permissions for this user.
-     * Useful for the UserEditor UI and the user settings API.
+     * Useful for the user editor UI (/admin/system/users/{personId}/edit) and the user settings API.
      * Every value reflects the effective permission (with admin bypass applied).
      *
      * @return array<string, bool>
