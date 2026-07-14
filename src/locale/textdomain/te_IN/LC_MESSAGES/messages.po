@@ -15255,6 +15255,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "పాత్ర ఎంపిక ప్రాంప్ట్‌కు GroupID అవసరం"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "మీ ప్రామాణీకరణ అనువర్తనాన్ని సిద్ధంగా ఉంచుకోండి (Google Authenticator, Microsoft Authenticator, Authy, మొదలైనవి)"
 
@@ -15265,6 +15269,10 @@ msgstr "అధునాతన ఎంపికలను దాచండి"
 #: 
 msgid "Home phone is required"
 msgstr "ఇంటి ఫోన్ అవసరం"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16543,4 +16551,200 @@ msgstr "ఈ వ్యక్తికి గమనిక జోడించడా
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "ఈ గమనికను సవరించడానికి మీకు అనుమతి లేదు"
+
+#: 
+msgid "Account locked"
+msgstr "ఖాతా లాక్ చేయబడింది"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "చాలా విఫలమైన లాగిన్ ప్రయత్నాల కారణంగా ఖాతా లాక్ చేయబడింది"
+
+#: 
+msgid "Account status"
+msgstr "ఖాతా స్థితి"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "అధునాతన: నిర్దిష్ట లక్ష్య వెర్షన్‌ను ఎంచుకోండి"
+
+#: 
+msgid "Bug Fix"
+msgstr "బగ్ పరిష్కారం"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "డిఫాల్ట్‌గా, విజర్డ్ తదుపరి సిఫార్సు చేసిన విడుదలను డౌన్‌లోడ్ చేస్తుంది. బదులుగా క్రింద అందుబాటులో ఉన్న ఏదైనా వెర్షన్‌ను ఎంచుకోవచ్చు."
+
+#: 
+msgid "Change required"
+msgstr "మార్పు అవసరం"
+
+#: 
+msgid "Changelog"
+msgstr "మార్పుల నమోదు"
+
+#: 
+msgid "Continue Anyway"
+msgstr "ఏమైనా కొనసాగించు"
+
+#: 
+msgid "Could not load release information."
+msgstr "విడుదల సమాచారాన్ని లోడ్ చేయలేకపోయింది."
+
+#: 
+msgid "Download & Install"
+msgstr "డౌన్‌లోడ్ & ఇన్‌స్టాల్"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "వెర్షన్ {{version}} ని డౌన్‌లోడ్ చేసి మీ ఇన్‌స్టాలేషన్‌కు వర్తింపజేయండి."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHub నుండి విడుదలను డౌన్‌లోడ్ చేస్తోంది..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "విఫలమైన లాగిన్ ప్రయత్నాలు"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "అప్‌గ్రేడ్ ప్రివ్యూను తీసుకురాలేకపోయింది"
+
+#: 
+msgid "Feature"
+msgstr "లక్షణం"
+
+#: 
+msgid "Full changelog"
+msgstr "పూర్తి మార్పుల నమోదు"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "స్థిరమైన {{version}} ను ఇన్‌స్టాల్ చేయండి"
+
+#: 
+msgid "Installing next release"
+msgstr "తదుపరి విడుదలను ఇన్‌స్టాల్ చేస్తోంది"
+
+#: 
+msgid "Invalid file path"
+msgstr "చెల్లని ఫైల్ మార్గం"
+
+#: 
+msgid "Invalid version format"
+msgstr "చెల్లని వెర్షన్ ఆకృతి"
+
+#: 
+msgid "Last login"
+msgstr "చివరి లాగిన్"
+
+#: 
+msgid "Loading release information..."
+msgstr "విడుదల సమాచారాన్ని లోడ్ చేస్తోంది..."
+
+#: 
+msgid "Locked"
+msgstr "లాక్ చేయబడింది"
+
+#: 
+msgid "Major"
+msgstr "ప్రధాన"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "అవసరమైన ఫీల్డ్‌లు లేవు: fullPath మరియు sha1"
+
+#: 
+msgid "Must change password"
+msgstr "పాస్‌వర్డ్ మార్చాలి"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "ఈ వెర్షన్‌కు విడుదల గమనికలు అందుబాటులో లేవు."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "మీ ప్రస్తుత వెర్షన్‌కు అప్‌గ్రేడ్‌లు అందుబాటులో లేవు."
+
+#: 
+msgid "Password change required"
+msgstr "పాస్‌వర్డ్ మార్పు అవసరం"
+
+#: 
+msgid "Password status"
+msgstr "పాస్‌వర్డ్ స్థితి"
+
+#: 
+msgid "Re-install current version"
+msgstr "ప్రస్తుత వెర్షన్‌ను తిరిగి ఇన్‌స్టాల్ చేయండి"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "పునరుద్ధరణ విఫలమైంది మరియు డేటాబేస్ అసంపూర్ణ స్థితిలో ఉండవచ్చు. వివరాల కోసం అప్లికేషన్ లాగ్‌ను తనిఖీ చేయండి, తర్వాత సిస్టమ్‌ను ఉపయోగించే ముందు తెలిసిన మంచి బ్యాకప్‌ను పునరుద్ధరించండి."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "పునరుద్ధరణ విఫలమైంది: బ్యాకప్ ఫైల్ అసంపూర్ణంగా కనిపిస్తోంది లేదా చెల్లుబాటు అయ్యే SQL బ్యాకప్ కాదు. డేటాబేస్ ఇప్పుడు అసంపూర్ణ స్థితిలో ఉంది — సిస్టమ్‌ను ఉపయోగించే ముందు తెలిసిన మంచి బ్యాకప్‌ను పునరుద్ధరించండి."
+
+#: 
+msgid "Running Pre-release"
+msgstr "ప్రీ-రిలీజ్ నడుస్తోంది"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "పూర్తి అప్‌గ్రేడ్ మార్గాన్ని చూపించు"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "తాజా స్థిరమైన విడుదల {{version}}. దీన్ని క్రింద తిరిగి ఇన్‌స్టాల్ చేయవచ్చు."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "చాలా విఫలమైన లాగిన్ ప్రయత్నాల కారణంగా ఈ ఖాతా లాక్ చేయబడింది."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "ఈ వినియోగదారు తదుపరిసారి సైన్ ఇన్ చేసినప్పుడు కొత్త పాస్‌వర్డ్ సెట్ చేయాలి."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "వినియోగదారు తదుపరి లాగిన్‌లో తమ పాస్‌వర్డ్ మార్చాలి"
+
+#: 
+msgid "User must have Email permission"
+msgstr "వినియోగదారుకు ఇమెయిల్ అనుమతి ఉండాలి"
+
+#: 
+msgid "View release notes"
+msgstr "విడుదల గమనికలను చూడండి"
+
+#: 
+msgid "What's New"
+msgstr "కొత్తగా ఏమిటి"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} లో కొత్తగా ఏమిటి"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "మీరు <strong>{{releaseCount}}</strong> విడుదలలు వెనుకబడి ఉన్నారు. మీరు పొందేది ఇదే:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "మీరు ప్రీ-రిలీజ్ వెర్షన్ నడుపుతున్నారు."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "విడుదల గమనికలను చూడకుండా కూడా అప్‌గ్రేడ్‌తో కొనసాగవచ్చు."
+
+#: 
+msgid "You're up to date!"
+msgstr "మీరు తాజాగా ఉన్నారు!"
 

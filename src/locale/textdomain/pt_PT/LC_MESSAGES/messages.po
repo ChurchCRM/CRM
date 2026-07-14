@@ -16376,6 +16376,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% do texto da interface está traduzido para este idioma."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Acesso negado"
 
@@ -16604,6 +16608,10 @@ msgid "Year, 4 digits"
 msgstr "Ano, 4 dígitos"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "passado"
 
@@ -16703,4 +16711,200 @@ msgstr "Não tem permissão para adicionar uma nota para esta pessoa."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Não tem permissão para editar esta nota"
+
+#: 
+msgid "Account locked"
+msgstr "Conta bloqueada"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Conta bloqueada devido a demasiadas tentativas de login falhadas"
+
+#: 
+msgid "Account status"
+msgstr "Estado da conta"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avançado: escolha uma versão de destino específica"
+
+#: 
+msgid "Bug Fix"
+msgstr "Correção de erros"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Por defeito, o assistente descarrega a próxima versão recomendada. Pode escolher qualquer versão disponível abaixo."
+
+#: 
+msgid "Change required"
+msgstr "Alteração necessária"
+
+#: 
+msgid "Changelog"
+msgstr "Registo de alterações"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Continuar Mesmo Assim"
+
+#: 
+msgid "Could not load release information."
+msgstr "Não foi possível carregar as informações da versão."
+
+#: 
+msgid "Download & Install"
+msgstr "Descarregar e Instalar"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Descarregar a versão {{version}} e aplicá-la à sua instalação."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "A descarregar a versão do GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Tentativas de login falhadas"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Falha ao obter a pré-visualização da atualização"
+
+#: 
+msgid "Feature"
+msgstr "Funcionalidade"
+
+#: 
+msgid "Full changelog"
+msgstr "Registo completo de alterações"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Instalar versão estável {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "A instalar a próxima versão"
+
+#: 
+msgid "Invalid file path"
+msgstr "Caminho de ficheiro inválido"
+
+#: 
+msgid "Invalid version format"
+msgstr "Formato de versão inválido"
+
+#: 
+msgid "Last login"
+msgstr "Último acesso"
+
+#: 
+msgid "Loading release information..."
+msgstr "A carregar informações da versão..."
+
+#: 
+msgid "Locked"
+msgstr "Bloqueada"
+
+#: 
+msgid "Major"
+msgstr "Principal"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Campos obrigatórios em falta: fullPath e sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Deve alterar a palavra-passe"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Não existem notas de versão disponíveis para esta versão."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Não existem atualizações disponíveis para a sua versão atual."
+
+#: 
+msgid "Password change required"
+msgstr "Alteração de palavra-passe necessária"
+
+#: 
+msgid "Password status"
+msgstr "Estado da palavra-passe"
+
+#: 
+msgid "Re-install current version"
+msgstr "Reinstalar a versão atual"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "O restauro falhou e a base de dados pode estar num estado incompleto. Verifique o registo da aplicação para obter detalhes e, em seguida, restaure uma cópia de segurança válida antes de utilizar o sistema."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Falha no restauro: o ficheiro de cópia de segurança parece estar incompleto ou não é uma cópia de segurança SQL válida. A base de dados encontra-se agora num estado incompleto — restaure uma cópia de segurança válida antes de utilizar o sistema."
+
+#: 
+msgid "Running Pre-release"
+msgstr "A executar uma versão pré-lançamento"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Mostrar caminho completo de atualização"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "A versão estável mais recente é {{version}}. Pode reinstalá-la abaixo."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Esta conta está bloqueada devido a demasiadas tentativas de login falhadas."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Este utilizador deve definir uma nova palavra-passe na próxima vez que iniciar sessão."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "O utilizador deve alterar a palavra-passe no próximo acesso"
+
+#: 
+msgid "User must have Email permission"
+msgstr "O utilizador deve ter permissão de Email"
+
+#: 
+msgid "View release notes"
+msgstr "Ver notas de versão"
+
+#: 
+msgid "What's New"
+msgstr "Novidades"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Novidades na {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Está <strong>{{releaseCount}}</strong> versões atrás. Veja o que vai ganhar:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Está a executar uma versão pré-lançamento."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Pode continuar com a atualização sem visualizar as notas de versão."
+
+#: 
+msgid "You're up to date!"
+msgstr "Está atualizado!"
 

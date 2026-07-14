@@ -16565,3 +16565,199 @@ msgstr "Nemáte oprávnenie pridať poznámku pre túto osobu."
 msgid "You do not have permission to edit this note"
 msgstr "Nemáte oprávnenie upravovať túto poznámku"
 
+#: 
+msgid "Account locked"
+msgstr "Účet zablokovaný"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Účet bol zablokovaný pre príliš veľa neúspešných pokusov o prihlásenie"
+
+#: 
+msgid "Account status"
+msgstr "Stav účtu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Rozšírené: vyberte konkrétnu cieľovú verziu"
+
+#: 
+msgid "Bug Fix"
+msgstr "Oprava chyby"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Sprievodca predvolene stiahne odporúčané vydanie. Namiesto toho si môžete vybrať ľubovoľnú dostupnú verziu nižšie."
+
+#: 
+msgid "Change required"
+msgstr "Vyžaduje sa zmena"
+
+#: 
+msgid "Changelog"
+msgstr "Zoznam zmien"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Pokračovať tak či tak"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nepodarilo sa načítať informácie o vydaní."
+
+#: 
+msgid "Download & Install"
+msgstr "Stiahnuť a nainštalovať"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Stiahnite verziu {{version}} a aplikujte ju na vašu inštaláciu."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Sťahujem vydanie z GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Neúspešné pokusy o prihlásenie"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nepodarilo sa načítať náhľad aktualizácie"
+
+#: 
+msgid "Feature"
+msgstr "Funkcia"
+
+#: 
+msgid "Full changelog"
+msgstr "Úplný zoznam zmien"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Nainštalovať stabilnú verziu {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Inštalujem ďalšie vydanie"
+
+#: 
+msgid "Invalid file path"
+msgstr "Neplatná cesta k súboru"
+
+#: 
+msgid "Invalid version format"
+msgstr "Neplatný formát verzie"
+
+#: 
+msgid "Last login"
+msgstr "Posledné prihlásenie"
+
+#: 
+msgid "Loading release information..."
+msgstr "Načítavam informácie o vydaní..."
+
+#: 
+msgid "Locked"
+msgstr "Zablokovaný"
+
+#: 
+msgid "Major"
+msgstr "Hlavná"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Chýbajú povinné polia: fullPath a sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Je nutné zmeniť heslo"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Pre túto verziu nie sú k dispozícii poznámky k vydaniu."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Pre vašu aktuálnu verziu nie sú dostupné žiadne aktualizácie."
+
+#: 
+msgid "Password change required"
+msgstr "Vyžaduje sa zmena hesla"
+
+#: 
+msgid "Password status"
+msgstr "Stav hesla"
+
+#: 
+msgid "Re-install current version"
+msgstr "Preinštalovať aktuálnu verziu"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Obnovenie zlyhalo a databáza môže byť v neúplnom stave. Skontrolujte protokol aplikácie pre podrobnosti, potom obnovte overenú zálohu pred použitím systému."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Obnovenie zlyhalo: záložný súbor sa zdá byť neúplný alebo nie je platnou zálohou SQL. Databáza je teraz v neúplnom stave — obnovte overenú zálohu pred použitím systému."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Spustená pred-vydaná verzia"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Zobraziť úplnú cestu aktualizácie"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Najnovšie stabilné vydanie je {{version}}. Môžete ho preinštalovať nižšie."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tento účet je zablokovaný z dôvodu príliš veľa neúspešných pokusov o prihlásenie."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tento používateľ musí nastaviť nové heslo pri ďalšom prihlásení."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Používateľ musí zmeniť heslo pri ďalšom prihlásení"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Používateľ musí mať oprávnenie na e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Zobraziť poznámky k vydaniu"
+
+#: 
+msgid "What's New"
+msgstr "Čo je nové"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Čo je nové vo verzii {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Zaostávate o <strong>{{releaseCount}}</strong> vydaní. Tu je to, čo získate:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Používate pred-vydanú verziu."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Stále môžete pokračovať v aktualizácii bez zobrazenia poznámok k vydaniu."
+
+#: 
+msgid "You're up to date!"
+msgstr "Ste aktuálni!"
+

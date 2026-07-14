@@ -16242,6 +16242,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% du texte de l'interface est traduit pour cette langue."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Accès refusé"
 
@@ -16362,6 +16366,10 @@ msgid "Long Date Format"
 msgstr "Format de date longue"
 
 #: 
+msgid "Minutes"
+msgstr "Minutes"
+
+#: 
 msgid "Month &amp; Year"
 msgstr "Mois et année"
 
@@ -16466,6 +16474,10 @@ msgid "Year, 4 digits"
 msgstr "Année, 4 chiffres"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "passé"
 
@@ -16565,4 +16577,200 @@ msgstr "Vous n'avez pas la permission d'ajouter une note pour cette personne."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Vous n'avez pas la permission de modifier cette note"
+
+#: 
+msgid "Account locked"
+msgstr "Compte verrouillé"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Compte verrouillé en raison d'un trop grand nombre de tentatives de connexion échouées"
+
+#: 
+msgid "Account status"
+msgstr "Statut du compte"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avancé : choisir une version cible spécifique"
+
+#: 
+msgid "Bug Fix"
+msgstr "Correction de bogue"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Par défaut, l'assistant télécharge la prochaine version recommandée. Vous pouvez à la place choisir n'importe quelle version disponible ci-dessous."
+
+#: 
+msgid "Change required"
+msgstr "Modification requise"
+
+#: 
+msgid "Changelog"
+msgstr "Journal des modifications"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Continuer quand même"
+
+#: 
+msgid "Could not load release information."
+msgstr "Impossible de charger les informations de version."
+
+#: 
+msgid "Download & Install"
+msgstr "Télécharger et installer"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Télécharger la version {{version}} et l'appliquer à votre installation."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Téléchargement de la version depuis GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Tentatives de connexion échouées"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Échec de la récupération de l'aperçu de mise à jour"
+
+#: 
+msgid "Feature"
+msgstr "Fonctionnalité"
+
+#: 
+msgid "Full changelog"
+msgstr "Journal complet des modifications"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installer la version stable {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Installation de la prochaine version"
+
+#: 
+msgid "Invalid file path"
+msgstr "Chemin de fichier invalide"
+
+#: 
+msgid "Invalid version format"
+msgstr "Format de version invalide"
+
+#: 
+msgid "Last login"
+msgstr "Dernière connexion"
+
+#: 
+msgid "Loading release information..."
+msgstr "Chargement des informations de version..."
+
+#: 
+msgid "Locked"
+msgstr "Verrouillé"
+
+#: 
+msgid "Major"
+msgstr "Majeure"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Champs obligatoires manquants : fullPath et sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Doit changer le mot de passe"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Aucune note de version disponible pour cette version."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Aucune mise à jour n'est disponible pour votre version actuelle."
+
+#: 
+msgid "Password change required"
+msgstr "Changement de mot de passe requis"
+
+#: 
+msgid "Password status"
+msgstr "Statut du mot de passe"
+
+#: 
+msgid "Re-install current version"
+msgstr "Réinstaller la version actuelle"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "La restauration a échoué et la base de données peut être dans un état incomplet. Consultez le journal de l'application pour plus de détails, puis restaurez une sauvegarde valide avant d'utiliser le système."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Échec de la restauration : le fichier de sauvegarde semble incomplet ou n'est pas une sauvegarde SQL valide. La base de données est maintenant dans un état incomplet — restaurez une sauvegarde valide avant d'utiliser le système."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Exécution d'une version préliminaire"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Afficher le chemin de mise à jour complet"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "La dernière version stable est {{version}}. Vous pouvez la réinstaller ci-dessous."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Ce compte est verrouillé en raison d'un trop grand nombre de tentatives de connexion échouées."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Cet utilisateur doit définir un nouveau mot de passe lors de sa prochaine connexion."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "L'utilisateur doit changer son mot de passe à la prochaine connexion"
+
+#: 
+msgid "User must have Email permission"
+msgstr "L'utilisateur doit avoir la permission E-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Voir les notes de version"
+
+#: 
+msgid "What's New"
+msgstr "Nouveautés"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Nouveautés dans {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Vous avez <strong>{{releaseCount}}</strong> version(s) de retard. Voici ce que vous obtiendrez :"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Vous exécutez une version préliminaire."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Vous pouvez tout de même procéder à la mise à jour sans consulter les notes de version."
+
+#: 
+msgid "You're up to date!"
+msgstr "Vous êtes à jour !"
 

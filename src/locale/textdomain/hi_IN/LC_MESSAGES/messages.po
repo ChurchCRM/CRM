@@ -15242,6 +15242,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "भूमिका चयन प्रॉम्प्ट के लिए GroupID आवश्यक है"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "अपना प्रमाणीकरण ऐप तैयार रखें (Google Authenticator, Microsoft Authenticator, Authy, आदि)"
 
@@ -15252,6 +15256,10 @@ msgstr "उन्नत विकल्प छिपाएँ"
 #: 
 msgid "Home phone is required"
 msgstr "घर का फोन आवश्यक है"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16530,4 +16538,200 @@ msgstr "आपको इस व्यक्ति के लिए नोट ज
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "आपको इस नोट को संपादित करने की अनुमति नहीं है"
+
+#: 
+msgid "Account locked"
+msgstr "खाता लॉक है"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "बहुत अधिक विफल लॉगिन प्रयासों के कारण खाता लॉक है"
+
+#: 
+msgid "Account status"
+msgstr "खाता स्थिति"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "उन्नत: एक विशिष्ट लक्ष्य संस्करण चुनें"
+
+#: 
+msgid "Bug Fix"
+msgstr "बग सुधार"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "डिफ़ॉल्ट रूप से विज़ार्ड अगला अनुशंसित रिलीज़ डाउनलोड करता है। आप नीचे से कोई भी उपलब्ध संस्करण चुन सकते हैं।"
+
+#: 
+msgid "Change required"
+msgstr "परिवर्तन आवश्यक है"
+
+#: 
+msgid "Changelog"
+msgstr "परिवर्तन लॉग"
+
+#: 
+msgid "Continue Anyway"
+msgstr "फिर भी जारी रखें"
+
+#: 
+msgid "Could not load release information."
+msgstr "रिलीज़ जानकारी लोड नहीं हो सकी।"
+
+#: 
+msgid "Download & Install"
+msgstr "डाउनलोड करें और इंस्टॉल करें"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "संस्करण {{version}} डाउनलोड करें और इसे अपनी स्थापना पर लागू करें।"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHub से रिलीज़ डाउनलोड हो रही है..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "विफल लॉगिन प्रयास"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "अपग्रेड पूर्वावलोकन प्राप्त करने में विफल"
+
+#: 
+msgid "Feature"
+msgstr "सुविधा"
+
+#: 
+msgid "Full changelog"
+msgstr "पूर्ण परिवर्तन लॉग"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "स्थिर {{version}} इंस्टॉल करें"
+
+#: 
+msgid "Installing next release"
+msgstr "अगली रिलीज़ इंस्टॉल हो रही है"
+
+#: 
+msgid "Invalid file path"
+msgstr "अमान्य फ़ाइल पथ"
+
+#: 
+msgid "Invalid version format"
+msgstr "अमान्य संस्करण प्रारूप"
+
+#: 
+msgid "Last login"
+msgstr "अंतिम लॉगिन"
+
+#: 
+msgid "Loading release information..."
+msgstr "रिलीज़ जानकारी लोड हो रही है..."
+
+#: 
+msgid "Locked"
+msgstr "लॉक है"
+
+#: 
+msgid "Major"
+msgstr "प्रमुख"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "आवश्यक फ़ील्ड अनुपस्थित हैं: fullPath और sha1"
+
+#: 
+msgid "Must change password"
+msgstr "पासवर्ड बदलना आवश्यक है"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "इस संस्करण के लिए कोई रिलीज़ नोट उपलब्ध नहीं है।"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "आपके वर्तमान संस्करण के लिए कोई अपग्रेड उपलब्ध नहीं है।"
+
+#: 
+msgid "Password change required"
+msgstr "पासवर्ड परिवर्तन आवश्यक है"
+
+#: 
+msgid "Password status"
+msgstr "पासवर्ड स्थिति"
+
+#: 
+msgid "Re-install current version"
+msgstr "वर्तमान संस्करण पुनः इंस्टॉल करें"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "पुनर्स्थापना विफल हुई और डेटाबेस अपूर्ण स्थिति में हो सकता है। विवरण के लिए एप्लिकेशन लॉग जाँचें, फिर सिस्टम का उपयोग करने से पहले एक ज्ञात-सही बैकअप पुनर्स्थापित करें।"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "पुनर्स्थापना विफल हुई: बैकअप फ़ाइल अपूर्ण प्रतीत होती है या मान्य SQL बैकअप नहीं है। डेटाबेस अब अपूर्ण स्थिति में है — सिस्टम का उपयोग करने से पहले एक ज्ञात-सही बैकअप पुनर्स्थापित करें।"
+
+#: 
+msgid "Running Pre-release"
+msgstr "प्री-रिलीज़ चल रही है"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "पूर्ण अपग्रेड पथ दिखाएं"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "नवीनतम स्थिर रिलीज़ {{version}} है। आप इसे नीचे पुनः इंस्टॉल कर सकते हैं।"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "बहुत अधिक विफल लॉगिन प्रयासों के कारण यह खाता लॉक है।"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "इस उपयोगकर्ता को अगली बार साइन इन करते समय नया पासवर्ड सेट करना होगा।"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "उपयोगकर्ता को अगले लॉगिन पर अपना पासवर्ड बदलना होगा"
+
+#: 
+msgid "User must have Email permission"
+msgstr "उपयोगकर्ता के पास Email अनुमति होनी चाहिए"
+
+#: 
+msgid "View release notes"
+msgstr "रिलीज़ नोट देखें"
+
+#: 
+msgid "What's New"
+msgstr "नया क्या है"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} में नया क्या है"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "आप <strong>{{releaseCount}}</strong> रिलीज़ पीछे हैं। यहाँ जानें आपको क्या मिलेगा:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "आप प्री-रिलीज़ संस्करण चला रहे हैं।"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "आप रिलीज़ नोट देखे बिना भी अपग्रेड जारी रख सकते हैं।"
+
+#: 
+msgid "You're up to date!"
+msgstr "आप अद्यतित हैं!"
 

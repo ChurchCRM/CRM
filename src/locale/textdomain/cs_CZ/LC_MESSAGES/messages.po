@@ -16244,6 +16244,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% textu rozhraní je přeloženo pro tento jazyk."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Přístup zamítnut"
 
@@ -16472,6 +16476,10 @@ msgid "Year, 4 digits"
 msgstr "Rok, 4 číslice"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "minulost"
 
@@ -16571,4 +16579,200 @@ msgstr "Nemáte oprávnění přidat poznámku k této osobě."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Nemáte oprávnění upravit tuto poznámku"
+
+#: 
+msgid "Account locked"
+msgstr "Účet uzamčen"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Účet uzamčen z důvodu příliš mnoha neúspěšných pokusů o přihlášení"
+
+#: 
+msgid "Account status"
+msgstr "Stav účtu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Pokročilé: zvolte konkrétní cílovou verzi"
+
+#: 
+msgid "Bug Fix"
+msgstr "Oprava chyby"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Ve výchozím nastavení průvodce stáhne další doporučenou verzi. Níže si můžete vybrat libovolnou dostupnou verzi."
+
+#: 
+msgid "Change required"
+msgstr "Změna vyžadována"
+
+#: 
+msgid "Changelog"
+msgstr "Seznam změn"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Přesto pokračovat"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nepodařilo se načíst informace o vydání."
+
+#: 
+msgid "Download & Install"
+msgstr "Stáhnout a nainstalovat"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Stáhnout verzi {{version}} a použít ji na vaší instalaci."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Stahuji vydání z GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Neúspěšné pokusy o přihlášení"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nepodařilo se načíst náhled aktualizace"
+
+#: 
+msgid "Feature"
+msgstr "Funkce"
+
+#: 
+msgid "Full changelog"
+msgstr "Úplný seznam změn"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Nainstalovat stabilní {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Instalace dalšího vydání"
+
+#: 
+msgid "Invalid file path"
+msgstr "Neplatná cesta k souboru"
+
+#: 
+msgid "Invalid version format"
+msgstr "Neplatný formát verze"
+
+#: 
+msgid "Last login"
+msgstr "Poslední přihlášení"
+
+#: 
+msgid "Loading release information..."
+msgstr "Načítám informace o vydání..."
+
+#: 
+msgid "Locked"
+msgstr "Uzamčeno"
+
+#: 
+msgid "Major"
+msgstr "Hlavní"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Chybějící povinná pole: fullPath a sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Musí změnit heslo"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Pro tuto verzi nejsou k dispozici žádné poznámky k vydání."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Pro vaši aktuální verzi nejsou k dispozici žádné aktualizace."
+
+#: 
+msgid "Password change required"
+msgstr "Změna hesla vyžadována"
+
+#: 
+msgid "Password status"
+msgstr "Stav hesla"
+
+#: 
+msgid "Re-install current version"
+msgstr "Přeinstalovat aktuální verzi"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Obnovení selhalo a databáze může být v neúplném stavu. Zkontrolujte protokol aplikace, poté obnovte ze zálohy o které víte, že je funkční, než budete systém používat."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Obnovení selhalo: záložní soubor je zřejmě neúplný nebo se nejedná o platnou zálohu SQL. Databáze je nyní v neúplném stavu — obnovte funkční zálohu před použitím systému."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Spuštěna předběžná verze"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Zobrazit celou cestu aktualizace"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Nejnovější stabilní vydání je {{version}}. Níže jej můžete přeinstalovat."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tento účet je uzamčen z důvodu příliš mnoha neúspěšných pokusů o přihlášení."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tento uživatel musí nastavit nové heslo při příštím přihlášení."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Uživatel musí změnit heslo při příštím přihlášení"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Uživatel musí mít oprávnění pro e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Zobrazit poznámky k vydání"
+
+#: 
+msgid "What's New"
+msgstr "Co je nového"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Co je nového ve verzi {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Jste pozadu o <strong>{{releaseCount}}</strong> vydání. Zde je, co získáte:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Spouštíte předběžnou verzi."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Stále můžete pokračovat v aktualizaci bez zobrazení poznámek k vydání."
+
+#: 
+msgid "You're up to date!"
+msgstr "Máte aktuální verzi!"
 

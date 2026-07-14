@@ -16097,6 +16097,10 @@ msgid "from this group?"
 msgstr "uit deze groep?"
 
 #: 
+msgid "in"
+msgstr "in"
+
+#: 
 msgid "in cart"
 msgstr "in verzamelmap"
 
@@ -16202,6 +16206,10 @@ msgstr[1] "%d afgelopen gebeurtenissen"
 #: 
 msgid "%d% of interface text is translated for this language."
 msgstr "%d% van de interfacetekst is vertaald voor deze taal."
+
+#: 
+msgid "AM / PM"
+msgstr "AM / PM"
 
 #: 
 msgid "Access denied"
@@ -16432,6 +16440,10 @@ msgid "Year, 4 digits"
 msgstr "Jaar, 4 cijfers"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "verleden"
 
@@ -16531,4 +16543,200 @@ msgstr "U heeft geen toestemming om een notitie toe te voegen voor deze persoon.
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "U heeft geen toestemming om deze notitie te bewerken"
+
+#: 
+msgid "Account locked"
+msgstr "Account vergrendeld"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Account vergrendeld vanwege te veel mislukte aanmeldpogingen"
+
+#: 
+msgid "Account status"
+msgstr "Accountstatus"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Geavanceerd: kies een specifieke doelversie"
+
+#: 
+msgid "Bug Fix"
+msgstr "Bugoplossing"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Standaard downloadt de wizard de volgende aanbevolen versie. U kunt hieronder ook een andere beschikbare versie kiezen."
+
+#: 
+msgid "Change required"
+msgstr "Wijziging vereist"
+
+#: 
+msgid "Changelog"
+msgstr "Wijzigingslog"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Toch doorgaan"
+
+#: 
+msgid "Could not load release information."
+msgstr "Kon release-informatie niet laden."
+
+#: 
+msgid "Download & Install"
+msgstr "Downloaden en installeren"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Versie {{version}} downloaden en toepassen op uw installatie."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Release downloaden van GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Mislukte aanmeldpogingen"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Ophalen van upgrade-voorbeeld mislukt"
+
+#: 
+msgid "Feature"
+msgstr "Functie"
+
+#: 
+msgid "Full changelog"
+msgstr "Volledige wijzigingslog"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Stabiele versie {{version}} installeren"
+
+#: 
+msgid "Installing next release"
+msgstr "Volgende versie wordt geïnstalleerd"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ongeldig bestandspad"
+
+#: 
+msgid "Invalid version format"
+msgstr "Ongeldig versieformaat"
+
+#: 
+msgid "Last login"
+msgstr "Laatste aanmelding"
+
+#: 
+msgid "Loading release information..."
+msgstr "Release-informatie laden..."
+
+#: 
+msgid "Locked"
+msgstr "Vergrendeld"
+
+#: 
+msgid "Major"
+msgstr "Hoofdversie"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Vereiste velden ontbreken: fullPath en sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Wachtwoord moet worden gewijzigd"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Geen release-notities beschikbaar voor deze versie."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Er zijn geen upgrades beschikbaar voor uw huidige versie."
+
+#: 
+msgid "Password change required"
+msgstr "Wachtwoordwijziging vereist"
+
+#: 
+msgid "Password status"
+msgstr "Wachtwoordstatus"
+
+#: 
+msgid "Re-install current version"
+msgstr "Huidige versie opnieuw installeren"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Herstel mislukt en de database bevindt zich mogelijk in een onvolledige toestand. Controleer het toepassingslogboek voor details en herstel vervolgens een bekende goede back-up voordat u het systeem gebruikt."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Herstel mislukt: het back-upbestand lijkt onvolledig te zijn of is geen geldige SQL-back-up. De database bevindt zich nu in een onvolledige toestand — herstel een bekende goede back-up voordat u het systeem gebruikt."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Voorlopige versie wordt uitgevoerd"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Volledig upgradepad tonen"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "De nieuwste stabiele versie is {{version}}. U kunt deze hieronder opnieuw installeren."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Dit account is vergrendeld vanwege te veel mislukte aanmeldpogingen."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Deze gebruiker moet een nieuw wachtwoord instellen bij de volgende aanmelding."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Gebruiker moet wachtwoord wijzigen bij volgende aanmelding"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Gebruiker moet e-mailmachtiging hebben"
+
+#: 
+msgid "View release notes"
+msgstr "Release-notities bekijken"
+
+#: 
+msgid "What's New"
+msgstr "Wat is er nieuw"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Wat is er nieuw in {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "U loopt <strong>{{releaseCount}}</strong> versies achter. Dit zijn de verbeteringen:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "U gebruikt een voorlopige versie."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "U kunt de upgrade toch uitvoeren zonder de release-notities te bekijken."
+
+#: 
+msgid "You're up to date!"
+msgstr "U bent up-to-date!"
 

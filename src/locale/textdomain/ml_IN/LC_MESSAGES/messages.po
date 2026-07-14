@@ -16204,6 +16204,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "ഈ ഭാഷക്ക് ഇന്‍റർഫേസ് ടെക്സ്റ്റിന്‍റെ %d%% വിവർത്തനം ചെയ്തിരിക്കുന്നു."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "ആക്സസ് നിരസിക്കപ്പെട്ടു"
 
@@ -16535,4 +16539,200 @@ msgstr "ഈ വ്യക്തിക്കായി ഒരു കുറിപ്
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "ഈ കുറിപ്പ് എഡിറ്റ് ചെയ്യാൻ നിങ്ങൾക്ക് അനുമതിയില്ല"
+
+#: 
+msgid "Account locked"
+msgstr "അക്കൗണ്ട് ലോക്ക് ചെയ്തു"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "വളരെ കൂടുതൽ പരാജയപ്പെട്ട ലോഗിൻ ശ്രമങ്ങൾ കാരണം അക്കൗണ്ട് ലോക്ക് ചെയ്തു"
+
+#: 
+msgid "Account status"
+msgstr "അക്കൗണ്ട് സ്ഥിതി"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "വിപുലം: ഒരു നിർദ്ദിഷ്ട ടാർഗെറ്റ് പതിപ്പ് തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Bug Fix"
+msgstr "ബഗ് പരിഹാരം"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "സ്ഥിരസ്ഥിതിയായി, വിസാർഡ് ശുപാർശ ചെയ്ത അടുത്ത റിലീസ് ഡൗൺലോഡ് ചെയ്യുന്നു. പകരം നിങ്ങൾക്ക് ചുവടെ ലഭ്യമായ ഏതെങ്കിലും പതിപ്പ് തിരഞ്ഞെടുക്കാം."
+
+#: 
+msgid "Change required"
+msgstr "മാറ്റം ആവശ്യമാണ്"
+
+#: 
+msgid "Changelog"
+msgstr "മാറ്റ ലോഗ്"
+
+#: 
+msgid "Continue Anyway"
+msgstr "എന്തായാലും തുടരുക"
+
+#: 
+msgid "Could not load release information."
+msgstr "റിലീസ് വിവരങ്ങൾ ലോഡ് ചെയ്യാനായില്ല."
+
+#: 
+msgid "Download & Install"
+msgstr "ഡൗൺലോഡ് ചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്യുക"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "പതിപ്പ് {{version}} ഡൗൺലോഡ് ചെയ്ത് നിങ്ങളുടെ ഇൻസ്റ്റലേഷനിൽ പ്രയോഗിക്കുക."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHub-ൽ നിന്ന് റിലീസ് ഡൗൺലോഡ് ചെയ്യുന്നു..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "പരാജയപ്പെട്ട ലോഗിൻ ശ്രമങ്ങൾ"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "അപ്ഗ്രേഡ് പ്രിവ്യൂ നേടുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Feature"
+msgstr "ഫീച്ചർ"
+
+#: 
+msgid "Full changelog"
+msgstr "പൂർണ്ണ മാറ്റ ലോഗ്"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "സ്ഥിരമായ {{version}} ഇൻസ്റ്റാൾ ചെയ്യുക"
+
+#: 
+msgid "Installing next release"
+msgstr "അടുത്ത റിലീസ് ഇൻസ്റ്റാൾ ചെയ്യുന്നു"
+
+#: 
+msgid "Invalid file path"
+msgstr "അസാധുവായ ഫയൽ പാത"
+
+#: 
+msgid "Invalid version format"
+msgstr "അസാധുവായ പതിപ്പ് ഫോർമാറ്റ്"
+
+#: 
+msgid "Last login"
+msgstr "അവസാന ലോഗിൻ"
+
+#: 
+msgid "Loading release information..."
+msgstr "റിലീസ് വിവരങ്ങൾ ലോഡ് ചെയ്യുന്നു..."
+
+#: 
+msgid "Locked"
+msgstr "ലോക്ക് ചെയ്തു"
+
+#: 
+msgid "Major"
+msgstr "പ്രധാന"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "ആവശ്യമായ ഫീൽഡുകൾ കാണുന്നില്ല: fullPath, sha1"
+
+#: 
+msgid "Must change password"
+msgstr "പാസ്‌വേഡ് മാറ്റണം"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "ഈ പതിപ്പിന് റിലീസ് കുറിപ്പുകൾ ലഭ്യമല്ല."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "നിങ്ങളുടെ നിലവിലെ പതിപ്പിന് അപ്ഗ്രേഡുകൾ ലഭ്യമല്ല."
+
+#: 
+msgid "Password change required"
+msgstr "പാസ്‌വേഡ് മാറ്റൽ ആവശ്യമാണ്"
+
+#: 
+msgid "Password status"
+msgstr "പാസ്‌വേഡ് സ്ഥിതി"
+
+#: 
+msgid "Re-install current version"
+msgstr "നിലവിലെ പതിപ്പ് വീണ്ടും ഇൻസ്റ്റാൾ ചെയ്യുക"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "പുനഃസ്ഥാപനം പരാജയപ്പെട്ടു, ഡേറ്റാബേസ് അപൂർണ്ണ അവസ്ഥയിലായിരിക്കാം. വിശദാംശങ്ങൾക്ക് ആപ്ലിക്കേഷൻ ലോഗ് പരിശോധിക്കുക, തുടർന്ന് സിസ്റ്റം ഉപയോഗിക്കുന്നതിന് മുമ്പ് ഒരു നല്ല ബാക്കപ്പ് പുനഃസ്ഥാപിക്കുക."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "പുനഃസ്ഥാപനം പരാജയപ്പെട്ടു: ബാക്കപ്പ് ഫയൽ അപൂർണ്ണമോ സാധുവായ SQL ബാക്കപ്പ് അല്ലോ ആണ്. ഡേറ്റാബേസ് ഇപ്പോൾ അപൂർണ്ണ അവസ്ഥയിലാണ് — സിസ്റ്റം ഉപയോഗിക്കുന്നതിന് മുമ്പ് ഒരു നല്ല ബാക്കപ്പ് പുനഃസ്ഥാപിക്കുക."
+
+#: 
+msgid "Running Pre-release"
+msgstr "പ്രി-റിലീസ് പ്രവർത്തിക്കുന്നു"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "പൂർണ്ണ അപ്ഗ്രേഡ് പാത കാണിക്കുക"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "ഏറ്റവും പുതിയ സ്ഥിര റിലീസ് {{version}} ആണ്. നിങ്ങൾക്ക് ചുവടെ അത് വീണ്ടും ഇൻസ്റ്റാൾ ചെയ്യാം."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "വളരെ കൂടുതൽ പരാജയപ്പെട്ട ലോഗിൻ ശ്രമങ്ങൾ കാരണം ഈ അക്കൗണ്ട് ലോക്ക് ചെയ്തിരിക്കുന്നു."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "അടുത്ത തവണ സൈൻ ഇൻ ചെയ്യുമ്പോൾ ഈ ഉപയോക്താവ് ഒരു പുതിയ പാസ്‌വേഡ് സജ്ജീകരിക്കണം."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "ഉപയോക്താവ് അടുത്ത ലോഗിനിൽ പാസ്‌വേഡ് മാറ്റണം"
+
+#: 
+msgid "User must have Email permission"
+msgstr "ഉപയോക്താവിന് Email അനുമതി ഉണ്ടായിരിക്കണം"
+
+#: 
+msgid "View release notes"
+msgstr "റിലീസ് കുറിപ്പുകൾ കാണുക"
+
+#: 
+msgid "What's New"
+msgstr "എന്താണ് പുതിയത്"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}}-ൽ എന്താണ് പുതിയത്"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "നിങ്ങൾ <strong>{{releaseCount}}</strong> റിലീസ് പിന്നിലാണ്. നിങ്ങൾ നേടാൻ പോകുന്നത്:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "നിങ്ങൾ ഒരു പ്രി-റിലീസ് പതിപ്പ് പ്രവർത്തിപ്പിക്കുന്നു."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "റിലീസ് കുറിപ്പുകൾ കാണാതെ തന്നെ നിങ്ങൾക്ക് അപ്ഗ്രേഡ് തുടരാം."
+
+#: 
+msgid "You're up to date!"
+msgstr "നിങ്ങൾ കാലികമാണ്!"
 
