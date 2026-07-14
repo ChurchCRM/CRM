@@ -69,9 +69,10 @@ class MpdfRenderer implements PdfRendererInterface
         $pdfContent = $this->renderToString($template, $data);
         $outputMode = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
 
-        // Sanitize filename to prevent HTTP header injection:
-        // strip CR, LF, and double-quotes which could fold or terminate the header.
-        $safeFilename = str_replace(['"', "\r", "\n"], ['', '', ''], $filename);
+        // Whitelist-sanitize to prevent HTTP header injection: allow only filename-safe
+        // characters (ASCII letters, digits, underscore, dot, hyphen), replacing everything
+        // else (CR, LF, double-quotes, semicolons, control chars 0x00-0x1F) with '_'.
+        $safeFilename = preg_replace('/[^A-Za-z0-9_.\-]/', '_', $filename);
 
         $response->getBody()->write($pdfContent);
 
