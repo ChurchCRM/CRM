@@ -152,7 +152,7 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get("#AddEvent").should("be.checked");
 
         // --- Part 3: JS exclusivity — switching to self-service must clear AddEvent ---
-        cy.get('input[name="accessMode"][value="self"]').check();
+        cy.contains('.form-selectgroup-item', 'Self').click();
         cy.get("#AddEvent").should("not.be.checked");
 
         // Cleanup
