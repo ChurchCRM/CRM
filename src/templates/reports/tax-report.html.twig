@@ -177,6 +177,7 @@
     <div class="totals-block">
         <table>
             <tr>
+                {# TODO (follow-up): replace hardcoded '$' with sCurrencySymbol config value for i18n/multi-currency support. #}
                 <td class="label">{{ gettext('Total Payments') }}:</td>
                 <td class="amount">${{ family.totalAmount|number_format(2) }}</td>
             </tr>
