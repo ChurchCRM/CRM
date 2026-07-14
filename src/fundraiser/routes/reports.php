@@ -1,13 +1,53 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\model\ChurchCRM\MultibuyQuery;
+use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Reports\PdfCertificatesReport;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+
+// Item codes look like "A1", "B23a"; sort by leading letter, then the numeric
+// run that follows, then any trailing suffix (mirrors the legacy
+// ORDER BY SUBSTR(di_item,1,1), CAST(SUBSTR(di_item,2) AS UNSIGNED), SUBSTR(di_item,4)).
+$sortDonatedItemsByItemCode = function (array $items): array {
+    usort($items, function ($a, $b) {
+        $aItem = (string) $a->getItem();
+        $bItem = (string) $b->getItem();
+        $cmp = strcmp(substr($aItem, 0, 1), substr($bItem, 0, 1));
+        if ($cmp !== 0) {
+            return $cmp;
+        }
+        $cmp = ((int) substr($aItem, 1)) <=> ((int) substr($bItem, 1));
+        if ($cmp !== 0) {
+            return $cmp;
+        }
+        return strcmp(substr($aItem, 3), substr($bItem, 3));
+    });
+
+    return $items;
+};
+
+// Batch-loads the donor Person for each DonatedItem (mirrors the legacy
+// LEFT JOIN person_per ON per_ID=di_donor_ID: a missing/zero donor yields nulls).
+$loadDonorsById = function (array $donatedItems): array {
+    $donorIds = [];
+    foreach ($donatedItems as $donatedItem) {
+        $donorIds[] = $donatedItem->getDonorId();
+    }
+    $donors = [];
+    foreach (PersonQuery::create()->filterById($donorIds)->find() as $donor) {
+        $donors[$donor->getId()] = $donor;
+    }
+
+    return $donors;
+};
 
 // ---------------------------------------------------------------------------
 // PDF class: Bid Sheets (migrated from src/Reports/FRBidSheets.php)
@@ -97,7 +137,7 @@ class PdfFundRaiserStatement extends ChurchInfoReport
 // ---------------------------------------------------------------------------
 // GET /fundraiser/{fundraiserId}/reports/bid-sheets — PDF bid sheets
 // ---------------------------------------------------------------------------
-$app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Response $response, array $args): Response {
+$app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Response $response, array $args) use ($sortDonatedItemsByItemCode, $loadDonorsById): Response {
     $fundraiserId = (int) $args['fundraiserId'];
 
     $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
@@ -107,22 +147,25 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
             ->withStatus(302);
     }
 
-    $sSQL    = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID'
-        . ' WHERE di_FR_ID=' . $fundraiser->getId()
-        . ' ORDER BY SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)';
-    $rsItems = RunQuery($sSQL);
+    $items = [];
+    foreach (DonatedItemQuery::create()->filterByFrId($fundraiser->getId())->find() as $donatedItem) {
+        $items[] = $donatedItem;
+    }
+    $items  = $sortDonatedItemsByItemCode($items);
+    $donors = $loadDonorsById($items);
 
     $pdf = new PdfFRBidSheetsReport();
     $pdf->SetTitle($fundraiser->getTitle());
 
-    while ($oneItem = mysqli_fetch_array($rsItems)) {
-        $di_item        = $oneItem['di_item'];
-        $di_title       = $oneItem['di_title'];
-        $di_description = $oneItem['di_description'];
-        $di_estprice    = $oneItem['di_estprice'];
-        $di_minimum     = $oneItem['di_minimum'];
-        $per_LastName   = $oneItem['per_LastName'];
-        $per_FirstName  = $oneItem['per_FirstName'];
+    foreach ($items as $oneItem) {
+        $donor          = $donors[$oneItem->getDonorId()] ?? null;
+        $di_item        = $oneItem->getItem();
+        $di_title       = $oneItem->getTitle();
+        $di_description = $oneItem->getDescription();
+        $di_estprice    = $oneItem->getEstprice();
+        $di_minimum     = $oneItem->getMinimum();
+        $per_LastName   = $donor?->getLastName() ?? '';
+        $per_FirstName  = $donor?->getFirstName() ?? '';
 
         $pdf->addPage();
 
@@ -174,7 +217,7 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
 // ---------------------------------------------------------------------------
 // GET /fundraiser/{fundraiserId}/reports/certificates — PDF certificates
 // ---------------------------------------------------------------------------
-$app->get('/{fundraiserId}/reports/certificates', function (Request $request, Response $response, array $args): Response {
+$app->get('/{fundraiserId}/reports/certificates', function (Request $request, Response $response, array $args) use ($loadDonorsById): Response {
     $fundraiserId = (int) $args['fundraiserId'];
 
     $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
@@ -190,19 +233,20 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
     $fr_description = $fundraiser->getDescription();
     $curY           = 0;
 
-    $sSQL    = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $fundraiser->getId() . ' ORDER BY di_item';
-    $rsItems = RunQuery($sSQL);
+    $items = DonatedItemQuery::create()->filterByFrId($fundraiser->getId())->orderByItem()->find();
+    $donors = $loadDonorsById(iterator_to_array($items));
 
     $pdf = new PdfCertificatesReport();
     $pdf->SetTitle($fundraiser->getTitle());
 
-    while ($oneItem = mysqli_fetch_array($rsItems)) {
-        $di_item        = $oneItem['di_item'];
-        $di_title       = $oneItem['di_title'];
-        $di_description = $oneItem['di_description'];
-        $di_estprice    = $oneItem['di_estprice'];
-        $per_LastName   = $oneItem['per_LastName'];
-        $per_FirstName  = $oneItem['per_FirstName'];
+    foreach ($items as $oneItem) {
+        $donor          = $donors[$oneItem->getDonorId()] ?? null;
+        $di_item        = $oneItem->getItem();
+        $di_title       = $oneItem->getTitle();
+        $di_description = $oneItem->getDescription();
+        $di_estprice    = $oneItem->getEstprice();
+        $per_LastName   = $donor?->getLastName() ?? '';
+        $per_FirstName  = $donor?->getFirstName() ?? '';
 
         $pdf->addPage();
 
@@ -232,7 +276,7 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
 // ---------------------------------------------------------------------------
 // GET /fundraiser/{fundraiserId}/reports/catalog — PDF catalog
 // ---------------------------------------------------------------------------
-$app->get('/{fundraiserId}/reports/catalog', function (Request $request, Response $response, array $args): Response {
+$app->get('/{fundraiserId}/reports/catalog', function (Request $request, Response $response, array $args) use ($sortDonatedItemsByItemCode, $loadDonorsById): Response {
     $fundraiserId = (int) $args['fundraiserId'];
 
     $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
@@ -242,24 +286,28 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
             ->withStatus(302);
     }
 
-    $sSQL    = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $fundraiser->getId()
-        . ' ORDER BY SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)';
-    $rsItems = RunQuery($sSQL);
+    $items = [];
+    foreach (DonatedItemQuery::create()->filterByFrId($fundraiser->getId())->find() as $donatedItem) {
+        $items[] = $donatedItem;
+    }
+    $items  = $sortDonatedItemsByItemCode($items);
+    $donors = $loadDonorsById($items);
 
     $pdf = new PdfFRCatalogReport($fundraiser);
     $pdf->SetTitle($fundraiser->getTitle());
 
     $idFirstChar = '';
 
-    while ($oneItem = mysqli_fetch_array($rsItems)) {
-        $di_item        = $oneItem['di_item'];
-        $di_title       = $oneItem['di_title'];
-        $di_picture     = $oneItem['di_picture'];
-        $di_description = $oneItem['di_description'];
-        $di_minimum     = $oneItem['di_minimum'];
-        $di_estprice    = $oneItem['di_estprice'];
-        $per_LastName   = $oneItem['per_LastName'];
-        $per_FirstName  = $oneItem['per_FirstName'];
+    foreach ($items as $oneItem) {
+        $donor          = $donors[$oneItem->getDonorId()] ?? null;
+        $di_item        = $oneItem->getItem();
+        $di_title       = $oneItem->getTitle();
+        $di_picture     = $oneItem->getPicture() ?? '';
+        $di_description = $oneItem->getDescription();
+        $di_minimum     = $oneItem->getMinimum();
+        $di_estprice    = $oneItem->getEstprice();
+        $per_LastName   = $donor?->getLastName() ?? '';
+        $per_FirstName  = $donor?->getFirstName() ?? '';
 
         $newIdFirstChar = mb_substr($di_item, 0, 1);
         $maxYNewPage    = 220;
@@ -336,37 +384,39 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
             ->withStatus(302);
     }
 
+    $paddleQuery = PaddleNumQuery::create()->filterByPnFrId($fundraiserId)->orderByPnNum();
     if ($iPaddleNumId > 0) {
-        $selectOneCrit = ' AND pn_ID=' . $iPaddleNumId . ' ';
-    } else {
-        $selectOneCrit = '';
+        $paddleQuery->filterByPnId($iPaddleNumId);
     }
-
-    $sSQL = 'SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
-                    a.per_FirstName as paddleFirstName, a.per_LastName as paddleLastName, a.per_Email as paddleEmail,
-                    b.fam_ID, b.fam_Name, b.fam_Address1, b.fam_Address2, b.fam_City, b.fam_State, b.fam_Zip, b.fam_Country
-             FROM paddlenum_pn
-             LEFT JOIN person_per a ON pn_per_ID=a.per_ID
-             LEFT JOIN family_fam b ON fam_ID = a.per_fam_ID
-             WHERE pn_FR_ID =' . $fundraiserId . $selectOneCrit . ' ORDER BY pn_Num';
-    $rsPaddleNums = RunQuery($sSQL);
+    $paddles  = [];
+    $buyerIds = [];
+    foreach ($paddleQuery->find() as $paddle) {
+        $paddles[]  = $paddle;
+        $buyerIds[] = $paddle->getPnPerId();
+    }
+    $buyers = [];
+    foreach (PersonQuery::create()->filterById($buyerIds)->find() as $buyer) {
+        $buyers[$buyer->getId()] = $buyer;
+    }
 
     $pdf = new PdfFundRaiserStatement();
 
-    while ($row = mysqli_fetch_array($rsPaddleNums)) {
-        $pn_ID          = $row['pn_ID'];
-        $pn_Num         = $row['pn_Num'];
-        $pn_per_ID      = $row['pn_per_ID'];
-        $paddleFirstName = $row['paddleFirstName'];
-        $paddleLastName  = $row['paddleLastName'];
-        $fam_ID          = $row['fam_ID'];
-        $fam_Name        = $row['fam_Name'];
-        $fam_Address1    = $row['fam_Address1'];
-        $fam_Address2    = $row['fam_Address2'];
-        $fam_City        = (string) $row['fam_City'];
-        $fam_State       = (string) $row['fam_State'];
-        $fam_Zip         = $row['fam_Zip'];
-        $fam_Country     = $row['fam_Country'];
+    foreach ($paddles as $paddle) {
+        $pn_ID          = $paddle->getPnId();
+        $pn_Num         = $paddle->getPnNum();
+        $pn_per_ID      = $paddle->getPnPerId();
+        $paddleBuyer    = $buyers[$pn_per_ID] ?? null;
+        $paddleFirstName = $paddleBuyer?->getFirstName() ?? '';
+        $paddleLastName  = $paddleBuyer?->getLastName() ?? '';
+        $paddleFamily    = $paddleBuyer?->getFamily();
+        $fam_ID          = $paddleFamily?->getId() ?? 0;
+        $fam_Name        = $paddleFamily?->getName() ?? '';
+        $fam_Address1    = $paddleFamily?->getAddress1() ?? '';
+        $fam_Address2    = $paddleFamily?->getAddress2() ?? '';
+        $fam_City        = (string) ($paddleFamily?->getCity() ?? '');
+        $fam_State       = (string) ($paddleFamily?->getState() ?? '');
+        $fam_Zip         = $paddleFamily?->getZip() ?? '';
+        $fam_Country     = $paddleFamily?->getCountry() ?? '';
 
         // If running for a specific paddle, always include; otherwise check POST checkboxes
         if ($iPaddleNumId || isset($body["Chk$pn_ID"])) {
@@ -384,15 +434,15 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
             $PriceWid   = 20;
             $tableCellY = 4;
 
-            $sSQL2 = 'SELECT di_item, di_title, di_buyer_id, di_sellprice,
-                             a.per_FirstName as buyerFirstName,
-                             a.per_LastName as buyerLastName,
-                             a.per_Email as buyerEmail,
-                             b.fam_homephone as buyerPhone
-                      FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id
-                                          LEFT JOIN family_fam b on a.per_fam_id = b.fam_id
-                      WHERE di_FR_ID = ' . $fundraiserId . ' AND di_donor_id = ' . (int) $pn_per_ID;
-            $rsDonatedItems = RunQuery($sSQL2);
+            $donatedItems     = DonatedItemQuery::create()->filterByFrId($fundraiserId)->filterByDonorId($pn_per_ID)->find();
+            $donatedItemBuyerIds = [];
+            foreach ($donatedItems as $donatedItem) {
+                $donatedItemBuyerIds[] = $donatedItem->getBuyerId();
+            }
+            $donatedItemBuyers = [];
+            foreach (PersonQuery::create()->filterById($donatedItemBuyerIds)->find() as $itemBuyer) {
+                $donatedItemBuyers[$itemBuyer->getId()] = $itemBuyer;
+            }
 
             $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
             $pdf->SetFont('Times', 'B', 10);
@@ -405,14 +455,15 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
             $curY = $pdf->GetY();
             $pdf->SetFont('Times', '', 10);
 
-            while ($itemRow = mysqli_fetch_array($rsDonatedItems)) {
-                $di_item      = $itemRow['di_item'];
-                $di_title     = $itemRow['di_title'];
-                $di_sellprice = $itemRow['di_sellprice'];
-                $buyerFirstName = $itemRow['buyerFirstName'];
-                $buyerLastName  = $itemRow['buyerLastName'];
-                $buyerEmail     = $itemRow['buyerEmail'];
-                $buyerPhone     = $itemRow['buyerPhone'];
+            foreach ($donatedItems as $donatedItem) {
+                $di_item      = $donatedItem->getItem();
+                $di_title     = $donatedItem->getTitle();
+                $di_sellprice = $donatedItem->getSellprice();
+                $itemBuyer      = $donatedItemBuyers[$donatedItem->getBuyerId()] ?? null;
+                $buyerFirstName = $itemBuyer?->getFirstName() ?? '';
+                $buyerLastName  = $itemBuyer?->getLastName() ?? '';
+                $buyerEmail     = $itemBuyer?->getEmail() ?? '';
+                $buyerPhone     = $itemBuyer?->getFamily()?->getHomePhone() ?? '';
 
                 $nextY = $curY;
                 $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
@@ -432,15 +483,15 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
 
             $totalAmount = 0.0;
 
-            $sSQL3 = 'SELECT di_item, di_title, di_donor_id, di_sellprice,
-                             a.per_FirstName as donorFirstName,
-                             a.per_LastName as donorLastName,
-                             a.per_Email as donorEmail,
-                             b.fam_homePhone as donorPhone
-                      FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_donor_id
-                                          LEFT JOIN family_fam b on a.per_fam_id=b.fam_id
-                      WHERE di_FR_ID = ' . $fundraiserId . ' AND di_buyer_id = ' . (int) $pn_per_ID;
-            $rsPurchasedItems = RunQuery($sSQL3);
+            $purchasedItems      = DonatedItemQuery::create()->filterByFrId($fundraiserId)->filterByBuyerId($pn_per_ID)->find();
+            $purchasedItemDonorIds = [];
+            foreach ($purchasedItems as $purchasedItem) {
+                $purchasedItemDonorIds[] = $purchasedItem->getDonorId();
+            }
+            $purchasedItemDonors = [];
+            foreach (PersonQuery::create()->filterById($purchasedItemDonorIds)->find() as $itemDonor) {
+                $purchasedItemDonors[$itemDonor->getId()] = $itemDonor;
+            }
 
             $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
             $pdf->SetFont('Times', 'B', 10);
@@ -454,14 +505,15 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
             $pdf->SetFont('Times', '', 10);
             $curY += SystemConfig::getValue('incrementY');
 
-            while ($itemRow = mysqli_fetch_array($rsPurchasedItems)) {
-                $di_item        = $itemRow['di_item'];
-                $di_title       = $itemRow['di_title'];
-                $di_sellprice   = $itemRow['di_sellprice'];
-                $donorFirstName = $itemRow['donorFirstName'];
-                $donorLastName  = $itemRow['donorLastName'];
-                $donorEmail     = $itemRow['donorEmail'];
-                $donorPhone     = $itemRow['donorPhone'];
+            foreach ($purchasedItems as $purchasedItem) {
+                $di_item        = $purchasedItem->getItem();
+                $di_title       = $purchasedItem->getTitle();
+                $di_sellprice   = $purchasedItem->getSellprice();
+                $itemDonor      = $purchasedItemDonors[$purchasedItem->getDonorId()] ?? null;
+                $donorFirstName = $itemDonor?->getFirstName() ?? '';
+                $donorLastName  = $itemDonor?->getLastName() ?? '';
+                $donorEmail     = $itemDonor?->getEmail() ?? '';
+                $donorPhone     = $itemDonor?->getFamily()?->getHomePhone() ?? '';
 
                 $nextY = $curY;
                 $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
@@ -476,33 +528,40 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
                 $totalAmount += (float) $di_sellprice;
             }
 
-            $iPnPerID    = (int) $pn_per_ID;
-            $sqlMultiBuy = <<<SQL
-SELECT
-    mb_count,
-    a.per_FirstName as donorFirstName,
-    a.per_LastName as donorLastName,
-    a.per_Email as donorEmail,
-    c.fam_HomePhone as donorPhone,
-    b.di_item,
-    b.di_title,
-    b.di_sellprice
-FROM multibuy_mb
-LEFT JOIN donateditem_di b ON mb_item_ID=b.di_ID
-LEFT JOIN person_per a ON b.di_donor_id=a.per_ID
-LEFT JOIN family_fam c ON a.per_fam_id = c.fam_ID
-WHERE b.di_FR_ID=$fundraiserId AND mb_per_ID=$iPnPerID;
-SQL;
-            $rsMultiBuy = RunQuery($sqlMultiBuy);
-            while ($mbRow = mysqli_fetch_array($rsMultiBuy)) {
-                $mb_count       = $mbRow['mb_count'];
-                $donorFirstName = $mbRow['donorFirstName'];
-                $donorLastName  = $mbRow['donorLastName'];
-                $donorEmail     = $mbRow['donorEmail'];
-                $donorPhone     = $mbRow['donorPhone'];
-                $di_item        = $mbRow['di_item'];
-                $di_title       = $mbRow['di_title'];
-                $di_sellprice   = $mbRow['di_sellprice'];
+            // Left join replicated: a multibuy row whose item isn't in this fundraiser is excluded
+            // below, mirroring the legacy WHERE b.di_FR_ID=$fundraiserId filter on the LEFT JOIN.
+            $multibuyRows = MultibuyQuery::create()->filterByMbPerId($pn_per_ID)->find();
+            $multibuyItemIds = [];
+            foreach ($multibuyRows as $multibuyRow) {
+                $multibuyItemIds[] = $multibuyRow->getMbItemId();
+            }
+            $multibuyItems = [];
+            foreach (DonatedItemQuery::create()->filterById($multibuyItemIds)->filterByFrId($fundraiserId)->find() as $multibuyItem) {
+                $multibuyItems[$multibuyItem->getId()] = $multibuyItem;
+            }
+            $multibuyDonorIds = [];
+            foreach ($multibuyItems as $multibuyItem) {
+                $multibuyDonorIds[] = $multibuyItem->getDonorId();
+            }
+            $multibuyDonors = [];
+            foreach (PersonQuery::create()->filterById($multibuyDonorIds)->find() as $multibuyDonor) {
+                $multibuyDonors[$multibuyDonor->getId()] = $multibuyDonor;
+            }
+
+            foreach ($multibuyRows as $multibuyRow) {
+                $multibuyItem = $multibuyItems[$multibuyRow->getMbItemId()] ?? null;
+                if ($multibuyItem === null) {
+                    continue;
+                }
+                $mb_count       = $multibuyRow->getMbCount();
+                $multibuyDonor  = $multibuyDonors[$multibuyItem->getDonorId()] ?? null;
+                $donorFirstName = $multibuyDonor?->getFirstName() ?? '';
+                $donorLastName  = $multibuyDonor?->getLastName() ?? '';
+                $donorEmail     = $multibuyDonor?->getEmail() ?? '';
+                $donorPhone     = $multibuyDonor?->getFamily()?->getHomePhone() ?? '';
+                $di_item        = $multibuyItem->getItem();
+                $di_title       = $multibuyItem->getTitle();
+                $di_sellprice   = $multibuyItem->getSellprice();
 
                 $nextY = $curY;
                 $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);

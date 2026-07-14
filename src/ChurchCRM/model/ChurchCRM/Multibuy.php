@@ -8,21 +8,18 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\model\ChurchCRM\Base\PaddlenumPnQuery as BasePaddlenumPnQuery;
+use ChurchCRM\model\ChurchCRM\Base\Multibuy as BaseMultibuy;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'paddlenum_pn' table.
+ * Skeleton subclass for representing a row from the 'multibuy_mb' table.
  *
  *
  *
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
- *
- * @template ParentQuery extends \Propel\Runtime\ActiveQuery\TypedModelCriteria|null = null
- * @extends BasePaddlenumPnQuery<ParentQuery>
  */
-class PaddlenumPnQuery extends BasePaddlenumPnQuery
+class Multibuy extends BaseMultibuy
 {
 
 }

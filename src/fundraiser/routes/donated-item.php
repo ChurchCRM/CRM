@@ -5,6 +5,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonatedItem;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -64,23 +66,46 @@ $app->get('/{fundraiserId}/donated-items/editor[/{itemId}]', function (Request $
         $sPictureURL   = $donatedItemRecord->getPicture();
     }
 
-    $sPeopleSQL = 'SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName, per_FirstName';
-    $people     = [];
-    $rsPeople   = RunQuery($sPeopleSQL);
-    while ($aRow = mysqli_fetch_array($rsPeople)) {
-        $people[] = $aRow;
+    // Inner join (mirrors legacy JOIN family_fam): people without a family record are excluded.
+    $people = [];
+    foreach (
+        PersonQuery::create()
+            ->joinFamily()
+            ->orderByLastName()
+            ->orderByFirstName()
+            ->find() as $person
+    ) {
+        $family  = $person->getFamily();
+        $people[] = [
+            'per_ID'        => $person->getId(),
+            'per_FirstName' => $person->getFirstName(),
+            'per_LastName'  => $person->getLastName(),
+            'fam_Address1'  => $family->getAddress1(),
+            'fam_City'      => $family->getCity(),
+            'fam_State'     => $family->getState(),
+        ];
     }
 
-    $sPaddleSQL = 'SELECT pn_ID, pn_Num, pn_per_ID,
-                          a.per_FirstName AS buyerFirstName,
-                          a.per_LastName AS buyerLastName
-                   FROM paddlenum_pn
-                   LEFT JOIN person_per a on a.per_ID=pn_per_ID
-                   WHERE pn_fr_ID=' . $fundraiserId . ' ORDER BY pn_Num';
-    $buyers     = [];
-    $rsBuyers   = RunQuery($sPaddleSQL);
-    while ($aRow = mysqli_fetch_array($rsBuyers)) {
-        $buyers[] = $aRow;
+    $paddleModels = [];
+    $buyerIds     = [];
+    foreach (PaddleNumQuery::create()->filterByPnFrId($fundraiserId)->orderByPnNum()->find() as $paddle) {
+        $paddleModels[] = $paddle;
+        $buyerIds[]     = $paddle->getPnPerId();
+    }
+    $buyerPeople = [];
+    foreach (PersonQuery::create()->filterById($buyerIds)->find() as $buyerPerson) {
+        $buyerPeople[$buyerPerson->getId()] = $buyerPerson;
+    }
+    $buyers = [];
+    foreach ($paddleModels as $paddle) {
+        $buyerPerson = $buyerPeople[$paddle->getPnPerId()] ?? null;
+        $buyers[] = [
+            'pn_ID'          => $paddle->getPnId(),
+            'pn_Num'         => $paddle->getPnNum(),
+            'pn_per_ID'      => $paddle->getPnPerId(),
+            'buyerFirstName' => $buyerPerson?->getFirstName() ?? '',
+            'buyerLastName'  => $buyerPerson?->getLastName() ?? '',
+        ];
     }
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');

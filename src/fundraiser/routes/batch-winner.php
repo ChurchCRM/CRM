@@ -4,6 +4,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -23,25 +25,46 @@ $app->get('/{fundraiserId}/batch-winner', function (Request $request, Response $
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
-    $sDonatedItemsSQL = "SELECT di_ID, di_Item, di_title
-                         FROM donateditem_di
-                         WHERE di_FR_ID = '" . $fundraiserId . "' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)";
-    $donatedItems     = [];
-    $rsDonatedItems   = RunQuery($sDonatedItemsSQL);
-    while ($itemArr = mysqli_fetch_array($rsDonatedItems)) {
-        $donatedItems[] = $itemArr;
+    // Item codes look like "A1", "B23"; sort by letter, then the numeric suffix
+    // (mirrors the legacy ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)).
+    $donatedItemModels = [];
+    foreach (DonatedItemQuery::create()->filterByFrId($fundraiserId)->find() as $donatedItem) {
+        $donatedItemModels[] = $donatedItem;
+    }
+    usort($donatedItemModels, function ($a, $b) {
+        $aItem = (string) $a->getItem();
+        $bItem = (string) $b->getItem();
+        $letterCmp = strcmp(substr($aItem, 0, 1), substr($bItem, 0, 1));
+        return $letterCmp !== 0 ? $letterCmp : ((int) substr($aItem, 1, 3)) <=> ((int) substr($bItem, 1, 3));
+    });
+    $donatedItems = [];
+    foreach ($donatedItemModels as $donatedItem) {
+        $donatedItems[] = [
+            'di_ID'    => $donatedItem->getId(),
+            'di_Item'  => $donatedItem->getItem(),
+            'di_title' => $donatedItem->getTitle(),
+        ];
     }
 
-    $sPaddleSQL = 'SELECT pn_Num, pn_per_ID,
-                          a.per_FirstName AS buyerFirstName,
-                          a.per_LastName AS buyerLastName
-                   FROM paddlenum_pn
-                   LEFT JOIN person_per a on a.per_ID=pn_per_ID
-                   WHERE pn_fr_ID=' . $fundraiserId . ' ORDER BY pn_Num';
-    $paddles    = [];
-    $rsPaddles  = RunQuery($sPaddleSQL);
-    while ($paddleArr = mysqli_fetch_array($rsPaddles)) {
-        $paddles[] = $paddleArr;
+    $paddleModels = [];
+    $buyerIds     = [];
+    foreach (PaddleNumQuery::create()->filterByPnFrId($fundraiserId)->orderByPnNum()->find() as $paddle) {
+        $paddleModels[] = $paddle;
+        $buyerIds[]     = $paddle->getPnPerId();
+    }
+    $buyers = [];
+    foreach (PersonQuery::create()->filterById($buyerIds)->find() as $buyer) {
+        $buyers[$buyer->getId()] = $buyer;
+    }
+    $paddles = [];
+    foreach ($paddleModels as $paddle) {
+        $buyer = $buyers[$paddle->getPnPerId()] ?? null;
+        $paddles[] = [
+            'pn_Num'         => $paddle->getPnNum(),
+            'pn_per_ID'      => $paddle->getPnPerId(),
+            'buyerFirstName' => $buyer?->getFirstName() ?? '',
+            'buyerLastName'  => $buyer?->getLastName() ?? '',
+        ];
     }
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');

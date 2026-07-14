@@ -8,7 +8,7 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\model\ChurchCRM\Base\PaddlenumPn as BasePaddlenumPn;
+use ChurchCRM\model\ChurchCRM\Base\PaddleNum as BasePaddleNum;
 
 /**
  * Skeleton subclass for representing a row from the 'paddlenum_pn' table.
@@ -19,7 +19,7 @@ use ChurchCRM\model\ChurchCRM\Base\PaddlenumPn as BasePaddlenumPn;
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class PaddlenumPn extends BasePaddlenumPn
+class PaddleNum extends BasePaddleNum
 {
 
 }

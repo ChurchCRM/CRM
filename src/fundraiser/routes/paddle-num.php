@@ -2,10 +2,15 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\model\ChurchCRM\Multibuy;
+use ChurchCRM\model\ChurchCRM\MultibuyQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\model\ChurchCRM\PaddlenumPnQuery;
+use ChurchCRM\model\ChurchCRM\PaddleNum;
+use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -25,15 +30,27 @@ $app->get('/{fundraiserId}/paddle-numbers', function (Request $request, Response
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
+    $paddleModels = [];
+    $buyerIds     = [];
+    foreach (PaddleNumQuery::create()->filterByPnFrId($fundraiserId)->orderByPnNum()->find() as $paddle) {
+        $paddleModels[] = $paddle;
+        $buyerIds[]     = $paddle->getPnPerId();
+    }
+    $buyers = [];
+    foreach (PersonQuery::create()->filterById($buyerIds)->find() as $buyer) {
+        $buyers[$buyer->getId()] = $buyer;
+    }
     $paddleNums = [];
-    $sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
-                    a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName
-             FROM paddlenum_pn
-             LEFT JOIN person_per a ON pn_per_ID=a.per_ID
-             WHERE pn_FR_ID = '" . $fundraiserId . "' ORDER BY pn_Num";
-    $rsPaddleNums = RunQuery($sSQL);
-    while ($aRow = mysqli_fetch_array($rsPaddleNums)) {
-        $paddleNums[] = $aRow;
+    foreach ($paddleModels as $paddle) {
+        $buyer = $buyers[$paddle->getPnPerId()] ?? null;
+        $paddleNums[] = [
+            'pn_ID'          => $paddle->getPnId(),
+            'pn_fr_ID'       => $paddle->getPnFrId(),
+            'pn_Num'         => $paddle->getPnNum(),
+            'pn_per_ID'      => $paddle->getPnPerId(),
+            'buyerFirstName' => $buyer?->getFirstName() ?? '',
+            'buyerLastName'  => $buyer?->getLastName() ?? '',
+        ];
     }
 
     $params = $request->getQueryParams();
@@ -71,61 +88,65 @@ $app->get('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reques
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
-    $sMultibuyItemsSQL = "SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $fundraiserId;
-
     $iNum  = 0;
     $iPerID = 0;
 
     if ($paddleId > 0) {
         // Scope to fundraiserId to prevent cross-fundraiser editing
-        $sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
-                        a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName
-                 FROM paddlenum_pn
-                 LEFT JOIN person_per a ON pn_per_ID=a.per_ID
-                 WHERE pn_ID = '" . $paddleId . "' AND pn_fr_ID = " . $fundraiserId;
-        $rsPaddleNum  = RunQuery($sSQL);
-        $thePaddleNum = mysqli_fetch_array($rsPaddleNum);
-        if (!$thePaddleNum) {
+        $thePaddleNum = PaddleNumQuery::create()
+            ->filterByPnId($paddleId)
+            ->filterByPnFrId($fundraiserId)
+            ->findOne();
+        if ($thePaddleNum === null) {
             return $response
                 ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/' . $fundraiserId . '/paddle-numbers')
                 ->withStatus(302);
         }
-        $iNum   = (int) ($thePaddleNum['pn_Num'] ?? 0);
-        $iPerID = (int) ($thePaddleNum['pn_per_ID'] ?? 0);
+        $iNum   = $thePaddleNum->getPnNum();
+        $iPerID = $thePaddleNum->getPnPerId();
     } else {
         // Adding: set default next paddle number
-        $sSQL = 'SELECT COUNT(*) AS topNum FROM paddlenum_pn WHERE pn_fr_ID=' . $fundraiserId;
-        $rsGetMaxNum = RunQuery($sSQL);
-        $row = mysqli_fetch_array($rsGetMaxNum);
-        $iNum = (int) $row['topNum'] + 1;
+        $iNum = PaddleNumQuery::create()->filterByPnFrId($fundraiserId)->count() + 1;
     }
 
     // Get multibuy counts for this person
     $multibuyItems = [];
-    $rsMBItems = RunQuery($sMultibuyItemsSQL);
-    while ($aRow = mysqli_fetch_array($rsMBItems)) {
-        $di_ID    = $aRow['di_ID'];
-        $di_title = $aRow['di_title'];
-        $mbCount  = 0;
+    foreach (DonatedItemQuery::create()->filterByFrId($fundraiserId)->filterByMultibuy(1)->find() as $multibuyItem) {
+        $diId    = $multibuyItem->getId();
+        $mbCount = 0;
         if ($iPerID > 0) {
-            $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int) $di_ID;
-            $rsNumBought  = RunQuery($sqlNumBought);
-            $numBoughtRow = mysqli_fetch_array($rsNumBought);
-            $mbCount      = $numBoughtRow ? (int) $numBoughtRow['mb_count'] : 0;
+            $numBought = MultibuyQuery::create()
+                ->filterByMbPerId($iPerID)
+                ->filterByMbItemId($diId)
+                ->findOne();
+            $mbCount = $numBought !== null ? (int) $numBought->getMbCount() : 0;
         }
         $multibuyItems[] = [
-            'di_ID'    => $di_ID,
-            'di_title' => $di_title,
+            'di_ID'    => $diId,
+            'di_title' => $multibuyItem->getTitle(),
             'mb_count' => $mbCount,
         ];
     }
 
-    // Get people for drop-down
-    $sPeopleSQL = 'SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName, per_FirstName';
-    $people     = [];
-    $rsPeople   = RunQuery($sPeopleSQL);
-    while ($aRow = mysqli_fetch_array($rsPeople)) {
-        $people[] = $aRow;
+    // Get people for drop-down. Inner join (mirrors legacy JOIN family_fam):
+    // people without a family record are excluded.
+    $people = [];
+    foreach (
+        PersonQuery::create()
+            ->joinFamily()
+            ->orderByLastName()
+            ->orderByFirstName()
+            ->find() as $person
+    ) {
+        $family   = $person->getFamily();
+        $people[] = [
+            'per_ID'        => $person->getId(),
+            'per_FirstName' => $person->getFirstName(),
+            'per_LastName'  => $person->getLastName(),
+            'fam_Address1'  => $family->getAddress1(),
+            'fam_City'      => $family->getCity(),
+            'fam_State'     => $family->getState(),
+        ];
     }
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -174,42 +195,46 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
     $iPerID = (int) InputUtils::legacyFilterInput($body['PerID'] ?? '0');
 
     // Handle multibuy items
-    $sMultibuyItemsSQL = "SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $fundraiserId;
-    $rsMBItems         = RunQuery($sMultibuyItemsSQL);
-    while ($aRow = mysqli_fetch_array($rsMBItems)) {
-        $di_ID    = $aRow['di_ID'];
-        $mbName   = 'MBItem' . $di_ID;
+    foreach (DonatedItemQuery::create()->filterByFrId($fundraiserId)->filterByMultibuy(1)->find() as $multibuyItem) {
+        $diId     = $multibuyItem->getId();
+        $mbName   = 'MBItem' . $diId;
         $iMBCount = (int) InputUtils::legacyFilterInput($body[$mbName] ?? '0', 'int');
 
+        $numBought = MultibuyQuery::create()
+            ->filterByMbPerId($iPerID)
+            ->filterByMbItemId($diId)
+            ->findOne();
+
         if ($iMBCount > 0) {
-            $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int) $di_ID;
-            $rsNumBought  = RunQuery($sqlNumBought);
-            $numBoughtRow = mysqli_fetch_array($rsNumBought);
-            if ($numBoughtRow) {
-                $sSQL = 'UPDATE multibuy_mb SET mb_count=' . $iMBCount . ' WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int) $di_ID;
-                RunQuery($sSQL);
-            } else {
-                $sSQL = 'INSERT INTO multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES (' . $iPerID . ',' . (int) $di_ID . ',' . $iMBCount . ')';
-                RunQuery($sSQL);
-            }
-        } else {
-            $sSQL = 'DELETE FROM multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int) $di_ID;
-            RunQuery($sSQL);
+            $numBought ??= (new Multibuy())->setMbPerId($iPerID)->setMbItemId($diId);
+            $numBought->setMbCount($iMBCount);
+            $numBought->save();
+        } elseif ($numBought !== null) {
+            $numBought->delete();
         }
     }
 
     if ($paddleId <= 0) {
         // New paddle number
-        $sSQL       = 'INSERT INTO paddlenum_pn (pn_fr_ID, pn_Num, pn_per_ID) VALUES (' . $fundraiserId . ',' . $iNum . ',' . $iPerID . ')';
-        RunQuery($sSQL);
-        // Get the new paddle ID
-        $rsNew    = RunQuery('SELECT LAST_INSERT_ID() AS iPaddleNumID');
-        $newRow   = mysqli_fetch_array($rsNew);
-        $paddleId = (int) $newRow['iPaddleNumID'];
+        $newPaddle = (new PaddleNum())
+            ->setPnFrId($fundraiserId)
+            ->setPnNum($iNum)
+            ->setPnPerId($iPerID);
+        $newPaddle->save();
+        $paddleId = $newPaddle->getPnId();
     } else {
         // Scope update to fundraiserId to prevent cross-fundraiser writes
-        $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = ' . $fundraiserId . ', pn_Num = ' . $iNum . ', pn_per_ID = ' . $iPerID . ' WHERE pn_ID = ' . $paddleId . ' AND pn_fr_ID = ' . $fundraiserId;
-        RunQuery($sSQL);
+        $existingPaddle = PaddleNumQuery::create()
+            ->filterByPnId($paddleId)
+            ->filterByPnFrId($fundraiserId)
+            ->findOne();
+        if ($existingPaddle !== null) {
+            $existingPaddle
+                ->setPnFrId($fundraiserId)
+                ->setPnNum($iNum)
+                ->setPnPerId($iPerID)
+                ->save();
+        }
     }
 
     $action = '';
@@ -250,7 +275,7 @@ $app->post('/{fundraiserId}/paddle-numbers/{paddleId}/delete', function (Request
     $paddleId     = (int) $args['paddleId'];
 
     if ($paddleId > 0 && $fundraiserId > 0) {
-        PaddlenumPnQuery::create()
+        PaddleNumQuery::create()
             ->filterByPnId($paddleId)
             ->filterByPnFrId($fundraiserId)
             ->delete();

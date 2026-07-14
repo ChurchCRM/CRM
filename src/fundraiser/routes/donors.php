@@ -2,8 +2,11 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
-use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\model\ChurchCRM\PaddleNum;
+use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -57,32 +60,35 @@ $app->post('/{fundraiserId}/donors', function (Request $request, Response $respo
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
     // Get all people listed as donors for this fundraiser
-    $sSQL = "SELECT a.per_id as donorID FROM donateditem_di
-             LEFT JOIN person_per a ON di_donor_ID=a.per_ID
-             WHERE di_FR_ID = '" . $fundraiserId . "' ORDER BY a.per_id";
-    $rsDonors = RunQuery($sSQL);
+    $donorIds = [];
+    foreach (DonatedItemQuery::create()->filterByFrId($fundraiserId)->orderByDonorId()->find() as $donatedItem) {
+        $donorIds[] = $donatedItem->getDonorId();
+    }
 
-    // Get the next paddle number to use
+    // Donors that no longer exist as a person record are skipped (mirrors the
+    // legacy LEFT JOIN against person_per, which produced a NULL donor id for them).
+    $existingPersonIds = [];
+    foreach (PersonQuery::create()->filterById($donorIds)->find() as $existingPerson) {
+        $existingPersonIds[$existingPerson->getId()] = true;
+    }
+
+    // Get the next paddle number to use, and index existing buyers for O(1) lookups
     $extraPaddleNum = 1;
-    $sSQL = "SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn WHERE pn_FR_ID = '" . $fundraiserId . "'";
-    $rsMaxPaddle = RunQuery($sSQL);
-    if (mysqli_num_rows($rsMaxPaddle) > 0) {
-        $oneRow = mysqli_fetch_array($rsMaxPaddle);
-        $pn_max = $oneRow['pn_max'];
-        $extraPaddleNum = (int) $pn_max + 1;
+    $existingBuyerIds = [];
+    foreach (PaddleNumQuery::create()->filterByPnFrId($fundraiserId)->find() as $existingPaddle) {
+        $existingBuyerIds[$existingPaddle->getPnPerId()] = true;
+        $extraPaddleNum = max($extraPaddleNum, $existingPaddle->getPnNum() + 1);
     }
 
     // For each donor who does not yet have a paddle number, add one
-    while ($donorRow = mysqli_fetch_array($rsDonors)) {
-        $donorID = (int) $donorRow['donorID'];
-
-        $sSQL = "SELECT pn_per_id FROM paddlenum_pn WHERE pn_per_id='$donorID' AND pn_FR_ID = '$fundraiserId'";
-        $rsBuyer = RunQuery($sSQL);
-
-        if ($donorID > 0 && mysqli_num_rows($rsBuyer) === 0) {
-            $sSQL = "INSERT INTO paddlenum_pn (pn_Num, pn_fr_ID, pn_per_ID)
-                     VALUES ('$extraPaddleNum', '$fundraiserId', '$donorID')";
-            RunQuery($sSQL);
+    foreach ($donorIds as $donorId) {
+        if ($donorId > 0 && isset($existingPersonIds[$donorId]) && !isset($existingBuyerIds[$donorId])) {
+            (new PaddleNum())
+                ->setPnNum($extraPaddleNum)
+                ->setPnFrId($fundraiserId)
+                ->setPnPerId($donorId)
+                ->save();
+            $existingBuyerIds[$donorId] = true;
             $extraPaddleNum++;
         }
     }
