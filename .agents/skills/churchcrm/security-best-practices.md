@@ -295,10 +295,56 @@ $group->post('/users/{personId:[0-9]+}/edit', 'adminUserEditorEdit')
 </form>
 ```
 
-- Pick a unique `$formId` per form (e.g. `'user_editor'`, `'pledge_delete'`). The ID must match between `getTokenInputField()` and `verifyRequest()`.
-- `getTokenInputField()` auto-renders `<input type="hidden" name="csrf_token" value="...">` with a fresh 64-hex-char token.
-- Tokens are stored in `$_SESSION['csrf_tokens'][$formId]` with a 2-hour TTL.
+- `getTokenInputField()` auto-renders `<input type="hidden" name="csrf_token" value="...">`.
 - Tokens are NOT consumed by default (allows resubmission on validation error). Pass `$consume = true` to `validateToken()` only if you need one-time use.
+
+### CSRFUtils is a single session-wide synchronizer token — `$formId` is ignored <!-- learned: 2026-07-14 -->
+
+As of PR #9124, `CSRFUtils` stores **one stable token per session** in
+`$_SESSION['csrf_token']` (singular). The `$formId` argument on every public
+method is retained for backward compatibility but **ignored** — all forms share
+the one token, matching how Laravel/Django/Rails do CSRF.
+
+**Why the change:** `generateToken()` previously *rotated* the token on every
+render and stored it per-`$formId` under `$_SESSION['csrf_tokens'][$formId]`.
+Rendering the same form twice before submitting invalidated the first render's
+token → `"Invalid security token. Please try again."` on save. The trigger in
+the wild was a donated-item whose Picture URL was a **relative string** (e.g.
+`"url"`): the template's `<img src="url">` resolved against the page URL and
+re-hit the editor route as a second GET, rotating the token out from under the
+on-screen form. `generateToken()` now **reuses** the existing non-expired token,
+so any number of renders (prefetch, second tab, stray asset request) is safe.
+
+- Don't pass `$formId` in new code — call `getTokenInputField()` / `verifyRequest($body)` with no id.
+- Only render user-supplied URLs as `<img src>` when they're absolute: `preg_match('~^https?://~i', $url)`. A relative src can silently re-request the current route.
+- `regenerateToken()` still forces a fresh token (e.g. after a privileged op); no current caller uses it.
+
+### Prefer one group-level CSRFMiddleware over per-route wiring (Slim ordering gotcha) <!-- learned: 2026-07-14 -->
+
+In an MVC module, guard **all** state-changing routes with a single
+`CSRFMiddleware` on a route **group** rather than repeating `->add()` per route
+or calling `CSRFUtils::verifyRequest()` inline in every handler:
+
+```php
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
+use Slim\Routing\RouteCollectorProxy;
+
+$app->group('', function (RouteCollectorProxy $group): void {
+    $app = $group;                 // alias so required route files that use $app still work
+    require __DIR__ . '/routes/foo.php';
+    // ...
+})->add(new CSRFMiddleware());     // validates every POST/PUT/DELETE/PATCH in the group
+```
+
+**Why a group, not `$app->add()`:** Slim runs `BodyParsingMiddleware`
+*innermost*, so an app-level middleware executes **before** the body is parsed
+and `getParsedBody()` returns null — the token is never seen and every POST
+403s. Group (and route) middleware run inside the routing layer, after body
+parsing, so the parsed `csrf_token` is available. `CSRFMiddleware` only acts on
+POST/PUT/DELETE/PATCH (GET/report routes pass through) and throws
+`HttpForbiddenException` (403) on failure. The fundraiser module
+(`src/fundraiser/index.php`) uses this; per-route inline `verifyRequest` checks
+were removed in favor of it.
 
 ### Never delete on GET — always confirmation-page pattern <!-- learned: 2026-04-21 -->
 
