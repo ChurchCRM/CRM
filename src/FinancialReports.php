@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -234,18 +235,47 @@ if ($sReportType === '') {
     <?php endif; ?>
 
     <?php if (in_array($sReportType, ['Pledge Summary', 'Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) :
-        $sSQL = 'SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name';
-        $rsFunds = RunQuery($sSQL); ?>
+        $funds = DonationFundQuery::create()
+            ->orderByActive()
+            ->orderByName()
+            ->find();
+        // Partition into named categories (sorted) then uncategorized last
+        $categorized = [];
+        $uncategorized = [];
+        foreach ($funds as $fund) {
+            $cat = $fund->getCategory();
+            if ($cat !== null && $cat !== '') {
+                $categorized[$cat][] = $fund;
+            } else {
+                $uncategorized[] = $fund;
+            }
+        }
+        ksort($categorized); ?>
       <div class="mb-3">
         <label class="form-label" for="fundsList"><?= gettext('Filter by Fund') ?>:</label>
         <select name="funds[]" multiple id="fundsList" class="form-select">
-          <?php while ($aRow = mysqli_fetch_array($rsFunds)) {
-              extract($aRow);
-              echo '<option value="' . (int)$fun_ID . '">' . InputUtils::escapeHTML($fun_Name);
-              if ($fun_Active === 'false') {
-                  echo ' — INACTIVE';
+          <?php
+          foreach ($categorized as $catLabel => $catFunds) {
+              echo '<optgroup label="' . InputUtils::escapeHTML($catLabel) . '">';
+              foreach ($catFunds as $fund) {
+                  echo '<option value="' . (int)$fund->getId() . '">' . InputUtils::escapeHTML($fund->getName());
+                  if ($fund->getActive() === 'false') {
+                      echo ' — INACTIVE';
+                  }
+                  echo '</option>';
               }
-              echo '</option>';
+              echo '</optgroup>';
+          }
+          if (!empty($uncategorized)) {
+              echo '<optgroup label="' . gettext('Uncategorized') . '">';
+              foreach ($uncategorized as $fund) {
+                  echo '<option value="' . (int)$fund->getId() . '">' . InputUtils::escapeHTML($fund->getName());
+                  if ($fund->getActive() === 'false') {
+                      echo ' — INACTIVE';
+                  }
+                  echo '</option>';
+              }
+              echo '</optgroup>';
           } ?>
         </select>
         <div class="d-flex gap-2 mt-2">
@@ -421,7 +451,7 @@ $(document).ready(function() {
   if (fundsListEl && !fundsListEl.tomselect) new TomSelect(fundsListEl, { plugins: ["remove_button"] });
   $("#addAllFunds").click(function () {
       var all = [];
-      $("#fundsList > option").each(function () { all.push(this.value); });
+      $("#fundsList option").each(function () { all.push(this.value); });
       if (fundsListEl && fundsListEl.tomselect) { fundsListEl.tomselect.setValue(all); }
   });
   $("#clearAllFunds").click(function () {

@@ -424,10 +424,34 @@ $sRootPath = SystemURLs::getRootPath();
                     <span class="badge bg-blue-lt text-blue ms-auto"><?= $activeFundCount ?></span>
                 </div>
                 <div class="card-body p-0">
-                    <?php if ($activeFunds->count() > 0): ?>
+                    <?php if ($activeFunds->count() > 0):
+                        // Partition funds into named categories (sorted) then uncategorized last
+                        $categorizedFunds = [];
+                        $uncategorizedFunds = [];
+                        foreach ($activeFunds as $fund) {
+                            $cat = $fund->getCategory();
+                            if ($cat !== null && $cat !== '') {
+                                $categorizedFunds[$cat][] = $fund;
+                            } else {
+                                $uncategorizedFunds[] = $fund;
+                            }
+                        }
+                        ksort($categorizedFunds);
+                        // Render named categories first, then uncategorized
+                        $allGroups = $categorizedFunds;
+                        if (!empty($uncategorizedFunds)) {
+                            $allGroups[''] = $uncategorizedFunds;
+                        }
+                    ?>
+                    <?php foreach ($allGroups as $category => $funds): ?>
+                    <?php if ($category !== ''): ?>
+                    <div class="px-3 pt-2 pb-1">
+                        <small class="text-muted fw-bold text-uppercase"><?= InputUtils::escapeHTML($category) ?></small>
+                    </div>
+                    <?php endif; ?>
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($activeFunds as $fund): ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center py-2">
+                        <?php foreach ($funds as $fund): ?>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-2 <?= $category !== '' ? 'ps-4' : '' ?>">
                             <span><?= InputUtils::escapeHTML($fund->getName()) ?></span>
                             <span class="badge bg-green-lt text-green">
                                 <i class="fa-solid fa-check"></i>
@@ -435,6 +459,7 @@ $sRootPath = SystemURLs::getRootPath();
                         </li>
                         <?php endforeach; ?>
                     </ul>
+                    <?php endforeach; ?>
                     <?php else: ?>
                     <div class="empty py-3">
                         <p class="empty-title"><?= gettext('No active funds configured.') ?></p>
