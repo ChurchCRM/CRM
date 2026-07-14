@@ -429,9 +429,9 @@ class UserService
      */
     private function saveAddEventPermission(int $personId, bool $enabled): void
     {
-        if (!User::isEventsEnabled()) {
-            return;
-        }
+        // No early-return on isEventsEnabled() — always write the explicit row
+        // so the user never inherits the shared default (peronId=0) value later
+        // when the Events module is re-enabled.
         $default = UserConfigQuery::create()
             ->filterByPeronId(0)
             ->filterByName('bAddEvent')
