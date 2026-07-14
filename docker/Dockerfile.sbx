@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # PHP extensions (full set — matches the base stage of Dockerfile.churchcrm-apache-php8)
-RUN docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip && \
+RUN docker-php-ext-install -j$(nproc) bcmath xml exif pdo_mysql gettext iconv mysqli zip && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd
 
@@ -98,7 +98,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libxml2-dev \
         libzip5 \
         libzip-dev \
-    && docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip \
+    && docker-php-ext-install -j$(nproc) bcmath xml exif pdo_mysql gettext iconv mysqli zip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && apt-get purge -y --auto-remove \
