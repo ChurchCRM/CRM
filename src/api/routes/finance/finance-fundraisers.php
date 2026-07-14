@@ -53,7 +53,18 @@ function applyFundraiserFields(FundRaiser $fr, array $input, Response $response)
     }
     if (array_key_exists('goalAmount', $input)) {
         $goal = $input['goalAmount'];
-        $fr->setGoalAmount($goal !== null && $goal !== '' ? (float) $goal : null);
+        if ($goal !== null && $goal !== '') {
+            if (!is_numeric($goal)) {
+                return SlimUtils::renderErrorJSON($response, gettext('goalAmount must be a non-negative number'), [], 400);
+            }
+            $goalFloat = (float) $goal;
+            if ($goalFloat < 0) {
+                return SlimUtils::renderErrorJSON($response, gettext('goalAmount must be non-negative'), [], 400);
+            }
+            $fr->setGoalAmount($goalFloat);
+        } else {
+            $fr->setGoalAmount(null);
+        }
     }
     if (array_key_exists('type', $input)) {
         $type = (string) ($input['type'] ?? 'Auction');
@@ -65,7 +76,14 @@ function applyFundraiserFields(FundRaiser $fr, array $input, Response $response)
     }
     if (array_key_exists('fundId', $input)) {
         $fundId = $input['fundId'];
-        $fr->setFundId($fundId !== null && $fundId !== '' ? (int) $fundId : null);
+        if ($fundId !== null && $fundId !== '') {
+            $fundIdInt = (int) $fundId;
+            // Coerce invalid (non-positive) values to null rather than storing
+            // a 0 that would incorrectly mark the fundraiser as "linked".
+            $fr->setFundId($fundIdInt > 0 ? $fundIdInt : null);
+        } else {
+            $fr->setFundId(null);
+        }
     }
     return null;
 }

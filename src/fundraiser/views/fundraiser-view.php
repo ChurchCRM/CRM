@@ -23,8 +23,10 @@ $statusBadge = match ($status) {
     default    => 'badge bg-secondary-lt',
 };
 
-// Finance report jump URLs — only active when fund is linked
-$hasFund      = $fundraiser->getFundId() !== null;
+// Finance report jump URLs — only active when the linked fund record was successfully resolved.
+// FundId may be set but point to a hard-deleted fund; in that case $fundName stays null
+// and we correctly treat the fundraiser as "unlinked".
+$hasFund      = $fundName !== null;
 $dateFrom     = $fundraiser->getDate()?->format('Y-m-d') ?? '';
 $dateTo       = ($fundraiser->getEndDate() ?? $fundraiser->getDate())?->format('Y-m-d') ?? $dateFrom;
 $financeBase  = $sRootPath . '/FinancialReports.php';
@@ -161,7 +163,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <span class="text-body-secondary">—</span>
                   <?php endif; ?>
                 </td>
-                <td class="text-end"><?= CurrencyFormatter::formatHtml((float) $item->getEstprice()) ?></td>
+                <td class="text-end"><?= CurrencyFormatter::formatHtml($item->getEstprice() !== null ? (float) $item->getEstprice() : null) ?></td>
                 <td class="text-end">
                   <?= $isSold ? CurrencyFormatter::formatHtml((float) $item->getSellprice()) : '<span class="text-body-secondary">—</span>' ?>
                 </td>
@@ -291,11 +293,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php endif; ?>
         <div class="list-group list-group-flush">
           <?php if ($hasFund): ?>
-          <a href="<?= InputUtils::escapeAttribute($depositUrl) ?>" class="list-group-item list-group-item-action">
-            <i class="ti ti-report-money me-2 text-body-secondary"></i><?= gettext('Deposit Report') ?>
+          <a href="<?= InputUtils::escapeAttribute($depositUrl) ?>"
+             class="list-group-item list-group-item-action"
+             title="<?= InputUtils::escapeAttribute(gettext('Date-filtered across all funds — use the fund filter inside the report to narrow to this fund')) ?>">
+            <i class="ti ti-report-money me-2 text-body-secondary"></i><?= gettext('Deposit Report (date-filtered)') ?>
           </a>
-          <a href="<?= InputUtils::escapeAttribute($givingUrl) ?>" class="list-group-item list-group-item-action">
-            <i class="ti ti-heart me-2 text-body-secondary"></i><?= gettext('Giving Report') ?>
+          <a href="<?= InputUtils::escapeAttribute($givingUrl) ?>"
+             class="list-group-item list-group-item-action"
+             title="<?= InputUtils::escapeAttribute(gettext('Date-filtered across all funds — use the fund filter inside the report to narrow to this fund')) ?>">
+            <i class="ti ti-heart me-2 text-body-secondary"></i><?= gettext('Giving Report (date-filtered)') ?>
           </a>
           <a href="<?= InputUtils::escapeAttribute($depositSlipUrl) ?>" class="list-group-item list-group-item-action">
             <i class="ti ti-receipt me-2 text-body-secondary"></i><?= gettext('Deposit Slips') ?>

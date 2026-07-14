@@ -207,8 +207,60 @@ describe("Fund Raiser", () => {
     });
 
     // -----------------------------------------------------------------------
-    // Donors
+    // View page (/fundraiser/view/{id}) — PR #9188
     // -----------------------------------------------------------------------
+
+    it("view page renders for fundraiser 1", () => {
+        cy.visit("/fundraiser/view/1");
+        // Page title / breadcrumb should include the fundraiser name
+        cy.contains("2016 Car Wash");
+        // At a Glance sidebar card should be present
+        cy.contains("At a Glance");
+        // Donated Items card (even when empty)
+        cy.contains("Donated Items");
+        // Edit button is visible to a user with ManageFundraisers role
+        cy.contains("a", "Edit").should("be.visible");
+    });
+
+    it("view page redirects to listing for unknown fundraiser", () => {
+        cy.request({
+            url: "/fundraiser/view/99999",
+            followRedirect: false,
+            failOnStatusCode: false,
+        }).then((res) => {
+            expect(res.status).to.eq(302);
+            expect(res.headers.location).to.include("/fundraiser/");
+        });
+    });
+
+    // -----------------------------------------------------------------------
+    // Listing — filter bar smoke test (PR #9188)
+    // -----------------------------------------------------------------------
+
+    it("status filter narrows listing without error", () => {
+        cy.visit("/fundraiser/?filterStatus=Active");
+        cy.contains("Fundraiser Listing");
+        // The page should not contain a PHP error trace
+        cy.get("body").should("not.contain", "Fatal error");
+        cy.get("body").should("not.contain", "Uncaught");
+    });
+
+    it("type filter narrows listing without error", () => {
+        cy.visit("/fundraiser/?filterType=Auction");
+        cy.contains("Fundraiser Listing");
+        cy.get("body").should("not.contain", "Fatal error");
+    });
+
+    // -----------------------------------------------------------------------
+    // Listing — archive collapse section (PR #9188)
+    // -----------------------------------------------------------------------
+
+    it("archive collapse section is present on the listing page", () => {
+        cy.visit("/fundraiser/");
+        // The archive collapse target must exist in the DOM
+        cy.get("#archiveCollapse").should("exist");
+    });
+
 
     it("Donors page renders at /fundraiser/1/donors", () => {
         cy.visit("/fundraiser/1/donors");

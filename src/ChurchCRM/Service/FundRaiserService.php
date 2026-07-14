@@ -34,25 +34,42 @@ class FundRaiserService
      *
      * Two batched GROUP BY queries, zero per-row N+1.
      *
+     * @param  int[] $fundraiserIds When provided and non-empty, limits the aggregation
+     *                              to only these fundraiser IDs (avoids full-table scans
+     *                              on large installs when the listing is filtered).
      * @return array<int, array{items:int, raised:float, est:float, buyers:int}>
      */
-    public function getListSummaries(): array
+    public function getListSummaries(array $fundraiserIds = []): array
     {
         $this->logger->debug('FundRaiserService::getListSummaries — fetching aggregates');
 
         $conn = Propel::getConnection();
 
+        // Build optional WHERE clause when caller provides a filtered ID list.
+        $inClause       = '';
+        $bindIds        = [];
+        if (!empty($fundraiserIds)) {
+            $placeholders = implode(',', array_fill(0, count($fundraiserIds), '?'));
+            $inClause     = " WHERE di_FR_ID IN ($placeholders)";
+            $bindIds      = array_values($fundraiserIds);
+        }
+
         // -- Items aggregates ------------------------------------------------
+        // "Raised" mirrors getViewModel(): only sold items (buyer_ID > 0 AND sellprice > 0).
         $itemSql = '
             SELECT
                 di_FR_ID          AS fr_id,
                 COUNT(*)          AS items,
-                COALESCE(SUM(di_sellprice), 0)    AS raised,
+                COALESCE(SUM(CASE WHEN di_buyer_ID > 0 AND di_sellprice > 0 THEN di_sellprice ELSE 0 END), 0) AS raised,
                 COALESCE(SUM(di_estprice), 0)     AS est
             FROM donateditem_di
+        ' . $inClause . '
             GROUP BY di_FR_ID
         ';
         $itemStmt = $conn->prepare($itemSql);
+        foreach ($bindIds as $i => $id) {
+            $itemStmt->bindValue($i + 1, $id, \PDO::PARAM_INT);
+        }
         $itemStmt->execute();
         $itemRows = $itemStmt->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -68,12 +85,24 @@ class FundRaiserService
         }
 
         // -- Buyer aggregates ------------------------------------------------
+        $buyerInClause = '';
+        $buyerBindIds  = [];
+        if (!empty($fundraiserIds)) {
+            $placeholders  = implode(',', array_fill(0, count($fundraiserIds), '?'));
+            $buyerInClause = " WHERE pn_fr_ID IN ($placeholders)";
+            $buyerBindIds  = array_values($fundraiserIds);
+        }
+
         $buyerSql = '
             SELECT pn_fr_ID AS fr_id, COUNT(*) AS buyers
             FROM paddlenum_pn
+        ' . $buyerInClause . '
             GROUP BY pn_fr_ID
         ';
         $buyerStmt = $conn->prepare($buyerSql);
+        foreach ($buyerBindIds as $i => $id) {
+            $buyerStmt->bindValue($i + 1, $id, \PDO::PARAM_INT);
+        }
         $buyerStmt->execute();
         $buyerRows = $buyerStmt->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -209,15 +238,9 @@ class FundRaiserService
         $activeStmt->execute();
         $activeCount = (int) $activeStmt->fetchColumn();
 
-        // This-year item/money stats
-        $itemStmt = $conn->prepare("
-            SELECT
-                COUNT(d.di_ID)                        AS items,
-                COALESCE(SUM(d.di_sellprice), 0)      AS raised
-            FROM donateditem_di d
-            INNER JOIN fundraiser_fr f ON f.fr_ID = d.di_FR_ID
-            WHERE YEAR(f.fr_date) = :year
-        ");
+        // This-year item/money stats.
+        // "Raised" mirrors getViewModel(): sum only items that have a buyer and a positive sell price.
+        $itemStmt = $conn->prepare("\n            SELECT\n                COUNT(d.di_ID)                        AS items,\n                COALESCE(SUM(CASE WHEN d.di_buyer_ID > 0 AND d.di_sellprice > 0 THEN d.di_sellprice ELSE 0 END), 0) AS raised\n            FROM donateditem_di d\n            INNER JOIN fundraiser_fr f ON f.fr_ID = d.di_FR_ID\n            WHERE YEAR(f.fr_date) = :year\n        ");
         $itemStmt->bindValue(':year', $year, \PDO::PARAM_INT);
         $itemStmt->execute();
         $itemRow = $itemStmt->fetch(\PDO::FETCH_ASSOC);

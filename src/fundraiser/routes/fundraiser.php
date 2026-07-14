@@ -86,9 +86,14 @@ $app->get('/', function (Request $request, Response $response): Response {
         }
     }
 
-    // Aggregates (single grouped queries — no N+1)
+    // Aggregates (single grouped queries — no N+1).
+    // Pass the filtered ID list so the service skips unrelated rows on large installs.
     $service     = new FundRaiserService();
-    $summaries   = $service->getListSummaries();
+    $allIds      = array_merge(
+        array_map(fn($fr) => (int) $fr->getId(), $activeFundraisers),
+        array_map(fn($fr) => (int) $fr->getId(), $archivedFundraisers)
+    );
+    $summaries   = $service->getListSummaries($allIds);
     $widgetStats = $service->getWidgetStats();
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
