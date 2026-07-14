@@ -32,6 +32,43 @@ describe("Standard User Settings Page", () => {
         });
     });
 
+    it("Shows Security section rows on My Account tab", () => {
+        cy.visit("/v2/user/3");
+        cy.get("#tab-account").within(() => {
+            // New security detail rows must be present
+            cy.contains("Account status").should("exist");
+            cy.contains("Password status").should("exist");
+            cy.contains("Failed login attempts").should("exist");
+            cy.contains("Last login").should("exist");
+        });
+    });
+
+    it("Shows Active account-status badge when account is not locked", () => {
+        // Seed user (id=3, tony.wade) has no failed logins in test data
+        cy.visit("/v2/user/3");
+        cy.get("#tab-account").within(() => {
+            // Should NOT show the locked alert banner
+            cy.get(".alert-danger").should("not.exist");
+            // Scope to the Account status row to avoid matching the 2FA 'Active' badge
+            cy.contains(".row", "Account status")
+                .contains("Active")
+                .should("exist");
+        });
+    });
+
+    it("Shows OK password-status badge when password change is not required", () => {
+        // Seed user (id=3, tony.wade) does not have NeedPasswordChange set
+        cy.visit("/v2/user/3");
+        cy.get("#tab-account").within(() => {
+            // Should NOT show the must-change-password alert banner
+            cy.get(".alert-warning").should("not.exist");
+            // Scope to the Password status row to avoid future ambiguous matches
+            cy.contains(".row", "Password status")
+                .contains("OK")
+                .should("exist");
+        });
+    });
+
     it("Navigates to Appearance tab and shows all controls", () => {
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();

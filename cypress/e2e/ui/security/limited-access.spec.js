@@ -92,7 +92,7 @@ describe("Self-only access — EditSelf account user (limited.user)", () => {
     it("Session-based internal API call is blocked with 403", () => {
         // Complements the api-key 403 test: a logged-in browser SESSION for a
         // limited user must also be rejected from internal APIs (AuthMiddleware
-        // hasNoAdminPermissions gate), so they can't pivot via the cookie.
+        // User::isEditSelfExclusive() gate), so they can't pivot via the cookie.
         cy.clearCookies();
         cy.visit("session/begin");
         cy.get("input[name=User]").type(limitedUser);

@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Aanmeldingsnaam"
 
 #: 
-msgid "Add Records"
-msgstr "Voeg rekords by"
-
-#: 
-msgid "Edit Records"
-msgstr "Wysig rekords"
-
-#: 
-msgid "Delete Records"
-msgstr "Skrap rekords"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Bestuur eiendomme en klassifikasies"
 
@@ -2050,14 +2038,6 @@ msgstr "Bestuur groepe en rolle"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Bestuur donasies en finansies"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Bekyk, voeg by en wysig notas"
-
-#: 
-msgid "Edit Self"
-msgstr "Wysig self"
 
 #: 
 msgid "Admin"
@@ -2967,10 +2947,6 @@ msgstr "Voeg skenkers by die koperslys"
 #: 
 msgid "Data/Reports"
 msgstr "Data / verslae"
-
-#: 
-msgid "Query Menu"
-msgstr "Navraag-menu"
 
 #: 
 msgid "Family Properties"
@@ -5590,10 +5566,6 @@ msgstr "Hebreeus"
 #: 
 msgid "Permissions"
 msgstr "Toestemming"
-
-#: 
-msgid "Manage Notes"
-msgstr "Bestuur notas"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11048,10 +11020,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Slegs die noot-outeur of 'n beheerder mag hierdie noot verwyder"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Slegs die noot-outeur of 'n beheerder mag hierdie noot wysig"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Oorsig van kerkgebeurtenisse, bywoning, en aktiwiteit"
 
@@ -12658,10 +12626,6 @@ msgstr "Slegs databasis (.sql) of volledige argief (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Verstekgetal rye wat in datatabelle gewys word. Tree in werking by volgende bladsylading."
 
-#: 
-msgid "Edit own family only"
-msgstr "Wysig slegs eie gesin"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12674,10 +12638,6 @@ msgstr "Regmaak van verkeerde of onhandige vertalings in u taal"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Het u 'n fout in vertalings gevind?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Verleen alle voorregte"
 
 #: 
 msgid "Green"
@@ -14639,10 +14599,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Jy het nie toestemming om hierdie nota te wysig nie."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privaatnota — slegs sigbaar vir skepper]"
-
-#: 
 msgid "seconds"
 msgstr "sekondes"
 
@@ -15041,10 +14997,6 @@ msgstr "Laai Rugsteun Af & Gaan Voort"
 #: 
 msgid "Downloaded"
 msgstr "Afgelaai"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Laai nuutste vrylating van GitHub af..."
 
 #: 
 msgid "Duration"
@@ -16182,6 +16134,10 @@ msgid "from this group?"
 msgstr "uit hierdie ministerie?"
 
 #: 
+msgid "in"
+msgstr "in"
+
+#: 
 msgid "in cart"
 msgstr "in mandjie"
 
@@ -16532,4 +16488,292 @@ msgstr "verlede"
 #: 
 msgid "Croatian"
 msgstr "Kroaties"
+
+#: 
+msgid "%s's Account"
+msgstr "%s se Rekening"
+
+#: 
+msgid "Access"
+msgstr "Toegang"
+
+#: 
+msgid "Access level"
+msgstr "Toegangsvlak"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administrateurs het volle toegang tot alle funksies en data. Individuele toestemmings is nie van toepassing nie."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Alle gebruikers kan gemeentelede besigtig. Hierdie toestemming kan nie verwyder word nie."
+
+#: 
+msgid "Always granted"
+msgstr "Altyd toegestaan"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Kan slegs hul eie gesin hersien en bevestig. Geen ander toegang nie."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Kies spesifieke toestemmings hieronder."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontak 'n administrateur om u toestemmings te wysig."
+
+#: 
+msgid "Custom permissions"
+msgstr "Aangepaste toestemmings"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Volle toegang — verleen alle voorregte."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Verleen individuele toestemmings:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "As u addisionele toegang benodig, kontak asseblief u kerkadministrateur."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Mense &amp; Gesinne"
+
+#: 
+msgid "Self-service"
+msgstr "Selfbediening"
+
+#: 
+msgid "Self-service only"
+msgstr "Slegs selfbediening"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Die nota wat u probeer wysig, bestaan nie meer nie."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Hierdie gebruiker kan slegs hul eie gesinsprofiel hersien en opdateer. Individuele toestemmings is nie van toepassing nie."
+
+#: 
+msgid "User List"
+msgstr "Gebruikerslys"
+
+#: 
+msgid "View Person"
+msgstr "Bekyk Persoon"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "U het nie toestemming om 'n nota vir hierdie gesin by te voeg nie."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "U het nie toestemming om 'n nota vir hierdie persoon by te voeg nie."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "U het nie toestemming om hierdie nota te wysig nie"
+
+#: 
+msgid "Account locked"
+msgstr "Rekening gesluit"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Rekening gesluit weens te veel mislukte aanmeldpogings"
+
+#: 
+msgid "Account status"
+msgstr "Rekeningstatuts"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Gevorderd: kies 'n spesifieke teikenweergawe"
+
+#: 
+msgid "Bug Fix"
+msgstr "Foutherstel"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "By verstek laai die towenaar die volgende aanbevole vrystelling af. U kan eerder enige beskikbare weergawe hieronder kies."
+
+#: 
+msgid "Change required"
+msgstr "Wysiging vereis"
+
+#: 
+msgid "Changelog"
+msgstr "Wysigingslys"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Gaan nietemin voort"
+
+#: 
+msgid "Could not load release information."
+msgstr "Kon nie vrystellinginligting laai nie."
+
+#: 
+msgid "Download & Install"
+msgstr "Aflaai en installeer"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Laai weergawe {{version}} af en pas dit op u installasie toe."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Vrystelling word van GitHub afgelaai..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Mislukte aanmeldpogings"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Kon nie opgraderingsvoorskou ophaal nie"
+
+#: 
+msgid "Feature"
+msgstr "Kenmerk"
+
+#: 
+msgid "Full changelog"
+msgstr "Volledige wysigingslys"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installeer stabiele {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Volgende vrystelling word geïnstalleer"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ongeldige lêerpad"
+
+#: 
+msgid "Invalid version format"
+msgstr "Ongeldige weergaweformaat"
+
+#: 
+msgid "Last login"
+msgstr "Laaste aanmelding"
+
+#: 
+msgid "Loading release information..."
+msgstr "Vrystellinginligting word gelaai..."
+
+#: 
+msgid "Locked"
+msgstr "Gesluit"
+
+#: 
+msgid "Major"
+msgstr "Hoof"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Vereiste velde ontbreek: fullPath en sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Moet wagwoord verander"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Geen vrystellingsnotas beskikbaar vir hierdie weergawe nie."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Geen opgraderings beskikbaar vir u huidige weergawe nie."
+
+#: 
+msgid "Password change required"
+msgstr "Wagwoordwysiging vereis"
+
+#: 
+msgid "Password status"
+msgstr "Wagwoordstatus"
+
+#: 
+msgid "Re-install current version"
+msgstr "Huidige weergawe herinstalleer"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Herstel het misluk en die databasis is moontlik in 'n onvolledige toestand. Kontroleer die toepassingslêer vir besonderhede en herstel dan 'n bekende goeie rugsteun voordat u die stelsel gebruik."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Herstel het misluk: die rugsteunlêer lyk onvolledig of is nie 'n geldige SQL-rugsteun nie. Die databasis is nou in 'n onvolledige toestand — herstel 'n bekende goeie rugsteun voordat u die stelsel gebruik."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Voorvrystelling word uitgevoer"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Wys volledige opgraderingspad"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Die nuutste stabiele vrystelling is {{version}}. U kan dit hieronder herinstalleer."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Hierdie rekening is gesluit weens te veel mislukte aanmeldpogings."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Hierdie gebruiker moet 'n nuwe wagwoord instel die volgende keer wat hulle aanmeld."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Gebruiker moet hul wagwoord by die volgende aanmelding verander"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Gebruiker moet E-pos toestemming hê"
+
+#: 
+msgid "View release notes"
+msgstr "Bekyk vrystellingsnotas"
+
+#: 
+msgid "What's New"
+msgstr "Wat is nuut"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Wat is nuut in {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "U is <strong>{{releaseCount}}</strong> vrystellings agter. Dit is wat u sal kry:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "U gebruik 'n voorvrystellingweergawe."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "U kan steeds voortgaan met die opgradering sonder om vrystellingsnotas te bekyk."
+
+#: 
+msgid "You're up to date!"
+msgstr "U is op datum!"
 

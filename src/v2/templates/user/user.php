@@ -22,7 +22,7 @@ $accountLabel = $isOwnProfile
 if (AuthenticationManager::getCurrentUser()->isAdmin()) {
     $sPageHeaderButtons = PageHeader::buttons([
         ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
-        ['label' => gettext('Edit'), 'url' => '/UserEditor.php?PersonID=' . $viewedPersonId, 'icon' => 'fa-pencil'],
+        ['label' => gettext('Edit'), 'url' => '/admin/system/users/' . $viewedPersonId . '/edit', 'icon' => 'fa-pencil'],
     ]);
 }
 // Use a distinct variable so Header.php's reassignment of $localeInfo
@@ -71,6 +71,31 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="tab-pane active show" id="tab-account">
             <h3 class="card-title"><?= InputUtils::escapeHTML($accountLabel) ?></h3>
             <p class="text-body-secondary"><?= gettext("Profile and security") ?></p>
+
+            <?php
+            $isLocked       = $user->isLocked();
+            $mustChange     = $user->getNeedPasswordChange();
+            $failedLogins   = $user->getFailedLogins();
+            $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
+            ?>
+            <?php if ($isLocked): ?>
+            <div class="alert alert-danger d-flex align-items-center mb-3" role="alert">
+              <i class="ti ti-lock me-2 flex-shrink-0 fs-3"></i>
+              <div>
+                <strong><?= gettext('Account locked') ?></strong>
+                <div class="small"><?= gettext('This account is locked because of too many failed login attempts.') ?></div>
+              </div>
+            </div>
+            <?php endif; ?>
+            <?php if ($mustChange): ?>
+            <div class="alert alert-warning d-flex align-items-center mb-3" role="alert">
+              <i class="ti ti-key me-2 flex-shrink-0 fs-3"></i>
+              <div>
+                <strong><?= gettext('Password change required') ?></strong>
+                <div class="small"><?= gettext('This user must set a new password the next time they sign in.') ?></div>
+              </div>
+            </div>
+            <?php endif; ?>
 
             <!-- Profile -->
             <div class="row mb-4">
@@ -125,6 +150,40 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-shield-off me-1"></i><?= gettext("Inactive") ?></span>
                 <?php endif; ?>
               </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-3 text-body-secondary"><?= gettext('Account status') ?></div>
+              <div class="col-sm-9">
+                <?php if ($isLocked): ?>
+                <span class="badge bg-danger-lt text-danger"><i class="ti ti-lock me-1"></i><?= gettext('Locked') ?></span>
+                <?php else: ?>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-lock-open me-1"></i><?= gettext('Active') ?></span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-3 text-body-secondary"><?= gettext('Password status') ?></div>
+              <div class="col-sm-9">
+                <?php if ($mustChange): ?>
+                <span class="badge bg-warning-lt text-warning"><i class="ti ti-key me-1"></i><?= gettext('Change required') ?></span>
+                <?php else: ?>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-check me-1"></i><?= gettext('OK') ?></span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-3 text-body-secondary"><?= gettext('Failed login attempts') ?></div>
+              <div class="col-sm-9">
+                <?php if ($failedLogins > 0): ?>
+                <span class="badge <?= $isLocked ? 'bg-danger-lt text-danger' : 'bg-warning-lt text-warning' ?>"><?= InputUtils::escapeHTML($failedLogins) ?><?php if ($maxFailedLogins > 0): ?>&nbsp;/&nbsp;<?= InputUtils::escapeHTML($maxFailedLogins) ?><?php endif; ?></span>
+                <?php else: ?>
+                <span class="text-body-secondary"><?= gettext('None') ?></span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-3 text-body-secondary"><?= gettext('Last login') ?></div>
+              <div class="col-sm-9"><?= InputUtils::escapeHTML($user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?: gettext('Never')) ?></div>
             </div>
             <?php if ($isOwnProfile): ?>
             <div class="row mb-3 mt-3">

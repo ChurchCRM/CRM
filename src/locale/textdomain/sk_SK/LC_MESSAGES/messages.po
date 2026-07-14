@@ -2006,18 +2006,6 @@ msgid "Login Name"
 msgstr "Prihlasovacie meno"
 
 #: 
-msgid "Add Records"
-msgstr "Pridávať záznamy"
-
-#: 
-msgid "Edit Records"
-msgstr "Upravovať záznamy"
-
-#: 
-msgid "Delete Records"
-msgstr "Odstraňovať záznamy"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Spravovať vlastnosti a klasifikácie"
 
@@ -2028,14 +2016,6 @@ msgstr "Spravovať skupiny a roly"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Spravovať dary a financie"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Zobraziť, pridať a upraviť poznámky"
-
-#: 
-msgid "Edit Self"
-msgstr "Upraviť vlastný profil"
 
 #: 
 msgid "Admin"
@@ -2937,10 +2917,6 @@ msgstr "Pridať darcov do zoznamu kupujúcich"
 #: 
 msgid "Data/Reports"
 msgstr "Údaje/Správy"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu dopytov"
 
 #: 
 msgid "Family Properties"
@@ -5555,10 +5531,6 @@ msgstr "Hebrejčina"
 #: 
 msgid "Permissions"
 msgstr "Oprávnenia"
-
-#: 
-msgid "Manage Notes"
-msgstr "Spravovať poznámky"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11028,10 +11000,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Iba autor poznámky alebo správca môže odstrániť túto poznámku"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Iba autor poznámky alebo správca môže upraviť túto poznámku"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Prehľad cirkevných podujatí, dochádzky a aktivity"
 
@@ -12638,10 +12606,6 @@ msgstr "Iba databáza (.sql) alebo plný archív (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Predvolený počet riadkov zobrazených v tabuľkách dát. Nadobúda účinnosť pri ďalšom načítaní stránky."
 
-#: 
-msgid "Edit own family only"
-msgstr "Upraviť iba vlastnú rodinu"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12654,10 +12618,6 @@ msgstr "Opravovanie nesprávnych alebo neobratných prekladov vo vašom jazyku"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Našli ste chybu v prekladoch?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Udeľuje všetky oprávnenia"
 
 #: 
 msgid "Green"
@@ -14621,10 +14581,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Nemáte oprávnenie na úpravu tejto poznámky."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Súkromná poznámka — viditeľná iba pre tvorcu]"
-
-#: 
 msgid "seconds"
 msgstr "sekúnd"
 
@@ -15023,10 +14979,6 @@ msgstr "Stiahnuť zálohu a pokračovať"
 #: 
 msgid "Downloaded"
 msgstr "Stiahnuté"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Sťahovanie najnovšieho vydania z GitHub..."
 
 #: 
 msgid "Duration"
@@ -16520,4 +16472,292 @@ msgstr "minulosť"
 #: 
 msgid "Croatian"
 msgstr "Chorvátsky"
+
+#: 
+msgid "%s's Account"
+msgstr "Účet používateľa %s"
+
+#: 
+msgid "Access"
+msgstr "Prístup"
+
+#: 
+msgid "Access level"
+msgstr "Úroveň prístupu"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Správcovia majú úplný prístup ku všetkým funkciám a údajom. Individuálne oprávnenia sa neuplatňujú."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Všetci používatelia môžu zobrazovať členov zboru. Toto oprávnenie nemožno odstrániť."
+
+#: 
+msgid "Always granted"
+msgstr "Vždy udelené"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Môže iba skontrolovať a overiť vlastnú rodinu. Žiadny iný prístup."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Vyberte konkrétne oprávnenia nižšie."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontaktujte správcu, ak chcete zmeniť svoje oprávnenia."
+
+#: 
+msgid "Custom permissions"
+msgstr "Vlastné oprávnenia"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Úplný prístup — udeľuje všetky privilégiá."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Udeliť individuálne oprávnenia:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ak potrebujete ďalší prístup, kontaktujte správcu vašej cirkvi."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Ľudia &amp; Rodiny"
+
+#: 
+msgid "Self-service"
+msgstr "Samoobsluha"
+
+#: 
+msgid "Self-service only"
+msgstr "Iba samoobsluha"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Poznámka, ktorú sa pokúšate upraviť, už neexistuje."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Tento používateľ môže iba skontrolovať a aktualizovať profil vlastnej rodiny. Individuálne oprávnenia sa neuplatňujú."
+
+#: 
+msgid "User List"
+msgstr "Zoznam používateľov"
+
+#: 
+msgid "View Person"
+msgstr "Zobraziť osobu"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nemáte oprávnenie pridať poznámku pre túto rodinu."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nemáte oprávnenie pridať poznámku pre túto osobu."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nemáte oprávnenie upravovať túto poznámku"
+
+#: 
+msgid "Account locked"
+msgstr "Účet zablokovaný"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Účet bol zablokovaný pre príliš veľa neúspešných pokusov o prihlásenie"
+
+#: 
+msgid "Account status"
+msgstr "Stav účtu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Rozšírené: vyberte konkrétnu cieľovú verziu"
+
+#: 
+msgid "Bug Fix"
+msgstr "Oprava chyby"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Sprievodca predvolene stiahne odporúčané vydanie. Namiesto toho si môžete vybrať ľubovoľnú dostupnú verziu nižšie."
+
+#: 
+msgid "Change required"
+msgstr "Vyžaduje sa zmena"
+
+#: 
+msgid "Changelog"
+msgstr "Zoznam zmien"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Pokračovať tak či tak"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nepodarilo sa načítať informácie o vydaní."
+
+#: 
+msgid "Download & Install"
+msgstr "Stiahnuť a nainštalovať"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Stiahnite verziu {{version}} a aplikujte ju na vašu inštaláciu."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Sťahujem vydanie z GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Neúspešné pokusy o prihlásenie"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nepodarilo sa načítať náhľad aktualizácie"
+
+#: 
+msgid "Feature"
+msgstr "Funkcia"
+
+#: 
+msgid "Full changelog"
+msgstr "Úplný zoznam zmien"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Nainštalovať stabilnú verziu {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Inštalujem ďalšie vydanie"
+
+#: 
+msgid "Invalid file path"
+msgstr "Neplatná cesta k súboru"
+
+#: 
+msgid "Invalid version format"
+msgstr "Neplatný formát verzie"
+
+#: 
+msgid "Last login"
+msgstr "Posledné prihlásenie"
+
+#: 
+msgid "Loading release information..."
+msgstr "Načítavam informácie o vydaní..."
+
+#: 
+msgid "Locked"
+msgstr "Zablokovaný"
+
+#: 
+msgid "Major"
+msgstr "Hlavná"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Chýbajú povinné polia: fullPath a sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Je nutné zmeniť heslo"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Pre túto verziu nie sú k dispozícii poznámky k vydaniu."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Pre vašu aktuálnu verziu nie sú dostupné žiadne aktualizácie."
+
+#: 
+msgid "Password change required"
+msgstr "Vyžaduje sa zmena hesla"
+
+#: 
+msgid "Password status"
+msgstr "Stav hesla"
+
+#: 
+msgid "Re-install current version"
+msgstr "Preinštalovať aktuálnu verziu"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Obnovenie zlyhalo a databáza môže byť v neúplnom stave. Skontrolujte protokol aplikácie pre podrobnosti, potom obnovte overenú zálohu pred použitím systému."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Obnovenie zlyhalo: záložný súbor sa zdá byť neúplný alebo nie je platnou zálohou SQL. Databáza je teraz v neúplnom stave — obnovte overenú zálohu pred použitím systému."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Spustená pred-vydaná verzia"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Zobraziť úplnú cestu aktualizácie"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Najnovšie stabilné vydanie je {{version}}. Môžete ho preinštalovať nižšie."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tento účet je zablokovaný z dôvodu príliš veľa neúspešných pokusov o prihlásenie."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tento používateľ musí nastaviť nové heslo pri ďalšom prihlásení."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Používateľ musí zmeniť heslo pri ďalšom prihlásení"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Používateľ musí mať oprávnenie na e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Zobraziť poznámky k vydaniu"
+
+#: 
+msgid "What's New"
+msgstr "Čo je nové"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Čo je nové vo verzii {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Zaostávate o <strong>{{releaseCount}}</strong> vydaní. Tu je to, čo získate:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Používate pred-vydanú verziu."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Stále môžete pokračovať v aktualizácii bez zobrazenia poznámok k vydaniu."
+
+#: 
+msgid "You're up to date!"
+msgstr "Ste aktuálni!"
 

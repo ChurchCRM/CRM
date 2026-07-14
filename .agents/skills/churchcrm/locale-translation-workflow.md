@@ -333,6 +333,35 @@ git push origin --delete locale/7.2.0-2026-04-27-143015
 
 ---
 
+## Detecting i18n Anti-Patterns Before Locale Extraction <!-- learned: 2026-07-11 -->
+
+Run these grep recipes on the source tree **before** `npm run locale:build` to catch split-sentence patterns early — they are much cheaper to fix at the source than after extraction has already committed broken msgids to the PO file.
+
+### JS template-literal split (`i18next.t()` fragments)
+```bash
+# Lines with 2+ i18next.t() calls = likely template-literal concatenation
+grep -rn 'i18next\.t(' webpack/ src/skin/js/ 2>/dev/null \
+  | awk -F: '{ line=$0; n=split(line,_,"i18next.t("); if (n>2) print }'
+```
+A hit means two translation fragments are concatenated in the same expression. Merge them into one `i18next.t("full sentence {{var}}", { var })` call.
+
+### PHP gettext() trailing-preposition split
+```bash
+# msgids that end in a preposition/article suggest a runtime suffix is appended
+grep -rn "gettext('" src/ | grep -iE "gettext\('[^']{1,40} (in|of|for|to|a|the|an)'\)"
+# Also check messages.po after extraction:
+grep '^msgid ' locale/messages.po | grep -iE '" ?(in|of|for|to|a|the|an)"$'
+```
+
+### Short unexplained msgids in messages.po
+```bash
+# One-to-three word msgids that are lower-case are frequently JS badge/label fragments
+grep '^msgid "[a-z][a-z ]\{1,30\}"$' locale/messages.po
+```
+Inspect each hit: if it reads like half a sentence (e.g. `"installing next"`, `"You are"`), trace it to the source and merge into a full parameterised string.
+
+---
+
 ## Troubleshooting
 
 **Q: How do I resume if interrupted during translation?**
@@ -393,3 +422,91 @@ All locale operations use scripts under `locale/scripts/`:
 ---
 
 Last consolidated: 2026-04-27
+
+
+## English-OK Allowlist — Terms Identical to English Base <!-- learned: 2026-04-08, updated: 2026-07-13 -->
+
+Some terms have `value = key` intentionally — they are the same in the target language as in English. This is correct and expected for:
+
+- **Technical acronyms:** `SHA1 Hash`, `AM / PM`, `am / pm`, `HTML URL`, `ICS URL`
+- **Universal brand/tech names:** `GitHub`, `ChurchCRM`, `POEditor`, `API`, `URL`, `SMS`, `CSV`
+- **Words identical in target language:** e.g. `"in"` in German/Italian/Dutch, `"Minutes"` in French, `"Important"` in Romanian, `"Manual"` in Portuguese (Brazil)
+
+The upload script (`poeditor-upload-missing.js`) treats terms where `value === key` as "suspect" (possibly untranslated) and will skip them. To mark them as intentionally identical to English, add them to `locale/terms/english-ok.json`:
+
+```json
+{
+  "es":    ["AM / PM", "am / pm", "SHA1 Hash"],
+  "es-MX": ["AM / PM", "am / pm", "SHA1 Hash"],
+  "fr":    ["AM / PM", "am / pm", "SHA1 Hash", "Minutes"],
+  "it":    ["AM / PM", "am / pm", "SHA1 Hash", "in"],
+  "de":    ["AM / PM", "am / pm", "SHA1 Hash", "in"],
+  "nl":    ["AM / PM", "am / pm", "SHA1 Hash", "in"],
+  "pt-br": ["AM / PM", "am / pm", "SHA1 Hash", "Manual"],
+  "hu":    ["SHA1 Hash", "HTML URL", "ICS URL"],
+  "ro":    ["AM / PM", "am / pm", "SHA1 Hash", "Important"],
+  "fil":   ["Australia", "Admin", "Dashboard", "Email/Username"]
+}
+```
+
+### MANDATORY: Always add to english-ok.json when translation equals English key
+
+**During every translation session, the orchestrator automatically handles this.** If you are a Claude Code agent translating manually:
+
+1. When you translate a term and the correct translation IS the same as the English key (e.g. `"SHA1 Hash": "SHA1 Hash"`), that is a VALID translation — not a mistake.
+2. Immediately add that term to `locale/terms/english-ok.json` for that locale.
+3. Always include `locale/terms/english-ok.json` in every `git add` and `git commit`.
+
+```bash
+# Add same-as-English terms to the allowlist for a locale
+python3 -c "
+import json
+ok = json.load(open('locale/terms/english-ok.json'))
+locale = 'LOCALE_CODE'  # replace with actual locale
+for term in ['SHA1 Hash', 'AM / PM', 'am / pm']:  # replace with actual terms
+    existing = set(ok.get(locale, []))
+    existing.add(term)
+    ok[locale] = sorted(existing)
+json.dump(ok, open('locale/terms/english-ok.json','w'), indent=2, ensure_ascii=False)
+open('locale/terms/english-ok.json','a').write('\n')
+print(f'Added terms to english-ok.json for {locale}')
+"
+```
+
+### Common terms that stay English across ALL locales
+
+These are always safe to add to `english-ok.json` when they appear as a term in any locale:
+
+| Term | Reason |
+|------|--------|
+| `SHA1 Hash` | Cryptographic algorithm name |
+| `AM / PM` | Universal time format notation |
+| `am / pm` | Universal time format notation (lowercase) |
+| `HTML URL` | Technical protocol acronyms |
+| `ICS URL` | Calendar format acronym |
+| `GitHub` | Brand name |
+| `ChurchCRM` | Product name |
+| `POEditor` | Tool name |
+| `API` | Universal tech acronym |
+
+### Terms that stay English in SOME locales only
+
+| Term | Stays English in | Translated in others |
+|------|-----------------|---------------------|
+| `Manual` | pt-br (loanword) | most other languages |
+| `Minutes` | fr (same word) | other languages |
+| `Important` | ro (same word) | other languages |
+| `in` | de, it, nl (same preposition) | other languages |
+| Country names | fil, id (e.g. `"Australia": "Australia"`) | varies by locale |
+
+### Checking what's in the allowlist
+
+```bash
+python3 -c "
+import json
+d = json.load(open('locale/terms/english-ok.json'))
+print(f'English-OK entries across {len(d)} locales:')
+for locale, terms in sorted(d.items()):
+    print(f'  {locale}: {len(terms)} terms — {terms[:3]}...' if len(terms) > 3 else f'  {locale}: {terms}')
+"
+```

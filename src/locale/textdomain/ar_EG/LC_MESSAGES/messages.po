@@ -2026,18 +2026,6 @@ msgid "Login Name"
 msgstr "اسم المستخدم"
 
 #: 
-msgid "Add Records"
-msgstr "اضافة سجل"
-
-#: 
-msgid "Edit Records"
-msgstr "تعديل السجل"
-
-#: 
-msgid "Delete Records"
-msgstr "مسح سجلات"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "إدارة خصائص وتصنيفات"
 
@@ -2048,14 +2036,6 @@ msgstr "إدارة المجموعات والأدوار"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "إدارة التبرعات والتمويل"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "عرض، إضافة وتحرير الملاحظات"
-
-#: 
-msgid "Edit Self"
-msgstr "تحرير الذات"
 
 #: 
 msgid "Admin"
@@ -2965,10 +2945,6 @@ msgstr "إضافة إلى قائمة الجهات المانحة المشتري"
 #: 
 msgid "Data/Reports"
 msgstr "بيانات / تقارير"
-
-#: 
-msgid "Query Menu"
-msgstr "القائمة الاستعلام"
 
 #: 
 msgid "Family Properties"
@@ -5589,10 +5565,6 @@ msgstr "اللغة العبرية"
 #: 
 msgid "Permissions"
 msgstr "أذونات"
-
-#: 
-msgid "Manage Notes"
-msgstr "إدارة الملاحظات"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11079,10 +11051,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "فقط مؤلف الملاحظة أو المسؤول يمكن حذف هذه الملاحظة"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "فقط مؤلف الملاحظة أو المسؤول يمكن تحرير هذه الملاحظة"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "نظرة عامة على أحداث الكنيسة والحضور والنشاط"
 
@@ -12689,10 +12657,6 @@ msgstr "قاعدة البيانات فقط (.sql) أو الأرشيف الكام
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "العدد الافتراضي للصفوف المعروضة في جداول البيانات. يسري عند تحميل الصفحة التالية."
 
-#: 
-msgid "Edit own family only"
-msgstr "تعديل العائلة الخاصة فقط"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12705,10 +12669,6 @@ msgstr "تصحيح الترجمات الخاطئة أو غير الملائمة 
 #: 
 msgid "Found a bug with translations?"
 msgstr "هل وجدت خطأً في الترجمات؟"
-
-#: 
-msgid "Grants all privileges"
-msgstr "منح جميع الصلاحيات"
 
 #: 
 msgid "Green"
@@ -14674,10 +14634,6 @@ msgid "You do not have permission to edit this note."
 msgstr "ليس لديك صلاحية تعديل هذه الملاحظة."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[ملاحظة خاصة — مرئية للمنشئ فقط]"
-
-#: 
 msgid "seconds"
 msgstr "ثوانٍ"
 
@@ -15076,10 +15032,6 @@ msgstr "تحميل النسخة الاحتياطية والمتابعة"
 #: 
 msgid "Downloaded"
 msgstr "تم التحميل"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "جاري تنزيل أحدث إصدار من GitHub..."
 
 #: 
 msgid "Duration"
@@ -16575,4 +16527,292 @@ msgstr "الماضي"
 #: 
 msgid "Croatian"
 msgstr "الكرواتية"
+
+#: 
+msgid "%s's Account"
+msgstr "حساب %s"
+
+#: 
+msgid "Access"
+msgstr "الوصول"
+
+#: 
+msgid "Access level"
+msgstr "مستوى الوصول"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "يتمتع المسؤولون بصلاحية وصول كاملة إلى جميع الميزات والبيانات. لا تُطبَّق الأذونات الفردية."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "يمكن لجميع المستخدمين عرض أعضاء الكنيسة. لا يمكن إلغاء هذا الإذن."
+
+#: 
+msgid "Always granted"
+msgstr "ممنوح دائمًا"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "يمكنه فقط مراجعة والتحقق من بيانات عائلته. لا يوجد وصول آخر."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "اختر الأذونات المحددة أدناه."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "تواصل مع المسؤول لتغيير صلاحياتك."
+
+#: 
+msgid "Custom permissions"
+msgstr "أذونات مخصصة"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "وصول كامل — يمنح جميع الصلاحيات."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "منح أذونات فردية:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "إذا كنت بحاجة إلى صلاحيات إضافية، يرجى التواصل مع مسؤول كنيستك."
+
+#: 
+msgid "People &amp; Families"
+msgstr "الأفراد والعائلات"
+
+#: 
+msgid "Self-service"
+msgstr "الخدمة الذاتية"
+
+#: 
+msgid "Self-service only"
+msgstr "الخدمة الذاتية فقط"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "الملاحظة التي تحاول تعديلها لم تعد موجودة."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "يمكن لهذا المستخدم فقط مراجعة وتحديث ملف عائلته. لا تُطبَّق الأذونات الفردية."
+
+#: 
+msgid "User List"
+msgstr "قائمة المستخدمين"
+
+#: 
+msgid "View Person"
+msgstr "عرض الشخص"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "ليس لديك صلاحية إضافة ملاحظة لهذه العائلة."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "ليس لديك صلاحية إضافة ملاحظة لهذا الشخص."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "ليس لديك صلاحية تعديل هذه الملاحظة"
+
+#: 
+msgid "Account locked"
+msgstr "الحساب مقفل"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "تم قفل الحساب بسبب محاولات تسجيل دخول فاشلة كثيرة"
+
+#: 
+msgid "Account status"
+msgstr "حالة الحساب"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "متقدم: اختر إصداراً مستهدفاً محدداً"
+
+#: 
+msgid "Bug Fix"
+msgstr "إصلاح خطأ"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "بشكل افتراضي، يقوم المعالج بتنزيل الإصدار التالي الموصى به. يمكنك بدلاً من ذلك اختيار أي إصدار متاح أدناه."
+
+#: 
+msgid "Change required"
+msgstr "التغيير مطلوب"
+
+#: 
+msgid "Changelog"
+msgstr "سجل التغييرات"
+
+#: 
+msgid "Continue Anyway"
+msgstr "المتابعة على أي حال"
+
+#: 
+msgid "Could not load release information."
+msgstr "تعذر تحميل معلومات الإصدار."
+
+#: 
+msgid "Download & Install"
+msgstr "تنزيل وتثبيت"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "تنزيل الإصدار {{version}} وتطبيقه على تثبيتك."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "جارٍ تنزيل الإصدار من GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "محاولات تسجيل الدخول الفاشلة"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "فشل في جلب معاينة الترقية"
+
+#: 
+msgid "Feature"
+msgstr "ميزة"
+
+#: 
+msgid "Full changelog"
+msgstr "سجل التغييرات الكامل"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "تثبيت الإصدار المستقر {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "جارٍ تثبيت الإصدار التالي"
+
+#: 
+msgid "Invalid file path"
+msgstr "مسار الملف غير صالح"
+
+#: 
+msgid "Invalid version format"
+msgstr "تنسيق الإصدار غير صالح"
+
+#: 
+msgid "Last login"
+msgstr "آخر تسجيل دخول"
+
+#: 
+msgid "Loading release information..."
+msgstr "جارٍ تحميل معلومات الإصدار..."
+
+#: 
+msgid "Locked"
+msgstr "مقفل"
+
+#: 
+msgid "Major"
+msgstr "رئيسي"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "الحقول المطلوبة مفقودة: fullPath و SHA1 Hash"
+
+#: 
+msgid "Must change password"
+msgstr "يجب تغيير كلمة المرور"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "لا توجد ملاحظات إصدار متاحة لهذا الإصدار."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "لا تتوفر ترقيات للإصدار الحالي."
+
+#: 
+msgid "Password change required"
+msgstr "تغيير كلمة المرور مطلوب"
+
+#: 
+msgid "Password status"
+msgstr "حالة كلمة المرور"
+
+#: 
+msgid "Re-install current version"
+msgstr "إعادة تثبيت الإصدار الحالي"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "فشلت عملية الاستعادة وقد تكون قاعدة البيانات في حالة غير مكتملة. تحقق من سجل التطبيق للحصول على التفاصيل، ثم استعد نسخة احتياطية معروفة بصحتها قبل استخدام النظام."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "فشلت الاستعادة: يبدو أن ملف النسخ الاحتياطي غير مكتمل أو أنه ليس نسخة احتياطية SQL صالحة. قاعدة البيانات الآن في حالة غير مكتملة — استعد نسخة احتياطية معروفة بصحتها قبل استخدام النظام."
+
+#: 
+msgid "Running Pre-release"
+msgstr "تشغيل إصدار ما قبل الإطلاق"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "إظهار مسار الترقية الكامل"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "أحدث إصدار مستقر هو {{version}}. يمكنك إعادة تثبيته أدناه."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "تم قفل هذا الحساب بسبب محاولات تسجيل الدخول الفاشلة المتعددة."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "يجب على هذا المستخدم تعيين كلمة مرور جديدة في المرة القادمة التي يسجل فيها الدخول."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "يجب على المستخدم تغيير كلمة مروره عند تسجيل الدخول التالي"
+
+#: 
+msgid "User must have Email permission"
+msgstr "يجب أن يمتلك المستخدم إذن البريد الإلكتروني"
+
+#: 
+msgid "View release notes"
+msgstr "عرض ملاحظات الإصدار"
+
+#: 
+msgid "What's New"
+msgstr "ما الجديد"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "ما الجديد في {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "أنت متأخر بـ <strong>{{releaseCount}}</strong> إصدار. إليك ما ستكسبه:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "أنت تشغّل إصداراً ما قبل الإطلاق."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "لا يزال بإمكانك المتابعة بالترقية دون عرض ملاحظات الإصدار."
+
+#: 
+msgid "You're up to date!"
+msgstr "أنت محدّث!"
 

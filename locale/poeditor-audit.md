@@ -10,56 +10,56 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `ar` | Arabic | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `fi` | Finnish | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `nb` | Norwegian Bokmål | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `sk` | Slovak | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 3929 | 100% | 🟢 Complete | ✅ Yes |
-| `af` | Afrikaans | 3928 | 99.97% | 🟢 Complete | ✅ Yes |
-| `am` | Amharic | 3928 | 99.97% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `ml` | Malayalam | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `tr` | Turkish | 3927 | 99.95% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 3926 | 99.92% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 3926 | 99.92% | 🟢 Complete | ✅ Yes |
-| `de` | German | 3926 | 99.92% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 3926 | 99.92% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 3926 | 99.92% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 3926 | 99.92% | 🟢 Complete | ✅ Yes |
-| `fil` | Filipino | 3925 | 99.9% | 🟢 Complete | ✅ Yes |
-| `hr` | Croatian | 3864 | 98.35% | 🟢 Complete | ✅ Yes |
-| `my` | Burmese | 66 | 1.68% | 🟠 Needs Work | ❌ No |
-| `sl` | Slovenian | 65 | 1.65% | 🟠 Needs Work | ❌ No |
-| `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.48% | 🟠 Needs Work | ❌ No |
-| `en-za` | English (ZA) | 52 | 1.32% | N/A | ✅ Yes |
-| `lv` | Latvian | 42 | 1.07% | 🟠 Needs Work | ❌ No |
-| `en-au` | English (AU) | 27 | 0.69% | N/A | ✅ Yes |
-| `en` | English | 14 | 0.36% | N/A | ✅ Yes |
+| `af` | Afrikaans | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `sq` | Albanian | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `hr` | Croatian | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `fi` | Finnish | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `de` | German | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `hi` | Hindi | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `id` | Indonesian | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `ml` | Malayalam | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian Bokmål | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `sk` | Slovak | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 3989 | 100% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 3987 | 99.95% | 🟢 Complete | ✅ Yes |
+| `fil` | Filipino | 3984 | 99.87% | 🟢 Complete | ✅ Yes |
+| `my` | Burmese | 66 | 1.65% | 🟠 Needs Work | ❌ No |
+| `sl` | Slovenian | 65 | 1.63% | 🟠 Needs Work | ❌ No |
+| `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.45% | 🟠 Needs Work | ❌ No |
+| `en-za` | English (ZA) | 52 | 1.3% | N/A | ✅ Yes |
+| `lv` | Latvian | 42 | 1.05% | 🟠 Needs Work | ❌ No |
+| `en-au` | English (AU) | 27 | 0.68% | N/A | ✅ Yes |
+| `en` | English | 14 | 0.35% | N/A | ✅ Yes |
 | `en-ca` | English (CA) | 11 | 0.28% | N/A | ✅ Yes |
 | `en-jm` | English (JM) | 3 | 0.08% | N/A | ✅ Yes |
 | `en-us` | English (US) | 0 | 0% | N/A | ✅ Yes |
@@ -78,10 +78,10 @@ These locales have translations but are not yet in locales.json:
 
 | Language | Code | Translations | Percentage | Status |
 |----------|------|--------------|------------|--------|
-| Burmese | `my` | 66 | 1.68% | 📝 Monitor |
-| Slovenian | `sl` | 65 | 1.65% | 📝 Monitor |
-| Serbian (Cyrillic) | `sr-cyrl` | 58 | 1.48% | 📝 Monitor |
-| Latvian | `lv` | 42 | 1.07% | 📝 Monitor |
+| Burmese | `my` | 66 | 1.65% | 📝 Monitor |
+| Slovenian | `sl` | 65 | 1.63% | 📝 Monitor |
+| Serbian (Cyrillic) | `sr-cyrl` | 58 | 1.45% | 📝 Monitor |
+| Latvian | `lv` | 42 | 1.05% | 📝 Monitor |
 
 **Note:** 
 - English variants (en-*) are marked as N/A since English is the default language

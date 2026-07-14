@@ -10,9 +10,11 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\LocaleService;
+use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -63,7 +65,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sSettingsCollapseId' => 'userSettingsPanel',
             'sPageHeaderButtons' => PageHeader::buttons([
                 ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#userSettingsPanel'],
-                ['label' => gettext('Add User'), 'url' => '/UserEditor.php', 'icon' => 'fa-user-plus'],
+                ['label' => gettext('Add User'), 'url' => '/admin/system/users/new', 'icon' => 'fa-user-plus'],
             ]),
         ];
         
@@ -404,6 +406,13 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         if (isset($_SESSION['systemLatestVersion']) && $_SESSION['systemLatestVersion'] !== null) {
             $latestGitHubVersion = $_SESSION['systemLatestVersion']->__toString();
         }
+
+        // Detect "running ahead of stable" — e.g. a prerelease or dev build installed
+        // that is newer than the latest stable release known from GitHub.
+        $isAheadOfStable = false;
+        if ($latestGitHubVersion !== null && !$isUpdateAvailable) {
+            $isAheadOfStable = version_compare($currentVersion, $latestGitHubVersion) > 0;
+        }
         
         $pageArgs = [
             'sRootPath'             => SystemURLs::getRootPath(),
@@ -425,6 +434,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'availableVersion'      => $availableVersion,
             'latestGitHubVersion'   => $latestGitHubVersion,
             'isUpdateAvailable'     => $isUpdateAvailable,
+            'isAheadOfStable'       => $isAheadOfStable,
         ];
 
         return $renderer->render($response, 'upgrade.php', $pageArgs);
@@ -823,6 +833,14 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sPhoneFormatCell'     => 'text',
     ]));
 
+    // User editor — create new user (GET shows form, POST processes it)
+    $group->get('/users/new', 'adminUserEditorNew');
+    $group->post('/users/new', 'adminUserEditorNew')->add(new CSRFMiddleware('user_editor'));
+
+    // User editor — edit existing user (GET shows form, POST processes it)
+    $group->get('/users/{personId:[0-9]+}/edit', 'adminUserEditorEdit');
+    $group->post('/users/{personId:[0-9]+}/edit', 'adminUserEditorEdit')->add(new CSRFMiddleware('user_editor'));
+
 });
 
 function adminChangeUserPassword(Request $request, Response $response, array $args): Response
@@ -869,4 +887,206 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     }
 
     return $renderer->render($response, 'adminchangepassword.php', $pageArgs);
+}
+
+/**
+ * User editor — add a new user account.
+ *
+ * GET  /admin/system/users/new            — shows form (person picker or pre-selected person)
+ *   ?personId=N                           — pre-selects person N and skips the picker
+ * POST /admin/system/users/new            — creates the user; re-renders on validation error
+ */
+function adminUserEditorNew(Request $request, Response $response): Response
+{
+    $renderer    = new PhpRenderer(__DIR__ . '/../views/');
+    $userService = new UserService();
+
+    // Common page args
+    $pageArgs = [
+        'sRootPath'          => SystemURLs::getRootPath(),
+        'sPageTitle'         => gettext('User Editor'),
+        'sPageSubtitle'      => gettext('Create a new user account'),
+        'aBreadcrumbs'       => PageHeader::breadcrumbs([
+            [gettext('Admin'), '/admin/'],
+            [gettext('Users'), '/admin/system/users'],
+            [gettext('New User')],
+        ]),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
+        ]),
+        'isNew'        => true,
+        'configRows'   => [],
+        'bEmailEnabled' => SystemConfig::isEmailEnabled(),
+    ];
+
+    if ($request->getMethod() === 'POST') {
+        $body       = (array) $request->getParsedBody();
+        $personId   = (int) ($body['PersonID'] ?? 0);
+        $userName   = InputUtils::sanitizeText((string) ($body['UserName'] ?? ''));
+        $perms      = $userService->normalizeAccessMode($body);
+
+        // Re-load person name for re-render on error
+        $person = $personId > 0 ? PersonQuery::create()->findPk($personId) : null;
+        $sUser  = $person ? ($person->getLastName() . ', ' . $person->getFirstName()) : '';
+
+        $pageArgs['editorPersonId']      = $personId;
+        $pageArgs['sUser']             = $sUser;
+        $pageArgs['sUserName']         = $userName;
+        $pageArgs['perms']             = $perms;
+        $pageArgs['showPersonSelect']  = false;
+        $pageArgs['people']            = [];
+        $pageArgs['formAction']        = SystemURLs::getRootPath() . '/admin/system/users/new';
+
+        if ($personId <= 0) {
+            $pageArgs['sErrorText']       = gettext('Please select a person to create a user account for.');
+            $pageArgs['showPersonSelect'] = true;
+            $pageArgs['people']           = $userService->getAssignablePeople();
+            $pageArgs['sUserName']        = '';
+            $pageArgs['perms']            = ['admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
+                                             'editRecords' => 0, 'deleteRecords' => 0,
+                                             'menuOptions' => 0, 'manageGroups' => 0,
+                                             'finance' => 0, 'manageFundraisers' => 0, 'notes' => 0];
+            return $renderer->render($response, 'user-editor.php', $pageArgs);
+        }
+
+        try {
+            $userService->createUser($personId, $perms, $userName);
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/system/users');
+        } catch (\Throwable $e) {
+            \ChurchCRM\Utils\LoggerUtils::getAppLogger()->error('createUser failed: ' . $e->getMessage(), [
+                'personId'  => $personId,
+                'userName'  => $userName,
+                'exception' => get_class($e),
+                'file'      => $e->getFile(),
+                'line'      => $e->getLine(),
+            ]);
+            $pageArgs['sErrorText'] = $e->getMessage();
+            return $renderer->render($response, 'user-editor.php', $pageArgs);
+        }
+    }
+
+    // GET — show the form
+    $personId = (int) ($request->getQueryParams()['personId'] ?? 0);
+
+    if ($personId > 0) {
+        // Pre-selected person (from People view "Make User")
+        $person = PersonQuery::create()->findPk($personId);
+        if ($person === null) {
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/system/users');
+        }
+        $sUser    = $person->getLastName() . ', ' . $person->getFirstName();
+        $email    = $person->getEmail();
+        $userName = !empty($email) ? $email : $person->getFirstName() . '.' . $person->getLastName();
+        $pageArgs['editorPersonId']        = $personId;
+        $pageArgs['sUser']            = $sUser;
+        $pageArgs['sUserName']        = $userName;
+        $pageArgs['showPersonSelect'] = false;
+        $pageArgs['people']           = [];
+    } else {
+        // No person pre-selected — show person picker
+        $pageArgs['editorPersonId']        = 0;
+        $pageArgs['sUser']            = '';
+        $pageArgs['sUserName']        = '';
+        $pageArgs['showPersonSelect'] = true;
+        $pageArgs['people']           = $userService->getAssignablePeople();
+    }
+
+    $pageArgs['perms'] = [
+        'admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
+        'editRecords' => 0, 'deleteRecords' => 0,
+        'menuOptions' => 0, 'manageGroups' => 0,
+        'finance' => 0, 'manageFundraisers' => 0, 'notes' => 0,
+    ];
+    $pageArgs['formAction'] = SystemURLs::getRootPath() . '/admin/system/users/new';
+    $pageArgs['sErrorText'] = '';
+
+    return $renderer->render($response, 'user-editor.php', $pageArgs);
+}
+
+/**
+ * User editor — edit an existing user account.
+ *
+ * GET  /admin/system/users/{personId}/edit  — shows the edit form
+ * POST /admin/system/users/{personId}/edit  — saves account + per-user config; re-renders on error
+ */
+function adminUserEditorEdit(Request $request, Response $response, array $args): Response
+{
+    $renderer    = new PhpRenderer(__DIR__ . '/../views/');
+    $userService = new UserService();
+    $personId    = (int) $args['personId'];
+
+    $user = UserQuery::create()->findPk($personId);
+    if ($user === null) {
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/system/users');
+    }
+
+    $person = $user->getPerson();
+    $sUser  = $person ? ($person->getLastName() . ', ' . $person->getFirstName()) : '';
+
+    // Common page args
+    $pageArgs = [
+        'sRootPath'          => SystemURLs::getRootPath(),
+        'sPageTitle'         => gettext('User Editor'),
+        'sPageSubtitle'      => gettext('Manage user account details and permissions'),
+        'aBreadcrumbs'       => PageHeader::breadcrumbs([
+            [gettext('Admin'), '/admin/'],
+            [gettext('Users'), '/admin/system/users'],
+            [gettext('Edit User')],
+        ]),
+        'sPageHeaderButtons' => PageHeader::buttons(array_filter([
+            ['label' => gettext('View User'), 'url' => '/v2/user/' . $personId, 'icon' => 'fa-eye'],
+            ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
+        ])),
+        'isNew'            => false,
+        'editorPersonId'   => $personId,
+        'sUser'            => $sUser,
+        'showPersonSelect' => false,
+        'people'           => [],
+        'bEmailEnabled'    => SystemConfig::isEmailEnabled(),
+        'formAction'       => SystemURLs::getRootPath() . '/admin/system/users/' . $personId . '/edit',
+        'sErrorText'       => '',
+    ];
+
+    if ($request->getMethod() === 'POST') {
+        $body     = (array) $request->getParsedBody();
+        $userName = InputUtils::sanitizeText((string) ($body['UserName'] ?? ''));
+        $perms    = $userService->normalizeAccessMode($body);
+
+        $pageArgs['sUserName'] = $userName;
+        $pageArgs['perms']     = $perms;
+        // configRows is initialised to [] here so the template always has the
+        // key; getUserConfigRows() is called inside the try so that a DB error
+        // during the load is also caught and surfaced via sErrorText.
+        $pageArgs['configRows'] = [];
+
+        try {
+            $pageArgs['configRows'] = $userService->getUserConfigRows($personId);
+            $newValue      = (array) ($body['new_value'] ?? []);
+            $newPermission = (array) ($body['new_permission'] ?? []);
+            $types         = (array) ($body['type'] ?? []);
+            $userService->updateUserWithConfig($personId, $perms, $userName, $newValue, $newPermission, $types);
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/system/users');
+        } catch (\Throwable $e) {
+            $pageArgs['sErrorText'] = $e->getMessage();
+            return $renderer->render($response, 'user-editor.php', $pageArgs);
+        }
+    }
+
+    // GET — load current values
+    $pageArgs['sUserName']  = $user->getUserName();
+    $pageArgs['perms']      = [
+        'admin'        => $user->getAdmin(),
+        'editSelf'     => $user->getEditSelf(),
+        'addRecords'   => $user->getAddRecords(),
+        'editRecords'  => $user->getEditRecords(),
+        'deleteRecords' => $user->getDeleteRecords(),
+        'menuOptions'  => $user->getMenuOptions(),
+        'manageGroups'       => $user->getManageGroups(),
+        'finance'            => $user->getFinance(),
+        'manageFundraisers'  => $user->getManageFundraisers(),
+        'notes'              => $user->getNotes(),
+    ];
+    $pageArgs['configRows'] = $userService->getUserConfigRows($personId);
+
+    return $renderer->render($response, 'user-editor.php', $pageArgs);
 }

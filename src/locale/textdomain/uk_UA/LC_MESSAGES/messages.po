@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Логін"
 
 #: 
-msgid "Add Records"
-msgstr "Додати записи"
-
-#: 
-msgid "Edit Records"
-msgstr "Редагувати записи"
-
-#: 
-msgid "Delete Records"
-msgstr "Видалити записи"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Управління властивостями та класифікаціями"
 
@@ -2050,14 +2038,6 @@ msgstr "Управління групами та ролями"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Управління пожертвами та фінансами"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Перегляд, додавання та редагування нотаток"
-
-#: 
-msgid "Edit Self"
-msgstr "Редагувати себе"
 
 #: 
 msgid "Admin"
@@ -2967,10 +2947,6 @@ msgstr "Додайте донорів до списку покупців"
 #: 
 msgid "Data/Reports"
 msgstr "Дані / Звіти"
-
-#: 
-msgid "Query Menu"
-msgstr "Меню запитів"
 
 #: 
 msgid "Family Properties"
@@ -5594,10 +5570,6 @@ msgstr "Іврит"
 #: 
 msgid "Permissions"
 msgstr "Дозволи"
-
-#: 
-msgid "Manage Notes"
-msgstr "Керування нотатками"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11068,10 +11040,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Тільки автор нотатки або адміністратор можуть видалити цю нотатку"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Тільки автор нотатки або адміністратор можуть редагувати цю нотатку"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Огляд церковних подій, присутності та діяльності"
 
@@ -12678,10 +12646,6 @@ msgstr "Лише база даних (.sql) або повний архів (.tar
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Кількість рядків за замовчуванням у таблицях даних. Набуває чинності при наступному завантаженні сторінки."
 
-#: 
-msgid "Edit own family only"
-msgstr "Редагувати лише власну родину"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12694,10 +12658,6 @@ msgstr "Виправлення неточних або незручних пер
 #: 
 msgid "Found a bug with translations?"
 msgstr "Знайшли помилку в перекладах?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Надає всі привілеї"
 
 #: 
 msgid "Green"
@@ -14661,10 +14621,6 @@ msgid "You do not have permission to edit this note."
 msgstr "У вас немає дозволу на редагування цієї нотатки."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Приватна нотатка — видима лише автору]"
-
-#: 
 msgid "seconds"
 msgstr "секунд"
 
@@ -15063,10 +15019,6 @@ msgstr "Завантажити резервну копію та продовжи
 #: 
 msgid "Downloaded"
 msgstr "Завантажено"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Завантаження останнього релізу з GitHub..."
 
 #: 
 msgid "Duration"
@@ -16560,4 +16512,292 @@ msgstr "минуле"
 #: 
 msgid "Croatian"
 msgstr "Хорватська"
+
+#: 
+msgid "%s's Account"
+msgstr "Обліковий запис %s"
+
+#: 
+msgid "Access"
+msgstr "Доступ"
+
+#: 
+msgid "Access level"
+msgstr "Рівень доступу"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Адміністратори мають повний доступ до всіх функцій і даних. Індивідуальні дозволи не застосовуються."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Усі користувачі можуть переглядати членів парафії. Цей дозвіл не можна скасувати."
+
+#: 
+msgid "Always granted"
+msgstr "Завжди надається"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Може лише переглядати та підтверджувати дані своєї родини. Інший доступ відсутній."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Виберіть конкретні дозволи нижче."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Зверніться до адміністратора для зміни ваших дозволів."
+
+#: 
+msgid "Custom permissions"
+msgstr "Індивідуальні дозволи"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Повний доступ — надає всі привілеї."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Надати індивідуальні дозволи:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Якщо вам потрібен додатковий доступ, будь ласка, зверніться до адміністратора вашої церкви."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Люди &amp; Родини"
+
+#: 
+msgid "Self-service"
+msgstr "Самообслуговування"
+
+#: 
+msgid "Self-service only"
+msgstr "Лише самообслуговування"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Нотатка, яку ви намагаєтесь редагувати, більше не існує."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Цей користувач може лише переглядати та оновлювати профіль своєї родини. Індивідуальні дозволи не застосовуються."
+
+#: 
+msgid "User List"
+msgstr "Список користувачів"
+
+#: 
+msgid "View Person"
+msgstr "Переглянути особу"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "У вас немає дозволу додавати нотатку для цієї родини."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "У вас немає дозволу додавати нотатку для цієї особи."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "У вас немає дозволу редагувати цю нотатку"
+
+#: 
+msgid "Account locked"
+msgstr "Обліковий запис заблоковано"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Обліковий запис заблоковано через забагато невдалих спроб входу"
+
+#: 
+msgid "Account status"
+msgstr "Статус облікового запису"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Додатково: вибрати конкретну цільову версію"
+
+#: 
+msgid "Bug Fix"
+msgstr "Виправлення помилок"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "За замовчуванням майстер завантажує наступний рекомендований випуск. Натомість ви можете вибрати будь-яку доступну версію нижче."
+
+#: 
+msgid "Change required"
+msgstr "Необхідна зміна"
+
+#: 
+msgid "Changelog"
+msgstr "Журнал змін"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Продовжити все одно"
+
+#: 
+msgid "Could not load release information."
+msgstr "Не вдалося завантажити інформацію про випуск."
+
+#: 
+msgid "Download & Install"
+msgstr "Завантажити та встановити"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Завантажити версію {{version}} та застосувати до вашої інсталяції."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Завантаження випуску з GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Невдалі спроби входу"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Не вдалося отримати попередній перегляд оновлення"
+
+#: 
+msgid "Feature"
+msgstr "Функція"
+
+#: 
+msgid "Full changelog"
+msgstr "Повний журнал змін"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Встановити стабільну версію {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Встановлення наступного випуску"
+
+#: 
+msgid "Invalid file path"
+msgstr "Недійсний шлях до файлу"
+
+#: 
+msgid "Invalid version format"
+msgstr "Недійсний формат версії"
+
+#: 
+msgid "Last login"
+msgstr "Останній вхід"
+
+#: 
+msgid "Loading release information..."
+msgstr "Завантаження інформації про випуск..."
+
+#: 
+msgid "Locked"
+msgstr "Заблоковано"
+
+#: 
+msgid "Major"
+msgstr "Основний"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Відсутні обов'язкові поля: fullPath та sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Необхідно змінити пароль"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Примітки до випуску для цієї версії відсутні."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Оновлення для вашої поточної версії недоступні."
+
+#: 
+msgid "Password change required"
+msgstr "Необхідна зміна пароля"
+
+#: 
+msgid "Password status"
+msgstr "Статус пароля"
+
+#: 
+msgid "Re-install current version"
+msgstr "Перевстановити поточну версію"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Відновлення не вдалося, і база даних може перебувати в неповному стані. Перевірте журнал додатку для отримання деталей, а потім відновіть відому справну резервну копію перед використанням системи."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Відновлення не вдалося: файл резервної копії здається неповним або не є дійсною резервною копією SQL. База даних зараз перебуває в неповному стані — відновіть відому справну резервну копію перед використанням системи."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Запущено попередню версію"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Показати повний шлях оновлення"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Останній стабільний випуск — {{version}}. Ви можете перевстановити його нижче."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Цей обліковий запис заблоковано через забагато невдалих спроб входу."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Цей користувач повинен встановити новий пароль наступного разу при вході."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Користувач повинен змінити пароль при наступному вході"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Користувач повинен мати дозвіл на електронну пошту"
+
+#: 
+msgid "View release notes"
+msgstr "Переглянути примітки до випуску"
+
+#: 
+msgid "What's New"
+msgstr "Що нового"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Що нового у версії {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Ви відстаєте на <strong>{{releaseCount}}</strong> випусків. Ось що ви отримаєте:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Ви використовуєте попередню версію."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Ви все одно можете продовжити оновлення без перегляду приміток до випуску."
+
+#: 
+msgid "You're up to date!"
+msgstr "Ви використовуєте актуальну версію!"
 

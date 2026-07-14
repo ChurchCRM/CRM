@@ -62,36 +62,79 @@ public function isNotesEnabled(): bool
 
 **Without Notes permission**: users cannot access any Note API routes — all Note routes are wrapped with `NotesRoleAuthMiddleware` which calls `isNotesEnabled()`. A user without Notes cannot see any notes at all, including public ones.
 
-## Zero-Permission User (All Flags = 0) <!-- learned: 2026-07-06 -->
+## The Entry Gate: `isEditSelfExclusive()` <!-- learned: 2026-07-11 -->
 
-A user where `usr_Admin=0`, `usr_EditSelf=0`, and all other permission columns are 0 passes `hasNoAdminPermissions()` returning `true`:
+> ⚠️ **`hasNoAdminPermissions()` was REMOVED in #9121** and replaced by
+> `isEditSelfExclusive()`. The semantics **inverted** — this is not a rename.
+> Any older guidance describing `hasNoAdminPermissions()` is stale.
 
 ```php
-public function hasNoAdminPermissions(): bool
+// src/ChurchCRM/model/ChurchCRM/User.php
+public function isEditSelfExclusive(): bool
 {
-    if ($this->isAdmin()) { return false; }     // admin → has permissions
-    if ($this->isEditSelf()) { return true; }  // pure EditSelf → no admin perms
-    return !$this->isAddRecords() && ...;       // all-zero → no admin perms
+    return !$this->isAdmin() && $this->isEditSelf();
 }
 ```
 
-`AuthMiddleware` redirects such users to `/external/limited-access`. They can log in but gain NO CRM access — all internal pages and API routes return 403 or redirect.
+Only **EditSelf-exclusive** users are bounced to `/external/limited-access`. Under the
+**read-default policy (#9003 / #9121)**, reading people and family records is a default
+capability of every authenticated user — including the zero-permission user, who used to
+be bounced and now is not.
 
-## Self-Service User Scope (EditSelf-Only) <!-- learned: 2026-07-06 -->
+| User | Entry gate | Effect |
+|------|-----------|--------|
+| Admin | passes | full access |
+| ≥1 module permission (Notes, Finance, ManageGroups, …) | passes | read all; write per permission |
+| **Zero-permission (all flags 0)** | **passes** | **read-only people/family; every write denied** |
+| **EditSelf-exclusive (EditSelf=1, rest 0)** | **blocked** | confined to `/external/limited-access` |
 
-A user with `usr_EditSelf=1` and all other permission columns `= 0` ("EditSelf-only") is gated by the entry-gate rule:
-- `hasNoAdminPermissions()` returns `true` for EditSelf-only users → redirected to `/external/limited-access` on every internal CRM page
+EditSelf is **exclusive, not additive**: an EditSelf+Notes user is *not* EditSelf-exclusive,
+so they pass the gate and are then scoped by the object-level checks below. Every
+`isXxxEnabled()` getter additionally short-circuits to `false` for EditSelf-exclusive users,
+so they cannot write even where the gate is not consulted.
+
+Enforced in **two places** — a check added to only one leaves a hole:
+
+1. `src/Include/PageInit.php` — legacy `*.php` pages
+2. `src/ChurchCRM/Slim/Middleware/AuthMiddleware.php` — MVC + API. Guarded by
+   `isAuthFlowExemptPath()` so login / password-change / logout stay reachable; without
+   that exemption an EditSelf-exclusive user redirects in a loop.
+
+Because `MvcAppFactory::create()` *always* adds `AuthMiddleware`, this covers every MVC
+app (`/v2`, `/people`, `/event`, `/groups`, …) even when no `roleMiddleware` is set.
+
+## Self-Service User Scope (EditSelf-Exclusive) <!-- learned: 2026-07-11 -->
+
 - Their only self-service surface is the token-scoped `/external/verify/{token}` flow
-- `canViewFamily()` is true only for their own family; `canEditPerson()` scoped to their own family members
-- **`usr_EditSelf` defaults to `0` on new user creation** (must be explicitly granted in the UI — `UserEditor.php`)
+  (family derived from the token's `referenceId` — no IDOR).
+- `canViewFamily()` is true only for their own family; `canEditPerson()` is scoped to their
+  own family members.
+- **`usr_EditSelf` defaults to `0` on new user creation** — it must be explicitly granted
+  in `UserService::normalizeAccessMode()` (the legacy `UserEditor.php` was removed in PR #9173). EditSelf is NOT a default right.
+- The "Verify Family Info" button renders only when `$verifyUrl` is non-empty.
+  `src/external/routes/system.php` now guards token creation with
+  `$familyId > 0 && $user->isEditSelfEnabled()`, so a user without EditSelf is never offered
+  the button. *(An earlier version of this skill flagged this missing guard as an open
+  gap — it is now closed.)*
 
-**EditSelf is NOT a default right**. The `$verifyUrl` on the limited-access page is only rendered when it is non-empty (`!empty($verifyUrl)` in `limited-access.php`). ⚠️ **Current master gap**: `src/external/routes/system.php` unconditionally sets `$verifyUrl` for any user who belongs to a family (no `isEditSelfEnabled()` check), so zero-permission users with a family are shown the Verify button. There is currently no effective code-level protection against this for users in a family. An `isEditSelfEnabled()` guard before token creation is the intended fix (pending PR #9081).
+## Family/Person Read Access <!-- learned: 2026-07-11 -->
 
-## Family/Person View Access <!-- learned: 2026-07-06 -->
+**Read is a default capability**, not a permission:
 
-- **Any user where `hasNoAdminPermissions()` returns `false`** (i.e. they have at least one module permission OR they are admin) can view ALL families and persons in the CRM.
-- **EditSelf-only users** are restricted to their own family via `canViewFamily(int $familyId)` — returns `true` only when `$familyId === $person->getFamId()`.
-- **Zero-permission users** (all flags 0) are redirected away from CRM pages before any family/person check runs.
+```php
+public function canReadFamily(int $familyId = 0): bool { return true; }
+public function canReadPerson(int $personId): bool     { return true; }
+```
+
+The ID parameters are **deliberate ABAC hooks**, reserved for future row-level security
+(pastoral-confidentiality holds, per-record privacy flags). **Pass the real ID at every call
+site** so adding those rules later needs no call-site changes — and do **not** "simplify"
+the parameters away because static analysis reports them unused.
+
+- **Any authenticated user** (including zero-permission) can read all families and persons.
+- **EditSelf-exclusive users** never reach these checks — the entry gate stops them first.
+- **Writes** are what the permission flags actually govern: `canEditPerson()`,
+  `canViewFamily()` (write-scope), and the `isXxxEnabled()` role getters.
 
 ### Object-level method (check permission for specific person)
 
@@ -119,7 +162,8 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
 
 Not all family API routes need the `canViewFamily()` scope restriction. Avatar, nav (prev/next IDs),
 and photo GET are considered non-sensitive metadata; they are accessible to any authenticated user
-who passes `hasNoAdminPermissions()` in `AuthMiddleware` (i.e. has at least Notes, EditRecords, etc.).
+who clears the `isEditSelfExclusive()` entry gate in `AuthMiddleware` — which, under the
+read-default policy, includes the zero-permission user.
 
 Use a **separate `FamilyReadMiddleware` class** (not a constructor parameter on `FamilyMiddleware`)
 for these endpoints. The entity is still loaded (404 on missing family), but authorisation uses
@@ -155,7 +199,7 @@ Endpoints that remain fully scoped (EditSelf restricted to own family):
 
 EditSelf scoping is enforced in **two layers** — know which one applies:
 
-1. **Coarse entry gate (`hasNoAdminPermissions()`)** — blocks users with *none* of {AddRecords, EditRecords, DeleteRecords, MenuOptions, ManageGroups, Finance, Notes}. **EditSelf is NOT counted**, so a **pure EditSelf-only user is bounced to `/external/limited-access` everywhere internal**. This runs in `AuthMiddleware` (all `/api`, `/kiosk`, `/plugins`), `PageInit.php` (legacy pages), and — because `MvcAppFactory::create()` *always* adds `AuthMiddleware` — every MVC app (`/v2`, `/people`, `/event`, …) even when no `roleMiddleware` is set. Their only self-service surface is the token-scoped `/external/verify/{token}` flow (family derived from the token's `referenceId` — no IDOR).
+1. **Coarse entry gate (`isEditSelfExclusive()`)** — blocks **only** the EditSelf-exclusive user (`EditSelf=1`, not admin), bouncing them to `/external/limited-access` everywhere internal. A zero-permission user (all flags 0) **passes** this gate and gets read-only access — see the entry-gate section above. Runs in `AuthMiddleware` (all `/api`, `/kiosk`, `/plugins`), `PageInit.php` (legacy pages), and — because `MvcAppFactory::create()` *always* adds `AuthMiddleware` — every MVC app (`/v2`, `/people`, `/event`, …) even when no `roleMiddleware` is set.
 
 2. **Object-level checks** — only matter for the **EditSelf + module combo** (e.g. EditSelf+Notes) that *passes* the entry gate. Here `canEditPerson()` / `canViewFamily()` keep them scoped to their own family.
 
@@ -199,6 +243,58 @@ $app->post('/types/{id}', $saveTypeHandler)
 **Why it matters**: menu items linking to read-only routes (`Calendar`, `Check-in`, `Events Dashboard`) are visible to all logged-in users. If the module middleware demands the elevated write permission, every click 403s — defeats the menu and looks like a regression.
 
 **Defense in depth**: it's still fine for `AddEventsRoleAuthMiddleware` to additionally enforce the system-wide feature flag (`bEnabledEvents`), so writes are blocked even if a route is missing the per-route middleware.
+
+## Menu Visibility Must Mirror Route Middleware <!-- learned: 2026-07-11 -->
+
+Every `MenuItem` visibility flag must be the **same permission the route's middleware enforces**. A menu entry linking to a page the user is bounced out of reads as a broken app; a menu entry with *no* guard behind it is an open door.
+
+Audit both directions whenever you touch `src/ChurchCRM/Config/Menu/Menu.php`:
+
+```php
+// ❌ WRONG — menu says "true", but every /groups route is behind
+// ManageGroupRoleAuthMiddleware → user clicks, gets /v2/access-denied.
+$groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
+
+// ✅ CORRECT — gate on the permission the middleware checks, and bail early
+// so the submenu's DB lookups don't run for users who can't see it.
+$groupMenu = new MenuItem(gettext('Groups'), '', $isManageGroups, 'fa-users');
+if (!$isManageGroups) {
+    return $groupMenu;
+}
+```
+
+**The inverse bug is worse.** `/v2/email` and `/v2/text` had *no* role middleware at all — the `bEmailMailto` permission existed on `User::isEmailEnabled()` but nothing enforced it, so any logged-in user could open the dashboards. Hiding the menu alone is **not** a fix; add the middleware too.
+
+```php
+// src/v2/routes/email.php — group-level middleware on a shared MVC app.
+// /v2 has no app-level roleMiddleware (dashboard/map/search must stay open),
+// so gate the individual route group instead.
+$app->group('/email', function (RouteCollectorProxy $group): void {
+    $group->get('/dashboard', 'getEmailDashboardMVC');
+})->add(EmailRoleAuthMiddleware::class);
+```
+
+**Sub-app inheritance is easy to miss:** Sunday School pages live under `/groups/sundayschool/*`, so they inherit `/groups`' `ManageGroupRoleAuthMiddleware` — its menu needs the ManageGroups check *in addition to* the `bEnabledSundaySchool` feature flag.
+
+**Single-child menus:** if a top-level menu wraps exactly one child, point the top-level entry at the child's URI instead of nesting. `MenuItem::isVisible()` returns true when `hasPermission && (uri || hasVisibleSubMenus())`, so a parent with an empty URI and zero visible children hides itself automatically — that is what makes the early-return pattern above work.
+
+## Legacy Pages: Undefined Globals Silently Disable Filters <!-- learned: 2026-07-11 -->
+
+Legacy `src/*.php` pages sometimes read a bare global that no longer exists (a leftover from the old `Config.php`). PHP 8 does not fatal on this — it emits a deprecation and yields a useless value, so a **security filter can silently become a no-op**.
+
+```php
+// ❌ REAL BUG (QueryList.php) — $aFinanceQueries was never defined anywhere.
+// explode(',', null) → [''] → in_array(28, ['']) is false → finance-only
+// queries (IDs 28, 30) were listed for EVERY user, including zero-permission.
+$aFinanceQueries = explode(',', $aFinanceQueries);
+if ($user->isFinanceEnabled() || !in_array($query->getQryId(), $aFinanceQueries)) { ... }
+
+// ✅ CORRECT — read from SystemConfig, cast to int, compare strictly
+$aFinanceQueries = array_map('intval', explode(',', SystemConfig::getValue('aFinanceQueries')));
+if ($isFinanceEnabled || !in_array((int) $query->getQryId(), $aFinanceQueries, true)) { ... }
+```
+
+**When a permission filter looks present but never fires, grep the variable name across the file first** — if it has no assignment from `SystemConfig` or a query, it is an undefined global and the filter is dead. Note the guard on the *detail* page (`QueryView.php`) worked, which masked the leak: only the *listing* exposed the rows.
 
 ## Authorization Redirect Pattern
 
@@ -454,7 +550,7 @@ Any PR that touches the files listed below **must be reviewed against the confir
 
 | File | Why |
 |------|-----|
-| `src/ChurchCRM/model/ChurchCRM/User.php` | Admin purity shortcut, `hasNoAdminPermissions()`, all `isXxxEnabled()` methods |
+| `src/ChurchCRM/model/ChurchCRM/User.php` | Admin purity shortcut, `isEditSelfExclusive()` entry gate, `canRead*()` read-default methods, all `isXxxEnabled()` methods |
 | `src/ChurchCRM/Slim/Middleware/AuthMiddleware.php` | Entry gate for all internal CRM and API routes |
 | `src/ChurchCRM/Slim/Middleware/Api/FamilyMiddleware.php` | `canViewFamily()` — GHSA-jjcj-h3cm-p7x7 scope fix |
 | `src/ChurchCRM/Slim/Middleware/Api/FamilyReadMiddleware.php` | `canReadFamily()` — low-sensitivity read baseline |
@@ -462,7 +558,7 @@ Any PR that touches the files listed below **must be reviewed against the confir
 | `src/Include/PageInit.php` | Legacy page permission gate |
 | `src/api/routes/people/notes.php` | Notes visibility and privacy rules |
 | `src/external/routes/system.php` | verifyFamily token — EditSelf gate |
-| `src/UserEditor.php` | New user permission defaults |
+| `src/admin/routes/system.php` (`adminUserEditorNew`) | New user permission defaults |
 | `cypress/data/seed.sql` | Test user permission flags must match intended model |
 
 ### Checklist — verify all rules still hold after the change
@@ -474,11 +570,13 @@ Any PR that touches the files listed below **must be reviewed against the confir
 - [ ] Admin can still PUT (edit) any note (PUT handler checks `isAuthor || isAdmin()`; admin always passes)
 
 **2. EditSelf exclusivity**
-- [ ] `hasNoAdminPermissions()` still returns `true` for any user with `isEditSelf()=true` (EditSelf is excluded from the 7-flag check deliberately)
+- [ ] `isEditSelfExclusive()` still returns `true` for a non-admin user with `isEditSelf()=true`, and **`false` for the zero-permission user** (all flags 0 → read-only access, NOT bounced)
+- [ ] The entry gate is `isEditSelfExclusive()` in **both** `PageInit.php` and `AuthMiddleware` — no reintroduction of the removed `hasNoAdminPermissions()`
+- [ ] Menu visibility for any newly-guarded route matches the permission its middleware enforces (see *Menu Visibility Must Mirror Route Middleware*)
 - [ ] EditSelf-only users are still redirected to `/external/limited-access` by `AuthMiddleware`
 - [ ] EditSelf-only users still cannot reach any internal CRM or API route
-- [ ] `usr_EditSelf` still defaults to `0` for new users in `UserEditor.php`
-- [ ] `isEditSelfEnabled()` guard before token creation in `system.php` is present (⚠️ NOT YET implemented in current master — pending PR #9081; audit this item only after that PR merges)
+- [ ] `usr_EditSelf` still defaults to `0` for new users in `UserService::createUser()` (via `adminUserEditorNew`)
+- [ ] `isEditSelfEnabled()` guard before token creation in `external/routes/system.php` is still present (landed via #9081 — do not regress it)
 
 **3. Notes permission (`isNotesEnabled()`)**
 - [ ] `NotesRoleAuthMiddleware` still gates all Note API routes (list, create, edit, delete)
@@ -487,7 +585,7 @@ Any PR that touches the files listed below **must be reviewed against the confir
 - [ ] A user can still view and edit their own private notes regardless of whether Notes is enabled (author exception)
 
 **4. Family / person view access**
-- [ ] Any user with ≥1 module permission (i.e., `hasNoAdminPermissions()=false`) can view ALL families and persons
+- [ ] Any authenticated user who clears the entry gate — **including the zero-permission user** — can read ALL families and persons (read-default policy)
 - [ ] `canViewFamily()` still restricts EditSelf-only users to their own family and family members
 - [ ] Low-sensitivity family endpoints (avatar, photo, nav) still use `FamilyReadMiddleware::class`
 - [ ] Sensitive / write family endpoints still use `FamilyMiddleware::class` (`canViewFamily()`)

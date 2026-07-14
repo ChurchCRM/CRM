@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Kullanıcı adı"
 
 #: 
-msgid "Add Records"
-msgstr "Kayıt ekle"
-
-#: 
-msgid "Edit Records"
-msgstr "Kayıtları Düzenle"
-
-#: 
-msgid "Delete Records"
-msgstr "Kayıtları Sil"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Özellikleri ve sınıflandırmaları yönetin"
 
@@ -2050,14 +2038,6 @@ msgstr "Grupları ve rolleri yönetin"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Bağışları ve finansmanı yönetin"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Notları görüntüleyin, ekle ve düzenleyin"
-
-#: 
-msgid "Edit Self"
-msgstr "Kendini düzenle"
 
 #: 
 msgid "Admin"
@@ -2967,10 +2947,6 @@ msgstr "Alıcı listesine bağışçılar ekleyin"
 #: 
 msgid "Data/Reports"
 msgstr "Veri/Raporlar"
-
-#: 
-msgid "Query Menu"
-msgstr "Sorgu Menüsü"
 
 #: 
 msgid "Family Properties"
@@ -5590,10 +5566,6 @@ msgstr "İbranice"
 #: 
 msgid "Permissions"
 msgstr "İzin"
-
-#: 
-msgid "Manage Notes"
-msgstr "Notları Yönetin"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11048,10 +11020,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Yalnızca not yazarı veya bir yönetici bu notu silebilir"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Yalnızca not yazarı veya bir yönetici bu notu düzenleyebilir"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Kilise etkinlikleri, yoklama ve faaliyetlere genel bakış"
 
@@ -12658,10 +12626,6 @@ msgstr "Yalnızca veritabanı (.sql) veya tam arşiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Veri tablolarında gösterilen varsayılan satır sayısı. Bir sonraki sayfa yüklemesinde geçerli olur."
 
-#: 
-msgid "Edit own family only"
-msgstr "Yalnızca kendi ailesini düzenle"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12674,10 +12638,6 @@ msgstr "Dilinizdeki yanlış veya garip çevirileri düzeltme"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Çevirilerde bir hata mı buldunuz?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Tüm ayrıcalıkları verir"
 
 #: 
 msgid "Green"
@@ -14639,10 +14599,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Bu notu düzenleme izniniz yok."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Özel Not — yalnızca oluşturan kişi tarafından görülebilir]"
-
-#: 
 msgid "seconds"
 msgstr "saniye"
 
@@ -15043,10 +14999,6 @@ msgid "Downloaded"
 msgstr "İndirildi"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "En son sürüm GitHub'dan indiriliyor..."
-
-#: 
 msgid "Duration"
 msgstr "Süre"
 
@@ -15332,6 +15284,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "Rol seçimi istemi için gerekli GroupId"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Kimlik doğrulayıcı uygulamanızı hazır bulundurun (Google Authenticator, Microsoft Authenticator, Authy vb.)"
 
@@ -15342,6 +15298,10 @@ msgstr "Gelişmiş seçenekleri gizle"
 #: 
 msgid "Home phone is required"
 msgstr "Ev telefonu gereklidir"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16528,4 +16488,292 @@ msgstr "geçmiş"
 #: 
 msgid "Croatian"
 msgstr "Hırvatça"
+
+#: 
+msgid "%s's Account"
+msgstr "%s Hesabı"
+
+#: 
+msgid "Access"
+msgstr "Erişim"
+
+#: 
+msgid "Access level"
+msgstr "Erişim düzeyi"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Yöneticiler tüm özelliklere ve verilere tam erişime sahiptir. Bireysel izinler geçerli değildir."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Tüm kullanıcılar cemaat üyelerini görüntüleyebilir. Bu izin kaldırılamaz."
+
+#: 
+msgid "Always granted"
+msgstr "Her zaman verilir"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Yalnızca kendi ailesini inceleyebilir ve doğrulayabilir. Başka erişim yoktur."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Aşağıdan belirli izinleri seçin."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "İzinlerinizi değiştirmek için bir yöneticiyle iletişime geçin."
+
+#: 
+msgid "Custom permissions"
+msgstr "Özel izinler"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Tam erişim — tüm ayrıcalıkları verir."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Bireysel izinler ver:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ek erişime ihtiyaç duyarsanız lütfen kilise yöneticinizle iletişime geçin."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Kişiler &amp; Aileler"
+
+#: 
+msgid "Self-service"
+msgstr "Self servis"
+
+#: 
+msgid "Self-service only"
+msgstr "Yalnızca self servis"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Düzenlemeye çalıştığınız not artık mevcut değil."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Bu kullanıcı yalnızca kendi aile profilini inceleyebilir ve güncelleyebilir. Bireysel izinler geçerli değildir."
+
+#: 
+msgid "User List"
+msgstr "Kullanıcı Listesi"
+
+#: 
+msgid "View Person"
+msgstr "Kişiyi Görüntüle"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Bu aile için not ekleme izniniz yok."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Bu kişi için not ekleme izniniz yok."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Bu notu düzenleme izniniz yok"
+
+#: 
+msgid "Account locked"
+msgstr "Hesap kilitlendi"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Çok fazla başarısız giriş denemesi nedeniyle hesap kilitlendi"
+
+#: 
+msgid "Account status"
+msgstr "Hesap durumu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Gelişmiş: belirli bir hedef sürüm seçin"
+
+#: 
+msgid "Bug Fix"
+msgstr "Hata Düzeltmesi"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Sihirbaz varsayılan olarak önerilen sonraki sürümü indirir. Bunun yerine aşağıdan mevcut herhangi bir sürümü seçebilirsiniz."
+
+#: 
+msgid "Change required"
+msgstr "Değişiklik gerekli"
+
+#: 
+msgid "Changelog"
+msgstr "Değişiklik günlüğü"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Yine de devam et"
+
+#: 
+msgid "Could not load release information."
+msgstr "Sürüm bilgileri yüklenemedi."
+
+#: 
+msgid "Download & Install"
+msgstr "İndir ve Yükle"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "{{version}} sürümünü indirin ve kurulumunuza uygulayın."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHub'dan sürüm indiriliyor..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Başarısız giriş denemeleri"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Yükseltme önizlemesi alınamadı"
+
+#: 
+msgid "Feature"
+msgstr "Özellik"
+
+#: 
+msgid "Full changelog"
+msgstr "Tam değişiklik günlüğü"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Kararlı {{version}} sürümünü yükle"
+
+#: 
+msgid "Installing next release"
+msgstr "Sonraki sürüm yükleniyor"
+
+#: 
+msgid "Invalid file path"
+msgstr "Geçersiz dosya yolu"
+
+#: 
+msgid "Invalid version format"
+msgstr "Geçersiz sürüm formatı"
+
+#: 
+msgid "Last login"
+msgstr "Son giriş"
+
+#: 
+msgid "Loading release information..."
+msgstr "Sürüm bilgileri yükleniyor..."
+
+#: 
+msgid "Locked"
+msgstr "Kilitli"
+
+#: 
+msgid "Major"
+msgstr "Ana"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Zorunlu alanlar eksik: fullPath ve sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Şifre değiştirilmeli"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Bu sürüm için sürüm notu bulunmamaktadır."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Mevcut sürümünüz için yükseltme bulunmamaktadır."
+
+#: 
+msgid "Password change required"
+msgstr "Şifre değişikliği gerekli"
+
+#: 
+msgid "Password status"
+msgstr "Şifre durumu"
+
+#: 
+msgid "Re-install current version"
+msgstr "Mevcut sürümü yeniden yükle"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Geri yükleme başarısız oldu ve veritabanı eksik bir durumda olabilir. Ayrıntılar için uygulama günlüğünü kontrol edin, ardından sistemi kullanmadan önce bilinen iyi bir yedeği geri yükleyin."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Geri yükleme başarısız oldu: yedek dosyası eksik görünüyor veya geçerli bir SQL yedeği değil. Veritabanı şu anda eksik bir durumda — sistemi kullanmadan önce bilinen iyi bir yedeği geri yükleyin."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Ön sürüm çalışıyor"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Tam yükseltme yolunu göster"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "En son kararlı sürüm {{version}}. Aşağıdan yeniden yükleyebilirsiniz."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Bu hesap çok fazla başarısız giriş denemesi nedeniyle kilitlendi."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Bu kullanıcı bir sonraki girişinde yeni bir şifre belirlemelidir."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Kullanıcı bir sonraki girişte şifresini değiştirmelidir"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Kullanıcının E-posta iznine sahip olması gerekir"
+
+#: 
+msgid "View release notes"
+msgstr "Sürüm notlarını görüntüle"
+
+#: 
+msgid "What's New"
+msgstr "Yenilikler"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} Sürümündeki Yenilikler"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong> sürüm geride kaldınız. İşte kazanacaklarınız:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Bir ön sürüm çalıştırıyorsunuz."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Sürüm notlarını görüntülemeden yükseltmeye devam edebilirsiniz."
+
+#: 
+msgid "You're up to date!"
+msgstr "Güncelsiniz!"
 

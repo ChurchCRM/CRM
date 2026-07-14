@@ -266,7 +266,7 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ### Every POST/delete page must validate a CSRF token <!-- learned: 2026-04-21 -->
 
-Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The rule is **validate before any DB write**; legacy pages may reject an invalid token using either of two patterns — pick the one that matches the page's existing error-surfacing style. Applied in `UserEditor.php`, `PledgeDelete.php` (GHSA-3xq9-c86x-cwpp). `DonatedItemDelete.php` and `PaddleNumDelete.php` used this pattern too but were removed in the fundraiser MVC migration (PR #9124); their Slim equivalents (`/fundraiser/{id}/donated-items/{itemId}/delete` and `/fundraiser/{id}/paddle-numbers/{paddleId}/delete`) use `CSRFUtils::verifyRequest()` in the POST handler directly:
+Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The rule is **validate before any DB write**; legacy pages may reject an invalid token using either of two patterns — pick the one that matches the page's existing error-surfacing style. Applied in `PledgeDelete.php` (GHSA-3xq9-c86x-cwpp). `DonatedItemDelete.php` and `PaddleNumDelete.php` used this pattern too but were removed in the fundraiser MVC migration (PR #9124); their Slim equivalents (`/fundraiser/{id}/donated-items/{itemId}/delete` and `/fundraiser/{id}/paddle-numbers/{paddleId}/delete`) use `CSRFUtils::verifyRequest()` in the POST handler directly. For MVC routes, use `CSRFMiddleware` added to POST routes and `CSRFUtils::getTokenInputField()` in the view — the middleware **throws `HttpForbiddenException` on token failure** (the caller receives a 403 response); if you want inline re-rendering on failure, catch `HttpForbiddenException` in the route handler yourself:
 
 ```php
 use ChurchCRM\Utils\CSRFUtils;
@@ -279,14 +279,13 @@ if (!CSRFUtils::verifyRequest($_POST, 'pledge_delete')) {
     exit(gettext('Invalid security token. Please try again.'));
 }
 
-// Pattern B — redirect back with an ErrorText query param. Preferred for
-// editor pages that already render an inline error banner (UserEditor.php).
-if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
-    RedirectUtils::redirect(
-        'UserEditor.php?PersonID=' . $iPersonID
-        . '&ErrorText=' . urlencode(gettext('Invalid security token. Please try again.'))
-    );
-}
+// Pattern B (MVC routes) — CSRFMiddleware throws HttpForbiddenException on failure;
+// preferred for modern Slim 4 routes. The caller receives a 403 unless the route
+// catches HttpForbiddenException and re-renders the form with an error message.
+// Token included via CSRFUtils::getTokenInputField().
+// Example: /admin/system/users/{personId}/edit in src/admin/routes/system.php.
+$group->post('/users/{personId:[0-9]+}/edit', 'adminUserEditorEdit')
+    ->add(new CSRFMiddleware('user_editor'));
 
 // In the form HTML (same for both patterns):
 <form method="post" action="...">
@@ -360,35 +359,65 @@ $linkBack = RedirectUtils::validateRedirectUrl(
 
 ## Authorization & Access Control
 
-### Block Users With No Admin Permissions <!-- learned: 2026-04-12 -->
+### The Entry Gate: `isEditSelfExclusive()` (read-default policy) <!-- learned: 2026-07-11 -->
 
-Users with `EditSelf=1` and **all other permissions at 0** can log in but have no functional admin access. They must NOT see the full admin UI — instead they should be redirected to a limited-access page.
+> ⚠️ **`hasNoAdminPermissions()` was REMOVED in #9121.** If you find it referenced
+> anywhere, that guidance is stale. Do not reintroduce it.
 
-Use `User::hasNoAdminPermissions()` to detect this state. The check fires in two places:
-
-1. **`PageInit.php`** — for legacy `*.php` pages
-2. **`AuthMiddleware`** — for MVC routes (`/people/`, `/admin/`, `/v2/`) and API endpoints
+The entry gate bounces a user out of the whole CRM and into `/external/limited-access`.
+Only **EditSelf-exclusive** users hit it:
 
 ```php
-// In PageInit.php — runs for legacy pages
-if (AuthenticationManager::getCurrentUser()->hasNoAdminPermissions()) {
-    RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
-}
-
-// In AuthMiddleware (session branch) — runs for MVC pages
-if ($sessionUser->hasNoAdminPermissions()) {
-    if ($this->isBrowserRequest($request)) {
-        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
-    }
-    return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+// src/ChurchCRM/model/ChurchCRM/User.php
+public function isEditSelfExclusive(): bool
+{
+    return !$this->isAdmin() && $this->isEditSelf();
 }
 ```
 
-The `/external/limited-access` page is in the external module (no auth required) and shows:
-- A "Verify Family Info" button (generates time-limited token bound to user's family)
-- A "Log Out" button
+**The semantics inverted, not just the name.** Under the old `hasNoAdminPermissions()`,
+a **zero-permission user (all flags 0) was also bounced**. Under the **read-default
+policy (#9003 / #9121) they are not** — reading people and family records is now a
+default capability of any authenticated user. Writes are still denied, by the per-page
+and per-route permission checks rather than by the gate.
 
-**Reference**: GHSA-5w59-32c8-933v / PR #8616 / Issue #237
+| User | Entry gate | Effect |
+|------|-----------|--------|
+| Admin | passes | full access |
+| Any module permission (Notes, Finance, …) | passes | read all; write per permission |
+| **Zero-permission (all flags 0)** | **passes** | **read-only people/family; no writes** |
+| **EditSelf-exclusive (EditSelf=1, rest 0)** | **blocked** | confined to `/external/limited-access` |
+
+Note EditSelf is **exclusive**, not additive: an EditSelf+Notes user is *not*
+EditSelf-exclusive, so they pass the gate and are then scoped by object-level checks.
+Every `isXxxEnabled()` getter also short-circuits to `false` for EditSelf-exclusive users.
+
+The gate fires in two places — a check added to only one leaves a hole:
+
+```php
+// src/Include/PageInit.php — legacy *.php pages
+if ($currentUser->isEditSelfExclusive()) {
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
+}
+
+// src/ChurchCRM/Slim/Middleware/AuthMiddleware.php — MVC + API
+if ($sessionUser->isEditSelfExclusive() && !$this->isAuthFlowExemptPath($request)) {
+    // browser → 302 /external/limited-access; API → 403 JSON
+}
+```
+
+`isAuthFlowExemptPath()` keeps login/password-change/logout reachable — without it an
+EditSelf-exclusive user redirects in a loop.
+
+**Read is a default capability.** `canReadPerson(int $personId)` and
+`canReadFamily(int $familyId = 0)` both `return true` for any authenticated user. The ID
+parameters are **deliberate ABAC hooks** — pass the real ID at every call site so that
+adding row-level rules later (pastoral-confidentiality holds, privacy flags) needs no
+call-site changes. Do not "simplify" them away because they look unused.
+
+**Reference**: GHSA-5w59-32c8-933v / PR #8616 / Issue #237 (original gate);
+#9003 / #9121 (read-default policy). Covered by
+`cypress/e2e/ui/security/no-permission-user.spec.js` and `limited-access.spec.js`.
 
 ### MVC vs Legacy Auth Enforcement Points <!-- learned: 2026-04-12 -->
 
@@ -990,4 +1019,110 @@ external/templates/registration/family-register.php.
 
 ---
 
-Last updated: April 5, 2026
+### InputSanitizationMiddleware Is the Standard for API Write Routes <!-- learned: 2026-07-11 -->
+
+For Slim API/MVC write routes (`post`/`put`/`patch`), sanitize free-text body
+fields with **`InputSanitizationMiddleware`** attached to the route — do **not**
+call `InputUtils::sanitizeText()` / `sanitizeHTML()` inline in the handler. The
+middleware sanitizes the parsed body **before** the handler runs, so every code
+path in the handler (storage, logging, echo-back) sees the clean value and no
+field can be forgotten.
+
+```php
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
+
+// Field map: 'text' → InputUtils::sanitizeText() (strip tags);
+//            'html' → InputUtils::sanitizeHTML() (HTMLPurifier, safe rich text).
+$group->post('', 'createFund')
+    ->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
+
+$group->put('', 'updateNote')
+    ->add(new InputSanitizationMiddleware(['text' => 'html']));
+
+// Handler reads the already-sanitized field directly — cast for type safety,
+// keep validation (empty/length/uniqueness) which now runs on the clean value:
+function createFund(Request $request, Response $response): Response
+{
+    $input = (array) $request->getParsedBody();
+    $name  = (string) ($input['name'] ?? '');   // already sanitized by middleware
+    if ($name === '') { /* 400 */ }
+    // ...
+}
+```
+
+**Middleware order (LIFO rule):** In Slim 4, `->add()` is Last-In-First-Out —
+the **last** `->add()` call is outermost and runs **first**. Therefore:
+
+- Add `InputSanitizationMiddleware` **first** (`->add()` call #1) so it is
+  innermost and runs **just before the handler** (sanitize-then-handle).
+- Add auth/entity middleware **after** it so they are outer layers and run
+  **before** sanitization.
+
+Concrete pattern (follows `groups-properties.php`):
+
+```php
+$group->post('/{id}/resource/{resId}', 'myHandler')
+    ->add(new InputSanitizationMiddleware(['name' => 'text'])) // 1st = innermost = runs last
+    ->add($entityMiddleware)                                   // 2nd = runs before sanitize
+    ->add(SomeAuthMiddleware::class);                          // 3rd = outermost = runs first
+// Execution order: SomeAuthMiddleware → $entityMiddleware → InputSanitizationMiddleware → handler
+```
+
+❌ **Wrong** — adding `InputSanitizationMiddleware` last makes it outermost
+(runs before auth), defeating the purpose of sanitizing input that only
+arrives after entity resolution:
+
+```php
+// WRONG — sanitize runs before auth/entity (inverted LIFO order)
+$group->post('/…', 'handler')
+    ->add($entityMiddleware)
+    ->add(SomeAuthMiddleware::class)
+    ->add(new InputSanitizationMiddleware(['name' => 'text'])); // last = outermost = wrong
+```
+
+**Routes using this pattern** (`src/ChurchCRM/Slim/Middleware/InputSanitizationMiddleware.php`):
+calendar events/`calendar.php`, group create + roles (`people-groups.php`),
+finance deposits/donation-funds/fundraisers, property-types,
+volunteer-opportunities, list options (`admin/api/options.php`), person/family
+notes (`html`), and person/group property values. When adding a **new** write
+route that stores free text, add the middleware — never a bare `getParsedBody()`
+value into a setter.
+
+> Note: legacy `src/*.php` pages still sanitize inline with `InputUtils` because
+> they are not Slim routes — the middleware only applies to the Slim apps.
+
+### Input Sanitization Is Not Output Escaping — Escape Names Client-Side Too <!-- learned: 2026-07-11 -->
+
+`InputSanitizationMiddleware` / `sanitizeText()` strips tags **on the primary
+write paths**, but it is **not** a complete XSS defense on its own. Values can
+still contain markup when they arrive by a path that bypasses the middleware —
+data migrated from older versions, SQL/backup restore, CSV import, or a future
+route that forgets the middleware. **Output escaping is the authoritative
+control**, and it must be applied on the **client side** too, not only in PHP.
+
+The server-side ListOption/`OptionName` escaping was fixed in GHSA-j9gv-26c7-3qrh,
+but the **JavaScript** renderings of the same values were missed (draft
+GHSA-mfmp-q643-vj39): `src/skin/js/GroupView.js` and `GroupRoles.js` injected
+group-role names into the DOM as raw HTML via `.html()` / `.append()`.
+
+```js
+// ❌ WRONG — role name injected as raw HTML (executes if it contains markup)
+html += '<a class="nav-link" href="#">' + i18next.t(role.OptionName) + '</a>';
+$pills.html(html);
+
+// ✅ CORRECT — escape every DB/API-sourced string before it becomes HTML
+html += '<a class="nav-link" href="#">' +
+        window.CRM.escapeHtml(i18next.t(role.OptionName)) + '</a>';
+$pills.html(html);
+```
+
+**Rule:** any DB/API-sourced string (names, titles, `OptionName`, `getName()`,
+custom-field labels) inserted into the DOM via `.html()`, `.append()`,
+`innerHTML`, or a template literal MUST be wrapped in `window.CRM.escapeHtml()`
+— even when the write path sanitizes input. When reviewing JS, grep for
+`.OptionName`, `.Name`, `.title` near `.html(`/`.append(`/`innerHTML` and confirm
+`escapeHtml` wraps each one. `$("<div>").text(x).html()` is an equivalent escape.
+
+---
+
+Last updated: July 11, 2026

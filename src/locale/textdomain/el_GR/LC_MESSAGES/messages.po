@@ -2028,18 +2028,6 @@ msgid "Login Name"
 msgstr "Ονομα σύνδεσης"
 
 #: 
-msgid "Add Records"
-msgstr "Προσθήκη εγγραφών"
-
-#: 
-msgid "Edit Records"
-msgstr "Επεξεργασία Εγγραφών"
-
-#: 
-msgid "Delete Records"
-msgstr "Διαγραφή Εγγραφών"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Διαχείριση ιδιοτήτων και ταξινομήσεων"
 
@@ -2050,14 +2038,6 @@ msgstr "Διαχείριση ομάδων και ρόλων"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Διαχείριση δωρεών και χρηματοδότησης"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Προβολή, προσθήκη και επεξεργασία σημειώσεων"
-
-#: 
-msgid "Edit Self"
-msgstr "Επεξεργασία εαυτού"
 
 #: 
 msgid "Admin"
@@ -2967,10 +2947,6 @@ msgstr "Προσθήκη χορηγών στη λίστα αγοραστών"
 #: 
 msgid "Data/Reports"
 msgstr "Δεδομένα/Αναφορές"
-
-#: 
-msgid "Query Menu"
-msgstr "Μενού ερωτήματος"
 
 #: 
 msgid "Family Properties"
@@ -5590,10 +5566,6 @@ msgstr "Εβραϊκά"
 #: 
 msgid "Permissions"
 msgstr "Άδειες"
-
-#: 
-msgid "Manage Notes"
-msgstr "Διαχείριση σημειώσεων"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11048,10 +11020,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Μόνο ο συντάκτης της σημείωσης ή ένας διαχειριστής μπορεί να τη διαγράψει"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Μόνο ο συντάκτης της σημείωσης ή ένας διαχειριστής μπορεί να την επεξεργαστεί"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Επισκόπηση εκδηλώσεων ενορίας, παρουσιών και δραστηριοτήτων"
 
@@ -12658,10 +12626,6 @@ msgstr "Μόνο βάση δεδομένων (.sql) ή πλήρες αρχείο
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Προεπιλεγμένος αριθμός γραμμών στους πίνακες δεδομένων. Εφαρμόζεται κατά την επόμενη φόρτωση σελίδας."
 
-#: 
-msgid "Edit own family only"
-msgstr "Επεξεργασία μόνο της δικής σας οικογένειας"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12674,10 +12638,6 @@ msgstr "Διόρθωση λανθασμένων ή αδέξιων μεταφρά
 #: 
 msgid "Found a bug with translations?"
 msgstr "Βρήκατε σφάλμα στις μεταφράσεις;"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Παρέχει όλα τα προνόμια"
 
 #: 
 msgid "Green"
@@ -14639,10 +14599,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Δεν έχετε άδεια να επεξεργαστείτε αυτή τη σημείωση."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Ιδιωτική σημείωση — ορατή μόνο στον δημιουργό]"
-
-#: 
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
@@ -15041,10 +14997,6 @@ msgstr "Λήψη αντιγράφου ασφαλείας & συνέχεια"
 #: 
 msgid "Downloaded"
 msgstr "Λήφθηκε"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Λήψη τελευταίας έκδοσης από GitHub..."
 
 #: 
 msgid "Duration"
@@ -16536,4 +16488,292 @@ msgstr "παρελθόν"
 #: 
 msgid "Croatian"
 msgstr "Κροατικά"
+
+#: 
+msgid "%s's Account"
+msgstr "Λογαριασμός του %s"
+
+#: 
+msgid "Access"
+msgstr "Πρόσβαση"
+
+#: 
+msgid "Access level"
+msgstr "Επίπεδο πρόσβασης"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Οι διαχειριστές έχουν πλήρη πρόσβαση σε όλες τις λειτουργίες και τα δεδομένα. Οι επιμέρους άδειες δεν ισχύουν."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Όλοι οι χρήστες μπορούν να βλέπουν τα μέλη της ενορίας. Αυτή η άδεια δεν μπορεί να αφαιρεθεί."
+
+#: 
+msgid "Always granted"
+msgstr "Πάντα χορηγείται"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Μπορεί να ελέγχει και να επαληθεύει μόνο τη δική του οικογένεια. Καμία άλλη πρόσβαση."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Επιλέξτε συγκεκριμένες άδειες παρακάτω."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Επικοινωνήστε με έναν διαχειριστή για να αλλάξετε τις άδειές σας."
+
+#: 
+msgid "Custom permissions"
+msgstr "Προσαρμοσμένες άδειες"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Πλήρης πρόσβαση — παρέχει όλα τα δικαιώματα."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Χορήγηση επιμέρους αδειών:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Εάν χρειάζεστε πρόσθετη πρόσβαση, επικοινωνήστε με τον διαχειριστή της ενορίας σας."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Ενορίτες &amp; Οικογένειες"
+
+#: 
+msgid "Self-service"
+msgstr "Αυτοεξυπηρέτηση"
+
+#: 
+msgid "Self-service only"
+msgstr "Μόνο αυτοεξυπηρέτηση"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Η σημείωση που προσπαθείτε να επεξεργαστείτε δεν υπάρχει πλέον."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Αυτός ο χρήστης μπορεί να ελέγχει και να ενημερώνει μόνο το προφίλ της δικής του οικογένειας. Οι επιμέρους άδειες δεν ισχύουν."
+
+#: 
+msgid "User List"
+msgstr "Λίστα Χρηστών"
+
+#: 
+msgid "View Person"
+msgstr "Προβολή Μέλους"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτήν την οικογένεια."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτό το μέλος."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Δεν έχετε άδεια να επεξεργαστείτε αυτήν τη σημείωση"
+
+#: 
+msgid "Account locked"
+msgstr "Ο λογαριασμός είναι κλειδωμένος"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Ο λογαριασμός κλειδώθηκε λόγω πολλών αποτυχημένων προσπαθειών σύνδεσης"
+
+#: 
+msgid "Account status"
+msgstr "Κατάσταση λογαριασμού"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Για προχωρημένους: επιλέξτε συγκεκριμένη έκδοση στόχου"
+
+#: 
+msgid "Bug Fix"
+msgstr "Διόρθωση σφάλματος"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Από προεπιλογή, ο οδηγός λήψης κατεβάζει την επόμενη προτεινόμενη έκδοση. Μπορείτε να επιλέξετε οποιαδήποτε διαθέσιμη έκδοση παρακάτω."
+
+#: 
+msgid "Change required"
+msgstr "Απαιτείται αλλαγή"
+
+#: 
+msgid "Changelog"
+msgstr "Αρχείο αλλαγών"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Συνέχεια ούτως ή άλλως"
+
+#: 
+msgid "Could not load release information."
+msgstr "Δεν ήταν δυνατή η φόρτωση πληροφοριών έκδοσης."
+
+#: 
+msgid "Download & Install"
+msgstr "Λήψη και εγκατάσταση"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Λήψη έκδοσης {{version}} και εφαρμογή της στην εγκατάστασή σας."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Λήψη έκδοσης από το GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Αποτυχημένες προσπάθειες σύνδεσης"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Αποτυχία ανάκτησης προεπισκόπησης αναβάθμισης"
+
+#: 
+msgid "Feature"
+msgstr "Λειτουργία"
+
+#: 
+msgid "Full changelog"
+msgstr "Πλήρες αρχείο αλλαγών"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Εγκατάσταση σταθερής έκδοσης {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Εγκατάσταση επόμενης έκδοσης"
+
+#: 
+msgid "Invalid file path"
+msgstr "Μη έγκυρη διαδρομή αρχείου"
+
+#: 
+msgid "Invalid version format"
+msgstr "Μη έγκυρη μορφή έκδοσης"
+
+#: 
+msgid "Last login"
+msgstr "Τελευταία σύνδεση"
+
+#: 
+msgid "Loading release information..."
+msgstr "Φόρτωση πληροφοριών έκδοσης..."
+
+#: 
+msgid "Locked"
+msgstr "Κλειδωμένος"
+
+#: 
+msgid "Major"
+msgstr "Κύριος"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Λείπουν υποχρεωτικά πεδία: fullPath και SHA1 Hash"
+
+#: 
+msgid "Must change password"
+msgstr "Υποχρεωτική αλλαγή κωδικού"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Δεν υπάρχουν διαθέσιμες σημειώσεις έκδοσης για αυτήν την έκδοση."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Δεν υπάρχουν διαθέσιμες αναβαθμίσεις για την τρέχουσα έκδοσή σας."
+
+#: 
+msgid "Password change required"
+msgstr "Απαιτείται αλλαγή κωδικού πρόσβασης"
+
+#: 
+msgid "Password status"
+msgstr "Κατάσταση κωδικού πρόσβασης"
+
+#: 
+msgid "Re-install current version"
+msgstr "Επανεγκατάσταση τρέχουσας έκδοσης"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Η επαναφορά απέτυχε και η βάση δεδομένων μπορεί να βρίσκεται σε ελλιπή κατάσταση. Ελέγξτε το αρχείο καταγραφής εφαρμογής για λεπτομέρειες, στη συνέχεια επαναφέρετε ένα γνωστά έγκυρο αντίγραφο ασφαλείας πριν χρησιμοποιήσετε το σύστημα."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Αποτυχία επαναφοράς: το αρχείο αντιγράφου ασφαλείας φαίνεται να είναι ελλιπές ή δεν είναι έγκυρο αντίγραφο SQL. Η βάση δεδομένων βρίσκεται τώρα σε ελλιπή κατάσταση — επαναφέρετε ένα γνωστά έγκυρο αντίγραφο ασφαλείας πριν χρησιμοποιήσετε το σύστημα."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Εκτέλεση προέκδοσης"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Εμφάνιση πλήρους διαδρομής αναβάθμισης"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Η τελευταία σταθερή έκδοση είναι η {{version}}. Μπορείτε να την επανεγκαταστήσετε παρακάτω."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Αυτός ο λογαριασμός είναι κλειδωμένος λόγω πολλών αποτυχημένων προσπαθειών σύνδεσης."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Ο χρήστης πρέπει να ορίσει νέο κωδικό πρόσβασης την επόμενη φορά που θα συνδεθεί."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Ο χρήστης πρέπει να αλλάξει τον κωδικό πρόσβασής του κατά την επόμενη σύνδεση"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Ο χρήστης πρέπει να έχει άδεια Email"
+
+#: 
+msgid "View release notes"
+msgstr "Προβολή σημειώσεων έκδοσης"
+
+#: 
+msgid "What's New"
+msgstr "Τι νέο υπάρχει"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Τι νέο υπάρχει στην {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Είστε <strong>{{releaseCount}}</strong> εκδόσεις πίσω. Δείτε τι θα κερδίσετε:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Εκτελείτε μια προέκδοση."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Μπορείτε ακόμα να προχωρήσετε με την αναβάθμιση χωρίς να δείτε τις σημειώσεις έκδοσης."
+
+#: 
+msgid "You're up to date!"
+msgstr "Είστε ενημερωμένοι!"
 

@@ -8,8 +8,8 @@ use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PropertyMiddleware;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -22,6 +22,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->get('/properties', 'getAllGroupPropertyDefinitions');
     $group->get('/{groupID}/properties', 'getGroupAssignedProperties')->add($groupMiddleware);
     $group->post('/{groupID}/properties/{propertyId}', 'assignPropertyToGroup')
+        ->add(new InputSanitizationMiddleware(['value' => 'text']))
         ->add($groupMiddleware)
         ->add($groupPropertyMiddleware)
         ->add(ManageGroupRoleAuthMiddleware::class);
@@ -128,8 +129,8 @@ function assignPropertyToGroup(Request $request, Response $response, array $args
     $value = '';
     if (!empty($property->getProPrompt())) {
         $data  = $request->getParsedBody();
-        $raw   = empty($data['value']) ? 'N/A' : $data['value'];
-        $value = InputUtils::sanitizeText($raw);
+        // Value is sanitized upstream by InputSanitizationMiddleware(['value' => 'text']).
+        $value = empty($data['value']) ? 'N/A' : (string) $data['value'];
     }
 
     if ($existing !== null) {

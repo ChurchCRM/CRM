@@ -2006,18 +2006,6 @@ msgid "Login Name"
 msgstr "ログイン名"
 
 #: 
-msgid "Add Records"
-msgstr "レコードを追加"
-
-#: 
-msgid "Edit Records"
-msgstr "レコードを編集"
-
-#: 
-msgid "Delete Records"
-msgstr "レコードを削除"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "プロパティと分類を管理"
 
@@ -2028,14 +2016,6 @@ msgstr "グループと役割を管理"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "寄付と財務を管理"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "ノートの表示、追加、編集"
-
-#: 
-msgid "Edit Self"
-msgstr "自分の情報を編集"
 
 #: 
 msgid "Admin"
@@ -2937,10 +2917,6 @@ msgstr "寄付者を購入者リストに追加"
 #: 
 msgid "Data/Reports"
 msgstr "データ/レポート"
-
-#: 
-msgid "Query Menu"
-msgstr "クエリメニュー"
 
 #: 
 msgid "Family Properties"
@@ -5547,10 +5523,6 @@ msgstr "ヘブライ語"
 #: 
 msgid "Permissions"
 msgstr "権限"
-
-#: 
-msgid "Manage Notes"
-msgstr "メモの管理"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -10997,10 +10969,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "メモの作成者または管理者のみがこのメモを削除できます"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "メモの作成者または管理者のみがこのメモを編集できます"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "教会のイベント、出席、活動の概要"
 
@@ -12607,10 +12575,6 @@ msgstr "データベースのみ（.sql）またはフルアーカイブ（.tar.
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "データテーブルに表示されるデフォルトの行数。次回のページ読み込み時に有効になります。"
 
-#: 
-msgid "Edit own family only"
-msgstr "自分の家族のみ編集"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12623,10 +12587,6 @@ msgstr "お使いの言語の不正確または不自然な翻訳の修正"
 #: 
 msgid "Found a bug with translations?"
 msgstr "翻訳にバグを見つけましたか？"
-
-#: 
-msgid "Grants all privileges"
-msgstr "すべての権限を付与"
 
 #: 
 msgid "Green"
@@ -14587,10 +14547,6 @@ msgid "You do not have permission to edit this note."
 msgstr "このメモを編集する権限がありません。"
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[プライベートメモ — 作成者のみ閲覧可能]"
-
-#: 
 msgid "seconds"
 msgstr "秒"
 
@@ -14991,10 +14947,6 @@ msgid "Downloaded"
 msgstr "ダウンロード済み"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "GitHubから最新リリースをダウンロード中..."
-
-#: 
 msgid "Duration"
 msgstr "期間"
 
@@ -15280,6 +15232,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "役割選択プロンプトにはGroupIDが必要です"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "認証アプリを準備してください（Google Authenticator、Microsoft Authenticator、Authy など）"
 
@@ -15290,6 +15246,10 @@ msgstr "詳細オプションを非表示"
 #: 
 msgid "Home phone is required"
 msgstr "自宅電話は必須です"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16475,4 +16435,292 @@ msgstr "過去"
 #: 
 msgid "Croatian"
 msgstr "クロアチア語"
+
+#: 
+msgid "%s's Account"
+msgstr "%sのアカウント"
+
+#: 
+msgid "Access"
+msgstr "アクセス"
+
+#: 
+msgid "Access level"
+msgstr "アクセスレベル"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "管理者はすべての機能とデータにフルアクセスできます。個別の権限は適用されません。"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "すべてのユーザーが会衆のメンバーを閲覧できます。この権限は削除できません。"
+
+#: 
+msgid "Always granted"
+msgstr "常に付与"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "自分の家族の確認と検証のみ可能です。その他のアクセスはありません。"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "以下から特定の権限を選択してください。"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "権限を変更するには管理者にお問い合わせください。"
+
+#: 
+msgid "Custom permissions"
+msgstr "カスタム権限"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "フルアクセス — すべての権限を付与します。"
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "個別権限を付与する："
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "追加のアクセスが必要な場合は、教会の管理者にお問い合わせください。"
+
+#: 
+msgid "People &amp; Families"
+msgstr "人々 &amp; 家族"
+
+#: 
+msgid "Self-service"
+msgstr "セルフサービス"
+
+#: 
+msgid "Self-service only"
+msgstr "セルフサービスのみ"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "編集しようとしているメモはすでに存在しません。"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "このユーザーは自分の家族プロフィールの確認と更新のみ可能です。個別の権限は適用されません。"
+
+#: 
+msgid "User List"
+msgstr "ユーザー一覧"
+
+#: 
+msgid "View Person"
+msgstr "人物を表示"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "この家族へのメモを追加する権限がありません。"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "この人物へのメモを追加する権限がありません。"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "このメモを編集する権限がありません"
+
+#: 
+msgid "Account locked"
+msgstr "アカウントがロックされています"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "ログイン失敗が多すぎるためアカウントがロックされています"
+
+#: 
+msgid "Account status"
+msgstr "アカウントの状態"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "詳細設定：特定のターゲットバージョンを選択"
+
+#: 
+msgid "Bug Fix"
+msgstr "バグ修正"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "デフォルトでは、ウィザードは次の推奨リリースをダウンロードします。以下から任意の利用可能なバージョンを選択することもできます。"
+
+#: 
+msgid "Change required"
+msgstr "変更が必要です"
+
+#: 
+msgid "Changelog"
+msgstr "変更履歴"
+
+#: 
+msgid "Continue Anyway"
+msgstr "このまま続行"
+
+#: 
+msgid "Could not load release information."
+msgstr "リリース情報を読み込めませんでした。"
+
+#: 
+msgid "Download & Install"
+msgstr "ダウンロードしてインストール"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "バージョン {{version}} をダウンロードして、インストールに適用します。"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHubからリリースをダウンロード中..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "ログイン失敗回数"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "アップグレードプレビューの取得に失敗しました"
+
+#: 
+msgid "Feature"
+msgstr "機能"
+
+#: 
+msgid "Full changelog"
+msgstr "完全な変更履歴"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "安定版 {{version}} をインストール"
+
+#: 
+msgid "Installing next release"
+msgstr "次のリリースをインストール中"
+
+#: 
+msgid "Invalid file path"
+msgstr "無効なファイルパス"
+
+#: 
+msgid "Invalid version format"
+msgstr "無効なバージョン形式"
+
+#: 
+msgid "Last login"
+msgstr "最終ログイン"
+
+#: 
+msgid "Loading release information..."
+msgstr "リリース情報を読み込み中..."
+
+#: 
+msgid "Locked"
+msgstr "ロック済み"
+
+#: 
+msgid "Major"
+msgstr "メジャー"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "必須フィールドがありません：fullPath と sha1"
+
+#: 
+msgid "Must change password"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "このバージョンのリリースノートはありません。"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "現在のバージョンに利用可能なアップグレードはありません。"
+
+#: 
+msgid "Password change required"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "Password status"
+msgstr "パスワードの状態"
+
+#: 
+msgid "Re-install current version"
+msgstr "現在のバージョンを再インストール"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "復元に失敗し、データベースが不完全な状態になっている可能性があります。詳細はアプリケーションログを確認し、システムを使用する前に正常なバックアップを復元してください。"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "復元に失敗しました：バックアップファイルが不完全であるか、有効なSQLバックアップではないようです。データベースは現在不完全な状態です — システムを使用する前に正常なバックアップを復元してください。"
+
+#: 
+msgid "Running Pre-release"
+msgstr "プレリリース版を実行中"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "完全なアップグレードパスを表示"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "最新の安定版リリースは {{version}} です。以下から再インストールできます。"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "ログイン失敗が多すぎるため、このアカウントはロックされています。"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "このユーザーは次回サインイン時に新しいパスワードを設定する必要があります。"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "ユーザーは次回ログイン時にパスワードを変更する必要があります"
+
+#: 
+msgid "User must have Email permission"
+msgstr "ユーザーはEmailの権限を持っている必要があります"
+
+#: 
+msgid "View release notes"
+msgstr "リリースノートを表示"
+
+#: 
+msgid "What's New"
+msgstr "新機能"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} の新機能"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong> 個のリリースが未適用です。アップグレードで得られるもの："
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "プレリリース版を実行しています。"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "リリースノートを確認せずにアップグレードを続行することもできます。"
+
+#: 
+msgid "You're up to date!"
+msgstr "最新の状態です！"
 

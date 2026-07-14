@@ -2035,18 +2035,6 @@ msgid "Login Name"
 msgstr "Nome di Login"
 
 #: 
-msgid "Add Records"
-msgstr "Aggiungi Record"
-
-#: 
-msgid "Edit Records"
-msgstr "Modifica Record"
-
-#: 
-msgid "Delete Records"
-msgstr "Elimina Record"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Gestisci proprietà e classificazioni"
 
@@ -2057,14 +2045,6 @@ msgstr "Gestisci gruppi e ruoli"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Gestisci donazioni e finanza"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Visualizza, aggiungi e modifica note"
-
-#: 
-msgid "Edit Self"
-msgstr "Modifica Te Stesso"
 
 #: 
 msgid "Admin"
@@ -2978,10 +2958,6 @@ msgstr "Aggiungi donatori alla lista degli acquirenti"
 #: 
 msgid "Data/Reports"
 msgstr "Dati / Report"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu di query"
 
 #: 
 msgid "Family Properties"
@@ -5610,10 +5586,6 @@ msgstr "Ebraico"
 #: 
 msgid "Permissions"
 msgstr "Permessi"
-
-#: 
-msgid "Manage Notes"
-msgstr "Gestisci note"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11068,10 +11040,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Solo l'autore della nota o un amministratore può eliminare questa nota"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Solo l'autore della nota o un amministratore può modificare questa nota"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Panoramica degli eventi parrocchiali, presenze e attività"
 
@@ -12678,10 +12646,6 @@ msgstr "Solo database (.sql) o archivio completo (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Numero predefinito di righe visualizzate nelle tabelle dati. Ha effetto al prossimo caricamento della pagina."
 
-#: 
-msgid "Edit own family only"
-msgstr "Modifica solo la propria famiglia"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12694,10 +12658,6 @@ msgstr "Correzione di traduzioni errate o inadeguate nella propria lingua"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Trovato un bug nelle traduzioni?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Concede tutti i privilegi"
 
 #: 
 msgid "Green"
@@ -14659,10 +14619,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Non si dispone dell'autorizzazione per modificare questa nota."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Nota privata — visibile solo al creatore]"
-
-#: 
 msgid "seconds"
 msgstr "secondi"
 
@@ -15061,10 +15017,6 @@ msgstr "Scarica Backup e Continua"
 #: 
 msgid "Downloaded"
 msgstr "Scaricato"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Download della versione più recente da GitHub..."
 
 #: 
 msgid "Duration"
@@ -16202,6 +16154,10 @@ msgid "from this group?"
 msgstr "da questo gruppo?"
 
 #: 
+msgid "in"
+msgstr "in"
+
+#: 
 msgid "in cart"
 msgstr "nel carrello"
 
@@ -16307,6 +16263,10 @@ msgstr[1] "%d eventi passati"
 #: 
 msgid "%d% of interface text is translated for this language."
 msgstr "%d% del testo dell'interfaccia è tradotto per questa lingua."
+
+#: 
+msgid "AM / PM"
+msgstr "AM / PM"
 
 #: 
 msgid "Access denied"
@@ -16537,6 +16497,10 @@ msgid "Year, 4 digits"
 msgstr "Anno, 4 cifre"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "passato"
 
@@ -16544,4 +16508,292 @@ msgstr "passato"
 #: 
 msgid "Croatian"
 msgstr "Croato"
+
+#: 
+msgid "%s's Account"
+msgstr "Account di %s"
+
+#: 
+msgid "Access"
+msgstr "Accesso"
+
+#: 
+msgid "Access level"
+msgstr "Livello di accesso"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Gli amministratori hanno accesso completo a tutte le funzionalità e ai dati. I permessi individuali non si applicano."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Tutti gli utenti possono visualizzare i membri della comunità parrocchiale. Questo permesso non può essere rimosso."
+
+#: 
+msgid "Always granted"
+msgstr "Sempre concesso"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Può solo consultare e verificare la propria famiglia. Nessun altro accesso."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Scegli i permessi specifici di seguito."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Contatta un amministratore per modificare i tuoi permessi."
+
+#: 
+msgid "Custom permissions"
+msgstr "Permessi personalizzati"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Accesso completo — concede tutti i privilegi."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Assegna permessi individuali:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Se hai bisogno di un accesso aggiuntivo, contatta l'amministratore della tua parrocchia."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Persone &amp; Famiglie"
+
+#: 
+msgid "Self-service"
+msgstr "Autogestione"
+
+#: 
+msgid "Self-service only"
+msgstr "Solo autogestione"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "La nota che stai cercando di modificare non esiste più."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Questo utente può solo consultare e aggiornare il proprio profilo familiare. I permessi individuali non si applicano."
+
+#: 
+msgid "User List"
+msgstr "Elenco utenti"
+
+#: 
+msgid "View Person"
+msgstr "Visualizza persona"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Non hai il permesso di aggiungere una nota per questa famiglia."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Non hai il permesso di aggiungere una nota per questa persona."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Non hai il permesso di modificare questa nota"
+
+#: 
+msgid "Account locked"
+msgstr "Account bloccato"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Account bloccato a causa di troppi tentativi di accesso falliti"
+
+#: 
+msgid "Account status"
+msgstr "Stato dell'account"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avanzato: scegli una versione di destinazione specifica"
+
+#: 
+msgid "Bug Fix"
+msgstr "Correzione di bug"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Per impostazione predefinita, la procedura guidata scarica la prossima versione consigliata. È possibile scegliere qualsiasi versione disponibile qui sotto."
+
+#: 
+msgid "Change required"
+msgstr "Modifica richiesta"
+
+#: 
+msgid "Changelog"
+msgstr "Registro delle modifiche"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Continua comunque"
+
+#: 
+msgid "Could not load release information."
+msgstr "Impossibile caricare le informazioni sulla versione."
+
+#: 
+msgid "Download & Install"
+msgstr "Scarica e installa"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Scarica la versione {{version}} e applicala alla tua installazione."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Download della versione da GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Tentativi di accesso falliti"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Impossibile recuperare l'anteprima dell'aggiornamento"
+
+#: 
+msgid "Feature"
+msgstr "Funzionalità"
+
+#: 
+msgid "Full changelog"
+msgstr "Registro completo delle modifiche"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installa la versione stabile {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Installazione della prossima versione"
+
+#: 
+msgid "Invalid file path"
+msgstr "Percorso file non valido"
+
+#: 
+msgid "Invalid version format"
+msgstr "Formato della versione non valido"
+
+#: 
+msgid "Last login"
+msgstr "Ultimo accesso"
+
+#: 
+msgid "Loading release information..."
+msgstr "Caricamento delle informazioni sulla versione..."
+
+#: 
+msgid "Locked"
+msgstr "Bloccato"
+
+#: 
+msgid "Major"
+msgstr "Principale"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Campi obbligatori mancanti: fullPath e sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Deve cambiare la password"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Nessuna nota di rilascio disponibile per questa versione."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nessun aggiornamento disponibile per la versione corrente."
+
+#: 
+msgid "Password change required"
+msgstr "Cambio password richiesto"
+
+#: 
+msgid "Password status"
+msgstr "Stato della password"
+
+#: 
+msgid "Re-install current version"
+msgstr "Reinstalla la versione corrente"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Il ripristino è fallito e il database potrebbe essere in uno stato incompleto. Controlla il registro dell'applicazione per i dettagli, quindi ripristina un backup valido prima di utilizzare il sistema."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Ripristino fallito: il file di backup sembra essere incompleto o non è un backup SQL valido. Il database è ora in uno stato incompleto — ripristina un backup valido prima di utilizzare il sistema."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Esecuzione di una versione preliminare"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Mostra il percorso di aggiornamento completo"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "L'ultima versione stabile è {{version}}. È possibile reinstallarla qui sotto."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Questo account è bloccato a causa di troppi tentativi di accesso falliti."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Questo utente deve impostare una nuova password al prossimo accesso."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "L'utente deve cambiare la propria password al prossimo accesso"
+
+#: 
+msgid "User must have Email permission"
+msgstr "L'utente deve avere il permesso Email"
+
+#: 
+msgid "View release notes"
+msgstr "Visualizza le note di rilascio"
+
+#: 
+msgid "What's New"
+msgstr "Novità"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Novità in {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Sei indietro di <strong>{{releaseCount}}</strong> versioni. Ecco cosa otterrai:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Stai eseguendo una versione preliminare."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Puoi comunque procedere con l'aggiornamento senza visualizzare le note di rilascio."
+
+#: 
+msgid "You're up to date!"
+msgstr "Sei aggiornato!"
 

@@ -2081,21 +2081,6 @@ msgstr "登录用户名"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "添加记录"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "编辑记录"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "删除记录"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "管理属性和分类"
 
@@ -2108,16 +2093,6 @@ msgstr "管理组和角色"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "管理捐款和金融"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "查看，添加和编辑备注"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "编辑自"
 
 #: 
 #, fuzzy
@@ -3045,10 +3020,6 @@ msgstr "将捐赠者添加到买方名单"
 #: 
 msgid "Data/Reports"
 msgstr "数据/报告"
-
-#: 
-msgid "Query Menu"
-msgstr "查询菜单"
 
 #: 
 msgid "Family Properties"
@@ -5669,10 +5640,6 @@ msgstr "希伯来语"
 #: 
 msgid "Permissions"
 msgstr "权限"
-
-#: 
-msgid "Manage Notes"
-msgstr "管理笔记"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11119,10 +11086,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "只有备注作者或管理员才能删除此备注"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "只有备注作者或管理员才能编辑此备注"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "教会活动、出席和动态概览"
 
@@ -12729,10 +12692,6 @@ msgstr "仅数据库（.sql）或完整存档（.tar.gz）"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "数据表中默认显示的行数。在下次页面加载时生效。"
 
-#: 
-msgid "Edit own family only"
-msgstr "仅编辑自己的家庭信息"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12745,10 +12704,6 @@ msgstr "修正您语言中不正确或不自然的翻译"
 #: 
 msgid "Found a bug with translations?"
 msgstr "发现翻译错误？"
-
-#: 
-msgid "Grants all privileges"
-msgstr "授予所有权限"
 
 #: 
 msgid "Green"
@@ -14709,10 +14664,6 @@ msgid "You do not have permission to edit this note."
 msgstr "您没有权限编辑此备注。"
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[私人备注 — 仅创建者可见]"
-
-#: 
 msgid "seconds"
 msgstr "秒"
 
@@ -15111,10 +15062,6 @@ msgstr "下载备份并继续"
 #: 
 msgid "Downloaded"
 msgstr "已下载"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "正在从 GitHub 下载最新版本..."
 
 #: 
 msgid "Duration"
@@ -16605,4 +16552,292 @@ msgstr "过去"
 #: 
 msgid "Croatian"
 msgstr "克罗地亚语"
+
+#: 
+msgid "%s's Account"
+msgstr "%s的账户"
+
+#: 
+msgid "Access"
+msgstr "访问权限"
+
+#: 
+msgid "Access level"
+msgstr "访问级别"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "管理员可完全访问所有功能和数据，个人权限设置不适用。"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "所有用户均可查看会众成员，此权限不可移除。"
+
+#: 
+msgid "Always granted"
+msgstr "始终授予"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "只能查看和核实自己的家庭信息，无其他访问权限。"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "请在下方选择具体权限。"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "请联系管理员更改您的权限。"
+
+#: 
+msgid "Custom permissions"
+msgstr "自定义权限"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "完全访问——授予所有权限。"
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "授予个人权限："
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "如需更多访问权限，请联系您的教会管理员。"
+
+#: 
+msgid "People &amp; Families"
+msgstr "人员与家庭"
+
+#: 
+msgid "Self-service"
+msgstr "自助服务"
+
+#: 
+msgid "Self-service only"
+msgstr "仅限自助服务"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "您尝试编辑的备注已不存在。"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "此用户只能查看和更新自己的家庭档案，个人权限设置不适用。"
+
+#: 
+msgid "User List"
+msgstr "用户列表"
+
+#: 
+msgid "View Person"
+msgstr "查看人员"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "您没有权限为此家庭添加备注。"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "您没有权限为此人添加备注。"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "您没有权限编辑此备注"
+
+#: 
+msgid "Account locked"
+msgstr "账户已锁定"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "由于登录失败次数过多，账户已被锁定"
+
+#: 
+msgid "Account status"
+msgstr "账户状态"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "高级：选择特定目标版本"
+
+#: 
+msgid "Bug Fix"
+msgstr "错误修复"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "默认情况下，向导会下载下一个推荐版本。您也可以在下方选择任意可用版本。"
+
+#: 
+msgid "Change required"
+msgstr "需要更改"
+
+#: 
+msgid "Changelog"
+msgstr "更新日志"
+
+#: 
+msgid "Continue Anyway"
+msgstr "仍然继续"
+
+#: 
+msgid "Could not load release information."
+msgstr "无法加载版本信息。"
+
+#: 
+msgid "Download & Install"
+msgstr "下载并安装"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "下载版本 {{version}} 并应用到您的安装。"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "正在从 GitHub 下载版本……"
+
+#: 
+msgid "Failed login attempts"
+msgstr "登录失败次数"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "获取升级预览失败"
+
+#: 
+msgid "Feature"
+msgstr "新功能"
+
+#: 
+msgid "Full changelog"
+msgstr "完整更新日志"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "安装稳定版 {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "正在安装下一个版本"
+
+#: 
+msgid "Invalid file path"
+msgstr "无效的文件路径"
+
+#: 
+msgid "Invalid version format"
+msgstr "无效的版本格式"
+
+#: 
+msgid "Last login"
+msgstr "上次登录"
+
+#: 
+msgid "Loading release information..."
+msgstr "正在加载版本信息……"
+
+#: 
+msgid "Locked"
+msgstr "已锁定"
+
+#: 
+msgid "Major"
+msgstr "重大更新"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "缺少必填字段：fullPath 和 sha1"
+
+#: 
+msgid "Must change password"
+msgstr "必须更改密码"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "此版本没有可用的发行说明。"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "您当前版本没有可用的升级。"
+
+#: 
+msgid "Password change required"
+msgstr "需要更改密码"
+
+#: 
+msgid "Password status"
+msgstr "密码状态"
+
+#: 
+msgid "Re-install current version"
+msgstr "重新安装当前版本"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "恢复失败，数据库可能处于不完整状态。请查看应用日志了解详情，然后在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "恢复失败：备份文件似乎不完整或不是有效的 SQL 备份。数据库现在处于不完整状态——请在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Running Pre-release"
+msgstr "正在运行预发布版本"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "显示完整升级路径"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "最新稳定版本为 {{version}}。您可以在下方重新安装。"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "由于登录失败次数过多，此账户已被锁定。"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "此用户下次登录时必须设置新密码。"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "用户下次登录时必须更改密码"
+
+#: 
+msgid "User must have Email permission"
+msgstr "用户必须具有电子邮件权限"
+
+#: 
+msgid "View release notes"
+msgstr "查看发行说明"
+
+#: 
+msgid "What's New"
+msgstr "新增内容"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} 新增内容"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "您落后了 <strong>{{releaseCount}}</strong> 个版本。以下是您将获得的内容："
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "您正在运行预发布版本。"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "您仍然可以在不查看发行说明的情况下继续升级。"
+
+#: 
+msgid "You're up to date!"
+msgstr "您已是最新版本！"
 

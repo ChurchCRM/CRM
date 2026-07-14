@@ -39,8 +39,8 @@ class Menu
             'Calendar'     => self::getCalendarMenu($canViewEvents),
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
-            'SundaySchool' => self::getSundaySchoolMenu($isAdmin),
-            'Communication' => self::getCommunicationMenu(),
+            'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
+            'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
@@ -112,7 +112,12 @@ class Menu
 
     private static function getGroupMenu(bool $isAdmin, bool $isMenuOptions, bool $isManageGroups): MenuItem
     {
-        $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
+        $groupMenu = new MenuItem(gettext('Groups'), '', $isManageGroups, 'fa-users');
+        if (!$isManageGroups) {
+            // Every /groups route is behind ManageGroupRoleAuthMiddleware; skip the lookups.
+            return $groupMenu;
+        }
+
         $groupMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/dashboard', true, 'fa-gauge'));
         // fetch list options lightweight (only name/id)
         $listOptions = ListOptionQuery::create()
@@ -175,9 +180,15 @@ class Menu
         return $groupMenu;
     }
 
-    private static function getSundaySchoolMenu(bool $isAdmin): MenuItem
+    private static function getSundaySchoolMenu(bool $isAdmin, bool $isManageGroups): MenuItem
     {
-        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-school');
+        $isEnabled = $isManageGroups && ($isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'));
+        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isEnabled, 'fa-school');
+        if (!$isEnabled) {
+            // Sunday School pages live under /groups/sundayschool, behind ManageGroupRoleAuthMiddleware.
+            return $sundaySchoolMenu;
+        }
+
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/sundayschool/dashboard', true, 'fa-gauge'));
         $classes = GroupQuery::create()->filterByType(4)->orderByName()->select(['Id','Name'])->find()->toArray();
         if (!empty($classes)) {
@@ -189,11 +200,11 @@ class Menu
         return $sundaySchoolMenu;
     }
 
-    private static function getCommunicationMenu(): MenuItem
+    private static function getCommunicationMenu(bool $isEmailEnabled): MenuItem
     {
-        $commMenu = new MenuItem(gettext('Communication'), '', true, 'fa-comments');
-        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', true, 'fa-envelope'));
-        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', true, 'fa-comment-sms'));
+        $commMenu = new MenuItem(gettext('Communication'), '', $isEmailEnabled, 'fa-comments');
+        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', $isEmailEnabled, 'fa-envelope'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', $isEmailEnabled, 'fa-comment-sms'));
 
         return $commMenu;
     }
@@ -302,10 +313,8 @@ class Menu
 
     private static function getReportsMenu(): MenuItem
     {
-        $reportsMenu = new MenuItem(gettext('Data/Reports'), '', true, 'fa-database');
-        $reportsMenu->addSubMenu(new MenuItem(gettext('Query Menu'), 'QueryList.php', true, 'fa-magnifying-glass'));
-
-        return $reportsMenu;
+        // Query Menu is the only entry, so link straight to it rather than nesting a single child.
+        return new MenuItem(gettext('Data/Reports'), 'QueryList.php', true, 'fa-database');
     }
 
     private static function addGroupSubMenus($menuName, $groupId, string $viewURl, ?array $groupsByType = null): ?MenuItem

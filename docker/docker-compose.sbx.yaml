@@ -1,0 +1,94 @@
+# docker-compose.sbx.yaml — Docker Sandbox kit for ChurchCRM
+#
+# Use this when Docker is available on the host but Node, PHP, and Composer
+# are NOT installed locally (e.g. a Docker Sandbox / CI environment).
+# All build steps (npm ci, composer install, webpack) run inside a multi-stage
+# Docker build — nothing is compiled on the host.
+#
+# QUICK START (from repo root)
+# ----------------------------
+#   npm run docker:sbx:start
+#
+# or directly:
+#   docker compose -f docker/docker-compose.sbx.yaml up -d --build
+#
+# The first run builds the image (~5–15 min depending on network/CPU):
+#   - Downloads Node 24 + Composer inside the builder stage
+#   - Runs npm ci (installs all Node dependencies)
+#   - Runs npm run build (Composer PHP deps + webpack frontend build)
+#
+# Subsequent runs reuse the cached image and start in seconds.
+#
+# ACCESS
+# ------
+#   Web:     http://localhost        (admin / changeme)
+#   Adminer: http://localhost:8088   (Server: database, User: churchcrm / changeme)
+#
+# DEMO DATA vs FRESH INSTALL
+# --------------------------
+# By default the database is seeded with ChurchCRM demo data so you can log in
+# immediately.  For a fresh install that starts the setup wizard instead:
+#   1. Remove the cypress/data bind-mount under the 'database' service.
+#   2. Run: docker compose -f docker/docker-compose.sbx.yaml down -v
+#          docker compose -f docker/docker-compose.sbx.yaml up -d --build
+#
+# PORT OVERRIDES
+# --------------
+# WEBSERVER_PORT and ADMINER_PORT are not defined in docker/.env (which uses
+# DEV_WEBSERVER_PORT / DEV_ADMINER_PORT for other profiles).  To override the
+# sbx defaults, export the vars before running:
+#   export WEBSERVER_PORT=8080
+#   export ADMINER_PORT=8089
+#   docker compose -f docker/docker-compose.sbx.yaml up -d --build
+#
+# STOPPING
+# --------
+#   npm run docker:sbx:stop   # stop containers (keeps data volumes)
+#   npm run docker:sbx:down   # stop + remove containers and volumes
+
+services:
+
+  database:
+    image: mariadb:10.11
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Seed with demo data on first start — comment out for a fresh setup wizard
+      - ../cypress/data:/docker-entrypoint-initdb.d
+      - churchcrm-sbx-db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 20s
+      retries: 10
+    hostname: database
+
+  webserver-sbx:
+    build:
+      # Build context is the repo root so the builder stage can COPY the full source tree
+      context: ..
+      dockerfile: docker/Dockerfile.sbx
+    image: churchcrm/crm:php8-sbx
+    restart: unless-stopped
+    ports:
+      - "${WEBSERVER_PORT:-80}:80"
+    env_file:
+      - .env
+    depends_on:
+      database:
+        condition: service_healthy
+    hostname: crm-webserver
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    environment:
+      - ADMINER_DEFAULT_SERVER=database
+    ports:
+      - "${ADMINER_PORT:-8088}:8080"
+    depends_on:
+      - database
+    hostname: crm-adminer
+
+volumes:
+  churchcrm-sbx-db:

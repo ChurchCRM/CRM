@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 16:17+0000\n"
+"POT-Creation-Date: 2026-07-12 15:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -358,7 +358,16 @@ msgstr ""
 msgid "Account Unlocked"
 msgstr ""
 
+msgid "Account locked"
+msgstr ""
+
+msgid "Account locked due to too many failed login attempts"
+msgstr ""
+
 msgid "Account options"
+msgstr ""
+
+msgid "Account status"
 msgstr ""
 
 msgid "Action"
@@ -646,6 +655,9 @@ msgid "Advanced Settings"
 msgstr ""
 
 msgid "Advanced filtering by group, classification, and role"
+msgstr ""
+
+msgid "Advanced: choose a specific target version"
 msgstr ""
 
 msgid "Affected Files"
@@ -1549,6 +1561,9 @@ msgstr ""
 msgid "Brunei"
 msgstr ""
 
+msgid "Bug Fix"
+msgstr ""
+
 #. Context: countries
 msgid "Bulgaria (България)"
 msgstr ""
@@ -1586,6 +1601,9 @@ msgid "Buyers for this fundraiser:"
 msgstr ""
 
 msgid "By"
+msgstr ""
+
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
 msgstr ""
 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
@@ -1835,10 +1853,16 @@ msgstr ""
 msgid "Change Your Locale"
 msgstr ""
 
+msgid "Change required"
+msgstr ""
+
 msgid "Change role"
 msgstr ""
 
 msgid "Change this in System Settings."
+msgstr ""
+
+msgid "Changelog"
 msgstr ""
 
 msgid "Changes not saved! Please correct and try again!"
@@ -2456,6 +2480,9 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
+msgid "Continue Anyway"
+msgstr ""
+
 msgid "Continue to Dashboard"
 msgstr ""
 
@@ -2541,6 +2568,9 @@ msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
 msgid "Could not load note."
+msgstr ""
+
+msgid "Could not load release information."
 msgstr ""
 
 msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
@@ -3410,6 +3440,9 @@ msgstr ""
 msgid "Download & Apply"
 msgstr ""
 
+msgid "Download & Install"
+msgstr ""
+
 msgid "Download Backup & Continue"
 msgstr ""
 
@@ -3426,13 +3459,16 @@ msgstr ""
 msgid "Download the latest release and apply it to your installation."
 msgstr ""
 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr ""
+
 msgid "Downloaded"
 msgstr ""
 
 msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
 msgstr ""
 
-msgid "Downloading latest release from GitHub..."
+msgid "Downloading release from GitHub..."
 msgstr ""
 
 msgid "Drag and drop your CSV file here"
@@ -4192,6 +4228,9 @@ msgstr ""
 msgid "Failed Logins"
 msgstr ""
 
+msgid "Failed login attempts"
+msgstr ""
+
 msgid "Failed to add family to cart"
 msgstr ""
 
@@ -4328,6 +4367,9 @@ msgid "Failed to enable plugin"
 msgstr ""
 
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr ""
+
+msgid "Failed to fetch upgrade preview"
 msgstr ""
 
 msgid "Failed to generate QR code. Please try again."
@@ -4613,6 +4655,9 @@ msgid "Fastest workflow:"
 msgstr ""
 
 msgid "Father"
+msgstr ""
+
+msgid "Feature"
 msgstr ""
 
 #. plugin:mailchimp:section:1:title
@@ -4963,6 +5008,9 @@ msgid "Full Path"
 msgstr ""
 
 msgid "Full access — grants all privileges."
+msgstr ""
+
+msgid "Full changelog"
 msgstr ""
 
 msgid "Fully translated."
@@ -5816,6 +5864,9 @@ msgstr ""
 msgid "Install from URL"
 msgstr ""
 
+msgid "Install stable {{version}}"
+msgstr ""
+
 msgid "Installation ID"
 msgstr ""
 
@@ -5826,6 +5877,9 @@ msgid "Installed Software Version"
 msgstr ""
 
 msgid "Installed on Server"
+msgstr ""
+
+msgid "Installing next release"
 msgstr ""
 
 msgid "Installing…"
@@ -5928,6 +5982,9 @@ msgstr ""
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr ""
 
+msgid "Invalid file path"
+msgstr ""
+
 msgid "Invalid format"
 msgstr ""
 
@@ -5953,6 +6010,9 @@ msgid "Invalid status"
 msgstr ""
 
 msgid "Invalid target family"
+msgstr ""
+
+msgid "Invalid version format"
 msgstr ""
 
 msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
@@ -6177,6 +6237,9 @@ msgstr ""
 msgid "Last campaign"
 msgstr ""
 
+msgid "Last login"
+msgstr ""
+
 msgid "Last name"
 msgstr ""
 
@@ -6370,6 +6433,9 @@ msgstr ""
 msgid "Loading recovery codes"
 msgstr ""
 
+msgid "Loading release information..."
+msgstr ""
+
 msgid "Loading..."
 msgstr ""
 
@@ -6395,6 +6461,9 @@ msgid "Location"
 msgstr ""
 
 msgid "Location & Contact Information"
+msgstr ""
+
+msgid "Locked"
 msgstr ""
 
 msgid "Locked Users"
@@ -6490,6 +6559,9 @@ msgid "Mailchimp Not Configured"
 msgstr ""
 
 msgid "Mailchimp is not active"
+msgstr ""
+
+msgid "Major"
 msgstr ""
 
 msgid "Make Data File"
@@ -6918,6 +6990,9 @@ msgstr ""
 msgid "Missing required field: %s"
 msgstr ""
 
+msgid "Missing required fields: fullPath and sha1"
+msgstr ""
+
 #, php-format
 msgid "Missing required settings: %s"
 msgstr ""
@@ -7064,6 +7139,9 @@ msgid "Must be a valid port number (e.g., 3306)"
 msgstr ""
 
 msgid "Must be an immutable release URL served over HTTPS."
+msgstr ""
+
+msgid "Must change password"
 msgstr ""
 
 msgid "Must specify non-zero check number"
@@ -7465,6 +7543,9 @@ msgstr ""
 msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
 msgstr ""
 
+msgid "No release notes available for this version."
+msgstr ""
+
 msgid "No results found"
 msgstr ""
 
@@ -7472,6 +7553,9 @@ msgid "No settings provided"
 msgstr ""
 
 msgid "No timeline events yet."
+msgstr ""
+
+msgid "No upgrades are available for your current version."
 msgstr ""
 
 msgid "No volunteer opportunities have been added yet"
@@ -7965,6 +8049,9 @@ msgstr ""
 msgid "Password Reset Successful"
 msgstr ""
 
+msgid "Password change required"
+msgstr ""
+
 msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
 msgstr ""
 
@@ -7978,6 +8065,9 @@ msgid "Password reset is unavailable because email is disabled. Please contact y
 msgstr ""
 
 msgid "Password reset not available.  Please contact your system administrator"
+msgstr ""
+
+msgid "Password status"
 msgstr ""
 
 msgid "Password successfully changed for"
@@ -8642,9 +8732,6 @@ msgstr ""
 msgid "Private"
 msgstr ""
 
-msgid "Private Calendar"
-msgstr ""
-
 msgid "Profile"
 msgstr ""
 
@@ -8703,9 +8790,6 @@ msgstr ""
 msgid "Provide any corrections or additional information here..."
 msgstr ""
 
-msgid "Public Calendar"
-msgstr ""
-
 msgid "Public calendar"
 msgstr ""
 
@@ -8730,9 +8814,6 @@ msgid "Quarterly"
 msgstr ""
 
 msgid "Query Listing"
-msgstr ""
-
-msgid "Query Menu"
 msgstr ""
 
 msgid "Query View"
@@ -8787,6 +8868,9 @@ msgid "RangeEnd must be on or after RangeStart"
 msgstr ""
 
 msgid "Re-install"
+msgstr ""
+
+msgid "Re-install current version"
 msgstr ""
 
 msgid "Read more"
@@ -9052,10 +9136,16 @@ msgstr ""
 msgid "Restore backup"
 msgstr ""
 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr ""
+
 msgid "Restore failed."
 msgstr ""
 
 msgid "Restore failed. Please check the backup file and try again."
+msgstr ""
+
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
 msgstr ""
 
 msgid "Restore from a backup file. Erases existing data."
@@ -9169,6 +9259,9 @@ msgstr ""
 msgid "Run Transactions"
 msgstr ""
 
+msgid "Running Pre-release"
+msgstr ""
+
 #. Context: countries
 msgid "Russia (Россия)"
 msgstr ""
@@ -9195,6 +9288,9 @@ msgid "SHA-256 checksum"
 msgstr ""
 
 msgid "SHA-256 must be a 64-character hex string."
+msgstr ""
+
+msgid "SHA1 Hash"
 msgstr ""
 
 msgid "SMS Integration"
@@ -9773,6 +9869,9 @@ msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr ""
 
 msgid "Show all"
+msgstr ""
+
+msgid "Show full upgrade path"
 msgstr ""
 
 msgid "Show in"
@@ -10409,6 +10508,9 @@ msgstr ""
 msgid "The gender for which you would like records returned."
 msgstr ""
 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "The maximum age for which you want records returned."
 msgstr ""
@@ -10550,6 +10652,9 @@ msgstr ""
 msgid "This Family is Inactive"
 msgstr ""
 
+msgid "This account is locked because of too many failed login attempts."
+msgstr ""
+
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr ""
 
@@ -10632,6 +10737,9 @@ msgid "This title will be used for all generated events."
 msgstr ""
 
 msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr ""
+
+msgid "This user must set a new password the next time they sign in."
 msgstr ""
 
 msgid "This value cannot be less than "
@@ -11315,6 +11423,9 @@ msgstr ""
 msgid "User must be an Admin or have Finance permission"
 msgstr ""
 
+msgid "User must change their password at next login"
+msgstr ""
+
 msgid "User must have Add Event permission and the Events module must be enabled"
 msgstr ""
 
@@ -11322,6 +11433,9 @@ msgid "User must have Delete Records permission"
 msgstr ""
 
 msgid "User must have Edit Records permission"
+msgstr ""
+
+msgid "User must have Email permission"
 msgstr ""
 
 msgid "User must have Manage Groups permission"
@@ -11595,6 +11709,9 @@ msgstr ""
 msgid "View query results"
 msgstr ""
 
+msgid "View release notes"
+msgstr ""
+
 msgid "View transaction details for a pledge payment"
 msgstr ""
 
@@ -11815,6 +11932,12 @@ msgstr ""
 msgid "What went wrong? What did you expect to happen?"
 msgstr ""
 
+msgid "What's New"
+msgstr ""
+
+msgid "What's New in {{version}}"
+msgstr ""
+
 #. plugin:mailchimp:section:3:content
 msgid ""
 "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
@@ -11946,6 +12069,9 @@ msgstr ""
 msgid "Yes, delete this record"
 msgstr ""
 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr ""
+
 msgid "You are about to add a new deposit without a comment"
 msgstr ""
 
@@ -11953,6 +12079,9 @@ msgid "You are about to delete the profile photo, this procedure is irreversible
 msgstr ""
 
 msgid "You are about to email copy of the family information to the following emails"
+msgstr ""
+
+msgid "You are running a pre-release version."
 msgstr ""
 
 #. plugin:external-backup:section:3:content
@@ -11981,6 +12110,9 @@ msgid "You can reset your ChurchCRM password by clicking this link"
 msgstr ""
 
 msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr ""
+
+msgid "You can still proceed with the upgrade without viewing release notes."
 msgstr ""
 
 msgid "You do not have permission to add a note for this family."
@@ -12041,6 +12173,9 @@ msgid "You will be logged out and redirected to the login page."
 msgstr ""
 
 msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr ""
+
+msgid "You're up to date!"
 msgstr ""
 
 msgid "Your Account was Deleted"

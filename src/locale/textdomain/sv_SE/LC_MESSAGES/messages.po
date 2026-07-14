@@ -2108,21 +2108,6 @@ msgstr "Inloggningsnamn"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Lägg till poster"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Redigera poster"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Radera poster"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Underhålla egenskaper och klassificeringer"
 
@@ -2135,16 +2120,6 @@ msgstr "Hantera grupper och roller"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Underhålla bidragsgivare och financer"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Se, lätt till och redigera anteckningar"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Redigera dig själv"
 
 #: 
 msgid "Admin"
@@ -3074,10 +3049,6 @@ msgstr "Lägg till givare i köpslistan"
 #: 
 msgid "Data/Reports"
 msgstr "Data / Rapporter"
-
-#: 
-msgid "Query Menu"
-msgstr "Fråga-meny"
 
 #: 
 msgid "Family Properties"
@@ -5697,10 +5668,6 @@ msgstr "Hebreiska"
 #: 
 msgid "Permissions"
 msgstr "Behörigheter"
-
-#: 
-msgid "Manage Notes"
-msgstr "Hantera anteckningar"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11155,10 +11122,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Endast anteckningens författare eller en administratör kan ta bort denna anteckning"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Endast anteckningens författare eller en administratör kan redigera denna anteckning"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Översikt över kyrkans evenemang, närvaro och aktivitet"
 
@@ -12765,10 +12728,6 @@ msgstr "Endast databas (.sql) eller fullständigt arkiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Standardantalet rader som visas i datatabeller. Träder i kraft vid nästa sidinläsning."
 
-#: 
-msgid "Edit own family only"
-msgstr "Redigera endast den egna familjen"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12781,10 +12740,6 @@ msgstr "Korrigera felaktiga eller klumpiga översättningar på ditt språk"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Hittade du ett fel med översättningarna?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Ger alla behörigheter"
 
 #: 
 msgid "Green"
@@ -14746,10 +14701,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Du har inte behörighet att redigera den här anteckningen."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privat anteckning — synlig endast för skaparen]"
-
-#: 
 msgid "seconds"
 msgstr "sekunder"
 
@@ -15148,10 +15099,6 @@ msgstr "Ladda ner säkerhetskopia och fortsätt"
 #: 
 msgid "Downloaded"
 msgstr "Nedladdad"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Laddar ner senaste versionen från GitHub..."
 
 #: 
 msgid "Duration"
@@ -16643,4 +16590,292 @@ msgstr "förfluten"
 #: 
 msgid "Croatian"
 msgstr "Kroatiska"
+
+#: 
+msgid "%s's Account"
+msgstr "%s:s konto"
+
+#: 
+msgid "Access"
+msgstr "Åtkomst"
+
+#: 
+msgid "Access level"
+msgstr "Åtkomstnivå"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratörer har full åtkomst till alla funktioner och all data. Individuella behörigheter gäller inte."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Alla användare kan visa församlingsmedlemmar. Denna behörighet kan inte tas bort."
+
+#: 
+msgid "Always granted"
+msgstr "Alltid beviljad"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Kan bara granska och verifiera sin egen familj. Ingen annan åtkomst."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Välj specifika behörigheter nedan."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontakta en administratör för att ändra dina behörigheter."
+
+#: 
+msgid "Custom permissions"
+msgstr "Anpassade behörigheter"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Full åtkomst — ger alla rättigheter."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Bevilja individuella behörigheter:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Om du behöver ytterligare åtkomst, kontakta din kyrkas administratör."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Personer &amp; familjer"
+
+#: 
+msgid "Self-service"
+msgstr "Självbetjäning"
+
+#: 
+msgid "Self-service only"
+msgstr "Endast självbetjäning"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Anteckningen du försöker redigera finns inte längre."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Denna användare kan bara granska och uppdatera sin egen familjeprofil. Individuella behörigheter gäller inte."
+
+#: 
+msgid "User List"
+msgstr "Användarlista"
+
+#: 
+msgid "View Person"
+msgstr "Visa person"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Du har inte behörighet att lägga till en anteckning för denna familj."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Du har inte behörighet att lägga till en anteckning för denna person."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Du har inte behörighet att redigera denna anteckning"
+
+#: 
+msgid "Account locked"
+msgstr "Konto låst"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Konto låst på grund av för många misslyckade inloggningsförsök"
+
+#: 
+msgid "Account status"
+msgstr "Kontostatus"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avancerat: välj en specifik målversion"
+
+#: 
+msgid "Bug Fix"
+msgstr "Felkorrigering"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Som standard laddar guiden ned nästa rekommenderade version. Du kan istället välja en tillgänglig version nedan."
+
+#: 
+msgid "Change required"
+msgstr "Ändring krävs"
+
+#: 
+msgid "Changelog"
+msgstr "Ändringslogg"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Fortsätt ändå"
+
+#: 
+msgid "Could not load release information."
+msgstr "Kunde inte läsa in versionsinformation."
+
+#: 
+msgid "Download & Install"
+msgstr "Ladda ned och installera"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Ladda ned version {{version}} och tillämpa den på din installation."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Laddar ned version från GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Misslyckade inloggningsförsök"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Kunde inte hämta uppgraderingsförhandsgranskning"
+
+#: 
+msgid "Feature"
+msgstr "Funktion"
+
+#: 
+msgid "Full changelog"
+msgstr "Fullständig ändringslogg"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installera stabil {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Installerar nästa version"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ogiltig filsökväg"
+
+#: 
+msgid "Invalid version format"
+msgstr "Ogiltigt versionsformat"
+
+#: 
+msgid "Last login"
+msgstr "Senaste inloggning"
+
+#: 
+msgid "Loading release information..."
+msgstr "Läser in versionsinformation..."
+
+#: 
+msgid "Locked"
+msgstr "Låst"
+
+#: 
+msgid "Major"
+msgstr "Större"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Obligatoriska fält saknas: fullPath och sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Måste byta lösenord"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Inga versionsanteckningar tillgängliga för denna version."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Inga uppgraderingar är tillgängliga för din nuvarande version."
+
+#: 
+msgid "Password change required"
+msgstr "Lösenordsbyte krävs"
+
+#: 
+msgid "Password status"
+msgstr "Lösenordsstatus"
+
+#: 
+msgid "Re-install current version"
+msgstr "Ominstallera nuvarande version"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Återställningen misslyckades och databasen kan vara i ett ofullständigt tillstånd. Kontrollera applikationsloggen för detaljer och återställ sedan en fungerande säkerhetskopia innan du använder systemet."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Återställningen misslyckades: säkerhetskopian verkar vara ofullständig eller är inte en giltig SQL-säkerhetskopia. Databasen är nu i ett ofullständigt tillstånd – återställ en fungerande säkerhetskopia innan du använder systemet."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Kör förhandsversion"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Visa fullständig uppgraderingsväg"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Den senaste stabila versionen är {{version}}. Du kan ominstallera den nedan."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Det här kontot är låst på grund av för många misslyckade inloggningsförsök."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Den här användaren måste ange ett nytt lösenord nästa gång de loggar in."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Användaren måste byta lösenord vid nästa inloggning"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Användaren måste ha e-postbehörighet"
+
+#: 
+msgid "View release notes"
+msgstr "Visa versionsanteckningar"
+
+#: 
+msgid "What's New"
+msgstr "Nyheter"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Nyheter i {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Du ligger <strong>{{releaseCount}}</strong> versioner efter. Det här är vad du får:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Du kör en förhandsversion."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Du kan fortfarande fortsätta med uppgraderingen utan att visa versionsanteckningar."
+
+#: 
+msgid "You're up to date!"
+msgstr "Du är uppdaterad!"
 

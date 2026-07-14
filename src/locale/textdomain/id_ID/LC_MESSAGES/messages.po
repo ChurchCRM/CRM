@@ -2029,18 +2029,6 @@ msgid "Login Name"
 msgstr "Nama login"
 
 #: 
-msgid "Add Records"
-msgstr "Tambahkan Catatan"
-
-#: 
-msgid "Edit Records"
-msgstr "Edit Catatan"
-
-#: 
-msgid "Delete Records"
-msgstr "Hapus Catatan"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Kelola Properti dan Klasifikasi"
 
@@ -2051,14 +2039,6 @@ msgstr "Kelola Grup dan Peran"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Kelola Sumbangan dan Keuangan"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Lihat, Tambah, dan Edit Catatan"
-
-#: 
-msgid "Edit Self"
-msgstr "Edit Diri"
 
 #: 
 msgid "Admin"
@@ -2968,10 +2948,6 @@ msgstr "Tambahkan Donor ke Daftar Pembeli"
 #: 
 msgid "Data/Reports"
 msgstr "Data / Laporan"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu Permintaan"
 
 #: 
 msgid "Family Properties"
@@ -5582,10 +5558,6 @@ msgstr "Ibrani"
 #: 
 msgid "Permissions"
 msgstr "Izin"
-
-#: 
-msgid "Manage Notes"
-msgstr "Kelola Catatan"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11032,10 +11004,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Hanya penulis catatan atau admin yang boleh menghapus catatan ini"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Hanya penulis catatan atau admin yang boleh mengedit catatan ini"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Ringkasan acara gereja, kehadiran, dan aktivitas"
 
@@ -12642,10 +12610,6 @@ msgstr "Hanya basis data (.sql) atau arsip lengkap (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Jumlah baris default yang ditampilkan dalam tabel data. Berlaku pada pemuatan halaman berikutnya."
 
-#: 
-msgid "Edit own family only"
-msgstr "Edit keluarga sendiri saja"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12658,10 +12622,6 @@ msgstr "Memperbaiki terjemahan yang salah atau canggung dalam bahasa Anda"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Menemukan bug pada terjemahan?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Memberikan semua hak akses"
 
 #: 
 msgid "Green"
@@ -14622,10 +14582,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Anda tidak memiliki izin untuk mengedit catatan ini."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Catatan Pribadi — hanya terlihat oleh pembuat]"
-
-#: 
 msgid "seconds"
 msgstr "detik"
 
@@ -15024,10 +14980,6 @@ msgstr "Unduh Cadangan & Lanjutkan"
 #: 
 msgid "Downloaded"
 msgstr "Telah Diunduh"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Mengunduh rilis terbaru dari GitHub..."
 
 #: 
 msgid "Duration"
@@ -16275,6 +16227,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% teks antarmuka telah diterjemahkan untuk bahasa ini."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Akses ditolak"
 
@@ -16503,6 +16459,10 @@ msgid "Year, 4 digits"
 msgstr "Tahun, 4 digit"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "lalu"
 
@@ -16510,4 +16470,292 @@ msgstr "lalu"
 #: 
 msgid "Croatian"
 msgstr "Kroasia"
+
+#: 
+msgid "%s's Account"
+msgstr "Akun %s"
+
+#: 
+msgid "Access"
+msgstr "Akses"
+
+#: 
+msgid "Access level"
+msgstr "Tingkat akses"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administrator memiliki akses penuh ke semua fitur dan data. Izin individu tidak berlaku."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Semua pengguna dapat melihat anggota jemaat. Izin ini tidak dapat dihapus."
+
+#: 
+msgid "Always granted"
+msgstr "Selalu diberikan"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Hanya dapat meninjau dan memverifikasi keluarga sendiri. Tidak ada akses lain."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Pilih izin tertentu di bawah ini."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Hubungi administrator untuk mengubah izin Anda."
+
+#: 
+msgid "Custom permissions"
+msgstr "Izin khusus"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Akses penuh — memberikan semua hak istimewa."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Berikan izin individu:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Jika Anda memerlukan akses tambahan, silakan hubungi administrator gereja Anda."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Anggota &amp; Keluarga"
+
+#: 
+msgid "Self-service"
+msgstr "Layanan mandiri"
+
+#: 
+msgid "Self-service only"
+msgstr "Hanya layanan mandiri"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Catatan yang ingin Anda edit sudah tidak ada."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Pengguna ini hanya dapat meninjau dan memperbarui profil keluarga mereka sendiri. Izin individu tidak berlaku."
+
+#: 
+msgid "User List"
+msgstr "Daftar Pengguna"
+
+#: 
+msgid "View Person"
+msgstr "Lihat Anggota"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk keluarga ini."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk anggota ini."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Anda tidak memiliki izin untuk mengedit catatan ini"
+
+#: 
+msgid "Account locked"
+msgstr "Akun terkunci"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Akun terkunci karena terlalu banyak percobaan masuk yang gagal"
+
+#: 
+msgid "Account status"
+msgstr "Status akun"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Lanjutan: pilih versi target tertentu"
+
+#: 
+msgid "Bug Fix"
+msgstr "Perbaikan Bug"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Secara default, panduan mengunduh rilis berikutnya yang direkomendasikan. Anda dapat memilih versi lain yang tersedia di bawah ini."
+
+#: 
+msgid "Change required"
+msgstr "Perubahan diperlukan"
+
+#: 
+msgid "Changelog"
+msgstr "Catatan Perubahan"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Lanjutkan Saja"
+
+#: 
+msgid "Could not load release information."
+msgstr "Tidak dapat memuat informasi rilis."
+
+#: 
+msgid "Download & Install"
+msgstr "Unduh & Pasang"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Unduh versi {{version}} dan terapkan pada instalasi Anda."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Mengunduh rilis dari GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Percobaan masuk yang gagal"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Gagal mengambil pratinjau pembaruan"
+
+#: 
+msgid "Feature"
+msgstr "Fitur"
+
+#: 
+msgid "Full changelog"
+msgstr "Catatan perubahan lengkap"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Pasang versi stabil {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Memasang rilis berikutnya"
+
+#: 
+msgid "Invalid file path"
+msgstr "Jalur file tidak valid"
+
+#: 
+msgid "Invalid version format"
+msgstr "Format versi tidak valid"
+
+#: 
+msgid "Last login"
+msgstr "Masuk terakhir"
+
+#: 
+msgid "Loading release information..."
+msgstr "Memuat informasi rilis..."
+
+#: 
+msgid "Locked"
+msgstr "Terkunci"
+
+#: 
+msgid "Major"
+msgstr "Utama"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Kolom yang diperlukan tidak ada: fullPath dan SHA1 Hash"
+
+#: 
+msgid "Must change password"
+msgstr "Harus mengganti kata sandi"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Tidak ada catatan rilis yang tersedia untuk versi ini."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Tidak ada pembaruan yang tersedia untuk versi Anda saat ini."
+
+#: 
+msgid "Password change required"
+msgstr "Perubahan kata sandi diperlukan"
+
+#: 
+msgid "Password status"
+msgstr "Status kata sandi"
+
+#: 
+msgid "Re-install current version"
+msgstr "Pasang ulang versi saat ini"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Pemulihan gagal dan basis data mungkin dalam keadaan tidak lengkap. Periksa log aplikasi untuk detailnya, lalu pulihkan cadangan yang diketahui baik sebelum menggunakan sistem."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Pemulihan gagal: file cadangan tampaknya tidak lengkap atau bukan cadangan SQL yang valid. Basis data kini dalam keadaan tidak lengkap — pulihkan cadangan yang diketahui baik sebelum menggunakan sistem."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Menjalankan Pra-rilis"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Tampilkan jalur pembaruan lengkap"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Rilis stabil terbaru adalah {{version}}. Anda dapat memasangnya kembali di bawah ini."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Akun ini terkunci karena terlalu banyak percobaan masuk yang gagal."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Pengguna ini harus menetapkan kata sandi baru saat berikutnya mereka masuk."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Pengguna harus mengganti kata sandi mereka saat masuk berikutnya"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Pengguna harus memiliki izin Email"
+
+#: 
+msgid "View release notes"
+msgstr "Lihat catatan rilis"
+
+#: 
+msgid "What's New"
+msgstr "Yang Baru"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Yang Baru di {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Anda tertinggal <strong>{{releaseCount}}</strong> rilis. Berikut yang akan Anda dapatkan:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Anda menjalankan versi pra-rilis."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Anda tetap dapat melanjutkan pembaruan tanpa melihat catatan rilis."
+
+#: 
+msgid "You're up to date!"
+msgstr "Anda sudah terkini!"
 

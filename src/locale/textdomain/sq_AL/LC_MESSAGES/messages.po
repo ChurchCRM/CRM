@@ -2029,18 +2029,6 @@ msgid "Login Name"
 msgstr "Identifikohu Emri"
 
 #: 
-msgid "Add Records"
-msgstr "Shto regjistrime"
-
-#: 
-msgid "Edit Records"
-msgstr "Edit shenime"
-
-#: 
-msgid "Delete Records"
-msgstr "Fshi regjistrime"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Menaxho Prona dhe klasifikime"
 
@@ -2051,14 +2039,6 @@ msgstr "Menaxhuar grupet dhe Rolet"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Menaxho Donacionet dhe Financave"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Shiko, Shto dhe Edit Shënime"
-
-#: 
-msgid "Edit Self"
-msgstr "Edit Vetë"
 
 #: 
 msgid "Admin"
@@ -2966,10 +2946,6 @@ msgstr "Shto donatorët në listën e blerësve"
 #: 
 msgid "Data/Reports"
 msgstr "Të dhëna/Raporte"
-
-#: 
-msgid "Query Menu"
-msgstr "Menuja e kërkesave"
 
 #: 
 msgid "Family Properties"
@@ -5578,10 +5554,6 @@ msgstr "Hebraisht"
 #: 
 msgid "Permissions"
 msgstr "Lejet"
-
-#: 
-msgid "Manage Notes"
-msgstr "Menaxho shënimet"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11036,10 +11008,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Vetëm autori i shënimit ose një administrues mund ta fshijë këtë shënim"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Vetëm autori i shënimit ose një administrues mund ta redaktojë këtë shënim"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Vështrim i përgjithshëm i ngjarjeve të kishës, prezencës dhe aktivitetit"
 
@@ -12646,10 +12614,6 @@ msgstr "Vetëm baza e të dhënave (.sql) ose arkiv i plotë (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Numri i parazgjedhur i rreshtave të shfaqura në tabelat e të dhënave. Hyn në fuqi me ngarkimin e faqes tjetër."
 
-#: 
-msgid "Edit own family only"
-msgstr "Ndrysho vetëm familjen tënde"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12662,10 +12626,6 @@ msgstr "Korrigjoni përkthimet e pasakta ose të vështira në gjuhën tuaj"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Gjetët një defekt me përkthimet?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Jep të gjitha privilegjet"
 
 #: 
 msgid "Green"
@@ -14627,10 +14587,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Nuk keni leje për të redaktuar këtë shënim."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Shënim Privat — i dukshëm vetëm për krijuesin]"
-
-#: 
 msgid "seconds"
 msgstr "sekonda"
 
@@ -15029,10 +14985,6 @@ msgstr "Shkarko Rezervën & Vazhdoje"
 #: 
 msgid "Downloaded"
 msgstr "Shkarkuar"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Duke shkarkuar versionin e fundit nga GitHub..."
 
 #: 
 msgid "Duration"
@@ -16281,6 +16233,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d%% e tekstit të ndërfaqes është përkthyer për këtë gjuhë."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Qasja refuzohet"
 
@@ -16509,6 +16465,10 @@ msgid "Year, 4 digits"
 msgstr "Viti, 4 shifra"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "e kaluar"
 
@@ -16516,4 +16476,292 @@ msgstr "e kaluar"
 #: 
 msgid "Croatian"
 msgstr "Kroate"
+
+#: 
+msgid "%s's Account"
+msgstr "Llogaria e %s"
+
+#: 
+msgid "Access"
+msgstr "Qasje"
+
+#: 
+msgid "Access level"
+msgstr "Niveli i qasjes"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratorët kanë qasje të plotë në të gjitha funksionet dhe të dhënat. Lejet individuale nuk zbatohen."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Të gjithë përdoruesit mund të shohin anëtarët e kongregacionit. Kjo leje nuk mund të hiqet."
+
+#: 
+msgid "Always granted"
+msgstr "Gjithmonë e dhënë"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Mund të rishikojë dhe verifikojë vetëm familjen e vet. Asnjë qasje tjetër."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Zgjidhni lejet specifike më poshtë."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontaktoni një administrator për të ndryshuar lejet tuaja."
+
+#: 
+msgid "Custom permissions"
+msgstr "Leje të personalizuara"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Qasje e plotë — jep të gjitha privilegjet."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Jepni leje individuale:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Nëse keni nevojë për qasje shtesë, ju lutemi kontaktoni administratorin e kishës suaj."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Njerëz &amp; Familje"
+
+#: 
+msgid "Self-service"
+msgstr "Vetëshërbim"
+
+#: 
+msgid "Self-service only"
+msgstr "Vetëm vetëshërbim"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Shënimi që po përpiqeni të redaktoni nuk ekziston më."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Ky përdorues mund të rishikojë dhe përditësojë vetëm profilin e familjes së vet. Lejet individuale nuk zbatohen."
+
+#: 
+msgid "User List"
+msgstr "Lista e Përdoruesve"
+
+#: 
+msgid "View Person"
+msgstr "Shiko Personin"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nuk keni leje për të shtuar një shënim për këtë familje."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nuk keni leje për të shtuar një shënim për këtë person."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nuk keni leje për të redaktuar këtë shënim"
+
+#: 
+msgid "Account locked"
+msgstr "Llogaria e bllokuar"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Llogaria u bllokua për shkak të shumë tentativave të dështuara të hyrjes"
+
+#: 
+msgid "Account status"
+msgstr "Statusi i llogarisë"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avancuar: zgjidhni një version të synuar specifik"
+
+#: 
+msgid "Bug Fix"
+msgstr "Korrigjim gabimi"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Si parazgjedhje, magjistari shkarkon lëshimin tjetër të rekomanduar. Mund të zgjidhni çdo version të disponueshëm më poshtë."
+
+#: 
+msgid "Change required"
+msgstr "Ndryshim i kërkuar"
+
+#: 
+msgid "Changelog"
+msgstr "Regjistri i ndryshimeve"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Vazhdo gjithsesi"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nuk mund të ngarkohej informacioni i lëshimit."
+
+#: 
+msgid "Download & Install"
+msgstr "Shkarko dhe instalo"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Shkarkoni versionin {{version}} dhe aplikojeni në instalimin tuaj."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Duke shkarkuar lëshimin nga GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Tentativa të dështuara hyrjeje"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Dështoi marrja e pamjes paraprake të përditësimit"
+
+#: 
+msgid "Feature"
+msgstr "Veçori"
+
+#: 
+msgid "Full changelog"
+msgstr "Regjistri i plotë i ndryshimeve"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Instalo versionin e qëndrueshëm {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Duke instaluar lëshimin tjetër"
+
+#: 
+msgid "Invalid file path"
+msgstr "Shteg i skedarit jo i vlefshëm"
+
+#: 
+msgid "Invalid version format"
+msgstr "Format versioni jo i vlefshëm"
+
+#: 
+msgid "Last login"
+msgstr "Hyrja e fundit"
+
+#: 
+msgid "Loading release information..."
+msgstr "Duke ngarkuar informacionin e lëshimit..."
+
+#: 
+msgid "Locked"
+msgstr "Bllokuar"
+
+#: 
+msgid "Major"
+msgstr "Kryesor"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Mungojnë fushat e kërkuara: fullPath dhe sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Duhet të ndryshojë fjalëkalimin"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Nuk ka shënime lëshimi të disponueshme për këtë version."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nuk ka përditësime të disponueshme për versionin tuaj aktual."
+
+#: 
+msgid "Password change required"
+msgstr "Ndryshimi i fjalëkalimit është i kërkuar"
+
+#: 
+msgid "Password status"
+msgstr "Statusi i fjalëkalimit"
+
+#: 
+msgid "Re-install current version"
+msgstr "Riinstalo versionin aktual"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Rivendosja dështoi dhe baza e të dhënave mund të jetë në gjendje të paplotë. Kontrolloni regjistrin e aplikacionit për detaje, pastaj rivendosni një kopje rezervë të njohur para se të përdorni sistemin."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Rivendosja dështoi: skedari i kopjes rezervë duket i paplotë ose nuk është një kopje rezervë SQL e vlefshme. Baza e të dhënave është tani në gjendje të paplotë — rivendosni një kopje rezervë të njohur para se të përdorni sistemin."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Duke ekzekutuar para-lëshimin"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Shfaq rrugën e plotë të përditësimit"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Lëshimi i fundit i qëndrueshëm është {{version}}. Mund ta riinstaloni më poshtë."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Kjo llogari është bllokuar për shkak të shumë tentativave të dështuara të hyrjes."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Ky përdorues duhet të vendosë një fjalëkalim të ri herën tjetër që të identifikohet."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Përdoruesi duhet të ndryshojë fjalëkalimin e tij në hyrjen tjetër"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Përdoruesi duhet të ketë leje Email"
+
+#: 
+msgid "View release notes"
+msgstr "Shiko shënimet e lëshimit"
+
+#: 
+msgid "What's New"
+msgstr "Çfarë është e re"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Çfarë është e re në {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Ju jeni <strong>{{releaseCount}}</strong> lëshime prapa. Ja çfarë do të fitoni:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Ju po ekzekutoni një version para-lëshimi."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Mund të vazhdoni gjithsesi me përditësimin pa parë shënimet e lëshimit."
+
+#: 
+msgid "You're up to date!"
+msgstr "Jeni të përditësuar!"
 

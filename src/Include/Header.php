@@ -333,7 +333,7 @@ $MenuFirst = 1;
         $colorIndex = crc32($currentUserName) % count($avatarColors);
         $avatarColor = $avatarColors[$colorIndex];
 
-        $photo = new Photo('person', $currentUser->getPersonId());
+        $photo = new Photo('Person', $currentUser->getPersonId());
         $hasUploadedPhoto = $photo->hasUploadedPhoto();
         $personId = $currentUser->getPersonId();
         $avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo';

@@ -2027,18 +2027,6 @@ msgid "Login Name"
 msgstr "로그인 이름"
 
 #: 
-msgid "Add Records"
-msgstr "레코드 추가"
-
-#: 
-msgid "Edit Records"
-msgstr "레코드 수정"
-
-#: 
-msgid "Delete Records"
-msgstr "레코드 삭제"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "속성 및 분류 관리"
 
@@ -2049,14 +2037,6 @@ msgstr "그룹 및 역할 관리"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "헌금 및 재정 관리"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "메모 보기/추가/수정"
-
-#: 
-msgid "Edit Self"
-msgstr "본인 정보 수정"
 
 #: 
 msgid "Admin"
@@ -2964,10 +2944,6 @@ msgstr "기부자를 구매자 목록에 추가"
 #: 
 msgid "Data/Reports"
 msgstr "데이터/보고서"
-
-#: 
-msgid "Query Menu"
-msgstr "쿼리 메뉴"
 
 #: 
 msgid "Family Properties"
@@ -5581,10 +5557,6 @@ msgstr "히브리어"
 #: 
 msgid "Permissions"
 msgstr "권한"
-
-#: 
-msgid "Manage Notes"
-msgstr "메모 관리"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11032,10 +11004,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "메모 작성자 또는 관리자만 이 메모를 삭제할 수 있습니다"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "메모 작성자 또는 관리자만 이 메모를 편집할 수 있습니다"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "교회 행사, 출석 및 활동 개요"
 
@@ -12642,10 +12610,6 @@ msgstr "데이터베이스 전용 (.sql) 또는 전체 아카이브 (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "데이터 표에 표시되는 기본 행 수입니다. 다음 페이지 로드 시 적용됩니다."
 
-#: 
-msgid "Edit own family only"
-msgstr "본인 가족만 편집"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12658,10 +12622,6 @@ msgstr "해당 언어의 잘못되거나 어색한 번역 수정"
 #: 
 msgid "Found a bug with translations?"
 msgstr "번역에서 버그를 발견하셨나요?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "모든 권한 부여"
 
 #: 
 msgid "Green"
@@ -14622,10 +14582,6 @@ msgid "You do not have permission to edit this note."
 msgstr "이 메모를 편집할 권한이 없습니다."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[비공개 메모 — 작성자에게만 표시됩니다]"
-
-#: 
 msgid "seconds"
 msgstr "초"
 
@@ -15026,10 +14982,6 @@ msgid "Downloaded"
 msgstr "다운로드됨"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "GitHub에서 최신 릴리스를 다운로드하는 중..."
-
-#: 
 msgid "Duration"
 msgstr "기간"
 
@@ -15315,6 +15267,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "역할 선택에는 GroupID가 필요합니다"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "인증 앱을 준비하세요 (Google Authenticator, Microsoft Authenticator, Authy 등)"
 
@@ -15325,6 +15281,10 @@ msgstr "고급 옵션 숨기기"
 #: 
 msgid "Home phone is required"
 msgstr "집 전화번호는 필수입니다"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16510,4 +16470,292 @@ msgstr "과거"
 #: 
 msgid "Croatian"
 msgstr "크로아티아어"
+
+#: 
+msgid "%s's Account"
+msgstr "%s의 계정"
+
+#: 
+msgid "Access"
+msgstr "접근"
+
+#: 
+msgid "Access level"
+msgstr "접근 수준"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "관리자는 모든 기능과 데이터에 대한 전체 접근 권한을 가집니다. 개별 권한은 적용되지 않습니다."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "모든 사용자는 교인 목록을 볼 수 있습니다. 이 권한은 제거할 수 없습니다."
+
+#: 
+msgid "Always granted"
+msgstr "항상 허용됨"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "본인 가족만 확인하고 검토할 수 있습니다. 다른 접근 권한은 없습니다."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "아래에서 특정 권한을 선택하세요."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "권한 변경을 위해 관리자에게 문의하세요."
+
+#: 
+msgid "Custom permissions"
+msgstr "사용자 지정 권한"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "전체 접근 — 모든 권한이 부여됩니다."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "개별 권한 부여:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "추가 접근 권한이 필요하면 교회 관리자에게 문의하세요."
+
+#: 
+msgid "People &amp; Families"
+msgstr "교인 및 가족"
+
+#: 
+msgid "Self-service"
+msgstr "셀프서비스"
+
+#: 
+msgid "Self-service only"
+msgstr "셀프서비스 전용"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "수정하려는 메모가 더 이상 존재하지 않습니다."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "이 사용자는 본인의 가족 프로필만 확인하고 업데이트할 수 있습니다. 개별 권한은 적용되지 않습니다."
+
+#: 
+msgid "User List"
+msgstr "사용자 목록"
+
+#: 
+msgid "View Person"
+msgstr "교인 보기"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "이 가족에 대한 메모를 추가할 권한이 없습니다."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "이 메모를 수정할 권한이 없습니다"
+
+#: 
+msgid "Account locked"
+msgstr "계정 잠금"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "로그인 시도 실패가 너무 많아 계정이 잠겼습니다"
+
+#: 
+msgid "Account status"
+msgstr "계정 상태"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "고급: 특정 대상 버전 선택"
+
+#: 
+msgid "Bug Fix"
+msgstr "버그 수정"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "기본적으로 마법사는 다음 권장 릴리즈를 다운로드합니다. 아래에서 사용 가능한 버전을 직접 선택할 수도 있습니다."
+
+#: 
+msgid "Change required"
+msgstr "변경 필요"
+
+#: 
+msgid "Changelog"
+msgstr "변경 로그"
+
+#: 
+msgid "Continue Anyway"
+msgstr "그래도 계속"
+
+#: 
+msgid "Could not load release information."
+msgstr "릴리즈 정보를 불러올 수 없습니다."
+
+#: 
+msgid "Download & Install"
+msgstr "다운로드 및 설치"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "버전 {{version}}을(를) 다운로드하여 설치에 적용합니다."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHub에서 릴리즈를 다운로드하는 중..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "로그인 시도 실패 횟수"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "업그레이드 미리보기를 가져오지 못했습니다"
+
+#: 
+msgid "Feature"
+msgstr "기능"
+
+#: 
+msgid "Full changelog"
+msgstr "전체 변경 로그"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "안정 버전 {{version}} 설치"
+
+#: 
+msgid "Installing next release"
+msgstr "다음 릴리즈 설치 중"
+
+#: 
+msgid "Invalid file path"
+msgstr "잘못된 파일 경로"
+
+#: 
+msgid "Invalid version format"
+msgstr "잘못된 버전 형식"
+
+#: 
+msgid "Last login"
+msgstr "마지막 로그인"
+
+#: 
+msgid "Loading release information..."
+msgstr "릴리즈 정보를 불러오는 중..."
+
+#: 
+msgid "Locked"
+msgstr "잠금"
+
+#: 
+msgid "Major"
+msgstr "주요"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "필수 필드 누락: fullPath 및 sha1"
+
+#: 
+msgid "Must change password"
+msgstr "비밀번호 변경 필요"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "이 버전에 대한 릴리즈 노트가 없습니다."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "현재 버전에 사용 가능한 업그레이드가 없습니다."
+
+#: 
+msgid "Password change required"
+msgstr "비밀번호 변경 필요"
+
+#: 
+msgid "Password status"
+msgstr "비밀번호 상태"
+
+#: 
+msgid "Re-install current version"
+msgstr "현재 버전 재설치"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "복원에 실패했으며 데이터베이스가 불완전한 상태일 수 있습니다. 자세한 내용은 애플리케이션 로그를 확인한 후, 시스템을 사용하기 전에 정상적인 백업을 복원하십시오."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "복원 실패: 백업 파일이 불완전하거나 유효한 SQL 백업이 아닌 것 같습니다. 데이터베이스가 현재 불완전한 상태입니다 — 시스템을 사용하기 전에 정상적인 백업을 복원하십시오."
+
+#: 
+msgid "Running Pre-release"
+msgstr "프리릴리즈 실행 중"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "전체 업그레이드 경로 표시"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "최신 안정 릴리즈는 {{version}}입니다. 아래에서 재설치할 수 있습니다."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "로그인 시도 실패가 너무 많아 이 계정이 잠겼습니다."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "이 사용자는 다음번 로그인 시 새 비밀번호를 설정해야 합니다."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "사용자는 다음 로그인 시 비밀번호를 변경해야 합니다"
+
+#: 
+msgid "User must have Email permission"
+msgstr "사용자에게 이메일 권한이 있어야 합니다"
+
+#: 
+msgid "View release notes"
+msgstr "릴리즈 노트 보기"
+
+#: 
+msgid "What's New"
+msgstr "새로운 기능"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}}의 새로운 기능"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong>개의 릴리즈가 뒤처져 있습니다. 업그레이드하면 얻을 수 있는 것:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "프리릴리즈 버전을 실행 중입니다."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "릴리즈 노트를 보지 않고도 업그레이드를 계속 진행할 수 있습니다."
+
+#: 
+msgid "You're up to date!"
+msgstr "최신 상태입니다!"
 

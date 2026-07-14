@@ -2006,18 +2006,6 @@ msgid "Login Name"
 msgstr "Pangalan sa Login"
 
 #: 
-msgid "Add Records"
-msgstr "Magdagdag ng mga Rekord"
-
-#: 
-msgid "Edit Records"
-msgstr "I-edit ang mga Rekord"
-
-#: 
-msgid "Delete Records"
-msgstr "Burahin ang mga Rekord"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Pamahalaan ang mga Katangian at Klasipikasyon"
 
@@ -2028,14 +2016,6 @@ msgstr "Pamahalaan ang mga Grupo at Papel"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Pamahalaan ang mga Donasyon at Pananalapi"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Tingnan, Magdagdag at Mag-edit ng mga Tala"
-
-#: 
-msgid "Edit Self"
-msgstr "I-edit ang Sarili"
 
 #: 
 msgid "Admin"
@@ -2937,10 +2917,6 @@ msgstr "Magdagdag ng mga Nagbibigay sa Listahan ng Mamimili"
 #: 
 msgid "Data/Reports"
 msgstr "Data/Mga Ulat"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu ng Query"
 
 #: 
 msgid "Family Properties"
@@ -5549,10 +5525,6 @@ msgstr "Hebreo"
 #: 
 msgid "Permissions"
 msgstr "Mga Pahintulot"
-
-#: 
-msgid "Manage Notes"
-msgstr "Pamahalaan ang mga Tala"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11007,10 +10979,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Ang may-akda ng tala o isang admin lamang ang maaaring burahin ang talang ito"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Ang may-akda ng tala o isang admin lamang ang maaaring i-edit ang talang ito"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Pangkalahatang-tanaw ng mga kaganapan ng simbahan, presensya, at aktibidad"
 
@@ -12617,10 +12585,6 @@ msgstr "Database lamang (.sql) o kumpletong archive (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Default na bilang ng mga hanay na ipinapakita sa mga talahanayan ng datos. Magkakabisa sa susunod na pag-load ng pahina."
 
-#: 
-msgid "Edit own family only"
-msgstr "I-edit ang sariling pamilya lamang"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12633,10 +12597,6 @@ msgstr "Pagwawasto ng mga maling o hindi angkop na pagsasalin sa inyong wika"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Nakahanap ng bug sa mga pagsasalin?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Nagbibigay ng lahat ng pribilehiyo"
 
 #: 
 msgid "Green"
@@ -14598,10 +14558,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Wala kang pahintulot na i-edit ang talang ito."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Pribadong Tala — nakikita lamang ng tagalikha]"
-
-#: 
 msgid "seconds"
 msgstr "segundo"
 
@@ -15000,10 +14956,6 @@ msgstr "I-download ang Backup at Magpatuloy"
 #: 
 msgid "Downloaded"
 msgstr "Na-download"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Dina-download ang pinakabagong release mula sa GitHub..."
 
 #: 
 msgid "Duration"
@@ -16252,6 +16204,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% ng teksto ng interface ay isinalin para sa wikang ito."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Hindi pinahintulutan ang access"
 
@@ -16306,6 +16262,14 @@ msgstr "Araw, 2 digit"
 #: 
 msgid "Day, no leading zero"
 msgstr "Araw, walang nangunguna na zero"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Default: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Default: (999) 999-9999 x99999"
 
 #: 
 msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
@@ -16472,6 +16436,10 @@ msgid "Year, 4 digits"
 msgstr "Taon, 4 digit"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "nakaraan"
 
@@ -16479,4 +16447,272 @@ msgstr "nakaraan"
 #: 
 msgid "Croatian"
 msgstr "Kroasya"
+
+#: 
+msgid "%s's Account"
+msgstr "Account ni %s"
+
+#: 
+msgid "Access level"
+msgstr "Antas ng access"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Ang mga administrador ay may buong access sa lahat ng tampok at datos. Hindi naaangkop ang mga indibidwal na pahintulot."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Ang lahat ng mga gumagamit ay makakatingin ng mga miyembro ng kongregasyon. Hindi maaaring alisin ang pahintulot na ito."
+
+#: 
+msgid "Always granted"
+msgstr "Palaging ibinibigay"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Maaari lamang suriin at i-verify ang kanilang sariling pamilya. Walang ibang access."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Pumili ng mga tiyak na pahintulot sa ibaba."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Makipag-ugnayan sa isang administrador upang baguhin ang iyong mga pahintulot."
+
+#: 
+msgid "Custom permissions"
+msgstr "Mga pasadyang pahintulot"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Buong access — ibinibigay ang lahat ng pribilehiyo."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Bigyan ng mga indibidwal na pahintulot:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Kung kailangan mo ng karagdagang access, makipag-ugnayan sa iyong administrador ng simbahan."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Mga Tao &amp; Mga Pamilya"
+
+#: 
+msgid "Self-service only"
+msgstr "Self-service lamang"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Ang talang sinusubukan mong i-edit ay wala na."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Ang gumagamit na ito ay maaari lamang suriin at i-update ang kanilang sariling profile ng pamilya. Hindi naaangkop ang mga indibidwal na pahintulot."
+
+#: 
+msgid "User List"
+msgstr "Listahan ng mga Gumagamit"
+
+#: 
+msgid "View Person"
+msgstr "Tingnan ang Tao"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Wala kang pahintulot na magdagdag ng tala para sa pamilyang ito."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Wala kang pahintulot na magdagdag ng tala para sa taong ito."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Wala kang pahintulot na i-edit ang talang ito"
+
+#: 
+msgid "Account locked"
+msgstr "Naka-lock ang account"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Naka-lock ang account dahil sa napakaraming nabigong pagtatangkang mag-login"
+
+#: 
+msgid "Account status"
+msgstr "Katayuan ng account"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Advanced: pumili ng partikular na target na bersyon"
+
+#: 
+msgid "Bug Fix"
+msgstr "Pag-aayos ng bug"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Sa default, dina-download ng wizard ang susunod na inirerekomendang release. Maaari kang pumili ng anumang available na bersyon sa ibaba."
+
+#: 
+msgid "Change required"
+msgstr "Kinakailangan ang pagbabago"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Magpatuloy Kahit Paano"
+
+#: 
+msgid "Could not load release information."
+msgstr "Hindi ma-load ang impormasyon ng release."
+
+#: 
+msgid "Download & Install"
+msgstr "I-download at I-install"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "I-download ang bersyon {{version}} at ilapat ito sa iyong installation."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Dina-download ang release mula sa GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Mga nabigong pagtatangkang mag-login"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nabigo sa pagkuha ng preview ng upgrade"
+
+#: 
+msgid "Full changelog"
+msgstr "Buong changelog"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "I-install ang stable {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Ini-install ang susunod na release"
+
+#: 
+msgid "Invalid file path"
+msgstr "Di-wastong file path"
+
+#: 
+msgid "Invalid version format"
+msgstr "Di-wastong format ng bersyon"
+
+#: 
+msgid "Last login"
+msgstr "Huling login"
+
+#: 
+msgid "Loading release information..."
+msgstr "Nilo-load ang impormasyon ng release..."
+
+#: 
+msgid "Locked"
+msgstr "Naka-lock"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Nawawalang mga kinakailangang field: fullPath at sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Kailangang baguhin ang password"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Walang available na release notes para sa bersyong ito."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Walang available na upgrade para sa iyong kasalukuyang bersyon."
+
+#: 
+msgid "Password change required"
+msgstr "Kinakailangan ang pagbabago ng password"
+
+#: 
+msgid "Password status"
+msgstr "Katayuan ng password"
+
+#: 
+msgid "Re-install current version"
+msgstr "I-re-install ang kasalukuyang bersyon"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Nabigo ang pag-restore at maaaring nasa hindi kumpletong estado ang database. Suriin ang application log para sa mga detalye, pagkatapos ay i-restore ang isang kilalang-magandang backup bago gamitin ang sistema."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Nabigo ang pag-restore: tila hindi kumpleto ang backup file o hindi ito isang valid na SQL backup. Nasa hindi kumpletong estado na ang database — i-restore ang isang kilalang-magandang backup bago gamitin ang sistema."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Nagpapatakbo ng Pre-release"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Ipakita ang buong upgrade path"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Ang pinakabagong stable na release ay {{version}}. Maaari mo itong i-reinstall sa ibaba."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Naka-lock ang account na ito dahil sa napakaraming nabigong pagtatangkang mag-login."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Kailangang magtakda ng bagong password ang user na ito sa susunod na pag-sign in nila."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Kailangang baguhin ng user ang kanilang password sa susunod na login"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Ang user ay dapat may pahintulot sa Email"
+
+#: 
+msgid "View release notes"
+msgstr "Tingnan ang mga release notes"
+
+#: 
+msgid "What's New"
+msgstr "Ano ang Bago"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Ano ang Bago sa {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Ikaw ay <strong>{{releaseCount}}</strong> na release ang napalampas. Narito ang makukuha mo:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Nagpapatakbo ka ng pre-release na bersyon."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Maaari ka pa ring magpatuloy sa upgrade nang hindi tinitingnan ang mga release notes."
+
+#: 
+msgid "You're up to date!"
+msgstr "Napapanahon ka na!"
 

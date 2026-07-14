@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 /**
- * UX for the UserEditor "Access level" selector (Administrator / Self-service /
+ * UX for the user editor "Access level" selector (Administrator / Self-service /
  * Custom). Selecting a mode drives the hidden Admin/EditSelf flags and shows or
  * hides the Custom module-permission panel, so EditSelf can never coexist with
  * module or admin permissions.
@@ -14,7 +14,7 @@
 describe("User Editor - Access level selector (Admin/Self-service/Custom)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
-        cy.visit("UserEditor.php?PersonID=1");
+        cy.visit("admin/system/users/1/edit");
         cy.contains("User Editor");
     });
 

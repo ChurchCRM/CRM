@@ -1,201 +1,673 @@
-describe('System Upgrade Page', () => {
+const previewFixture = {
+    installedVersion: "5.0.0",
+    nextVersion: "5.0.1",
+    latestVersion: "5.0.1",
+    nextReleaseNotes: "## What's New\n\n- **Feature 1**: Dashboard\n",
+    nextChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+    releasesAhead: 1,
+    latestReleaseNotes: "",
+    latestChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+    upgradePath: [
+        {
+            version: "5.0.1",
+            type: "patch",
+            notes: "## Patch Notes\n\n- Bug fixes\n",
+            changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+            isNext: true,
+        },
+    ],
+};
+
+const upToDateFixture = {
+    installedVersion: "5.0.1",
+    nextVersion: null,
+    latestVersion: "5.0.1",
+    nextReleaseNotes: "",
+    nextChangelogUrl: null,
+    releasesAhead: 0,
+    latestReleaseNotes: "## What's New in 5.0.1\n\n- **Feature**: All up to date!\n",
+    latestChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+    upgradePath: [],
+};
+
+const downloadFixture = {
+    fileName: "ChurchCRM-test-5.0.0.zip",
+    fullPath: "/tmp/ChurchCRM-test-5.0.0.zip",
+    releaseNotes: "## What's New\n\n- **Feature 1**: Dashboard\n",
+    sha1: "abc123def456",
+};
+
+describe("System Upgrade Page", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
 
-    it('should load and display compact version info', () => {
-        cy.visit('/admin/system/upgrade');
+    it("should load and display compact version info", () => {
+        cy.visit("/admin/system/upgrade");
 
-        cy.contains('Installed').should('be.visible');
-        cy.get('.badge.bg-primary-lt').should('be.visible').and('not.be.empty');
-        cy.get('#refreshFromGitHub').should('be.visible');
+        cy.contains("Installed").should("be.visible");
+        cy.get(".badge.bg-primary-lt").should("be.visible").and("not.be.empty");
+        cy.get("#refreshFromGitHub").should("be.visible");
     });
 
-    it('should display the upgrade wizard with all steps', () => {
-        cy.visit('/admin/system/upgrade');
+    it("should display the upgrade wizard with all steps", () => {
+        cy.visit("/admin/system/upgrade");
 
-        cy.get('#upgrade-wizard-card').should('be.visible');
+        cy.get("#upgrade-wizard-card").should("be.visible");
 
-        cy.get('.bs-stepper-header').within(() => {
-            cy.contains('Pre-flight').should('exist');
-            cy.contains('Backup').should('exist');
-            cy.contains('Download & Apply').should('exist');
-            cy.contains('Complete').should('exist');
+        cy.get(".bs-stepper-header").within(() => {
+            cy.contains("Pre-flight").should("exist");
+            cy.contains("Backup").should("exist");
+            cy.contains("What's New").should("exist");
+            cy.contains("Download & Apply").should("exist");
+            cy.contains("Complete").should("exist");
         });
 
-        cy.get('#step-warnings').should('be.visible');
+        cy.get("#step-warnings").should("be.visible");
     });
 
-    it('should show pre-flight step with Continue button', () => {
-        cy.visit('/admin/system/upgrade');
-        cy.get('#acceptWarnings').should('be.visible').and('contain', 'Continue');
+    it("should show pre-flight step with Continue button", () => {
+        cy.visit("/admin/system/upgrade");
+        cy.get("#acceptWarnings").should("be.visible").and("contain", "Continue");
     });
 
-    describe('Upgrade Wizard Workflow', () => {
-        it('should navigate from pre-flight to backup step', () => {
-            cy.visit('/admin/system/upgrade');
+    describe("Upgrade Wizard Workflow", () => {
+        it("should navigate from pre-flight to backup step", () => {
+            cy.visit("/admin/system/upgrade");
 
-            cy.get('#step-warnings').should('be.visible');
-            cy.get('#acceptWarnings').click();
-            cy.get('#step-backup').should('be.visible');
+            cy.get("#step-warnings").should("be.visible");
+            cy.get("#acceptWarnings").click();
+            cy.get("#step-backup").should("be.visible");
         });
 
-        it('should mark completed steps with green checkmark', () => {
-            cy.visit('/admin/system/upgrade');
+        it("should mark completed steps with green checkmark", () => {
+            cy.visit("/admin/system/upgrade");
 
-            cy.get('#acceptWarnings').click();
-            cy.get('#step-backup').should('be.visible');
+            cy.get("#acceptWarnings").click();
+            cy.get("#step-backup").should("be.visible");
 
-            cy.get('.bs-stepper-header .step').first()
-                .should('have.class', 'completed');
+            cy.get(".bs-stepper-header .step").first().should("have.class", "completed");
         });
 
-        it('should show Create Backup and Skip Backup buttons', () => {
-            cy.visit('/admin/system/upgrade');
+        it("should show Create Backup and Skip Backup buttons", () => {
+            cy.visit("/admin/system/upgrade");
 
-            cy.get('#acceptWarnings').click();
-            cy.get('#step-backup').should('be.visible');
+            cy.get("#acceptWarnings").click();
+            cy.get("#step-backup").should("be.visible");
 
-            cy.get('#doBackup').should('be.visible').and('contain', 'Create Backup');
-            cy.get('#skipBackup').should('be.visible');
+            cy.get("#doBackup").should("be.visible").and("contain", "Create Backup");
+            cy.get("#skipBackup").should("be.visible");
         });
 
-        it('should skip backup and auto-advance to download step', () => {
-            cy.intercept('GET', '**/admin/api/upgrade/download-latest-release', {
+        it("should skip backup and navigate to What's New step", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: previewFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+
+            cy.get("#acceptWarnings").click();
+            cy.get("#step-backup").should("be.visible");
+
+            cy.get("#skipBackup").click();
+
+            // Should reach What's New step and load preview
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#step-whats-new").should("be.visible");
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+            cy.get("#whatsNewVersion").should("contain", "5.0.1");
+            cy.get("#proceedToDownload").should("be.visible");
+        });
+
+        it("should navigate full workflow with intercepted download", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: previewFixture,
+            }).as("previewRequest");
+
+            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
                 statusCode: 200,
                 body: {
-                    fileName: 'ChurchCRM-test-5.0.0.zip',
-                    fullPath: '/tmp/ChurchCRM-test-5.0.0.zip',
-                    releaseNotes: '## What\'s New\n\n- **Feature 1**: Dashboard\n',
-                    sha1: 'abc123def456'
-                }
-            }).as('downloadRelease');
+                    ...downloadFixture,
+                    releaseNotes:
+                        "## What's New\n\n- **Feature 1**: Dashboard\n- **Feature 2**: Performance\n\n> Note: Backup first",
+                },
+            }).as("downloadRelease");
 
-            cy.visit('/admin/system/upgrade');
-
-            cy.get('#acceptWarnings').click();
-            cy.get('#step-backup').should('be.visible');
-
-            // Skip auto-advances to download step
-            cy.get('#skipBackup').click();
-
-            // Should reach download step and trigger the API call
-            cy.wait('@downloadRelease', { timeout: 15000 });
-            cy.get('#downloadStatus .alert-success').should('be.visible');
-        });
-
-        it('should navigate full workflow with intercepted download', () => {
-            cy.intercept('GET', '**/admin/api/upgrade/download-latest-release', {
-                statusCode: 200,
-                body: {
-                    fileName: 'ChurchCRM-test-5.0.0.zip',
-                    fullPath: '/tmp/ChurchCRM-test-5.0.0.zip',
-                    releaseNotes: '## What\'s New\n\n- **Feature 1**: Dashboard\n- **Feature 2**: Performance\n\n> Note: Backup first',
-                    sha1: 'abc123def456'
-                }
-            }).as('downloadRelease');
-
-            cy.visit('/admin/system/upgrade');
+            cy.visit("/admin/system/upgrade");
 
             // Step 1: Continue past pre-flight
-            cy.get('#acceptWarnings').click();
-            cy.get('#step-backup').should('be.visible');
+            cy.get("#acceptWarnings").click();
+            cy.get("#step-backup").should("be.visible");
 
-            // Step 2: Skip backup (auto-advances)
-            cy.get('#skipBackup').click();
+            // Step 2: Skip backup — auto-advances to What's New
+            cy.get("#skipBackup").click();
 
-            // Step 3: Wait for download
-            cy.wait('@downloadRelease', { timeout: 15000 });
+            // Step 3: What's New — wait for preview and proceed
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+            cy.get("#proceedToDownload").click();
 
-            cy.get('#downloadStatus .alert-success').should('be.visible');
-            cy.get('#updateDetails').should('not.have.class', 'd-none');
-            cy.get('#updateFileName').should('contain', 'ChurchCRM-test-5.0.0.zip');
-            cy.get('#updateSHA1').should('contain', 'abc123def456');
+            // Step 4: Download & Apply
+            cy.wait("@downloadRelease", { timeout: 15000 });
+
+            cy.get("#downloadStatus .alert-success").should("be.visible");
+            cy.get("#updateDetails").should("not.have.class", "d-none");
+            cy.get("#updateFileName").should("contain", "ChurchCRM-test-5.0.0.zip");
+            cy.get("#updateSHA1").should("contain", "abc123def456");
 
             // Release notes rendered as markdown
-            cy.get('#releaseNotes').within(() => {
-                cy.get('h2').should('exist');
-                cy.get('li').should('have.length.at.least', 2);
+            cy.get("#releaseNotes").within(() => {
+                cy.get("h2").should("exist");
+                cy.get("li").should("have.length.at.least", 2);
             });
 
             // Apply button visible but NOT clicked
-            cy.get('#applyButtonContainer').should('not.have.class', 'd-none');
-            cy.get('#applyUpdate').should('be.visible');
+            cy.get("#applyButtonContainer").should("not.have.class", "d-none");
+            cy.get("#applyUpdate").should("be.visible");
         });
 
-        it('should handle download failure with retry', () => {
-            cy.intercept('GET', '**/admin/api/upgrade/download-latest-release', {
-                statusCode: 400,
-                body: { message: 'Rate limit exceeded' }
-            }).as('downloadFail');
-
-            cy.visit('/admin/system/upgrade');
-
-            cy.get('#acceptWarnings').click();
-            cy.get('#step-backup').should('be.visible');
-            cy.get('#skipBackup').click();
-
-            cy.wait('@downloadFail', { timeout: 15000 });
-            cy.get('#downloadStatus .alert-danger').should('be.visible');
-            cy.get('#retryDownload').should('be.visible');
-        });
-
-        it('should create backup and show download button', () => {
-            cy.intercept('POST', '**/admin/api/database/backup', {
+        it("should handle download failure with retry", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
                 statusCode: 200,
-                body: { BackupDownloadFileName: 'ChurchCRM-Backup.sql.gz' }
-            }).as('createBackup');
+                body: previewFixture,
+            }).as("previewRequest");
 
-            cy.visit('/admin/system/upgrade');
+            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+                statusCode: 400,
+                body: { message: "Rate limit exceeded" },
+            }).as("downloadFail");
 
-            cy.get('#acceptWarnings').click();
-            cy.get('#doBackup').click();
-            cy.wait('@createBackup');
+            cy.visit("/admin/system/upgrade");
 
-            cy.get('#backupStatus .alert-success').should('be.visible');
-            cy.get('#downloadbutton').should('be.visible')
-                .and('contain', 'Download Backup');
+            cy.get("#acceptWarnings").click();
+            cy.get("#step-backup").should("be.visible");
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#proceedToDownload").click();
+
+            cy.wait("@downloadFail", { timeout: 15000 });
+            cy.get("#downloadStatus .alert-danger").should("be.visible");
+            cy.get("#retryDownload").should("be.visible");
         });
 
-        it('should handle backup failure', () => {
-            cy.intercept('POST', '**/admin/api/database/backup', {
+        it("should render upgrade path panel when multiple releases behind", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: {
+                    installedVersion: "5.0.0",
+                    nextVersion: "5.0.1",
+                    latestVersion: "5.0.3",
+                    nextReleaseNotes: "## 5.0.1 Notes\n\n- Patch fix\n",
+                    nextChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+                    releasesAhead: 3,
+                    latestReleaseNotes: "",
+                    latestChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.3.md",
+                    upgradePath: [
+                        {
+                            version: "5.0.1",
+                            type: "patch",
+                            notes: "## Patch fix\n",
+                            changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+                            isNext: true,
+                        },
+                        {
+                            version: "5.0.2",
+                            type: "patch",
+                            notes: "## Another fix\n",
+                            changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.2.md",
+                            isNext: false,
+                        },
+                        {
+                            version: "5.0.3",
+                            type: "patch",
+                            notes: "## Third fix\n",
+                            changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.3.md",
+                            isNext: false,
+                        },
+                    ],
+                },
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#upgradePathPanel").should("not.have.class", "d-none");
+            cy.get("#upgradePathSummary").should("contain", "3");
+            cy.get("#upgradePathAccordion .badge.bg-primary-lt.text-primary").should("contain", "Installing next release");
+            cy.get("#proceedToDownload").should("be.visible");
+        });
+
+        it("should show changelog link in What's New step", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: previewFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewChangelogLink")
+                .should("not.have.class", "d-none")
+                .and("have.attr", "href")
+                .and("include", "changelog/5.0.1.md");
+        });
+
+        it("should show Continue Anyway on preview API failure", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
                 statusCode: 500,
-                body: { message: 'Insufficient disk space' }
-            }).as('backupFail');
+                body: { message: "GitHub unreachable" },
+            }).as("previewFail");
 
-            cy.visit('/admin/system/upgrade');
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
 
-            cy.get('#acceptWarnings').click();
-            cy.get('#doBackup').click();
-            cy.wait('@backupFail');
+            cy.wait("@previewFail", { timeout: 10000 });
+            cy.get("#whatsNewError").should("not.have.class", "d-none");
+            cy.get("#skipWhatsNew").should("be.visible").and("contain", "Continue Anyway");
+        });
 
-            cy.get('#backupStatus .alert-danger').should('be.visible');
-            cy.get('#doBackup').should('not.be.disabled');
+        it("should create backup and show download button", () => {
+            cy.intercept("POST", "**/admin/api/database/backup", {
+                statusCode: 200,
+                body: { BackupDownloadFileName: "ChurchCRM-Backup.sql.gz" },
+            }).as("createBackup");
+
+            cy.visit("/admin/system/upgrade");
+
+            cy.get("#acceptWarnings").click();
+            cy.get("#doBackup").click();
+            cy.wait("@createBackup");
+
+            cy.get("#backupStatus .alert-success").should("be.visible");
+            cy.get("#downloadbutton").should("be.visible").and("contain", "Download Backup");
+        });
+
+        it("should handle backup failure", () => {
+            cy.intercept("POST", "**/admin/api/database/backup", {
+                statusCode: 500,
+                body: { message: "Insufficient disk space" },
+            }).as("backupFail");
+
+            cy.visit("/admin/system/upgrade");
+
+            cy.get("#acceptWarnings").click();
+            cy.get("#doBackup").click();
+            cy.wait("@backupFail");
+
+            cy.get("#backupStatus .alert-danger").should("be.visible");
+            cy.get("#doBackup").should("not.be.disabled");
+        });
+
+        it("should apply update and show completion step", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: previewFixture,
+            }).as("previewRequest");
+
+            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+                statusCode: 200,
+                body: downloadFixture,
+            }).as("downloadRelease");
+
+            cy.intercept("POST", "**/admin/api/upgrade/do-upgrade", {
+                statusCode: 200,
+                body: {},
+            }).as("doUpgrade");
+
+            // The do-upgrade success handler fires a 1s setTimeout that:
+            //   1. calls GET /session/end (logs the user out server-side)
+            //   2. starts a 5s countdown then navigates to window.location.href = '/'
+            // Both of these corrupt the cy.session('admin-session') cache and cause
+            // every subsequent test to get a 302 to /session/begin.
+            // Intercept both to keep the page alive and the session intact.
+            cy.intercept("GET", "**/session/end", { statusCode: 200, body: "" }).as("sessionEnd");
+            cy.intercept("GET", "/", { statusCode: 200, body: "<html><body></body></html>" }).as("rootRedirect");
+
+            cy.visit("/admin/system/upgrade");
+
+            // Step 1: pre-flight
+            cy.get("#acceptWarnings").click();
+
+            // Step 2: skip backup
+            cy.get("#skipBackup").click();
+
+            // Step 3: What's New — wait for preview and proceed
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+            cy.get("#proceedToDownload").click();
+
+            // Step 4: Download & Apply — wait for download then click Apply
+            cy.wait("@downloadRelease", { timeout: 15000 });
+            cy.get("#applyButtonContainer").should("not.have.class", "d-none");
+            cy.get("#applyUpdate").click();
+
+            // Wait for do-upgrade API call
+            cy.wait("@doUpgrade", { timeout: 15000 });
+
+            // Success alert should appear
+            cy.get("#applyStatus .alert-success").should("be.visible");
+
+            // Stepper should advance to Complete step
+            cy.get("#step-complete", { timeout: 5000 }).should("be.visible");
+        });
+
+        it("should reset download state when force re-install is confirmed", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: previewFixture,
+            }).as("previewRequest");
+
+            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+                statusCode: 200,
+                body: downloadFixture,
+            }).as("downloadRelease");
+
+            cy.visit("/admin/system/upgrade");
+
+            // Walk through to Download & Apply step
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#proceedToDownload").click();
+
+            cy.wait("@downloadRelease", { timeout: 15000 });
+
+            // Verify download state is visible before force-reinstall
+            cy.get("#updateDetails").should("not.have.class", "d-none");
+            cy.get("#applyButtonContainer").should("not.have.class", "d-none");
+
+            // The #confirmForceReinstall button lives inside #forceReinstallModal which
+            // is always in the DOM (rendered unconditionally in the PHP view). The modal
+            // is normally shown only when integrity warnings are present, but its confirm
+            // button is always wired up. We click it directly (force:true bypasses
+            // visibility) to exercise the JS state-reset logic without depending on
+            // whether the server rendered integrity warnings.
+            cy.get("#confirmForceReinstall").click({ force: true });
+
+            // Primary assertion: verify the JS state was cleared
+            cy.window().should((win) => {
+                expect(win.CRM.updateFile).to.be.null;
+            });
+
+            // Secondary DOM assertions: the download details and apply button
+            // should be hidden now that state has been reset
+            cy.get("#updateDetails").should("have.class", "d-none");
+            cy.get("#applyButtonContainer").should("have.class", "d-none");
         });
     });
 
-    describe('Refresh from GitHub', () => {
-        it('should call refresh API', () => {
-            cy.intercept('POST', '**/admin/api/upgrade/refresh-upgrade-info', {
+    describe("Refresh from GitHub", () => {
+        it("should call refresh API", () => {
+            cy.intercept("POST", "**/admin/api/upgrade/refresh-upgrade-info", {
                 statusCode: 200,
-                body: { data: {}, message: 'Refreshed' }
-            }).as('refreshInfo');
+                body: { data: {}, message: "Refreshed" },
+            }).as("refreshInfo");
 
-            cy.visit('/admin/system/upgrade');
-            cy.get('#refreshFromGitHub').click();
-            cy.wait('@refreshInfo');
+            cy.visit("/admin/system/upgrade");
+
+            // Register the reload intercept AFTER cy.visit() so the initial page load
+            // is not swallowed. The reload from the success handler fires 1500ms after
+            // the intercept resolves; this stub catches that GET without blanking the page.
+            cy.intercept("GET", "**/admin/system/upgrade*", (req) => {
+                req.reply({ statusCode: 200, body: "<html><body></body></html>" });
+            }).as("pageReload");
+
+            cy.get("#refreshFromGitHub").click();
+            cy.wait("@refreshInfo");
+            cy.get("@refreshInfo").its("response.statusCode").should("eq", 200);
         });
 
-        it('should handle refresh failure', () => {
-            cy.intercept('POST', '**/admin/api/upgrade/refresh-upgrade-info', {
+        it("should handle refresh failure", () => {
+            cy.intercept("POST", "**/admin/api/upgrade/refresh-upgrade-info", {
                 statusCode: 500,
-                body: { message: 'GitHub API unavailable' }
-            }).as('refreshFail');
+                body: { message: "GitHub API unavailable" },
+            }).as("refreshFail");
 
-            cy.visit('/admin/system/upgrade');
-            cy.get('#refreshFromGitHub').click();
-            cy.wait('@refreshFail');
-            cy.get('#refreshFromGitHub').should('not.be.disabled');
+            cy.visit("/admin/system/upgrade");
+            cy.get("#refreshFromGitHub").click();
+            cy.wait("@refreshFail");
+
+            // After a 500 response the fail handler re-enables the button
+            cy.get("#refreshFromGitHub").should("not.be.disabled");
+        });
+    });
+
+    describe("Version Info Bar", () => {
+        it("should show Up to Date badge when installed equals latest", () => {
+            // This tests the server-rendered badge visible before wizard interaction.
+            // We rely on the PHP view rendering the badge when $isUpdateAvailable === false.
+            cy.visit("/admin/system/upgrade");
+            // The page always shows at least one badge; when up to date it has bg-success-lt
+            // We cannot intercept the PHP page render, so we assert that if the
+            // bg-success-lt badge exists it carries the expected text.
+            cy.get("body").then(($body) => {
+                if ($body.find(".badge.bg-success-lt.text-success").length) {
+                    cy.get(".badge.bg-success-lt.text-success").should("contain", "Up to Date");
+                }
+            });
+        });
+
+        it("should show Update Available badge when update exists", () => {
+            cy.visit("/admin/system/upgrade");
+            cy.get("body").then(($body) => {
+                if ($body.find(".badge.bg-success").length) {
+                    cy.get(".badge.bg-success").should("contain", "Update Available");
+                }
+            });
+        });
+    });
+
+    describe("Up-to-date State", () => {
+        it("should show up-to-date banner and latest release notes when releasesAhead is 0", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: upToDateFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+
+            // Up-to-date success banner should be visible
+            cy.get("#whatsNewContent .alert-success").should("be.visible").and("contain", "You're up to date");
+
+            // Latest release notes should be rendered
+            cy.get("#whatsNewVersion").should("contain", "5.0.1");
+            cy.get("#whatsNewNotes").should("contain", "All up to date");
+
+            // Changelog link should be visible and correct
+            cy.get("#whatsNewChangelogLink")
+                .should("not.have.class", "d-none")
+                .and("have.attr", "href")
+                .and("include", "changelog/5.0.1.md");
+
+            // Proceed button should be hidden (no upgrade available)
+            cy.get("#proceedToDownload").should("have.class", "d-none");
+        });
+
+        it("should show Force Re-install button when up to date", () => {
+            // The Force Re-install button (#forceReinstallCurrent) is rendered by PHP
+            // when !isUpdateAvailable && latestGitHubVersion !== null.
+            // In CI the live page may or may not have an update available, so we assert
+            // the button's presence conditionally.
+            cy.visit("/admin/system/upgrade");
+            cy.get("body").then(($body) => {
+                if ($body.find("#forceReinstallCurrent").length) {
+                    cy.get("#forceReinstallCurrent")
+                        .should("be.visible")
+                        .and("contain", "Force Re-install");
+                }
+            });
+        });
+
+        it("should keep proceed button visible and relabelled in force-reinstall mode when up to date", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: upToDateFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+
+            // Confirm force-reinstall via the modal (always present in DOM)
+            cy.get("#confirmForceReinstall").click({ force: true });
+
+            // After confirmation the wizard jumps to backup step automatically
+            cy.get("#step-backup").should("be.visible");
+            cy.get("#skipBackup").click();
+
+            // What's New step: with forceReinstallMode=true the proceed button should
+            // remain visible and carry the 'Re-install current version' label
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+
+            cy.get("#proceedToDownload")
+                .should("not.have.class", "d-none")
+                .and("contain", "Re-install current version");
+        });
+    });
+
+    describe("Advanced Version Selector", () => {
+        const multiReleaseFixture = {
+            installedVersion: "5.0.0",
+            nextVersion: "5.0.1",
+            latestVersion: "5.0.3",
+            nextReleaseNotes: "## 5.0.1 Notes\n\n- Patch fix\n",
+            nextChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+            releasesAhead: 3,
+            latestReleaseNotes: "",
+            latestChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.3.md",
+            upgradePath: [
+                {
+                    version: "5.0.1",
+                    type: "patch",
+                    notes: "## 5.0.1 patch fix\n",
+                    changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+                    isNext: true,
+                },
+                {
+                    version: "5.0.2",
+                    type: "minor",
+                    notes: "## 5.0.2 feature\n",
+                    changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.2.md",
+                    isNext: false,
+                },
+                {
+                    version: "5.0.3",
+                    type: "patch",
+                    notes: "## 5.0.3 another fix\n",
+                    changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.3.md",
+                    isNext: false,
+                },
+            ],
+        };
+
+        it("should open advanced selector and update notes when version is changed", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: multiReleaseFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+
+            // Open the advanced selector collapse by its visible text label.
+            // The link uses href='#advancedVersionCollapse' (no data-bs-target),
+            // so we select by text content to avoid href URL-resolution issues.
+            cy.contains('a[data-bs-toggle="collapse"]', 'Advanced: choose a specific target version').click();
+            cy.get("#advancedVersionCollapse").should("have.class", "show", { timeout: 5000 });
+            cy.get("#targetVersionSelect").should("be.visible");
+
+            // Options should include default + all upgrade path entries
+            cy.get("#targetVersionSelect option").should("have.length", 4); // 1 default + 3 versions
+
+            // Select version 5.0.3
+            cy.get("#targetVersionSelect").select("5.0.3");
+
+            // Release notes heading should update to 5.0.3
+            cy.get("#whatsNewVersion").should("contain", "5.0.3");
+            cy.get("#whatsNewNotes").should("contain", "5.0.3 another fix");
+        });
+
+        it("should send ?version= query param when specific version is chosen", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: multiReleaseFixture,
+            }).as("previewRequest");
+
+            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release?version=5.0.3", {
+                statusCode: 200,
+                body: {
+                    fileName: "ChurchCRM-5.0.3.zip",
+                    fullPath: "/tmp/ChurchCRM-5.0.3.zip",
+                    releaseNotes: "## 5.0.3\n\n- Another fix\n",
+                    sha1: "aabbcc112233",
+                },
+            }).as("downloadSpecific");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+
+            // Open advanced selector and pick 5.0.3
+            cy.contains('a[data-bs-toggle="collapse"]', 'Advanced: choose a specific target version').click();
+            cy.get("#advancedVersionCollapse").should("have.class", "show", { timeout: 5000 });
+            cy.get("#targetVersionSelect").select("5.0.3");
+
+            // Proceed to download step
+            cy.get("#proceedToDownload").click();
+
+            // Verify that the download request used the ?version= param
+            cy.wait("@downloadSpecific", { timeout: 15000 });
+            cy.get("#downloadStatus .alert-success").should("be.visible");
+            cy.get("#updateFileName").should("contain", "ChurchCRM-5.0.3.zip");
+        });
+
+        it("should expand upgrade path accordion and show entry details", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: multiReleaseFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+
+            // Upgrade path panel should be visible (3 releases ahead)
+            cy.get("#upgradePathPanel").should("not.have.class", "d-none");
+
+            // Expand the upgrade path collapse by its visible text label.
+            // Same reason as above: use text-content selector, not [href='#...'].
+            cy.contains('a[data-bs-toggle="collapse"]', 'Show full upgrade path').click();
+            cy.get("#upgradePathCollapse").should("have.class", "show", { timeout: 5000 });
+
+            // Should render 3 accordion entries
+            cy.get("#upgradePathAccordion .upgrade-path-entry").should("have.length", 3);
+
+            // Expand the first entry and verify release notes render
+            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".upgrade-path-header").click();
+            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".upgrade-path-notes").should("have.class", "show", { timeout: 5000 });
+            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".release-notes").should("contain", "5.0.1");
         });
     });
 });

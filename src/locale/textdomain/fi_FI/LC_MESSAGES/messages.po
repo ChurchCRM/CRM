@@ -2013,18 +2013,6 @@ msgid "Login Name"
 msgstr "Kirjautumistunnus"
 
 #: 
-msgid "Add Records"
-msgstr "Lisää tietoja"
-
-#: 
-msgid "Edit Records"
-msgstr "Muokkaa tietoja"
-
-#: 
-msgid "Delete Records"
-msgstr "Poista tietoja"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Hallitse ominaisuuksia ja luokitteluja"
 
@@ -2035,14 +2023,6 @@ msgstr "Hallitse ryhmiä ja rooleja"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Hallitse lahjoituksia ja taloutta"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Näytä, lisää ja muokkaa huomautuksia"
-
-#: 
-msgid "Edit Self"
-msgstr "Muokkaa itseään"
 
 #: 
 msgid "Admin"
@@ -2944,10 +2924,6 @@ msgstr "Lisää lahjoittajat ostajalistalle"
 #: 
 msgid "Data/Reports"
 msgstr "Tiedot/Raportit"
-
-#: 
-msgid "Query Menu"
-msgstr "Kyselyvalikko"
 
 #: 
 msgid "Family Properties"
@@ -5551,10 +5527,6 @@ msgstr "Heprea"
 #: 
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
-
-#: 
-msgid "Manage Notes"
-msgstr "Hallitse muistiinpanoja"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -11009,10 +10981,6 @@ msgid "Only the note author or an admin may delete this note"
 msgstr "Vain muistiinpanon kirjoittaja tai ylläpitäjä voi poistaa tämän muistiinpanon"
 
 #: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Vain muistiinpanon kirjoittaja tai ylläpitäjä voi muokata tätä muistiinpanoa"
-
-#: 
 msgid "Overview of church events, attendance, and activity"
 msgstr "Yleiskatsaus seurakunnan tapahtumista, läsnäolosta ja toiminnasta"
 
@@ -12619,10 +12587,6 @@ msgstr "Pelkkä tietokanta (.sql) tai täydellinen arkisto (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Oletusmäärä rivejä tietotauluissa. Tulee voimaan seuraavalla sivun latauksella."
 
-#: 
-msgid "Edit own family only"
-msgstr "Muokkaa vain omaa perhettä"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12635,10 +12599,6 @@ msgstr "Virheellisten tai kömpelöiden käännösten korjaaminen omalla kielell
 #: 
 msgid "Found a bug with translations?"
 msgstr "Löysitkö virheen käännöksissä?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Myöntää kaikki käyttöoikeudet"
 
 #: 
 msgid "Green"
@@ -14600,10 +14560,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Yksityinen muistiinpano — näkyvissä vain luojalle]"
-
-#: 
 msgid "seconds"
 msgstr "sekuntia"
 
@@ -15002,10 +14958,6 @@ msgstr "Lataa varmuuskopio ja jatka"
 #: 
 msgid "Downloaded"
 msgstr "Ladattu"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Ladataan uusinta julkaisua GitHubista..."
 
 #: 
 msgid "Duration"
@@ -16497,4 +16449,292 @@ msgstr "mennyt"
 #: 
 msgid "Croatian"
 msgstr "Kroatialainen"
+
+#: 
+msgid "%s's Account"
+msgstr "%s:n tili"
+
+#: 
+msgid "Access"
+msgstr "Käyttöoikeus"
+
+#: 
+msgid "Access level"
+msgstr "Käyttöoikeustaso"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Järjestelmänvalvojilla on täysi pääsy kaikkiin ominaisuuksiin ja tietoihin. Yksilölliset käyttöoikeudet eivät ole voimassa."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Kaikki käyttäjät voivat tarkastella seurakunnan jäseniä. Tätä käyttöoikeutta ei voi poistaa."
+
+#: 
+msgid "Always granted"
+msgstr "Aina myönnetty"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Voi tarkastella ja vahvistaa vain oman perheensä tiedot. Ei muita käyttöoikeuksia."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Valitse tarkemmat käyttöoikeudet alta."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Ota yhteyttä järjestelmänvalvojaan käyttöoikeuksien muuttamiseksi."
+
+#: 
+msgid "Custom permissions"
+msgstr "Mukautetut käyttöoikeudet"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Täysi käyttöoikeus — myöntää kaikki käyttöoikeudet."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Myönnä yksilölliset käyttöoikeudet:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Jos tarvitset lisää käyttöoikeuksia, ota yhteyttä seurakunnan järjestelmänvalvojaan."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Henkilöt &amp; Perheet"
+
+#: 
+msgid "Self-service"
+msgstr "Itsepalvelu"
+
+#: 
+msgid "Self-service only"
+msgstr "Vain itsepalvelu"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Muokattavaksi yritettävää muistiinpanoa ei enää ole olemassa."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Tämä käyttäjä voi tarkastella ja päivittää vain oman perheensä profiilia. Yksilölliset käyttöoikeudet eivät ole voimassa."
+
+#: 
+msgid "User List"
+msgstr "Käyttäjäluettelo"
+
+#: 
+msgid "View Person"
+msgstr "Tarkastele henkilöä"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tähän perheeseen."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tälle henkilölle."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa"
+
+#: 
+msgid "Account locked"
+msgstr "Tili lukittu"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Tili lukittu liian monien epäonnistuneiden kirjautumisyritysten vuoksi"
+
+#: 
+msgid "Account status"
+msgstr "Tilin tila"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Lisäasetukset: valitse tietty kohdeversio"
+
+#: 
+msgid "Bug Fix"
+msgstr "Vikorjaus"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Oletuksena ohjattu toiminto lataa seuraavan suositellun julkaisun. Voit myös valita minkä tahansa saatavilla olevan version alla."
+
+#: 
+msgid "Change required"
+msgstr "Muutos vaaditaan"
+
+#: 
+msgid "Changelog"
+msgstr "Muutosloki"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Jatka silti"
+
+#: 
+msgid "Could not load release information."
+msgstr "Julkaisutietoja ei voitu ladata."
+
+#: 
+msgid "Download & Install"
+msgstr "Lataa ja asenna"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Lataa versio {{version}} ja ota se käyttöön asennuksessasi."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Ladataan julkaisua GitHubista..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Epäonnistuneet kirjautumisyritykset"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Päivityksen esikatselun hakeminen epäonnistui"
+
+#: 
+msgid "Feature"
+msgstr "Ominaisuus"
+
+#: 
+msgid "Full changelog"
+msgstr "Täydellinen muutosloki"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Asenna vakaa versio {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Asennetaan seuraavaa julkaisua"
+
+#: 
+msgid "Invalid file path"
+msgstr "Virheellinen tiedostopolku"
+
+#: 
+msgid "Invalid version format"
+msgstr "Virheellinen versiomuoto"
+
+#: 
+msgid "Last login"
+msgstr "Viimeisin kirjautuminen"
+
+#: 
+msgid "Loading release information..."
+msgstr "Ladataan julkaisutietoja..."
+
+#: 
+msgid "Locked"
+msgstr "Lukittu"
+
+#: 
+msgid "Major"
+msgstr "Pääversio"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Puuttuvat pakolliset kentät: fullPath ja sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Salasana on vaihdettava"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Tälle versiolle ei ole julkaisutietoja saatavilla."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nykyiselle versiolle ei ole päivityksiä saatavilla."
+
+#: 
+msgid "Password change required"
+msgstr "Salasanan vaihto vaaditaan"
+
+#: 
+msgid "Password status"
+msgstr "Salasanan tila"
+
+#: 
+msgid "Re-install current version"
+msgstr "Asenna nykyinen versio uudelleen"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Palautus epäonnistui ja tietokanta saattaa olla epätäydellisessä tilassa. Tarkista sovelluksen lokitiedot ja palauta tunnetusti toimiva varmuuskopio ennen järjestelmän käyttöä."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Palautus epäonnistui: varmuuskopiotiedosto näyttää olevan epätäydellinen tai se ei ole kelvollinen SQL-varmuuskopio. Tietokanta on nyt epätäydellisessä tilassa — palauta tunnetusti toimiva varmuuskopio ennen järjestelmän käyttöä."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Käynnissä esijulkaisuversio"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Näytä koko päivityspolku"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Uusin vakaa julkaisu on {{version}}. Voit asentaa sen uudelleen alla."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tämä tili on lukittu liian monien epäonnistuneiden kirjautumisyritysten vuoksi."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tämän käyttäjän on asetettava uusi salasana seuraavalla kirjautumiskerralla."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Käyttäjän on vaihdettava salasanansa seuraavalla kirjautumiskerralla"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Käyttäjällä on oltava sähköpostioikeus"
+
+#: 
+msgid "View release notes"
+msgstr "Näytä julkaisutiedot"
+
+#: 
+msgid "What's New"
+msgstr "Uutta"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Uutta versiossa {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Olet <strong>{{releaseCount}}</strong> julkaisua jäljessä. Tässä mitä saat:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Käytät esijulkaisuversiota."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Voit silti jatkaa päivitystä katsomatta julkaisutietoja."
+
+#: 
+msgid "You're up to date!"
+msgstr "Olet ajan tasalla!"
 

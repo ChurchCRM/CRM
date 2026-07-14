@@ -318,7 +318,7 @@ class DemoDataService
                     $basename = basename($famData['photo']);
                     $src = self::DATA_PATH . '/images/families/' . $basename;
 
-                    if (!$this->importDemoPhotoForEntity($src, $family, 'family')) {
+                    if (!$this->importDemoPhotoForEntity($src, $family, 'Family')) {
                         $this->addWarning("Failed to import family photo for family '{$family->getName()}'", ['src' => $src, 'family_id' => $family->getId()]);
                     }
                 }
@@ -370,7 +370,7 @@ class DemoDataService
                             $basename = basename($m['photo']);
                             $src = self::DATA_PATH . '/images/people/' . $basename;
 
-                            if (!$this->importDemoPhotoForEntity($src, $person, 'person')) {
+                            if (!$this->importDemoPhotoForEntity($src, $person, 'Person')) {
                                 $this->addWarning("Failed to import person photo for {$person->getFirstName()} {$person->getLastName()}", ['src' => $src, 'person_id' => $person->getId()]);
                             }
                         }

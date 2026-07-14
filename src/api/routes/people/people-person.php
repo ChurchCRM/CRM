@@ -243,7 +243,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/addToCart', function (Request $request, Response $response, array $args): Response {
         Cart::addPerson($args['personId']);
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(new EditRecordsRoleAuthMiddleware());
 })->add(new PersonMiddleware());
 
 /**
