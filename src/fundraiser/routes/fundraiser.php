@@ -4,9 +4,11 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
+use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -15,15 +17,17 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-// GET /fundraiser/ — fundraiser listing (migrated from FindFundRaiser.php)
+// GET /fundraiser/ — fundraiser listing
 $app->get('/', function (Request $request, Response $response): Response {
-    $params = $request->getQueryParams();
+    $params      = $request->getQueryParams();
     $sDateFormat = SystemConfig::getValue('sDatePickerFormat');
 
     $fundraisersQuery = FundRaiserQuery::create()->orderByDate('desc');
 
-    $dateStart = '';
-    $dateEnd = '';
+    $dateStart    = '';
+    $dateEnd      = '';
+    $filterStatus = '';
+    $filterType   = '';
 
     if (!empty($params['dateStart'])) {
         $dateStart = InputUtils::legacyFilterInput($params['dateStart']);
@@ -45,21 +49,141 @@ $app->get('/', function (Request $request, Response $response): Response {
         }
     }
 
-    $fundraisers = $fundraisersQuery->find();
+    if (!empty($params['filterStatus'])) {
+        $filterStatus = InputUtils::legacyFilterInput($params['filterStatus']);
+        if (in_array($filterStatus, ['Planning', 'Active', 'Closed'], true)) {
+            $fundraisersQuery->filterByStatus($filterStatus);
+        }
+    }
+
+    if (!empty($params['filterType'])) {
+        $filterType = InputUtils::legacyFilterInput($params['filterType']);
+        $allowedTypes = ['Auction', 'Silent Auction', 'Live Auction', 'Raffle', 'Gala', 'Mixed'];
+        if (in_array($filterType, $allowedTypes, true)) {
+            $fundraisersQuery->filterByType($filterType);
+        } else {
+            $filterType = ''; // ignore invalid type
+        }
+    }
+
+    $allFundraisers = $fundraisersQuery->find();
+
+    // Split into active vs archived using DateTimeUtils so the church timezone is applied.
+    // When a status filter is explicitly active the user intends to see all matching rows
+    // in the active table (no date-based override into archive).
+    $today            = DateTimeUtils::getToday();
+    $activeFundraisers   = [];
+    $archivedFundraisers = [];
+    foreach ($allFundraisers as $fr) {
+        $status = $fr->getStatus() ?? 'Active';
+        $effectiveEnd = $fr->getEndDate() ?? $fr->getDate();
+        $isArchived = $filterStatus === ''
+            && ($status === 'Closed' || ($effectiveEnd !== null && $effectiveEnd < $today));
+        if ($isArchived) {
+            $archivedFundraisers[] = $fr;
+        } else {
+            $activeFundraisers[] = $fr;
+        }
+    }
+
+    // Aggregates (single grouped queries — no N+1)
+    $service     = new FundRaiserService();
+    $summaries   = $service->getListSummaries();
+    $widgetStats = $service->getWidgetStats();
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     return $renderer->render($response, 'fundraiser-list.php', [
-        'sRootPath'     => SystemURLs::getRootPath(),
-        'sPageTitle'    => gettext('Fundraiser Listing'),
-        'sPageSubtitle' => gettext('Browse and search fundraiser campaigns'),
-        'aBreadcrumbs'  => PageHeader::breadcrumbs([
+        'sRootPath'           => SystemURLs::getRootPath(),
+        'sPageTitle'          => gettext('Fundraiser Listing'),
+        'sPageSubtitle'       => gettext('Browse and search fundraiser campaigns'),
+        'aBreadcrumbs'        => PageHeader::breadcrumbs([
             [gettext('Fundraiser')],
         ]),
-        'fundraisers'  => $fundraisers,
-        'sDateFormat'  => $sDateFormat,
-        'dateStart'    => $dateStart,
-        'dateEnd'      => $dateEnd,
+        'activeFundraisers'   => $activeFundraisers,
+        'archivedFundraisers' => $archivedFundraisers,
+        'summaries'           => $summaries,
+        'widgetStats'         => $widgetStats,
+        'sDateFormat'         => $sDateFormat,
+        'dateStart'           => $dateStart,
+        'dateEnd'             => $dateEnd,
+        'filterStatus'        => $filterStatus,
+        'filterType'          => $filterType,
+    ]);
+});
+
+// GET /fundraiser/view/{fundraiserId} — read-only summary page
+$app->get('/view/{fundraiserId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
+    $fundraiserId = (int) $args['fundraiserId'];
+
+    $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
+    if ($fundraiser === null) {
+        return $response
+            ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/')
+            ->withStatus(302);
+    }
+
+    $_SESSION['iCurrentFundraiser'] = $fundraiserId;
+
+    // Load donated items with donor/buyer person map
+    $donatedItems = DonatedItemQuery::create()
+        ->filterByFrId($fundraiserId)
+        ->addAscendingOrderByColumn('SUBSTR(di_item,1,1)')
+        ->addAscendingOrderByColumn('cast(SUBSTR(di_item,2) as unsigned integer)')
+        ->addAscendingOrderByColumn('SUBSTR(di_item,4)')
+        ->find();
+
+    $personIds = [];
+    foreach ($donatedItems as $item) {
+        if ($item->getDonorId()) {
+            $personIds[] = (int) $item->getDonorId();
+        }
+        if ($item->getBuyerId()) {
+            $personIds[] = (int) $item->getBuyerId();
+        }
+    }
+    $personMap = [];
+    if (!empty($personIds)) {
+        foreach (PersonQuery::create()->findPks(array_unique($personIds)) as $person) {
+            $personMap[$person->getId()] = $person;
+        }
+    }
+
+    // Resolve linked donation fund name
+    $fundName = null;
+    if ($fundraiser->getFundId() !== null) {
+        $fund = DonationFundQuery::create()->findPk($fundraiser->getFundId());
+        if ($fund !== null) {
+            $fundName = $fund->getName();
+        }
+    }
+
+    // Aggregate stats (no N+1)
+    $service   = new FundRaiserService();
+    $viewModel = $service->getViewModel($fundraiserId);
+
+    $currentUser  = AuthenticationManager::getCurrentUser();
+    $canEdit      = $currentUser->isManageFundraisersEnabled();
+    $sDateFormat  = SystemConfig::getValue('sDatePickerFormat');
+
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+    return $renderer->render($response, 'fundraiser-view.php', [
+        'sRootPath'     => SystemURLs::getRootPath(),
+        'sPageTitle'    => $fundraiser->getTitle(),
+        'sPageSubtitle' => gettext('Fundraiser Overview'),
+        'aBreadcrumbs'  => PageHeader::breadcrumbs([
+            [gettext('Fundraiser'), '/fundraiser/'],
+            [$fundraiser->getTitle()],
+        ]),
+        'fundraiser'    => $fundraiser,
+        'fundraiserId'  => $fundraiserId,
+        'donatedItems'  => $donatedItems,
+        'personMap'     => $personMap,
+        'fundName'      => $fundName,
+        'viewModel'     => $viewModel,
+        'canEdit'       => $canEdit,
+        'sDateFormat'   => $sDateFormat,
     ]);
 });
 
@@ -236,6 +360,9 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
         $fundraiser->save();
     }
 
+    // Invalidate the session-cached active count so Menu.php refreshes it.
+    unset($_SESSION['iFundraiserActiveCount']);
+
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
     return $response
@@ -261,6 +388,9 @@ $app->post('/{fundraiserId}/delete', function (Request $request, Response $respo
             $fundraiser->delete();
         }
     }
+
+    // Invalidate the session-cached active count so Menu.php refreshes it.
+    unset($_SESSION['iFundraiserActiveCount']);
 
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/')

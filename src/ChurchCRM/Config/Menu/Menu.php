@@ -4,6 +4,7 @@ namespace ChurchCRM\Config\Menu;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
@@ -306,7 +307,21 @@ class Menu
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'fundraiser/editor', true, 'fa-circle-plus'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), $addDonorsUrl, true, 'fa-user-plus'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('View Buyers'), $viewBuyersUrl, true, 'fa-users'));
-        $fundraiserMenu->addCounter(new MenuCounter('iCurrentFundraiser', 'bg-blue', $iCurrentFundraiser));
+        // Show count of active/planning fundraisers instead of a raw session ID.
+        // Cached in $_SESSION to avoid a DB query on every page load; the landing
+        // page route and the editor/delete routes reset it on state changes.
+        if (!isset($_SESSION['iFundraiserActiveCount'])) {
+            try {
+                $_SESSION['iFundraiserActiveCount'] = FundRaiserQuery::create()
+                    ->filterByStatus(['Active', 'Planning'])
+                    ->count();
+            } catch (\Throwable $e) {
+                $_SESSION['iFundraiserActiveCount'] = 0;
+            }
+        }
+        $activeFundraiserCount = (int) $_SESSION['iFundraiserActiveCount'];
+
+        $fundraiserMenu->addCounter(new MenuCounter('activeFundraisers', 'bg-blue', $activeFundraiserCount, gettext('Active Fundraisers')));
 
         return $fundraiserMenu;
     }

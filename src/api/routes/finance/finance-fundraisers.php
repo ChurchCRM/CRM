@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageFundraisersRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -21,17 +22,74 @@ use Slim\Routing\RouteCollectorProxy;
  */
 
 /**
+ * Apply optional extra fields (endDate, status, goalAmount, type, fundId) from a request body
+ * to a FundRaiser model. Returns a 400 error Response on validation failure, or null on success.
+ */
+function applyFundraiserFields(FundRaiser $fr, array $input, Response $response): ?Response
+{
+    if (array_key_exists('endDate', $input)) {
+        $endDate = trim((string) ($input['endDate'] ?? ''));
+        if ($endDate !== '') {
+            $parsedEnd = \DateTime::createFromFormat('Y-m-d', $endDate);
+            if ($parsedEnd === false || $parsedEnd->format('Y-m-d') !== $endDate) {
+                return SlimUtils::renderErrorJSON($response, gettext('Not a valid end date'), [], 400);
+            }
+            // End date must not precede start date.
+            $startDate = $fr->getDate();
+            if ($startDate !== null && $parsedEnd < $startDate) {
+                return SlimUtils::renderErrorJSON($response, gettext('End date must be on or after the start date'), [], 400);
+            }
+            $fr->setEndDate($endDate);
+        } else {
+            $fr->setEndDate(null);
+        }
+    }
+    if (array_key_exists('status', $input)) {
+        $status = (string) ($input['status'] ?? 'Active');
+        if (!in_array($status, ['Planning', 'Active', 'Closed'], true)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid status value'), [], 400);
+        }
+        $fr->setStatus($status);
+    }
+    if (array_key_exists('goalAmount', $input)) {
+        $goal = $input['goalAmount'];
+        $fr->setGoalAmount($goal !== null && $goal !== '' ? (float) $goal : null);
+    }
+    if (array_key_exists('type', $input)) {
+        $type = (string) ($input['type'] ?? 'Auction');
+        $allowedTypes = ['Silent Auction', 'Live Auction', 'Raffle', 'Gala', 'Mixed', 'Auction'];
+        if (!in_array($type, $allowedTypes, true)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid type value'), [], 400);
+        }
+        $fr->setType($type);
+    }
+    if (array_key_exists('fundId', $input)) {
+        $fundId = $input['fundId'];
+        $fr->setFundId($fundId !== null && $fundId !== '' ? (int) $fundId : null);
+    }
+    return null;
+}
+
+/**
  * Convert a FundRaiser model to a plain array safe for JSON output.
  */
 function fundraiserToArray(FundRaiser $fr): array
 {
+    $goalAmount = $fr->getGoalAmount() !== null ? (float) $fr->getGoalAmount() : null;
+
     return [
-        'id'          => (int) $fr->getId(),
-        'title'       => $fr->getTitle(),
-        'description' => $fr->getDescription(),
-        'date'        => $fr->getDate() !== null ? $fr->getDate()->format('Y-m-d') : null,
-        'enteredBy'   => (int) $fr->getEnteredBy(),
-        'enteredDate' => $fr->getEnteredDate() !== null ? $fr->getEnteredDate()->format('Y-m-d') : null,
+        'id'                    => (int) $fr->getId(),
+        'title'                 => $fr->getTitle(),
+        'description'           => $fr->getDescription(),
+        'date'                  => $fr->getDate() !== null ? $fr->getDate()->format('Y-m-d') : null,
+        'endDate'               => $fr->getEndDate() !== null ? $fr->getEndDate()->format('Y-m-d') : null,
+        'status'                => $fr->getStatus(),
+        'goalAmount'            => $goalAmount,
+        'goalAmount_formatted'  => $goalAmount !== null ? CurrencyFormatter::format($goalAmount) : null,
+        'type'                  => $fr->getType(),
+        'fundId'                => $fr->getFundId() !== null ? (int) $fr->getFundId() : null,
+        'enteredBy'             => (int) $fr->getEnteredBy(),
+        'enteredDate'           => $fr->getEnteredDate() !== null ? $fr->getEnteredDate()->format('Y-m-d') : null,
     ];
 }
 
@@ -104,9 +162,15 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             $fr->setTitle($title);
             $fr->setDescription($description);
             $fr->setDate($date);
+            $fieldErr = applyFundraiserFields($fr, $input, $response);
+            if ($fieldErr !== null) {
+                return $fieldErr;
+            }
             $fr->setEnteredBy((int) AuthenticationManager::getCurrentUser()->getId());
             $fr->setEnteredDate(DateTimeUtils::getToday()->format('Y-m-d'));
             $fr->save();
+            // Invalidate menu counter cache (new fundraiser may affect active count).
+            unset($_SESSION['iFundraiserActiveCount']);
 
             return SlimUtils::renderJSON($response, ['fundraiser' => fundraiserToArray($fr)], 201);
         } catch (\Throwable $e) {
@@ -188,8 +252,14 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
                     $fr->setDate($date);
                 }
             }
+            $fieldErr = applyFundraiserFields($fr, $input, $response);
+            if ($fieldErr !== null) {
+                return $fieldErr;
+            }
 
             $fr->save();
+            // Invalidate menu counter cache (status may have changed).
+            unset($_SESSION['iFundraiserActiveCount']);
 
             return SlimUtils::renderJSON($response, ['fundraiser' => fundraiserToArray($fr)]);
         } catch (\Throwable $e) {
@@ -236,6 +306,8 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             $fr->delete();
+            // Invalidate menu counter cache (fundraiser removed).
+            unset($_SESSION['iFundraiserActiveCount']);
 
             return SlimUtils::renderSuccessJSON($response);
         } catch (\Throwable $e) {

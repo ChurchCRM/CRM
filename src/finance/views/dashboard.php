@@ -148,6 +148,9 @@ $sRootPath = SystemURLs::getRootPath();
                 <a href="<?= $sRootPath ?>/finance/pledge/dashboard" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-handshake me-1"></i><?= gettext('Pledges') ?>
                 </a>
+                <a href="<?= $sRootPath ?>/fundraiser/" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-gavel me-1"></i><?= gettext('Fundraisers') ?>
+                </a>
                 <?php if ($isAdmin): ?>
                 <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-piggy-bank me-1"></i><?= gettext('Manage Funds') ?>

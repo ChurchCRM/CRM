@@ -73,7 +73,7 @@
   },
   "current": {
     "versions": ["7.4.3"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.5.0-fundraiser-fields.sql"],
     "dbVersion": "7.5.0"
   }
 }
