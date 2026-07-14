@@ -1817,6 +1817,10 @@ msgid "Select Property Type"
 msgstr "Odaberi vrstu svojstva"
 
 #: 
+msgid "A"
+msgstr "A"
+
+#: 
 msgid "Entering a Prompt value will allow the association of a free-form value."
 msgstr "Unosom vrijednosti upita omogućuje se pridruživanje vrijednosti slobodnog oblika."
 
@@ -2221,6 +2225,10 @@ msgstr "Promijeni lozinku"
 #: 
 msgid "Home"
 msgstr "Početna"
+
+#: 
+msgid "Font"
+msgstr "Font"
 
 #: 
 msgid "Label Type"
@@ -2659,6 +2667,10 @@ msgid "item"
 msgstr "stavka"
 
 #: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
+
+#: 
 msgid "Buyer # "
 msgstr "Kupac # "
 
@@ -2934,6 +2946,10 @@ msgid "Weekly on"
 msgstr "Tjedno u"
 
 #: 
+msgid "s"
+msgstr "s"
+
+#: 
 msgid "Monthly on"
 msgstr "Mjesečno u"
 
@@ -3045,6 +3061,11 @@ msgstr "Andora"
 
 #. Context: countries
 #: 
+msgid "Angola"
+msgstr "Angola"
+
+#. Context: countries
+#: 
 msgid "Anguilla"
 msgstr "Angvila"
 
@@ -3060,8 +3081,18 @@ msgstr "Antigva i Barbuda"
 
 #. Context: countries
 #: 
+msgid "Argentina"
+msgstr "Argentina"
+
+#. Context: countries
+#: 
 msgid "Armenia (Հայաստան)"
 msgstr "Armenija"
+
+#. Context: countries
+#: 
+msgid "Aruba"
+msgstr "Aruba"
 
 #. Context: countries
 #: 
@@ -3100,6 +3131,11 @@ msgstr "Bangladeš"
 
 #. Context: countries
 #: 
+msgid "Barbados"
+msgstr "Barbados"
+
+#. Context: countries
+#: 
 msgid "Belarus (Беларусь)"
 msgstr "Bjelorusija"
 
@@ -3110,8 +3146,18 @@ msgstr "Belgija"
 
 #. Context: countries
 #: 
+msgid "Belize"
+msgstr "Belize"
+
+#. Context: countries
+#: 
 msgid "Benin (Bénin)"
 msgstr "Benin"
+
+#. Context: countries
+#: 
+msgid "Bermuda"
+msgstr "Bermuda"
 
 #. Context: countries
 #: 
@@ -3162,6 +3208,11 @@ msgstr "Brunej"
 #: 
 msgid "Bulgaria (България)"
 msgstr "Bugarska"
+
+#. Context: countries
+#: 
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
 
 #. Context: countries
 #: 
@@ -3290,6 +3341,11 @@ msgstr "Kuba"
 
 #. Context: countries
 #: 
+msgid "Curaçao"
+msgstr "Curaçao"
+
+#. Context: countries
+#: 
 msgid "Cyprus (Κύπρος)"
 msgstr "Cipar"
 
@@ -3302,6 +3358,11 @@ msgstr "Češka Republika"
 #: 
 msgid "Denmark (Danmark)"
 msgstr "Danska"
+
+#. Context: countries
+#: 
+msgid "Diego Garcia"
+msgstr "Diego Garcia"
 
 #. Context: countries
 #: 
@@ -3327,6 +3388,11 @@ msgstr "Ekvador"
 #: 
 msgid "Egypt (‫مصر‬‎)"
 msgstr "Egipat"
+
+#. Context: countries
+#: 
+msgid "El Salvador"
+msgstr "El Salvador"
 
 #. Context: countries
 #: 
@@ -3390,6 +3456,11 @@ msgstr "Francuski južni teritoriji"
 
 #. Context: countries
 #: 
+msgid "Gabon"
+msgstr "Gabon"
+
+#. Context: countries
+#: 
 msgid "Gambia"
 msgstr "Gambija"
 
@@ -3410,6 +3481,11 @@ msgstr "Gana"
 
 #. Context: countries
 #: 
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#. Context: countries
+#: 
 msgid "Greece (Ελλάδα)"
 msgstr "Grčka"
 
@@ -3420,13 +3496,28 @@ msgstr "Grenland"
 
 #. Context: countries
 #: 
+msgid "Grenada"
+msgstr "Grenada"
+
+#. Context: countries
+#: 
 msgid "Guadeloupe"
 msgstr "Gvadelup"
 
 #. Context: countries
 #: 
+msgid "Guam"
+msgstr "Guam"
+
+#. Context: countries
+#: 
 msgid "Guatemala"
 msgstr "Gvatemala"
+
+#. Context: countries
+#: 
+msgid "Guernsey"
+msgstr "Guernsey"
 
 #. Context: countries
 #: 
@@ -3445,8 +3536,18 @@ msgstr "Gvajana"
 
 #. Context: countries
 #: 
+msgid "Haiti"
+msgstr "Haiti"
+
+#. Context: countries
+#: 
 msgid "Heard & McDonald Islands"
 msgstr "Heardov i McDonaldovi otoci"
+
+#. Context: countries
+#: 
+msgid "Honduras"
+msgstr "Honduras"
 
 #. Context: countries
 #: 
@@ -3515,6 +3616,11 @@ msgstr "Japan"
 
 #. Context: countries
 #: 
+msgid "Jersey"
+msgstr "Jersey"
+
+#. Context: countries
+#: 
 msgid "Jordan (‫الأردن‬‎)"
 msgstr "Jordan"
 
@@ -3527,6 +3633,11 @@ msgstr "Kazahstan"
 #: 
 msgid "Kenya"
 msgstr "Kenija"
+
+#. Context: countries
+#: 
+msgid "Kiribati"
+msgstr "Kiribati"
 
 #. Context: countries
 #: 
@@ -3615,6 +3726,16 @@ msgstr "Maldivi"
 
 #. Context: countries
 #: 
+msgid "Mali"
+msgstr "Mali"
+
+#. Context: countries
+#: 
+msgid "Malta"
+msgstr "Malta"
+
+#. Context: countries
+#: 
 msgid "Marshall Islands"
 msgstr "Maršalovi otoci"
 
@@ -3632,6 +3753,11 @@ msgstr "Mauritanija"
 #: 
 msgid "Mauritius (Moris)"
 msgstr "Mauricijus"
+
+#. Context: countries
+#: 
+msgid "Mayotte"
+msgstr "Mayotte"
 
 #. Context: countries
 #: 
@@ -3665,6 +3791,11 @@ msgstr "Crna Gora"
 
 #. Context: countries
 #: 
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#. Context: countries
+#: 
 msgid "Morocco (‫المغرب‬‎)"
 msgstr "Maroko"
 
@@ -3682,6 +3813,11 @@ msgstr "Mjanmar (Burma)"
 #: 
 msgid "Namibia (Namibië)"
 msgstr "Namibija"
+
+#. Context: countries
+#: 
+msgid "Nauru"
+msgstr "Nauru"
 
 #. Context: countries
 #: 
@@ -3720,6 +3856,11 @@ msgstr "Nigerija"
 
 #. Context: countries
 #: 
+msgid "Niue"
+msgstr "Niue"
+
+#. Context: countries
+#: 
 msgid "Norfolk Island"
 msgstr "Norfolški otok"
 
@@ -3747,6 +3888,11 @@ msgstr "Oman"
 #: 
 msgid "Pakistan (‫پاکستان‬‎)"
 msgstr "Pakistan"
+
+#. Context: countries
+#: 
+msgid "Palau"
+msgstr "Palau"
 
 #. Context: countries
 #: 
@@ -3787,6 +3933,11 @@ msgstr "Pitcairnovi otoci"
 #: 
 msgid "Poland (Polska)"
 msgstr "Poljska"
+
+#. Context: countries
+#: 
+msgid "Portugal"
+msgstr "Portugal"
 
 #. Context: countries
 #: 
@@ -3850,6 +4001,16 @@ msgstr "Saint Pierre i Miquelon"
 
 #. Context: countries
 #: 
+msgid "Samoa"
+msgstr "Samoa"
+
+#. Context: countries
+#: 
+msgid "San Marino"
+msgstr "San Marino"
+
+#. Context: countries
+#: 
 msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
 msgstr "Sveti Toma i Princip"
 
@@ -3882,6 +4043,11 @@ msgstr "Sijera Leone"
 #: 
 msgid "Singapore"
 msgstr "Singapur"
+
+#. Context: countries
+#: 
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
 
 #. Context: countries
 #: 
@@ -3995,8 +4161,33 @@ msgstr "Tajland"
 
 #. Context: countries
 #: 
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+#. Context: countries
+#: 
+msgid "Togo"
+msgstr "Togo"
+
+#. Context: countries
+#: 
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#. Context: countries
+#: 
+msgid "Tonga"
+msgstr "Tonga"
+
+#. Context: countries
+#: 
 msgid "Trinidad and Tobago"
 msgstr "Trinidad i Tobago"
+
+#. Context: countries
+#: 
+msgid "Tristan da Cunha"
+msgstr "Tristan da Cunha"
 
 #. Context: countries
 #: 
@@ -4010,8 +4201,18 @@ msgstr "Turska"
 
 #. Context: countries
 #: 
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#. Context: countries
+#: 
 msgid "Turks and Caicos Islands"
 msgstr "Otoci Turks i Caicos"
+
+#. Context: countries
+#: 
+msgid "Tuvalu"
+msgstr "Tuvalu"
 
 #. Context: countries
 #: 
@@ -4022,6 +4223,11 @@ msgstr "Udaljeni otoci SAD-a"
 #: 
 msgid "U.S. Virgin Islands"
 msgstr "Američki Djevičanski otoci"
+
+#. Context: countries
+#: 
+msgid "Uganda"
+msgstr "Uganda"
 
 #. Context: countries
 #: 
@@ -4055,8 +4261,18 @@ msgstr "Uzbekistan"
 
 #. Context: countries
 #: 
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#. Context: countries
+#: 
 msgid "Vatican City (Città del Vaticano)"
 msgstr "Vatikan"
+
+#. Context: countries
+#: 
+msgid "Venezuela"
+msgstr "Venezuela"
 
 #. Context: countries
 #: 
@@ -4372,6 +4588,10 @@ msgid "View Photo"
 msgstr "Prikaži fotografiju"
 
 #: 
+msgid "Status"
+msgstr "Status"
+
+#: 
 msgid "Include"
 msgstr "Uključi"
 
@@ -4494,6 +4714,10 @@ msgstr "Razina ozbiljnosti zapisa događaja, koristi ORM i dnevnici aplikacije"
 #: 
 msgid "Time zone"
 msgstr "Vremenska zona"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "KioskVisibilityTimestamp"
 
 #: 
 msgid "Show/Hide Lost Password Link on the login screen"
@@ -5143,6 +5367,14 @@ msgid "Verification URL created"
 msgstr "URL provjere stvoren"
 
 #: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
 msgid "Error sending email(s)"
 msgstr "Greška pri slanju e-poruke/e-poruka"
 
@@ -5317,6 +5549,11 @@ msgstr "Tekst"
 #: 
 msgid "Event Description"
 msgstr "Opis događaja"
+
+#. Context: locales
+#: 
+msgid "Afrikaans"
+msgstr "Afrikaans"
 
 #: 
 msgid "Today's Birthdays"
@@ -6716,6 +6953,10 @@ msgid "Generate reports for tax statements, pledge tracking, and financial analy
 msgstr "Generirajte izvještaje za porezne izjave, praćenje zavjeta i financijsku analizu."
 
 #: 
+msgid "ID"
+msgstr "ID"
+
+#: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "Identificirajte članove koji nisu dali darove u datumskom rasponu."
 
@@ -6746,6 +6987,10 @@ msgstr "Popis članova koji imaju pravo glasa na temelju povijesti darivanja i k
 #: 
 msgid "Location"
 msgstr "Lokacija"
+
+#: 
+msgid "M"
+msgstr "M"
 
 #: 
 msgid "Manage Funds"
@@ -8524,6 +8769,10 @@ msgid "e.g., Church Website"
 msgstr "npr. Web stranica župe"
 
 #: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
 msgid "subscribers"
 msgstr "pretplatnika"
 
@@ -8726,6 +8975,10 @@ msgstr "Vaša lozinka je uspješno ažurirana."
 #: 
 msgid "selected family has no coordinates"
 msgstr "odabrana obitelj nema koordinate"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -9073,6 +9326,10 @@ msgstr "Dodaj osoblje i volontere"
 #: 
 msgid "Add staff or volunteers as system users"
 msgstr "Dodaj osoblje ili volontere kao sistemske korisnike"
+
+#: 
+msgid "Administrator"
+msgstr "Administrator"
 
 #: 
 msgid "Age Distribution"
@@ -9603,6 +9860,10 @@ msgid "Forgot password?"
 msgstr "Zaboravili ste lozinku?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Puni prikaz skupini"
 
@@ -9747,6 +10008,10 @@ msgid "Key People"
 msgstr "Ključni vjernici"
 
 #: 
+msgid "Kiosk"
+msgstr "Kiosk"
+
+#: 
 msgid "Kiosk Enabled"
 msgstr "Kiosk omogućen"
 
@@ -9873,6 +10138,10 @@ msgstr "Uloge članova"
 #: 
 msgid "Memberships"
 msgstr "Članstva"
+
+#: 
+msgid "Minimum"
+msgstr "Minimum"
 
 #: 
 msgid "Modify family roles for group members"
@@ -12353,6 +12622,10 @@ msgid "Include your API key in requests using the x-api-key header:"
 msgstr "Uključite vaš API ključ u zahtjeve koristeći x-api-key zaglavlje:"
 
 #: 
+msgid "Indigo"
+msgstr "Indigo"
+
+#: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Nevažeća JSON vrijednost — postavka nije spremljena. Ispravite i pokušajte ponovo."
 
@@ -12531,6 +12804,10 @@ msgstr "2. Vrsta događaja"
 #: 
 msgid "3. Event"
 msgstr "3. Događaj"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosk"
 
 #: 
 msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
@@ -13233,6 +13510,10 @@ msgid "No active event assignment"
 msgstr "Nema aktivne dodjele događaja"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Pending"
 msgstr "Na čekanju"
 
@@ -13591,6 +13872,10 @@ msgstr "Postavke su valjane"
 #: 
 msgid "Subject"
 msgstr "Tema"
+
+#: 
+msgid "Test"
+msgstr "Test"
 
 #: 
 msgid "Test email accepted by SMTP server"
@@ -14966,6 +15251,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "GroupID je potreban za upit odabira uloge"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Pripremite vašu autentifikacijsku aplikaciju (Google Authenticator, Microsoft Authenticator, Authy, itd.)"
 
@@ -14976,6 +15265,10 @@ msgstr "Sakrij napredne opcije"
 #: 
 msgid "Home phone is required"
 msgstr "Kućni telefon je obavezan"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -15920,6 +16213,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d%% teksta sučelja je prevedeno za ovaj jezik."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Pristup odbijen"
 
@@ -16148,6 +16445,10 @@ msgid "Year, 4 digits"
 msgstr "Godina, 4 znamenke"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "prošlo"
 
@@ -16247,4 +16548,200 @@ msgstr "Nemate dozvolu za dodavanje bilješke za ovu osobu."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Nemate dozvolu za uređivanje ove bilješke"
+
+#: 
+msgid "Account locked"
+msgstr "Račun zaključan"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Račun zaključan zbog previše neuspjelih pokušaja prijave"
+
+#: 
+msgid "Account status"
+msgstr "Status računa"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Napredno: odaberite određenu ciljnu verziju"
+
+#: 
+msgid "Bug Fix"
+msgstr "Ispravak greške"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Prema zadanim postavkama čarobnjak preuzima sljedeće preporučeno izdanje. Umjesto toga možete odabrati bilo koju dostupnu verziju ispod."
+
+#: 
+msgid "Change required"
+msgstr "Promjena obavezna"
+
+#: 
+msgid "Changelog"
+msgstr "Dnevnik promjena"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Svejedno nastavi"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nije moguće učitati informacije o izdanju."
+
+#: 
+msgid "Download & Install"
+msgstr "Preuzmi i instaliraj"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Preuzmi verziju {{version}} i primijeni je na svoju instalaciju."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Preuzimanje izdanja s GitHub-a..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Neuspjeli pokušaji prijave"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nije uspjelo dohvaćanje pregleda nadogradnje"
+
+#: 
+msgid "Feature"
+msgstr "Značajka"
+
+#: 
+msgid "Full changelog"
+msgstr "Potpuni dnevnik promjena"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Instaliraj stabilnu verziju {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Instaliranje sljedećeg izdanja"
+
+#: 
+msgid "Invalid file path"
+msgstr "Nevažeća putanja datoteke"
+
+#: 
+msgid "Invalid version format"
+msgstr "Nevažeći format verzije"
+
+#: 
+msgid "Last login"
+msgstr "Posljednja prijava"
+
+#: 
+msgid "Loading release information..."
+msgstr "Učitavanje informacija o izdanju..."
+
+#: 
+msgid "Locked"
+msgstr "Zaključano"
+
+#: 
+msgid "Major"
+msgstr "Glavno"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Nedostaju obavezna polja: fullPath i sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Mora promijeniti lozinku"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Nema dostupnih bilješki o izdanju za ovu verziju."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nema dostupnih nadogradnji za vašu trenutnu verziju."
+
+#: 
+msgid "Password change required"
+msgstr "Promjena lozinke obavezna"
+
+#: 
+msgid "Password status"
+msgstr "Status lozinke"
+
+#: 
+msgid "Re-install current version"
+msgstr "Ponovo instaliraj trenutnu verziju"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Obnova nije uspjela i baza podataka može biti u nepotpunom stanju. Provjerite zapisnik aplikacije za detalje, zatim obnovite poznatu ispravnu sigurnosnu kopiju prije korištenja sustava."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Obnova nije uspjela: datoteka sigurnosne kopije izgleda nepotpuna ili nije valjana SQL sigurnosna kopija. Baza podataka je sada u nepotpunom stanju — obnovite poznatu ispravnu sigurnosnu kopiju prije korištenja sustava."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Pokrenuta predverzija"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Prikaži potpunu putanju nadogradnje"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Najnovije stabilno izdanje je {{version}}. Možete ga ponovo instalirati ispod."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Ovaj račun je zaključan zbog previše neuspjelih pokušaja prijave."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Ovaj korisnik mora postaviti novu lozinku sljedeći put kada se prijavi."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Korisnik mora promijeniti lozinku pri sljedećoj prijavi"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Korisnik mora imati dopuštenje za e-poštu"
+
+#: 
+msgid "View release notes"
+msgstr "Pogledaj bilješke o izdanju"
+
+#: 
+msgid "What's New"
+msgstr "Što je novo"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Što je novo u verziji {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Zaostajete za <strong>{{releaseCount}}</strong> izdanja. Evo što ćete dobiti:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Pokrećete predverziju."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "I dalje možete nastaviti s nadogradnjom bez pregledavanja bilješki o izdanju."
+
+#: 
+msgid "You're up to date!"
+msgstr "Ažurni ste!"
 

@@ -16581,3 +16581,199 @@ msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση 
 msgid "You do not have permission to edit this note"
 msgstr "Δεν έχετε άδεια να επεξεργαστείτε αυτήν τη σημείωση"
 
+#: 
+msgid "Account locked"
+msgstr "Ο λογαριασμός είναι κλειδωμένος"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Ο λογαριασμός κλειδώθηκε λόγω πολλών αποτυχημένων προσπαθειών σύνδεσης"
+
+#: 
+msgid "Account status"
+msgstr "Κατάσταση λογαριασμού"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Για προχωρημένους: επιλέξτε συγκεκριμένη έκδοση στόχου"
+
+#: 
+msgid "Bug Fix"
+msgstr "Διόρθωση σφάλματος"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Από προεπιλογή, ο οδηγός λήψης κατεβάζει την επόμενη προτεινόμενη έκδοση. Μπορείτε να επιλέξετε οποιαδήποτε διαθέσιμη έκδοση παρακάτω."
+
+#: 
+msgid "Change required"
+msgstr "Απαιτείται αλλαγή"
+
+#: 
+msgid "Changelog"
+msgstr "Αρχείο αλλαγών"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Συνέχεια ούτως ή άλλως"
+
+#: 
+msgid "Could not load release information."
+msgstr "Δεν ήταν δυνατή η φόρτωση πληροφοριών έκδοσης."
+
+#: 
+msgid "Download & Install"
+msgstr "Λήψη και εγκατάσταση"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Λήψη έκδοσης {{version}} και εφαρμογή της στην εγκατάστασή σας."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Λήψη έκδοσης από το GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Αποτυχημένες προσπάθειες σύνδεσης"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Αποτυχία ανάκτησης προεπισκόπησης αναβάθμισης"
+
+#: 
+msgid "Feature"
+msgstr "Λειτουργία"
+
+#: 
+msgid "Full changelog"
+msgstr "Πλήρες αρχείο αλλαγών"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Εγκατάσταση σταθερής έκδοσης {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Εγκατάσταση επόμενης έκδοσης"
+
+#: 
+msgid "Invalid file path"
+msgstr "Μη έγκυρη διαδρομή αρχείου"
+
+#: 
+msgid "Invalid version format"
+msgstr "Μη έγκυρη μορφή έκδοσης"
+
+#: 
+msgid "Last login"
+msgstr "Τελευταία σύνδεση"
+
+#: 
+msgid "Loading release information..."
+msgstr "Φόρτωση πληροφοριών έκδοσης..."
+
+#: 
+msgid "Locked"
+msgstr "Κλειδωμένος"
+
+#: 
+msgid "Major"
+msgstr "Κύριος"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Λείπουν υποχρεωτικά πεδία: fullPath και SHA1 Hash"
+
+#: 
+msgid "Must change password"
+msgstr "Υποχρεωτική αλλαγή κωδικού"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Δεν υπάρχουν διαθέσιμες σημειώσεις έκδοσης για αυτήν την έκδοση."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Δεν υπάρχουν διαθέσιμες αναβαθμίσεις για την τρέχουσα έκδοσή σας."
+
+#: 
+msgid "Password change required"
+msgstr "Απαιτείται αλλαγή κωδικού πρόσβασης"
+
+#: 
+msgid "Password status"
+msgstr "Κατάσταση κωδικού πρόσβασης"
+
+#: 
+msgid "Re-install current version"
+msgstr "Επανεγκατάσταση τρέχουσας έκδοσης"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Η επαναφορά απέτυχε και η βάση δεδομένων μπορεί να βρίσκεται σε ελλιπή κατάσταση. Ελέγξτε το αρχείο καταγραφής εφαρμογής για λεπτομέρειες, στη συνέχεια επαναφέρετε ένα γνωστά έγκυρο αντίγραφο ασφαλείας πριν χρησιμοποιήσετε το σύστημα."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Αποτυχία επαναφοράς: το αρχείο αντιγράφου ασφαλείας φαίνεται να είναι ελλιπές ή δεν είναι έγκυρο αντίγραφο SQL. Η βάση δεδομένων βρίσκεται τώρα σε ελλιπή κατάσταση — επαναφέρετε ένα γνωστά έγκυρο αντίγραφο ασφαλείας πριν χρησιμοποιήσετε το σύστημα."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Εκτέλεση προέκδοσης"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Εμφάνιση πλήρους διαδρομής αναβάθμισης"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Η τελευταία σταθερή έκδοση είναι η {{version}}. Μπορείτε να την επανεγκαταστήσετε παρακάτω."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Αυτός ο λογαριασμός είναι κλειδωμένος λόγω πολλών αποτυχημένων προσπαθειών σύνδεσης."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Ο χρήστης πρέπει να ορίσει νέο κωδικό πρόσβασης την επόμενη φορά που θα συνδεθεί."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Ο χρήστης πρέπει να αλλάξει τον κωδικό πρόσβασής του κατά την επόμενη σύνδεση"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Ο χρήστης πρέπει να έχει άδεια Email"
+
+#: 
+msgid "View release notes"
+msgstr "Προβολή σημειώσεων έκδοσης"
+
+#: 
+msgid "What's New"
+msgstr "Τι νέο υπάρχει"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Τι νέο υπάρχει στην {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Είστε <strong>{{releaseCount}}</strong> εκδόσεις πίσω. Δείτε τι θα κερδίσετε:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Εκτελείτε μια προέκδοση."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Μπορείτε ακόμα να προχωρήσετε με την αναβάθμιση χωρίς να δείτε τις σημειώσεις έκδοσης."
+
+#: 
+msgid "You're up to date!"
+msgstr "Είστε ενημερωμένοι!"
+

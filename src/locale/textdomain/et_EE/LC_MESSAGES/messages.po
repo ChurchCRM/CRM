@@ -16580,3 +16580,199 @@ msgstr "Teil ei ole luba lisada märkust sellele isikule."
 msgid "You do not have permission to edit this note"
 msgstr "Teil ei ole luba seda märkust muuta"
 
+#: 
+msgid "Account locked"
+msgstr "Konto lukustatud"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Konto lukustatud liiga paljude ebaõnnestunud sisselogimiskatsete tõttu"
+
+#: 
+msgid "Account status"
+msgstr "Konto olek"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Täpsem: vali konkreetne sihtversioon"
+
+#: 
+msgid "Bug Fix"
+msgstr "Veaparandus"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Vaikimisi laadib viisard järgmise soovitatava versiooni. Võite valida ka mõne muu allpool saadaoleva versiooni."
+
+#: 
+msgid "Change required"
+msgstr "Muudatus vajalik"
+
+#: 
+msgid "Changelog"
+msgstr "Muudatuste logi"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Jätka ikkagi"
+
+#: 
+msgid "Could not load release information."
+msgstr "Versiooniteabe laadimine ebaõnnestus."
+
+#: 
+msgid "Download & Install"
+msgstr "Laadi alla ja installi"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Laadi alla versioon {{version}} ja rakenda see oma installatsioonis."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Versiooni allalaadimine GitHubist..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Ebaõnnestunud sisselogimiskatsed"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Uuenduse eelvaate toomine ebaõnnestus"
+
+#: 
+msgid "Feature"
+msgstr "Funktsioon"
+
+#: 
+msgid "Full changelog"
+msgstr "Täielik muudatuste logi"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installi stabiilne {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Järgmise versiooni installimine"
+
+#: 
+msgid "Invalid file path"
+msgstr "Vigane failitee"
+
+#: 
+msgid "Invalid version format"
+msgstr "Vigane versioonivormaat"
+
+#: 
+msgid "Last login"
+msgstr "Viimane sisselogimine"
+
+#: 
+msgid "Loading release information..."
+msgstr "Versiooniteabe laadimine..."
+
+#: 
+msgid "Locked"
+msgstr "Lukustatud"
+
+#: 
+msgid "Major"
+msgstr "Põhiversioon"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Puuduvad kohustuslikud väljad: fullPath ja sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Parool tuleb vahetada"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Selle versiooni kohta pole väljalaskemärkmeid saadaval."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Teie praeguse versiooni jaoks pole uuendusi saadaval."
+
+#: 
+msgid "Password change required"
+msgstr "Parooli vahetus vajalik"
+
+#: 
+msgid "Password status"
+msgstr "Parooli olek"
+
+#: 
+msgid "Re-install current version"
+msgstr "Reinstalli praegune versioon"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Taastamine ebaõnnestus ja andmebaas võib olla mittetäielikus olekus. Kontrollige rakenduse logi üksikasjade saamiseks, seejärel taastage teadaolevalt toimiv varukoopia enne süsteemi kasutamist."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Taastamine ebaõnnestus: varufail näib olevat mittetäielik või ei ole kehtiv SQL-varukoopia. Andmebaas on nüüd mittetäielikus olekus — taastage teadaolevalt toimiv varukoopia enne süsteemi kasutamist."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Eelversioon töötab"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Näita täielikku uuendusteed"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Uusim stabiilne versioon on {{version}}. Saate selle allpool uuesti installida."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "See konto on lukustatud liiga paljude ebaõnnestunud sisselogimiskatsete tõttu."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "See kasutaja peab järgmisel sisselogimisel uue parooli seadma."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Kasutaja peab parooli vahetama järgmisel sisselogimisel"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Kasutajal peab olema e-posti õigus"
+
+#: 
+msgid "View release notes"
+msgstr "Vaata väljalaskemärkmeid"
+
+#: 
+msgid "What's New"
+msgstr "Mis on uut"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Mis on uut versioonis {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Olete <strong>{{releaseCount}}</strong> versiooni võrra maas. Siin on, mida saate:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Kasutate eelversiooni."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Saate siiski jätkata uuendamist väljalaskemärkmeid vaatamata."
+
+#: 
+msgid "You're up to date!"
+msgstr "Olete ajakohane!"
+

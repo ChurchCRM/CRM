@@ -16227,6 +16227,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% teks antarmuka telah diterjemahkan untuk bahasa ini."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Akses ditolak"
 
@@ -16455,6 +16459,10 @@ msgid "Year, 4 digits"
 msgstr "Tahun, 4 digit"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "lalu"
 
@@ -16554,4 +16562,200 @@ msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk anggota ini."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Anda tidak memiliki izin untuk mengedit catatan ini"
+
+#: 
+msgid "Account locked"
+msgstr "Akun terkunci"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Akun terkunci karena terlalu banyak percobaan masuk yang gagal"
+
+#: 
+msgid "Account status"
+msgstr "Status akun"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Lanjutan: pilih versi target tertentu"
+
+#: 
+msgid "Bug Fix"
+msgstr "Perbaikan Bug"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Secara default, panduan mengunduh rilis berikutnya yang direkomendasikan. Anda dapat memilih versi lain yang tersedia di bawah ini."
+
+#: 
+msgid "Change required"
+msgstr "Perubahan diperlukan"
+
+#: 
+msgid "Changelog"
+msgstr "Catatan Perubahan"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Lanjutkan Saja"
+
+#: 
+msgid "Could not load release information."
+msgstr "Tidak dapat memuat informasi rilis."
+
+#: 
+msgid "Download & Install"
+msgstr "Unduh & Pasang"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Unduh versi {{version}} dan terapkan pada instalasi Anda."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Mengunduh rilis dari GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Percobaan masuk yang gagal"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Gagal mengambil pratinjau pembaruan"
+
+#: 
+msgid "Feature"
+msgstr "Fitur"
+
+#: 
+msgid "Full changelog"
+msgstr "Catatan perubahan lengkap"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Pasang versi stabil {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Memasang rilis berikutnya"
+
+#: 
+msgid "Invalid file path"
+msgstr "Jalur file tidak valid"
+
+#: 
+msgid "Invalid version format"
+msgstr "Format versi tidak valid"
+
+#: 
+msgid "Last login"
+msgstr "Masuk terakhir"
+
+#: 
+msgid "Loading release information..."
+msgstr "Memuat informasi rilis..."
+
+#: 
+msgid "Locked"
+msgstr "Terkunci"
+
+#: 
+msgid "Major"
+msgstr "Utama"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Kolom yang diperlukan tidak ada: fullPath dan SHA1 Hash"
+
+#: 
+msgid "Must change password"
+msgstr "Harus mengganti kata sandi"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Tidak ada catatan rilis yang tersedia untuk versi ini."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Tidak ada pembaruan yang tersedia untuk versi Anda saat ini."
+
+#: 
+msgid "Password change required"
+msgstr "Perubahan kata sandi diperlukan"
+
+#: 
+msgid "Password status"
+msgstr "Status kata sandi"
+
+#: 
+msgid "Re-install current version"
+msgstr "Pasang ulang versi saat ini"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Pemulihan gagal dan basis data mungkin dalam keadaan tidak lengkap. Periksa log aplikasi untuk detailnya, lalu pulihkan cadangan yang diketahui baik sebelum menggunakan sistem."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Pemulihan gagal: file cadangan tampaknya tidak lengkap atau bukan cadangan SQL yang valid. Basis data kini dalam keadaan tidak lengkap — pulihkan cadangan yang diketahui baik sebelum menggunakan sistem."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Menjalankan Pra-rilis"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Tampilkan jalur pembaruan lengkap"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Rilis stabil terbaru adalah {{version}}. Anda dapat memasangnya kembali di bawah ini."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Akun ini terkunci karena terlalu banyak percobaan masuk yang gagal."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Pengguna ini harus menetapkan kata sandi baru saat berikutnya mereka masuk."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Pengguna harus mengganti kata sandi mereka saat masuk berikutnya"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Pengguna harus memiliki izin Email"
+
+#: 
+msgid "View release notes"
+msgstr "Lihat catatan rilis"
+
+#: 
+msgid "What's New"
+msgstr "Yang Baru"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Yang Baru di {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Anda tertinggal <strong>{{releaseCount}}</strong> rilis. Berikut yang akan Anda dapatkan:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Anda menjalankan versi pra-rilis."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Anda tetap dapat melanjutkan pembaruan tanpa melihat catatan rilis."
+
+#: 
+msgid "You're up to date!"
+msgstr "Anda sudah terkini!"
 

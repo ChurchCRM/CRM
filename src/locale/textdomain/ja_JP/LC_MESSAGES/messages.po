@@ -15232,6 +15232,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "役割選択プロンプトにはGroupIDが必要です"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "認証アプリを準備してください（Google Authenticator、Microsoft Authenticator、Authy など）"
 
@@ -15242,6 +15246,10 @@ msgstr "詳細オプションを非表示"
 #: 
 msgid "Home phone is required"
 msgstr "自宅電話は必須です"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16519,4 +16527,200 @@ msgstr "この人物へのメモを追加する権限がありません。"
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "このメモを編集する権限がありません"
+
+#: 
+msgid "Account locked"
+msgstr "アカウントがロックされています"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "ログイン失敗が多すぎるためアカウントがロックされています"
+
+#: 
+msgid "Account status"
+msgstr "アカウントの状態"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "詳細設定：特定のターゲットバージョンを選択"
+
+#: 
+msgid "Bug Fix"
+msgstr "バグ修正"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "デフォルトでは、ウィザードは次の推奨リリースをダウンロードします。以下から任意の利用可能なバージョンを選択することもできます。"
+
+#: 
+msgid "Change required"
+msgstr "変更が必要です"
+
+#: 
+msgid "Changelog"
+msgstr "変更履歴"
+
+#: 
+msgid "Continue Anyway"
+msgstr "このまま続行"
+
+#: 
+msgid "Could not load release information."
+msgstr "リリース情報を読み込めませんでした。"
+
+#: 
+msgid "Download & Install"
+msgstr "ダウンロードしてインストール"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "バージョン {{version}} をダウンロードして、インストールに適用します。"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHubからリリースをダウンロード中..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "ログイン失敗回数"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "アップグレードプレビューの取得に失敗しました"
+
+#: 
+msgid "Feature"
+msgstr "機能"
+
+#: 
+msgid "Full changelog"
+msgstr "完全な変更履歴"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "安定版 {{version}} をインストール"
+
+#: 
+msgid "Installing next release"
+msgstr "次のリリースをインストール中"
+
+#: 
+msgid "Invalid file path"
+msgstr "無効なファイルパス"
+
+#: 
+msgid "Invalid version format"
+msgstr "無効なバージョン形式"
+
+#: 
+msgid "Last login"
+msgstr "最終ログイン"
+
+#: 
+msgid "Loading release information..."
+msgstr "リリース情報を読み込み中..."
+
+#: 
+msgid "Locked"
+msgstr "ロック済み"
+
+#: 
+msgid "Major"
+msgstr "メジャー"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "必須フィールドがありません：fullPath と sha1"
+
+#: 
+msgid "Must change password"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "このバージョンのリリースノートはありません。"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "現在のバージョンに利用可能なアップグレードはありません。"
+
+#: 
+msgid "Password change required"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "Password status"
+msgstr "パスワードの状態"
+
+#: 
+msgid "Re-install current version"
+msgstr "現在のバージョンを再インストール"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "復元に失敗し、データベースが不完全な状態になっている可能性があります。詳細はアプリケーションログを確認し、システムを使用する前に正常なバックアップを復元してください。"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "復元に失敗しました：バックアップファイルが不完全であるか、有効なSQLバックアップではないようです。データベースは現在不完全な状態です — システムを使用する前に正常なバックアップを復元してください。"
+
+#: 
+msgid "Running Pre-release"
+msgstr "プレリリース版を実行中"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "完全なアップグレードパスを表示"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "最新の安定版リリースは {{version}} です。以下から再インストールできます。"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "ログイン失敗が多すぎるため、このアカウントはロックされています。"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "このユーザーは次回サインイン時に新しいパスワードを設定する必要があります。"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "ユーザーは次回ログイン時にパスワードを変更する必要があります"
+
+#: 
+msgid "User must have Email permission"
+msgstr "ユーザーはEmailの権限を持っている必要があります"
+
+#: 
+msgid "View release notes"
+msgstr "リリースノートを表示"
+
+#: 
+msgid "What's New"
+msgstr "新機能"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} の新機能"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong> 個のリリースが未適用です。アップグレードで得られるもの："
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "プレリリース版を実行しています。"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "リリースノートを確認せずにアップグレードを続行することもできます。"
+
+#: 
+msgid "You're up to date!"
+msgstr "最新の状態です！"
 

@@ -16661,3 +16661,199 @@ msgstr "Du har ikke tillatelse til å legge til et notat for denne personen."
 msgid "You do not have permission to edit this note"
 msgstr "Du har ikke tillatelse til å redigere dette notatet"
 
+#: 
+msgid "Account locked"
+msgstr "Konto låst"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Konto låst på grunn av for mange mislykkede innloggingsforsøk"
+
+#: 
+msgid "Account status"
+msgstr "Kontostatus"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avansert: velg en bestemt målversjon"
+
+#: 
+msgid "Bug Fix"
+msgstr "Feilretting"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Som standard laster veiviseren ned neste anbefalte versjon. Du kan i stedet velge en tilgjengelig versjon nedenfor."
+
+#: 
+msgid "Change required"
+msgstr "Endring påkrevd"
+
+#: 
+msgid "Changelog"
+msgstr "Endringslogg"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Fortsett likevel"
+
+#: 
+msgid "Could not load release information."
+msgstr "Kunne ikke laste inn versjonsinformasjon."
+
+#: 
+msgid "Download & Install"
+msgstr "Last ned og installer"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Last ned versjon {{version}} og bruk den på installasjonen din."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Laster ned versjon fra GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Mislykkede innloggingsforsøk"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Kunne ikke hente oppgraderingsforhåndsvisning"
+
+#: 
+msgid "Feature"
+msgstr "Funksjon"
+
+#: 
+msgid "Full changelog"
+msgstr "Fullstendig endringslogg"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installer stabil {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Installerer neste versjon"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ugyldig filbane"
+
+#: 
+msgid "Invalid version format"
+msgstr "Ugyldig versjonsformat"
+
+#: 
+msgid "Last login"
+msgstr "Siste innlogging"
+
+#: 
+msgid "Loading release information..."
+msgstr "Laster inn versjonsinformasjon..."
+
+#: 
+msgid "Locked"
+msgstr "Låst"
+
+#: 
+msgid "Major"
+msgstr "Større"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Påkrevde felt mangler: fullPath og sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Må bytte passord"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Ingen versjonsmerknader tilgjengelig for denne versjonen."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Ingen oppgraderinger er tilgjengelige for din nåværende versjon."
+
+#: 
+msgid "Password change required"
+msgstr "Passordbytte påkrevd"
+
+#: 
+msgid "Password status"
+msgstr "Passordstatus"
+
+#: 
+msgid "Re-install current version"
+msgstr "Installer gjeldende versjon på nytt"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Gjenoppretting mislyktes og databasen kan være i en ufullstendig tilstand. Sjekk applikasjonsloggen for detaljer, og gjenopprett deretter en kjent god sikkerhetskopi før du bruker systemet."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Gjenoppretting mislyktes: sikkerhetskopifilen ser ut til å være ufullstendig eller er ikke en gyldig SQL-sikkerhetskopi. Databasen er nå i en ufullstendig tilstand — gjenopprett en kjent god sikkerhetskopi før du bruker systemet."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Kjører forhåndsversjon"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Vis fullstendig oppgraderingsbane"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Den nyeste stabile versjonen er {{version}}. Du kan installere den på nytt nedenfor."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Denne kontoen er låst på grunn av for mange mislykkede innloggingsforsøk."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Denne brukeren må angi et nytt passord neste gang de logger inn."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Brukeren må bytte passord ved neste innlogging"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Brukeren må ha e-posttillatelse"
+
+#: 
+msgid "View release notes"
+msgstr "Vis versjonsmerknader"
+
+#: 
+msgid "What's New"
+msgstr "Hva er nytt"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Hva er nytt i {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Du er <strong>{{releaseCount}}</strong> versjoner etter. Her er hva du vil få:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Du kjører en forhåndsversjon."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Du kan fortsatt fortsette med oppgraderingen uten å vise versjonsmerknader."
+
+#: 
+msgid "You're up to date!"
+msgstr "Du er oppdatert!"
+
