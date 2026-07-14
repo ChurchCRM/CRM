@@ -33,19 +33,19 @@ const ACCESS_DENIED = "/v2/access-denied";
 // Fundraiser pages gated on isManageFundraisersEnabled().
 // Safe to load as an allowed user in the positive test.
 const READABLE_FUNDRAISER_PAGES = [
-    "FindFundRaiser.php",
-    "PaddleNumList.php",
-    "FundRaiserEditor.php?FundRaiserID=-1",
-    "DonatedItemEditor.php",
-    "PaddleNumEditor.php",
+    "fundraiser/",
+    "fundraiser/editor",
+    "fundraiser/1/paddle-numbers",
+    "fundraiser/1/donated-items/editor",
+    "fundraiser/1/paddle-numbers/editor",
 ];
 
-// Fundraiser pages whose GET handler mutates state. Only tested in the negative
-// path — visiting them as tony.wade would corrupt seed data.
+// Fundraiser pages whose GET handler renders a form (non-mutating in MVC).
+// Only tested in the negative path — the old legacy equivalents were mutating.
 const MUTATING_FUNDRAISER_PAGES = [
-    "AddDonors.php?FundRaiserID=1",
-    "BatchWinnerEntry.php?CurrentFundraiser=1",
-    "DonatedItemReplicate.php?DonatedItemID=1&Count=1",
+    "fundraiser/1/donors",
+    "fundraiser/1/batch-winner",
+    "fundraiser/1/reports/bid-sheets",
 ];
 
 const ALL_FUNDRAISER_PAGES = [
@@ -80,10 +80,10 @@ describe("ManageFundraisers permission guard on fundraiser pages", () => {
             cy.setupNoManageFundraisersSession();
         });
 
-        it("denies FundRaiserDelete.php?FundRaiserID=999999", () => {
-            // This user passes the DeleteRecords gate and is blocked by the
-            // ManageFundraisers gate — proving the second guard is enforced.
-            cy.visit("/FundRaiserDelete.php?FundRaiserID=999999", { failOnStatusCode: false });
+        it("denies fundraiser/", () => {
+            // This user has DeleteRecords and Finance but lacks ManageFundraisers.
+            // Any /fundraiser/* GET route should be blocked by the module middleware.
+            cy.visit("/fundraiser/", { failOnStatusCode: false });
             cy.url().should("include", ACCESS_DENIED);
             cy.url().should("include", "role=ManageFundraisers");
         });
