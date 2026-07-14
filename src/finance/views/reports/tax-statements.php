@@ -35,7 +35,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row">
                     <!-- Date Range -->
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="DateStart"><?= gettext('Report Start Date') ?></label>
                             <input type="text" name="DateStart" id="DateStart"
                            class="form-control date-picker"
@@ -45,7 +45,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="DateEnd"><?= gettext('Report End Date') ?></label>
                             <input type="text" name="DateEnd" id="DateEnd"
                            class="form-control date-picker"
@@ -57,19 +57,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div><!-- /.row -->
 
                 <!-- Minimum Amount -->
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="minimum"><?= gettext('Minimum Giving Amount') ?></label>
                     <div class="input-group" style="max-width:200px;">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">$</span>
-                        </div>
+                        <span class="input-group-text">$</span>
                         <input type="number" name="minimum" id="minimum" class="form-control" value="0" min="0" step="0.01">
                     </div>
                     <small class="form-text text-muted"><?= gettext('Enter 0 to include all donors regardless of gift amount.') ?></small>
                 </div>
 
                 <!-- Filter by Classification -->
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="classList"><?= gettext('Filter by Classification') ?></label>
                     <select name="classList[]" id="classList" class="form-control" multiple>
                         <?php foreach ($classifications as $cls): ?>
@@ -90,7 +88,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
 
                 <!-- Filter by Fund -->
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="fundsList"><?= gettext('Filter by Fund') ?></label>
                     <select name="funds[]" id="fundsList" class="form-control" multiple>
                         <?php foreach ($funds as $fund): ?>
@@ -114,7 +112,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
 
                 <!-- Filter by Family -->
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="family"><?= gettext('Filter by Family') ?></label>
                     <select name="family[]" id="family" class="form-control" multiple>
                         <?php foreach ($families as $fam): ?>
@@ -138,7 +136,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
 
                 <!-- Filter by Deposit -->
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="deposit"><?= gettext('Filter by Deposit') ?></label>
                     <small class="form-text text-muted"><?= gettext('If a deposit is selected, the date range above will be ignored.') ?></small>
                     <select name="deposit" id="deposit" class="form-control">
@@ -154,7 +152,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
 
                 <!-- Letterhead -->
-                <div class="form-group">
+                <div class="mb-3">
                     <label><?= gettext('Letterhead') ?></label><br>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="letterhead" id="letterhead_graphic" value="graphic">
@@ -171,7 +169,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
 
                 <!-- Remittance Slip -->
-                <div class="form-group">
+                <div class="mb-3">
                     <label><?= gettext('Include Remittance Slip') ?></label><br>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="remittance" id="remittance_no" value="no" checked>
@@ -183,12 +181,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                 </div>
 
-                <div class="form-group mt-4">
+                <div class="mb-3 mt-4">
                     <button type="submit" id="createReport" class="btn btn-primary">
-                        <i class="fa-solid fa-file-pdf mr-1"></i>
+                        <i class="fa-solid fa-file-pdf me-1"></i>
                         <?= gettext('Generate PDF') ?>
                     </button>
-                    <a href="<?= $sRootPath ?>/finance/reports" class="btn btn-secondary ml-2">
+                    <a href="<?= $sRootPath ?>/finance/reports" class="btn btn-secondary ms-2">
                         <?= gettext('Cancel') ?>
                     </a>
                 </div>
