@@ -2008,10 +2008,6 @@ msgid "Save Settings"
 msgstr "Lưu thay đổi"
 
 #: 
-msgid "Default User Settings"
-msgstr "Cài đặt mặc định thành viên"
-
-#: 
 msgid "Permission"
 msgstr "Quyền hạn"
 
@@ -9477,10 +9473,6 @@ msgid "Browse photos of congregation members"
 msgstr "Duyet anh cua cac thanh vien giao xu"
 
 #: 
-msgid "Buyer Number"
-msgstr "So nguoi mua"
-
-#: 
 msgid "Buyers"
 msgstr "Nguoi mua"
 
@@ -10523,16 +10515,8 @@ msgid "Server Error"
 msgstr "Loi may chu"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Dat Quyen la Dung de cho nguoi dung moi co kha nang thay doi gia tri hien tai cua ho."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Dat email quan tri vien de ban co the dat lai mat khau va nhan thong bao"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Dat tuy chon mac dinh cho tai khoan nguoi dung moi"
 
 #: 
 msgid "Set up"
@@ -14075,22 +14059,6 @@ msgstr "Tải lên CSV để tạo gia đình và giáo dân hàng loạt."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV của bạn có tên cột trùng lặp. Đổi tên các cột trùng lặp (ví dụ: thêm \"(2)\" vào cột thứ hai) và tải lên lại."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn vật phẩm được quyên góp này không?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn số mái chèo này không?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Xóa vật phẩm được quyên góp"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Xóa số mái chèo"
 
 #: 
 msgid "Invalid security token. Please try again."

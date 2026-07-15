@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Αποθήκευση ρυθμίσεων"
 
 #: 
-msgid "Default User Settings"
-msgstr "Προεπιλεγμένες ρυθμίσεις χρήστη"
-
-#: 
 msgid "Permission"
 msgstr "Αδεια"
 
@@ -9482,10 +9478,6 @@ msgid "Browse photos of congregation members"
 msgstr "Περιήγηση φωτογραφιών μελών του εκκλησιάσματος"
 
 #: 
-msgid "Buyer Number"
-msgstr "Αριθμός αγοραστή"
-
-#: 
 msgid "Buyers"
 msgstr "Αγοραστές"
 
@@ -10528,16 +10520,8 @@ msgid "Server Error"
 msgstr "Σφάλμα διακομιστή"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Ορίστε το Δικαίωμα σε Αληθές για να δώσετε στους νέους χρήστες τη δυνατότητα αλλαγής της τρέχουσας τιμής τους."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Ορίστε email διαχειριστή για να μπορείτε να επαναφέρετε κωδικούς και να λαμβάνετε ειδοποιήσεις"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Ορισμός προεπιλεγμένων προτιμήσεων για νέους λογαριασμούς χρηστών"
 
 #: 
 msgid "Set up"
@@ -14081,22 +14065,6 @@ msgstr "Μεταφορτώστε ένα CSV για μαζική δημιουργ
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Το CSV σας έχει διπλότυπα ονόματα στηλών. Μετονομάστε τις διπλότυπες στήλες (π.χ. προσθέστε \"(2)\" στη δεύτερη) και μεταφορτώστε ξανά."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτό το δωρισμένο είδος;"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτόν τον αριθμό κουπιού;"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Διαγραφή δωρισμένου είδους"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Διαγραφή αριθμού κουπιού"
 
 #: 
 msgid "Invalid security token. Please try again."

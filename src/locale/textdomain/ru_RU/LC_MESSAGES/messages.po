@@ -2042,10 +2042,6 @@ msgid "Save Settings"
 msgstr "Сохранить настройки"
 
 #: 
-msgid "Default User Settings"
-msgstr "Настройки пользователя по умолчанию"
-
-#: 
 msgid "Permission"
 msgstr "Разрешение"
 
@@ -9561,10 +9557,6 @@ msgid "Browse photos of congregation members"
 msgstr "Просмотреть фотографии прихожан"
 
 #: 
-msgid "Buyer Number"
-msgstr "Номер покупателя"
-
-#: 
 msgid "Buyers"
 msgstr "Покупатели"
 
@@ -10607,16 +10599,8 @@ msgid "Server Error"
 msgstr "Ошибка сервера"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Установите разрешение «Истина», чтобы дать новым пользователям возможность изменять текущее значение."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Укажите email администратора для сброса паролей и получения уведомлений"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Установить настройки по умолчанию для новых учётных записей"
 
 #: 
 msgid "Set up"
@@ -14162,22 +14146,6 @@ msgstr "Загрузите CSV-файл для массового создани
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "В вашем CSV-файле есть повторяющиеся названия столбцов. Переименуйте дублирующиеся столбцы (например, добавьте «(2)» ко второму) и загрузите снова."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Вы уверены, что хотите окончательно удалить этот пожертвованный предмет?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Вы уверены, что хотите окончательно удалить этот номер лопасти?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Удалить пожертвованный предмет"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Удалить номер лопасти"
 
 #: 
 msgid "Invalid security token. Please try again."
