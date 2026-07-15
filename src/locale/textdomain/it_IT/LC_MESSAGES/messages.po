@@ -2003,10 +2003,6 @@ msgid "Save Settings"
 msgstr "Salva le impostazioni"
 
 #: 
-msgid "Default User Settings"
-msgstr "Impostazioni utente predefinite"
-
-#: 
 msgid "Permission"
 msgstr "Autorizzazione"
 
@@ -9502,10 +9498,6 @@ msgid "Browse photos of congregation members"
 msgstr "Sfoglia le foto dei fedeli dell'assemblea"
 
 #: 
-msgid "Buyer Number"
-msgstr "Numero acquirente"
-
-#: 
 msgid "Buyers"
 msgstr "Acquirenti"
 
@@ -10548,16 +10540,8 @@ msgid "Server Error"
 msgstr "Errore del server"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Imposta il permesso su Vero per consentire ai nuovi utenti di modificare il loro valore corrente."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Imposta un'e-mail amministratore per poter reimpostare le password e ricevere notifiche"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Imposta le preferenze predefinite per i nuovi account utente"
 
 #: 
 msgid "Set up"
@@ -14101,22 +14085,6 @@ msgstr "Carica un file CSV per creare famiglie e persone in blocco."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Il file CSV contiene nomi di colonna duplicati. Rinomina le colonne duplicate (ad es. aggiungi \"(2)\" alla seconda) e carica di nuovo."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Sei sicuro di voler eliminare definitivamente questo articolo donato?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Sei sicuro di voler eliminare definitivamente questo numero di paletta?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Elimina articolo donato"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Elimina numero di paletta"
 
 #: 
 msgid "Invalid security token. Please try again."

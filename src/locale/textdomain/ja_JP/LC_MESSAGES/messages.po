@@ -1974,10 +1974,6 @@ msgid "Save Settings"
 msgstr "設定を保存"
 
 #: 
-msgid "Default User Settings"
-msgstr "デフォルト・ユーザー設定"
-
-#: 
 msgid "Permission"
 msgstr "権限"
 
@@ -9431,10 +9427,6 @@ msgid "Browse photos of congregation members"
 msgstr "教会員の写真を閲覧"
 
 #: 
-msgid "Buyer Number"
-msgstr "購入者番号"
-
-#: 
 msgid "Buyers"
 msgstr "購入者"
 
@@ -10477,16 +10469,8 @@ msgid "Server Error"
 msgstr "サーバーエラー"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "新しいユーザーが現在の値を変更できるようにするには、権限をTrueに設定してください。"
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "パスワードのリセットと通知の受信のために管理者メールアドレスを設定"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "新しいユーザーアカウントのデフォルト設定を行う"
 
 #: 
 msgid "Set up"
@@ -14029,22 +14013,6 @@ msgstr "CSVをアップロードして、家族と人物を一括作成します
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSVに重複した列名があります。重複している列の名前を変更し（例: 2番目に「(2)」を追加）、再度アップロードしてください。"
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "この寄付品を完全に削除してもよろしいですか？"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "このパドル番号を完全に削除してもよろしいですか？"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "寄付品を削除"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "パドル番号を削除"
 
 #: 
 msgid "Invalid security token. Please try again."

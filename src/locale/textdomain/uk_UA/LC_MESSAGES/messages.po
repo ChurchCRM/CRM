@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Зберегти налаштування"
 
 #: 
-msgid "Default User Settings"
-msgstr "Налаштування користувача за замовчуванням"
-
-#: 
 msgid "Permission"
 msgstr "Дозвіл"
 
@@ -9502,10 +9498,6 @@ msgid "Browse photos of congregation members"
 msgstr "Переглядайте фотографії членів парафії"
 
 #: 
-msgid "Buyer Number"
-msgstr "Номер покупця"
-
-#: 
 msgid "Buyers"
 msgstr "Покупці"
 
@@ -10548,16 +10540,8 @@ msgid "Server Error"
 msgstr "Помилка сервера"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Встановіть дозвіл True, щоб дати новим користувачам змогу змінити своє поточне значення."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Встановіть адресу електронної пошти адміністратора, щоб ви могли скидати паролі та отримувати сповіщення"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Встановіть параметри за замовчуванням для нових облікових записів користувачів"
 
 #: 
 msgid "Set up"
@@ -14103,22 +14087,6 @@ msgstr "Завантажте CSV для масового створення ро
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Ваш CSV містить дублюючі назви стовпців. Перейменуйте їх (наприклад, додайте «(2)» до другого) та завантажте знову."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Ви впевнені, що хочете назавжди видалити цей пожертвуваний предмет?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Ви впевнені, що хочете назавжди видалити цей номер весла?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Видалити пожертвуваний предмет"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Видалити номер весла"
 
 #: 
 msgid "Invalid security token. Please try again."

@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Stoor instellings"
 
 #: 
-msgid "Default User Settings"
-msgstr "Verstek gebruikersinstellings"
-
-#: 
 msgid "Permission"
 msgstr "Toestemming"
 
@@ -9482,10 +9478,6 @@ msgid "Browse photos of congregation members"
 msgstr "Blaai deur foto's van geloofsgelykelede"
 
 #: 
-msgid "Buyer Number"
-msgstr "Kopernommer"
-
-#: 
 msgid "Buyers"
 msgstr "Kopers"
 
@@ -10528,16 +10520,8 @@ msgid "Server Error"
 msgstr "Bediener-Fout"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Stel Toestemming Waar in om nuwe gebruikers die vermoë te gee om hul huidige waarde te verander."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Stel 'n beheerder-gebruiker e-pos in sodat u wagwoorde kan herstel en kennisgewings kan ontvang"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Stel standaard-voorkeure vir nuwe gebruiker-rekeninge in"
 
 #: 
 msgid "Set up"
@@ -14081,22 +14065,6 @@ msgstr "Laai 'n CSV op om gesinne en mense in grootmaat te skep."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "U CSV het duplikaatkolomname. Hernoem die duplikaatkolomme (bv. voeg \"(2)\" by die tweede een) en laai weer op."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Is jy seker jy wil hierdie geskenkte item permanent uitvee?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Is jy seker jy wil hierdie roeinommer permanent uitvee?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Vee geskenkte item uit"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Vee roeinommer uit"
 
 #: 
 msgid "Invalid security token. Please try again."

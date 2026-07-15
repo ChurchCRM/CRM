@@ -2043,10 +2043,6 @@ msgid "Save Settings"
 msgstr "Zapisz Ustawienia"
 
 #: 
-msgid "Default User Settings"
-msgstr "Ustawienia Domyślne Użytkownika"
-
-#: 
 msgid "Permission"
 msgstr "Uprawnienia"
 
@@ -9555,10 +9551,6 @@ msgid "Browse photos of congregation members"
 msgstr "Przeglądaj zdjęcia parafian"
 
 #: 
-msgid "Buyer Number"
-msgstr "Numer nabywcy"
-
-#: 
 msgid "Buyers"
 msgstr "Nabywcy"
 
@@ -10601,16 +10593,8 @@ msgid "Server Error"
 msgstr "Błąd serwera"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Ustaw Uprawnienie na Tak, aby nowi użytkownicy mogli zmieniać swoją bieżącą wartość."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Ustaw adres e-mail administratora, aby móc resetować hasła i otrzymywać powiadomienia"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Ustaw domyślne preferencje dla nowych kont użytkowników"
 
 #: 
 msgid "Set up"
@@ -14155,22 +14139,6 @@ msgstr "Prześlij plik CSV, aby masowo tworzyć rodziny i osoby."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Twój plik CSV ma zduplikowane nazwy kolumn. Zmień nazwy zduplikowanych kolumn (np. dodaj \"(2)\" do drugiej) i prześlij ponownie."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Czy na pewno chcesz trwale usunąć ten darowany przedmiot?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Czy na pewno chcesz trwale usunąć ten numer licytacyjny?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Usuń darowany przedmiot"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Usuń numer licytacyjny"
 
 #: 
 msgid "Invalid security token. Please try again."

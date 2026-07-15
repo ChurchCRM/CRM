@@ -1995,10 +1995,6 @@ msgid "Save Settings"
 msgstr "שמור הגדרות"
 
 #: 
-msgid "Default User Settings"
-msgstr "הגדרות ברירת מחדל למשתמש"
-
-#: 
 msgid "Permission"
 msgstr "הרשאה"
 
@@ -9479,10 +9475,6 @@ msgid "Browse photos of congregation members"
 msgstr "עיון בתמונות חברי הקהילה"
 
 #: 
-msgid "Buyer Number"
-msgstr "מספר קונה"
-
-#: 
 msgid "Buyers"
 msgstr "קונים"
 
@@ -10525,16 +10517,8 @@ msgid "Server Error"
 msgstr "שגיאת שרת"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "הגדירו הרשאה כאמת כדי לתת למשתמשים חדשים את היכולת לשנות את הערך הנוכחי שלהם."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "הגדירו דוא\"ל מנהל מערכת כדי שתוכלו לאפס סיסמאות ולקבל התראות"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "הגדרת העדפות ברירת מחדל לחשבונות משתמשים חדשים"
 
 #: 
 msgid "Set up"
@@ -14078,22 +14062,6 @@ msgstr "העלה CSV ליצירת משפחות ואנשים בכמות."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "ל-CSV שלך יש שמות עמודות כפולים. שנה את שמות העמודות הכפולות (לדוגמה, הוסף \"(2)\" לשנייה) והעלה שוב."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "האם אתה בטוח שברצונך למחוק לצמיתות פריט תרומה זה?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "האם אתה בטוח שברצונך למחוק לצמיתות מספר משוט זה?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "מחק פריט תרומה"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "מחק מספר משוט"
 
 #: 
 msgid "Invalid security token. Please try again."

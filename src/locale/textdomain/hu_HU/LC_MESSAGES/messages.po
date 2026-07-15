@@ -2017,10 +2017,6 @@ msgid "Save Settings"
 msgstr "Beállítások mentése"
 
 #: 
-msgid "Default User Settings"
-msgstr "Alapértelmezett felhasználói beállítások"
-
-#: 
 msgid "Permission"
 msgstr "Engedély"
 
@@ -9511,10 +9507,6 @@ msgid "Browse photos of congregation members"
 msgstr "Gyülekezeti tagok fényképeinek böngészése"
 
 #: 
-msgid "Buyer Number"
-msgstr "Vásárlószám"
-
-#: 
 msgid "Buyers"
 msgstr "Vásárlók"
 
@@ -10557,16 +10549,8 @@ msgid "Server Error"
 msgstr "Szerverhiba"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Állítsa az engedélyt Igazra, hogy az új felhasználók módosíthassák az aktuális értéket."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Állítson be egy adminisztrátori e-mail címet a jelszó-visszaállításhoz és értesítésekhez"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Alapértelmezett beállítások megadása új felhasználói fiókokhoz"
 
 #: 
 msgid "Set up"
@@ -14110,22 +14094,6 @@ msgstr "Töltsön fel egy CSV-t a családok és személyek tömeges létrehozás
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "A CSV-ben ismétlődő oszlopnevek találhatók. Nevezze át az ismétlődő oszlopokat (pl. adja hozzá a \"(2)\" jelölést a másodikhoz) és töltse fel újra."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Biztosan véglegesen törölni szeretné ezt az adományozott tételt?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Biztosan véglegesen törölni szeretné ezt a licitsorszámot?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Adományozott tétel törlése"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Licitsorszám törlése"
 
 #: 
 msgid "Invalid security token. Please try again."

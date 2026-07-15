@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Ayarları kaydet"
 
 #: 
-msgid "Default User Settings"
-msgstr "Varsayılan Kullanıcı Ayarları"
-
-#: 
 msgid "Permission"
 msgstr "İzin"
 
@@ -9482,10 +9478,6 @@ msgid "Browse photos of congregation members"
 msgstr "Cemaat üyelerinin fotoğraflarına göz atın"
 
 #: 
-msgid "Buyer Number"
-msgstr "Alıcı Numarası"
-
-#: 
 msgid "Buyers"
 msgstr "Alıcılar"
 
@@ -10528,16 +10520,8 @@ msgid "Server Error"
 msgstr "Sunucu Hatası"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Yeni kullanıcılara mevcut değerlerini değiştirme yeteneği vermek için İzni Doğru olarak ayarlayın."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Şifreleri sıfırlayabilmeniz ve bildirimler alabilmeniz için bir yönetici e-postası belirleyin"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Yeni kullanıcı hesapları için varsayılan tercihleri belirle"
 
 #: 
 msgid "Set up"
@@ -14081,22 +14065,6 @@ msgstr "Aileleri ve kişileri toplu olarak oluşturmak için bir CSV yükleyin."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV dosyanızda yinelenen sütun adları var. Yinelenen sütunları yeniden adlandırın (örneğin ikincisine \"(2)\" ekleyin) ve tekrar yükleyin."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Bu bağışlanan ürünü kalıcı olarak silmek istediğinizden emin misiniz?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Bu paddle numarasını kalıcı olarak silmek istediğinizden emin misiniz?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Bağışlanan Ürünü Sil"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Paddle Numarasını Sil"
 
 #: 
 msgid "Invalid security token. Please try again."

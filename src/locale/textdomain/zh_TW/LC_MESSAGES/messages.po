@@ -2050,10 +2050,6 @@ msgid "Save Settings"
 msgstr "保存設置"
 
 #: 
-msgid "Default User Settings"
-msgstr "默認用戶設置"
-
-#: 
 msgid "Permission"
 msgstr "允許"
 
@@ -9630,10 +9626,6 @@ msgid "Browse photos of congregation members"
 msgstr "瀏覽會眾照片"
 
 #: 
-msgid "Buyer Number"
-msgstr "買家編號"
-
-#: 
 msgid "Buyers"
 msgstr "買家"
 
@@ -10676,16 +10668,8 @@ msgid "Server Error"
 msgstr "伺服器錯誤"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "將權限設為「是」以允許新使用者變更其目前的值。"
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "設定管理員電子郵件以便重設密碼和接收通知"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "設定新使用者帳號的預設偏好"
 
 #: 
 msgid "Set up"
@@ -14228,22 +14212,6 @@ msgstr "上傳 CSV 以批次建立家庭和個人資料。"
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "您的 CSV 檔案有重複的欄位名稱。請重新命名重複的欄位（例如在第二個欄位後加上「(2)」），然後重新上傳。"
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "您確定要永久刪除此捐贈物品嗎？"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "您確定要永久刪除此競拍號嗎？"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "刪除捐贈物品"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "刪除競拍號"
 
 #: 
 msgid "Invalid security token. Please try again."

@@ -1995,10 +1995,6 @@ msgid "Save Settings"
 msgstr "ቅንብሮችን መዝግብ"
 
 #: 
-msgid "Default User Settings"
-msgstr "የተለመዱ የተጠቃሚ ቅንብሮች"
-
-#: 
 msgid "Permission"
 msgstr "ፍቃድ"
 
@@ -9489,10 +9485,6 @@ msgid "Browse photos of congregation members"
 msgstr "ቤተሰብ አባላት ፍቃድ መርምርኩ"
 
 #: 
-msgid "Buyer Number"
-msgstr "ገዢ ቁጥር"
-
-#: 
 msgid "Buyers"
 msgstr "ገዢዎች"
 
@@ -10535,16 +10527,8 @@ msgid "Server Error"
 msgstr "ሰርቬር ስህተት"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "ተፈላጊ ተጠቃሚ ለ ለውጥ ጉዳይ ፍቃድ True ስቴት"
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "ገለልአዊ ተጠቃሚ ኢሜል ስቴት ወደ ምልቀት ቃል ዳብ እና ቅሪታ ደግ"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "ተፈላጊ ተጠቃሚ ሥርዓት ለ ነባር ምረጫ ስቴት"
 
 #: 
 msgid "Set up"
@@ -14088,22 +14072,6 @@ msgstr "ቤተሰቦችን እና ሰዎችን በጅምላ ለመፍጠር CSV 
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV ዓምዶቻችሁ ተደጋጋሚ ስሞች አሏቸው። ተደጋጋሚ ዓምዶቹን እንደገና ሰይሙ (ለምሳሌ ለሁለተኛው \"(2)\" ጨምሩ) እና እንደገና ስቀሉ።"
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "ይህን የተለገሠ ዕቃ ለዘላለም ማጥፋት እንደሚፈልጉ እርግጠኛ ነዎት?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "ይህን የፓዳል ቁጥር ለዘላለም ማጥፋት እንደሚፈልጉ እርግጠኛ ነዎት?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "የተለገሠ ዕቃ ሰርዝ"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "የፓዳል ቁጥር ሰርዝ"
 
 #: 
 msgid "Invalid security token. Please try again."
