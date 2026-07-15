@@ -1993,10 +1993,6 @@ msgid "Save Settings"
 msgstr "Enregistrer les réglages"
 
 #: 
-msgid "Default User Settings"
-msgstr "Réglages Utilisateur par défaut"
-
-#: 
 msgid "Permission"
 msgstr "Permission"
 
@@ -6462,10 +6458,6 @@ msgid "Confirm Deletion"
 msgstr "Confirmer la suppression"
 
 #: 
-msgid "Create directory permission"
-msgstr "Créer une permission de répertoire"
-
-#: 
 msgid "Database Only"
 msgstr "Base de données uniquement"
 
@@ -9479,10 +9471,6 @@ msgid "Browse photos of congregation members"
 msgstr "Parcourir les photos des fidèles de l'assemblée"
 
 #: 
-msgid "Buyer Number"
-msgstr "Numéro d'acheteur"
-
-#: 
 msgid "Buyers"
 msgstr "Acheteurs"
 
@@ -10525,16 +10513,8 @@ msgid "Server Error"
 msgstr "Erreur serveur"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Définir l'autorisation sur Vrai pour permettre aux nouveaux utilisateurs de modifier leur valeur actuelle."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Définir un e-mail d'administrateur pour pouvoir réinitialiser les mots de passe et recevoir des notifications"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Définir les préférences par défaut pour les nouveaux comptes utilisateurs"
 
 #: 
 msgid "Set up"
@@ -11579,11 +11559,6 @@ msgstr "Ces valeurs sont préremplies lors de la création de nouvelles familles
 #: 
 msgid "Unit used to measure distance."
 msgstr "Unité utilisée pour mesurer la distance."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Autorisation utilisateur pour créer des répertoires"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14078,22 +14053,6 @@ msgstr "Importez un CSV pour créer des familles et des personnes en masse."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Votre CSV contient des noms de colonnes en double. Renommez les colonnes en double (par ex. ajoutez « (2) » à la seconde) et importez à nouveau."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Êtes-vous sûr de vouloir supprimer définitivement cet article offert ?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Êtes-vous sûr de vouloir supprimer définitivement ce numéro de palette ?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Supprimer l'article offert"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Supprimer le numéro de palette"
 
 #: 
 msgid "Invalid security token. Please try again."

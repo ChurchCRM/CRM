@@ -1974,10 +1974,6 @@ msgid "Save Settings"
 msgstr "I-save ang mga Setting"
 
 #: 
-msgid "Default User Settings"
-msgstr "Default na mga Setting ng User"
-
-#: 
 msgid "Permission"
 msgstr "Pahintulot"
 
@@ -6424,10 +6420,6 @@ msgid "Confirm Deletion"
 msgstr "Kumpirmahin ang Pagbubura"
 
 #: 
-msgid "Create directory permission"
-msgstr "Pahintulot sa paglikha ng direktoryo"
-
-#: 
 msgid "Database Only"
 msgstr "Database Lamang"
 
@@ -9441,10 +9433,6 @@ msgid "Browse photos of congregation members"
 msgstr "I-browse ang mga larawan ng mga miyembro ng kongregasyon"
 
 #: 
-msgid "Buyer Number"
-msgstr "Numero ng Mamimili"
-
-#: 
 msgid "Buyers"
 msgstr "Mga Mamimili"
 
@@ -10487,16 +10475,8 @@ msgid "Server Error"
 msgstr "Error sa Server"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Itakda ang Pahintulot bilang Totoo para bigyan ang mga bagong user ng kakayahang baguhin ang kanilang kasalukuyang halaga."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Magtakda ng email ng admin user para maari kang mag-reset ng mga password at makatanggap ng mga abiso"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Magtakda ng mga default na kagustuhan para sa mga bagong user account"
 
 #: 
 msgid "Set up"
@@ -11541,11 +11521,6 @@ msgstr "Ang mga halagang ito ay naka-pre-fill kapag lumilikha ng mga bagong pami
 #: 
 msgid "Unit used to measure distance."
 msgstr "Yunit na ginagamit para sukatin ang distansya."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Pahintulot ng user para lumikha ng mga direktoryo"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14040,22 +14015,6 @@ msgstr "Mag-upload ng CSV para gumawa ng mga pamilya at tao nang sabay-sabay."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "May duplicate na column names ang iyong CSV. Palitan ang pangalan ng mga duplicate column (hal. magdagdag ng \"(2)\" sa pangalawa) at mag-upload muli."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Sigurado ka bang permanenteng burahin ang donated item na ito?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Sigurado ka bang permanenteng burahin ang paddle number na ito?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Burahin ang Donated Item"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Burahin ang Paddle Number"
 
 #: 
 msgid "Invalid security token. Please try again."

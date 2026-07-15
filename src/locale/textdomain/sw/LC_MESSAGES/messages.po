@@ -1995,10 +1995,6 @@ msgid "Save Settings"
 msgstr "Hifadhi Mipangilio"
 
 #: 
-msgid "Default User Settings"
-msgstr "Mipangilio ya Mtumiaji Chaguomsingi"
-
-#: 
 msgid "Permission"
 msgstr "Ruhusa"
 
@@ -6460,10 +6456,6 @@ msgid "Confirm Deletion"
 msgstr "Thibitisha Ufutaji"
 
 #: 
-msgid "Create directory permission"
-msgstr "Ruhusa ya kuunda saraka"
-
-#: 
 msgid "Database Only"
 msgstr "Hifadhidata Pekee"
 
@@ -9477,10 +9469,6 @@ msgid "Browse photos of congregation members"
 msgstr "Vinjari picha za washiriki wa ushirika"
 
 #: 
-msgid "Buyer Number"
-msgstr "Nambari ya Mnunuzi"
-
-#: 
 msgid "Buyers"
 msgstr "Wanunuzi"
 
@@ -10523,16 +10511,8 @@ msgid "Server Error"
 msgstr "Hitilafu ya Seva"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Weka Ruhusa kuwa Kweli ili kutoa watumiaji wapya uwezo wa kubadilisha thamani yao ya sasa."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Weka barua pepe ya msimamizi ili uweze kuweka upya nenosiri na kupokea arifa"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Weka mapendeleo ya chaguo-msingi kwa akaunti mpya za watumiaji"
 
 #: 
 msgid "Set up"
@@ -11577,11 +11557,6 @@ msgstr "Thamani hizi zinajazwa mapema wakati wa kutengeneza familia mpya. Acha t
 #: 
 msgid "Unit used to measure distance."
 msgstr "Kitengo kinachotumika kupima umbali."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Idhini ya watumiaji kutengeneza saraka"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14076,22 +14051,6 @@ msgstr "Pakia CSV kuunda familia na watu kwa wingi."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV yako ina majina ya safu wima yanayorudiwa. Badilisha jina la safu wima zinazorudiwa (mf. ongeza \"(2)\" kwa ya pili) na upaki tena."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Je, una uhakika unataka kufuta kabisa kitu hiki kilichochangiwa?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Je, una uhakika unataka kufuta kabisa nambari hii ya paddle?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Futa kitu kilichochangiwa"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Futa nambari ya paddle"
 
 #: 
 msgid "Invalid security token. Please try again."

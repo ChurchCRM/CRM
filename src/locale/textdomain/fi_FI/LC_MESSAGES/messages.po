@@ -1981,10 +1981,6 @@ msgid "Save Settings"
 msgstr "Tallenna asetukset"
 
 #: 
-msgid "Default User Settings"
-msgstr "Käyttäjän oletusasetukset"
-
-#: 
 msgid "Permission"
 msgstr "Lupa"
 
@@ -6426,10 +6422,6 @@ msgid "Confirm Deletion"
 msgstr "Vahvista poistaminen"
 
 #: 
-msgid "Create directory permission"
-msgstr "Luo hakemiston käyttöoikeus"
-
-#: 
 msgid "Database Only"
 msgstr "Vain tietokanta"
 
@@ -9443,10 +9435,6 @@ msgid "Browse photos of congregation members"
 msgstr "Selaa seurakunnan jäsenten valokuvia"
 
 #: 
-msgid "Buyer Number"
-msgstr "Ostajan numero"
-
-#: 
 msgid "Buyers"
 msgstr "Ostajat"
 
@@ -10489,16 +10477,8 @@ msgid "Server Error"
 msgstr "Palvelinvirhe"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Aseta oikeus arvoon Tosi antaaksesi uusille käyttäjille mahdollisuuden muuttaa nykyistä arvoaan."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Aseta ylläpitäjän sähköposti, jotta voit nollata salasanoja ja vastaanottaa ilmoituksia"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Aseta oletusasetukset uusille käyttäjätileille"
 
 #: 
 msgid "Set up"
@@ -11543,11 +11523,6 @@ msgstr "Nämä arvot esitäytetään luotaessa uusia perheitä. Jätä tyhjäksi
 #: 
 msgid "Unit used to measure distance."
 msgstr "Etäisyyden mittaamiseen käytetty yksikkö."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Käyttäjän oikeus luoda hakemistoja"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14042,22 +14017,6 @@ msgstr "Lataa CSV luodaksesi perheitä ja ihmisiä eräajona."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV:ssä on päällekkäisiä sarakkeiden nimiä. Nimeä päällekkäiset sarakkeet uudelleen (esim. lisää \"(2)\" toiseen) ja lataa uudelleen."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Haluatko varmasti poistaa tämän lahjoitetun esineen pysyvästi?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Haluatko varmasti poistaa tämän huutokauppanumeron pysyvästi?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Poista lahjoitettu esine"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Poista huutokauppanumero"
 
 #: 
 msgid "Invalid security token. Please try again."

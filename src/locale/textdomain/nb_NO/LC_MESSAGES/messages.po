@@ -2069,10 +2069,6 @@ msgid "Save Settings"
 msgstr "Lagre innstillinger"
 
 #: 
-msgid "Default User Settings"
-msgstr "Standard brukerinnstillinger"
-
-#: 
 #, fuzzy
 msgid "Permission"
 msgstr "Person"
@@ -6545,10 +6541,6 @@ msgid "Confirm Deletion"
 msgstr "Bekreft sletting"
 
 #: 
-msgid "Create directory permission"
-msgstr "Tillatelse til å opprette mappe"
-
-#: 
 msgid "Database Only"
 msgstr "Kun database"
 
@@ -9562,10 +9554,6 @@ msgid "Browse photos of congregation members"
 msgstr "Bla gjennom bilder av menighetsmedlemmer"
 
 #: 
-msgid "Buyer Number"
-msgstr "Kjøpernummer"
-
-#: 
 msgid "Buyers"
 msgstr "Kjøpere"
 
@@ -10608,16 +10596,8 @@ msgid "Server Error"
 msgstr "Serverfeil"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Sett tillatelse til Sann for å gi nye brukere mulighet til å endre gjeldende verdi."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Angi en e-postadresse for administrator slik at du kan tilbakestille passord og motta varsler"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Angi standardpreferanser for nye brukerkontoer"
 
 #: 
 msgid "Set up"
@@ -11662,11 +11642,6 @@ msgstr "Disse verdiene fylles inn på forhånd når du oppretter nye familier. L
 #: 
 msgid "Unit used to measure distance."
 msgstr "Enhet som brukes for å måle avstand."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Brukerrettighet for å opprette kataloger"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14161,22 +14136,6 @@ msgstr "Last opp en CSV for å opprette familier og personer i bulk."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-filen din har duplikate kolonnenavn. Gi de duplikate kolonnene nytt navn (f.eks. legg til \"(2)\" til den andre) og last opp igjen."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Er du sikker på at du vil slette dette donerte elementet permanent?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Er du sikker på at du vil slette dette budnummeret permanent?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Slett donert element"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Slett budnummer"
 
 #: 
 msgid "Invalid security token. Please try again."

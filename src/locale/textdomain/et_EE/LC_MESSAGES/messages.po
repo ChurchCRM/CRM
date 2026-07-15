@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Salvesta sätted"
 
 #: 
-msgid "Default User Settings"
-msgstr "Kasutaja vaikeseaded"
-
-#: 
 msgid "Permission"
 msgstr "Luba"
 
@@ -6464,10 +6460,6 @@ msgid "Confirm Deletion"
 msgstr "Kinnita kustutamine"
 
 #: 
-msgid "Create directory permission"
-msgstr "Looge kataloogi õigused"
-
-#: 
 msgid "Database Only"
 msgstr "Ainult andmebaas"
 
@@ -9481,10 +9473,6 @@ msgid "Browse photos of congregation members"
 msgstr "Sirvige koguduse liikmete fotosid"
 
 #: 
-msgid "Buyer Number"
-msgstr "Ostja number"
-
-#: 
 msgid "Buyers"
 msgstr "Ostjad"
 
@@ -10527,16 +10515,8 @@ msgid "Server Error"
 msgstr "Serveri viga"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Seadke õigus väärtusele Tõene, et anda uutele kasutajatele võimalus muuta oma praegust väärtust."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Seadke administraatori kasutaja e-post, et saaksite paroole lähtestada ja teateid saada"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Seadke uute kasutajakontode vaikimisi eelistused"
 
 #: 
 msgid "Set up"
@@ -11581,11 +11561,6 @@ msgstr "Need väärtused täidetakse eelnevalt uute perede loomisel. Jätke tüh
 #: 
 msgid "Unit used to measure distance."
 msgstr "Vahemaa mõõtmiseks kasutatav ühik."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Kasutaja luba kataloogide loomiseks"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14080,22 +14055,6 @@ msgstr "Laadige CSV üles, et luua massimpordi teel peresid ja inimesi."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Teie CSV-s on duplikaatseid veerunimesid. Nimetage duplikaatide veerud ümber (nt lisage teisele \"(2)\") ja laadige uuesti üles."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Kas soovite kindlasti selle annetatud eseme jäädavalt kustutada?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Kas soovite kindlasti selle pakkumisnumbri jäädavalt kustutada?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Kustuta annetatud ese"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Kustuta pakkumisnumber"
 
 #: 
 msgid "Invalid security token. Please try again."
