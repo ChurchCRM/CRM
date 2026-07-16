@@ -323,6 +323,12 @@ class CustomFieldUtils
                 }
                 break;
 
+            case 11:
+                // Phone field: strip any character that is not valid in a phone number
+                // or a tel: URI to prevent storage of XSS payloads (GHSA-frj8-mpcx-44g9).
+                $data = preg_replace('/[^0-9+\-().\sxX#*]/', '', $data);
+                break;
+
             default:
                 break;
         }
