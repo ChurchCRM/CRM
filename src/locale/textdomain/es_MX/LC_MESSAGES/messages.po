@@ -1976,10 +1976,6 @@ msgid "Save Settings"
 msgstr "Guardar ajustes"
 
 #: 
-msgid "Default User Settings"
-msgstr "Ajustes del usuario por Defecto"
-
-#: 
 msgid "Permission"
 msgstr "Permiso"
 
@@ -6426,10 +6422,6 @@ msgid "Confirm Deletion"
 msgstr "Confirmar eliminación"
 
 #: 
-msgid "Create directory permission"
-msgstr "Crear permiso de directorio"
-
-#: 
 msgid "Database Only"
 msgstr "Sólo base de datos"
 
@@ -9443,10 +9435,6 @@ msgid "Browse photos of congregation members"
 msgstr "Ver fotos de los fieles de la feligresía"
 
 #: 
-msgid "Buyer Number"
-msgstr "Número de comprador"
-
-#: 
 msgid "Buyers"
 msgstr "Compradores"
 
@@ -10489,16 +10477,8 @@ msgid "Server Error"
 msgstr "Error del servidor"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Establezca el permiso en Verdadero para que los nuevos usuarios puedan cambiar su valor actual."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Establezca un correo de administrador para poder restablecer contraseñas y recibir notificaciones"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Establecer preferencias predeterminadas para nuevas cuentas de usuario"
 
 #: 
 msgid "Set up"
@@ -11543,11 +11523,6 @@ msgstr "Estos valores se rellenan automáticamente al crear nuevas familias. Dej
 #: 
 msgid "Unit used to measure distance."
 msgstr "Unidad utilizada para medir la distancia."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Permiso de usuario para crear directorios"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14042,22 +14017,6 @@ msgstr "Sube un CSV para crear familias y feligreses en masa."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Tu CSV tiene nombres de columna duplicados. Cambia el nombre de las columnas duplicadas (p. ej. agrega \"(2)\" a la segunda) y vuelve a subir."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "¿Está seguro de que desea eliminar permanentemente este artículo donado?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "¿Está seguro de que desea eliminar permanentemente este número de paleta?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Eliminar artículo donado"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Eliminar número de paleta"
 
 #: 
 msgid "Invalid security token. Please try again."

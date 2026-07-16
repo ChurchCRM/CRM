@@ -1995,10 +1995,6 @@ msgid "Save Settings"
 msgstr "Uložit nastavení"
 
 #: 
-msgid "Default User Settings"
-msgstr "Výchozí nastavení uživatele"
-
-#: 
 msgid "Permission"
 msgstr "Oprávnení"
 
@@ -6456,10 +6452,6 @@ msgid "Confirm Deletion"
 msgstr "Potvrdit smazaní"
 
 #: 
-msgid "Create directory permission"
-msgstr "Oprávnění k vytváření adresáře"
-
-#: 
 msgid "Database Only"
 msgstr "Pouze databáze"
 
@@ -9479,10 +9471,6 @@ msgid "Browse photos of congregation members"
 msgstr "Procházet fotografie členů sboru"
 
 #: 
-msgid "Buyer Number"
-msgstr "Číslo kupujícího"
-
-#: 
 msgid "Buyers"
 msgstr "Kupující"
 
@@ -10525,16 +10513,8 @@ msgid "Server Error"
 msgstr "Chyba serveru"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Nastavte oprávnění na Ano, aby noví uživatelé mohli měnit svou aktuální hodnotu."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Nastavte e-mail administrátora pro obnovení hesel a příjem oznámení"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Nastavit výchozí předvolby pro nové uživatelské účty"
 
 #: 
 msgid "Set up"
@@ -11579,11 +11559,6 @@ msgstr "Tyto hodnoty jsou předvyplněny při vytváření nových rodin. Nechej
 #: 
 msgid "Unit used to measure distance."
 msgstr "Jednotka používaná k měření vzdálenosti."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Uživatelské oprávnění k vytváření adresářů"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14079,22 +14054,6 @@ msgstr "Nahrajte CSV pro hromadné vytvoření rodin a osob."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Váš CSV má duplicitní názvy sloupců. Přejmenujte duplicitní sloupce (např. přidejte \"(2)\" k druhému) a nahrajte znovu."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Jste si jisti, že chcete tuto darovanou položku trvale odstranit?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Jste si jisti, že chcete toto číslo licitace trvale odstranit?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Odstranit darovanou položku"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Odstranit číslo licitace"
 
 #: 
 msgid "Invalid security token. Please try again."

@@ -1997,10 +1997,6 @@ msgid "Save Settings"
 msgstr "Simpan Pengaturan"
 
 #: 
-msgid "Default User Settings"
-msgstr "Pengaturan Pengguna Default"
-
-#: 
 msgid "Permission"
 msgstr "Izin"
 
@@ -6455,10 +6451,6 @@ msgid "Confirm Deletion"
 msgstr "Konfirmasi Penghapusan"
 
 #: 
-msgid "Create directory permission"
-msgstr "Izin membuat direktori"
-
-#: 
 msgid "Database Only"
 msgstr "Hanya Database"
 
@@ -9466,10 +9458,6 @@ msgid "Browse photos of congregation members"
 msgstr "Jelajahi foto anggota jemaat"
 
 #: 
-msgid "Buyer Number"
-msgstr "Nomor Pembeli"
-
-#: 
 msgid "Buyers"
 msgstr "Pembeli"
 
@@ -10512,16 +10500,8 @@ msgid "Server Error"
 msgstr "Kesalahan Server"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Atur Izin ke True untuk memberikan kemampuan kepada pengguna baru untuk mengubah nilai mereka saat ini."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Atur email pengguna admin agar Anda dapat mereset kata sandi dan menerima notifikasi"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Atur preferensi default untuk akun pengguna baru"
 
 #: 
 msgid "Set up"
@@ -11566,11 +11546,6 @@ msgstr "Nilai-nilai ini diisi sebelumnya saat membuat keluarga baru. Biarkan kos
 #: 
 msgid "Unit used to measure distance."
 msgstr "Satuan yang digunakan untuk mengukur jarak."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Izin pengguna untuk membuat direktori"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14064,22 +14039,6 @@ msgstr "Unggah CSV untuk membuat keluarga dan jemaat secara massal."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV Anda memiliki nama kolom yang duplikat. Ganti nama kolom yang duplikat (mis. tambahkan \"(2)\" pada yang kedua) dan unggah kembali."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Apakah Anda yakin ingin menghapus barang sumbangan ini secara permanen?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Apakah Anda yakin ingin menghapus nomor lelang ini secara permanen?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Hapus barang sumbangan"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Hapus nomor lelang"
 
 #: 
 msgid "Invalid security token. Please try again."

@@ -1974,10 +1974,6 @@ msgid "Save Settings"
 msgstr "Spremi postavke"
 
 #: 
-msgid "Default User Settings"
-msgstr "Zadane korisničke postavke"
-
-#: 
 msgid "Permission"
 msgstr "Dozvola"
 
@@ -6425,10 +6421,6 @@ msgid "Confirm Deletion"
 msgstr "Potvrdi brisanje"
 
 #: 
-msgid "Create directory permission"
-msgstr "Dozvola za kreiranje direktorija"
-
-#: 
 msgid "Database Only"
 msgstr "Samo baza podataka"
 
@@ -9448,10 +9440,6 @@ msgid "Browse photos of congregation members"
 msgstr "Pregledajte fotografije članova zajednice"
 
 #: 
-msgid "Buyer Number"
-msgstr "Broj kupca"
-
-#: 
 msgid "Buyers"
 msgstr "Kupci"
 
@@ -10494,16 +10482,8 @@ msgid "Server Error"
 msgstr "Greška poslužitelja"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Postavite dozvolu na True kako biste novim korisnicima dali mogućnost promjene njihove trenutne vrijednosti."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Postavite e-poštu admin korisnika kako biste mogli resetirati lozinke i primati obavijesti"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Postavite zadane preference za nove korisničke račune"
 
 #: 
 msgid "Set up"
@@ -11548,11 +11528,6 @@ msgstr "Ove vrijednosti su unaprijed ispunjene pri kreiranju novih obitelji. Ost
 #: 
 msgid "Unit used to measure distance."
 msgstr "Jedinica za mjerenje udaljenosti."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Korisničko dopuštenje za kreiranje imenika"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14048,22 +14023,6 @@ msgstr "Učitajte CSV za grupno kreiranje obitelji i vjernika."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Vaš CSV ima dvostruke nazive stupaca. Preimenujte dvostruke stupce (npr. dodajte \"(2)\" drugom) i učitajte ponovo."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Jeste li sigurni da želite trajno obrisati ovu doniranu stavku?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Jeste li sigurni da želite trajno obrisati ovaj broj lopatice?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Obriši doniranu stavku"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Obriši broj lopatice"
 
 #: 
 msgid "Invalid security token. Please try again."

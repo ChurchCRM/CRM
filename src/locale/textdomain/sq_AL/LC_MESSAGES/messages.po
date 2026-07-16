@@ -1997,10 +1997,6 @@ msgid "Save Settings"
 msgstr "Save Settings"
 
 #: 
-msgid "Default User Settings"
-msgstr "Default User Settings"
-
-#: 
 msgid "Permission"
 msgstr "Leje"
 
@@ -6453,10 +6449,6 @@ msgid "Confirm Deletion"
 msgstr "Konfirmo fshirjen"
 
 #: 
-msgid "Create directory permission"
-msgstr "Leja për të krijuar drejtori"
-
-#: 
 msgid "Database Only"
 msgstr "Vetëm baza e të dhënave"
 
@@ -9470,10 +9462,6 @@ msgid "Browse photos of congregation members"
 msgstr "Shfleto fotos e anëtarëve të meshes"
 
 #: 
-msgid "Buyer Number"
-msgstr "Numri i Blerësit"
-
-#: 
 msgid "Buyers"
 msgstr "Bluesit"
 
@@ -10516,16 +10504,8 @@ msgid "Server Error"
 msgstr "Gabim i Serverit"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Vendos Lejen True për të dhënë përdoruesve të rinj aftësinë për të ndryshuar vlerën e tyre aktuale."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Vendos një email të përdoruesit administrues në mënyrë që të mund të rivendosësh fjalëkalime dhe të marrësh njoftime"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Vendos preferencat parazgjedhjen për llogarit e përdoruesit të rinj"
 
 #: 
 msgid "Set up"
@@ -11570,11 +11550,6 @@ msgstr "Këto vlera paraplotësohen kur krijohen familje të reja. Lini bosh pë
 #: 
 msgid "Unit used to measure distance."
 msgstr "Njësia e përdorur për matur distancën."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Leja e përdoruesit për të krijuar dosje"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14069,22 +14044,6 @@ msgstr "Ngarkoni një CSV për të krijuar familje dhe persona në masë."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-ja juaj ka emra kolonash të dublifikuar. Riemërtoni kolonat e dublifikuara (p.sh. shtoni \"(2)\" të dytës) dhe ngarkoni përsëri."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "A jeni të sigurt që doni të fshini përgjithmonë këtë artikull të dhuruar?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "A jeni të sigurt që doni të fshini përgjithmonë këtë numër pagaie?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Fshi artikullin e dhuruar"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Fshi numrin e pagaies"
 
 #: 
 msgid "Invalid security token. Please try again."

@@ -1974,10 +1974,6 @@ msgid "Save Settings"
 msgstr "Instellingen opslaan"
 
 #: 
-msgid "Default User Settings"
-msgstr "Standaard Gebruikers Instellingen"
-
-#: 
 msgid "Permission"
 msgstr "Toestemming"
 
@@ -6428,10 +6424,6 @@ msgid "Confirm Deletion"
 msgstr "Verwijdering Bevestigen"
 
 #: 
-msgid "Create directory permission"
-msgstr "Toestemming Directory Maken"
-
-#: 
 msgid "Database Only"
 msgstr "Alleen Database"
 
@@ -9445,10 +9437,6 @@ msgid "Browse photos of congregation members"
 msgstr "Foto's van gemeenteleden bekijken"
 
 #: 
-msgid "Buyer Number"
-msgstr "Kopersnummer"
-
-#: 
 msgid "Buyers"
 msgstr "Kopers"
 
@@ -10491,16 +10479,8 @@ msgid "Server Error"
 msgstr "Serverfout"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Stel machtiging in op Waar om nieuwe gebruikers de mogelijkheid te geven hun huidige waarde te wijzigen."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Stel een beheerders-e-mailadres in zodat u wachtwoorden kunt resetten en meldingen kunt ontvangen"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Standaardvoorkeuren instellen voor nieuwe gebruikersaccounts"
 
 #: 
 msgid "Set up"
@@ -11545,11 +11525,6 @@ msgstr "Deze waarden worden vooraf ingevuld bij het maken van nieuwe families. L
 #: 
 msgid "Unit used to measure distance."
 msgstr "Eenheid voor het meten van afstand."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Gebruikersmachtiging voor het maken van directories"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14044,22 +14019,6 @@ msgstr "Upload een CSV om gezinnen en personen in bulk aan te maken."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Uw CSV heeft dubbele kolomnamen. Hernoem de dubbele kolommen (bijv. voeg \"(2)\" toe aan de tweede) en upload opnieuw."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Weet u zeker dat u dit gedoneerde artikel permanent wilt verwijderen?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Weet u zeker dat u dit bodnummer permanent wilt verwijderen?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Gedoneerd artikel verwijderen"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Bodnummer verwijderen"
 
 #: 
 msgid "Invalid security token. Please try again."

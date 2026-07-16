@@ -2044,10 +2044,6 @@ msgid "Save Settings"
 msgstr "Salvare setări"
 
 #: 
-msgid "Default User Settings"
-msgstr "Setările implicite utilizator"
-
-#: 
 msgid "Permission"
 msgstr "Permisiune"
 
@@ -6534,10 +6530,6 @@ msgid "Confirm Deletion"
 msgstr "Confirmă ștergerea"
 
 #: 
-msgid "Create directory permission"
-msgstr "Permisiune creare director"
-
-#: 
 msgid "Database Only"
 msgstr "Doar baza de date"
 
@@ -9557,10 +9549,6 @@ msgid "Browse photos of congregation members"
 msgstr "Răsfoiți fotografiile enoriașilor"
 
 #: 
-msgid "Buyer Number"
-msgstr "Număr cumpărător"
-
-#: 
 msgid "Buyers"
 msgstr "Cumpărători"
 
@@ -10603,16 +10591,8 @@ msgid "Server Error"
 msgstr "Eroare server"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Setați permisiunea la Adevărat pentru a permite utilizatorilor noi să își schimbe valoarea curentă."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Setați un e-mail de administrator pentru a putea reseta parolele și a primi notificări"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Setați preferințele implicite pentru conturile noi de utilizator"
 
 #: 
 msgid "Set up"
@@ -11657,11 +11637,6 @@ msgstr "Aceste valori sunt completate anterior la crearea de noi familii. Lăsa�
 #: 
 msgid "Unit used to measure distance."
 msgstr "Unitate folosită pentru a măsura distanța."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Permisiune utilizator pentru a crea directoare"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14157,22 +14132,6 @@ msgstr "Încărcați un CSV pentru a crea familii și persoane în masă."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-ul dvs. are nume de coloane duplicate. Redenumiți coloanele duplicate (de ex. adăugați \"(2)\" la a doua) și încărcați din nou."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Sigur doriți să ștergeți permanent acest articol donat?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Sigur doriți să ștergeți permanent acest număr de paletă?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Șterge articol donat"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Șterge număr de paletă"
 
 #: 
 msgid "Invalid security token. Please try again."

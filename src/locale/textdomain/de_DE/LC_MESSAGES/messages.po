@@ -2055,10 +2055,6 @@ msgid "Save Settings"
 msgstr "Änderungen Übernehmen"
 
 #: 
-msgid "Default User Settings"
-msgstr "Vorgabe Benutzereinstellungen"
-
-#: 
 msgid "Permission"
 msgstr "Erlaubnis"
 
@@ -6553,10 +6549,6 @@ msgid "Confirm Deletion"
 msgstr "Löschen bestätigen"
 
 #: 
-msgid "Create directory permission"
-msgstr "Verzeichniserstellungsberechtigung"
-
-#: 
 msgid "Database Only"
 msgstr "Nur Datenbank"
 
@@ -9570,10 +9562,6 @@ msgid "Browse photos of congregation members"
 msgstr "Fotos von Gemeindemitgliedern durchsuchen"
 
 #: 
-msgid "Buyer Number"
-msgstr "Käufernummer"
-
-#: 
 msgid "Buyers"
 msgstr "Käufer"
 
@@ -10616,16 +10604,8 @@ msgid "Server Error"
 msgstr "Serverfehler"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Berechtigung auf Wahr setzen, um neuen Benutzern die Möglichkeit zu geben, ihren aktuellen Wert zu ändern."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Eine Administrator-E-Mail-Adresse festlegen, um Passwörter zurücksetzen und Benachrichtigungen empfangen zu können"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Standardpräferenzen für neue Benutzerkonten festlegen"
 
 #: 
 msgid "Set up"
@@ -11670,11 +11650,6 @@ msgstr "Diese Werte werden beim Erstellen neuer Familien automatisch ausgefüllt
 #: 
 msgid "Unit used to measure distance."
 msgstr "Einheit zum Messen der Entfernung."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Benutzerberechtigung zum Erstellen von Verzeichnissen"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14169,22 +14144,6 @@ msgstr "Laden Sie eine CSV-Datei hoch, um Familien und Personen in großem Umfan
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Ihre CSV-Datei enthält doppelte Spaltennamen. Benennen Sie die doppelten Spalten um (z. B. fügen Sie \"(2)\" zum zweiten hinzu) und laden Sie sie erneut hoch."
-
-#: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Sind Sie sicher, dass Sie diesen gespendeten Artikel dauerhaft löschen möchten?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Sind Sie sicher, dass Sie diese Auktionsnummer dauerhaft löschen möchten?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Gespendeten Artikel löschen"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Auktionsnummer löschen"
 
 #: 
 msgid "Invalid security token. Please try again."
