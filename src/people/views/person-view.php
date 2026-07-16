@@ -242,13 +242,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         } elseif ((int)$type_ID === 11) {
                             $custom_Special = null;
                             $displayIcon = "fa-solid fa-phone";
-                            // Sanitize phone number for tel: URI
-                            $sanitizedPhone = preg_replace('/[^0-9+\-()e]/', '', $currentData);
+                            // Sanitize phone number for tel: URI (aligned with GHSA-frj8-mpcx-44g9 allowlist)
+                            $sanitizedPhone = preg_replace('/[^0-9+\-().\sxX#*]/', '', $currentData);
                             $displayLink = "tel:" . $sanitizedPhone;
                         }
                         $customFieldsHtml .= '<li class="mb-2">';
                         $customFieldsHtml .= '<i class="' . $displayIcon . ' me-2 text-body-secondary"></i>';
-                        $temp_string = nl2br(CustomFieldUtils::display($type_ID, $currentData, $custom_Special));
+                        $temp_string = nl2br(InputUtils::escapeHTML(CustomFieldUtils::display($type_ID, $currentData, $custom_Special)));
                         if ($displayLink) {
                             $customFieldsHtml .= '<strong>' . InputUtils::escapeHTML($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
                         } else {
@@ -605,7 +605,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                             if ((int)$type_ID === 11) {
                                                                 $prop_Special = null;
                                                             }
-                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . CustomFieldUtils::display($type_ID, $currentData, $prop_Special) . '</small>';
+                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . InputUtils::escapeHTML(CustomFieldUtils::display($type_ID, $currentData, $prop_Special)) . '</small>';
                                                         }
                                                     }
                                                 } ?>
