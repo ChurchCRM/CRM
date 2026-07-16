@@ -792,19 +792,19 @@ require_once __DIR__ . '/Include/Header.php';
                                             <tr>
                                                 <td>
                                                     <input type="hidden" name="PersonID<?= $iCount ?>" value="<?= $aPersonIDs[$iCount] ?>">
-                                                    <input name="FirstName<?= $iCount ?>" type="text" value="<?= $aFirstNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <input name="FirstName<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aFirstNames[$iCount]) ?>" class="form-control form-control-sm">
                                                     <?php if (array_key_exists($iCount, $aFirstNameError)) { ?>
                                                     <span class="text-danger small"><?= $aFirstNameError[$iCount] ?></span>
                                                     <?php } ?>
                                                 </td>
                                                 <td>
-                                                    <input name="MiddleName<?= $iCount ?>" type="text" value="<?= $aMiddleNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <input name="MiddleName<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aMiddleNames[$iCount]) ?>" class="form-control form-control-sm">
                                                 </td>
                                                 <td>
-                                                    <input name="LastName<?= $iCount ?>" type="text" value="<?= $aLastNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <input name="LastName<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aLastNames[$iCount]) ?>" class="form-control form-control-sm">
                                                 </td>
                                                 <td>
-                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" class="form-control form-control-sm" maxlength="50">
+                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aSuffix[$iCount]) ?>" class="form-control form-control-sm" maxlength="50">
                                                 </td>
                                                 <td>
                                                     <select name="Gender<?= $iCount ?>" class="form-select form-select-sm">
