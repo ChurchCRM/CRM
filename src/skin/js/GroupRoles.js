@@ -10,7 +10,7 @@ function UpdateRoles() {
     $.each(data, function (index, value) {
       html += '<option value="' + value.OptionId + '"';
       // i18next-disable-next-line
-      html += ">" + i18next.t(value.OptionName) + "</option>";
+      html += ">" + window.CRM.escapeHtml(i18next.t(value.OptionName)) + "</option>";
     });
     $("#GroupRole").html(html);
   });
