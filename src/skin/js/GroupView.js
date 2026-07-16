@@ -721,7 +721,7 @@ function buildRolePills() {
       '<a class="nav-link role-filter-pill" data-role-id="' +
       role.OptionId +
       '" href="#">' +
-      i18next.t(role.OptionName) +
+      window.CRM.escapeHtml(i18next.t(role.OptionName)) +
       ' <span class="badge bg-secondary-lt text-secondary ms-1">' +
       count +
       "</span></a></li>";
@@ -739,7 +739,7 @@ function buildRolePills() {
         role.OptionId +
         '" href="#">' +
         '<i class="fa-solid fa-user me-2"></i>' +
-        i18next.t(role.OptionName) +
+        window.CRM.escapeHtml(i18next.t(role.OptionName)) +
         ' <span class="badge bg-secondary-lt text-secondary ms-1">' +
         count +
         "</span></a>",
@@ -753,7 +753,7 @@ function buildRolePills() {
   window.CRM.groupRoles.forEach((role) => {
     var count = roleCounts[role.OptionId] || 0;
     if (count === 0) return;
-    var roleName = i18next.t(role.OptionName);
+    var roleName = window.CRM.escapeHtml(i18next.t(role.OptionName));
     var badge = ' <span class="badge bg-secondary-lt text-secondary ms-1">' + count + "</span>";
     $copyItems.append(
       '<a class="dropdown-item copy-role-to-group" data-role-id="' +
