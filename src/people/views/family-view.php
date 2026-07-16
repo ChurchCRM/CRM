@@ -515,15 +515,15 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <ul class="list-unstyled mb-0">
                         <?php foreach ($familyCustom as $customField) { ?>
                             <li class="mb-1">
-                                <i class="<?= $customField->getIcon() ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $customField->getDisplayValue() ?>:
+                                <i class="<?= InputUtils::escapeAttribute($customField->getIcon()) ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML($customField->getDisplayValue()) ?>:
                                 <?php if ($customField->getLink()) { ?>
-                                    <a href="<?= $customField->getLink() ?>"><?= $customField->getFormattedValue() ?></a>
+                                    <a href="<?= InputUtils::escapeAttribute($customField->getLink()) ?>"><?= InputUtils::escapeHTML($customField->getFormattedValue()) ?></a>
                                 <?php } else {
                                     $val = $customField->getFormattedValue();
                                     if (strlen($val) > 40) { ?>
-                                        <span class="d-block text-body-secondary text-truncate" title="<?= InputUtils::escapeAttribute($val) ?>"><?= $val ?></span>
+                                        <span class="d-block text-body-secondary text-truncate" title="<?= InputUtils::escapeAttribute($val) ?>"><?= InputUtils::escapeHTML($val) ?></span>
                                     <?php } else { ?>
-                                        <span><?= $val ?></span>
+                                        <span><?= InputUtils::escapeHTML($val) ?></span>
                                     <?php }
                                 } ?>
                             </li>
