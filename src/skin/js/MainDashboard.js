@@ -98,7 +98,7 @@ export function initializeMainDashboard() {
           "/people/family/" +
           row.FamilyId +
           '"><strong>' +
-          row.Name +
+          window.CRM.escapeHtml(row.Name) +
           "</strong></a>" +
           statusHtml +
           "</div>"
@@ -117,10 +117,19 @@ export function initializeMainDashboard() {
           // Try to get city and state (usually 2nd and 3rd from end, before country)
           const cityState = parts.slice(-3, -1).join(", ");
           if (cityState) {
-            return '<span title="' + data + '">' + cityState + "</span>";
+            return (
+              '<span title="' + window.CRM.escapeAttribute(data) + '">' + window.CRM.escapeHtml(cityState) + "</span>"
+            );
           }
         }
-        return '<span title="' + data + '">' + data.substring(0, 30) + (data.length > 30 ? "..." : "") + "</span>";
+        return (
+          '<span title="' +
+          window.CRM.escapeAttribute(data) +
+          '">' +
+          window.CRM.escapeHtml(data.substring(0, 30)) +
+          (data.length > 30 ? "..." : "") +
+          "</span>"
+        );
       },
     },
   ];
@@ -255,7 +264,7 @@ export function initializeMainDashboard() {
             "/people/view/" +
             row.PersonId +
             '"><strong>' +
-            row.FormattedName +
+            window.CRM.escapeHtml(row.FormattedName) +
             "</strong></a>" +
             ageText +
             "</div></div>"
@@ -359,7 +368,7 @@ export function initializeMainDashboard() {
             "/people/family/" +
             row.FamilyId +
             '"><strong>' +
-            data +
+            window.CRM.escapeHtml(data) +
             "</strong></a></div></div>"
           );
         },
@@ -462,9 +471,7 @@ export function initializeMainDashboard() {
           "/people/view/" +
           row.PersonId +
           '"><strong>' +
-          row.FirstName +
-          " " +
-          row.LastName +
+          window.CRM.escapeHtml(row.FirstName + " " + row.LastName) +
           "</strong></a></div>"
         );
       },
@@ -489,7 +496,14 @@ export function initializeMainDashboard() {
             "</span>";
         }
         return (
-          '<a href="' + window.CRM.root + "/people/family/" + row.FamilyId + '">' + row.FamilyName + "</a>" + statusHtml
+          '<a href="' +
+          window.CRM.root +
+          "/people/family/" +
+          row.FamilyId +
+          '">' +
+          window.CRM.escapeHtml(row.FamilyName) +
+          "</a>" +
+          statusHtml
         );
       },
     },
