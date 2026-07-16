@@ -117,10 +117,19 @@ export function initializeMainDashboard() {
           // Try to get city and state (usually 2nd and 3rd from end, before country)
           const cityState = parts.slice(-3, -1).join(", ");
           if (cityState) {
-            return '<span title="' + window.CRM.escapeAttribute(data) + '">' + window.CRM.escapeHtml(cityState) + "</span>";
+            return (
+              '<span title="' + window.CRM.escapeAttribute(data) + '">' + window.CRM.escapeHtml(cityState) + "</span>"
+            );
           }
         }
-        return '<span title="' + window.CRM.escapeAttribute(data) + '">' + window.CRM.escapeHtml(data.substring(0, 30)) + (data.length > 30 ? "..." : "") + "</span>";
+        return (
+          '<span title="' +
+          window.CRM.escapeAttribute(data) +
+          '">' +
+          window.CRM.escapeHtml(data.substring(0, 30)) +
+          (data.length > 30 ? "..." : "") +
+          "</span>"
+        );
       },
     },
   ];
@@ -487,7 +496,14 @@ export function initializeMainDashboard() {
             "</span>";
         }
         return (
-          '<a href="' + window.CRM.root + "/people/family/" + row.FamilyId + '">' + window.CRM.escapeHtml(row.FamilyName) + "</a>" + statusHtml
+          '<a href="' +
+          window.CRM.root +
+          "/people/family/" +
+          row.FamilyId +
+          '">' +
+          window.CRM.escapeHtml(row.FamilyName) +
+          "</a>" +
+          statusHtml
         );
       },
     },
