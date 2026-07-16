@@ -39,7 +39,11 @@ class PeopleCustomField
         } elseif ($masterField->getTypeId() == 11) {
             //$custom_Special = $sPhoneCountry;
             $this->icon = 'fa fa-phone';
-            $this->link = 'tel:' . $this->value;
+            // Sanitize to only phone-safe characters before building the tel: URI.
+            // This protects against already-stored malicious values that pre-date
+            // input-side sanitization (fix for GHSA-frj8-mpcx-44g9).
+            $safePhone = preg_replace('/[^0-9+\-().\sxX#*]/', '', $this->value);
+            $this->link = 'tel:' . $safePhone;
         } elseif ($masterField->getTypeId() == 12) {
             $customOption = ListOptionQuery::create()->filterById($masterField->getCustomSpecial())->filterByOptionId($this->value)->findOne();
             if ($customOption !== null) {
