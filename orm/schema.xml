@@ -60,6 +60,7 @@
         <column name="per_Facebook" phpName="Facebook" type="VARCHAR" size="50" Description="Facebook username" />
         <column name="per_Twitter" phpName="Twitter" type="VARCHAR" size="50" Description="Twitter username" />
         <column name="per_LinkedIn" phpName="LinkedIn" type="VARCHAR" size="50" Description="LinkedIn name" />
+        <column name="per_NeedsReview" phpName="NeedsReview" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0" description="True when this self-registered person is awaiting admin review/approval"/>
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>
@@ -160,6 +161,7 @@
         <column name="fam_Latitude" phpName="Latitude" type="DOUBLE"/>
         <column name="fam_Longitude" phpName="Longitude" type="DOUBLE"/>
         <column name="fam_Envelope" phpName="Envelope" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="fam_NeedsReview" phpName="NeedsReview" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0" description="True when this self-registered family is awaiting admin review/approval"/>
         <index name="fam_ID">
             <index-column name="fam_ID"/>
         </index>

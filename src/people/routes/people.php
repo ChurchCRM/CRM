@@ -22,6 +22,7 @@ $app->group('/list', function (RouteCollectorProxy $group): void {
 
 $app->get('/verify', 'viewPeopleVerify');
 $app->get('/photos', 'viewPeoplePhotoGallery');
+$app->get('/self-register', 'viewSelfRegister');
 
 function viewPeopleVerify(Request $request, Response $response, array $args): Response
 {
@@ -47,6 +48,23 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
     }
 
     return $renderer->render($response, 'people-verify-view.php', $pageArgs);
+}
+
+function viewSelfRegister(Request $request, Response $response, array $args): Response
+{
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+    $pageArgs = [
+        'sRootPath'     => SystemURLs::getRootPath(),
+        'sPageTitle'    => gettext('Self Registrations'),
+        'sPageSubtitle' => gettext('Review families and people who registered themselves through the public registration form'),
+        'aBreadcrumbs'  => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Self Registrations')],
+        ]),
+    ];
+
+    return $renderer->render($response, 'self-register-view.php', $pageArgs);
 }
 
 function listPeople(Request $request, Response $response, array $args): Response

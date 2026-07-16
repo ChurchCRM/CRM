@@ -259,7 +259,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h3 class="card-title"><i class="fa-solid fa-file-lines me-2"></i><?= gettext('Reports') ?></h3>
                 </div>
                 <div class="list-group list-group-flush">
-                    <a href="<?= $sRootPath ?>/members/self-register.php" class="list-group-item list-group-item-action d-flex align-items-center">
+                    <a href="<?= $sRootPath ?>/people/self-register" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-user-clock fa-fw text-body-secondary me-3"></i>
                         <div>
                             <div class="fw-medium"><?= gettext('Self Registration Report') ?></div>
