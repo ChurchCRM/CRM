@@ -16736,3 +16736,87 @@ msgstr "Sürüm notlarını görüntülemeden yükseltmeye devam edebilirsiniz."
 msgid "You're up to date!"
 msgstr "Güncelsiniz!"
 
+#: 
+msgid "A valid person must be selected."
+msgstr "Geçerli bir kişi seçilmelidir."
+
+#: 
+msgid "Add Donors"
+msgstr "Bağışçı Ekle"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Alıcı Listesine Ekle"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tüm kalem bağışçılarına otomatik kürek numarası ata"
+
+#: 
+msgid "Create a new user account"
+msgstr "Yeni kullanıcı hesabı oluştur"
+
+#: 
+msgid "Delete this item?"
+msgstr "Bu öğe silinsin mi?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Bu kürek numarası silinsin mi?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Alıcıyı Düzenle"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Bu giriş adı zaten kullanımda, lütfen farklı bir giriş adı seçin!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Giriş adı en az 3 karakter olmalıdır!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Bağış Kampanyalarını Yönet"
+
+#: 
+msgid "New User"
+msgstr "Yeni Kullanıcı"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Kullanıcı hesabı oluşturmak için lütfen bir kişi seçin."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Ekstre oluşturmak için lütfen en az bir alıcı seçin."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Bağış Kampanyası Panosuna Dön"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Seçilen kişi bulunamadı."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Bu işlem, bu bağış kampanyasında henüz alıcı numarası atanmamış tüm kalem bağışçılarına otomatik olarak kürek numarası ekleyecektir."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Bu kişinin zaten bir kullanıcı hesabı var."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Kullanıcı Yönetici olmalı veya Bağış Kampanyalarını Yönet iznine sahip olmalıdır"
+
+#: 
+msgid "User not found."
+msgstr "Kullanıcı bulunamadı."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Bir kişi seçin —"
+

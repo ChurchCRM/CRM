@@ -16694,3 +16694,87 @@ msgstr "आप रिलीज़ नोट देखे बिना भी अ
 msgid "You're up to date!"
 msgstr "आप अद्यतित हैं!"
 
+#: 
+msgid "A valid person must be selected."
+msgstr "एक वैध व्यक्ति का चयन किया जाना चाहिए।"
+
+#: 
+msgid "Add Donors"
+msgstr "दानकर्ता जोड़ें"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "खरीदार सूची में जोड़ें"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "सभी वस्तु दानकर्ताओं को स्वचालित रूप से पैडल नंबर असाइन करें"
+
+#: 
+msgid "Create a new user account"
+msgstr "एक नया उपयोगकर्ता खाता बनाएं"
+
+#: 
+msgid "Delete this item?"
+msgstr "इस वस्तु को हटाएं?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "इस पैडल नंबर को हटाएं?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "खरीदार संपादित करें"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "लॉगिन पहले से उपयोग में है, कृपया एक अलग लॉगिन चुनें!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "लॉगिन कम से कम 3 अक्षरों का होना चाहिए!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "धन संग्रह अभियान प्रबंधित करें"
+
+#: 
+msgid "New User"
+msgstr "नया उपयोगकर्ता"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "कृपया उपयोगकर्ता खाता बनाने के लिए एक व्यक्ति चुनें।"
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "विवरण उत्पन्न करने के लिए कृपया कम से कम एक खरीदार चुनें।"
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "धन संग्रह अभियान डैशबोर्ड पर वापस जाएं"
+
+#: 
+msgid "The selected person was not found."
+msgstr "चयनित व्यक्ति नहीं मिला।"
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "यह क्रिया इस धन संग्रह अभियान में उन सभी वस्तु दानकर्ताओं के लिए स्वचालित रूप से पैडल नंबर जोड़ेगी जिन्हें अभी तक कोई खरीदार नंबर नहीं दिया गया है।"
+
+#: 
+msgid "This person already has a user account."
+msgstr "इस व्यक्ति के पास पहले से एक उपयोगकर्ता खाता है।"
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "उपयोगकर्ता को व्यवस्थापक होना चाहिए या धन संग्रह अभियान प्रबंधित करने की अनुमति होनी चाहिए"
+
+#: 
+msgid "User not found."
+msgstr "उपयोगकर्ता नहीं मिला।"
+
+#: 
+msgid "— Select a person —"
+msgstr "— एक व्यक्ति चुनें —"
+
