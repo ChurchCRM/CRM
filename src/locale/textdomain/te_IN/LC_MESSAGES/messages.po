@@ -16707,3 +16707,87 @@ msgstr "విడుదల గమనికలను చూడకుండా క
 msgid "You're up to date!"
 msgstr "మీరు తాజాగా ఉన్నారు!"
 
+#: 
+msgid "A valid person must be selected."
+msgstr "చెల్లుబాటు అయ్యే వ్యక్తిని ఎంచుకోవాలి."
+
+#: 
+msgid "Add Donors"
+msgstr "దాతలను జోడించండి"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "కొనుగోలుదారుల జాబితాకు జోడించండి"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "అన్ని వస్తువుల దాతలకు ప్యాడిల్ నంబర్లను స్వయంచాలకంగా కేటాయించండి"
+
+#: 
+msgid "Create a new user account"
+msgstr "కొత్త వినియోగదారు ఖాతాను సృష్టించండి"
+
+#: 
+msgid "Delete this item?"
+msgstr "ఈ వస్తువును తొలగించాలా?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "ఈ ప్యాడిల్ నంబర్‌ను తొలగించాలా?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "కొనుగోలుదారుని సవరించండి"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "లాగిన్ ఇప్పటికే ఉపయోగంలో ఉంది, దయచేసి వేరే లాగిన్‌ను ఎంచుకోండి!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "లాగిన్ కనీసం 3 అక్షరాలు ఉండాలి!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "నిధుల సేకరణ కార్యక్రమాలను నిర్వహించండి"
+
+#: 
+msgid "New User"
+msgstr "కొత్త వినియోగదారు"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "వినియోగదారు ఖాతా సృష్టించడానికి ఒక వ్యక్తిని ఎంచుకోండి."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "వివరాలు రూపొందించడానికి కనీసం ఒక కొనుగోలుదారుని ఎంచుకోండి."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "నిధుల సేకరణ డాష్‌బోర్డ్‌కు తిరిగి వెళ్ళండి"
+
+#: 
+msgid "The selected person was not found."
+msgstr "ఎంచుకున్న వ్యక్తి కనుగొనబడలేదు."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "ఈ చర్య ఈ నిధుల సేకరణలో ఇంకా కొనుగోలుదారు నంబర్ కేటాయించబడని అన్ని వస్తువుల దాతలకు ప్యాడిల్ నంబర్లను స్వయంచాలకంగా జోడిస్తుంది."
+
+#: 
+msgid "This person already has a user account."
+msgstr "ఈ వ్యక్తికి ఇప్పటికే వినియోగదారు ఖాతా ఉంది."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "వినియోగదారు నిర్వాహకుడు అయి ఉండాలి లేదా నిధుల సేకరణ కార్యక్రమాలను నిర్వహించే అనుమతి కలిగి ఉండాలి"
+
+#: 
+msgid "User not found."
+msgstr "వినియోగదారు కనుగొనబడలేదు."
+
+#: 
+msgid "— Select a person —"
+msgstr "— ఒక వ్యక్తిని ఎంచుకోండి —"
+

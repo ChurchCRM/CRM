@@ -16731,3 +16731,87 @@ msgstr "Bado unaweza kuendelea na uboreshaji bila kutazama maelezo ya toleo."
 msgid "You're up to date!"
 msgstr "Uko sawa!"
 
+#: 
+msgid "A valid person must be selected."
+msgstr "Lazima mtu halali achaguliwe."
+
+#: 
+msgid "Add Donors"
+msgstr "Ongeza Wafadhili"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Ongeza kwenye Orodha ya Wanunuzi"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Gawa nambari za paddle kiotomatiki kwa wafadhili wote wa vitu"
+
+#: 
+msgid "Create a new user account"
+msgstr "Tengeneza akaunti mpya ya mtumiaji"
+
+#: 
+msgid "Delete this item?"
+msgstr "Futa kipengee hiki?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Futa nambari hii ya paddle?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Hariri Mnunuzi"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Kuingia tayari kunatumika, tafadhali chagua kuingia tofauti!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Kuingia lazima kuwe na angalau herufi 3!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Simamia Ukusanyaji wa Fedha"
+
+#: 
+msgid "New User"
+msgstr "Mtumiaji Mpya"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Tafadhali chagua mtu wa kutengenezea akaunti ya mtumiaji."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Tafadhali chagua mnunuzi angalau mmoja ili kutoa taarifa."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Rudi kwenye Dashibodi ya Ukusanyaji wa Fedha"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Mtu aliyechaguliwa hakupatikana."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Kitendo hiki kitaongeza kiotomatiki nambari za paddle kwa wafadhili wote wa vitu katika ukusanyaji huu wa fedha ambao bado hawajapewa nambari ya mnunuzi."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Mtu huyu tayari ana akaunti ya mtumiaji."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Mtumiaji lazima awe Msimamizi au awe na ruhusa ya Kusimamia Ukusanyaji wa Fedha"
+
+#: 
+msgid "User not found."
+msgstr "Mtumiaji hakupatikana."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Chagua mtu —"
+
