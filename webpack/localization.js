@@ -12,6 +12,50 @@
 
 import { initDateFormatPreviews, initFormatSummaryPreview, initPhonePresets } from "./date-format-preview";
 
+/**
+ * Format a sample monetary amount (1,234.56) using the configured symbol,
+ * position, and separator characters for the live preview on the
+ * Currency & Finance Formats section of the Localization page.
+ */
+function formatCurrencySample(symbol, position, thousand, decimal) {
+  const intPart = "1234";
+  const fracPart = "56";
+  const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, thousand || ",");
+  const formatted = grouped + (decimal || ".") + fracPart;
+  const sym = symbol || "$";
+  return position === "after" ? `${formatted}\u00A0${sym}` : `${sym}\u00A0${formatted}`;
+}
+
+/**
+ * Wire up the live preview inside the Currency & Finance Formats card.
+ * Reads the four inputs and renders a formatted sample value (1,234.56).
+ */
+function initCurrencyPreview() {
+  const symbolInput = document.getElementById("sCurrencySymbol");
+  const positionSelect = document.getElementById("sCurrencyPosition");
+  const thousandsInput = document.getElementById("sThousandsSeparator");
+  const decimalInput = document.getElementById("sDecimalSeparator");
+  const previewEl = document.getElementById("currency-format-preview");
+
+  if (!symbolInput || !positionSelect || !thousandsInput || !decimalInput || !previewEl) {
+    return;
+  }
+
+  function render() {
+    const symbol = symbolInput.value.trim() || "$";
+    const position = positionSelect.value || "before";
+    const thousand = thousandsInput.value.slice(0, 1) || ",";
+    const decimal = decimalInput.value.slice(0, 1) || ".";
+    previewEl.textContent = formatCurrencySample(symbol, position, thousand, decimal);
+  }
+
+  for (const el of [symbolInput, positionSelect, thousandsInput, decimalInput]) {
+    el.addEventListener("input", render);
+    el.addEventListener("change", render);
+  }
+  render();
+}
+
 /** Convert a 2-letter country code to its flag emoji (falls back to a globe). */
 function flagEmoji(countryCode) {
   if (!countryCode || countryCode.length !== 2) {
@@ -90,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initDateFormatPreviews();
   initPhonePresets();
   initFormatSummaryPreview();
+  initCurrencyPreview();
 
   const renderLocalePreview = initLocalePreview();
 
