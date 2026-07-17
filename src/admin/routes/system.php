@@ -708,6 +708,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sDateFilenameFormat'    => SystemConfig::getValue('sDateFilenameFormat')    ?: SystemConfig::getConfigItem('sDateFilenameFormat')->getDefault(),
             'sDatePickerFormat'      => SystemConfig::getValue('sDatePickerFormat')      ?: SystemConfig::getConfigItem('sDatePickerFormat')->getDefault(),
             'sDatePickerPlaceHolder' => SystemConfig::getValue('sDatePickerPlaceHolder') ?: SystemConfig::getConfigItem('sDatePickerPlaceHolder')->getDefault(),
+            // Currency & Finance Formats
+            'sCurrencySymbol'        => SystemConfig::getValue('sCurrencySymbol')        ?: SystemConfig::getConfigItem('sCurrencySymbol')->getDefault(),
+            'sCurrencyPosition'      => SystemConfig::getValue('sCurrencyPosition')      ?: SystemConfig::getConfigItem('sCurrencyPosition')->getDefault(),
+            'sThousandsSeparator'    => SystemConfig::getValue('sThousandsSeparator')    ?: SystemConfig::getConfigItem('sThousandsSeparator')->getDefault(),
+            'sDecimalSeparator'      => SystemConfig::getValue('sDecimalSeparator')      ?: SystemConfig::getConfigItem('sDecimalSeparator')->getDefault(),
             // Phone Number Formats
             'sPhoneFormat'           => SystemConfig::getValue('sPhoneFormat')           ?: SystemConfig::getConfigItem('sPhoneFormat')->getDefault(),
             'sPhoneFormatWithExt'    => SystemConfig::getValue('sPhoneFormatWithExt')    ?: SystemConfig::getConfigItem('sPhoneFormatWithExt')->getDefault(),
@@ -811,6 +816,36 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             $val = trim((string) ($body[$key] ?? ''));
             SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
         }
+        // Currency & Finance Formats
+        $currencyPosition = trim((string) ($body['sCurrencyPosition'] ?? ''));
+        SystemConfig::setValue('sCurrencyPosition', in_array($currencyPosition, ['before', 'after'], true) ? $currencyPosition : 'before');
+
+        $currencySymbol = trim((string) ($body['sCurrencySymbol'] ?? ''));
+        if (mb_strlen($currencySymbol) > 8) {
+            $currencySymbol = mb_substr($currencySymbol, 0, 8);
+        }
+        SystemConfig::setValue('sCurrencySymbol', $currencySymbol !== '' ? $currencySymbol : SystemConfig::getConfigItem('sCurrencySymbol')->getDefault());
+
+        $thousands = trim((string) ($body['sThousandsSeparator'] ?? ''));
+        if (mb_strlen($thousands) > 1) {
+            $thousands = mb_substr($thousands, 0, 1);
+        }
+        $decimal = trim((string) ($body['sDecimalSeparator'] ?? ''));
+        if (mb_strlen($decimal) > 1) {
+            $decimal = mb_substr($decimal, 0, 1);
+        }
+        // Validate: thousands and decimal separators must differ to avoid ambiguous number_format() output.
+        $effectiveThousands = $thousands !== '' ? $thousands : SystemConfig::getConfigItem('sThousandsSeparator')->getDefault();
+        $effectiveDecimal   = $decimal !== '' ? $decimal : SystemConfig::getConfigItem('sDecimalSeparator')->getDefault();
+        if ($effectiveThousands === $effectiveDecimal) {
+            $_SESSION['sGlobalMessage']      = gettext('Thousands separator and decimal separator must be different characters.');
+            $_SESSION['sGlobalMessageClass'] = 'danger';
+            return $response
+                ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/localization')
+                ->withStatus(303);
+        }
+        SystemConfig::setValue('sThousandsSeparator', $thousands !== '' ? $thousands : SystemConfig::getConfigItem('sThousandsSeparator')->getDefault());
+        SystemConfig::setValue('sDecimalSeparator', $decimal !== '' ? $decimal : SystemConfig::getConfigItem('sDecimalSeparator')->getDefault());
 
         $_SESSION['sGlobalMessage']      = gettext('Localization settings saved successfully');
         $_SESSION['sGlobalMessageClass'] = 'success';
@@ -831,6 +866,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sPhoneFormat'         => 'text',
         'sPhoneFormatWithExt'  => 'text',
         'sPhoneFormatCell'     => 'text',
+        'sCurrencySymbol'      => 'text',
+        'sCurrencyPosition'    => 'text',
+        'sThousandsSeparator'  => 'text',
+        'sDecimalSeparator'    => 'text',
     ]));
 
     // User editor — create new user (GET shows form, POST processes it)
