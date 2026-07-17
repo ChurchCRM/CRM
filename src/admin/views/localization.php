@@ -218,6 +218,90 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
         </div>
     </div>
 
+    <!-- Currency & Finance Formats -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fa-solid fa-dollar-sign me-2"></i><?= gettext('Currency &amp; Finance Formats') ?></h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-body-secondary mb-3">
+                        <?= gettext('Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide.') ?>
+                    </p>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="sCurrencySymbol"><?= gettext('Currency Symbol') ?></label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="sCurrencySymbol"
+                                   name="sCurrencySymbol"
+                                   value="<?= InputUtils::escapeHTML($localeSettings['sCurrencySymbol']) ?>"
+                                   maxlength="8"
+                                   placeholder="$">
+                            <small class="form-text text-body-secondary">
+                                <?= gettext('Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $') ?>
+                            </small>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="sCurrencyPosition"><?= gettext('Symbol Position') ?></label>
+                            <select class="form-select" id="sCurrencyPosition" name="sCurrencyPosition">
+                                <option value="before" <?= ($localeSettings['sCurrencyPosition'] === 'before') ? 'selected' : '' ?>>
+                                    <?= gettext('Before amount (¤ 100.00)') ?>
+                                </option>
+                                <option value="after" <?= ($localeSettings['sCurrencyPosition'] === 'after') ? 'selected' : '' ?>>
+                                    <?= gettext('After amount (100.00 ¤)') ?>
+                                </option>
+                            </select>
+                            <small class="form-text text-body-secondary">
+                                <?= gettext('Whether the symbol appears before or after the numeric amount. Default: Before amount') ?>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="sThousandsSeparator"><?= gettext('Thousands Separator') ?></label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="sThousandsSeparator"
+                                   name="sThousandsSeparator"
+                                   value="<?= InputUtils::escapeHTML($localeSettings['sThousandsSeparator']) ?>"
+                                   maxlength="1"
+                                   placeholder=",">
+                            <small class="form-text text-body-secondary">
+                                <?= gettext('Single character used to group thousands (e.g. , or .). Default: ,') ?>
+                            </small>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="sDecimalSeparator"><?= gettext('Decimal Separator') ?></label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="sDecimalSeparator"
+                                   name="sDecimalSeparator"
+                                   value="<?= InputUtils::escapeHTML($localeSettings['sDecimalSeparator']) ?>"
+                                   maxlength="1"
+                                   placeholder=".">
+                            <small class="form-text text-body-secondary">
+                                <?= gettext('Single character used as the decimal point (e.g. . or ,). Default: .') ?>
+                            </small>
+                        </div>
+                        <div class="mb-3 col-md-4 d-flex align-items-end">
+                            <div class="w-100">
+                                <label class="form-label"><?= gettext('Live Preview') ?></label>
+                                <div class="card-body bg-light rounded py-2 px-3">
+                                    <span class="fw-medium" id="currency-format-preview">&mdash;</span>
+                                </div>
+                                <small class="form-text text-body-secondary"><?= gettext('Updates as you type.') ?></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Phone Number Formats -->
     <div class="row">
         <div class="col-12">
