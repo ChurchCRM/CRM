@@ -72,7 +72,7 @@ $app->group('/attendance', function (RouteCollectorProxy $group): void {
         }
 
         $currentUser = AuthenticationManager::getCurrentUser();
-        if (!$currentUser->canEditPerson($personId, (int) $person->getFamId())) {
+        if ($personId !== (int) $currentUser->getId() && !$currentUser->canEditPerson($personId, (int) $person->getFamId())) {
             throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
         }
 
@@ -82,3 +82,4 @@ $app->group('/attendance', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, $data);
     });
 });
+
