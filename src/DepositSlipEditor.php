@@ -171,7 +171,7 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="col-12 mb-3">
           <div class="stat-card text-center py-4 border-0 shadow-sm" style="background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);">
             <div style="font-size: 3rem; font-weight: 700; color: white; letter-spacing: -1px;">
-              <?= CurrencyFormatter::formatHtml((float) $thisDeposit->getVirtualColumn('totalAmount')); ?>
+              <?= CurrencyFormatter::formatHtml($thisDeposit->getVirtualColumn('totalAmount') ?? 0); ?>
             </div>
             <div class="text-white-50 text-uppercase small fw-bold mt-2" style="letter-spacing: 1px;"><?= gettext('Total Deposit'); ?></div>
           </div>
@@ -183,7 +183,7 @@ require_once __DIR__ . '/Include/Header.php';
             <?php if ($thisDeposit->getCountCash()): ?>
             <div class="mb-3">
               <i class="fa-solid fa-money-bill fa-2x text-success mb-2"></i>
-              <div class="fw-bold h5 text-success"><?= CurrencyFormatter::formatHtml((float) $thisDeposit->getTotalCash()); ?></div>
+              <div class="fw-bold h5 text-success"><?= CurrencyFormatter::formatHtml($thisDeposit->getTotalCash()); ?></div>
               <div class="small text-body-secondary"><?= gettext('Cash'); ?> (<?= $thisDeposit->getCountCash(); ?>)</div>
             </div>
             <?php endif; ?>
@@ -201,7 +201,7 @@ require_once __DIR__ . '/Include/Header.php';
             <?php if ($thisDeposit->getCountChecks()): ?>
             <div class="mb-3">
               <i class="fa-solid fa-money-check fa-2x text-info mb-2"></i>
-              <div class="fw-bold h5 text-info"><?= CurrencyFormatter::formatHtml((float) $thisDeposit->getTotalChecks()); ?></div>
+              <div class="fw-bold h5 text-info"><?= CurrencyFormatter::formatHtml($thisDeposit->getTotalChecks()); ?></div>
               <div class="small text-body-secondary"><?= gettext('Checks'); ?> (<?= $thisDeposit->getCountChecks(); ?>)</div>
             </div>
             <?php endif; ?>

@@ -88,7 +88,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <?php endif; ?>
                                                 <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
                                                 <td class="text-end">
-                                                    <?= CurrencyFormatter::formatHtml((float) $pledge['pledge_amount']) ?>
+                                                    <?= CurrencyFormatter::formatHtml($pledge['pledge_amount']) ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
