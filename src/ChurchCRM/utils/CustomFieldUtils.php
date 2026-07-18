@@ -44,7 +44,7 @@ class CustomFieldUtils
      * Returns PLAIN, unescaped text for every supported type_ID. No case
      * produces HTML markup:
      *
-     *  type 1  (True/False)        → gettext('Yes') / gettext('No') / ''
+     *  type 1  (True/False)        → gettext('Yes') / gettext('No') / '' (empty when data is unset)
      *  type 2  (Date)              → DateTimeUtils::formatDate() — plain text
      *  type 3  (Text 50 char)      → raw $data
      *  type 4  (Text 100 char)     → raw $data
@@ -77,7 +77,7 @@ class CustomFieldUtils
                 } elseif ($data === 'false') {
                     return gettext('No');
                 }
-                break;
+                return '';
 
             case 2:
                 return DateTimeUtils::formatDate($data);
