@@ -60,3 +60,4 @@ cypress.env.json
 
 .claude/settings.json
 cy.log
+/.obsidian
