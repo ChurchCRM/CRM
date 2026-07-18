@@ -596,13 +596,6 @@ export function initializeMainDashboard() {
     }
   }
 
-  function buildRenderEmail(email) {
-    if (email) {
-      return "<a href='mailto:" + email + "' target='_blank' rel='noopener noreferrer'>" + email + "</a>";
-    }
-    return "";
-  }
-
   // Today's Events widget
   if ($("#todayEventsDashboardItem").length > 0) {
     const todayEventsConfig = {

@@ -50,7 +50,7 @@ jobs:
           fi
       
       - name: Start CI Docker containers
-        run: npm run docker:ci:start
+        run: npm run docker:ci:root:start
 
       - name: Wait for Docker to be ready
         run: sleep 10
@@ -86,7 +86,7 @@ jobs:
 
       - name: Stop CI Docker containers
         if: always()
-        run: npm run docker:ci:down
+        run: npm run docker:ci:root:down
       
       - name: Check for meaningful changes
         id: check_changes

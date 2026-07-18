@@ -10,10 +10,10 @@ class PeopleCustomField
 {
     private $name;
     private string $value;
-    private $formattedValue;
+    private string $formattedValue;
     private ?string $link = null;
     private string $icon = 'fa fa-tag';
-    private $displayValue;
+    private string $displayValue;
 
     /**
      * PeopleCustomField constructor.
@@ -55,9 +55,36 @@ class PeopleCustomField
     }
 
     /**
-     * @return mixed
+     * Returns the display-ready value for this custom field.
+     *
+     * **Security contract (issue #9199 audit):**
+     * For every supported type_ID (1–12) this method returns PLAIN, unescaped
+     * text — never HTML markup:
+     *
+     *  type 1  (True/False)          → raw stored value ('true'/'false'); '' when unset
+     *  type 2  (Date)                → raw stored date string
+     *  type 3  (Text 50 char)        → raw stored value
+     *  type 4  (Text 100 char)       → raw stored value
+     *  type 5  (Text long)           → raw stored value
+     *  type 6  (Year)                → raw stored value
+     *  type 7  (Season)              → raw stored value
+     *  type 8  (Number)              → raw stored value
+     *  type 9  (Person from Group)   → Person::getFullName() — plain text
+     *  type 10 (Money)               → raw stored value
+     *  type 11 (Phone)               → raw stored value; hyperlink via getLink()
+     *  type 12 (Custom Drop-Down)    → ListOption::getOptionName() — plain text
+     *
+     * Links (person profile URL, tel: href) are exposed separately via
+     * {@see getLink()} and MUST be escaped with InputUtils::escapeAttribute().
+     *
+     * **Callers rendering to an HTML/browser context MUST wrap this value
+     * in InputUtils::escapeHTML() before output.** Do NOT escape inside this
+     * method: the same value also feeds CSV and PDF contexts where HTML
+     * encoding is wrong.
+     *
+     * @return string
      */
-    public function getFormattedValue()
+    public function getFormattedValue(): string
     {
         return $this->formattedValue;
     }
@@ -86,9 +113,16 @@ class PeopleCustomField
     }
 
     /**
-     * @return mixed
+     * Returns the human-readable label (field name) for this custom field.
+     *
+     * **Security contract (issue #9199 audit):**
+     * Always returns the admin-configured field name as PLAIN, unescaped text.
+     * Callers rendering to an HTML/browser context MUST wrap the return value
+     * in InputUtils::escapeHTML() before output.
+     *
+     * @return string
      */
-    public function getDisplayValue()
+    public function getDisplayValue(): string
     {
         return $this->displayValue;
     }
