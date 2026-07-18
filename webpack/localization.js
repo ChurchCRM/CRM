@@ -45,9 +45,10 @@ function initCurrencyPreview() {
   const positionSelect = document.getElementById("sCurrencyPosition");
   const thousandsInput = document.getElementById("sThousandsSeparator");
   const decimalInput = document.getElementById("sDecimalSeparator");
-  const previewEl = document.getElementById("currency-format-preview");
+  // Inline preview in the Currency card + the Display Preview copy at the top.
+  const previewEls = document.querySelectorAll(".currency-preview-target");
 
-  if (!symbolInput || !positionSelect || !thousandsInput || !decimalInput || !previewEl) {
+  if (!symbolInput || !positionSelect || !thousandsInput || !decimalInput || previewEls.length === 0) {
     return;
   }
 
@@ -56,7 +57,10 @@ function initCurrencyPreview() {
     const position = positionSelect.value || "before";
     const thousand = thousandsInput.value.slice(0, 1) || ",";
     const decimal = decimalInput.value.slice(0, 1) || ".";
-    previewEl.textContent = formatCurrencySample(symbol, position, thousand, decimal);
+    const sample = formatCurrencySample(symbol, position, thousand, decimal);
+    for (const el of previewEls) {
+      el.textContent = sample;
+    }
   }
 
   for (const el of [symbolInput, positionSelect, thousandsInput, decimalInput]) {

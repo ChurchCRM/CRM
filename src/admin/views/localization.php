@@ -16,17 +16,126 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
       id="localization-form"
       novalidate>
 
-    <!-- Language & Region -->
+    <!-- Display Preview (shown first so admins see current formats before editing) -->
     <div class="row">
         <div class="col-12">
             <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fa-solid fa-eye me-2"></i><?= gettext('Display Preview') ?></h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-body-secondary">
+                        <?= gettext('This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.') ?>
+                    </p>
+
+                    <!-- Selected language: translation completeness + system support -->
+                    <div class="mb-3">
+                        <h5 class="mb-2 d-flex align-items-center justify-content-between"><span><i class="fa-solid fa-language me-2"></i><?= gettext('Selected Language') ?></span><a href="#section-language" class="btn btn-sm btn-ghost-secondary"><i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?></a></h5>
+                        <div class="card-body bg-light rounded" id="locale-preview"
+                             data-system-check="<?= $systemCheckEnabled ? '1' : '0' ?>">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="fs-3 me-2" id="locale-preview-flag"></span>
+                                <div>
+                                    <div class="fw-medium" id="locale-preview-name">&mdash;</div>
+                                    <div class="small text-body-secondary" id="locale-preview-code"></div>
+                                </div>
+                            </div>
+
+                            <div id="locale-preview-translation" class="mb-2">
+                                <div class="d-flex justify-content-between small mb-1">
+                                    <span class="text-body-secondary"><?= gettext('Translation completeness') ?></span>
+                                    <span class="fw-medium" id="locale-preview-percent">—</span>
+                                </div>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar" id="locale-preview-bar" role="progressbar" style="width: 0;"></div>
+                                </div>
+                                <div class="small text-body-secondary mt-1" id="locale-preview-translation-note"></div>
+                            </div>
+
+                            <div class="small" id="locale-preview-support"></div>
+                        </div>
+                    </div>
+
+                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                        window.CRM = window.CRM || {};
+                        window.CRM.localeStats = <?= json_encode($localeStats, JSON_THROW_ON_ERROR) ?>;
+                        window.CRM.localeSystemCheckEnabled = <?= $systemCheckEnabled ? 'true' : 'false' ?>;
+                        window.CRM.localePreviewI18n = {
+                            translated: <?= json_encode(gettext('%d% of interface text is translated for this language.'), JSON_THROW_ON_ERROR) ?>,
+                            fullyTranslated: <?= json_encode(gettext('Fully translated.'), JSON_THROW_ON_ERROR) ?>,
+                            notTracked: <?= json_encode(gettext('Translation tracking is not available for this language.'), JSON_THROW_ON_ERROR) ?>,
+                            supported: <?= json_encode(gettext('Supported — this locale is installed on the server.'), JSON_THROW_ON_ERROR) ?>,
+                            notSupported: <?= json_encode(gettext('Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen).'), JSON_THROW_ON_ERROR) ?>,
+                            checkUnavailable: <?= json_encode(gettext('Server locale support could not be checked (exec is disabled).'), JSON_THROW_ON_ERROR) ?>,
+                        };
+                    </script>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <h5 class="mb-2 d-flex align-items-center justify-content-between"><span><i class="fa-solid fa-calendar-days me-2"></i><?= gettext('Date &amp; Time Formats') ?></span><a href="#section-datetime" class="btn btn-sm btn-ghost-secondary"><i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?></a></h5>
+                            <div class="card-body bg-light rounded">
+                                <dl class="row row-cols-1 mb-0 small">
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Long Date Format') ?></dt>
+                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDateFormatLong" data-kind="date">&mdash;</dd>
+
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date Without Year') ?></dt>
+                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDateFormatNoYear" data-kind="date">&mdash;</dd>
+
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date &amp; Time Format') ?></dt>
+                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDateTimeFormat" data-kind="date">&mdash;</dd>
+
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Filename Date Format') ?></dt>
+                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDateFilenameFormat" data-kind="date">&mdash;</dd>
+
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date Picker Format') ?></dt>
+                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDatePickerFormat" data-kind="date">&mdash;</dd>
+
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date Picker Placeholder') ?></dt>
+                                    <dd class="col-5 mb-0 text-end fw-medium format-preview-value" data-source="sDatePickerPlaceHolder" data-kind="literal">&mdash;</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <h5 class="mb-2 d-flex align-items-center justify-content-between"><span><i class="fa-solid fa-phone me-2"></i><?= gettext('Phone Number Formats') ?></span><a href="#section-phone" class="btn btn-sm btn-ghost-secondary"><i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?></a></h5>
+                            <div class="card-body bg-light rounded">
+                                <dl class="row row-cols-1 mb-0 small">
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Home/Work Phone Format') ?></dt>
+                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sPhoneFormat" data-kind="phone">&mdash;</dd>
+
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Cell Phone Format') ?></dt>
+                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sPhoneFormatCell" data-kind="phone">&mdash;</dd>
+
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Phone with Extension') ?></dt>
+                                    <dd class="col-5 mb-0 text-end fw-medium format-preview-value" data-source="sPhoneFormatWithExt" data-kind="phone">&mdash;</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5 class="mb-2 d-flex align-items-center justify-content-between"><span><i class="fa-solid fa-dollar-sign me-2"></i><?= gettext('Currency Format') ?></span><a href="#section-currency" class="btn btn-sm btn-ghost-secondary"><i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?></a></h5>
+                            <div class="card-body bg-light rounded">
+                                <dl class="row row-cols-1 mb-0 small">
+                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Sample Amount') ?></dt>
+                                    <dd class="col-5 mb-0 text-end fw-medium currency-preview-target">&mdash;</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language & Region -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="section-language" style="scroll-margin-top: 1rem;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa-solid fa-globe me-2"></i><?= gettext('Language &amp; Region') ?></h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="mb-3 col-md-4">
-                            <label for="sLanguage"><?= gettext('Language') ?></label>
+                            <label class="form-label" for="sLanguage"><?= gettext('Language') ?></label>
                             <select class="form-select" id="sLanguage" name="sLanguage"
                                 data-selected-locale="<?= InputUtils::escapeAttribute($localeSettings['sLanguage']) ?>"
                                 style="width: 100%;"></select>
@@ -35,7 +144,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sTimeZone"><?= gettext('Time Zone') ?></label>
+                            <label class="form-label" for="sTimeZone"><?= gettext('Time Zone') ?></label>
                             <select class="form-select auto-tomselect" id="sTimeZone" name="sTimeZone" style="width: 100%;">
                                 <?php foreach ($timezones as $tz): ?>
                                 <option value="<?= InputUtils::escapeHTML($tz) ?>"
@@ -49,7 +158,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sDistanceUnit"><?= gettext('Distance Unit') ?></label>
+                            <label class="form-label" for="sDistanceUnit"><?= gettext('Distance Unit') ?></label>
                             <select class="form-select" id="sDistanceUnit" name="sDistanceUnit">
                                 <option value="miles" <?= ($localeSettings['sDistanceUnit'] === 'miles') ? 'selected' : '' ?>>
                                     <?= gettext('miles') ?>
@@ -71,7 +180,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
     <!-- Date & Time Formats -->
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" id="section-datetime" style="scroll-margin-top: 1rem;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa-solid fa-calendar-days me-2"></i><?= gettext('Date &amp; Time Formats') ?></h3>
                 </div>
@@ -132,7 +241,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
 
                     <div class="row">
                         <div class="mb-3 col-md-4">
-                            <label for="sDateFormatLong"><?= gettext('Long Date Format') ?></label>
+                            <label class="form-label" for="sDateFormatLong"><?= gettext('Long Date Format') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sDateFormatLong"
@@ -145,7 +254,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sDateFormatNoYear"><?= gettext('Date Without Year') ?></label>
+                            <label class="form-label" for="sDateFormatNoYear"><?= gettext('Date Without Year') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sDateFormatNoYear"
@@ -158,7 +267,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sDateTimeFormat"><?= gettext('Date &amp; Time Format') ?></label>
+                            <label class="form-label" for="sDateTimeFormat"><?= gettext('Date &amp; Time Format') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sDateTimeFormat"
@@ -174,7 +283,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
 
                     <div class="row">
                         <div class="mb-3 col-md-4">
-                            <label for="sDateFilenameFormat"><?= gettext('Filename Date Format') ?></label>
+                            <label class="form-label" for="sDateFilenameFormat"><?= gettext('Filename Date Format') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sDateFilenameFormat"
@@ -187,7 +296,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sDatePickerFormat"><?= gettext('Date Picker Format') ?></label>
+                            <label class="form-label" for="sDatePickerFormat"><?= gettext('Date Picker Format') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sDatePickerFormat"
@@ -200,7 +309,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sDatePickerPlaceHolder"><?= gettext('Date Picker Placeholder') ?></label>
+                            <label class="form-label" for="sDatePickerPlaceHolder"><?= gettext('Date Picker Placeholder') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sDatePickerPlaceHolder"
@@ -221,7 +330,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
     <!-- Currency & Finance Formats -->
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" id="section-currency" style="scroll-margin-top: 1rem;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa-solid fa-dollar-sign me-2"></i><?= gettext('Currency & Finance Formats') ?></h3>
                 </div>
@@ -238,7 +347,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
 
                     <div class="row">
                         <div class="mb-3 col-md-4">
-                            <label for="sCurrencySymbol"><?= gettext('Currency Symbol') ?></label>
+                            <label class="form-label" for="sCurrencySymbol"><?= gettext('Currency Symbol') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sCurrencySymbol"
@@ -251,7 +360,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sCurrencyPosition"><?= gettext('Symbol Position') ?></label>
+                            <label class="form-label" for="sCurrencyPosition"><?= gettext('Symbol Position') ?></label>
                             <select class="form-select" id="sCurrencyPosition" name="sCurrencyPosition">
                                 <option value="before" <?= ($localeSettings['sCurrencyPosition'] === 'before') ? 'selected' : '' ?>>
                                     <?= gettext('Before amount (¤ 100.00)') ?>
@@ -268,7 +377,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
 
                     <div class="row">
                         <div class="mb-3 col-md-4">
-                            <label for="sThousandsSeparator"><?= gettext('Thousands Separator') ?></label>
+                            <label class="form-label" for="sThousandsSeparator"><?= gettext('Thousands Separator') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sThousandsSeparator"
@@ -281,7 +390,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sDecimalSeparator"><?= gettext('Decimal Separator') ?></label>
+                            <label class="form-label" for="sDecimalSeparator"><?= gettext('Decimal Separator') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sDecimalSeparator"
@@ -297,7 +406,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             <div class="w-100">
                                 <label class="form-label"><?= gettext('Live Preview') ?></label>
                                 <div class="card-body bg-light rounded py-2 px-3">
-                                    <span class="fw-medium" id="currency-format-preview">&mdash;</span>
+                                    <span class="fw-medium currency-preview-target" id="currency-format-preview">&mdash;</span>
                                 </div>
                                 <small class="form-text text-body-secondary"><?= gettext('Updates as you type.') ?></small>
                             </div>
@@ -311,7 +420,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
     <!-- Phone Number Formats -->
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" id="section-phone" style="scroll-margin-top: 1rem;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa-solid fa-phone me-2"></i><?= gettext('Phone Number Formats') ?></h3>
                 </div>
@@ -322,7 +431,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
 
                     <div class="row">
                         <div class="mb-3 col-md-4">
-                            <label for="sPhoneFormat"><?= gettext('Home/Work Phone Format') ?></label>
+                            <label class="form-label" for="sPhoneFormat"><?= gettext('Home/Work Phone Format') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sPhoneFormat"
@@ -335,7 +444,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sPhoneFormatCell"><?= gettext('Cell Phone Format') ?></label>
+                            <label class="form-label" for="sPhoneFormatCell"><?= gettext('Cell Phone Format') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sPhoneFormatCell"
@@ -348,7 +457,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="sPhoneFormatWithExt"><?= gettext('Phone with Extension') ?></label>
+                            <label class="form-label" for="sPhoneFormatWithExt"><?= gettext('Phone with Extension') ?></label>
                             <input type="text"
                                    class="form-control"
                                    id="sPhoneFormatWithExt"
@@ -359,106 +468,6 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                             <small class="form-text text-body-secondary">
                                 <?= gettext('Default: (999) 999-9999 x99999') ?>
                             </small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Display Preview -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fa-solid fa-eye me-2"></i><?= gettext('Display Preview') ?></h3>
-                </div>
-                <div class="card-body">
-                    <p class="text-body-secondary">
-                        <?= gettext('This is how dates and phone numbers will appear throughout the system.') ?>
-                    </p>
-
-                    <!-- Selected language: translation completeness + system support -->
-                    <div class="mb-3">
-                        <h5 class="mb-2"><i class="fa-solid fa-language me-2"></i><?= gettext('Selected Language') ?></h5>
-                        <div class="card-body bg-light rounded" id="locale-preview"
-                             data-system-check="<?= $systemCheckEnabled ? '1' : '0' ?>">
-                            <div class="d-flex align-items-center mb-2">
-                                <span class="fs-3 me-2" id="locale-preview-flag"></span>
-                                <div>
-                                    <div class="fw-medium" id="locale-preview-name">&mdash;</div>
-                                    <div class="small text-body-secondary" id="locale-preview-code"></div>
-                                </div>
-                            </div>
-
-                            <div id="locale-preview-translation" class="mb-2">
-                                <div class="d-flex justify-content-between small mb-1">
-                                    <span class="text-body-secondary"><?= gettext('Translation completeness') ?></span>
-                                    <span class="fw-medium" id="locale-preview-percent">—</span>
-                                </div>
-                                <div class="progress" style="height: 6px;">
-                                    <div class="progress-bar" id="locale-preview-bar" role="progressbar" style="width: 0;"></div>
-                                </div>
-                                <div class="small text-body-secondary mt-1" id="locale-preview-translation-note"></div>
-                            </div>
-
-                            <div class="small" id="locale-preview-support"></div>
-                        </div>
-                    </div>
-
-                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                        window.CRM = window.CRM || {};
-                        window.CRM.localeStats = <?= json_encode($localeStats, JSON_THROW_ON_ERROR) ?>;
-                        window.CRM.localeSystemCheckEnabled = <?= $systemCheckEnabled ? 'true' : 'false' ?>;
-                        window.CRM.localePreviewI18n = {
-                            translated: <?= json_encode(gettext('%d% of interface text is translated for this language.'), JSON_THROW_ON_ERROR) ?>,
-                            fullyTranslated: <?= json_encode(gettext('Fully translated.'), JSON_THROW_ON_ERROR) ?>,
-                            notTracked: <?= json_encode(gettext('Translation tracking is not available for this language.'), JSON_THROW_ON_ERROR) ?>,
-                            supported: <?= json_encode(gettext('Supported — this locale is installed on the server.'), JSON_THROW_ON_ERROR) ?>,
-                            notSupported: <?= json_encode(gettext('Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen).'), JSON_THROW_ON_ERROR) ?>,
-                            checkUnavailable: <?= json_encode(gettext('Server locale support could not be checked (exec is disabled).'), JSON_THROW_ON_ERROR) ?>,
-                        };
-                    </script>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3 mb-md-0">
-                            <h5 class="mb-2"><i class="fa-solid fa-calendar-days me-2"></i><?= gettext('Date &amp; Time Formats') ?></h5>
-                            <div class="card-body bg-light rounded">
-                                <dl class="row row-cols-1 mb-0 small">
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Long Date Format') ?></dt>
-                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDateFormatLong" data-kind="date">&mdash;</dd>
-
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date Without Year') ?></dt>
-                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDateFormatNoYear" data-kind="date">&mdash;</dd>
-
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date &amp; Time Format') ?></dt>
-                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDateTimeFormat" data-kind="date">&mdash;</dd>
-
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Filename Date Format') ?></dt>
-                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDateFilenameFormat" data-kind="date">&mdash;</dd>
-
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date Picker Format') ?></dt>
-                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDatePickerFormat" data-kind="date">&mdash;</dd>
-
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date Picker Placeholder') ?></dt>
-                                    <dd class="col-5 mb-0 text-end fw-medium format-preview-value" data-source="sDatePickerPlaceHolder" data-kind="literal">&mdash;</dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h5 class="mb-2"><i class="fa-solid fa-phone me-2"></i><?= gettext('Phone Number Formats') ?></h5>
-                            <div class="card-body bg-light rounded">
-                                <dl class="row row-cols-1 mb-0 small">
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Home/Work Phone Format') ?></dt>
-                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sPhoneFormat" data-kind="phone">&mdash;</dd>
-
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Cell Phone Format') ?></dt>
-                                    <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sPhoneFormatCell" data-kind="phone">&mdash;</dd>
-
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Phone with Extension') ?></dt>
-                                    <dd class="col-5 mb-0 text-end fw-medium format-preview-value" data-source="sPhoneFormatWithExt" data-kind="phone">&mdash;</dd>
-                                </dl>
-                            </div>
                         </div>
                     </div>
                 </div>

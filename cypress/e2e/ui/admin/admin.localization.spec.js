@@ -173,6 +173,33 @@ describe("Admin - Localization & Formats Page", () => {
             .and("include", "\u20ac");
     });
 
+    it("should mirror the currency sample in the top Display Preview", () => {
+        cy.visit("/admin/system/localization");
+
+        // Two render targets: the Display Preview column and the inline Currency card.
+        cy.get(".currency-preview-target", { timeout: 5000 }).should("have.length", 2);
+        cy.get(".currency-preview-target").first().invoke("text").should("include", "1,234.56");
+
+        // Changing the symbol updates BOTH targets.
+        cy.get("#sCurrencySymbol").clear().type("£");
+        cy.get(".currency-preview-target").each(($el) => {
+            expect($el.text()).to.include("£");
+        });
+    });
+
+    it("should provide Edit quick links that jump to each settings section", () => {
+        cy.visit("/admin/system/localization");
+
+        for (const id of ["section-language", "section-datetime", "section-currency", "section-phone"]) {
+            cy.get(`a[href='#${id}']`, { timeout: 5000 }).should("be.visible");
+            cy.get(`#${id}`).should("exist");
+        }
+
+        cy.get("a[href='#section-currency']").click();
+        cy.location("hash").should("eq", "#section-currency");
+        cy.get("#section-currency").should("be.visible");
+    });
+
     it("should not auto-save when a preset is clicked (no success toast)", () => {
         cy.visit("/admin/system/localization");
 

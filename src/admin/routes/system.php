@@ -816,8 +816,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             $val = trim((string) ($body[$key] ?? ''));
             SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
         }
-        // Currency & Finance Formats — read and validate ALL values before any save,
-        // so a separator conflict never partially commits position/symbol.
+        // Currency & Finance Formats — validate all four values before saving any,
+        // so a separator conflict never partially commits the currency group.
         $currencyPosition = trim((string) ($body['sCurrencyPosition'] ?? ''));
         $currencyPosition = in_array($currencyPosition, ['before', 'after'], true) ? $currencyPosition : 'before';
 
@@ -828,8 +828,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $currencySymbol = $currencySymbol !== '' ? $currencySymbol : SystemConfig::getConfigItem('sCurrencySymbol')->getDefault();
 
         // Use mb_substr without trim() — a regular space (U+0020) is a valid thousands
-        // separator in French/Swiss/Swedish locales. trim() would silently discard it,
-        // causing the DB to store the fallback default instead of the submitted space.
+        // separator in French/Swiss/Swedish locales. These two fields are deliberately
+        // NOT in the InputSanitizationMiddleware map: sanitizeText() trims, which would
+        // silently turn a submitted space into the fallback default.
         $thousands = mb_substr((string) ($body['sThousandsSeparator'] ?? ''), 0, 1);
         $decimal   = mb_substr((string) ($body['sDecimalSeparator'] ?? ''), 0, 1);
         // Validate: thousands and decimal separators must differ to avoid ambiguous number_format() output.
@@ -842,7 +843,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/localization')
                 ->withStatus(303);
         }
-        // All validation passed — save all four values atomically.
+        // All validation passed — save the currency group.
         SystemConfig::setValue('sCurrencyPosition', $currencyPosition);
         SystemConfig::setValue('sCurrencySymbol', $currencySymbol);
         SystemConfig::setValue('sThousandsSeparator', $effectiveThousands);
@@ -868,9 +869,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sPhoneFormatWithExt'  => 'text',
         'sPhoneFormatCell'     => 'text',
         'sCurrencySymbol'      => 'text',
-        'sCurrencyPosition'    => 'choice',
-        'sThousandsSeparator'  => 'text',
-        'sDecimalSeparator'    => 'text',
+        'sCurrencyPosition'    => 'text',
+        // sThousandsSeparator / sDecimalSeparator intentionally omitted: sanitizeText()
+        // trims, which would strip a space separator. The handler caps them to one char.
     ]));
 
     // User editor — create new user (GET shows form, POST processes it)
