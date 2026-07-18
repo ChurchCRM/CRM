@@ -2,7 +2,7 @@
 title: "Testing Migration & E2E"
 intent: "Testing strategy for migrating endpoints and UI flows (Cypress + integration tests)"
 tags: ["testing","cypress","e2e","migration"]
-prereqs: ["testing.md","cypress-testing.md","api-development.md"]
+prereqs: ["[[testing]]","[[cypress-testing]]","[[api-development]]"]
 complexity: "intermediate"
 ---
 

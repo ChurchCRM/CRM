@@ -2,7 +2,7 @@
 title: "Groups MVC Guidelines"
 intent: "Design and implementation patterns for Groups MVC apps (SundaySchool, Congregation)"
 tags: ["groups","mvc","routing","service-layer"]
-prereqs: ["routing-architecture.md","service-layer.md","php-best-practices.md"]
+prereqs: ["[[routing-architecture]]","[[service-layer]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 

@@ -2,7 +2,7 @@
 title: "Frontend Development"
 intent: "Guidance for frontend work, vanilla JS/TypeScript, and asset management"
 tags: ["frontend","webpack","i18n"]
-prereqs: ["webpack-typescript.md","i18n-localization.md"]
+prereqs: ["[[webpack-typescript]]","[[i18n-localization]]"]
 complexity: "intermediate"
 ---
 

@@ -2,13 +2,14 @@
 title: "Plugin Compliance — Admin Audit Guide"
 intent: "Checklist a ChurchCRM admin follows to vet, audit, and scan community plugins on their own server"
 tags: ["plugins","security","admin","audit","compliance"]
-prereqs: ["plugin-system.md"]
+prereqs: ["[[plugin-system]]"]
 complexity: "beginner"
 ---
 
 # Plugin Compliance — Admin Audit Guide <!-- learned: 2026-04-13 -->
 
-> **Audience:** ChurchCRM site administrators (not plugin developers and
+> [!NOTE] Audience
+> ChurchCRM site administrators (not plugin developers and
 > not ChurchCRM maintainers). If you are a developer submitting a plugin
 > for review, read [`plugin-security-scan.md`](./plugin-security-scan.md)
 > instead. If you are a ChurchCRM maintainer reviewing a community plugin

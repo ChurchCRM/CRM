@@ -2,7 +2,7 @@
 title: "Admin MVC Module Migration"
 intent: "Patterns and steps to migrate legacy pages into the Admin MVC structure"
 tags: ["admin","mvc","migration","slim"]
-prereqs: ["service-layer.md","php-best-practices.md"]
+prereqs: ["[[service-layer]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 - **Routes**: `src/admin/routes/[feature].php` - Define route endpoints
@@ -269,7 +269,8 @@ $typeId  = (int) ($params['typeId'] ?? 0);
 
 ## Middleware Order (CRITICAL) <!-- learned: 2026-04-07 -->
 
-> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
 
 For MVC modules, use `MvcAppFactory::create()` which handles all ordering automatically:
 
@@ -283,7 +284,8 @@ $app = MvcAppFactory::create('/admin', [
 
 ## Entry Point Error Handling
 
-> **Full reference:** [`slim-4-best-practices.md` → Error Handler Architecture](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Error Handler Architecture](./slim-4-best-practices.md)
 
 For MVC modules use `MvcAppFactory`. For non-MVC entry points (API, external, session),
 add error middleware manually — always AFTER `addRoutingMiddleware()`.

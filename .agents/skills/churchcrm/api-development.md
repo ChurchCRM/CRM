@@ -2,7 +2,7 @@
 title: "API Development"
 intent: "Patterns for creating and maintaining API endpoints using Slim and service layer"
 tags: ["api","slim","routes","security"]
-prereqs: ["slim-4-best-practices.md","php-best-practices.md"]
+prereqs: ["[[slim-4-best-practices]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 
@@ -155,7 +155,8 @@ var errorText = error.message || error.error || error.msg || i18next.t("Unknown 
 
 ## Middleware Order (CRITICAL - Slim 4 uses LIFO) <!-- learned: 2026-04-07 -->
 
-> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
 
 **TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
 

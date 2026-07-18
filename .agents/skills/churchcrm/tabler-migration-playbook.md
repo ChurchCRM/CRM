@@ -2,7 +2,7 @@
 title: "Tabler Migration Playbook"
 intent: "Step-by-step playbook for migrating ChurchCRM pages from AdminLTE/BS4 to Tabler/BS5, with full codebase audit inventory and phased execution plan"
 tags: ["frontend", "tabler", "migration", "bootstrap5", "playbook"]
-prereqs: ["tabler-components.md", "tabler-library-replacement.md", "bootstrap-5-migration.md"]
+prereqs: ["[[tabler-components]]", "[[tabler-library-replacement]]", "[[bootstrap-5-migration]]"]
 complexity: "advanced"
 ---
 

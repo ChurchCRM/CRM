@@ -2,7 +2,7 @@
 title: "Development Workflows"
 intent: "Setup, build, Docker, and testing workflows for development and CI"
 tags: ["devops","workflows","docker","testing"]
-prereqs: ["testing.md"]
+prereqs: ["[[testing]]"]
 complexity: "beginner"
 ---
 
