@@ -7,10 +7,9 @@ use ChurchCRM\dto\SystemConfig;
 /**
  * Currency formatting helper.
  *
- * Reads symbol, position, and separator settings from SystemConfig when available
- * (epic #8459 — currency localisation). Falls back to US-dollar defaults when
- * the config keys have not yet been registered, so the class is safe to use on
- * any 7.x installation.
+ * Reads symbol, position, and separator settings from SystemConfig
+ * (epic #8459 — currency localisation). US-dollar defaults come from the
+ * ConfigItem registrations in SystemConfig::buildConfigs().
  *
  * Usage:
  *   CurrencyFormatter::format(1234.5)        // "$1,234.50"
@@ -21,30 +20,16 @@ use ChurchCRM\dto\SystemConfig;
  */
 class CurrencyFormatter
 {
-    /**
-     * Safely read a SystemConfig value with a hard fallback for keys that may
-     * not yet be registered (pre-epic-#8459 installs).
-     */
-    private static function getSetting(string $key, string $default): string
-    {
-        try {
-            $val = SystemConfig::getValue($key);
-            return ($val !== null && $val !== '') ? (string) $val : $default;
-        } catch (\Throwable $e) {
-            return $default;
-        }
-    }
-
     /** Configured currency symbol (e.g. "$", "€", "£", "CHF"). */
     public static function symbol(): string
     {
-        return self::getSetting('sCurrencySymbol', '$');
+        return SystemConfig::getValue('sCurrencySymbol');
     }
 
     /** "before" (symbol precedes amount) or "after" (symbol follows amount). */
     public static function position(): string
     {
-        $pos = self::getSetting('sCurrencyPosition', 'before');
+        $pos = SystemConfig::getValue('sCurrencyPosition');
         return in_array($pos, ['before', 'after'], true) ? $pos : 'before';
     }
 
@@ -77,8 +62,8 @@ class CurrencyFormatter
      */
     public static function format(float $amount, int $decimals = 2): string
     {
-        $thousands = self::getSetting('sThousandsSeparator', ',');
-        $decimal   = self::getSetting('sDecimalSeparator', '.');
+        $thousands = SystemConfig::getValue('sThousandsSeparator');
+        $decimal   = SystemConfig::getValue('sDecimalSeparator');
         $symbol    = self::symbol();
         $position  = self::position();
 
@@ -100,8 +85,8 @@ class CurrencyFormatter
         return [
             'symbol'   => self::symbol(),
             'position' => self::position(),
-            'thousand' => self::getSetting('sThousandsSeparator', ','),
-            'decimal'  => self::getSetting('sDecimalSeparator', '.'),
+            'thousand' => SystemConfig::getValue('sThousandsSeparator'),
+            'decimal'  => SystemConfig::getValue('sDecimalSeparator'),
         ];
     }
 }
