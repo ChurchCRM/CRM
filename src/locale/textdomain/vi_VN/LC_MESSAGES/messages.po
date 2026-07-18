@@ -16729,3 +16729,87 @@ msgstr "Bạn vẫn có thể tiếp tục nâng cấp mà không cần xem ghi 
 msgid "You're up to date!"
 msgstr "Bạn đã cập nhật!"
 
+#: 
+msgid "A valid person must be selected."
+msgstr "Phải chọn một người hợp lệ."
+
+#: 
+msgid "Add Donors"
+msgstr "Thêm Người Dâng Hiến"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Thêm vào Danh Sách Người Mua"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tự động gán số mái chèo cho tất cả người dâng hiến vật phẩm"
+
+#: 
+msgid "Create a new user account"
+msgstr "Tạo tài khoản người dùng mới"
+
+#: 
+msgid "Delete this item?"
+msgstr "Xóa mục này?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Xóa số mái chèo này?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Chỉnh Sửa Người Mua"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Tên đăng nhập đã được sử dụng, vui lòng chọn tên đăng nhập khác!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Tên đăng nhập phải có ít nhất 3 ký tự!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Quản Lý Gây Quỹ"
+
+#: 
+msgid "New User"
+msgstr "Người Dùng Mới"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Vui lòng chọn một người để tạo tài khoản người dùng."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Vui lòng chọn ít nhất một người mua để tạo bảng kê."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Quay Lại Bảng Điều Khiển Gây Quỹ"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Không tìm thấy người được chọn."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Hành động này sẽ tự động thêm số mái chèo cho tất cả người dâng hiến vật phẩm trong chương trình gây quỹ này mà chưa được gán số người mua."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Người này đã có tài khoản người dùng."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Người dùng phải là Quản trị viên hoặc có quyền Quản Lý Gây Quỹ"
+
+#: 
+msgid "User not found."
+msgstr "Không tìm thấy người dùng."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Chọn một người —"
+

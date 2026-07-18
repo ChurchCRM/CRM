@@ -16735,3 +16735,87 @@ msgstr "Stále můžete pokračovat v aktualizaci bez zobrazení poznámek k vyd
 msgid "You're up to date!"
 msgstr "Máte aktuální verzi!"
 
+#: 
+msgid "A valid person must be selected."
+msgstr "Musí být vybrána platná osoba."
+
+#: 
+msgid "Add Donors"
+msgstr "Přidat dárce"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Přidat do seznamu kupujících"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Automaticky přiřadit čísla pádel všem dárcům položek"
+
+#: 
+msgid "Create a new user account"
+msgstr "Vytvořit nový uživatelský účet"
+
+#: 
+msgid "Delete this item?"
+msgstr "Smazat tuto položku?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Smazat toto číslo pádla?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Upravit kupujícího"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Přihlašovací jméno je již použito, prosím vyberte jiné!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Přihlašovací jméno musí mít alespoň 3 znaky!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Správa fundraisingů"
+
+#: 
+msgid "New User"
+msgstr "Nový uživatel"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Prosím vyberte osobu, pro kterou chcete vytvořit uživatelský účet."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Prosím vyberte alespoň jednoho kupujícího pro generování výpisů."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Zpět na přehled fundraisingu"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Vybraná osoba nebyla nalezena."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Tato akce automaticky přiřadí čísla pádel všem dárcům položek v tomto fundraisingu, kteří ještě nemají přiřazeno číslo kupujícího."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Tato osoba již má uživatelský účet."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Uživatel musí být správce nebo mít oprávnění Správa fundraisingů"
+
+#: 
+msgid "User not found."
+msgstr "Uživatel nebyl nalezen."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Vyberte osobu —"
+

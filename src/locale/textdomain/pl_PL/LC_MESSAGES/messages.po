@@ -16811,3 +16811,87 @@ msgstr "Możesz nadal przystąpić do aktualizacji bez przeglądania informacji 
 msgid "You're up to date!"
 msgstr "Masz aktualną wersję!"
 
+#: 
+msgid "A valid person must be selected."
+msgstr "Należy wybrać prawidłową osobę."
+
+#: 
+msgid "Add Donors"
+msgstr "Dodaj darczyńców"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Dodaj do listy nabywców"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Automatycznie przypisz numery łopatek wszystkim ofiarodawcom pozycji"
+
+#: 
+msgid "Create a new user account"
+msgstr "Utwórz nowe konto użytkownika"
+
+#: 
+msgid "Delete this item?"
+msgstr "Usunąć tę pozycję?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Usunąć ten numer łopatki?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Edytuj nabywcę"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Login jest już zajęty, proszę wybrać inny login!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Login musi mieć co najmniej 3 znaki!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Zarządzaj zbiórkami"
+
+#: 
+msgid "New User"
+msgstr "Nowy użytkownik"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Proszę wybrać osobę, dla której ma zostać utworzone konto użytkownika."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Proszę wybrać co najmniej jednego nabywcę, aby wygenerować zestawienia."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Powróć do panelu zbiórki"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Nie znaleziono wybranej osoby."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Ta czynność automatycznie przypisze numery łopatek wszystkim ofiarodawcom pozycji w tej zbiórce, którzy nie mają jeszcze przypisanego numeru nabywcy."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Ta osoba posiada już konto użytkownika."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Użytkownik musi być administratorem lub posiadać uprawnienie Zarządzaj zbiórkami"
+
+#: 
+msgid "User not found."
+msgstr "Nie znaleziono użytkownika."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Wybierz osobę —"
+

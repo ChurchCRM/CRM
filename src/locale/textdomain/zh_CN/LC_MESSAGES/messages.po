@@ -16800,3 +16800,87 @@ msgstr "您仍然可以在不查看发行说明的情况下继续升级。"
 msgid "You're up to date!"
 msgstr "您已是最新版本！"
 
+#: 
+msgid "A valid person must be selected."
+msgstr "必须选择一个有效的人员。"
+
+#: 
+msgid "Add Donors"
+msgstr "添加奉献者"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "添加到购买者列表"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "自动为所有物品奉献者分配拍牌号码"
+
+#: 
+msgid "Create a new user account"
+msgstr "创建新用户账户"
+
+#: 
+msgid "Delete this item?"
+msgstr "删除此项目？"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "删除此拍牌号码？"
+
+#: 
+msgid "Edit Buyer"
+msgstr "编辑购买者"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "登录名已被使用，请选择其他登录名！"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "登录名至少需要3个字符！"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "管理募款活动"
+
+#: 
+msgid "New User"
+msgstr "新用户"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "请选择一位人员以为其创建用户账户。"
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "请至少选择一位购买者以生成对账单。"
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "返回募款活动仪表板"
+
+#: 
+msgid "The selected person was not found."
+msgstr "未找到所选人员。"
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "此操作将自动为本次募款活动中尚未分配购买者编号的所有物品奉献者添加拍牌号码。"
+
+#: 
+msgid "This person already has a user account."
+msgstr "此人员已拥有用户账户。"
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "用户必须是管理员或具有管理募款活动的权限"
+
+#: 
+msgid "User not found."
+msgstr "未找到用户。"
+
+#: 
+msgid "— Select a person —"
+msgstr "— 选择一位人员 —"
+

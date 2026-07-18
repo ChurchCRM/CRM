@@ -16699,3 +16699,87 @@ msgstr "U kunt de upgrade toch uitvoeren zonder de release-notities te bekijken.
 msgid "You're up to date!"
 msgstr "U bent up-to-date!"
 
+#: 
+msgid "A valid person must be selected."
+msgstr "Er moet een geldige persoon worden geselecteerd."
+
+#: 
+msgid "Add Donors"
+msgstr "Donateurs toevoegen"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Toevoegen aan koperslijst"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Paddle-nummers automatisch toewijzen aan alle artikeldonateurs"
+
+#: 
+msgid "Create a new user account"
+msgstr "Een nieuw gebruikersaccount aanmaken"
+
+#: 
+msgid "Delete this item?"
+msgstr "Dit item verwijderen?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Dit paddle-nummer verwijderen?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Koper bewerken"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Aanmeldnaam al in gebruik, kies een andere aanmeldnaam!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Aanmeldnaam moet minimaal 3 tekens bevatten!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Fondsenwerving beheren"
+
+#: 
+msgid "New User"
+msgstr "Nieuwe gebruiker"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Selecteer een persoon voor wie een gebruikersaccount aangemaakt moet worden."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Selecteer ten minste één koper om overzichten te genereren."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Terug naar het dashboard voor fondsenwerving"
+
+#: 
+msgid "The selected person was not found."
+msgstr "De geselecteerde persoon werd niet gevonden."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Deze actie voegt automatisch paddle-nummers toe aan alle artikeldonateurs in deze fondsenwervingsactie die nog geen kopernummer hebben toegewezen gekregen."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Deze persoon heeft al een gebruikersaccount."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "De gebruiker moet beheerder zijn of de machtiging 'Fondsenwerving beheren' hebben"
+
+#: 
+msgid "User not found."
+msgstr "Gebruiker niet gevonden."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Selecteer een persoon —"
+
