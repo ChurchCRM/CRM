@@ -1,5 +1,5 @@
 /**
- * Leaflet map initialisation for the person detail view (PersonView.php).
+ * Leaflet map initialisation for the person detail view (/people/view/{id}).
  *
  * PHP injects window.CRM.personMapConfig with one of two shapes:
  *   { lat, lng }   — family has stored geocoded coordinates (used directly)

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 /**
- * UI tests for Person Group Interactions on PersonView.php.
+ * UI tests for Person Group Interactions on the person view page (/people/view/{id}).
  *
  * Uses API calls to ensure person 2 is in a known group before each test.
  * Depends on seed-data group "Church Board" (ID 9) existing.
