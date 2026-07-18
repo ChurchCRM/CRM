@@ -2,7 +2,7 @@
 title: "Tabler UI Component Reference"
 intent: "Complete reference for Tabler framework layout, cards, tables, forms, navigation, and utility components used in ChurchCRM"
 tags: ["frontend", "tabler", "bootstrap5", "ui", "components"]
-prereqs: ["bootstrap-5-migration.md", "frontend-development.md"]
+prereqs: ["[[bootstrap-5-migration]]", "[[frontend-development]]"]
 complexity: "intermediate"
 ---
 
@@ -1327,8 +1327,7 @@ Do NOT add `autofocus` to the search results page input — it prevents the `?` 
 
 ## Standard Table Action Dropdown <!-- learned: 2026-03-23 -->
 
-> **See the dedicated skill: [`table-action-menu.md`](./table-action-menu.md)**
->
+> [!NOTE] See the dedicated skill: [`table-action-menu.md`](./table-action-menu.md)
 > That file has the complete pattern (PHP + JS), full rules table, overflow/clipping fixes, cart button pattern, order/sort actions, and a pre-commit checklist. Always read it when adding or editing any table with row-level actions.
 
 ---

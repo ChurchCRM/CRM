@@ -18,8 +18,8 @@ ChurchCRM supports 45+ languages through gettext (PHP) and i18next (JavaScript).
 
 **Key Principle:** Every translatable term added = 45+ translations needed (one per language). Consolidate compound terms to reduce this burden.
 
-> **Scope note — this skill is for the CORE `messages` domain only.** Community
-> plugins do **not** go through POeditor and do **not** contribute strings to
+> [!NOTE] Scope — CORE `messages` domain only
+> Community plugins do **not** go through POeditor and do **not** contribute strings to
 > `locale/messages.po` or `locale/i18n/*.json`. Plugin authors ship their
 > translations inside the plugin directory and ChurchCRM loads them via
 > `PluginLocalization`. See
@@ -199,8 +199,7 @@ This applies to all inline scripts in PHP templates that use `i18next.t()`. Webp
 
 ## Adding New UI Terms
 
-> ## ⛔ NEVER run `npm run locale:build` <!-- learned: 2026-07-11 -->
->
+> [!WARNING] NEVER run `npm run locale:build` <!-- learned: 2026-07-11 -->
 > Term extraction and `locale/terms/messages.po` updates are **automated outside
 > this repo** (POEditor sync). Do not run `locale:build`, and do not hand-edit or
 > commit `messages.po` or the generated locale JSON files. Running it locally only
@@ -1085,7 +1084,8 @@ $localeInfo = Bootstrapper::getCurrentLocale();
 
 ### Extracting and Uploading New Terms
 
-> **Not a developer task.** Extraction (`locale:build`) and the POEditor upload are
+> [!WARNING] Not a developer task
+> Extraction (`locale:build`) and the POEditor upload are
 > run by the **release/locale automation**, not by hand during feature work. The
 > steps below document what that automation does — they are not a checklist to
 > follow when you add a `gettext()` string. See

@@ -2,7 +2,7 @@
 title: "Currency Localization"
 intent: "Render money values with a configurable symbol, position, and separators across PHP, JS, DataTables, Chart.js, CSS, and PDFs"
 tags: ["i18n", "localization", "currency", "money", "finance", "systemconfig"]
-prereqs: ["configuration-management.md", "i18n-localization.md", "frontend-development.md"]
+prereqs: ["[[configuration-management]]", "[[i18n-localization]]", "[[frontend-development]]"]
 complexity: "beginner"
 ---
 

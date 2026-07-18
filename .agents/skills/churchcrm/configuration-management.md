@@ -1,3 +1,10 @@
+---
+title: "Configuration Management"
+intent: "Guide to managing SystemConfig, asset paths, settings panels, and configuration best practices"
+tags: ["configuration", "settings", "systemconfig", "admin"]
+prereqs: ["[[php-best-practices]]"]
+complexity: "beginner"
+---
 # Configuration Management
 
 Guide to managing SystemConfig, asset paths, settings panels, and configuration best practices.

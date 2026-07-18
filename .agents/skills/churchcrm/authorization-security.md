@@ -2,7 +2,7 @@
 title: "Authorization & Security"
 intent: "Authorization patterns, RedirectUtils, input sanitization, and security guidance"
 tags: ["security","auth","redirects","xss"]
-prereqs: ["php-best-practices.md"]
+prereqs: ["[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 
