@@ -1,6 +1,25 @@
 /// <reference types="cypress" />
 
 describe("Admin - Localization & Formats Page", () => {
+    // Reset the four currency keys to seed defaults before any test in this suite
+    // runs, so the "correct defaults" test is not polluted by a prior CI run.
+    before(() => {
+        cy.setupAdminSession();
+        for (const [name, value] of [
+            ["sCurrencySymbol", "$"],
+            ["sCurrencyPosition", "before"],
+            ["sThousandsSeparator", ","],
+            ["sDecimalSeparator", "."],
+        ]) {
+            cy.request({
+                method: "POST",
+                url: `/admin/api/system/config/${name}`,
+                body: { value },
+                headers: { "Content-Type": "application/json" },
+            });
+        }
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
     });

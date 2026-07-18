@@ -827,14 +827,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         }
         $currencySymbol = $currencySymbol !== '' ? $currencySymbol : SystemConfig::getConfigItem('sCurrencySymbol')->getDefault();
 
-        $thousands = trim((string) ($body['sThousandsSeparator'] ?? ''));
-        if (mb_strlen($thousands) > 1) {
-            $thousands = mb_substr($thousands, 0, 1);
-        }
-        $decimal = trim((string) ($body['sDecimalSeparator'] ?? ''));
-        if (mb_strlen($decimal) > 1) {
-            $decimal = mb_substr($decimal, 0, 1);
-        }
+        // Use mb_substr without trim() — a regular space (U+0020) is a valid thousands
+        // separator in French/Swiss/Swedish locales. trim() would silently discard it,
+        // causing the DB to store the fallback default instead of the submitted space.
+        $thousands = mb_substr((string) ($body['sThousandsSeparator'] ?? ''), 0, 1);
+        $decimal   = mb_substr((string) ($body['sDecimalSeparator'] ?? ''), 0, 1);
         // Validate: thousands and decimal separators must differ to avoid ambiguous number_format() output.
         $effectiveThousands = $thousands !== '' ? $thousands : SystemConfig::getConfigItem('sThousandsSeparator')->getDefault();
         $effectiveDecimal   = $decimal !== '' ? $decimal : SystemConfig::getConfigItem('sDecimalSeparator')->getDefault();
