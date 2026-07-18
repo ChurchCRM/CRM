@@ -232,7 +232,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
 
                     <div class="mb-3">
                         <label class="form-label d-block"><?= gettext('Quick presets') ?></label>
-                        <div id="currency-presets" class="d-flex flex-wrap gap-1" aria-label="<?= gettext('Currency presets') ?>"></div>
+                        <div id="currency-presets" class="d-flex flex-wrap gap-1" aria-label="<?= InputUtils::escapeAttribute(gettext('Currency presets')) ?>"></div>
                         <small class="form-text text-body-secondary"><?= gettext('Populates the fields below without saving. Click Save to apply.') ?></small>
                     </div>
 
