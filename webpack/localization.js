@@ -12,6 +12,16 @@
 
 import { initDateFormatPreviews, initFormatSummaryPreview, initPhonePresets } from "./date-format-preview";
 
+/** Named currency presets: symbol, position (before|after), thousands sep, decimal sep. */
+const CURRENCY_PRESETS = [
+  { slug: "usd", label: "US Dollar ($)", symbol: "$", position: "before", thousand: ",", decimal: "." },
+  { slug: "eur", label: "Euro (\u20ac)", symbol: "\u20ac", position: "after", thousand: ".", decimal: "," },
+  { slug: "gbp", label: "British Pound (\u00a3)", symbol: "\u00a3", position: "before", thousand: ",", decimal: "." },
+  { slug: "chf", label: "Swiss Franc (CHF)", symbol: "CHF", position: "before", thousand: "'", decimal: "." },
+  { slug: "brl", label: "Brazilian Real (R$)", symbol: "R$", position: "before", thousand: ".", decimal: "," },
+  { slug: "inr", label: "Indian Rupee (\u20b9)", symbol: "\u20b9", position: "before", thousand: ",", decimal: "." },
+];
+
 /**
  * Format a sample monetary amount (1,234.56) using the configured symbol,
  * position, and separator characters for the live preview on the
@@ -56,7 +66,46 @@ function initCurrencyPreview() {
   render();
 }
 
-/** Convert a 2-letter country code to its flag emoji (falls back to a globe). */
+/**
+ * Render the six currency quick-preset buttons into #currency-presets.
+ * Clicking a button fills the four currency inputs and triggers the live
+ * preview to update. Does NOT submit the form.
+ */
+function initCurrencyPresets() {
+  const container = document.getElementById("currency-presets");
+  const symbolInput = document.getElementById("sCurrencySymbol");
+  const positionSelect = document.getElementById("sCurrencyPosition");
+  const thousandsInput = document.getElementById("sThousandsSeparator");
+  const decimalInput = document.getElementById("sDecimalSeparator");
+
+  if (!container || !symbolInput || !positionSelect || !thousandsInput || !decimalInput) {
+    return;
+  }
+
+  for (const preset of CURRENCY_PRESETS) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn btn-outline-secondary btn-sm currency-preset-btn";
+    btn.dataset.preset = preset.slug;
+    btn.setAttribute("aria-label", `Apply ${preset.label} preset`);
+    btn.textContent = preset.label;
+
+    btn.addEventListener("click", () => {
+      symbolInput.value = preset.symbol;
+      positionSelect.value = preset.position;
+      thousandsInput.value = preset.thousand;
+      decimalInput.value = preset.decimal;
+
+      // Notify live preview + any dirty-tracking listeners
+      for (const el of [symbolInput, positionSelect, thousandsInput, decimalInput]) {
+        el.dispatchEvent(new Event("input", { bubbles: true }));
+        el.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+
+    container.appendChild(btn);
+  }
+}
 function flagEmoji(countryCode) {
   if (!countryCode || countryCode.length !== 2) {
     return "🌐";
@@ -135,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initPhonePresets();
   initFormatSummaryPreview();
   initCurrencyPreview();
+  initCurrencyPresets();
 
   const renderLocalePreview = initLocalePreview();
 
