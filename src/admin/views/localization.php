@@ -230,6 +230,12 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                         <?= gettext('Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide.') ?>
                     </p>
 
+                    <div class="mb-3">
+                        <label class="form-label d-block"><?= gettext('Quick presets') ?></label>
+                        <div id="currency-presets" class="d-flex flex-wrap gap-1" aria-label="<?= gettext('Currency presets') ?>"></div>
+                        <small class="form-text text-body-secondary"><?= gettext('Populates the fields below without saving. Click Save to apply.') ?></small>
+                    </div>
+
                     <div class="row">
                         <div class="mb-3 col-md-4">
                             <label for="sCurrencySymbol"><?= gettext('Currency Symbol') ?></label>
