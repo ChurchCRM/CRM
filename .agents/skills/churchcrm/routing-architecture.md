@@ -448,7 +448,7 @@ This keeps each file under ~300 lines and makes it obvious which route handles w
 - Consolidate admin pages to `/admin/system/`
 - Move admin APIs to `/admin/api/`
 - Update menu registrations in `Menu.php`
-- Redirect legacy URLs to new locations
+- **Update all callers** to use the new URL, then **delete** the legacy file — never redirect from the old location (see `admin-mvc-migration.md` → "No Redirect Shims")
 
 ---
 
@@ -478,7 +478,8 @@ This keeps each file under ~300 lines and makes it obvious which route handles w
    - Gradually migrate to one of the above
    - Start by extracting business logic to Service class
    - Create new route structure and views
-   - Redirect legacy page to new location
+   - **Search for every link/reference to the legacy file** (use `grep -r "LegacyPage.php" src/`) and update them to the new route
+   - **Delete the legacy file** — do NOT leave it as a redirect shim (see `admin-mvc-migration.md` → "No Redirect Shims")
 
 ---
 

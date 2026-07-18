@@ -21,6 +21,20 @@ window.CRM.escapeHtml = (text) => {
   div.textContent = text;
   return div.innerHTML;
 };
+/**
+ * Escape text for safe insertion into HTML attribute values (e.g. title="...", value="...").
+ * Extends escapeHtml to also encode double and single quotes so attackers cannot
+ * break out of a quoted attribute context.
+ * GHSA-369j-c5w2-48m4: attribute-context escaping for dashboard DataTables render callbacks
+ * @param {string} text - The text to escape
+ * @returns {string} - Text safe for use inside HTML attribute values
+ */
+window.CRM.escapeAttribute = (text) => {
+  if (text === null || text === undefined) {
+    return "";
+  }
+  return window.CRM.escapeHtml(text).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+};
 
 window.CRM.APIRequest = (options) => {
   // Guard against jQuery not being available
@@ -436,14 +450,16 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
     '<i class="ti ti-eye me-2"></i>' +
     i18next.t("View") +
     "</a>" +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/PersonEditor.php?PersonID=" +
-    personId +
-    '">' +
-    '<i class="ti ti-pencil me-2"></i>' +
-    i18next.t("Edit") +
-    "</a>" +
+    (window.CRM.permissions && window.CRM.permissions.editRecords
+      ? '<a class="dropdown-item" href="' +
+        root +
+        "/PersonEditor.php?PersonID=" +
+        personId +
+        '">' +
+        '<i class="ti ti-pencil me-2"></i>' +
+        i18next.t("Edit") +
+        "</a>"
+      : "") +
     familyItem +
     '<div class="dropdown-divider"></div>' +
     '<button class="dropdown-item ' +
@@ -505,14 +521,16 @@ window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
     '<i class="ti ti-eye me-2"></i>' +
     i18next.t("View") +
     "</a>" +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/FamilyEditor.php?FamilyID=" +
-    familyId +
-    '">' +
-    '<i class="ti ti-pencil me-2"></i>' +
-    i18next.t("Edit") +
-    "</a>" +
+    (window.CRM.permissions && window.CRM.permissions.editRecords
+      ? '<a class="dropdown-item" href="' +
+        root +
+        "/FamilyEditor.php?FamilyID=" +
+        familyId +
+        '">' +
+        '<i class="ti ti-pencil me-2"></i>' +
+        i18next.t("Edit") +
+        "</a>"
+      : "") +
     '<div class="dropdown-divider"></div>' +
     '<button class="dropdown-item ' +
     (inCart ? "RemoveFromCart text-danger" : "AddToCart") +

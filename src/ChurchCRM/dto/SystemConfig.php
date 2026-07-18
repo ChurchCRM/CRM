@@ -161,6 +161,12 @@ class   SystemConfig
             'sPhoneFormat'                         => new ConfigItem('sPhoneFormat', 'text', '(999) 999-9999'),
             'sPhoneFormatWithExt'                  => new ConfigItem('sPhoneFormatWithExt', 'text', '(999) 999-9999 x99999'),
             'sPhoneFormatCell'                     => new ConfigItem('sPhoneFormatCell', 'text', '(999) 999-9999'),
+            // Currency & Finance Formats (epic #8459)
+            'sCurrencySymbol'                      => new ConfigItem('sCurrencySymbol', 'text', '$', gettext('Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $).')),
+            'sCurrencyPosition'                    => new ConfigItem('sCurrencyPosition', 'choice', 'before', gettext('Position of the currency symbol relative to the amount.'), '', '{"Choices":["before","after"]}'),
+            'sThousandsSeparator'                  => new ConfigItem('sThousandsSeparator', 'text', ',', gettext('Character used to separate thousands in monetary amounts (e.g. , or .)')),
+            'sDecimalSeparator'                    => new ConfigItem('sDecimalSeparator', 'text', '.', gettext('Character used as the decimal point in monetary amounts (e.g. . or ,)')),
+
             'sDateFormatLong'                      => new ConfigItem('sDateFormatLong', 'text', 'm/d/Y'),
             'sDateFormatNoYear'                    => new ConfigItem('sDateFormatNoYear', 'text', 'm/d'),
             'sDateTimeFormat'                      => new ConfigItem('sDateTimeFormat', 'text', 'm/d/Y g:i a'),
@@ -267,9 +273,8 @@ class   SystemConfig
             gettext('People')              => ['sDirClassifications', 'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideWeddingDate', 'bForceUppercaseZip', 'sInactiveClassification'],
             gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHideFamilyNewsletter'],
             gettext('Report Settings')    => ['sQBDTSettings', 'leftX', 'incrementY', 'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sPledgeSummary1', 'sPledgeSummary2', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'bDirLetterHead', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'iPDFOutputType'],
-            gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts', 'bUseScannedChecks', 'bEnableNonDeductible', 'iFYMonth', 'bUseDonationEnvelopes', 'aFinanceQueries'],
+            gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts', 'bUseScannedChecks', 'bEnableNonDeductible', 'iFYMonth', 'bUseDonationEnvelopes', 'aFinanceQueries', 'sCurrencySymbol', 'sCurrencyPosition', 'sThousandsSeparator', 'sDecimalSeparator'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
-            gettext('Localization')       => ['sDistanceUnit', 'sPhoneFormat', 'sPhoneFormatWithExt', 'sPhoneFormatCell', 'sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField']
         ];
     }

@@ -26,8 +26,8 @@ $iGroupID = (int)InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 // Get the PersonID from the querystring
 $iPersonID = (int)InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 
-// Get the return location flag from the querystring
-$iReturn = $_GET['Return'];
+// Get the return location flag from the querystring (int-cast prevents XSS; GHSA-jx45-q5vj-h2wm)
+$iReturn = (int) ($_GET['Return'] ?? 0);
 
 // Was the form submitted?
 if (isset($_POST['Submit'])) {

@@ -1976,10 +1976,6 @@ msgid "Save Settings"
 msgstr "Guardar ajustes"
 
 #: 
-msgid "Default User Settings"
-msgstr "Ajustes del usuario por Defecto"
-
-#: 
 msgid "Permission"
 msgstr "Permiso"
 
@@ -2008,18 +2004,6 @@ msgid "Login Name"
 msgstr "Nombre de usuario"
 
 #: 
-msgid "Add Records"
-msgstr "Añadir registros"
-
-#: 
-msgid "Edit Records"
-msgstr "Editar registros"
-
-#: 
-msgid "Delete Records"
-msgstr "Eliminar registros"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Administrar propiedades y clasificaciones"
 
@@ -2030,14 +2014,6 @@ msgstr "Administrar grupos y roles"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Administrar Donaciones y Finanzas"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Ver, Añadir y Editar Notas"
-
-#: 
-msgid "Edit Self"
-msgstr "Editarse a sí mismo"
 
 #: 
 msgid "Admin"
@@ -2939,10 +2915,6 @@ msgstr "Agregar donantes a Lista de compradores"
 #: 
 msgid "Data/Reports"
 msgstr "Datos/Reportes"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu de consultas"
 
 #: 
 msgid "Family Properties"
@@ -5553,10 +5525,6 @@ msgid "Permissions"
 msgstr "Permisos"
 
 #: 
-msgid "Manage Notes"
-msgstr "Administrar Notas"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Resumen de promesas por familia"
 
@@ -6452,10 +6420,6 @@ msgstr "Cerrar y actualizar"
 #: 
 msgid "Confirm Deletion"
 msgstr "Confirmar eliminación"
-
-#: 
-msgid "Create directory permission"
-msgstr "Crear permiso de directorio"
 
 #: 
 msgid "Database Only"
@@ -9073,10 +9037,6 @@ msgid "Inactive Groups"
 msgstr "Grupos inactivos"
 
 #: 
-msgid "Language & Localization"
-msgstr "Idioma y localización"
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -9473,10 +9433,6 @@ msgstr "Ver y buscar campañas de recaudación de fondos"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "Ver fotos de los fieles de la feligresía"
-
-#: 
-msgid "Buyer Number"
-msgstr "Número de comprador"
 
 #: 
 msgid "Buyers"
@@ -10521,16 +10477,8 @@ msgid "Server Error"
 msgstr "Error del servidor"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Establezca el permiso en Verdadero para que los nuevos usuarios puedan cambiar su valor actual."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Establezca un correo de administrador para poder restablecer contraseñas y recibir notificaciones"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Establecer preferencias predeterminadas para nuevas cuentas de usuario"
 
 #: 
 msgid "Set up"
@@ -10873,10 +10821,6 @@ msgid "— Select type (optional) —"
 msgstr "— Seleccionar tipo (opcional) —"
 
 #: 
-msgid "Active Events"
-msgstr "Eventos activos"
-
-#: 
 msgid "Add Event"
 msgstr "Agregar evento"
 
@@ -11015,10 +10959,6 @@ msgstr "El texto de la nota es obligatorio"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Solo el autor de la nota o un administrador puede eliminar esta nota"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Solo el autor de la nota o un administrador puede editar esta nota"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11583,11 +11523,6 @@ msgstr "Estos valores se rellenan automáticamente al crear nuevas familias. Dej
 #: 
 msgid "Unit used to measure distance."
 msgstr "Unidad utilizada para medir la distancia."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Permiso de usuario para crear directorios"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12627,10 +12562,6 @@ msgstr "Solo base de datos (.sql) o archivo completo (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Número predeterminado de filas mostradas en las tablas de datos. Tiene efecto en la próxima carga de página."
 
-#: 
-msgid "Edit own family only"
-msgstr "Editar solo la propia familia"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12643,10 +12574,6 @@ msgstr "Corregir traducciones incorrectas o inadecuadas en su idioma"
 #: 
 msgid "Found a bug with translations?"
 msgstr "¿Encontró un error en las traducciones?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Otorga todos los privilegios"
 
 #: 
 msgid "Green"
@@ -14092,22 +14019,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Tu CSV tiene nombres de columna duplicados. Cambia el nombre de las columnas duplicadas (p. ej. agrega \"(2)\" a la segunda) y vuelve a subir."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "¿Está seguro de que desea eliminar permanentemente este artículo donado?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "¿Está seguro de que desea eliminar permanentemente este número de paleta?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Eliminar artículo donado"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Eliminar número de paleta"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Token de seguridad no válido. Por favor, inténtelo de nuevo."
 
@@ -14608,10 +14519,6 @@ msgid "You do not have permission to edit this note."
 msgstr "No tiene permiso para editar esta nota."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Nota privada — visible solo para el creador]"
-
-#: 
 msgid "seconds"
 msgstr "segundos"
 
@@ -15011,10 +14918,6 @@ msgstr "Descargar respaldo y continuar"
 #: 
 msgid "Downloaded"
 msgstr "Descargado"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Descargando la última versión de GitHub..."
 
 #: 
 msgid "Duration"
@@ -16238,4 +16141,644 @@ msgstr "— Seleccionar país —"
 #: 
 msgid "— Select State —"
 msgstr "— Seleccionar estado —"
+
+#: 
+msgid "Account options"
+msgstr "Opciones de cuenta"
+
+#: 
+msgid "Register"
+msgstr "Registrarse"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Eslovaco"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d evento pasado"
+msgstr[1] "%d eventos pasados"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% del texto de la interfaz está traducido para este idioma."
+
+#: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
+msgid "Access denied"
+msgstr "Acceso denegado"
+
+#: 
+msgid "All times shown in"
+msgstr "Todos los horarios mostrados en"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Cumpleaños y aniversarios. Predeterminado: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "No se puede eliminar el calendario: %d evento(s) todavía están asignados. Elimínelos o reasígnelos primero."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Formato de teléfono celular"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Códigos de formato comunes (ejemplos usan viernes, 7 de marzo de 2025, 3:09 PM)"
+
+#: 
+msgid "Current Events"
+msgstr "Eventos actuales"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Formato de fecha y hora"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formatos de fecha y hora"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Formato del selector de fecha"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Marcador de posición del selector de fecha"
+
+#: 
+msgid "Date Without Year"
+msgstr "Fecha sin año"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Día, 2 dígitos"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Día, sin cero inicial"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Predeterminado: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Predeterminado: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Ejemplo: \"l, j F Y\" produce \"Viernes, 7 Marzo 2025\". Cualquier otro carácter (espacios, comas, barras) aparece tal como se escribe."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Formato de fecha para nombre de archivo"
+
+#: 
+msgid "Fully translated."
+msgstr "Completamente traducido."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Texto de sugerencia en campos de fecha. Predeterminado: aaaa-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Formato de teléfono hogar/trabajo"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Hora 12h, 2 dígitos"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Hora 12h, sin cero"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Hora 24h, 2 dígitos"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Incluye componente de hora. Predeterminado: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Idioma y región"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Idioma, zona horaria, formatos de fecha y teléfono"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Localización y formatos"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Configuración de localización guardada correctamente"
+
+#: 
+msgid "Long Date Format"
+msgstr "Formato de fecha larga"
+
+#: 
+msgid "Minutes"
+msgstr "Minutos"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Mes y año"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Mes, 2 dígitos"
+
+#: 
+msgid "Month, full"
+msgstr "Mes, completo"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Mes, sin cero inicial"
+
+#: 
+msgid "Month, short"
+msgstr "Mes, abreviado"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "No instalado en el servidor — las fechas y números pueden no formatearse correctamente. Solicite a su proveedor que lo instale (p. ej. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Formato PHP para el selector de fecha. Predeterminado: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formatos de número de teléfono"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Teléfono con extensión"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Guardar configuración de localización"
+
+#: 
+msgid "Selected Language"
+msgstr "Idioma seleccionado"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "No se pudo verificar la compatibilidad de configuración regional del servidor (exec está deshabilitado)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Compatible — esta configuración regional está instalada en el servidor."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Idioma del sistema, zona horaria, formatos de fecha/hora y formatos de número de teléfono"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Estos campos usan códigos de formato (letras que representan partes de una fecha). Elija un valor preestablecido debajo de cada campo, o construya el suyo usando la referencia. La vista previa muestra exactamente cómo se verá. Déjelo en blanco para usar el predeterminado del sistema."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Así es como aparecerán las fechas y los números de teléfono en todo el sistema."
+
+#: 
+msgid "Translation completeness"
+msgstr "Completitud de la traducción"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "El seguimiento de traducción no está disponible para este idioma."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Use 9 como marcador de dígito (p. ej. (999) 999-9999). Déjelo en blanco para usar el predeterminado del sistema."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Usado en nombres de archivos exportados. Predeterminado: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Usado en informes y listas de miembros. Predeterminado: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Día de la semana, completo"
+
+#: 
+msgid "Weekday, short"
+msgstr "Día de la semana, abreviado"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "¿Qué significan estos códigos?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Año, 2 dígitos"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Año, 4 dígitos"
+
+#: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
+msgid "past"
+msgstr "pasado"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Croata"
+
+#: 
+msgid "%s's Account"
+msgstr "Cuenta de %s"
+
+#: 
+msgid "Access"
+msgstr "Acceso"
+
+#: 
+msgid "Access level"
+msgstr "Nivel de acceso"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Los administradores tienen acceso completo a todas las funciones y datos. Los permisos individuales no aplican."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Todos los usuarios pueden ver a los miembros de la congregación. Este permiso no puede eliminarse."
+
+#: 
+msgid "Always granted"
+msgstr "Siempre otorgado"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Solo puede revisar y verificar su propia familia. Sin ningún otro acceso."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Elija los permisos específicos a continuación."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Contacte a un administrador para cambiar sus permisos."
+
+#: 
+msgid "Custom permissions"
+msgstr "Permisos personalizados"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Acceso completo — otorga todos los privilegios."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Otorgar permisos individuales:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Si necesita acceso adicional, comuníquese con el administrador de su parroquia."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Personas &amp; Familias"
+
+#: 
+msgid "Self-service"
+msgstr "Autoservicio"
+
+#: 
+msgid "Self-service only"
+msgstr "Solo autoservicio"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "La nota que intenta editar ya no existe."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Este usuario solo puede revisar y actualizar el perfil de su propia familia. Los permisos individuales no aplican."
+
+#: 
+msgid "User List"
+msgstr "Lista de usuarios"
+
+#: 
+msgid "View Person"
+msgstr "Ver persona"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "No tiene permiso para agregar una nota a esta familia."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "No tiene permiso para agregar una nota a esta persona."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "No tiene permiso para editar esta nota"
+
+#: 
+msgid "Account locked"
+msgstr "Cuenta bloqueada"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Cuenta bloqueada por demasiados intentos fallidos de inicio de sesión"
+
+#: 
+msgid "Account status"
+msgstr "Estado de la cuenta"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avanzado: elegir una versión de destino específica"
+
+#: 
+msgid "Bug Fix"
+msgstr "Corrección de errores"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "De forma predeterminada, el asistente descarga la siguiente versión recomendada. En su lugar, puede elegir cualquier versión disponible a continuación."
+
+#: 
+msgid "Change required"
+msgstr "Cambio requerido"
+
+#: 
+msgid "Changelog"
+msgstr "Registro de cambios"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Continuar de todas formas"
+
+#: 
+msgid "Could not load release information."
+msgstr "No se pudo cargar la información de la versión."
+
+#: 
+msgid "Download & Install"
+msgstr "Descargar e instalar"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Descargar la versión {{version}} y aplicarla a su instalación."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Descargando versión desde GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Intentos fallidos de inicio de sesión"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Error al obtener la vista previa de la actualización"
+
+#: 
+msgid "Feature"
+msgstr "Funcionalidad"
+
+#: 
+msgid "Full changelog"
+msgstr "Registro de cambios completo"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Instalar versión estable {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Instalando la siguiente versión"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ruta de archivo inválida"
+
+#: 
+msgid "Invalid version format"
+msgstr "Formato de versión inválido"
+
+#: 
+msgid "Last login"
+msgstr "Último inicio de sesión"
+
+#: 
+msgid "Loading release information..."
+msgstr "Cargando información de la versión..."
+
+#: 
+msgid "Locked"
+msgstr "Bloqueada"
+
+#: 
+msgid "Major"
+msgstr "Principal"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Faltan campos requeridos: fullPath y sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Debe cambiar la contraseña"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "No hay notas de versión disponibles para esta versión."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "No hay actualizaciones disponibles para su versión actual."
+
+#: 
+msgid "Password change required"
+msgstr "Cambio de contraseña requerido"
+
+#: 
+msgid "Password status"
+msgstr "Estado de la contraseña"
+
+#: 
+msgid "Re-install current version"
+msgstr "Reinstalar la versión actual"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "La restauración falló y la base de datos puede estar en un estado incompleto. Revise el registro de la aplicación para más detalles, luego restaure una copia de seguridad válida antes de usar el sistema."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Error en la restauración: el archivo de respaldo parece estar incompleto o no es una copia de seguridad SQL válida. La base de datos está ahora en un estado incompleto — restaure una copia de seguridad válida antes de usar el sistema."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Ejecutando versión preliminar"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Mostrar ruta de actualización completa"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "La versión estable más reciente es {{version}}. Puede reinstalarla a continuación."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Esta cuenta está bloqueada debido a demasiados intentos fallidos de inicio de sesión."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Este usuario debe establecer una nueva contraseña la próxima vez que inicie sesión."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "El usuario debe cambiar su contraseña en el próximo inicio de sesión"
+
+#: 
+msgid "User must have Email permission"
+msgstr "El usuario debe tener permiso de correo electrónico"
+
+#: 
+msgid "View release notes"
+msgstr "Ver notas de versión"
+
+#: 
+msgid "What's New"
+msgstr "¿Qué hay de nuevo?"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "¿Qué hay de nuevo en {{version}}?"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Tiene <strong>{{releaseCount}}</strong> versiones de retraso. Esto es lo que ganará:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Está ejecutando una versión preliminar."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Puede continuar con la actualización sin ver las notas de versión."
+
+#: 
+msgid "You're up to date!"
+msgstr "¡Está actualizado!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Se debe seleccionar una persona válida."
+
+#: 
+msgid "Add Donors"
+msgstr "Agregar Donantes"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Agregar a la Lista de Compradores"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Asignar automáticamente números de paleta a todos los donantes de artículos"
+
+#: 
+msgid "Create a new user account"
+msgstr "Crear una nueva cuenta de usuario"
+
+#: 
+msgid "Delete this item?"
+msgstr "¿Eliminar este artículo?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "¿Eliminar este número de paleta?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Editar Comprador"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "El nombre de usuario ya está en uso, ¡por favor seleccione uno diferente!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "¡El nombre de usuario debe tener al menos 3 caracteres!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Administrar Recaudaciones de Fondos"
+
+#: 
+msgid "New User"
+msgstr "Nuevo Usuario"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Por favor seleccione una persona para crear una cuenta de usuario."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Por favor seleccione al menos un comprador para generar los estados de cuenta."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Regresar al Panel de Recaudación de Fondos"
+
+#: 
+msgid "The selected person was not found."
+msgstr "La persona seleccionada no fue encontrada."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Esta acción asignará automáticamente números de paleta a todos los donantes de artículos en esta recaudación de fondos que aún no tengan un número de comprador asignado."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Esta persona ya tiene una cuenta de usuario."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "El usuario debe ser Administrador o tener el permiso de Administrar Recaudaciones de Fondos"
+
+#: 
+msgid "User not found."
+msgstr "Usuario no encontrado."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Seleccione una persona —"
 

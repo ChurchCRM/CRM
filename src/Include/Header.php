@@ -162,6 +162,10 @@ $MenuFirst = 1;
                   ]
               }
           },
+          permissions: {
+              addRecords: <?= json_encode($currentUser->isAddRecordsEnabled()) ?>,
+              editRecords: <?= json_encode($currentUser->isEditRecordsEnabled()) ?>,
+          },
           PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
       });
       // Initialize moment locale if available
@@ -329,7 +333,7 @@ $MenuFirst = 1;
         $colorIndex = crc32($currentUserName) % count($avatarColors);
         $avatarColor = $avatarColors[$colorIndex];
 
-        $photo = new Photo('person', $currentUser->getPersonId());
+        $photo = new Photo('Person', $currentUser->getPersonId());
         $hasUploadedPhoto = $photo->hasUploadedPhoto();
         $personId = $currentUser->getPersonId();
         $avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo';

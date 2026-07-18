@@ -3,11 +3,17 @@
 /**
  * Tests for limited-access users (EditSelf only, no admin permissions).
  *
- * Seed data: user "limited.user" (person ID 4, family 2) has
+ * Seed data: user "limited.user" (person ID 4, family 1 — Campbell) has
  * usr_EditSelf=1 and all other permissions=0.
  * Password: "changeme" (same as admin).
+ *
+ * The exclusive-permission invariant (EditSelf=1 → all module perms = 0) is
+ * enforced at two levels:
+ *   1. PHP model: User::isEditSelfExclusive() suppresses module perms at runtime
+ *   2. DB migration: src/mysql/upgrade/7.4.2-editself-exclusive.sql clears any
+ *      orphaned module permissions left from pre-PR-9016 installations.
  */
-describe("Limited Access User", () => {
+describe("Self-only access — EditSelf account user (limited.user)", () => {
     const limitedUser = "limited.user";
     const limitedPassword = "changeme";
 
@@ -86,7 +92,7 @@ describe("Limited Access User", () => {
     it("Session-based internal API call is blocked with 403", () => {
         // Complements the api-key 403 test: a logged-in browser SESSION for a
         // limited user must also be rejected from internal APIs (AuthMiddleware
-        // hasNoAdminPermissions gate), so they can't pivot via the cookie.
+        // User::isEditSelfExclusive() gate), so they can't pivot via the cookie.
         cy.clearCookies();
         cy.visit("session/begin");
         cy.get("input[name=User]").type(limitedUser);

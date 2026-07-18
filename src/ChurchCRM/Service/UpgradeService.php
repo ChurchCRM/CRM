@@ -139,6 +139,7 @@ class UpgradeService
                 $_SESSION['systemUpdateVersion'] = null;
                 $_SESSION['systemLatestVersion'] = null;
                 unset($_SESSION['ChurchCRMReleases']);
+                unset($_SESSION['ChurchCRMAllStableReleases']);
             } catch (\Exception $e) {
                 // ignore session write failures - not critical
             }

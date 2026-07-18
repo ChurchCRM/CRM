@@ -4,10 +4,10 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
-use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\ManageFundraisersRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -39,12 +39,12 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/fundraisers",
-     *     summary="List all fundraisers (Finance role required)",
+     *     summary="List all fundraisers (Manage Fundraisers role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(response=200, description="Array of fundraiser objects"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Finance role required")
+     *     @OA\Response(response=403, description="Manage Fundraisers role required")
      * )
      */
     $group->get('', function (Request $request, Response $response, array $args): Response {
@@ -63,7 +63,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Post(
      *     path="/fundraisers",
-     *     summary="Create a new fundraiser (Finance role required)",
+     *     summary="Create a new fundraiser (Manage Fundraisers role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\RequestBody(required=true,
@@ -77,14 +77,14 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=201, description="Newly created fundraiser object"),
      *     @OA\Response(response=400, description="Validation error"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Finance role required")
+     *     @OA\Response(response=403, description="Manage Fundraisers role required")
      * )
      */
     $group->post('', function (Request $request, Response $response, array $args): Response {
         try {
             $input = (array) $request->getParsedBody();
-            $title = InputUtils::sanitizeText($input['title'] ?? '');
-            $description = InputUtils::sanitizeText($input['description'] ?? '');
+            $title = (string) ($input['title'] ?? '');
+            $description = (string) ($input['description'] ?? '');
             $date = trim((string) ($input['date'] ?? ''));
 
             if ($title === '') {
@@ -112,19 +112,19 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create fundraiser'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['title' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Get(
      *     path="/fundraisers/{id}",
-     *     summary="Get a single fundraiser (Finance role required)",
+     *     summary="Get a single fundraiser (Manage Fundraisers role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Fundraiser object"),
      *     @OA\Response(response=404, description="Fundraiser not found"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Finance role required")
+     *     @OA\Response(response=403, description="Manage Fundraisers role required")
      * )
      */
     $group->get('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -139,7 +139,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Put(
      *     path="/fundraisers/{id}",
-     *     summary="Update a fundraiser (Finance role required)",
+     *     summary="Update a fundraiser (Manage Fundraisers role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
@@ -154,7 +154,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=400, description="Validation error"),
      *     @OA\Response(response=404, description="Fundraiser not found"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Finance role required")
+     *     @OA\Response(response=403, description="Manage Fundraisers role required")
      * )
      */
     $group->put('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -167,7 +167,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             $input = (array) $request->getParsedBody();
 
             if (array_key_exists('title', $input)) {
-                $title = InputUtils::sanitizeText($input['title']);
+                $title = (string) $input['title'];
                 if ($title === '') {
                     return SlimUtils::renderErrorJSON($response, gettext('Title is required'), [], 400);
                 }
@@ -175,7 +175,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             if (array_key_exists('description', $input)) {
-                $fr->setDescription(InputUtils::sanitizeText($input['description']));
+                $fr->setDescription((string) $input['description']);
             }
 
             if (array_key_exists('date', $input)) {
@@ -195,12 +195,12 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update fundraiser'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['title' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Delete(
      *     path="/fundraisers/{id}",
-     *     summary="Delete a fundraiser (Finance role required)",
+     *     summary="Delete a fundraiser (Manage Fundraisers role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
@@ -208,7 +208,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=404, description="Fundraiser not found"),
      *     @OA\Response(response=409, description="Fundraiser still has associated donated items"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Finance role required")
+     *     @OA\Response(response=403, description="Manage Fundraisers role required")
      * )
      */
     $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -242,4 +242,4 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete fundraiser'), [], 500, $e, $request);
         }
     });
-})->add(FinanceRoleAuthMiddleware::class);
+})->add(ManageFundraisersRoleAuthMiddleware::class);

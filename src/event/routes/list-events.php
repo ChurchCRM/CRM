@@ -163,26 +163,33 @@ $app->get('/dashboard', function (Request $request, Response $response) {
             }
         }
 
-        // Monthly averages — eventcounts_evtcnt has no FK relation to events_event
-        // in the schema, so we filter by the event IDs we already loaded above.
+        // Monthly averages — computed in PHP from the per-event counts data
+        // already fetched above. This avoids a separate DB query, and is always
+        // computed regardless of the event-type filter (fixes issue #2509).
+        // Average is taken only over events that have a given count name, so
+        // events without that count name do not dilute the average.
         $averages = [];
         $allMonthEvents = array_merge($currentEvents, $pastEvents);
-        if ($eType !== 'All' && !empty($allMonthEvents[0]['counts'])) {
-            $eventIds = array_column($allMonthEvents, 'id');
-
-            $avgCounts = EventCountsQuery::create()
-                ->filterByEvtcntEventid($eventIds, Criteria::IN)
-                ->addAsColumn('avg_count', 'AVG(evtcnt_countcount)')
-                ->select(['EvtcntCountname', 'avg_count'])
-                ->groupByEvtcntCountid()
-                ->orderByEvtcntCountid()
-                ->find();
-
-            foreach ($avgCounts as $avg) {
-                $averages[] = [
-                    'name'      => $avg['EvtcntCountname'],
-                    'avg_count' => (float) $avg['avg_count'],
-                ];
+        if (!empty($allMonthEvents)) {
+            $countTotals = []; // ['Adults' => ['total' => 60, 'n' => 2], ...]
+            foreach ($allMonthEvents as $evt) {
+                foreach ($evt['counts'] ?? [] as $c) {
+                    $name = $c['name'];
+                    if (!isset($countTotals[$name])) {
+                        $countTotals[$name] = ['total' => 0, 'n' => 0];
+                    }
+                    $countTotals[$name]['total'] += (int) $c['count'];
+                    $countTotals[$name]['n']++;
+                }
+            }
+            ksort($countTotals); // Sort by name for deterministic output across months
+            foreach ($countTotals as $name => $data) {
+                if ($data['n'] > 0) {
+                    $averages[] = [
+                        'name'      => $name,
+                        'avg_count' => $data['total'] / $data['n'],
+                    ];
+                }
             }
         }
 

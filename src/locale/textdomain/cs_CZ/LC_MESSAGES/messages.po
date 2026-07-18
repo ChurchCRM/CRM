@@ -1995,10 +1995,6 @@ msgid "Save Settings"
 msgstr "Uložit nastavení"
 
 #: 
-msgid "Default User Settings"
-msgstr "Výchozí nastavení uživatele"
-
-#: 
 msgid "Permission"
 msgstr "Oprávnení"
 
@@ -2027,18 +2023,6 @@ msgid "Login Name"
 msgstr "Přihlašovací jméno"
 
 #: 
-msgid "Add Records"
-msgstr "Přidávat záznamy"
-
-#: 
-msgid "Edit Records"
-msgstr "Upravovat záznamy"
-
-#: 
-msgid "Delete Records"
-msgstr "Mazat záznamy"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Spravovat vlastnosti a klasifikace"
 
@@ -2049,14 +2033,6 @@ msgstr "Spravovat skupiny a role"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Spravovat příspěvky a finance"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Zobrazovat, přidávat a upravovat poznámky"
-
-#: 
-msgid "Edit Self"
-msgstr "Upravovat sám sebe"
 
 #: 
 msgid "Admin"
@@ -2963,10 +2939,6 @@ msgstr "Přidání dárců do seznamu kupujících"
 #: 
 msgid "Data/Reports"
 msgstr "Data/Sestavy"
-
-#: 
-msgid "Query Menu"
-msgstr "Nabídka dotazů"
 
 #: 
 msgid "Family Properties"
@@ -5581,10 +5553,6 @@ msgid "Permissions"
 msgstr "Oprávnění"
 
 #: 
-msgid "Manage Notes"
-msgstr "Spravovat poznámky"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Shrnutí příslibů podle rodiny"
 
@@ -6482,10 +6450,6 @@ msgstr "Zavřít a obnovit"
 #: 
 msgid "Confirm Deletion"
 msgstr "Potvrdit smazaní"
-
-#: 
-msgid "Create directory permission"
-msgstr "Oprávnění k vytváření adresáře"
 
 #: 
 msgid "Database Only"
@@ -9108,10 +9072,6 @@ msgid "Inactive Groups"
 msgstr "Neaktivní skupiny"
 
 #: 
-msgid "Language & Localization"
-msgstr "Jazyk a lokalizace"
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -9509,10 +9469,6 @@ msgstr "Procházet a vyhledávat benefiční kampaně"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "Procházet fotografie členů sboru"
-
-#: 
-msgid "Buyer Number"
-msgstr "Číslo kupujícího"
 
 #: 
 msgid "Buyers"
@@ -10557,16 +10513,8 @@ msgid "Server Error"
 msgstr "Chyba serveru"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Nastavte oprávnění na Ano, aby noví uživatelé mohli měnit svou aktuální hodnotu."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Nastavte e-mail administrátora pro obnovení hesel a příjem oznámení"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Nastavit výchozí předvolby pro nové uživatelské účty"
 
 #: 
 msgid "Set up"
@@ -10909,10 +10857,6 @@ msgid "— Select type (optional) —"
 msgstr "— Vyberte typ (nepovinné) —"
 
 #: 
-msgid "Active Events"
-msgstr "Aktivní události"
-
-#: 
 msgid "Add Event"
 msgstr "Přidat událost"
 
@@ -11051,10 +10995,6 @@ msgstr "Text poznámky je povinný"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Tuto poznámku může smazat pouze její autor nebo administrátor"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Tuto poznámku může upravit pouze její autor nebo administrátor"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11619,11 +11559,6 @@ msgstr "Tyto hodnoty jsou předvyplněny při vytváření nových rodin. Nechej
 #: 
 msgid "Unit used to measure distance."
 msgstr "Jednotka používaná k měření vzdálenosti."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Uživatelské oprávnění k vytváření adresářů"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12663,10 +12598,6 @@ msgstr "Pouze databáze (.sql) nebo úplný archiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Výchozí počet řádků zobrazených v datových tabulkách. Projeví se při příštím načtení stránky."
 
-#: 
-msgid "Edit own family only"
-msgstr "Upravovat pouze vlastní rodinu"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12679,10 +12610,6 @@ msgstr "Opravování nesprávných nebo neobratných překladů ve vašem jazyce
 #: 
 msgid "Found a bug with translations?"
 msgstr "Našli jste chybu v překladech?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Uděluje všechna oprávnění"
 
 #: 
 msgid "Green"
@@ -14129,22 +14056,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Váš CSV má duplicitní názvy sloupců. Přejmenujte duplicitní sloupce (např. přidejte \"(2)\" k druhému) a nahrajte znovu."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Jste si jisti, že chcete tuto darovanou položku trvale odstranit?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Jste si jisti, že chcete toto číslo licitace trvale odstranit?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Odstranit darovanou položku"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Odstranit číslo licitace"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Neplatný bezpečnostní token. Zkuste to prosím znovu."
 
@@ -14645,10 +14556,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Nemáte oprávnění upravit tuto poznámku."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Soukromá poznámka — viditelná pouze pro tvůrce]"
-
-#: 
 msgid "seconds"
 msgstr "sekund"
 
@@ -15047,10 +14954,6 @@ msgstr "Stáhnout zálohu a pokračovat"
 #: 
 msgid "Downloaded"
 msgstr "Staženo"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Stahování nejnovější verze z GitHubu..."
 
 #: 
 msgid "Duration"
@@ -16274,4 +16177,645 @@ msgstr "— Vyberte zemi —"
 #: 
 msgid "— Select State —"
 msgstr "— Vyberte kraj —"
+
+#: 
+msgid "Account options"
+msgstr "Možnosti účtu"
+
+#: 
+msgid "Register"
+msgstr "Registrovat se"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovenština"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d minulá událost"
+msgstr[1] "%d minulé události"
+msgstr[2] "%d minulých událostí"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% textu rozhraní je přeloženo pro tento jazyk."
+
+#: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
+msgid "Access denied"
+msgstr "Přístup zamítnut"
+
+#: 
+msgid "All times shown in"
+msgstr "Všechny časy zobrazeny v"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Narozeniny a výročí. Výchozí: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Nelze smazat kalendář: stále je k němu přiřazeno %d událost(í). Nejprve je odeberte nebo přeřaďte."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Formát mobilního telefonu"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Běžné kódy formátování (příklady: pátek, 7. března 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Aktuální události"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Formát data a času"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formáty data a času"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Formát výběru data"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Text nápovědy výběru data"
+
+#: 
+msgid "Date Without Year"
+msgstr "Datum bez roku"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Den, 2 číslice"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Den, bez úvodní nuly"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Výchozí: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Výchozí: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Příklad: \"l, j F Y\" vytvoří \"Pátek, 7. března 2025\". Ostatní znaky (mezery, čárky, lomítka) se zobrazí přesně jak jsou napsány."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Formát data pro název souboru"
+
+#: 
+msgid "Fully translated."
+msgstr "Plně přeloženo."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Text nápovědy v polích pro datum. Výchozí: rrrr-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Formát domácího/pracovního telefonu"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Hodina 12h, 2 číslice"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Hodina 12h, bez nuly"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Hodina 24h, 2 číslice"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Zahrnuje časovou složku. Výchozí: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Jazyk a oblast"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Jazyk, časové pásmo, formáty data a telefonu"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalizace a formáty"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Nastavení lokalizace bylo úspěšně uloženo"
+
+#: 
+msgid "Long Date Format"
+msgstr "Dlouhý formát data"
+
+#: 
+msgid "Minutes"
+msgstr "Minuty"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Měsíc a rok"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Měsíc, 2 číslice"
+
+#: 
+msgid "Month, full"
+msgstr "Měsíc, plný název"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Měsíc, bez úvodní nuly"
+
+#: 
+msgid "Month, short"
+msgstr "Měsíc, zkratka"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nenainstalováno na serveru — data a čísla nemusí být správně formátována. Požádejte hostitele o instalaci (např. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Formát PHP pro výběr data. Výchozí: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formáty telefonních čísel"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon s klapkou"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Uložit nastavení lokalizace"
+
+#: 
+msgid "Selected Language"
+msgstr "Vybraný jazyk"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Nelze zkontrolovat podporu národního prostředí serveru (exec je zakázán)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Podporováno — toto národní prostředí je nainstalováno na serveru."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Systémový jazyk, časové pásmo, formáty data/času a telefonních čísel"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Tato pole používají kódy formátování (písmena reprezentující části data). Vyberte předvolbu pod každým polem nebo si vytvořte vlastní pomocí referenční dokumentace. Živý náhled ukazuje přesně jak bude výsledek vypadat. Ponechte prázdné pro použití výchozího nastavení systému."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Takto budou data a telefonní čísla zobrazena v celém systému."
+
+#: 
+msgid "Translation completeness"
+msgstr "Úplnost překladu"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Sledování překladu není pro tento jazyk k dispozici."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Použijte 9 jako zástupný znak pro číslici (např. (999) 999-9999). Ponechte prázdné pro výchozí nastavení systému."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Používá se v názvech exportovaných souborů. Výchozí: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Používá se v sestavách a seznamech členů. Výchozí: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Den v týdnu, plný název"
+
+#: 
+msgid "Weekday, short"
+msgstr "Den v týdnu, zkratka"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Co tyto kódy znamenají?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Rok, 2 číslice"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Rok, 4 číslice"
+
+#: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
+msgid "past"
+msgstr "minulost"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Chorvatština"
+
+#: 
+msgid "%s's Account"
+msgstr "Účet uživatele %s"
+
+#: 
+msgid "Access"
+msgstr "Přístup"
+
+#: 
+msgid "Access level"
+msgstr "Úroveň přístupu"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Správci mají plný přístup ke všem funkcím a datům. Individuální oprávnění se nevztahují."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Všichni uživatelé mohou zobrazovat členy sboru. Toto oprávnění nelze odebrat."
+
+#: 
+msgid "Always granted"
+msgstr "Vždy uděleno"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Může pouze prohlížet a ověřovat vlastní rodinu. Žádný jiný přístup."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Vyberte konkrétní oprávnění níže."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Chcete-li změnit svá oprávnění, kontaktujte správce."
+
+#: 
+msgid "Custom permissions"
+msgstr "Vlastní oprávnění"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Plný přístup – uděluje všechna oprávnění."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Udělit individuální oprávnění:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Pokud potřebujete rozšířený přístup, kontaktujte správce vašeho sboru."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Osoby &amp; Rodiny"
+
+#: 
+msgid "Self-service"
+msgstr "Samoobsluha"
+
+#: 
+msgid "Self-service only"
+msgstr "Pouze samoobsluha"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Poznámka, kterou se pokoušíte upravit, již neexistuje."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Tento uživatel může pouze prohlížet a aktualizovat profil vlastní rodiny. Individuální oprávnění se nevztahují."
+
+#: 
+msgid "User List"
+msgstr "Seznam uživatelů"
+
+#: 
+msgid "View Person"
+msgstr "Zobrazit osobu"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nemáte oprávnění přidat poznámku k této rodině."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nemáte oprávnění přidat poznámku k této osobě."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nemáte oprávnění upravit tuto poznámku"
+
+#: 
+msgid "Account locked"
+msgstr "Účet uzamčen"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Účet uzamčen z důvodu příliš mnoha neúspěšných pokusů o přihlášení"
+
+#: 
+msgid "Account status"
+msgstr "Stav účtu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Pokročilé: zvolte konkrétní cílovou verzi"
+
+#: 
+msgid "Bug Fix"
+msgstr "Oprava chyby"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Ve výchozím nastavení průvodce stáhne další doporučenou verzi. Níže si můžete vybrat libovolnou dostupnou verzi."
+
+#: 
+msgid "Change required"
+msgstr "Změna vyžadována"
+
+#: 
+msgid "Changelog"
+msgstr "Seznam změn"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Přesto pokračovat"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nepodařilo se načíst informace o vydání."
+
+#: 
+msgid "Download & Install"
+msgstr "Stáhnout a nainstalovat"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Stáhnout verzi {{version}} a použít ji na vaší instalaci."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Stahuji vydání z GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Neúspěšné pokusy o přihlášení"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nepodařilo se načíst náhled aktualizace"
+
+#: 
+msgid "Feature"
+msgstr "Funkce"
+
+#: 
+msgid "Full changelog"
+msgstr "Úplný seznam změn"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Nainstalovat stabilní {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Instalace dalšího vydání"
+
+#: 
+msgid "Invalid file path"
+msgstr "Neplatná cesta k souboru"
+
+#: 
+msgid "Invalid version format"
+msgstr "Neplatný formát verze"
+
+#: 
+msgid "Last login"
+msgstr "Poslední přihlášení"
+
+#: 
+msgid "Loading release information..."
+msgstr "Načítám informace o vydání..."
+
+#: 
+msgid "Locked"
+msgstr "Uzamčeno"
+
+#: 
+msgid "Major"
+msgstr "Hlavní"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Chybějící povinná pole: fullPath a sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Musí změnit heslo"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Pro tuto verzi nejsou k dispozici žádné poznámky k vydání."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Pro vaši aktuální verzi nejsou k dispozici žádné aktualizace."
+
+#: 
+msgid "Password change required"
+msgstr "Změna hesla vyžadována"
+
+#: 
+msgid "Password status"
+msgstr "Stav hesla"
+
+#: 
+msgid "Re-install current version"
+msgstr "Přeinstalovat aktuální verzi"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Obnovení selhalo a databáze může být v neúplném stavu. Zkontrolujte protokol aplikace, poté obnovte ze zálohy o které víte, že je funkční, než budete systém používat."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Obnovení selhalo: záložní soubor je zřejmě neúplný nebo se nejedná o platnou zálohu SQL. Databáze je nyní v neúplném stavu — obnovte funkční zálohu před použitím systému."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Spuštěna předběžná verze"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Zobrazit celou cestu aktualizace"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Nejnovější stabilní vydání je {{version}}. Níže jej můžete přeinstalovat."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tento účet je uzamčen z důvodu příliš mnoha neúspěšných pokusů o přihlášení."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tento uživatel musí nastavit nové heslo při příštím přihlášení."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Uživatel musí změnit heslo při příštím přihlášení"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Uživatel musí mít oprávnění pro e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Zobrazit poznámky k vydání"
+
+#: 
+msgid "What's New"
+msgstr "Co je nového"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Co je nového ve verzi {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Jste pozadu o <strong>{{releaseCount}}</strong> vydání. Zde je, co získáte:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Spouštíte předběžnou verzi."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Stále můžete pokračovat v aktualizaci bez zobrazení poznámek k vydání."
+
+#: 
+msgid "You're up to date!"
+msgstr "Máte aktuální verzi!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Musí být vybrána platná osoba."
+
+#: 
+msgid "Add Donors"
+msgstr "Přidat dárce"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Přidat do seznamu kupujících"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Automaticky přiřadit čísla pádel všem dárcům položek"
+
+#: 
+msgid "Create a new user account"
+msgstr "Vytvořit nový uživatelský účet"
+
+#: 
+msgid "Delete this item?"
+msgstr "Smazat tuto položku?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Smazat toto číslo pádla?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Upravit kupujícího"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Přihlašovací jméno je již použito, prosím vyberte jiné!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Přihlašovací jméno musí mít alespoň 3 znaky!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Správa fundraisingů"
+
+#: 
+msgid "New User"
+msgstr "Nový uživatel"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Prosím vyberte osobu, pro kterou chcete vytvořit uživatelský účet."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Prosím vyberte alespoň jednoho kupujícího pro generování výpisů."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Zpět na přehled fundraisingu"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Vybraná osoba nebyla nalezena."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Tato akce automaticky přiřadí čísla pádel všem dárcům položek v tomto fundraisingu, kteří ještě nemají přiřazeno číslo kupujícího."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Tato osoba již má uživatelský účet."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Uživatel musí být správce nebo mít oprávnění Správa fundraisingů"
+
+#: 
+msgid "User not found."
+msgstr "Uživatel nebyl nalezen."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Vyberte osobu —"
 

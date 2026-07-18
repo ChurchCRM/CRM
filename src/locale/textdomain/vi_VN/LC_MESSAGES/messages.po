@@ -2008,10 +2008,6 @@ msgid "Save Settings"
 msgstr "Lưu thay đổi"
 
 #: 
-msgid "Default User Settings"
-msgstr "Cài đặt mặc định thành viên"
-
-#: 
 msgid "Permission"
 msgstr "Quyền hạn"
 
@@ -2040,18 +2036,6 @@ msgid "Login Name"
 msgstr "Tên đăng nhập"
 
 #: 
-msgid "Add Records"
-msgstr "Thêm bản ghi"
-
-#: 
-msgid "Edit Records"
-msgstr "Chỉnh sửa bản ghi"
-
-#: 
-msgid "Delete Records"
-msgstr "Xóa bản ghi"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Quản lý thuộc tính và phân loại"
 
@@ -2062,14 +2046,6 @@ msgstr "Quản lý Nhóm và Vai trò"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Quản lý các khoản đóng góp và tài chính"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Xem, thêm và chỉnh sửa ghi chú"
-
-#: 
-msgid "Edit Self"
-msgstr "Chỉnh sửa bản thân"
 
 #: 
 msgid "Admin"
@@ -2979,10 +2955,6 @@ msgstr "Thêm nhà tài trợ vào danh sách người mua"
 #: 
 msgid "Data/Reports"
 msgstr "Dữ liệu/Báo cáo"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu truy vấn"
 
 #: 
 msgid "Family Properties"
@@ -5595,10 +5567,6 @@ msgid "Permissions"
 msgstr "Quyền"
 
 #: 
-msgid "Manage Notes"
-msgstr "Quản lý ghi chú"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Tóm tắt cam kết theo gia đình"
 
@@ -6492,10 +6460,6 @@ msgstr "Đóng & Làm mới"
 #: 
 msgid "Confirm Deletion"
 msgstr "Xác nhận xóa"
-
-#: 
-msgid "Create directory permission"
-msgstr "Quyền tạo thư mục"
 
 #: 
 msgid "Database Only"
@@ -9108,10 +9072,6 @@ msgid "Inactive Groups"
 msgstr "Nhóm không hoạt động"
 
 #: 
-msgid "Language & Localization"
-msgstr "Ngôn ngữ & Bản địa hóa"
-
-#: 
 msgid "Map"
 msgstr "Bản đồ"
 
@@ -9507,10 +9467,6 @@ msgstr "Duyet va tim kiem cac chien dich gay quy"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "Duyet anh cua cac thanh vien giao xu"
-
-#: 
-msgid "Buyer Number"
-msgstr "So nguoi mua"
 
 #: 
 msgid "Buyers"
@@ -10555,16 +10511,8 @@ msgid "Server Error"
 msgstr "Loi may chu"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Dat Quyen la Dung de cho nguoi dung moi co kha nang thay doi gia tri hien tai cua ho."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Dat email quan tri vien de ban co the dat lai mat khau va nhan thong bao"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Dat tuy chon mac dinh cho tai khoan nguoi dung moi"
 
 #: 
 msgid "Set up"
@@ -10907,10 +10855,6 @@ msgid "— Select type (optional) —"
 msgstr "— Chon loai (tuy chon) —"
 
 #: 
-msgid "Active Events"
-msgstr "Su kien dang hoat dong"
-
-#: 
 msgid "Add Event"
 msgstr "Them su kien"
 
@@ -11049,10 +10993,6 @@ msgstr "Noi dung ghi chu la bat buoc"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Chi tac gia ghi chu hoac quan tri vien moi co the xoa ghi chu nay"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Chi tac gia ghi chu hoac quan tri vien moi co the chinh sua ghi chu nay"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11617,11 +11557,6 @@ msgstr "Các giá trị này được điền sẵn khi tạo gia đình mới. 
 #: 
 msgid "Unit used to measure distance."
 msgstr "Đơn vị dùng để đo khoảng cách."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Quyền người dùng để tạo thư mục"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12661,10 +12596,6 @@ msgstr "Chỉ cơ sở dữ liệu (.sql) hoặc lưu trữ đầy đủ (.tar.g
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Số hàng mặc định hiển thị trong bảng dữ liệu. Có hiệu lực khi tải trang tiếp theo."
 
-#: 
-msgid "Edit own family only"
-msgstr "Chỉ chỉnh sửa gia đình của mình"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12677,10 +12608,6 @@ msgstr "Sửa các bản dịch không chính xác hoặc lạ trong ngôn ngữ
 #: 
 msgid "Found a bug with translations?"
 msgstr "Phát hiện lỗi trong bản dịch?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Cấp tất cả quyền hạn"
 
 #: 
 msgid "Green"
@@ -14125,22 +14052,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV của bạn có tên cột trùng lặp. Đổi tên các cột trùng lặp (ví dụ: thêm \"(2)\" vào cột thứ hai) và tải lên lại."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn vật phẩm được quyên góp này không?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn số mái chèo này không?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Xóa vật phẩm được quyên góp"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Xóa số mái chèo"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Mã thông báo bảo mật không hợp lệ. Vui lòng thử lại."
 
@@ -14641,10 +14552,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Bạn không có quyền chỉnh sửa ghi chú này."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Ghi Chú Riêng Tư — chỉ người tạo mới thấy]"
-
-#: 
 msgid "seconds"
 msgstr "giây"
 
@@ -15043,10 +14950,6 @@ msgstr "Tai sao luu va tiep tuc"
 #: 
 msgid "Downloaded"
 msgstr "Đã tải xuống"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Đang tải xuống phiên bản mới nhất từ GitHub..."
 
 #: 
 msgid "Duration"
@@ -16270,4 +16173,643 @@ msgstr "— Chọn quốc gia —"
 #: 
 msgid "— Select State —"
 msgstr "— Chọn tỉnh/thành phố —"
+
+#: 
+msgid "Account options"
+msgstr "Tùy chọn tài khoản"
+
+#: 
+msgid "Register"
+msgstr "Đăng ký"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakia"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d sự kiện trong quá khứ"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% văn bản giao diện đã được dịch cho ngôn ngữ này."
+
+#: 
+msgid "AM / PM"
+msgstr "SA / CH"
+
+#: 
+msgid "Access denied"
+msgstr "Từ chối truy cập"
+
+#: 
+msgid "All times shown in"
+msgstr "Tất cả thời gian hiển thị theo"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Sinh nhật và kỷ niệm. Mặc định: n/g"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Không thể xóa lịch: %d sự kiện vẫn được gán cho nó. Hãy xóa hoặc gán lại trước."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Định dạng điện thoại di động"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Mã định dạng thông thường (ví dụ: Thứ Sáu, 7 tháng 3 năm 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Sự kiện hiện tại"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Định dạng ngày giờ"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Các định dạng ngày giờ"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Định dạng chọn ngày"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Văn bản gợi ý chọn ngày"
+
+#: 
+msgid "Date Without Year"
+msgstr "Ngày không có năm"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Ngày, 2 chữ số"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Ngày, không có số 0 đứng đầu"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Mặc định: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Mặc định: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Ví dụ: \"l, j F Y\" tạo ra \"Thứ Sáu, 7 Tháng Ba 2025\". Mọi ký tự khác (khoảng trắng, dấu phẩy, dấu gạch chéo) xuất hiện như đã nhập."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Định dạng ngày trong tên tệp"
+
+#: 
+msgid "Fully translated."
+msgstr "Đã dịch đầy đủ."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Văn bản gợi ý trong các trường ngày. Mặc định: nnnn-tt-nn"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Định dạng điện thoại nhà/công ty"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Giờ 12h, 2 chữ số"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Giờ 12h, không có số 0"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Giờ 24h, 2 chữ số"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Bao gồm thành phần giờ. Mặc định: n/g/N g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Ngôn ngữ và khu vực"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Ngôn ngữ, múi giờ, định dạng ngày và điện thoại"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Bản địa hóa và định dạng"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Cài đặt bản địa hóa đã được lưu thành công"
+
+#: 
+msgid "Long Date Format"
+msgstr "Định dạng ngày dài"
+
+#: 
+msgid "Minutes"
+msgstr "Phút"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Tháng và năm"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Tháng, 2 chữ số"
+
+#: 
+msgid "Month, full"
+msgstr "Tháng, tên đầy đủ"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Tháng, không có số 0 đứng đầu"
+
+#: 
+msgid "Month, short"
+msgstr "Tháng, viết tắt"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Chưa được cài đặt trên máy chủ — ngày và số có thể không được định dạng đúng. Hãy yêu cầu nhà cung cấp cài đặt (ví dụ: locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Định dạng PHP cho bộ chọn ngày. Mặc định: N-t-n"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Định dạng số điện thoại"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Điện thoại có số nhánh"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Lưu cài đặt bản địa hóa"
+
+#: 
+msgid "Selected Language"
+msgstr "Ngôn ngữ đã chọn"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Không thể kiểm tra hỗ trợ ngôn ngữ địa phương của máy chủ (exec bị vô hiệu hóa)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Được hỗ trợ — ngôn ngữ địa phương này đã được cài đặt trên máy chủ."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Ngôn ngữ hệ thống, múi giờ, định dạng ngày/giờ và định dạng số điện thoại"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Các trường này sử dụng mã định dạng (các chữ cái đại diện cho các phần của ngày tháng). Chọn cài đặt sẵn bên dưới mỗi trường hoặc tự tạo theo tài liệu tham khảo. Xem trước trực tiếp cho thấy chính xác giao diện. Để trống để sử dụng mặc định hệ thống."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Đây là cách ngày tháng và số điện thoại sẽ hiển thị trong toàn hệ thống."
+
+#: 
+msgid "Translation completeness"
+msgstr "Mức độ hoàn chỉnh của bản dịch"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Theo dõi bản dịch không khả dụng cho ngôn ngữ này."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Dùng 9 làm ký tự giữ chỗ cho chữ số (ví dụ: (999) 999-9999). Để trống để sử dụng mặc định hệ thống."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Dùng trong tên tệp xuất. Mặc định: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Dùng trong báo cáo và danh sách thành viên. Mặc định: n/g/N"
+
+#: 
+msgid "Weekday, full"
+msgstr "Ngày trong tuần, tên đầy đủ"
+
+#: 
+msgid "Weekday, short"
+msgstr "Ngày trong tuần, viết tắt"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Các mã này có nghĩa là gì?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Năm, 2 chữ số"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Năm, 4 chữ số"
+
+#: 
+msgid "am / pm"
+msgstr "sa / ch"
+
+#: 
+msgid "past"
+msgstr "quá khứ"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Tiếng Croatia"
+
+#: 
+msgid "%s's Account"
+msgstr "Tài khoản của %s"
+
+#: 
+msgid "Access"
+msgstr "Quyền truy cập"
+
+#: 
+msgid "Access level"
+msgstr "Cấp độ truy cập"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Quản trị viên có toàn quyền truy cập vào tất cả các tính năng và dữ liệu. Quyền riêng lẻ không áp dụng."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Tất cả người dùng có thể xem danh sách hội viên. Quyền này không thể xóa bỏ."
+
+#: 
+msgid "Always granted"
+msgstr "Luôn được cấp"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Chỉ có thể xem xét và xác nhận thông tin gia đình của mình. Không có quyền truy cập nào khác."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Chọn các quyền cụ thể bên dưới."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Liên hệ quản trị viên để thay đổi quyền của bạn."
+
+#: 
+msgid "Custom permissions"
+msgstr "Quyền tùy chỉnh"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Toàn quyền truy cập — cấp tất cả các đặc quyền."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Cấp quyền riêng lẻ:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Nếu bạn cần quyền truy cập bổ sung, vui lòng liên hệ quản trị viên hội thánh của bạn."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Cá nhân &amp; Gia đình"
+
+#: 
+msgid "Self-service"
+msgstr "Tự phục vụ"
+
+#: 
+msgid "Self-service only"
+msgstr "Chỉ tự phục vụ"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Ghi chú bạn đang cố chỉnh sửa không còn tồn tại."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Người dùng này chỉ có thể xem xét và cập nhật hồ sơ gia đình của mình. Quyền riêng lẻ không áp dụng."
+
+#: 
+msgid "User List"
+msgstr "Danh sách người dùng"
+
+#: 
+msgid "View Person"
+msgstr "Xem thông tin cá nhân"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Bạn không có quyền thêm ghi chú cho gia đình này."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Bạn không có quyền thêm ghi chú cho người này."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Bạn không có quyền chỉnh sửa ghi chú này"
+
+#: 
+msgid "Account locked"
+msgstr "Tài khoản bị khóa"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Tài khoản bị khóa do quá nhiều lần đăng nhập thất bại"
+
+#: 
+msgid "Account status"
+msgstr "Trạng thái tài khoản"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Nâng cao: chọn phiên bản đích cụ thể"
+
+#: 
+msgid "Bug Fix"
+msgstr "Sửa lỗi"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Theo mặc định, trình hướng dẫn tải xuống bản phát hành được đề xuất tiếp theo. Bạn có thể chọn bất kỳ phiên bản nào có sẵn bên dưới."
+
+#: 
+msgid "Change required"
+msgstr "Yêu cầu thay đổi"
+
+#: 
+msgid "Changelog"
+msgstr "Nhật ký thay đổi"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Tiếp tục dù sao"
+
+#: 
+msgid "Could not load release information."
+msgstr "Không thể tải thông tin bản phát hành."
+
+#: 
+msgid "Download & Install"
+msgstr "Tải xuống & Cài đặt"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Tải xuống phiên bản {{version}} và áp dụng cho cài đặt của bạn."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Đang tải xuống bản phát hành từ GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Số lần đăng nhập thất bại"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Không thể lấy bản xem trước nâng cấp"
+
+#: 
+msgid "Feature"
+msgstr "Tính năng"
+
+#: 
+msgid "Full changelog"
+msgstr "Nhật ký thay đổi đầy đủ"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Cài đặt phiên bản ổn định {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Đang cài đặt bản phát hành tiếp theo"
+
+#: 
+msgid "Invalid file path"
+msgstr "Đường dẫn tệp không hợp lệ"
+
+#: 
+msgid "Invalid version format"
+msgstr "Định dạng phiên bản không hợp lệ"
+
+#: 
+msgid "Last login"
+msgstr "Đăng nhập lần cuối"
+
+#: 
+msgid "Loading release information..."
+msgstr "Đang tải thông tin bản phát hành..."
+
+#: 
+msgid "Locked"
+msgstr "Đã khóa"
+
+#: 
+msgid "Major"
+msgstr "Chính"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Thiếu các trường bắt buộc: fullPath và SHA1 Hash"
+
+#: 
+msgid "Must change password"
+msgstr "Phải đổi mật khẩu"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Không có ghi chú phát hành cho phiên bản này."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Không có bản nâng cấp nào cho phiên bản hiện tại của bạn."
+
+#: 
+msgid "Password change required"
+msgstr "Yêu cầu đổi mật khẩu"
+
+#: 
+msgid "Password status"
+msgstr "Trạng thái mật khẩu"
+
+#: 
+msgid "Re-install current version"
+msgstr "Cài đặt lại phiên bản hiện tại"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Khôi phục thất bại và cơ sở dữ liệu có thể ở trạng thái không hoàn chỉnh. Kiểm tra nhật ký ứng dụng để biết chi tiết, sau đó khôi phục bản sao lưu tốt đã biết trước khi sử dụng hệ thống."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Khôi phục thất bại: tệp sao lưu có vẻ không đầy đủ hoặc không phải là bản sao lưu SQL hợp lệ. Cơ sở dữ liệu hiện ở trạng thái không hoàn chỉnh — hãy khôi phục bản sao lưu tốt đã biết trước khi sử dụng hệ thống."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Đang chạy bản Tiền phát hành"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Hiển thị toàn bộ lộ trình nâng cấp"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Bản phát hành ổn định mới nhất là {{version}}. Bạn có thể cài đặt lại bên dưới."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tài khoản này bị khóa do quá nhiều lần đăng nhập thất bại."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Người dùng này phải đặt mật khẩu mới vào lần đăng nhập tiếp theo."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Người dùng phải đổi mật khẩu khi đăng nhập tiếp theo"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Người dùng phải có quyền Email"
+
+#: 
+msgid "View release notes"
+msgstr "Xem ghi chú phát hành"
+
+#: 
+msgid "What's New"
+msgstr "Có gì mới"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Có gì mới trong {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Bạn đang chậm <strong>{{releaseCount}}</strong> bản phát hành. Đây là những gì bạn sẽ nhận được:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Bạn đang chạy phiên bản tiền phát hành."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Bạn vẫn có thể tiếp tục nâng cấp mà không cần xem ghi chú phát hành."
+
+#: 
+msgid "You're up to date!"
+msgstr "Bạn đã cập nhật!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Phải chọn một người hợp lệ."
+
+#: 
+msgid "Add Donors"
+msgstr "Thêm Người Dâng Hiến"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Thêm vào Danh Sách Người Mua"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tự động gán số mái chèo cho tất cả người dâng hiến vật phẩm"
+
+#: 
+msgid "Create a new user account"
+msgstr "Tạo tài khoản người dùng mới"
+
+#: 
+msgid "Delete this item?"
+msgstr "Xóa mục này?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Xóa số mái chèo này?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Chỉnh Sửa Người Mua"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Tên đăng nhập đã được sử dụng, vui lòng chọn tên đăng nhập khác!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Tên đăng nhập phải có ít nhất 3 ký tự!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Quản Lý Gây Quỹ"
+
+#: 
+msgid "New User"
+msgstr "Người Dùng Mới"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Vui lòng chọn một người để tạo tài khoản người dùng."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Vui lòng chọn ít nhất một người mua để tạo bảng kê."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Quay Lại Bảng Điều Khiển Gây Quỹ"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Không tìm thấy người được chọn."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Hành động này sẽ tự động thêm số mái chèo cho tất cả người dâng hiến vật phẩm trong chương trình gây quỹ này mà chưa được gán số người mua."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Người này đã có tài khoản người dùng."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Người dùng phải là Quản trị viên hoặc có quyền Quản Lý Gây Quỹ"
+
+#: 
+msgid "User not found."
+msgstr "Không tìm thấy người dùng."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Chọn một người —"
 

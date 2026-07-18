@@ -10,6 +10,15 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.4.3](./changelog/7.4.3.md) | July 2026 | ChurchCRM 7.4.3 streamlines privacy, settings, and performance for faster ministry operations
+
+Locked profile media privacy, removed redundant user permission checkboxes, modernized user editor backend, faster fundraiser page loads, improved translations for 42 languages |
+| [7.4.2](./changelog/7.4.2.md) | July 2026 | ChurchCRM 7.4.2 modernizes legacy migrations and tightens user permissions
+
+Flawless ChurchInfo 1.3.1 imports with auto MD5 password upgrades, consolidated upgrade wizard with 29 steps reduced to one, permission-aware UI hiding unauthorized menu items, strict finance page access controls, new user status and password audit column for admins |
+| [7.4.1](./changelog/7.4.1.md) | July 2026 | ChurchCRM 7.4.1 enhances security and simplifies user management with clearer permissions
+
+Clearer permission labels, intelligent button hiding based on user access, EditSelf mode disabled by default, fixed user deletion bugs, airtight notes protection, Croatian language support added |
 | [7.4.0](./changelog/7.4.0.md) | June 2026 | ChurchCRM 7.4.0 refines security and improves user experience with UI enhancements
 
 Redesigned single-card login interface, enhanced password reset security with cryptographic tokens, export controls limited to administrators, Slovak language support added, Docker images now run as non-root user |

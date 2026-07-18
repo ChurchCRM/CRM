@@ -2045,10 +2045,6 @@ msgid "Save Settings"
 msgstr "保存设置"
 
 #: 
-msgid "Default User Settings"
-msgstr "默认用户设置"
-
-#: 
 msgid "Permission"
 msgstr "允许"
 
@@ -2081,21 +2077,6 @@ msgstr "登录用户名"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "添加记录"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "编辑记录"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "删除记录"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "管理属性和分类"
 
@@ -2108,16 +2089,6 @@ msgstr "管理组和角色"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "管理捐款和金融"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "查看，添加和编辑备注"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "编辑自"
 
 #: 
 #, fuzzy
@@ -3045,10 +3016,6 @@ msgstr "将捐赠者添加到买方名单"
 #: 
 msgid "Data/Reports"
 msgstr "数据/报告"
-
-#: 
-msgid "Query Menu"
-msgstr "查询菜单"
 
 #: 
 msgid "Family Properties"
@@ -5671,10 +5638,6 @@ msgid "Permissions"
 msgstr "权限"
 
 #: 
-msgid "Manage Notes"
-msgstr "管理笔记"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "家庭认捐总结"
 
@@ -6568,10 +6531,6 @@ msgstr "关闭并刷新"
 #: 
 msgid "Confirm Deletion"
 msgstr "确认删除"
-
-#: 
-msgid "Create directory permission"
-msgstr "创建目录权限"
 
 #: 
 msgid "Database Only"
@@ -9184,10 +9143,6 @@ msgid "Inactive Groups"
 msgstr "非活跃小组"
 
 #: 
-msgid "Language & Localization"
-msgstr "语言和本地化"
-
-#: 
 msgid "Map"
 msgstr "地图"
 
@@ -9583,10 +9538,6 @@ msgstr "浏览并搜索筹款活动"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "浏览会众成员的照片"
-
-#: 
-msgid "Buyer Number"
-msgstr "买家号码"
 
 #: 
 msgid "Buyers"
@@ -10631,16 +10582,8 @@ msgid "Server Error"
 msgstr "服务器错误"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "将权限设为\"是\"以允许新用户更改其当前值。"
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "设置管理员邮箱以便重置密码和接收通知"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "设置新用户账户的默认偏好"
 
 #: 
 msgid "Set up"
@@ -10983,10 +10926,6 @@ msgid "— Select type (optional) —"
 msgstr "— 选择类型（可选）—"
 
 #: 
-msgid "Active Events"
-msgstr "进行中的活动"
-
-#: 
 msgid "Add Event"
 msgstr "添加活动"
 
@@ -11125,10 +11064,6 @@ msgstr "备注内容为必填项"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "只有备注作者或管理员才能删除此备注"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "只有备注作者或管理员才能编辑此备注"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11693,11 +11628,6 @@ msgstr "创建新家庭时，这些值会预先填充。留空以要求手动输
 #: 
 msgid "Unit used to measure distance."
 msgstr "用于测量距离的单位。"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "用户权限以创建目录"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12737,10 +12667,6 @@ msgstr "仅数据库（.sql）或完整存档（.tar.gz）"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "数据表中默认显示的行数。在下次页面加载时生效。"
 
-#: 
-msgid "Edit own family only"
-msgstr "仅编辑自己的家庭信息"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12753,10 +12679,6 @@ msgstr "修正您语言中不正确或不自然的翻译"
 #: 
 msgid "Found a bug with translations?"
 msgstr "发现翻译错误？"
-
-#: 
-msgid "Grants all privileges"
-msgstr "授予所有权限"
 
 #: 
 msgid "Green"
@@ -14201,22 +14123,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "您的 CSV 文件中存在重复的列名。请重命名重复的列（例如在第二个列名后添加「(2)」），然后重新上传。"
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "您确定要永久删除此捐赠物品吗？"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "您确定要永久删除此竞拍号吗？"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "删除捐赠物品"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "删除竞拍号"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "安全令牌无效。请重试。"
 
@@ -14717,10 +14623,6 @@ msgid "You do not have permission to edit this note."
 msgstr "您没有权限编辑此备注。"
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[私人备注 — 仅创建者可见]"
-
-#: 
 msgid "seconds"
 msgstr "秒"
 
@@ -15119,10 +15021,6 @@ msgstr "下载备份并继续"
 #: 
 msgid "Downloaded"
 msgstr "已下载"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "正在从 GitHub 下载最新版本..."
 
 #: 
 msgid "Duration"
@@ -16346,4 +16244,643 @@ msgstr "— 选择国家 —"
 #: 
 msgid "— Select State —"
 msgstr "— 选择省/自治区 —"
+
+#: 
+msgid "Account options"
+msgstr "账户选项"
+
+#: 
+msgid "Register"
+msgstr "注册"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "斯洛伐克语"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d个过去的事件"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "此语言的界面文本已翻译 %d%%。"
+
+#: 
+msgid "AM / PM"
+msgstr "上午 / 下午"
+
+#: 
+msgid "Access denied"
+msgstr "访问被拒绝"
+
+#: 
+msgid "All times shown in"
+msgstr "所有时间显示为"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "生日和纪念日。默认：月/日"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "无法删除日历：%d 个事件仍分配到此日历。请先删除或重新分配。"
+
+#: 
+msgid "Cell Phone Format"
+msgstr "手机号码格式"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "常见格式代码（示例：2025年3月7日 星期五 下午3:09）"
+
+#: 
+msgid "Current Events"
+msgstr "当前事件"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "日期和时间格式"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "日期和时间格式"
+
+#: 
+msgid "Date Picker Format"
+msgstr "日期选择器格式"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "日期选择器占位符"
+
+#: 
+msgid "Date Without Year"
+msgstr "不含年份的日期"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "日，2位数字"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "日，无前导零"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "默认：(999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "默认：(999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "示例：\"l, j F Y\" 生成 \"Friday, 7 March 2025\"。其他字符（空格、逗号、斜杠）将原样显示。"
+
+#: 
+msgid "Filename Date Format"
+msgstr "文件名日期格式"
+
+#: 
+msgid "Fully translated."
+msgstr "已完全翻译。"
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "日期输入框中的提示文本。默认：yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "家庭/工作电话格式"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "12小时制，2位数字"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "12小时制，无前导零"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "24小时制，2位数字"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "包含时间组件。默认：月/日/年 时:分 上午/下午"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "语言和地区"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "语言、时区、日期和电话格式"
+
+#: 
+msgid "Localization & Formats"
+msgstr "本地化和格式"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "本地化设置保存成功"
+
+#: 
+msgid "Long Date Format"
+msgstr "长日期格式"
+
+#: 
+msgid "Minutes"
+msgstr "分钟"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "月份和年份"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "月，2位数字"
+
+#: 
+msgid "Month, full"
+msgstr "月，完整名称"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "月，无前导零"
+
+#: 
+msgid "Month, short"
+msgstr "月，缩写"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "未安装在服务器上 — 此区域设置的日期和数字可能无法正确格式化。请联系主机安装（例如 locale-gen）。"
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "日期选择器的 PHP 格式。默认：Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "电话号码格式"
+
+#: 
+msgid "Phone with Extension"
+msgstr "带分机的电话"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "保存本地化设置"
+
+#: 
+msgid "Selected Language"
+msgstr "已选语言"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "无法检查服务器区域设置支持（exec 已禁用）。"
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "支持 — 此区域设置已安装在服务器上。"
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "系统语言、时区、日期/时间格式和电话号码格式"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "这些字段使用格式代码（代表日期各部分的字母）。在每个字段下方选择预设，或使用参考资料自定义。实时预览显示确切效果。留空则使用系统默认值。"
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "这就是日期和电话号码在整个系统中的显示方式。"
+
+#: 
+msgid "Translation completeness"
+msgstr "翻译完整性"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "此语言不支持翻译跟踪。"
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "使用 9 作为数字占位符（例如 (999) 999-9999）。留空则使用系统默认值。"
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "用于导出的文件名。默认：Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "用于报告和成员列表。默认：月/日/年"
+
+#: 
+msgid "Weekday, full"
+msgstr "星期几，完整名称"
+
+#: 
+msgid "Weekday, short"
+msgstr "星期几，缩写"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "这些代码是什么意思？"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "年，2位数字"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "年，4位数字"
+
+#: 
+msgid "am / pm"
+msgstr "上午 / 下午"
+
+#: 
+msgid "past"
+msgstr "过去"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "克罗地亚语"
+
+#: 
+msgid "%s's Account"
+msgstr "%s的账户"
+
+#: 
+msgid "Access"
+msgstr "访问权限"
+
+#: 
+msgid "Access level"
+msgstr "访问级别"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "管理员可完全访问所有功能和数据，个人权限设置不适用。"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "所有用户均可查看会众成员，此权限不可移除。"
+
+#: 
+msgid "Always granted"
+msgstr "始终授予"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "只能查看和核实自己的家庭信息，无其他访问权限。"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "请在下方选择具体权限。"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "请联系管理员更改您的权限。"
+
+#: 
+msgid "Custom permissions"
+msgstr "自定义权限"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "完全访问——授予所有权限。"
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "授予个人权限："
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "如需更多访问权限，请联系您的教会管理员。"
+
+#: 
+msgid "People &amp; Families"
+msgstr "人员与家庭"
+
+#: 
+msgid "Self-service"
+msgstr "自助服务"
+
+#: 
+msgid "Self-service only"
+msgstr "仅限自助服务"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "您尝试编辑的备注已不存在。"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "此用户只能查看和更新自己的家庭档案，个人权限设置不适用。"
+
+#: 
+msgid "User List"
+msgstr "用户列表"
+
+#: 
+msgid "View Person"
+msgstr "查看人员"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "您没有权限为此家庭添加备注。"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "您没有权限为此人添加备注。"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "您没有权限编辑此备注"
+
+#: 
+msgid "Account locked"
+msgstr "账户已锁定"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "由于登录失败次数过多，账户已被锁定"
+
+#: 
+msgid "Account status"
+msgstr "账户状态"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "高级：选择特定目标版本"
+
+#: 
+msgid "Bug Fix"
+msgstr "错误修复"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "默认情况下，向导会下载下一个推荐版本。您也可以在下方选择任意可用版本。"
+
+#: 
+msgid "Change required"
+msgstr "需要更改"
+
+#: 
+msgid "Changelog"
+msgstr "更新日志"
+
+#: 
+msgid "Continue Anyway"
+msgstr "仍然继续"
+
+#: 
+msgid "Could not load release information."
+msgstr "无法加载版本信息。"
+
+#: 
+msgid "Download & Install"
+msgstr "下载并安装"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "下载版本 {{version}} 并应用到您的安装。"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "正在从 GitHub 下载版本……"
+
+#: 
+msgid "Failed login attempts"
+msgstr "登录失败次数"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "获取升级预览失败"
+
+#: 
+msgid "Feature"
+msgstr "新功能"
+
+#: 
+msgid "Full changelog"
+msgstr "完整更新日志"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "安装稳定版 {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "正在安装下一个版本"
+
+#: 
+msgid "Invalid file path"
+msgstr "无效的文件路径"
+
+#: 
+msgid "Invalid version format"
+msgstr "无效的版本格式"
+
+#: 
+msgid "Last login"
+msgstr "上次登录"
+
+#: 
+msgid "Loading release information..."
+msgstr "正在加载版本信息……"
+
+#: 
+msgid "Locked"
+msgstr "已锁定"
+
+#: 
+msgid "Major"
+msgstr "重大更新"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "缺少必填字段：fullPath 和 sha1"
+
+#: 
+msgid "Must change password"
+msgstr "必须更改密码"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "此版本没有可用的发行说明。"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "您当前版本没有可用的升级。"
+
+#: 
+msgid "Password change required"
+msgstr "需要更改密码"
+
+#: 
+msgid "Password status"
+msgstr "密码状态"
+
+#: 
+msgid "Re-install current version"
+msgstr "重新安装当前版本"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "恢复失败，数据库可能处于不完整状态。请查看应用日志了解详情，然后在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "恢复失败：备份文件似乎不完整或不是有效的 SQL 备份。数据库现在处于不完整状态——请在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Running Pre-release"
+msgstr "正在运行预发布版本"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "显示完整升级路径"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "最新稳定版本为 {{version}}。您可以在下方重新安装。"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "由于登录失败次数过多，此账户已被锁定。"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "此用户下次登录时必须设置新密码。"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "用户下次登录时必须更改密码"
+
+#: 
+msgid "User must have Email permission"
+msgstr "用户必须具有电子邮件权限"
+
+#: 
+msgid "View release notes"
+msgstr "查看发行说明"
+
+#: 
+msgid "What's New"
+msgstr "新增内容"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} 新增内容"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "您落后了 <strong>{{releaseCount}}</strong> 个版本。以下是您将获得的内容："
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "您正在运行预发布版本。"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "您仍然可以在不查看发行说明的情况下继续升级。"
+
+#: 
+msgid "You're up to date!"
+msgstr "您已是最新版本！"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "必须选择一个有效的人员。"
+
+#: 
+msgid "Add Donors"
+msgstr "添加奉献者"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "添加到购买者列表"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "自动为所有物品奉献者分配拍牌号码"
+
+#: 
+msgid "Create a new user account"
+msgstr "创建新用户账户"
+
+#: 
+msgid "Delete this item?"
+msgstr "删除此项目？"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "删除此拍牌号码？"
+
+#: 
+msgid "Edit Buyer"
+msgstr "编辑购买者"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "登录名已被使用，请选择其他登录名！"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "登录名至少需要3个字符！"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "管理募款活动"
+
+#: 
+msgid "New User"
+msgstr "新用户"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "请选择一位人员以为其创建用户账户。"
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "请至少选择一位购买者以生成对账单。"
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "返回募款活动仪表板"
+
+#: 
+msgid "The selected person was not found."
+msgstr "未找到所选人员。"
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "此操作将自动为本次募款活动中尚未分配购买者编号的所有物品奉献者添加拍牌号码。"
+
+#: 
+msgid "This person already has a user account."
+msgstr "此人员已拥有用户账户。"
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "用户必须是管理员或具有管理募款活动的权限"
+
+#: 
+msgid "User not found."
+msgstr "未找到用户。"
+
+#: 
+msgid "— Select a person —"
+msgstr "— 选择一位人员 —"
 

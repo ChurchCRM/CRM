@@ -1974,10 +1974,6 @@ msgid "Save Settings"
 msgstr "設定を保存"
 
 #: 
-msgid "Default User Settings"
-msgstr "デフォルト・ユーザー設定"
-
-#: 
 msgid "Permission"
 msgstr "権限"
 
@@ -2006,18 +2002,6 @@ msgid "Login Name"
 msgstr "ログイン名"
 
 #: 
-msgid "Add Records"
-msgstr "レコードを追加"
-
-#: 
-msgid "Edit Records"
-msgstr "レコードを編集"
-
-#: 
-msgid "Delete Records"
-msgstr "レコードを削除"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "プロパティと分類を管理"
 
@@ -2028,14 +2012,6 @@ msgstr "グループと役割を管理"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "寄付と財務を管理"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "ノートの表示、追加、編集"
-
-#: 
-msgid "Edit Self"
-msgstr "自分の情報を編集"
 
 #: 
 msgid "Admin"
@@ -2937,10 +2913,6 @@ msgstr "寄付者を購入者リストに追加"
 #: 
 msgid "Data/Reports"
 msgstr "データ/レポート"
-
-#: 
-msgid "Query Menu"
-msgstr "クエリメニュー"
 
 #: 
 msgid "Family Properties"
@@ -5549,10 +5521,6 @@ msgid "Permissions"
 msgstr "権限"
 
 #: 
-msgid "Manage Notes"
-msgstr "メモの管理"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "家族別献金約束（プレッジ）概要"
 
@@ -6446,10 +6414,6 @@ msgstr "閉じて更新"
 #: 
 msgid "Confirm Deletion"
 msgstr "削除を確認"
-
-#: 
-msgid "Create directory permission"
-msgstr "ディレクトリ作成権限"
 
 #: 
 msgid "Database Only"
@@ -9062,10 +9026,6 @@ msgid "Inactive Groups"
 msgstr "非アクティブなグループ"
 
 #: 
-msgid "Language & Localization"
-msgstr "言語とローカライゼーション"
-
-#: 
 msgid "Map"
 msgstr "地図"
 
@@ -9461,10 +9421,6 @@ msgstr "募金キャンペーンを閲覧・検索"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "教会員の写真を閲覧"
-
-#: 
-msgid "Buyer Number"
-msgstr "購入者番号"
 
 #: 
 msgid "Buyers"
@@ -10509,16 +10465,8 @@ msgid "Server Error"
 msgstr "サーバーエラー"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "新しいユーザーが現在の値を変更できるようにするには、権限をTrueに設定してください。"
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "パスワードのリセットと通知の受信のために管理者メールアドレスを設定"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "新しいユーザーアカウントのデフォルト設定を行う"
 
 #: 
 msgid "Set up"
@@ -10861,10 +10809,6 @@ msgid "— Select type (optional) —"
 msgstr "— タイプを選択（任意） —"
 
 #: 
-msgid "Active Events"
-msgstr "アクティブなイベント"
-
-#: 
 msgid "Add Event"
 msgstr "イベントを追加"
 
@@ -11003,10 +10947,6 @@ msgstr "メモのテキストは必須です"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "メモの作成者または管理者のみがこのメモを削除できます"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "メモの作成者または管理者のみがこのメモを編集できます"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11571,11 +11511,6 @@ msgstr "これらの値は、新しい家族を作成するときに事前に入
 #: 
 msgid "Unit used to measure distance."
 msgstr "距離を測定するために使用される単位。"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "ディレクトリを作成するためのユーザー権限"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12615,10 +12550,6 @@ msgstr "データベースのみ（.sql）またはフルアーカイブ（.tar.
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "データテーブルに表示されるデフォルトの行数。次回のページ読み込み時に有効になります。"
 
-#: 
-msgid "Edit own family only"
-msgstr "自分の家族のみ編集"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12631,10 +12562,6 @@ msgstr "お使いの言語の不正確または不自然な翻訳の修正"
 #: 
 msgid "Found a bug with translations?"
 msgstr "翻訳にバグを見つけましたか？"
-
-#: 
-msgid "Grants all privileges"
-msgstr "すべての権限を付与"
 
 #: 
 msgid "Green"
@@ -14079,22 +14006,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSVに重複した列名があります。重複している列の名前を変更し（例: 2番目に「(2)」を追加）、再度アップロードしてください。"
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "この寄付品を完全に削除してもよろしいですか？"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "このパドル番号を完全に削除してもよろしいですか？"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "寄付品を削除"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "パドル番号を削除"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "セキュリティトークンが無効です。もう一度お試しください。"
 
@@ -14595,10 +14506,6 @@ msgid "You do not have permission to edit this note."
 msgstr "このメモを編集する権限がありません。"
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[プライベートメモ — 作成者のみ閲覧可能]"
-
-#: 
 msgid "seconds"
 msgstr "秒"
 
@@ -14999,10 +14906,6 @@ msgid "Downloaded"
 msgstr "ダウンロード済み"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "GitHubから最新リリースをダウンロード中..."
-
-#: 
 msgid "Duration"
 msgstr "期間"
 
@@ -15288,6 +15191,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "役割選択プロンプトにはGroupIDが必要です"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "認証アプリを準備してください（Google Authenticator、Microsoft Authenticator、Authy など）"
 
@@ -15298,6 +15205,10 @@ msgstr "詳細オプションを非表示"
 #: 
 msgid "Home phone is required"
 msgstr "自宅電話は必須です"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16216,4 +16127,643 @@ msgstr "— 国を選択 —"
 #: 
 msgid "— Select State —"
 msgstr "— 都道府県を選択 —"
+
+#: 
+msgid "Account options"
+msgstr "アカウント設定"
+
+#: 
+msgid "Register"
+msgstr "登録"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "スロバキア語"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d件の過去のイベント"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "この言語のインターフェーステキストの %d%% が翻訳されています。"
+
+#: 
+msgid "AM / PM"
+msgstr "午前 / 午後"
+
+#: 
+msgid "Access denied"
+msgstr "アクセスが拒否されました"
+
+#: 
+msgid "All times shown in"
+msgstr "すべての時刻を表示："
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "誕生日と記念日。デフォルト：月/日"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "カレンダーを削除できません：%d 件のイベントがまだ割り当てられています。先に削除または再割り当てしてください。"
+
+#: 
+msgid "Cell Phone Format"
+msgstr "携帯電話番号フォーマット"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "一般的な書式コード（例：2025年3月7日 金曜日 午後3時09分）"
+
+#: 
+msgid "Current Events"
+msgstr "現在のイベント"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "日付と時刻の形式"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "日付と時刻の形式"
+
+#: 
+msgid "Date Picker Format"
+msgstr "日付ピッカーの形式"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "日付ピッカーのプレースホルダー"
+
+#: 
+msgid "Date Without Year"
+msgstr "年なしの日付"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "日、2桁"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "日、先頭の0なし"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "デフォルト：(999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "デフォルト：(999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "例：\"l, j F Y\" は \"Friday, 7 March 2025\" を生成します。その他の文字（スペース、カンマ、スラッシュ）はそのまま表示されます。"
+
+#: 
+msgid "Filename Date Format"
+msgstr "ファイル名の日付形式"
+
+#: 
+msgid "Fully translated."
+msgstr "完全に翻訳されています。"
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "日付入力に表示されるヒントテキスト。デフォルト：yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "自宅/職場の電話番号形式"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "12時間制、2桁"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "12時間制、0なし"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "24時間制、2桁"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "時刻を含む。デフォルト：月/日/年 時:分 午前/午後"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "言語と地域"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "言語、タイムゾーン、日付と電話番号の形式"
+
+#: 
+msgid "Localization & Formats"
+msgstr "ローカライズと形式"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "ローカライズ設定が正常に保存されました"
+
+#: 
+msgid "Long Date Format"
+msgstr "長い日付形式"
+
+#: 
+msgid "Minutes"
+msgstr "分"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "月と年"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "月、2桁"
+
+#: 
+msgid "Month, full"
+msgstr "月、フルネーム"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "月、先頭の0なし"
+
+#: 
+msgid "Month, short"
+msgstr "月、略称"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "サーバーにインストールされていません — このロケールの日付と数値が正しく書式設定されない可能性があります。ホストにインストールを依頼してください（例：locale-gen）。"
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "日付ピッカー入力のPHP形式。デフォルト：Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "電話番号の形式"
+
+#: 
+msgid "Phone with Extension"
+msgstr "内線付き電話"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "ローカライズ設定を保存"
+
+#: 
+msgid "Selected Language"
+msgstr "選択された言語"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "サーバーのロケールサポートを確認できませんでした（execが無効）。"
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "サポート済み — このロケールはサーバーにインストールされています。"
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "システム言語、タイムゾーン、日付/時刻形式、および電話番号形式"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "これらのフィールドは書式コード（日付の各部分を表す文字）を使用します。各フィールドの下でプリセットを選択するか、参照を使用して独自に作成してください。ライブプレビューで正確な表示を確認できます。システムのデフォルトを使用するには空白のままにしてください。"
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "システム全体で日付と電話番号はこのように表示されます。"
+
+#: 
+msgid "Translation completeness"
+msgstr "翻訳の完成度"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "この言語の翻訳追跡は利用できません。"
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "数字のプレースホルダーとして9を使用してください（例：(999) 999-9999）。システムのデフォルトを使用するには空白のままにしてください。"
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "エクスポートされたファイル名で使用されます。デフォルト：Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "レポートとメンバーリストで使用されます。デフォルト：月/日/年"
+
+#: 
+msgid "Weekday, full"
+msgstr "曜日、フルネーム"
+
+#: 
+msgid "Weekday, short"
+msgstr "曜日、略称"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "これらのコードはどういう意味ですか？"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "年、2桁"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "年、4桁"
+
+#: 
+msgid "am / pm"
+msgstr "午前 / 午後"
+
+#: 
+msgid "past"
+msgstr "過去"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "クロアチア語"
+
+#: 
+msgid "%s's Account"
+msgstr "%sのアカウント"
+
+#: 
+msgid "Access"
+msgstr "アクセス"
+
+#: 
+msgid "Access level"
+msgstr "アクセスレベル"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "管理者はすべての機能とデータにフルアクセスできます。個別の権限は適用されません。"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "すべてのユーザーが会衆のメンバーを閲覧できます。この権限は削除できません。"
+
+#: 
+msgid "Always granted"
+msgstr "常に付与"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "自分の家族の確認と検証のみ可能です。その他のアクセスはありません。"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "以下から特定の権限を選択してください。"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "権限を変更するには管理者にお問い合わせください。"
+
+#: 
+msgid "Custom permissions"
+msgstr "カスタム権限"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "フルアクセス — すべての権限を付与します。"
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "個別権限を付与する："
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "追加のアクセスが必要な場合は、教会の管理者にお問い合わせください。"
+
+#: 
+msgid "People &amp; Families"
+msgstr "人々 &amp; 家族"
+
+#: 
+msgid "Self-service"
+msgstr "セルフサービス"
+
+#: 
+msgid "Self-service only"
+msgstr "セルフサービスのみ"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "編集しようとしているメモはすでに存在しません。"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "このユーザーは自分の家族プロフィールの確認と更新のみ可能です。個別の権限は適用されません。"
+
+#: 
+msgid "User List"
+msgstr "ユーザー一覧"
+
+#: 
+msgid "View Person"
+msgstr "人物を表示"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "この家族へのメモを追加する権限がありません。"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "この人物へのメモを追加する権限がありません。"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "このメモを編集する権限がありません"
+
+#: 
+msgid "Account locked"
+msgstr "アカウントがロックされています"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "ログイン失敗が多すぎるためアカウントがロックされています"
+
+#: 
+msgid "Account status"
+msgstr "アカウントの状態"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "詳細設定：特定のターゲットバージョンを選択"
+
+#: 
+msgid "Bug Fix"
+msgstr "バグ修正"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "デフォルトでは、ウィザードは次の推奨リリースをダウンロードします。以下から任意の利用可能なバージョンを選択することもできます。"
+
+#: 
+msgid "Change required"
+msgstr "変更が必要です"
+
+#: 
+msgid "Changelog"
+msgstr "変更履歴"
+
+#: 
+msgid "Continue Anyway"
+msgstr "このまま続行"
+
+#: 
+msgid "Could not load release information."
+msgstr "リリース情報を読み込めませんでした。"
+
+#: 
+msgid "Download & Install"
+msgstr "ダウンロードしてインストール"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "バージョン {{version}} をダウンロードして、インストールに適用します。"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHubからリリースをダウンロード中..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "ログイン失敗回数"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "アップグレードプレビューの取得に失敗しました"
+
+#: 
+msgid "Feature"
+msgstr "機能"
+
+#: 
+msgid "Full changelog"
+msgstr "完全な変更履歴"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "安定版 {{version}} をインストール"
+
+#: 
+msgid "Installing next release"
+msgstr "次のリリースをインストール中"
+
+#: 
+msgid "Invalid file path"
+msgstr "無効なファイルパス"
+
+#: 
+msgid "Invalid version format"
+msgstr "無効なバージョン形式"
+
+#: 
+msgid "Last login"
+msgstr "最終ログイン"
+
+#: 
+msgid "Loading release information..."
+msgstr "リリース情報を読み込み中..."
+
+#: 
+msgid "Locked"
+msgstr "ロック済み"
+
+#: 
+msgid "Major"
+msgstr "メジャー"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "必須フィールドがありません：fullPath と sha1"
+
+#: 
+msgid "Must change password"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "このバージョンのリリースノートはありません。"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "現在のバージョンに利用可能なアップグレードはありません。"
+
+#: 
+msgid "Password change required"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "Password status"
+msgstr "パスワードの状態"
+
+#: 
+msgid "Re-install current version"
+msgstr "現在のバージョンを再インストール"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "復元に失敗し、データベースが不完全な状態になっている可能性があります。詳細はアプリケーションログを確認し、システムを使用する前に正常なバックアップを復元してください。"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "復元に失敗しました：バックアップファイルが不完全であるか、有効なSQLバックアップではないようです。データベースは現在不完全な状態です — システムを使用する前に正常なバックアップを復元してください。"
+
+#: 
+msgid "Running Pre-release"
+msgstr "プレリリース版を実行中"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "完全なアップグレードパスを表示"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "最新の安定版リリースは {{version}} です。以下から再インストールできます。"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "ログイン失敗が多すぎるため、このアカウントはロックされています。"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "このユーザーは次回サインイン時に新しいパスワードを設定する必要があります。"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "ユーザーは次回ログイン時にパスワードを変更する必要があります"
+
+#: 
+msgid "User must have Email permission"
+msgstr "ユーザーはEmailの権限を持っている必要があります"
+
+#: 
+msgid "View release notes"
+msgstr "リリースノートを表示"
+
+#: 
+msgid "What's New"
+msgstr "新機能"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} の新機能"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong> 個のリリースが未適用です。アップグレードで得られるもの："
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "プレリリース版を実行しています。"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "リリースノートを確認せずにアップグレードを続行することもできます。"
+
+#: 
+msgid "You're up to date!"
+msgstr "最新の状態です！"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "有効な人物を選択する必要があります。"
+
+#: 
+msgid "Add Donors"
+msgstr "献金者を追加"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "購入者リストに追加"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "すべての品目献金者にパドル番号を自動割り当て"
+
+#: 
+msgid "Create a new user account"
+msgstr "新しいユーザーアカウントを作成"
+
+#: 
+msgid "Delete this item?"
+msgstr "この項目を削除しますか？"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "このパドル番号を削除しますか？"
+
+#: 
+msgid "Edit Buyer"
+msgstr "購入者を編集"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "このログインはすでに使用されています。別のログインを選択してください！"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "ログインは3文字以上である必要があります！"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "募金活動を管理"
+
+#: 
+msgid "New User"
+msgstr "新規ユーザー"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "ユーザーアカウントを作成する人物を選択してください。"
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "明細書を生成するには、少なくとも1人の購入者を選択してください。"
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "募金活動ダッシュボードに戻る"
+
+#: 
+msgid "The selected person was not found."
+msgstr "選択された人物が見つかりませんでした。"
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "この操作により、この募金活動においてまだ購入者番号が割り当てられていないすべての品目献金者にパドル番号が自動的に追加されます。"
+
+#: 
+msgid "This person already has a user account."
+msgstr "この人物はすでにユーザーアカウントを持っています。"
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "ユーザーは管理者であるか、募金活動管理の権限を持っている必要があります"
+
+#: 
+msgid "User not found."
+msgstr "ユーザーが見つかりません。"
+
+#: 
+msgid "— Select a person —"
+msgstr "— 人物を選択 —"
 

@@ -21,6 +21,9 @@ src/Images/Person/*
 # Keep the directories for CI/fresh installs
 !src/Images/Family/.gitkeep
 !src/Images/Person/.gitkeep
+# Keep the access-control deny files (GHSA-r286-h493-ppwj)
+!src/Images/Family/.htaccess
+!src/Images/Person/.htaccess
 
 #skins
 src/skin/v2/
@@ -57,3 +60,4 @@ cypress.env.json
 
 .claude/settings.json
 cy.log
+/.obsidian

@@ -102,7 +102,7 @@ $app->get('/admin/system/users', function (Request $request, Response $response)
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
             ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#userSettings'],
-            ['label' => gettext('Add User'), 'url' => '/UserEditor.php', 'icon' => 'fa-user-plus'],
+            ['label' => gettext('Add User'), 'url' => '/admin/system/users/new', 'icon' => 'fa-user-plus'],
         ]),
         'sSettingsCollapseId' => 'userSettings',
         'stats'    => $userService->getUserStats(),
@@ -498,6 +498,22 @@ Once pattern is established, these can be safely copied to new auth pages:
 - Check button hover effects
 - Ensure logo and images don't have unwanted filters
 - Run `npm run build && npm run lint` before commit
+
+## No Redirect Shims — Hard Rule <!-- learned: 2026-07-12 -->
+
+**Never leave a legacy `src/*.php` file in place as a redirect shim** after migrating its functionality to an MVC route. Shims look harmless but they:
+- Introduce dead code paths that accumulate silently over releases
+- Break the security model (shims bypass middleware added in the new module)
+- Require a second cleanup PR every time
+
+**The correct migration sequence:**
+1. Build the new MVC route, view, and service (the normal MVC migration steps)
+2. Before committing, `grep -rn "LegacyPage.php" src/` to find every caller
+3. Update every caller (menu entries, template links, JS redirects, other PHP files) to use the new URL
+4. `git rm src/LegacyPage.php` — delete it outright
+5. All of the above in **one PR** — no multi-stage "shim then cleanup" pattern
+
+**If you find existing shim files in a PR under review:** treat them as blocking — require the PR author to complete steps 2–4 before merging.
 
 ## Files
 

@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Зберегти налаштування"
 
 #: 
-msgid "Default User Settings"
-msgstr "Налаштування користувача за замовчуванням"
-
-#: 
 msgid "Permission"
 msgstr "Дозвіл"
 
@@ -2028,18 +2024,6 @@ msgid "Login Name"
 msgstr "Логін"
 
 #: 
-msgid "Add Records"
-msgstr "Додати записи"
-
-#: 
-msgid "Edit Records"
-msgstr "Редагувати записи"
-
-#: 
-msgid "Delete Records"
-msgstr "Видалити записи"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Управління властивостями та класифікаціями"
 
@@ -2050,14 +2034,6 @@ msgstr "Управління групами та ролями"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Управління пожертвами та фінансами"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Перегляд, додавання та редагування нотаток"
-
-#: 
-msgid "Edit Self"
-msgstr "Редагувати себе"
 
 #: 
 msgid "Admin"
@@ -2967,10 +2943,6 @@ msgstr "Додайте донорів до списку покупців"
 #: 
 msgid "Data/Reports"
 msgstr "Дані / Звіти"
-
-#: 
-msgid "Query Menu"
-msgstr "Меню запитів"
 
 #: 
 msgid "Family Properties"
@@ -5596,10 +5568,6 @@ msgid "Permissions"
 msgstr "Дозволи"
 
 #: 
-msgid "Manage Notes"
-msgstr "Керування нотатками"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Підсумок застави за сім'єю"
 
@@ -6499,10 +6467,6 @@ msgstr "Закрити та оновити"
 #: 
 msgid "Confirm Deletion"
 msgstr "Підтвердити видалення"
-
-#: 
-msgid "Create directory permission"
-msgstr "Дозвіл на створення директорій"
 
 #: 
 msgid "Database Only"
@@ -9130,10 +9094,6 @@ msgid "Inactive Groups"
 msgstr "Неактивні групи"
 
 #: 
-msgid "Language & Localization"
-msgstr "Мова та локалізація"
-
-#: 
 msgid "Map"
 msgstr "Карта"
 
@@ -9532,10 +9492,6 @@ msgstr "Переглядайте та шукайте кампанії збору
 #: 
 msgid "Browse photos of congregation members"
 msgstr "Переглядайте фотографії членів парафії"
-
-#: 
-msgid "Buyer Number"
-msgstr "Номер покупця"
 
 #: 
 msgid "Buyers"
@@ -10580,16 +10536,8 @@ msgid "Server Error"
 msgstr "Помилка сервера"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Встановіть дозвіл True, щоб дати новим користувачам змогу змінити своє поточне значення."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Встановіть адресу електронної пошти адміністратора, щоб ви могли скидати паролі та отримувати сповіщення"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Встановіть параметри за замовчуванням для нових облікових записів користувачів"
 
 #: 
 msgid "Set up"
@@ -10932,10 +10880,6 @@ msgid "— Select type (optional) —"
 msgstr "— Виберіть тип (необов'язково) —"
 
 #: 
-msgid "Active Events"
-msgstr "Активні події"
-
-#: 
 msgid "Add Event"
 msgstr "Додати подію"
 
@@ -11074,10 +11018,6 @@ msgstr "Текст нотатки є обов'язковим"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Тільки автор нотатки або адміністратор можуть видалити цю нотатку"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Тільки автор нотатки або адміністратор можуть редагувати цю нотатку"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11642,11 +11582,6 @@ msgstr "Ці значення попередньо заповнюються пр
 #: 
 msgid "Unit used to measure distance."
 msgstr "Одиниця для вимірювання відстані."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Дозвіл користувача на створення каталогів"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12686,10 +12621,6 @@ msgstr "Лише база даних (.sql) або повний архів (.tar
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Кількість рядків за замовчуванням у таблицях даних. Набуває чинності при наступному завантаженні сторінки."
 
-#: 
-msgid "Edit own family only"
-msgstr "Редагувати лише власну родину"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12702,10 +12633,6 @@ msgstr "Виправлення неточних або незручних пер
 #: 
 msgid "Found a bug with translations?"
 msgstr "Знайшли помилку в перекладах?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Надає всі привілеї"
 
 #: 
 msgid "Green"
@@ -14153,22 +14080,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Ваш CSV містить дублюючі назви стовпців. Перейменуйте їх (наприклад, додайте «(2)» до другого) та завантажте знову."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Ви впевнені, що хочете назавжди видалити цей пожертвуваний предмет?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Ви впевнені, що хочете назавжди видалити цей номер весла?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Видалити пожертвуваний предмет"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Видалити номер весла"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Недійсний токен безпеки. Будь ласка, спробуйте ще раз."
 
@@ -14669,10 +14580,6 @@ msgid "You do not have permission to edit this note."
 msgstr "У вас немає дозволу на редагування цієї нотатки."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Приватна нотатка — видима лише автору]"
-
-#: 
 msgid "seconds"
 msgstr "секунд"
 
@@ -15071,10 +14978,6 @@ msgstr "Завантажити резервну копію та продовжи
 #: 
 msgid "Downloaded"
 msgstr "Завантажено"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Завантаження останнього релізу з GitHub..."
 
 #: 
 msgid "Duration"
@@ -16298,4 +16201,646 @@ msgstr "— Виберіть країну —"
 #: 
 msgid "— Select State —"
 msgstr "— Виберіть область —"
+
+#: 
+msgid "Account options"
+msgstr "Параметри облікового запису"
+
+#: 
+msgid "Register"
+msgstr "Зареєструватися"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Словацька"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d минула подія"
+msgstr[1] "%d минулі події"
+msgstr[2] "%d минулих подій"
+msgstr[3] "%d минулих подій"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% тексту інтерфейсу перекладено для цієї мови."
+
+#: 
+msgid "AM / PM"
+msgstr "ДП / ПП"
+
+#: 
+msgid "Access denied"
+msgstr "Доступ заборонено"
+
+#: 
+msgid "All times shown in"
+msgstr "Весь час відображається в"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Дні народження та ювілеї. За замовчуванням: д/м"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Неможливо видалити календар: до нього прив'язано %d подій(у). Спочатку видаліть або перепризначте їх."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Формат мобільного телефону"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Загальні коди форматування (приклади: п'ятниця, 7 березня 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Поточні події"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Формат дати та часу"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Формати дати та часу"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Формат вибору дати"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Підказка вибору дати"
+
+#: 
+msgid "Date Without Year"
+msgstr "Дата без року"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "День, 2 цифри"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "День, без початкового нуля"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "За замовчуванням: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "За замовчуванням: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Приклад: «l, j F Y» дає «П'ятниця, 7 Березня 2025». Будь-які інші символи (пробіли, коми, слеші) відображаються як введені."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Формат дати для імені файлу"
+
+#: 
+msgid "Fully translated."
+msgstr "Повністю перекладено."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Підказка у полях введення дати. За замовчуванням: рррр-мм-дд"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Формат домашнього/робочого телефону"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Година 12г, 2 цифри"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Година 12г, без нуля"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Година 24г, 2 цифри"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Включає компонент часу. За замовчуванням: д/м/Y г:хв a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Мова та регіон"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Мова, часовий пояс, формати дати та телефону"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Локалізація та формати"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Налаштування локалізації успішно збережено"
+
+#: 
+msgid "Long Date Format"
+msgstr "Довгий формат дати"
+
+#: 
+msgid "Minutes"
+msgstr "Хвилини"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Місяць та рік"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Місяць, 2 цифри"
+
+#: 
+msgid "Month, full"
+msgstr "Місяць, повний"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Місяць, без початкового нуля"
+
+#: 
+msgid "Month, short"
+msgstr "Місяць, скорочено"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Не встановлено на сервері — дати та числа можуть відображатися некоректно. Попросіть хостинг встановити це (наприклад, locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Формат PHP для введення дати. За замовчуванням: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Формати номерів телефонів"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Телефон з додатковим номером"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Зберегти налаштування локалізації"
+
+#: 
+msgid "Selected Language"
+msgstr "Вибрана мова"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Не вдалося перевірити підтримку локалі сервером (exec вимкнено)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Підтримується — цю локаль встановлено на сервері."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Системна мова, часовий пояс, формати дати/часу та форматів телефонних номерів"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Ці поля використовують коди форматування (літери, що позначають частини дати). Виберіть попередньо встановлений варіант під кожним полем або створіть власний за допомогою довідника. Попередній перегляд показує точний вигляд. Залиште пустим для системового значення за замовчуванням."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Так виглядатимуть дати та номери телефонів у всій системі."
+
+#: 
+msgid "Translation completeness"
+msgstr "Повнота перекладу"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Відстеження перекладу недоступне для цієї мови."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Використовуйте 9 як заповнювач цифри (наприклад, (999) 999-9999). Залиште пустим для системового значення за замовчуванням."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Використовується в іменах файлів, що експортуються. За замовчуванням: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Використовується у звітах та списках учасників. За замовчуванням: д/м/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "День тижня, повна назва"
+
+#: 
+msgid "Weekday, short"
+msgstr "День тижня, скорочено"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Що означають ці коди?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Рік, 2 цифри"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Рік, 4 цифри"
+
+#: 
+msgid "am / pm"
+msgstr "дп / пп"
+
+#: 
+msgid "past"
+msgstr "минуле"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Хорватська"
+
+#: 
+msgid "%s's Account"
+msgstr "Обліковий запис %s"
+
+#: 
+msgid "Access"
+msgstr "Доступ"
+
+#: 
+msgid "Access level"
+msgstr "Рівень доступу"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Адміністратори мають повний доступ до всіх функцій і даних. Індивідуальні дозволи не застосовуються."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Усі користувачі можуть переглядати членів парафії. Цей дозвіл не можна скасувати."
+
+#: 
+msgid "Always granted"
+msgstr "Завжди надається"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Може лише переглядати та підтверджувати дані своєї родини. Інший доступ відсутній."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Виберіть конкретні дозволи нижче."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Зверніться до адміністратора для зміни ваших дозволів."
+
+#: 
+msgid "Custom permissions"
+msgstr "Індивідуальні дозволи"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Повний доступ — надає всі привілеї."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Надати індивідуальні дозволи:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Якщо вам потрібен додатковий доступ, будь ласка, зверніться до адміністратора вашої церкви."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Люди &amp; Родини"
+
+#: 
+msgid "Self-service"
+msgstr "Самообслуговування"
+
+#: 
+msgid "Self-service only"
+msgstr "Лише самообслуговування"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Нотатка, яку ви намагаєтесь редагувати, більше не існує."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Цей користувач може лише переглядати та оновлювати профіль своєї родини. Індивідуальні дозволи не застосовуються."
+
+#: 
+msgid "User List"
+msgstr "Список користувачів"
+
+#: 
+msgid "View Person"
+msgstr "Переглянути особу"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "У вас немає дозволу додавати нотатку для цієї родини."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "У вас немає дозволу додавати нотатку для цієї особи."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "У вас немає дозволу редагувати цю нотатку"
+
+#: 
+msgid "Account locked"
+msgstr "Обліковий запис заблоковано"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Обліковий запис заблоковано через забагато невдалих спроб входу"
+
+#: 
+msgid "Account status"
+msgstr "Статус облікового запису"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Додатково: вибрати конкретну цільову версію"
+
+#: 
+msgid "Bug Fix"
+msgstr "Виправлення помилок"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "За замовчуванням майстер завантажує наступний рекомендований випуск. Натомість ви можете вибрати будь-яку доступну версію нижче."
+
+#: 
+msgid "Change required"
+msgstr "Необхідна зміна"
+
+#: 
+msgid "Changelog"
+msgstr "Журнал змін"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Продовжити все одно"
+
+#: 
+msgid "Could not load release information."
+msgstr "Не вдалося завантажити інформацію про випуск."
+
+#: 
+msgid "Download & Install"
+msgstr "Завантажити та встановити"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Завантажити версію {{version}} та застосувати до вашої інсталяції."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Завантаження випуску з GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Невдалі спроби входу"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Не вдалося отримати попередній перегляд оновлення"
+
+#: 
+msgid "Feature"
+msgstr "Функція"
+
+#: 
+msgid "Full changelog"
+msgstr "Повний журнал змін"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Встановити стабільну версію {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Встановлення наступного випуску"
+
+#: 
+msgid "Invalid file path"
+msgstr "Недійсний шлях до файлу"
+
+#: 
+msgid "Invalid version format"
+msgstr "Недійсний формат версії"
+
+#: 
+msgid "Last login"
+msgstr "Останній вхід"
+
+#: 
+msgid "Loading release information..."
+msgstr "Завантаження інформації про випуск..."
+
+#: 
+msgid "Locked"
+msgstr "Заблоковано"
+
+#: 
+msgid "Major"
+msgstr "Основний"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Відсутні обов'язкові поля: fullPath та sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Необхідно змінити пароль"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Примітки до випуску для цієї версії відсутні."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Оновлення для вашої поточної версії недоступні."
+
+#: 
+msgid "Password change required"
+msgstr "Необхідна зміна пароля"
+
+#: 
+msgid "Password status"
+msgstr "Статус пароля"
+
+#: 
+msgid "Re-install current version"
+msgstr "Перевстановити поточну версію"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Відновлення не вдалося, і база даних може перебувати в неповному стані. Перевірте журнал додатку для отримання деталей, а потім відновіть відому справну резервну копію перед використанням системи."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Відновлення не вдалося: файл резервної копії здається неповним або не є дійсною резервною копією SQL. База даних зараз перебуває в неповному стані — відновіть відому справну резервну копію перед використанням системи."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Запущено попередню версію"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Показати повний шлях оновлення"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Останній стабільний випуск — {{version}}. Ви можете перевстановити його нижче."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Цей обліковий запис заблоковано через забагато невдалих спроб входу."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Цей користувач повинен встановити новий пароль наступного разу при вході."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Користувач повинен змінити пароль при наступному вході"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Користувач повинен мати дозвіл на електронну пошту"
+
+#: 
+msgid "View release notes"
+msgstr "Переглянути примітки до випуску"
+
+#: 
+msgid "What's New"
+msgstr "Що нового"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Що нового у версії {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Ви відстаєте на <strong>{{releaseCount}}</strong> випусків. Ось що ви отримаєте:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Ви використовуєте попередню версію."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Ви все одно можете продовжити оновлення без перегляду приміток до випуску."
+
+#: 
+msgid "You're up to date!"
+msgstr "Ви використовуєте актуальну версію!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Необхідно вибрати дійсну особу."
+
+#: 
+msgid "Add Donors"
+msgstr "Додати жертводавців"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Додати до списку покупців"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Автоматично призначити номери жетонів усім жертводавцям лотів"
+
+#: 
+msgid "Create a new user account"
+msgstr "Створити новий обліковий запис користувача"
+
+#: 
+msgid "Delete this item?"
+msgstr "Видалити цей лот?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Видалити цей номер жетона?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Редагувати покупця"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Цей логін вже використовується, будь ласка, оберіть інший!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Логін має містити щонайменше 3 символи!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Керування зборами пожертв"
+
+#: 
+msgid "New User"
+msgstr "Новий користувач"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Будь ласка, оберіть особу, для якої потрібно створити обліковий запис."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Будь ласка, оберіть щонайменше одного покупця для формування звітів."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Повернутися до панелі збору пожертв"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Обрану особу не знайдено."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Ця дія автоматично призначить номери жетонів усім жертводавцям лотів у цьому зборі пожертв, яким ще не присвоєно номер покупця."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Ця особа вже має обліковий запис користувача."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Користувач має бути адміністратором або мати дозвіл на керування зборами пожертв"
+
+#: 
+msgid "User not found."
+msgstr "Користувача не знайдено."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Оберіть особу —"
 

@@ -109,7 +109,7 @@ summary: |
     events and errors.
 
 - **Acceptance Criteria (to mark feature refactor complete)**
-  - All legacy pages for the feature are removed or stubbed with redirects.
+  - All legacy pages for the feature are **deleted** (not stubbed or shimmed). Every caller updated to use the new MVC route.
   - Service methods cover all business logic previously in pages.
   - All `RunQuery()` instances for the feature are replaced with ORM or
     documented exceptions (with security justification).
@@ -177,8 +177,10 @@ summary: |
 
 **References**
 
-- See `src/Include/Functions.php` for global helpers used during migration.
-- Follow Perpl ORM patterns described in the repository's standards docs.
+- `src/Include/Functions.php` **no longer exists** — its helpers now live in `ChurchCRM\Utils\*`
+  (`DateTimeUtils`, `MiscUtils`, `CustomFieldUtils`, `FiscalYearUtils`, `FunctionsUtils`).
+  See the migration map in `php-best-practices.md`.
+- Follow Propel ORM patterns described in the repository's standards docs.
 
 ## SQL Upgrade Files — modification policy
 

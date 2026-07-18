@@ -14,7 +14,6 @@ $roleDescriptions = [
     'AddRecords' => gettext('Add records permission'),
     'MenuOptions' => gettext('Menu options access'),
     'Notes' => gettext('Notes access'),
-    'CreateDirectory' => gettext('Create directory permission'),
     'AddEvent' => gettext('Add event permission'),
     'Authentication' => gettext('User authentication'),
 ];

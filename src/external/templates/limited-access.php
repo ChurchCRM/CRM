@@ -4,7 +4,10 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('My Account');
-$sBodyClass = 'page-auth page-login';
+// Plain auth background (no church-photo/dark overlay): this self-service landing
+// has no solid login card, so the dark page-login background made its text
+// unreadable. Matches the verify page it links to. See #8519.
+$sBodyClass = 'page-auth';
 
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 ?>
@@ -28,7 +31,11 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           <?php else: ?>
           <h1><?= gettext('Welcome') ?></h1>
           <?php endif; ?>
+          <?php if (!empty($verifyUrl)): ?>
           <p><?= gettext('You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.') ?></p>
+          <?php else: ?>
+          <p><?= gettext('If you need additional access, please contact your church administrator.') ?></p>
+          <?php endif; ?>
         </div>
 
         <!-- Action Buttons -->

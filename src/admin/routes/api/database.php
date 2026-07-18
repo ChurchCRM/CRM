@@ -127,7 +127,11 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
             $logger->error('Restore failed', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
 
             $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
-            return SlimUtils::renderErrorJSON($response, gettext('Database restore failed'), [], $status, $e, $request);
+
+            // RestoreJob throws an actionable, translated message; fall back to a
+            // generic one for anything thrown before it gets that far.
+            $message = $e->getMessage() ?: gettext('Database restore failed');
+            return SlimUtils::renderErrorJSON($response, $message, [], $status, $e, $request);
         }
     });
 
@@ -182,25 +186,70 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
 
             $logger->info("Database reset completed - dropped $droppedCount objects (tables and views)");
 
-            // Remove uploaded images for people and families from Images root
+            // Remove uploaded person and family photos from the Images directory.
+            // We clean both the canonical uppercase paths (Person / Family) that
+            // the Photo class uses, and legacy lowercase variants (person / family)
+            // written by older ChurchCRM versions. realpath() deduplicates the list
+            // on case-insensitive filesystems (e.g. macOS) so we never clean the
+            // same physical directory twice.
+            // Fix for GHSA-r68j-h5c6-w6gh: the original code used only lowercase
+            // paths which silently skipped cleanup on Linux (case-sensitive FS).
             try {
                 $imagesRoot = SystemURLs::getImagesRoot();
-                $personDir = $imagesRoot . '/person';
-                $familyDir = $imagesRoot . '/family';
+                $canonicalDirs = [$imagesRoot . '/Person', $imagesRoot . '/Family'];
 
-                // Remove and recreate person dir
-                if (is_dir($personDir)) {
-                    FileSystemUtils::recursiveRemoveDirectory($personDir);
+                // Build deduplicated list of real paths to delete.
+                $dirsToClean = [];
+                foreach ([
+                    $imagesRoot . '/Person', $imagesRoot . '/person',
+                    $imagesRoot . '/Family', $imagesRoot . '/family',
+                ] as $candidate) {
+                    if (is_dir($candidate)) {
+                        $real = realpath($candidate);
+                        if ($real !== false && !in_array($real, $dirsToClean, true)) {
+                            $dirsToClean[] = $real;
+                        }
+                    }
                 }
-                @mkdir($personDir, 0755, true);
 
-                // Remove and recreate family dir
-                if (is_dir($familyDir)) {
-                    FileSystemUtils::recursiveRemoveDirectory($familyDir);
+                foreach ($dirsToClean as $dir) {
+                    FileSystemUtils::recursiveRemoveDirectory($dir);
                 }
-                @mkdir($familyDir, 0755, true);
 
-                $logger->info('Database reset: cleared person and family Images directories', ['personDir' => $personDir, 'familyDir' => $familyDir]);
+                // After removing the real target directories, clean up any dangling symlinks
+                // so the recreation loop can create real directories at the canonical paths.
+                // The blocking scenario: the canonical uppercase path (e.g. Images/Person)
+                // was itself a symlink to the real directory. After recursiveRemoveDirectory()
+                // deleted the target, the symlink entry at that canonical path remains and
+                // would cause mkdir('Images/Person') to fail because the path is already
+                // occupied. On a case-sensitive filesystem, a dangling symlink at
+                // 'Images/person' (lowercase) does NOT block 'mkdir(Images/Person)' — those
+                // are distinct paths — but we include all four candidates for completeness.
+                foreach ([
+                    $imagesRoot . '/Person', $imagesRoot . '/person',
+                    $imagesRoot . '/Family', $imagesRoot . '/family',
+                ] as $candidate) {
+                    if (is_link($candidate) && !is_dir($candidate)) {
+                        if (!unlink($candidate)) {
+                            $logger->warning('DB reset: failed to remove dangling symlink', ['path' => $candidate]);
+                        }
+                    }
+                }
+
+                // Recreate only the canonical uppercase directories.
+                // mkdir() failure is non-fatal but must be logged: a missing
+                // directory causes subsequent photo uploads to fail silently.
+                foreach ($canonicalDirs as $dir) {
+                    if (!is_dir($dir) && !@mkdir($dir, 0755, true)) {
+                        $logger->warning('DB reset: failed to recreate images directory', ['dir' => $dir]);
+                    }
+                }
+
+                $logger->info('Database reset: cleared person and family Images directories', [
+                    'personDir' => $imagesRoot . '/Person',
+                    'familyDir' => $imagesRoot . '/Family',
+                    'dirsCleared' => count($dirsToClean),
+                ]);
             } catch (\Throwable $e) {
                 $logger->warning('Failed to clear Images directories during DB reset', ['error' => $e->getMessage()]);
             }

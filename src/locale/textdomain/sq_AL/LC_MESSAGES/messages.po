@@ -1997,10 +1997,6 @@ msgid "Save Settings"
 msgstr "Save Settings"
 
 #: 
-msgid "Default User Settings"
-msgstr "Default User Settings"
-
-#: 
 msgid "Permission"
 msgstr "Leje"
 
@@ -2029,18 +2025,6 @@ msgid "Login Name"
 msgstr "Identifikohu Emri"
 
 #: 
-msgid "Add Records"
-msgstr "Shto regjistrime"
-
-#: 
-msgid "Edit Records"
-msgstr "Edit shenime"
-
-#: 
-msgid "Delete Records"
-msgstr "Fshi regjistrime"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Menaxho Prona dhe klasifikime"
 
@@ -2051,14 +2035,6 @@ msgstr "Menaxhuar grupet dhe Rolet"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Menaxho Donacionet dhe Financave"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Shiko, Shto dhe Edit Shënime"
-
-#: 
-msgid "Edit Self"
-msgstr "Edit Vetë"
 
 #: 
 msgid "Admin"
@@ -2966,10 +2942,6 @@ msgstr "Shto donatorët në listën e blerësve"
 #: 
 msgid "Data/Reports"
 msgstr "Të dhëna/Raporte"
-
-#: 
-msgid "Query Menu"
-msgstr "Menuja e kërkesave"
 
 #: 
 msgid "Family Properties"
@@ -5580,10 +5552,6 @@ msgid "Permissions"
 msgstr "Lejet"
 
 #: 
-msgid "Manage Notes"
-msgstr "Menaxho shënimet"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Përmbledhja e zotimeve sipas familjes"
 
@@ -6479,10 +6447,6 @@ msgstr "Mbyll dhe rifresko"
 #: 
 msgid "Confirm Deletion"
 msgstr "Konfirmo fshirjen"
-
-#: 
-msgid "Create directory permission"
-msgstr "Leja për të krijuar drejtori"
 
 #: 
 msgid "Database Only"
@@ -9100,10 +9064,6 @@ msgid "Inactive Groups"
 msgstr "Grupet joaktive"
 
 #: 
-msgid "Language & Localization"
-msgstr "Gjuha dhe lokalizimi"
-
-#: 
 msgid "Map"
 msgstr "Hartë"
 
@@ -9500,10 +9460,6 @@ msgstr "Shfleto dhe kërko kampanjet e mbledhjes fondesh"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "Shfleto fotos e anëtarëve të meshes"
-
-#: 
-msgid "Buyer Number"
-msgstr "Numri i Blerësit"
 
 #: 
 msgid "Buyers"
@@ -10548,16 +10504,8 @@ msgid "Server Error"
 msgstr "Gabim i Serverit"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Vendos Lejen True për të dhënë përdoruesve të rinj aftësinë për të ndryshuar vlerën e tyre aktuale."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Vendos një email të përdoruesit administrues në mënyrë që të mund të rivendosësh fjalëkalime dhe të marrësh njoftime"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Vendos preferencat parazgjedhjen për llogarit e përdoruesit të rinj"
 
 #: 
 msgid "Set up"
@@ -10900,10 +10848,6 @@ msgid "— Select type (optional) —"
 msgstr "— Zgjidh llojin (opsionale) —"
 
 #: 
-msgid "Active Events"
-msgstr "Ngjarjet Aktive"
-
-#: 
 msgid "Add Event"
 msgstr "Shto Ngjarje"
 
@@ -11042,10 +10986,6 @@ msgstr "Teksti i shënimit është i nevojshëm"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Vetëm autori i shënimit ose një administrues mund ta fshijë këtë shënim"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Vetëm autori i shënimit ose një administrues mund ta redaktojë këtë shënim"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11610,11 +11550,6 @@ msgstr "Këto vlera paraplotësohen kur krijohen familje të reja. Lini bosh pë
 #: 
 msgid "Unit used to measure distance."
 msgstr "Njësia e përdorur për matur distancën."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Leja e përdoruesit për të krijuar dosje"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12654,10 +12589,6 @@ msgstr "Vetëm baza e të dhënave (.sql) ose arkiv i plotë (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Numri i parazgjedhur i rreshtave të shfaqura në tabelat e të dhënave. Hyn në fuqi me ngarkimin e faqes tjetër."
 
-#: 
-msgid "Edit own family only"
-msgstr "Ndrysho vetëm familjen tënde"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12670,10 +12601,6 @@ msgstr "Korrigjoni përkthimet e pasakta ose të vështira në gjuhën tuaj"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Gjetët një defekt me përkthimet?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Jep të gjitha privilegjet"
 
 #: 
 msgid "Green"
@@ -14119,22 +14046,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV-ja juaj ka emra kolonash të dublifikuar. Riemërtoni kolonat e dublifikuara (p.sh. shtoni \"(2)\" të dytës) dhe ngarkoni përsëri."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "A jeni të sigurt që doni të fshini përgjithmonë këtë artikull të dhuruar?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "A jeni të sigurt që doni të fshini përgjithmonë këtë numër pagaie?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Fshi artikullin e dhuruar"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Fshi numrin e pagaies"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Tokeni i sigurisë është i pavlefshëm. Ju lutemi provoni përsëri."
 
@@ -14635,10 +14546,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Nuk keni leje për të redaktuar këtë shënim."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Shënim Privat — i dukshëm vetëm për krijuesin]"
-
-#: 
 msgid "seconds"
 msgstr "sekonda"
 
@@ -15037,10 +14944,6 @@ msgstr "Shkarko Rezervën & Vazhdoje"
 #: 
 msgid "Downloaded"
 msgstr "Shkarkuar"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Duke shkarkuar versionin e fundit nga GitHub..."
 
 #: 
 msgid "Duration"
@@ -16264,4 +16167,644 @@ msgstr "— Zgjidhni vendin —"
 #: 
 msgid "— Select State —"
 msgstr "— Zgjidhni rajonin —"
+
+#: 
+msgid "Account options"
+msgstr "Opsionet e llogarisë"
+
+#: 
+msgid "Register"
+msgstr "Regjistrohu"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Sllovake"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d ngjarje e kaluar"
+msgstr[1] "%d ngjarje të kaluara"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d%% e tekstit të ndërfaqes është përkthyer për këtë gjuhë."
+
+#: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
+msgid "Access denied"
+msgstr "Qasja refuzohet"
+
+#: 
+msgid "All times shown in"
+msgstr "Të gjitha oraret shfaqen në"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Ditëlindjet dhe përvjetorët. I paracaktuar: m/d"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Nuk mund të fshihet kalendari: %d ngjarje(e) janë ende të caktuara. Hiqini ose ricaktojini fillimisht."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Formati i telefonit celular"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Kodet e zakonshme të formatimit (shembuj: e Premte, 7 Mars 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Ngjarjet aktuale"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Formati i datës dhe orës"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formatët e datës dhe orës"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Formati i zgjedhësit të datës"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Teksti ndihmës i zgjedhësit të datës"
+
+#: 
+msgid "Date Without Year"
+msgstr "Data pa vit"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Dita, 2 shifra"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Dita, pa zero kryesore"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "I paracaktuar: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "I paracaktuar: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Shembull: \"l, j F Y\" prodhon \"Friday, 7 March 2025\". Çdo karakter tjetër (hapësirat, presjet, vijat e pjerrëta) shfaqet siç është shtypur."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Formati i datës për emrin e skedarit"
+
+#: 
+msgid "Fully translated."
+msgstr "Plotësisht i përkthyer."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Teksti ndihmës në fushat e datës. I paracaktuar: vvvv-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Formati i telefonit të shtëpisë/punës"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Ora 12h, 2 shifra"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Ora 12h, pa zero"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Ora 24h, 2 shifra"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Përfshin komponentin e kohës. I paracaktuar: m/d/V g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Gjuha dhe rajoni"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Gjuha, zona kohore, formatët e datës dhe telefonit"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalizimi dhe formatët"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Cilësimet e lokalizimit u ruajtën me sukses"
+
+#: 
+msgid "Long Date Format"
+msgstr "Formati i gjatë i datës"
+
+#: 
+msgid "Minutes"
+msgstr "Minutat"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Muaji dhe viti"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Muaji, 2 shifra"
+
+#: 
+msgid "Month, full"
+msgstr "Muaji, emri i plotë"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Muaji, pa zero kryesore"
+
+#: 
+msgid "Month, short"
+msgstr "Muaji, i shkurtër"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nuk është instaluar në server — datat dhe numrat mund të mos formatohen saktë. Kërkojini hostin tuaj ta instalojë (p.sh. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Formati PHP për zgjedhësin e datës. I paracaktuar: V-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formatët e numrit të telefonit"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon me zgjerim"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Ruaj cilësimet e lokalizimit"
+
+#: 
+msgid "Selected Language"
+msgstr "Gjuha e zgjedhur"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Mbështetja e lokaleve të serverit nuk mund të kontrollohej (exec është çaktivizuar)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Mbështetet — ky lokal është instaluar në server."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Gjuha e sistemit, zona kohore, formatët e datës/orës dhe formatët e numrit të telefonit"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Këto fusha përdorin kode formatimi (shkronja që përfaqësojnë pjesë të një date). Zgjidhni një paracaktim nën çdo fushë, ose ndërtoni tuajin duke përdorur referencën. Parapamja e drejtpërdrejtë tregon saktësisht si do të duket. Lëreni bosh për të përdorur paracaktimin e sistemit."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Kështu do të shfaqen datat dhe numrat e telefonit në të gjithë sistemin."
+
+#: 
+msgid "Translation completeness"
+msgstr "Plotësia e përkthimit"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Gjurmimi i përkthimit nuk është i disponueshëm për këtë gjuhë."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Përdorni 9 si zëvendësues shifre (p.sh. (999) 999-9999). Lëreni bosh për të përdorur paracaktimin e sistemit."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Përdoret në emrat e skedarëve të eksportuar. I paracaktuar: Vmd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Përdoret në raporte dhe lista anëtarësh. I paracaktuar: m/d/V"
+
+#: 
+msgid "Weekday, full"
+msgstr "Dita e javës, e plotë"
+
+#: 
+msgid "Weekday, short"
+msgstr "Dita e javës, e shkurtër"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Çfarë do të thotë këto kode?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Viti, 2 shifra"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Viti, 4 shifra"
+
+#: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
+msgid "past"
+msgstr "e kaluar"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroate"
+
+#: 
+msgid "%s's Account"
+msgstr "Llogaria e %s"
+
+#: 
+msgid "Access"
+msgstr "Qasje"
+
+#: 
+msgid "Access level"
+msgstr "Niveli i qasjes"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratorët kanë qasje të plotë në të gjitha funksionet dhe të dhënat. Lejet individuale nuk zbatohen."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Të gjithë përdoruesit mund të shohin anëtarët e kongregacionit. Kjo leje nuk mund të hiqet."
+
+#: 
+msgid "Always granted"
+msgstr "Gjithmonë e dhënë"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Mund të rishikojë dhe verifikojë vetëm familjen e vet. Asnjë qasje tjetër."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Zgjidhni lejet specifike më poshtë."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontaktoni një administrator për të ndryshuar lejet tuaja."
+
+#: 
+msgid "Custom permissions"
+msgstr "Leje të personalizuara"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Qasje e plotë — jep të gjitha privilegjet."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Jepni leje individuale:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Nëse keni nevojë për qasje shtesë, ju lutemi kontaktoni administratorin e kishës suaj."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Njerëz &amp; Familje"
+
+#: 
+msgid "Self-service"
+msgstr "Vetëshërbim"
+
+#: 
+msgid "Self-service only"
+msgstr "Vetëm vetëshërbim"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Shënimi që po përpiqeni të redaktoni nuk ekziston më."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Ky përdorues mund të rishikojë dhe përditësojë vetëm profilin e familjes së vet. Lejet individuale nuk zbatohen."
+
+#: 
+msgid "User List"
+msgstr "Lista e Përdoruesve"
+
+#: 
+msgid "View Person"
+msgstr "Shiko Personin"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nuk keni leje për të shtuar një shënim për këtë familje."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nuk keni leje për të shtuar një shënim për këtë person."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nuk keni leje për të redaktuar këtë shënim"
+
+#: 
+msgid "Account locked"
+msgstr "Llogaria e bllokuar"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Llogaria u bllokua për shkak të shumë tentativave të dështuara të hyrjes"
+
+#: 
+msgid "Account status"
+msgstr "Statusi i llogarisë"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avancuar: zgjidhni një version të synuar specifik"
+
+#: 
+msgid "Bug Fix"
+msgstr "Korrigjim gabimi"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Si parazgjedhje, magjistari shkarkon lëshimin tjetër të rekomanduar. Mund të zgjidhni çdo version të disponueshëm më poshtë."
+
+#: 
+msgid "Change required"
+msgstr "Ndryshim i kërkuar"
+
+#: 
+msgid "Changelog"
+msgstr "Regjistri i ndryshimeve"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Vazhdo gjithsesi"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nuk mund të ngarkohej informacioni i lëshimit."
+
+#: 
+msgid "Download & Install"
+msgstr "Shkarko dhe instalo"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Shkarkoni versionin {{version}} dhe aplikojeni në instalimin tuaj."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Duke shkarkuar lëshimin nga GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Tentativa të dështuara hyrjeje"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Dështoi marrja e pamjes paraprake të përditësimit"
+
+#: 
+msgid "Feature"
+msgstr "Veçori"
+
+#: 
+msgid "Full changelog"
+msgstr "Regjistri i plotë i ndryshimeve"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Instalo versionin e qëndrueshëm {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Duke instaluar lëshimin tjetër"
+
+#: 
+msgid "Invalid file path"
+msgstr "Shteg i skedarit jo i vlefshëm"
+
+#: 
+msgid "Invalid version format"
+msgstr "Format versioni jo i vlefshëm"
+
+#: 
+msgid "Last login"
+msgstr "Hyrja e fundit"
+
+#: 
+msgid "Loading release information..."
+msgstr "Duke ngarkuar informacionin e lëshimit..."
+
+#: 
+msgid "Locked"
+msgstr "Bllokuar"
+
+#: 
+msgid "Major"
+msgstr "Kryesor"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Mungojnë fushat e kërkuara: fullPath dhe sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Duhet të ndryshojë fjalëkalimin"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Nuk ka shënime lëshimi të disponueshme për këtë version."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nuk ka përditësime të disponueshme për versionin tuaj aktual."
+
+#: 
+msgid "Password change required"
+msgstr "Ndryshimi i fjalëkalimit është i kërkuar"
+
+#: 
+msgid "Password status"
+msgstr "Statusi i fjalëkalimit"
+
+#: 
+msgid "Re-install current version"
+msgstr "Riinstalo versionin aktual"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Rivendosja dështoi dhe baza e të dhënave mund të jetë në gjendje të paplotë. Kontrolloni regjistrin e aplikacionit për detaje, pastaj rivendosni një kopje rezervë të njohur para se të përdorni sistemin."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Rivendosja dështoi: skedari i kopjes rezervë duket i paplotë ose nuk është një kopje rezervë SQL e vlefshme. Baza e të dhënave është tani në gjendje të paplotë — rivendosni një kopje rezervë të njohur para se të përdorni sistemin."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Duke ekzekutuar para-lëshimin"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Shfaq rrugën e plotë të përditësimit"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Lëshimi i fundit i qëndrueshëm është {{version}}. Mund ta riinstaloni më poshtë."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Kjo llogari është bllokuar për shkak të shumë tentativave të dështuara të hyrjes."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Ky përdorues duhet të vendosë një fjalëkalim të ri herën tjetër që të identifikohet."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Përdoruesi duhet të ndryshojë fjalëkalimin e tij në hyrjen tjetër"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Përdoruesi duhet të ketë leje Email"
+
+#: 
+msgid "View release notes"
+msgstr "Shiko shënimet e lëshimit"
+
+#: 
+msgid "What's New"
+msgstr "Çfarë është e re"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Çfarë është e re në {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Ju jeni <strong>{{releaseCount}}</strong> lëshime prapa. Ja çfarë do të fitoni:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Ju po ekzekutoni një version para-lëshimi."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Mund të vazhdoni gjithsesi me përditësimin pa parë shënimet e lëshimit."
+
+#: 
+msgid "You're up to date!"
+msgstr "Jeni të përditësuar!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Duhet të zgjidhet një person i vlefshëm."
+
+#: 
+msgid "Add Donors"
+msgstr "Shto Donatorë"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Shto në Listën e Blerësve"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Cakto automatikisht numrat e pagajave për të gjithë donatorët e artikujve"
+
+#: 
+msgid "Create a new user account"
+msgstr "Krijo një llogari të re përdoruesi"
+
+#: 
+msgid "Delete this item?"
+msgstr "Fshi këtë artikull?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Fshi këtë numër pagaje?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Ndrysho Blerësin"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Identifikimi është tashmë në përdorim, ju lutemi zgjidhni një identifikim tjetër!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Identifikimi duhet të ketë të paktën 3 karaktere!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Administro Mbledhjet e Fondeve"
+
+#: 
+msgid "New User"
+msgstr "Përdorues i Ri"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Ju lutemi zgjidhni një person për të cilin të krijohet llogaria e përdoruesit."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Ju lutemi zgjidhni të paktën një blerës për të gjeneruar deklaratat."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Kthehu te Paneli i Mbledhjes së Fondeve"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Personi i zgjedhur nuk u gjet."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Ky veprim do të shtojë automatikisht numrat e pagajave për të gjithë donatorët e artikujve në këtë mbledhje fondesh që nuk kanë ende një numër blerësi të caktuar."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Ky person ka tashmë një llogari përdoruesi."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Përdoruesi duhet të jetë Administrator ose të ketë leje për Administrimin e Mbledhjes së Fondeve"
+
+#: 
+msgid "User not found."
+msgstr "Përdoruesi nuk u gjet."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Zgjidhni një person —"
 

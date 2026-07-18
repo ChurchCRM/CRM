@@ -58,7 +58,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     }
 
     // GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person
-    if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+    if (!$currentUser->canReadPerson($iPersonID)) {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
     }
 
@@ -85,9 +85,9 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $headerButtons = [];
     if ($currentUser->isAdmin()) {
         if (!$person->isUser()) {
-            $headerButtons[] = ['label' => gettext('Make User'), 'url' => '/UserEditor.php?NewPersonID=' . $iPersonID, 'icon' => 'fa-person-chalkboard'];
+            $headerButtons[] = ['label' => gettext('Make User'), 'url' => '/admin/system/users/new?personId=' . $iPersonID, 'icon' => 'fa-person-chalkboard'];
         } else {
-            $headerButtons[] = ['label' => gettext('Edit User'), 'url' => '/UserEditor.php?PersonID=' . $iPersonID, 'icon' => 'fa-user-secret'];
+            $headerButtons[] = ['label' => gettext('Edit User'), 'url' => '/admin/system/users/' . $iPersonID . '/edit', 'icon' => 'fa-user-secret'];
             $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye'];
         }
     } elseif ($person->isUser() && $person->getId() === $currentUser->getId()) {

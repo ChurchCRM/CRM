@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Ayarları kaydet"
 
 #: 
-msgid "Default User Settings"
-msgstr "Varsayılan Kullanıcı Ayarları"
-
-#: 
 msgid "Permission"
 msgstr "İzin"
 
@@ -2028,18 +2024,6 @@ msgid "Login Name"
 msgstr "Kullanıcı adı"
 
 #: 
-msgid "Add Records"
-msgstr "Kayıt ekle"
-
-#: 
-msgid "Edit Records"
-msgstr "Kayıtları Düzenle"
-
-#: 
-msgid "Delete Records"
-msgstr "Kayıtları Sil"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Özellikleri ve sınıflandırmaları yönetin"
 
@@ -2050,14 +2034,6 @@ msgstr "Grupları ve rolleri yönetin"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Bağışları ve finansmanı yönetin"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Notları görüntüleyin, ekle ve düzenleyin"
-
-#: 
-msgid "Edit Self"
-msgstr "Kendini düzenle"
 
 #: 
 msgid "Admin"
@@ -2967,10 +2943,6 @@ msgstr "Alıcı listesine bağışçılar ekleyin"
 #: 
 msgid "Data/Reports"
 msgstr "Veri/Raporlar"
-
-#: 
-msgid "Query Menu"
-msgstr "Sorgu Menüsü"
 
 #: 
 msgid "Family Properties"
@@ -5592,10 +5564,6 @@ msgid "Permissions"
 msgstr "İzin"
 
 #: 
-msgid "Manage Notes"
-msgstr "Notları Yönetin"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Ailenin Rehin Özeti"
 
@@ -6491,10 +6459,6 @@ msgstr "Kapat ve Yenile"
 #: 
 msgid "Confirm Deletion"
 msgstr "Silmeyi Onayla"
-
-#: 
-msgid "Create directory permission"
-msgstr "Dizin oluşturma izni"
 
 #: 
 msgid "Database Only"
@@ -9112,10 +9076,6 @@ msgid "Inactive Groups"
 msgstr "Aktif Olmayan Gruplar"
 
 #: 
-msgid "Language & Localization"
-msgstr "Dil ve Yerelleştirme"
-
-#: 
 msgid "Map"
 msgstr "Harita"
 
@@ -9512,10 +9472,6 @@ msgstr "Bağış toplama kampanyalarına göz atın ve arayın"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "Cemaat üyelerinin fotoğraflarına göz atın"
-
-#: 
-msgid "Buyer Number"
-msgstr "Alıcı Numarası"
 
 #: 
 msgid "Buyers"
@@ -10560,16 +10516,8 @@ msgid "Server Error"
 msgstr "Sunucu Hatası"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Yeni kullanıcılara mevcut değerlerini değiştirme yeteneği vermek için İzni Doğru olarak ayarlayın."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Şifreleri sıfırlayabilmeniz ve bildirimler alabilmeniz için bir yönetici e-postası belirleyin"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Yeni kullanıcı hesapları için varsayılan tercihleri belirle"
 
 #: 
 msgid "Set up"
@@ -10912,10 +10860,6 @@ msgid "— Select type (optional) —"
 msgstr "— Tür seçin (isteğe bağlı) —"
 
 #: 
-msgid "Active Events"
-msgstr "Aktif Etkinlikler"
-
-#: 
 msgid "Add Event"
 msgstr "Etkinlik Ekle"
 
@@ -11054,10 +10998,6 @@ msgstr "Not metni gereklidir"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Yalnızca not yazarı veya bir yönetici bu notu silebilir"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Yalnızca not yazarı veya bir yönetici bu notu düzenleyebilir"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11622,11 +11562,6 @@ msgstr "Bu değerler yeni aileler oluşturulurken önceden doldurulur. Manuel gi
 #: 
 msgid "Unit used to measure distance."
 msgstr "Mesafeyi ölçmek için kullanılan birim."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Dizin oluşturmak için kullanıcı izni"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12666,10 +12601,6 @@ msgstr "Yalnızca veritabanı (.sql) veya tam arşiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Veri tablolarında gösterilen varsayılan satır sayısı. Bir sonraki sayfa yüklemesinde geçerli olur."
 
-#: 
-msgid "Edit own family only"
-msgstr "Yalnızca kendi ailesini düzenle"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12682,10 +12613,6 @@ msgstr "Dilinizdeki yanlış veya garip çevirileri düzeltme"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Çevirilerde bir hata mı buldunuz?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Tüm ayrıcalıkları verir"
 
 #: 
 msgid "Green"
@@ -14131,22 +14058,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV dosyanızda yinelenen sütun adları var. Yinelenen sütunları yeniden adlandırın (örneğin ikincisine \"(2)\" ekleyin) ve tekrar yükleyin."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Bu bağışlanan ürünü kalıcı olarak silmek istediğinizden emin misiniz?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Bu paddle numarasını kalıcı olarak silmek istediğinizden emin misiniz?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Bağışlanan Ürünü Sil"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Paddle Numarasını Sil"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Geçersiz güvenlik tokenı. Lütfen tekrar deneyin."
 
@@ -14647,12 +14558,20 @@ msgid "You do not have permission to edit this note."
 msgstr "Bu notu düzenleme izniniz yok."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Özel Not — yalnızca oluşturan kişi tarafından görülebilir]"
-
-#: 
 msgid "seconds"
 msgstr "saniye"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Etkinlik silinemez: %d kişi şu anda giriş yapmıştır."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Etkinlik silinemez: etkinlik şu anda bir kioyska atanmıştır."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Grup silinemez: %d etkinlik(ler) için kitledir ve %d etkinlik türü(nü) için varsayılan gruptur. Önce bunları yeniden atayın."
 
 #: 
 msgid "A Calendar access token has been generated and saved."
@@ -15039,10 +14958,6 @@ msgid "Downloaded"
 msgstr "İndirildi"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "En son sürüm GitHub'dan indiriliyor..."
-
-#: 
 msgid "Duration"
 msgstr "Süre"
 
@@ -15328,6 +15243,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "Rol seçimi istemi için gerekli GroupId"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Kimlik doğrulayıcı uygulamanızı hazır bulundurun (Google Authenticator, Microsoft Authenticator, Authy vb.)"
 
@@ -15338,6 +15257,10 @@ msgstr "Gelişmiş seçenekleri gizle"
 #: 
 msgid "Home phone is required"
 msgstr "Ev telefonu gereklidir"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16256,4 +16179,644 @@ msgstr "— Ülke Seçin —"
 #: 
 msgid "— Select State —"
 msgstr "— İl Seçin —"
+
+#: 
+msgid "Account options"
+msgstr "Hesap seçenekleri"
+
+#: 
+msgid "Register"
+msgstr "Kayıt Ol"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakça"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d geçmiş etkinlik"
+msgstr[1] "%d geçmiş etkinlik"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "Bu dil için arayüz metninin %d%%'si çevrilmiştir."
+
+#: 
+msgid "AM / PM"
+msgstr "ÖÖ / ÖS"
+
+#: 
+msgid "Access denied"
+msgstr "Erişim reddedildi"
+
+#: 
+msgid "All times shown in"
+msgstr "Tüm saatler şurada gösteriliyor:"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Doğum günleri ve yıldönümleri. Varsayılan: a/g"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Takvim silinemiyor: %d etkinlik hâlâ buna atanmış. Önce bunları kaldırın veya yeniden atayın."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Cep Telefonu Biçimi"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Yaygın biçimlendirme kodları (örnekler: Cuma, 7 Mart 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Mevcut Etkinlikler"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Tarih ve Saat Biçimi"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Tarih ve Saat Biçimleri"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Tarih Seçici Biçimi"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Tarih Seçici Yer Tutucu"
+
+#: 
+msgid "Date Without Year"
+msgstr "Yılsız Tarih"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Gün, 2 basamak"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Gün, başında sıfır yok"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Varsayılan: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Varsayılan: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Örnek: \"l, j F Y\" → \"Cuma, 7 Mart 2025\". Diğer karakterler (boşluklar, virgüller, eğik çizgiler) yazıldığı gibi görünür."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Dosya Adı Tarih Biçimi"
+
+#: 
+msgid "Fully translated."
+msgstr "Tamamen çevrildi."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Tarih alanlarında gösterilen ipucu metni. Varsayılan: yyyy-aa-gg"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Ev/İş Telefon Biçimi"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Saat 12s, 2 basamak"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Saat 12s, sıfır yok"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Saat 24s, 2 basamak"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Saat bileşeni içerir. Varsayılan: a/g/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Dil ve Bölge"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Dil, saat dilimi, tarih ve telefon biçimleri"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Yerelleştirme ve Biçimler"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Yerelleştirme ayarları başarıyla kaydedildi"
+
+#: 
+msgid "Long Date Format"
+msgstr "Uzun Tarih Biçimi"
+
+#: 
+msgid "Minutes"
+msgstr "Dakikalar"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Ay ve Yıl"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Ay, 2 basamak"
+
+#: 
+msgid "Month, full"
+msgstr "Ay, tam adı"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Ay, başında sıfır yok"
+
+#: 
+msgid "Month, short"
+msgstr "Ay, kısaltma"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Sunucuya yüklü değil — tarihler ve sayılar bu yerel ayar için doğru biçimlenmeyebilir. Barındırıcınızdan yüklemesini isteyin (ör. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Tarih seçici için PHP biçimi. Varsayılan: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Telefon Numarası Biçimleri"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Dahili Numaralı Telefon"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Yerelleştirme Ayarlarını Kaydet"
+
+#: 
+msgid "Selected Language"
+msgstr "Seçilen Dil"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Sunucu yerel ayarı desteği kontrol edilemedi (exec devre dışı)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Destekleniyor — bu yerel ayar sunucuya yüklü."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Sistem dili, saat dilimi, tarih/saat biçimleri ve telefon numarası biçimleri"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Bu alanlar biçimlendirme kodları kullanır (tarihin bölümlerini temsil eden harfler). Her alanın altından bir ön ayar seçin ya da referansı kullanarak kendinizinkini oluşturun. Canlı önizleme tam olarak nasıl görüneceğini gösterir. Sistem varsayılanını kullanmak için boş bırakın."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Tarihler ve telefon numaraları sistem genelinde bu şekilde görünecektir."
+
+#: 
+msgid "Translation completeness"
+msgstr "Çeviri Tamlığı"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Bu dil için çeviri takibi mevcut değil."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Rakam yer tutucu olarak 9 kullanın (ör. (999) 999-9999). Sistem varsayılanını kullanmak için boş bırakın."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Dışa aktarılan dosya adlarında kullanılır. Varsayılan: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Raporlarda ve üye listelerinde kullanılır. Varsayılan: a/g/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Haftanın Günü, tam"
+
+#: 
+msgid "Weekday, short"
+msgstr "Haftanın Günü, kısa"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Bu kodlar ne anlama geliyor?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Yıl, 2 basamak"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Yıl, 4 basamak"
+
+#: 
+msgid "am / pm"
+msgstr "öö / ös"
+
+#: 
+msgid "past"
+msgstr "geçmiş"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Hırvatça"
+
+#: 
+msgid "%s's Account"
+msgstr "%s Hesabı"
+
+#: 
+msgid "Access"
+msgstr "Erişim"
+
+#: 
+msgid "Access level"
+msgstr "Erişim düzeyi"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Yöneticiler tüm özelliklere ve verilere tam erişime sahiptir. Bireysel izinler geçerli değildir."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Tüm kullanıcılar cemaat üyelerini görüntüleyebilir. Bu izin kaldırılamaz."
+
+#: 
+msgid "Always granted"
+msgstr "Her zaman verilir"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Yalnızca kendi ailesini inceleyebilir ve doğrulayabilir. Başka erişim yoktur."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Aşağıdan belirli izinleri seçin."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "İzinlerinizi değiştirmek için bir yöneticiyle iletişime geçin."
+
+#: 
+msgid "Custom permissions"
+msgstr "Özel izinler"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Tam erişim — tüm ayrıcalıkları verir."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Bireysel izinler ver:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ek erişime ihtiyaç duyarsanız lütfen kilise yöneticinizle iletişime geçin."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Kişiler &amp; Aileler"
+
+#: 
+msgid "Self-service"
+msgstr "Self servis"
+
+#: 
+msgid "Self-service only"
+msgstr "Yalnızca self servis"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Düzenlemeye çalıştığınız not artık mevcut değil."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Bu kullanıcı yalnızca kendi aile profilini inceleyebilir ve güncelleyebilir. Bireysel izinler geçerli değildir."
+
+#: 
+msgid "User List"
+msgstr "Kullanıcı Listesi"
+
+#: 
+msgid "View Person"
+msgstr "Kişiyi Görüntüle"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Bu aile için not ekleme izniniz yok."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Bu kişi için not ekleme izniniz yok."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Bu notu düzenleme izniniz yok"
+
+#: 
+msgid "Account locked"
+msgstr "Hesap kilitlendi"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Çok fazla başarısız giriş denemesi nedeniyle hesap kilitlendi"
+
+#: 
+msgid "Account status"
+msgstr "Hesap durumu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Gelişmiş: belirli bir hedef sürüm seçin"
+
+#: 
+msgid "Bug Fix"
+msgstr "Hata Düzeltmesi"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Sihirbaz varsayılan olarak önerilen sonraki sürümü indirir. Bunun yerine aşağıdan mevcut herhangi bir sürümü seçebilirsiniz."
+
+#: 
+msgid "Change required"
+msgstr "Değişiklik gerekli"
+
+#: 
+msgid "Changelog"
+msgstr "Değişiklik günlüğü"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Yine de devam et"
+
+#: 
+msgid "Could not load release information."
+msgstr "Sürüm bilgileri yüklenemedi."
+
+#: 
+msgid "Download & Install"
+msgstr "İndir ve Yükle"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "{{version}} sürümünü indirin ve kurulumunuza uygulayın."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHub'dan sürüm indiriliyor..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Başarısız giriş denemeleri"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Yükseltme önizlemesi alınamadı"
+
+#: 
+msgid "Feature"
+msgstr "Özellik"
+
+#: 
+msgid "Full changelog"
+msgstr "Tam değişiklik günlüğü"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Kararlı {{version}} sürümünü yükle"
+
+#: 
+msgid "Installing next release"
+msgstr "Sonraki sürüm yükleniyor"
+
+#: 
+msgid "Invalid file path"
+msgstr "Geçersiz dosya yolu"
+
+#: 
+msgid "Invalid version format"
+msgstr "Geçersiz sürüm formatı"
+
+#: 
+msgid "Last login"
+msgstr "Son giriş"
+
+#: 
+msgid "Loading release information..."
+msgstr "Sürüm bilgileri yükleniyor..."
+
+#: 
+msgid "Locked"
+msgstr "Kilitli"
+
+#: 
+msgid "Major"
+msgstr "Ana"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Zorunlu alanlar eksik: fullPath ve sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Şifre değiştirilmeli"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Bu sürüm için sürüm notu bulunmamaktadır."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Mevcut sürümünüz için yükseltme bulunmamaktadır."
+
+#: 
+msgid "Password change required"
+msgstr "Şifre değişikliği gerekli"
+
+#: 
+msgid "Password status"
+msgstr "Şifre durumu"
+
+#: 
+msgid "Re-install current version"
+msgstr "Mevcut sürümü yeniden yükle"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Geri yükleme başarısız oldu ve veritabanı eksik bir durumda olabilir. Ayrıntılar için uygulama günlüğünü kontrol edin, ardından sistemi kullanmadan önce bilinen iyi bir yedeği geri yükleyin."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Geri yükleme başarısız oldu: yedek dosyası eksik görünüyor veya geçerli bir SQL yedeği değil. Veritabanı şu anda eksik bir durumda — sistemi kullanmadan önce bilinen iyi bir yedeği geri yükleyin."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Ön sürüm çalışıyor"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Tam yükseltme yolunu göster"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "En son kararlı sürüm {{version}}. Aşağıdan yeniden yükleyebilirsiniz."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Bu hesap çok fazla başarısız giriş denemesi nedeniyle kilitlendi."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Bu kullanıcı bir sonraki girişinde yeni bir şifre belirlemelidir."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Kullanıcı bir sonraki girişte şifresini değiştirmelidir"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Kullanıcının E-posta iznine sahip olması gerekir"
+
+#: 
+msgid "View release notes"
+msgstr "Sürüm notlarını görüntüle"
+
+#: 
+msgid "What's New"
+msgstr "Yenilikler"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} Sürümündeki Yenilikler"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong> sürüm geride kaldınız. İşte kazanacaklarınız:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Bir ön sürüm çalıştırıyorsunuz."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Sürüm notlarını görüntülemeden yükseltmeye devam edebilirsiniz."
+
+#: 
+msgid "You're up to date!"
+msgstr "Güncelsiniz!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Geçerli bir kişi seçilmelidir."
+
+#: 
+msgid "Add Donors"
+msgstr "Bağışçı Ekle"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Alıcı Listesine Ekle"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tüm kalem bağışçılarına otomatik kürek numarası ata"
+
+#: 
+msgid "Create a new user account"
+msgstr "Yeni kullanıcı hesabı oluştur"
+
+#: 
+msgid "Delete this item?"
+msgstr "Bu öğe silinsin mi?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Bu kürek numarası silinsin mi?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Alıcıyı Düzenle"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Bu giriş adı zaten kullanımda, lütfen farklı bir giriş adı seçin!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Giriş adı en az 3 karakter olmalıdır!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Bağış Kampanyalarını Yönet"
+
+#: 
+msgid "New User"
+msgstr "Yeni Kullanıcı"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Kullanıcı hesabı oluşturmak için lütfen bir kişi seçin."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Ekstre oluşturmak için lütfen en az bir alıcı seçin."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Bağış Kampanyası Panosuna Dön"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Seçilen kişi bulunamadı."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Bu işlem, bu bağış kampanyasında henüz alıcı numarası atanmamış tüm kalem bağışçılarına otomatik olarak kürek numarası ekleyecektir."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Bu kişinin zaten bir kullanıcı hesabı var."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Kullanıcı Yönetici olmalı veya Bağış Kampanyalarını Yönet iznine sahip olmalıdır"
+
+#: 
+msgid "User not found."
+msgstr "Kullanıcı bulunamadı."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Bir kişi seçin —"
 

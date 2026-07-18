@@ -2069,10 +2069,6 @@ msgid "Save Settings"
 msgstr "Lagre innstillinger"
 
 #: 
-msgid "Default User Settings"
-msgstr "Standard brukerinnstillinger"
-
-#: 
 #, fuzzy
 msgid "Permission"
 msgstr "Person"
@@ -2106,20 +2102,6 @@ msgstr "Logg Navn"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Legg Records"
-
-#: 
-msgid "Edit Records"
-msgstr "Rediger poster"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Slett Records"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Administrere Egenskaper og klassifikasjoner"
 
@@ -2132,16 +2114,6 @@ msgstr "Administrere grupper og roller"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Administrere Donasjoner og finans"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Vise, til og redigere notater"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Rediger deg selv"
 
 #: 
 msgid "Admin"
@@ -3067,10 +3039,6 @@ msgstr "Legg til donorer i kjøperlisten"
 #: 
 msgid "Data/Reports"
 msgstr "Data/Rapporter"
-
-#: 
-msgid "Query Menu"
-msgstr "Spørringsmeny"
 
 #: 
 msgid "Family Properties"
@@ -5676,10 +5644,6 @@ msgid "Permissions"
 msgstr "Tillatelser"
 
 #: 
-msgid "Manage Notes"
-msgstr "Administrer notater"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Løftesammendrag per familie"
 
@@ -6575,10 +6539,6 @@ msgstr "Lukk og oppdater"
 #: 
 msgid "Confirm Deletion"
 msgstr "Bekreft sletting"
-
-#: 
-msgid "Create directory permission"
-msgstr "Tillatelse til å opprette mappe"
 
 #: 
 msgid "Database Only"
@@ -9196,10 +9156,6 @@ msgid "Inactive Groups"
 msgstr "Inaktive grupper"
 
 #: 
-msgid "Language & Localization"
-msgstr "Språk og lokalisering"
-
-#: 
 msgid "Map"
 msgstr "Kart"
 
@@ -9596,10 +9552,6 @@ msgstr "Bla gjennom og søk blant innsamlingsaksjoner"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "Bla gjennom bilder av menighetsmedlemmer"
-
-#: 
-msgid "Buyer Number"
-msgstr "Kjøpernummer"
 
 #: 
 msgid "Buyers"
@@ -10644,16 +10596,8 @@ msgid "Server Error"
 msgstr "Serverfeil"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Sett tillatelse til Sann for å gi nye brukere mulighet til å endre gjeldende verdi."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Angi en e-postadresse for administrator slik at du kan tilbakestille passord og motta varsler"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Angi standardpreferanser for nye brukerkontoer"
 
 #: 
 msgid "Set up"
@@ -10996,10 +10940,6 @@ msgid "— Select type (optional) —"
 msgstr "— Velg type (valgfritt) —"
 
 #: 
-msgid "Active Events"
-msgstr "Aktive arrangementer"
-
-#: 
 msgid "Add Event"
 msgstr "Legg til arrangement"
 
@@ -11138,10 +11078,6 @@ msgstr "Notattekst er påkrevd"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Bare notatforfatteren eller en administrator kan slette dette notatet"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Bare notatforfatteren eller en administrator kan redigere dette notatet"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11706,11 +11642,6 @@ msgstr "Disse verdiene fylles inn på forhånd når du oppretter nye familier. L
 #: 
 msgid "Unit used to measure distance."
 msgstr "Enhet som brukes for å måle avstand."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Brukerrettighet for å opprette kataloger"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12750,10 +12681,6 @@ msgstr "Kun database (.sql) eller fullstendig arkiv (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Standard antall rader vist i datatabeller. Trer i kraft ved neste sideinnlasting."
 
-#: 
-msgid "Edit own family only"
-msgstr "Rediger kun egen familie"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12766,10 +12693,6 @@ msgstr "Rette feilaktige eller klønete oversettelser på ditt språk"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Fant en feil med oversettelser?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Gir alle rettigheter"
 
 #: 
 msgid "Green"
@@ -14215,22 +14138,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV-filen din har duplikate kolonnenavn. Gi de duplikate kolonnene nytt navn (f.eks. legg til \"(2)\" til den andre) og last opp igjen."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Er du sikker på at du vil slette dette donerte elementet permanent?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Er du sikker på at du vil slette dette budnummeret permanent?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Slett donert element"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Slett budnummer"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Ugyldig sikkerhetstoken. Vennligst prøv igjen."
 
@@ -14731,10 +14638,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Du har ikke tillatelse til å redigere dette notatet."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privat notat — kun synlig for oppretteren]"
-
-#: 
 msgid "seconds"
 msgstr "sekunder"
 
@@ -15133,10 +15036,6 @@ msgstr "Last ned sikkerhetskopi og fortsett"
 #: 
 msgid "Downloaded"
 msgstr "Nedlastet"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Laster ned siste utgivelse fra GitHub..."
 
 #: 
 msgid "Duration"
@@ -16360,4 +16259,644 @@ msgstr "— Velg land —"
 #: 
 msgid "— Select State —"
 msgstr "— Velg fylke —"
+
+#: 
+msgid "Account options"
+msgstr "Kontoalternativer"
+
+#: 
+msgid "Register"
+msgstr "Registrer"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakisk"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d tidligere hendelse"
+msgstr[1] "%d tidligere hendelser"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% av grensesnitteksten er oversatt for dette språket."
+
+#: 
+msgid "AM / PM"
+msgstr "FM / EM"
+
+#: 
+msgid "Access denied"
+msgstr "Tilgang nektet"
+
+#: 
+msgid "All times shown in"
+msgstr "Alle tider vises i"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Fødselsdager og jubileer. Standard: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Kan ikke slette kalender: %d hendelse(r) er fortsatt tilknyttet. Fjern eller tilordne dem på nytt først."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Format for mobiltelefon"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Vanlige formateringskoder (eksempler: fredag 7. mars 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Aktuelle hendelser"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Dato- og tidsformat"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Dato- og tidsformater"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Format for datoplukker"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Plassholder for datoplukker"
+
+#: 
+msgid "Date Without Year"
+msgstr "Dato uten år"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Dag, 2 sifre"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Dag, uten ledende null"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Standard: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Standard: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Eksempel: \"l, j F Y\" gir \"Fredag, 7 Mars 2025\". Alle andre tegn (mellomrom, kommaer, skråstreker) vises som skrevet."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Datoformat for filnavn"
+
+#: 
+msgid "Fully translated."
+msgstr "Fullstendig oversatt."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Hjelpetekst i datofelt. Standard: åååå-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Format for hjem/jobbtelefon"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Time 12t, 2 sifre"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Time 12t, uten null"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Time 24t, 2 sifre"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Inkluderer tidskomponent. Standard: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Språk og region"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Språk, tidssone, dato- og telefonformater"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalisering og formater"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Lokaliseringsinnstillingene ble lagret"
+
+#: 
+msgid "Long Date Format"
+msgstr "Langt datoformat"
+
+#: 
+msgid "Minutes"
+msgstr "Minutter"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Måned og år"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Måned, 2 sifre"
+
+#: 
+msgid "Month, full"
+msgstr "Måned, fullt navn"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Måned, uten ledende null"
+
+#: 
+msgid "Month, short"
+msgstr "Måned, forkortet"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Ikke installert på serveren — datoer og tall formateres kanskje ikke riktig. Be verten om å installere det (f.eks. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP-format for datoplukker. Standard: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formater for telefonnummer"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon med intern"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Lagre lokaliseringsinnstillinger"
+
+#: 
+msgid "Selected Language"
+msgstr "Valgt språk"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Serverlokalens støtte kunne ikke kontrolleres (exec er deaktivert)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Støttes — denne lokalen er installert på serveren."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Systemspråk, tidssone, dato-/tidsformater og telefonnummerformater"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Disse feltene bruker formateringskoder (bokstaver som representerer deler av en dato). Velg et forhåndsinnstilt alternativ under hvert felt, eller lag ditt eget med referansen. Forhåndsvisningen viser nøyaktig resultatet. La stå tomt for å bruke systemstandarden."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Slik vises datoer og telefonnumre i hele systemet."
+
+#: 
+msgid "Translation completeness"
+msgstr "Oversettelsesgrad"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Oversettingssporing er ikke tilgjengelig for dette språket."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Bruk 9 som sifferplassholder (f.eks. (999) 999-9999). La stå tomt for systemstandarden."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Brukes i eksporterte filnavn. Standard: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Brukes i rapporter og medlemslister. Standard: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Ukedag, fullt navn"
+
+#: 
+msgid "Weekday, short"
+msgstr "Ukedag, forkortet"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Hva betyr disse kodene?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "År, 2 sifre"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "År, 4 sifre"
+
+#: 
+msgid "am / pm"
+msgstr "fm / em"
+
+#: 
+msgid "past"
+msgstr "fortid"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroatisk"
+
+#: 
+msgid "%s's Account"
+msgstr "%s sin konto"
+
+#: 
+msgid "Access"
+msgstr "Tilgang"
+
+#: 
+msgid "Access level"
+msgstr "Tilgangsnivå"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratorer har full tilgang til alle funksjoner og data. Individuelle tillatelser gjelder ikke."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Alle brukere kan se menighetsmedlemmer. Denne tillatelsen kan ikke fjernes."
+
+#: 
+msgid "Always granted"
+msgstr "Alltid innvilget"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Kan kun gjennomgå og bekrefte sin egen familie. Ingen annen tilgang."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Velg spesifikke tillatelser nedenfor."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontakt en administrator for å endre tillatelsene dine."
+
+#: 
+msgid "Custom permissions"
+msgstr "Egendefinerte tillatelser"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Full tilgang — gir alle rettigheter."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Gi individuelle tillatelser:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Hvis du trenger ytterligere tilgang, kan du kontakte kirkens administrator."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Personer &amp; familier"
+
+#: 
+msgid "Self-service"
+msgstr "Selvbetjening"
+
+#: 
+msgid "Self-service only"
+msgstr "Kun selvbetjening"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Notatet du prøver å redigere eksisterer ikke lenger."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Denne brukeren kan kun gjennomgå og oppdatere sin egen familieprofil. Individuelle tillatelser gjelder ikke."
+
+#: 
+msgid "User List"
+msgstr "Brukerliste"
+
+#: 
+msgid "View Person"
+msgstr "Vis person"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Du har ikke tillatelse til å legge til et notat for denne familien."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Du har ikke tillatelse til å legge til et notat for denne personen."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Du har ikke tillatelse til å redigere dette notatet"
+
+#: 
+msgid "Account locked"
+msgstr "Konto låst"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Konto låst på grunn av for mange mislykkede innloggingsforsøk"
+
+#: 
+msgid "Account status"
+msgstr "Kontostatus"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avansert: velg en bestemt målversjon"
+
+#: 
+msgid "Bug Fix"
+msgstr "Feilretting"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Som standard laster veiviseren ned neste anbefalte versjon. Du kan i stedet velge en tilgjengelig versjon nedenfor."
+
+#: 
+msgid "Change required"
+msgstr "Endring påkrevd"
+
+#: 
+msgid "Changelog"
+msgstr "Endringslogg"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Fortsett likevel"
+
+#: 
+msgid "Could not load release information."
+msgstr "Kunne ikke laste inn versjonsinformasjon."
+
+#: 
+msgid "Download & Install"
+msgstr "Last ned og installer"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Last ned versjon {{version}} og bruk den på installasjonen din."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Laster ned versjon fra GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Mislykkede innloggingsforsøk"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Kunne ikke hente oppgraderingsforhåndsvisning"
+
+#: 
+msgid "Feature"
+msgstr "Funksjon"
+
+#: 
+msgid "Full changelog"
+msgstr "Fullstendig endringslogg"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installer stabil {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Installerer neste versjon"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ugyldig filbane"
+
+#: 
+msgid "Invalid version format"
+msgstr "Ugyldig versjonsformat"
+
+#: 
+msgid "Last login"
+msgstr "Siste innlogging"
+
+#: 
+msgid "Loading release information..."
+msgstr "Laster inn versjonsinformasjon..."
+
+#: 
+msgid "Locked"
+msgstr "Låst"
+
+#: 
+msgid "Major"
+msgstr "Større"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Påkrevde felt mangler: fullPath og sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Må bytte passord"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Ingen versjonsmerknader tilgjengelig for denne versjonen."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Ingen oppgraderinger er tilgjengelige for din nåværende versjon."
+
+#: 
+msgid "Password change required"
+msgstr "Passordbytte påkrevd"
+
+#: 
+msgid "Password status"
+msgstr "Passordstatus"
+
+#: 
+msgid "Re-install current version"
+msgstr "Installer gjeldende versjon på nytt"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Gjenoppretting mislyktes og databasen kan være i en ufullstendig tilstand. Sjekk applikasjonsloggen for detaljer, og gjenopprett deretter en kjent god sikkerhetskopi før du bruker systemet."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Gjenoppretting mislyktes: sikkerhetskopifilen ser ut til å være ufullstendig eller er ikke en gyldig SQL-sikkerhetskopi. Databasen er nå i en ufullstendig tilstand — gjenopprett en kjent god sikkerhetskopi før du bruker systemet."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Kjører forhåndsversjon"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Vis fullstendig oppgraderingsbane"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Den nyeste stabile versjonen er {{version}}. Du kan installere den på nytt nedenfor."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Denne kontoen er låst på grunn av for mange mislykkede innloggingsforsøk."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Denne brukeren må angi et nytt passord neste gang de logger inn."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Brukeren må bytte passord ved neste innlogging"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Brukeren må ha e-posttillatelse"
+
+#: 
+msgid "View release notes"
+msgstr "Vis versjonsmerknader"
+
+#: 
+msgid "What's New"
+msgstr "Hva er nytt"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Hva er nytt i {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Du er <strong>{{releaseCount}}</strong> versjoner etter. Her er hva du vil få:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Du kjører en forhåndsversjon."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Du kan fortsatt fortsette med oppgraderingen uten å vise versjonsmerknader."
+
+#: 
+msgid "You're up to date!"
+msgstr "Du er oppdatert!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "En gyldig person må velges."
+
+#: 
+msgid "Add Donors"
+msgstr "Legg til givere"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Legg til i kjøperliste"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tildel automatisk padlenumre til alle giveregavere"
+
+#: 
+msgid "Create a new user account"
+msgstr "Opprett en ny brukerkonto"
+
+#: 
+msgid "Delete this item?"
+msgstr "Slette dette elementet?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Slette dette padlenummeret?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Rediger kjøper"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Påloggingen er allerede i bruk, vennligst velg en annen pålogging!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Pålogging må være minst 3 tegn!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Administrer innsamlingsaksjoner"
+
+#: 
+msgid "New User"
+msgstr "Ny bruker"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Vennligst velg en person å opprette en brukerkonto for."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Vennligst velg minst én kjøper for å generere kontoutskrifter."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Tilbake til innsamlingsoversikten"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Den valgte personen ble ikke funnet."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Denne handlingen vil automatisk tildele padlenumre til alle giveregavere i denne innsamlingsaksjonen som ennå ikke har fått tildelt et kjøpernummer."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Denne personen har allerede en brukerkonto."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Brukeren må være administrator eller ha tillatelse til å administrere innsamlingsaksjoner"
+
+#: 
+msgid "User not found."
+msgstr "Bruker ikke funnet."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Velg en person —"
 
