@@ -2,7 +2,7 @@
 title: "Currency Localization"
 intent: "Render money values with a configurable symbol, position, and separators across PHP, JS, DataTables, Chart.js, CSS, and PDFs"
 tags: ["i18n", "localization", "currency", "money", "finance", "systemconfig"]
-prereqs: ["configuration-management.md", "i18n-localization.md", "frontend-development.md"]
+prereqs: ["[[configuration-management]]", "[[i18n-localization]]", "[[frontend-development]]"]
 complexity: "beginner"
 ---
 
@@ -46,6 +46,42 @@ SystemConfig::getValue('sThousandsSeparator');   // ","
 SystemConfig::getValue('sDecimalSeparator');     // "."
 ```
 
+### Separator fields must bypass InputSanitizationMiddleware <!-- learned: 2026-07-18 -->
+
+`InputUtils::sanitizeText()` is `strip_tags(trim($input))` — the **trim destroys a
+space (U+0020) thousands separator** (valid in French/Swiss/Swedish locales) before
+the route handler runs. Never map `sThousandsSeparator` / `sDecimalSeparator` in an
+`InputSanitizationMiddleware` field map; the handler's `mb_substr($val, 0, 1)` cap
+is the sanitizer for single-char separator fields.
+
+```php
+// ❌ WRONG — middleware trims " " to "" before the handler sees it
+new InputSanitizationMiddleware(['sThousandsSeparator' => 'text'])
+
+// ✅ CORRECT — omit separators from the map; cap in the handler
+$thousands = mb_substr((string) ($body['sThousandsSeparator'] ?? ''), 0, 1);
+```
+
+Also: the middleware's only types are `'text'` and `'html'` — anything else silently
+falls through to `sanitizeText()`, so `'choice'` is misleading; real whitelisting
+happens via `in_array()` in the handler.
+
+### Defaults live in code, not the DB <!-- learned: 2026-07-18 -->
+
+The USD defaults come from the `ConfigItem` registrations in
+`SystemConfig::buildConfigs()`. A missing `config_cfg` row simply resolves to
+the code default, and `ConfigItem::setValue()` *deletes* the row when a value
+is set back to the default — "default" is deliberately represented as "no row".
+
+- **Never seed these keys with a `.sql` migration** — the app deletes such
+  rows again and the migration adds noise for zero behavioral change.
+- **No fallback wrapper needed** — call `SystemConfig::getValue()` directly.
+  (`CurrencyFormatter` once had a try/catch `getSetting()` helper; it was
+  removed because the keys ship in the same release as the class.)
+- `getValue()` is untyped (`mixed`) because other keys have int/bool defaults;
+  for these four keys the value is always a string — do **not** add `(string)`
+  casts at call sites.
+
 Free-form symbol input is allowed — multi-char symbols (`CHF`, `CAD $`) are
 fine. Fix UI overflow issues reactively per view.
 
@@ -60,12 +96,24 @@ Location: `src/ChurchCRM/Utils/CurrencyFormatter.php`
 ```php
 use ChurchCRM\Utils\CurrencyFormatter;
 
-CurrencyFormatter::format(1234.5);        // "$1,234.50"
+CurrencyFormatter::formatHtml(1234.5);    // "$1,234.50" — HTML-escaped, null-safe; for <?= ?> in templates
+CurrencyFormatter::formatHtml("1234.50"); // "$1,234.50" — numeric strings OK (Propel DECIMAL/SUM returns string)
+CurrencyFormatter::formatHtml(null);      // ""          — null in, empty string out (no bogus $0.00)
+CurrencyFormatter::formatHtml("N/A");     // ""          — non-numeric string → '' + warning log (never $0.00)
+CurrencyFormatter::format(1234.5);        // "$1,234.50" — raw string; for APIs, PDFs, further processing
 CurrencyFormatter::format(1234.5, 0);     // "$1,235"
 CurrencyFormatter::symbol();              // "$"
 CurrencyFormatter::position();            // "before"
 CurrencyFormatter::toArray();             // ['symbol' => ..., 'position' => ..., ...] for JSON
 ```
+
+**Which method where:** <!-- learned: 2026-07-18 -->
+
+| Context | Method |
+|---------|--------|
+| PHP template `<?= ?>` output | `formatHtml()` (escaped, accepts `float\|string\|null`) |
+| API payload / PDF / string building | `format()` |
+| JS (DataTables, Chart.js, DOM) | `window.CRM.currency.format()` |
 
 Output uses a non-breaking space (`\u{00A0}`) between symbol and amount to
 prevent line-wrapping on narrow screens.
@@ -76,12 +124,32 @@ prevent line-wrapping on narrow screens.
 // ❌ WRONG — hardcoded $
 <div class="fw-medium">$<?= number_format($amount, 2) ?></div>
 
-// ✅ CORRECT — uses configured symbol/position/separators
-<div class="fw-medium"><?= CurrencyFormatter::format($amount) ?></div>
+// ✅ CORRECT — uses configured symbol/position/separators, HTML-escaped
+<div class="fw-medium"><?= CurrencyFormatter::formatHtml($amount) ?></div>
 ```
 
 Never concatenate the symbol yourself; the helper applies the configured
 position and separators for you.
+
+### Never pre-cast `(float)` before `formatHtml()` <!-- learned: 2026-07-18 -->
+
+`formatHtml()` takes `float|string|null` and validates internally. A caller-side
+`(float)` cast silently launders `null`/garbage into `$0.00` on finance reports —
+exactly what the signature is designed to prevent. Pass the raw value; use `?? 0`
+only when a blank truly should display as zero (e.g. an unguarded SUM total).
+
+```php
+// ❌ WRONG — blind cast turns NULL/garbage into a legit-looking $0.00
+<?= CurrencyFormatter::formatHtml((float) $deposit->getVirtualColumn('totalAmount')) ?>
+<?= is_numeric($v) ? CurrencyFormatter::formatHtml((float) $v) : '' ?>  // redundant guard
+
+// ✅ CORRECT — formatter handles string|null; '' for null/non-numeric (logged)
+<?= CurrencyFormatter::formatHtml($pledge['pledge_amount']) ?>
+<?= CurrencyFormatter::formatHtml($deposit->getVirtualColumn('totalAmount') ?? 0) ?>  // intentional $0.00
+```
+
+`format()` stays strict (`float`) — API/PDF code should hold real numbers already;
+convert explicitly there.
 
 ---
 

@@ -2,7 +2,7 @@
 title: "Code Standards"
 intent: "Coding conventions, PR checklist, and pre-commit guidance"
 tags: ["standards","code-quality","pr"]
-prereqs: ["php-best-practices.md"]
+prereqs: ["[[php-best-practices]]"]
 complexity: "beginner"
 ---
 
@@ -25,7 +25,7 @@ All code must be compatible with PHP 8.4+ and avoid deprecated patterns.
   configured `sTimeZone` is applied. See `database-operations.md` for the full
   rule (issue #8712). <!-- learned: 2026-04-18 -->
 - **Use imports, never inline fully-qualified class names**: Add `use` statements at top of file
-- **Explicit global namespace**: `\MakeFYString($id)` in namespaced code
+- **Explicit global namespace**: `\` prefix for the few remaining globals (e.g. `\getQuillEditorContainer()`). `Functions.php` globals like `MakeFYString` are **gone** — use `ChurchCRM\Utils\*`
 - **Version checks**: `version_compare(phpversion(), '8.4.0', '<')`
 - **Public constants**: For shared values `public const PHOTO_WIDTH = 200;`
 
@@ -82,7 +82,7 @@ use Propel\Runtime\Map\TableMap;
 use ChurchCRM\Service\AuthService;
 ```
 
-**Exception:** Only use `\` prefix for global functions in namespaced code (e.g., `\MakeFYString()`)
+**Exception:** Only use `\` prefix for the global functions that still exist in namespaced code (e.g., `\getQuillEditorContainer()` from `QuillEditorHelper.php`)
 
 ### Import Cleanup Gotcha: Casing Typos <!-- learned: 2026-03-29 -->
 
@@ -179,21 +179,33 @@ if ((int)$grp_hasSpecialProps === 1) { ... }
 - `implode()` returns a **string** — don't compare to int 0
 - `mysqli_result` can be `false` on error — use `instanceof` check, not `!== 0`
 
-## Global Functions from Namespaced Code
+## Global Functions from Namespaced Code <!-- learned: 2026-07-11 -->
+
+> ⚠️ **`src/Include/Functions.php` is gone.** Its globals (`MakeFYString`, `FormatDate`,
+> `FormatFullName`, …) were migrated to `ChurchCRM\Utils\*` classes. Calling them is now a
+> fatal `Call to undefined function`. See the migration map in `php-best-practices.md`.
+
+**Prefer a `use` statement over any global:**
 
 ```php
-// ✅ CORRECT
+// ✅ CORRECT — the migrated Utils class
 namespace ChurchCRM\Service;
+
+use ChurchCRM\Utils\DateTimeUtils;
 
 class MyService {
     public function test() {
-        \MakeFYString($id);  // Backslash prefix for global function
+        $date = DateTimeUtils::formatDate($person->getBirthDate());
     }
 }
 
-// ❌ WRONG
-MakeFYString($id);  // PHP Error: undefined function in namespace
+// ❌ WRONG — Functions.php no longer exists
+\MakeFYString($id);
 ```
+
+The `\` prefix rule still applies to the few genuinely global helpers that remain — e.g. the
+Quill helpers in `src/Include/QuillEditorHelper.php` (`\getQuillEditorContainer()`). Reach for
+it only when there is no Utils class.
 
 ## File Inclusion (require vs include)
 
@@ -440,6 +452,7 @@ Before committing code changes, verify:
 - [ ] Deprecated HTML attributes replaced with CSS
 - [ ] Bootstrap 5 / Tabler CSS classes applied correctly (see `tabler-components.md` for reference)
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
+- [ ] Money values rendered via `CurrencyFormatter::formatHtml()` (templates), `CurrencyFormatter::format()` (APIs/PDFs), or `window.CRM.currency.format()` (JS) — never hardcoded `$` or raw `number_format()` (see `currency-localization.md`)
 - [ ] No alert() calls - use window.CRM.notify() instead
 - [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
 - [ ] Use `json_encode()` when outputting PHP values into `<script>` blocks (not string interpolation)
@@ -448,7 +461,7 @@ Before committing code changes, verify:
 - [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)
 - [ ] TLS verification enabled by default for HTTPS requests
 - [ ] No O(N*M) algorithms - use hash-based lookups for set membership
-- [ ] **If new gettext() strings added**: Run `npm run locale:build` to extract terms
+- [ ] **If new gettext() strings added**: wrap the string only — **never run `npm run locale:build`** (term extraction is automated outside this repo; see `i18n-localization.md`)
 - [ ] Tests pass (if available) - run relevant tests before committing
 - [ ] Commit message follows imperative mood (< 72 chars, no file paths)
 - [ ] Branch name follows kebab-case format

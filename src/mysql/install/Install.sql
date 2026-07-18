@@ -860,11 +860,9 @@ INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_valu
 
   (0, 0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
   (0, 1, 'sMailtoDelimiter', ',', 'text', 'Delimiter to separate emails in mailto: links', 'TRUE', ''),
-  (0, 5, 'bCreateDirectory', '0', 'boolean', 'User permission to create directories', 'FALSE', 'SECURITY'),
   (0, 10, 'bAddEvent', '0', 'boolean', 'Allow user to add new event', 'FALSE', 'SECURITY'),
   (1, 0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
-  (1, 1, 'sMailtoDelimiter', ',', 'text', 'user permission to send email via mailto: links', 'TRUE', ''),
-  (1, 5, 'bCreateDirectory', '1', 'boolean', 'User permission to create directories', 'TRUE', '');
+  (1, 1, 'sMailtoDelimiter', ',', 'text', 'user permission to send email via mailto: links', 'TRUE', '');
 
 -- --------------------------------------------------------
 
@@ -885,6 +883,7 @@ CREATE TABLE `user_usr` (
   `usr_MenuOptions` tinyint(1) unsigned NOT NULL default '0',
   `usr_ManageGroups` tinyint(1) unsigned NOT NULL default '0',
   `usr_Finance` tinyint(1) unsigned NOT NULL default '0',
+  `usr_ManageFundraisers` tinyint(1) unsigned NOT NULL default '0',
   `usr_Notes` tinyint(1) unsigned NOT NULL default '0',
   `usr_Admin` tinyint(1) unsigned NOT NULL default '0',
   `usr_SearchLimit` tinyint(4) default '10',

@@ -242,13 +242,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         } elseif ((int)$type_ID === 11) {
                             $custom_Special = null;
                             $displayIcon = "fa-solid fa-phone";
-                            // Sanitize phone number for tel: URI
-                            $sanitizedPhone = preg_replace('/[^0-9+\-()e]/', '', $currentData);
+                            // Sanitize phone number for tel: URI (aligned with GHSA-frj8-mpcx-44g9 allowlist)
+                            $sanitizedPhone = preg_replace('/[^0-9+\-().\sxX#*]/', '', $currentData);
                             $displayLink = "tel:" . $sanitizedPhone;
                         }
                         $customFieldsHtml .= '<li class="mb-2">';
                         $customFieldsHtml .= '<i class="' . $displayIcon . ' me-2 text-body-secondary"></i>';
-                        $temp_string = nl2br(CustomFieldUtils::display($type_ID, $currentData, $custom_Special));
+                        $temp_string = nl2br(InputUtils::escapeHTML(CustomFieldUtils::display($type_ID, $currentData, $custom_Special)));
                         if ($displayLink) {
                             $customFieldsHtml .= '<strong>' . InputUtils::escapeHTML($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
                         } else {
@@ -371,7 +371,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php } ?>
                     <?php if ($bOkToEdit && $fam_ID !== '') { ?>
                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
-                        <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
+                        <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= InputUtils::escapeAttribute($person->getFamilyRoleName()) ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                         <a class="dropdown-item" id="addGroup"><i class="fa-solid fa-users me-2"></i><?= gettext("Assign New Group") ?></a>
@@ -387,7 +387,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
+                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -426,15 +426,15 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     <div class="d-flex align-items-center">
                                         <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">
                                         <?php if ($isSelf) { ?>
-                                            <span class="fw-bold"><?= $familyMember->getFullName() ?></span>
+                                            <span class="fw-bold"><?= InputUtils::escapeHTML($familyMember->getFullName()) ?></span>
                                             <i class="fa-solid fa-circle-user text-primary ms-2" title="<?= gettext('Current person') ?>"></i>
                                         <?php } else { ?>
-                                            <a href="<?= $familyMember->getViewURI() ?>"><?= $familyMember->getFullName() ?></a>
+                                            <a href="<?= $familyMember->getViewURI() ?>"><?= InputUtils::escapeHTML($familyMember->getFullName()) ?></a>
                                         <?php } ?>
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge bg-secondary-lt text-secondary"><?= $familyMember->getFamilyRoleName() ?></span>
+                                    <span class="badge bg-secondary-lt text-secondary"><?= InputUtils::escapeHTML($familyMember->getFamilyRoleName()) ?></span>
                                 </td>
                                 <td><?= $familyMember->getFormattedBirthDate(); ?></td>
                                 <td>
@@ -448,11 +448,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     <div class="dropdown">
                                         <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                         <div class="dropdown-menu dropdown-menu-end">
+                                            <?php if ($bOkToEdit) { ?>
                                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                                            <?php } ?>
                                             <button class="dropdown-item AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                                             <?php if ($bOkToEdit) { ?>
                                             <div class="dropdown-divider"></div>
-                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($familyMember->getFullName()) ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -608,7 +610,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                             if ((int)$type_ID === 11) {
                                                                 $prop_Special = null;
                                                             }
-                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . CustomFieldUtils::display($type_ID, $currentData, $prop_Special) . '</small>';
+                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . InputUtils::escapeHTML(CustomFieldUtils::display($type_ID, $currentData, $prop_Special)) . '</small>';
                                                         }
                                                     }
                                                 } ?>

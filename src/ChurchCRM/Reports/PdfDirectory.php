@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Reports;
 
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -322,6 +323,9 @@ class PdfDirectory extends ChurchInfoReport
             $sFamilyStr .= "\n";
             if (strlen($fam_City)) {
                 $sFamilyStr .= $fam_City . ', ' . $fam_State . ' ' . $fam_Zip . "\n";
+            }
+            if (Countries::isForeign($fam_Country)) {
+                $sFamilyStr .= $fam_Country . "\n";
             }
         }
 

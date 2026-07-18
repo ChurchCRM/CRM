@@ -6,6 +6,61 @@ namespace ChurchCRM\Utils;
 class SQLUtils
 {
     /**
+     * Drop every table and view in the connected schema.
+     *
+     * A restore REPLACES the database, so the existing schema must be cleared first.
+     * We cannot rely on the dump to do this for us: ChurchCRM's own backups embed
+     * DROP TABLE IF EXISTS (BackupJob passes add-drop-table), but foreign dumps —
+     * ChurchInfo 1.x, phpMyAdmin exports with "Add DROP TABLE" unchecked — do not,
+     * and would fail on the first CREATE TABLE that collides with an existing table.
+     *
+     * @return int number of tables and views dropped
+     */
+    public static function dropAllTables($connection): int
+    {
+        $tables = [];
+        $views = [];
+
+        $statement = $connection->query('SHOW FULL TABLES');
+        foreach ($statement->fetchAll(\PDO::FETCH_NUM) as $row) {
+            // Column 0: object name. Column 1: 'BASE TABLE' or 'VIEW'.
+            if (strtoupper((string) $row[1]) === 'VIEW') {
+                $views[] = (string) $row[0];
+            } else {
+                $tables[] = (string) $row[0];
+            }
+        }
+
+        if ($tables === [] && $views === []) {
+            return 0;
+        }
+
+        // Circular FKs mean there is no universally safe drop order; disable the checks.
+        $connection->exec('SET FOREIGN_KEY_CHECKS = 0');
+
+        try {
+            foreach ($views as $view) {
+                $connection->exec('DROP VIEW IF EXISTS ' . self::quoteIdentifier($view));
+            }
+            foreach ($tables as $table) {
+                $connection->exec('DROP TABLE IF EXISTS ' . self::quoteIdentifier($table));
+            }
+        } finally {
+            $connection->exec('SET FOREIGN_KEY_CHECKS = 1');
+        }
+
+        return count($tables) + count($views);
+    }
+
+    /**
+     * Backtick-quote a MySQL identifier, escaping any embedded backticks.
+     */
+    private static function quoteIdentifier(string $identifier): string
+    {
+        return '`' . str_replace('`', '``', $identifier) . '`';
+    }
+
+    /**
      * Import SQL from file.
      *
      * @param string $fileName path to sql file

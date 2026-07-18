@@ -342,7 +342,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if (is_array($columnData) && !empty($columnData)) {
                                 // Always render badges for display
                                 foreach ($columnData as $group) {
-                                    echo '<span class="badge bg-info me-1">' . InputUtils::escapeHTML($group) . '</span>';
+                                    echo '<span class="badge bg-info-lt text-info me-1">' . InputUtils::escapeHTML($group) . '</span>';
                                 }
                                 // Add hidden span with JSON for DataTables filtering
                                 echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR)) . '</span>';
@@ -411,9 +411,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             <a class="dropdown-item" href="<?= $person->getViewURI() ?>">
                                 <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                             </a>
+                            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
                                 <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                             </a>
+                            <?php endif; ?>
                             <?php if ($person->getFamId()): ?>
                             <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $person->getFamId()) ?>">
                                 <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
@@ -430,6 +432,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
                                 <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                             </button>
+                            <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
                             <div class="dropdown-divider"></div>
                             <button type="button"
                                 class="dropdown-item text-danger delete-person"
@@ -437,6 +440,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>">
                                 <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                             </button>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </td>
@@ -700,7 +704,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             Object.keys(tomSelectInstances).forEach(function(colName) {
                 var instance = tomSelectInstances[colName];
                 if (instance && instance.ts) {
-                    instance.ts.clear(true); // true = trigger onChange event
+                    instance.ts.clear(); // default silent=false: onChange fires and filterColumn() resets the DataTable
                 }
             });
         });
@@ -825,34 +829,36 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
         }
         
         // Apply initial filters from URL parameters via TomSelect API
-        // This ensures filters are set and properly trigger DataTable updates
+        // This ensures filters are set and properly trigger DataTable updates.
+        // NOTE: setValue(value, false) — silent=false so onChange fires and filterColumn() is called.
+        // Using silent=true would visually select the option but never apply the DataTable search.
         setTimeout(function() {
             // Set Gender filter if specified
             if (shouldTriggerGenderFilter && filterByGender) {
                 var genderIndex = Gender.indexOf(filterByGender);
                 if (genderIndex !== -1 && tomSelectInstances['Gender']) {
-                    tomSelectInstances['Gender'].ts.setValue(String(genderIndex), true);
+                    tomSelectInstances['Gender'].ts.setValue(String(genderIndex), false);
                 }
             }
 
             // Set Classification filter if specified
             if (shouldTriggerClassificationFilter && tomSelectInstances['Classification']) {
                 // filterByClsOptionId comes from the route and is an integer
-                tomSelectInstances['Classification'].ts.setValue(String(serverVars.filterByClsId), true);
+                tomSelectInstances['Classification'].ts.setValue(String(serverVars.filterByClsId), false);
             }
 
             // Set Role filter if specified
             if (shouldTriggerRoleFilter && tomSelectInstances['Role']) {
                 // filterByFmrOptionId comes from the route and is an integer
-                tomSelectInstances['Role'].ts.setValue(String(serverVars.filterByFmrId), true);
+                tomSelectInstances['Role'].ts.setValue(String(serverVars.filterByFmrId), false);
             }
 
             // Set Family Status filter if specified
             if (shouldTriggerFamilyStatusFilter && tomSelectInstances['Family Status']) {
                 if (serverVars.familyActiveStatus === 'active') {
-                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[0], true);
+                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[0], false);
                 } else if (serverVars.familyActiveStatus === 'inactive') {
-                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[1], true);
+                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[1], false);
                 }
             }
         }, 100);

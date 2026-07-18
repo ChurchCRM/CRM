@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Reports;
 
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use FPDF;
@@ -112,7 +113,7 @@ class ChurchInfoReport extends FPDF
         }
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
         $curY += SystemConfig::getValue('incrementY');
-        if ($fam_Country !== null && $fam_Country !== '' && $fam_Country !== SystemConfig::getValue('sDefaultCountry')) {
+        if (Countries::isForeign($fam_Country)) {
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Country);
             $curY += SystemConfig::getValue('incrementY');
         } // mm to get away from the second window

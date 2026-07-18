@@ -2,7 +2,7 @@
 title: "Responsive Design Guidelines"
 intent: "Canonical guidance for mobile, tablet, and laptop/desktop layouts across ChurchCRM"
 tags: ["frontend","responsive","bootstrap","tabler","mobile","tablet"]
-prereqs: ["frontend-development.md","bootstrap-5-migration.md","tabler-components.md"]
+prereqs: ["[[frontend-development]]","[[bootstrap-5-migration]]","[[tabler-components]]"]
 complexity: "intermediate"
 ---
 
@@ -30,7 +30,8 @@ codebase:
 | **Tablet** | 768px | 1199.98px | `md`, `lg` | Tablets, small laptops, split-screen windows |
 | **Laptop/Desktop** | 1200px | ∞ | `xl`, `xxl` | Laptops, desktop monitors, kiosks |
 
-> **Why the split is at 768 and 1200 and not 576/992:** The vertical Tabler
+> [!NOTE] Why the split is at 768 and 1200 and not 576/992
+> The vertical Tabler
 > sidebar in `src/Include/Header.php:176` is `navbar-vertical navbar-expand-xl`,
 > which means the **permanent left sidebar only appears at ≥1200px**. Below that
 > the nav collapses to a hamburger. The 768px boundary is where column layouts
@@ -86,7 +87,8 @@ codebase:
 - Dense card tabs become full labels (`d-none d-xl-inline`)
 - Multi-column forms OK: `col-lg-4` or `col-lg-3`
 
-> **Note:** We use `col-lg-*` at 992px (not 1200px) for the 8/4 split because
+> [!NOTE]
+> We use `col-lg-*` at 992px (not 1200px) for the 8/4 split because
 > the 992–1199 band still benefits from side-by-side content even though the
 > sidebar hasn't appeared yet. `col-lg-*` = "start being wide at 992px".
 
@@ -97,7 +99,8 @@ codebase:
 The project standard is **`col-6 col-lg-3`** for 4 stat cards, or **`col-6 col-lg`**
 (auto-equal) for 5+ stat cards.
 
-> **Heads-up on the breakpoint vs the form-factor model:** Bootstrap's `lg`
+> [!WARNING] Heads-up on the breakpoint vs the form-factor model
+> Bootstrap's `lg`
 > breakpoint activates at **992px**, which sits *inside* the Tablet form
 > factor (768–1199.98px) defined above — it is not the same as the 1200px
 > Laptop boundary. So `col-6 col-lg-3` actually goes:
@@ -173,7 +176,7 @@ On mobile and tablet they stack automatically (both become `col-12`).
 
 ### Tables must be wrapped — but NOT with `.table-responsive` if the rows have action dropdowns <!-- learned: 2026-04-09 -->
 
-> **⚠️ Critical conflict with [`table-action-menu.md`](./table-action-menu.md):**
+> [!WARNING] Critical conflict with [`table-action-menu.md`](./table-action-menu.md)
 > `.table-responsive` sets `overflow-x: auto`, which (per CSS spec) forces
 > `overflow-y: auto` as well — and that **clips absolutely-positioned row
 > dropdowns on their last rows**. For tables that have per-row action menus

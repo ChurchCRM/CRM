@@ -1974,10 +1974,6 @@ msgid "Save Settings"
 msgstr "Instellingen opslaan"
 
 #: 
-msgid "Default User Settings"
-msgstr "Standaard Gebruikers Instellingen"
-
-#: 
 msgid "Permission"
 msgstr "Toestemming"
 
@@ -2006,18 +2002,6 @@ msgid "Login Name"
 msgstr "Login Naam"
 
 #: 
-msgid "Add Records"
-msgstr "Voeg items toe"
-
-#: 
-msgid "Edit Records"
-msgstr "Bewerk Records"
-
-#: 
-msgid "Delete Records"
-msgstr "Verwijder Records"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Beheer kenmerken"
 
@@ -2028,14 +2012,6 @@ msgstr "Beheer groepen en rollen"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Beheer donaties en financiën"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Bekijk, Maak en bewerk Notities"
-
-#: 
-msgid "Edit Self"
-msgstr "Bewerk Eigen Gegevens"
 
 #: 
 msgid "Admin"
@@ -2940,10 +2916,6 @@ msgstr "Donateurs toevoegen aan winkelmand"
 #: 
 msgid "Data/Reports"
 msgstr "Data & prints"
-
-#: 
-msgid "Query Menu"
-msgstr "Rapporten"
 
 #: 
 msgid "Family Properties"
@@ -5554,10 +5526,6 @@ msgid "Permissions"
 msgstr "Rechten"
 
 #: 
-msgid "Manage Notes"
-msgstr "Notities beheren"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Gift per gezin"
 
@@ -6456,10 +6424,6 @@ msgid "Confirm Deletion"
 msgstr "Verwijdering Bevestigen"
 
 #: 
-msgid "Create directory permission"
-msgstr "Toestemming Directory Maken"
-
-#: 
 msgid "Database Only"
 msgstr "Alleen Database"
 
@@ -7354,10 +7318,6 @@ msgstr "Lokale ontwikkeling:"
 #: 
 msgid "Location & Contact Information"
 msgstr "Locatie en Contactgegevens"
-
-#: 
-msgid "New to"
-msgstr "Nieuw voor"
 
 #: 
 msgid "No locales configured"
@@ -9079,10 +9039,6 @@ msgid "Inactive Groups"
 msgstr "Inactieve groepen"
 
 #: 
-msgid "Language & Localization"
-msgstr "Taal en lokalisatie"
-
-#: 
 msgid "Map"
 msgstr "Kaart"
 
@@ -9481,10 +9437,6 @@ msgid "Browse photos of congregation members"
 msgstr "Foto's van gemeenteleden bekijken"
 
 #: 
-msgid "Buyer Number"
-msgstr "Kopersnummer"
-
-#: 
 msgid "Buyers"
 msgstr "Kopers"
 
@@ -9587,10 +9539,6 @@ msgstr "Bevestig uw nieuwe wachtwoord"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Een SMTP-server koppelen zodat ChurchCRM e-mails kan versturen"
-
-#: 
-msgid "Connect with others"
-msgstr "Verbinding maken met anderen"
 
 #: 
 msgid "Convert individual records into family units"
@@ -9731,10 +9679,6 @@ msgstr "Duplicaten"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Elke persoon kan een eigen e-mailadres en mobiel nummer hebben."
-
-#: 
-msgid "Easy registration"
-msgstr "Eenvoudige registratie"
 
 #: 
 msgid "Edit Class"
@@ -10039,10 +9983,6 @@ msgstr "Ongeldige \"Van nummer\": \"%s\". Voeg de landcode toe, bijv. +141555512
 #: 
 msgid "Invite Your Team"
 msgstr "Uw team uitnodigen"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Word lid van onze gemeenschap en blijf verbonden met"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10435,10 +10375,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registreer waarom bezoekers uw kerk bezochten"
 
 #: 
-msgid "Register Your Family"
-msgstr "Uw gezin registreren"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Alles uit winkelwagen verwijderen"
 
@@ -10543,16 +10479,8 @@ msgid "Server Error"
 msgstr "Serverfout"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Stel machtiging in op Waar om nieuwe gebruikers de mogelijkheid te geven hun huidige waarde te wijzigen."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Stel een beheerders-e-mailadres in zodat u wachtwoorden kunt resetten en meldingen kunt ontvangen"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Standaardvoorkeuren instellen voor nieuwe gebruikersaccounts"
 
 #: 
 msgid "Set up"
@@ -10605,10 +10533,6 @@ msgstr "Opnieuw beginnen"
 #: 
 msgid "Start Over"
 msgstr "Opnieuw starten"
-
-#: 
-msgid "Stay informed"
-msgstr "Blijf geïnformeerd"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -10899,10 +10823,6 @@ msgid "— Select type (optional) —"
 msgstr "— Selecteer type (optioneel) —"
 
 #: 
-msgid "Active Events"
-msgstr "Actieve Evenementen"
-
-#: 
 msgid "Add Event"
 msgstr "Evenement toevoegen"
 
@@ -11041,10 +10961,6 @@ msgstr "Notitietekst is vereist"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Alleen de auteur van de notitie of een beheerder mag deze notitie verwijderen"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Alleen de auteur van de notitie of een beheerder mag deze notitie bewerken"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11609,11 +11525,6 @@ msgstr "Deze waarden worden vooraf ingevuld bij het maken van nieuwe families. L
 #: 
 msgid "Unit used to measure distance."
 msgstr "Eenheid voor het meten van afstand."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Gebruikersmachtiging voor het maken van directories"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12653,10 +12564,6 @@ msgstr "Alleen database (.sql) of volledig archief (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Standaard aantal rijen weergegeven in datatabellen. Van kracht bij het laden van de volgende pagina."
 
-#: 
-msgid "Edit own family only"
-msgstr "Alleen eigen gezin bewerken"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12669,10 +12576,6 @@ msgstr "Onjuiste of onhandige vertalingen in uw taal corrigeren"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Een fout gevonden in de vertalingen?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Verleent alle rechten"
 
 #: 
 msgid "Green"
@@ -14118,22 +14021,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Uw CSV heeft dubbele kolomnamen. Hernoem de dubbele kolommen (bijv. voeg \"(2)\" toe aan de tweede) en upload opnieuw."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Weet u zeker dat u dit gedoneerde artikel permanent wilt verwijderen?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Weet u zeker dat u dit bodnummer permanent wilt verwijderen?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Gedoneerd artikel verwijderen"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Bodnummer verwijderen"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Ongeldig beveiligingstoken. Probeer het opnieuw."
 
@@ -14466,16 +14353,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Naam mag niet langer zijn dan %d tekens"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Hulp nodig? Neem contact met ons op"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Opent een venster van 2 minuten voor apparaten om te registreren op:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Welkom — meld u aan om uw gemeente te beheren"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14640,10 +14519,6 @@ msgstr "U heeft geen toestemming om deze notitie te verwijderen."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "U heeft geen toestemming om deze notitie te bewerken."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privénotitie — alleen zichtbaar voor de auteur]"
 
 #: 
 msgid "seconds"
@@ -15046,10 +14921,6 @@ msgid "Downloaded"
 msgstr "Gedownload"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "De meeste recente release wordt nu van Github gedownload ..."
-
-#: 
 msgid "Duration"
 msgstr "Duur"
 
@@ -15335,6 +15206,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "Groeps-ID vereist voor prompt rolselectie"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML-URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Zorg dat uw authenticator-app gereed is (Google Authenticator, Microsoft Authenticator, Authy, enz.)"
 
@@ -15345,6 +15220,10 @@ msgstr "Geavanceerde opties verbergen"
 #: 
 msgid "Home phone is required"
 msgstr "Thuistelefoon is verplicht"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS-URL"
 
 #: 
 msgid "Ignored"
@@ -16177,6 +16056,10 @@ msgid "from this group?"
 msgstr "uit deze groep?"
 
 #: 
+msgid "in"
+msgstr "in"
+
+#: 
 msgid "in cart"
 msgstr "in verzamelmap"
 
@@ -16259,4 +16142,644 @@ msgstr "— Selecteer land —"
 #: 
 msgid "— Select State —"
 msgstr "— Selecteer provincie —"
+
+#: 
+msgid "Account options"
+msgstr "Accountopties"
+
+#: 
+msgid "Register"
+msgstr "Registreren"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slowaaks"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d afgelopen gebeurtenis"
+msgstr[1] "%d afgelopen gebeurtenissen"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% van de interfacetekst is vertaald voor deze taal."
+
+#: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
+msgid "Access denied"
+msgstr "Toegang geweigerd"
+
+#: 
+msgid "All times shown in"
+msgstr "Alle tijden weergegeven in"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Verjaardagen en jubilea. Standaard: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Kalender kan niet worden verwijderd: %d evenement(en) zijn er nog aan toegewezen. Verwijder of herbestem ze eerst."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Mobiel telefoonformaat"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Gangbare opmaakcodes (voorbeelden: vrijdag 7 maart 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Huidige evenementen"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Datum- en tijdnotatie"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Datum- en tijdnotaties"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Datumkiezerformaat"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Datumkiezer-plaatshouder"
+
+#: 
+msgid "Date Without Year"
+msgstr "Datum zonder jaar"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Dag, 2 cijfers"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Dag, zonder voorloopnul"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Standaard: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Standaard: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Voorbeeld: \"l, j F Y\" geeft \"Vrijdag, 7 Maart 2025\". Alle andere tekens (spaties, komma's, slashes) verschijnen zoals getypt."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Datumnotatie voor bestandsnamen"
+
+#: 
+msgid "Fully translated."
+msgstr "Volledig vertaald."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Hinttekst in datumvelden. Standaard: jjjj-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Thuis-/werktelefoonformaat"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Uur 12u, 2 cijfers"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Uur 12u, zonder nul"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Uur 24u, 2 cijfers"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Bevat tijdcomponent. Standaard: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Taal en regio"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Taal, tijdzone, datum- en telefoonformaten"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalisatie en indelingen"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Lokalisatie-instellingen succesvol opgeslagen"
+
+#: 
+msgid "Long Date Format"
+msgstr "Lang datumformaat"
+
+#: 
+msgid "Minutes"
+msgstr "Minuten"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Maand en jaar"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Maand, 2 cijfers"
+
+#: 
+msgid "Month, full"
+msgstr "Maand, volledig"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Maand, zonder voorloopnul"
+
+#: 
+msgid "Month, short"
+msgstr "Maand, afgekorte notatie"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Niet geïnstalleerd op de server — datums en getallen worden mogelijk niet correct opgemaakt voor deze taalinstelling. Vraag uw host om het te installeren (bijv. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP-indeling voor datumkiezervelden. Standaard: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Telefoonnummerindelingen"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefoon met toestel"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Lokalisatie-instellingen opslaan"
+
+#: 
+msgid "Selected Language"
+msgstr "Geselecteerde taal"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Serverlocale-ondersteuning kon niet worden gecontroleerd (exec is uitgeschakeld)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Ondersteund — deze locale is geïnstalleerd op de server."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Systeemtaal, tijdzone, datum-/tijdnotaties en telefoonnummerindelingen"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Deze velden gebruiken opmaakcodes (letters die staan voor delen van een datum). Kies een voorinstelling onder elk veld of bouw uw eigen met behulp van de referentie. De live-preview toont exact hoe het eruit ziet. Laat leeg om de systeemstandaard te gebruiken."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Zo worden datums en telefoonnummers in het hele systeem weergegeven."
+
+#: 
+msgid "Translation completeness"
+msgstr "Vertaalvolledigheid"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Vertaaltracking is niet beschikbaar voor deze taal."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Gebruik 9 als cijferplaatshouder (bijv. (999) 999-9999). Laat leeg om de systeemstandaard te gebruiken."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Gebruikt in geëxporteerde bestandsnamen. Standaard: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Gebruikt in rapporten en ledenlijsten. Standaard: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Weekdag, volledig"
+
+#: 
+msgid "Weekday, short"
+msgstr "Weekdag, afgekorte notatie"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Wat betekenen deze codes?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Jaar, 2 cijfers"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Jaar, 4 cijfers"
+
+#: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
+msgid "past"
+msgstr "verleden"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroatisch"
+
+#: 
+msgid "%s's Account"
+msgstr "Account van %s"
+
+#: 
+msgid "Access"
+msgstr "Toegang"
+
+#: 
+msgid "Access level"
+msgstr "Toegangsniveau"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Beheerders hebben volledige toegang tot alle functies en gegevens. Individuele machtigingen zijn niet van toepassing."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Alle gebruikers kunnen gemeenteleden bekijken. Deze machtiging kan niet worden verwijderd."
+
+#: 
+msgid "Always granted"
+msgstr "Altijd verleend"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Kan alleen de eigen familie inzien en verifiëren. Geen andere toegang."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Kies hieronder specifieke machtigingen."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Neem contact op met een beheerder om uw machtigingen te wijzigen."
+
+#: 
+msgid "Custom permissions"
+msgstr "Aangepaste machtigingen"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Volledige toegang — verleent alle bevoegdheden."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Individuele machtigingen verlenen:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Als u extra toegang nodig heeft, neem dan contact op met uw kerkbeheerder."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Personen &amp; Gezinnen"
+
+#: 
+msgid "Self-service"
+msgstr "Zelfbediening"
+
+#: 
+msgid "Self-service only"
+msgstr "Alleen zelfbediening"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "De notitie die u probeert te bewerken bestaat niet meer."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Deze gebruiker kan alleen het eigen gezinsprofiel inzien en bijwerken. Individuele machtigingen zijn niet van toepassing."
+
+#: 
+msgid "User List"
+msgstr "Gebruikerslijst"
+
+#: 
+msgid "View Person"
+msgstr "Persoon bekijken"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "U heeft geen toestemming om een notitie toe te voegen voor dit gezin."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "U heeft geen toestemming om een notitie toe te voegen voor deze persoon."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "U heeft geen toestemming om deze notitie te bewerken"
+
+#: 
+msgid "Account locked"
+msgstr "Account vergrendeld"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Account vergrendeld vanwege te veel mislukte aanmeldpogingen"
+
+#: 
+msgid "Account status"
+msgstr "Accountstatus"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Geavanceerd: kies een specifieke doelversie"
+
+#: 
+msgid "Bug Fix"
+msgstr "Bugoplossing"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Standaard downloadt de wizard de volgende aanbevolen versie. U kunt hieronder ook een andere beschikbare versie kiezen."
+
+#: 
+msgid "Change required"
+msgstr "Wijziging vereist"
+
+#: 
+msgid "Changelog"
+msgstr "Wijzigingslog"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Toch doorgaan"
+
+#: 
+msgid "Could not load release information."
+msgstr "Kon release-informatie niet laden."
+
+#: 
+msgid "Download & Install"
+msgstr "Downloaden en installeren"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Versie {{version}} downloaden en toepassen op uw installatie."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Release downloaden van GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Mislukte aanmeldpogingen"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Ophalen van upgrade-voorbeeld mislukt"
+
+#: 
+msgid "Feature"
+msgstr "Functie"
+
+#: 
+msgid "Full changelog"
+msgstr "Volledige wijzigingslog"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Stabiele versie {{version}} installeren"
+
+#: 
+msgid "Installing next release"
+msgstr "Volgende versie wordt geïnstalleerd"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ongeldig bestandspad"
+
+#: 
+msgid "Invalid version format"
+msgstr "Ongeldig versieformaat"
+
+#: 
+msgid "Last login"
+msgstr "Laatste aanmelding"
+
+#: 
+msgid "Loading release information..."
+msgstr "Release-informatie laden..."
+
+#: 
+msgid "Locked"
+msgstr "Vergrendeld"
+
+#: 
+msgid "Major"
+msgstr "Hoofdversie"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Vereiste velden ontbreken: fullPath en sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Wachtwoord moet worden gewijzigd"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Geen release-notities beschikbaar voor deze versie."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Er zijn geen upgrades beschikbaar voor uw huidige versie."
+
+#: 
+msgid "Password change required"
+msgstr "Wachtwoordwijziging vereist"
+
+#: 
+msgid "Password status"
+msgstr "Wachtwoordstatus"
+
+#: 
+msgid "Re-install current version"
+msgstr "Huidige versie opnieuw installeren"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Herstel mislukt en de database bevindt zich mogelijk in een onvolledige toestand. Controleer het toepassingslogboek voor details en herstel vervolgens een bekende goede back-up voordat u het systeem gebruikt."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Herstel mislukt: het back-upbestand lijkt onvolledig te zijn of is geen geldige SQL-back-up. De database bevindt zich nu in een onvolledige toestand — herstel een bekende goede back-up voordat u het systeem gebruikt."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Voorlopige versie wordt uitgevoerd"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Volledig upgradepad tonen"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "De nieuwste stabiele versie is {{version}}. U kunt deze hieronder opnieuw installeren."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Dit account is vergrendeld vanwege te veel mislukte aanmeldpogingen."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Deze gebruiker moet een nieuw wachtwoord instellen bij de volgende aanmelding."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Gebruiker moet wachtwoord wijzigen bij volgende aanmelding"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Gebruiker moet e-mailmachtiging hebben"
+
+#: 
+msgid "View release notes"
+msgstr "Release-notities bekijken"
+
+#: 
+msgid "What's New"
+msgstr "Wat is er nieuw"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Wat is er nieuw in {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "U loopt <strong>{{releaseCount}}</strong> versies achter. Dit zijn de verbeteringen:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "U gebruikt een voorlopige versie."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "U kunt de upgrade toch uitvoeren zonder de release-notities te bekijken."
+
+#: 
+msgid "You're up to date!"
+msgstr "U bent up-to-date!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Er moet een geldige persoon worden geselecteerd."
+
+#: 
+msgid "Add Donors"
+msgstr "Donateurs toevoegen"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Toevoegen aan koperslijst"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Paddle-nummers automatisch toewijzen aan alle artikeldonateurs"
+
+#: 
+msgid "Create a new user account"
+msgstr "Een nieuw gebruikersaccount aanmaken"
+
+#: 
+msgid "Delete this item?"
+msgstr "Dit item verwijderen?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Dit paddle-nummer verwijderen?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Koper bewerken"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Aanmeldnaam al in gebruik, kies een andere aanmeldnaam!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Aanmeldnaam moet minimaal 3 tekens bevatten!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Fondsenwerving beheren"
+
+#: 
+msgid "New User"
+msgstr "Nieuwe gebruiker"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Selecteer een persoon voor wie een gebruikersaccount aangemaakt moet worden."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Selecteer ten minste één koper om overzichten te genereren."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Terug naar het dashboard voor fondsenwerving"
+
+#: 
+msgid "The selected person was not found."
+msgstr "De geselecteerde persoon werd niet gevonden."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Deze actie voegt automatisch paddle-nummers toe aan alle artikeldonateurs in deze fondsenwervingsactie die nog geen kopernummer hebben toegewezen gekregen."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Deze persoon heeft al een gebruikersaccount."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "De gebruiker moet beheerder zijn of de machtiging 'Fondsenwerving beheren' hebben"
+
+#: 
+msgid "User not found."
+msgstr "Gebruiker niet gevonden."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Selecteer een persoon —"
 

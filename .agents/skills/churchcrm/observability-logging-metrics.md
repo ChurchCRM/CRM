@@ -2,7 +2,7 @@
 title: "Observability, Logging & Metrics"
 intent: "Guidance for logging, metrics, and monitoring for new MVCs and APIs"
 tags: ["logging","monitoring","metrics","observability"]
-prereqs: ["code-standards.md","development-workflows.md"]
+prereqs: ["[[code-standards]]","[[development-workflows]]"]
 complexity: "intermediate"
 ---
 

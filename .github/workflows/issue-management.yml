@@ -51,16 +51,14 @@ jobs:
   # Auto-comment on newly opened issues with appropriate templates
   # =========================================================================
   auto-comment:
-    if: |
-      github.event_name == 'issues' && github.event.action == 'opened' ||
-      (inputs.operation == 'comment-and-triage' || inputs.operation == 'all')
+    if: false
     name: Auto-comment on new issues
     timeout-minutes: 5
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 1
 
@@ -241,13 +239,13 @@ jobs:
         uses: actions/stale@v10
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          stale-issue-message: 'This issue has been inactive for 90 days. If this is still relevant, please comment to keep it open. Otherwise it will be closed in 7 days.'
-          stale-pr-message: 'This PR has been inactive for 90 days. If this is still relevant, please comment to keep it open. Otherwise it will be closed in 7 days.'
-          days-before-stale: 90
+          stale-issue-message: 'This issue has been inactive for 45 days. If this is still relevant, please comment to keep it open. Otherwise it will be closed in 7 days.'
+          stale-pr-message: 'This PR has been inactive for 45 days. If this is still relevant, please comment to keep it open. Otherwise it will be closed in 7 days.'
+          days-before-stale: 45
           days-before-close: 7
           stale-issue-label: stale
           stale-pr-label: stale
-          exempt-issue-labels: 'security,security-delete-required,pinned,documentation,type: documentation'
+          exempt-issue-labels: 'security,security-delete-required,pinned,documentation,type: documentation,enhancement,Epic,accepted,Feature Request: Multi-Church,Feature: Attendance,Feature: Cart,Feature: Data Import / Export,Feature: Emails,Feature: Events / Calendar,Feature: Financial,Feature: Geographical / Maps,Feature: Groups,Feature: Kiosk,Feature: Members,Feature: Non-Admin Member Access,Feature: Notifications,Feature: Reports,Feature: Search,Feature: Self-Register / Verify,Feature: SMS,Feature: Social,Feature: Sunday School,Feature: Users,Feature: Volunteer'
           exempt-pr-labels: 'security,security-delete-required,pinned,documentation,type: documentation'
           remove-stale-when-updated: true
           remove-stale-when-commented: true

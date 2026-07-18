@@ -1,3 +1,10 @@
+---
+title: "Git Workflow & Development Standards"
+intent: "Branching, commits, PRs, and pre-commit validation to maintain code quality"
+tags: ["workflow", "pr", "review", "standards"]
+prereqs: ["[[code-standards]]"]
+complexity: "beginner"
+---
 # Git Workflow & Development Standards
 
 Guidelines for branching, commits, PRs, and pre-commit validation to maintain code quality.
@@ -331,10 +338,9 @@ Before marking PR ready for review, ensure:
 - [ ] TLS verification enabled by default for HTTPS requests
 
 ### i18n & Translations
-- [ ] **If new `gettext()` strings added**: Run `npm run locale:build`
-- [ ] **If new `i18next.t()` strings added**: Run `npm run locale:build`
-- [ ] After locale:build, run `npm run build` to regenerate assets
-- [ ] Commit the updated `locale/terms/messages.po` file
+- [ ] **NEVER run `npm run locale:build`** — term extraction and `messages.po` updates are automated outside this repo (POEditor sync). Running it by hand produces a spurious diff.
+- [ ] **Do not hand-edit or commit `locale/terms/messages.po`** — the automation owns that file
+- [ ] New UI strings: just wrap them in `gettext()` (PHP) / `i18next.t()` (JS) and commit the code
 - [ ] Use canonical UI terms (check for existing similar strings)
 
 ### Testing
@@ -446,6 +452,10 @@ it by removing the hook or bypassing.
 contributors pushed before CI feedback arrived. The pre-push hook closes
 that loop locally so feedback is instant and the master branch stays green.
 
+### Permission-Sensitive Files — Mandatory Audit Before Merge <!-- learned: 2026-07-06 -->
+
+If a PR diff touches any file listed in `authorization-security.md → PR Permission Audit`, the reviewer **must** run through the permission audit checklist in that section before recommending merge. No exceptions.
+
 **Examples:**
 
 ```
@@ -540,22 +550,24 @@ When creating a PR:
 
 ## Pre-Commit Examples
 
-### Example 1: Adding i18n Strings
+### Example 1: Adding i18n Strings <!-- learned: 2026-07-11 -->
 
 ```bash
-# ❌ INCOMPLETE - Forgot locale rebuild
+# ❌ WRONG - never rebuild the locale catalog by hand
 echo 'gettext("New Setting")' >> src/admin/views/settings.php
-git add .
+npm run locale:build            # ❌ extraction is automated outside this repo
+git add locale/terms/messages.po # ❌ the automation owns this file
 git commit -m "Add new setting to admin page"
 
-# ✅ CORRECT - Rebuild locale before commit
+# ✅ CORRECT - wrap the string, commit only the code
 echo 'gettext("New Admin Setting")' >> src/admin/views/settings.php
-npm run locale:build      # Extract new strings
-npm run build             # Regenerate assets
-git add locale/terms/messages.po
 git add src/admin/views/settings.php
 git commit -m "Add new admin setting to UI"
 ```
+
+`locale/terms/messages.po` is regenerated and synced with POEditor by automation
+outside the normal dev workflow. Running `npm run locale:build` locally only
+creates a spurious diff that conflicts with that automation.
 
 ### Example 2: Database Query
 

@@ -18,8 +18,8 @@ ChurchCRM supports 45+ languages through gettext (PHP) and i18next (JavaScript).
 
 **Key Principle:** Every translatable term added = 45+ translations needed (one per language). Consolidate compound terms to reduce this burden.
 
-> **Scope note — this skill is for the CORE `messages` domain only.** Community
-> plugins do **not** go through POeditor and do **not** contribute strings to
+> [!NOTE] Scope — CORE `messages` domain only
+> Community plugins do **not** go through POeditor and do **not** contribute strings to
 > `locale/messages.po` or `locale/i18n/*.json`. Plugin authors ship their
 > translations inside the plugin directory and ChurchCRM loads them via
 > `PluginLocalization`. See
@@ -199,50 +199,43 @@ This applies to all inline scripts in PHP templates that use `i18next.t()`. Webp
 
 ## Adding New UI Terms
 
+> [!WARNING] NEVER run `npm run locale:build` <!-- learned: 2026-07-11 -->
+> Term extraction and `locale/terms/messages.po` updates are **automated outside
+> this repo** (POEditor sync). Do not run `locale:build`, and do not hand-edit or
+> commit `messages.po` or the generated locale JSON files. Running it locally only
+> creates a spurious diff that conflicts with the automation.
+>
+> **To add a UI term: wrap it in `gettext()` / `i18next.t()` and commit the code.
+> That's the whole job.** The automation picks it up from the source.
+
 ### Workflow
 
-**BEFORE wiring into code:**
-
-1. **Add to `locale/messages.po`** with empty translations
-2. **Run `npm run locale:build`** to extract and sync
-3. **Commit the updated messages.po**
-4. **Then** wire into PHP/JS (gettext/i18next)
+1. **Wrap the string** in `gettext()` (PHP) or `i18next.t()` (JS)
+2. **Check for an existing equivalent term first** — reuse beats creating a new one
+3. **Commit the code change only**
 
 ### Step-by-Step Example
 
 **Goal:** Add "Apply" button to form
 
-**Step 1** - Add to messages.po:
-```gettext
-# locale/terms/messages.po
-
-msgid "Apply"
-msgstr ""
+**Step 1** - Wrap the string in code (PHP):
+```php
+<button type="submit"><?= gettext('Apply') ?></button>
 ```
 
-**Step 2** - Build locale files:
-```bash
-npm run locale:build   # Extracts strings to messages.po
-npm run build          # Regenerates frontend .json files
+...or in JS:
+```js
+$("#applyBtn").text(i18next.t("Apply"));
 ```
 
-**Step 3** - Commit messages.po:
+**Step 2** - Commit the code. Do **not** touch `messages.po`:
 ```bash
-git add locale/terms/messages.po
+git add src/admin/views/settings.php
 git commit -m "Add 'Apply' button term to localization"
 ```
 
-**Step 4** - Wire into code:
-```php
-// In template
-<button><?= gettext('Apply') ?></button>
-
-// Or JavaScript
-<button id="apply-btn"><?= gettext('Apply') ?></button>
-<script>
-document.getElementById('apply-btn').textContent = i18next.t('Apply');
-</script>
-```
+That's it — there is no locale rebuild step. The POEditor automation extracts the
+new `msgid` from the committed source on its own schedule.
 
 ---
 
@@ -416,12 +409,14 @@ $label = $action . ' ' . $entityType;  // Result: "Add New Fund"
 echo sprintf('%s %s', gettext('Add New'), gettext('Fund'));
 ```
 
-### Step 4: Test with Locale Rebuild
+### Step 4: Verify in the UI
 
 ```bash
-npm run locale:build   # See if consolidation works
-npm run build          # Regenerate all assets
+npm run build          # Regenerate front-end assets
 ```
+
+Do **not** run `npm run locale:build` to "test" a consolidation — verify by
+reading the source and checking the rendered UI. Extraction is automated.
 
 ### Step 5: Measure Impact
 
@@ -435,40 +430,33 @@ SAVED: 225 translations (42% reduction!)
 
 ## Locale Rebuild Workflow
 
-### When to Rebuild
+### Never rebuild the locale catalog <!-- learned: 2026-07-11 -->
 
-**BEFORE EVERY COMMIT with new UI strings:**
-
-```bash
-# 1. You added new gettext() or i18next.t() strings
-# 2. You modified existing gettext() keys
-# 3. You removed old i18n terms
-```
-
-### Step-by-Step
+**There is no locale rebuild step in the dev workflow.** Extraction of `gettext()` /
+`i18next.t()` strings into `locale/terms/messages.po`, and the sync of translations
+back from POEditor, are **automated outside this repo**.
 
 ```bash
-# 1. Rebuild translations (extracts all strings)
+# ❌ NEVER — not before a commit, not to "test", not to "verify extraction"
 npm run locale:build
-# Generates: locale/terms/messages.po
-# Updates: locale/locales/*.json files
 
-# 2. Verify changes
-git diff locale/terms/messages.po
-# Should show new msgid entries your added
-
-# 3. Rebuild front-end assets (uses .json files)
-npm run build
-# Regenerates: src/skin/v2/locale/*.js
-
-# 4. Test locally
-npm run test              # Verify UI text displays
-
-# 5. Commit both files
+# ❌ NEVER — the automation owns these files
 git add locale/terms/messages.po
 git add src/skin/v2/locale/
-git commit -m "Add new localization terms"
 ```
+
+```bash
+# ✅ The entire workflow for a new UI string:
+#   1. Wrap it: gettext('My String')  /  i18next.t('My String')
+#   2. npm run build     (front-end assets only, if you touched JS/CSS)
+#   3. Commit the source file. Nothing else.
+```
+
+Running `locale:build` locally produces a large spurious diff that conflicts with
+the automation and will be rejected in review. If a term seems to be missing from
+a translation, that is an automation/POEditor concern — see
+[`locale-translation-workflow.md`](./locale-translation-workflow.md), not a reason
+to rebuild by hand.
 
 ### Locale Directory Structure
 
@@ -653,7 +641,7 @@ Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,30)
 
 Terms at the top of the list that match the table above should be unwrapped in source.
 
-**If you remove a wrapper**, the next `npm run locale:build` stops extracting it. New missing batches no longer include it; stale POEditor entries are harmless and can be cleaned up manually.
+**If you remove a wrapper**, the next automated extraction stops picking it up — you do **not** run `npm run locale:build` yourself to make that happen. New missing batches no longer include it; stale POEditor entries are harmless and can be cleaned up manually.
 
 **Related:** the locale translation commands (`/locale-translate`, `/locale-release`) list these same tokens under "Preserve exactly / never translate" — the fix here is to stop them entering the pipeline in the first place.
 
@@ -685,6 +673,97 @@ echo sprintf(gettext('%d record(s) returned'), mysqli_num_rows($rs));
 **Detection:** fragment msgids are identifiable in `locale/messages.po` by a leading or trailing space in the msgid string — e.g. `msgid " characters long"`. Open issue [#8772](https://github.com/ChurchCRM/CRM/issues/8772) tracks the known fragments still in the codebase.
 
 **Checklist addition:** Add `- [ ] No gettext() fragments — full sentence per call, sprintf for values` to your pre-commit review.
+
+### Never Split a Sentence in JavaScript (i18next template literals) <!-- learned: 2026-07-11 -->
+
+The same anti-pattern occurs in JS where two `i18next.t()` calls are concatenated in a template literal, often with HTML or a runtime value in between. The extracted msgids are short, decontextualised fragments that translators cannot understand.
+
+```javascript
+// ❌ WRONG — three fragments; count bolded via HTML between two t() calls
+$("#upgradePathSummary").html(
+  `${i18next.t("You are")} <strong>${count}</strong> ${i18next.t("releases behind. Here's what you'll gain:")}`,
+);
+// Produces msgids: "You are" and "releases behind. Here's what you'll gain:"
+
+// ✅ CORRECT — single parameterised msgid; HTML emphasis kept inside the template key
+$("#upgradePathSummary").html(
+  i18next.t("You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:", {
+    releaseCount: count,
+  }),
+);
+```
+
+**Detection — grep for JS template-literal split patterns:**
+```bash
+# Detects: `...${i18next.t(...)} ... ${i18next.t(...)}...`
+grep -rn '\${i18next\.t(' webpack/src/skin/js/ | grep -v '//' | head
+# Multiple i18next.t hits on the same line = likely fragment concatenation
+grep -rn 'i18next\.t(' webpack/ | awk -F: '{if (gsub(/i18next\.t\(/, "&", $2) > 1) print}'
+```
+
+**i18next `count` reserved key — use named alternatives:**
+i18next treats `count` as a special interpolation key that triggers plural-form lookup. When injecting a plain integer that is *not* a plural selector, use a distinct name to avoid unintended plural behaviour:
+```javascript
+// ❌ WRONG — triggers i18next plural lookup
+i18next.t("{{count}} releases behind", { count })
+
+// ✅ CORRECT — named interpolation, no plural side-effect
+i18next.t("{{releaseCount}} releases behind", { releaseCount: count })
+```
+
+**HTML-valued interpolation (i18next `escapeValue: false`):**
+When an interpolated value must contain HTML (e.g. a `<span>` to keep an element ID stable for Cypress), sanitize the inner text with `escapeHtml()` yourself, then disable escaping per-call:
+```javascript
+function setWhatsNewHeading(version) {
+  const versionHtml = `<span id="whatsNewVersion" class="text-primary">${escapeHtml(version || "")}</span>`;
+  $("#whatsNewHeading").html(
+    i18next.t("What's New in {{version}}", {
+      version: versionHtml,
+      interpolation: { escapeValue: false }, // safe: inner text manually escaped
+    }),
+  );
+}
+```
+This is a per-call option; it does not affect other `i18next.t()` calls.
+
+**HTML in msgid keys is established precedent** in this codebase (e.g. `msgid "Ends with a <strong>trailing slash</strong> (/)"`). Using `<strong>` inside a msgid for emphasis that must be preserved by translators is acceptable. Keep it minimal — body paragraphs should use `%d`/`{{n}}` interpolation without markup.
+
+### Trailing-Preposition / Cross-Language Split (PHP prefix + JS suffix) <!-- learned: 2026-07-11 -->
+
+A subtle variant of the split-sentence anti-pattern occurs when **PHP renders a translatable prefix** and **JavaScript appends the dynamic suffix** at runtime. The PHP msgid ends in a dangling preposition or incomplete phrase:
+
+```php
+// ❌ WRONG — "What's New in" ends in a preposition; JS appends the version
+<?= gettext("What's New in") ?> <span id="whatsNewVersion" class="text-primary"></span>
+// JS later: $("#whatsNewVersion").text(nextVersion)
+// Translator sees msgid "What's New in" with no idea what follows.
+```
+
+**Detection in messages.po:**
+```bash
+# Short msgids (≤ 5 words) that end in a preposition or article suggest a suffix will be appended
+grep '^msgid ' locale/messages.po | awk '{if (NF <= 6) print}' | grep -iE '" ?(in|of|for|to|a|the|an)"$'
+```
+
+**Fix:** Move the *complete* sentence into a single JS `i18next.t()` call with a named placeholder, and remove the PHP `gettext()` call entirely:
+```php
+<!-- PHP: static shell only, no translatable prefix -->
+<h4 class="mb-0">
+    <i class="fa fa-tag me-1 text-primary"></i>
+    <span id="whatsNewHeading"></span>
+</h4>
+```
+```javascript
+// JS: full sentence, single msgid
+$("#whatsNewHeading").html(
+  i18next.t("What's New in {{version}}", {
+    version: versionHtml,
+    interpolation: { escapeValue: false },
+  }),
+);
+```
+
+**Rule:** If a PHP `gettext()` key ends in a preposition (`in`, `of`, `for`, `to`) or an article and the rendered element is later updated by JS, it is a cross-language split. Consolidate into one JS (or PHP) parameterised string.
 
 ### Plural Forms
 
@@ -759,10 +838,11 @@ Before committing:
 - [ ] No hardcoded user-facing strings
 - [ ] No brand / technical literals wrapped — see ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) (brand names, config keys, protocol acronyms, `name@example.com`-style placeholders all stay as bare literals)
 - [ ] No split-sentence fragments — each `gettext()` call wraps a complete sentence; dynamic values use `sprintf()` — see ["Never Split a Sentence"](#never-split-a-sentence-across-multiple-gettext-calls----learned-2026-04-22-)
-- [ ] If strings added: Ran `npm run locale:build`
-- [ ] If strings added: Ran `npm run build`
-- [ ] Committed `locale/terms/messages.po`
-- [ ] Committed `src/skin/v2/locale/` (generated files)
+- [ ] No JS template-literal split — no `${i18next.t(...)} ... ${i18next.t(...)}` concatenation; use single parameterised `i18next.t()` with `{{placeholder}}` — see ["Never Split in JavaScript"](#never-split-a-sentence-in-javascript-i18next-template-literals----learned-2026-07-11-)
+- [ ] No trailing-preposition PHP msgid followed by JS runtime suffix — use a single JS `i18next.t('... {{version}}')` instead — see ["Trailing-Preposition"](#trailing-preposition--cross-language-split-php-prefix--js-suffix----learned-2026-07-11-)
+- [ ] **Did NOT run `npm run locale:build`** — extraction is automated outside this repo
+- [ ] **Did NOT commit `locale/terms/messages.po` or `src/skin/v2/locale/`** — the automation owns those
+- [ ] If JS/CSS changed: Ran `npm run build`
 - [ ] Checked for existing similar terms (reuse instead of creating new)
 - [ ] Used consolidation patterns for compound terms
 - [ ] Verified UI displays correctly (test with `npm run test`)
@@ -771,17 +851,21 @@ Before committing:
 
 ## Common Issues & Solutions
 
-### Issue: "Translation not showing after rebuild"
+### Issue: "Translation not showing"
 
 ```bash
-# 1. Verify string is in messages.po
+# 1. Verify the string is actually wrapped in the source
+grep -rn "My New String" src/
+
+# 2. Verify the term has reached the catalog (populated by the automation).
+#    If it is missing here, the extraction automation has not run yet —
+#    do NOT run `npm run locale:build` to force it.
 grep "My New String" locale/terms/messages.po
 
-# 2. Verify you ran both builds
-npm run locale:build    # Extract strings
-npm run build           # Regenerate frontend
+# 3. Regenerate front-end assets (JS/CSS bundles only)
+npm run build
 
-# 3. Clear browser cache and hard refresh
+# 4. Clear browser cache and hard refresh
 # Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows/Linux)
 
 # 4. Check console for i18next errors
@@ -944,7 +1028,7 @@ When using this template with ChurchCRM missing terms files:
   - Orthodox traditions have different spiritual terminology
   - Some cultures emphasize "Community" over "Congregation"
 - **Fill missing JSON values** with proper translations—never copy English terms
-- **Test translations locally** by running `npm run locale:build` and `npm run build`
+- **Test translations locally** by running `npm run build` (never `npm run locale:build`)
 - **Include context** for ambiguous terms in your translation notes
 
 **Common Missing Terms in ChurchCRM:**
@@ -1000,10 +1084,15 @@ $localeInfo = Bootstrapper::getCurrentLocale();
 
 ### Extracting and Uploading New Terms
 
-When adding new UI terms:
+> [!WARNING] Not a developer task
+> Extraction (`locale:build`) and the POEditor upload are
+> run by the **release/locale automation**, not by hand during feature work. The
+> steps below document what that automation does — they are not a checklist to
+> follow when you add a `gettext()` string. See
+> [`locale-translation-workflow.md`](./locale-translation-workflow.md).
 
 ```bash
-# 1. Extract all translatable strings (PHP, JS, DB)
+# 1. Extract all translatable strings (PHP, JS, DB)  ← automation only
 npm run locale:build
 # Output: locale/messages.po (master template)
 

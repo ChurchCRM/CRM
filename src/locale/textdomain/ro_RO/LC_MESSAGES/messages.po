@@ -2044,10 +2044,6 @@ msgid "Save Settings"
 msgstr "Salvare setări"
 
 #: 
-msgid "Default User Settings"
-msgstr "Setările implicite utilizator"
-
-#: 
 msgid "Permission"
 msgstr "Permisiune"
 
@@ -2079,21 +2075,6 @@ msgstr "Nume acces"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "Adauga Records"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Editare Records"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Șterge înregistrări"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Gestionarea proprietăților și clasificări"
 
@@ -2106,16 +2087,6 @@ msgstr "Gestionarea grupurilor și roluri"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Gestionați Donații și Finanțe"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Vizualizați, adăugați și editați Note"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Editare Auto"
 
 #: 
 msgid "Admin"
@@ -3040,10 +3011,6 @@ msgstr "Adăugați donatori la lista cumpărătorilor"
 #: 
 msgid "Data/Reports"
 msgstr "Dată/Rapoarte"
-
-#: 
-msgid "Query Menu"
-msgstr "Meniu întrebări"
 
 #: 
 msgid "Family Properties"
@@ -5664,10 +5631,6 @@ msgid "Permissions"
 msgstr "Permisiuni"
 
 #: 
-msgid "Manage Notes"
-msgstr "Administrați notițele"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Rezumatul Angajamentelor pe Familie"
 
@@ -6567,10 +6530,6 @@ msgid "Confirm Deletion"
 msgstr "Confirmă ștergerea"
 
 #: 
-msgid "Create directory permission"
-msgstr "Permisiune creare director"
-
-#: 
 msgid "Database Only"
 msgstr "Doar baza de date"
 
@@ -7465,10 +7424,6 @@ msgstr "Dezvoltare locală:"
 #: 
 msgid "Location & Contact Information"
 msgstr "Locație și informații de contact"
-
-#: 
-msgid "New to"
-msgstr "Nou în"
 
 #: 
 msgid "No locales configured"
@@ -9195,10 +9150,6 @@ msgid "Inactive Groups"
 msgstr "Grupuri inactive"
 
 #: 
-msgid "Language & Localization"
-msgstr "Limbă și localizare"
-
-#: 
 msgid "Map"
 msgstr "Hartă"
 
@@ -9598,10 +9549,6 @@ msgid "Browse photos of congregation members"
 msgstr "Răsfoiți fotografiile enoriașilor"
 
 #: 
-msgid "Buyer Number"
-msgstr "Număr cumpărător"
-
-#: 
 msgid "Buyers"
 msgstr "Cumpărători"
 
@@ -9704,10 +9651,6 @@ msgstr "Confirmați noua parolă"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Conectați un server SMTP pentru ca ChurchCRM să poată trimite e-mailuri"
-
-#: 
-msgid "Connect with others"
-msgstr "Conectează-te cu alții"
 
 #: 
 msgid "Convert individual records into family units"
@@ -9848,10 +9791,6 @@ msgstr "Duplicate"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Fiecare persoană poate avea propriul e-mail și număr de mobil."
-
-#: 
-msgid "Easy registration"
-msgstr "Înregistrare ușoară"
 
 #: 
 msgid "Edit Class"
@@ -10156,10 +10095,6 @@ msgstr "\"Numărul expeditor\" invalid: \"%s\". Includeți codul de țară, de e
 #: 
 msgid "Invite Your Team"
 msgstr "Invită echipa ta"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Alătură-te comunității noastre și rămâi conectat cu"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10552,10 +10487,6 @@ msgid "Record why attendees visited your church"
 msgstr "Înregistrați de ce vizitatorii au venit la biserică"
 
 #: 
-msgid "Register Your Family"
-msgstr "Înregistrați-vă familia"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Elimină toți din selecție"
 
@@ -10660,16 +10591,8 @@ msgid "Server Error"
 msgstr "Eroare server"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Setați permisiunea la Adevărat pentru a permite utilizatorilor noi să își schimbe valoarea curentă."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Setați un e-mail de administrator pentru a putea reseta parolele și a primi notificări"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Setați preferințele implicite pentru conturile noi de utilizator"
 
 #: 
 msgid "Set up"
@@ -10722,10 +10645,6 @@ msgstr "Începe de la zero"
 #: 
 msgid "Start Over"
 msgstr "Începe din nou"
-
-#: 
-msgid "Stay informed"
-msgstr "Rămâi informat"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -11016,10 +10935,6 @@ msgid "— Select type (optional) —"
 msgstr "— Selectați tipul (opțional) —"
 
 #: 
-msgid "Active Events"
-msgstr "Evenimente active"
-
-#: 
 msgid "Add Event"
 msgstr "Adaugă eveniment"
 
@@ -11158,10 +11073,6 @@ msgstr "Textul notei este obligatoriu"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Doar autorul notei sau un administrator poate șterge această notă"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Doar autorul notei sau un administrator poate edita această notă"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11726,11 +11637,6 @@ msgstr "Aceste valori sunt completate anterior la crearea de noi familii. Lăsa�
 #: 
 msgid "Unit used to measure distance."
 msgstr "Unitate folosită pentru a măsura distanța."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Permisiune utilizator pentru a crea directoare"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12770,10 +12676,6 @@ msgstr "Doar baza de date (.sql) sau arhivă completă (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Numărul implicit de rânduri afișate în tabelele de date. Intră în vigoare la următoarea încărcare a paginii."
 
-#: 
-msgid "Edit own family only"
-msgstr "Editați doar propria familie"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12786,10 +12688,6 @@ msgstr "Corectarea traducerilor incorecte sau necorespunzătoare în limba dvs."
 #: 
 msgid "Found a bug with translations?"
 msgstr "Ați găsit o eroare în traduceri?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Acordă toate privilegiile"
 
 #: 
 msgid "Green"
@@ -14236,22 +14134,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV-ul dvs. are nume de coloane duplicate. Redenumiți coloanele duplicate (de ex. adăugați \"(2)\" la a doua) și încărcați din nou."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Sigur doriți să ștergeți permanent acest articol donat?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Sigur doriți să ștergeți permanent acest număr de paletă?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Șterge articol donat"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Șterge număr de paletă"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Token de securitate invalid. Vă rugăm să încercați din nou."
 
@@ -14584,16 +14466,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Numele nu poate depăși %d caractere"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Aveți nevoie de ajutor? Contactați-ne"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Deschide o fereastră de 2 minute pentru înregistrarea dispozitivelor la:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Bun venit — autentificați-vă pentru a gestiona comunitatea dvs."
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14758,10 +14632,6 @@ msgstr "Nu aveți permisiunea de a șterge această notă."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nu aveți permisiunea de a edita această notă."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Notă privată — vizibilă doar creatorului]"
 
 #: 
 msgid "seconds"
@@ -15162,10 +15032,6 @@ msgstr "Descarcă copia de siguranță și continuă"
 #: 
 msgid "Downloaded"
 msgstr "Descărcat"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Se descarcă cea mai recentă lansare de pe GitHub..."
 
 #: 
 msgid "Duration"
@@ -16385,4 +16251,641 @@ msgstr "— Selectați țara —"
 #: 
 msgid "— Select State —"
 msgstr "— Selectați județul —"
+
+#: 
+msgid "Account options"
+msgstr "Opțiuni cont"
+
+#: 
+msgid "Register"
+msgstr "Înregistrare"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovac"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d eveniment trecut"
+msgstr[1] "%d evenimente trecute"
+msgstr[2] "%d evenimente trecute"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% din textul interfeței este tradus pentru această limbă."
+
+#: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
+msgid "Access denied"
+msgstr "Acces refuzat"
+
+#: 
+msgid "All times shown in"
+msgstr "Toate orele afișate în"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Zile de naștere și aniversări. Implicit: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Calendarul nu poate fi șters: %d eveniment(e) îi sunt încă atribuite. Eliminați-le sau reatribuiți-le mai întâi."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Format telefon mobil"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Coduri de formatare comune (exemple: vineri, 7 martie 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Evenimente curente"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Format dată și oră"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formate dată și oră"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Format selector dată"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Text indicativ selector dată"
+
+#: 
+msgid "Date Without Year"
+msgstr "Dată fără an"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Zi, 2 cifre"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Zi, fără zero inițial"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Implicit: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Implicit: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Exemplu: \"l, j F Y\" produce \"Vineri, 7 Martie 2025\". Orice alt caracter (spații, virgule, bare) apare ca atare."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Format dată pentru numele fișierului"
+
+#: 
+msgid "Fully translated."
+msgstr "Complet tradus."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Text indicativ afișat în câmpurile de dată. Implicit: aaaa-ll-zz"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Format telefon acasă/muncă"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Oră 12h, 2 cifre"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Oră 12h, fără zero"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Oră 24h, 2 cifre"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Include componenta oră. Implicit: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Limbă și regiune"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Limbă, fus orar, formate dată și telefon"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Localizare și formate"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Setările de localizare au fost salvate cu succes"
+
+#: 
+msgid "Long Date Format"
+msgstr "Format dată lungă"
+
+#: 
+msgid "Minutes"
+msgstr "Minute"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Lună și an"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Lună, 2 cifre"
+
+#: 
+msgid "Month, full"
+msgstr "Lună, completă"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Lună, fără zero inițial"
+
+#: 
+msgid "Month, short"
+msgstr "Lună, prescurtată"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nu este instalat pe server — datele și numerele pot să nu se formateze corect. Solicitați furnizorului să îl instaleze (ex: locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Format PHP pentru selectorul de dată. Implicit: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formate număr de telefon"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon cu extensie"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Salvați setările de localizare"
+
+#: 
+msgid "Selected Language"
+msgstr "Limbă selectată"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Suportul pentru parametrii regionali ai serverului nu a putut fi verificat (exec este dezactivat)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Suportat — această localizare este instalată pe server."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Limbă sistem, fus orar, formate dată/oră și formate număr de telefon"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Aceste câmpuri folosesc coduri de formatare (litere care reprezintă părți dintr-o dată). Alegeți o presetare sub fiecare câmp sau creați-vă propria folosind referința. Previzualizarea arată exact cum va arăta. Lăsați gol pentru a folosi valoarea implicită a sistemului."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Astfel vor apărea datele și numerele de telefon în tot sistemul."
+
+#: 
+msgid "Translation completeness"
+msgstr "Completitudinea traducerii"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Urmărirea traducerii nu este disponibilă pentru această limbă."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Folosiți 9 ca substituent pentru cifre (ex: (999) 999-9999). Lăsați gol pentru valoarea implicită a sistemului."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Folosit în numele fișierelor exportate. Implicit: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Folosit în rapoarte și liste de membri. Implicit: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Zi a săptămânii, completă"
+
+#: 
+msgid "Weekday, short"
+msgstr "Zi a săptămânii, prescurtată"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Ce înseamnă aceste coduri?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "An, 2 cifre"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "An, 4 cifre"
+
+#: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
+msgid "past"
+msgstr "trecut"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Croată"
+
+#: 
+msgid "%s's Account"
+msgstr "Contul lui %s"
+
+#: 
+msgid "Access"
+msgstr "Acces"
+
+#: 
+msgid "Access level"
+msgstr "Nivel de acces"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Administratorii au acces complet la toate funcțiile și datele. Permisiunile individuale nu se aplică."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Toți utilizatorii pot vizualiza membrii congregației. Această permisiune nu poate fi eliminată."
+
+#: 
+msgid "Always granted"
+msgstr "Întotdeauna acordat"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Poate doar să revizuiască și să verifice propria familie. Niciun alt acces."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Alegeți permisiunile specifice de mai jos."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Contactați un administrator pentru a vă modifica permisiunile."
+
+#: 
+msgid "Custom permissions"
+msgstr "Permisiuni personalizate"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Acces complet — acordă toate privilegiile."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Acordați permisiuni individuale:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Dacă aveți nevoie de acces suplimentar, vă rugăm să contactați administratorul parohiei."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Persoane &amp; Familii"
+
+#: 
+msgid "Self-service"
+msgstr "Auto-servire"
+
+#: 
+msgid "Self-service only"
+msgstr "Doar auto-servire"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Nota pe care încercați să o editați nu mai există."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Acest utilizator poate doar să revizuiască și să actualizeze propriul profil de familie. Permisiunile individuale nu se aplică."
+
+#: 
+msgid "User List"
+msgstr "Listă utilizatori"
+
+#: 
+msgid "View Person"
+msgstr "Vizualizare persoană"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nu aveți permisiunea de a adăuga o notă pentru această familie."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nu aveți permisiunea de a adăuga o notă pentru această persoană."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nu aveți permisiunea de a edita această notă"
+
+#: 
+msgid "Account locked"
+msgstr "Cont blocat"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Cont blocat din cauza prea multor încercări eșuate de autentificare"
+
+#: 
+msgid "Account status"
+msgstr "Starea contului"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avansat: alegeți o versiune țintă specifică"
+
+#: 
+msgid "Bug Fix"
+msgstr "Corecție de erori"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "În mod implicit, expertul descarcă următoarea versiune recomandată. Puteți alege în schimb orice versiune disponibilă de mai jos."
+
+#: 
+msgid "Change required"
+msgstr "Modificare necesară"
+
+#: 
+msgid "Changelog"
+msgstr "Jurnal de modificări"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Continuați oricum"
+
+#: 
+msgid "Could not load release information."
+msgstr "Informațiile despre versiune nu au putut fi încărcate."
+
+#: 
+msgid "Download & Install"
+msgstr "Descărcare și instalare"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Descărcați versiunea {{version}} și aplicați-o la instalarea dvs."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Se descarcă versiunea de pe GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Încercări eșuate de autentificare"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Previzualizarea actualizării nu a putut fi obținută"
+
+#: 
+msgid "Feature"
+msgstr "Funcționalitate"
+
+#: 
+msgid "Full changelog"
+msgstr "Jurnal complet de modificări"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Instalați versiunea stabilă {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Se instalează următoarea versiune"
+
+#: 
+msgid "Invalid file path"
+msgstr "Cale de fișier nevalidă"
+
+#: 
+msgid "Invalid version format"
+msgstr "Format de versiune nevalid"
+
+#: 
+msgid "Last login"
+msgstr "Ultima autentificare"
+
+#: 
+msgid "Loading release information..."
+msgstr "Se încarcă informațiile despre versiune..."
+
+#: 
+msgid "Locked"
+msgstr "Blocat"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Câmpuri obligatorii lipsă: fullPath și sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Parola trebuie schimbată"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Nu există note de versiune disponibile pentru această versiune."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nu există actualizări disponibile pentru versiunea dvs. curentă."
+
+#: 
+msgid "Password change required"
+msgstr "Schimbarea parolei este obligatorie"
+
+#: 
+msgid "Password status"
+msgstr "Starea parolei"
+
+#: 
+msgid "Re-install current version"
+msgstr "Reinstalați versiunea curentă"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Restaurarea a eșuat și baza de date poate fi într-o stare incompletă. Verificați jurnalul aplicației pentru detalii, apoi restaurați o copie de rezervă validă înainte de a utiliza sistemul."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Restaurarea a eșuat: fișierul de rezervă pare incomplet sau nu este o copie de rezervă SQL validă. Baza de date este acum într-o stare incompletă — restaurați o copie de rezervă validă înainte de a utiliza sistemul."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Se rulează o versiune pre-lansare"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Afișați calea completă de actualizare"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Cea mai recentă versiune stabilă este {{version}}. O puteți reinstala mai jos."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Acest cont este blocat din cauza prea multor încercări eșuate de autentificare."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Acest utilizator trebuie să seteze o nouă parolă la următoarea autentificare."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Utilizatorul trebuie să își schimbe parola la următoarea autentificare"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Utilizatorul trebuie să aibă permisiunea pentru e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Vizualizați notele de versiune"
+
+#: 
+msgid "What's New"
+msgstr "Noutăți"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Noutăți în {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Aveți <strong>{{releaseCount}}</strong> versiuni în urmă. Iată ce veți câștiga:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Rulați o versiune pre-lansare."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Puteți continua actualizarea fără a vizualiza notele de versiune."
+
+#: 
+msgid "You're up to date!"
+msgstr "Aveți cea mai recentă versiune!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Trebuie selectată o persoană validă."
+
+#: 
+msgid "Add Donors"
+msgstr "Adaugă donatori"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Adaugă în lista de cumpărători"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Atribuie automat numere de paletă tuturor donatorilor de articole"
+
+#: 
+msgid "Create a new user account"
+msgstr "Creează un cont de utilizator nou"
+
+#: 
+msgid "Delete this item?"
+msgstr "Ștergeți acest articol?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Ștergeți acest număr de paletă?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Editează cumpărătorul"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Autentificatorul este deja utilizat, vă rugăm să alegeți altul!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Autentificatorul trebuie să aibă cel puțin 3 caractere!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Gestionează colectele de fonduri"
+
+#: 
+msgid "New User"
+msgstr "Utilizator nou"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Vă rugăm să selectați o persoană pentru care să creați un cont de utilizator."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Vă rugăm să selectați cel puțin un cumpărător pentru a genera extrase."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Înapoi la panoul de control al colectei de fonduri"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Persoana selectată nu a fost găsită."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Această acțiune va adăuga automat numere de paletă pentru toți donatorii de articole din această colectă de fonduri care nu au încă un număr de cumpărător atribuit."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Această persoană are deja un cont de utilizator."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Utilizatorul trebuie să fie administrator sau să aibă permisiunea de a gestiona colectele de fonduri"
+
+#: 
+msgid "User not found."
+msgstr "Utilizatorul nu a fost găsit."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Selectați o persoană —"
 

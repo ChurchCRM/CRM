@@ -1,0 +1,16 @@
+-- ChurchCRM 7.4.3 Data Migration
+-- Remove low-value per-user security permission flags from userconfig_ucfg:
+--   bCreateDirectory (ucfg_id = 5) and bExportCSV (ucfg_id = 6)
+--
+-- Background (issue #9183):
+--   bExportCSV was already gated by isAdmin() in CSVExport.php, making the
+--   per-user flag redundant. bCreateDirectory gated the directory-report pages;
+--   those are now open to any authenticated user under the read-default policy.
+--   Both flags are removed from the PHP permission model in this release.
+--
+--   bExportCSV rows were already deleted for users of migration 6.8.0 (via
+--   "DELETE FROM userconfig_ucfg WHERE ucfg_name = 'bExportCSV'"). This script
+--   is idempotent: deleting rows that no longer exist is a no-op.
+--
+-- Idempotent: safe to re-run; rows already absent are silently skipped.
+DELETE FROM `userconfig_ucfg` WHERE `ucfg_name` IN ('bCreateDirectory', 'bExportCSV');

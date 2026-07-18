@@ -2,7 +2,7 @@
 title: "Development Workflows"
 intent: "Setup, build, Docker, and testing workflows for development and CI"
 tags: ["devops","workflows","docker","testing"]
-prereqs: ["testing.md"]
+prereqs: ["[[testing]]"]
 complexity: "beginner"
 ---
 
@@ -33,7 +33,7 @@ This skill covers setup, build processes, Docker management, testing workflows, 
 
 ```bash
 npm ci                    # Install exact dependencies  
-npm run deploy            # Build everything (PHP + frontend)
+npm run build             # Build everything (PHP + frontend)
 npm run docker:dev:start  # Start Docker containers
 ```
 
@@ -47,6 +47,22 @@ npm run docker:dev:login:web # Shell into web container
 ```
 
 ## Docker Management
+
+### Docker Sandbox (sbx) — Zero host dependencies
+
+Use when Docker is available but **Node, PHP, and Composer are NOT installed** (e.g. agent sandboxes, CI runners, quick evaluations).  All build steps run inside a multi-stage Docker build stage.
+
+```bash
+npm run docker:sbx:start    # Build image + start all services (first run: 5–15 min)
+npm run docker:sbx:stop     # Stop (keep data volumes)
+npm run docker:sbx:down     # Stop + remove containers and volumes
+npm run docker:sbx:logs     # Live logs
+npm run docker:sbx:rebuild  # Full rebuild (after code changes)
+```
+
+- **Web**: `http://localhost` — admin / changeme
+- **Adminer**: `http://localhost:8088` — DB GUI
+- Config file: `docker/docker-compose.sbx.yaml` + `docker/Dockerfile.sbx`
 
 ### Development Containers
 
@@ -65,15 +81,31 @@ npm run docker:test:restart     # Restart all containers
 npm run docker:test:restart:db  # Restart database only (refresh schema)
 npm run docker:test:rebuild     # Full rebuild with new images
 npm run docker:test:down        # Remove containers and volumes
+npm run docker:test:subdir      # Start test containers for subdirectory install
+```
+
+### CI Containers
+
+```bash
+npm run docker:ci:start                # CI containers (GitHub Actions profile)
+npm run docker:ci:root:start           # Parallel test — root path install
+npm run docker:ci:root:down            # Tear down root profile
+npm run docker:ci:subdir:start         # Parallel test — subdirectory install
+npm run docker:ci:subdir:down          # Tear down subdir profile
+npm run docker:ci:new-system:start     # Fresh empty database (setup wizard test)
+npm run docker:ci:new-system:down      # Tear down new-system profile
 ```
 
 ### Docker Profiles
 
-- **dev** - Development environment
-- **test** - Local testing environment
-- **ci** - CI/CD optimized containers
+- **dev** — Full development environment (Composer, Node via NVM, Xdebug, Adminer)
+- **test** — Minimal runtime for local testing
+- **ci** — CI/CD optimized (used by GitHub Actions)
+- **ci-root** — Parallel CI test on root-path install (`/`)
+- **ci-subdir** — Parallel CI test on subdirectory install (`/churchcrm/`)
+- **ci-new-system** — Fresh empty database for setup-wizard tests
 
-Configuration files: `docker-compose.yaml`, `docker-compose.gh-actions.yaml`
+Configuration files: `docker/docker-compose.yaml`, `docker/docker-compose.gh-actions.yaml`, `docker/docker-compose.parallel.yaml`, `docker/docker-compose.subdir.yaml`, `docker/docker-compose.sbx.yaml`, `docker/docker-compose.nginx.yaml`, `docker/docker-compose.frankenphp.yaml`
 
 ## Testing Workflows
 
@@ -111,11 +143,33 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 
 ### CI/CD Testing (GitHub Actions)
 
-- **Docker profiles**: `dev`, `test`, `ci` in `docker-compose.yaml`
+- **Docker profiles**: `dev`, `test`, `ci`, `ci-root`, `ci-subdir`, `ci-new-system` in `docker/docker-compose.yaml` + overlay files
 - **CI command**: `npm run docker:ci:start` with optimized containers
 - **Artifacts uploaded**: `cypress-artifacts-{run_id}` contains logs, screenshots, videos
 - **Access**: Actions → Workflow run → Artifacts section
 - **Debugging**: Download `cypress-reports-{branch}` for detailed failure analysis
+
+### Parallel Testing (Root + Subdirectory)
+
+ChurchCRM supports both root path (`/`) and subdirectory (`/churchcrm/`) installs.
+Parallel infrastructure runs both configurations simultaneously without conflicts.
+
+```bash
+# Root path tests
+npm run docker:ci:root:start
+npx cypress run --config-file cypress/configs/docker.config.ts
+npm run docker:ci:root:down
+
+# Subdirectory tests
+npm run docker:ci:subdir:start
+npx cypress run --config-file cypress/configs/docker.config.ts
+npm run docker:ci:subdir:down
+
+# Fresh-system tests (empty database, triggers setup wizard)
+npm run docker:ci:new-system:start
+npm run test:new-system
+npm run docker:ci:new-system:down
+```
 
 ### Test Requirements Before Committing
 
@@ -148,7 +202,7 @@ cat src/logs/$(date +%Y-%m-%d)-app.log
 ```bash
 npm run build               # Build all frontend assets (production)
 npm run build:frontend      # Only rebuild JS/CSS
-npm run watch              # Watch mode for development
+npm run build:webpack:watch # Watch mode for development
 ```
 
 **Output:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`
@@ -157,7 +211,7 @@ npm run watch              # Watch mode for development
 
 ```bash
 npm run build:php          # Update Composer dependencies
-npm run deploy             # Full build (PHP + frontend)
+npm run build              # Full build (PHP + frontend)
 ```
 
 **Validates:** PHP syntax, Composer dependencies
@@ -314,7 +368,7 @@ git add -A
 ## Configuration Files
 
 - **Build**: `webpack.config.js`, `Gruntfile.js`, `package.json`
-- **Docker**: `docker-compose.yaml`, `docker/docker-compose.*.yaml`
+- **Docker**: `docker/docker-compose.yaml`, `docker/docker-compose.sbx.yaml`, `docker/docker-compose.gh-actions.yaml`, `docker/docker-compose.parallel.yaml`, `docker/docker-compose.subdir.yaml`, `docker/docker-compose.nginx.yaml`, `docker/docker-compose.frankenphp.yaml`
 - **Cypress**: `cypress/configs/docker.config.ts`, `cypress/configs/new-system.config.ts`, `cypress/configs/base.config.ts`, `cypress/configs/_shared.ts`
 - **PHP**: `composer.json`, `orm/propel.php.dist`
 - **ORM**: `orm/schema.xml`

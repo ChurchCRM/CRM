@@ -31,6 +31,7 @@ interface CRMNamespace {
   notify?: (message: string | object, options?: Record<string, unknown>) => void;
   notyf?: unknown;
   escapeHtml?: (s: string) => string;
+  escapeAttribute?: (s: string) => string;
   [key: string]: unknown;
 }
 

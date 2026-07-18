@@ -2017,10 +2017,6 @@ msgid "Save Settings"
 msgstr "Beállítások mentése"
 
 #: 
-msgid "Default User Settings"
-msgstr "Alapértelmezett felhasználói beállítások"
-
-#: 
 msgid "Permission"
 msgstr "Engedély"
 
@@ -2052,20 +2048,6 @@ msgid "Login Name"
 msgstr "Bejelentkezés Név"
 
 #: 
-msgid "Add Records"
-msgstr "Rekordok hozzáadása"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "Szerkesztés Records"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "Törlés rekordok"
-
-#: 
 #, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Kezelése Tulajdonságok és szempontok"
@@ -2079,16 +2061,6 @@ msgstr "Csoportok kezelése és Szerep"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Kezelése Adományok és pénzügyek"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "Megtekintése, hozzáadása és szerkesztése Megjegyzés"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "Szerkesztés Self"
 
 #: 
 msgid "Admin"
@@ -3011,10 +2983,6 @@ msgstr "Adományozók hozzáadása a vevőlistához"
 #: 
 msgid "Data/Reports"
 msgstr "Adatok/Jelentések"
-
-#: 
-msgid "Query Menu"
-msgstr "Lekérdezés menü"
 
 #: 
 msgid "Family Properties"
@@ -5625,10 +5593,6 @@ msgid "Permissions"
 msgstr "Jogosultságok"
 
 #: 
-msgid "Manage Notes"
-msgstr "Jegyzetek kezelése"
-
-#: 
 msgid "Pledge Summary By Family"
 msgstr "Vállalások összesítése családonként"
 
@@ -6526,10 +6490,6 @@ msgid "Confirm Deletion"
 msgstr "Törlés Megerősítése"
 
 #: 
-msgid "Create directory permission"
-msgstr "Könyvtár létrehozási engedély"
-
-#: 
 msgid "Database Only"
 msgstr "Csak Adatbázis"
 
@@ -7424,10 +7384,6 @@ msgstr "Helyi fejlesztés:"
 #: 
 msgid "Location & Contact Information"
 msgstr "Hely & Kapcsolat Információ"
-
-#: 
-msgid "New to"
-msgstr "Új a"
 
 #: 
 msgid "No locales configured"
@@ -9149,10 +9105,6 @@ msgid "Inactive Groups"
 msgstr "Inaktív csoportok"
 
 #: 
-msgid "Language & Localization"
-msgstr "Nyelv és lokalizáció"
-
-#: 
 msgid "Map"
 msgstr "Térkép"
 
@@ -9551,10 +9503,6 @@ msgid "Browse photos of congregation members"
 msgstr "Gyülekezeti tagok fényképeinek böngészése"
 
 #: 
-msgid "Buyer Number"
-msgstr "Vásárlószám"
-
-#: 
 msgid "Buyers"
 msgstr "Vásárlók"
 
@@ -9657,10 +9605,6 @@ msgstr "Új jelszó megerősítése"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "SMTP szerver csatlakoztatása, hogy a ChurchCRM küldhessen e-maileket"
-
-#: 
-msgid "Connect with others"
-msgstr "Kapcsolódjon másokhoz"
 
 #: 
 msgid "Convert individual records into family units"
@@ -9801,10 +9745,6 @@ msgstr "Duplikátumok"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Minden személy rendelkezhet saját e-mail címmel és mobilszámmal."
-
-#: 
-msgid "Easy registration"
-msgstr "Egyszerű regisztráció"
 
 #: 
 msgid "Edit Class"
@@ -10109,10 +10049,6 @@ msgstr "Érvénytelen \"Feladó szám\": \"%s\". Adja meg az országkódot, pl. 
 #: 
 msgid "Invite Your Team"
 msgstr "Csapat meghívása"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Csatlakozzon közösségünkhöz és maradjon kapcsolatban"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10505,10 +10441,6 @@ msgid "Record why attendees visited your church"
 msgstr "Rögzítse, miért látogattak el a vendégek a gyülekezetbe"
 
 #: 
-msgid "Register Your Family"
-msgstr "Regisztrálja családját"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Összes eltávolítása a listából"
 
@@ -10613,16 +10545,8 @@ msgid "Server Error"
 msgstr "Szerverhiba"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Állítsa az engedélyt Igazra, hogy az új felhasználók módosíthassák az aktuális értéket."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Állítson be egy adminisztrátori e-mail címet a jelszó-visszaállításhoz és értesítésekhez"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Alapértelmezett beállítások megadása új felhasználói fiókokhoz"
 
 #: 
 msgid "Set up"
@@ -10675,10 +10599,6 @@ msgstr "Újrakezdés"
 #: 
 msgid "Start Over"
 msgstr "Kezdje elölről"
-
-#: 
-msgid "Stay informed"
-msgstr "Maradjon tájékozott"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -10969,10 +10889,6 @@ msgid "— Select type (optional) —"
 msgstr "— Válasszon típust (nem kötelező) —"
 
 #: 
-msgid "Active Events"
-msgstr "Aktív események"
-
-#: 
 msgid "Add Event"
 msgstr "Esemény hozzáadása"
 
@@ -11111,10 +11027,6 @@ msgstr "A megjegyzés szövege kötelező"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Csak a megjegyzés szerzője vagy egy adminisztrátor törölheti ezt a megjegyzést"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Csak a megjegyzés szerzője vagy egy adminisztrátor szerkesztheti ezt a megjegyzést"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11679,11 +11591,6 @@ msgstr "Ezek az értékek automatikusan kitöltésre kerülnek új családok lé
 #: 
 msgid "Unit used to measure distance."
 msgstr "A távolság mérésére használt egység."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Felhasználói engedély könyvtárak létrehozásához"
 
 #. Context: userconfig_ucfg
 #: 
@@ -12723,10 +12630,6 @@ msgstr "Csak adatbázis (.sql) vagy teljes archívum (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Az adattáblákban megjelenített alapértelmezett sorok száma. A következő oldalletöltéskor lép életbe."
 
-#: 
-msgid "Edit own family only"
-msgstr "Csak saját család szerkesztése"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12739,10 +12642,6 @@ msgstr "Helytelen vagy ügyetlen fordítások javítása az Ön nyelvén"
 #: 
 msgid "Found a bug with translations?"
 msgstr "Hibát talált a fordításokban?"
-
-#: 
-msgid "Grants all privileges"
-msgstr "Minden jogosultságot megad"
 
 #: 
 msgid "Green"
@@ -14188,22 +14087,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "A CSV-ben ismétlődő oszlopnevek találhatók. Nevezze át az ismétlődő oszlopokat (pl. adja hozzá a \"(2)\" jelölést a másodikhoz) és töltse fel újra."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Biztosan véglegesen törölni szeretné ezt az adományozott tételt?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Biztosan véglegesen törölni szeretné ezt a licitsorszámot?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Adományozott tétel törlése"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Licitsorszám törlése"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Érvénytelen biztonsági token. Kérjük, próbálja újra."
 
@@ -14536,16 +14419,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "A név nem lehet hosszabb %d karakternél"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Segítségre van szüksége? Vegye fel velünk a kapcsolatot"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "2 perces ablakot nyit az eszközök regisztrálásához a következő címen:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Üdvözöljük – jelentkezzen be közösségének kezeléséhez"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14710,10 +14585,6 @@ msgstr "Nincs jogosultsága törölni ezt a megjegyzést."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nincs jogosultsága szerkeszteni ezt a megjegyzést."
-
-#: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Privát megjegyzés — csak az alkotó láthatja]"
 
 #: 
 msgid "seconds"
@@ -15116,10 +14987,6 @@ msgid "Downloaded"
 msgstr "Letöltve"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "A legújabb kiadás letöltése a GitHubról..."
-
-#: 
 msgid "Duration"
 msgstr "Időtartam"
 
@@ -15405,6 +15272,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "Csoportazonosító (GroupID) szükséges a szerepkörválasztáshoz"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Legyen kéznél a hitelesítő alkalmazása (Google Authenticator, Microsoft Authenticator, Authy stb.)"
 
@@ -15415,6 +15286,10 @@ msgstr "Speciális beállítások elrejtése"
 #: 
 msgid "Home phone is required"
 msgstr "A saját telefon szükséges"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16333,4 +16208,644 @@ msgstr "— Ország kiválasztása —"
 #: 
 msgid "— Select State —"
 msgstr "— Megye kiválasztása —"
+
+#: 
+msgid "Account options"
+msgstr "Fiók beállításai"
+
+#: 
+msgid "Register"
+msgstr "Regisztráció"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Szlovák"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d elmúlt esemény"
+msgstr[1] "%d elmúlt esemény"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "Az interfész szövegének %d%-a le van fordítva erre a nyelvre."
+
+#: 
+msgid "AM / PM"
+msgstr "DE / DU"
+
+#: 
+msgid "Access denied"
+msgstr "Hozzáférés megtagadva"
+
+#: 
+msgid "All times shown in"
+msgstr "Minden idő megjelenítve:"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Születésnapok és évfordulók. Alapértelmezett: h/n"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "A naptár nem törölhető: %d esemény még hozzá van rendelve. Először távolítsa el vagy rendelje át őket."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Mobiltelefon formátuma"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Általános formázási kódok (példák: péntek, 2025. március 7., 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Aktuális események"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Dátum- és időformátum"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Dátum- és időformátumok"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Dátumválasztó formátuma"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Dátumválasztó helyőrzője"
+
+#: 
+msgid "Date Without Year"
+msgstr "Dátum év nélkül"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Nap, 2 számjegy"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Nap, vezető nulla nélkül"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Alapértelmezett: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Alapértelmezett: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Példa: \"l, j F Y\" eredménye: \"Péntek, 7. Március 2025\". Minden más karakter (szóközök, vesszők, perjelek) pontosan úgy jelenik meg, ahogy beírta."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Dátumformátum fájlnévhez"
+
+#: 
+msgid "Fully translated."
+msgstr "Teljesen lefordítva."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Dátummezőkben megjelenő súgószöveg. Alapértelmezett: éééé-hh-nn"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Otthoni/munkahelyi telefon formátuma"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Óra 12h, 2 számjegy"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Óra 12h, nulla nélkül"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Óra 24h, 2 számjegy"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Tartalmaz időkomponenst. Alapértelmezett: h/n/É ó:p de/du"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Nyelv és régió"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Nyelv, időzóna, dátum- és telefonformátumok"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Honosítás és formátumok"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "A honosítási beállítások mentése sikeres"
+
+#: 
+msgid "Long Date Format"
+msgstr "Hosszú dátumformátum"
+
+#: 
+msgid "Minutes"
+msgstr "Percek"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Hónap és év"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Hónap, 2 számjegy"
+
+#: 
+msgid "Month, full"
+msgstr "Hónap, teljes név"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Hónap, vezető nulla nélkül"
+
+#: 
+msgid "Month, short"
+msgstr "Hónap, rövidített"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nincs telepítve a szerveren — a dátumok és számok esetleg nem formázódnak helyesen. Kérje a tárhelyszolgáltatót a telepítésre (pl. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP formátum a dátumválasztóhoz. Alapértelmezett: É-h-n"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Telefonszám-formátumok"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon mellékkel"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Honosítási beállítások mentése"
+
+#: 
+msgid "Selected Language"
+msgstr "Kiválasztott nyelv"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "A szerver területi beállításait nem lehetett ellenőrizni (az exec le van tiltva)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Támogatott — ez a területi beállítás telepítve van a szerveren."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Rendszernyelv, időzóna, dátum-/időformátumok és telefonszám-formátumok"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Ezek a mezők formázási kódokat használnak (betűk a dátum részeit jelölik). Válasszon egy előbeállítást minden mező alatt, vagy hozzon létre sajátot a referencia segítségével. Az élő előnézet pontosan megmutatja a végeredményt. Hagyja üresen a rendszer alapértelmezéséhez."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Így fognak megjelenni a dátumok és telefonszámok az egész rendszerben."
+
+#: 
+msgid "Translation completeness"
+msgstr "Fordítás teljessége"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "A fordítás nyomon követése nem érhető el erre a nyelvre."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Használja a 9-et számjegy-helyőrzőként (pl. (999) 999-9999). Hagyja üresen a rendszer alapértelmezéséhez."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Exportált fájlnevekben használatos. Alapértelmezett: Éhn-Óps"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Jelentésekben és taglistákban használatos. Alapértelmezett: h/n/É"
+
+#: 
+msgid "Weekday, full"
+msgstr "Hét napja, teljes név"
+
+#: 
+msgid "Weekday, short"
+msgstr "Hét napja, rövidített"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Mit jelentenek ezek a kódok?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Év, 2 számjegy"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Év, 4 számjegy"
+
+#: 
+msgid "am / pm"
+msgstr "de / du"
+
+#: 
+msgid "past"
+msgstr "elmúlt"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Horvát"
+
+#: 
+msgid "%s's Account"
+msgstr "%s fiókja"
+
+#: 
+msgid "Access"
+msgstr "Hozzáférés"
+
+#: 
+msgid "Access level"
+msgstr "Hozzáférési szint"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "A rendszergazdák teljes hozzáféréssel rendelkeznek az összes funkcióhoz és adathoz. Az egyéni jogosultságok nem vonatkoznak rájuk."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Minden felhasználó megtekintheti a gyülekezet tagjait. Ez a jogosultság nem vonható vissza."
+
+#: 
+msgid "Always granted"
+msgstr "Mindig megadva"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Csak a saját családját tekintheti meg és ellenőrizheti. Más hozzáférése nincs."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Válasszon egyéni jogosultságokat az alábbiakban."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Jogosultságai módosításához forduljon egy rendszergazdához."
+
+#: 
+msgid "Custom permissions"
+msgstr "Egyéni jogosultságok"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Teljes hozzáférés – minden jogosultságot megad."
+
+#: 
+msgid "Grant individual permissions:"
+msgstr "Egyéni jogosultságok megadása:"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ha további hozzáférésre van szüksége, forduljon a gyülekezet rendszergazdájához."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Személyek &amp; Családok"
+
+#: 
+msgid "Self-service"
+msgstr "Önkiszolgáló"
+
+#: 
+msgid "Self-service only"
+msgstr "Csak önkiszolgáló"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "A szerkeszteni kívánt megjegyzés már nem létezik."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Ez a felhasználó csak a saját családi profilját tekintheti meg és frissítheti. Az egyéni jogosultságok nem vonatkoznak rá."
+
+#: 
+msgid "User List"
+msgstr "Felhasználók listája"
+
+#: 
+msgid "View Person"
+msgstr "Személy megtekintése"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a családhoz."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nincs jogosultsága ennek a megjegyzésnek a szerkesztéséhez"
+
+#: 
+msgid "Account locked"
+msgstr "Fiók zárolva"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "A fiók zárolva van, mert túl sok sikertelen bejelentkezési kísérlet történt"
+
+#: 
+msgid "Account status"
+msgstr "Fiók állapota"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Speciális: válasszon egy konkrét célverziót"
+
+#: 
+msgid "Bug Fix"
+msgstr "Hibajavítás"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Alapértelmezés szerint a varázsló a következő ajánlott kiadást tölti le. Ehelyett az alábbi elérhető verziók közül is választhat."
+
+#: 
+msgid "Change required"
+msgstr "Változtatás szükséges"
+
+#: 
+msgid "Changelog"
+msgstr "Változásnapló"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Folytatás mindenképpen"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nem sikerült betölteni a kiadási információkat."
+
+#: 
+msgid "Download & Install"
+msgstr "Letöltés és telepítés"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "A {{version}} verzió letöltése és alkalmazása a telepítésre."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Kiadás letöltése a GitHub-ról..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Sikertelen bejelentkezési kísérletek"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nem sikerült lekérni a frissítési előnézetet"
+
+#: 
+msgid "Feature"
+msgstr "Funkció"
+
+#: 
+msgid "Full changelog"
+msgstr "Teljes változásnapló"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Stabil {{version}} telepítése"
+
+#: 
+msgid "Installing next release"
+msgstr "A következő kiadás telepítése"
+
+#: 
+msgid "Invalid file path"
+msgstr "Érvénytelen fájlútvonal"
+
+#: 
+msgid "Invalid version format"
+msgstr "Érvénytelen verzióformátum"
+
+#: 
+msgid "Last login"
+msgstr "Utolsó bejelentkezés"
+
+#: 
+msgid "Loading release information..."
+msgstr "Kiadási információk betöltése..."
+
+#: 
+msgid "Locked"
+msgstr "Zárolva"
+
+#: 
+msgid "Major"
+msgstr "Fő"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Hiányzó kötelező mezők: fullPath és sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Jelszócsere szükséges"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Ehhez a verzióhoz nem érhetők el kiadási megjegyzések."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Az aktuális verzióhoz nem áll rendelkezésre frissítés."
+
+#: 
+msgid "Password change required"
+msgstr "Jelszócsere szükséges"
+
+#: 
+msgid "Password status"
+msgstr "Jelszó állapota"
+
+#: 
+msgid "Re-install current version"
+msgstr "Jelenlegi verzió újratelepítése"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "A visszaállítás sikertelen, és az adatbázis hiányos állapotban lehet. Ellenőrizze az alkalmazás naplóját a részletekért, majd állítson vissza egy ismert jó biztonsági másolatot a rendszer használata előtt."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "A visszaállítás sikertelen: a biztonsági mentési fájl hiányosnak tűnik, vagy nem érvényes SQL biztonsági mentés. Az adatbázis jelenleg hiányos állapotban van — állítson vissza egy ismert jó biztonsági másolatot a rendszer használata előtt."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Előzetes kiadás fut"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Teljes frissítési útvonal megjelenítése"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "A legújabb stabil kiadás a {{version}}. Alább újratelepítheti."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Ez a fiók zárolva van, mert túl sok sikertelen bejelentkezési kísérlet történt."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Ennek a felhasználónak új jelszót kell beállítania a következő bejelentkezéskor."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "A felhasználónak meg kell változtatnia jelszavát a következő bejelentkezéskor"
+
+#: 
+msgid "User must have Email permission"
+msgstr "A felhasználónak e-mail jogosultsággal kell rendelkeznie"
+
+#: 
+msgid "View release notes"
+msgstr "Kiadási megjegyzések megtekintése"
+
+#: 
+msgid "What's New"
+msgstr "Újdonságok"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Újdonságok a {{version}} verzióban"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong> kiadással le van maradva. Íme, mit fog nyerni:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Előzetes kiadást futtat."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "A frissítéssel a kiadási megjegyzések megtekintése nélkül is folytathat."
+
+#: 
+msgid "You're up to date!"
+msgstr "Naprakész!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Érvényes személyt kell kiválasztani."
+
+#: 
+msgid "Add Donors"
+msgstr "Adományozók hozzáadása"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Hozzáadás a vevők listájához"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Lapátszámok automatikus hozzárendelése az összes tárgyadományozóhoz"
+
+#: 
+msgid "Create a new user account"
+msgstr "Új felhasználói fiók létrehozása"
+
+#: 
+msgid "Delete this item?"
+msgstr "Törli ezt az elemet?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Törli ezt a lapátszámot?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Vevő szerkesztése"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "A bejelentkezési név már foglalt, kérjük válasszon másikat!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "A bejelentkezési névnek legalább 3 karakterből kell állnia!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Gyűjtések kezelése"
+
+#: 
+msgid "New User"
+msgstr "Új felhasználó"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Kérjük válasszon ki egy személyt, akinek felhasználói fiókot szeretne létrehozni."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Kérjük válasszon ki legalább egy vevőt a kimutatások elkészítéséhez."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Vissza a gyűjtés irányítópultjára"
+
+#: 
+msgid "The selected person was not found."
+msgstr "A kiválasztott személy nem található."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Ez a művelet automatikusan lapátszámokat rendel hozzá az összes olyan tárgyadományozóhoz ebben a gyűjtésben, akihez még nem tartozik vevőszám."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Ennek a személynek már van felhasználói fiókja."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "A felhasználónak rendszergazdának kell lennie, vagy rendelkeznie kell a gyűjtések kezelése jogosultsággal."
+
+#: 
+msgid "User not found."
+msgstr "A felhasználó nem található."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Válasszon személyt —"
 
