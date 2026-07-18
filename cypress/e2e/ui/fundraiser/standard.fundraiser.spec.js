@@ -208,20 +208,39 @@ describe("Fund Raiser", () => {
 
     // -----------------------------------------------------------------------
     // View page (/fundraiser/view/{id}) — PR #9188
+    // Creates a new fundraiser via the API (self-contained; does NOT rely on
+    // pre-seeded data) then visits the view page and asserts the new-field data
+    // is rendered correctly.
     // -----------------------------------------------------------------------
 
-    it("view page renders for fundraiser 1", () => {
-        cy.visit("/fundraiser/view/1");
-        // Page title / breadcrumb should include the fundraiser name
-        cy.contains("2016 Car Wash");
-        // At a Glance sidebar card should be present
-        cy.contains("At a Glance");
-        // Donated Items card (even when empty)
-        cy.contains("Donated Items");
-        // Edit button is visible to a user with ManageFundraisers role.
-        // Scope to .btn-primary to avoid matching the hidden sidebar nav link
-        // that also contains "Edit" (set via $_SESSION['iCurrentFundraiser']).
-        cy.contains("a.btn-primary", "Edit").should("be.visible");
+    it("view page renders new-field data for a freshly created fundraiser", () => {
+        // Create via the REST API — session cookie from setupStandardSession provides auth.
+        cy.request({
+            method: "POST",
+            url: "/api/fundraisers",
+            body: {
+                title: "Test Gala E2E",
+                description: "Automated test fundraiser",
+                status: "Planning",
+                type: "Gala",
+                goalAmount: 5000,
+            },
+            headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+            expect(res.status).to.eq(201);
+            const id = res.body.fundraiser.id;
+            expect(id).to.be.a("number").and.be.greaterThan(0);
+
+            cy.visit(`/fundraiser/view/${id}`);
+            // Title from new record
+            cy.contains("Test Gala E2E");
+            // At a Glance sidebar card
+            cy.contains("At a Glance");
+            // Donated Items section
+            cy.contains("Donated Items");
+            // Edit button visible to ManageFundraisers user — scoped to .btn-primary
+            cy.contains("a.btn-primary", "Edit").should("be.visible");
+        });
     });
 
     it("view page redirects to listing for unknown fundraiser", () => {

@@ -3,9 +3,9 @@
 
 ALTER TABLE `fundraiser_fr`
     ADD COLUMN `fr_EndDate`    DATE              NULL                          AFTER `fr_EnteredDate`,
-    ADD COLUMN `fr_Status`     VARCHAR(15)       NOT NULL DEFAULT 'Active'     AFTER `fr_EndDate`,
+    ADD COLUMN `fr_Status`     VARCHAR(15)       NULL DEFAULT 'Active'      AFTER `fr_EndDate`,
     ADD COLUMN `fr_GoalAmount` DECIMAL(10, 2)    NULL                          AFTER `fr_Status`,
-    ADD COLUMN `fr_Type`       VARCHAR(20)       NOT NULL DEFAULT 'Auction'    AFTER `fr_GoalAmount`,
+    ADD COLUMN `fr_Type`       VARCHAR(20)       NULL DEFAULT 'Auction'     AFTER `fr_GoalAmount`,
     ADD COLUMN `fr_fund_ID`    MEDIUMINT UNSIGNED NULL                         AFTER `fr_Type`;
 
 -- Back-fill: set end date equal to start date for rows where end date is not set

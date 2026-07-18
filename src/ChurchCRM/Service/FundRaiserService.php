@@ -2,14 +2,20 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\model\ChurchCRM\Map\DonatedItemTableMap;
+use ChurchCRM\model\ChurchCRM\Map\PaddleNumTableMap;
+use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\LoggerUtils;
-use Propel\Runtime\Propel;
 
 /**
  * Service class for Fundraiser module aggregations.
  *
- * Provides grouped, N+1-free queries for list summaries and single-event view data.
+ * All queries use Perpl ORM (Query classes + TableMap constants).
+ * Raw SQL / Propel::getConnection() is intentionally absent — every
+ * access goes through the ORM layer for consistency and type safety.
  */
 class FundRaiserService
 {
@@ -27,12 +33,12 @@ class FundRaiserService
      * Each value is:
      *   [
      *     'items'   => int,    // donated item count
-     *     'raised'  => float,  // SUM di_sellprice
+     *     'raised'  => float,  // SUM of sell-price for sold items (buyer > 0 AND sell > 0)
      *     'est'     => float,  // SUM di_estprice
      *     'buyers'  => int,    // paddle number count
      *   ]
      *
-     * Two batched GROUP BY queries, zero per-row N+1.
+     * Two batched ORM GROUP BY queries, zero per-row N+1.
      *
      * @param  int[] $fundraiserIds When provided and non-empty, limits the aggregation
      *                              to only these fundraiser IDs (avoids full-table scans
@@ -43,40 +49,30 @@ class FundRaiserService
     {
         $this->logger->debug('FundRaiserService::getListSummaries — fetching aggregates');
 
-        $conn = Propel::getConnection();
-
-        // Build optional WHERE clause when caller provides a filtered ID list.
-        $inClause       = '';
-        $bindIds        = [];
-        if (!empty($fundraiserIds)) {
-            $placeholders = implode(',', array_fill(0, count($fundraiserIds), '?'));
-            $inClause     = " WHERE di_FR_ID IN ($placeholders)";
-            $bindIds      = array_values($fundraiserIds);
-        }
-
         // -- Items aggregates ------------------------------------------------
         // "Raised" mirrors getViewModel(): only sold items (buyer_ID > 0 AND sellprice > 0).
-        $itemSql = '
-            SELECT
-                di_FR_ID          AS fr_id,
-                COUNT(*)          AS items,
-                COALESCE(SUM(CASE WHEN di_buyer_ID > 0 AND di_sellprice > 0 THEN di_sellprice ELSE 0 END), 0) AS raised,
-                COALESCE(SUM(di_estprice), 0)     AS est
-            FROM donateditem_di
-        ' . $inClause . '
-            GROUP BY di_FR_ID
-        ';
-        $itemStmt = $conn->prepare($itemSql);
-        foreach ($bindIds as $i => $id) {
-            $itemStmt->bindValue($i + 1, $id, \PDO::PARAM_INT);
+        $itemQuery = DonatedItemQuery::create();
+        if (!empty($fundraiserIds)) {
+            $itemQuery->filterByFrId($fundraiserIds);
         }
-        $itemStmt->execute();
-        $itemRows = $itemStmt->fetchAll(\PDO::FETCH_ASSOC);
+        $itemRows = $itemQuery
+            ->withColumn(DonatedItemTableMap::COL_DI_FR_ID, 'frId')
+            ->withColumn('COUNT(*)', 'items')
+            ->withColumn(
+                'COALESCE(SUM(CASE WHEN ' . DonatedItemTableMap::COL_DI_BUYER_ID . ' > 0 AND '
+                . DonatedItemTableMap::COL_DI_SELLPRICE . ' > 0 THEN '
+                . DonatedItemTableMap::COL_DI_SELLPRICE . ' ELSE 0 END), 0)',
+                'raised'
+            )
+            ->withColumn('COALESCE(SUM(' . DonatedItemTableMap::COL_DI_ESTPRICE . '), 0)', 'est')
+            ->groupBy('FrId')
+            ->select(['frId', 'items', 'raised', 'est'])
+            ->find();
 
         $summaries = [];
         foreach ($itemRows as $row) {
-            $id               = (int) $row['fr_id'];
-            $summaries[$id]   = [
+            $id             = (int) $row['frId'];
+            $summaries[$id] = [
                 'items'  => (int)   $row['items'],
                 'raised' => (float) $row['raised'],
                 'est'    => (float) $row['est'],
@@ -85,31 +81,21 @@ class FundRaiserService
         }
 
         // -- Buyer aggregates ------------------------------------------------
-        $buyerInClause = '';
-        $buyerBindIds  = [];
+        $buyerQuery = PaddleNumQuery::create();
         if (!empty($fundraiserIds)) {
-            $placeholders  = implode(',', array_fill(0, count($fundraiserIds), '?'));
-            $buyerInClause = " WHERE pn_fr_ID IN ($placeholders)";
-            $buyerBindIds  = array_values($fundraiserIds);
+            $buyerQuery->filterByPnFrId($fundraiserIds);
         }
-
-        $buyerSql = '
-            SELECT pn_fr_ID AS fr_id, COUNT(*) AS buyers
-            FROM paddlenum_pn
-        ' . $buyerInClause . '
-            GROUP BY pn_fr_ID
-        ';
-        $buyerStmt = $conn->prepare($buyerSql);
-        foreach ($buyerBindIds as $i => $id) {
-            $buyerStmt->bindValue($i + 1, $id, \PDO::PARAM_INT);
-        }
-        $buyerStmt->execute();
-        $buyerRows = $buyerStmt->fetchAll(\PDO::FETCH_ASSOC);
+        $buyerRows = $buyerQuery
+            ->withColumn(PaddleNumTableMap::COL_PN_FR_ID, 'frId')
+            ->withColumn('COUNT(*)', 'buyers')
+            ->groupBy('PnFrId')
+            ->select(['frId', 'buyers'])
+            ->find();
 
         foreach ($buyerRows as $row) {
-            $id = (int) $row['fr_id'];
+            $id = (int) $row['frId'];
             if (!isset($summaries[$id])) {
-                $summaries[$id] = ['items' => 0, 'raised' => 0.0, 'est' => 0.0];
+                $summaries[$id] = ['items' => 0, 'raised' => 0.0, 'est' => 0.0, 'buyers' => 0];
             }
             $summaries[$id]['buyers'] = (int) $row['buyers'];
         }
@@ -122,8 +108,8 @@ class FundRaiserService
     /**
      * Returns aggregate statistics for a single fundraiser view page.
      *
-     * Loads item and paddle-number data for the given fundraiser ID and
-     * computes in-PHP memory — no per-item sub-queries.
+     * Loads item and paddle-number data via ORM and computes aggregates in PHP —
+     * avoids complex sub-queries while keeping zero per-row N+1.
      *
      * @return array{
      *   items: int,
@@ -146,37 +132,25 @@ class FundRaiserService
     {
         $this->logger->debug('FundRaiserService::getViewModel', ['id' => $id]);
 
-        $conn = Propel::getConnection();
+        // -- Item stats via ORM object iteration (no raw SQL) -----------------
+        $items = DonatedItemQuery::create()
+            ->filterByFrId($id)
+            ->find();
 
-        // -- Item stats -------------------------------------------------------
-        $itemSql = '
-            SELECT
-                di_sellprice,
-                di_estprice,
-                di_materialvalue,
-                di_buyer_ID
-            FROM donateditem_di
-            WHERE di_FR_ID = :id
-        ';
-        $itemStmt = $conn->prepare($itemSql);
-        $itemStmt->bindValue(':id', $id, \PDO::PARAM_INT);
-        $itemStmt->execute();
-        $itemRows = $itemStmt->fetchAll(\PDO::FETCH_ASSOC);
+        $itemsTotal    = count($items);
+        $itemsSold     = 0;
+        $totalRaised   = 0.0;
+        $highestSale   = 0.0;
+        $totalEstValue = 0.0;
+        $totalMatValue = 0.0;
 
-        $itemsTotal       = count($itemRows);
-        $itemsSold        = 0;
-        $totalRaised      = 0.0;
-        $highestSale      = 0.0;
-        $totalEstValue    = 0.0;
-        $totalMatValue    = 0.0;
-
-        foreach ($itemRows as $row) {
-            $sell = (float) $row['di_sellprice'];
-            $est  = (float) $row['di_estprice'];
-            $mat  = (float) $row['di_materialvalue'];
+        foreach ($items as $item) {
+            $sell = (float) $item->getSellprice();
+            $est  = (float) $item->getEstprice();
+            $mat  = (float) $item->getMaterialValue();
             $totalEstValue += $est;
             $totalMatValue += $mat;
-            if ($sell > 0 && (int) $row['di_buyer_ID'] > 0) {
+            if ($sell > 0 && (int) $item->getBuyerId() > 0) {
                 $itemsSold++;
                 $totalRaised += $sell;
                 if ($sell > $highestSale) {
@@ -192,27 +166,25 @@ class FundRaiserService
             ? round($totalRaised / $itemsSold, 2)
             : 0.0;
 
-        // -- Buyer count ------------------------------------------------------
-        $buyerSql = 'SELECT COUNT(*) AS buyers FROM paddlenum_pn WHERE pn_fr_ID = :id';
-        $buyerStmt = $conn->prepare($buyerSql);
-        $buyerStmt->bindValue(':id', $id, \PDO::PARAM_INT);
-        $buyerStmt->execute();
-        $buyers = (int) $buyerStmt->fetchColumn();
+        // -- Buyer count via ORM ----------------------------------------------
+        $buyers = PaddleNumQuery::create()
+            ->filterByPnFrId($id)
+            ->count();
 
         return [
-            'items'                     => $itemsTotal,
-            'itemsSold'                 => $itemsSold,
-            'sellThroughPct'            => $sellThroughPct,
-            'totalRaised'               => $totalRaised,
-            'avgSalePrice'              => $avgSalePrice,
-            'highestSale'               => $highestSale,
-            'totalEstValue'             => $totalEstValue,
-            'totalMaterialValue'        => $totalMatValue,
-            'buyers'                    => $buyers,
-            'totalRaised_formatted'     => CurrencyFormatter::format($totalRaised),
-            'avgSalePrice_formatted'    => CurrencyFormatter::format($avgSalePrice),
-            'highestSale_formatted'     => CurrencyFormatter::format($highestSale),
-            'totalEstValue_formatted'   => CurrencyFormatter::format($totalEstValue),
+            'items'                        => $itemsTotal,
+            'itemsSold'                    => $itemsSold,
+            'sellThroughPct'               => $sellThroughPct,
+            'totalRaised'                  => $totalRaised,
+            'avgSalePrice'                 => $avgSalePrice,
+            'highestSale'                  => $highestSale,
+            'totalEstValue'                => $totalEstValue,
+            'totalMaterialValue'           => $totalMatValue,
+            'buyers'                       => $buyers,
+            'totalRaised_formatted'        => CurrencyFormatter::format($totalRaised),
+            'avgSalePrice_formatted'       => CurrencyFormatter::format($avgSalePrice),
+            'highestSale_formatted'        => CurrencyFormatter::format($highestSale),
+            'totalEstValue_formatted'      => CurrencyFormatter::format($totalEstValue),
             'totalMaterialValue_formatted' => CurrencyFormatter::format($totalMatValue),
         ];
     }
@@ -221,6 +193,8 @@ class FundRaiserService
      * Returns this-year aggregates for the landing-page stat widgets.
      *
      * "This year" means fundraisers whose fr_date falls in the current calendar year.
+     * Two-step approach: first fetch the IDs of this-year's fundraisers via FundRaiserQuery,
+     * then aggregate donated items and paddle numbers for those IDs — no raw SQL join needed.
      *
      * @return array{activeCount:int, raisedThisYear:float, itemsThisYear:int, buyersThisYear:int}
      */
@@ -228,39 +202,70 @@ class FundRaiserService
     {
         $this->logger->debug('FundRaiserService::getWidgetStats');
 
-        $conn = Propel::getConnection();
-        $year = date('Y');
+        $year = (int) date('Y');
 
-        // Active fundraisers count
-        $activeStmt = $conn->prepare(
-            "SELECT COUNT(*) FROM fundraiser_fr WHERE fr_Status IN ('Active','Planning')"
-        );
-        $activeStmt->execute();
-        $activeCount = (int) $activeStmt->fetchColumn();
+        // Active fundraisers count (Active + Planning)
+        $activeCount = FundRaiserQuery::create()
+            ->filterByStatus(['Active', 'Planning'])
+            ->count();
 
-        // This-year item/money stats.
-        // "Raised" mirrors getViewModel(): sum only items that have a buyer and a positive sell price.
-        $itemStmt = $conn->prepare("\n            SELECT\n                COUNT(d.di_ID)                        AS items,\n                COALESCE(SUM(CASE WHEN d.di_buyer_ID > 0 AND d.di_sellprice > 0 THEN d.di_sellprice ELSE 0 END), 0) AS raised\n            FROM donateditem_di d\n            INNER JOIN fundraiser_fr f ON f.fr_ID = d.di_FR_ID\n            WHERE YEAR(f.fr_date) = :year\n        ");
-        $itemStmt->bindValue(':year', $year, \PDO::PARAM_INT);
-        $itemStmt->execute();
-        $itemRow = $itemStmt->fetch(\PDO::FETCH_ASSOC);
+        // This-year fundraiser IDs (step 1 of 2-step approach — no FK relations defined)
+        $yearStart = $year . '-01-01';
+        $yearEnd   = $year . '-12-31';
+        $yearIds   = FundRaiserQuery::create()
+            ->filterByDate(['min' => $yearStart, 'max' => $yearEnd])
+            ->select(['Id'])
+            ->find()
+            ->toArray();
 
-        // This-year buyer count
-        $buyerStmt = $conn->prepare("
-            SELECT COUNT(p.pn_ID) AS buyers
-            FROM paddlenum_pn p
-            INNER JOIN fundraiser_fr f ON f.fr_ID = p.pn_fr_ID
-            WHERE YEAR(f.fr_date) = :year
-        ");
-        $buyerStmt->bindValue(':year', $year, \PDO::PARAM_INT);
-        $buyerStmt->execute();
-        $buyers = (int) $buyerStmt->fetchColumn();
+        $raisedThisYear = 0.0;
+        $itemsThisYear  = 0;
+        $buyersThisYear = 0;
+
+        if (!empty($yearIds)) {
+            // Item stats for this year's fundraisers
+            // "Raised" mirrors getViewModel(): sold items only (buyer > 0 AND sell > 0).
+            $itemRow = DonatedItemQuery::create()
+                ->filterByFrId($yearIds)
+                ->withColumn('COUNT(*)', 'items')
+                ->withColumn(
+                    'COALESCE(SUM(CASE WHEN ' . DonatedItemTableMap::COL_DI_BUYER_ID . ' > 0 AND '
+                    . DonatedItemTableMap::COL_DI_SELLPRICE . ' > 0 THEN '
+                    . DonatedItemTableMap::COL_DI_SELLPRICE . ' ELSE 0 END), 0)',
+                    'raised'
+                )
+                ->select(['items', 'raised'])
+                ->findOne();
+
+            $raisedThisYear = (float) ($itemRow['raised'] ?? 0);
+            $itemsThisYear  = (int)   ($itemRow['items']  ?? 0);
+
+            // Buyer count for this year's fundraisers
+            $buyersThisYear = PaddleNumQuery::create()
+                ->filterByPnFrId($yearIds)
+                ->count();
+        }
 
         return [
             'activeCount'    => $activeCount,
-            'raisedThisYear' => (float) ($itemRow['raised'] ?? 0),
-            'itemsThisYear'  => (int)   ($itemRow['items']  ?? 0),
-            'buyersThisYear' => $buyers,
+            'raisedThisYear' => $raisedThisYear,
+            'itemsThisYear'  => $itemsThisYear,
+            'buyersThisYear' => $buyersThisYear,
         ];
+    }
+
+    /**
+     * Returns the count of fundraisers in Active or Planning status.
+     *
+     * Used by the navigation menu counter. Callers are responsible for any
+     * session-level caching (e.g. storing in $_SESSION['iFundraiserActiveCount']
+     * and invalidating on state changes).
+     */
+    public function getActiveFundraiserCount(): int
+    {
+        $this->logger->debug('FundRaiserService::getActiveFundraiserCount');
+        return FundRaiserQuery::create()
+            ->filterByStatus(['Active', 'Planning'])
+            ->count();
     }
 }

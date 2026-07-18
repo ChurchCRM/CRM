@@ -1004,9 +1004,9 @@ CREATE TABLE `fundraiser_fr` (
   `fr_EnteredBy` smallint(5) unsigned NOT NULL default '0',
   `fr_EnteredDate` date NOT NULL,
   `fr_EndDate` date NULL,
-  `fr_Status` varchar(15) NOT NULL default 'Active',
+  `fr_Status` varchar(15) default 'Active',
   `fr_GoalAmount` decimal(10,2) NULL,
-  `fr_Type` varchar(20) NOT NULL default 'Auction',
+  `fr_Type` varchar(20) default 'Auction',
   `fr_fund_ID` mediumint(8) unsigned NULL,
   PRIMARY KEY  (`fr_ID`),
   UNIQUE KEY `fr_ID` (`fr_ID`)

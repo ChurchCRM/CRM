@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageFundraisersRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -22,16 +23,25 @@ use Slim\Routing\RouteCollectorProxy;
  */
 
 /**
- * Apply optional extra fields (endDate, status, goalAmount, type, fundId) from a request body
- * to a FundRaiser model. Returns a 400 error Response on validation failure, or null on success.
+ * Apply optional Tier-1 fields (endDate, status, goalAmount, type, fundId) from a request
+ * body to a FundRaiser model.
+ *
+ * WHY this helper exists: both POST (create) and PUT (update) need identical optional-field
+ * validation and assignment. Extracting it here avoids duplicating ~50 lines of validation
+ * logic. Callers only pass the fields they receive; all guards use array_key_exists() so
+ * omitted fields are never touched — this preserves backward compatibility for existing API
+ * consumers that only send a subset of fields (e.g. a client that only sets title/date).
+ *
+ * Returns a 400 error Response on validation failure, or null on success.
  */
 function applyFundraiserFields(FundRaiser $fr, array $input, Response $response): ?Response
 {
     if (array_key_exists('endDate', $input)) {
         $endDate = trim((string) ($input['endDate'] ?? ''));
         if ($endDate !== '') {
-            $parsedEnd = \DateTime::createFromFormat('Y-m-d', $endDate);
-            if ($parsedEnd === false || $parsedEnd->format('Y-m-d') !== $endDate) {
+            $dateFmt  = SystemConfig::getValue('sDatePickerFormat');
+            $parsedEnd = \DateTime::createFromFormat($dateFmt, $endDate);
+            if ($parsedEnd === false || $parsedEnd->format($dateFmt) !== $endDate) {
                 return SlimUtils::renderErrorJSON($response, gettext('Not a valid end date'), [], 400);
             }
             // End date must not precede start date.
@@ -39,7 +49,7 @@ function applyFundraiserFields(FundRaiser $fr, array $input, Response $response)
             if ($startDate !== null && $parsedEnd < $startDate) {
                 return SlimUtils::renderErrorJSON($response, gettext('End date must be on or after the start date'), [], 400);
             }
-            $fr->setEndDate($endDate);
+            $fr->setEndDate($parsedEnd->format('Y-m-d')); // normalise to ISO for DB storage
         } else {
             $fr->setEndDate(null);
         }
@@ -95,19 +105,21 @@ function fundraiserToArray(FundRaiser $fr): array
 {
     $goalAmount = $fr->getGoalAmount() !== null ? (float) $fr->getGoalAmount() : null;
 
+    $dateFmt = SystemConfig::getValue('sDatePickerFormat');
+
     return [
         'id'                    => (int) $fr->getId(),
         'title'                 => $fr->getTitle(),
         'description'           => $fr->getDescription(),
-        'date'                  => $fr->getDate() !== null ? $fr->getDate()->format('Y-m-d') : null,
-        'endDate'               => $fr->getEndDate() !== null ? $fr->getEndDate()->format('Y-m-d') : null,
+        'date'                  => $fr->getDate() !== null ? $fr->getDate()->format($dateFmt) : null,
+        'endDate'               => $fr->getEndDate() !== null ? $fr->getEndDate()->format($dateFmt) : null,
         'status'                => $fr->getStatus(),
         'goalAmount'            => $goalAmount,
         'goalAmount_formatted'  => $goalAmount !== null ? CurrencyFormatter::format($goalAmount) : null,
         'type'                  => $fr->getType(),
         'fundId'                => $fr->getFundId() !== null ? (int) $fr->getFundId() : null,
         'enteredBy'             => (int) $fr->getEnteredBy(),
-        'enteredDate'           => $fr->getEnteredDate() !== null ? $fr->getEnteredDate()->format('Y-m-d') : null,
+        'enteredDate'           => $fr->getEnteredDate() !== null ? $fr->getEnteredDate()->format($dateFmt) : null,
     ];
 }
 
@@ -168,10 +180,12 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             if ($date !== '') {
-                $parsed = \DateTime::createFromFormat('Y-m-d', $date);
-                if ($parsed === false || $parsed->format('Y-m-d') !== $date) {
+                $dateFmt = SystemConfig::getValue('sDatePickerFormat');
+                $parsed  = \DateTime::createFromFormat($dateFmt, $date);
+                if ($parsed === false || $parsed->format($dateFmt) !== $date) {
                     return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                 }
+                $date = $parsed->format('Y-m-d'); // normalise to ISO for DB storage
             } else {
                 $date = DateTimeUtils::getToday()->format('Y-m-d');
             }
@@ -263,11 +277,12 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             if (array_key_exists('date', $input)) {
                 $date = trim((string) $input['date']);
                 if ($date !== '') {
-                    $parsed = \DateTime::createFromFormat('Y-m-d', $date);
-                    if ($parsed === false || $parsed->format('Y-m-d') !== $date) {
+                    $dateFmt = SystemConfig::getValue('sDatePickerFormat');
+                    $parsed  = \DateTime::createFromFormat($dateFmt, $date);
+                    if ($parsed === false || $parsed->format($dateFmt) !== $date) {
                         return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                     }
-                    $fr->setDate($date);
+                    $fr->setDate($parsed->format('Y-m-d'));
                 }
             }
             $fieldErr = applyFundraiserFields($fr, $input, $response);
