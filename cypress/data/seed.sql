@@ -542,6 +542,11 @@ CREATE TABLE `fundraiser_fr` (
   `fr_description` text DEFAULT NULL,
   `fr_EnteredBy` smallint(5) unsigned NOT NULL DEFAULT 0,
   `fr_EnteredDate` date NOT NULL,
+  `fr_EndDate` date DEFAULT NULL,
+  `fr_Status` varchar(15) DEFAULT 'Active',
+  `fr_GoalAmount` decimal(10,2) DEFAULT NULL,
+  `fr_Type` varchar(20) DEFAULT 'Auction',
+  `fr_fund_ID` mediumint(8) unsigned DEFAULT NULL,
   PRIMARY KEY (`fr_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -553,7 +558,7 @@ CREATE TABLE `fundraiser_fr` (
 LOCK TABLES `fundraiser_fr` WRITE;
 /*!40000 ALTER TABLE `fundraiser_fr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `fundraiser_fr` VALUES (1,'2016-11-19','2016 Car Wash','Youth Car Wash',1,'2016-11-19');
+INSERT INTO `fundraiser_fr` VALUES (1,'2016-11-19','2016 Car Wash','Youth Car Wash',1,'2016-11-19',NULL,'Active',NULL,'Auction',NULL);
 /*!40000 ALTER TABLE `fundraiser_fr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
