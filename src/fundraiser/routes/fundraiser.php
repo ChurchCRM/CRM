@@ -53,6 +53,8 @@ $app->get('/', function (Request $request, Response $response): Response {
         $filterStatus = InputUtils::legacyFilterInput($params['filterStatus']);
         if (in_array($filterStatus, ['Planning', 'Active', 'Closed'], true)) {
             $fundraisersQuery->filterByStatus($filterStatus);
+        } else {
+            $filterStatus = ''; // reset so date-based active/archive split works normally
         }
     }
 

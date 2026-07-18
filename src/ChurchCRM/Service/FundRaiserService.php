@@ -47,6 +47,10 @@ class FundRaiserService
      */
     public function getListSummaries(array $fundraiserIds = []): array
     {
+        if (empty($fundraiserIds)) {
+            return [];
+        }
+
         $this->logger->debug('FundRaiserService::getListSummaries — fetching aggregates');
 
         // -- Items aggregates ------------------------------------------------
