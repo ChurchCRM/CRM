@@ -21,6 +21,7 @@ interface CRMAPIRequestOptions {
 
 interface CRMNamespace {
   root?: string;
+  timeZone?: string;
   plugins?: CRMPlugins;
   bEnableGravatarPhotos?: boolean;
   showPhotoLightbox?: (type: string, id: number) => void;

@@ -12,6 +12,7 @@
  * (see webpack externals: { leaflet: 'L' }).
  */
 import L from "leaflet";
+import { initAttendanceHistory } from "./attendance-history";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
 import { initGroupManager } from "./person-group-manager";
 import { initTimelineFilter } from "./timeline-filter";
@@ -60,4 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize group interaction handlers (add, change role, remove)
   initGroupManager();
+
+  // Initialize attendance history tab (lazy loads on first tab activation)
+  initAttendanceHistory();
 });
