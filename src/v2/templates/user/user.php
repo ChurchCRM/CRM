@@ -22,7 +22,7 @@ $accountLabel = $isOwnProfile
 if (AuthenticationManager::getCurrentUser()->isAdmin()) {
     $sPageHeaderButtons = PageHeader::buttons([
         ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
-        ['label' => gettext('Edit'), 'url' => '/UserEditor.php?PersonID=' . $viewedPersonId, 'icon' => 'fa-pencil'],
+        ['label' => gettext('Edit'), 'url' => '/admin/system/users/' . $viewedPersonId . '/edit', 'icon' => 'fa-pencil'],
     ]);
 }
 // Use a distinct variable so Header.php's reassignment of $localeInfo
@@ -447,6 +447,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isMenuOptions()],
                 ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isManageGroups()],
                 ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isFinance()],
+                ['label' => gettext("Manage Fundraisers"), 'granted' => $user->isManageFundraisers()],
             ];
             foreach ($permissions as $perm):
             ?>

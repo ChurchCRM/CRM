@@ -148,6 +148,14 @@ class User extends BaseUser
         return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance());
     }
 
+    public function isManageFundraisersEnabled(): bool
+    {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
+        return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFundraiser') && $this->isManageFundraisers());
+    }
+
     public function isAddEventEnabled(): bool
     {
         if ($this->isEditSelfExclusive()) {
@@ -162,14 +170,6 @@ class User extends BaseUser
             return false;
         }
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
-    }
-
-    public function isCreateDirectoryEnabled(): bool
-    {
-        if ($this->isEditSelfExclusive()) {
-            return false;
-        }
-        return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
     }
 
     // -- Module view/manage permissions (combine feature flag + per-user) --
@@ -197,7 +197,7 @@ class User extends BaseUser
 
     /**
      * Return a structured map of all permissions for this user.
-     * Useful for the UserEditor UI and the user settings API.
+     * Useful for the user editor UI (/admin/system/users/{personId}/edit) and the user settings API.
      * Every value reflects the effective permission (with admin bypass applied).
      *
      * @return array<string, bool>
@@ -213,16 +213,43 @@ class User extends BaseUser
             'menuOptions'         => $this->isMenuOptionsEnabled(),
             'manageGroups'        => $this->isManageGroupsEnabled(),
             'finance'             => $this->isFinanceEnabled(),
+            'manageFundraisers'   => $this->isManageFundraisersEnabled(),
             'notes'               => $this->isNotesEnabled(),
             'editSelf'            => $this->isEditSelfEnabled(),
             // Module permissions (userconfig_ucfg rows)
             'addEvent'            => $this->isAddEventEnabled(),
             'emailMailto'         => $this->isEmailEnabled(),
-            'createDirectory'     => $this->isCreateDirectoryEnabled(),
             // Computed module-level gates
             'canViewEvents'       => $this->canViewEvents(),
             'canManageEvents'     => $this->canManageEvents(),
         ];
+    }
+
+    /**
+     * Check if the user lacks all functional admin permissions.
+     * Users with no permissions (or only EditSelf) cannot use the admin interface
+     * and should be redirected to a self-service flow or blocked.
+     *
+     * @see https://github.com/ChurchCRM/CRM/issues/8617
+     */
+    public function hasNoAdminPermissions(): bool
+    {
+        if ($this->isAdmin()) {
+            return false;
+        }
+        if ($this->isEditSelf()) {
+            // EditSelf is exclusive — no module permissions apply
+            return true;
+        }
+
+        return !$this->isAddRecords()
+            && !$this->isEditRecords()
+            && !$this->isDeleteRecords()
+            && !$this->isMenuOptions()
+            && !$this->isManageGroups()
+            && !$this->isFinance()
+            && !$this->isManageFundraisers()
+            && !$this->isNotes();
     }
 
     /**

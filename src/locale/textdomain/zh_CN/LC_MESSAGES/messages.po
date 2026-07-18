@@ -2045,10 +2045,6 @@ msgid "Save Settings"
 msgstr "保存设置"
 
 #: 
-msgid "Default User Settings"
-msgstr "默认用户设置"
-
-#: 
 msgid "Permission"
 msgstr "允许"
 
@@ -3020,10 +3016,6 @@ msgstr "将捐赠者添加到买方名单"
 #: 
 msgid "Data/Reports"
 msgstr "数据/报告"
-
-#: 
-msgid "Query Menu"
-msgstr "查询菜单"
 
 #: 
 msgid "Family Properties"
@@ -6541,10 +6533,6 @@ msgid "Confirm Deletion"
 msgstr "确认删除"
 
 #: 
-msgid "Create directory permission"
-msgstr "创建目录权限"
-
-#: 
 msgid "Database Only"
 msgstr "仅数据库"
 
@@ -9552,10 +9540,6 @@ msgid "Browse photos of congregation members"
 msgstr "浏览会众成员的照片"
 
 #: 
-msgid "Buyer Number"
-msgstr "买家号码"
-
-#: 
 msgid "Buyers"
 msgstr "买家"
 
@@ -10598,16 +10582,8 @@ msgid "Server Error"
 msgstr "服务器错误"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "将权限设为\"是\"以允许新用户更改其当前值。"
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "设置管理员邮箱以便重置密码和接收通知"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "设置新用户账户的默认偏好"
 
 #: 
 msgid "Set up"
@@ -11652,11 +11628,6 @@ msgstr "创建新家庭时，这些值会预先填充。留空以要求手动输
 #: 
 msgid "Unit used to measure distance."
 msgstr "用于测量距离的单位。"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "用户权限以创建目录"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14152,22 +14123,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "您的 CSV 文件中存在重复的列名。请重命名重复的列（例如在第二个列名后添加「(2)」），然后重新上传。"
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "您确定要永久删除此捐赠物品吗？"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "您确定要永久删除此竞拍号吗？"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "删除捐赠物品"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "删除竞拍号"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "安全令牌无效。请重试。"
 
@@ -15066,10 +15021,6 @@ msgstr "下载备份并继续"
 #: 
 msgid "Downloaded"
 msgstr "已下载"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "正在从 GitHub 下载最新版本..."
 
 #: 
 msgid "Duration"
@@ -16652,4 +16603,284 @@ msgstr "您没有权限为此人添加备注。"
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "您没有权限编辑此备注"
+
+#: 
+msgid "Account locked"
+msgstr "账户已锁定"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "由于登录失败次数过多，账户已被锁定"
+
+#: 
+msgid "Account status"
+msgstr "账户状态"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "高级：选择特定目标版本"
+
+#: 
+msgid "Bug Fix"
+msgstr "错误修复"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "默认情况下，向导会下载下一个推荐版本。您也可以在下方选择任意可用版本。"
+
+#: 
+msgid "Change required"
+msgstr "需要更改"
+
+#: 
+msgid "Changelog"
+msgstr "更新日志"
+
+#: 
+msgid "Continue Anyway"
+msgstr "仍然继续"
+
+#: 
+msgid "Could not load release information."
+msgstr "无法加载版本信息。"
+
+#: 
+msgid "Download & Install"
+msgstr "下载并安装"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "下载版本 {{version}} 并应用到您的安装。"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "正在从 GitHub 下载版本……"
+
+#: 
+msgid "Failed login attempts"
+msgstr "登录失败次数"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "获取升级预览失败"
+
+#: 
+msgid "Feature"
+msgstr "新功能"
+
+#: 
+msgid "Full changelog"
+msgstr "完整更新日志"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "安装稳定版 {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "正在安装下一个版本"
+
+#: 
+msgid "Invalid file path"
+msgstr "无效的文件路径"
+
+#: 
+msgid "Invalid version format"
+msgstr "无效的版本格式"
+
+#: 
+msgid "Last login"
+msgstr "上次登录"
+
+#: 
+msgid "Loading release information..."
+msgstr "正在加载版本信息……"
+
+#: 
+msgid "Locked"
+msgstr "已锁定"
+
+#: 
+msgid "Major"
+msgstr "重大更新"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "缺少必填字段：fullPath 和 sha1"
+
+#: 
+msgid "Must change password"
+msgstr "必须更改密码"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "此版本没有可用的发行说明。"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "您当前版本没有可用的升级。"
+
+#: 
+msgid "Password change required"
+msgstr "需要更改密码"
+
+#: 
+msgid "Password status"
+msgstr "密码状态"
+
+#: 
+msgid "Re-install current version"
+msgstr "重新安装当前版本"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "恢复失败，数据库可能处于不完整状态。请查看应用日志了解详情，然后在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "恢复失败：备份文件似乎不完整或不是有效的 SQL 备份。数据库现在处于不完整状态——请在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Running Pre-release"
+msgstr "正在运行预发布版本"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "显示完整升级路径"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "最新稳定版本为 {{version}}。您可以在下方重新安装。"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "由于登录失败次数过多，此账户已被锁定。"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "此用户下次登录时必须设置新密码。"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "用户下次登录时必须更改密码"
+
+#: 
+msgid "User must have Email permission"
+msgstr "用户必须具有电子邮件权限"
+
+#: 
+msgid "View release notes"
+msgstr "查看发行说明"
+
+#: 
+msgid "What's New"
+msgstr "新增内容"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} 新增内容"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "您落后了 <strong>{{releaseCount}}</strong> 个版本。以下是您将获得的内容："
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "您正在运行预发布版本。"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "您仍然可以在不查看发行说明的情况下继续升级。"
+
+#: 
+msgid "You're up to date!"
+msgstr "您已是最新版本！"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "必须选择一个有效的人员。"
+
+#: 
+msgid "Add Donors"
+msgstr "添加奉献者"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "添加到购买者列表"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "自动为所有物品奉献者分配拍牌号码"
+
+#: 
+msgid "Create a new user account"
+msgstr "创建新用户账户"
+
+#: 
+msgid "Delete this item?"
+msgstr "删除此项目？"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "删除此拍牌号码？"
+
+#: 
+msgid "Edit Buyer"
+msgstr "编辑购买者"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "登录名已被使用，请选择其他登录名！"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "登录名至少需要3个字符！"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "管理募款活动"
+
+#: 
+msgid "New User"
+msgstr "新用户"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "请选择一位人员以为其创建用户账户。"
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "请至少选择一位购买者以生成对账单。"
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "返回募款活动仪表板"
+
+#: 
+msgid "The selected person was not found."
+msgstr "未找到所选人员。"
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "此操作将自动为本次募款活动中尚未分配购买者编号的所有物品奉献者添加拍牌号码。"
+
+#: 
+msgid "This person already has a user account."
+msgstr "此人员已拥有用户账户。"
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "用户必须是管理员或具有管理募款活动的权限"
+
+#: 
+msgid "User not found."
+msgstr "未找到用户。"
+
+#: 
+msgid "— Select a person —"
+msgstr "— 选择一位人员 —"
 

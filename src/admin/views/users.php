@@ -187,7 +187,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                         <i class="ti ti-dots-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $user->getId() ?>">
+                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/users/<?= $user->getId() ?>/edit">
                                             <i class="ti ti-pencil me-2"></i><?= gettext('Edit User') ?>
                                         </a>
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">

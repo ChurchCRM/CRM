@@ -48,8 +48,8 @@ describe("Admin User Password", () => {
         // Re-login after API call to restore session (necessary after makePrivateAdminAPICall)
         cy.setupAdminSession({ forceLogin: true });
         
-        // Go directly to UserEditor to create a user for PersonID=25
-        cy.visit('UserEditor.php?NewPersonID=25');
+        // Go directly to user editor to create a user for PersonID=25
+        cy.visit('admin/system/users/new?personId=25');
         cy.contains("User Editor");
         
         // Check that the form has pre-populated the UserName field with a value
@@ -64,8 +64,10 @@ describe("Admin User Password", () => {
         // Verify the page loaded and has the user table
         cy.get('#user-listing-table').should('exist');
         
-        // Verify Peyton was created as a user
-        cy.get('body').should('contain.text', 'Peyton Ray');
+        // DataTables v2 uses class .dt-search (not #table_id_filter) for the search wrapper.
+        // Search so Peyton Ray is visible regardless of pagination page.
+        cy.get('.dt-search input').type('Peyton Ray');
+        cy.get('#user-listing-table tbody').should('contain.text', 'Peyton Ray');
 
         // Clean up: remove user status for PersonID=25 via API so test can be re-run
         cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 204, 404]);

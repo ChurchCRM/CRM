@@ -2069,10 +2069,6 @@ msgid "Save Settings"
 msgstr "Lagre innstillinger"
 
 #: 
-msgid "Default User Settings"
-msgstr "Standard brukerinnstillinger"
-
-#: 
 #, fuzzy
 msgid "Permission"
 msgstr "Person"
@@ -3043,10 +3039,6 @@ msgstr "Legg til donorer i kjøperlisten"
 #: 
 msgid "Data/Reports"
 msgstr "Data/Rapporter"
-
-#: 
-msgid "Query Menu"
-msgstr "Spørringsmeny"
 
 #: 
 msgid "Family Properties"
@@ -6549,10 +6541,6 @@ msgid "Confirm Deletion"
 msgstr "Bekreft sletting"
 
 #: 
-msgid "Create directory permission"
-msgstr "Tillatelse til å opprette mappe"
-
-#: 
 msgid "Database Only"
 msgstr "Kun database"
 
@@ -9566,10 +9554,6 @@ msgid "Browse photos of congregation members"
 msgstr "Bla gjennom bilder av menighetsmedlemmer"
 
 #: 
-msgid "Buyer Number"
-msgstr "Kjøpernummer"
-
-#: 
 msgid "Buyers"
 msgstr "Kjøpere"
 
@@ -10612,16 +10596,8 @@ msgid "Server Error"
 msgstr "Serverfeil"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Sett tillatelse til Sann for å gi nye brukere mulighet til å endre gjeldende verdi."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Angi en e-postadresse for administrator slik at du kan tilbakestille passord og motta varsler"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Angi standardpreferanser for nye brukerkontoer"
 
 #: 
 msgid "Set up"
@@ -11666,11 +11642,6 @@ msgstr "Disse verdiene fylles inn på forhånd når du oppretter nye familier. L
 #: 
 msgid "Unit used to measure distance."
 msgstr "Enhet som brukes for å måle avstand."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Brukerrettighet for å opprette kataloger"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14167,22 +14138,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV-filen din har duplikate kolonnenavn. Gi de duplikate kolonnene nytt navn (f.eks. legg til \"(2)\" til den andre) og last opp igjen."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Er du sikker på at du vil slette dette donerte elementet permanent?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Er du sikker på at du vil slette dette budnummeret permanent?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Slett donert element"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Slett budnummer"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Ugyldig sikkerhetstoken. Vennligst prøv igjen."
 
@@ -15081,10 +15036,6 @@ msgstr "Last ned sikkerhetskopi og fortsett"
 #: 
 msgid "Downloaded"
 msgstr "Nedlastet"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Laster ned siste utgivelse fra GitHub..."
 
 #: 
 msgid "Duration"
@@ -16668,4 +16619,284 @@ msgstr "Du har ikke tillatelse til å legge til et notat for denne personen."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Du har ikke tillatelse til å redigere dette notatet"
+
+#: 
+msgid "Account locked"
+msgstr "Konto låst"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Konto låst på grunn av for mange mislykkede innloggingsforsøk"
+
+#: 
+msgid "Account status"
+msgstr "Kontostatus"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avansert: velg en bestemt målversjon"
+
+#: 
+msgid "Bug Fix"
+msgstr "Feilretting"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Som standard laster veiviseren ned neste anbefalte versjon. Du kan i stedet velge en tilgjengelig versjon nedenfor."
+
+#: 
+msgid "Change required"
+msgstr "Endring påkrevd"
+
+#: 
+msgid "Changelog"
+msgstr "Endringslogg"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Fortsett likevel"
+
+#: 
+msgid "Could not load release information."
+msgstr "Kunne ikke laste inn versjonsinformasjon."
+
+#: 
+msgid "Download & Install"
+msgstr "Last ned og installer"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Last ned versjon {{version}} og bruk den på installasjonen din."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Laster ned versjon fra GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Mislykkede innloggingsforsøk"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Kunne ikke hente oppgraderingsforhåndsvisning"
+
+#: 
+msgid "Feature"
+msgstr "Funksjon"
+
+#: 
+msgid "Full changelog"
+msgstr "Fullstendig endringslogg"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installer stabil {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Installerer neste versjon"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ugyldig filbane"
+
+#: 
+msgid "Invalid version format"
+msgstr "Ugyldig versjonsformat"
+
+#: 
+msgid "Last login"
+msgstr "Siste innlogging"
+
+#: 
+msgid "Loading release information..."
+msgstr "Laster inn versjonsinformasjon..."
+
+#: 
+msgid "Locked"
+msgstr "Låst"
+
+#: 
+msgid "Major"
+msgstr "Større"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Påkrevde felt mangler: fullPath og sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Må bytte passord"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Ingen versjonsmerknader tilgjengelig for denne versjonen."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Ingen oppgraderinger er tilgjengelige for din nåværende versjon."
+
+#: 
+msgid "Password change required"
+msgstr "Passordbytte påkrevd"
+
+#: 
+msgid "Password status"
+msgstr "Passordstatus"
+
+#: 
+msgid "Re-install current version"
+msgstr "Installer gjeldende versjon på nytt"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Gjenoppretting mislyktes og databasen kan være i en ufullstendig tilstand. Sjekk applikasjonsloggen for detaljer, og gjenopprett deretter en kjent god sikkerhetskopi før du bruker systemet."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Gjenoppretting mislyktes: sikkerhetskopifilen ser ut til å være ufullstendig eller er ikke en gyldig SQL-sikkerhetskopi. Databasen er nå i en ufullstendig tilstand — gjenopprett en kjent god sikkerhetskopi før du bruker systemet."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Kjører forhåndsversjon"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Vis fullstendig oppgraderingsbane"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Den nyeste stabile versjonen er {{version}}. Du kan installere den på nytt nedenfor."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Denne kontoen er låst på grunn av for mange mislykkede innloggingsforsøk."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Denne brukeren må angi et nytt passord neste gang de logger inn."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Brukeren må bytte passord ved neste innlogging"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Brukeren må ha e-posttillatelse"
+
+#: 
+msgid "View release notes"
+msgstr "Vis versjonsmerknader"
+
+#: 
+msgid "What's New"
+msgstr "Hva er nytt"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Hva er nytt i {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Du er <strong>{{releaseCount}}</strong> versjoner etter. Her er hva du vil få:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Du kjører en forhåndsversjon."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Du kan fortsatt fortsette med oppgraderingen uten å vise versjonsmerknader."
+
+#: 
+msgid "You're up to date!"
+msgstr "Du er oppdatert!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "En gyldig person må velges."
+
+#: 
+msgid "Add Donors"
+msgstr "Legg til givere"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Legg til i kjøperliste"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tildel automatisk padlenumre til alle giveregavere"
+
+#: 
+msgid "Create a new user account"
+msgstr "Opprett en ny brukerkonto"
+
+#: 
+msgid "Delete this item?"
+msgstr "Slette dette elementet?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Slette dette padlenummeret?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Rediger kjøper"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Påloggingen er allerede i bruk, vennligst velg en annen pålogging!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Pålogging må være minst 3 tegn!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Administrer innsamlingsaksjoner"
+
+#: 
+msgid "New User"
+msgstr "Ny bruker"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Vennligst velg en person å opprette en brukerkonto for."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Vennligst velg minst én kjøper for å generere kontoutskrifter."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Tilbake til innsamlingsoversikten"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Den valgte personen ble ikke funnet."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Denne handlingen vil automatisk tildele padlenumre til alle giveregavere i denne innsamlingsaksjonen som ennå ikke har fått tildelt et kjøpernummer."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Denne personen har allerede en brukerkonto."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Brukeren må være administrator eller ha tillatelse til å administrere innsamlingsaksjoner"
+
+#: 
+msgid "User not found."
+msgstr "Bruker ikke funnet."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Velg en person —"
 

@@ -1,66 +1,69 @@
 /// <reference types="cypress" />
 
 /**
- * Tests the Finance permission guard on the fundraiser and pledge pages.
+ * Tests the ManageFundraisers permission guard on fundraiser pages, and the
+ * Finance permission guard on pledge pages.
  *
- * Background: these pages previously had NO top-of-file access guard. The only
- * thing keeping users off them was the coarse User::isEditSelfExclusive() entry gate
- * in PageInit.php, which now only blocks EditSelf-exclusive users. Any
- * user with a single unrelated permission (e.g. AddRecords) cleared that gate and
- * reached fundraiser, donor, paddle-number and pledge data. They are now gated on
- * isFinanceEnabled(), which redirects to /v2/access-denied?role=Finance.
- *
- * Finance is an interim stand-in until a dedicated fundraiser permission exists.
+ * Background: these pages previously had NO top-of-file access guard. They are
+ * now gated on isManageFundraisersEnabled() (fundraiser pages) or
+ * isFinanceEnabled() (pledge pages), which redirect to
+ * /v2/access-denied?role=ManageFundraisers or /v2/access-denied?role=Finance.
  *
  * Seed users (cypress/configs/docker.config.ts -> cypress/data/seed.sql):
- *  - standard  = tony.wade@example.com       usr_Finance=1, usr_Admin=0  -> ALLOWED
- *  - nofinance = judith.matthews@example.com usr_AddRecords=1, usr_EditRecords=1,
- *                                            usr_Finance=0, usr_Admin=0  -> DENIED
+ *  - standard  = tony.wade@example.com        ManageFundraisers=1, Finance=1 -> ALLOWED
+ *  - nofinance = judith.matthews@example.com   AddRecords=1, EditRecords=1,
+ *                                              ManageFundraisers=0, Finance=0 -> DENIED
  *
- * judith is the load-bearing user here: she HAS permissions, so she passes the
- * PageInit entry gate. She is the only seeded user who can prove the per-page
- * Finance guard works. noperm.user would be bounced by the entry gate regardless,
- * and would pass this test even if the guard did not exist.
+ * judith is the load-bearing user here: she HAS some permissions so she passes
+ * the PageInit entry gate, but lacks ManageFundraisers — proving the per-page
+ * guard works. A zero-permission user would be bounced by the entry gate
+ * regardless and would pass this test even if the guard did not exist.
  *
- * The positive path (a Finance user can still use these pages) is additionally
- * covered by cypress/e2e/ui/fundraiser/*.spec.js, which run as tony.wade.
+ * Note: FundRaiserDelete.php requires BOTH DeleteRecords AND ManageFundraisers.
+ * judith lacks DeleteRecords, so she is bounced before the ManageFundraisers
+ * check. A dedicated seed user (per_ID=96: finance.nofundraiser) with
+ * DeleteRecords=1 / Finance=1 / ManageFundraisers=0 is used to cover that gate.
+ *
+ * The positive path (a ManageFundraisers user can still use these pages) is
+ * additionally covered by cypress/e2e/ui/fundraiser/*.spec.js (tony.wade).
  */
 
 const ACCESS_DENIED = "/v2/access-denied";
 
-// Pages that render a form/list on GET without mutating anything.
+// Fundraiser pages gated on isManageFundraisersEnabled().
 // Safe to load as an allowed user in the positive test.
-const READABLE_PAGES = [
-    "FindFundRaiser.php",
-    "PaddleNumList.php",
-    "FundRaiserEditor.php?FundRaiserID=-1",
-    "DonatedItemEditor.php",
-    "PaddleNumEditor.php",
+const READABLE_FUNDRAISER_PAGES = [
+    "fundraiser/",
+    "fundraiser/editor",
+    "fundraiser/1/paddle-numbers",
+    "fundraiser/1/donated-items/editor",
+    "fundraiser/1/paddle-numbers/editor",
 ];
 
-// Pages whose GET handler performs writes or a destructive action. These are only
-// exercised in the negative test — visiting them as a Finance user would mutate
-// seed data, so the positive path is never asserted against them.
-const MUTATING_PAGES = [
-    "AddDonors.php?FundRaiserID=1",
-    "BatchWinnerEntry.php?CurrentFundraiser=1",
-    "DonatedItemReplicate.php?DonatedItemID=1&Count=1",
-    "FundRaiserDelete.php?FundRaiserID=999999",
+// Fundraiser pages whose GET handler renders a form (non-mutating in MVC).
+// Only tested in the negative path — the old legacy equivalents were mutating.
+const MUTATING_FUNDRAISER_PAGES = [
+    "fundraiser/1/donors",
+    "fundraiser/1/batch-winner",
+    "fundraiser/1/reports/bid-sheets",
 ];
 
-const ALL_GUARDED_PAGES = [...READABLE_PAGES, ...MUTATING_PAGES, "PledgeEditor.php"];
+const ALL_FUNDRAISER_PAGES = [
+    ...READABLE_FUNDRAISER_PAGES,
+    ...MUTATING_FUNDRAISER_PAGES,
+];
 
-describe("Finance permission guard on fundraiser and pledge pages", () => {
-    describe("User WITHOUT Finance (judith.matthews: AddRecords+EditRecords, Finance=0)", () => {
+describe("ManageFundraisers permission guard on fundraiser pages", () => {
+    describe("User WITHOUT ManageFundraisers (judith.matthews: AddRecords+EditRecords, ManageFundraisers=0)", () => {
         beforeEach(() => {
             cy.setupNoFinanceSession();
         });
 
-        ALL_GUARDED_PAGES.forEach((page) => {
+        ALL_FUNDRAISER_PAGES.forEach((page) => {
             it(`denies ${page}`, () => {
                 cy.visit(`/${page}`, { failOnStatusCode: false });
                 cy.url().should("include", ACCESS_DENIED);
-                cy.url().should("include", "role=Finance");
+                cy.url().should("include", "role=ManageFundraisers");
             });
         });
 
@@ -72,12 +75,29 @@ describe("Finance permission guard on fundraiser and pledge pages", () => {
         });
     });
 
-    describe("User WITH Finance (tony.wade: Finance=1, Admin=0)", () => {
+    describe("User WITH DeleteRecords but WITHOUT ManageFundraisers (finance.nofundraiser: DeleteRecords=1, Finance=1, ManageFundraisers=0)", () => {
+        beforeEach(() => {
+            cy.setupNoManageFundraisersSession();
+        });
+
+        it("denies fundraiser/", () => {
+            // finance.nofundraiser (per_ID=96) has DeleteRecords=1 and Finance=1
+            // but ManageFundraisers=0. Visiting any /fundraiser/* GET route is
+            // blocked by the module-level ManageFundraisersRoleAuthMiddleware
+            // before any route handler runs, confirming the module gate enforces
+            // the ManageFundraisers permission regardless of other grants.
+            cy.visit("/fundraiser/", { failOnStatusCode: false });
+            cy.url().should("include", ACCESS_DENIED);
+            cy.url().should("include", "role=ManageFundraisers");
+        });
+    });
+
+    describe("User WITH ManageFundraisers (tony.wade: ManageFundraisers=1, Admin=0)", () => {
         beforeEach(() => {
             cy.setupStandardSession();
         });
 
-        READABLE_PAGES.forEach((page) => {
+        READABLE_FUNDRAISER_PAGES.forEach((page) => {
             it(`allows ${page}`, () => {
                 cy.visit(`/${page}`, { failOnStatusCode: false });
                 cy.url().should("not.include", ACCESS_DENIED);
@@ -87,6 +107,20 @@ describe("Finance permission guard on fundraiser and pledge pages", () => {
         it("shows Fundraiser menu items", () => {
             cy.visit("/v2/dashboard");
             cy.contains("a", "Create New Fundraiser").should("exist");
+        });
+    });
+});
+
+describe("Finance permission guard on pledge pages", () => {
+    describe("User WITHOUT Finance (judith.matthews: AddRecords+EditRecords, Finance=0)", () => {
+        beforeEach(() => {
+            cy.setupNoFinanceSession();
+        });
+
+        it("denies PledgeEditor.php", () => {
+            cy.visit("/PledgeEditor.php", { failOnStatusCode: false });
+            cy.url().should("include", ACCESS_DENIED);
+            cy.url().should("include", "role=Finance");
         });
     });
 });

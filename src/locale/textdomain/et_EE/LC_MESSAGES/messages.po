@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Salvesta sätted"
 
 #: 
-msgid "Default User Settings"
-msgstr "Kasutaja vaikeseaded"
-
-#: 
 msgid "Permission"
 msgstr "Luba"
 
@@ -2946,10 +2942,6 @@ msgstr "Lisage ostjate nimekirja annetajad"
 #: 
 msgid "Data/Reports"
 msgstr "Andmed / aruanded"
-
-#: 
-msgid "Query Menu"
-msgstr "Päringumenüü"
 
 #: 
 msgid "Family Properties"
@@ -6468,10 +6460,6 @@ msgid "Confirm Deletion"
 msgstr "Kinnita kustutamine"
 
 #: 
-msgid "Create directory permission"
-msgstr "Looge kataloogi õigused"
-
-#: 
 msgid "Database Only"
 msgstr "Ainult andmebaas"
 
@@ -9485,10 +9473,6 @@ msgid "Browse photos of congregation members"
 msgstr "Sirvige koguduse liikmete fotosid"
 
 #: 
-msgid "Buyer Number"
-msgstr "Ostja number"
-
-#: 
 msgid "Buyers"
 msgstr "Ostjad"
 
@@ -10531,16 +10515,8 @@ msgid "Server Error"
 msgstr "Serveri viga"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Seadke õigus väärtusele Tõene, et anda uutele kasutajatele võimalus muuta oma praegust väärtust."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Seadke administraatori kasutaja e-post, et saaksite paroole lähtestada ja teateid saada"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Seadke uute kasutajakontode vaikimisi eelistused"
 
 #: 
 msgid "Set up"
@@ -11585,11 +11561,6 @@ msgstr "Need väärtused täidetakse eelnevalt uute perede loomisel. Jätke tüh
 #: 
 msgid "Unit used to measure distance."
 msgstr "Vahemaa mõõtmiseks kasutatav ühik."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Kasutaja luba kataloogide loomiseks"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14086,22 +14057,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Teie CSV-s on duplikaatseid veerunimesid. Nimetage duplikaatide veerud ümber (nt lisage teisele \"(2)\") ja laadige uuesti üles."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Kas soovite kindlasti selle annetatud eseme jäädavalt kustutada?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Kas soovite kindlasti selle pakkumisnumbri jäädavalt kustutada?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Kustuta annetatud ese"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Kustuta pakkumisnumber"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Kehtetu turvatokeni. Palun proovige uuesti."
 
@@ -15000,10 +14955,6 @@ msgstr "Laadi varukoopia alla ja jätka"
 #: 
 msgid "Downloaded"
 msgstr "Alla laaditud"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Uusima väljaande allalaadimine GitHub-ist..."
 
 #: 
 msgid "Duration"
@@ -16587,4 +16538,284 @@ msgstr "Teil ei ole luba lisada märkust sellele isikule."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Teil ei ole luba seda märkust muuta"
+
+#: 
+msgid "Account locked"
+msgstr "Konto lukustatud"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Konto lukustatud liiga paljude ebaõnnestunud sisselogimiskatsete tõttu"
+
+#: 
+msgid "Account status"
+msgstr "Konto olek"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Täpsem: vali konkreetne sihtversioon"
+
+#: 
+msgid "Bug Fix"
+msgstr "Veaparandus"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Vaikimisi laadib viisard järgmise soovitatava versiooni. Võite valida ka mõne muu allpool saadaoleva versiooni."
+
+#: 
+msgid "Change required"
+msgstr "Muudatus vajalik"
+
+#: 
+msgid "Changelog"
+msgstr "Muudatuste logi"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Jätka ikkagi"
+
+#: 
+msgid "Could not load release information."
+msgstr "Versiooniteabe laadimine ebaõnnestus."
+
+#: 
+msgid "Download & Install"
+msgstr "Laadi alla ja installi"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Laadi alla versioon {{version}} ja rakenda see oma installatsioonis."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Versiooni allalaadimine GitHubist..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Ebaõnnestunud sisselogimiskatsed"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Uuenduse eelvaate toomine ebaõnnestus"
+
+#: 
+msgid "Feature"
+msgstr "Funktsioon"
+
+#: 
+msgid "Full changelog"
+msgstr "Täielik muudatuste logi"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installi stabiilne {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Järgmise versiooni installimine"
+
+#: 
+msgid "Invalid file path"
+msgstr "Vigane failitee"
+
+#: 
+msgid "Invalid version format"
+msgstr "Vigane versioonivormaat"
+
+#: 
+msgid "Last login"
+msgstr "Viimane sisselogimine"
+
+#: 
+msgid "Loading release information..."
+msgstr "Versiooniteabe laadimine..."
+
+#: 
+msgid "Locked"
+msgstr "Lukustatud"
+
+#: 
+msgid "Major"
+msgstr "Põhiversioon"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Puuduvad kohustuslikud väljad: fullPath ja sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Parool tuleb vahetada"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Selle versiooni kohta pole väljalaskemärkmeid saadaval."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Teie praeguse versiooni jaoks pole uuendusi saadaval."
+
+#: 
+msgid "Password change required"
+msgstr "Parooli vahetus vajalik"
+
+#: 
+msgid "Password status"
+msgstr "Parooli olek"
+
+#: 
+msgid "Re-install current version"
+msgstr "Reinstalli praegune versioon"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Taastamine ebaõnnestus ja andmebaas võib olla mittetäielikus olekus. Kontrollige rakenduse logi üksikasjade saamiseks, seejärel taastage teadaolevalt toimiv varukoopia enne süsteemi kasutamist."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Taastamine ebaõnnestus: varufail näib olevat mittetäielik või ei ole kehtiv SQL-varukoopia. Andmebaas on nüüd mittetäielikus olekus — taastage teadaolevalt toimiv varukoopia enne süsteemi kasutamist."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Eelversioon töötab"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Näita täielikku uuendusteed"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Uusim stabiilne versioon on {{version}}. Saate selle allpool uuesti installida."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "See konto on lukustatud liiga paljude ebaõnnestunud sisselogimiskatsete tõttu."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "See kasutaja peab järgmisel sisselogimisel uue parooli seadma."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Kasutaja peab parooli vahetama järgmisel sisselogimisel"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Kasutajal peab olema e-posti õigus"
+
+#: 
+msgid "View release notes"
+msgstr "Vaata väljalaskemärkmeid"
+
+#: 
+msgid "What's New"
+msgstr "Mis on uut"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Mis on uut versioonis {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Olete <strong>{{releaseCount}}</strong> versiooni võrra maas. Siin on, mida saate:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Kasutate eelversiooni."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Saate siiski jätkata uuendamist väljalaskemärkmeid vaatamata."
+
+#: 
+msgid "You're up to date!"
+msgstr "Olete ajakohane!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Tuleb valida kehtiv isik."
+
+#: 
+msgid "Add Donors"
+msgstr "Lisa annetajaid"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Lisa ostjate nimekirja"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Määra automaatselt lobinanumbrid kõigile esemete annetajatele"
+
+#: 
+msgid "Create a new user account"
+msgstr "Loo uus kasutajakonto"
+
+#: 
+msgid "Delete this item?"
+msgstr "Kustuta see ese?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Kustuta see lobijanumber?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Muuda ostjat"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Kasutajanimi on juba kasutusel, palun valige mõni teine kasutajanimi!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Kasutajanimi peab olema vähemalt 3 tähemärki pikk!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Halda kogumisüritusi"
+
+#: 
+msgid "New User"
+msgstr "Uus kasutaja"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Palun valige isik, kellele luua kasutajakonto."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Palun valige aruannete koostamiseks vähemalt üks ostja."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Tagasi kogumisürituse töölaua juurde"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Valitud isikut ei leitud."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "See toiming lisab automaatselt lobijanumbrid kõigile selle kogumisürituse esemete annetajatele, kellele ei ole veel ostja numbrit määratud."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Sellel isikul on juba kasutajakonto."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Kasutaja peab olema administraator või omama kogumisürituste haldamise õigust"
+
+#: 
+msgid "User not found."
+msgstr "Kasutajat ei leitud."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Vali isik —"
 

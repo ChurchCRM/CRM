@@ -1974,10 +1974,6 @@ msgid "Save Settings"
 msgstr "Uložiť nastavenia"
 
 #: 
-msgid "Default User Settings"
-msgstr "Predvolené nastavenia používateľa"
-
-#: 
 msgid "Permission"
 msgstr "Oprávnenie"
 
@@ -2917,10 +2913,6 @@ msgstr "Pridať darcov do zoznamu kupujúcich"
 #: 
 msgid "Data/Reports"
 msgstr "Údaje/Správy"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu dopytov"
 
 #: 
 msgid "Family Properties"
@@ -6437,10 +6429,6 @@ msgid "Confirm Deletion"
 msgstr "Potvrdiť odstránenie"
 
 #: 
-msgid "Create directory permission"
-msgstr "Oprávnenie na vytvorenie adresára"
-
-#: 
 msgid "Database Only"
 msgstr "Iba databáza"
 
@@ -9466,10 +9454,6 @@ msgid "Browse photos of congregation members"
 msgstr "Prehliadať fotografie členov zboru"
 
 #: 
-msgid "Buyer Number"
-msgstr "Číslo kupujúceho"
-
-#: 
 msgid "Buyers"
 msgstr "Kupujúci"
 
@@ -10512,16 +10496,8 @@ msgid "Server Error"
 msgstr "Chyba servera"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Nastavte oprávnenie na True, aby noví používatelia mohli zmeniť svoju aktuálnu hodnotu."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Nastavte e-mail správcu, aby ste mohli resetovať heslá a dostávať notifikácie"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Nastaviť predvolené predvoľby pre nové používateľské účty"
 
 #: 
 msgid "Set up"
@@ -11566,11 +11542,6 @@ msgstr "Tieto hodnoty sú predvyplnené pri vytváraní nových rodín. Ponechaj
 #: 
 msgid "Unit used to measure distance."
 msgstr "Jednotka na meranie vzdialenosti."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Oprávnenie používateľa na vytváranie adresárov"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14069,22 +14040,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Váš CSV má duplicitné názvy stĺpcov. Premenujte duplicitné stĺpce (napr. pridajte \"(2)\" k druhému) a znova nahrajte."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Naozaj chcete trvalo odstrániť tento darovaný predmet?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Naozaj chcete trvalo odstrániť toto číslo ponuky?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Odstrániť darovaný predmet"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Odstrániť číslo ponuky"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Neplatný bezpečnostný token. Skúste znova."
 
@@ -14983,10 +14938,6 @@ msgstr "Stiahnuť zálohu a pokračovať"
 #: 
 msgid "Downloaded"
 msgstr "Stiahnuté"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Sťahovanie najnovšieho vydania z GitHub..."
 
 #: 
 msgid "Duration"
@@ -16572,4 +16523,284 @@ msgstr "Nemáte oprávnenie pridať poznámku pre túto osobu."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Nemáte oprávnenie upravovať túto poznámku"
+
+#: 
+msgid "Account locked"
+msgstr "Účet zablokovaný"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Účet bol zablokovaný pre príliš veľa neúspešných pokusov o prihlásenie"
+
+#: 
+msgid "Account status"
+msgstr "Stav účtu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Rozšírené: vyberte konkrétnu cieľovú verziu"
+
+#: 
+msgid "Bug Fix"
+msgstr "Oprava chyby"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Sprievodca predvolene stiahne odporúčané vydanie. Namiesto toho si môžete vybrať ľubovoľnú dostupnú verziu nižšie."
+
+#: 
+msgid "Change required"
+msgstr "Vyžaduje sa zmena"
+
+#: 
+msgid "Changelog"
+msgstr "Zoznam zmien"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Pokračovať tak či tak"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nepodarilo sa načítať informácie o vydaní."
+
+#: 
+msgid "Download & Install"
+msgstr "Stiahnuť a nainštalovať"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Stiahnite verziu {{version}} a aplikujte ju na vašu inštaláciu."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Sťahujem vydanie z GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Neúspešné pokusy o prihlásenie"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nepodarilo sa načítať náhľad aktualizácie"
+
+#: 
+msgid "Feature"
+msgstr "Funkcia"
+
+#: 
+msgid "Full changelog"
+msgstr "Úplný zoznam zmien"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Nainštalovať stabilnú verziu {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Inštalujem ďalšie vydanie"
+
+#: 
+msgid "Invalid file path"
+msgstr "Neplatná cesta k súboru"
+
+#: 
+msgid "Invalid version format"
+msgstr "Neplatný formát verzie"
+
+#: 
+msgid "Last login"
+msgstr "Posledné prihlásenie"
+
+#: 
+msgid "Loading release information..."
+msgstr "Načítavam informácie o vydaní..."
+
+#: 
+msgid "Locked"
+msgstr "Zablokovaný"
+
+#: 
+msgid "Major"
+msgstr "Hlavná"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Chýbajú povinné polia: fullPath a sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Je nutné zmeniť heslo"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Pre túto verziu nie sú k dispozícii poznámky k vydaniu."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Pre vašu aktuálnu verziu nie sú dostupné žiadne aktualizácie."
+
+#: 
+msgid "Password change required"
+msgstr "Vyžaduje sa zmena hesla"
+
+#: 
+msgid "Password status"
+msgstr "Stav hesla"
+
+#: 
+msgid "Re-install current version"
+msgstr "Preinštalovať aktuálnu verziu"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Obnovenie zlyhalo a databáza môže byť v neúplnom stave. Skontrolujte protokol aplikácie pre podrobnosti, potom obnovte overenú zálohu pred použitím systému."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Obnovenie zlyhalo: záložný súbor sa zdá byť neúplný alebo nie je platnou zálohou SQL. Databáza je teraz v neúplnom stave — obnovte overenú zálohu pred použitím systému."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Spustená pred-vydaná verzia"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Zobraziť úplnú cestu aktualizácie"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Najnovšie stabilné vydanie je {{version}}. Môžete ho preinštalovať nižšie."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tento účet je zablokovaný z dôvodu príliš veľa neúspešných pokusov o prihlásenie."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tento používateľ musí nastaviť nové heslo pri ďalšom prihlásení."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Používateľ musí zmeniť heslo pri ďalšom prihlásení"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Používateľ musí mať oprávnenie na e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Zobraziť poznámky k vydaniu"
+
+#: 
+msgid "What's New"
+msgstr "Čo je nové"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Čo je nové vo verzii {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Zaostávate o <strong>{{releaseCount}}</strong> vydaní. Tu je to, čo získate:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Používate pred-vydanú verziu."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Stále môžete pokračovať v aktualizácii bez zobrazenia poznámok k vydaniu."
+
+#: 
+msgid "You're up to date!"
+msgstr "Ste aktuálni!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Musí byť vybraná platná osoba."
+
+#: 
+msgid "Add Donors"
+msgstr "Pridať darcov"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Pridať do zoznamu kupujúcich"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Automaticky priradiť čísla pádiel všetkým darcom položiek"
+
+#: 
+msgid "Create a new user account"
+msgstr "Vytvoriť nový používateľský účet"
+
+#: 
+msgid "Delete this item?"
+msgstr "Odstrániť túto položku?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Odstrániť toto číslo pádla?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Upraviť kupujúceho"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Prihlásenie je už používané, vyberte si iné prihlásenie!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Prihlásenie musí mať aspoň 3 znaky!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Správa zbierok"
+
+#: 
+msgid "New User"
+msgstr "Nový používateľ"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Vyberte prosím osobu, pre ktorú chcete vytvoriť používateľský účet."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Vyberte prosím aspoň jedného kupujúceho na vygenerovanie výkazov."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Návrat na panel zbierky"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Vybraná osoba nebola nájdená."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Táto akcia automaticky pridá čísla pádiel všetkým darcom položiek v tejto zbierke, ktorým ešte nebolo pridelené číslo kupujúceho."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Táto osoba už má používateľský účet."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Používateľ musí byť správca alebo mať oprávnenie na správu zbierok"
+
+#: 
+msgid "User not found."
+msgstr "Používateľ nebol nájdený."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Vyberte osobu —"
 

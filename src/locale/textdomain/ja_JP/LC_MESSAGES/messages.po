@@ -1974,10 +1974,6 @@ msgid "Save Settings"
 msgstr "設定を保存"
 
 #: 
-msgid "Default User Settings"
-msgstr "デフォルト・ユーザー設定"
-
-#: 
 msgid "Permission"
 msgstr "権限"
 
@@ -2917,10 +2913,6 @@ msgstr "寄付者を購入者リストに追加"
 #: 
 msgid "Data/Reports"
 msgstr "データ/レポート"
-
-#: 
-msgid "Query Menu"
-msgstr "クエリメニュー"
 
 #: 
 msgid "Family Properties"
@@ -6424,10 +6416,6 @@ msgid "Confirm Deletion"
 msgstr "削除を確認"
 
 #: 
-msgid "Create directory permission"
-msgstr "ディレクトリ作成権限"
-
-#: 
 msgid "Database Only"
 msgstr "データベースのみ"
 
@@ -9435,10 +9423,6 @@ msgid "Browse photos of congregation members"
 msgstr "教会員の写真を閲覧"
 
 #: 
-msgid "Buyer Number"
-msgstr "購入者番号"
-
-#: 
 msgid "Buyers"
 msgstr "購入者"
 
@@ -10481,16 +10465,8 @@ msgid "Server Error"
 msgstr "サーバーエラー"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "新しいユーザーが現在の値を変更できるようにするには、権限をTrueに設定してください。"
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "パスワードのリセットと通知の受信のために管理者メールアドレスを設定"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "新しいユーザーアカウントのデフォルト設定を行う"
 
 #: 
 msgid "Set up"
@@ -11535,11 +11511,6 @@ msgstr "これらの値は、新しい家族を作成するときに事前に入
 #: 
 msgid "Unit used to measure distance."
 msgstr "距離を測定するために使用される単位。"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "ディレクトリを作成するためのユーザー権限"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14035,22 +14006,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSVに重複した列名があります。重複している列の名前を変更し（例: 2番目に「(2)」を追加）、再度アップロードしてください。"
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "この寄付品を完全に削除してもよろしいですか？"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "このパドル番号を完全に削除してもよろしいですか？"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "寄付品を削除"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "パドル番号を削除"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "セキュリティトークンが無効です。もう一度お試しください。"
 
@@ -14951,10 +14906,6 @@ msgid "Downloaded"
 msgstr "ダウンロード済み"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "GitHubから最新リリースをダウンロード中..."
-
-#: 
 msgid "Duration"
 msgstr "期間"
 
@@ -15240,6 +15191,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "役割選択プロンプトにはGroupIDが必要です"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "認証アプリを準備してください（Google Authenticator、Microsoft Authenticator、Authy など）"
 
@@ -15250,6 +15205,10 @@ msgstr "詳細オプションを非表示"
 #: 
 msgid "Home phone is required"
 msgstr "自宅電話は必須です"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16527,4 +16486,284 @@ msgstr "この人物へのメモを追加する権限がありません。"
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "このメモを編集する権限がありません"
+
+#: 
+msgid "Account locked"
+msgstr "アカウントがロックされています"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "ログイン失敗が多すぎるためアカウントがロックされています"
+
+#: 
+msgid "Account status"
+msgstr "アカウントの状態"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "詳細設定：特定のターゲットバージョンを選択"
+
+#: 
+msgid "Bug Fix"
+msgstr "バグ修正"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "デフォルトでは、ウィザードは次の推奨リリースをダウンロードします。以下から任意の利用可能なバージョンを選択することもできます。"
+
+#: 
+msgid "Change required"
+msgstr "変更が必要です"
+
+#: 
+msgid "Changelog"
+msgstr "変更履歴"
+
+#: 
+msgid "Continue Anyway"
+msgstr "このまま続行"
+
+#: 
+msgid "Could not load release information."
+msgstr "リリース情報を読み込めませんでした。"
+
+#: 
+msgid "Download & Install"
+msgstr "ダウンロードしてインストール"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "バージョン {{version}} をダウンロードして、インストールに適用します。"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHubからリリースをダウンロード中..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "ログイン失敗回数"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "アップグレードプレビューの取得に失敗しました"
+
+#: 
+msgid "Feature"
+msgstr "機能"
+
+#: 
+msgid "Full changelog"
+msgstr "完全な変更履歴"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "安定版 {{version}} をインストール"
+
+#: 
+msgid "Installing next release"
+msgstr "次のリリースをインストール中"
+
+#: 
+msgid "Invalid file path"
+msgstr "無効なファイルパス"
+
+#: 
+msgid "Invalid version format"
+msgstr "無効なバージョン形式"
+
+#: 
+msgid "Last login"
+msgstr "最終ログイン"
+
+#: 
+msgid "Loading release information..."
+msgstr "リリース情報を読み込み中..."
+
+#: 
+msgid "Locked"
+msgstr "ロック済み"
+
+#: 
+msgid "Major"
+msgstr "メジャー"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "必須フィールドがありません：fullPath と sha1"
+
+#: 
+msgid "Must change password"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "このバージョンのリリースノートはありません。"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "現在のバージョンに利用可能なアップグレードはありません。"
+
+#: 
+msgid "Password change required"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "Password status"
+msgstr "パスワードの状態"
+
+#: 
+msgid "Re-install current version"
+msgstr "現在のバージョンを再インストール"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "復元に失敗し、データベースが不完全な状態になっている可能性があります。詳細はアプリケーションログを確認し、システムを使用する前に正常なバックアップを復元してください。"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "復元に失敗しました：バックアップファイルが不完全であるか、有効なSQLバックアップではないようです。データベースは現在不完全な状態です — システムを使用する前に正常なバックアップを復元してください。"
+
+#: 
+msgid "Running Pre-release"
+msgstr "プレリリース版を実行中"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "完全なアップグレードパスを表示"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "最新の安定版リリースは {{version}} です。以下から再インストールできます。"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "ログイン失敗が多すぎるため、このアカウントはロックされています。"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "このユーザーは次回サインイン時に新しいパスワードを設定する必要があります。"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "ユーザーは次回ログイン時にパスワードを変更する必要があります"
+
+#: 
+msgid "User must have Email permission"
+msgstr "ユーザーはEmailの権限を持っている必要があります"
+
+#: 
+msgid "View release notes"
+msgstr "リリースノートを表示"
+
+#: 
+msgid "What's New"
+msgstr "新機能"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} の新機能"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong> 個のリリースが未適用です。アップグレードで得られるもの："
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "プレリリース版を実行しています。"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "リリースノートを確認せずにアップグレードを続行することもできます。"
+
+#: 
+msgid "You're up to date!"
+msgstr "最新の状態です！"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "有効な人物を選択する必要があります。"
+
+#: 
+msgid "Add Donors"
+msgstr "献金者を追加"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "購入者リストに追加"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "すべての品目献金者にパドル番号を自動割り当て"
+
+#: 
+msgid "Create a new user account"
+msgstr "新しいユーザーアカウントを作成"
+
+#: 
+msgid "Delete this item?"
+msgstr "この項目を削除しますか？"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "このパドル番号を削除しますか？"
+
+#: 
+msgid "Edit Buyer"
+msgstr "購入者を編集"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "このログインはすでに使用されています。別のログインを選択してください！"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "ログインは3文字以上である必要があります！"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "募金活動を管理"
+
+#: 
+msgid "New User"
+msgstr "新規ユーザー"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "ユーザーアカウントを作成する人物を選択してください。"
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "明細書を生成するには、少なくとも1人の購入者を選択してください。"
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "募金活動ダッシュボードに戻る"
+
+#: 
+msgid "The selected person was not found."
+msgstr "選択された人物が見つかりませんでした。"
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "この操作により、この募金活動においてまだ購入者番号が割り当てられていないすべての品目献金者にパドル番号が自動的に追加されます。"
+
+#: 
+msgid "This person already has a user account."
+msgstr "この人物はすでにユーザーアカウントを持っています。"
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "ユーザーは管理者であるか、募金活動管理の権限を持っている必要があります"
+
+#: 
+msgid "User not found."
+msgstr "ユーザーが見つかりません。"
+
+#: 
+msgid "— Select a person —"
+msgstr "— 人物を選択 —"
 

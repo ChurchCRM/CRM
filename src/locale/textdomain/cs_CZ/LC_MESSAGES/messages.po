@@ -1995,10 +1995,6 @@ msgid "Save Settings"
 msgstr "Uložit nastavení"
 
 #: 
-msgid "Default User Settings"
-msgstr "Výchozí nastavení uživatele"
-
-#: 
 msgid "Permission"
 msgstr "Oprávnení"
 
@@ -2943,10 +2939,6 @@ msgstr "Přidání dárců do seznamu kupujících"
 #: 
 msgid "Data/Reports"
 msgstr "Data/Sestavy"
-
-#: 
-msgid "Query Menu"
-msgstr "Nabídka dotazů"
 
 #: 
 msgid "Family Properties"
@@ -6460,10 +6452,6 @@ msgid "Confirm Deletion"
 msgstr "Potvrdit smazaní"
 
 #: 
-msgid "Create directory permission"
-msgstr "Oprávnění k vytváření adresáře"
-
-#: 
 msgid "Database Only"
 msgstr "Pouze databáze"
 
@@ -9483,10 +9471,6 @@ msgid "Browse photos of congregation members"
 msgstr "Procházet fotografie členů sboru"
 
 #: 
-msgid "Buyer Number"
-msgstr "Číslo kupujícího"
-
-#: 
 msgid "Buyers"
 msgstr "Kupující"
 
@@ -10529,16 +10513,8 @@ msgid "Server Error"
 msgstr "Chyba serveru"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Nastavte oprávnění na Ano, aby noví uživatelé mohli měnit svou aktuální hodnotu."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Nastavte e-mail administrátora pro obnovení hesel a příjem oznámení"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Nastavit výchozí předvolby pro nové uživatelské účty"
 
 #: 
 msgid "Set up"
@@ -11583,11 +11559,6 @@ msgstr "Tyto hodnoty jsou předvyplněny při vytváření nových rodin. Nechej
 #: 
 msgid "Unit used to measure distance."
 msgstr "Jednotka používaná k měření vzdálenosti."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Uživatelské oprávnění k vytváření adresářů"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14085,22 +14056,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Váš CSV má duplicitní názvy sloupců. Přejmenujte duplicitní sloupce (např. přidejte \"(2)\" k druhému) a nahrajte znovu."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Jste si jisti, že chcete tuto darovanou položku trvale odstranit?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Jste si jisti, že chcete toto číslo licitace trvale odstranit?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Odstranit darovanou položku"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Odstranit číslo licitace"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Neplatný bezpečnostní token. Zkuste to prosím znovu."
 
@@ -14999,10 +14954,6 @@ msgstr "Stáhnout zálohu a pokračovat"
 #: 
 msgid "Downloaded"
 msgstr "Staženo"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Stahování nejnovější verze z GitHubu..."
 
 #: 
 msgid "Duration"
@@ -16252,6 +16203,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% textu rozhraní je přeloženo pro tento jazyk."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Přístup zamítnut"
 
@@ -16480,6 +16435,10 @@ msgid "Year, 4 digits"
 msgstr "Rok, 4 číslice"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "minulost"
 
@@ -16579,4 +16538,284 @@ msgstr "Nemáte oprávnění přidat poznámku k této osobě."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Nemáte oprávnění upravit tuto poznámku"
+
+#: 
+msgid "Account locked"
+msgstr "Účet uzamčen"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Účet uzamčen z důvodu příliš mnoha neúspěšných pokusů o přihlášení"
+
+#: 
+msgid "Account status"
+msgstr "Stav účtu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Pokročilé: zvolte konkrétní cílovou verzi"
+
+#: 
+msgid "Bug Fix"
+msgstr "Oprava chyby"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Ve výchozím nastavení průvodce stáhne další doporučenou verzi. Níže si můžete vybrat libovolnou dostupnou verzi."
+
+#: 
+msgid "Change required"
+msgstr "Změna vyžadována"
+
+#: 
+msgid "Changelog"
+msgstr "Seznam změn"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Přesto pokračovat"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nepodařilo se načíst informace o vydání."
+
+#: 
+msgid "Download & Install"
+msgstr "Stáhnout a nainstalovat"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Stáhnout verzi {{version}} a použít ji na vaší instalaci."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Stahuji vydání z GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Neúspěšné pokusy o přihlášení"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nepodařilo se načíst náhled aktualizace"
+
+#: 
+msgid "Feature"
+msgstr "Funkce"
+
+#: 
+msgid "Full changelog"
+msgstr "Úplný seznam změn"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Nainstalovat stabilní {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Instalace dalšího vydání"
+
+#: 
+msgid "Invalid file path"
+msgstr "Neplatná cesta k souboru"
+
+#: 
+msgid "Invalid version format"
+msgstr "Neplatný formát verze"
+
+#: 
+msgid "Last login"
+msgstr "Poslední přihlášení"
+
+#: 
+msgid "Loading release information..."
+msgstr "Načítám informace o vydání..."
+
+#: 
+msgid "Locked"
+msgstr "Uzamčeno"
+
+#: 
+msgid "Major"
+msgstr "Hlavní"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Chybějící povinná pole: fullPath a sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Musí změnit heslo"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Pro tuto verzi nejsou k dispozici žádné poznámky k vydání."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Pro vaši aktuální verzi nejsou k dispozici žádné aktualizace."
+
+#: 
+msgid "Password change required"
+msgstr "Změna hesla vyžadována"
+
+#: 
+msgid "Password status"
+msgstr "Stav hesla"
+
+#: 
+msgid "Re-install current version"
+msgstr "Přeinstalovat aktuální verzi"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Obnovení selhalo a databáze může být v neúplném stavu. Zkontrolujte protokol aplikace, poté obnovte ze zálohy o které víte, že je funkční, než budete systém používat."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Obnovení selhalo: záložní soubor je zřejmě neúplný nebo se nejedná o platnou zálohu SQL. Databáze je nyní v neúplném stavu — obnovte funkční zálohu před použitím systému."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Spuštěna předběžná verze"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Zobrazit celou cestu aktualizace"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Nejnovější stabilní vydání je {{version}}. Níže jej můžete přeinstalovat."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tento účet je uzamčen z důvodu příliš mnoha neúspěšných pokusů o přihlášení."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tento uživatel musí nastavit nové heslo při příštím přihlášení."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Uživatel musí změnit heslo při příštím přihlášení"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Uživatel musí mít oprávnění pro e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Zobrazit poznámky k vydání"
+
+#: 
+msgid "What's New"
+msgstr "Co je nového"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Co je nového ve verzi {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Jste pozadu o <strong>{{releaseCount}}</strong> vydání. Zde je, co získáte:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Spouštíte předběžnou verzi."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Stále můžete pokračovat v aktualizaci bez zobrazení poznámek k vydání."
+
+#: 
+msgid "You're up to date!"
+msgstr "Máte aktuální verzi!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Musí být vybrána platná osoba."
+
+#: 
+msgid "Add Donors"
+msgstr "Přidat dárce"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Přidat do seznamu kupujících"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Automaticky přiřadit čísla pádel všem dárcům položek"
+
+#: 
+msgid "Create a new user account"
+msgstr "Vytvořit nový uživatelský účet"
+
+#: 
+msgid "Delete this item?"
+msgstr "Smazat tuto položku?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Smazat toto číslo pádla?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Upravit kupujícího"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Přihlašovací jméno je již použito, prosím vyberte jiné!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Přihlašovací jméno musí mít alespoň 3 znaky!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Správa fundraisingů"
+
+#: 
+msgid "New User"
+msgstr "Nový uživatel"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Prosím vyberte osobu, pro kterou chcete vytvořit uživatelský účet."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Prosím vyberte alespoň jednoho kupujícího pro generování výpisů."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Zpět na přehled fundraisingu"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Vybraná osoba nebyla nalezena."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Tato akce automaticky přiřadí čísla pádel všem dárcům položek v tomto fundraisingu, kteří ještě nemají přiřazeno číslo kupujícího."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Tato osoba již má uživatelský účet."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Uživatel musí být správce nebo mít oprávnění Správa fundraisingů"
+
+#: 
+msgid "User not found."
+msgstr "Uživatel nebyl nalezen."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Vyberte osobu —"
 

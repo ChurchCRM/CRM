@@ -1974,10 +1974,6 @@ msgid "Save Settings"
 msgstr "Salvar Configurações"
 
 #: 
-msgid "Default User Settings"
-msgstr "Configurações padrão de usuários"
-
-#: 
 msgid "Permission"
 msgstr "Pessoa"
 
@@ -2918,10 +2914,6 @@ msgstr "Adicionar compradores para esta lista de doação"
 #: 
 msgid "Data/Reports"
 msgstr "Dados/Relatórios"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu de consulta"
 
 #: 
 msgid "Family Properties"
@@ -6430,10 +6422,6 @@ msgid "Confirm Deletion"
 msgstr "Confirmar exclusão"
 
 #: 
-msgid "Create directory permission"
-msgstr "Criar permissão de diretório"
-
-#: 
 msgid "Database Only"
 msgstr "Apenas banco de dados"
 
@@ -9447,10 +9435,6 @@ msgid "Browse photos of congregation members"
 msgstr "Ver fotos dos membros da congregação"
 
 #: 
-msgid "Buyer Number"
-msgstr "Número de Comprador"
-
-#: 
 msgid "Buyers"
 msgstr "Compradores"
 
@@ -10493,16 +10477,8 @@ msgid "Server Error"
 msgstr "Erro do Servidor"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Defina a Permissão como Verdadeiro para dar aos novos usuárioes a capacidade de alterar o seu valor atual."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Defina um e-mail de usuário administrador para poder redefinir palavras-passe e receber notificações"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Definir preferências predefinidas para novas contas de usuárioes"
 
 #: 
 msgid "Set up"
@@ -11547,11 +11523,6 @@ msgstr "Esses valores são preenchidos automaticamente ao criar novas famílias.
 #: 
 msgid "Unit used to measure distance."
 msgstr "Unidade usada para medir distância."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Permissão do usuário para criar diretórios"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14048,22 +14019,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Seu CSV tem nomes de colunas duplicados. Renomeie as colunas duplicadas (ex.: adicione \"(2)\" à segunda) e envie novamente."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Tem certeza de que deseja excluir permanentemente este item doado?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Tem certeza de que deseja excluir permanentemente este número de remo?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Excluir item doado"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Excluir número de remo"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Token de segurança inválido. Por favor, tente novamente."
 
@@ -14964,10 +14919,6 @@ msgid "Downloaded"
 msgstr "Baixado"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Baixando a versão mais recente do GitHub..."
-
-#: 
 msgid "Duration"
 msgstr "Duração"
 
@@ -15359,6 +15310,10 @@ msgstr "Carregando códigos de recuperação"
 #: 
 msgid "Make Default"
 msgstr "Tornar padrão"
+
+#: 
+msgid "Manual"
+msgstr "Manual"
 
 #: 
 msgid "Map Cart"
@@ -16210,6 +16165,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% do texto da interface está traduzido para este idioma."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Acesso negado"
 
@@ -16438,6 +16397,10 @@ msgid "Year, 4 digits"
 msgstr "Ano, 4 dígitos"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "passado"
 
@@ -16537,4 +16500,284 @@ msgstr "Você não tem permissão para adicionar uma nota para esta pessoa."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Você não tem permissão para editar esta nota"
+
+#: 
+msgid "Account locked"
+msgstr "Conta bloqueada"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Conta bloqueada devido a muitas tentativas de login malsucedidas"
+
+#: 
+msgid "Account status"
+msgstr "Status da conta"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avançado: escolher uma versão de destino específica"
+
+#: 
+msgid "Bug Fix"
+msgstr "Correção de bug"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Por padrão, o assistente baixa a próxima versão recomendada. Você pode escolher qualquer versão disponível abaixo."
+
+#: 
+msgid "Change required"
+msgstr "Alteração necessária"
+
+#: 
+msgid "Changelog"
+msgstr "Registro de alterações"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Continuar mesmo assim"
+
+#: 
+msgid "Could not load release information."
+msgstr "Não foi possível carregar as informações da versão."
+
+#: 
+msgid "Download & Install"
+msgstr "Baixar e instalar"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Baixar a versão {{version}} e aplicá-la à sua instalação."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Baixando versão do GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Tentativas de login malsucedidas"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Falha ao obter pré-visualização da atualização"
+
+#: 
+msgid "Feature"
+msgstr "Funcionalidade"
+
+#: 
+msgid "Full changelog"
+msgstr "Registro completo de alterações"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Instalar versão estável {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Instalando próxima versão"
+
+#: 
+msgid "Invalid file path"
+msgstr "Caminho de arquivo inválido"
+
+#: 
+msgid "Invalid version format"
+msgstr "Formato de versão inválido"
+
+#: 
+msgid "Last login"
+msgstr "Último acesso"
+
+#: 
+msgid "Loading release information..."
+msgstr "Carregando informações da versão..."
+
+#: 
+msgid "Locked"
+msgstr "Bloqueada"
+
+#: 
+msgid "Major"
+msgstr "Principal"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Campos obrigatórios ausentes: fullPath e sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Deve alterar a senha"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Não há notas de versão disponíveis para esta versão."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Não há atualizações disponíveis para a sua versão atual."
+
+#: 
+msgid "Password change required"
+msgstr "Alteração de senha necessária"
+
+#: 
+msgid "Password status"
+msgstr "Status da senha"
+
+#: 
+msgid "Re-install current version"
+msgstr "Reinstalar versão atual"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "A restauração falhou e o banco de dados pode estar em um estado incompleto. Verifique o log do aplicativo para obter detalhes e, em seguida, restaure um backup íntegro antes de usar o sistema."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Falha na restauração: o arquivo de backup parece estar incompleto ou não é um backup SQL válido. O banco de dados está agora em um estado incompleto — restaure um backup íntegro antes de usar o sistema."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Executando pré-lançamento"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Mostrar caminho completo de atualização"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "A versão estável mais recente é {{version}}. Você pode reinstalá-la abaixo."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Esta conta está bloqueada devido a muitas tentativas de login malsucedidas."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Este usuário deve definir uma nova senha na próxima vez que acessar o sistema."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "O usuário deve alterar sua senha no próximo acesso"
+
+#: 
+msgid "User must have Email permission"
+msgstr "O usuário deve ter permissão de e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Ver notas da versão"
+
+#: 
+msgid "What's New"
+msgstr "Novidades"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Novidades na versão {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Você está <strong>{{releaseCount}}</strong> versões atrás. Veja o que você vai obter:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Você está executando uma versão de pré-lançamento."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Você ainda pode prosseguir com a atualização sem visualizar as notas da versão."
+
+#: 
+msgid "You're up to date!"
+msgstr "Você está atualizado!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Uma pessoa válida deve ser selecionada."
+
+#: 
+msgid "Add Donors"
+msgstr "Adicionar Doadores"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Adicionar à Lista de Compradores"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Atribuir automaticamente números de paleta a todos os doadores de itens"
+
+#: 
+msgid "Create a new user account"
+msgstr "Criar uma nova conta de usuário"
+
+#: 
+msgid "Delete this item?"
+msgstr "Excluir este item?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Excluir este número de paleta?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Editar Comprador"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Login já está em uso, por favor selecione um login diferente!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "O login deve ter pelo menos 3 caracteres!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Gerenciar Arrecadações"
+
+#: 
+msgid "New User"
+msgstr "Novo Usuário"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Por favor, selecione uma pessoa para criar uma conta de usuário."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Por favor, selecione pelo menos um comprador para gerar extratos."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Retornar ao Painel de Arrecadação"
+
+#: 
+msgid "The selected person was not found."
+msgstr "A pessoa selecionada não foi encontrada."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Esta ação adicionará automaticamente números de paleta para todos os doadores de itens nesta arrecadação que ainda não possuem um número de comprador atribuído."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Esta pessoa já possui uma conta de usuário."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "O usuário deve ser Administrador ou ter permissão para Gerenciar Arrecadações"
+
+#: 
+msgid "User not found."
+msgstr "Usuário não encontrado."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Selecione uma pessoa —"
 

@@ -2071,10 +2071,6 @@ msgid "Save Settings"
 msgstr "Spara inställningar"
 
 #: 
-msgid "Default User Settings"
-msgstr "Standard användare inställningar"
-
-#: 
 #, fuzzy
 msgid "Permission"
 msgstr "Tillstånd"
@@ -3049,10 +3045,6 @@ msgstr "Lägg till givare i köpslistan"
 #: 
 msgid "Data/Reports"
 msgstr "Data / Rapporter"
-
-#: 
-msgid "Query Menu"
-msgstr "Fråga-meny"
 
 #: 
 msgid "Family Properties"
@@ -6571,10 +6563,6 @@ msgid "Confirm Deletion"
 msgstr "Bekräfta radering"
 
 #: 
-msgid "Create directory permission"
-msgstr "Behörighet att skapa katalog"
-
-#: 
 msgid "Database Only"
 msgstr "Endast databas"
 
@@ -9588,10 +9576,6 @@ msgid "Browse photos of congregation members"
 msgstr "Bläddra bland foton av församlingsmedlemmar"
 
 #: 
-msgid "Buyer Number"
-msgstr "Köparnummer"
-
-#: 
 msgid "Buyers"
 msgstr "Köpare"
 
@@ -10634,16 +10618,8 @@ msgid "Server Error"
 msgstr "Serverfel"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Sätt behörighet till Sant för att ge nya användare möjlighet att ändra sitt nuvarande värde."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Ange en administratörs e-postadress så att du kan återställa lösenord och ta emot aviseringar"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Ange standardinställningar för nya användarkonton"
 
 #: 
 msgid "Set up"
@@ -11688,11 +11664,6 @@ msgstr "Dessa värden förfylls när du skapar nya familjer. Lämna tom för att
 #: 
 msgid "Unit used to measure distance."
 msgstr "Enhet som används för att mäta avstånd."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Användarbehörighet för att skapa kataloger"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14189,22 +14160,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Din CSV har duplicerade kolumnnamn. Byt namn på de duplicerade kolumnerna (t.ex. lägg till \"(2)\" till den andra) och ladda upp igen."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Är du säker på att du vill ta bort denna donerade artikel permanent?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Är du säker på att du vill ta bort detta budnummer permanent?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Ta bort donerad artikel"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Ta bort budnummer"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Ogiltig säkerhetstoken. Försök igen."
 
@@ -15103,10 +15058,6 @@ msgstr "Ladda ner säkerhetskopia och fortsätt"
 #: 
 msgid "Downloaded"
 msgstr "Nedladdad"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Laddar ner senaste versionen från GitHub..."
 
 #: 
 msgid "Duration"
@@ -16690,4 +16641,284 @@ msgstr "Du har inte behörighet att lägga till en anteckning för denna person.
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Du har inte behörighet att redigera denna anteckning"
+
+#: 
+msgid "Account locked"
+msgstr "Konto låst"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Konto låst på grund av för många misslyckade inloggningsförsök"
+
+#: 
+msgid "Account status"
+msgstr "Kontostatus"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avancerat: välj en specifik målversion"
+
+#: 
+msgid "Bug Fix"
+msgstr "Felkorrigering"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Som standard laddar guiden ned nästa rekommenderade version. Du kan istället välja en tillgänglig version nedan."
+
+#: 
+msgid "Change required"
+msgstr "Ändring krävs"
+
+#: 
+msgid "Changelog"
+msgstr "Ändringslogg"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Fortsätt ändå"
+
+#: 
+msgid "Could not load release information."
+msgstr "Kunde inte läsa in versionsinformation."
+
+#: 
+msgid "Download & Install"
+msgstr "Ladda ned och installera"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Ladda ned version {{version}} och tillämpa den på din installation."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Laddar ned version från GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Misslyckade inloggningsförsök"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Kunde inte hämta uppgraderingsförhandsgranskning"
+
+#: 
+msgid "Feature"
+msgstr "Funktion"
+
+#: 
+msgid "Full changelog"
+msgstr "Fullständig ändringslogg"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installera stabil {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Installerar nästa version"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ogiltig filsökväg"
+
+#: 
+msgid "Invalid version format"
+msgstr "Ogiltigt versionsformat"
+
+#: 
+msgid "Last login"
+msgstr "Senaste inloggning"
+
+#: 
+msgid "Loading release information..."
+msgstr "Läser in versionsinformation..."
+
+#: 
+msgid "Locked"
+msgstr "Låst"
+
+#: 
+msgid "Major"
+msgstr "Större"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Obligatoriska fält saknas: fullPath och sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Måste byta lösenord"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Inga versionsanteckningar tillgängliga för denna version."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Inga uppgraderingar är tillgängliga för din nuvarande version."
+
+#: 
+msgid "Password change required"
+msgstr "Lösenordsbyte krävs"
+
+#: 
+msgid "Password status"
+msgstr "Lösenordsstatus"
+
+#: 
+msgid "Re-install current version"
+msgstr "Ominstallera nuvarande version"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Återställningen misslyckades och databasen kan vara i ett ofullständigt tillstånd. Kontrollera applikationsloggen för detaljer och återställ sedan en fungerande säkerhetskopia innan du använder systemet."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Återställningen misslyckades: säkerhetskopian verkar vara ofullständig eller är inte en giltig SQL-säkerhetskopia. Databasen är nu i ett ofullständigt tillstånd – återställ en fungerande säkerhetskopia innan du använder systemet."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Kör förhandsversion"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Visa fullständig uppgraderingsväg"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Den senaste stabila versionen är {{version}}. Du kan ominstallera den nedan."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Det här kontot är låst på grund av för många misslyckade inloggningsförsök."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Den här användaren måste ange ett nytt lösenord nästa gång de loggar in."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Användaren måste byta lösenord vid nästa inloggning"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Användaren måste ha e-postbehörighet"
+
+#: 
+msgid "View release notes"
+msgstr "Visa versionsanteckningar"
+
+#: 
+msgid "What's New"
+msgstr "Nyheter"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Nyheter i {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Du ligger <strong>{{releaseCount}}</strong> versioner efter. Det här är vad du får:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Du kör en förhandsversion."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Du kan fortfarande fortsätta med uppgraderingen utan att visa versionsanteckningar."
+
+#: 
+msgid "You're up to date!"
+msgstr "Du är uppdaterad!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "En giltig person måste väljas."
+
+#: 
+msgid "Add Donors"
+msgstr "Lägg till givare"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Lägg till i köparlista"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tilldela paddelnummer automatiskt till alla objektgivare"
+
+#: 
+msgid "Create a new user account"
+msgstr "Skapa ett nytt användarkonto"
+
+#: 
+msgid "Delete this item?"
+msgstr "Ta bort detta objekt?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Ta bort detta paddelnummer?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Redigera köpare"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Inloggningsnamnet används redan, välj ett annat inloggningsnamn!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Inloggningsnamnet måste vara minst 3 tecken!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Hantera insamlingar"
+
+#: 
+msgid "New User"
+msgstr "Ny användare"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Välj en person att skapa ett användarkonto för."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Välj minst en köpare för att generera kontoutdrag."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Återgå till insamlingsdashboard"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Den valda personen hittades inte."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Den här åtgärden lägger automatiskt till paddelnummer för alla objektgivare i denna insamling som ännu inte har tilldelats ett köparnummer."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Denna person har redan ett användarkonto."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Användaren måste vara administratör eller ha behörighet att hantera insamlingar"
+
+#: 
+msgid "User not found."
+msgstr "Användaren hittades inte."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Välj en person —"
 

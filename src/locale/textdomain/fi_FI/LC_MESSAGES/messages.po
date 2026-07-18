@@ -1981,10 +1981,6 @@ msgid "Save Settings"
 msgstr "Tallenna asetukset"
 
 #: 
-msgid "Default User Settings"
-msgstr "Käyttäjän oletusasetukset"
-
-#: 
 msgid "Permission"
 msgstr "Lupa"
 
@@ -2924,10 +2920,6 @@ msgstr "Lisää lahjoittajat ostajalistalle"
 #: 
 msgid "Data/Reports"
 msgstr "Tiedot/Raportit"
-
-#: 
-msgid "Query Menu"
-msgstr "Kyselyvalikko"
 
 #: 
 msgid "Family Properties"
@@ -6430,10 +6422,6 @@ msgid "Confirm Deletion"
 msgstr "Vahvista poistaminen"
 
 #: 
-msgid "Create directory permission"
-msgstr "Luo hakemiston käyttöoikeus"
-
-#: 
 msgid "Database Only"
 msgstr "Vain tietokanta"
 
@@ -9447,10 +9435,6 @@ msgid "Browse photos of congregation members"
 msgstr "Selaa seurakunnan jäsenten valokuvia"
 
 #: 
-msgid "Buyer Number"
-msgstr "Ostajan numero"
-
-#: 
 msgid "Buyers"
 msgstr "Ostajat"
 
@@ -10493,16 +10477,8 @@ msgid "Server Error"
 msgstr "Palvelinvirhe"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Aseta oikeus arvoon Tosi antaaksesi uusille käyttäjille mahdollisuuden muuttaa nykyistä arvoaan."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Aseta ylläpitäjän sähköposti, jotta voit nollata salasanoja ja vastaanottaa ilmoituksia"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Aseta oletusasetukset uusille käyttäjätileille"
 
 #: 
 msgid "Set up"
@@ -11547,11 +11523,6 @@ msgstr "Nämä arvot esitäytetään luotaessa uusia perheitä. Jätä tyhjäksi
 #: 
 msgid "Unit used to measure distance."
 msgstr "Etäisyyden mittaamiseen käytetty yksikkö."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Käyttäjän oikeus luoda hakemistoja"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14048,22 +14019,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV:ssä on päällekkäisiä sarakkeiden nimiä. Nimeä päällekkäiset sarakkeet uudelleen (esim. lisää \"(2)\" toiseen) ja lataa uudelleen."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Haluatko varmasti poistaa tämän lahjoitetun esineen pysyvästi?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Haluatko varmasti poistaa tämän huutokauppanumeron pysyvästi?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Poista lahjoitettu esine"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Poista huutokauppanumero"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Virheellinen suojausmerkki. Yritä uudelleen."
 
@@ -14962,10 +14917,6 @@ msgstr "Lataa varmuuskopio ja jatka"
 #: 
 msgid "Downloaded"
 msgstr "Ladattu"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Ladataan uusinta julkaisua GitHubista..."
 
 #: 
 msgid "Duration"
@@ -16549,4 +16500,284 @@ msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tälle henkilölle."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa"
+
+#: 
+msgid "Account locked"
+msgstr "Tili lukittu"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Tili lukittu liian monien epäonnistuneiden kirjautumisyritysten vuoksi"
+
+#: 
+msgid "Account status"
+msgstr "Tilin tila"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Lisäasetukset: valitse tietty kohdeversio"
+
+#: 
+msgid "Bug Fix"
+msgstr "Vikorjaus"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Oletuksena ohjattu toiminto lataa seuraavan suositellun julkaisun. Voit myös valita minkä tahansa saatavilla olevan version alla."
+
+#: 
+msgid "Change required"
+msgstr "Muutos vaaditaan"
+
+#: 
+msgid "Changelog"
+msgstr "Muutosloki"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Jatka silti"
+
+#: 
+msgid "Could not load release information."
+msgstr "Julkaisutietoja ei voitu ladata."
+
+#: 
+msgid "Download & Install"
+msgstr "Lataa ja asenna"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Lataa versio {{version}} ja ota se käyttöön asennuksessasi."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Ladataan julkaisua GitHubista..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Epäonnistuneet kirjautumisyritykset"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Päivityksen esikatselun hakeminen epäonnistui"
+
+#: 
+msgid "Feature"
+msgstr "Ominaisuus"
+
+#: 
+msgid "Full changelog"
+msgstr "Täydellinen muutosloki"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Asenna vakaa versio {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Asennetaan seuraavaa julkaisua"
+
+#: 
+msgid "Invalid file path"
+msgstr "Virheellinen tiedostopolku"
+
+#: 
+msgid "Invalid version format"
+msgstr "Virheellinen versiomuoto"
+
+#: 
+msgid "Last login"
+msgstr "Viimeisin kirjautuminen"
+
+#: 
+msgid "Loading release information..."
+msgstr "Ladataan julkaisutietoja..."
+
+#: 
+msgid "Locked"
+msgstr "Lukittu"
+
+#: 
+msgid "Major"
+msgstr "Pääversio"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Puuttuvat pakolliset kentät: fullPath ja sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Salasana on vaihdettava"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Tälle versiolle ei ole julkaisutietoja saatavilla."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nykyiselle versiolle ei ole päivityksiä saatavilla."
+
+#: 
+msgid "Password change required"
+msgstr "Salasanan vaihto vaaditaan"
+
+#: 
+msgid "Password status"
+msgstr "Salasanan tila"
+
+#: 
+msgid "Re-install current version"
+msgstr "Asenna nykyinen versio uudelleen"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Palautus epäonnistui ja tietokanta saattaa olla epätäydellisessä tilassa. Tarkista sovelluksen lokitiedot ja palauta tunnetusti toimiva varmuuskopio ennen järjestelmän käyttöä."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Palautus epäonnistui: varmuuskopiotiedosto näyttää olevan epätäydellinen tai se ei ole kelvollinen SQL-varmuuskopio. Tietokanta on nyt epätäydellisessä tilassa — palauta tunnetusti toimiva varmuuskopio ennen järjestelmän käyttöä."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Käynnissä esijulkaisuversio"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Näytä koko päivityspolku"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Uusin vakaa julkaisu on {{version}}. Voit asentaa sen uudelleen alla."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tämä tili on lukittu liian monien epäonnistuneiden kirjautumisyritysten vuoksi."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tämän käyttäjän on asetettava uusi salasana seuraavalla kirjautumiskerralla."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Käyttäjän on vaihdettava salasanansa seuraavalla kirjautumiskerralla"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Käyttäjällä on oltava sähköpostioikeus"
+
+#: 
+msgid "View release notes"
+msgstr "Näytä julkaisutiedot"
+
+#: 
+msgid "What's New"
+msgstr "Uutta"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Uutta versiossa {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Olet <strong>{{releaseCount}}</strong> julkaisua jäljessä. Tässä mitä saat:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Käytät esijulkaisuversiota."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Voit silti jatkaa päivitystä katsomatta julkaisutietoja."
+
+#: 
+msgid "You're up to date!"
+msgstr "Olet ajan tasalla!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Valitse kelvollinen henkilö."
+
+#: 
+msgid "Add Donors"
+msgstr "Lisää lahjoittajia"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Lisää ostajalistaan"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Määritä lootanumerot automaattisesti kaikille kohteen lahjoittajille"
+
+#: 
+msgid "Create a new user account"
+msgstr "Luo uusi käyttäjätili"
+
+#: 
+msgid "Delete this item?"
+msgstr "Poistetaanko tämä kohde?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Poistetaanko tämä lootanumero?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Muokkaa ostajaa"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Käyttäjätunnus on jo käytössä, valitse eri käyttäjätunnus!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Käyttäjätunnuksessa on oltava vähintään 3 merkkiä!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Hallinnoi varainkeruita"
+
+#: 
+msgid "New User"
+msgstr "Uusi käyttäjä"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Valitse henkilö, jolle käyttäjätili luodaan."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Valitse vähintään yksi ostaja tiliotteiden luomiseksi."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Palaa varainkeruun kojelautaan"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Valittua henkilöä ei löydy."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Tämä toiminto lisää automaattisesti lootanumerot kaikille tämän varainkeruun kohdelahjoittajille, joille ei ole vielä määritetty ostajanumeroa."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Tällä henkilöllä on jo käyttäjätili."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Käyttäjän on oltava järjestelmänvalvoja tai hänellä on oltava varainkeruiden hallintaoikeus"
+
+#: 
+msgid "User not found."
+msgstr "Käyttäjää ei löydy."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Valitse henkilö —"
 

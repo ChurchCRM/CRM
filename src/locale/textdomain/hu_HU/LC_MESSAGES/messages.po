@@ -2017,10 +2017,6 @@ msgid "Save Settings"
 msgstr "Beállítások mentése"
 
 #: 
-msgid "Default User Settings"
-msgstr "Alapértelmezett felhasználói beállítások"
-
-#: 
 msgid "Permission"
 msgstr "Engedély"
 
@@ -2987,10 +2983,6 @@ msgstr "Adományozók hozzáadása a vevőlistához"
 #: 
 msgid "Data/Reports"
 msgstr "Adatok/Jelentések"
-
-#: 
-msgid "Query Menu"
-msgstr "Lekérdezés menü"
 
 #: 
 msgid "Family Properties"
@@ -6498,10 +6490,6 @@ msgid "Confirm Deletion"
 msgstr "Törlés Megerősítése"
 
 #: 
-msgid "Create directory permission"
-msgstr "Könyvtár létrehozási engedély"
-
-#: 
 msgid "Database Only"
 msgstr "Csak Adatbázis"
 
@@ -9515,10 +9503,6 @@ msgid "Browse photos of congregation members"
 msgstr "Gyülekezeti tagok fényképeinek böngészése"
 
 #: 
-msgid "Buyer Number"
-msgstr "Vásárlószám"
-
-#: 
 msgid "Buyers"
 msgstr "Vásárlók"
 
@@ -10561,16 +10545,8 @@ msgid "Server Error"
 msgstr "Szerverhiba"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Állítsa az engedélyt Igazra, hogy az új felhasználók módosíthassák az aktuális értéket."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Állítson be egy adminisztrátori e-mail címet a jelszó-visszaállításhoz és értesítésekhez"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Alapértelmezett beállítások megadása új felhasználói fiókokhoz"
 
 #: 
 msgid "Set up"
@@ -11615,11 +11591,6 @@ msgstr "Ezek az értékek automatikusan kitöltésre kerülnek új családok lé
 #: 
 msgid "Unit used to measure distance."
 msgstr "A távolság mérésére használt egység."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Felhasználói engedély könyvtárak létrehozásához"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14116,22 +14087,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "A CSV-ben ismétlődő oszlopnevek találhatók. Nevezze át az ismétlődő oszlopokat (pl. adja hozzá a \"(2)\" jelölést a másodikhoz) és töltse fel újra."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Biztosan véglegesen törölni szeretné ezt az adományozott tételt?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Biztosan véglegesen törölni szeretné ezt a licitsorszámot?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Adományozott tétel törlése"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Licitsorszám törlése"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Érvénytelen biztonsági token. Kérjük, próbálja újra."
 
@@ -15032,10 +14987,6 @@ msgid "Downloaded"
 msgstr "Letöltve"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "A legújabb kiadás letöltése a GitHubról..."
-
-#: 
 msgid "Duration"
 msgstr "Időtartam"
 
@@ -15321,6 +15272,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "Csoportazonosító (GroupID) szükséges a szerepkörválasztáshoz"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Legyen kéznél a hitelesítő alkalmazása (Google Authenticator, Microsoft Authenticator, Authy stb.)"
 
@@ -15331,6 +15286,10 @@ msgstr "Speciális beállítások elrejtése"
 #: 
 msgid "Home phone is required"
 msgstr "A saját telefon szükséges"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16609,4 +16568,284 @@ msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Nincs jogosultsága ennek a megjegyzésnek a szerkesztéséhez"
+
+#: 
+msgid "Account locked"
+msgstr "Fiók zárolva"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "A fiók zárolva van, mert túl sok sikertelen bejelentkezési kísérlet történt"
+
+#: 
+msgid "Account status"
+msgstr "Fiók állapota"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Speciális: válasszon egy konkrét célverziót"
+
+#: 
+msgid "Bug Fix"
+msgstr "Hibajavítás"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Alapértelmezés szerint a varázsló a következő ajánlott kiadást tölti le. Ehelyett az alábbi elérhető verziók közül is választhat."
+
+#: 
+msgid "Change required"
+msgstr "Változtatás szükséges"
+
+#: 
+msgid "Changelog"
+msgstr "Változásnapló"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Folytatás mindenképpen"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nem sikerült betölteni a kiadási információkat."
+
+#: 
+msgid "Download & Install"
+msgstr "Letöltés és telepítés"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "A {{version}} verzió letöltése és alkalmazása a telepítésre."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Kiadás letöltése a GitHub-ról..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Sikertelen bejelentkezési kísérletek"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nem sikerült lekérni a frissítési előnézetet"
+
+#: 
+msgid "Feature"
+msgstr "Funkció"
+
+#: 
+msgid "Full changelog"
+msgstr "Teljes változásnapló"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Stabil {{version}} telepítése"
+
+#: 
+msgid "Installing next release"
+msgstr "A következő kiadás telepítése"
+
+#: 
+msgid "Invalid file path"
+msgstr "Érvénytelen fájlútvonal"
+
+#: 
+msgid "Invalid version format"
+msgstr "Érvénytelen verzióformátum"
+
+#: 
+msgid "Last login"
+msgstr "Utolsó bejelentkezés"
+
+#: 
+msgid "Loading release information..."
+msgstr "Kiadási információk betöltése..."
+
+#: 
+msgid "Locked"
+msgstr "Zárolva"
+
+#: 
+msgid "Major"
+msgstr "Fő"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Hiányzó kötelező mezők: fullPath és sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Jelszócsere szükséges"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Ehhez a verzióhoz nem érhetők el kiadási megjegyzések."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Az aktuális verzióhoz nem áll rendelkezésre frissítés."
+
+#: 
+msgid "Password change required"
+msgstr "Jelszócsere szükséges"
+
+#: 
+msgid "Password status"
+msgstr "Jelszó állapota"
+
+#: 
+msgid "Re-install current version"
+msgstr "Jelenlegi verzió újratelepítése"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "A visszaállítás sikertelen, és az adatbázis hiányos állapotban lehet. Ellenőrizze az alkalmazás naplóját a részletekért, majd állítson vissza egy ismert jó biztonsági másolatot a rendszer használata előtt."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "A visszaállítás sikertelen: a biztonsági mentési fájl hiányosnak tűnik, vagy nem érvényes SQL biztonsági mentés. Az adatbázis jelenleg hiányos állapotban van — állítson vissza egy ismert jó biztonsági másolatot a rendszer használata előtt."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Előzetes kiadás fut"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Teljes frissítési útvonal megjelenítése"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "A legújabb stabil kiadás a {{version}}. Alább újratelepítheti."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Ez a fiók zárolva van, mert túl sok sikertelen bejelentkezési kísérlet történt."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Ennek a felhasználónak új jelszót kell beállítania a következő bejelentkezéskor."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "A felhasználónak meg kell változtatnia jelszavát a következő bejelentkezéskor"
+
+#: 
+msgid "User must have Email permission"
+msgstr "A felhasználónak e-mail jogosultsággal kell rendelkeznie"
+
+#: 
+msgid "View release notes"
+msgstr "Kiadási megjegyzések megtekintése"
+
+#: 
+msgid "What's New"
+msgstr "Újdonságok"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Újdonságok a {{version}} verzióban"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong> kiadással le van maradva. Íme, mit fog nyerni:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Előzetes kiadást futtat."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "A frissítéssel a kiadási megjegyzések megtekintése nélkül is folytathat."
+
+#: 
+msgid "You're up to date!"
+msgstr "Naprakész!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Érvényes személyt kell kiválasztani."
+
+#: 
+msgid "Add Donors"
+msgstr "Adományozók hozzáadása"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Hozzáadás a vevők listájához"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Lapátszámok automatikus hozzárendelése az összes tárgyadományozóhoz"
+
+#: 
+msgid "Create a new user account"
+msgstr "Új felhasználói fiók létrehozása"
+
+#: 
+msgid "Delete this item?"
+msgstr "Törli ezt az elemet?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Törli ezt a lapátszámot?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Vevő szerkesztése"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "A bejelentkezési név már foglalt, kérjük válasszon másikat!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "A bejelentkezési névnek legalább 3 karakterből kell állnia!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Gyűjtések kezelése"
+
+#: 
+msgid "New User"
+msgstr "Új felhasználó"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Kérjük válasszon ki egy személyt, akinek felhasználói fiókot szeretne létrehozni."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Kérjük válasszon ki legalább egy vevőt a kimutatások elkészítéséhez."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Vissza a gyűjtés irányítópultjára"
+
+#: 
+msgid "The selected person was not found."
+msgstr "A kiválasztott személy nem található."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Ez a művelet automatikusan lapátszámokat rendel hozzá az összes olyan tárgyadományozóhoz ebben a gyűjtésben, akihez még nem tartozik vevőszám."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Ennek a személynek már van felhasználói fiókja."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "A felhasználónak rendszergazdának kell lennie, vagy rendelkeznie kell a gyűjtések kezelése jogosultsággal."
+
+#: 
+msgid "User not found."
+msgstr "A felhasználó nem található."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Válasszon személyt —"
 

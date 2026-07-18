@@ -2008,10 +2008,6 @@ msgid "Save Settings"
 msgstr "Lưu thay đổi"
 
 #: 
-msgid "Default User Settings"
-msgstr "Cài đặt mặc định thành viên"
-
-#: 
 msgid "Permission"
 msgstr "Quyền hạn"
 
@@ -2959,10 +2955,6 @@ msgstr "Thêm nhà tài trợ vào danh sách người mua"
 #: 
 msgid "Data/Reports"
 msgstr "Dữ liệu/Báo cáo"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu truy vấn"
 
 #: 
 msgid "Family Properties"
@@ -6470,10 +6462,6 @@ msgid "Confirm Deletion"
 msgstr "Xác nhận xóa"
 
 #: 
-msgid "Create directory permission"
-msgstr "Quyền tạo thư mục"
-
-#: 
 msgid "Database Only"
 msgstr "Chỉ cơ sở dữ liệu"
 
@@ -9481,10 +9469,6 @@ msgid "Browse photos of congregation members"
 msgstr "Duyet anh cua cac thanh vien giao xu"
 
 #: 
-msgid "Buyer Number"
-msgstr "So nguoi mua"
-
-#: 
 msgid "Buyers"
 msgstr "Nguoi mua"
 
@@ -10527,16 +10511,8 @@ msgid "Server Error"
 msgstr "Loi may chu"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Dat Quyen la Dung de cho nguoi dung moi co kha nang thay doi gia tri hien tai cua ho."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Dat email quan tri vien de ban co the dat lai mat khau va nhan thong bao"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Dat tuy chon mac dinh cho tai khoan nguoi dung moi"
 
 #: 
 msgid "Set up"
@@ -11581,11 +11557,6 @@ msgstr "Các giá trị này được điền sẵn khi tạo gia đình mới. 
 #: 
 msgid "Unit used to measure distance."
 msgstr "Đơn vị dùng để đo khoảng cách."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Quyền người dùng để tạo thư mục"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14081,22 +14052,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV của bạn có tên cột trùng lặp. Đổi tên các cột trùng lặp (ví dụ: thêm \"(2)\" vào cột thứ hai) và tải lên lại."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn vật phẩm được quyên góp này không?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn số mái chèo này không?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Xóa vật phẩm được quyên góp"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Xóa số mái chèo"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Mã thông báo bảo mật không hợp lệ. Vui lòng thử lại."
 
@@ -14995,10 +14950,6 @@ msgstr "Tai sao luu va tiep tuc"
 #: 
 msgid "Downloaded"
 msgstr "Đã tải xuống"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Đang tải xuống phiên bản mới nhất từ GitHub..."
 
 #: 
 msgid "Duration"
@@ -16581,4 +16532,284 @@ msgstr "Bạn không có quyền thêm ghi chú cho người này."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Bạn không có quyền chỉnh sửa ghi chú này"
+
+#: 
+msgid "Account locked"
+msgstr "Tài khoản bị khóa"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Tài khoản bị khóa do quá nhiều lần đăng nhập thất bại"
+
+#: 
+msgid "Account status"
+msgstr "Trạng thái tài khoản"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Nâng cao: chọn phiên bản đích cụ thể"
+
+#: 
+msgid "Bug Fix"
+msgstr "Sửa lỗi"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Theo mặc định, trình hướng dẫn tải xuống bản phát hành được đề xuất tiếp theo. Bạn có thể chọn bất kỳ phiên bản nào có sẵn bên dưới."
+
+#: 
+msgid "Change required"
+msgstr "Yêu cầu thay đổi"
+
+#: 
+msgid "Changelog"
+msgstr "Nhật ký thay đổi"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Tiếp tục dù sao"
+
+#: 
+msgid "Could not load release information."
+msgstr "Không thể tải thông tin bản phát hành."
+
+#: 
+msgid "Download & Install"
+msgstr "Tải xuống & Cài đặt"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Tải xuống phiên bản {{version}} và áp dụng cho cài đặt của bạn."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Đang tải xuống bản phát hành từ GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Số lần đăng nhập thất bại"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Không thể lấy bản xem trước nâng cấp"
+
+#: 
+msgid "Feature"
+msgstr "Tính năng"
+
+#: 
+msgid "Full changelog"
+msgstr "Nhật ký thay đổi đầy đủ"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Cài đặt phiên bản ổn định {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Đang cài đặt bản phát hành tiếp theo"
+
+#: 
+msgid "Invalid file path"
+msgstr "Đường dẫn tệp không hợp lệ"
+
+#: 
+msgid "Invalid version format"
+msgstr "Định dạng phiên bản không hợp lệ"
+
+#: 
+msgid "Last login"
+msgstr "Đăng nhập lần cuối"
+
+#: 
+msgid "Loading release information..."
+msgstr "Đang tải thông tin bản phát hành..."
+
+#: 
+msgid "Locked"
+msgstr "Đã khóa"
+
+#: 
+msgid "Major"
+msgstr "Chính"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Thiếu các trường bắt buộc: fullPath và SHA1 Hash"
+
+#: 
+msgid "Must change password"
+msgstr "Phải đổi mật khẩu"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Không có ghi chú phát hành cho phiên bản này."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Không có bản nâng cấp nào cho phiên bản hiện tại của bạn."
+
+#: 
+msgid "Password change required"
+msgstr "Yêu cầu đổi mật khẩu"
+
+#: 
+msgid "Password status"
+msgstr "Trạng thái mật khẩu"
+
+#: 
+msgid "Re-install current version"
+msgstr "Cài đặt lại phiên bản hiện tại"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Khôi phục thất bại và cơ sở dữ liệu có thể ở trạng thái không hoàn chỉnh. Kiểm tra nhật ký ứng dụng để biết chi tiết, sau đó khôi phục bản sao lưu tốt đã biết trước khi sử dụng hệ thống."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Khôi phục thất bại: tệp sao lưu có vẻ không đầy đủ hoặc không phải là bản sao lưu SQL hợp lệ. Cơ sở dữ liệu hiện ở trạng thái không hoàn chỉnh — hãy khôi phục bản sao lưu tốt đã biết trước khi sử dụng hệ thống."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Đang chạy bản Tiền phát hành"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Hiển thị toàn bộ lộ trình nâng cấp"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Bản phát hành ổn định mới nhất là {{version}}. Bạn có thể cài đặt lại bên dưới."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tài khoản này bị khóa do quá nhiều lần đăng nhập thất bại."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Người dùng này phải đặt mật khẩu mới vào lần đăng nhập tiếp theo."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Người dùng phải đổi mật khẩu khi đăng nhập tiếp theo"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Người dùng phải có quyền Email"
+
+#: 
+msgid "View release notes"
+msgstr "Xem ghi chú phát hành"
+
+#: 
+msgid "What's New"
+msgstr "Có gì mới"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Có gì mới trong {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Bạn đang chậm <strong>{{releaseCount}}</strong> bản phát hành. Đây là những gì bạn sẽ nhận được:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Bạn đang chạy phiên bản tiền phát hành."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Bạn vẫn có thể tiếp tục nâng cấp mà không cần xem ghi chú phát hành."
+
+#: 
+msgid "You're up to date!"
+msgstr "Bạn đã cập nhật!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Phải chọn một người hợp lệ."
+
+#: 
+msgid "Add Donors"
+msgstr "Thêm Người Dâng Hiến"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Thêm vào Danh Sách Người Mua"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tự động gán số mái chèo cho tất cả người dâng hiến vật phẩm"
+
+#: 
+msgid "Create a new user account"
+msgstr "Tạo tài khoản người dùng mới"
+
+#: 
+msgid "Delete this item?"
+msgstr "Xóa mục này?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Xóa số mái chèo này?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Chỉnh Sửa Người Mua"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Tên đăng nhập đã được sử dụng, vui lòng chọn tên đăng nhập khác!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Tên đăng nhập phải có ít nhất 3 ký tự!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Quản Lý Gây Quỹ"
+
+#: 
+msgid "New User"
+msgstr "Người Dùng Mới"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Vui lòng chọn một người để tạo tài khoản người dùng."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Vui lòng chọn ít nhất một người mua để tạo bảng kê."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Quay Lại Bảng Điều Khiển Gây Quỹ"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Không tìm thấy người được chọn."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Hành động này sẽ tự động thêm số mái chèo cho tất cả người dâng hiến vật phẩm trong chương trình gây quỹ này mà chưa được gán số người mua."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Người này đã có tài khoản người dùng."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Người dùng phải là Quản trị viên hoặc có quyền Quản Lý Gây Quỹ"
+
+#: 
+msgid "User not found."
+msgstr "Không tìm thấy người dùng."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Chọn một người —"
 

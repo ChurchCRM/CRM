@@ -1995,10 +1995,6 @@ msgid "Save Settings"
 msgstr "Hifadhi Mipangilio"
 
 #: 
-msgid "Default User Settings"
-msgstr "Mipangilio ya Mtumiaji Chaguomsingi"
-
-#: 
 msgid "Permission"
 msgstr "Ruhusa"
 
@@ -2944,10 +2940,6 @@ msgstr "Ongeza Wafadhili kwenye Orodha ya Wanunuzi"
 #: 
 msgid "Data/Reports"
 msgstr "Data/Ripoti"
-
-#: 
-msgid "Query Menu"
-msgstr "Menyu ya Maswali"
 
 #: 
 msgid "Family Properties"
@@ -6464,10 +6456,6 @@ msgid "Confirm Deletion"
 msgstr "Thibitisha Ufutaji"
 
 #: 
-msgid "Create directory permission"
-msgstr "Ruhusa ya kuunda saraka"
-
-#: 
 msgid "Database Only"
 msgstr "Hifadhidata Pekee"
 
@@ -9481,10 +9469,6 @@ msgid "Browse photos of congregation members"
 msgstr "Vinjari picha za washiriki wa ushirika"
 
 #: 
-msgid "Buyer Number"
-msgstr "Nambari ya Mnunuzi"
-
-#: 
 msgid "Buyers"
 msgstr "Wanunuzi"
 
@@ -10527,16 +10511,8 @@ msgid "Server Error"
 msgstr "Hitilafu ya Seva"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Weka Ruhusa kuwa Kweli ili kutoa watumiaji wapya uwezo wa kubadilisha thamani yao ya sasa."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Weka barua pepe ya msimamizi ili uweze kuweka upya nenosiri na kupokea arifa"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Weka mapendeleo ya chaguo-msingi kwa akaunti mpya za watumiaji"
 
 #: 
 msgid "Set up"
@@ -11581,11 +11557,6 @@ msgstr "Thamani hizi zinajazwa mapema wakati wa kutengeneza familia mpya. Acha t
 #: 
 msgid "Unit used to measure distance."
 msgstr "Kitengo kinachotumika kupima umbali."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Idhini ya watumiaji kutengeneza saraka"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14082,22 +14053,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV yako ina majina ya safu wima yanayorudiwa. Badilisha jina la safu wima zinazorudiwa (mf. ongeza \"(2)\" kwa ya pili) na upaki tena."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Je, una uhakika unataka kufuta kabisa kitu hiki kilichochangiwa?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Je, una uhakika unataka kufuta kabisa nambari hii ya paddle?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Futa kitu kilichochangiwa"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Futa nambari ya paddle"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Tokeni ya usalama batili. Tafadhali jaribu tena."
 
@@ -14996,10 +14951,6 @@ msgstr "Pakua Nakala na Endelea"
 #: 
 msgid "Downloaded"
 msgstr "Imepakuliwa"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Inapakua toleo jipya kutoka GitHub..."
 
 #: 
 msgid "Duration"
@@ -16248,6 +16199,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d%% ya maandishi ya kiolesura imetafsiriwa kwa lugha hii."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Ufikiaji umekataliwa"
 
@@ -16476,6 +16431,10 @@ msgid "Year, 4 digits"
 msgstr "Mwaka, tarakimu 4"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "iliyopita"
 
@@ -16575,4 +16534,284 @@ msgstr "Huna ruhusa ya kuongeza kumbukumbu kwa mtu huyu."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Huna ruhusa ya kuhariri kumbukumbu hii"
+
+#: 
+msgid "Account locked"
+msgstr "Akaunti imefungwa"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Akaunti imefungwa kwa sababu ya majaribio mengi ya kuingia yaliyoshindwa"
+
+#: 
+msgid "Account status"
+msgstr "Hali ya akaunti"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Hali ya juu: chagua toleo maalum la lengo"
+
+#: 
+msgid "Bug Fix"
+msgstr "Kurekebisha hitilafu"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Kwa chaguo-msingi, msaidizi hupakulia toleo lijalo linalopendekezwa. Unaweza badala yake kuchagua toleo lolote linalopatikana hapa chini."
+
+#: 
+msgid "Change required"
+msgstr "Mabadiliko yanahitajika"
+
+#: 
+msgid "Changelog"
+msgstr "Kumbukumbu ya mabadiliko"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Endelea Hata Hivyo"
+
+#: 
+msgid "Could not load release information."
+msgstr "Haikuweza kupakia maelezo ya toleo."
+
+#: 
+msgid "Download & Install"
+msgstr "Pakua na Usakinishe"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Pakua toleo {{version}} na uliomba kwenye usakinishaji wako."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Inapakua toleo kutoka GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Majaribio ya kuingia yaliyoshindwa"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Imeshindwa kupata hakiki ya uboreshaji"
+
+#: 
+msgid "Feature"
+msgstr "Kipengele"
+
+#: 
+msgid "Full changelog"
+msgstr "Kumbukumbu kamili ya mabadiliko"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Sakinisha toleo thabiti {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Inasanikisha toleo lijalo"
+
+#: 
+msgid "Invalid file path"
+msgstr "Njia ya faili si sahihi"
+
+#: 
+msgid "Invalid version format"
+msgstr "Muundo wa toleo si sahihi"
+
+#: 
+msgid "Last login"
+msgstr "Kuingia mara ya mwisho"
+
+#: 
+msgid "Loading release information..."
+msgstr "Inapakia maelezo ya toleo..."
+
+#: 
+msgid "Locked"
+msgstr "Imefungwa"
+
+#: 
+msgid "Major"
+msgstr "Mkuu"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Sehemu zinazohitajika hazipo: fullPath na sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Lazima ubadilishe nenosiri"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Hakuna maelezo ya toleo yanayopatikana kwa toleo hili."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Hakuna uboreshaji unaopatikana kwa toleo lako la sasa."
+
+#: 
+msgid "Password change required"
+msgstr "Mabadiliko ya nenosiri yanahitajika"
+
+#: 
+msgid "Password status"
+msgstr "Hali ya nenosiri"
+
+#: 
+msgid "Re-install current version"
+msgstr "Sakinisha tena toleo la sasa"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Urejesho umeshindwa na hifadhidata inaweza kuwa katika hali isiyokamilika. Angalia kumbukumbu ya programu kwa maelezo, kisha rejesha nakala rudufu inayojulikana kuwa nzuri kabla ya kutumia mfumo."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Urejesho umeshindwa: faili la nakala rudufu linaonekana kutokukamilika au si nakala rudufu halali ya SQL. Hifadhidata sasa iko katika hali isiyokamilika — rejesha nakala rudufu inayojulikana kuwa nzuri kabla ya kutumia mfumo."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Inafanya kazi kwa Toleo la awali"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Onyesha njia kamili ya uboreshaji"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Toleo thabiti jipya zaidi ni {{version}}. Unaweza kulisanikisha tena hapa chini."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Akaunti hii imefungwa kwa sababu ya majaribio mengi sana ya kuingia yaliyoshindwa."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Mtumiaji huyu lazima aweke nenosiri jipya wakati wa kuingia ijayo."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Mtumiaji lazima abadilishe nenosiri lake wakati wa kuingia ijayo"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Mtumiaji lazima awe na ruhusa ya Barua pepe"
+
+#: 
+msgid "View release notes"
+msgstr "Tazama maelezo ya toleo"
+
+#: 
+msgid "What's New"
+msgstr "Mambo Mapya"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Mambo Mapya katika {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Uko nyuma ya matoleo <strong>{{releaseCount}}</strong>. Hapa kile utakachopata:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Unafanya kazi kwa toleo la awali."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Bado unaweza kuendelea na uboreshaji bila kutazama maelezo ya toleo."
+
+#: 
+msgid "You're up to date!"
+msgstr "Uko sawa!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Lazima mtu halali achaguliwe."
+
+#: 
+msgid "Add Donors"
+msgstr "Ongeza Wafadhili"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Ongeza kwenye Orodha ya Wanunuzi"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Gawa nambari za paddle kiotomatiki kwa wafadhili wote wa vitu"
+
+#: 
+msgid "Create a new user account"
+msgstr "Tengeneza akaunti mpya ya mtumiaji"
+
+#: 
+msgid "Delete this item?"
+msgstr "Futa kipengee hiki?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Futa nambari hii ya paddle?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Hariri Mnunuzi"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Kuingia tayari kunatumika, tafadhali chagua kuingia tofauti!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Kuingia lazima kuwe na angalau herufi 3!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Simamia Ukusanyaji wa Fedha"
+
+#: 
+msgid "New User"
+msgstr "Mtumiaji Mpya"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Tafadhali chagua mtu wa kutengenezea akaunti ya mtumiaji."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Tafadhali chagua mnunuzi angalau mmoja ili kutoa taarifa."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Rudi kwenye Dashibodi ya Ukusanyaji wa Fedha"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Mtu aliyechaguliwa hakupatikana."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Kitendo hiki kitaongeza kiotomatiki nambari za paddle kwa wafadhili wote wa vitu katika ukusanyaji huu wa fedha ambao bado hawajapewa nambari ya mnunuzi."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Mtu huyu tayari ana akaunti ya mtumiaji."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Mtumiaji lazima awe Msimamizi au awe na ruhusa ya Kusimamia Ukusanyaji wa Fedha"
+
+#: 
+msgid "User not found."
+msgstr "Mtumiaji hakupatikana."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Chagua mtu —"
 

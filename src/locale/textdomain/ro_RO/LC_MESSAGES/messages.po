@@ -2044,10 +2044,6 @@ msgid "Save Settings"
 msgstr "Salvare setări"
 
 #: 
-msgid "Default User Settings"
-msgstr "Setările implicite utilizator"
-
-#: 
 msgid "Permission"
 msgstr "Permisiune"
 
@@ -3015,10 +3011,6 @@ msgstr "Adăugați donatori la lista cumpărătorilor"
 #: 
 msgid "Data/Reports"
 msgstr "Dată/Rapoarte"
-
-#: 
-msgid "Query Menu"
-msgstr "Meniu întrebări"
 
 #: 
 msgid "Family Properties"
@@ -6538,10 +6530,6 @@ msgid "Confirm Deletion"
 msgstr "Confirmă ștergerea"
 
 #: 
-msgid "Create directory permission"
-msgstr "Permisiune creare director"
-
-#: 
 msgid "Database Only"
 msgstr "Doar baza de date"
 
@@ -9561,10 +9549,6 @@ msgid "Browse photos of congregation members"
 msgstr "Răsfoiți fotografiile enoriașilor"
 
 #: 
-msgid "Buyer Number"
-msgstr "Număr cumpărător"
-
-#: 
 msgid "Buyers"
 msgstr "Cumpărători"
 
@@ -10607,16 +10591,8 @@ msgid "Server Error"
 msgstr "Eroare server"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Setați permisiunea la Adevărat pentru a permite utilizatorilor noi să își schimbe valoarea curentă."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Setați un e-mail de administrator pentru a putea reseta parolele și a primi notificări"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Setați preferințele implicite pentru conturile noi de utilizator"
 
 #: 
 msgid "Set up"
@@ -11661,11 +11637,6 @@ msgstr "Aceste valori sunt completate anterior la crearea de noi familii. Lăsa�
 #: 
 msgid "Unit used to measure distance."
 msgstr "Unitate folosită pentru a măsura distanța."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Permisiune utilizator pentru a crea directoare"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14163,22 +14134,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV-ul dvs. are nume de coloane duplicate. Redenumiți coloanele duplicate (de ex. adăugați \"(2)\" la a doua) și încărcați din nou."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Sigur doriți să ștergeți permanent acest articol donat?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Sigur doriți să ștergeți permanent acest număr de paletă?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Șterge articol donat"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Șterge număr de paletă"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Token de securitate invalid. Vă rugăm să încercați din nou."
 
@@ -15077,10 +15032,6 @@ msgstr "Descarcă copia de siguranță și continuă"
 #: 
 msgid "Downloaded"
 msgstr "Descărcat"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Se descarcă cea mai recentă lansare de pe GitHub..."
 
 #: 
 msgid "Duration"
@@ -16326,6 +16277,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% din textul interfeței este tradus pentru această limbă."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Acces refuzat"
 
@@ -16554,6 +16509,10 @@ msgid "Year, 4 digits"
 msgstr "An, 4 cifre"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "trecut"
 
@@ -16653,4 +16612,280 @@ msgstr "Nu aveți permisiunea de a adăuga o notă pentru această persoană."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Nu aveți permisiunea de a edita această notă"
+
+#: 
+msgid "Account locked"
+msgstr "Cont blocat"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Cont blocat din cauza prea multor încercări eșuate de autentificare"
+
+#: 
+msgid "Account status"
+msgstr "Starea contului"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Avansat: alegeți o versiune țintă specifică"
+
+#: 
+msgid "Bug Fix"
+msgstr "Corecție de erori"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "În mod implicit, expertul descarcă următoarea versiune recomandată. Puteți alege în schimb orice versiune disponibilă de mai jos."
+
+#: 
+msgid "Change required"
+msgstr "Modificare necesară"
+
+#: 
+msgid "Changelog"
+msgstr "Jurnal de modificări"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Continuați oricum"
+
+#: 
+msgid "Could not load release information."
+msgstr "Informațiile despre versiune nu au putut fi încărcate."
+
+#: 
+msgid "Download & Install"
+msgstr "Descărcare și instalare"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Descărcați versiunea {{version}} și aplicați-o la instalarea dvs."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Se descarcă versiunea de pe GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Încercări eșuate de autentificare"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Previzualizarea actualizării nu a putut fi obținută"
+
+#: 
+msgid "Feature"
+msgstr "Funcționalitate"
+
+#: 
+msgid "Full changelog"
+msgstr "Jurnal complet de modificări"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Instalați versiunea stabilă {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Se instalează următoarea versiune"
+
+#: 
+msgid "Invalid file path"
+msgstr "Cale de fișier nevalidă"
+
+#: 
+msgid "Invalid version format"
+msgstr "Format de versiune nevalid"
+
+#: 
+msgid "Last login"
+msgstr "Ultima autentificare"
+
+#: 
+msgid "Loading release information..."
+msgstr "Se încarcă informațiile despre versiune..."
+
+#: 
+msgid "Locked"
+msgstr "Blocat"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Câmpuri obligatorii lipsă: fullPath și sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Parola trebuie schimbată"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Nu există note de versiune disponibile pentru această versiune."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Nu există actualizări disponibile pentru versiunea dvs. curentă."
+
+#: 
+msgid "Password change required"
+msgstr "Schimbarea parolei este obligatorie"
+
+#: 
+msgid "Password status"
+msgstr "Starea parolei"
+
+#: 
+msgid "Re-install current version"
+msgstr "Reinstalați versiunea curentă"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Restaurarea a eșuat și baza de date poate fi într-o stare incompletă. Verificați jurnalul aplicației pentru detalii, apoi restaurați o copie de rezervă validă înainte de a utiliza sistemul."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Restaurarea a eșuat: fișierul de rezervă pare incomplet sau nu este o copie de rezervă SQL validă. Baza de date este acum într-o stare incompletă — restaurați o copie de rezervă validă înainte de a utiliza sistemul."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Se rulează o versiune pre-lansare"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Afișați calea completă de actualizare"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Cea mai recentă versiune stabilă este {{version}}. O puteți reinstala mai jos."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Acest cont este blocat din cauza prea multor încercări eșuate de autentificare."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Acest utilizator trebuie să seteze o nouă parolă la următoarea autentificare."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Utilizatorul trebuie să își schimbe parola la următoarea autentificare"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Utilizatorul trebuie să aibă permisiunea pentru e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Vizualizați notele de versiune"
+
+#: 
+msgid "What's New"
+msgstr "Noutăți"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Noutăți în {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Aveți <strong>{{releaseCount}}</strong> versiuni în urmă. Iată ce veți câștiga:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Rulați o versiune pre-lansare."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Puteți continua actualizarea fără a vizualiza notele de versiune."
+
+#: 
+msgid "You're up to date!"
+msgstr "Aveți cea mai recentă versiune!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Trebuie selectată o persoană validă."
+
+#: 
+msgid "Add Donors"
+msgstr "Adaugă donatori"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Adaugă în lista de cumpărători"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Atribuie automat numere de paletă tuturor donatorilor de articole"
+
+#: 
+msgid "Create a new user account"
+msgstr "Creează un cont de utilizator nou"
+
+#: 
+msgid "Delete this item?"
+msgstr "Ștergeți acest articol?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Ștergeți acest număr de paletă?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Editează cumpărătorul"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Autentificatorul este deja utilizat, vă rugăm să alegeți altul!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Autentificatorul trebuie să aibă cel puțin 3 caractere!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Gestionează colectele de fonduri"
+
+#: 
+msgid "New User"
+msgstr "Utilizator nou"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Vă rugăm să selectați o persoană pentru care să creați un cont de utilizator."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Vă rugăm să selectați cel puțin un cumpărător pentru a genera extrase."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Înapoi la panoul de control al colectei de fonduri"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Persoana selectată nu a fost găsită."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Această acțiune va adăuga automat numere de paletă pentru toți donatorii de articole din această colectă de fonduri care nu au încă un număr de cumpărător atribuit."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Această persoană are deja un cont de utilizator."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Utilizatorul trebuie să fie administrator sau să aibă permisiunea de a gestiona colectele de fonduri"
+
+#: 
+msgid "User not found."
+msgstr "Utilizatorul nu a fost găsit."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Selectați o persoană —"
 

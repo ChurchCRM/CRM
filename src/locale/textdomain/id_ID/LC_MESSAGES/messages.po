@@ -1997,10 +1997,6 @@ msgid "Save Settings"
 msgstr "Simpan Pengaturan"
 
 #: 
-msgid "Default User Settings"
-msgstr "Pengaturan Pengguna Default"
-
-#: 
 msgid "Permission"
 msgstr "Izin"
 
@@ -2948,10 +2944,6 @@ msgstr "Tambahkan Donor ke Daftar Pembeli"
 #: 
 msgid "Data/Reports"
 msgstr "Data / Laporan"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu Permintaan"
 
 #: 
 msgid "Family Properties"
@@ -6459,10 +6451,6 @@ msgid "Confirm Deletion"
 msgstr "Konfirmasi Penghapusan"
 
 #: 
-msgid "Create directory permission"
-msgstr "Izin membuat direktori"
-
-#: 
 msgid "Database Only"
 msgstr "Hanya Database"
 
@@ -9470,10 +9458,6 @@ msgid "Browse photos of congregation members"
 msgstr "Jelajahi foto anggota jemaat"
 
 #: 
-msgid "Buyer Number"
-msgstr "Nomor Pembeli"
-
-#: 
 msgid "Buyers"
 msgstr "Pembeli"
 
@@ -10516,16 +10500,8 @@ msgid "Server Error"
 msgstr "Kesalahan Server"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Atur Izin ke True untuk memberikan kemampuan kepada pengguna baru untuk mengubah nilai mereka saat ini."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Atur email pengguna admin agar Anda dapat mereset kata sandi dan menerima notifikasi"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Atur preferensi default untuk akun pengguna baru"
 
 #: 
 msgid "Set up"
@@ -11570,11 +11546,6 @@ msgstr "Nilai-nilai ini diisi sebelumnya saat membuat keluarga baru. Biarkan kos
 #: 
 msgid "Unit used to measure distance."
 msgstr "Satuan yang digunakan untuk mengukur jarak."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Izin pengguna untuk membuat direktori"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14070,22 +14041,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV Anda memiliki nama kolom yang duplikat. Ganti nama kolom yang duplikat (mis. tambahkan \"(2)\" pada yang kedua) dan unggah kembali."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Apakah Anda yakin ingin menghapus barang sumbangan ini secara permanen?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Apakah Anda yakin ingin menghapus nomor lelang ini secara permanen?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Hapus barang sumbangan"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Hapus nomor lelang"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Token keamanan tidak valid. Silakan coba lagi."
 
@@ -14984,10 +14939,6 @@ msgstr "Unduh Cadangan & Lanjutkan"
 #: 
 msgid "Downloaded"
 msgstr "Telah Diunduh"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Mengunduh rilis terbaru dari GitHub..."
 
 #: 
 msgid "Duration"
@@ -16235,6 +16186,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% teks antarmuka telah diterjemahkan untuk bahasa ini."
 
 #: 
+msgid "AM / PM"
+msgstr "AM / PM"
+
+#: 
 msgid "Access denied"
 msgstr "Akses ditolak"
 
@@ -16463,6 +16418,10 @@ msgid "Year, 4 digits"
 msgstr "Tahun, 4 digit"
 
 #: 
+msgid "am / pm"
+msgstr "am / pm"
+
+#: 
 msgid "past"
 msgstr "lalu"
 
@@ -16562,4 +16521,284 @@ msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk anggota ini."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Anda tidak memiliki izin untuk mengedit catatan ini"
+
+#: 
+msgid "Account locked"
+msgstr "Akun terkunci"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Akun terkunci karena terlalu banyak percobaan masuk yang gagal"
+
+#: 
+msgid "Account status"
+msgstr "Status akun"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Lanjutan: pilih versi target tertentu"
+
+#: 
+msgid "Bug Fix"
+msgstr "Perbaikan Bug"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Secara default, panduan mengunduh rilis berikutnya yang direkomendasikan. Anda dapat memilih versi lain yang tersedia di bawah ini."
+
+#: 
+msgid "Change required"
+msgstr "Perubahan diperlukan"
+
+#: 
+msgid "Changelog"
+msgstr "Catatan Perubahan"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Lanjutkan Saja"
+
+#: 
+msgid "Could not load release information."
+msgstr "Tidak dapat memuat informasi rilis."
+
+#: 
+msgid "Download & Install"
+msgstr "Unduh & Pasang"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Unduh versi {{version}} dan terapkan pada instalasi Anda."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Mengunduh rilis dari GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Percobaan masuk yang gagal"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Gagal mengambil pratinjau pembaruan"
+
+#: 
+msgid "Feature"
+msgstr "Fitur"
+
+#: 
+msgid "Full changelog"
+msgstr "Catatan perubahan lengkap"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Pasang versi stabil {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Memasang rilis berikutnya"
+
+#: 
+msgid "Invalid file path"
+msgstr "Jalur file tidak valid"
+
+#: 
+msgid "Invalid version format"
+msgstr "Format versi tidak valid"
+
+#: 
+msgid "Last login"
+msgstr "Masuk terakhir"
+
+#: 
+msgid "Loading release information..."
+msgstr "Memuat informasi rilis..."
+
+#: 
+msgid "Locked"
+msgstr "Terkunci"
+
+#: 
+msgid "Major"
+msgstr "Utama"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Kolom yang diperlukan tidak ada: fullPath dan SHA1 Hash"
+
+#: 
+msgid "Must change password"
+msgstr "Harus mengganti kata sandi"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Tidak ada catatan rilis yang tersedia untuk versi ini."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Tidak ada pembaruan yang tersedia untuk versi Anda saat ini."
+
+#: 
+msgid "Password change required"
+msgstr "Perubahan kata sandi diperlukan"
+
+#: 
+msgid "Password status"
+msgstr "Status kata sandi"
+
+#: 
+msgid "Re-install current version"
+msgstr "Pasang ulang versi saat ini"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Pemulihan gagal dan basis data mungkin dalam keadaan tidak lengkap. Periksa log aplikasi untuk detailnya, lalu pulihkan cadangan yang diketahui baik sebelum menggunakan sistem."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Pemulihan gagal: file cadangan tampaknya tidak lengkap atau bukan cadangan SQL yang valid. Basis data kini dalam keadaan tidak lengkap — pulihkan cadangan yang diketahui baik sebelum menggunakan sistem."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Menjalankan Pra-rilis"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Tampilkan jalur pembaruan lengkap"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Rilis stabil terbaru adalah {{version}}. Anda dapat memasangnya kembali di bawah ini."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Akun ini terkunci karena terlalu banyak percobaan masuk yang gagal."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Pengguna ini harus menetapkan kata sandi baru saat berikutnya mereka masuk."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Pengguna harus mengganti kata sandi mereka saat masuk berikutnya"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Pengguna harus memiliki izin Email"
+
+#: 
+msgid "View release notes"
+msgstr "Lihat catatan rilis"
+
+#: 
+msgid "What's New"
+msgstr "Yang Baru"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Yang Baru di {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "Anda tertinggal <strong>{{releaseCount}}</strong> rilis. Berikut yang akan Anda dapatkan:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Anda menjalankan versi pra-rilis."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Anda tetap dapat melanjutkan pembaruan tanpa melihat catatan rilis."
+
+#: 
+msgid "You're up to date!"
+msgstr "Anda sudah terkini!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Seseorang yang valid harus dipilih."
+
+#: 
+msgid "Add Donors"
+msgstr "Tambah Donatur"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Tambah ke Daftar Pembeli"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tetapkan nomor paddle secara otomatis ke semua donatur item"
+
+#: 
+msgid "Create a new user account"
+msgstr "Buat akun pengguna baru"
+
+#: 
+msgid "Delete this item?"
+msgstr "Hapus item ini?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Hapus nomor paddle ini?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Edit Pembeli"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Login sudah digunakan, silakan pilih login yang berbeda!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Login harus minimal 3 karakter!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Kelola Penggalangan Dana"
+
+#: 
+msgid "New User"
+msgstr "Pengguna Baru"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Silakan pilih seseorang untuk dibuatkan akun pengguna."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Silakan pilih setidaknya satu pembeli untuk membuat laporan."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Kembali ke Dasbor Penggalangan Dana"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Orang yang dipilih tidak ditemukan."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Tindakan ini akan secara otomatis menambahkan nomor paddle untuk semua donatur item dalam penggalangan dana ini yang belum memiliki nomor pembeli."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Orang ini sudah memiliki akun pengguna."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Pengguna harus menjadi Admin atau memiliki izin Kelola Penggalangan Dana"
+
+#: 
+msgid "User not found."
+msgstr "Pengguna tidak ditemukan."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Pilih seseorang —"
 

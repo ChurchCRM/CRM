@@ -6,10 +6,6 @@
  * after family phone field removal
  */
 describe("API Private Person", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/person/{id} - Get Person by ID", () => {
         it("Returns 200 with person data", () => {
             cy.makePrivateAdminAPICall("GET", "/api/person/1", null, 200).then(

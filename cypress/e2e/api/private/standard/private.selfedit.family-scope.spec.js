@@ -96,10 +96,6 @@ describe("GHSA-jjcj-h3cm-p7x7 - EditSelf is exclusive: all internal APIs return 
  *   for Notes-only users), so swapping middlewares does not change their result.
  */
 describe("FamilyReadMiddleware regression sentinel — EditSelf+Notes user (PR#9016 note)", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     // -----------------------------------------------------------------------
     // LOW-SENSITIVITY (FamilyReadMiddleware group): avatar, nav, photo GET
     // Current (EditSelf exclusive): 403 from AuthMiddleware.

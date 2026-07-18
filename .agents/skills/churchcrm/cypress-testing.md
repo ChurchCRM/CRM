@@ -278,14 +278,49 @@ Check the actual route implementation before choosing `allowedStatuses`.
 - ✅ Use `freshAdminLogin()` (clear cookies + direct form login) before `cy.visit()`
 - ✅ Each test should be self-contained — set up its own data, then re-login, then visit
 
-### `freshAdminLogin` Is a Local Function, NOT a Cypress Command <!-- learned: 2026-03-29 -->
+### `freshAdminLogin` is still required — `withCredentials: false` is not sufficient in CI <!-- learned: 2026-07-12 -->
 
-`freshAdminLogin()` is a **plain JS function** defined locally in individual spec files (e.g. `standard.group.properties.spec.js`). It is **not** registered via `Cypress.Commands.add`.
+> ⚠️ A 2026-07-11 update claimed `freshAdminLogin()` was deleted because `makePrivateAPICall`
+> sets `withCredentials: false`, preventing the API key from clobbering `$_SESSION`.
+> **That claim was wrong in practice.** CI runs (both `test-root` and `test-subdir`) confirmed
+> that PHP session clobbering still occurs in the browser environment despite the header.
+> `freshAdminLogin()` has been restored in all 4 affected UI specs.
 
-- ❌ `cy.freshAdminLogin()` — throws `TypeError: cy.freshAdminLogin is not a function`, fails the entire describe block
-- ✅ `freshAdminLogin()` — call as a plain JS function, only inside the spec file that defines it
+`makePrivateAPICall` does set `withCredentials: false` (see `support/api-commands.js`), but
+this alone is not sufficient to protect the PHP session in the Cypress/CI browser environment.
+`cy.setupAdminSession()` after API calls will fail with a redirect to the login page because
+the `cy.session()` cache validator only checks the cookie presence, not that the server-side
+PHP session is still alive.
 
-**API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall` authenticate via `x-api-key` header — no session or cookies needed. Never add `freshAdminLogin()` or `setupAdminSession()` to `beforeEach` in a pure API spec.
+The **only** reliable pattern for UI tests that mix API setup with browser visits is:
+
+```javascript
+// ✅ CORRECT — freshAdminLogin() clears cookies and does a direct form login,
+//             discarding any dead PHP session from prior cy.request() calls.
+function freshAdminLogin() {
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.url().should("not.include", "/session/begin");
+}
+
+// Use this pattern: API setup first, freshAdminLogin() last before cy.visit()
+beforeEach(() => {
+    cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+    freshAdminLogin();  // AFTER API setup — clears the dead session, establishes a fresh one
+});
+
+// ❌ WRONG — cy.setupAdminSession() after API calls may restore a dead PHP session
+beforeEach(() => {
+    cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+    cy.setupAdminSession();  // cy.request() may have killed the server-side PHP session
+});
+```
+
+**API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall`
+authenticate via the `x-api-key` header — no session or cookies. Never put
+`cy.setupAdminSession()` in `beforeEach` of a pure API spec; it is a wasted login per test.
 
 ```javascript
 // ✅ CORRECT — API test, no login setup needed
@@ -293,14 +328,6 @@ describe("People Without Email API", () => {
     beforeEach(() => {
         cy.makePrivateAdminAPICall("GET", "/api/persons/email/without", "", 200).as("withoutEmail");
         // no login needed — API key auth only
-    });
-});
-
-// ❌ WRONG — cy.freshAdminLogin() is not a command, crashes beforeEach for every test
-describe("People Without Email API", () => {
-    beforeEach(() => {
-        cy.makePrivateAdminAPICall("GET", "/api/persons/email/without", "", 200).as("withoutEmail");
-        cy.freshAdminLogin(); // TypeError: cy.freshAdminLogin is not a function
     });
 });
 ```
@@ -501,7 +528,7 @@ describe("Group property management", () => {
 it("creates a user via the form", () => {
     cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 404]);
     cy.setupAdminSession({ forceLogin: true });  // required — API call above invalidated the session
-    cy.visit("UserEditor.php?NewPersonID=25");
+    cy.visit("admin/system/users/new?personId=25");
     // ...
 });
 

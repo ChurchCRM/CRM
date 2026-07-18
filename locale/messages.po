@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-10 14:37+0000\n"
+"POT-Creation-Date: 2026-07-14 22:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,6 +294,9 @@ msgstr ""
 msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
 msgstr ""
 
+msgid "A valid person must be selected."
+msgstr ""
+
 msgid "AM / PM"
 msgstr ""
 
@@ -358,7 +361,16 @@ msgstr ""
 msgid "Account Unlocked"
 msgstr ""
 
+msgid "Account locked"
+msgstr ""
+
+msgid "Account locked due to too many failed login attempts"
+msgstr ""
+
 msgid "Account options"
+msgstr ""
+
+msgid "Account status"
 msgstr ""
 
 msgid "Action"
@@ -419,6 +431,9 @@ msgid "Add Church Event"
 msgstr ""
 
 msgid "Add Donated Item"
+msgstr ""
+
+msgid "Add Donors"
 msgstr ""
 
 msgid "Add Donors to Buyer List"
@@ -566,6 +581,9 @@ msgid "Add staff and volunteers"
 msgstr ""
 
 msgid "Add staff or volunteers as system users"
+msgstr ""
+
+msgid "Add to Buyer List"
 msgstr ""
 
 msgid "Add to Cart"
@@ -1038,12 +1056,6 @@ msgstr ""
 msgid "Are you sure you want to move"
 msgstr ""
 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr ""
-
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr ""
-
 msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr ""
 
@@ -1192,6 +1204,9 @@ msgid "Auto-Backup"
 msgstr ""
 
 msgid "Auto-Backup Interval"
+msgstr ""
+
+msgid "Auto-assign paddle numbers to all item donors"
 msgstr ""
 
 msgid "Auto-mapped"
@@ -1579,9 +1594,6 @@ msgstr ""
 msgid "Buyer # "
 msgstr ""
 
-msgid "Buyer Number"
-msgstr ""
-
 msgid "Buyer Number Editor"
 msgstr ""
 
@@ -1842,6 +1854,9 @@ msgid "Change Settings"
 msgstr ""
 
 msgid "Change Your Locale"
+msgstr ""
+
+msgid "Change required"
 msgstr ""
 
 msgid "Change role"
@@ -2645,6 +2660,9 @@ msgstr ""
 msgid "Create a new family (using last name)"
 msgstr ""
 
+msgid "Create a new user account"
+msgstr ""
+
 msgid "Create an Audience in MailChimp"
 msgstr ""
 
@@ -2652,9 +2670,6 @@ msgid "Create and edit family information and relationships"
 msgstr ""
 
 msgid "Create and manage church events and activities"
-msgstr ""
-
-msgid "Create directory permission"
 msgstr ""
 
 msgid "Create new family"
@@ -3016,9 +3031,6 @@ msgstr ""
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr ""
 
-msgid "Default User Settings"
-msgstr ""
-
 msgid "Default Zip"
 msgstr ""
 
@@ -3073,9 +3085,6 @@ msgstr ""
 msgid "Delete Confirmation"
 msgstr ""
 
-msgid "Delete Donated Item"
-msgstr ""
-
 msgid "Delete Event"
 msgstr ""
 
@@ -3092,9 +3101,6 @@ msgid "Delete Family Record ONLY"
 msgstr ""
 
 msgid "Delete Group"
-msgstr ""
-
-msgid "Delete Paddle Number"
 msgstr ""
 
 msgid "Delete Person"
@@ -3128,6 +3134,12 @@ msgid "Delete records permission"
 msgstr ""
 
 msgid "Delete this event?"
+msgstr ""
+
+msgid "Delete this item?"
+msgstr ""
+
+msgid "Delete this paddle number?"
 msgstr ""
 
 msgid "Delete this person?"
@@ -3512,6 +3524,9 @@ msgid "Ecuador"
 msgstr ""
 
 msgid "Edit"
+msgstr ""
+
+msgid "Edit Buyer"
 msgstr ""
 
 msgid "Edit Class"
@@ -4214,6 +4229,9 @@ msgid "Failed"
 msgstr ""
 
 msgid "Failed Logins"
+msgstr ""
+
+msgid "Failed login attempts"
 msgstr ""
 
 msgid "Failed to add family to cart"
@@ -4924,12 +4942,6 @@ msgid "Force Re-install?"
 msgstr ""
 
 msgid "Force re-install initiated. Please backup your database before applying."
-msgstr ""
-
-msgid "Re-install current version"
-msgstr ""
-
-msgid "No release notes available for this version."
 msgstr ""
 
 msgid "Foreground Color"
@@ -5855,6 +5867,9 @@ msgstr ""
 msgid "Install from URL"
 msgstr ""
 
+msgid "Install stable {{version}}"
+msgstr ""
+
 msgid "Installation ID"
 msgstr ""
 
@@ -6225,6 +6240,9 @@ msgstr ""
 msgid "Last campaign"
 msgstr ""
 
+msgid "Last login"
+msgstr ""
+
 msgid "Last name"
 msgstr ""
 
@@ -6448,6 +6466,9 @@ msgstr ""
 msgid "Location & Contact Information"
 msgstr ""
 
+msgid "Locked"
+msgstr ""
+
 msgid "Locked Users"
 msgstr ""
 
@@ -6476,6 +6497,12 @@ msgid "Login Name"
 msgstr ""
 
 msgid "Login Name is required"
+msgstr ""
+
+msgid "Login already in use, please select a different login!"
+msgstr ""
+
+msgid "Login must be at least 3 characters!"
 msgstr ""
 
 msgid "Login to your account"
@@ -6606,6 +6633,9 @@ msgid "Manage Envelopes"
 msgstr ""
 
 msgid "Manage Event Types"
+msgstr ""
+
+msgid "Manage Fundraisers"
 msgstr ""
 
 msgid "Manage Funds"
@@ -7123,6 +7153,9 @@ msgstr ""
 msgid "Must be an immutable release URL served over HTTPS."
 msgstr ""
 
+msgid "Must change password"
+msgstr ""
+
 msgid "Must specify non-zero check number"
 msgstr ""
 
@@ -7264,6 +7297,9 @@ msgid "New Release"
 msgstr ""
 
 msgid "New Role"
+msgstr ""
+
+msgid "New User"
 msgstr ""
 
 #. Context: countries
@@ -7520,6 +7556,9 @@ msgid "No property types found"
 msgstr ""
 
 msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr ""
+
+msgid "No release notes available for this version."
 msgstr ""
 
 msgid "No results found"
@@ -8025,6 +8064,9 @@ msgstr ""
 msgid "Password Reset Successful"
 msgstr ""
 
+msgid "Password change required"
+msgstr ""
+
 msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
 msgstr ""
 
@@ -8038,6 +8080,9 @@ msgid "Password reset is unavailable because email is disabled. Please contact y
 msgstr ""
 
 msgid "Password reset not available.  Please contact your system administrator"
+msgstr ""
+
+msgid "Password status"
 msgstr ""
 
 msgid "Password successfully changed for"
@@ -8478,6 +8523,9 @@ msgstr ""
 msgid "Please select a person to check in."
 msgstr ""
 
+msgid "Please select a person to create a user account for."
+msgstr ""
+
 msgid "Please select a role."
 msgstr ""
 
@@ -8485,6 +8533,9 @@ msgid "Please select a target family."
 msgstr ""
 
 msgid "Please select another family with whom to associate these donations:"
+msgstr ""
+
+msgid "Please select at least one buyer to generate statements."
 msgstr ""
 
 msgid "Please select both a group and a role."
@@ -8702,9 +8753,6 @@ msgstr ""
 msgid "Private"
 msgstr ""
 
-msgid "Private Calendar"
-msgstr ""
-
 msgid "Profile"
 msgstr ""
 
@@ -8763,9 +8811,6 @@ msgstr ""
 msgid "Provide any corrections or additional information here..."
 msgstr ""
 
-msgid "Public Calendar"
-msgstr ""
-
 msgid "Public calendar"
 msgstr ""
 
@@ -8790,9 +8835,6 @@ msgid "Quarterly"
 msgstr ""
 
 msgid "Query Listing"
-msgstr ""
-
-msgid "Query Menu"
 msgstr ""
 
 msgid "Query View"
@@ -8847,6 +8889,9 @@ msgid "RangeEnd must be on or after RangeStart"
 msgstr ""
 
 msgid "Re-install"
+msgstr ""
+
+msgid "Re-install current version"
 msgstr ""
 
 msgid "Read more"
@@ -9112,10 +9157,16 @@ msgstr ""
 msgid "Restore backup"
 msgstr ""
 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr ""
+
 msgid "Restore failed."
 msgstr ""
 
 msgid "Restore failed. Please check the backup file and try again."
+msgstr ""
+
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
 msgstr ""
 
 msgid "Restore from a backup file. Erases existing data."
@@ -9143,6 +9194,9 @@ msgid "Return to Families"
 msgstr ""
 
 msgid "Return to Family View"
+msgstr ""
+
+msgid "Return to Fundraiser Dashboard"
 msgstr ""
 
 msgid "Return to Groups"
@@ -9227,6 +9281,9 @@ msgid "Run Query Again"
 msgstr ""
 
 msgid "Run Transactions"
+msgstr ""
+
+msgid "Running Pre-release"
 msgstr ""
 
 #. Context: countries
@@ -9729,9 +9786,6 @@ msgstr ""
 msgid "Set New Password"
 msgstr ""
 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr ""
-
 msgid "Set Permission to True to allow this user to change the setting themselves."
 msgstr ""
 
@@ -9742,9 +9796,6 @@ msgid "Set an admin user email so you can reset passwords and receive notificati
 msgstr ""
 
 msgid "Set default check account number for family"
-msgstr ""
-
-msgid "Set default preferences for new user accounts"
 msgstr ""
 
 msgid "Set the accent color used for buttons, links, and active elements"
@@ -10475,6 +10526,9 @@ msgstr ""
 msgid "The gender for which you would like records returned."
 msgstr ""
 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "The maximum age for which you want records returned."
 msgstr ""
@@ -10549,6 +10603,9 @@ msgstr ""
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr ""
 
+msgid "The selected person was not found."
+msgstr ""
+
 msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
 msgstr ""
 
@@ -10616,6 +10673,9 @@ msgstr ""
 msgid "This Family is Inactive"
 msgstr ""
 
+msgid "This account is locked because of too many failed login attempts."
+msgstr ""
+
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr ""
 
@@ -10623,6 +10683,9 @@ msgid "This action cannot be undone."
 msgstr ""
 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr ""
+
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
 msgstr ""
 
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
@@ -10667,6 +10730,9 @@ msgstr ""
 msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
 msgstr ""
 
+msgid "This person already has a user account."
+msgstr ""
+
 msgid "This plugin does not support connection testing."
 msgstr ""
 
@@ -10698,6 +10764,9 @@ msgid "This title will be used for all generated events."
 msgstr ""
 
 msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr ""
+
+msgid "This user must set a new password the next time they sign in."
 msgstr ""
 
 msgid "This value cannot be less than "
@@ -11381,6 +11450,12 @@ msgstr ""
 msgid "User must be an Admin or have Finance permission"
 msgstr ""
 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr ""
+
+msgid "User must change their password at next login"
+msgstr ""
+
 msgid "User must have Add Event permission and the Events module must be enabled"
 msgstr ""
 
@@ -11388,6 +11463,9 @@ msgid "User must have Delete Records permission"
 msgstr ""
 
 msgid "User must have Edit Records permission"
+msgstr ""
+
+msgid "User must have Email permission"
 msgstr ""
 
 msgid "User must have Manage Groups permission"
@@ -11402,8 +11480,7 @@ msgstr ""
 msgid "User not found"
 msgstr ""
 
-#. Context: userconfig_ucfg
-msgid "User permission to create directories"
+msgid "User not found."
 msgstr ""
 
 #. Context: userconfig_ucfg
@@ -12033,6 +12110,9 @@ msgstr ""
 msgid "You are about to email copy of the family information to the following emails"
 msgstr ""
 
+msgid "You are running a pre-release version."
+msgstr ""
+
 #. plugin:external-backup:section:3:content
 msgid ""
 "You can also trigger a manual backup at any time:\n"
@@ -12636,6 +12716,9 @@ msgid "— Select State —"
 msgstr ""
 
 msgid "— Select a group —"
+msgstr ""
+
+msgid "— Select a person —"
 msgstr ""
 
 msgid "— Select type (optional) —"

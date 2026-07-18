@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Ayarları kaydet"
 
 #: 
-msgid "Default User Settings"
-msgstr "Varsayılan Kullanıcı Ayarları"
-
-#: 
 msgid "Permission"
 msgstr "İzin"
 
@@ -2947,10 +2943,6 @@ msgstr "Alıcı listesine bağışçılar ekleyin"
 #: 
 msgid "Data/Reports"
 msgstr "Veri/Raporlar"
-
-#: 
-msgid "Query Menu"
-msgstr "Sorgu Menüsü"
 
 #: 
 msgid "Family Properties"
@@ -6469,10 +6461,6 @@ msgid "Confirm Deletion"
 msgstr "Silmeyi Onayla"
 
 #: 
-msgid "Create directory permission"
-msgstr "Dizin oluşturma izni"
-
-#: 
 msgid "Database Only"
 msgstr "Sadece Veritabanı"
 
@@ -9486,10 +9474,6 @@ msgid "Browse photos of congregation members"
 msgstr "Cemaat üyelerinin fotoğraflarına göz atın"
 
 #: 
-msgid "Buyer Number"
-msgstr "Alıcı Numarası"
-
-#: 
 msgid "Buyers"
 msgstr "Alıcılar"
 
@@ -10532,16 +10516,8 @@ msgid "Server Error"
 msgstr "Sunucu Hatası"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Yeni kullanıcılara mevcut değerlerini değiştirme yeteneği vermek için İzni Doğru olarak ayarlayın."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Şifreleri sıfırlayabilmeniz ve bildirimler alabilmeniz için bir yönetici e-postası belirleyin"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Yeni kullanıcı hesapları için varsayılan tercihleri belirle"
 
 #: 
 msgid "Set up"
@@ -11586,11 +11562,6 @@ msgstr "Bu değerler yeni aileler oluşturulurken önceden doldurulur. Manuel gi
 #: 
 msgid "Unit used to measure distance."
 msgstr "Mesafeyi ölçmek için kullanılan birim."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Dizin oluşturmak için kullanıcı izni"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14087,22 +14058,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV dosyanızda yinelenen sütun adları var. Yinelenen sütunları yeniden adlandırın (örneğin ikincisine \"(2)\" ekleyin) ve tekrar yükleyin."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Bu bağışlanan ürünü kalıcı olarak silmek istediğinizden emin misiniz?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Bu paddle numarasını kalıcı olarak silmek istediğinizden emin misiniz?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Bağışlanan Ürünü Sil"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Paddle Numarasını Sil"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Geçersiz güvenlik tokenı. Lütfen tekrar deneyin."
 
@@ -15003,10 +14958,6 @@ msgid "Downloaded"
 msgstr "İndirildi"
 
 #: 
-msgid "Downloading latest release from GitHub..."
-msgstr "En son sürüm GitHub'dan indiriliyor..."
-
-#: 
 msgid "Duration"
 msgstr "Süre"
 
@@ -15292,6 +15243,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "Rol seçimi istemi için gerekli GroupId"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Kimlik doğrulayıcı uygulamanızı hazır bulundurun (Google Authenticator, Microsoft Authenticator, Authy vb.)"
 
@@ -15302,6 +15257,10 @@ msgstr "Gelişmiş seçenekleri gizle"
 #: 
 msgid "Home phone is required"
 msgstr "Ev telefonu gereklidir"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Ignored"
@@ -16580,4 +16539,284 @@ msgstr "Bu kişi için not ekleme izniniz yok."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "Bu notu düzenleme izniniz yok"
+
+#: 
+msgid "Account locked"
+msgstr "Hesap kilitlendi"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Çok fazla başarısız giriş denemesi nedeniyle hesap kilitlendi"
+
+#: 
+msgid "Account status"
+msgstr "Hesap durumu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Gelişmiş: belirli bir hedef sürüm seçin"
+
+#: 
+msgid "Bug Fix"
+msgstr "Hata Düzeltmesi"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Sihirbaz varsayılan olarak önerilen sonraki sürümü indirir. Bunun yerine aşağıdan mevcut herhangi bir sürümü seçebilirsiniz."
+
+#: 
+msgid "Change required"
+msgstr "Değişiklik gerekli"
+
+#: 
+msgid "Changelog"
+msgstr "Değişiklik günlüğü"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Yine de devam et"
+
+#: 
+msgid "Could not load release information."
+msgstr "Sürüm bilgileri yüklenemedi."
+
+#: 
+msgid "Download & Install"
+msgstr "İndir ve Yükle"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "{{version}} sürümünü indirin ve kurulumunuza uygulayın."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "GitHub'dan sürüm indiriliyor..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Başarısız giriş denemeleri"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Yükseltme önizlemesi alınamadı"
+
+#: 
+msgid "Feature"
+msgstr "Özellik"
+
+#: 
+msgid "Full changelog"
+msgstr "Tam değişiklik günlüğü"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Kararlı {{version}} sürümünü yükle"
+
+#: 
+msgid "Installing next release"
+msgstr "Sonraki sürüm yükleniyor"
+
+#: 
+msgid "Invalid file path"
+msgstr "Geçersiz dosya yolu"
+
+#: 
+msgid "Invalid version format"
+msgstr "Geçersiz sürüm formatı"
+
+#: 
+msgid "Last login"
+msgstr "Son giriş"
+
+#: 
+msgid "Loading release information..."
+msgstr "Sürüm bilgileri yükleniyor..."
+
+#: 
+msgid "Locked"
+msgstr "Kilitli"
+
+#: 
+msgid "Major"
+msgstr "Ana"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Zorunlu alanlar eksik: fullPath ve sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Şifre değiştirilmeli"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Bu sürüm için sürüm notu bulunmamaktadır."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Mevcut sürümünüz için yükseltme bulunmamaktadır."
+
+#: 
+msgid "Password change required"
+msgstr "Şifre değişikliği gerekli"
+
+#: 
+msgid "Password status"
+msgstr "Şifre durumu"
+
+#: 
+msgid "Re-install current version"
+msgstr "Mevcut sürümü yeniden yükle"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Geri yükleme başarısız oldu ve veritabanı eksik bir durumda olabilir. Ayrıntılar için uygulama günlüğünü kontrol edin, ardından sistemi kullanmadan önce bilinen iyi bir yedeği geri yükleyin."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Geri yükleme başarısız oldu: yedek dosyası eksik görünüyor veya geçerli bir SQL yedeği değil. Veritabanı şu anda eksik bir durumda — sistemi kullanmadan önce bilinen iyi bir yedeği geri yükleyin."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Ön sürüm çalışıyor"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Tam yükseltme yolunu göster"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "En son kararlı sürüm {{version}}. Aşağıdan yeniden yükleyebilirsiniz."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Bu hesap çok fazla başarısız giriş denemesi nedeniyle kilitlendi."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Bu kullanıcı bir sonraki girişinde yeni bir şifre belirlemelidir."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Kullanıcı bir sonraki girişte şifresini değiştirmelidir"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Kullanıcının E-posta iznine sahip olması gerekir"
+
+#: 
+msgid "View release notes"
+msgstr "Sürüm notlarını görüntüle"
+
+#: 
+msgid "What's New"
+msgstr "Yenilikler"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} Sürümündeki Yenilikler"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "<strong>{{releaseCount}}</strong> sürüm geride kaldınız. İşte kazanacaklarınız:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Bir ön sürüm çalıştırıyorsunuz."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Sürüm notlarını görüntülemeden yükseltmeye devam edebilirsiniz."
+
+#: 
+msgid "You're up to date!"
+msgstr "Güncelsiniz!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Geçerli bir kişi seçilmelidir."
+
+#: 
+msgid "Add Donors"
+msgstr "Bağışçı Ekle"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Alıcı Listesine Ekle"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Tüm kalem bağışçılarına otomatik kürek numarası ata"
+
+#: 
+msgid "Create a new user account"
+msgstr "Yeni kullanıcı hesabı oluştur"
+
+#: 
+msgid "Delete this item?"
+msgstr "Bu öğe silinsin mi?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Bu kürek numarası silinsin mi?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Alıcıyı Düzenle"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Bu giriş adı zaten kullanımda, lütfen farklı bir giriş adı seçin!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Giriş adı en az 3 karakter olmalıdır!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Bağış Kampanyalarını Yönet"
+
+#: 
+msgid "New User"
+msgstr "Yeni Kullanıcı"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Kullanıcı hesabı oluşturmak için lütfen bir kişi seçin."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Ekstre oluşturmak için lütfen en az bir alıcı seçin."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Bağış Kampanyası Panosuna Dön"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Seçilen kişi bulunamadı."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Bu işlem, bu bağış kampanyasında henüz alıcı numarası atanmamış tüm kalem bağışçılarına otomatik olarak kürek numarası ekleyecektir."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Bu kişinin zaten bir kullanıcı hesabı var."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Kullanıcı Yönetici olmalı veya Bağış Kampanyalarını Yönet iznine sahip olmalıdır"
+
+#: 
+msgid "User not found."
+msgstr "Kullanıcı bulunamadı."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Bir kişi seçin —"
 

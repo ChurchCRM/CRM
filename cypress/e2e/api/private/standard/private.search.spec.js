@@ -5,10 +5,6 @@
  * Tests validate that search works correctly after family phone field removal
  */
 describe("API Private Search", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/search/{query} - Global Search", () => {
         it("Returns 200 for text query", () => {
             cy.makePrivateAdminAPICall("GET", "/api/search/Smith", null, 200).then(

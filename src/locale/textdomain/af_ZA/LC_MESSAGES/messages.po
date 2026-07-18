@@ -1996,10 +1996,6 @@ msgid "Save Settings"
 msgstr "Stoor instellings"
 
 #: 
-msgid "Default User Settings"
-msgstr "Verstek gebruikersinstellings"
-
-#: 
 msgid "Permission"
 msgstr "Toestemming"
 
@@ -2947,10 +2943,6 @@ msgstr "Voeg skenkers by die koperslys"
 #: 
 msgid "Data/Reports"
 msgstr "Data / verslae"
-
-#: 
-msgid "Query Menu"
-msgstr "Navraag-menu"
 
 #: 
 msgid "Family Properties"
@@ -6469,10 +6461,6 @@ msgid "Confirm Deletion"
 msgstr "Bevestig Uitvoeging"
 
 #: 
-msgid "Create directory permission"
-msgstr "Skep gids toestemming"
-
-#: 
 msgid "Database Only"
 msgstr "Slegs Database"
 
@@ -9486,10 +9474,6 @@ msgid "Browse photos of congregation members"
 msgstr "Blaai deur foto's van geloofsgelykelede"
 
 #: 
-msgid "Buyer Number"
-msgstr "Kopernommer"
-
-#: 
 msgid "Buyers"
 msgstr "Kopers"
 
@@ -10532,16 +10516,8 @@ msgid "Server Error"
 msgstr "Bediener-Fout"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Stel Toestemming Waar in om nuwe gebruikers die vermoë te gee om hul huidige waarde te verander."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Stel 'n beheerder-gebruiker e-pos in sodat u wagwoorde kan herstel en kennisgewings kan ontvang"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Stel standaard-voorkeure vir nuwe gebruiker-rekeninge in"
 
 #: 
 msgid "Set up"
@@ -11586,11 +11562,6 @@ msgstr "Hierdie waardes word vooraf ingevul by die skep van nuwe gesinne. Laat l
 #: 
 msgid "Unit used to measure distance."
 msgstr "Eenheid wat gebruik word om afstand te meet."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Gebruiker toestemming om gidse te skep"
 
 #. Context: userconfig_ucfg
 #: 
@@ -14087,22 +14058,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "U CSV het duplikaatkolomname. Hernoem die duplikaatkolomme (bv. voeg \"(2)\" by die tweede een) en laai weer op."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Is jy seker jy wil hierdie geskenkte item permanent uitvee?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Is jy seker jy wil hierdie roeinommer permanent uitvee?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Vee geskenkte item uit"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Vee roeinommer uit"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Ongeldige sekuriteitstoken. Probeer asseblief weer."
 
@@ -15001,10 +14956,6 @@ msgstr "Laai Rugsteun Af & Gaan Voort"
 #: 
 msgid "Downloaded"
 msgstr "Afgelaai"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Laai nuutste vrylating van GitHub af..."
 
 #: 
 msgid "Duration"
@@ -16142,6 +16093,10 @@ msgid "from this group?"
 msgstr "uit hierdie ministerie?"
 
 #: 
+msgid "in"
+msgstr "in"
+
+#: 
 msgid "in cart"
 msgstr "in mandjie"
 
@@ -16584,4 +16539,284 @@ msgstr "U het nie toestemming om 'n nota vir hierdie persoon by te voeg nie."
 #: 
 msgid "You do not have permission to edit this note"
 msgstr "U het nie toestemming om hierdie nota te wysig nie"
+
+#: 
+msgid "Account locked"
+msgstr "Rekening gesluit"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Rekening gesluit weens te veel mislukte aanmeldpogings"
+
+#: 
+msgid "Account status"
+msgstr "Rekeningstatuts"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Gevorderd: kies 'n spesifieke teikenweergawe"
+
+#: 
+msgid "Bug Fix"
+msgstr "Foutherstel"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "By verstek laai die towenaar die volgende aanbevole vrystelling af. U kan eerder enige beskikbare weergawe hieronder kies."
+
+#: 
+msgid "Change required"
+msgstr "Wysiging vereis"
+
+#: 
+msgid "Changelog"
+msgstr "Wysigingslys"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Gaan nietemin voort"
+
+#: 
+msgid "Could not load release information."
+msgstr "Kon nie vrystellinginligting laai nie."
+
+#: 
+msgid "Download & Install"
+msgstr "Aflaai en installeer"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Laai weergawe {{version}} af en pas dit op u installasie toe."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Vrystelling word van GitHub afgelaai..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Mislukte aanmeldpogings"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Kon nie opgraderingsvoorskou ophaal nie"
+
+#: 
+msgid "Feature"
+msgstr "Kenmerk"
+
+#: 
+msgid "Full changelog"
+msgstr "Volledige wysigingslys"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Installeer stabiele {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Volgende vrystelling word geïnstalleer"
+
+#: 
+msgid "Invalid file path"
+msgstr "Ongeldige lêerpad"
+
+#: 
+msgid "Invalid version format"
+msgstr "Ongeldige weergaweformaat"
+
+#: 
+msgid "Last login"
+msgstr "Laaste aanmelding"
+
+#: 
+msgid "Loading release information..."
+msgstr "Vrystellinginligting word gelaai..."
+
+#: 
+msgid "Locked"
+msgstr "Gesluit"
+
+#: 
+msgid "Major"
+msgstr "Hoof"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Vereiste velde ontbreek: fullPath en sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Moet wagwoord verander"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Geen vrystellingsnotas beskikbaar vir hierdie weergawe nie."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Geen opgraderings beskikbaar vir u huidige weergawe nie."
+
+#: 
+msgid "Password change required"
+msgstr "Wagwoordwysiging vereis"
+
+#: 
+msgid "Password status"
+msgstr "Wagwoordstatus"
+
+#: 
+msgid "Re-install current version"
+msgstr "Huidige weergawe herinstalleer"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Herstel het misluk en die databasis is moontlik in 'n onvolledige toestand. Kontroleer die toepassingslêer vir besonderhede en herstel dan 'n bekende goeie rugsteun voordat u die stelsel gebruik."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Herstel het misluk: die rugsteunlêer lyk onvolledig of is nie 'n geldige SQL-rugsteun nie. Die databasis is nou in 'n onvolledige toestand — herstel 'n bekende goeie rugsteun voordat u die stelsel gebruik."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Voorvrystelling word uitgevoer"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Wys volledige opgraderingspad"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Die nuutste stabiele vrystelling is {{version}}. U kan dit hieronder herinstalleer."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Hierdie rekening is gesluit weens te veel mislukte aanmeldpogings."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Hierdie gebruiker moet 'n nuwe wagwoord instel die volgende keer wat hulle aanmeld."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Gebruiker moet hul wagwoord by die volgende aanmelding verander"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Gebruiker moet E-pos toestemming hê"
+
+#: 
+msgid "View release notes"
+msgstr "Bekyk vrystellingsnotas"
+
+#: 
+msgid "What's New"
+msgstr "Wat is nuut"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Wat is nuut in {{version}}"
+
+#: 
+msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
+msgstr "U is <strong>{{releaseCount}}</strong> vrystellings agter. Dit is wat u sal kry:"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "U gebruik 'n voorvrystellingweergawe."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "U kan steeds voortgaan met die opgradering sonder om vrystellingsnotas te bekyk."
+
+#: 
+msgid "You're up to date!"
+msgstr "U is op datum!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "'n Geldige persoon moet gekies word."
+
+#: 
+msgid "Add Donors"
+msgstr "Voeg Skenkers by"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Voeg by Koperlys"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Ken peddelnommers outomaties toe aan alle itemskenkers"
+
+#: 
+msgid "Create a new user account"
+msgstr "Skep 'n nuwe gebruikersrekening"
+
+#: 
+msgid "Delete this item?"
+msgstr "Hierdie item verwyder?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Hierdie peddelnommer verwyder?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Redigeer Koper"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Aanmelding reeds in gebruik, kies asseblief 'n ander aanmelding!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Aanmelding moet ten minste 3 karakters wees!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Bestuur Fondsinsamelings"
+
+#: 
+msgid "New User"
+msgstr "Nuwe Gebruiker"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Kies asseblief 'n persoon waarvoor 'n gebruikersrekening geskep moet word."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Kies asseblief ten minste een koper om state te genereer."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Keer terug na Fondsinsameling-kontroleskerm"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Die gekose persoon is nie gevind nie."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Hierdie aksie sal outomaties peddelnommers toevoeg vir alle itemskenkers in hierdie fondsinsameling wat nog nie 'n kopernommer het nie."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Hierdie persoon het reeds 'n gebruikersrekening."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Gebruiker moet 'n Administrateur wees of die Bestuur Fondsinsamelings-toestemming hê"
+
+#: 
+msgid "User not found."
+msgstr "Gebruiker nie gevind nie."
+
+#: 
+msgid "— Select a person —"
+msgstr "— Kies 'n persoon —"
 

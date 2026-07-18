@@ -175,7 +175,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <button class="dropdown-item AddToCart" data-cart-id="<?= $person->getId() ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
                     <div class="dropdown-divider"></div>
-                    <button class="dropdown-item text-danger delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $person->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                    <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $person->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
                     <?php endif; ?>
                 </div>
             </div>
@@ -203,11 +203,11 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-sm me-2">
-                                            <a href="<?= $person->getViewURI() ?>"><?= $person->getTitle() ?> <?= $person->getFullName() ?></a>
+                                            <a href="<?= $person->getViewURI() ?>"><?= InputUtils::escapeHTML($person->getTitle()) ?> <?= InputUtils::escapeHTML($person->getFullName()) ?></a>
                                         </div>
                                     </td>
                                     <td class="text-center">
-                                        <span class="badge bg-secondary-lt text-secondary"><?= $person->getFamilyRoleName() ?></span>
+                                        <span class="badge bg-secondary-lt text-secondary"><?= InputUtils::escapeHTML($person->getFamilyRoleName()) ?></span>
                                     </td>
                                     <td><?= $person->getFormattedBirthDate() ?></td>
                                     <td>
@@ -279,7 +279,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-sm me-2">
-                                            <a href="<?= $person->getViewURI() ?>"><?= $person->getTitle() ?> <?= $person->getFullName() ?></a>
+                                            <a href="<?= $person->getViewURI() ?>"><?= InputUtils::escapeHTML($person->getTitle()) ?> <?= InputUtils::escapeHTML($person->getFullName()) ?></a>
                                         </div>
                                     </td>
                                     <td><?= $person->getFormattedBirthDate() ?></td>
@@ -515,15 +515,15 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <ul class="list-unstyled mb-0">
                         <?php foreach ($familyCustom as $customField) { ?>
                             <li class="mb-1">
-                                <i class="<?= $customField->getIcon() ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $customField->getDisplayValue() ?>:
+                                <i class="<?= InputUtils::escapeAttribute($customField->getIcon()) ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML($customField->getDisplayValue()) ?>:
                                 <?php if ($customField->getLink()) { ?>
-                                    <a href="<?= $customField->getLink() ?>"><?= $customField->getFormattedValue() ?></a>
+                                    <a href="<?= InputUtils::escapeAttribute($customField->getLink()) ?>"><?= InputUtils::escapeHTML($customField->getFormattedValue()) ?></a>
                                 <?php } else {
                                     $val = $customField->getFormattedValue();
                                     if (strlen($val) > 40) { ?>
-                                        <span class="d-block text-body-secondary text-truncate" title="<?= InputUtils::escapeAttribute($val) ?>"><?= $val ?></span>
+                                        <span class="d-block text-body-secondary text-truncate" title="<?= InputUtils::escapeAttribute($val) ?>"><?= InputUtils::escapeHTML($val) ?></span>
                                     <?php } else { ?>
-                                        <span><?= $val ?></span>
+                                        <span><?= InputUtils::escapeHTML($val) ?></span>
                                     <?php }
                                 } ?>
                             </li>

@@ -266,28 +266,26 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ### Every POST/delete page must validate a CSRF token <!-- learned: 2026-04-21 -->
 
-Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The rule is **validate before any DB write**; legacy pages may reject an invalid token using either of two patterns — pick the one that matches the page's existing error-surfacing style. Applied in `UserEditor.php`, `PledgeDelete.php`, `DonatedItemDelete.php`, `PaddleNumDelete.php` (GHSA-3xq9-c86x-cwpp):
+Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The rule is **validate before any DB write**; legacy pages may reject an invalid token using either of two patterns — pick the one that matches the page's existing error-surfacing style. Applied in `UserEditor.php`, `PledgeDelete.php` (GHSA-3xq9-c86x-cwpp). `DonatedItemDelete.php` and `PaddleNumDelete.php` used this pattern too but were removed in the fundraiser MVC migration (PR #9124); their Slim equivalents (`/fundraiser/{id}/donated-items/{itemId}/delete` and `/fundraiser/{id}/paddle-numbers/{paddleId}/delete`) use `CSRFUtils::verifyRequest()` in the POST handler directly. For MVC routes, use `CSRFMiddleware` added to POST routes and `CSRFUtils::getTokenInputField()` in the view — the middleware **throws `HttpForbiddenException` on token failure** (the caller receives a 403 response); if you want inline re-rendering on failure, catch `HttpForbiddenException` in the route handler yourself:
 
 ```php
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Pattern A — 403 + exit. Preferred for delete/confirmation pages where there
-// is no persistent form to redirect back to. Used by PledgeDelete.php,
-// DonatedItemDelete.php, PaddleNumDelete.php.
+// is no persistent form to redirect back to. Used by PledgeDelete.php.
 if (!CSRFUtils::verifyRequest($_POST, 'pledge_delete')) {
     http_response_code(403);
     exit(gettext('Invalid security token. Please try again.'));
 }
 
-// Pattern B — redirect back with an ErrorText query param. Preferred for
-// editor pages that already render an inline error banner (UserEditor.php).
-if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
-    RedirectUtils::redirect(
-        'UserEditor.php?PersonID=' . $iPersonID
-        . '&ErrorText=' . urlencode(gettext('Invalid security token. Please try again.'))
-    );
-}
+// Pattern B (MVC routes) — CSRFMiddleware throws HttpForbiddenException on failure;
+// preferred for modern Slim 4 routes. The caller receives a 403 unless the route
+// catches HttpForbiddenException and re-renders the form with an error message.
+// Token included via CSRFUtils::getTokenInputField().
+// Example: /admin/system/users/{personId}/edit in src/admin/routes/system.php.
+$group->post('/users/{personId:[0-9]+}/edit', 'adminUserEditorEdit')
+    ->add(new CSRFMiddleware('user_editor'));
 
 // In the form HTML (same for both patterns):
 <form method="post" action="...">
@@ -296,10 +294,56 @@ if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
 </form>
 ```
 
-- Pick a unique `$formId` per form (e.g. `'user_editor'`, `'pledge_delete'`). The ID must match between `getTokenInputField()` and `verifyRequest()`.
-- `getTokenInputField()` auto-renders `<input type="hidden" name="csrf_token" value="...">` with a fresh 64-hex-char token.
-- Tokens are stored in `$_SESSION['csrf_tokens'][$formId]` with a 2-hour TTL.
+- `getTokenInputField()` auto-renders `<input type="hidden" name="csrf_token" value="...">`.
 - Tokens are NOT consumed by default (allows resubmission on validation error). Pass `$consume = true` to `validateToken()` only if you need one-time use.
+
+### CSRFUtils is a single session-wide synchronizer token — `$formId` is ignored <!-- learned: 2026-07-14 -->
+
+As of PR #9124, `CSRFUtils` stores **one stable token per session** in
+`$_SESSION['csrf_token']` (singular). The `$formId` argument on every public
+method is retained for backward compatibility but **ignored** — all forms share
+the one token, matching how Laravel/Django/Rails do CSRF.
+
+**Why the change:** `generateToken()` previously *rotated* the token on every
+render and stored it per-`$formId` under `$_SESSION['csrf_tokens'][$formId]`.
+Rendering the same form twice before submitting invalidated the first render's
+token → `"Invalid security token. Please try again."` on save. The trigger in
+the wild was a donated-item whose Picture URL was a **relative string** (e.g.
+`"url"`): the template's `<img src="url">` resolved against the page URL and
+re-hit the editor route as a second GET, rotating the token out from under the
+on-screen form. `generateToken()` now **reuses** the existing non-expired token,
+so any number of renders (prefetch, second tab, stray asset request) is safe.
+
+- Don't pass `$formId` in new code — call `getTokenInputField()` / `verifyRequest($body)` with no id.
+- Only render user-supplied URLs as `<img src>` when they're absolute: `preg_match('~^https?://~i', $url)`. A relative src can silently re-request the current route.
+- `regenerateToken()` still forces a fresh token (e.g. after a privileged op); no current caller uses it.
+
+### Prefer one group-level CSRFMiddleware over per-route wiring (Slim ordering gotcha) <!-- learned: 2026-07-14 -->
+
+In an MVC module, guard **all** state-changing routes with a single
+`CSRFMiddleware` on a route **group** rather than repeating `->add()` per route
+or calling `CSRFUtils::verifyRequest()` inline in every handler:
+
+```php
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
+use Slim\Routing\RouteCollectorProxy;
+
+$app->group('', function (RouteCollectorProxy $group): void {
+    $app = $group;                 // alias so required route files that use $app still work
+    require __DIR__ . '/routes/foo.php';
+    // ...
+})->add(new CSRFMiddleware());     // validates every POST/PUT/DELETE/PATCH in the group
+```
+
+**Why a group, not `$app->add()`:** Slim runs `BodyParsingMiddleware`
+*innermost*, so an app-level middleware executes **before** the body is parsed
+and `getParsedBody()` returns null — the token is never seen and every POST
+403s. Group (and route) middleware run inside the routing layer, after body
+parsing, so the parsed `csrf_token` is available. `CSRFMiddleware` only acts on
+POST/PUT/DELETE/PATCH (GET/report routes pass through) and throws
+`HttpForbiddenException` (403) on failure. The fundraiser module
+(`src/fundraiser/index.php`) uses this; per-route inline `verifyRequest` checks
+were removed in favor of it.
 
 ### Never delete on GET — always confirmation-page pattern <!-- learned: 2026-04-21 -->
 
@@ -308,7 +352,7 @@ A GET-based delete endpoint (`<a href="Foo.php?id=X">Delete</a>`) is exploitable
 1. **GET** — renders a confirmation `<form method="post">` with the CSRF token and Delete/Cancel buttons.
 2. **POST** — validates the token, then performs the delete and redirects.
 
-The caller's link stays a plain GET (`<a href="FooDelete.php?id=X">`), but the landing page now shows the confirmation form instead of silently deleting. This is what `PledgeDelete.php` already did before the CSRF fix; `DonatedItemDelete.php` and `PaddleNumDelete.php` were migrated to this pattern in the GHSA-3xq9-c86x-cwpp fix.
+The caller's link stays a plain GET (`<a href="FooDelete.php?id=X">`), but the landing page now shows the confirmation form instead of silently deleting. This is what `PledgeDelete.php` already did before the CSRF fix; `DonatedItemDelete.php` and `PaddleNumDelete.php` also used this pattern after GHSA-3xq9-c86x-cwpp, but were removed in the fundraiser MVC migration (PR #9124). The new Slim routes enforce the same security guarantee structurally: delete endpoints are POST-only with `CSRFUtils::verifyRequest()`, and the confirmation step is a client-side `confirm()` dialog.
 
 ### Role checks belong on every delete page <!-- learned: 2026-04-21 -->
 
@@ -326,11 +370,11 @@ For pages that both render (GET) and perform (POST) a destructive action, read t
 ```php
 // ✅ CORRECT — read from $_POST on POST, $_GET on GET
 $isPostAction = isset($_POST['Delete']) || isset($_POST['Cancel']);
-$idSource = $isPostAction ? ($_POST['PaddleNumID'] ?? 0) : ($_GET['PaddleNumID'] ?? 0);
-$iPaddleNumID = (int) InputUtils::legacyFilterInput($idSource, 'int');
+$idSource = $isPostAction ? ($_POST['GroupKey'] ?? '') : ($_GET['GroupKey'] ?? '');
+$sGroupKey = InputUtils::legacyFilterInput($idSource, 'string');
 
 // ❌ WRONG — $_REQUEST can resolve to $_COOKIE based on request_order
-$iPaddleNumID = (int) InputUtils::legacyFilterInput($_REQUEST['PaddleNumID'] ?? 0, 'int');
+$sGroupKey = InputUtils::legacyFilterInput($_REQUEST['GroupKey'] ?? '', 'string');
 ```
 
 ### Pass `linkBack` as a hidden input, not a query-string param on the form action <!-- learned: 2026-04-22 -->
@@ -340,9 +384,9 @@ $iPaddleNumID = (int) InputUtils::legacyFilterInput($_REQUEST['PaddleNumID'] ?? 
 ```php
 // ✅ CORRECT — post linkBack as a hidden field, revalidate on the server
 // Form:
-<form method="post" action="PaddleNumDelete.php">
-    <?= CSRFUtils::getTokenInputField('paddle_num_delete') ?>
-    <input type="hidden" name="PaddleNumID" value="<?= $iPaddleNumID ?>">
+<form method="post" action="PledgeDelete.php">
+    <?= CSRFUtils::getTokenInputField('pledge_delete') ?>
+    <input type="hidden" name="GroupKey" value="<?= InputUtils::escapeAttribute($sGroupKey) ?>">
     <input type="hidden" name="linkBack" value="<?= InputUtils::escapeAttribute($linkBack) ?>">
     ...
 </form>
@@ -350,11 +394,11 @@ $iPaddleNumID = (int) InputUtils::legacyFilterInput($_REQUEST['PaddleNumID'] ?? 
 // Handler:
 $linkBack = RedirectUtils::validateRedirectUrl(
     InputUtils::legacyFilterInput($_POST['linkBack'] ?? '', 'string') ?? '',
-    'FindFundRaiser.php'
+    'v2/dashboard'
 );
 
 // ❌ WRONG — `$linkBack` containing `&` truncates; raw `&` in attribute is invalid HTML
-<form action="PaddleNumDelete.php?PaddleNumID=<?= $iPaddleNumID ?>&linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>">
+<form action="PledgeDelete.php?GroupKey=<?= htmlspecialchars($sGroupKey) ?>&linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>">
 ```
 
 ---
@@ -1021,4 +1065,110 @@ external/templates/registration/family-register.php.
 
 ---
 
-Last updated: April 5, 2026
+### InputSanitizationMiddleware Is the Standard for API Write Routes <!-- learned: 2026-07-11 -->
+
+For Slim API/MVC write routes (`post`/`put`/`patch`), sanitize free-text body
+fields with **`InputSanitizationMiddleware`** attached to the route — do **not**
+call `InputUtils::sanitizeText()` / `sanitizeHTML()` inline in the handler. The
+middleware sanitizes the parsed body **before** the handler runs, so every code
+path in the handler (storage, logging, echo-back) sees the clean value and no
+field can be forgotten.
+
+```php
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
+
+// Field map: 'text' → InputUtils::sanitizeText() (strip tags);
+//            'html' → InputUtils::sanitizeHTML() (HTMLPurifier, safe rich text).
+$group->post('', 'createFund')
+    ->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
+
+$group->put('', 'updateNote')
+    ->add(new InputSanitizationMiddleware(['text' => 'html']));
+
+// Handler reads the already-sanitized field directly — cast for type safety,
+// keep validation (empty/length/uniqueness) which now runs on the clean value:
+function createFund(Request $request, Response $response): Response
+{
+    $input = (array) $request->getParsedBody();
+    $name  = (string) ($input['name'] ?? '');   // already sanitized by middleware
+    if ($name === '') { /* 400 */ }
+    // ...
+}
+```
+
+**Middleware order (LIFO rule):** In Slim 4, `->add()` is Last-In-First-Out —
+the **last** `->add()` call is outermost and runs **first**. Therefore:
+
+- Add `InputSanitizationMiddleware` **first** (`->add()` call #1) so it is
+  innermost and runs **just before the handler** (sanitize-then-handle).
+- Add auth/entity middleware **after** it so they are outer layers and run
+  **before** sanitization.
+
+Concrete pattern (follows `groups-properties.php`):
+
+```php
+$group->post('/{id}/resource/{resId}', 'myHandler')
+    ->add(new InputSanitizationMiddleware(['name' => 'text'])) // 1st = innermost = runs last
+    ->add($entityMiddleware)                                   // 2nd = runs before sanitize
+    ->add(SomeAuthMiddleware::class);                          // 3rd = outermost = runs first
+// Execution order: SomeAuthMiddleware → $entityMiddleware → InputSanitizationMiddleware → handler
+```
+
+❌ **Wrong** — adding `InputSanitizationMiddleware` last makes it outermost
+(runs before auth), defeating the purpose of sanitizing input that only
+arrives after entity resolution:
+
+```php
+// WRONG — sanitize runs before auth/entity (inverted LIFO order)
+$group->post('/…', 'handler')
+    ->add($entityMiddleware)
+    ->add(SomeAuthMiddleware::class)
+    ->add(new InputSanitizationMiddleware(['name' => 'text'])); // last = outermost = wrong
+```
+
+**Routes using this pattern** (`src/ChurchCRM/Slim/Middleware/InputSanitizationMiddleware.php`):
+calendar events/`calendar.php`, group create + roles (`people-groups.php`),
+finance deposits/donation-funds/fundraisers, property-types,
+volunteer-opportunities, list options (`admin/api/options.php`), person/family
+notes (`html`), and person/group property values. When adding a **new** write
+route that stores free text, add the middleware — never a bare `getParsedBody()`
+value into a setter.
+
+> Note: legacy `src/*.php` pages still sanitize inline with `InputUtils` because
+> they are not Slim routes — the middleware only applies to the Slim apps.
+
+### Input Sanitization Is Not Output Escaping — Escape Names Client-Side Too <!-- learned: 2026-07-11 -->
+
+`InputSanitizationMiddleware` / `sanitizeText()` strips tags **on the primary
+write paths**, but it is **not** a complete XSS defense on its own. Values can
+still contain markup when they arrive by a path that bypasses the middleware —
+data migrated from older versions, SQL/backup restore, CSV import, or a future
+route that forgets the middleware. **Output escaping is the authoritative
+control**, and it must be applied on the **client side** too, not only in PHP.
+
+The server-side ListOption/`OptionName` escaping was fixed in GHSA-j9gv-26c7-3qrh,
+but the **JavaScript** renderings of the same values were missed (draft
+GHSA-mfmp-q643-vj39): `src/skin/js/GroupView.js` and `GroupRoles.js` injected
+group-role names into the DOM as raw HTML via `.html()` / `.append()`.
+
+```js
+// ❌ WRONG — role name injected as raw HTML (executes if it contains markup)
+html += '<a class="nav-link" href="#">' + i18next.t(role.OptionName) + '</a>';
+$pills.html(html);
+
+// ✅ CORRECT — escape every DB/API-sourced string before it becomes HTML
+html += '<a class="nav-link" href="#">' +
+        window.CRM.escapeHtml(i18next.t(role.OptionName)) + '</a>';
+$pills.html(html);
+```
+
+**Rule:** any DB/API-sourced string (names, titles, `OptionName`, `getName()`,
+custom-field labels) inserted into the DOM via `.html()`, `.append()`,
+`innerHTML`, or a template literal MUST be wrapped in `window.CRM.escapeHtml()`
+— even when the write path sanitizes input. When reviewing JS, grep for
+`.OptionName`, `.Name`, `.title` near `.html(`/`.append(`/`innerHTML` and confirm
+`escapeHtml` wraps each one. `$("<div>").text(x).html()` is an equivalent escape.
+
+---
+
+Last updated: July 11, 2026
