@@ -36,7 +36,7 @@ First start: pulls/builds base image (includes dev tools). Subsequent starts are
 
 | Service | Image | Port | Notes |
 |---------|-------|------|-------|
-| `webserver-dev` | `churchcrm/crm:php8-debian-dev` (built once) | `80` | Apache + PHP 8.4 with dev tools (Node, Composer, Xdebug) |
+| `webserver` | `churchcrm/crm:php8-debian-dev` (built once) | `80` | Apache + PHP 8.4 with dev tools (Node, Composer, Xdebug) |
 | `database` | `mariadb:10.11` | `3306` | Seeded with demo data |
 | `mailserver` | `axllent/mailpit` | `1025`, `8025` | Fake SMTP |
 
@@ -63,9 +63,9 @@ Access database via VS Code or your IDE (host: localhost:3306, user: churchcrm, 
 
 3. **Edit code locally** — any changes in `src/` appear instantly in the container
 
-4. **Restart container if needed**:
+4. **Rebuild image if Dockerfile changes**:
    ```bash
-   npm run docker:dev:rebuild  # just restarts, no rebuild
+   npm run docker:dev:rebuild  # rebuilds the image
    ```
 
 5. **Stop when done**:
@@ -83,7 +83,7 @@ Access database via VS Code or your IDE (host: localhost:3306, user: churchcrm, 
 | `npm run docker:dev:down` | Stop + remove containers and volumes |
 | `npm run docker:dev:build` | One-time: npm ci + npm run build inside container |
 | `npm run docker:dev:logs` | View live container logs |
-| `npm run docker:dev:rebuild` | Restart webserver (after code edits) |
+| `npm run docker:dev:rebuild` | Rebuild webserver image (useful when Dockerfile changes) |
 | `npm run docker:dev:reset:db` | Reset database to fresh seed data |
 | `npm run docker:dev:reset` | Full teardown + restart everything |
 | `npm run docker:dev:login:web` | Open shell in webserver container |
@@ -133,7 +133,7 @@ npm run docker:test:stop        # stop containers
 
 | Service | Port | Notes |
 |---------|------|-------|
-| `webserver-test` | `80` | Apache + PHP 8 runtime (no dev tools) |
+| `webserver` | `80` | Apache + PHP 8 runtime (no dev tools) |
 | `database` | `3306` | MariaDB with demo data |
 | `mailserver` | `1025`, `8025` | Fake SMTP |
 

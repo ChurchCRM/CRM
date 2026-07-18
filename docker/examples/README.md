@@ -40,6 +40,6 @@ Serves on `http://localhost`. Edit `examples/frankenphp/Caddyfile` to customize.
 
 ## For Development / Testing
 
-- **Local dev with live reload:** Use `docker/docker-compose.yaml` (default)
+- **Local dev with live reload:** Use `docker/docker-compose.dev.yaml`
 - **CI/test builds:** Use `docker/docker-compose.yaml` with `--profile test` or `--profile ci`
 - **Parallel CI testing:** Use `docker/docker-compose.yaml` + `docker/docker-compose.parallel.yaml`

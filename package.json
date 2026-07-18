@@ -61,13 +61,13 @@
         "docker:test:login:web": "docker compose -f docker/docker-compose.yaml --profile test exec webserver bash",
         "docker:test:login:db": "docker compose -f docker/docker-compose.yaml --profile test exec database bash",
         "docker:test:rebuild": "docker compose -f docker/docker-compose.yaml --profile test build --no-cache webserver && docker compose -f docker/docker-compose.yaml --profile test up -d webserver",
-        "docker:test:reset:db": "docker compose -f docker/docker-compose.yaml --profile test stop database && docker volume prune -f && docker compose -f docker/docker-compose.yaml --profile test up -d database",
+        "docker:test:reset:db": "docker compose -f docker/docker-compose.yaml --profile test down -v && docker compose -f docker/docker-compose.yaml --profile test up -d",
         "docker:dev:start": "cp docker/Config.php src/Include/Config.php && docker compose -f docker/docker-compose.dev.yaml up -d",
         "docker:dev:stop": "docker compose -f docker/docker-compose.dev.yaml stop",
         "docker:dev:down": "docker compose -f docker/docker-compose.dev.yaml down -v",
         "docker:dev:logs": "docker compose -f docker/docker-compose.dev.yaml logs -f --tail=10",
         "docker:dev:rebuild": "docker compose -f docker/docker-compose.dev.yaml up -d --build",
-        "docker:dev:reset:db": "docker compose -f docker/docker-compose.dev.yaml stop database && docker volume prune -f && docker compose -f docker/docker-compose.dev.yaml up -d database",
+        "docker:dev:reset:db": "docker compose -f docker/docker-compose.dev.yaml down -v && docker compose -f docker/docker-compose.dev.yaml up -d",
         "docker:dev:reset": "docker compose -f docker/docker-compose.dev.yaml down -v && docker compose -f docker/docker-compose.dev.yaml up -d",
         "docker:ci:root:start": "cp docker/Config.root.php src/Include/Config.php && docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d --build",
         "docker:ci:root:down": "docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root down -v",
@@ -79,8 +79,8 @@
         "docker:ci:new-system:subdir:down": "docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system down -v",
         "docker:dev:login:web": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash",
         "docker:dev:login:db": "docker compose -f docker/docker-compose.dev.yaml exec database bash",
-        "docker:dev:build": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"npm ci && npm run build\"",
-        "docker:dev:watch": "docker compose -f docker/docker-compose.dev.yaml exec webserver npm run build:webpack:watch"
+        "docker:dev:build": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"cd /home/ChurchCRM && npm ci && npm run build\"",
+        "docker:dev:watch": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"cd /home/ChurchCRM && npm run build:webpack:watch\""
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.3.0",

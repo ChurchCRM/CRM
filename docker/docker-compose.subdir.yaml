@@ -4,10 +4,3 @@ services:
       - ../src:/var/www/html/churchcrm
     environment:
       - CHURCHCRM_SUBDIR=churchcrm
-
-  # Ensure new-system webserver also mounts to subdir when using the subdir overlay
-  webserver:
-    volumes:
-      - ../src:/var/www/html/churchcrm
-    environment:
-      - CHURCHCRM_SUBDIR=churchcrm
