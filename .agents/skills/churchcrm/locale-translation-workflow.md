@@ -2,6 +2,7 @@
 title: "Locale Translation Workflow"
 intent: "Complete guide for translating missing UI strings across 40+ locales with cloud-safe durability and impact-based prioritization"
 tags: ["i18n", "localization", "translation", "release"]
+prereqs: ["[[i18n-localization]]"]
 complexity: "intermediate"
 ---
 

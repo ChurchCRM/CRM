@@ -2,7 +2,7 @@
 title: "DB Schema Migration"
 intent: "Safe procedures for database schema changes and versioning"
 tags: ["database","migration","schema","backup"]
-prereqs: ["database-operations.md","development-workflows.md"]
+prereqs: ["[[database-operations]]","[[development-workflows]]"]
 complexity: "advanced"
 ---
 

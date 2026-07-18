@@ -2,7 +2,7 @@
 title: "Slim MVCs — Routes, Uses, Security & Migration Guidance"
 intent: "Inventory Slim MVCs and provide migration guidance for group apps"
 tags: ["slim","mvc","routing","migration","security"]
-prereqs: ["routing-architecture.md","slim-4-best-practices.md"]
+prereqs: ["[[routing-architecture]]","[[slim-4-best-practices]]"]
 complexity: "intermediate"
 ---
 

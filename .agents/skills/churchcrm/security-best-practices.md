@@ -1,3 +1,10 @@
+---
+title: "Security Best Practices"
+intent: "HTML sanitization, XSS prevention, TLS/SSL, authorization, and vulnerability handling"
+tags: ["security", "xss", "auth"]
+prereqs: ["[[php-best-practices]]"]
+complexity: "intermediate"
+---
 # Security Best Practices
 
 Comprehensive security guidelines including HTML sanitization, XSS prevention, TLS/SSL, authorization, and vulnerability handling.

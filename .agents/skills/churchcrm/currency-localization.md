@@ -2,7 +2,7 @@
 title: "Currency Localization"
 intent: "Render money values with a configurable symbol, position, and separators across PHP, JS, DataTables, Chart.js, CSS, and PDFs"
 tags: ["i18n", "localization", "currency", "money", "finance", "systemconfig"]
-prereqs: ["configuration-management.md", "i18n-localization.md", "frontend-development.md"]
+prereqs: ["[[configuration-management]]", "[[i18n-localization]]", "[[frontend-development]]"]
 complexity: "beginner"
 ---
 
@@ -97,7 +97,9 @@ Location: `src/ChurchCRM/Utils/CurrencyFormatter.php`
 use ChurchCRM\Utils\CurrencyFormatter;
 
 CurrencyFormatter::formatHtml(1234.5);    // "$1,234.50" — HTML-escaped, null-safe; for <?= ?> in templates
+CurrencyFormatter::formatHtml("1234.50"); // "$1,234.50" — numeric strings OK (Propel DECIMAL/SUM returns string)
 CurrencyFormatter::formatHtml(null);      // ""          — null in, empty string out (no bogus $0.00)
+CurrencyFormatter::formatHtml("N/A");     // ""          — non-numeric string → '' + warning log (never $0.00)
 CurrencyFormatter::format(1234.5);        // "$1,234.50" — raw string; for APIs, PDFs, further processing
 CurrencyFormatter::format(1234.5, 0);     // "$1,235"
 CurrencyFormatter::symbol();              // "$"
@@ -109,7 +111,7 @@ CurrencyFormatter::toArray();             // ['symbol' => ..., 'position' => ...
 
 | Context | Method |
 |---------|--------|
-| PHP template `<?= ?>` output | `formatHtml()` (escaped, accepts nullable Propel DECIMAL getters) |
+| PHP template `<?= ?>` output | `formatHtml()` (escaped, accepts `float\|string\|null`) |
 | API payload / PDF / string building | `format()` |
 | JS (DataTables, Chart.js, DOM) | `window.CRM.currency.format()` |
 
@@ -128,6 +130,26 @@ prevent line-wrapping on narrow screens.
 
 Never concatenate the symbol yourself; the helper applies the configured
 position and separators for you.
+
+### Never pre-cast `(float)` before `formatHtml()` <!-- learned: 2026-07-18 -->
+
+`formatHtml()` takes `float|string|null` and validates internally. A caller-side
+`(float)` cast silently launders `null`/garbage into `$0.00` on finance reports —
+exactly what the signature is designed to prevent. Pass the raw value; use `?? 0`
+only when a blank truly should display as zero (e.g. an unguarded SUM total).
+
+```php
+// ❌ WRONG — blind cast turns NULL/garbage into a legit-looking $0.00
+<?= CurrencyFormatter::formatHtml((float) $deposit->getVirtualColumn('totalAmount')) ?>
+<?= is_numeric($v) ? CurrencyFormatter::formatHtml((float) $v) : '' ?>  // redundant guard
+
+// ✅ CORRECT — formatter handles string|null; '' for null/non-numeric (logged)
+<?= CurrencyFormatter::formatHtml($pledge['pledge_amount']) ?>
+<?= CurrencyFormatter::formatHtml($deposit->getVirtualColumn('totalAmount') ?? 0) ?>  // intentional $0.00
+```
+
+`format()` stays strict (`float`) — API/PDF code should hold real numbers already;
+convert explicitly there.
 
 ---
 

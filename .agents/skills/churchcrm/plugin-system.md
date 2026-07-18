@@ -1,3 +1,10 @@
+---
+title: "Plugin System & Extensibility"
+intent: "Runtime architecture — PluginManager, hooks, install flow, and plugin-local localization loader"
+tags: ["plugins", "architecture", "core"]
+prereqs: []
+complexity: "intermediate"
+---
 # Plugin System & Extensibility
 
 Comprehensive guide to ChurchCRM's WordPress-style plugin architecture. Plugins enable core functionality extension without modifying source code.

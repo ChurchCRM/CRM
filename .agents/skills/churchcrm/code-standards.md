@@ -2,7 +2,7 @@
 title: "Code Standards"
 intent: "Coding conventions, PR checklist, and pre-commit guidance"
 tags: ["standards","code-quality","pr"]
-prereqs: ["php-best-practices.md"]
+prereqs: ["[[php-best-practices]]"]
 complexity: "beginner"
 ---
 

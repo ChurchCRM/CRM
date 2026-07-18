@@ -2,7 +2,7 @@
 title: "PR Review"
 intent: "Full pull request review workflow: fetch changes, validate standards, check docs/wiki, identify manual testing, address comments, and capture learnings"
 tags: ["pr","review","code-quality","standards","workflow"]
-prereqs: ["code-standards.md","git-workflow.md","github-interaction.md"]
+prereqs: ["[[code-standards]]","[[git-workflow]]","[[github-interaction]]"]
 complexity: "intermediate"
 ---
 
@@ -484,11 +484,13 @@ When a PR review reveals a pattern or mistake that isn't yet documented:
 
 ### Example — capturing a learning
 
-> **Scenario:** A PR review comment flags that `SystemConfig::getValue()` was used for a boolean check instead of `SystemConfig::getBooleanValue()`.
+> [!NOTE] Scenario
+> A PR review comment flags that `SystemConfig::getValue()` was used for a boolean check instead of `SystemConfig::getBooleanValue()`.
 
 Add to `development-workflows.md` (already documented there — no change needed).
 
-> **Scenario:** A PR adds a Tabler card component but uses inline `style` attributes instead of utility classes.
+> [!NOTE] Scenario
+> A PR adds a Tabler card component but uses inline `style` attributes instead of utility classes.
 
 Add to `tabler-components.md` under a "Cards" section:
 

@@ -1,3 +1,10 @@
+---
+title: "Git Workflow & Development Standards"
+intent: "Branching, commits, PRs, and pre-commit validation to maintain code quality"
+tags: ["workflow", "pr", "review", "standards"]
+prereqs: ["[[code-standards]]"]
+complexity: "beginner"
+---
 # Git Workflow & Development Standards
 
 Guidelines for branching, commits, PRs, and pre-commit validation to maintain code quality.
