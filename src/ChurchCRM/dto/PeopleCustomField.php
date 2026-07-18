@@ -10,10 +10,10 @@ class PeopleCustomField
 {
     private $name;
     private string $value;
-    private $formattedValue;
+    private string $formattedValue;
     private ?string $link = null;
     private string $icon = 'fa fa-tag';
-    private $displayValue;
+    private string $displayValue;
 
     /**
      * PeopleCustomField constructor.
@@ -61,7 +61,7 @@ class PeopleCustomField
      * For every supported type_ID (1–12) this method returns PLAIN, unescaped
      * text — never HTML markup:
      *
-     *  type 1  (True/False)          → raw stored value ('true'/'false'/'')
+     *  type 1  (True/False)          → raw stored value ('true'/'false'); '' when unset
      *  type 2  (Date)                → raw stored date string
      *  type 3  (Text 50 char)        → raw stored value
      *  type 4  (Text 100 char)       → raw stored value
