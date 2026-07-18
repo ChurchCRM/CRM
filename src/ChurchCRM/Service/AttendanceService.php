@@ -65,7 +65,6 @@ class AttendanceService
         $attendRecords = EventAttendQuery::create()
             ->filterByPersonId($personId)
             ->filterByCheckinDate(null, Criteria::ISNOTNULL)
-            ->joinWithEvent(Criteria::LEFT_JOIN)
             ->useEventQuery(null, Criteria::LEFT_JOIN)
                 ->leftJoinWithEventType()
                 ->orderByStart(Criteria::DESC)
@@ -184,7 +183,7 @@ class AttendanceService
      *    where each gap ≤ threshold.
      * 5. The most recent event must be within STREAK_FRESHNESS_DAYS of today.
      *
-     * Returns 0 if no streak (most recent event is stale, or only 1 event total).
+     * Returns 0 if the most recent event is stale. Returns 1 if only a single fresh event exists.
      *
      * @param list<array{eventStart: string}> $typeRecords Records for one event type (any order)
      *
@@ -270,3 +269,4 @@ class AttendanceService
         return (float) $sorted[$mid];
     }
 }
+
