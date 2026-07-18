@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-18 17:46+0000\n"
+"POT-Creation-Date: 2026-07-18 20:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3316,6 +3316,9 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
+msgid "Did Not Attend"
+msgstr ""
+
 #. Context: countries
 msgid "Diego Garcia"
 msgstr ""
@@ -4132,6 +4135,9 @@ msgid "Every year on"
 msgstr ""
 
 msgid "Everyone"
+msgstr ""
+
+msgid "Everyone from linked groups checked in!"
 msgstr ""
 
 msgid "Everyone is checked in!"
