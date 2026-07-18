@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-14 22:07+0000\n"
+"POT-Creation-Date: 2026-07-18 17:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -678,6 +678,9 @@ msgstr ""
 
 #. Context: locales
 msgid "Afrikaans"
+msgstr ""
+
+msgid "After amount (100.00 ¤)"
 msgstr ""
 
 msgid "Age"
@@ -1412,6 +1415,9 @@ msgstr ""
 msgid "Before You Start"
 msgstr ""
 
+msgid "Before amount (¤ 100.00)"
+msgstr ""
+
 #. plugin:external-backup:section:4:content
 msgid ""
 "Before relying on external backups, test your connection:\n"
@@ -1872,6 +1878,12 @@ msgid "Changes not saved! Please correct and try again!"
 msgstr ""
 
 msgid "Changes will not take effect until next logon."
+msgstr ""
+
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr ""
+
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
 msgstr ""
 
 msgid "Charset"
@@ -2349,6 +2361,9 @@ msgstr ""
 msgid "Configure group settings, roles, and properties"
 msgstr ""
 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr ""
+
 msgid "Configure these settings in the"
 msgstr ""
 
@@ -2727,6 +2742,21 @@ msgstr ""
 msgid "Curaçao"
 msgstr ""
 
+msgid "Currency & Finance Formats"
+msgstr ""
+
+msgid "Currency Format"
+msgstr ""
+
+msgid "Currency Symbol"
+msgstr ""
+
+msgid "Currency presets"
+msgstr ""
+
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr ""
+
 msgid "Current $URL[0] value:"
 msgstr ""
 
@@ -2983,6 +3013,9 @@ msgid "Dec"
 msgstr ""
 
 msgid "December"
+msgstr ""
+
+msgid "Decimal Separator"
 msgstr ""
 
 msgid "Default"
@@ -6409,6 +6442,9 @@ msgstr ""
 msgid "Lithuania (Lietuva)"
 msgstr ""
 
+msgid "Live Preview"
+msgstr ""
+
 msgid "Load Authorized"
 msgstr ""
 
@@ -8690,6 +8726,9 @@ msgstr ""
 msgid "Polish"
 msgstr ""
 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr ""
+
 #. Context: countries
 msgid "Portugal"
 msgstr ""
@@ -8700,6 +8739,9 @@ msgstr ""
 
 #. Context: locales
 msgid "Portuguese - Portugal"
+msgstr ""
+
+msgid "Position of the currency symbol relative to the amount."
 msgstr ""
 
 msgid "Pre-flight"
@@ -8856,6 +8898,9 @@ msgid "Quick Start"
 msgstr ""
 
 msgid "Quick Tips"
+msgstr ""
+
+msgid "Quick presets"
 msgstr ""
 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -9411,6 +9456,9 @@ msgstr ""
 msgid "Samoa"
 msgstr ""
 
+msgid "Sample Amount"
+msgstr ""
+
 msgid "Sample Data"
 msgstr ""
 
@@ -9963,6 +10011,12 @@ msgstr ""
 msgid "Singapore"
 msgstr ""
 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr ""
+
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr ""
+
 #. Context: countries
 msgid "Sint Maarten"
 msgstr ""
@@ -10286,6 +10340,12 @@ msgstr ""
 
 #. Context: countries
 msgid "Switzerland (Schweiz)"
+msgstr ""
+
+msgid "Symbol Position"
+msgstr ""
+
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
 msgstr ""
 
 #. Context: countries
@@ -10706,7 +10766,7 @@ msgstr ""
 msgid "This is a ChurchCRM test email."
 msgstr ""
 
-msgid "This is how dates and phone numbers will appear throughout the system."
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
 msgstr ""
 
 msgid "This is how your church information will appear on reports and directories."
@@ -10800,6 +10860,12 @@ msgid "This will re-download and re-apply the current version. It can fix corrup
 msgstr ""
 
 msgid "This will replace any previously enrolled 2FA methods"
+msgstr ""
+
+msgid "Thousands Separator"
+msgstr ""
+
+msgid "Thousands separator and decimal separator must be different characters."
 msgstr ""
 
 msgid "Thursdays"
@@ -11307,6 +11373,9 @@ msgid "Updated Families"
 msgstr ""
 
 msgid "Updated People"
+msgstr ""
+
+msgid "Updates as you type."
 msgstr ""
 
 msgid "Upgrade"
@@ -11998,6 +12067,9 @@ msgid "When enabled, hides the address field for people not assigned to a family
 msgstr ""
 
 msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr ""
+
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
 msgstr ""
 
 msgid "Which role is a child?"
