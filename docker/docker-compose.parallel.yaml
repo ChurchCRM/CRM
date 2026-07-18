@@ -43,7 +43,7 @@ services:
       retries: 10
 
   # Root path webserver
-  webserver-root:
+  webserver:
     profiles: [ci-root]
     build:
       context: .
@@ -75,7 +75,7 @@ services:
           cpus: '2.0'
 
   # Subdirectory path webserver
-  webserver-subdir:
+  webserver:
     profiles: [ci-subdir]
     build:
       context: .
@@ -131,7 +131,7 @@ services:
       retries: 10
 
   # New system test webserver (no Config.php - runs setup wizard)
-  webserver-new-system:
+  webserver:
     profiles: [ci-new-system]
     build:
       context: .

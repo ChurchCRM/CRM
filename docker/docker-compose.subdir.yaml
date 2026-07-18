@@ -1,12 +1,12 @@
 services:
-  webserver-test:
+  webserver:
     volumes:
       - ../src:/var/www/html/churchcrm
     environment:
       - CHURCHCRM_SUBDIR=churchcrm
 
   # Ensure new-system webserver also mounts to subdir when using the subdir overlay
-  webserver-new-system:
+  webserver:
     volumes:
       - ../src:/var/www/html/churchcrm
     environment:
