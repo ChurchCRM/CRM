@@ -83,6 +83,15 @@ $inactive = (int) $event->getInActive() === 1;
             </a>
           <?php endif; ?>
           <?php if ($canEditEvents): ?>
+            <?php if ($inactive): ?>
+              <button type="button" class="btn btn-outline-success activate-event" data-event_id="<?= $eventId ?>">
+                <i class="ti ti-circle-check me-1"></i><?= gettext('Activate') ?>
+              </button>
+            <?php else: ?>
+              <button type="button" class="btn btn-outline-secondary deactivate-event" data-event_id="<?= $eventId ?>">
+                <i class="ti ti-circle-x me-1"></i><?= gettext('Deactivate') ?>
+              </button>
+            <?php endif; ?>
             <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>" class="btn btn-primary">
               <i class="ti ti-pencil me-1"></i><?= gettext('Edit') ?>
             </a>
