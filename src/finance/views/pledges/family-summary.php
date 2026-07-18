@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -87,7 +88,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <?php endif; ?>
                                                 <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
                                                 <td class="text-end">
-                                                    <?= number_format($pledge['pledge_amount'], 2) ?>
+                                                    <?= CurrencyFormatter::formatHtml((float) $pledge['pledge_amount']) ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
