@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -56,7 +57,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </span>
                         </div>
                         <div class="col">
-                            <div class="fw-medium">$<?= number_format($ytdPaymentTotal ?? 0, 2) ?></div>
+                            <div class="fw-medium"><?= CurrencyFormatter::formatHtml((float) ($ytdPaymentTotal ?? 0)) ?></div>
                             <div class="text-body-secondary"><?= gettext('YTD Payments') ?></div>
                         </div>
                     </div>
@@ -73,7 +74,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </span>
                         </div>
                         <div class="col">
-                            <div class="fw-medium">$<?= number_format($ytdPledgeTotal ?? 0, 2) ?></div>
+                            <div class="fw-medium"><?= CurrencyFormatter::formatHtml((float) ($ytdPledgeTotal ?? 0)) ?></div>
                             <div class="text-body-secondary"><?= gettext('YTD Pledges') ?></div>
                         </div>
                     </div>
@@ -308,7 +309,7 @@ $sRootPath = SystemURLs::getRootPath();
                                     <td><?= $deposit->getDate('M j, Y') ?></td>
                                     <td><span class="badge bg-blue-lt text-blue"><?= $deposit->getType() ?></span></td>
                                     <td class="text-truncate finance-truncate"><?= InputUtils::escapeHTML($deposit->getComment() ?? '') ?></td>
-                                    <td class="text-end fw-bold">$<?= number_format($deposit->getVirtualColumn('totalAmount') ?? 0, 2) ?></td>
+                                    <td class="text-end fw-bold"><?= CurrencyFormatter::formatHtml((float) ($deposit->getVirtualColumn('totalAmount') ?? 0)) ?></td>
                                     <td>
                                         <?php if ($deposit->getClosed()): ?>
                                         <span class="badge bg-green-lt text-green"><?= gettext('Closed') ?></span>
@@ -362,7 +363,7 @@ $sRootPath = SystemURLs::getRootPath();
                     </div>
                     <hr>
                     <div class="text-center mb-3">
-                        <div class="h3 text-success mb-0">$<?= number_format($currentDeposit->getVirtualColumn('totalAmount') ?? 0, 2) ?></div>
+                        <div class="h3 text-success mb-0"><?= CurrencyFormatter::formatHtml((float) ($currentDeposit->getVirtualColumn('totalAmount') ?? 0)) ?></div>
                         <small class="text-body-secondary"><?= gettext('Total Amount') ?></small>
                     </div>
                     <a href="<?= $sRootPath ?>/DepositSlipEditor.php?DepositSlipID=<?= $currentDeposit->getId() ?>" class="btn btn-primary w-100">
