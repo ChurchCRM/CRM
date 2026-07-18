@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -45,7 +46,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card finance-card shadow-sm border-0 h-100">
                 <div class="card-body text-center py-4 finance-metric-card metric-pledges">
                     <div class="finance-metric-value">
-                        $<?= number_format($totalPledges, 2) ?>
+                        <?= CurrencyFormatter::formatHtml((float) $totalPledges) ?>
                     </div>
                     <div class="text-white-50 text-uppercase small fw-bold mt-2 finance-metric-label">
                         <?= gettext('Total Pledges') ?>
@@ -63,7 +64,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card finance-card shadow-sm border-0 h-100">
                 <div class="card-body text-center py-4 finance-metric-card metric-payments">
                     <div class="finance-metric-value">
-                        $<?= number_format($totalPayments, 2) ?>
+                        <?= CurrencyFormatter::formatHtml((float) $totalPayments) ?>
                     </div>
                     <div class="text-white-50 text-uppercase small fw-bold mt-2 finance-metric-label">
                         <?= gettext('Total Payments') ?>
@@ -90,10 +91,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="card-body">
                             <div class="h5 mb-1 fw-bold text-dark">
-                                $<?= number_format($fundTotal['total_paid'], 2) ?>
+                                <?= CurrencyFormatter::formatHtml((float) $fundTotal['total_paid']) ?>
                             </div>
                             <div class="text-body-secondary small mb-2">
-                                <?= gettext('of') ?> $<?= number_format($fundTotal['total_pledged'], 2) ?>
+                                <?= gettext('of') ?> <?= CurrencyFormatter::formatHtml((float) $fundTotal['total_pledged']) ?>
                                 (<?= number_format($fundPercent, 0) ?>%)
                             </div>
                             <div class="text-body-secondary small mb-2">
@@ -168,10 +169,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <?php endif; ?>
                                                 <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
                                                 <td class="text-end fw-bold">
-                                                    $<?= number_format($pledge['pledge_amount'], 2) ?>
+                                                    <?= CurrencyFormatter::formatHtml((float) $pledge['pledge_amount']) ?>
                                                 </td>
                                                 <td class="text-end">
-                                                    $<?= number_format($pledge['payment_amount'], 2) ?>
+                                                    <?= CurrencyFormatter::formatHtml((float) $pledge['payment_amount']) ?>
                                                 </td>
                                                 <?php
                                                 $remaining = $pledge['pledge_amount'] - $pledge['payment_amount'];
@@ -187,7 +188,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 }
                                                 ?>
                                                 <td class="text-end <?= $statusClass ?>">
-                                                    $<?= number_format($remaining, 2) ?>
+                                                    <?= CurrencyFormatter::formatHtml((float) $remaining) ?>
                                                     <small class="d-block text-body-secondary"><?= number_format($percentComplete, 0) ?>%</small>
                                                 </td>
                                             </tr>
