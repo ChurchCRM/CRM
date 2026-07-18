@@ -223,7 +223,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fa-solid fa-dollar-sign me-2"></i><?= gettext('Currency &amp; Finance Formats') ?></h3>
+                    <h3 class="card-title"><i class="fa-solid fa-dollar-sign me-2"></i><?= gettext('Currency & Finance Formats') ?></h3>
                 </div>
                 <div class="card-body">
                     <p class="text-body-secondary mb-3">
