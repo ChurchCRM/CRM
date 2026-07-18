@@ -4,3 +4,8 @@ services:
       - ../src:/var/www/html/churchcrm
     environment:
       - CHURCHCRM_SUBDIR=churchcrm
+  webserver-new-system:
+    volumes:
+      - ../src:/var/www/html/churchcrm
+    environment:
+      - CHURCHCRM_SUBDIR=churchcrm
