@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
+use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -65,10 +66,9 @@ class AttendanceService
         $attendRecords = EventAttendQuery::create()
             ->filterByPersonId($personId)
             ->filterByCheckinDate(null, Criteria::ISNOTNULL)
-            ->useEventQuery(null, Criteria::LEFT_JOIN)
-                ->leftJoinWithEventType()
-                ->orderByStart(Criteria::DESC)
-            ->endUse()
+            ->joinWith('Event', Criteria::LEFT_JOIN)
+            ->joinWith('Event.EventType', Criteria::LEFT_JOIN)
+            ->orderBy(EventTableMap::COL_EVENT_START, Criteria::DESC)
             ->find();
 
         $records = [];
