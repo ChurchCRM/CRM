@@ -46,6 +46,26 @@ SystemConfig::getValue('sThousandsSeparator');   // ","
 SystemConfig::getValue('sDecimalSeparator');     // "."
 ```
 
+### Separator fields must bypass InputSanitizationMiddleware <!-- learned: 2026-07-18 -->
+
+`InputUtils::sanitizeText()` is `strip_tags(trim($input))` — the **trim destroys a
+space (U+0020) thousands separator** (valid in French/Swiss/Swedish locales) before
+the route handler runs. Never map `sThousandsSeparator` / `sDecimalSeparator` in an
+`InputSanitizationMiddleware` field map; the handler's `mb_substr($val, 0, 1)` cap
+is the sanitizer for single-char separator fields.
+
+```php
+// ❌ WRONG — middleware trims " " to "" before the handler sees it
+new InputSanitizationMiddleware(['sThousandsSeparator' => 'text'])
+
+// ✅ CORRECT — omit separators from the map; cap in the handler
+$thousands = mb_substr((string) ($body['sThousandsSeparator'] ?? ''), 0, 1);
+```
+
+Also: the middleware's only types are `'text'` and `'html'` — anything else silently
+falls through to `sanitizeText()`, so `'choice'` is misleading; real whitelisting
+happens via `in_array()` in the handler.
+
 ### Defaults live in code, not the DB <!-- learned: 2026-07-18 -->
 
 The USD defaults come from the `ConfigItem` registrations in
