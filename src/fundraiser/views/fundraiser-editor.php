@@ -1,6 +1,7 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
@@ -118,10 +119,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php endif; ?>
               </td>
               <td><?= InputUtils::escapeHTML($item->getTitle()) ?></td>
-              <td class="text-end"><?= InputUtils::escapeHTML($item->getSellprice()) ?></td>
-              <td class="text-end"><?= InputUtils::escapeHTML($item->getEstprice()) ?></td>
-              <td class="text-end"><?= InputUtils::escapeHTML($item->getMaterialValue()) ?></td>
-              <td class="text-end"><?= InputUtils::escapeHTML($item->getMinimum()) ?></td>
+              <td class="text-end"><?= is_numeric($item->getSellprice()) ? CurrencyFormatter::formatHtml((float) $item->getSellprice()) : '' ?></td>
+              <td class="text-end"><?= is_numeric($item->getEstprice()) ? CurrencyFormatter::formatHtml((float) $item->getEstprice()) : '' ?></td>
+              <td class="text-end"><?= is_numeric($item->getMaterialValue()) ? CurrencyFormatter::formatHtml((float) $item->getMaterialValue()) : '' ?></td>
+              <td class="text-end"><?= is_numeric($item->getMinimum()) ? CurrencyFormatter::formatHtml((float) $item->getMinimum()) : '' ?></td>
               <td class="w-1">
                 <div class="dropdown">
                   <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">

@@ -708,6 +708,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sDateFilenameFormat'    => SystemConfig::getValue('sDateFilenameFormat')    ?: SystemConfig::getConfigItem('sDateFilenameFormat')->getDefault(),
             'sDatePickerFormat'      => SystemConfig::getValue('sDatePickerFormat')      ?: SystemConfig::getConfigItem('sDatePickerFormat')->getDefault(),
             'sDatePickerPlaceHolder' => SystemConfig::getValue('sDatePickerPlaceHolder') ?: SystemConfig::getConfigItem('sDatePickerPlaceHolder')->getDefault(),
+            // Currency & Finance Formats
+            'sCurrencySymbol'        => SystemConfig::getValue('sCurrencySymbol')        ?: SystemConfig::getConfigItem('sCurrencySymbol')->getDefault(),
+            'sCurrencyPosition'      => SystemConfig::getValue('sCurrencyPosition')      ?: SystemConfig::getConfigItem('sCurrencyPosition')->getDefault(),
+            'sThousandsSeparator'    => SystemConfig::getValue('sThousandsSeparator')    ?: SystemConfig::getConfigItem('sThousandsSeparator')->getDefault(),
+            'sDecimalSeparator'      => SystemConfig::getValue('sDecimalSeparator')      ?: SystemConfig::getConfigItem('sDecimalSeparator')->getDefault(),
             // Phone Number Formats
             'sPhoneFormat'           => SystemConfig::getValue('sPhoneFormat')           ?: SystemConfig::getConfigItem('sPhoneFormat')->getDefault(),
             'sPhoneFormatWithExt'    => SystemConfig::getValue('sPhoneFormatWithExt')    ?: SystemConfig::getConfigItem('sPhoneFormatWithExt')->getDefault(),
@@ -811,6 +816,38 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             $val = trim((string) ($body[$key] ?? ''));
             SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
         }
+        // Currency & Finance Formats — validate all four values before saving any,
+        // so a separator conflict never partially commits the currency group.
+        $currencyPosition = trim((string) ($body['sCurrencyPosition'] ?? ''));
+        $currencyPosition = in_array($currencyPosition, ['before', 'after'], true) ? $currencyPosition : 'before';
+
+        $currencySymbol = trim((string) ($body['sCurrencySymbol'] ?? ''));
+        if (mb_strlen($currencySymbol) > 8) {
+            $currencySymbol = mb_substr($currencySymbol, 0, 8);
+        }
+        $currencySymbol = $currencySymbol !== '' ? $currencySymbol : SystemConfig::getConfigItem('sCurrencySymbol')->getDefault();
+
+        // Use mb_substr without trim() — a regular space (U+0020) is a valid thousands
+        // separator in French/Swiss/Swedish locales. These two fields are deliberately
+        // NOT in the InputSanitizationMiddleware map: sanitizeText() trims, which would
+        // silently turn a submitted space into the fallback default.
+        $thousands = mb_substr((string) ($body['sThousandsSeparator'] ?? ''), 0, 1);
+        $decimal   = mb_substr((string) ($body['sDecimalSeparator'] ?? ''), 0, 1);
+        // Validate: thousands and decimal separators must differ to avoid ambiguous number_format() output.
+        $effectiveThousands = $thousands !== '' ? $thousands : SystemConfig::getConfigItem('sThousandsSeparator')->getDefault();
+        $effectiveDecimal   = $decimal !== '' ? $decimal : SystemConfig::getConfigItem('sDecimalSeparator')->getDefault();
+        if ($effectiveThousands === $effectiveDecimal) {
+            $_SESSION['sGlobalMessage']      = gettext('Thousands separator and decimal separator must be different characters.');
+            $_SESSION['sGlobalMessageClass'] = 'danger';
+            return $response
+                ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/localization')
+                ->withStatus(303);
+        }
+        // All validation passed — save the currency group.
+        SystemConfig::setValue('sCurrencyPosition', $currencyPosition);
+        SystemConfig::setValue('sCurrencySymbol', $currencySymbol);
+        SystemConfig::setValue('sThousandsSeparator', $effectiveThousands);
+        SystemConfig::setValue('sDecimalSeparator', $effectiveDecimal);
 
         $_SESSION['sGlobalMessage']      = gettext('Localization settings saved successfully');
         $_SESSION['sGlobalMessageClass'] = 'success';
@@ -831,6 +868,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sPhoneFormat'         => 'text',
         'sPhoneFormatWithExt'  => 'text',
         'sPhoneFormatCell'     => 'text',
+        'sCurrencySymbol'      => 'text',
+        'sCurrencyPosition'    => 'text',
+        // sThousandsSeparator / sDecimalSeparator intentionally omitted: sanitizeText()
+        // trims, which would strip a space separator. The handler caps them to one char.
     ]));
 
     // User editor — create new user (GET shows form, POST processes it)
