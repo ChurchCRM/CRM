@@ -6,7 +6,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should display the localization page with all sections", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.contains("Localization & Formats", { timeout: 5000 }).should("be.visible");
         cy.contains("Language & Region").should("be.visible");
@@ -17,7 +17,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should display language, timezone, and distance unit fields", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get("#sLanguage").should("exist");
         cy.get("#sTimeZone").should("exist");
@@ -25,7 +25,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should display all date & time format fields", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get("#sDateFormatLong").should("exist");
         cy.get("#sDateFormatNoYear").should("exist");
@@ -36,7 +36,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should display all phone number format fields", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get("#sPhoneFormat").should("exist");
         cy.get("#sPhoneFormatCell").should("exist");
@@ -44,14 +44,14 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should have TomSelect initialized for language and timezone", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get("#sLanguage", { timeout: 8000 }).siblings(".ts-wrapper").should("exist");
         cy.get("#sTimeZone", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
     });
 
     it("should populate language dropdown grouped by region with native names", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         // Wait for JS to populate and TomSelect to init
         cy.get("#sLanguage", { timeout: 8000 }).siblings(".ts-wrapper").should("exist");
@@ -71,7 +71,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should show a live date preview when a date format is entered", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get("#sDateFormatLong", { timeout: 5000 }).clear().type("Y-m-d");
         // The consolidated Display Preview mirrors the input value.
@@ -81,7 +81,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should show a live phone preview when a phone format is entered", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get("#sPhoneFormat", { timeout: 5000 }).clear().type("(999) 999-9999");
         cy.get(".format-preview-value[data-source='sPhoneFormat']")
@@ -90,7 +90,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should allow saving localization settings", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get("#sDistanceUnit", { timeout: 5000 }).select("kilometers");
         cy.get("#localization-form").submit();
@@ -102,7 +102,7 @@ describe("Admin - Localization & Formats Page", () => {
     // ── Currency & Finance Formats — read-only UI tests ───────────────────────
 
     it("should display all four currency fields with correct defaults", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get("#sCurrencySymbol", { timeout: 5000 }).should("have.value", "$");
         cy.get("#sCurrencyPosition").should("have.value", "before");
@@ -111,7 +111,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should update the currency live preview when inputs change", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get("#sCurrencySymbol", { timeout: 5000 }).clear().type("\u20ac");
         cy.get("#sCurrencyPosition").select("after");
@@ -126,7 +126,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should render the six currency preset buttons injected by JS", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get(".currency-preset-btn", { timeout: 5000 }).should("have.length", 6);
         cy.get(".currency-preset-btn[data-preset='usd']").should("be.visible");
@@ -138,7 +138,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should populate the four fields and live preview when Euro preset is clicked", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get(".currency-preset-btn[data-preset='eur']", { timeout: 5000 }).click();
 
@@ -155,7 +155,7 @@ describe("Admin - Localization & Formats Page", () => {
     });
 
     it("should not auto-save when a preset is clicked (no success toast)", () => {
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         cy.get(".currency-preset-btn[data-preset='eur']", { timeout: 5000 }).click();
 
@@ -199,7 +199,7 @@ describe("Admin - Currency settings save round-trip", () => {
 
         cy.intercept("POST", "**/admin/system/localization").as("saveLocalization");
 
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         // Set Euro settings (separators differ — uniqueness guard passes)
         cy.get("#sCurrencySymbol", { timeout: 5000 }).clear().type("\u20ac");
@@ -211,7 +211,7 @@ describe("Admin - Currency settings save round-trip", () => {
         cy.wait("@saveLocalization").its("response.statusCode").should("be.oneOf", [200, 302, 303]);
 
         // After redirect the page reloads — visit again and verify persisted values
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
         cy.get("#sCurrencySymbol", { timeout: 5000 }).should("have.value", "\u20ac");
         cy.get("#sCurrencyPosition").should("have.value", "after");
         cy.get("#sThousandsSeparator").should("have.value", ".");
@@ -221,7 +221,7 @@ describe("Admin - Currency settings save round-trip", () => {
     it("rejects matching thousands and decimal separators with a danger flash", () => {
         cy.setupAdminSession();
 
-        cy.visit("admin/system/localization");
+        cy.visit("/admin/system/localization");
 
         // Set both separators to "," — server must reject this
         cy.get("#sThousandsSeparator", { timeout: 5000 }).clear().type(",");
