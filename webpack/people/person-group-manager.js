@@ -1,5 +1,5 @@
 /**
- * Group interaction manager for PersonView.php
+ * Group interaction manager for the person view page (/people/view/{id})
  *
  * Handles:
  * - Add person to a group (searchable TomSelect dropdown + role)

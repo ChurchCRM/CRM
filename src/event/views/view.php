@@ -199,7 +199,7 @@ $inactive = (int) $event->getInActive() === 1;
                 <?php foreach ($nonAttendees as $na): ?>
                   <tr>
                     <td>
-                      <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $na['personId'] ?>">
+                      <a href="<?= Person::getViewURIForId($na['personId']) ?>">
                         <?= InputUtils::escapeHTML($na['fullName']) ?>
                       </a>
                     </td>
