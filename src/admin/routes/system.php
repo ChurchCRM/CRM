@@ -816,15 +816,16 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             $val = trim((string) ($body[$key] ?? ''));
             SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
         }
-        // Currency & Finance Formats
+        // Currency & Finance Formats — read and validate ALL values before any save,
+        // so a separator conflict never partially commits position/symbol.
         $currencyPosition = trim((string) ($body['sCurrencyPosition'] ?? ''));
-        SystemConfig::setValue('sCurrencyPosition', in_array($currencyPosition, ['before', 'after'], true) ? $currencyPosition : 'before');
+        $currencyPosition = in_array($currencyPosition, ['before', 'after'], true) ? $currencyPosition : 'before';
 
         $currencySymbol = trim((string) ($body['sCurrencySymbol'] ?? ''));
         if (mb_strlen($currencySymbol) > 8) {
             $currencySymbol = mb_substr($currencySymbol, 0, 8);
         }
-        SystemConfig::setValue('sCurrencySymbol', $currencySymbol !== '' ? $currencySymbol : SystemConfig::getConfigItem('sCurrencySymbol')->getDefault());
+        $currencySymbol = $currencySymbol !== '' ? $currencySymbol : SystemConfig::getConfigItem('sCurrencySymbol')->getDefault();
 
         $thousands = trim((string) ($body['sThousandsSeparator'] ?? ''));
         if (mb_strlen($thousands) > 1) {
@@ -844,8 +845,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/localization')
                 ->withStatus(303);
         }
-        SystemConfig::setValue('sThousandsSeparator', $thousands !== '' ? $thousands : SystemConfig::getConfigItem('sThousandsSeparator')->getDefault());
-        SystemConfig::setValue('sDecimalSeparator', $decimal !== '' ? $decimal : SystemConfig::getConfigItem('sDecimalSeparator')->getDefault());
+        // All validation passed — save all four values atomically.
+        SystemConfig::setValue('sCurrencyPosition', $currencyPosition);
+        SystemConfig::setValue('sCurrencySymbol', $currencySymbol);
+        SystemConfig::setValue('sThousandsSeparator', $effectiveThousands);
+        SystemConfig::setValue('sDecimalSeparator', $effectiveDecimal);
 
         $_SESSION['sGlobalMessage']      = gettext('Localization settings saved successfully');
         $_SESSION['sGlobalMessageClass'] = 'success';
@@ -867,7 +871,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sPhoneFormatWithExt'  => 'text',
         'sPhoneFormatCell'     => 'text',
         'sCurrencySymbol'      => 'text',
-        'sCurrencyPosition'    => 'text',
+        'sCurrencyPosition'    => 'choice',
         'sThousandsSeparator'  => 'text',
         'sDecimalSeparator'    => 'text',
     ]));
