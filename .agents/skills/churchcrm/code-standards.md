@@ -452,6 +452,7 @@ Before committing code changes, verify:
 - [ ] Deprecated HTML attributes replaced with CSS
 - [ ] Bootstrap 5 / Tabler CSS classes applied correctly (see `tabler-components.md` for reference)
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
+- [ ] Money values rendered via `CurrencyFormatter::formatHtml()` (templates), `CurrencyFormatter::format()` (APIs/PDFs), or `window.CRM.currency.format()` (JS) — never hardcoded `$` or raw `number_format()` (see `currency-localization.md`)
 - [ ] No alert() calls - use window.CRM.notify() instead
 - [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
 - [ ] Use `json_encode()` when outputting PHP values into `<script>` blocks (not string interpolation)

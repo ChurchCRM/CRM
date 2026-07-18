@@ -46,6 +46,22 @@ SystemConfig::getValue('sThousandsSeparator');   // ","
 SystemConfig::getValue('sDecimalSeparator');     // "."
 ```
 
+### Defaults live in code, not the DB <!-- learned: 2026-07-18 -->
+
+The USD defaults come from the `ConfigItem` registrations in
+`SystemConfig::buildConfigs()`. A missing `config_cfg` row simply resolves to
+the code default, and `ConfigItem::setValue()` *deletes* the row when a value
+is set back to the default — "default" is deliberately represented as "no row".
+
+- **Never seed these keys with a `.sql` migration** — the app deletes such
+  rows again and the migration adds noise for zero behavioral change.
+- **No fallback wrapper needed** — call `SystemConfig::getValue()` directly.
+  (`CurrencyFormatter` once had a try/catch `getSetting()` helper; it was
+  removed because the keys ship in the same release as the class.)
+- `getValue()` is untyped (`mixed`) because other keys have int/bool defaults;
+  for these four keys the value is always a string — do **not** add `(string)`
+  casts at call sites.
+
 Free-form symbol input is allowed — multi-char symbols (`CHF`, `CAD $`) are
 fine. Fix UI overflow issues reactively per view.
 
@@ -60,12 +76,22 @@ Location: `src/ChurchCRM/Utils/CurrencyFormatter.php`
 ```php
 use ChurchCRM\Utils\CurrencyFormatter;
 
-CurrencyFormatter::format(1234.5);        // "$1,234.50"
+CurrencyFormatter::formatHtml(1234.5);    // "$1,234.50" — HTML-escaped, null-safe; for <?= ?> in templates
+CurrencyFormatter::formatHtml(null);      // ""          — null in, empty string out (no bogus $0.00)
+CurrencyFormatter::format(1234.5);        // "$1,234.50" — raw string; for APIs, PDFs, further processing
 CurrencyFormatter::format(1234.5, 0);     // "$1,235"
 CurrencyFormatter::symbol();              // "$"
 CurrencyFormatter::position();            // "before"
 CurrencyFormatter::toArray();             // ['symbol' => ..., 'position' => ..., ...] for JSON
 ```
+
+**Which method where:** <!-- learned: 2026-07-18 -->
+
+| Context | Method |
+|---------|--------|
+| PHP template `<?= ?>` output | `formatHtml()` (escaped, accepts nullable Propel DECIMAL getters) |
+| API payload / PDF / string building | `format()` |
+| JS (DataTables, Chart.js, DOM) | `window.CRM.currency.format()` |
 
 Output uses a non-breaking space (`\u{00A0}`) between symbol and amount to
 prevent line-wrapping on narrow screens.
@@ -76,8 +102,8 @@ prevent line-wrapping on narrow screens.
 // ❌ WRONG — hardcoded $
 <div class="fw-medium">$<?= number_format($amount, 2) ?></div>
 
-// ✅ CORRECT — uses configured symbol/position/separators
-<div class="fw-medium"><?= CurrencyFormatter::format($amount) ?></div>
+// ✅ CORRECT — uses configured symbol/position/separators, HTML-escaped
+<div class="fw-medium"><?= CurrencyFormatter::formatHtml($amount) ?></div>
 ```
 
 Never concatenate the symbol yourself; the helper applies the configured
