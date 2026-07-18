@@ -1,3 +1,10 @@
+---
+title: "Security Advisory Review Process"
+intent: "How to access, analyze, and respond to GitHub security advisories for ChurchCRM"
+tags: ["security", "audit", "github"]
+prereqs: ["[[security-best-practices]]", "[[github-interaction]]"]
+complexity: "advanced"
+---
 # Security Advisory Review Process
 
 This skill documents how to access, analyze, and respond to GitHub security advisories for ChurchCRM.

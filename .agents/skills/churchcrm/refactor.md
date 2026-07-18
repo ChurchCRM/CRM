@@ -2,7 +2,7 @@
 title: "Refactor Patterns"
 intent: "Guidance for refactoring legacy code to services and MVC structure"
 tags: ["refactor","service-layer","mvc"]
-prereqs: ["php-best-practices.md","service-layer.md"]
+prereqs: ["[[php-best-practices]]","[[service-layer]]"]
 complexity: "intermediate"
 ---
 

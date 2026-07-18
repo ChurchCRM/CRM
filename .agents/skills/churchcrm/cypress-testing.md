@@ -1,3 +1,10 @@
+---
+title: "Cypress Testing"
+intent: "Test organization, session management, API helpers, and best practices for writing reliable Cypress tests"
+tags: ["testing", "cypress", "e2e", "ci"]
+prereqs: []
+complexity: "intermediate"
+---
 # Skill: Cypress Testing
 
 ## Context
@@ -280,11 +287,12 @@ Check the actual route implementation before choosing `allowedStatuses`.
 
 ### `freshAdminLogin` is still required — `withCredentials: false` is not sufficient in CI <!-- learned: 2026-07-12 -->
 
-> ⚠️ A 2026-07-11 update claimed `freshAdminLogin()` was deleted because `makePrivateAPICall`
-> sets `withCredentials: false`, preventing the API key from clobbering `$_SESSION`.
-> **That claim was wrong in practice.** CI runs (both `test-root` and `test-subdir`) confirmed
-> that PHP session clobbering still occurs in the browser environment despite the header.
-> `freshAdminLogin()` has been restored in all 4 affected UI specs.
+> [!WARNING] A 2026-07-11 update claimed `freshAdminLogin()` was deleted
+> The reasoning was that `makePrivateAPICall` sets `withCredentials: false`, preventing the
+> API key from clobbering `$_SESSION`. **That claim was wrong in practice.** CI runs (both
+> `test-root` and `test-subdir`) confirmed that PHP session clobbering still occurs in the
+> browser environment despite the header. `freshAdminLogin()` has been restored in all 4
+> affected UI specs.
 
 `makePrivateAPICall` does set `withCredentials: false` (see `support/api-commands.js`), but
 this alone is not sufficient to protect the PHP session in the Cypress/CI browser environment.

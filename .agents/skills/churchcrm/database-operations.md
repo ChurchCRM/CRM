@@ -1,3 +1,10 @@
+---
+title: "Database Operations"
+intent: "Core patterns for database access using Perpl ORM (actively maintained fork of Propel2)"
+tags: ["database", "perpl", "orm", "php"]
+prereqs: ["[[php-best-practices]]"]
+complexity: "beginner"
+---
 # Skill: Database Operations with Perpl ORM
 
 ## Context

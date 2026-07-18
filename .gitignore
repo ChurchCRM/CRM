@@ -60,3 +60,8 @@ cypress.env.json
 
 .claude/settings.json
 cy.log
+
+# Obsidian machine-local workspace state (not shared config)
+knowledge-vault/.obsidian/workspace.json
+knowledge-vault/.obsidian/workspace-mobile.json
+knowledge-vault/.obsidian/plugins/

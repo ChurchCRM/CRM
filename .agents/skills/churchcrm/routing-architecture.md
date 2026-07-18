@@ -2,7 +2,7 @@
 title: "Routing & Project Architecture"
 intent: "Organization patterns for routes, modules, and menus"
 tags: ["routing","architecture","mvc","admin","api"]
-prereqs: ["slim-4-best-practices.md"]
+prereqs: ["[[slim-4-best-practices]]"]
 complexity: "intermediate"
 ---
 
