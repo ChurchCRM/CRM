@@ -49,7 +49,7 @@ function applyFundraiserFields(FundRaiser $fr, array $input, Response $response)
             if ($startDate !== null && $parsedEnd < $startDate) {
                 return SlimUtils::renderErrorJSON($response, gettext('End date must be on or after the start date'), [], 400);
             }
-            $fr->setEndDate($parsedEnd->format('Y-m-d')); // normalise to ISO for DB storage
+            $fr->setEndDate($parsedEnd); // pass DateTime object; Propel normalises to ISO for storage
         } else {
             $fr->setEndDate(null);
         }

@@ -13,8 +13,10 @@ UPDATE `fundraiser_fr`
 SET `fr_EndDate` = `fr_date`
 WHERE `fr_EndDate` IS NULL;
 
--- Back-fill: mark past fundraisers (by event date) as Closed
+-- Back-fill: mark fundraisers whose end date is in the past as Closed.
+-- Uses fr_EndDate (just populated above) so in-progress multi-day events are
+-- not incorrectly closed based on their start date.
 UPDATE `fundraiser_fr`
 SET `fr_Status` = 'Closed'
-WHERE `fr_date` < CURDATE()
+WHERE `fr_EndDate` < CURDATE()
   AND `fr_Status` = 'Active';
