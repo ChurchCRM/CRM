@@ -6,7 +6,7 @@ use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\Event;
-use ChurchCRM\model\ChurchCRM\EventAttend;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -892,10 +892,10 @@ class DemoDataService
                     $end   = new DateTime($endStr);
                 }
 
-                $linkGroupNames  = array_filter(
+                $linkGroupNames  = array_values(array_unique(array_filter(
                     array_map('trim', explode(';', $data['link_groups'] ?? '')),
                     fn (string $s) => $s !== ''
-                );
+                )));
                 $attendedFraction = (float) ($data['attended_fraction'] ?? 0);
 
                 $event = new Event();
@@ -1030,12 +1030,15 @@ class DemoDataService
         $checkInCount = (int) ceil($fraction * count($memberIds));
 
         foreach (array_slice($memberIds, 0, $checkInCount) as $pid) {
-            $att = new EventAttend();
-            $att->setEventId((int) $event->getId());
-            $att->setPersonId($pid);
-            $att->setCheckinDate($eventEnd);
-            // checkin_id / checkout_* intentionally left null
             try {
+                // findOneOrCreate upserts on (event_id, person_id) unique key,
+                // making repeated demo imports idempotent.
+                $att = EventAttendQuery::create()
+                    ->filterByEvent($event)
+                    ->filterByPersonId($pid)
+                    ->findOneOrCreate();
+                $att->setCheckinDate($eventEnd);
+                // checkin_id / checkout_* intentionally left null
                 $att->save();
                 $this->importResult['imported']['event_attendance']++;
             } catch (Exception $e) {
