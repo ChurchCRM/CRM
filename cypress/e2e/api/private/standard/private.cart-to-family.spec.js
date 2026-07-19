@@ -17,6 +17,16 @@
  * usable browser session after any makePrivateAdminAPICall() call, each test
  * must call freshStandardLogin() before making browser-cookie-based requests.
  *
+ * API-key session clobbering (T9)
+ * ───────────────────────────────
+ * Sending X-API-Key on any request causes AuthMiddleware to call
+ * AuthenticationManager::authenticate(new APITokenAuthenticationRequest(...)),
+ * which MUTATES the current PHP session — replacing the cookie-based user auth
+ * state with API-token auth state. Any subsequent request using the same
+ * browser session cookie without an X-API-Key header will then return 401
+ * (the session no longer carries valid cookie-auth). This is why the final
+ * GET /api/families/latest check in T9 must also send X-API-Key.
+ *
  * Seed data:
  *   Free person: 36 (Kathryn Robertson, per_fam_ID = 0)
  */
@@ -78,16 +88,19 @@ describe("API — Cart to Family", () => {
 
     // ── T9: Validate-before-write — no orphan family on validation failure ───
     it("T9 — validation failure (blank FamilyName) does not create an orphan family", () => {
-        // Restore a valid browser session so subsequent cy.request() calls use
-        // the same cookie-based session (needed for cart state to persist).
+        // Restore a valid browser session so the POST /api/cart/ call below
+        // uses the same cookie-based session (needed for cart state to persist
+        // into the /people/cart/to-family handler via $_SESSION['aPeopleCart']).
         freshStandardLogin();
 
         // Record the most recently created family ID before the test.
         // GET /api/families/latest returns the 10 most recently entered
         // families as {families: [{FamilyId, Name, ...}, ...]}.
+        // Use X-API-Key so this request is independent of session state.
         cy.request({
             method: "GET",
             url: "/api/families/latest",
+            headers: { "X-API-Key": Cypress.env("admin.api.key") },
             failOnStatusCode: false,
         }).then((resp) => {
             const latestFamilies = (resp.body && resp.body.families) ? resp.body.families : [];
@@ -110,6 +123,10 @@ describe("API — Cart to Family", () => {
             // current browser session cookie (which has person 36 in the cart).
             // FamilyName is deliberately blank to trigger the validation error.
             // The handler must re-render (200) without creating a family row.
+            //
+            // IMPORTANT: this POST mutates the PHP session (replaces cookie-auth
+            // state with API-token auth state). Any subsequent request using the
+            // same browser cookie without X-API-Key will return 401.
             cy.request({
                 method: "POST",
                 url: ROUTE,
@@ -128,9 +145,13 @@ describe("API — Cart to Family", () => {
             });
 
             // Most-recently-created family must be unchanged — no orphan row was created.
+            // Must use X-API-Key because the POST above mutated the session: the
+            // browser cookie now carries API-token auth state, not cookie-user auth,
+            // so bare cookie requests return 401 until a new login is performed.
             cy.request({
                 method: "GET",
                 url: "/api/families/latest",
+                headers: { "X-API-Key": Cypress.env("admin.api.key") },
                 failOnStatusCode: false,
             }).then((afterResp) => {
                 const latestFamiliesAfter = (afterResp.body && afterResp.body.families) ? afterResp.body.families : [];
