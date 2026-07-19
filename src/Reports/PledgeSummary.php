@@ -230,16 +230,16 @@ if ($output === 'pdf') {
                 $short_fun_name = $fun_name;
             }
             $pdf->writeAt($nameX, $curY, $short_fun_name);
-            $amountStr = CurrencyFormatter::format((float) $pledgeFundTotal[$fun_name]);
+            $amountStr = CurrencyFormatter::format($pledgeFundTotal[$fun_name]);
             $pdf->printRightJustified($pledgeX, $curY, $amountStr);
-            $amountStr = CurrencyFormatter::format((float) $paymentFundTotal[$fun_name]);
+            $amountStr = CurrencyFormatter::format($paymentFundTotal[$fun_name]);
             $pdf->printRightJustified($paymentX, $curY, $amountStr);
             $pdf->printRightJustified($pledgeCountX, $curY, $pledgeCnt[$fun_name]);
             $pdf->printRightJustified($paymentCountX, $curY, $paymentCnt[$fun_name]);
 
-            $amountStr = CurrencyFormatter::format((float) $overpaid[$fun_name]);
+            $amountStr = CurrencyFormatter::format($overpaid[$fun_name]);
             $pdf->printRightJustified($underpaidX, $curY, $amountStr);
-            $amountStr = CurrencyFormatter::format((float) $underpaid[$fun_name]);
+            $amountStr = CurrencyFormatter::format($underpaid[$fun_name]);
             $pdf->printRightJustified($overpaidX, $curY, $amountStr);
             $curY += SystemConfig::getValue('incrementY');
         }
@@ -247,9 +247,9 @@ if ($output === 'pdf') {
 
     if ($pledgeFundTotal['Unassigned'] > 0 || $paymentFundTotal['Unassigned'] > 0) {
         $pdf->writeAt($nameX, $curY, 'Unassigned');
-        $amountStr = CurrencyFormatter::format((float) $pledgeFundTotal['Unassigned']);
+        $amountStr = CurrencyFormatter::format($pledgeFundTotal['Unassigned']);
         $pdf->printRightJustified($pledgeX, $curY, $amountStr);
-        $amountStr = CurrencyFormatter::format((float) $paymentFundTotal['Unassigned']);
+        $amountStr = CurrencyFormatter::format($paymentFundTotal['Unassigned']);
         $pdf->printRightJustified($paymentX, $curY, $amountStr);
         $pdf->printRightJustified($pledgeCountX, $curY, $pledgeCnt['Unassigned']);
         $pdf->printRightJustified($paymentCountX, $curY, $paymentCnt['Unassigned']);

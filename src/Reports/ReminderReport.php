@@ -330,7 +330,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         if ($cnt > 1) {
             $pdf->writeAtCell($summaryFundX, $curY, $summaryFundWid, 'Total pledges');
             $pdf->SetFont('Courier', '', 8);
-            $totalAmountStr = CurrencyFormatter::format((float) $totalAmount);
+            $totalAmountStr = CurrencyFormatter::format($totalAmount);
             $pdf->printRightJustifiedCell($summaryAmountX, $curY, $summaryAmountWid, $totalAmountStr);
             $curY += $summaryIntervalY;
         }
@@ -428,7 +428,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         if ($cnt > 1) {
             $pdf->writeAtCell($summaryMemoX, $curY, $summaryMemoWid, 'Total payments');
             $pdf->SetFont('Courier', '', 8);
-            $totalAmountString = CurrencyFormatter::format((float) $totalAmount);
+            $totalAmountString = CurrencyFormatter::format($totalAmount);
             $pdf->printRightJustifiedCell($summaryAmountX, $curY, $summaryAmountWid, $totalAmountString);
             $curY += $summaryIntervalY;
         }
@@ -451,7 +451,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
                 if ($amountDue < 0) {
                     $amountDue = 0;
                 }
-                $amountStr = sprintf('Amount due for %s: %s', $fun_name, CurrencyFormatter::format((float) $amountDue));
+                $amountStr = sprintf('Amount due for %s: %s', $fun_name, CurrencyFormatter::format($amountDue));
                 $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $amountStr);
                 $curY += $summaryIntervalY;
             }

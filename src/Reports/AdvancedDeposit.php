@@ -326,7 +326,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName Total - $countFund $item:   " . CurrencyFormatter::format((float) $currentFundAmount));
+                $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName Total - $countFund $item:   " . CurrencyFormatter::format($currentFundAmount));
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -344,7 +344,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sDepositSummary =ChurchInfoReport::convertToLatin1("Deposit #$currentDepositID Total - $countDeposit $item:   " . CurrencyFormatter::format((float) $currentDepositAmount));
+                $sDepositSummary =ChurchInfoReport::convertToLatin1("Deposit #$currentDepositID Total - $countDeposit $item:   " . CurrencyFormatter::format($currentDepositAmount));
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
@@ -433,7 +433,7 @@ $page = 1;
             } else {
                 $item = gettext('item');
             }
-            $sFundSummary =ChurchInfoReport::convertToLatin1("$fun_Name Total - $countFund $item:   " . CurrencyFormatter::format((float) $currentFundAmount));
+            $sFundSummary =ChurchInfoReport::convertToLatin1("$fun_Name Total - $countFund $item:   " . CurrencyFormatter::format($currentFundAmount));
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -447,7 +447,7 @@ $page = 1;
         } else {
             $item = gettext('item');
         }
-        $sDepositSummary =ChurchInfoReport::convertToLatin1("Deposit #$currentDepositID Total - $countDeposit $item:   " . CurrencyFormatter::format((float) $currentDepositAmount));
+        $sDepositSummary =ChurchInfoReport::convertToLatin1("Deposit #$currentDepositID Total - $countDeposit $item:   " . CurrencyFormatter::format($currentDepositAmount));
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
@@ -494,7 +494,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFamilySummary =ChurchInfoReport::convertToLatin1("$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . CurrencyFormatter::format((float) $currentFamilyAmount));
+                $sFamilySummary =ChurchInfoReport::convertToLatin1("$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . CurrencyFormatter::format($currentFamilyAmount));
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -512,7 +512,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName Total - $countFund $item:   " . CurrencyFormatter::format((float) $currentFundAmount));
+                $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName Total - $countFund $item:   " . CurrencyFormatter::format($currentFundAmount));
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
@@ -601,7 +601,7 @@ $page = 1;
             } else {
                 $item = gettext('item');
             }
-            $sFamilySummary =ChurchInfoReport::convertToLatin1("$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . CurrencyFormatter::format((float) $currentFamilyAmount));
+            $sFamilySummary =ChurchInfoReport::convertToLatin1("$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . CurrencyFormatter::format($currentFamilyAmount));
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -615,7 +615,7 @@ $page = 1;
         } else {
             $item = gettext('item');
         }
-        $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName Total - $countFund $item:   " . CurrencyFormatter::format((float) $currentFundAmount));
+        $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName Total - $countFund $item:   " . CurrencyFormatter::format($currentFundAmount));
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
@@ -662,7 +662,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName - $countFund $item:   " . CurrencyFormatter::format((float) $currentFundAmount));
+                $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName - $countFund $item:   " . CurrencyFormatter::format($currentFundAmount));
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -680,7 +680,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFamilySummary =ChurchInfoReport::convertToLatin1("$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . CurrencyFormatter::format((float) $currentFamilyAmount));
+                $sFamilySummary =ChurchInfoReport::convertToLatin1("$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . CurrencyFormatter::format($currentFamilyAmount));
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sFamilySummary, 0, 0, 'R');
@@ -769,7 +769,7 @@ $page = 1;
             } else {
                 $item = gettext('item');
             }
-            $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName - $countFund $item:   " . CurrencyFormatter::format((float) $currentFundAmount));
+            $sFundSummary =ChurchInfoReport::convertToLatin1("$currentFundName - $countFund $item:   " . CurrencyFormatter::format($currentFundAmount));
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -783,7 +783,7 @@ $page = 1;
         } else {
             $item = gettext('item');
         }
-        $sFamilySummary =ChurchInfoReport::convertToLatin1("$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . CurrencyFormatter::format((float) $currentFamilyAmount));
+        $sFamilySummary =ChurchInfoReport::convertToLatin1("$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . CurrencyFormatter::format($currentFamilyAmount));
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sFamilySummary, 0, 0, 'R');
@@ -800,7 +800,7 @@ $page = 1;
     } else {
         $item = gettext('item');
     }
-    $sReportSummary =ChurchInfoReport::convertToLatin1("Report Total ($countReport $item):   " . CurrencyFormatter::format((float) $currentReportAmount));
+    $sReportSummary =ChurchInfoReport::convertToLatin1("Report Total ($countReport $item):   " . CurrencyFormatter::format($currentReportAmount));
     $pdf->SetXY(20, $curY);
     $pdf->SetFont('Times', 'B', 10);
     $pdf->Cell(176, $summaryIntervalY, $sReportSummary, 0, 0, 'R');
@@ -824,7 +824,7 @@ $page = 1;
         }
         $pdf->SetXY(20, $curY);
         $pdf->Cell(45, $summaryIntervalY, $sfun_Name);
-        $pdf->Cell(25, $summaryIntervalY, ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $FundTotal)), 0, 0, 'R');
+        $pdf->Cell(25, $summaryIntervalY, CurrencyFormatter::formatForPdf($FundTotal), 0, 0, 'R');
         $curY += $summaryIntervalY;
         $page = $pdf->pageBreak($page);
         next($totalFund);
