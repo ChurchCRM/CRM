@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -55,7 +56,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
                     // I can't seem to get the SQL HAVING clause to work through Propel ORM to use
                     // both MIN and MAX value.  Just filter it in PHP
                     if ($Payment->getVirtualColumn('GroupAmount') >= $min && $Payment->getVirtualColumn('GroupAmount') <= $max) {
-                        $searchResults[] = new SearchResult('finance-payment-' . $id, '$' . $Payment->getVirtualColumn('GroupAmount') . ' Payment on Deposit ' . $Payment->getDepid(), $Payment->getVirtualColumn('uri'));
+                        $searchResults[] = new SearchResult('finance-payment-' . $id, CurrencyFormatter::format($Payment->getVirtualColumn('GroupAmount') ?? 0.0) . ' Payment on Deposit ' . $Payment->getDepid(), $Payment->getVirtualColumn('uri'));
                     }
                 }
             }

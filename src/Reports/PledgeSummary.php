@@ -9,6 +9,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -184,11 +185,11 @@ if ($output === 'pdf') {
 
     $nameX = 20;
     $pledgeX = 60;
-    $paymentX = 80;
+    $paymentX = 85;       // shifted right 5 mm (was 80) to prevent overlap with pledge column for CurrencyFormatter output (10+ chars at 2 mm/char heuristic)
     $pledgeCountX = 100;
     $paymentCountX = 120;
     $underpaidX = 145;
-    $overpaidX = 170;
+    $overpaidX = 175;     // shifted right 5 mm (was 170) to give 30 mm gap vs underpaidX for wide formatted amounts
     $curY = 20;
 
     $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
@@ -229,16 +230,16 @@ if ($output === 'pdf') {
                 $short_fun_name = $fun_name;
             }
             $pdf->writeAt($nameX, $curY, $short_fun_name);
-            $amountStr = sprintf('%.2f', $pledgeFundTotal[$fun_name]);
+            $amountStr = CurrencyFormatter::format($pledgeFundTotal[$fun_name]);
             $pdf->printRightJustified($pledgeX, $curY, $amountStr);
-            $amountStr = sprintf('%.2f', $paymentFundTotal[$fun_name]);
+            $amountStr = CurrencyFormatter::format($paymentFundTotal[$fun_name]);
             $pdf->printRightJustified($paymentX, $curY, $amountStr);
             $pdf->printRightJustified($pledgeCountX, $curY, $pledgeCnt[$fun_name]);
             $pdf->printRightJustified($paymentCountX, $curY, $paymentCnt[$fun_name]);
 
-            $amountStr = sprintf('%.2f', $overpaid[$fun_name]);
+            $amountStr = CurrencyFormatter::format($overpaid[$fun_name]);
             $pdf->printRightJustified($underpaidX, $curY, $amountStr);
-            $amountStr = sprintf('%.2f', $underpaid[$fun_name]);
+            $amountStr = CurrencyFormatter::format($underpaid[$fun_name]);
             $pdf->printRightJustified($overpaidX, $curY, $amountStr);
             $curY += SystemConfig::getValue('incrementY');
         }
@@ -246,9 +247,9 @@ if ($output === 'pdf') {
 
     if ($pledgeFundTotal['Unassigned'] > 0 || $paymentFundTotal['Unassigned'] > 0) {
         $pdf->writeAt($nameX, $curY, 'Unassigned');
-        $amountStr = sprintf('%.2f', $pledgeFundTotal['Unassigned']);
+        $amountStr = CurrencyFormatter::format($pledgeFundTotal['Unassigned']);
         $pdf->printRightJustified($pledgeX, $curY, $amountStr);
-        $amountStr = sprintf('%.2f', $paymentFundTotal['Unassigned']);
+        $amountStr = CurrencyFormatter::format($paymentFundTotal['Unassigned']);
         $pdf->printRightJustified($paymentX, $curY, $amountStr);
         $pdf->printRightJustified($pledgeCountX, $curY, $pledgeCnt['Unassigned']);
         $pdf->printRightJustified($paymentCountX, $curY, $paymentCnt['Unassigned']);
