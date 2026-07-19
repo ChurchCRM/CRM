@@ -6,15 +6,17 @@
  * Seeding strategy: person 2 (Mathew Campbell) is checked into event 1 via
  * cy.makePrivateAdminAPICall() in the beforeEach() of contexts that need
  * attendance data. Per `.agents/skills/churchcrm/cypress-testing.md` →
- * "UI Tests Must Not Call APIs After Login": cy.request() (which
- * makePrivateAdminAPICall uses) sends and receives cookies for the app's
- * own origin regardless of `withCredentials`, so any API-key call made
- * while a UI session cookie is already present clobbers that browser
- * session's PHP session data. `cy.setupAdminSession()` afterward is NOT
- * a reliable fix — its cache validator only checks that a session cookie
- * exists, not that the underlying PHP session is still alive — so contexts
- * that mix an API call with a browser visit use the local freshAdminLogin()
- * helper (real clear + form login) AFTER the API call instead, exactly as
+ * "UI Tests Must Not Call APIs After Login": `makePrivateAdminAPICall` does
+ * set `withCredentials: false` on its cy.request() call (see
+ * cypress/support/api-commands.js), but CI has repeatedly confirmed that
+ * alone is NOT sufficient to stop the browser's session cookie from being
+ * shared with the request — so an API-key call made while a UI session
+ * cookie is already present still clobbers that browser session's PHP
+ * session data. `cy.setupAdminSession()` afterward is NOT a reliable fix
+ * either — its cache validator only checks that a session cookie exists,
+ * not that the underlying PHP session is still alive — so contexts that mix
+ * an API call with a browser visit use the local freshAdminLogin() helper
+ * (real clear + form login) AFTER the API call instead, exactly as
  * documented in the skill. The checkin call accepts both 200 (freshly
  * checked in) and 409 (already checked in from a previous test run) so
  * duplicate checkins are silently tolerated.
@@ -35,7 +37,12 @@ function freshAdminLogin() {
     cy.visit("/session/begin");
     cy.get("input[name=User]").type(Cypress.env("admin.username"));
     cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    // Navigating away from /session/begin alone doesn't prove authentication
+    // succeeded (a 500 or an error page would also satisfy it) — confirm a
+    // real CRM session cookie was actually issued, same check cy.session()'s
+    // own validate() callback uses in cypress/support/ui-commands.js.
     cy.url().should("not.include", "/session/begin");
+    cy.getCookies().should("satisfy", (cookies) => cookies.some((cookie) => cookie.name.startsWith("CRM-")));
 }
 
 describe("Person Attendance History Tab", () => {
