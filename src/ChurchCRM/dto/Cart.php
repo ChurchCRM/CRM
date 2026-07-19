@@ -7,6 +7,8 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GroupService;
+use Propel\Runtime\Connection\ConnectionInterface;
+use Propel\Runtime\Propel;
 
 class Cart
 {
@@ -183,6 +185,58 @@ class Cart
         }
 
         $_SESSION['aPeopleCart'] = [];
+    }
+
+    /**
+     * Assign all eligible cart people (famId === 0) to a family with per-person roles.
+     *
+     * When $con is provided the method participates in the caller's transaction
+     * (no nested begin/commit) and does NOT clear the session cart — the caller
+     * is responsible for clearing it after a successful commit.
+     *
+     * When $con is null the method manages its own transaction and clears the
+     * session cart on success.
+     *
+     * @param int                    $familyId       ID of the target family (must already exist)
+     * @param array                  $roleByPersonId Map of personId => familyRoleId for eligible persons
+     * @param ConnectionInterface|null $con          Optional connection; omit to manage own transaction
+     * @return int  Number of persons actually assigned
+     */
+    public static function emptyToFamily(int $familyId, array $roleByPersonId, ?ConnectionInterface $con = null): int
+    {
+        self::checkCart();
+        $assigned = 0;
+        $ownTransaction = ($con === null);
+        if ($ownTransaction) {
+            $con = Propel::getConnection();
+            $con->beginTransaction();
+        }
+        try {
+            // Iterate $roleByPersonId rather than the raw session array (fixes F5).
+            // This eliminates the race where a person added in another tab between the
+            // route's DB snapshot (T1) and this loop (T2) would be missing from
+            // $roleByPersonId and previously caused an InvalidArgumentException.
+            // All values in $roleByPersonId are guaranteed non-zero by the route.
+            foreach ($roleByPersonId as $personId => $roleId) {
+                $person = PersonQuery::create()->findOneById((int) $personId);
+                if ($person === null || $person->getFamId() !== 0) {
+                    // Skip missing or already-in-a-family persons (fixes B3)
+                    continue;
+                }
+                $person->setFamId($familyId)->setFmrId((int) $roleId)->save($con);
+                $assigned++;
+            }
+            if ($ownTransaction) {
+                $con->commit();
+                $_SESSION['aPeopleCart'] = []; // empty cart server-side (fixes B11)
+            }
+        } catch (\Throwable $e) {
+            if ($ownTransaction) {
+                $con->rollBack();
+            }
+            throw $e;
+        }
+        return $assigned;
     }
 
     public static function getCartPeople()

@@ -234,7 +234,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
                 Cart::removeFamily((int)$cartPayload['Family']);
                 $sMessage = gettext('Family removed from cart');
             } else {
-                if (count($_SESSION['aPeopleCart']) > 0) {
+                if (!empty($_SESSION['aPeopleCart'])) {
                     $_SESSION['aPeopleCart'] = [];
                     $sMessage = gettext('Your cart has been successfully emptied');
                 }
