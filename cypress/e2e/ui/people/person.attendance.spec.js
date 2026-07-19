@@ -3,18 +3,41 @@
 /**
  * UI spec for the Attendance History tab on the Person view page.
  *
- * Seeding strategy: person 2 (Mathew Campbell) is checked into event 1 in
- * the beforeEach() of contexts that need attendance data — AFTER
- * setupAdminSession() has established auth. The checkin call accepts both 200
- * (freshly checked in) and 409 (already checked in from a previous test run)
- * so duplicate checkins are silently tolerated.
+ * Seeding strategy: person 2 (Mathew Campbell) is checked into event 1 via
+ * cy.makePrivateAdminAPICall() in the beforeEach() of contexts that need
+ * attendance data. Per `.agents/skills/churchcrm/cypress-testing.md` →
+ * "UI Tests Must Not Call APIs After Login": cy.request() (which
+ * makePrivateAdminAPICall uses) sends and receives cookies for the app's
+ * own origin regardless of `withCredentials`, so any API-key call made
+ * while a UI session cookie is already present clobbers that browser
+ * session's PHP session data. `cy.setupAdminSession()` afterward is NOT
+ * a reliable fix — its cache validator only checks that a session cookie
+ * exists, not that the underlying PHP session is still alive — so contexts
+ * that mix an API call with a browser visit use the local freshAdminLogin()
+ * helper (real clear + form login) AFTER the API call instead, exactly as
+ * documented in the skill. The checkin call accepts both 200 (freshly
+ * checked in) and 409 (already checked in from a previous test run) so
+ * duplicate checkins are silently tolerated.
  *
- * The after() cleanup runs as admin (cy.session is still alive after the last
- * beforeEach of the suite) to remove the attendance record.
+ * The after() cleanup is a pure API call (checkout) and needs no browser
+ * session at all — makePrivateAdminAPICall authenticates via x-api-key only.
  *
  * cy.intercept uses double-star ("**") glob patterns so intercepts work when
  * ChurchCRM is deployed under a subdirectory path.
  */
+
+// Local helper — NOT a cy.* command (see cypress-testing.md). Clears cookies and
+// does a direct form login, discarding any dead PHP session left by a prior
+// cy.request() / makePrivateAdminAPICall() call. Required after any API call
+// that precedes a cy.visit() — cy.setupAdminSession() is not reliable here.
+function freshAdminLogin() {
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.url().should("not.include", "/session/begin");
+}
+
 describe("Person Attendance History Tab", () => {
     const PERSON_WITH_ATTENDANCE = 2;
     const PERSON_WITHOUT_ATTENDANCE = 1;
@@ -22,8 +45,8 @@ describe("Person Attendance History Tab", () => {
 
     after(() => {
         // Cleanup: check person 2 out of event 1.
-        // cy.session from the last beforeEach is still valid here.
-        cy.setupAdminSession();
+        // makePrivateAdminAPICall() authenticates via x-api-key alone — it needs no
+        // browser session, so no login call here (see file header).
         cy.makePrivateAdminAPICall("POST", `/api/events/${EVENT_ID}/checkout`, { personId: PERSON_WITH_ATTENDANCE }, 200);
     });
 
@@ -45,15 +68,16 @@ describe("Person Attendance History Tab", () => {
 
     context("Lazy load on tab activation — person with attendance", () => {
         beforeEach(() => {
-            // Auth FIRST, then seed — before() fires before any auth is set up
-            cy.setupAdminSession();
-            // Accept 200 (fresh checkin) or 409 (already checked in) — tolerate duplicates
+            // API setup FIRST, then freshAdminLogin() — NOT cy.setupAdminSession(),
+            // see file header. Accept 200 (fresh checkin) or 409 (already checked
+            // in) — tolerate duplicates.
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/events/${EVENT_ID}/checkin`,
                 { personId: PERSON_WITH_ATTENDANCE },
                 [200, 409],
             );
+            freshAdminLogin();
             cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
             // Use **/api/** glob so intercepts work under a subdirectory deployment
             cy.intercept("GET", `**/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
@@ -147,13 +171,15 @@ describe("Person Attendance History Tab", () => {
 
     context("Filter controls", () => {
         beforeEach(() => {
-            cy.setupAdminSession();
+            // API setup FIRST, then freshAdminLogin() — NOT cy.setupAdminSession(),
+            // see file header.
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/events/${EVENT_ID}/checkin`,
                 { personId: PERSON_WITH_ATTENDANCE },
                 [200, 409],
             );
+            freshAdminLogin();
             cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
             cy.intercept("GET", `**/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
             cy.get("#nav-item-attendance").click();

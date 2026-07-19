@@ -326,6 +326,24 @@ beforeEach(() => {
 });
 ```
 
+### Recurrence: brand-new specs keep reintroducing this bug — grep before writing `beforeEach` <!-- learned: 2026-07-19 -->
+
+This exact anti-pattern reappeared in `cypress/e2e/ui/people/person.attendance.spec.js`
+(added by the per-person attendance-history feature, #8649) despite being documented above
+since 2026-03-27. Its `beforeEach` hooks did `cy.setupAdminSession()` → `cy.makePrivateAdminAPICall("POST", ".../checkin", ...)` → `cy.visit(...)`, which clobbered the cached admin
+session's PHP session data. Because `cy.session()`'s cache validator only checks that a
+`CRM-` cookie exists (not that the session behind it still works), the corruption silently
+carried forward into **every later context in the same file** — including ones that made no
+API call at all — since they all reused the same poisoned `cy.session('admin-session')`
+cache. In CI this surfaced as `cy.get('#nav-item-attendance')` timing out (the page was
+silently redirecting to the login screen), which looks nothing like a session bug at first
+glance. Fixed by moving the API call before `freshAdminLogin()` per the pattern above.
+
+**Before adding any new UI spec that seeds data via `makePrivateAdminAPICall` /
+`makePrivateUserAPICall`, grep the file for `cy.setupAdminSession()` appearing before an API
+call in the same hook** — that ordering is the bug. The API call must come first, and the
+hook must call `freshAdminLogin()` (not `cy.setupAdminSession()`) afterward, every time.
+
 **API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall`
 authenticate via the `x-api-key` header — no session or cookies. Never put
 `cy.setupAdminSession()` in `beforeEach` of a pure API spec; it is a wasted login per test.
