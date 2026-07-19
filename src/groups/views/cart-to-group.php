@@ -37,7 +37,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             </a>
                                         </div>
                                     </td>
-                                    <td><?= $person->getClsid() ? InputUtils::escapeHTML($person->getClassification()->getOptionName()) : '<em class="text-body-secondary">' . gettext('Unclassified') . '</em>' ?></td>
+                                    <td><?php
+                                        $cls = $person->getClsid() ? $person->getClassification() : null;
+                                        echo $cls
+                                            ? InputUtils::escapeHTML($cls->getOptionName())
+                                            : '<em class="text-body-secondary">' . gettext('Unclassified') . '</em>';
+                                    ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

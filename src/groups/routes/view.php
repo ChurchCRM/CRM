@@ -140,6 +140,16 @@ function viewGroup(Request $request, Response $response, array $args): Response
         $sGlobalMessage      = $_SESSION['sGlobalMessage'];
         $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
         unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
+        // Include/Footer.php interpolates these values directly into a JS
+        // double-quoted string literal:
+        //   showGlobalMessage("... $sGlobalMessage ...", "... $sGlobalMessageClass ...")
+        // json_encode() escapes backslashes, double-quotes, newlines, and all
+        // other JS-unsafe characters.  substr(..., 1, -1) removes the surrounding
+        // JSON double-quote characters that json_encode() always adds.
+        // Note: do NOT include PHP close-tags in // comments — a closing
+        // tag ends the PHP block even when inside a single-line comment.
+        $sGlobalMessage      = substr(json_encode($sGlobalMessage,      JSON_UNESCAPED_UNICODE), 1, -1);
+        $sGlobalMessageClass = substr(json_encode($sGlobalMessageClass, JSON_UNESCAPED_UNICODE), 1, -1);
     }
 
     // ------------------------------------------------------------------ //
