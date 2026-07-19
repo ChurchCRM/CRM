@@ -32,7 +32,7 @@ $app->get('/', function (Request $request, Response $response): Response {
     if (!empty($params['dateStart'])) {
         $dateStart = InputUtils::legacyFilterInput($params['dateStart']);
         if ($dateStart !== '') {
-            $dateStartObj = \DateTime::createFromFormat($sDateFormat, $dateStart);
+            $dateStartObj = \DateTime::createFromFormat($sDateFormat, $dateStart, DateTimeUtils::getConfiguredTimezone());
             if ($dateStartObj !== false) {
                 $fundraisersQuery->filterByDate($dateStartObj, Criteria::GREATER_EQUAL);
             }
@@ -42,7 +42,7 @@ $app->get('/', function (Request $request, Response $response): Response {
     if (!empty($params['dateEnd'])) {
         $dateEnd = InputUtils::legacyFilterInput($params['dateEnd']);
         if ($dateEnd !== '') {
-            $dateEndObj = \DateTime::createFromFormat($sDateFormat, $dateEnd);
+            $dateEndObj = \DateTime::createFromFormat($sDateFormat, $dateEnd, DateTimeUtils::getConfiguredTimezone());
             if ($dateEndObj !== false) {
                 $fundraisersQuery->filterByDate($dateEndObj, Criteria::LESS_EQUAL);
             }
@@ -73,14 +73,17 @@ $app->get('/', function (Request $request, Response $response): Response {
     // Split into active vs archived using DateTimeUtils so the church timezone is applied.
     // When a status filter is explicitly active the user intends to see all matching rows
     // in the active table (no date-based override into archive).
-    $today            = DateTimeUtils::getToday();
+    $todayDate           = DateTimeUtils::getTodayDate();
     $activeFundraisers   = [];
     $archivedFundraisers = [];
     foreach ($allFundraisers as $fr) {
         $status = $fr->getStatus() ?? 'Active';
         $effectiveEnd = $fr->getEndDate() ?? $fr->getDate();
+        // Compare Y-m-d strings (not DateTime instants) so this is correct
+        // regardless of what timezone Propel hydrated onto the stored DATE value —
+        // $todayDate is the only side that needs to know "today" in church time.
         $isArchived = $filterStatus === ''
-            && ($status === 'Closed' || ($effectiveEnd !== null && $effectiveEnd < $today));
+            && ($status === 'Closed' || ($effectiveEnd !== null && $effectiveEnd->format('Y-m-d') < $todayDate));
         if ($isArchived) {
             $archivedFundraisers[] = $fr;
         } else {
@@ -205,6 +208,11 @@ $app->get('/editor[/{fundraiserId}]', function (Request $request, Response $resp
     $dDate        = date_create('now');
     $sTitle       = '';
     $sDescription = '';
+    $dEndDate     = null;
+    $sStatus      = 'Active';
+    $sGoalAmount  = '';
+    $sType        = 'Auction';
+    $sFundId      = '';
 
     if ($fundraiserId > 0) {
         $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
@@ -218,6 +226,11 @@ $app->get('/editor[/{fundraiserId}]', function (Request $request, Response $resp
         $dDate        = $fundraiser->getDate();
         $sTitle       = $fundraiser->getTitle();
         $sDescription = $fundraiser->getDescription();
+        $dEndDate     = $fundraiser->getEndDate();
+        $sStatus      = $fundraiser->getStatus() ?: 'Active';
+        $sGoalAmount  = $fundraiser->getGoalAmount() !== null ? (string) $fundraiser->getGoalAmount() : '';
+        $sType        = $fundraiser->getType() ?: 'Auction';
+        $sFundId      = $fundraiser->getFundId() !== null ? (string) $fundraiser->getFundId() : '';
 
         $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
@@ -261,9 +274,16 @@ $app->get('/editor[/{fundraiserId}]', function (Request $request, Response $resp
         'dDate'         => $dDate,
         'sTitle'        => $sTitle,
         'sDescription'  => $sDescription,
+        'dEndDate'      => $dEndDate,
+        'sStatus'       => $sStatus,
+        'sGoalAmount'   => $sGoalAmount,
+        'sType'         => $sType,
+        'sFundId'       => $sFundId,
+        'donationFunds' => DonationFundQuery::create()->orderByName()->find(),
         'donatedItems'  => $donatedItems,
         'personMap'     => $personMap,
         'sDateError'    => '',
+        'sFieldError'   => '',
     ]);
 });
 
@@ -275,9 +295,16 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
     $dDate        = InputUtils::legacyFilterInput($body['Date'] ?? '');
     $sTitle       = InputUtils::legacyFilterInput($body['Title'] ?? '');
     $sDescription = InputUtils::legacyFilterInput($body['Description'] ?? '');
+    $sEndDate     = InputUtils::legacyFilterInput($body['EndDate'] ?? '');
+    $sStatus      = InputUtils::legacyFilterInput($body['Status'] ?? 'Active');
+    $sGoalAmount  = InputUtils::legacyFilterInput($body['GoalAmount'] ?? '');
+    $sType        = InputUtils::legacyFilterInput($body['Type'] ?? 'Auction');
+    $sFundId      = InputUtils::legacyFilterInput($body['FundId'] ?? '');
 
-    $bErrorFlag = false;
-    $sDateError = '';
+    $bErrorFlag  = false;
+    $sDateError  = '';
+    $sFieldError = '';
+    $fundraiser  = null;
 
     if (strlen($dDate) > 0) {
         [$iYear, $iMonth, $iDay] = sscanf($dDate, '%04d-%02d-%02d');
@@ -287,12 +314,39 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
         }
     }
 
-    if ($bErrorFlag) {
-        $fundraiser   = $fundraiserId > 0 ? FundRaiserQuery::create()->findOneById($fundraiserId) : null;
-        $donatedItems = null;
-        $personMap    = [];
+    if (!$bErrorFlag) {
+        if ($fundraiserId <= 0) {
+            $fundraiser = new FundRaiser();
+        } else {
+            $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
+            if ($fundraiser === null) {
+                return $response
+                    ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/')
+                    ->withStatus(302);
+            }
+        }
 
-        if ($fundraiser) {
+        $fundraiser->setDate($dDate)->setTitle($sTitle)->setDescription($sDescription);
+
+        $fieldError = (new FundRaiserService())->applyFields($fundraiser, [
+            'endDate'    => $sEndDate,
+            'status'     => $sStatus,
+            'goalAmount' => $sGoalAmount,
+            'type'       => $sType,
+            'fundId'     => $sFundId,
+        ]);
+        if ($fieldError !== null) {
+            $sFieldError = $fieldError;
+            $bErrorFlag  = true;
+        }
+    }
+
+    if ($bErrorFlag) {
+        $displayFundraiser = $fundraiserId > 0 ? FundRaiserQuery::create()->findOneById($fundraiserId) : null;
+        $donatedItems       = null;
+        $personMap          = [];
+
+        if ($displayFundraiser) {
             $donatedItems = DonatedItemQuery::create()
                 ->filterByFrId($fundraiserId)
                 ->addAscendingOrderByColumn('di_multibuy')
@@ -328,43 +382,32 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
                 [gettext('Edit Fundraiser')],
             ]),
             'fundraiserId'  => $fundraiserId,
-            'fundraiser'    => $fundraiser,
+            'fundraiser'    => $displayFundraiser,
             'dDate'         => $dDate,
             'sTitle'        => $sTitle,
             'sDescription'  => $sDescription,
+            'dEndDate'      => $sEndDate !== '' ? $sEndDate : null,
+            'sStatus'       => $sStatus,
+            'sGoalAmount'   => $sGoalAmount,
+            'sType'         => $sType,
+            'sFundId'       => $sFundId,
+            'donationFunds' => DonationFundQuery::create()->orderByName()->find(),
             'donatedItems'  => $donatedItems,
             'personMap'     => $personMap,
             'sDateError'    => $sDateError,
+            'sFieldError'   => $sFieldError,
         ]);
     }
 
     $currentUser = AuthenticationManager::getCurrentUser();
+    $fundraiser
+        ->setEnteredBy($currentUser->getId())
+        ->setEnteredDate(DateTimeUtils::getToday()->format('YmdHis'));
+    $fundraiser->save();
 
     if ($fundraiserId <= 0) {
-        $fundraiser = new FundRaiser();
-        $fundraiser
-            ->setDate($dDate)
-            ->setTitle($sTitle)
-            ->setDescription($sDescription)
-            ->setEnteredBy($currentUser->getId())
-            ->setEnteredDate(DateTimeUtils::getToday()->format('YmdHis'));
-        $fundraiser->save();
         $fundraiser->reload();
         $fundraiserId = $fundraiser->getId();
-    } else {
-        $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
-        if ($fundraiser === null) {
-            return $response
-                ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/')
-                ->withStatus(302);
-        }
-        $fundraiser
-            ->setDate($dDate)
-            ->setTitle($sTitle)
-            ->setDescription($sDescription)
-            ->setEnteredBy($currentUser->getId())
-            ->setEnteredDate(DateTimeUtils::getToday()->format('YmdHis'));
-        $fundraiser->save();
     }
 
     // Invalidate the session-cached active count so Menu.php refreshes it.

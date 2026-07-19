@@ -8,6 +8,13 @@ $fundraiserId = (int) $fundraiserId;
 $status       = $fundraiser->getStatus() ?: 'Active';
 $frType       = $fundraiser->getType() ?: 'Auction';
 $goalAmount   = $fundraiser->getGoalAmount() !== null ? (float) $fundraiser->getGoalAmount() : null;
+// Bid sheets are a silent-auction bidding artifact — not applicable to other types.
+$showBidSheets = in_array($frType, ['Auction', 'Silent Auction'], true);
+// Catalog/Certificates are pre-event browsable bid-display artifacts — a Raffle has
+// no bidding to browse for, so these don't apply (Buyer Statements still does, and
+// Donated Items stays available everywhere since Batch Winner Entry needs it to
+// record drawing winners).
+$showItemCatalog = $frType !== 'Raffle';
 
 // Status top-card accent colour
 $statusColor = match ($status) {
@@ -22,26 +29,6 @@ $statusBadge = match ($status) {
     'Planning' => 'badge bg-azure-lt text-azure',
     default    => 'badge bg-secondary-lt',
 };
-
-// Finance report jump URLs — only active when the linked fund record was successfully resolved.
-// FundId may be set but point to a hard-deleted fund; in that case $fundName stays null
-// and we correctly treat the fundraiser as "unlinked".
-$hasFund      = $fundName !== null;
-$dateFrom     = $fundraiser->getDate()?->format('Y-m-d') ?? '';
-$dateTo       = ($fundraiser->getEndDate() ?? $fundraiser->getDate())?->format('Y-m-d') ?? $dateFrom;
-$financeBase  = $sRootPath . '/FinancialReports.php';
-$depositUrl   = $financeBase . '?' . http_build_query([
-    'ReportType' => 'Advanced Deposit Report',
-    'DateStart'  => $dateFrom,
-    'DateEnd'    => $dateTo,
-    'datetype'   => 'deposit',
-]);
-$givingUrl    = $financeBase . '?' . http_build_query([
-    'ReportType' => 'Giving Report',
-    'DateStart'  => $dateFrom,
-    'DateEnd'    => $dateTo,
-]);
-$depositSlipUrl = $sRootPath . '/FindDepositSlip.php';
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -131,6 +118,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-gavel me-2"></i><?= gettext('Donated Items') ?></h3>
         <span class="badge bg-primary ms-2"><?= count($itemList) ?></span>
+        <?php if ($canEdit): ?>
+        <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/editor" class="btn btn-sm btn-success ms-auto">
+          <i class="ti ti-plus me-1"></i><?= gettext('Add Item') ?>
+        </a>
+        <?php endif; ?>
       </div>
       <div class="card-body p-0">
         <?php if (!empty($itemList)): ?>
@@ -189,6 +181,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php else: ?>
         <div class="empty py-3">
           <p class="empty-title text-body-secondary"><?= gettext('No donated items yet.') ?></p>
+          <?php if ($canEdit): ?>
+          <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/editor" class="btn btn-success btn-sm">
+            <i class="ti ti-plus me-1"></i><?= gettext('Add Item') ?>
+          </a>
+          <?php endif; ?>
         </div>
         <?php endif; ?>
       </div>
@@ -270,56 +267,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         <h4 class="text-body-secondary mb-2 small"><?= gettext('Auction Reports') ?></h4>
         <div class="list-group list-group-flush mb-3">
+          <?php if ($showItemCatalog): ?>
           <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/catalog" class="list-group-item list-group-item-action">
             <i class="ti ti-book me-2 text-body-secondary"></i><?= gettext('Catalog') ?>
           </a>
+          <?php endif; ?>
+          <?php if ($showBidSheets): ?>
           <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/bid-sheets" class="list-group-item list-group-item-action">
             <i class="ti ti-list me-2 text-body-secondary"></i><?= gettext('Bid Sheets') ?>
           </a>
+          <?php endif; ?>
+          <?php if ($showItemCatalog): ?>
           <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/certificates" class="list-group-item list-group-item-action">
             <i class="ti ti-certificate me-2 text-body-secondary"></i><?= gettext('Certificates') ?>
           </a>
+          <?php endif; ?>
           <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/statement" class="list-group-item list-group-item-action">
             <i class="ti ti-file-invoice me-2 text-body-secondary"></i><?= gettext('Buyer Statements') ?>
           </a>
-        </div>
-
-        <h4 class="text-body-secondary mb-2 small"><?= gettext('Finance Reports') ?></h4>
-        <?php if (!$hasFund): ?>
-        <div class="alert alert-secondary py-2 small mb-2">
-          <i class="ti ti-info-circle me-1"></i>
-          <?= gettext('Link this fundraiser to a donation fund to enable Finance report jumps.') ?>
-        </div>
-        <?php endif; ?>
-        <div class="list-group list-group-flush">
-          <?php if ($hasFund): ?>
-          <a href="<?= InputUtils::escapeAttribute($depositUrl) ?>"
-             class="list-group-item list-group-item-action"
-             title="<?= InputUtils::escapeAttribute(gettext('Date-filtered across all funds — use the fund filter inside the report to narrow to this fund')) ?>">
-            <i class="ti ti-report-money me-2 text-body-secondary"></i><?= gettext('Deposit Report (date-filtered)') ?>
-          </a>
-          <a href="<?= InputUtils::escapeAttribute($givingUrl) ?>"
-             class="list-group-item list-group-item-action"
-             title="<?= InputUtils::escapeAttribute(gettext('Date-filtered across all funds — use the fund filter inside the report to narrow to this fund')) ?>">
-            <i class="ti ti-heart me-2 text-body-secondary"></i><?= gettext('Giving Report (date-filtered)') ?>
-          </a>
-          <a href="<?= InputUtils::escapeAttribute($depositSlipUrl) ?>" class="list-group-item list-group-item-action">
-            <i class="ti ti-receipt me-2 text-body-secondary"></i><?= gettext('Deposit Slips') ?>
-          </a>
-          <?php else: ?>
-          <span class="list-group-item disabled text-body-secondary" tabindex="-1"
-                title="<?= InputUtils::escapeAttribute(gettext('Link this fundraiser to a donation fund to enable financial reports.')) ?>">
-            <i class="ti ti-report-money me-2"></i><?= gettext('Deposit Report') ?>
-          </span>
-          <span class="list-group-item disabled text-body-secondary" tabindex="-1"
-                title="<?= InputUtils::escapeAttribute(gettext('Link this fundraiser to a donation fund to enable financial reports.')) ?>">
-            <i class="ti ti-heart me-2"></i><?= gettext('Giving Report') ?>
-          </span>
-          <span class="list-group-item disabled text-body-secondary" tabindex="-1"
-                title="<?= InputUtils::escapeAttribute(gettext('Link this fundraiser to a donation fund to enable financial reports.')) ?>">
-            <i class="ti ti-receipt me-2"></i><?= gettext('Deposit Slips') ?>
-          </span>
-          <?php endif; ?>
         </div>
       </div>
     </div>

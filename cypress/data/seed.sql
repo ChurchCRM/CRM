@@ -548,22 +548,34 @@ CREATE TABLE `fundraiser_fr` (
   `fr_Type` varchar(20) DEFAULT 'Auction',
   `fr_fund_ID` mediumint(8) unsigned DEFAULT NULL,
   PRIMARY KEY (`fr_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `fundraiser_fr`
 --
+-- Rows 2-7 showcase every fundraiser type (Auction/Silent Auction/Live Auction/
+-- Raffle/Gala/Mixed) spread across a typical church calendar year, with a mix
+-- of Closed/Active/Planning statuses and fund linkage, for the Fundraisers
+-- system calendar and listing/report-visibility demos.
+--
 
 LOCK TABLES `fundraiser_fr` WRITE;
 /*!40000 ALTER TABLE `fundraiser_fr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `fundraiser_fr` VALUES (1,'2016-11-19','2016 Car Wash','Youth Car Wash',1,'2016-11-19',NULL,'Active',NULL,'Auction',NULL);
+INSERT INTO `fundraiser_fr` VALUES
+(1,'2016-11-19','2016 Car Wash','Youth Car Wash',1,'2016-11-19',NULL,'Active',NULL,'Auction',NULL),
+(2,'2026-02-01','Souper Bowl Sunday Raffle','Canned-food drive raffle held during the Souper Bowl Sunday collection.',1,'2026-02-01',NULL,'Closed',500.00,'Raffle',NULL),
+(3,'2026-04-18','Spring Silent Auction','Two-day silent auction dinner benefiting the building campaign.',1,'2026-04-18','2026-04-19','Closed',8000.00,'Silent Auction',2),
+(4,'2026-06-15','Vacation Bible School Live Auction','Live-call auction to fund VBS scholarships and supplies.',1,'2026-06-15',NULL,'Closed',6000.00,'Live Auction',1),
+(5,'2026-07-15','Summer Harvest Raffle','Ten-day raffle for a handmade quilt, drawn at the summer picnic.',1,'2026-07-15','2026-07-25','Active',1200.00,'Raffle',NULL),
+(6,'2026-10-24','Fall Festival Gala','Formal fall fundraising gala with dinner and dancing.',1,'2026-10-24',NULL,'Planning',15000.00,'Gala',2),
+(7,'2026-12-05','Christmas Bazaar','Two-day holiday bazaar mixing craft sales, a raffle table, and a bake sale.',1,'2026-12-05','2026-12-06','Planning',4000.00,'Mixed',3);
 /*!40000 ALTER TABLE `fundraiser_fr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `fundraiser_fr` with 1 row(s)
+-- Dumped table `fundraiser_fr` with 7 row(s)
 --
 
 --

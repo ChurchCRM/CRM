@@ -246,6 +246,185 @@ describe("API Private Fundraisers", () => {
         });
     });
 
+    describe("Tier-1 fields (endDate/status/goalAmount/type/fundId)", () => {
+        it("Creates a fundraiser with all Tier-1 fields and round-trips them", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                {
+                    title: `Cypress FR fields ${Date.now()}`,
+                    date: "2026-06-01",
+                    endDate: "2026-06-03",
+                    status: "Planning",
+                    type: "Gala",
+                    goalAmount: 1500,
+                    fundId: 2,
+                },
+                201,
+            ).then((response) => {
+                const fr = response.body.fundraiser;
+                expect(fr.endDate).to.equal("2026-06-03");
+                expect(fr.status).to.equal("Planning");
+                expect(fr.type).to.equal("Gala");
+                expect(fr.goalAmount).to.equal(1500);
+                expect(fr.fundId).to.equal(2);
+                cy.makePrivateAdminAPICall("DELETE", `/api/fundraisers/${fr.id}`, null, 200);
+            });
+        });
+
+        it("Returns 400 for an invalid status value", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR bad-status ${Date.now()}`, status: "Cancelled" },
+                400,
+            );
+        });
+
+        it("Returns 400 for an invalid type value", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR bad-type ${Date.now()}`, type: "Bake Sale" },
+                400,
+            );
+        });
+
+        it("Returns 400 for a negative goalAmount", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR neg-goal ${Date.now()}`, goalAmount: -50 },
+                400,
+            );
+        });
+
+        it("Returns 400 for a non-numeric goalAmount", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR nan-goal ${Date.now()}`, goalAmount: "abc" },
+                400,
+            );
+        });
+
+        it("Returns 400 for an invalid endDate format", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR bad-enddate ${Date.now()}`, date: "2026-06-01", endDate: "not-a-date" },
+                400,
+            );
+        });
+
+        it("Returns 400 when endDate precedes the start date", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR enddate-before-start ${Date.now()}`, date: "2026-06-10", endDate: "2026-06-01" },
+                400,
+            );
+        });
+
+        it("Coerces a non-positive fundId to null instead of storing it", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR bad-fund ${Date.now()}`, fundId: -1 },
+                201,
+            ).then((response) => {
+                const fr = response.body.fundraiser;
+                expect(fr.fundId).to.be.null;
+                cy.makePrivateAdminAPICall("DELETE", `/api/fundraisers/${fr.id}`, null, 200);
+            });
+        });
+
+        it("Updates Tier-1 fields via PUT", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR PUT-fields ${Date.now()}`, date: "2026-05-01" },
+                201,
+            ).then((createResp) => {
+                const id = createResp.body.fundraiser.id;
+                cy.makePrivateAdminAPICall(
+                    "PUT",
+                    `/api/fundraisers/${id}`,
+                    { status: "Closed", type: "Raffle", goalAmount: 250, fundId: 3 },
+                    200,
+                ).then((updateResp) => {
+                    const fr = updateResp.body.fundraiser;
+                    expect(fr.status).to.equal("Closed");
+                    expect(fr.type).to.equal("Raffle");
+                    expect(fr.goalAmount).to.equal(250);
+                    expect(fr.fundId).to.equal(3);
+                });
+                cy.makePrivateAdminAPICall("DELETE", `/api/fundraisers/${id}`, null, 200);
+            });
+        });
+    });
+
+    describe("Fundraisers system calendar", () => {
+        it("Appears in the system calendar list", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/systemcalendars", null, 200).then((response) => {
+                const calendar = response.body.Calendars.find((c) => c.Name === "Fundraisers");
+                expect(calendar).to.exist;
+                expect(calendar).to.have.property("Id");
+            });
+        });
+
+        it("Returns a fundraiser as a calendar event within its date range", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR Calendar ${Date.now()}`, date: "2026-09-15" },
+                201,
+            ).then((createResp) => {
+                const fr = createResp.body.fundraiser;
+                cy.makePrivateAdminAPICall("GET", "/api/systemcalendars", null, 200).then((listResp) => {
+                    const calendar = listResp.body.Calendars.find((c) => c.Name === "Fundraisers");
+                    cy.makePrivateAdminAPICall(
+                        "GET",
+                        `/api/systemcalendars/${calendar.Id}/fullcalendar?start=2026-09-01&end=2026-09-30`,
+                        null,
+                        200,
+                    ).then((eventsResp) => {
+                        const match = eventsResp.body.find((e) => e.id === String(fr.id));
+                        expect(match).to.exist;
+                        expect(match.title).to.include(fr.title);
+                        expect(match.url).to.include(`/fundraiser/view/${fr.id}`);
+                        expect(match.allDay).to.be.true;
+                    });
+                });
+                cy.makePrivateAdminAPICall("DELETE", `/api/fundraisers/${fr.id}`, null, 200);
+            });
+        });
+
+        it("Excludes a fundraiser outside the requested date range", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/fundraisers",
+                { title: `Cypress FR OutOfRange ${Date.now()}`, date: "2026-01-05" },
+                201,
+            ).then((createResp) => {
+                const fr = createResp.body.fundraiser;
+                cy.makePrivateAdminAPICall("GET", "/api/systemcalendars", null, 200).then((listResp) => {
+                    const calendar = listResp.body.Calendars.find((c) => c.Name === "Fundraisers");
+                    cy.makePrivateAdminAPICall(
+                        "GET",
+                        `/api/systemcalendars/${calendar.Id}/fullcalendar?start=2026-09-01&end=2026-09-30`,
+                        null,
+                        200,
+                    ).then((eventsResp) => {
+                        const match = eventsResp.body.find((e) => e.id === String(fr.id));
+                        expect(match).to.be.undefined;
+                    });
+                });
+                cy.makePrivateAdminAPICall("DELETE", `/api/fundraisers/${fr.id}`, null, 200);
+            });
+        });
+    });
+
     describe("Access control", () => {
         it("Returns 401 when no API key is provided", () => {
             cy.request({

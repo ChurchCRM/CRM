@@ -33,6 +33,19 @@ $frStatusBadgeClass = static function (string $status): string {
         default    => 'badge bg-secondary-lt',
     };
 };
+
+// Bid sheets are a silent-auction bidding artifact — not applicable to other types.
+$frShowBidSheets = static fn (string $type): bool => in_array($type, ['Auction', 'Silent Auction'], true);
+// Catalog/Certificates are pre-event browsable bid-display artifacts — not applicable
+// to a raffle drawing.
+$frShowItemCatalog = static fn (string $type): bool => $type !== 'Raffle';
+
+// When a status filter is applied, the top table holds every matching
+// fundraiser regardless of archive state (see fundraiser.php's $isArchived
+// gate), so the header must say so instead of always claiming "Active".
+$fundraiserTableTitle = $filterStatus !== ''
+    ? sprintf(gettext('%s Fundraisers'), gettext($filterStatus))
+    : gettext('Active Fundraisers');
 ?>
 
 <!-- ==================== STAT WIDGETS ==================== -->
@@ -150,13 +163,13 @@ $frStatusBadgeClass = static function (string $status): string {
 <!-- ==================== ACTIVE FUNDRAISERS ==================== -->
 <div class="card mb-3">
   <div class="card-header d-flex align-items-center">
-    <h3 class="card-title"><?= gettext('Active Fundraisers') ?></h3>
+    <h3 class="card-title"><?= InputUtils::escapeHTML($fundraiserTableTitle) ?></h3>
     <a href="<?= $sRootPath ?>/fundraiser/editor" class="btn btn-primary btn-sm ms-auto">
       <i class="ti ti-plus me-1"></i><?= gettext('Add Fundraiser') ?>
     </a>
   </div>
   <div class="card-body p-0">
-    <div class="table-responsive">
+    <div style="overflow: visible;">
       <table id="fundraisers" class="table table-hover table-vcenter mb-0 w-100">
         <thead>
           <tr>
@@ -201,6 +214,8 @@ $frStatusBadgeClass = static function (string $status): string {
                 <div class="progress-bar bg-success" role="progressbar" style="width:<?= $goalPct ?>%" aria-valuenow="<?= $goalPct ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <small class="text-body-secondary"><?= $goalPct ?>%</small>
+              <?php else: ?>
+              <span class="text-body-secondary">—</span>
               <?php endif; ?>
             </td>
             <td class="text-end"><?= (int) $summary['buyers'] ?></td>
@@ -217,15 +232,21 @@ $frStatusBadgeClass = static function (string $status): string {
                     <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                   </a>
                   <div class="dropdown-divider"></div>
+                  <?php if ($frShowItemCatalog($frType)): ?>
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/catalog">
                     <i class="ti ti-book me-2"></i><?= gettext('Catalog') ?>
                   </a>
+                  <?php endif; ?>
+                  <?php if ($frShowBidSheets($frType)): ?>
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/bid-sheets">
                     <i class="ti ti-list me-2"></i><?= gettext('Bid Sheets') ?>
                   </a>
+                  <?php endif; ?>
+                  <?php if ($frShowItemCatalog($frType)): ?>
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/certificates">
                     <i class="ti ti-certificate me-2"></i><?= gettext('Certificates') ?>
                   </a>
+                  <?php endif; ?>
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/statement">
                     <i class="ti ti-file-invoice me-2"></i><?= gettext('Buyer Statements') ?>
                   </a>
@@ -247,7 +268,9 @@ $frStatusBadgeClass = static function (string $status): string {
     </div>
     <?php if (empty($activeFundraisers)): ?>
     <div class="empty py-4">
-      <p class="empty-title text-body-secondary"><?= gettext('No active fundraisers found.') ?></p>
+      <p class="empty-title text-body-secondary"><?= $filterStatus !== ''
+          ? sprintf(gettext('No %s fundraisers found.'), gettext($filterStatus))
+          : gettext('No active fundraisers found.') ?></p>
       <?php if (empty($filterStatus) && empty($filterType) && empty($dateStart) && empty($dateEnd)): ?>
       <a href="<?= $sRootPath ?>/fundraiser/editor" class="btn btn-primary btn-sm">
         <i class="ti ti-plus me-1"></i><?= gettext('Create Fundraiser') ?>
@@ -260,6 +283,7 @@ $frStatusBadgeClass = static function (string $status): string {
 
 <!-- ==================== ARCHIVED FUNDRAISERS ==================== -->
 <?php $archivedCount = count($archivedFundraisers); ?>
+<?php if ($filterStatus === ''): ?>
 <div class="card mt-3">
   <div class="card-header p-0">
     <button class="btn btn-ghost-secondary w-100 text-start rounded-0 py-2 px-3"
@@ -275,7 +299,7 @@ $frStatusBadgeClass = static function (string $status): string {
   </div>
   <div id="archiveCollapse" class="collapse">
     <div class="card-body p-0">
-      <div class="table-responsive">
+      <div style="overflow: visible;">
         <table id="fundraisers-archive" class="table table-hover table-vcenter mb-0 w-100">
           <thead>
             <tr>
@@ -317,6 +341,8 @@ $frStatusBadgeClass = static function (string $status): string {
                   <div class="progress-bar bg-success" role="progressbar" style="width:<?= $goalPct ?>%" aria-valuenow="<?= $goalPct ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <small class="text-body-secondary"><?= $goalPct ?>%</small>
+                <?php else: ?>
+                <span class="text-body-secondary">—</span>
                 <?php endif; ?>
               </td>
               <td class="text-end"><?= (int) $summary['buyers'] ?></td>
@@ -333,14 +359,21 @@ $frStatusBadgeClass = static function (string $status): string {
                       <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                     </a>
                     <div class="dropdown-divider"></div>
+                    <?php if ($frShowItemCatalog($frType)): ?>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/catalog">
                       <i class="ti ti-book me-2"></i><?= gettext('Catalog') ?>
                     </a>
+                    <?php endif; ?>
+                    <?php if ($frShowBidSheets($frType)): ?>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/bid-sheets">
                       <i class="ti ti-list me-2"></i><?= gettext('Bid Sheets') ?>
                     </a>
+                    <?php endif; ?>
+                    <?php if ($frShowItemCatalog($frType)): ?>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/certificates">
                       <i class="ti ti-certificate me-2"></i><?= gettext('Certificates') ?>
+                    </a>
+                    <?php endif; ?>
                     </a>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/statement">
                       <i class="ti ti-file-invoice me-2"></i><?= gettext('Buyer Statements') ?>
@@ -364,6 +397,7 @@ $frStatusBadgeClass = static function (string $status): string {
     </div>
   </div>
 </div>
+<?php endif; ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.addEventListener('DOMContentLoaded', function () {
@@ -395,25 +429,29 @@ document.addEventListener('DOMContentLoaded', function () {
     $.extend(dtCfg, window.CRM.plugin.dataTable);
     $('#fundraisers').DataTable(dtCfg);
 
-    // Archive fundraisers DataTable — autoWidth:false prevents column-width miscomputation
-    // when the container is hidden (Bootstrap collapse). columns.adjust() is called on
-    // the shown.bs.collapse event to finalise widths when the user first expands the archive.
-    var dtCfgArc = {
-        order: [[2, 'desc']],
-        autoWidth: false,
-        columnDefs: [
-            { targets: -1, orderable: false, searchable: false },
-            { targets: 6, orderable: false },
-        ],
-        pageLength: 25,
-    };
-    $.extend(dtCfgArc, window.CRM.plugin.dataTable);
-    var archiveTable = $('#fundraisers-archive').DataTable(dtCfgArc);
+    // Archive fundraisers DataTable — not rendered at all when a status filter is
+    // active (see fundraiser-list.php), so guard on the element existing.
+    // autoWidth:false prevents column-width miscomputation when the container is
+    // hidden (Bootstrap collapse). columns.adjust() is called on the
+    // shown.bs.collapse event to finalise widths when the user first expands it.
+    if (document.getElementById('fundraisers-archive')) {
+        var dtCfgArc = {
+            order: [[2, 'desc']],
+            autoWidth: false,
+            columnDefs: [
+                { targets: -1, orderable: false, searchable: false },
+                { targets: 6, orderable: false },
+            ],
+            pageLength: 25,
+        };
+        $.extend(dtCfgArc, window.CRM.plugin.dataTable);
+        var archiveTable = $('#fundraisers-archive').DataTable(dtCfgArc);
 
-    // Adjust column widths when the collapse reveals the table for the first time.
-    document.getElementById('archiveCollapse')?.addEventListener('shown.bs.collapse', function () {
-        archiveTable.columns.adjust();
-    }, { once: true });
+        // Adjust column widths when the collapse reveals the table for the first time.
+        document.getElementById('archiveCollapse')?.addEventListener('shown.bs.collapse', function () {
+            archiveTable.columns.adjust();
+        }, { once: true });
+    }
 });
 </script>
 

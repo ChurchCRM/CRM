@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -21,82 +22,6 @@ use Slim\Routing\RouteCollectorProxy;
  * Provides the canonical read/write path for fundraiser records so clients
  * (mobile, MVC migration, integrations) don't depend on legacy form posts.
  */
-
-/**
- * Apply optional Tier-1 fields (endDate, status, goalAmount, type, fundId) from a request
- * body to a FundRaiser model.
- *
- * WHY this helper exists: both POST (create) and PUT (update) need identical optional-field
- * validation and assignment. Extracting it here avoids duplicating ~50 lines of validation
- * logic. Callers only pass the fields they receive; all guards use array_key_exists() so
- * omitted fields are never touched — this preserves backward compatibility for existing API
- * consumers that only send a subset of fields (e.g. a client that only sets title/date).
- *
- * Returns a 400 error Response on validation failure, or null on success.
- */
-function applyFundraiserFields(FundRaiser $fr, array $input, Response $response): ?Response
-{
-    if (array_key_exists('endDate', $input)) {
-        $endDate = trim((string) ($input['endDate'] ?? ''));
-        if ($endDate !== '') {
-            $dateFmt  = SystemConfig::getValue('sDatePickerFormat');
-            $parsedEnd = \DateTime::createFromFormat($dateFmt, $endDate);
-            if ($parsedEnd === false || $parsedEnd->format($dateFmt) !== $endDate) {
-                return SlimUtils::renderErrorJSON($response, gettext('Not a valid end date'), [], 400);
-            }
-            // End date must not precede start date.
-            $startDate = $fr->getDate();
-            if ($startDate !== null && $parsedEnd < $startDate) {
-                return SlimUtils::renderErrorJSON($response, gettext('End date must be on or after the start date'), [], 400);
-            }
-            $fr->setEndDate($parsedEnd); // pass DateTime object; Propel normalises to ISO for storage
-        } else {
-            $fr->setEndDate(null);
-        }
-    }
-    if (array_key_exists('status', $input)) {
-        $status = (string) ($input['status'] ?? 'Active');
-        if (!in_array($status, ['Planning', 'Active', 'Closed'], true)) {
-            return SlimUtils::renderErrorJSON($response, gettext('Invalid status value'), [], 400);
-        }
-        $fr->setStatus($status);
-    }
-    if (array_key_exists('goalAmount', $input)) {
-        $goal = $input['goalAmount'];
-        if ($goal !== null && $goal !== '') {
-            if (!is_numeric($goal)) {
-                return SlimUtils::renderErrorJSON($response, gettext('goalAmount must be a non-negative number'), [], 400);
-            }
-            $goalFloat = (float) $goal;
-            if ($goalFloat < 0) {
-                return SlimUtils::renderErrorJSON($response, gettext('goalAmount must be non-negative'), [], 400);
-            }
-            $fr->setGoalAmount($goalFloat);
-        } else {
-            $fr->setGoalAmount(null);
-        }
-    }
-    if (array_key_exists('type', $input)) {
-        $type = (string) ($input['type'] ?? 'Auction');
-        $allowedTypes = ['Silent Auction', 'Live Auction', 'Raffle', 'Gala', 'Mixed', 'Auction'];
-        if (!in_array($type, $allowedTypes, true)) {
-            return SlimUtils::renderErrorJSON($response, gettext('Invalid type value'), [], 400);
-        }
-        $fr->setType($type);
-    }
-    if (array_key_exists('fundId', $input)) {
-        $fundId = $input['fundId'];
-        if ($fundId !== null && $fundId !== '') {
-            $fundIdInt = (int) $fundId;
-            // Coerce invalid (non-positive) values to null rather than storing
-            // a 0 that would incorrectly mark the fundraiser as "linked".
-            $fr->setFundId($fundIdInt > 0 ? $fundIdInt : null);
-        } else {
-            $fr->setFundId(null);
-        }
-    }
-    return null;
-}
 
 /**
  * Convert a FundRaiser model to a plain array safe for JSON output.
@@ -181,7 +106,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
 
             if ($date !== '') {
                 $dateFmt = SystemConfig::getValue('sDatePickerFormat');
-                $parsed  = \DateTime::createFromFormat($dateFmt, $date);
+                $parsed  = \DateTime::createFromFormat($dateFmt, $date, DateTimeUtils::getConfiguredTimezone());
                 if ($parsed === false || $parsed->format($dateFmt) !== $date) {
                     return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                 }
@@ -194,9 +119,9 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             $fr->setTitle($title);
             $fr->setDescription($description);
             $fr->setDate($date);
-            $fieldErr = applyFundraiserFields($fr, $input, $response);
+            $fieldErr = (new FundRaiserService())->applyFields($fr, $input);
             if ($fieldErr !== null) {
-                return $fieldErr;
+                return SlimUtils::renderErrorJSON($response, $fieldErr, [], 400);
             }
             $fr->setEnteredBy((int) AuthenticationManager::getCurrentUser()->getId());
             $fr->setEnteredDate(DateTimeUtils::getToday()->format('Y-m-d'));
@@ -278,16 +203,16 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
                 $date = trim((string) $input['date']);
                 if ($date !== '') {
                     $dateFmt = SystemConfig::getValue('sDatePickerFormat');
-                    $parsed  = \DateTime::createFromFormat($dateFmt, $date);
+                    $parsed  = \DateTime::createFromFormat($dateFmt, $date, DateTimeUtils::getConfiguredTimezone());
                     if ($parsed === false || $parsed->format($dateFmt) !== $date) {
                         return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                     }
                     $fr->setDate($parsed->format('Y-m-d'));
                 }
             }
-            $fieldErr = applyFundraiserFields($fr, $input, $response);
+            $fieldErr = (new FundRaiserService())->applyFields($fr, $input);
             if ($fieldErr !== null) {
-                return $fieldErr;
+                return SlimUtils::renderErrorJSON($response, $fieldErr, [], 400);
             }
 
             $fr->save();

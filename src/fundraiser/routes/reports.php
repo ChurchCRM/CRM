@@ -146,6 +146,13 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
             ->withStatus(302);
     }
 
+    // Bid sheets are a silent-auction bidding artifact — not applicable to other types.
+    if (!in_array($fundraiser->getType() ?: 'Auction', ['Auction', 'Silent Auction'], true)) {
+        return $response
+            ->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/fundraiser/view/' . $fundraiserId)
+            ->withStatus(302);
+    }
+
     $items = [];
     foreach (DonatedItemQuery::create()->filterByFrId($fundraiser->getId())->find() as $donatedItem) {
         $items[] = $donatedItem;
@@ -226,6 +233,13 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
             ->withStatus(302);
     }
 
+    // Certificates are a pre-event item display artifact — not applicable to a raffle drawing.
+    if (($fundraiser->getType() ?: 'Auction') === 'Raffle') {
+        return $response
+            ->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/fundraiser/view/' . $fundraiserId)
+            ->withStatus(302);
+    }
+
     // PdfCertificatesReport::addPage() uses these globals
     global $fr_title, $fr_description, $curY;
     $fr_title       = $fundraiser->getTitle();
@@ -282,6 +296,13 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
     if ($fundraiser === null) {
         return $response
             ->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/fundraiser/')
+            ->withStatus(302);
+    }
+
+    // Catalog is a pre-event browsable bid-display artifact — not applicable to a raffle drawing.
+    if (($fundraiser->getType() ?: 'Auction') === 'Raffle') {
+        return $response
+            ->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/fundraiser/view/' . $fundraiserId)
             ->withStatus(302);
     }
 

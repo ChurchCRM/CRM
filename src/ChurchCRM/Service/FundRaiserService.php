@@ -2,12 +2,15 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
+use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\model\ChurchCRM\Map\DonatedItemTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PaddleNumTableMap;
 use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -206,7 +209,7 @@ class FundRaiserService
     {
         $this->logger->debug('FundRaiserService::getWidgetStats');
 
-        $year = (int) date('Y');
+        $year = DateTimeUtils::getCurrentYear();
 
         // Active fundraisers count (Active + Planning)
         $activeCount = FundRaiserQuery::create()
@@ -271,5 +274,84 @@ class FundRaiserService
         return FundRaiserQuery::create()
             ->filterByStatus(['Active', 'Planning'])
             ->count();
+    }
+
+    /**
+     * Applies optional Tier-1 fields (endDate, status, goalAmount, type, fundId) from an
+     * input array to a FundRaiser model. Shared by the REST API and the legacy MVC editor
+     * form so both surfaces validate identically instead of duplicating the rules.
+     *
+     * Callers only pass the fields they received; all guards use array_key_exists() so
+     * omitted fields are never touched. $fr->getDate() (the start date) must already be
+     * set before calling this, since the end-date check compares against it.
+     *
+     * @param  array<string, mixed> $input
+     * @return string|null Gettext error message on validation failure, or null on success.
+     */
+    public function applyFields(FundRaiser $fr, array $input): ?string
+    {
+        if (array_key_exists('endDate', $input)) {
+            $endDate = trim((string) ($input['endDate'] ?? ''));
+            if ($endDate !== '') {
+                $dateFmt   = SystemConfig::getValue('sDatePickerFormat');
+                $parsedEnd = \DateTime::createFromFormat($dateFmt, $endDate, DateTimeUtils::getConfiguredTimezone());
+                if ($parsedEnd === false || $parsedEnd->format($dateFmt) !== $endDate) {
+                    return gettext('Not a valid end date');
+                }
+                // End date must not precede start date. Compare Y-m-d strings (not DateTime
+                // instants) so this holds regardless of what timezone Propel hydrated onto
+                // the stored start date.
+                $startDate = $fr->getDate();
+                if ($startDate !== null && $parsedEnd->format('Y-m-d') < $startDate->format('Y-m-d')) {
+                    return gettext('End date must be on or after the start date');
+                }
+                $fr->setEndDate($parsedEnd); // pass DateTime object; Propel normalises to ISO for storage
+            } else {
+                $fr->setEndDate(null);
+            }
+        }
+        if (array_key_exists('status', $input)) {
+            $status = (string) ($input['status'] ?? 'Active');
+            if (!in_array($status, ['Planning', 'Active', 'Closed'], true)) {
+                return gettext('Invalid status value');
+            }
+            $fr->setStatus($status);
+        }
+        if (array_key_exists('goalAmount', $input)) {
+            $goal = $input['goalAmount'];
+            if ($goal !== null && $goal !== '') {
+                if (!is_numeric($goal)) {
+                    return gettext('goalAmount must be a non-negative number');
+                }
+                $goalFloat = (float) $goal;
+                if ($goalFloat < 0) {
+                    return gettext('goalAmount must be non-negative');
+                }
+                $fr->setGoalAmount($goalFloat);
+            } else {
+                $fr->setGoalAmount(null);
+            }
+        }
+        if (array_key_exists('type', $input)) {
+            $type         = (string) ($input['type'] ?? 'Auction');
+            $allowedTypes = ['Silent Auction', 'Live Auction', 'Raffle', 'Gala', 'Mixed', 'Auction'];
+            if (!in_array($type, $allowedTypes, true)) {
+                return gettext('Invalid type value');
+            }
+            $fr->setType($type);
+        }
+        if (array_key_exists('fundId', $input)) {
+            $fundId = $input['fundId'];
+            if ($fundId !== null && $fundId !== '') {
+                $fundIdInt = (int) $fundId;
+                // Coerce invalid (non-positive) values to null rather than storing
+                // a 0 that would incorrectly mark the fundraiser as "linked".
+                $fr->setFundId($fundIdInt > 0 ? $fundIdInt : null);
+            } else {
+                $fr->setFundId(null);
+            }
+        }
+
+        return null;
     }
 }
