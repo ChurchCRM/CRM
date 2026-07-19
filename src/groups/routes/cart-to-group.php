@@ -111,13 +111,20 @@ $app->post('/cart-to-group', function (Request $request, Response $response) {
         }
     }
 
-    // Fall back — redirect to the form with an error message.
-    // Covers: GroupID missing/zero, cart empty, or group no longer exists.
+    // Fall back — redirect to the form with a contextual error message.
     if ($iGroupID > 0) {
-        // GroupID was supplied but the group was not found (deleted since page load).
-        $_SESSION['sGlobalMessage']      = gettext('The selected group was not found. Please select a valid group.');
-        $_SESSION['sGlobalMessageClass'] = 'danger';
+        if (empty($_SESSION['aPeopleCart'])) {
+            // Cart was emptied between page load and submit.
+            $_SESSION['sGlobalMessage']      = gettext('Your cart is empty. Add people to your cart first.');
+            $_SESSION['sGlobalMessageClass'] = 'warning';
+        } else {
+            // GroupID supplied but the group was not found (deleted since page load).
+            $_SESSION['sGlobalMessage']      = gettext('The selected group was not found. Please select a valid group.');
+            $_SESSION['sGlobalMessageClass'] = 'danger';
+        }
     }
+    // No message for $iGroupID === 0: the browser-side 'required' attribute
+    // prevents submission without a selection; no server-side flash needed.
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/groups/cart-to-group')
         ->withStatus(302);

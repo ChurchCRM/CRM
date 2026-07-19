@@ -148,8 +148,12 @@ function viewGroup(Request $request, Response $response, array $args): Response
         // JSON double-quote characters that json_encode() always adds.
         // Note: do NOT include PHP close-tags in // comments — a closing
         // tag ends the PHP block even when inside a single-line comment.
-        $sGlobalMessage      = substr(json_encode($sGlobalMessage,      JSON_UNESCAPED_UNICODE), 1, -1);
-        $sGlobalMessageClass = substr(json_encode($sGlobalMessageClass, JSON_UNESCAPED_UNICODE), 1, -1);
+        // JSON_INVALID_UTF8_SUBSTITUTE replaces invalid byte sequences with U+FFFD
+        // instead of letting json_encode() return false, which would cause a
+        // fatal TypeError in substr() on PHP 8.1+.
+        $flags               = JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE;
+        $sGlobalMessage      = substr(json_encode($sGlobalMessage,      $flags), 1, -1);
+        $sGlobalMessageClass = substr(json_encode($sGlobalMessageClass, $flags), 1, -1);
     }
 
     // ------------------------------------------------------------------ //
