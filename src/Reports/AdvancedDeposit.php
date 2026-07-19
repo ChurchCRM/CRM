@@ -9,6 +9,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -325,7 +326,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary ="$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+                $sFundSummary ="$currentFundName Total - $countFund $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFundAmount));
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -343,7 +344,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sDepositSummary ="Deposit #$currentDepositID Total - $countDeposit $item:   $" . number_format($currentDepositAmount, 2, '.', ',');
+                $sDepositSummary ="Deposit #$currentDepositID Total - $countDeposit $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentDepositAmount));
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
@@ -432,7 +433,7 @@ $page = 1;
             } else {
                 $item = gettext('item');
             }
-            $sFundSummary ="$fun_Name Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+            $sFundSummary ="$fun_Name Total - $countFund $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFundAmount));
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -446,7 +447,7 @@ $page = 1;
         } else {
             $item = gettext('item');
         }
-        $sDepositSummary ="Deposit #$currentDepositID Total - $countDeposit $item:   $" . number_format($currentDepositAmount, 2, '.', ',');
+        $sDepositSummary ="Deposit #$currentDepositID Total - $countDeposit $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentDepositAmount));
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
@@ -493,7 +494,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+                $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFamilyAmount));
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -511,7 +512,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary ="$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+                $sFundSummary ="$currentFundName Total - $countFund $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFundAmount));
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
@@ -600,7 +601,7 @@ $page = 1;
             } else {
                 $item = gettext('item');
             }
-            $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+            $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFamilyAmount));
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -614,7 +615,7 @@ $page = 1;
         } else {
             $item = gettext('item');
         }
-        $sFundSummary ="$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+        $sFundSummary ="$currentFundName Total - $countFund $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFundAmount));
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
@@ -661,7 +662,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary ="$currentFundName - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+                $sFundSummary ="$currentFundName - $countFund $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFundAmount));
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -679,7 +680,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+                $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFamilyAmount));
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sFamilySummary, 0, 0, 'R');
@@ -768,7 +769,7 @@ $page = 1;
             } else {
                 $item = gettext('item');
             }
-            $sFundSummary ="$currentFundName - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+            $sFundSummary ="$currentFundName - $countFund $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFundAmount));
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -782,7 +783,7 @@ $page = 1;
         } else {
             $item = gettext('item');
         }
-        $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+        $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentFamilyAmount));
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sFamilySummary, 0, 0, 'R');
@@ -799,7 +800,7 @@ $page = 1;
     } else {
         $item = gettext('item');
     }
-    $sReportSummary ="Report Total ($countReport $item):   $" . number_format($currentReportAmount, 2, '.', ',');
+    $sReportSummary ="Report Total ($countReport $item):   " . ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $currentReportAmount));
     $pdf->SetXY(20, $curY);
     $pdf->SetFont('Times', 'B', 10);
     $pdf->Cell(176, $summaryIntervalY, $sReportSummary, 0, 0, 'R');
@@ -823,7 +824,7 @@ $page = 1;
         }
         $pdf->SetXY(20, $curY);
         $pdf->Cell(45, $summaryIntervalY, $sfun_Name);
-        $pdf->Cell(25, $summaryIntervalY, number_format($FundTotal, 2, '.', ','), 0, 0, 'R');
+        $pdf->Cell(25, $summaryIntervalY, ChurchInfoReport::convertToLatin1(CurrencyFormatter::format((float) $FundTotal)), 0, 0, 'R');
         $curY += $summaryIntervalY;
         $page = $pdf->pageBreak($page);
         next($totalFund);
