@@ -504,7 +504,6 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         <?php endif; ?>
                     </div>
                 </div>
-                <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
                 <?php if ($personMapConfig !== null) : ?>
                 <div class="mt-2">
                     <div id="person-map" style="height: 150px; border-radius: 4px;"></div>
@@ -514,12 +513,24 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     window.CRM.personMapConfig = <?= json_encode($personMapConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
                 </script>
                 <?php endif; ?>
-                <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
-                <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
             </div>
             <?php endif; ?>
         </div>
         <?php } ?>
+
+        <!--
+            person-view.js bundle (map, refresh-coordinates, group manager, timeline
+            filter, attendance history) — loaded unconditionally. It must NOT be
+            nested inside the "has family" / "has mailing address" blocks above:
+            group management, the timeline filter, and the attendance history tab
+            are all needed regardless of whether the person has a family or address
+            (e.g. the admin's own "Church Admin" placeholder person has neither),
+            and personMapConfig can also be set for a family-less person with their
+            own address (see the $fam_ID === '' branch above).
+        -->
+        <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+        <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+        <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
 
         <!-- Tabbed Content -->
         <div class="card">

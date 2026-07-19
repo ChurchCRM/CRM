@@ -191,8 +191,11 @@ describe("Person Attendance History Tab", () => {
         });
 
         it("clear button resets filters and shows all records", () => {
-            // Set a future date that excludes all records
-            cy.get("#attendance-tab .attendance-filter-from").type("2099-01-01");
+            // Set a future date that excludes all records. .clear() first — matches
+            // the working pattern used elsewhere for native date inputs (e.g.
+            // tax-report-pdf.spec.js) and ensures the "change" event that
+            // attendance-history.ts listens on actually fires.
+            cy.get("#attendance-tab .attendance-filter-from").clear().type("2099-01-01");
             cy.get("#attendance-tab .attendance-tbody tr").should("have.length", 0);
 
             // Clear the filter
