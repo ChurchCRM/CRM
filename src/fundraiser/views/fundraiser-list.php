@@ -374,7 +374,6 @@ $fundraiserTableTitle = $filterStatus !== ''
                       <i class="ti ti-certificate me-2"></i><?= gettext('Certificates') ?>
                     </a>
                     <?php endif; ?>
-                    </a>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/statement">
                       <i class="ti ti-file-invoice me-2"></i><?= gettext('Buyer Statements') ?>
                     </a>
