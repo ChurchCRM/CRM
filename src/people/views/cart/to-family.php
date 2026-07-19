@@ -371,18 +371,6 @@ $rootPath       = SystemURLs::getRootPath();
             });
         });
     }
-
-    // ── Phone mask toggle ──────────────────────────────────────────────────
-    document.addEventListener('DOMContentLoaded', function () {
-        if (window.CRM && window.CRM.formUtils &&
-            typeof window.CRM.formUtils.togglePhoneMask === 'function') {
-            try {
-                window.CRM.formUtils.togglePhoneMask('NoFormat_HomePhone', 'HomePhone');
-            } catch (e) {
-                // noop
-            }
-        }
-    });
 }());
 </script>
 

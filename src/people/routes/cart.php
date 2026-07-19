@@ -17,7 +17,9 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
+use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -102,6 +104,11 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
             }
         }
 
+        // Guard: all cart persons already have a family — nothing to assign (fixes F2)
+        if (empty($errors) && empty($roleByPersonId)) {
+            $errors[] = gettext('All people in your cart are already in a family. No one can be assigned.');
+        }
+
         // Validate new-family fields if creating (validate-before-write: fixes B2)
         if ($familyId === 0 && empty(trim($body['FamilyName'] ?? ''))) {
             $errors[] = gettext('Family name is required when creating a new family.');
@@ -127,25 +134,57 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
                 'cartPersons'   => $cartPersons,
                 'familyRoles'   => $familyRoles,
                 'families'      => $families,
-                'sErrorText'    => implode('<br>', array_map('htmlspecialchars', $errors)),
+                'sErrorText'    => implode('<br>', array_map([InputUtils::class, 'escapeHTML'], $errors)),
                 'sSuccessText'  => '',
                 'formValues'    => $body,
             ];
             return $renderer->render($response, 'cart/to-family.php', $pageArgs);
         }
 
-        // Create new family if requested (validate-before-write ensures name is present)
-        if ($familyId === 0) {
-            $familyService = new FamilyService();
-            $family = $familyService->createFamilyFromCartInput(
-                $body,
-                AuthenticationManager::getCurrentUser()->getId()
-            );
-            $familyId = $family->getId();
-        }
+        // Create new family if requested, then assign — wrapped in one outer transaction
+        // so a failure in emptyToFamily cannot leave an orphan family row (fixes F3)
+        $con = Propel::getConnection();
+        $con->beginTransaction();
+        try {
+            if ($familyId === 0) {
+                $familyService = new FamilyService();
+                $family = $familyService->createFamilyFromCartInput(
+                    $body,
+                    AuthenticationManager::getCurrentUser()->getId(),
+                    $con
+                );
+                $familyId = $family->getId();
+            }
 
-        // Assign eligible cart persons to the family — transactional (fixes B2/B3/B11)
-        $count = Cart::emptyToFamily($familyId, $roleByPersonId);
+            // Assign eligible cart persons to the family — transactional (fixes B2/B3/B11)
+            $count = Cart::emptyToFamily($familyId, $roleByPersonId);
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+            // Re-render the form with a user-facing error (fixes F6)
+            $renderer = new PhpRenderer(__DIR__ . '/../views/');
+            $familyRoles = ListOptionQuery::create()
+                ->filterByListId(2)
+                ->orderByOptionSequence()
+                ->find();
+            $families = FamilyQuery::create()->orderByName()->find();
+            $pageArgs = [
+                'sPageTitle'    => gettext('Add to Family'),
+                'sPageSubtitle' => gettext('Assign people from your cart to a family'),
+                'aBreadcrumbs'  => PageHeader::breadcrumbs([
+                    [gettext('People'), '/people/dashboard'],
+                    [gettext('Cart'), '/people/cart'],
+                    [gettext('Add to Family')],
+                ]),
+                'cartPersons'   => $cartPersons,
+                'familyRoles'   => $familyRoles,
+                'families'      => $families,
+                'sErrorText'    => InputUtils::escapeHTML(gettext('An unexpected error occurred. Please try again.')),
+                'sSuccessText'  => '',
+                'formValues'    => $body,
+            ];
+            return $renderer->render($response, 'cart/to-family.php', $pageArgs);
+        }
 
         $_SESSION['sGlobalMessage'] = sprintf(
             ngettext(

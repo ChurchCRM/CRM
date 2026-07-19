@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 class FamilyService
 {
@@ -42,7 +43,7 @@ class FamilyService
      * @param int   $userId  ID of the user performing the action
      * @return Family        The newly persisted Family
      */
-    public function createFamilyFromCartInput(array $fields, int $userId): Family
+    public function createFamilyFromCartInput(array $fields, int $userId, ?ConnectionInterface $con = null): Family
     {
         $family = new Family();
         $family->setName($fields['FamilyName'] ?? '');
@@ -65,7 +66,7 @@ class FamilyService
         }
         $family->setDateEntered(date('YmdHis'));
         $family->setEnteredBy($userId);
-        $family->save();
+        $family->save($con);
         // Geocode if an address was supplied (legacy cart-to-family page never geocoded)
         if (!empty($fields['Address1']) || !empty($fields['City'])) {
             $this->autoGeocodeFamily($family);
