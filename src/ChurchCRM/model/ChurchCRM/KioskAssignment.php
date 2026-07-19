@@ -61,6 +61,8 @@ class KioskAssignment extends BaseKioskAssignment
                 ->endUse()
                     ->leftJoin('EventAttend')
                     ->withColumn('(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)', 'status')
+                ->orderByLastName()
+                ->orderByFirstName()
                 ->find();
         } else {
             throw new \Exception('This kiosk does not support group attendance');
