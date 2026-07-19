@@ -41,7 +41,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
 
         $cartPersons = Cart::getCartPeople();
         $familyRoles = ListOptionQuery::create()
-            ->filterByListId(2)
+            ->filterById(2)
             ->orderByOptionSequence()
             ->find();
         $families = FamilyQuery::create()->orderByName()->find();
@@ -129,7 +129,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
         if (!empty($errors)) {
             $renderer = new PhpRenderer(__DIR__ . '/../views/');
             $familyRoles = ListOptionQuery::create()
-                ->filterByListId(2)
+                ->filterById(2)
                 ->orderByOptionSequence()
                 ->find();
             $families = FamilyQuery::create()->orderByName()->find();
@@ -186,7 +186,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
             // Re-render the form with a user-facing error (fixes F6)
             $renderer = new PhpRenderer(__DIR__ . '/../views/');
             $familyRoles = ListOptionQuery::create()
-                ->filterByListId(2)
+                ->filterById(2)
                 ->orderByOptionSequence()
                 ->find();
             $families = FamilyQuery::create()->orderByName()->find();
