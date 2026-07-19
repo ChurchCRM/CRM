@@ -18,12 +18,12 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     <div class="btn-group flex-wrap" role="group">
       <a href="#" id="emptyCart" class="btn btn-outline-danger emptyCart" title="<?= gettext('Clear all items from cart') ?>"><i class="fa-solid fa-trash me-2"></i><?= gettext('Empty') ?></a>
       <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
-        <a href="<?= SystemURLs::getRootPath() ?>/groups/cart-to-group" class="btn btn-outline-primary" title="<?= gettext('Add all cart items to a group') ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('To Group') ?></a>
+        <a id="emptyCartToGroup" class="btn btn-outline-primary" title="<?= gettext('Add all cart items to a group') ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('To Group') ?></a>
       <?php }
       if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
         <a href="<?= SystemURLs::getRootPath() ?>/CartToFamily.php" class="btn btn-outline-success" title="<?= gettext('Add cart items to a family') ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext('To Family') ?></a>
       <?php } ?>
-      <a href="<?= SystemURLs::getRootPath() ?>/groups/cart-to-group" class="btn btn-outline-info" title="<?= gettext('Check in to an event') ?>"><i class="fa-solid fa-ticket-alt me-2"></i><?= gettext('Check In') ?></a>
+      <a href="<?= SystemURLs::getRootPath() ?>/event/cart-to-event" class="btn btn-outline-info" title="<?= gettext('Check in to an event') ?>"><i class="fa-solid fa-ticket-alt me-2"></i><?= gettext('Check In') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/map?groupId=0" class="btn btn-outline-info" title="<?= gettext('Map cart items') ?>"><i class="fa-solid fa-map-marker me-2"></i><?= gettext('Map') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-outline-secondary" title="<?= gettext('Print name tags') ?>"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Tags') ?></a>
     </div>
