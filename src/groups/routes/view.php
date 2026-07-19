@@ -132,6 +132,35 @@ function viewGroup(Request $request, Response $response, array $args): Response
     $bEmailEnabled    = $currentUser->isEmailEnabled();
 
     // ------------------------------------------------------------------ //
+    // Flash message from the previous request (e.g. cart-to-group success)
+    // ------------------------------------------------------------------ //
+    $sGlobalMessage      = '';
+    $sGlobalMessageClass = 'success';
+    if (isset($_SESSION['sGlobalMessage'])) {
+        $sGlobalMessage      = $_SESSION['sGlobalMessage'];
+        $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
+        unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
+        // Include/Footer.php interpolates these values directly into a JS
+        // double-quoted string literal:
+        //   showGlobalMessage("... $sGlobalMessage ...", "... $sGlobalMessageClass ...")
+        // json_encode() escapes backslashes, double-quotes, newlines, and all
+        // other JS-unsafe characters.  substr(..., 1, -1) removes the surrounding
+        // JSON double-quote characters that json_encode() always adds.
+        // Note: do NOT include PHP close-tags in // comments — a closing
+        // tag ends the PHP block even when inside a single-line comment.
+        // JSON_INVALID_UTF8_SUBSTITUTE replaces invalid byte sequences with U+FFFD
+        // instead of letting json_encode() return false, which would cause a
+        // fatal TypeError in substr() on PHP 8.1+.
+        // JSON_UNESCAPED_UNICODE is intentionally omitted: U+2028 (LINE SEPARATOR)
+        // and U+2029 (PARAGRAPH SEPARATOR) are ECMAScript line-terminators that
+        // are illegal inside a JS string literal; leaving them as \uXXXX escapes
+        // is safe and JS decodes them identically.
+        $flags               = JSON_INVALID_UTF8_SUBSTITUTE;
+        $sGlobalMessage      = substr(json_encode($sGlobalMessage,      $flags), 1, -1);
+        $sGlobalMessageClass = substr(json_encode($sGlobalMessageClass, $flags), 1, -1);
+    }
+
+    // ------------------------------------------------------------------ //
     // Page header
     // ------------------------------------------------------------------ //
     $sPageTitle    = gettext('Group View') . ' : ' . InputUtils::escapeHTML($thisGroup->getName());
@@ -168,7 +197,9 @@ function viewGroup(Request $request, Response $response, array $args): Response
         'rsAssignedPropertyIds' => $rsAssignedPropertyIds,
         'allGroupPropertyDefs'  => $allGroupPropertyDefs,
         'groupSpecificProps'    => $groupSpecificProps,
-        'aPropTypes'         => $aPropTypes,
+        'aPropTypes'            => $aPropTypes,
+        'sGlobalMessage'        => $sGlobalMessage,
+        'sGlobalMessageClass'   => $sGlobalMessageClass,
     ];
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
