@@ -108,15 +108,14 @@ describe("Person Attendance History Tab", () => {
 
         it("shows a non-zero total events stat", () => {
             cy.wait("@attendanceApi");
-            // Use .should() (not .then()) so Cypress retries the full
-            // .get().invoke("text").should(fn) chain until the DOM reflects
-            // the API response — avoids a race between network completion
-            // and the JavaScript stat update.
-            cy.get("#attendance-tab .attendance-stat-total")
-                .invoke("text")
-                .should((text) => {
-                    expect(parseInt(text.trim(), 10)).to.be.at.least(1);
-                });
+            // cy.wait() only confirms the network response arrived — it does not wait
+            // for the fetch().then() callback in attendance-history.ts to run and update
+            // the DOM. Use a retrying .should() (not .invoke().then()) so Cypress keeps
+            // re-reading the text until the async render lands instead of reading the
+            // initial "—" placeholder once and failing with NaN.
+            cy.get("#attendance-tab .attendance-stat-total").should(($el) => {
+                expect(parseInt($el.text().trim(), 10)).to.be.at.least(1);
+            });
         });
 
         it("shows the filter controls", () => {
@@ -167,13 +166,11 @@ describe("Person Attendance History Tab", () => {
 
         it("shows zero total events", () => {
             cy.wait("@emptyAttendance");
-            // Use .should() for the same retry reason as "shows a non-zero
-            // total events stat" above.
-            cy.get("#attendance-tab .attendance-stat-total")
-                .invoke("text")
-                .should((text) => {
-                    expect(parseInt(text.trim(), 10)).to.equal(0);
-                });
+            // See the comment on "shows a non-zero total events stat" above — same
+            // race between cy.wait() (network only) and the async DOM render.
+            cy.get("#attendance-tab .attendance-stat-total").should(($el) => {
+                expect(parseInt($el.text().trim(), 10)).to.equal(0);
+            });
         });
 
         it("shows an empty table with no rows", () => {
