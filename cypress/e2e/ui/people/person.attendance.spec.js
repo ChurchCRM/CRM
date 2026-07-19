@@ -108,9 +108,13 @@ describe("Person Attendance History Tab", () => {
 
         it("shows a non-zero total events stat", () => {
             cy.wait("@attendanceApi");
+            // Use .should() (not .then()) so Cypress retries the full
+            // .get().invoke("text").should(fn) chain until the DOM reflects
+            // the API response — avoids a race between network completion
+            // and the JavaScript stat update.
             cy.get("#attendance-tab .attendance-stat-total")
                 .invoke("text")
-                .then((text) => {
+                .should((text) => {
                     expect(parseInt(text.trim(), 10)).to.be.at.least(1);
                 });
         });
@@ -163,9 +167,11 @@ describe("Person Attendance History Tab", () => {
 
         it("shows zero total events", () => {
             cy.wait("@emptyAttendance");
+            // Use .should() for the same retry reason as "shows a non-zero
+            // total events stat" above.
             cy.get("#attendance-tab .attendance-stat-total")
                 .invoke("text")
-                .then((text) => {
+                .should((text) => {
                     expect(parseInt(text.trim(), 10)).to.equal(0);
                 });
         });
