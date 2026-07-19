@@ -56,7 +56,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
                     // I can't seem to get the SQL HAVING clause to work through Propel ORM to use
                     // both MIN and MAX value.  Just filter it in PHP
                     if ($Payment->getVirtualColumn('GroupAmount') >= $min && $Payment->getVirtualColumn('GroupAmount') <= $max) {
-                        $searchResults[] = new SearchResult('finance-payment-' . $id, CurrencyFormatter::format($Payment->getVirtualColumn('GroupAmount')) . ' Payment on Deposit ' . $Payment->getDepid(), $Payment->getVirtualColumn('uri'));
+                        $searchResults[] = new SearchResult('finance-payment-' . $id, CurrencyFormatter::format($Payment->getVirtualColumn('GroupAmount') ?? 0.0) . ' Payment on Deposit ' . $Payment->getDepid(), $Payment->getVirtualColumn('uri'));
                     }
                 }
             }
