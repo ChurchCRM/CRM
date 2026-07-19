@@ -12,7 +12,7 @@
  * The after() cleanup runs as admin (cy.session is still alive after the last
  * beforeEach of the suite) to remove the attendance record.
  *
- * cy.intercept uses "**/api/..." glob patterns so intercepts work when
+ * cy.intercept uses double-star ("**") glob patterns so intercepts work when
  * ChurchCRM is deployed under a subdirectory path.
  */
 describe("Person Attendance History Tab", () => {
