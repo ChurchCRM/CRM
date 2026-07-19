@@ -198,11 +198,12 @@ describe("Person Attendance History Tab", () => {
         });
 
         it("clear button resets filters and shows all records", () => {
-            // Set a future date that excludes all records. .clear() first — matches
-            // the working pattern used elsewhere for native date inputs (e.g.
-            // tax-report-pdf.spec.js) and ensures the "change" event that
-            // attendance-history.ts listens on actually fires.
-            cy.get("#attendance-tab .attendance-filter-from").clear().type("2099-01-01");
+            // Set a future date that excludes all records. attendance-history.ts
+            // applies the filter on the "change" event, which native date inputs
+            // only fire on blur — .type() alone doesn't blur the field, and the
+            // very next command here is a read-only assertion (no click to move
+            // focus elsewhere), so an explicit .blur() is required to trigger it.
+            cy.get("#attendance-tab .attendance-filter-from").clear().type("2099-01-01").blur();
             cy.get("#attendance-tab .attendance-tbody tr").should("have.length", 0);
 
             // Clear the filter
