@@ -2,7 +2,7 @@
 title: "Frontend Development"
 intent: "Guidance for frontend work, vanilla JS/TypeScript, and asset management"
 tags: ["frontend","webpack","i18n"]
-prereqs: ["webpack-typescript.md","i18n-localization.md"]
+prereqs: ["[[webpack-typescript]]","[[i18n-localization]]"]
 complexity: "intermediate"
 ---
 
@@ -883,6 +883,29 @@ A classic bug: the "Refresh Coordinates" button is shown when a family has no co
 ```
 
 **Rule:** JS bundles that contain event handlers must always be loaded. Use `if (!config) return;` guards inside the JS, not PHP conditionals wrapping the `<script>` tag.
+
+### Recurrence: same bug, person-view page this time <!-- learned: 2026-07-19 -->
+
+Found again in `src/people/views/person-view.php`: `<script src=".../people-person-view.min.js">`
+(which bundles `initAttendanceHistory()`, `initGroupManager()`, `initTimelineFilter()`, and the
+person-map init) was nested two levels deep — inside `<?php if ($fam_ID !== '' && $person->getFamily() !== null) { ?>`
+*and* `<?php if (!empty($formattedMailingAddress)) : ?>`. For any person without a family (or
+with a family but no mailing address — e.g. the "Church Admin" placeholder record at `per_ID=1`,
+used as the admin user's own person record), the bundle never loaded at all. Every feature it
+powers silently no-op'd: clicking the Attendance tab never fired its lazy-load fetch, group
+add/remove/change-role never worked, the timeline filter chips never applied.
+
+This was invisible in manual testing and in most Cypress specs because almost every test fixture
+person has a family with an address. It only surfaced once a test visited the admin's own
+profile (`/people/view/1`) — a person view that's easy to forget exists as a distinct, real state
+(no family, no address) precisely because you rarely navigate there intentionally.
+
+**Rule reinforced:** when adding any new script-driven feature (tab, button, filter) to
+`person-view.php` or `family-view.php`, verify the `<script>` tag for its bundle sits outside
+*every* conditional that isn't the bundle's own load-order requirement — and specifically test
+against a fixture person/family with no address and no coordinates, not just the happy-path
+fixture. `grep -n 'people-person-view.min.js\|people-family-view.min.js'` the view file and
+trace every enclosing `<?php if` before adding markup near it.
 
 ## importDemoData.js — Demo Data Trigger <!-- learned: 2026-03-19 -->
 

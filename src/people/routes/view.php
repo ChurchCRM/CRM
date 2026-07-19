@@ -162,7 +162,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         ->orderByOrder()
         ->find();
 
-    // ── Properties (ORM via PropertyService — mirrors master's PersonView.php) ─
+    // ── Properties (ORM via PropertyService) ─
     $assignedPersonProperties = PropertyService::getAssigned($person);
     $allPersonProperties      = PropertyService::getAll($person);
 

@@ -1,3 +1,10 @@
+---
+title: "Cypress Testing"
+intent: "Test organization, session management, API helpers, and best practices for writing reliable Cypress tests"
+tags: ["testing", "cypress", "e2e", "ci"]
+prereqs: []
+complexity: "intermediate"
+---
 # Skill: Cypress Testing
 
 ## Context
@@ -280,11 +287,12 @@ Check the actual route implementation before choosing `allowedStatuses`.
 
 ### `freshAdminLogin` is still required — `withCredentials: false` is not sufficient in CI <!-- learned: 2026-07-12 -->
 
-> ⚠️ A 2026-07-11 update claimed `freshAdminLogin()` was deleted because `makePrivateAPICall`
-> sets `withCredentials: false`, preventing the API key from clobbering `$_SESSION`.
-> **That claim was wrong in practice.** CI runs (both `test-root` and `test-subdir`) confirmed
-> that PHP session clobbering still occurs in the browser environment despite the header.
-> `freshAdminLogin()` has been restored in all 4 affected UI specs.
+> [!WARNING] A 2026-07-11 update claimed `freshAdminLogin()` was deleted
+> The reasoning was that `makePrivateAPICall` sets `withCredentials: false`, preventing the
+> API key from clobbering `$_SESSION`. **That claim was wrong in practice.** CI runs (both
+> `test-root` and `test-subdir`) confirmed that PHP session clobbering still occurs in the
+> browser environment despite the header. `freshAdminLogin()` has been restored in all 4
+> affected UI specs.
 
 `makePrivateAPICall` does set `withCredentials: false` (see `support/api-commands.js`), but
 this alone is not sufficient to protect the PHP session in the Cypress/CI browser environment.
@@ -317,6 +325,24 @@ beforeEach(() => {
     cy.setupAdminSession();  // cy.request() may have killed the server-side PHP session
 });
 ```
+
+### Recurrence: brand-new specs keep reintroducing this bug — grep before writing `beforeEach` <!-- learned: 2026-07-19 -->
+
+This exact anti-pattern reappeared in `cypress/e2e/ui/people/person.attendance.spec.js`
+(added by the per-person attendance-history feature, #8649) despite being documented above
+since 2026-03-27. Its `beforeEach` hooks did `cy.setupAdminSession()` → `cy.makePrivateAdminAPICall("POST", ".../checkin", ...)` → `cy.visit(...)`, which clobbered the cached admin
+session's PHP session data. Because `cy.session()`'s cache validator only checks that a
+`CRM-` cookie exists (not that the session behind it still works), the corruption silently
+carried forward into **every later context in the same file** — including ones that made no
+API call at all — since they all reused the same poisoned `cy.session('admin-session')`
+cache. In CI this surfaced as `cy.get('#nav-item-attendance')` timing out (the page was
+silently redirecting to the login screen), which looks nothing like a session bug at first
+glance. Fixed by moving the API call before `freshAdminLogin()` per the pattern above.
+
+**Before adding any new UI spec that seeds data via `makePrivateAdminAPICall` /
+`makePrivateUserAPICall`, grep the file for `cy.setupAdminSession()` appearing before an API
+call in the same hook** — that ordering is the bug. The API call must come first, and the
+hook must call `freshAdminLogin()` (not `cy.setupAdminSession()`) afterward, every time.
 
 **API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall`
 authenticate via the `x-api-key` header — no session or cookies. Never put

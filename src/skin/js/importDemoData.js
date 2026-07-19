@@ -227,9 +227,9 @@
                   </label>
                 </div>
                 <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="includeDemoEvents" disabled>
-                  <label class="form-check-label text-muted" for="includeDemoEvents">
-                    ${i18next.t("Include events and calendars")} <span class="text-muted small">(${i18next.t("Coming soon")})</span>
+                  <input type="checkbox" class="form-check-input" id="includeDemoEvents" checked>
+                  <label class="form-check-label" for="includeDemoEvents">
+                    ${i18next.t("Include events and calendars")}
                   </label>
                 </div>
                 <div class="form-check">

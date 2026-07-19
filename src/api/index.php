@@ -45,6 +45,7 @@ require __DIR__ . '/routes/people/people-persons.php';
 require __DIR__ . '/routes/people/people-properties.php';
 require __DIR__ . '/routes/people/notes.php';
 require __DIR__ . '/routes/people/timeline.php';
+require __DIR__ . '/routes/people/people-attendance.php';
 require __DIR__ . '/routes/public/public.php';
 require __DIR__ . '/routes/public/public-data.php';
 require __DIR__ . '/routes/public/public-calendar.php';

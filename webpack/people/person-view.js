@@ -1,5 +1,5 @@
 /**
- * Leaflet map initialisation for the person detail view (PersonView.php).
+ * Leaflet map initialisation for the person detail view (/people/view/{id}).
  *
  * PHP injects window.CRM.personMapConfig with one of two shapes:
  *   { lat, lng }   — family has stored geocoded coordinates (used directly)
@@ -12,6 +12,7 @@
  * (see webpack externals: { leaflet: 'L' }).
  */
 import L from "leaflet";
+import { initAttendanceHistory } from "./attendance-history";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
 import { initGroupManager } from "./person-group-manager";
 import { initTimelineFilter } from "./timeline-filter";
@@ -60,4 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize group interaction handlers (add, change role, remove)
   initGroupManager();
+
+  // Initialize attendance history tab (lazy loads on first tab activation)
+  initAttendanceHistory();
 });

@@ -38,15 +38,21 @@ class CurrencyFormatter
      * Use this in PHP templates; use format() in PHP code that further processes the string
      * (e.g. API payload building, PDF generation).
      *
-     * Accepts null (e.g. from nullable Propel DECIMAL getters) and returns an empty string
-     * so callers do not need to pre-cast to float and risk turning NULL into $0.00.
+     * Accepts null and numeric strings (Propel returns DECIMAL columns as string|null) so
+     * callers do not need to pre-cast — a blind (float) cast would turn NULL and garbage
+     * into $0.00. Null, empty, and non-numeric values render as an empty string; the
+     * non-numeric case is logged.
      */
-    public static function formatHtml(?float $amount, int $decimals = 2): string
+    public static function formatHtml(float|string|null $amount, int $decimals = 2): string
     {
-        if ($amount === null) {
+        if ($amount === null || $amount === '') {
             return '';
         }
-        return htmlspecialchars(self::format($amount, $decimals), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+        if (is_string($amount) && !is_numeric($amount)) {
+            LoggerUtils::getAppLogger()->warning('Non-numeric amount passed to CurrencyFormatter::formatHtml', ['amount' => $amount]);
+            return '';
+        }
+        return htmlspecialchars(self::format((float) $amount, $decimals), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     }
 
     /**

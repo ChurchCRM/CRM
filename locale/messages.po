@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-18 17:46+0000\n"
+"POT-Creation-Date: 2026-07-18 21:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -822,6 +822,9 @@ msgstr ""
 msgid "All timezones match"
 msgstr ""
 
+msgid "All types"
+msgstr ""
+
 msgid "All uploaded photos and documents"
 msgstr ""
 
@@ -1458,6 +1461,9 @@ msgstr ""
 msgid "Bermuda"
 msgstr ""
 
+msgid "Best Streak"
+msgstr ""
+
 #. Context: countries
 msgid "Bhutan (འབྲུག)"
 msgstr ""
@@ -1956,6 +1962,9 @@ msgstr ""
 msgid "Check-ins"
 msgstr ""
 
+msgid "Check-out"
+msgstr ""
+
 msgid "Check-out failed. Please try again."
 msgstr ""
 
@@ -2263,9 +2272,6 @@ msgid "Colombia"
 msgstr ""
 
 msgid "Column was automatically matched to a ChurchCRM field."
-msgstr ""
-
-msgid "Coming soon"
 msgstr ""
 
 msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
@@ -3316,6 +3322,9 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
+msgid "Did Not Attend"
+msgstr ""
+
 #. Context: countries
 msgid "Diego Garcia"
 msgstr ""
@@ -4134,6 +4143,9 @@ msgstr ""
 msgid "Everyone"
 msgstr ""
 
+msgid "Everyone from linked groups checked in!"
+msgstr ""
+
 msgid "Everyone is checked in!"
 msgstr ""
 
@@ -4427,6 +4439,9 @@ msgid "Failed to load approved plugin list"
 msgstr ""
 
 msgid "Failed to load approved plugin list."
+msgstr ""
+
+msgid "Failed to load attendance history."
 msgstr ""
 
 msgid "Failed to load calendar data. Please try again."
@@ -4802,6 +4817,9 @@ msgstr ""
 msgid "Filter by Type"
 msgstr ""
 
+msgid "Filter by event type"
+msgstr ""
+
 msgid "Filter by log level:"
 msgstr ""
 
@@ -5032,6 +5050,9 @@ msgid "From Phone Number"
 msgstr ""
 
 msgid "From dashboard.vonage.com"
+msgstr ""
+
+msgid "From date"
 msgstr ""
 
 msgid "Full Backup"
@@ -6246,6 +6267,9 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
+msgid "Last Attendance"
+msgstr ""
+
 msgid "Last Backup"
 msgstr ""
 
@@ -6461,6 +6485,9 @@ msgid "Loading"
 msgstr ""
 
 msgid "Loading approved plugin list…"
+msgstr ""
+
+msgid "Loading attendance history…"
 msgstr ""
 
 msgid "Loading event editor…"
@@ -7446,6 +7473,9 @@ msgid "No active funds configured."
 msgstr ""
 
 msgid "No anniversaries in the past or next 7 days"
+msgstr ""
+
+msgid "No attendance records found."
 msgstr ""
 
 msgid "No backups recorded"
@@ -10213,6 +10243,9 @@ msgstr ""
 msgid "Still Checked In"
 msgstr ""
 
+msgid "Streak"
+msgstr ""
+
 msgid "Street"
 msgstr ""
 
@@ -10966,6 +10999,9 @@ msgid ""
 "6. Save your settings"
 msgstr ""
 
+msgid "To date"
+msgstr ""
+
 msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
 msgstr ""
 
@@ -11041,6 +11077,9 @@ msgid "Total Deposit"
 msgstr ""
 
 msgid "Total Deposits:"
+msgstr ""
+
+msgid "Total Events"
 msgstr ""
 
 msgid "Total Groups"
@@ -12508,6 +12547,9 @@ msgstr ""
 msgid "eventIds must be a non-empty array"
 msgstr ""
 
+msgid "events"
+msgstr ""
+
 msgid "families"
 msgstr ""
 
@@ -12776,6 +12818,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Åland Islands (Åland)"
+msgstr ""
+
+msgid "—"
 msgstr ""
 
 msgid "— Ignore —"

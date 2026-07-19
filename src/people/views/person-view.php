@@ -504,22 +504,41 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         <?php endif; ?>
                     </div>
                 </div>
-                <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
-                <?php if ($personMapConfig !== null) : ?>
-                <div class="mt-2">
-                    <div id="person-map" style="height: 150px; border-radius: 4px;"></div>
-                </div>
-                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                    window.CRM = window.CRM || {};
-                    window.CRM.personMapConfig = <?= json_encode($personMapConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
-                </script>
-                <?php endif; ?>
-                <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
-                <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
             </div>
             <?php endif; ?>
         </div>
         <?php } ?>
+
+        <!--
+            Map config + container — unconditional on family/address presence (only
+            gated on $personMapConfig !== null), since it must render both for a
+            family's stored coordinates AND for a family-less person's own address
+            (the $fam_ID === '' branch above) — neither of which requires a family.
+            Previously this lived inside the "has family" card footer above, so the
+            family-less-with-own-address case never got a map despite the PHP setting
+            $personMapConfig for it.
+        -->
+        <?php if ($personMapConfig !== null) : ?>
+        <div class="mb-3">
+            <div id="person-map" style="height: 150px; border-radius: 4px;"></div>
+        </div>
+        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+            window.CRM = window.CRM || {};
+            window.CRM.personMapConfig = <?= json_encode($personMapConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+        </script>
+        <?php endif; ?>
+
+        <!--
+            person-view.js bundle (map, refresh-coordinates, group manager, timeline
+            filter, attendance history) — loaded unconditionally. It must NOT be
+            nested inside the "has family" / "has mailing address" blocks above:
+            group management, the timeline filter, and the attendance history tab
+            are all needed regardless of whether the person has a family or address
+            (e.g. the admin's own "Church Admin" placeholder person has neither).
+        -->
+        <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+        <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+        <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
 
         <!-- Tabbed Content -->
         <div class="card">
@@ -538,6 +557,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
                             <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('Volunteer') ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-attendance" href="#attendance" data-bs-toggle="tab">
+                            <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Attendance') ?>
                         </a>
                     </li>
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
@@ -737,6 +761,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         </table>
                     </div>
                     <?php endif; ?>
+
+                    <div class="tab-pane" id="attendance">
+                        <?php include __DIR__ . '/partials/attendance-tab.php'; ?>
+                    </div>
+
                 </div>
             </div>
         </div>

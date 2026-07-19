@@ -2,7 +2,7 @@
 title: "API Development"
 intent: "Patterns for creating and maintaining API endpoints using Slim and service layer"
 tags: ["api","slim","routes","security"]
-prereqs: ["slim-4-best-practices.md","php-best-practices.md"]
+prereqs: ["[[slim-4-best-practices]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 
@@ -155,7 +155,8 @@ var errorText = error.message || error.error || error.msg || i18next.t("Unknown 
 
 ## Middleware Order (CRITICAL - Slim 4 uses LIFO) <!-- learned: 2026-04-07 -->
 
-> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
 
 **TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
 
@@ -316,6 +317,32 @@ const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
 - Shared across multiple pages
 
 **Do NOT create API endpoints** if a service method is only called from a legacy page - call the service directly instead.
+
+## Cypress API Spec (REQUIRED for every new endpoint) <!-- learned: 2026-07-18 -->
+
+**Every new API endpoint MUST ship with a Cypress API spec in the same PR.** A PR
+adding an endpoint without a spec is incomplete — reviewers must request one.
+
+Why this is mandatory: PR #8985 shipped `GET /api/attendance/person/{id}` with a
+Propel hydration bug that 500'd on every real record. The spec that would have
+caught it existed in the PR but had never been executed — an endpoint is only as
+tested as the spec that *runs* against it. Seed real data in the spec so the
+happy path exercises actual hydration, not just an empty result set.
+
+Minimum coverage per endpoint (see
+`cypress/e2e/api/private/people/people.attendance.spec.js` as the template):
+
+- **Happy path with seeded data** — seed via existing APIs in `before()`, clean up
+  in `after()`; assert status 200 AND response shape/values (an empty-DB 200 can
+  hide hydration bugs)
+- **Empty/zero-data path** — e.g. person with no records
+- **401** — no API key / no session
+- **403** — a role-restricted caller (use `limited.user` inline-key pattern when
+  standard seeded users are too privileged)
+- **404** — nonexistent entity ID
+
+Run it before pushing: `npx cypress run --config-file cypress/configs/docker.config.ts --spec "<path>"` —
+never rely on CI to execute it first (bot-authored PRs may not trigger e2e jobs).
 
 ## OpenAPI Documentation (REQUIRED for all API changes)
 
