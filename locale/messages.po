@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-19 19:27+0000\n"
+"POT-Creation-Date: 2026-07-19 19:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,12 +55,6 @@ msgstr ""
 #, php-format
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
-msgstr[0] ""
-msgstr[1] ""
-
-#, php-format
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -135,6 +129,12 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] ""
@@ -166,9 +166,6 @@ msgstr ""
 
 #, php-format
 msgid "%s's Account"
-msgstr ""
-
-msgid "(Enter state/province for countries without predefined states)"
 msgstr ""
 
 msgid "(No assigned family)"
@@ -438,9 +435,6 @@ msgstr ""
 msgid "Add Cart to Event"
 msgstr ""
 
-msgid "Add Cart to Family"
-msgstr ""
-
 msgid "Add Cart to Group"
 msgstr ""
 
@@ -592,6 +586,9 @@ msgid "Add or edit items donated for fundraising events"
 msgstr ""
 
 msgid "Add or edit notes for people and families"
+msgstr ""
+
+msgid "Add people to your cart before assigning them to a family."
 msgstr ""
 
 msgid "Add people to your cart first, then come back to add them to a group."
@@ -827,6 +824,9 @@ msgstr ""
 msgid "All people and family records"
 msgstr ""
 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr ""
+
 msgid "All rights reserved"
 msgstr ""
 
@@ -892,6 +892,9 @@ msgid "Allow visitors to self-register as new families."
 msgstr ""
 
 msgid "Almost there — review your details"
+msgstr ""
+
+msgid "Already in"
 msgstr ""
 
 msgid "Already in a family"
@@ -966,6 +969,9 @@ msgid "An unexpected error occurred."
 msgstr ""
 
 msgid "An unexpected error occurred. Please contact your administrator."
+msgstr ""
+
+msgid "An unexpected error occurred. Please try again."
 msgstr ""
 
 #. Context: countries
@@ -1131,9 +1137,6 @@ msgstr ""
 msgid "Assign Opportunities"
 msgstr ""
 
-msgid "Assign Role"
-msgstr ""
-
 msgid "Assign a New Volunteer Opportunity"
 msgstr ""
 
@@ -1143,16 +1146,22 @@ msgstr ""
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr ""
 
-msgid "Assign cart items to a family record"
-msgstr ""
-
 msgid "Assign cart items to an event"
 msgstr ""
 
 msgid "Assign cart members to a group"
 msgstr ""
 
+msgid "Assign people from your cart to a family"
+msgstr ""
+
+msgid "Assign role to all:"
+msgstr ""
+
 msgid "Assign starting at #"
+msgstr ""
+
+msgid "Assign to Family"
 msgstr ""
 
 msgid "Assign to a Group"
@@ -1294,6 +1303,9 @@ msgid "Back"
 msgstr ""
 
 msgid "Back to Admin Dashboard"
+msgstr ""
+
+msgid "Back to Cart"
 msgstr ""
 
 msgid "Back to Dashboard"
@@ -2101,6 +2113,9 @@ msgstr ""
 msgid "Choose customer person field"
 msgstr ""
 
+msgid "Choose family"
+msgstr ""
+
 msgid "Choose how you'd like to populate your database. You can always use a different method later."
 msgstr ""
 
@@ -2761,7 +2776,7 @@ msgstr ""
 msgid "Create and manage church events and activities"
 msgstr ""
 
-msgid "Create new family"
+msgid "Create new family…"
 msgstr ""
 
 msgid "Create one now"
@@ -4007,6 +4022,9 @@ msgstr ""
 msgid "Enter sermon notes or event text..."
 msgstr ""
 
+msgid "Enter state/province for countries without predefined states"
+msgstr ""
+
 msgid "Enter text here..."
 msgstr ""
 
@@ -4749,6 +4767,9 @@ msgid "Family has no street address to geocode"
 msgstr ""
 
 msgid "Family name is required"
+msgstr ""
+
+msgid "Family name is required when creating a new family."
 msgstr ""
 
 msgid "Family name must be at least 2 characters"
@@ -5769,9 +5790,6 @@ msgid ""
 "3. Ensure recipient phone numbers include country code\n"
 "4. Check your Vonage account balance\n"
 "5. Review the Vonage Dashboard > SMS > Logs for delivery status"
-msgstr ""
-
-msgid "If adding a new family, enter data below."
 msgstr ""
 
 #. plugin:openlp:section:5:content
@@ -7488,6 +7506,9 @@ msgstr ""
 msgid "New Zealand"
 msgstr ""
 
+msgid "New family details"
+msgstr ""
+
 msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
 msgstr ""
 
@@ -7660,9 +7681,6 @@ msgid "No events found for %s."
 msgstr ""
 
 msgid "No events linked to this class."
-msgstr ""
-
-msgid "No family name entered!"
 msgstr ""
 
 msgid "No file uploaded"
@@ -7856,6 +7874,9 @@ msgstr ""
 msgid "Not in CRM"
 msgstr ""
 
+msgid "Not included"
+msgstr ""
+
 msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
 msgstr ""
 
@@ -7989,9 +8010,6 @@ msgid "Only Families with unpaid pledges"
 msgstr ""
 
 msgid "Only Payments with Pledges"
-msgstr ""
-
-msgid "Only the new data below"
 msgstr ""
 
 msgid "Only the note author or an admin may delete this note"
@@ -8361,6 +8379,9 @@ msgstr ""
 msgid "People not in"
 msgstr ""
 
+msgid "People to assign"
+msgstr ""
+
 #. Context: query_qry
 msgid "People with birthdays in a particular month"
 msgstr ""
@@ -8713,6 +8734,10 @@ msgid "Please select a backup file to restore"
 msgstr ""
 
 msgid "Please select a date"
+msgstr ""
+
+#, php-format
+msgid "Please select a family role for %s."
 msgstr ""
 
 msgid "Please select a group."
@@ -10363,6 +10388,9 @@ msgstr ""
 msgid "State (Other)"
 msgstr ""
 
+msgid "State / Province"
+msgstr ""
+
 msgid "State is required."
 msgstr ""
 
@@ -10606,6 +10634,9 @@ msgstr ""
 msgid "Tanzania"
 msgstr ""
 
+msgid "Target family"
+msgstr ""
+
 msgid "Target family not found"
 msgstr ""
 
@@ -10835,6 +10866,9 @@ msgid "The role is already assigned."
 msgstr ""
 
 msgid "The role is successfully assigned."
+msgstr ""
+
+msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr ""
 
 msgid "The selected file exceeds this servers maximum upload size of"
@@ -11645,9 +11679,6 @@ msgid "Use a different account"
 msgstr ""
 
 msgid "Use a recovery code instead"
-msgstr ""
-
-msgid "Use address/contact data from"
 msgstr ""
 
 msgid "Use authenticator app instead"
@@ -12605,6 +12636,9 @@ msgstr ""
 msgid "Zip"
 msgstr ""
 
+msgid "Zip / Postal Code"
+msgstr ""
+
 #. Context: queryparameteroptions_qpo
 msgid "Zip Code"
 msgstr ""
@@ -13007,7 +13041,13 @@ msgstr ""
 msgid "— Select a person —"
 msgstr ""
 
+msgid "— Select role —"
+msgstr ""
+
 msgid "— Select type (optional) —"
+msgstr ""
+
+msgid "— pick —"
 msgstr ""
 
 #. plugin:google-analytics:section:1:content
