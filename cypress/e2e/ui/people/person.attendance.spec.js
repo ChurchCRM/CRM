@@ -108,11 +108,14 @@ describe("Person Attendance History Tab", () => {
 
         it("shows a non-zero total events stat", () => {
             cy.wait("@attendanceApi");
-            cy.get("#attendance-tab .attendance-stat-total")
-                .invoke("text")
-                .then((text) => {
-                    expect(parseInt(text.trim(), 10)).to.be.at.least(1);
-                });
+            // cy.wait() only confirms the network response arrived — it does not wait
+            // for the fetch().then() callback in attendance-history.ts to run and update
+            // the DOM. Use a retrying .should() (not .invoke().then()) so Cypress keeps
+            // re-reading the text until the async render lands instead of reading the
+            // initial "—" placeholder once and failing with NaN.
+            cy.get("#attendance-tab .attendance-stat-total").should(($el) => {
+                expect(parseInt($el.text().trim(), 10)).to.be.at.least(1);
+            });
         });
 
         it("shows the filter controls", () => {
@@ -163,11 +166,11 @@ describe("Person Attendance History Tab", () => {
 
         it("shows zero total events", () => {
             cy.wait("@emptyAttendance");
-            cy.get("#attendance-tab .attendance-stat-total")
-                .invoke("text")
-                .then((text) => {
-                    expect(parseInt(text.trim(), 10)).to.equal(0);
-                });
+            // See the comment on "shows a non-zero total events stat" above — same
+            // race between cy.wait() (network only) and the async DOM render.
+            cy.get("#attendance-tab .attendance-stat-total").should(($el) => {
+                expect(parseInt($el.text().trim(), 10)).to.equal(0);
+            });
         });
 
         it("shows an empty table with no rows", () => {
