@@ -2,6 +2,7 @@
 
 use ChurchCRM\Service\UpgradeAPIService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -115,7 +116,20 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
             if ($realPath === false || $tempDir === false || !str_starts_with($realPath, $tempDir . DIRECTORY_SEPARATOR)) {
                 return SlimUtils::renderErrorJSON($response, gettext('Invalid file path'), [], 400, null, $request);
             }
-            UpgradeAPIService::doUpgrade($realPath, $sha1);
+            // Guard against stray PHP output (warnings/notices from the legacy
+            // migration scripts the upgrade runs) leaking into the response body
+            // ahead of the JSON, which corrupts it and surfaces client-side as a
+            // "parsererror" even though the upgrade itself succeeded. Anything
+            // captured here is logged, never sent to the client.
+            ob_start();
+            try {
+                UpgradeAPIService::doUpgrade($realPath, $sha1);
+            } finally {
+                $strayOutput = ob_get_clean();
+                if ($strayOutput !== false && trim($strayOutput) !== '') {
+                    LoggerUtils::getAppLogger()->warning('Discarded unexpected output during upgrade apply', ['output' => $strayOutput]);
+                }
+            }
             return SlimUtils::renderSuccessJSON($response);
         } catch (\Throwable $e) {
             // Return a localized, user-safe error message and log full details server-side
