@@ -73,6 +73,92 @@ describe("Fund Raiser", () => {
     });
 
     // -----------------------------------------------------------------------
+    // Tier-1 fields (End Date/Status/Type/Goal Amount/Fund) in the editor form
+    // -----------------------------------------------------------------------
+
+    it("editor form renders Tier-1 fields", () => {
+        cy.visit("/fundraiser/editor");
+        cy.get("#EndDate").should("exist");
+        cy.get("#Status").should("exist");
+        cy.get("#Type").should("exist");
+        cy.get("#GoalAmount").should("exist");
+        cy.get("#FundId").should("exist");
+        cy.contains("option", "New Building Fund").should("exist");
+    });
+
+    it("saves Tier-1 fields via the editor form and they persist on reload", () => {
+        cy.request("/fundraiser/editor").then((res) => {
+            const token = extractCsrf(res.body);
+            cy.request({
+                method: "POST",
+                url: "/fundraiser/editor",
+                form: true,
+                followRedirect: false,
+                body: {
+                    csrf_token: token,
+                    Date: "2026-06-01",
+                    Title: "CY Tier1 Fields Fundraiser",
+                    Description: "",
+                    EndDate: "2026-06-03",
+                    Status: "Planning",
+                    Type: "Gala",
+                    GoalAmount: "1500",
+                    FundId: "2",
+                    FundRaiserSubmit: "Save",
+                },
+            }).then((post) => {
+                expect(post.status).to.eq(302);
+                const loc     = post.headers.location || "";
+                const idMatch = loc.match(/editor\/(\d+)/);
+                expect(idMatch, "redirect contains new fundraiser ID").to.not.be.null;
+                const frId = idMatch[1];
+
+                // Use a Cypress-relative path so the subdir baseUrl is
+                // applied correctly, avoiding the double-prefix issue where
+                // cy.visit('/churchcrm/fundraiser/editor/X') with
+                // baseUrl='http://host/churchcrm/' would visit the wrong URL.
+                cy.visit(`/fundraiser/editor/${frId}`);
+                cy.get("#EndDate").should("have.value", "2026-06-03");
+                cy.get("#Status").should("have.value", "Planning");
+                cy.get("#Type").should("have.value", "Gala");
+                cy.get("#GoalAmount").invoke("val").should("match", /^1500(\.00)?$/);
+                cy.get("#FundId").should("have.value", "2");
+            });
+        });
+    });
+
+    it("re-renders the form with a field error when GoalAmount is negative", () => {
+        cy.request("/fundraiser/editor").then((res) => {
+            const token = extractCsrf(res.body);
+            cy.request({
+                method: "POST",
+                url: "/fundraiser/editor",
+                form: true,
+                followRedirect: true,
+                body: {
+                    csrf_token: token,
+                    Date: "2026-06-01",
+                    Title: "CY Bad Goal Fundraiser",
+                    Description: "",
+                    GoalAmount: "-100",
+                    FundRaiserSubmit: "Save",
+                },
+            }).then((post) => {
+                // Validation failure re-renders the form (200), it does not redirect.
+                expect(post.status).to.eq(200);
+                expect(post.body).to.include("goalAmount must be non-negative");
+            });
+        });
+    });
+
+    it("editor page shows a View link to the read-only view page", () => {
+        cy.visit("/fundraiser/editor/1");
+        // Use a.btn to avoid matching the Finance sidebar 'View All Deposits' nav-link
+        // which also contains 'View' and appears earlier in the DOM.
+        cy.contains("a.btn", "View").should("have.attr", "href").and("include", "/fundraiser/view/1");
+    });
+
+    // -----------------------------------------------------------------------
     // Paddle numbers
     // -----------------------------------------------------------------------
 
@@ -85,6 +171,54 @@ describe("Fund Raiser", () => {
         cy.visit("/fundraiser/1/paddle-numbers/editor");
         cy.contains("Buyer Number Editor");
         cy.get('#Num').should('exist');
+    });
+
+    // -----------------------------------------------------------------------
+    // Paddle reassignment (ORM conversion regression — was raw SQL/RunQuery)
+    // -----------------------------------------------------------------------
+
+    it("reassigns a paddle number to a different buyer without error", () => {
+        cy.request("/fundraiser/1/paddle-numbers/editor").then((res) => {
+            const token = extractCsrf(res.body);
+            // Create a paddle for person 2.
+            cy.request({
+                method: "POST",
+                url: "/fundraiser/1/paddle-numbers/editor",
+                form: true,
+                followRedirect: false,
+                body: {
+                    csrf_token: token,
+                    Num: "501",
+                    PerID: "2",
+                    PaddleNumSubmit: "Save",
+                },
+            }).then((createPost) => {
+                expect(createPost.status).to.eq(302);
+                const paddleId = createPost.headers.location.match(/\/editor\/(\d+)$/)[1];
+
+                // Reassign the same paddle to person 4.
+                cy.request(`/fundraiser/1/paddle-numbers/editor/${paddleId}`).then((editRes) => {
+                    const reassignToken = extractCsrf(editRes.body);
+                    cy.request({
+                        method: "POST",
+                        url: `/fundraiser/1/paddle-numbers/editor/${paddleId}`,
+                        form: true,
+                        followRedirect: false,
+                        body: {
+                            csrf_token: reassignToken,
+                            Num: "501",
+                            PerID: "4",
+                            PaddleNumSubmit: "Save",
+                        },
+                    }).then((reassignPost) => {
+                        expect(reassignPost.status).to.eq(302);
+                        expect(reassignPost.headers.location).to.include(
+                            `/fundraiser/1/paddle-numbers/editor/${paddleId}`,
+                        );
+                    });
+                });
+            });
+        });
     });
 
     // -----------------------------------------------------------------------
@@ -207,8 +341,210 @@ describe("Fund Raiser", () => {
     });
 
     // -----------------------------------------------------------------------
-    // Donors
+    // View page (/fundraiser/view/{id}) — PR #9188
+    // Creates a new fundraiser via the API (self-contained; does NOT rely on
+    // pre-seeded data) then visits the view page and asserts the new-field data
+    // is rendered correctly.
     // -----------------------------------------------------------------------
+
+    it("view page renders new-field data for a freshly created fundraiser", () => {
+        // Create via the REST API — session cookie from setupStandardSession provides auth.
+        cy.request({
+            method: "POST",
+            url: "/api/fundraisers",
+            body: {
+                title: "Test Gala E2E",
+                description: "Automated test fundraiser",
+                status: "Planning",
+                type: "Gala",
+                goalAmount: 5000,
+            },
+            headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+            expect(res.status).to.eq(201);
+            const id = res.body.fundraiser.id;
+            expect(id).to.be.a("number").and.be.greaterThan(0);
+
+            cy.visit(`/fundraiser/view/${id}`);
+            // Title from new record
+            cy.contains("Test Gala E2E");
+            // At a Glance sidebar card
+            cy.contains("At a Glance");
+            // Donated Items section
+            cy.contains("Donated Items");
+            // Edit button visible to ManageFundraisers user — scoped to .btn-primary
+            cy.contains("a.btn-primary", "Edit").should("be.visible");
+        });
+    });
+
+    it("view page shows an Add Item button linking to the donated-items editor", () => {
+        cy.request({
+            method: "POST",
+            url: "/api/fundraisers",
+            body: { title: `CY Add Item ${Date.now()}`, type: "Auction" },
+            headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+            const id = res.body.fundraiser.id;
+            cy.visit(`/fundraiser/view/${id}`);
+            cy.contains("a", "Add Item")
+                .should("have.attr", "href")
+                .and("include", `/fundraiser/${id}/donated-items/editor`);
+        });
+    });
+
+    it("view page no longer shows a Finance Reports section", () => {
+        cy.visit("/fundraiser/view/1");
+        cy.get("body").should("not.contain", "Finance Reports");
+    });
+
+    it("view page shows Bid Sheets for an Auction fundraiser", () => {
+        cy.request({
+            method: "POST",
+            url: "/api/fundraisers",
+            body: { title: `CY Auction Reports ${Date.now()}`, type: "Auction" },
+            headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+            const id = res.body.fundraiser.id;
+            cy.visit(`/fundraiser/view/${id}`);
+            cy.contains("a", "Bid Sheets").should("exist");
+            cy.contains("a", "Catalog").should("exist");
+            cy.contains("a", "Certificates").should("exist");
+            cy.contains("a", "Buyer Statements").should("exist");
+        });
+    });
+
+    it("view page hides Bid Sheets/Catalog/Certificates for a Raffle fundraiser but keeps Buyer Statements", () => {
+        cy.request({
+            method: "POST",
+            url: "/api/fundraisers",
+            body: { title: `CY Raffle Reports ${Date.now()}`, type: "Raffle" },
+            headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+            const id = res.body.fundraiser.id;
+            cy.visit(`/fundraiser/view/${id}`);
+            cy.contains("a", "Bid Sheets").should("not.exist");
+            cy.contains("a", "Catalog").should("not.exist");
+            cy.contains("a", "Certificates").should("not.exist");
+            cy.contains("a", "Buyer Statements").should("exist");
+            // Donated Items itself stays — Batch Winner Entry depends on it to record drawing winners.
+            cy.contains("Donated Items").should("exist");
+            cy.contains("a", "Add Item").should("exist");
+        });
+    });
+
+    it("catalog and certificates routes redirect away for a Raffle fundraiser", () => {
+        cy.request({
+            method: "POST",
+            url: "/api/fundraisers",
+            body: { title: `CY Raffle Catalog Route ${Date.now()}`, type: "Raffle" },
+            headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+            const id = res.body.fundraiser.id;
+            cy.request({
+                url: `/fundraiser/${id}/reports/catalog`,
+                followRedirect: false,
+                failOnStatusCode: false,
+            }).then((catalogRes) => {
+                expect(catalogRes.status).to.eq(302);
+                expect(catalogRes.headers.location).to.include(`/fundraiser/view/${id}`);
+            });
+            cy.request({
+                url: `/fundraiser/${id}/reports/certificates`,
+                followRedirect: false,
+                failOnStatusCode: false,
+            }).then((certRes) => {
+                expect(certRes.status).to.eq(302);
+                expect(certRes.headers.location).to.include(`/fundraiser/view/${id}`);
+            });
+        });
+    });
+
+    it("bid-sheets route redirects away for a non-eligible fundraiser type", () => {
+        cy.request({
+            method: "POST",
+            url: "/api/fundraisers",
+            body: { title: `CY Raffle Route ${Date.now()}`, type: "Raffle" },
+            headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+            const id = res.body.fundraiser.id;
+            cy.request({
+                url: `/fundraiser/${id}/reports/bid-sheets`,
+                followRedirect: false,
+                failOnStatusCode: false,
+            }).then((reportRes) => {
+                expect(reportRes.status).to.eq(302);
+                expect(reportRes.headers.location).to.include(`/fundraiser/view/${id}`);
+            });
+        });
+    });
+
+    it("editor page hides 'Generate Bid Sheets' and 'Generate Catalog' for a Raffle fundraiser", () => {
+        cy.request({
+            method: "POST",
+            url: "/api/fundraisers",
+            body: { title: `CY Editor Raffle ${Date.now()}`, type: "Raffle" },
+            headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+            const id = res.body.fundraiser.id;
+            cy.visit(`/fundraiser/editor/${id}`);
+            cy.contains("Generate Bid Sheets").should("not.exist");
+            cy.contains("Generate Catalog").should("not.exist");
+            cy.contains("Generate Certificates").should("not.exist");
+            // Add Donated Item stays — Batch Winner Entry depends on donated items to record drawing winners.
+            cy.contains("a", "Add Donated Item").should("exist");
+        });
+    });
+
+    it("view page redirects to listing for unknown fundraiser", () => {
+        cy.request({
+            url: "/fundraiser/view/99999",
+            followRedirect: false,
+            failOnStatusCode: false,
+        }).then((res) => {
+            expect(res.status).to.eq(302);
+            expect(res.headers.location).to.include("/fundraiser/");
+        });
+    });
+
+    // -----------------------------------------------------------------------
+    // Listing — filter bar smoke test (PR #9188)
+    // -----------------------------------------------------------------------
+
+    it("status filter narrows listing without error", () => {
+        cy.visit("/fundraiser/?filterStatus=Active");
+        cy.contains("Fundraiser Listing");
+        // The page should not contain a PHP error trace
+        cy.get("body").should("not.contain", "Fatal error");
+        cy.get("body").should("not.contain", "Uncaught");
+    });
+
+    it("type filter narrows listing without error", () => {
+        cy.visit("/fundraiser/?filterType=Auction");
+        cy.contains("Fundraiser Listing");
+        cy.get("body").should("not.contain", "Fatal error");
+    });
+
+    // -----------------------------------------------------------------------
+    // Listing — archive collapse section (PR #9188)
+    // -----------------------------------------------------------------------
+
+    it("archive collapse section is present on the listing page", () => {
+        cy.visit("/fundraiser/");
+        // The archive collapse target must exist in the DOM
+        cy.get("#archiveCollapse").should("exist");
+    });
+
+    it("listing header reads 'Active Fundraisers' with no status filter", () => {
+        cy.visit("/fundraiser/");
+        cy.get(".card-title").first().should("contain.text", "Active Fundraisers");
+    });
+
+    it("listing header reflects the applied status filter and hides the archive card", () => {
+        cy.visit("/fundraiser/?filterStatus=Closed");
+        cy.get(".card-title").first().should("contain.text", "Closed Fundraisers");
+        cy.get("#archiveCollapse").should("not.exist");
+    });
+
 
     it("Donors page renders at /fundraiser/1/donors", () => {
         cy.visit("/fundraiser/1/donors");

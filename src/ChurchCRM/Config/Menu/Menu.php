@@ -5,6 +5,7 @@ namespace ChurchCRM\Config\Menu;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
@@ -292,21 +293,26 @@ class Menu
 
     private static function getFundraisersMenu(bool $canManageFundraisers): MenuItem
     {
-        $iCurrentFundraiser = 0;
-        if (array_key_exists('iCurrentFundraiser', $_SESSION)) {
-            $iCurrentFundraiser = (int) $_SESSION['iCurrentFundraiser'];
-        }
-
-        // Build context-aware URLs for actions that require an active fundraiser
-        $addDonorsUrl   = $iCurrentFundraiser > 0 ? 'fundraiser/' . $iCurrentFundraiser . '/donors' : 'fundraiser/';
-        $viewBuyersUrl  = $iCurrentFundraiser > 0 ? 'fundraiser/' . $iCurrentFundraiser . '/paddle-numbers' : 'fundraiser/';
-
+        // Menu shows clean dashboard-style links; no single "current fundraiser" context.
+        // The Fundraiser Dashboard lets users navigate to any specific fundraiser from there.
         $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $canManageFundraisers, 'fa-money-bill-1');
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'fundraiser/', true, 'fa-list'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'fundraiser/editor', true, 'fa-circle-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), $addDonorsUrl, true, 'fa-user-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('View Buyers'), $viewBuyersUrl, true, 'fa-users'));
-        $fundraiserMenu->addCounter(new MenuCounter('iCurrentFundraiser', 'bg-blue', $iCurrentFundraiser));
+
+        // Active-fundraiser count badge — cached in session; invalidated by routes on state changes.
+        if (!isset($_SESSION['iFundraiserActiveCount'])) {
+            try {
+                $_SESSION['iFundraiserActiveCount'] = (new FundRaiserService())->getActiveFundraiserCount();
+            } catch (\Throwable $e) {
+                $_SESSION['iFundraiserActiveCount'] = 0;
+            }
+        }
+        $fundraiserMenu->addCounter(new MenuCounter(
+            'activeFundraisers',
+            'bg-blue',
+            (int) $_SESSION['iFundraiserActiveCount'],
+            gettext('Active Fundraisers')
+        ));
 
         return $fundraiserMenu;
     }

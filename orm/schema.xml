@@ -464,6 +464,11 @@
         <column name="fr_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
                 required="true" defaultValue="0"/>
         <column name="fr_EnteredDate" phpName="EnteredDate" type="DATE" required="true"/>
+        <column name="fr_EndDate" phpName="EndDate" type="DATE"/>
+        <column name="fr_Status" phpName="Status" type="VARCHAR" size="15" defaultValue="Active"/>
+        <column name="fr_GoalAmount" phpName="GoalAmount" type="DECIMAL" size="10" scale="2"/>
+        <column name="fr_Type" phpName="Type" type="VARCHAR" size="20" defaultValue="Auction"/>
+        <column name="fr_fund_ID" phpName="FundId" type="INTEGER" sqlType="mediumint(8) unsigned"/>
         <unique name="fr_ID">
             <unique-column name="fr_ID"/>
         </unique>

@@ -5,8 +5,15 @@ use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
-// Normalise date to string for form display
-$dateValue = ($dDate instanceof \DateTime) ? $dDate->format('Y-m-d') : (string) $dDate;
+// Normalise dates to strings for form display
+$dateValue    = ($dDate instanceof \DateTime) ? $dDate->format('Y-m-d') : (string) $dDate;
+$endDateValue = (($dEndDate ?? null) instanceof \DateTime) ? $dEndDate->format('Y-m-d') : (string) ($dEndDate ?? '');
+$fundraiserTypes = ['Auction', 'Silent Auction', 'Live Auction', 'Raffle', 'Gala', 'Mixed'];
+// Bid sheets are a silent-auction bidding artifact — not applicable to other types.
+$showBidSheets = in_array($sType, ['Auction', 'Silent Auction'], true);
+// Catalog/Certificates are pre-event browsable bid-display artifacts — not applicable
+// to a raffle drawing.
+$showItemCatalog = $sType !== 'Raffle';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="card mb-3">
@@ -14,17 +21,61 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <form method="post" action="<?= $sRootPath ?>/fundraiser/editor<?= $fundraiserId > 0 ? '/' . $fundraiserId : '' ?>" name="FundRaiserEditor">
 
       <?= CSRFUtils::getTokenInputField('fundraiser_editor') ?>
-      <div class="mb-3">
-        <label class="form-label" for="Date"><?= gettext('Date') ?>:</label>
-        <input type="text" name="Date" value="<?= InputUtils::escapeAttribute($dateValue) ?>" maxlength="10" id="Date" class="form-control date-picker" style="max-width:180px">
-        <?php if (!empty($sDateError)): ?>
-          <div class="text-danger small"><?= InputUtils::escapeHTML($sDateError) ?></div>
-        <?php endif; ?>
-      </div>
+
+      <?php if (!empty($sFieldError)): ?>
+        <div class="alert alert-danger"><?= InputUtils::escapeHTML($sFieldError) ?></div>
+      <?php endif; ?>
 
       <div class="mb-3">
         <label class="form-label" for="Title"><?= gettext('Title') ?>:</label>
         <input type="text" class="form-control" name="Title" id="Title" value="<?= InputUtils::escapeAttribute($sTitle) ?>">
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <label class="form-label" for="Date"><?= gettext('Date') ?>:</label>
+          <input type="text" name="Date" value="<?= InputUtils::escapeAttribute($dateValue) ?>" maxlength="10" id="Date" class="form-control date-picker">
+          <?php if (!empty($sDateError)): ?>
+            <div class="text-danger small"><?= InputUtils::escapeHTML($sDateError) ?></div>
+          <?php endif; ?>
+        </div>
+        <div class="mb-3 col-md-6">
+          <label class="form-label" for="EndDate"><?= gettext('End Date') ?> (<?= gettext('optional') ?>):</label>
+          <input type="text" name="EndDate" value="<?= InputUtils::escapeAttribute($endDateValue) ?>" maxlength="10" id="EndDate" class="form-control date-picker">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label class="form-label" for="Status"><?= gettext('Status') ?>:</label>
+          <select class="form-select" name="Status" id="Status">
+            <?php foreach (['Planning', 'Active', 'Closed'] as $statusOption): ?>
+            <option value="<?= InputUtils::escapeAttribute($statusOption) ?>" <?= $sStatus === $statusOption ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext($statusOption)) ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+        <div class="mb-3 col-md-4">
+          <label class="form-label" for="Type"><?= gettext('Type') ?>:</label>
+          <select class="form-select" name="Type" id="Type">
+            <?php foreach ($fundraiserTypes as $typeOption): ?>
+            <option value="<?= InputUtils::escapeAttribute($typeOption) ?>" <?= $sType === $typeOption ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext($typeOption)) ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+        <div class="mb-3 col-md-4">
+          <label class="form-label" for="GoalAmount"><?= gettext('Goal Amount') ?> (<?= gettext('optional') ?>):</label>
+          <input type="number" step="0.01" min="0" class="form-control" name="GoalAmount" id="GoalAmount" value="<?= InputUtils::escapeAttribute($sGoalAmount) ?>">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="FundId"><?= gettext('Linked Donation Fund') ?> (<?= gettext('optional') ?>):</label>
+        <select class="form-select" name="FundId" id="FundId">
+          <option value=""><?= gettext('None') ?></option>
+          <?php foreach ($donationFunds as $fund): ?>
+          <option value="<?= (int) $fund->getId() ?>" <?= $sFundId === (string) $fund->getId() ? 'selected' : '' ?>><?= InputUtils::escapeHTML($fund->getName()) ?></option>
+          <?php endforeach; ?>
+        </select>
       </div>
 
       <div class="mb-3">
@@ -45,6 +96,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="card mb-3">
   <div class="card-body">
     <div class="d-flex flex-wrap gap-2">
+      <a href="<?= $sRootPath ?>/fundraiser/view/<?= $fundraiserId ?>" class="btn btn-outline-secondary">
+        <i class="ti ti-eye me-1"></i><?= gettext('View') ?>
+      </a>
       <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/editor" class="btn btn-success">
         <i class="ti ti-plus me-1"></i><?= gettext('Add Donated Item') ?>
       </a>
@@ -53,15 +107,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <i class="ti ti-file-text me-1"></i><?= gettext('Reports') ?>
         </button>
         <div class="dropdown-menu">
+          <?php if ($showItemCatalog): ?>
           <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/catalog">
             <i class="ti ti-book me-2"></i><?= gettext('Generate Catalog') ?>
           </a>
+          <?php endif; ?>
+          <?php if ($showBidSheets): ?>
           <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/bid-sheets">
             <i class="ti ti-list me-2"></i><?= gettext('Generate Bid Sheets') ?>
           </a>
+          <?php endif; ?>
+          <?php if ($showItemCatalog): ?>
           <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/certificates">
             <i class="ti ti-certificate me-2"></i><?= gettext('Generate Certificates') ?>
           </a>
+          <?php endif; ?>
         </div>
       </div>
       <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/batch-winner" class="btn btn-secondary">
