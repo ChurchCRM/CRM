@@ -65,7 +65,7 @@ $rootPath       = SystemURLs::getRootPath();
     <!-- ------------------------------------------------------------------ -->
     <!-- Assign form                                                         -->
     <!-- ------------------------------------------------------------------ -->
-    <form id="cartToFamilyForm" method="post"
+    <form id="cartToFamilyForm" method="post" novalidate
           action="<?= $rootPath ?>/people/cart/to-family">
         <?= CSRFUtils::getTokenInputField('cart_to_family') ?>
 

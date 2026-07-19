@@ -110,7 +110,9 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
         }
 
         // Validate new-family fields if creating (validate-before-write: fixes B2)
-        if ($familyId === 0 && empty(trim($body['FamilyName'] ?? ''))) {
+        // Gate on empty($errors) so the all-already-assigned message is not accompanied
+        // by a spurious "family name required" error (fixes NEW-3)
+        if (empty($errors) && $familyId === 0 && empty(trim($body['FamilyName'] ?? ''))) {
             $errors[] = gettext('Family name is required when creating a new family.');
         }
 
