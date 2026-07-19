@@ -29,6 +29,51 @@ class FamilyService
     }
 
     /**
+     * Create a new Family from cart-form input fields.
+     *
+     * Validates and normalises each field before setting it on the model.
+     * Calls autoGeocodeFamily() when a street address is present (behaviour
+     * improvement over the legacy cart-to-family page which never geocoded).
+     * The model's postInsert hook fires timeline/email/FAMILY_CREATED automatically.
+     *
+     * Fixes B9 (raw WeddingDate → ORM throw) from #9229.
+     *
+     * @param array $fields  Associative array of POST field names → values
+     * @param int   $userId  ID of the user performing the action
+     * @return Family        The newly persisted Family
+     */
+    public function createFamilyFromCartInput(array $fields, int $userId): Family
+    {
+        $family = new Family();
+        $family->setName($fields['FamilyName'] ?? '');
+        if (!empty($fields['Address1']))   { $family->setAddress1($fields['Address1']); }
+        if (!empty($fields['Address2']))   { $family->setAddress2($fields['Address2']); }
+        if (!empty($fields['City']))       { $family->setCity($fields['City']); }
+        if (!empty($fields['Zip']))        { $family->setZip($fields['Zip']); }
+        if (!empty($fields['Country']))    { $family->setCountry($fields['Country']); }
+        // State: prefer select value, fall back to free-text box
+        $state = !empty($fields['State']) ? $fields['State'] : ($fields['StateTextbox'] ?? '');
+        if (!empty($state))                { $family->setState($state); }
+        if (!empty($fields['HomePhone']))  { $family->setHomePhone($fields['HomePhone']); }
+        if (!empty($fields['Email']))      { $family->setEmail($fields['Email']); }
+        // Validate WeddingDate before setting — malformed input would otherwise throw at ORM (fixes B9)
+        if (!empty($fields['WeddingDate'])) {
+            $wd = \DateTimeImmutable::createFromFormat('Y-m-d', $fields['WeddingDate']);
+            if ($wd !== false) {
+                $family->setWeddingDate($wd->format('Y-m-d'));
+            }
+        }
+        $family->setDateEntered(date('YmdHis'));
+        $family->setEnteredBy($userId);
+        $family->save();
+        // Geocode if an address was supplied (legacy cart-to-family page never geocoded)
+        if (!empty($fields['Address1']) || !empty($fields['City'])) {
+            $this->autoGeocodeFamily($family);
+        }
+        return $family;
+    }
+
+    /**
      * Auto-geocode a family's address if it has changed.
      *
      * Called after family address is saved. Attempts to geocode via Nominatim API

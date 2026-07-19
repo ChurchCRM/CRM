@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GroupService;
+use Propel\Runtime\Propel;
 
 class Cart
 {
@@ -183,6 +184,48 @@ class Cart
         }
 
         $_SESSION['aPeopleCart'] = [];
+    }
+
+    /**
+     * Assign all eligible cart people (famId === 0) to a family with per-person roles.
+     *
+     * Wraps all writes in a Propel transaction so a partial failure cannot produce
+     * an orphan family or half-assigned members (fixes B2, B3, B11 from #9229).
+     *
+     * @param int   $familyId      ID of the target family (must already exist)
+     * @param array $roleByPersonId Map of personId => familyRoleId for eligible persons
+     * @return int  Number of persons actually assigned
+     * @throws \InvalidArgumentException when an eligible person has no role in $roleByPersonId
+     */
+    public static function emptyToFamily(int $familyId, array $roleByPersonId): int
+    {
+        self::checkCart();
+        $assigned = 0;
+        $con = Propel::getConnection();
+        $con->beginTransaction();
+        try {
+            foreach ($_SESSION['aPeopleCart'] as $personId) {
+                $person = PersonQuery::create()->findOneById((int) $personId);
+                if ($person === null || $person->getFamId() !== 0) {
+                    // Skip missing or already-in-a-family persons (fixes B3)
+                    continue;
+                }
+                $roleId = (int) ($roleByPersonId[(int) $personId] ?? 0);
+                if ($roleId === 0) {
+                    throw new \InvalidArgumentException(
+                        gettext('Missing family role for person ') . $personId
+                    );
+                }
+                $person->setFamId($familyId)->setFmrId($roleId)->save($con);
+                $assigned++;
+            }
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+            throw $e;
+        }
+        $_SESSION['aPeopleCart'] = []; // empty cart server-side (fixes B11)
+        return $assigned;
     }
 
     public static function getCartPeople()
