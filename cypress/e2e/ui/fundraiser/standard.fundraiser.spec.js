@@ -108,9 +108,16 @@ describe("Fund Raiser", () => {
                 },
             }).then((post) => {
                 expect(post.status).to.eq(302);
-                expect(post.headers.location).to.include("/fundraiser/editor/");
+                const loc     = post.headers.location || "";
+                const idMatch = loc.match(/editor\/(\d+)/);
+                expect(idMatch, "redirect contains new fundraiser ID").to.not.be.null;
+                const frId = idMatch[1];
 
-                cy.visit(post.headers.location);
+                // Use a Cypress-relative path so the subdir baseUrl is
+                // applied correctly, avoiding the double-prefix issue where
+                // cy.visit('/churchcrm/fundraiser/editor/X') with
+                // baseUrl='http://host/churchcrm/' would visit the wrong URL.
+                cy.visit(`/fundraiser/editor/${frId}`);
                 cy.get("#EndDate").should("have.value", "2026-06-03");
                 cy.get("#Status").should("have.value", "Planning");
                 cy.get("#Type").should("have.value", "Gala");
