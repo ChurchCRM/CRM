@@ -185,11 +185,11 @@ if ($output === 'pdf') {
 
     $nameX = 20;
     $pledgeX = 60;
-    $paymentX = 80;
+    $paymentX = 85;       // shifted right 5 mm (was 80) to prevent overlap with pledge column for CurrencyFormatter output (10+ chars at 2 mm/char heuristic)
     $pledgeCountX = 100;
     $paymentCountX = 120;
     $underpaidX = 145;
-    $overpaidX = 170;
+    $overpaidX = 175;     // shifted right 5 mm (was 170) to give 30 mm gap vs underpaidX for wide formatted amounts
     $curY = 20;
 
     $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
