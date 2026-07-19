@@ -117,6 +117,14 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
             $errors[] = gettext('Family name is required when creating a new family.');
         }
 
+        // Guard: verify the user-supplied FamilyID refers to a real row (fixes F4).
+        // Without this check a crafted POST can pass any integer; on MyISAM / with FK
+        // enforcement disabled that silently sets per_fam_ID to a phantom value and
+        // orphans the affected persons from all family views.
+        if (empty($errors) && $familyId !== 0 && FamilyQuery::create()->findPk($familyId) === null) {
+            $errors[] = gettext('The selected family no longer exists. Please refresh the page and try again.');
+        }
+
         // Validation failures: re-render with errors and sticky values (no DB writes)
         if (!empty($errors)) {
             $renderer = new PhpRenderer(__DIR__ . '/../views/');

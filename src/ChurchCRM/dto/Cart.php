@@ -201,7 +201,6 @@ class Cart
      * @param array                  $roleByPersonId Map of personId => familyRoleId for eligible persons
      * @param ConnectionInterface|null $con          Optional connection; omit to manage own transaction
      * @return int  Number of persons actually assigned
-     * @throws \InvalidArgumentException when an eligible person has no role in $roleByPersonId
      */
     public static function emptyToFamily(int $familyId, array $roleByPersonId, ?ConnectionInterface $con = null): int
     {
@@ -213,19 +212,18 @@ class Cart
             $con->beginTransaction();
         }
         try {
-            foreach ($_SESSION['aPeopleCart'] as $personId) {
+            // Iterate $roleByPersonId rather than the raw session array (fixes F5).
+            // This eliminates the race where a person added in another tab between the
+            // route's DB snapshot (T1) and this loop (T2) would be missing from
+            // $roleByPersonId and previously caused an InvalidArgumentException.
+            // All values in $roleByPersonId are guaranteed non-zero by the route.
+            foreach ($roleByPersonId as $personId => $roleId) {
                 $person = PersonQuery::create()->findOneById((int) $personId);
                 if ($person === null || $person->getFamId() !== 0) {
                     // Skip missing or already-in-a-family persons (fixes B3)
                     continue;
                 }
-                $roleId = (int) ($roleByPersonId[(int) $personId] ?? 0);
-                if ($roleId === 0) {
-                    throw new \InvalidArgumentException(
-                        gettext('Missing family role for person ') . $personId
-                    );
-                }
-                $person->setFamId($familyId)->setFmrId($roleId)->save($con);
+                $person->setFamId($familyId)->setFmrId((int) $roleId)->save($con);
                 $assigned++;
             }
             if ($ownTransaction) {
