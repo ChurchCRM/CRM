@@ -3,6 +3,7 @@
 use ChurchCRM\dto\Notification;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\SlimUtils;
@@ -16,6 +17,58 @@ use Slim\Views\PhpRenderer;
 
 // Device routes - these are accessed by kiosk devices themselves (not admins)
 // They use kiosk cookie authentication, not user authentication
+
+/**
+ * Return the adult (age >= 18) members of a person's family, excluding the
+ * person themselves, formatted for the kiosk "Checked In By" / "Checked Out By"
+ * picker.
+ *
+ * Adulthood is determined from each family member's recorded birth date. A
+ * member whose birth date is unset or incomplete cannot be confirmed to be 18+
+ * and is omitted rather than assumed adult (graceful fallback — see issue
+ * #9215). Returns [] when the person has no family.
+ *
+ * @return list<array{Id:int, FirstName:string, LastName:string, hasPhoto:bool}>
+ */
+function getAdultFamilyMembers(Person $person): array
+{
+    $family = $person->getFamily();
+    if ($family === null) {
+        return [];
+    }
+
+    $today = DateTimeUtils::getToday();
+    $members = [];
+    foreach ($family->getPeople() as $member) {
+        if ((int) $member->getId() === (int) $person->getId()) {
+            continue; // Exclude the person themselves
+        }
+
+        $birthYear = $member->getBirthYear();
+        $birthMonth = (int) $member->getBirthMonth();
+        $birthDay = (int) $member->getBirthDay();
+
+        // Require a complete birth date to determine age; omit when unknown.
+        if (empty($birthYear) || $birthMonth < 1 || $birthDay < 1) {
+            continue;
+        }
+
+        $birthDate = DateTimeUtils::createDateTime("$birthYear-$birthMonth-$birthDay");
+        if ($today->diff($birthDate)->y < 18) {
+            continue;
+        }
+
+        $photo = new Photo('Person', $member->getId());
+        $members[] = [
+            'Id'        => $member->getId(),
+            'FirstName' => $member->getFirstName(),
+            'LastName'  => $member->getLastName(),
+            'hasPhoto'  => $photo->hasUploadedPhoto(),
+        ];
+    }
+
+    return $members;
+}
 
 /**
  * Validate kiosk device is found, accepted by admin, and has an active assignment
@@ -349,27 +402,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
         }
 
-        $family = $person->getFamily();
-        if ($family === null) {
-            return SlimUtils::renderJSON($response, ['members' => []]);
-        }
-
-        $adults = $family->getAdults();
-        $membersData = [];
-        foreach ($adults as $adult) {
-            if ($adult->getId() === $personId) {
-                continue; // Exclude the person themselves
-            }
-            $photo = new Photo('Person', $adult->getId());
-            $membersData[] = [
-                'Id'        => $adult->getId(),
-                'FirstName' => $adult->getFirstName(),
-                'LastName'  => $adult->getLastName(),
-                'hasPhoto'  => $photo->hasUploadedPhoto(),
-            ];
-        }
-
-        return SlimUtils::renderJSON($response, ['members' => $membersData]);
+        return SlimUtils::renderJSON($response, ['members' => getAdultFamilyMembers($person)]);
     });
 
     $group->post('/checkoutAll', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
