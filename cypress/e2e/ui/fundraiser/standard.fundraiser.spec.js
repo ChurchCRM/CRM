@@ -146,7 +146,9 @@ describe("Fund Raiser", () => {
 
     it("editor page shows a View link to the read-only view page", () => {
         cy.visit("/fundraiser/editor/1");
-        cy.contains("a", "View").should("have.attr", "href").and("include", "/fundraiser/view/1");
+        // Use a.btn to avoid matching the Finance sidebar 'View All Deposits' nav-link
+        // which also contains 'View' and appears earlier in the DOM.
+        cy.contains("a.btn", "View").should("have.attr", "href").and("include", "/fundraiser/view/1");
     });
 
     // -----------------------------------------------------------------------
