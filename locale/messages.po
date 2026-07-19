@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-18 21:02+0000\n"
+"POT-Creation-Date: 2026-07-19 19:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,6 +67,12 @@ msgstr[1] ""
 #, php-format
 msgid "%d Person successfully added to selected Group."
 msgid_plural "%d People successfully added to selected Group."
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -148,6 +154,14 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d% of interface text is translated for this language."
+msgstr ""
+
+#, php-format
+msgid "%s Fundraisers"
+msgstr ""
+
+#, php-format
+msgid "%s of %s goal raised"
 msgstr ""
 
 #, php-format
@@ -388,6 +402,9 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
+msgid "Active Fundraisers"
+msgstr ""
+
 msgid "Active Groups"
 msgstr ""
 
@@ -454,10 +471,16 @@ msgstr ""
 msgid "Add First Family"
 msgstr ""
 
+msgid "Add Fundraiser"
+msgstr ""
+
 msgid "Add Group"
 msgstr ""
 
 msgid "Add Individuals to Cart"
+msgstr ""
+
+msgid "Add Item"
 msgstr ""
 
 msgid "Add Link"
@@ -569,6 +592,9 @@ msgid "Add or edit items donated for fundraising events"
 msgstr ""
 
 msgid "Add or edit notes for people and families"
+msgstr ""
+
+msgid "Add people to your cart first, then come back to add them to a group."
 msgstr ""
 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -744,6 +770,9 @@ msgid "All People"
 msgstr ""
 
 msgid "All Roles"
+msgstr ""
+
+msgid "All Statuses"
 msgstr ""
 
 msgid "All System Settings"
@@ -1004,7 +1033,7 @@ msgstr ""
 msgid "Applied preset"
 msgstr ""
 
-msgid "Apply Filters"
+msgid "Apply"
 msgstr ""
 
 msgid "Apply Report Dates To"
@@ -1117,10 +1146,10 @@ msgstr ""
 msgid "Assign cart items to a family record"
 msgstr ""
 
-msgid "Assign cart items to a group"
+msgid "Assign cart items to an event"
 msgstr ""
 
-msgid "Assign cart items to an event"
+msgid "Assign cart members to a group"
 msgstr ""
 
 msgid "Assign starting at #"
@@ -1139,6 +1168,12 @@ msgid "Assigned Kiosk"
 msgstr ""
 
 msgid "Assigned event not found"
+msgstr ""
+
+msgid "Associated Fund"
+msgstr ""
+
+msgid "At a Glance"
 msgstr ""
 
 msgid "At least one family member is required"
@@ -1160,6 +1195,9 @@ msgid "Attendance Counts"
 msgstr ""
 
 msgid "Attendance record deleted."
+msgstr ""
+
+msgid "Auction Reports"
 msgstr ""
 
 msgid "Audience not in the ChurchCRM"
@@ -1236,6 +1274,9 @@ msgstr ""
 msgid "Avg Open Rate"
 msgstr ""
 
+msgid "Avg Sale Price"
+msgstr ""
+
 #. Context: countries
 msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
@@ -1274,6 +1315,9 @@ msgid "Back to Families"
 msgstr ""
 
 msgid "Back to Finance Dashboard"
+msgstr ""
+
+msgid "Back to Fundraisers"
 msgstr ""
 
 msgid "Back to Get Started"
@@ -1471,6 +1515,9 @@ msgstr ""
 msgid "Bid"
 msgstr ""
 
+msgid "Bid Sheets"
+msgstr ""
+
 msgid "Birth & Family"
 msgstr ""
 
@@ -1609,7 +1656,16 @@ msgstr ""
 msgid "Buyer Number Editor"
 msgstr ""
 
+msgid "Buyer Statements"
+msgstr ""
+
 msgid "Buyers"
+msgstr ""
+
+msgid "Buyers Registered"
+msgstr ""
+
+msgid "Buyers This Year"
 msgstr ""
 
 msgid "Buyers for this fundraiser:"
@@ -1807,6 +1863,9 @@ msgstr ""
 msgid "Cash"
 msgstr ""
 
+msgid "Catalog"
+msgstr ""
+
 msgid "Category Name"
 msgstr ""
 
@@ -1828,6 +1887,9 @@ msgid "Central African Republic (République centrafricaine)"
 msgstr ""
 
 msgid "Certificate of Ownership"
+msgstr ""
+
+msgid "Certificates"
 msgstr ""
 
 #. Context: countries
@@ -2019,6 +2081,9 @@ msgstr ""
 msgid "Chinese - Taiwan"
 msgstr ""
 
+msgid "Choose a group..."
+msgstr ""
+
 msgid "Choose a property..."
 msgstr ""
 
@@ -2178,9 +2243,6 @@ msgstr ""
 msgid "Clear Filter"
 msgstr ""
 
-msgid "Clear Filters"
-msgstr ""
-
 msgid "Clear Quarantine"
 msgstr ""
 
@@ -2256,6 +2318,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr ""
+
+msgid "Code"
 msgstr ""
 
 msgid "Code incomplete"
@@ -2634,6 +2699,9 @@ msgid "Create First Deposit"
 msgstr ""
 
 msgid "Create First Event"
+msgstr ""
+
+msgid "Create Fundraiser"
 msgstr ""
 
 msgid "Create Group + ADD Cart"
@@ -3841,6 +3909,9 @@ msgstr ""
 msgid "End Time"
 msgstr ""
 
+msgid "End date must be on or after the start date"
+msgstr ""
+
 msgid "End time must be after start time."
 msgstr ""
 
@@ -4023,6 +4094,9 @@ msgid "Error: Invalid Editor ID!"
 msgstr ""
 
 msgid "Est. Value"
+msgstr ""
+
+msgid "Est. Value Total"
 msgstr ""
 
 msgid "Estimated Price"
@@ -4857,6 +4931,9 @@ msgstr ""
 msgid "Financial Settings"
 msgstr ""
 
+msgid "Financials"
+msgstr ""
+
 msgid "Find family"
 msgstr ""
 
@@ -5097,7 +5174,16 @@ msgstr ""
 msgid "Fundraiser Listing"
 msgstr ""
 
+msgid "Fundraiser Overview"
+msgstr ""
+
 msgid "Fundraiser not found"
+msgstr ""
+
+msgid "Fundraisers"
+msgstr ""
+
+msgid "Fundraising"
 msgstr ""
 
 msgid "Funds"
@@ -5292,6 +5378,12 @@ msgid "Go to home"
 msgstr ""
 
 msgid "Go to homepage"
+msgstr ""
+
+msgid "Goal %"
+msgstr ""
+
+msgid "Goal Amount"
 msgstr ""
 
 #. plugin:google-analytics:summary
@@ -5551,6 +5643,9 @@ msgid "Hide Person Address"
 msgstr ""
 
 msgid "Hide advanced options"
+msgstr ""
+
+msgid "Highest Sale"
 msgstr ""
 
 #. Context: locales
@@ -6066,7 +6161,13 @@ msgstr ""
 msgid "Invalid status"
 msgstr ""
 
+msgid "Invalid status value"
+msgstr ""
+
 msgid "Invalid target family"
+msgstr ""
+
+msgid "Invalid type value"
 msgstr ""
 
 msgid "Invalid version format"
@@ -6117,6 +6218,18 @@ msgid "Italy (Italia)"
 msgstr ""
 
 msgid "Item"
+msgstr ""
+
+msgid "Items"
+msgstr ""
+
+msgid "Items Donated"
+msgstr ""
+
+msgid "Items Donated (This Year)"
+msgstr ""
+
+msgid "Items Sold"
 msgstr ""
 
 #. Context: countries
@@ -6433,6 +6546,9 @@ msgid "Link must start with http:// or https://"
 msgstr ""
 
 msgid "Link not found"
+msgstr ""
+
+msgid "Linked Donation Fund"
 msgstr ""
 
 msgid "Linked Group"
@@ -7192,6 +7308,9 @@ msgstr ""
 msgid "Mr., Mrs., Dr."
 msgstr ""
 
+msgid "Multibuy Items"
+msgstr ""
+
 msgid "Multiple"
 msgstr ""
 
@@ -7409,6 +7528,10 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+#, php-format
+msgid "No %s fundraisers found."
+msgstr ""
+
 msgid "No Active Deposit"
 msgstr ""
 
@@ -7469,6 +7592,9 @@ msgstr ""
 msgid "No active events found."
 msgstr ""
 
+msgid "No active fundraisers found."
+msgstr ""
+
 msgid "No active funds configured."
 msgstr ""
 
@@ -7512,6 +7638,9 @@ msgid "No deposits found."
 msgstr ""
 
 msgid "No description set."
+msgstr ""
+
+msgid "No donated items yet."
 msgstr ""
 
 msgid "No email address on file"
@@ -7715,6 +7844,9 @@ msgstr ""
 msgid "Not a valid date"
 msgstr ""
 
+msgid "Not a valid end date"
+msgstr ""
+
 msgid "Not assigned"
 msgstr ""
 
@@ -7802,9 +7934,6 @@ msgid "OK"
 msgstr ""
 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
-msgstr ""
-
-msgid "OR Create a Group and add the CART in ONE ACTION"
 msgstr ""
 
 msgid "Oct"
@@ -8450,6 +8579,9 @@ msgstr ""
 msgid "Pitcairn Islands"
 msgstr ""
 
+msgid "Planning"
+msgstr ""
+
 msgid "Platform"
 msgstr ""
 
@@ -8937,6 +9069,12 @@ msgid "QuickBooks Deposit Ticket Settings"
 msgstr ""
 
 msgid "Quiet Presort"
+msgstr ""
+
+msgid "Raised"
+msgstr ""
+
+msgid "Raised This Year"
 msgstr ""
 
 msgid "Range end date must be on or after range start date."
@@ -9746,9 +9884,6 @@ msgstr ""
 msgid "Select the desired family role."
 msgstr ""
 
-msgid "Select the group to which you would like to add your cart"
-msgstr ""
-
 msgid "Select the type of record this property applies to"
 msgstr ""
 
@@ -9783,6 +9918,9 @@ msgid "Self-service only"
 msgstr ""
 
 msgid "Sell to everyone"
+msgstr ""
+
+msgid "Sell-through"
 msgstr ""
 
 msgid "Send Again"
@@ -10091,6 +10229,9 @@ msgid "Software Update Required"
 msgstr ""
 
 msgid "Software Version"
+msgstr ""
+
+msgid "Sold"
 msgstr ""
 
 #. Context: countries
@@ -10619,6 +10760,9 @@ msgstr ""
 msgid "The gender for which you would like records returned."
 msgstr ""
 
+msgid "The group could not be found. Please try again."
+msgstr ""
+
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr ""
 
@@ -10694,6 +10838,9 @@ msgid "The role is successfully assigned."
 msgstr ""
 
 msgid "The selected file exceeds this servers maximum upload size of"
+msgstr ""
+
+msgid "The selected group was not found. Please select a valid group."
 msgstr ""
 
 msgid "The selected person was not found."
@@ -11094,6 +11241,9 @@ msgstr ""
 msgid "Total Pledges"
 msgstr ""
 
+msgid "Total Raised"
+msgstr ""
+
 msgid "Total Size"
 msgstr ""
 
@@ -11107,6 +11257,9 @@ msgid "Total of all purchases: $"
 msgstr ""
 
 msgid "Total purchases: $"
+msgstr ""
+
+msgid "Total raised (no goal set)"
 msgstr ""
 
 msgid "Totals"
@@ -11346,6 +11499,9 @@ msgid "Unmet Prerequisites"
 msgstr ""
 
 msgid "Unpinned Events"
+msgstr ""
+
+msgid "Unsold"
 msgstr ""
 
 msgid "Unsubscribed"
@@ -12384,6 +12540,9 @@ msgstr ""
 msgid "Your cart is empty!"
 msgstr ""
 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr ""
+
 msgid "Your child"
 msgstr ""
 
@@ -12581,6 +12740,12 @@ msgid "full group view"
 msgstr ""
 
 msgid "funds"
+msgstr ""
+
+msgid "goalAmount must be a non-negative number"
+msgstr ""
+
+msgid "goalAmount must be non-negative"
 msgstr ""
 
 msgid "in"
@@ -12787,6 +12952,10 @@ msgid "system user updated"
 msgstr ""
 
 msgid "their classroom"
+msgstr ""
+
+#, php-format
+msgid "thru %s"
 msgstr ""
 
 msgid "to another group?"
