@@ -298,8 +298,6 @@ class Menu
         $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $canManageFundraisers, 'fa-money-bill-1');
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'fundraiser/', true, 'fa-list'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'fundraiser/editor', true, 'fa-circle-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), 'fundraiser/', true, 'fa-user-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('View Buyers'), 'fundraiser/', true, 'fa-users'));
 
         // Active-fundraiser count badge — cached in session; invalidated by routes on state changes.
         if (!isset($_SESSION['iFundraiserActiveCount'])) {
