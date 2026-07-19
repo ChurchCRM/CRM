@@ -266,7 +266,7 @@ $rootPath       = SystemURLs::getRootPath();
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label class="form-label"><?= gettext('State / Province') ?></label>
+                            <label for="State" class="form-label"><?= gettext('State / Province') ?></label>
                             <div id="stateOptionDiv">
                                 <select id="State" name="State" class="form-select"
                                     data-user-selected="<?= InputUtils::escapeAttribute($formValues['State'] ?? '') ?>"

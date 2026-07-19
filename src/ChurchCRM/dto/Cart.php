@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GroupService;
+use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 
 class Cart
@@ -189,20 +190,28 @@ class Cart
     /**
      * Assign all eligible cart people (famId === 0) to a family with per-person roles.
      *
-     * Wraps all writes in a Propel transaction so a partial failure cannot produce
-     * an orphan family or half-assigned members (fixes B2, B3, B11 from #9229).
+     * When $con is provided the method participates in the caller's transaction
+     * (no nested begin/commit) and does NOT clear the session cart — the caller
+     * is responsible for clearing it after a successful commit.
      *
-     * @param int   $familyId      ID of the target family (must already exist)
-     * @param array $roleByPersonId Map of personId => familyRoleId for eligible persons
+     * When $con is null the method manages its own transaction and clears the
+     * session cart on success.
+     *
+     * @param int                    $familyId       ID of the target family (must already exist)
+     * @param array                  $roleByPersonId Map of personId => familyRoleId for eligible persons
+     * @param ConnectionInterface|null $con          Optional connection; omit to manage own transaction
      * @return int  Number of persons actually assigned
      * @throws \InvalidArgumentException when an eligible person has no role in $roleByPersonId
      */
-    public static function emptyToFamily(int $familyId, array $roleByPersonId): int
+    public static function emptyToFamily(int $familyId, array $roleByPersonId, ?ConnectionInterface $con = null): int
     {
         self::checkCart();
         $assigned = 0;
-        $con = Propel::getConnection();
-        $con->beginTransaction();
+        $ownTransaction = ($con === null);
+        if ($ownTransaction) {
+            $con = Propel::getConnection();
+            $con->beginTransaction();
+        }
         try {
             foreach ($_SESSION['aPeopleCart'] as $personId) {
                 $person = PersonQuery::create()->findOneById((int) $personId);
@@ -219,12 +228,16 @@ class Cart
                 $person->setFamId($familyId)->setFmrId($roleId)->save($con);
                 $assigned++;
             }
-            $con->commit();
+            if ($ownTransaction) {
+                $con->commit();
+                $_SESSION['aPeopleCart'] = []; // empty cart server-side (fixes B11)
+            }
         } catch (\Throwable $e) {
-            $con->rollBack();
+            if ($ownTransaction) {
+                $con->rollBack();
+            }
             throw $e;
         }
-        $_SESSION['aPeopleCart'] = []; // empty cart server-side (fixes B11)
         return $assigned;
     }
 

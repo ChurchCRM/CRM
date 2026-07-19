@@ -3,11 +3,11 @@
 /**
  * UI regression tests for /people/cart/to-family
  *
- * Design rule: all API-based cart setup runs BEFORE freshStandardLogin().
+ * Design rule: all API-based cart setup runs BEFORE freshAdminLogin().
  * Despite cy.setupStandardSession(), CI confirmed that cy.request() (and
  * makePrivateAdminAPICall via X-API-Key) invalidates the PHP session, causing
  * a subsequent cy.visit() to redirect to /session/begin.
- * freshStandardLogin() performs a direct form login to restore a usable browser
+ * freshAdminLogin() performs a direct form login to restore a usable browser
  * session after any API call, matching the established pattern in
  * standard.person.group-add.spec.js and person.attendance.spec.js.
  *
@@ -35,7 +35,7 @@ describe("Cart to Family — UI", () => {
      * makePrivateAdminAPICall() calls (which use X-API-Key and may reset the
      * PHP session) don't interfere with subsequent cy.visit() calls.
      */
-    function freshStandardLogin() {
+    function freshAdminLogin() {
         cy.clearCookies();
         cy.visit("/session/begin");
         cy.get("input[name=User]").type(Cypress.env("admin.username"));
@@ -62,7 +62,7 @@ describe("Cart to Family — UI", () => {
         // 1. Empty cart via API (admin key — safe, no session cookie needed).
         emptyCart();
         // 2. Restore a usable browser session after the API call.
-        freshStandardLogin();
+        freshAdminLogin();
     });
 
     // ── T1: Empty cart → empty state ────────────────────────────────────────
@@ -77,7 +77,7 @@ describe("Cart to Family — UI", () => {
     // ── T2: Cart with 1 person → form displayed ─────────────────────────────
     it("T2 — shows role select for a cart person (per_fam_ID = 0)", () => {
         addToCart([36]);
-        freshStandardLogin(); // re-login after addToCart API call
+        freshAdminLogin(); // re-login after addToCart API call
         cy.visit(ROUTE);
         cy.get("#cartToFamilyForm").should("be.visible");
         cy.get("#role36").should("be.visible");
@@ -88,7 +88,7 @@ describe("Cart to Family — UI", () => {
     // ── T5: Validation — blank family name ──────────────────────────────────
     it("T5 — shows error and stays on form when family name is blank", () => {
         addToCart([36]);
-        freshStandardLogin(); // re-login after addToCart API call
+        freshAdminLogin(); // re-login after addToCart API call
         cy.visit(ROUTE);
         cy.get("#FamilyID").select("0");
         cy.get("#role36").select("1"); // Head of Household
@@ -109,7 +109,7 @@ describe("Cart to Family — UI", () => {
     // ── T7: Validation — no role selected ───────────────────────────────────
     it("T7 — shows error when role is not selected for an eligible person", () => {
         addToCart([36]);
-        freshStandardLogin(); // re-login after addToCart API call
+        freshAdminLogin(); // re-login after addToCart API call
         cy.visit(ROUTE);
         cy.get("#FamilyID").select("0");
         cy.get("#familyNameInput").type("Regression Family T7");
@@ -123,7 +123,7 @@ describe("Cart to Family — UI", () => {
     // ── T3: Create new family — happy path (destructive: assigns person 36) ─
     it("T3 — creates new family and assigns person, empties cart on success", () => {
         addToCart([36]);
-        freshStandardLogin(); // re-login after addToCart API call
+        freshAdminLogin(); // re-login after addToCart API call
         cy.visit(ROUTE);
         cy.get("#FamilyID").select("0");
         cy.get("#familyNameInput").type("CartToFamilyTestFamily-T3");
@@ -142,7 +142,7 @@ describe("Cart to Family — UI", () => {
     // ── T4: Add to existing family (destructive: assigns person 37) ─────────
     it("T4 — assigns person to existing family and empties cart", () => {
         addToCart([37]);
-        freshStandardLogin(); // re-login after addToCart API call
+        freshAdminLogin(); // re-login after addToCart API call
         cy.visit(ROUTE);
         cy.get("#FamilyID").select("1"); // Campbell family (fam_ID = 1)
         cy.get("#newFamilyFieldset").should("not.be.visible"); // progressive disclosure hid it
@@ -160,7 +160,7 @@ describe("Cart to Family — UI", () => {
     it("T6 — assigns free person, skips already-assigned person, no 500", () => {
         // Person 27 is free (per_fam_ID = 0), person 28 is in family 6
         addToCart([27, 28]);
-        freshStandardLogin(); // re-login after addToCart API call
+        freshAdminLogin(); // re-login after addToCart API call
         cy.visit(ROUTE);
         cy.get("#cartToFamilyForm").should("be.visible");
         // Person 27 should have a role select

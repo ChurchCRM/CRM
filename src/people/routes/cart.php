@@ -6,7 +6,7 @@
  * GET  /people/cart/to-family  Render the assign-to-family form (or empty state)
  * POST /people/cart/to-family  Validate, create/select family, assign cart persons, redirect
  *
- * Related: #9229 (this migration), #9227 (sibling /v2/cart → /people/cart migration)
+ * Related: #9229 (this migration), #9227 (sibling /v2/cart -> /people/cart migration)
  */
 
 use ChurchCRM\Authentication\AuthenticationManager;
@@ -18,6 +18,7 @@ use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -40,7 +41,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
 
         $cartPersons = Cart::getCartPeople();
         $familyRoles = ListOptionQuery::create()
-            ->filterById(2)
+            ->filterByListId(2)
             ->orderByOptionSequence()
             ->find();
         $families = FamilyQuery::create()->orderByName()->find();
@@ -120,7 +121,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
         if (!empty($errors)) {
             $renderer = new PhpRenderer(__DIR__ . '/../views/');
             $familyRoles = ListOptionQuery::create()
-                ->filterById(2)
+                ->filterByListId(2)
                 ->orderByOptionSequence()
                 ->find();
             $families = FamilyQuery::create()->orderByName()->find();
@@ -143,30 +144,41 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
             return $renderer->render($response, 'cart/to-family.php', $pageArgs);
         }
 
-        // Create new family if requested, then assign — wrapped in one outer transaction
-        // so a failure in emptyToFamily cannot leave an orphan family row (fixes F3)
+        // Create new family if requested, then assign — all in a single outer transaction
+        // so a failure in emptyToFamily cannot leave an orphan family row (fixes F3).
+        // emptyToFamily() participates in this transaction (no nested begin/commit).
+        // Geocoding happens AFTER the commit to avoid holding the DB connection open
+        // during a network call.
+        $familyService = new FamilyService();
+        $newFamily = null; // tracks a newly created family that needs geocoding post-commit
         $con = Propel::getConnection();
         $con->beginTransaction();
         try {
             if ($familyId === 0) {
-                $familyService = new FamilyService();
-                $family = $familyService->createFamilyFromCartInput(
+                $newFamily = $familyService->createFamilyFromCartInput(
                     $body,
                     AuthenticationManager::getCurrentUser()->getId(),
                     $con
                 );
-                $familyId = $family->getId();
+                $familyId = $newFamily->getId();
             }
 
-            // Assign eligible cart persons to the family — transactional (fixes B2/B3/B11)
-            $count = Cart::emptyToFamily($familyId, $roleByPersonId);
+            // Assign eligible cart persons — participates in the outer transaction
+            // via the passed $con (no nested begin/commit inside emptyToFamily).
+            $count = Cart::emptyToFamily($familyId, $roleByPersonId, $con);
             $con->commit();
+            // Cart is cleared only after a successful commit so a rollback leaves it intact
+            $_SESSION['aPeopleCart'] = [];
         } catch (\Throwable $e) {
             $con->rollBack();
+            LoggerUtils::getAppLogger()->error(
+                'cart-to-family: unexpected error during family assignment',
+                ['exception' => $e, 'familyId' => $familyId]
+            );
             // Re-render the form with a user-facing error (fixes F6)
             $renderer = new PhpRenderer(__DIR__ . '/../views/');
             $familyRoles = ListOptionQuery::create()
-                ->filterById(2)
+                ->filterByListId(2)
                 ->orderByOptionSequence()
                 ->find();
             $families = FamilyQuery::create()->orderByName()->find();
@@ -186,6 +198,13 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
                 'formValues'    => $body,
             ];
             return $renderer->render($response, 'cart/to-family.php', $pageArgs);
+        }
+
+        // Geocode the new family *after* committing — keeps the DB connection
+        // free during the external network call and ensures the family row is
+        // fully visible to the default connection used by autoGeocodeFamily.
+        if ($newFamily !== null && (!empty($body['Address1']) || !empty($body['City']))) {
+            $familyService->autoGeocodeFamily($newFamily);
         }
 
         $_SESSION['sGlobalMessage'] = sprintf(
