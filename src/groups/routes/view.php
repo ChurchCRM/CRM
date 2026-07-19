@@ -132,6 +132,17 @@ function viewGroup(Request $request, Response $response, array $args): Response
     $bEmailEnabled    = $currentUser->isEmailEnabled();
 
     // ------------------------------------------------------------------ //
+    // Flash message from the previous request (e.g. cart-to-group success)
+    // ------------------------------------------------------------------ //
+    $sGlobalMessage      = '';
+    $sGlobalMessageClass = 'success';
+    if (isset($_SESSION['sGlobalMessage'])) {
+        $sGlobalMessage      = $_SESSION['sGlobalMessage'];
+        $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
+        unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
+    }
+
+    // ------------------------------------------------------------------ //
     // Page header
     // ------------------------------------------------------------------ //
     $sPageTitle    = gettext('Group View') . ' : ' . InputUtils::escapeHTML($thisGroup->getName());
@@ -168,7 +179,9 @@ function viewGroup(Request $request, Response $response, array $args): Response
         'rsAssignedPropertyIds' => $rsAssignedPropertyIds,
         'allGroupPropertyDefs'  => $allGroupPropertyDefs,
         'groupSpecificProps'    => $groupSpecificProps,
-        'aPropTypes'         => $aPropTypes,
+        'aPropTypes'            => $aPropTypes,
+        'sGlobalMessage'        => $sGlobalMessage,
+        'sGlobalMessageClass'   => $sGlobalMessageClass,
     ];
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
