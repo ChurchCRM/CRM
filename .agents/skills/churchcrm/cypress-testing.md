@@ -852,6 +852,32 @@ Rule of thumb: if the URL substring you are asserting was **already** in the URL
 
 ---
 
+### 8. `cy.wait("@alias")` Does Not Wait For The App's Post-Response JS <!-- learned: 2026-07-19 -->
+
+`cy.wait("@alias")` resolves as soon as the intercepted network response is received — it says nothing about whether the app's `fetch().then()` / `.catch()` handler has finished running and updated the DOM. If the very next command reads element state with a one-shot `.invoke("text").then((text) => expect(...))`, there is a real race window: the assertion can run against the pre-fetch placeholder before the async render lands, producing a nonsensical failure (e.g. `expected NaN to equal 0` when a stat tile still shows its `—` placeholder).
+
+Confirmed via a CI failure screenshot on `person.attendance.spec.js` (`shows zero total events`): the *final* DOM state in the screenshot (captured after the assertion had already failed) showed the correct `0` — proving the render did complete, just not before the one-shot read.
+
+```javascript
+// ❌ WRONG — invoke().then() reads text exactly once; no retry if the DOM hasn't updated yet
+cy.wait("@emptyAttendance");
+cy.get("#attendance-tab .attendance-stat-total")
+    .invoke("text")
+    .then((text) => {
+        expect(parseInt(text.trim(), 10)).to.equal(0);
+    });
+
+// ✅ CORRECT — .should(($el) => {...}) is retried by Cypress until it passes or times out
+cy.wait("@emptyAttendance");
+cy.get("#attendance-tab .attendance-stat-total").should(($el) => {
+    expect(parseInt($el.text().trim(), 10)).to.equal(0);
+});
+```
+
+**Rule:** any assertion on content that is populated by JS *after* a `cy.wait()`-awaited network call must use a retrying `.should()` callback, not `.invoke().then()` with a plain `expect`. This applies even when a preceding `cy.wait("@alias")` looks like sufficient synchronization — it only synchronizes on the network layer, not on the app's async response handling.
+
+---
+
 ### Flakiness Prevention Checklist (for every new test that saves/loads state)
 
 Before marking a test complete, verify:
@@ -863,6 +889,7 @@ Before marking a test complete, verify:
 - [ ] `cy.contains()` is scoped to a container, not used globally
 - [ ] API-only tests (those that only assert against `cy.request()`) establish the session via `POST /session/begin` — not UI login
 - [ ] No `cy.url().should('include', ...)` assertions where the substring is already present pre-action (tautology)
+- [ ] Assertions on JS-rendered content after `cy.wait("@alias")` use a retrying `.should(($el) => {...})`, not `.invoke().then()` with a plain `expect`
 
 ---
 
