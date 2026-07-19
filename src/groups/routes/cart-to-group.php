@@ -15,6 +15,11 @@ use Slim\Views\PhpRenderer;
 // cart is immediately emptied into the newly-created group (role 0 ->
 // default role), a flash message is set, and the user is redirected to
 // the group view.
+//
+// Auth: ManageGroupRoleAuthMiddleware is registered globally for all
+// /groups/* routes in src/groups/index.php via MvcAppFactory::create().
+// It enforces isManageGroupsEnabled() and returns HTTP 403 before any
+// closure runs when the user lacks the permission.
 $app->get('/cart-to-group', function (Request $request, Response $response) {
     $params = $request->getQueryParams();
 
@@ -75,6 +80,8 @@ $app->get('/cart-to-group', function (Request $request, Response $response) {
 // Guards on GroupID only (not on the submit button value) so that the
 // handler works correctly regardless of how the button value is serialised
 // by the browser.
+//
+// Auth: same ManageGroupRoleAuthMiddleware guard as the GET handler above.
 $app->post('/cart-to-group', function (Request $request, Response $response) {
     $body     = $request->getParsedBody();
     $iGroupID = !empty($body['GroupID']) ? (int) $body['GroupID'] : 0;
@@ -104,7 +111,13 @@ $app->post('/cart-to-group', function (Request $request, Response $response) {
         }
     }
 
-    // Fall back — redirect to the form.
+    // Fall back — redirect to the form with an error message.
+    // Covers: GroupID missing/zero, cart empty, or group no longer exists.
+    if ($iGroupID > 0) {
+        // GroupID was supplied but the group was not found (deleted since page load).
+        $_SESSION['sGlobalMessage']      = gettext('The selected group was not found. Please select a valid group.');
+        $_SESSION['sGlobalMessageClass'] = 'danger';
+    }
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/groups/cart-to-group')
         ->withStatus(302);
