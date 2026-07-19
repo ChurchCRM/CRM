@@ -46,6 +46,10 @@ $app->get('/cart-to-group', function (Request $request, Response $response) {
             return $response
                 ->withHeader('Location', SystemURLs::getRootPath() . '/groups/view/' . $iGroupID)
                 ->withStatus(302);
+        } else {
+            // Group no longer exists (deleted between creation and redirect).
+            $_SESSION['sGlobalMessage']      = gettext('The group could not be found. Please try again.');
+            $_SESSION['sGlobalMessageClass'] = 'danger';
         }
     }
 

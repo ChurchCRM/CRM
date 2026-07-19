@@ -48,8 +48,10 @@ describe("Standard Groups - Cart to Group", () => {
             // Select the freshly-created group
             cy.get("#GroupID").select(String(groupId));
 
-            // Wait for the role dropdown to be populated (UpdateRoles fires onchange)
-            cy.get("#GroupRole").should("not.contain", "No Group Selected");
+            // Wait for UpdateRoles() AJAX to complete: it always inserts
+            // 'All Roles' as the first option regardless of whether the group
+            // has custom roles, replacing the initial 'No Group Selected'.
+            cy.get("#GroupRole").should("contain", "All Roles");
 
             // Click the submit button (using .click() ensures button values are POSTed)
             cy.get('button[type="submit"][name="Submit"]').click();
