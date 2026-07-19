@@ -19,14 +19,19 @@ use Slim\Views\PhpRenderer;
 // They use kiosk cookie authentication, not user authentication
 
 /**
- * Return the adult (age >= 18) members of a person's family, excluding the
- * person themselves, formatted for the kiosk "Checked In By" / "Checked Out By"
+ * Return the adult members of a person's family, excluding the person
+ * themselves, formatted for the kiosk "Checked In By" / "Checked Out By"
  * picker.
  *
- * Adulthood is determined from each family member's recorded birth date. A
- * member whose birth date is unset or incomplete cannot be confirmed to be 18+
- * and is omitted rather than assumed adult (graceful fallback — see issue
- * #9215). Returns [] when the person has no family.
+ * When a member has a complete, valid birth date, adulthood is determined by
+ * age (>= 18). When birth date is absent or incomplete, the member falls back
+ * to the role-based Family::getAdults() criterion (Head/Spouse roles per
+ * system config) so that longstanding records without a stored DOB are not
+ * silently excluded from the picker.
+ *
+ * Invalid calendar dates (e.g. Feb 30) are skipped to prevent DateTime
+ * errors. Results are sorted alphabetically (LastName, then FirstName).
+ * Returns [] when the person has no family.
  *
  * @return list<array{Id:int, FirstName:string, LastName:string, hasPhoto:bool}>
  */
@@ -37,25 +42,49 @@ function getAdultFamilyMembers(Person $person): array
         return [];
     }
 
+    // Pre-compute role-based adult IDs (Head/Spouse) once; used as a fallback
+    // for members whose birth date is unset or incomplete.
+    $roleBasedAdultIds = array_map(
+        fn ($p) => (int) $p->getId(),
+        $family->getAdults()
+    );
+
     $today = DateTimeUtils::getToday();
     $members = [];
+
     foreach ($family->getPeople() as $member) {
         if ((int) $member->getId() === (int) $person->getId()) {
             continue; // Exclude the person themselves
         }
 
-        $birthYear = $member->getBirthYear();
+        $birthYear  = $member->getBirthYear();
         $birthMonth = (int) $member->getBirthMonth();
-        $birthDay = (int) $member->getBirthDay();
+        $birthDay   = (int) $member->getBirthDay();
 
-        // Require a complete birth date to determine age; omit when unknown.
-        if (empty($birthYear) || $birthMonth < 1 || $birthDay < 1) {
-            continue;
-        }
+        $hasDob = !empty($birthYear) && $birthMonth >= 1 && $birthDay >= 1;
 
-        $birthDate = DateTimeUtils::createDateTime("$birthYear-$birthMonth-$birthDay");
-        if ($today->diff($birthDate)->y < 18) {
-            continue;
+        if ($hasDob) {
+            // Validate calendar date before constructing DateTime; corrupt values
+            // like Feb 30 would cause a fatal TypeError via diff() otherwise.
+            if (!checkdate($birthMonth, $birthDay, (int) $birthYear)) {
+                continue;
+            }
+            // sprintf guarantees a zero-padded ISO-8601 string; bare int
+            // interpolation yields "1990-1-5" for Jan 5th which strict-format
+            // parsers treat as invalid.
+            $birthDate = DateTimeUtils::createDateTime(
+                sprintf('%04d-%02d-%02d', (int) $birthYear, $birthMonth, $birthDay)
+            );
+            if ($today->diff($birthDate)->y < 18) {
+                continue; // Under 18
+            }
+        } else {
+            // No complete birth date: fall back to role-based adult check
+            // (Head/Spouse roles — same criterion as Family::getAdults()).
+            // Preserves existing behaviour for members with no recorded DOB.
+            if (!in_array((int) $member->getId(), $roleBasedAdultIds, true)) {
+                continue;
+            }
         }
 
         $photo = new Photo('Person', $member->getId());
@@ -66,6 +95,11 @@ function getAdultFamilyMembers(Person $person): array
             'hasPhoto'  => $photo->hasUploadedPhoto(),
         ];
     }
+
+    // Sort alphabetically so the picker is predictable regardless of DB order.
+    usort($members, fn ($a, $b) =>
+        strcmp($a['LastName'], $b['LastName']) ?: strcmp($a['FirstName'], $b['FirstName'])
+    );
 
     return $members;
 }
