@@ -430,38 +430,7 @@ export class CartManager {
       });
   }
 
-  emptyToGroup() {
-    window.CRM.groups.promptSelection(
-      {
-        Type: window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role,
-      },
-      (selectedRole) => {
-        // Defensive — promptSelection should already validate, but the API
-        // requires both fields and JSON.stringify silently drops `undefined`,
-        // so a missing value would otherwise yield a confusing 400.
-        if (!selectedRole?.GroupID || !selectedRole?.RoleID) {
-          this.showNotification("danger", i18next.t("Please select both a group and a role."));
-          return;
-        }
-        window.CRM.APIRequest({
-          method: "POST",
-          path: "cart/emptyToGroup",
-          data: JSON.stringify({
-            groupID: selectedRole.GroupID,
-            groupRoleID: selectedRole.RoleID,
-          }),
-        })
-          .done((data) => {
-            this.showNotification("success", i18next.t("Cart emptied to group successfully"));
-            this.refreshCartCount();
-            this.resetAllButtons();
-          })
-          .fail((error) => {
-            this.showNotification("danger", i18next.t("Failed to empty cart to group"));
-          });
-      },
-    );
-  }
+  // emptyToGroup removed: use groups/cart-to-group page instead of popup
 
   /**
    * Show notification using Notyf
@@ -615,14 +584,14 @@ export class CartManager {
                     <a class="dropdown-item emptyCart">
                         <i class="fa-solid fa-trash text-danger"></i> ${i18next.t("Empty Cart")}
                     </a>
-                    <a id="emptyCartToGroup" class="dropdown-item">
-                        <i class="fa-solid fa-object-ungroup text-info"></i> ${i18next.t("Empty Cart to Group")}
+                    <a href="${window.CRM.root}/groups/cart-to-group" class="dropdown-item">
+                      <i class="fa-solid fa-object-ungroup text-info"></i> ${i18next.t("Empty Cart to Group")}
                     </a>
                     <a href="${window.CRM.root}/CartToFamily.php" class="dropdown-item">
                         <i class="fa-solid fa-users text-info"></i> ${i18next.t("Empty Cart to Family")}
                     </a>
-                    <a href="${window.CRM.root}/event/cart-to-event" class="dropdown-item">
-                        <i class="fa-solid fa-clipboard-list text-info"></i> ${i18next.t("Check In to Event")}
+                    <a href="${window.CRM.root}/groups/cart-to-group" class="dropdown-item">
+                      <i class="fa-solid fa-clipboard-list text-info"></i> ${i18next.t("Check In to Event")}
                     </a>
                     <a href="${window.CRM.root}/MapUsingGoogle.php?GroupID=0" class="dropdown-item">
                         <i class="fa-solid fa-map-marker text-info"></i> ${i18next.t("Map Cart")}
@@ -687,10 +656,7 @@ export class CartManager {
       this.emptyCart();
     });
 
-    $(document).on("click", "#emptyCartToGroup", (e) => {
-      e.preventDefault();
-      this.emptyToGroup();
-    });
+    // Click handler for #emptyCartToGroup removed — element is now a link
   }
 }
 

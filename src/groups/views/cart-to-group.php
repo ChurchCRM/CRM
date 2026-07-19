@@ -52,6 +52,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h3 class="card-title"><?= gettext('Add to Group') ?></h3>
                 </div>
                 <div class="card-body">
+                    <!-- Create group button moved here to separate it from the existing group list -->
+                    <div class="mb-3">
+                        <button type="button" id="addToGroup" class="btn btn-outline-secondary mb-3">
+                            <?= gettext('Create Group + ADD Cart') ?>
+                        </button>
+                    </div>
                     <form name="CartToGroup" action="<?= $sRootPath ?>/groups/cart-to-group" method="POST">
                         <div class="mb-3">
                             <label class="form-label" for="GroupID"><?= gettext('Select Group') ?></label>
@@ -73,9 +79,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
 
                         <div class="card-footer text-end">
-                            <button type="button" id="addToGroup" class="btn btn-outline-secondary me-2">
-                                <?= gettext('Create Group + ADD Cart') ?>
-                            </button>
                             <button type="submit" name="Submit" class="btn btn-primary">
                                 <?= gettext('Add to Group') ?>
                             </button>
