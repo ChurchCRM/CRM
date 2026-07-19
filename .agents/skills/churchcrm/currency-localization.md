@@ -102,6 +102,8 @@ CurrencyFormatter::formatHtml(null);      // ""          — null in, empty stri
 CurrencyFormatter::formatHtml("N/A");     // ""          — non-numeric string → '' + warning log (never $0.00)
 CurrencyFormatter::format(1234.5);        // "$1,234.50" — raw string; for APIs, PDFs, further processing
 CurrencyFormatter::format(1234.5, 0);     // "$1,235"
+CurrencyFormatter::format(null);          // ""          — same float|string|null contract as formatHtml()
+CurrencyFormatter::formatForPdf(1234.5);  // "$1,234.50" in ISO-8859-1 — amount-only FPDF cells ONLY
 CurrencyFormatter::symbol();              // "$"
 CurrencyFormatter::position();            // "before"
 CurrencyFormatter::toArray();             // ['symbol' => ..., 'position' => ..., ...] for JSON
@@ -131,7 +133,7 @@ prevent line-wrapping on narrow screens.
 Never concatenate the symbol yourself; the helper applies the configured
 position and separators for you.
 
-### Never pre-cast `(float)` before `formatHtml()` <!-- learned: 2026-07-18 -->
+### Never pre-cast `(float)` before `formatHtml()` or `format()` <!-- learned: 2026-07-18 -->
 
 `formatHtml()` takes `float|string|null` and validates internally. A caller-side
 `(float)` cast silently launders `null`/garbage into `$0.00` on finance reports —
@@ -148,8 +150,9 @@ only when a blank truly should display as zero (e.g. an unguarded SUM total).
 <?= CurrencyFormatter::formatHtml($deposit->getVirtualColumn('totalAmount') ?? 0) ?>  // intentional $0.00
 ```
 
-`format()` stays strict (`float`) — API/PDF code should hold real numbers already;
-convert explicitly there.
+`format()` shares the same `float|string|null` contract (a private `normalize()`
+does the validation once for both methods) — pass raw Propel/mysqli values to
+either without casting. <!-- learned: 2026-07-19 -->
 
 ---
 
@@ -318,6 +321,29 @@ widths are fixed, so wider symbols (`CHF`, `CAD $`) can overflow.
 See the Phase 5 sub-issue of the epic for the full rewrite list (TaxReport,
 AdvancedDeposit, EnvelopeReport, PledgeSummary, FamilyPledgeSummary,
 PrintDeposit, FundRaiserStatement, FR bid sheets, etc.).
+
+### FPDF Latin-1: convert exactly once <!-- learned: 2026-07-19 -->
+
+FPDF core fonts render ISO-8859-1 only; UTF-8 (including the formatter's
+`\u{00A0}` and `€`/`£`) must be transcoded before `Cell()`/`Write()` — but
+converting the same string twice corrupts it. Pick ONE of these per string:
+
+```php
+// Amount-only cell → formatForPdf() does format + transcode in one call
+$pdf->Cell(25, $h, CurrencyFormatter::formatForPdf($total), 0, 0, 'R');
+
+// Amount concatenated with UTF-8 text (names/labels) → plain format(),
+// then convert the WHOLE string once at the end
+$pdf->Cell(176, $h, ChurchInfoReport::convertToLatin1(
+    "$fundName Total:   " . CurrencyFormatter::format($total)), 0, 0, 'R');
+
+// printRightJustified()/writeAt()/writeAtCell() convert internally →
+// pass plain format() output, never pre-converted text
+$pdf->printRightJustified($x, $y, CurrencyFormatter::format($total));
+```
+
+❌ Never `formatForPdf()` inside a string that gets `convertToLatin1()`-wrapped,
+and never `convertToLatin1()` before a `printRightJustified*()`/`writeAt*()` helper.
 
 ---
 
