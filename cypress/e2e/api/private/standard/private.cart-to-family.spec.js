@@ -27,9 +27,6 @@ describe("API — Cart to Family", () => {
      * Re-establishes a valid browser session for the standard user by POSTing
      * directly to the login endpoint. Must be called AFTER any
      * makePrivateAdminAPICall() that clobbered the session cookie.
-     *
-     * This is the same pattern used in standard.cart-to-family.spec.js T1-T7
-     * to recover from API-key-induced session clobbering.
      */
     function freshStandardLogin() {
         cy.request({
@@ -85,19 +82,18 @@ describe("API — Cart to Family", () => {
         // the same cookie-based session (needed for cart state to persist).
         freshStandardLogin();
 
-        // Record the current family count using the same browser session.
-        // We use cy.request() (not makePrivateAdminAPICall) so the session
-        // cookie is shared with the cart-add and form-POST below.
+        // Record the most recently created family ID before the test.
+        // GET /api/families/latest returns the 10 most recently entered
+        // families as {families: [{FamilyId, Name, ...}, ...]}.
         cy.request({
             method: "GET",
-            url: "/api/families/",
+            url: "/api/families/latest",
             failOnStatusCode: false,
         }).then((resp) => {
-            const familyCountBefore = resp.body.Families
-                ? resp.body.Families.length
-                : resp.body.data
-                  ? resp.body.data.length
-                  : 0;
+            const latestFamilies = (resp.body && resp.body.families) ? resp.body.families : [];
+            const latestFamilyIdBefore = latestFamilies.length > 0
+                ? latestFamilies[0].FamilyId
+                : null;
 
             // Add a free person to the cart using the current browser session
             // (same session that the form POST will use, so Cart::hasPeople()
@@ -131,18 +127,17 @@ describe("API — Cart to Family", () => {
                 expect(postResp.status).to.equal(200);
             });
 
-            // Family count must be unchanged — no orphan row was created.
+            // Most-recently-created family must be unchanged — no orphan row was created.
             cy.request({
                 method: "GET",
-                url: "/api/families/",
+                url: "/api/families/latest",
                 failOnStatusCode: false,
             }).then((afterResp) => {
-                const familyCountAfter = afterResp.body.Families
-                    ? afterResp.body.Families.length
-                    : afterResp.body.data
-                      ? afterResp.body.data.length
-                      : 0;
-                expect(familyCountAfter).to.equal(familyCountBefore);
+                const latestFamiliesAfter = (afterResp.body && afterResp.body.families) ? afterResp.body.families : [];
+                const latestFamilyIdAfter = latestFamiliesAfter.length > 0
+                    ? latestFamiliesAfter[0].FamilyId
+                    : null;
+                expect(latestFamilyIdAfter).to.equal(latestFamilyIdBefore);
             });
         });
     });
