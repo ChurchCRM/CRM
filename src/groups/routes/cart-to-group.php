@@ -60,19 +60,36 @@ $app->get('/cart-to-group', function (Request $request, Response $response) {
     }
 
     $aGroups  = GroupQuery::create()->orderByName()->find();
+
+    // Read and clear any flash message set by a prior POST redirect
+    // (e.g. empty-cart warning, group-not-found error).
+    // Escape for safe interpolation into the JS string in Include/Footer.php.
+    $sGlobalMessage      = '';
+    $sGlobalMessageClass = 'success';
+    if (isset($_SESSION['sGlobalMessage'])) {
+        $sGlobalMessage      = $_SESSION['sGlobalMessage'];
+        $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
+        unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
+        $flags               = JSON_INVALID_UTF8_SUBSTITUTE;
+        $sGlobalMessage      = substr(json_encode($sGlobalMessage,      $flags), 1, -1);
+        $sGlobalMessageClass = substr(json_encode($sGlobalMessageClass, $flags), 1, -1);
+    }
+
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     return $renderer->render($response, 'cart-to-group.php', [
-        'sRootPath'     => SystemURLs::getRootPath(),
-        'sPageTitle'    => gettext('Add Cart to Group'),
-        'sPageSubtitle' => gettext('Assign cart members to a group'),
-        'aBreadcrumbs'  => PageHeader::breadcrumbs([
+        'sRootPath'          => SystemURLs::getRootPath(),
+        'sPageTitle'         => gettext('Add Cart to Group'),
+        'sPageSubtitle'      => gettext('Assign cart members to a group'),
+        'aBreadcrumbs'       => PageHeader::breadcrumbs([
             [gettext('Groups'), '/groups/dashboard'],
             [gettext('Add Cart to Group')],
         ]),
-        'aPeopleInCart' => $aPeopleInCart,
-        'cartCount'     => $cartCount,
-        'aGroups'       => $aGroups,
+        'aPeopleInCart'      => $aPeopleInCart,
+        'cartCount'          => $cartCount,
+        'aGroups'            => $aGroups,
+        'sGlobalMessage'     => $sGlobalMessage,
+        'sGlobalMessageClass' => $sGlobalMessageClass,
     ]);
 });
 

@@ -151,7 +151,11 @@ function viewGroup(Request $request, Response $response, array $args): Response
         // JSON_INVALID_UTF8_SUBSTITUTE replaces invalid byte sequences with U+FFFD
         // instead of letting json_encode() return false, which would cause a
         // fatal TypeError in substr() on PHP 8.1+.
-        $flags               = JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE;
+        // JSON_UNESCAPED_UNICODE is intentionally omitted: U+2028 (LINE SEPARATOR)
+        // and U+2029 (PARAGRAPH SEPARATOR) are ECMAScript line-terminators that
+        // are illegal inside a JS string literal; leaving them as \uXXXX escapes
+        // is safe and JS decodes them identically.
+        $flags               = JSON_INVALID_UTF8_SUBSTITUTE;
         $sGlobalMessage      = substr(json_encode($sGlobalMessage,      $flags), 1, -1);
         $sGlobalMessageClass = substr(json_encode($sGlobalMessageClass, $flags), 1, -1);
     }
