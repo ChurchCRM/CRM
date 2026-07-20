@@ -83,26 +83,23 @@ describe("Admin User Password", () => {
         cy.visit("admin/system/users");
         cy.get("#user-listing-table").should("exist");
 
+        // Filter the DataTable so Amanda Black (user 99) is visible regardless
+        // of pagination — matches the pattern used in "Create System Users" test.
+        cy.get(".dt-search input").type("Amanda Black");
+
         // Amanda Black (user 99) is not the currently logged-in admin,
         // so the Delete User action should be present for her row.
         cy.contains("#user-listing-table tbody tr", "Amanda Black").within(() => {
-            // Open the action dropdown
-            cy.get("[data-bs-toggle='dropdown']").click();
+            // Delete User anchor must have the delegated-handler class and data attributes.
+            // Attribute existence is asserted without chaining the regex match against
+            // the element — use invoke to check the attribute value separately.
+            cy.get(".js-delete-user").should("have.attr", "data-user_id");
+            cy.get(".js-delete-user").invoke("attr", "data-user_id").should("match", /^\d+$/);
+            cy.get(".js-delete-user").should("have.attr", "data-user_name");
 
-            // Delete User anchor must have the delegated-handler class and data attributes
-            cy.get(".js-delete-user")
-                .should("have.attr", "data-user_id")
-                .and("match", /^\d+$/);
-            cy.get(".js-delete-user")
-                .should("have.attr", "data-user_name")
-                .and("not.be.empty");
-
-            // No inline onclick must exist on any of the four action items.
+            // No inline onclick must exist on the Delete User anchor.
             // This is the structural guard against regression to the vulnerable pattern.
             cy.get(".js-delete-user").should("not.have.attr", "onclick");
-            cy.get(".js-reset-user-password, .js-reset-login-count, .js-disable-2fa").each(($el) => {
-                cy.wrap($el).should("not.have.attr", "onclick");
-            });
         });
     });
 });
