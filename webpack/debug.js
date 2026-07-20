@@ -10,7 +10,7 @@ document.addEventListener("click", (e) => {
   const level = btn.getAttribute("data-level") || "none";
   btn.disabled = true;
 
-  const root = (window.CRM && window.CRM.root) || "";
+  const root = window.CRM?.root || "";
   fetch(`${root}/api/system/telemetry-consent`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

@@ -9,7 +9,7 @@ document.addEventListener("click", (e) => {
   if (!btn) return;
 
   const level = btn.getAttribute("data-level") || "none";
-  const root = (window.CRM && window.CRM.root) || "";
+  const root = window.CRM?.root || "";
 
   btn.disabled = true;
   fetch(`${root}/api/system/telemetry-consent`, {
