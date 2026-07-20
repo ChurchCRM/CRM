@@ -66,8 +66,8 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
 function generateVerifyReport(Request $request, Response $response, array $args): Response
 {
     AuthenticationManager::redirectHomeIfFalse(
-        AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(),
-        'CreateDirectory'
+        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
+        'MenuOptions'
     );
 
     $queryParams = $request->getQueryParams();
@@ -102,8 +102,8 @@ function generateVerifyReport(Request $request, Response $response, array $args)
 function sendVerifyReportEmail(Request $request, Response $response, array $args): Response
 {
     AuthenticationManager::redirectHomeIfFalse(
-        AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(),
-        'CreateDirectory'
+        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
+        'MenuOptions'
     );
 
     $params = array_merge($request->getQueryParams(), (array) ($request->getParsedBody() ?? []));
@@ -325,3 +325,4 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
 
     return $renderer->render($response, 'photo-gallery.php', $pageArgs);
 }
+
