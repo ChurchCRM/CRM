@@ -74,4 +74,35 @@ describe("Admin User Password", () => {
         // Re-login after API call to restore session
         cy.setupAdminSession({ forceLogin: true });
     });
+
+    // GHSA-4qpj-3hw2-52g8: Stored XSS via Person Name in Admin Users page.
+    // Verify that action menu items use safe data-* attributes instead of
+    // inline onclick handlers, eliminating the JS-string-in-HTML-attribute
+    // context that allowed arbitrary script injection.
+    it("GHSA-4qpj-3hw2-52g8: user action menu uses safe data-* attributes, not inline onclick", () => {
+        cy.visit("admin/system/users");
+        cy.get("#user-listing-table").should("exist");
+
+        // Amanda Black (user 99) is not the currently logged-in admin,
+        // so the Delete User action should be present for her row.
+        cy.contains("#user-listing-table tbody tr", "Amanda Black").within(() => {
+            // Open the action dropdown
+            cy.get("[data-bs-toggle='dropdown']").click();
+
+            // Delete User anchor must have the delegated-handler class and data attributes
+            cy.get(".js-delete-user")
+                .should("have.attr", "data-user_id")
+                .and("match", /^\d+$/);
+            cy.get(".js-delete-user")
+                .should("have.attr", "data-user_name")
+                .and("not.be.empty");
+
+            // No inline onclick must exist on any of the four action items.
+            // This is the structural guard against regression to the vulnerable pattern.
+            cy.get(".js-delete-user").should("not.have.attr", "onclick");
+            cy.get(".js-reset-user-password, .js-reset-login-count, .js-disable-2fa").each(($el) => {
+                cy.wrap($el).should("not.have.attr", "onclick");
+            });
+        });
+    });
 });

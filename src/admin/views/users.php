@@ -208,23 +208,23 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                             <i class="ti ti-tool me-2"></i><?= gettext('Change Password') ?>
                                         </a>
                                         <?php if ($bEmailEnabled && $user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) { ?>
-                                            <a class="dropdown-item" href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
+                                            <a class="dropdown-item js-reset-user-password" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
                                                 <i class="ti ti-send me-2"></i><?= gettext('Reset Password via Email') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->getFailedLogins() > 0) { ?>
-                                            <a class="dropdown-item" onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
+                                            <a class="dropdown-item js-reset-login-count" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
                                                 <i class="ti ti-eraser me-2"></i><?= gettext('Reset Failed Logins') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->is2FactorAuthEnabled()) { ?>
-                                            <a class="dropdown-item" onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
+                                            <a class="dropdown-item js-disable-2fa" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
                                                 <i class="ti ti-shield-off me-2"></i><?= gettext('Disable 2FA') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item text-danger" href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
+                                            <a class="dropdown-item text-danger js-delete-user" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
                                                 <i class="ti ti-trash me-2"></i><?= gettext('Delete User') ?>
                                             </a>
                                         <?php } ?>
