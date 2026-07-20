@@ -83,23 +83,21 @@ describe("Admin User Password", () => {
         cy.visit("admin/system/users");
         cy.get("#user-listing-table").should("exist");
 
-        // Filter the DataTable so Amanda Black (user 99) is visible regardless
-        // of pagination — matches the pattern used in "Create System Users" test.
-        cy.get(".dt-search input").type("Amanda Black");
+        // The logged-in admin's own row has no delete button, but every other
+        // user row does. With the test DB having many users, page 1 always
+        // contains at least one non-self user — no DataTable search or
+        // pagination needed.
+        cy.get("#user-listing-table tbody .js-delete-user")
+            .should("have.length.at.least", 1)
+            .first()
+            .as("deleteLink");
 
-        // Amanda Black (user 99) is not the currently logged-in admin,
-        // so the Delete User action should be present for her row.
-        cy.contains("#user-listing-table tbody tr", "Amanda Black").within(() => {
-            // Delete User anchor must have the delegated-handler class and data attributes.
-            // Attribute existence is asserted without chaining the regex match against
-            // the element — use invoke to check the attribute value separately.
-            cy.get(".js-delete-user").should("have.attr", "data-user_id");
-            cy.get(".js-delete-user").invoke("attr", "data-user_id").should("match", /^\d+$/);
-            cy.get(".js-delete-user").should("have.attr", "data-user_name");
-
-            // No inline onclick must exist on the Delete User anchor.
-            // This is the structural guard against regression to the vulnerable pattern.
-            cy.get(".js-delete-user").should("not.have.attr", "onclick");
-        });
+        // Must use safe data-* attributes, not inline onclick.
+        // This is the structural guard against regression to the XSS-vulnerable
+        // pattern of embedding JS strings directly in HTML attribute context.
+        cy.get("@deleteLink").should("have.attr", "data-user_id");
+        cy.get("@deleteLink").invoke("attr", "data-user_id").should("match", /^\d+$/);
+        cy.get("@deleteLink").should("have.attr", "data-user_name");
+        cy.get("@deleteLink").should("not.have.attr", "onclick");
     });
 });
