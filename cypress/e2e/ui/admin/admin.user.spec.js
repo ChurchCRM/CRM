@@ -80,6 +80,13 @@ describe("Admin User Password", () => {
     // inline onclick handlers, eliminating the JS-string-in-HTML-attribute
     // context that allowed arbitrary script injection.
     it("GHSA-4qpj-3hw2-52g8: user action menu uses safe data-* attributes, not inline onclick", () => {
+        // The previous test (Create System Users) ends with forceLogin, which
+        // switches the browser to a new uniquely-named session. The shared
+        // beforeEach then restores the older 'admin-session' from Cypress cache,
+        // but that PHP session can be stale after 21+ minutes of CI run time.
+        // Force a fresh login here to guarantee a valid server-side session.
+        cy.setupAdminSession({ forceLogin: true });
+
         cy.visit("admin/system/users");
         cy.get("#user-listing-table").should("exist");
 
