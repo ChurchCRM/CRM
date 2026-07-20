@@ -1,11 +1,15 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\ConfirmReportService;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
@@ -22,6 +26,8 @@ $app->group('/list', function (RouteCollectorProxy $group): void {
 
 $app->get('/verify', 'viewPeopleVerify');
 $app->get('/photos', 'viewPeoplePhotoGallery');
+$app->get('/report/verify', 'generateVerifyReport');
+$app->post('/report/verify/email', 'sendVerifyReportEmail')->add(new CSRFMiddleware('people_report_verify_email'));
 
 function viewPeopleVerify(Request $request, Response $response, array $args): Response
 {
@@ -47,6 +53,78 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
     }
 
     return $renderer->render($response, 'people-verify-view.php', $pageArgs);
+}
+
+/**
+ * Generate and stream a confirmation report PDF for download.
+ *
+ * Route: GET /people/report/verify[?familyId=<int>]
+ *
+ * Replaces the legacy src/Reports/ConfirmReport.php entry point.
+ * Requires the "Create Directory" permission.
+ */
+function generateVerifyReport(Request $request, Response $response, array $args): Response
+{
+    AuthenticationManager::redirectHomeIfFalse(
+        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
+        'MenuOptions'
+    );
+
+    $queryParams = $request->getQueryParams();
+    $familyId = isset($queryParams['familyId']) && $queryParams['familyId'] !== ''
+        ? InputUtils::filterInt($queryParams['familyId'])
+        : null;
+
+    try {
+        $service = new ConfirmReportService();
+        $result = $service->generateDownloadPDF($familyId);
+
+        $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
+        $response->getBody()->write($result['bytes']);
+        return $response
+            ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', $disposition . '; filename="' . $result['filename'] . '"');
+    } catch (\Throwable $e) {
+        LoggerUtils::getAppLogger()->error('generateVerifyReport error: ' . $e->getMessage(), ['exception' => $e]);
+        $response->getBody()->write('An error occurred while generating the PDF. Please check the application logs.');
+        return $response->withStatus(500)->withHeader('Content-Type', 'text/plain');
+    }
+}
+
+/**
+ * Generate per-family confirmation PDFs and email them, then redirect.
+ *
+ * Route: POST /people/report/verify/email (CSRF-protected state-changing action)
+ *
+ * Replaces the legacy src/Reports/ConfirmReportEmail.php entry point.
+ * Requires the "Create Directory" permission.
+ */
+function sendVerifyReportEmail(Request $request, Response $response, array $args): Response
+{
+    AuthenticationManager::redirectHomeIfFalse(
+        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
+        'MenuOptions'
+    );
+
+    $params = array_merge($request->getQueryParams(), (array) ($request->getParsedBody() ?? []));
+    $familyId = isset($params['familyId']) && $params['familyId'] !== ''
+        ? InputUtils::filterInt($params['familyId'])
+        : null;
+    $updated = !empty($params['updated']);
+
+    try {
+        $service = new ConfirmReportService();
+        $familiesEmailed = $service->sendFamilyEmails($familyId, $updated);
+    } catch (\Throwable $e) {
+        LoggerUtils::getAppLogger()->error('sendVerifyReportEmail error: ' . $e->getMessage(), ['exception' => $e]);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=true');
+    }
+
+    if ($familyId !== null) {
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/family/' . $familyId . '?PDFEmailed=' . $familiesEmailed);
+    }
+
+    return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?AllPDFsEmailed=' . $familiesEmailed);
 }
 
 function listPeople(Request $request, Response $response, array $args): Response
@@ -247,3 +325,4 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
 
     return $renderer->render($response, 'photo-gallery.php', $pageArgs);
 }
+

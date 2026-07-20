@@ -1,10 +1,15 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 
 $sPageTitle = gettext('People Verify Dashboard');
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
+
+<form id="verifyEmailAllForm" method="post" action="<?= SystemURLs::getRootPath() ?>/people/report/verify/email" class="d-none">
+    <?= CSRFUtils::getTokenInputField('people_report_verify_email') ?>
+</form>
 
 <div class="card">
     <div class="card-header d-flex align-items-center">
@@ -12,7 +17,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <div class="card-body">
         <div class="btn-group" role="group">
-            <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-outline-danger" title="<?= gettext('Generate and download confirmation letters') ?>">
+            <a href="<?= SystemURLs::getRootPath()?>/people/report/verify" class="btn btn-outline-danger" title="<?= gettext('Generate and download confirmation letters') ?>">
                 <i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Letters') ?>
             </a>
             <button type="button" class="btn btn-outline-primary" id="verifyEmail" title="<?= gettext('Send email to families') ?>">
@@ -61,7 +66,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location= window.CRM.root +"/Reports/ConfirmReportEmail.php";
+                        document.getElementById('verifyEmailAllForm').submit();
                     }
                 }
             });

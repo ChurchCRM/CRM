@@ -314,7 +314,9 @@ function initializeFamilyView() {
 
   $("#verifyEmailPDF").on("click", function () {
     $("#confirm-verify").modal("hide");
-    window.location.href = `${window.CRM.root}/Reports/ConfirmReportEmail.php?familyId=${window.CRM.currentFamily}`;
+    const form = document.getElementById("verifyEmailPDFForm");
+    form.querySelector('input[name="familyId"]').value = window.CRM.currentFamily;
+    form.submit();
   });
 
   // Photos
