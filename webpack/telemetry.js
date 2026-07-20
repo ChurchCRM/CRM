@@ -11,8 +11,8 @@
 
 import posthog from "posthog-js";
 
-const cfg = window.CRM && window.CRM.telemetry;
-if (cfg && cfg.key && cfg.level && cfg.level !== "none") {
+const cfg = window.CRM?.telemetry;
+if (cfg?.key && cfg.level && cfg.level !== "none") {
   posthog.init(cfg.key, {
     api_host: cfg.endpoint,
     capture_pageview: false,
