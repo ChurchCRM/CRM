@@ -108,7 +108,7 @@
         "daterangepicker": "^3.1.0",
         "dompurify": "^3.4.12",
         "flag-icons": "^7.5.0",
-        "fullcalendar": "^6.1.21",
+        "fullcalendar": "^7.0.1",
         "i18next": "^26.3.6",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
