@@ -144,7 +144,7 @@
         "sass-loader": "^17.0.0",
         "style-loader": "^4.0.0",
         "ts-loader": "^9.6.2",
-        "typescript": "^6.0.3",
+        "typescript": "^7.0.2",
         "webpack": "^5.108.4",
         "webpack-cli": "^7.2.1"
     },
