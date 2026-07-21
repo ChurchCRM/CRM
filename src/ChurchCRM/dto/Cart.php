@@ -256,7 +256,7 @@ class Cart
     public static function getEmails(): array
     {
         self::checkCart();
-        $cartIds = array_map('intval', $_SESSION['aPeopleCart']);
+        $cartIds = array_values(array_filter(array_map('intval', $_SESSION['aPeopleCart']), fn ($id) => $id > 0));
         if (empty($cartIds)) {
             return [];
         }

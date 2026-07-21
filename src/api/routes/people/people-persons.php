@@ -152,7 +152,8 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
 /**
  * @OA\Get(
  *     path="/people/emails",
- *     summary="Get mailing email addresses for all active-family people, grouped by classification role",
+ *     summary="Get mailing email addresses for active-family members, grouped by classification role",
+ *     description="Returns email lists for all persons in active (non-deactivated) families. Persons with no family assignment (per_fam_ID=0) are excluded. Respects the DoNotEmail property exclusion and appends sToEmailAddress when configured.",
  *     tags={"People"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Email lists for all people and per role",
