@@ -1246,7 +1246,7 @@ INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_valu
 (1, 7, 'bUSAddressVerification', '1', 'boolean', 'User permission to use IST Address Verification', 'TRUE', ''),
 (0, 10, 'bAddEvent', '0', 'boolean', 'Allow user to add new event', 'FALSE', 'SECURITY'),
 (0, 11, 'bSeePrivacyData', '0', 'boolean', 'Allow user to see member privacy data, e.g. Birth Year, Age.', 'FALSE', 'SECURITY'),
-(0, 8, 'sMailtoDelimiter', ',', 'text', 'Delimiter for recipient addresses in mailto links', 'TRUE', '');
+(1, 1, 'sMailtoDelimiter', ',', 'text', 'Delimiter for multiple email addresses in mailto: links', 'TRUE', '');
 
 -- --------------------------------------------------------
 
@@ -1458,3 +1458,4 @@ CREATE TABLE `register_reg` (
 	PRIMARY KEY  (`reg_id`),
 	UNIQUE KEY `reg_id` (`reg_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
