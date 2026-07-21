@@ -497,14 +497,14 @@ if ($_twoFAGraceUser !== null):
   <div class="d-flex align-items-center">
     <div class="me-2"><i class="ti ti-shield-lock"></i></div>
     <div>
-      <?= sprintf(
+      <?= InputUtils::escapeHTML(sprintf(
           ngettext(
               'Two-factor authentication is required. You have %d day to enroll.',
               'Two-factor authentication is required. You have %d days to enroll.',
               $_twoFADaysLeft
           ),
           $_twoFADaysLeft
-      ) ?>
+      )) ?>
       <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/v2/user/current/manage2fa" class="alert-link ms-1">
         <?= gettext('Set up now') ?>
       </a>
