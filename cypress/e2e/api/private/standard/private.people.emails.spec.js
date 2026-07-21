@@ -54,7 +54,7 @@ describe("API Private People Emails", () => {
                     expect(byRole).to.be.an("object");
                     Object.values(byRole).forEach((roleEmails) => {
                         expect(roleEmails).to.be.an("array").and.have.length.above(0);
-                        (roleEmails as string[]).forEach((email) => {
+                        roleEmails.forEach((email) => {
                             expect(email).to.be.a("string").and.not.be.empty;
                         });
                     });
@@ -67,7 +67,7 @@ describe("API Private People Emails", () => {
                 (response) => {
                     const allLower = response.body.all.map((e) => e.toLowerCase());
                     Object.values(response.body.byRole).forEach((roleEmails) => {
-                        (roleEmails as string[]).forEach((email) => {
+                        roleEmails.forEach((email) => {
                             expect(allLower).to.include(email.toLowerCase());
                         });
                     });
@@ -150,4 +150,5 @@ describe("API Private People Emails", () => {
         });
     });
 });
+
 
