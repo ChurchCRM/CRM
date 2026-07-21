@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Service\GroupService;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 
@@ -272,12 +273,15 @@ class Cart
 
         $emails = [];
         $emailsSeen = [];
-        foreach (PersonQuery::create()->filterById($cartIds)->find() as $cartPerson) {
+        foreach (PersonQuery::create()
+            ->filterById($cartIds)
+            ->filterByEmail('', Criteria::NOT_EQUAL)
+            ->find() as $cartPerson) {
             if (isset($doNotEmailSet[(int) $cartPerson->getId()])) {
                 continue;
             }
             $email = (string) $cartPerson->getEmail();
-            if ($email !== '' && !isset($emailsSeen[strtolower($email)])) {
+            if (!isset($emailsSeen[strtolower($email)])) {
                 $emailsSeen[strtolower($email)] = true;
                 $emails[] = $email;
             }
@@ -310,5 +314,6 @@ class Cart
         Cart::removePersonArray($_SESSION['aPeopleCart']);
     }
 }
+
 
 
