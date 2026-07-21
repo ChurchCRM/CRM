@@ -125,7 +125,7 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=403, description="Admin role required")
      * )
      */
-    $group->delete('', function (Request $request, Response $response, array $args): Response {
+    $group->delete('/', function (Request $request, Response $response, array $args): Response {
         $user = $request->getAttribute('user');
         $userName = $user->getName();
         UserConfigQuery::create()->filterByPeronId($user->getId())->delete();

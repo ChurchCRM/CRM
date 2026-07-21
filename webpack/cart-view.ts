@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  fetchAPIJSON<{ emails: string[] }>("cart/emails")
+  fetchAPIJSON<{ emails: string[] }>("cart/emails", { credentials: "same-origin" })
     .then((data) => {
       if (!data.emails || data.emails.length === 0) {
         return;

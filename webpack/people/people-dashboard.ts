@@ -1,5 +1,3 @@
-import { fetchAPIJSON } from "../api-utils";
-
 /**
  * People Dashboard — Email collection and dropdown initialization
  *
@@ -59,8 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  fetchAPIJSON<{ all: string[]; byRole: Record<string, string[]> }>("people/emails")
-    .then((data) => {
+  fetch(`${window.CRM?.root || ""}/api/people/emails`, { credentials: "same-origin" })
+    .then((r) => {
+      if (!r.ok) throw new Error(`HTTP error ${r.status}`);
+      return r.json();
+    })
+    .then((data: { all: string[]; byRole: Record<string, string[]> }) => {
       if (!data.all || data.all.length === 0) {
         return;
       }
