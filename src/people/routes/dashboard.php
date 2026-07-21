@@ -38,8 +38,8 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
     // Build email list grouped by role (active families, excluding "Do Not Email" property)
     $currentUser        = AuthenticationManager::getCurrentUser();
     $isAdmin            = $currentUser->isAdmin();
-    // Email addresses joined with commas (RFC 5321 standard)
-    $sEmailLink         = '';
+    // Recipient lists collected as arrays; joined into RFC 6068 comma strings below.
+    $sEmailList         = [];
     $roleEmails         = [];
 
     // Build exclusion set from configured "Do Not Email" property
@@ -75,22 +75,19 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
             continue;
         }
         $emailsSeen[$email] = true;
-        $sEmailLink .= $email . ',';
+        $sEmailList[] = $email;
 
         $roleName = $roleNameMap[(int) $person->getClsId()] ?? gettext('Member');
-        if (!array_key_exists($roleName, $roleEmails)) {
-            $roleEmails[$roleName] = '';
-        }
-        $roleEmails[$roleName] .= $email . ',';
+        $roleEmails[$roleName][] = $email;
     }
 
-    // Append default "to" address if configured and not already included
-    if ($sEmailLink && SystemConfig::getValue('sToEmailAddress') !== '') {
-        $defaultEmail = SystemConfig::getValue('sToEmailAddress');
-        if (!stristr($sEmailLink, $defaultEmail)) {
-            $sEmailLink .= ',' . $defaultEmail;
-        }
-    }
+    // Join addresses into an RFC 6068 comma string, adding the default "to"
+    // once when configured. array_unique() drops any duplicate.
+    $defaultTo = SystemConfig::getValue('sToEmailAddress');
+    $joinEmails = static fn(array $emails): string => implode(
+        ',',
+        array_unique($defaultTo === '' ? $emails : [...$emails, $defaultTo]),
+    );
 
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
@@ -113,8 +110,8 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'simpleGenderStats'  => $simpleGenderStats,
         'ageGroupStats'      => $ageGroupStats,
         'familyRoleStats'    => $familyRoleStats,
-        'sEmailLink'         => urlencode($sEmailLink),
-        'roleEmails'         => $roleEmails,
+        'sEmailLink'         => $joinEmails($sEmailList),
+        'roleEmails'         => array_map($joinEmails, $roleEmails),
         'isAdmin'            => $isAdmin,
         'canEmail'           => $currentUser->isEmailEnabled(),
     ];
