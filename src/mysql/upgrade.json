@@ -58,13 +58,8 @@
     "scripts": ["/mysql/upgrade/7.3.1-cleanup.sql"],
     "dbVersion": "7.3.1"
   },
-  "pre-7.4.0": {
-    "versions": ["7.3.1", "7.3.2", "7.3.3", "7.4.0"],
-    "scripts": ["/mysql/upgrade/7.4.0-2fa-grace-period.sql"],
-    "dbVersion": "7.4.0-r1"
-  },
   "pre-7.4.1": {
-    "versions": ["7.4.0", "7.4.0-r1"],
+    "versions": ["7.3.1", "7.3.2", "7.3.3", "7.4.0"],
     "scripts": ["/mysql/upgrade/7.4.2-editself-exclusive.sql"],
     "dbVersion": "7.4.1"
   },
@@ -83,7 +78,7 @@
   },
   "current": {
     "versions": ["7.5.0"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.4.0-2fa-grace-period.sql"],
     "dbVersion": "7.5.1"
   }
 }
