@@ -271,42 +271,14 @@ msgstr "Ongeza Rukwama kwenye Tukio"
 msgid "Your cart is empty!"
 msgstr "Rukwama yako haina kitu!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Jina la familia halijawekwa"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Ongeza Rukwama kwa Familia"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Jina"
 
 #: 
-msgid "Assign Role"
-msgstr "Weka Wajibu"
-
-#: 
 msgid "Already in a family"
 msgstr "Tayari katika familia"
-
-#: 
-msgid "Create new family"
-msgstr "Tengenea familia"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Ikiwa unataka kuongeza familia mpya, tafadhali ingiza data hapa chini."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Tumia data ya anwani/mawasiliano kutoka"
-
-#: 
-msgid "Only the new data below"
-msgstr "Taarifa mpya tuu hapo chini"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +291,6 @@ msgstr "Ongeza kwa familia"
 #: 
 msgid "Add Cart to Group"
 msgstr "Ongeza Rukwama kwenye Kikundi"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Chagua kikundi ambacho ungependa kuongeza rukwama yako"
 
 #: 
 msgid "Select Group"
@@ -1181,10 +1149,6 @@ msgstr "Orodha ya Wachangishaji"
 #: 
 msgid "Date Start"
 msgstr "Tarehe ya Kuanza"
-
-#: 
-msgid "Apply Filters"
-msgstr "Tekeleza Vichujio"
 
 #: 
 msgid "Date End"
@@ -5024,10 +4988,6 @@ msgid "Group Role"
 msgstr "Wajibu wa Kikundi"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "AU Unda Kikundi na uongeze Mkokoteni katika TENDO MOJA"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Unda Kikundi + ADD Cart"
 
@@ -5173,14 +5133,6 @@ msgstr "Jina la mtumiaji halijawekwa"
 #: 
 msgid "Self Registrations"
 msgstr "Usajili wa kibinafsi"
-
-#: 
-msgid "Public Calendar"
-msgstr "Kalenda ya Umma"
-
-#: 
-msgid "Private Calendar"
-msgstr "Kalenda ya Kibinafsi"
 
 #: 
 msgid "Username"
@@ -6060,10 +6012,6 @@ msgstr "Kiasi kinazidi thamani ya juu inayoruhusiwa (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Hundi"
-
-#: 
-msgid "Clear Filters"
-msgstr "Safisha Vichujio"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7288,10 +7236,6 @@ msgid "open"
 msgstr "wazi"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Ingiza mkoa/jimbo kwa nchi zisizo na mikoa iliyofafanuliwa)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Usanidi wa URL ya Msingi si sahihi. Tafadhali kagua faili yako ya Config.php."
 
@@ -7656,12 +7600,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "Mtu %d ameongezwa kwenye Kigari."
 msgstr[1] "Watu %d wameongezwa kwenye Kigari."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "Mtu %d ameongezwa kwa mafanikio kwenye Familia iliyochaguliwa."
-msgstr[1] "Watu %d wameongezwa kwa mafanikio kwenye Familia iliyochaguliwa."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9399,14 +9337,6 @@ msgstr "Tenga na simamia nambari za bahasha za sadaka"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Tenga na simamia nambari za wanunuzi wa kuchangisha fedha"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Tenga vitu vya orodha kwenye rekodi ya familia"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Tenga vitu vya orodha kwenye kikundi"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14789,10 +14719,6 @@ msgid "Code is invalid"
 msgstr "Nambari si sahihi"
 
 #: 
-msgid "Coming soon"
-msgstr "Inakuja hivi karibuni"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Thibitisha Uwezeshaji"
 
@@ -16385,10 +16311,6 @@ msgstr "Lugha ya mfumo, muda wa eneo, miundo ya tarehe/saa na miundo ya nambari 
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Maeneo haya hutumia nambari za uumbaji (herufi zinazowakilisha sehemu za tarehe). Chagua mpangilio ulioandaliwa chini ya kila eneo, au uunde wako mwenyewe ukitumia kumbukumbu. Onyesho la moja kwa moja linaonyesha hasa jinsi itakavyoonekana. Acha tupu kutumia chaguo-msingi la mfumo."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Hivi ndivyo tarehe na nambari za simu zitakavyoonekana katika mfumo wote."
 
 #: 
 msgid "Translation completeness"

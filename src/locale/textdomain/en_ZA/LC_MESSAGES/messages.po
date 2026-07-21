@@ -30,10 +30,6 @@ msgid "Mobile Phone"
 msgstr "Cellphone"
 
 #: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Select the group which you would like to add to your cart"
-
-#: 
 #, fuzzy
 msgid "Load Authorized"
 msgstr "Load Authorised Transactions"

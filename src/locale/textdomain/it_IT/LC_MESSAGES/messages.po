@@ -271,42 +271,14 @@ msgstr "Aggiungi Carrello all' Evento"
 msgid "Your cart is empty!"
 msgstr "Il carrello è vuoto!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nessun nome di famiglia inserito!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Aggiungi carrello alla Famiglia"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nome"
 
 #: 
-msgid "Assign Role"
-msgstr "Assegna ruolo"
-
-#: 
 msgid "Already in a family"
 msgstr "Già in una famiglia"
-
-#: 
-msgid "Create new family"
-msgstr "Crea nuova famiglia"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Se stai aggiungendo una nuova famiglia, inserisci i dati qua sotto."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Usa indirizzo/dati di contatto da"
-
-#: 
-msgid "Only the new data below"
-msgstr "Solo i nuovi dati qua sotto"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +291,6 @@ msgstr "Aggiungi alla famiglia"
 #: 
 msgid "Add Cart to Group"
 msgstr "Aggiungi il Carrello al Gruppo"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Selezionare il gruppo a cui si desidera aggiungere il carrello"
 
 #: 
 msgid "Select Group"
@@ -1185,10 +1153,6 @@ msgstr "Elenco di raccolta fondi"
 #: 
 msgid "Date Start"
 msgstr "Data di Inizio"
-
-#: 
-msgid "Apply Filters"
-msgstr "Applica filtri"
 
 #: 
 msgid "Date End"
@@ -5047,10 +5011,6 @@ msgid "Group Role"
 msgstr "Ruolo del gruppo"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "OPPURE Creare un gruppo e aggiungere il CARRELLO in UN'AZIONE"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Crea gruppo + Aggiungi carrello"
 
@@ -5196,14 +5156,6 @@ msgstr "UserName non impostato"
 #: 
 msgid "Self Registrations"
 msgstr "Registrazioni automatiche"
-
-#: 
-msgid "Public Calendar"
-msgstr "Calendario pubblico"
-
-#: 
-msgid "Private Calendar"
-msgstr "Calendario privato"
 
 #: 
 msgid "Username"
@@ -6085,10 +6037,6 @@ msgstr "L'importo supera il valore massimo consentito (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Assegni"
-
-#: 
-msgid "Clear Filters"
-msgstr "Cancella Filtri"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7313,10 +7261,6 @@ msgid "open"
 msgstr "aperto"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Inserisci stato/provincia per paesi senza stati predefiniti)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "La configurazione dell'URL di base non è valida. Controlla il tuo file Config.php."
 
@@ -7681,12 +7625,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Persona aggiunta al Carrello."
 msgstr[1] "%d Persone aggiunte al Carrello."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d Persona aggiunta con successo alla Famiglia selezionata."
-msgstr[1] "%d Persone aggiunte con successo alla Famiglia selezionata."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9424,14 +9362,6 @@ msgstr "Assegna e gestisci i numeri delle buste per le offerte"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Assegna e gestisci i numeri degli acquirenti per le raccolte fondi"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Assegna gli elementi del carrello a una scheda familiare"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Assegna gli elementi del carrello a un gruppo"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14814,10 +14744,6 @@ msgid "Code is invalid"
 msgstr "Il codice non è valido"
 
 #: 
-msgid "Coming soon"
-msgstr "In arrivo"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Conferma attivazione"
 
@@ -16410,10 +16336,6 @@ msgstr "Lingua di sistema, fuso orario, formati data/ora e formati numero di tel
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Questi campi usano codici di formattazione (lettere che rappresentano parti di una data). Scegliere un valore preimpostato sotto ogni campo, o crearne uno personalizzato. L'anteprima mostra esattamente come apparirà. Lasciare vuoto per usare il default di sistema."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Ecco come appariranno le date e i numeri di telefono in tutto il sistema."
 
 #: 
 msgid "Translation completeness"

@@ -270,42 +270,14 @@ msgstr "A kosár eseményhez adása"
 msgid "Your cart is empty!"
 msgstr "Az Ön kosara üres!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nincs családnév megadva!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "A kosár családhoz adása"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Név"
 
 #: 
-msgid "Assign Role"
-msgstr "Szerepkör hozzárendelése"
-
-#: 
 msgid "Already in a family"
 msgstr "Már egy családban van"
-
-#: 
-msgid "Create new family"
-msgstr "Új család létrehozása"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Ha új családot szeretne hozzáadni, adja meg az alábbi adatokat."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Használja a címet / kapcsolattartó adatait"
-
-#: 
-msgid "Only the new data below"
-msgstr "Csak az alábbi új adatok"
 
 #: 
 msgid "Do not auto-format"
@@ -318,10 +290,6 @@ msgstr "Hozzáadás családhoz"
 #: 
 msgid "Add Cart to Group"
 msgstr "A kosár hozzáadása csoporthoz"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Válassza ki azt a csoportot, amelyhez hozzá szeretné adni a kosarát"
 
 #: 
 msgid "Select Group"
@@ -1187,10 +1155,6 @@ msgstr "Adománygyűjtő Listing"
 #, fuzzy
 msgid "Date Start"
 msgstr "Dátum Kezdés"
-
-#: 
-msgid "Apply Filters"
-msgstr "Szűrők alkalmazása"
 
 #: 
 msgid "Date End"
@@ -5062,10 +5026,6 @@ msgid "Group Role"
 msgstr "Csoport szerepe"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "VAGY hozzon létre egy csoportot és adja hozzá a KOSARAT egy műveletben"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Csoport létrehozása + Kosár hozzáadása"
 
@@ -5209,14 +5169,6 @@ msgstr "A felhasználónév nincs beállítva"
 #: 
 msgid "Self Registrations"
 msgstr "Önregisztrációk"
-
-#: 
-msgid "Public Calendar"
-msgstr "Nyilvános naptár"
-
-#: 
-msgid "Private Calendar"
-msgstr "Magánév naptár"
 
 #: 
 msgid "Username"
@@ -6094,10 +6046,6 @@ msgstr "Az összeg meghaladja a megengedett maximális értéket (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Csekkek"
-
-#: 
-msgid "Clear Filters"
-msgstr "Szűrők törlése"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7322,10 +7270,6 @@ msgid "open"
 msgstr "nyitott"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Adja meg az államot/tartományt az elődefiniált államok nélküli országokhoz)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Az alapvető URL-konfiguráció érvénytelen. Ellenőrizze a Config.php fájlt."
 
@@ -7690,12 +7634,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d személy hozzáadva a kosárhoz."
 msgstr[1] "%d személy hozzáadva a kosárhoz."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
-msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9433,14 +9371,6 @@ msgstr "Adományboriték-számok kiosztása és kezelése"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Adománygyűjtési vásárlószámok kiosztása és kezelése"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Lista elemeinek hozzárendelése egy családi rekordhoz"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Lista elemeinek hozzárendelése egy csoporthoz"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14823,10 +14753,6 @@ msgid "Code is invalid"
 msgstr "A kód érvénytelen"
 
 #: 
-msgid "Coming soon"
-msgstr "Hamarosan"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Aktiválás megerősítése"
 
@@ -16419,10 +16345,6 @@ msgstr "Rendszernyelv, időzóna, dátum-/időformátumok és telefonszám-form�
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Ezek a mezők formázási kódokat használnak (betűk a dátum részeit jelölik). Válasszon egy előbeállítást minden mező alatt, vagy hozzon létre sajátot a referencia segítségével. Az élő előnézet pontosan megmutatja a végeredményt. Hagyja üresen a rendszer alapértelmezéséhez."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Így fognak megjelenni a dátumok és telefonszámok az egész rendszerben."
 
 #: 
 msgid "Translation completeness"
