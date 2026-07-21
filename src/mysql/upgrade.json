@@ -78,7 +78,7 @@
   },
   "current": {
     "versions": ["7.5.0"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.4.0-2fa-grace-period.sql"],
     "dbVersion": "7.5.1"
   }
 }

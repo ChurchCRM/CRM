@@ -456,7 +456,6 @@ ALTER TABLE user_usr ADD COLUMN IF NOT EXISTS usr_TwoFactorAuthRecoveryCodes    
 DROP TABLE IF EXISTS autopayment_aut;
 
 -- DROP INDEX for canvassdata_can is omitted: that table is dropped in the 5.9.0 section.
-ALTER TABLE canvassdata_can DROP INDEX can_ID;
 ALTER TABLE config_cfg DROP INDEX cfg_id;
 ALTER TABLE donateditem_di DROP INDEX di_ID;
 ALTER TABLE donationfund_fun DROP INDEX fun_ID;
