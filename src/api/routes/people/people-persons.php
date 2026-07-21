@@ -168,7 +168,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
  */
 $app->get('/people/emails', function (Request $request, Response $response): Response {
     if (!$_SESSION['user']->isEmailEnabled()) {
-        return SlimUtils::renderErrorJSON($response, gettext('Email functionality is disabled'), [], 403, null, $request);
+        return SlimUtils::renderErrorJSON($response, gettext('Email sending is disabled'), [], 403, null, $request);
     }
     $personService = new PersonService();
     return SlimUtils::renderJSON($response, $personService->getMailingEmails());
