@@ -257,8 +257,9 @@ class Cart
         }
         $delimiter = ','; // RFC 6068: comma is the standard email-list delimiter
         $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
-        if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
-            $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
+        $defaultTo  = (string) SystemConfig::getValue('sToEmailAddress');
+        if ($sEmailLink !== '' && $defaultTo !== '' && !stristr($sEmailLink, $defaultTo)) {
+            $sEmailLink .= $delimiter . $defaultTo;
         }
 
         return $sEmailLink;

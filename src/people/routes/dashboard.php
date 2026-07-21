@@ -84,9 +84,12 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
     // Join addresses into an RFC 6068 comma string, adding the default "to"
     // once when configured. array_unique() drops any duplicate.
     $defaultTo = SystemConfig::getValue('sToEmailAddress');
+    // Only include $defaultTo when there are already person emails to send to;
+    // an empty $emails list means no one is reachable, so the button should
+    // not appear at all (matching pre-refactor behaviour).
     $joinEmails = static fn(array $emails): string => implode(
         ',',
-        array_unique($defaultTo === '' ? $emails : [...$emails, $defaultTo]),
+        array_unique(($defaultTo === '' || $emails === []) ? $emails : [...$emails, $defaultTo]),
     );
 
     $pageArgs = [
