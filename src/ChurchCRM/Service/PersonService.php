@@ -157,6 +157,9 @@ class PersonService
                 $emailsSeen[$defaultToLower] = true;
                 $all[] = $defaultTo;
             }
+            // TODO: Optimization opportunity — array_map('strtolower', $roleEmails) allocates a
+            // new array on each iteration. For large datasets, maintain a per-role $seenByRole
+            // set (keyed by lowercase email) to make the dedup check O(1) instead of O(n).
             foreach ($byRole as &$roleEmails) {
                 if (!in_array($defaultToLower, array_map('strtolower', $roleEmails), true)) {
                     $roleEmails[] = $defaultTo;

@@ -254,6 +254,7 @@ class Cart
      */
     public static function getEmails(): array
     {
+        self::checkCart();
         $doNotEmailSet = [];
         $doNotEmailPropId = (int) SystemConfig::getValue('iDoNotEmailPropertyId');
         if ($doNotEmailPropId > 0) {
