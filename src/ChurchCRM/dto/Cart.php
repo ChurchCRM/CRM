@@ -272,7 +272,7 @@ class Cart
 
         $emails = [];
         $emailsSeen = [];
-        foreach (Cart::getCartPeople() as $cartPerson) {
+        foreach (PersonQuery::create()->filterById($cartIds)->find() as $cartPerson) {
             if (isset($doNotEmailSet[(int) $cartPerson->getId()])) {
                 continue;
             }
