@@ -43,12 +43,12 @@ describe("API Private Cart Emails", () => {
                 headers: { "Content-Type": "application/json" },
                 body: null,
             });
-            // Seed cart with person 1 (mathew.campbell@example.com).
+            // Seed cart with person 2 (mathew.campbell@example.com — has a real email).
             cy.request({
                 method: "POST",
                 url: "/api/cart/",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ Persons: [1] }),
+                body: JSON.stringify({ Persons: [2] }),
             });
         });
 
@@ -103,7 +103,7 @@ describe("API Private Cart Emails", () => {
         // iDoNotEmailPropertyId exclusion
         // The seed does not set iDoNotEmailPropertyId in config_cfg (value is
         // empty/0), so the exclusion set is always empty in CI. The assertion
-        // below verifies the default-unconfigured behaviour: person 1
+        // below verifies the default-unconfigured behaviour: person 2
         // (mathew.campbell@example.com) is included because no exclusion is
         // active.
         //
@@ -118,7 +118,7 @@ describe("API Private Cart Emails", () => {
                 url: "/api/cart/emails",
                 headers: { "Content-Type": "application/json" },
             }).then((response) => {
-                // Person 1 (mathew.campbell@example.com) was added to cart.
+                // Person 2 (mathew.campbell@example.com) was added to cart.
                 // With no DoNotEmail exclusion active their address must appear.
                 expect(response.body.emails.length).to.be.greaterThan(0);
                 const lower = response.body.emails.map((e) => e.toLowerCase());
@@ -169,3 +169,4 @@ describe("API Private Cart Emails", () => {
         });
     });
 });
+
