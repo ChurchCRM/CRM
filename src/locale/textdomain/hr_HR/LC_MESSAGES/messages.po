@@ -269,42 +269,14 @@ msgstr "Dodaj košaricu na događaj"
 msgid "Your cart is empty!"
 msgstr "Vaša košarica je prazna!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nije uneseno obiteljsko ime!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Dodaj košaricu obitelji"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Ime"
 
 #: 
-msgid "Assign Role"
-msgstr "Dodijeli ulogu"
-
-#: 
 msgid "Already in a family"
 msgstr "Već u obitelji"
-
-#: 
-msgid "Create new family"
-msgstr "Kreiraj novu obitelj"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Ako dodajete novu obitelj, unesite podatke u nastavku."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Koristi adresu/kontaktne podatke od"
-
-#: 
-msgid "Only the new data below"
-msgstr "Samo novi podaci u nastavku"
 
 #: 
 msgid "Do not auto-format"
@@ -317,10 +289,6 @@ msgstr "Dodaj u obitelj"
 #: 
 msgid "Add Cart to Group"
 msgstr "Dodaj košaricu skupini"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Odaberi skupinu kojoj želite dodati košaricu"
 
 #: 
 msgid "Select Group"
@@ -1167,10 +1135,6 @@ msgstr "Popis prikupljanja sredstava"
 #: 
 msgid "Date Start"
 msgstr "Datum početka"
-
-#: 
-msgid "Apply Filters"
-msgstr "Primijeni filtere"
 
 #: 
 msgid "Date End"
@@ -4991,10 +4955,6 @@ msgid "Group Role"
 msgstr "Uloga u skupini"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ILI kreirajte skupinu i dodajte KOŠARICU U JEDNOJ RADNJI"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Kreiraj skupinu + DODAJ košaricu"
 
@@ -5137,14 +5097,6 @@ msgstr "Korisničko ime nije postavljeno"
 #: 
 msgid "Self Registrations"
 msgstr "Samo-registracije"
-
-#: 
-msgid "Public Calendar"
-msgstr "Javni kalendar"
-
-#: 
-msgid "Private Calendar"
-msgstr "Privatni kalendar"
 
 #: 
 msgid "Username"
@@ -6024,10 +5976,6 @@ msgstr "Iznos premašuje maksimalno dozvoljenu vrijednost (999999,99)."
 #: 
 msgid "Checks"
 msgstr "Čekovi"
-
-#: 
-msgid "Clear Filters"
-msgstr "Očisti filtere"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7253,10 +7201,6 @@ msgid "open"
 msgstr "otvoreno"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Unesite regiju/provinciju za države bez predefiniranih regija)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfiguracija osnovnog URL-a je nevažeća. Molim provjerite svoju datoteku Config.php."
 
@@ -7622,13 +7566,6 @@ msgid_plural "%d People added to the Cart."
 msgstr[0] "%d osoba dodana u košaricu."
 msgstr[1] "%d osobe dodane u košaricu."
 msgstr[2] "%d osoba dodano u košaricu."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d osoba uspješno dodana u odabranu obitelj."
-msgstr[1] "%d osobe uspješno dodane u odabranu obitelj."
-msgstr[2] "%d osoba uspješno dodano u odabranu obitelj."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9370,14 +9307,6 @@ msgstr "Dodijeli i upravljaj brojevima kuverta za darove"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Dodijeli i upravljaj brojevima kupaca akcije prikupljanja"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Dodijeli stavke košarice zapisu obitelji"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Dodijeli stavke košarice skupini"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14761,10 +14690,6 @@ msgid "Code is invalid"
 msgstr "Kod je nevažeći"
 
 #: 
-msgid "Coming soon"
-msgstr "Dolazi uskoro"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Potvrdi aktivaciju"
 
@@ -16358,10 +16283,6 @@ msgstr "Sistemski jezik, vremenska zona, formati datuma/vremena i formati telefo
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Ova polja koriste kodove za oblikovanje (slova koja predstavljaju dijelove datuma). Odaberite unaprijed postavljenu vrijednost ispod svakog polja ili izradite vlastitu koristeći referencu. Pregled uživo prikazuje točno kako će izgledati. Ostavite prazno za korištenje zadane sistemske vrijednosti."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Ovako će se datumi i telefonski brojevi prikazivati diljem sustava."
 
 #: 
 msgid "Translation completeness"

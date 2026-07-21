@@ -271,42 +271,14 @@ msgstr "Lisää tapahtuma koriin"
 msgid "Your cart is empty!"
 msgstr "Sinun korisi on tyhjä!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Ei perheen nimeä annettu!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Lisää kori perheelle"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nimi"
 
 #: 
-msgid "Assign Role"
-msgstr "Määritä rooli"
-
-#: 
 msgid "Already in a family"
 msgstr "On jo perheessä"
-
-#: 
-msgid "Create new family"
-msgstr "Luo uusi perhe"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Jos lisäät uuden perheen, kirjoita tiedot alle."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Käytä osoite/yhteystietoja osoitteesta"
-
-#: 
-msgid "Only the new data below"
-msgstr "Vain uudet tiedot alle"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +291,6 @@ msgstr "Lisää perheeseen"
 #: 
 msgid "Add Cart to Group"
 msgstr "Lisää kori ryhmään"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Valitse ryhmä, jonka haluat lisätä koriin"
 
 #: 
 msgid "Select Group"
@@ -1174,10 +1142,6 @@ msgstr "Varainkeruuluettelo"
 #: 
 msgid "Date Start"
 msgstr "Alkupäivä"
-
-#: 
-msgid "Apply Filters"
-msgstr "Käytä suodattimia"
 
 #: 
 msgid "Date End"
@@ -4999,10 +4963,6 @@ msgid "Group Role"
 msgstr "Ryhmän rooli"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "TAI luo ryhmä ja lisää KORI yhdellä toiminnolla"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Luo ryhmä + lisää kori"
 
@@ -5146,14 +5106,6 @@ msgstr "Käyttäjänimeä ei ole asetettu"
 #: 
 msgid "Self Registrations"
 msgstr "Itserekisteröitymiset"
-
-#: 
-msgid "Public Calendar"
-msgstr "Julkinen kalenteri"
-
-#: 
-msgid "Private Calendar"
-msgstr "Yksityinen kalenteri"
 
 #: 
 msgid "Username"
@@ -6026,10 +5978,6 @@ msgstr "Summa ylittää suurimman sallitun arvon (999999,99)."
 #: 
 msgid "Checks"
 msgstr "Shekit"
-
-#: 
-msgid "Clear Filters"
-msgstr "Tyhjennä suodattimet"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7254,10 +7202,6 @@ msgid "open"
 msgstr "avoin"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Syötä osavaltio/maakunta maihin, joilla ei ole ennalta määritettyjä osavaltioita)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Base URL -määritys on virheellinen. Tarkista Config.php-tiedosto."
 
@@ -7622,12 +7566,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Henkilö lisätty koriin."
 msgstr[1] "%d Henkilöä lisätty koriin."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d Henkilö lisätty onnistuneesti valittuun Perheeseen."
-msgstr[1] "%d Henkilöä lisätty onnistuneesti valittuun Perheeseen."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9365,14 +9303,6 @@ msgstr "Määritä ja hallitse lahjoituskuorien numeroita"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Määritä ja hallitse varainkeruun ostajien numeroita"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Määritä valinnan kohteet perhetietueeseen"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Määritä valinnan kohteet ryhmään"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14755,10 +14685,6 @@ msgid "Code is invalid"
 msgstr "Koodi on virheellinen"
 
 #: 
-msgid "Coming soon"
-msgstr "Tulossa pian"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Vahvista aktivointi"
 
@@ -16351,10 +16277,6 @@ msgstr "Järjestelmän kieli, aikavyöhyke, päivämäärä-/aikamuodot ja puhel
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Nämä kentät käyttävät muotokoodeja (kirjaimia, jotka edustavat päivämäärän osia). Valitse esiasetus kunkin kentän alta tai luo oma käyttäen viitettä. Reaaliaikainen esikatselu näyttää tarkalleen miltä se näyttää. Jätä tyhjäksi järjestelmän oletuksen käyttämiseksi."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Näin päivämäärät ja puhelinnumerot näkyvät koko järjestelmässä."
 
 #: 
 msgid "Translation completeness"

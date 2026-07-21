@@ -269,42 +269,14 @@ msgstr "Pridať košík k udalosti"
 msgid "Your cart is empty!"
 msgstr "Váš košík je prázdny!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nebolo zadané priezvisko rodiny!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Pridať košík k rodine"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Meno"
 
 #: 
-msgid "Assign Role"
-msgstr "Priradiť rolu"
-
-#: 
 msgid "Already in a family"
 msgstr "Už v rodine"
-
-#: 
-msgid "Create new family"
-msgstr "Vytvoriť novú rodinu"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Pri pridávaní novej rodiny zadajte údaje nižšie."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Použiť adresu/kontaktné údaje od"
-
-#: 
-msgid "Only the new data below"
-msgstr "Len nové údaje nižšie"
 
 #: 
 msgid "Do not auto-format"
@@ -317,10 +289,6 @@ msgstr "Pridať do rodiny"
 #: 
 msgid "Add Cart to Group"
 msgstr "Pridať košík do skupiny"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Vyberte skupinu, do ktorej chcete pridať košík"
 
 #: 
 msgid "Select Group"
@@ -1167,10 +1135,6 @@ msgstr "Zoznam zbierok"
 #: 
 msgid "Date Start"
 msgstr "Dátum začiatku"
-
-#: 
-msgid "Apply Filters"
-msgstr "Použiť filtre"
 
 #: 
 msgid "Date End"
@@ -4991,10 +4955,6 @@ msgid "Group Role"
 msgstr "Rola v skupine"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ALEBO vytvorte skupinu a pridajte KOŠÍK v JEDNEJ AKCII"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Vytvoriť skupinu + PRIDAŤ košík"
 
@@ -5137,14 +5097,6 @@ msgstr "Používateľské meno nie je nastavené"
 #: 
 msgid "Self Registrations"
 msgstr "Vlastné registrácie"
-
-#: 
-msgid "Public Calendar"
-msgstr "Verejný kalendár"
-
-#: 
-msgid "Private Calendar"
-msgstr "Súkromný kalendár"
 
 #: 
 msgid "Username"
@@ -6030,10 +5982,6 @@ msgstr "Suma prekračuje maximálnu povolenú hodnotu (999 999,99)."
 #: 
 msgid "Checks"
 msgstr "Šeky"
-
-#: 
-msgid "Clear Filters"
-msgstr "Vymazať filtre"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7261,10 +7209,6 @@ msgid "open"
 msgstr "otvoriť"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Zadajte štát/kraj pre krajiny bez preddefinovaných štátov)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurácia základnej URL je neplatná. Skontrolujte súbor Config.php."
 
@@ -7631,14 +7575,6 @@ msgstr[0] "%d osoba bola pridaná do Košíka."
 msgstr[1] "%d osoby boli pridané do Košíka."
 msgstr[2] "%d ľudí bolo pridaných do Košíka."
 msgstr[3] "%d ľudí bolo pridaných do Košíka."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d osoba bola úspešne pridaná do vybranej rodiny."
-msgstr[1] "%d osoby boli úspešne pridané do vybranej rodiny."
-msgstr[2] "%d ľudí bolo úspešne pridaných do vybranej rodiny."
-msgstr[3] "%d ľudí bolo úspešne pridaných do vybranej rodiny."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9384,14 +9320,6 @@ msgstr "Priradiť a spravovať čísla obálok darovania"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Priradiť a spravovať čísla kupujúcich zbierky"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Priradiť položky košíka k záznamu rodiny"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Priradiť položky košíka do skupiny"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14776,10 +14704,6 @@ msgid "Code is invalid"
 msgstr "Kód je neplatný"
 
 #: 
-msgid "Coming soon"
-msgstr "Čoskoro"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Potvrdiť aktiváciu"
 
@@ -16374,10 +16298,6 @@ msgstr "Systémový jazyk, časové pásmo, formáty dátumu/času a telefónnyc
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Tieto polia používajú kódy formátovania (písmená predstavujúce časti dátumu). Vyberte predvolbu pod každým poľom alebo vytvorte vlastnú pomocou referenčnej dokumentácie. Živý náhľad ukazuje presne, ako bude výsledok vyzerať. Ponechajte prázdne pre použitie predvoleného nastavenia systému."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Takto budú dátumy a telefónne čísla zobrazené v celom systéme."
 
 #: 
 msgid "Translation completeness"

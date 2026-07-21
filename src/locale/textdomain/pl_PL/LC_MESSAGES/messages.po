@@ -284,43 +284,14 @@ msgstr "Dodaj Koszyk do Wydarzenia"
 msgid "Your cart is empty!"
 msgstr "Twój Koszyk jest pusty!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nie podano nazwy Rodziny!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Dodaj Koszyk do Rodziny"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nazwa"
 
 #: 
-msgid "Assign Role"
-msgstr "Przypisz Rolę"
-
-#: 
 msgid "Already in a family"
 msgstr "Już przypisano do Rodziny"
-
-#: 
-msgid "Create new family"
-msgstr "Utwórz nową Rodzinę"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Jeżeli dodajesz nową rodzinę, wpisz dane poniżej."
-
-#: 
-#, fuzzy
-msgid "Use address/contact data from"
-msgstr "Użyj adres / kontakt z"
-
-#: 
-msgid "Only the new data below"
-msgstr "Tylko nowe dane poniżej"
 
 #: 
 msgid "Do not auto-format"
@@ -333,11 +304,6 @@ msgstr "Dodaj do Rodziny"
 #: 
 msgid "Add Cart to Group"
 msgstr "Dodaj Koszyk do Grupy"
-
-#: 
-#, fuzzy
-msgid "Select the group to which you would like to add your cart"
-msgstr "Wybierz Grupę do której chciałbyś dodać Koszyk"
 
 #: 
 #, fuzzy
@@ -1211,10 +1177,6 @@ msgstr "Lista Przedmiotów w Zbiórce"
 #, fuzzy
 msgid "Date Start"
 msgstr "Data Rozpoczęcia"
-
-#: 
-msgid "Apply Filters"
-msgstr "Sortuj wg."
 
 #: 
 #, fuzzy
@@ -5091,10 +5053,6 @@ msgid "Group Role"
 msgstr "Rola w grupie"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "LUB utwórz grupę i dodaj KOSZYK w jednej akcji"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Utwórz grupę + dodaj KOSZYK"
 
@@ -5238,14 +5196,6 @@ msgstr "Nazwa użytkownika nieustawiona"
 #: 
 msgid "Self Registrations"
 msgstr "Samodzielne Rejestracje"
-
-#: 
-msgid "Public Calendar"
-msgstr "Kalendarz Publiczny"
-
-#: 
-msgid "Private Calendar"
-msgstr "Kalendarz Prywatny"
 
 #: 
 msgid "Username"
@@ -6130,10 +6080,6 @@ msgstr "Kwota przekracza limit (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Czeki"
-
-#: 
-msgid "Clear Filters"
-msgstr "Wyczyść filtry"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7360,10 +7306,6 @@ msgid "open"
 msgstr "otwarte"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Wpisz region dla krajów bez zdefiniowanych stanów)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Błędna konfiguracja Base URL. Sprawdź plik Config.php."
 
@@ -7729,13 +7671,6 @@ msgid_plural "%d People added to the Cart."
 msgstr[0] "%d osoba dodana do koszyka."
 msgstr[1] "%d osoby dodane do koszyka."
 msgstr[2] "%d osób dodanych do koszyka."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d osoba pomyślnie dodana do wybranej rodziny."
-msgstr[1] "%d osoby pomyślnie dodane do wybranej rodziny."
-msgstr[2] "%d osób pomyślnie dodanych do wybranej rodziny."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9477,14 +9412,6 @@ msgstr "Przypisz i zarządzaj numerami kopert ofiarnych"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Przypisz i zarządzaj numerami nabywców zbiórki"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Przypisz osoby z listy do rekordu rodziny"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Przypisz osoby z listy do grupy"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14868,10 +14795,6 @@ msgid "Code is invalid"
 msgstr "Kod jest nieprawidłowy"
 
 #: 
-msgid "Coming soon"
-msgstr "Wkrótce"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Potwierdź aktywację"
 
@@ -16465,10 +16388,6 @@ msgstr "Język systemowy, strefa czasowa, formaty daty/godziny i numerów telefo
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Te pola używają kodów formatowania (liter reprezentujących części daty). Wybierz ustawienie wstępne pod każdym polem lub zbuduj własne za pomocą dokumentacji. Podgląd na żywo pokazuje dokładnie jak będzie wyglądać. Pozostaw puste, aby użyć domyślnego systemu."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Tak będą wyglądać daty i numery telefonów w całym systemie."
 
 #: 
 msgid "Translation completeness"

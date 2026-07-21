@@ -271,42 +271,14 @@ msgstr "Lisa korv üritusele"
 msgid "Your cart is empty!"
 msgstr "Su korv on tühi!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Ühtegi perekonnanime pole lisatud!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Lisa perekond korvi"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nimi"
 
 #: 
-msgid "Assign Role"
-msgstr "Määra roll"
-
-#: 
 msgid "Already in a family"
 msgstr "Juba on perekond"
-
-#: 
-msgid "Create new family"
-msgstr "Loo uus perekond"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Kui lisad uue perekonna, siis lisa andmed allapoole."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Kasuta aadressi/kontakdi andme vormi"
-
-#: 
-msgid "Only the new data below"
-msgstr "Lisa ainult uued andmed allapoole"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +291,6 @@ msgstr "Lisa perekonnale"
 #: 
 msgid "Add Cart to Group"
 msgstr "Lisa korv grupile"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Vali grupp millele sa soovid lisada korvi"
 
 #: 
 msgid "Select Group"
@@ -1182,10 +1150,6 @@ msgstr "Rahakogumisüritus nimekiri"
 #: 
 msgid "Date Start"
 msgstr "Alguskuupäev"
-
-#: 
-msgid "Apply Filters"
-msgstr "Rakenda filtrid"
 
 #: 
 msgid "Date End"
@@ -5026,10 +4990,6 @@ msgid "Group Role"
 msgstr "Grupi roll"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "VÕI looge grupp ja lisage KORVI ÜHES TEGEVUSES"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Loo grupp + LISA KORVI"
 
@@ -5175,14 +5135,6 @@ msgstr "Kasutajanimi pole määratud"
 #: 
 msgid "Self Registrations"
 msgstr "Enda registreerimised"
-
-#: 
-msgid "Public Calendar"
-msgstr "Avalik kalender"
-
-#: 
-msgid "Private Calendar"
-msgstr "Privaatne kalender"
 
 #: 
 msgid "Username"
@@ -6064,10 +6016,6 @@ msgstr "Summa ületab maksimaalse lubatud väärtuse (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Tsekkid"
-
-#: 
-msgid "Clear Filters"
-msgstr "Puhasta filtrid"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7292,10 +7240,6 @@ msgid "open"
 msgstr "ava"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Sisestage riik/provintsi riikide jaoks ilma eelmääratletud osariikideta)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Base URL konfiguratsioon on sobimatu. Palun kontrollige oma Config.php faili."
 
@@ -7660,12 +7604,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d inimene lisati ostukorvi."
 msgstr[1] "%d inimest lisati ostukorvi."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d inimene lisati edukalt valitud perekonda."
-msgstr[1] "%d inimest lisati edukalt valitud perekonda."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9403,14 +9341,6 @@ msgstr "Määrake ja hallake annetuste ümbriku numbreid"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Määrake ja hallake korjandusürituse ostjate numbreid"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Määrake valiku üksused perekonna kirjele"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Määrake valiku üksused grupile"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14793,10 +14723,6 @@ msgid "Code is invalid"
 msgstr "Kood on sobimatu"
 
 #: 
-msgid "Coming soon"
-msgstr "Varsti tulemas"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Kinnitage aktiveerimine"
 
@@ -16389,10 +16315,6 @@ msgstr "Süsteemikeel, ajavöönd, kuupäeva-/kellaajavormingud ja telefoninumbr
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Need väljad kasutavad vormindamiskoode (tähed, mis tähistavad kuupäeva osi). Valige eelseadistus iga välja alt või looge oma viite abil. Reaalajas eelvaade näitab täpselt, kuidas see välja näeb. Jätke tühjaks süsteemi vaikeväärtuse kasutamiseks."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Nii ilmuvad kuupäevad ja telefoninumbrid kogu süsteemis."
 
 #: 
 msgid "Translation completeness"

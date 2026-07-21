@@ -284,43 +284,14 @@ msgstr "加入购物车事件"
 msgid "Your cart is empty!"
 msgstr "您的购物车是空的！"
 
-#: 
-msgid "No family name entered!"
-msgstr "没有家人的名字进了！"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "加入购物车家庭"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "名称"
 
 #: 
-msgid "Assign Role"
-msgstr "分配角色"
-
-#: 
 msgid "Already in a family"
 msgstr "早在一个家庭中"
-
-#: 
-msgid "Create new family"
-msgstr "建立新的家庭"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "如果要添加一个新的家庭，输入以下数据。"
-
-#: 
-#, fuzzy
-msgid "Use address/contact data from"
-msgstr "使用地址/联系数据​​"
-
-#: 
-msgid "Only the new data below"
-msgstr "只有以下的新数据"
 
 #: 
 msgid "Do not auto-format"
@@ -333,11 +304,6 @@ msgstr "添加到家庭"
 #: 
 msgid "Add Cart to Group"
 msgstr "加入购物车集团"
-
-#: 
-#, fuzzy
-msgid "Select the group to which you would like to add your cart"
-msgstr "选择您想添加您的购物车"
 
 #: 
 #, fuzzy
@@ -1213,10 +1179,6 @@ msgstr "筹款上市"
 #, fuzzy
 msgid "Date Start"
 msgstr "日期开始"
-
-#: 
-msgid "Apply Filters"
-msgstr "应用过滤器"
 
 #: 
 #, fuzzy
@@ -5101,10 +5063,6 @@ msgid "Group Role"
 msgstr "群组角色"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "或创建一个组并在一个动作中添加购物车"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "建立群组＋新增购物车\n"
 ""
@@ -5252,14 +5210,6 @@ msgstr "用户名未设置"
 #: 
 msgid "Self Registrations"
 msgstr "自助注册"
-
-#: 
-msgid "Public Calendar"
-msgstr "公共日历"
-
-#: 
-msgid "Private Calendar"
-msgstr "私人日历"
 
 #: 
 msgid "Username"
@@ -6139,10 +6089,6 @@ msgstr "金额超过允许的最大值 (999999.99)。"
 #: 
 msgid "Checks"
 msgstr "支票"
-
-#: 
-msgid "Clear Filters"
-msgstr "清除过滤器"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7365,10 +7311,6 @@ msgid "open"
 msgstr "开启"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "（为没有预定义州/省的国家输入州/省）"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "基础 URL 配置无效。请检查您的 Config.php 文件。"
 
@@ -7732,11 +7674,6 @@ msgstr "双重身份验证 (2FA)"
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d 人已加入清单。"
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d 人已成功加入选定的家庭。"
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9470,14 +9407,6 @@ msgstr "分配和管理捐赠信封号码"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "分配和管理筹款活动买家号码"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "将列表项目分配给家族记录"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "将列表项目分配给组"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14859,10 +14788,6 @@ msgid "Code is invalid"
 msgstr "验证码无效"
 
 #: 
-msgid "Coming soon"
-msgstr "即将推出"
-
-#: 
 msgid "Confirm Activation"
 msgstr "确认激活"
 
@@ -16454,10 +16379,6 @@ msgstr "系统语言、时区、日期/时间格式和电话号码格式"
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "这些字段使用格式代码（代表日期各部分的字母）。在每个字段下方选择预设，或使用参考资料自定义。实时预览显示确切效果。留空则使用系统默认值。"
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "这就是日期和电话号码在整个系统中的显示方式。"
 
 #: 
 msgid "Translation completeness"

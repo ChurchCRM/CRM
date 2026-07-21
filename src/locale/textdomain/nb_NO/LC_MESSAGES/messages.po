@@ -285,43 +285,14 @@ msgstr "Legg Cart til Event"
 msgid "Your cart is empty!"
 msgstr "Handlekurven er tom!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Ingen etternavn angitt!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Legg Cart til Family"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Navn"
 
 #: 
-msgid "Assign Role"
-msgstr "Tildele Rolle"
-
-#: 
 msgid "Already in a family"
 msgstr "Allerede i en familie"
-
-#: 
-msgid "Create new family"
-msgstr "Opprett ny familie"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Hvis du legger til en ny familie, legge inn data under."
-
-#: 
-#, fuzzy
-msgid "Use address/contact data from"
-msgstr "Bruk adresse / kontakt data fra"
-
-#: 
-msgid "Only the new data below"
-msgstr "Bare de nye dataene nedenfor"
 
 #: 
 msgid "Do not auto-format"
@@ -334,11 +305,6 @@ msgstr "Legg til Family"
 #: 
 msgid "Add Cart to Group"
 msgstr "Legg Cart til gruppe"
-
-#: 
-#, fuzzy
-msgid "Select the group to which you would like to add your cart"
-msgstr "Velg gruppen du ønsker å legge til i handlekurven"
 
 #: 
 #, fuzzy
@@ -1214,10 +1180,6 @@ msgstr "Bruker Liste"
 #, fuzzy
 msgid "Date Start"
 msgstr "Dato Start"
-
-#: 
-msgid "Apply Filters"
-msgstr "Bruk filtre"
 
 #: 
 #, fuzzy
@@ -5118,10 +5080,6 @@ msgid "Group Role"
 msgstr "Grupperolle"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ELLER Opprett en gruppe og legg til KURVEN i ÉN HANDLING"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Opprett gruppe + LEGG TIL kurv"
 
@@ -5265,14 +5223,6 @@ msgstr "Brukernavn ikke satt"
 #: 
 msgid "Self Registrations"
 msgstr "Selvregistreringer"
-
-#: 
-msgid "Public Calendar"
-msgstr "Offentlig kalender"
-
-#: 
-msgid "Private Calendar"
-msgstr "Privat kalender"
 
 #: 
 msgid "Username"
@@ -6145,10 +6095,6 @@ msgstr "Beløpet overskrider maksimalt tillatt verdi (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Sjekker"
-
-#: 
-msgid "Clear Filters"
-msgstr "Tøm filtre"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7373,10 +7319,6 @@ msgid "open"
 msgstr "åpne"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Skriv inn fylke/provins for land uten forhåndsdefinerte stater)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurasjon av base-URL er ugyldig. Vennligst sjekk Config.php-filen din."
 
@@ -7741,12 +7683,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d person lagt til i kurven."
 msgstr[1] "%d personer lagt til i kurven."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d person lagt til i valgt familie."
-msgstr[1] "%d personer lagt til i valgt familie."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9484,14 +9420,6 @@ msgstr "Tildel og administrer gavekonvoluttnumre"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Tildel og administrer kjøpernumre for innsamlingsaksjon"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Knytt utvalget til en familiepost"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Knytt utvalget til en gruppe"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14874,10 +14802,6 @@ msgid "Code is invalid"
 msgstr "Koden er ugyldig"
 
 #: 
-msgid "Coming soon"
-msgstr "Kommer snart"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Bekreft aktivering"
 
@@ -16470,10 +16394,6 @@ msgstr "Systemspråk, tidssone, dato-/tidsformater og telefonnummerformater"
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Disse feltene bruker formateringskoder (bokstaver som representerer deler av en dato). Velg et forhåndsinnstilt alternativ under hvert felt, eller lag ditt eget med referansen. Forhåndsvisningen viser nøyaktig resultatet. La stå tomt for å bruke systemstandarden."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Slik vises datoer og telefonnumre i hele systemet."
 
 #: 
 msgid "Translation completeness"
