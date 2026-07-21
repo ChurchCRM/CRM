@@ -269,42 +269,14 @@ msgstr "Voeg werkbestand toe aan activiteit"
 msgid "Your cart is empty!"
 msgstr "Uw werkbestand is leeg."
 
-#: 
-msgid "No family name entered!"
-msgstr "Geen naam gezin ingevoerd!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Voeg werkbestand toe aan gezin"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Naam"
 
 #: 
-msgid "Assign Role"
-msgstr "Toewijzen aan Rol"
-
-#: 
 msgid "Already in a family"
 msgstr "Reeds in een gezin "
-
-#: 
-msgid "Create new family"
-msgstr "Voer nieuw gezin in"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Indien nieuw gezin, voeg onderstaande gegevens toe."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Gebruik adres/contact gegevens van"
-
-#: 
-msgid "Only the new data below"
-msgstr "Onderstaand alleen de nieuwe gegevens"
 
 #: 
 msgid "Do not auto-format"
@@ -317,10 +289,6 @@ msgstr "Voeg toe aan gezin"
 #: 
 msgid "Add Cart to Group"
 msgstr "Voeg werkbestand toe aan groep"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Selecteer de groep welke u wilt toevoegen aan het werkbestand"
 
 #: 
 msgid "Select Group"
@@ -1167,10 +1135,6 @@ msgstr "Fundraiser Lijst"
 #: 
 msgid "Date Start"
 msgstr "Start Datum"
-
-#: 
-msgid "Apply Filters"
-msgstr "Zet Filters"
 
 #: 
 msgid "Date End"
@@ -4995,10 +4959,6 @@ msgid "Group Role"
 msgstr "Rol van de groep"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "OF Maak een groep aan en voeg aan werkbestand toe in ÉÉN ACTIE"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Groep maken en aan het werkbestand toevoegen"
 
@@ -5142,14 +5102,6 @@ msgstr "De gebruikersnaam is niet ingevuld"
 #: 
 msgid "Self Registrations"
 msgstr "Zelf registraties"
-
-#: 
-msgid "Public Calendar"
-msgstr "Openbare agenda"
-
-#: 
-msgid "Private Calendar"
-msgstr "Persoonlijke agenda"
 
 #: 
 msgid "Username"
@@ -6028,10 +5980,6 @@ msgstr "Bedrag overschrijdt de maximaal toegestane waarde (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Controles"
-
-#: 
-msgid "Clear Filters"
-msgstr "Filters wissen"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7256,10 +7204,6 @@ msgid "open"
 msgstr "open"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Voer staat/provincie in voor landen zonder vooraf bepaalde staten)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Base URL-configuratie is ongeldig. Controleer uw Config.php-bestand."
 
@@ -7624,12 +7568,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d persoon aan winkelwagen toegevoegd."
 msgstr[1] "%d personen aan winkelwagen toegevoegd."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde familie."
-msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde familie."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9367,14 +9305,6 @@ msgstr "Collecte-envelopnummers toewijzen en beheren"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Kopersnummers voor inzamelingsacties toewijzen en beheren"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Winkelwagenartikelen toewijzen aan een gezinsdossier"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Winkelwagenartikelen toewijzen aan een groep"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14757,10 +14687,6 @@ msgid "Code is invalid"
 msgstr "Code is ongeldig"
 
 #: 
-msgid "Coming soon"
-msgstr "Binnenkort beschikbaar"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Activering bevestigen"
 
@@ -16353,10 +16279,6 @@ msgstr "Systeemtaal, tijdzone, datum-/tijdnotaties en telefoonnummerindelingen"
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Deze velden gebruiken opmaakcodes (letters die staan voor delen van een datum). Kies een voorinstelling onder elk veld of bouw uw eigen met behulp van de referentie. De live-preview toont exact hoe het eruit ziet. Laat leeg om de systeemstandaard te gebruiken."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Zo worden datums en telefoonnummers in het hele systeem weergegeven."
 
 #: 
 msgid "Translation completeness"

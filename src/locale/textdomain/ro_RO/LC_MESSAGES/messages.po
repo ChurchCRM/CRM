@@ -284,43 +284,14 @@ msgstr "Adauga in cos la eveniment"
 msgid "Your cart is empty!"
 msgstr "Cosul dvs. este gol!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nici un nume de familie nu a intrat!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Adauga in cos la Familie"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nume"
 
 #: 
-msgid "Assign Role"
-msgstr "Atribuirea Rol"
-
-#: 
 msgid "Already in a family"
 msgstr "Deja într-o familie"
-
-#: 
-msgid "Create new family"
-msgstr "Creați o nouă familie"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Dacă adăugați o nouă familie, introduceți datele de mai jos."
-
-#: 
-#, fuzzy
-msgid "Use address/contact data from"
-msgstr "Folosiți adresa / datele de contact de la"
-
-#: 
-msgid "Only the new data below"
-msgstr "Numai datele noi de mai jos"
 
 #: 
 msgid "Do not auto-format"
@@ -333,11 +304,6 @@ msgstr "Adauga la Familie"
 #: 
 msgid "Add Cart to Group"
 msgstr "Adauga in cos la Grup"
-
-#: 
-#, fuzzy
-msgid "Select the group to which you would like to add your cart"
-msgstr "Selectați grupul pe care doriți să îl adăugați în coș"
 
 #: 
 #, fuzzy
@@ -1212,10 +1178,6 @@ msgstr "Listă de Evenimente de Strângere de Fonduri"
 #, fuzzy
 msgid "Date Start"
 msgstr "Data de începere"
-
-#: 
-msgid "Apply Filters"
-msgstr "Aplica filtre"
 
 #: 
 #, fuzzy
@@ -5096,10 +5058,6 @@ msgid "Group Role"
 msgstr "Rol grup"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "SAU creați un grup și adăugați coșul într-o singură acțiune"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Creați grup + ADD coș"
 
@@ -5245,14 +5203,6 @@ msgstr "UserName nesetat"
 #: 
 msgid "Self Registrations"
 msgstr "Înregistrare personală"
-
-#: 
-msgid "Public Calendar"
-msgstr "Calendar public"
-
-#: 
-msgid "Private Calendar"
-msgstr "Calendar privat"
 
 #: 
 msgid "Username"
@@ -6132,10 +6082,6 @@ msgstr "Suma depășește valoarea maximă permisă (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Cecuri"
-
-#: 
-msgid "Clear Filters"
-msgstr "Șterge filtrele"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7362,10 +7308,6 @@ msgid "open"
 msgstr "deschis"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Introduceți statul/provincia pentru țările fără state predefinite)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Configurația URL-ului de bază este nevalidă. Vă rugăm să verificați fișierul Config.php."
 
@@ -7731,13 +7673,6 @@ msgid_plural "%d People added to the Cart."
 msgstr[0] "%d persoană adăugată în coș."
 msgstr[1] "%d persoane adăugate în coș."
 msgstr[2] "%d persoane adăugate în coș."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d persoană adăugată cu succes la familia selectată."
-msgstr[1] "%d persoane adăugate cu succes la familia selectată."
-msgstr[2] "%d persoane adăugate cu succes la familia selectată."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9479,14 +9414,6 @@ msgstr "Atribuiți și gestionați numerele plicurilor de ofertă"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Atribuiți și gestionați numerele cumpărătorilor la strângeri de fonduri"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Atribuiți persoanele din selecție unei înregistrări de familie"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Atribuiți persoanele din selecție unui grup"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14870,10 +14797,6 @@ msgid "Code is invalid"
 msgstr "Codul este nevalid"
 
 #: 
-msgid "Coming soon"
-msgstr "În curând"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Confirmați activarea"
 
@@ -16463,10 +16386,6 @@ msgstr "Limbă sistem, fus orar, formate dată/oră și formate număr de telefo
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Aceste câmpuri folosesc coduri de formatare (litere care reprezintă părți dintr-o dată). Alegeți o presetare sub fiecare câmp sau creați-vă propria folosind referința. Previzualizarea arată exact cum va arăta. Lăsați gol pentru a folosi valoarea implicită a sistemului."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Astfel vor apărea datele și numerele de telefon în tot sistemul."
 
 #: 
 msgid "Translation completeness"

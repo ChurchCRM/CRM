@@ -272,42 +272,14 @@ msgstr "Shto te Shporta Event"
 msgid "Your cart is empty!"
 msgstr "Shporta juaj është bosh!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Asnjë emër i familjes hyri!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Shto te Shporta Family"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Emëri"
 
 #: 
-msgid "Assign Role"
-msgstr "Cakto Rolit"
-
-#: 
 msgid "Already in a family"
 msgstr "Tashmë në një familje"
-
-#: 
-msgid "Create new family"
-msgstr "Krijo familje të re"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Në qoftë se duke shtuar një familje të re, hyrë në të dhënat më poshtë."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Përdorin të dhënat e adresën / e kontaktit nga"
-
-#: 
-msgid "Only the new data below"
-msgstr "Vetëm të dhënat e reja më poshtë"
 
 #: 
 msgid "Do not auto-format"
@@ -320,10 +292,6 @@ msgstr "Shtoni në të Familjes"
 #: 
 msgid "Add Cart to Group"
 msgstr "Shto te Shporta Group"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Zgjidh grupin për të cilën ju do të donte për të shtuar karrocë tuaj"
 
 #: 
 msgid "Select Group"
@@ -1181,10 +1149,6 @@ msgstr "Fondesh Listing"
 #: 
 msgid "Date Start"
 msgstr "Date Fillimi"
-
-#: 
-msgid "Apply Filters"
-msgstr "Aplikoni Filters"
 
 #: 
 msgid "Date End"
@@ -5021,10 +4985,6 @@ msgid "Group Role"
 msgstr "Roli i grupit"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "OSE Krijoni një grup dhe shtoni SHPORTËN në NJË VEPRIM"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Krijo grup + SHTO shportën"
 
@@ -5168,14 +5128,6 @@ msgstr "Emri i përdoruesit nuk është vendosur"
 #: 
 msgid "Self Registrations"
 msgstr "Vetë-regjistrimet"
-
-#: 
-msgid "Public Calendar"
-msgstr "Kalendari publik"
-
-#: 
-msgid "Private Calendar"
-msgstr "Kalendari privat"
 
 #: 
 msgid "Username"
@@ -6053,10 +6005,6 @@ msgstr "Shuma tejkalon vlerën maksimale të lejuar (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Çeqe"
-
-#: 
-msgid "Clear Filters"
-msgstr "Pastro filtrat"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7281,10 +7229,6 @@ msgid "open"
 msgstr "hap"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Vendosni shtetin/provincën për vendet pa shtete të paracaktuara)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurimi i URL bazë është i pavlefshëm. Ju lutem kontrolloni skedarin tuaj Config.php."
 
@@ -7649,12 +7593,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d person u shtua në shportë."
 msgstr[1] "%d persona u shtuan në shportë."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d person u shtua me sukses në familjen e zgjedhur."
-msgstr[1] "%d persona u shtuan me sukses në familjen e zgjedhur."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9392,14 +9330,6 @@ msgstr "Caktoni dhe administroni numrat e kopertinave të dhuratave"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Caktoni dhe administroni numrat e blerësve të ngjarjeve mbledhjes fondesh"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Caktoni artikujt e listës në një rekord familje"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Caktoni artikujt e listës në një grupmesion"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14782,10 +14712,6 @@ msgid "Code is invalid"
 msgstr "Kodi është i pavlefshëm"
 
 #: 
-msgid "Coming soon"
-msgstr "Së shpejti"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Konfirmo aktivizimin"
 
@@ -16378,10 +16304,6 @@ msgstr "Gjuha e sistemit, zona kohore, formatët e datës/orës dhe formatët e 
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Këto fusha përdorin kode formatimi (shkronja që përfaqësojnë pjesë të një date). Zgjidhni një paracaktim nën çdo fushë, ose ndërtoni tuajin duke përdorur referencën. Parapamja e drejtpërdrejtë tregon saktësisht si do të duket. Lëreni bosh për të përdorur paracaktimin e sistemit."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Kështu do të shfaqen datat dhe numrat e telefonit në të gjithë sistemin."
 
 #: 
 msgid "Translation completeness"

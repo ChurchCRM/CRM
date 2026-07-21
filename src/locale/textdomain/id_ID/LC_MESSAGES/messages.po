@@ -271,42 +271,14 @@ msgstr "Tambahkan cart di Acara"
 msgid "Your cart is empty!"
 msgstr "Cart kosong !"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nama keluarga masih kosong"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Tambahkan Cart di Keluarga"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nama"
 
 #: 
-msgid "Assign Role"
-msgstr "Tentukan peran"
-
-#: 
 msgid "Already in a family"
 msgstr "Terdaftar di keluarga lain"
-
-#: 
-msgid "Create new family"
-msgstr "Buat keluarga baru"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Jika menambah keluarga baru, masukkan data di bawah ini"
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Gunakan alamat/data kontak dari"
-
-#: 
-msgid "Only the new data below"
-msgstr "Hanya data baru di bawah ini"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +291,6 @@ msgstr "Tambahkan ke Keluarga"
 #: 
 msgid "Add Cart to Group"
 msgstr "Tambahkan Cart di Group"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Pilih group yang akan ditambahkan cart"
 
 #: 
 msgid "Select Group"
@@ -1183,10 +1151,6 @@ msgstr "Daftar Penggalangan Dana"
 #: 
 msgid "Date Start"
 msgstr "Tanggal mulai"
-
-#: 
-msgid "Apply Filters"
-msgstr "Terapkan Filter"
 
 #: 
 msgid "Date End"
@@ -5028,10 +4992,6 @@ msgid "Group Role"
 msgstr "Peran Kelompok"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ATAU Buat Grup dan tambahkan CART dalam SATU AKSI"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Buat Grup + ADD Cart"
 
@@ -5177,14 +5137,6 @@ msgstr "UserName tidak disetel"
 #: 
 msgid "Self Registrations"
 msgstr "Pendaftaran Mandiri"
-
-#: 
-msgid "Public Calendar"
-msgstr "Kalender Umum"
-
-#: 
-msgid "Private Calendar"
-msgstr "Kalender Pribadi"
 
 #: 
 msgid "Username"
@@ -6057,10 +6009,6 @@ msgstr "Jumlah melebihi batas maksimal."
 #: 
 msgid "Checks"
 msgstr "Cek"
-
-#: 
-msgid "Clear Filters"
-msgstr "Hapus Filter"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7283,10 +7231,6 @@ msgid "open"
 msgstr "terbuka"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Masukkan provinsi jika tidak ada dalam daftar)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurasi URL Dasar tidak valid. Periksa file Config.php."
 
@@ -7650,11 +7594,6 @@ msgstr "Autentikasi Dua Faktor (2FA)"
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Orang ditambahkan ke Keranjang."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d Orang berhasil ditambahkan ke Keluarga yang dipilih."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9388,14 +9327,6 @@ msgstr "Tetapkan dan kelola nomor amplop persembahan"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Tetapkan dan kelola nomor pembeli penggalangan dana"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Tetapkan item daftar ke catatan keluarga"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Tetapkan item daftar ke grup"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14777,10 +14708,6 @@ msgid "Code is invalid"
 msgstr "Kode tidak valid"
 
 #: 
-msgid "Coming soon"
-msgstr "Segera hadir"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Konfirmasikan Aktivasi"
 
@@ -16372,10 +16299,6 @@ msgstr "Bahasa sistem, zona waktu, format tanggal/waktu dan format nomor telepon
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Kolom-kolom ini menggunakan kode pemformatan (huruf yang mewakili bagian tanggal). Pilih preset di bawah setiap kolom, atau buat sendiri menggunakan referensi. Pratinjau langsung menampilkan tampilan tepatnya. Biarkan kosong untuk menggunakan default sistem."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Begini tampilan tanggal dan nomor telepon di seluruh sistem."
 
 #: 
 msgid "Translation completeness"

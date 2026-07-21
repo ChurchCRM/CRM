@@ -269,42 +269,14 @@ msgstr "Idagdag ang Cart sa Kaganapan"
 msgid "Your cart is empty!"
 msgstr "Ang iyong cart ay walang laman!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Walang pangalan ng pamilyang naipasok!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Idagdag ang Cart sa Pamilya"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Pangalan"
 
 #: 
-msgid "Assign Role"
-msgstr "Italaga ang Papel"
-
-#: 
 msgid "Already in a family"
 msgstr "Nasa isang pamilya na"
-
-#: 
-msgid "Create new family"
-msgstr "Lumikha ng bagong pamilya"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Kung nagdaragdag ng bagong pamilya, ipasok ang datos sa ibaba."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Gamitin ang datos ng address/contact mula sa"
-
-#: 
-msgid "Only the new data below"
-msgstr "Ang bagong datos lamang sa ibaba"
 
 #: 
 msgid "Do not auto-format"
@@ -317,10 +289,6 @@ msgstr "Idagdag sa Pamilya"
 #: 
 msgid "Add Cart to Group"
 msgstr "Idagdag ang Cart sa Grupo"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Piliin ang grupo kung saan mo gustong idagdag ang iyong cart"
 
 #: 
 msgid "Select Group"
@@ -1167,10 +1135,6 @@ msgstr "Listahan ng Fundraiser"
 #: 
 msgid "Date Start"
 msgstr "Petsa ng Simula"
-
-#: 
-msgid "Apply Filters"
-msgstr "Ilapat ang mga Filter"
 
 #: 
 msgid "Date End"
@@ -4992,10 +4956,6 @@ msgid "Group Role"
 msgstr "Papel sa Grupo"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "O Lumikha ng Grupo at idagdag ang CART sa ISANG AKSYON"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Lumikha ng Grupo + IDAGDAG ang Cart"
 
@@ -5139,14 +5099,6 @@ msgstr "Hindi nakatakda ang UserName"
 #: 
 msgid "Self Registrations"
 msgstr "Mga Sariling Pagpaparehistro"
-
-#: 
-msgid "Public Calendar"
-msgstr "Pampublikong Kalendaryo"
-
-#: 
-msgid "Private Calendar"
-msgstr "Pribadong Kalendaryo"
 
 #: 
 msgid "Username"
@@ -6024,10 +5976,6 @@ msgstr "Ang halaga ay lumagpas sa pinakamataas na pinapayagang halaga (999999.99
 #: 
 msgid "Checks"
 msgstr "Mga Tseke"
-
-#: 
-msgid "Clear Filters"
-msgstr "Linisin ang mga Filter"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7252,10 +7200,6 @@ msgid "open"
 msgstr "bukas"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Ipasok ang estado/probinsya para sa mga bansa na walang mga paunang natukoy na estado)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Ang konfigurasyong Base URL ay hindi wasto. Pakitingnan ang iyong Config.php file."
 
@@ -7620,12 +7564,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Tao ay naidagdag sa Listahan."
 msgstr[1] "%d Tao ay naidagdag sa Listahan."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d Tao ay matagumpay na naidagdag sa napiling Pamilya."
-msgstr[1] "%d Tao ay matagumpay na naidagdag sa napiling Pamilya."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9363,14 +9301,6 @@ msgstr "Italaga at pamahalaan ang mga numero ng sobre ng donasyon"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Italaga at pamahalaan ang mga numero ng mamimili ng fundraiser"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Italaga ang mga item ng cart sa isang rekord ng pamilya"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Italaga ang mga item ng cart sa isang grupo"
 
 #: 
 msgid "Assign cart items to an event"
@@ -14753,10 +14683,6 @@ msgid "Code is invalid"
 msgstr "Hindi wasto ang code"
 
 #: 
-msgid "Coming soon"
-msgstr "Darating na"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Kumpirmahin ang Pag-activate"
 
@@ -16349,10 +16275,6 @@ msgstr "Wika ng sistema, time zone, mga format ng petsa/oras at numero ng telepo
 #: 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr "Ang mga field na ito ay gumagamit ng mga formatting code (mga titik na kumakatawan sa mga bahagi ng petsa). Pumili ng preset sa ibaba ng bawat field, o gumawa ng sarili gamit ang sanggunian. Ang live preview ay nagpapakita ng eksakto kung paano ito magmumukhang. Iwanang blangko para gamitin ang default ng sistema."
-
-#: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Ganito ang hitsura ng mga petsa at numero ng telepono sa buong sistema."
 
 #: 
 msgid "Translation completeness"
