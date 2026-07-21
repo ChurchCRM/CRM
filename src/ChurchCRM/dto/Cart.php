@@ -258,6 +258,11 @@ class Cart
         $doNotEmailSet = [];
         $doNotEmailPropId = (int) SystemConfig::getValue('iDoNotEmailPropertyId');
         if ($doNotEmailPropId > 0) {
+            // TODO: Performance optimization — this query loads ALL RecordProperty rows for
+            // iDoNotEmailPropertyId, which is a full-table scan on large datasets.
+            // Fix: also filter by the cart's person IDs, e.g.:
+            //   ->filterByRecordId($_SESSION['aPeopleCart'])
+            // This would scope the query to only the relevant rows.
             foreach (RecordPropertyQuery::create()->filterByPropertyId($doNotEmailPropId)->find() as $r) {
                 $doNotEmailSet[(int) $r->getRecordId()] = true;
             }
