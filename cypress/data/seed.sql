@@ -1853,7 +1853,7 @@ INSERT INTO `userconfig_ucfg` VALUES (0,0,'bEmailMailto','1','boolean','User per
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `userconfig_ucfg` with 29 row(s)
+-- Dumped table `userconfig_ucfg` with 11 row(s)
 --
 
 --
@@ -1883,7 +1883,7 @@ INSERT INTO `user_settings` VALUES (1,'finance.FY','23'),(1,'finance.show.paymen
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `user_settings` with 39 row(s)
+-- Dumped table `user_settings` with 34 row(s)
 --
 
 --
