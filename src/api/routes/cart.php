@@ -23,7 +23,7 @@ use Slim\Routing\RouteCollectorProxy;
  */
 $app->get('/cart/emails', function (Request $request, Response $response): Response {
     if (!$_SESSION['user']->isEmailEnabled()) {
-        return SlimUtils::renderErrorJSON($response, gettext('Email is disabled for this user'), [], 403, null, $request);
+        return SlimUtils::renderErrorJSON($response, gettext('Email functionality is disabled'), [], 403, null, $request);
     }
     if (!isset($_SESSION['aPeopleCart'])) {
         $_SESSION['aPeopleCart'] = [];
