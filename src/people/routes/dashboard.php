@@ -82,14 +82,17 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
     }
 
     // Join addresses into an RFC 6068 comma string, adding the default "to"
-    // once when configured. array_unique() drops any duplicate.
+    // once when configured.  Case-insensitive check (in_array + strtolower)
+    // prevents adding sToEmailAddress when a person email matches it only by
+    // case (e.g. "Admin@church.org" vs "admin@church.org").  $defaultTo is
+    // omitted entirely when $emails is empty so the dashboard dropdowns stay
+    // hidden when there are no reachable person recipients.
     $defaultTo = SystemConfig::getValue('sToEmailAddress');
-    // Only include $defaultTo when there are already person emails to send to;
-    // an empty $emails list means no one is reachable, so the button should
-    // not appear at all (matching pre-refactor behaviour).
     $joinEmails = static fn(array $emails): string => implode(
         ',',
-        array_unique(($defaultTo === '' || $emails === []) ? $emails : [...$emails, $defaultTo]),
+        $defaultTo === '' || $emails === [] || in_array(strtolower($defaultTo), array_map('strtolower', $emails))
+            ? array_unique($emails)
+            : array_unique([...$emails, $defaultTo]),
     );
 
     $pageArgs = [
