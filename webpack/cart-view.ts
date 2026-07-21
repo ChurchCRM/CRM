@@ -5,6 +5,8 @@
  * from /api/cart/emails endpoint.
  */
 
+import { fetchAPIJSON } from "./api-utils";
+
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize DataTable for cart listing
   const table = $("#cart-listing-table") as any;
@@ -21,9 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  fetch(`${window.CRM?.root || ""}/api/cart/emails`, { credentials: "same-origin" })
-    .then((r) => r.json())
-    .then((data: { emails: string[] }) => {
+  fetchAPIJSON<{ emails: string[] }>("cart/emails")
+    .then((data) => {
       if (!data.emails || data.emails.length === 0) {
         return;
       }
