@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-19 19:58+0000\n"
+"POT-Creation-Date: 2026-07-21 17:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3287,10 +3287,6 @@ msgid "Deleting this property will also remove all its assignments from any Peop
 msgstr ""
 
 msgid "Deletion Results"
-msgstr ""
-
-#. Context: userconfig_ucfg
-msgid "Delimiter to separate emails in mailto: links"
 msgstr ""
 
 msgid "Delivery"
