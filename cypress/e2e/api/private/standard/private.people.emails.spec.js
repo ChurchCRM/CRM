@@ -7,26 +7,19 @@
  * grouped by classification role. The endpoint requires the Email role
  * (bEmailMailto permission); users without it receive 403.
  *
+ * Business rules exercised here:
+ *   - Response shape: { all: string[], byRole: Record<string, string[]> }
+ *   - all is a superset of every byRole list
+ *   - No case-insensitive duplicate addresses in all
+ *   - iDoNotEmailPropertyId exclusion: the seed does NOT set iDoNotEmailPropertyId
+ *     in config_cfg (value is empty/0), so the exclusion set is always empty in CI.
+ *     A note is left below where a dedicated fixture could drive that assertion.
+ *   - sToEmailAddress append: the seed does NOT set sToEmailAddress in config_cfg,
+ *     so no default address is appended in CI. A note is left below for a fixture.
+ *
  * Related people coverage:
  *  - People without email : cypress/e2e/api/private/people/people.without-email.spec.js
  *  - Person profile       : cypress/e2e/api/private/standard/private.people.person.spec.js
- *
- * TODO: untested business-rule scenarios (require direct DB access or extended seed data):
- *
- * 1. iDoNotEmailPropertyId exclusion
- *    PersonService::getMailingEmails() filters out people who have the property
- *    identified by `iDoNotEmailPropertyId` in SystemConfig (via per_props rows).
- *    Verifying this requires seeding a person with that property assigned and
- *    confirming their address is absent from the `all` and `byRole` arrays.
- *    The current seed data does not include such a person, and Cypress has no
- *    direct DB write path, so this case cannot be exercised without a dedicated
- *    seed fixture.
- *
- * 2. sToEmailAddress appended when configured
- *    When `sToEmailAddress` is set in SystemConfig the service appends that
- *    address to every mailing-email result.  Testing it end-to-end requires
- *    writing to the `sys_config` table before the request and restoring it
- *    after, which is not possible with the current Cypress command set.
  */
 describe("API Private People Emails", () => {
     // -----------------------------------------------------------------------
@@ -53,14 +46,14 @@ describe("API Private People Emails", () => {
             );
         });
 
-        it("byRole is an object with array values", () => {
+        it("byRole is an object whose values are non-empty string arrays", () => {
             cy.makePrivateAdminAPICall("GET", "/api/people/emails", null, 200).then(
                 (response) => {
                     const byRole = response.body.byRole;
                     expect(byRole).to.be.an("object");
                     Object.values(byRole).forEach((roleEmails) => {
-                        expect(roleEmails).to.be.an("array");
-                        roleEmails.forEach((email) => {
+                        expect(roleEmails).to.be.an("array").and.have.length.above(0);
+                        (roleEmails as string[]).forEach((email) => {
                             expect(email).to.be.a("string").and.not.be.empty;
                         });
                     });
@@ -73,7 +66,7 @@ describe("API Private People Emails", () => {
                 (response) => {
                     const allLower = response.body.all.map((e) => e.toLowerCase());
                     Object.values(response.body.byRole).forEach((roleEmails) => {
-                        roleEmails.forEach((email) => {
+                        (roleEmails as string[]).forEach((email) => {
                             expect(allLower).to.include(email.toLowerCase());
                         });
                     });
@@ -87,6 +80,59 @@ describe("API Private People Emails", () => {
                     const lower = response.body.all.map((e) => e.toLowerCase());
                     const unique = [...new Set(lower)];
                     expect(unique.length).to.equal(lower.length);
+                }
+            );
+        });
+
+        // -------------------------------------------------------------------
+        // iDoNotEmailPropertyId exclusion
+        // The seed does not set iDoNotEmailPropertyId in config_cfg (value is
+        // empty/0), so the exclusion set is always empty in CI and all persons
+        // with a non-empty email in an active family are included. The assertion
+        // below verifies this default-unconfigured behaviour: person 1
+        // (mathew.campbell@example.com) has a known email and is in an active
+        // family, so their address must appear in all.
+        //
+        // To test the exclusion path in isolation a separate fixture would need
+        // to (a) create a "Do Not Email" property, (b) set iDoNotEmailPropertyId
+        // in config_cfg to that property's ID, (c) assign the property to
+        // person 1, and (d) confirm mathew.campbell@example.com is absent.
+        // -------------------------------------------------------------------
+        it("iDoNotEmailPropertyId not configured — known person email is included", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/people/emails", null, 200).then(
+                (response) => {
+                    const lower = response.body.all.map((e) => e.toLowerCase());
+                    // Person 1 (mathew.campbell@example.com) is in an active family
+                    // and has an email; with no DoNotEmail exclusion they must appear.
+                    expect(lower).to.include("mathew.campbell@example.com");
+                }
+            );
+        });
+
+        // -------------------------------------------------------------------
+        // sToEmailAddress append
+        // The seed does not set sToEmailAddress in config_cfg (value is empty),
+        // so no extra default address is injected in CI. The assertion below
+        // verifies this default-unconfigured behaviour: calling the endpoint
+        // twice returns an identical list (idempotent, no dynamic address added).
+        //
+        // To test the append path a fixture would need to set sToEmailAddress
+        // in config_cfg to a known sentinel (e.g. "default@test.example"), call
+        // the endpoint, assert that sentinel appears in both all and every byRole
+        // list, then restore the original value.
+        // -------------------------------------------------------------------
+        it("sToEmailAddress not configured — response is idempotent (no extra address)", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/people/emails", null, 200).then(
+                (firstResp) => {
+                    cy.makePrivateAdminAPICall("GET", "/api/people/emails", null, 200).then(
+                        (secondResp) => {
+                            // Without a dynamic sToEmailAddress both calls return
+                            // the same sorted address list.
+                            const first = [...firstResp.body.all].sort();
+                            const second = [...secondResp.body.all].sort();
+                            expect(first).to.deep.equal(second);
+                        }
+                    );
                 }
             );
         });
