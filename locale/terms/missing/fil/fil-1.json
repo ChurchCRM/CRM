@@ -1,8 +1,8 @@
 {
-  "Access": "",
-  "Self-service": "",
-  "Changelog": "",
-  "Feature": "",
+  "Access": "Access",
+  "Self-service": "Self-service",
+  "Changelog": "Changelog",
+  "Feature": "Feature",
   "%d archived fundraiser": {
     "one": "%d naka-archive na pangongolekta",
     "other": "%d naka-archive na pangongolekta"
@@ -18,7 +18,7 @@
   "Add Item": "Magdagdag ng Aytem",
   "Add people to your cart before assigning them to a family.": "Magdagdag ng mga tao sa iyong listahan bago italaga sa isang pamilya.",
   "Add people to your cart first, then come back to add them to a group.": "Magdagdag muna ng mga tao sa iyong listahan, pagkatapos ay bumalik upang idagdag sila sa isang grupo.",
-  "After amount (100.00 ¤)": "",
+  "After amount (100.00 ¤)": "Pagkatapos ng halaga (100.00 ¤)",
   "All Statuses": "Lahat ng Katayuan",
   "All people in your cart are already in a family. No one can be assigned.": "Lahat ng tao sa iyong listahan ay nasa pamilya na. Walang maaaring italaga.",
   "All types": "Lahat ng uri",
@@ -35,7 +35,7 @@
   "Avg Sale Price": "Karaniwang Presyo ng Benta",
   "Back to Cart": "Bumalik sa Listahan",
   "Back to Fundraisers": "Bumalik sa Mga Pangongolekta",
-  "Before amount (¤ 100.00)": "",
+  "Before amount (¤ 100.00)": "Bago ang halaga (¤ 100.00)",
   "Best Streak": "Pinakamahusay na Sunud-sunod",
   "Bid Sheets": "Mga Sheet ng Bid",
   "Buyer Statements": "Mga Pahayag ng Bumibili",
