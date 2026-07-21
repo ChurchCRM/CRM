@@ -79,4 +79,3 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((err) => console.error("Failed to load emails:", err));
 });
-
