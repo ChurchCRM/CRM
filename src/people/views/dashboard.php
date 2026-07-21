@@ -368,7 +368,8 @@ $(document).ready(function () {
 <?php endif; ?>
 
 <?php if ($canEmail): ?>
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/people-dashboard.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/people-dashboard.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php endif; ?>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+

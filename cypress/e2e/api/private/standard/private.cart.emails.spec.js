@@ -7,14 +7,21 @@
  * for all persons currently in the session cart. The endpoint requires the
  * Email role (bEmailMailto permission); users without it receive 403.
  *
+ * The happy-path suite uses setupStandardSession() + cy.request() so that
+ * cart state (stored in $_SESSION['aPeopleCart']) persists across requests
+ * within the same browser session — matching the pattern in
+ * private.cart.duplicates.spec.js. The standard user (tony.wade, per_id=3)
+ * has bEmailMailto=1 so they can reach GET /api/cart/emails.
+ *
  * Business rules exercised here:
  *   - Response shape: { emails: string[] }
  *   - No case-insensitive duplicate addresses
  *   - iDoNotEmailPropertyId exclusion: the seed does NOT set iDoNotEmailPropertyId
- *     in config_cfg, so the exclusion set is always empty in CI. A note is left
- *     below where a dedicated fixture could drive that assertion.
+ *     in config_cfg, so the exclusion set is always empty in CI. Use
+ *     POST /admin/api/system/config/iDoNotEmailPropertyId to set/restore it in a test.
  *   - sToEmailAddress append: the seed does NOT set sToEmailAddress in config_cfg,
- *     so no default address is appended in CI. A note is left below for a fixture.
+ *     so no default address is appended in CI. Use
+ *     POST /admin/api/system/config/sToEmailAddress to set/restore it in a test.
  *
  * Related cart coverage:
  *  - Duplicate detection  : cypress/e2e/api/private/standard/private.cart.duplicates.spec.js
@@ -22,57 +29,74 @@
  */
 describe("API Private Cart Emails", () => {
     // -----------------------------------------------------------------------
-    // Happy path — admin user has email permission (usr_Admin=1 → isEmailEnabled()=true)
+    // Happy path — standard user (bEmailMailto=1), session-based cart
+    // Uses setupStandardSession() + cy.request() so $_SESSION['aPeopleCart']
+    // persists across requests (same pattern as private.cart.duplicates.spec.js).
     // -----------------------------------------------------------------------
-    describe("GET /api/cart/emails — admin user (Email role)", () => {
-        before(() => {
-            // Seed the cart with person 1 (mathew.campbell@example.com) so the
-            // response is non-empty for all subsequent assertions.
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/cart/",
-                { Persons: [1] },
-                200
-            );
+    describe("GET /api/cart/emails — standard user (Email role, session cart)", () => {
+        beforeEach(() => {
+            cy.setupStandardSession();
+            // Empty the cart so we start from a known state.
+            cy.request({
+                method: "DELETE",
+                url: "/api/cart/",
+                headers: { "Content-Type": "application/json" },
+                body: null,
+            });
+            // Seed cart with person 1 (mathew.campbell@example.com).
+            cy.request({
+                method: "POST",
+                url: "/api/cart/",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ Persons: [1] }),
+            });
         });
 
-        after(() => {
-            // Leave the cart empty for subsequent specs.
-            cy.makePrivateAdminAPICall(
-                "DELETE",
-                "/api/cart/",
-                null,
-                200
-            );
+        afterEach(() => {
+            cy.setupStandardSession();
+            cy.request({
+                method: "DELETE",
+                url: "/api/cart/",
+                headers: { "Content-Type": "application/json" },
+                body: null,
+            });
         });
 
         it("returns 200 with an emails array", () => {
-            cy.makePrivateAdminAPICall("GET", "/api/cart/emails", null, 200).then(
-                (response) => {
-                    expect(response.body).to.have.property("emails");
-                    expect(response.body.emails).to.be.an("array");
-                }
-            );
+            cy.request({
+                method: "GET",
+                url: "/api/cart/emails",
+                headers: { "Content-Type": "application/json" },
+            }).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.body).to.have.property("emails");
+                expect(response.body.emails).to.be.an("array");
+            });
         });
 
         it("emails array contains only non-empty strings", () => {
-            cy.makePrivateAdminAPICall("GET", "/api/cart/emails", null, 200).then(
-                (response) => {
-                    response.body.emails.forEach((email) => {
-                        expect(email).to.be.a("string").and.not.be.empty;
-                    });
-                }
-            );
+            cy.request({
+                method: "GET",
+                url: "/api/cart/emails",
+                headers: { "Content-Type": "application/json" },
+            }).then((response) => {
+                expect(response.body.emails.length).to.be.greaterThan(0);
+                response.body.emails.forEach((email) => {
+                    expect(email).to.be.a("string").and.not.be.empty;
+                });
+            });
         });
 
         it("emails array has no case-insensitive duplicate entries", () => {
-            cy.makePrivateAdminAPICall("GET", "/api/cart/emails", null, 200).then(
-                (response) => {
-                    const lower = response.body.emails.map((e) => e.toLowerCase());
-                    const unique = [...new Set(lower)];
-                    expect(unique.length).to.equal(lower.length);
-                }
-            );
+            cy.request({
+                method: "GET",
+                url: "/api/cart/emails",
+                headers: { "Content-Type": "application/json" },
+            }).then((response) => {
+                const lower = response.body.emails.map((e) => e.toLowerCase());
+                const unique = [...new Set(lower)];
+                expect(unique.length).to.equal(lower.length);
+            });
         });
 
         // -------------------------------------------------------------------
@@ -83,47 +107,53 @@ describe("API Private Cart Emails", () => {
         // (mathew.campbell@example.com) is included because no exclusion is
         // active.
         //
-        // To test the exclusion path in isolation a separate fixture would need
-        // to (a) create a "Do Not Email" property, (b) set iDoNotEmailPropertyId
-        // to that property's ID, (c) assign it to a test person, and (d) confirm
-        // that person's address is absent from the response.
+        // To test the exclusion path, use POST /admin/api/system/config/iDoNotEmailPropertyId
+        // to set the property ID (see private.admin.system.config.spec.js for the pattern),
+        // assign the property to a known person, assert their address is absent, then restore
+        // the original value via another POST to avoid polluting subsequent tests.
         // -------------------------------------------------------------------
         it("iDoNotEmailPropertyId not configured — all cart persons with emails are included", () => {
-            cy.makePrivateAdminAPICall("GET", "/api/cart/emails", null, 200).then(
-                (response) => {
-                    // Person 1 (mathew.campbell@example.com) was added to cart.
-                    // With no DoNotEmail exclusion active their address must appear.
-                    expect(response.body.emails.length).to.be.greaterThan(0);
-                    const lower = response.body.emails.map((e) => e.toLowerCase());
-                    expect(lower).to.include("mathew.campbell@example.com");
-                }
-            );
+            cy.request({
+                method: "GET",
+                url: "/api/cart/emails",
+                headers: { "Content-Type": "application/json" },
+            }).then((response) => {
+                // Person 1 (mathew.campbell@example.com) was added to cart.
+                // With no DoNotEmail exclusion active their address must appear.
+                expect(response.body.emails.length).to.be.greaterThan(0);
+                const lower = response.body.emails.map((e) => e.toLowerCase());
+                expect(lower).to.include("mathew.campbell@example.com");
+            });
         });
 
         // -------------------------------------------------------------------
         // sToEmailAddress append
         // The seed does not set sToEmailAddress in config_cfg (value is empty),
         // so no default address is appended in CI. The assertion below verifies
-        // the default-unconfigured behaviour: the result length matches exactly
-        // the number of unique cart-person emails (no extra address appended).
+        // the default-unconfigured behaviour: emails.length <= cart size.
         //
-        // To test the append path, use the admin config API — this IS possible
-        // via POST /admin/api/system/config/sToEmailAddress { value: "sentinel@test.example" }.
-        // Call the endpoint, assert the sentinel appears at the end of emails[],
-        // then restore the original value with another POST afterward.
+        // To test the append path, use POST /admin/api/system/config/sToEmailAddress
+        // to set a sentinel value (see private.admin.system.config.spec.js for the pattern),
+        // assert the sentinel appears at the end of emails, then restore the original value
+        // via another POST to avoid polluting subsequent tests.
         // -------------------------------------------------------------------
         it("sToEmailAddress not configured — no extra default address appended", () => {
-            // First, get the cart people count for comparison
-            cy.makePrivateAdminAPICall("GET", "/api/cart/", null, 200).then((cartResp) => {
-                cy.makePrivateAdminAPICall("GET", "/api/cart/emails", null, 200).then(
-                    (emailResp) => {
-                        // With sToEmailAddress empty, emails.length <= cart size
-                        // (some cart persons may have no email address).
-                        expect(emailResp.body.emails.length).to.be.at.most(
-                            cartResp.body.PeopleCart.length
-                        );
-                    }
-                );
+            cy.request({
+                method: "GET",
+                url: "/api/cart/",
+                headers: { "Content-Type": "application/json" },
+            }).then((cartResp) => {
+                cy.request({
+                    method: "GET",
+                    url: "/api/cart/emails",
+                    headers: { "Content-Type": "application/json" },
+                }).then((emailResp) => {
+                    // With sToEmailAddress empty, emails.length <= cart size
+                    // (some cart persons may have no email address).
+                    expect(emailResp.body.emails.length).to.be.at.most(
+                        cartResp.body.PeopleCart.length
+                    );
+                });
             });
         });
     });

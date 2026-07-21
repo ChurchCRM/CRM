@@ -13,9 +13,10 @@
  *   - No case-insensitive duplicate addresses in all
  *   - iDoNotEmailPropertyId exclusion: the seed does NOT set iDoNotEmailPropertyId
  *     in config_cfg (value is empty/0), so the exclusion set is always empty in CI.
- *     A note is left below where a dedicated fixture could drive that assertion.
+ *     Use POST /admin/api/system/config/iDoNotEmailPropertyId to set/restore it in a test.
  *   - sToEmailAddress append: the seed does NOT set sToEmailAddress in config_cfg,
- *     so no default address is appended in CI. A note is left below for a fixture.
+ *     so no default address is appended in CI. Use
+ *     POST /admin/api/system/config/sToEmailAddress to set/restore it in a test.
  *
  * Related people coverage:
  *  - People without email : cypress/e2e/api/private/people/people.without-email.spec.js
@@ -53,7 +54,7 @@ describe("API Private People Emails", () => {
                     expect(byRole).to.be.an("object");
                     Object.values(byRole).forEach((roleEmails) => {
                         expect(roleEmails).to.be.an("array").and.have.length.above(0);
-                        roleEmails.forEach((email) => {
+                        (roleEmails as string[]).forEach((email) => {
                             expect(email).to.be.a("string").and.not.be.empty;
                         });
                     });
@@ -66,7 +67,7 @@ describe("API Private People Emails", () => {
                 (response) => {
                     const allLower = response.body.all.map((e) => e.toLowerCase());
                     Object.values(response.body.byRole).forEach((roleEmails) => {
-                        roleEmails.forEach((email) => {
+                        (roleEmails as string[]).forEach((email) => {
                             expect(allLower).to.include(email.toLowerCase());
                         });
                     });
@@ -93,10 +94,10 @@ describe("API Private People Emails", () => {
         // (mathew.campbell@example.com) has a known email and is in an active
         // family, so their address must appear in all.
         //
-        // To test the exclusion path in isolation a separate fixture would need
-        // to (a) create a "Do Not Email" property, (b) set iDoNotEmailPropertyId
-        // in config_cfg to that property's ID, (c) assign the property to
-        // person 1, and (d) confirm mathew.campbell@example.com is absent.
+        // To test the exclusion path: use POST /admin/api/system/config/iDoNotEmailPropertyId
+        // to set the property ID (see private.admin.system.config.spec.js for the pattern),
+        // assign the property to person 1, assert mathew.campbell@example.com is absent,
+        // then restore the original value via another POST.
         // -------------------------------------------------------------------
         it("iDoNotEmailPropertyId not configured — known person email is included", () => {
             cy.makePrivateAdminAPICall("GET", "/api/people/emails", null, 200).then(
@@ -116,10 +117,10 @@ describe("API Private People Emails", () => {
         // verifies this default-unconfigured behaviour: calling the endpoint
         // twice returns an identical list (idempotent, no dynamic address added).
         //
-        // To test the append path, use the admin config API — this IS possible
-        // via POST /admin/api/system/config/sToEmailAddress { value: "sentinel@test.example" }.
-        // Call the endpoint, assert the sentinel appears in both all and every byRole
-        // list, then restore the original value with another POST afterward.
+        // To test the append path: use POST /admin/api/system/config/sToEmailAddress
+        // to set a sentinel (e.g. "default@test.example") (see private.admin.system.config.spec.js),
+        // assert the sentinel appears in both all and every byRole list,
+        // then restore the original value via another POST.
         // -------------------------------------------------------------------
         it("sToEmailAddress not configured — response is idempotent (no extra address)", () => {
             cy.makePrivateAdminAPICall("GET", "/api/people/emails", null, 200).then(
@@ -149,3 +150,4 @@ describe("API Private People Emails", () => {
         });
     });
 });
+
