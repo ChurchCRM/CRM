@@ -74,4 +74,37 @@ describe("Admin User Password", () => {
         // Re-login after API call to restore session
         cy.setupAdminSession({ forceLogin: true });
     });
+
+    // GHSA-4qpj-3hw2-52g8: Stored XSS via Person Name in Admin Users page.
+    // Verify that action menu items use safe data-* attributes instead of
+    // inline onclick handlers, eliminating the JS-string-in-HTML-attribute
+    // context that allowed arbitrary script injection.
+    it("GHSA-4qpj-3hw2-52g8: user action menu uses safe data-* attributes, not inline onclick", () => {
+        // The previous test (Create System Users) ends with forceLogin, which
+        // switches the browser to a new uniquely-named session. The shared
+        // beforeEach then restores the older 'admin-session' from Cypress cache,
+        // but that PHP session can be stale after 21+ minutes of CI run time.
+        // Force a fresh login here to guarantee a valid server-side session.
+        cy.setupAdminSession({ forceLogin: true });
+
+        cy.visit("admin/system/users");
+        cy.get("#user-listing-table").should("exist");
+
+        // The logged-in admin's own row has no delete button, but every other
+        // user row does. With the test DB having many users, page 1 always
+        // contains at least one non-self user — no DataTable search or
+        // pagination needed.
+        cy.get("#user-listing-table tbody .js-delete-user")
+            .should("have.length.at.least", 1)
+            .first()
+            .as("deleteLink");
+
+        // Must use safe data-* attributes, not inline onclick.
+        // This is the structural guard against regression to the XSS-vulnerable
+        // pattern of embedding JS strings directly in HTML attribute context.
+        cy.get("@deleteLink").should("have.attr", "data-user_id");
+        cy.get("@deleteLink").invoke("attr", "data-user_id").should("match", /^\d+$/);
+        cy.get("@deleteLink").should("have.attr", "data-user_name");
+        cy.get("@deleteLink").should("not.have.attr", "onclick");
+    });
 });
