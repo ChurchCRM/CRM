@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -22,7 +23,7 @@ use Slim\Routing\RouteCollectorProxy;
  * )
  */
 $app->get('/cart/emails', function (Request $request, Response $response): Response {
-    if (!$_SESSION['user']->isEmailEnabled()) {
+    if (!AuthenticationManager::getCurrentUser()->isEmailEnabled()) {
         return SlimUtils::renderErrorJSON($response, gettext('Email sending is disabled'), [], 403, null, $request);
     }
     if (!isset($_SESSION['aPeopleCart'])) {

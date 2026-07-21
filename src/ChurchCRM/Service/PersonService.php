@@ -122,6 +122,9 @@ class PersonService
             $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
         }
 
+        // TODO(follow-up): add a query-level predicate to exclude rows with empty
+        // per_Email so the ORM hydrates only persons that will actually be emailed,
+        // reducing memory and query cost for large databases (ref PR #8909 discussion_r3619105570).
         $persons = PersonQuery::create()
             ->leftJoinWithFamily()
             ->useQuery('Family')
@@ -150,11 +153,14 @@ class PersonService
 
         $defaultTo = SystemConfig::getValue('sToEmailAddress');
         if ($defaultTo !== '') {
-            if (!in_array($defaultTo, $all, true)) {
+            // Use the same case-insensitive dedup strategy as the person loop above.
+            $defaultToLower = strtolower($defaultTo);
+            if (!isset($emailsSeen[$defaultToLower])) {
+                $emailsSeen[$defaultToLower] = true;
                 $all[] = $defaultTo;
             }
             foreach ($byRole as &$roleEmails) {
-                if (!in_array($defaultTo, $roleEmails, true)) {
+                if (!in_array($defaultToLower, array_map('strtolower', $roleEmails), true)) {
                     $roleEmails[] = $defaultTo;
                 }
             }

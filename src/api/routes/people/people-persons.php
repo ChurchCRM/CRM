@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -167,7 +168,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
  * )
  */
 $app->get('/people/emails', function (Request $request, Response $response): Response {
-    if (!$_SESSION['user']->isEmailEnabled()) {
+    if (!AuthenticationManager::getCurrentUser()->isEmailEnabled()) {
         return SlimUtils::renderErrorJSON($response, gettext('Email sending is disabled'), [], 403, null, $request);
     }
     $personService = new PersonService();

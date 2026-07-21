@@ -30,6 +30,8 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
       <!-- Email buttons populated asynchronously by /api/cart/emails -->
       <div class="btn-group d-none" role="group" id="cart-email-actions">
+        <?php // TODO(follow-up): replace href="#" with a safe mailto: placeholder so the link
+             // remains accessible before JS hydrates it (ref PR #8909 discussion_r3619105493). ?>
         <a href="#" class="btn btn-outline-info" id="cart-email-to" title="<?= gettext('Email cart items') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
         </a>
