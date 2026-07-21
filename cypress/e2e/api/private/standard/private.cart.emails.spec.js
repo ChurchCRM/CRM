@@ -41,7 +41,7 @@ describe("API Private Cart Emails", () => {
             cy.makePrivateAdminAPICall(
                 "DELETE",
                 "/api/cart/",
-                {},
+                null,
                 200
             );
         });
@@ -107,9 +107,10 @@ describe("API Private Cart Emails", () => {
         // the default-unconfigured behaviour: the result length matches exactly
         // the number of unique cart-person emails (no extra address appended).
         //
-        // To test the append path a fixture would need to set sToEmailAddress
-        // to a known value, call the endpoint, and assert that address appears
-        // at the end of the emails array.
+        // To test the append path, use the admin config API — this IS possible
+        // via POST /admin/api/system/config/sToEmailAddress { value: "sentinel@test.example" }.
+        // Call the endpoint, assert the sentinel appears at the end of emails[],
+        // then restore the original value with another POST afterward.
         // -------------------------------------------------------------------
         it("sToEmailAddress not configured — no extra default address appended", () => {
             // First, get the cart people count for comparison
