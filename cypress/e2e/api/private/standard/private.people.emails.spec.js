@@ -53,7 +53,7 @@ describe("API Private People Emails", () => {
                     expect(byRole).to.be.an("object");
                     Object.values(byRole).forEach((roleEmails) => {
                         expect(roleEmails).to.be.an("array").and.have.length.above(0);
-                        (roleEmails as string[]).forEach((email) => {
+                        roleEmails.forEach((email) => {
                             expect(email).to.be.a("string").and.not.be.empty;
                         });
                     });
@@ -66,7 +66,7 @@ describe("API Private People Emails", () => {
                 (response) => {
                     const allLower = response.body.all.map((e) => e.toLowerCase());
                     Object.values(response.body.byRole).forEach((roleEmails) => {
-                        (roleEmails as string[]).forEach((email) => {
+                        roleEmails.forEach((email) => {
                             expect(allLower).to.include(email.toLowerCase());
                         });
                     });
@@ -116,10 +116,10 @@ describe("API Private People Emails", () => {
         // verifies this default-unconfigured behaviour: calling the endpoint
         // twice returns an identical list (idempotent, no dynamic address added).
         //
-        // To test the append path a fixture would need to set sToEmailAddress
-        // in config_cfg to a known sentinel (e.g. "default@test.example"), call
-        // the endpoint, assert that sentinel appears in both all and every byRole
-        // list, then restore the original value.
+        // To test the append path, use the admin config API — this IS possible
+        // via POST /admin/api/system/config/sToEmailAddress { value: "sentinel@test.example" }.
+        // Call the endpoint, assert the sentinel appears in both all and every byRole
+        // list, then restore the original value with another POST afterward.
         // -------------------------------------------------------------------
         it("sToEmailAddress not configured — response is idempotent (no extra address)", () => {
             cy.makePrivateAdminAPICall("GET", "/api/people/emails", null, 200).then(
