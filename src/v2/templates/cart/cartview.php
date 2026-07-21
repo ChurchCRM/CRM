@@ -30,12 +30,10 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
       <!-- Email buttons populated asynchronously by /api/cart/emails -->
       <div class="btn-group d-none" role="group" id="cart-email-actions">
-        <?php // TODO(follow-up): replace href="#" with a safe mailto: placeholder so the link
-             // remains accessible before JS hydrates it (ref PR #8909 discussion_r3619105493). ?>
-        <a href="#" class="btn btn-outline-info" id="cart-email-to" title="<?= gettext('Email cart items') ?>" target="_blank" rel="noopener noreferrer">
+        <a href="mailto:" class="btn btn-outline-info" id="cart-email-to" title="<?= gettext('Email cart items') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
         </a>
-        <a href="#" class="btn btn-outline-secondary" id="cart-email-bcc" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
+        <a href="mailto:" class="btn btn-outline-secondary" id="cart-email-bcc" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-user-secret me-2"></i>BCC
         </a>
       </div>
@@ -126,3 +124,4 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/cart-view.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+

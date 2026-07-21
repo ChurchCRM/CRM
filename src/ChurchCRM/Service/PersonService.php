@@ -122,14 +122,12 @@ class PersonService
             $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
         }
 
-        // TODO(follow-up): add a query-level predicate to exclude rows with empty
-        // per_Email so the ORM hydrates only persons that will actually be emailed,
-        // reducing memory and query cost for large databases (ref PR #8909 discussion_r3619105570).
         $persons = PersonQuery::create()
             ->leftJoinWithFamily()
             ->useQuery('Family')
                 ->filterByDateDeactivated(null)
             ->endUse()
+            ->filterByEmail('', Criteria::NOT_EQUAL)
             ->find();
 
         $all = [];
@@ -321,3 +319,4 @@ class PersonService
             ->count();
     }
 }
+

@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -8,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -168,12 +168,9 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
  * )
  */
 $app->get('/people/emails', function (Request $request, Response $response): Response {
-    if (!AuthenticationManager::getCurrentUser()->isEmailEnabled()) {
-        return SlimUtils::renderErrorJSON($response, gettext('Email sending is disabled'), [], 403, null, $request);
-    }
     $personService = new PersonService();
     return SlimUtils::renderJSON($response, $personService->getMailingEmails());
-});
+})->add(EmailRoleAuthMiddleware::class);
 
 /**
  * @OA\Get(
@@ -495,3 +492,4 @@ function buildFormattedPersonList(Collection $people): array
 
     return ['people' => $formattedList];
 }
+

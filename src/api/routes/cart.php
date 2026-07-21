@@ -1,7 +1,7 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -23,14 +23,11 @@ use Slim\Routing\RouteCollectorProxy;
  * )
  */
 $app->get('/cart/emails', function (Request $request, Response $response): Response {
-    if (!AuthenticationManager::getCurrentUser()->isEmailEnabled()) {
-        return SlimUtils::renderErrorJSON($response, gettext('Email sending is disabled'), [], 403, null, $request);
-    }
     if (!isset($_SESSION['aPeopleCart'])) {
         $_SESSION['aPeopleCart'] = [];
     }
     return SlimUtils::renderJSON($response, ['emails' => Cart::getEmails()]);
-});
+})->add(EmailRoleAuthMiddleware::class);
 
 $app->group('/cart', function (RouteCollectorProxy $group): void {
     /**
@@ -275,3 +272,4 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
         }
     });
 });
+
