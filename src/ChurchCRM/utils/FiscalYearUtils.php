@@ -21,15 +21,42 @@ class FiscalYearUtils
      */
     public static function getCurrentFiscalYearId(): int
     {
-        $yearNow = (int) date('Y');
-        $monthNow = (int) date('m');
+        return self::calculateFiscalYearId((int) date('Y'), (int) date('m'));
+    }
+
+    /**
+     * Compute the fiscal year ID for an arbitrary calendar date string.
+     *
+     * Falls back to the current fiscal year when $date is empty or unparseable.
+     *
+     * @param string $date A date string parseable by strtotime (e.g. 'YYYY-MM-DD')
+     * @return int Fiscal year ID
+     */
+    public static function getFiscalYearIdForDate(string $date): int
+    {
+        if ($date === '') {
+            return self::getCurrentFiscalYearId();
+        }
+        $ts = strtotime($date);
+        if ($ts === false) {
+            return self::getCurrentFiscalYearId();
+        }
+        return self::calculateFiscalYearId((int) date('Y', $ts), (int) date('m', $ts));
+    }
+
+    /**
+     * Core fiscal-year-ID formula shared by all date-aware callers.
+     *
+     * Fiscal Year IDs are calculated as: year - 1996.
+     * If month >= iFYMonth (and iFYMonth > 1), add 1 to move to the next FY.
+     */
+    private static function calculateFiscalYearId(int $year, int $month): int
+    {
         $fyMonth = SystemConfig::getIntValue('iFYMonth');
-        
-        $fyid = $yearNow - 1996;
-        if ($monthNow >= $fyMonth && $fyMonth > 1) {
+        $fyid = $year - 1996;
+        if ($month >= $fyMonth && $fyMonth > 1) {
             $fyid += 1;
         }
-
         return $fyid;
     }
 

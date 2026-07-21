@@ -157,7 +157,108 @@ class FinancialService
 
     public function getPaymentViewURI(string $groupKey): string
     {
-        return SystemURLs::getRootPath() . '/PledgeEditor.php?GroupKey=' . $groupKey;
+        return SystemURLs::getRootPath() . '/finance/pledge/' . urlencode($groupKey);
+    }
+
+    /**
+     * Return all pledge rows for a given GroupKey as a structured array.
+     *
+     * Includes family info, fund name, per-row amounts, and deposit association.
+     *
+     * @param string $groupKey
+     * @return array{
+     *   groupKey: string,
+     *   familyId: int,
+     *   familyName: string,
+     *   date: string,
+     *   fyId: int,
+     *   method: string,
+     *   checkNo: string|null,
+     *   depositId: int|null,
+     *   pledgeOrPayment: string,
+     *   schedule: string|null,
+     *   total: float,
+     *   funds: list<array{
+     *     fundId: int, fundName: string, amount: float,
+     *     nonDeductible: float, comment: string
+     *   }>
+     * }
+     * @throws \InvalidArgumentException when the group key does not exist
+     */
+    public function getPledgesByGroupKey(string $groupKey): array
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        $pledges = PledgeQuery::create()
+            ->filterByGroupKey($groupKey)
+            ->joinWithDonationFund()
+            ->joinWithFamily()
+            ->find();
+
+        if ($pledges->count() === 0) {
+            throw new \InvalidArgumentException('Pledge group not found');
+        }
+
+        $funds = [];
+        $total = 0.0;
+        $header = null;
+
+        foreach ($pledges as $pledge) {
+            if ($header === null) {
+                $family = $pledge->getFamily();
+                $header = [
+                    'groupKey'        => $pledge->getGroupKey(),
+                    'familyId'        => (int) $pledge->getFamId(),
+                    'familyName'      => $family ? $family->getFamilyString() : '',
+                    'date'            => $pledge->getDate('Y-m-d'),
+                    'fyId'            => (int) $pledge->getFyId(),
+                    'method'          => $pledge->getMethod() ?? '',
+                    'checkNo'         => $pledge->getCheckNo(),
+                    'depositId'       => $pledge->getDepId() ? (int) $pledge->getDepId() : null,
+                    'pledgeOrPayment' => $pledge->getPledgeOrPayment() ?? '',
+                    'schedule'        => $pledge->getSchedule(),
+                ];
+            }
+
+            $fund = $pledge->getDonationFund();
+            $amount = (float) $pledge->getAmount();
+            $total += $amount;
+
+            $funds[] = [
+                'fundId'       => (int) $pledge->getFundId(),
+                'fundName'     => $fund ? $fund->getName() : '',
+                'amount'       => $amount,
+                'nonDeductible' => (float) $pledge->getNondeductible(),
+                'comment'      => $pledge->getComment() ?? '',
+            ];
+        }
+
+        $header['total'] = $total;
+        $header['funds'] = $funds;
+
+        return $header;
+    }
+
+    /**
+     * Delete ALL pledge rows sharing a GroupKey (multi-fund aware).
+     *
+     * Unlike deletePayment() which only removes the first match, this method
+     * deletes every row with the given GroupKey.
+     *
+     * @param string $groupKey
+     * @throws \InvalidArgumentException when the group key does not exist
+     */
+    public function deletePledgeGroup(string $groupKey): void
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        $count = PledgeQuery::create()
+            ->filterByGroupKey($groupKey)
+            ->delete();
+
+        if ($count === 0) {
+            throw new \InvalidArgumentException('Pledge group not found');
+        }
     }
 
     public function getViewURI(string $Id): string
@@ -255,24 +356,27 @@ class FinancialService
     public function insertPledgeorPayment(object $payment)
     {
         AuthService::requireUserGroupMembership('bFinance');
-        // Only set PledgeOrPayment when the record is first created
-        // loop through all funds and create non-zero amount pledge records
-        $FundSplit = json_decode($payment->FundSplit, null, 512, JSON_THROW_ON_ERROR);
+        // Only set PledgeOrPayment when the record is first created.
+        // Loop through all funds and create a pledge row for every non-zero amount.
+        //
+        // FundSplit may arrive as a JSON string (legacy callers) or as an already-
+        // decoded array (when called via submitPledgeOrPayment after normalisation).
+        $FundSplit = is_string($payment->FundSplit)
+            ? json_decode($payment->FundSplit, false, 512, JSON_THROW_ON_ERROR)
+            : $payment->FundSplit;
+
+        $sGroupKey = null;
+
         foreach ($FundSplit as $Fund) {
-            if ($Fund->Amount > 0) {  //Only insert a row in the pledge table if this fund has a non zero amount.
-                if (!isset($sGroupKey)) {  //a GroupKey references a single familie's payment, and transcends the fund splits.  Sharing the same Group Key for this payment helps clean up reports.
+            if ($Fund->Amount > 0) {  // Only insert a row if this fund has a non-zero amount.
+                if ($sGroupKey === null) {  // GroupKey is shared across all fund rows for one payment.
+                    $iAutID = $payment->iAutID ?? null;
                     if ($payment->iMethod === 'CHECK') {
                         $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
-                        if (!isset($payment->iAutID)) {
-                            $iAutID = 'draft';
-                        }
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $payment->FamilyID, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {
-                        if (!isset($payment->iAutID)) {
-                            $iAutID = 'credit';
-                        }
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'credit', $payment->FamilyID, $Fund->FundID, $payment->Date);
                     } else {
                         $sGroupKey = FunctionsUtils::genGroupKey('cash', $payment->FamilyID, $Fund->FundID, $payment->Date);
                     }
@@ -285,38 +389,68 @@ class FinancialService
                     ->setDate($payment->Date)
                     ->setAmount($Fund->Amount)
                     ->setMethod($payment->iMethod)
-                    ->setComment($Fund->Comment)
+                    ->setComment($Fund->Comment ?? '')
                     ->setDateLastEdited(date('YmdHis'))
                     ->setEditedBy(AuthenticationManager::getCurrentUser()->getId())
                     ->setPledgeOrPayment($payment->type)
                     ->setFundId($Fund->FundID)
                     ->setDepId($payment->DepositID)
                     ->setGroupKey($sGroupKey);
-                if ($payment->schedule) {
+                if (!empty($payment->schedule)) {
                     $pledge->setSchedule($payment->schedule);
                 }
-                if ($payment->iCheckNo) {
+                if (!empty($payment->iCheckNo)) {
                     $pledge->setCheckNo($payment->iCheckNo);
                 }
-                if ($payment->tScanString) {
+                if (!empty($payment->tScanString)) {
                     $pledge->setScanString($payment->tScanString);
                 }
-                if ($payment->iAutID) {
+                if (!empty($payment->iAutID)) {
                     $pledge->setAutId($payment->iAutID);
                 }
-                if ($Fund->NonDeductible) {
-                    $pledge->setNondeductible($Fund->NonDeductible);
-                }
+                // Always set NonDeductible — the column is NOT NULL with no default.
+                // Using empty() here would skip 0, leaving the property null and
+                // causing a MySQL constraint error on INSERT.
+                $pledge->setNondeductible((float) ($Fund->NonDeductible ?? 0));
                 $pledge->save();
                 HookManager::doAction(Hooks::DONATION_RECEIVED, $pledge);
-                return $sGroupKey;
+                // Do NOT return here — continue to save all fund rows before returning.
             }
         }
+
+        return $sGroupKey;
+    }
+
+    /**
+     * Normalise $payment->FundSplit to an array of stdClass objects.
+     *
+     * The legacy API and the new MVC editor both send FundSplit as a
+     * JSON-encoded string.  validateFund() needs an array (it calls count()
+     * and arrow-accesses ->FundID / ->Amount), while insertPledgeorPayment()
+     * historically json_decoded the string itself.  Normalising once here
+     * lets both methods share a single, already-decoded representation and
+     * avoids a PHP 8 TypeError from count()-on-string.
+     *
+     * Accepts: JSON string  →  decoded to array of stdClass
+     *          array        →  used as-is (future callers passing native arrays)
+     *          stdClass     →  wrapped in a single-element array
+     */
+    private function normalizeFundSplit(object $payment): void
+    {
+        $raw = $payment->FundSplit ?? [];
+        if (is_string($raw)) {
+            $raw = json_decode($raw, false, 512, JSON_THROW_ON_ERROR);
+        }
+        if ($raw instanceof \stdClass) {
+            $raw = [$raw];
+        }
+        $payment->FundSplit = is_array($raw) ? array_values($raw) : [];
     }
 
     public function submitPledgeOrPayment(object $payment): string
     {
         AuthService::requireUserGroupMembership('bFinance');
+        $this->normalizeFundSplit($payment);
         $this->validateFund($payment);
         $this->validateChecks($payment);
         $this->validateDate($payment);
@@ -350,6 +484,7 @@ class FinancialService
             $iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
             $fund2PlgIds[$oneFundID] = $onePlgID;
         }
+        $payment->GroupKey = $GroupKey;
         $payment->total = $total;
 
         return json_encode($payment, JSON_THROW_ON_ERROR);
