@@ -509,9 +509,9 @@ INSERT IGNORE INTO user_settings SELECT usr_per_ID, 'finance.show.pledges',     
 INSERT IGNORE INTO user_settings SELECT usr_per_ID, 'finance.show.payments',    usr_showPayments FROM user_usr;
 INSERT IGNORE INTO user_settings SELECT usr_per_ID, 'finance.show.since',       usr_showSince    FROM user_usr;
 INSERT IGNORE INTO user_settings SELECT usr_per_ID, 'finance.FY',               usr_defaultFY    FROM user_usr;
--- sMailtoDelimiter migration omitted: the 7.5.x migration that removes ui.email.delimiter
--- is always applied after this consolidated script, so re-introducing it here would be
--- cleaned up again immediately and is unnecessary.
+-- sMailtoDelimiter migration omitted: the 7.5.1 migration that removes ui.email.delimiter
+-- is applied conditionally (only when upgrading to >=7.5.1); re-introducing it here
+-- would be redundant for those upgrade paths and unnecessary for upgrades stopping at 6.x.
 
 
 -- ===== from 4.4.0-FB.sql =====
@@ -580,3 +580,4 @@ ALTER TABLE user_usr DROP COLUMN IF EXISTS usr_Canvasser;
 -- iPhotoClientCacheDuration (cfg_id 2038) - Replaced with hardcoded 2-hour cache via Slim HttpCache middleware
 -- bBackupExtraneousImages (cfg_id 2062) - Initials and remote images are never backed up (can be regenerated)
 DELETE FROM config_cfg WHERE cfg_id IN (2034, 2035, 2036, 2037, 2038, 2062);
+
