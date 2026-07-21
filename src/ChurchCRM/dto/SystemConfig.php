@@ -116,6 +116,18 @@ class   SystemConfig
         ];
     }
 
+    public static function getTelemetryLevelChoices(): array
+    {
+        return [
+            'Choices' => [
+                gettext('None (disabled)') . ':none',
+                gettext('Errors — server errors and JS exceptions') . ':errors',
+                gettext('Warnings — warnings, errors, and JS exceptions') . ':warnings',
+                gettext('Full — all of the above plus page views') . ':full',
+            ],
+        ];
+    }
+
     private static function buildConfigs(): array
     {
         return [
@@ -262,20 +274,23 @@ class   SystemConfig
             'bSendUserDeletedEmail'                => new ConfigItem('bSendUserDeletedEmail', 'boolean', '0', gettext('Send an email notifying users when their account has been deleted')),
             'sInactiveClassification'              => new ConfigItem('sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
-            'sSystemID'                            => new ConfigItem('sSystemID', 'text', '')
+            'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
+            // Telemetry — collection level and internal state (sTelemetryAskedVersion excluded from UI)
+            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'none', gettext('Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent.'), '', json_encode(self::getTelemetryLevelChoices(), JSON_THROW_ON_ERROR)),
+            'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
         ];
     }
 
     private static function buildCategories(): array
     {
         return [
-            gettext('New Members & Greeting') => ['sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2'],    
+            gettext('New Members & Greeting') => ['sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2'],
             gettext('People')              => ['sDirClassifications', 'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideWeddingDate', 'bForceUppercaseZip', 'sInactiveClassification'],
             gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHideFamilyNewsletter'],
             gettext('Report Settings')    => ['sQBDTSettings', 'leftX', 'incrementY', 'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sPledgeSummary1', 'sPledgeSummary2', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'bDirLetterHead', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'iPDFOutputType'],
             gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts', 'bUseScannedChecks', 'bEnableNonDeductible', 'iFYMonth', 'bUseDonationEnvelopes', 'aFinanceQueries', 'sCurrencySymbol', 'sCurrencyPosition', 'sThousandsSeparator', 'sDecimalSeparator'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
-            gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField']
+            gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
         ];
     }
 
