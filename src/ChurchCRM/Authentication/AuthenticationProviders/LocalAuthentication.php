@@ -261,6 +261,13 @@ class LocalAuthentication implements IAuthenticationProvider
             if ($graceStatus === 'expired' || $graceStatus === 'immediate') {
                 LoggerUtils::getAuthLogger()->info('2FA grace period expired or immediate; redirecting to enrollment', $logCtx);
                 $authenticationResult->nextStepURL = $enrollmentURL;
+                // NOTE (pre-existing limitation): setting nextStepURL here does NOT block API or
+                // API-key-authenticated requests.  AuthMiddleware only enforces nextStepURL for
+                // browser requests (inside the `isBrowserRequest` branch); session-based API
+                // calls see isAuthenticated=true and are passed straight to the handler.
+                // A follow-up issue should add 403 enforcement in AuthMiddleware for non-browser
+                // requests when nextStepURL signals mandatory 2FA enrollment.
+                // See: https://github.com/ChurchCRM/CRM/pull/8983#discussion_r3619149474
             }
             // 'within-grace' → allow through; the banner in Header.php handles the warning.
         }
