@@ -23,9 +23,6 @@ use Slim\Routing\RouteCollectorProxy;
  * )
  */
 $app->get('/cart/emails', function (Request $request, Response $response): Response {
-    if (!isset($_SESSION['aPeopleCart'])) {
-        $_SESSION['aPeopleCart'] = [];
-    }
     return SlimUtils::renderJSON($response, ['emails' => Cart::getEmails()]);
 })->add(EmailRoleAuthMiddleware::class);
 
@@ -272,4 +269,5 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
         }
     });
 });
+
 
