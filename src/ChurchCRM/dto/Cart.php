@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -256,13 +255,16 @@ class Cart
                 $emailAddressArray[] = $cartPerson->getEmail();
             }
         }
-        $delimiter = AuthenticationManager::getCurrentUser()->getUserConfigString('sMailtoDelimiter');
-        $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
-        if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
-            $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
+        // RFC 6068: comma is the standard email-list delimiter.
+        // Use an array-based membership check (case-insensitive) to decide
+        // whether to append sToEmailAddress — avoids the stristr() false-positive
+        // where e.g. 'admin@x.com' would match inside 'superadmin@x.com'.
+        $emails    = array_values(array_unique(array_filter($emailAddressArray)));
+        $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
+        if ($emails !== [] && $defaultTo !== '' && !in_array(strtolower($defaultTo), array_map('strtolower', $emails))) {
+            $emails[] = $defaultTo;
         }
-
-        return $sEmailLink;
+        return implode(',', $emails);
     }
 
     public static function getSMSLink(): string

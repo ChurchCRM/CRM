@@ -1848,12 +1848,12 @@ CREATE TABLE `userconfig_ucfg` (
 LOCK TABLES `userconfig_ucfg` WRITE;
 /*!40000 ALTER TABLE `userconfig_ucfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `userconfig_ucfg` VALUES (0,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(0,1,'sMailtoDelimiter',',','text','Delimiter to separate emails in mailto: links','TRUE',''),(0,10,'bAddEvent','0','boolean','Allow user to add new event','FALSE','SECURITY'),(1,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(1,1,'sMailtoDelimiter',',','text','user permission to send email via mailto: links','TRUE',''),(3,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(3,1,'sMailtoDelimiter',',','text','Delimiter to separate emails in mailto: links','TRUE',''),(3,10,'bAddEvent','','boolean','Allow user to add new event','FALSE','SECURITY'),(59,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(59,1,'sMailtoDelimiter',',','text','Delimiter to separate emails in mailto: links','TRUE',''),(59,10,'bAddEvent','','boolean','Allow user to add new event','FALSE','SECURITY'),(76,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(76,1,'sMailtoDelimiter',',','text','Delimiter to separate emails in mailto: links','TRUE',''),(76,10,'bAddEvent','','boolean','Allow user to add new event','FALSE','SECURITY'),(95,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(95,1,'sMailtoDelimiter',',','text','Delimiter to separate emails in mailto: links','TRUE',''),(95,10,'bAddEvent','','boolean','Allow user to add new event','FALSE','SECURITY');
+INSERT INTO `userconfig_ucfg` VALUES (0,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(0,10,'bAddEvent','0','boolean','Allow user to add new event','FALSE','SECURITY'),(1,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(3,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(3,10,'bAddEvent','','boolean','Allow user to add new event','FALSE','SECURITY'),(59,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(59,10,'bAddEvent','','boolean','Allow user to add new event','FALSE','SECURITY'),(76,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(76,10,'bAddEvent','','boolean','Allow user to add new event','FALSE','SECURITY'),(95,0,'bEmailMailto','1','boolean','User permission to send email via mailto: links','TRUE',''),(95,10,'bAddEvent','','boolean','Allow user to add new event','FALSE','SECURITY');
 /*!40000 ALTER TABLE `userconfig_ucfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `userconfig_ucfg` with 29 row(s)
+-- Dumped table `userconfig_ucfg` with 11 row(s)
 --
 
 --
@@ -1878,12 +1878,12 @@ CREATE TABLE `user_settings` (
 LOCK TABLES `user_settings` WRITE;
 /*!40000 ALTER TABLE `user_settings` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `user_settings` VALUES (0,'ui.email.delimiter',','),(1,'finance.FY','23'),(1,'finance.show.payments','true'),(1,'finance.show.pledges','true'),(1,'finance.show.since','2016-01-01'),(1,'ui.email.delimiter',','),(1,'ui.locale','en_US'),(1,'ui.search.calendar.end',NULL),(1,'ui.search.calendar.start',NULL),(1,'ui.style','skin-red'),(1,'ui.table.size','10'),(3,'finance.FY','23'),(3,'finance.show.payments','0'),(3,'finance.show.pledges','0'),(3,'finance.show.since','2016-01-01'),(3,'ui.email.delimiter',','),(3,'ui.locale','en_US'),(3,'ui.search.calendar.end',NULL),(3,'ui.search.calendar.start',NULL),(3,'ui.style','skin-yellow-light'),(3,'ui.table.size','10'),(76,'finance.FY','20'),(76,'finance.show.payments','0'),(76,'finance.show.pledges','0'),(76,'finance.show.since','2016-01-01'),(76,'ui.email.delimiter',','),(76,'ui.search.calendar.end',NULL),(76,'ui.search.calendar.start',NULL),(76,'ui.style','skin-blue'),(76,'ui.table.size','10'),(95,'finance.FY','20'),(95,'finance.show.payments','0'),(95,'finance.show.pledges','0'),(95,'finance.show.since','2016-01-01'),(95,'ui.email.delimiter',','),(95,'ui.search.calendar.end',NULL),(95,'ui.search.calendar.start',NULL),(95,'ui.style','skin-blue'),(95,'ui.table.size','10');
+INSERT INTO `user_settings` VALUES (1,'finance.FY','23'),(1,'finance.show.payments','true'),(1,'finance.show.pledges','true'),(1,'finance.show.since','2016-01-01'),(1,'ui.locale','en_US'),(1,'ui.search.calendar.end',NULL),(1,'ui.search.calendar.start',NULL),(1,'ui.style','skin-red'),(1,'ui.table.size','10'),(3,'finance.FY','23'),(3,'finance.show.payments','0'),(3,'finance.show.pledges','0'),(3,'finance.show.since','2016-01-01'),(3,'ui.locale','en_US'),(3,'ui.search.calendar.end',NULL),(3,'ui.search.calendar.start',NULL),(3,'ui.style','skin-yellow-light'),(3,'ui.table.size','10'),(76,'finance.FY','20'),(76,'finance.show.payments','0'),(76,'finance.show.pledges','0'),(76,'finance.show.since','2016-01-01'),(76,'ui.search.calendar.end',NULL),(76,'ui.search.calendar.start',NULL),(76,'ui.style','skin-blue'),(76,'ui.table.size','10'),(95,'finance.FY','20'),(95,'finance.show.payments','0'),(95,'finance.show.pledges','0'),(95,'finance.show.since','2016-01-01'),(95,'ui.search.calendar.end',NULL),(95,'ui.search.calendar.start',NULL),(95,'ui.style','skin-blue'),(95,'ui.table.size','10');
 /*!40000 ALTER TABLE `user_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `user_settings` with 39 row(s)
+-- Dumped table `user_settings` with 34 row(s)
 --
 
 --

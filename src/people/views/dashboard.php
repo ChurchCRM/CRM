@@ -110,24 +110,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
                 <?php if ($sEmailLink && $canEmail):
-                    $emailHref    = 'mailto:' . mb_substr($sEmailLink, 0, -3);
-                    $emailBccHref = 'mailto:?bcc=' . mb_substr($sEmailLink, 0, -3);
+                    // Recipients are data; "to" vs "bcc" is delivery mode — keep them separate.
+                    $mailto = static fn(string $recipients, bool $bcc = false): string =>
+                        InputUtils::escapeAttribute('mailto:' . ($bcc ? '?bcc=' : '') . rawurlencode($recipients));
                     ?>
                     <div class="dropdown">
                         <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                             <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($emailHref) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
+                            <a class="dropdown-item" href="<?= $mailto($sEmailLink) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
                             <div class="dropdown-divider"></div>
-                            <?php foreach ($roleEmails as $role => $roleEmail):
-                                $defaultTo = SystemConfig::getValue('sToEmailAddress');
-                                if ($defaultTo !== '' && !stristr($roleEmail, $defaultTo)) {
-                                    $roleEmail .= $sMailtoDelimiter . $defaultTo;
-                                }
-                                $encoded = urlencode($roleEmail);
-                                ?>
-                                <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(mb_substr($encoded, 0, -3)) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
+                            <?php foreach ($roleEmails as $role => $roleEmail): ?>
+                                <a class="dropdown-item" href="<?= $mailto($roleEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -136,16 +131,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <i class="fa-solid fa-user-secret me-1"></i><?= gettext('Email BCC') ?>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($emailBccHref) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
+                            <a class="dropdown-item" href="<?= $mailto($sEmailLink, true) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
                             <div class="dropdown-divider"></div>
-                            <?php foreach ($roleEmails as $role => $roleEmail):
-                                $defaultTo = SystemConfig::getValue('sToEmailAddress');
-                                if ($defaultTo !== '' && !stristr($roleEmail, $defaultTo)) {
-                                    $roleEmail .= $sMailtoDelimiter . $defaultTo;
-                                }
-                                $encoded = urlencode($roleEmail);
-                                ?>
-                                <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute(mb_substr($encoded, 0, -3)) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
+                            <?php foreach ($roleEmails as $role => $roleEmail): ?>
+                                <a class="dropdown-item" href="<?= $mailto($roleEmail, true) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
