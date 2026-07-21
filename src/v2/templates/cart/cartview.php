@@ -33,7 +33,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
         <a href="mailto:" class="btn btn-outline-info" id="cart-email-to" title="<?= gettext('Email cart items') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
         </a>
-        <a href="mailto:" class="btn btn-outline-secondary" id="cart-email-bcc" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
+        <a href="mailto:?bcc=" class="btn btn-outline-secondary" id="cart-email-bcc" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-user-secret me-2"></i>BCC
         </a>
       </div>
@@ -124,5 +124,6 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/cart-view.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+
 
 
