@@ -800,7 +800,7 @@ class User extends BaseUser
      * Returns the absolute DateTime at which this user's grace window closes,
      * or null if the grace period has not been started yet.
      */
-    public function getTwoFactorGraceDeadline(): ?\DateTime
+    public function getTwoFactorGraceDeadline(): ?\DateTimeInterface
     {
         $start = $this->getTwoFactorAuthGracePeriodStart();
         if ($start === null) {

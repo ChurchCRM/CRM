@@ -267,7 +267,6 @@ class LocalAuthentication implements IAuthenticationProvider
                 // calls see isAuthenticated=true and are passed straight to the handler.
                 // A follow-up issue should add 403 enforcement in AuthMiddleware for non-browser
                 // requests when nextStepURL signals mandatory 2FA enrollment.
-                // See: https://github.com/ChurchCRM/CRM/pull/8983#discussion_r3619149474
             }
             // 'within-grace' → allow through; the banner in Header.php handles the warning.
         }
