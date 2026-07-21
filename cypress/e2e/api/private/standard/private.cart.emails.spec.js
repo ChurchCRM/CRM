@@ -10,6 +10,22 @@
  * Related cart coverage:
  *  - Duplicate detection  : cypress/e2e/api/private/standard/private.cart.duplicates.spec.js
  *  - Cart-to-group        : cypress/e2e/api/private/standard/private.cart.empty-to-group.spec.js
+ *
+ * TODO: untested business-rule scenarios (require direct DB access or extended seed data):
+ *
+ * 1. iDoNotEmailPropertyId exclusion
+ *    PersonService::getMailingEmails() filters out people who have the property
+ *    identified by `iDoNotEmailPropertyId` in SystemConfig (via per_props rows).
+ *    Verifying this requires seeding a person with that property assigned and
+ *    confirming their address is absent from the response.  The current seed data
+ *    does not include such a person, and Cypress has no direct DB write path, so
+ *    this case cannot be exercised without a dedicated seed fixture.
+ *
+ * 2. sToEmailAddress appended when configured
+ *    When `sToEmailAddress` is set in SystemConfig the service appends that
+ *    address to every mailing-email result.  Testing it end-to-end requires
+ *    writing to the `sys_config` table before the request and restoring it
+ *    after, which is not possible with the current Cypress command set.
  */
 describe("API Private Cart Emails", () => {
     // -----------------------------------------------------------------------
