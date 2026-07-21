@@ -1,81 +1,36 @@
 {
   "consolidated-pre-6.0.0": {
-    "versions": [
-      "1.2.14",
-      "1.3.0",
-      "1.3.1",
-      "1.3.2"
-    ],
-    "scripts": [
-      "/mysql/upgrade/pre-6.0.0-consolidated.sql",
-      "/mysql/upgrade/2.9.0-InnoDB.php"
-    ],
+    "versions": ["1.2.14", "1.3.0", "1.3.1", "1.3.2"],
+    "scripts": ["/mysql/upgrade/pre-6.0.0-consolidated.sql", "/mysql/upgrade/2.9.0-InnoDB.php"],
     "dbVersion": "6.0.0"
   },
   "pre-6.2.0": {
-    "versions": [
-      "6.0.0",
-      "6.0.1",
-      "6.0.2",
-      "6.1.0"
-    ],
-    "scripts": [
-      "/mysql/upgrade/6.2.0.sql"
-    ],
+    "versions": ["6.0.0", "6.0.1", "6.0.2", "6.1.0"],
+    "scripts": ["/mysql/upgrade/6.2.0.sql"],
     "dbVersion": "6.2.0"
   },
   "pre-6.3.0": {
-    "versions": [
-      "6.2.0"
-    ],
-    "scripts": [
-      "/mysql/upgrade/6.3.0.sql"
-    ],
+    "versions": ["6.2.0"],
+    "scripts": ["/mysql/upgrade/6.3.0.sql"],
     "dbVersion": "6.3.0"
   },
   "pre-6.5.0": {
-    "versions": [
-      "6.3.0",
-      "6.4.0"
-    ],
-    "scripts": [
-      "/mysql/upgrade/6.5.0.sql"
-    ],
+    "versions": ["6.3.0", "6.4.0"],
+    "scripts": ["/mysql/upgrade/6.5.0.sql"],
     "dbVersion": "6.5.0"
   },
   "pre-6.6.0": {
-    "versions": [
-      "6.5.0",
-      "6.5.1",
-      "6.5.2",
-      "6.5.3",
-      "6.5.4"
-    ],
-    "scripts": [
-      "/mysql/upgrade/6.6.0.php",
-      "/mysql/upgrade/6.6.0.sql"
-    ],
+    "versions": ["6.5.0", "6.5.1", "6.5.2", "6.5.3", "6.5.4"],
+    "scripts": ["/mysql/upgrade/6.6.0.php", "/mysql/upgrade/6.6.0.sql"],
     "dbVersion": "6.6.0"
   },
   "pre-6.7.0": {
-    "versions": [
-      "6.6.0",
-      "6.6.1"
-    ],
-    "scripts": [
-      "/mysql/upgrade/6.7.0.sql"
-    ],
+    "versions": ["6.6.0", "6.6.1"],
+    "scripts": ["/mysql/upgrade/6.7.0.sql"],
     "dbVersion": "6.7.0"
   },
   "pre-7.0.0": {
-    "versions": [
-      "6.7.0",
-      "6.7.1",
-      "6.7.2",
-      "6.7.3",
-      "6.8.0",
-      "6.8.1"
-    ],
+    "versions": ["6.7.0", "6.7.1", "6.7.2", "6.7.3", "6.8.0", "6.8.1"],
     "scripts": [
       "/mysql/upgrade/6.8.0.sql",
       "/mysql/upgrade/7.0.0-remove-bing-maps.sql",
@@ -84,71 +39,33 @@
     "dbVersion": "7.0.0"
   },
   "pre-7.0.2": {
-    "versions": [
-      "7.0.0",
-      "7.0.1"
-    ],
-    "scripts": [
-      "/mysql/upgrade/7.0.2-2fa.sql"
-    ],
+    "versions": ["7.0.0", "7.0.1"],
+    "scripts": ["/mysql/upgrade/7.0.2-2fa.sql"],
     "dbVersion": "7.0.2"
   },
   "pre-7.1.0": {
-    "versions": [
-      "7.0.2",
-      "7.0.3",
-      "7.0.4",
-      "7.0.5"
-    ],
-    "scripts": [
-      "/mysql/upgrade/7.1.0-config.sql"
-    ],
+    "versions": ["7.0.2", "7.0.3", "7.0.4", "7.0.5"],
+    "scripts": ["/mysql/upgrade/7.1.0-config.sql"],
     "dbVersion": "7.1.0"
   },
   "pre-7.2.0": {
-    "versions": [
-      "7.1.0",
-      "7.1.1",
-      "7.1.2"
-    ],
-    "scripts": [
-      "/mysql/upgrade/7.2.0.sql"
-    ],
+    "versions": ["7.1.0", "7.1.1", "7.1.2"],
+    "scripts": ["/mysql/upgrade/7.2.0.sql"],
     "dbVersion": "7.2.0"
   },
   "pre-7.3.1": {
-    "versions": [
-      "7.2.0",
-      "7.2.1",
-      "7.2.2",
-      "7.2.3",
-      "7.3.0"
-    ],
-    "scripts": [
-      "/mysql/upgrade/7.3.1-cleanup.sql"
-    ],
+    "versions": ["7.2.0", "7.2.1", "7.2.2", "7.2.3", "7.3.0"],
+    "scripts": ["/mysql/upgrade/7.3.1-cleanup.sql"],
     "dbVersion": "7.3.1"
   },
   "pre-7.4.0": {
-    "versions": [
-      "7.3.1",
-      "7.3.2",
-      "7.3.3",
-      "7.4.0"
-    ],
-    "scripts": [
-      "/mysql/upgrade/7.4.0-2fa-grace-period.sql"
-    ],
+    "versions": ["7.3.1", "7.3.2", "7.3.3", "7.4.0"],
+    "scripts": ["/mysql/upgrade/7.4.0-2fa-grace-period.sql"],
     "dbVersion": "7.4.0-r1"
   },
   "pre-7.4.1": {
-    "versions": [
-      "7.4.0",
-      "7.4.0-r1"
-    ],
-    "scripts": [
-      "/mysql/upgrade/7.4.2-editself-exclusive.sql"
-    ],
+    "versions": ["7.4.0", "7.4.0-r1"],
+    "scripts": ["/mysql/upgrade/7.4.2-editself-exclusive.sql"],
     "dbVersion": "7.4.1"
   },
   "pre-7.4.3": {
