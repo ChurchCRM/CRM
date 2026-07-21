@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -256,7 +255,7 @@ class Cart
                 $emailAddressArray[] = $cartPerson->getEmail();
             }
         }
-        $delimiter = AuthenticationManager::getCurrentUser()->getUserConfigString('sMailtoDelimiter');
+        $delimiter = ','; // RFC 6068: comma is the standard email-list delimiter
         $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
         if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
             $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');

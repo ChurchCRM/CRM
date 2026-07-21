@@ -115,7 +115,6 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'familyRoleStats'    => $familyRoleStats,
         'sEmailLink'         => urlencode($sEmailLink),
         'roleEmails'         => $roleEmails,
-        'sMailtoDelimiter'   => ',', // Legacy — will be removed in future cleanup
         'isAdmin'            => $isAdmin,
         'canEmail'           => $currentUser->isEmailEnabled(),
     ];

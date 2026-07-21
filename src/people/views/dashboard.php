@@ -123,7 +123,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <?php foreach ($roleEmails as $role => $roleEmail):
                                 $defaultTo = SystemConfig::getValue('sToEmailAddress');
                                 if ($defaultTo !== '' && !stristr($roleEmail, $defaultTo)) {
-                                    $roleEmail .= $sMailtoDelimiter . $defaultTo;
+                                    $roleEmail .= ',' . $defaultTo;
                                 }
                                 $encoded = urlencode($roleEmail);
                                 ?>
@@ -141,7 +141,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <?php foreach ($roleEmails as $role => $roleEmail):
                                 $defaultTo = SystemConfig::getValue('sToEmailAddress');
                                 if ($defaultTo !== '' && !stristr($roleEmail, $defaultTo)) {
-                                    $roleEmail .= $sMailtoDelimiter . $defaultTo;
+                                    $roleEmail .= ',' . $defaultTo;
                                 }
                                 $encoded = urlencode($roleEmail);
                                 ?>
