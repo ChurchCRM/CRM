@@ -49,7 +49,7 @@ describe("People Dashboard — email recipient list", () => {
     // ── Basic rendering ───────────────────────────────────────────────────
 
     it("shows Email All and Email BCC dropdowns when person emails exist", () => {
-        cy.visit("people/dashboard");
+        cy.visit("/people/dashboard");
         cy.contains(".dropdown-toggle", "Email All").should("be.visible");
         cy.contains(".dropdown-toggle", "Email BCC").should("be.visible");
     });
@@ -57,7 +57,7 @@ describe("People Dashboard — email recipient list", () => {
     // ── Href structure: Email All ─────────────────────────────────────────
 
     it("Email All — All People link is a well-formed mailto: with comma-separated addresses", () => {
-        cy.visit("people/dashboard");
+        cy.visit("/people/dashboard");
 
         cy.contains(".dropdown-toggle", "Email All").click();
 
@@ -80,7 +80,7 @@ describe("People Dashboard — email recipient list", () => {
     // ── Href structure: Email BCC ─────────────────────────────────────────
 
     it("Email BCC — All People link is a well-formed mailto:?bcc= with comma-separated addresses", () => {
-        cy.visit("people/dashboard");
+        cy.visit("/people/dashboard");
 
         cy.contains(".dropdown-toggle", "Email BCC").click();
 
@@ -105,7 +105,7 @@ describe("People Dashboard — email recipient list", () => {
         const defaultTo = "default-to@cypress.example";
         setSystemConfig("sToEmailAddress", defaultTo);
 
-        cy.visit("people/dashboard");
+        cy.visit("/people/dashboard");
         cy.contains(".dropdown-toggle", "Email All").click();
 
         cy.contains(".dropdown-toggle", "Email All")
@@ -131,7 +131,7 @@ describe("People Dashboard — email recipient list", () => {
         const caseVariant = "Lady@Nower.Com";
         setSystemConfig("sToEmailAddress", caseVariant);
 
-        cy.visit("people/dashboard");
+        cy.visit("/people/dashboard");
         cy.contains(".dropdown-toggle", "Email All").click();
 
         cy.contains(".dropdown-toggle", "Email All")
