@@ -102,17 +102,8 @@ class PersonService
     }
 
     /**
-     * Returns mailing email lists grouped by classification role.
-     *
-     * Includes people in active (non-deactivated) families AND people with no family
-     * assignment (per_fam_ID = 0), because the LEFT JOIN means a NULL family row passes
-     * the DateDeactivated IS NULL predicate. People in *deactivated* families are excluded.
-     *
+     * Returns mailing email lists for all active-family people, grouped by classification role.
      * Respects the iDoNotEmailPropertyId exclusion setting and appends sToEmailAddress when configured.
-     *
-     * TODO: Decide whether the intended scope is strictly "active-family members" (INNER JOIN or
-     * explicit ->filterByFamId(0, Criteria::NOT_EQUAL)) or "everyone not in a deactivated family"
-     * (current LEFT JOIN behaviour). Align the query and the docstring in a follow-up.
      *
      * @return array{all: string[], byRole: array<string, string[]>}
      */
@@ -132,6 +123,7 @@ class PersonService
         }
 
         $persons = PersonQuery::create()
+            ->filterByFamId(0, Criteria::NOT_EQUAL)
             ->leftJoinWithFamily()
             ->useQuery('Family')
                 ->filterByDateDeactivated(null)
@@ -331,4 +323,5 @@ class PersonService
             ->count();
     }
 }
+
 

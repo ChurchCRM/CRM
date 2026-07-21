@@ -273,6 +273,8 @@ class Cart
 
         $emails = [];
         $emailsSeen = [];
+        // No per_fam_ID filter here: the cart may intentionally contain persons
+        // with per_fam_ID=0 (unassigned). We email whoever is in the cart.
         foreach (PersonQuery::create()
             ->filterById($cartIds)
             ->filterByEmail('', Criteria::NOT_EQUAL)
@@ -314,6 +316,7 @@ class Cart
         Cart::removePersonArray($_SESSION['aPeopleCart']);
     }
 }
+
 
 
 
