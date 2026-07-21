@@ -121,7 +121,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
   </div>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/cart-view.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/cart-view.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>" defer></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
 
