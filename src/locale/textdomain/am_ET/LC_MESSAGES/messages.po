@@ -11099,11 +11099,6 @@ msgstr "ነባር ሀገር"
 msgid "Default State"
 msgstr "ነባር ስቴት"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "في mailto: linaك ኢሜይል ለመለያየት ምዘና"
-
 #: 
 msgid "Distance Unit"
 msgstr "የርቀት አሃድ"
@@ -16749,4 +16744,496 @@ msgstr "ተጠቃሚ አልተገኘም።"
 #: 
 msgid "— Select a person —"
 msgstr "— ሰው ይምረጡ —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d የተቀመጠ የገቢ ማሰባሰቢያ"
+msgstr[1] "%d የተቀመጡ የገቢ ማሰባሰቢያዎች"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d ሰው በተሳካ ሁኔታ ወደ ተመረጠው ቤተሰብ ተጨምሯል።"
+msgstr[1] "%d ሰዎች በተሳካ ሁኔታ ወደ ተመረጠው ቤተሰብ ተጨምረዋል።"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s የገቢ ማሰባሰቢያዎች"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "ከ%s ግብ %s ተሰብስቧል"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "ንቁ የገቢ ማሰባሰቢያዎች"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "የገቢ ማሰባሰቢያ ጨምር"
+
+#: 
+msgid "Add Item"
+msgstr "ንጥል ጨምር"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "ሰዎችን ወደ ቤተሰብ ከመመደብዎ በፊት ወደ ዝርዝርዎ ይጨምሯቸው።"
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "መጀመሪያ ሰዎችን ወደ ዝርዝርዎ ይጨምሩ፣ ከዚያ ወደ ቡድን ለመጨመር ተመለሱ።"
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "ከመጠን በኋላ (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "ሁሉም ሁኔታዎች"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "በዝርዝርዎ ውስጥ ያሉ ሁሉም ሰዎች አስቀድሞ በቤተሰብ ውስጥ ናቸው። ማንም ሊመደብ አይችልም።"
+
+#: 
+msgid "All types"
+msgstr "ሁሉም ዓይነቶች"
+
+#: 
+msgid "Already in"
+msgstr "አስቀድሞ ውስጥ ነው"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "ያልተጠበቀ ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Apply"
+msgstr "ተግብር"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "የዝርዝር አባላትን ለቡድን መድብ"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "ከዝርዝርዎ ሰዎችን ለቤተሰብ መድብ"
+
+#: 
+msgid "Assign role to all:"
+msgstr "ለሁሉም ሚና ምደብ፦"
+
+#: 
+msgid "Assign to Family"
+msgstr "ለቤተሰብ ምደብ"
+
+#: 
+msgid "Associated Fund"
+msgstr "ተያያዥ ፈንድ"
+
+#: 
+msgid "At a Glance"
+msgstr "በአጭሩ"
+
+#: 
+msgid "Auction Reports"
+msgstr "የጨረታ ሪፖርቶች"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "አማካይ የሽያጭ ዋጋ"
+
+#: 
+msgid "Back to Cart"
+msgstr "ወደ ዝርዝር ተመለስ"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "ወደ የገቢ ማሰባሰቢያዎች ተመለስ"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "ከመጠን በፊት (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "ምርጥ ተከታታይ ሁኔታ"
+
+#: 
+msgid "Bid Sheets"
+msgstr "የጨረታ ወረቀቶች"
+
+#: 
+msgid "Buyer Statements"
+msgstr "የገዢ መግለጫዎች"
+
+#: 
+msgid "Buyers Registered"
+msgstr "የተመዘገቡ ገዢዎች"
+
+#: 
+msgid "Buyers This Year"
+msgstr "በዚህ ዓመት ገዢዎች"
+
+#: 
+msgid "Catalog"
+msgstr "ካታሎግ"
+
+#: 
+msgid "Certificates"
+msgstr "ሰርተፍኬቶች"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "በገንዘብ መጠኖች ውስጥ እንደ ዴሲማል ነጥብ የሚጠቅም ምልክት (ለምሳሌ . ወይም ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "በገንዘብ መጠኖች ውስጥ ሺዎችን ለመለያየት የሚጠቅም ምልክት (ለምሳሌ , ወይም .)"
+
+#: 
+msgid "Check-out"
+msgstr "ክፍያ"
+
+#: 
+msgid "Choose a group..."
+msgstr "ቡድን ይምረጡ..."
+
+#: 
+msgid "Choose family"
+msgstr "ቤተሰብ ይምረጡ"
+
+#: 
+msgid "Code"
+msgstr "ኮድ"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "የገንዘብ መጠኖች በሥርዓቱ ውስጥ እንዴት እንደሚታዩ ያዋቅሩ።"
+
+#: 
+msgid "Create Fundraiser"
+msgstr "የገቢ ማሰባሰቢያ ፍጠር"
+
+#: 
+msgid "Create new family…"
+msgstr "አዲስ ቤተሰብ ፍጠር…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "የገንዘብ እና የፋይናንስ ቅርጸቶች"
+
+#: 
+msgid "Currency Format"
+msgstr "የገንዘብ ቅርጸት"
+
+#: 
+msgid "Currency Symbol"
+msgstr "የገንዘብ ምልክት"
+
+#: 
+msgid "Currency presets"
+msgstr "የቀደሙ የገንዘብ ቅንብሮች"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "ከገንዘብ መጠኖች ቀጥሎ የሚታይ የገንዘብ ምልክት (ለምሳሌ $, €, £, CHF, CAD $)።"
+
+#: 
+msgid "Decimal Separator"
+msgstr "የዴሲማል መለያ"
+
+#: 
+msgid "Did Not Attend"
+msgstr "አልተሳተፈም"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "የማጠናቀቂያ ቀን ከጀማሪ ቀን ጋር እኩል ወይም ከዚያ በኋላ መሆን አለበት"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "አስቀድሞ ለተዘጋጁ ግዛቶች ለሌላቸው አገሮች ግዛት/ክፍለ አገር ያስገቡ"
+
+#: 
+msgid "Est. Value Total"
+msgstr "የተገመተ ጠቅላላ ዋጋ"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "ከተያያዙ ቡድኖች ሁሉም ሰው ተመዝግቧል!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "የመገኘት ታሪክ መጫን አልተሳካም።"
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "አዲስ ቤተሰብ ሲፈጠር የቤተሰብ ስም ያስፈልጋል።"
+
+#: 
+msgid "Filter by event type"
+msgstr "በዝግጅት ዓይነት አጣርር"
+
+#: 
+msgid "Financials"
+msgstr "ፋይናንሶች"
+
+#: 
+msgid "From date"
+msgstr "ከቀን"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "የገቢ ማሰባሰቢያ አጠቃላይ ዕይታ"
+
+#: 
+msgid "Fundraisers"
+msgstr "የገቢ ማሰባሰቢያዎች"
+
+#: 
+msgid "Fundraising"
+msgstr "ገቢ ማሰባሰብ"
+
+#: 
+msgid "Goal %"
+msgstr "ግብ %"
+
+#: 
+msgid "Goal Amount"
+msgstr "የግብ መጠን"
+
+#: 
+msgid "Highest Sale"
+msgstr "ከፍተኛ ሽያጭ"
+
+#: 
+msgid "Invalid status value"
+msgstr "ልክ ያልሆነ የሁኔታ እሴት"
+
+#: 
+msgid "Invalid type value"
+msgstr "ልክ ያልሆነ የዓይነት እሴት"
+
+#: 
+msgid "Items"
+msgstr "ንጥሎች"
+
+#: 
+msgid "Items Donated"
+msgstr "የተሰጡ ንጥሎች"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "የተሰጡ ንጥሎች (በዚህ ዓመት)"
+
+#: 
+msgid "Items Sold"
+msgstr "የተሸጡ ንጥሎች"
+
+#: 
+msgid "Last Attendance"
+msgstr "የመጨረሻ ተሳትፎ"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "የተያያዘ የልዩ መዋጮ ፈንድ"
+
+#: 
+msgid "Live Preview"
+msgstr "ቀጥታ ቅድመ-ዕይታ"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "የመገኘት ታሪክ እየጫነ ነው…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "ብዙ ለመግዛት የሚቀርቡ ንጥሎች"
+
+#: 
+msgid "New family details"
+msgstr "አዲስ የቤተሰብ ዝርዝሮች"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "ምንም %s የገቢ ማሰባሰቢያዎች አልተገኙም።"
+
+#: 
+msgid "No active fundraisers found."
+msgstr "ምንም ንቁ የገቢ ማሰባሰቢያዎች አልተገኙም።"
+
+#: 
+msgid "No attendance records found."
+msgstr "ምንም የተሳትፎ መዝገቦች አልተገኙም።"
+
+#: 
+msgid "No donated items yet."
+msgstr "እስካሁን ምንም የተሰጡ ንጥሎች የሉም።"
+
+#: 
+msgid "Not a valid end date"
+msgstr "ልክ የሆነ የማጠናቀቂያ ቀን አይደለም"
+
+#: 
+msgid "Not included"
+msgstr "አልተካተተም"
+
+#: 
+msgid "People to assign"
+msgstr "ሊመደቡ ያሉ ሰዎች"
+
+#: 
+msgid "Planning"
+msgstr "ዕቅድ"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "እባክዎ ለ%s የቤተሰብ ሚና ይምረጡ።"
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "ሳያስቀምጥ ከዚህ በታች ያሉትን መስኮች ይሞላል። ለማተም 'አስቀምጥ' ይጫኑ።"
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "ከመጠኑ አንጻር የገንዘብ ምልክቱ አቀማመጥ።"
+
+#: 
+msgid "Quick presets"
+msgstr "ፈጣን ቀደም ቅንብሮች"
+
+#: 
+msgid "Raised"
+msgstr "የተሰበሰበ"
+
+#: 
+msgid "Raised This Year"
+msgstr "በዚህ ዓመት የተሰበሰበ"
+
+#: 
+msgid "Sample Amount"
+msgstr "የናሙና መጠን"
+
+#: 
+msgid "Sell-through"
+msgstr "ሙሉ ሽያጭ"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "እንደ ዴሲማል ነጥብ የሚጠቅም አንድ ምልክት (ለምሳሌ . ወይም ,)። ነባሪ: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "ሺዎችን ለመለያየት የሚጠቅም አንድ ምልክት (ለምሳሌ , ወይም .)። ነባሪ: ,"
+
+#: 
+msgid "Sold"
+msgstr "ተሽጧል"
+
+#: 
+msgid "State / Province"
+msgstr "ግዛት / ክፍለ አገር"
+
+#: 
+msgid "Streak"
+msgstr "ተከታታይ ሁኔታ"
+
+#: 
+msgid "Symbol Position"
+msgstr "የምልክት አቀማመጥ"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "ከመጠኖች ቀጥሎ የሚታይ ምልክት ወይም ኮድ (ለምሳሌ $, €, £, CHF, CAD $)። ነባሪ: $"
+
+#: 
+msgid "Target family"
+msgstr "ዒላማ ቤተሰብ"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "ቡድኑ ሊገኝ አልቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "የተመረጠው ቤተሰብ አሁን የለም። እባክዎ ገጹን አድሱ እና እንደገና ይሞክሩ።"
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "የተመረጠው ቡድን አልተገኘም። እባክዎ ትክክለኛ ቡድን ይምረጡ።"
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "ቀኖች፣ የገንዘብ መጠኖች እና ስልክ ቁጥሮች በሥርዓቱ ሁሉ እንዴት እንደሚታዩ ይህ ነው።"
+
+#: 
+msgid "Thousands Separator"
+msgstr "የሺ መለያ"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "የሺ መለያ እና የዴሲማል መለያ የተለያዩ ምልክቶች መሆን አለባቸው።"
+
+#: 
+msgid "To date"
+msgstr "እስከ ቀን"
+
+#: 
+msgid "Total Events"
+msgstr "ጠቅላላ ዝግጅቶች"
+
+#: 
+msgid "Total Raised"
+msgstr "ጠቅላላ የተሰበሰበ"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "ጠቅላላ የተሰበሰበ (ምንም ግብ አልተዘጋጀም)"
+
+#: 
+msgid "Unsold"
+msgstr "ያልተሸጠ"
+
+#: 
+msgid "Updates as you type."
+msgstr "በምትጽፍበት ጊዜ ይዘምናል።"
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "ምልክቱ ከቁጥር መጠኑ በፊት ወይም በኋላ መታየቱን ያሳያል። ነባሪ: ከመጠን በፊት"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "ዝርዝርዎ ባዶ ነው። መጀመሪያ ሰዎችን ወደ ዝርዝርዎ ይጨምሩ።"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "ዚፕ / የፖስታ ኮድ"
+
+#: 
+msgid "events"
+msgstr "ዝግጅቶች"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount አሉታዊ ያልሆነ ቁጥር መሆን አለበት"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount አሉታዊ መሆን የለበትም"
+
+#: 
+msgid "thru %s"
+msgstr "እስከ %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— ሚና ይምረጡ —"
+
+#: 
+msgid "— pick —"
+msgstr "— ይምረጡ —"
 

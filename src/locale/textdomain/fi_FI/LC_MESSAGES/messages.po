@@ -11053,11 +11053,6 @@ msgstr "Oletusarvoinen maa"
 msgid "Default State"
 msgstr "Oletusarvoinen osavaltio"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Erotin sähköpostien erottamiseen mailto: linkeissä"
-
 #: 
 msgid "Distance Unit"
 msgstr "Etäisyysyksikkö"
@@ -16702,4 +16697,496 @@ msgstr "Käyttäjää ei löydy."
 #: 
 msgid "— Select a person —"
 msgstr "— Valitse henkilö —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d arkistoitu varainkeruu"
+msgstr[1] "%d arkistoitua varainkeruuta"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d henkilö lisätty onnistuneesti valittuun perheeseen."
+msgstr[1] "%d henkilöä lisätty onnistuneesti valittuun perheeseen."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s varainkeruuta"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s tavoitteesta %s kerätty"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktiiviset varainkeruut"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Lisää varainkeruu"
+
+#: 
+msgid "Add Item"
+msgstr "Lisää kohde"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Lisää henkilöitä koriin ennen kuin määrität heidät perheeseen."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Lisää ensin henkilöitä koriin, palaa sitten lisäämään heidät ryhmään."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Summan jälkeen (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Kaikki tilat"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Kaikki korissasi olevat henkilöt kuuluvat jo perheeseen. Ketään ei voida määrittää."
+
+#: 
+msgid "All types"
+msgstr "Kaikki tyypit"
+
+#: 
+msgid "Already in"
+msgstr "Jo kuuluu"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Odottamaton virhe tapahtui. Yritä uudelleen."
+
+#: 
+msgid "Apply"
+msgstr "Käytä"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Määritä korin jäsenet ryhmään"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Määritä korin henkilöt perheeseen"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Määritä rooli kaikille:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Määritä perheeseen"
+
+#: 
+msgid "Associated Fund"
+msgstr "Liitetty rahasto"
+
+#: 
+msgid "At a Glance"
+msgstr "Yleiskatsaus"
+
+#: 
+msgid "Auction Reports"
+msgstr "Huutokaupparaportit"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Keskim. myyntihinta"
+
+#: 
+msgid "Back to Cart"
+msgstr "Takaisin koriin"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Takaisin varainkeruisiin"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Ennen summaa (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Paras putki"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Tarjouslomakkeet"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Ostajan laskut"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Rekisteröityjä ostajia"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Ostajia tänä vuonna"
+
+#: 
+msgid "Catalog"
+msgstr "Luettelo"
+
+#: 
+msgid "Certificates"
+msgstr "Todistukset"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Desimaalierotin rahasummissa (esim. . tai ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Tuhaterotinmerkki rahasummissa (esim. , tai .)"
+
+#: 
+msgid "Check-out"
+msgstr "Ulosmaksu"
+
+#: 
+msgid "Choose a group..."
+msgstr "Valitse ryhmä..."
+
+#: 
+msgid "Choose family"
+msgstr "Valitse perhe"
+
+#: 
+msgid "Code"
+msgstr "Koodi"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Määritä, miten rahasummat näytetään koko järjestelmässä. Kun taloussivut päivitetään käyttämään näitä asetuksia (epic #8459), tässä määritetty symboli, sijainti ja erottimet otetaan käyttöön koko järjestelmässä."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Luo varainkeruu"
+
+#: 
+msgid "Create new family…"
+msgstr "Luo uusi perhe…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Valuutta- ja talousmuodot"
+
+#: 
+msgid "Currency Format"
+msgstr "Valuuttamuoto"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Valuuttasymboli"
+
+#: 
+msgid "Currency presets"
+msgstr "Valuutan esiasetukset"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Rahasummien vieressä näytettävä valuuttasymboli (esim. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Desimaalierotin"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Ei osallistunut"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Päättymispäivän on oltava alkamispäivä tai sen jälkeen"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Syötä osavaltio/maakunta maille, joilla ei ole ennalta määritettyjä osavaltioita"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Arv. kokonaisarvo"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Kaikki linkitetyistä ryhmistä ovat kirjautuneet sisään!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Osallistumishistorian lataaminen epäonnistui."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Sukunimi vaaditaan uutta perhettä luotaessa."
+
+#: 
+msgid "Filter by event type"
+msgstr "Suodata tapahtumatyypin mukaan"
+
+#: 
+msgid "Financials"
+msgstr "Talous"
+
+#: 
+msgid "From date"
+msgstr "Alkupäivä"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Varainkeruun yleiskatsaus"
+
+#: 
+msgid "Fundraisers"
+msgstr "Varainkeruut"
+
+#: 
+msgid "Fundraising"
+msgstr "Varainkeruu"
+
+#: 
+msgid "Goal %"
+msgstr "Tavoite %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Tavoitesumma"
+
+#: 
+msgid "Highest Sale"
+msgstr "Korkein myynti"
+
+#: 
+msgid "Invalid status value"
+msgstr "Virheellinen tilanarvo"
+
+#: 
+msgid "Invalid type value"
+msgstr "Virheellinen tyypinarvo"
+
+#: 
+msgid "Items"
+msgstr "Kohteet"
+
+#: 
+msgid "Items Donated"
+msgstr "Lahjoitetut kohteet"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Lahjoitetut kohteet (tänä vuonna)"
+
+#: 
+msgid "Items Sold"
+msgstr "Myydyt kohteet"
+
+#: 
+msgid "Last Attendance"
+msgstr "Viimeisin osallistuminen"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Linkitetty lahjoitusrahasto"
+
+#: 
+msgid "Live Preview"
+msgstr "Reaaliaikainen esikatselu"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Ladataan osallistumishistoriaa…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Moniostokohteet"
+
+#: 
+msgid "New family details"
+msgstr "Uuden perheen tiedot"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Ei löydetty %s varainkeruita."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Aktiivisia varainkeruita ei löydetty."
+
+#: 
+msgid "No attendance records found."
+msgstr "Osallistumistietoja ei löydetty."
+
+#: 
+msgid "No donated items yet."
+msgstr "Ei vielä lahjoitettuja kohteita."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Virheellinen päättymispäivä"
+
+#: 
+msgid "Not included"
+msgstr "Ei sisällytetty"
+
+#: 
+msgid "People to assign"
+msgstr "Määritettävät henkilöt"
+
+#: 
+msgid "Planning"
+msgstr "Suunnittelu"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Valitse perherooli henkilölle %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Täyttää alla olevat kentät tallentamatta. Napsauta Tallenna ottaaksesi käyttöön."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Valuuttasymbolin sijainti suhteessa summaan."
+
+#: 
+msgid "Quick presets"
+msgstr "Pikavalinnat"
+
+#: 
+msgid "Raised"
+msgstr "Kerätty"
+
+#: 
+msgid "Raised This Year"
+msgstr "Kerätty tänä vuonna"
+
+#: 
+msgid "Sample Amount"
+msgstr "Esimerkkisumma"
+
+#: 
+msgid "Sell-through"
+msgstr "Myyntiaste"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Yksittäinen merkki desimaalierottimena (esim. . tai ,). Oletus: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Yksittäinen merkki tuhaterottimena (esim. , tai .). Oletus: ,"
+
+#: 
+msgid "Sold"
+msgstr "Myyty"
+
+#: 
+msgid "State / Province"
+msgstr "Osavaltio / Maakunta"
+
+#: 
+msgid "Streak"
+msgstr "Putki"
+
+#: 
+msgid "Symbol Position"
+msgstr "Symbolin sijainti"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Summan vieressä näytettävä symboli tai koodi (esim. $, €, £, CHF, CAD $). Oletus: $"
+
+#: 
+msgid "Target family"
+msgstr "Kohdeperhe"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Ryhmää ei löydy. Yritä uudelleen."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Valittu perhe ei ole enää olemassa. Päivitä sivu ja yritä uudelleen."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Valittua ryhmää ei löydetty. Valitse kelvollinen ryhmä."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Näin päivämäärät, rahasummat ja puhelinnumerot näkyvät koko järjestelmässä. Tarkista nykyiset muodot täällä ja muokkaa niitä alla olevissa osioissa."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Tuhaterotinmerkki"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Tuhaterottimen ja desimaalierottimen on oltava eri merkkejä."
+
+#: 
+msgid "To date"
+msgstr "Päättymispäivä"
+
+#: 
+msgid "Total Events"
+msgstr "Tapahtumat yhteensä"
+
+#: 
+msgid "Total Raised"
+msgstr "Kerätty yhteensä"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Kerätty yhteensä (ei asetettua tavoitetta)"
+
+#: 
+msgid "Unsold"
+msgstr "Myymättä"
+
+#: 
+msgid "Updates as you type."
+msgstr "Päivittyy kirjoittaessasi."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Näkyykö symboli ennen vai jälkeen numeerisen summan. Oletus: Ennen summaa"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Korisi on tyhjä. Lisää ensin henkilöitä koriin."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Postinumero"
+
+#: 
+msgid "events"
+msgstr "tapahtumat"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount täytyy olla ei-negatiivinen luku"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount ei saa olla negatiivinen"
+
+#: 
+msgid "thru %s"
+msgstr "%s asti"
+
+#: 
+msgid "— Select role —"
+msgstr "— Valitse rooli —"
+
+#: 
+msgid "— pick —"
+msgstr "— valitse —"
 

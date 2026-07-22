@@ -11167,11 +11167,6 @@ msgstr "Страна по умолчанию"
 msgid "Default State"
 msgstr "Состояние по умолчанию"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Разделитель для разделения писем в ссылках mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "Единица расстояния"
@@ -16820,4 +16815,484 @@ msgstr "Пользователь не найден."
 #: 
 msgid "— Select a person —"
 msgstr "— Выберите участника —"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "Сборы средств: %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s из %s цели собрано"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Активные сборы средств"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Добавить сбор средств"
+
+#: 
+msgid "Add Item"
+msgstr "Добавить элемент"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Добавьте людей в корзину, прежде чем назначать их в семью."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Сначала добавьте людей в корзину, затем вернитесь, чтобы добавить их в группу."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "После суммы (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Все статусы"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Все люди в вашей корзине уже состоят в семье. Никого нельзя назначить."
+
+#: 
+msgid "All types"
+msgstr "Все типы"
+
+#: 
+msgid "Already in"
+msgstr "Уже в"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Произошла непредвиденная ошибка. Пожалуйста, попробуйте ещё раз."
+
+#: 
+msgid "Apply"
+msgstr "Применить"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Назначить участников корзины в группу"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Назначить людей из корзины в семью"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Назначить роль всем:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Назначить в семью"
+
+#: 
+msgid "Associated Fund"
+msgstr "Связанный фонд"
+
+#: 
+msgid "At a Glance"
+msgstr "Обзор"
+
+#: 
+msgid "Auction Reports"
+msgstr "Отчёты по аукциону"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Средняя цена продажи"
+
+#: 
+msgid "Back to Cart"
+msgstr "Вернуться в корзину"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Вернуться к сборам средств"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Перед суммой (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Лучшая серия"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Листы ставок"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Выписки покупателей"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Зарегистрированных покупателей"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Покупателей в этом году"
+
+#: 
+msgid "Catalog"
+msgstr "Каталог"
+
+#: 
+msgid "Certificates"
+msgstr "Сертификаты"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Символ, используемый в качестве десятичного разделителя в денежных суммах (например, . или ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Символ, используемый для разделения тысяч в денежных суммах (например, , или .)"
+
+#: 
+msgid "Check-out"
+msgstr "Оформление"
+
+#: 
+msgid "Choose a group..."
+msgstr "Выберите группу..."
+
+#: 
+msgid "Choose family"
+msgstr "Выберите семью"
+
+#: 
+msgid "Code"
+msgstr "Код"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Настройте отображение денежных сумм во всей системе. По мере обновления финансовых страниц для использования этих настроек (epic #8459) символ, позиция и разделители, настроенные здесь, будут применяться во всей системе."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Создать сбор средств"
+
+#: 
+msgid "Create new family…"
+msgstr "Создать новую семью…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Форматы валюты и финансов"
+
+#: 
+msgid "Currency Format"
+msgstr "Формат валюты"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Символ валюты"
+
+#: 
+msgid "Currency presets"
+msgstr "Предустановки валюты"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Символ валюты для отображения рядом с денежными суммами (например, $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Десятичный разделитель"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Не присутствовал"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Дата окончания должна быть не раньше даты начала"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Введите регион/область для стран без предопределённых регионов"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Общая оценочная стоимость"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Все из связанных групп отмечены!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Не удалось загрузить историю посещаемости."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "При создании новой семьи необходимо указать фамилию."
+
+#: 
+msgid "Filter by event type"
+msgstr "Фильтр по типу события"
+
+#: 
+msgid "Financials"
+msgstr "Финансы"
+
+#: 
+msgid "From date"
+msgstr "С даты"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Обзор сбора средств"
+
+#: 
+msgid "Fundraisers"
+msgstr "Сборы средств"
+
+#: 
+msgid "Fundraising"
+msgstr "Сбор пожертвований"
+
+#: 
+msgid "Goal %"
+msgstr "% цели"
+
+#: 
+msgid "Goal Amount"
+msgstr "Целевая сумма"
+
+#: 
+msgid "Highest Sale"
+msgstr "Наибольшая продажа"
+
+#: 
+msgid "Invalid status value"
+msgstr "Недопустимое значение статуса"
+
+#: 
+msgid "Invalid type value"
+msgstr "Недопустимое значение типа"
+
+#: 
+msgid "Items"
+msgstr "Позиции"
+
+#: 
+msgid "Items Donated"
+msgstr "Пожертвованные позиции"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Пожертвованные позиции (в этом году)"
+
+#: 
+msgid "Items Sold"
+msgstr "Проданные позиции"
+
+#: 
+msgid "Last Attendance"
+msgstr "Последнее посещение"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Связанный фонд пожертвований"
+
+#: 
+msgid "Live Preview"
+msgstr "Предварительный просмотр"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Загрузка истории посещаемости…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Позиции для множественной покупки"
+
+#: 
+msgid "New family details"
+msgstr "Сведения о новой семье"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Сборы средств «%s» не найдены."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Активные сборы средств не найдены."
+
+#: 
+msgid "No attendance records found."
+msgstr "Записи о посещаемости не найдены."
+
+#: 
+msgid "No donated items yet."
+msgstr "Пожертвованных позиций пока нет."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Недопустимая дата окончания"
+
+#: 
+msgid "Not included"
+msgstr "Не включено"
+
+#: 
+msgid "People to assign"
+msgstr "Люди для назначения"
+
+#: 
+msgid "Planning"
+msgstr "Планирование"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Пожалуйста, выберите семейную роль для %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Заполняет поля ниже без сохранения. Нажмите «Сохранить» для применения."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Позиция символа валюты относительно суммы."
+
+#: 
+msgid "Quick presets"
+msgstr "Быстрые предустановки"
+
+#: 
+msgid "Raised"
+msgstr "Собрано"
+
+#: 
+msgid "Raised This Year"
+msgstr "Собрано в этом году"
+
+#: 
+msgid "Sample Amount"
+msgstr "Пример суммы"
+
+#: 
+msgid "Sell-through"
+msgstr "Распродажа"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Один символ, используемый в качестве десятичного разделителя (например, . или ,). По умолчанию: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Один символ, используемый для группировки тысяч (например, , или .). По умолчанию: ,"
+
+#: 
+msgid "Sold"
+msgstr "Продано"
+
+#: 
+msgid "State / Province"
+msgstr "Регион / Область"
+
+#: 
+msgid "Streak"
+msgstr "Серия"
+
+#: 
+msgid "Symbol Position"
+msgstr "Позиция символа"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Символ или код, отображаемый рядом с суммами (например, $, €, £, CHF, CAD $). По умолчанию: $"
+
+#: 
+msgid "Target family"
+msgstr "Целевая семья"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Группа не найдена. Пожалуйста, попробуйте ещё раз."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Выбранная семья больше не существует. Пожалуйста, обновите страницу и попробуйте ещё раз."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Выбранная группа не найдена. Пожалуйста, выберите допустимую группу."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Так будут отображаться даты, денежные суммы и номера телефонов во всей системе. Ознакомьтесь с текущими форматами здесь, затем отредактируйте их в разделах ниже."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Разделитель тысяч"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Разделитель тысяч и десятичный разделитель должны быть разными символами."
+
+#: 
+msgid "To date"
+msgstr "По дату"
+
+#: 
+msgid "Total Events"
+msgstr "Всего событий"
+
+#: 
+msgid "Total Raised"
+msgstr "Итого собрано"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Итого собрано (цель не установлена)"
+
+#: 
+msgid "Unsold"
+msgstr "Непроданное"
+
+#: 
+msgid "Updates as you type."
+msgstr "Обновляется по мере ввода."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Отображается ли символ до или после числовой суммы. По умолчанию: перед суммой"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Ваша корзина пуста. Сначала добавьте людей в корзину."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Индекс / Почтовый код"
+
+#: 
+msgid "events"
+msgstr "события"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount должен быть неотрицательным числом"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount должен быть неотрицательным"
+
+#: 
+msgid "thru %s"
+msgstr "по %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Выберите роль —"
+
+#: 
+msgid "— pick —"
+msgstr "— выбрать —"
 

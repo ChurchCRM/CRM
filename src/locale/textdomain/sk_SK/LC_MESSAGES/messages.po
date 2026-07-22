@@ -11070,11 +11070,6 @@ msgstr "Predvolená krajina"
 msgid "Default State"
 msgstr "Predvolený štát"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Oddeľovač na oddelenie e-mailov v odkazoch mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "Jednotka vzdialenosti"
@@ -16723,4 +16718,500 @@ msgstr "Používateľ nebol nájdený."
 #: 
 msgid "— Select a person —"
 msgstr "— Vyberte osobu —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d archivovaná zbierka"
+msgstr[1] "%d archivované zbierky"
+msgstr[2] "%d archivovanej zbierky"
+msgstr[3] "%d archivovaných zbierok"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d osoba bola úspešne pridaná do vybranej rodiny."
+msgstr[1] "%d osoby boli úspešne pridané do vybranej rodiny."
+msgstr[2] "%d osoby boli úspešne pridané do vybranej rodiny."
+msgstr[3] "%d osôb bolo úspešne pridaných do vybranej rodiny."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s zbierky"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s z cieľa %s vyzbieraných"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktívne zbierky"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Pridať zbierku"
+
+#: 
+msgid "Add Item"
+msgstr "Pridať položku"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Pred priradením do rodiny pridajte osoby do košíka."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Najprv pridajte osoby do košíka, potom sa vráťte a pridajte ich do skupiny."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Za sumou (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Všetky stavy"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Všetky osoby vo vašom košíku sú už v rodine. Nikto nemôže byť priradený."
+
+#: 
+msgid "All types"
+msgstr "Všetky typy"
+
+#: 
+msgid "Already in"
+msgstr "Už v"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Vyskytla sa neočakávaná chyba. Skúste to znova."
+
+#: 
+msgid "Apply"
+msgstr "Použiť"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Priradiť členov košíka do skupiny"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Priradiť osoby z košíka do rodiny"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Priradiť rolu všetkým:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Priradiť do rodiny"
+
+#: 
+msgid "Associated Fund"
+msgstr "Pridružený fond"
+
+#: 
+msgid "At a Glance"
+msgstr "Na prvý pohľad"
+
+#: 
+msgid "Auction Reports"
+msgstr "Správy z aukcie"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Priemerná predajná cena"
+
+#: 
+msgid "Back to Cart"
+msgstr "Späť do košíka"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Späť na zbierky"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Pred sumou (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Najlepšia séria"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Ponukové listy"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Výpisy kupujúcich"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Registrovaní kupujúci"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Kupujúci v tomto roku"
+
+#: 
+msgid "Catalog"
+msgstr "Katalóg"
+
+#: 
+msgid "Certificates"
+msgstr "Certifikáty"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Znak používaný ako desatinná čiarka v peňažných sumách (napr. . alebo ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Znak používaný na oddeľovanie tisícov v peňažných sumách (napr. , alebo .)"
+
+#: 
+msgid "Check-out"
+msgstr "Odhlásenie"
+
+#: 
+msgid "Choose a group..."
+msgstr "Vyberte skupinu..."
+
+#: 
+msgid "Choose family"
+msgstr "Vyberte rodinu"
+
+#: 
+msgid "Code"
+msgstr "Kód"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Nastavte zobrazovanie peňažných súm v celom systéme."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Vytvoriť zbierku"
+
+#: 
+msgid "Create new family…"
+msgstr "Vytvoriť novú rodinu…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Formáty meny a financií"
+
+#: 
+msgid "Currency Format"
+msgstr "Formát meny"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Symbol meny"
+
+#: 
+msgid "Currency presets"
+msgstr "Predvolené nastavenia meny"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Symbol meny zobrazený vedľa peňažných súm (napr. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Oddeľovač desatinných miest"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Nezúčastnil sa"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Dátum ukončenia musí byť rovnaký alebo neskorší ako dátum začiatku"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Zadajte štát/kraj pre krajiny bez preddefinovaných štátov"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Odhadovaná celková hodnota"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Všetci z prepojených skupín sa prihlásili!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Nepodarilo sa načítať históriu dochádzky."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Pri vytváraní novej rodiny je vyžadované meno rodiny."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filtrovať podľa typu udalosti"
+
+#: 
+msgid "Financials"
+msgstr "Financie"
+
+#: 
+msgid "From date"
+msgstr "Od dátumu"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Prehľad zbierky"
+
+#: 
+msgid "Fundraisers"
+msgstr "Zbierky"
+
+#: 
+msgid "Fundraising"
+msgstr "Zbieranie príspevkov"
+
+#: 
+msgid "Goal %"
+msgstr "Cieľ %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Cieľová suma"
+
+#: 
+msgid "Highest Sale"
+msgstr "Najvyšší predaj"
+
+#: 
+msgid "Invalid status value"
+msgstr "Neplatná hodnota stavu"
+
+#: 
+msgid "Invalid type value"
+msgstr "Neplatná hodnota typu"
+
+#: 
+msgid "Items"
+msgstr "Položky"
+
+#: 
+msgid "Items Donated"
+msgstr "Darované položky"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Darované položky (tento rok)"
+
+#: 
+msgid "Items Sold"
+msgstr "Predané položky"
+
+#: 
+msgid "Last Attendance"
+msgstr "Posledná dochádzka"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Prepojený darcovský fond"
+
+#: 
+msgid "Live Preview"
+msgstr "Živý náhľad"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Načítava sa história dochádzky…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Položky na hromadný nákup"
+
+#: 
+msgid "New family details"
+msgstr "Údaje o novej rodine"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Nenašli sa žiadne zbierky %s."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Nenašli sa žiadne aktívne zbierky."
+
+#: 
+msgid "No attendance records found."
+msgstr "Nenašli sa žiadne záznamy o dochádzke."
+
+#: 
+msgid "No donated items yet."
+msgstr "Zatiaľ žiadne darované položky."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Neplatný dátum ukončenia"
+
+#: 
+msgid "Not included"
+msgstr "Nezahrnuté"
+
+#: 
+msgid "People to assign"
+msgstr "Osoby na priradenie"
+
+#: 
+msgid "Planning"
+msgstr "Plánovanie"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Vyberte prosím rodinnú rolu pre %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Vyplní polia nižšie bez uloženia. Kliknutím na Uložiť ich použite."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Pozícia symbolu meny voči sume."
+
+#: 
+msgid "Quick presets"
+msgstr "Rýchle predvolené nastavenia"
+
+#: 
+msgid "Raised"
+msgstr "Vyzbierané"
+
+#: 
+msgid "Raised This Year"
+msgstr "Vyzbierané tento rok"
+
+#: 
+msgid "Sample Amount"
+msgstr "Vzorová suma"
+
+#: 
+msgid "Sell-through"
+msgstr "Predajnosť"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Jeden znak používaný ako desatinná čiarka (napr. . alebo ,). Predvolené: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Jeden znak používaný na zoskupovanie tisícov (napr. , alebo .). Predvolené: ,"
+
+#: 
+msgid "Sold"
+msgstr "Predané"
+
+#: 
+msgid "State / Province"
+msgstr "Štát / Kraj"
+
+#: 
+msgid "Streak"
+msgstr "Séria"
+
+#: 
+msgid "Symbol Position"
+msgstr "Pozícia symbolu"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Symbol alebo kód zobrazený vedľa súm (napr. $, €, £, CHF, CAD $). Predvolené: $"
+
+#: 
+msgid "Target family"
+msgstr "Cieľová rodina"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Skupina sa nenašla. Skúste to znova."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Vybraná rodina už neexistuje. Obnovte stránku a skúste to znova."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Vybraná skupina sa nenašla. Vyberte platnú skupinu."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Takto sa budú zobrazovať dátumy, peňažné sumy a telefónne čísla v celom systéme."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Oddeľovač tisícov"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Oddeľovač tisícov a oddeľovač desatinných miest musia byť rôzne znaky."
+
+#: 
+msgid "To date"
+msgstr "Do dátumu"
+
+#: 
+msgid "Total Events"
+msgstr "Celkový počet udalostí"
+
+#: 
+msgid "Total Raised"
+msgstr "Celkovo vyzbierané"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Celkovo vyzbierané (bez stanoveného cieľa)"
+
+#: 
+msgid "Unsold"
+msgstr "Nepredané"
+
+#: 
+msgid "Updates as you type."
+msgstr "Aktualizuje sa počas písania."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Či sa symbol zobrazuje pred alebo za číselnou sumou. Predvolené: Pred sumou"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Váš košík je prázdny. Najprv pridajte osoby do košíka."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "PSČ / Poštové smerovacie číslo"
+
+#: 
+msgid "events"
+msgstr "udalosti"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount musí byť nezáporné číslo"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount musí byť nezáporné"
+
+#: 
+msgid "thru %s"
+msgstr "do %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Vyberte rolu —"
+
+#: 
+msgid "— pick —"
+msgstr "— vyberte —"
 

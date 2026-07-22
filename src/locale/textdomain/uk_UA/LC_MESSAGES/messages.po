@@ -11110,11 +11110,6 @@ msgstr "Країна за замовчуванням"
 msgid "Default State"
 msgstr "Стан за замовчуванням"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Роздільник для розділення електронних листів у посиланнях mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "Одиниця відстані"
@@ -16763,4 +16758,484 @@ msgstr "Користувача не знайдено."
 #: 
 msgid "— Select a person —"
 msgstr "— Оберіть особу —"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "Збори коштів: %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "Зібрано %s з %s цільової суми"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Активні збори коштів"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Додати збір коштів"
+
+#: 
+msgid "Add Item"
+msgstr "Додати елемент"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Додайте людей до свого списку перед тим, як призначити їх до родини."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Спочатку додайте людей до свого списку, а потім поверніться, щоб додати їх до групи."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Після суми (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Усі статуси"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Усі люди у вашому списку вже належать до родини. Нікого не можна призначити."
+
+#: 
+msgid "All types"
+msgstr "Усі типи"
+
+#: 
+msgid "Already in"
+msgstr "Вже в"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Сталася несподівана помилка. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Apply"
+msgstr "Застосувати"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Призначити учасників списку до групи"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Призначити людей зі свого списку до родини"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Призначити роль усім:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Призначити до родини"
+
+#: 
+msgid "Associated Fund"
+msgstr "Пов'язаний фонд"
+
+#: 
+msgid "At a Glance"
+msgstr "Короткий огляд"
+
+#: 
+msgid "Auction Reports"
+msgstr "Звіти аукціону"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Середня ціна продажу"
+
+#: 
+msgid "Back to Cart"
+msgstr "Назад до списку"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Назад до зборів коштів"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Перед сумою (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Найкраща серія"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Аркуші ставок"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Виписки покупців"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Зареєстровано покупців"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Покупців цього року"
+
+#: 
+msgid "Catalog"
+msgstr "Каталог"
+
+#: 
+msgid "Certificates"
+msgstr "Сертифікати"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Символ, що використовується як десятковий роздільник у грошових сумах (напр. . або ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Символ, що використовується для розділення тисяч у грошових сумах (напр. , або .)"
+
+#: 
+msgid "Check-out"
+msgstr "Оформлення виходу"
+
+#: 
+msgid "Choose a group..."
+msgstr "Оберіть групу..."
+
+#: 
+msgid "Choose family"
+msgstr "Оберіть родину"
+
+#: 
+msgid "Code"
+msgstr "Код"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Налаштуйте відображення грошових сум у системі. Коли фінансові сторінки буде оновлено для використання цих налаштувань (epic #8459), символ, позиція та роздільники, вказані тут, застосовуватимуться в усій системі."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Створити збір коштів"
+
+#: 
+msgid "Create new family…"
+msgstr "Створити нову родину…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Форматування валюти та фінансів"
+
+#: 
+msgid "Currency Format"
+msgstr "Формат валюти"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Символ валюти"
+
+#: 
+msgid "Currency presets"
+msgstr "Попередні налаштування валюти"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Символ валюти для відображення поряд із грошовими сумами (напр. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Десятковий роздільник"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Не був присутній"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Дата завершення має бути не раніше дати початку"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Введіть область/провінцію для країн без заздалегідь визначених областей"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Загальна орієнтовна вартість"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Усі з пов'язаних груп зареєстровані!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Не вдалося завантажити історію відвідуваності."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "При створенні нової родини необхідно вказати прізвище."
+
+#: 
+msgid "Filter by event type"
+msgstr "Фільтрувати за типом події"
+
+#: 
+msgid "Financials"
+msgstr "Фінанси"
+
+#: 
+msgid "From date"
+msgstr "Від дати"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Огляд збору коштів"
+
+#: 
+msgid "Fundraisers"
+msgstr "Збори коштів"
+
+#: 
+msgid "Fundraising"
+msgstr "Збір пожертвувань"
+
+#: 
+msgid "Goal %"
+msgstr "% від цілі"
+
+#: 
+msgid "Goal Amount"
+msgstr "Цільова сума"
+
+#: 
+msgid "Highest Sale"
+msgstr "Найвищий продаж"
+
+#: 
+msgid "Invalid status value"
+msgstr "Недійсне значення статусу"
+
+#: 
+msgid "Invalid type value"
+msgstr "Недійсне значення типу"
+
+#: 
+msgid "Items"
+msgstr "Елементи"
+
+#: 
+msgid "Items Donated"
+msgstr "Пожертвуваних предметів"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Пожертвуваних предметів (цього року)"
+
+#: 
+msgid "Items Sold"
+msgstr "Продано предметів"
+
+#: 
+msgid "Last Attendance"
+msgstr "Остання відвідуваність"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Пов'язаний фонд пожертвувань"
+
+#: 
+msgid "Live Preview"
+msgstr "Попередній перегляд у реальному часі"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Завантаження історії відвідуваності…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Предмети з багатократною купівлею"
+
+#: 
+msgid "New family details"
+msgstr "Дані нової родини"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Зборів коштів «%s» не знайдено."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Активних зборів коштів не знайдено."
+
+#: 
+msgid "No attendance records found."
+msgstr "Записів про відвідуваність не знайдено."
+
+#: 
+msgid "No donated items yet."
+msgstr "Пожертвуваних предметів ще немає."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Недійсна дата завершення"
+
+#: 
+msgid "Not included"
+msgstr "Не включено"
+
+#: 
+msgid "People to assign"
+msgstr "Люди для призначення"
+
+#: 
+msgid "Planning"
+msgstr "Планування"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Будь ласка, оберіть роль у родині для %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Заповнює поля нижче без збереження. Натисніть «Зберегти» для застосування."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Позиція символу валюти відносно суми."
+
+#: 
+msgid "Quick presets"
+msgstr "Швидкі налаштування"
+
+#: 
+msgid "Raised"
+msgstr "Зібрано"
+
+#: 
+msgid "Raised This Year"
+msgstr "Зібрано цього року"
+
+#: 
+msgid "Sample Amount"
+msgstr "Зразок суми"
+
+#: 
+msgid "Sell-through"
+msgstr "Розпродаж"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Один символ, що використовується як десятковий роздільник (напр. . або ,). За замовчуванням: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Один символ для розділення тисяч (напр. , або .). За замовчуванням: ,"
+
+#: 
+msgid "Sold"
+msgstr "Продано"
+
+#: 
+msgid "State / Province"
+msgstr "Область / Провінція"
+
+#: 
+msgid "Streak"
+msgstr "Серія"
+
+#: 
+msgid "Symbol Position"
+msgstr "Позиція символу"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Символ або код, що відображається поряд із сумами (напр. $, €, £, CHF, CAD $). За замовчуванням: $"
+
+#: 
+msgid "Target family"
+msgstr "Цільова родина"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Групу не вдалося знайти. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Обрана родина більше не існує. Будь ласка, оновіть сторінку і спробуйте ще раз."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Обрану групу не знайдено. Будь ласка, оберіть дійсну групу."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Так виглядатимуть дати, грошові суми та номери телефонів у всій системі. Перегляньте поточні формати тут, а потім відредагуйте їх у розділах нижче."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Роздільник тисяч"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Роздільник тисяч і десятковий роздільник мають бути різними символами."
+
+#: 
+msgid "To date"
+msgstr "До дати"
+
+#: 
+msgid "Total Events"
+msgstr "Усього подій"
+
+#: 
+msgid "Total Raised"
+msgstr "Загалом зібрано"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Загалом зібрано (ціль не встановлено)"
+
+#: 
+msgid "Unsold"
+msgstr "Не продано"
+
+#: 
+msgid "Updates as you type."
+msgstr "Оновлюється під час введення."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Чи з'являється символ перед числовою сумою або після неї. За замовчуванням: перед сумою"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Ваш список порожній. Спочатку додайте людей до свого списку."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Поштовий індекс"
+
+#: 
+msgid "events"
+msgstr "події"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount має бути невід'ємним числом"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount має бути невід'ємним"
+
+#: 
+msgid "thru %s"
+msgstr "до %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Оберіть роль —"
+
+#: 
+msgid "— pick —"
+msgstr "— оберіть —"
 

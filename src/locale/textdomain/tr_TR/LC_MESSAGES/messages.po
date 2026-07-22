@@ -11092,11 +11092,6 @@ msgstr "Varsayılan Ülke"
 msgid "Default State"
 msgstr "Varsayılan Durum"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Mailto: bağlantılarında e-postaları ayırmak için sınırlayıcı"
-
 #: 
 msgid "Distance Unit"
 msgstr "Mesafe Birimi"
@@ -16741,4 +16736,496 @@ msgstr "Kullanıcı bulunamadı."
 #: 
 msgid "— Select a person —"
 msgstr "— Bir kişi seçin —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d arşivlenmiş bağış kampanyası"
+msgstr[1] "%d arşivlenmiş bağış kampanyası"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d kişi seçilen aileye başarıyla eklendi."
+msgstr[1] "%d kişi seçilen aileye başarıyla eklendi."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s Bağış Kampanyaları"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s hedefin %s kadarı toplandı"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktif Bağış Kampanyaları"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Bağış Kampanyası Ekle"
+
+#: 
+msgid "Add Item"
+msgstr "Öğe Ekle"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Kişileri bir aileye atamadan önce sepetinize ekleyin."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Önce kişileri sepetinize ekleyin, ardından bir gruba eklemek için geri dönün."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Tutardan sonra (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Tüm Durumlar"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Sepetinizdeki tüm kişiler zaten bir ailede. Kimse atanamaz."
+
+#: 
+msgid "All types"
+msgstr "Tüm türler"
+
+#: 
+msgid "Already in"
+msgstr "Zaten mevcut"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Beklenmedik bir hata oluştu. Lütfen tekrar deneyin."
+
+#: 
+msgid "Apply"
+msgstr "Uygula"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Sepet üyelerini bir gruba ata"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Sepetinizdeki kişileri bir aileye atayın"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Herkese rol ata:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Aileye Ata"
+
+#: 
+msgid "Associated Fund"
+msgstr "İlişkili Fon"
+
+#: 
+msgid "At a Glance"
+msgstr "Genel Bakış"
+
+#: 
+msgid "Auction Reports"
+msgstr "Müzayede Raporları"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Ort. Satış Fiyatı"
+
+#: 
+msgid "Back to Cart"
+msgstr "Sepete Dön"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Bağış Kampanyalarına Dön"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Tutardan önce (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "En İyi Seri"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Teklif Sayfaları"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Alıcı Ekstreleri"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Kayıtlı Alıcılar"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Bu Yılki Alıcılar"
+
+#: 
+msgid "Catalog"
+msgstr "Katalog"
+
+#: 
+msgid "Certificates"
+msgstr "Sertifikalar"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Para tutarlarında ondalık ayırıcı olarak kullanılan karakter (örn. . veya ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Para tutarlarında binlik ayırıcı olarak kullanılan karakter (örn. , veya .)"
+
+#: 
+msgid "Check-out"
+msgstr "Çıkış"
+
+#: 
+msgid "Choose a group..."
+msgstr "Bir grup seçin..."
+
+#: 
+msgid "Choose family"
+msgstr "Aile seçin"
+
+#: 
+msgid "Code"
+msgstr "Kod"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Para tutarlarının sistem genelinde nasıl görüntüleneceğini yapılandırın."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Bağış Kampanyası Oluştur"
+
+#: 
+msgid "Create new family…"
+msgstr "Yeni aile oluştur…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Para Birimi ve Finans Biçimleri"
+
+#: 
+msgid "Currency Format"
+msgstr "Para Birimi Biçimi"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Para Birimi Sembolü"
+
+#: 
+msgid "Currency presets"
+msgstr "Para birimi ön ayarları"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Para tutarlarının yanında görüntülenecek para birimi sembolü (örn. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Ondalık Ayırıcı"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Katılmadı"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Bitiş tarihi başlangıç tarihinde veya sonrasında olmalıdır"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Önceden tanımlanmış eyaletleri olmayan ülkeler için eyalet/il girin"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Tahmini Toplam Değer"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Bağlantılı gruptaki herkes katılımını işaretledi!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Katılım geçmişi yüklenemedi."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Yeni bir aile oluşturulurken aile adı zorunludur."
+
+#: 
+msgid "Filter by event type"
+msgstr "Etkinlik türüne göre filtrele"
+
+#: 
+msgid "Financials"
+msgstr "Finanslar"
+
+#: 
+msgid "From date"
+msgstr "Başlangıç tarihi"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Bağış Kampanyasına Genel Bakış"
+
+#: 
+msgid "Fundraisers"
+msgstr "Bağış Kampanyaları"
+
+#: 
+msgid "Fundraising"
+msgstr "Bağış Toplama"
+
+#: 
+msgid "Goal %"
+msgstr "Hedef %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Hedef Tutar"
+
+#: 
+msgid "Highest Sale"
+msgstr "En Yüksek Satış"
+
+#: 
+msgid "Invalid status value"
+msgstr "Geçersiz durum değeri"
+
+#: 
+msgid "Invalid type value"
+msgstr "Geçersiz tür değeri"
+
+#: 
+msgid "Items"
+msgstr "Öğeler"
+
+#: 
+msgid "Items Donated"
+msgstr "Bağışlanan Öğeler"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Bağışlanan Öğeler (Bu Yıl)"
+
+#: 
+msgid "Items Sold"
+msgstr "Satılan Öğeler"
+
+#: 
+msgid "Last Attendance"
+msgstr "Son Katılım"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Bağlantılı Bağış Fonu"
+
+#: 
+msgid "Live Preview"
+msgstr "Canlı Önizleme"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Katılım geçmişi yükleniyor…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Çoklu Satın Alma Öğeleri"
+
+#: 
+msgid "New family details"
+msgstr "Yeni aile bilgileri"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Hiçbir %s bağış kampanyası bulunamadı."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Aktif bağış kampanyası bulunamadı."
+
+#: 
+msgid "No attendance records found."
+msgstr "Katılım kaydı bulunamadı."
+
+#: 
+msgid "No donated items yet."
+msgstr "Henüz bağışlanan öğe yok."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Geçerli bir bitiş tarihi değil"
+
+#: 
+msgid "Not included"
+msgstr "Dahil değil"
+
+#: 
+msgid "People to assign"
+msgstr "Atanacak kişiler"
+
+#: 
+msgid "Planning"
+msgstr "Planlama"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Lütfen %s için bir aile rolü seçin."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Aşağıdaki alanları kaydetmeden doldurur. Uygulamak için Kaydet'e tıklayın."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Para birimi sembolünün tutara göre konumu."
+
+#: 
+msgid "Quick presets"
+msgstr "Hızlı ön ayarlar"
+
+#: 
+msgid "Raised"
+msgstr "Toplanan"
+
+#: 
+msgid "Raised This Year"
+msgstr "Bu Yıl Toplanan"
+
+#: 
+msgid "Sample Amount"
+msgstr "Örnek Tutar"
+
+#: 
+msgid "Sell-through"
+msgstr "Satış Oranı"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Ondalık nokta olarak kullanılan tek karakter (örn. . veya ,). Varsayılan: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Binlikleri gruplandırmak için kullanılan tek karakter (örn. , veya .). Varsayılan: ,"
+
+#: 
+msgid "Sold"
+msgstr "Satıldı"
+
+#: 
+msgid "State / Province"
+msgstr "Eyalet / İl"
+
+#: 
+msgid "Streak"
+msgstr "Seri"
+
+#: 
+msgid "Symbol Position"
+msgstr "Sembol Konumu"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Tutarların yanında gösterilen sembol veya kod (örn. $, €, £, CHF, CAD $). Varsayılan: $"
+
+#: 
+msgid "Target family"
+msgstr "Hedef aile"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Grup bulunamadı. Lütfen tekrar deneyin."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Seçilen aile artık mevcut değil. Lütfen sayfayı yenileyin ve tekrar deneyin."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Seçilen grup bulunamadı. Lütfen geçerli bir grup seçin."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Tarihler, para tutarları ve telefon numaraları sistem genelinde bu şekilde görünecektir."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Binlik Ayırıcı"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Binlik ayırıcı ve ondalık ayırıcı farklı karakterler olmalıdır."
+
+#: 
+msgid "To date"
+msgstr "Bitiş tarihi"
+
+#: 
+msgid "Total Events"
+msgstr "Toplam Etkinlikler"
+
+#: 
+msgid "Total Raised"
+msgstr "Toplam Toplanan"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Toplam toplanan (hedef belirlenmedi)"
+
+#: 
+msgid "Unsold"
+msgstr "Satılmadı"
+
+#: 
+msgid "Updates as you type."
+msgstr "Yazarken güncellenir."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Sembolün sayısal tutardan önce mi sonra mı göründüğü. Varsayılan: Tutardan önce"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Sepetiniz boş. Önce sepetinize kişi ekleyin."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Posta Kodu"
+
+#: 
+msgid "events"
+msgstr "etkinlikler"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount negatif olmayan bir sayı olmalıdır"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount negatif olmamalıdır"
+
+#: 
+msgid "thru %s"
+msgstr "%s tarihine kadar"
+
+#: 
+msgid "— Select role —"
+msgstr "— Rol seçin —"
+
+#: 
+msgid "— pick —"
+msgstr "— seçin —"
 

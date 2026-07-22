@@ -11157,11 +11157,6 @@ msgstr "默认国家"
 msgid "Default State"
 msgstr "默认状态"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "在mailto:链接中分隔电子邮件的分隔符"
-
 #: 
 msgid "Distance Unit"
 msgstr "距离单位"
@@ -16804,4 +16799,484 @@ msgstr "未找到用户。"
 #: 
 msgid "— Select a person —"
 msgstr "— 选择一位人员 —"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s 募款活动"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "已筹得目标 %s 中的 %s"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "进行中的募款活动"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "添加募款活动"
+
+#: 
+msgid "Add Item"
+msgstr "添加项目"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "请先将人员添加到选择列表，再将其分配到家庭。"
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "请先将人员添加到选择列表，然后再回来将其添加到小组。"
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "金额后（100.00 ¤）"
+
+#: 
+msgid "All Statuses"
+msgstr "所有状态"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "您选择列表中的所有人已在家庭中，无法再分配。"
+
+#: 
+msgid "All types"
+msgstr "所有类型"
+
+#: 
+msgid "Already in"
+msgstr "已在"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "发生意外错误，请重试。"
+
+#: 
+msgid "Apply"
+msgstr "应用"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "将选择列表中的成员分配到小组"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "将选择列表中的人员分配到家庭"
+
+#: 
+msgid "Assign role to all:"
+msgstr "为所有人分配角色："
+
+#: 
+msgid "Assign to Family"
+msgstr "分配到家庭"
+
+#: 
+msgid "Associated Fund"
+msgstr "关联奉献基金"
+
+#: 
+msgid "At a Glance"
+msgstr "概览"
+
+#: 
+msgid "Auction Reports"
+msgstr "拍卖报告"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "平均售价"
+
+#: 
+msgid "Back to Cart"
+msgstr "返回选择列表"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "返回募款活动"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "金额前（¤ 100.00）"
+
+#: 
+msgid "Best Streak"
+msgstr "最佳连续记录"
+
+#: 
+msgid "Bid Sheets"
+msgstr "竞价单"
+
+#: 
+msgid "Buyer Statements"
+msgstr "买家结算单"
+
+#: 
+msgid "Buyers Registered"
+msgstr "已注册买家"
+
+#: 
+msgid "Buyers This Year"
+msgstr "今年买家"
+
+#: 
+msgid "Catalog"
+msgstr "目录"
+
+#: 
+msgid "Certificates"
+msgstr "证书"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "用作金额小数点的字符（例如 . 或 ,）"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "用于分隔金额千位的字符（例如 , 或 .）"
+
+#: 
+msgid "Check-out"
+msgstr "结账"
+
+#: 
+msgid "Choose a group..."
+msgstr "选择小组..."
+
+#: 
+msgid "Choose family"
+msgstr "选择家庭"
+
+#: 
+msgid "Code"
+msgstr "代码"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "配置金额在系统中的显示方式。随着财务页面更新以使用这些设置（epic #8459），此处配置的符号、位置和分隔符将在全系统生效。"
+
+#: 
+msgid "Create Fundraiser"
+msgstr "创建募款活动"
+
+#: 
+msgid "Create new family…"
+msgstr "创建新家庭…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "货币与财务格式"
+
+#: 
+msgid "Currency Format"
+msgstr "货币格式"
+
+#: 
+msgid "Currency Symbol"
+msgstr "货币符号"
+
+#: 
+msgid "Currency presets"
+msgstr "货币预设"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "显示在金额旁边的货币符号（例如 $、€、£、CHF、CAD $）。"
+
+#: 
+msgid "Decimal Separator"
+msgstr "小数分隔符"
+
+#: 
+msgid "Did Not Attend"
+msgstr "未出席"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "结束日期必须在开始日期当天或之后"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "对于没有预定义州/省的国家，请手动输入州/省"
+
+#: 
+msgid "Est. Value Total"
+msgstr "估计总价值"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "所有关联小组的成员均已签到！"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "加载出席记录失败。"
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "创建新家庭时必须填写家庭姓名。"
+
+#: 
+msgid "Filter by event type"
+msgstr "按活动类型筛选"
+
+#: 
+msgid "Financials"
+msgstr "财务"
+
+#: 
+msgid "From date"
+msgstr "开始日期"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "募款活动概览"
+
+#: 
+msgid "Fundraisers"
+msgstr "募款活动"
+
+#: 
+msgid "Fundraising"
+msgstr "募款"
+
+#: 
+msgid "Goal %"
+msgstr "目标完成%"
+
+#: 
+msgid "Goal Amount"
+msgstr "目标金额"
+
+#: 
+msgid "Highest Sale"
+msgstr "最高售价"
+
+#: 
+msgid "Invalid status value"
+msgstr "无效的状态值"
+
+#: 
+msgid "Invalid type value"
+msgstr "无效的类型值"
+
+#: 
+msgid "Items"
+msgstr "项目"
+
+#: 
+msgid "Items Donated"
+msgstr "捐赠物品"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "捐赠物品（本年度）"
+
+#: 
+msgid "Items Sold"
+msgstr "已售出物品"
+
+#: 
+msgid "Last Attendance"
+msgstr "最近出席"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "关联奉献基金"
+
+#: 
+msgid "Live Preview"
+msgstr "实时预览"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "正在加载出席记录…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "批量购买项目"
+
+#: 
+msgid "New family details"
+msgstr "新家庭详情"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "未找到 %s 募款活动。"
+
+#: 
+msgid "No active fundraisers found."
+msgstr "未找到进行中的募款活动。"
+
+#: 
+msgid "No attendance records found."
+msgstr "未找到出席记录。"
+
+#: 
+msgid "No donated items yet."
+msgstr "暂无捐赠物品。"
+
+#: 
+msgid "Not a valid end date"
+msgstr "无效的结束日期"
+
+#: 
+msgid "Not included"
+msgstr "不包含"
+
+#: 
+msgid "People to assign"
+msgstr "待分配人员"
+
+#: 
+msgid "Planning"
+msgstr "计划"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "请为 %s 选择家庭角色。"
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "填充以下字段但不保存。点击保存以应用。"
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "货币符号相对于金额的位置。"
+
+#: 
+msgid "Quick presets"
+msgstr "快速预设"
+
+#: 
+msgid "Raised"
+msgstr "已筹集"
+
+#: 
+msgid "Raised This Year"
+msgstr "本年度已筹集"
+
+#: 
+msgid "Sample Amount"
+msgstr "示例金额"
+
+#: 
+msgid "Sell-through"
+msgstr "售罄率"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "用作小数点的单个字符（例如 . 或 ,）。默认值：."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "用于分组千位的单个字符（例如 , 或 .）。默认值：,"
+
+#: 
+msgid "Sold"
+msgstr "已售出"
+
+#: 
+msgid "State / Province"
+msgstr "州 / 省"
+
+#: 
+msgid "Streak"
+msgstr "连续记录"
+
+#: 
+msgid "Symbol Position"
+msgstr "符号位置"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "显示在金额旁边的符号或代码（例如 $、€、£、CHF、CAD $）。默认值：$"
+
+#: 
+msgid "Target family"
+msgstr "目标家庭"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "未找到该小组，请重试。"
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "所选家庭已不存在，请刷新页面后重试。"
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "未找到所选小组，请选择有效的小组。"
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "这是日期、金额和电话号码在系统中的显示方式。请在此查看当前格式，然后在下方各节中进行编辑。"
+
+#: 
+msgid "Thousands Separator"
+msgstr "千位分隔符"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "千位分隔符和小数分隔符必须是不同的字符。"
+
+#: 
+msgid "To date"
+msgstr "截止日期"
+
+#: 
+msgid "Total Events"
+msgstr "活动总数"
+
+#: 
+msgid "Total Raised"
+msgstr "总筹集金额"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "总筹集金额（未设定目标）"
+
+#: 
+msgid "Unsold"
+msgstr "未售出"
+
+#: 
+msgid "Updates as you type."
+msgstr "实时更新。"
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "符号显示在金额之前还是之后。默认值：金额前"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "您的选择列表为空，请先添加人员。"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "邮政编码"
+
+#: 
+msgid "events"
+msgstr "活动"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "目标金额必须为非负数"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "目标金额必须为非负数"
+
+#: 
+msgid "thru %s"
+msgstr "至 %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— 选择角色 —"
+
+#: 
+msgid "— pick —"
+msgstr "— 请选择 —"
 
