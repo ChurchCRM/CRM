@@ -11077,11 +11077,6 @@ msgstr "기본 국가"
 msgid "Default State"
 msgstr "기본 상태"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Mailto: 링크에서 이메일을 분리하기 위한 구분 기호"
-
 #: 
 msgid "Distance Unit"
 msgstr "거리 단위"
@@ -16724,4 +16719,494 @@ msgstr "사용자를 찾을 수 없습니다."
 #: 
 msgid "— Select a person —"
 msgstr "— 사람 선택 —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d개의 보관된 모금 행사"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d명이 선택한 가정에 성공적으로 추가되었습니다."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s 모금 행사"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s 목표 중 %s 모금됨"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "진행 중인 모금 행사"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "모금 행사 추가"
+
+#: 
+msgid "Add Item"
+msgstr "항목 추가"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "가정에 배정하기 전에 먼저 선택 목록에 사람을 추가하세요."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "먼저 선택 목록에 사람을 추가한 후 소그룹에 추가하세요."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "금액 뒤 (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "모든 상태"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "선택 목록의 모든 사람이 이미 가정에 속해 있습니다. 배정할 수 있는 사람이 없습니다."
+
+#: 
+msgid "All types"
+msgstr "모든 유형"
+
+#: 
+msgid "Already in"
+msgstr "이미 소속됨"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "예기치 않은 오류가 발생했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Apply"
+msgstr "적용"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "선택 목록의 구성원을 소그룹에 배정"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "선택 목록의 사람을 가정에 배정"
+
+#: 
+msgid "Assign role to all:"
+msgstr "모두에게 역할 배정:"
+
+#: 
+msgid "Assign to Family"
+msgstr "가정에 배정"
+
+#: 
+msgid "Associated Fund"
+msgstr "연결된 헌금 기금"
+
+#: 
+msgid "At a Glance"
+msgstr "한눈에 보기"
+
+#: 
+msgid "Auction Reports"
+msgstr "경매 보고서"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "평균 판매가"
+
+#: 
+msgid "Back to Cart"
+msgstr "선택 목록으로 돌아가기"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "모금 행사 목록으로 돌아가기"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "금액 앞 (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "최고 연속 출석"
+
+#: 
+msgid "Bid Sheets"
+msgstr "입찰 시트"
+
+#: 
+msgid "Buyer Statements"
+msgstr "구매자 명세서"
+
+#: 
+msgid "Buyers Registered"
+msgstr "등록된 구매자"
+
+#: 
+msgid "Buyers This Year"
+msgstr "올해 구매자"
+
+#: 
+msgid "Catalog"
+msgstr "카탈로그"
+
+#: 
+msgid "Certificates"
+msgstr "증서"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "금액의 소수점 구분자로 사용되는 문자 (예: . 또는 ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "금액의 천 단위 구분자로 사용되는 문자 (예: , 또는 .)"
+
+#: 
+msgid "Check-out"
+msgstr "정산"
+
+#: 
+msgid "Choose a group..."
+msgstr "소그룹 선택..."
+
+#: 
+msgid "Choose family"
+msgstr "가정 선택"
+
+#: 
+msgid "Code"
+msgstr "코드"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "시스템 전반에 걸쳐 금액이 표시되는 방식을 설정합니다. 재정 페이지가 이 설정을 사용하도록 업데이트되면 (epic #8459), 여기서 구성한 기호, 위치 및 구분자가 시스템 전체에 적용됩니다."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "모금 행사 만들기"
+
+#: 
+msgid "Create new family…"
+msgstr "새 가정 만들기…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "통화 및 재정 형식"
+
+#: 
+msgid "Currency Format"
+msgstr "통화 형식"
+
+#: 
+msgid "Currency Symbol"
+msgstr "통화 기호"
+
+#: 
+msgid "Currency presets"
+msgstr "통화 사전 설정"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "금액 옆에 표시할 통화 기호 (예: $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "소수점 구분자"
+
+#: 
+msgid "Did Not Attend"
+msgstr "미출석"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "종료일은 시작일 이후여야 합니다"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "사전 정의된 주/도가 없는 국가의 경우 주/도를 직접 입력하세요"
+
+#: 
+msgid "Est. Value Total"
+msgstr "예상 총 가치"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "연결된 소그룹의 모든 사람이 출석 확인되었습니다!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "출석 기록을 불러오지 못했습니다."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "새 가정을 만들 때 가정 이름이 필요합니다."
+
+#: 
+msgid "Filter by event type"
+msgstr "행사 유형으로 필터"
+
+#: 
+msgid "Financials"
+msgstr "재정"
+
+#: 
+msgid "From date"
+msgstr "시작 날짜"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "모금 행사 개요"
+
+#: 
+msgid "Fundraisers"
+msgstr "모금 행사"
+
+#: 
+msgid "Fundraising"
+msgstr "모금"
+
+#: 
+msgid "Goal %"
+msgstr "목표 달성률 %"
+
+#: 
+msgid "Goal Amount"
+msgstr "목표 금액"
+
+#: 
+msgid "Highest Sale"
+msgstr "최고 판매가"
+
+#: 
+msgid "Invalid status value"
+msgstr "유효하지 않은 상태 값"
+
+#: 
+msgid "Invalid type value"
+msgstr "유효하지 않은 유형 값"
+
+#: 
+msgid "Items"
+msgstr "항목"
+
+#: 
+msgid "Items Donated"
+msgstr "기증된 물품"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "기증된 물품 (올해)"
+
+#: 
+msgid "Items Sold"
+msgstr "판매된 물품"
+
+#: 
+msgid "Last Attendance"
+msgstr "마지막 출석"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "연결된 헌금 기금"
+
+#: 
+msgid "Live Preview"
+msgstr "실시간 미리보기"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "출석 기록 불러오는 중…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "다중 구매 물품"
+
+#: 
+msgid "New family details"
+msgstr "새 가정 정보"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "%s 모금 행사를 찾을 수 없습니다."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "진행 중인 모금 행사가 없습니다."
+
+#: 
+msgid "No attendance records found."
+msgstr "출석 기록이 없습니다."
+
+#: 
+msgid "No donated items yet."
+msgstr "아직 기증된 물품이 없습니다."
+
+#: 
+msgid "Not a valid end date"
+msgstr "유효하지 않은 종료일"
+
+#: 
+msgid "Not included"
+msgstr "포함되지 않음"
+
+#: 
+msgid "People to assign"
+msgstr "배정할 사람"
+
+#: 
+msgid "Planning"
+msgstr "계획"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "%s의 가정 내 역할을 선택해 주세요."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "저장하지 않고 아래 필드를 채웁니다. 적용하려면 저장을 클릭하세요."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "금액에 대한 통화 기호의 위치."
+
+#: 
+msgid "Quick presets"
+msgstr "빠른 사전 설정"
+
+#: 
+msgid "Raised"
+msgstr "모금액"
+
+#: 
+msgid "Raised This Year"
+msgstr "올해 모금액"
+
+#: 
+msgid "Sample Amount"
+msgstr "예시 금액"
+
+#: 
+msgid "Sell-through"
+msgstr "판매율"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "소수점으로 사용되는 단일 문자 (예: . 또는 ,). 기본값: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "천 단위 구분에 사용되는 단일 문자 (예: , 또는 .). 기본값: ,"
+
+#: 
+msgid "Sold"
+msgstr "판매됨"
+
+#: 
+msgid "State / Province"
+msgstr "주 / 도"
+
+#: 
+msgid "Streak"
+msgstr "연속 출석"
+
+#: 
+msgid "Symbol Position"
+msgstr "기호 위치"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "금액 옆에 표시되는 기호 또는 코드 (예: $, €, £, CHF, CAD $). 기본값: $"
+
+#: 
+msgid "Target family"
+msgstr "대상 가정"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "소그룹을 찾을 수 없습니다. 다시 시도해 주세요."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "선택한 가정이 더 이상 존재하지 않습니다. 페이지를 새로고침한 후 다시 시도해 주세요."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "선택한 소그룹을 찾을 수 없습니다. 유효한 소그룹을 선택해 주세요."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "날짜, 금액, 전화번호가 시스템 전반에 걸쳐 표시되는 방식입니다. 현재 형식을 여기서 확인한 후 아래 섹션에서 편집하세요."
+
+#: 
+msgid "Thousands Separator"
+msgstr "천 단위 구분자"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "천 단위 구분자와 소수점 구분자는 서로 다른 문자여야 합니다."
+
+#: 
+msgid "To date"
+msgstr "종료 날짜"
+
+#: 
+msgid "Total Events"
+msgstr "총 행사 수"
+
+#: 
+msgid "Total Raised"
+msgstr "총 모금액"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "총 모금액 (목표 미설정)"
+
+#: 
+msgid "Unsold"
+msgstr "미판매"
+
+#: 
+msgid "Updates as you type."
+msgstr "입력하는 동안 업데이트됩니다."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "기호가 금액 앞 또는 뒤에 표시되는지 여부. 기본값: 금액 앞"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "선택 목록이 비어 있습니다. 먼저 선택 목록에 사람을 추가하세요."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "우편번호"
+
+#: 
+msgid "events"
+msgstr "행사"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "목표 금액은 음수가 아닌 숫자여야 합니다"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "목표 금액은 음수가 아니어야 합니다"
+
+#: 
+msgid "thru %s"
+msgstr "%s까지"
+
+#: 
+msgid "— Select role —"
+msgstr "— 역할 선택 —"
+
+#: 
+msgid "— pick —"
+msgstr "— 선택 —"
 

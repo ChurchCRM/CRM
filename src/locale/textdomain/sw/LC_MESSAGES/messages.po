@@ -11087,11 +11087,6 @@ msgstr "Nchi ya Chaguo Msingi"
 msgid "Default State"
 msgstr "Hali ya Chaguo Msingi"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Kitenganishi kusambaza barua pepe katika viungo vya mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "Kitengo cha Umbali"
@@ -16736,4 +16731,496 @@ msgstr "Mtumiaji hakupatikana."
 #: 
 msgid "— Select a person —"
 msgstr "— Chagua mtu —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "mchango %d uliohifadhiwa"
+msgstr[1] "michango %d iliyohifadhiwa"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "mtu %d ameongezwa kwa mafanikio katika familia iliyochaguliwa."
+msgstr[1] "watu %d wameongezwa kwa mafanikio katika familia iliyochaguliwa."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "Michango ya %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s kati ya lengo la %s imekusanywa"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Michango Inayoendelea"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Ongeza Mchango"
+
+#: 
+msgid "Add Item"
+msgstr "Ongeza Kipengele"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Ongeza watu kwenye mkokoteni wako kabla ya kuwapangia familia."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Ongeza watu kwenye mkokoteni wako kwanza, kisha rudi kuwaongeza kwenye kikundi."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Baada ya kiasi (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Hali Zote"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Watu wote kwenye mkokoteni wako wako tayari katika familia. Hakuna anayeweza kupangiwa."
+
+#: 
+msgid "All types"
+msgstr "Aina zote"
+
+#: 
+msgid "Already in"
+msgstr "Tayari yuko"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Hitilafu isiyotarajiwa imetokea. Tafadhali jaribu tena."
+
+#: 
+msgid "Apply"
+msgstr "Tekeleza"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Panga wanachama wa mkokoteni kwenye kikundi"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Panga watu kutoka kwenye mkokoteni wako kwenye familia"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Panga jukumu kwa wote:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Panga kwa Familia"
+
+#: 
+msgid "Associated Fund"
+msgstr "Mfuko Unaohusiana"
+
+#: 
+msgid "At a Glance"
+msgstr "Muhtasari"
+
+#: 
+msgid "Auction Reports"
+msgstr "Ripoti za Mnada"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Bei ya Wastani ya Mauzo"
+
+#: 
+msgid "Back to Cart"
+msgstr "Rudi kwenye Mkokoteni"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Rudi kwenye Michango"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Kabla ya kiasi (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Mfululizo Bora"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Karatasi za Zabuni"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Taarifa za Wanunuzi"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Wanunuzi Waliojisajili"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Wanunuzi Mwaka Huu"
+
+#: 
+msgid "Catalog"
+msgstr "Katalogi"
+
+#: 
+msgid "Certificates"
+msgstr "Vyeti"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Herufi inayotumika kama nukta ya desimali katika kiasi cha fedha (mf. . au ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Herufi inayotumika kutenganisha maelfu katika kiasi cha fedha (mf. , au .)"
+
+#: 
+msgid "Check-out"
+msgstr "Malipo"
+
+#: 
+msgid "Choose a group..."
+msgstr "Chagua kikundi..."
+
+#: 
+msgid "Choose family"
+msgstr "Chagua familia"
+
+#: 
+msgid "Code"
+msgstr "Msimbo"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Sanidi jinsi kiasi cha fedha kinavyoonyeshwa katika mfumo wote."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Unda Mchango"
+
+#: 
+msgid "Create new family…"
+msgstr "Unda familia mpya…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Miundo ya Sarafu na Fedha"
+
+#: 
+msgid "Currency Format"
+msgstr "Muundo wa Sarafu"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Alama ya Sarafu"
+
+#: 
+msgid "Currency presets"
+msgstr "Mipangilio ya awali ya sarafu"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Alama ya sarafu ya kuonyesha karibu na kiasi cha fedha (mf. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Kitenga Desimali"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Hakuhudhuria"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Tarehe ya mwisho lazima iwe sawa au baada ya tarehe ya kuanza"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Ingiza jimbo/mkoa kwa nchi ambazo hazina majimbo yaliyoamuliwa mapema"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Jumla ya Thamani Inayokadiriwa"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Kila mtu kutoka vikundi vilivyounganishwa ameingia!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Imeshindwa kupakia historia ya mahudhurio."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Jina la familia linahitajika wakati wa kuunda familia mpya."
+
+#: 
+msgid "Filter by event type"
+msgstr "Chuja kwa aina ya tukio"
+
+#: 
+msgid "Financials"
+msgstr "Fedha"
+
+#: 
+msgid "From date"
+msgstr "Kuanzia tarehe"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Muhtasari wa Mchango"
+
+#: 
+msgid "Fundraisers"
+msgstr "Michango"
+
+#: 
+msgid "Fundraising"
+msgstr "Ukusanyaji wa Fedha"
+
+#: 
+msgid "Goal %"
+msgstr "Asilimia ya Lengo"
+
+#: 
+msgid "Goal Amount"
+msgstr "Kiasi cha Lengo"
+
+#: 
+msgid "Highest Sale"
+msgstr "Mauzo ya Juu Zaidi"
+
+#: 
+msgid "Invalid status value"
+msgstr "Thamani ya hali si sahihi"
+
+#: 
+msgid "Invalid type value"
+msgstr "Thamani ya aina si sahihi"
+
+#: 
+msgid "Items"
+msgstr "Vipengele"
+
+#: 
+msgid "Items Donated"
+msgstr "Vipengele Vilivyochangiwa"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Vipengele Vilivyochangiwa (Mwaka Huu)"
+
+#: 
+msgid "Items Sold"
+msgstr "Vipengele Vilivyouzwa"
+
+#: 
+msgid "Last Attendance"
+msgstr "Mahudhurio ya Mwisho"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Mfuko wa Matoleo Uliounganishwa"
+
+#: 
+msgid "Live Preview"
+msgstr "Muonekano wa Moja kwa Moja"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Inapakia historia ya mahudhurio…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Vipengele vya Ununuzi Wingi"
+
+#: 
+msgid "New family details"
+msgstr "Maelezo ya familia mpya"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Hakuna michango ya %s iliyopatikana."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Hakuna michango inayoendelea iliyopatikana."
+
+#: 
+msgid "No attendance records found."
+msgstr "Hakuna rekodi za mahudhurio zilizopatikana."
+
+#: 
+msgid "No donated items yet."
+msgstr "Bado hakuna vipengele vilivyochangiwa."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Tarehe ya mwisho si sahihi"
+
+#: 
+msgid "Not included"
+msgstr "Haijajumuishwa"
+
+#: 
+msgid "People to assign"
+msgstr "Watu wa kupanga"
+
+#: 
+msgid "Planning"
+msgstr "Mipango"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Tafadhali chagua jukumu la familia kwa %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Inajaza sehemu zilizo chini bila kuhifadhi. Bonyeza Hifadhi kutumia."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Nafasi ya alama ya sarafu kulingana na kiasi."
+
+#: 
+msgid "Quick presets"
+msgstr "Mipangilio ya haraka"
+
+#: 
+msgid "Raised"
+msgstr "Imekusanywa"
+
+#: 
+msgid "Raised This Year"
+msgstr "Iliyokusanywa Mwaka Huu"
+
+#: 
+msgid "Sample Amount"
+msgstr "Kiasi cha Mfano"
+
+#: 
+msgid "Sell-through"
+msgstr "Mauzo Yote"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Herufi moja inayotumika kama nukta ya desimali (mf. . au ,). Chaguo-msingi: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Herufi moja inayotumika kupanga maelfu (mf. , au .). Chaguo-msingi: ,"
+
+#: 
+msgid "Sold"
+msgstr "Imeuzwa"
+
+#: 
+msgid "State / Province"
+msgstr "Jimbo / Mkoa"
+
+#: 
+msgid "Streak"
+msgstr "Mfululizo"
+
+#: 
+msgid "Symbol Position"
+msgstr "Nafasi ya Alama"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Alama au msimbo unaoonyeshwa karibu na kiasi (mf. $, €, £, CHF, CAD $). Chaguo-msingi: $"
+
+#: 
+msgid "Target family"
+msgstr "Familia inayolengwa"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Kikundi hakikupatikana. Tafadhali jaribu tena."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Familia iliyochaguliwa haipo tena. Tafadhali onyesha upya ukurasa na ujaribu tena."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Kikundi kilichochaguliwa hakikupatikana. Tafadhali chagua kikundi sahihi."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Hivi ndivyo tarehe, kiasi cha fedha, na nambari za simu zitakavyoonekana katika mfumo wote."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Kitenga Maelfu"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Kitenga maelfu na kitenga desimali lazima viwe herufi tofauti."
+
+#: 
+msgid "To date"
+msgstr "Hadi tarehe"
+
+#: 
+msgid "Total Events"
+msgstr "Jumla ya Matukio"
+
+#: 
+msgid "Total Raised"
+msgstr "Jumla Iliyokusanywa"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Jumla iliyokusanywa (hakuna lengo lililowekwa)"
+
+#: 
+msgid "Unsold"
+msgstr "Haikuuzwa"
+
+#: 
+msgid "Updates as you type."
+msgstr "Inasasishwa unapoandika."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Iwapo alama inaonekana kabla au baada ya kiasi cha nambari. Chaguo-msingi: Kabla ya kiasi"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Mkokoteni wako uko wazi. Ongeza watu kwenye mkokoteni wako kwanza."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Msimbo wa Posta"
+
+#: 
+msgid "events"
+msgstr "matukio"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount lazima iwe nambari isiyo hasi"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount lazima isiwe hasi"
+
+#: 
+msgid "thru %s"
+msgstr "hadi %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Chagua jukumu —"
+
+#: 
+msgid "— pick —"
+msgstr "— chagua —"
 

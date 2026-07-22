@@ -11192,11 +11192,6 @@ msgstr "Čujuhusat riikka"
 msgid "Default State"
 msgstr "Čujuhusat stáhta"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Detalhiidja maŋŋel maŋŋel seavvi"
-
 #: 
 msgid "Distance Unit"
 msgstr "Maŋŋel gielda"
@@ -16841,4 +16836,496 @@ msgstr "Användaren hittades inte."
 #: 
 msgid "— Select a person —"
 msgstr "— Välj en person —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d arkiverad insamling"
+msgstr[1] "%d arkiverade insamlingar"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d person har lagts till i vald familj."
+msgstr[1] "%d personer har lagts till i vald familj."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s insamlingar"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s av %s mål insamlat"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktiva insamlingar"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Lägg till insamling"
+
+#: 
+msgid "Add Item"
+msgstr "Lägg till objekt"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Lägg till personer i din urvalslista innan du tilldelar dem till en familj."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Lägg till personer i din urvalslista först och kom sedan tillbaka för att lägga till dem i en grupp."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Efter belopp (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Alla statusar"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Alla personer i din urvalslista tillhör redan en familj. Ingen kan tilldelas."
+
+#: 
+msgid "All types"
+msgstr "Alla typer"
+
+#: 
+msgid "Already in"
+msgstr "Redan i"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Ett oväntat fel uppstod. Försök igen."
+
+#: 
+msgid "Apply"
+msgstr "Tillämpa"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Tilldela urvalspersoner till en grupp"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Tilldela personer från din urvalslista till en familj"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Tilldela roll till alla:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Tilldela till familj"
+
+#: 
+msgid "Associated Fund"
+msgstr "Kopplad fond"
+
+#: 
+msgid "At a Glance"
+msgstr "Översikt"
+
+#: 
+msgid "Auction Reports"
+msgstr "Auktionsrapporter"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Genomsnittligt försäljningspris"
+
+#: 
+msgid "Back to Cart"
+msgstr "Tillbaka till urvalslistan"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Tillbaka till insamlingar"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Före belopp (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Bästa svit"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Budblad"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Köparsammanställningar"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Registrerade köpare"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Köpare detta år"
+
+#: 
+msgid "Catalog"
+msgstr "Katalog"
+
+#: 
+msgid "Certificates"
+msgstr "Certifikat"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Tecken som används som decimaltecken i belopp (t.ex. . eller ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Tecken som används för att separera tusental i belopp (t.ex. , eller .)"
+
+#: 
+msgid "Check-out"
+msgstr "Utcheckning"
+
+#: 
+msgid "Choose a group..."
+msgstr "Välj en grupp..."
+
+#: 
+msgid "Choose family"
+msgstr "Välj familj"
+
+#: 
+msgid "Code"
+msgstr "Kod"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Konfigurera hur belopp visas i hela systemet. När ekonomisidor uppdateras för att använda dessa inställningar (epic #8459) kommer symbolen, positionen och avgränsarna som konfigureras här att gälla systemövergripande."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Skapa insamling"
+
+#: 
+msgid "Create new family…"
+msgstr "Skapa ny familj…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Valuta- och ekonomiformat"
+
+#: 
+msgid "Currency Format"
+msgstr "Valutaformat"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Valutasymbol"
+
+#: 
+msgid "Currency presets"
+msgstr "Valutaförinställningar"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Valutasymbol som visas bredvid belopp (t.ex. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Decimaltecken"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Deltog inte"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Slutdatum måste vara på eller efter startdatumet"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Ange delstat/provins för länder utan fördefinierade delstater"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Uppskattat totalvärde"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Alla från länkade grupper har checkat in!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Det gick inte att ladda närvarohistorik."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Familjenamn krävs när en ny familj skapas."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filtrera efter evenemangstyp"
+
+#: 
+msgid "Financials"
+msgstr "Ekonomi"
+
+#: 
+msgid "From date"
+msgstr "Från datum"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Insamlingsöversikt"
+
+#: 
+msgid "Fundraisers"
+msgstr "Insamlingar"
+
+#: 
+msgid "Fundraising"
+msgstr "Insamlingsverksamhet"
+
+#: 
+msgid "Goal %"
+msgstr "Mål %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Målbelopp"
+
+#: 
+msgid "Highest Sale"
+msgstr "Högsta försäljning"
+
+#: 
+msgid "Invalid status value"
+msgstr "Ogiltigt statusvärde"
+
+#: 
+msgid "Invalid type value"
+msgstr "Ogiltigt typvärde"
+
+#: 
+msgid "Items"
+msgstr "Objekt"
+
+#: 
+msgid "Items Donated"
+msgstr "Donerade objekt"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Donerade objekt (detta år)"
+
+#: 
+msgid "Items Sold"
+msgstr "Sålda objekt"
+
+#: 
+msgid "Last Attendance"
+msgstr "Senaste närvaro"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Kopplad offerfond"
+
+#: 
+msgid "Live Preview"
+msgstr "Liveförhandsvisning"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Laddar närvarohistorik…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Flerinköpsobjekt"
+
+#: 
+msgid "New family details"
+msgstr "Ny familjeinformation"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Inga %s insamlingar hittades."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Inga aktiva insamlingar hittades."
+
+#: 
+msgid "No attendance records found."
+msgstr "Inga närvarouppgifter hittades."
+
+#: 
+msgid "No donated items yet."
+msgstr "Inga donerade objekt ännu."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Ogiltigt slutdatum"
+
+#: 
+msgid "Not included"
+msgstr "Inte inkluderad"
+
+#: 
+msgid "People to assign"
+msgstr "Personer att tilldela"
+
+#: 
+msgid "Planning"
+msgstr "Planering"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Välj en familjeroll för %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Fyller i fälten nedan utan att spara. Klicka på Spara för att tillämpa."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Valutasymbolens position i förhållande till beloppet."
+
+#: 
+msgid "Quick presets"
+msgstr "Snabbförinställningar"
+
+#: 
+msgid "Raised"
+msgstr "Insamlat"
+
+#: 
+msgid "Raised This Year"
+msgstr "Insamlat detta år"
+
+#: 
+msgid "Sample Amount"
+msgstr "Exempelbelopp"
+
+#: 
+msgid "Sell-through"
+msgstr "Försäljningsandel"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Enstaka tecken som används som decimaltecken (t.ex. . eller ,). Standard: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Enstaka tecken som används för att gruppera tusental (t.ex. , eller .). Standard: ,"
+
+#: 
+msgid "Sold"
+msgstr "Såld"
+
+#: 
+msgid "State / Province"
+msgstr "Delstat / Provins"
+
+#: 
+msgid "Streak"
+msgstr "Svit"
+
+#: 
+msgid "Symbol Position"
+msgstr "Symbolposition"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Symbol eller kod som visas bredvid belopp (t.ex. $, €, £, CHF, CAD $). Standard: $"
+
+#: 
+msgid "Target family"
+msgstr "Målfamilj"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Gruppen kunde inte hittas. Försök igen."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Den valda familjen finns inte längre. Uppdatera sidan och försök igen."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Den valda gruppen hittades inte. Välj en giltig grupp."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Så här visas datum, belopp och telefonnummer i hela systemet. Granska de aktuella formaten här och redigera dem i avsnitten nedan."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Tusentalsseparator"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Tusentalsseparatorn och decimaltecknet måste vara olika tecken."
+
+#: 
+msgid "To date"
+msgstr "Till datum"
+
+#: 
+msgid "Total Events"
+msgstr "Totalt antal evenemang"
+
+#: 
+msgid "Total Raised"
+msgstr "Totalt insamlat"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Totalt insamlat (inget mål angivet)"
+
+#: 
+msgid "Unsold"
+msgstr "Osåld"
+
+#: 
+msgid "Updates as you type."
+msgstr "Uppdateras medan du skriver."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Om symbolen visas före eller efter det numeriska beloppet. Standard: Före belopp"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Din urvalslista är tom. Lägg till personer i din urvalslista först."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Postnummer"
+
+#: 
+msgid "events"
+msgstr "evenemang"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount måste vara ett icke-negativt tal"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount måste vara icke-negativt"
+
+#: 
+msgid "thru %s"
+msgstr "t.o.m. %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Välj roll —"
+
+#: 
+msgid "— pick —"
+msgstr "— välj —"
 

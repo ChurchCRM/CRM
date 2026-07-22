@@ -11092,11 +11092,6 @@ msgstr "Προεπιλεγμένη χώρα"
 msgid "Default State"
 msgstr "Προεπιλεγμένη κατάσταση"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Χαρακτήρας διαχωρισμού για διαχωρισμό μηνυμάτων ηλεκτρονικής αλληλογραφίας σε σύνδεσμους mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "Μονάδα απόστασης"
@@ -16741,4 +16736,496 @@ msgstr "Ο χρήστης δεν βρέθηκε."
 #: 
 msgid "— Select a person —"
 msgstr "— Επιλογή προσώπου —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d αρχειοθετημένη δράση συγκέντρωσης κεφαλαίων"
+msgstr[1] "%d αρχειοθετημένες δράσεις συγκέντρωσης κεφαλαίων"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d άτομο προστέθηκε επιτυχώς στην επιλεγμένη οικογένεια."
+msgstr[1] "%d άτομα προστέθηκαν επιτυχώς στην επιλεγμένη οικογένεια."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s Δράσεις Συγκέντρωσης Κεφαλαίων"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s από στόχο %s συγκεντρώθηκαν"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Ενεργές Δράσεις Συγκέντρωσης Κεφαλαίων"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Προσθήκη Δράσης Συγκέντρωσης Κεφαλαίων"
+
+#: 
+msgid "Add Item"
+msgstr "Προσθήκη Στοιχείου"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Προσθέστε άτομα στην επιλογή σας πριν τα αναθέσετε σε μια οικογένεια."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Προσθέστε πρώτα άτομα στην επιλογή σας και στη συνέχεια επιστρέψτε για να τα προσθέσετε σε μια ομάδα."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Μετά το ποσό (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Όλες οι Καταστάσεις"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Όλα τα άτομα στην επιλογή σας ανήκουν ήδη σε μια οικογένεια. Δεν μπορεί να γίνει ανάθεση."
+
+#: 
+msgid "All types"
+msgstr "Όλοι οι τύποι"
+
+#: 
+msgid "Already in"
+msgstr "Ήδη σε"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Παρουσιάστηκε απρόσμενο σφάλμα. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Ανάθεση μελών επιλογής σε ομάδα"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Ανάθεση ατόμων από την επιλογή σας σε οικογένεια"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Ανάθεση ρόλου σε όλους:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Ανάθεση σε Οικογένεια"
+
+#: 
+msgid "Associated Fund"
+msgstr "Συσχετισμένο Ταμείο"
+
+#: 
+msgid "At a Glance"
+msgstr "Με μια Ματιά"
+
+#: 
+msgid "Auction Reports"
+msgstr "Αναφορές Δημοπρασίας"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Μέση Τιμή Πώλησης"
+
+#: 
+msgid "Back to Cart"
+msgstr "Επιστροφή στην Επιλογή"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Επιστροφή στις Δράσεις Συγκέντρωσης Κεφαλαίων"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Πριν το ποσό (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Καλύτερη Σερί Παρουσία"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Φύλλα Προσφορών"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Καταστάσεις Αγοραστών"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Εγγεγραμμένοι Αγοραστές"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Αγοραστές Φέτος"
+
+#: 
+msgid "Catalog"
+msgstr "Κατάλογος"
+
+#: 
+msgid "Certificates"
+msgstr "Πιστοποιητικά"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Χαρακτήρας που χρησιμοποιείται ως δεκαδικό σύμβολο σε χρηματικά ποσά (π.χ. . ή ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Χαρακτήρας που χρησιμοποιείται για διαχωρισμό χιλιάδων σε χρηματικά ποσά (π.χ. , ή .)"
+
+#: 
+msgid "Check-out"
+msgstr "Ολοκλήρωση"
+
+#: 
+msgid "Choose a group..."
+msgstr "Επιλέξτε ομάδα..."
+
+#: 
+msgid "Choose family"
+msgstr "Επιλέξτε οικογένεια"
+
+#: 
+msgid "Code"
+msgstr "Κωδικός"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Ρυθμίστε τον τρόπο εμφάνισης χρηματικών ποσών σε ολόκληρο το σύστημα."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Δημιουργία Δράσης Συγκέντρωσης Κεφαλαίων"
+
+#: 
+msgid "Create new family…"
+msgstr "Δημιουργία νέας οικογένειας…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Μορφές Νομίσματος και Οικονομικών"
+
+#: 
+msgid "Currency Format"
+msgstr "Μορφή Νομίσματος"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Σύμβολο Νομίσματος"
+
+#: 
+msgid "Currency presets"
+msgstr "Προεπιλογές Νομίσματος"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Σύμβολο νομίσματος για εμφάνιση δίπλα σε χρηματικά ποσά (π.χ. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Δεκαδικός Διαχωριστής"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Δεν Παρευρέθη"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Η ημερομηνία λήξης πρέπει να είναι ίση ή μεταγενέστερη της ημερομηνίας έναρξης"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Εισαγάγετε νομό/επαρχία για χώρες χωρίς προκαθορισμένες περιοχές"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Εκτιμώμενη Συνολική Αξία"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Όλοι από τις συνδεδεμένες ομάδες παρευρέθηκαν!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Αποτυχία φόρτωσης ιστορικού παρουσιών."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Το οικογενειακό όνομα απαιτείται κατά τη δημιουργία νέας οικογένειας."
+
+#: 
+msgid "Filter by event type"
+msgstr "Φιλτράρισμα κατά τύπο εκδήλωσης"
+
+#: 
+msgid "Financials"
+msgstr "Οικονομικά"
+
+#: 
+msgid "From date"
+msgstr "Από ημερομηνία"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Επισκόπηση Δράσης Συγκέντρωσης Κεφαλαίων"
+
+#: 
+msgid "Fundraisers"
+msgstr "Δράσεις Συγκέντρωσης Κεφαλαίων"
+
+#: 
+msgid "Fundraising"
+msgstr "Συγκέντρωση Κεφαλαίων"
+
+#: 
+msgid "Goal %"
+msgstr "% Στόχου"
+
+#: 
+msgid "Goal Amount"
+msgstr "Ποσό Στόχου"
+
+#: 
+msgid "Highest Sale"
+msgstr "Υψηλότερη Πώληση"
+
+#: 
+msgid "Invalid status value"
+msgstr "Μη έγκυρη τιμή κατάστασης"
+
+#: 
+msgid "Invalid type value"
+msgstr "Μη έγκυρη τιμή τύπου"
+
+#: 
+msgid "Items"
+msgstr "Στοιχεία"
+
+#: 
+msgid "Items Donated"
+msgstr "Δωρισμένα Στοιχεία"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Δωρισμένα Στοιχεία (Φέτος)"
+
+#: 
+msgid "Items Sold"
+msgstr "Στοιχεία που Πωλήθηκαν"
+
+#: 
+msgid "Last Attendance"
+msgstr "Τελευταία Παρουσία"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Συνδεδεμένο Ταμείο Εισφορών"
+
+#: 
+msgid "Live Preview"
+msgstr "Ζωντανή Προεπισκόπηση"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Φόρτωση ιστορικού παρουσιών…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Στοιχεία Πολλαπλής Αγοράς"
+
+#: 
+msgid "New family details"
+msgstr "Στοιχεία νέας οικογένειας"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Δεν βρέθηκαν %s δράσεις συγκέντρωσης κεφαλαίων."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Δεν βρέθηκαν ενεργές δράσεις συγκέντρωσης κεφαλαίων."
+
+#: 
+msgid "No attendance records found."
+msgstr "Δεν βρέθηκαν αρχεία παρουσιών."
+
+#: 
+msgid "No donated items yet."
+msgstr "Δεν υπάρχουν δωρισμένα στοιχεία ακόμα."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Μη έγκυρη ημερομηνία λήξης"
+
+#: 
+msgid "Not included"
+msgstr "Δεν περιλαμβάνεται"
+
+#: 
+msgid "People to assign"
+msgstr "Άτομα προς ανάθεση"
+
+#: 
+msgid "Planning"
+msgstr "Σχεδιασμός"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Παρακαλώ επιλέξτε οικογενειακό ρόλο για τον/την %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Συμπληρώνει τα παρακάτω πεδία χωρίς αποθήκευση. Κάντε κλικ στην Αποθήκευση για εφαρμογή."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Θέση του συμβόλου νομίσματος σε σχέση με το ποσό."
+
+#: 
+msgid "Quick presets"
+msgstr "Γρήγορες Προεπιλογές"
+
+#: 
+msgid "Raised"
+msgstr "Συγκεντρώθηκαν"
+
+#: 
+msgid "Raised This Year"
+msgstr "Συγκεντρώθηκαν Φέτος"
+
+#: 
+msgid "Sample Amount"
+msgstr "Δείγμα Ποσού"
+
+#: 
+msgid "Sell-through"
+msgstr "Ποσοστό Πώλησης"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Μονός χαρακτήρας που χρησιμοποιείται ως δεκαδικό σύμβολο (π.χ. . ή ,). Προεπιλογή: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Μονός χαρακτήρας για ομαδοποίηση χιλιάδων (π.χ. , ή .). Προεπιλογή: ,"
+
+#: 
+msgid "Sold"
+msgstr "Πωλήθηκε"
+
+#: 
+msgid "State / Province"
+msgstr "Νομός / Επαρχία"
+
+#: 
+msgid "Streak"
+msgstr "Σερί Παρουσία"
+
+#: 
+msgid "Symbol Position"
+msgstr "Θέση Συμβόλου"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Σύμβολο ή κωδικός που εμφανίζεται δίπλα σε ποσά (π.χ. $, €, £, CHF, CAD $). Προεπιλογή: $"
+
+#: 
+msgid "Target family"
+msgstr "Οικογένεια στόχος"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Η ομάδα δεν βρέθηκε. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Η επιλεγμένη οικογένεια δεν υπάρχει πλέον. Παρακαλώ ανανεώστε τη σελίδα και δοκιμάστε ξανά."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Η επιλεγμένη ομάδα δεν βρέθηκε. Παρακαλώ επιλέξτε έγκυρη ομάδα."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Έτσι θα εμφανίζονται ημερομηνίες, χρηματικά ποσά και αριθμοί τηλεφώνου σε ολόκληρο το σύστημα."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Διαχωριστής Χιλιάδων"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Ο διαχωριστής χιλιάδων και ο δεκαδικός διαχωριστής πρέπει να είναι διαφορετικοί χαρακτήρες."
+
+#: 
+msgid "To date"
+msgstr "Έως ημερομηνία"
+
+#: 
+msgid "Total Events"
+msgstr "Συνολικές Εκδηλώσεις"
+
+#: 
+msgid "Total Raised"
+msgstr "Συνολικά Συγκεντρώθηκαν"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Συνολικά συγκεντρώθηκαν (χωρίς ορισμένο στόχο)"
+
+#: 
+msgid "Unsold"
+msgstr "Αδιάθετα"
+
+#: 
+msgid "Updates as you type."
+msgstr "Ενημερώνεται καθώς πληκτρολογείτε."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Εάν το σύμβολο εμφανίζεται πριν ή μετά το αριθμητικό ποσό. Προεπιλογή: Πριν το ποσό"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Η επιλογή σας είναι κενή. Προσθέστε πρώτα άτομα στην επιλογή σας."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "ΤΚ / Ταχυδρομικός Κωδικός"
+
+#: 
+msgid "events"
+msgstr "εκδηλώσεις"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "Το ποσό στόχου πρέπει να είναι μη αρνητικός αριθμός"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "Το ποσό στόχου πρέπει να είναι μη αρνητικό"
+
+#: 
+msgid "thru %s"
+msgstr "έως %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Επιλογή ρόλου —"
+
+#: 
+msgid "— pick —"
+msgstr "— επιλογή —"
 

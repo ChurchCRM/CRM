@@ -11087,11 +11087,6 @@ msgstr "Quốc gia mặc định"
 msgid "Default State"
 msgstr "Trạng thái mặc định"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Dấu phân cách để tách email trong các liên kết mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "Đơn vị khoảng cách"
@@ -16734,4 +16729,494 @@ msgstr "Không tìm thấy người dùng."
 #: 
 msgid "— Select a person —"
 msgstr "— Chọn một người —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d chiến dịch gây quỹ đã lưu trữ"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d người đã được thêm thành công vào gia đình đã chọn."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "Chiến dịch gây quỹ %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "Đã gây quỹ %s trên mục tiêu %s"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Chiến dịch gây quỹ đang hoạt động"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Thêm chiến dịch gây quỹ"
+
+#: 
+msgid "Add Item"
+msgstr "Thêm mục"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Hãy thêm người vào danh sách chọn trước khi phân công họ vào một gia đình."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Hãy thêm người vào danh sách chọn trước, sau đó quay lại để thêm họ vào nhóm."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Sau số tiền (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Tất cả trạng thái"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Tất cả mọi người trong danh sách chọn đã thuộc một gia đình. Không có ai có thể được phân công."
+
+#: 
+msgid "All types"
+msgstr "Tất cả loại"
+
+#: 
+msgid "Already in"
+msgstr "Đã có trong"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Đã xảy ra lỗi không mong đợi. Vui lòng thử lại."
+
+#: 
+msgid "Apply"
+msgstr "Áp dụng"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Phân công thành viên trong danh sách vào một nhóm"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Phân công người trong danh sách vào một gia đình"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Gán vai trò cho tất cả:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Phân công vào gia đình"
+
+#: 
+msgid "Associated Fund"
+msgstr "Quỹ liên kết"
+
+#: 
+msgid "At a Glance"
+msgstr "Tổng quan nhanh"
+
+#: 
+msgid "Auction Reports"
+msgstr "Báo cáo đấu giá"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Giá bán trung bình"
+
+#: 
+msgid "Back to Cart"
+msgstr "Quay lại danh sách chọn"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Quay lại chiến dịch gây quỹ"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Trước số tiền (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Chuỗi dài nhất"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Phiếu đặt giá"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Sao kê người mua"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Người mua đã đăng ký"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Người mua trong năm nay"
+
+#: 
+msgid "Catalog"
+msgstr "Danh mục"
+
+#: 
+msgid "Certificates"
+msgstr "Chứng nhận"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Ký tự dùng làm dấu thập phân trong số tiền (ví dụ: . hoặc ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Ký tự dùng để phân cách hàng nghìn trong số tiền (ví dụ: , hoặc .)"
+
+#: 
+msgid "Check-out"
+msgstr "Thanh toán"
+
+#: 
+msgid "Choose a group..."
+msgstr "Chọn một nhóm..."
+
+#: 
+msgid "Choose family"
+msgstr "Chọn gia đình"
+
+#: 
+msgid "Code"
+msgstr "Mã"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Cấu hình cách hiển thị số tiền trong toàn bộ hệ thống. Khi các trang tài chính được cập nhật để sử dụng các cài đặt này (epic #8459), ký hiệu, vị trí và dấu phân cách được cấu hình ở đây sẽ áp dụng toàn hệ thống."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Tạo chiến dịch gây quỹ"
+
+#: 
+msgid "Create new family…"
+msgstr "Tạo gia đình mới…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Định dạng tiền tệ & tài chính"
+
+#: 
+msgid "Currency Format"
+msgstr "Định dạng tiền tệ"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Ký hiệu tiền tệ"
+
+#: 
+msgid "Currency presets"
+msgstr "Cài đặt sẵn tiền tệ"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Ký hiệu tiền tệ hiển thị bên cạnh số tiền (ví dụ: $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Dấu thập phân"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Vắng mặt"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Ngày kết thúc phải bằng hoặc sau ngày bắt đầu"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Nhập tỉnh/thành cho các quốc gia không có danh sách tỉnh định sẵn"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Tổng giá trị ước tính"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Tất cả mọi người từ các nhóm liên kết đã điểm danh!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Không thể tải lịch sử điểm danh."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Tên gia đình là bắt buộc khi tạo gia đình mới."
+
+#: 
+msgid "Filter by event type"
+msgstr "Lọc theo loại sự kiện"
+
+#: 
+msgid "Financials"
+msgstr "Tài chính"
+
+#: 
+msgid "From date"
+msgstr "Từ ngày"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Tổng quan chiến dịch gây quỹ"
+
+#: 
+msgid "Fundraisers"
+msgstr "Chiến dịch gây quỹ"
+
+#: 
+msgid "Fundraising"
+msgstr "Gây quỹ"
+
+#: 
+msgid "Goal %"
+msgstr "% Mục tiêu"
+
+#: 
+msgid "Goal Amount"
+msgstr "Số tiền mục tiêu"
+
+#: 
+msgid "Highest Sale"
+msgstr "Doanh thu cao nhất"
+
+#: 
+msgid "Invalid status value"
+msgstr "Giá trị trạng thái không hợp lệ"
+
+#: 
+msgid "Invalid type value"
+msgstr "Giá trị loại không hợp lệ"
+
+#: 
+msgid "Items"
+msgstr "Các mục"
+
+#: 
+msgid "Items Donated"
+msgstr "Các mục được hiến tặng"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Các mục được hiến tặng (Năm nay)"
+
+#: 
+msgid "Items Sold"
+msgstr "Các mục đã bán"
+
+#: 
+msgid "Last Attendance"
+msgstr "Lần điểm danh cuối"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Quỹ dâng hiến liên kết"
+
+#: 
+msgid "Live Preview"
+msgstr "Xem trước trực tiếp"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Đang tải lịch sử điểm danh…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Các mục mua số lượng nhiều"
+
+#: 
+msgid "New family details"
+msgstr "Thông tin gia đình mới"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Không tìm thấy chiến dịch gây quỹ %s nào."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Không tìm thấy chiến dịch gây quỹ đang hoạt động nào."
+
+#: 
+msgid "No attendance records found."
+msgstr "Không tìm thấy bản ghi điểm danh nào."
+
+#: 
+msgid "No donated items yet."
+msgstr "Chưa có mục nào được hiến tặng."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Ngày kết thúc không hợp lệ"
+
+#: 
+msgid "Not included"
+msgstr "Không bao gồm"
+
+#: 
+msgid "People to assign"
+msgstr "Người cần phân công"
+
+#: 
+msgid "Planning"
+msgstr "Lập kế hoạch"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Vui lòng chọn vai trò gia đình cho %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Điền vào các trường bên dưới mà không lưu. Nhấn Lưu để áp dụng."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Vị trí của ký hiệu tiền tệ so với số tiền."
+
+#: 
+msgid "Quick presets"
+msgstr "Cài đặt nhanh"
+
+#: 
+msgid "Raised"
+msgstr "Đã gây quỹ"
+
+#: 
+msgid "Raised This Year"
+msgstr "Đã gây quỹ năm nay"
+
+#: 
+msgid "Sample Amount"
+msgstr "Số tiền mẫu"
+
+#: 
+msgid "Sell-through"
+msgstr "Tỷ lệ bán ra"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Ký tự đơn dùng làm dấu thập phân (ví dụ: . hoặc ,). Mặc định: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Ký tự đơn dùng để nhóm hàng nghìn (ví dụ: , hoặc .). Mặc định: ,"
+
+#: 
+msgid "Sold"
+msgstr "Đã bán"
+
+#: 
+msgid "State / Province"
+msgstr "Tỉnh / Thành phố"
+
+#: 
+msgid "Streak"
+msgstr "Chuỗi liên tiếp"
+
+#: 
+msgid "Symbol Position"
+msgstr "Vị trí ký hiệu"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Ký hiệu hoặc mã hiển thị bên cạnh số tiền (ví dụ: $, €, £, CHF, CAD $). Mặc định: $"
+
+#: 
+msgid "Target family"
+msgstr "Gia đình mục tiêu"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Không tìm thấy nhóm. Vui lòng thử lại."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Gia đình đã chọn không còn tồn tại. Vui lòng làm mới trang và thử lại."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Không tìm thấy nhóm đã chọn. Vui lòng chọn một nhóm hợp lệ."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Đây là cách ngày tháng, số tiền và số điện thoại sẽ hiển thị trong toàn bộ hệ thống. Xem lại các định dạng hiện tại tại đây, sau đó chỉnh sửa trong các phần bên dưới."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Dấu phân cách hàng nghìn"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Dấu phân cách hàng nghìn và dấu thập phân phải là các ký tự khác nhau."
+
+#: 
+msgid "To date"
+msgstr "Đến ngày"
+
+#: 
+msgid "Total Events"
+msgstr "Tổng số sự kiện"
+
+#: 
+msgid "Total Raised"
+msgstr "Tổng số đã gây quỹ"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Tổng số đã gây quỹ (chưa đặt mục tiêu)"
+
+#: 
+msgid "Unsold"
+msgstr "Chưa bán"
+
+#: 
+msgid "Updates as you type."
+msgstr "Cập nhật khi bạn gõ."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Ký hiệu xuất hiện trước hay sau số tiền. Mặc định: Trước số tiền"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Danh sách chọn của bạn trống. Hãy thêm người vào danh sách trước."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Mã bưu chính"
+
+#: 
+msgid "events"
+msgstr "sự kiện"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount phải là số không âm"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount phải không âm"
+
+#: 
+msgid "thru %s"
+msgstr "đến %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Chọn vai trò —"
+
+#: 
+msgid "— pick —"
+msgstr "— chọn —"
 

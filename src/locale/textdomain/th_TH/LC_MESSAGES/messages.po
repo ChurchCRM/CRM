@@ -11054,11 +11054,6 @@ msgstr "ประเทศเริ่มต้น"
 msgid "Default State"
 msgstr "สถานะเริ่มต้น"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "ตัวคั่นเพื่อแยกอีเมลในลิงก์ mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "หน่วยระยะทาง"
@@ -16701,4 +16696,484 @@ msgstr "ไม่พบผู้ใช้"
 #: 
 msgid "— Select a person —"
 msgstr "— เลือกบุคคล —"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "กิจกรรมระดมทุน %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "ระดมทุนได้ %s จากเป้าหมาย %s"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "กิจกรรมระดมทุนที่ใช้งานอยู่"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "เพิ่มกิจกรรมระดมทุน"
+
+#: 
+msgid "Add Item"
+msgstr "เพิ่มรายการ"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "กรุณาเพิ่มสมาชิกลงในรายการก่อน แล้วจึงมอบหมายให้กับครอบครัว"
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "กรุณาเพิ่มสมาชิกลงในรายการก่อน แล้วกลับมาเพิ่มเข้ากลุ่มในภายหลัง"
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "หลังจำนวนเงิน (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "ทุกสถานะ"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "สมาชิกทุกคนในรายการอยู่ในครอบครัวแล้ว ไม่สามารถมอบหมายเพิ่มได้"
+
+#: 
+msgid "All types"
+msgstr "ทุกประเภท"
+
+#: 
+msgid "Already in"
+msgstr "อยู่ใน"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "เกิดข้อผิดพลาดที่ไม่คาดคิด กรุณาลองใหม่อีกครั้ง"
+
+#: 
+msgid "Apply"
+msgstr "นำไปใช้"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "มอบหมายสมาชิกในรายการเข้ากลุ่ม"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "มอบหมายสมาชิกจากรายการเข้าครอบครัว"
+
+#: 
+msgid "Assign role to all:"
+msgstr "มอบหมายบทบาทให้ทุกคน:"
+
+#: 
+msgid "Assign to Family"
+msgstr "มอบหมายเข้าครอบครัว"
+
+#: 
+msgid "Associated Fund"
+msgstr "กองทุนที่เกี่ยวข้อง"
+
+#: 
+msgid "At a Glance"
+msgstr "ภาพรวม"
+
+#: 
+msgid "Auction Reports"
+msgstr "รายงานการประมูล"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "ราคาขายเฉลี่ย"
+
+#: 
+msgid "Back to Cart"
+msgstr "กลับไปรายการ"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "กลับไปกิจกรรมระดมทุน"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "ก่อนจำนวนเงิน (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "สถิติต่อเนื่องสูงสุด"
+
+#: 
+msgid "Bid Sheets"
+msgstr "แผ่นเสนอราคา"
+
+#: 
+msgid "Buyer Statements"
+msgstr "รายการของผู้ซื้อ"
+
+#: 
+msgid "Buyers Registered"
+msgstr "ผู้ซื้อที่ลงทะเบียน"
+
+#: 
+msgid "Buyers This Year"
+msgstr "ผู้ซื้อในปีนี้"
+
+#: 
+msgid "Catalog"
+msgstr "แคตาล็อก"
+
+#: 
+msgid "Certificates"
+msgstr "ใบรับรอง"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "อักขระที่ใช้เป็นจุดทศนิยมในจำนวนเงิน (เช่น . หรือ ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "อักขระที่ใช้แยกหลักพันในจำนวนเงิน (เช่น , หรือ .)"
+
+#: 
+msgid "Check-out"
+msgstr "ชำระเงิน"
+
+#: 
+msgid "Choose a group..."
+msgstr "เลือกกลุ่ม..."
+
+#: 
+msgid "Choose family"
+msgstr "เลือกครอบครัว"
+
+#: 
+msgid "Code"
+msgstr "รหัส"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "ตั้งค่าการแสดงจำนวนเงินทั่วทั้งระบบ"
+
+#: 
+msgid "Create Fundraiser"
+msgstr "สร้างกิจกรรมระดมทุน"
+
+#: 
+msgid "Create new family…"
+msgstr "สร้างครอบครัวใหม่…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "รูปแบบสกุลเงินและการเงิน"
+
+#: 
+msgid "Currency Format"
+msgstr "รูปแบบสกุลเงิน"
+
+#: 
+msgid "Currency Symbol"
+msgstr "สัญลักษณ์สกุลเงิน"
+
+#: 
+msgid "Currency presets"
+msgstr "ค่าที่ตั้งไว้ล่วงหน้าสำหรับสกุลเงิน"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "สัญลักษณ์สกุลเงินที่แสดงข้างจำนวนเงิน (เช่น $, €, £, CHF, CAD $)"
+
+#: 
+msgid "Decimal Separator"
+msgstr "ตัวคั่นทศนิยม"
+
+#: 
+msgid "Did Not Attend"
+msgstr "ไม่ได้เข้าร่วม"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "วันที่สิ้นสุดต้องเป็นวันเดียวกับหรือหลังวันที่เริ่มต้น"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "ป้อนรัฐ/จังหวัดสำหรับประเทศที่ไม่มีรัฐกำหนดไว้ล่วงหน้า"
+
+#: 
+msgid "Est. Value Total"
+msgstr "มูลค่าประมาณการรวม"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "สมาชิกทุกคนจากกลุ่มที่เชื่อมโยงได้เช็คอินแล้ว!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "ไม่สามารถโหลดประวัติการเข้าร่วมได้"
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "จำเป็นต้องระบุชื่อครอบครัวเมื่อสร้างครอบครัวใหม่"
+
+#: 
+msgid "Filter by event type"
+msgstr "กรองตามประเภทกิจกรรม"
+
+#: 
+msgid "Financials"
+msgstr "การเงิน"
+
+#: 
+msgid "From date"
+msgstr "จากวันที่"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "ภาพรวมกิจกรรมระดมทุน"
+
+#: 
+msgid "Fundraisers"
+msgstr "กิจกรรมระดมทุน"
+
+#: 
+msgid "Fundraising"
+msgstr "การระดมทุน"
+
+#: 
+msgid "Goal %"
+msgstr "เป้าหมาย %"
+
+#: 
+msgid "Goal Amount"
+msgstr "จำนวนเป้าหมาย"
+
+#: 
+msgid "Highest Sale"
+msgstr "ยอดขายสูงสุด"
+
+#: 
+msgid "Invalid status value"
+msgstr "ค่าสถานะไม่ถูกต้อง"
+
+#: 
+msgid "Invalid type value"
+msgstr "ค่าประเภทไม่ถูกต้อง"
+
+#: 
+msgid "Items"
+msgstr "รายการ"
+
+#: 
+msgid "Items Donated"
+msgstr "รายการที่บริจาค"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "รายการที่บริจาค (ปีนี้)"
+
+#: 
+msgid "Items Sold"
+msgstr "รายการที่ขายได้"
+
+#: 
+msgid "Last Attendance"
+msgstr "การเข้าร่วมครั้งล่าสุด"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "กองทุนบริจาคที่เชื่อมโยง"
+
+#: 
+msgid "Live Preview"
+msgstr "ตัวอย่างแบบเรียลไทม์"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "กำลังโหลดประวัติการเข้าร่วม…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "รายการซื้อหลายชิ้น"
+
+#: 
+msgid "New family details"
+msgstr "รายละเอียดครอบครัวใหม่"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "ไม่พบกิจกรรมระดมทุน %s"
+
+#: 
+msgid "No active fundraisers found."
+msgstr "ไม่พบกิจกรรมระดมทุนที่ใช้งานอยู่"
+
+#: 
+msgid "No attendance records found."
+msgstr "ไม่พบบันทึกการเข้าร่วม"
+
+#: 
+msgid "No donated items yet."
+msgstr "ยังไม่มีรายการที่บริจาค"
+
+#: 
+msgid "Not a valid end date"
+msgstr "วันที่สิ้นสุดไม่ถูกต้อง"
+
+#: 
+msgid "Not included"
+msgstr "ไม่รวม"
+
+#: 
+msgid "People to assign"
+msgstr "สมาชิกที่จะมอบหมาย"
+
+#: 
+msgid "Planning"
+msgstr "การวางแผน"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "กรุณาเลือกบทบาทในครอบครัวสำหรับ %s"
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "กรอกข้อมูลในช่องด้านล่างโดยไม่บันทึก คลิกบันทึกเพื่อนำไปใช้"
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "ตำแหน่งของสัญลักษณ์สกุลเงินเทียบกับจำนวนเงิน"
+
+#: 
+msgid "Quick presets"
+msgstr "ค่าที่ตั้งไว้ล่วงหน้าแบบด่วน"
+
+#: 
+msgid "Raised"
+msgstr "ระดมทุนได้"
+
+#: 
+msgid "Raised This Year"
+msgstr "ระดมทุนได้ในปีนี้"
+
+#: 
+msgid "Sample Amount"
+msgstr "จำนวนเงินตัวอย่าง"
+
+#: 
+msgid "Sell-through"
+msgstr "อัตราการขาย"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "อักขระเดี่ยวที่ใช้เป็นจุดทศนิยม (เช่น . หรือ ,) ค่าเริ่มต้น: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "อักขระเดี่ยวที่ใช้แยกหลักพัน (เช่น , หรือ .) ค่าเริ่มต้น: ,"
+
+#: 
+msgid "Sold"
+msgstr "ขายแล้ว"
+
+#: 
+msgid "State / Province"
+msgstr "รัฐ / จังหวัด"
+
+#: 
+msgid "Streak"
+msgstr "ต่อเนื่อง"
+
+#: 
+msgid "Symbol Position"
+msgstr "ตำแหน่งสัญลักษณ์"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "สัญลักษณ์หรือรหัสที่แสดงข้างจำนวนเงิน (เช่น $, €, £, CHF, CAD $) ค่าเริ่มต้น: $"
+
+#: 
+msgid "Target family"
+msgstr "ครอบครัวเป้าหมาย"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "ไม่พบกลุ่ม กรุณาลองใหม่อีกครั้ง"
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "ครอบครัวที่เลือกไม่มีอยู่อีกต่อไป กรุณารีเฟรชหน้าและลองใหม่อีกครั้ง"
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "ไม่พบกลุ่มที่เลือก กรุณาเลือกกลุ่มที่ถูกต้อง"
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "นี่คือวิธีที่วันที่ จำนวนเงิน และหมายเลขโทรศัพท์จะปรากฏทั่วทั้งระบบ"
+
+#: 
+msgid "Thousands Separator"
+msgstr "ตัวคั่นหลักพัน"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "ตัวคั่นหลักพันและตัวคั่นทศนิยมต้องเป็นอักขระที่แตกต่างกัน"
+
+#: 
+msgid "To date"
+msgstr "ถึงวันที่"
+
+#: 
+msgid "Total Events"
+msgstr "กิจกรรมทั้งหมด"
+
+#: 
+msgid "Total Raised"
+msgstr "รวมที่ระดมทุนได้"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "รวมที่ระดมทุนได้ (ไม่ได้กำหนดเป้าหมาย)"
+
+#: 
+msgid "Unsold"
+msgstr "ยังไม่ขาย"
+
+#: 
+msgid "Updates as you type."
+msgstr "อัปเดตขณะพิมพ์"
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "ระบุว่าสัญลักษณ์ปรากฏก่อนหรือหลังจำนวนตัวเลข ค่าเริ่มต้น: ก่อนจำนวนเงิน"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "รายการของคุณว่างเปล่า กรุณาเพิ่มสมาชิกลงในรายการก่อน"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "รหัสไปรษณีย์"
+
+#: 
+msgid "events"
+msgstr "กิจกรรม"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount ต้องเป็นตัวเลขที่ไม่ติดลบ"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount ต้องไม่ติดลบ"
+
+#: 
+msgid "thru %s"
+msgstr "ถึง %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— เลือกบทบาท —"
+
+#: 
+msgid "— pick —"
+msgstr "— เลือก —"
 

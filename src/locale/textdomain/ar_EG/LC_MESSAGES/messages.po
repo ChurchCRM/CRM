@@ -11119,11 +11119,6 @@ msgstr "البلد الافتراضي"
 msgid "Default State"
 msgstr "الحالة الافتراضية"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "الفاصل لفصل رسائل البريد الإلكتروني في روابط mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "وحدة المسافة"
@@ -16776,4 +16771,504 @@ msgstr "المستخدم غير موجود."
 #: 
 msgid "— Select a person —"
 msgstr "— اختر شخصًا —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "لا توجد حملات تبرع مؤرشفة"
+msgstr[1] "حملة تبرع مؤرشفة واحدة"
+msgstr[2] "حملتا تبرع مؤرشفتان"
+msgstr[3] "%d حملات تبرع مؤرشفة"
+msgstr[4] "%d حملة تبرع مؤرشفة"
+msgstr[5] "%d حملة تبرع مؤرشفة"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "لم يتم إضافة أي شخص إلى العائلة المحددة."
+msgstr[1] "تمت إضافة شخص واحد بنجاح إلى العائلة المحددة."
+msgstr[2] "تمت إضافة شخصين بنجاح إلى العائلة المحددة."
+msgstr[3] "تمت إضافة %d أشخاص بنجاح إلى العائلة المحددة."
+msgstr[4] "تمت إضافة %d شخصًا بنجاح إلى العائلة المحددة."
+msgstr[5] "تمت إضافة %d شخص بنجاح إلى العائلة المحددة."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "حملات تبرع %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "تم جمع %s من هدف %s"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "حملات التبرع النشطة"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "إضافة حملة تبرع"
+
+#: 
+msgid "Add Item"
+msgstr "إضافة عنصر"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "أضف أعضاء إلى قائمتك قبل تعيينهم لعائلة."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "أضف أعضاء إلى قائمتك أولاً، ثم عد لإضافتهم إلى مجموعة."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "بعد المبلغ (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "جميع الحالات"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "جميع الأعضاء في قائمتك منتسبون بالفعل إلى عائلة. لا يمكن تعيين أي شخص."
+
+#: 
+msgid "All types"
+msgstr "جميع الأنواع"
+
+#: 
+msgid "Already in"
+msgstr "موجود بالفعل في"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Apply"
+msgstr "تطبيق"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "تعيين أعضاء القائمة إلى مجموعة"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "تعيين أعضاء من قائمتك إلى عائلة"
+
+#: 
+msgid "Assign role to all:"
+msgstr "تعيين دور للجميع:"
+
+#: 
+msgid "Assign to Family"
+msgstr "تعيين إلى عائلة"
+
+#: 
+msgid "Associated Fund"
+msgstr "الصندوق المرتبط"
+
+#: 
+msgid "At a Glance"
+msgstr "نظرة عامة"
+
+#: 
+msgid "Auction Reports"
+msgstr "تقارير المزاد"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "متوسط سعر البيع"
+
+#: 
+msgid "Back to Cart"
+msgstr "العودة إلى القائمة"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "العودة إلى حملات التبرع"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "قبل المبلغ (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "أفضل سلسلة حضور"
+
+#: 
+msgid "Bid Sheets"
+msgstr "أوراق العطاءات"
+
+#: 
+msgid "Buyer Statements"
+msgstr "كشوف المشترين"
+
+#: 
+msgid "Buyers Registered"
+msgstr "المشترون المسجلون"
+
+#: 
+msgid "Buyers This Year"
+msgstr "المشترون هذا العام"
+
+#: 
+msgid "Catalog"
+msgstr "الكتالوج"
+
+#: 
+msgid "Certificates"
+msgstr "الشهادات"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "الرمز المستخدم كنقطة عشرية في المبالغ المالية (مثل . أو ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "الرمز المستخدم لفصل الآلاف في المبالغ المالية (مثل , أو .)"
+
+#: 
+msgid "Check-out"
+msgstr "تسجيل الخروج"
+
+#: 
+msgid "Choose a group..."
+msgstr "اختر مجموعة..."
+
+#: 
+msgid "Choose family"
+msgstr "اختر عائلة"
+
+#: 
+msgid "Code"
+msgstr "الرمز"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "قم بتكوين طريقة عرض المبالغ المالية في جميع أنحاء النظام."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "إنشاء حملة تبرع"
+
+#: 
+msgid "Create new family…"
+msgstr "إنشاء عائلة جديدة…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "تنسيقات العملة والمالية"
+
+#: 
+msgid "Currency Format"
+msgstr "تنسيق العملة"
+
+#: 
+msgid "Currency Symbol"
+msgstr "رمز العملة"
+
+#: 
+msgid "Currency presets"
+msgstr "إعدادات العملة المسبقة"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "رمز العملة المعروض بجانب المبالغ المالية (مثل $، €، £، CHF، CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "الفاصل العشري"
+
+#: 
+msgid "Did Not Attend"
+msgstr "لم يحضر"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "يجب أن يكون تاريخ الانتهاء في تاريخ البدء أو بعده"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "أدخل الولاية/المقاطعة للدول التي لا تحتوي على ولايات محددة مسبقاً"
+
+#: 
+msgid "Est. Value Total"
+msgstr "إجمالي القيمة التقديرية"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "جميع أعضاء المجموعات المرتبطة سجّلوا حضورهم!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "فشل تحميل سجل الحضور."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "اسم العائلة مطلوب عند إنشاء عائلة جديدة."
+
+#: 
+msgid "Filter by event type"
+msgstr "تصفية حسب نوع الفعالية"
+
+#: 
+msgid "Financials"
+msgstr "الشؤون المالية"
+
+#: 
+msgid "From date"
+msgstr "من تاريخ"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "نظرة عامة على حملة التبرع"
+
+#: 
+msgid "Fundraisers"
+msgstr "حملات التبرع"
+
+#: 
+msgid "Fundraising"
+msgstr "جمع التبرعات"
+
+#: 
+msgid "Goal %"
+msgstr "نسبة الهدف %"
+
+#: 
+msgid "Goal Amount"
+msgstr "مبلغ الهدف"
+
+#: 
+msgid "Highest Sale"
+msgstr "أعلى مبيعات"
+
+#: 
+msgid "Invalid status value"
+msgstr "قيمة الحالة غير صالحة"
+
+#: 
+msgid "Invalid type value"
+msgstr "قيمة النوع غير صالحة"
+
+#: 
+msgid "Items"
+msgstr "العناصر"
+
+#: 
+msgid "Items Donated"
+msgstr "العناصر المتبرع بها"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "العناصر المتبرع بها (هذا العام)"
+
+#: 
+msgid "Items Sold"
+msgstr "العناصر المباعة"
+
+#: 
+msgid "Last Attendance"
+msgstr "آخر حضور"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "صندوق التبرعات المرتبط"
+
+#: 
+msgid "Live Preview"
+msgstr "معاينة مباشرة"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "جارٍ تحميل سجل الحضور…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "عناصر الشراء المتعدد"
+
+#: 
+msgid "New family details"
+msgstr "تفاصيل العائلة الجديدة"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "لم يتم العثور على حملات تبرع %s."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "لم يتم العثور على حملات تبرع نشطة."
+
+#: 
+msgid "No attendance records found."
+msgstr "لم يتم العثور على سجلات حضور."
+
+#: 
+msgid "No donated items yet."
+msgstr "لا توجد عناصر متبرع بها حتى الآن."
+
+#: 
+msgid "Not a valid end date"
+msgstr "تاريخ انتهاء غير صالح"
+
+#: 
+msgid "Not included"
+msgstr "غير مدرج"
+
+#: 
+msgid "People to assign"
+msgstr "الأعضاء المراد تعيينهم"
+
+#: 
+msgid "Planning"
+msgstr "التخطيط"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "يرجى تحديد دور عائلي لـ %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "يملأ الحقول أدناه دون حفظ. انقر على حفظ للتطبيق."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "موضع رمز العملة بالنسبة للمبلغ."
+
+#: 
+msgid "Quick presets"
+msgstr "إعدادات مسبقة سريعة"
+
+#: 
+msgid "Raised"
+msgstr "المبلغ المجموع"
+
+#: 
+msgid "Raised This Year"
+msgstr "المبلغ المجموع هذا العام"
+
+#: 
+msgid "Sample Amount"
+msgstr "مبلغ نموذجي"
+
+#: 
+msgid "Sell-through"
+msgstr "نسبة المبيعات"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "حرف مفرد يُستخدم كنقطة عشرية (مثل . أو ,). الافتراضي: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "حرف مفرد يُستخدم لتجميع الآلاف (مثل , أو .). الافتراضي: ,"
+
+#: 
+msgid "Sold"
+msgstr "مباع"
+
+#: 
+msgid "State / Province"
+msgstr "الولاية / المقاطعة"
+
+#: 
+msgid "Streak"
+msgstr "سلسلة الحضور"
+
+#: 
+msgid "Symbol Position"
+msgstr "موضع الرمز"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "الرمز أو الكود المعروض بجانب المبالغ (مثل $، €، £، CHF، CAD $). الافتراضي: $"
+
+#: 
+msgid "Target family"
+msgstr "العائلة المستهدفة"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "تعذر العثور على المجموعة. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "العائلة المحددة لم تعد موجودة. يرجى تحديث الصفحة والمحاولة مرة أخرى."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "لم يتم العثور على المجموعة المحددة. يرجى تحديد مجموعة صالحة."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "هكذا ستظهر التواريخ والمبالغ المالية وأرقام الهواتف في جميع أنحاء النظام."
+
+#: 
+msgid "Thousands Separator"
+msgstr "فاصل الآلاف"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "يجب أن يكون فاصل الآلاف والفاصل العشري حرفين مختلفين."
+
+#: 
+msgid "To date"
+msgstr "إلى تاريخ"
+
+#: 
+msgid "Total Events"
+msgstr "إجمالي الفعاليات"
+
+#: 
+msgid "Total Raised"
+msgstr "إجمالي المبلغ المجموع"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "إجمالي المجموع (لم يُحدد هدف)"
+
+#: 
+msgid "Unsold"
+msgstr "غير مباع"
+
+#: 
+msgid "Updates as you type."
+msgstr "يتحدث أثناء الكتابة."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "ما إذا كان الرمز يظهر قبل المبلغ الرقمي أو بعده. الافتراضي: قبل المبلغ"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "قائمتك فارغة. أضف أعضاء إلى قائمتك أولاً."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "الرمز البريدي"
+
+#: 
+msgid "events"
+msgstr "فعاليات"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "يجب أن يكون مبلغ الهدف رقمًا غير سالب"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "يجب أن يكون مبلغ الهدف غير سالب"
+
+#: 
+msgid "thru %s"
+msgstr "حتى %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— اختر الدور —"
+
+#: 
+msgid "— pick —"
+msgstr "— اختر —"
 

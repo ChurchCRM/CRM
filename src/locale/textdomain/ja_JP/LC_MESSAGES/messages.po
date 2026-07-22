@@ -11042,11 +11042,6 @@ msgstr "デフォルト国"
 msgid "Default State"
 msgstr "デフォルト状態"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Mailto:リンク内のメールを分離するためのデリミタ"
-
 #: 
 msgid "Distance Unit"
 msgstr "距離単位"
@@ -16689,4 +16684,484 @@ msgstr "ユーザーが見つかりません。"
 #: 
 msgid "— Select a person —"
 msgstr "— 人物を選択 —"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s 募金活動"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s（目標 %s）を達成"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "進行中の募金活動"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "募金活動を追加"
+
+#: 
+msgid "Add Item"
+msgstr "アイテムを追加"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "家族に割り当てる前に、カートに人を追加してください。"
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "まずカートに人を追加してから、グループに追加しに戻ってください。"
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "金額の後（100.00 ¤）"
+
+#: 
+msgid "All Statuses"
+msgstr "すべてのステータス"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "カート内の全員がすでに家族に属しています。割り当てできる人がいません。"
+
+#: 
+msgid "All types"
+msgstr "すべてのタイプ"
+
+#: 
+msgid "Already in"
+msgstr "既に所属"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "予期しないエラーが発生しました。もう一度お試しください。"
+
+#: 
+msgid "Apply"
+msgstr "適用"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "カートのメンバーをグループに割り当て"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "カートの人を家族に割り当て"
+
+#: 
+msgid "Assign role to all:"
+msgstr "全員に役割を割り当て："
+
+#: 
+msgid "Assign to Family"
+msgstr "家族に割り当て"
+
+#: 
+msgid "Associated Fund"
+msgstr "関連献金基金"
+
+#: 
+msgid "At a Glance"
+msgstr "概要"
+
+#: 
+msgid "Auction Reports"
+msgstr "オークション報告"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "平均販売価格"
+
+#: 
+msgid "Back to Cart"
+msgstr "カートに戻る"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "募金活動に戻る"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "金額の前（¤ 100.00）"
+
+#: 
+msgid "Best Streak"
+msgstr "最長連続記録"
+
+#: 
+msgid "Bid Sheets"
+msgstr "入札シート"
+
+#: 
+msgid "Buyer Statements"
+msgstr "購入者明細"
+
+#: 
+msgid "Buyers Registered"
+msgstr "登録済み購入者"
+
+#: 
+msgid "Buyers This Year"
+msgstr "今年の購入者"
+
+#: 
+msgid "Catalog"
+msgstr "カタログ"
+
+#: 
+msgid "Certificates"
+msgstr "証明書"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "金額の小数点に使用する文字（例：. または ,）"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "金額の千の位区切りに使用する文字（例：, または .）"
+
+#: 
+msgid "Check-out"
+msgstr "チェックアウト"
+
+#: 
+msgid "Choose a group..."
+msgstr "グループを選択..."
+
+#: 
+msgid "Choose family"
+msgstr "家族を選択"
+
+#: 
+msgid "Code"
+msgstr "コード"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "システム全体での金額の表示方法を設定します。財務ページがこれらの設定（epic #8459）を使用するように更新されると、ここで設定したシンボル、位置、区切り文字がシステム全体に適用されます。"
+
+#: 
+msgid "Create Fundraiser"
+msgstr "募金活動を作成"
+
+#: 
+msgid "Create new family…"
+msgstr "新しい家族を作成..."
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "通貨・財務フォーマット"
+
+#: 
+msgid "Currency Format"
+msgstr "通貨フォーマット"
+
+#: 
+msgid "Currency Symbol"
+msgstr "通貨記号"
+
+#: 
+msgid "Currency presets"
+msgstr "通貨プリセット"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "金額の横に表示する通貨記号（例：$、€、£、CHF、CAD $）。"
+
+#: 
+msgid "Decimal Separator"
+msgstr "小数点区切り文字"
+
+#: 
+msgid "Did Not Attend"
+msgstr "欠席"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "終了日は開始日以降でなければなりません"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "定義済みの州がない国の場合、都道府県/州を入力してください"
+
+#: 
+msgid "Est. Value Total"
+msgstr "推定総額"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "リンクされたグループの全員がチェックインしました！"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "出席履歴の読み込みに失敗しました。"
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "新しい家族を作成する際は、家族名が必要です。"
+
+#: 
+msgid "Filter by event type"
+msgstr "イベントタイプでフィルター"
+
+#: 
+msgid "Financials"
+msgstr "財務"
+
+#: 
+msgid "From date"
+msgstr "開始日"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "募金活動の概要"
+
+#: 
+msgid "Fundraisers"
+msgstr "募金活動"
+
+#: 
+msgid "Fundraising"
+msgstr "募金"
+
+#: 
+msgid "Goal %"
+msgstr "目標達成率"
+
+#: 
+msgid "Goal Amount"
+msgstr "目標金額"
+
+#: 
+msgid "Highest Sale"
+msgstr "最高販売額"
+
+#: 
+msgid "Invalid status value"
+msgstr "無効なステータス値"
+
+#: 
+msgid "Invalid type value"
+msgstr "無効なタイプ値"
+
+#: 
+msgid "Items"
+msgstr "アイテム"
+
+#: 
+msgid "Items Donated"
+msgstr "寄贈品"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "寄贈品（今年）"
+
+#: 
+msgid "Items Sold"
+msgstr "販売済みアイテム"
+
+#: 
+msgid "Last Attendance"
+msgstr "最終出席"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "リンクされた献金基金"
+
+#: 
+msgid "Live Preview"
+msgstr "ライブプレビュー"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "出席履歴を読み込み中..."
+
+#: 
+msgid "Multibuy Items"
+msgstr "複数購入アイテム"
+
+#: 
+msgid "New family details"
+msgstr "新しい家族の詳細"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "%s の募金活動が見つかりません。"
+
+#: 
+msgid "No active fundraisers found."
+msgstr "進行中の募金活動が見つかりません。"
+
+#: 
+msgid "No attendance records found."
+msgstr "出席記録が見つかりません。"
+
+#: 
+msgid "No donated items yet."
+msgstr "まだ寄贈品はありません。"
+
+#: 
+msgid "Not a valid end date"
+msgstr "有効な終了日ではありません"
+
+#: 
+msgid "Not included"
+msgstr "含まれていません"
+
+#: 
+msgid "People to assign"
+msgstr "割り当てる人"
+
+#: 
+msgid "Planning"
+msgstr "計画"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "%s の家族内役割を選択してください。"
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "保存せずに以下のフィールドに入力します。適用するには「保存」をクリックしてください。"
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "金額に対する通貨記号の位置。"
+
+#: 
+msgid "Quick presets"
+msgstr "クイックプリセット"
+
+#: 
+msgid "Raised"
+msgstr "調達済み"
+
+#: 
+msgid "Raised This Year"
+msgstr "今年の調達額"
+
+#: 
+msgid "Sample Amount"
+msgstr "サンプル金額"
+
+#: 
+msgid "Sell-through"
+msgstr "完売率"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "小数点として使用する1文字（例：. または ,）。デフォルト：."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "千の位のグループ化に使用する1文字（例：, または .）。デフォルト：,"
+
+#: 
+msgid "Sold"
+msgstr "販売済み"
+
+#: 
+msgid "State / Province"
+msgstr "都道府県 / 州"
+
+#: 
+msgid "Streak"
+msgstr "連続記録"
+
+#: 
+msgid "Symbol Position"
+msgstr "記号の位置"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "金額の横に表示する記号またはコード（例：$、€、£、CHF、CAD $）。デフォルト：$"
+
+#: 
+msgid "Target family"
+msgstr "対象家族"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "グループが見つかりませんでした。もう一度お試しください。"
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "選択した家族はもう存在しません。ページを更新してもう一度お試しください。"
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "選択したグループが見つかりませんでした。有効なグループを選択してください。"
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "日付、金額、電話番号がシステム全体でどのように表示されるかを示します。現在のフォーマットをここで確認し、以下のセクションで編集してください。"
+
+#: 
+msgid "Thousands Separator"
+msgstr "千の位区切り文字"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "千の位区切り文字と小数点区切り文字は異なる文字でなければなりません。"
+
+#: 
+msgid "To date"
+msgstr "終了日"
+
+#: 
+msgid "Total Events"
+msgstr "総イベント数"
+
+#: 
+msgid "Total Raised"
+msgstr "総調達額"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "総調達額（目標未設定）"
+
+#: 
+msgid "Unsold"
+msgstr "未販売"
+
+#: 
+msgid "Updates as you type."
+msgstr "入力と同時に更新されます。"
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "記号が金額の前または後に表示されるかどうか。デフォルト：金額の前"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "カートが空です。まずカートに人を追加してください。"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "郵便番号"
+
+#: 
+msgid "events"
+msgstr "イベント"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount は非負の数値でなければなりません"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount は非負でなければなりません"
+
+#: 
+msgid "thru %s"
+msgstr "%s まで"
+
+#: 
+msgid "— Select role —"
+msgstr "— 役割を選択 —"
+
+#: 
+msgid "— pick —"
+msgstr "— 選択 —"
 

@@ -11092,11 +11092,6 @@ msgstr "Verstek Land"
 msgid "Default State"
 msgstr "Verstek Staat"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Skeider om e-poste in mailto: skakels te verdeel"
-
 #: 
 msgid "Distance Unit"
 msgstr "Afstand Eenheid"
@@ -16741,4 +16736,492 @@ msgstr "Gebruiker nie gevind nie."
 #: 
 msgid "— Select a person —"
 msgstr "— Kies 'n persoon —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d geargiveerde fondsinsameling"
+msgstr[1] "%d geargiveerde fondsinsamelings"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d persoon suksesvol by geselekteerde gesin gevoeg."
+msgstr[1] "%d persone suksesvol by geselekteerde gesin gevoeg."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s Fondsinsamelings"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s van %s doelwit ingesamel"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktiewe Fondsinsamelings"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Voeg Fondsinsameling By"
+
+#: 
+msgid "Add Item"
+msgstr "Voeg Item By"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Voeg mense by jou keuskas voor jy hulle aan 'n gesin toewys."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Voeg mense eers by jou keuskas, kom dan terug om hulle by 'n groep te voeg."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Na bedrag (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Alle Statusse"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Alle mense in jou keuskas is reeds in 'n gesin. Niemand kan toegewys word nie."
+
+#: 
+msgid "All types"
+msgstr "Alle tipes"
+
+#: 
+msgid "Already in"
+msgstr "Reeds in"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "'n Onverwagte fout het voorgekom. Probeer asseblief weer."
+
+#: 
+msgid "Apply"
+msgstr "Pas Toe"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Wys keuskasleden aan 'n groep toe"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Wys mense uit jou keuskas aan 'n gesin toe"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Wys rol aan almal toe:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Wys aan Gesin Toe"
+
+#: 
+msgid "Associated Fund"
+msgstr "Geassosieerde Fonds"
+
+#: 
+msgid "At a Glance"
+msgstr "Op 'n Oomblik"
+
+#: 
+msgid "Auction Reports"
+msgstr "Veilingverslae"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Gem. Verkoopprys"
+
+#: 
+msgid "Back to Cart"
+msgstr "Terug na Keuskas"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Terug na Fondsinsamelings"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Voor bedrag (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Beste Reeks"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Biedvorms"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Kopers se Rekeninge"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Kopers Geregistreer"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Kopers Hierdie Jaar"
+
+#: 
+msgid "Catalog"
+msgstr "Katalogus"
+
+#: 
+msgid "Certificates"
+msgstr "Sertifikate"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Karakter wat as desimaalspunt in geldbedrae gebruik word (bv. . of ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Karakter wat gebruik word om duisende in geldbedrae te skei (bv. , of .)"
+
+#: 
+msgid "Check-out"
+msgstr "Uitteken"
+
+#: 
+msgid "Choose a group..."
+msgstr "Kies 'n groep..."
+
+#: 
+msgid "Choose family"
+msgstr "Kies gesin"
+
+#: 
+msgid "Code"
+msgstr "Kode"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Stel in hoe geldbedrae regdeur die stelsel vertoon word."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Skep Fondsinsameling"
+
+#: 
+msgid "Create new family…"
+msgstr "Skep nuwe gesin…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Geldeenheid- en Finansiëleformate"
+
+#: 
+msgid "Currency Format"
+msgstr "Geldeenheidformaat"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Geldeenheidsimbool"
+
+#: 
+msgid "Currency presets"
+msgstr "Geldeenheidvoorkonfigurasies"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Geldeenheidsimbool wat langs geldbedrae vertoon word (bv. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Desimaalafskeidingsteken"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Het Nie Bygewoon Nie"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Einddatum moet op of na die begindatum wees"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Voer staat/provinsie in vir lande sonder vooraf gedefinieerde state"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Geskatte Totale Waarde"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Almal van gekoppelde groepe het ingeskryf!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Kon nie bywoningsgeskiedenis laai nie."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Familienaam word vereis wanneer 'n nuwe gesin geskep word."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filtreer volgens geleentheidstipe"
+
+#: 
+msgid "Financials"
+msgstr "Finansies"
+
+#: 
+msgid "From date"
+msgstr "Vanaf datum"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Fondsinsamelingstoorsig"
+
+#: 
+msgid "Fundraisers"
+msgstr "Fondsinsamelings"
+
+#: 
+msgid "Fundraising"
+msgstr "Fondsinsameling"
+
+#: 
+msgid "Goal %"
+msgstr "Doelwit %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Doelwitbedrag"
+
+#: 
+msgid "Highest Sale"
+msgstr "Hoogste Verkoop"
+
+#: 
+msgid "Invalid status value"
+msgstr "Ongeldige statuswaarde"
+
+#: 
+msgid "Invalid type value"
+msgstr "Ongeldige tipewaarde"
+
+#: 
+msgid "Items Donated"
+msgstr "Items Geskenk"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Items Geskenk (Hierdie Jaar)"
+
+#: 
+msgid "Items Sold"
+msgstr "Items Verkoop"
+
+#: 
+msgid "Last Attendance"
+msgstr "Laaste Bywoning"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Gekoppelde Offerfonds"
+
+#: 
+msgid "Live Preview"
+msgstr "Regstreekse Voorskou"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Bywoningsgeskiedenis word gelaai…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Veelkoop-items"
+
+#: 
+msgid "New family details"
+msgstr "Nuwe gesinbesonderhede"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Geen %s fondsinsamelings gevind nie."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Geen aktiewe fondsinsamelings gevind nie."
+
+#: 
+msgid "No attendance records found."
+msgstr "Geen bywoningsrekords gevind nie."
+
+#: 
+msgid "No donated items yet."
+msgstr "Nog geen geskenkte items nie."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Nie 'n geldige einddatum nie"
+
+#: 
+msgid "Not included"
+msgstr "Nie ingesluit nie"
+
+#: 
+msgid "People to assign"
+msgstr "Mense om toe te wys"
+
+#: 
+msgid "Planning"
+msgstr "Beplanning"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Kies asseblief 'n gesinsrol vir %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Vul die velde hieronder in sonder om te stoor. Klik Stoor om toe te pas."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Posisie van die geldeenheidsimbool relatief tot die bedrag."
+
+#: 
+msgid "Quick presets"
+msgstr "Vinnige voorkonfigurasies"
+
+#: 
+msgid "Raised"
+msgstr "Ingesamel"
+
+#: 
+msgid "Raised This Year"
+msgstr "Hierdie Jaar Ingesamel"
+
+#: 
+msgid "Sample Amount"
+msgstr "Voorbeeldbedrag"
+
+#: 
+msgid "Sell-through"
+msgstr "Verkooppersentasie"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Enkele karakter wat as desimaalspunt gebruik word (bv. . of ,). Verstek: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Enkele karakter wat gebruik word om duisende te groepeer (bv. , of .). Verstek: ,"
+
+#: 
+msgid "Sold"
+msgstr "Verkoop"
+
+#: 
+msgid "State / Province"
+msgstr "Staat / Provinsie"
+
+#: 
+msgid "Streak"
+msgstr "Reeks"
+
+#: 
+msgid "Symbol Position"
+msgstr "Simboolposisie"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Simbool of kode wat langs bedrae vertoon word (bv. $, €, £, CHF, CAD $). Verstek: $"
+
+#: 
+msgid "Target family"
+msgstr "Teikengesin"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Die groep kon nie gevind word nie. Probeer asseblief weer."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Die geselekteerde gesin bestaan nie meer nie. Herlaai asseblief die bladsy en probeer weer."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Die geselekteerde groep is nie gevind nie. Kies asseblief 'n geldige groep."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "So sal datums, geldbedrae en telefoonnommers regdeur die stelsel verskyn."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Duisendetal-afskeidingsteken"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Die duisendetal-afskeidingsteken en desimaalafskeidingsteken moet verskillende karakters wees."
+
+#: 
+msgid "To date"
+msgstr "Tot datum"
+
+#: 
+msgid "Total Events"
+msgstr "Totale Geleenthede"
+
+#: 
+msgid "Total Raised"
+msgstr "Totaal Ingesamel"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Totaal ingesamel (geen doelwit gestel nie)"
+
+#: 
+msgid "Unsold"
+msgstr "Onverkoop"
+
+#: 
+msgid "Updates as you type."
+msgstr "Dateer op soos jy tik."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Of die simbool voor of na die numeriese bedrag verskyn. Verstek: Voor bedrag"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Jou keuskas is leeg. Voeg eers mense by jou keuskas."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Poskode"
+
+#: 
+msgid "events"
+msgstr "geleenthede"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "doelwitBedrag moet 'n nie-negatiewe getal wees"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "doelwitBedrag moet nie-negatief wees"
+
+#: 
+msgid "thru %s"
+msgstr "tot %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Kies rol —"
+
+#: 
+msgid "— pick —"
+msgstr "— kies —"
 

@@ -11089,11 +11089,6 @@ msgstr "מדינה ברירת מחדל"
 msgid "Default State"
 msgstr "מדינה ברירת מחדל"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "תחום להפרדת דוא\"ל בקישורי mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "יחידת מרחק"
@@ -16738,4 +16733,496 @@ msgstr "המשתמש לא נמצא."
 #: 
 msgid "— Select a person —"
 msgstr "— בחר אדם —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "קמפיין גיוס כספים ארכיוני אחד"
+msgstr[1] "%d קמפיינים ארכיוניים לגיוס כספים"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "אדם אחד נוסף בהצלחה למשפחה הנבחרת."
+msgstr[1] "%d אנשים נוספו בהצלחה למשפחה הנבחרת."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "קמפיינים לגיוס כספים: %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s מתוך יעד %s גויס"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "קמפיינים פעילים לגיוס כספים"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "הוסף קמפיין גיוס כספים"
+
+#: 
+msgid "Add Item"
+msgstr "הוסף פריט"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "הוסף אנשים לסל שלך לפני שתשייך אותם למשפחה."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "הוסף אנשים לסל שלך תחילה, ולאחר מכן חזור כדי להוסיפם לקבוצה."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "אחרי הסכום (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "כל הסטטוסים"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "כל האנשים בסל שלך כבר שייכים למשפחה. לא ניתן לשייך אף אחד."
+
+#: 
+msgid "All types"
+msgstr "כל הסוגים"
+
+#: 
+msgid "Already in"
+msgstr "כבר נמצא ב"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "אירעה שגיאה בלתי צפויה. אנא נסה שנית."
+
+#: 
+msgid "Apply"
+msgstr "החל"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "שייך חברי סל לקבוצה"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "שייך אנשים מהסל שלך למשפחה"
+
+#: 
+msgid "Assign role to all:"
+msgstr "שייך תפקיד לכולם:"
+
+#: 
+msgid "Assign to Family"
+msgstr "שייך למשפחה"
+
+#: 
+msgid "Associated Fund"
+msgstr "קרן משויכת"
+
+#: 
+msgid "At a Glance"
+msgstr "במבט כולל"
+
+#: 
+msgid "Auction Reports"
+msgstr "דוחות מכירה פומבית"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "מחיר מכירה ממוצע"
+
+#: 
+msgid "Back to Cart"
+msgstr "חזרה לסל"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "חזרה לקמפיינים לגיוס כספים"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "לפני הסכום (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "הרצף הטוב ביותר"
+
+#: 
+msgid "Bid Sheets"
+msgstr "גיליונות הצעות מחיר"
+
+#: 
+msgid "Buyer Statements"
+msgstr "דוחות קונים"
+
+#: 
+msgid "Buyers Registered"
+msgstr "קונים רשומים"
+
+#: 
+msgid "Buyers This Year"
+msgstr "קונים השנה"
+
+#: 
+msgid "Catalog"
+msgstr "קטלוג"
+
+#: 
+msgid "Certificates"
+msgstr "תעודות"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "תו המשמש כנקודה עשרונית בסכומים כספיים (למשל . או ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "תו המשמש להפרדת אלפים בסכומים כספיים (למשל , או .)"
+
+#: 
+msgid "Check-out"
+msgstr "קופה"
+
+#: 
+msgid "Choose a group..."
+msgstr "בחר קבוצה..."
+
+#: 
+msgid "Choose family"
+msgstr "בחר משפחה"
+
+#: 
+msgid "Code"
+msgstr "קוד"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "הגדר כיצד סכומים כספיים מוצגים בכל המערכת."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "צור קמפיין גיוס כספים"
+
+#: 
+msgid "Create new family…"
+msgstr "צור משפחה חדשה..."
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "תבניות מטבע וכספים"
+
+#: 
+msgid "Currency Format"
+msgstr "תבנית מטבע"
+
+#: 
+msgid "Currency Symbol"
+msgstr "סמל מטבע"
+
+#: 
+msgid "Currency presets"
+msgstr "הגדרות מטבע מוגדרות מראש"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "סמל המטבע להצגה לצד סכומים כספיים (למשל $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "מפריד עשרוני"
+
+#: 
+msgid "Did Not Attend"
+msgstr "לא השתתף"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "תאריך הסיום חייב להיות בתאריך ההתחלה או אחריו"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "הזן מדינה/מחוז עבור מדינות ללא מדינות מוגדרות מראש"
+
+#: 
+msgid "Est. Value Total"
+msgstr "סך ערך משוער"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "כל האנשים מהקבוצות המקושרות נרשמו כנוכחים!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "טעינת היסטוריית הנוכחות נכשלה."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "שם המשפחה נדרש בעת יצירת משפחה חדשה."
+
+#: 
+msgid "Filter by event type"
+msgstr "סנן לפי סוג אירוע"
+
+#: 
+msgid "Financials"
+msgstr "כספים"
+
+#: 
+msgid "From date"
+msgstr "מתאריך"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "סקירת קמפיין גיוס כספים"
+
+#: 
+msgid "Fundraisers"
+msgstr "קמפיינים לגיוס כספים"
+
+#: 
+msgid "Fundraising"
+msgstr "גיוס כספים"
+
+#: 
+msgid "Goal %"
+msgstr "% יעד"
+
+#: 
+msgid "Goal Amount"
+msgstr "סכום יעד"
+
+#: 
+msgid "Highest Sale"
+msgstr "המכירה הגבוהה ביותר"
+
+#: 
+msgid "Invalid status value"
+msgstr "ערך סטטוס לא חוקי"
+
+#: 
+msgid "Invalid type value"
+msgstr "ערך סוג לא חוקי"
+
+#: 
+msgid "Items"
+msgstr "פריטים"
+
+#: 
+msgid "Items Donated"
+msgstr "פריטים שנתרמו"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "פריטים שנתרמו (השנה)"
+
+#: 
+msgid "Items Sold"
+msgstr "פריטים שנמכרו"
+
+#: 
+msgid "Last Attendance"
+msgstr "נוכחות אחרונה"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "קרן תרומות מקושרת"
+
+#: 
+msgid "Live Preview"
+msgstr "תצוגה מקדימה חיה"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "טוען היסטוריית נוכחות..."
+
+#: 
+msgid "Multibuy Items"
+msgstr "פריטים לרכישה מרובה"
+
+#: 
+msgid "New family details"
+msgstr "פרטי משפחה חדשה"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "לא נמצאו קמפיינים לגיוס כספים מסוג %s."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "לא נמצאו קמפיינים פעילים לגיוס כספים."
+
+#: 
+msgid "No attendance records found."
+msgstr "לא נמצאו רשומות נוכחות."
+
+#: 
+msgid "No donated items yet."
+msgstr "עדיין לא נתרמו פריטים."
+
+#: 
+msgid "Not a valid end date"
+msgstr "תאריך סיום לא חוקי"
+
+#: 
+msgid "Not included"
+msgstr "לא נכלל"
+
+#: 
+msgid "People to assign"
+msgstr "אנשים לשיוך"
+
+#: 
+msgid "Planning"
+msgstr "תכנון"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "אנא בחר תפקיד משפחתי עבור %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "ממלא את השדות להלן מבלי לשמור. לחץ על שמור כדי להחיל."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "מיקום סמל המטבע ביחס לסכום."
+
+#: 
+msgid "Quick presets"
+msgstr "הגדרות מהירות מוגדרות מראש"
+
+#: 
+msgid "Raised"
+msgstr "גויס"
+
+#: 
+msgid "Raised This Year"
+msgstr "גויס השנה"
+
+#: 
+msgid "Sample Amount"
+msgstr "סכום לדוגמה"
+
+#: 
+msgid "Sell-through"
+msgstr "אחוז מכירה"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "תו בודד המשמש כנקודה עשרונית (למשל . או ,). ברירת מחדל: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "תו בודד המשמש לקיבוץ אלפים (למשל , או .). ברירת מחדל: ,"
+
+#: 
+msgid "Sold"
+msgstr "נמכר"
+
+#: 
+msgid "State / Province"
+msgstr "מדינה / מחוז"
+
+#: 
+msgid "Streak"
+msgstr "רצף"
+
+#: 
+msgid "Symbol Position"
+msgstr "מיקום הסמל"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "סמל או קוד המוצג לצד הסכומים (למשל $, €, £, CHF, CAD $). ברירת מחדל: $"
+
+#: 
+msgid "Target family"
+msgstr "משפחת יעד"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "לא ניתן למצוא את הקבוצה. אנא נסה שנית."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "המשפחה שנבחרה אינה קיימת עוד. אנא רענן את הדף ונסה שנית."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "הקבוצה שנבחרה לא נמצאה. אנא בחר קבוצה חוקית."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "כך יופיעו תאריכים, סכומים כספיים ומספרי טלפון בכל המערכת."
+
+#: 
+msgid "Thousands Separator"
+msgstr "מפריד אלפים"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "מפריד האלפים והמפריד העשרוני חייבים להיות תווים שונים."
+
+#: 
+msgid "To date"
+msgstr "עד תאריך"
+
+#: 
+msgid "Total Events"
+msgstr "סך האירועים"
+
+#: 
+msgid "Total Raised"
+msgstr "סך הגיוס"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "סך גויס (ללא יעד מוגדר)"
+
+#: 
+msgid "Unsold"
+msgstr "לא נמכר"
+
+#: 
+msgid "Updates as you type."
+msgstr "מתעדכן תוך כדי הקלדה."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "האם הסמל מופיע לפני או אחרי הסכום המספרי. ברירת מחדל: לפני הסכום"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "הסל שלך ריק. הוסף אנשים לסל שלך תחילה."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "מיקוד"
+
+#: 
+msgid "events"
+msgstr "אירועים"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "סכום היעד חייב להיות מספר לא שלילי"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "סכום היעד חייב להיות לא שלילי"
+
+#: 
+msgid "thru %s"
+msgstr "עד %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— בחר תפקיד —"
+
+#: 
+msgid "— pick —"
+msgstr "— בחר —"
 
