@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -112,7 +113,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <button type="button" class="btn btn-outline-primary"
                             data-email-composer
                             data-email-endpoint="people/emails"
-                            data-email-title="<?= gettext('Email All Members') ?>">
+                            data-email-title="<?= InputUtils::escapeAttribute(gettext('Email All Members')) ?>">
                         <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
                     </button>
                 <?php endif; ?>
