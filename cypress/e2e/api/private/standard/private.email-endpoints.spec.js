@@ -95,12 +95,15 @@ describe("GET /api/people/emails", () => {
 // ──────────────────────────────────────────────────────
 describe("GET /api/cart/emails", () => {
     // Seed: add person 2 (Mathew Campbell) to the cart so we get a non-empty result.
+    // Real endpoint: POST /api/person/{id}/addToCart (not /api/cart/add/{id})
     before(() => {
-        cy.makePrivateAdminAPICall("POST", "/api/cart/add/2", "", 200);
+        cy.makePrivateAdminAPICall("POST", "/api/person/2/addToCart", "", 200);
     });
 
+    // Remove person 2 from cart after the suite.
+    // Real endpoint: DELETE /api/cart/ with JSON body {Persons: [id]}
     after(() => {
-        cy.makePrivateAdminAPICall("DELETE", "/api/cart/remove/2", "", 200);
+        cy.makePrivateAdminAPICall("DELETE", "/api/cart/", { Persons: [2] }, 200);
     });
 
     context("authenticated admin — non-empty cart", () => {
@@ -145,12 +148,12 @@ describe("GET /api/cart/emails", () => {
     context("authenticated admin — empty cart", () => {
         before(() => {
             // Empty the cart so we get the zero-email path
-            cy.makePrivateAdminAPICall("DELETE", "/api/cart/remove/2", "", 200);
+            cy.makePrivateAdminAPICall("DELETE", "/api/cart/", { Persons: [2] }, 200);
         });
 
         after(() => {
-            // Restore for the after() in the outer context
-            cy.makePrivateAdminAPICall("POST", "/api/cart/add/2", "", 200);
+            // Restore person 2 so the outer after() cleanup has something to remove
+            cy.makePrivateAdminAPICall("POST", "/api/person/2/addToCart", "", 200);
         });
 
         it("returns 200 with empty emails array when cart is empty", () => {
@@ -184,8 +187,8 @@ describe("GET /api/cart/emails", () => {
 //  GET /api/groups/:id/emails
 // ──────────────────────────────────────────────────────
 describe("GET /api/groups/:id/emails", () => {
-    // Group 10 "Worship Service" is seeded and has members with emails.
-    const GROUP_WITH_MEMBERS = 10;
+    // Group 11 "Clergy" is seeded and has members with emails (persons 2 and 26).
+    const GROUP_WITH_MEMBERS = 11;
     const NONEXISTENT_GROUP = 99999;
 
     context("authenticated admin — group with members", () => {
