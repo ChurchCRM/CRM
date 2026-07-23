@@ -428,8 +428,9 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
     const url = buildAPIUrl(endpoint);
     const res = await fetch(url, { credentials: "same-origin" });
     if (!res.ok) {
-      const data = (await res.json().catch(() => ({}))) as { message?: string };
-      renderError(title, data.message ?? i18next.t("Request failed ({{status}})", { status: res.status }));
+      const body = (await res.json().catch(() => ({}))) as { message?: string; error?: string };
+      const msg = body.message ?? body.error ?? i18next.t("Request failed ({{status}})", { status: res.status });
+      renderError(title, msg);
       return;
     }
     const data = (await res.json()) as EmailListResponse;
