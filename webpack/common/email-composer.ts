@@ -72,7 +72,7 @@ function ensureModalExists(): void {
   modalEl.setAttribute("role", "dialog");
   modalEl.setAttribute("aria-modal", "true");
   modalEl.setAttribute("aria-labelledby", "crm-email-composer-title");
-  // Language: close button aria-label is handled by Bootstrap natively.
+  // Set aria-label via i18next since Bootstrap doesn't localize it automatically.
   modalEl.innerHTML = [
     '<div class="modal-dialog modal-lg modal-dialog-scrollable">',
     '  <div class="modal-content">',
@@ -435,7 +435,7 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
     }
     const data = (await res.json()) as EmailListResponse;
     const emails = Array.isArray(data.emails)
-      ? data.emails.filter((v): v is string => typeof v === "string" && v.trim() !== "")
+      ? data.emails.filter((v): v is string => typeof v === "string" && v.trim() !== "").map((v) => v.trim())
       : [];
     const rawByRole = data.byRole && typeof data.byRole === "object" ? data.byRole : {};
     // Use a null-prototype object to prevent prototype-pollution if a role
