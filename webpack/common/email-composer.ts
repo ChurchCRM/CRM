@@ -301,7 +301,14 @@ function renderError(title: string, message: string): void {
 
 function renderRecipients(title: string, emails: string[], byRole: Record<string, string[]> = {}): void {
   if (!modalTitle || !modalBody) return;
-  currentEmails = emails;
+
+  // When byRole is present, derive the flat list from byRole so that badge
+  // count, Copy payload, and the visible grouped list are always in sync.
+  // Any address that appears only in the flat `emails` but not in byRole
+  // (e.g. sToEmailAddress appended only to the flat list) would create a
+  // hidden discrepancy, so the byRole-derived list is the authoritative one.
+  const hasRoles = Object.keys(byRole).length > 0;
+  currentEmails = hasRoles ? Object.values(byRole).flat() : emails;
 
   // Update title with count badge
   modalTitle.textContent = "";
@@ -309,13 +316,13 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
   titleSpan.textContent = title;
   const badge = document.createElement("span");
   badge.className = "badge bg-primary-lt text-primary ms-2";
-  badge.textContent = String(emails.length);
+  badge.textContent = String(currentEmails.length);
   modalTitle.appendChild(titleSpan);
   modalTitle.appendChild(badge);
 
   modalBody.textContent = "";
 
-  if (emails.length === 0) {
+  if (currentEmails.length === 0) {
     const empty = document.createElement("div");
     empty.className = "text-center text-body-secondary py-4";
     const emptyIcon = document.createElement("i");
@@ -339,8 +346,8 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
   const details = document.createElement("details");
   const summary = document.createElement("summary");
   summary.className = "text-body-secondary small mb-2";
-  const recipientWord = emails.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
-  summary.textContent = `${emails.length} ${recipientWord} — ${i18next.t("click to expand")}`;
+  const recipientWord = currentEmails.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
+  summary.textContent = `${currentEmails.length} ${recipientWord} — ${i18next.t("click to expand")}`;
   details.appendChild(summary);
 
   const listWrapper = document.createElement("div");
@@ -373,7 +380,7 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
   modalBody.appendChild(details);
 
   // Hint for large lists
-  if (emails.length > MAX_MAILTO_RECIPIENTS) {
+  if (currentEmails.length > MAX_MAILTO_RECIPIENTS) {
     const hint = document.createElement("div");
     hint.className = "alert alert-info mt-3 mb-0 small";
     const hintIcon = document.createElement("i");
@@ -382,7 +389,7 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
     hint.appendChild(
       document.createTextNode(
         i18next.t("This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.", {
-          count: emails.length,
+          count: currentEmails.length,
         }),
       ),
     );
