@@ -109,7 +109,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
                 <?php if ($canEmail): ?>
-                    <button class="btn btn-outline-primary"
+                    <button type="button" class="btn btn-outline-primary"
                             data-email-composer
                             data-email-endpoint="people/emails"
                             data-email-title="<?= htmlspecialchars(gettext('Email All Members'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">

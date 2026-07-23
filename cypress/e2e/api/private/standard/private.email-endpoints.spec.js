@@ -113,8 +113,7 @@ describe("GET /api/cart/emails", () => {
         cy.request({
             method: "POST",
             url: "/api/person/2/addToCart",
-            failOnStatusCode: false,
-        });
+        }).then((resp) => expect(resp.status).to.equal(200));
     });
 
     after(() => {
@@ -125,7 +124,6 @@ describe("GET /api/cart/emails", () => {
             url: "/api/cart/",
             headers: { "Content-Type": "application/json" },
             body: { Persons: [2] },
-            failOnStatusCode: false,
         });
     });
 
@@ -195,7 +193,6 @@ describe("GET /api/cart/emails", () => {
                 url: "/api/cart/",
                 headers: { "Content-Type": "application/json" },
                 body: { Persons: [2] },
-                failOnStatusCode: false,
             });
         });
 
@@ -205,7 +202,6 @@ describe("GET /api/cart/emails", () => {
             cy.request({
                 method: "POST",
                 url: "/api/person/2/addToCart",
-                failOnStatusCode: false,
             });
         });
 

@@ -27,7 +27,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
       <a href="<?= SystemURLs::getRootPath() ?>/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-outline-secondary" title="<?= gettext('Print name tags') ?>"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Tags') ?></a>
     </div>
     <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
-      <button class="btn btn-outline-info"
+      <button type="button" class="btn btn-outline-info"
               data-email-composer
               data-email-endpoint="cart/emails"
               data-email-title="<?= htmlspecialchars(gettext('Email Cart Members'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
