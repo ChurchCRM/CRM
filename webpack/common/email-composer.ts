@@ -86,6 +86,8 @@ function ensureModalExists(): void {
     "    </div>",
     "  </div>",
     "</div>",
+    // Visually-hidden span: screen-reader description for disabled Email Client button
+    '<span id="crm-email-client-reason" class="visually-hidden"></span>',
   ].join("");
 
   document.body.appendChild(modalEl);
@@ -225,12 +227,19 @@ function updateClientButtonHref(): void {
     clientBtn.classList.remove("disabled");
   }
   if (tooMany) {
-    clientBtn.title = i18next.t(
+    const reason = i18next.t(
       "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.",
       { count: currentEmails.length, max: MAX_MAILTO_RECIPIENTS },
     );
+    clientBtn.title = reason;
+    clientBtn.setAttribute("aria-describedby", "crm-email-client-reason");
+    const reasonEl = document.getElementById("crm-email-client-reason");
+    if (reasonEl) reasonEl.textContent = reason;
   } else {
     clientBtn.title = "";
+    clientBtn.removeAttribute("aria-describedby");
+    const reasonEl = document.getElementById("crm-email-client-reason");
+    if (reasonEl) reasonEl.textContent = "";
   }
 }
 
@@ -239,8 +248,11 @@ function resetClientButton(): void {
   clientBtn.disabled = false;
   clientBtn.removeAttribute("disabled"); // belt-and-suspenders: clear any setAttribute path too
   clientBtn.removeAttribute("aria-disabled");
+  clientBtn.removeAttribute("aria-describedby");
   clientBtn.classList.remove("disabled");
   clientBtn.title = "";
+  const reasonEl = document.getElementById("crm-email-client-reason");
+  if (reasonEl) reasonEl.textContent = "";
 }
 
 function getModal(): BootstrapModalInstance {
