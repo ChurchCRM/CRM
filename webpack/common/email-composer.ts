@@ -437,7 +437,21 @@ export function openEmailComposer(options: CRMEmailComposerOptions): void {
   bccMode = false;
   updateBccToggleAppearance();
 
-  renderRecipients(options.title, options.emails, options.byRole ?? {});
+  // Sanitize programmatic inputs the same way the fetch path does
+  const sanitizedEmails = (options.emails ?? [])
+    .filter((v): v is string => typeof v === "string" && v.trim() !== "")
+    .map((v) => v.trim());
+  const rawByRole = options.byRole ?? {};
+  const sanitizedByRole = Object.create(null) as Record<string, string[]>;
+  for (const [role, vals] of Object.entries(rawByRole)) {
+    if (Array.isArray(vals)) {
+      sanitizedByRole[role] = vals
+        .filter((v): v is string => typeof v === "string" && v.trim() !== "")
+        .map((v) => v.trim());
+    }
+  }
+
+  renderRecipients(options.title, sanitizedEmails, sanitizedByRole);
   getModal().show();
 }
 

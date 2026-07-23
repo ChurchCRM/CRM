@@ -276,8 +276,8 @@ class Cart
             if (isset($doNotEmailSet[(int) $cartPerson->getId()])) {
                 continue;
             }
-            $email = (string) $cartPerson->getEmail();
-            if (!isset($emailsSeen[strtolower($email)])) {
+            $email = trim((string) $cartPerson->getEmail());
+            if ($email !== '' && !isset($emailsSeen[strtolower($email)])) {
                 $emailsSeen[strtolower($email)] = true;
                 $emails[] = $email;
             }

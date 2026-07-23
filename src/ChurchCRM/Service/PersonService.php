@@ -161,7 +161,7 @@ class PersonService
             if (isset($doNotEmailSet[(int) $person->getId()])) {
                 continue;
             }
-            $email = (string) $person->getEmail();
+            $email = trim((string) $person->getEmail());
             if ($email === '' || isset($emailsSeen[strtolower($email)])) {
                 continue;
             }
@@ -229,7 +229,7 @@ class PersonService
             if (isset($doNotEmailSet[(int) $person->getId()])) {
                 continue;
             }
-            $email = (string) $person->getEmail();
+            $email = trim((string) $person->getEmail());
             if ($email === '' || isset($emailsSeen[strtolower($email)])) {
                 continue;
             }
