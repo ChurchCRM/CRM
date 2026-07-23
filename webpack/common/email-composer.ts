@@ -154,6 +154,7 @@ function ensureModalExists(): void {
   // BCC toggle handler
   bccToggle.addEventListener("click", () => {
     bccMode = !bccMode;
+    bccToggle?.setAttribute("aria-pressed", String(bccMode));
     updateBccToggleAppearance();
     updateClientButtonHref();
   });
@@ -637,6 +638,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (modalEl) {
     modalEl.addEventListener("hidden.bs.modal", () => {
       tooManyHintEl = null;
+      if (bccToggle) bccToggle.setAttribute("aria-pressed", "false");
     });
   }
 
