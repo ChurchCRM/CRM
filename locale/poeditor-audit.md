@@ -27,9 +27,11 @@
 | `pl` | Polish | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `sk` | Slovak | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `es-ar` | Spanish (AR) | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `es-mx` | Spanish (MX) | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `es-sv` | Spanish (SV) | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
@@ -37,6 +39,7 @@
 | `ta` | Tamil | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `te` | Telugu | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `vi` | Vietnamese | 4102 | 99.98% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 4101 | 99.95% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 4101 | 99.95% | 🟢 Complete | ✅ Yes |
@@ -46,13 +49,10 @@
 | `zh-cn` | Chinese | 4100 | 99.93% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 4100 | 99.93% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 4100 | 99.93% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 4100 | 99.93% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 4100 | 99.93% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 4100 | 99.93% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 4100 | 99.93% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 4099 | 99.9% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 4099 | 99.9% | 🟢 Complete | ✅ Yes |
-| `fil` | Filipino | 4091 | 99.71% | 🟢 Complete | ✅ Yes |
+| `fil` | Filipino | 4093 | 99.76% | 🟢 Complete | ✅ Yes |
 | `sl` | Slovenian | 65 | 1.58% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 61 | 1.49% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.41% | 🟠 Needs Work | ❌ No |

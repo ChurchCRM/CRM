@@ -4023,6 +4023,16 @@
     "User must be an Admin or have Manage Fundraisers permission": "El usuario debe ser Administrador o tener permiso para administrar recaudaciones de fondos",
     "User not found.": "Usuario no encontrado.",
     "— Select a person —": "— Seleccione una persona —",
+    "%d archived fundraiser": {
+        "one": "%d colecta archivada",
+        "many": "%d colectas archivadas",
+        "other": "%d colectas archivadas"
+    },
+    "%d person successfully added to selected family.": {
+        "one": "%d persona añadida exitosamente a la familia seleccionada.",
+        "many": "%d personas añadidas exitosamente a la familia seleccionada.",
+        "other": "%d personas añadidas exitosamente a la familia seleccionada."
+    },
     "%s Fundraisers": "Colectas %s",
     "%s of %s goal raised": "%s de %s de la meta recaudada",
     "Active Fundraisers": "Colectas Activas",

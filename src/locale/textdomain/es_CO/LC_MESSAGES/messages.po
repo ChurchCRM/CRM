@@ -16711,6 +16711,20 @@ msgid "— Select a person —"
 msgstr "— Seleccione una persona —"
 
 #: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d colecta archivada"
+msgstr[1] "%d colectas archivadas"
+msgstr[2] "%d colectas archivadas"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d persona añadida exitosamente a la familia seleccionada."
+msgstr[1] "%d personas añadidas exitosamente a la familia seleccionada."
+msgstr[2] "%d personas añadidas exitosamente a la familia seleccionada."
+
+#: 
 msgid "%s Fundraisers"
 msgstr "Colectas %s"
 
