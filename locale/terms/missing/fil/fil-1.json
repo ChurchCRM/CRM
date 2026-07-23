@@ -1,14 +1,14 @@
 {
-  "Access": "",
-  "Self-service": "",
-  "Changelog": "",
-  "Feature": "",
-  "Check-out": "",
-  "Code": "",
-  "Decimal Separator": "",
-  "Live Preview": "",
-  "Sell-through": "",
-  "Thousands Separator": "",
-  "Zip / Postal Code": "",
-  "—": ""
+  "Access": "Access",
+  "Self-service": "Self-service",
+  "Changelog": "Changelog",
+  "Feature": "Feature",
+  "Check-out": "Check-out",
+  "Code": "Code",
+  "Decimal Separator": "Separator ng Decimal",
+  "Live Preview": "Live Preview",
+  "Sell-through": "Sell-through",
+  "Thousands Separator": "Separator ng Libo",
+  "Zip / Postal Code": "Zip / Postal Code",
+  "—": "—"
 }
