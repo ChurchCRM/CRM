@@ -48,7 +48,8 @@ let copyBtn: HTMLButtonElement | null = null;
 let clientBtn: HTMLButtonElement | null = null;
 /** Title count badge — kept as a ref so toggling the default recipient can update it in place */
 let countBadge: HTMLElement | null = null;
-/** The too-many-recipients hint — created once and shown/hidden, never recreated */
+/** Hint element showing "too many recipients" alert. Created on first renderRecipients() call per
+ * modal open; reset to null on modal close so it is re-created fresh on the next open. */
 let tooManyHintEl: HTMLElement | null = null;
 
 /** Current resolved email list (member recipients plus the default "to" when included) */
