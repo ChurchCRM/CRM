@@ -138,7 +138,7 @@ if ($bCanManageGroups) {
             <button class="btn btn-ghost-secondary"
                     data-email-composer
                     data-email-endpoint="groups/<?= (int) $iGroupID ?>/emails"
-                    data-email-title="<?= htmlspecialchars(gettext('Email') . ' ' . $thisGroup->getName(), ENT_QUOTES) ?>">
+                    data-email-title="<?= htmlspecialchars(gettext('Email') . ' ' . $thisGroup->getName(), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
                 <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
             </button>
             <?php endif; ?>

@@ -210,6 +210,9 @@ function updateBccToggleAppearance(): void {
 
 function updateClientButtonHref(): void {
   if (!clientBtn) return;
+  // Always clear the native disabled attribute first so aria-disabled logic
+  // is the sole authority on interactivity (prevents permanent lock-out).
+  clientBtn.removeAttribute("disabled");
   const tooMany = currentEmails.length > MAX_MAILTO_RECIPIENTS;
   const unavailable = tooMany || currentEmails.length === 0;
   // Use aria-disabled instead of the disabled attribute so the element remains
@@ -234,6 +237,7 @@ function updateClientButtonHref(): void {
 function resetClientButton(): void {
   if (!clientBtn) return;
   clientBtn.disabled = false;
+  clientBtn.removeAttribute("disabled"); // belt-and-suspenders: clear any setAttribute path too
   clientBtn.removeAttribute("aria-disabled");
   clientBtn.classList.remove("disabled");
   clientBtn.title = "";
@@ -323,7 +327,9 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
     modalBody.appendChild(empty);
     if (copyBtn) copyBtn.disabled = true;
     if (clientBtn) {
-      clientBtn.disabled = true;
+      clientBtn.removeAttribute("disabled");
+      clientBtn.setAttribute("aria-disabled", "true");
+      clientBtn.classList.add("disabled");
       clientBtn.title = "";
     }
     return;

@@ -112,7 +112,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <button class="btn btn-outline-primary"
                             data-email-composer
                             data-email-endpoint="people/emails"
-                            data-email-title="<?= htmlspecialchars(gettext('Email All Members'), ENT_QUOTES) ?>">
+                            data-email-title="<?= htmlspecialchars(gettext('Email All Members'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
                         <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
                     </button>
                 <?php endif; ?>
