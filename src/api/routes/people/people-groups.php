@@ -467,6 +467,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $result = $personService->getGroupMailingEmails($groupEntity);
             // Backward-compatible shim: include legacy CSV keys alongside new array keys
             // so existing callers/plugins continue to work during the deprecation window.
+            // The `all` and `roles` keys are marked deprecated:true in the OA schema.
+            // NOTE: This shim also covers the sToEmailAddress 'System' bucket that
+            // PersonService injects into byRole, so the legacy CSV captures it too.
             $legacyRoles = [];
             foreach ($result['byRole'] as $role => $roleEmails) {
                 $legacyRoles[$role] = implode(',', $roleEmails);

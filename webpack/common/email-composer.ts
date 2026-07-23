@@ -45,6 +45,8 @@ let clientBtn: HTMLButtonElement | null = null;
 
 /** Current resolved email list */
 let currentEmails: string[] = [];
+/** Pending timer for copy-feedback reset — stored so it can be cancelled on state transitions */
+let copyFeedbackTimer: ReturnType<typeof setTimeout> | null = null;
 /** Whether the BCC toggle is active */
 let bccMode = false;
 
@@ -175,7 +177,9 @@ function showCopyFeedback(success: boolean): void {
     label.nodeValue = success ? i18next.t("Copied!") : i18next.t("Failed");
   }
   copyBtn.disabled = true;
-  setTimeout(() => {
+  if (copyFeedbackTimer) clearTimeout(copyFeedbackTimer);
+  copyFeedbackTimer = setTimeout(() => {
+    copyFeedbackTimer = null;
     if (!copyBtn) return;
     // Only re-enable if we are still in a valid state (non-empty recipient list)
     if (currentEmails.length === 0) return;
@@ -266,6 +270,10 @@ function getModal(): BootstrapModalInstance {
 function renderLoading(title: string): void {
   if (!modalTitle || !modalBody) return;
   currentEmails = []; // clear stale recipients so pending copy-feedback cannot act on them
+  if (copyFeedbackTimer) {
+    clearTimeout(copyFeedbackTimer);
+    copyFeedbackTimer = null;
+  }
   modalTitle.textContent = title;
   modalBody.textContent = "";
   const spinner = document.createElement("div");
@@ -292,6 +300,10 @@ function renderLoading(title: string): void {
 function renderError(title: string, message: string): void {
   if (!modalTitle || !modalBody) return;
   currentEmails = []; // clear stale recipients so no button can act on them
+  if (copyFeedbackTimer) {
+    clearTimeout(copyFeedbackTimer);
+    copyFeedbackTimer = null;
+  }
   modalTitle.textContent = title;
   const alert = document.createElement("div");
   alert.className = "alert alert-danger mb-0";
@@ -314,11 +326,11 @@ function renderError(title: string, message: string): void {
 function renderRecipients(title: string, emails: string[], byRole: Record<string, string[]> = {}): void {
   if (!modalTitle || !modalBody) return;
 
-  // When byRole is present, derive the flat list from byRole so that badge
-  // count, Copy payload, and the visible grouped list are always in sync.
-  // Any address that appears only in the flat `emails` but not in byRole
-  // (e.g. sToEmailAddress appended only to the flat list) would create a
-  // hidden discrepancy, so the byRole-derived list is the authoritative one.
+  // When byRole is non-empty, derive currentEmails (badge count + Copy/mailto payload)
+  // from Object.values(byRole).flat() so the visible grouped list and the action
+  // payload are always in sync. The PHP layer injects sToEmailAddress into
+  // byRole['System'] (PersonService, round 9), so it appears in both the
+  // visible list and the Copy payload — no hidden extras.
   const hasRoles = Object.keys(byRole).length > 0;
   currentEmails = hasRoles ? Object.values(byRole).flat() : emails;
 
