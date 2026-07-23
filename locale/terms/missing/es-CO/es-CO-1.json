@@ -1,13 +1,13 @@
 {
   "%d archived fundraiser": {
     "one": "%d colecta archivada",
-    "many": "",
+    "many": "%d colectas archivadas",
     "other": "%d colectas archivadas"
   },
   "%d person successfully added to selected family.": {
     "one": "%d persona añadida exitosamente a la familia seleccionada.",
-    "many": "",
+    "many": "%d personas añadidas exitosamente a la familia seleccionada.",
     "other": "%d personas añadidas exitosamente a la familia seleccionada."
   },
-  "—": ""
+  "—": "—"
 }
