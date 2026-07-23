@@ -421,8 +421,16 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
     }
     const data = (await res.json()) as EmailListResponse;
     const emails = Array.isArray(data.emails) ? data.emails : [];
-    const byRole = data.byRole && typeof data.byRole === "object" ? data.byRole : {};
-    renderRecipients(title, emails, byRole);
+    const rawByRole = data.byRole && typeof data.byRole === "object" ? data.byRole : {};
+    // Sanitize byRole: keep only entries whose value is a string[], filtering
+    // out non-array values and non-string items within arrays.
+    const safeByRole: Record<string, string[]> = {};
+    for (const [role, val] of Object.entries(rawByRole)) {
+      if (Array.isArray(val)) {
+        safeByRole[role] = val.filter((v): v is string => typeof v === "string");
+      }
+    }
+    renderRecipients(title, emails, safeByRole);
   } catch (err) {
     console.error("[email-composer] fetch failed:", err);
     renderError(title, i18next.t("Failed to load recipients. Please try again."));
@@ -440,7 +448,7 @@ function wireDataAttributes(): void {
     if (!(btn instanceof HTMLElement)) return;
 
     const endpoint = btn.dataset.emailEndpoint ?? "";
-    const title = btn.dataset.emailTitle ?? "Email";
+    const title = btn.dataset.emailTitle ?? i18next.t("Email");
 
     if (!endpoint) {
       console.warn("[email-composer] missing data-email-endpoint on button", btn);

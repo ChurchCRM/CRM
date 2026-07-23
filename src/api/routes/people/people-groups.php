@@ -446,7 +446,12 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *                 description="All unique email addresses (sToEmailAddress appended only when configured and the list has at least one recipient)"),
      *             @OA\Property(property="byRole", type="object",
      *                 description="Emails grouped by group role name",
-     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
+     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string"))),
+     *             @OA\Property(property="all", type="string", deprecated=true,
+     *                 description="Deprecated: comma-separated string of all emails (legacy format, will be removed in a future release)"),
+     *             @OA\Property(property="roles", type="object", deprecated=true,
+     *                 description="Deprecated: map of role name to comma-separated emails (legacy format, will be removed in a future release)",
+     *                 @OA\AdditionalProperties(type="string"))
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
@@ -458,7 +463,16 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         try {
             $groupID = (int) $args['groupID'];
             $personService = new PersonService();
-            return SlimUtils::renderJSON($response, $personService->getGroupMailingEmails($groupID));
+            $result = $personService->getGroupMailingEmails($groupID);
+            // Backward-compatible shim: include legacy CSV keys alongside new array keys
+            // so existing callers/plugins continue to work during the deprecation window.
+            $legacyRoles = [];
+            foreach ($result['byRole'] as $role => $roleEmails) {
+                $legacyRoles[$role] = implode(',', $roleEmails);
+            }
+            $result['all'] = implode(',', $result['emails']);
+            $result['roles'] = $legacyRoles;
+            return SlimUtils::renderJSON($response, $result);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve email addresses'), [], 500, $e, $request);
         }
