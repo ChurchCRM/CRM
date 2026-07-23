@@ -135,14 +135,12 @@ if ($bCanManageGroups) {
             </a>
             <?php endif; ?>
             <?php if ($bEmailEnabled): ?>
-            <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="emailDropdownBtn">
-                    <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
-                </button>
-                <div class="dropdown-menu" id="emailDropdownMenu">
-                    <div class="text-center py-2 text-body-secondary"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
-                </div>
-            </div>
+            <button class="btn btn-ghost-secondary"
+                    data-email-composer
+                    data-email-endpoint="groups/<?= (int) $iGroupID ?>/emails"
+                    data-email-title="<?= htmlspecialchars(gettext('Email') . ' ' . $thisGroup->getName(), ENT_QUOTES) ?>">
+                <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
+            </button>
             <?php endif; ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="textDropdownBtn">
@@ -362,6 +360,9 @@ if ($bCanManageGroups) {
     window.CRM.groupPhoneNumbers = <?= json_encode($sPhoneLink, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 </script>
 <script src="<?= $sRootPath ?>/skin/js/GroupView.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/GroupView.js') ?>"></script>
+<?php if ($bEmailEnabled): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

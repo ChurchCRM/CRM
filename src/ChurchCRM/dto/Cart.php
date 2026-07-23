@@ -2,10 +2,13 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Service\GroupService;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 
@@ -245,26 +248,55 @@ class Cart
             ->find();
     }
 
-    public static function getEmailLink(): string
+    /**
+     * Returns unique email addresses for all people in the cart, plus sToEmailAddress if configured.
+     * Respects the iDoNotEmailPropertyId exclusion setting.
+     *
+     * @return string[]
+     */
+    public static function getEmails(): array
     {
-        /* @var $cartPerson ChurchCRM\Person */
-        $people = Cart::getCartPeople();
-        $emailAddressArray = [];
-        foreach ($people as $cartPerson) {
-            if (!empty($cartPerson->getEmail())) {
-                $emailAddressArray[] = $cartPerson->getEmail();
+        self::checkCart();
+        $cartIds = array_values(array_filter(array_map('intval', $_SESSION['aPeopleCart']), fn ($id) => $id > 0));
+        if (empty($cartIds)) {
+            return [];
+        }
+
+        $doNotEmailSet = [];
+        $doNotEmailPropId = (int) SystemConfig::getValue('iDoNotEmailPropertyId');
+        if ($doNotEmailPropId > 0) {
+            foreach (RecordPropertyQuery::create()
+                ->filterByPropertyId($doNotEmailPropId)
+                ->filterByRecordId($cartIds)
+                ->find() as $r) {
+                $doNotEmailSet[(int) $r->getRecordId()] = true;
             }
         }
-        // RFC 6068: comma is the standard email-list delimiter.
-        // Use an array-based membership check (case-insensitive) to decide
-        // whether to append sToEmailAddress — avoids the stristr() false-positive
-        // where e.g. 'admin@x.com' would match inside 'superadmin@x.com'.
-        $emails    = array_values(array_unique(array_filter($emailAddressArray)));
+
+        $emails = [];
+        $emailsSeen = [];
+        // No per_fam_ID filter here: the cart may intentionally contain persons
+        // with per_fam_ID=0 (unassigned). We email whoever is in the cart.
+        foreach (PersonQuery::create()
+            ->filterById($cartIds)
+            ->filterByEmail('', Criteria::NOT_EQUAL)
+            ->find() as $cartPerson) {
+            if (isset($doNotEmailSet[(int) $cartPerson->getId()])) {
+                continue;
+            }
+            $email = (string) $cartPerson->getEmail();
+            if (!isset($emailsSeen[strtolower($email)])) {
+                $emailsSeen[strtolower($email)] = true;
+                $emails[] = $email;
+            }
+        }
+
         $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
-        if ($emails !== [] && $defaultTo !== '' && !in_array(strtolower($defaultTo), array_map('strtolower', $emails))) {
+        if ($defaultTo !== '' && !isset($emailsSeen[strtolower($defaultTo)])) {
             $emails[] = $defaultTo;
         }
-        return implode(',', $emails);
+
+        return $emails;
     }
 
     public static function getSMSLink(): string

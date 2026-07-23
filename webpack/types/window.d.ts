@@ -3,6 +3,9 @@
  * No imports/exports — this is a plain ambient script so all interfaces are globally accessible.
  */
 
+// i18next — loaded globally via skin-core.js
+declare const i18next: { t(key: string, options?: Record<string, unknown>): string };
+
 interface CRMGravatarPlugin {
   enabled?: boolean;
   defaultImage?: string;
@@ -19,6 +22,16 @@ interface CRMAPIRequestOptions {
   [key: string]: unknown;
 }
 
+interface CRMEmailComposerOptions {
+  emails: string[];
+  byRole?: Record<string, string[]>;
+  title: string;
+}
+
+interface CRMEmailComposer {
+  open(options: CRMEmailComposerOptions): void;
+}
+
 interface CRMNamespace {
   root?: string;
   timeZone?: string;
@@ -32,9 +45,22 @@ interface CRMNamespace {
   notyf?: unknown;
   escapeHtml?: (s: string) => string;
   escapeAttribute?: (s: string) => string;
+  emailComposer?: CRMEmailComposer;
   [key: string]: unknown;
+}
+
+interface BootstrapModalInstance {
+  show(): void;
+  hide(): void;
 }
 
 interface Window {
   CRM?: CRMNamespace;
+  bootstrap: {
+    Modal: {
+      getOrCreateInstance(el: Element): BootstrapModalInstance;
+      getInstance(el: Element): BootstrapModalInstance | null;
+      new (el: Element, options?: Record<string, unknown>): BootstrapModalInstance;
+    };
+  };
 }

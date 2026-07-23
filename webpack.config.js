@@ -41,6 +41,7 @@ module.exports = {
     'event-editor': './webpack/event-editor',
     'event-types-list': './webpack/event-types-list',
     'event-cart-to-event': './webpack/event-cart-to-event',
+    'email-composer': './webpack/common/email-composer',
   },
   output: {
     path: path.resolve('./src/skin/v2'),

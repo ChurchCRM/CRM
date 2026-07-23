@@ -509,7 +509,8 @@ INSERT IGNORE INTO user_settings SELECT usr_per_ID, 'finance.show.pledges',     
 INSERT IGNORE INTO user_settings SELECT usr_per_ID, 'finance.show.payments',    usr_showPayments FROM user_usr;
 INSERT IGNORE INTO user_settings SELECT usr_per_ID, 'finance.show.since',       usr_showSince    FROM user_usr;
 INSERT IGNORE INTO user_settings SELECT usr_per_ID, 'finance.FY',               usr_defaultFY    FROM user_usr;
-INSERT IGNORE INTO user_settings SELECT ucfg_per_id, 'ui.email.delimiter',      ucfg_value       FROM userconfig_ucfg WHERE ucfg_name = 'sMailtoDelimiter';
+-- sMailtoDelimiter migration omitted: the 7.5.1 migration deletes ui.email.delimiter from
+-- user_settings for all upgrade paths, so inserting it here is always redundant.
 
 
 -- ===== from 4.4.0-FB.sql =====
