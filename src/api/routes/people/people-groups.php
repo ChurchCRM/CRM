@@ -477,7 +477,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve email addresses'), [], 500, $e, $request);
         }
-    })->add(EmailRoleAuthMiddleware::class)->add(GroupMiddleware::class);
+    })->add(GroupMiddleware::class)->add(EmailRoleAuthMiddleware::class);
 
     /**
      * @OA\Get(

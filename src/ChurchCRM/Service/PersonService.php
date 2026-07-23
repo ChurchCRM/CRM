@@ -110,7 +110,7 @@ class PersonService
      *                         When empty, checks all records for the property.
      * @return array<int, true> Map of personId → true
      */
-    private function buildDoNotEmailSet(array $personIds = []): array
+    public function buildDoNotEmailSet(array $personIds = []): array
     {
         $propId = (int) SystemConfig::getValue('iDoNotEmailPropertyId');
         if ($propId <= 0) {

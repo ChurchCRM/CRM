@@ -6,8 +6,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\PersonService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
@@ -262,16 +262,8 @@ class Cart
             return [];
         }
 
-        $doNotEmailSet = [];
-        $doNotEmailPropId = (int) SystemConfig::getValue('iDoNotEmailPropertyId');
-        if ($doNotEmailPropId > 0) {
-            foreach (RecordPropertyQuery::create()
-                ->filterByPropertyId($doNotEmailPropId)
-                ->filterByRecordId($cartIds)
-                ->find() as $r) {
-                $doNotEmailSet[(int) $r->getRecordId()] = true;
-            }
-        }
+        // Delegate to PersonService to avoid duplicating the DoNotEmail exclusion logic
+        $doNotEmailSet = (new PersonService())->buildDoNotEmailSet($cartIds);
 
         $emails = [];
         $emailsSeen = [];

@@ -433,7 +433,9 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
       return;
     }
     const data = (await res.json()) as EmailListResponse;
-    const emails = Array.isArray(data.emails) ? data.emails : [];
+    const emails = Array.isArray(data.emails)
+      ? data.emails.filter((v): v is string => typeof v === "string" && v.trim() !== "")
+      : [];
     const rawByRole = data.byRole && typeof data.byRole === "object" ? data.byRole : {};
     // Sanitize byRole: keep only entries whose value is a string[], filtering
     // out non-array values and non-string items within arrays.
