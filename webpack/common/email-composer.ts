@@ -152,6 +152,9 @@ function ensureModalExists(): void {
 
   // Open in client handler
   clientBtn.addEventListener("click", () => {
+    // Guard aria-disabled: the button stays focusable/hoverable so the tooltip
+    // remains discoverable, so we must block the action in the event handler.
+    if (clientBtn?.getAttribute("aria-disabled") === "true") return;
     if (currentEmails.length === 0) return;
     const encoded = currentEmails.map(encodeURIComponent).join(",");
     const href = bccMode ? `mailto:?bcc=${encoded}` : `mailto:${encoded}`;
@@ -208,7 +211,16 @@ function updateBccToggleAppearance(): void {
 function updateClientButtonHref(): void {
   if (!clientBtn) return;
   const tooMany = currentEmails.length > MAX_MAILTO_RECIPIENTS;
-  clientBtn.disabled = tooMany || currentEmails.length === 0;
+  const unavailable = tooMany || currentEmails.length === 0;
+  // Use aria-disabled instead of the disabled attribute so the element remains
+  // focusable/hoverable and the title tooltip is still discoverable by users.
+  if (unavailable) {
+    clientBtn.setAttribute("aria-disabled", "true");
+    clientBtn.classList.add("disabled");
+  } else {
+    clientBtn.removeAttribute("aria-disabled");
+    clientBtn.classList.remove("disabled");
+  }
   if (tooMany) {
     clientBtn.title = i18next.t(
       "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.",

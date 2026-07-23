@@ -130,7 +130,8 @@ class PersonService
 
     /**
      * Returns mailing email lists for all active-family people, grouped by classification role.
-     * Respects the iDoNotEmailPropertyId exclusion setting and appends sToEmailAddress when configured.
+     * Respects the iDoNotEmailPropertyId exclusion setting and appends sToEmailAddress
+     * only when configured and at least one recipient email was found.
      *
      * @return array{emails: string[], byRole: array<string, string[]>}
      */
@@ -185,7 +186,8 @@ class PersonService
     /**
      * Returns mailing email addresses for all members of a specific group,
      * grouped by their group role.
-     * Respects the iDoNotEmailPropertyId exclusion setting and appends sToEmailAddress when configured.
+     * Respects the iDoNotEmailPropertyId exclusion setting and appends sToEmailAddress
+     * only when configured and at least one recipient email was found.
      *
      * @return array{emails: string[], byRole: array<string, string[]>}
      */

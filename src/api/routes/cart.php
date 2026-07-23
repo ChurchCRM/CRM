@@ -16,7 +16,7 @@ use Slim\Routing\RouteCollectorProxy;
  *     @OA\Response(response=200, description="Email list for the current cart",
  *         @OA\JsonContent(
  *             @OA\Property(property="emails", type="array", @OA\Items(type="string"),
- *                 description="Unique email addresses (including sToEmailAddress if configured)")
+ *                 description="Unique email addresses (sToEmailAddress appended only when configured and the list has at least one recipient)")
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized"),

@@ -436,14 +436,14 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * @OA\Get(
      *     path="/groups/{groupID}/emails",
      *     summary="Get mailing email addresses for group members grouped by role",
-     *     description="Returns email addresses for all group members, excluding those with the DoNotEmail property. Includes sToEmailAddress when configured.",
+     *     description="Returns email addresses for all group members, excluding those with the DoNotEmail property. Includes sToEmailAddress only when configured and at least one recipient email was found.",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Email addresses for the group",
      *         @OA\JsonContent(
      *             @OA\Property(property="emails", type="array", @OA\Items(type="string"),
-     *                 description="All unique email addresses (including sToEmailAddress if configured)"),
+     *                 description="All unique email addresses (sToEmailAddress appended only when configured and the list has at least one recipient)"),
      *             @OA\Property(property="byRole", type="object",
      *                 description="Emails grouped by group role name",
      *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))

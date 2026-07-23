@@ -474,13 +474,13 @@ function buildFormattedPersonList(Collection $people): array
  * @OA\Get(
  *     path="/people/emails",
  *     summary="Get mailing email addresses grouped by classification role",
- *     description="Returns email addresses for all active-family people, excluding those with the DoNotEmail property. Includes sToEmailAddress when configured.",
+ *     description="Returns email addresses for all active-family people, excluding those with the DoNotEmail property. Includes sToEmailAddress only when configured and at least one recipient email was found.",
  *     tags={"People"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Email addresses for all people and per role",
  *         @OA\JsonContent(
  *             @OA\Property(property="emails", type="array", @OA\Items(type="string"),
- *                 description="All unique email addresses (including sToEmailAddress if configured)"),
+ *                 description="All unique email addresses (sToEmailAddress appended only when configured and the list has at least one recipient)"),
  *             @OA\Property(property="byRole", type="object",
  *                 description="Emails grouped by classification role name",
  *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
