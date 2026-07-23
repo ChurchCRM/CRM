@@ -461,9 +461,10 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      */
     $group->get('/{groupID:[0-9]+}/emails', function (Request $request, Response $response, array $args): Response {
         try {
-            $groupID = (int) $args['groupID'];
+            // GroupMiddleware already loaded and validated the Group — reuse it to avoid an extra DB query.
+            $groupEntity = $request->getAttribute('group');
             $personService = new PersonService();
-            $result = $personService->getGroupMailingEmails($groupID);
+            $result = $personService->getGroupMailingEmails($groupEntity);
             // Backward-compatible shim: include legacy CSV keys alongside new array keys
             // so existing callers/plugins continue to work during the deprecation window.
             $legacyRoles = [];

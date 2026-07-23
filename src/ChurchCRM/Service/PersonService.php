@@ -4,7 +4,6 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -176,8 +175,9 @@ class PersonService
         $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
         if ($defaultTo !== '' && !empty($emails) && !isset($emailsSeen[strtolower($defaultTo)])) {
             $emails[] = $defaultTo;
-            // sToEmailAddress is appended only to the flat list;
-            // role groups already contain their own member emails.
+            // Also inject into byRole so the UI modal's visible list
+            // stays in sync with the Copy payload and badge count.
+            $byRole[gettext('System')][] = $defaultTo;
         }
 
         return ['emails' => $emails, 'byRole' => $byRole];
@@ -189,10 +189,12 @@ class PersonService
      * Respects the iDoNotEmailPropertyId exclusion setting and appends sToEmailAddress
      * only when configured and at least one recipient email was found.
      *
+     * @param \ChurchCRM\model\ChurchCRM\Group $group The Group object (already loaded by GroupMiddleware)
      * @return array{emails: string[], byRole: array<string, string[]>}
      */
-    public function getGroupMailingEmails(int $groupId): array
+    public function getGroupMailingEmails(\ChurchCRM\model\ChurchCRM\Group $group): array
     {
+        $groupId = (int) $group->getId();
         $memberships = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($groupId)
             ->innerJoinWithPerson()
@@ -209,12 +211,10 @@ class PersonService
         // Short-circuit: no members → nothing to exclude (avoids a full RecordProperty scan)
         $doNotEmailSet = $personIds !== [] ? $this->buildDoNotEmailSet($personIds) : [];
 
+        // Build role name map from the already-loaded Group (avoids an extra DB query)
         $roleNameMap = [];
-        $group = GroupQuery::create()->findPk($groupId);
-        if ($group !== null) {
-            foreach (ListOptionQuery::create()->filterById((int) $group->getRoleListId())->find() as $opt) {
-                $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
-            }
+        foreach (ListOptionQuery::create()->filterById((int) $group->getRoleListId())->find() as $opt) {
+            $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
         }
 
         $emails = [];
@@ -243,6 +243,9 @@ class PersonService
         $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
         if ($defaultTo !== '' && !empty($emails) && !isset($emailsSeen[strtolower($defaultTo)])) {
             $emails[] = $defaultTo;
+            // Also inject into byRole so the UI modal's visible list
+            // stays in sync with the Copy payload and badge count.
+            $byRole[gettext('System')][] = $defaultTo;
         }
 
         return ['emails' => $emails, 'byRole' => $byRole];
