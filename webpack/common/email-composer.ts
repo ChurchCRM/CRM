@@ -48,6 +48,8 @@ let copyBtn: HTMLButtonElement | null = null;
 let clientBtn: HTMLButtonElement | null = null;
 /** Title count badge — kept as a ref so toggling the default recipient can update it in place */
 let countBadge: HTMLElement | null = null;
+/** The too-many-recipients hint — created once and shown/hidden, never recreated */
+let tooManyHintEl: HTMLElement | null = null;
 
 /** Current resolved email list (member recipients plus the default "to" when included) */
 let currentEmails: string[] = [];
@@ -355,6 +357,21 @@ function updateCountBadge(): void {
 function updateActionButtons(): void {
   if (copyBtn) copyBtn.disabled = currentEmails.length === 0;
   updateClientButtonHref();
+  // Keep the hint in sync with the button state so they never contradict each other.
+  if (tooManyHintEl) {
+    const tooMany = currentEmails.length > MAX_MAILTO_RECIPIENTS;
+    tooManyHintEl.hidden = !tooMany;
+    if (tooMany) {
+      // Update the count in the hint text when the recipient total changes.
+      const textNode = tooManyHintEl.lastChild;
+      if (textNode instanceof Text) {
+        textNode.nodeValue = i18next.t(
+          "This list has {{count}} recipients \u2014 too many for a mailto: link. Use Copy Addresses instead.",
+          { count: currentEmails.length },
+        );
+      }
+    }
+  }
 }
 
 function renderRecipients(
@@ -476,22 +493,26 @@ function renderRecipients(
     modalBody.appendChild(check);
   }
 
-  // Hint for large lists
-  if (currentEmails.length > MAX_MAILTO_RECIPIENTS) {
-    const hint = document.createElement("div");
-    hint.className = "alert alert-info mt-3 mb-0 small";
+  // Hint for large lists — create once and toggle hidden rather than recreating,
+  // so updateActionButtons() can keep it in sync with the Email Client button state.
+  if (!tooManyHintEl) {
+    tooManyHintEl = document.createElement("div");
+    tooManyHintEl.className = "alert alert-info mt-3 mb-0 small";
     const hintIcon = document.createElement("i");
     hintIcon.className = "fa-solid fa-circle-info me-2";
-    hint.appendChild(hintIcon);
-    hint.appendChild(
-      document.createTextNode(
-        i18next.t("This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.", {
-          count: currentEmails.length,
-        }),
-      ),
-    );
-    modalBody.appendChild(hint);
+    tooManyHintEl.appendChild(hintIcon);
+    tooManyHintEl.appendChild(document.createTextNode(""));
   }
+  const tooManyNow = currentEmails.length > MAX_MAILTO_RECIPIENTS;
+  tooManyHintEl.hidden = !tooManyNow;
+  const tooManyText = tooManyHintEl.lastChild;
+  if (tooManyText instanceof Text) {
+    tooManyText.nodeValue = i18next.t(
+      "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.",
+      { count: currentEmails.length },
+    );
+  }
+  modalBody.appendChild(tooManyHintEl);
 
   updateActionButtons();
 }
@@ -610,6 +631,14 @@ function wireDataAttributes(): void {
 document.addEventListener("DOMContentLoaded", () => {
   ensureModalExists();
   wireDataAttributes();
+
+  // Reset the tooManyHintEl reference when the modal fully hides so it is
+  // re-created fresh on the next open (avoids stale DOM references).
+  if (modalEl) {
+    modalEl.addEventListener("hidden.bs.modal", () => {
+      tooManyHintEl = null;
+    });
+  }
 
   // Expose on window.CRM for legacy callers (GroupView.js etc.)
   window.CRM = window.CRM || {};
