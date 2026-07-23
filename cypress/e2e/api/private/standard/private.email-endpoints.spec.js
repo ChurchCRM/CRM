@@ -13,6 +13,12 @@
  * happy-path tests and an unauthenticated request for 401.
  *
  * Canonical response shape: { emails: string[], byRole?: Record<string, string[]> }
+ *
+ * NOTE on cart tests: the cart is stored in $_SESSION['aPeopleCart'], which is
+ * session-scoped. cy.makePrivateAdminAPICall() sets withCredentials:false (no
+ * cookies) so each call starts a fresh PHP session — cart state would be empty.
+ * Cart state tests instead use cy.setupAdminSession() to establish a login session
+ * and cy.request() (with the session cookie) to seed and read the cart.
  */
 
 // ──────────────────────────────────────────────────────
@@ -94,39 +100,70 @@ describe("GET /api/people/emails", () => {
 //  GET /api/cart/emails
 // ──────────────────────────────────────────────────────
 describe("GET /api/cart/emails", () => {
-    // Seed: add person 2 (Mathew Campbell) to the cart so we get a non-empty result.
-    // Real endpoint: POST /api/person/{id}/addToCart (not /api/cart/add/{id})
+    // Cart state is session-scoped ($_SESSION['aPeopleCart']).
+    // makePrivateAdminAPICall uses withCredentials:false (no cookies) so each
+    // call would get a fresh PHP session with an empty cart. Instead, we use
+    // cy.setupAdminSession() + cy.request() (which sends the session cookie)
+    // for cart-state-dependent tests so state persists across calls.
+
     before(() => {
-        cy.makePrivateAdminAPICall("POST", "/api/person/2/addToCart", "", 200);
+        // Establish admin login session so cy.request() sends the session cookie.
+        cy.setupAdminSession();
+        // Add person 2 (Mathew Campbell) to the admin's cart using the session cookie.
+        cy.request({
+            method: "POST",
+            url: "/api/person/2/addToCart",
+            failOnStatusCode: false,
+        });
     });
 
-    // Remove person 2 from cart after the suite.
-    // Real endpoint: DELETE /api/cart/ with JSON body {Persons: [id]}
     after(() => {
-        cy.makePrivateAdminAPICall("DELETE", "/api/cart/", { Persons: [2] }, 200);
+        // Restore session and clean up the cart
+        cy.setupAdminSession();
+        cy.request({
+            method: "DELETE",
+            url: "/api/cart/",
+            headers: { "Content-Type": "application/json" },
+            body: { Persons: [2] },
+            failOnStatusCode: false,
+        });
     });
 
     context("authenticated admin — non-empty cart", () => {
+        // Re-establish session before each test so the session cookie is fresh.
         beforeEach(() => {
-            cy.makePrivateAdminAPICall("GET", "/api/cart/emails", "", 200).as("resp");
+            cy.setupAdminSession();
         });
 
         it("returns 200 with emails array", () => {
-            cy.get("@resp").then((response) => {
+            cy.request({
+                method: "GET",
+                url: "/api/cart/emails",
+                failOnStatusCode: false,
+            }).then((response) => {
                 expect(response.status).to.eq(200);
                 expect(response.body).to.have.property("emails").that.is.an("array");
             });
         });
 
         it("emails array is non-empty when cart has people with emails", () => {
-            cy.get("@resp").then((response) => {
-                // Person 2 (Mathew Campbell) has an email in seed data
+            // Person 2 (Mathew Campbell) has an email in seed data
+            cy.request({
+                method: "GET",
+                url: "/api/cart/emails",
+                failOnStatusCode: false,
+            }).then((response) => {
+                expect(response.status).to.eq(200);
                 expect(response.body.emails.length).to.be.at.least(1);
             });
         });
 
         it("every email is a non-empty string", () => {
-            cy.get("@resp").then((response) => {
+            cy.request({
+                method: "GET",
+                url: "/api/cart/emails",
+                failOnStatusCode: false,
+            }).then((response) => {
                 response.body.emails.forEach((email) => {
                     expect(email).to.be.a("string").and.not.be.empty;
                 });
@@ -134,7 +171,11 @@ describe("GET /api/cart/emails", () => {
         });
 
         it("no duplicate emails in the list (case-insensitive)", () => {
-            cy.get("@resp").then((response) => {
+            cy.request({
+                method: "GET",
+                url: "/api/cart/emails",
+                failOnStatusCode: false,
+            }).then((response) => {
                 const seen = new Set();
                 for (const email of response.body.emails) {
                     const lower = email.toLowerCase();
@@ -148,16 +189,34 @@ describe("GET /api/cart/emails", () => {
     context("authenticated admin — empty cart", () => {
         before(() => {
             // Empty the cart so we get the zero-email path
-            cy.makePrivateAdminAPICall("DELETE", "/api/cart/", { Persons: [2] }, 200);
+            cy.setupAdminSession();
+            cy.request({
+                method: "DELETE",
+                url: "/api/cart/",
+                headers: { "Content-Type": "application/json" },
+                body: { Persons: [2] },
+                failOnStatusCode: false,
+            });
         });
 
         after(() => {
-            // Restore person 2 so the outer after() cleanup has something to remove
-            cy.makePrivateAdminAPICall("POST", "/api/person/2/addToCart", "", 200);
+            // Restore person 2 so the outer after() cleanup can confirm it worked
+            cy.setupAdminSession();
+            cy.request({
+                method: "POST",
+                url: "/api/person/2/addToCart",
+                failOnStatusCode: false,
+            });
         });
 
         it("returns 200 with empty emails array when cart is empty", () => {
-            cy.makePrivateAdminAPICall("GET", "/api/cart/emails", "", 200).then((response) => {
+            cy.setupAdminSession();
+            cy.request({
+                method: "GET",
+                url: "/api/cart/emails",
+                failOnStatusCode: false,
+            }).then((response) => {
+                expect(response.status).to.eq(200);
                 expect(response.body).to.have.property("emails").that.is.an("array");
                 expect(response.body.emails).to.deep.equal([]);
             });
@@ -170,6 +229,7 @@ describe("GET /api/cart/emails", () => {
                 method: "GET",
                 url: "/api/cart/emails",
                 failOnStatusCode: false,
+                withCredentials: false,
             }).then((response) => {
                 expect(response.status).to.eq(401);
             });
@@ -248,6 +308,7 @@ describe("GET /api/groups/:id/emails", () => {
                 method: "GET",
                 url: `/api/groups/${GROUP_WITH_MEMBERS}/emails`,
                 failOnStatusCode: false,
+                withCredentials: false,
             }).then((response) => {
                 expect(response.status).to.eq(401);
             });
