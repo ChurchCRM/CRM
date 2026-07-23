@@ -231,6 +231,14 @@ function updateClientButtonHref(): void {
   }
 }
 
+function resetClientButton(): void {
+  if (!clientBtn) return;
+  clientBtn.disabled = false;
+  clientBtn.removeAttribute("aria-disabled");
+  clientBtn.classList.remove("disabled");
+  clientBtn.title = "";
+}
+
 function getModal(): BootstrapModalInstance {
   return window.bootstrap.Modal.getOrCreateInstance(modalEl as Element);
 }
@@ -256,9 +264,12 @@ function renderLoading(title: string): void {
   spinner.appendChild(spinText);
   modalBody.appendChild(spinner);
   if (copyBtn) copyBtn.disabled = true;
+  resetClientButton();
+  // Client button stays disabled until recipients load — updateClientButtonHref
+  // will re-evaluate once renderRecipients() is called with real data.
   if (clientBtn) {
-    clientBtn.disabled = true;
-    clientBtn.title = "";
+    clientBtn.setAttribute("aria-disabled", "true");
+    clientBtn.classList.add("disabled");
   }
 }
 
@@ -274,6 +285,14 @@ function renderError(title: string, message: string): void {
   alert.appendChild(document.createTextNode(message));
   modalBody.textContent = "";
   modalBody.appendChild(alert);
+  // Explicitly reset both footer buttons to a safe inert state so no
+  // stale enabled/disabled styling leaks through from a previous render.
+  if (copyBtn) copyBtn.disabled = true;
+  resetClientButton();
+  if (clientBtn) {
+    clientBtn.setAttribute("aria-disabled", "true");
+    clientBtn.classList.add("disabled");
+  }
 }
 
 function renderRecipients(title: string, emails: string[], byRole: Record<string, string[]> = {}): void {
