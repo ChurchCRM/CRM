@@ -172,6 +172,8 @@ function showCopyFeedback(success: boolean): void {
   copyBtn.disabled = true;
   setTimeout(() => {
     if (!copyBtn) return;
+    // Only re-enable if we are still in a valid state (non-empty recipient list)
+    if (currentEmails.length === 0) return;
     if (icon) icon.className = "fa-solid fa-copy me-1";
     if (label instanceof Text) label.nodeValue = i18next.t("Copy Addresses");
     copyBtn.disabled = false;
@@ -227,6 +229,7 @@ function getModal(): BootstrapModalInstance {
 
 function renderLoading(title: string): void {
   if (!modalTitle || !modalBody) return;
+  currentEmails = []; // clear stale recipients so pending copy-feedback cannot act on them
   modalTitle.textContent = title;
   modalBody.textContent = "";
   const spinner = document.createElement("div");
@@ -249,6 +252,7 @@ function renderLoading(title: string): void {
 
 function renderError(title: string, message: string): void {
   if (!modalTitle || !modalBody) return;
+  currentEmails = []; // clear stale recipients so no button can act on them
   modalTitle.textContent = title;
   const alert = document.createElement("div");
   alert.className = "alert alert-danger mb-0";
@@ -400,7 +404,8 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
 
 function wireDataAttributes(): void {
   document.addEventListener("click", (e) => {
-    const btn = (e.target as HTMLElement).closest("[data-email-composer]");
+    if (!(e.target instanceof Element)) return;
+    const btn = e.target.closest("[data-email-composer]");
     if (!(btn instanceof HTMLElement)) return;
 
     const endpoint = btn.dataset.emailEndpoint ?? "";
@@ -424,7 +429,6 @@ document.addEventListener("DOMContentLoaded", () => {
   wireDataAttributes();
 
   // Expose on window.CRM for legacy callers (GroupView.js etc.)
-  if (window.CRM) {
-    window.CRM.emailComposer = { open: openEmailComposer };
-  }
+  window.CRM = window.CRM || {};
+  window.CRM.emailComposer = { open: openEmailComposer };
 });
