@@ -455,7 +455,9 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
     const safeByRole = Object.create(null) as Record<string, string[]>;
     for (const [role, val] of Object.entries(rawByRole)) {
       if (Array.isArray(val)) {
-        safeByRole[role] = val.filter((v): v is string => typeof v === "string");
+        safeByRole[role] = val
+          .filter((v): v is string => typeof v === "string" && v.trim() !== "")
+          .map((v) => v.trim());
       }
     }
     renderRecipients(title, emails, safeByRole);
