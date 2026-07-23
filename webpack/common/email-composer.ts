@@ -10,7 +10,11 @@
  *            data-email-endpoint="cart/emails"
  *            data-email-title="Email Cart Members">Email</button>
  *
- * 2. Programmatic (for legacy JS callers such as GroupView.js):
+ * The church default "to" address (sToEmailAddress) is read from a single config,
+ * window.CRM.comm.defaultEmailToAddress (set once by Header.php for email-enabled users),
+ * and offered as a removable default recipient — pages do not pass it per-button.
+ *
+ * 2. Programmatic (for JS callers that already hold the recipient list):
  *    window.CRM.emailComposer.open({ emails, byRole, title });
  *
  * Features:
@@ -42,9 +46,20 @@ let modalBody: HTMLElement | null = null;
 let bccToggle: HTMLButtonElement | null = null;
 let copyBtn: HTMLButtonElement | null = null;
 let clientBtn: HTMLButtonElement | null = null;
+/** Title count badge — kept as a ref so toggling the default recipient can update it in place */
+let countBadge: HTMLElement | null = null;
 
-/** Current resolved email list */
+/** Current resolved email list (member recipients plus the default "to" when included) */
 let currentEmails: string[] = [];
+/** Member recipients only — excludes the optional church default "to" address */
+let baseRecipients: string[] = [];
+/**
+ * The church default "to" address (sToEmailAddress) offered as a removable recipient.
+ * Empty string means "not offered" (unset, no members, or already among the members).
+ */
+let defaultToAddress = "";
+/** Whether the default "to" address is currently included (user can uncheck to drop it) */
+let includeDefaultTo = true;
 /** Pending timer for copy-feedback reset — stored so it can be cancelled on state transitions */
 let copyFeedbackTimer: ReturnType<typeof setTimeout> | null = null;
 /** Whether the BCC toggle is active */
@@ -325,30 +340,60 @@ function renderError(title: string, message: string): void {
   }
 }
 
-function renderRecipients(title: string, emails: string[], byRole: Record<string, string[]> = {}): void {
+/** Recompute currentEmails from the member list plus the optional default recipient. */
+function recomputeCurrentEmails(): void {
+  currentEmails =
+    defaultToAddress !== "" && includeDefaultTo ? [...baseRecipients, defaultToAddress] : [...baseRecipients];
+}
+
+/** Update the title count badge to match the current recipient total. */
+function updateCountBadge(): void {
+  if (countBadge) countBadge.textContent = String(currentEmails.length);
+}
+
+/** Sync the footer action buttons (Copy / Open in client) with the current recipient total. */
+function updateActionButtons(): void {
+  if (copyBtn) copyBtn.disabled = currentEmails.length === 0;
+  updateClientButtonHref();
+}
+
+function renderRecipients(
+  title: string,
+  emails: string[],
+  byRole: Record<string, string[]> = {},
+  defaultTo = "",
+): void {
   if (!modalTitle || !modalBody) return;
 
-  // When byRole is non-empty, derive currentEmails (badge count + Copy/mailto payload)
-  // from Object.values(byRole).flat() so the visible grouped list and the action
-  // payload are always in sync. The PHP layer injects sToEmailAddress into
-  // byRole['System'] (PersonService, round 9), so it appears in both the
-  // visible list and the Copy payload — no hidden extras.
+  // Member recipients only. When byRole is present, derive the flat list from it so the
+  // visible grouped list and the action payload stay in sync.
   const hasRoles = Object.keys(byRole).length > 0;
-  currentEmails = hasRoles ? Object.values(byRole).flat() : emails;
+  baseRecipients = hasRoles ? Object.values(byRole).flat() : [...emails];
 
-  // Update title with count badge
+  // Offer the church default "to" address (sToEmailAddress) as a removable recipient only
+  // when it is configured, there is at least one member recipient, and it is not already
+  // present among the members (case-insensitive). The composer — not the backend — owns
+  // whether it is actually sent, so the user can uncheck it.
+  const trimmedDefault = defaultTo.trim();
+  const alreadyPresent =
+    trimmedDefault !== "" && baseRecipients.some((e) => e.toLowerCase() === trimmedDefault.toLowerCase());
+  defaultToAddress = trimmedDefault !== "" && baseRecipients.length > 0 && !alreadyPresent ? trimmedDefault : "";
+
+  recomputeCurrentEmails();
+
+  // Update title with count badge (kept as a ref so the toggle can update it in place)
   modalTitle.textContent = "";
   const titleSpan = document.createElement("span");
   titleSpan.textContent = title;
-  const badge = document.createElement("span");
-  badge.className = "badge bg-primary-lt text-primary ms-2";
-  badge.textContent = String(currentEmails.length);
+  countBadge = document.createElement("span");
+  countBadge.className = "badge bg-primary-lt text-primary ms-2";
+  countBadge.textContent = String(currentEmails.length);
   modalTitle.appendChild(titleSpan);
-  modalTitle.appendChild(badge);
+  modalTitle.appendChild(countBadge);
 
   modalBody.textContent = "";
 
-  if (currentEmails.length === 0) {
+  if (baseRecipients.length === 0) {
     const empty = document.createElement("div");
     empty.className = "text-center text-body-secondary py-4";
     const emptyIcon = document.createElement("i");
@@ -368,12 +413,13 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
     return;
   }
 
-  // Recipient list (collapsible)
+  // Recipient list (collapsible) — shows member recipients only; the default "to" address
+  // is represented by its own checkbox below, not mixed into the role groups.
   const details = document.createElement("details");
   const summary = document.createElement("summary");
   summary.className = "text-body-secondary small mb-2";
-  const recipientWord = currentEmails.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
-  summary.textContent = `${currentEmails.length} ${recipientWord} — ${i18next.t("click to expand")}`;
+  const recipientWord = baseRecipients.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
+  summary.textContent = `${baseRecipients.length} ${recipientWord} — ${i18next.t("click to expand")}`;
   details.appendChild(summary);
 
   const listWrapper = document.createElement("div");
@@ -381,7 +427,7 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
   listWrapper.style.overflowY = "auto";
   listWrapper.className = "mt-2 border rounded p-2 small font-monospace";
 
-  if (Object.keys(byRole).length > 0) {
+  if (hasRoles) {
     for (const [role, roleEmails] of Object.entries(byRole)) {
       const roleHeader = document.createElement("div");
       roleHeader.className = "text-body-secondary fw-semibold mt-2 mb-1";
@@ -395,7 +441,7 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
       }
     }
   } else {
-    for (const email of emails) {
+    for (const email of baseRecipients) {
       const line = document.createElement("div");
       line.textContent = email;
       listWrapper.appendChild(line);
@@ -404,6 +450,31 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
 
   details.appendChild(listWrapper);
   modalBody.appendChild(details);
+
+  // Removable default recipient (church sToEmailAddress). Checked by default; unchecking
+  // drops it from the badge count and the Copy / Open-in-client payloads.
+  if (defaultToAddress !== "") {
+    const check = document.createElement("div");
+    check.className = "form-check mt-3";
+    const input = document.createElement("input");
+    input.className = "form-check-input";
+    input.type = "checkbox";
+    input.id = "crm-email-include-default";
+    input.checked = includeDefaultTo;
+    const label = document.createElement("label");
+    label.className = "form-check-label small";
+    label.setAttribute("for", "crm-email-include-default");
+    label.textContent = i18next.t("Also send to church address ({{email}})", { email: defaultToAddress });
+    input.addEventListener("change", () => {
+      includeDefaultTo = input.checked;
+      recomputeCurrentEmails();
+      updateCountBadge();
+      updateActionButtons();
+    });
+    check.appendChild(input);
+    check.appendChild(label);
+    modalBody.appendChild(check);
+  }
 
   // Hint for large lists
   if (currentEmails.length > MAX_MAILTO_RECIPIENTS) {
@@ -422,8 +493,7 @@ function renderRecipients(title: string, emails: string[], byRole: Record<string
     modalBody.appendChild(hint);
   }
 
-  if (copyBtn) copyBtn.disabled = false;
-  updateClientButtonHref();
+  updateActionButtons();
 }
 
 function escapeHtml(s: string): string {
@@ -434,10 +504,21 @@ function escapeHtml(s: string): string {
 //  Public API
 // ─────────────────────────────────────────────
 
+/**
+ * Single source of truth for the church default "to" address (sToEmailAddress).
+ * Rendered once into window.CRM.comm by Header.php for email-enabled users; empty
+ * string otherwise. The composer offers it as a removable default recipient.
+ */
+function getConfiguredDefaultTo(): string {
+  const v = window.CRM?.comm?.defaultEmailToAddress;
+  return typeof v === "string" ? v : "";
+}
+
 export function openEmailComposer(options: CRMEmailComposerOptions): void {
   ensureModalExists();
   bccMode = false;
   updateBccToggleAppearance();
+  includeDefaultTo = true; // reset: each open starts with the default recipient included
 
   // Sanitize programmatic inputs the same way the fetch path does
   const sanitizedEmails = (options.emails ?? [])
@@ -452,8 +533,10 @@ export function openEmailComposer(options: CRMEmailComposerOptions): void {
         .map((v) => v.trim());
     }
   }
+  // Callers may override, but the default comes from the single window.CRM.comm config.
+  const defaultTo = typeof options.defaultTo === "string" ? options.defaultTo : getConfiguredDefaultTo();
 
-  renderRecipients(options.title, sanitizedEmails, sanitizedByRole);
+  renderRecipients(options.title, sanitizedEmails, sanitizedByRole, defaultTo);
   getModal().show();
 }
 
@@ -461,6 +544,7 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
   ensureModalExists();
   bccMode = false;
   updateBccToggleAppearance();
+  includeDefaultTo = true; // reset: each open starts with the default recipient included
   renderLoading(title);
   getModal().show();
 
@@ -488,7 +572,9 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
           .map((v) => v.trim());
       }
     }
-    renderRecipients(title, emails, safeByRole);
+    // The church default address (sToEmailAddress) is a system setting read from the
+    // single window.CRM.comm config, not returned by the email-list API.
+    renderRecipients(title, emails, safeByRole, getConfiguredDefaultTo());
   } catch (err) {
     console.error("[email-composer] fetch failed:", err);
     renderError(title, i18next.t("Failed to load recipients. Please try again."));

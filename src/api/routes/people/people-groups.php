@@ -436,22 +436,17 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * @OA\Get(
      *     path="/groups/{groupID}/emails",
      *     summary="Get mailing email addresses for group members grouped by role",
-     *     description="Returns email addresses for all group members, excluding those with the DoNotEmail property. Includes sToEmailAddress only when configured and at least one recipient email was found.",
+     *     description="Returns member email addresses for all group members, excluding those with the DoNotEmail property. sToEmailAddress is a system setting added by the composer, not returned here.",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Email addresses for the group",
      *         @OA\JsonContent(
      *             @OA\Property(property="emails", type="array", @OA\Items(type="string"),
-     *                 description="All unique email addresses (sToEmailAddress appended only when configured and the list has at least one recipient)"),
+     *                 description="All unique member email addresses (does not include sToEmailAddress)"),
      *             @OA\Property(property="byRole", type="object",
      *                 description="Emails grouped by group role name",
-     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string"))),
-     *             @OA\Property(property="all", type="string", deprecated=true,
-     *                 description="Deprecated: comma-separated string of all emails (legacy format, will be removed in a future release)"),
-     *             @OA\Property(property="roles", type="object", deprecated=true,
-     *                 description="Deprecated: map of role name to comma-separated emails (legacy format, will be removed in a future release)",
-     *                 @OA\AdditionalProperties(type="string"))
+     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
@@ -464,19 +459,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             // GroupMiddleware already loaded and validated the Group — reuse it to avoid an extra DB query.
             $groupEntity = $request->getAttribute('group');
             $personService = new PersonService();
-            $result = $personService->getGroupMailingEmails($groupEntity);
-            // Backward-compatible shim: include legacy CSV keys alongside new array keys
-            // so existing callers/plugins continue to work during the deprecation window.
-            // The `all` and `roles` keys are marked deprecated:true in the OA schema.
-            // NOTE: This shim also covers the sToEmailAddress 'System' bucket that
-            // PersonService injects into byRole, so the legacy CSV captures it too.
-            $legacyRoles = [];
-            foreach ($result['byRole'] as $role => $roleEmails) {
-                $legacyRoles[$role] = implode(',', $roleEmails);
-            }
-            $result['all'] = implode(',', $result['emails']);
-            $result['roles'] = $legacyRoles;
-            return SlimUtils::renderJSON($response, $result);
+            return SlimUtils::renderJSON($response, $personService->getGroupMailingEmails($groupEntity));
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve email addresses'), [], 500, $e, $request);
         }

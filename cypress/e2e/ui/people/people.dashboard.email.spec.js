@@ -9,8 +9,9 @@
  *  - The composer button is rendered when email is enabled.
  *  - Clicking it opens the modal (waits for the /api/people/emails fetch).
  *  - The modal shows a recipient count and action buttons.
- *  - sToEmailAddress dedup logic is tested via the /api/people/emails API
- *    (see private.email-endpoints.spec.js for the API spec).
+ *  - The church default address (sToEmailAddress) is exposed once via
+ *    window.CRM.comm.defaultEmailToAddress and offered by the composer as a removable
+ *    recipient (see private.email-endpoints.spec.js for the API spec).
  */
 
 describe("People Dashboard — email composer button", () => {

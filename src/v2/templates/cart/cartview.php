@@ -30,7 +30,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
       <button type="button" class="btn btn-outline-info"
               data-email-composer
               data-email-endpoint="cart/emails"
-              data-email-title="<?= htmlspecialchars(gettext('Email Cart Members'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+              data-email-title="<?= gettext('Email Cart Members') ?>">
         <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
       </button>
     <?php } ?>

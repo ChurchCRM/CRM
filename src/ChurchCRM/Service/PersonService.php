@@ -129,8 +129,10 @@ class PersonService
 
     /**
      * Returns mailing email lists for all active-family people, grouped by classification role.
-     * Respects the iDoNotEmailPropertyId exclusion setting and appends sToEmailAddress
-     * only when configured and at least one recipient email was found.
+     * Respects the iDoNotEmailPropertyId exclusion setting.
+     *
+     * Member recipients only. The church default address (sToEmailAddress) is a system
+     * setting handled by the composer at render time, not returned here.
      *
      * @return array{emails: string[], byRole: array<string, string[]>}
      */
@@ -172,22 +174,16 @@ class PersonService
             $byRole[$roleName][] = $email;
         }
 
-        $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
-        if ($defaultTo !== '' && !empty($emails) && !isset($emailsSeen[strtolower($defaultTo)])) {
-            $emails[] = $defaultTo;
-            // Also inject into byRole so the UI modal's visible list
-            // stays in sync with the Copy payload and badge count.
-            $byRole[gettext('System')][] = $defaultTo;
-        }
-
         return ['emails' => $emails, 'byRole' => $byRole];
     }
 
     /**
      * Returns mailing email addresses for all members of a specific group,
      * grouped by their group role.
-     * Respects the iDoNotEmailPropertyId exclusion setting and appends sToEmailAddress
-     * only when configured and at least one recipient email was found.
+     * Respects the iDoNotEmailPropertyId exclusion setting.
+     *
+     * Member recipients only. The church default address (sToEmailAddress) is a system
+     * setting handled by the composer at render time, not returned here.
      *
      * @param \ChurchCRM\model\ChurchCRM\Group $group The Group object (already loaded by GroupMiddleware)
      * @return array{emails: string[], byRole: array<string, string[]>}
@@ -238,14 +234,6 @@ class PersonService
 
             $roleName = $roleNameMap[(int) $membership->getRoleId()] ?? gettext('Member');
             $byRole[$roleName][] = $email;
-        }
-
-        $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
-        if ($defaultTo !== '' && !empty($emails) && !isset($emailsSeen[strtolower($defaultTo)])) {
-            $emails[] = $defaultTo;
-            // Also inject into byRole so the UI modal's visible list
-            // stays in sync with the Copy payload and badge count.
-            $byRole[gettext('System')][] = $defaultTo;
         }
 
         return ['emails' => $emails, 'byRole' => $byRole];

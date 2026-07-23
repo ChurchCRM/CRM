@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -249,8 +248,12 @@ class Cart
     }
 
     /**
-     * Returns unique email addresses for all people in the cart, plus sToEmailAddress if configured.
+     * Returns unique email addresses for all people in the cart.
      * Respects the iDoNotEmailPropertyId exclusion setting.
+     *
+     * The configured sToEmailAddress is intentionally NOT included here; it is a system
+     * setting the composer reads from window.CRM.comm.defaultEmailToAddress and offers as a
+     * removable default recipient.
      *
      * @return string[]
      */
@@ -281,11 +284,6 @@ class Cart
                 $emailsSeen[strtolower($email)] = true;
                 $emails[] = $email;
             }
-        }
-
-        $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
-        if ($defaultTo !== '' && !empty($emails) && !isset($emailsSeen[strtolower($defaultTo)])) {
-            $emails[] = $defaultTo;
         }
 
         return $emails;

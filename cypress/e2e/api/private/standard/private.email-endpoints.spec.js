@@ -14,6 +14,10 @@
  *
  * Canonical response shape: { emails: string[], byRole?: Record<string, string[]> }
  *
+ * `emails`/`byRole` contain member recipients only. The church default address
+ * (sToEmailAddress) is a system setting the composer adds from the button at render
+ * time — it is never returned by these endpoints.
+ *
  * NOTE on cart tests: the cart is stored in $_SESSION['aPeopleCart'], which is
  * session-scoped. cy.makePrivateAdminAPICall() sets withCredentials:false (no
  * cookies) so each call starts a fresh PHP session — cart state would be empty.

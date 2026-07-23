@@ -26,6 +26,8 @@ interface CRMEmailComposerOptions {
   emails: string[];
   byRole?: Record<string, string[]>;
   title: string;
+  /** Church default "to" address (sToEmailAddress); offered as a removable default recipient. */
+  defaultTo?: string;
 }
 
 interface CRMEmailComposer {
@@ -46,6 +48,13 @@ interface CRMNamespace {
   escapeHtml?: (s: string) => string;
   escapeAttribute?: (s: string) => string;
   emailComposer?: CRMEmailComposer;
+  comm?: {
+    smtpConfigured?: boolean;
+    vonageEnabled?: boolean;
+    /** Church default "to" address (sToEmailAddress); "" when unset or user lacks email permission. */
+    defaultEmailToAddress?: string;
+    [key: string]: unknown;
+  };
   [key: string]: unknown;
 }
 
