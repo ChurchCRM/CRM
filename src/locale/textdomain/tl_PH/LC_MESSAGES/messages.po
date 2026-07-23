@@ -16869,6 +16869,10 @@ msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF
 msgstr "Simbolo ng pera na ipapakita sa tabi ng mga halaga ng pera (hal. $, €, £, CHF, CAD $)."
 
 #: 
+msgid "Decimal Separator"
+msgstr "Separator ng Decimal"
+
+#: 
 msgid "Did Not Attend"
 msgstr "Hindi Dumalo"
 
@@ -17083,6 +17087,10 @@ msgstr "Hindi nahanap ang napiling grupo. Pakipili ng wastong grupo."
 #: 
 msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
 msgstr "Ganito ang hitsura ng mga petsa, halaga ng pera, at numero ng telepono sa buong sistema. Suriin ang mga kasalukuyang format dito, pagkatapos ay i-edit ang mga ito sa mga seksyon sa ibaba."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Separator ng Libo"
 
 #: 
 msgid "Thousands separator and decimal separator must be different characters."

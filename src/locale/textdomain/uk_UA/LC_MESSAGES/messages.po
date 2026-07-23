@@ -16760,6 +16760,22 @@ msgid "— Select a person —"
 msgstr "— Оберіть особу —"
 
 #: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d архівний збір коштів"
+msgstr[1] "%d архівні збори коштів"
+msgstr[2] "%d архівних зборів коштів"
+msgstr[3] "%d архівних зборів коштів"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d особу успішно додано до обраної родини."
+msgstr[1] "%d особи успішно додано до обраної родини."
+msgstr[2] "%d осіб успішно додано до обраної родини."
+msgstr[3] "%d осіб успішно додано до обраної родини."
+
+#: 
 msgid "%s Fundraisers"
 msgstr "Збори коштів: %s"
 
