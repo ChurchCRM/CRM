@@ -292,7 +292,7 @@ class Cart
         }
 
         $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
-        if ($defaultTo !== '' && !isset($emailsSeen[strtolower($defaultTo)])) {
+        if ($defaultTo !== '' && !empty($emails) && !isset($emailsSeen[strtolower($defaultTo)])) {
             $emails[] = $defaultTo;
         }
 

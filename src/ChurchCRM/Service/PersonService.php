@@ -204,7 +204,8 @@ class PersonService
             }
         }
 
-        $doNotEmailSet = $this->buildDoNotEmailSet($personIds);
+        // Short-circuit: no members → nothing to exclude (avoids a full RecordProperty scan)
+        $doNotEmailSet = $personIds !== [] ? $this->buildDoNotEmailSet($personIds) : [];
 
         $roleNameMap = [];
         $group = GroupQuery::create()->findPk($groupId);
