@@ -3,38 +3,52 @@
 /**
  * Cart view — email composer button integration tests.
  *
+ * Key design rule: cart setup MUST use the browser's session cookie, NOT X-API-Key.
+ * The cart is stored in $_SESSION['aPeopleCart']; requests made with X-API-Key and
+ * withCredentials:false populate a *different* PHP session than the one the browser
+ * holds, so the UI cart would always appear empty.
+ * Pattern follows cypress/e2e/ui/people/standard.cart-to-family.spec.js.
+ *
  * The old To/BCC mailto: btn-group has been replaced by a single "Email"
  * button that opens the in-app email composer modal via /api/cart/emails.
- * This spec verifies the new behaviour:
- *  - The composer button is rendered (no old-style mailto links).
- *  - Clicking it opens the modal and waits for the API response.
- *  - The modal shows a recipient count badge and Copy/Open action buttons.
- *
- * Seed: person 2 (Mathew Campbell) is added to the cart in before()
- * so the API returns at least one recipient.
  */
 
+/** Add persons to the cart using the browser's session cookie (no API key). */
+const addToCart = (personIds) =>
+    cy.request({
+        method: "POST",
+        url: "/api/cart/",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ Persons: personIds }),
+        failOnStatusCode: false,
+    }).then((resp) => expect(resp.status).to.equal(200));
+
+/** Empty the cart using the browser's session cookie. */
+const emptyCart = () =>
+    cy.request({
+        method: "DELETE",
+        url: "/api/cart/",
+        headers: { "content-type": "application/json" },
+        body: {},
+        failOnStatusCode: false,
+    });
+
 describe("Cart view — email composer button", () => {
-    before(() => {
-        // Add person 2 to the cart so /api/cart/emails returns recipients
-        cy.request({
-            method: "POST",
-            url: "/api/person/2/addToCart",
-            headers: { "x-api-key": Cypress.env("CRM_ADMIN_API_KEY") ?? "" },
-        });
+    beforeEach(() => {
+        // setupAdminSession() restores a cached browser session with the correct
+        // PHP session cookie. All subsequent cy.request() calls without an API key
+        // will share this session, so cart state is consistent with what the
+        // browser sees when cy.visit() is called.
+        cy.setupAdminSession();
+        // Empty the cart so each test starts clean, then add person 2 (Mathew Campbell).
+        emptyCart();
+        addToCart([2]);
     });
 
-    after(() => {
-        // Clean up: remove person 2 from cart
-        cy.request({
-            method: "DELETE",
-            url: "/api/cart/",
-            headers: { "x-api-key": Cypress.env("CRM_ADMIN_API_KEY") ?? "" },
-            body: { Persons: [2] },
-        });
+    afterEach(() => {
+        // Clean up the cart after each test for isolation.
+        emptyCart();
     });
-
-    beforeEach(() => cy.setupAdminSession());
 
     it("shows a single 'Email' composer button (not a mailto: link)", () => {
         cy.visit("/v2/cart");
