@@ -89,7 +89,7 @@ describe("Group Contact Dropdowns", () => {
     beforeEach(() => cy.setupAdminSession());
 
     it("Group view has Email and Text buttons", () => {
-        cy.visit("groups/view/9");
+        cy.visit("/groups/view/9");
         cy.get("#group-view-toolbar").within(() => {
             // Email is now a composer button (no dropdown)
             cy.get("[data-email-composer]").contains("Email").should("exist");
@@ -99,7 +99,7 @@ describe("Group Contact Dropdowns", () => {
     });
 
     it("Email composer button opens modal with Copy and Client actions", () => {
-        cy.visit("groups/view/9");
+        cy.visit("/groups/view/9");
         cy.intercept("GET", "**/api/groups/9/emails").as("groupEmails");
         // Click the email composer button (replaces old dropdown)
         cy.get("[data-email-composer]").click();
@@ -111,7 +111,7 @@ describe("Group Contact Dropdowns", () => {
     });
 
     it("Text dropdown populates on click", () => {
-        cy.visit("groups/view/9");
+        cy.visit("/groups/view/9");
         cy.get("#textDropdownBtn").click();
         cy.get("#textDropdownMenu", { timeout: 10000 }).within(() => {
             // Either shows phone options or "No phone numbers"

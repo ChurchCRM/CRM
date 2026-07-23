@@ -160,8 +160,10 @@ function ensureModalExists(): void {
     // remains discoverable, so we must block the action in the event handler.
     if (clientBtn?.getAttribute("aria-disabled") === "true") return;
     if (currentEmails.length === 0) return;
-    const encoded = currentEmails.map(encodeURIComponent).join(",");
-    const href = bccMode ? `mailto:?bcc=${encoded}` : `mailto:${encoded}`;
+    // Match CommunicationUtils.openMailto/openBcc: encode the full CSV string so
+    // commas between addresses are percent-encoded (%2C), not left as bare separators.
+    const csv = currentEmails.join(",");
+    const href = bccMode ? `mailto:?bcc=${encodeURIComponent(csv)}` : `mailto:${encodeURIComponent(csv)}`;
     window.open(href, "_blank", "noopener,noreferrer");
   });
 }
