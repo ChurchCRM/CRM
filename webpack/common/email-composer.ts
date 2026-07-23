@@ -437,9 +437,9 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
       ? data.emails.filter((v): v is string => typeof v === "string" && v.trim() !== "")
       : [];
     const rawByRole = data.byRole && typeof data.byRole === "object" ? data.byRole : {};
-    // Sanitize byRole: keep only entries whose value is a string[], filtering
-    // out non-array values and non-string items within arrays.
-    const safeByRole: Record<string, string[]> = {};
+    // Use a null-prototype object to prevent prototype-pollution if a role
+    // name ever matches special keys like '__proto__' or 'constructor'.
+    const safeByRole = Object.create(null) as Record<string, string[]>;
     for (const [role, val] of Object.entries(rawByRole)) {
       if (Array.isArray(val)) {
         safeByRole[role] = val.filter((v): v is string => typeof v === "string");
