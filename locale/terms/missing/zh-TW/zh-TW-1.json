@@ -1,9 +1,9 @@
 {
   "%d archived fundraiser": {
-    "other": ""
+    "other": "%d 個已封存的募款活動"
   },
   "%d person successfully added to selected family.": {
-    "other": ""
+    "other": "%d 人已成功加入選定家庭。"
   },
-  "—": ""
+  "—": "—"
 }
