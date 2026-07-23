@@ -173,7 +173,7 @@ class PersonService
         }
 
         $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
-        if ($defaultTo !== '' && !isset($emailsSeen[strtolower($defaultTo)])) {
+        if ($defaultTo !== '' && !empty($emails) && !isset($emailsSeen[strtolower($defaultTo)])) {
             $emails[] = $defaultTo;
             // sToEmailAddress is appended only to the flat list;
             // role groups already contain their own member emails.
@@ -239,7 +239,7 @@ class PersonService
         }
 
         $defaultTo = (string) SystemConfig::getValue('sToEmailAddress');
-        if ($defaultTo !== '' && !isset($emailsSeen[strtolower($defaultTo)])) {
+        if ($defaultTo !== '' && !empty($emails) && !isset($emailsSeen[strtolower($defaultTo)])) {
             $emails[] = $defaultTo;
         }
 
