@@ -7,6 +7,10 @@ use ChurchCRM\Utils\InputUtils;
 $sPageTitle = $calendarName;
 $churchTz   = ChurchMetaData::getChurchTimeZone();
 
+// Allow this page to be embedded in a third-party <iframe>.
+// See src/Include/Header-Security.php for the opt-in mechanism.
+$allowFraming = true;
+
 require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
 ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>

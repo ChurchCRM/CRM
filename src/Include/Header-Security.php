@@ -13,6 +13,13 @@
  * - X-Frame-Options: Prevents clickjacking attacks
  * - X-Content-Type-Options: Prevents MIME-sniffing attacks
  * - Referrer-Policy: Controls how much referrer information is sent
+ *
+ * Opt-in for embeddable public pages (e.g. the external calendar route):
+ * Set  $allowFraming = true;  in the template BEFORE requiring
+ * HeaderNotLoggedIn.php (which in turn requires this file). When set,
+ * X-Frame-Options is omitted and frame-ancestors is widened to "*" so
+ * the page can be embedded in a third-party <iframe>. All other
+ * clickjacking protections remain in force for every other route.
  */
 
 use ChurchCRM\dto\SystemConfig;
@@ -30,11 +37,27 @@ $csp = [
     "connect-src 'self' https://www.google-analytics.com",
     "base-uri 'self'",
     "form-action 'self'",
-    "frame-ancestors 'self'",
-    'report-uri ' . SystemURLs::getRootPath() . '/api/public/csp-report',
 ];
 
-header('X-Frame-Options: SAMEORIGIN');
+// Framing / clickjacking protection.
+// Public embeddable routes (e.g. /external/calendars/{token}) opt in to
+// cross-origin embedding by setting $allowFraming = true in the template
+// before requiring this file. All other pages keep the default clickjacking
+// protection.
+if (empty($allowFraming)) {
+    // Default: prevent framing from other origins.
+    $csp[] = "frame-ancestors 'self'";
+    header('X-Frame-Options: SAMEORIGIN');
+} else {
+    // Embeddable route: allow framing from any origin.
+    $csp[] = 'frame-ancestors *';
+    // X-Frame-Options is intentionally omitted; browsers honour
+    // CSP frame-ancestors when present, and absence of the legacy
+    // header imposes no framing restriction.
+}
+
+$csp[] = 'report-uri ' . SystemURLs::getRootPath() . '/api/public/csp-report';
+
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: strict-origin-when-cross-origin');
 // CSP can be in report-only mode (violations logged but not blocked) or enforcing mode (violations blocked)
