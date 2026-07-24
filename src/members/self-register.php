@@ -106,7 +106,7 @@ use ChurchCRM\dto\SystemURLs;
             columns: [
                 {
                     width: '12%',
-                    title: i18next.t('Id'),
+                    title: i18next.t('ID'),
                     data: 'Id',
                     searchable: false,
                     render: function (data, type, full, meta) {

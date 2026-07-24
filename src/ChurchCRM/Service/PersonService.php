@@ -39,12 +39,9 @@ class PersonService
             if ($includeFamilyRole) {
                 $familyRole = '(';
                 if ($values['familyID']) {
-                    if ($person->getFamilyRole()) {
-                        $familyRole .= $person->getFamilyRoleName();
-                    } else {
-                        $familyRole .= gettext('Part');
-                    }
-                    $familyRole .= gettext(' of the') . ' <a href="people/family/' . $values['familyID'] . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
+                    $roleText = $person->getFamilyRole() ? $person->getFamilyRoleName() : gettext('Part');
+                    $familyLink = '<a href="people/family/' . $values['familyID'] . '">' . $person->getFamily()->getName() . '</a>';
+                    $familyRole .= sprintf(gettext('%1$s of the %2$s family'), $roleText, $familyLink) . ' )';
                 } else {
                     $familyRole = gettext('(No assigned family)');
                 }

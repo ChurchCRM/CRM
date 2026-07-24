@@ -112,6 +112,25 @@ for v in g.values():
 "
 ```
 
+> [!WARNING] The case-dupe grep has a high false-positive rate — verify each hit's call sites before merging <!-- learned: 2026-07-24 -->
+> A 2026-07-24 audit ran this script and got **72 case-duplicate groups** (`Active`/`active`,
+> `People`/`people`, `Loading`/`loading`, `By`/`by`, `Family`/`family`, `Records`/`records`, …).
+> Grepping the actual call sites for a sample showed almost all of them are **already correct**
+> per the Title-Case-vs-sentence-case rule above — e.g. `gettext('people')` in
+> `webpack/people/importDemoData.js` renders `"5 people"` (a count, correctly sentence case) while
+> `gettext('People')` in nav breadcrumbs is UI chrome (correctly Title Case). Same story for
+> `gettext('active')` → `"3 active"` badge count vs. `gettext('Active')` → status badge label, and
+> `gettext('by')` → `"by John Smith"` attribution vs. a Title-Case heading elsewhere.
+> Some flagged msgids (e.g. `Loading`/`loading`) had **no live call site at all** for one side —
+> `locale/messages.po` accumulates entries that the automation hasn't pruned yet, so a msgid
+> existing in the `.po` file doesn't guarantee a matching `gettext()`/`i18next.t()` call still
+> exists in source.
+> **Rule: never merge a case-dupe pair from the `.po` grep alone.** For each pair, `grep -rn` both
+> forms across `src/` and `webpack/`, read the surrounding context, and only touch call sites
+> where the same UI role (both chrome, or both body text) is using two different casings of the
+> same string. `Id`/`ID` (below) is the pattern of a genuine hit: same role (table column header)
+> in every call site, just an unnormalized acronym.
+
 **Acronym exceptions** (always uppercase regardless of case form): `URL`, `ID`, `IP`, `SMTP`, `CSV`, `PDF`, `2FA`, `API`, `HTML`, `TLS`, `SSL`. Never write `Id`, `Url`, `Sms`, etc. — pick the acronym form once and use it everywhere.
 
 ```php
@@ -123,6 +142,8 @@ gettext('SMTP Host')
 gettext('User Id')
 gettext('Smtp Host')
 ```
+
+**Real-world instance (2026-07-24):** `person-list.php` (2 call sites, both DataTables column-header maps) and `self-register.php` used `gettext('Id')` / `i18next.t('Id')` for a table column header, while `finance/views/dashboard.php` used `gettext('ID')` for the same kind of column header — two msgids for one concept. Fixed by normalizing all three to `gettext('ID')` / `i18next.t('ID')`. The internal array key/DataTables `data:` field (`'Id'`) was left untouched — that's an identifier, not display text, and renaming it would require a matching change on the API response shape.
 
 **Dialog title special case:** `i18next.t('ERROR')` was historically used as a bootbox title and created an `ERROR`/`Error` msgid pair. Always use `i18next.t('Error')` (Title Case) for dialog titles. Reserve all-caps strings for log levels / data attribute values, NOT translation keys (e.g. `data-level="ERROR"` is fine, but the visible label uses `gettext('Error')`).
 
@@ -593,6 +614,7 @@ The msgid key must match what's passed to gettext() in PHP code.
 | Protocol / tech acronyms | `TLS`, `Auto-TLS`, `SSL`, `SMTP`, `IMAP`, `DNS`, `CSP`, `CORS`, `SHA1 Hash` |
 | Brand names | `ChurchCRM`, `Vonage`, `MailChimp`, `GitHub`, `OpenLP`, `Nextcloud`, `Gravatar`, `WebDAV`, `POEditor`, `ownCloud`, `Stripe`, `PayPal` |
 | Placeholder examples | `name@example.com`, `+1-555-123-4567`, `https://example.com` |
+| Punctuation-only placeholders | `—` (em dash "no data" marker), `-`, `...`, `•` |
 
 **Pattern:**
 
@@ -617,6 +639,25 @@ $phpIni = [
 <td>Auto-TLS</td>
 <input placeholder="name@example.com">
 ```
+
+**Punctuation-only placeholder example** — an em-dash "no data" marker was found wrapped in `gettext()` even though the identical raw `—` character appears unwrapped elsewhere on the same page:
+
+```php
+// ❌ WRONG — punctuation, not copy; there is nothing for a translator to translate
+'noStreak' => gettext('—'),
+
+// ✅ CORRECT — bare literal, matches the raw '—' used elsewhere on the page
+'noStreak' => '—',
+```
+
+A `gettext()`/`i18next.t()` call whose argument is entirely punctuation/whitespace (`-`, `—`, `...`, `•`, a bare space) is always a leak — grep for it directly:
+
+```bash
+grep -rnE "gettext\(['\"][^a-zA-Z0-9]{1,4}['\"]\)" src/
+grep -rnE "i18next\.t\(['\"][^a-zA-Z0-9]{1,4}['\"]\)" src/ webpack/
+```
+(Short *alphanumeric* results like `gettext('To')`, `gettext('OK')`, `gettext('N')` from the same grep are legitimate translatable words/abbreviations — only punctuation-only matches are leaks.) <!-- learned: 2026-07-24 -->
+
 
 **How to detect leaks:** a term that a) appears in `locale/terms/missing/{code}/{code}-N.json` across many locales with an empty string, and b) is a brand / technical / config literal, is almost certainly wrongly wrapped. Quick aggregation:
 
@@ -671,6 +712,15 @@ echo sprintf(gettext('%d record(s) returned'), mysqli_num_rows($rs));
 ```
 
 **Detection:** fragment msgids are identifiable in `locale/messages.po` by a leading or trailing space in the msgid string — e.g. `msgid " characters long"`. Open issue [#8772](https://github.com/ChurchCRM/CRM/issues/8772) tracks the known fragments still in the codebase.
+
+**Real-world instance (2026-07-24):** `ChurchCRM\Service\PersonService::search()` built a family-role string as `$roleText . gettext(' of the') . ' <a>...</a> ' . gettext('family') . ' )'` — an orphaned `' of the'` fragment (leading space) plus a bare `'family'` msgid that duplicates the unrelated `gettext('family')` used elsewhere in `PersonList.php`'s "records" sentence. Fixed by building the dynamic HTML link first, then wrapping the whole phrase in one `sprintf(gettext('%1$s of the %2$s family'), $roleText, $familyLink)` call:
+```php
+// ❌ WRONG — orphaned ' of the' fragment, msgid leading space
+$familyRole .= gettext(' of the') . ' ' . $familyLinkHtml . ' ' . gettext('family') . ' )';
+
+// ✅ CORRECT — one msgid, HTML link passed as a %2$s value
+$familyRole .= sprintf(gettext('%1$s of the %2$s family'), $roleText, $familyLinkHtml) . ' )';
+```
 
 **Checklist addition:** Add `- [ ] No gettext() fragments — full sentence per call, sprintf for values` to your pre-commit review.
 
@@ -1266,4 +1316,4 @@ These rules must be stated explicitly in every agent prompt:
 
 ---
 
-Last updated: April 9, 2026
+Last updated: July 24, 2026
