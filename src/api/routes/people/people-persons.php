@@ -5,7 +5,9 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -467,3 +469,32 @@ function buildFormattedPersonList(Collection $people): array
 
     return ['people' => $formattedList];
 }
+
+/**
+ * @OA\Get(
+ *     path="/people/emails",
+ *     summary="Get mailing email addresses grouped by classification role",
+ *     description="Returns member email addresses for all active-family people, excluding those with the DoNotEmail property. sToEmailAddress is a system setting added by the composer, not returned here.",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Email addresses for all people and per role",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="emails", type="array", @OA\Items(type="string"),
+ *                 description="All unique member email addresses (does not include sToEmailAddress)"),
+ *             @OA\Property(property="byRole", type="object",
+ *                 description="Emails grouped by classification role name",
+ *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Email permission required")
+ * )
+ */
+$app->get('/people/emails', function (Request $request, Response $response): Response {
+    try {
+        $personService = new PersonService();
+        return SlimUtils::renderJSON($response, $personService->getMailingEmails());
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve email addresses'), [], 500, $e, $request);
+    }
+})->add(EmailRoleAuthMiddleware::class);

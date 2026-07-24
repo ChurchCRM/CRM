@@ -2,11 +2,14 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
@@ -97,6 +100,143 @@ class PersonService
         }
 
         return $result;
+    }
+
+    /**
+     * Build the set of person IDs that should be excluded from mailing lists
+     * because the configured "Do Not Email" property is assigned to them.
+     *
+     * @param int[] $personIds Optional subset of person IDs to check (for efficiency).
+     *                         When empty, checks all records for the property.
+     * @return array<int, true> Map of personId → true
+     */
+    public function buildDoNotEmailSet(array $personIds = []): array
+    {
+        $propId = (int) SystemConfig::getValue('iDoNotEmailPropertyId');
+        if ($propId <= 0) {
+            return [];
+        }
+        $query = RecordPropertyQuery::create()->filterByPropertyId($propId);
+        if (!empty($personIds)) {
+            $query->filterByRecordId($personIds);
+        }
+        $set = [];
+        foreach ($query->find() as $r) {
+            $set[(int) $r->getRecordId()] = true;
+        }
+        return $set;
+    }
+
+    /**
+     * Returns mailing email lists for all active-family people, grouped by classification role.
+     * Respects the iDoNotEmailPropertyId exclusion setting.
+     *
+     * Member recipients only. The church default address (sToEmailAddress) is a system
+     * setting handled by the composer at render time, not returned here.
+     *
+     * @return array{emails: string[], byRole: array<string, string[]>}
+     */
+    public function getMailingEmails(): array
+    {
+        $doNotEmailSet = $this->buildDoNotEmailSet();
+
+        $roleNameMap = [];
+        foreach (ListOptionQuery::create()->filterById(1)->find() as $opt) {
+            $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
+        }
+
+        $persons = PersonQuery::create()
+            ->filterByFamId(null, Criteria::ISNOTNULL)
+            ->filterByFamId(0, Criteria::NOT_EQUAL)
+            ->leftJoinWithFamily()
+            ->useQuery('Family')
+                ->filterByDateDeactivated(null)
+            ->endUse()
+            ->filterByEmail('', Criteria::NOT_EQUAL)
+            ->find();
+
+        $emails = [];
+        $byRole = [];
+        $emailsSeen = [];
+
+        foreach ($persons as $person) {
+            if (isset($doNotEmailSet[(int) $person->getId()])) {
+                continue;
+            }
+            $email = trim((string) $person->getEmail());
+            if ($email === '' || isset($emailsSeen[strtolower($email)])) {
+                continue;
+            }
+            $emailsSeen[strtolower($email)] = true;
+            $emails[] = $email;
+
+            $roleName = $roleNameMap[(int) $person->getClsId()] ?? gettext('Member');
+            $byRole[$roleName][] = $email;
+        }
+
+        return ['emails' => $emails, 'byRole' => $byRole];
+    }
+
+    /**
+     * Returns mailing email addresses for all members of a specific group,
+     * grouped by their group role.
+     * Respects the iDoNotEmailPropertyId exclusion setting.
+     *
+     * Member recipients only. The church default address (sToEmailAddress) is a system
+     * setting handled by the composer at render time, not returned here.
+     *
+     * @param \ChurchCRM\model\ChurchCRM\Group $group The Group object (already loaded by GroupMiddleware)
+     * @return array{emails: string[], byRole: array<string, string[]>}
+     */
+    public function getGroupMailingEmails(\ChurchCRM\model\ChurchCRM\Group $group): array
+    {
+        $groupId = (int) $group->getId();
+        $memberships = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId($groupId)
+            ->innerJoinWithPerson()
+            ->find();
+
+        $personIds = [];
+        foreach ($memberships as $m) {
+            $person = $m->getPerson();
+            if ($person !== null) {
+                $personIds[] = (int) $person->getId();
+            }
+        }
+
+        // Short-circuit: no members → nothing to exclude (avoids a full RecordProperty scan)
+        $doNotEmailSet = $personIds !== [] ? $this->buildDoNotEmailSet($personIds) : [];
+
+        // Build role name map from the already-loaded Group (avoids an extra DB query)
+        $roleNameMap = [];
+        foreach (ListOptionQuery::create()->filterById((int) $group->getRoleListId())->find() as $opt) {
+            $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
+        }
+
+        $emails = [];
+        $byRole = [];
+        $emailsSeen = [];
+
+        foreach ($memberships as $membership) {
+            $person = $membership->getPerson();
+            if ($person === null) {
+                continue;
+            }
+            if (isset($doNotEmailSet[(int) $person->getId()])) {
+                continue;
+            }
+            $email = trim((string) $person->getEmail());
+            if ($email === '' || isset($emailsSeen[strtolower($email)])) {
+                continue;
+            }
+            $emailsSeen[strtolower($email)] = true;
+            $emails[] = $email;
+
+            $roleName = $roleNameMap[(int) $membership->getRoleId()] ?? gettext('Member');
+            $byRole[$roleName][] = $email;
+        }
+
+        return ['emails' => $emails, 'byRole' => $byRole];
     }
 
     /**

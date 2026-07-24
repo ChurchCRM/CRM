@@ -22,6 +22,7 @@ use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -434,67 +435,35 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/groups/{groupID}/emails",
-     *     summary="Get email addresses for group members (respects Do Not Email)",
+     *     summary="Get mailing email addresses for group members grouped by role",
+     *     description="Returns member email addresses for all group members, excluding those with the DoNotEmail property. sToEmailAddress is a system setting added by the composer, not returned here.",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Email contact info for the group")
+     *     @OA\Response(response=200, description="Email addresses for the group",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="emails", type="array", @OA\Items(type="string"),
+     *                 description="All unique member email addresses (does not include sToEmailAddress)"),
+     *             @OA\Property(property="byRole", type="object",
+     *                 description="Emails grouped by group role name",
+     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
+     *         )
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Email permission required"),
+     *     @OA\Response(response=404, description="Group not found")
      * )
      */
     $group->get('/{groupID:[0-9]+}/emails', function (Request $request, Response $response, array $args): Response {
         try {
-            $groupID = (int) $args['groupID'];
-            $doNotEmailSet = _getExcludedPersonIdSet('iDoNotEmailPropertyId');
-
-            $memberships = Person2group2roleP2g2rQuery::create()
-                ->filterByGroupId($groupID)
-                ->innerJoinWithPerson()
-                ->find();
-
-            $group = $request->getAttribute('group');
-            $roleNameMap = [];
-            foreach (ListOptionQuery::create()->filterById($group->getRoleListId())->find() as $opt) {
-                $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
-            }
-
-            $allEmails = [];
-            $roleEmails = [];
-            foreach ($memberships as $membership) {
-                $person = $membership->getPerson();
-                if ($person === null) {
-                    continue;
-                }
-                if (isset($doNotEmailSet[(int) $person->getId()])) {
-                    continue;
-                }
-                $email = (string) $person->getEmail();
-                if (empty($email) || isset($allEmails[$email])) {
-                    continue;
-                }
-                $allEmails[$email] = true;
-                $roleName = $roleNameMap[(int) $membership->getRoleId()] ?? gettext('Member');
-                $roleEmails[$roleName][] = $email;
-            }
-
-            $systemEmail = (string) SystemConfig::getValue('sToEmailAddress');
-            $allList = array_keys($allEmails);
-            if (!empty($systemEmail) && !isset($allEmails[$systemEmail])) {
-                $allList[] = $systemEmail;
-            }
-
-            $roles = [];
-            foreach ($roleEmails as $name => $emails) {
-                $roles[$name] = implode(',', $emails);
-            }
-
-            return SlimUtils::renderJSON($response, [
-                'all'       => implode(',', $allList),
-                'roles'     => $roles,
-            ]);
+            // GroupMiddleware already loaded and validated the Group — reuse it to avoid an extra DB query.
+            $groupEntity = $request->getAttribute('group');
+            $personService = new PersonService();
+            return SlimUtils::renderJSON($response, $personService->getGroupMailingEmails($groupEntity));
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve email addresses'), [], 500, $e, $request);
         }
-    })->add(GroupMiddleware::class);
+    })->add(GroupMiddleware::class)->add(EmailRoleAuthMiddleware::class);
 
     /**
      * @OA\Get(

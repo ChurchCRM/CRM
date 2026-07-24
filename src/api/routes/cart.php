@@ -1,10 +1,35 @@
 <?php
 
 use ChurchCRM\dto\Cart;
+use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
+/**
+ * @OA\Get(
+ *     path="/cart/emails",
+ *     summary="Get email addresses for all people currently in the session cart",
+ *     tags={"Cart"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Email list for the current cart",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="emails", type="array", @OA\Items(type="string"),
+ *                 description="Unique cart member email addresses (does not include sToEmailAddress, which the composer adds from the setting)")
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Email permission required")
+ * )
+ */
+$app->get('/cart/emails', function (Request $request, Response $response): Response {
+    try {
+        return SlimUtils::renderJSON($response, ['emails' => Cart::getEmails()]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve cart email addresses'), [], 500, $e, $request);
+    }
+})->add(EmailRoleAuthMiddleware::class);
 
 $app->group('/cart', function (RouteCollectorProxy $group): void {
     /**

@@ -88,27 +88,30 @@ describe("Communication Menu and Dashboards", () => {
 describe("Group Contact Dropdowns", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    it("Group view has Email and Text dropdowns", () => {
-        cy.visit("groups/view/9");
+    it("Group view has Email and Text buttons", () => {
+        cy.visit("/groups/view/9");
         cy.get("#group-view-toolbar").within(() => {
-            cy.contains("Email").should("exist");
+            // Email is now a composer button (no dropdown)
+            cy.get("[data-email-composer]").contains("Email").should("exist");
+            // Text is still a dropdown
             cy.contains("Text").should("exist");
         });
     });
 
-    it("Email dropdown populates on click", () => {
-        cy.visit("groups/view/9");
-        cy.get("#emailDropdownBtn").click();
-        // Should show loading then populate
-        cy.get("#emailDropdownMenu", { timeout: 10000 }).within(() => {
-            cy.contains("Copy All Emails").should("exist");
-            cy.contains("Email All").should("exist");
-            cy.contains("BCC All").should("exist");
-        });
+    it("Email composer button opens modal with Copy and Client actions", () => {
+        cy.visit("/groups/view/9");
+        cy.intercept("GET", "**/api/groups/9/emails").as("groupEmails");
+        // Click the email composer button (replaces old dropdown)
+        cy.get("[data-email-composer]").click();
+        cy.wait("@groupEmails");
+        // Modal should appear with Copy Addresses and Open in Email Client buttons
+        cy.get("#crm-email-composer-modal").should("be.visible");
+        cy.get("#crm-email-copy-btn").should("exist");
+        cy.get("#crm-email-client-btn").should("exist");
     });
 
     it("Text dropdown populates on click", () => {
-        cy.visit("groups/view/9");
+        cy.visit("/groups/view/9");
         cy.get("#textDropdownBtn").click();
         cy.get("#textDropdownMenu", { timeout: 10000 }).within(() => {
             // Either shows phone options or "No phone numbers"

@@ -1,13 +1,9 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\view\PageHeader;
-use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -35,65 +31,8 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
     $ageGroupStats       = $dashboardStats['ageGroupStats'];
     $familyRoleStats     = $dashboardStats['familyRoleStats'];
 
-    // Build email list grouped by role (active families, excluding "Do Not Email" property)
-    $currentUser        = AuthenticationManager::getCurrentUser();
-    $isAdmin            = $currentUser->isAdmin();
-    // Recipient lists collected as arrays; joined into RFC 6068 comma strings below.
-    $sEmailList         = [];
-    $roleEmails         = [];
-
-    // Build exclusion set from configured "Do Not Email" property
-    $doNotEmailSet = [];
-    $doNotEmailPropId = (int) SystemConfig::getValue('iDoNotEmailPropertyId');
-    if ($doNotEmailPropId > 0) {
-        foreach (RecordPropertyQuery::create()->filterByPropertyId($doNotEmailPropId)->find() as $r) {
-            $doNotEmailSet[(int) $r->getRecordId()] = true;
-        }
-    }
-
-    // Role name map: classification ID → label
-    $roleNameMap = [];
-    foreach (ListOptionQuery::create()->filterById(1)->find() as $opt) {
-        $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
-    }
-
-    $persons = PersonQuery::create()
-        ->leftJoinWithFamily()
-        ->useQuery('Family')
-            ->filterByDateDeactivated(null)
-        ->endUse()
-        ->find();
-
-    $emailsSeen = [];
-    foreach ($persons as $person) {
-        $personId = (int) $person->getId();
-        if (isset($doNotEmailSet[$personId])) {
-            continue;
-        }
-        $email = (string) $person->getEmail();
-        if (empty($email) || isset($emailsSeen[$email])) {
-            continue;
-        }
-        $emailsSeen[$email] = true;
-        $sEmailList[] = $email;
-
-        $roleName = $roleNameMap[(int) $person->getClsId()] ?? gettext('Member');
-        $roleEmails[$roleName][] = $email;
-    }
-
-    // Join addresses into an RFC 6068 comma string, adding the default "to"
-    // once when configured.  Case-insensitive check (in_array + strtolower)
-    // prevents adding sToEmailAddress when a person email matches it only by
-    // case (e.g. "Admin@church.org" vs "admin@church.org").  $defaultTo is
-    // omitted entirely when $emails is empty so the dashboard dropdowns stay
-    // hidden when there are no reachable person recipients.
-    $defaultTo = SystemConfig::getValue('sToEmailAddress');
-    $joinEmails = static fn(array $emails): string => implode(
-        ',',
-        $defaultTo === '' || $emails === [] || in_array(strtolower($defaultTo), array_map('strtolower', $emails))
-            ? array_unique($emails)
-            : array_unique([...$emails, $defaultTo]),
-    );
+    $currentUser = AuthenticationManager::getCurrentUser();
+    $isAdmin     = $currentUser->isAdmin();
 
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
@@ -116,8 +55,6 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'simpleGenderStats'  => $simpleGenderStats,
         'ageGroupStats'      => $ageGroupStats,
         'familyRoleStats'    => $familyRoleStats,
-        'sEmailLink'         => $joinEmails($sEmailList),
-        'roleEmails'         => array_map($joinEmails, $roleEmails),
         'isAdmin'            => $isAdmin,
         'canEmail'           => $currentUser->isEmailEnabled(),
     ];
