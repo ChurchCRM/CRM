@@ -269,7 +269,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     function confirmDeleteField(fieldName, fieldId) {
         var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
-        msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
+        msg += '<br><br><strong>' + <?= json_encode(gettext('Warning')) ?> + ':</strong> ';
         msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all family data assigned for this field!')) ?>;
         bootbox.confirm({
             title: <?= json_encode(gettext('Delete Confirmation')) ?>,

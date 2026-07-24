@@ -106,7 +106,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                                 ->orderByLastName()
                                 ->orderByFirstName()
                                 ->find();
-                            echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-circle-exclamation'></i> <strong>" . gettext('Warning') . "!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') . "</div>";
+                            echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-circle-exclamation'></i> <strong>" . gettext('Warning') . "!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign') . ':' . "</div>";
                             echo "<div class='ms-3 mb-3'>";
                             foreach ($assignedPeople as $person) {
                                 echo "<div><i class='fa-solid fa-person'></i>" . InputUtils::escapeHTML($person->getFirstName()) . " " . InputUtils::escapeHTML($person->getLastName()) . "</div>";

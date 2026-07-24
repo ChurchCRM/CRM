@@ -89,7 +89,7 @@ $rootPath       = SystemURLs::getRootPath();
                 <h3 class="card-title mb-0"><?= gettext('People to assign') ?></h3>
                 <div class="d-flex align-items-center gap-2">
                     <label for="assignRoleToAll" class="form-label mb-0 text-secondary small">
-                        <?= gettext('Assign role to all:') ?>
+                        <?= gettext('Assign role to all') ?>:
                     </label>
                     <select id="assignRoleToAll" class="form-select form-select-sm" style="width:auto">
                         <option value=""><?= gettext('— pick —') ?></option>

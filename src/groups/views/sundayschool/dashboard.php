@@ -169,7 +169,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <hr class="my-3">
             <div class="alert alert-info mb-0">
                 <i class="ti ti-rocket me-1"></i>
-                <strong><?= gettext('Fastest workflow:') ?></strong>
+                <strong><?= gettext('Fastest workflow') ?>:</strong>
                 <?= gettext("Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance.") ?>
             </div>
         </div>

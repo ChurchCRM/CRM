@@ -101,7 +101,7 @@ require_once __DIR__ . '/Include/Header.php';
             if ($thisGroup->isSundaySchool()) {
                 ?>
                 <b><?= gettext("Sunday School") ?></b>
-                <p><?= gettext("Sunday School group can't be modified, only in this two cases :")?></p>
+                <p><?= gettext("Sunday School group can't be modified, only in this two cases") ?>:</p>
                 <ul>
                                 <li>
                                     <?= gettext("You can create/delete sunday school group.")?>

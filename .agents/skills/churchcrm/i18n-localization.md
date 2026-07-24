@@ -573,6 +573,23 @@ echo gettext('Please select from the following:');
 echo gettext('Please select from the following') . ':';
 ```
 
+**Detection — grep for a trailing colon inside the quotes:**
+```bash
+grep -rnoE "gettext\('[^']*:'\)" src/
+grep -rnoE 'gettext\("[^"]*:"\)' src/
+grep -rnoE "i18next\.t\('[^']*:'" webpack/ src/
+grep -rnoE 'i18next\.t\("[^"]*:"' webpack/ src/
+```
+
+**Before fixing, check whether the colon-less form already exists** — a term wrapped with and
+without a trailing colon in different files is two msgids for one word (e.g. `gettext('Warning')`
+in one place, `gettext('Warning:')` in another). Search for the bare term first and reuse it:
+```bash
+grep -rn "gettext('Warning')" src/   # does the colon-less form already exist?
+```
+If it does, fix the colon-suffixed call sites to use the existing bare term plus a literal `:`
+outside the call, rather than leaving two separate msgids for the same word. <!-- learned: 2026-07-24 -->
+
 **In HTML attributes or templates:**
 ```php
 // ✅ CORRECT - Inline concatenation
@@ -587,18 +604,12 @@ echo '<label>'
     . ':</label>';
 ```
 
-**Update messages.po when making this change:**
-```gettext
-# BEFORE
-msgid "Birth Date:"
-msgstr ""
-
-# AFTER
-msgid "Birth Date"
-msgstr ""
-```
-
-The msgid key must match what's passed to gettext() in PHP code.
+**Do not hand-edit `locale/messages.po` for this change.** <!-- learned: 2026-07-24 -->
+Moving the colon out of the `gettext()`/`i18next.t()` call is enough — the old `"Label:"` msgid
+simply stops being extracted on the next automated run, and a new `"Label"` msgid appears in its
+place. This supersedes older guidance in this section that said to update `messages.po` by hand;
+see ["Never rebuild the locale catalog"](#never-rebuild-the-locale-catalog----learned-2026-07-11-)
+below — the automation, not the developer, owns that file.
 
 ### Do Not Wrap Brand / Technical Literals <!-- learned: 2026-04-22 -->
 
@@ -735,11 +746,13 @@ $("#upgradePathSummary").html(
 );
 // Produces msgids: "You are" and "releases behind. Here's what you'll gain:"
 
-// ✅ CORRECT — single parameterised msgid; HTML emphasis kept inside the template key
+// ✅ CORRECT — single parameterised msgid; HTML emphasis kept inside the template key.
+// Trailing colon is UI punctuation (see "Punctuation & Colon Placement" above) — kept
+// outside the t() call even in JS.
 $("#upgradePathSummary").html(
-  i18next.t("You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:", {
+  `${i18next.t("You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain", {
     releaseCount: count,
-  }),
+  })}:`,
 );
 ```
 

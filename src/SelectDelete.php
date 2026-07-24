@@ -76,7 +76,7 @@ require_once __DIR__ . '/Include/Header.php';
             echo '<form name=SelectFamily method=get action=SelectDelete.php>';
             echo '<div class="card-body">';
             echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' ." $fam_Name</strong></div>";
-            echo '<p>' . gettext('Please select another family with whom to associate these donations:');
+            echo '<p>' . gettext('Please select another family with whom to associate these donations') . ':';
             echo '<br><b>' . gettext('WARNING: This action can not be undone and may have legal implications!') . '</b></p>';
             echo"<input name=FamilyID value=$iFamilyID type=hidden>";
             echo '<select name=DonationFamilyID><option value=0 selected>' . gettext('Unassigned') . '</option>';
@@ -209,14 +209,14 @@ require_once __DIR__ . '/Include/Header.php';
             } else {
                 // No Donations from family.  Normal delete confirmation
                 echo $DonationMessage;
-                echo"<div class='alert alert-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
+                echo"<div class='alert alert-warning'><b>" . gettext('Please confirm deletion of this family record') . ':</b><br/>';
                 echo gettext('Note: This will also delete all Notes associated with this Family record.');
                 echo gettext('(this action cannot be undone)') . '</div>';
                 echo '<div>';
                 echo '<strong>' . gettext('Family Name') . ':</strong>';
                 echo '&nbsp;' . InputUtils::escapeHTML($fam_Name);
                 echo '</div><br/>';
-                echo '<div><strong>' . gettext('Family Members:') . '</strong><ul>';
+                echo '<div><strong>' . gettext('Family Members') . ':</strong><ul>';
                 //List Family Members
                 $familyMembers = PersonQuery::create()->filterByFamId((int) $iFamilyID)->find();
                 foreach ($familyMembers as $person) {

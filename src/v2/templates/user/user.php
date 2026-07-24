@@ -328,7 +328,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div><i class="ti ti-info-circle me-2 mt-1"></i></div>
                 <div>
                   <h4 class="alert-title"><?= gettext("Missing or incorrect translations?") ?></h4>
-                  <p class="mb-2"><?= gettext("ChurchCRM translations are managed by the community on POEditor. You can help by:") ?></p>
+                  <p class="mb-2"><?= gettext("ChurchCRM translations are managed by the community on POEditor. You can help by") ?>:</p>
                   <ul class="mb-2">
                     <li><?= gettext("Fixing incorrect or awkward translations in your language") ?></li>
                     <li><?= gettext("Translating missing strings to improve coverage") ?></li>
@@ -373,7 +373,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <hr>
 
             <h4 class="mb-3"><?= gettext("Usage") ?></h4>
-            <p class="text-body-secondary"><?= gettext("Include your API key in requests using the x-api-key header:") ?></p>
+            <p class="text-body-secondary"><?= gettext("Include your API key in requests using the x-api-key header") ?>:</p>
             <pre class="p-3 bg-light rounded"><code>curl -H "x-api-key: <?= InputUtils::escapeHTML(substr($user->getApiKey(), 0, 8)) ?>..." \
      <?= SystemURLs::getURL() ?>/api/person/1</code></pre>
           </div>

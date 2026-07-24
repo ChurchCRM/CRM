@@ -157,7 +157,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
 
         <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <hr>
-            <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions:') ?></p>
+            <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions') ?>:</p>
             <?php
             $permissions = [
                 ['name' => 'MenuOptions',  'label' => gettext('Manage Properties and Classifications'), 'checked' => $perms['menuOptions']],

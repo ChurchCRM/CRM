@@ -115,7 +115,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title text-danger"><i class="ti ti-alert-triangle me-2"></i><?= gettext('Step 2: Reset Database') ?></h3>
             </div>
             <div class="card-body">
-                <p class="text-secondary"><?= gettext('Resetting will permanently delete:') ?></p>
+                <p class="text-secondary"><?= gettext('Resetting will permanently delete') ?>:</p>
                 <ul class="list-unstyled">
                     <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All people and family records') ?></li>
                     <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All groups, roles, and memberships') ?></li>

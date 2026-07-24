@@ -129,7 +129,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             <i class="fa-solid fa-clipboard-check fa-2x"></i>
         </div>
         <div>
-            <strong><?= gettext('Data Quality:') ?></strong>
+            <strong><?= gettext('Data Quality') ?>:</strong>
             <?php
             $issues = [];
             if ($genderDataCheckCount > 0) {

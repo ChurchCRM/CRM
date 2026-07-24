@@ -127,7 +127,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteFund(fundName, fundId) {
             var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fundName + '"?';
-            msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
+            msg += '<br><br><strong>' + <?= json_encode(gettext('Warning')) ?> + ':</strong> ';
             msg += <?= json_encode(gettext('By deleting this fund, you may affect historical donation records!')) ?>;
             bootbox.confirm({
                 title: <?= json_encode(gettext('Delete Confirmation')) ?>,

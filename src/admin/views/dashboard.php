@@ -52,7 +52,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 </div>
 
                 <div class="mb-3">
-                    <h6 class="mb-2"><?= gettext('Current $URL[0] value:') ?></h6>
+                    <h6 class="mb-2"><?= gettext('Current $URL[0] value') ?>:</h6>
                     <div class="p-3 bg-dark rounded" style="font-family: 'Courier New', monospace; word-break: break-all;">
                         <code class="text-warning" style="font-size: 1.1em;"><?= InputUtils::escapeHTML($urlError['url']) ?></code>
                     </div>
@@ -60,12 +60,12 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
                 <div class="card border-0 mb-3">
                     <div class="card-body bg-white">
-                        <h6 class="text-dark mb-3"><strong><?= gettext('How to Fix:') ?></strong></h6>
+                        <h6 class="text-dark mb-3"><strong><?= gettext('How to Fix') ?>:</strong></h6>
                         <ol class="mb-2 ps-3 text-dark">
                             <li class="mb-2"><?= gettext('Connect to your server via SSH, FTP, or your hosting control panel') ?></li>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <li class="mb-2"><?= gettext('Find the line:') ?> <code>$URL[0] = '...';</code></li>
-                            <li class="mb-2"><?= gettext('Update it to a valid URL that:') ?>
+                            <li class="mb-2"><?= gettext('Find the line') ?>: <code>$URL[0] = '...';</code></li>
+                            <li class="mb-2"><?= gettext('Update it to a valid URL that') ?>:
                                 <ul class="mt-1">
                                     <li><?= gettext('Starts with <strong>http://</strong> or <strong>https://</strong>') ?></li>
                                     <li><?= gettext('Ends with a <strong>trailing slash</strong> (/)') ?></li>
@@ -79,18 +79,18 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 <div class="card border-success mb-0">
                     <div class="card-status-top bg-success"></div>
                     <div class="card-header">
-                        <h6 class="mb-0"><i class="fa-solid fa-circle-check me-2"></i><?= gettext('Valid Examples:') ?></h6>
+                        <h6 class="mb-0"><i class="fa-solid fa-circle-check me-2"></i><?= gettext('Valid Examples') ?>:</h6>
                     </div>
                     <div class="card-body bg-white">
                         <div class="mb-2">
-                            <small class="text-body-secondary"><?= gettext('Local development:') ?></small><br>
+                            <small class="text-body-secondary"><?= gettext('Local development') ?>:</small><br>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'http://localhost/';</code>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com/churchcrm/';</code>
                         </div>
                         <div>
-                            <small class="text-body-secondary"><?= gettext('Custom port:') ?></small><br>
+                            <small class="text-body-secondary"><?= gettext('Custom port') ?>:</small><br>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com:8080/app/';</code>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
             </div>
             <div class="flex-grow-1">
-                <strong><?= gettext('System Configuration:') ?></strong>
+                <strong><?= gettext('System Configuration') ?>:</strong>
                 <?php 
                 $warningLinks = [];
                 foreach ($systemWarnings as $warning) {
@@ -185,7 +185,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="text-body-secondary mb-3"><?= gettext('Jump to any setup step:') ?></p>
+                    <p class="text-body-secondary mb-3"><?= gettext('Jump to any setup step') ?>:</p>
 
                     <div class="row">
                         <!-- 1. Church Information -->
@@ -268,7 +268,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     </div>
 
                     <div class="alert alert-light border mb-0 py-2">
-                        <small><i class="fa-solid fa-lightbulb text-warning"></i> <strong><?= gettext('Tip:') ?></strong> <?= gettext('Complete these in any order to get ChurchCRM ready for your congregation.') ?></small>
+                        <small><i class="fa-solid fa-lightbulb text-warning"></i> <strong><?= gettext('Tip') ?>:</strong> <?= gettext('Complete these in any order to get ChurchCRM ready for your congregation.') ?></small>
                     </div>
                 </div>
             </div>
@@ -351,11 +351,11 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-body-secondary"><?= gettext('Version:') ?></span>
+                        <span class="text-body-secondary"><?= gettext('Version') ?>:</span>
                         <code><?= VersionUtils::getInstalledVersion() ?></code>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="text-body-secondary"><?= gettext('Database:') ?></span>
+                        <span class="text-body-secondary"><?= gettext('Database') ?>:</span>
                         <code><?= VersionUtils::getDBVersion() ?></code>
                     </div>
                     <div class="btn-group d-flex mb-2" role="group">
@@ -380,7 +380,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span><?= gettext('File Integrity:') ?></span>
+                        <span><?= gettext('File Integrity') ?>:</span>
                         <?php if ($integrityPassed): ?>
                             <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php else: ?>
@@ -388,7 +388,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span><?= gettext('Orphaned Files:') ?></span>
+                        <span><?= gettext('Orphaned Files') ?>:</span>
                         <?php if ($hasOrphanedFiles): ?>
                             <span class="badge bg-warning-lt text-warning"><?= count($orphanedFiles) ?> <?= gettext('found') ?></span>
                         <?php else: ?>
@@ -396,7 +396,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span><?= gettext('Configuration:') ?></span>
+                        <span><?= gettext('Configuration') ?>:</span>
                         <?php if ($hasWarnings): ?>
                             <span class="badge bg-warning-lt text-warning"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
                         <?php else: ?>

@@ -33,7 +33,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="flex-grow-1">
                     <h4 class="mb-1"><i class="fa fa-circle-check text-success me-2"></i><?= gettext('Test email accepted by SMTP server') ?></h4>
                     <p class="text-body-secondary mb-2">
-                        <?= gettext('Now check the recipient inbox to confirm delivery. Look for the subject:') ?>
+                        <?= gettext('Now check the recipient inbox to confirm delivery. Look for the subject') ?>:
                         <br>
                         <strong>&ldquo;<?= gettext('ChurchCRM Test Email') ?>&rdquo;</strong>
                     </p>
@@ -140,7 +140,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <td>
                                 <?= InputUtils::escapeHTML($smtpSettings['auth']) ?>
                                 <?php if (!empty($smtpSettings['username'])): ?>
-                                    <span class="text-body-secondary ms-2">(<?= gettext('user:') ?> <code><?= InputUtils::escapeHTML((string) $smtpSettings['username']) ?></code>)</span>
+                                    <span class="text-body-secondary ms-2">(<?= gettext('user') ?>: <code><?= InputUtils::escapeHTML((string) $smtpSettings['username']) ?></code>)</span>
                                 <?php endif; ?>
                             </td>
                         </tr>
