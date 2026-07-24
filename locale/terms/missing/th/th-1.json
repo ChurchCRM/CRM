@@ -1,9 +1,9 @@
 {
   "%d archived fundraiser": {
-    "other": ""
+    "other": "%d แคมเปญระดมทุนที่เก็บถาวร"
   },
   "%d person successfully added to selected family.": {
-    "other": ""
+    "other": "เพิ่ม %d คนเข้าครอบครัวที่เลือกสำเร็จแล้ว"
   },
-  "—": ""
+  "—": "—"
 }
