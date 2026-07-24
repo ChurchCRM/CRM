@@ -1,9 +1,9 @@
 {
   "%d archived fundraiser": {
-    "other": ""
+    "other": "%d 件のアーカイブされた募金活動"
   },
   "%d person successfully added to selected family.": {
-    "other": ""
+    "other": "%d 名が選択した家族に正常に追加されました。"
   },
-  "—": ""
+  "—": "—"
 }
