@@ -189,7 +189,7 @@ if ($output === 'pdf') {
                 $curX = 60;
                 $this->writeAt($curX, $curY, gettext('Please detach this slip and mail with your next gift.'));
                 $curY += (1.5 * SystemConfig::getValue('incrementY'));
-                $church_mailing = gettext('Please mail you next gift to ') . SystemConfig::getValue('sChurchName') . ', '
+                $church_mailing = sprintf(gettext('Please mail you next gift to %s'), SystemConfig::getValue('sChurchName')) . ', '
                     . SystemConfig::getValue('sChurchAddress') . ', ' . SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  '
                     . SystemConfig::getValue('sChurchZip') . ', ' . gettext('Phone') . ': ' . SystemConfig::getValue('sChurchPhone');
                 $this->SetFont('Times', 'I', 10);

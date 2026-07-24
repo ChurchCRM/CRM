@@ -722,7 +722,15 @@ echo mysqli_num_rows($rs) . gettext(' record(s) returned');
 echo sprintf(gettext('%d record(s) returned'), mysqli_num_rows($rs));
 ```
 
-**Detection:** fragment msgids are identifiable in `locale/messages.po` by a leading or trailing space in the msgid string — e.g. `msgid " characters long"`. Open issue [#8772](https://github.com/ChurchCRM/CRM/issues/8772) tracks the known fragments still in the codebase.
+**Detection:** fragment msgids are identifiable in `locale/messages.po` by a leading or trailing space in the msgid string — e.g. `msgid " characters long"`. Open issue [#8772](https://github.com/ChurchCRM/CRM/issues/8772) tracks the known fragments still in the codebase. Grep source directly rather than relying on the `.po` file (which lags the automation):
+```bash
+grep -rnoE "gettext\('[^']* '\)" src/    # trailing space
+grep -rnoE "gettext\('[^']*'\)" src/ | grep -E "\('\s"  # leading space
+```
+
+**Real-world instances fixed (2026-07-24):** the two `❌ WRONG` examples above (`QueryView.php` alpha/numeric validation messages, `PledgeEditor.php` deposit page title) were not hypothetical — they were live bugs in this codebase, along with ~15 more of the same shape in `Reports/TaxReport.php`, `Reports/ReminderReport.php`, `Reports/FamilyPledgeSummary.php`, `WhyCameEditor.php`, `admin/routes/api/import.php`, `ChurchCRM/Authentication/AuthenticationProviders/APITokenAuthentication.php`, and `fundraiser/routes/reports.php` (PDF cell-write calls). All were fixed the same way: pull the fragment into one `sprintf()`-parameterised string. Where a value only fills in a leading/trailing connector word rather than a full sentence (e.g. building `" for fund "` before appending a loop of fund names), the minimal fix is to move the space to a plain string concatenation outside `gettext()` rather than restructure the surrounding loop — e.g. `gettext(' for fund ')` → `' ' . gettext('for fund') . ' '`.
+
+**Related but distinct: pure-formatting content should not be wrapped at all.** A decorative PDF divider line (`gettext('----...----')`, all dashes, no words) was found wrapped in `fundraiser/routes/reports.php` — unwrapped to a bare literal, same as the punctuation-only-placeholder case in ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) above. A related case in the same file padded a real word (`'Signature'`) with 40 leading spaces and 68 trailing underscores for fixed-width PDF layout — the word was pulled into its own `gettext('Signature')` call with the padding built via `str_repeat()` outside it, rather than baking layout whitespace into the msgid.
 
 **Real-world instance (2026-07-24):** `ChurchCRM\Service\PersonService::search()` built a family-role string as `$roleText . gettext(' of the') . ' <a>...</a> ' . gettext('family') . ' )'` — an orphaned `' of the'` fragment (leading space) plus a bare `'family'` msgid that duplicates the unrelated `gettext('family')` used elsewhere in `PersonList.php`'s "records" sentence. Fixed by building the dynamic HTML link first, then wrapping the whole phrase in one `sprintf(gettext('%1$s of the %2$s family'), $roleText, $familyLink)` call:
 ```php

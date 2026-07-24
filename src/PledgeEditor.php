@@ -462,7 +462,7 @@ if ($PledgeOrPayment === 'Pledge') {
     $formTypeLabel = gettext('Pledge');
 } elseif ($iCurrentDeposit) {
     $dep_DateFormatted = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
-    $sPageTitle = gettext('New Payment') . " - $dep_Type" . gettext(' Deposit #') . " $iCurrentDeposit ($dep_DateFormatted)";
+    $sPageTitle = sprintf(gettext('New Payment - %1$s Deposit # %2$s (%3$s)'), $dep_Type, $iCurrentDeposit, $dep_DateFormatted);
     $cardHeaderClass = 'bg-primary';
     $cardHeaderTextClass = 'text-white';
     $formTypeLabel = gettext('Payment');
@@ -485,7 +485,7 @@ if ($PledgeOrPayment === 'Pledge') {
     if ($roomForDeposits <= 0) {
         $sPageTitle .= '<span class="text-danger">';
     }
-    $sPageTitle .= ' (' . $roomForDeposits . gettext(' more entries will fit.') . ')';
+    $sPageTitle .= ' (' . sprintf(gettext('%d more entries will fit.'), $roomForDeposits) . ')';
     if ($roomForDeposits <= 0) {
         $sPageTitle .= '</span>';
     }
