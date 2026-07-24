@@ -53,7 +53,10 @@ if (empty($allowFraming)) {
     // Embeddable route: allow framing from the configured origins.
     // sCalendarEmbedOrigins defaults to "*" (any origin); admins can restrict
     // it to a space-separated list of specific origins (e.g. "https://mysite.org").
-    $origins = SystemConfig::getValue('sCalendarEmbedOrigins') ?: '*';
+    // Strip CSP structural characters (;) and HTTP header newlines (\r\n) before
+    // injecting into the header — defense-in-depth against directive injection
+    // and response splitting even when input comes from an authenticated admin.
+    $origins = preg_replace('/[;\r\n]/', '', SystemConfig::getValue('sCalendarEmbedOrigins') ?: '*');
     $csp[] = 'frame-ancestors ' . $origins;
     // X-Frame-Options is intentionally omitted — its absence is what
     // actually permits cross-origin framing in the default (report-only)
