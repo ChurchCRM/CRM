@@ -41,17 +41,17 @@ describe("API Group Communication Endpoints", () => {
     });
 
     describe("GET /groups/{groupID}/emails", () => {
-        it("returns email list with all and roles", () => {
+        it("returns email list with emails array and byRole object", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
                 `/api/groups/${groupID}/emails`,
                 null,
                 200,
             ).then((resp) => {
-                expect(resp.body).to.have.property("all");
-                expect(resp.body).to.have.property("roles");
-                expect(resp.body.all).to.be.a("string");
-                expect(resp.body.roles).to.be.an("object");
+                expect(resp.body).to.have.property("emails");
+                expect(resp.body).to.have.property("byRole");
+                expect(resp.body.emails).to.be.an("array");
+                expect(resp.body.byRole).to.be.an("object");
             });
         });
 
