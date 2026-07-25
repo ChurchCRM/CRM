@@ -324,7 +324,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                 </div>
                                 <div class="mt-4 text-secondary">
                                     <div class="spinner-border spinner-border-sm me-1" role="status"></div>
-                                    <span id="upgradeRedirectCountdown"><?= gettext('Redirecting in') ?> <strong>5</strong> <?= gettext('seconds...') ?></span>
+                                    <span id="upgradeRedirectCountdown"><?= sprintf(gettext('Redirecting in %s seconds...'), '<strong>5</strong>') ?></span>
                                 </div>
                             </div>
                         </div>

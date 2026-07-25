@@ -94,9 +94,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <td>
                                 <a href="mailto:<?= InputUtils::escapeAttribute((string) $sendResult['to']) ?>"><?= InputUtils::escapeHTML((string) $sendResult['to']) ?></a>
                                 <small class="text-body-secondary d-block">
-                                    <?= gettext('Church email — configured on the') ?>
-                                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/church-info"><?= gettext('Church Information') ?></a>
-                                    <?= gettext('page.') ?>
+                                    <?php
+                                    $churchInfoLink = '<a href="' . SystemURLs::getRootPath() . '/admin/system/church-info">' . gettext('Church Information') . '</a>';
+                                    echo sprintf(gettext('Church email — configured on the %s page.'), $churchInfoLink);
+                                    ?>
                                 </small>
                             </td>
                         </tr>
