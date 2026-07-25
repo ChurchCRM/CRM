@@ -348,9 +348,16 @@ function renderError(title: string, message: string): void {
   }
 }
 
-/** Recompute baseRecipients from the active roles (or the full set when no role filter is shown). */
+/** Recompute baseRecipients from the currently active roles.
+ * Only called when the role-filter UI is shown (byRole has ≥2 keys).
+ * When all checkboxes are unchecked (activeRoles.size === 0) the payload
+ * must be empty so Copy/mailto don't use a stale previous list. */
 function recomputeBaseRecipients(): void {
-  if (activeRoles.size === 0) return; // no role filter UI — baseRecipients set in renderRecipients
+  if (activeRoles.size === 0) {
+    // User unchecked every role checkbox — payload must be empty, not stale.
+    baseRecipients = [];
+    return;
+  }
   const seen = new Set<string>();
   baseRecipients = [];
   for (const role of activeRoles) {
