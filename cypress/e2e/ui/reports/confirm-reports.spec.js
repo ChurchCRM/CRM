@@ -13,9 +13,12 @@
  */
 describe("Confirmation Reports - ConfirmReport & ConfirmReportEmail", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
-        // Establish browser context so session cookies are in scope for PDF navigation
-        cy.visit("LettersAndLabels.php");
+        // forceLogin:true ensures a fresh admin session on every test,
+        // preventing session contamination from earlier tests in the run
+        // (the admin must have MenuOptions to access LettersAndLabels.php).
+        cy.setupAdminSession({ forceLogin: true });
+        // Leading '/' makes the URL explicit for both root and subdir deployments.
+        cy.visit("/LettersAndLabels.php");
     });
 
     describe("ConfirmReport - PDF Generation", () => {
