@@ -109,35 +109,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
-                <?php if ($sEmailLink && $canEmail):
-                    // Recipients are data; "to" vs "bcc" is delivery mode — keep them separate.
-                    $mailto = static fn(string $recipients, bool $bcc = false): string =>
-                        InputUtils::escapeAttribute('mailto:' . ($bcc ? '?bcc=' : '') . rawurlencode($recipients));
-                    ?>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= $mailto($sEmailLink) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
-                            <div class="dropdown-divider"></div>
-                            <?php foreach ($roleEmails as $role => $roleEmail): ?>
-                                <a class="dropdown-item" href="<?= $mailto($roleEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-user-secret me-1"></i><?= gettext('Email BCC') ?>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= $mailto($sEmailLink, true) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
-                            <div class="dropdown-divider"></div>
-                            <?php foreach ($roleEmails as $role => $roleEmail): ?>
-                                <a class="dropdown-item" href="<?= $mailto($roleEmail, true) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
+                <?php if ($canEmail): ?>
+                    <button type="button" class="btn btn-outline-primary"
+                            data-email-composer
+                            data-email-endpoint="people/emails"
+                            data-email-title="<?= InputUtils::escapeAttribute(gettext('Email All Members')) ?>">
+                        <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
+                    </button>
                 <?php endif; ?>
             </div>
         </div>
@@ -378,6 +356,10 @@ $(document).ready(function () {
     });
 });
 </script>
+<?php endif; ?>
+
+<?php if ($canEmail): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php endif; ?>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

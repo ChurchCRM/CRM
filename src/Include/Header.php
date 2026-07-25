@@ -123,6 +123,9 @@ $MenuFirst = 1;
           comm: {
             smtpConfigured: <?= json_encode(SystemConfig::hasValidMailServerSettings()) ?>,
             vonageEnabled: <?= json_encode(PluginManager::getPlugin('vonage')?->isConfigured() ?? false) ?>,
+            // Church default "to" address (sToEmailAddress); exposed only to email-enabled
+            // users. The email composer offers it as a removable default recipient.
+            defaultEmailToAddress: <?= AuthenticationManager::getCurrentUser()->isEmailEnabled() ? SystemConfig::getValueForJs('sToEmailAddress') : json_encode('') ?>,
           },
           // Plugin configs from active plugins (via getClientConfig())
           plugins: <?= json_encode(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,

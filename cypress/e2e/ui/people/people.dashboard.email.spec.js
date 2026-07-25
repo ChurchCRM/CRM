@@ -1,151 +1,62 @@
 /// <reference types="cypress" />
 
 /**
- * Regression tests for the People Dashboard email-recipient-list assembly
- * introduced in chore/remove-email-delimiter-user-settings (#9250).
+ * People Dashboard — email composer button integration tests.
  *
- * Covers:
- *  - Email All / Email BCC dropdowns render when person emails exist.
- *  - "All People" mailto: / mailto:?bcc= hrefs are well-formed (no
- *    double-comma, no leading/trailing comma after decoding).
- *  - sToEmailAddress is appended to the recipient list exactly once.
- *  - Case-insensitive dedup: sToEmailAddress whose case differs from a
- *    person's email is still recognised as a duplicate and not added twice.
+ * The old mailto: dropdown links have been replaced by a single
+ * "Email All" button that opens the in-app email composer modal.
+ * This spec verifies the new behaviour:
+ *  - The composer button is rendered when email is enabled.
+ *  - Clicking it opens the modal (waits for the /api/people/emails fetch).
+ *  - The modal shows a recipient count and action buttons.
+ *  - The church default address (sToEmailAddress) is exposed once via
+ *    window.CRM.comm.defaultEmailToAddress and offered by the composer as a removable
+ *    recipient (see private.email-endpoints.spec.js for the API spec).
  */
 
-/** Toggle a system config value via the admin config API.
- *  Requires an active admin session cookie (call cy.setupAdminSession() first).
- *  Pattern matches external.calendar.spec.js. */
-function setSystemConfig(name, value) {
-    cy.request({
-        method: "POST",
-        url: `/admin/api/system/config/${name}`,
-        body: { value },
-        headers: { "Content-Type": "application/json" },
-    });
-}
-
-/**
- * Decode a rawurlencode()-produced mailto: href attribute into the plain
- * comma-separated recipient string for assertion.
- *  - "mailto:a%40x.com%2Cb%40x.com"  → "a@x.com,b@x.com"
- *  - "mailto:?bcc=a%40x.com%2Cb%40x.com" → "a@x.com,b@x.com"
- */
-function decodeMailtoHref(href) {
-    return decodeURIComponent(
-        href.replace(/^mailto:(\?bcc=)?/, ""),
-    );
-}
-
-describe("People Dashboard — email recipient list", () => {
+describe("People Dashboard — email composer button", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    after(() => {
-        // Restore sToEmailAddress so other specs are not affected.
-        cy.setupAdminSession();
-        setSystemConfig("sToEmailAddress", "");
+    it("shows a single 'Email All' button (not a dropdown) when email is enabled", () => {
+        cy.visit("/people/dashboard");
+        // The button has the data-email-composer attribute
+        cy.get("[data-email-composer][data-email-endpoint='people/emails']").should("be.visible");
+        // No old-style dropdown toggles for email
+        cy.contains(".dropdown-toggle", "Email All").should("not.exist");
+        cy.contains(".dropdown-toggle", "Email BCC").should("not.exist");
     });
 
-    // ── Basic rendering ───────────────────────────────────────────────────
-
-    it("shows Email All and Email BCC dropdowns when person emails exist", () => {
+    it("clicking Email All opens the composer modal with recipients", () => {
         cy.visit("/people/dashboard");
-        cy.contains(".dropdown-toggle", "Email All").should("be.visible");
-        cy.contains(".dropdown-toggle", "Email BCC").should("be.visible");
+
+        // Intercept the API call
+        cy.intercept("GET", "**/api/people/emails").as("emailsApi");
+
+        cy.get("[data-email-composer][data-email-endpoint='people/emails']").click();
+
+        cy.wait("@emailsApi").its("response.statusCode").should("eq", 200);
+
+        // Modal should appear
+        cy.get("#crm-email-composer-modal").should("be.visible");
+
+        // Should show the modal title and action buttons
+        cy.get("#crm-email-composer-modal .modal-title").should("contain.text", "Email");
+        cy.get("#crm-email-copy-btn").should("be.visible");
+        cy.get("#crm-email-client-btn").should("be.visible");
     });
 
-    // ── Href structure: Email All ─────────────────────────────────────────
-
-    it("Email All — All People link is a well-formed mailto: with comma-separated addresses", () => {
+    it("modal shows a recipient count badge when people have emails", () => {
         cy.visit("/people/dashboard");
+        cy.intercept("GET", "**/api/people/emails").as("emailsApi");
 
-        cy.contains(".dropdown-toggle", "Email All").click();
+        cy.get("[data-email-composer][data-email-endpoint='people/emails']").click();
+        cy.wait("@emailsApi");
 
-        cy.contains(".dropdown-toggle", "Email All")
-            .closest(".dropdown")
-            .contains("a.dropdown-item", "All People")
-            .invoke("attr", "href")
-            .then((href) => {
-                expect(href, "starts with mailto:").to.match(/^mailto:/);
-                expect(href, "is not a bcc link").not.to.include("?bcc=");
-
-                const decoded = decodeMailtoHref(href);
-                expect(decoded, "contains at least one @").to.match(/@/);
-                expect(decoded, "no double-comma (empty slot)").not.to.include(",,");
-                expect(decoded, "no leading comma").not.to.match(/^,/);
-                expect(decoded, "no trailing comma").not.to.match(/,$/);
+        // The badge should show a positive number
+        cy.get("#crm-email-composer-modal .modal-title .badge")
+            .invoke("text")
+            .then((text) => {
+                expect(parseInt(text.trim(), 10)).to.be.at.least(1);
             });
-    });
-
-    // ── Href structure: Email BCC ─────────────────────────────────────────
-
-    it("Email BCC — All People link is a well-formed mailto:?bcc= with comma-separated addresses", () => {
-        cy.visit("/people/dashboard");
-
-        cy.contains(".dropdown-toggle", "Email BCC").click();
-
-        cy.contains(".dropdown-toggle", "Email BCC")
-            .closest(".dropdown")
-            .contains("a.dropdown-item", "All People")
-            .invoke("attr", "href")
-            .then((href) => {
-                expect(href, "starts with mailto:?bcc=").to.match(/^mailto:\?bcc=/);
-
-                const decoded = decodeMailtoHref(href);
-                expect(decoded, "contains at least one @").to.match(/@/);
-                expect(decoded, "no double-comma (empty slot)").not.to.include(",,");
-                expect(decoded, "no leading comma").not.to.match(/^,/);
-                expect(decoded, "no trailing comma").not.to.match(/,$/);
-            });
-    });
-
-    // ── sToEmailAddress dedup ─────────────────────────────────────────────
-
-    it("sToEmailAddress is appended to Email All recipients exactly once", () => {
-        const defaultTo = "default-to@cypress.example";
-        setSystemConfig("sToEmailAddress", defaultTo);
-
-        cy.visit("/people/dashboard");
-        cy.contains(".dropdown-toggle", "Email All").click();
-
-        cy.contains(".dropdown-toggle", "Email All")
-            .closest(".dropdown")
-            .contains("a.dropdown-item", "All People")
-            .invoke("attr", "href")
-            .then((href) => {
-                const decoded = decodeMailtoHref(href);
-                const occurrences = decoded.toLowerCase().split(defaultTo.toLowerCase()).length - 1;
-                expect(occurrences, `'${defaultTo}' appears exactly once in: ${decoded}`)
-                    .to.equal(1);
-                expect(decoded, "no double-comma").not.to.include(",,");
-            });
-
-        setSystemConfig("sToEmailAddress", "");
-    });
-
-    it("sToEmailAddress is not duplicated when it matches a person email (case-insensitive)", () => {
-        // "lady@nower.com" is a known person email in the seed fixture.
-        // Use a differently-cased variant to verify the case-insensitive
-        // dedup path in $joinEmails (in_array + strtolower).
-        const knownPersonEmail = "lady@nower.com";
-        const caseVariant = "Lady@Nower.Com";
-        setSystemConfig("sToEmailAddress", caseVariant);
-
-        cy.visit("/people/dashboard");
-        cy.contains(".dropdown-toggle", "Email All").click();
-
-        cy.contains(".dropdown-toggle", "Email All")
-            .closest(".dropdown")
-            .contains("a.dropdown-item", "All People")
-            .invoke("attr", "href")
-            .then((href) => {
-                const decoded = decodeMailtoHref(href).toLowerCase();
-                const occurrences = decoded.split(knownPersonEmail).length - 1;
-                expect(occurrences, `'${knownPersonEmail}' should appear exactly once (case-insensitive dedup)`)
-                    .to.equal(1);
-                expect(decoded, "no double-comma").not.to.include(",,");
-            });
-
-        setSystemConfig("sToEmailAddress", "");
     });
 });

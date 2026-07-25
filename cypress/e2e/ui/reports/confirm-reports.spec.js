@@ -12,10 +12,25 @@
  * to demo data (family 1) rather than fetched via API calls before PDF tests.
  */
 describe("Confirmation Reports - ConfirmReport & ConfirmReportEmail", () => {
+    /**
+     * Direct form login — clears existing cookies and authenticates as admin
+     * via the real ChurchCRM login page (/session/begin). More reliable than
+     * cy.setupAdminSession() for pages that require specific role flags
+     * (MenuOptions), because it guarantees a fresh PHP session without any
+     * contamination from prior tests.
+     * Pattern follows cypress/e2e/ui/people/standard.cart-to-family.spec.js.
+     */
+    function freshAdminLogin() {
+        cy.clearCookies();
+        cy.visit("/session/begin");
+        cy.get("input[name=User]").type(Cypress.env("admin.username"));
+        cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+        cy.url().should("not.include", "/session/begin");
+    }
+
     beforeEach(() => {
-        cy.setupAdminSession();
-        // Establish browser context so session cookies are in scope for PDF navigation
-        cy.visit("LettersAndLabels.php");
+        freshAdminLogin();
+        cy.visit("/LettersAndLabels.php");
     });
 
     describe("ConfirmReport - PDF Generation", () => {

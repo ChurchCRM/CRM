@@ -123,14 +123,12 @@ if ($bCanManageGroups) {
                 <i class="fa-solid fa-map-location-dot me-1"></i><?= gettext('Map') ?>
             </a>
             <?php if ($canEmail): ?>
-            <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssEmailDropdownBtn">
-                    <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
-                </button>
-                <div class="dropdown-menu" id="ssEmailDropdownMenu">
-                    <div class="text-center py-2 text-body-secondary"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
-                </div>
-            </div>
+            <button type="button" class="btn btn-ghost-secondary"
+                    data-email-composer
+                    data-email-endpoint="groups/<?= (int) $iGroupId ?>/sundayschool/emails"
+                    data-email-title="<?= htmlspecialchars(gettext('Email') . ' ' . $iGroupName, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+                <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
+            </button>
             <?php endif; ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssTextDropdownBtn">
@@ -619,5 +617,8 @@ if ($bCanManageGroups) {
 </script>
 <script src="<?= $sRootPath ?>/skin/js/sundayschool-actions.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/sundayschool-actions.js') ?>"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-class-view.min.js"></script>
+<?php if ($canEmail): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

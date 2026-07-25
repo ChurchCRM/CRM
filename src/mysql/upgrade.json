@@ -76,9 +76,14 @@
     "scripts": ["/mysql/upgrade/7.5.0-fundraiser-fields.sql"],
     "dbVersion": "7.5.0"
   },
-  "current": {
+  "pre-7.5.1": {
     "versions": ["7.5.0"],
-    "scripts": ["/mysql/upgrade/7.5.1-remove-email-delimiter-user-settings.sql"],
+    "scripts": ["/mysql/upgrade/7.5.1-remove-sMailtoDelimiter.sql"],
+    "dbVersion": "7.5.1"
+  },
+  "current": {
+    "versions": [],
+    "scripts": [],
     "dbVersion": "7.5.1"
   }
 }
