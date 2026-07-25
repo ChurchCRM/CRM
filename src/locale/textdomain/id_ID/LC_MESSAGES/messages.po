@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "Tanggal Pernikahan"
 
 #: 
-msgid "Output Method:"
-msgstr "Metode Hasil:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Catatan Individu CSV"
 
@@ -369,10 +365,6 @@ msgstr "Aksi"
 #: 
 msgid "Member"
 msgstr "Anggota"
-
-#: 
-msgid " of the"
-msgstr "dari"
 
 #: 
 msgid "(No assigned family)"
@@ -1047,11 +1039,6 @@ msgid "Bank Draft"
 msgstr "Draf Bank"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Jumlah minimum"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0-tidak ada minimum"
 
@@ -1076,10 +1063,6 @@ msgid "All Families"
 msgstr "Semua Keluarga"
 
 #: 
-msgid "Report Heading:"
-msgstr "Judul Laporan"
-
-#: 
 msgid "Graphic"
 msgstr "Grafik"
 
@@ -1090,14 +1073,6 @@ msgstr "Alamat gereja"
 #: 
 msgid "Blank"
 msgstr "Kosong"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Slip Pembayaran"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortir data berdasarkan:"
 
 #: 
 msgid "Deposit"
@@ -1592,10 +1567,6 @@ msgid "Generate Statement"
 msgstr "Buat Pernyataan"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Pembeli untuk pengumpulan dana ini:"
-
-#: 
 msgid "Select all"
 msgstr "Pilih Semua"
 
@@ -1714,10 +1685,6 @@ msgstr "Harus menentukan nomor cek bukan nol"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Nomor cek tidak valid untuk pembayaran 'CASH'"
-
-#: 
-msgid " more entries will fit."
-msgstr "lebih banyak entri akan cocok."
 
 #: 
 msgid "Deposit closed"
@@ -1849,10 +1816,6 @@ msgid "Query Listing"
 msgstr "Daftar Permintaan"
 
 #: 
-msgid " record(s) returned"
-msgstr "catatan dikembalikan"
-
-#: 
 msgid "Query View"
 msgstr "Tampilan Pertanyaan"
 
@@ -1863,22 +1826,6 @@ msgstr "Nilai ini wajib diisi."
 #: 
 msgid "This value must be numeric."
 msgstr "Nilai ini harus berupa angka."
-
-#: 
-msgid "This value must be at least "
-msgstr "Nilai ini harus paling tidak "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Nilai ini tidak boleh lebih dari "
-
-#: 
-msgid " characters long"
-msgstr "karakter panjang"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Nilai ini tidak boleh kurang dari "
 
 #: 
 msgid "Run Query Again"
@@ -1913,20 +1860,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "PERINGATAN: Keluarga ini memiliki catatan donasi dan TIDAK boleh dihapus sampai donasi ini dikaitkan dengan keluarga lain."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Silakan pilih keluarga lain yang akan dikaitkan dengan sumbangan ini:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "PERINGATAN: Tindakan ini tidak dapat diurungkan dan mungkin memiliki implikasi hukum!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "KELUARGA SAAT INI DENGAN DONASI"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Harap konfirmasi penghapusan catatan keluarga ini:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2051,10 +1990,6 @@ msgstr "Editor Peluang Sukarelawan"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Belum ada peluang sukarela yang ditambahkan"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Catatan \"Mengapa Datang\" untuk "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2298,14 +2233,6 @@ msgid "Cell"
 msgstr "Sel"
 
 #: 
-msgid "Estimated value "
-msgstr "Nilai perkiraan "
-
-#: 
-msgid "Donated by "
-msgstr "Disumbangkan oleh "
-
-#: 
 msgid "Paddle"
 msgstr "Mendayung"
 
@@ -2314,16 +2241,8 @@ msgid "Bid"
 msgstr "Tawaran"
 
 #: 
-msgid "Minimum bid "
-msgstr "Tawaran minimum "
-
-#: 
 msgid "All Funds"
 msgstr "Semua Dana"
-
-#: 
-msgid " for all funds"
-msgstr "untuk semua dana"
 
 #: 
 msgid " for fund "

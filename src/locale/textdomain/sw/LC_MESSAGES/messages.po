@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "Tarehe ya adhimisho"
 
 #: 
-msgid "Output Method:"
-msgstr "Mbinu ya Pato:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV rekodi moja moja"
 
@@ -369,10 +365,6 @@ msgstr "Hatua"
 #: 
 msgid "Member"
 msgstr "Mwanachama"
-
-#: 
-msgid " of the"
-msgstr " ya"
 
 #: 
 msgid "(No assigned family)"
@@ -1046,10 +1038,6 @@ msgid "Bank Draft"
 msgstr "Rasimu ya Benki"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Kiasi cha Chini Jumla:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Hakuna Kiwango cha Chini"
 
@@ -1074,10 +1062,6 @@ msgid "All Families"
 msgstr "Familia Zote"
 
 #: 
-msgid "Report Heading:"
-msgstr "Kichwa cha Ripoti:"
-
-#: 
 msgid "Graphic"
 msgstr "Mchoro"
 
@@ -1088,14 +1072,6 @@ msgstr "Anwani ya Kanisa"
 #: 
 msgid "Blank"
 msgstr "Tupu"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Hati ya Utumaji Pesa:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Panga Data kwa:"
 
 #: 
 msgid "Deposit"
@@ -1590,10 +1566,6 @@ msgid "Generate Statement"
 msgstr "Tengeneza Taarifa"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Wanunuzi wa uchangishaji huu:"
-
-#: 
 msgid "Select all"
 msgstr "Chagua zote"
 
@@ -1712,10 +1684,6 @@ msgstr "Lazima ubainishe nambari ya kuangalia isiyo sifuri"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Nambari ya hundi si halali kwa malipo ya 'PESA'"
-
-#: 
-msgid " more entries will fit."
-msgstr " maingizo zaidi yatafaa."
 
 #: 
 msgid "Deposit closed"
@@ -1847,10 +1815,6 @@ msgid "Query Listing"
 msgstr "Uorodheshaji wa Maswali"
 
 #: 
-msgid " record(s) returned"
-msgstr " rekodi zilizorejeshwa"
-
-#: 
 msgid "Query View"
 msgstr "Muonekano wa Maswali"
 
@@ -1861,22 +1825,6 @@ msgstr "Thamani hii inahitajika."
 #: 
 msgid "This value must be numeric."
 msgstr "Thamani hii lazima iwe nambari."
-
-#: 
-msgid "This value must be at least "
-msgstr "Thamani hii lazima iwe angalau "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Thamani hii haiwezi kuwa zaidi ya "
-
-#: 
-msgid " characters long"
-msgstr " wahusika kwa muda mrefu"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Thamani hii haiwezi kuwa chini ya "
 
 #: 
 msgid "Run Query Again"
@@ -1911,20 +1859,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "ONYO: Familia hii ina rekodi za michango na HAKUNA KUFUTWA hadi michango hii ihusishwe na familia nyingine."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Tafadhali chagua familia nyingine ambayo utahusisha nayo michango hii:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "ONYO: Hatua hii haiwezi kutenduliwa na inaweza kuwa na athari za kisheria!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "FAMILIA YA SASA NA MICHANGO"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Tafadhali thibitisha kufutwa kwa rekodi hii ya familia:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2049,10 +1989,6 @@ msgstr "Mhariri wa Fursa ya Kujitolea"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Hakuna fursa za kujitolea ambazo zimeongezwa bado"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"Kwa nini Alikuja\" maelezo kwa "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2296,14 +2232,6 @@ msgid "Cell"
 msgstr "Kiini"
 
 #: 
-msgid "Estimated value "
-msgstr "Thamani iliyokadiriwa "
-
-#: 
-msgid "Donated by "
-msgstr "Imetolewa na "
-
-#: 
 msgid "Paddle"
 msgstr "Panda"
 
@@ -2312,16 +2240,8 @@ msgid "Bid"
 msgstr "Zabuni"
 
 #: 
-msgid "Minimum bid "
-msgstr "Kima cha chini cha zabuni "
-
-#: 
 msgid "All Funds"
 msgstr "Fedha Zote"
-
-#: 
-msgid " for all funds"
-msgstr " kwa fedha zote"
 
 #: 
 msgid " for fund "

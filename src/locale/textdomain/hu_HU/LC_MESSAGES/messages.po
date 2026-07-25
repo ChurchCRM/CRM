@@ -196,10 +196,6 @@ msgid "Anniversary Date"
 msgstr "Évforduló dátuma"
 
 #: 
-msgid "Output Method:"
-msgstr "Kimeneti módszer:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV egyén rekordok"
 
@@ -367,10 +363,6 @@ msgstr "Művelet"
 #: 
 msgid "Member"
 msgstr "Tag"
-
-#: 
-msgid " of the"
-msgstr "Az"
 
 #: 
 msgid "(No assigned family)"
@@ -1051,11 +1043,6 @@ msgid "Bank Draft"
 msgstr "Bank-tervezet"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Minimum Teljes összeg:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Nincs Minimum"
 
@@ -1080,10 +1067,6 @@ msgid "All Families"
 msgstr "All Families"
 
 #: 
-msgid "Report Heading:"
-msgstr "Jelentés Jogcím:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafikus"
 
@@ -1094,14 +1077,6 @@ msgstr "Templom Cím"
 #: 
 msgid "Blank"
 msgstr "Üres"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Átutalási Slip:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Rendezés Adatok:"
 
 #: 
 msgid "Deposit"
@@ -1606,10 +1581,6 @@ msgid "Generate Statement"
 msgstr "Generálása Statement"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Vevők erre adománygyűjtő:"
-
-#: 
 msgid "Select all"
 msgstr "Az összes,"
 
@@ -1731,10 +1702,6 @@ msgstr "Meg kell adni a nem nulla szám ellenőrzés"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Ellenőrizze szám nem érvényes a \"készpénz\" fizetési"
-
-#: 
-msgid " more entries will fit."
-msgstr "több bejegyzés fér."
 
 #: 
 msgid "Deposit closed"
@@ -1868,10 +1835,6 @@ msgid "Query Listing"
 msgstr "Lekérdezés Listing"
 
 #: 
-msgid " record(s) returned"
-msgstr "bejegyzés (ek) iránt"
-
-#: 
 msgid "Query View"
 msgstr "Lekérdezés megnézése"
 
@@ -1882,22 +1845,6 @@ msgstr "Ez az érték szükséges."
 #: 
 msgid "This value must be numeric."
 msgstr "Ez a számérték kell legyen."
-
-#: 
-msgid "This value must be at least "
-msgstr "Ennek az értéknek legalább"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Ez az érték nem lehet nagyobb, mint a"
-
-#: 
-msgid " characters long"
-msgstr "karakter hosszú"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Ez az érték nem lehet kisebb, mint"
 
 #: 
 msgid "Run Query Again"
@@ -1933,20 +1880,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "FIGYELEM: A család nyilvántartást adományok és nem kell hagyni, amíg ezek adományt társítva van egy másik család."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Kérjük, válasszon egy másik család, akikkel társítani ezeket az adományokat:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "FIGYELEM: Ez a művelet nem vonható vissza, és jogi hatásai lehetnek!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "FOLYÓ család ADOMÁNYOK"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Kérjük, erősítse meg törlés a család eredménye:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2080,10 +2019,6 @@ msgstr "Önkéntes Opportunity szerkesztő"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nem önkéntes lehetőségeket adtak még"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"Miért jött\" megjegyzések"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2336,14 +2271,6 @@ msgid "Cell"
 msgstr "Sejt"
 
 #: 
-msgid "Estimated value "
-msgstr "Becsült érték"
-
-#: 
-msgid "Donated by "
-msgstr "Által adományozott"
-
-#: 
 msgid "Paddle"
 msgstr "Evez"
 
@@ -2352,16 +2279,8 @@ msgid "Bid"
 msgstr "Árajánlat"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimális ajánlat"
-
-#: 
 msgid "All Funds"
 msgstr "Összes alapok"
-
-#: 
-msgid " for all funds"
-msgstr "Ha az összes alap"
 
 #: 
 msgid " for fund "

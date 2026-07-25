@@ -198,10 +198,6 @@ msgid "Anniversary Date"
 msgstr "सालगिरह की तिथि"
 
 #: 
-msgid "Output Method:"
-msgstr "आउटपुट विधि:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "सीएसवी व्यक्तिगत रिकॉर्ड"
 
@@ -369,10 +365,6 @@ msgstr "कार्रवाई"
 #: 
 msgid "Member"
 msgstr "सदस्य"
-
-#: 
-msgid " of the"
-msgstr " का"
 
 #: 
 msgid "(No assigned family)"
@@ -1036,10 +1028,6 @@ msgid "Bank Draft"
 msgstr "बैंक ड्राफ्ट"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "न्यूनतम कुल राशि:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - कोई न्यूनतम नहीं"
 
@@ -1064,10 +1052,6 @@ msgid "All Families"
 msgstr "सभी परिवार"
 
 #: 
-msgid "Report Heading:"
-msgstr "रिपोर्ट का शीर्षक:"
-
-#: 
 msgid "Graphic"
 msgstr "ग्राफिक"
 
@@ -1078,14 +1062,6 @@ msgstr "चर्च का पता"
 #: 
 msgid "Blank"
 msgstr "खाली"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "प्रेषण पर्ची:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "डेटा को इसके द्वारा क्रमबद्ध करें:"
 
 #: 
 msgid "Deposit"
@@ -1572,10 +1548,6 @@ msgid "Generate Statement"
 msgstr "विवरण तैयार करें"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "इस फंडरेज़र के लिए खरीदार:"
-
-#: 
 msgid "Select all"
 msgstr "सभी चुनें"
 
@@ -1694,10 +1666,6 @@ msgstr "गैर-शून्य चेक संख्या निर्द�
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "'नकद' भुगतान के लिए चेक संख्या मान्य नहीं है"
-
-#: 
-msgid " more entries will fit."
-msgstr " और प्रविष्टियाँ आ जाएँगी।"
 
 #: 
 msgid "Deposit closed"
@@ -1829,10 +1797,6 @@ msgid "Query Listing"
 msgstr "क्वेरी सूची"
 
 #: 
-msgid " record(s) returned"
-msgstr "रिकॉर्ड प्राप्त हुए"
-
-#: 
 msgid "Query View"
 msgstr "क्वेरी दृश्य"
 
@@ -1843,22 +1807,6 @@ msgstr "यह मान आवश्यक है।"
 #: 
 msgid "This value must be numeric."
 msgstr "यह मान संख्यात्मक होना चाहिए।"
-
-#: 
-msgid "This value must be at least "
-msgstr "यह मान कम से कम होना चाहिए "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "यह मान इससे अधिक नहीं हो सकता "
-
-#: 
-msgid " characters long"
-msgstr " अक्षर लंबा"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "यह मान इससे कम नहीं हो सकता "
 
 #: 
 msgid "Run Query Again"
@@ -1893,20 +1841,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "चेतावनी: इस परिवार के पास दान का रिकॉर्ड है और जब तक ये दान किसी अन्य परिवार से नहीं जुड़ जाते, तब तक इसे हटाया नहीं जा सकता।"
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "कृपया एक अन्य परिवार चुनें जिसके साथ इन दानों को जोड़ना है:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "चेतावनी: यह क्रिया पूर्ववत नहीं की जा सकती और इसके कानूनी निहितार्थ हो सकते हैं!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "दान के साथ वर्तमान परिवार"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "कृपया इस परिवार के रिकॉर्ड को हटाने की पुष्टि करें:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2031,10 +1971,6 @@ msgstr "स्वयंसेवक अवसर संपादक"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "अभी तक कोई स्वयंसेवक अवसर नहीं जोड़ा गया है"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"क्यों आए\" नोट्स इसके लिए: "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2278,14 +2214,6 @@ msgid "Cell"
 msgstr "सेल"
 
 #: 
-msgid "Estimated value "
-msgstr "अनुमानित मूल्य "
-
-#: 
-msgid "Donated by "
-msgstr "इनके द्वारा दान किया गया: "
-
-#: 
 msgid "Paddle"
 msgstr "पैडल"
 
@@ -2294,16 +2222,8 @@ msgid "Bid"
 msgstr "बोली"
 
 #: 
-msgid "Minimum bid "
-msgstr "न्यूनतम बोली "
-
-#: 
 msgid "All Funds"
 msgstr "सभी फंड"
-
-#: 
-msgid " for all funds"
-msgstr " सभी फंडों के लिए"
 
 #: 
 msgid " for fund "

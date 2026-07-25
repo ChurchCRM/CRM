@@ -207,10 +207,6 @@ msgid "Anniversary Date"
 msgstr "วันครบรอบแต่งงาน"
 
 #: 
-msgid "Output Method:"
-msgstr "วิธีการส่งออก"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "ระเบียนบุคคล CSV"
 
@@ -378,10 +374,6 @@ msgstr "การดำเนินการ"
 #: 
 msgid "Member"
 msgstr "สมาชิก"
-
-#: 
-msgid " of the"
-msgstr " ของ"
 
 #: 
 msgid "(No assigned family)"
@@ -1045,10 +1037,6 @@ msgid "Bank Draft"
 msgstr "ดราฟท์ธนาคาร"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "จำนวนเงินรวมขั้นต่ำ:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - ไม่มีขั้นต่ำ"
 
@@ -1073,10 +1061,6 @@ msgid "All Families"
 msgstr "ครอบครัวทั้งหมด"
 
 #: 
-msgid "Report Heading:"
-msgstr "หัวข้อรายงาน:"
-
-#: 
 msgid "Graphic"
 msgstr "กราฟิก"
 
@@ -1087,14 +1071,6 @@ msgstr "ที่อยู่คริสตจักร"
 #: 
 msgid "Blank"
 msgstr "ว่างเปล่า"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "ใบส่งเงิน:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "เรียงลำดับข้อมูลตาม:"
 
 #: 
 msgid "Deposit"
@@ -1581,10 +1557,6 @@ msgid "Generate Statement"
 msgstr "สร้างใบแจ้งยอด"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "ผู้ซื้อสำหรับการระดมทุนนี้:"
-
-#: 
 msgid "Select all"
 msgstr "เลือกทั้งหมด"
 
@@ -1703,10 +1675,6 @@ msgstr "ต้องระบุหมายเลขเช็คที่ไม
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "หมายเลขเช็คไม่ถูกต้องสำหรับการชำระเงินแบบ 'เงินสด'"
-
-#: 
-msgid " more entries will fit."
-msgstr " รายการเพิ่มเติมจะพอดี"
 
 #: 
 msgid "Deposit closed"
@@ -1838,10 +1806,6 @@ msgid "Query Listing"
 msgstr "รายการคิวรี"
 
 #: 
-msgid " record(s) returned"
-msgstr " ระเบียนถูกส่งคืน"
-
-#: 
 msgid "Query View"
 msgstr "มุมมองคิวรี"
 
@@ -1852,22 +1816,6 @@ msgstr "ค่านี้จำเป็นต้องมี"
 #: 
 msgid "This value must be numeric."
 msgstr "ค่านี้ต้องเป็นตัวเลข"
-
-#: 
-msgid "This value must be at least "
-msgstr "ค่านี้ต้องมีอย่างน้อย "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "ค่านี้ไม่สามารถมากกว่า "
-
-#: 
-msgid " characters long"
-msgstr " ตัวอักษร"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "ค่านี้ไม่สามารถน้อยกว่า "
 
 #: 
 msgid "Run Query Again"
@@ -1902,20 +1850,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "คำเตือน: ครอบครัวนี้มีบันทึกการบริจาคและไม่สามารถลบได้จนกว่าจะเชื่อมโยงการบริจาคเหล่านี้กับครอบครัวอื่น"
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "กรุณาเลือกครอบครัวอื่นเพื่อเชื่อมโยงการบริจาคเหล่านี้:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "คำเตือน: การดำเนินการนี้ไม่สามารถเลิกทำได้และอาจมีผลกระทบทางกฎหมาย!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "ครอบครัวปัจจุบันที่มีการบริจาค"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "กรุณายืนยันการลบระเบียนครอบครัวนี้:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2040,10 +1980,6 @@ msgstr "ตัวแก้ไขโอกาสอาสาสมัคร"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "ยังไม่มีโอกาสอาสาสมัครที่เพิ่ม"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "บันทึก \"ทำไมมา\" สำหรับ "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2287,14 +2223,6 @@ msgid "Cell"
 msgstr "มือถือ"
 
 #: 
-msgid "Estimated value "
-msgstr "มูลค่าประมาณ "
-
-#: 
-msgid "Donated by "
-msgstr "บริจาคโดย "
-
-#: 
 msgid "Paddle"
 msgstr "ไม้เคาะ"
 
@@ -2303,16 +2231,8 @@ msgid "Bid"
 msgstr "ประมูล"
 
 #: 
-msgid "Minimum bid "
-msgstr "ราคาประมูลขั้นต่ำ "
-
-#: 
 msgid "All Funds"
 msgstr "กองทุนทั้งหมด"
-
-#: 
-msgid " for all funds"
-msgstr " สำหรับกองทุนทั้งหมด"
 
 #: 
 msgid " for fund "

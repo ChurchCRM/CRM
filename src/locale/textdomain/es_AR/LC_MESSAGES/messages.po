@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "Fecha del Cumpleaños"
 
 #: 
-msgid "Output Method:"
-msgstr "Metodo de Salida:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Registros individuales CSV"
 
@@ -368,10 +364,6 @@ msgstr "Acción"
 #: 
 msgid "Member"
 msgstr "Miembro"
-
-#: 
-msgid " of the"
-msgstr "␣de"
 
 #: 
 msgid "(No assigned family)"
@@ -1035,10 +1027,6 @@ msgid "Bank Draft"
 msgstr "Giro Bancario"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Monto total mínimo:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Sin mínimo"
 
@@ -1063,10 +1051,6 @@ msgid "All Families"
 msgstr "Todas las familias"
 
 #: 
-msgid "Report Heading:"
-msgstr "Encabezado de reporte:"
-
-#: 
 msgid "Graphic"
 msgstr "Gráfico"
 
@@ -1077,14 +1061,6 @@ msgstr "Dirección de iglesia"
 #: 
 msgid "Blank"
 msgstr "Espacio"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Remitente"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Organizar datos por:"
 
 #: 
 msgid "Deposit"
@@ -1571,10 +1547,6 @@ msgid "Generate Statement"
 msgstr "Generar Declaración"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Compradores para esta recaudación de fondos:"
-
-#: 
 msgid "Select all"
 msgstr "Seleccionat todos"
 
@@ -1693,10 +1665,6 @@ msgstr "Debe especificar un número de cheque distinto de cero"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Compruebe el número no es válido para pago en 'EFECTIVO'"
-
-#: 
-msgid " more entries will fit."
-msgstr " Caben más entradas."
 
 #: 
 msgid "Deposit closed"
@@ -1828,10 +1796,6 @@ msgid "Query Listing"
 msgstr "Listado de búsqueda"
 
 #: 
-msgid " record(s) returned"
-msgstr " registro(s) encontrado(s)"
-
-#: 
 msgid "Query View"
 msgstr "Vista de la búsqueda"
 
@@ -1842,22 +1806,6 @@ msgstr "Este valor es requerido"
 #: 
 msgid "This value must be numeric."
 msgstr "Este valor debe ser numérico"
-
-#: 
-msgid "This value must be at least "
-msgstr "Este valor debe ser al menos"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Este valor no puede ser mayor que "
-
-#: 
-msgid " characters long"
-msgstr " número de caractéres"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Este valor no puede ser menor que "
 
 #: 
 msgid "Run Query Again"
@@ -1892,20 +1840,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "Atención: Esta familia tiene registros de donaciones y no puede ser borrada hasta que sus donaciones sean asociadas a otra familia."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Seleccione a otra familia a la cual asociar estas donaciones:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "Atencíon: ¡Esta acción no puede deshacerse y puede que tenga implicaciones legales!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "FAMILIAS CON DONACIONES"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Confirme la eliminación de este regístro de familia"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2030,10 +1970,6 @@ msgstr "Editor de Oportunidades de Voluntariados"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "no se han añadido oportunidades de voluntariados"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Notas \"Cómo se contactó\" para "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2277,14 +2213,6 @@ msgid "Cell"
 msgstr "Celular"
 
 #: 
-msgid "Estimated value "
-msgstr "Valor Estimado"
-
-#: 
-msgid "Donated by "
-msgstr "Donado por"
-
-#: 
 msgid "Paddle"
 msgstr "Paleta"
 
@@ -2293,16 +2221,8 @@ msgid "Bid"
 msgstr "Oferta"
 
 #: 
-msgid "Minimum bid "
-msgstr "Oferta mínima"
-
-#: 
 msgid "All Funds"
 msgstr "Todos los fondos"
-
-#: 
-msgid " for all funds"
-msgstr " para todos los fondos"
 
 #: 
 msgid " for fund "

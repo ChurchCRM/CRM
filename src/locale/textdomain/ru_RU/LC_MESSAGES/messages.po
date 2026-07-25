@@ -204,10 +204,6 @@ msgid "Anniversary Date"
 msgstr "Годовщина"
 
 #: 
-msgid "Output Method:"
-msgstr "Метод вывода:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Персональные данные в CSV файле"
 
@@ -379,10 +375,6 @@ msgstr "Действие"
 #: 
 msgid "Member"
 msgstr "Член"
-
-#: 
-msgid " of the"
-msgstr " из"
 
 #: 
 msgid "(No assigned family)"
@@ -1071,11 +1063,6 @@ msgid "Bank Draft"
 msgstr "Банковский чек"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "График Общая сумма:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Нет Минимальный"
 
@@ -1100,10 +1087,6 @@ msgid "All Families"
 msgstr "Все семьи"
 
 #: 
-msgid "Report Heading:"
-msgstr "Сообщить Рубрика:"
-
-#: 
 msgid "Graphic"
 msgstr "Графика"
 
@@ -1114,14 +1097,6 @@ msgstr "Церковь Адрес"
 #: 
 msgid "Blank"
 msgstr "Пустой"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Денежные переводы скольжения:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Сортировка данных по:"
 
 #: 
 msgid "Deposit"
@@ -1629,10 +1604,6 @@ msgid "Generate Statement"
 msgstr "Создание заявление"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Покупатели на этот сбор средств:"
-
-#: 
 msgid "Select all"
 msgstr "Выбрать все"
 
@@ -1754,10 +1725,6 @@ msgstr "Необходимо указать ненулевое контроль�
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Номер чека недействителен для оплаты НАЛИЧНЫМИ"
-
-#: 
-msgid " more entries will fit."
-msgstr " больше записей будет соответствовать."
 
 #: 
 msgid "Deposit closed"
@@ -1891,10 +1858,6 @@ msgid "Query Listing"
 msgstr "Запрос Листинг"
 
 #: 
-msgid " record(s) returned"
-msgstr " записи (ей) вернулся"
-
-#: 
 msgid "Query View"
 msgstr "Query View"
 
@@ -1905,22 +1868,6 @@ msgstr "Этот параметр обязателен."
 #: 
 msgid "This value must be numeric."
 msgstr "Это значение должно быть числовым."
-
-#: 
-msgid "This value must be at least "
-msgstr "Это значение должно быть по крайней мере, "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Это значение не может быть больше "
-
-#: 
-msgid " characters long"
-msgstr " символов"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Это значение не может быть меньше, чем "
 
 #: 
 msgid "Run Query Again"
@@ -1956,20 +1903,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "ВНИМАНИЕ: в этой семье есть записи о пожертвованиях, и их нельзя удалить, пока эти пожертвования не будут связаны с другой семьей."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Пожалуйста, выберите другую семью с кем связать эти пожертвования:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "ПРЕДУПРЕЖДЕНИЕ: Это действие не может быть отменено, и может иметь правовые последствия!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "Текущую группу с пожертвованиями"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Пожалуйста, подтвердите удаление этой семьи записи:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2103,10 +2042,6 @@ msgstr "Редактор служений"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Нет волонтеров не было добавлено еще"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Заметки \"Почему пришел\" для"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2359,14 +2294,6 @@ msgid "Cell"
 msgstr "Ячейка"
 
 #: 
-msgid "Estimated value "
-msgstr "Расчетная стоимость "
-
-#: 
-msgid "Donated by "
-msgstr "Досталось от "
-
-#: 
 msgid "Paddle"
 msgstr "Лопасть"
 
@@ -2375,16 +2302,8 @@ msgid "Bid"
 msgstr "Заявка"
 
 #: 
-msgid "Minimum bid "
-msgstr "Минимальная ставка "
-
-#: 
 msgid "All Funds"
 msgstr "Все средства,"
-
-#: 
-msgid " for all funds"
-msgstr " для всех средств"
 
 #: 
 msgid " for fund "

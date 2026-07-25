@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "Trouwdatum"
 
 #: 
-msgid "Output Method:"
-msgstr "Uitvoermethode:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Individuele CSV-records"
 
@@ -366,10 +362,6 @@ msgstr "Actie"
 #: 
 msgid "Member"
 msgstr "Lid"
-
-#: 
-msgid " of the"
-msgstr "van de"
 
 #: 
 msgid "(No assigned family)"
@@ -1033,10 +1025,6 @@ msgid "Bank Draft"
 msgstr "Bank Overschrijving"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Minimum Totaal Bedrag:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0- Geen Minimum"
 
@@ -1061,10 +1049,6 @@ msgid "All Families"
 msgstr "Alle Gezinnen"
 
 #: 
-msgid "Report Heading:"
-msgstr "Raport Titel:"
-
-#: 
 msgid "Graphic"
 msgstr "Graphisch"
 
@@ -1075,14 +1059,6 @@ msgstr "Kerk Adres"
 #: 
 msgid "Blank"
 msgstr "Blank"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Overschrijvings Strookje:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sorteer Data op:"
 
 #: 
 msgid "Deposit"
@@ -1569,10 +1545,6 @@ msgid "Generate Statement"
 msgstr "Genereer Rapportage"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Kopers van deze fundraiser:"
-
-#: 
 msgid "Select all"
 msgstr "Selecteer alles"
 
@@ -1691,10 +1663,6 @@ msgstr "Dient aan te geven niet-nul controlenummer"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Controleer nummer niet geldig voor \"CASH\" betaling"
-
-#: 
-msgid " more entries will fit."
-msgstr "Er is ruimte voor meer."
 
 #: 
 msgid "Deposit closed"
@@ -1826,10 +1794,6 @@ msgid "Query Listing"
 msgstr "Overzicht van queries"
 
 #: 
-msgid " record(s) returned"
-msgstr "recors(s) ontvangen"
-
-#: 
 msgid "Query View"
 msgstr "Query Overzicht"
 
@@ -1840,22 +1804,6 @@ msgstr "Deze waarde is vereist."
 #: 
 msgid "This value must be numeric."
 msgstr "Deze waarde moet numeriek zijn."
-
-#: 
-msgid "This value must be at least "
-msgstr "Deze waarde moet op zijn minst "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Deze waarde kan niet meer zijn dan "
-
-#: 
-msgid " characters long"
-msgstr " karakters lang"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Deze waarde kan niet minder zijn dan "
 
 #: 
 msgid "Run Query Again"
@@ -1890,20 +1838,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "WAARSCHUWING: Deze familie heeft gekoppelde donaties, en mag niet worden verwijderd totdat deze gekoppeld zijn aan een andere familie."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Selecteer aub een andere familie aan wie deze donaties worden gekoppeld:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "Waarschuwing: Deze actie kan niet ongedaan worden gemaakt, en zou legale consequenties kunnen hebben!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "HUIDIGE FAMILIE MET DONATIES"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Bevestig aub verwijdering van deze familie:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2028,10 +1968,6 @@ msgstr "Beheer vrijwilligerswerk"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Er zijn nog geen vrijwilligers mogelijkheden toegevoegd"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"Waarom Kwam\" notities for "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2275,14 +2211,6 @@ msgid "Cell"
 msgstr "Mobiel"
 
 #: 
-msgid "Estimated value "
-msgstr "Geschatte Waarde"
-
-#: 
-msgid "Donated by "
-msgstr "Geschonken door"
-
-#: 
 msgid "Paddle"
 msgstr "Peddel"
 
@@ -2291,16 +2219,8 @@ msgid "Bid"
 msgstr "Bod"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimum bod"
-
-#: 
 msgid "All Funds"
 msgstr "Alle Fonds"
-
-#: 
-msgid " for all funds"
-msgstr " voor alle fondsen"
 
 #: 
 msgid " for fund "

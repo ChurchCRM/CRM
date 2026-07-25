@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "వార్షికోత్సవ తేదీ"
 
 #: 
-msgid "Output Method:"
-msgstr "అవుట్‌పుట్ విధానం:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV వ్యక్తిగత రికార్డులు"
 
@@ -369,10 +365,6 @@ msgstr "చర్య"
 #: 
 msgid "Member"
 msgstr "సభ్యుడు"
-
-#: 
-msgid " of the"
-msgstr " యొక్క"
 
 #: 
 msgid "(No assigned family)"
@@ -1045,10 +1037,6 @@ msgid "Bank Draft"
 msgstr "బ్యాంక్ డ్రాఫ్ట్"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "కనిష్ట మొత్తం:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0-కనీసం లేదు"
 
@@ -1073,10 +1061,6 @@ msgid "All Families"
 msgstr "అన్ని కుటుంబాలు"
 
 #: 
-msgid "Report Heading:"
-msgstr "నివేదిక శీర్షిక:"
-
-#: 
 msgid "Graphic"
 msgstr "గ్రాఫిక్"
 
@@ -1087,14 +1071,6 @@ msgstr "చర్చి చిరునామా"
 #: 
 msgid "Blank"
 msgstr "ఖాళీ"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "రెమిటెన్స్ స్లిప్:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "దీని ద్వారా డేటాను క్రమబద్ధీకరించండి:"
 
 #: 
 msgid "Deposit"
@@ -1581,10 +1557,6 @@ msgid "Generate Statement"
 msgstr "స్టేట్‌మెంట్ రూపొందించు"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "ఈ ఫండ్‌రైజర్ కోసం కొనుగోలుదారులు:"
-
-#: 
 msgid "Select all"
 msgstr "అన్నీ ఎంచుకో"
 
@@ -1703,10 +1675,6 @@ msgstr "సున్నా కాని చెక్ నంబర్‌ను �
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "'CASH' చెల్లింపుకు చెక్ నంబర్ చెల్లదు"
-
-#: 
-msgid " more entries will fit."
-msgstr " మరిన్ని ఎంట్రీలు సరిపోతాయి."
 
 #: 
 msgid "Deposit closed"
@@ -1838,10 +1806,6 @@ msgid "Query Listing"
 msgstr "క్వరీ జాబితా"
 
 #: 
-msgid " record(s) returned"
-msgstr " రికార్డ్(లు) తిరిగి వచ్చాయి"
-
-#: 
 msgid "Query View"
 msgstr "క్వెరీ వీక్షణ"
 
@@ -1852,22 +1816,6 @@ msgstr "ఈ విలువ అవసరం."
 #: 
 msgid "This value must be numeric."
 msgstr "ఈ విలువ సంఖ్యాత్మకంగా ఉండాలి."
-
-#: 
-msgid "This value must be at least "
-msgstr "ఈ విలువ కనీసం ఉండాలి "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "ఈ విలువ దీని కంటే ఎక్కువ ఉండకూడదు "
-
-#: 
-msgid " characters long"
-msgstr " అక్షరాల పొడవు"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "ఈ విలువ దీని కంటే తక్కువ ఉండకూడదు "
 
 #: 
 msgid "Run Query Again"
@@ -1902,20 +1850,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "హెచ్చరిక: ఈ కుటుంబానికి విరాళాల రికార్డ్‌లు ఉన్నాయి మరియు ఈ విరాళాలు మరొక కుటుంబంతో అనుబంధించబడే వరకు తొలగించబడకపోవచ్చు."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "దయచేసి ఈ విరాళాలను అనుబంధించడానికి మరొక కుటుంబాన్ని ఎంచుకోండి:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "హెచ్చరిక: ఈ చర్య రద్దు చేయబడదు మరియు చట్టపరమైన పరిణామాలు ఉండవచ్చు!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "విరాళాలతో ప్రస్తుత కుటుంబం"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "దయచేసి ఈ కుటుంబ రికార్డ్ తొలగింపును నిర్ధారించండి:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2040,10 +1980,6 @@ msgstr "వాలంటీర్ అవకాశ ఎడిటర్"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "ఇంకా వాలంటీర్ అవకాశాలు జోడించబడలేదు"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "కోసం \"ఎందుకు వచ్చారు\" నోట్స్ "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2287,14 +2223,6 @@ msgid "Cell"
 msgstr "సెల్"
 
 #: 
-msgid "Estimated value "
-msgstr "అంచనా విలువ "
-
-#: 
-msgid "Donated by "
-msgstr "ద్వారా విరాళంగా ఇవ్వబడింది "
-
-#: 
 msgid "Paddle"
 msgstr "పాడిల్"
 
@@ -2303,16 +2231,8 @@ msgid "Bid"
 msgstr "బిడ్"
 
 #: 
-msgid "Minimum bid "
-msgstr "కనిష్ట బిడ్ "
-
-#: 
 msgid "All Funds"
 msgstr "అన్ని నిధులు"
-
-#: 
-msgid " for all funds"
-msgstr " అన్ని ఫండ్‌ల కోసం"
 
 #: 
 msgid " for fund "

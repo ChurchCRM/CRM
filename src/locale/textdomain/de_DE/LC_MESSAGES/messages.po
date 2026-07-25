@@ -213,10 +213,6 @@ msgid "Anniversary Date"
 msgstr "Jahrestag"
 
 #: 
-msgid "Output Method:"
-msgstr "Ausgabemethode:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV einzelne Einträge"
 
@@ -386,10 +382,6 @@ msgstr "Aktion"
 #: 
 msgid "Member"
 msgstr "Mitglied"
-
-#: 
-msgid " of the"
-msgstr " der"
 
 #: 
 msgid "(No assigned family)"
@@ -1078,11 +1070,6 @@ msgid "Bank Draft"
 msgstr "Scheck"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Minimaler Gesamtbetrag:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - kein Minimum"
 
@@ -1107,10 +1094,6 @@ msgid "All Families"
 msgstr "Alle Familien"
 
 #: 
-msgid "Report Heading:"
-msgstr "Berichts Überschrift:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafik"
 
@@ -1121,14 +1104,6 @@ msgstr "Adresse der Gemeinde"
 #: 
 msgid "Blank"
 msgstr "Leer"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Überweisungsbeleg:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortiere Dante nach:"
 
 #: 
 msgid "Deposit"
@@ -1641,10 +1616,6 @@ msgid "Generate Statement"
 msgstr "Mache Angabe"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Käufer bei dieser Spendenaktion:"
-
-#: 
 msgid "Select all"
 msgstr "Alle auswählen"
 
@@ -1766,10 +1737,6 @@ msgstr "Du  mußt eine von Null verschiedene Schecknummer angeben."
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Kontonummer nicht gültig für Barzahlung"
-
-#: 
-msgid " more entries will fit."
-msgstr "mehr Einträge passen."
 
 #: 
 msgid "Deposit closed"
@@ -1904,10 +1871,6 @@ msgid "Query Listing"
 msgstr "Abfrageliste"
 
 #: 
-msgid " record(s) returned"
-msgstr "Ausgegebene(r) Eintr."
-
-#: 
 msgid "Query View"
 msgstr "Suchergebnis anzeigen"
 
@@ -1918,22 +1881,6 @@ msgstr "Dieser Wert wird benötigt."
 #: 
 msgid "This value must be numeric."
 msgstr "Dieser Wert muss numerisch sein."
-
-#: 
-msgid "This value must be at least "
-msgstr "Dieser Wert muss mindestens"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Dieser Wert kann größer sein als"
-
-#: 
-msgid " characters long"
-msgstr "Stellen"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Dieser Wert darf nicht kleiner als"
 
 #: 
 msgid "Run Query Again"
@@ -1969,20 +1916,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "ACHTUNG: Dieser Familie wurden Spenden zugewiesen und darf erst gelöscht werden wenn diese Spenden einer anderen Familie zugwiesen werden."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Bitte wählen sie eine andere Familie aus mit jemandem dem sie diese Spenden zuweisen können."
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "ACHTUNG: Diese Aktion kann nicht zurückgenommen werden und könnte rechtliche Konsequenzen haben!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "AKTUELLE FAMILIEN MIT SPENDEN"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Bitte bestätige die Löschung der Familieneinträge:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2116,10 +2055,6 @@ msgstr "Editor zu den ehrenamtlichen Fähigkeiten"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Bisher wurden keine ehrenamtlichen Fähigkeiten erfasst"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Besuchsgrund"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2373,16 +2308,6 @@ msgstr "Cell"
 
 #: 
 #, fuzzy
-msgid "Estimated value "
-msgstr "Geschätzter Preis:"
-
-#: 
-#, fuzzy
-msgid "Donated by "
-msgstr "Spenden nach Fonds"
-
-#: 
-#, fuzzy
 msgid "Paddle"
 msgstr "Mittleres"
 
@@ -2391,16 +2316,8 @@ msgid "Bid"
 msgstr "Angebot"
 
 #: 
-msgid "Minimum bid "
-msgstr "Mindestgebot"
-
-#: 
 msgid "All Funds"
 msgstr "Alle Spendenaktionen"
-
-#: 
-msgid " for all funds"
-msgstr " für alle Aktionen"
 
 #: 
 msgid " for fund "
