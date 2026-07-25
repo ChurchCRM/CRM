@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-25 00:53+0000\n"
+"POT-Creation-Date: 2026-07-25 22:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -749,9 +749,6 @@ msgstr ""
 msgid "All Payments"
 msgstr ""
 
-msgid "All People"
-msgstr ""
-
 msgid "All Roles"
 msgstr ""
 
@@ -1277,9 +1274,6 @@ msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
 
 msgid "Azure"
-msgstr ""
-
-msgid "BCC All"
 msgstr ""
 
 msgid "BCC All Mail To"
@@ -2616,9 +2610,6 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
-msgid "Copy All Emails"
-msgstr ""
-
 msgid "Copy All Numbers"
 msgstr ""
 
@@ -3733,7 +3724,10 @@ msgstr ""
 msgid "Email All"
 msgstr ""
 
-msgid "Email BCC"
+msgid "Email All Members"
+msgstr ""
+
+msgid "Email Cart Members"
 msgstr ""
 
 msgid "Email Dashboard"
@@ -3769,9 +3763,6 @@ msgstr ""
 msgid "Email addresses copied to clipboard"
 msgstr ""
 
-msgid "Email cart items"
-msgstr ""
-
 msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
 msgstr ""
 
@@ -3794,9 +3785,6 @@ msgid "Email links in group and people views"
 msgstr ""
 
 msgid "Email lists are synced with Mailchimp."
-msgstr ""
-
-msgid "Email with hidden recipients"
 msgstr ""
 
 msgid "Email/Username"
@@ -4566,6 +4554,9 @@ msgid "Failed to remove group"
 msgstr ""
 
 msgid "Failed to reset settings"
+msgstr ""
+
+msgid "Failed to retrieve cart email addresses"
 msgstr ""
 
 msgid "Failed to retrieve data"
@@ -6294,6 +6285,9 @@ msgid "Kenya"
 msgstr ""
 
 msgid "Key People"
+msgstr ""
+
+msgid "Kids"
 msgstr ""
 
 msgid "Kiosk"
