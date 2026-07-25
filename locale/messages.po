@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-25 23:08+0000\n"
+"POT-Creation-Date: 2026-07-25 23:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2169,7 +2169,8 @@ msgstr ""
 msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
 msgstr ""
 
-msgid "Church email — configured on the"
+#, php-format
+msgid "Church email — configured on the %s page."
 msgstr ""
 
 msgid "Church information saved successfully"
@@ -2616,10 +2617,15 @@ msgstr ""
 msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
 msgstr ""
 
-msgid "Copied"
+msgid "Copied to clipboard"
 msgstr ""
 
-msgid "Copied to clipboard"
+msgctxt "one"
+msgid "Copied {{count}} members"
+msgstr ""
+
+msgctxt "other"
+msgid "Copied {{count}} members"
 msgstr ""
 
 msgid "Copied!"
@@ -3932,7 +3938,7 @@ msgstr ""
 msgid "Ends"
 msgstr ""
 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgid "Ends with a trailing slash (/)"
 msgstr ""
 
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
@@ -5842,7 +5848,10 @@ msgstr ""
 msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
 msgstr ""
 
-msgid "Ignore Incomplete<br>Addresses"
+msgid "Ignore"
+msgstr ""
+
+msgid "Ignore Incomplete Addresses"
 msgstr ""
 
 msgid "Ignored"
@@ -8911,9 +8920,6 @@ msgstr ""
 msgid "Plugin uninstalled"
 msgstr ""
 
-msgid "Plugin uninstalled."
-msgstr ""
-
 msgid "Plugin zip URL (HTTPS only)"
 msgstr ""
 
@@ -9044,9 +9050,6 @@ msgid "Property deleted successfully."
 msgstr ""
 
 msgid "Property not found"
-msgstr ""
-
-msgid "Property not found."
 msgstr ""
 
 msgid "Property type not found"
@@ -9211,7 +9214,8 @@ msgstr ""
 msgid "Red"
 msgstr ""
 
-msgid "Redirecting in"
+#, php-format
+msgid "Redirecting in %s seconds..."
 msgstr ""
 
 msgid "Refresh"
@@ -9312,6 +9316,9 @@ msgid "Remove this group from cart?"
 msgstr ""
 
 msgid "Remove this person from cart?"
+msgstr ""
+
+msgid "Remove {{personName}} from this class?"
 msgstr ""
 
 msgid "Removed from cart successfully"
@@ -9522,7 +9529,7 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-msgid "Roles to include:"
+msgid "Roles to include"
 msgstr ""
 
 #. Context: countries
@@ -9843,6 +9850,9 @@ msgstr ""
 msgid "Select Backup File"
 msgstr ""
 
+msgid "Select Country"
+msgstr ""
+
 msgid "Select Event"
 msgstr ""
 
@@ -9888,6 +9898,9 @@ msgstr ""
 msgid "Select Season"
 msgstr ""
 
+msgid "Select State"
+msgstr ""
+
 msgid "Select a backup file and click Restore Database."
 msgstr ""
 
@@ -9895,6 +9908,9 @@ msgid "Select a family"
 msgstr ""
 
 msgid "Select a group"
+msgstr ""
+
+msgid "Select a person"
 msgstr ""
 
 msgid "Select all"
@@ -9928,6 +9944,9 @@ msgstr ""
 msgid "Select none"
 msgstr ""
 
+msgid "Select role"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Select the desired event"
 msgstr ""
@@ -9937,6 +9956,9 @@ msgid "Select the desired family role."
 msgstr ""
 
 msgid "Select the type of record this property applies to"
+msgstr ""
+
+msgid "Select type (optional)"
 msgstr ""
 
 msgid "Select your options above and click a backup button."
@@ -10414,7 +10436,7 @@ msgstr ""
 msgid "Starts"
 msgstr ""
 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgid "Starts with http:// or https://"
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -10422,9 +10444,6 @@ msgid "State"
 msgstr ""
 
 msgid "State (Other)"
-msgstr ""
-
-msgid "State / Province"
 msgstr ""
 
 msgid "State is required."
@@ -11835,9 +11854,6 @@ msgstr ""
 msgid "User not found"
 msgstr ""
 
-msgid "User not found."
-msgstr ""
-
 #. Context: userconfig_ucfg
 msgid "User permission to send email via mailto: links"
 msgstr ""
@@ -12453,15 +12469,6 @@ msgstr ""
 msgid "Yes, delete"
 msgstr ""
 
-msgid "Yes, delete this Opportunity"
-msgstr ""
-
-msgid "Yes, delete this record"
-msgstr ""
-
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain"
-msgstr ""
-
 msgid "You are about to add a new deposit without a comment"
 msgstr ""
 
@@ -12472,6 +12479,9 @@ msgid "You are about to email copy of the family information to the following em
 msgstr ""
 
 msgid "You are running a pre-release version."
+msgstr ""
+
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
 msgstr ""
 
 #. plugin:external-backup:section:3:content
@@ -12631,9 +12641,6 @@ msgstr ""
 msgid "Your cart is empty"
 msgstr ""
 
-msgid "Your cart is empty!"
-msgstr ""
-
 msgid "Your cart is empty. Add people to your cart first."
 msgstr ""
 
@@ -12697,9 +12704,6 @@ msgid "Zimbabwe"
 msgstr ""
 
 msgid "Zip"
-msgstr ""
-
-msgid "Zip / Postal Code"
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -12833,9 +12837,6 @@ msgstr ""
 msgid "from group"
 msgstr ""
 
-msgid "from this class?"
-msgstr ""
-
 msgid "from this group?"
 msgstr ""
 
@@ -12962,9 +12963,6 @@ msgstr ""
 msgid "page"
 msgstr ""
 
-msgid "page."
-msgstr ""
-
 msgid "past"
 msgstr ""
 
@@ -13000,6 +12998,9 @@ msgstr[1] ""
 msgid "personIds must be a non-empty array"
 msgstr ""
 
+msgid "pick"
+msgstr ""
+
 msgid "properties"
 msgstr ""
 
@@ -13025,9 +13026,6 @@ msgid "s"
 msgstr ""
 
 msgid "seconds"
-msgstr ""
-
-msgid "seconds..."
 msgstr ""
 
 msgid "select an option"
@@ -13107,30 +13105,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Åland Islands (Åland)"
-msgstr ""
-
-msgid "— Ignore —"
-msgstr ""
-
-msgid "— Select Country —"
-msgstr ""
-
-msgid "— Select State —"
-msgstr ""
-
-msgid "— Select a group —"
-msgstr ""
-
-msgid "— Select a person —"
-msgstr ""
-
-msgid "— Select role —"
-msgstr ""
-
-msgid "— Select type (optional) —"
-msgstr ""
-
-msgid "— pick —"
 msgstr ""
 
 #. plugin:google-analytics:section:1:content
