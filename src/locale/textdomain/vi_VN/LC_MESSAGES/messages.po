@@ -208,10 +208,6 @@ msgid "Anniversary Date"
 msgstr "Kỷ niệm ngày cưới"
 
 #: 
-msgid "Output Method:"
-msgstr "Loại tập tin xuất ra"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Hồ sơ cá nhân CSV"
 
@@ -380,10 +376,6 @@ msgstr "Hành động"
 #: 
 msgid "Member"
 msgstr "Thành viên"
-
-#: 
-msgid " of the"
-msgstr "sau đó"
 
 #: 
 msgid "(No assigned family)"
@@ -1057,11 +1049,6 @@ msgid "Bank Draft"
 msgstr "Dự thảo ngân hàng"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Tổng số tiền tối thiểu:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Không có tối thiểu"
 
@@ -1086,10 +1073,6 @@ msgid "All Families"
 msgstr "Tất cả gia đình"
 
 #: 
-msgid "Report Heading:"
-msgstr "Tiêu đề Báo cáo:"
-
-#: 
 msgid "Graphic"
 msgstr "Đồ họa"
 
@@ -1100,14 +1083,6 @@ msgstr "Địa chỉ Hội Thánh"
 #: 
 msgid "Blank"
 msgstr "Chỗ trống"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Nộp phiếu:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sắp xếp dữ liệu theo"
 
 #: 
 msgid "Deposit"
@@ -1602,10 +1577,6 @@ msgid "Generate Statement"
 msgstr "Tạo báo cáo"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Người mua cho đợt gây quỹ này:"
-
-#: 
 msgid "Select all"
 msgstr "Lựa chọn tất cả"
 
@@ -1724,10 +1695,6 @@ msgstr "Phải chỉ định số kiểm tra khác 0"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Số séc không hợp lệ để thanh toán bằng 'TIỀN MẶT'"
-
-#: 
-msgid " more entries will fit."
-msgstr "nhiều mục sẽ phù hợp."
 
 #: 
 msgid "Deposit closed"
@@ -1859,10 +1826,6 @@ msgid "Query Listing"
 msgstr "Danh sách truy vấn"
 
 #: 
-msgid " record(s) returned"
-msgstr "(các) bản ghi được trả lại"
-
-#: 
 msgid "Query View"
 msgstr "Chế độ xem truy vấn"
 
@@ -1873,22 +1836,6 @@ msgstr "Giá trị này là bắt buộc."
 #: 
 msgid "This value must be numeric."
 msgstr "Giá trị này phải là số."
-
-#: 
-msgid "This value must be at least "
-msgstr "Giá trị này ít nhất phải là"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Giá trị này không thể nhiều hơn"
-
-#: 
-msgid " characters long"
-msgstr "kí tự dài"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Giá trị này không được nhỏ hơn"
 
 #: 
 msgid "Run Query Again"
@@ -1923,20 +1870,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "CẢNH BÁO: Gia đình này có hồ sơ về các khoản đóng góp và KHÔNG thể bị xóa cho đến khi các khoản đóng góp này được liên kết với một gia đình khác."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Vui lòng chọn một gia đình khác để liên kết các khoản đóng góp này:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "CẢNH BÁO: Không thể hoàn tác hành động này và có thể có ý nghĩa pháp lý!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "GIA ĐÌNH HIỆN TẠI VỚI TẶNG KÈM"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Vui lòng xác nhận quá trình xóa bản ghi của gia đình này:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2061,10 +2000,6 @@ msgstr "Mục vụ đã tham gia của Thành viên"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Không có Nhân sự nào được thêm vào đây"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Ghi chú \"Lý do đến với Hội Thánh\" "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2308,14 +2243,6 @@ msgid "Cell"
 msgstr "Ô"
 
 #: 
-msgid "Estimated value "
-msgstr "Giá trị ước tính"
-
-#: 
-msgid "Donated by "
-msgstr "Được tặng bởi"
-
-#: 
 msgid "Paddle"
 msgstr "Chèo thuyền"
 
@@ -2324,16 +2251,8 @@ msgid "Bid"
 msgstr "Đấu thầu"
 
 #: 
-msgid "Minimum bid "
-msgstr "Giá tối thiểu"
-
-#: 
 msgid "All Funds"
 msgstr "Tất cả các quỹ"
-
-#: 
-msgid " for all funds"
-msgstr "cho tất cả các khoản tiền"
 
 #: 
 msgid " for fund "

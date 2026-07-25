@@ -210,10 +210,6 @@ msgid "Anniversary Date"
 msgstr "周年日期"
 
 #: 
-msgid "Output Method:"
-msgstr "输出方式："
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV个人纪录"
 
@@ -383,10 +379,6 @@ msgstr "行动"
 #: 
 msgid "Member"
 msgstr "成员"
-
-#: 
-msgid " of the"
-msgstr "的"
 
 #: 
 msgid "(No assigned family)"
@@ -1074,11 +1066,6 @@ msgid "Bank Draft"
 msgstr "银行汇票"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "最小起总金额："
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0  - 不设最低"
 
@@ -1103,10 +1090,6 @@ msgid "All Families"
 msgstr "所有的家庭"
 
 #: 
-msgid "Report Heading:"
-msgstr "报告标题："
-
-#: 
 msgid "Graphic"
 msgstr "图形"
 
@@ -1117,14 +1100,6 @@ msgstr "教会地址"
 #: 
 msgid "Blank"
 msgstr "空白"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "汇款时："
-
-#: 
-msgid "Sort Data by:"
-msgstr "通过对数据进行排序："
 
 #: 
 msgid "Deposit"
@@ -1632,10 +1607,6 @@ msgid "Generate Statement"
 msgstr "生成语句"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "这个筹款活动的买家："
-
-#: 
 msgid "Select all"
 msgstr "选择所有"
 
@@ -1757,10 +1728,6 @@ msgstr "必须指定非零的支票号码"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "检查数量不适用于“现金”支付"
-
-#: 
-msgid " more entries will fit."
-msgstr "更多的项目将适合。"
 
 #: 
 msgid "Deposit closed"
@@ -1894,10 +1861,6 @@ msgid "Query Listing"
 msgstr "查询上市"
 
 #: 
-msgid " record(s) returned"
-msgstr "返回记录（S）"
-
-#: 
 msgid "Query View"
 msgstr "查询视图"
 
@@ -1908,22 +1871,6 @@ msgstr "此值是必需的。"
 #: 
 msgid "This value must be numeric."
 msgstr "此值必须是数字。"
-
-#: 
-msgid "This value must be at least "
-msgstr "这个值必须是至少"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "这个值不能超过"
-
-#: 
-msgid " characters long"
-msgstr "个字符长"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "这个值不能小于"
 
 #: 
 msgid "Run Query Again"
@@ -1959,20 +1906,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "警告：本系列有记录的捐款，这些捐款不被删除，直到与另一个家庭。"
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "请选择另一个家庭，并与他们相关联，这些捐赠："
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "警告：此操作不可撤消和法律问题！"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "目前的家庭捐款"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "请确认这个家庭的记录删除："
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2107,10 +2046,6 @@ msgstr "义工机会编辑器"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "尚未添加任何志愿服务机会"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "“为什么来了”的注意事项"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2363,14 +2298,6 @@ msgid "Cell"
 msgstr "细胞"
 
 #: 
-msgid "Estimated value "
-msgstr "估价值"
-
-#: 
-msgid "Donated by "
-msgstr "捐赠"
-
-#: 
 msgid "Paddle"
 msgstr "桨"
 
@@ -2379,16 +2306,8 @@ msgid "Bid"
 msgstr "出价"
 
 #: 
-msgid "Minimum bid "
-msgstr "最低竞标价格"
-
-#: 
 msgid "All Funds"
 msgstr "所有基金"
-
-#: 
-msgid " for all funds"
-msgstr "所有资金"
 
 #: 
 msgid " for fund "

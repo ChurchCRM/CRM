@@ -211,10 +211,6 @@ msgid "Anniversary Date"
 msgstr "Jubileums Dato"
 
 #: 
-msgid "Output Method:"
-msgstr "Utskriftsmetode:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV Individual Records"
 
@@ -384,10 +380,6 @@ msgstr "Handling"
 #: 
 msgid "Member"
 msgstr "Medlem"
-
-#: 
-msgid " of the"
-msgstr "av"
 
 #: 
 msgid "(No assigned family)"
@@ -1074,11 +1066,6 @@ msgid "Bank Draft"
 msgstr "Bankremisser"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Minimun Totalbeløp:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Ingen Minimum"
 
@@ -1103,10 +1090,6 @@ msgid "All Families"
 msgstr "Alle familier"
 
 #: 
-msgid "Report Heading:"
-msgstr "Rapport Tittel:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafisk"
 
@@ -1117,14 +1100,6 @@ msgstr "Church Adresse"
 #: 
 msgid "Blank"
 msgstr "Blank"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Remittering Slip:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortere data etter:"
 
 #: 
 msgid "Deposit"
@@ -1645,10 +1620,6 @@ msgid "Generate Statement"
 msgstr "Generer Rapporter"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Kjøpere for denne fundraiser:"
-
-#: 
 #, fuzzy
 msgid "Select all"
 msgstr "Velg Rolle"
@@ -1774,11 +1745,6 @@ msgstr "Må angi ikke-null sjekknummer"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Sjekk nummeret ikke gyldig for 'Cash' betaling"
-
-#: 
-#, fuzzy
-msgid " more entries will fit."
-msgstr "flere kontroller vil passe."
 
 #: 
 msgid "Deposit closed"
@@ -1917,10 +1883,6 @@ msgid "Query Listing"
 msgstr "Query Oppføring"
 
 #: 
-msgid " record(s) returned"
-msgstr "posten (e) returnerte"
-
-#: 
 msgid "Query View"
 msgstr "Query Vis"
 
@@ -1931,22 +1893,6 @@ msgstr "Denne verdien er nødvendig."
 #: 
 msgid "This value must be numeric."
 msgstr "Denne verdien må være numerisk."
-
-#: 
-msgid "This value must be at least "
-msgstr "Denne verdien må være minst"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Denne verdien kan ikke være mer enn"
-
-#: 
-msgid " characters long"
-msgstr "tegn"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Denne verdien kan ikke være mindre enn"
 
 #: 
 msgid "Run Query Again"
@@ -1982,20 +1928,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "ADVARSEL: Denne familien har registreringer av donasjoner og kan ikke slettes før disse donasjoner er forbundet med en annen familie."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Vennligst velg en annen familie med hvem du skal knytte disse donasjoner:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "ADVARSEL: Denne handlingen kan ikke angres, og kan ha rettslige konsekvenser!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "Gjeldende familien med donasjoner"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Vennligst bekreft sletting av denne familien posten:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2131,10 +2069,6 @@ msgstr "Frivillig Opportunity Editor"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Ingen frivillige muligheter er lagt til ennå"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"Hvorfor kom\" notater for"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2388,15 +2322,6 @@ msgstr "Cell"
 
 #: 
 #, fuzzy
-msgid "Estimated value "
-msgstr "Rediger verdi"
-
-#: 
-msgid "Donated by "
-msgstr "Donert av"
-
-#: 
-#, fuzzy
 msgid "Paddle"
 msgstr "Midt"
 
@@ -2405,16 +2330,8 @@ msgid "Bid"
 msgstr "Bud"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimumsbudet"
-
-#: 
 msgid "All Funds"
 msgstr "Alle midler"
-
-#: 
-msgid " for all funds"
-msgstr "for alle fond"
 
 #: 
 msgid " for fund "

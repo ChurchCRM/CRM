@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "Datum godišnjice"
 
 #: 
-msgid "Output Method:"
-msgstr "Metoda ispisa:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Individualni zapisi (CSV)"
 
@@ -366,10 +362,6 @@ msgstr "Radnja"
 #: 
 msgid "Member"
 msgstr "Član"
-
-#: 
-msgid " of the"
-msgstr " od"
 
 #: 
 msgid "(No assigned family)"
@@ -1033,10 +1025,6 @@ msgid "Bank Draft"
 msgstr "Bankovni nalog"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Minimalni ukupni iznos:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Bez minimuma"
 
@@ -1061,10 +1049,6 @@ msgid "All Families"
 msgstr "Sve obitelji"
 
 #: 
-msgid "Report Heading:"
-msgstr "Zaglavlje izvještaja:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafika"
 
@@ -1075,14 +1059,6 @@ msgstr "Adresa župe"
 #: 
 msgid "Blank"
 msgstr "Prazno"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Uplatnica:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortiraj podatke po:"
 
 #: 
 msgid "Deposit"
@@ -1569,10 +1545,6 @@ msgid "Generate Statement"
 msgstr "Generiraj izjavu"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Kupci za ovu akciju:"
-
-#: 
 msgid "Select all"
 msgstr "Odaberi sve"
 
@@ -1691,10 +1663,6 @@ msgstr "Mora se navesti nenulti broj čeka"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Broj čeka nije valjan za plaćanje 'GOTOVINOM'"
-
-#: 
-msgid " more entries will fit."
-msgstr " više unosa može stati."
 
 #: 
 msgid "Deposit closed"
@@ -1826,10 +1794,6 @@ msgid "Query Listing"
 msgstr "Popis upita"
 
 #: 
-msgid " record(s) returned"
-msgstr " zapisa pronađeno"
-
-#: 
 msgid "Query View"
 msgstr "Prikaz upita"
 
@@ -1840,22 +1804,6 @@ msgstr "Ova vrijednost je obavezna."
 #: 
 msgid "This value must be numeric."
 msgstr "Ova vrijednost mora biti numerička."
-
-#: 
-msgid "This value must be at least "
-msgstr "Ova vrijednost mora biti najmanje "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Ova vrijednost ne može biti veća od "
-
-#: 
-msgid " characters long"
-msgstr " znakova"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Ova vrijednost ne može biti manja od "
 
 #: 
 msgid "Run Query Again"
@@ -1890,20 +1838,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "UPOZORENJE: Ova obitelj ima zapise o darovima i NE MOŽE biti obrisana dok ti darovi nisu pridruženi drugoj obitelji."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Odaberite drugu obitelj s kojom ćete pridružiti ove darove:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "UPOZORENJE: Ova radnja se ne može poništiti i može imati pravne posljedice!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "TRENUTNA OBITELJ S DAROVIMA"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Potvrdite brisanje ovog obiteljskog zapisa:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2028,10 +1968,6 @@ msgstr "Urednik volonterskih mogućnosti"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Još nisu dodane volonterske mogućnosti"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Bilješke „Zašto sam došao“ za "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2275,14 +2211,6 @@ msgid "Cell"
 msgstr "Mobitel"
 
 #: 
-msgid "Estimated value "
-msgstr "Procijenjena vrijednost "
-
-#: 
-msgid "Donated by "
-msgstr "Donirao "
-
-#: 
 msgid "Paddle"
 msgstr "Lopatica"
 
@@ -2291,16 +2219,8 @@ msgid "Bid"
 msgstr "Ponuda"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimalna ponuda "
-
-#: 
 msgid "All Funds"
 msgstr "Svi fondovi"
-
-#: 
-msgid " for all funds"
-msgstr " za sve fondove"
 
 #: 
 msgid " for fund "

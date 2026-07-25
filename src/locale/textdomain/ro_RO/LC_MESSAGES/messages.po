@@ -210,10 +210,6 @@ msgid "Anniversary Date"
 msgstr "Data aniversării"
 
 #: 
-msgid "Output Method:"
-msgstr "Metoda de export:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Înregistrări CSV individuale"
 
@@ -383,10 +379,6 @@ msgstr "Acțiune"
 #: 
 msgid "Member"
 msgstr "Membru"
-
-#: 
-msgid " of the"
-msgstr "␣al"
 
 #: 
 msgid "(No assigned family)"
@@ -1073,11 +1065,6 @@ msgid "Bank Draft"
 msgstr "Ordin de plată bancar"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Suma minima totala"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - nici un minim"
 
@@ -1102,10 +1089,6 @@ msgid "All Families"
 msgstr "Toate familiile"
 
 #: 
-msgid "Report Heading:"
-msgstr "Antetul raportului"
-
-#: 
 msgid "Graphic"
 msgstr "Grafic"
 
@@ -1116,14 +1099,6 @@ msgstr "Adresa bisericii"
 #: 
 msgid "Blank"
 msgstr "Gol"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Cupon de Remitere"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortați Datele După"
 
 #: 
 msgid "Deposit"
@@ -1631,10 +1606,6 @@ msgid "Generate Statement"
 msgstr "Genera Declarația"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Cumpărători de pe această strângere de fonduri:"
-
-#: 
 msgid "Select all"
 msgstr "Selectați toate"
 
@@ -1756,10 +1727,6 @@ msgstr "Trebuie să specificați numărul de verificare de zero"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Verifica numărul nu este valabil pentru plata \"numerar\""
-
-#: 
-msgid " more entries will fit."
-msgstr "mai multe intrări se va potrivi."
 
 #: 
 msgid "Deposit closed"
@@ -1893,10 +1860,6 @@ msgid "Query Listing"
 msgstr "Listarea interogare"
 
 #: 
-msgid " record(s) returned"
-msgstr "înregistrări (e) a revenit"
-
-#: 
 msgid "Query View"
 msgstr "Vezi interogare"
 
@@ -1907,22 +1870,6 @@ msgstr "Este nevoie de această valoare."
 #: 
 msgid "This value must be numeric."
 msgstr "Această valoare trebuie să fie numeric."
-
-#: 
-msgid "This value must be at least "
-msgstr "Această valoare trebuie să fie de cel puțin"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Această valoare nu poate fi mai mult decât"
-
-#: 
-msgid " characters long"
-msgstr "caractere"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Această valoare nu poate fi mai mică"
 
 #: 
 msgid "Run Query Again"
@@ -1958,20 +1905,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "AVERTISMENT: Această familie are înregistrări de donații și nu pot fi șterse până când aceste donații sunt asociate cu o alta familie."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Vă rugăm selectați o altă familie cu care să se asocieze aceste donații:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "AVERTISMENT: Această acțiune nu poate fi anulată și ar putea avea implicații juridice!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "Curente ale familiei cu donatii"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Vă rugăm să confirmați ștergerea din acest livret de familie:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2103,10 +2042,6 @@ msgstr "Voluntari oportunitate Editor"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nu oportunitățile de voluntariat au fost încă adăugate"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"De ce a venit\" note de"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2358,14 +2293,6 @@ msgid "Cell"
 msgstr "Celulă"
 
 #: 
-msgid "Estimated value "
-msgstr "Valoarea estimată"
-
-#: 
-msgid "Donated by "
-msgstr "Donate de"
-
-#: 
 msgid "Paddle"
 msgstr "Paletă"
 
@@ -2374,16 +2301,8 @@ msgid "Bid"
 msgstr "Ofertă"
 
 #: 
-msgid "Minimum bid "
-msgstr "Oferta minimă"
-
-#: 
 msgid "All Funds"
 msgstr "Toate fondurile"
-
-#: 
-msgid " for all funds"
-msgstr "pentru toate fondurile"
 
 #: 
 msgid " for fund "

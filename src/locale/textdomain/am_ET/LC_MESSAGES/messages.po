@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "የኢዮበልዩ ቀን"
 
 #: 
-msgid "Output Method:"
-msgstr "የውጤት መንገድ:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "እያንዳንዱ መረጃ በCVS"
 
@@ -369,10 +365,6 @@ msgstr "ድርጊት"
 #: 
 msgid "Member"
 msgstr "አባል"
-
-#: 
-msgid " of the"
-msgstr " የእርሱ"
 
 #: 
 msgid "(No assigned family)"
@@ -1045,11 +1037,6 @@ msgid "Bank Draft"
 msgstr "የባንክ ረቂቅ"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "አነስተኛ ጠቅላላ መጠን፡-"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - ምንም ዝቅተኛ"
 
@@ -1074,10 +1061,6 @@ msgid "All Families"
 msgstr "ሁሉም ቤተሰቦች"
 
 #: 
-msgid "Report Heading:"
-msgstr "የሪፖርት ርዕስ፡-"
-
-#: 
 msgid "Graphic"
 msgstr "ግራፊክ"
 
@@ -1088,14 +1071,6 @@ msgstr "የቤተ ክርስቲያን አድራሻ"
 #: 
 msgid "Blank"
 msgstr "ባዶ"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "የሐዋላ ወረቀት፡"
-
-#: 
-msgid "Sort Data by:"
-msgstr "መረጃዉን ደርድር"
 
 #: 
 msgid "Deposit"
@@ -1590,10 +1565,6 @@ msgid "Generate Statement"
 msgstr "ሪፖርት አዘጋጅ"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "ለዚህ ገንዘብ አሰባሰብ ገዢ:"
-
-#: 
 msgid "Select all"
 msgstr "ሁሉንም ምረጥ"
 
@@ -1712,10 +1683,6 @@ msgstr "ዜሮ ያልሆነ የቼክ ቁጥር መግለጽ አለበት"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "የቼክ ቁጥር ለ'እጅ በእጅ' ክፍያ አይሰራም"
-
-#: 
-msgid " more entries will fit."
-msgstr " ተጨማሪ መረጃዎች ማስገባት ይቻላል."
 
 #: 
 msgid "Deposit closed"
@@ -1847,10 +1814,6 @@ msgid "Query Listing"
 msgstr "የጥያቄ ዝርዝር"
 
 #: 
-msgid " record(s) returned"
-msgstr " መዝገባ(ዎች) ተመልሷል"
-
-#: 
 msgid "Query View"
 msgstr "የጥያቄ ዝርዝር"
 
@@ -1861,22 +1824,6 @@ msgstr "ይህ ቦታ መሞላት አለበት"
 #: 
 msgid "This value must be numeric."
 msgstr "ይህን ቦታ መሞላት ያለበት በቁጥር ነው"
-
-#: 
-msgid "This value must be at least "
-msgstr "ዝቅተኛው የዚህ ዋጋ መሆን ያለበት"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "ከፍተኛው ዋጋ ከሚከተለው መብለጥ የለበትም"
-
-#: 
-msgid " characters long"
-msgstr " ፍደሎች ያክል"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "ዝቅተኛው ዋጋ ከሚከተለው በታች መሆን የለበትም"
 
 #: 
 msgid "Run Query Again"
@@ -1911,20 +1858,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "ማስጠንቀቂያ፡ ይህ ቤተሰብ የልገሳ መዛግብት አለው እና እነዚህ ልገሳዎች ከሌላ ቤተሰብ ጋር እስኪገናኙ ድረስ ሊሰረዙ አይችሉም።"
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "እባክዎ እነዚህን ልገሳዎች የሚያገናኙት ሌላ ቤተሰብ ይምረጡ፡"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "ማስጠንቀቂያ፡ ይህ እርምጃ ሊቀለበስ አይችልም እና ህጋዊ አንድምታ ሊኖረው ይችላል!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "አሁን ያለው ቤተሰብ ከልገሳ ጋር"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "እባክዎ የዚህ ቤተሰብ መዝገብ መሰረዙን ያረጋግጡ:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2049,10 +1988,6 @@ msgstr "የበጎ ፈቃደኞች ዕድል አስተካካይ"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "እስካሁን ምንም የበጎ ፈቃድ እድሎች አልተጨመሩም"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"ለምን እንደመጣ\" ማስታወሻ ጻፍ"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2296,14 +2231,6 @@ msgid "Cell"
 msgstr "አሃድ"
 
 #: 
-msgid "Estimated value "
-msgstr "የሚገመተው ዋጋ"
-
-#: 
-msgid "Donated by "
-msgstr "የተበረከተው"
-
-#: 
 msgid "Paddle"
 msgstr "መቅዘፊያ"
 
@@ -2312,16 +2239,8 @@ msgid "Bid"
 msgstr "ጨረታ"
 
 #: 
-msgid "Minimum bid "
-msgstr "ዝቅተኛው ጨረታ"
-
-#: 
 msgid "All Funds"
 msgstr "ሁሉም ገንዘቦች"
-
-#: 
-msgid " for all funds"
-msgstr "ለሁሉም ገንዘቦች"
 
 #: 
 msgid " for fund "

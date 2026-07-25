@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "Petsa ng Anibersaryo"
 
 #: 
-msgid "Output Method:"
-msgstr "Paraan ng Output:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV na Indibidwal na mga Rekord"
 
@@ -366,10 +362,6 @@ msgstr "Aksyon"
 #: 
 msgid "Member"
 msgstr "Miyembro"
-
-#: 
-msgid " of the"
-msgstr " ng"
 
 #: 
 msgid "(No assigned family)"
@@ -1033,10 +1025,6 @@ msgid "Bank Draft"
 msgstr "Tseke ng Bangko"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Pinakamababang Kabuuang Halaga:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Walang Minimum"
 
@@ -1061,10 +1049,6 @@ msgid "All Families"
 msgstr "Lahat ng Pamilya"
 
 #: 
-msgid "Report Heading:"
-msgstr "Pamagat ng Ulat:"
-
-#: 
 msgid "Graphic"
 msgstr "Grapiko"
 
@@ -1075,14 +1059,6 @@ msgstr "Address ng Simbahan"
 #: 
 msgid "Blank"
 msgstr "Blangko"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Resibo ng Remittance:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Ayusin ang Data ayon sa:"
 
 #: 
 msgid "Deposit"
@@ -1569,10 +1545,6 @@ msgid "Generate Statement"
 msgstr "Gumawa ng Pahayag"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Mga Mamimili para sa fundraiser na ito:"
-
-#: 
 msgid "Select all"
 msgstr "Piliin lahat"
 
@@ -1691,10 +1663,6 @@ msgstr "Kailangan tukuyin ang hindi zero na numero ng tseke"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Ang numero ng tseke ay hindi wasto para sa pagbabayad na 'CASH'"
-
-#: 
-msgid " more entries will fit."
-msgstr " pang mga entry ang magkasya."
 
 #: 
 msgid "Deposit closed"
@@ -1826,10 +1794,6 @@ msgid "Query Listing"
 msgstr "Listahan ng Query"
 
 #: 
-msgid " record(s) returned"
-msgstr " rekord(s) na ibinalik"
-
-#: 
 msgid "Query View"
 msgstr "View ng Query"
 
@@ -1840,22 +1804,6 @@ msgstr "Ang halagang ito ay kinakailangan."
 #: 
 msgid "This value must be numeric."
 msgstr "Ang halagang ito ay dapat numeric."
-
-#: 
-msgid "This value must be at least "
-msgstr "Ang halagang ito ay dapat kahit "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Ang halagang ito ay hindi maaaring higit sa "
-
-#: 
-msgid " characters long"
-msgstr " karakter ang haba"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Ang halagang ito ay hindi maaaring mas mababa sa "
 
 #: 
 msgid "Run Query Again"
@@ -1890,20 +1838,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "BABALA: Ang pamilyang ito ay may mga rekord ng mga donasyon at HINDI maaaring burahin hanggang ang mga donasyong ito ay maiugnay sa ibang pamilya."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Pakipili ng ibang pamilya upang maiugnay ang mga donasyong ito:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "BABALA: Ang aksyong ito ay hindi na mababawi at maaaring may legal na implikasyon!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "KASALUKUYANG PAMILYA NA MAY MGA DONASYON"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Pakikumpirma ang pagbubura ng rekord ng pamilyang ito:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2028,10 +1968,6 @@ msgstr "Editor ng Pagkakataon bilang Boluntaryo"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Wala pang mga pagkakataon bilang boluntaryo na naidagdag"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Mga tala ng \"Bakit Dumating\" para sa "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2275,14 +2211,6 @@ msgid "Cell"
 msgstr "Cell"
 
 #: 
-msgid "Estimated value "
-msgstr "Tinatayang halaga "
-
-#: 
-msgid "Donated by "
-msgstr "Ibinigay ni "
-
-#: 
 msgid "Paddle"
 msgstr "Paddle"
 
@@ -2291,16 +2219,8 @@ msgid "Bid"
 msgstr "Alok"
 
 #: 
-msgid "Minimum bid "
-msgstr "Pinakamababang alok "
-
-#: 
 msgid "All Funds"
 msgstr "Lahat ng Pondo"
-
-#: 
-msgid " for all funds"
-msgstr " para sa lahat ng pondo"
 
 #: 
 msgid " for fund "

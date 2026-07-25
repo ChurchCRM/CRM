@@ -212,10 +212,6 @@ msgid "Anniversary Date"
 msgstr "Bröllopsdatum"
 
 #: 
-msgid "Output Method:"
-msgstr "Utmatningsmetod"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV enskilda poster"
 
@@ -385,10 +381,6 @@ msgstr "Handling"
 #: 
 msgid "Member"
 msgstr "Medlem"
-
-#: 
-msgid " of the"
-msgstr " av "
 
 #: 
 msgid "(No assigned family)"
@@ -1076,11 +1068,6 @@ msgid "Bank Draft"
 msgstr "Bankcheck"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Minimala summa:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - inga minimum"
 
@@ -1105,10 +1092,6 @@ msgid "All Families"
 msgstr "Alla familjer"
 
 #: 
-msgid "Report Heading:"
-msgstr "Rapporthuvud:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafisk"
 
@@ -1119,14 +1102,6 @@ msgstr "Kyrkans adress"
 #: 
 msgid "Blank"
 msgstr "Tom"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Penningförsändelse kvitto:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortera enligt:"
 
 #: 
 msgid "Deposit"
@@ -1647,10 +1622,6 @@ msgid "Generate Statement"
 msgstr "Skapa rapport"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Köpare till denna insamling:"
-
-#: 
 #, fuzzy
 msgid "Select all"
 msgstr "Välj alla"
@@ -1776,11 +1747,6 @@ msgstr "Du måste ange noll kontroll nummer"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Kontrollera numret inte giltigt för 'kontant' betalning"
-
-#: 
-#, fuzzy
-msgid " more entries will fit."
-msgstr " flera checkar har plats."
 
 #: 
 msgid "Deposit closed"
@@ -1919,10 +1885,6 @@ msgid "Query Listing"
 msgstr "Förfrågan lista"
 
 #: 
-msgid " record(s) returned"
-msgstr " post(er) hittade"
-
-#: 
 msgid "Query View"
 msgstr "Förfrågan vy"
 
@@ -1933,22 +1895,6 @@ msgstr "Denna inmatning krävs."
 #: 
 msgid "This value must be numeric."
 msgstr "Denna inmatning måste vara numerisk."
-
-#: 
-msgid "This value must be at least "
-msgstr "Denna inmatning måste vara minst "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Denna inmatning får inte vara mer än "
-
-#: 
-msgid " characters long"
-msgstr " tecken lång"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Denna inmatning får inte vara mindra än "
 
 #: 
 msgid "Run Query Again"
@@ -1984,20 +1930,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "VARNING:  Det finns poster av bidrag från denna familj och familjen får inte raderas fören dessa bidrag tilldelas en annan familj."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Välj en annan familj att tilldela denna bidrag till:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "VARNING:  Denna får inte bli ogjort och kan ha juridiska följder!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "FÖR NÄRVARANDE FAMILJ MED BIDRAG TILL KYRKAN"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Bekräfta att du vill radera denna familj post:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2133,10 +2071,6 @@ msgstr "Frivilliga möjligheter redigeringsverktyg"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Inga frivilliga möjligheter tillagd än"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"Varför kom\" anteckningar för "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2390,15 +2324,6 @@ msgstr "Tilldelning"
 
 #: 
 #, fuzzy
-msgid "Estimated value "
-msgstr "Redigera värd"
-
-#: 
-msgid "Donated by "
-msgstr "Donerats av"
-
-#: 
-#, fuzzy
 msgid "Paddle"
 msgstr "Paddla"
 
@@ -2407,16 +2332,8 @@ msgid "Bid"
 msgstr "Bud"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minsta bud"
-
-#: 
 msgid "All Funds"
 msgstr "Alla fonder"
-
-#: 
-msgid " for all funds"
-msgstr " för alla fonder"
 
 #: 
 msgid " for fund "

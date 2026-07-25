@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "記念日"
 
 #: 
-msgid "Output Method:"
-msgstr "出力形式:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV 個別レコード"
 
@@ -366,10 +362,6 @@ msgstr "操作"
 #: 
 msgid "Member"
 msgstr "メンバー"
-
-#: 
-msgid " of the"
-msgstr " の"
 
 #: 
 msgid "(No assigned family)"
@@ -1033,10 +1025,6 @@ msgid "Bank Draft"
 msgstr "銀行振込"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "最小合計金額:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - 制限なし"
 
@@ -1061,10 +1049,6 @@ msgid "All Families"
 msgstr "すべての世帯"
 
 #: 
-msgid "Report Heading:"
-msgstr "レポート見出し:"
-
-#: 
 msgid "Graphic"
 msgstr "グラフィック"
 
@@ -1075,14 +1059,6 @@ msgstr "教会住所"
 #: 
 msgid "Blank"
 msgstr "銀行"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "送金票:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "データの並べ替え:"
 
 #: 
 msgid "Deposit"
@@ -1569,10 +1545,6 @@ msgid "Generate Statement"
 msgstr "明細を生成"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "この資金調達の購入者:"
-
-#: 
 msgid "Select all"
 msgstr "すべて選択"
 
@@ -1691,10 +1663,6 @@ msgstr "ゼロ以外の小切手番号を指定してください"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "「現金」支払いの場合、小切手番号は無効です"
-
-#: 
-msgid " more entries will fit."
-msgstr " 個の追加エントリが入ります。"
 
 #: 
 msgid "Deposit closed"
@@ -1826,10 +1794,6 @@ msgid "Query Listing"
 msgstr "クエリ一覧"
 
 #: 
-msgid " record(s) returned"
-msgstr " 件のレコードが返されました"
-
-#: 
 msgid "Query View"
 msgstr "クエリビュー"
 
@@ -1840,22 +1804,6 @@ msgstr "この値は必須です。"
 #: 
 msgid "This value must be numeric."
 msgstr "この値は数値である必要があります。"
-
-#: 
-msgid "This value must be at least "
-msgstr "この値は少なくとも "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "この値は最大 "
-
-#: 
-msgid " characters long"
-msgstr " 文字である必要があります"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "この値は最小 "
 
 #: 
 msgid "Run Query Again"
@@ -1890,20 +1838,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "警告: この世帯には寄付の記録があります。これらの寄付を別の世帯に関連付けるまで、この世帯を削除することはできません。"
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "これらの寄付を関連付ける別の世帯を選択してください:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "警告: この操作は取り消すことができず、法的影響が生じる可能性があります！"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "現在の寄付実績のある世帯"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "この世帯レコードの削除を確認してください:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2028,10 +1968,6 @@ msgstr "ボランティア機会エディター"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "ボランティアの機会はまだ追加されていません"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "来会の理由 ノート:"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2275,14 +2211,6 @@ msgid "Cell"
 msgstr "携帯"
 
 #: 
-msgid "Estimated value "
-msgstr "推定価値 "
-
-#: 
-msgid "Donated by "
-msgstr "寄付者: "
-
-#: 
 msgid "Paddle"
 msgstr "パドル"
 
@@ -2291,16 +2219,8 @@ msgid "Bid"
 msgstr "入札"
 
 #: 
-msgid "Minimum bid "
-msgstr "最低入札額 "
-
-#: 
 msgid "All Funds"
 msgstr "すべての基金"
-
-#: 
-msgid " for all funds"
-msgstr " (全基金用)"
 
 #: 
 msgid " for fund "

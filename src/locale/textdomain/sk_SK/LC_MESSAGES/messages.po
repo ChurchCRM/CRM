@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "Dátum výročia"
 
 #: 
-msgid "Output Method:"
-msgstr "Výstupná metóda:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV – jednotlivé záznamy"
 
@@ -366,10 +362,6 @@ msgstr "Akcia"
 #: 
 msgid "Member"
 msgstr "Člen"
-
-#: 
-msgid " of the"
-msgstr " z"
 
 #: 
 msgid "(No assigned family)"
@@ -1033,10 +1025,6 @@ msgid "Bank Draft"
 msgstr "Bankový prevod"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Minimálna celková suma:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 – Bez minima"
 
@@ -1061,10 +1049,6 @@ msgid "All Families"
 msgstr "Všetky rodiny"
 
 #: 
-msgid "Report Heading:"
-msgstr "Nadpis správy:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafika"
 
@@ -1075,14 +1059,6 @@ msgstr "Adresa zboru"
 #: 
 msgid "Blank"
 msgstr "Prázdny"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Poukaz na platbu:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Zoradiť údaje podľa:"
 
 #: 
 msgid "Deposit"
@@ -1569,10 +1545,6 @@ msgid "Generate Statement"
 msgstr "Vygenerovať výpis"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Kupujúci pre túto zbierku:"
-
-#: 
 msgid "Select all"
 msgstr "Vybrať všetko"
 
@@ -1691,10 +1663,6 @@ msgstr "Musíte zadať nenulové číslo šeku"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Číslo šeku nie je platné pre platbu v hotovosti"
-
-#: 
-msgid " more entries will fit."
-msgstr " ďalších záznamov sa zmestí."
 
 #: 
 msgid "Deposit closed"
@@ -1826,10 +1794,6 @@ msgid "Query Listing"
 msgstr "Zoznam dopytov"
 
 #: 
-msgid " record(s) returned"
-msgstr " záznam(ov) vrátený(ch)"
-
-#: 
 msgid "Query View"
 msgstr "Zobrazenie dopytu"
 
@@ -1840,22 +1804,6 @@ msgstr "Táto hodnota je povinná."
 #: 
 msgid "This value must be numeric."
 msgstr "Táto hodnota musí byť číselná."
-
-#: 
-msgid "This value must be at least "
-msgstr "Táto hodnota musí byť aspoň "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Táto hodnota nemôže byť viac ako "
-
-#: 
-msgid " characters long"
-msgstr " znakov dlhá"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Táto hodnota nemôže byť menej ako "
 
 #: 
 msgid "Run Query Again"
@@ -1890,20 +1838,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "UPOZORNENIE: Táto rodina má záznamy o daroch a NEMÔŽE byť odstránená, kým tieto dary nebudú priradené inej rodine."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Vyberte inú rodinu, s ktorou budú tieto dary priradené:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "UPOZORNENIE: Táto akcia sa nedá vrátiť a môže mať právne dôsledky!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "AKTUÁLNA RODINA S DARMI"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Potvrďte odstránenie záznamu tejto rodiny:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2028,10 +1968,6 @@ msgstr "Editor dobrovoľníckych príležitostí"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Zatiaľ neboli pridané žiadne dobrovoľnícke príležitosti"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Poznámky \"Prečo prišiel\" pre "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2275,14 +2211,6 @@ msgid "Cell"
 msgstr "Mobil"
 
 #: 
-msgid "Estimated value "
-msgstr "Odhadovaná hodnota "
-
-#: 
-msgid "Donated by "
-msgstr "Daroval/a "
-
-#: 
 msgid "Paddle"
 msgstr "Číslo ponuky"
 
@@ -2291,16 +2219,8 @@ msgid "Bid"
 msgstr "Ponuka"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimálna ponuka "
-
-#: 
 msgid "All Funds"
 msgstr "Všetky fondy"
-
-#: 
-msgid " for all funds"
-msgstr " pre všetky fondy"
 
 #: 
 msgid " for fund "

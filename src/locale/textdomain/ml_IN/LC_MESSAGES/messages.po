@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "വാർഷിക തീയതി"
 
 #: 
-msgid "Output Method:"
-msgstr "ഔട്ട്‌പുട്ട് രീതി:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV വ്യക്തിഗത രേഖകൾ"
 
@@ -366,10 +362,6 @@ msgstr "പ്രവർത്തനം"
 #: 
 msgid "Member"
 msgstr "അംഗം"
-
-#: 
-msgid " of the"
-msgstr " യുടെ"
 
 #: 
 msgid "(No assigned family)"
@@ -1033,10 +1025,6 @@ msgid "Bank Draft"
 msgstr "ബാങ്ക് ഡ്രാഫ്റ്റ്"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "ഏറ്റവും കുറഞ്ഞ ആകെ തുക:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - ഏറ്റവും കുറഞ്ഞ തുകയില്ല"
 
@@ -1061,10 +1049,6 @@ msgid "All Families"
 msgstr "എല്ലാ കുടുംബങ്ങളും"
 
 #: 
-msgid "Report Heading:"
-msgstr "റിപ്പോർട്ട് ശീർഷകം:"
-
-#: 
 msgid "Graphic"
 msgstr "ഗ്രാഫിക്"
 
@@ -1075,14 +1059,6 @@ msgstr "പള്ളി വിലാസം"
 #: 
 msgid "Blank"
 msgstr "ശൂന്യം"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "അയക്കൽ സ്ലിപ്പ്:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "ഡേറ്റ അടുക്കേണ്ടത്:"
 
 #: 
 msgid "Deposit"
@@ -1569,10 +1545,6 @@ msgid "Generate Statement"
 msgstr "സ്റ്റേറ്റ്‌മെന്റ് ഉണ്ടാക്കുക"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "ഈ ഫണ്ട്‌റൈസറിനുള്ള വാങ്ങുന്നവർ:"
-
-#: 
 msgid "Select all"
 msgstr "എല്ലാം തിരഞ്ഞെടുക്കുക"
 
@@ -1691,10 +1663,6 @@ msgstr "പൂജ്യമല്ലാത്ത ചെക്ക് നമ്പ�
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "'CASH' പേമെന്റിന് ചെക്ക് നമ്പർ സാധുവല്ല"
-
-#: 
-msgid " more entries will fit."
-msgstr " കൂടുതൽ എൻട്രികൾ ഒതുങ്ങും."
 
 #: 
 msgid "Deposit closed"
@@ -1826,10 +1794,6 @@ msgid "Query Listing"
 msgstr "ക്വറി ലിസ്‌റ്റ്"
 
 #: 
-msgid " record(s) returned"
-msgstr " റെക്കോർഡ്(കൾ) തിരികെ ലഭിച്ചു"
-
-#: 
 msgid "Query View"
 msgstr "ക്വറി കാഴ്ച"
 
@@ -1840,22 +1804,6 @@ msgstr "ഈ മൂല്യം ആവശ്യമാണ്."
 #: 
 msgid "This value must be numeric."
 msgstr "ഈ മൂല്യം അക്കത്തിൽ ആയിരിക്കണം."
-
-#: 
-msgid "This value must be at least "
-msgstr "ഈ മൂല്യം കുറഞ്ഞത് "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "ഈ മൂല്യം ൽ കൂടാൻ കഴിയില്ല "
-
-#: 
-msgid " characters long"
-msgstr " അക്ഷരങ്ങൾ നീളമുള്ളത്"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "ഈ മൂല്യം ൽ കുറവ് ആകാൻ കഴിയില്ല "
 
 #: 
 msgid "Run Query Again"
@@ -1890,20 +1838,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "മുന്നറിയിപ്പ്: ഈ കുടുംബത്തിൽ സംഭാവന രേഖകൾ ഉണ്ട്, ഈ സംഭാവനകൾ മറ്റൊരു കുടുംബവുമായി ബന്ധിപ്പിക്കുന്നതുവരെ ഇത് ഇല്ലാതാക്കാൻ കഴിയില്ല."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "ഈ സംഭാവനകൾ ബന്ധിപ്പിക്കേണ്ട മറ്റൊരു കുടുംബം തിരഞ്ഞെടുക്കുക:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "മുന്നറിയിപ്പ്: ഈ പ്രവർത്തനം പഴയ നിലയിലേക്ക് മടക്കാനാകില്ല, ഇത് നിയമ പ്രത്യാഘാതങ്ങൾ ഉണ്ടാക്കിയേക്കാം!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "സംഭാവനകളുള്ള നിലവിലെ കുടുംബം"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "ഈ കുടുംബ റെക്കോർഡ് ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2028,10 +1968,6 @@ msgstr "സ്വമേധയാ അവസര എഡിറ്റർ"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "ഇതുവരെ സ്വമേധയാ അവസരങ്ങൾ ഒന്നും ചേർത്തിട്ടില്ല"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"വന്ന കാരണം\" കുറിപ്പുകൾ"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2275,14 +2211,6 @@ msgid "Cell"
 msgstr "സെൽ"
 
 #: 
-msgid "Estimated value "
-msgstr "ഏകദേശ മൂല്യം "
-
-#: 
-msgid "Donated by "
-msgstr "സംഭാവന ചെയ്തത് "
-
-#: 
 msgid "Paddle"
 msgstr "പാഡൽ"
 
@@ -2291,16 +2219,8 @@ msgid "Bid"
 msgstr "ബിഡ്"
 
 #: 
-msgid "Minimum bid "
-msgstr "ഏറ്റവും കുറഞ്ഞ ബിഡ് "
-
-#: 
 msgid "All Funds"
 msgstr "എല്ലാ ഫണ്ടുകളും"
-
-#: 
-msgid " for all funds"
-msgstr " എല്ലാ ഫണ്ടുകൾക്കും"
 
 #: 
 msgid " for fund "
