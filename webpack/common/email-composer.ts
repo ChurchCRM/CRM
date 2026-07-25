@@ -51,6 +51,8 @@ let countBadge: HTMLElement | null = null;
 /** Hint element showing "too many recipients" alert. Created on first renderRecipients() call per
  * modal open; reset to null on modal close so it is re-created fresh on the next open. */
 let tooManyHintEl: HTMLElement | null = null;
+/** The scrollable <div> inside the collapsible recipient list — updated by rebuildRecipientList() */
+let recipientListWrapperEl: HTMLElement | null = null;
 
 /** Current resolved email list (member recipients plus the default "to" when included) */
 let currentEmails: string[] = [];
@@ -383,6 +385,32 @@ function updateCountBadge(): void {
   if (countBadge) countBadge.textContent = String(currentEmails.length);
 }
 
+/**
+ * Rebuild the scrollable recipient list to show only the emails for the
+ * currently active roles. Called after a role checkbox is toggled so the
+ * visible list stays in sync with the Copy/mailto payload.
+ */
+function rebuildRecipientList(): void {
+  if (!recipientListWrapperEl) return;
+  recipientListWrapperEl.textContent = "";
+  if (activeRoles.size > 0) {
+    for (const role of activeRoles) {
+      const roleEmails = byRoleMap[role] ?? [];
+      if (roleEmails.length === 0) continue;
+      const roleHeader = document.createElement("div");
+      roleHeader.className = "text-body-secondary fw-semibold mt-2 mb-1";
+      roleHeader.textContent = role;
+      recipientListWrapperEl.appendChild(roleHeader);
+      for (const email of roleEmails) {
+        const line = document.createElement("div");
+        line.className = "ps-2";
+        line.textContent = email;
+        recipientListWrapperEl.appendChild(line);
+      }
+    }
+  }
+}
+
 /** Sync the footer action buttons (Copy / Open in client) with the current recipient total. */
 function updateActionButtons(): void {
   if (copyBtn) copyBtn.disabled = currentEmails.length === 0;
@@ -477,7 +505,7 @@ function renderRecipients(
       const roleEmails = byRoleMap[role] ?? [];
       const check = document.createElement("div");
       check.className = "form-check form-check-inline mb-0";
-      const cbId = `crm-role-cb-${role.replace(/\s+/g, "-").toLowerCase()}`;
+      const cbId = `crm-role-cb-${role.replace(/[^a-z0-9]/g, "-").toLowerCase()}`;
       const cb = document.createElement("input");
       cb.type = "checkbox";
       cb.className = "form-check-input";
@@ -493,6 +521,7 @@ function renderRecipients(
         recomputeCurrentEmails();
         updateCountBadge();
         updateActionButtons();
+        rebuildRecipientList();
       });
       const lbl = document.createElement("label");
       lbl.className = "form-check-label small";
@@ -539,9 +568,17 @@ function renderRecipients(
   listWrapper.style.maxHeight = "200px";
   listWrapper.style.overflowY = "auto";
   listWrapper.className = "mt-2 border rounded p-2 small font-monospace";
+  // Store module-level reference so rebuildRecipientList() can update
+  // the visible list when role checkboxes are toggled.
+  recipientListWrapperEl = listWrapper;
 
   if (hasRoles) {
-    for (const [role, roleEmails] of Object.entries(byRole)) {
+    // Render only the active roles — initially all roles are active, and
+    // rebuildRecipientList() keeps this in sync with the checkboxes.
+    const rolesToRender = showRoleFilter ? activeRoles : new Set(Object.keys(byRole));
+    for (const role of rolesToRender) {
+      const roleEmails = byRoleMap[role] ?? [];
+      if (roleEmails.length === 0) continue;
       const roleHeader = document.createElement("div");
       roleHeader.className = "text-body-secondary fw-semibold mt-2 mb-1";
       roleHeader.textContent = role;
@@ -733,6 +770,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (modalEl) {
     modalEl.addEventListener("hidden.bs.modal", () => {
       tooManyHintEl = null;
+      recipientListWrapperEl = null;
       byRoleMap = {};
       activeRoles = new Set();
       if (bccToggle) bccToggle.setAttribute("aria-pressed", "false");
