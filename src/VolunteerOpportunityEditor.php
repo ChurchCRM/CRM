@@ -121,7 +121,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                                 <?= CSRFUtils::getTokenInputField('deleteVolunteerOpportunity') ?>
                                 <button type="submit" class="btn btn-danger">
                                     <i class="fa-solid fa-trash"></i>
-                                    <?= gettext('Yes, delete this Opportunity') ?>
+                                    <?= gettext('Yes, delete') ?>
                                 </button>
                             </form>
                             <a href="VolunteerOpportunityEditor.php" class="btn btn-secondary">
