@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-25 22:47+0000\n"
+"POT-Creation-Date: 2026-07-25 22:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -886,6 +886,9 @@ msgstr ""
 msgid "Also runs automatically via WebDAV based on your configured interval."
 msgstr ""
 
+msgid "Also send to church address ({{email}})"
+msgstr ""
+
 msgid "Always granted"
 msgstr ""
 
@@ -1089,6 +1092,9 @@ msgstr ""
 msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
 msgstr ""
 
+msgid "Are you sure you want to remove this person from"
+msgstr ""
+
 msgid "Are you sure you want to unassign this property?"
 msgstr ""
 
@@ -1277,6 +1283,9 @@ msgid "Azure"
 msgstr ""
 
 msgid "BCC All Mail To"
+msgstr ""
+
+msgid "BCC Mode"
 msgstr ""
 
 msgid "Back"
@@ -2047,6 +2056,9 @@ msgstr ""
 msgid "Checked in to event: %s"
 msgstr ""
 
+msgid "Checked in {{count}} people."
+msgstr ""
+
 #, php-format
 msgid "Checked out from event: %s"
 msgstr ""
@@ -2312,6 +2324,9 @@ msgid "Closed Deposits"
 msgstr ""
 
 msgid "Closed vs Total"
+msgstr ""
+
+msgid "Closing"
 msgstr ""
 
 #. Context: countries
@@ -2595,6 +2610,9 @@ msgstr ""
 msgid "Coordinate database file name"
 msgstr ""
 
+msgid "Coordinates Updated"
+msgstr ""
+
 msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
 msgstr ""
 
@@ -2608,6 +2626,9 @@ msgid "Copied!"
 msgstr ""
 
 msgid "Copy"
+msgstr ""
+
+msgid "Copy Addresses"
 msgstr ""
 
 msgid "Copy All Numbers"
@@ -4484,6 +4505,9 @@ msgstr ""
 msgid "Failed to generate QR code. Please try again."
 msgstr ""
 
+msgid "Failed to geocode"
+msgstr ""
+
 msgid "Failed to get plugin details"
 msgstr ""
 
@@ -4518,6 +4542,9 @@ msgid "Failed to load event. Please try again."
 msgstr ""
 
 msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
+msgid "Failed to load recipients. Please try again."
 msgstr ""
 
 msgid "Failed to load recovery codes. Please refresh the page."
@@ -4727,6 +4754,9 @@ msgid "Family Work Phone"
 msgstr ""
 
 msgid "Family added to cart"
+msgstr ""
+
+msgid "Family check-in failed. Please try again."
 msgstr ""
 
 msgid "Family has no emails to use"
@@ -6597,7 +6627,13 @@ msgstr ""
 msgid "Loading event editor…"
 msgstr ""
 
+msgid "Loading family members..."
+msgstr ""
+
 msgid "Loading log file..."
+msgstr ""
+
+msgid "Loading recipients…"
 msgstr ""
 
 msgid "Loading recovery codes"
@@ -7645,6 +7681,9 @@ msgstr ""
 msgid "No email addresses available"
 msgstr ""
 
+msgid "No email addresses found."
+msgstr ""
+
 msgid "No email passed in"
 msgstr ""
 
@@ -8012,6 +8051,9 @@ msgid "Open a class → click \"Create Today's Event\" — the event is created 
 msgstr ""
 
 msgid "Open in Apple Maps"
+msgstr ""
+
+msgid "Open in Email Client"
 msgstr ""
 
 msgid "Open in Google Maps"
@@ -9187,6 +9229,9 @@ msgstr ""
 msgid "Refreshing in"
 msgstr ""
 
+msgid "Refreshing..."
+msgstr ""
+
 msgid "Regenerate"
 msgstr ""
 
@@ -9254,6 +9299,9 @@ msgstr ""
 msgid "Remove from Class"
 msgstr ""
 
+msgid "Remove from Group"
+msgstr ""
+
 msgid "Remove this attendance count?"
 msgstr ""
 
@@ -9309,6 +9357,9 @@ msgid "Request Family Info Verification"
 msgstr ""
 
 msgid "Request Password Reset"
+msgstr ""
+
+msgid "Request failed ({{status}})"
 msgstr ""
 
 msgid "Require all users to enroll in two-factor authentication"
@@ -9469,6 +9520,9 @@ msgid "Role not found."
 msgstr ""
 
 msgid "Roles"
+msgstr ""
+
+msgid "Roles to include:"
 msgstr ""
 
 #. Context: countries
@@ -10959,6 +11013,9 @@ msgstr ""
 msgid "This group currently has no properties!  You can add them in the Group Editor."
 msgstr ""
 
+msgid "This group only has one role."
+msgstr ""
+
 msgid "This is a ChurchCRM test email."
 msgstr ""
 
@@ -10969,6 +11026,14 @@ msgid "This is how your church information will appear on reports and directorie
 msgstr ""
 
 msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr ""
+
+msgctxt "one"
+msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
+msgstr ""
+
+msgctxt "other"
+msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
 msgstr ""
 
 msgid "This may take a few minutes for large databases."
@@ -11223,6 +11288,14 @@ msgstr ""
 
 #, php-format
 msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr ""
+
+msgctxt "one"
+msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
+msgstr ""
+
+msgctxt "other"
+msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
 msgstr ""
 
 msgid "Total"
@@ -12288,10 +12361,16 @@ msgstr ""
 msgid "Which role is the spouse?"
 msgstr ""
 
+msgid "Who is bringing in {{name}}?"
+msgstr ""
+
 msgid "Who is bringing them in?"
 msgstr ""
 
 msgid "Who is in your family?"
+msgstr ""
+
+msgid "Who is picking up {{name}}?"
 msgstr ""
 
 msgid "Why Came"
@@ -12332,6 +12411,9 @@ msgstr ""
 
 #. Context: queryparameteroptions_qpo
 msgid "WorkEmail"
+msgstr ""
+
+msgid "Working..."
 msgstr ""
 
 msgid "YTD Payments"
@@ -12673,6 +12755,9 @@ msgstr ""
 msgid "checked in"
 msgstr ""
 
+msgid "click to expand"
+msgstr ""
+
 msgid "complete"
 msgstr ""
 
@@ -12918,6 +13003,12 @@ msgstr ""
 msgid "properties"
 msgstr ""
 
+msgid "recipient"
+msgstr ""
+
+msgid "recipients"
+msgstr ""
+
 msgid "record(s) successfully added to selected Group."
 msgstr ""
 
@@ -13001,6 +13092,17 @@ msgid "yr"
 msgstr ""
 
 msgid "yrs"
+msgstr ""
+
+msgctxt "one"
+msgid "{{count}} min left"
+msgstr ""
+
+msgctxt "other"
+msgid "{{count}} min left"
+msgstr ""
+
+msgid "{{hours}}h {{mins}}m left"
 msgstr ""
 
 #. Context: countries

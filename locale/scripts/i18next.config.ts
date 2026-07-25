@@ -4,8 +4,9 @@ export default defineConfig({
   locales: ['en'],
   extract: {
     input: [
-      'src/skin/js/*.js',
-      'webpack/*.js'
+      'src/skin/js/**/*.js',
+      'webpack/**/*.{js,ts,tsx}',
+      '!webpack/**/*.d.ts'
     ],
     output: 'locale/.work/locales/{{language}}/{{namespace}}.json',
     defaultNS: 'translation',
