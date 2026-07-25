@@ -797,6 +797,25 @@ Terms at the top of the list that match the table above should be unwrapped in s
 
 **If you remove a wrapper**, the next automated extraction stops picking it up — you do **not** run `npm run locale:build` yourself to make that happen. New missing batches no longer include it; stale POEditor entries are harmless and can be cleaned up manually.
 
+**Complementary signal — `locale/terms/english-ok.json`:** this file records, per locale, which terms a translator explicitly decided are fine left as English (used by `poeditor-upload-missing.js` to allow value=key without flagging it as untranslated). A term marked English-OK in *nearly every* locale's array is the same leak from the other direction — translators independently concluded across 40+ languages that there's nothing to translate, which is a strong sign it's a literal that should never have been wrapped in the first place.
+
+```bash
+python3 -c "
+import json
+from collections import Counter
+data = json.load(open('locale/terms/english-ok.json'))
+c = Counter()
+for terms in data.values():
+    for t in terms: c[t] += 1
+for term, count in sorted(c.items(), key=lambda x: -x[1])[:20]:
+    print(f'{count:3d}  {term!r}')
+"
+```
+
+**Real instance found and fixed (2026-07-25):** `"SHA1 Hash"` — already listed in the bare-literal table above — was marked English-OK in 43 of 44 locales, yet was still wrapped at `gettext('SHA1 Hash')` in `admin/views/upgrade.php`. Unwrapped to a bare literal.
+
+**Verify before unwrapping — high frequency alone isn't proof.** A term can be frequent in `english-ok.json` simply because it's a short, genuinely-translatable word that most translators haven't gotten to yet (a backlog, not a leak) or because it names a real, translatable concept many languages happen to borrow from English. Checked and left wrapped in the same 2026-07-25 pass: `"Azure"` (36/44 locales) is a Tabler color-palette name sitting alongside `"Blue"`, `"Indigo"`, `"Red"` in `v2/templates/user/user.php` — a real translatable color name, not the Microsoft brand, just one many translators left as-is; `"Test"` (16/44) and `"Online"` (15/44) are ordinary translatable UI words used in many distinct contexts (button labels, status badges), not a single universal literal. Only unwrap when the term is *also* independently confirmed as a brand/technical/config literal per the table above — frequency is a lead to investigate, not a rule to apply mechanically.
+
 **Related:** the locale translation commands (`/locale-translate`, `/locale-release`) list these same tokens under "Preserve exactly / never translate" — the fix here is to stop them entering the pipeline in the first place.
 
 ### Never Split a Sentence Across Multiple gettext() Calls <!-- learned: 2026-04-22 -->
