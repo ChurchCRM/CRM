@@ -685,6 +685,8 @@ function getConfiguredDefaultTo(): string {
 
 export function openEmailComposer(options: CRMEmailComposerOptions): void {
   ensureModalExists();
+  fetchController?.abort(); // cancel any in-flight openFromEndpoint fetch
+  fetchController = null;
   bccMode = false;
   updateBccToggleAppearance();
   includeDefaultTo = true; // reset: each open starts with the default recipient included
@@ -796,6 +798,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // Abort any in-flight fetch so it doesn't write to the now-hidden DOM.
       fetchController?.abort();
       fetchController = null;
+      // Cancel any pending copy-feedback timer so it doesn't fire on the next open.
+      if (copyFeedbackTimer) {
+        clearTimeout(copyFeedbackTimer);
+        copyFeedbackTimer = null;
+      }
       tooManyHintEl = null;
       recipientListWrapperEl = null;
       recipientSummaryEl = null;
