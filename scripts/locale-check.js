@@ -31,7 +31,7 @@ const rules = [
 ];
 
 function isIgnored(filePath) {
-  return IGNORE_DIRS.some((d) => filePath.includes(path.normalize(d)));
+  return isMinified(filePath) || IGNORE_DIRS.some((d) => filePath.includes(path.normalize(d)));
 }
 
 function checkLine(file, lineNum, text) {

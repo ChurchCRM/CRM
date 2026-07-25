@@ -16,7 +16,16 @@ Guidelines for multilingual support, term consolidation, and the locale rebuild 
 
 ChurchCRM supports 45+ languages through gettext (PHP) and i18next (JavaScript). Proper localization reduces translator workload and improves consistency across languages.
 
-**Key Principle:** Every translatable term added = 45+ translations needed (one per language). Consolidate compound terms to reduce this burden.
+### The Cost of a Term <!-- learned: 2026-07-25 -->
+
+**Every distinct msgid is a recurring cost, not a one-time convenience.** All of the rules in this file exist to keep that cost as low as it can be — treat this as the "why" behind every rule below, not just the consolidation section. A term costs at each of these stages:
+
+1. **Extraction** — the automation has to notice the string, pull it into `locale/terms/messages.po`, and keep it in sync with source on every run.
+2. **Storage** — every unique term is a row in POEditor, permanently, for the life of the project. Junk terms (decorative punctuation, HTML fragments, one-off duplicates of an existing term) don't get cheaper to store just because they're small.
+3. **Translation** — real money and/or real translator time, multiplied by every one of the 45+ languages this project supports. A term that should have been one word ("Select a group") but instead exists as two ("Select a group" and "— Select a group —") is double the translation cost for zero user-facing benefit.
+4. **New-locale onboarding** — this is the compounding cost. Every term in the catalog today is catalog debt a *future* language has to pay off from zero before that locale is usable. A catalog with 2,000 clean terms costs a new locale 2,000 translations; a catalog bloated with duplicates, fragments, and decorative-punctuation msgids costs that same new locale for all of that waste too, with no corresponding value.
+
+**Concretely: an unnecessary term is not a rounding error.** One duplicate msgid × 45+ languages is 45+ wasted translation units, and every future locale re-pays that same waste again. The rules below (no HTML/markup, no decorative wrapper punctuation, no split-sentence fragments, no duplicate synonyms, no brand/technical literal wraps, term consolidation) are all different angles on the same goal: **keep the catalog to exactly the terms that need a human translation decision, and nothing else.**
 
 > [!NOTE] Scope — CORE `messages` domain only
 > Community plugins do **not** go through POeditor and do **not** contribute strings to
@@ -285,49 +294,33 @@ gettext('Group Delete Confirmation')
 
 ### Solution: Component-Based Terms
 
-Consolidate compound terms into reusable parts:
+Split a compound term into a reusable **action** piece and a reusable **type** piece, and combine them at the call site instead of writing one string per combination:
 
 ```php
-// ✅ CORRECT - 1 action + entity names = fewer translations
-gettext('Add New') . ' ' . gettext('Field')
-gettext('Add New') . ' ' . gettext('Fund')
-gettext('Add New') . ' ' . gettext('User')
-// Result: 10 total strings, 45 languages = 450 translations (saves 430!)
+// BEFORE — 12 unique terms
+gettext('Add New Field') / gettext('Add New Fund') / gettext('Add New User') / gettext('Add New Group')
+gettext('Delete Field') / gettext('Delete Fund') / gettext('Delete User') / gettext('Delete Group')
 
-// ✅ CORRECT - 1 pattern + type names
-gettext('Delete Confirmation') . ': ' . gettext('Family')
-gettext('Delete Confirmation') . ': ' . gettext('Note')
-// Result: 9 total strings (5 entity types), saves 98 translations
-```
+// AFTER — 7 unique terms (2 actions + 4 reused types), same coverage
+gettext('Add New')   // shared action
+gettext('Delete')    // shared action
+gettext('Field') / gettext('Fund') / gettext('User') / gettext('Group')  // reused types
 
-### Pattern: "Add New" Button
-
-```php
-// ✅ CORRECT - Consolidated pattern
-<input type="submit" 
-       value="<?= gettext('Add New') . ' ' . gettext('Fund') ?>" />
-
-<h3><?= gettext('Add New') . ' ' . gettext('Group') ?></h3>
-
-<div class="card-header">
-    <?= gettext('Add New') . ' ' . gettext('Field') ?>
-</div>
-```
-
-### Pattern: Delete Confirmation
-
-```php
-// ✅ CORRECT - Consolidated deletion dialog
-<?php
-$entityType = 'Family';  // Dynamic
-$pageTitle = gettext('Delete Confirmation') . ': ' . gettext($entityType);
-?>
-
-<h1><?= $pageTitle ?></h1>
+// Combine at the call site
+<button><?= gettext('Add New') . ' ' . gettext('Fund') ?></button>
+<h1><?= gettext('Delete Confirmation') . ': ' . gettext('Family') ?></h1>
 <p><?= sprintf(gettext('Are you sure you want to delete this %s?'), gettext($entityType)) ?></p>
+
+// Impact: 12 terms × 45 languages = 540 translations
+//         7 terms × 45 languages = 315 translations
+//         SAVED: 225 translations (42%)
 ```
 
-**Confirm-button labels don't need to repeat the entity name either**, when the surrounding dialog (page title, card header, or a "Please confirm deletion of X: {name}" line) already states it. Real instances fixed (2026-07-25): `VolunteerOpportunityEditor.php` used `gettext('Yes, delete this Opportunity')` and `PropertyTypeDelete.php` used `gettext('Yes, delete this record')` as one-off button labels, when a generic `gettext('Yes, delete')` (already used elsewhere, e.g. `PropertyList.php`) would do — both pages already display the entity name/type in the confirmation heading above the button.
+Verify a consolidation by reading the source and checking the rendered UI (`npm run build`) — never run `npm run locale:build` to "test" it; extraction is automated (see "Never rebuild the locale catalog" below).
+
+### Confirm-Button Labels Don't Need to Repeat the Entity Name <!-- learned: 2026-07-25 -->
+
+When the surrounding dialog (page title, card header, or a "Please confirm deletion of X: {name}" line) already states the entity, the button itself doesn't need to say it again. Real instances fixed (2026-07-25): `VolunteerOpportunityEditor.php` used `gettext('Yes, delete this Opportunity')` and `PropertyTypeDelete.php` used `gettext('Yes, delete this record')` as one-off button labels, when a generic `gettext('Yes, delete')` (already used elsewhere, e.g. `PropertyList.php`) would do.
 
 ```php
 // ❌ WRONG — entity name baked into the button label (one-off msgid, only used here)
@@ -337,18 +330,16 @@ $pageTitle = gettext('Delete Confirmation') . ': ' . gettext($entityType);
 <button><?= gettext('Yes, delete') ?></button>
 ```
 
-Note: `"Yes, Remove"` (used for reversible cart-removal actions) is intentionally kept as a **separate** canonical term from `"Yes, delete"` (destructive record deletion) — they represent different-consequence actions, not a punctuation/wording variant of the same concept. Don't merge those two.
+Note: `"Yes, Remove"` (reversible cart-removal) is intentionally kept **separate** from `"Yes, delete"` (destructive record deletion) — different-consequence actions, not a wording variant of the same concept. Don't merge those two.
 
-### Real-World Duplicate-Field-Label Instances (Zip / State) <!-- learned: 2026-07-25 -->
+### Duplicate Field Labels Across Forms (Zip / State) <!-- learned: 2026-07-25 -->
 
 A field that appears on multiple forms should have exactly one canonical label — let translators render the regionally-appropriate variant (e.g. "Postal Code" instead of "Zip") as *their* translation of that one term, rather than shipping two English source strings for the same concept.
 
 ```php
 // ❌ WRONG — same Zip field, two different English labels across forms
-// FamilyEditor.php, CSVExport.php, etc.:
-gettext('Zip')
-// people/views/cart/to-family.php (same #Zip field):
-gettext('Zip / Postal Code')
+// FamilyEditor.php, CSVExport.php, etc.:            gettext('Zip')
+// people/views/cart/to-family.php (same #Zip field): gettext('Zip / Postal Code')
 
 // ✅ CORRECT — one canonical term everywhere; translators localize the wording
 gettext('Zip')
@@ -356,7 +347,7 @@ gettext('Zip')
 
 Found and fixed 2026-07-25: `people/views/cart/to-family.php` used `'Zip / Postal Code'` and `'State / Province'` for the exact same `id="Zip"`/`id="State"` fields that every other form (`FamilyEditor.php`, `PersonEditor.php`, `church-info.php`, `family-list.php`, `family-register.php`) labels with the bare `gettext('Zip')` / `gettext('State')`. Also updated the CSV import column-label constant (`CSV_CORE_FIELD_LABELS` in `admin/routes/api/import.php`) which had independently baked in `'Zip / Postal Code'` as static array data.
 
-**Not the same as a DB-context-tagged term** — `"Zip Code"` (with `#. Context: queryparameteroptions_qpo`) is seeded row data in the Advanced Search / Query Builder field-picker (`queryparameteroptions_qpo` table, see `database-operations.md`), consistent with sibling option labels in that same set (`Home Phone`, `City`, `State`). Changing it means a DB data migration across every install, not a source-code fix — leave it alone; it is not a duplicate of the UI `"Zip"` label.
+**Not the same as a DB-context-tagged term** — `"Zip Code"` (with `#. Context: queryparameteroptions_qpo`) is seeded row data in the Advanced Search / Query Builder field-picker (`queryparameteroptions_qpo` table, see `database-operations.md`), consistent with sibling option labels in that same set (`Home Phone`, `City`, `State`). Changing it means a DB data migration across every install, not a source-code fix — leave it alone.
 
 **Detection — grep for a field's bare label vs. compound "X / Y" labels used on the same `id=`:**
 ```bash
@@ -391,6 +382,7 @@ sprintf(
 | Idiomatic phrase | **Keep as-is** | "Oops! Something went wrong" → can't split |
 | Repeated action+type | **CONSOLIDATE** | "[Action] [Type]" patterns |
 | Menu items (consistency) | **Case-by-case** | May keep "Add New Person" unified for UX |
+| Fragment reused in only 1-2 places | **Keep as full phrase** | Splitting "e.g., Sunday Service" into "e.g." + "Sunday Service" only pays off if "e.g." recurs across *many* strings — checked 2026-07-25: it doesn't (7 strings, no reuse elsewhere), so don't split it |
 
 ### Consolidation Decision Tree
 
@@ -404,85 +396,6 @@ Is this term a compound "[Action] [Type]"?
 │  └─ NO: Is it unique to this context?
 │     ├─ YES: Keep as-is
 │     └─ NO: Check for similar existing terms, reuse if possible
-```
-
----
-
-## General Consolidation Principles
-
-### Step 1: Identify Patterns
-
-Look for compound terms with repeated elements:
-
-```php
-// Pattern 1: Repeated action
-gettext('Add New Field')         // Action: "Add New"
-gettext('Add New Fund')          // Action: "Add New" (repeated!)
-gettext('Delete Field')          // Action: "Delete"
-gettext('Delete Fund')           // Action: "Delete" (repeated!)
-
-// Pattern 2: Type variations
-gettext('Person')                // Type: "Person"
-gettext('Family')                // Type: "Family" (reusable)
-gettext('Fund')                  // Type: "Fund" (reusable)
-```
-
-### Step 2: Extract Components
-
-Split compound terms into reusable parts:
-
-```php
-// BEFORE (12 unique terms)
-gettext('Add New Field')
-gettext('Add New Fund')
-gettext('Add New User')
-gettext('Add New Group')
-gettext('Delete Field')
-gettext('Delete Fund')
-gettext('Delete User')
-gettext('Delete Group')
-
-// AFTER (7 unique terms)
-gettext('Add New')               // Shared action
-gettext('Delete')                // Shared action
-gettext('Field')                 // Reused type
-gettext('Fund')                  // Reused type
-gettext('User')                  // Reused type
-gettext('Group')                 // Reused type
-```
-
-### Step 3: Implement with Concatenation
-
-Use string concatenation to combine components:
-
-```php
-// Component-based approach
-$action = gettext('Add New');
-$entityType = gettext('Fund');
-$label = $action . ' ' . $entityType;  // Result: "Add New Fund"
-
-// In templates
-<button><?= gettext('Add New') . ' ' . gettext('Fund') ?></button>
-
-// In PHP
-echo sprintf('%s %s', gettext('Add New'), gettext('Fund'));
-```
-
-### Step 4: Verify in the UI
-
-```bash
-npm run build          # Regenerate front-end assets
-```
-
-Do **not** run `npm run locale:build` to "test" a consolidation — verify by
-reading the source and checking the rendered UI. Extraction is automated.
-
-### Step 5: Measure Impact
-
-```
-Original:  12 unique terms × 45 languages = 540 translations
-Consolid: 7 unique terms × 45 languages = 315 translations
-SAVED: 225 translations (42% reduction!)
 ```
 
 ---
@@ -1062,19 +975,31 @@ alert('Settings saved');  // Not translatable, poor UX
 
 ## Pre-Commit i18n Checklist
 
-Before committing:
+### Automated — `.githooks/pre-commit` runs this for you <!-- learned: 2026-07-25 -->
 
-- [ ] All new UI text wrapped with `gettext()` (PHP) or `i18next.t()` (JS)
-- [ ] No hardcoded user-facing strings
-- [ ] No brand / technical literals wrapped — see ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) (brand names, config keys, protocol acronyms, `name@example.com`-style placeholders all stay as bare literals)
-- [ ] No split-sentence fragments — each `gettext()` call wraps a complete sentence; dynamic values use `sprintf()` — see ["Never Split a Sentence"](#never-split-a-sentence-across-multiple-gettext-calls----learned-2026-04-22-)
-- [ ] No JS template-literal split — no `${i18next.t(...)} ... ${i18next.t(...)}` concatenation; use single parameterised `i18next.t()` with `{{placeholder}}` — see ["Never Split in JavaScript"](#never-split-a-sentence-in-javascript-i18next-template-literals----learned-2026-07-11-)
-- [ ] No trailing-preposition PHP msgid followed by JS runtime suffix — use a single JS `i18next.t('... {{version}}')` instead — see ["Trailing-Preposition"](#trailing-preposition--cross-language-split-php-prefix--js-suffix----learned-2026-07-11-)
+`scripts/locale-check.js --staged` scans only the lines you just added and blocks the commit on any of these three syntactic issues, since they're mechanically detectable with no false positives:
+
+- [ ] Trailing colon inside `gettext()`/`i18next.t()` — see ["Punctuation & Colon Placement"](#punctuation--colon-placement----learned-2026-03-15-)
+- [ ] HTML/markup baked into the string — see ["No HTML or Markup in Translatable Strings"](#no-html-or-markup-in-translatable-strings----learned-2026-07-25-)
+- [ ] Decorative em-dash wrapper baked into the string — see ["Decorative Wrappers"](#decorative-wrappers-em-dash-brackets-etc-go-outside-the-call----learned-2026-07-25-)
+
+You don't need to remember these three by hand — the hook fires on every `git commit`. Run `node scripts/locale-check.js` (no `--staged`) any time to sweep the whole repo instead of just what you're committing.
+
+### Manual — requires reading sibling call sites, not mechanically checkable
+
+These need judgment (reading the surrounding code), so they aren't hard-blocked by the hook — a mechanical check here produces false positives (see the sibling-convention and Azure/Test/Online examples elsewhere in this file):
+
+- [ ] All new UI text wrapped with `gettext()` (PHP) or `i18next.t()` (JS) — no hardcoded user-facing strings
+- [ ] Checked for an existing equivalent term first — reuse beats creating a new one (every new term is 45+ new translations, see ["The Cost of a Term"](#the-cost-of-a-term----learned-2026-07-25-))
+- [ ] No brand / technical literals wrapped — see ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---)
+- [ ] No split-sentence fragments — each `gettext()`/`i18next.t()` call wraps a complete sentence; dynamic values use `sprintf()`/`{{placeholder}}` — see ["Never Split a Sentence"](#never-split-a-sentence-across-multiple-gettext-calls----learned-2026-04-22-) and its [JS counterpart](#never-split-a-sentence-in-javascript-i18next-template-literals----learned-2026-07-11-)
+- [ ] No trailing-preposition PHP msgid followed by JS runtime suffix — see ["Trailing-Preposition"](#trailing-preposition--cross-language-split-php-prefix--js-suffix----learned-2026-07-11-)
+- [ ] No duplicate term for the same concept (canonical-term reuse, e.g. `Zip` vs `Zip / Postal Code`) — see ["Term Consolidation Patterns"](#term-consolidation-patterns)
+- [ ] Trailing punctuation matches this msgid's sibling family, not merged blindly — see ["Trailing-Period/Exclamation Duplicates"](#trailing-periodexclamation-duplicates--check-sibling-convention-before-merging----learned-2026-07-25-)
+- [ ] Used consolidation patterns for compound terms
+- [ ] If JS/CSS changed: ran `npm run build`
 - [ ] **Did NOT run `npm run locale:build`** — extraction is automated outside this repo
 - [ ] **Did NOT commit `locale/terms/messages.po` or `src/skin/v2/locale/`** — the automation owns those
-- [ ] If JS/CSS changed: Ran `npm run build`
-- [ ] Checked for existing similar terms (reuse instead of creating new)
-- [ ] Used consolidation patterns for compound terms
 - [ ] Verified UI displays correctly (test with `npm run test`)
 
 ---
@@ -1125,23 +1050,6 @@ sprintf(gettext('Add New %s'), gettext('Fund'))
 // ❌ WRONG - Gettext inside sprintf
 sprintf(gettext('Add New %s'), gettext('Fund'))
 // Have to use: sprintf(gettext('Add New %s'), 'Fund')
-```
-
----
-
-## Translator Perspective
-
-Consolidation reduces workload from 45+ languages:
-
-```
-❌ No consolidation:
-- 880 strings × 45 languages = 39,600 translation segments!
-- Translator spends weeks translating variations of "Add New"
-
-✅ With consolidation:
-- 315 strings × 45 languages = 14,175 translation segments
-- Translator completes in less time
-- More consistency across UI
 ```
 
 ---
@@ -1496,4 +1404,4 @@ These rules must be stated explicitly in every agent prompt:
 
 ---
 
-Last updated: July 24, 2026
+Last updated: July 25, 2026
