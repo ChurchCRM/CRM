@@ -511,7 +511,7 @@ function renderRecipients(
     filterSection.className = "mb-3";
     const filterLabel = document.createElement("div");
     filterLabel.className = "text-body-secondary small fw-semibold mb-2";
-    filterLabel.textContent = i18next.t("Roles to include:");
+    filterLabel.textContent = `${i18next.t("Roles to include")}:`;
     filterSection.appendChild(filterLabel);
     const filterRow = document.createElement("div");
     filterRow.className = "d-flex flex-wrap gap-2";

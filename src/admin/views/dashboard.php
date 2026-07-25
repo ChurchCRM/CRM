@@ -67,8 +67,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                             <li class="mb-2"><?= gettext('Find the line') ?>: <code>$URL[0] = '...';</code></li>
                             <li class="mb-2"><?= gettext('Update it to a valid URL that') ?>:
                                 <ul class="mt-1">
-                                    <li><?= gettext('Starts with <strong>http://</strong> or <strong>https://</strong>') ?></li>
-                                    <li><?= gettext('Ends with a <strong>trailing slash</strong> (/)') ?></li>
+                                    <li><?= gettext('Starts with http:// or https://') ?></li>
+                                    <li><?= gettext('Ends with a trailing slash (/)') ?></li>
                                 </ul>
                             </li>
                             <li><?= gettext('Save the file and refresh this page') ?></li>
