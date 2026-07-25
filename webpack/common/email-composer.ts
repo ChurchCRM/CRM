@@ -793,6 +793,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // re-created fresh on the next open (avoids stale DOM references).
   if (modalEl) {
     modalEl.addEventListener("hidden.bs.modal", () => {
+      // Abort any in-flight fetch so it doesn't write to the now-hidden DOM.
+      fetchController?.abort();
+      fetchController = null;
       tooManyHintEl = null;
       recipientListWrapperEl = null;
       recipientSummaryEl = null;
