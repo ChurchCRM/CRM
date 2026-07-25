@@ -63,6 +63,10 @@ let baseRecipients: string[] = [];
 let defaultToAddress = "";
 /** Whether the default "to" address is currently included (user can uncheck to drop it) */
 let includeDefaultTo = true;
+/** Full byRole map stored so role checkboxes can recompute baseRecipients */
+let byRoleMap: Record<string, string[]> = {};
+/** Set of role names currently checked in the role-filter UI; empty = no filter UI shown */
+let activeRoles: Set<string> = new Set();
 /** Pending timer for copy-feedback reset — stored so it can be cancelled on state transitions */
 let copyFeedbackTimer: ReturnType<typeof setTimeout> | null = null;
 /** Whether the BCC toggle is active */
@@ -344,6 +348,23 @@ function renderError(title: string, message: string): void {
   }
 }
 
+/** Recompute baseRecipients from the active roles (or the full set when no role filter is shown). */
+function recomputeBaseRecipients(): void {
+  if (activeRoles.size === 0) return; // no role filter UI — baseRecipients set in renderRecipients
+  const seen = new Set<string>();
+  baseRecipients = [];
+  for (const role of activeRoles) {
+    const roleEmails = byRoleMap[role] ?? [];
+    for (const email of roleEmails) {
+      const key = email.toLowerCase();
+      if (!seen.has(key)) {
+        seen.add(key);
+        baseRecipients.push(email);
+      }
+    }
+  }
+}
+
 /** Recompute currentEmails from the member list plus the optional default recipient. */
 function recomputeCurrentEmails(): void {
   currentEmails =
@@ -384,10 +405,33 @@ function renderRecipients(
 ): void {
   if (!modalTitle || !modalBody) return;
 
-  // Member recipients only. When byRole is present, derive the flat list from it so the
-  // visible grouped list and the action payload stay in sync.
-  const hasRoles = Object.keys(byRole).length > 0;
-  baseRecipients = hasRoles ? Object.values(byRole).flat() : [...emails];
+  // Store byRole for role-filter recomputation and set up the active roles set.
+  byRoleMap = byRole;
+  const roleKeys = Object.keys(byRole);
+  const hasRoles = roleKeys.length > 0;
+  const showRoleFilter = roleKeys.length >= 2;
+  // All roles active by default on each open.
+  activeRoles = showRoleFilter ? new Set(roleKeys) : new Set();
+
+  // When byRole is present, derive baseRecipients from the active roles (dedup across roles).
+  if (hasRoles) {
+    if (showRoleFilter) {
+      recomputeBaseRecipients();
+    } else {
+      // Single role or flat list — no filter UI, just flatten.
+      const seen = new Set<string>();
+      baseRecipients = Object.values(byRole)
+        .flat()
+        .filter((v) => {
+          const key = v.toLowerCase();
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+    }
+  } else {
+    baseRecipients = [...emails];
+  }
 
   // Offer the church default "to" address (sToEmailAddress) as a removable recipient only
   // when it is configured, there is at least one member recipient, and it is not already
@@ -411,6 +455,49 @@ function renderRecipients(
   modalTitle.appendChild(countBadge);
 
   modalBody.textContent = "";
+
+  // Role filter checkboxes (shown only when ≥2 roles present)
+  if (showRoleFilter) {
+    const filterSection = document.createElement("div");
+    filterSection.className = "mb-3";
+    const filterLabel = document.createElement("div");
+    filterLabel.className = "text-body-secondary small fw-semibold mb-2";
+    filterLabel.textContent = i18next.t("Roles to include:");
+    filterSection.appendChild(filterLabel);
+    const filterRow = document.createElement("div");
+    filterRow.className = "d-flex flex-wrap gap-2";
+    for (const role of roleKeys) {
+      const roleEmails = byRoleMap[role] ?? [];
+      const check = document.createElement("div");
+      check.className = "form-check form-check-inline mb-0";
+      const cbId = `crm-role-cb-${role.replace(/\s+/g, "-").toLowerCase()}`;
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.className = "form-check-input";
+      cb.id = cbId;
+      cb.checked = true;
+      cb.addEventListener("change", () => {
+        if (cb.checked) {
+          activeRoles.add(role);
+        } else {
+          activeRoles.delete(role);
+        }
+        recomputeBaseRecipients();
+        recomputeCurrentEmails();
+        updateCountBadge();
+        updateActionButtons();
+      });
+      const lbl = document.createElement("label");
+      lbl.className = "form-check-label small";
+      lbl.setAttribute("for", cbId);
+      lbl.textContent = `${role} (${roleEmails.length})`;
+      check.appendChild(cb);
+      check.appendChild(lbl);
+      filterRow.appendChild(check);
+    }
+    filterSection.appendChild(filterRow);
+    modalBody.appendChild(filterSection);
+  }
 
   if (baseRecipients.length === 0) {
     const empty = document.createElement("div");
@@ -639,6 +726,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (modalEl) {
     modalEl.addEventListener("hidden.bs.modal", () => {
       tooManyHintEl = null;
+      byRoleMap = {};
+      activeRoles = new Set();
       if (bccToggle) bccToggle.setAttribute("aria-pressed", "false");
     });
   }

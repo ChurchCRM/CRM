@@ -528,7 +528,23 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             // Merge and dedup across segments for 'all'
             $allEmails = array_values(array_unique(array_merge($teacherEmails, $parentEmails, $kidEmails)));
 
+            // New array-shape response (used by email-composer modal)
+            $byRole = [];
+            if (!empty($teacherEmails)) {
+                $byRole[gettext('Teachers')] = $teacherEmails;
+            }
+            if (!empty($parentEmails)) {
+                $byRole[gettext('Parents')] = $parentEmails;
+            }
+            if (!empty($kidEmails)) {
+                $byRole[gettext('Kids')] = $kidEmails;
+            }
+
             return SlimUtils::renderJSON($response, [
+                // New canonical shape consumed by the email-composer modal
+                'emails' => $allEmails,
+                'byRole' => $byRole,
+                // Legacy CSV fields retained for backward compatibility
                 'all'      => implode(',', $allEmails),
                 'teachers' => implode(',', $teacherEmails),
                 'parents'  => implode(',', $parentEmails),
