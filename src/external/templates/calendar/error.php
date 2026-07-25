@@ -15,6 +15,10 @@ $rootPath = SystemURLs::getRootPath();
 $churchName = ChurchMetaData::getChurchName();
 $logoURL = ChurchMetaData::getChurchLogoURL();
 
+// Allow external-calendar error pages to be embedded in a third-party <iframe>.
+// See src/Include/Header-Security.php for the opt-in mechanism.
+$allowFraming = true;
+
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 ?>
 

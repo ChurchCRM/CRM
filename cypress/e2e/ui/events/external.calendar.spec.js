@@ -30,6 +30,40 @@ function setExternalCalendarApi(enabled) {
     });
 }
 
+/**
+ * Helper: assert that a response from the external-calendar route has the
+ * correct framing headers — no X-Frame-Options restriction and a CSP
+ * frame-ancestors directive that permits embedding from any origin.
+ *
+ * We check whichever CSP flavour the server sends
+ * (Content-Security-Policy or Content-Security-Policy-Report-Only —
+ *  determined by the bEnforceCSP system config, defaulting to report-only).
+ */
+function assertFramingHeadersOpen(response) {
+    // Must NOT send X-Frame-Options — its absence means no legacy restriction.
+    expect(
+        response.headers['x-frame-options'],
+        'x-frame-options should be absent on the external calendar route',
+    ).to.be.undefined;
+
+    // Exactly one CSP flavour should be present; pick whichever is set.
+    const cspHeader =
+        response.headers['content-security-policy'] ??
+        response.headers['content-security-policy-report-only'];
+    expect(cspHeader, 'a CSP header must be present').to.be.a('string');
+
+    // frame-ancestors must be open to all origins…
+    expect(cspHeader).to.match(
+        /frame-ancestors \*/,
+        'frame-ancestors should be "*" on the external calendar route',
+    );
+    // …and must NOT carry the same-origin restriction.
+    expect(cspHeader).not.to.match(
+        /frame-ancestors 'self'/,
+        "frame-ancestors must not be 'self' on the external calendar route",
+    );
+}
+
 describe("External calendar — HTML surface", () => {
     after(() => {
         // Leave the setting disabled so other specs aren't surprised. The
@@ -55,6 +89,26 @@ describe("External calendar — HTML surface", () => {
         cy.visit("/external/calendars/notarealtoken12345", { failOnStatusCode: false });
         cy.contains("Calendar not found").should("be.visible");
         cy.contains("Go to home").should("be.visible");
+    });
+
+    it("omits X-Frame-Options and sets frame-ancestors * when the API is disabled (error page)", () => {
+        // Framing headers are emitted before content is rendered, so even
+        // the 403 error page (API disabled) must carry the open headers.
+        setExternalCalendarApi(false);
+
+        cy.request({
+            url: "/external/calendars/anytoken",
+            failOnStatusCode: false,
+        }).then(assertFramingHeadersOpen);
+    });
+
+    it("omits X-Frame-Options and sets frame-ancestors * for a 404 (bad token)", () => {
+        setExternalCalendarApi(true);
+
+        cy.request({
+            url: "/external/calendars/notarealtoken12345",
+            failOnStatusCode: false,
+        }).then(assertFramingHeadersOpen);
     });
 });
 
@@ -100,6 +154,25 @@ describe("External calendar — JSON surface", () => {
         }).then((response) => {
             expect(response.status).to.eq(403);
             expect(response.headers["content-type"]).to.match(/application\/json/);
+        });
+    });
+});
+
+describe("Framing-header regression — non-external routes still protected", () => {
+    // Verifies that the $allowFraming opt-in in the external calendar
+    // templates does NOT affect any other route.
+    it("sends X-Frame-Options: SAMEORIGIN on the public login page", () => {
+        // The setup / login page is always accessible without credentials
+        // and goes through HeaderNotLoggedIn.php without $allowFraming set.
+        cy.request({
+            url: "/",
+            followRedirect: true,
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(
+                (response.headers['x-frame-options'] ?? '').toLowerCase(),
+                'non-external pages must still block cross-origin framing',
+            ).to.eq('sameorigin');
         });
     });
 });
