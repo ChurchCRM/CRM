@@ -388,8 +388,10 @@ function recomputeCurrentEmails(): void {
 function updateCountBadge(): void {
   if (countBadge) countBadge.textContent = String(currentEmails.length);
   if (recipientSummaryEl) {
-    const word = currentEmails.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
-    recipientSummaryEl.textContent = `${currentEmails.length} ${word} \u2014 ${i18next.t("click to expand")}`;
+    // Use baseRecipients.length (not currentEmails.length) — the expandable
+    // list shows member emails only; defaultToAddress has its own checkbox.
+    const word = baseRecipients.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
+    recipientSummaryEl.textContent = `${baseRecipients.length} ${word} \u2014 ${i18next.t("click to expand")}`;
   }
 }
 
