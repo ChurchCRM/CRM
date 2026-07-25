@@ -134,7 +134,7 @@ class   SystemConfig
             'sDefaultCity'                         => new ConfigItem('sDefaultCity', 'text', '', gettext('Default City')),
             'sDefaultState'                        => new ConfigItem('sDefaultState', 'text', '', gettext('Default State - Must be 2-letter abbreviation!')),
             'sDefaultCountry'                      => new ConfigItem('sDefaultCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
-            'sToEmailAddress'                      => new ConfigItem('sToEmailAddress', 'text', '', gettext('Default account for receiving a copy of all emails')),
+            'sToEmailAddress'                      => new ConfigItem('sToEmailAddress', 'text', '', gettext('Church email address automatically added as a removable recipient when composing emails from CRM')),
             'iSMTPTimeout'                         => new ConfigItem('iSMTPTimeout', 'number', '10', gettext('SMTP Server timeout in sec')),
             'sSMTPHost'                            => new ConfigItem('sSMTPHost', 'text', '', gettext('SMTP Server Address (mail.server.com:25)')),
             'bSMTPAuth'                            => new ConfigItem('bSMTPAuth', 'boolean', '0', gettext('Enable if your SMTP server requires a username and password')),
