@@ -143,7 +143,7 @@ $isOnboarding = $isOnboarding ?? false;
                     <div class="spinner-border spinner-border-sm text-primary me-2" role="status">
                         <span class="visually-hidden"><?= gettext('Loading...') ?></span>
                     </div>
-                    <span id="redirectCountdown"><?= gettext('Redirecting in') ?> <strong>5</strong> <?= gettext('seconds...') ?></span>
+                    <span id="redirectCountdown"><?= sprintf(gettext('Redirecting in %s seconds...'), '<strong>5</strong>') ?></span>
                 </div>
             </div>
         </div>
