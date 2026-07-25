@@ -417,6 +417,18 @@ Remove every reference found before (or as part of) the deletion commit:
 8. git add → git commit → git push
 ```
 
+### Mandatory Pre-Commit Locale Check <!-- learned: 2026-07-25 -->
+
+**`.githooks/pre-commit` runs `node scripts/locale-check.js --staged` on every `git commit`**, enabled the same way as the pre-push hook (`core.hooksPath=.githooks` via `npm install`'s `prepare` script). It scans only the lines actually being **added** in the commit (via `git diff --cached`) for three high-confidence, syntactic i18n violations:
+
+- Trailing colon inside `gettext()`/`i18next.t()` (see `i18n-localization.md` → "Punctuation & Colon Placement")
+- HTML/markup baked into the string (see `i18n-localization.md` → "No HTML or Markup in Translatable Strings")
+- Decorative em-dash wrapper baked into the string (see `i18n-localization.md` → "Decorative Wrappers")
+
+A failing check blocks the commit with the offending file:line and a fix pointer. Bypass only with `git commit --no-verify` for an emergency, justified in the PR — same policy as the pre-push Biome check below.
+
+**Not automated**: duplicate/reuse checks (e.g. `Zip` vs `Zip / Postal Code`) and trailing-punctuation-consistency checks (e.g. `User not found` vs `User not found.`) are judgment calls that depend on reading sibling call sites — see `i18n-localization.md` → "Trailing-Period/Exclamation Duplicates" for why these are deliberately *not* hard-blocked by the hook. Review those manually during code review.
+
 ### Mandatory Pre-Push Biome Check <!-- learned: 2026-04-09 -->
 
 **Biome lint MUST pass before any `git push`.** This is enforced two ways

@@ -327,6 +327,44 @@ $pageTitle = gettext('Delete Confirmation') . ': ' . gettext($entityType);
 <p><?= sprintf(gettext('Are you sure you want to delete this %s?'), gettext($entityType)) ?></p>
 ```
 
+**Confirm-button labels don't need to repeat the entity name either**, when the surrounding dialog (page title, card header, or a "Please confirm deletion of X: {name}" line) already states it. Real instances fixed (2026-07-25): `VolunteerOpportunityEditor.php` used `gettext('Yes, delete this Opportunity')` and `PropertyTypeDelete.php` used `gettext('Yes, delete this record')` as one-off button labels, when a generic `gettext('Yes, delete')` (already used elsewhere, e.g. `PropertyList.php`) would do — both pages already display the entity name/type in the confirmation heading above the button.
+
+```php
+// ❌ WRONG — entity name baked into the button label (one-off msgid, only used here)
+<button><?= gettext('Yes, delete this Opportunity') ?></button>
+
+// ✅ CORRECT — generic label; the card header/title above already says "Volunteer Opportunity"
+<button><?= gettext('Yes, delete') ?></button>
+```
+
+Note: `"Yes, Remove"` (used for reversible cart-removal actions) is intentionally kept as a **separate** canonical term from `"Yes, delete"` (destructive record deletion) — they represent different-consequence actions, not a punctuation/wording variant of the same concept. Don't merge those two.
+
+### Real-World Duplicate-Field-Label Instances (Zip / State) <!-- learned: 2026-07-25 -->
+
+A field that appears on multiple forms should have exactly one canonical label — let translators render the regionally-appropriate variant (e.g. "Postal Code" instead of "Zip") as *their* translation of that one term, rather than shipping two English source strings for the same concept.
+
+```php
+// ❌ WRONG — same Zip field, two different English labels across forms
+// FamilyEditor.php, CSVExport.php, etc.:
+gettext('Zip')
+// people/views/cart/to-family.php (same #Zip field):
+gettext('Zip / Postal Code')
+
+// ✅ CORRECT — one canonical term everywhere; translators localize the wording
+gettext('Zip')
+```
+
+Found and fixed 2026-07-25: `people/views/cart/to-family.php` used `'Zip / Postal Code'` and `'State / Province'` for the exact same `id="Zip"`/`id="State"` fields that every other form (`FamilyEditor.php`, `PersonEditor.php`, `church-info.php`, `family-list.php`, `family-register.php`) labels with the bare `gettext('Zip')` / `gettext('State')`. Also updated the CSV import column-label constant (`CSV_CORE_FIELD_LABELS` in `admin/routes/api/import.php`) which had independently baked in `'Zip / Postal Code'` as static array data.
+
+**Not the same as a DB-context-tagged term** — `"Zip Code"` (with `#. Context: queryparameteroptions_qpo`) is seeded row data in the Advanced Search / Query Builder field-picker (`queryparameteroptions_qpo` table, see `database-operations.md`), consistent with sibling option labels in that same set (`Home Phone`, `City`, `State`). Changing it means a DB data migration across every install, not a source-code fix — leave it alone; it is not a duplicate of the UI `"Zip"` label.
+
+**Detection — grep for a field's bare label vs. compound "X / Y" labels used on the same `id=`:**
+```bash
+grep -rn "gettext('Zip')\|gettext('Zip / Postal Code')" src webpack
+grep -rn "gettext('State')\|gettext('State / Province')" src webpack
+```
+Not every `"X / Y"` label is a duplicate — some legitimately combine two distinct data concepts into one compound column header or checkbox (e.g. `"Class / Group"` in `kiosk/views/manager.php` covers rows that are either a class or a group; `"Role / Gender"` in `people/views/dashboard.php` covers two separate stat columns; `"Age / Years Married"` in `CSVExport.php` is a CSV column that means Age for a person row and Years Married for a couple row). Only merge when both sides genuinely label the *same single field*.
+
 ### Pattern: Status Messages
 
 ```php
@@ -611,6 +649,70 @@ place. This supersedes older guidance in this section that said to update `messa
 see ["Never rebuild the locale catalog"](#never-rebuild-the-locale-catalog----learned-2026-07-11-)
 below — the automation, not the developer, owns that file.
 
+### Decorative Wrappers (em-dash, brackets, etc.) Go Outside the Call <!-- learned: 2026-07-25 -->
+
+**Rule: Move purely decorative wrapper characters — em-dashes, brackets, parentheses used as visual framing — OUTSIDE `gettext()`/`i18next.t()` calls, same as the colon rule above.** A dropdown blank-option label like `"— Select Country —"` bakes UI decoration into the msgid; the dashes are identical in every language and contribute nothing for a translator to translate, they just add visual noise and risk the translator "translating" or repositioning them.
+
+```php
+// ❌ WRONG - em-dash decoration inside gettext()
+<option value=""><?= gettext('— Select a group —') ?></option>
+
+// ✅ CORRECT - decoration outside, translator only sees the real words
+<option value="">— <?= gettext('Select a group') ?> —</option>
+```
+
+```javascript
+// ❌ WRONG
+const blankLabel = i18next.t("— Select Country —");
+
+// ✅ CORRECT
+const blankLabel = `— ${i18next.t("Select Country")} —`;
+```
+
+**Check for an existing bare form first** — exactly like the colon rule, a decorated and undecorated version of the same phrase are two msgids for one concept. `"— Select a group —"` was found duplicating an already-existing bare `gettext('Select a group')` used in four other editors (`PersonCustomFieldsEditor.php`, `FamilyCustomFieldsEditor.php`, `GroupEditor.php`, `GroupPropsFormEditor.php`); the decorated call site was switched to reuse the existing term rather than keep a second msgid.
+
+**Not the same as "e.g." example-hint text** — `"e.g., Sunday Service"`-style placeholder strings are NOT decoration; "e.g." is itself a real word that needs translation (Spanish "p. ej.", French "par ex.", Japanese "例："), and it forms one natural phrase with its example. Splitting it out only helps when the fragment is reused across many strings — checked here (2026-07-25): `"e.g."` appears in exactly 7 strings and nowhere else, so splitting would create 8 translation units instead of 7. Leave these as complete phrases.
+
+**Detection:**
+```bash
+grep -rnoE "gettext\(['\"]— [^'\"]*—['\"]\)" src --include="*.php" | grep -v vendor
+grep -rnoE 'i18next\.t\(["\047]— [^"\047]*—["\047]\)' webpack src | grep -v "\.min\.js"
+```
+
+### Trailing-Period/Exclamation Duplicates — Check Sibling Convention Before Merging <!-- learned: 2026-07-25 -->
+
+A msgid pair differing only by trailing `.`/`!`/`...` (e.g. `"User not found"` vs `"User not found."`) is **not automatically a bug**. A 2026-07-25 audit found this codebase has two genuinely distinct, internally-consistent conventions that legitimately collide on wording:
+
+- **Short-phrase / API-JSON / page-subtitle contexts almost always omit the trailing period** — `SlimUtils::renderErrorJSON()` error messages, `sPageSubtitle` values, toast/`notify()` calls, exception messages thrown internally.
+- **Full-sentence / user-facing display contexts almost always include it** — bootbox modal alerts, `$_SESSION['sGlobalMessage']` flash messages, HTML alert `<div>`s, body paragraphs.
+
+```php
+// ✅ Both correct — same underlying error, two different display contexts, each internally consistent
+// API route (short phrase, no period):
+return SlimUtils::renderErrorJSON($response, gettext('Note not found'), [], 404);
+// Modal alert (full sentence, period) — delete-note-modal.php:
+bootbox.alert(<?= json_encode(gettext('Note not found.')) ?>);
+```
+
+**Before merging a punctuation-duplicate pair, check each call site's *sibling* messages in the same file/context** — if 6 other messages in the same file all share the same punctuation style as one side of the pair, that side is intentional, not a bug. Only merge when one side is an **outlier against its own sibling family** (a one-off inconsistency, not a deliberate context split). Real examples found and fixed this way: `UserService.php` had 7 `RuntimeException` messages with no period and exactly 1 outlier (`'User not found.'`) — fixed the outlier, left the API/modal split pairs (`Note not found`, `Property not found` in `PropertyMiddleware`, `Failed to delete note`, etc.) alone since each side matched its own family.
+
+**Detection:**
+```bash
+python3 -c "
+import re
+po = open('locale/messages.po').read()
+ids = [m for m in re.findall(r'^msgid \"(.*?)\"\$', po, re.MULTILINE) if m]
+base_map = {}
+for m in ids:
+    base = m.rstrip('!.?')
+    base_map.setdefault(base, set()).add(m)
+for base, variants in base_map.items():
+    if len(variants) > 1:
+        print(sorted(variants))
+"
+```
+Then `grep -rn -F "<the phrase>"` each variant's call sites and read the surrounding sibling messages before deciding whether to merge.
+
 ### Do Not Wrap Brand / Technical Literals <!-- learned: 2026-04-22 -->
 
 **Rule: Never wrap brand names, product names, language/runtime identifiers, config keys, protocol acronyms, or placeholder strings in `gettext()` / `_()`.** These are literals, not UI copy — translators cannot (and should not) change them, and wrapping them pollutes every locale's missing-terms batch and creates POEditor noise in every language.
@@ -754,11 +856,19 @@ $("#upgradePathSummary").html(
 );
 // Produces msgids: "You are" and "releases behind. Here's what you'll gain:"
 
-// ✅ CORRECT — single parameterised msgid; HTML emphasis kept inside the template key.
-// Trailing colon is UI punctuation (see "Punctuation & Colon Placement" above) — kept
-// outside the t() call even in JS.
+// ❌ ALSO WRONG — single msgid, but bakes <strong> markup into the translatable string
 $("#upgradePathSummary").html(
   `${i18next.t("You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain", {
+    releaseCount: count,
+  })}:`,
+);
+
+// ✅ CORRECT — single parameterised msgid, no markup in the string at all.
+// Trailing colon is UI punctuation (see "Punctuation & Colon Placement" above) — kept
+// outside the t() call even in JS. Use .text() (not .html()) since there is no
+// markup to render.
+$("#upgradePathSummary").text(
+  `${i18next.t("You are {{releaseCount}} releases behind. Here's what you'll gain", {
     releaseCount: count,
   })}:`,
 );
@@ -797,7 +907,37 @@ function setWhatsNewHeading(version) {
 ```
 This is a per-call option; it does not affect other `i18next.t()` calls.
 
-**HTML in msgid keys is established precedent** in this codebase (e.g. `msgid "Ends with a <strong>trailing slash</strong> (/)"`). Using `<strong>` inside a msgid for emphasis that must be preserved by translators is acceptable. Keep it minimal — body paragraphs should use `%d`/`{{n}}` interpolation without markup.
+### No HTML or Markup in Translatable Strings <!-- learned: 2026-07-25 -->
+
+**Rule: never bake HTML tags (`<strong>`, `<br>`, etc.) or other markup into a `gettext()`/`i18next.t()` msgid.** Earlier guidance in this file treated `<strong>`-wrapped msgids as acceptable precedent — that guidance was wrong and has been reversed. Translators should see plain, complete sentences; visual emphasis is a presentation concern, not a translation concern, and baking markup into the string risks a translator mangling or dropping the tag entirely.
+
+```php
+// ❌ WRONG — markup baked into the translatable string
+gettext('Starts with <strong>http://</strong> or <strong>https://</strong>')
+gettext('Ignore Incomplete<br>Addresses')
+
+// ✅ CORRECT — plain sentence, no markup; let CSS/layout handle emphasis if needed
+gettext('Starts with http:// or https://')
+gettext('Ignore Incomplete Addresses')
+```
+
+```javascript
+// ❌ WRONG — <strong> baked into the msgid
+i18next.t("Remove <strong>{{personName}}</strong> from this class?", {
+  personName, interpolation: { escapeValue: false },
+})
+
+// ✅ CORRECT — plain sentence; i18next's default escaping handles the interpolated value
+i18next.t("Remove {{personName}} from this class?", { personName })
+```
+
+**Exception: HTML confined entirely to an *interpolated value*, never the msgid itself**, is still fine — e.g. wrapping a version number in a `<span>` to keep a stable element id for Cypress (see `setWhatsNewHeading()` in `upgrade-wizard-app.js`). The translator only ever sees `"What's New in {{version}}"` — no markup — because the `<span>` lives in the JS-built `version` value passed to `i18next.t()`, not in the translatable string.
+
+**Detection:**
+```bash
+grep -rnoE "gettext\(['\"][^'\"]*<[a-zA-Z/][^'\"]*['\"]\)" src --include="*.php" | grep -v vendor
+grep -rnoE 'i18next\.t\(["\047][^"\047]*<[a-zA-Z/][^"\047]*["\047]' webpack src | grep -v "\.min\.js"
+```
 
 ### Trailing-Preposition / Cross-Language Split (PHP prefix + JS suffix) <!-- learned: 2026-07-11 -->
 

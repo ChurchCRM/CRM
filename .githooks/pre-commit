@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#
+# ChurchCRM pre-commit hook — checks translatable strings staged in this
+# commit against the i18n rules in .agents/skills/churchcrm/i18n-localization.md
+# (no trailing colon, no HTML/markup, no decorative wrapper punctuation baked
+# into gettext()/i18next.t() calls).
+#
+# Enabled automatically by `npm install` (the `prepare` script in
+# package.json points core.hooksPath at this directory). To bypass for
+# emergency hot-fixes only, run with `git commit --no-verify` — but you
+# MUST justify it in the PR description.
+
+set -e
+
+# Skip the hook in CI environments
+if [ -n "$CI" ] || [ -n "$GITHUB_ACTIONS" ]; then
+    exit 0
+fi
+
+# Skip if there is no package.json (e.g. detached worktree)
+if [ ! -f package.json ]; then
+    exit 0
+fi
+
+echo "→ pre-commit: checking staged translatable strings (node scripts/locale-check.js --staged)…"
+
+if ! node scripts/locale-check.js --staged; then
+    echo ""
+    echo "✘ pre-commit: locale-check found issues in the strings you staged."
+    echo "  Fix the issues above and re-stage, or bypass in an emergency with:"
+    echo "  git commit --no-verify (justify in PR)."
+    exit 1
+fi
+
+echo "✓ pre-commit: locale-check passed."
+exit 0
