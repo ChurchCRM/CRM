@@ -53,6 +53,8 @@ let countBadge: HTMLElement | null = null;
 let tooManyHintEl: HTMLElement | null = null;
 /** The scrollable <div> inside the collapsible recipient list — updated by rebuildRecipientList() */
 let recipientListWrapperEl: HTMLElement | null = null;
+/** The <summary> element inside the collapsible recipient list — updated by updateCountBadge() */
+let recipientSummaryEl: HTMLElement | null = null;
 
 /** Current resolved email list (member recipients plus the default "to" when included) */
 let currentEmails: string[] = [];
@@ -377,12 +379,18 @@ function recomputeBaseRecipients(): void {
 /** Recompute currentEmails from the member list plus the optional default recipient. */
 function recomputeCurrentEmails(): void {
   currentEmails =
-    defaultToAddress !== "" && includeDefaultTo ? [...baseRecipients, defaultToAddress] : [...baseRecipients];
+    baseRecipients.length > 0 && defaultToAddress !== "" && includeDefaultTo
+      ? [...baseRecipients, defaultToAddress]
+      : [...baseRecipients];
 }
 
-/** Update the title count badge to match the current recipient total. */
+/** Update the title count badge and the collapsible-list summary text to match the current total. */
 function updateCountBadge(): void {
   if (countBadge) countBadge.textContent = String(currentEmails.length);
+  if (recipientSummaryEl) {
+    const word = currentEmails.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
+    recipientSummaryEl.textContent = `${currentEmails.length} ${word} \u2014 ${i18next.t("click to expand")}`;
+  }
 }
 
 /**
@@ -505,7 +513,7 @@ function renderRecipients(
       const roleEmails = byRoleMap[role] ?? [];
       const check = document.createElement("div");
       check.className = "form-check form-check-inline mb-0";
-      const cbId = `crm-role-cb-${role.replace(/[^a-z0-9]/g, "-").toLowerCase()}`;
+      const cbId = `crm-role-cb-${role.toLowerCase().replace(/[^a-z0-9]/g, "-")}`;
       const cb = document.createElement("input");
       cb.type = "checkbox";
       cb.className = "form-check-input";
@@ -562,6 +570,7 @@ function renderRecipients(
   summary.className = "text-body-secondary small mb-2";
   const recipientWord = baseRecipients.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
   summary.textContent = `${baseRecipients.length} ${recipientWord} — ${i18next.t("click to expand")}`;
+  recipientSummaryEl = summary;
   details.appendChild(summary);
 
   const listWrapper = document.createElement("div");
@@ -771,6 +780,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modalEl.addEventListener("hidden.bs.modal", () => {
       tooManyHintEl = null;
       recipientListWrapperEl = null;
+      recipientSummaryEl = null;
       byRoleMap = {};
       activeRoles = new Set();
       if (bccToggle) bccToggle.setAttribute("aria-pressed", "false");
