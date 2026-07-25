@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-25 22:58+0000\n"
+"POT-Creation-Date: 2026-07-25 23:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1282,9 +1282,6 @@ msgstr ""
 msgid "Azure"
 msgstr ""
 
-msgid "BCC All Mail To"
-msgstr ""
-
 msgid "BCC Mode"
 msgstr ""
 
@@ -2169,6 +2166,9 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr ""
+
 msgid "Church email — configured on the"
 msgstr ""
 
@@ -2632,6 +2632,9 @@ msgid "Copy Addresses"
 msgstr ""
 
 msgid "Copy All Numbers"
+msgstr ""
+
+msgid "Copy Church Email"
 msgstr ""
 
 msgid "Copy Members to Group"
@@ -3149,9 +3152,6 @@ msgid "Default State - Must be 2-letter abbreviation!"
 msgstr ""
 
 msgid "Default Zip"
-msgstr ""
-
-msgid "Default account for receiving a copy of all emails"
 msgstr ""
 
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
