@@ -67,6 +67,10 @@ let baseRecipients: string[] = [];
 let defaultToAddress = "";
 /** Whether the default "to" address is currently included (user can uncheck to drop it) */
 let includeDefaultTo = true;
+/** AbortController for the in-flight /api fetch inside openFromEndpoint().
+ * Aborted and replaced each time a new endpoint open is requested, preventing
+ * a stale response from overwriting fresher modal state. */
+let fetchController: AbortController | null = null;
 /** Full byRole map stored so role checkboxes can recompute baseRecipients */
 let byRoleMap: Record<string, string[]> = {};
 /** Set of role names currently checked in the role-filter UI; empty = no filter UI shown */
@@ -707,6 +711,12 @@ export function openEmailComposer(options: CRMEmailComposerOptions): void {
 
 async function openFromEndpoint(endpoint: string, title: string): Promise<void> {
   ensureModalExists();
+  // Abort any in-flight fetch from a previous openFromEndpoint call so that
+  // a stale response cannot overwrite the fresher modal state that this call sets.
+  if (fetchController) fetchController.abort();
+  fetchController = new AbortController();
+  const signal = fetchController.signal;
+
   bccMode = false;
   updateBccToggleAppearance();
   includeDefaultTo = true; // reset: each open starts with the default recipient included
@@ -715,7 +725,7 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
 
   try {
     const url = buildAPIUrl(endpoint);
-    const res = await fetch(url, { credentials: "same-origin" });
+    const res = await fetch(url, { credentials: "same-origin", signal });
     if (!res.ok) {
       const body = (await res.json().catch(() => ({}))) as { message?: string; error?: string };
       const msg = body.message ?? body.error ?? i18next.t("Request failed ({{status}})", { status: res.status });
@@ -741,6 +751,9 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
     // single window.CRM.comm config, not returned by the email-list API.
     renderRecipients(title, emails, safeByRole, getConfiguredDefaultTo());
   } catch (err) {
+    // AbortError is expected when a newer openFromEndpoint() call aborts this fetch.
+    // Silently discard — the newer call's renderLoading/renderRecipients is already running.
+    if (err instanceof DOMException && err.name === "AbortError") return;
     console.error("[email-composer] fetch failed:", err);
     renderError(title, i18next.t("Failed to load recipients. Please try again."));
   }
