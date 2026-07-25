@@ -92,7 +92,7 @@ $rootPath       = SystemURLs::getRootPath();
                         <?= gettext('Assign role to all') ?>:
                     </label>
                     <select id="assignRoleToAll" class="form-select form-select-sm" style="width:auto">
-                        <option value=""><?= gettext('— pick —') ?></option>
+                        <option value="">— <?= gettext('pick') ?> —</option>
                         <?php foreach ($familyRoles as $role): ?>
                         <option value="<?= $role->getOptionId() ?>">
                             <?= InputUtils::escapeHTML($role->getOptionName()) ?>
@@ -146,7 +146,7 @@ $rootPath       = SystemURLs::getRootPath();
                                     id="role<?= $cartPerson->getId() ?>"
                                     name="role<?= $cartPerson->getId() ?>"
                                     class="form-select form-select-sm role-select">
-                                    <option value=""><?= gettext('— Select role —') ?></option>
+                                    <option value="">— <?= gettext('Select role') ?> —</option>
                                     <?php foreach ($familyRoles as $role): ?>
                                     <option
                                         value="<?= $role->getOptionId() ?>"
@@ -258,7 +258,7 @@ $rootPath       = SystemURLs::getRootPath();
                                    value="<?= InputUtils::escapeAttribute($formValues['City'] ?? '') ?>">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="Zip" class="form-label"><?= gettext('Zip / Postal Code') ?></label>
+                            <label for="Zip" class="form-label"><?= gettext('Zip') ?></label>
                             <input type="text" id="Zip" name="Zip" class="form-control"
                                    maxlength="10"
                                    value="<?= InputUtils::escapeAttribute($formValues['Zip'] ?? '') ?>">
@@ -266,7 +266,7 @@ $rootPath       = SystemURLs::getRootPath();
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="State" class="form-label"><?= gettext('State / Province') ?></label>
+                            <label for="State" class="form-label"><?= gettext('State') ?></label>
                             <div id="stateOptionDiv">
                                 <select id="State" name="State" class="form-select"
                                     data-user-selected="<?= InputUtils::escapeAttribute($formValues['State'] ?? '') ?>"

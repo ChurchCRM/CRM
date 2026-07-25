@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function buildStateSelect(fieldId, fieldName, states, selectedValue) {
     const $select = $(`<select id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%"></select>`);
-    const blankLabel = window.i18next ? i18next.t("— Select State —") : "— Select State —";
+    const blankLabel = window.i18next ? `— ${i18next.t("Select State")} —` : "— Select State —";
     $select.append(new Option(blankLabel, ""));
 
     $.each(states, (code, name) => {
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function populateCountrySelect($selectEl, selectedValue, callback) {
     fetchCountries().done((data) => {
       $selectEl.empty();
-      const blankLabel = window.i18next ? i18next.t("— Select Country —") : "— Select Country —";
+      const blankLabel = window.i18next ? `— ${i18next.t("Select Country")} —` : "— Select Country —";
       $selectEl.append(new Option(blankLabel, ""));
 
       $.each(data, (_idx, country) => {

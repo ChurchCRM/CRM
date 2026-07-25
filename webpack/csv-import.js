@@ -194,7 +194,11 @@ function showMappingStep(token, headers, mappings, fields, sample) {
       : `<span class="badge badge-warning"><i class="fa-solid fa-triangle-exclamation mr-1"></i>${i18next.t("Unmapped")}</span>`;
 
     const $select = $('<select class="form-control form-control-sm mapping-select">').attr("data-header", header);
-    $select.append($("<option>").val("").text(i18next.t("— Ignore —")));
+    $select.append(
+      $("<option>")
+        .val("")
+        .text(`— ${i18next.t("Ignore")} —`),
+    );
     grouped.forEach(({ group, items }) => {
       const $group = $("<optgroup>").attr("label", group);
       items.forEach((f) => {
