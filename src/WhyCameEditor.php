@@ -86,7 +86,7 @@ require_once __DIR__ . '/Include/Header.php';
     </h5>
   </div>
   <div class="card-body">
-    <form method="post" action="WhyCameEditor.php?<?= 'PersonID=' . $iPerson . '&WhyCameID=' . $iWhyCameID . '&linkBack=' . $linkBack ?>" name="WhyCameEditor">
+    <form method="post" action="WhyCameEditor.php?<?= 'PersonID=' . $iPerson . '&WhyCameID=' . $iWhyCameID . '&linkBack=' . InputUtils::escapeAttribute($linkBack) ?>" name="WhyCameEditor">
       <div class="mb-3">
         <label class="form-label"><?= gettext('Why did you come to the church?') ?></label>
         <textarea name="Join" class="form-control" rows="3"><?= InputUtils::escapeHTML($tJoin) ?></textarea>

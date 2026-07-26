@@ -426,7 +426,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             </div>
             <div class="card-body">
                 <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
-                   target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
+                   target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($familyAddress) ?></a>
                 <?php
                 $directionsUrl = $family->getDirectionsUrl();
                 $appleDirectionsUrl = $family->getAppleMapsDirectionsUrl();
@@ -435,7 +435,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <?php if (!empty($directionsUrl) || !empty($appleDirectionsUrl)) : ?>
                     <div class="btn-group directions-btn-group">
                         <?php if (!empty($directionsUrl)) : ?>
-                        <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                        <a href="<?= InputUtils::escapeAttribute($directionsUrl) ?>" target="_blank" rel="noopener noreferrer"
                            class="btn btn-sm btn-outline-primary">
                             <i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?>
                         </a>
@@ -448,11 +448,11 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                         </button>
                         <div class="dropdown-menu directions-provider-menu d-none">
                             <?php if (!empty($directionsUrl)) : ?>
-                            <a class="dropdown-item" href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($directionsUrl) ?>" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
                             </a>
                             <?php endif; ?>
-                            <a class="dropdown-item apple-maps-option" href="<?= $appleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                            <a class="dropdown-item apple-maps-option" href="<?= InputUtils::escapeAttribute($appleDirectionsUrl) ?>" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
                             </a>
                         </div>
