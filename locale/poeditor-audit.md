@@ -53,15 +53,15 @@
 | `nl` | Dutch | 3991 | 96.56% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 3991 | 96.56% | 🟢 Complete | ✅ Yes |
 | `fil` | Filipino | 3986 | 96.44% | 🟢 Complete | ✅ Yes |
+| `en-za` | English (ZA) | 70 | 1.69% | N/A | ✅ Yes |
 | `sl` | Slovenian | 64 | 1.55% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 60 | 1.45% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 57 | 1.38% | 🟠 Needs Work | ❌ No |
-| `en-za` | English (ZA) | 51 | 1.23% | N/A | ✅ Yes |
+| `en-au` | English (AU) | 49 | 1.19% | N/A | ✅ Yes |
 | `lv` | Latvian | 42 | 1.02% | 🟠 Needs Work | ❌ No |
-| `en-au` | English (AU) | 27 | 0.65% | N/A | ✅ Yes |
-| `en` | English | 14 | 0.34% | N/A | ✅ Yes |
-| `en-ca` | English (CA) | 11 | 0.27% | N/A | ✅ Yes |
-| `en-jm` | English (JM) | 3 | 0.07% | N/A | ✅ Yes |
+| `en` | English | 38 | 0.92% | N/A | ✅ Yes |
+| `en-jm` | English (JM) | 27 | 0.65% | N/A | ✅ Yes |
+| `en-ca` | English (CA) | 17 | 0.41% | N/A | ✅ Yes |
 | `en-us` | English (US) | 0 | 0% | N/A | ✅ Yes |
 
 ## Status Summary
