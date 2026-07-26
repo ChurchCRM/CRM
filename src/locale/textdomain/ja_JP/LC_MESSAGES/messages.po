@@ -7374,10 +7374,6 @@ msgid "Move up"
 msgstr "上に移動"
 
 #: 
-msgid "Opportunity"
-msgstr "機会"
-
-#: 
 msgid "Order"
 msgstr "順序"
 
@@ -7392,14 +7388,6 @@ msgstr "パーセンテージ"
 #: 
 msgid "Person Properties"
 msgstr "個人のプロパティ"
-
-#: 
-msgid "Property Type"
-msgstr "プロパティタイプ"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "ボランティアの機会"
 
 #. Context: locales
 #: 

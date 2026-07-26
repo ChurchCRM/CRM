@@ -7427,10 +7427,6 @@ msgid "Move up"
 msgstr "ወደ ላይ ከፍ አድርግ"
 
 #: 
-msgid "Opportunity"
-msgstr "ዕድል"
-
-#: 
 msgid "Order"
 msgstr "ቅደም ተከተል"
 
@@ -7445,14 +7441,6 @@ msgstr "ፐርሰንት"
 #: 
 msgid "Person Properties"
 msgstr "የሰው ባህሪያት"
-
-#: 
-msgid "Property Type"
-msgstr "የንብረት/ባህሪ አይነት"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "የበጎ ፈቃደኝነት ዕድል"
 
 #. Context: locales
 #: 

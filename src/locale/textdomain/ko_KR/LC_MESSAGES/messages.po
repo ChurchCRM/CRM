@@ -7409,10 +7409,6 @@ msgid "Move up"
 msgstr "위로 이동"
 
 #: 
-msgid "Opportunity"
-msgstr "기회"
-
-#: 
 msgid "Order"
 msgstr "순서"
 
@@ -7427,14 +7423,6 @@ msgstr "백분율"
 #: 
 msgid "Person Properties"
 msgstr "사람 속성"
-
-#: 
-msgid "Property Type"
-msgstr "속성 유형"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "자원봉사 기회"
 
 #. Context: locales
 #: 

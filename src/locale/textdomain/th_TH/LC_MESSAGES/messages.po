@@ -7386,10 +7386,6 @@ msgid "Move up"
 msgstr "เลื่อนขึ้น"
 
 #: 
-msgid "Opportunity"
-msgstr "โอกาส"
-
-#: 
 msgid "Order"
 msgstr "ลำดับ"
 
@@ -7404,14 +7400,6 @@ msgstr "เปอร์เซ็นต์"
 #: 
 msgid "Person Properties"
 msgstr "คุณสมบัติบุคคล"
-
-#: 
-msgid "Property Type"
-msgstr "ประเภทคุณสมบัติ"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "โอกาสอาสาสมัคร"
 
 #. Context: locales
 #: 

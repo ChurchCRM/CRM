@@ -7380,10 +7380,6 @@ msgid "Move up"
 msgstr "മുകളിലേക്ക് നീക്കുക"
 
 #: 
-msgid "Opportunity"
-msgstr "അവസരം"
-
-#: 
 msgid "Order"
 msgstr "ക്രമം"
 
@@ -7398,14 +7394,6 @@ msgstr "ശതമാനം"
 #: 
 msgid "Person Properties"
 msgstr "വ്യക്തി സ്വഭാവങ്ങൾ"
-
-#: 
-msgid "Property Type"
-msgstr "സ്വഭാവ തരം"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "സ്വമേധയാ അവസരം"
 
 #. Context: locales
 #: 

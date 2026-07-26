@@ -7384,10 +7384,6 @@ msgid "Move up"
 msgstr "Omhoog verplaatsen"
 
 #: 
-msgid "Opportunity"
-msgstr "Mogelijkheid"
-
-#: 
 msgid "Order"
 msgstr "Volgorde"
 
@@ -7402,14 +7398,6 @@ msgstr "Percentage"
 #: 
 msgid "Person Properties"
 msgstr "Persoonseigenschappen"
-
-#: 
-msgid "Property Type"
-msgstr "Eigendomstype"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vrijwilligersmogelijkheid"
 
 #. Context: locales
 #: 

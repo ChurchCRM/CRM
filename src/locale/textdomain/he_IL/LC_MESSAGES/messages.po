@@ -7418,10 +7418,6 @@ msgid "Move up"
 msgstr "הזז למעלה"
 
 #: 
-msgid "Opportunity"
-msgstr "הזדמנות"
-
-#: 
 msgid "Order"
 msgstr "סדר"
 
@@ -7436,14 +7432,6 @@ msgstr "אחוז"
 #: 
 msgid "Person Properties"
 msgstr "מאפייני אדם"
-
-#: 
-msgid "Property Type"
-msgstr "סוג מאפיין"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "הזדמנות להתנדבות"
 
 #. Context: locales
 #: 

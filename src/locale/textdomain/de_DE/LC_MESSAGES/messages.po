@@ -7502,10 +7502,6 @@ msgid "Move up"
 msgstr "Nach oben verschieben"
 
 #: 
-msgid "Opportunity"
-msgstr "Chance"
-
-#: 
 msgid "Order"
 msgstr "Auftrag"
 
@@ -7520,14 +7516,6 @@ msgstr "Prozentsatz"
 #: 
 msgid "Person Properties"
 msgstr "Personeneigenschaften"
-
-#: 
-msgid "Property Type"
-msgstr "Eigenschaftstyp"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Freiwilligenchance"
 
 #. Context: locales
 #: 
