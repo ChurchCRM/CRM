@@ -7568,10 +7568,6 @@ msgid "Move up"
 msgstr "上移"
 
 #: 
-msgid "Opportunity"
-msgstr "機會"
-
-#: 
 msgid "Order"
 msgstr "順序"
 
@@ -7586,14 +7582,6 @@ msgstr "百分比"
 #: 
 msgid "Person Properties"
 msgstr "個人屬性"
-
-#: 
-msgid "Property Type"
-msgstr "屬性類型"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "志願服務機會"
 
 #. Context: locales
 #: 

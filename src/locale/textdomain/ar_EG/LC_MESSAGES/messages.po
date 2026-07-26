@@ -7435,10 +7435,6 @@ msgid "Move up"
 msgstr "نقل للأعلى"
 
 #: 
-msgid "Opportunity"
-msgstr "الفرصة"
-
-#: 
 msgid "Order"
 msgstr "الترتيب"
 
@@ -7453,14 +7449,6 @@ msgstr "النسبة المئوية"
 #: 
 msgid "Person Properties"
 msgstr "خصائص الشخص"
-
-#: 
-msgid "Property Type"
-msgstr "نوع الخاصية"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "فرصة التطوع"
 
 #. Context: locales
 #: 

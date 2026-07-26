@@ -7408,10 +7408,6 @@ msgid "Move up"
 msgstr "Lëviz lart"
 
 #: 
-msgid "Opportunity"
-msgstr "Mundësi"
-
-#: 
 msgid "Order"
 msgstr "Radhitja"
 
@@ -7426,14 +7422,6 @@ msgstr "Përqindja"
 #: 
 msgid "Person Properties"
 msgstr "Vetitë e personit"
-
-#: 
-msgid "Property Type"
-msgstr "Lloji i pronës"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Mundësi vullnetare"
 
 #. Context: locales
 #: 

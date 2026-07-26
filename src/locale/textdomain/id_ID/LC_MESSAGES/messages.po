@@ -7408,10 +7408,6 @@ msgid "Move up"
 msgstr "Naikkan"
 
 #: 
-msgid "Opportunity"
-msgstr "Kesempatan Pelayanan"
-
-#: 
 msgid "Order"
 msgstr "Urutan"
 
@@ -7426,14 +7422,6 @@ msgstr "Persentase"
 #: 
 msgid "Person Properties"
 msgstr "Properti Jemaat"
-
-#: 
-msgid "Property Type"
-msgstr "Tipe Properti"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Bidang Pelayanan"
 
 #. Context: locales
 #: 

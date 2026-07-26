@@ -7517,10 +7517,6 @@ msgid "Move up"
 msgstr "Flytta upp"
 
 #: 
-msgid "Opportunity"
-msgstr "Möjlighet"
-
-#: 
 msgid "Order"
 msgstr "Ordning"
 
@@ -7535,14 +7531,6 @@ msgstr "Procent"
 #: 
 msgid "Person Properties"
 msgstr "Personegenskaper"
-
-#: 
-msgid "Property Type"
-msgstr "Egenskapstyp"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Volontärmöjlighet"
 
 #. Context: locales
 #: 

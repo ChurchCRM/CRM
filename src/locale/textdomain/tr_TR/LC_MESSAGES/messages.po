@@ -7420,10 +7420,6 @@ msgid "Move up"
 msgstr "Yukarı taşı"
 
 #: 
-msgid "Opportunity"
-msgstr "Fırsat"
-
-#: 
 msgid "Order"
 msgstr "Sıra"
 
@@ -7438,14 +7434,6 @@ msgstr "Yüzde"
 #: 
 msgid "Person Properties"
 msgstr "Kişi Özellikleri"
-
-#: 
-msgid "Property Type"
-msgstr "Özellik Türü"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Gönüllü Fırsatı"
 
 #. Context: locales
 #: 

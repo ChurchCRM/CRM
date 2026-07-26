@@ -7488,10 +7488,6 @@ msgid "Move up"
 msgstr "Вверх"
 
 #: 
-msgid "Opportunity"
-msgstr "Возможность"
-
-#: 
 msgid "Order"
 msgstr "Порядок"
 
@@ -7506,14 +7502,6 @@ msgstr "Процент"
 #: 
 msgid "Person Properties"
 msgstr "Свойства человека"
-
-#: 
-msgid "Property Type"
-msgstr "Тип свойства"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Волонтерская возможность"
 
 #. Context: locales
 #: 

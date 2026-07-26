@@ -7379,10 +7379,6 @@ msgid "Move up"
 msgstr "ऊपर ले जाएं"
 
 #: 
-msgid "Opportunity"
-msgstr "अवसर"
-
-#: 
 msgid "Order"
 msgstr "क्रम"
 
@@ -7397,14 +7393,6 @@ msgstr "प्रतिशत"
 #: 
 msgid "Person Properties"
 msgstr "व्यक्ति गुण"
-
-#: 
-msgid "Property Type"
-msgstr "संपत्ति प्रकार"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "स्वयंसेवक अवसर"
 
 #. Context: locales
 #: 

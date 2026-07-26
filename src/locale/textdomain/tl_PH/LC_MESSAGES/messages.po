@@ -7380,10 +7380,6 @@ msgid "Move up"
 msgstr "Ilipat pataas"
 
 #: 
-msgid "Opportunity"
-msgstr "Pagkakataon"
-
-#: 
 msgid "Order"
 msgstr "Ayos"
 
@@ -7398,14 +7394,6 @@ msgstr "Porsyento"
 #: 
 msgid "Person Properties"
 msgstr "Mga Katangian ng Tao"
-
-#: 
-msgid "Property Type"
-msgstr "Uri ng Katangian"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Pagkakataon bilang Boluntaryo"
 
 #. Context: locales
 #: 

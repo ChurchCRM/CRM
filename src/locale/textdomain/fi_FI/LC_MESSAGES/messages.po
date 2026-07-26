@@ -7382,10 +7382,6 @@ msgid "Move up"
 msgstr "Siirrä ylös"
 
 #: 
-msgid "Opportunity"
-msgstr "Mahdollisuus"
-
-#: 
 msgid "Order"
 msgstr "Järjestys"
 
@@ -7400,14 +7396,6 @@ msgstr "Prosenttiosuus"
 #: 
 msgid "Person Properties"
 msgstr "Henkilön ominaisuudet"
-
-#: 
-msgid "Property Type"
-msgstr "Ominaisuustyyppi"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vapaaehtoistyön mahdollisuus"
 
 #. Context: locales
 #: 

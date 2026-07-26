@@ -7392,10 +7392,6 @@ msgid "Move up"
 msgstr "పైకి తరలించు"
 
 #: 
-msgid "Opportunity"
-msgstr "అవకాశం"
-
-#: 
 msgid "Order"
 msgstr "ఆర్డర్"
 
@@ -7410,14 +7406,6 @@ msgstr "శాతం"
 #: 
 msgid "Person Properties"
 msgstr "వ్యక్తి లక్షణాలు"
-
-#: 
-msgid "Property Type"
-msgstr "ఆస్తి రకం"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "స్వచ్ఛంద అవకాశం"
 
 #. Context: locales
 #: 

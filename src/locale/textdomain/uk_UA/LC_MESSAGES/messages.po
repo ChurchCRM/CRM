@@ -7432,10 +7432,6 @@ msgid "Move up"
 msgstr "Перемістити вгору"
 
 #: 
-msgid "Opportunity"
-msgstr "Можливість"
-
-#: 
 msgid "Order"
 msgstr "Замовлення"
 
@@ -7450,14 +7446,6 @@ msgstr "Відсоток"
 #: 
 msgid "Person Properties"
 msgstr "Властивості особи"
-
-#: 
-msgid "Property Type"
-msgstr "Тип властивості"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Служіння / Волонтерство"
 
 #. Context: locales
 #: 

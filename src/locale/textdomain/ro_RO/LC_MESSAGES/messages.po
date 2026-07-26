@@ -7488,10 +7488,6 @@ msgid "Move up"
 msgstr "Mută în sus"
 
 #: 
-msgid "Opportunity"
-msgstr "Oportunitate"
-
-#: 
 msgid "Order"
 msgstr "Ordine"
 
@@ -7506,14 +7502,6 @@ msgstr "Procentaj"
 #: 
 msgid "Person Properties"
 msgstr "Proprietăți persoană"
-
-#: 
-msgid "Property Type"
-msgstr "Tip proprietate"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Oportunitate de voluntariat"
 
 #. Context: locales
 #: 

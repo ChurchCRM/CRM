@@ -7416,10 +7416,6 @@ msgid "Move up"
 msgstr "Sogeza juu"
 
 #: 
-msgid "Opportunity"
-msgstr "Fursa"
-
-#: 
 msgid "Order"
 msgstr "Mpangilio"
 
@@ -7434,14 +7430,6 @@ msgstr "Asilimia"
 #: 
 msgid "Person Properties"
 msgstr "Sifa za Watu"
-
-#: 
-msgid "Property Type"
-msgstr "Aina ya Sifa"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Fursa ya Mjitoleaji"
 
 #. Context: locales
 #: 

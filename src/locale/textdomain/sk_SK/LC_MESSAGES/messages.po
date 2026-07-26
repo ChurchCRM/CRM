@@ -7393,10 +7393,6 @@ msgid "Move up"
 msgstr "Presunúť nahor"
 
 #: 
-msgid "Opportunity"
-msgstr "Príležitosť"
-
-#: 
 msgid "Order"
 msgstr "Poradie"
 
@@ -7411,14 +7407,6 @@ msgstr "Percentuálny podiel"
 #: 
 msgid "Person Properties"
 msgstr "Vlastnosti osoby"
-
-#: 
-msgid "Property Type"
-msgstr "Typ vlastnosti"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Dobrovoľnícka príležitosť"
 
 #. Context: locales
 #: 
