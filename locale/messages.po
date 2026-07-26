@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-26 21:46+0000\n"
+"POT-Creation-Date: 2026-07-26 22:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1026,6 +1026,12 @@ msgstr ""
 msgid "Anonymous"
 msgstr ""
 
+msgid "Anonymous Telemetry"
+msgstr ""
+
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr ""
+
 #. Context: countries
 msgid "Antarctica"
 msgstr ""
@@ -1921,6 +1927,12 @@ msgstr ""
 msgid "Catalog"
 msgstr ""
 
+msgid "Catch JS errors"
+msgstr ""
+
+msgid "Catch recurring errors"
+msgstr ""
+
 msgid "Category Name"
 msgstr ""
 
@@ -2242,6 +2254,9 @@ msgstr ""
 msgid "Church name is required. Please fill in the Church Identity section above."
 msgstr ""
 
+msgid "Church name, address, or contact details"
+msgstr ""
+
 msgid "ChurchCRM Test Email"
 msgstr ""
 
@@ -2255,6 +2270,9 @@ msgid "ChurchCRM supports a plugin architecture for extending functionality."
 msgstr ""
 
 msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr ""
+
+msgid "ChurchCRM version"
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -2401,6 +2419,9 @@ msgid "Code is invalid"
 msgstr ""
 
 msgid "Collation"
+msgstr ""
+
+msgid "Collection level"
 msgstr ""
 
 #. Context: countries
@@ -2747,6 +2768,9 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
+msgid "Count unique installs"
+msgstr ""
+
 msgid "Country"
 msgstr ""
 
@@ -3045,6 +3069,9 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
+msgid "Data"
+msgstr ""
+
 msgid "Data & Reports"
 msgstr ""
 
@@ -3052,6 +3079,9 @@ msgid "Data Quality"
 msgstr ""
 
 msgid "Data file format"
+msgstr ""
+
+msgid "Data is processed by PostHog on EU infrastructure."
 msgstr ""
 
 msgid "Data/Reports"
@@ -3925,6 +3955,9 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
+msgid "Enable (full)"
+msgstr ""
+
 msgid "Enable Email"
 msgstr ""
 
@@ -4191,6 +4224,12 @@ msgid "Error sending email(s)"
 msgstr ""
 
 msgid "Error: Invalid Editor ID!"
+msgstr ""
+
+msgid "Errors only"
+msgstr ""
+
+msgid "Errors — server errors and JS exceptions"
 msgstr ""
 
 msgid "Est. Value"
@@ -5059,6 +5098,9 @@ msgstr ""
 msgid "Financial Settings"
 msgstr ""
 
+msgid "Financial data"
+msgstr ""
+
 msgid "Financials"
 msgstr ""
 
@@ -5273,6 +5315,12 @@ msgid "Full access — grants all privileges."
 msgstr ""
 
 msgid "Full changelog"
+msgstr ""
+
+msgid "Full — all of the above plus page views"
+msgstr ""
+
+msgid "Full — page views, warnings, errors, and JS exceptions"
 msgstr ""
 
 msgid "Fully translated."
@@ -5758,6 +5806,9 @@ msgstr ""
 msgid "Help Improve Translations"
 msgstr ""
 
+msgid "Help improve ChurchCRM"
+msgstr ""
+
 msgid "Help on types.."
 msgstr ""
 
@@ -5880,6 +5931,9 @@ msgid "ID"
 msgstr ""
 
 msgid "IP Address"
+msgstr ""
+
+msgid "IP addresses"
 msgstr ""
 
 #. Context: countries
@@ -6154,6 +6208,9 @@ msgstr ""
 msgid "Installation ID"
 msgstr ""
 
+msgid "Installation UUID"
+msgstr ""
+
 msgid "Installed"
 msgstr ""
 
@@ -6362,6 +6419,9 @@ msgid "Items Donated (This Year)"
 msgstr ""
 
 msgid "Items Sold"
+msgstr ""
+
+msgid "JS exceptions"
 msgstr ""
 
 #. Context: countries
@@ -6807,6 +6867,9 @@ msgstr ""
 msgid "Log Settings"
 msgstr ""
 
+msgid "Log level + message"
+msgstr ""
+
 msgid "Login"
 msgstr ""
 
@@ -7171,6 +7234,9 @@ msgid "Member Role Change"
 msgstr ""
 
 msgid "Member Roles"
+msgstr ""
+
+msgid "Member or family records"
 msgstr ""
 
 msgid "Member's Name"
@@ -7574,6 +7640,9 @@ msgstr ""
 msgid "Never"
 msgstr ""
 
+msgid "Never sent"
+msgstr ""
+
 msgid "New"
 msgstr ""
 
@@ -7917,6 +7986,9 @@ msgstr ""
 msgid "No settings provided"
 msgstr ""
 
+msgid "No thanks"
+msgstr ""
+
 msgid "No timeline events yet."
 msgstr ""
 
@@ -7959,6 +8031,9 @@ msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "None"
+msgstr ""
+
+msgid "None (disabled)"
 msgstr ""
 
 msgid "None (one-time event)"
@@ -8101,6 +8176,9 @@ msgid "OK"
 msgstr ""
 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr ""
+
+msgid "OS family"
 msgstr ""
 
 msgid "Oct"
@@ -8333,6 +8411,9 @@ msgstr ""
 msgid "PHP format for date picker inputs. Default: Y-m-d"
 msgstr ""
 
+msgid "PHP version"
+msgstr ""
+
 msgid "PHPMailer SMTP session"
 msgstr ""
 
@@ -8346,6 +8427,9 @@ msgid "Page Not Found"
 msgstr ""
 
 msgid "Page not fond"
+msgstr ""
+
+msgid "Page route"
 msgstr ""
 
 msgid "Paid"
@@ -8746,6 +8830,9 @@ msgstr ""
 msgid "Pitcairn Islands"
 msgstr ""
 
+msgid "Plan runtime support"
+msgstr ""
+
 msgid "Planning"
 msgstr ""
 
@@ -9129,6 +9216,9 @@ msgstr ""
 msgid "Printable directory of all people, grouped by family"
 msgstr ""
 
+msgid "Prioritise translations"
+msgstr ""
+
 #. plugin:mailchimp:section:4:title
 msgid "Privacy & Compliance"
 msgstr ""
@@ -9210,6 +9300,9 @@ msgid "Purchased Items"
 msgstr ""
 
 msgid "Purple"
+msgstr ""
+
+msgid "Purpose"
 msgstr ""
 
 #. Context: countries
@@ -10174,6 +10267,9 @@ msgstr ""
 msgid "Send text message"
 msgstr ""
 
+msgid "Sending to"
+msgstr ""
+
 #. Context: countries
 msgid "Senegal (Sénégal)"
 msgstr ""
@@ -10315,6 +10411,9 @@ msgid "Seychelles"
 msgstr ""
 
 msgid "Share"
+msgstr ""
+
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
 msgstr ""
 
 msgid "Share this URL with family members to verify their information"
@@ -11533,6 +11632,9 @@ msgstr ""
 msgid "Totals"
 msgstr ""
 
+msgid "Track adoption"
+msgstr ""
+
 msgid "Track and manage pledge commitments by family and fund"
 msgstr ""
 
@@ -11679,6 +11781,9 @@ msgstr ""
 msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
 msgstr ""
 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr ""
+
 #. Context: countries
 msgid "Uganda"
 msgstr ""
@@ -11722,6 +11827,12 @@ msgid "Unassigned"
 msgstr ""
 
 msgid "Unclassified"
+msgstr ""
+
+msgid "Understand deployments"
+msgstr ""
+
+msgid "Understand feature usage"
 msgstr ""
 
 msgid "Unexpected Person Id"
@@ -12008,6 +12119,9 @@ msgid "User must have Menu Options permission"
 msgstr ""
 
 msgid "User must have Notes permission"
+msgstr ""
+
+msgid "User names, emails, or roles"
 msgstr ""
 
 msgid "User not found"
@@ -12372,6 +12486,9 @@ msgstr ""
 msgid "Warnings"
 msgstr ""
 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr ""
+
 msgid "We could not find the family you were looking for."
 msgstr ""
 
@@ -12482,7 +12599,13 @@ msgstr ""
 msgid "What happens next?"
 msgstr ""
 
+msgid "What is sent"
+msgstr ""
+
 msgid "What this plugin does"
+msgstr ""
+
+msgid "What we collect"
 msgstr ""
 
 msgid "What went wrong? What did you expect to happen?"
@@ -12966,6 +13089,9 @@ msgstr ""
 msgid "endDate must be after startDate"
 msgstr ""
 
+msgid "errors+"
+msgstr ""
+
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr ""
 
@@ -13003,6 +13129,9 @@ msgid "from this group?"
 msgstr ""
 
 msgid "full group view"
+msgstr ""
+
+msgid "full only"
 msgstr ""
 
 msgid "funds"
@@ -13123,6 +13252,9 @@ msgid "our church"
 msgstr ""
 
 msgid "page"
+msgstr ""
+
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr ""
 
 msgid "past"
