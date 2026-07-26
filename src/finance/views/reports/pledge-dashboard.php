@@ -280,9 +280,12 @@ document.addEventListener('DOMContentLoaded', function () {
         dec: <?= json_encode(SystemConfig::getValue('sDecimalSeparator')) ?>
     };
     function _fmtCur(n) {
-        var parts = Math.abs(n).toFixed(2).split('.');
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, _crmCur.th || ',');
-        var s = parts.join(_crmCur.dec || '.');
+        if (n < 0) { return '-' + _fmtCur(-n); }
+        var parts = n.toFixed(2).split('.');
+        if (_crmCur.th !== '') {
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, _crmCur.th);
+        }
+        var s = parts.join(_crmCur.dec != null ? _crmCur.dec : '.');
         return _crmCur.pos === 'after'
             ? s + '\u00A0' + _crmCur.sym
             : _crmCur.sym + '\u00A0' + s;
