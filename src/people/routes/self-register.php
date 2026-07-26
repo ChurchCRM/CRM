@@ -15,20 +15,23 @@ $app->get('/self-register', function (Request $request, Response $response): Res
     $familyCount = FamilyQuery::create()
         ->filterByEnteredBy(Person::SELF_REGISTER)
         ->count();
-    $personCount = PersonQuery::create()
+    // Standalone individuals only (no family) — family members are already
+    // counted as part of familyCount above.
+    $individualCount = PersonQuery::create()
         ->filterByEnteredBy(Person::SELF_REGISTER)
+        ->filterByFamId(0)
         ->count();
 
     $pageArgs = [
-        'sRootPath'     => SystemURLs::getRootPath(),
-        'sPageTitle'    => gettext('Self Registrations'),
-        'sPageSubtitle' => gettext('Families and people created via self registration'),
-        'aBreadcrumbs'  => PageHeader::breadcrumbs([
+        'sRootPath'       => SystemURLs::getRootPath(),
+        'sPageTitle'      => gettext('Self Registrations'),
+        'sPageSubtitle'   => gettext('Review new families and individuals who signed up on your public registration form'),
+        'aBreadcrumbs'    => PageHeader::breadcrumbs([
             [gettext('People'), '/people/dashboard'],
             [gettext('Self Registrations')],
         ]),
-        'familyCount'   => $familyCount,
-        'personCount'   => $personCount,
+        'familyCount'     => $familyCount,
+        'individualCount' => $individualCount,
     ];
 
     return $renderer->render($response, 'self-register.php', $pageArgs);
