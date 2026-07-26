@@ -308,7 +308,7 @@ function initializeFamilyView() {
   });
 
   $("#verifyDownloadPDF").on("click", function () {
-    window.open(`${window.CRM.root}/Reports/ConfirmReport.php?familyId=${window.CRM.currentFamily}`, "_blank");
+    window.open(`${window.CRM.root}/people/report/verify?familyId=${window.CRM.currentFamily}`, "_blank");
     $("#confirm-verify").modal("hide");
   });
 

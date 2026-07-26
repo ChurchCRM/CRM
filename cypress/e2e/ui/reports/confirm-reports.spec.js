@@ -11,13 +11,9 @@
  * makePrivateAdminAPICall() resets PHP sessions, so family IDs are hardcoded
  * to demo data (family 1) rather than fetched via API calls before PDF tests.
  *
- * MVC routes (primary):
+ * MVC routes:
  *   GET /people/report/verify[?familyId=<int>]        → download PDF
  *   POST /people/report/verify/email (CSRF-protected)  → email PDFs + redirect
- *
- * Legacy routes (backwards compatibility — redirect to MVC):
- *   GET /Reports/ConfirmReport.php[?familyId=<int>]      → 302 → MVC
- *   GET /Reports/ConfirmReportEmail.php[?familyId=<int>] → 302 → MVC
  */
 describe("Confirmation Reports - MVC Routes", () => {
     /**
@@ -181,40 +177,11 @@ describe("Confirmation Reports - MVC Routes", () => {
         });
     });
 
-    describe("Backwards Compatibility - legacy URLs redirect to MVC", () => {
-        it("legacy /Reports/ConfirmReport.php redirects", () => {
-            cy.intercept("GET", "**/Reports/ConfirmReport.php").as("legacyRedirect");
-
-            cy.window().then((win) => {
-                win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php`;
-            });
-
-            cy.wait("@legacyRedirect", { timeout: 15000 }).then((interception) => {
-                // The redirect stub issues a 302 to the MVC route
-                expect([200, 302]).to.include(interception.response.statusCode);
-            });
-        });
-
-        it("legacy /Reports/ConfirmReport.php?familyId=1 redirects with familyId", () => {
-            const familyId = 1;
-            cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}`).as("legacyRedirectSingle");
-
-            cy.window().then((win) => {
-                win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php?familyId=${familyId}`;
-            });
-
-            cy.wait("@legacyRedirectSingle", { timeout: 15000 }).then((interception) => {
-                expect([200, 302]).to.include(interception.response.statusCode);
-            });
-        });
-    });
-
     describe("People Verify dashboard - verify buttons link to MVC routes", () => {
         it("Letters button links to MVC route", () => {
             cy.visit("people/verify");
             cy.get('a[href*="/people/report/verify"]')
-                .should("exist")
-                .and("not.have.attr", "href", "/Reports/ConfirmReport.php");
+                .should("exist");
         });
     });
 

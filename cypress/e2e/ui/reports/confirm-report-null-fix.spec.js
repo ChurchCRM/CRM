@@ -14,11 +14,8 @@
  * cy.request() alone does NOT carry session cookies for auth-protected legacy
  * PHP pages; the browser context must be established first via cy.visit().
  *
- * MVC route (primary):
+ * MVC route:
  *   GET /people/report/verify[?familyId=<int>]  → download PDF
- *
- * Note: the legacy /Reports/ConfirmReport.php now redirects (302) to the MVC
- * route, so these tests exercise the MVC route directly.
  */
 describe("Confirm Report PDF Generation - Null Value Fix", () => {
     beforeEach(() => {

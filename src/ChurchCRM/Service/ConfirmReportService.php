@@ -134,11 +134,7 @@ class ConfirmEmailPdf extends ChurchInfoReport
 /**
  * Service for generating and emailing family-data confirmation reports.
  *
- * Consolidates the logic previously spread across:
- *  - src/Reports/ConfirmReport.php      (download PDF)
- *  - src/Reports/ConfirmReportEmail.php (email PDF per family)
- *
- * Both legacy entry-points now redirect to the MVC routes
+ * Exposes the logic via MVC routes:
  *  GET  /people/report/verify        → generateDownloadPDF()
  *  POST /people/report/verify/email  → sendFamilyEmails()
  */

@@ -60,7 +60,6 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
  *
  * Route: GET /people/report/verify[?familyId=<int>]
  *
- * Replaces the legacy src/Reports/ConfirmReport.php entry point.
  * Requires the "Create Directory" permission.
  */
 function generateVerifyReport(Request $request, Response $response, array $args): Response
@@ -96,7 +95,6 @@ function generateVerifyReport(Request $request, Response $response, array $args)
  *
  * Route: POST /people/report/verify/email (CSRF-protected state-changing action)
  *
- * Replaces the legacy src/Reports/ConfirmReportEmail.php entry point.
  * Requires the "Create Directory" permission.
  */
 function sendVerifyReportEmail(Request $request, Response $response, array $args): Response
