@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
@@ -92,22 +91,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap" style="gap: .5rem;">
-                <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()): ?>
-                <a href="<?= $sRootPath ?>/PersonEditor.php" class="btn btn-primary">
-                    <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Person') ?>
-                </a>
-                <a href="<?= $sRootPath ?>/FamilyEditor.php" class="btn btn-secondary">
-                    <i class="fa-solid fa-house-user me-1"></i><?= gettext('Add Family') ?>
-                </a>
-                <?php endif; ?>
-                <a href="<?= $sRootPath ?>/people/list" class="btn btn-outline-secondary">
-                    <i class="fa-solid fa-list me-1"></i><?= gettext('People List') ?>
-                </a>
-                <a href="<?= $sRootPath ?>/people/family" class="btn btn-outline-secondary">
-                    <i class="fa-solid fa-home me-1"></i><?= gettext('Family List') ?>
-                </a>
                 <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
+                </a>
+                <a href="<?= $sRootPath ?>/members/self-register.php" class="btn btn-outline-info">
+                    <i class="fa-solid fa-user-clock me-1"></i><?= gettext('New Self-Registrations') ?>
                 </a>
                 <?php if ($canEmail): ?>
                     <button type="button" class="btn btn-outline-primary"
@@ -226,15 +214,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h3 class="card-title"><i class="fa-solid fa-file-lines me-2"></i><?= gettext('Reports') ?></h3>
                 </div>
                 <div class="list-group list-group-flush">
-                    <a href="<?= $sRootPath ?>/members/self-register.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-user-clock fa-fw text-body-secondary me-3"></i>
-                        <div>
-                            <div class="fw-medium"><?= gettext('Self Registration Report') ?></div>
-                            <div class="text-body-secondary small"><?= gettext('List families created via self registration') ?></div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
-                    </a>
-
                     <a href="<?= $sRootPath ?>/DirectoryReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-address-book fa-fw text-body-secondary me-3"></i>
                         <div>
