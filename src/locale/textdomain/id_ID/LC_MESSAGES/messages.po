@@ -263,10 +263,6 @@ msgstr "Penggolongan"
 msgid "Add Cart to Event"
 msgstr "Tambahkan cart di Acara"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "Cart kosong !"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1447,10 +1443,6 @@ msgid "Current Role"
 msgstr "Peran saat ini"
 
 #: 
-msgid "All People"
-msgstr "Semua orang"
-
-#: 
 msgid "Email All"
 msgstr "Email Semua"
 
@@ -1521,10 +1513,6 @@ msgstr "Keluarga yang Diperbarui"
 #: 
 msgid "Updated"
 msgstr "Diperbarui"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "Ya, hapus catatan ini"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2177,10 +2165,6 @@ msgid "Start Column"
 msgstr "Mulai Kolom"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "Abaikan Alamat Situs Tidak Lengkap"
-
-#: 
 msgid "File Type"
 msgstr "Jenis File"
 
@@ -2245,14 +2229,6 @@ msgid "All Funds"
 msgstr "Semua Dana"
 
 #: 
-msgid " for fund "
-msgstr "untuk dana "
-
-#: 
-msgid "for funds "
-msgstr "untuk dana "
-
-#: 
 #, fuzzy
 msgid "Donated Items"
 msgstr "Item yang disumbangkan"
@@ -2277,10 +2253,6 @@ msgstr "Jumlah yang dibayarkan: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Dibayar dengan () Tunai () Cek () Kartu kredit __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ Exp __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "Tanda tangan ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2313,10 +2285,6 @@ msgstr "Direktori Grup"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Harap lepaskan slip ini dan kirimkan hadiah Anda berikutnya."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "Silakan kirimkan hadiah selanjutnya kepada Anda "
 
 #: 
 #, fuzzy
@@ -2465,10 +2433,6 @@ msgid "Family Select"
 msgstr "Keluarga Pilih"
 
 #: 
-msgid "with at least one:"
-msgstr "dengan setidaknya satu:"
-
-#: 
 msgid "Welcome to"
 msgstr "Selamat Datang di"
 
@@ -2573,18 +2537,6 @@ msgid "item"
 msgstr "barang"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-------------------------------------------------- -------------------------------------------------- -------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "Pembeli # "
-
-#: 
-msgid "Family Members:"
-msgstr "Anggota keluarga:"
-
-#: 
 msgid "Anniversary"
 msgstr "Ulang tahun"
 
@@ -2595,10 +2547,6 @@ msgstr "Catatan"
 #: 
 msgid "Reports"
 msgstr "Laporan"
-
-#: 
-msgid "family"
-msgstr "keluarga"
 
 #: 
 #, fuzzy
@@ -2679,10 +2627,6 @@ msgstr "Kota Default"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Status Default - Harus singkatan 2 huruf!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "Akun default untuk menerima salinan semua email"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4751,10 +4695,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "Pengaturan Grup Khusus: Jenis Sekolah Minggu"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "Grup Sekolah Minggu tidak dapat dimodifikasi, hanya dalam dua kasus ini:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Tambahkan peran baru, tetapi tidak mengubah atau mengganti nama peran Siswa dan Guru."
 
@@ -5341,10 +5281,6 @@ msgid "Review"
 msgstr "Ulasan"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "Pengguna diautentikasi melalui API Key: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "Upaya otentikasi API Key tidak berhasil"
 
@@ -5658,20 +5594,12 @@ msgid "Log File Viewer"
 msgstr "Pembaca Log File"
 
 #: 
-msgid "Filter by log level:"
-msgstr "Saring berdasarkan log level"
-
-#: 
 msgid "Error"
 msgstr "Kesalahan"
 
 #: 
 msgid "Info"
 msgstr "Info"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "Jumlah baris ditampilkan"
 
 #: 
 msgid "Loading log file..."
@@ -6033,10 +5961,6 @@ msgstr "Path Root"
 #: 
 msgid "SMTP Host"
 msgstr "Host SMTP"
-
-#: 
-msgid "Tip:"
-msgstr "Tip:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6466,10 +6390,6 @@ msgid "Please check the backup file and try again."
 msgstr "Harap periksa file cadangan dan coba lagi."
 
 #: 
-msgid "Redirecting in"
-msgstr "Mengalihkan dalam"
-
-#: 
 msgid "Refresh List"
 msgstr "Segarkan Daftar"
 
@@ -6508,10 +6428,6 @@ msgstr "Rekomendasi Keamanan"
 #: 
 msgid "Select Backup File"
 msgstr "Pilih File Cadangan"
-
-#: 
-msgid "Supported formats:"
-msgstr "Format yang didukung:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6564,14 +6480,6 @@ msgstr "Instalasi ChurchCRM Anda bersih. Semua file sesuai dengan rilis resmi."
 #: 
 msgid "or click to browse"
 msgstr "atau klik untuk mencari"
-
-#: 
-msgid "seconds..."
-msgstr "detik..."
-
-#: 
-msgid " Deposit #"
-msgstr " Setoran #"
 
 #: 
 msgid "%d missing classification"
@@ -6658,20 +6566,12 @@ msgid "Close All Deposits"
 msgstr "Tutup Semua Setoran"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "Setoran Ditutup:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "Ditutup vs Total"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "Selesaikan tugas ini untuk memastikan pelaporan donasi akhir tahun yang akurat."
-
-#: 
-msgid "Configuration:"
-msgstr "Konfigurasi:"
 
 #: 
 msgid "Configure Email"
@@ -6712,14 +6612,6 @@ msgstr "Laporan yang dapat disesuaikan dengan filter tanggal, dana, keluarga, da
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "Sesuaikan teks pada laporan pajak/donasi."
-
-#: 
-msgid "Data Quality:"
-msgstr "Kualitas Data:"
-
-#: 
-msgid "Database:"
-msgstr "Database:"
 
 #: 
 msgid "Day"
@@ -6792,10 +6684,6 @@ msgstr "Navigasi Keluarga"
 #: 
 msgid "Feb"
 msgstr "Feb"
-
-#: 
-msgid "File Integrity:"
-msgstr "Integritas File:"
 
 #: 
 msgid "Filtering"
@@ -6946,14 +6834,6 @@ msgid "Open"
 msgstr "Buka"
 
 #: 
-msgid "Open Deposits:"
-msgstr "Setoran Terbuka:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "File Yatim:"
-
-#: 
 msgid "Payment"
 msgstr "Pembayaran"
 
@@ -7042,10 +6922,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Ringkasan janji iman vs pembayaran per dana untuk tahun fiskal."
 
 #: 
-msgid "System Configuration:"
-msgstr "Konfigurasi Sistem:"
-
-#: 
 msgid "System Health"
 msgstr "Kesehatan Sistem"
 
@@ -7078,10 +6954,6 @@ msgid "Total Amount"
 msgstr "Jumlah Total"
 
 #: 
-msgid "Total Deposits:"
-msgstr "Total Setoran:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Pantau progres janji iman dan pembayaran untuk kampanye atau anggaran."
 
@@ -7108,10 +6980,6 @@ msgstr "Pastikan nama gereja dan alamat muncul di laporan donasi."
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "Pastikan nama dana dan deskripsi sudah akurat."
-
-#: 
-msgid "Version:"
-msgstr "Versi:"
 
 #: 
 msgid "YTD Payments"
@@ -7170,28 +7038,8 @@ msgid "Critical Configuration Error"
 msgstr "Kesalahan Konfigurasi Kritis"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "Nilai $URL[0] saat ini:"
-
-#: 
-msgid "Custom port:"
-msgstr "Port khusus:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "Berakhir dengan <strong>garis miring</strong> (/)"
-
-#: 
-msgid "Find the line:"
-msgstr "Temukan baris:"
-
-#: 
 msgid "Group Memberships"
 msgstr "Keanggotaan Grup"
-
-#: 
-msgid "How to Fix:"
-msgstr "Cara Memperbaiki:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7200,10 +7048,6 @@ msgstr "Bergabunglah dengan komunitas ChurchCRM untuk membantu kami berkembang!"
 #: 
 msgid "Language"
 msgstr "Bahasa"
-
-#: 
-msgid "Local development:"
-msgstr "Pengembangan lokal:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7224,10 +7068,6 @@ msgstr "Daftarkan Gereja Anda"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "Simpan file dan segarkan halaman ini"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "Dimulai dengan <strong>http://</strong> atau <strong>https://</strong>"
 
 #: 
 msgid "System Locale Support"
@@ -7252,14 +7092,6 @@ msgstr "URL harus diakhiri garis miring (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL harus diawali http:// atau https://"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "Perbarui ke URL valid yang:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "Contoh Valid:"
 
 #: 
 msgid "View Logs"
@@ -7320,10 +7152,6 @@ msgstr "Warta Jemaat"
 #: 
 msgid "Personal"
 msgstr "Pribadi"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "Mohon konfirmasi informasi keluarga Anda:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7604,20 +7432,8 @@ msgid "Property Type"
 msgstr "Tipe Properti"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "Ada jemaat di bidang pelayanan ini. Penghapusan akan melepas tugas mereka:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "Bidang Pelayanan"
-
-#: 
-msgid "Warning:"
-msgstr "Peringatan:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "Ya, hapus Pelayanan ini"
 
 #. Context: locales
 #: 
@@ -8288,10 +8104,6 @@ msgstr "Dapatkan kunci API Anda dari MailChimp: Pengaturan Akun > Extras > Kunci
 #: 
 msgid "Help"
 msgstr "Bantuan"
-
-#: 
-msgid "Id"
-msgstr "Id"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9572,10 +9384,6 @@ msgid "Edit custom properties for a group member"
 msgstr "Edit properti kustom untuk anggota grup"
 
 #: 
-msgid "Email BCC"
-msgstr "Email BCC"
-
-#: 
 msgid "Email Families"
 msgstr "Email Keluarga"
 
@@ -9586,14 +9394,6 @@ msgstr "Pengaturan Email"
 #: 
 msgid "Email Tools"
 msgstr "Alat Email"
-
-#: 
-msgid "Email cart items"
-msgstr "Email item daftar"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "Email dengan penerima tersembunyi"
 
 #: 
 msgid "Empty"
@@ -9808,10 +9608,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "Impor kontak dari audiens MailChimp Anda"
 
 #: 
-msgid "Import failed: "
-msgstr "Impor gagal: "
-
-#: 
 msgid "Import from CSV"
 msgstr "Impor dari CSV"
 
@@ -9854,10 +9650,6 @@ msgstr "\"Nomor Pengirim\" tidak valid: \"%s\". Sertakan kode negara, misalnya +
 #: 
 msgid "Invite Your Team"
 msgstr "Undang Tim Anda"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "Langsung ke langkah pengaturan mana pun:"
 
 #: 
 msgid "Key People"
@@ -10212,10 +10004,6 @@ msgstr "Penetapan properti tidak ditemukan."
 #: 
 msgid "Property deleted successfully."
 msgstr "Properti berhasil dihapus."
-
-#: 
-msgid "Property not found."
-msgstr "Properti tidak ditemukan."
 
 #: 
 msgid "Quick Tips"
@@ -10686,14 +10474,6 @@ msgid "properties"
 msgstr "properti"
 
 #: 
-msgid "— Select a group —"
-msgstr "— Pilih grup —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— Pilih tipe (opsional) —"
-
-#: 
 msgid "Add Event"
 msgstr "Tambah Acara"
 
@@ -11007,10 +10787,6 @@ msgstr "Dashboard Email"
 #: 
 msgid "Email Integrations"
 msgstr "Integrasi Email"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "Fungsi email saat ini dinonaktifkan. Fitur berikut tidak akan berfungsi sampai email diaktifkan:"
 
 #: 
 msgid "Email is Disabled"
@@ -11585,10 +11361,6 @@ msgstr "TLS Otomatis"
 #: 
 msgid "Auto-Backup"
 msgstr "Pencadangan Otomatis"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "BCC Semua Email Ke"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12407,10 +12179,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "Pilih antara skema warna terang dan gelap"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "Terjemahan ChurchCRM dikelola oleh komunitas di POEditor. Anda dapat membantu dengan:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Sesuaikan tampilan dan nuansa aplikasi"
 
@@ -12454,10 +12222,6 @@ msgstr "Bantu Tingkatkan Terjemahan"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "Jika Anda menemukan karakter rusak, entitas HTML yang muncul sebagai teks, atau terjemahan yang merusak tata letak halaman, laporkan masalah ini di GitHub agar dapat diperbaiki untuk semua orang."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "Sertakan kunci API Anda dalam permintaan menggunakan header x-api-key:"
 
 #: 
 msgid "Indigo"
@@ -12890,10 +12654,6 @@ msgid "Everyone is checked in!"
 msgstr "Semua orang sudah absen masuk!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "Alur kerja tercepat:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "Temukan acara masa lalu yang masih aktif atau memiliki peserta yang belum absen keluar"
 
@@ -13008,10 +12768,6 @@ msgstr "RangeEnd harus pada atau setelah RangeStart"
 #: 
 msgid "Recommended"
 msgstr "Disarankan"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "Pengaturan ulang akan menghapus secara permanen:"
 
 #: 
 msgid "SQL Only"
@@ -13510,10 +13266,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "Alamat email gereja belum diatur — tidak ada tujuan untuk email uji coba."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "Email gereja — dikonfigurasi di"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "Email Uji Coba ChurchCRM"
 
@@ -13620,10 +13372,6 @@ msgstr "Memori"
 #: 
 msgid "Memory Limit"
 msgstr "Batas Memori"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "Periksa kotak masuk penerima untuk mengonfirmasi pengiriman. Cari subjek:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13744,14 +13492,6 @@ msgstr "Perbarui Pengaturan"
 #: 
 msgid "View full photo"
 msgstr "Lihat foto penuh"
-
-#: 
-msgid "page."
-msgstr "halaman."
-
-#: 
-msgid "user:"
-msgstr "pengguna:"
 
 #: 
 msgid "1. Download the template"
@@ -13950,10 +13690,6 @@ msgstr "Mengatur negara"
 msgid "Show all"
 msgstr "Tampilkan semua"
 
-#: 
-msgid "Show:"
-msgstr "Tampilkan:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14134,10 +13870,6 @@ msgid "Plugin uninstalled"
 msgstr "Plugin dihapus"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "Plugin telah dihapus."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "URL zip plugin (hanya HTTPS)"
 
@@ -14198,10 +13930,6 @@ msgid "Verified"
 msgstr "Terverifikasi"
 
 #: 
-msgid "What this plugin does:"
-msgstr "Apa yang dilakukan plugin ini:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl, sha256, dan pluginId semuanya diperlukan untuk instalasi yang belum diverifikasi."
 
@@ -14216,10 +13944,6 @@ msgstr "Nama tidak boleh kosong"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "Nama tidak boleh lebih dari %d karakter"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "Membuka jendela 2 menit untuk perangkat mendaftar di:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14514,10 +14238,6 @@ msgid "Available after the event is saved."
 msgstr "Tersedia setelah acara disimpan."
 
 #: 
-msgid "BCC All"
-msgstr "BCC Semua"
-
-#: 
 msgid "Background Color"
 msgstr "Warna latar belakang"
 
@@ -14650,10 +14370,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "Konfirmasi dengan kode dari aplikasi autentikator Anda"
 
 #: 
-msgid "Copied"
-msgstr "Disalin"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "Disalin ke papan klip"
 
@@ -14664,10 +14380,6 @@ msgstr "Tersalin!"
 #: 
 msgid "Copy"
 msgstr "Salin"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Salin Semua Email"
 
 #: 
 msgid "Copy All Numbers"
@@ -15909,10 +15621,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "acara. Nonaktifkan jenis tersebut atau tetapkan ulang acara terlebih dahulu."
 
 #: 
-msgid "from this class?"
-msgstr "dari kelas ini?"
-
-#: 
 msgid "from this group?"
 msgstr "dari grup ini?"
 
@@ -15991,18 +15699,6 @@ msgstr "th."
 #: 
 msgid "yrs"
 msgstr "th."
-
-#: 
-msgid "— Ignore —"
-msgstr "— Abaikan —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— Pilih Negara —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Pilih Provinsi —"
 
 #: 
 msgid "Account options"
@@ -16312,10 +16008,6 @@ msgid "Full access — grants all privileges."
 msgstr "Akses penuh — memberikan semua hak istimewa."
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "Berikan izin individu:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "Jika Anda memerlukan akses tambahan, silakan hubungi administrator gereja Anda."
 
@@ -16540,10 +16232,6 @@ msgid "What's New in {{version}}"
 msgstr "Yang Baru di {{version}}"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "Anda tertinggal <strong>{{releaseCount}}</strong> rilis. Berikut yang akan Anda dapatkan:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "Anda menjalankan versi pra-rilis."
 
@@ -16632,14 +16320,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "Pengguna harus menjadi Admin atau memiliki izin Kelola Penggalangan Dana"
 
 #: 
-msgid "User not found."
-msgstr "Pengguna tidak ditemukan."
-
-#: 
-msgid "— Select a person —"
-msgstr "— Pilih seseorang —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "%d penggalangan dana diarsipkan"
@@ -16712,10 +16392,6 @@ msgstr "Tugaskan anggota pilihan ke kelompok"
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "Tugaskan orang dari daftar pilihan ke keluarga"
-
-#: 
-msgid "Assign role to all:"
-msgstr "Tugaskan peran ke semua:"
 
 #: 
 msgid "Assign to Family"
@@ -17026,10 +16702,6 @@ msgid "Sold"
 msgstr "Terjual"
 
 #: 
-msgid "State / Province"
-msgstr "Negara Bagian / Provinsi"
-
-#: 
 msgid "Streak"
 msgstr "Kehadiran Berturut-turut"
 
@@ -17102,10 +16774,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "Daftar pilihan Anda kosong. Tambahkan orang ke daftar pilihan Anda terlebih dahulu."
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Kode Pos"
-
-#: 
 msgid "events"
 msgstr "acara"
 
@@ -17120,12 +16788,4 @@ msgstr "goalAmount harus non-negatif"
 #: 
 msgid "thru %s"
 msgstr "s.d. %s"
-
-#: 
-msgid "— Select role —"
-msgstr "— Pilih peran —"
-
-#: 
-msgid "— pick —"
-msgstr "— pilih —"
 

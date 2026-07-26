@@ -263,10 +263,6 @@ msgstr "סיווג"
 msgid "Add Cart to Event"
 msgstr "הוסף סל לאירוע"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "הסל שלך ריק!"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1446,10 +1442,6 @@ msgid "Current Role"
 msgstr "תפקיד נוכחי"
 
 #: 
-msgid "All People"
-msgstr "כל האנשים"
-
-#: 
 msgid "Email All"
 msgstr "שלח אימייל לכולם"
 
@@ -1520,10 +1512,6 @@ msgstr "משפחות מעודכנות"
 #: 
 msgid "Updated"
 msgstr "עודכן"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "כן, מחק רשומה זו"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2176,10 +2164,6 @@ msgid "Start Column"
 msgstr "עמודת התחלה"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "התעלם מכתובות<br>לא שלמות"
-
-#: 
 msgid "File Type"
 msgstr "סוג קובץ"
 
@@ -2244,14 +2228,6 @@ msgid "All Funds"
 msgstr "כל הקרנות"
 
 #: 
-msgid " for fund "
-msgstr " לקרן "
-
-#: 
-msgid "for funds "
-msgstr "לקרנות "
-
-#: 
 #, fuzzy
 msgid "Donated Items"
 msgstr "פריטים שנתרמו"
@@ -2276,10 +2252,6 @@ msgstr "סכום ששולם: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "שולם באמצעות (  ) מזומן    (  ) המחאה    (  ) כרטיס אשראי __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  תוקף __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "                                        חתימה ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2312,10 +2284,6 @@ msgstr "ספריית קבוצה"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "אנא הפרד את הספח הזה ושלח אותו עם התרומה הבאה שלך."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "אנא שלח את התרומה הבאה שלך ל "
 
 #: 
 #, fuzzy
@@ -2464,10 +2432,6 @@ msgid "Family Select"
 msgstr "בחירת משפחה"
 
 #: 
-msgid "with at least one:"
-msgstr "עם לפחות אחד:"
-
-#: 
 msgid "Welcome to"
 msgstr "ברוך הבא ל"
 
@@ -2572,18 +2536,6 @@ msgid "item"
 msgstr "פריט"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "----- ..."
-
-#: 
-msgid "Buyer # "
-msgstr "קונה # "
-
-#: 
-msgid "Family Members:"
-msgstr "בני משפחה"
-
-#: 
 msgid "Anniversary"
 msgstr "יום נישואין"
 
@@ -2594,10 +2546,6 @@ msgstr "הערות"
 #: 
 msgid "Reports"
 msgstr "דוחות"
-
-#: 
-msgid "family"
-msgstr "משפחה"
 
 #: 
 #, fuzzy
@@ -2676,10 +2624,6 @@ msgstr "עיר ברירת מחדל"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "מדינת ברירת מחדל - חייבת להיות קיצור של 2 אותיות!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "חשבון ברירת המחדל לקבלת עותק של כל האימיילים"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4750,10 +4694,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "הגדרות קבוצה מיוחדות: סוג בית ספר ראשון"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "לא ניתן לשנות את קבוצת בית הספר הראשון, רק בשני המקרים הבאים:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "הוסף תפקידים חדשים, אך אל תשנה או תשנה את שם תפקידי התלמיד והמורה."
 
@@ -5348,10 +5288,6 @@ msgid "Review"
 msgstr "סקירה"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "משתמש אומת באמצעות מפתח API: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "ניסיון אימות מפתח API נכשל"
 
@@ -5664,20 +5600,12 @@ msgid "Log File Viewer"
 msgstr "צופה קבצי יומן"
 
 #: 
-msgid "Filter by log level:"
-msgstr "סנן לפי רמת יומן:"
-
-#: 
 msgid "Error"
 msgstr "שגיאה"
 
 #: 
 msgid "Info"
 msgstr "מידע"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "מספר שורות להצגה:"
 
 #: 
 msgid "Loading log file..."
@@ -6039,10 +5967,6 @@ msgstr "נתיב שורש"
 #: 
 msgid "SMTP Host"
 msgstr "מארח SMTP"
-
-#: 
-msgid "Tip:"
-msgstr "טיפ:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6474,10 +6398,6 @@ msgid "Please check the backup file and try again."
 msgstr "נא לבדוק את קובץ הגיבוי ולנסות שוב."
 
 #: 
-msgid "Redirecting in"
-msgstr "מנתב מחדש בעוד"
-
-#: 
 msgid "Refresh List"
 msgstr "רענן רשימה"
 
@@ -6516,10 +6436,6 @@ msgstr "המלצת אבטחה"
 #: 
 msgid "Select Backup File"
 msgstr "בחר קובץ גיבוי"
-
-#: 
-msgid "Supported formats:"
-msgstr "פורמטים נתמכים:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6572,14 +6488,6 @@ msgstr "התקנת ה-ChurchCRM שלך נקייה. כל הקבצים תואמי�
 #: 
 msgid "or click to browse"
 msgstr "או לחץ כדי לעיין"
-
-#: 
-msgid "seconds..."
-msgstr "שניות..."
-
-#: 
-msgid " Deposit #"
-msgstr " הפקדה #"
 
 #: 
 msgid "%d missing classification"
@@ -6666,20 +6574,12 @@ msgid "Close All Deposits"
 msgstr "סגור את כל ההפקדות"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "הפקדות סגורות:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "סגורות מול סה\"כ"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "השלם משימות אלו כדי להבטיח דוחות מס מדויקים לתורמים שלך בסוף השנה."
-
-#: 
-msgid "Configuration:"
-msgstr "הגדרות:"
 
 #: 
 msgid "Configure Email"
@@ -6720,14 +6620,6 @@ msgstr "דוח הניתן להתאמה עם סינון לפי תאריך, קרן
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "התאם אישית את הטקסט המופיע בהצהרות מס."
-
-#: 
-msgid "Data Quality:"
-msgstr "איכות נתונים:"
-
-#: 
-msgid "Database:"
-msgstr "מסד נתונים:"
 
 #: 
 msgid "Day"
@@ -6800,10 +6692,6 @@ msgstr "ניווט משפחה"
 #: 
 msgid "Feb"
 msgstr "פבר'"
-
-#: 
-msgid "File Integrity:"
-msgstr "תקינות קבצים:"
 
 #: 
 msgid "Filtering"
@@ -6954,14 +6842,6 @@ msgid "Open"
 msgstr "פתוח"
 
 #: 
-msgid "Open Deposits:"
-msgstr "הפקדות פתוחות:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "קבצים יתומים:"
-
-#: 
 msgid "Payment"
 msgstr "תשלום"
 
@@ -7050,10 +6930,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "סיכום התחייבויות מול תשלומים לפי קרן לשנת הכספים."
 
 #: 
-msgid "System Configuration:"
-msgstr "תצורת מערכת:"
-
-#: 
 msgid "System Health"
 msgstr "בריאות המערכת"
 
@@ -7086,10 +6962,6 @@ msgid "Total Amount"
 msgstr "סכום כולל"
 
 #: 
-msgid "Total Deposits:"
-msgstr "סה\"כ הפקדות:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "עקוב אחר התחייבויות ותשלומים לקמפיינים ותקציב."
 
@@ -7116,10 +6988,6 @@ msgstr "ודא ששם הקהילה, הכתובת ופרטי הקשר מופיע�
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "ודא ששמות הקרנות והתיאורים מדויקים."
-
-#: 
-msgid "Version:"
-msgstr "גרסה:"
 
 #: 
 msgid "YTD Payments"
@@ -7178,28 +7046,8 @@ msgid "Critical Configuration Error"
 msgstr "שגיאת תצורה קריטית"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "ערך $URL[0] נוכחי:"
-
-#: 
-msgid "Custom port:"
-msgstr "פורט מותאם אישית:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "מסתיים ב-<strong>לוכסן (/)</strong>"
-
-#: 
-msgid "Find the line:"
-msgstr "מצא את השורה:"
-
-#: 
 msgid "Group Memberships"
 msgstr "חברויות בקבוצות"
-
-#: 
-msgid "How to Fix:"
-msgstr "איך לתקן:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7208,10 +7056,6 @@ msgstr "הצטרף לקהילת ChurchCRM ועזור לנו להשתפר."
 #: 
 msgid "Language"
 msgstr "שפה"
-
-#: 
-msgid "Local development:"
-msgstr "פיתוח מקומי:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7232,10 +7076,6 @@ msgstr "רשום את הקהילה שלך"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "שמור את הקובץ ורענן את הדף"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "מתחיל ב-<strong>http://</strong> או <strong>https://</strong>"
 
 #: 
 msgid "System Locale Support"
@@ -7260,14 +7100,6 @@ msgstr "ה-URL חייב להסתיים בלוכסן (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "ה-URL חייב להתחיל ב-http:// או https://"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "עדכן ל-URL תקין ש-:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "דוגמאות תקינות:"
 
 #: 
 msgid "View Logs"
@@ -7328,10 +7160,6 @@ msgstr "ניוזלטר"
 #: 
 msgid "Personal"
 msgstr "אישי"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "נא לאשר את פרטי המשפחה שלך:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7614,20 +7442,8 @@ msgid "Property Type"
 msgstr "סוג מאפיין"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "ישנם אנשים המשויכים להתנדבות זו. המחיקה תסיר שיוך עבור:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "הזדמנות להתנדבות"
-
-#: 
-msgid "Warning:"
-msgstr "אזהרה:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "כן, מחק הזדמנות זו"
 
 #. Context: locales
 #: 
@@ -8300,10 +8116,6 @@ msgstr "קבל את מפתח ה-API שלך מ-MailChimp: הגדרות חשבון
 #: 
 msgid "Help"
 msgstr "עזרה"
-
-#: 
-msgid "Id"
-msgstr "מזהה"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9585,10 +9397,6 @@ msgid "Edit custom properties for a group member"
 msgstr "עריכת מאפיינים מותאמים אישית עבור חבר קבוצה"
 
 #: 
-msgid "Email BCC"
-msgstr "דוא\"ל BCC"
-
-#: 
 msgid "Email Families"
 msgstr "שליחת דוא\"ל למשפחות"
 
@@ -9599,14 +9407,6 @@ msgstr "הגדרות דוא\"ל"
 #: 
 msgid "Email Tools"
 msgstr "כלי דוא\"ל"
-
-#: 
-msgid "Email cart items"
-msgstr "שליחת דוא\"ל לפריטי רשימה"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "דוא\"ל עם נמענים מוסתרים"
 
 #: 
 msgid "Empty"
@@ -9821,10 +9621,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "ייבוא אנשי קשר מקהלי MailChimp שלכם"
 
 #: 
-msgid "Import failed: "
-msgstr "הייבוא נכשל: "
-
-#: 
 msgid "Import from CSV"
 msgstr "ייבוא מ-CSV"
 
@@ -9867,10 +9663,6 @@ msgstr "«מספר שולח» לא חוקי: «%s». כללו את קידומת 
 #: 
 msgid "Invite Your Team"
 msgstr "הזמינו את הצוות שלכם"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "דלגו לכל שלב הגדרה:"
 
 #: 
 msgid "Key People"
@@ -10225,10 +10017,6 @@ msgstr "שיוך המאפיין לא נמצא."
 #: 
 msgid "Property deleted successfully."
 msgstr "המאפיין נמחק בהצלחה."
-
-#: 
-msgid "Property not found."
-msgstr "המאפיין לא נמצא."
 
 #: 
 msgid "Quick Tips"
@@ -10699,14 +10487,6 @@ msgid "properties"
 msgstr "מאפיינים"
 
 #: 
-msgid "— Select a group —"
-msgstr "— בחרו קבוצה —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— בחרו סוג (אופציונלי) —"
-
-#: 
 msgid "Add Event"
 msgstr "הוספת אירוע"
 
@@ -11020,10 +10800,6 @@ msgstr "לוח בקרה של דוא\"ל"
 #: 
 msgid "Email Integrations"
 msgstr "אינטגרציות דוא\"ל"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "פונקציונליות הדוא\"ל מנוטרלת כרגע. התכונות הבאות לא יעבדו עד שהדוא\"ל יופעל:"
 
 #: 
 msgid "Email is Disabled"
@@ -11598,10 +11374,6 @@ msgstr "TLS אוטומטי"
 #: 
 msgid "Auto-Backup"
 msgstr "גיבוי אוטומטי"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "העתק נסתר לכל הדואר ל"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12420,10 +12192,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "בחר בין ערכת צבעים בהירה לכהה"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "תרגומי ChurchCRM מנוהלים על ידי הקהילה ב-POEditor. תוכל לעזור על ידי:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "התאם אישית את מראה היישום ותחושתו"
 
@@ -12467,10 +12235,6 @@ msgstr "עזור לשפר תרגומים"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "אם אתה מבחין בתווים מקולקלים, ישויות HTML המופיעות כטקסט, או תרגומים הפוגעים בפריסת הדף, אנא דווח על הבעיה ב-GitHub כדי שניתן יהיה לתקנה עבור כולם."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "כלול את מפתח ה-API שלך בבקשות באמצעות כותרת x-api-key:"
 
 #: 
 msgid "Indigo"
@@ -12904,10 +12668,6 @@ msgid "Everyone is checked in!"
 msgstr "כולם עשו צ׳ק-אין!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "זרימת העבודה המהירה ביותר:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "מצא אירועים עבר שעדיין פעילים או שיש להם משתתפים שלא עשו צ׳ק-אאוט"
 
@@ -13022,10 +12782,6 @@ msgstr "RangeEnd חייב להיות ב-RangeStart או אחריו"
 #: 
 msgid "Recommended"
 msgstr "מומלץ"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "האיפוס ימחק לצמיתות:"
 
 #: 
 msgid "SQL Only"
@@ -13524,10 +13280,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "כתובת הדואר האלקטרוני של הקהילה אינה מוגדרת — אין לאן לשלוח את דואר הבדיקה."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "דואר הקהילה — מוגדר ב"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "דואר בדיקה ChurchCRM"
 
@@ -13634,10 +13386,6 @@ msgstr "זיכרון"
 #: 
 msgid "Memory Limit"
 msgstr "מגבלת זיכרון"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "כעת בדוק את תיבת הדואר של הנמען לאישור מסירה. חפש את הנושא:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13758,14 +13506,6 @@ msgstr "עדכן הגדרות"
 #: 
 msgid "View full photo"
 msgstr "הצג תמונה מלאה"
-
-#: 
-msgid "page."
-msgstr "עמוד."
-
-#: 
-msgid "user:"
-msgstr "משתמש:"
 
 #: 
 msgid "1. Download the template"
@@ -13964,10 +13704,6 @@ msgstr "הגדרת מדינות"
 msgid "Show all"
 msgstr "הצג הכול"
 
-#: 
-msgid "Show:"
-msgstr "הצג:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14148,10 +13884,6 @@ msgid "Plugin uninstalled"
 msgstr "התוסף הוסר"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "התוסף הוסר."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "כתובת URL של ZIP לתוסף (HTTPS בלבד)"
 
@@ -14212,10 +13944,6 @@ msgid "Verified"
 msgstr "מאומת"
 
 #: 
-msgid "What this plugin does:"
-msgstr "מה תוסף זה עושה:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl,‏ sha256 ו-pluginId נדרשים כולם להתקנות לא מאומתות."
 
@@ -14230,10 +13958,6 @@ msgstr "השם לא יכול להיות ריק"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "השם לא יכול להיות ארוך מ-%d תווים"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "פותח חלון של 2 דקות לרישום מכשירים ב:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14528,10 +14252,6 @@ msgid "Available after the event is saved."
 msgstr "זמין לאחר שמירת האירוע."
 
 #: 
-msgid "BCC All"
-msgstr "BCC לכולם"
-
-#: 
 msgid "Background Color"
 msgstr "צבע רקע"
 
@@ -14664,10 +14384,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "אשר עם קוד מאפליקציית האימות שלך"
 
 #: 
-msgid "Copied"
-msgstr "הועתק"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "הועתק ללוח הגזירים"
 
@@ -14678,10 +14394,6 @@ msgstr "הועתק!"
 #: 
 msgid "Copy"
 msgstr "העתק"
-
-#: 
-msgid "Copy All Emails"
-msgstr "העתק את כל ההודעות"
 
 #: 
 msgid "Copy All Numbers"
@@ -15923,10 +15635,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "אירוע(ים). השבת את הסוג במקום זאת, או הקצה מחדש את האירועים תחילה."
 
 #: 
-msgid "from this class?"
-msgstr "מכיתה זו?"
-
-#: 
 msgid "from this group?"
 msgstr "מקבוצה זו?"
 
@@ -16005,18 +15713,6 @@ msgstr "שנ׳"
 #: 
 msgid "yrs"
 msgstr "שנ׳"
-
-#: 
-msgid "— Ignore —"
-msgstr "— דלג —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— בחר מדינה —"
-
-#: 
-msgid "— Select State —"
-msgstr "— בחר מחוז —"
 
 #: 
 msgid "Account options"
@@ -16327,10 +16023,6 @@ msgid "Full access — grants all privileges."
 msgstr "גישה מלאה — מעניקה את כל ההרשאות."
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "הענק הרשאות אישיות:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "אם אתה זקוק לגישה נוספת, אנא צור קשר עם מנהל הכנסייה שלך."
 
@@ -16555,10 +16247,6 @@ msgid "What's New in {{version}}"
 msgstr "מה חדש ב-{{version}}"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "אתה מפגר ב-<strong>{{releaseCount}}</strong> גרסאות. הנה מה שתרוויח:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "אתה מריץ גרסת טרום-שחרור."
 
@@ -16647,14 +16335,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "המשתמש חייב להיות מנהל מערכת או בעל הרשאת ניהול גיוסי כספים"
 
 #: 
-msgid "User not found."
-msgstr "המשתמש לא נמצא."
-
-#: 
-msgid "— Select a person —"
-msgstr "— בחר אדם —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "קמפיין גיוס כספים ארכיוני אחד"
@@ -16729,10 +16409,6 @@ msgstr "שייך חברי סל לקבוצה"
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "שייך אנשים מהסל שלך למשפחה"
-
-#: 
-msgid "Assign role to all:"
-msgstr "שייך תפקיד לכולם:"
 
 #: 
 msgid "Assign to Family"
@@ -17043,10 +16719,6 @@ msgid "Sold"
 msgstr "נמכר"
 
 #: 
-msgid "State / Province"
-msgstr "מדינה / מחוז"
-
-#: 
 msgid "Streak"
 msgstr "רצף"
 
@@ -17119,10 +16791,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "הסל שלך ריק. הוסף אנשים לסל שלך תחילה."
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "מיקוד"
-
-#: 
 msgid "events"
 msgstr "אירועים"
 
@@ -17137,12 +16805,4 @@ msgstr "סכום היעד חייב להיות לא שלילי"
 #: 
 msgid "thru %s"
 msgstr "עד %s"
-
-#: 
-msgid "— Select role —"
-msgstr "— בחר תפקיד —"
-
-#: 
-msgid "— pick —"
-msgstr "— בחר —"
 
