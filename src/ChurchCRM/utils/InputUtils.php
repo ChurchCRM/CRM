@@ -169,6 +169,23 @@ class InputUtils
         return htmlspecialchars(stripslashes($sInput), ENT_QUOTES, 'UTF-8');
     }
 
+    /**
+     * Encode data as JSON for safe embedding inside an inline <script> block.
+     * Applies JSON_HEX_TAG/AMP/APOS/QUOT so the output can't break out of the
+     * block or inject markup, even when the source data is admin/user controlled.
+     * JSON_THROW_ON_ERROR ensures an encoding failure throws instead of
+     * silently returning false, which `<?= ?>` would render as an empty
+     * string and break the surrounding JS.
+     *
+     * @param mixed $data
+     * @return string
+     * @throws \JsonException
+     */
+    public static function jsonEncodeForScript($data): string
+    {
+        return json_encode($data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);
+    }
+
     public static function filterChar($sInput, $size = 1): string
     {
         return mb_substr(trim($sInput), 0, $size);
