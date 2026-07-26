@@ -106,10 +106,10 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <i class="fa-solid fa-circle-dollar-to-slot me-1"></i><?= gettext("Finance") ?>
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=people/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/finance/pledge/new?type=Pledge&familyId=<?= $family->getId() ?>">
                         <i class="fa-solid fa-hand-holding-dollar me-2"></i><?= gettext('Add Pledge') ?>
                     </a>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=people/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/finance/pledge/new?type=Payment&familyId=<?= $family->getId() ?>">
                         <i class="fa-solid fa-money-bill-wave me-2"></i><?= gettext('Add Payment') ?>
                     </a>
                 </div>

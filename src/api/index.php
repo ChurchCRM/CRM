@@ -33,6 +33,7 @@ require __DIR__ . '/routes/calendar/events.php';
 require __DIR__ . '/routes/calendar/calendar.php';
 require __DIR__ . '/routes/finance/finance-deposits.php';
 require __DIR__ . '/routes/finance/finance-donation-funds.php';
+require __DIR__ . '/routes/finance/finance-fiscalyear.php';
 require __DIR__ . '/routes/finance/finance-fundraisers.php';
 require __DIR__ . '/routes/finance/finance-payments.php';
 require __DIR__ . '/routes/people/people-family.php';
