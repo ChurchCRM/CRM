@@ -16766,3 +16766,527 @@ msgstr "goalAmount mora biti nenegativan"
 msgid "thru %s"
 msgstr "do %s"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "Bilješke Zašto je došao za %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s iz obitelji %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "Može se dodati još %d unosa."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "Vraćeno je %d zapis(a)"
+
+#: 
+msgid "Assign role to all"
+msgstr "Dodijeli ulogu svima"
+
+#: 
+msgid "Buyer #"
+msgstr "Kupac br."
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Kupci za ovu dobrotvoru akciju"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Izvori za ugrađivanje kalendara"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "Prijevodi ChurchCRM-a njima upravlja zajednica na POEditoru. Možete pomoći na"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Zatvoreni depoziti"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Trenutna vrijednost $URL[0]"
+
+#: 
+msgid "Custom port"
+msgstr "Prilagođeni port"
+
+#: 
+msgid "Data Quality"
+msgstr "Kvaliteta podataka"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Doniralo/la %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "Funkcionalnost e-pošte trenutno je onemogućena. Sljedeće značajke neće raditi dok se e-pošta ne omogući"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Procijenjena vrijednost $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Najbrži tijek rada"
+
+#: 
+msgid "File Integrity"
+msgstr "Integritet datoteke"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filtriraj prema razini zapisa"
+
+#: 
+msgid "Find the line"
+msgstr "Pronađi redak"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Dodijeli pojedinačne dozvole"
+
+#: 
+msgid "How to Fix"
+msgstr "Kako popraviti"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Uvoz nije uspio: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Uključite svoj API ključ u zahtjeve pomoću zaglavlja x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Prijeđi na bilo koji korak postavljanja"
+
+#: 
+msgid "Local development"
+msgstr "Lokalni razvoj"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Minimalni ukupni iznos"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Minimalna ponuda $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Nova uplata – %1$s Depozit br. %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Sada provjerite pristiglu poštu primatelja kako biste potvrdili dostavu. Potražite predmet"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Broj redaka za prikaz"
+
+#: 
+msgid "Open Deposits"
+msgstr "Otvoreni depoziti"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Otvara 2-minutni prozor za registraciju uređaja na"
+
+#: 
+msgid "Output Method"
+msgstr "Metoda izlaza"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Molimo potvrdite brisanje ovog zapisa obitelji"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Molimo potvrdite podatke o svojoj obitelji"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Molimo pošaljite sljedeći dar na %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Molimo odaberite drugu obitelj s kojom ćete povezati ove donacije"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Uplatnica"
+
+#: 
+msgid "Report Heading"
+msgstr "Naslov izvještaja"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Resetiranje će trajno izbrisati"
+
+#: 
+msgid "Show"
+msgstr "Prikaži"
+
+#: 
+msgid "Signature"
+msgstr "Potpis"
+
+#: 
+msgid "Sort Data by"
+msgstr "Sortiraj podatke prema"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Popis izvora odvojen razmacima kojima je dopušteno ugrađivanje javne vanjske stranice kalendara u iframe."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Izvori odvojeni razmacima kojima je dopušteno ugrađivanje javne stranice kalendara u iframe."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Nedjeljnoškolska skupina ne može se mijenjati, osim u ova dva slučaja"
+
+#: 
+msgid "Supported formats"
+msgstr "Podržani formati"
+
+#: 
+msgid "System Configuration"
+msgstr "Konfiguracija sustava"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Postoje osobe dodijeljene ovoj volonterskoj prilici. Brisanjem će se ukloniti dodjela"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Ova vrijednost ne smije biti kraća od %d znakova"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Ova vrijednost ne smije biti dulja od %d znakova"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Ova vrijednost ne smije biti veća od %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Ova vrijednost mora biti najmanje %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Ukupni depoziti"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Ažurirajte ga na valjani URL koji"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Korisnik autentificiran putem API ključa: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Valjani primjeri"
+
+#: 
+msgid "What this plugin does"
+msgstr "Što ovaj dodatak radi"
+
+#: 
+msgid "for all funds"
+msgstr "za sve fondove"
+
+#: 
+msgid "for fund"
+msgstr "za fond"
+
+#: 
+msgid "for funds"
+msgstr "za fondove"
+
+#: 
+msgid "user"
+msgstr "korisnik"
+
+#: 
+msgid "with at least one"
+msgstr "s najmanje jednim"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Pošalji i na adresu crkve ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Jeste li sigurni da želite ukloniti ovu osobu iz"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC način"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "Prijavili se {{count}} vjernik(a)."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "Adresa e-pošte crkve automatski se dodaje kao uklonjivi primatelj pri sastavljanju poruka iz CRM-a"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "E-pošta crkve — konfigurirano na stranici %s."
+
+#: 
+msgid "Closing"
+msgstr "Zatvaranje"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Koordinate ažurirane"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Kopiraj adrese"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Kopiraj e-poštu crkve"
+
+#: 
+msgid "Email All Members"
+msgstr "Pošalji e-poštu svim članovima"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Pošalji e-poštu odabranim članovima"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Završava s kosom crtom (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Geokodiranje nije uspjelo"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Učitavanje primatelja nije uspjelo. Molimo pokušajte ponovo."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Dohvaćanje adresa e-pošte odabranih nije uspjelo"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Prijava obitelji nije uspjela. Molimo pokušajte ponovo."
+
+#: 
+msgid "Ignore"
+msgstr "Zanemari"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Zanemari nepotpune adrese"
+
+#: 
+msgid "Kids"
+msgstr "Djeca"
+
+#: 
+msgid "Loading family members..."
+msgstr "Učitavanje članova obitelji..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Učitavanje primatelja…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Nisu pronađene adrese e-pošte."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Otvori u klijentu e-pošte"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Preusmjeravanje za %s sekundi..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Osvježavanje..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Ukloni iz grupe"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Ukloniti {{personName}} iz ove grupe?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Zahtjev nije uspio ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Uloge za uključivanje"
+
+#: 
+msgid "Select Country"
+msgstr "Odaberi državu"
+
+#: 
+msgid "Select State"
+msgstr "Odaberi županiju"
+
+#: 
+msgid "Select a person"
+msgstr "Odaberi osobu"
+
+#: 
+msgid "Select role"
+msgstr "Odaberi ulogu"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Odaberi vrstu (neobavezno)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Počinje s http:// ili https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Ova skupina ima samo jednu ulogu."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Tko dovodi {{name}}?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Tko preuzima {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "Obrada..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Zaostajete za {{releaseCount}} izdanja. Evo što ćete dobiti"
+
+#: 
+msgid "click to expand"
+msgstr "kliknite za proširenje"
+
+#: 
+msgid "pick"
+msgstr "odaberi"
+
+#: 
+msgid "recipient"
+msgstr "primatelj"
+
+#: 
+msgid "recipients"
+msgstr "primatelji"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "Ostalo {{hours}}h {{mins}}m"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Dodaj novi depozit"
+
+#: 
+msgid "Add New Event"
+msgstr "Dodaj novi događaj"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Dodaj novu vrstu događaja"
+
+#: 
+msgid "Add New Family"
+msgstr "Dodaj novu obitelj"
+
+#: 
+msgid "Add New Field"
+msgstr "Dodaj novo polje"
+
+#: 
+msgid "Add New Fund"
+msgstr "Dodaj novi fond"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Dodaj novu priliku"
+
+#: 
+msgid "Add New Person"
+msgstr "Dodaj novu osobu"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Dodaj novu obvezu darivanja"
+
+#: 
+msgid "Add New Role"
+msgstr "Dodaj novu ulogu"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Dodaj novu volontersku priliku"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Dodaj nedjeljnoškolsku skupinu"
+
+#: 
+msgid "Delete this family?"
+msgstr "Obrisati ovu obitelj?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Želite li obrisati ovu obitelj? Bit ćete preusmjereni na stranicu za odabir što obrisati. Ova radnja se ne može poništiti."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Potvrda brisanja obitelji"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Pojedinci (bez obitelji)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Nove samoprijave"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Potvrda brisanja vrste svojstva"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Pregledajte nove obitelji i pojedince koji su se prijavili putem javnog obrasca za registraciju"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Pregledajte nove prijave s vašeg javnog obrasca za registraciju ispod. Unosi bez e-pošte ili telefona su označeni — provjerite kontaktne podatke prije nastavka."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Potvrda brisanja volonterske prilike"
+

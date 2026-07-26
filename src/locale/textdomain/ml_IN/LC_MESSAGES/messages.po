@@ -16756,3 +16756,527 @@ msgstr "goalAmount നെഗറ്റീവ് ആകരുത്"
 msgid "thru %s"
 msgstr "%s വരെ"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "%1$s %2$s-നുള്ള \"എന്തിന് വന്നു\" കുറിപ്പുകൾ"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s കുടുംബത്തിലെ %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d എന്റ്രികൾ കൂടി ഉൾകൊള്ളാം."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d റെക്കോർഡ്(കൾ) തിരികെ ലഭിച്ചു"
+
+#: 
+msgid "Assign role to all"
+msgstr "എല്ലാവർക്കും റോൾ നൽകുക"
+
+#: 
+msgid "Buyer #"
+msgstr "വാങ്ങുനയാൾ #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "ഈ ഫണ്ട്‍റൈസറ്കായി വാങ്ങുനവർ"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "കലണ്ഡർ ഉൾചേർക്കൽ ഉറവിടങ്ങൾ"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM വിവർത്തനങ്ങൾ POEditor-ല്‍ കമ്മ്യൂണിറ്റി നിയന്ത്രിക്കുന്നു. നിങ്ങൾക്ക് സഹായിക്കാം"
+
+#: 
+msgid "Closed Deposits"
+msgstr "അടഞ്ഞ നിക്ഷേപങ്ങൾ"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "നിലവിലെ $URL[0] മൂല്യം"
+
+#: 
+msgid "Custom port"
+msgstr "ഇഷ്‌ടാനുസൃത പോർട്ട്"
+
+#: 
+msgid "Data Quality"
+msgstr "ഡേറ്റ ഗുണനിലവാരം"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "%1$s %2$s സംഭാവന ചെയ്തത്."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "ഇ-മെയിൽ പ്രവർത്തനം നിലവിൽ അപ്രാപ്‌തമാക്കിയിരിക്കുന്നു. ഇ-മെയിൽ പ്രാപ്‌തമാക്കുന്നതുവരേ ഇനിപ്പറയുന്ന സവിശേഷതകൾ പ്രവർത്തിക്കില്‍"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "ഏകദേശ മൂല്യം $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "ഏറ്റവും വേഗമേറിയ വർക്ക്ഫ്ലോ"
+
+#: 
+msgid "File Integrity"
+msgstr "ഫയൽ സമഗ്രത"
+
+#: 
+msgid "Filter by log level"
+msgstr "ലോഗ് തലം അനുസരിച്ച് ഫിൽറ്റർ ചെയ്യുക"
+
+#: 
+msgid "Find the line"
+msgstr "വരി കണ്ടെത്തുക"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "വ്യക്തിഗത അനുമതികൾ നൽകുക"
+
+#: 
+msgid "How to Fix"
+msgstr "എങ്ങനെ പരിഹരിക്കാം"
+
+#: 
+msgid "Import failed: %s"
+msgstr "ഇറക്കുമതി പരാജയപ്പെട്ടു: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "x-api-key ഹെഡർ ഉപയോഗിച്ച് അഭ്യർത്ഥനകളിൽ നിങ്ങളുടെ API കീ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "ഏതെങ്കിലും സജ്ജീകരണ ഘട്ടത്തിലേക്ക് പോകുക"
+
+#: 
+msgid "Local development"
+msgstr "പ്രാദേശിക വികസനം"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "കുറഞ്ഞ മൊത്തം തുക"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "കുറഞ്ഞ ലേലം $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "പുതിയ പേയ്‌മെന്റ് - %1$s നിക്ഷേപം # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "ഡെലിവറി സ്ഥിരീകരിക്കാൻ ഇപ്പോൾ സ്വീകർതാവിന്റെ ഇൻബോക്സ് പരിശോധിക്കുക. വിഷയം നോക്കുക"
+
+#: 
+msgid "Number of lines to display"
+msgstr "പ്രദർശിപ്പിക്കേണ്ട വരികളുടെ എണ്ണം"
+
+#: 
+msgid "Open Deposits"
+msgstr "തുറന്ന നിക്ഷേപങ്ങൾ"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "ഉപകരണങ്ങൾ രജിസ്റ്റർ ചെയ്യാൻ 2 മിനിറ്റ് വിൻഡോ തുറക്കുന്നു"
+
+#: 
+msgid "Output Method"
+msgstr "ഔട്ട്‌പുട്ട് രീതി"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "ഈ കുടുംബ രേഖ ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "നിങ്ങളുടെ കുടുംബ വിവരങ്ങൾ സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "അടുത്ത ദാനം %s-ലേക്ക് അയക്കുക"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "ഈ സംഭാവനകൾ ബന്ധിപ്പിക്കാൻ മറ്റൊരു കുടുംബത്തെ തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Remittance Slip"
+msgstr "പണമടക്കൽ സ്ലിപ്പ്"
+
+#: 
+msgid "Report Heading"
+msgstr "റിപ്പോർട്ട് തലക്കെട്ട്"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "പുനൃസജ്ജീകരണം സ്ഥിരമായി ഇല്ലാതാക്കും"
+
+#: 
+msgid "Show"
+msgstr "കാണിക്കുക"
+
+#: 
+msgid "Signature"
+msgstr "ഒപ്പ്"
+
+#: 
+msgid "Sort Data by"
+msgstr "ഡേറ്റ അടുക്കുക"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "പൊതു ബാഹ്യ കലണ്ഡർ പേജ് കൾ iframe-ല്‍ ഉൾചേർക്കാൻ അനുവദിച്ച ഉറവിടങ്ങളുടെ സ്ഥലമൎവർത്തിത പട്ടിക."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "പൊതു കലണ്ഡർ പേജ് കൾ iframe-ല്‍ ഉൾചേർക്കാൻ അനുവദിച്ച സ്ഥലമൎവർത്തിത ഉറവിടങ്ങൾ."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "സണ്ഡേ സ്കൂൾ ഗ്രൂപ് ഈ രണ്ട് കേസുകളില്‍ മാത്രമേ പരിഷ്‌ക്കരിക്കാൻ കഴിയൂ"
+
+#: 
+msgid "Supported formats"
+msgstr "പിന്തുണരുന്ന ഫോർമാറ്റ്കുകൾ"
+
+#: 
+msgid "System Configuration"
+msgstr "സിസ്റ്റം കോർണ്‍ഫിഗറേഷൻ"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "ഈ സന്നദ്ധ അവസരത്തിലേക്ക് ആളുകൾ നിയോഗിക്കപ്പെട്ടിരിക്കുന്നു. ഇല്ലാതാക്കൽ നിയോഗം റദ്ദാക്കും"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "ഈ മൂല്യം %d പ്രതീകങ്ങളിൽ കുറവായിരിക്കരുത്"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "ഈ മൂല്യം %d പ്രതീകങ്ങളിൽ കൂടുതലായിരിക്കരുത്"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "ഈ മൂല്യം %s-ല്‍ കൂടുതലായിരിക്കരുത്"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "ഈ മൂല്യം കുറഞ്ഞത് കുറഞ്ഞത് %s ആയിരിക്കണം"
+
+#: 
+msgid "Total Deposits"
+msgstr "മൊത്തം നിക്ഷേപങ്ങൾ"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "ഒരു സാധുവായ URL-ലേക്ക് അപ്‌ഡേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "API Key വഴി ഉപയോക്താവ് പ്രാമാണീകരിച്ചു: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "സാധുവായ ഉദാഹരണങ്ങൾ"
+
+#: 
+msgid "What this plugin does"
+msgstr "ഈ പ്ലഗിൻ എന്ത് ചെയ്യുനു"
+
+#: 
+msgid "for all funds"
+msgstr "എല്ലാ ഫണ്ടുകൾക്കും"
+
+#: 
+msgid "for fund"
+msgstr "ഫണ്ടിനായി"
+
+#: 
+msgid "for funds"
+msgstr "ഫണ്ടുകൾക്കായി"
+
+#: 
+msgid "user"
+msgstr "ഉപയോക്താവ്"
+
+#: 
+msgid "with at least one"
+msgstr "കുറഞ്ഞത് ഒന്നെങ്കിലും"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "സഭയുടെ വിലാസത്തിലേക്കും അയക്കുക ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "ഈ വ്യക്തിയെ ഇതിൽ നിന്ന് നീക്കം ചെയ്യണമെന്ന് ഉറപ്പാണോ"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC മോഡ്"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}} ആളുകളെ ചെക്ക്-ഇൻ ചെയ്തു."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "CRM-ല്‍ നിന്ന് ഇ-മെയിൽ രചിക്കുമ്പോൾ സഭയുടെ ഇ-മെയിൽ വിലാസം നീക്കം ചെയ്യാവുന്ന സ്വീകർതാവായി സ്വയം ചേർക്കപ്പെടുന്നു"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "സഭയുടെ ഇ-മെയിൽ — %s പേജിൽ കോർണ്‍ഫിഗർ ചെയ്‌തിരിക്കുന്നു."
+
+#: 
+msgid "Closing"
+msgstr "അടയ്കൽ"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "കോർഡിനേറ്റ്കൾ അപ്‌ഡേറ്റ് ചെയ്‌തു"
+
+#: 
+msgid "Copy Addresses"
+msgstr "വിലാസങ്ങൾ പകർത്തുക"
+
+#: 
+msgid "Copy Church Email"
+msgstr "സഭയുടെ ഇ-മെയിൽ പകർത്തുക"
+
+#: 
+msgid "Email All Members"
+msgstr "എല്ലാ അംഗങ്ങൾക്കും ഇ-മെയിൽ ചെയ്യുക"
+
+#: 
+msgid "Email Cart Members"
+msgstr "തിരഞ്ഞെടുത്ത അംഗങ്ങൾക്ക് ഇ-മെയിൽ ചെയ്യുക"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "ഒരു ട്രെയിലിംഗ് സ്ലാഷ് (/) ഉപയോഗിച്ച് അവസാനിക്കുന്നു"
+
+#: 
+msgid "Failed to geocode"
+msgstr "ജിയോകോഡ് ചെയ്യാൻ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "സ്വീകർതാകർനെ ലോഡ് ചെയ്യാൻ പരാജയപ്പെട്ടു. വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "തിരഞ്ഞെടുത്ത ഇ-മെയിൽ വിലാസങ്ങൾ വീണ്ടെടുക്കാൻ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "കുടുംബ ചെക്ക്-ഇൻ പരാജയപ്പെട്ടു. വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Ignore"
+msgstr "അവഗണിക്കുക"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "അപൂർണ്ണ വിലാസങ്ങൾ അവഗണിക്കുക"
+
+#: 
+msgid "Kids"
+msgstr "കുട്ടികൾ"
+
+#: 
+msgid "Loading family members..."
+msgstr "കുടുംബ അംഗങ്ങളെ ലോഡ് ചെയ്യുന്നു..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "സ്വീകർതാകർനെ ലോഡ് ചെയ്യുന്നു…"
+
+#: 
+msgid "No email addresses found."
+msgstr "ഇ-മെയിൽ വിലാസങ്ങൾ കണ്ടെത്തിയില്‍."
+
+#: 
+msgid "Open in Email Client"
+msgstr "ഇ-മെയിൽ ക്ലയന്റിൽ തുറക്കുക"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "%s സെക്കൻഡിൽ റീഡയറക്ട് ചെയ്യുന്നു..."
+
+#: 
+msgid "Refreshing..."
+msgstr "പുതുക്കുന്നു..."
+
+#: 
+msgid "Remove from Group"
+msgstr "ഗ്രൂപ്പിൽ നിന്ന് നീക്കം ചെയ്യുക"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "{{personName}}-നെ ഈ ക്ലാസ്സിൽ നിന്ന് നീക്കണോ?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "അഭ്യർത്ഥന പരാജയപ്പെട്ടു ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "ഉൾപ്പെടുത്തേണ്ട റോളുകൾ"
+
+#: 
+msgid "Select Country"
+msgstr "രാജ്യം തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Select State"
+msgstr "സംസ്ഥാനം തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Select a person"
+msgstr "ഒരു വ്യക്തിയെ തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Select role"
+msgstr "റോൾ തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Select type (optional)"
+msgstr "തരം തിരഞ്ഞെടുക്കുക (ഐച്ഛികം)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "http:// അല്ലെങ്കിൽ https:// ഉപയോഗിച്ച് ആരമ്ഭിക്കുന്നു"
+
+#: 
+msgid "This group only has one role."
+msgstr "ഈ ഗ്രൂപ്പിന് ഒരു റോൾ മാത്രമേ ഉള്ളൂ."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "{{name}}-നെ കൊണ്ടുവരുന്നത് ആരാണ്?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "{{name}}-നെ കൂട്ടികൊണ്ടുപോകുന്നത് ആരാണ്?"
+
+#: 
+msgid "Working..."
+msgstr "പ്രവർത്തിക്കുന്നു..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "നിങ്ങൾ {{releaseCount}} റിലീസുകൾ പിനിലാണ്. നിങ്ങൾക്ക് ലഭിക്കുന്നത്"
+
+#: 
+msgid "click to expand"
+msgstr "വിപുലീകരിക്കാൻ ക്ലിക്ക് ചെയ്യുക"
+
+#: 
+msgid "pick"
+msgstr "തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "recipient"
+msgstr "സ്വീകർതാവ്"
+
+#: 
+msgid "recipients"
+msgstr "സ്വീകർതാകർ"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}മ. {{mins}}മി. ശേഷിക്കുന്നു"
+
+#: 
+msgid "Add New Deposit"
+msgstr "പുതിയ നിക്ഷേപം ചേർക്കുക"
+
+#: 
+msgid "Add New Event"
+msgstr "പുതിയ പരിപാടി ചേർക്കുക"
+
+#: 
+msgid "Add New Event Type"
+msgstr "പുതിയ പരിപാടി തരം ചേർക്കുക"
+
+#: 
+msgid "Add New Family"
+msgstr "പുതിയ കുടുംബം ചേർക്കുക"
+
+#: 
+msgid "Add New Field"
+msgstr "പുതിയ ഫീൽഡ് ചേർക്കുക"
+
+#: 
+msgid "Add New Fund"
+msgstr "പുതിയ ഫണ്ട് ചേർക്കുക"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "പുതിയ അവസരം ചേർക്കുക"
+
+#: 
+msgid "Add New Person"
+msgstr "പുതിയ വ്യക്തിയെ ചേർക്കുക"
+
+#: 
+msgid "Add New Pledge"
+msgstr "പുതിയ പ്രതിജ്ഞ ചേർക്കുക"
+
+#: 
+msgid "Add New Role"
+msgstr "പുതിയ റോൾ ചേർക്കുക"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "പുതിയ സന്നദ്ധ അവസരം ചേർക്കുക"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "സണ്ഡേ സ്കൂൾ ക്ലാസ് ചേർക്കുക"
+
+#: 
+msgid "Delete this family?"
+msgstr "ഈ കുടുംബം ഇല്ലാതാക്കണോ?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "ഈ കുടുംബം ഇല്ലാതാക്കണോ? എന്ത് ഇല്ലാതാക്കണമെന്ന് തിരഞ്ഞെടുക്കാൻ തിരഞ്ഞെടുക്കാൻ ഊരു പേജിലേക്ക് കൊണ്ടുപോകും. ഇത് പഴയപടിയാക്കാൻ കഴിയില്‍."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "കുടുംബം ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "വ്യക്തികൾ (കുടുംബമില്ലാത്ത)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "പുതിയ സ്വയം-രജിസ്‌ട്രേഷനുകൾ"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "പ്രോപ്പർട്ടി തരം ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "പൊതു രജിസ്‌ട്രേഷൻ ഫോർമിൽ ചേർന്ന പുതിയ കുടുംബങ്ങളെയും വ്യക്തികളെയും പരിശോധിക്കുക"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "ചുവടെ നിങ്ങളുടെ പൊതു രജിസ്‌ട്രേഷൻ ഫോർമിൽ നിന്നുള്ള പുതിയ സൈൻ-അപ്പുകൾ പരിശോധിക്കുക. ഇ-മെയിലോ ഫോൺോ ഇല്ലാത്ത എൻട്രികൾ ഫ്ലാഗ് ചെയ്‌തിരിക്കുന്നു — തുടർനടപ്പ് എടുക്കുന്നതിന് മുമ്പ് ബന്ധപ്പെടൽ വിവരങ്ങൾ സ്ഥിരീകരിക്കുക."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "സന്നദ്ധ അവസരം ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
+
