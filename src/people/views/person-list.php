@@ -35,19 +35,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // Load compiled webpack assets for people list
 echo '<link rel="stylesheet" href="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.css">';
 echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.js"></script>';
-// Classification list
-$ListItem =  ListOptionQuery::create()->select('OptionName')->filterById(1)->find()->toArray();
+// Classification list — each entry is {id, name} so the JS can set option values to
+// the real DB OptionId (not a positional index). This fixes mismatched Classification
+// filter links when OptionId and insertion-sequence diverge (issue #9182).
+$ListItem = ListOptionQuery::create()->select(['OptionId', 'OptionName'])->filterById(1)->find()->toArray();
 $ClassificationList = [];
-$ClassificationList[] ="Unassigned";
+$ClassificationList[] = ['id' => 0, 'name' => 'Unassigned'];
 foreach ($ListItem as $element) {
-    $ClassificationList[] = $element;
+    $ClassificationList[] = ['id' => $element['OptionId'], 'name' => $element['OptionName']];
 }
-// Role list
-$ListItem = ListOptionQuery::create()->select('OptionName')->filterById(2)->find()->toArray();
+// Role list — same {id, name} structure so setValue(OptionId) matches correctly.
+$ListItem = ListOptionQuery::create()->select(['OptionId', 'OptionName'])->filterById(2)->find()->toArray();
 $RoleList = [];
-$RoleList[] ="Unassigned";
+$RoleList[] = ['id' => 0, 'name' => 'Unassigned'];
 foreach ($ListItem as $element) {
-    $RoleList[] = $element;
+    $RoleList[] = ['id' => $element['OptionId'], 'name' => $element['OptionName']];
 }
 // Person properties list
 $ListItem = PropertyQuery::create()->filterByProClass("p")->find();
