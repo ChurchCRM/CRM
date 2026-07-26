@@ -37,6 +37,7 @@
         "deploy:clean": "run-s preinstall build",
         "build:signatures": "node scripts/generate-signatures-node.js",
         "build:php:validate": "node scripts/validate-php-syntax.js",
+        "build:php:validate:all": "node scripts/validate-php-syntax.js --all",
         "format:web": "biome format --write .",
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-build.js",
