@@ -224,16 +224,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <?php foreach ($familyPledges as $family): ?>
                                         <?php foreach ($family['pledges'] as $pledge): ?>
                                             <?php
-                                            $remaining = $pledge['pledge_amount'] - $pledge['payment_amount'];
-                                            $percentComplete = $pledge['pledge_amount'] > 0 ? ($pledge['payment_amount'] / $pledge['pledge_amount']) * 100 : 0;
-                                            if ($percentComplete >= 100) {
+                                            if ($pledge['pledge_amount'] <= 0.0) {
+                                                // Payment-only row (backfilled): no pledge to track against
+                                                $remaining = null;
+                                                $percentComplete = 100;
                                                 $statusClass = 'text-success fw-bold';
-                                            } elseif ($percentComplete >= 75) {
-                                                $statusClass = 'text-info';
-                                            } elseif ($percentComplete >= 50) {
-                                                $statusClass = 'text-warning';
                                             } else {
-                                                $statusClass = 'text-danger';
+                                                $remaining = $pledge['pledge_amount'] - $pledge['payment_amount'];
+                                                $percentComplete = ($pledge['payment_amount'] / $pledge['pledge_amount']) * 100;
+                                                if ($percentComplete >= 100) {
+                                                    $statusClass = 'text-success fw-bold';
+                                                } elseif ($percentComplete >= 75) {
+                                                    $statusClass = 'text-info';
+                                                } elseif ($percentComplete >= 50) {
+                                                    $statusClass = 'text-warning';
+                                                } else {
+                                                    $statusClass = 'text-danger';
+                                                }
                                             }
                                             ?>
                                             <tr>
@@ -254,9 +261,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <td class="text-end" data-order="<?= InputUtils::escapeAttribute($pledge['payment_amount']) ?>">
                                                     <?= CurrencyFormatter::formatHtml($pledge['payment_amount']) ?>
                                                 </td>
-                                                <td class="text-end <?= $statusClass ?>" data-order="<?= InputUtils::escapeAttribute($remaining) ?>">
-                                                    <?= CurrencyFormatter::formatHtml($remaining) ?>
-                                                    <small class="d-block text-body-secondary"><?= number_format($percentComplete, 0) ?>%</small>
+                                                <td class="text-end <?= $statusClass ?>" data-order="<?= InputUtils::escapeAttribute($remaining ?? $pledge['payment_amount']) ?>">
+                                                    <?= $remaining !== null ? CurrencyFormatter::formatHtml($remaining) : '<span class="text-body-secondary">—</span>' ?>
+                                                    <small class="d-block text-body-secondary"><?= $remaining !== null ? number_format($percentComplete, 0) . '%' : gettext('No pledge') ?></small>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
