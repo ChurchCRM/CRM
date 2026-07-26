@@ -60,3 +60,21 @@ describe("People Dashboard — email composer button", () => {
             });
     });
 });
+
+describe("People Dashboard — age distribution chart", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("renders the age distribution chart via ApexCharts", () => {
+        cy.visit("/people/dashboard");
+
+        cy.contains("Age Distribution").should("be.visible");
+
+        // The #age-stats-bar container is always present; ApexCharts must
+        // actually draw into it (SVG/canvas), not just leave it empty —
+        // catches chart-library regressions (e.g. major version bumps)
+        // that a container-existence check alone would miss.
+        cy.get("#age-stats-bar").should("exist");
+        cy.get("#age-stats-bar .apexcharts-canvas").should("exist");
+        cy.get("#age-stats-bar svg.apexcharts-svg").should("exist");
+    });
+});

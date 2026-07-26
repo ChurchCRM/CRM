@@ -99,6 +99,12 @@ describe("Standard Sunday School", () => {
         // Core overview elements that should be stable across styling changes
         cy.contains('Sunday School').should('exist');
         cy.get('#bar-chart').should('exist');
+        // ApexCharts must actually render into the container, not just
+        // leave an empty div — catches chart-library regressions (e.g.
+        // major version bumps) that a container-existence check alone
+        // would miss.
+        cy.get('#bar-chart .apexcharts-canvas').should('exist');
+        cy.get('#bar-chart svg.apexcharts-svg').should('exist');
         cy.contains('Enrolled').should('exist');
         cy.contains('Boys').should('exist');
         cy.contains('Girls').should('exist');
