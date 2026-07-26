@@ -55,6 +55,13 @@ describe("Main Dashboard - Deposits widget authorization", () => {
 
             // The JS guard should trigger the deposits API call.
             cy.wait("@depositsApi").its("response.statusCode").should("eq", 200);
+
+            // ApexCharts must actually render into the container, not just
+            // leave an empty div — catches chart-library regressions
+            // (e.g. major version bumps) that a container-existence check
+            // alone would miss.
+            cy.get("#deposit-lineGraph .apexcharts-canvas").should("exist");
+            cy.get("#deposit-lineGraph svg.apexcharts-svg").should("exist");
         });
     });
 
