@@ -4,6 +4,7 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Logging\PostHogLogHandler;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Level;
@@ -175,6 +176,10 @@ class LoggerUtils
                     'correlation_id' => self::getCorrelationId(),
                 ]));
             });
+
+            // PostHog handler must be pushed after the file handler so file logging
+            // is never affected if the PostHog handler encounters an error.
+            self::$appLogger->pushHandler(new PostHogLogHandler());
         }
 
         return self::$appLogger;
@@ -228,6 +233,11 @@ class LoggerUtils
                     'context'        => self::getCaller(),
                 ]));
             });
+
+            // NOTE: PostHogLogHandler is intentionally NOT added here.
+            // The auth logger records failed login attempts and password resets
+            // which contain raw usernames in the message — PII that must never
+            // reach an external telemetry service.
         }
 
         return self::$authLogger;
