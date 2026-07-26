@@ -9,14 +9,15 @@ function initPaymentTable() {
       width: "35%",
       title: i18next.t("Family"),
       data: "FamilyString",
-      render: function (data, type, full, meta) {
+      render: (data, type, full, meta) => {
         var familyName = data && data.trim() ? data : '<em class="text-muted">' + i18next.t("Anonymous") + "</em>";
         var icon = isDepositClosed ? '<i class="fa-solid fa-magnifying-glass"></i>' : '<i class="fa-solid fa-pen"></i>';
+        var linkBack = encodeURIComponent("/DepositSlipEditor.php?DepositSlipID=" + depositSlipID);
+        var editUrl =
+          window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
         return (
-          '<a class="btn btn-sm btn-outline-primary" href="PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' +
-          depositSlipID +
-          "&GroupKey=" +
-          full.GroupKey +
+          '<a class="btn btn-sm btn-outline-primary" href="' +
+          editUrl +
           '" title="' +
           (isDepositClosed ? i18next.t("View") : i18next.t("Edit")) +
           '">' +
@@ -31,15 +32,13 @@ function initPaymentTable() {
       width: "8%",
       title: i18next.t("Check Number"),
       data: "CheckNo",
-      render: function (data, type, full, meta) {
-        return data ? "<code>" + data + "</code>" : '<em class="text-muted">-</em>';
-      },
+      render: (data, type, full, meta) => (data ? "<code>" + data + "</code>" : '<em class="text-muted">-</em>'),
     },
     {
       width: "30%",
       title: i18next.t("Fund"),
       data: "FundName",
-      render: function (data, type, full, meta) {
+      render: (data, type, full, meta) => {
         if (!data) {
           return '<em class="text-muted">-</em>';
         }
@@ -51,9 +50,9 @@ function initPaymentTable() {
 
         // For display, split multiple funds and show as individual badges
         var funds = data.split(", ");
-        var badges = funds.map(function (fund) {
-          return '<span class="badge badge-info text-white mr-1 mb-1">' + fund.trim() + "</span>";
-        });
+        var badges = funds.map(
+          (fund) => '<span class="badge badge-info text-white mr-1 mb-1">' + fund.trim() + "</span>",
+        );
         return '<div class="d-flex flex-wrap">' + badges.join("") + "</div>";
       },
     },
@@ -61,7 +60,7 @@ function initPaymentTable() {
       width: "12%",
       title: i18next.t("Amount"),
       data: "sumAmount",
-      render: function (data, type, full, meta) {
+      render: (data, type, full, meta) => {
         if (type === "display") {
           return '<strong class="text-end d-block">$' + parseFloat(data || 0).toFixed(2) + "</strong>";
         }
@@ -72,7 +71,7 @@ function initPaymentTable() {
       width: "10%",
       title: i18next.t("Method"),
       data: "Method",
-      render: function (data, type, full, meta) {
+      render: (data, type, full, meta) => {
         var badgeClass = "badge-secondary";
         var icon = "";
         if (data === "CHECK") {
@@ -95,13 +94,10 @@ function initPaymentTable() {
       width: "auto",
       title: i18next.t("Details"),
       data: "Id",
-      render: function (data, type, full, meta) {
-        return (
-          '<a class="btn btn-sm btn-info" href="PledgeDetails.php?PledgeID=' +
-          data +
-          '"><i class="fa-solid fa-circle-info"></i>Details</a>'
-        );
-      },
+      render: (data, type, full, meta) =>
+        '<a class="btn btn-sm btn-info" href="PledgeDetails.php?PledgeID=' +
+        data +
+        '"><i class="fa-solid fa-circle-info"></i>Details</a>',
     });
   }
 
@@ -109,13 +105,13 @@ function initPaymentTable() {
     ajax: {
       url: window.CRM.root + "/api/deposits/" + depositSlipID + "/payments",
       dataSrc: "",
-      error: function (xhr, error, thrown) {
+      error: (xhr, error, thrown) => {
         console.error("DataTable error:", xhr, error, thrown);
         showGlobalMessage(i18next.t("Error loading payments"), "danger");
       },
     },
     columns: colDef,
-    createdRow: function (row, data, index) {
+    createdRow: (row, data, index) => {
       $(row).addClass("paymentRow").css("cursor", "pointer");
     },
     initComplete: function () {
@@ -140,7 +136,7 @@ function initPaymentTable() {
   dataT = $("#paymentsTable").DataTable(dataTableConfig);
 
   // Add loading indicator
-  dataT.on("xhr", function () {
+  dataT.on("xhr", () => {
     // Hide loading after data loads
   });
 }
@@ -156,7 +152,7 @@ function initDepositSlipEditor() {
       method: "GET",
       dataType: "json",
     })
-      .done(function (data) {
+      .done((data) => {
         var count = Array.isArray(data) ? data.length : 0;
         if (count === 0) {
           window.CRM.notify(i18next.t("No payments on this deposit"), {
@@ -169,7 +165,7 @@ function initDepositSlipEditor() {
         // There are payments; proceed to open/download the PDF
         window.CRM.VerifyThenLoadAPIContent(window.CRM.root + "/api/deposits/" + depositId + "/pdf");
       })
-      .fail(function (jqXHR, textStatus, errorThrown) {
+      .fail((jqXHR, textStatus, errorThrown) => {
         // Fallback: show generic error and do not proceed
         var errorMsg = i18next.t("There was a problem retrieving the requested object");
         if (jqXHR.responseJSON && jqXHR.responseJSON.message) {
@@ -269,13 +265,13 @@ function initDepositSlipEditor() {
       encode: true,
       timeout: 10000,
     })
-      .done(function (data) {
+      .done((data) => {
         showGlobalMessage(i18next.t("Deposit saved successfully"), "success");
-        setTimeout(function () {
+        setTimeout(() => {
           location.reload();
         }, 1500);
       })
-      .fail(function (jqXHR, textStatus, errorThrown) {
+      .fail((jqXHR, textStatus, errorThrown) => {
         var errorMsg = i18next.t("Error saving deposit");
         if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
           errorMsg = jqXHR.responseJSON.error;
@@ -332,7 +328,7 @@ function initDepositSlipEditor() {
   });
 
   // Delete selected rows
-  $("#deleteSelectedRows").on("click", function () {
+  $("#deleteSelectedRows").on("click", () => {
     var selectedRows = dataT.rows(".selected").data();
     if (selectedRows.length === 0) {
       showGlobalMessage(i18next.t("Please select rows to delete"), "warning");
@@ -362,7 +358,7 @@ function initDepositSlipEditor() {
           className: "btn-danger",
         },
       },
-      callback: function (result) {
+      callback: (result) => {
         if (result) {
           // Delete each selected payment
           var deletePromises = [];
@@ -378,11 +374,11 @@ function initDepositSlipEditor() {
 
           $.when
             .apply($, deletePromises)
-            .done(function () {
+            .done(() => {
               showGlobalMessage(i18next.t("Payments deleted successfully"), "success");
               dataT.ajax.reload();
             })
-            .fail(function () {
+            .fail(() => {
               showGlobalMessage(i18next.t("Error deleting payments"), "danger");
             });
         }
@@ -405,7 +401,7 @@ function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
         show: false,
       },
       events: {
-        click: function (event, chartContext, opts) {
+        click: (event, chartContext, opts) => {
           if (opts.dataPointIndex !== undefined) {
             var index = opts.dataPointIndex;
             var fundName = fundLabels[index];
@@ -445,26 +441,19 @@ function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
     // Use ApexCharts default color palette (distributed: true assigns one per bar)
     xaxis: {
       categories: fundLabels,
-      tickFormatter: function (value) {
-        return (
-          "$" +
-          parseFloat(value).toLocaleString("en-US", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          })
-        );
-      },
+      tickFormatter: (value) =>
+        "$" +
+        parseFloat(value).toLocaleString("en-US", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }),
     },
     yaxis: {
-      tickFormatter: function (value) {
-        return value;
-      },
+      tickFormatter: (value) => value,
     },
     tooltip: {
       y: {
-        formatter: function (value) {
-          return "$" + parseFloat(value).toFixed(2);
-        },
+        formatter: (value) => "$" + parseFloat(value).toFixed(2),
       },
     },
     states: {
@@ -489,7 +478,7 @@ function highlightChartBar(chart, index) {
 
   var originalColors = chart.w.globals.colors.slice();
 
-  var newColors = originalColors.map(function (color, i) {
+  var newColors = originalColors.map((color, i) => {
     if (i === index) {
       return color;
     }
@@ -507,7 +496,7 @@ function highlightChartBar(chart, index) {
   });
 
   // Reset colors after 3 seconds
-  setTimeout(function () {
+  setTimeout(() => {
     chart.updateOptions({
       colors: originalColors,
     });

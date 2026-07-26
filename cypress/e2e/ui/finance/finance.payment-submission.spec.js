@@ -37,18 +37,19 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
 
         // Add a cash payment
         cy.get(".btn-success").click();
-        cy.url().should("contain", "PledgeEditor.php");
+        cy.url().should("contain", "/finance/pledge/new");
 
         // Wait for form to be ready and select CASH payment method
-        cy.get("#1_Amount").should("be.visible");
+        cy.get(".fund-amount").first().should("be.visible");
         cy.get("#Method").select("CASH");
-        
-        // Fill payment form - this triggers the POST /api/payments endpoint
-        cy.intercept('POST', '/api/payments').as('submitPayment');
-        cy.get("#1_Amount").clear().type(paymentAmount);
+        cy.get(".fund-select").first().select(1);
+
+        // Fill payment form - this triggers the POST /api/payments/pledges endpoint
+        cy.intercept('POST', '/api/payments/pledges').as('submitPayment');
+        cy.get(".fund-amount").first().clear().type(paymentAmount);
 
         // Submit the payment - this is where issue #7257 occurred
-        cy.get("#saveBtn").click();
+        cy.get("#savePledgeBtn").click();
 
         // Verify payment appears in deposit slip with correct amount
         cy.url().should("contain", "DepositSlipEditor.php");
@@ -71,18 +72,19 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
 
         // Add a check payment
         cy.get(".btn-success").click();
-        cy.url().should("contain", "PledgeEditor.php");
+        cy.url().should("contain", "/finance/pledge/new");
 
         // Wait for form to be ready
-        cy.get("#1_Amount").should("be.visible");
+        cy.get(".fund-amount").first().should("be.visible");
+        cy.get(".fund-select").first().select(1);
         cy.get("#CheckNo").type(checkNumber);  // Fill check number first
 
         // Fill payment form
-        cy.intercept('POST', '/api/payments').as('submitCheckPayment');
-        cy.get("#1_Amount").clear().type(paymentAmount);
+        cy.intercept('POST', '/api/payments/pledges').as('submitCheckPayment');
+        cy.get(".fund-amount").first().clear().type(paymentAmount);
 
         // Submit and verify no errors
-        cy.get("#saveBtn").click();
+        cy.get("#savePledgeBtn").click();
 
         // Verify payment appears in deposit slip with correct amount and check number
         cy.url().should("contain", "DepositSlipEditor.php");
@@ -107,19 +109,22 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
 
         // Add a payment with fund split
         cy.get(".btn-success").click();
-        cy.url().should("contain", "PledgeEditor.php");
+        cy.url().should("contain", "/finance/pledge/new");
 
         // Wait for form to be ready
-        cy.get("#1_Amount").should("be.visible");
+        cy.get(".fund-amount").first().should("be.visible");
         cy.get("#CheckNo").type(checkNumber);  // Fill check number first
 
         // Fill payment form with multiple funds
-        cy.intercept('POST', '/api/payments').as('submitSplitPayment');
-        cy.get("#1_Amount").clear().type(fund1Amount);
-        cy.get("#2_Amount").clear().type(fund2Amount);
+        cy.intercept('POST', '/api/payments/pledges').as('submitSplitPayment');
+        cy.get(".fund-select").eq(0).select(1);
+        cy.get(".fund-amount").eq(0).clear().type(fund1Amount);
+        cy.get("#addFundRow").click();
+        cy.get(".fund-select").eq(1).select(2);
+        cy.get(".fund-amount").eq(1).clear().type(fund2Amount);
 
         // Submit and verify
-        cy.get("#saveBtn").click();
+        cy.get("#savePledgeBtn").click();
 
         // Verify payment appears in deposit slip with correct total amount
         cy.url().should("contain", "DepositSlipEditor.php");

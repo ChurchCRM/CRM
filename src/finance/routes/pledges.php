@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\FamilyPledgeSummaryService;
 use ChurchCRM\utils\FiscalYearUtils;
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -97,6 +98,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         $type = isset($queryParams['type']) && $queryParams['type'] === 'Pledge' ? 'Pledge' : 'Payment';
         $depositId = isset($queryParams['depositId']) ? (int) $queryParams['depositId'] : 0;
         $familyId = isset($queryParams['familyId']) ? (int) $queryParams['familyId'] : 0;
+        $linkBack = RedirectUtils::getLinkBackFromRequest('');
 
         // Active donation funds
         $funds = DonationFundQuery::create()
@@ -149,6 +151,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'enableNonDeductible' => $enableNonDeductible,
             'isEdit'             => false,
             'pledge'             => null,
+            'linkBack'           => $linkBack,
         ];
 
         return $renderer->render($response, 'pledges/editor.php', $pageArgs);
@@ -207,6 +210,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         $familyId = $pledge['familyId'];
         $familyName = $pledge['familyName'];
         $depositId = $pledge['depositId'] ?? 0;
+        $linkBack = RedirectUtils::getLinkBackFromRequest('');
 
         // Active donation funds
         $funds = DonationFundQuery::create()
@@ -250,6 +254,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'enableNonDeductible' => $enableNonDeductible,
             'isEdit'             => true,
             'pledge'             => $pledge,
+            'linkBack'           => $linkBack,
         ];
 
         return $renderer->render($response, 'pledges/editor.php', $pageArgs);

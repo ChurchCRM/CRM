@@ -173,12 +173,10 @@ function initializeDepositSlip() {
         render: (data, type, full, meta) => {
           var addPaymentUrl =
             window.CRM.root +
-            "/PledgeEditor.php?CurrentDeposit=" +
+            "/finance/pledge/new?type=Payment&depositId=" +
             full.Id +
-            "&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php%3FDepositSlipID%3D" +
-            full.Id +
-            "&PledgeOrPayment=Payment&CurrentDeposit=" +
-            full.Id;
+            "&linkBack=" +
+            encodeURIComponent("/DepositSlipEditor.php?DepositSlipID=" + full.Id);
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
