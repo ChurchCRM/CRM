@@ -168,6 +168,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             $.extend(dataTableConfig, window.CRM.plugin.dataTable);
             $("#selfRegistrations").DataTable(dataTableConfig);
+        }).fail(function () {
+            window.CRM.toast("error", i18next.t("Error loading self-registered entries"));
         });
     }
 
