@@ -207,7 +207,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *         description="Created pledge/payment group key and details",
      *         @OA\JsonContent(
      *             @OA\Property(property="groupKey", type="string", example="abc123"),
-     *             @OA\Property(property="payment", type="object", description="Serialised pledge details")
+     *             @OA\Property(property="payment", type="object", description="Pledge details object")
      *         )
      *     ),
      *     @OA\Response(response=400, description="Validation error (invalid date, fund, check number, etc.)"),
@@ -236,17 +236,20 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
 
             $financialService = new FinancialService();
             $groupPayment = $financialService->submitPledgeOrPayment($payment);
-            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
-
-            return SlimUtils::renderJSON($response, [
-                'groupKey' => $paymentObj['GroupKey'] ?? '',
-                'payment'  => $paymentObj,
-            ]);
         } catch (\Exception $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, $e, $request);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create pledge'), [], 500, $e, $request);
         }
+        try {
+            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to encode payment response'), [], 500, $e, $request);
+        }
+        return SlimUtils::renderJSON($response, [
+            'groupKey' => $paymentObj['GroupKey'] ?? '',
+            'payment'  => $paymentObj,
+        ]);
     });
 
     /**
