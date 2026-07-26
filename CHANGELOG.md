@@ -10,6 +10,9 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.5.1](./changelog/7.5.1.md) | July 2026 | ChurchCRM 7.5.1 adds built-in email composer, universal currency formatting, and global language fixes
+
+Built-in email composer with no character limits, Universal local currency formatting across all reports, Revamped fundraiser dashboard with campaign tracking, SOV and RTL language grammar fixes, Fixed member classification filtering accuracy |
 | [7.5.0](./changelog/7.5.0.md) | July 2026 | ChurchCRM 7.5.0 adds smarter attendance tracking and group management
 
 Did Not Attend follow-up lists, Cart to Group utility, Custom currency formatting, Per-person attendance history, Improved kiosk check-ins |
