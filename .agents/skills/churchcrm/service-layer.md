@@ -2,7 +2,7 @@
 title: "Service Layer"
 intent: "Guidance for creating service classes and performance best practices"
 tags: ["service","performance","architecture"]
-prereqs: ["php-best-practices.md","database-operations.md"]
+prereqs: ["[[php-best-practices]]","[[database-operations]]"]
 complexity: "intermediate"
 ---
 

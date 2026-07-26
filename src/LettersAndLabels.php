@@ -4,9 +4,13 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 require_once __DIR__ . '/Include/LabelFunctions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
+
+// Security: User must have menu options permission to use this page
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
 
 $sPageTitle = gettext('Letters and Mailing Labels');
 $sPageSubtitle = gettext('Generate mailing labels and form letters');

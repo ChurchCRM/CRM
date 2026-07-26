@@ -1,0 +1,6 @@
+# Defense in depth (GHSA-37mf-vq43-5qp9):
+# Community plugin PHP code is loaded by the app's PSR-4 autoloader.
+# It must never be executed via a direct HTTP request.
+<FilesMatch "\.(php|phar|phtml|pht|php3|php4|php5|php6|php7|php8)$">
+    Require all denied
+</FilesMatch>

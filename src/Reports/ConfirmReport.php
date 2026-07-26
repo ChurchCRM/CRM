@@ -5,7 +5,6 @@ namespace ChurchCRM\Reports;
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -13,8 +12,6 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Exception;
-
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(), 'CreateDirectory');
 
 class PdfConfirmReport extends ChurchInfoReport
 {

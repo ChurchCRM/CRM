@@ -2,7 +2,7 @@
 title: "API Compatibility & Deprecation"
 intent: "Patterns for maintaining backward compatibility, adding shims, and deprecation timelines"
 tags: ["api","compatibility","deprecation","shims"]
-prereqs: ["api-development.md","routing-architecture.md"]
+prereqs: ["[[api-development]]","[[routing-architecture]]"]
 complexity: "intermediate"
 ---
 

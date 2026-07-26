@@ -1,3 +1,10 @@
+---
+title: "Timezone Handling"
+intent: "End-to-end timezone conventions for events, calendars, kiosks, and any datetime-aware feature"
+tags: ["timezone", "frontend", "database"]
+prereqs: ["[[frontend-development]]"]
+complexity: "advanced"
+---
 # Timezone Handling — ChurchCRM
 
 End-to-end timezone conventions for events, calendars, kiosks, and any other church-time-aware feature. Built from the PR #8806 timezone refactor. **Read this before touching any datetime in the editor, calendar, kiosk, or related JS.**

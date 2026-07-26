@@ -339,7 +339,7 @@ function initializeFAB() {
 
   // Scroll to top when menu toggle is clicked so user sees the nav opening
   // Registered before early return so it works on all pages
-  $("#fab-menu-toggle").on("click", function () {
+  $("#fab-menu-toggle").on("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
@@ -355,8 +355,8 @@ function initializeFAB() {
   }
 
   // Set localized labels
-  fabPersonLabel.text(i18next.t("Add New") + " " + i18next.t("Person"));
-  fabFamilyLabel.text(i18next.t("Add New") + " " + i18next.t("Family"));
+  fabPersonLabel.text(i18next.t("Add New Person"));
+  fabFamilyLabel.text(i18next.t("Add New Family"));
 
   // Auto-hide FAB action buttons after 5 seconds (menu toggle stays visible)
   setTimeout(() => {

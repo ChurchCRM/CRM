@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "Dátum výročia"
 
 #: 
-msgid "Output Method:"
-msgstr "Výstupná metóda:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV – jednotlivé záznamy"
 
@@ -265,46 +261,14 @@ msgstr "Klasifikácia"
 msgid "Add Cart to Event"
 msgstr "Pridať košík k udalosti"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "Váš košík je prázdny!"
-
-#: 
-msgid "No family name entered!"
-msgstr "Nebolo zadané priezvisko rodiny!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Pridať košík k rodine"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Meno"
 
 #: 
-msgid "Assign Role"
-msgstr "Priradiť rolu"
-
-#: 
 msgid "Already in a family"
 msgstr "Už v rodine"
-
-#: 
-msgid "Create new family"
-msgstr "Vytvoriť novú rodinu"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Pri pridávaní novej rodiny zadajte údaje nižšie."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Použiť adresu/kontaktné údaje od"
-
-#: 
-msgid "Only the new data below"
-msgstr "Len nové údaje nižšie"
 
 #: 
 msgid "Do not auto-format"
@@ -317,10 +281,6 @@ msgstr "Pridať do rodiny"
 #: 
 msgid "Add Cart to Group"
 msgstr "Pridať košík do skupiny"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Vyberte skupinu, do ktorej chcete pridať košík"
 
 #: 
 msgid "Select Group"
@@ -398,10 +358,6 @@ msgstr "Akcia"
 #: 
 msgid "Member"
 msgstr "Člen"
-
-#: 
-msgid " of the"
-msgstr " z"
 
 #: 
 msgid "(No assigned family)"
@@ -1065,10 +1021,6 @@ msgid "Bank Draft"
 msgstr "Bankový prevod"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Minimálna celková suma:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 – Bez minima"
 
@@ -1093,10 +1045,6 @@ msgid "All Families"
 msgstr "Všetky rodiny"
 
 #: 
-msgid "Report Heading:"
-msgstr "Nadpis správy:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafika"
 
@@ -1107,14 +1055,6 @@ msgstr "Adresa zboru"
 #: 
 msgid "Blank"
 msgstr "Prázdny"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Poukaz na platbu:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Zoradiť údaje podľa:"
 
 #: 
 msgid "Deposit"
@@ -1167,10 +1107,6 @@ msgstr "Zoznam zbierok"
 #: 
 msgid "Date Start"
 msgstr "Dátum začiatku"
-
-#: 
-msgid "Apply Filters"
-msgstr "Použiť filtre"
 
 #: 
 msgid "Date End"
@@ -1485,10 +1421,6 @@ msgid "Current Role"
 msgstr "Aktuálna rola"
 
 #: 
-msgid "All People"
-msgstr "Všetci ľudia"
-
-#: 
 msgid "Email All"
 msgstr "Poslať e-mail všetkým"
 
@@ -1561,10 +1493,6 @@ msgid "Updated"
 msgstr "Aktualizované"
 
 #: 
-msgid "Yes, delete this record"
-msgstr "Áno, odstrániť tento záznam"
-
-#: 
 msgid "(this action cannot be undone)"
 msgstr "(táto akcia sa nedá vrátiť)"
 
@@ -1603,10 +1531,6 @@ msgstr "Editor čísla kupujúceho"
 #: 
 msgid "Generate Statement"
 msgstr "Vygenerovať výpis"
-
-#: 
-msgid "Buyers for this fundraiser:"
-msgstr "Kupujúci pre túto zbierku:"
 
 #: 
 msgid "Select all"
@@ -1727,10 +1651,6 @@ msgstr "Musíte zadať nenulové číslo šeku"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Číslo šeku nie je platné pre platbu v hotovosti"
-
-#: 
-msgid " more entries will fit."
-msgstr " ďalších záznamov sa zmestí."
 
 #: 
 msgid "Deposit closed"
@@ -1862,10 +1782,6 @@ msgid "Query Listing"
 msgstr "Zoznam dopytov"
 
 #: 
-msgid " record(s) returned"
-msgstr " záznam(ov) vrátený(ch)"
-
-#: 
 msgid "Query View"
 msgstr "Zobrazenie dopytu"
 
@@ -1876,22 +1792,6 @@ msgstr "Táto hodnota je povinná."
 #: 
 msgid "This value must be numeric."
 msgstr "Táto hodnota musí byť číselná."
-
-#: 
-msgid "This value must be at least "
-msgstr "Táto hodnota musí byť aspoň "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Táto hodnota nemôže byť viac ako "
-
-#: 
-msgid " characters long"
-msgstr " znakov dlhá"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Táto hodnota nemôže byť menej ako "
 
 #: 
 msgid "Run Query Again"
@@ -1926,20 +1826,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "UPOZORNENIE: Táto rodina má záznamy o daroch a NEMÔŽE byť odstránená, kým tieto dary nebudú priradené inej rodine."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Vyberte inú rodinu, s ktorou budú tieto dary priradené:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "UPOZORNENIE: Táto akcia sa nedá vrátiť a môže mať právne dôsledky!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "AKTUÁLNA RODINA S DARMI"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Potvrďte odstránenie záznamu tejto rodiny:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -1974,10 +1866,6 @@ msgid "Save Settings"
 msgstr "Uložiť nastavenia"
 
 #: 
-msgid "Default User Settings"
-msgstr "Predvolené nastavenia používateľa"
-
-#: 
 msgid "Permission"
 msgstr "Oprávnenie"
 
@@ -2006,18 +1894,6 @@ msgid "Login Name"
 msgstr "Prihlasovacie meno"
 
 #: 
-msgid "Add Records"
-msgstr "Pridávať záznamy"
-
-#: 
-msgid "Edit Records"
-msgstr "Upravovať záznamy"
-
-#: 
-msgid "Delete Records"
-msgstr "Odstraňovať záznamy"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "Spravovať vlastnosti a klasifikácie"
 
@@ -2028,14 +1904,6 @@ msgstr "Spravovať skupiny a roly"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "Spravovať dary a financie"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "Zobraziť, pridať a upraviť poznámky"
-
-#: 
-msgid "Edit Self"
-msgstr "Upraviť vlastný profil"
 
 #: 
 msgid "Admin"
@@ -2088,10 +1956,6 @@ msgstr "Editor dobrovoľníckych príležitostí"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Zatiaľ neboli pridané žiadne dobrovoľnícke príležitosti"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Poznámky \"Prečo prišiel\" pre "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2279,10 +2143,6 @@ msgid "Start Column"
 msgstr "Počiatočný stĺpec"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "Ignorovať neúplné<br>adresy"
-
-#: 
 msgid "File Type"
 msgstr "Typ súboru"
 
@@ -2335,14 +2195,6 @@ msgid "Cell"
 msgstr "Mobil"
 
 #: 
-msgid "Estimated value "
-msgstr "Odhadovaná hodnota "
-
-#: 
-msgid "Donated by "
-msgstr "Daroval/a "
-
-#: 
 msgid "Paddle"
 msgstr "Číslo ponuky"
 
@@ -2351,24 +2203,8 @@ msgid "Bid"
 msgstr "Ponuka"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimálna ponuka "
-
-#: 
 msgid "All Funds"
 msgstr "Všetky fondy"
-
-#: 
-msgid " for all funds"
-msgstr " pre všetky fondy"
-
-#: 
-msgid " for fund "
-msgstr " pre fond "
-
-#: 
-msgid "for funds "
-msgstr "pre fondy "
 
 #: 
 msgid "Donated Items"
@@ -2393,10 +2229,6 @@ msgstr "Zaplatená suma: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Zaplatené (  ) Hotovosť    (  ) Šek    (  ) Kreditná karta __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Platnosť __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "                                        Podpis ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2429,10 +2261,6 @@ msgstr "Adresár skupín"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Oddeľte tento lístok a pošlite ho spolu s vaším ďalším darom."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "Pošlite váš ďalší dar na adresu "
 
 #: 
 msgid "Gift Amount"
@@ -2579,10 +2407,6 @@ msgid "Family Select"
 msgstr "Výber rodiny"
 
 #: 
-msgid "with at least one:"
-msgstr "s aspoň jedným:"
-
-#: 
 msgid "Welcome to"
 msgstr "Vitajte v"
 
@@ -2687,18 +2511,6 @@ msgid "item"
 msgstr "položka"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "Kupujúci č. "
-
-#: 
-msgid "Family Members:"
-msgstr "Členovia rodiny:"
-
-#: 
 msgid "Anniversary"
 msgstr "Výročie"
 
@@ -2709,10 +2521,6 @@ msgstr "Poznámky"
 #: 
 msgid "Reports"
 msgstr "Správy"
-
-#: 
-msgid "family"
-msgstr "rodina"
 
 #: 
 msgid "Date Entered"
@@ -2789,10 +2597,6 @@ msgstr "Predvolené mesto"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Predvolený štát - Musí byť 2-písmenová skratka!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "Predvolený účet na prijímanie kópie všetkých e-mailov"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2937,10 +2741,6 @@ msgstr "Pridať darcov do zoznamu kupujúcich"
 #: 
 msgid "Data/Reports"
 msgstr "Údaje/Správy"
-
-#: 
-msgid "Query Menu"
-msgstr "Menu dopytov"
 
 #: 
 msgid "Family Properties"
@@ -4859,10 +4659,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "Špeciálne nastavenia skupiny: Typ nedeľnej školy"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "Skupinu nedeľnej školy nie je možné upraviť, iba v týchto dvoch prípadoch:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Pridať nové roly, ale nie upravovať ani premenovávať roly Žiak a Učiteľ."
 
@@ -5019,10 +4815,6 @@ msgid "Group Role"
 msgstr "Rola v skupine"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ALEBO vytvorte skupinu a pridajte KOŠÍK v JEDNEJ AKCII"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Vytvoriť skupinu + PRIDAŤ košík"
 
@@ -5165,14 +4957,6 @@ msgstr "Používateľské meno nie je nastavené"
 #: 
 msgid "Self Registrations"
 msgstr "Vlastné registrácie"
-
-#: 
-msgid "Public Calendar"
-msgstr "Verejný kalendár"
-
-#: 
-msgid "Private Calendar"
-msgstr "Súkromný kalendár"
 
 #: 
 msgid "Username"
@@ -5472,10 +5256,6 @@ msgid "Review"
 msgstr "Prehľad"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "Používateľ overený pomocou kľúča API: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "Neúspešný pokus o overenie kľúčom API"
 
@@ -5555,10 +5335,6 @@ msgstr "Hebrejčina"
 #: 
 msgid "Permissions"
 msgstr "Oprávnenia"
-
-#: 
-msgid "Manage Notes"
-msgstr "Spravovať poznámky"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -5792,20 +5568,12 @@ msgid "Log File Viewer"
 msgstr "Prehliadač súborov protokolov"
 
 #: 
-msgid "Filter by log level:"
-msgstr "Filtrovať podľa úrovne protokolu:"
-
-#: 
 msgid "Error"
 msgstr "Chyba"
 
 #: 
 msgid "Info"
 msgstr "Informácie"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "Počet riadkov na zobrazenie:"
 
 #: 
 msgid "Loading log file..."
@@ -6064,10 +5832,6 @@ msgid "Checks"
 msgstr "Šeky"
 
 #: 
-msgid "Clear Filters"
-msgstr "Vymazať filtre"
-
-#: 
 msgid "Click a bar to filter payments"
 msgstr "Kliknite na stĺpec pre filtrovanie platieb"
 
@@ -6170,10 +5934,6 @@ msgstr "Koreňová cesta"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP hostiteľ"
-
-#: 
-msgid "Tip:"
-msgstr "Tip:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6365,6 +6125,14 @@ msgid "optional"
 msgstr "voliteľné"
 
 #: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "osoba"
+msgstr[1] "osoby"
+msgstr[2] "ľudí"
+msgstr[3] "ľudí"
+
+#: 
 msgid "%d Orphaned Files Detected"
 msgstr "Zistených %d opustených súborov"
 
@@ -6451,10 +6219,6 @@ msgstr "Zatvoriť a obnoviť"
 #: 
 msgid "Confirm Deletion"
 msgstr "Potvrdiť odstránenie"
-
-#: 
-msgid "Create directory permission"
-msgstr "Oprávnenie na vytvorenie adresára"
 
 #: 
 msgid "Database Only"
@@ -6605,10 +6369,6 @@ msgid "Please check the backup file and try again."
 msgstr "Skontrolujte záložný súbor a skúste to znova."
 
 #: 
-msgid "Redirecting in"
-msgstr "Presmerovanie za"
-
-#: 
 msgid "Refresh List"
 msgstr "Obnoviť zoznam"
 
@@ -6647,10 +6407,6 @@ msgstr "Bezpečnostné odporúčanie"
 #: 
 msgid "Select Backup File"
 msgstr "Vybrať záložný súbor"
-
-#: 
-msgid "Supported formats:"
-msgstr "Podporované formáty:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6703,14 +6459,6 @@ msgstr "Vaša inštalácia ChurchCRM je čistá. Všetky súbory na serveri zodp
 #: 
 msgid "or click to browse"
 msgstr "alebo kliknite pre prehľadávanie"
-
-#: 
-msgid "seconds..."
-msgstr "sekúnd..."
-
-#: 
-msgid " Deposit #"
-msgstr " Vklad č."
 
 #: 
 msgid "%d missing classification"
@@ -6797,20 +6545,12 @@ msgid "Close All Deposits"
 msgstr "Zatvoriť všetky vklady"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "Zatvorené vklady:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "Zatvorené vs. celkové"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "Dokončite tieto úlohy, aby ste zabezpečili presné daňové výkazníctvo na konci roka pre vašich darcov."
-
-#: 
-msgid "Configuration:"
-msgstr "Konfigurácia:"
 
 #: 
 msgid "Configure Email"
@@ -6851,14 +6591,6 @@ msgstr "Prispôsobiteľná správa s filtrovaním podľa dátumu, fondu, rodiny 
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "Prispôsobte text, ktorý sa zobrazuje na daňových výkazoch (sTaxReport1, sTaxReport2, atď)."
-
-#: 
-msgid "Data Quality:"
-msgstr "Kvalita dát:"
-
-#: 
-msgid "Database:"
-msgstr "Databáza:"
 
 #: 
 msgid "Day"
@@ -6931,10 +6663,6 @@ msgstr "Navigácia rodiny"
 #: 
 msgid "Feb"
 msgstr "Feb"
-
-#: 
-msgid "File Integrity:"
-msgstr "Integrita súborov:"
 
 #: 
 msgid "Filtering"
@@ -7085,14 +6813,6 @@ msgid "Open"
 msgstr "Otvoriť"
 
 #: 
-msgid "Open Deposits:"
-msgstr "Otvorené vklady:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "Opustené súbory:"
-
-#: 
 msgid "Payment"
 msgstr "Platba"
 
@@ -7181,10 +6901,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Súhrn záväzkov oproti platbám podľa fondu za fiškálny rok."
 
 #: 
-msgid "System Configuration:"
-msgstr "Konfigurácia systému:"
-
-#: 
 msgid "System Health"
 msgstr "Zdravie systému"
 
@@ -7217,10 +6933,6 @@ msgid "Total Amount"
 msgstr "Celková suma"
 
 #: 
-msgid "Total Deposits:"
-msgstr "Celkové vklady:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Sledujte záväzky a priebeh platieb pre kampane a rozpočtovanie fiškálneho roka."
 
@@ -7247,10 +6959,6 @@ msgstr "Overte, či sa názov cirkvi, adresa a kontaktné informácie zobrazujú
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "Overte, či sú názvy a popisy fondov presné pre výkazy."
-
-#: 
-msgid "Version:"
-msgstr "Verzia:"
 
 #: 
 msgid "YTD Payments"
@@ -7289,10 +6997,6 @@ msgid "open"
 msgstr "otvoriť"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Zadajte štát/kraj pre krajiny bez preddefinovaných štátov)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurácia základnej URL je neplatná. Skontrolujte súbor Config.php."
 
@@ -7313,28 +7017,8 @@ msgid "Critical Configuration Error"
 msgstr "Kritická chyba konfigurácie"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "Aktuálna hodnota $URL[0]:"
-
-#: 
-msgid "Custom port:"
-msgstr "Vlastný port:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "Končí sa <strong>lomkou</strong> (/)"
-
-#: 
-msgid "Find the line:"
-msgstr "Nájdite riadok:"
-
-#: 
 msgid "Group Memberships"
 msgstr "Členstvá v skupinách"
-
-#: 
-msgid "How to Fix:"
-msgstr "Ako opraviť:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7345,16 +7029,8 @@ msgid "Language"
 msgstr "Jazyk"
 
 #: 
-msgid "Local development:"
-msgstr "Lokálny vývoj:"
-
-#: 
 msgid "Location & Contact Information"
 msgstr "Poloha a kontaktné informácie"
-
-#: 
-msgid "New to"
-msgstr "Nový v"
 
 #: 
 msgid "No locales configured"
@@ -7371,10 +7047,6 @@ msgstr "Zaregistrovať vašu cirkev"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "Uložte súbor a obnovte túto stránku"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "Začína sa <strong>http://</strong> alebo <strong>https://</strong>"
 
 #: 
 msgid "System Locale Support"
@@ -7399,14 +7071,6 @@ msgstr "URL musí končiť lomkou (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL musí začínať http:// alebo https://"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "Aktualizujte ho na platnú URL, ktorá:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "Platné príklady:"
 
 #: 
 msgid "View Logs"
@@ -7467,10 +7131,6 @@ msgstr "Spravodaj"
 #: 
 msgid "Personal"
 msgstr "Osobné"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "Prosím potvrďte informácie o vašej rodine:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7657,6 +7317,22 @@ msgid "Two-Factor Authentication"
 msgstr "Dvojfaktorová autentifikácia"
 
 #: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d osoba bola pridaná do Košíka."
+msgstr[1] "%d osoby boli pridané do Košíka."
+msgstr[2] "%d ľudí bolo pridaných do Košíka."
+msgstr[3] "%d ľudí bolo pridaných do Košíka."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d osoba bola úspešne pridaná do vybranej skupiny."
+msgstr[1] "%d osoby boli úspešne pridané do vybranej skupiny."
+msgstr[2] "%d ľudí bolo úspešne pridaných do vybranej skupiny."
+msgstr[3] "%d ľudí bolo úspešne pridaných do vybranej skupiny."
+
+#: 
 msgid "Are you sure you want to delete"
 msgstr "Ste si istí, že chcete odstrániť"
 
@@ -7717,10 +7393,6 @@ msgid "Move up"
 msgstr "Presunúť nahor"
 
 #: 
-msgid "Opportunity"
-msgstr "Príležitosť"
-
-#: 
 msgid "Order"
 msgstr "Poradie"
 
@@ -7735,26 +7407,6 @@ msgstr "Percentuálny podiel"
 #: 
 msgid "Person Properties"
 msgstr "Vlastnosti osoby"
-
-#: 
-msgid "Property Type"
-msgstr "Typ vlastnosti"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "Táto dobrovoľnícka príležitosť má priradené osoby. Odstránením sa odpriradia:"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Dobrovoľnícka príležitosť"
-
-#: 
-msgid "Warning:"
-msgstr "Upozornenie:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "Áno, odstrániť túto príležitosť"
 
 #. Context: locales
 #: 
@@ -7923,6 +7575,14 @@ msgstr "záväzkov"
 #: 
 msgid "records"
 msgstr "záznamy"
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d osoba"
+msgstr[1] "%d osoby"
+msgstr[2] "%d ľudí"
+msgstr[3] "%d ľudí"
 
 #: 
 msgid "All Classifications"
@@ -8127,6 +7787,14 @@ msgstr "nezrovnalosť zistená"
 #: 
 msgid "mismatches detected"
 msgstr "nezrovnalosti zistené"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hodina"
+msgstr[1] "%d hodiny"
+msgstr[2] "%d hodín"
+msgstr[3] "%d hodín"
 
 #: 
 msgid "About WebDAV Backups"
@@ -8415,10 +8083,6 @@ msgstr "Získajte API kľúč z MailChimp: Nastavenia účtu > Extras > API kľ�
 #: 
 msgid "Help"
 msgstr "Pomoc"
-
-#: 
-msgid "Id"
-msgstr "Id"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9046,10 +8710,6 @@ msgid "Inactive Groups"
 msgstr "Neaktívne skupiny"
 
 #: 
-msgid "Language & Localization"
-msgstr "Jazyk a lokalizácia"
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -9192,6 +8852,14 @@ msgstr "alebo novšiu na pokračovanie."
 #: 
 msgid "\"Why Came\" Notes"
 msgstr "\"Prečo prišli\" Poznámky"
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d výsledok pre \"%s\""
+msgstr[1] "%d výsledky pre \"%s\""
+msgstr[2] "%d výsledkov pre \"%s\""
+msgstr[3] "%d výsledkov pre \"%s\""
 
 #: 
 msgid "(optional — leave blank to include all roles)"
@@ -9374,14 +9042,6 @@ msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Priradiť a spravovať čísla kupujúcich zbierky"
 
 #: 
-msgid "Assign cart items to a family record"
-msgstr "Priradiť položky košíka k záznamu rodiny"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Priradiť položky košíka do skupiny"
-
-#: 
 msgid "Assign cart items to an event"
 msgstr "Priradiť položky košíka k podujatiu"
 
@@ -9440,10 +9100,6 @@ msgstr "Prehliadať a vyhľadávať kampane zbierok"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "Prehliadať fotografie členov zboru"
-
-#: 
-msgid "Buyer Number"
-msgstr "Číslo kupujúceho"
 
 #: 
 msgid "Buyers"
@@ -9548,10 +9204,6 @@ msgstr "Potvrďte svoje nové heslo"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Pripojiť SMTP server, aby ChurchCRM mohol odosielať e-maily"
-
-#: 
-msgid "Connect with others"
-msgstr "Spojiť sa s ostatnými"
 
 #: 
 msgid "Convert individual records into family units"
@@ -9694,10 +9346,6 @@ msgid "Each person can have their own email and mobile number."
 msgstr "Každá osoba môže mať vlastný e-mail a mobilné číslo."
 
 #: 
-msgid "Easy registration"
-msgstr "Jednoduchá registrácia"
-
-#: 
 msgid "Edit Class"
 msgstr "Upraviť triedu"
 
@@ -9718,10 +9366,6 @@ msgid "Edit custom properties for a group member"
 msgstr "Upraviť vlastné vlastnosti pre člena skupiny"
 
 #: 
-msgid "Email BCC"
-msgstr "E-mail skrytá kópia"
-
-#: 
 msgid "Email Families"
 msgstr "Poslať e-mail rodinám"
 
@@ -9732,14 +9376,6 @@ msgstr "Nastavenia e-mailu"
 #: 
 msgid "Email Tools"
 msgstr "Nástroje e-mailu"
-
-#: 
-msgid "Email cart items"
-msgstr "Poslať položky košíka e-mailom"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "E-mail so skrytými príjemcami"
 
 #: 
 msgid "Empty"
@@ -9954,10 +9590,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "Importovať kontakty z vašich publík MailChimp"
 
 #: 
-msgid "Import failed: "
-msgstr "Import zlyhal: "
-
-#: 
 msgid "Import from CSV"
 msgstr "Importovať z CSV"
 
@@ -10000,14 +9632,6 @@ msgstr "Neplatné \"Z čísla\":\"%s\". Uveďte kód krajiny, napr. +14155551234
 #: 
 msgid "Invite Your Team"
 msgstr "Pozvite váš tím"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Pripojte sa k našej komunite a zostaňte v spojení s"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "Preskočiť na ľubovoľný krok nastavenia:"
 
 #: 
 msgid "Key People"
@@ -10364,10 +9988,6 @@ msgid "Property deleted successfully."
 msgstr "Vlastnosť úspešne odstránená."
 
 #: 
-msgid "Property not found."
-msgstr "Vlastnosť nenájdená."
-
-#: 
 msgid "Quick Tips"
 msgstr "Rýchle tipy"
 
@@ -10394,10 +10014,6 @@ msgstr "Zaznamenať nové záväzky a platby"
 #: 
 msgid "Record why attendees visited your church"
 msgstr "Zaznamenať, prečo návštevníci navštívili vašu cirkev"
-
-#: 
-msgid "Register Your Family"
-msgstr "Zaregistrovať vašu rodinu"
 
 #: 
 msgid "Remove all from Cart"
@@ -10504,16 +10120,8 @@ msgid "Server Error"
 msgstr "Chyba servera"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "Nastavte oprávnenie na True, aby noví používatelia mohli zmeniť svoju aktuálnu hodnotu."
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "Nastavte e-mail správcu, aby ste mohli resetovať heslá a dostávať notifikácie"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "Nastaviť predvolené predvoľby pre nové používateľské účty"
 
 #: 
 msgid "Set up"
@@ -10566,10 +10174,6 @@ msgstr "Začať odznova"
 #: 
 msgid "Start Over"
 msgstr "Začať znova"
-
-#: 
-msgid "Stay informed"
-msgstr "Zostaňte informovaní"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -10852,18 +10456,6 @@ msgid "properties"
 msgstr "vlastnosti"
 
 #: 
-msgid "— Select a group —"
-msgstr "— Vyberte skupinu —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— Vyberte typ (voliteľné) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktívne podujatia"
-
-#: 
 msgid "Add Event"
 msgstr "Pridať podujatie"
 
@@ -11002,10 +10594,6 @@ msgstr "Text poznámky je povinný"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Iba autor poznámky alebo správca môže odstrániť túto poznámku"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "Iba autor poznámky alebo správca môže upraviť túto poznámku"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11170,11 +10758,6 @@ msgstr "Predvolená krajina"
 msgid "Default State"
 msgstr "Predvolený štát"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Oddeľovač na oddelenie e-mailov v odkazoch mailto:"
-
 #: 
 msgid "Distance Unit"
 msgstr "Jednotka vzdialenosti"
@@ -11186,10 +10769,6 @@ msgstr "Dashboard e-mailu"
 #: 
 msgid "Email Integrations"
 msgstr "E-mailové integrácie"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "Funkcia e-mailu je momentálne zakázaná. Nasledujúce funkcie nebudú fungovať, kým nebude e-mail povolený:"
 
 #: 
 msgid "Email is Disabled"
@@ -11573,11 +11152,6 @@ msgstr "Jednotka na meranie vzdialenosti."
 
 #. Context: userconfig_ucfg
 #: 
-msgid "User permission to create directories"
-msgstr "Oprávnenie používateľa na vytváranie adresárov"
-
-#. Context: userconfig_ucfg
-#: 
 msgid "User permission to send email via mailto: links"
 msgstr "Oprávnenie používateľa na odosielanie e-mailov cez odkazy mailto:"
 
@@ -11769,10 +11343,6 @@ msgstr "Automatické TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "Automatická záloha"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "Skrytá kópia všetkej pošty na"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12591,10 +12161,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "Vyberte medzi svetlou a tmavou farebnou schémou"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "Preklady ChurchCRM sú spravované komunitou na POEditor. Môžete pomôcť:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Prispôsobiť vzhľad a dojem z aplikácie"
 
@@ -12614,10 +12180,6 @@ msgstr "Iba databáza (.sql) alebo plný archív (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "Predvolený počet riadkov zobrazených v tabuľkách dát. Nadobúda účinnosť pri ďalšom načítaní stránky."
 
-#: 
-msgid "Edit own family only"
-msgstr "Upraviť iba vlastnú rodinu"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12632,10 +12194,6 @@ msgid "Found a bug with translations?"
 msgstr "Našli ste chybu v prekladoch?"
 
 #: 
-msgid "Grants all privileges"
-msgstr "Udeľuje všetky oprávnenia"
-
-#: 
 msgid "Green"
 msgstr "Zelená"
 
@@ -12646,10 +12204,6 @@ msgstr "Pomôžte zlepšiť preklady"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "Ak si všimnete komolené znaky, HTML entity zobrazované ako text alebo preklady, ktoré narúšajú rozloženie stránky, nahláste problém na GitHub, aby mohol byť opravený pre všetkých."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "Uveďte váš API kľúč v požiadavkách pomocou hlavičky x-api-key:"
 
 #: 
 msgid "Indigo"
@@ -12815,6 +12369,14 @@ msgstr "Žltá"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "Vaše aktuálne úrovne prístupu (iba na čítanie)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d opakovaná udalosť bola úspešne vytvorená."
+msgstr[1] "%d opakované udalosti boli úspešne vytvorené."
+msgstr[2] "%d opakovaných udalostí bolo úspešne vytvorených."
+msgstr[3] "%d opakovaných udalostí bolo úspešne vytvorených."
 
 #: 
 msgid "1. Sunday School Class"
@@ -13077,10 +12639,6 @@ msgid "Everyone is checked in!"
 msgstr "Všetci sú prihlásení!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "Najrýchlejší postup:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "Nájsť minulé podujatia, ktoré sú stále aktívne alebo majú neodhlásených účastníkov"
 
@@ -13195,10 +12753,6 @@ msgstr "RangeEnd musí byť v deň alebo po RangeStart"
 #: 
 msgid "Recommended"
 msgstr "Odporúčané"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "Reset natrvalo odstráni:"
 
 #: 
 msgid "SQL Only"
@@ -13697,10 +13251,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "E-mailová adresa cirkvi nie je nastavená — testovací e-mail nemá kam ísť."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "E-mail cirkvi — nakonfigurovaný na"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "Testovací e-mail ChurchCRM"
 
@@ -13807,10 +13357,6 @@ msgstr "Pamäť"
 #: 
 msgid "Memory Limit"
 msgstr "Limit pamäte"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "Teraz skontrolujte doručenú poštu príjemcu na potvrdenie doručenia. Hľadajte predmet:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13931,14 +13477,6 @@ msgstr "Aktualizovať nastavenia"
 #: 
 msgid "View full photo"
 msgstr "Zobraziť celú fotografiu"
-
-#: 
-msgid "page."
-msgstr "strana."
-
-#: 
-msgid "user:"
-msgstr "používateľ:"
 
 #: 
 msgid "1. Download the template"
@@ -14073,22 +13611,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "Váš CSV má duplicitné názvy stĺpcov. Premenujte duplicitné stĺpce (napr. pridajte \"(2)\" k druhému) a znova nahrajte."
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "Naozaj chcete trvalo odstrániť tento darovaný predmet?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "Naozaj chcete trvalo odstrániť toto číslo ponuky?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "Odstrániť darovaný predmet"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "Odstrániť číslo ponuky"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "Neplatný bezpečnostný token. Skúste znova."
 
@@ -14152,10 +13674,6 @@ msgstr "Nastavenie krajín"
 #: 
 msgid "Show all"
 msgstr "Zobraziť všetko"
-
-#: 
-msgid "Show:"
-msgstr "Zobraziť:"
 
 #. plugin:holidays:section:2:title
 #: 
@@ -14337,10 +13855,6 @@ msgid "Plugin uninstalled"
 msgstr "Plugin odinštalovaný"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "Plugin bol odinštalovaný."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "URL zip pluginu (iba HTTPS)"
 
@@ -14401,10 +13915,6 @@ msgid "Verified"
 msgstr "Overené"
 
 #: 
-msgid "What this plugin does:"
-msgstr "Čo tento plugin robí:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl, sha256 a pluginId sú všetky povinné pre neoverené inštalácie."
 
@@ -14419,18 +13929,6 @@ msgstr "Názov nemôže byť prázdny"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "Názov nemôže byť dlhší ako %d znakov"
-
-#: 
-msgid "Need help? Contact us"
-msgstr "Potrebujete pomoc? Kontaktujte nás"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "Otvorí 2-minútové okno pre registráciu zariadení na:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Vitajte — prihláste sa na správu vašej komunity"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14597,10 +14095,6 @@ msgid "You do not have permission to edit this note."
 msgstr "Nemáte oprávnenie na úpravu tejto poznámky."
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[Súkromná poznámka — viditeľná iba pre tvorcu]"
-
-#: 
 msgid "seconds"
 msgstr "sekúnd"
 
@@ -14729,10 +14223,6 @@ msgid "Available after the event is saved."
 msgstr "Dostupné po uložení podujatia."
 
 #: 
-msgid "BCC All"
-msgstr "Skrytá kópia všetkých"
-
-#: 
 msgid "Background Color"
 msgstr "Farba pozadia"
 
@@ -14837,10 +14327,6 @@ msgid "Code is invalid"
 msgstr "Kód je neplatný"
 
 #: 
-msgid "Coming soon"
-msgstr "Čoskoro"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Potvrdiť aktiváciu"
 
@@ -14869,10 +14355,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "Potvrďte kódom z vašej autentifikačnej aplikácie"
 
 #: 
-msgid "Copied"
-msgstr "Skopírované"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "Skopírované do schránky"
 
@@ -14883,10 +14365,6 @@ msgstr "Skopírované!"
 #: 
 msgid "Copy"
 msgstr "Kopírovať"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Kopírovať všetky e-maily"
 
 #: 
 msgid "Copy All Numbers"
@@ -14999,10 +14477,6 @@ msgstr "Stiahnuť zálohu a pokračovať"
 #: 
 msgid "Downloaded"
 msgstr "Stiahnuté"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Sťahovanie najnovšieho vydania z GitHub..."
 
 #: 
 msgid "Duration"
@@ -16132,10 +15606,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "udalosť(-í). Namiesto toho deaktivujte typ alebo najprv priraďte udalosti znova."
 
 #: 
-msgid "from this class?"
-msgstr "z tejto triedy?"
-
-#: 
 msgid "from this group?"
 msgstr "z tejto skupiny?"
 
@@ -16216,14 +15686,1624 @@ msgid "yrs"
 msgstr "r."
 
 #: 
-msgid "— Ignore —"
-msgstr "— Ignorovať —"
+msgid "Account options"
+msgstr "Možnosti účtu"
 
 #: 
-msgid "— Select Country —"
-msgstr "— Vybrať krajinu —"
+msgid "Register"
+msgstr "Registrácia"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovenčina"
 
 #: 
-msgid "— Select State —"
-msgstr "— Vyberte štát —"
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d minulá udalosť"
+msgstr[1] "%d minulé udalosti"
+msgstr[2] "%d minulej udalosti"
+msgstr[3] "%d minulých udalostí"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d%% textu rozhrania je preložených pre tento jazyk."
+
+#: 
+msgid "AM / PM"
+msgstr "dop. / pop."
+
+#: 
+msgid "Access denied"
+msgstr "Prístup zamietnutý"
+
+#: 
+msgid "All times shown in"
+msgstr "Všetky časy zobrazené v"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Narodeniny a výročia. Predvolené: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Nemožno odstrániť kalendár: %d udalosť/udalostí sú stále priradené. Najprv ich odstráňte alebo preraďte."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Formát mobilného telefónu"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Bežné kódy formátovania (príklady: piatok, 7. marca 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Aktuálne udalosti"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Formát dátumu a času"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formáty dátumu a času"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Formát výberu dátumu"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Text nápovedy výberu dátumu"
+
+#: 
+msgid "Date Without Year"
+msgstr "Dátum bez roka"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Deň, 2 číslice"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Deň, bez úvodnej nuly"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Predvolené: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Predvolené: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Príklad: \"l, j F Y\" vytvorí \"Piatok, 7. Marca 2025\". Ostatné znaky (medzery, čiarky, lomky) sa zobrazia presne ako sú napísané."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Formát dátumu pre názov súboru"
+
+#: 
+msgid "Fully translated."
+msgstr "Plne preložené."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Text nápovedy v poliach dátumu. Predvolené: rrrr-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Formát domáceho/pracovného telefónu"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Hodina 12h, 2 číslice"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Hodina 12h, bez nuly"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Hodina 24h, 2 číslice"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Obsahuje časovú zložku. Predvolené: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Jazyk a región"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Jazyk, časové pásmo, formáty dátumu a telefónu"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalizácia a formáty"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Nastavenia lokalizácie boli úspešne uložené"
+
+#: 
+msgid "Long Date Format"
+msgstr "Dlhý formát dátumu"
+
+#: 
+msgid "Minutes"
+msgstr "Minúty"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Mesiac a rok"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Mesiac, 2 číslice"
+
+#: 
+msgid "Month, full"
+msgstr "Mesiac, plný názov"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Mesiac, bez úvodnej nuly"
+
+#: 
+msgid "Month, short"
+msgstr "Mesiac, skratka"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nie je nainštalované na serveri — dátumy a čísla sa nemusia správne formátovať. Požiadajte poskytovateľa o inštaláciu (napr. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Formát PHP pre výber dátumu. Predvolené: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formáty telefónnych čísel"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefón s klapkou"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Uložiť nastavenia lokalizácie"
+
+#: 
+msgid "Selected Language"
+msgstr "Vybraný jazyk"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Nie je možné skontrolovať podporu národného prostredia servera (exec je zakázaný)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Podporované — toto národné prostredie je nainštalované na serveri."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Systémový jazyk, časové pásmo, formáty dátumu/času a telefónnych čísel"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Tieto polia používajú kódy formátovania (písmená predstavujúce časti dátumu). Vyberte predvolbu pod každým poľom alebo vytvorte vlastnú pomocou referenčnej dokumentácie. Živý náhľad ukazuje presne, ako bude výsledok vyzerať. Ponechajte prázdne pre použitie predvoleného nastavenia systému."
+
+#: 
+msgid "Translation completeness"
+msgstr "Úplnosť prekladu"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Sledovanie prekladu nie je pre tento jazyk k dispozícii."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Použite 9 ako zástupný znak pre číslicu (napr. (999) 999-9999). Ponechajte prázdne pre predvolené nastavenie systému."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Používa sa v názvoch exportovaných súborov. Predvolené: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Používa sa v správach a zoznamoch členov. Predvolené: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Deň týždňa, plný názov"
+
+#: 
+msgid "Weekday, short"
+msgstr "Deň týždňa, skratka"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Čo tieto kódy znamenajú?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Rok, 2 číslice"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Rok, 4 číslice"
+
+#: 
+msgid "am / pm"
+msgstr "dop. / pop."
+
+#: 
+msgid "past"
+msgstr "minulosť"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Chorvátsky"
+
+#: 
+msgid "%s's Account"
+msgstr "Účet používateľa %s"
+
+#: 
+msgid "Access"
+msgstr "Prístup"
+
+#: 
+msgid "Access level"
+msgstr "Úroveň prístupu"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "Správcovia majú úplný prístup ku všetkým funkciám a údajom. Individuálne oprávnenia sa neuplatňujú."
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "Všetci používatelia môžu zobrazovať členov zboru. Toto oprávnenie nemožno odstrániť."
+
+#: 
+msgid "Always granted"
+msgstr "Vždy udelené"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "Môže iba skontrolovať a overiť vlastnú rodinu. Žiadny iný prístup."
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "Vyberte konkrétne oprávnenia nižšie."
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "Kontaktujte správcu, ak chcete zmeniť svoje oprávnenia."
+
+#: 
+msgid "Custom permissions"
+msgstr "Vlastné oprávnenia"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "Úplný prístup — udeľuje všetky privilégiá."
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "Ak potrebujete ďalší prístup, kontaktujte správcu vašej cirkvi."
+
+#: 
+msgid "People &amp; Families"
+msgstr "Ľudia &amp; Rodiny"
+
+#: 
+msgid "Self-service"
+msgstr "Samoobsluha"
+
+#: 
+msgid "Self-service only"
+msgstr "Iba samoobsluha"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "Poznámka, ktorú sa pokúšate upraviť, už neexistuje."
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "Tento používateľ môže iba skontrolovať a aktualizovať profil vlastnej rodiny. Individuálne oprávnenia sa neuplatňujú."
+
+#: 
+msgid "User List"
+msgstr "Zoznam používateľov"
+
+#: 
+msgid "View Person"
+msgstr "Zobraziť osobu"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "Nemáte oprávnenie pridať poznámku pre túto rodinu."
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "Nemáte oprávnenie pridať poznámku pre túto osobu."
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "Nemáte oprávnenie upravovať túto poznámku"
+
+#: 
+msgid "Account locked"
+msgstr "Účet zablokovaný"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "Účet bol zablokovaný pre príliš veľa neúspešných pokusov o prihlásenie"
+
+#: 
+msgid "Account status"
+msgstr "Stav účtu"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "Rozšírené: vyberte konkrétnu cieľovú verziu"
+
+#: 
+msgid "Bug Fix"
+msgstr "Oprava chyby"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "Sprievodca predvolene stiahne odporúčané vydanie. Namiesto toho si môžete vybrať ľubovoľnú dostupnú verziu nižšie."
+
+#: 
+msgid "Change required"
+msgstr "Vyžaduje sa zmena"
+
+#: 
+msgid "Changelog"
+msgstr "Zoznam zmien"
+
+#: 
+msgid "Continue Anyway"
+msgstr "Pokračovať tak či tak"
+
+#: 
+msgid "Could not load release information."
+msgstr "Nepodarilo sa načítať informácie o vydaní."
+
+#: 
+msgid "Download & Install"
+msgstr "Stiahnuť a nainštalovať"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "Stiahnite verziu {{version}} a aplikujte ju na vašu inštaláciu."
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "Sťahujem vydanie z GitHub..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "Neúspešné pokusy o prihlásenie"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "Nepodarilo sa načítať náhľad aktualizácie"
+
+#: 
+msgid "Feature"
+msgstr "Funkcia"
+
+#: 
+msgid "Full changelog"
+msgstr "Úplný zoznam zmien"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "Nainštalovať stabilnú verziu {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "Inštalujem ďalšie vydanie"
+
+#: 
+msgid "Invalid file path"
+msgstr "Neplatná cesta k súboru"
+
+#: 
+msgid "Invalid version format"
+msgstr "Neplatný formát verzie"
+
+#: 
+msgid "Last login"
+msgstr "Posledné prihlásenie"
+
+#: 
+msgid "Loading release information..."
+msgstr "Načítavam informácie o vydaní..."
+
+#: 
+msgid "Locked"
+msgstr "Zablokovaný"
+
+#: 
+msgid "Major"
+msgstr "Hlavná"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "Chýbajú povinné polia: fullPath a sha1"
+
+#: 
+msgid "Must change password"
+msgstr "Je nutné zmeniť heslo"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "Pre túto verziu nie sú k dispozícii poznámky k vydaniu."
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "Pre vašu aktuálnu verziu nie sú dostupné žiadne aktualizácie."
+
+#: 
+msgid "Password change required"
+msgstr "Vyžaduje sa zmena hesla"
+
+#: 
+msgid "Password status"
+msgstr "Stav hesla"
+
+#: 
+msgid "Re-install current version"
+msgstr "Preinštalovať aktuálnu verziu"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "Obnovenie zlyhalo a databáza môže byť v neúplnom stave. Skontrolujte protokol aplikácie pre podrobnosti, potom obnovte overenú zálohu pred použitím systému."
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "Obnovenie zlyhalo: záložný súbor sa zdá byť neúplný alebo nie je platnou zálohou SQL. Databáza je teraz v neúplnom stave — obnovte overenú zálohu pred použitím systému."
+
+#: 
+msgid "Running Pre-release"
+msgstr "Spustená pred-vydaná verzia"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "Zobraziť úplnú cestu aktualizácie"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "Najnovšie stabilné vydanie je {{version}}. Môžete ho preinštalovať nižšie."
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "Tento účet je zablokovaný z dôvodu príliš veľa neúspešných pokusov o prihlásenie."
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "Tento používateľ musí nastaviť nové heslo pri ďalšom prihlásení."
+
+#: 
+msgid "User must change their password at next login"
+msgstr "Používateľ musí zmeniť heslo pri ďalšom prihlásení"
+
+#: 
+msgid "User must have Email permission"
+msgstr "Používateľ musí mať oprávnenie na e-mail"
+
+#: 
+msgid "View release notes"
+msgstr "Zobraziť poznámky k vydaniu"
+
+#: 
+msgid "What's New"
+msgstr "Čo je nové"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "Čo je nové vo verzii {{version}}"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "Používate pred-vydanú verziu."
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "Stále môžete pokračovať v aktualizácii bez zobrazenia poznámok k vydaniu."
+
+#: 
+msgid "You're up to date!"
+msgstr "Ste aktuálni!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "Musí byť vybraná platná osoba."
+
+#: 
+msgid "Add Donors"
+msgstr "Pridať darcov"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "Pridať do zoznamu kupujúcich"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "Automaticky priradiť čísla pádiel všetkým darcom položiek"
+
+#: 
+msgid "Create a new user account"
+msgstr "Vytvoriť nový používateľský účet"
+
+#: 
+msgid "Delete this item?"
+msgstr "Odstrániť túto položku?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "Odstrániť toto číslo pádla?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "Upraviť kupujúceho"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "Prihlásenie je už používané, vyberte si iné prihlásenie!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "Prihlásenie musí mať aspoň 3 znaky!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "Správa zbierok"
+
+#: 
+msgid "New User"
+msgstr "Nový používateľ"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "Vyberte prosím osobu, pre ktorú chcete vytvoriť používateľský účet."
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "Vyberte prosím aspoň jedného kupujúceho na vygenerovanie výkazov."
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "Návrat na panel zbierky"
+
+#: 
+msgid "The selected person was not found."
+msgstr "Vybraná osoba nebola nájdená."
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "Táto akcia automaticky pridá čísla pádiel všetkým darcom položiek v tejto zbierke, ktorým ešte nebolo pridelené číslo kupujúceho."
+
+#: 
+msgid "This person already has a user account."
+msgstr "Táto osoba už má používateľský účet."
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "Používateľ musí byť správca alebo mať oprávnenie na správu zbierok"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d archivovaná zbierka"
+msgstr[1] "%d archivované zbierky"
+msgstr[2] "%d archivovanej zbierky"
+msgstr[3] "%d archivovaných zbierok"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d osoba bola úspešne pridaná do vybranej rodiny."
+msgstr[1] "%d osoby boli úspešne pridané do vybranej rodiny."
+msgstr[2] "%d osoby boli úspešne pridané do vybranej rodiny."
+msgstr[3] "%d osôb bolo úspešne pridaných do vybranej rodiny."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s zbierky"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s z cieľa %s vyzbieraných"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktívne zbierky"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Pridať zbierku"
+
+#: 
+msgid "Add Item"
+msgstr "Pridať položku"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Pred priradením do rodiny pridajte osoby do košíka."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Najprv pridajte osoby do košíka, potom sa vráťte a pridajte ich do skupiny."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Za sumou (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Všetky stavy"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Všetky osoby vo vašom košíku sú už v rodine. Nikto nemôže byť priradený."
+
+#: 
+msgid "All types"
+msgstr "Všetky typy"
+
+#: 
+msgid "Already in"
+msgstr "Už v"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Vyskytla sa neočakávaná chyba. Skúste to znova."
+
+#: 
+msgid "Apply"
+msgstr "Použiť"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Priradiť členov košíka do skupiny"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Priradiť osoby z košíka do rodiny"
+
+#: 
+msgid "Assign to Family"
+msgstr "Priradiť do rodiny"
+
+#: 
+msgid "Associated Fund"
+msgstr "Pridružený fond"
+
+#: 
+msgid "At a Glance"
+msgstr "Na prvý pohľad"
+
+#: 
+msgid "Auction Reports"
+msgstr "Správy z aukcie"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Priemerná predajná cena"
+
+#: 
+msgid "Back to Cart"
+msgstr "Späť do košíka"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Späť na zbierky"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Pred sumou (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Najlepšia séria"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Ponukové listy"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Výpisy kupujúcich"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Registrovaní kupujúci"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Kupujúci v tomto roku"
+
+#: 
+msgid "Catalog"
+msgstr "Katalóg"
+
+#: 
+msgid "Certificates"
+msgstr "Certifikáty"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Znak používaný ako desatinná čiarka v peňažných sumách (napr. . alebo ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Znak používaný na oddeľovanie tisícov v peňažných sumách (napr. , alebo .)"
+
+#: 
+msgid "Check-out"
+msgstr "Odhlásenie"
+
+#: 
+msgid "Choose a group..."
+msgstr "Vyberte skupinu..."
+
+#: 
+msgid "Choose family"
+msgstr "Vyberte rodinu"
+
+#: 
+msgid "Code"
+msgstr "Kód"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Nastavte zobrazovanie peňažných súm v celom systéme."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Vytvoriť zbierku"
+
+#: 
+msgid "Create new family…"
+msgstr "Vytvoriť novú rodinu…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Formáty meny a financií"
+
+#: 
+msgid "Currency Format"
+msgstr "Formát meny"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Symbol meny"
+
+#: 
+msgid "Currency presets"
+msgstr "Predvolené nastavenia meny"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Symbol meny zobrazený vedľa peňažných súm (napr. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Oddeľovač desatinných miest"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Nezúčastnil sa"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Dátum ukončenia musí byť rovnaký alebo neskorší ako dátum začiatku"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Zadajte štát/kraj pre krajiny bez preddefinovaných štátov"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Odhadovaná celková hodnota"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Všetci z prepojených skupín sa prihlásili!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Nepodarilo sa načítať históriu dochádzky."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Pri vytváraní novej rodiny je vyžadované meno rodiny."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filtrovať podľa typu udalosti"
+
+#: 
+msgid "Financials"
+msgstr "Financie"
+
+#: 
+msgid "From date"
+msgstr "Od dátumu"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Prehľad zbierky"
+
+#: 
+msgid "Fundraisers"
+msgstr "Zbierky"
+
+#: 
+msgid "Fundraising"
+msgstr "Zbieranie príspevkov"
+
+#: 
+msgid "Goal %"
+msgstr "Cieľ %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Cieľová suma"
+
+#: 
+msgid "Highest Sale"
+msgstr "Najvyšší predaj"
+
+#: 
+msgid "Invalid status value"
+msgstr "Neplatná hodnota stavu"
+
+#: 
+msgid "Invalid type value"
+msgstr "Neplatná hodnota typu"
+
+#: 
+msgid "Items"
+msgstr "Položky"
+
+#: 
+msgid "Items Donated"
+msgstr "Darované položky"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Darované položky (tento rok)"
+
+#: 
+msgid "Items Sold"
+msgstr "Predané položky"
+
+#: 
+msgid "Last Attendance"
+msgstr "Posledná dochádzka"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Prepojený darcovský fond"
+
+#: 
+msgid "Live Preview"
+msgstr "Živý náhľad"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Načítava sa história dochádzky…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Položky na hromadný nákup"
+
+#: 
+msgid "New family details"
+msgstr "Údaje o novej rodine"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Nenašli sa žiadne zbierky %s."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Nenašli sa žiadne aktívne zbierky."
+
+#: 
+msgid "No attendance records found."
+msgstr "Nenašli sa žiadne záznamy o dochádzke."
+
+#: 
+msgid "No donated items yet."
+msgstr "Zatiaľ žiadne darované položky."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Neplatný dátum ukončenia"
+
+#: 
+msgid "Not included"
+msgstr "Nezahrnuté"
+
+#: 
+msgid "People to assign"
+msgstr "Osoby na priradenie"
+
+#: 
+msgid "Planning"
+msgstr "Plánovanie"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Vyberte prosím rodinnú rolu pre %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Vyplní polia nižšie bez uloženia. Kliknutím na Uložiť ich použite."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Pozícia symbolu meny voči sume."
+
+#: 
+msgid "Quick presets"
+msgstr "Rýchle predvolené nastavenia"
+
+#: 
+msgid "Raised"
+msgstr "Vyzbierané"
+
+#: 
+msgid "Raised This Year"
+msgstr "Vyzbierané tento rok"
+
+#: 
+msgid "Sample Amount"
+msgstr "Vzorová suma"
+
+#: 
+msgid "Sell-through"
+msgstr "Predajnosť"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Jeden znak používaný ako desatinná čiarka (napr. . alebo ,). Predvolené: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Jeden znak používaný na zoskupovanie tisícov (napr. , alebo .). Predvolené: ,"
+
+#: 
+msgid "Sold"
+msgstr "Predané"
+
+#: 
+msgid "Streak"
+msgstr "Séria"
+
+#: 
+msgid "Symbol Position"
+msgstr "Pozícia symbolu"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Symbol alebo kód zobrazený vedľa súm (napr. $, €, £, CHF, CAD $). Predvolené: $"
+
+#: 
+msgid "Target family"
+msgstr "Cieľová rodina"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Skupina sa nenašla. Skúste to znova."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Vybraná rodina už neexistuje. Obnovte stránku a skúste to znova."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Vybraná skupina sa nenašla. Vyberte platnú skupinu."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Takto sa budú zobrazovať dátumy, peňažné sumy a telefónne čísla v celom systéme."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Oddeľovač tisícov"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Oddeľovač tisícov a oddeľovač desatinných miest musia byť rôzne znaky."
+
+#: 
+msgid "To date"
+msgstr "Do dátumu"
+
+#: 
+msgid "Total Events"
+msgstr "Celkový počet udalostí"
+
+#: 
+msgid "Total Raised"
+msgstr "Celkovo vyzbierané"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Celkovo vyzbierané (bez stanoveného cieľa)"
+
+#: 
+msgid "Unsold"
+msgstr "Nepredané"
+
+#: 
+msgid "Updates as you type."
+msgstr "Aktualizuje sa počas písania."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Či sa symbol zobrazuje pred alebo za číselnou sumou. Predvolené: Pred sumou"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Váš košík je prázdny. Najprv pridajte osoby do košíka."
+
+#: 
+msgid "events"
+msgstr "udalosti"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount musí byť nezáporné číslo"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount musí byť nezáporné"
+
+#: 
+msgid "thru %s"
+msgstr "do %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "Poznámky Prečo prišiel pre %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s z rodiny %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "Zmestí sa ešte %d záznamov."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "Vrátených %d záznamov"
+
+#: 
+msgid "Assign role to all"
+msgstr "Priradiť rolu všetkým"
+
+#: 
+msgid "Buyer #"
+msgstr "Kupujúci č."
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Kupujúci pre túto zbierku"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Pôvody vkladania kalendára"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "Preklady ChurchCRM spravuje komunita na POEditor. Môžete pomôcť"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Uzatvorene vklady"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Aktuálna hodnota $URL[0]"
+
+#: 
+msgid "Custom port"
+msgstr "Vlastný port"
+
+#: 
+msgid "Data Quality"
+msgstr "Kvalita údajov"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Daroval(a) %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "Funkcia e-mailu je momentálne vypnutá. Nasledujúce funkcie nebudú fungovať, kým nebude e-mail povolený"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Odhadovaná hodnota $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Najrýchlejší pracovný postup"
+
+#: 
+msgid "File Integrity"
+msgstr "Integrita súborov"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filtrovať podľa úrovne záznamu"
+
+#: 
+msgid "Find the line"
+msgstr "Nájdite riadok"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Udeliť individuálne oprávnenia"
+
+#: 
+msgid "How to Fix"
+msgstr "Ako opraviť"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Import zlyhal: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Zahrňte svoj API kľúč do požiadaviek pomocou hlavičky x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Prejsť na ľubovoľný krok nastavenia"
+
+#: 
+msgid "Local development"
+msgstr "Lokálny vývoj"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Minimálna celková suma"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Minimálna ponuka $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Nová platba – %1$s Vklad č. %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Teraz skontrolujte doručenú poštu príjemcu a potvrdte doručenie. Hĺdadajte predmet"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Počet riadkov na zobrazenie"
+
+#: 
+msgid "Open Deposits"
+msgstr "Otvorené vklady"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Otvorí 2-minútové okno na registráciu zariadení na"
+
+#: 
+msgid "Output Method"
+msgstr "Metóda výstupu"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Potvrdte prosím vymazanie záznamu tejto rodiny"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Potvrdte prosím informácie o vašej rodine"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Prosím pošlite váš ďalší dar na adresu %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Prosím vyberte inú rodinu, s ktorou chcete priradiť tieto dary"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Pokladničný doklad"
+
+#: 
+msgid "Report Heading"
+msgstr "Nadpis správy"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Reset natrvalo vymaže"
+
+#: 
+msgid "Show"
+msgstr "Zobraziť"
+
+#: 
+msgid "Signature"
+msgstr "Podpis"
+
+#: 
+msgid "Sort Data by"
+msgstr "Zoradiť údaje podľa"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Zoznam pôvodov oddelených medzerou, ktorým je povolené vladať stránku kalendára do iframe."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Pôvody oddelene medzerou, ktorým je povolené vladať stránku kalendára do iframe."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Skupina nedľnej školy sa nedá upraviť, iba v týchto dvoch prípadoch"
+
+#: 
+msgid "Supported formats"
+msgstr "Podporované formáty"
+
+#: 
+msgid "System Configuration"
+msgstr "Konfigurácia systému"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "K tejto dobrovoľníckej príležitosti sú priradení ľudia. Vymazaním sa zrušia priradenia"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Táto hodnota nesmí mať menej ako %d znakov"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Táto hodnota nesmí mať viac ako %d znakov"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Táto hodnota nesmí byť viac ako %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Táto hodnota musí byť aspoň %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Celkové vklady"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Aktualizujte ho na platnú URL adresu, ktorá"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Používateľ overený cez API kľúč: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Platné príklady"
+
+#: 
+msgid "What this plugin does"
+msgstr "Čo tento doplnok robí"
+
+#: 
+msgid "for all funds"
+msgstr "pre všetky fondy"
+
+#: 
+msgid "for fund"
+msgstr "pre fond"
+
+#: 
+msgid "for funds"
+msgstr "pre fondy"
+
+#: 
+msgid "user"
+msgstr "používateľ"
+
+#: 
+msgid "with at least one"
+msgstr "s aspoň jedným"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Poslať aj na adresu zboru ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Naozaj chcete odstrániť túto osobu z"
+
+#: 
+msgid "BCC Mode"
+msgstr "Režim BCC"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "Prihlásených {{count}} ľadí."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "E-mailová adresa zboru sa automaticky pridá ako odstrániteľný príjemca pri skladaní e-mailov z CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "E-mail zboru — nakonfigurovaný na stránke %s."
+
+#: 
+msgid "Closing"
+msgstr "Zatváranie"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Súradnice aktualizované"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Kopírovať adresy"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Kopírovať e-mail zboru"
+
+#: 
+msgid "Email All Members"
+msgstr "Poslať e-mail všetkým členom"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Poslať e-mail vybraným členom"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Končí lomkou (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Geokódovanie zlyhalo"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Načítanie príjemcov zlyhalo. Skúste to znova."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Nepodarilo sa získať e-mailové adresy výberu"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Prihlásenie rodiny zlyhalo. Skúste to znova."
+
+#: 
+msgid "Ignore"
+msgstr "Ignorovať"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Ignorovať neúplé adresy"
+
+#: 
+msgid "Kids"
+msgstr "Deti"
+
+#: 
+msgid "Loading family members..."
+msgstr "Načítavanie členov rodiny..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Načítavanie príjemcov…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Nenašli sa žiadne e-mailové adresy."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Otvoriť v e-mailovom klientovi"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Presmerovanie za %s sekúnd..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Obnovuje sa..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Odstrániť zo skupiny"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Odstrániť {{personName}} z tejto triedy?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Požiadavka zlyhala ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Role na zahrnutie"
+
+#: 
+msgid "Select Country"
+msgstr "Vybrať krajinu"
+
+#: 
+msgid "Select State"
+msgstr "Vybrať štát"
+
+#: 
+msgid "Select a person"
+msgstr "Vybrať osobu"
+
+#: 
+msgid "Select role"
+msgstr "Vybrať rolu"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Vybrať typ (volitelné)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Začína s http:// alebo https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Táto skupina má iba jednu rolu."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Kto privedie {{name}}?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Kto vyzdvihne {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "Pracuje sa..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Zaostávate o {{releaseCount}} vydaní. Tu je to, čo získate"
+
+#: 
+msgid "click to expand"
+msgstr "kliknutím rozbaliť"
+
+#: 
+msgid "pick"
+msgstr "výber"
+
+#: 
+msgid "recipient"
+msgstr "príjemca"
+
+#: 
+msgid "recipients"
+msgstr "príjemcovia"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "zostáva {{hours}}h {{mins}}m"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Pridať nový vklad"
+
+#: 
+msgid "Add New Event"
+msgstr "Pridať novú udalosť"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Pridať nový typ udalosti"
+
+#: 
+msgid "Add New Family"
+msgstr "Pridať novú rodinu"
+
+#: 
+msgid "Add New Field"
+msgstr "Pridať nové pole"
+
+#: 
+msgid "Add New Fund"
+msgstr "Pridať nový fond"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Pridať novú príležitosť"
+
+#: 
+msgid "Add New Person"
+msgstr "Pridať novú osobu"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Pridať nový zäväzok"
+
+#: 
+msgid "Add New Role"
+msgstr "Pridať novú rolu"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Pridať novú dobrovoľnícku príležitosť"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Pridať triedu nedľnej školy"
+
+#: 
+msgid "Delete this family?"
+msgstr "Vymazatť túto rodinu?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Chcete vymazatť túto rodinu? Budete presmerovaní na stránku, kde si vyberiete, čo sa má vymazatť. Túto akciu nie je možné vrátiť späť."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Potvrdení vymazania rodiny"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Jednotlivci (bez rodiny)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Nové samostatné registrácie"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Potvrdení vymazania typu vlastnosti"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Skontrolujte nové rodiny a jednotlivcov, ktorí sa zaregistrovali cez váš verejný registračný formulár"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Nižšie skontrolujte nové registrácie z vášho verejného formulára. Záznamy bez e-mailu alebo telefónu sú označené — overte kontaktné údaje pred ďalším krokom."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Potvrdení vymazania dobrovoľníckej príležitosti"
 

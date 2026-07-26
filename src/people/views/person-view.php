@@ -242,13 +242,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         } elseif ((int)$type_ID === 11) {
                             $custom_Special = null;
                             $displayIcon = "fa-solid fa-phone";
-                            // Sanitize phone number for tel: URI
-                            $sanitizedPhone = preg_replace('/[^0-9+\-()e]/', '', $currentData);
+                            // Sanitize phone number for tel: URI (aligned with GHSA-frj8-mpcx-44g9 allowlist)
+                            $sanitizedPhone = preg_replace('/[^0-9+\-().\sxX#*]/', '', $currentData);
                             $displayLink = "tel:" . $sanitizedPhone;
                         }
                         $customFieldsHtml .= '<li class="mb-2">';
                         $customFieldsHtml .= '<i class="' . $displayIcon . ' me-2 text-body-secondary"></i>';
-                        $temp_string = nl2br(CustomFieldUtils::display($type_ID, $currentData, $custom_Special));
+                        $temp_string = nl2br(InputUtils::escapeHTML(CustomFieldUtils::display($type_ID, $currentData, $custom_Special)));
                         if ($displayLink) {
                             $customFieldsHtml .= '<strong>' . InputUtils::escapeHTML($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
                         } else {
@@ -371,7 +371,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php } ?>
                     <?php if ($bOkToEdit && $fam_ID !== '') { ?>
                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
-                        <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
+                        <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= InputUtils::escapeAttribute($person->getFamilyRoleName()) ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                         <a class="dropdown-item" id="addGroup"><i class="fa-solid fa-users me-2"></i><?= gettext("Assign New Group") ?></a>
@@ -387,7 +387,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
+                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -426,15 +426,15 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     <div class="d-flex align-items-center">
                                         <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">
                                         <?php if ($isSelf) { ?>
-                                            <span class="fw-bold"><?= $familyMember->getFullName() ?></span>
+                                            <span class="fw-bold"><?= InputUtils::escapeHTML($familyMember->getFullName()) ?></span>
                                             <i class="fa-solid fa-circle-user text-primary ms-2" title="<?= gettext('Current person') ?>"></i>
                                         <?php } else { ?>
-                                            <a href="<?= $familyMember->getViewURI() ?>"><?= $familyMember->getFullName() ?></a>
+                                            <a href="<?= $familyMember->getViewURI() ?>"><?= InputUtils::escapeHTML($familyMember->getFullName()) ?></a>
                                         <?php } ?>
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge bg-secondary-lt text-secondary"><?= $familyMember->getFamilyRoleName() ?></span>
+                                    <span class="badge bg-secondary-lt text-secondary"><?= InputUtils::escapeHTML($familyMember->getFamilyRoleName()) ?></span>
                                 </td>
                                 <td><?= $familyMember->getFormattedBirthDate(); ?></td>
                                 <td>
@@ -448,11 +448,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     <div class="dropdown">
                                         <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                         <div class="dropdown-menu dropdown-menu-end">
+                                            <?php if ($bOkToEdit) { ?>
                                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                                            <?php } ?>
                                             <button class="dropdown-item AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                                             <?php if ($bOkToEdit) { ?>
                                             <div class="dropdown-divider"></div>
-                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($familyMember->getFullName()) ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -502,22 +504,41 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         <?php endif; ?>
                     </div>
                 </div>
-                <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
-                <?php if ($personMapConfig !== null) : ?>
-                <div class="mt-2">
-                    <div id="person-map" style="height: 150px; border-radius: 4px;"></div>
-                </div>
-                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                    window.CRM = window.CRM || {};
-                    window.CRM.personMapConfig = <?= json_encode($personMapConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
-                </script>
-                <?php endif; ?>
-                <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
-                <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
             </div>
             <?php endif; ?>
         </div>
         <?php } ?>
+
+        <!--
+            Map config + container — unconditional on family/address presence (only
+            gated on $personMapConfig !== null), since it must render both for a
+            family's stored coordinates AND for a family-less person's own address
+            (the $fam_ID === '' branch above) — neither of which requires a family.
+            Previously this lived inside the "has family" card footer above, so the
+            family-less-with-own-address case never got a map despite the PHP setting
+            $personMapConfig for it.
+        -->
+        <?php if ($personMapConfig !== null) : ?>
+        <div class="mb-3">
+            <div id="person-map" style="height: 150px; border-radius: 4px;"></div>
+        </div>
+        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+            window.CRM = window.CRM || {};
+            window.CRM.personMapConfig = <?= json_encode($personMapConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+        </script>
+        <?php endif; ?>
+
+        <!--
+            person-view.js bundle (map, refresh-coordinates, group manager, timeline
+            filter, attendance history) — loaded unconditionally. It must NOT be
+            nested inside the "has family" / "has mailing address" blocks above:
+            group management, the timeline filter, and the attendance history tab
+            are all needed regardless of whether the person has a family or address
+            (e.g. the admin's own "Church Admin" placeholder person has neither).
+        -->
+        <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+        <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+        <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
 
         <!-- Tabbed Content -->
         <div class="card">
@@ -536,6 +557,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
                             <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('Volunteer') ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-attendance" href="#attendance" data-bs-toggle="tab">
+                            <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Attendance') ?>
                         </a>
                     </li>
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
@@ -603,7 +629,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                             if ((int)$type_ID === 11) {
                                                                 $prop_Special = null;
                                                             }
-                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . CustomFieldUtils::display($type_ID, $currentData, $prop_Special) . '</small>';
+                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . InputUtils::escapeHTML(CustomFieldUtils::display($type_ID, $currentData, $prop_Special)) . '</small>';
                                                         }
                                                     }
                                                 } ?>
@@ -735,6 +761,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         </table>
                     </div>
                     <?php endif; ?>
+
+                    <div class="tab-pane" id="attendance">
+                        <?php include __DIR__ . '/partials/attendance-tab.php'; ?>
+                    </div>
+
                 </div>
             </div>
         </div>

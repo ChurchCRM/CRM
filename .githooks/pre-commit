@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+#
+# ChurchCRM pre-commit hook — runs two fast, scoped checks on what's actually
+# staged in this commit (not the whole repo):
+#   1. Translatable-string rules in .agents/skills/churchcrm/i18n-localization.md
+#      (no trailing colon, no HTML/markup, no decorative wrapper punctuation
+#      baked into gettext()/i18next.t() calls).
+#   2. PHP syntax (`php -l`) on changed .php files only. The full 700+ file
+#      scan (`npm run build:php:validate:all`) still runs in CI — this is
+#      just a fast local guard so a typo isn't caught 10 minutes later in CI.
+#
+# Enabled automatically by `npm install` (the `prepare` script in
+# package.json points core.hooksPath at this directory). To bypass for
+# emergency hot-fixes only, run with `git commit --no-verify` — but you
+# MUST justify it in the PR description.
+
+set -e
+
+# Skip the hook in CI environments
+if [ -n "$CI" ] || [ -n "$GITHUB_ACTIONS" ]; then
+    exit 0
+fi
+
+# Skip if there is no package.json (e.g. detached worktree)
+if [ ! -f package.json ]; then
+    exit 0
+fi
+
+echo "→ pre-commit: checking staged translatable strings (node scripts/locale-check.js --staged)…"
+
+if ! node scripts/locale-check.js --staged; then
+    echo ""
+    echo "✘ pre-commit: locale-check found issues in the strings you staged."
+    echo "  Fix the issues above and re-stage, or bypass in an emergency with:"
+    echo "  git commit --no-verify (justify in PR)."
+    exit 1
+fi
+
+echo "✓ pre-commit: locale-check passed."
+
+echo "→ pre-commit: validating changed PHP files (npm run build:php:validate)…"
+
+if ! npm run --silent build:php:validate; then
+    echo ""
+    echo "✘ pre-commit: PHP syntax error in a changed file."
+    echo "  Fix the error above and re-stage, or bypass in an emergency with:"
+    echo "  git commit --no-verify (justify in PR)."
+    exit 1
+fi
+
+echo "✓ pre-commit: PHP syntax check passed."
+exit 0

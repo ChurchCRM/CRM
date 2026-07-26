@@ -66,7 +66,7 @@ $isOnboarding = $isOnboarding ?? false;
                     <i class="ti ti-cloud-upload mb-3" style="font-size: 2.5rem;"></i>
                     <p class="mb-1"><?= gettext('Drag and drop your backup file here') ?></p>
                     <p class="text-secondary mb-0"><?= gettext('or click to browse') ?></p>
-                    <small class="text-secondary"><?= gettext('Supported formats:') ?> .sql, .sql.gz, .tar.gz</small>
+                    <small class="text-secondary"><?= gettext('Supported formats') ?>: .sql, .sql.gz, .tar.gz</small>
                 </div>
                 <div id="fileInfo" class="card card-sm mt-2 d-none">
                     <div class="card-body py-2 px-3">
@@ -143,7 +143,7 @@ $isOnboarding = $isOnboarding ?? false;
                     <div class="spinner-border spinner-border-sm text-primary me-2" role="status">
                         <span class="visually-hidden"><?= gettext('Loading...') ?></span>
                     </div>
-                    <span id="redirectCountdown"><?= gettext('Redirecting in') ?> <strong>5</strong> <?= gettext('seconds...') ?></span>
+                    <span id="redirectCountdown"><?= sprintf(gettext('Redirecting in %s seconds...'), '<strong>5</strong>') ?></span>
                 </div>
             </div>
         </div>

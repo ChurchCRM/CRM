@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
@@ -128,6 +129,8 @@ function listPeople(Request $request, Response $response, array $args): Response
         }
     }
 
+    $personService = new PersonService();
+
     $pageArgs = [
         'sMode'                           => $sMode,
         'sRootPath'                       => SystemURLs::getRootPath(),
@@ -144,6 +147,9 @@ function listPeople(Request $request, Response $response, array $args): Response
         'filterByFmrOptionId'             => $filterByFmrOptionId,
         'filterByGender'                  => $filterByGender,
         'familyActiveStatus'              => $familyActiveStatus,
+        'genderDataCheckCount'            => $personService->getMissingGenderDataCount(),
+        'roleDataCheckCount'              => $personService->getMissingRoleDataCount(),
+        'classificationDataCheckCount'    => $personService->getMissingClassificationDataCount(),
     ];
 
     return $renderer->render($response, 'person-list.php', $pageArgs);

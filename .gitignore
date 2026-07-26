@@ -21,6 +21,9 @@ src/Images/Person/*
 # Keep the directories for CI/fresh installs
 !src/Images/Family/.gitkeep
 !src/Images/Person/.gitkeep
+# Keep the access-control deny files (GHSA-r286-h493-ppwj)
+!src/Images/Family/.htaccess
+!src/Images/Person/.htaccess
 
 #skins
 src/skin/v2/
@@ -35,6 +38,8 @@ src/generated-conf/
 
 # Community plugins are installed at runtime — not committed to git
 src/plugins/community/*
+# ...except the checked-in .htaccess deny block (GHSA-37mf-vq43-5qp9)
+!src/plugins/community/.htaccess
 
 src/admin/data/signatures.json
 src/ChurchCRM/model/ChurchCRM/Base
@@ -55,3 +60,9 @@ cypress.env.json
 
 .claude/settings.json
 cy.log
+
+# Obsidian machine-local workspace state (not shared config)
+knowledge-vault/.obsidian/workspace.json
+knowledge-vault/.obsidian/workspace-mobile.json
+knowledge-vault/.obsidian/plugins/
+/.obsidian

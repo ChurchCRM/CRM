@@ -210,10 +210,6 @@ msgid "Anniversary Date"
 msgstr "周年日期"
 
 #: 
-msgid "Output Method:"
-msgstr "输出方式："
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV个人纪录"
 
@@ -280,47 +276,14 @@ msgstr "分类"
 msgid "Add Cart to Event"
 msgstr "加入购物车事件"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "您的购物车是空的！"
-
-#: 
-msgid "No family name entered!"
-msgstr "没有家人的名字进了！"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "加入购物车家庭"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "名称"
 
 #: 
-msgid "Assign Role"
-msgstr "分配角色"
-
-#: 
 msgid "Already in a family"
 msgstr "早在一个家庭中"
-
-#: 
-msgid "Create new family"
-msgstr "建立新的家庭"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "如果要添加一个新的家庭，输入以下数据。"
-
-#: 
-#, fuzzy
-msgid "Use address/contact data from"
-msgstr "使用地址/联系数据​​"
-
-#: 
-msgid "Only the new data below"
-msgstr "只有以下的新数据"
 
 #: 
 msgid "Do not auto-format"
@@ -333,11 +296,6 @@ msgstr "添加到家庭"
 #: 
 msgid "Add Cart to Group"
 msgstr "加入购物车集团"
-
-#: 
-#, fuzzy
-msgid "Select the group to which you would like to add your cart"
-msgstr "选择您想添加您的购物车"
 
 #: 
 #, fuzzy
@@ -417,10 +375,6 @@ msgstr "行动"
 #: 
 msgid "Member"
 msgstr "成员"
-
-#: 
-msgid " of the"
-msgstr "的"
 
 #: 
 msgid "(No assigned family)"
@@ -1108,11 +1062,6 @@ msgid "Bank Draft"
 msgstr "银行汇票"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "最小起总金额："
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0  - 不设最低"
 
@@ -1137,10 +1086,6 @@ msgid "All Families"
 msgstr "所有的家庭"
 
 #: 
-msgid "Report Heading:"
-msgstr "报告标题："
-
-#: 
 msgid "Graphic"
 msgstr "图形"
 
@@ -1151,14 +1096,6 @@ msgstr "教会地址"
 #: 
 msgid "Blank"
 msgstr "空白"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "汇款时："
-
-#: 
-msgid "Sort Data by:"
-msgstr "通过对数据进行排序："
 
 #: 
 msgid "Deposit"
@@ -1213,10 +1150,6 @@ msgstr "筹款上市"
 #, fuzzy
 msgid "Date Start"
 msgstr "日期开始"
-
-#: 
-msgid "Apply Filters"
-msgstr "应用过滤器"
 
 #: 
 #, fuzzy
@@ -1550,10 +1483,6 @@ msgid "Current Role"
 msgstr "电流的作用"
 
 #: 
-msgid "All People"
-msgstr "所有人"
-
-#: 
 msgid "Email All"
 msgstr "电邮所有人"
 
@@ -1626,10 +1555,6 @@ msgid "Updated"
 msgstr "更新"
 
 #: 
-msgid "Yes, delete this record"
-msgstr "是的，删除这条记录"
-
-#: 
 msgid "(this action cannot be undone)"
 msgstr "（此操作不可撤消）"
 
@@ -1668,10 +1593,6 @@ msgstr "买家数字编辑器"
 #: 
 msgid "Generate Statement"
 msgstr "生成语句"
-
-#: 
-msgid "Buyers for this fundraiser:"
-msgstr "这个筹款活动的买家："
 
 #: 
 msgid "Select all"
@@ -1795,10 +1716,6 @@ msgstr "必须指定非零的支票号码"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "检查数量不适用于“现金”支付"
-
-#: 
-msgid " more entries will fit."
-msgstr "更多的项目将适合。"
 
 #: 
 msgid "Deposit closed"
@@ -1932,10 +1849,6 @@ msgid "Query Listing"
 msgstr "查询上市"
 
 #: 
-msgid " record(s) returned"
-msgstr "返回记录（S）"
-
-#: 
 msgid "Query View"
 msgstr "查询视图"
 
@@ -1946,22 +1859,6 @@ msgstr "此值是必需的。"
 #: 
 msgid "This value must be numeric."
 msgstr "此值必须是数字。"
-
-#: 
-msgid "This value must be at least "
-msgstr "这个值必须是至少"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "这个值不能超过"
-
-#: 
-msgid " characters long"
-msgstr "个字符长"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "这个值不能小于"
 
 #: 
 msgid "Run Query Again"
@@ -1997,20 +1894,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "警告：本系列有记录的捐款，这些捐款不被删除，直到与另一个家庭。"
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "请选择另一个家庭，并与他们相关联，这些捐赠："
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "警告：此操作不可撤消和法律问题！"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "目前的家庭捐款"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "请确认这个家庭的记录删除："
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2045,10 +1934,6 @@ msgid "Save Settings"
 msgstr "保存设置"
 
 #: 
-msgid "Default User Settings"
-msgstr "默认用户设置"
-
-#: 
 msgid "Permission"
 msgstr "允许"
 
@@ -2081,21 +1966,6 @@ msgstr "登录用户名"
 
 #: 
 #, fuzzy
-msgid "Add Records"
-msgstr "添加记录"
-
-#: 
-#, fuzzy
-msgid "Edit Records"
-msgstr "编辑记录"
-
-#: 
-#, fuzzy
-msgid "Delete Records"
-msgstr "删除记录"
-
-#: 
-#, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "管理属性和分类"
 
@@ -2108,16 +1978,6 @@ msgstr "管理组和角色"
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "管理捐款和金融"
-
-#: 
-#, fuzzy
-msgid "View, Add and Edit Notes"
-msgstr "查看，添加和编辑备注"
-
-#: 
-#, fuzzy
-msgid "Edit Self"
-msgstr "编辑自"
 
 #: 
 #, fuzzy
@@ -2174,10 +2034,6 @@ msgstr "义工机会编辑器"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "尚未添加任何志愿服务机会"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "“为什么来了”的注意事项"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2372,11 +2228,6 @@ msgstr "起始列"
 
 #: 
 #, fuzzy
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "忽略不完整的<br>地址"
-
-#: 
-#, fuzzy
 msgid "File Type"
 msgstr "文件类型"
 
@@ -2430,14 +2281,6 @@ msgid "Cell"
 msgstr "细胞"
 
 #: 
-msgid "Estimated value "
-msgstr "估价值"
-
-#: 
-msgid "Donated by "
-msgstr "捐赠"
-
-#: 
 msgid "Paddle"
 msgstr "桨"
 
@@ -2446,24 +2289,8 @@ msgid "Bid"
 msgstr "出价"
 
 #: 
-msgid "Minimum bid "
-msgstr "最低竞标价格"
-
-#: 
 msgid "All Funds"
 msgstr "所有基金"
-
-#: 
-msgid " for all funds"
-msgstr "所有资金"
-
-#: 
-msgid " for fund "
-msgstr "对于基金"
-
-#: 
-msgid "for funds "
-msgstr "资金"
 
 #: 
 #, fuzzy
@@ -2490,10 +2317,6 @@ msgstr "付金额：________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "电广传媒（）现金（）检查（）信用卡________________________________进出口__ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "签名________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2526,10 +2349,6 @@ msgstr "组目录"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "请取下该滑和邮件，你的下一个礼物。"
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "请邮寄给您的礼物"
 
 #: 
 #, fuzzy
@@ -2683,10 +2502,6 @@ msgid "Family Select"
 msgstr "家庭选择"
 
 #: 
-msgid "with at least one:"
-msgstr "至少有一个："
-
-#: 
 msgid "Welcome to"
 msgstr "欢迎来到"
 
@@ -2791,18 +2606,6 @@ msgid "item"
 msgstr "项目"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "买家＃"
-
-#: 
-msgid "Family Members:"
-msgstr "家庭成员："
-
-#: 
 msgid "Anniversary"
 msgstr "周年"
 
@@ -2813,10 +2616,6 @@ msgstr "注释"
 #: 
 msgid "Reports"
 msgstr "报告"
-
-#: 
-msgid "family"
-msgstr "家庭"
 
 #: 
 #, fuzzy
@@ -2897,10 +2696,6 @@ msgstr "默认城市"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "默认状态 - 必须是2个字母的缩写！"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "用于接收所有电子邮件副本的默认账户"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -3045,10 +2840,6 @@ msgstr "将捐赠者添加到买方名单"
 #: 
 msgid "Data/Reports"
 msgstr "数据/报告"
-
-#: 
-msgid "Query Menu"
-msgstr "查询菜单"
 
 #: 
 msgid "Family Properties"
@@ -4974,10 +4765,6 @@ msgstr "\n"
 "特定组设置：主日学校类型"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "主日学校小组不能修改，仅在这两种情况下："
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "添加新角色，但不能修改或重命名学生和教师角色。"
 
@@ -5134,10 +4921,6 @@ msgid "Group Role"
 msgstr "群组角色"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "或创建一个组并在一个动作中添加购物车"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "建立群组＋新增购物车\n"
 ""
@@ -5285,14 +5068,6 @@ msgstr "用户名未设置"
 #: 
 msgid "Self Registrations"
 msgstr "自助注册"
-
-#: 
-msgid "Public Calendar"
-msgstr "公共日历"
-
-#: 
-msgid "Private Calendar"
-msgstr "私人日历"
 
 #: 
 msgid "Username"
@@ -5585,10 +5360,6 @@ msgid "Review"
 msgstr "审查"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "用户通过API密钥进行了身份验证： "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "API密钥身份验证尝试失败"
 
@@ -5669,10 +5440,6 @@ msgstr "希伯来语"
 #: 
 msgid "Permissions"
 msgstr "权限"
-
-#: 
-msgid "Manage Notes"
-msgstr "管理笔记"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -5906,20 +5673,12 @@ msgid "Log File Viewer"
 msgstr "日志文件查看器"
 
 #: 
-msgid "Filter by log level:"
-msgstr "按日志级别筛选："
-
-#: 
 msgid "Error"
 msgstr "错误"
 
 #: 
 msgid "Info"
 msgstr "信息"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "显示行数："
 
 #: 
 msgid "Loading log file..."
@@ -6178,10 +5937,6 @@ msgid "Checks"
 msgstr "支票"
 
 #: 
-msgid "Clear Filters"
-msgstr "清除过滤器"
-
-#: 
 msgid "Click a bar to filter payments"
 msgstr "点击条形图以过滤付款"
 
@@ -6285,10 +6040,6 @@ msgstr "根路径"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP 主机"
-
-#: 
-msgid "Tip:"
-msgstr "提示："
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6570,10 +6321,6 @@ msgid "Confirm Deletion"
 msgstr "确认删除"
 
 #: 
-msgid "Create directory permission"
-msgstr "创建目录权限"
-
-#: 
 msgid "Database Only"
 msgstr "仅数据库"
 
@@ -6722,10 +6469,6 @@ msgid "Please check the backup file and try again."
 msgstr "请检查备份文件并再试一次。"
 
 #: 
-msgid "Redirecting in"
-msgstr "重定向于"
-
-#: 
 msgid "Refresh List"
 msgstr "刷新列表"
 
@@ -6764,10 +6507,6 @@ msgstr "安全建议"
 #: 
 msgid "Select Backup File"
 msgstr "选择备份文件"
-
-#: 
-msgid "Supported formats:"
-msgstr "支持的格式："
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6820,14 +6559,6 @@ msgstr "您的 ChurchCRM 安装是干净的。服务器上的所有文件都与�
 #: 
 msgid "or click to browse"
 msgstr "或点击浏览"
-
-#: 
-msgid "seconds..."
-msgstr "秒..."
-
-#: 
-msgid " Deposit #"
-msgstr " 存款编号 #"
 
 #: 
 msgid "%d missing classification"
@@ -6914,20 +6645,12 @@ msgid "Close All Deposits"
 msgstr "关闭所有存款"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "已关闭的存款："
-
-#: 
 msgid "Closed vs Total"
 msgstr "已关闭对比总计"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "完成这些任务，以确保为您的捐助者提供准确的年终税务报告。"
-
-#: 
-msgid "Configuration:"
-msgstr "配置："
 
 #: 
 msgid "Configure Email"
@@ -6968,14 +6691,6 @@ msgstr "可自定义报告，可按日期、基金、家庭和付款方式过滤
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "自定义出现在税务声明上的文本。"
-
-#: 
-msgid "Data Quality:"
-msgstr "数据质量："
-
-#: 
-msgid "Database:"
-msgstr "数据库："
 
 #: 
 msgid "Day"
@@ -7048,10 +6763,6 @@ msgstr "家庭导航"
 #: 
 msgid "Feb"
 msgstr "二月"
-
-#: 
-msgid "File Integrity:"
-msgstr "文件完整性："
 
 #: 
 msgid "Filtering"
@@ -7202,14 +6913,6 @@ msgid "Open"
 msgstr "开启"
 
 #: 
-msgid "Open Deposits:"
-msgstr "开启中的存款："
-
-#: 
-msgid "Orphaned Files:"
-msgstr "孤立文件："
-
-#: 
 msgid "Payment"
 msgstr "付款"
 
@@ -7298,10 +7001,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "财政年度各基金的认献与付款摘要。"
 
 #: 
-msgid "System Configuration:"
-msgstr "系统配置："
-
-#: 
 msgid "System Health"
 msgstr "系统健康状况"
 
@@ -7334,10 +7033,6 @@ msgid "Total Amount"
 msgstr "总金额"
 
 #: 
-msgid "Total Deposits:"
-msgstr "总存款："
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "追踪活动和财政年度预算的认献和付款进度。"
 
@@ -7364,10 +7059,6 @@ msgstr "核实教会名称、地址和联系信息出现在税务声明上。"
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "核实声明中的基金名称和描述是否准确。"
-
-#: 
-msgid "Version:"
-msgstr "版本："
 
 #: 
 msgid "YTD Payments"
@@ -7406,10 +7097,6 @@ msgid "open"
 msgstr "开启"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "（为没有预定义州/省的国家输入州/省）"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "基础 URL 配置无效。请检查您的 Config.php 文件。"
 
@@ -7430,28 +7117,8 @@ msgid "Critical Configuration Error"
 msgstr "关键配置错误"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "当前 $URL[0] 的值："
-
-#: 
-msgid "Custom port:"
-msgstr "自定义端口："
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "以<strong>结尾斜杠</strong> (/) 结束"
-
-#: 
-msgid "Find the line:"
-msgstr "找到这一行："
-
-#: 
 msgid "Group Memberships"
 msgstr "群组成员身份"
-
-#: 
-msgid "How to Fix:"
-msgstr "如何修复："
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7462,16 +7129,8 @@ msgid "Language"
 msgstr "语言"
 
 #: 
-msgid "Local development:"
-msgstr "本地开发："
-
-#: 
 msgid "Location & Contact Information"
 msgstr "地点与联系信息"
-
-#: 
-msgid "New to"
-msgstr "新加入"
 
 #: 
 msgid "No locales configured"
@@ -7488,10 +7147,6 @@ msgstr "注册您的教会"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "保存文件并刷新此页面"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "以 <strong>http://</strong> 或 <strong>https://</strong> 开始"
 
 #: 
 msgid "System Locale Support"
@@ -7516,14 +7171,6 @@ msgstr "URL 必须以结尾斜杠 (/) 结束"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL 必须以 http:// 或 https:// 开始"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "将其更新为有效的 URL，该 URL："
-
-#: 
-msgid "Valid Examples:"
-msgstr "有效示例："
 
 #: 
 msgid "View Logs"
@@ -7584,10 +7231,6 @@ msgstr "通讯报"
 #: 
 msgid "Personal"
 msgstr "个人"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "请确认您的家庭信息："
 
 #: 
 msgid "Please update our records with corrections"
@@ -7779,11 +7422,6 @@ msgid_plural "%d People added to the Cart."
 msgstr[0] "%d 人已加入清单。"
 
 #: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d 人已成功加入选定的家庭。"
-
-#: 
 msgid "%d Person successfully added to selected Group."
 msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d 人已成功加入选定的群组。"
@@ -7849,10 +7487,6 @@ msgid "Move up"
 msgstr "上移"
 
 #: 
-msgid "Opportunity"
-msgstr "机会"
-
-#: 
 msgid "Order"
 msgstr "顺序"
 
@@ -7867,26 +7501,6 @@ msgstr "百分比"
 #: 
 msgid "Person Properties"
 msgstr "个人属性"
-
-#: 
-msgid "Property Type"
-msgstr "属性类型"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "有人被分配到此志愿服务机会。删除将取消分配："
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "志愿服务机会"
-
-#: 
-msgid "Warning:"
-msgstr "警告："
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "是，删除此机会"
 
 #. Context: locales
 #: 
@@ -8559,10 +8173,6 @@ msgid "Help"
 msgstr "帮助"
 
 #: 
-msgid "Id"
-msgstr "编号"
-
-#: 
 msgid "Image shown when no Gravatar exists for the email address"
 msgstr "当电子邮件地址没有Gravatar时显示的图像"
 
@@ -9188,10 +8798,6 @@ msgid "Inactive Groups"
 msgstr "非活跃小组"
 
 #: 
-msgid "Language & Localization"
-msgstr "语言和本地化"
-
-#: 
 msgid "Map"
 msgstr "地图"
 
@@ -9521,14 +9127,6 @@ msgid "Assign and manage fundraiser buyer numbers"
 msgstr "分配和管理筹款活动买家号码"
 
 #: 
-msgid "Assign cart items to a family record"
-msgstr "将列表项目分配给家族记录"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "将列表项目分配给组"
-
-#: 
 msgid "Assign cart items to an event"
 msgstr "将列表项目分配给事件"
 
@@ -9587,10 +9185,6 @@ msgstr "浏览并搜索筹款活动"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "浏览会众成员的照片"
-
-#: 
-msgid "Buyer Number"
-msgstr "买家号码"
 
 #: 
 msgid "Buyers"
@@ -9695,10 +9289,6 @@ msgstr "确认您的新密码"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "连接 SMTP 服务器以便 ChurchCRM 可以发送电子邮件"
-
-#: 
-msgid "Connect with others"
-msgstr "与他人联系"
 
 #: 
 msgid "Convert individual records into family units"
@@ -9841,10 +9431,6 @@ msgid "Each person can have their own email and mobile number."
 msgstr "每个人可以拥有自己的电子邮件和手机号码。"
 
 #: 
-msgid "Easy registration"
-msgstr "简单注册"
-
-#: 
 msgid "Edit Class"
 msgstr "编辑课程"
 
@@ -9865,10 +9451,6 @@ msgid "Edit custom properties for a group member"
 msgstr "编辑小组成员的自定义属性"
 
 #: 
-msgid "Email BCC"
-msgstr "邮件密送"
-
-#: 
 msgid "Email Families"
 msgstr "发送邮件给家庭"
 
@@ -9879,14 +9461,6 @@ msgstr "邮件设置"
 #: 
 msgid "Email Tools"
 msgstr "邮件工具"
-
-#: 
-msgid "Email cart items"
-msgstr "发送邮件给选择列表中的人员"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "以隐藏收件人方式发送邮件"
 
 #: 
 msgid "Empty"
@@ -10101,10 +9675,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "从您的 MailChimp 受众中导入联系人"
 
 #: 
-msgid "Import failed: "
-msgstr "导入失败："
-
-#: 
 msgid "Import from CSV"
 msgstr "从 CSV 导入"
 
@@ -10147,14 +9717,6 @@ msgstr "无效的\"发送号码\"：\"%s\"。请包含国家代码，例如 +141
 #: 
 msgid "Invite Your Team"
 msgstr "邀请您的团队"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "加入我们的社区并保持联系"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "跳转到任意设置步骤："
 
 #: 
 msgid "Key People"
@@ -10511,10 +10073,6 @@ msgid "Property deleted successfully."
 msgstr "属性已成功删除。"
 
 #: 
-msgid "Property not found."
-msgstr "未找到属性。"
-
-#: 
 msgid "Quick Tips"
 msgstr "快速提示"
 
@@ -10541,10 +10099,6 @@ msgstr "记录新的奉献承诺和奉献款"
 #: 
 msgid "Record why attendees visited your church"
 msgstr "记录来访者来教会的原因"
-
-#: 
-msgid "Register Your Family"
-msgstr "注册您的家庭"
 
 #: 
 msgid "Remove all from Cart"
@@ -10651,16 +10205,8 @@ msgid "Server Error"
 msgstr "服务器错误"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "将权限设为\"是\"以允许新用户更改其当前值。"
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "设置管理员邮箱以便重置密码和接收通知"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "设置新用户账户的默认偏好"
 
 #: 
 msgid "Set up"
@@ -10713,10 +10259,6 @@ msgstr "全新开始"
 #: 
 msgid "Start Over"
 msgstr "重新开始"
-
-#: 
-msgid "Stay informed"
-msgstr "保持关注"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -10999,18 +10541,6 @@ msgid "properties"
 msgstr "属性"
 
 #: 
-msgid "— Select a group —"
-msgstr "— 选择小组 —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— 选择类型（可选）—"
-
-#: 
-msgid "Active Events"
-msgstr "进行中的活动"
-
-#: 
 msgid "Add Event"
 msgstr "添加活动"
 
@@ -11149,10 +10679,6 @@ msgstr "备注内容为必填项"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "只有备注作者或管理员才能删除此备注"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "只有备注作者或管理员才能编辑此备注"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11317,11 +10843,6 @@ msgstr "默认国家"
 msgid "Default State"
 msgstr "默认状态"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "在mailto:链接中分隔电子邮件的分隔符"
-
 #: 
 msgid "Distance Unit"
 msgstr "距离单位"
@@ -11333,10 +10854,6 @@ msgstr "电子邮件仪表板"
 #: 
 msgid "Email Integrations"
 msgstr "电子邮件集成"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "电子邮件功能当前已禁用。在启用电子邮件之前,以下功能将无法工作:"
 
 #: 
 msgid "Email is Disabled"
@@ -11720,11 +11237,6 @@ msgstr "用于测量距离的单位。"
 
 #. Context: userconfig_ucfg
 #: 
-msgid "User permission to create directories"
-msgstr "用户权限以创建目录"
-
-#. Context: userconfig_ucfg
-#: 
 msgid "User permission to send email via mailto: links"
 msgstr "用户权限通过 mailto: 链接发送电子邮件"
 
@@ -11916,10 +11428,6 @@ msgstr "自动TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "自动备份"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "抄送所有邮件至"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12738,10 +12246,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "选择浅色或深色主题"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "ChurchCRM 的翻译由社区在 POEditor 上管理。您可以通过以下方式提供帮助："
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "自定义应用程序的外观与感觉"
 
@@ -12761,10 +12265,6 @@ msgstr "仅数据库（.sql）或完整存档（.tar.gz）"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "数据表中默认显示的行数。在下次页面加载时生效。"
 
-#: 
-msgid "Edit own family only"
-msgstr "仅编辑自己的家庭信息"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12779,10 +12279,6 @@ msgid "Found a bug with translations?"
 msgstr "发现翻译错误？"
 
 #: 
-msgid "Grants all privileges"
-msgstr "授予所有权限"
-
-#: 
 msgid "Green"
 msgstr "绿色"
 
@@ -12793,10 +12289,6 @@ msgstr "帮助改善翻译"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "如果您发现乱码、HTML 实体以文字形式出现，或翻译导致页面布局问题，请在 GitHub 上报告，以便为所有人修复。"
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "在请求中使用 x-api-key 标头包含您的 API 密钥："
 
 #: 
 msgid "Indigo"
@@ -13229,10 +12721,6 @@ msgid "Everyone is checked in!"
 msgstr "所有人均已签到！"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "最快流程："
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "查找仍处于激活状态或有未签出参与者的历史活动"
 
@@ -13347,10 +12835,6 @@ msgstr "RangeEnd 必须等于或晚于 RangeStart"
 #: 
 msgid "Recommended"
 msgstr "推荐"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "重置将永久删除："
 
 #: 
 msgid "SQL Only"
@@ -13849,10 +13333,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "教会邮件地址未设置——测试邮件无处发送。"
 
 #: 
-msgid "Church email — configured on the"
-msgstr "教会邮件——配置于"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "ChurchCRM 测试邮件"
 
@@ -13959,10 +13439,6 @@ msgstr "内存"
 #: 
 msgid "Memory Limit"
 msgstr "内存限制"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "现在请检查收件人的收件箱以确认投递。请查找主题："
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -14083,14 +13559,6 @@ msgstr "更新设置"
 #: 
 msgid "View full photo"
 msgstr "查看完整照片"
-
-#: 
-msgid "page."
-msgstr "页面。"
-
-#: 
-msgid "user:"
-msgstr "用户："
 
 #: 
 msgid "1. Download the template"
@@ -14225,22 +13693,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "您的 CSV 文件中存在重复的列名。请重命名重复的列（例如在第二个列名后添加「(2)」），然后重新上传。"
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "您确定要永久删除此捐赠物品吗？"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "您确定要永久删除此竞拍号吗？"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "删除捐赠物品"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "删除竞拍号"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "安全令牌无效。请重试。"
 
@@ -14304,10 +13756,6 @@ msgstr "设置国家/地区"
 #: 
 msgid "Show all"
 msgstr "显示全部"
-
-#: 
-msgid "Show:"
-msgstr "显示："
 
 #. plugin:holidays:section:2:title
 #: 
@@ -14489,10 +13937,6 @@ msgid "Plugin uninstalled"
 msgstr "插件已卸载"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "插件已卸载。"
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "插件 ZIP 下载地址（仅限 HTTPS）"
 
@@ -14553,10 +13997,6 @@ msgid "Verified"
 msgstr "已验证"
 
 #: 
-msgid "What this plugin does:"
-msgstr "此插件的功能："
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "未验证安装需要提供 downloadUrl、sha256 和 pluginId。"
 
@@ -14571,18 +14011,6 @@ msgstr "名称不能为空"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "名称不能超过 %d 个字符"
-
-#: 
-msgid "Need help? Contact us"
-msgstr "需要帮助？联系我们"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "打开一个 2 分钟的窗口，供设备在以下地址注册："
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "欢迎——登录以管理您的会众"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14749,10 +14177,6 @@ msgid "You do not have permission to edit this note."
 msgstr "您没有权限编辑此备注。"
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[私人备注 — 仅创建者可见]"
-
-#: 
 msgid "seconds"
 msgstr "秒"
 
@@ -14881,10 +14305,6 @@ msgid "Available after the event is saved."
 msgstr "事件保存后可用。"
 
 #: 
-msgid "BCC All"
-msgstr "全部密送"
-
-#: 
 msgid "Background Color"
 msgstr "背景颜色"
 
@@ -14989,10 +14409,6 @@ msgid "Code is invalid"
 msgstr "验证码无效"
 
 #: 
-msgid "Coming soon"
-msgstr "即将推出"
-
-#: 
 msgid "Confirm Activation"
 msgstr "确认激活"
 
@@ -15021,10 +14437,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "使用验证器应用中的验证码确认"
 
 #: 
-msgid "Copied"
-msgstr "已复制"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "已复制到剪贴板"
 
@@ -15035,10 +14447,6 @@ msgstr "已复制！"
 #: 
 msgid "Copy"
 msgstr "复制"
-
-#: 
-msgid "Copy All Emails"
-msgstr "复制所有电子邮件"
 
 #: 
 msgid "Copy All Numbers"
@@ -15151,10 +14559,6 @@ msgstr "下载备份并继续"
 #: 
 msgid "Downloaded"
 msgstr "已下载"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "正在从 GitHub 下载最新版本..."
 
 #: 
 msgid "Duration"
@@ -16284,10 +15688,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "个事件。请停用此类型，或先重新分配事件。"
 
 #: 
-msgid "from this class?"
-msgstr "从此班级？"
-
-#: 
 msgid "from this group?"
 msgstr "从此小组？"
 
@@ -16368,14 +15768,1605 @@ msgid "yrs"
 msgstr "年"
 
 #: 
-msgid "— Ignore —"
-msgstr "— 忽略 —"
+msgid "Account options"
+msgstr "账户选项"
 
 #: 
-msgid "— Select Country —"
-msgstr "— 选择国家 —"
+msgid "Register"
+msgstr "注册"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "斯洛伐克语"
 
 #: 
-msgid "— Select State —"
-msgstr "— 选择省/自治区 —"
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d个过去的事件"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "此语言的界面文本已翻译 %d%%。"
+
+#: 
+msgid "AM / PM"
+msgstr "上午 / 下午"
+
+#: 
+msgid "Access denied"
+msgstr "访问被拒绝"
+
+#: 
+msgid "All times shown in"
+msgstr "所有时间显示为"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "生日和纪念日。默认：月/日"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "无法删除日历：%d 个事件仍分配到此日历。请先删除或重新分配。"
+
+#: 
+msgid "Cell Phone Format"
+msgstr "手机号码格式"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "常见格式代码（示例：2025年3月7日 星期五 下午3:09）"
+
+#: 
+msgid "Current Events"
+msgstr "当前事件"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "日期和时间格式"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "日期和时间格式"
+
+#: 
+msgid "Date Picker Format"
+msgstr "日期选择器格式"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "日期选择器占位符"
+
+#: 
+msgid "Date Without Year"
+msgstr "不含年份的日期"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "日，2位数字"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "日，无前导零"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "默认：(999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "默认：(999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "示例：\"l, j F Y\" 生成 \"Friday, 7 March 2025\"。其他字符（空格、逗号、斜杠）将原样显示。"
+
+#: 
+msgid "Filename Date Format"
+msgstr "文件名日期格式"
+
+#: 
+msgid "Fully translated."
+msgstr "已完全翻译。"
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "日期输入框中的提示文本。默认：yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "家庭/工作电话格式"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "12小时制，2位数字"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "12小时制，无前导零"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "24小时制，2位数字"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "包含时间组件。默认：月/日/年 时:分 上午/下午"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "语言和地区"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "语言、时区、日期和电话格式"
+
+#: 
+msgid "Localization & Formats"
+msgstr "本地化和格式"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "本地化设置保存成功"
+
+#: 
+msgid "Long Date Format"
+msgstr "长日期格式"
+
+#: 
+msgid "Minutes"
+msgstr "分钟"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "月份和年份"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "月，2位数字"
+
+#: 
+msgid "Month, full"
+msgstr "月，完整名称"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "月，无前导零"
+
+#: 
+msgid "Month, short"
+msgstr "月，缩写"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "未安装在服务器上 — 此区域设置的日期和数字可能无法正确格式化。请联系主机安装（例如 locale-gen）。"
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "日期选择器的 PHP 格式。默认：Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "电话号码格式"
+
+#: 
+msgid "Phone with Extension"
+msgstr "带分机的电话"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "保存本地化设置"
+
+#: 
+msgid "Selected Language"
+msgstr "已选语言"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "无法检查服务器区域设置支持（exec 已禁用）。"
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "支持 — 此区域设置已安装在服务器上。"
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "系统语言、时区、日期/时间格式和电话号码格式"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "这些字段使用格式代码（代表日期各部分的字母）。在每个字段下方选择预设，或使用参考资料自定义。实时预览显示确切效果。留空则使用系统默认值。"
+
+#: 
+msgid "Translation completeness"
+msgstr "翻译完整性"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "此语言不支持翻译跟踪。"
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "使用 9 作为数字占位符（例如 (999) 999-9999）。留空则使用系统默认值。"
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "用于导出的文件名。默认：Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "用于报告和成员列表。默认：月/日/年"
+
+#: 
+msgid "Weekday, full"
+msgstr "星期几，完整名称"
+
+#: 
+msgid "Weekday, short"
+msgstr "星期几，缩写"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "这些代码是什么意思？"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "年，2位数字"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "年，4位数字"
+
+#: 
+msgid "am / pm"
+msgstr "上午 / 下午"
+
+#: 
+msgid "past"
+msgstr "过去"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "克罗地亚语"
+
+#: 
+msgid "%s's Account"
+msgstr "%s的账户"
+
+#: 
+msgid "Access"
+msgstr "访问权限"
+
+#: 
+msgid "Access level"
+msgstr "访问级别"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "管理员可完全访问所有功能和数据，个人权限设置不适用。"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "所有用户均可查看会众成员，此权限不可移除。"
+
+#: 
+msgid "Always granted"
+msgstr "始终授予"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "只能查看和核实自己的家庭信息，无其他访问权限。"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "请在下方选择具体权限。"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "请联系管理员更改您的权限。"
+
+#: 
+msgid "Custom permissions"
+msgstr "自定义权限"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "完全访问——授予所有权限。"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "如需更多访问权限，请联系您的教会管理员。"
+
+#: 
+msgid "People &amp; Families"
+msgstr "人员与家庭"
+
+#: 
+msgid "Self-service"
+msgstr "自助服务"
+
+#: 
+msgid "Self-service only"
+msgstr "仅限自助服务"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "您尝试编辑的备注已不存在。"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "此用户只能查看和更新自己的家庭档案，个人权限设置不适用。"
+
+#: 
+msgid "User List"
+msgstr "用户列表"
+
+#: 
+msgid "View Person"
+msgstr "查看人员"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "您没有权限为此家庭添加备注。"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "您没有权限为此人添加备注。"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "您没有权限编辑此备注"
+
+#: 
+msgid "Account locked"
+msgstr "账户已锁定"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "由于登录失败次数过多，账户已被锁定"
+
+#: 
+msgid "Account status"
+msgstr "账户状态"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "高级：选择特定目标版本"
+
+#: 
+msgid "Bug Fix"
+msgstr "错误修复"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "默认情况下，向导会下载下一个推荐版本。您也可以在下方选择任意可用版本。"
+
+#: 
+msgid "Change required"
+msgstr "需要更改"
+
+#: 
+msgid "Changelog"
+msgstr "更新日志"
+
+#: 
+msgid "Continue Anyway"
+msgstr "仍然继续"
+
+#: 
+msgid "Could not load release information."
+msgstr "无法加载版本信息。"
+
+#: 
+msgid "Download & Install"
+msgstr "下载并安装"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "下载版本 {{version}} 并应用到您的安装。"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "正在从 GitHub 下载版本……"
+
+#: 
+msgid "Failed login attempts"
+msgstr "登录失败次数"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "获取升级预览失败"
+
+#: 
+msgid "Feature"
+msgstr "新功能"
+
+#: 
+msgid "Full changelog"
+msgstr "完整更新日志"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "安装稳定版 {{version}}"
+
+#: 
+msgid "Installing next release"
+msgstr "正在安装下一个版本"
+
+#: 
+msgid "Invalid file path"
+msgstr "无效的文件路径"
+
+#: 
+msgid "Invalid version format"
+msgstr "无效的版本格式"
+
+#: 
+msgid "Last login"
+msgstr "上次登录"
+
+#: 
+msgid "Loading release information..."
+msgstr "正在加载版本信息……"
+
+#: 
+msgid "Locked"
+msgstr "已锁定"
+
+#: 
+msgid "Major"
+msgstr "重大更新"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "缺少必填字段：fullPath 和 sha1"
+
+#: 
+msgid "Must change password"
+msgstr "必须更改密码"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "此版本没有可用的发行说明。"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "您当前版本没有可用的升级。"
+
+#: 
+msgid "Password change required"
+msgstr "需要更改密码"
+
+#: 
+msgid "Password status"
+msgstr "密码状态"
+
+#: 
+msgid "Re-install current version"
+msgstr "重新安装当前版本"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "恢复失败，数据库可能处于不完整状态。请查看应用日志了解详情，然后在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "恢复失败：备份文件似乎不完整或不是有效的 SQL 备份。数据库现在处于不完整状态——请在使用系统之前恢复一个已知良好的备份。"
+
+#: 
+msgid "Running Pre-release"
+msgstr "正在运行预发布版本"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "显示完整升级路径"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "最新稳定版本为 {{version}}。您可以在下方重新安装。"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "由于登录失败次数过多，此账户已被锁定。"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "此用户下次登录时必须设置新密码。"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "用户下次登录时必须更改密码"
+
+#: 
+msgid "User must have Email permission"
+msgstr "用户必须具有电子邮件权限"
+
+#: 
+msgid "View release notes"
+msgstr "查看发行说明"
+
+#: 
+msgid "What's New"
+msgstr "新增内容"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "{{version}} 新增内容"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "您正在运行预发布版本。"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "您仍然可以在不查看发行说明的情况下继续升级。"
+
+#: 
+msgid "You're up to date!"
+msgstr "您已是最新版本！"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "必须选择一个有效的人员。"
+
+#: 
+msgid "Add Donors"
+msgstr "添加奉献者"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "添加到购买者列表"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "自动为所有物品奉献者分配拍牌号码"
+
+#: 
+msgid "Create a new user account"
+msgstr "创建新用户账户"
+
+#: 
+msgid "Delete this item?"
+msgstr "删除此项目？"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "删除此拍牌号码？"
+
+#: 
+msgid "Edit Buyer"
+msgstr "编辑购买者"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "登录名已被使用，请选择其他登录名！"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "登录名至少需要3个字符！"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "管理募款活动"
+
+#: 
+msgid "New User"
+msgstr "新用户"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "请选择一位人员以为其创建用户账户。"
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "请至少选择一位购买者以生成对账单。"
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "返回募款活动仪表板"
+
+#: 
+msgid "The selected person was not found."
+msgstr "未找到所选人员。"
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "此操作将自动为本次募款活动中尚未分配购买者编号的所有物品奉献者添加拍牌号码。"
+
+#: 
+msgid "This person already has a user account."
+msgstr "此人员已拥有用户账户。"
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "用户必须是管理员或具有管理募款活动的权限"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s 募款活动"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "已筹得目标 %s 中的 %s"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "进行中的募款活动"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "添加募款活动"
+
+#: 
+msgid "Add Item"
+msgstr "添加项目"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "请先将人员添加到选择列表，再将其分配到家庭。"
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "请先将人员添加到选择列表，然后再回来将其添加到小组。"
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "金额后（100.00 ¤）"
+
+#: 
+msgid "All Statuses"
+msgstr "所有状态"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "您选择列表中的所有人已在家庭中，无法再分配。"
+
+#: 
+msgid "All types"
+msgstr "所有类型"
+
+#: 
+msgid "Already in"
+msgstr "已在"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "发生意外错误，请重试。"
+
+#: 
+msgid "Apply"
+msgstr "应用"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "将选择列表中的成员分配到小组"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "将选择列表中的人员分配到家庭"
+
+#: 
+msgid "Assign to Family"
+msgstr "分配到家庭"
+
+#: 
+msgid "Associated Fund"
+msgstr "关联奉献基金"
+
+#: 
+msgid "At a Glance"
+msgstr "概览"
+
+#: 
+msgid "Auction Reports"
+msgstr "拍卖报告"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "平均售价"
+
+#: 
+msgid "Back to Cart"
+msgstr "返回选择列表"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "返回募款活动"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "金额前（¤ 100.00）"
+
+#: 
+msgid "Best Streak"
+msgstr "最佳连续记录"
+
+#: 
+msgid "Bid Sheets"
+msgstr "竞价单"
+
+#: 
+msgid "Buyer Statements"
+msgstr "买家结算单"
+
+#: 
+msgid "Buyers Registered"
+msgstr "已注册买家"
+
+#: 
+msgid "Buyers This Year"
+msgstr "今年买家"
+
+#: 
+msgid "Catalog"
+msgstr "目录"
+
+#: 
+msgid "Certificates"
+msgstr "证书"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "用作金额小数点的字符（例如 . 或 ,）"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "用于分隔金额千位的字符（例如 , 或 .）"
+
+#: 
+msgid "Check-out"
+msgstr "结账"
+
+#: 
+msgid "Choose a group..."
+msgstr "选择小组..."
+
+#: 
+msgid "Choose family"
+msgstr "选择家庭"
+
+#: 
+msgid "Code"
+msgstr "代码"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "配置金额在系统中的显示方式。随着财务页面更新以使用这些设置（epic #8459），此处配置的符号、位置和分隔符将在全系统生效。"
+
+#: 
+msgid "Create Fundraiser"
+msgstr "创建募款活动"
+
+#: 
+msgid "Create new family…"
+msgstr "创建新家庭…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "货币与财务格式"
+
+#: 
+msgid "Currency Format"
+msgstr "货币格式"
+
+#: 
+msgid "Currency Symbol"
+msgstr "货币符号"
+
+#: 
+msgid "Currency presets"
+msgstr "货币预设"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "显示在金额旁边的货币符号（例如 $、€、£、CHF、CAD $）。"
+
+#: 
+msgid "Decimal Separator"
+msgstr "小数分隔符"
+
+#: 
+msgid "Did Not Attend"
+msgstr "未出席"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "结束日期必须在开始日期当天或之后"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "对于没有预定义州/省的国家，请手动输入州/省"
+
+#: 
+msgid "Est. Value Total"
+msgstr "估计总价值"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "所有关联小组的成员均已签到！"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "加载出席记录失败。"
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "创建新家庭时必须填写家庭姓名。"
+
+#: 
+msgid "Filter by event type"
+msgstr "按活动类型筛选"
+
+#: 
+msgid "Financials"
+msgstr "财务"
+
+#: 
+msgid "From date"
+msgstr "开始日期"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "募款活动概览"
+
+#: 
+msgid "Fundraisers"
+msgstr "募款活动"
+
+#: 
+msgid "Fundraising"
+msgstr "募款"
+
+#: 
+msgid "Goal %"
+msgstr "目标完成%"
+
+#: 
+msgid "Goal Amount"
+msgstr "目标金额"
+
+#: 
+msgid "Highest Sale"
+msgstr "最高售价"
+
+#: 
+msgid "Invalid status value"
+msgstr "无效的状态值"
+
+#: 
+msgid "Invalid type value"
+msgstr "无效的类型值"
+
+#: 
+msgid "Items"
+msgstr "项目"
+
+#: 
+msgid "Items Donated"
+msgstr "捐赠物品"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "捐赠物品（本年度）"
+
+#: 
+msgid "Items Sold"
+msgstr "已售出物品"
+
+#: 
+msgid "Last Attendance"
+msgstr "最近出席"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "关联奉献基金"
+
+#: 
+msgid "Live Preview"
+msgstr "实时预览"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "正在加载出席记录…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "批量购买项目"
+
+#: 
+msgid "New family details"
+msgstr "新家庭详情"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "未找到 %s 募款活动。"
+
+#: 
+msgid "No active fundraisers found."
+msgstr "未找到进行中的募款活动。"
+
+#: 
+msgid "No attendance records found."
+msgstr "未找到出席记录。"
+
+#: 
+msgid "No donated items yet."
+msgstr "暂无捐赠物品。"
+
+#: 
+msgid "Not a valid end date"
+msgstr "无效的结束日期"
+
+#: 
+msgid "Not included"
+msgstr "不包含"
+
+#: 
+msgid "People to assign"
+msgstr "待分配人员"
+
+#: 
+msgid "Planning"
+msgstr "计划"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "请为 %s 选择家庭角色。"
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "填充以下字段但不保存。点击保存以应用。"
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "货币符号相对于金额的位置。"
+
+#: 
+msgid "Quick presets"
+msgstr "快速预设"
+
+#: 
+msgid "Raised"
+msgstr "已筹集"
+
+#: 
+msgid "Raised This Year"
+msgstr "本年度已筹集"
+
+#: 
+msgid "Sample Amount"
+msgstr "示例金额"
+
+#: 
+msgid "Sell-through"
+msgstr "售罄率"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "用作小数点的单个字符（例如 . 或 ,）。默认值：."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "用于分组千位的单个字符（例如 , 或 .）。默认值：,"
+
+#: 
+msgid "Sold"
+msgstr "已售出"
+
+#: 
+msgid "Streak"
+msgstr "连续记录"
+
+#: 
+msgid "Symbol Position"
+msgstr "符号位置"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "显示在金额旁边的符号或代码（例如 $、€、£、CHF、CAD $）。默认值：$"
+
+#: 
+msgid "Target family"
+msgstr "目标家庭"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "未找到该小组，请重试。"
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "所选家庭已不存在，请刷新页面后重试。"
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "未找到所选小组，请选择有效的小组。"
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "这是日期、金额和电话号码在系统中的显示方式。请在此查看当前格式，然后在下方各节中进行编辑。"
+
+#: 
+msgid "Thousands Separator"
+msgstr "千位分隔符"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "千位分隔符和小数分隔符必须是不同的字符。"
+
+#: 
+msgid "To date"
+msgstr "截止日期"
+
+#: 
+msgid "Total Events"
+msgstr "活动总数"
+
+#: 
+msgid "Total Raised"
+msgstr "总筹集金额"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "总筹集金额（未设定目标）"
+
+#: 
+msgid "Unsold"
+msgstr "未售出"
+
+#: 
+msgid "Updates as you type."
+msgstr "实时更新。"
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "符号显示在金额之前还是之后。默认值：金额前"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "您的选择列表为空，请先添加人员。"
+
+#: 
+msgid "events"
+msgstr "活动"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "目标金额必须为非负数"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "目标金额必须为非负数"
+
+#: 
+msgid "thru %s"
+msgstr "至 %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "%1$s %2$s 的“来访原因”备注"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s 家庭的 %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "还可容纳 %d 条记录。"
+
+#: 
+msgid "%d record(s) returned"
+msgstr "返回 %d 条记录"
+
+#: 
+msgid "Assign role to all"
+msgstr "为所有人分配角色"
+
+#: 
+msgid "Buyer #"
+msgstr "买家编号"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "此次募捐活动的买家"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "日历嵌入来源"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM 的翻译由社区在 POEditor 上管理，您可以通过以下方式参与贡献"
+
+#: 
+msgid "Closed Deposits"
+msgstr "已关闭的存款"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "当前 $URL[0] 值"
+
+#: 
+msgid "Custom port"
+msgstr "自定义端口"
+
+#: 
+msgid "Data Quality"
+msgstr "数据质量"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "由 %1$s %2$s 捐献。"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "电子邮件功能当前已禁用。以下功能在启用电子邮件之前将无法使用"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "估计价值 $%s。"
+
+#: 
+msgid "Fastest workflow"
+msgstr "最快工作流程"
+
+#: 
+msgid "File Integrity"
+msgstr "文件完整性"
+
+#: 
+msgid "Filter by log level"
+msgstr "按日志级别筛选"
+
+#: 
+msgid "Find the line"
+msgstr "找到该行"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "授予个人权限"
+
+#: 
+msgid "How to Fix"
+msgstr "如何修复"
+
+#: 
+msgid "Import failed: %s"
+msgstr "导入失败：%s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "在请求中使用 x-api-key 请求头包含您的 API 密鐥"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "跳转到任意设置步骤"
+
+#: 
+msgid "Local development"
+msgstr "本地开发"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "最低总金额"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "最低出价 $%s。"
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "新付款 - %1$s 存款编号 %2$s（%3$s）"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "现在请检查收件人收件算确认已送达，查找主题"
+
+#: 
+msgid "Number of lines to display"
+msgstr "显示行数"
+
+#: 
+msgid "Open Deposits"
+msgstr "未结存款"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "为设备开启2分钟注册窗口"
+
+#: 
+msgid "Output Method"
+msgstr "输出方式"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "请确认删除此家庭记录"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "请确认您的家庭信息"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "请将您的下一次奉献邮寄至 %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "请选择另一个家庭与这些奉献关联"
+
+#: 
+msgid "Remittance Slip"
+msgstr "汇款单"
+
+#: 
+msgid "Report Heading"
+msgstr "报告标题"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "重置将永久删除"
+
+#: 
+msgid "Show"
+msgstr "显示"
+
+#: 
+msgid "Signature"
+msgstr "签名"
+
+#: 
+msgid "Sort Data by"
+msgstr "数据排序方式"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "以空格分隔的来源列表，允许将公共外部日历页面嵌入 iframe。默认允许任何来源。"
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "以空格分隔的来源，允许将公共日历页面嵌入 iframe。默认允许任何站点。"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "主日学小组只能在以下两种情况下修改"
+
+#: 
+msgid "Supported formats"
+msgstr "支持的格式"
+
+#: 
+msgid "System Configuration"
+msgstr "系统配置"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "此义工机会已有人员分配，删除将取消分配"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "此値长度不能少于 %d 个字符"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "此値长度不能超过 %d 个字符"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "此値不能超过 %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "此値必须至少为 %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "存款总计"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "将其更新为有效的 URL，该 URL"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "用户已通过 API 密鐥验证：%s"
+
+#: 
+msgid "Valid Examples"
+msgstr "有效示例"
+
+#: 
+msgid "What this plugin does"
+msgstr "此插件的功能"
+
+#: 
+msgid "for all funds"
+msgstr "适用于所有奉献基金"
+
+#: 
+msgid "for fund"
+msgstr "适用于奉献基金"
+
+#: 
+msgid "for funds"
+msgstr "适用于奉献基金"
+
+#: 
+msgid "user"
+msgstr "用户"
+
+#: 
+msgid "with at least one"
+msgstr "至少含有一个"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "同时发送至教会地址（{{email}}）"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "您确定要将此人从以下位置移除吗"
+
+#: 
+msgid "BCC Mode"
+msgstr "密件抄送模式"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "已签到 {{count}} 人。"
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "从 CRM 发送邮件时，教会电子邮件地址将自动添加为可移除的收件人"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "教会电子邮件 — 在 %s 页面中配置。"
+
+#: 
+msgid "Closing"
+msgstr "关闭"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "坐标已更新"
+
+#: 
+msgid "Copy Addresses"
+msgstr "复制地址"
+
+#: 
+msgid "Copy Church Email"
+msgstr "复制教会电子邮件"
+
+#: 
+msgid "Email All Members"
+msgstr "向所有会众发送邮件"
+
+#: 
+msgid "Email Cart Members"
+msgstr "向选定会众发送邮件"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "以斜杠（/）结尾"
+
+#: 
+msgid "Failed to geocode"
+msgstr "地理编码失败"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "加载收件人失败，请重试。"
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "获取选定会众的电子邮件地址失败"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "家庭签到失败，请重试。"
+
+#: 
+msgid "Ignore"
+msgstr "忽略"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "忽略不完整的地址"
+
+#: 
+msgid "Kids"
+msgstr "儿童"
+
+#: 
+msgid "Loading family members..."
+msgstr "正在加载家庭成员……"
+
+#: 
+msgid "Loading recipients…"
+msgstr "正在加载收件人……"
+
+#: 
+msgid "No email addresses found."
+msgstr "未找到电子邮件地址。"
+
+#: 
+msgid "Open in Email Client"
+msgstr "在邮件客户端中打开"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "%s 秒后重定向……"
+
+#: 
+msgid "Refreshing..."
+msgstr "正在刷新……"
+
+#: 
+msgid "Remove from Group"
+msgstr "从小组中移除"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "将 {{personName}} 从此班级移除？"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "请求失败（{{status}}）"
+
+#: 
+msgid "Roles to include"
+msgstr "要包含的角色"
+
+#: 
+msgid "Select Country"
+msgstr "选择国家"
+
+#: 
+msgid "Select State"
+msgstr "选择省/州"
+
+#: 
+msgid "Select a person"
+msgstr "选择一位成员"
+
+#: 
+msgid "Select role"
+msgstr "选择角色"
+
+#: 
+msgid "Select type (optional)"
+msgstr "选择类型（可选）"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "以 http:// 或 https:// 开头"
+
+#: 
+msgid "This group only has one role."
+msgstr "此小组只有一个角色。"
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "谁送 {{name}} 来？"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "谁来接 {{name}}？"
+
+#: 
+msgid "Working..."
+msgstr "处理中……"
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "您落后了 {{releaseCount}} 个版本，以下是您将获得的更新"
+
+#: 
+msgid "click to expand"
+msgstr "点击展开"
+
+#: 
+msgid "pick"
+msgstr "选取"
+
+#: 
+msgid "recipient"
+msgstr "收件人"
+
+#: 
+msgid "recipients"
+msgstr "收件人"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "剩余 {{hours}} 小时 {{mins}} 分钟"
+
+#: 
+msgid "Add New Deposit"
+msgstr "添加新存款"
+
+#: 
+msgid "Add New Event"
+msgstr "添加新活动"
+
+#: 
+msgid "Add New Event Type"
+msgstr "添加新活动类型"
+
+#: 
+msgid "Add New Family"
+msgstr "添加新家庭"
+
+#: 
+msgid "Add New Field"
+msgstr "添加新字段"
+
+#: 
+msgid "Add New Fund"
+msgstr "添加新奉献基金"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "添加新机会"
+
+#: 
+msgid "Add New Person"
+msgstr "添加新会众"
+
+#: 
+msgid "Add New Pledge"
+msgstr "添加新奉献承诺"
+
+#: 
+msgid "Add New Role"
+msgstr "添加新角色"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "添加新义工机会"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "添加主日学班级"
+
+#: 
+msgid "Delete this family?"
+msgstr "删除此家庭？"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "您确定要删除此家庭吗？您将跳转到一个页面选择要删除的内容，此操作无法撤销。"
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "确认删除家庭"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "个人（无家庭）"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "新自主注册"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "确认删除属性类型"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "审核通过公开注册表单注册的新家庭和个人"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "请在下方审核来自公开注册表单的新注册信息。未填写电子邮件或电话的条目已标记——跟进前请核实联系方式。"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "确认删除义工机会"
 

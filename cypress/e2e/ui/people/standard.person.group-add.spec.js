@@ -10,7 +10,7 @@
  * - Group 23 must exist with grp_hasSpecialProps = 1 and a groupprop_master entry
  * - Person 2 must exist (standard test user)
  *
- * Design rule: API setup runs BEFORE freshAdminLogin(); all UI assertions
+ * Design rule: API setup runs BEFORE cy.setupAdminSession(); all UI assertions
  * happen after login. Teardown runs in afterEach() to ensure cleanup even
  * when assertions fail mid-test.
  */
@@ -18,6 +18,10 @@
 const personId = 2;
 const multiRoleGroupId = 1; // Angels class — has Teacher (1) + Student (2)
 const specialPropsGroupId = 23; // has grp_hasSpecialProps = 1
+
+// API-based data setup runs BEFORE freshAdminLogin(). Despite withCredentials:false
+// on makePrivateAPICall, CI confirmed that cy.setupAdminSession() is not sufficient —
+// the PHP session is still killed by cy.request(). freshAdminLogin() is required.
 
 /**
  * Direct login — bypasses cy.session() cache so that earlier

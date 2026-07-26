@@ -95,7 +95,7 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
         const validUrls = [
             '/people/view/1',
             'v2/dashboard',
-            '/FundRaiserEditor.php?FundRaiserID=1',
+            '/fundraiser/editor/1',
             'groups/view/5',
         ];
 

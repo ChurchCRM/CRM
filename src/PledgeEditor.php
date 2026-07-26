@@ -20,6 +20,9 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
+// Security: User must have finance permission to use this page
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+
 if (SystemConfig::getBooleanValue('bUseScannedChecks')) { // Instantiate the MICR class
     $micrObj = new MICRUtils();
 }
@@ -67,6 +70,9 @@ while ($aRow = mysqli_fetch_array($rsFunds)) {
 // Handle URL via _GET first
 if (array_key_exists('PledgeOrPayment', $_GET)) {
     $PledgeOrPayment = InputUtils::legacyFilterInput($_GET['PledgeOrPayment'], 'string');
+    if (!in_array($PledgeOrPayment, ['Pledge', 'Payment'], true)) {
+        $PledgeOrPayment = 'Pledge';
+    }
 }
 $sGroupKey = '';
 if (array_key_exists('GroupKey', $_GET)) {
@@ -456,7 +462,7 @@ if ($PledgeOrPayment === 'Pledge') {
     $formTypeLabel = gettext('Pledge');
 } elseif ($iCurrentDeposit) {
     $dep_DateFormatted = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
-    $sPageTitle = gettext('New Payment') . " - $dep_Type" . gettext(' Deposit #') . " $iCurrentDeposit ($dep_DateFormatted)";
+    $sPageTitle = sprintf(gettext('New Payment - %1$s Deposit # %2$s (%3$s)'), $dep_Type, $iCurrentDeposit, $dep_DateFormatted);
     $cardHeaderClass = 'bg-primary';
     $cardHeaderTextClass = 'text-white';
     $formTypeLabel = gettext('Payment');
@@ -479,7 +485,7 @@ if ($PledgeOrPayment === 'Pledge') {
     if ($roomForDeposits <= 0) {
         $sPageTitle .= '<span class="text-danger">';
     }
-    $sPageTitle .= ' (' . $roomForDeposits . gettext(' more entries will fit.') . ')';
+    $sPageTitle .= ' (' . sprintf(gettext('%d more entries will fit.'), $roomForDeposits) . ')';
     if ($roomForDeposits <= 0) {
         $sPageTitle .= '</span>';
     }
@@ -515,7 +521,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
-<form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= $sGroupKey ?>&PledgeOrPayment=<?= $PledgeOrPayment ?>&linkBack=<?= $linkBack ?>" name="PledgeEditor">
+<form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= InputUtils::escapeAttribute($sGroupKey) ?>&PledgeOrPayment=<?= InputUtils::escapeAttribute($PledgeOrPayment) ?>&linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>" name="PledgeEditor">
 
     <!-- Mode Indicator Banner -->
     <div class="row mb-3">

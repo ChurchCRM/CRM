@@ -62,7 +62,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
     $vol_Name = $opp->getName();
     $vol_Description = $opp->getDescription();
 
-    $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Volunteer Opportunity');
+    $sPageTitle = gettext('Volunteer Opportunity Delete Confirmation');
     require_once __DIR__ . '/Include/Header.php';
 ?>
     <div class="row justify-content-center mt-2">
@@ -106,7 +106,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                                 ->orderByLastName()
                                 ->orderByFirstName()
                                 ->find();
-                            echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-circle-exclamation'></i> <strong>" . gettext('Warning') . "!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') . "</div>";
+                            echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-circle-exclamation'></i> <strong>" . gettext('Warning') . "!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign') . ':' . "</div>";
                             echo "<div class='ms-3 mb-3'>";
                             foreach ($assignedPeople as $person) {
                                 echo "<div><i class='fa-solid fa-person'></i>" . InputUtils::escapeHTML($person->getFirstName()) . " " . InputUtils::escapeHTML($person->getLastName()) . "</div>";
@@ -121,7 +121,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                                 <?= CSRFUtils::getTokenInputField('deleteVolunteerOpportunity') ?>
                                 <button type="submit" class="btn btn-danger">
                                     <i class="fa-solid fa-trash"></i>
-                                    <?= gettext('Yes, delete this Opportunity') ?>
+                                    <?= gettext('Yes, delete') ?>
                                 </button>
                             </form>
                             <a href="VolunteerOpportunityEditor.php" class="btn btn-secondary">
@@ -315,7 +315,7 @@ if (isset($_POST['SaveChanges'])) {
                     <div class="card-header">
                         <h5 class="mb-0">
                             <i class="fa-solid fa-plus"></i>
-                            <?= gettext('Add New') . ' ' . gettext('Volunteer Opportunity') ?>
+                            <?= gettext('Add New Volunteer Opportunity') ?>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -339,7 +339,7 @@ if (isset($_POST['SaveChanges'])) {
                         <div class="text-center">
                             <button type="submit" class="btn btn-success" name="AddField">
                                 <i class="fa-solid fa-plus"></i>
-                                <?= gettext('Add New') . ' ' . gettext('Opportunity') ?>
+                                <?= gettext('Add New Opportunity') ?>
                             </button>
                         </div>
                     </div>

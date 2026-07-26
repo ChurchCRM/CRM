@@ -1,3 +1,10 @@
+---
+title: "Release Notes Authoring"
+intent: "Generate polished, end-user-focused GitHub release notes for a ChurchCRM version"
+tags: ["release", "documentation", "workflow"]
+prereqs: ["[[github-interaction]]"]
+complexity: "beginner"
+---
 # Skill: Release Notes Authoring
 
 ## Purpose

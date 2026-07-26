@@ -20,9 +20,12 @@ class CSRFMiddleware implements MiddlewareInterface
     private string $formId;
 
     /**
-     * @param string $formId Unique identifier for the form/route
+     * @param string $formId Retained for backward compatibility; CSRF tokens are
+     *                       now session-wide so the identifier is not used for
+     *                       validation. Defaults to 'default' so the middleware
+     *                       can be applied globally without per-route wiring.
      */
-    public function __construct(string $formId)
+    public function __construct(string $formId = 'default')
     {
         $this->formId = $formId;
     }

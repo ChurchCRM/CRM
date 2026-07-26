@@ -54,7 +54,7 @@ const CSV_CORE_FIELD_LABELS = [
     'Address2'       => 'Address 2',
     'City'           => 'City',
     'State'          => 'State',
-    'Zip'            => 'Zip / Postal Code',
+    'Zip'            => 'Zip',
     'Country'        => 'Country',
     'HomePhone'      => 'Home Phone',
     'WorkPhone'      => 'Work Phone',
@@ -815,7 +815,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
             $con->commit();
         } catch (\Throwable $e) {
             $con->rollBack();
-            return SlimUtils::renderErrorJSON($response, gettext('Import failed: ') . $e->getMessage(), [], 500, $e, $request);
+            return SlimUtils::renderErrorJSON($response, sprintf(gettext('Import failed: %s'), $e->getMessage()), [], 500, $e, $request);
         } finally {
             @unlink($tmpPath);
         }

@@ -196,7 +196,7 @@ $(document).ready(function () {
             var propertyName = btn.data('property-name');
             bootbox.confirm({
                 title: '<?= gettext("Confirm Property Deletion") ?>',
-                message: '<p class="text-warning"><strong><?= gettext("Warning:") ?></strong> ' +
+                message: '<p class="text-warning"><strong><?= gettext("Warning") ?>:</strong> ' +
                     '<?= gettext("Deleting this property will also remove all its assignments from any People, Family, or Group records.") ?>' +
                     '</p><p><?= gettext("Delete") ?>: <strong>' + window.CRM.escapeHtml(propertyName) + '</strong></p>',
                 buttons: {

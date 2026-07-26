@@ -24,7 +24,7 @@ if (empty($timeline)) { ?>
     }
     ?>
     <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mt-3 mb-1" role="group" aria-label="<?= gettext('Timeline filters') ?>">
-        <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
+        <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show') ?>:</span>
         <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
             <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
             <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
@@ -63,9 +63,12 @@ if (empty($timeline)) { ?>
                                 <small class="text-muted flex-shrink-0"><?= $item['datetime'] ?></small>
                             </div>
                         <?php } else {
+                            // Treat an empty deleteLink/editLink as "no action" — note-type
+                            // items always set these keys, so a redacted private-note
+                            // placeholder (no delete for non-admins) carries deleteLink="".
                             $hasActions = AuthenticationManager::getCurrentUser()->isNotesEnabled()
-                                && (!empty($item["editLink"]) || isset($item["deleteLink"]));
-                            $noteId = isset($item["deleteLink"])
+                                && (!empty($item["editLink"]) || !empty($item["deleteLink"]));
+                            $noteId = !empty($item["deleteLink"])
                                 ? str_replace('api-delete-note-', '', $item['deleteLink'])
                                 : null;
                         ?>

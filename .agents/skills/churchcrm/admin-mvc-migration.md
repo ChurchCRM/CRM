@@ -2,7 +2,7 @@
 title: "Admin MVC Module Migration"
 intent: "Patterns and steps to migrate legacy pages into the Admin MVC structure"
 tags: ["admin","mvc","migration","slim"]
-prereqs: ["service-layer.md","php-best-practices.md"]
+prereqs: ["[[service-layer]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 - **Routes**: `src/admin/routes/[feature].php` - Define route endpoints
@@ -102,7 +102,7 @@ $app->get('/admin/system/users', function (Request $request, Response $response)
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
             ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#userSettings'],
-            ['label' => gettext('Add User'), 'url' => '/UserEditor.php', 'icon' => 'fa-user-plus'],
+            ['label' => gettext('Add User'), 'url' => '/admin/system/users/new', 'icon' => 'fa-user-plus'],
         ]),
         'sSettingsCollapseId' => 'userSettings',
         'stats'    => $userService->getUserStats(),
@@ -269,7 +269,8 @@ $typeId  = (int) ($params['typeId'] ?? 0);
 
 ## Middleware Order (CRITICAL) <!-- learned: 2026-04-07 -->
 
-> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
 
 For MVC modules, use `MvcAppFactory::create()` which handles all ordering automatically:
 
@@ -283,7 +284,8 @@ $app = MvcAppFactory::create('/admin', [
 
 ## Entry Point Error Handling
 
-> **Full reference:** [`slim-4-best-practices.md` → Error Handler Architecture](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Error Handler Architecture](./slim-4-best-practices.md)
 
 For MVC modules use `MvcAppFactory`. For non-MVC entry points (API, external, session),
 add error middleware manually — always AFTER `addRoutingMiddleware()`.
@@ -498,6 +500,22 @@ Once pattern is established, these can be safely copied to new auth pages:
 - Check button hover effects
 - Ensure logo and images don't have unwanted filters
 - Run `npm run build && npm run lint` before commit
+
+## No Redirect Shims — Hard Rule <!-- learned: 2026-07-12 -->
+
+**Never leave a legacy `src/*.php` file in place as a redirect shim** after migrating its functionality to an MVC route. Shims look harmless but they:
+- Introduce dead code paths that accumulate silently over releases
+- Break the security model (shims bypass middleware added in the new module)
+- Require a second cleanup PR every time
+
+**The correct migration sequence:**
+1. Build the new MVC route, view, and service (the normal MVC migration steps)
+2. Before committing, `grep -rn "LegacyPage.php" src/` to find every caller
+3. Update every caller (menu entries, template links, JS redirects, other PHP files) to use the new URL
+4. `git rm src/LegacyPage.php` — delete it outright
+5. All of the above in **one PR** — no multi-stage "shim then cleanup" pattern
+
+**If you find existing shim files in a PR under review:** treat them as blocking — require the PR author to complete steps 2–4 before merging.
 
 ## Files
 

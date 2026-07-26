@@ -16,5 +16,6 @@ require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/reports.php';
 require __DIR__ . '/routes/sundayschool.php';
 require __DIR__ . '/routes/view.php';
+require __DIR__ . '/routes/cart-to-group.php';
 
 $app->run();

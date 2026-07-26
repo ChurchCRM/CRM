@@ -2,7 +2,7 @@
 title: "API Development"
 intent: "Patterns for creating and maintaining API endpoints using Slim and service layer"
 tags: ["api","slim","routes","security"]
-prereqs: ["slim-4-best-practices.md","php-best-practices.md"]
+prereqs: ["[[slim-4-best-practices]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 
@@ -155,7 +155,8 @@ var errorText = error.message || error.error || error.msg || i18next.t("Unknown 
 
 ## Middleware Order (CRITICAL - Slim 4 uses LIFO) <!-- learned: 2026-04-07 -->
 
-> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
 
 **TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
 
@@ -317,9 +318,37 @@ const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
 
 **Do NOT create API endpoints** if a service method is only called from a legacy page - call the service directly instead.
 
+## Cypress API Spec (REQUIRED for every new endpoint) <!-- learned: 2026-07-18 -->
+
+**Every new API endpoint MUST ship with a Cypress API spec in the same PR.** A PR
+adding an endpoint without a spec is incomplete — reviewers must request one.
+
+Why this is mandatory: PR #8985 shipped `GET /api/attendance/person/{id}` with a
+Propel hydration bug that 500'd on every real record. The spec that would have
+caught it existed in the PR but had never been executed — an endpoint is only as
+tested as the spec that *runs* against it. Seed real data in the spec so the
+happy path exercises actual hydration, not just an empty result set.
+
+Minimum coverage per endpoint (see
+`cypress/e2e/api/private/people/people.attendance.spec.js` as the template):
+
+- **Happy path with seeded data** — seed via existing APIs in `before()`, clean up
+  in `after()`; assert status 200 AND response shape/values (an empty-DB 200 can
+  hide hydration bugs)
+- **Empty/zero-data path** — e.g. person with no records
+- **401** — no API key / no session
+- **403** — a role-restricted caller (use `limited.user` inline-key pattern when
+  standard seeded users are too privileged)
+- **404** — nonexistent entity ID
+
+Run it before pushing: `npx cypress run --config-file cypress/configs/docker.config.ts --spec "<path>"` —
+never rely on CI to execute it first (bot-authored PRs may not trigger e2e jobs).
+
 ## OpenAPI Documentation (REQUIRED for all API changes)
 
-ChurchCRM uses `zircote/swagger-php` 4.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference in the Documentation.
+ChurchCRM uses `zircote/swagger-php` 6.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference in the Documentation. <!-- learned: 2026-07-26 -->
+
+v6 kept full support for the legacy `@OA\*` DocBlock annotation style used throughout this codebase (it only *added* PHP 8 attribute syntax as an alternative) — no annotation rewrite was needed when upgrading from 4.x. See `.github/workflows/docs.yml` for the CI job that regenerates and validates the spec on every API-touching PR.
 
 **When adding or updating any API endpoint, you MUST add/update the `@OA\*` annotation.**
 
@@ -505,6 +534,15 @@ GET    /note/{noteId}             — fetch single note (visibility check)
 PUT    /note/{noteId}             — update text/private (author or admin only)
 DELETE /note/{noteId}             — delete + write type=delete-note audit entry
 ```
+
+**Permission model (confirmed 2026-07-06):**
+- All routes require `NotesRoleAuthMiddleware` → `isNotesEnabled()` must be true.
+- `isAdmin()` → `isNotesEnabled()` always returns `true` (admin purity), so admins pass the middleware.
+- Notes=1 (non-admin): can view public notes and own private notes. Cannot view private notes authored by others (returns 404 to avoid existence leak).
+- Admin: can view all notes but private notes authored by others show full content via `canReadPrivateNotes()` = `isAdmin()`. The TimelineService still renders `[Private Note]` placeholders in the timeline view.
+- DELETE: checked by `isAdmin() OR note.getEnteredBy() === currentUser.getId()`. Admin can delete any note, non-admin can only delete their own. This works without a separate admin-bypass because admin purity already passes NotesRoleAuthMiddleware.
+- PUT: author or admin only (`isAdmin() OR isAuthor`).
+- **Without Notes permission**: zero access to Note API routes — all blocked at middleware.
 
 **Delete audit trail pattern** — capture author name BEFORE deleting, then write a `type='delete-note'` Note so the timeline stays auditable:
 

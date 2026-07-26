@@ -3,16 +3,12 @@
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfDirectory;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
-
-// Check for Create Directory user permission.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(), 'CreateDirectory');
 
 // Get and filter the classifications selected
 $aClasses = [];

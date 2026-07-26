@@ -6,10 +6,6 @@
  * does not break API functionality
  */
 describe("API Private Family", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/families/latest - Latest Families", () => {
         it("Returns 200 with families data", () => {
             cy.makePrivateAdminAPICall("GET", "/api/families/latest", null, 200).then(
@@ -118,7 +114,7 @@ describe("API Private Family", () => {
     });
 
     describe("GET /api/families/self-register - Self-Registered Families", () => {
-        it("Returns 200 with families array", () => {
+        it("Returns 200 with the seeded self-registered families", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
                 "/api/families/self-register",
@@ -127,6 +123,13 @@ describe("API Private Family", () => {
             ).then((response) => {
                 expect(response.body).to.have.property("families");
                 expect(response.body.families).to.be.an("array");
+                // seed.sql seeds self-registered (fam_EnteredBy = -1) families
+                expect(response.body.families.length).to.be.greaterThan(0);
+
+                const family = response.body.families[0];
+                expect(family).to.have.property("Id");
+                expect(family).to.have.property("FamilyString");
+                expect(family).to.have.property("DateEntered");
             });
         });
     });

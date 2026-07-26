@@ -1,50 +1,14 @@
 {
-  "person": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+  "one": {
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   },
-  "%d Person added to the Cart.": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
-  },
-  "%d Person successfully added to selected Family.": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
-  },
-  "%d Person successfully added to selected Group.": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
-  },
-  "%d person": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
-  },
-  "%d hour": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
-  },
-  "%d result for \"%s\"": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
-  },
-  "%d repeat event created successfully.": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+  "other": {
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   }
 }

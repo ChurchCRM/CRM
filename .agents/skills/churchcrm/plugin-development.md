@@ -1,6 +1,13 @@
+---
+title: "Plugin Development"
+intent: "Building a ChurchCRM plugin end-to-end — allowed/forbidden capabilities, hooks, sandboxed config, and plugin-local translations"
+tags: ["plugins", "security", "i18n"]
+prereqs: ["[[plugin-system]]", "[[plugin-security-scan]]"]
+complexity: "intermediate"
+---
 # Skill: Plugin Development
 
-> ## ⚠️ Before you write a single line of plugin code — read this <!-- learned: 2026-04-13 -->
+> [!IMPORTANT] Before you write a single line of plugin code — read this <!-- learned: 2026-04-13 -->
 >
 > **Every community plugin must pass [`plugin-security-scan.md`](./plugin-security-scan.md) before it can be approved for the URL installer.** That checklist is not a post-hoc review — it's the spec you are building against. Read it first, then come back here.
 >
@@ -464,7 +471,8 @@ PluginManager::disablePlugin('mailchimp');
 
 Plugin entry points create their own Slim app instance.
 
-> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
 
 **TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
 

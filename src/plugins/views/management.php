@@ -170,7 +170,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
             <?php endif; ?>
             <?php if ($isCommunity && $isVerified && $riskSummary !== null): ?>
                 <div class="alert alert-info mb-3" role="alert">
-                    <strong><?= gettext('What this plugin does:') ?></strong>
+                    <strong><?= gettext('What this plugin does') ?>:</strong>
                     <?= htmlspecialchars((string) $riskSummary) ?>
                     <?php if (!empty($permissions) && is_array($permissions)): ?>
                         <div class="mt-2">

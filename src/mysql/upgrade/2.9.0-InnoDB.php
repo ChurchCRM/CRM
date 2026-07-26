@@ -8,10 +8,15 @@ $logger = LoggerUtils::getAppLogger();
 
 $logger->info('Upgrade to InnoDB started ');
 
-$sqlEvents = 'ALTER TABLE events_event DROP INDEX event_txt;';
-$connection->exec($sqlEvents);
-
-$logger->info('Dropped events_event INDEX');
+// Guard: the index may already be gone (e.g. when this script re-runs as part of
+// the consolidated pre-6.0.0 entry starting from a 2.9.0+ schema state).
+try {
+    $sqlEvents = 'ALTER TABLE events_event DROP INDEX event_txt;';
+    $connection->exec($sqlEvents);
+    $logger->info('Dropped events_event INDEX');
+} catch (\Exception $e) {
+    $logger->warning('Could not drop events_event.event_txt index (may already be absent): ' . $e->getMessage());
+}
 
 $statement = $connection->prepare("SHOW FULL TABLES WHERE Table_Type = 'BASE TABLE'");
 $statement->execute();

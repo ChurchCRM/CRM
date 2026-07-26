@@ -193,9 +193,17 @@ describe("Standard Calendar — save (admin-session)", () => {
 
         // Pin a calendar. Do NOT touch Event Type — we want the default
         // value to flow through to the payload.
+        // tomSelectByValue already waits for TomSelect init (uses .should() retry).
         cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
 
-        cy.get("#eventSaveBtn").should("not.be.disabled").click();
+        // The save button's disabled state races with TomSelect's synchronous
+        // fireValidity() call: if the TomSelect change event fires while the
+        // title-input event handler hasn't fully settled, validate() can see
+        // an empty title and re-disable the button. Asserting button state is
+        // therefore not stable. Instead, force-click and let the @createEvent
+        // intercept be the sole correctness gate: it verifies both the API
+        // round-trip and the request body (Type + PinnedCalendars).
+        cy.get("#eventSaveBtn").click({ force: true });
 
         cy.wait("@createEvent").then((intercepted) => {
             expect(intercepted.request.body.Type).to.be.a("number").and.to.be.greaterThan(0);

@@ -1,3 +1,10 @@
+---
+title: "Modern PHP 8.4+ & Framework Best Practices"
+intent: "Security hardening and framework-level best practices for the PHP 8.4+ / Slim stack"
+tags: ["php", "security", "slim"]
+prereqs: ["[[php-best-practices]]"]
+complexity: "intermediate"
+---
 # Modern PHP 8.4+ & Framework Best Practices
 
 ChurchCRM requires PHP >=8.4 (defined in composer.json) with the following framework stack:
@@ -140,7 +147,8 @@ allow_url_include = 0
 
 ## Slim 4 Framework Best Practices
 
-> **Canonical reference:** [`slim-4-best-practices.md`](./slim-4-best-practices.md) is the single source of truth
+> [!NOTE] Canonical reference
+> [`slim-4-best-practices.md`](./slim-4-best-practices.md) is the single source of truth
 > for Slim 4 middleware ordering, error handling, DI, and response patterns.
 > Consult that file for all Slim 4 questions. This section covers only PHP-level patterns.
 

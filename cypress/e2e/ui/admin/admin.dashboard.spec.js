@@ -96,7 +96,7 @@ describe("Admin Dashboard", () => {
         cy.contains("Optional Data to Include");
         cy.get("#includeDemoSundaySchool").should("be.checked");
         cy.get("#includeDemoFinancial").should("be.checked");
-        cy.get("#includeDemoEvents").should("be.disabled");
+        cy.get("#includeDemoEvents").should("be.checked");
 
         // Verify instructions section
         cy.contains("Need to remove this data later?");

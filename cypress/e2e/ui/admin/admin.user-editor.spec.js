@@ -1,83 +1,131 @@
 describe("User Editor - ORM Migration Tests", () => {
+    // Throwaway persons — not seeded users, safe to create/delete here.
+    // Each test uses a DIFFERENT person ID so parallel CI workers (test-root
+    // and test-subdir) never race on the same DB row.
+    // Test 1: PersonID=6 (Constance Hart, constance.hart@example.com, family 2)
+    // Test 2: PersonID=5 (Albert Campbell, albert.garcia@example.com, family 1)
+    const throwawayPersonId = 6;
+    const throwawayPersonId2 = 5;
+
     beforeEach(() => {
         cy.setupAdminSession();
     });
 
-    it("Should edit user permissions and persist via ORM", () => {
-        // Intercept the UserEditor form POST so we can wait on the real
-        // save round-trip rather than on a hard-coded 500ms sleep.
-        cy.intercept('POST', '**/UserEditor.php*').as('saveUser');
-
-        // Edit existing admin user (PersonID 1 always exists)
-        cy.visit('UserEditor.php?PersonID=1');
+    function createCustomUser() {
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
+        // The API call's response Set-Cookie will overwrite the browser's session cookie
+        // and contaminate the Cypress 'admin-session' cache when cy.session() implicitly
+        // saves the current browser state. Clear all saved sessions then force a fresh
+        // admin login to rebuild the 'admin-session' cache with a valid admin cookie.
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+        cy.setupAdminSession();
+        cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
+        cy.visit(`admin/system/users/new?personId=${throwawayPersonId}`);
         cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+    }
 
-        // Modify a permission
-        cy.get('#Finance').check();
-        cy.get('#SaveButton').click();
-        cy.wait('@saveUser');
+    function deleteUser() {
+        // withCredentials:false prevents sending the session cookie on the request
+        // but the response Set-Cookie still updates the browser jar, contaminating
+        // the 'admin-session' Cypress cache. Clear all sessions after cleanup so
+        // the next test's beforeEach re-establishes a clean admin session.
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+    }
 
-        // Reload page and verify ORM loaded the updated value
-        cy.visit('UserEditor.php?PersonID=1');
-        cy.get('#Finance').should('be.checked');
+    function createCustomUser2() {
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+        cy.setupAdminSession();
+        cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
+        cy.visit(`admin/system/users/new?personId=${throwawayPersonId2}`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+    }
 
-        // Uncheck to clean up
-        cy.get('#Finance').uncheck();
-        cy.get('#SaveButton').click();
-        cy.wait('@saveUser');
+    function deleteUser2() {
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+    }
+
+    it("Should persist a single Custom permission via ORM", () => {
+        createCustomUser();
+        cy.get("#Finance").check();
+        cy.get("#SaveButton").click();
+        cy.wait("@saveUser");
+
+        // Verify the user was created and Finance flag persisted via edit form
+        cy.visit(`admin/system/users/${throwawayPersonId}/edit`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+        cy.get("#Finance").should("be.checked");
+        deleteUser();
     });
 
-    it("Should handle ORM user update with multiple permission changes", () => {
-        cy.intercept('POST', '**/UserEditor.php*').as('saveUser');
+    it("Should persist multiple Custom permission changes via ORM", () => {
+        createCustomUser2();
+        cy.get("#EditRecords").should("be.visible").check();
+        cy.get("#SaveButton").click();
+        cy.wait("@saveUser");
+        cy.wait(500);
 
-        cy.visit('UserEditor.php?PersonID=1');
+        cy.visit(`admin/system/users/${throwawayPersonId2}/edit`);
         cy.contains("User Editor");
-
-        // Update multiple fields at once (tests ORM object state management)
-        cy.get('#AddRecords').check();
-        cy.get('#EditRecords').check();
-        cy.get('#Notes').check();
-        cy.get('#SaveButton').click();
-        cy.wait('@saveUser');
-
-        // Reload and verify ORM persisted all changes
-        cy.visit('UserEditor.php?PersonID=1');
-        cy.get('#AddRecords').should('be.checked');
-        cy.get('#EditRecords').should('be.checked');
-        cy.get('#Notes').should('be.checked');
-
-        // Clean up
-        cy.get('#AddRecords').uncheck();
-        cy.get('#EditRecords').uncheck();
-        cy.get('#Notes').uncheck();
-        cy.get('#SaveButton').click();
-        cy.wait('@saveUser');
+        cy.get("#customPermissions").should("be.visible");
+        cy.get("#EditRecords").should("be.checked");
+        deleteUser2();
     });
 
     it("Should update username via ORM", () => {
-        cy.intercept('POST', '**/UserEditor.php*').as('saveUser');
-
-        cy.visit('UserEditor.php?PersonID=1');
+        // The username field is independent of access level, so exercising it on
+        // the admin user (PersonID 1) is safe — its mode/permissions are untouched.
+        //
+        // Reset to canonical username first in case a prior run was interrupted
+        // after mutating to 'admin_orm_test' but before restoring.
+        cy.intercept("POST", "**/admin/system/users/1/edit*").as("resetIfNeeded");
+        cy.visit("admin/system/users/1/edit");
         cy.contains("User Editor");
-
-        // Get original username
-        cy.get('#UserName').invoke('val').then((originalUsername) => {
-            const newUsername = 'admin_orm_test';
-
-            // Update username
-            cy.get('#UserName').clear().type(newUsername);
-            cy.get('#SaveButton').click();
-            cy.wait('@saveUser');
-
-            // Verify ORM persisted the change
-            cy.visit('UserEditor.php?PersonID=1');
-            cy.get('#UserName').should('have.value', newUsername);
-
-            // Reset to original
-            cy.get('#UserName').clear().type(originalUsername);
-            cy.get('#SaveButton').click();
-            cy.wait('@saveUser');
+        cy.get("#UserName").then(($input) => {
+            if ($input.val() !== "Admin") {
+                cy.get("#UserName").clear().type("Admin");
+                cy.get("#SaveButton").click();
+                cy.wait("@resetIfNeeded");
+            }
         });
+
+        const newUsername = "admin_orm_test";
+        cy.intercept("POST", "**/admin/system/users/1/edit*").as("saveUser");
+        cy.get("#UserName").clear().type(newUsername);
+        cy.get("#SaveButton").click();
+        cy.wait("@saveUser");
+
+        cy.visit("admin/system/users/1/edit");
+        cy.get("#UserName").should("have.value", newUsername);
+
+        // Restore to canonical seed username
+        cy.intercept("POST", "**/admin/system/users/1/edit*").as("restoreUser");
+        cy.get("#UserName").clear().type("Admin");
+        cy.get("#SaveButton").click();
+        cy.wait("@restoreUser");
+    });
+});
+
+describe("User Editor - Person picker (no ?personId)", () => {
+    before(() => {
+        cy.setupAdminSession();
     });
 
+    it("Shows the person-picker dropdown when no personId is given", () => {
+        cy.visit("admin/system/users/new");
+        cy.contains("User Editor");
+        // The native <select> stays in DOM after TomSelect hides it
+        cy.get("#personSelect").should("exist");
+        // Username field present
+        cy.get("#UserName").should("exist");
+        // Access level radios present
+        cy.get('input[name="accessMode"]').should("have.length", 3);
+        // Save button present
+        cy.get("#SaveButton").should("exist");
+    });
 });

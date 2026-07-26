@@ -56,7 +56,7 @@ class FinancialService
             }
         }
         
-        $query->innerJoinDonationFund()->withColumn(DonationFundTableMap::COL_FUN_NAME, 'PledgeName');
+        $query->innerJoinDonationFund()->addAsColumn('PledgeName', DonationFundTableMap::COL_FUN_NAME);
         $data = $query->find();
 
         $rows = [];
@@ -147,7 +147,7 @@ class FinancialService
         if ($type) {
             $query->filterByMethod($type);
         }
-        $query->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'deposit_total')
+        $query->addAsColumn('deposit_total', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->select(['deposit_total']);
         $deposit_total = $query->findOne();
 
@@ -616,7 +616,7 @@ class FinancialService
         }
 
         // Get results and convert to array WITHOUT foreign objects
-        // Using withColumn() in the query provides Family and Fund names directly
+        // Using addAsColumn() in the query provides Family and Fund names directly
         $collection = $query->find();
         $results = [];
         foreach ($collection as $pledge) {
@@ -846,7 +846,7 @@ class FinancialService
         return PledgeQuery::create()
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'TotalAmount')
+            ->addAsColumn('TotalAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->select(['TotalAmount'])
             ->findOne();
     }
@@ -863,7 +863,7 @@ class FinancialService
         return PledgeQuery::create()
             ->filterByPledgeOrPayment('Pledge')
             ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'TotalAmount')
+            ->addAsColumn('TotalAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->select(['TotalAmount'])
             ->findOne();
     }
@@ -895,7 +895,7 @@ class FinancialService
         return PledgeQuery::create()
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
-            ->withColumn('COUNT(DISTINCT ' . PledgeTableMap::COL_PLG_FAMID . ')', 'FamilyCount')
+            ->addAsColumn('FamilyCount', 'COUNT(DISTINCT ' . PledgeTableMap::COL_PLG_FAMID . ')')
             ->select(['FamilyCount'])
             ->findOne();
     }

@@ -112,10 +112,24 @@ describe("Finance Deposits", () => {
 
     it("Load DepositSlipEditor and verify DataTables loads without errors", () => {
         cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
-        
+
         // Verify page loaded
         cy.contains("Deposit Slip Number: 5");
         cy.contains("Payments");
-        
+
+    });
+
+    it("Renders the Funds bar chart via ApexCharts", () => {
+        cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
+
+        cy.contains("Deposit Slip Number: 5");
+
+        // The #fund-bar container is always present; ApexCharts must
+        // actually draw into it (SVG/canvas), not just leave it empty —
+        // catches chart-library regressions (e.g. major version bumps)
+        // that a container-existence check alone would miss.
+        cy.get("#fund-bar").should("exist");
+        cy.get("#fund-bar .apexcharts-canvas").should("exist");
+        cy.get("#fund-bar svg.apexcharts-svg").should("exist");
     });
 });

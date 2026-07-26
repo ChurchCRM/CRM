@@ -179,7 +179,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <label><?= gettext('Filter by log level:') ?></label>
+                    <label><?= gettext('Filter by log level') ?>:</label>
                     <div class="btn-group btn-group-sm" role="group">
                         <button type="button" class="btn btn-outline-secondary log-filter active" data-level="all"><?= gettext('All') ?></button>
                         <button type="button" class="btn btn-outline-danger log-filter" data-level="ERROR"><?= gettext('Error') ?></button>
@@ -189,7 +189,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label><?= gettext('Number of lines to display:') ?></label>
+                    <label><?= gettext('Number of lines to display') ?>:</label>
                     <select class="form-select form-select-sm" id="logLinesLimit" style="width: auto; display: inline-block;">
                         <option value="50">50</option>
                         <option value="100" selected>100</option>

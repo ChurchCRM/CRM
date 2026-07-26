@@ -1,6 +1,6 @@
 /**
  * Dropdown Manager - Centralized country/state dropdown initialization
- * Used across PersonEditor, CartToFamily, CSVImport, FamilyEditor, and FamilyRegister
+ * Used across PersonEditor, CartToFamilyForm, CSVImport, FamilyEditor, and FamilyRegister
  */
 
 class DropdownManager {

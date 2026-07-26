@@ -112,6 +112,14 @@ class RestoreJob extends JobBase
     private function restoreSQLBackup(string $SQLFileInfo): void
     {
         $connection = Propel::getConnection();
+
+        // A restore REPLACES the database, so clear the existing schema first.
+        // Do not rely on the dump carrying its own DROP TABLE statements — ChurchCRM's
+        // own backups do, but ChurchInfo 1.x dumps and phpMyAdmin exports without
+        // "Add DROP TABLE" do not, and those would die on the first colliding CREATE TABLE.
+        $droppedObjects = SQLUtils::dropAllTables($connection);
+        LoggerUtils::getAppLogger()->info('Cleared existing schema before restore', ['droppedObjects' => $droppedObjects]);
+
         LoggerUtils::getAppLogger()->debug('Restoring SQL file from: ' . $SQLFileInfo);
         SQLUtils::sqlImport($SQLFileInfo, $connection);
         LoggerUtils::getAppLogger()->debug('Finished restoring SQL table');
@@ -257,6 +265,25 @@ class RestoreJob extends JobBase
         }
     }
 
+    /**
+     * Map a restore failure onto a message that tells the admin what to do next.
+     * The raw exception is always written to the app log for diagnosis.
+     *
+     * NOTE: the schema is dropped before the import begins, so a failure here means
+     * the database is left incomplete — say so plainly rather than implying it is intact.
+     */
+    private function getUserFacingError(\Throwable $ex): string
+    {
+        $message = $ex->getMessage();
+
+        // MySQL 1064 (syntax) / 1146 (missing table): the dump is not valid SQL, or is truncated.
+        if (str_contains($message, '1064') || str_contains($message, '1146')) {
+            return gettext('Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system.');
+        }
+
+        return gettext('Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system.');
+    }
+
     public function execute(): void
     {
         LoggerUtils::getAppLogger()->info('Executing restore job');
@@ -275,8 +302,12 @@ class RestoreJob extends JobBase
             }
             $this->postRestoreCleanup();
             LoggerUtils::getAppLogger()->info('Finished executing restore job.');
-        } catch (Exception $ex) {
+        } catch (\Throwable $ex) {
             LoggerUtils::getAppLogger()->error('Error restoring backup: ' . $ex);
+
+            // Re-throw so the caller returns a failure status. Swallowing this made a
+            // failed restore render as "Database Restored Successfully!" in the UI.
+            throw new Exception($this->getUserFacingError($ex), 500, $ex);
         } finally {
             // Clean up the uploaded restore file
             if (file_exists($this->RestoreFile->getPathname())) {

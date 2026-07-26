@@ -8,9 +8,9 @@
  * - Group with ID=1 must exist
  * - At least one group property definition must exist (pro_Class='g')
  *
- * Design rule: NO cy.request() / makePrivateAdminAPICall() calls after the
- * user is logged in. All API-based data setup runs BEFORE freshAdminLogin(),
- * and any teardown runs at the END of the test (after UI assertions).
+ * API-based data setup runs BEFORE freshAdminLogin(). Despite withCredentials:false
+ * on makePrivateAPICall, CI confirmed that cy.setupAdminSession() is not sufficient —
+ * the PHP session is still killed by cy.request(). freshAdminLogin() is required.
  */
 
 /**

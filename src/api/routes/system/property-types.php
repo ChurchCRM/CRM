@@ -4,8 +4,8 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyType;
 use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -90,8 +90,8 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
         try {
             $input = (array) $request->getParsedBody();
             $class = strtolower(trim((string) ($input['class'] ?? '')));
-            $name = InputUtils::sanitizeText($input['name'] ?? '');
-            $description = InputUtils::sanitizeText($input['description'] ?? '');
+            $name = (string) ($input['name'] ?? '');
+            $description = (string) ($input['description'] ?? '');
 
             if (!in_array($class, PROPERTY_TYPE_VALID_CLASSES, true)) {
                 return SlimUtils::renderErrorJSON($response, gettext('Class must be one of p, f, or g'), [], 400);
@@ -110,7 +110,7 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create property type'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Get(
@@ -173,7 +173,7 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
             }
 
             if (array_key_exists('name', $input)) {
-                $name = InputUtils::sanitizeText($input['name']);
+                $name = (string) $input['name'];
                 if ($name === '') {
                     return SlimUtils::renderErrorJSON($response, gettext('You must enter a name'), [], 400);
                 }
@@ -181,7 +181,7 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
             }
 
             if (array_key_exists('description', $input)) {
-                $pt->setPrtDescription(InputUtils::sanitizeText($input['description']));
+                $pt->setPrtDescription((string) $input['description']);
             }
 
             $pt->save();
@@ -190,7 +190,7 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update property type'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Delete(

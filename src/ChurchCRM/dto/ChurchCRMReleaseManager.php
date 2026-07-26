@@ -12,6 +12,7 @@ use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Github\Client;
+use Github\ResultPager;
 
 class ChurchCRMReleaseManager
 {
@@ -112,6 +113,7 @@ class ChurchCRMReleaseManager
         $logger = LoggerUtils::getAppLogger();
         $logger->debug('checkForUpdates() called');
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
+        unset($_SESSION['ChurchCRMAllStableReleases']);
         $logger->debug('checkForUpdates() complete - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached');
     }
 
@@ -365,6 +367,12 @@ class ChurchCRMReleaseManager
             $logger = LoggerUtils::getAppLogger();
             $logger->warning('Maximum execution time threshold exceeded: ' . ini_get('max_execution_time'));
 
+            // Discard any output already buffered (e.g. by the do-upgrade route's
+            // output-buffering guard) so this is the only thing in the response body.
+            while (ob_get_level() > 0) {
+                ob_end_clean();
+            }
+
             echo \json_encode([
                 'code'    => 500,
                 'message' => 'Maximum execution time threshold exceeded: ' . ini_get('max_execution_time') . '.  This ChurchCRM installation may now be in an unstable state.  Please review the Documentation at https://docs.churchcrm.io/administration/troubleshooting',
@@ -375,10 +383,17 @@ class ChurchCRMReleaseManager
     public static function doUpgrade(string $zipFilename, string $sha1): void
     {
         self::$isUpgradeInProgress = true;
-        // temporarily disable PHP's error display so that
-        // our custom timeout handler can display parsable JSON
-        // in the event this upgrade job times-out the
-        // PHP instance's max_execution_time
+        // Disable PHP's error display for the entire upgrade (code deploy +
+        // database migration + cleanup), not just the code-deploy phase. This
+        // is what lets our custom timeout handler (preShutdown()) emit clean,
+        // parsable JSON if this job times out, and it also stops any stray
+        // PHP warning/notice/deprecation from the database migration step
+        // (UpgradeService runs legacy .sql/.php upgrade scripts) from being
+        // echoed directly into the HTTP response body ahead of the JSON the
+        // wizard's AJAX call expects — which corrupts the response and
+        // surfaces client-side as a "parsererror" even though the upgrade
+        // itself succeeded. Restored exactly once, in the finally block
+        // below, regardless of outcome.
         $displayErrors = ini_get('display_errors');
         ini_set('display_errors', 0);
         ini_set('max_execution_time', 50_000);
@@ -388,220 +403,410 @@ class ChurchCRMReleaseManager
         $logger->info('Beginning upgrade process');
         $logger->info('PHP max_execution_time is now: ' . ini_get('max_execution_time'));
 
-        // Pre-flight validation: Check if we can create the Upgrade directory
-        $docRoot = SystemURLs::getDocumentRoot();
-        $upgradeDir = $docRoot . '/Upgrade';
-        $logger->info('Document root: ' . $docRoot);
-        $logger->info('Upgrade directory will be: ' . $upgradeDir);
+        try {
+            // Pre-flight validation: Check if we can create the Upgrade directory
+            $docRoot = SystemURLs::getDocumentRoot();
+            $upgradeDir = $docRoot . '/Upgrade';
+            $logger->info('Document root: ' . $docRoot);
+            $logger->info('Upgrade directory will be: ' . $upgradeDir);
 
-        // Check if document root is writable
-        if (!is_writable($docRoot)) {
-            self::$isUpgradeInProgress = false;
-            ini_set('display_errors', $displayErrors);
-
-            // Safely determine the directory owner name, handling environments
-            // where POSIX functions or lookups may fail.
-            $ownerName = 'N/A';
-            if (function_exists('posix_getpwuid')) {
-                $fileOwner = @fileowner($docRoot);
-                if ($fileOwner !== false) {
-                    $ownerInfo = @posix_getpwuid($fileOwner);
-                    if (is_array($ownerInfo) && isset($ownerInfo['name'])) {
-                        $ownerName = $ownerInfo['name'];
+            // Check if document root is writable
+            if (!is_writable($docRoot)) {
+                // Safely determine the directory owner name, handling environments
+                // where POSIX functions or lookups may fail.
+                $ownerName = 'N/A';
+                if (function_exists('posix_getpwuid')) {
+                    $fileOwner = @fileowner($docRoot);
+                    if ($fileOwner !== false) {
+                        $ownerInfo = @posix_getpwuid($fileOwner);
+                        if (is_array($ownerInfo) && isset($ownerInfo['name'])) {
+                            $ownerName = $ownerInfo['name'];
+                        } else {
+                            $ownerName = 'unknown';
+                        }
                     } else {
                         $ownerName = 'unknown';
                     }
-                } else {
-                    $ownerName = 'unknown';
                 }
+
+                $logger->error('Cannot write to ChurchCRM installation directory', [
+                    'docRoot' => $docRoot,
+                    'isWritable' => false,
+                    'permissions' => substr(sprintf('%o', fileperms($docRoot)), -4),
+                    'owner' => $ownerName,
+                ]);
+                throw new \Exception(gettext('Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions.'));
             }
 
-            $logger->error('Cannot write to ChurchCRM installation directory', [
-                'docRoot' => $docRoot,
-                'isWritable' => false,
-                'permissions' => substr(sprintf('%o', fileperms($docRoot)), -4),
-                'owner' => $ownerName,
-            ]);
-            throw new \Exception(gettext('Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions.'));
-        }
-
-        // Create Upgrade directory if it doesn't exist
-        if (!is_dir($upgradeDir)) {
-            $logger->info('Creating Upgrade directory: ' . $upgradeDir);
-            if (!@mkdir($upgradeDir, 0755, true)) {
-                self::$isUpgradeInProgress = false;
-                ini_set('display_errors', $displayErrors);
-                $error = error_get_last();
-                $logger->error('Failed to create Upgrade directory', [
-                    'upgradeDir' => $upgradeDir,
-                    'lastError' => $error,
-                ]);
-                throw new \Exception(gettext('Failed to create Upgrade directory. Please check file permissions.'));
-            }
-        }
-
-        $logger->info('Beginning hash validation on ' . $zipFilename);
-
-        // Log detailed file information before attempting hash
-        $fileExists = file_exists($zipFilename);
-        $isReadable = is_readable($zipFilename);
-        $fileSize = $fileExists ? filesize($zipFilename) : -1;
-        $perms = $fileExists ? @fileperms($zipFilename) : false;
-        $filePerms = ($perms !== false) ? substr(sprintf('%o', $perms), -4) : 'N/A';
-        $currentUser = get_current_user();
-        $fileOwner = 'unknown';
-        // Only call posix_getpwuid if the function exists (not available on Windows)
-        if ($fileExists && function_exists('posix_getpwuid')) {
-            $pwuid = @posix_getpwuid(fileowner($zipFilename));
-            $fileOwner = ($pwuid !== false && isset($pwuid['name'])) ? $pwuid['name'] : 'unknown';
-        }
-        $logger->debug('File pre-flight check', [
-            'zipFilename' => $zipFilename,
-            'fileExists' => $fileExists,
-            'isReadable' => $isReadable,
-            'fileSize' => $fileSize,
-            'filePerms' => $filePerms,
-            'fileOwner' => $fileOwner,
-            'currentUser' => $currentUser,
-            'currentUserId' => function_exists('posix_getuid') ? posix_getuid() : 'N/A',
-            'fileOwnerId' => $fileExists ? fileowner($zipFilename) : -1,
-        ]);
-
-        $actualSha1 = sha1_file($zipFilename);
-        
-        // If sha1_file() returned false, log detailed diagnostic info
-        if ($actualSha1 === false) {
-            $lastError = error_get_last();
-            $logger->error(
-                'sha1_file() returned false - hash calculation failed',
-                [
-                    'zipFilename' => $zipFilename,
-                    'expectedHash' => $sha1,
-                    'actualHash' => false,
-                    'fileExists' => $fileExists,
-                    'isReadable' => $isReadable,
-                    'fileSize' => $fileSize,
-                    'filePerms' => $filePerms,
-                    'fileOwner' => $fileOwner,
-                    'currentUser' => $currentUser,
-                    'lastError' => $lastError['message'] ?? 'none',
-                    'lastErrorType' => $lastError['type'] ?? 'none',
-                    'openBasedir' => ini_get('open_basedir') ?: 'not set',
-                    'disabledFunctions' => ini_get('disable_functions') ?: 'none',
-                    'memoryLimit' => ini_get('memory_limit'),
-                    'uploadTmpDir' => ini_get('upload_tmp_dir') ?: sys_get_temp_dir(),
-                ]
-            );
-        }
-        
-        if ($sha1 !== $actualSha1) {
-            self::$isUpgradeInProgress = false;
-            ini_set('display_errors', $displayErrors);
-            $message = 'hash validation failure';
-            $logger->error(
-                $message,
-                [
-                    'zipFilename' => $zipFilename,
-                    'expectedHash' => $sha1,
-                    'actualHash' => $actualSha1,
-                ]
-            );
-
-            throw new \Exception($message);
-        }
-
-        $logger->info('Hash validation succeeded on ' . $zipFilename . ' Got: ' . $actualSha1);
-
-        $zip = new \ZipArchive();
-        $codeDeploySuccessful = false;
-
-        $openResult = $zip->open($zipFilename);
-        if ($openResult === true) {
-            $logger->info('Extracting ' . $zipFilename . ' to: ' . $upgradeDir);
-
-            $executionTime = new ExecutionTime();
-            $isSuccessful = $zip->extractTo($upgradeDir);
-            if (!$isSuccessful) {
-                self::$isUpgradeInProgress = false;
-                ini_set('display_errors', $displayErrors);
-                $logger->error('Failed to extract upgrade archive', [
-                    'zipFilename' => $zipFilename,
-                    'upgradeDir' => $upgradeDir,
-                    'diskFreeSpace' => disk_free_space($docRoot),
-                ]);
-                $zip->close();
-                throw new \Exception(gettext('Failed to extract upgrade archive. Please check disk space and file permissions.'));
-            }
-
-            $zip->close();
-
-            $logger->info('Extraction completed.  Took:' . $executionTime->getMilliseconds());
-
-            // Verify the extracted directory exists
-            $extractedChurchCRM = $upgradeDir . '/churchcrm';
-            if (!is_dir($extractedChurchCRM)) {
-                self::$isUpgradeInProgress = false;
-                ini_set('display_errors', $displayErrors);
-                $logger->error('Extraction completed but expected directory not found', [
-                    'upgradeDir' => $upgradeDir,
-                    'expectedDir' => $extractedChurchCRM,
-                    'upgradeDirContents' => @scandir($upgradeDir),
-                ]);
-                throw new \Exception(gettext('Extraction completed but upgrade files not found. The upgrade archive may be corrupted.'));
-            }
-
-            $logger->info('Moving extracted zip into place');
-
-            $executionTime = new ExecutionTime();
-
-            FileSystemUtils::moveDir($extractedChurchCRM, $docRoot);
-            $codeDeploySuccessful = true;
-            $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
-        } else {
-            // ZipArchive::open() failed - log the error code and throw
-            self::$isUpgradeInProgress = false;
-            ini_set('display_errors', $displayErrors);
-            $logger->error('Failed to open upgrade archive', [
-                'zipFilename' => $zipFilename,
-                'errorCode' => $openResult,
-            ]);
-            throw new \Exception(gettext('Failed to open upgrade archive. The downloaded file may be corrupted.'));
-        }
-        $logger->info('Deleting zip archive: ' . $zipFilename);
-        unlink($zipFilename);
-
-        $logger->info('Upgrade process complete');
-        ini_set('display_errors', $displayErrors);
-        // Only attempt to upgrade the database if the code deploy/move completed successfully
-        if ($codeDeploySuccessful) {
-            try {
-                $logger->info('Attempting automatic database upgrade post code-deploy');
-                UpgradeService::upgradeDatabaseVersion();
-                $logger->info('Automatic database upgrade completed successfully');
-                
-                // After successful database upgrade, clean up orphaned files
-                $logger->info('Beginning automatic orphaned file cleanup');
-                $cleanupResult = AppIntegrityService::deleteOrphanedFiles();
-                $logger->info('Orphaned file cleanup completed', [
-                    'deleted' => count($cleanupResult['deleted']),
-                    'failed' => count($cleanupResult['failed']),
-                ]);
-                
-                if (!empty($cleanupResult['failed'])) {
-                    $logger->warning('Some orphaned files could not be deleted', [
-                        'failedFiles' => $cleanupResult['failed'],
-                        'errors' => $cleanupResult['errors'],
+            // Create Upgrade directory if it doesn't exist
+            if (!is_dir($upgradeDir)) {
+                $logger->info('Creating Upgrade directory: ' . $upgradeDir);
+                if (!@mkdir($upgradeDir, 0755, true)) {
+                    $error = error_get_last();
+                    $logger->error('Failed to create Upgrade directory', [
+                        'upgradeDir' => $upgradeDir,
+                        'lastError' => $error,
                     ]);
+                    throw new \Exception(gettext('Failed to create Upgrade directory. Please check file permissions.'));
                 }
-            } catch (\Exception $e) {
-                $logger->error('Automatic database upgrade failed: ' . $e->getMessage(), ['exception' => $e]);
-                // rethrow so the API caller is made aware of the failure
-                throw $e;
             }
-        } else {
-            $logger->warning('Skipping automatic database upgrade because code deployment did not complete successfully');
+
+            $logger->info('Beginning hash validation on ' . $zipFilename);
+
+            // Log detailed file information before attempting hash
+            $fileExists = file_exists($zipFilename);
+            $isReadable = is_readable($zipFilename);
+            $fileSize = $fileExists ? filesize($zipFilename) : -1;
+            $perms = $fileExists ? @fileperms($zipFilename) : false;
+            $filePerms = ($perms !== false) ? substr(sprintf('%o', $perms), -4) : 'N/A';
+            $currentUser = get_current_user();
+            $fileOwner = 'unknown';
+            // Only call posix_getpwuid if the function exists (not available on Windows)
+            if ($fileExists && function_exists('posix_getpwuid')) {
+                $pwuid = @posix_getpwuid(fileowner($zipFilename));
+                $fileOwner = ($pwuid !== false && isset($pwuid['name'])) ? $pwuid['name'] : 'unknown';
+            }
+            $logger->debug('File pre-flight check', [
+                'zipFilename' => $zipFilename,
+                'fileExists' => $fileExists,
+                'isReadable' => $isReadable,
+                'fileSize' => $fileSize,
+                'filePerms' => $filePerms,
+                'fileOwner' => $fileOwner,
+                'currentUser' => $currentUser,
+                'currentUserId' => function_exists('posix_getuid') ? posix_getuid() : 'N/A',
+                'fileOwnerId' => $fileExists ? fileowner($zipFilename) : -1,
+            ]);
+
+            $actualSha1 = sha1_file($zipFilename);
+
+            // If sha1_file() returned false, log detailed diagnostic info
+            if ($actualSha1 === false) {
+                $lastError = error_get_last();
+                $logger->error(
+                    'sha1_file() returned false - hash calculation failed',
+                    [
+                        'zipFilename' => $zipFilename,
+                        'expectedHash' => $sha1,
+                        'actualHash' => false,
+                        'fileExists' => $fileExists,
+                        'isReadable' => $isReadable,
+                        'fileSize' => $fileSize,
+                        'filePerms' => $filePerms,
+                        'fileOwner' => $fileOwner,
+                        'currentUser' => $currentUser,
+                        'lastError' => $lastError['message'] ?? 'none',
+                        'lastErrorType' => $lastError['type'] ?? 'none',
+                        'openBasedir' => ini_get('open_basedir') ?: 'not set',
+                        'disabledFunctions' => ini_get('disable_functions') ?: 'none',
+                        'memoryLimit' => ini_get('memory_limit'),
+                        'uploadTmpDir' => ini_get('upload_tmp_dir') ?: sys_get_temp_dir(),
+                    ]
+                );
+            }
+
+            if ($sha1 !== $actualSha1) {
+                $message = 'hash validation failure';
+                $logger->error(
+                    $message,
+                    [
+                        'zipFilename' => $zipFilename,
+                        'expectedHash' => $sha1,
+                        'actualHash' => $actualSha1,
+                    ]
+                );
+
+                throw new \Exception($message);
+            }
+
+            $logger->info('Hash validation succeeded on ' . $zipFilename . ' Got: ' . $actualSha1);
+
+            $zip = new \ZipArchive();
+            $codeDeploySuccessful = false;
+
+            $openResult = $zip->open($zipFilename);
+            if ($openResult === true) {
+                $logger->info('Extracting ' . $zipFilename . ' to: ' . $upgradeDir);
+
+                $executionTime = new ExecutionTime();
+                $isSuccessful = $zip->extractTo($upgradeDir);
+                if (!$isSuccessful) {
+                    $logger->error('Failed to extract upgrade archive', [
+                        'zipFilename' => $zipFilename,
+                        'upgradeDir' => $upgradeDir,
+                        'diskFreeSpace' => disk_free_space($docRoot),
+                    ]);
+                    $zip->close();
+                    throw new \Exception(gettext('Failed to extract upgrade archive. Please check disk space and file permissions.'));
+                }
+
+                $zip->close();
+
+                $logger->info('Extraction completed.  Took:' . $executionTime->getMilliseconds());
+
+                // Verify the extracted directory exists
+                $extractedChurchCRM = $upgradeDir . '/churchcrm';
+                if (!is_dir($extractedChurchCRM)) {
+                    $logger->error('Extraction completed but expected directory not found', [
+                        'upgradeDir' => $upgradeDir,
+                        'expectedDir' => $extractedChurchCRM,
+                        'upgradeDirContents' => @scandir($upgradeDir),
+                    ]);
+                    throw new \Exception(gettext('Extraction completed but upgrade files not found. The upgrade archive may be corrupted.'));
+                }
+
+                $logger->info('Moving extracted zip into place');
+
+                $executionTime = new ExecutionTime();
+
+                FileSystemUtils::moveDir($extractedChurchCRM, $docRoot);
+                $codeDeploySuccessful = true;
+                $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
+            } else {
+                // ZipArchive::open() failed - log the error code and throw
+                $logger->error('Failed to open upgrade archive', [
+                    'zipFilename' => $zipFilename,
+                    'errorCode' => $openResult,
+                ]);
+                throw new \Exception(gettext('Failed to open upgrade archive. The downloaded file may be corrupted.'));
+            }
+            $logger->info('Deleting zip archive: ' . $zipFilename);
+            unlink($zipFilename);
+
+            $logger->info('Upgrade process complete');
+
+            // Only attempt to upgrade the database if the code deploy/move completed successfully
+            if ($codeDeploySuccessful) {
+                try {
+                    $logger->info('Attempting automatic database upgrade post code-deploy');
+                    UpgradeService::upgradeDatabaseVersion();
+                    $logger->info('Automatic database upgrade completed successfully');
+
+                    // After successful database upgrade, clean up orphaned files
+                    $logger->info('Beginning automatic orphaned file cleanup');
+                    $cleanupResult = AppIntegrityService::deleteOrphanedFiles();
+                    $logger->info('Orphaned file cleanup completed', [
+                        'deleted' => count($cleanupResult['deleted']),
+                        'failed' => count($cleanupResult['failed']),
+                    ]);
+
+                    if (!empty($cleanupResult['failed'])) {
+                        $logger->warning('Some orphaned files could not be deleted', [
+                            'failedFiles' => $cleanupResult['failed'],
+                            'errors' => $cleanupResult['errors'],
+                        ]);
+                    }
+                } catch (\Exception $e) {
+                    $logger->error('Automatic database upgrade failed: ' . $e->getMessage(), ['exception' => $e]);
+                    // rethrow so the API caller is made aware of the failure
+                    throw $e;
+                }
+            } else {
+                $logger->warning('Skipping automatic database upgrade because code deployment did not complete successfully');
+            }
+        } finally {
+            ini_set('display_errors', $displayErrors);
+            self::$isUpgradeInProgress = false;
         }
-        self::$isUpgradeInProgress = false;
+    }
+
+    /**
+     * Fetch all stable releases from GitHub, cached in session under ChurchCRMAllStableReleases.
+     * Returns releases sorted descending (newest first).
+     *
+     * @return ChurchCRMRelease[]
+     */
+    private static function fetchAllStableReleasesForPreview(): array
+    {
+        if (!empty($_SESSION['ChurchCRMAllStableReleases'])) {
+            return $_SESSION['ChurchCRMAllStableReleases'];
+        }
+
+        $client = new Client();
+        try {
+            $pager = new ResultPager($client);
+            $gitHubReleases = $pager->fetchAll(
+                $client->repo()->releases(),
+                'all',
+                [
+                    self::GITHUB_USER_NAME,
+                    self::GITHUB_REPOSITORY_NAME,
+                    ['per_page' => 100],
+                ]
+            );
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->warning('Failed to fetch all releases for preview', ['error' => $e->getMessage()]);
+            return array_values(array_filter(
+                $_SESSION['ChurchCRMReleases'] ?? [],
+                fn (ChurchCRMRelease $r): bool => !$r->isPreRelease()
+            ));
+        }
+
+        $stableReleases = [];
+        foreach ($gitHubReleases as $r) {
+            $release = new ChurchCRMRelease($r);
+            if (!$release->isPreRelease()) {
+                $stableReleases[] = $release;
+            }
+        }
+
+        usort($stableReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($b->__toString(), $a->__toString()));
+        $_SESSION['ChurchCRMAllStableReleases'] = $stableReleases;
+        return $stableReleases;
+    }
+
+    /**
+     * Returns all stable releases newer than the installed version, sorted ascending.
+     *
+     * @return ChurchCRMRelease[]
+     */
+    public static function getReleasesAhead(string $installedVersionStr): array
+    {
+        $installedRelease = new ChurchCRMRelease(['name' => $installedVersionStr]);
+        $allStable = self::fetchAllStableReleasesForPreview();
+
+        $ahead = array_values(array_filter(
+            $allStable,
+            fn (ChurchCRMRelease $r): bool => version_compare($r->__toString(), $installedRelease->__toString()) > 0
+        ));
+
+        usort($ahead, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($a->__toString(), $b->__toString()));
+        return $ahead;
+    }
+
+    /**
+     * Find a fully-populated release object by version string (has download assets).
+     */
+    public static function getReleaseByVersion(string $version): ?ChurchCRMRelease
+    {
+        $allStable = self::fetchAllStableReleasesForPreview();
+        foreach ($allStable as $release) {
+            if ($release->__toString() === $version) {
+                return $release;
+            }
+        }
+        foreach ($_SESSION['ChurchCRMReleases'] ?? [] as $release) {
+            if ($release->__toString() === $version) {
+                return $release;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Download a specific release by version string.
+     *
+     * @return array Upgrade file information (fileName, fullPath, releaseNotes, sha1)
+     * @throws \Exception
+     */
+    public static function downloadSpecificRelease(string $version): array
+    {
+        $release = self::getReleaseByVersion($version);
+        if ($release === null) {
+            throw new \Exception('Release ' . $version . ' not found in available releases.');
+        }
+        LoggerUtils::getAppLogger()->info('Downloading specific release: ' . $version);
+        return self::downloadRelease($release);
+    }
+
+    /**
+     * Build preview data for the "What's New" wizard step.
+     * Returns next release notes, upgrade path (all releases ahead), version selector list,
+     * and the latest known release's notes (shown when the system is already up to date).
+     *
+     * @return array{
+     *   installedVersion: string,
+     *   nextVersion: string|null,
+     *   latestVersion: string,
+     *   nextReleaseNotes: string,
+     *   nextChangelogUrl: string|null,
+     *   releasesAhead: int,
+     *   upgradePath: array,
+     *   latestReleaseNotes: string,
+     *   latestChangelogUrl: string
+     * }
+     */
+    public static function getUpgradePreviewData(): array
+    {
+        $installedVersionStr = \ChurchCRM\Utils\VersionUtils::getInstalledVersion();
+        $installedRelease = new ChurchCRMRelease(['name' => $installedVersionStr]);
+
+        if (empty($_SESSION['ChurchCRMReleases'])) {
+            $_SESSION['ChurchCRMReleases'] = self::populateReleases();
+        }
+
+        $nextRelease = self::getNextReleaseStep($installedRelease);
+        $releasesAhead = self::getReleasesAhead($installedVersionStr);
+
+        // Detect the prerelease/dev-build case: installed version is strictly
+        // ahead of the latest stable release known from GitHub.  In that case
+        // getReleasesAhead() returns [] (nothing is strictly ahead of the
+        // installed build) and getNextReleaseStep() also returns null, leaving
+        // the wizard blank.  We treat latest stable as the "reinstall" target.
+        $latestStable = !empty($_SESSION['ChurchCRMReleases']) ? $_SESSION['ChurchCRMReleases'][0] : null;
+        $isAheadOfStable = false;
+
+        if (empty($releasesAhead) && $latestStable !== null) {
+            if (version_compare($installedVersionStr, $latestStable->__toString()) > 0) {
+                // Running a prerelease/dev build ahead of latest stable.
+                // Offer latest stable as a "reinstall" target.
+                $isAheadOfStable = true;
+                $nextRelease = $latestStable;
+                // $releasesAhead stays [] — there truly are no releases strictly ahead.
+            }
+        }
+        $githubBaseUrl = 'https://github.com/' . self::GITHUB_USER_NAME . '/' . self::GITHUB_REPOSITORY_NAME;
+        $changelogBaseUrl = $githubBaseUrl . '/blob/master/changelog/';
+
+        // Determine bump type relative to previous in the chain
+        $pathEntries = [];
+        $prevRelease = $installedRelease;
+        foreach ($releasesAhead as $release) {
+            if ($release->MAJOR > $prevRelease->MAJOR) {
+                $type = 'major';
+            } elseif ($release->MINOR > $prevRelease->MINOR) {
+                $type = 'minor';
+            } else {
+                $type = 'patch';
+            }
+            $versionStr = $release->__toString();
+            $pathEntries[] = [
+                'version'      => $versionStr,
+                'type'         => $type,
+                'notes'        => $release->getReleaseNotes(),
+                'changelogUrl' => $changelogBaseUrl . $versionStr . '.md',
+                'isNext'       => $nextRelease !== null && $release->__toString() === $nextRelease->__toString(),
+            ];
+            $prevRelease = $release;
+        }
+
+        $nextVersionStr = $nextRelease !== null ? $nextRelease->__toString() : null;
+        $latestVersionStr = !empty($releasesAhead)
+            ? end($releasesAhead)->__toString()
+            : ($latestStable !== null ? $latestStable->__toString() : $installedVersionStr);
+
+        // Fetch notes for the latest known GitHub release so the frontend can display
+        // them when the system is already up to date (releasesAhead === 0).
+        // $latestStable is already computed above; reuse it here to avoid a redundant assignment.
+        $latestReleaseNotes = $latestStable !== null ? $latestStable->getReleaseNotes() : '';
+        // Use the version string from the actual latest release object so the changelog
+        // URL stays accurate on dev builds where $installedVersionStr may be ahead of
+        // any published stable release.
+        $latestReleaseVersionStr = $latestStable !== null ? $latestStable->__toString() : $latestVersionStr;
+        $latestChangelogUrl = $changelogBaseUrl . $latestReleaseVersionStr . '.md';
+
+        return [
+            'installedVersion' => $installedVersionStr,
+            'nextVersion'      => $nextVersionStr,
+            'latestVersion'    => $latestVersionStr,
+            'nextReleaseNotes' => $nextRelease !== null ? $nextRelease->getReleaseNotes() : '',
+            'nextChangelogUrl' => $nextVersionStr !== null ? $changelogBaseUrl . $nextVersionStr . '.md' : null,
+            'releasesAhead'    => count($releasesAhead),
+            'upgradePath'      => $pathEntries,
+            'latestReleaseNotes' => $latestReleaseNotes,
+            'latestChangelogUrl' => $latestChangelogUrl,
+            'isAheadOfStable'    => $isAheadOfStable,
+        ];
     }
 
     /**

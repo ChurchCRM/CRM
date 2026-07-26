@@ -4,61 +4,84 @@
     "Azure",
     "Indigo",
     "Kiosk",
-    "Minimum"
+    "Minimum",
+    "SHA1 Hash",
+    "in"
   ],
   "cs": [
+    "AM / PM",
     "Audit",
     "Azure",
     "Online",
+    "SHA1 Hash",
     "Server",
-    "Test"
+    "Test",
+    "am / pm"
   ],
   "el": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "es": [
+    "AM / PM",
     "Azure",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "es-AR": [
+    "AM / PM",
     "Azure",
     "Host",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "es-CO": [
+    "AM / PM",
     "Azure",
     "Host",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "es-MX": [
+    "AM / PM",
     "Azure",
     "Host",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "es-SV": [
+    "AM / PM",
     "Azure",
     "Host",
     "Malayalam - India",
     "Manual",
-    "Material"
+    "Material",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "et": [
     "Audit",
     "Host",
+    "SHA1 Hash",
     "Server",
     "Test",
     "risk"
   ],
   "fi": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "fil": [
     "(PHP default)",
@@ -66,6 +89,7 @@
     "2FA",
     "4. Kiosk",
     "A",
+    "AM / PM",
     "API Access",
     "API Key",
     "Access Token",
@@ -157,6 +181,8 @@
     "Database",
     "Database:",
     "Default",
+    "Default: (999) 999-9999",
+    "Default: (999) 999-9999 x99999",
     "Denmark (Danmark)",
     "Diego Garcia",
     "Discord Chat",
@@ -353,6 +379,8 @@
     "Russia (Россия)",
     "Rwanda",
     "Réunion (La Réunion)",
+    "SHA-256 checksum",
+    "SHA1 Hash",
     "SMTP Configuration",
     "SMTP Debug Log",
     "SMTP Host",
@@ -449,14 +477,15 @@
     "Zambia",
     "Zimbabwe",
     "Zip Code",
+    "am / pm",
     "manifest.",
     "page",
     "s",
     "user:",
-    "Åland Islands (Åland)",
-    "SHA-256 checksum"
+    "Åland Islands (Åland)"
   ],
   "fr": [
+    "AM / PM",
     "Audit",
     "Azure",
     "Communication",
@@ -468,15 +497,23 @@
     "Format",
     "Indigo",
     "Minimum",
+    "Minutes",
     "Orange",
     "Parents",
     "Photo",
+    "SHA1 Hash",
     "Test",
+    "am / pm",
     "page",
     "page."
   ],
-  "hi": [],
+  "hi": [
+    "HTML URL",
+    "ICS URL",
+    "SHA1 Hash"
+  ],
   "id": [
+    "AM / PM",
     "Administrator",
     "Audit",
     "Azure",
@@ -487,16 +524,25 @@
     "Manual",
     "Minimum",
     "Online",
-    "Server"
+    "SHA1 Hash",
+    "Server",
+    "am / pm"
   ],
   "ja": [
-    "Azure"
+    "Azure",
+    "HTML URL",
+    "ICS URL",
+    "SHA1 Hash"
   ],
   "ko": [
-    "Azure"
+    "Azure",
+    "HTML URL",
+    "ICS URL",
+    "SHA1 Hash"
   ],
   "nl": [
     "4. Kiosk",
+    "AM / PM",
     "Account",
     "App",
     "Audit",
@@ -507,57 +553,81 @@
     "Indigo",
     "Malayalam - India",
     "Online",
+    "SHA1 Hash",
     "Server",
     "Test",
-    "Vonage Dashboard"
+    "Vonage Dashboard",
+    "am / pm",
+    "in"
   ],
   "pt": [
+    "AM / PM",
     "Azure",
     "Host",
     "Manual",
     "Material",
-    "Online"
+    "Online",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "pt-BR": [
     "Azure"
   ],
   "pt-br": [
+    "AM / PM",
     "Azure",
     "Host",
-    "Online"
+    "Manual",
+    "Online",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "ru": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "sq": [
     "4. Kiosk",
+    "AM / PM",
     "Azure",
     "Indigo",
     "Online",
-    "Test"
+    "SHA1 Hash",
+    "Test",
+    "am / pm"
   ],
   "tr": [
     "4. Kiosk",
     "Azure",
+    "HTML URL",
+    "ICS URL",
     "Kiosk",
+    "SHA1 Hash",
     "Test",
     "risk"
   ],
   "vi": [
     "Azure",
-    "Email BCC"
+    "Email BCC",
+    "SHA1 Hash"
   ],
   "zh-CN": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "zh-TW": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "hu": [
     "Azure",
-    "Online"
+    "HTML URL",
+    "ICS URL",
+    "Online",
+    "SHA1 Hash"
   ],
   "it": [
+    "AM / PM",
     "Account",
     "App",
     "Audit",
@@ -569,13 +639,17 @@
     "Locale",
     "Malayalam - India",
     "Online",
+    "SHA1 Hash",
     "Server",
     "Test",
-    "Timeout"
+    "Timeout",
+    "am / pm",
+    "in"
   ],
   "ml": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
     "2FA",
+    "AM / PM",
     "Azure",
     "Charset",
     "Collation",
@@ -584,6 +658,7 @@
     "ID",
     "OpenLP API v2 Source",
     "PDF",
+    "SHA1 Hash",
     "URL",
     "manifest."
   ],
@@ -601,13 +676,15 @@
     "Malayalam - India",
     "Minimum",
     "Online",
+    "SHA1 Hash",
     "Server",
+    "System",
     "Test",
-    "Vonage Dashboard",
-    "System"
+    "Vonage Dashboard"
   ],
   "pl": [
     "4. Kiosk",
+    "AM / PM",
     "Administrator",
     "Azure",
     "Format",
@@ -615,10 +692,13 @@
     "Kiosk",
     "Minimum",
     "Online",
+    "SHA1 Hash",
+    "System",
     "Test",
-    "System"
+    "am / pm"
   ],
   "ro": [
+    "AM / PM",
     "Administrator",
     "Audit",
     "Azure",
@@ -629,8 +709,10 @@
     "Manual",
     "Material",
     "Online",
+    "SHA1 Hash",
     "Server",
-    "Test"
+    "Test",
+    "am / pm"
   ],
   "sv": [
     "4. Kiosk",
@@ -642,18 +724,23 @@
     "Material",
     "Online",
     "Orange",
+    "SHA1 Hash",
     "Server",
+    "System",
     "Test",
     "Vonage Dashboard",
-    "System",
     "risk"
   ],
   "sw": [
+    "AM / PM",
     "Azure",
-    "Indigo"
+    "Indigo",
+    "SHA1 Hash",
+    "am / pm"
   ],
   "ta": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "te": [
     "App",
@@ -663,13 +750,16 @@
     "Database",
     "Display Errors",
     "Error Reporting",
+    "HTML URL",
     "Hit Rate",
     "Host",
+    "ICS URL",
     "Locale",
     "Max Execution Time",
     "Max POST Size",
     "Max Upload Size",
     "Memory Limit",
+    "SHA1 Hash",
     "Server",
     "Test",
     "Timeout"
@@ -683,20 +773,108 @@
     "Hit Rate",
     "Host",
     "Locale",
+    "SHA1 Hash",
     "Server",
     "Session Handler",
     "Test",
     "Timeout"
   ],
   "uk": [
-    "Azure"
+    "Azure",
+    "SHA1 Hash"
   ],
   "de": [
+    "AM / PM",
     "App",
     "Host",
     "Online",
+    "SHA1 Hash",
     "Server",
+    "System",
     "Test",
-    "System"
+    "am / pm",
+    "in"
+  ],
+  "hr": [
+    "-----------------------------------------------------------------------------------------------------------------------------------------------",
+    "2FA",
+    "4. Kiosk",
+    "A",
+    "AM / PM",
+    "Administrator",
+    "Afrikaans",
+    "Angola",
+    "Argentina",
+    "Aruba",
+    "Barbados",
+    "Belize",
+    "Bermuda",
+    "Burkina Faso",
+    "Curaçao",
+    "Côte d'Ivoire",
+    "Diego Garcia",
+    "El Salvador",
+    "Font",
+    "Format",
+    "Gabon",
+    "Gibraltar",
+    "Grenada",
+    "Guam",
+    "Guernsey",
+    "HTML URL",
+    "Haiti",
+    "Honduras",
+    "ICS URL",
+    "ID",
+    "Indigo",
+    "Jersey",
+    "Kiosk",
+    "KioskVisibilityTimestamp",
+    "Kiribati",
+    "M",
+    "Mali",
+    "Malta",
+    "Mayotte",
+    "Minimum",
+    "Montserrat",
+    "Nauru",
+    "Niue",
+    "Online",
+    "PDF",
+    "Palau",
+    "Portugal",
+    "SHA1 Hash",
+    "Samoa",
+    "San Marino",
+    "Sint Maarten",
+    "Status",
+    "Test",
+    "Timor-Leste",
+    "Togo",
+    "Tokelau",
+    "Tonga",
+    "Tristan da Cunha",
+    "Turkmenistan",
+    "Tuvalu",
+    "URL",
+    "Uganda",
+    "Vanuatu",
+    "Venezuela",
+    "am / pm",
+    "manifest.",
+    "s"
+  ],
+  "am": [
+    "HTML URL",
+    "SHA1 Hash"
+  ],
+  "ar": [
+    "SHA1 Hash"
+  ],
+  "he": [
+    "SHA1 Hash"
+  ],
+  "sk": [
+    "SHA1 Hash"
   ]
 }

@@ -2,7 +2,7 @@
 title: "Tabler Library Replacement Guide"
 intent: "Which 3rd-party UI libraries to replace with Tabler built-ins, how to do it via webpack, and which to keep"
 tags: ["frontend", "tabler", "webpack", "migration", "libraries"]
-prereqs: ["tabler-components.md", "webpack-typescript.md", "bootstrap-5-migration.md"]
+prereqs: ["[[tabler-components]]", "[[webpack-typescript]]", "[[bootstrap-5-migration]]"]
 complexity: "advanced"
 ---
 
@@ -73,7 +73,8 @@ SCSS → churchcrm.min.css  (all CSS combined)
 |---------|-------------|--------|
 | **select2-bootstrap4-theme** | `@ttskch/select2-bootstrap4-theme@^1.5.2` | Obsolete with Select2 removal. |
 
-> **Status update (2026-04-06):** React fully removed (react, react-dom, react-bootstrap, react-datepicker, react-select). `@ttskch/select2-bootstrap4-theme` already removed. DataTables BS4→BS5 upgrade is **complete**.
+> [!NOTE] Status update (2026-04-06)
+> React fully removed (react, react-dom, react-bootstrap, react-datepicker, react-select). `@ttskch/select2-bootstrap4-theme` already removed. DataTables BS4→BS5 upgrade is **complete**.
 
 ---
 

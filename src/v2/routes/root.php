@@ -33,9 +33,7 @@ function viewAccessDenied(Request $request, Response $response, array $args): Re
         'AddRecords',
         'MenuOptions',
         'Notes',
-        'CreateDirectory',
         'AddEvent',
-        'CSVExport',
         'Authentication',
     ];
 

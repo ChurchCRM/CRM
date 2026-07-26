@@ -792,19 +792,19 @@ require_once __DIR__ . '/Include/Header.php';
                                             <tr>
                                                 <td>
                                                     <input type="hidden" name="PersonID<?= $iCount ?>" value="<?= $aPersonIDs[$iCount] ?>">
-                                                    <input name="FirstName<?= $iCount ?>" type="text" value="<?= $aFirstNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <input name="FirstName<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aFirstNames[$iCount]) ?>" class="form-control form-control-sm">
                                                     <?php if (array_key_exists($iCount, $aFirstNameError)) { ?>
                                                     <span class="text-danger small"><?= $aFirstNameError[$iCount] ?></span>
                                                     <?php } ?>
                                                 </td>
                                                 <td>
-                                                    <input name="MiddleName<?= $iCount ?>" type="text" value="<?= $aMiddleNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <input name="MiddleName<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aMiddleNames[$iCount]) ?>" class="form-control form-control-sm">
                                                 </td>
                                                 <td>
-                                                    <input name="LastName<?= $iCount ?>" type="text" value="<?= $aLastNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <input name="LastName<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aLastNames[$iCount]) ?>" class="form-control form-control-sm">
                                                 </td>
                                                 <td>
-                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" class="form-control form-control-sm" maxlength="50">
+                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aSuffix[$iCount]) ?>" class="form-control form-control-sm" maxlength="50">
                                                 </td>
                                                 <td>
                                                     <select name="Gender<?= $iCount ?>" class="form-select form-select-sm">
@@ -951,30 +951,30 @@ require_once __DIR__ . '/Include/Header.php';
     }
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.familyRoles = <?= json_encode($familyRolesJS) ?>;
-    window.CRM.classifications = <?= json_encode($classificationsJS) ?>;
-    window.CRM.customPhoneFields = <?= json_encode($customPhoneFields ?? []) ?>;
+    window.CRM.familyRoles = <?= InputUtils::jsonEncodeForScript($familyRolesJS) ?>;
+    window.CRM.classifications = <?= InputUtils::jsonEncodeForScript($classificationsJS) ?>;
+    window.CRM.customPhoneFields = <?= InputUtils::jsonEncodeForScript($customPhoneFields ?? []) ?>;
     window.CRM.initialFamilyMemberCount = <?= $iFamilyMemberRows ?>;
     window.CRM.i18n = {
-        selectGender: <?= json_encode(gettext('Select Gender')) ?>,
-        male: <?= json_encode(gettext('Male')) ?>,
-        female: <?= json_encode(gettext('Female')) ?>,
-        selectRole: <?= json_encode(gettext('Select Role')) ?>,
-        unknown: <?= json_encode(gettext('Unknown')) ?>,
-        unassigned: <?= json_encode(gettext('Unassigned')) ?>,
+        selectGender: <?= InputUtils::jsonEncodeForScript(gettext('Select Gender')) ?>,
+        male: <?= InputUtils::jsonEncodeForScript(gettext('Male')) ?>,
+        female: <?= InputUtils::jsonEncodeForScript(gettext('Female')) ?>,
+        selectRole: <?= InputUtils::jsonEncodeForScript(gettext('Select Role')) ?>,
+        unknown: <?= InputUtils::jsonEncodeForScript(gettext('Unknown')) ?>,
+        unassigned: <?= InputUtils::jsonEncodeForScript(gettext('Unassigned')) ?>,
         months: [
-            <?= json_encode(gettext('January')) ?>,
-            <?= json_encode(gettext('February')) ?>,
-            <?= json_encode(gettext('March')) ?>,
-            <?= json_encode(gettext('April')) ?>,
-            <?= json_encode(gettext('May')) ?>,
-            <?= json_encode(gettext('June')) ?>,
-            <?= json_encode(gettext('July')) ?>,
-            <?= json_encode(gettext('August')) ?>,
-            <?= json_encode(gettext('September')) ?>,
-            <?= json_encode(gettext('October')) ?>,
-            <?= json_encode(gettext('November')) ?>,
-            <?= json_encode(gettext('December')) ?>
+            <?= InputUtils::jsonEncodeForScript(gettext('January')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('February')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('March')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('April')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('May')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('June')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('July')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('August')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('September')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('October')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('November')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('December')) ?>
         ]
     };
 </script>

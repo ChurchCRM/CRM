@@ -142,6 +142,54 @@ describe('05 - Post-Reset Verification', () => {
                 cy.log('No groups found after reset (as expected)');
             });
         });
+
+        // Must use function() (not arrow) so Mocha's this.skip() is available for
+        // the pre-condition guard below.
+        // eslint-disable-next-line prefer-arrow-callback
+        it('should have deleted person photo files from disk after DB reset (GHSA-r68j-h5c6-w6gh)', function () {
+            // Pre-condition guard: check whether person 2's demo photo actually exists
+            // on disk at this point (i.e. survived the reset — meaning the bug is
+            // present). If the endpoint already returns 404 we cannot distinguish
+            // "fix correctly deleted the file" from "spec 02 never ran and no file
+            // was ever created", so we skip rather than produce a silent false-negative
+            // pass.
+            //
+            // The /api/person/{id}/photo endpoint uses Photo::hasUploadedPhoto() which
+            // only checks file existence on disk — no PersonMiddleware, no DB lookup.
+            // 200 → file survived the reset (bug present); 404 → file is gone (or
+            // never existed — skip).
+            cy.request({
+                method: 'GET',
+                url: '/api/person/2/photo',
+                failOnStatusCode: false,
+                timeout: 10000
+            }).then((resp) => {
+                if (resp.status === 404) {
+                    // Photo is verifiably absent — either the fix deleted it correctly
+                    // or spec 02 never ran and the file was never created. Either way
+                    // the pre-condition for the regression assertion is not met.
+                    // Skip rather than produce a vacuous pass.
+                    cy.log(
+                        'Pre-condition not met: /api/person/2/photo returned 404 — ' +
+                        'photo was either correctly deleted by the reset fix or ' +
+                        'spec 02 never ran. Skipping regression assertion.'
+                    );
+                    this.skip();
+                    return;
+                }
+                // Surface unexpected status codes (401, 500, etc.) as test failures
+                // rather than silently skipping. Only 200 (bug present) or 404
+                // (fix applied / spec 02 never ran) are expected here.
+                expect(resp.status).to.equal(200,
+                    'Unexpected status ' + resp.status + ' from /api/person/2/photo — ' +
+                    'expected 200 (photo survived reset, regression present) or ' +
+                    '404 (photo deleted, fix applied or spec 02 never ran)');
+                // status === 200: photo survived the DB reset — the cleanup fix is NOT
+                // working. Assert 404 to fail the test and surface the regression.
+                expect(resp.status).to.equal(404,
+                    'Person 2 photo file must be deleted from disk after DB reset (GHSA-r68j-h5c6-w6gh)');
+            });
+        });
     });
 
     describe('Step 10e: Final Verification', () => {

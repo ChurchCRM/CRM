@@ -47,7 +47,10 @@ use Slim\HttpCache\Cache;
  *         @OA\JsonContent(type="object",
  *             @OA\Property(property="hasPhoto", type="boolean"),
  *             @OA\Property(property="initials", type="string", example="JS"),
- *             @OA\Property(property="gravatarUrl", type="string", nullable=true)
+ *             @OA\Property(property="gravatarUrl", type="string", nullable=true),
+ *             @OA\Property(property="photoUrl", type="string", nullable=true),
+ *             @OA\Property(property="email", type="string", nullable=true),
+ *             @OA\Property(property="photoVersion", type="integer", example=1718000000, description="Unix mtime of the uploaded photo file; 0 when hasPhoto is false. Append as ?v=<photoVersion> to the /photo URL to bust the 2-hour public Cache-Control header after an upload.")
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized")
@@ -209,11 +212,12 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
-    // Get person by ID — IDOR check via canEditPerson (GHSA-5w59-32c8-933v)
+    // Get person by ID — read-baseline check via canReadPerson (all authenticated users)
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
-        if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+        $personFamilyId = (int) $person->getFamId();
+        if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
             throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
         }
         return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
@@ -239,7 +243,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/addToCart', function (Request $request, Response $response, array $args): Response {
         Cart::addPerson($args['personId']);
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(new EditRecordsRoleAuthMiddleware());
 })->add(new PersonMiddleware());
 
 /**

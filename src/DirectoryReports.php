@@ -3,12 +3,8 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\view\PageHeader;
-
-// Check for Create Directory user permission.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(), 'CreateDirectory');
 
 $sPageTitle = gettext('Directory reports');
 $sPageSubtitle = gettext('Generate directory listings and printed materials');

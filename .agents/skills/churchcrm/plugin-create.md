@@ -2,13 +2,14 @@
 title: "Plugin Create — Community Plugin Quickstart & Submission"
 intent: "Step-by-step flow for building a new community plugin from scratch and getting it added to the approved allowlist"
 tags: ["plugins","community","create","submission","security"]
-prereqs: ["plugin-development.md","plugin-security-scan.md"]
+prereqs: ["[[plugin-development]]","[[plugin-security-scan]]"]
 complexity: "intermediate"
 ---
 
 # Plugin Create — Community Plugin Quickstart <!-- learned: 2026-04-13 -->
 
-> **Scope — community plugins only.** This skill is the create-from-scratch
+> [!NOTE] Scope — community plugins only
+> This skill is the create-from-scratch
 > walkthrough for third-party plugins that will be installed into
 > `src/plugins/community/` via the URL installer. If you are updating a
 > plugin shipped in `src/plugins/core/`, read
@@ -77,7 +78,8 @@ A full-featured plugin might also add:
 Keep it minimal. The fewer files you ship, the faster the review and
 the smaller the attack surface.
 
-> **Don't want to use the scaffolder?** Fork
+> [!TIP] Don't want to use the scaffolder?
+> Fork
 > [ChurchCRM/community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world)
 > directly and rename the identifiers. The scaffolder is a
 > convenience, not a requirement.

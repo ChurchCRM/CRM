@@ -8,6 +8,7 @@ require_once __DIR__ . '/../Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
@@ -141,12 +142,12 @@ if (!empty($_POST['funds'])) {
 if ($fundCount > 0) {
     if ($fundCount === 1) {
         if ($fund[0] === gettext('All Funds')) {
-            $fundOnlyString = gettext(' for all funds');
+            $fundOnlyString = ' ' . gettext('for all funds');
         } else {
-            $fundOnlyString = gettext(' for fund ');
+            $fundOnlyString = ' ' . gettext('for fund') . ' ';
         }
     } else {
-        $fundOnlyString = gettext('for funds ');
+        $fundOnlyString = gettext('for funds') . ' ';
     }
     for ($i = 0; $i < $fundCount; $i++) {
         $sSQL = 'SELECT fun_Name FROM donationfund_fun WHERE fun_ID=' . $fund[$i];
@@ -273,7 +274,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     $summaryDateWid = $summaryFundX - $summaryDateX;
     $summaryFundWid = $summaryAmountX - $summaryFundX;
-    $summaryAmountWid = 15;
+    $summaryAmountWid = 20; // widened from 15 to fit CurrencyFormatter output (e.g. "$ 1,234.56" = 10 chars at Courier 8pt ≈ 16.9 mm)
 
     $summaryIntervalY = 4;
 
@@ -329,7 +330,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         if ($cnt > 1) {
             $pdf->writeAtCell($summaryFundX, $curY, $summaryFundWid, 'Total pledges');
             $pdf->SetFont('Courier', '', 8);
-            $totalAmountStr = sprintf('%.2f', $totalAmount);
+            $totalAmountStr = CurrencyFormatter::format($totalAmount);
             $pdf->printRightJustifiedCell($summaryAmountX, $curY, $summaryAmountWid, $totalAmountStr);
             $curY += $summaryIntervalY;
         }
@@ -362,7 +363,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $summaryMethodWid = $summaryFundX - $summaryMethodX;
         $summaryFundWid = $summaryMemoX - $summaryFundX;
         $summaryMemoWid = $summaryAmountX - $summaryMemoX;
-        $summaryAmountWid = 15;
+        $summaryAmountWid = 20; // widened from 15 to fit CurrencyFormatter output (e.g. "$ 1,234.56" = 10 chars at Courier 8pt ≈ 16.9 mm)
 
         $curY += $summaryIntervalY;
         $pdf->SetFont('Times', 'B', 10);
@@ -427,7 +428,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         if ($cnt > 1) {
             $pdf->writeAtCell($summaryMemoX, $curY, $summaryMemoWid, 'Total payments');
             $pdf->SetFont('Courier', '', 8);
-            $totalAmountString = sprintf('%.2f', $totalAmount);
+            $totalAmountString = CurrencyFormatter::format($totalAmount);
             $pdf->printRightJustifiedCell($summaryAmountX, $curY, $summaryAmountWid, $totalAmountString);
             $curY += $summaryIntervalY;
         }
@@ -450,7 +451,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
                 if ($amountDue < 0) {
                     $amountDue = 0;
                 }
-                $amountStr = sprintf('Amount due for %s: %.2f', $fun_name, $amountDue);
+                $amountStr = sprintf('Amount due for %s: %s', $fun_name, CurrencyFormatter::format($amountDue));
                 $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $amountStr);
                 $curY += $summaryIntervalY;
             }

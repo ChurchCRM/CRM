@@ -119,7 +119,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                                 <?= gettext('Group Type') ?>
                             </label>
                             <select class="form-select" id="groupType" name="groupType">
-                                <option value=""><?= gettext('— Select type (optional) —') ?></option>
+                                <option value="">— <?= gettext('Select type (optional)') ?> —</option>
                                 <?php foreach ($groupTypes as $type): ?>
                                     <option value="<?= (int) $type['id'] ?>"><?= InputUtils::escapeHTML($type['name']) ?></option>
                                 <?php endforeach; ?>

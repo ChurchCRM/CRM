@@ -1,7 +1,14 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "",
-  "HTML URL": "",
-  "ICS URL": ""
+  "one": {
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
+  },
+  "other": {
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
+  }
 }

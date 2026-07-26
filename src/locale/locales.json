@@ -78,6 +78,20 @@
     "momentLocale": "zh-tw",
     "isRTL": false
   },
+  "Croatian": {
+    "poEditor": "hr",
+    "locale": "hr_HR",
+    "languageCode": "hr",
+    "countryCode": "HR",
+    "dataTables": "hr",
+    "fullCalendar": true,
+    "fullCalendarLocale": "hr",
+    "datePicker": true,
+    "isRTL": false,
+    "nativeName": "Hrvatski",
+    "region": "Europe",
+    "momentLocale": "hr"
+  },
   "Czech": {
     "poEditor": "cs",
     "locale": "cs_CZ",

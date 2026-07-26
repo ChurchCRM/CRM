@@ -1,3 +1,10 @@
+---
+title: "Configuration Management"
+intent: "Guide to managing SystemConfig, asset paths, settings panels, and configuration best practices"
+tags: ["configuration", "settings", "systemconfig", "admin"]
+prereqs: ["[[php-best-practices]]"]
+complexity: "beginner"
+---
 # Configuration Management
 
 Guide to managing SystemConfig, asset paths, settings panels, and configuration best practices.
@@ -26,20 +33,23 @@ src/ChurchCRM/Utils/SystemConfig.php
 
 | Method | Purpose | Example |
 |--------|---------|---------|
-| `getValue($key)` | Get string value | `SystemConfig::getValue('churchName')` |
-| `getBooleanValue($key)` | Get boolean (truthy/falsey) | `SystemConfig::getBooleanValue('enableEmails')` |
-| `integerValue($key)` | Get integer | `SystemConfig::integerValue('sessionTimeout')` |
-| `setValue($key, $value)` | Set value | `SystemConfig::setValue('churchName', 'My Church')` |
+| `getValue($key)` | Get string value | `SystemConfig::getValue('sChurchName')` |
+| `getBooleanValue($key)` | Get boolean | `SystemConfig::getBooleanValue('bEnabledEmail')` |
+| `getIntValue($key)` | Get integer | `SystemConfig::getIntValue('iSessionTimeout')` |
+| `setValue($key, $value)` | Set value | `SystemConfig::setValue('sChurchName', 'My Church')` |
 | `getSettingsConfig($keys)` | Get structured config | `SystemConfig::getSettingsConfig(['timeout', 'maxFailed'])` |
 | `debugEnabled()` | Is debug mode on? | `SystemConfig::debugEnabled()` |
-| `getAllSettings()` | Get all settings | `SystemConfig::getAllSettings()` |
+| `getValueForHtml/Attr/Js($key)` | **Escaped** output getters — prefer these whenever emitting a config value | `SystemConfig::getValueForHtml('sChurchName')` |
+
+> ⚠️ There is **no** `integerValue()` and **no** `getAllSettings()` — the real methods are
+> `getIntValue()` and `getSettingsConfig()`. Calling the former names is a fatal.
 
 ### Basic Usage
 
 ```php
 // ✅ CORRECT - Access settings through SystemConfig
 $churchName = SystemConfig::getValue('churchName', 'Default Church');
-$sessionTimeout = SystemConfig::integerValue('iSessionTimeout');
+$sessionTimeout = SystemConfig::getIntValue('iSessionTimeout');
 
 if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
     // Show password recovery option
@@ -111,8 +121,13 @@ src/ChurchCRM/dto/SystemURLs.php
 |--------|---------|---------|
 | `getRootPath()` | Relative root URL | `/churchcrm/` or `/` |
 | `getDocumentRoot()` | File system root | `/var/www/html/` |
-| `getImagePath()` | Image URL | `/churchcrm/images/` |
-| `getSkinPath()` | CSS/JS URL | `/churchcrm/skin/v2/` |
+| `getImagesRoot()` | Image **filesystem** root | `/var/www/html/Images` |
+| `assetVersioned($path)` | Cache-busted asset URL | `SystemURLs::assetVersioned('skin/v2/app.min.js')` |
+| `getCSPNonce()` | Nonce for inline `<script>` | `SystemURLs::getCSPNonce()` |
+
+> ⚠️ There is **no** `getImagePath()` and **no** `getSkinPath()`. For image and skin **URLs**,
+> build them from `getRootPath()` (see the usage pattern below). `getImagesRoot()` is a
+> filesystem path, not a URL — do not emit it into HTML.
 
 ### Usage Pattern
 

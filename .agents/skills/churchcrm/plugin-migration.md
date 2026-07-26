@@ -2,13 +2,14 @@
 title: "Core Plugin Migration Guidelines"
 intent: "Checklist for updating the core plugins shipped in src/plugins/core/ when core ChurchCRM APIs, routes, or conventions change"
 tags: ["plugins","migration","core","compatibility"]
-prereqs: ["plugin-system.md","api-compatibility-and-deprecation.md"]
+prereqs: ["[[plugin-system]]","[[api-compatibility-and-deprecation]]"]
 complexity: "intermediate"
 ---
 
 # Core Plugin Migration Guidelines <!-- learned: 2026-04-13 -->
 
-> **Scope — core plugins only.** This skill covers the plugins shipped
+> [!NOTE] Scope — core plugins only
+> This skill covers the plugins shipped
 > in `src/plugins/core/` (mailchimp, vonage, gravatar, openlp,
 > google-analytics, external-backup, custom-links) and any future
 > plugin maintained in this repository. **Community plugins do not

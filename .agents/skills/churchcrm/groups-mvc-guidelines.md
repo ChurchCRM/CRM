@@ -2,7 +2,7 @@
 title: "Groups MVC Guidelines"
 intent: "Design and implementation patterns for Groups MVC apps (SundaySchool, Congregation)"
 tags: ["groups","mvc","routing","service-layer"]
-prereqs: ["routing-architecture.md","service-layer.md","php-best-practices.md"]
+prereqs: ["[[routing-architecture]]","[[service-layer]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 
@@ -81,21 +81,22 @@ When migrating a legacy `src/<module>/LegacyPage.php` to `/groups/<submodule>/<a
 - Keep group-scoped API endpoints under `/api/groups/` (existing Slim API app).
 - Return standardized JSON via `SlimUtils::renderJSON()` and errors via `SlimUtils::renderErrorJSON()`.
 
-## Functions.php is NOT auto-loaded in PhpRenderer views <!-- learned: 2026-03-15 -->
+## Functions.php is gone — use the Utils classes <!-- learned: 2026-07-11 -->
 
-`groups/index.php` bootstraps via `LoadConfigs.php`, which does **not** include `Functions.php`. `Header.php` also doesn't include it. Any view that calls a helper defined in `Functions.php` (e.g. `generateGroupRoleEmailDropdown()`, `PrintFYIDSelect()`, `change_date_for_place_holder()`) will throw `Call to undefined function`.
+> ⚠️ **`src/Include/Functions.php` no longer exists.** Older guidance told you to
+> `require_once SystemURLs::getDocumentRoot() . '/Include/Functions.php'` in a view whenever a
+> global helper came back undefined. That require is now a **fatal** (file not found). Do not add it.
 
-Fix: explicitly require it at the top of the view file before `Header.php`:
+Its helpers were migrated to namespaced Utils classes — import those instead:
 
-```php
-// Required for helpers like generateGroupRoleEmailDropdown()
-require_once SystemURLs::getDocumentRoot() . '/Include/Functions.php';
-require SystemURLs::getDocumentRoot() . '/Include/Header.php';
-```
+| Old global function | Replacement |
+|---------------------|-------------|
+| `change_date_for_place_holder()` | `ChurchCRM\Utils\DateTimeUtils` |
+| `PrintFYIDSelect()` | `ChurchCRM\Utils\FiscalYearUtils` |
 
-## Documentation Update Requirement <!-- learned: 2026-03-15 -->
+If a view throws `Call to undefined function`, find the migrated Utils class and add a `use`
+statement — never resurrect a global include.
 
-After migrating any page, update the Documentation:
 ## Documentation Update Requirement <!-- learned: 2026-03-15 -->
 
 After migrating any page, update the Documentation:

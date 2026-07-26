@@ -2,7 +2,7 @@
 title: "Performance Optimization & Best Practices"
 intent: "Patterns for improving query performance, caching, and frontend optimization"
 tags: ["performance","database","caching"]
-prereqs: ["database-operations.md","service-layer.md"]
+prereqs: ["[[database-operations]]","[[service-layer]]"]
 complexity: "advanced"
 ---
 

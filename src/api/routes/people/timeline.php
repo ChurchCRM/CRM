@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\TimelineService;
@@ -15,7 +16,7 @@ $app->group('/timeline', function (RouteCollectorProxy $group): void {
      *     path="/timeline/person/{personId}",
      *     operationId="getPersonTimeline",
      *     summary="Get full timeline for a person",
-     *     description="Returns all timeline items (notes and events) for a person, filtered by the current user's visibility permissions. Private notes are only visible to the user who entered them; admins see a placeholder.",
+     *     description="Returns all timeline items (notes and events) for a person, filtered by the current user's permissions. Requires authentication. Notes are only included for users with Notes=1 or Admin. Plain-auth users see only non-note items (calendar events, system events). Private notes are visible only to the author and admins; Notes=1 non-admin users see their own private notes only.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -26,6 +27,7 @@ $app->group('/timeline', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="timeline", type="array", @OA\Items(type="object"))
      *         )
      *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
@@ -34,6 +36,14 @@ $app->group('/timeline', function (RouteCollectorProxy $group): void {
         if (PersonQuery::create()->findPk($personId) === null) {
             throw new HttpNotFoundException($request);
         }
+
+        // ABAC hook: canReadPerson() returns true for all authenticated users today
+        // but provides the extension point for future per-record holds.
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if (!$currentUser->canReadPerson($personId)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        }
+
         $service = new TimelineService();
         return SlimUtils::renderJSON($response, ['timeline' => $service->getForPerson($personId)]);
     });
@@ -43,7 +53,7 @@ $app->group('/timeline', function (RouteCollectorProxy $group): void {
      *     path="/timeline/family/{familyId}",
      *     operationId="getFamilyTimeline",
      *     summary="Get full timeline for a family",
-     *     description="Returns all timeline items (notes) for a family, filtered by the current user's visibility permissions. Private notes are only visible to the user who entered them; admins see a placeholder.",
+     *     description="Returns all timeline items (notes) for a family, filtered by the current user's permissions. Requires authentication. Notes are only included for users with Notes=1 or Admin. Plain-auth users see only non-note items. Private notes are visible only to the author and admins.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -54,6 +64,8 @@ $app->group('/timeline', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="timeline", type="array", @OA\Items(type="object"))
      *         )
      *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Access denied"),
      *     @OA\Response(response=404, description="Family not found")
      * )
      */
@@ -62,6 +74,14 @@ $app->group('/timeline', function (RouteCollectorProxy $group): void {
         if (FamilyQuery::create()->findPk($familyId) === null) {
             throw new HttpNotFoundException($request);
         }
+
+        // Authorization: enforce family-scope for EditSelf-only users.
+        // Fixes GHSA-jjcj-h3cm-p7x7
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if (!$currentUser->canViewFamily($familyId)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        }
+
         $service = new TimelineService();
         return SlimUtils::renderJSON($response, ['timeline' => $service->getForFamily($familyId)]);
     });

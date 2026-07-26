@@ -34,8 +34,9 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 
 ## Frontend & UI
 
-> **Any time you add or edit a table with row actions — read [`table-action-menu.md`](./table-action-menu.md) first.**
-> **Any time you add settings/config to a page — read [`frontend-development.md`](./frontend-development.md) (System Settings Panel section) for the gold-standard pattern from Finance Dashboard.**
+> [!IMPORTANT] Read first
+> Any time you add or edit a table with row actions — read [`table-action-menu.md`](./table-action-menu.md) first.
+> Any time you add settings/config to a page — read [`frontend-development.md`](./frontend-development.md) (System Settings Panel section) for the gold-standard pattern from Finance Dashboard.
 
 | Skill | When to Use |
 |-------|------------|

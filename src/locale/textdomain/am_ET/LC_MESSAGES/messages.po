@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "የኢዮበልዩ ቀን"
 
 #: 
-msgid "Output Method:"
-msgstr "የውጤት መንገድ:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "እያንዳንዱ መረጃ በCVS"
 
@@ -267,46 +263,14 @@ msgstr "ምደባ"
 msgid "Add Cart to Event"
 msgstr "ጋሪን ወደ ክስተት ያክሉ"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "ጋሪዎ ባዶ ነው!"
-
-#: 
-msgid "No family name entered!"
-msgstr "ምንም የቤተሰብ ስም አልገባም!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "ጋሪ ወደ ቤተሰብ ያክሉ"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "ስም"
 
 #: 
-msgid "Assign Role"
-msgstr "ሚና መድብ"
-
-#: 
 msgid "Already in a family"
 msgstr "ቀድሞውኑ በቤተሰብ ውስጥ"
-
-#: 
-msgid "Create new family"
-msgstr "አዲስ ቤተሰብ ይፍጠሩ"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "አዲስ ቤተሰብ ካከሉ፣ ከታች ያለውን ውሂብ ያስገቡ።"
-
-#: 
-msgid "Use address/contact data from"
-msgstr "የአድራሻ/የዕውቂያ ውሂብን ከ ይጠቀሙ"
-
-#: 
-msgid "Only the new data below"
-msgstr "ከታች ያለው አዲስ መረጃ ብቻ ነው።"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +283,6 @@ msgstr "ወደ ቤተሰብ ያክሉ"
 #: 
 msgid "Add Cart to Group"
 msgstr "ጋሪን ወደ ቡድን ያክሉ"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "ጋሪዎን ለመጨመር የሚፈልጉትን ቡድን ይምረጡ"
 
 #: 
 msgid "Select Group"
@@ -401,10 +361,6 @@ msgstr "ድርጊት"
 #: 
 msgid "Member"
 msgstr "አባል"
-
-#: 
-msgid " of the"
-msgstr " የእርሱ"
 
 #: 
 msgid "(No assigned family)"
@@ -1077,11 +1033,6 @@ msgid "Bank Draft"
 msgstr "የባንክ ረቂቅ"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "አነስተኛ ጠቅላላ መጠን፡-"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - ምንም ዝቅተኛ"
 
@@ -1106,10 +1057,6 @@ msgid "All Families"
 msgstr "ሁሉም ቤተሰቦች"
 
 #: 
-msgid "Report Heading:"
-msgstr "የሪፖርት ርዕስ፡-"
-
-#: 
 msgid "Graphic"
 msgstr "ግራፊክ"
 
@@ -1120,14 +1067,6 @@ msgstr "የቤተ ክርስቲያን አድራሻ"
 #: 
 msgid "Blank"
 msgstr "ባዶ"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "የሐዋላ ወረቀት፡"
-
-#: 
-msgid "Sort Data by:"
-msgstr "መረጃዉን ደርድር"
 
 #: 
 msgid "Deposit"
@@ -1181,10 +1120,6 @@ msgstr "የገቢ ማሰባሰቢያ ዝርዝር"
 #: 
 msgid "Date Start"
 msgstr "የሚጀምርበት ቀን"
-
-#: 
-msgid "Apply Filters"
-msgstr "ማጣሪያዎችን ተግብር"
 
 #: 
 msgid "Date End"
@@ -1506,10 +1441,6 @@ msgid "Current Role"
 msgstr "የአሁኑ ሚና"
 
 #: 
-msgid "All People"
-msgstr "ሁሉም ሰዎች"
-
-#: 
 msgid "Email All"
 msgstr "ሁሉንም ኢሜይል ያድርጉ"
 
@@ -1582,10 +1513,6 @@ msgid "Updated"
 msgstr "ተዘምኗል"
 
 #: 
-msgid "Yes, delete this record"
-msgstr "አዎ፣ ይህን አጥፋ"
-
-#: 
 msgid "(this action cannot be undone)"
 msgstr "(ይህን ተግባር ወደ ቦታው መመልስ አይቻልም)"
 
@@ -1624,10 +1551,6 @@ msgstr "የገዢ ቁጥር ማረሚያ"
 #: 
 msgid "Generate Statement"
 msgstr "ሪፖርት አዘጋጅ"
-
-#: 
-msgid "Buyers for this fundraiser:"
-msgstr "ለዚህ ገንዘብ አሰባሰብ ገዢ:"
 
 #: 
 msgid "Select all"
@@ -1748,10 +1671,6 @@ msgstr "ዜሮ ያልሆነ የቼክ ቁጥር መግለጽ አለበት"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "የቼክ ቁጥር ለ'እጅ በእጅ' ክፍያ አይሰራም"
-
-#: 
-msgid " more entries will fit."
-msgstr " ተጨማሪ መረጃዎች ማስገባት ይቻላል."
 
 #: 
 msgid "Deposit closed"
@@ -1883,10 +1802,6 @@ msgid "Query Listing"
 msgstr "የጥያቄ ዝርዝር"
 
 #: 
-msgid " record(s) returned"
-msgstr " መዝገባ(ዎች) ተመልሷል"
-
-#: 
 msgid "Query View"
 msgstr "የጥያቄ ዝርዝር"
 
@@ -1897,22 +1812,6 @@ msgstr "ይህ ቦታ መሞላት አለበት"
 #: 
 msgid "This value must be numeric."
 msgstr "ይህን ቦታ መሞላት ያለበት በቁጥር ነው"
-
-#: 
-msgid "This value must be at least "
-msgstr "ዝቅተኛው የዚህ ዋጋ መሆን ያለበት"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "ከፍተኛው ዋጋ ከሚከተለው መብለጥ የለበትም"
-
-#: 
-msgid " characters long"
-msgstr " ፍደሎች ያክል"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "ዝቅተኛው ዋጋ ከሚከተለው በታች መሆን የለበትም"
 
 #: 
 msgid "Run Query Again"
@@ -1947,20 +1846,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "ማስጠንቀቂያ፡ ይህ ቤተሰብ የልገሳ መዛግብት አለው እና እነዚህ ልገሳዎች ከሌላ ቤተሰብ ጋር እስኪገናኙ ድረስ ሊሰረዙ አይችሉም።"
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "እባክዎ እነዚህን ልገሳዎች የሚያገናኙት ሌላ ቤተሰብ ይምረጡ፡"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "ማስጠንቀቂያ፡ ይህ እርምጃ ሊቀለበስ አይችልም እና ህጋዊ አንድምታ ሊኖረው ይችላል!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "አሁን ያለው ቤተሰብ ከልገሳ ጋር"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "እባክዎ የዚህ ቤተሰብ መዝገብ መሰረዙን ያረጋግጡ:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -1995,10 +1886,6 @@ msgid "Save Settings"
 msgstr "ቅንብሮችን መዝግብ"
 
 #: 
-msgid "Default User Settings"
-msgstr "የተለመዱ የተጠቃሚ ቅንብሮች"
-
-#: 
 msgid "Permission"
 msgstr "ፍቃድ"
 
@@ -2027,18 +1914,6 @@ msgid "Login Name"
 msgstr "የመግቢያ ስም"
 
 #: 
-msgid "Add Records"
-msgstr "መረጃዎች ያስገቡ"
-
-#: 
-msgid "Edit Records"
-msgstr "መረጃዎች ያርሙ"
-
-#: 
-msgid "Delete Records"
-msgstr "መረጃዎች ይሰርዙ"
-
-#: 
 msgid "Manage Properties and Classifications"
 msgstr "ንብረቶችንና አከፋፈላቸውን ያስተዳድሩ"
 
@@ -2049,14 +1924,6 @@ msgstr "ቡድኖችና ሚናዎችን ያስተዳድሩ"
 #: 
 msgid "Manage Donations and Finance"
 msgstr "ስጦታዎችን እና ሂሳብ ያስተዳድሩ"
-
-#: 
-msgid "View, Add and Edit Notes"
-msgstr "ማስታዎሻዎችን ተመልከት፣ ጨምር እና አርም"
-
-#: 
-msgid "Edit Self"
-msgstr "ራስህን አርም"
 
 #: 
 msgid "Admin"
@@ -2109,10 +1976,6 @@ msgstr "የበጎ ፈቃደኞች ዕድል አስተካካይ"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "እስካሁን ምንም የበጎ ፈቃድ እድሎች አልተጨመሩም"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"ለምን እንደመጣ\" ማስታወሻ ጻፍ"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2300,10 +2163,6 @@ msgid "Start Column"
 msgstr "አምድ ጀምር"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "ያልተሟሉ<br>አድራሻዎችን እለፋቸው "
-
-#: 
 msgid "File Type"
 msgstr "የፋይል አይነት"
 
@@ -2356,14 +2215,6 @@ msgid "Cell"
 msgstr "አሃድ"
 
 #: 
-msgid "Estimated value "
-msgstr "የሚገመተው ዋጋ"
-
-#: 
-msgid "Donated by "
-msgstr "የተበረከተው"
-
-#: 
 msgid "Paddle"
 msgstr "መቅዘፊያ"
 
@@ -2372,24 +2223,8 @@ msgid "Bid"
 msgstr "ጨረታ"
 
 #: 
-msgid "Minimum bid "
-msgstr "ዝቅተኛው ጨረታ"
-
-#: 
 msgid "All Funds"
 msgstr "ሁሉም ገንዘቦች"
-
-#: 
-msgid " for all funds"
-msgstr "ለሁሉም ገንዘቦች"
-
-#: 
-msgid " for fund "
-msgstr "ለፈንድ"
-
-#: 
-msgid "for funds "
-msgstr "ለገንዘብ"
 
 #: 
 #, fuzzy
@@ -2416,10 +2251,6 @@ msgstr "የተከፈለው መጠን: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "በ ( ) በጥሬ ገንዘብ ( ) ቼክ ( ) ክሬዲት ካርድ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ ማብቅያ __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "ፊርማ ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2452,10 +2283,6 @@ msgstr "የቡድን ማውጫ"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "እባኮትን ይህን ደረሰኝ ይንቀሉት እና በሚቀጥለው ስጦታዎ ይላኩ"
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "እባክዎን ቀጣዩን ስጦታ በፖስታ ይላኩ"
 
 #: 
 #, fuzzy
@@ -2604,10 +2431,6 @@ msgid "Family Select"
 msgstr "የቤተሰብ ምርጫ"
 
 #: 
-msgid "with at least one:"
-msgstr "ቢያንስ ከአንዱ ጋር:"
-
-#: 
 msgid "Welcome to"
 msgstr "እንኳን ደህናመጡ"
 
@@ -2712,18 +2535,6 @@ msgid "item"
 msgstr "ንጥል "
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "ገዢ #"
-
-#: 
-msgid "Family Members:"
-msgstr "የቤተሰብ አባላት:"
-
-#: 
 msgid "Anniversary"
 msgstr "አመታዊ ክብረበአል"
 
@@ -2734,10 +2545,6 @@ msgstr "ማስታወሻዎች"
 #: 
 msgid "Reports"
 msgstr "ሪፖርቶች"
-
-#: 
-msgid "family"
-msgstr "ቤተሰብ"
 
 #: 
 #, fuzzy
@@ -2818,10 +2625,6 @@ msgstr "የተለመደ ከተማ"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "የተለመደ ግዛት - ባለ 2-ፊደል ምህጻረ ቃል መሆን አለበት!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "የሁሉም ኢሜይሎች ቅጂ ለመቀበል ነባሪ መለያ"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2967,10 +2770,6 @@ msgstr "\n"
 #: 
 msgid "Data/Reports"
 msgstr "ውሂብ/ሪፖርቶች"
-
-#: 
-msgid "Query Menu"
-msgstr "የጥያቄ ምናሌ"
 
 #: 
 msgid "Family Properties"
@@ -4895,10 +4694,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "የልዩ ቡድን መቼቶች: የሰንበት ትምህርት ቤት አይነት"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "የሰንበት ትምህርት ቤት ቡድን ሊሻሻል አይችልም፣ በእነዚህ ሁለት ጉዳዮች ብቻ:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "አዲስ ሚናዎችን ያክሉ፣ ነገር ግን የተማሪውን እና የአስተማሪን ሚናዎችን አይቀይሩ ወይም እንደገና አይሰይሙ"
 
@@ -5055,10 +4850,6 @@ msgid "Group Role"
 msgstr "የቡድን ሚና"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ወይም ቡድን ይፍጠሩ እና CART ን በአንድ ድርጊት ውስጥ ይጨምሩ"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "ቡድን + ADD ጋሪ ፍጠር "
 
@@ -5204,14 +4995,6 @@ msgstr "የተጠቃሚ ስም አልተዘጋጀም"
 #: 
 msgid "Self Registrations"
 msgstr "የግል ምዝገባዎች"
-
-#: 
-msgid "Public Calendar"
-msgstr "ግልጽ አመት መቁጠሪያ"
-
-#: 
-msgid "Private Calendar"
-msgstr "የግል አመት መቁጠሪያ"
 
 #: 
 msgid "Username"
@@ -5509,10 +5292,6 @@ msgid "Review"
 msgstr "ግምገማ"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "ተጠቃሚዉ  በኤፒአይ ቁልፍ ተረጋግጧል "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "የኤፒአይ ቁልፍ የማረጋገጫ ሙከራ አልተሳካም።"
 
@@ -5596,10 +5375,6 @@ msgstr "ዕብራይስጥ"
 #: 
 msgid "Permissions"
 msgstr "ፈቃዶች"
-
-#: 
-msgid "Manage Notes"
-msgstr "ማስታወሻዎችን ያስተካክሉ"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -5834,20 +5609,12 @@ msgid "Log File Viewer"
 msgstr "የመዝገብ ፋይል መመልከቻ"
 
 #: 
-msgid "Filter by log level:"
-msgstr "በመዝገብ ደረጃ አጣራ፡"
-
-#: 
 msgid "Error"
 msgstr "ስህተት"
 
 #: 
 msgid "Info"
 msgstr "መረጃ"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "የሚታዩ መስመሮች ብዛት፡"
 
 #: 
 msgid "Loading log file..."
@@ -6106,10 +5873,6 @@ msgid "Checks"
 msgstr "ቼኮች"
 
 #: 
-msgid "Clear Filters"
-msgstr "ማጣሪያዎችን አጽዳ"
-
-#: 
 msgid "Click a bar to filter payments"
 msgstr "ክፍያዎችን ለማጣራት ባር ላይ ጠቅ ያድርጉ"
 
@@ -6213,10 +5976,6 @@ msgstr "መነሻ መንገድ"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP አስተናጋጅ"
-
-#: 
-msgid "Tip:"
-msgstr "ፍንጭ፡"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6500,10 +6259,6 @@ msgid "Confirm Deletion"
 msgstr "ስረዛውን ያረጋግጡ"
 
 #: 
-msgid "Create directory permission"
-msgstr "አቃፊ (directory) የመፍጠር ፈቃድ"
-
-#: 
 msgid "Database Only"
 msgstr "ዳታቤዝ ብቻ"
 
@@ -6652,10 +6407,6 @@ msgid "Please check the backup file and try again."
 msgstr "እባክዎን የመጠባበቂያ ፋይሉን ያረጋግጡና እንደገና ይሞክሩ።"
 
 #: 
-msgid "Redirecting in"
-msgstr "በዚህ ሰዓት ውስጥ ይመለሳል"
-
-#: 
 msgid "Refresh List"
 msgstr "ዝርዝሩን አድስ"
 
@@ -6694,10 +6445,6 @@ msgstr "የደህንነት ምክር"
 #: 
 msgid "Select Backup File"
 msgstr "የመጠባበቂያ ፋይል ይምረጡ"
-
-#: 
-msgid "Supported formats:"
-msgstr "የሚደገፉ ቅርጸቶች፡"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6750,14 +6497,6 @@ msgstr "የChurchCRM ጭነትዎ ንጹህ ነው። በአገልጋዩ ላይ 
 #: 
 msgid "or click to browse"
 msgstr "ወይም ለመፈለግ እዚህ ጠቅ ያድርጉ"
-
-#: 
-msgid "seconds..."
-msgstr "ሰከንዶች..."
-
-#: 
-msgid " Deposit #"
-msgstr " ተቀማጭ #"
 
 #: 
 msgid "%d missing classification"
@@ -6844,20 +6583,12 @@ msgid "Close All Deposits"
 msgstr "ሁሉንም ተቀማጮች ዝጋ"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "የተዘጉ ተቀማጮች፡"
-
-#: 
 msgid "Closed vs Total"
 msgstr "የተዘጉ እና አጠቃላይ"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "ለለጋሾችዎ ትክክለኛ የዓመት መጨረሻ የቀረጥ ሪፖርት ለማቅረብ እነዚህን ተግባራት ያጠናቅቁ።"
-
-#: 
-msgid "Configuration:"
-msgstr "ውቅር፡"
 
 #: 
 msgid "Configure Email"
@@ -6898,14 +6629,6 @@ msgstr "በቀን፣ በፈንድ፣ በቤተሰብ እና በክፍያ ዘዴ 
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "በቀረጥ መግለጫዎች ላይ የሚታየውን ጽሁፍ ያስተካክሉ።"
-
-#: 
-msgid "Data Quality:"
-msgstr "የመረጃ ጥራት፡"
-
-#: 
-msgid "Database:"
-msgstr "ዳታቤዝ፡"
 
 #: 
 msgid "Day"
@@ -6978,10 +6701,6 @@ msgstr "የቤተሰብ አሰሳ"
 #: 
 msgid "Feb"
 msgstr "ፌብሩዋሪ"
-
-#: 
-msgid "File Integrity:"
-msgstr "የፋይል ታማኝነት፡"
 
 #: 
 msgid "Filtering"
@@ -7132,14 +6851,6 @@ msgid "Open"
 msgstr "ክፍት"
 
 #: 
-msgid "Open Deposits:"
-msgstr "ክፍት ተቀማጮች፡"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "ተረጂ ያልሆኑ ፋይሎች፡"
-
-#: 
 msgid "Payment"
 msgstr "ክፍያ"
 
@@ -7228,10 +6939,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "የበጀት ዓመቱ የቃል ኪዳኖች እና ክፍያዎች ማጠቃለያ በፈንድ።"
 
 #: 
-msgid "System Configuration:"
-msgstr "የሥርዓት ውቅር፡"
-
-#: 
 msgid "System Health"
 msgstr "የሥርዓት ጤና"
 
@@ -7264,10 +6971,6 @@ msgid "Total Amount"
 msgstr "አጠቃላይ መጠን"
 
 #: 
-msgid "Total Deposits:"
-msgstr "አጠቃላይ ተቀማጮች፡"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "ለዘመቻዎች እና ለበጀት ዓመት የቃል ኪዳን እና የክፍያ ሂደቶችን ይከታተሉ።"
 
@@ -7294,10 +6997,6 @@ msgstr "የቤተ ክርስቲያን ስም፣ አድራሻ እና መረጃ በ
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "የፈንድ ስሞች እና መግለጫዎች ለመግለጫዎቹ ትክክለኛ መሆናቸውን ያረጋግጡ።"
-
-#: 
-msgid "Version:"
-msgstr "ስሪት፡"
 
 #: 
 msgid "YTD Payments"
@@ -7336,10 +7035,6 @@ msgid "open"
 msgstr "ክፍት"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(ክልሎች ለሌሏቸው አገሮች ክፍለ ሀገር ያስገቡ)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "የBase URL ውቅር ልክ አይደለም። እባክዎን Config.php ፋይልዎን ያረጋግጡ።"
 
@@ -7360,28 +7055,8 @@ msgid "Critical Configuration Error"
 msgstr "ወሳኝ የውቅር ስህተት"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "የአሁኑ $URL[0] እሴት፡"
-
-#: 
-msgid "Custom port:"
-msgstr "ልዩ ፖርት፡"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "በ <strong>ዝንባሌ ሰረዝ</strong> (/) ያበቃል"
-
-#: 
-msgid "Find the line:"
-msgstr "ይህንን መስመር ይፈልጉ፡"
-
-#: 
 msgid "Group Memberships"
 msgstr "የቡድን አባልነቶች"
-
-#: 
-msgid "How to Fix:"
-msgstr "እንዴት እንደሚስተካከል፡"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7392,16 +7067,8 @@ msgid "Language"
 msgstr "ቋንቋ"
 
 #: 
-msgid "Local development:"
-msgstr "የአካባቢ ልማት፡"
-
-#: 
 msgid "Location & Contact Information"
 msgstr "አካባቢ እና የመገናኛ መረጃ"
-
-#: 
-msgid "New to"
-msgstr "አዲስ ለ"
 
 #: 
 msgid "No locales configured"
@@ -7418,10 +7085,6 @@ msgstr "ቤተ ክርስቲያንዎን ይመዝግቡ"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "ፋይሉን ያስቀምጡ እና ይህንን ገጽ ያድሱ"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "በ <strong>http://</strong> ወይም <strong>https://</strong> ይጀምራል"
 
 #: 
 msgid "System Locale Support"
@@ -7446,14 +7109,6 @@ msgstr "URL በዝንባሌ ሰረዝ (/) ማብቃት አለበት"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL በ http:// ወይም https:// መጀመር አለበት"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "ወደሚከተለው ትክክለኛ URL ያዘምኑት፡"
-
-#: 
-msgid "Valid Examples:"
-msgstr "ትክክለኛ ምሳሌዎች፡"
 
 #: 
 msgid "View Logs"
@@ -7514,10 +7169,6 @@ msgstr "ዜና መጽሔት"
 #: 
 msgid "Personal"
 msgstr "የግል"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "እባክዎን የቤተሰብ መረጃዎን ያረጋግጡ፡"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7710,12 +7361,6 @@ msgstr[0] "%d ሰው ወደ ጋሪ ተጨምሯል።"
 msgstr[1] "%d ሰዎች ወደ ጋሪ ተጨምረዋል።"
 
 #: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d ሰው በተሳካ ሁኔታ ወደ ተመረጠው ቤተሰብ ተጨምሯል።"
-msgstr[1] "%d ሰዎች በተሳካ ሁኔታ ወደ ተመረጠው ቤተሰብ ተጨምረዋል።"
-
-#: 
 msgid "%d Person successfully added to selected Group."
 msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d ሰው በተሳካ ሁኔታ ወደ ተመረጠው ቡድን ተጨምሯል።"
@@ -7782,10 +7427,6 @@ msgid "Move up"
 msgstr "ወደ ላይ ከፍ አድርግ"
 
 #: 
-msgid "Opportunity"
-msgstr "ዕድል"
-
-#: 
 msgid "Order"
 msgstr "ቅደም ተከተል"
 
@@ -7800,26 +7441,6 @@ msgstr "ፐርሰንት"
 #: 
 msgid "Person Properties"
 msgstr "የሰው ባህሪያት"
-
-#: 
-msgid "Property Type"
-msgstr "የንብረት/ባህሪ አይነት"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "ለዚህ የበጎ ፈቃደኝነት ዕድል የተመደቡ ሰዎች አሉ። መሰረዝ ምደባቸውን ያቋርጣል፡"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "የበጎ ፈቃደኝነት ዕድል"
-
-#: 
-msgid "Warning:"
-msgstr "ማስጠንቀቂያ፡"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "አዎ፣ ይህንን ዕድል ሰርዝ"
 
 #. Context: locales
 #: 
@@ -8494,10 +8115,6 @@ msgid "Help"
 msgstr "እርዳታ"
 
 #: 
-msgid "Id"
-msgstr "IdentificationNumber"
-
-#: 
 msgid "Image shown when no Gravatar exists for the email address"
 msgstr "ለኢሜይሉ አድራሻ Gravatar ሲኖር ያልሆን ሥዕሉ"
 
@@ -9123,10 +8740,6 @@ msgid "Inactive Groups"
 msgstr "ንቁ ያልሆኑ ቡድኖች"
 
 #: 
-msgid "Language & Localization"
-msgstr "ቋንቋ እና ስፍራ ማስተካከያ"
-
-#: 
 msgid "Map"
 msgstr "ካርታ"
 
@@ -9457,14 +9070,6 @@ msgid "Assign and manage fundraiser buyer numbers"
 msgstr "ገንዘብ መሰብሰቢያ ገዢ ቁጥር ከሥ ጁተ"
 
 #: 
-msgid "Assign cart items to a family record"
-msgstr "የታከለ ንጥረ ነገሮችን ቤተሰብ ሪከርድ ወደ ያስተማሩ"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "የታከለ ንጥረ ነገሮችን ቡድን ወደ ያስተማሩ"
-
-#: 
 msgid "Assign cart items to an event"
 msgstr "የታከለ ንጥረ ነገሮችን ክስተቶች ወደ ያስተማሩ"
 
@@ -9523,10 +9128,6 @@ msgstr "ገንዘብ መሰብሰቢያ ካምፔይን መርምርኩ"
 #: 
 msgid "Browse photos of congregation members"
 msgstr "ቤተሰብ አባላት ፍቃድ መርምርኩ"
-
-#: 
-msgid "Buyer Number"
-msgstr "ገዢ ቁጥር"
 
 #: 
 msgid "Buyers"
@@ -9631,10 +9232,6 @@ msgstr "አዲስ ዕለት ይህ ትንተናቸውን"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "SMTP ሰራዊ ታሰር በ ChurchCRM ኢሜይል ሕሪግ"
-
-#: 
-msgid "Connect with others"
-msgstr "ሌላ ሰዎች ታሰር"
 
 #: 
 msgid "Convert individual records into family units"
@@ -9777,10 +9374,6 @@ msgid "Each person can have their own email and mobile number."
 msgstr "ሥነ ሰው ራሳቸው ኢሜይል ወ ሞባይል ቁጥር ሊሁ።"
 
 #: 
-msgid "Easy registration"
-msgstr "ቀላል ተቀናሳ"
-
-#: 
 msgid "Edit Class"
 msgstr "ክፍል ርድ"
 
@@ -9801,10 +9394,6 @@ msgid "Edit custom properties for a group member"
 msgstr "በቡድን አባል ላይ ሙሉ ባህሪያት ወስ"
 
 #: 
-msgid "Email BCC"
-msgstr "ኢሜል መደበቅ ቅጂ"
-
-#: 
 msgid "Email Families"
 msgstr "ቤተሰቦች ወደ ኢሜል ላክ"
 
@@ -9815,14 +9404,6 @@ msgstr "ኢሜል ቅንብሮች"
 #: 
 msgid "Email Tools"
 msgstr "ኢሜል መሳሪያዎች"
-
-#: 
-msgid "Email cart items"
-msgstr "የመምረጫ መጠይቆች ኢሜል ላክ"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "በተደበቀ ተቀባዮች ኢሜል"
 
 #: 
 msgid "Empty"
@@ -10037,10 +9618,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "የ MailChimp ብዛት ጋር ዋና ስር"
 
 #: 
-msgid "Import failed: "
-msgstr "ሞግ ውድቅ ሆነ: "
-
-#: 
 msgid "Import from CSV"
 msgstr "ከ CSV ሞግ"
 
@@ -10083,14 +9660,6 @@ msgstr "ሊስ\"ከ ቁጥር\":\"%s\"። ሀገር ጊዜ ታካ ለ: +14155551
 #: 
 msgid "Invite Your Team"
 msgstr "ትዊ ጋብ"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "ወጦ ሙ ቡድን አብለ በአርግቶ ቀጥሎ"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "ወደ ነጣ ተዋቅሮ ደረጃ ዝር:"
 
 #: 
 msgid "Key People"
@@ -10447,10 +10016,6 @@ msgid "Property deleted successfully."
 msgstr "ምንጭ በስኖ ሞሉሊ።"
 
 #: 
-msgid "Property not found."
-msgstr "ምንጭ አለም።"
-
-#: 
 msgid "Quick Tips"
 msgstr "ቀጥር ምክር"
 
@@ -10477,10 +10042,6 @@ msgstr "ተፈላጊ ተቀባይነት እና ገንዘብ ሰበአት ረ"
 #: 
 msgid "Record why attendees visited your church"
 msgstr "ምንድነ ሰብ ተዋጽኦ ዳሰሱ ረ"
-
-#: 
-msgid "Register Your Family"
-msgstr "ቤተሰብ ተመዝገብ"
 
 #: 
 msgid "Remove all from Cart"
@@ -10587,16 +10148,8 @@ msgid "Server Error"
 msgstr "ሰርቬር ስህተት"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value."
-msgstr "ተፈላጊ ተጠቃሚ ለ ለውጥ ጉዳይ ፍቃድ True ስቴት"
-
-#: 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr "ገለልአዊ ተጠቃሚ ኢሜል ስቴት ወደ ምልቀት ቃል ዳብ እና ቅሪታ ደግ"
-
-#: 
-msgid "Set default preferences for new user accounts"
-msgstr "ተፈላጊ ተጠቃሚ ሥርዓት ለ ነባር ምረጫ ስቴት"
 
 #: 
 msgid "Set up"
@@ -10649,10 +10202,6 @@ msgstr "ተፈላጊ ጀምር"
 #: 
 msgid "Start Over"
 msgstr "ወደ ላይ ጀምር"
-
-#: 
-msgid "Stay informed"
-msgstr "መረጃ ሰብክ"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -10935,18 +10484,6 @@ msgid "properties"
 msgstr "ምንጭ"
 
 #: 
-msgid "— Select a group —"
-msgstr "— ቡድን ምረጫ —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— ዓይነት ምረጫ (ተንብርካካ) —"
-
-#: 
-msgid "Active Events"
-msgstr "ነቅል ሁነታ"
-
-#: 
 msgid "Add Event"
 msgstr "ሁነታ ጨምር"
 
@@ -11085,10 +10622,6 @@ msgstr "ማስታወሻ ጽሑፍ ያስፈልግዋል"
 #: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "ማስታወሻ ደራሲ ወይም ገለልአዊ ብቻ ይህ ማስታወሻ ዝወር"
-
-#: 
-msgid "Only the note author or an admin may edit this note"
-msgstr "ማስታወሻ ደራሲ ወይም ገለልአዊ ብቻ ይህ ማስታወሻ ወስ"
 
 #: 
 msgid "Overview of church events, attendance, and activity"
@@ -11253,11 +10786,6 @@ msgstr "ነባር ሀገር"
 msgid "Default State"
 msgstr "ነባር ስቴት"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "في mailto: linaك ኢሜይል ለመለያየት ምዘና"
-
 #: 
 msgid "Distance Unit"
 msgstr "የርቀት አሃድ"
@@ -11269,10 +10797,6 @@ msgstr "ኢሜይል ዳሽቦርድ"
 #: 
 msgid "Email Integrations"
 msgstr "ኢሜይል ውህደቶች"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "ኢሜይል ተግባር በአሁኑ ጊዜ ተሰናክሏል። የሚከተሉት ባህሪያት ኢሜይል እስክ ይነቁ ድረስ አይሰራም:"
 
 #: 
 msgid "Email is Disabled"
@@ -11656,11 +11180,6 @@ msgstr "ርቀት ለመለካት ያገለግለ ክፍል።"
 
 #. Context: userconfig_ucfg
 #: 
-msgid "User permission to create directories"
-msgstr "መረጃ ስሪት ለመፈጠር ተጠቃሚ ፍቃድ"
-
-#. Context: userconfig_ucfg
-#: 
 msgid "User permission to send email via mailto: links"
 msgstr "በ mailto: ኈንጻዎች በኩል ኢሜል ለመላክ ተጠቃሚ ፍቃድ"
 
@@ -11852,10 +11371,6 @@ msgstr "ራስ ሰር TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "ራስ-ሰር ምትኬ"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "ሁሉንም ደብዳቤ ወደ BCC ላክ"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12674,10 +12189,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "ብርሃን ወይም ጨለማ የቀለም ሥርዓት ይምረጡ"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "የ ChurchCRM ትርጉሞች በማህበረሰቡ በ POEditor ይተዳደራሉ። እንዲህ ማገዝ ይችላሉ፦"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "የፕሮግራሙን መልክና ስሜት ያብጁ"
 
@@ -12697,10 +12208,6 @@ msgstr "ዳታቤዝ ብቻ (.sql) ወይም ሙሉ መዝገብ (.tar.gz)"
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr "በዳታ ሰንጠረዦች ውስጥ የሚታዩ ነባሪ የረድፎች ቁጥር። በሚቀጥለው ገፅ ጭነት ተፈጻሚ ይሆናል።"
 
-#: 
-msgid "Edit own family only"
-msgstr "የራስ ቤተሰብ ብቻ አርትዕ"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -12715,10 +12222,6 @@ msgid "Found a bug with translations?"
 msgstr "በትርጉሞች ላይ ችግር አገኙ?"
 
 #: 
-msgid "Grants all privileges"
-msgstr "ሁሉንም መብቶች ይሰጣል"
-
-#: 
 msgid "Green"
 msgstr "አረንጓዴ"
 
@@ -12729,10 +12232,6 @@ msgstr "ትርጉሞችን ለማሻሻል ይርዱ"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "ትርጉም ያልተደረጉ ቁምፊዎች፣ እንደ ጽሑፍ የሚታዩ HTML አካላት ወይም የገፅ አቀማመጥ የሚያበሳጩ ትርጉሞች ካስተዋሉ፣ ለሁሉም ይስተካከሉ ዘንድ ችግሩን በ GitHub ሪፖርት ያድርጉ።"
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "በጥያቄዎቹ ውስጥ የ API ቁልፍዎን በ x-api-key ጭብጥ ያካትቱ፦"
 
 #: 
 msgid "Indigo"
@@ -13166,10 +12665,6 @@ msgid "Everyone is checked in!"
 msgstr "ሁሉም ተመዝግቧል!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "ፈጣኑ አሠራር:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "አሁንም ንቁ ወይም ያልወጡ ተሳታፊዎች ያሏቸው ያለፉ ዝግጅቶች ፈልግ"
 
@@ -13284,10 +12779,6 @@ msgstr "RangeEnd ከ RangeStart በኋላ ወይም ተመሳሳይ መሆን �
 #: 
 msgid "Recommended"
 msgstr "የሚመከር"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "ዳግም ማስጀመር በቋሚነት ያጠፋል:"
 
 #: 
 msgid "SQL Only"
@@ -13786,10 +13277,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "የቤተ ክርስቲያን ኢሜይል አድራሻ አልተቀናበረም — የሙከራ ኢሜይሉ የሚሄድበት ቦታ የለም።"
 
 #: 
-msgid "Church email — configured on the"
-msgstr "የቤተ ክርስቲያን ኢሜይል — በዚህ ላይ ተቀናብሯል"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "ChurchCRM የሙከራ ኢሜይል"
 
@@ -13896,10 +13383,6 @@ msgstr "ማህደረ ትውስታ"
 #: 
 msgid "Memory Limit"
 msgstr "የማህደረ ትውስታ ገደብ"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "አሁን ማድረሻን ለማረጋገጥ ተቀባዩን ሳጥን ይፈትሹ። ርዕሱን ይፈልጉ፡"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -14020,14 +13503,6 @@ msgstr "ቅናቤሮዎችን አዘምን"
 #: 
 msgid "View full photo"
 msgstr "ሙሉ ፎቶ ይመልከቱ"
-
-#: 
-msgid "page."
-msgstr "ገጽ።"
-
-#: 
-msgid "user:"
-msgstr "ተጠቃሚ፡"
 
 #: 
 msgid "1. Download the template"
@@ -14162,22 +13637,6 @@ msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. a
 msgstr "CSV ዓምዶቻችሁ ተደጋጋሚ ስሞች አሏቸው። ተደጋጋሚ ዓምዶቹን እንደገና ሰይሙ (ለምሳሌ ለሁለተኛው \"(2)\" ጨምሩ) እና እንደገና ስቀሉ።"
 
 #: 
-msgid "Are you sure you want to permanently delete this donated item?"
-msgstr "ይህን የተለገሠ ዕቃ ለዘላለም ማጥፋት እንደሚፈልጉ እርግጠኛ ነዎት?"
-
-#: 
-msgid "Are you sure you want to permanently delete this paddle number?"
-msgstr "ይህን የፓዳል ቁጥር ለዘላለም ማጥፋት እንደሚፈልጉ እርግጠኛ ነዎት?"
-
-#: 
-msgid "Delete Donated Item"
-msgstr "የተለገሠ ዕቃ ሰርዝ"
-
-#: 
-msgid "Delete Paddle Number"
-msgstr "የፓዳል ቁጥር ሰርዝ"
-
-#: 
 msgid "Invalid security token. Please try again."
 msgstr "ልክ ያልሆነ የደህንነት ቶከን። እባኮን እንደገና ይሞክሩ።"
 
@@ -14241,10 +13700,6 @@ msgstr "አገሮችን ማዘጋጀት"
 #: 
 msgid "Show all"
 msgstr "ሁሉንም አሳይ"
-
-#: 
-msgid "Show:"
-msgstr "አሳይ፡"
 
 #. plugin:holidays:section:2:title
 #: 
@@ -14426,10 +13881,6 @@ msgid "Plugin uninstalled"
 msgstr "ፕለጊን ተነቅሏል"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "ፕለጊን ተነቅሏል።"
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "የፕለጊን ዚፕ URL (HTTPS ብቻ)"
 
@@ -14490,10 +13941,6 @@ msgid "Verified"
 msgstr "ተረጋግጧል"
 
 #: 
-msgid "What this plugin does:"
-msgstr "ፕለጊኑ የሚያደርገው፡"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl፣ sha256 እና pluginId ሦስቱም ለያልተረጋገጠ ጭነት ያስፈልጋሉ።"
 
@@ -14508,18 +13955,6 @@ msgstr "ስም ባዶ ሊሆን አይችልም"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "ስም ከ%d ቁምፊ ሊረዝም አይችልም"
-
-#: 
-msgid "Need help? Contact us"
-msgstr "እርዳታ ያስፈልጋል? ያግኙን"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "መሳሪያዎች ለመመዝገቢያ ሁለት ደቂቃ መስኮት ይከፍታል፡"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "እንኳን ደህና መጡ — ማህበረሰብዎን ለማስተዳደር ይግቡ"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14686,10 +14121,6 @@ msgid "You do not have permission to edit this note."
 msgstr "ይህን ማስታወሻ የማርትዕ ፈቃድ የለዎትም።"
 
 #: 
-msgid "[Private Note — visible only to creator]"
-msgstr "[የግል ማስታወሻ — ለፈጣሪው ብቻ የሚታይ]"
-
-#: 
 msgid "seconds"
 msgstr "ሰከንዶች"
 
@@ -14818,10 +14249,6 @@ msgid "Available after the event is saved."
 msgstr "ዝግጅቱ ከተቀመጠ በኋላ ይገኛል።"
 
 #: 
-msgid "BCC All"
-msgstr "ሁሉም BCC"
-
-#: 
 msgid "Background Color"
 msgstr "የበስተጀርባ ቀለም"
 
@@ -14926,10 +14353,6 @@ msgid "Code is invalid"
 msgstr "ኮድ ልክ አይደለም"
 
 #: 
-msgid "Coming soon"
-msgstr "በቅርቡ ይጠብቁ"
-
-#: 
 msgid "Confirm Activation"
 msgstr "ማስጀመር  መፈለጎትን ያረጋግጡ"
 
@@ -14958,10 +14381,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "ከማረጋገጫ ትግበራዎ ኮድ ያረጋግጡ"
 
 #: 
-msgid "Copied"
-msgstr "ሳኩ ልብስ"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "ወደ ክሊፕቦርድ ቅዳ"
 
@@ -14972,10 +14391,6 @@ msgstr "ተቀድቷል!"
 #: 
 msgid "Copy"
 msgstr "ቅዳ"
-
-#: 
-msgid "Copy All Emails"
-msgstr "ሁሉንም ኢሜይሎች ይቅዱ"
 
 #: 
 msgid "Copy All Numbers"
@@ -15088,10 +14503,6 @@ msgstr "ተጠቀጥብ ዝጁ እና ተቀጥል"
 #: 
 msgid "Downloaded"
 msgstr "ወረደ"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "የቅርብ ጊዜውን ልቀት ከGitHub በማውረድ ላይ..."
 
 #: 
 msgid "Duration"
@@ -15378,6 +14789,10 @@ msgstr "ቡድን ከጋሪ ተወግዷል"
 #: 
 msgid "GroupID required for role selection prompt"
 msgstr "ለሚና ምርጫ ጥያቄ የቡድን መታወቂያ ያስፈልጋል "
+
+#: 
+msgid "HTML URL"
+msgstr "HTML URL"
 
 #: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
@@ -16218,10 +15633,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "ዝግጅቶች። ይልቁንስ አይነቱን ያቁሙ፣ ወይም መጀመሪያ ዝግጅቶቹን እንደገና ይሰጡ።"
 
 #: 
-msgid "from this class?"
-msgstr "ከ ይህ ክፍል?"
-
-#: 
 msgid "from this group?"
 msgstr "ከ ይህ ቡድን?"
 
@@ -16302,14 +15713,1618 @@ msgid "yrs"
 msgstr "ዓ.ም"
 
 #: 
-msgid "— Ignore —"
-msgstr "— ታለመ —"
+msgid "Account options"
+msgstr "የሂሳብ ምርጫዎች"
 
 #: 
-msgid "— Select Country —"
-msgstr "— ሀገር ምረጥ —"
+msgid "Register"
+msgstr "ይመዝገቡ"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "ስሎቫክ"
 
 #: 
-msgid "— Select State —"
-msgstr "— ክልል ምረጥ —"
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d ያለፈ ክስተት"
+msgstr[1] "%d ያለፉ ክስተቶች"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "ለዚህ ቋንቋ %d%% የኢንተርፌስ ጽሑፍ ተተርጉሟል።"
+
+#: 
+msgid "AM / PM"
+msgstr "ጥዋት / ከሰዓት"
+
+#: 
+msgid "Access denied"
+msgstr "መዳረሻ ተከልክሏል"
+
+#: 
+msgid "All times shown in"
+msgstr "ሁሉም ጊዜዎች የሚታዩት"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "የልደት ቀናት እና ዓመታዊ ክብረ በዓላት። ነባሪ: ወ/ቀ"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "ቀን መቁጠሪያ መሰረዝ አይቻልም: %d ክስተት(ዎች) አሁንም ተመድበዋል። መጀመሪያ ያስወግዷቸው ወይም እንደገና ይመድቧቸው።"
+
+#: 
+msgid "Cell Phone Format"
+msgstr "የሴሉላር ስልክ ቅርጸት"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "የተለመዱ ቅርጸት ኮዶች (ምሳሌዎች: ዓርብ፣ ማርች 7, 2025, ከሰዓት 3:09)"
+
+#: 
+msgid "Current Events"
+msgstr "የአሁን ክስተቶች"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "የቀን እና ጊዜ ቅርጸት"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "የቀን እና ጊዜ ቅርጸቶች"
+
+#: 
+msgid "Date Picker Format"
+msgstr "የቀን ምረጫ ቅርጸት"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "የቀን ምረጫ ምትክ ጽሑፍ"
+
+#: 
+msgid "Date Without Year"
+msgstr "ያለ ዓመት ቀን"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "ቀን, 2 አሃዞች"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "ቀን, ቀዳሚ ዜሮ ሳይኖር"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "ነባሪ: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "ነባሪ: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "ምሳሌ: \"l, j F Y\" \"ዓርብ, 7 ማርች 2025\" ያስከትላል። ሌሎች ፊደሎች (ክፍተቶች, ነጥቦች, ሰያፎች) እንደተፃፉ ይታያሉ።"
+
+#: 
+msgid "Filename Date Format"
+msgstr "ለፋይል ስም የቀን ቅርጸት"
+
+#: 
+msgid "Fully translated."
+msgstr "ሙሉ ለሙሉ ተተርጉሟል።"
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "በቀን ግቤቶች ውስጥ የሚታይ ፍንጭ ጽሑፍ። ነባሪ: ዓዓዓዓ-ወወ-ቀቀ"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "የቤት/ሥራ ስልክ ቅርጸት"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "ሰዓት 12ሰ, 2 አሃዞች"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "ሰዓት 12ሰ, ዜሮ ሳይኖር"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "ሰዓት 24ሰ, 2 አሃዞች"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "የጊዜ ክፍልን ይጨምራል። ነባሪ: ወ/ቀ/ዓ g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "ቋንቋ እና ክልል"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "ቋንቋ፣ ሰዓት ዞን፣ የቀን እና ስልክ ቅርጸቶች"
+
+#: 
+msgid "Localization & Formats"
+msgstr "ቦታዊ ቅምጥ እና ቅርጸቶች"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "የቦታዊ ቅምጥ ቅንብሮች በተሳካ ሁኔታ ተቀምጠዋል"
+
+#: 
+msgid "Long Date Format"
+msgstr "ረዥም የቀን ቅርጸት"
+
+#: 
+msgid "Minutes"
+msgstr "ደቂቃዎች"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "ወር እና ዓመት"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "ወር, 2 አሃዞች"
+
+#: 
+msgid "Month, full"
+msgstr "ወር, ሙሉ ስም"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "ወር, ቀዳሚ ዜሮ ሳይኖር"
+
+#: 
+msgid "Month, short"
+msgstr "ወር, አጭር"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "በሰርቨር ላይ አልተጫነም — ቀኖች እና ቁጥሮች ለዚህ ቦታ ቅምጥ በትክክል ላይቀረጹ ይችላሉ። አስተናጋጅዎን ለመጫን ይጠይቁ (ለምሳሌ locale-gen)።"
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "ለቀን ምረጫ ግቤቶች PHP ቅርጸት። ነባሪ: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "የስልክ ቁጥር ቅርጸቶች"
+
+#: 
+msgid "Phone with Extension"
+msgstr "ስልክ ከቅጥያ ጋር"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "የቦታዊ ቅምጥ ቅንብሮችን አስቀምጥ"
+
+#: 
+msgid "Selected Language"
+msgstr "የተመረጠ ቋንቋ"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "የሰርቨር ቦታ ቅምጥ ድጋፍ ሊረጋገጥ አልቻለም (exec ተሰናክሏል)።"
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "ይደገፋል — ይህ ቦታ ቅምጥ በሰርቨር ላይ ተጭኗል።"
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "የሥርዓት ቋንቋ፣ ሰዓት ዞን፣ የቀን/ጊዜ ቅርጸቶች እና የስልክ ቁጥር ቅርጸቶች"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "እነዚህ መስኮች የቅርጸት ኮዶችን ይጠቀማሉ (የቀን ክፍሎችን የሚወክሉ ፊደሎች)። ከእያንዳንዱ መስክ በታች ቅድሜ-ቅምጥ ይምረጡ፣ ወይም ማጣቀሻ ተጠቅመው የራስዎን ይፍጠሩ። የቀጥታ ቅድሚ-እይታ ትክክለኛ ሁኔታውን ያሳያል። ለስርዓቱ ነባሪ ይጠቀሙ ካልሆነ ባዶ ያስቀምጡ።"
+
+#: 
+msgid "Translation completeness"
+msgstr "የትርጉም ሙሉነት"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "ለዚህ ቋንቋ የትርጉም ክትትል አይገኝም።"
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "9ን እንደ አሃዝ ምትክ ይጠቀሙ (ለምሳሌ (999) 999-9999)። ለስርዓቱ ነባሪ ይጠቀሙ ካልሆነ ባዶ ያስቀምጡ።"
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "ወደ ውጭ በሚላኩ ፋይል ስሞች ይጠቀምበታል። ነባሪ: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "በሪፖርቶች እና የአባላት ዝርዝሮች ይጠቀምበታል። ነባሪ: ወ/ቀ/ዓ"
+
+#: 
+msgid "Weekday, full"
+msgstr "የሳምንት ቀን, ሙሉ"
+
+#: 
+msgid "Weekday, short"
+msgstr "የሳምንት ቀን, አጭር"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "እነዚህ ኮዶች ምን ማለት ናቸው?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "ዓመት, 2 አሃዞች"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "ዓመት, 4 አሃዞች"
+
+#: 
+msgid "am / pm"
+msgstr "ጥዋት / ከሰዓት"
+
+#: 
+msgid "past"
+msgstr "ያለፈ"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "ክሮኤሽያኛ"
+
+#: 
+msgid "%s's Account"
+msgstr "የ%s መለያ"
+
+#: 
+msgid "Access"
+msgstr "መዳረሻ"
+
+#: 
+msgid "Access level"
+msgstr "የመዳረሻ ደረጃ"
+
+#: 
+msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr "አስተዳዳሪዎች ሁሉንም ባህሪያት እና ውሂብ ሙሉ ተደራሽነት አላቸው። የግለሰብ ፈቃዶች አይተገበሩም።"
+
+#: 
+msgid "All users can view congregation members. This permission cannot be removed."
+msgstr "ሁሉም ተጠቃሚዎች የጉባኤ አባላትን ማየት ይችላሉ። ይህ ፈቃድ ሊወገድ አይችልም።"
+
+#: 
+msgid "Always granted"
+msgstr "ሁልጊዜ የተፈቀደ"
+
+#: 
+msgid "Can only review and verify their own family. No other access."
+msgstr "የራሳቸውን ቤተሰብ ብቻ ሊያረጋግጡ እና ሊገመግሙ ይችላሉ። ሌላ ምንም ተደራሽነት የለም።"
+
+#: 
+msgid "Choose specific permissions below."
+msgstr "ከዚህ በታች ልዩ ፈቃዶችን ይምረጡ።"
+
+#: 
+msgid "Contact an administrator to change your permissions."
+msgstr "ፈቃዶችዎን ለመቀየር አስተዳዳሪን ያነጋግሩ።"
+
+#: 
+msgid "Custom permissions"
+msgstr "ብጁ ፈቃዶች"
+
+#: 
+msgid "Full access — grants all privileges."
+msgstr "ሙሉ ተደራሽነት — ሁሉንም መብቶች ይሰጣል።"
+
+#: 
+msgid "If you need additional access, please contact your church administrator."
+msgstr "ተጨማሪ ተደራሽነት ከፈለጉ፣ እባክዎ የቤተክርስቲያን አስተዳዳሪዎን ያነጋግሩ።"
+
+#: 
+msgid "People &amp; Families"
+msgstr "ሰዎች &amp; ቤተሰቦች"
+
+#: 
+msgid "Self-service"
+msgstr "ራስን ማገልገል"
+
+#: 
+msgid "Self-service only"
+msgstr "ራስን ማገልገል ብቻ"
+
+#: 
+msgid "The note you are trying to edit no longer exists."
+msgstr "ለማስተካከል እየሞከሩት ያሉት ማስታወሻ አሁን የለም።"
+
+#: 
+msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgstr "ይህ ተጠቃሚ የራሱን ቤተሰብ መገለጫ ብቻ ሊያረጋግጥ እና ሊያዘምን ይችላል። የግለሰብ ፈቃዶች አይተገበሩም።"
+
+#: 
+msgid "User List"
+msgstr "የተጠቃሚዎች ዝርዝር"
+
+#: 
+msgid "View Person"
+msgstr "ሰው ይመልከቱ"
+
+#: 
+msgid "You do not have permission to add a note for this family."
+msgstr "ለዚህ ቤተሰብ ማስታወሻ ለማከል ፈቃድ የለዎትም።"
+
+#: 
+msgid "You do not have permission to add a note for this person."
+msgstr "ለዚህ ሰው ማስታወሻ ለማከል ፈቃድ የለዎትም።"
+
+#: 
+msgid "You do not have permission to edit this note"
+msgstr "ይህን ማስታወሻ ለማስተካከል ፈቃድ የለዎትም"
+
+#: 
+msgid "Account locked"
+msgstr "መለያ ተቆልፏል"
+
+#: 
+msgid "Account locked due to too many failed login attempts"
+msgstr "ብዙ ያልተሳኩ የመግቢያ ሙከራዎች ምክንያት መለያ ተቆልፏል"
+
+#: 
+msgid "Account status"
+msgstr "የመለያ ሁኔታ"
+
+#: 
+msgid "Advanced: choose a specific target version"
+msgstr "የላቀ: ልዩ ዒላማ ስሪት ይምረጡ"
+
+#: 
+msgid "Bug Fix"
+msgstr "ስህተት ማስተካከያ"
+
+#: 
+msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgstr "በነባሪ ሁኔታ አዋቂው ቀጣዩን የሚመከረው ስሪት ያወርዳል። ይልቁንስ ከዚህ በታች ያሉ ማናቸውንም ስሪቶች መምረጥ ይችላሉ።"
+
+#: 
+msgid "Change required"
+msgstr "ለውጥ ያስፈልጋል"
+
+#: 
+msgid "Changelog"
+msgstr "የለውጥ መዝገብ"
+
+#: 
+msgid "Continue Anyway"
+msgstr "ያም ሆኖ ቀጥል"
+
+#: 
+msgid "Could not load release information."
+msgstr "የስሪት መረጃ መጫን አልተቻለም።"
+
+#: 
+msgid "Download & Install"
+msgstr "አውርድ እና ጫን"
+
+#: 
+msgid "Download version {{version}} and apply it to your installation."
+msgstr "ስሪት {{version}} አውርደው በጭነትዎ ላይ ይተግብሩ።"
+
+#: 
+msgid "Downloading release from GitHub..."
+msgstr "ስሪት ከ GitHub እየወረደ ነው..."
+
+#: 
+msgid "Failed login attempts"
+msgstr "ያልተሳኩ የመግቢያ ሙከራዎች"
+
+#: 
+msgid "Failed to fetch upgrade preview"
+msgstr "የማሻሻያ ቅድሚያ እይታ ማምጣት አልተሳካም"
+
+#: 
+msgid "Feature"
+msgstr "ባህሪ"
+
+#: 
+msgid "Full changelog"
+msgstr "ሙሉ የለውጥ መዝገብ"
+
+#: 
+msgid "Install stable {{version}}"
+msgstr "የተረጋጋ {{version}} ጫን"
+
+#: 
+msgid "Installing next release"
+msgstr "ቀጣዩን ስሪት እየጫነ ነው"
+
+#: 
+msgid "Invalid file path"
+msgstr "ልክ ያልሆነ የፋይል ዱካ"
+
+#: 
+msgid "Invalid version format"
+msgstr "ልክ ያልሆነ የስሪት ቅርጸት"
+
+#: 
+msgid "Last login"
+msgstr "የመጨረሻ ግቤት"
+
+#: 
+msgid "Loading release information..."
+msgstr "የስሪት መረጃ እየተጫነ ነው..."
+
+#: 
+msgid "Locked"
+msgstr "ተቆልፏል"
+
+#: 
+msgid "Major"
+msgstr "ዋና"
+
+#: 
+msgid "Missing required fields: fullPath and sha1"
+msgstr "አስፈላጊ መስኮች ጠፍተዋል፡ fullPath እና sha1"
+
+#: 
+msgid "Must change password"
+msgstr "የይለፍ ቃል መቀየር አለበት"
+
+#: 
+msgid "No release notes available for this version."
+msgstr "ለዚህ ስሪት ምንም የስሪት ማስታወሻዎች የሉም።"
+
+#: 
+msgid "No upgrades are available for your current version."
+msgstr "ለአሁኑ ስሪትዎ ምንም ማሻሻያዎች አይገኙም።"
+
+#: 
+msgid "Password change required"
+msgstr "የይለፍ ቃል ለውጥ ያስፈልጋል"
+
+#: 
+msgid "Password status"
+msgstr "የይለፍ ቃል ሁኔታ"
+
+#: 
+msgid "Re-install current version"
+msgstr "አሁኑን ስሪት እንደገና ጫን"
+
+#: 
+msgid "Restore failed and the database may be in an incomplete state. Check the application log for details, then restore a known-good backup before using the system."
+msgstr "ወደ ቀድሞ ሁኔታ መመለስ አልተሳካም እና ዳታቤዙ ያልተሟላ ሁኔታ ውስጥ ሊሆን ይችላል። ለዝርዝር የፕሮግራሙን ምዝግብ ማስታወሻ ይፈትሹ፣ ከዚያ ስርዓቱን ከመጠቀምዎ በፊት የሚታወቅ ጥሩ ምትኬን ወደ ቀድሞ ሁኔታ ይመልሱ።"
+
+#: 
+msgid "Restore failed: the backup file appears to be incomplete or is not a valid SQL backup. The database is now in an incomplete state — restore a known-good backup before using the system."
+msgstr "ወደ ቀድሞ ሁኔታ መመለስ አልተሳካም፡ የምትኬ ፋይሉ ያልተሟላ ይመስላል ወይም ትክክለኛ SQL ምትኬ አይደለም። ዳታቤዙ አሁን ያልተሟላ ሁኔታ ውስጥ ነው — ስርዓቱን ከመጠቀምዎ በፊት የሚታወቅ ጥሩ ምትኬን ወደ ቀድሞ ሁኔታ ይመልሱ።"
+
+#: 
+msgid "Running Pre-release"
+msgstr "ቅድመ-ስሪት እየሄደ ነው"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Hash"
+
+#: 
+msgid "Show full upgrade path"
+msgstr "ሙሉ የማሻሻያ ዱካ አሳይ"
+
+#: 
+msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr "የቅርብ ጊዜ የተረጋጋ ስሪት {{version}} ነው። ከዚህ በታች እንደገና መጫን ይችላሉ።"
+
+#: 
+msgid "This account is locked because of too many failed login attempts."
+msgstr "ይህ መለያ ብዙ ያልተሳኩ የመግቢያ ሙከራዎች ምክንያት ተቆልፏል።"
+
+#: 
+msgid "This user must set a new password the next time they sign in."
+msgstr "ይህ ተጠቃሚ ቀጣዩ ጊዜ ሲገባ አዲስ የይለፍ ቃል ማዘጋጀት አለበት።"
+
+#: 
+msgid "User must change their password at next login"
+msgstr "ተጠቃሚ ቀጣዩ ግቤት ጊዜ የይለፍ ቃሉን መቀየር አለበት"
+
+#: 
+msgid "User must have Email permission"
+msgstr "ተጠቃሚ የኢሜይል ፈቃድ ሊኖረው ይገባል"
+
+#: 
+msgid "View release notes"
+msgstr "የስሪት ማስታወሻዎችን ይመልከቱ"
+
+#: 
+msgid "What's New"
+msgstr "ምን አዲስ ነገር አለ"
+
+#: 
+msgid "What's New in {{version}}"
+msgstr "በ {{version}} ውስጥ ምን አዲስ ነገር አለ"
+
+#: 
+msgid "You are running a pre-release version."
+msgstr "ቅድመ-ስሪት እያሄዱ ነዎት።"
+
+#: 
+msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr "የስሪት ማስታወሻዎችን ሳያዩ ማሻሻያውን መቀጠል ይችላሉ።"
+
+#: 
+msgid "You're up to date!"
+msgstr "ወቅታዊ ነዎት!"
+
+#: 
+msgid "A valid person must be selected."
+msgstr "የሚሰራ ሰው መመረጥ አለበት።"
+
+#: 
+msgid "Add Donors"
+msgstr "ለጋሾችን ጨምር"
+
+#: 
+msgid "Add to Buyer List"
+msgstr "ወደ ገዥዎች ዝርዝር ጨምር"
+
+#: 
+msgid "Auto-assign paddle numbers to all item donors"
+msgstr "ለሁሉም እቃ ለጋሾች በራስ-ሰር የፓዴል ቁጥሮች ስጥ"
+
+#: 
+msgid "Create a new user account"
+msgstr "አዲስ የተጠቃሚ መለያ ፍጠር"
+
+#: 
+msgid "Delete this item?"
+msgstr "ይህን እቃ ይሰርዙ?"
+
+#: 
+msgid "Delete this paddle number?"
+msgstr "ይህን የፓዴል ቁጥር ይሰርዙ?"
+
+#: 
+msgid "Edit Buyer"
+msgstr "ገዥን አርትዕ"
+
+#: 
+msgid "Login already in use, please select a different login!"
+msgstr "መግቢያው አስቀድሞ ጥቅም ላይ ነው፣ እባክዎ ሌላ መግቢያ ይምረጡ!"
+
+#: 
+msgid "Login must be at least 3 characters!"
+msgstr "መግቢያ ቢያንስ 3 ቁምፊዎች ሊኖሩት ይገባል!"
+
+#: 
+msgid "Manage Fundraisers"
+msgstr "የገቢ ማሰባሰቢያ ዝግጅቶችን አስተዳድር"
+
+#: 
+msgid "New User"
+msgstr "አዲስ ተጠቃሚ"
+
+#: 
+msgid "Please select a person to create a user account for."
+msgstr "የተጠቃሚ መለያ ለመፍጠር እባክዎ ሰው ይምረጡ።"
+
+#: 
+msgid "Please select at least one buyer to generate statements."
+msgstr "መግለጫዎችን ለማዘጋጀት እባክዎ ቢያንስ አንድ ገዥ ይምረጡ።"
+
+#: 
+msgid "Return to Fundraiser Dashboard"
+msgstr "ወደ የገቢ ማሰባሰቢያ ዳሽቦርድ ተመለስ"
+
+#: 
+msgid "The selected person was not found."
+msgstr "የተመረጠው ሰው አልተገኘም።"
+
+#: 
+msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr "ይህ ድርጊት በዚህ የገቢ ማሰባሰቢያ ውስጥ ካሉ ሁሉም እቃ ለጋሾች ሰፍሮ ቁጥር ለሌላቸው በራስ-ሰር የፓዴል ቁጥሮችን ይጨምራል።"
+
+#: 
+msgid "This person already has a user account."
+msgstr "ይህ ሰው አስቀድሞ የተጠቃሚ መለያ አለው።"
+
+#: 
+msgid "User must be an Admin or have Manage Fundraisers permission"
+msgstr "ተጠቃሚ አስተዳዳሪ መሆን ወይም የገቢ ማሰባሰቢያ ዝግጅቶችን የማስተዳደር ፈቃድ ሊኖረው ይገባል"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d የተቀመጠ የገቢ ማሰባሰቢያ"
+msgstr[1] "%d የተቀመጡ የገቢ ማሰባሰቢያዎች"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d ሰው በተሳካ ሁኔታ ወደ ተመረጠው ቤተሰብ ተጨምሯል።"
+msgstr[1] "%d ሰዎች በተሳካ ሁኔታ ወደ ተመረጠው ቤተሰብ ተጨምረዋል።"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s የገቢ ማሰባሰቢያዎች"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "ከ%s ግብ %s ተሰብስቧል"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "ንቁ የገቢ ማሰባሰቢያዎች"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "የገቢ ማሰባሰቢያ ጨምር"
+
+#: 
+msgid "Add Item"
+msgstr "ንጥል ጨምር"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "ሰዎችን ወደ ቤተሰብ ከመመደብዎ በፊት ወደ ዝርዝርዎ ይጨምሯቸው።"
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "መጀመሪያ ሰዎችን ወደ ዝርዝርዎ ይጨምሩ፣ ከዚያ ወደ ቡድን ለመጨመር ተመለሱ።"
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "ከመጠን በኋላ (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "ሁሉም ሁኔታዎች"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "በዝርዝርዎ ውስጥ ያሉ ሁሉም ሰዎች አስቀድሞ በቤተሰብ ውስጥ ናቸው። ማንም ሊመደብ አይችልም።"
+
+#: 
+msgid "All types"
+msgstr "ሁሉም ዓይነቶች"
+
+#: 
+msgid "Already in"
+msgstr "አስቀድሞ ውስጥ ነው"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "ያልተጠበቀ ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Apply"
+msgstr "ተግብር"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "የዝርዝር አባላትን ለቡድን መድብ"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "ከዝርዝርዎ ሰዎችን ለቤተሰብ መድብ"
+
+#: 
+msgid "Assign to Family"
+msgstr "ለቤተሰብ ምደብ"
+
+#: 
+msgid "Associated Fund"
+msgstr "ተያያዥ ፈንድ"
+
+#: 
+msgid "At a Glance"
+msgstr "በአጭሩ"
+
+#: 
+msgid "Auction Reports"
+msgstr "የጨረታ ሪፖርቶች"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "አማካይ የሽያጭ ዋጋ"
+
+#: 
+msgid "Back to Cart"
+msgstr "ወደ ዝርዝር ተመለስ"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "ወደ የገቢ ማሰባሰቢያዎች ተመለስ"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "ከመጠን በፊት (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "ምርጥ ተከታታይ ሁኔታ"
+
+#: 
+msgid "Bid Sheets"
+msgstr "የጨረታ ወረቀቶች"
+
+#: 
+msgid "Buyer Statements"
+msgstr "የገዢ መግለጫዎች"
+
+#: 
+msgid "Buyers Registered"
+msgstr "የተመዘገቡ ገዢዎች"
+
+#: 
+msgid "Buyers This Year"
+msgstr "በዚህ ዓመት ገዢዎች"
+
+#: 
+msgid "Catalog"
+msgstr "ካታሎግ"
+
+#: 
+msgid "Certificates"
+msgstr "ሰርተፍኬቶች"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "በገንዘብ መጠኖች ውስጥ እንደ ዴሲማል ነጥብ የሚጠቅም ምልክት (ለምሳሌ . ወይም ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "በገንዘብ መጠኖች ውስጥ ሺዎችን ለመለያየት የሚጠቅም ምልክት (ለምሳሌ , ወይም .)"
+
+#: 
+msgid "Check-out"
+msgstr "ክፍያ"
+
+#: 
+msgid "Choose a group..."
+msgstr "ቡድን ይምረጡ..."
+
+#: 
+msgid "Choose family"
+msgstr "ቤተሰብ ይምረጡ"
+
+#: 
+msgid "Code"
+msgstr "ኮድ"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "የገንዘብ መጠኖች በሥርዓቱ ውስጥ እንዴት እንደሚታዩ ያዋቅሩ።"
+
+#: 
+msgid "Create Fundraiser"
+msgstr "የገቢ ማሰባሰቢያ ፍጠር"
+
+#: 
+msgid "Create new family…"
+msgstr "አዲስ ቤተሰብ ፍጠር…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "የገንዘብ እና የፋይናንስ ቅርጸቶች"
+
+#: 
+msgid "Currency Format"
+msgstr "የገንዘብ ቅርጸት"
+
+#: 
+msgid "Currency Symbol"
+msgstr "የገንዘብ ምልክት"
+
+#: 
+msgid "Currency presets"
+msgstr "የቀደሙ የገንዘብ ቅንብሮች"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "ከገንዘብ መጠኖች ቀጥሎ የሚታይ የገንዘብ ምልክት (ለምሳሌ $, €, £, CHF, CAD $)።"
+
+#: 
+msgid "Decimal Separator"
+msgstr "የዴሲማል መለያ"
+
+#: 
+msgid "Did Not Attend"
+msgstr "አልተሳተፈም"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "የማጠናቀቂያ ቀን ከጀማሪ ቀን ጋር እኩል ወይም ከዚያ በኋላ መሆን አለበት"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "አስቀድሞ ለተዘጋጁ ግዛቶች ለሌላቸው አገሮች ግዛት/ክፍለ አገር ያስገቡ"
+
+#: 
+msgid "Est. Value Total"
+msgstr "የተገመተ ጠቅላላ ዋጋ"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "ከተያያዙ ቡድኖች ሁሉም ሰው ተመዝግቧል!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "የመገኘት ታሪክ መጫን አልተሳካም።"
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "አዲስ ቤተሰብ ሲፈጠር የቤተሰብ ስም ያስፈልጋል።"
+
+#: 
+msgid "Filter by event type"
+msgstr "በዝግጅት ዓይነት አጣርር"
+
+#: 
+msgid "Financials"
+msgstr "ፋይናንሶች"
+
+#: 
+msgid "From date"
+msgstr "ከቀን"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "የገቢ ማሰባሰቢያ አጠቃላይ ዕይታ"
+
+#: 
+msgid "Fundraisers"
+msgstr "የገቢ ማሰባሰቢያዎች"
+
+#: 
+msgid "Fundraising"
+msgstr "ገቢ ማሰባሰብ"
+
+#: 
+msgid "Goal %"
+msgstr "ግብ %"
+
+#: 
+msgid "Goal Amount"
+msgstr "የግብ መጠን"
+
+#: 
+msgid "Highest Sale"
+msgstr "ከፍተኛ ሽያጭ"
+
+#: 
+msgid "Invalid status value"
+msgstr "ልክ ያልሆነ የሁኔታ እሴት"
+
+#: 
+msgid "Invalid type value"
+msgstr "ልክ ያልሆነ የዓይነት እሴት"
+
+#: 
+msgid "Items"
+msgstr "ንጥሎች"
+
+#: 
+msgid "Items Donated"
+msgstr "የተሰጡ ንጥሎች"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "የተሰጡ ንጥሎች (በዚህ ዓመት)"
+
+#: 
+msgid "Items Sold"
+msgstr "የተሸጡ ንጥሎች"
+
+#: 
+msgid "Last Attendance"
+msgstr "የመጨረሻ ተሳትፎ"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "የተያያዘ የልዩ መዋጮ ፈንድ"
+
+#: 
+msgid "Live Preview"
+msgstr "ቀጥታ ቅድመ-ዕይታ"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "የመገኘት ታሪክ እየጫነ ነው…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "ብዙ ለመግዛት የሚቀርቡ ንጥሎች"
+
+#: 
+msgid "New family details"
+msgstr "አዲስ የቤተሰብ ዝርዝሮች"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "ምንም %s የገቢ ማሰባሰቢያዎች አልተገኙም።"
+
+#: 
+msgid "No active fundraisers found."
+msgstr "ምንም ንቁ የገቢ ማሰባሰቢያዎች አልተገኙም።"
+
+#: 
+msgid "No attendance records found."
+msgstr "ምንም የተሳትፎ መዝገቦች አልተገኙም።"
+
+#: 
+msgid "No donated items yet."
+msgstr "እስካሁን ምንም የተሰጡ ንጥሎች የሉም።"
+
+#: 
+msgid "Not a valid end date"
+msgstr "ልክ የሆነ የማጠናቀቂያ ቀን አይደለም"
+
+#: 
+msgid "Not included"
+msgstr "አልተካተተም"
+
+#: 
+msgid "People to assign"
+msgstr "ሊመደቡ ያሉ ሰዎች"
+
+#: 
+msgid "Planning"
+msgstr "ዕቅድ"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "እባክዎ ለ%s የቤተሰብ ሚና ይምረጡ።"
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "ሳያስቀምጥ ከዚህ በታች ያሉትን መስኮች ይሞላል። ለማተም 'አስቀምጥ' ይጫኑ።"
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "ከመጠኑ አንጻር የገንዘብ ምልክቱ አቀማመጥ።"
+
+#: 
+msgid "Quick presets"
+msgstr "ፈጣን ቀደም ቅንብሮች"
+
+#: 
+msgid "Raised"
+msgstr "የተሰበሰበ"
+
+#: 
+msgid "Raised This Year"
+msgstr "በዚህ ዓመት የተሰበሰበ"
+
+#: 
+msgid "Sample Amount"
+msgstr "የናሙና መጠን"
+
+#: 
+msgid "Sell-through"
+msgstr "ሙሉ ሽያጭ"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "እንደ ዴሲማል ነጥብ የሚጠቅም አንድ ምልክት (ለምሳሌ . ወይም ,)። ነባሪ: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "ሺዎችን ለመለያየት የሚጠቅም አንድ ምልክት (ለምሳሌ , ወይም .)። ነባሪ: ,"
+
+#: 
+msgid "Sold"
+msgstr "ተሽጧል"
+
+#: 
+msgid "Streak"
+msgstr "ተከታታይ ሁኔታ"
+
+#: 
+msgid "Symbol Position"
+msgstr "የምልክት አቀማመጥ"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "ከመጠኖች ቀጥሎ የሚታይ ምልክት ወይም ኮድ (ለምሳሌ $, €, £, CHF, CAD $)። ነባሪ: $"
+
+#: 
+msgid "Target family"
+msgstr "ዒላማ ቤተሰብ"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "ቡድኑ ሊገኝ አልቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "የተመረጠው ቤተሰብ አሁን የለም። እባክዎ ገጹን አድሱ እና እንደገና ይሞክሩ።"
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "የተመረጠው ቡድን አልተገኘም። እባክዎ ትክክለኛ ቡድን ይምረጡ።"
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "ቀኖች፣ የገንዘብ መጠኖች እና ስልክ ቁጥሮች በሥርዓቱ ሁሉ እንዴት እንደሚታዩ ይህ ነው።"
+
+#: 
+msgid "Thousands Separator"
+msgstr "የሺ መለያ"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "የሺ መለያ እና የዴሲማል መለያ የተለያዩ ምልክቶች መሆን አለባቸው።"
+
+#: 
+msgid "To date"
+msgstr "እስከ ቀን"
+
+#: 
+msgid "Total Events"
+msgstr "ጠቅላላ ዝግጅቶች"
+
+#: 
+msgid "Total Raised"
+msgstr "ጠቅላላ የተሰበሰበ"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "ጠቅላላ የተሰበሰበ (ምንም ግብ አልተዘጋጀም)"
+
+#: 
+msgid "Unsold"
+msgstr "ያልተሸጠ"
+
+#: 
+msgid "Updates as you type."
+msgstr "በምትጽፍበት ጊዜ ይዘምናል።"
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "ምልክቱ ከቁጥር መጠኑ በፊት ወይም በኋላ መታየቱን ያሳያል። ነባሪ: ከመጠን በፊት"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "ዝርዝርዎ ባዶ ነው። መጀመሪያ ሰዎችን ወደ ዝርዝርዎ ይጨምሩ።"
+
+#: 
+msgid "events"
+msgstr "ዝግጅቶች"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount አሉታዊ ያልሆነ ቁጥር መሆን አለበት"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount አሉታዊ መሆን የለበትም"
+
+#: 
+msgid "thru %s"
+msgstr "እስከ %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "ለምን መጡ ማስታወሻዎች ለ %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "የ %2$s ቤተሰብ %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d ተጨማሪ ግቤቶች ይስማማሉ።"
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d መዝገብ ተመለሱ"
+
+#: 
+msgid "Assign role to all"
+msgstr "ሚና ለሁሉም ይመድቡ"
+
+#: 
+msgid "Buyer #"
+msgstr "ገዢ ቁጥር"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "ለዚህ ፈንድ ሰብሳቢ ፕሮግራም ገዢዎች"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "የቀን መቁጠሪያ ማካተቻ ምንጮች"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM ትርጉሞች በማህበረሰቡ በ POEditor ላይ ይተዳደራሉ። እርስዎ ሊረዱ ይችላሉ"
+
+#: 
+msgid "Closed Deposits"
+msgstr "የተዘጉ ተቀማጭ ገንዘቦች"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "የአሁን $URL[0] ዋጋ"
+
+#: 
+msgid "Custom port"
+msgstr "ብጁ ወደብ"
+
+#: 
+msgid "Data Quality"
+msgstr "የውሂብ ጥራት"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "በ %1$s %2$s ተሰጥቷል።"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "የኢሜይል ተግባር በአሁኑ ጊዜ ተሰናክሏል። ኢሜይል እስኪነቃ ድረስ አይሰሩም"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "የተገመተ ዋጋ $%s።"
+
+#: 
+msgid "Fastest workflow"
+msgstr "ፈጣኑ የሥራ ፍሰት"
+
+#: 
+msgid "File Integrity"
+msgstr "የፋይል ታማኝነት"
+
+#: 
+msgid "Filter by log level"
+msgstr "በምዝግብ ማስታወሻ ደረጃ ማጣሪያ"
+
+#: 
+msgid "Find the line"
+msgstr "መስመሩን ያግኙ"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "ለግለሰብ ፈቃዶች ይስጡ"
+
+#: 
+msgid "How to Fix"
+msgstr "እንዴት ማስተካከል"
+
+#: 
+msgid "Import failed: %s"
+msgstr "ማስመጣት አልተሳካም፦ %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "API ቁልፍዎን በጥያቄዎች ውስጥ በ x-api-key ራስጌ ያካትቱ"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "ወደ ማንኛውም የማዋቀሪያ ደረጃ ይሂዱ"
+
+#: 
+msgid "Local development"
+msgstr "አካባቢያዊ ልማት"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "አነስተኛ ጠቅላላ መጠን"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "አነስተኛ ጨረታ $%s።"
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "አዲስ ክፍያ - %1$s ተቀማጭ # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "አሁን ለተቀባዩ ክፍት መልዕክት ሳጥን ያረጋግጡ። ርዕሰ ጉዳዩን ይፈልጉ"
+
+#: 
+msgid "Number of lines to display"
+msgstr "የሚታዩ መስመሮች ብዛት"
+
+#: 
+msgid "Open Deposits"
+msgstr "ክፍት ተቀማጭ ገንዘቦች"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "መሣሪያዎች ለ2 ደቂቃ ምዝገባ መስኮት ይከፍታል"
+
+#: 
+msgid "Output Method"
+msgstr "የውጤት ዘዴ"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "እባክዎ የዚህን ቤተሰብ መዝገብ ሰረዛ ያረጋግጡ"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "እባክዎ የቤተሰብ መረጃዎን ያረጋግጡ"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "ቀጣዩን ስጦታዎ ወደ %s ይላኩ"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "እባክዎ እነዚህን መዋጮዎች ለማያያዝ ሌላ ቤተሰብ ይምረጡ"
+
+#: 
+msgid "Remittance Slip"
+msgstr "የክፍያ ደረሰኝ"
+
+#: 
+msgid "Report Heading"
+msgstr "የሪፖርት ርዕስ"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "ዳግም ማስጀመር እስከ ፍጻሜ ይሰርዛል"
+
+#: 
+msgid "Show"
+msgstr "አሳይ"
+
+#: 
+msgid "Signature"
+msgstr "ፊርማ"
+
+#: 
+msgid "Sort Data by"
+msgstr "ውሂብ ደርድር"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "የህዝብ ቀን መቁጠሪያ ገጽ iframe ውስጥ ለማካተት የተፈቀዱ ምንጮች ዝርዝር።"
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "የህዝብ ቀን መቁጠሪያ ገጽ iframe ውስጥ ለማካተት የተፈቀዱ ምንጮች።"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "የሰንበት ትምህርት ቤት ቡድን ሊሻሻል አይችልም፣ በእነዚህ ሁለት ሁኔታዎች ብቻ"
+
+#: 
+msgid "Supported formats"
+msgstr "የሚደገፉ ቅርጸቶች"
+
+#: 
+msgid "System Configuration"
+msgstr "የሥርዓት ማዋቀሪያ"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "ለዚህ የበጎ ፈቃደኝነት እድል የተመደቡ ሰዎች አሉ። ሰርዛ ምደባ ይሰርዛል"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "ይህ ዋጋ ከ %d ቁምፊዎች ያነሰ ሊሆን አይችልም"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "ይህ ዋጋ ከ %d ቁምፊዎች በላይ ሊሆን አይችልም"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "ይህ ዋጋ ከ %s በላይ ሊሆን አይችልም"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "ይህ ዋጋ ቢያንስ %s መሆን አለበት"
+
+#: 
+msgid "Total Deposits"
+msgstr "ጠቅላላ ተቀማጭ ገንዘቦች"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "ወደ ትክክለኛ URL ያዘምኑ"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "ተጠቃሚ በ API ቁልፍ ተረጋግጧል፦ %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "ትክክለኛ ምሳሌዎች"
+
+#: 
+msgid "What this plugin does"
+msgstr "ይህ ተሰካሚ ምን ያደርጋል"
+
+#: 
+msgid "for all funds"
+msgstr "ለሁሉም ፈንዶች"
+
+#: 
+msgid "for fund"
+msgstr "ለፈንድ"
+
+#: 
+msgid "for funds"
+msgstr "ለፈንዶች"
+
+#: 
+msgid "user"
+msgstr "ተጠቃሚ"
+
+#: 
+msgid "with at least one"
+msgstr "ቢያንስ አንድ ጋር"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "ወደ ቤተ ክርስቲያን አድራሻም ይላኩ ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "ይህን ሰው ማስወጣት ይፈልጋሉ?"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC ሁነታ"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}} ሰዎች ተመዝግበዋል።"
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "ከ CRM ኢሜይሎችን ሲያዘጋጁ ሊወገድ እንደሚችል ተቀባይ ሆኖ ራሱ በራሱ ይታከላል"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "የቤተ ክርስቲያን ኢሜይል — በ %s ገጽ ላይ ተዋቅሯል።"
+
+#: 
+msgid "Closing"
+msgstr "መዝጋት"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "መጋጠሚያዎች ተዘምነዋል"
+
+#: 
+msgid "Copy Addresses"
+msgstr "አድራሻዎችን ቅዳ"
+
+#: 
+msgid "Copy Church Email"
+msgstr "የቤተ ክርስቲያን ኢሜይል ቅዳ"
+
+#: 
+msgid "Email All Members"
+msgstr "ለሁሉም አባላት ኢሜይል ይላኩ"
+
+#: 
+msgid "Email Cart Members"
+msgstr "ለተመረጡ አባላት ኢሜይል ይላኩ"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "በ slash (/) ያበቃል"
+
+#: 
+msgid "Failed to geocode"
+msgstr "ጂኦኮድ ማድረግ አልተሳካም"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "ተቀባዮችን መጫን አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "የተመረጡ የኢሜይል አድራሻዎችን ማምጣት አልተሳካም"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "የቤተሰብ ምዝገባ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Ignore"
+msgstr "ችላ በሉ"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "ያልተሟሉ አድራሻዎችን ችላ በሉ"
+
+#: 
+msgid "Kids"
+msgstr "ልጆች"
+
+#: 
+msgid "Loading family members..."
+msgstr "የቤተሰብ አባላትን በመጫን ላይ..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "ተቀባዮችን በመጫን ላይ…"
+
+#: 
+msgid "No email addresses found."
+msgstr "ምንም የኢሜይል አድራሻዎች አልተገኙም።"
+
+#: 
+msgid "Open in Email Client"
+msgstr "በኢሜይል ደንበኛ ውስጥ ክፈት"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "በ %s ሰከንድ ውስጥ እየተዘዋወረ ነው..."
+
+#: 
+msgid "Refreshing..."
+msgstr "እያደሰ ነው..."
+
+#: 
+msgid "Remove from Group"
+msgstr "ከቡድን አስወጣ"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "{{personName}}ን ከዚህ ክፍል ማስወጣት ይፈልጋሉ?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "ጥያቄ አልተሳካም ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "የሚካተቱ ሚናዎች"
+
+#: 
+msgid "Select Country"
+msgstr "አገር ይምረጡ"
+
+#: 
+msgid "Select State"
+msgstr "ክልል ይምረጡ"
+
+#: 
+msgid "Select a person"
+msgstr "ሰው ይምረጡ"
+
+#: 
+msgid "Select role"
+msgstr "ሚና ይምረጡ"
+
+#: 
+msgid "Select type (optional)"
+msgstr "ዓይነት ይምረጡ (አማራጭ)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "በ http:// ወይም https:// ይጀምራል"
+
+#: 
+msgid "This group only has one role."
+msgstr "ይህ ቡድን አንድ ሚና ብቻ አለው።"
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "{{name}}ን ማን እያመጣ ነው?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "{{name}}ን ማን እየወሰደ ነው?"
+
+#: 
+msgid "Working..."
+msgstr "በሥራ ላይ..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "{{releaseCount}} ሬሊዝ ወደ ኋላ ቀርተዋል። እነሆ የሚያገኙት"
+
+#: 
+msgid "click to expand"
+msgstr "ለማስፋፋት ጠቅ ያድርጉ"
+
+#: 
+msgid "pick"
+msgstr "ይምረጡ"
+
+#: 
+msgid "recipient"
+msgstr "ተቀባይ"
+
+#: 
+msgid "recipients"
+msgstr "ተቀባዮች"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}} ሰ {{mins}} ደ ቀርቷል"
+
+#: 
+msgid "Add New Deposit"
+msgstr "አዲስ ተቀማጭ ጨምር"
+
+#: 
+msgid "Add New Event"
+msgstr "አዲስ ዝግጅት ጨምር"
+
+#: 
+msgid "Add New Event Type"
+msgstr "አዲስ የዝግጅት ዓይነት ጨምር"
+
+#: 
+msgid "Add New Family"
+msgstr "አዲስ ቤተሰብ ጨምር"
+
+#: 
+msgid "Add New Field"
+msgstr "አዲስ መስክ ጨምር"
+
+#: 
+msgid "Add New Fund"
+msgstr "አዲስ ፈንድ ጨምር"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "አዲስ እድል ጨምር"
+
+#: 
+msgid "Add New Person"
+msgstr "አዲስ ሰው ጨምር"
+
+#: 
+msgid "Add New Pledge"
+msgstr "አዲስ ቃለ መሐላ ጨምር"
+
+#: 
+msgid "Add New Role"
+msgstr "አዲስ ሚና ጨምር"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "አዲስ የበጎ ፈቃደኝነት እድል ጨምር"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "የሰንበት ትምህርት ቤት ክፍል ጨምር"
+
+#: 
+msgid "Delete this family?"
+msgstr "ይህን ቤተሰብ ይሰርዙ?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "ይህን ቤተሰብ መሰርዝ ይፈልጋሉ? ምን እንደሚሰርዙ ለምዘጋ ወደ ገጽ ይወሰዳሉ። ሊቀለበስ አይችልም።"
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "የቤተሰብ ሰርዛ ማረጋገጫ"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "ግለሰቦች (ቤተሰብ የሌላቸው)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "አዲስ ራስ-ምዝገባዎች"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "የንብረት ዓይነት ሰርዛ ማረጋገጫ"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "በህዝብ ምዝገባ ቅጽዎ ላይ የተመዘገቡ አዲስ ቤተሰቦችንና ግለሰቦችን ይገምግሙ"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "ከታች ያለውን የህዝብ ምዝገባ ቅጽዎ አዲስ ተመዝጋቢዎችን ይገምግሙ። ኢሜይል ወይም ስልክ የሌላቸው ምልክት ተደርጎባቸዋል — ከመከታተሉ በፊት ያረጋግጡ።"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "የበጎ ፈቃደኝነት እድል ሰርዛ ማረጋገጫ"
 

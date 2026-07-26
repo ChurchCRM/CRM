@@ -31,7 +31,6 @@ function getCartView(Request $request, Response $response, array $args): Respons
         return $renderer->render($response, 'cartempty.php', $pageArgs);
     } else {
         $pageArgs = array_merge($pageArgs, [
-            'sEmailLink'   => Cart::getEmailLink(),
             'iNumFamilies' => Cart::countFamilies(),
             'cartPeople'   => Cart::getCartPeople(),
         ]);

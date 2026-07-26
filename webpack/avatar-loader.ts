@@ -32,6 +32,7 @@ interface AvatarInfo {
   photoUrl: string | null;
   initials: string;
   email: string | null;
+  photoVersion?: number;
 }
 
 interface AvatarConfig {
@@ -124,11 +125,14 @@ class AvatarLoader {
   }
 
   /**
-   * Build the API URL for the actual photo (uploaded photos only)
+   * Build the API URL for the actual photo (uploaded photos only).
+   * Appends ?v=<photoVersion> when provided to bust the 2-hour
+   * Cache-Control on the /photo endpoint after an upload. See #8662.
    */
-  private buildPhotoUrl(config: AvatarConfig): string {
+  private buildPhotoUrl(config: AvatarConfig, photoVersion?: number): string {
     const { entityType, entityId } = config;
-    return buildAPIUrl(`${entityType}/${entityId}/photo`);
+    const base = buildAPIUrl(`${entityType}/${entityId}/photo`);
+    return photoVersion && photoVersion > 0 ? `${base}?v=${photoVersion}` : base;
   }
 
   /**
@@ -286,7 +290,7 @@ class AvatarLoader {
    * Load an uploaded photo
    */
   private loadUploadedPhoto(img: HTMLImageElement, config: AvatarConfig, avatarInfo: AvatarInfo): void {
-    const photoUrl = this.buildPhotoUrl(config);
+    const photoUrl = this.buildPhotoUrl(config, avatarInfo.photoVersion);
 
     // Load the image directly - browser will send authentication cookies automatically
     img.onload = () => {

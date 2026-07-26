@@ -6,10 +6,6 @@
  * after family phone field removal
  */
 describe("API Private Person", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/person/{id} - Get Person by ID", () => {
         it("Returns 200 with person data", () => {
             cy.makePrivateAdminAPICall("GET", "/api/person/1", null, 200).then(
@@ -66,6 +62,29 @@ describe("API Private Person", () => {
                 200,
             ).then((response) => {
                 expect(response.body).to.exist;
+            });
+        });
+    });
+
+    describe("GET /api/persons/self-register - Self-Registered People", () => {
+        it("Returns 200 with the seeded self-registered people", () => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/persons/self-register",
+                null,
+                200,
+            ).then((response) => {
+                expect(response.body).to.have.property("people");
+                expect(response.body.people).to.be.an("array");
+                // seed.sql seeds self-registered (per_EnteredBy = -1) people
+                expect(response.body.people.length).to.be.greaterThan(0);
+
+                const person = response.body.people[0];
+                expect(person).to.have.property("Id");
+                expect(person).to.have.property("FirstName");
+                expect(person).to.have.property("LastName");
+                expect(person).to.have.property("DateEntered");
+                expect(person).to.have.property("FamId");
             });
         });
     });

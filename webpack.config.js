@@ -23,6 +23,7 @@ module.exports = {
     'admin-dashboard': './webpack/admin-dashboard',
     'get-started': './webpack/get-started',
     'church-info': './webpack/church-info',
+    localization: './webpack/localization',
     'system-settings-panel': './webpack/system-settings-panel',
     'kiosk-registration-closed': './webpack/kiosk-registration-closed',
     kiosk: './webpack/kiosk',
@@ -40,6 +41,7 @@ module.exports = {
     'event-editor': './webpack/event-editor',
     'event-types-list': './webpack/event-types-list',
     'event-cart-to-event': './webpack/event-cart-to-event',
+    'email-composer': './webpack/common/email-composer',
   },
   output: {
     path: path.resolve('./src/skin/v2'),

@@ -127,7 +127,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteFund(fundName, fundId) {
             var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fundName + '"?';
-            msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
+            msg += '<br><br><strong>' + <?= json_encode(gettext('Warning')) ?> + ':</strong> ';
             msg += <?= json_encode(gettext('By deleting this fund, you may affect historical donation records!')) ?>;
             bootbox.confirm({
                 title: <?= json_encode(gettext('Delete Confirmation')) ?>,
@@ -161,7 +161,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <div class="card-header">
                 <h5 class="mb-0">
                     <i class="fa-solid fa-plus"></i>
-                    <?= gettext('Add New') . ' ' . gettext('Fund') ?>
+                    <?= gettext('Add New Fund') ?>
                 </h5>
             </div>
             <div class="card-body">
@@ -185,7 +185,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     <div class="col-md-3 d-flex align-items-end">
                         <button type="submit" class="btn btn-success w-100" name="AddField">
                             <i class="fa-solid fa-plus"></i>
-                            <?= gettext('Add New') . ' ' . gettext('Fund') ?>
+                            <?= gettext('Add New Fund') ?>
                         </button>
                     </div>
                 </div>

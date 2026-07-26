@@ -21,21 +21,19 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
         <a id="emptyCartToGroup" class="btn btn-outline-primary" title="<?= gettext('Add all cart items to a group') ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('To Group') ?></a>
       <?php }
       if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
-        <a href="<?= SystemURLs::getRootPath() ?>/CartToFamily.php" class="btn btn-outline-success" title="<?= gettext('Add cart items to a family') ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext('To Family') ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/people/cart/to-family" class="btn btn-outline-success" title="<?= gettext('Add cart items to a family') ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext('To Family') ?></a>
       <?php } ?>
       <a href="<?= SystemURLs::getRootPath() ?>/event/cart-to-event" class="btn btn-outline-info" title="<?= gettext('Check in to an event') ?>"><i class="fa-solid fa-ticket-alt me-2"></i><?= gettext('Check In') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/map?groupId=0" class="btn btn-outline-info" title="<?= gettext('Map cart items') ?>"><i class="fa-solid fa-map-marker me-2"></i><?= gettext('Map') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-outline-secondary" title="<?= gettext('Print name tags') ?>"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Tags') ?></a>
     </div>
     <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
-      <div class="btn-group" role="group">
-        <a href="mailto:<?= InputUtils::escapeAttribute($sEmailLink) ?>" class="btn btn-outline-info" title="<?= gettext('Email cart items') ?>" target="_blank" rel="noopener noreferrer">
-          <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
-        </a>
-        <a href="mailto:?bcc=<?= InputUtils::escapeAttribute($sEmailLink) ?>" class="btn btn-outline-secondary" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
-          <i class="fa-solid fa-user-secret me-2"></i>BCC
-        </a>
-      </div>
+      <button type="button" class="btn btn-outline-info"
+              data-email-composer
+              data-email-endpoint="cart/emails"
+              data-email-title="<?= InputUtils::escapeAttribute(gettext('Email Cart Members')) ?>">
+        <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
+      </button>
     <?php } ?>
     <a href="<?= SystemURLs::getRootPath() ?>/DirectoryReports.php?cartdir=Cart+Directory" class="btn btn-outline-warning" title="<?= gettext('Generate phone directory') ?>">
       <i class="fa-solid fa-book me-2"></i><?= gettext('Directory') ?>
@@ -89,9 +87,11 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                     <a class="dropdown-item" href="<?= $Person->getViewURI() ?>">
                       <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                     </a>
+                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $Person->getId() ?>">
                       <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                     </a>
+                    <?php endif; ?>
                     <?php if ($Person->getFamId()) { ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $Person->getFamId() ?>">
                       <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
@@ -123,5 +123,8 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
   });
 </script>
+<?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

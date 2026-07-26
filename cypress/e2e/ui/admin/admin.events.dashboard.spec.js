@@ -30,7 +30,7 @@ describe("Events Dashboard (MVC)", () => {
         cy.contains("Events Dashboard").should("exist");
         cy.contains("Events This Year").should("exist");
         cy.contains("Total Check-ins").should("exist");
-        cy.contains("Active Events").should("exist");
+        cy.contains("Current Events").should("exist");
         cy.contains("Event Types").should("exist");
     });
 

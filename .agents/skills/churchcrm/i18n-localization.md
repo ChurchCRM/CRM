@@ -18,8 +18,8 @@ ChurchCRM supports 45+ languages through gettext (PHP) and i18next (JavaScript).
 
 **Key Principle:** Every translatable term added = 45+ translations needed (one per language). Consolidate compound terms to reduce this burden.
 
-> **Scope note — this skill is for the CORE `messages` domain only.** Community
-> plugins do **not** go through POeditor and do **not** contribute strings to
+> [!NOTE] Scope — CORE `messages` domain only
+> Community plugins do **not** go through POeditor and do **not** contribute strings to
 > `locale/messages.po` or `locale/i18n/*.json`. Plugin authors ship their
 > translations inside the plugin directory and ChurchCRM loads them via
 > `PluginLocalization`. See
@@ -112,6 +112,25 @@ for v in g.values():
 "
 ```
 
+> [!WARNING] The case-dupe grep has a high false-positive rate — verify each hit's call sites before merging <!-- learned: 2026-07-24 -->
+> A 2026-07-24 audit ran this script and got **72 case-duplicate groups** (`Active`/`active`,
+> `People`/`people`, `Loading`/`loading`, `By`/`by`, `Family`/`family`, `Records`/`records`, …).
+> Grepping the actual call sites for a sample showed almost all of them are **already correct**
+> per the Title-Case-vs-sentence-case rule above — e.g. `gettext('people')` in
+> `webpack/people/importDemoData.js` renders `"5 people"` (a count, correctly sentence case) while
+> `gettext('People')` in nav breadcrumbs is UI chrome (correctly Title Case). Same story for
+> `gettext('active')` → `"3 active"` badge count vs. `gettext('Active')` → status badge label, and
+> `gettext('by')` → `"by John Smith"` attribution vs. a Title-Case heading elsewhere.
+> Some flagged msgids (e.g. `Loading`/`loading`) had **no live call site at all** for one side —
+> `locale/messages.po` accumulates entries that the automation hasn't pruned yet, so a msgid
+> existing in the `.po` file doesn't guarantee a matching `gettext()`/`i18next.t()` call still
+> exists in source.
+> **Rule: never merge a case-dupe pair from the `.po` grep alone.** For each pair, `grep -rn` both
+> forms across `src/` and `webpack/`, read the surrounding context, and only touch call sites
+> where the same UI role (both chrome, or both body text) is using two different casings of the
+> same string. `Id`/`ID` (below) is the pattern of a genuine hit: same role (table column header)
+> in every call site, just an unnormalized acronym.
+
 **Acronym exceptions** (always uppercase regardless of case form): `URL`, `ID`, `IP`, `SMTP`, `CSV`, `PDF`, `2FA`, `API`, `HTML`, `TLS`, `SSL`. Never write `Id`, `Url`, `Sms`, etc. — pick the acronym form once and use it everywhere.
 
 ```php
@@ -123,6 +142,8 @@ gettext('SMTP Host')
 gettext('User Id')
 gettext('Smtp Host')
 ```
+
+**Real-world instance (2026-07-24):** `person-list.php` (2 call sites, both DataTables column-header maps) and `self-register.php` used `gettext('Id')` / `i18next.t('Id')` for a table column header, while `finance/views/dashboard.php` used `gettext('ID')` for the same kind of column header — two msgids for one concept. Fixed by normalizing all three to `gettext('ID')` / `i18next.t('ID')`. The internal array key/DataTables `data:` field (`'Id'`) was left untouched — that's an identifier, not display text, and renaming it would require a matching change on the API response shape.
 
 **Dialog title special case:** `i18next.t('ERROR')` was historically used as a bootbox title and created an `ERROR`/`Error` msgid pair. Always use `i18next.t('Error')` (Title Case) for dialog titles. Reserve all-caps strings for log levels / data attribute values, NOT translation keys (e.g. `data-level="ERROR"` is fine, but the visible label uses `gettext('Error')`).
 
@@ -199,50 +220,43 @@ This applies to all inline scripts in PHP templates that use `i18next.t()`. Webp
 
 ## Adding New UI Terms
 
+> [!WARNING] NEVER run `npm run locale:build` <!-- learned: 2026-07-11 -->
+> Term extraction and `locale/terms/messages.po` updates are **automated outside
+> this repo** (POEditor sync). Do not run `locale:build`, and do not hand-edit or
+> commit `messages.po` or the generated locale JSON files. Running it locally only
+> creates a spurious diff that conflicts with the automation.
+>
+> **To add a UI term: wrap it in `gettext()` / `i18next.t()` and commit the code.
+> That's the whole job.** The automation picks it up from the source.
+
 ### Workflow
 
-**BEFORE wiring into code:**
-
-1. **Add to `locale/messages.po`** with empty translations
-2. **Run `npm run locale:build`** to extract and sync
-3. **Commit the updated messages.po**
-4. **Then** wire into PHP/JS (gettext/i18next)
+1. **Wrap the string** in `gettext()` (PHP) or `i18next.t()` (JS)
+2. **Check for an existing equivalent term first** — reuse beats creating a new one
+3. **Commit the code change only**
 
 ### Step-by-Step Example
 
 **Goal:** Add "Apply" button to form
 
-**Step 1** - Add to messages.po:
-```gettext
-# locale/terms/messages.po
-
-msgid "Apply"
-msgstr ""
+**Step 1** - Wrap the string in code (PHP):
+```php
+<button type="submit"><?= gettext('Apply') ?></button>
 ```
 
-**Step 2** - Build locale files:
-```bash
-npm run locale:build   # Extracts strings to messages.po
-npm run build          # Regenerates frontend .json files
+...or in JS:
+```js
+$("#applyBtn").text(i18next.t("Apply"));
 ```
 
-**Step 3** - Commit messages.po:
+**Step 2** - Commit the code. Do **not** touch `messages.po`:
 ```bash
-git add locale/terms/messages.po
+git add src/admin/views/settings.php
 git commit -m "Add 'Apply' button term to localization"
 ```
 
-**Step 4** - Wire into code:
-```php
-// In template
-<button><?= gettext('Apply') ?></button>
-
-// Or JavaScript
-<button id="apply-btn"><?= gettext('Apply') ?></button>
-<script>
-document.getElementById('apply-btn').textContent = i18next.t('Apply');
-</script>
-```
+That's it — there is no locale rebuild step. The POEditor automation extracts the
+new `msgid` from the committed source on its own schedule.
 
 ---
 
@@ -269,27 +283,55 @@ gettext('Group Delete Confirmation')
 // ... more, 45 languages = 315+ translations!
 ```
 
-### Solution: Component-Based Terms
+### Correctness Outranks Term-Count Savings <!-- learned: 2026-07-25 -->
+
+> [!WARNING] Raw two-piece concatenation (`gettext('Delete') . ' ' . gettext('Group')`) has a real, confirmed grammar defect. **Do not use this pattern for new consolidations.** If in doubt between saving a term and getting every language's grammar right, get the grammar right — the cost math in this file exists to eliminate *waste*, not to buy savings at the price of broken output in any of the 45+ languages this project ships.
+
+**The defect, confirmed against real translations, not theoretical:** Japanese and Korean are verb-final (SOV) languages — a correct translation of "Delete Group" puts the verb *last* ("Group['s] deletion", not "Delete Group"). Checking the actual shipped translations of the pre-existing `gettext('Add New') . ' ' . gettext('Fund')` pattern:
+
+```
+ja_JP: "新規追加" (Add New) + " " + "基金" (Fund)  →  "新規追加 基金"  — reads backwards; natural Japanese is "基金の新規追加" (Fund['s] new-addition)
+ko_KR: "새로 추가" (Add New) + " " + "헌금 항목" (Fund)  →  same problem
+```
+
+Each piece is translated **in isolation** — the "Add New" translator has no idea what noun follows, so they cannot place the verb where their language's grammar requires it. This is different from RTL (Arabic/Hebrew): those two are commonly verb-first like English for short commands, so the RTL-specific concern is bidi *punctuation positioning* (see the RTL section below), not clause order. The word-order defect is specifically about SOV languages already in this project's 49-locale list (`ja_JP`, `ko_KR`), independent of text direction.
+
+**What to do instead, in priority order:**
+
+1. **Keep it as one whole, indivisible phrase** (`gettext('Delete Group')`) whenever the entity is fixed at that call site. This costs one term instead of zero, but it is the only option with *zero* grammar risk — the translator sees the complete real-world phrase and can write it in whatever order their language needs.
+2. **If the entity is genuinely dynamic** (a loop over entity types, a runtime variable), use a single parameterized msgid with `sprintf()`/`{{placeholder}}` — `sprintf(gettext('Delete %s'), gettext($entityType))`. This is **fundamentally different from concatenation**: the whole string `"Delete %s"` is one translatable unit, and the translator repositions `%s` anywhere their grammar requires (e.g. a ja/ko translation of `"Delete %s"` can legally be `"%sを削除"`, placing `%s` first). This is exactly the same reasoning already established for split-sentence fragments elsewhere in this file — a single parameterized string, never pieces glued by code.
+3. **Never** `gettext('A') . ' ' . gettext('B')` where A and B are independently common words (a verb and a noun) that only make sense in a fixed relative order in English.
+
+**Full-codebase audit completed and fixed (2026-07-25).** Given a choice between term-count savings and correct grammar in every supported language, correctness wins — full stop. A repo-wide sweep found 20 genuine verb+object concatenation call sites across 15 files (`gettext('Add New') . ' ' . gettext('Fund')`, `gettext('Delete Confirmation') . ': ' . gettext('Family')`, and JS equivalents in `Footer.js`/`FindDepositSlip.js`) — all were collapsed into single whole-phrase msgids (e.g. `gettext('Add New Fund')`, `gettext('Family Delete Confirmation')`), each verified against the existing "`{Entity} Delete Confirmation`" naming convention already used by `users.js`'s `"User Delete Confirmation"`. This re-adds roughly 20 terms to the catalog — an accepted, deliberate cost, not an oversight. Five *new* instances of the pattern were also caught mid-session (introduced while chasing pure term-count savings on "Add New Class"/"Add New Group"/"Delete Event"/"Delete Calendar"/"User Delete Confirmation") and reverted the same way before they shipped.
+
+**Detection — repo-wide sweep for this pattern:**
+```bash
+grep -rnoE "gettext\(['\"][^'\"]*['\"]\)\s*\.\s*['\"][^'\"]{0,3}['\"]\s*\.\s*gettext\(['\"][^'\"]*['\"]\)" src --include="*.php" | grep -v vendor
+grep -rnoE "i18next\.t\(['\"][^'\"]*['\"]\)\s*\+\s*['\"][^'\"]{0,3}['\"]\s*\+\s*i18next\.t\(['\"][^'\"]*['\"]\)" webpack src --include="*.js" --include="*.ts" | grep -v "\.min\.js"
+```
+Not every hit is a violation — skip pairs where both sides are already complete, independent phrases joined by a separator (`gettext('New Payment') . ' - ' . gettext('New Deposit Will Be Created')`), a noun/noun compound (`gettext('Birth Date') . ' / ' . gettext('Anniversary Date')`), or a `Label: Value` pair (`gettext('Gender') . ': ' . gettext('Male')`) — those don't have a verb that needs repositioning, so there's no SOV risk to fix.
+
+### Solution: Component-Based Terms (Legacy Pattern — Read the Warning Above First)
 
 Consolidate compound terms into reusable parts:
 
 ```php
-// ✅ CORRECT - 1 action + entity names = fewer translations
+// ⚠️ Pre-existing pattern, has the SOV defect above — don't add new instances
 gettext('Add New') . ' ' . gettext('Field')
 gettext('Add New') . ' ' . gettext('Fund')
 gettext('Add New') . ' ' . gettext('User')
 // Result: 10 total strings, 45 languages = 450 translations (saves 430!)
 
-// ✅ CORRECT - 1 pattern + type names
+// ⚠️ Same defect via ': ' concatenation — don't add new instances
 gettext('Delete Confirmation') . ': ' . gettext('Family')
 gettext('Delete Confirmation') . ': ' . gettext('Note')
 // Result: 9 total strings (5 entity types), saves 98 translations
 ```
 
-### Pattern: "Add New" Button
+### Pattern: "Add New" Button (Legacy — Do Not Add New Instances)
 
 ```php
-// ✅ CORRECT - Consolidated pattern
+// ⚠️ Pre-existing, has the SOV word-order defect above — don't copy this for new code
 <input type="submit" 
        value="<?= gettext('Add New') . ' ' . gettext('Fund') ?>" />
 
@@ -302,16 +344,57 @@ gettext('Delete Confirmation') . ': ' . gettext('Note')
 
 ### Pattern: Delete Confirmation
 
+The page-title line below is the same `A . ': ' . B` concatenation shape and has the same known defect — it's existing, accepted debt in `VolunteerOpportunityEditor.php`/`PropertyTypeDelete.php`, not a pattern to extend. The `sprintf()` line directly under it is the **correct** approach for a genuinely dynamic entity — one parameterized msgid, translator controls word order:
+
 ```php
-// ✅ CORRECT - Consolidated deletion dialog
 <?php
 $entityType = 'Family';  // Dynamic
+// ⚠️ Legacy concatenation — has the SOV defect, don't copy for new code
 $pageTitle = gettext('Delete Confirmation') . ': ' . gettext($entityType);
 ?>
 
 <h1><?= $pageTitle ?></h1>
+<!-- ✅ CORRECT — single parameterised msgid, translator repositions %s freely -->
 <p><?= sprintf(gettext('Are you sure you want to delete this %s?'), gettext($entityType)) ?></p>
 ```
+
+**Confirm-button labels don't need to repeat the entity name either**, when the surrounding dialog (page title, card header, or a "Please confirm deletion of X: {name}" line) already states it. Real instances fixed (2026-07-25): `VolunteerOpportunityEditor.php` used `gettext('Yes, delete this Opportunity')` and `PropertyTypeDelete.php` used `gettext('Yes, delete this record')` as one-off button labels, when a generic `gettext('Yes, delete')` (already used elsewhere, e.g. `PropertyList.php`) would do — both pages already display the entity name/type in the confirmation heading above the button.
+
+```php
+// ❌ WRONG — entity name baked into the button label (one-off msgid, only used here)
+<button><?= gettext('Yes, delete this Opportunity') ?></button>
+
+// ✅ CORRECT — generic label; the card header/title above already says "Volunteer Opportunity"
+<button><?= gettext('Yes, delete') ?></button>
+```
+
+Note: `"Yes, Remove"` (used for reversible cart-removal actions) is intentionally kept as a **separate** canonical term from `"Yes, delete"` (destructive record deletion) — they represent different-consequence actions, not a punctuation/wording variant of the same concept. Don't merge those two.
+
+### Real-World Duplicate-Field-Label Instances (Zip / State) <!-- learned: 2026-07-25 -->
+
+A field that appears on multiple forms should have exactly one canonical label — let translators render the regionally-appropriate variant (e.g. "Postal Code" instead of "Zip") as *their* translation of that one term, rather than shipping two English source strings for the same concept.
+
+```php
+// ❌ WRONG — same Zip field, two different English labels across forms
+// FamilyEditor.php, CSVExport.php, etc.:
+gettext('Zip')
+// people/views/cart/to-family.php (same #Zip field):
+gettext('Zip / Postal Code')
+
+// ✅ CORRECT — one canonical term everywhere; translators localize the wording
+gettext('Zip')
+```
+
+Found and fixed 2026-07-25: `people/views/cart/to-family.php` used `'Zip / Postal Code'` and `'State / Province'` for the exact same `id="Zip"`/`id="State"` fields that every other form (`FamilyEditor.php`, `PersonEditor.php`, `church-info.php`, `family-list.php`, `family-register.php`) labels with the bare `gettext('Zip')` / `gettext('State')`. Also updated the CSV import column-label constant (`CSV_CORE_FIELD_LABELS` in `admin/routes/api/import.php`) which had independently baked in `'Zip / Postal Code'` as static array data.
+
+**Not the same as a DB-context-tagged term** — `"Zip Code"` (with `#. Context: queryparameteroptions_qpo`) is seeded row data in the Advanced Search / Query Builder field-picker (`queryparameteroptions_qpo` table, see `database-operations.md`), consistent with sibling option labels in that same set (`Home Phone`, `City`, `State`). Changing it means a DB data migration across every install, not a source-code fix — leave it alone; it is not a duplicate of the UI `"Zip"` label.
+
+**Detection — grep for a field's bare label vs. compound "X / Y" labels used on the same `id=`:**
+```bash
+grep -rn "gettext('Zip')\|gettext('Zip / Postal Code')" src webpack
+grep -rn "gettext('State')\|gettext('State / Province')" src webpack
+```
+Not every `"X / Y"` label is a duplicate — some legitimately combine two distinct data concepts into one compound column header or checkbox (e.g. `"Class / Group"` in `kiosk/views/manager.php` covers rows that are either a class or a group; `"Role / Gender"` in `people/views/dashboard.php` covers two separate stat columns; `"Age / Years Married"` in `CSVExport.php` is a CSV column that means Age for a person row and Years Married for a couple row). Only merge when both sides genuinely label the *same single field*.
 
 ### Pattern: Status Messages
 
@@ -416,12 +499,14 @@ $label = $action . ' ' . $entityType;  // Result: "Add New Fund"
 echo sprintf('%s %s', gettext('Add New'), gettext('Fund'));
 ```
 
-### Step 4: Test with Locale Rebuild
+### Step 4: Verify in the UI
 
 ```bash
-npm run locale:build   # See if consolidation works
-npm run build          # Regenerate all assets
+npm run build          # Regenerate front-end assets
 ```
+
+Do **not** run `npm run locale:build` to "test" a consolidation — verify by
+reading the source and checking the rendered UI. Extraction is automated.
 
 ### Step 5: Measure Impact
 
@@ -435,40 +520,33 @@ SAVED: 225 translations (42% reduction!)
 
 ## Locale Rebuild Workflow
 
-### When to Rebuild
+### Never rebuild the locale catalog <!-- learned: 2026-07-11 -->
 
-**BEFORE EVERY COMMIT with new UI strings:**
-
-```bash
-# 1. You added new gettext() or i18next.t() strings
-# 2. You modified existing gettext() keys
-# 3. You removed old i18n terms
-```
-
-### Step-by-Step
+**There is no locale rebuild step in the dev workflow.** Extraction of `gettext()` /
+`i18next.t()` strings into `locale/terms/messages.po`, and the sync of translations
+back from POEditor, are **automated outside this repo**.
 
 ```bash
-# 1. Rebuild translations (extracts all strings)
+# ❌ NEVER — not before a commit, not to "test", not to "verify extraction"
 npm run locale:build
-# Generates: locale/terms/messages.po
-# Updates: locale/locales/*.json files
 
-# 2. Verify changes
-git diff locale/terms/messages.po
-# Should show new msgid entries your added
-
-# 3. Rebuild front-end assets (uses .json files)
-npm run build
-# Regenerates: src/skin/v2/locale/*.js
-
-# 4. Test locally
-npm run test              # Verify UI text displays
-
-# 5. Commit both files
+# ❌ NEVER — the automation owns these files
 git add locale/terms/messages.po
 git add src/skin/v2/locale/
-git commit -m "Add new localization terms"
 ```
+
+```bash
+# ✅ The entire workflow for a new UI string:
+#   1. Wrap it: gettext('My String')  /  i18next.t('My String')
+#   2. npm run build     (front-end assets only, if you touched JS/CSS)
+#   3. Commit the source file. Nothing else.
+```
+
+Running `locale:build` locally produces a large spurious diff that conflicts with
+the automation and will be rejected in review. If a term seems to be missing from
+a translation, that is an automation/POEditor concern — see
+[`locale-translation-workflow.md`](./locale-translation-workflow.md), not a reason
+to rebuild by hand.
 
 ### Locale Directory Structure
 
@@ -564,6 +642,23 @@ echo gettext('Please select from the following:');
 echo gettext('Please select from the following') . ':';
 ```
 
+**Detection — grep for a trailing colon inside the quotes:**
+```bash
+grep -rnoE "gettext\('[^']*:'\)" src/
+grep -rnoE 'gettext\("[^"]*:"\)' src/
+grep -rnoE "i18next\.t\('[^']*:'" webpack/ src/
+grep -rnoE 'i18next\.t\("[^"]*:"' webpack/ src/
+```
+
+**Before fixing, check whether the colon-less form already exists** — a term wrapped with and
+without a trailing colon in different files is two msgids for one word (e.g. `gettext('Warning')`
+in one place, `gettext('Warning:')` in another). Search for the bare term first and reuse it:
+```bash
+grep -rn "gettext('Warning')" src/   # does the colon-less form already exist?
+```
+If it does, fix the colon-suffixed call sites to use the existing bare term plus a literal `:`
+outside the call, rather than leaving two separate msgids for the same word. <!-- learned: 2026-07-24 -->
+
 **In HTML attributes or templates:**
 ```php
 // ✅ CORRECT - Inline concatenation
@@ -578,18 +673,76 @@ echo '<label>'
     . ':</label>';
 ```
 
-**Update messages.po when making this change:**
-```gettext
-# BEFORE
-msgid "Birth Date:"
-msgstr ""
+**Do not hand-edit `locale/messages.po` for this change.** <!-- learned: 2026-07-24 -->
+Moving the colon out of the `gettext()`/`i18next.t()` call is enough — the old `"Label:"` msgid
+simply stops being extracted on the next automated run, and a new `"Label"` msgid appears in its
+place. This supersedes older guidance in this section that said to update `messages.po` by hand;
+see ["Never rebuild the locale catalog"](#never-rebuild-the-locale-catalog----learned-2026-07-11-)
+below — the automation, not the developer, owns that file.
 
-# AFTER
-msgid "Birth Date"
-msgstr ""
+### Decorative Wrappers (em-dash, brackets, etc.) Go Outside the Call <!-- learned: 2026-07-25 -->
+
+**Rule: Move purely decorative wrapper characters — em-dashes, brackets, parentheses used as visual framing — OUTSIDE `gettext()`/`i18next.t()` calls, same as the colon rule above.** A dropdown blank-option label like `"— Select Country —"` bakes UI decoration into the msgid; the dashes are identical in every language and contribute nothing for a translator to translate, they just add visual noise and risk the translator "translating" or repositioning them.
+
+```php
+// ❌ WRONG - em-dash decoration inside gettext()
+<option value=""><?= gettext('— Select a group —') ?></option>
+
+// ✅ CORRECT - decoration outside, translator only sees the real words
+<option value="">— <?= gettext('Select a group') ?> —</option>
 ```
 
-The msgid key must match what's passed to gettext() in PHP code.
+```javascript
+// ❌ WRONG
+const blankLabel = i18next.t("— Select Country —");
+
+// ✅ CORRECT
+const blankLabel = `— ${i18next.t("Select Country")} —`;
+```
+
+**Check for an existing bare form first** — exactly like the colon rule, a decorated and undecorated version of the same phrase are two msgids for one concept. `"— Select a group —"` was found duplicating an already-existing bare `gettext('Select a group')` used in four other editors (`PersonCustomFieldsEditor.php`, `FamilyCustomFieldsEditor.php`, `GroupEditor.php`, `GroupPropsFormEditor.php`); the decorated call site was switched to reuse the existing term rather than keep a second msgid.
+
+**Not the same as "e.g." example-hint text** — `"e.g., Sunday Service"`-style placeholder strings are NOT decoration; "e.g." is itself a real word that needs translation (Spanish "p. ej.", French "par ex.", Japanese "例："), and it forms one natural phrase with its example. Splitting it out only helps when the fragment is reused across many strings — checked here (2026-07-25): `"e.g."` appears in exactly 7 strings and nowhere else, so splitting would create 8 translation units instead of 7. Leave these as complete phrases.
+
+**Detection:**
+```bash
+grep -rnoE "gettext\(['\"]— [^'\"]*—['\"]\)" src --include="*.php" | grep -v vendor
+grep -rnoE 'i18next\.t\(["\047]— [^"\047]*—["\047]\)' webpack src | grep -v "\.min\.js"
+```
+
+### Trailing-Period/Exclamation Duplicates — Check Sibling Convention Before Merging <!-- learned: 2026-07-25 -->
+
+A msgid pair differing only by trailing `.`/`!`/`...` (e.g. `"User not found"` vs `"User not found."`) is **not automatically a bug**. A 2026-07-25 audit found this codebase has two genuinely distinct, internally-consistent conventions that legitimately collide on wording:
+
+- **Short-phrase / API-JSON / page-subtitle contexts almost always omit the trailing period** — `SlimUtils::renderErrorJSON()` error messages, `sPageSubtitle` values, toast/`notify()` calls, exception messages thrown internally.
+- **Full-sentence / user-facing display contexts almost always include it** — bootbox modal alerts, `$_SESSION['sGlobalMessage']` flash messages, HTML alert `<div>`s, body paragraphs.
+
+```php
+// ✅ Both correct — same underlying error, two different display contexts, each internally consistent
+// API route (short phrase, no period):
+return SlimUtils::renderErrorJSON($response, gettext('Note not found'), [], 404);
+// Modal alert (full sentence, period) — delete-note-modal.php:
+bootbox.alert(<?= json_encode(gettext('Note not found.')) ?>);
+```
+
+**Before merging a punctuation-duplicate pair, check each call site's *sibling* messages in the same file/context** — if 6 other messages in the same file all share the same punctuation style as one side of the pair, that side is intentional, not a bug. Only merge when one side is an **outlier against its own sibling family** (a one-off inconsistency, not a deliberate context split). Real examples found and fixed this way: `UserService.php` had 7 `RuntimeException` messages with no period and exactly 1 outlier (`'User not found.'`) — fixed the outlier, left the API/modal split pairs (`Note not found`, `Property not found` in `PropertyMiddleware`, `Failed to delete note`, etc.) alone since each side matched its own family.
+
+**Detection:**
+```bash
+python3 -c "
+import re
+po = open('locale/messages.po').read()
+ids = [m for m in re.findall(r'^msgid \"(.*?)\"\$', po, re.MULTILINE) if m]
+base_map = {}
+for m in ids:
+    base = m.rstrip('!.?')
+    base_map.setdefault(base, set()).add(m)
+for base, variants in base_map.items():
+    if len(variants) > 1:
+        print(sorted(variants))
+"
+```
+Then `grep -rn -F "<the phrase>"` each variant's call sites and read the surrounding sibling messages before deciding whether to merge.
 
 ### Do Not Wrap Brand / Technical Literals <!-- learned: 2026-04-22 -->
 
@@ -605,6 +758,7 @@ The msgid key must match what's passed to gettext() in PHP code.
 | Protocol / tech acronyms | `TLS`, `Auto-TLS`, `SSL`, `SMTP`, `IMAP`, `DNS`, `CSP`, `CORS`, `SHA1 Hash` |
 | Brand names | `ChurchCRM`, `Vonage`, `MailChimp`, `GitHub`, `OpenLP`, `Nextcloud`, `Gravatar`, `WebDAV`, `POEditor`, `ownCloud`, `Stripe`, `PayPal` |
 | Placeholder examples | `name@example.com`, `+1-555-123-4567`, `https://example.com` |
+| Punctuation-only placeholders | `—` (em dash "no data" marker), `-`, `...`, `•` |
 
 **Pattern:**
 
@@ -630,6 +784,25 @@ $phpIni = [
 <input placeholder="name@example.com">
 ```
 
+**Punctuation-only placeholder example** — an em-dash "no data" marker was found wrapped in `gettext()` even though the identical raw `—` character appears unwrapped elsewhere on the same page:
+
+```php
+// ❌ WRONG — punctuation, not copy; there is nothing for a translator to translate
+'noStreak' => gettext('—'),
+
+// ✅ CORRECT — bare literal, matches the raw '—' used elsewhere on the page
+'noStreak' => '—',
+```
+
+A `gettext()`/`i18next.t()` call whose argument is entirely punctuation/whitespace (`-`, `—`, `...`, `•`, a bare space) is always a leak — grep for it directly:
+
+```bash
+grep -rnE "gettext\(['\"][^a-zA-Z0-9]{1,4}['\"]\)" src/
+grep -rnE "i18next\.t\(['\"][^a-zA-Z0-9]{1,4}['\"]\)" src/ webpack/
+```
+(Short *alphanumeric* results like `gettext('To')`, `gettext('OK')`, `gettext('N')` from the same grep are legitimate translatable words/abbreviations — only punctuation-only matches are leaks.) <!-- learned: 2026-07-24 -->
+
+
 **How to detect leaks:** a term that a) appears in `locale/terms/missing/{code}/{code}-N.json` across many locales with an empty string, and b) is a brand / technical / config literal, is almost certainly wrongly wrapped. Quick aggregation:
 
 ```bash
@@ -653,7 +826,7 @@ Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,30)
 
 Terms at the top of the list that match the table above should be unwrapped in source.
 
-**If you remove a wrapper**, the next `npm run locale:build` stops extracting it. New missing batches no longer include it; stale POEditor entries are harmless and can be cleaned up manually.
+**If you remove a wrapper**, the next automated extraction stops picking it up — you do **not** run `npm run locale:build` yourself to make that happen. New missing batches no longer include it; stale POEditor entries are harmless and can be cleaned up manually.
 
 **Related:** the locale translation commands (`/locale-translate`, `/locale-release`) list these same tokens under "Preserve exactly / never translate" — the fix here is to stop them entering the pipeline in the first place.
 
@@ -682,9 +855,157 @@ echo mysqli_num_rows($rs) . gettext(' record(s) returned');
 echo sprintf(gettext('%d record(s) returned'), mysqli_num_rows($rs));
 ```
 
-**Detection:** fragment msgids are identifiable in `locale/messages.po` by a leading or trailing space in the msgid string — e.g. `msgid " characters long"`. Open issue [#8772](https://github.com/ChurchCRM/CRM/issues/8772) tracks the known fragments still in the codebase.
+**Detection:** fragment msgids are identifiable in `locale/messages.po` by a leading or trailing space in the msgid string — e.g. `msgid " characters long"`. Open issue [#8772](https://github.com/ChurchCRM/CRM/issues/8772) tracks the known fragments still in the codebase. Grep source directly rather than relying on the `.po` file (which lags the automation):
+```bash
+grep -rnoE "gettext\('[^']* '\)" src/    # trailing space
+grep -rnoE "gettext\('[^']*'\)" src/ | grep -E "\('\s"  # leading space
+```
+
+**Real-world instances fixed (2026-07-24):** the two `❌ WRONG` examples above (`QueryView.php` alpha/numeric validation messages, `PledgeEditor.php` deposit page title) were not hypothetical — they were live bugs in this codebase, along with ~15 more of the same shape in `Reports/TaxReport.php`, `Reports/ReminderReport.php`, `Reports/FamilyPledgeSummary.php`, `WhyCameEditor.php`, `admin/routes/api/import.php`, `ChurchCRM/Authentication/AuthenticationProviders/APITokenAuthentication.php`, and `fundraiser/routes/reports.php` (PDF cell-write calls). All were fixed the same way: pull the fragment into one `sprintf()`-parameterised string. Where a value only fills in a leading/trailing connector word rather than a full sentence (e.g. building `" for fund "` before appending a loop of fund names), the minimal fix is to move the space to a plain string concatenation outside `gettext()` rather than restructure the surrounding loop — e.g. `gettext(' for fund ')` → `' ' . gettext('for fund') . ' '`.
+
+**Related but distinct: pure-formatting content should not be wrapped at all.** A decorative PDF divider line (`gettext('----...----')`, all dashes, no words) was found wrapped in `fundraiser/routes/reports.php` — unwrapped to a bare literal, same as the punctuation-only-placeholder case in ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) above. A related case in the same file padded a real word (`'Signature'`) with 40 leading spaces and 68 trailing underscores for fixed-width PDF layout — the word was pulled into its own `gettext('Signature')` call with the padding built via `str_repeat()` outside it, rather than baking layout whitespace into the msgid.
+
+**Real-world instance (2026-07-24):** `ChurchCRM\Service\PersonService::search()` built a family-role string as `$roleText . gettext(' of the') . ' <a>...</a> ' . gettext('family') . ' )'` — an orphaned `' of the'` fragment (leading space) plus a bare `'family'` msgid that duplicates the unrelated `gettext('family')` used elsewhere in `PersonList.php`'s "records" sentence. Fixed by building the dynamic HTML link first, then wrapping the whole phrase in one `sprintf(gettext('%1$s of the %2$s family'), $roleText, $familyLink)` call:
+```php
+// ❌ WRONG — orphaned ' of the' fragment, msgid leading space
+$familyRole .= gettext(' of the') . ' ' . $familyLinkHtml . ' ' . gettext('family') . ' )';
+
+// ✅ CORRECT — one msgid, HTML link passed as a %2$s value
+$familyRole .= sprintf(gettext('%1$s of the %2$s family'), $roleText, $familyLinkHtml) . ' )';
+```
 
 **Checklist addition:** Add `- [ ] No gettext() fragments — full sentence per call, sprintf for values` to your pre-commit review.
+
+### Never Split a Sentence in JavaScript (i18next template literals) <!-- learned: 2026-07-11 -->
+
+The same anti-pattern occurs in JS where two `i18next.t()` calls are concatenated in a template literal, often with HTML or a runtime value in between. The extracted msgids are short, decontextualised fragments that translators cannot understand.
+
+```javascript
+// ❌ WRONG — three fragments; count bolded via HTML between two t() calls
+$("#upgradePathSummary").html(
+  `${i18next.t("You are")} <strong>${count}</strong> ${i18next.t("releases behind. Here's what you'll gain:")}`,
+);
+// Produces msgids: "You are" and "releases behind. Here's what you'll gain:"
+
+// ❌ ALSO WRONG — single msgid, but bakes <strong> markup into the translatable string
+$("#upgradePathSummary").html(
+  `${i18next.t("You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain", {
+    releaseCount: count,
+  })}:`,
+);
+
+// ✅ CORRECT — single parameterised msgid, no markup in the string at all.
+// Trailing colon is UI punctuation (see "Punctuation & Colon Placement" above) — kept
+// outside the t() call even in JS. Use .text() (not .html()) since there is no
+// markup to render.
+$("#upgradePathSummary").text(
+  `${i18next.t("You are {{releaseCount}} releases behind. Here's what you'll gain", {
+    releaseCount: count,
+  })}:`,
+);
+```
+
+**Detection — grep for JS template-literal split patterns:**
+```bash
+# Detects: `...${i18next.t(...)} ... ${i18next.t(...)}...`
+grep -rn '\${i18next\.t(' webpack/src/skin/js/ | grep -v '//' | head
+# Multiple i18next.t hits on the same line = likely fragment concatenation
+grep -rn 'i18next\.t(' webpack/ | awk -F: '{if (gsub(/i18next\.t\(/, "&", $2) > 1) print}'
+```
+
+**i18next `count` reserved key — use named alternatives:**
+i18next treats `count` as a special interpolation key that triggers plural-form lookup. When injecting a plain integer that is *not* a plural selector, use a distinct name to avoid unintended plural behaviour:
+```javascript
+// ❌ WRONG — triggers i18next plural lookup
+i18next.t("{{count}} releases behind", { count })
+
+// ✅ CORRECT — named interpolation, no plural side-effect
+i18next.t("{{releaseCount}} releases behind", { releaseCount: count })
+```
+
+**HTML-valued interpolation (i18next `escapeValue: false`):**
+When an interpolated value must contain HTML (e.g. a `<span>` to keep an element ID stable for Cypress), sanitize the inner text with `escapeHtml()` yourself, then disable escaping per-call:
+```javascript
+function setWhatsNewHeading(version) {
+  const versionHtml = `<span id="whatsNewVersion" class="text-primary">${escapeHtml(version || "")}</span>`;
+  $("#whatsNewHeading").html(
+    i18next.t("What's New in {{version}}", {
+      version: versionHtml,
+      interpolation: { escapeValue: false }, // safe: inner text manually escaped
+    }),
+  );
+}
+```
+This is a per-call option; it does not affect other `i18next.t()` calls.
+
+### No HTML or Markup in Translatable Strings <!-- learned: 2026-07-25 -->
+
+**Rule: never bake HTML tags (`<strong>`, `<br>`, etc.) or other markup into a `gettext()`/`i18next.t()` msgid.** Earlier guidance in this file treated `<strong>`-wrapped msgids as acceptable precedent — that guidance was wrong and has been reversed. Translators should see plain, complete sentences; visual emphasis is a presentation concern, not a translation concern, and baking markup into the string risks a translator mangling or dropping the tag entirely.
+
+```php
+// ❌ WRONG — markup baked into the translatable string
+gettext('Starts with <strong>http://</strong> or <strong>https://</strong>')
+gettext('Ignore Incomplete<br>Addresses')
+
+// ✅ CORRECT — plain sentence, no markup; let CSS/layout handle emphasis if needed
+gettext('Starts with http:// or https://')
+gettext('Ignore Incomplete Addresses')
+```
+
+```javascript
+// ❌ WRONG — <strong> baked into the msgid
+i18next.t("Remove <strong>{{personName}}</strong> from this class?", {
+  personName, interpolation: { escapeValue: false },
+})
+
+// ✅ CORRECT — plain sentence; i18next's default escaping handles the interpolated value
+i18next.t("Remove {{personName}} from this class?", { personName })
+```
+
+**Exception: HTML confined entirely to an *interpolated value*, never the msgid itself**, is still fine — e.g. wrapping a version number in a `<span>` to keep a stable element id for Cypress (see `setWhatsNewHeading()` in `upgrade-wizard-app.js`). The translator only ever sees `"What's New in {{version}}"` — no markup — because the `<span>` lives in the JS-built `version` value passed to `i18next.t()`, not in the translatable string.
+
+**Detection:**
+```bash
+grep -rnoE "gettext\(['\"][^'\"]*<[a-zA-Z/][^'\"]*['\"]\)" src --include="*.php" | grep -v vendor
+grep -rnoE 'i18next\.t\(["\047][^"\047]*<[a-zA-Z/][^"\047]*["\047]' webpack src | grep -v "\.min\.js"
+```
+
+### Trailing-Preposition / Cross-Language Split (PHP prefix + JS suffix) <!-- learned: 2026-07-11 -->
+
+A subtle variant of the split-sentence anti-pattern occurs when **PHP renders a translatable prefix** and **JavaScript appends the dynamic suffix** at runtime. The PHP msgid ends in a dangling preposition or incomplete phrase:
+
+```php
+// ❌ WRONG — "What's New in" ends in a preposition; JS appends the version
+<?= gettext("What's New in") ?> <span id="whatsNewVersion" class="text-primary"></span>
+// JS later: $("#whatsNewVersion").text(nextVersion)
+// Translator sees msgid "What's New in" with no idea what follows.
+```
+
+**Detection in messages.po:**
+```bash
+# Short msgids (≤ 5 words) that end in a preposition or article suggest a suffix will be appended
+grep '^msgid ' locale/messages.po | awk '{if (NF <= 6) print}' | grep -iE '" ?(in|of|for|to|a|the|an)"$'
+```
+
+**Fix:** Move the *complete* sentence into a single JS `i18next.t()` call with a named placeholder, and remove the PHP `gettext()` call entirely:
+```php
+<!-- PHP: static shell only, no translatable prefix -->
+<h4 class="mb-0">
+    <i class="fa fa-tag me-1 text-primary"></i>
+    <span id="whatsNewHeading"></span>
+</h4>
+```
+```javascript
+// JS: full sentence, single msgid
+$("#whatsNewHeading").html(
+  i18next.t("What's New in {{version}}", {
+    version: versionHtml,
+    interpolation: { escapeValue: false },
+  }),
+);
+```
+
+**Rule:** If a PHP `gettext()` key ends in a preposition (`in`, `of`, `for`, `to`) or an article and the rendered element is later updated by JS, it is a cross-language split. Consolidate into one JS (or PHP) parameterised string.
 
 ### Plural Forms
 
@@ -759,10 +1080,11 @@ Before committing:
 - [ ] No hardcoded user-facing strings
 - [ ] No brand / technical literals wrapped — see ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) (brand names, config keys, protocol acronyms, `name@example.com`-style placeholders all stay as bare literals)
 - [ ] No split-sentence fragments — each `gettext()` call wraps a complete sentence; dynamic values use `sprintf()` — see ["Never Split a Sentence"](#never-split-a-sentence-across-multiple-gettext-calls----learned-2026-04-22-)
-- [ ] If strings added: Ran `npm run locale:build`
-- [ ] If strings added: Ran `npm run build`
-- [ ] Committed `locale/terms/messages.po`
-- [ ] Committed `src/skin/v2/locale/` (generated files)
+- [ ] No JS template-literal split — no `${i18next.t(...)} ... ${i18next.t(...)}` concatenation; use single parameterised `i18next.t()` with `{{placeholder}}` — see ["Never Split in JavaScript"](#never-split-a-sentence-in-javascript-i18next-template-literals----learned-2026-07-11-)
+- [ ] No trailing-preposition PHP msgid followed by JS runtime suffix — use a single JS `i18next.t('... {{version}}')` instead — see ["Trailing-Preposition"](#trailing-preposition--cross-language-split-php-prefix--js-suffix----learned-2026-07-11-)
+- [ ] **Did NOT run `npm run locale:build`** — extraction is automated outside this repo
+- [ ] **Did NOT commit `locale/terms/messages.po` or `src/skin/v2/locale/`** — the automation owns those
+- [ ] If JS/CSS changed: Ran `npm run build`
 - [ ] Checked for existing similar terms (reuse instead of creating new)
 - [ ] Used consolidation patterns for compound terms
 - [ ] Verified UI displays correctly (test with `npm run test`)
@@ -771,17 +1093,21 @@ Before committing:
 
 ## Common Issues & Solutions
 
-### Issue: "Translation not showing after rebuild"
+### Issue: "Translation not showing"
 
 ```bash
-# 1. Verify string is in messages.po
+# 1. Verify the string is actually wrapped in the source
+grep -rn "My New String" src/
+
+# 2. Verify the term has reached the catalog (populated by the automation).
+#    If it is missing here, the extraction automation has not run yet —
+#    do NOT run `npm run locale:build` to force it.
 grep "My New String" locale/terms/messages.po
 
-# 2. Verify you ran both builds
-npm run locale:build    # Extract strings
-npm run build           # Regenerate frontend
+# 3. Regenerate front-end assets (JS/CSS bundles only)
+npm run build
 
-# 3. Clear browser cache and hard refresh
+# 4. Clear browser cache and hard refresh
 # Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows/Linux)
 
 # 4. Check console for i18next errors
@@ -944,7 +1270,7 @@ When using this template with ChurchCRM missing terms files:
   - Orthodox traditions have different spiritual terminology
   - Some cultures emphasize "Community" over "Congregation"
 - **Fill missing JSON values** with proper translations—never copy English terms
-- **Test translations locally** by running `npm run locale:build` and `npm run build`
+- **Test translations locally** by running `npm run build` (never `npm run locale:build`)
 - **Include context** for ambiguous terms in your translation notes
 
 **Common Missing Terms in ChurchCRM:**
@@ -984,6 +1310,13 @@ if (window.CRM.isRTL) {
 }
 ```
 
+### Why the Term-Hygiene Rules Matter Even More for RTL <!-- learned: 2026-07-25 -->
+
+Two of the RTL locales (`ar`, `he`) are part of the same 45+ language set every rule in this file applies to — RTL isn't a separate concern, it's a reason several of these rules exist in the first place:
+
+- **Decorative punctuation outside the call (colon, em-dash wrappers) is *more* important for RTL, not just tidier.** The browser's bidi algorithm positions `— X —` / `X:` correctly around translated text automatically based on `dir="rtl"` (see the table above) — but only if that punctuation is plain surrounding text the browser controls, not characters baked into the middle of a translated msgid where a translator would have to reason manually about which visual side they render on.
+- **Raw string concatenation for consolidation (`gettext('Delete') . ' ' . gettext('Group')`) hard-codes English word order** (action, then entity). Not every language — including RTL ones — necessarily wants the verb before the noun. This is an accepted, pre-existing trade-off in this pattern (used throughout the codebase), not something to rip out, but it's the reason `sprintf()`/`{{placeholder}}` parameterization is the *stronger* choice whenever there's a real full sentence involved: `sprintf(gettext('Add New %s'), gettext($entityType))` lets each language's translation place `%s` wherever its own grammar needs it, RTL or not. The split-sentence-fragment rule earlier in this file is the same principle at the sentence level — concatenating pieces around a runtime value locks in one language's word order for all 45+.
+
 ### Critical: all headers must initialize `$localeInfo`
 
 Every PHP header file that includes `Header-HTML-Scripts.php` **must** initialise `$localeInfo` before the include. If it doesn't, the RTL CSS will not load and the `<html dir>` attribute will be missing.
@@ -1000,10 +1333,15 @@ $localeInfo = Bootstrapper::getCurrentLocale();
 
 ### Extracting and Uploading New Terms
 
-When adding new UI terms:
+> [!WARNING] Not a developer task
+> Extraction (`locale:build`) and the POEditor upload are
+> run by the **release/locale automation**, not by hand during feature work. The
+> steps below document what that automation does — they are not a checklist to
+> follow when you add a `gettext()` string. See
+> [`locale-translation-workflow.md`](./locale-translation-workflow.md).
 
 ```bash
-# 1. Extract all translatable strings (PHP, JS, DB)
+# 1. Extract all translatable strings (PHP, JS, DB)  ← automation only
 npm run locale:build
 # Output: locale/messages.po (master template)
 
@@ -1177,4 +1515,4 @@ These rules must be stated explicitly in every agent prompt:
 
 ---
 
-Last updated: April 9, 2026
+Last updated: July 24, 2026

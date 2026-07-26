@@ -1,3 +1,10 @@
+---
+title: "Creating Wiki Documentation"
+intent: "When to create GitHub Wiki articles and how to structure them for complex documentation and admin guides"
+tags: ["documentation", "workflow"]
+prereqs: []
+complexity: "beginner"
+---
 # Skill: Creating Wiki Documentation
 
 ## Context

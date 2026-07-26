@@ -1,3 +1,10 @@
+---
+title: "Cypress Testing"
+intent: "Test organization, session management, API helpers, and best practices for writing reliable Cypress tests"
+tags: ["testing", "cypress", "e2e", "ci"]
+prereqs: []
+complexity: "intermediate"
+---
 # Skill: Cypress Testing
 
 ## Context
@@ -278,34 +285,68 @@ Check the actual route implementation before choosing `allowedStatuses`.
 - ✅ Use `freshAdminLogin()` (clear cookies + direct form login) before `cy.visit()`
 - ✅ Each test should be self-contained — set up its own data, then re-login, then visit
 
-### `allowedStatuses` must match what the API actually returns <!-- learned: 2026-03-29 -->
+### `freshAdminLogin` is still required — `withCredentials: false` is not sufficient in CI <!-- learned: 2026-07-12 -->
 
-Only pass status codes the endpoint genuinely returns. Adding extra codes defensively masks real setup failures.
+> [!WARNING] A 2026-07-11 update claimed `freshAdminLogin()` was deleted
+> The reasoning was that `makePrivateAPICall` sets `withCredentials: false`, preventing the
+> API key from clobbering `$_SESSION`. **That claim was wrong in practice.** CI runs (both
+> `test-root` and `test-subdir`) confirmed that PHP session clobbering still occurs in the
+> browser environment despite the header. `freshAdminLogin()` has been restored in all 4
+> affected UI specs.
+
+`makePrivateAPICall` does set `withCredentials: false` (see `support/api-commands.js`), but
+this alone is not sufficient to protect the PHP session in the Cypress/CI browser environment.
+`cy.setupAdminSession()` after API calls will fail with a redirect to the login page because
+the `cy.session()` cache validator only checks the cookie presence, not that the server-side
+PHP session is still alive.
+
+The **only** reliable pattern for UI tests that mix API setup with browser visits is:
 
 ```javascript
-// ✅ group addperson is idempotent — always returns 200 (member or not)
-cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200]);
+// ✅ CORRECT — freshAdminLogin() clears cookies and does a direct form login,
+//             discarding any dead PHP session from prior cy.request() calls.
+function freshAdminLogin() {
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.url().should("not.include", "/session/begin");
+}
 
-// ✅ add-if-not-exists endpoint returns 409 when already present
-cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+// Use this pattern: API setup first, freshAdminLogin() last before cy.visit()
+beforeEach(() => {
+    cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+    freshAdminLogin();  // AFTER API setup — clears the dead session, establishes a fresh one
+});
 
-// ✅ cleanup teardown: allow 404 in case item was already deleted
-cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
-
-// ❌ defensive extra codes when API never returns them — hides real 422/500
-cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200, 409, 422]);
+// ❌ WRONG — cy.setupAdminSession() after API calls may restore a dead PHP session
+beforeEach(() => {
+    cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+    cy.setupAdminSession();  // cy.request() may have killed the server-side PHP session
+});
 ```
 
-Check the actual route implementation before choosing `allowedStatuses`.
+### Recurrence: brand-new specs keep reintroducing this bug — grep before writing `beforeEach` <!-- learned: 2026-07-19 -->
 
-### `freshAdminLogin` Is a Local Function, NOT a Cypress Command <!-- learned: 2026-03-29 -->
+This exact anti-pattern reappeared in `cypress/e2e/ui/people/person.attendance.spec.js`
+(added by the per-person attendance-history feature, #8649) despite being documented above
+since 2026-03-27. Its `beforeEach` hooks did `cy.setupAdminSession()` → `cy.makePrivateAdminAPICall("POST", ".../checkin", ...)` → `cy.visit(...)`, which clobbered the cached admin
+session's PHP session data. Because `cy.session()`'s cache validator only checks that a
+`CRM-` cookie exists (not that the session behind it still works), the corruption silently
+carried forward into **every later context in the same file** — including ones that made no
+API call at all — since they all reused the same poisoned `cy.session('admin-session')`
+cache. In CI this surfaced as `cy.get('#nav-item-attendance')` timing out (the page was
+silently redirecting to the login screen), which looks nothing like a session bug at first
+glance. Fixed by moving the API call before `freshAdminLogin()` per the pattern above.
 
-`freshAdminLogin()` is a **plain JS function** defined locally in individual spec files (e.g. `standard.group.properties.spec.js`). It is **not** registered via `Cypress.Commands.add`.
+**Before adding any new UI spec that seeds data via `makePrivateAdminAPICall` /
+`makePrivateUserAPICall`, grep the file for `cy.setupAdminSession()` appearing before an API
+call in the same hook** — that ordering is the bug. The API call must come first, and the
+hook must call `freshAdminLogin()` (not `cy.setupAdminSession()`) afterward, every time.
 
-- ❌ `cy.freshAdminLogin()` — throws `TypeError: cy.freshAdminLogin is not a function`, fails the entire describe block
-- ✅ `freshAdminLogin()` — call as a plain JS function, only inside the spec file that defines it
-
-**API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall` authenticate via `x-api-key` header — no session or cookies needed. Never add `freshAdminLogin()` or `setupAdminSession()` to `beforeEach` in a pure API spec.
+**API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall`
+authenticate via the `x-api-key` header — no session or cookies. Never put
+`cy.setupAdminSession()` in `beforeEach` of a pure API spec; it is a wasted login per test.
 
 ```javascript
 // ✅ CORRECT — API test, no login setup needed
@@ -313,14 +354,6 @@ describe("People Without Email API", () => {
     beforeEach(() => {
         cy.makePrivateAdminAPICall("GET", "/api/persons/email/without", "", 200).as("withoutEmail");
         // no login needed — API key auth only
-    });
-});
-
-// ❌ WRONG — cy.freshAdminLogin() is not a command, crashes beforeEach for every test
-describe("People Without Email API", () => {
-    beforeEach(() => {
-        cy.makePrivateAdminAPICall("GET", "/api/persons/email/without", "", 200).as("withoutEmail");
-        cy.freshAdminLogin(); // TypeError: cy.freshAdminLogin is not a function
     });
 });
 ```
@@ -521,7 +554,7 @@ describe("Group property management", () => {
 it("creates a user via the form", () => {
     cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 404]);
     cy.setupAdminSession({ forceLogin: true });  // required — API call above invalidated the session
-    cy.visit("UserEditor.php?NewPersonID=25");
+    cy.visit("admin/system/users/new?personId=25");
     // ...
 });
 
@@ -819,6 +852,32 @@ Rule of thumb: if the URL substring you are asserting was **already** in the URL
 
 ---
 
+### 8. `cy.wait("@alias")` Does Not Wait For The App's Post-Response JS <!-- learned: 2026-07-19 -->
+
+`cy.wait("@alias")` resolves as soon as the intercepted network response is received — it says nothing about whether the app's `fetch().then()` / `.catch()` handler has finished running and updated the DOM. If the very next command reads element state with a one-shot `.invoke("text").then((text) => expect(...))`, there is a real race window: the assertion can run against the pre-fetch placeholder before the async render lands, producing a nonsensical failure (e.g. `expected NaN to equal 0` when a stat tile still shows its `—` placeholder).
+
+Confirmed via a CI failure screenshot on `person.attendance.spec.js` (`shows zero total events`): the *final* DOM state in the screenshot (captured after the assertion had already failed) showed the correct `0` — proving the render did complete, just not before the one-shot read.
+
+```javascript
+// ❌ WRONG — invoke().then() reads text exactly once; no retry if the DOM hasn't updated yet
+cy.wait("@emptyAttendance");
+cy.get("#attendance-tab .attendance-stat-total")
+    .invoke("text")
+    .then((text) => {
+        expect(parseInt(text.trim(), 10)).to.equal(0);
+    });
+
+// ✅ CORRECT — .should(($el) => {...}) is retried by Cypress until it passes or times out
+cy.wait("@emptyAttendance");
+cy.get("#attendance-tab .attendance-stat-total").should(($el) => {
+    expect(parseInt($el.text().trim(), 10)).to.equal(0);
+});
+```
+
+**Rule:** any assertion on content that is populated by JS *after* a `cy.wait()`-awaited network call must use a retrying `.should()` callback, not `.invoke().then()` with a plain `expect`. This applies even when a preceding `cy.wait("@alias")` looks like sufficient synchronization — it only synchronizes on the network layer, not on the app's async response handling.
+
+---
+
 ### Flakiness Prevention Checklist (for every new test that saves/loads state)
 
 Before marking a test complete, verify:
@@ -830,6 +889,7 @@ Before marking a test complete, verify:
 - [ ] `cy.contains()` is scoped to a container, not used globally
 - [ ] API-only tests (those that only assert against `cy.request()`) establish the session via `POST /session/begin` — not UI login
 - [ ] No `cy.url().should('include', ...)` assertions where the substring is already present pre-action (tautology)
+- [ ] Assertions on JS-rendered content after `cy.wait("@alias")` use a retrying `.should(($el) => {...})`, not `.invoke().then()` with a plain `expect`
 
 ---
 
@@ -1026,7 +1086,8 @@ Config files live in `cypress/configs/` (NOT `docker/`):
 **CRITICAL: Always install Cypress via `npm install`** <!-- learned: 2026-03-07 -->
 - Never use `npx cypress install` — it can produce a corrupt binary with wrong permissions.
 - If Cypress binary is broken or missing, fix with: `npx cypress cache clear && npm install`
-- The config points at a Docker container. Start the stack (`npm run docker:test`) before running tests.
+- The config points at a Docker container. Start the stack (`npm run docker:test:start`) before running tests. There is **no** `docker:test` script — that name doesn't exist in `package.json`.
+- If the stack is already running (containers up but from a prior/stale run), `docker:test:start` is a no-op that just confirms health — it does **not** reseed the database. Use `npm run docker:test:reset:db` to tear down volumes and bring the containers back up with fresh seed data when a spec depends on specific seeded rows (e.g. `DepositSlipID=5`). <!-- learned: 2026-07-25 -->
 
 ### Running Tests <!-- learned: 2026-03-26 -->
 
@@ -1069,7 +1130,7 @@ Tests cannot run locally without Docker — the app server lives in a container.
 node --version  # must be v24.x
 
 # 1. Start test containers
-npm run docker:test
+npm run docker:test:start
 
 # 2. Run tests
 npm run test                          # full suite
@@ -1623,6 +1684,16 @@ npx cypress run --config-file cypress/configs/docker.config.ts \
 ```
 
 Then read `src/event-tests-output.txt` for the full result. Do **not** run `npx cypress install` / `cache clear` to try to "fix" it — the project rules forbid touching the binary cache and the issue isn't in the cache anyway.
+
+**Faster diagnostic than `DEBUG=cypress:*`**: `npx cypress verify` fails immediately with a clean, undoctored error instead of the truncated `MODULE_NOT_FOUND` from `cypress run`: <!-- learned: 2026-07-25 -->
+
+```
+/Users/.../Cypress.app/Contents/MacOS/Cypress: bad option: --no-sandbox
+/Users/.../Cypress.app/Contents/MacOS/Cypress: bad option: --smoke-test
+/Users/.../Cypress.app/Contents/MacOS/Cypress: bad option: --ping=439
+```
+
+This confirms the same root cause from a different angle: whatever binary the sandbox actually invokes at that path isn't the real Electron entry point (it doesn't recognize standard Electron CLI flags), consistent with the doubled-`Contents/` path corruption above. Use `npx cypress verify` as the quick sanity check before spending time on a full spec run.
 
 ### Filtering DataTables 2.x via JS API, not Selectors <!-- learned: 2026-04-09 -->
 

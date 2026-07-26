@@ -1,6 +1,6 @@
 services:
   database:
-    profiles: [dev, test, ci]
+    profiles: [test, ci]
     image: mariadb:10.11
     ports:
       - ${DATABASE_PORT:-3306}:3306
@@ -15,37 +15,14 @@ services:
       retries: 10
 
   mailserver:
-    profiles: [dev, test]
+    profiles: [test]
     image: axllent/mailpit:latest
     ports:
       - ${MAILSERVER_PORT:-1025}:1025
       - ${MAILSERVER_GUI_PORT:-8025}:8025
     hostname: crm-mailserver
 
-  webserver-dev:
-    profiles: [dev]
-    build:
-      context: .
-      dockerfile: Dockerfile.churchcrm-apache-php8
-      target: dev
-    image: churchcrm/crm:php8-debian-dev
-    ports:
-      - ${WEBSERVER_PORT:-80}:80
-    volumes:
-      - ../src:/var/www/html
-      - ..:/home/ChurchCRM
-      - ../cypress/data/images/people:/var/www/html/Images/Person
-      - ../cypress/data/images/family:/var/www/html/Images/Family
-    hostname: crm-webserver
-    env_file:
-      - .env
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    depends_on:
-      database:
-        condition: service_healthy
-
-  webserver-test:
+  webserver:
     profiles: [test, ci]
     build:
       context: .
@@ -65,12 +42,3 @@ services:
     depends_on:
       database:
         condition: service_healthy
-
-  adminer:
-    profiles: [dev]
-    image: adminer
-    environment:
-      - ADMINER_DEFAULT_SERVER=database
-    ports:
-      - ${ADMINER_PORT:-8088}:8080
-    hostname: crm-adminer

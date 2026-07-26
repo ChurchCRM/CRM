@@ -134,7 +134,7 @@ class   SystemConfig
             'sDefaultCity'                         => new ConfigItem('sDefaultCity', 'text', '', gettext('Default City')),
             'sDefaultState'                        => new ConfigItem('sDefaultState', 'text', '', gettext('Default State - Must be 2-letter abbreviation!')),
             'sDefaultCountry'                      => new ConfigItem('sDefaultCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
-            'sToEmailAddress'                      => new ConfigItem('sToEmailAddress', 'text', '', gettext('Default account for receiving a copy of all emails')),
+            'sToEmailAddress'                      => new ConfigItem('sToEmailAddress', 'text', '', gettext('Church email address automatically added as a removable recipient when composing emails from CRM')),
             'iSMTPTimeout'                         => new ConfigItem('iSMTPTimeout', 'number', '10', gettext('SMTP Server timeout in sec')),
             'sSMTPHost'                            => new ConfigItem('sSMTPHost', 'text', '', gettext('SMTP Server Address (mail.server.com:25)')),
             'bSMTPAuth'                            => new ConfigItem('bSMTPAuth', 'boolean', '0', gettext('Enable if your SMTP server requires a username and password')),
@@ -161,6 +161,12 @@ class   SystemConfig
             'sPhoneFormat'                         => new ConfigItem('sPhoneFormat', 'text', '(999) 999-9999'),
             'sPhoneFormatWithExt'                  => new ConfigItem('sPhoneFormatWithExt', 'text', '(999) 999-9999 x99999'),
             'sPhoneFormatCell'                     => new ConfigItem('sPhoneFormatCell', 'text', '(999) 999-9999'),
+            // Currency & Finance Formats (epic #8459)
+            'sCurrencySymbol'                      => new ConfigItem('sCurrencySymbol', 'text', '$', gettext('Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $).')),
+            'sCurrencyPosition'                    => new ConfigItem('sCurrencyPosition', 'choice', 'before', gettext('Position of the currency symbol relative to the amount.'), '', '{"Choices":["before","after"]}'),
+            'sThousandsSeparator'                  => new ConfigItem('sThousandsSeparator', 'text', ',', gettext('Character used to separate thousands in monetary amounts (e.g. , or .)')),
+            'sDecimalSeparator'                    => new ConfigItem('sDecimalSeparator', 'text', '.', gettext('Character used as the decimal point in monetary amounts (e.g. . or ,)')),
+
             'sDateFormatLong'                      => new ConfigItem('sDateFormatLong', 'text', 'm/d/Y'),
             'sDateFormatNoYear'                    => new ConfigItem('sDateFormatNoYear', 'text', 'm/d'),
             'sDateTimeFormat'                      => new ConfigItem('sDateTimeFormat', 'text', 'm/d/Y g:i a'),
@@ -214,6 +220,7 @@ class   SystemConfig
             'sChurchWebSite'                       => new ConfigItem('sChurchWebSite', 'text', '', ''),
             'sChurchLogoURL'                       => new ConfigItem('sChurchLogoURL', 'text', '', gettext('Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo.')),
             'bEnableExternalCalendarAPI'           => new ConfigItem('bEnableExternalCalendarAPI', 'boolean', '0', gettext('Allow unauthenticated reads of events from the external calendar API')),
+            'sCalendarEmbedOrigins'                => new ConfigItem('sCalendarEmbedOrigins', 'text', '*', gettext('Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any origin. Restrict to specific origins for tighter security, e.g. "https://mysite.org https://embed.example.com".')),
             
             'sNewPersonNotificationRecipientIDs'   => new ConfigItem('sNewPersonNotificationRecipientIDs', 'text', '', gettext('Comma Separated list of PersonIDs of people to notify when a new family or person is added')),
             'bSearchIncludePersons'                => new ConfigItem('bSearchIncludePersons', 'boolean', '1', gettext('Search People')),
@@ -267,9 +274,8 @@ class   SystemConfig
             gettext('People')              => ['sDirClassifications', 'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideWeddingDate', 'bForceUppercaseZip', 'sInactiveClassification'],
             gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHideFamilyNewsletter'],
             gettext('Report Settings')    => ['sQBDTSettings', 'leftX', 'incrementY', 'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sPledgeSummary1', 'sPledgeSummary2', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'bDirLetterHead', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'iPDFOutputType'],
-            gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts', 'bUseScannedChecks', 'bEnableNonDeductible', 'iFYMonth', 'bUseDonationEnvelopes', 'aFinanceQueries'],
+            gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts', 'bUseScannedChecks', 'bEnableNonDeductible', 'iFYMonth', 'bUseDonationEnvelopes', 'aFinanceQueries', 'sCurrencySymbol', 'sCurrencyPosition', 'sThousandsSeparator', 'sDecimalSeparator'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
-            gettext('Localization')       => ['sDistanceUnit', 'sPhoneFormat', 'sPhoneFormatWithExt', 'sPhoneFormatCell', 'sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField']
         ];
     }

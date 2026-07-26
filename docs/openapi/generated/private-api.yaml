@@ -2331,21 +2331,21 @@ paths:
     get:
       tags:
         - Finance
-      summary: 'List all fundraisers (Finance role required)'
+      summary: 'List all fundraisers (Manage Fundraisers role required)'
       responses:
         '200':
           description: 'Array of fundraiser objects'
         '401':
           description: Unauthorized
         '403':
-          description: 'Finance role required'
+          description: 'Manage Fundraisers role required'
       security:
         -
           ApiKeyAuth: []
     post:
       tags:
         - Finance
-      summary: 'Create a new fundraiser (Finance role required)'
+      summary: 'Create a new fundraiser (Manage Fundraisers role required)'
       requestBody:
         required: true
         content:
@@ -2371,7 +2371,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Finance role required'
+          description: 'Manage Fundraisers role required'
       security:
         -
           ApiKeyAuth: []
@@ -2379,7 +2379,7 @@ paths:
     get:
       tags:
         - Finance
-      summary: 'Get a single fundraiser (Finance role required)'
+      summary: 'Get a single fundraiser (Manage Fundraisers role required)'
       parameters:
         -
           name: id
@@ -2395,14 +2395,14 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Finance role required'
+          description: 'Manage Fundraisers role required'
       security:
         -
           ApiKeyAuth: []
     put:
       tags:
         - Finance
-      summary: 'Update a fundraiser (Finance role required)'
+      summary: 'Update a fundraiser (Manage Fundraisers role required)'
       parameters:
         -
           name: id
@@ -2435,14 +2435,14 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Finance role required'
+          description: 'Manage Fundraisers role required'
       security:
         -
           ApiKeyAuth: []
     delete:
       tags:
         - Finance
-      summary: 'Delete a fundraiser (Finance role required)'
+      summary: 'Delete a fundraiser (Manage Fundraisers role required)'
       parameters:
         -
           name: id
@@ -2460,7 +2460,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Finance role required'
+          description: 'Manage Fundraisers role required'
       security:
         -
           ApiKeyAuth: []

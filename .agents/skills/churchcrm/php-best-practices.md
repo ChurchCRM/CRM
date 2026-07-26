@@ -23,7 +23,7 @@ ChurchCRM uses PHP 8.4+ with modern development patterns. This skill covers esse
 - **Dynamic properties**: Need `#[\AllowDynamicProperties]` attribute if accessing undefined properties
 - **String formatting**: Use `IntlDateFormatter` instead of deprecated `strftime()`
 - **Imports**: Add `use` statements at top of file (never inline fully-qualified names)
-- **Global functions**: In namespaced code, use backslash prefix: `\MakeFYString($id)`
+- **Global functions**: mostly gone — `Functions.php` was migrated to `ChurchCRM\Utils\*`. Use `\` only for survivors like `\getQuillEditorContainer()`
 - **Version checks**: Use `version_compare(phpversion(), '8.3.0', '<')`
 - **Constants**: Use public constants for shared values: `public const PHOTO_WIDTH = 200;`
 
@@ -90,78 +90,66 @@ class MyService {
 ```php
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Service\FinancialService;
+
 class MyService {
     public function getCurrencyYear() {
-        return \MakeFYString(date('Y'));  // Global function - use backslash
+        return FinancialService::formatFiscalYear($iFYID);  // Functions.php is gone
     }
 }
 ```
 
 ---
 
-## Global Functions Reference
+## Global Functions Reference — REMOVED, use the Utils classes <!-- learned: 2026-07-11 -->
 
-ChurchCRM defines utility functions in `src/Include/Functions.php` and `src/Include/QuillEditorHelper.php` for common operations. All require `\` prefix when called from namespaced code.
+> ⚠️ **`src/Include/Functions.php` no longer exists.** Every global helper it defined was
+> migrated to a namespaced `ChurchCRM\Utils\*` class. If you are about to call `\MakeFYString()`,
+> `\FormatDate()`, `\FormatFullName()` or any other bare global, **stop** — it is a fatal
+> `Call to undefined function`. Import the replacement instead.
 
-### Formatting Functions
+### Migration map (old global → replacement)
 
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\MakeFYString($iFYID)` | Format fiscal year ID as string | `echo \MakeFYString(2024);` → `"2024-2025"` |
-| `\FormatDate($date, $withTime)` | Format date with i18n locale | `\FormatDate($person->getDateOfBirth(), false)` |
-| `\FormatFullName($title, $first, $middle, $last, $suffix, $style)` | Format person name | `\FormatFullName($per_Title, ..., $style)` |
-| `\FormatAddressLine($address, $city, $state)` | Format address single line | `\FormatAddressLine($adr_Address1, $adr_City, ...)` |
-| `\FilenameToFontname($filename, $family)` | Convert filename to font name | For font path handling |
+| Old global (gone) | Replacement |
+|-------------------|-------------|
+| `\MakeFYString($iFYID)` | `FinancialService::formatFiscalYear($iFYID)` |
+| `\FormatDate($date, $withTime)` | `DateTimeUtils::formatDate($dDate, bool $bWithTime = false)` |
+| `\parseAndValidateDate(...)` | `DateTimeUtils::parseAndValidate($data, $locale, $pasfut)` |
+| `\assembleYearMonthDay(...)` | `DateTimeUtils::formatDateFromComponents(int $y, int $m, int $d)` |
+| `\change_date_for_place_holder($s)` | `DateTimeUtils::formatForDatePicker(?string $s)` |
+| `\FormatFullName(...)` | `MiscUtils::formatFullName($title, $first, $middle, $last, $suffix, $style)` |
+| `\FormatAddressLine(...)` | `MiscUtils::formatAddressLine($address, $city, $state)` |
+| `\checkEmail(...)` | `MiscUtils::checkEmail($email, ...)` |
+| `\FilenameToFontname(...)` / `\FontFromName(...)` | `MiscUtils::filenameToFontname()` / `MiscUtils::fontFromName()` |
+| `\PrintFYIDSelect($name, $iFYID)` | `FiscalYearUtils::renderYearSelect($selectName, ?int $iFYID)` |
+| `\validateCustomField(...)` | `CustomFieldUtils::validate($type, $data, $colName, $aErrors)` |
+| `\displayCustomField(...)` | `CustomFieldUtils::display($type, $data, $special)` |
+| `\formCustomField(...)` | `CustomFieldUtils::renderForm(...)` |
+| `\sqlCustomField(...)` | `CustomFieldUtils::buildSql(...)` |
+| `\genGroupKey(...)` | `FunctionsUtils::genGroupKey(...)` |
+| `\RunQuery($sSQL)` | ❌ Still avoid — use Propel ORM. (`FunctionsUtils::runQuery()` exists for DDL only.) |
+| `\generateGroupRoleEmailDropdown()`, `\convertCartToString()`, `\random_color()`, `\FindMemberClassID()` | **Deleted outright** — no replacement; do not reference. |
 
-### Data Conversion Functions
+Canonical usage — import, never `\`-prefix:
 
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\convertCartToString($aCartArray)` | Convert cart array to string | `$cartStr = \convertCartToString($_SESSION['aPeopleCart']);` |
-| `\assembleYearMonthDay($year, $month, $day, $pasfut)` | Assemble date from components | `\assembleYearMonthDay('2024', '02', '15')` |
-| `\parseAndValidateDate($data, $locale, $pasfut)` | Parse and validate date string | `$date = \parseAndValidateDate($_POST['dateField']);` |
-| `\change_date_for_place_holder($string)` | Convert date for placeholder | Internal date conversion |
+```php
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\MiscUtils;
 
-### Validation Functions
-
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\validateCustomField($type, &$data, $colName, &$aErrors)` | Validate custom field data | `if (!\validateCustomField($type, $data, ...)) { /* handle error */ }` |
-| `\checkEmail($email, $domainCheck, $verify, $returnErrors)` | Validate email address | `if (\checkEmail($email)) { /* valid */ }` |
-
-### Custom Field Functions
-
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\displayCustomField($type, $data, $special)` | Render custom field for display | Echo HTML for field value |
-| `\formCustomField($type, $fieldname, $data, $special, $bFirstPass)` | Render custom field for form editing | Echo HTML form input |
-| `\sqlCustomField(&$sSQL, $type, $data, $colName, $special)` | Build SQL for custom field query | Modifies $sSQL by reference |
-
-### UI Helper Functions
-
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\PrintFYIDSelect($selectName, $iFYID)` | Render fiscal year dropdown | `\PrintFYIDSelect('SelectedYear', 2024)` |
-| `\generateGroupRoleEmailDropdown($roleEmails, $href)` | Render group role email dropdown | For group management pages |
-| `\random_color()` | Generate random hex color | `$color = \random_color();` |
+$dob  = DateTimeUtils::formatDate($person->getBirthDate());
+$name = MiscUtils::formatFullName($title, $first, $middle, $last, $suffix, $style);
+```
 
 ### Quill Rich Text Editor Functions
 
-Located in `src/Include/QuillEditorHelper.php`:
+`src/Include/QuillEditorHelper.php` **does still exist**, and its helpers remain global
+(so they *do* need the `\` prefix from namespaced code):
 
 | Function | Purpose |
 |----------|---------|
 | `\getQuillEditorContainer($editorId, $inputId, $content, $cssClasses, $minHeight)` | Render Quill editor HTML container |
 | `\getQuillEditorInitScript($editorId, $inputId, $placeholder, $includeScriptTag)` | Render Quill initialization JavaScript |
 | `\getQuillEditorContent($inputId)` | Extract Quill editor content from DOM |
-
-### Deprecated Functions (AVOID)
-
-| Function | Status | Replacement |
-|----------|--------|-------------|
-| `\RunQuery($sSQL, $bStopOnError)` | ❌ DEPRECATED | Use Perpl ORM Query classes instead |
-| `\FindMemberClassID()` | ⚠️ Legacy | Use `Group` or `GroupQuery` with ORM |
-| `\FontFromName($fontname)` | ⚠️ Internal | For font rendering only |
 | `\genGroupKey(...)` | ⚠️ Internal | For group sync operations |
 
 ### Usage Pattern
@@ -187,9 +175,9 @@ class PersonService {
     }
     
     public function getDatesAsString() {
-        // ✅ CORRECT - Multiple global function calls
-        $fyString = \MakeFYString(date('Y'));
-        $dateString = \FormatDate(new \DateTime());
+        // ✅ CORRECT - imported Utils / Service classes, no globals
+        $fyString   = FinancialService::formatFiscalYear($iFYID);
+        $dateString = DateTimeUtils::formatDate(DateTimeUtils::getToday());
         return "$dateString (FY: $fyString)";
     }
 }

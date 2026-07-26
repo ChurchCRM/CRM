@@ -2,7 +2,7 @@
 title: "PR Review"
 intent: "Full pull request review workflow: fetch changes, validate standards, check docs/wiki, identify manual testing, address comments, and capture learnings"
 tags: ["pr","review","code-quality","standards","workflow"]
-prereqs: ["code-standards.md","git-workflow.md","github-interaction.md"]
+prereqs: ["[[code-standards]]","[[git-workflow]]","[[github-interaction]]"]
 complexity: "intermediate"
 ---
 
@@ -159,7 +159,7 @@ Work through each section that applies to the changed files.
 - [ ] Explicit nullable params: `?int $param = null` not `int $param = null`
 - [ ] `use` statements at top of file — no inline fully-qualified class names
 - [ ] Dynamic properties annotated with `#[\AllowDynamicProperties]` if needed
-- [ ] Global functions called with `\` prefix in namespaced code (`\MakeFYString()`)
+- [ ] No calls to deleted `Functions.php` globals (`\MakeFYString()`, `\FormatDate()`, …) — those are fatals now; use `ChurchCRM\Utils\*`. Reserve the `\` prefix for survivors like `\getQuillEditorContainer()`
 - [ ] Propel/Perpl ORM used for all DB operations — no `RunQuery()` or raw SQL
 - [ ] Dynamic IDs cast to `(int)`: `(int)$_GET['id']`
 - [ ] Object properties accessed as `$obj->prop`, never `$obj['prop']`
@@ -484,11 +484,13 @@ When a PR review reveals a pattern or mistake that isn't yet documented:
 
 ### Example — capturing a learning
 
-> **Scenario:** A PR review comment flags that `SystemConfig::getValue()` was used for a boolean check instead of `SystemConfig::getBooleanValue()`.
+> [!NOTE] Scenario
+> A PR review comment flags that `SystemConfig::getValue()` was used for a boolean check instead of `SystemConfig::getBooleanValue()`.
 
 Add to `development-workflows.md` (already documented there — no change needed).
 
-> **Scenario:** A PR adds a Tabler card component but uses inline `style` attributes instead of utility classes.
+> [!NOTE] Scenario
+> A PR adds a Tabler card component but uses inline `style` attributes instead of utility classes.
 
 Add to `tabler-components.md` under a "Cards" section:
 

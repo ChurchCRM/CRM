@@ -68,6 +68,23 @@ if (empty(SystemConfig::getValue('sChurchName'))) {
     }
 }
 
+// Legacy URL shims — redirect removed pages to their MVC replacements.
+// Must match the path-only portion (strtok strips query string) so that
+// bookmarks like /UserEditor.php?PersonID=5 resolve correctly.
+$_legacyBase = strtok($shortName, '?');
+if ($_legacyBase === 'UserEditor.php') {
+    if (!empty($_GET['PersonID'])) {
+        RedirectUtils::redirect('admin/system/users/' . (int) $_GET['PersonID'] . '/edit');
+    } elseif (!empty($_GET['NewPersonID'])) {
+        RedirectUtils::redirect('admin/system/users/new?personId=' . (int) $_GET['NewPersonID']);
+    } else {
+        RedirectUtils::redirect('admin/system/users/new');
+    }
+} elseif ($_legacyBase === 'SettingsUser.php') {
+    RedirectUtils::redirect('admin/system/users');
+}
+unset($_legacyBase);
+
 if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
     // Index.php -> v2/dashboard
     RedirectUtils::redirect('v2/dashboard');

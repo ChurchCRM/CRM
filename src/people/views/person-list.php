@@ -35,19 +35,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // Load compiled webpack assets for people list
 echo '<link rel="stylesheet" href="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.css">';
 echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.js"></script>';
-// Classification list
-$ListItem =  ListOptionQuery::create()->select('OptionName')->filterById(1)->find()->toArray();
+// Classification list — each entry is {id, name} so the JS can set option values to
+// the real DB OptionId (not a positional index). This fixes mismatched Classification
+// filter links when OptionId and insertion-sequence diverge (issue #9182).
+$ListItem = ListOptionQuery::create()->select(['OptionId', 'OptionName'])->filterById(1)->find()->toArray();
 $ClassificationList = [];
-$ClassificationList[] ="Unassigned";
+$ClassificationList[] = ['id' => 0, 'name' => gettext('Unassigned')];
 foreach ($ListItem as $element) {
-    $ClassificationList[] = $element;
+    $ClassificationList[] = ['id' => $element['OptionId'], 'name' => $element['OptionName']];
 }
-// Role list
-$ListItem = ListOptionQuery::create()->select('OptionName')->filterById(2)->find()->toArray();
+// Role list — same {id, name} structure so setValue(OptionId) matches correctly.
+$ListItem = ListOptionQuery::create()->select(['OptionId', 'OptionName'])->filterById(2)->find()->toArray();
 $RoleList = [];
-$RoleList[] ="Unassigned";
+$RoleList[] = ['id' => 0, 'name' => gettext('Unassigned')];
 foreach ($ListItem as $element) {
-    $RoleList[] = $element;
+    $RoleList[] = ['id' => $element['OptionId'], 'name' => $element['OptionName']];
 }
 // Person properties list
 $ListItem = PropertyQuery::create()->filterByProClass("p")->find();
@@ -129,7 +131,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             <i class="fa-solid fa-clipboard-check fa-2x"></i>
         </div>
         <div>
-            <strong><?= gettext('Data Quality:') ?></strong>
+            <strong><?= gettext('Data Quality') ?>:</strong>
             <?php
             $issues = [];
             if ($genderDataCheckCount > 0) {
@@ -222,7 +224,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     <?php 
                     // Map of column names to localized display titles
                     $htmlColumnTitleMap = [
-                        'Id' => gettext('Id'),
+                        'Id' => gettext('ID'),
                         'Name' => gettext('Name'),
                         'Family Name' => gettext('Family Name'),
                         'Family Status' => gettext('Family Status'),
@@ -342,7 +344,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if (is_array($columnData) && !empty($columnData)) {
                                 // Always render badges for display
                                 foreach ($columnData as $group) {
-                                    echo '<span class="badge bg-info me-1">' . InputUtils::escapeHTML($group) . '</span>';
+                                    echo '<span class="badge bg-info-lt text-info me-1">' . InputUtils::escapeHTML($group) . '</span>';
                                 }
                                 // Add hidden span with JSON for DataTables filtering
                                 echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR)) . '</span>';
@@ -411,9 +413,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             <a class="dropdown-item" href="<?= $person->getViewURI() ?>">
                                 <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                             </a>
+                            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
                                 <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                             </a>
+                            <?php endif; ?>
                             <?php if ($person->getFamId()): ?>
                             <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $person->getFamId()) ?>">
                                 <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
@@ -430,6 +434,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
                                 <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                             </button>
+                            <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
                             <div class="dropdown-divider"></div>
                             <button type="button"
                                 class="dropdown-item text-danger delete-person"
@@ -437,6 +442,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>">
                                 <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                             </button>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </td>
@@ -511,7 +517,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 $columns = $personListColumns;
                 // Map of column names to localized display titles
                 $columnTitleMap = [
-                    'Id' => gettext('Id'),
+                    'Id' => gettext('ID'),
                     'Name' => gettext('Name'),
                     'Family Name' => gettext('Family Name'),
                     'Family Status' => gettext('Family Status'),
@@ -700,7 +706,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             Object.keys(tomSelectInstances).forEach(function(colName) {
                 var instance = tomSelectInstances[colName];
                 if (instance && instance.ts) {
-                    instance.ts.clear(true); // true = trigger onChange event
+                    instance.ts.clear(); // default silent=false: onChange fires and filterColumn() resets the DataTable
                 }
             });
         });
@@ -825,34 +831,36 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
         }
         
         // Apply initial filters from URL parameters via TomSelect API
-        // This ensures filters are set and properly trigger DataTable updates
+        // This ensures filters are set and properly trigger DataTable updates.
+        // NOTE: setValue(value, false) — silent=false so onChange fires and filterColumn() is called.
+        // Using silent=true would visually select the option but never apply the DataTable search.
         setTimeout(function() {
             // Set Gender filter if specified
             if (shouldTriggerGenderFilter && filterByGender) {
                 var genderIndex = Gender.indexOf(filterByGender);
                 if (genderIndex !== -1 && tomSelectInstances['Gender']) {
-                    tomSelectInstances['Gender'].ts.setValue(String(genderIndex), true);
+                    tomSelectInstances['Gender'].ts.setValue(String(genderIndex), false);
                 }
             }
 
             // Set Classification filter if specified
             if (shouldTriggerClassificationFilter && tomSelectInstances['Classification']) {
                 // filterByClsOptionId comes from the route and is an integer
-                tomSelectInstances['Classification'].ts.setValue(String(serverVars.filterByClsId), true);
+                tomSelectInstances['Classification'].ts.setValue(String(serverVars.filterByClsId), false);
             }
 
             // Set Role filter if specified
             if (shouldTriggerRoleFilter && tomSelectInstances['Role']) {
                 // filterByFmrOptionId comes from the route and is an integer
-                tomSelectInstances['Role'].ts.setValue(String(serverVars.filterByFmrId), true);
+                tomSelectInstances['Role'].ts.setValue(String(serverVars.filterByFmrId), false);
             }
 
             // Set Family Status filter if specified
             if (shouldTriggerFamilyStatusFilter && tomSelectInstances['Family Status']) {
                 if (serverVars.familyActiveStatus === 'active') {
-                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[0], true);
+                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[0], false);
                 } else if (serverVars.familyActiveStatus === 'inactive') {
-                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[1], true);
+                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[1], false);
                 }
             }
         }, 100);

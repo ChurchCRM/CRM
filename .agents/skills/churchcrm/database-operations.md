@@ -1,3 +1,10 @@
+---
+title: "Database Operations"
+intent: "Core patterns for database access using Perpl ORM (actively maintained fork of Propel2)"
+tags: ["database", "perpl", "orm", "php"]
+prereqs: ["[[php-best-practices]]"]
+complexity: "beginner"
+---
 # Skill: Database Operations with Perpl ORM
 
 ## Context
@@ -616,3 +623,34 @@ $dt = DateTimeUtils::parsePartialDate($rawString); // returns DateTime|null
 ```
 
 Returns `null` for blank/unparseable input — always null-guard before calling ORM setters. Use this instead of `new \DateTime($userInput)` anywhere user-supplied date strings are accepted; it handles the year-less `0000-MM-DD` format that standard PHP date functions reject.
+
+### Always call `joinWith*()` at top level before `useXxxQuery()` with nested joins <!-- learned: 2026-06-11 -->
+
+`useEventQuery()` only adds a JOIN clause — it does NOT add the related table's columns to the SELECT.
+If you call `leftJoinWithYyy()` inside `useEventQuery()` without first calling `joinWithEvent()` at
+the top level, Yyy's columns are added to SELECT BEFORE the primary table's own columns, corrupting
+Propel's numeric hydration offsets (e.g. `type_defrecurtype = 'weekly'` lands at a TIMESTAMP offset
+→ `PropelException: Error parsing date/time value 'weekly'`).
+
+**Always prefix with `->joinWithRelated(Criteria::LEFT_JOIN)` at the top level:**
+
+```php
+// ✅ CORRECT — joinWithEvent at top ensures EventAttend cols come first
+EventAttendQuery::create()
+    ->joinWithEvent(Criteria::LEFT_JOIN)          // registers Event cols after EventAttend cols
+    ->useEventQuery(null, Criteria::LEFT_JOIN)
+        ->leftJoinWithEventType()                 // EventType cols come last
+        ->orderByStart(Criteria::DESC)            // orderBy inside is fine here
+    ->endUse()
+    ->find();
+
+// ❌ WRONG — no top-level joinWithEvent; EventType cols inserted BEFORE EventAttend cols
+EventAttendQuery::create()
+    ->useEventQuery(null, Criteria::LEFT_JOIN)
+        ->leftJoinWithEventType()                 // corrupts hydration offsets → PropelException
+    ->endUse()
+    ->find();
+```
+
+This affects any `EventAttendQuery` (or similar) where `useXxxQuery()` contains a nested
+`leftJoinWithYyy()`. The bug only surfaces at runtime when the joined records exist.

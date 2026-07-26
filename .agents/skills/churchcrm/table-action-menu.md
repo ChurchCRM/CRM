@@ -108,15 +108,26 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 
 ---
 
-## Overflow / Dropdown Clipping <!-- learned: 2026-03-26, updated: 2026-05-01 -->
+## Overflow / Dropdown Clipping <!-- learned: 2026-03-26, corrected: 2026-07-26 -->
 
-**Best practice: Use `.table-responsive` with `data-bs-display="static"` on the button.**
+**`.table-responsive` clips the dropdown — `data-bs-display="static"` does NOT fix this.**
+The previous version of this section (2026-05-01) claimed `data-bs-display="static"`
+prevents clipping inside `.table-responsive` via `position: fixed`. That claim was wrong —
+confirmed by a codebase audit that found three real, currently-broken instances
+(`src/people/views/self-register.php`, `src/groups/views/group-view.php`,
+`src/event/views/types-list.php`) that all already had `data-bs-display="static"` and were
+still clipped, because `.table-responsive` sets `overflow-x: auto`, which forces
+`overflow-y: auto` too — that clips any absolutely/fixed-positioned dropdown regardless of
+Popper's positioning strategy.
 
-The `data-bs-display="static"` attribute tells Popper.js to position the dropdown relative to the viewport using `position: fixed` instead of relative to the scrolling container. This prevents clipping even inside `.table-responsive`, and also prevents horizontal scroll on the entire document (keeping scroll scoped to the table only).
+**Rule: use `<div style="overflow: visible;">` instead of `<div class="table-responsive">`
+on any table wrapper whose rows contain a dropdown menu.** Keep `data-bs-display="static"`
+on the button too — it's still needed to stop Popper from miscalculating position in
+scrollable ancestors, it just isn't sufficient on its own.
 
 ```html
-<!-- ✅ CORRECT — dropdown visible, table scrolls independently -->
-<div class="table-responsive">
+<!-- ✅ CORRECT — dropdown can escape the wrapper -->
+<div style="overflow: visible;">
     <table class="table table-vcenter table-hover card-table">
         <tbody>
             <tr>
@@ -133,17 +144,16 @@ The `data-bs-display="static"` attribute tells Popper.js to position the dropdow
         </tbody>
     </table>
 </div>
+
+<!-- ❌ WRONG — overflow-x: auto forces overflow-y: auto, clips the dropdown -->
+<div class="table-responsive">
+    ...
+</div>
 ```
 
-**`data-bs-display="static"` IS required** on the button:
-
-```html
-<!-- PHP template -->
-<button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">
-
-<!-- JS DataTable render (used by window.CRM.renderPersonActionMenu / renderFamilyActionMenu) -->
-'<button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">'
-```
+Reference examples already using the correct pattern: `src/people/views/self-register.php`,
+`src/event/views/list-events.php`, `src/v2/templates/email/without.php`,
+`src/groups/views/group-view.php`, `src/event/views/types-list.php`.
 
 **Never** add `z-index` or `position: relative` to the `<td>` or `.dropdown` container — they do not fix clipping.
 

@@ -136,24 +136,32 @@ class PublicCalendarMiddleware implements MiddlewareInterface
     {
         $params = $request->getQueryParams();
 
-        // Parse start param — accepts both Y-m-d (plain JSON endpoint) and ISO 8601 (FullCalendar)
+        // Note: FullCalendar also sends a `timeZone` query param when using a named timezone.
+        // We intentionally ignore it — all dates are stored and served in the church timezone
+        // (sTimeZone / DateTimeUtils::getConfiguredTimezone()), which is what we told FullCalendar
+        // to use in the first place. Reading it from the client would open a spoofing vector.
+
+        // Uses ?: (not ??) because DateTime::createFromFormat() returns false (not null) on failure.
+        // ATOM format includes timezone in the string (P specifier), so $churchTz is only needed
+        // for the fallback formats where FullCalendar omits the offset.
+        $churchTz = DateTimeUtils::getConfiguredTimezone();
+
         $start_date = null;
         if (isset($params['start'])) {
-            $start_date = DateTime::createFromFormat(DateTime::ATOM, $params['start'], DateTimeUtils::getConfiguredTimezone())
-                ?? DateTime::createFromFormat('Y-m-d\TH:i:s', $params['start'], DateTimeUtils::getConfiguredTimezone())
-                ?? DateTime::createFromFormat('Y-m-d', $params['start'], DateTimeUtils::getConfiguredTimezone());
+            $start_date = DateTime::createFromFormat(DateTime::ATOM, $params['start'])
+                ?: DateTime::createFromFormat('Y-m-d\TH:i:s', $params['start'], $churchTz)
+                ?: DateTime::createFromFormat('Y-m-d', $params['start'], $churchTz);
             if ($start_date === false || $start_date === null) {
                 return null;
             }
             $start_date->setTime(0, 0, 0);
         }
 
-        // Parse end param — accepts both Y-m-d and ISO 8601 (FullCalendar sends ISO)
         $end_date = null;
         if (isset($params['end'])) {
-            $end_date = DateTime::createFromFormat(DateTime::ATOM, $params['end'], DateTimeUtils::getConfiguredTimezone())
-                ?? DateTime::createFromFormat('Y-m-d\TH:i:s', $params['end'], DateTimeUtils::getConfiguredTimezone())
-                ?? DateTime::createFromFormat('Y-m-d', $params['end'], DateTimeUtils::getConfiguredTimezone());
+            $end_date = DateTime::createFromFormat(DateTime::ATOM, $params['end'])
+                ?: DateTime::createFromFormat('Y-m-d\TH:i:s', $params['end'], $churchTz)
+                ?: DateTime::createFromFormat('Y-m-d', $params['end'], $churchTz);
             if ($end_date === false || $end_date === null) {
                 return null;
             }
@@ -167,14 +175,16 @@ class PublicCalendarMiddleware implements MiddlewareInterface
             ->orderBy(EventTableMap::COL_EVENT_START);
 
         if ($start_date !== null) {
-            $events->filterByStart($start_date, Criteria::GREATER_EQUAL);
+            // Keep events that overlap the view: event ends after view starts, or has no end (all-day/open)
+            $events->where('events_event.event_end IS NULL OR events_event.event_end >= ?', $start_date->format('Y-m-d H:i:s'));
         }
 
         if ($end_date !== null) {
-            $events->filterByEnd($end_date, Criteria::LESS_EQUAL);
+            // Keep events that start before the view ends
+            $events->filterByStart($end_date, Criteria::LESS_THAN);
         }
 
-        if (array_key_exists('max', $params)) {
+        if (\array_key_exists('max', $params)) {
             $max_events = InputUtils::filterInt($params['max']);
             $events->limit($max_events);
         }

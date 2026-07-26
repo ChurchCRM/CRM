@@ -39,6 +39,34 @@ class CustomFieldUtils
     /**
      * Formats custom field data for display-only (read-only) output.
      * Migrated from displayCustomField() in Functions.php.
+     *
+     * **Security contract (issue #9199 audit):**
+     * Returns PLAIN, unescaped text for every supported type_ID. No case
+     * produces HTML markup:
+     *
+     *  type 1  (True/False)        → gettext('Yes') / gettext('No') / '' (empty when data is unset)
+     *  type 2  (Date)              → DateTimeUtils::formatDate() — plain text
+     *  type 3  (Text 50 char)      → raw $data
+     *  type 4  (Text 100 char)     → raw $data
+     *  type 5  (Text long)         → raw $data
+     *  type 6  (Year)              → raw $data
+     *  type 7  (Season)            → ucfirst($data) — plain text
+     *  type 8  (Number)            → raw $data
+     *  type 9  (Person from Group) → Person::getFullName() — plain text
+     *  type 10 (Money)             → raw $data
+     *  type 11 (Phone)             → raw $data
+     *  type 12 (Custom Drop-Down)  → ListOption::getOptionName() — plain text
+     *  default                     → gettext('Invalid Editor ID!')
+     *
+     * **Output encoding is deliberately kept at each call site**, not here,
+     * because the same method feeds multiple output contexts:
+     *   - HTML views        → InputUtils::escapeHTML()  (required)
+     *   - HTML attributes   → InputUtils::escapeAttribute()  (required)
+     *   - CSV rows          → no HTML escaping (CSVCreateFile.php)
+     *   - PDF (TCPDF)       → no HTML escaping (PdfDirectory.php)
+     *   - Plain-text reports → no escaping (GroupReport.php)
+     *
+     * HTML/browser-context callers MUST escape the return value.
      */
     public static function display($type, ?string $data, $special)
     {
@@ -49,7 +77,7 @@ class CustomFieldUtils
                 } elseif ($data === 'false') {
                     return gettext('No');
                 }
-                break;
+                return '';
 
             case 2:
                 return DateTimeUtils::formatDate($data);
@@ -321,6 +349,12 @@ class CustomFieldUtils
                         $bErrorFlag = true;
                     }
                 }
+                break;
+
+            case 11:
+                // Phone field: strip any character that is not valid in a phone number
+                // or a tel: URI to prevent storage of XSS payloads (GHSA-frj8-mpcx-44g9).
+                $data = preg_replace('/[^0-9+\-().\sxX#*]/', '', $data);
                 break;
 
             default:

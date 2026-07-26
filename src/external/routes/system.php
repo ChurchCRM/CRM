@@ -23,9 +23,12 @@ $app->get('/limited-access', function (Request $request, Response $response): Re
             $person = $user->getPerson();
             $userName = $person ? ($person->getFirstName() . ' ' . $person->getLastName()) : $user->getUserName();
 
-            // If user has a family, generate a verify link
+            // Only generate the verify link when EditSelf is explicitly enabled.
+            // Users with EditSelf=0 must not receive a family-verification token even
+            // when they belong to a family — the verify flow is a self-edit capability
+            // that requires the explicit permission flag. (Fixes #9079)
             $familyId = $person ? $person->getFamId() : 0;
-            if ($familyId > 0) {
+            if ($familyId > 0 && $user->isEditSelfEnabled()) {
                 $token = new \ChurchCRM\model\ChurchCRM\Token();
                 $token->build('verifyFamily', $familyId);
                 $token->save();

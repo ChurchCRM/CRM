@@ -140,7 +140,7 @@ function IgnoreIncompleteAddresses(): void
 {
     echo '
     <tr>
-    <td class="LabelColumn">' . gettext('Ignore Incomplete<br>Addresses') . ':
+    <td class="LabelColumn">' . gettext('Ignore Incomplete Addresses') . ':
     </td>
     <td class="TextColumn">
     <input class="form-check-input" type="checkbox" name="onlyfull" id="onlyfull" value="1" checked>

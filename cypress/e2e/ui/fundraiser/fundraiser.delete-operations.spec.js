@@ -1,84 +1,59 @@
 /// <reference types="cypress" />
 
-// GHSA-3xq9-c86x-cwpp — confirmation + CSRF guard on fundraiser delete pages.
+// GHSA-3xq9-c86x-cwpp — CSRF guard on fundraiser delete routes.
+// Delete operations are now POST-only on the /fundraiser/ MVC module;
+// confirmation is client-side (JS confirm dialog) rather than a server-rendered form.
+// Uses setupAdminSession() because the admin role bypasses all individual permission
+// flags via isAdmin(), making tests resilient to future seed-data changes.
+// (The standard seed user also has DeleteRecords=1 today, but admin is more reliable.)
 describe("Fundraiser Delete Operations", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupAdminSession());
 
-    describe("DonatedItemDelete.php", () => {
-        it("renders confirmation form with a CSRF token", () => {
-            cy.visit("/DonatedItemDelete.php?DonatedItemID=1&linkBack=FindFundRaiser.php");
-            cy.contains("Confirm Delete");
-            cy.get('input[name="csrf_token"]').should("have.attr", "value").and("match", /^[a-f0-9]{64}$/);
-            cy.get('input[name="Delete"]').should("exist");
-            cy.get('input[name="Cancel"]').should("exist");
-        });
-
-        it("does not delete on GET", () => {
-            // A GET must render the confirmation form (HTTP 200) and must never
-            // follow the delete-then-redirect path — which would surface as a
-            // 302 because the POST Delete handler ends with RedirectUtils::redirect.
-            cy.request({
-                method: "GET",
-                url: "/DonatedItemDelete.php?DonatedItemID=1&linkBack=FindFundRaiser.php",
-                followRedirect: false,
-            }).then((resp) => {
-                expect(resp.status, "GET must render form, not 302-redirect").to.eq(200);
-                expect(resp.body).to.match(/name="DonatedItemID"\s+value="1"/);
-                expect(resp.body).to.match(/name="csrf_token"\s+value="[a-f0-9]{64}"/);
-            });
-        });
-
+    describe("/fundraiser/{id}/donated-items/{itemId}/delete", () => {
         it("rejects POST without a valid CSRF token", () => {
             cy.request({
                 method: "POST",
-                url: "DonatedItemDelete.php",
+                url: "/fundraiser/1/donated-items/1/delete",
                 form: true,
                 body: {
-                    DonatedItemID: "1",
-                    Delete: "Delete",
                     csrf_token: "bogus",
                 },
                 failOnStatusCode: false,
             }).its("status").should("eq", 403);
+        });
+
+        it("does not accept GET (delete requires POST)", () => {
+            // GET to a POST-only route must return 405 Method Not Allowed (Slim / FastRoute).
+            cy.request({
+                method: "GET",
+                url: "/fundraiser/1/donated-items/1/delete",
+                followRedirect: false,
+                failOnStatusCode: false,
+            }).its("status").should("eq", 405);
         });
     });
 
-    describe("PaddleNumDelete.php", () => {
-        it("renders confirmation form with a CSRF token", () => {
-            cy.visit("/PaddleNumDelete.php?PaddleNumID=1&linkBack=FindFundRaiser.php");
-            cy.contains("Confirm Delete");
-            cy.get('input[name="csrf_token"]').should("have.attr", "value").and("match", /^[a-f0-9]{64}$/);
-            cy.get('input[name="Delete"]').should("exist");
-            cy.get('input[name="Cancel"]').should("exist");
-        });
-
-        it("does not delete on GET", () => {
-            // A GET must render the confirmation form (HTTP 200) and must never
-            // follow the delete-then-redirect path — which would surface as a
-            // 302 because the POST Delete handler ends with RedirectUtils::redirect.
-            cy.request({
-                method: "GET",
-                url: "/PaddleNumDelete.php?PaddleNumID=1&linkBack=FindFundRaiser.php",
-                followRedirect: false,
-            }).then((resp) => {
-                expect(resp.status, "GET must render form, not 302-redirect").to.eq(200);
-                expect(resp.body).to.match(/name="PaddleNumID"\s+value="1"/);
-                expect(resp.body).to.match(/name="csrf_token"\s+value="[a-f0-9]{64}"/);
-            });
-        });
-
+    describe("/fundraiser/{id}/paddle-numbers/{paddleId}/delete", () => {
         it("rejects POST without a valid CSRF token", () => {
             cy.request({
                 method: "POST",
-                url: "PaddleNumDelete.php",
+                url: "/fundraiser/1/paddle-numbers/1/delete",
                 form: true,
                 body: {
-                    PaddleNumID: "1",
-                    Delete: "Delete",
                     csrf_token: "bogus",
                 },
                 failOnStatusCode: false,
             }).its("status").should("eq", 403);
+        });
+
+        it("does not accept GET (delete requires POST)", () => {
+            // GET to a POST-only route must return 405 Method Not Allowed (Slim / FastRoute).
+            cy.request({
+                method: "GET",
+                url: "/fundraiser/1/paddle-numbers/1/delete",
+                followRedirect: false,
+                failOnStatusCode: false,
+            }).its("status").should("eq", 405);
         });
     });
 });

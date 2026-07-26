@@ -15,7 +15,6 @@ describe("Admin - Church Information Page", () => {
         cy.contains("Church Identity").should("be.visible");
         cy.contains("Contact Information").should("be.visible");
         cy.contains("Location").should("be.visible");
-        cy.contains("Language & Localization").should("be.visible");
         cy.contains("Address Defaults").should("be.visible");
         cy.contains("Display Preview").should("be.visible");
     });
@@ -48,14 +47,6 @@ describe("Admin - Church Information Page", () => {
         cy.get("#sChurchStateContainer").should("exist");
         cy.get("#sChurchZip").should("exist");
         cy.get("#sChurchCountry").should("exist");
-    });
-
-    it("should display language, timezone, and distance unit fields", () => {
-        cy.visit("admin/system/church-info");
-
-        cy.get("#sLanguage").should("exist");
-        cy.get("#sTimeZone").should("exist");
-        cy.get("#sDistanceUnit").should("exist");
     });
 
     it("should display address default fields", () => {
@@ -145,29 +136,7 @@ describe("Admin - Church Information Page", () => {
         cy.visit("admin/system/church-info");
 
         cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
-        cy.get("#sLanguage", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
-        cy.get("#sTimeZone", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
         cy.get("#sDefaultCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
-    });
-
-    it("should populate language dropdown grouped by region with native names", () => {
-        cy.visit("admin/system/church-info");
-
-        // Wait for JS to populate and TomSelect to init
-        cy.get("#sLanguage", { timeout: 8000 }).siblings(".ts-wrapper").should("exist");
-
-        // Underlying <select> must have region optgroups
-        cy.get("#sLanguage optgroup").should("have.length.greaterThan", 2);
-        cy.get("#sLanguage optgroup[label='Americas']").should("exist");
-        cy.get("#sLanguage optgroup[label='Europe']").should("exist");
-
-        // Options must include locale code in brackets
-        cy.get("#sLanguage optgroup[label='Americas'] option").first()
-            .invoke("text")
-            .should("match", /\[.+\]$/);
-
-        // English (US) base locale must be present
-        cy.get("#sLanguage option[value='en_US']").should("exist");
     });
 
     it("should copy church address to default fields", () => {

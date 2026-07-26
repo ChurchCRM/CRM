@@ -651,7 +651,7 @@ $group->delete('/plugins/{pluginId}', function (Request $request, Response $resp
 
         return SlimUtils::renderJSON($response, [
             'success' => true,
-            'message' => gettext('Plugin uninstalled.'),
+            'message' => gettext('Plugin uninstalled'),
             'data' => $result,
         ]);
     } catch (\RuntimeException $e) {

@@ -3,9 +3,9 @@
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Service\DonationFundService;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -86,8 +86,8 @@ $app->group('/donation-funds', function (RouteCollectorProxy $group): void {
     $group->post('', function (Request $request, Response $response, array $args): Response {
         try {
             $input = (array) $request->getParsedBody();
-            $name = InputUtils::sanitizeText($input['name'] ?? '');
-            $description = InputUtils::sanitizeText($input['description'] ?? '');
+            $name = (string) ($input['name'] ?? '');
+            $description = (string) ($input['description'] ?? '');
             $active = array_key_exists('active', $input)
                 ? filter_var($input['active'], FILTER_VALIDATE_BOOLEAN)
                 : true;
@@ -117,7 +117,7 @@ $app->group('/donation-funds', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create donation fund'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Get(
@@ -173,7 +173,7 @@ $app->group('/donation-funds', function (RouteCollectorProxy $group): void {
             $input = (array) $request->getParsedBody();
 
             if (array_key_exists('name', $input)) {
-                $name = InputUtils::sanitizeText($input['name']);
+                $name = (string) $input['name'];
                 if ($name === '') {
                     return SlimUtils::renderErrorJSON($response, gettext('You must enter a name'), [], 400);
                 }
@@ -186,7 +186,7 @@ $app->group('/donation-funds', function (RouteCollectorProxy $group): void {
             }
 
             if (array_key_exists('description', $input)) {
-                $fund->setDescription(InputUtils::sanitizeText($input['description']));
+                $fund->setDescription((string) $input['description']);
             }
 
             if (array_key_exists('active', $input)) {
@@ -199,7 +199,7 @@ $app->group('/donation-funds', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update donation fund'), [], 500, $e, $request);
         }
-    });
+    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Delete(

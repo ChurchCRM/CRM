@@ -1,3 +1,10 @@
+---
+title: "Git Workflow & Development Standards"
+intent: "Branching, commits, PRs, and pre-commit validation to maintain code quality"
+tags: ["workflow", "pr", "review", "standards"]
+prereqs: ["[[code-standards]]"]
+complexity: "beginner"
+---
 # Git Workflow & Development Standards
 
 Guidelines for branching, commits, PRs, and pre-commit validation to maintain code quality.
@@ -331,10 +338,9 @@ Before marking PR ready for review, ensure:
 - [ ] TLS verification enabled by default for HTTPS requests
 
 ### i18n & Translations
-- [ ] **If new `gettext()` strings added**: Run `npm run locale:build`
-- [ ] **If new `i18next.t()` strings added**: Run `npm run locale:build`
-- [ ] After locale:build, run `npm run build` to regenerate assets
-- [ ] Commit the updated `locale/terms/messages.po` file
+- [ ] **NEVER run `npm run locale:build`** — term extraction and `messages.po` updates are automated outside this repo (POEditor sync). Running it by hand produces a spurious diff.
+- [ ] **Do not hand-edit or commit `locale/terms/messages.po`** — the automation owns that file
+- [ ] New UI strings: just wrap them in `gettext()` (PHP) / `i18next.t()` (JS) and commit the code
 - [ ] Use canonical UI terms (check for existing similar strings)
 
 ### Testing
@@ -411,6 +417,18 @@ Remove every reference found before (or as part of) the deletion commit:
 8. git add → git commit → git push
 ```
 
+### Mandatory Pre-Commit Locale Check <!-- learned: 2026-07-25 -->
+
+**`.githooks/pre-commit` runs `node scripts/locale-check.js --staged` on every `git commit`**, enabled the same way as the pre-push hook (`core.hooksPath=.githooks` via `npm install`'s `prepare` script). It scans only the lines actually being **added** in the commit (via `git diff --cached`) for three high-confidence, syntactic i18n violations:
+
+- Trailing colon inside `gettext()`/`i18next.t()` (see `i18n-localization.md` → "Punctuation & Colon Placement")
+- HTML/markup baked into the string (see `i18n-localization.md` → "No HTML or Markup in Translatable Strings")
+- Decorative em-dash wrapper baked into the string (see `i18n-localization.md` → "Decorative Wrappers")
+
+A failing check blocks the commit with the offending file:line and a fix pointer. Bypass only with `git commit --no-verify` for an emergency, justified in the PR — same policy as the pre-push Biome check below.
+
+**Not automated**: duplicate/reuse checks (e.g. `Zip` vs `Zip / Postal Code`) and trailing-punctuation-consistency checks (e.g. `User not found` vs `User not found.`) are judgment calls that depend on reading sibling call sites — see `i18n-localization.md` → "Trailing-Period/Exclamation Duplicates" for why these are deliberately *not* hard-blocked by the hook. Review those manually during code review.
+
 ### Mandatory Pre-Push Biome Check <!-- learned: 2026-04-09 -->
 
 **Biome lint MUST pass before any `git push`.** This is enforced two ways
@@ -445,6 +463,10 @@ it by removing the hook or bypassing.
 **Why this is hardcoded:** Lint failures used to land on master because
 contributors pushed before CI feedback arrived. The pre-push hook closes
 that loop locally so feedback is instant and the master branch stays green.
+
+### Permission-Sensitive Files — Mandatory Audit Before Merge <!-- learned: 2026-07-06 -->
+
+If a PR diff touches any file listed in `authorization-security.md → PR Permission Audit`, the reviewer **must** run through the permission audit checklist in that section before recommending merge. No exceptions.
 
 **Examples:**
 
@@ -540,22 +562,24 @@ When creating a PR:
 
 ## Pre-Commit Examples
 
-### Example 1: Adding i18n Strings
+### Example 1: Adding i18n Strings <!-- learned: 2026-07-11 -->
 
 ```bash
-# ❌ INCOMPLETE - Forgot locale rebuild
+# ❌ WRONG - never rebuild the locale catalog by hand
 echo 'gettext("New Setting")' >> src/admin/views/settings.php
-git add .
+npm run locale:build            # ❌ extraction is automated outside this repo
+git add locale/terms/messages.po # ❌ the automation owns this file
 git commit -m "Add new setting to admin page"
 
-# ✅ CORRECT - Rebuild locale before commit
+# ✅ CORRECT - wrap the string, commit only the code
 echo 'gettext("New Admin Setting")' >> src/admin/views/settings.php
-npm run locale:build      # Extract new strings
-npm run build             # Regenerate assets
-git add locale/terms/messages.po
 git add src/admin/views/settings.php
 git commit -m "Add new admin setting to UI"
 ```
+
+`locale/terms/messages.po` is regenerated and synced with POEditor by automation
+outside the normal dev workflow. Running `npm run locale:build` locally only
+creates a spurious diff that conflicts with that automation.
 
 ### Example 2: Database Query
 

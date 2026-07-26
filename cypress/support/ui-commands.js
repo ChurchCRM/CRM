@@ -101,6 +101,21 @@ Cypress.Commands.add('setupNoFinanceSession', (options = {}) => {
 });
 
 /**
+ * Sets up a cached session for a user WITH Finance + DeleteRecords but WITHOUT
+ * ManageFundraisers (per_ID=96: finance.nofundraiser). Used to test that
+ * FundRaiserDelete.php correctly denies on the ManageFundraisers gate even when
+ * the caller has passed the DeleteRecords gate.
+ */
+Cypress.Commands.add('setupNoManageFundraisersSession', (options = {}) => {
+    const username = Cypress.env('nofundraiser.username');
+    const password = Cypress.env('nofundraiser.password');
+    if (!username || !password) {
+        throw new Error('No-ManageFundraisers user credentials not configured in cypress/configs/docker.config.ts env: nofundraiser.username and nofundraiser.password required');
+    }
+    cy.setupLoginSession('nofundraiser-session', username, password, options);
+});
+
+/**
  * cy.loginWithCredentials(username, password, sessionName, expectSuccess = true)
  * Login with custom credentials (for testing password changes, etc.)
  * Creates a new session with the provided credentials
@@ -261,10 +276,26 @@ Cypress.Commands.add('tomSelectByText', (selector, text) => {
  * @example cy.tomSelectByValue('#Country', 'us')
  */
 Cypress.Commands.add('tomSelectByValue', (selector, value) => {
-    cy.get(selector).then($select => {
-        const el = $select[0];
-        if (el.tomselect) {
-            el.tomselect.setValue(value);
+    // Definitive fix for the TomSelect timing race:
+    // Put setValue() AND the getValue() verification inside a single .should()
+    // block. Cypress retries the ENTIRE callback on assertion failure, so if
+    // setValue() fires but the value doesn't register (e.g. change-event race
+    // or transient initialization window), both the setValue call and the
+    // assertion are re-executed on the next retry — until the value is confirmed
+    // held by TomSelect or the assertion timeout expires.
+    //
+    // Empty-string calls (clearing a selection) skip the getValue() check
+    // because '' is a valid clear-all operation with no option to verify.
+    cy.get(selector).should(($select) => {
+        const ts = $select[0].tomselect;
+        expect(ts, `TomSelect not yet initialized on ${selector}`).to.exist;
+        ts.setValue(value);
+        if (value !== '' && value !== null && value !== undefined) {
+            const selected = [].concat(ts.getValue());
+            expect(
+                selected,
+                `TomSelect setValue("${value}") did not take effect on ${selector} — retrying`,
+            ).to.include(String(value));
         }
     });
 });
@@ -413,12 +444,13 @@ Cypress.Commands.add('clearQuill', (editorId) => {
 Cypress.Commands.add('setDatePickerValue', (selector, dateString) => {
     // Type the date and blur to trigger datepicker's change event
     cy.get(selector).clear().type(dateString);
-    
+
     // Click elsewhere to blur the field and trigger change event
     cy.get('body').click();
-    
-    // Wait for event handlers to process
-    cy.wait(100);
+
+    // Assert the committed value rather than sleeping: .should() retries until the
+    // datepicker's change handler has settled, and fails loudly if it never does.
+    cy.get(selector).should('have.value', dateString);
 });
 
 /**

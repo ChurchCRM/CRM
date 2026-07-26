@@ -2,7 +2,7 @@
 title: "Bootstrap 4 to Bootstrap 5 Migration Reference"
 intent: "Complete migration guide for converting Bootstrap 4.6.2 to Bootstrap 5.3 in a large PHP application"
 tags: ["frontend", "bootstrap", "migration", "css", "javascript"]
-prereqs: ["frontend-development.md"]
+prereqs: ["[[frontend-development]]"]
 complexity: "advanced"
 ---
 
@@ -188,7 +188,8 @@ grep -rl 'data-offset=' src/ | xargs sed -i 's/data-offset=/data-bs-offset=/g'
 # CAUTION: data-offset on scrollspy should become data-bs-root-margin (manual review needed)
 ```
 
-> **WARNING**: Run `data-slide=` replacement AFTER `data-slide-to=` to avoid double-replacing.
+> [!WARNING]
+> Run `data-slide=` replacement AFTER `data-slide-to=` to avoid double-replacing.
 
 ---
 

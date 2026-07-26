@@ -1,3 +1,10 @@
+---
+title: "Webpack & TypeScript Development"
+intent: "Entry points, API utilities, type safety, and best practices for building modern webpack modules"
+tags: ["frontend", "webpack", "javascript"]
+prereqs: []
+complexity: "intermediate"
+---
 # Skill: Webpack & TypeScript Development
 
 ## Context
@@ -9,7 +16,8 @@ ChurchCRM uses Webpack to bundle frontend JavaScript/TypeScript and CSS. This sk
 - `webpack-cli` 7.0.2
 - `ts-loader` 9.5.4
 
-> **Note:** React was removed in 7.2.0. All interactive UI uses vanilla JS + Bootstrap 5.
+> [!NOTE]
+> React was removed in 7.2.0. All interactive UI uses vanilla JS + Bootstrap 5.
 
 ---
 

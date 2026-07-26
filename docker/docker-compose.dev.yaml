@@ -1,0 +1,77 @@
+# docker-compose.dev.yaml — Dev environment for ChurchCRM
+#
+# Use this when you want to edit code locally and test in Docker without rebuilding.
+# All code is bind-mounted, so changes are instant. Build tools (Node, Composer, PHP)
+# run inside the container.
+#
+# QUICK START (from repo root)
+# ----------------------------
+#   npm run docker:dev:start       # start containers
+#   npm run docker:dev:build       # one-time: npm ci && npm run build
+#   (then just edit code locally, changes appear instantly)
+#
+# ACCESS
+# ------
+#   Web:     http://localhost        (admin / changeme)
+#   Mailpit: http://localhost:8025   (Fake SMTP inbox)
+#   DB:      Connect via VS Code to localhost:3306
+#
+# STOPPING
+# --------
+#   npm run docker:dev:stop   # stop containers (keeps data volumes)
+#   npm run docker:dev:down   # stop + remove containers and volumes
+
+services:
+
+  database:
+    image: mariadb:10.11
+    restart: unless-stopped
+    ports:
+      - "${DATABASE_PORT:-3306}:3306"
+    env_file:
+      - .env
+    volumes:
+      # Seed with demo data on first start
+      - ../cypress/data:/docker-entrypoint-initdb.d
+      - churchcrm-dev-db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 20s
+      retries: 10
+    hostname: database
+
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.churchcrm-apache-php8
+      target: dev
+    image: churchcrm/crm:php8-debian-dev
+    restart: unless-stopped
+    ports:
+      - "${WEBSERVER_PORT:-80}:80"
+    volumes:
+      # Bind mount source code — changes appear instantly
+      - ../src:/var/www/html
+      - ..:/home/ChurchCRM
+      # Bind mount data directories
+      - ../cypress/data/images/people:/var/www/html/Images/Person
+      - ../cypress/data/images/family:/var/www/html/Images/Family
+    env_file:
+      - .env
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    depends_on:
+      database:
+        condition: service_healthy
+    hostname: crm-webserver
+
+  mailserver:
+    image: axllent/mailpit:latest
+    restart: unless-stopped
+    ports:
+      - "${MAILSERVER_PORT:-1025}:1025"
+      - "${MAILSERVER_GUI_PORT:-8025}:8025"
+    hostname: crm-mailserver
+
+volumes:
+  churchcrm-dev-db:

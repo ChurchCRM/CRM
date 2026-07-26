@@ -6,10 +6,6 @@
  * as map marker items for the Leaflet congregation map at /v2/map.
  */
 describe("API Private Map", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/map/families — all geocoded families (default)", () => {
         it("Returns 200 with an array", () => {
             cy.makePrivateAdminAPICall("GET", "/api/map/families", null, 200).then(
