@@ -141,18 +141,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?php foreach ($fundTotals as $fundTotal): ?>
                                     <tr>
                                         <td><?= InputUtils::escapeHTML($fundTotal['fund_name']) ?></td>
-                                        <td class="text-end" data-order="<?= $fundTotal['total_pledged'] ?>">
+                                        <td class="text-end" data-order="<?= InputUtils::escapeAttribute($fundTotal['total_pledged']) ?>">
                                             <?= CurrencyFormatter::formatHtml($fundTotal['total_pledged']) ?>
                                         </td>
-                                        <td class="text-end" data-order="<?= $fundTotal['total_paid'] ?>">
+                                        <td class="text-end" data-order="<?= InputUtils::escapeAttribute($fundTotal['total_paid']) ?>">
                                             <?= CurrencyFormatter::formatHtml($fundTotal['total_paid']) ?>
                                         </td>
                                         <td class="text-end"><?= (int) $fundTotal['pledge_count'] ?></td>
                                         <td class="text-end"><?= (int) $fundTotal['payment_count'] ?></td>
-                                        <td class="text-end" data-order="<?= $fundTotal['overpaid'] ?>">
+                                        <td class="text-end" data-order="<?= InputUtils::escapeAttribute($fundTotal['overpaid']) ?>">
                                             <?= CurrencyFormatter::formatHtml($fundTotal['overpaid']) ?>
                                         </td>
-                                        <td class="text-end" data-order="<?= $fundTotal['underpaid'] ?>">
+                                        <td class="text-end" data-order="<?= InputUtils::escapeAttribute($fundTotal['underpaid']) ?>">
                                             <?= CurrencyFormatter::formatHtml($fundTotal['underpaid']) ?>
                                         </td>
                                     </tr>
@@ -162,18 +162,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <tfoot>
                                 <tr class="fw-bold table-secondary">
                                     <td><?= gettext('Total') ?></td>
-                                    <td class="text-end" data-order="<?= $overallTotals['total_pledged'] ?>">
+                                    <td class="text-end" data-order="<?= InputUtils::escapeAttribute($overallTotals['total_pledged']) ?>">
                                         <?= CurrencyFormatter::formatHtml($overallTotals['total_pledged']) ?>
                                     </td>
-                                    <td class="text-end" data-order="<?= $overallTotals['total_paid'] ?>">
+                                    <td class="text-end" data-order="<?= InputUtils::escapeAttribute($overallTotals['total_paid']) ?>">
                                         <?= CurrencyFormatter::formatHtml($overallTotals['total_paid']) ?>
                                     </td>
                                     <td class="text-end"><?= (int) $overallTotals['pledge_count'] ?></td>
                                     <td class="text-end"><?= (int) $overallTotals['payment_count'] ?></td>
-                                    <td class="text-end" data-order="<?= $overallTotals['overpaid'] ?>">
+                                    <td class="text-end" data-order="<?= InputUtils::escapeAttribute($overallTotals['overpaid']) ?>">
                                         <?= CurrencyFormatter::formatHtml($overallTotals['overpaid']) ?>
                                     </td>
-                                    <td class="text-end" data-order="<?= $overallTotals['underpaid'] ?>">
+                                    <td class="text-end" data-order="<?= InputUtils::escapeAttribute($overallTotals['underpaid']) ?>">
                                         <?= CurrencyFormatter::formatHtml($overallTotals['underpaid']) ?>
                                     </td>
                                 </tr>
@@ -248,13 +248,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 </td>
                                                 <?php endif; ?>
                                                 <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
-                                                <td class="text-end fw-bold" data-order="<?= $pledge['pledge_amount'] ?>">
+                                                <td class="text-end fw-bold" data-order="<?= InputUtils::escapeAttribute($pledge['pledge_amount']) ?>">
                                                     <?= CurrencyFormatter::formatHtml($pledge['pledge_amount']) ?>
                                                 </td>
-                                                <td class="text-end" data-order="<?= $pledge['payment_amount'] ?>">
+                                                <td class="text-end" data-order="<?= InputUtils::escapeAttribute($pledge['payment_amount']) ?>">
                                                     <?= CurrencyFormatter::formatHtml($pledge['payment_amount']) ?>
                                                 </td>
-                                                <td class="text-end <?= $statusClass ?>" data-order="<?= $remaining ?>">
+                                                <td class="text-end <?= $statusClass ?>" data-order="<?= InputUtils::escapeAttribute($remaining) ?>">
                                                     <?= CurrencyFormatter::formatHtml($remaining) ?>
                                                     <small class="d-block text-body-secondary"><?= number_format($percentComplete, 0) ?>%</small>
                                                 </td>
@@ -273,13 +273,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.addEventListener('DOMContentLoaded', function () {
-    var fundCfg = { order: [[0, 'asc']], pageLength: 25 };
-    $.extend(fundCfg, window.CRM.plugin.dataTable);
-    $('#pledgeFundSummary').DataTable(fundCfg);
+    if (document.getElementById('pledgeFundSummary')) {
+        var fundCfg = { order: [[0, 'asc']], pageLength: 25 };
+        $.extend(fundCfg, window.CRM.plugin.dataTable);
+        $('#pledgeFundSummary').DataTable(fundCfg);
+    }
 
-    var famCfg = { order: [[0, 'asc']], pageLength: 25 };
-    $.extend(famCfg, window.CRM.plugin.dataTable);
-    $('#familyPledges').DataTable(famCfg);
+    if (document.getElementById('familyPledges')) {
+        var famCfg = { order: [[0, 'asc']], pageLength: 25 };
+        $.extend(famCfg, window.CRM.plugin.dataTable);
+        $('#familyPledges').DataTable(famCfg);
+    }
 });
 </script>
 
