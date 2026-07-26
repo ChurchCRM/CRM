@@ -308,6 +308,10 @@ class DemoDataService
                 }
 
                 $family->setSendNewsletter((isset($famData['sendNewsletter']) && $famData['sendNewsletter']) ? 'TRUE' : 'FALSE');
+                $familySelfRegistered = !empty($famData['selfRegistered']);
+                if ($familySelfRegistered) {
+                    $family->setEnteredBy(Person::SELF_REGISTER);
+                }
                 $family->save();
 
                 $this->familyMap[$family->getId()] = $family;
@@ -366,6 +370,9 @@ class DemoDataService
                         }
                         if (!empty($m['createdAt'])) {
                             try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
+                        }
+                        if ($familySelfRegistered) {
+                            $person->setEnteredBy(Person::SELF_REGISTER);
                         }
                         $person->save();
                         $this->personMap[$person->getId()] = $person;
@@ -480,6 +487,9 @@ class DemoDataService
                 }
                 if (!empty($m['createdAt'])) {
                     try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
+                }
+                if (!empty($m['selfRegistered'])) {
+                    $person->setEnteredBy(Person::SELF_REGISTER);
                 }
                 $person->save();
                 $this->personMap[$person->getId()] = $person;
