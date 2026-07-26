@@ -117,6 +117,78 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
         });
     });
 
+    describe("GET /api/payments/pledges/{groupKey} - Pledge group retrieval", () => {
+        it("GET /api/payments/pledges/{groupKey} - Returns full group details for an existing groupKey", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getPaymentPayload(),
+                200
+            ).then((createResp) => {
+                const groupKey = createResp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/api/payments/pledges/" + groupKey,
+                    null,
+                    200
+                ).then((getResp) => {
+                    expect(getResp.body.groupKey).to.equal(groupKey);
+                    expect(getResp.body.pledgeOrPayment).to.equal("Payment");
+                    expect(getResp.body.funds).to.be.an("array").with.length(1);
+                    expect(getResp.body.total).to.be.closeTo(100.00, 0.01);
+                });
+            });
+        });
+
+        it("GET /api/payments/pledges/{groupKey} - Returns 404 for an unknown groupKey", () => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/payments/pledges/does-not-exist-groupkey",
+                null,
+                404
+            );
+        });
+    });
+
+    describe("DELETE /api/payments/{groupKey} - Multi-fund delete (deletePledgeGroup bug fix)", () => {
+        it("DELETE /api/payments/{groupKey} - Removes every fund row sharing the GroupKey, not just the first", () => {
+            // Regression test for the bug called out in #8482: the old
+            // deletePayment() only removed the first matching row. deletePledgeGroup()
+            // must delete all pledge_plg rows for a multi-fund GroupKey in one call.
+            const multiSplit = JSON.stringify([
+                { FundID: "1", Amount: 60.00, NonDeductible: 0, Comment: "Delete test fund 1" },
+                { FundID: "1", Amount: 40.00, NonDeductible: 0, Comment: "Delete test fund 2" },
+            ]);
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getPaymentPayload({ FundSplit: multiSplit }),
+                200
+            ).then((createResp) => {
+                const groupKey = createResp.body.groupKey;
+                expect(createResp.body.payment.funds).to.be.an("array").with.length(2);
+
+                cy.makePrivateAdminAPICall(
+                    "DELETE",
+                    "/api/payments/" + groupKey,
+                    null,
+                    200
+                ).then(() => {
+                    // If any row had survived the delete, this would still return 200
+                    // with leftover fund data instead of 404 — proving all rows were removed.
+                    cy.makePrivateAdminAPICall(
+                        "GET",
+                        "/api/payments/pledges/" + groupKey,
+                        null,
+                        404
+                    );
+                });
+            });
+        });
+    });
+
     describe("GET /api/fiscalyear - Fiscal year resolution", () => {
         it("GET /api/fiscalyear - Returns 200 with fyId and label", () => {
             cy.makePrivateAdminAPICall("GET", "/api/fiscalyear", null, 200).then((resp) => {
