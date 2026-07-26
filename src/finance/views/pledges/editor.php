@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
@@ -26,18 +27,6 @@ $isPledge = ($type === 'Pledge');
 $cardClass = $isPledge ? 'bg-warning' : 'bg-primary text-white';
 $alertClass = $isPledge ? 'alert-warning' : 'alert-primary';
 $iconClass = $isPledge ? 'fa-file-signature' : 'fa-hand-holding-dollar';
-
-// Build a fund-amount map from existing pledge data (for edit mode)
-$pledgeFundAmounts = [];
-$pledgeFundNonDeductible = [];
-$pledgeFundComments = [];
-if ($isEdit && !empty($pledge['funds'])) {
-    foreach ($pledge['funds'] as $f) {
-        $pledgeFundAmounts[$f['fundId']]       = $f['amount'];
-        $pledgeFundNonDeductible[$f['fundId']] = $f['nonDeductible'];
-        $pledgeFundComments[$f['fundId']]      = $f['comment'];
-    }
-}
 
 $pledgeDate    = $isEdit ? ($pledge['date'] ?? date('Y-m-d')) : date('Y-m-d');
 $pledgeFyId    = $isEdit ? ($pledge['fyId'] ?? $currentFyId) : $currentFyId;
@@ -135,7 +124,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                 <!-- Check Number -->
                 <div class="col-lg-3" id="checkNumberGroup">
                     <label class="form-label" for="CheckNo"><?= gettext('Check #') ?></label>
-                    <input class="form-control" type="number" id="CheckNo" name="CheckNo" value="<?= InputUtils::escapeAttribute((string)$pledgeCheckNo) ?>">
+                    <input class="form-control" type="text" inputmode="numeric" pattern="[0-9]*" id="CheckNo" name="CheckNo" value="<?= InputUtils::escapeAttribute((string)$pledgeCheckNo) ?>">
                 </div>
 
                 <!-- Deposit -->
@@ -357,9 +346,8 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
 
     const ROOT = window.CRM.root;
     const GROUP_KEY = <?= json_encode($groupKey, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
-    const IS_EDIT   = <?= $isEdit ? 'true' : 'false' ?>;
     const PLEDGE_TYPE = <?= json_encode($type, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
-    const ENABLE_ND = <?= $enableNonDeductible ? 'true' : 'false' ?>;
+    const FY_MONTH    = <?= (int) SystemConfig::getIntValue('iFYMonth') ?>;
 
     // ---- Toast helper ----
     function showToast(message, isError) {
@@ -448,22 +436,27 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         toggleCheckGroup();
     }
 
-    // ---- Date → auto-resolve FYID ----
+    // ---- Date → auto-resolve FYID (client-side, mirrors FiscalYearUtils::calculateFiscalYearId) ----
     const dateEl = document.getElementById('Date');
     const fyEl   = document.getElementById('FYID');
+
+    function computeFyId(dateStr) {
+        const parts = dateStr.split('-');
+        if (parts.length < 3) { return null; }
+        const year  = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10);
+        if (isNaN(year) || isNaN(month)) { return null; }
+        let fyid = year - 1996;
+        if (month >= FY_MONTH && FY_MONTH > 1) { fyid += 1; }
+        return fyid > 0 ? fyid : null;
+    }
+
     if (dateEl && fyEl) {
         dateEl.addEventListener('change', function () {
-            const d = new Date(this.value);
-            if (isNaN(d.getTime())) return;
-            // Resolve fiscal year from server to respect iFYMonth config
-            fetch(ROOT + '/api/fiscalyear?date=' + encodeURIComponent(this.value))
-                .then(function (res) { return res.ok ? res.json() : null; })
-                .then(function (data) {
-                    if (data && data.fyId) {
-                        fyEl.value = data.fyId;
-                    }
-                })
-                .catch(function () { /* ignore — user can select manually */ });
+            const fyid = computeFyId(this.value);
+            if (fyid !== null) {
+                fyEl.value = String(fyid);
+            }
         });
     }
 
@@ -473,7 +466,8 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         const date     = document.getElementById('Date').value;
         const fyid     = parseInt(fyEl ? fyEl.value : '0', 10);
         const methodEl2 = document.getElementById('Method');
-        const method   = methodEl2 ? methodEl2.value : 'CHECK';
+        // Pledges have no Method dropdown; default to CASH so genGroupKey never receives null iCheckNo
+        const method   = methodEl2 ? methodEl2.value : (PLEDGE_TYPE === 'Pledge' ? 'CASH' : 'CHECK');
         const checkEl  = document.getElementById('CheckNo');
         const checkNo  = checkEl ? checkEl.value : '';
         const depEl    = document.getElementById('DepositID');
@@ -577,20 +571,9 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                 setTimeout(function () {
                     window.location.href = ROOT + '/finance/pledge/new?type=' + encodeURIComponent(PLEDGE_TYPE);
                 }, 800);
-            } else if (data && data.payment) {
-                try {
-                    const parsed = JSON.parse(data.payment);
-                    // Try to extract group key from the returned payment object
-                    const gk = parsed && parsed.GroupKey ? parsed.GroupKey : null;
-                    if (gk) {
-                        setTimeout(function () {
-                            window.location.href = ROOT + '/finance/pledge/' + encodeURIComponent(gk);
-                        }, 800);
-                        return;
-                    }
-                } catch (e) { /* ignore */ }
+            } else if (data && data.groupKey) {
                 setTimeout(function () {
-                    window.location.href = ROOT + '/finance/';
+                    window.location.href = ROOT + '/finance/pledge/' + encodeURIComponent(data.groupKey);
                 }, 800);
             } else {
                 setTimeout(function () {
@@ -617,7 +600,10 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     const deleteBtn = document.getElementById('deletePledgeBtn');
     if (deleteBtn && GROUP_KEY) {
         deleteBtn.addEventListener('click', async function () {
-            if (!confirm(<?= json_encode(gettext('Are you sure you want to permanently delete this pledge record?'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)) return;
+            const confirmMsg = PLEDGE_TYPE === 'Pledge'
+                ? <?= json_encode(gettext('Are you sure you want to permanently delete this pledge record?'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                : <?= json_encode(gettext('Are you sure you want to permanently delete this payment record?'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+            if (!confirm(confirmMsg)) return;
 
             try {
                 const res = await fetch(ROOT + '/api/payments/' + encodeURIComponent(GROUP_KEY), {

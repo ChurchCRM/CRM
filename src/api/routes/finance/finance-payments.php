@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -237,8 +236,12 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
 
             $financialService = new FinancialService();
             $groupPayment = $financialService->submitPledgeOrPayment($payment);
+            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
 
-            return SlimUtils::renderJSON($response, ['payment' => $groupPayment]);
+            return SlimUtils::renderJSON($response, [
+                'groupKey' => $paymentObj['GroupKey'] ?? '',
+                'payment'  => $paymentObj,
+            ]);
         } catch (\Exception $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, $e, $request);
         } catch (\Throwable $e) {
@@ -269,7 +272,10 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      */
     $group->delete('/{groupKey}', function (Request $request, Response $response, array $args): Response {
         try {
-            $groupKey = $args['groupKey'];
+            $groupKey = $args['groupKey'] ?? '';
+            if ($groupKey === '') {
+                return SlimUtils::renderErrorJSON($response, gettext('Group key is required'), [], 400);
+            }
             $financialService = new FinancialService();
             $financialService->deletePledgeGroup($groupKey);
 

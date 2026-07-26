@@ -229,7 +229,13 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
     if (deleteBtn) {
         deleteBtn.addEventListener('click', async function () {
             const groupKey = this.dataset.groupKey;
-            if (!confirm(<?= json_encode(gettext('Are you sure you want to permanently delete this pledge record?'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)) return;
+            const confirmMsg = <?= json_encode(
+                $isPledge
+                    ? gettext('Are you sure you want to permanently delete this pledge record?')
+                    : gettext('Are you sure you want to permanently delete this payment record?'),
+                JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+            ) ?>;
+            if (!confirm(confirmMsg)) return;
 
             try {
                 const res = await fetch(ROOT + '/api/payments/' + encodeURIComponent(groupKey), {
