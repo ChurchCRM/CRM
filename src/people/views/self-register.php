@@ -52,7 +52,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <p class="text-body-secondary">
                     <?= gettext('Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up.') ?>
                 </p>
-                <div class="table-responsive">
+                <div style="overflow: visible;">
                     <table id="selfRegistrations" class="table table-bordered data-table">
                         <tbody></tbody>
                     </table>
