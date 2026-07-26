@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-26 04:18+0000\n"
+"POT-Creation-Date: 2026-07-26 20:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -442,9 +442,6 @@ msgstr ""
 msgid "Add Event Type"
 msgstr ""
 
-msgid "Add Family"
-msgstr ""
-
 msgid "Add Family Member"
 msgstr ""
 
@@ -518,9 +515,6 @@ msgid "Add Payment"
 msgstr ""
 
 msgid "Add People to the Family"
-msgstr ""
-
-msgid "Add Person"
 msgstr ""
 
 msgid "Add Pledge"
@@ -4746,9 +4740,6 @@ msgstr ""
 msgid "Family Info"
 msgstr ""
 
-msgid "Family List"
-msgstr ""
-
 msgid "Family Listing"
 msgstr ""
 
@@ -6638,9 +6629,6 @@ msgstr ""
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr ""
 
-msgid "List families created via self registration"
-msgstr ""
-
 msgid "List members eligible to vote based on giving history and membership criteria."
 msgstr ""
 
@@ -8423,9 +8411,6 @@ msgstr ""
 msgid "People Directory"
 msgstr ""
 
-msgid "People List"
-msgstr ""
-
 msgid "People Reports"
 msgstr ""
 
@@ -10025,9 +10010,6 @@ msgid "Selected record successfully removed from the Cart."
 msgstr ""
 
 msgid "Self Registration"
-msgstr ""
-
-msgid "Self Registration Report"
 msgstr ""
 
 msgid "Self Registrations"
