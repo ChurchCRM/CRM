@@ -7424,10 +7424,6 @@ msgid "Move up"
 msgstr "மேலே நகர்வு"
 
 #: 
-msgid "Opportunity"
-msgstr "வாய்ப்பு"
-
-#: 
 msgid "Order"
 msgstr "ஆணை"
 
@@ -7442,14 +7438,6 @@ msgstr "சதவீதம்"
 #: 
 msgid "Person Properties"
 msgstr "நபர் பண்புகள்"
-
-#: 
-msgid "Property Type"
-msgstr "சொத்து வகை"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "தன்னார்வ வாய்ப்பு"
 
 #. Context: locales
 #: 

@@ -7448,10 +7448,6 @@ msgid "Move up"
 msgstr "Mozgatás felfelé"
 
 #: 
-msgid "Opportunity"
-msgstr "Lehetőség"
-
-#: 
 msgid "Order"
 msgstr "Sorrend"
 
@@ -7466,14 +7462,6 @@ msgstr "Százalék"
 #: 
 msgid "Person Properties"
 msgstr "Személy tulajdonságai"
-
-#: 
-msgid "Property Type"
-msgstr "Tulajdonság típusa"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Önkéntes lehetőség"
 
 #. Context: locales
 #: 

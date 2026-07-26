@@ -7418,10 +7418,6 @@ msgid "Move up"
 msgstr "Di chuyển lên"
 
 #: 
-msgid "Opportunity"
-msgstr "Cơ hội"
-
-#: 
 msgid "Order"
 msgstr "Thứ tự"
 
@@ -7436,14 +7432,6 @@ msgstr "Tỷ lệ phần trăm"
 #: 
 msgid "Person Properties"
 msgstr "Thuộc tính cá nhân"
-
-#: 
-msgid "Property Type"
-msgstr "Loại thuộc tính"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Cơ hội tình nguyện"
 
 #. Context: locales
 #: 

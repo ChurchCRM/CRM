@@ -7383,10 +7383,6 @@ msgid "Move up"
 msgstr "Premjesti gore"
 
 #: 
-msgid "Opportunity"
-msgstr "Mogućnost"
-
-#: 
 msgid "Order"
 msgstr "Redoslijed"
 
@@ -7401,14 +7397,6 @@ msgstr "Postotak"
 #: 
 msgid "Person Properties"
 msgstr "Osobna svojstva"
-
-#: 
-msgid "Property Type"
-msgstr "Vrsta svojstva"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Volonterska mogućnost"
 
 #. Context: locales
 #: 

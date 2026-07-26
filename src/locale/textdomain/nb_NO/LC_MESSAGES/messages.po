@@ -7495,10 +7495,6 @@ msgid "Move up"
 msgstr "Flytt opp"
 
 #: 
-msgid "Opportunity"
-msgstr "Mulighet"
-
-#: 
 msgid "Order"
 msgstr "Rekkefølge"
 
@@ -7513,14 +7509,6 @@ msgstr "Prosentandel"
 #: 
 msgid "Person Properties"
 msgstr "Personegenskaper"
-
-#: 
-msgid "Property Type"
-msgstr "Egenskapstype"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Frivillig-mulighet"
 
 #. Context: locales
 #: 

@@ -7420,10 +7420,6 @@ msgid "Move up"
 msgstr "Beweeg Op"
 
 #: 
-msgid "Opportunity"
-msgstr "Geleentheid"
-
-#: 
 msgid "Order"
 msgstr "Bestel"
 
@@ -7438,14 +7434,6 @@ msgstr "Persentasie"
 #: 
 msgid "Person Properties"
 msgstr "Persoon Eienskappe"
-
-#: 
-msgid "Property Type"
-msgstr "Eiendom Tipe"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vrywilliger-geleentheid"
 
 #. Context: locales
 #: 

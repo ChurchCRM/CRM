@@ -7419,10 +7419,6 @@ msgid "Move up"
 msgstr "Liiguta üles"
 
 #: 
-msgid "Opportunity"
-msgstr "Võimalus"
-
-#: 
 msgid "Order"
 msgstr "Tellimus"
 
@@ -7437,14 +7433,6 @@ msgstr "Protsent"
 #: 
 msgid "Person Properties"
 msgstr "Inimese omadused"
-
-#: 
-msgid "Property Type"
-msgstr "Vara tüüp"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vabatahtliku võimalus"
 
 #. Context: locales
 #: 
