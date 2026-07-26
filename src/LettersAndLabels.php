@@ -21,7 +21,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?
-if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) || isset($_POST['SubmitConfirmLabels']) || isset($_POST['SubmitConfirmReportEmail'])) {
+if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmLabels'])) {
     $sLabelFormat = InputUtils::legacyFilterInput($_POST['labeltype']);
     $sFontInfo = $_POST['labelfont'];
     $sFontSize = $_POST['labelfontsize'];

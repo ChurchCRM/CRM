@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\PropertyService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -426,7 +427,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             </div>
             <div class="card-body">
                 <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
-                   target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
+                   target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($familyAddress) ?></a>
                 <?php
                 $directionsUrl = $family->getDirectionsUrl();
                 $appleDirectionsUrl = $family->getAppleMapsDirectionsUrl();
@@ -435,7 +436,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <?php if (!empty($directionsUrl) || !empty($appleDirectionsUrl)) : ?>
                     <div class="btn-group directions-btn-group">
                         <?php if (!empty($directionsUrl)) : ?>
-                        <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                        <a href="<?= InputUtils::escapeAttribute($directionsUrl) ?>" target="_blank" rel="noopener noreferrer"
                            class="btn btn-sm btn-outline-primary">
                             <i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?>
                         </a>
@@ -448,11 +449,11 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                         </button>
                         <div class="dropdown-menu directions-provider-menu d-none">
                             <?php if (!empty($directionsUrl)) : ?>
-                            <a class="dropdown-item" href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($directionsUrl) ?>" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
                             </a>
                             <?php endif; ?>
-                            <a class="dropdown-item apple-maps-option" href="<?= $appleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                            <a class="dropdown-item apple-maps-option" href="<?= InputUtils::escapeAttribute($appleDirectionsUrl) ?>" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
                             </a>
                         </div>
@@ -763,6 +764,13 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
     });
 </script>
 <!-- Photos end -->
+
+
+<!-- Hidden form for CSRF-protected email PDF POST -->
+<form id="verifyEmailPDFForm" method="post" action="<?= SystemURLs::getRootPath() ?>/people/report/verify/email" class="d-none">
+    <?= CSRFUtils::getTokenInputField('people_report_verify_email') ?>
+    <input type="hidden" name="familyId" value="">
+</form>
 
 <div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
      aria-hidden="true">

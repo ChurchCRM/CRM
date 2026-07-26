@@ -75,7 +75,7 @@ require_once __DIR__ . '/Include/Header.php';
             echo '<p class="lead">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
             echo '<form name=SelectFamily method=get action=SelectDelete.php>';
             echo '<div class="card-body">';
-            echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' ." $fam_Name</strong></div>";
+            echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' . ' ' . InputUtils::escapeHTML($fam_Name) . '</strong></div>';
             echo '<p>' . gettext('Please select another family with whom to associate these donations') . ':';
             echo '<br><b>' . gettext('WARNING: This action can not be undone and may have legal implications!') . '</b></p>';
             echo"<input name=FamilyID value=$iFamilyID type=hidden>";
