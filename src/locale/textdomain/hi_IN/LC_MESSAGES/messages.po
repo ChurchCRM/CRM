@@ -16755,3 +16755,527 @@ msgstr "goalAmount गैर-ऋणात्मक होनी चाहिए"
 msgid "thru %s"
 msgstr "%s तक"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "%1$s %2$s के लिए \"क्यों आए\" नोट्स"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s परिवार के %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d और प्रविष्टियाँ आ सकती हैं।"
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d रिकॉर्ड वापस मिले"
+
+#: 
+msgid "Assign role to all"
+msgstr "सभी को भूमिका सौंपें"
+
+#: 
+msgid "Buyer #"
+msgstr "खरीदार #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "इस धन-संग्रह के खरीदार"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "कैलेंडर एम्बेड उत्पत्ति"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM के अनुवाद POEditor पर समुदाय द्वारा प्रबंधित किए जाते हैं। आप इस प्रकार सहायता कर सकते हैं"
+
+#: 
+msgid "Closed Deposits"
+msgstr "बंद जमाएँ"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "वर्तमान $URL[0] मान"
+
+#: 
+msgid "Custom port"
+msgstr "कस्टम पोर्ट"
+
+#: 
+msgid "Data Quality"
+msgstr "डेटा गुणवत्ता"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "%1$s %2$s द्वारा दान किया गया।"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "ईमेल कार्यक्षमता अभी अक्षम है। जब तक ईमेल सक्षम नहीं होता।"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "अनुमानित मूल्य $%s।"
+
+#: 
+msgid "Fastest workflow"
+msgstr "सबसे तेज़ कार्यप्रवाह"
+
+#: 
+msgid "File Integrity"
+msgstr "फ़ाइल अखंडता"
+
+#: 
+msgid "Filter by log level"
+msgstr "लॉग स्तर के अनुसार फ़िल्टर करें"
+
+#: 
+msgid "Find the line"
+msgstr "पंक्ति खोजें"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "व्यक्तिगत अनुमतियाँ प्रदान करें"
+
+#: 
+msgid "How to Fix"
+msgstr "कैसे ठीक करें"
+
+#: 
+msgid "Import failed: %s"
+msgstr "आयात विफल: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "x-api-key हेडर का उपयोग करके अनुरोधों में अपनी API कुंजी शामिल करें"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "किसी भी सेटअप चरण पर जाएँ"
+
+#: 
+msgid "Local development"
+msgstr "स्थानीय विकास"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "न्यूनतम कुल राशि"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "न्यूनतम बोली $%s।"
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "नया भुगतान - %1$s जमा # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "डिलीवरी की पुष्टि के लिए प्राप्तकर्ता का इनबॉक्स जाँचें। विषय देखें"
+
+#: 
+msgid "Number of lines to display"
+msgstr "प्रदर्शित करने के लिए पंक्तियों की संख्या"
+
+#: 
+msgid "Open Deposits"
+msgstr "खुली जमाएँ"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "उपकरणों को पंजीकृत करने के लिए 2 मिनट की विंडो खोलता है"
+
+#: 
+msgid "Output Method"
+msgstr "आउटपुट विधि"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "कृपया इस परिवार रिकॉर्ड के विलोपन की पुष्टि करें"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "कृपया अपनी पारिवारिक जानकारी की पुष्टि करें"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "कृपया अपना अगला दान %s को भेजें"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "कृपया कोई अन्य परिवार चुनें जिनसे इन दानों को जोड़ा जाए"
+
+#: 
+msgid "Remittance Slip"
+msgstr "प्रेषण पर्ची"
+
+#: 
+msgid "Report Heading"
+msgstr "रिपोर्ट शीर्षक"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "रीसेट करने से स्थायी रूप से हटा दिया जाएगा"
+
+#: 
+msgid "Show"
+msgstr "दिखाएँ"
+
+#: 
+msgid "Signature"
+msgstr "हस्ताक्षर"
+
+#: 
+msgid "Sort Data by"
+msgstr "डेटा को इस आधार पर क्रमबद्ध करें"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "सार्वजनिक बाह्य कैलेंडर पृष्ठ को iframe में एम्बेड करने की अनुमति प्राप्त उत्पत्तियों की स्थान-पृथक सूची।"
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "सार्वजनिक कैलेंडर पृष्ठ को iframe में एम्बेड करने की अनुमति प्राप्त उत्पत्तियाँ की स्थान-पृथक सूची।"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "संडे स्कूल समूह को केवल इन दो मामलों में नहीं संशोधित किया जा सकता"
+
+#: 
+msgid "Supported formats"
+msgstr "समर्थित स्वरूप"
+
+#: 
+msgid "System Configuration"
+msgstr "सिस्टम कॉन्फ़िगरेशन"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "इस स्वयंसेवी अवसर पर लोग नियुक्त हैं। हटाने पर उनकी नियुक्ति रद्द हो जाएगी"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "यह मान %d अक्षरों से कम नहीं हो सकता"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "यह मान %d अक्षरों से अधिक नहीं हो सकता"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "यह मान %s से अधिक नहीं हो सकता"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "यह मान कम से कम %s होना चाहिए"
+
+#: 
+msgid "Total Deposits"
+msgstr "कुल जमाएँ"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "इसे एक वैध URL में अपडेट करें जो"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "उपयोगकर्ता API कुंजी द्वारा प्रमाणित: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "वैध उदाहरण"
+
+#: 
+msgid "What this plugin does"
+msgstr "यह प्लगइन क्या करता है"
+
+#: 
+msgid "for all funds"
+msgstr "सभी निधियों के लिए"
+
+#: 
+msgid "for fund"
+msgstr "निधि के लिए"
+
+#: 
+msgid "for funds"
+msgstr "निधियों के लिए"
+
+#: 
+msgid "user"
+msgstr "उपयोगकर्ता"
+
+#: 
+msgid "with at least one"
+msgstr "कम से कम एक के साथ"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "चर्च के पते ({{email}}) पर भी भेजें"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "क्या आप वाकई इस व्यक्ति को हटाना चाहते हैं"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC मोड"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}} लोगों को चेक इन किया गया।"
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "CRM से ईमेल लिखते समय चर्च का ईमेल पता स्वचालित रूप से हटाने योग्य प्राप्तकर्ता के रूप में जोड़ा जाता है"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "चर्च ईमेल — %s पृष्ठ पर कॉन्फ़िगर किया गया।"
+
+#: 
+msgid "Closing"
+msgstr "बंद हो रहा है"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "निर्देशांक अपडेट किए गए"
+
+#: 
+msgid "Copy Addresses"
+msgstr "पते कॉपी करें"
+
+#: 
+msgid "Copy Church Email"
+msgstr "चर्च ईमेल कॉपी करें"
+
+#: 
+msgid "Email All Members"
+msgstr "सभी सदस्यों को ईमेल करें"
+
+#: 
+msgid "Email Cart Members"
+msgstr "चयनित सदस्यों को ईमेल करें"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "अंत में स्लैश (/) से समाप्त होता है"
+
+#: 
+msgid "Failed to geocode"
+msgstr "जियोकोड करने में विफल"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "प्राप्तकर्ता लोड करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "चयन ईमेल पते प्राप्त करने में विफल"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "परिवार चेक-इन विफल हुआ। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Ignore"
+msgstr "अनदेखा करें"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "अधूरे पते अनदेखे करें"
+
+#: 
+msgid "Kids"
+msgstr "बच्चे"
+
+#: 
+msgid "Loading family members..."
+msgstr "परिवार के सदस्य लोड हो रहे हैं..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "प्राप्तकर्ता लोड हो रहे हैं…"
+
+#: 
+msgid "No email addresses found."
+msgstr "कोई ईमेल पता नहीं मिला।"
+
+#: 
+msgid "Open in Email Client"
+msgstr "ईमेल क्लाइंट में खोलें"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "%s सेकंड में पुनर्निर्देशित हो रहा है..."
+
+#: 
+msgid "Refreshing..."
+msgstr "रिफ़्रेश हो रहा है..."
+
+#: 
+msgid "Remove from Group"
+msgstr "समूह से हटाएँ"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "{{personName}} को इस कक्षा से हटाएँ?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "अनुरोध विफल ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "शामिल करने के लिए भूमिकाएँ"
+
+#: 
+msgid "Select Country"
+msgstr "देश चुनें"
+
+#: 
+msgid "Select State"
+msgstr "राज्य चुनें"
+
+#: 
+msgid "Select a person"
+msgstr "एक व्यक्ति चुनें"
+
+#: 
+msgid "Select role"
+msgstr "भूमिका चुनें"
+
+#: 
+msgid "Select type (optional)"
+msgstr "प्रकार चुनें (वैकल्पिक)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "http:// या https:// से शुरू होता है"
+
+#: 
+msgid "This group only has one role."
+msgstr "इस समूह में केवल एक भूमिका है।"
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "{{name}} को कौन ला रहा है?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "{{name}} को कौन ले जा रहा है?"
+
+#: 
+msgid "Working..."
+msgstr "काम हो रहा है..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "आप {{releaseCount}} रिलीज़ पीछे हैं। यहाँ बताया गया है कि आपको क्या मिलेगा"
+
+#: 
+msgid "click to expand"
+msgstr "विस्तार के लिए क्लिक करें"
+
+#: 
+msgid "pick"
+msgstr "चुनें"
+
+#: 
+msgid "recipient"
+msgstr "प्राप्तकर्ता"
+
+#: 
+msgid "recipients"
+msgstr "प्राप्तकर्ता"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}घ {{mins}}मि शेष"
+
+#: 
+msgid "Add New Deposit"
+msgstr "नई जमा जोड़ें"
+
+#: 
+msgid "Add New Event"
+msgstr "नया कार्यक्रम जोड़ें"
+
+#: 
+msgid "Add New Event Type"
+msgstr "नया कार्यक्रम प्रकार जोड़ें"
+
+#: 
+msgid "Add New Family"
+msgstr "नया परिवार जोड़ें"
+
+#: 
+msgid "Add New Field"
+msgstr "नया फ़ील्ड जोड़ें"
+
+#: 
+msgid "Add New Fund"
+msgstr "नई निधि जोड़ें"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "नया अवसर जोड़ें"
+
+#: 
+msgid "Add New Person"
+msgstr "नया व्यक्ति जोड़ें"
+
+#: 
+msgid "Add New Pledge"
+msgstr "नई प्रतिज्ञा जोड़ें"
+
+#: 
+msgid "Add New Role"
+msgstr "नई भूमिका जोड़ें"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "नया स्वयंसेवी अवसर जोड़ें"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "संडे स्कूल कक्षा जोड़ें"
+
+#: 
+msgid "Delete this family?"
+msgstr "इस परिवार को हटाएँ?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "क्या आप इस परिवार को हटाना चाहते हैं? आपको एक पृष्ठ पर ले जाया जाएगा जहाँ आप चुन सकते हैं कि क्या हटाना है। इसे पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "परिवार हटाने की पुष्टि"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "व्यक्तिगत (कोई परिवार नहीं)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "नए स्व-पंजीकरण"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "संपत्ति प्रकार हटाने की पुष्टि"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "उन नए परिवारों और व्यक्तियों की समीक्षा करें जिन्होंने आपके सार्वजनिक पंजीकरण फ़ॉर्म पर साइन अप किया"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "नीचे अपने सार्वजनिक पंजीकरण फ़ॉर्म से नए साइन-अप की समीक्षा करें। बिना ईमेल या फ़ोन वाली प्रविष्टियाँ चिह्नित हैं — अनुवर्ती कार्रवाई से पहले संपर्क जानकारी सत्यापित करें।"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "स्वयंसेवी अवसर हटाने की पुष्टि"
+

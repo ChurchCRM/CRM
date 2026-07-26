@@ -16871,3 +16871,527 @@ msgstr "målBeløp må være ikke-negativt"
 msgid "thru %s"
 msgstr "t.o.m. %s"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "\"Hvorfor kom\"-notater for %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s av familien %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d flere oppføringer får plass."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d post(er) returnert"
+
+#: 
+msgid "Assign role to all"
+msgstr "Tildel rolle til alle"
+
+#: 
+msgid "Buyer #"
+msgstr "Kjøper #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Kjøpere for denne innsamlingen"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Kalenderinnbygging – tillatte opprinnelser"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM-oversettelser administreres av fellesskapet på POEditor. Du kan bidra ved å"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Avsluttede innskudd"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Gjeldende $URL[0]-verdi"
+
+#: 
+msgid "Custom port"
+msgstr "Egendefinert port"
+
+#: 
+msgid "Data Quality"
+msgstr "Datakvalitet"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Donert av %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "E-postfunksjonalitet er for øyeblikket deaktivert. Følgende funksjoner vil ikke fungere før e-post er aktivert"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Anslått verdi $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Raskeste arbeidsflyt"
+
+#: 
+msgid "File Integrity"
+msgstr "Filintegritet"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filtrer etter loggnivå"
+
+#: 
+msgid "Find the line"
+msgstr "Finn linjen"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Gi individuelle tillatelser"
+
+#: 
+msgid "How to Fix"
+msgstr "Slik løser du det"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Import mislyktes: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Inkluder API-nøkkelen din i forespørsler ved hjelp av x-api-key-hodet"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Hopp til et hvilket som helst oppsettstrinn"
+
+#: 
+msgid "Local development"
+msgstr "Lokal utvikling"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Minste totale beløp"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Minimumsbud $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Ny betaling – %1$s innskudd nr. %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Sjekk mottakerens innboks for å bekrefte levering. Se etter emnet"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Antall linjer som skal vises"
+
+#: 
+msgid "Open Deposits"
+msgstr "Åpne innskudd"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Åpner et 2-minutters vindu for at enheter kan registrere seg på"
+
+#: 
+msgid "Output Method"
+msgstr "Utdataemetode"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Bekreft sletting av denne familieposten"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Bekreft familieinformasjonen din"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Send din neste gave til %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Velg en annen familie å knytte disse gavene til"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Remisseblankett"
+
+#: 
+msgid "Report Heading"
+msgstr "Rapportoverskrift"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Tilbakestilling vil slette permanent"
+
+#: 
+msgid "Show"
+msgstr "Vis"
+
+#: 
+msgid "Signature"
+msgstr "Signatur"
+
+#: 
+msgid "Sort Data by"
+msgstr "Sorter data etter"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Mellomromsseparert liste over opprinnelser med tillatelse til å bygge inn den offentlige eksterne kalendersiden i en iframe. Standard tillater alle opprinnelser."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Mellomromsseparerte opprinnelser med tillatelse til å bygge inn den offentlige kalendersiden i en iframe. Standard tillater alle nettsteder."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Søndagsskolegruppen kan ikke endres, bare i disse to tilfellene"
+
+#: 
+msgid "Supported formats"
+msgstr "Støttede formater"
+
+#: 
+msgid "System Configuration"
+msgstr "Systemkonfigurasjon"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Det er personer tilknyttet denne frivilligoppgaven. Sletting vil fjerne tilknytningen"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Denne verdien kan ikke være kortere enn %d tegn"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Denne verdien kan ikke være lengre enn %d tegn"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Denne verdien kan ikke være mer enn %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Denne verdien må være minst %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Totale innskudd"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Oppdater det til en gyldig URL som"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Bruker autentisert via API-nøkkel: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Gyldige eksempler"
+
+#: 
+msgid "What this plugin does"
+msgstr "Hva denne plugin-modulen gjør"
+
+#: 
+msgid "for all funds"
+msgstr "for alle fond"
+
+#: 
+msgid "for fund"
+msgstr "for fond"
+
+#: 
+msgid "for funds"
+msgstr "for fond"
+
+#: 
+msgid "user"
+msgstr "bruker"
+
+#: 
+msgid "with at least one"
+msgstr "med minst én"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Send også til kirkens adresse ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Er du sikker på at du vil fjerne denne personen fra"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC-modus"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "Sjekket inn {{count}} personer."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "Kirkens e-postadresse legges automatisk til som en fjernbar mottaker når du skriver e-post fra CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "Kirkens e-post – konfigurert på %s-siden."
+
+#: 
+msgid "Closing"
+msgstr "Avslutning"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Koordinater oppdatert"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Kopier adresser"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Kopier kirkens e-post"
+
+#: 
+msgid "Email All Members"
+msgstr "Send e-post til alle medlemmer"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Send e-post til valgte medlemmer"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Slutter med en skråstrek (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Geokoding mislyktes"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Kunne ikke laste inn mottakere. Prøv igjen."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Kunne ikke hente e-postadresser fra utvalget"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Familieinnsjekking mislyktes. Prøv igjen."
+
+#: 
+msgid "Ignore"
+msgstr "Ignorer"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Ignorer ufullstendige adresser"
+
+#: 
+msgid "Kids"
+msgstr "Barn"
+
+#: 
+msgid "Loading family members..."
+msgstr "Laster inn familiemedlemmer..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Laster inn mottakere…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Ingen e-postadresser funnet."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Åpne i e-postklient"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Viderekobler om %s sekunder..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Oppdaterer..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Fjern fra gruppe"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Fjerne {{personName}} fra denne klassen?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Forespørselen mislyktes ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Roller som skal inkluderes"
+
+#: 
+msgid "Select Country"
+msgstr "Velg land"
+
+#: 
+msgid "Select State"
+msgstr "Velg fylke"
+
+#: 
+msgid "Select a person"
+msgstr "Velg en person"
+
+#: 
+msgid "Select role"
+msgstr "Velg rolle"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Velg type (valgfritt)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Begynner med http:// eller https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Denne gruppen har bare én rolle."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Hvem bringer inn {{name}}?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Hvem henter {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "Arbeider..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Du er {{releaseCount}} versjoner etter. Her er hva du vil få"
+
+#: 
+msgid "click to expand"
+msgstr "klikk for å utvide"
+
+#: 
+msgid "pick"
+msgstr "velg"
+
+#: 
+msgid "recipient"
+msgstr "mottaker"
+
+#: 
+msgid "recipients"
+msgstr "mottakere"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}t {{mins}}m igjen"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Legg til nytt innskudd"
+
+#: 
+msgid "Add New Event"
+msgstr "Legg til ny hendelse"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Legg til ny hendelsestype"
+
+#: 
+msgid "Add New Family"
+msgstr "Legg til ny familie"
+
+#: 
+msgid "Add New Field"
+msgstr "Legg til nytt felt"
+
+#: 
+msgid "Add New Fund"
+msgstr "Legg til nytt fond"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Legg til ny mulighet"
+
+#: 
+msgid "Add New Person"
+msgstr "Legg til ny person"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Legg til nytt løfte"
+
+#: 
+msgid "Add New Role"
+msgstr "Legg til ny rolle"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Legg til ny frivilligoppgave"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Legg til søndagsskoleklasse"
+
+#: 
+msgid "Delete this family?"
+msgstr "Slette denne familien?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Vil du slette denne familien? Du vil bli sendt til en side der du velger hva som skal slettes. Dette kan ikke angres."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Bekreft sletting av familie"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Enkeltpersoner (uten familie)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Nye selvregistreringer"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Bekreft sletting av eiendomstype"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Gjennomgå nye familier og enkeltpersoner som registrerte seg på det offentlige registreringsskjemaet"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Gjennomgå nye påmeldinger fra det offentlige registreringsskjemaet nedenfor. Oppføringer uten e-post eller telefon er markert – verifiser kontaktinformasjon før oppfølging."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Bekreft sletting av frivilligoppgave"
+

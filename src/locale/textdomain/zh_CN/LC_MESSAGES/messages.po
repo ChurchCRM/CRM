@@ -16846,3 +16846,527 @@ msgstr "目标金额必须为非负数"
 msgid "thru %s"
 msgstr "至 %s"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "%1$s %2$s 的“来访原因”备注"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s 家庭的 %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "还可容纳 %d 条记录。"
+
+#: 
+msgid "%d record(s) returned"
+msgstr "返回 %d 条记录"
+
+#: 
+msgid "Assign role to all"
+msgstr "为所有人分配角色"
+
+#: 
+msgid "Buyer #"
+msgstr "买家编号"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "此次募捐活动的买家"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "日历嵌入来源"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM 的翻译由社区在 POEditor 上管理，您可以通过以下方式参与贡献"
+
+#: 
+msgid "Closed Deposits"
+msgstr "已关闭的存款"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "当前 $URL[0] 值"
+
+#: 
+msgid "Custom port"
+msgstr "自定义端口"
+
+#: 
+msgid "Data Quality"
+msgstr "数据质量"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "由 %1$s %2$s 捐献。"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "电子邮件功能当前已禁用。以下功能在启用电子邮件之前将无法使用"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "估计价值 $%s。"
+
+#: 
+msgid "Fastest workflow"
+msgstr "最快工作流程"
+
+#: 
+msgid "File Integrity"
+msgstr "文件完整性"
+
+#: 
+msgid "Filter by log level"
+msgstr "按日志级别筛选"
+
+#: 
+msgid "Find the line"
+msgstr "找到该行"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "授予个人权限"
+
+#: 
+msgid "How to Fix"
+msgstr "如何修复"
+
+#: 
+msgid "Import failed: %s"
+msgstr "导入失败：%s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "在请求中使用 x-api-key 请求头包含您的 API 密鐥"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "跳转到任意设置步骤"
+
+#: 
+msgid "Local development"
+msgstr "本地开发"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "最低总金额"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "最低出价 $%s。"
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "新付款 - %1$s 存款编号 %2$s（%3$s）"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "现在请检查收件人收件算确认已送达，查找主题"
+
+#: 
+msgid "Number of lines to display"
+msgstr "显示行数"
+
+#: 
+msgid "Open Deposits"
+msgstr "未结存款"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "为设备开启2分钟注册窗口"
+
+#: 
+msgid "Output Method"
+msgstr "输出方式"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "请确认删除此家庭记录"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "请确认您的家庭信息"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "请将您的下一次奉献邮寄至 %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "请选择另一个家庭与这些奉献关联"
+
+#: 
+msgid "Remittance Slip"
+msgstr "汇款单"
+
+#: 
+msgid "Report Heading"
+msgstr "报告标题"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "重置将永久删除"
+
+#: 
+msgid "Show"
+msgstr "显示"
+
+#: 
+msgid "Signature"
+msgstr "签名"
+
+#: 
+msgid "Sort Data by"
+msgstr "数据排序方式"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "以空格分隔的来源列表，允许将公共外部日历页面嵌入 iframe。默认允许任何来源。"
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "以空格分隔的来源，允许将公共日历页面嵌入 iframe。默认允许任何站点。"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "主日学小组只能在以下两种情况下修改"
+
+#: 
+msgid "Supported formats"
+msgstr "支持的格式"
+
+#: 
+msgid "System Configuration"
+msgstr "系统配置"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "此义工机会已有人员分配，删除将取消分配"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "此値长度不能少于 %d 个字符"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "此値长度不能超过 %d 个字符"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "此値不能超过 %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "此値必须至少为 %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "存款总计"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "将其更新为有效的 URL，该 URL"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "用户已通过 API 密鐥验证：%s"
+
+#: 
+msgid "Valid Examples"
+msgstr "有效示例"
+
+#: 
+msgid "What this plugin does"
+msgstr "此插件的功能"
+
+#: 
+msgid "for all funds"
+msgstr "适用于所有奉献基金"
+
+#: 
+msgid "for fund"
+msgstr "适用于奉献基金"
+
+#: 
+msgid "for funds"
+msgstr "适用于奉献基金"
+
+#: 
+msgid "user"
+msgstr "用户"
+
+#: 
+msgid "with at least one"
+msgstr "至少含有一个"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "同时发送至教会地址（{{email}}）"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "您确定要将此人从以下位置移除吗"
+
+#: 
+msgid "BCC Mode"
+msgstr "密件抄送模式"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "已签到 {{count}} 人。"
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "从 CRM 发送邮件时，教会电子邮件地址将自动添加为可移除的收件人"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "教会电子邮件 — 在 %s 页面中配置。"
+
+#: 
+msgid "Closing"
+msgstr "关闭"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "坐标已更新"
+
+#: 
+msgid "Copy Addresses"
+msgstr "复制地址"
+
+#: 
+msgid "Copy Church Email"
+msgstr "复制教会电子邮件"
+
+#: 
+msgid "Email All Members"
+msgstr "向所有会众发送邮件"
+
+#: 
+msgid "Email Cart Members"
+msgstr "向选定会众发送邮件"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "以斜杠（/）结尾"
+
+#: 
+msgid "Failed to geocode"
+msgstr "地理编码失败"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "加载收件人失败，请重试。"
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "获取选定会众的电子邮件地址失败"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "家庭签到失败，请重试。"
+
+#: 
+msgid "Ignore"
+msgstr "忽略"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "忽略不完整的地址"
+
+#: 
+msgid "Kids"
+msgstr "儿童"
+
+#: 
+msgid "Loading family members..."
+msgstr "正在加载家庭成员……"
+
+#: 
+msgid "Loading recipients…"
+msgstr "正在加载收件人……"
+
+#: 
+msgid "No email addresses found."
+msgstr "未找到电子邮件地址。"
+
+#: 
+msgid "Open in Email Client"
+msgstr "在邮件客户端中打开"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "%s 秒后重定向……"
+
+#: 
+msgid "Refreshing..."
+msgstr "正在刷新……"
+
+#: 
+msgid "Remove from Group"
+msgstr "从小组中移除"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "将 {{personName}} 从此班级移除？"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "请求失败（{{status}}）"
+
+#: 
+msgid "Roles to include"
+msgstr "要包含的角色"
+
+#: 
+msgid "Select Country"
+msgstr "选择国家"
+
+#: 
+msgid "Select State"
+msgstr "选择省/州"
+
+#: 
+msgid "Select a person"
+msgstr "选择一位成员"
+
+#: 
+msgid "Select role"
+msgstr "选择角色"
+
+#: 
+msgid "Select type (optional)"
+msgstr "选择类型（可选）"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "以 http:// 或 https:// 开头"
+
+#: 
+msgid "This group only has one role."
+msgstr "此小组只有一个角色。"
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "谁送 {{name}} 来？"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "谁来接 {{name}}？"
+
+#: 
+msgid "Working..."
+msgstr "处理中……"
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "您落后了 {{releaseCount}} 个版本，以下是您将获得的更新"
+
+#: 
+msgid "click to expand"
+msgstr "点击展开"
+
+#: 
+msgid "pick"
+msgstr "选取"
+
+#: 
+msgid "recipient"
+msgstr "收件人"
+
+#: 
+msgid "recipients"
+msgstr "收件人"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "剩余 {{hours}} 小时 {{mins}} 分钟"
+
+#: 
+msgid "Add New Deposit"
+msgstr "添加新存款"
+
+#: 
+msgid "Add New Event"
+msgstr "添加新活动"
+
+#: 
+msgid "Add New Event Type"
+msgstr "添加新活动类型"
+
+#: 
+msgid "Add New Family"
+msgstr "添加新家庭"
+
+#: 
+msgid "Add New Field"
+msgstr "添加新字段"
+
+#: 
+msgid "Add New Fund"
+msgstr "添加新奉献基金"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "添加新机会"
+
+#: 
+msgid "Add New Person"
+msgstr "添加新会众"
+
+#: 
+msgid "Add New Pledge"
+msgstr "添加新奉献承诺"
+
+#: 
+msgid "Add New Role"
+msgstr "添加新角色"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "添加新义工机会"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "添加主日学班级"
+
+#: 
+msgid "Delete this family?"
+msgstr "删除此家庭？"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "您确定要删除此家庭吗？您将跳转到一个页面选择要删除的内容，此操作无法撤销。"
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "确认删除家庭"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "个人（无家庭）"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "新自主注册"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "确认删除属性类型"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "审核通过公开注册表单注册的新家庭和个人"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "请在下方审核来自公开注册表单的新注册信息。未填写电子邮件或电话的条目已标记——跟进前请核实联系方式。"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "确认删除义工机会"
+

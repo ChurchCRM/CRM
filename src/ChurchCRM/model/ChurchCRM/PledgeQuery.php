@@ -86,6 +86,7 @@ class PledgeQuery extends BasePledgeQuery
         string $sort = 'deposit'
     ): self {
         $this->filterByPledgeOrPayment('Payment');
+        $this->addSelfSelectColumns(); // pin Pledge columns first before any leftJoinWithXxx()
 
         // Apply date filtering based on selected datetype
         if ($datetype === 'Deposit') {
@@ -133,15 +134,15 @@ class PledgeQuery extends BasePledgeQuery
             ->leftJoinWithPerson();
 
         // Add columns from joined tables to avoid needing foreign objects in toArray()
-        $this->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
-            ->withColumn(FamilyTableMap::COL_FAM_ADDRESS1, 'FamilyAddress1')
-            ->withColumn(FamilyTableMap::COL_FAM_ADDRESS2, 'FamilyAddress2')
-            ->withColumn(FamilyTableMap::COL_FAM_CITY, 'FamilyCity')
-            ->withColumn(FamilyTableMap::COL_FAM_STATE, 'FamilyState')
-            ->withColumn(FamilyTableMap::COL_FAM_ZIP, 'FamilyZip')
-            ->withColumn(FamilyTableMap::COL_FAM_COUNTRY, 'FamilyCountry')
-            ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'FundName')
-            ->withColumn(DepositTableMap::COL_DEP_DATE, 'DepositDate');
+        $this->addAsColumn('FamilyName', FamilyTableMap::COL_FAM_NAME)
+            ->addAsColumn('FamilyAddress1', FamilyTableMap::COL_FAM_ADDRESS1)
+            ->addAsColumn('FamilyAddress2', FamilyTableMap::COL_FAM_ADDRESS2)
+            ->addAsColumn('FamilyCity', FamilyTableMap::COL_FAM_CITY)
+            ->addAsColumn('FamilyState', FamilyTableMap::COL_FAM_STATE)
+            ->addAsColumn('FamilyZip', FamilyTableMap::COL_FAM_ZIP)
+            ->addAsColumn('FamilyCountry', FamilyTableMap::COL_FAM_COUNTRY)
+            ->addAsColumn('FundName', DonationFundTableMap::COL_FUN_NAME)
+            ->addAsColumn('DepositDate', DepositTableMap::COL_DEP_DATE);
 
         // Apply sorting
         if ($sort === 'fund') {
