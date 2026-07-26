@@ -173,9 +173,9 @@ class Deposit extends BaseDeposit
         $pledges = PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->groupByGroupKey()
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->addAsColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
             ->joinFamily(null, Criteria::LEFT_JOIN)
-            ->withColumn(FamilyTableMap::COL_FAM_NAME)
+            ->addAsColumn(FamilyTableMap::COL_FAM_NAME)
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
@@ -431,7 +431,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CHECK')
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->addAsColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
@@ -441,7 +441,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CASH')
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->addAsColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
@@ -471,9 +471,9 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
         ->filterByDepId($this->getId())
         ->groupByFundId()
-        ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'Total')
+        ->addAsColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'Total')
         ->joinDonationFund()
-        ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
+        ->addAsColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
         ->orderBy(DonationFundTableMap::COL_FUN_NAME)
         ->select(['Name', 'Total'])
         ->find();

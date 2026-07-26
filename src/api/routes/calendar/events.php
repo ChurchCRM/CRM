@@ -991,13 +991,13 @@ function getEventRoster(Request $request, Response $response, array $args): Resp
             ->filterByGroup($groups)
             ->joinGroup()
             ->addJoinObject($groupTypeJoin)
-            ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME, 'RoleName')
+            ->addAsColumn(ListOptionTableMap::COL_LST_OPTIONNAME, 'RoleName')
         ->endUse()
         ->leftJoinEventAttend()
         ->addJoinCondition('EventAttend', 'event_attend.event_id = ?', $event->getId())
-        ->withColumn('event_attend.checkin_date', 'CheckinDate')
-        ->withColumn('event_attend.checkout_date', 'CheckoutDate')
-        ->withColumn('(CASE WHEN event_attend.event_id IS NOT NULL AND event_attend.checkout_date IS NULL AND event_attend.checkin_date IS NOT NULL THEN \'checked_in\' WHEN event_attend.checkout_date IS NOT NULL THEN \'checked_out\' ELSE \'not_checked_in\' END)', 'AttendStatus')
+        ->addAsColumn('event_attend.checkin_date', 'CheckinDate')
+        ->addAsColumn('event_attend.checkout_date', 'CheckoutDate')
+        ->addAsColumn('(CASE WHEN event_attend.event_id IS NOT NULL AND event_attend.checkout_date IS NULL AND event_attend.checkin_date IS NOT NULL THEN \'checked_in\' WHEN event_attend.checkout_date IS NOT NULL THEN \'checked_out\' ELSE \'not_checked_in\' END)', 'AttendStatus')
         ->find();
 
     $membersArray = [];

@@ -145,7 +145,7 @@ function viewFamily(Request $request, Response $response, array $args): Response
 
     $rawQry = FamilyCustomQuery::create();
     foreach ($allFamilyCustomFields as $customfield) {
-        $rawQry->withColumn($customfield->getField());
+        $rawQry->addAsColumn($customfield->getField());
     }
     $appFamilyCustomFields = $rawQry->findOneByFamId($familyId);
 

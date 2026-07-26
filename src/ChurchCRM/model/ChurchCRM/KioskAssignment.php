@@ -57,10 +57,10 @@ class KioskAssignment extends BaseKioskAssignment
                     ->filterByGroup($groups)
                     ->joinGroup()
                     ->addJoinObject($groupTypeJoin)
-                ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME, 'RoleName')
+                ->addAsColumn(ListOptionTableMap::COL_LST_OPTIONNAME, 'RoleName')
                 ->endUse()
                     ->leftJoin('EventAttend')
-                    ->withColumn('(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)', 'status')
+                    ->addAsColumn('(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)', 'status')
                 ->orderByLastName()
                 ->orderByFirstName()
                 ->find();

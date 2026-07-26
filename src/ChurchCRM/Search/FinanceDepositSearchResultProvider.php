@@ -40,8 +40,8 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
             $Deposits = DepositQuery::create()->filterByComment("%$SearchQuery%", Criteria::LIKE)
                 ->_or()
                 ->filterById($SearchQuery)
-                ->withColumn('CONCAT("#",' . DepositTableMap::COL_DEP_ID . '," ",' . DepositTableMap::COL_DEP_COMMENT . ')', 'displayName')
-                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . DepositTableMap::COL_DEP_ID . ')', 'uri')
+                ->addAsColumn('CONCAT("#",' . DepositTableMap::COL_DEP_ID . '," ",' . DepositTableMap::COL_DEP_COMMENT . ')', 'displayName')
+                ->addAsColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . DepositTableMap::COL_DEP_ID . ')', 'uri')
                 ->limit(SystemConfig::getIntValue('bSearchIncludeDepositsMax'))->find();
 
             if ($Deposits->count() > 0) {

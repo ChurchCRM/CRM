@@ -133,15 +133,15 @@ class PledgeQuery extends BasePledgeQuery
             ->leftJoinWithPerson();
 
         // Add columns from joined tables to avoid needing foreign objects in toArray()
-        $this->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
-            ->withColumn(FamilyTableMap::COL_FAM_ADDRESS1, 'FamilyAddress1')
-            ->withColumn(FamilyTableMap::COL_FAM_ADDRESS2, 'FamilyAddress2')
-            ->withColumn(FamilyTableMap::COL_FAM_CITY, 'FamilyCity')
-            ->withColumn(FamilyTableMap::COL_FAM_STATE, 'FamilyState')
-            ->withColumn(FamilyTableMap::COL_FAM_ZIP, 'FamilyZip')
-            ->withColumn(FamilyTableMap::COL_FAM_COUNTRY, 'FamilyCountry')
-            ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'FundName')
-            ->withColumn(DepositTableMap::COL_DEP_DATE, 'DepositDate');
+        $this->addAsColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
+            ->addAsColumn(FamilyTableMap::COL_FAM_ADDRESS1, 'FamilyAddress1')
+            ->addAsColumn(FamilyTableMap::COL_FAM_ADDRESS2, 'FamilyAddress2')
+            ->addAsColumn(FamilyTableMap::COL_FAM_CITY, 'FamilyCity')
+            ->addAsColumn(FamilyTableMap::COL_FAM_STATE, 'FamilyState')
+            ->addAsColumn(FamilyTableMap::COL_FAM_ZIP, 'FamilyZip')
+            ->addAsColumn(FamilyTableMap::COL_FAM_COUNTRY, 'FamilyCountry')
+            ->addAsColumn(DonationFundTableMap::COL_FUN_NAME, 'FundName')
+            ->addAsColumn(DepositTableMap::COL_DEP_DATE, 'DepositDate');
 
         // Apply sorting
         if ($sort === 'fund') {
