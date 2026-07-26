@@ -23,6 +23,7 @@ use ChurchCRM\Service\DonationFundService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Map\TableMap;
+use Propel\Runtime\Propel;
 
 class FinancialService
 {
@@ -305,17 +306,26 @@ class FinancialService
         }
     }
 
-    public function locateFamilyCheck(string $checkNumber, string $fam_ID)
+    public function locateFamilyCheck(string $checkNumber, string $fam_ID, ?string $excludeGroupKey = null)
     {
         AuthService::requireUserGroupMembership('bFinance');
 
-        return PledgeQuery::create()
+        $query = PledgeQuery::create()
             ->filterByCheckNo($checkNumber)
-            ->filterByFamId((int) $fam_ID)
-            ->count();
+            ->filterByFamId((int) $fam_ID);
+
+        if ($excludeGroupKey !== null) {
+            $query->filterByGroupKey($excludeGroupKey, Criteria::NOT_EQUAL);
+        }
+
+        return $query->count();
     }
 
-    public function validateChecks(object $payment): void
+    /**
+     * @param ?string $excludeGroupKey when editing an existing pledge/payment, exclude its own
+     *                                  rows from the duplicate-check-number lookup
+     */
+    public function validateChecks(object $payment, ?string $excludeGroupKey = null): void
     {
         AuthService::requireUserGroupMembership('bFinance');
         //validate that the payment options are valid
@@ -328,7 +338,7 @@ class FinancialService
         if (!empty($payment->type) && $payment->type === 'Payment' && isset($payment->iCheckNo)) {
             if (!empty($payment->iMethod) && $payment->iMethod === 'CASH') {
                 throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
-            } elseif (!empty($payment->iMethod) && $payment->iMethod === 'CHECK' && !empty($payment->FamilyID) && $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
+            } elseif (!empty($payment->iMethod) && $payment->iMethod === 'CHECK' && !empty($payment->FamilyID) && $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID, $excludeGroupKey)) {
                 //build routine to make sure this check number hasn't been used by this family yet (look at group key)
                 throw new \Exception("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
             }
@@ -353,7 +363,7 @@ class FinancialService
         }
     }
 
-    public function insertPledgeorPayment(object $payment)
+    public function insertPledgeorPayment(object $payment, ?string $presetGroupKey = null)
     {
         AuthService::requireUserGroupMembership('bFinance');
         // Only set PledgeOrPayment when the record is first created.
@@ -365,7 +375,9 @@ class FinancialService
             ? json_decode($payment->FundSplit, false, 512, JSON_THROW_ON_ERROR)
             : $payment->FundSplit;
 
-        $sGroupKey = null;
+        // $presetGroupKey reuses the caller's GroupKey (updatePledgeOrPayment) instead of
+        // generating a new one — the loop below only auto-generates when this is null.
+        $sGroupKey = $presetGroupKey;
 
         foreach ($FundSplit as $Fund) {
             if ($Fund->Amount > 0) {  // Only insert a row if this fund has a non-zero amount.
@@ -455,6 +467,44 @@ class FinancialService
         $this->validateChecks($payment);
         $this->validateDate($payment);
         $groupKey = $this->insertPledgeorPayment($payment);
+
+        return $this->getPledgeorPayment($groupKey);
+    }
+
+    /**
+     * Update an existing pledge/payment group in place.
+     *
+     * GroupKey is a plain string column, not the table's primary key (plg_plgID is),
+     * so replaying insertPledgeorPayment() against an existing GroupKey would create
+     * duplicate rows rather than updating them. Instead, replace the group's rows
+     * atomically: delete the existing rows for $groupKey, then re-insert the submitted
+     * fund rows under that same GroupKey.
+     *
+     * @throws \InvalidArgumentException when the group key does not exist
+     */
+    public function updatePledgeOrPayment(object $payment, string $groupKey): string
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+        $this->normalizeFundSplit($payment);
+        $this->validateFund($payment);
+        $this->validateChecks($payment, $groupKey);
+        $this->validateDate($payment);
+
+        $existingCount = PledgeQuery::create()->filterByGroupKey($groupKey)->count();
+        if ($existingCount === 0) {
+            throw new \InvalidArgumentException('Pledge group not found');
+        }
+
+        $con = Propel::getWriteConnection(PledgeTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+        try {
+            PledgeQuery::create()->filterByGroupKey($groupKey)->delete($con);
+            $this->insertPledgeorPayment($payment, $groupKey);
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+            throw $e;
+        }
 
         return $this->getPledgeorPayment($groupKey);
     }
