@@ -339,7 +339,7 @@ function initializeFAB() {
 
   // Scroll to top when menu toggle is clicked so user sees the nav opening
   // Registered before early return so it works on all pages
-  $("#fab-menu-toggle").on("click", function () {
+  $("#fab-menu-toggle").on("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
