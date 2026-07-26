@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "Tanggal Pernikahan"
 
 #: 
-msgid "Output Method:"
-msgstr "Metode Hasil:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Catatan Individu CSV"
 
@@ -271,42 +267,14 @@ msgstr "Tambahkan cart di Acara"
 msgid "Your cart is empty!"
 msgstr "Cart kosong !"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nama keluarga masih kosong"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Tambahkan Cart di Keluarga"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nama"
 
 #: 
-msgid "Assign Role"
-msgstr "Tentukan peran"
-
-#: 
 msgid "Already in a family"
 msgstr "Terdaftar di keluarga lain"
-
-#: 
-msgid "Create new family"
-msgstr "Buat keluarga baru"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Jika menambah keluarga baru, masukkan data di bawah ini"
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Gunakan alamat/data kontak dari"
-
-#: 
-msgid "Only the new data below"
-msgstr "Hanya data baru di bawah ini"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +287,6 @@ msgstr "Tambahkan ke Keluarga"
 #: 
 msgid "Add Cart to Group"
 msgstr "Tambahkan Cart di Group"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Pilih group yang akan ditambahkan cart"
 
 #: 
 msgid "Select Group"
@@ -401,10 +365,6 @@ msgstr "Aksi"
 #: 
 msgid "Member"
 msgstr "Anggota"
-
-#: 
-msgid " of the"
-msgstr "dari"
 
 #: 
 msgid "(No assigned family)"
@@ -1079,11 +1039,6 @@ msgid "Bank Draft"
 msgstr "Draf Bank"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Jumlah minimum"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0-tidak ada minimum"
 
@@ -1108,10 +1063,6 @@ msgid "All Families"
 msgstr "Semua Keluarga"
 
 #: 
-msgid "Report Heading:"
-msgstr "Judul Laporan"
-
-#: 
 msgid "Graphic"
 msgstr "Grafik"
 
@@ -1122,14 +1073,6 @@ msgstr "Alamat gereja"
 #: 
 msgid "Blank"
 msgstr "Kosong"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Slip Pembayaran"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortir data berdasarkan:"
 
 #: 
 msgid "Deposit"
@@ -1183,10 +1126,6 @@ msgstr "Daftar Penggalangan Dana"
 #: 
 msgid "Date Start"
 msgstr "Tanggal mulai"
-
-#: 
-msgid "Apply Filters"
-msgstr "Terapkan Filter"
 
 #: 
 msgid "Date End"
@@ -1628,10 +1567,6 @@ msgid "Generate Statement"
 msgstr "Buat Pernyataan"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Pembeli untuk pengumpulan dana ini:"
-
-#: 
 msgid "Select all"
 msgstr "Pilih Semua"
 
@@ -1750,10 +1685,6 @@ msgstr "Harus menentukan nomor cek bukan nol"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Nomor cek tidak valid untuk pembayaran 'CASH'"
-
-#: 
-msgid " more entries will fit."
-msgstr "lebih banyak entri akan cocok."
 
 #: 
 msgid "Deposit closed"
@@ -1885,10 +1816,6 @@ msgid "Query Listing"
 msgstr "Daftar Permintaan"
 
 #: 
-msgid " record(s) returned"
-msgstr "catatan dikembalikan"
-
-#: 
 msgid "Query View"
 msgstr "Tampilan Pertanyaan"
 
@@ -1899,22 +1826,6 @@ msgstr "Nilai ini wajib diisi."
 #: 
 msgid "This value must be numeric."
 msgstr "Nilai ini harus berupa angka."
-
-#: 
-msgid "This value must be at least "
-msgstr "Nilai ini harus paling tidak "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Nilai ini tidak boleh lebih dari "
-
-#: 
-msgid " characters long"
-msgstr "karakter panjang"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Nilai ini tidak boleh kurang dari "
 
 #: 
 msgid "Run Query Again"
@@ -1949,20 +1860,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "PERINGATAN: Keluarga ini memiliki catatan donasi dan TIDAK boleh dihapus sampai donasi ini dikaitkan dengan keluarga lain."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Silakan pilih keluarga lain yang akan dikaitkan dengan sumbangan ini:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "PERINGATAN: Tindakan ini tidak dapat diurungkan dan mungkin memiliki implikasi hukum!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "KELUARGA SAAT INI DENGAN DONASI"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Harap konfirmasi penghapusan catatan keluarga ini:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2087,10 +1990,6 @@ msgstr "Editor Peluang Sukarelawan"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Belum ada peluang sukarela yang ditambahkan"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Catatan \"Mengapa Datang\" untuk "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2334,14 +2233,6 @@ msgid "Cell"
 msgstr "Sel"
 
 #: 
-msgid "Estimated value "
-msgstr "Nilai perkiraan "
-
-#: 
-msgid "Donated by "
-msgstr "Disumbangkan oleh "
-
-#: 
 msgid "Paddle"
 msgstr "Mendayung"
 
@@ -2350,16 +2241,8 @@ msgid "Bid"
 msgstr "Tawaran"
 
 #: 
-msgid "Minimum bid "
-msgstr "Tawaran minimum "
-
-#: 
 msgid "All Funds"
 msgstr "Semua Dana"
-
-#: 
-msgid " for all funds"
-msgstr "untuk semua dana"
 
 #: 
 msgid " for fund "
@@ -5028,10 +4911,6 @@ msgid "Group Role"
 msgstr "Peran Kelompok"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ATAU Buat Grup dan tambahkan CART dalam SATU AKSI"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Buat Grup + ADD Cart"
 
@@ -5177,14 +5056,6 @@ msgstr "UserName tidak disetel"
 #: 
 msgid "Self Registrations"
 msgstr "Pendaftaran Mandiri"
-
-#: 
-msgid "Public Calendar"
-msgstr "Kalender Umum"
-
-#: 
-msgid "Private Calendar"
-msgstr "Kalender Pribadi"
 
 #: 
 msgid "Username"
@@ -6057,10 +5928,6 @@ msgstr "Jumlah melebihi batas maksimal."
 #: 
 msgid "Checks"
 msgstr "Cek"
-
-#: 
-msgid "Clear Filters"
-msgstr "Hapus Filter"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7283,10 +7150,6 @@ msgid "open"
 msgstr "terbuka"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Masukkan provinsi jika tidak ada dalam daftar)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurasi URL Dasar tidak valid. Periksa file Config.php."
 
@@ -7650,11 +7513,6 @@ msgstr "Autentikasi Dua Faktor (2FA)"
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Orang ditambahkan ke Keranjang."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d Orang berhasil ditambahkan ke Keluarga yang dipilih."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9388,14 +9246,6 @@ msgstr "Tetapkan dan kelola nomor amplop persembahan"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Tetapkan dan kelola nomor pembeli penggalangan dana"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Tetapkan item daftar ke catatan keluarga"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Tetapkan item daftar ke grup"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11145,11 +10995,6 @@ msgstr "Negara Default"
 #: 
 msgid "Default State"
 msgstr "Negara Default"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Pembatas untuk memisahkan email dalam tautan mailto:"
 
 #: 
 msgid "Distance Unit"
@@ -14777,10 +14622,6 @@ msgid "Code is invalid"
 msgstr "Kode tidak valid"
 
 #: 
-msgid "Coming soon"
-msgstr "Segera hadir"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Konfirmasikan Aktivasi"
 
@@ -16374,10 +16215,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Kolom-kolom ini menggunakan kode pemformatan (huruf yang mewakili bagian tanggal). Pilih preset di bawah setiap kolom, atau buat sendiri menggunakan referensi. Pratinjau langsung menampilkan tampilan tepatnya. Biarkan kosong untuk menggunakan default sistem."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Begini tampilan tanggal dan nomor telepon di seluruh sistem."
-
-#: 
 msgid "Translation completeness"
 msgstr "Kelengkapan Terjemahan"
 
@@ -16801,4 +16638,494 @@ msgstr "Pengguna tidak ditemukan."
 #: 
 msgid "— Select a person —"
 msgstr "— Pilih seseorang —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d penggalangan dana diarsipkan"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d orang berhasil ditambahkan ke keluarga yang dipilih."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "Penggalangan Dana %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s dari target %s terkumpul"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Penggalangan Dana Aktif"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Tambah Penggalangan Dana"
+
+#: 
+msgid "Add Item"
+msgstr "Tambah Item"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Tambahkan orang ke daftar pilihan Anda sebelum menugaskan mereka ke keluarga."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Tambahkan orang ke daftar pilihan Anda terlebih dahulu, lalu kembali untuk menambahkan mereka ke kelompok."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Setelah jumlah (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Semua Status"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Semua orang dalam daftar pilihan Anda sudah berada dalam keluarga. Tidak ada yang dapat ditugaskan."
+
+#: 
+msgid "All types"
+msgstr "Semua jenis"
+
+#: 
+msgid "Already in"
+msgstr "Sudah ada di"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Terjadi kesalahan yang tidak terduga. Silakan coba lagi."
+
+#: 
+msgid "Apply"
+msgstr "Terapkan"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Tugaskan anggota pilihan ke kelompok"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Tugaskan orang dari daftar pilihan ke keluarga"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Tugaskan peran ke semua:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Tugaskan ke Keluarga"
+
+#: 
+msgid "Associated Fund"
+msgstr "Dana Terkait"
+
+#: 
+msgid "At a Glance"
+msgstr "Sekilas Pandang"
+
+#: 
+msgid "Auction Reports"
+msgstr "Laporan Lelang"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Harga Jual Rata-rata"
+
+#: 
+msgid "Back to Cart"
+msgstr "Kembali ke Daftar Pilihan"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Kembali ke Penggalangan Dana"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Sebelum jumlah (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Kehadiran Terbaik Berturut-turut"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Lembar Penawaran"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Laporan Pembeli"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Pembeli Terdaftar"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Pembeli Tahun Ini"
+
+#: 
+msgid "Catalog"
+msgstr "Katalog"
+
+#: 
+msgid "Certificates"
+msgstr "Sertifikat"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Karakter yang digunakan sebagai tanda desimal dalam jumlah uang (misalnya . atau ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Karakter yang digunakan untuk memisahkan ribuan dalam jumlah uang (misalnya , atau .)"
+
+#: 
+msgid "Check-out"
+msgstr "Selesai Belanja"
+
+#: 
+msgid "Choose a group..."
+msgstr "Pilih kelompok..."
+
+#: 
+msgid "Choose family"
+msgstr "Pilih keluarga"
+
+#: 
+msgid "Code"
+msgstr "Kode"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Konfigurasikan cara jumlah uang ditampilkan di seluruh sistem. Saat halaman keuangan diperbarui untuk menggunakan pengaturan ini (epic #8459), simbol, posisi, dan pemisah yang dikonfigurasi di sini akan berlaku di seluruh sistem."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Buat Penggalangan Dana"
+
+#: 
+msgid "Create new family…"
+msgstr "Buat keluarga baru…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Format Mata Uang & Keuangan"
+
+#: 
+msgid "Currency Format"
+msgstr "Format Mata Uang"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Simbol Mata Uang"
+
+#: 
+msgid "Currency presets"
+msgstr "Prasetel mata uang"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Simbol mata uang yang ditampilkan di sebelah jumlah uang (misalnya $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Pemisah Desimal"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Tidak Hadir"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Tanggal akhir harus pada atau setelah tanggal mulai"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Masukkan negara bagian/provinsi untuk negara tanpa daftar negara bagian yang telah ditentukan"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Total Nilai Estimasi"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Semua orang dari kelompok terkait telah hadir!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Gagal memuat riwayat kehadiran."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Nama keluarga wajib diisi saat membuat keluarga baru."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filter berdasarkan jenis acara"
+
+#: 
+msgid "Financials"
+msgstr "Keuangan"
+
+#: 
+msgid "From date"
+msgstr "Dari tanggal"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Ikhtisar Penggalangan Dana"
+
+#: 
+msgid "Fundraisers"
+msgstr "Penggalangan Dana"
+
+#: 
+msgid "Fundraising"
+msgstr "Penggalangan Dana"
+
+#: 
+msgid "Goal %"
+msgstr "% Target"
+
+#: 
+msgid "Goal Amount"
+msgstr "Jumlah Target"
+
+#: 
+msgid "Highest Sale"
+msgstr "Penjualan Tertinggi"
+
+#: 
+msgid "Invalid status value"
+msgstr "Nilai status tidak valid"
+
+#: 
+msgid "Invalid type value"
+msgstr "Nilai jenis tidak valid"
+
+#: 
+msgid "Items"
+msgstr "Item"
+
+#: 
+msgid "Items Donated"
+msgstr "Item yang Disumbangkan"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Item yang Disumbangkan (Tahun Ini)"
+
+#: 
+msgid "Items Sold"
+msgstr "Item Terjual"
+
+#: 
+msgid "Last Attendance"
+msgstr "Kehadiran Terakhir"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Dana Persembahan Terkait"
+
+#: 
+msgid "Live Preview"
+msgstr "Pratinjau Langsung"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Memuat riwayat kehadiran…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Item Multibeli"
+
+#: 
+msgid "New family details"
+msgstr "Detail keluarga baru"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Tidak ada penggalangan dana %s yang ditemukan."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Tidak ada penggalangan dana aktif yang ditemukan."
+
+#: 
+msgid "No attendance records found."
+msgstr "Tidak ada catatan kehadiran yang ditemukan."
+
+#: 
+msgid "No donated items yet."
+msgstr "Belum ada item yang disumbangkan."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Tanggal akhir tidak valid"
+
+#: 
+msgid "Not included"
+msgstr "Tidak termasuk"
+
+#: 
+msgid "People to assign"
+msgstr "Orang yang akan ditugaskan"
+
+#: 
+msgid "Planning"
+msgstr "Perencanaan"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Silakan pilih peran keluarga untuk %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Mengisi kolom di bawah tanpa menyimpan. Klik Simpan untuk menerapkan."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Posisi simbol mata uang relatif terhadap jumlah."
+
+#: 
+msgid "Quick presets"
+msgstr "Prasetel cepat"
+
+#: 
+msgid "Raised"
+msgstr "Terkumpul"
+
+#: 
+msgid "Raised This Year"
+msgstr "Terkumpul Tahun Ini"
+
+#: 
+msgid "Sample Amount"
+msgstr "Jumlah Contoh"
+
+#: 
+msgid "Sell-through"
+msgstr "Tingkat Penjualan"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Karakter tunggal yang digunakan sebagai tanda desimal (misalnya . atau ,). Bawaan: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Karakter tunggal yang digunakan untuk mengelompokkan ribuan (misalnya , atau .). Bawaan: ,"
+
+#: 
+msgid "Sold"
+msgstr "Terjual"
+
+#: 
+msgid "State / Province"
+msgstr "Negara Bagian / Provinsi"
+
+#: 
+msgid "Streak"
+msgstr "Kehadiran Berturut-turut"
+
+#: 
+msgid "Symbol Position"
+msgstr "Posisi Simbol"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Simbol atau kode yang ditampilkan di sebelah jumlah (misalnya $, €, £, CHF, CAD $). Bawaan: $"
+
+#: 
+msgid "Target family"
+msgstr "Keluarga tujuan"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Kelompok tidak dapat ditemukan. Silakan coba lagi."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Keluarga yang dipilih sudah tidak ada. Silakan muat ulang halaman dan coba lagi."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Kelompok yang dipilih tidak ditemukan. Silakan pilih kelompok yang valid."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Beginilah cara tanggal, jumlah mata uang, dan nomor telepon akan ditampilkan di seluruh sistem. Tinjau format saat ini di sini, lalu edit pada bagian di bawah."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Pemisah Ribuan"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Pemisah ribuan dan pemisah desimal harus berupa karakter yang berbeda."
+
+#: 
+msgid "To date"
+msgstr "Hingga tanggal"
+
+#: 
+msgid "Total Events"
+msgstr "Total Acara"
+
+#: 
+msgid "Total Raised"
+msgstr "Total Terkumpul"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Total terkumpul (tanpa target)"
+
+#: 
+msgid "Unsold"
+msgstr "Belum Terjual"
+
+#: 
+msgid "Updates as you type."
+msgstr "Diperbarui saat Anda mengetik."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Apakah simbol muncul sebelum atau sesudah jumlah angka. Bawaan: Sebelum jumlah"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Daftar pilihan Anda kosong. Tambahkan orang ke daftar pilihan Anda terlebih dahulu."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Kode Pos"
+
+#: 
+msgid "events"
+msgstr "acara"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount harus berupa angka non-negatif"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount harus non-negatif"
+
+#: 
+msgid "thru %s"
+msgstr "s.d. %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Pilih peran —"
+
+#: 
+msgid "— pick —"
+msgstr "— pilih —"
 

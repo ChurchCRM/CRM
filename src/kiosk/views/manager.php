@@ -62,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
       <div class="col">
         <strong><?= gettext('Register New Device') ?></strong>
-        <span class="text-body-secondary ms-1"><?= gettext('Opens a 2-minute window for devices to register at:') ?></span>
+        <span class="text-body-secondary ms-1"><?= gettext('Opens a 2-minute window for devices to register at') ?>:</span>
         <code class="ms-1"><?= InputUtils::escapeHTML(SystemURLs::getURL()) ?>/kiosk</code>
       </div>
       <div class="col-auto">

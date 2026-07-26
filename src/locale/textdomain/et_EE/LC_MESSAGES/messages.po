@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "Pulmaaastapäev"
 
 #: 
-msgid "Output Method:"
-msgstr "Väljastus meetod:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV individuaalsed kirjed"
 
@@ -271,42 +267,14 @@ msgstr "Lisa korv üritusele"
 msgid "Your cart is empty!"
 msgstr "Su korv on tühi!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Ühtegi perekonnanime pole lisatud!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Lisa perekond korvi"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nimi"
 
 #: 
-msgid "Assign Role"
-msgstr "Määra roll"
-
-#: 
 msgid "Already in a family"
 msgstr "Juba on perekond"
-
-#: 
-msgid "Create new family"
-msgstr "Loo uus perekond"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Kui lisad uue perekonna, siis lisa andmed allapoole."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Kasuta aadressi/kontakdi andme vormi"
-
-#: 
-msgid "Only the new data below"
-msgstr "Lisa ainult uued andmed allapoole"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +287,6 @@ msgstr "Lisa perekonnale"
 #: 
 msgid "Add Cart to Group"
 msgstr "Lisa korv grupile"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Vali grupp millele sa soovid lisada korvi"
 
 #: 
 msgid "Select Group"
@@ -401,10 +365,6 @@ msgstr "Tegevus"
 #: 
 msgid "Member"
 msgstr "Liige"
-
-#: 
-msgid " of the"
-msgstr "selle "
 
 #: 
 msgid "(No assigned family)"
@@ -1078,11 +1038,6 @@ msgid "Bank Draft"
 msgstr "Panga mustand"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Minimaalne kogusumma:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - miinimum puudub"
 
@@ -1107,10 +1062,6 @@ msgid "All Families"
 msgstr "Kõik pered"
 
 #: 
-msgid "Report Heading:"
-msgstr "Aruande pealkiri:"
-
-#: 
 msgid "Graphic"
 msgstr "Graafika"
 
@@ -1121,14 +1072,6 @@ msgstr "Kiriku/Koguduse Aadress"
 #: 
 msgid "Blank"
 msgstr "Tühi"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Rahaülekandelipik:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sorteeri andmed:"
 
 #: 
 msgid "Deposit"
@@ -1182,10 +1125,6 @@ msgstr "Rahakogumisüritus nimekiri"
 #: 
 msgid "Date Start"
 msgstr "Alguskuupäev"
-
-#: 
-msgid "Apply Filters"
-msgstr "Rakenda filtrid"
 
 #: 
 msgid "Date End"
@@ -1627,10 +1566,6 @@ msgid "Generate Statement"
 msgstr "Loo aranne"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Selle fondikoguja ostjad:"
-
-#: 
 msgid "Select all"
 msgstr "Vali kõik"
 
@@ -1749,10 +1684,6 @@ msgstr "Peab määrama kontrollnumbri, mis ei ole null"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Tšeki number ei kehti 'CASH' makse korral"
-
-#: 
-msgid " more entries will fit."
-msgstr " rohkem sissekandeid sobib."
 
 #: 
 msgid "Deposit closed"
@@ -1884,10 +1815,6 @@ msgid "Query Listing"
 msgstr "Päringute loetelu"
 
 #: 
-msgid " record(s) returned"
-msgstr " kirjet (id) tagastatud"
-
-#: 
 msgid "Query View"
 msgstr "Päringumenüüsse"
 
@@ -1898,22 +1825,6 @@ msgstr "See väärtus on vajalik."
 #: 
 msgid "This value must be numeric."
 msgstr "See väärtus peab olema numbriline."
-
-#: 
-msgid "This value must be at least "
-msgstr "See väärtus peab olema vähemalt "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "See väärtus ei saa olla suurem kui "
-
-#: 
-msgid " characters long"
-msgstr " tähemärki pikk"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "See väärtus ei tohi olla väiksem kui "
 
 #: 
 msgid "Run Query Again"
@@ -1948,20 +1859,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "HOIATUS: Sellel perekonnal on annetuste kirjed ja seda EI tohi kustutada, kuni need annetused on seotud mõne muu perega."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Valige teine pere, kellega neid annetusi seostada:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "HOIATUS: Seda toimingut ei saa tagasi võtta ja sellel võib olla juriidiline tähendus!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "HETKESE PEREKONNA ANNETUSED"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Kinnitage selle perekonna kirje kustutamine:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2086,10 +1989,6 @@ msgstr "Vabatahtlike võimaluste muutija"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Vabatahtlike võimalusi pole veel lisatud"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"Miks tuli\" märkmed "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2333,14 +2232,6 @@ msgid "Cell"
 msgstr "Mobiil"
 
 #: 
-msgid "Estimated value "
-msgstr "Eeldatav väärtus "
-
-#: 
-msgid "Donated by "
-msgstr "Annetanud "
-
-#: 
 msgid "Paddle"
 msgstr "Segaja"
 
@@ -2349,16 +2240,8 @@ msgid "Bid"
 msgstr "Pakkumine"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimaalne pakkumine "
-
-#: 
 msgid "All Funds"
 msgstr "Kõik fondid"
-
-#: 
-msgid " for all funds"
-msgstr "kõigi fondide jaoks"
 
 #: 
 msgid " for fund "
@@ -5026,10 +4909,6 @@ msgid "Group Role"
 msgstr "Grupi roll"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "VÕI looge grupp ja lisage KORVI ÜHES TEGEVUSES"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Loo grupp + LISA KORVI"
 
@@ -5175,14 +5054,6 @@ msgstr "Kasutajanimi pole määratud"
 #: 
 msgid "Self Registrations"
 msgstr "Enda registreerimised"
-
-#: 
-msgid "Public Calendar"
-msgstr "Avalik kalender"
-
-#: 
-msgid "Private Calendar"
-msgstr "Privaatne kalender"
 
 #: 
 msgid "Username"
@@ -6064,10 +5935,6 @@ msgstr "Summa ületab maksimaalse lubatud väärtuse (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Tsekkid"
-
-#: 
-msgid "Clear Filters"
-msgstr "Puhasta filtrid"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7292,10 +7159,6 @@ msgid "open"
 msgstr "ava"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Sisestage riik/provintsi riikide jaoks ilma eelmääratletud osariikideta)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Base URL konfiguratsioon on sobimatu. Palun kontrollige oma Config.php faili."
 
@@ -7660,12 +7523,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d inimene lisati ostukorvi."
 msgstr[1] "%d inimest lisati ostukorvi."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d inimene lisati edukalt valitud perekonda."
-msgstr[1] "%d inimest lisati edukalt valitud perekonda."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9403,14 +9260,6 @@ msgstr "Määrake ja hallake annetuste ümbriku numbreid"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Määrake ja hallake korjandusürituse ostjate numbreid"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Määrake valiku üksused perekonna kirjele"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Määrake valiku üksused grupile"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11160,11 +11009,6 @@ msgstr "Vaikeriik"
 #: 
 msgid "Default State"
 msgstr "Vaike olek"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Eraldaja e-kirjade eraldamiseks mailto: linkides"
 
 #: 
 msgid "Distance Unit"
@@ -14793,10 +14637,6 @@ msgid "Code is invalid"
 msgstr "Kood on sobimatu"
 
 #: 
-msgid "Coming soon"
-msgstr "Varsti tulemas"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Kinnitage aktiveerimine"
 
@@ -16391,10 +16231,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Need väljad kasutavad vormindamiskoode (tähed, mis tähistavad kuupäeva osi). Valige eelseadistus iga välja alt või looge oma viite abil. Reaalajas eelvaade näitab täpselt, kuidas see välja näeb. Jätke tühjaks süsteemi vaikeväärtuse kasutamiseks."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Nii ilmuvad kuupäevad ja telefoninumbrid kogu süsteemis."
-
-#: 
 msgid "Translation completeness"
 msgstr "Tõlke täielikkus"
 
@@ -16818,4 +16654,496 @@ msgstr "Kasutajat ei leitud."
 #: 
 msgid "— Select a person —"
 msgstr "— Vali isik —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d arhiveeritud kogumisaktsioon"
+msgstr[1] "%d arhiveeritud kogumiskampaaniat"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d isik lisati valitud perekonda."
+msgstr[1] "%d isikut lisati valitud perekonda."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s kogumiskampaaniad"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s eesmärgist %s kogutud"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktiivsed kogumiskampaaniad"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Lisa kogumiskampaania"
+
+#: 
+msgid "Add Item"
+msgstr "Lisa ese"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Lisa inimesed oma valikusse enne perekonnale määramist."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Lisa esmalt inimesed oma valikusse, seejärel tule tagasi ja lisa nad gruppi."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Summa järel (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Kõik staatused"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Kõik valikus olevad inimesed on juba perekonnas. Kedagi ei saa määrata."
+
+#: 
+msgid "All types"
+msgstr "Kõik tüübid"
+
+#: 
+msgid "Already in"
+msgstr "Juba lisatud"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Ilmnes ootamatu viga. Palun proovige uuesti."
+
+#: 
+msgid "Apply"
+msgstr "Rakenda"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Määra valiku liikmed gruppi"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Määra valikus olevad inimesed perekonnale"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Määra roll kõigile:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Määra perekonnale"
+
+#: 
+msgid "Associated Fund"
+msgstr "Seotud fond"
+
+#: 
+msgid "At a Glance"
+msgstr "Ülevaade"
+
+#: 
+msgid "Auction Reports"
+msgstr "Oksjoni aruanded"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Keskmine müügihind"
+
+#: 
+msgid "Back to Cart"
+msgstr "Tagasi valikusse"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Tagasi kogumiskampaaniate juurde"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Summa ees (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Parim järjestik"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Pakkumislehed"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Ostja aruanded"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Registreeritud ostjaid"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Ostjaid sel aastal"
+
+#: 
+msgid "Catalog"
+msgstr "Kataloog"
+
+#: 
+msgid "Certificates"
+msgstr "Tõendid"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Rahasummades kümnendkoha eraldajana kasutatav märk (nt . või ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Rahasummades tuhandete eraldajana kasutatav märk (nt , või .)"
+
+#: 
+msgid "Check-out"
+msgstr "Väljaregistreerimine"
+
+#: 
+msgid "Choose a group..."
+msgstr "Vali grupp..."
+
+#: 
+msgid "Choose family"
+msgstr "Vali perekond"
+
+#: 
+msgid "Code"
+msgstr "Kood"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Seadistage, kuidas rahasummad kogu süsteemis kuvatakse. Kui finantslehed uuendatakse neid seadeid kasutama (epic #8459), rakenduvad siin seadistatud sümbol, asend ja eraldajad kogu süsteemis."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Loo kogumiskampaania"
+
+#: 
+msgid "Create new family…"
+msgstr "Loo uus perekond…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Valuuta ja finantsformaadid"
+
+#: 
+msgid "Currency Format"
+msgstr "Valuutaformaat"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Valuutasümbol"
+
+#: 
+msgid "Currency presets"
+msgstr "Valuuta eelseaded"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Rahasummade kõrval kuvatav valuutasümbol (nt $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Kümnendkoha eraldaja"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Ei osalenud"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Lõppkuupäev peab olema alguskuupäevaga samal päeval või hiljem"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Sisestage riigi/maakond riikide jaoks, millel puuduvad eelmääratletud osariigid"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Hinnanguline koguväärtus"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Kõik seotud gruppide liikmed on registreeritud!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Kohaloleku ajaloo laadimine ebaõnnestus."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Perekonna nime loomine nõuab perekonnanime sisestamist."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filtreeri sündmuse tüübi järgi"
+
+#: 
+msgid "Financials"
+msgstr "Rahandus"
+
+#: 
+msgid "From date"
+msgstr "Alguskuupäev"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Kogumiskampaania ülevaade"
+
+#: 
+msgid "Fundraisers"
+msgstr "Kogumiskampaaniad"
+
+#: 
+msgid "Fundraising"
+msgstr "Annetuste kogumine"
+
+#: 
+msgid "Goal %"
+msgstr "Eesmärk %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Eesmärgi summa"
+
+#: 
+msgid "Highest Sale"
+msgstr "Kõrgeim müük"
+
+#: 
+msgid "Invalid status value"
+msgstr "Vigane staatuse väärtus"
+
+#: 
+msgid "Invalid type value"
+msgstr "Vigane tüübi väärtus"
+
+#: 
+msgid "Items"
+msgstr "Esemed"
+
+#: 
+msgid "Items Donated"
+msgstr "Annetatud esemed"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Annetatud esemed (sel aastal)"
+
+#: 
+msgid "Items Sold"
+msgstr "Müüdud esemed"
+
+#: 
+msgid "Last Attendance"
+msgstr "Viimane osalemine"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Seotud annetusfond"
+
+#: 
+msgid "Live Preview"
+msgstr "Reaalajas eelvaade"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Kohaloleku ajaloo laadimine…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Mitmeostu esemed"
+
+#: 
+msgid "New family details"
+msgstr "Uue perekonna andmed"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Ühtegi %s kogumiskampaaniat ei leitud."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Aktiivseid kogumiskampaaniaid ei leitud."
+
+#: 
+msgid "No attendance records found."
+msgstr "Kohaloleku kirjeid ei leitud."
+
+#: 
+msgid "No donated items yet."
+msgstr "Annetatud esemeid pole veel."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Vigane lõppkuupäev"
+
+#: 
+msgid "Not included"
+msgstr "Ei ole kaasatud"
+
+#: 
+msgid "People to assign"
+msgstr "Määratavad isikud"
+
+#: 
+msgid "Planning"
+msgstr "Planeerimine"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Palun valige %s jaoks perekonna roll."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Täidab allpool olevad väljad ilma salvestamata. Rakendamiseks klõpsake Salvesta."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Valuutasümboli asukoht summa suhtes."
+
+#: 
+msgid "Quick presets"
+msgstr "Kiireelseaded"
+
+#: 
+msgid "Raised"
+msgstr "Kogutud"
+
+#: 
+msgid "Raised This Year"
+msgstr "Kogutud sel aastal"
+
+#: 
+msgid "Sample Amount"
+msgstr "Näidissumma"
+
+#: 
+msgid "Sell-through"
+msgstr "Müügiläbiminek"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Üksik märk kümnendkoha eraldajana (nt . või ,). Vaikeväärtus: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Üksik märk tuhandete grupeerimiseks (nt , või .). Vaikeväärtus: ,"
+
+#: 
+msgid "Sold"
+msgstr "Müüdud"
+
+#: 
+msgid "State / Province"
+msgstr "Maakond / provints"
+
+#: 
+msgid "Streak"
+msgstr "Järjestik"
+
+#: 
+msgid "Symbol Position"
+msgstr "Sümboli asukoht"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Summade kõrval kuvatav sümbol või kood (nt $, €, £, CHF, CAD $). Vaikeväärtus: $"
+
+#: 
+msgid "Target family"
+msgstr "Sihtperekond"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Gruppi ei leitud. Palun proovige uuesti."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Valitud perekond ei eksisteeri enam. Palun värskendage lehte ja proovige uuesti."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Valitud gruppi ei leitud. Palun valige kehtiv grupp."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Nii kuvatakse kuupäevad, rahasummad ja telefoninumbrid kogu süsteemis. Vaadake praegused formaadid siin üle, seejärel muutke neid allpool olevates osades."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Tuhandete eraldaja"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Tuhandete eraldaja ja kümnendkoha eraldaja peavad olema erinevad märgid."
+
+#: 
+msgid "To date"
+msgstr "Lõppkuupäev"
+
+#: 
+msgid "Total Events"
+msgstr "Sündmusi kokku"
+
+#: 
+msgid "Total Raised"
+msgstr "Kokku kogutud"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Kokku kogutud (eesmärk puudub)"
+
+#: 
+msgid "Unsold"
+msgstr "Müümata"
+
+#: 
+msgid "Updates as you type."
+msgstr "Uueneb kirjutamise ajal."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Kas sümbol kuvatakse numbrilisel summal ees või järel. Vaikeväärtus: summa ees"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Teie valik on tühi. Lisage esmalt inimesed oma valikusse."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Postiindeks"
+
+#: 
+msgid "events"
+msgstr "sündmused"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount peab olema mitte-negatiivne arv"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount peab olema mitte-negatiivne"
+
+#: 
+msgid "thru %s"
+msgstr "kuni %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Vali roll —"
+
+#: 
+msgid "— pick —"
+msgstr "— vali —"
 

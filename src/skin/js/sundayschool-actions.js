@@ -4,7 +4,7 @@
  * Uses BS5 modals with TomSelect (same pattern as person-group-manager.js).
  * Reads person IDs from `.ss-member[data-person-id][data-role]` elements.
  */
-(function () {
+(() => {
   var SS_MODAL_ID = "ssActionModal";
 
   function createModal(title, bodyHtml) {
@@ -43,7 +43,7 @@
 
     wrapper.addEventListener(
       "hidden.bs.modal",
-      function () {
+      () => {
         modal.dispose();
         wrapper.remove();
       },
@@ -78,25 +78,23 @@
     var selectedGroupId = null;
     var selectedRoleId = null;
 
-    window.CRM.groups.get().done(function (groups) {
+    window.CRM.groups.get().done((groups) => {
       var groupEl = document.getElementById("ss-group-select");
       populateSelect(
         groupEl,
-        groups.map(function (g) {
-          return { value: String(g.Id), text: g.Name };
-        }),
+        groups.map((g) => ({ value: String(g.Id), text: g.Name })),
       );
 
       result.el.addEventListener(
         "shown.bs.modal",
-        function () {
+        () => {
           var roleWrapper = document.getElementById("ss-role-wrapper");
           var roleEl = document.getElementById("ss-role-select");
 
           new window.TomSelect(groupEl, {
             placeholder: i18next.t("Search groups..."),
             items: [],
-            onChange: function (value) {
+            onChange: (value) => {
               selectedGroupId = value || null;
               if (!value) {
                 roleWrapper.classList.add("d-none");
@@ -107,7 +105,7 @@
               roleEl.innerHTML = "";
               roleWrapper.classList.add("d-none");
 
-              window.CRM.groups.getRoles(value).done(function (roles) {
+              window.CRM.groups.getRoles(value).done((roles) => {
                 if (roles.length === 0) {
                   selectedRoleId = null;
                   result.confirm.disabled = false;
@@ -120,14 +118,12 @@
                 }
                 populateSelect(
                   roleEl,
-                  roles.map(function (r) {
-                    return { value: String(r.OptionId), text: i18next.t(r.OptionName) };
-                  }),
+                  roles.map((r) => ({ value: String(r.OptionId), text: i18next.t(r.OptionName) })),
                 );
                 roleWrapper.classList.remove("d-none");
                 result.confirm.disabled = false;
                 new window.TomSelect(roleEl, {
-                  onChange: function (v) {
+                  onChange: (v) => {
                     selectedRoleId = v || null;
                   },
                 });
@@ -142,7 +138,7 @@
       result.modal.show();
     });
 
-    result.confirm.addEventListener("click", function () {
+    result.confirm.addEventListener("click", () => {
       if (!selectedGroupId) return;
       result.confirm.disabled = true;
       result.modal.hide();
@@ -161,93 +157,14 @@
     return ids;
   }
 
-  $(document).ready(function () {
+  $(document).ready(() => {
     // Print button
-    $("#printClass").on("click", function () {
+    $("#printClass").on("click", () => {
       window.print();
     });
 
-    // ------------------------------------------------------------------ //
-    // Email dropdown: populate on first open
-    // ------------------------------------------------------------------ //
-    var ssEmailLoaded = false;
-    $("#ssEmailDropdownBtn")
-      .parent()
-      .on("show.bs.dropdown", function () {
-        if (ssEmailLoaded) return;
-        ssEmailLoaded = true;
-        window.CRM.APIRequest({
-          method: "GET",
-          path: "groups/" + window.CRM.currentGroup + "/sundayschool/emails",
-        }).done(function (data) {
-          var menu = $("#ssEmailDropdownMenu");
-          menu.empty();
-          if (!data.all) {
-            menu.html(
-              '<span class="dropdown-item text-muted">' + i18next.t("No email addresses available") + "</span>",
-            );
-            return;
-          }
-          // All section
-          menu.append(
-            '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
-              window.CRM.escapeHtml(data.all) +
-              '"><i class="fa-solid fa-copy me-2"></i>' +
-              i18next.t("Copy All Emails") +
-              "</button>",
-          );
-          menu.append(
-            '<button class="dropdown-item" data-action="mailto" data-emails="' +
-              window.CRM.escapeHtml(data.all) +
-              '"><i class="fa-solid fa-envelope me-2"></i>' +
-              i18next.t("Email All") +
-              "</button>",
-          );
-          menu.append(
-            '<button class="dropdown-item" data-action="bcc" data-emails="' +
-              window.CRM.escapeHtml(data.all) +
-              '"><i class="fa-solid fa-user-secret me-2"></i>' +
-              i18next.t("BCC All") +
-              "</button>",
-          );
-          // Per-role sections (teachers, students, parents)
-          var roleMap = {
-            teachers: { label: i18next.t("Teachers"), icon: "fa-person-chalkboard" },
-            parents: { label: i18next.t("Parents"), icon: "fa-users" },
-            kids: { label: i18next.t("Students"), icon: "fa-child" },
-          };
-          $.each(roleMap, function (key, meta) {
-            if (!data[key]) return;
-            menu.append('<div class="dropdown-divider"></div>');
-            menu.append('<h6 class="dropdown-header">' + meta.label + "</h6>");
-            menu.append(
-              '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
-                window.CRM.escapeHtml(data[key]) +
-                '"><i class="fa-solid fa-copy me-2"></i>' +
-                i18next.t("Copy") +
-                "</button>",
-            );
-            menu.append(
-              '<button class="dropdown-item" data-action="mailto" data-emails="' +
-                window.CRM.escapeHtml(data[key]) +
-                '"><i class="fa-solid fa-envelope me-2"></i>' +
-                i18next.t("Email") +
-                "</button>",
-            );
-          });
-        });
-      });
-
-    // Handle email actions (delegated)
-    $("#ss-action-toolbar").on("click", "[data-action='copy-emails']", function () {
-      window.CRM.comm.copyEmails($(this).data("emails"));
-    });
-    $("#ss-action-toolbar").on("click", "[data-action='mailto']", function () {
-      window.CRM.comm.openMailto($(this).data("emails"));
-    });
-    $("#ss-action-toolbar").on("click", "[data-action='bcc']", function () {
-      window.CRM.comm.openBcc($(this).data("emails"));
-    });
+    // Note: email action is handled by the email-composer.min.js bundle
+    // which auto-wires the [data-email-composer] button on the toolbar.
 
     // ------------------------------------------------------------------ //
     // Text dropdown: populate on first open
@@ -255,13 +172,13 @@
     var ssTextLoaded = false;
     $("#ssTextDropdownBtn")
       .parent()
-      .on("show.bs.dropdown", function () {
+      .on("show.bs.dropdown", () => {
         if (ssTextLoaded) return;
         ssTextLoaded = true;
         window.CRM.APIRequest({
           method: "GET",
           path: "groups/" + window.CRM.currentGroup + "/sundayschool/phones",
-        }).done(function (data) {
+        }).done((data) => {
           var menu = $("#ssTextDropdownMenu");
           menu.empty();
           if (!data.all || !data.all.phones || !data.all.phones.length) {
@@ -285,7 +202,7 @@
             students: { label: i18next.t("Students"), icon: "fa-child" },
             parents: { label: i18next.t("Parents"), icon: "fa-users" },
           };
-          $.each(roleMap, function (key, meta) {
+          $.each(roleMap, (key, meta) => {
             if (!data[key] || !data[key].phones || !data[key].phones.length) return;
             menu.append('<div class="dropdown-divider"></div>');
             menu.append('<h6 class="dropdown-header">' + meta.label + "</h6>");
@@ -319,18 +236,18 @@
       window.CRM.comm.openSms(phones);
     });
 
-    window.CRM.onLocalesReady(function () {
+    window.CRM.onLocalesReady(() => {
       // Copy to Group
       $(document).on("click", ".ss-copy-role", function (e) {
         e.preventDefault();
         var role = $(this).data("role");
-        showGroupAndRoleModal(i18next.t("Copy Members to Group"), function (data) {
+        showGroupAndRoleModal(i18next.t("Copy Members to Group"), (data) => {
           var ids = getPersonIdsByRole(role);
-          ids.forEach(function (personId) {
+          ids.forEach((personId) => {
             window.CRM.groups.addPerson(data.GroupID, personId, data.RoleID);
           });
           if (ids.length > 0) {
-            window.CRM.notify(i18next.t("Copied") + " " + ids.length + " " + i18next.t("members"), {
+            window.CRM.notify(i18next.t("Copied {{count}} members", { count: ids.length }), {
               type: "success",
               delay: 3000,
             });
@@ -355,16 +272,16 @@
             confirm: { label: i18next.t("Move"), className: "btn-warning" },
             cancel: { label: i18next.t("Cancel") },
           },
-          callback: function (result) {
+          callback: (result) => {
             if (!result) return;
-            showGroupAndRoleModal(i18next.t("Move Members to Group"), function (data) {
+            showGroupAndRoleModal(i18next.t("Move Members to Group"), (data) => {
               var ids = getPersonIdsByRole(role);
-              ids.forEach(function (personId) {
+              ids.forEach((personId) => {
                 window.CRM.groups.addPerson(data.GroupID, personId, data.RoleID);
                 window.CRM.groups.removePerson(window.CRM.currentGroup, personId);
               });
               if (ids.length > 0) {
-                setTimeout(function () {
+                setTimeout(() => {
                   location.reload();
                 }, 1500);
               }

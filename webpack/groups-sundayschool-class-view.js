@@ -97,10 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const $btn = $(this);
     const groupId = $btn.data("group-id");
     const personId = $btn.data("person-id");
-    const personName = window.CRM.escapeHtml(String($btn.data("person-name") || ""));
+    const personName = String($btn.data("person-name") || "");
 
     bootbox.confirm({
-      message: `${i18next.t("Remove")} <strong>${personName}</strong> ${i18next.t("from this class?")}`,
+      message: i18next.t("Remove {{personName}} from this class?", { personName }),
       buttons: {
         confirm: { label: i18next.t("Remove"), className: "btn-warning" },
         cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },

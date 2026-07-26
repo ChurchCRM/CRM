@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "ஆண்டுவிழா தேதி"
 
 #: 
-msgid "Output Method:"
-msgstr "வெளியீட்டு முறை:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV தனிப்பட்ட பதிவுகள்"
 
@@ -271,42 +267,14 @@ msgstr "நிகழ்வில் மென்வண்டியைச் ச�
 msgid "Your cart is empty!"
 msgstr "உங்கள் மென்வண்டி காலியாக உள்ளது!"
 
-#: 
-msgid "No family name entered!"
-msgstr "குடும்பப் பெயர் சேர்க்கபடவில்லை!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "குடும்பத்தில் மென்வண்டியைச் சேர்க்கவும்"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "பெயர்"
 
 #: 
-msgid "Assign Role"
-msgstr "நியமிக்கப்பட்ட பங்கு"
-
-#: 
 msgid "Already in a family"
 msgstr "ஏற்கனவே ஒரு குடும்பத்தில் உள்ளது"
-
-#: 
-msgid "Create new family"
-msgstr "புதிய குடும்பத்தை உருவாக்குங்கள்"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "புதிய குடும்பத்தைச் சேர்த்தால், கீழே தகவலை உள்ளிடவும்"
-
-#: 
-msgid "Use address/contact data from"
-msgstr "இலிருந்து முகவரி/தொடர்புத் தகவலைப் பயன்படுத்தவும்"
-
-#: 
-msgid "Only the new data below"
-msgstr "புதிய தகவல் மட்டுமே கீழே உள்ளது"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +287,6 @@ msgstr "குடும்பத்தில் சேர்க்கவும�
 #: 
 msgid "Add Cart to Group"
 msgstr "குழுவில் மென்வண்டியைச் சேர்க்கவும்"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "உங்கள் மென்வண்டியில் நீங்கள் சேர்க்க விரும்பும் குழுவைத் தேர்ந்தெடுக்கவும்"
 
 #: 
 msgid "Select Group"
@@ -401,10 +365,6 @@ msgstr "செயல்"
 #: 
 msgid "Member"
 msgstr "உறுப்பினர்"
-
-#: 
-msgid " of the"
-msgstr "␣ இன்"
 
 #: 
 msgid "(No assigned family)"
@@ -1078,10 +1038,6 @@ msgid "Bank Draft"
 msgstr "வங்கி வரைவு"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "குறைந்தபட்ச மொத்தத் தொகை:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - குறைந்தபட்சம் இல்லை"
 
@@ -1106,10 +1062,6 @@ msgid "All Families"
 msgstr "அனைத்து குடும்பங்களும்"
 
 #: 
-msgid "Report Heading:"
-msgstr "அறிக்கை தலைப்பு:"
-
-#: 
 msgid "Graphic"
 msgstr "கிராஃபிக்/கணினி வரைகலை"
 
@@ -1120,14 +1072,6 @@ msgstr "சபையின்/தேவாலய முகவரி"
 #: 
 msgid "Blank"
 msgstr "வெற்று இடம்"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "பணம் அனுப்பும் சீட்டு:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "இதன்படி தரவை/தகவல்களை வரிசைப்படுத்தவும்:"
 
 #: 
 msgid "Deposit"
@@ -1181,10 +1125,6 @@ msgstr "நிதி திரட்டுபவர் பட்டியல்"
 #: 
 msgid "Date Start"
 msgstr "தேதி தொடக்கம்"
-
-#: 
-msgid "Apply Filters"
-msgstr "வடிப்பான்களைப் பயன்படுத்து"
 
 #: 
 msgid "Date End"
@@ -1626,10 +1566,6 @@ msgid "Generate Statement"
 msgstr "அறிக்கையை உருவாக்கவும்"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "இந்த நிதி திரட்டலுக்கான வாங்குபவர்கள்:"
-
-#: 
 msgid "Select all"
 msgstr "அனைத்தையும் தெரிவுசெய்"
 
@@ -1748,10 +1684,6 @@ msgstr "பூஜ்ஜியம் அல்லாத காசோலை எண
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "'CASH'/'பணம்' கட்டணத்திற்குச் சரிபார்ப்பு எண் செல்லாது"
-
-#: 
-msgid " more entries will fit."
-msgstr "␣ மேலும் உள்ளீடுகள் பொருந்தும்."
 
 #: 
 msgid "Deposit closed"
@@ -1883,10 +1815,6 @@ msgid "Query Listing"
 msgstr "வினவல் பட்டியல்"
 
 #: 
-msgid " record(s) returned"
-msgstr "␣பதிவு(கள்) திரும்பியது"
-
-#: 
 msgid "Query View"
 msgstr "வினவல் பார்வை"
 
@@ -1897,22 +1825,6 @@ msgstr "இந்த மதிப்பு தேவை."
 #: 
 msgid "This value must be numeric."
 msgstr "இந்த மதிப்பு எண்ணாக இருக்க வேண்டும்."
-
-#: 
-msgid "This value must be at least "
-msgstr "இந்த மதிப்பு குறைந்தபட்சம்␣ ஆக இருக்க வேண்டும்"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "இந்த மதிப்பு␣ ஐ விட அதிகமாக இருக்கக்கூடாது"
-
-#: 
-msgid " characters long"
-msgstr "␣ எழுத்துக்கள் நீளமானது"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "இந்த மதிப்பு␣ ஐ விட குறைவாக இருக்கக்கூடாது"
 
 #: 
 msgid "Run Query Again"
@@ -1947,20 +1859,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "எச்சரிக்கை: இந்தக் குடும்பத்தில் நன்கொடைகள் பற்றிய பதிவுகள் உள்ளன, மேலும் இந்த நன்கொடைகள் வேறொரு குடும்பத்துடன் இணைக்கப்படும் வரை அவை நீக்கப்படாமல் போகலாம்."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "இந்த நன்கொடைகளை இணைக்கும் மற்றொரு குடும்பத்தைத் தேர்ந்தெடுக்கவும்:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "எச்சரிக்கை: இந்தச் செயலைச் செயல்தவிர்க்க முடியாது மேலும் சட்டரீதியான தாக்கங்களையும் ஏற்படுத்தலாம்!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "நன்கொடைகளுடன் தற்போதைய குடும்பம்"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "இந்தக் குடும்பப் பதிவை நீக்குவதை உறுதிப்படுத்தவும்:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2085,10 +1989,6 @@ msgstr "தன்னார்வ வாய்ப்பு ஆசிரியர�
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "தன்னார்வ வாய்ப்புகள் எதுவும் இதுவரை சேர்க்கப்படவில்லை"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "␣க்கான \"ஏன் வந்தது\" குறிப்புகள்"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2332,14 +2232,6 @@ msgid "Cell"
 msgstr "செல்/கைப்பேசி"
 
 #: 
-msgid "Estimated value "
-msgstr "மதிப்பிடப்பட்ட மதிப்பு␣"
-
-#: 
-msgid "Donated by "
-msgstr "நன்கொடை வழங்கியது␣"
-
-#: 
 msgid "Paddle"
 msgstr "துடுப்பு"
 
@@ -2348,16 +2240,8 @@ msgid "Bid"
 msgstr "ஏலம்"
 
 #: 
-msgid "Minimum bid "
-msgstr "குறைந்தபட்ச ஏலம்␣"
-
-#: 
 msgid "All Funds"
 msgstr "அனைத்து நிதிகள்"
-
-#: 
-msgid " for all funds"
-msgstr "␣ அனைத்து நிதிகளுக்கும்"
 
 #: 
 msgid " for fund "
@@ -5023,10 +4907,6 @@ msgid "Group Role"
 msgstr "குழு பங்கு"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "அல்லது ஒரு குழுவை உருவாக்கி ஒரு செயலில் (கார்ட்டு) மென்வண்டியைச் சேர்க்கவும்"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "குழு + மென்வண்டியை  (கார்ட்டை)  சேர்க்கவும்"
 
@@ -5172,14 +5052,6 @@ msgstr "பயனர்பெயர் அமைக்கப்படவில�
 #: 
 msgid "Self Registrations"
 msgstr "சுய பதிவுகள்"
-
-#: 
-msgid "Public Calendar"
-msgstr "பொது நாட்காட்டி"
-
-#: 
-msgid "Private Calendar"
-msgstr "தனிப்பட்ட நாட்காட்டி"
 
 #: 
 msgid "Username"
@@ -6063,10 +5935,6 @@ msgstr "தொகை அனுமதிக்கப்பட்ட அதிக�
 #: 
 msgid "Checks"
 msgstr "காசோலைகள்"
-
-#: 
-msgid "Clear Filters"
-msgstr "வடிப்பான்களை அழி"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7296,10 +7164,6 @@ msgid "open"
 msgstr "திறந்தவை"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(முன்னரே வரையறுக்கப்பட்ட மாநிலங்கள் இல்லாத நாடுகளுக்கு மாநிலம்/மாகாணத்தை உள்ளிடவும்)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "அடிப்படை URL கட்டமைப்பு தவறானது. தயவுசெய்து உங்கள் Config.php கோப்பைச் சரிபார்க்கவும்."
 
@@ -7664,12 +7528,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d நபர் வண்டியில் சேர்க்கப்பட்டவர்."
 msgstr[1] "%d நபர்கள் வண்டியில் சேர்க்கப்பட்டவர்."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d நபர் தேர்ந்தெடுக்கப்பட்ட குடும்பத்தில் வெற்றிகரமாக சேர்க்கப்பட்டவர்."
-msgstr[1] "%d நபர்கள் தேர்ந்தெடுக்கப்பட்ட குடும்பத்தில் வெற்றிகரமாக சேர்க்கப்பட்டவர்."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9410,14 +9268,6 @@ msgstr "நன்கொடை உறை எண்களை ஒதுக்கி
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "நிதி திரட்டல் வாங்குநர் எண்களை ஒதுக்கி நிர்வகிக்கவும்"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "பட்டியலில் உள்ளவர்களை ஒரு குடும்ப பதிவுக்கு ஒதுக்கவும்"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "பட்டியலில் உள்ளவர்களை ஒரு குழுவுக்கு ஒதுக்கவும்"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11167,11 +11017,6 @@ msgstr "இயல்பு நாடு"
 #: 
 msgid "Default State"
 msgstr "இயல்பு நிலை"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Mailto: இணைப்புகளில் மின்னஞ்சல்களைப் பிரிக்க வரையறுப்பான்"
 
 #: 
 msgid "Distance Unit"
@@ -14804,10 +14649,6 @@ msgid "Code is invalid"
 msgstr "குறியீடு செல்லாதது"
 
 #: 
-msgid "Coming soon"
-msgstr "விரைவில் வருகிறது"
-
-#: 
 msgid "Confirm Activation"
 msgstr "செயல்படுத்தலை உறுதிப்படுத்து"
 
@@ -16404,10 +16245,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "இந்த புலங்கள் வடிவமைப்பு குறியீடுகளை பயன்படுத்துகின்றன (தேதியின் பகுதிகளை குறிக்கும் எழுத்துகள்). ஒவ்வொரு புலத்திற்கும் கீழே ஒரு முன்னமைவை தேர்ந்தெடுக்கவும் அல்லது குறிப்பைப் பயன்படுத்தி உங்களுடையதை உருவாக்கவும். நேரடி முன்னோட்டம் சரியாக எப்படி தோற்றமளிக்கும் என்பதை காட்டுகிறது. கணினி இயல்புநிலையைப் பயன்படுத்த வெறுமையாக விடவும்."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "முழு கணினியிலும் தேதிகள் மற்றும் தொலைபேசி எண்கள் இப்படி தோன்றும்."
-
-#: 
 msgid "Translation completeness"
 msgstr "மொழிபெயர்ப்பு முழுமை"
 
@@ -16831,4 +16668,500 @@ msgstr "பயனர் கண்டுபிடிக்கப்படவி�
 #: 
 msgid "— Select a person —"
 msgstr "— ஒரு நபரை தேர்ந்தெடுக்கவும் —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d காப்பகப்படுத்தப்பட்ட நிதி திரட்டல்"
+msgstr[1] "%d காப்பகப்படுத்தப்பட்ட நிதி திரட்டல்கள்"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d நபர் தேர்ந்தெடுக்கப்பட்ட குடும்பத்தில் வெற்றிகரமாக சேர்க்கப்பட்டார்."
+msgstr[1] "%d நபர்கள் தேர்ந்தெடுக்கப்பட்ட குடும்பத்தில் வெற்றிகரமாக சேர்க்கப்பட்டனர்."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s நிதி திரட்டல்கள்"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s இலக்கில் %s திரட்டப்பட்டது"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "செயலில் உள்ள நிதி திரட்டல்கள்"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "நிதி திரட்டல் சேர்க்க"
+
+#: 
+msgid "Add Item"
+msgstr "பொருள் சேர்க்க"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "குடும்பத்திற்கு நியமிப்பதற்கு முன் உங்கள் தேர்வுப் பட்டியலில் நபர்களை சேர்க்கவும்."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "முதலில் உங்கள் தேர்வுப் பட்டியலில் நபர்களை சேர்க்கவும், பின்னர் குழுவில் சேர்க்க திரும்பவும்."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "தொகைக்கு பின் (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "அனைத்து நிலைகளும்"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "உங்கள் தேர்வுப் பட்டியலில் உள்ள அனைவரும் ஏற்கனவே ஒரு குடும்பத்தில் உள்ளனர். யாரையும் நியமிக்க முடியாது."
+
+#: 
+msgid "All types"
+msgstr "அனைத்து வகைகளும்"
+
+#: 
+msgid "Already in"
+msgstr "ஏற்கனவே உள்ளது"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "எதிர்பாராத பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Apply"
+msgstr "பயன்படுத்து"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "தேர்வுப் பட்டியல் உறுப்பினர்களை குழுவிற்கு நியமிக்கவும்"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "உங்கள் தேர்வுப் பட்டியலில் இருந்து நபர்களை குடும்பத்திற்கு நியமிக்கவும்"
+
+#: 
+msgid "Assign role to all:"
+msgstr "அனைவருக்கும் பங்கு நியமிக்கவும்:"
+
+#: 
+msgid "Assign to Family"
+msgstr "குடும்பத்திற்கு நியமிக்கவும்"
+
+#: 
+msgid "Associated Fund"
+msgstr "தொடர்புடைய நிதி"
+
+#: 
+msgid "At a Glance"
+msgstr "ஒரு பார்வையில்"
+
+#: 
+msgid "Auction Reports"
+msgstr "ஏல அறிக்கைகள்"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "சராசரி விற்பனை விலை"
+
+#: 
+msgid "Back to Cart"
+msgstr "தேர்வுப் பட்டியலுக்கு திரும்பு"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "நிதி திரட்டல்களுக்கு திரும்பு"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "தொகைக்கு முன் (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "சிறந்த தொடர்ச்சி"
+
+#: 
+msgid "Bid Sheets"
+msgstr "ஏல தாள்கள்"
+
+#: 
+msgid "Buyer Statements"
+msgstr "வாங்குவோர் அறிக்கைகள்"
+
+#: 
+msgid "Buyers Registered"
+msgstr "பதிவு செய்த வாங்குவோர்"
+
+#: 
+msgid "Buyers This Year"
+msgstr "இந்த ஆண்டு வாங்குவோர்"
+
+#: 
+msgid "Catalog"
+msgstr "பட்டியல்"
+
+#: 
+msgid "Certificates"
+msgstr "சான்றிதழ்கள்"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "பண அளவுகளில் தசம புள்ளியாக பயன்படுத்தப்படும் எழுத்து (எ.கா. . அல்லது ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "பண அளவுகளில் ஆயிரங்களை பிரிக்க பயன்படுத்தப்படும் எழுத்து (எ.கா. , அல்லது .)"
+
+#: 
+msgid "Check-out"
+msgstr "வெளியேறு"
+
+#: 
+msgid "Choose a group..."
+msgstr "ஒரு குழுவை தேர்வு செய்யவும்..."
+
+#: 
+msgid "Choose family"
+msgstr "குடும்பத்தை தேர்வு செய்யவும்"
+
+#: 
+msgid "Code"
+msgstr "குறியீடு"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "கணினி முழுவதும் பண அளவுகள் எவ்வாறு காட்டப்படுகின்றன என்பதை கட்டமைக்கவும்."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "நிதி திரட்டல் உருவாக்கு"
+
+#: 
+msgid "Create new family…"
+msgstr "புதிய குடும்பம் உருவாக்கு…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "நாணய மற்றும் நிதி வடிவங்கள்"
+
+#: 
+msgid "Currency Format"
+msgstr "நாணய வடிவம்"
+
+#: 
+msgid "Currency Symbol"
+msgstr "நாணய சின்னம்"
+
+#: 
+msgid "Currency presets"
+msgstr "நாணய முன்னமைவுகள்"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "பண அளவுகளுக்கு அடுத்து காட்ட வேண்டிய நாணய சின்னம் (எ.கா. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "தசம பிரிப்பான்"
+
+#: 
+msgid "Did Not Attend"
+msgstr "கலந்துகொள்ளவில்லை"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "முடிவு தேதி தொடக்க தேதியில் அல்லது அதற்குப் பிறகு இருக்க வேண்டும்"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "முன்னமைக்கப்பட்ட மாநிலங்கள் இல்லாத நாடுகளுக்கு மாநிலம்/மாகாணம் உள்ளிடவும்"
+
+#: 
+msgid "Est. Value Total"
+msgstr "மதிப்பிடப்பட்ட மொத்த மதிப்பு"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "இணைக்கப்பட்ட குழுக்களிலிருந்து அனைவரும் வந்துவிட்டனர்!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "வருகை வரலாற்றை ஏற்றுவதில் தோல்வி."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "புதிய குடும்பம் உருவாக்கும்போது குடும்பப் பெயர் தேவை."
+
+#: 
+msgid "Filter by event type"
+msgstr "நிகழ்வு வகையால் வடிகட்டவும்"
+
+#: 
+msgid "Financials"
+msgstr "நிதி விவரங்கள்"
+
+#: 
+msgid "From date"
+msgstr "தொடக்க தேதி"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "நிதி திரட்டல் மேலோட்டம்"
+
+#: 
+msgid "Fundraisers"
+msgstr "நிதி திரட்டல்கள்"
+
+#: 
+msgid "Fundraising"
+msgstr "நிதி திரட்டல்"
+
+#: 
+msgid "Goal %"
+msgstr "இலக்கு %"
+
+#: 
+msgid "Goal Amount"
+msgstr "இலக்கு தொகை"
+
+#: 
+msgid "Highest Sale"
+msgstr "அதிகபட்ச விற்பனை"
+
+#: 
+msgid "Invalid status value"
+msgstr "தவறான நிலை மதிப்பு"
+
+#: 
+msgid "Invalid type value"
+msgstr "தவறான வகை மதிப்பு"
+
+#: 
+msgid "Items"
+msgstr "பொருட்கள்"
+
+#: 
+msgid "Items Donated"
+msgstr "நன்கொடையளிக்கப்பட்ட பொருட்கள்"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "நன்கொடையளிக்கப்பட்ட பொருட்கள் (இந்த ஆண்டு)"
+
+#: 
+msgid "Items Sold"
+msgstr "விற்கப்பட்ட பொருட்கள்"
+
+#: 
+msgid "Last Attendance"
+msgstr "கடைசி வருகை"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "இணைக்கப்பட்ட நன்கொடை நிதி"
+
+#: 
+msgid "Live Preview"
+msgstr "நேரடி முன்னோட்டம்"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "வருகை வரலாற்றை ஏற்றுகிறது…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "பலர் வாங்கக்கூடிய பொருட்கள்"
+
+#: 
+msgid "New family details"
+msgstr "புதிய குடும்ப விவரங்கள்"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "%s நிதி திரட்டல்கள் எதுவும் கண்டுபிடிக்கப்படவில்லை."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "செயலில் உள்ள நிதி திரட்டல்கள் எதுவும் கண்டுபிடிக்கப்படவில்லை."
+
+#: 
+msgid "No attendance records found."
+msgstr "வருகை பதிவுகள் எதுவும் கண்டுபிடிக்கப்படவில்லை."
+
+#: 
+msgid "No donated items yet."
+msgstr "இன்னும் நன்கொடையளிக்கப்பட்ட பொருட்கள் இல்லை."
+
+#: 
+msgid "Not a valid end date"
+msgstr "சரியான முடிவு தேதி இல்லை"
+
+#: 
+msgid "Not included"
+msgstr "சேர்க்கப்படவில்லை"
+
+#: 
+msgid "People to assign"
+msgstr "நியமிக்க வேண்டிய நபர்கள்"
+
+#: 
+msgid "Planning"
+msgstr "திட்டமிடல்"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "%s க்கு குடும்ப பங்கை தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "சேமிக்காமல் கீழே உள்ள புலங்களை நிரப்புகிறது. பயன்படுத்த சேமி என்பதை கிளிக் செய்யவும்."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "தொகையை நோக்கி நாணய சின்னத்தின் நிலை."
+
+#: 
+msgid "Quick presets"
+msgstr "விரைவு முன்னமைவுகள்"
+
+#: 
+msgid "Raised"
+msgstr "திரட்டப்பட்டது"
+
+#: 
+msgid "Raised This Year"
+msgstr "இந்த ஆண்டு திரட்டப்பட்டது"
+
+#: 
+msgid "Sample Amount"
+msgstr "மாதிரி தொகை"
+
+#: 
+msgid "Sell-through"
+msgstr "விற்பனை விகிதம்"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "தசம புள்ளியாக பயன்படுத்தப்படும் ஒரு எழுத்து (எ.கா. . அல்லது ,). இயல்புநிலை: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "ஆயிரங்களை தொகுக்க பயன்படுத்தப்படும் ஒரு எழுத்து (எ.கா. , அல்லது .). இயல்புநிலை: ,"
+
+#: 
+msgid "Sold"
+msgstr "விற்கப்பட்டது"
+
+#: 
+msgid "State / Province"
+msgstr "மாநிலம் / மாகாணம்"
+
+#: 
+msgid "Streak"
+msgstr "தொடர்ச்சி"
+
+#: 
+msgid "Symbol Position"
+msgstr "சின்னத்தின் நிலை"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "தொகைகளுக்கு அடுத்து காட்டப்படும் சின்னம் அல்லது குறியீடு (எ.கா. $, €, £, CHF, CAD $). இயல்புநிலை: $"
+
+#: 
+msgid "Target family"
+msgstr "இலக்கு குடும்பம்"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "குழுவை கண்டுபிடிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "தேர்ந்தெடுக்கப்பட்ட குடும்பம் இனி இல்லை. பக்கத்தை புதுப்பித்து மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "தேர்ந்தெடுக்கப்பட்ட குழு கண்டுபிடிக்கப்படவில்லை. சரியான குழுவை தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "தேதிகள், பண அளவுகள் மற்றும் தொலைபேசி எண்கள் கணினி முழுவதும் இவ்வாறு தோன்றும்."
+
+#: 
+msgid "Thousands Separator"
+msgstr "ஆயிரம் பிரிப்பான்"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "ஆயிரம் பிரிப்பான் மற்றும் தசம பிரிப்பான் வேறுவேறு எழுத்துகளாக இருக்க வேண்டும்."
+
+#: 
+msgid "To date"
+msgstr "இறுதி தேதி"
+
+#: 
+msgid "Total Events"
+msgstr "மொத்த நிகழ்வுகள்"
+
+#: 
+msgid "Total Raised"
+msgstr "மொத்தமாக திரட்டப்பட்டது"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "மொத்தமாக திரட்டப்பட்டது (இலக்கு நிர்ணயிக்கப்படவில்லை)"
+
+#: 
+msgid "Unsold"
+msgstr "விற்கப்படாதது"
+
+#: 
+msgid "Updates as you type."
+msgstr "தட்டச்சு செய்யும்போது புதுப்பிக்கப்படுகிறது."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "சின்னம் எண் தொகைக்கு முன் அல்லது பின் தோன்றுமா. இயல்புநிலை: தொகைக்கு முன்"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "உங்கள் தேர்வுப் பட்டியல் காலியாக உள்ளது. முதலில் நபர்களை சேர்க்கவும்."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "அஞ்சல் குறியீடு"
+
+#: 
+msgid "events"
+msgstr "நிகழ்வுகள்"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "இலக்கு தொகை எதிர்மறையற்ற எண்ணாக இருக்க வேண்டும்"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "இலக்கு தொகை எதிர்மறையற்றதாக இருக்க வேண்டும்"
+
+#: 
+msgid "thru %s"
+msgstr "%s வரை"
+
+#: 
+msgid "—"
+msgstr "—"
+
+#: 
+msgid "— Select role —"
+msgstr "— பங்கை தேர்வு செய்யவும் —"
+
+#: 
+msgid "— pick —"
+msgstr "— தேர்வு செய்யவும் —"
 

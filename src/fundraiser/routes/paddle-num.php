@@ -59,7 +59,7 @@ $app->get('/{fundraiserId}/paddle-numbers', function (Request $request, Response
 
     return $renderer->render($response, 'paddle-num-list.php', [
         'sRootPath'     => SystemURLs::getRootPath(),
-        'sPageTitle'    => gettext('Buyers for this fundraiser:'),
+        'sPageTitle'    => gettext('Buyers for this fundraiser'),
         'sPageSubtitle' => gettext('View buyer numbers and paddle assignments'),
         'aBreadcrumbs'  => PageHeader::breadcrumbs([
             [gettext('Fundraiser'), '/fundraiser/'],

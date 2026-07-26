@@ -211,6 +211,27 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
 
             // FullCalendar's timeZone option must be wired up
             expect(resp.body).to.include("timeZone:");
+
+            // --- Framing headers: calendar.php (happy path) ---
+            // The page must be embeddable in a cross-origin <iframe>.
+            // Verify X-Frame-Options is absent and CSP frame-ancestors is open.
+            expect(
+                resp.headers["x-frame-options"],
+                "x-frame-options must be absent on the external calendar route",
+            ).to.be.undefined;
+
+            const cspHeader =
+                resp.headers["content-security-policy"] ??
+                resp.headers["content-security-policy-report-only"];
+            expect(cspHeader, "a CSP header must be present").to.be.a("string");
+            expect(cspHeader).to.match(
+                /frame-ancestors \*/,
+                'frame-ancestors must be "*" on the external calendar page',
+            );
+            expect(cspHeader).not.to.match(
+                /frame-ancestors 'self'/,
+                "frame-ancestors must not restrict to 'self' on the external calendar page",
+            );
         });
     });
 });

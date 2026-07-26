@@ -129,12 +129,12 @@ if (!empty($_POST['funds'])) {
 if ($fundCount > 0) {
     if ($fundCount === 1) {
         if ($fund[0] == gettext('All Funds')) {
-            $fundOnlyString = gettext(' for all funds');
+            $fundOnlyString = ' ' . gettext('for all funds');
         } else {
-            $fundOnlyString = gettext(' for fund ');
+            $fundOnlyString = ' ' . gettext('for fund') . ' ';
         }
     } else {
-        $fundOnlyString = gettext('for funds ');
+        $fundOnlyString = gettext('for funds') . ' ';
     }
     for ($i = 0; $i < $fundCount; $i++) {
         $sSQL = 'SELECT fun_Name FROM donationfund_fun WHERE fun_ID=' . $fund[$i];

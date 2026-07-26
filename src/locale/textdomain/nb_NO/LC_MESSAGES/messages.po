@@ -211,10 +211,6 @@ msgid "Anniversary Date"
 msgstr "Jubileums Dato"
 
 #: 
-msgid "Output Method:"
-msgstr "Utskriftsmetode:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV Individual Records"
 
@@ -285,43 +281,14 @@ msgstr "Legg Cart til Event"
 msgid "Your cart is empty!"
 msgstr "Handlekurven er tom!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Ingen etternavn angitt!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Legg Cart til Family"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Navn"
 
 #: 
-msgid "Assign Role"
-msgstr "Tildele Rolle"
-
-#: 
 msgid "Already in a family"
 msgstr "Allerede i en familie"
-
-#: 
-msgid "Create new family"
-msgstr "Opprett ny familie"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Hvis du legger til en ny familie, legge inn data under."
-
-#: 
-#, fuzzy
-msgid "Use address/contact data from"
-msgstr "Bruk adresse / kontakt data fra"
-
-#: 
-msgid "Only the new data below"
-msgstr "Bare de nye dataene nedenfor"
 
 #: 
 msgid "Do not auto-format"
@@ -334,11 +301,6 @@ msgstr "Legg til Family"
 #: 
 msgid "Add Cart to Group"
 msgstr "Legg Cart til gruppe"
-
-#: 
-#, fuzzy
-msgid "Select the group to which you would like to add your cart"
-msgstr "Velg gruppen du ønsker å legge til i handlekurven"
 
 #: 
 #, fuzzy
@@ -418,10 +380,6 @@ msgstr "Handling"
 #: 
 msgid "Member"
 msgstr "Medlem"
-
-#: 
-msgid " of the"
-msgstr "av"
 
 #: 
 msgid "(No assigned family)"
@@ -1108,11 +1066,6 @@ msgid "Bank Draft"
 msgstr "Bankremisser"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Minimun Totalbeløp:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Ingen Minimum"
 
@@ -1137,10 +1090,6 @@ msgid "All Families"
 msgstr "Alle familier"
 
 #: 
-msgid "Report Heading:"
-msgstr "Rapport Tittel:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafisk"
 
@@ -1151,14 +1100,6 @@ msgstr "Church Adresse"
 #: 
 msgid "Blank"
 msgstr "Blank"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Remittering Slip:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortere data etter:"
 
 #: 
 msgid "Deposit"
@@ -1214,10 +1155,6 @@ msgstr "Bruker Liste"
 #, fuzzy
 msgid "Date Start"
 msgstr "Dato Start"
-
-#: 
-msgid "Apply Filters"
-msgstr "Bruk filtre"
 
 #: 
 #, fuzzy
@@ -1683,10 +1620,6 @@ msgid "Generate Statement"
 msgstr "Generer Rapporter"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Kjøpere for denne fundraiser:"
-
-#: 
 #, fuzzy
 msgid "Select all"
 msgstr "Velg Rolle"
@@ -1812,11 +1745,6 @@ msgstr "Må angi ikke-null sjekknummer"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Sjekk nummeret ikke gyldig for 'Cash' betaling"
-
-#: 
-#, fuzzy
-msgid " more entries will fit."
-msgstr "flere kontroller vil passe."
 
 #: 
 msgid "Deposit closed"
@@ -1955,10 +1883,6 @@ msgid "Query Listing"
 msgstr "Query Oppføring"
 
 #: 
-msgid " record(s) returned"
-msgstr "posten (e) returnerte"
-
-#: 
 msgid "Query View"
 msgstr "Query Vis"
 
@@ -1969,22 +1893,6 @@ msgstr "Denne verdien er nødvendig."
 #: 
 msgid "This value must be numeric."
 msgstr "Denne verdien må være numerisk."
-
-#: 
-msgid "This value must be at least "
-msgstr "Denne verdien må være minst"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Denne verdien kan ikke være mer enn"
-
-#: 
-msgid " characters long"
-msgstr "tegn"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Denne verdien kan ikke være mindre enn"
 
 #: 
 msgid "Run Query Again"
@@ -2020,20 +1928,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "ADVARSEL: Denne familien har registreringer av donasjoner og kan ikke slettes før disse donasjoner er forbundet med en annen familie."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Vennligst velg en annen familie med hvem du skal knytte disse donasjoner:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "ADVARSEL: Denne handlingen kan ikke angres, og kan ha rettslige konsekvenser!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "Gjeldende familien med donasjoner"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Vennligst bekreft sletting av denne familien posten:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2169,10 +2069,6 @@ msgstr "Frivillig Opportunity Editor"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Ingen frivillige muligheter er lagt til ennå"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"Hvorfor kom\" notater for"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2426,15 +2322,6 @@ msgstr "Cell"
 
 #: 
 #, fuzzy
-msgid "Estimated value "
-msgstr "Rediger verdi"
-
-#: 
-msgid "Donated by "
-msgstr "Donert av"
-
-#: 
-#, fuzzy
 msgid "Paddle"
 msgstr "Midt"
 
@@ -2443,16 +2330,8 @@ msgid "Bid"
 msgstr "Bud"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimumsbudet"
-
-#: 
 msgid "All Funds"
 msgstr "Alle midler"
-
-#: 
-msgid " for all funds"
-msgstr "for alle fond"
 
 #: 
 msgid " for fund "
@@ -5118,10 +4997,6 @@ msgid "Group Role"
 msgstr "Grupperolle"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ELLER Opprett en gruppe og legg til KURVEN i ÉN HANDLING"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Opprett gruppe + LEGG TIL kurv"
 
@@ -5265,14 +5140,6 @@ msgstr "Brukernavn ikke satt"
 #: 
 msgid "Self Registrations"
 msgstr "Selvregistreringer"
-
-#: 
-msgid "Public Calendar"
-msgstr "Offentlig kalender"
-
-#: 
-msgid "Private Calendar"
-msgstr "Privat kalender"
 
 #: 
 msgid "Username"
@@ -6145,10 +6012,6 @@ msgstr "Beløpet overskrider maksimalt tillatt verdi (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Sjekker"
-
-#: 
-msgid "Clear Filters"
-msgstr "Tøm filtre"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7373,10 +7236,6 @@ msgid "open"
 msgstr "åpne"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Skriv inn fylke/provins for land uten forhåndsdefinerte stater)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurasjon av base-URL er ugyldig. Vennligst sjekk Config.php-filen din."
 
@@ -7741,12 +7600,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d person lagt til i kurven."
 msgstr[1] "%d personer lagt til i kurven."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d person lagt til i valgt familie."
-msgstr[1] "%d personer lagt til i valgt familie."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9484,14 +9337,6 @@ msgstr "Tildel og administrer gavekonvoluttnumre"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Tildel og administrer kjøpernumre for innsamlingsaksjon"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Knytt utvalget til en familiepost"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Knytt utvalget til en gruppe"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11241,11 +11086,6 @@ msgstr "Standardland"
 #: 
 msgid "Default State"
 msgstr "Standardtilstand"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Skilletegn for å separere e-poster i mailto: lenker"
 
 #: 
 msgid "Distance Unit"
@@ -14874,10 +14714,6 @@ msgid "Code is invalid"
 msgstr "Koden er ugyldig"
 
 #: 
-msgid "Coming soon"
-msgstr "Kommer snart"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Bekreft aktivering"
 
@@ -16472,10 +16308,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Disse feltene bruker formateringskoder (bokstaver som representerer deler av en dato). Velg et forhåndsinnstilt alternativ under hvert felt, eller lag ditt eget med referansen. Forhåndsvisningen viser nøyaktig resultatet. La stå tomt for å bruke systemstandarden."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Slik vises datoer og telefonnumre i hele systemet."
-
-#: 
 msgid "Translation completeness"
 msgstr "Oversettelsesgrad"
 
@@ -16899,4 +16731,496 @@ msgstr "Bruker ikke funnet."
 #: 
 msgid "— Select a person —"
 msgstr "— Velg en person —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d arkivert innsamlingsaksjon"
+msgstr[1] "%d arkiverte innsamlingsaksjoner"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d person ble lagt til den valgte familien."
+msgstr[1] "%d personer ble lagt til den valgte familien."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s innsamlingsaksjoner"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s av %s mål samlet inn"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktive innsamlingsaksjoner"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Legg til innsamlingsaksjon"
+
+#: 
+msgid "Add Item"
+msgstr "Legg til element"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Legg til personer i utvalget ditt før du tilordner dem til en familie."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Legg til personer i utvalget ditt først, og kom deretter tilbake for å legge dem til i en gruppe."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Etter beløp (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Alle statuser"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Alle personer i utvalget ditt er allerede i en familie. Ingen kan tilordnes."
+
+#: 
+msgid "All types"
+msgstr "Alle typer"
+
+#: 
+msgid "Already in"
+msgstr "Allerede i"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "En uventet feil oppstod. Vennligst prøv igjen."
+
+#: 
+msgid "Apply"
+msgstr "Bruk"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Tilordne utvalgsmedlemmer til en gruppe"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Tilordne personer fra utvalget ditt til en familie"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Tilordne rolle til alle:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Tilordne til familie"
+
+#: 
+msgid "Associated Fund"
+msgstr "Tilknyttet fond"
+
+#: 
+msgid "At a Glance"
+msgstr "Oversikt"
+
+#: 
+msgid "Auction Reports"
+msgstr "Auksjonrapporter"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Gjennomsnittlig salgspris"
+
+#: 
+msgid "Back to Cart"
+msgstr "Tilbake til utvalg"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Tilbake til innsamlingsaksjoner"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Før beløp (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Beste rekke"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Budark"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Kjøperoppgaver"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Registrerte kjøpere"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Kjøpere dette året"
+
+#: 
+msgid "Catalog"
+msgstr "Katalog"
+
+#: 
+msgid "Certificates"
+msgstr "Sertifikater"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Tegn brukt som desimalpunkt i pengebeløp (f.eks. . eller ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Tegn brukt til å skille tusener i pengebeløp (f.eks. , eller .)"
+
+#: 
+msgid "Check-out"
+msgstr "Utsjekk"
+
+#: 
+msgid "Choose a group..."
+msgstr "Velg en gruppe..."
+
+#: 
+msgid "Choose family"
+msgstr "Velg familie"
+
+#: 
+msgid "Code"
+msgstr "Kode"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Konfigurer hvordan pengebeløp vises i hele systemet. Etter hvert som finanssider oppdateres for å bruke disse innstillingene (epic #8459), vil symbolet, posisjonen og separatorene som er konfigurert her gjelde systemomfattende."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Opprett innsamlingsaksjon"
+
+#: 
+msgid "Create new family…"
+msgstr "Opprett ny familie…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Valuta- og finansformater"
+
+#: 
+msgid "Currency Format"
+msgstr "Valutaformat"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Valutasymbol"
+
+#: 
+msgid "Currency presets"
+msgstr "Valutaforhåndsinnstillinger"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Valutasymbol som vises ved siden av pengebeløp (f.eks. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Desimalseparator"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Deltok ikke"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Sluttdato må være på eller etter startdatoen"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Angi stat/provins for land uten forhåndsdefinerte stater"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Estimert totalverdi"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Alle fra tilknyttede grupper er sjekket inn!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Kunne ikke laste inn oppmøtehistorikk."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Familienavn er påkrevd ved oppretting av ny familie."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filtrer etter arrangementtype"
+
+#: 
+msgid "Financials"
+msgstr "Økonomi"
+
+#: 
+msgid "From date"
+msgstr "Fra dato"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Oversikt over innsamlingsaksjon"
+
+#: 
+msgid "Fundraisers"
+msgstr "Innsamlingsaksjoner"
+
+#: 
+msgid "Fundraising"
+msgstr "Innsamling"
+
+#: 
+msgid "Goal %"
+msgstr "Mål %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Målbeløp"
+
+#: 
+msgid "Highest Sale"
+msgstr "Høyeste salg"
+
+#: 
+msgid "Invalid status value"
+msgstr "Ugyldig statusverdi"
+
+#: 
+msgid "Invalid type value"
+msgstr "Ugyldig typeverdi"
+
+#: 
+msgid "Items"
+msgstr "Elementer"
+
+#: 
+msgid "Items Donated"
+msgstr "Donerte gjenstander"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Donerte gjenstander (i år)"
+
+#: 
+msgid "Items Sold"
+msgstr "Solgte gjenstander"
+
+#: 
+msgid "Last Attendance"
+msgstr "Siste oppmøte"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Tilknyttet gavefond"
+
+#: 
+msgid "Live Preview"
+msgstr "Direkteforhåndsvisning"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Laster inn oppmøtehistorikk…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Flerkjøpsgjenstander"
+
+#: 
+msgid "New family details"
+msgstr "Nye familiedetaljer"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Ingen %s innsamlingsaksjoner funnet."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Ingen aktive innsamlingsaksjoner funnet."
+
+#: 
+msgid "No attendance records found."
+msgstr "Ingen oppmøteregistreringer funnet."
+
+#: 
+msgid "No donated items yet."
+msgstr "Ingen donerte gjenstander ennå."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Ikke en gyldig sluttdato"
+
+#: 
+msgid "Not included"
+msgstr "Ikke inkludert"
+
+#: 
+msgid "People to assign"
+msgstr "Personer som skal tilordnes"
+
+#: 
+msgid "Planning"
+msgstr "Planlegging"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Vennligst velg en familierolle for %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Fyller ut feltene nedenfor uten å lagre. Klikk Lagre for å bruke."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Posisjonen til valutasymbolet i forhold til beløpet."
+
+#: 
+msgid "Quick presets"
+msgstr "Hurtigforhåndsinnstillinger"
+
+#: 
+msgid "Raised"
+msgstr "Samlet inn"
+
+#: 
+msgid "Raised This Year"
+msgstr "Samlet inn i år"
+
+#: 
+msgid "Sample Amount"
+msgstr "Eksempelbeløp"
+
+#: 
+msgid "Sell-through"
+msgstr "Salgsgjennomføring"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Enkelt tegn brukt som desimalpunkt (f.eks. . eller ,). Standard: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Enkelt tegn brukt til å gruppere tusener (f.eks. , eller .). Standard: ,"
+
+#: 
+msgid "Sold"
+msgstr "Solgt"
+
+#: 
+msgid "State / Province"
+msgstr "Stat / Provins"
+
+#: 
+msgid "Streak"
+msgstr "Rekke"
+
+#: 
+msgid "Symbol Position"
+msgstr "Symbolposisjon"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Symbol eller kode vist ved siden av beløp (f.eks. $, €, £, CHF, CAD $). Standard: $"
+
+#: 
+msgid "Target family"
+msgstr "Målfamilie"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Gruppen ble ikke funnet. Vennligst prøv igjen."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Den valgte familien eksisterer ikke lenger. Vennligst oppdater siden og prøv igjen."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Den valgte gruppen ble ikke funnet. Vennligst velg en gyldig gruppe."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Slik vil datoer, valutabeløp og telefonnumre vises i hele systemet. Se gjennom gjeldende formater her, og rediger dem i avsnittene nedenfor."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Tusensseparator"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Tusensseparator og desimalseparator må være forskjellige tegn."
+
+#: 
+msgid "To date"
+msgstr "Til dato"
+
+#: 
+msgid "Total Events"
+msgstr "Totalt antall arrangementer"
+
+#: 
+msgid "Total Raised"
+msgstr "Totalt samlet inn"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Totalt samlet inn (ingen mål satt)"
+
+#: 
+msgid "Unsold"
+msgstr "Usolgt"
+
+#: 
+msgid "Updates as you type."
+msgstr "Oppdateres mens du skriver."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Om symbolet vises før eller etter det numeriske beløpet. Standard: Før beløp"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Utvalget ditt er tomt. Legg til personer i utvalget ditt først."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Postnummer"
+
+#: 
+msgid "events"
+msgstr "arrangementer"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "målBeløp må være et ikke-negativt tall"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "målBeløp må være ikke-negativt"
+
+#: 
+msgid "thru %s"
+msgstr "t.o.m. %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Velg rolle —"
+
+#: 
+msgid "— pick —"
+msgstr "— velg —"
 

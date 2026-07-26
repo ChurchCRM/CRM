@@ -15,7 +15,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title text-warning"><i class="fa-solid fa-triangle-exclamation me-2"></i><?= gettext('Email is Disabled') ?></h3>
     </div>
     <div class="card-body">
-        <p class="mb-2"><?= gettext('Email functionality is currently disabled. The following features will not work until email is enabled:') ?></p>
+        <p class="mb-2"><?= gettext('Email functionality is currently disabled. The following features will not work until email is enabled') ?>:</p>
         <ul class="mb-2">
             <li><?= gettext('Password reset emails — users cannot recover their accounts') ?></li>
             <li><?= gettext('New member notification emails') ?></li>
@@ -128,7 +128,7 @@ $(document).ready(function() {
             { name: 'bSMTPAuth',             type: 'boolean', label: <?= json_encode(gettext('SMTP Authentication'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,    tooltip: <?= json_encode(SystemConfig::getTooltip('bSMTPAuth'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
             { name: 'sSMTPUser',             type: 'text',    label: <?= json_encode(gettext('SMTP Username'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,          tooltip: <?= json_encode(SystemConfig::getTooltip('sSMTPUser'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
             { name: 'sSMTPPass',             type: 'password',label: <?= json_encode(gettext('SMTP Password'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,          tooltip: <?= json_encode(SystemConfig::getTooltip('sSMTPPass'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'sToEmailAddress',       type: 'text',    label: <?= json_encode(gettext('BCC All Mail To'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,        tooltip: <?= json_encode(SystemConfig::getTooltip('sToEmailAddress'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
+            { name: 'sToEmailAddress',       type: 'text',    label: <?= json_encode(gettext('Copy Church Email'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,        tooltip: <?= json_encode(SystemConfig::getTooltip('sToEmailAddress'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
             { name: 'iDoNotEmailPropertyId', type: 'ajax',    label: <?= json_encode(gettext('Do Not Email Property'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,  tooltip: <?= json_encode(SystemConfig::getTooltip('iDoNotEmailPropertyId'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, ajaxUrl: '/api/system/properties/person' },
             { name: 'sEmailPreheader',       type: 'text',    label: <?= json_encode(gettext('Default Inbox Preview Text'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, tooltip: <?= json_encode(SystemConfig::getTooltip('sEmailPreheader'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> }
         ],

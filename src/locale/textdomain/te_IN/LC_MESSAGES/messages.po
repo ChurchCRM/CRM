@@ -197,10 +197,6 @@ msgid "Anniversary Date"
 msgstr "వార్షికోత్సవ తేదీ"
 
 #: 
-msgid "Output Method:"
-msgstr "అవుట్‌పుట్ విధానం:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV వ్యక్తిగత రికార్డులు"
 
@@ -271,42 +267,14 @@ msgstr "ఈవెంట్‌కి కార్ట్‌ని జోడిం�
 msgid "Your cart is empty!"
 msgstr "మీ కార్ట్ ఖాళీగా ఉంది!"
 
-#: 
-msgid "No family name entered!"
-msgstr "ఇంటి పేరు నమోదు చేయలేదు!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "కుటుంబానికి కార్ట్‌ని జోడించండి"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "పేరు"
 
 #: 
-msgid "Assign Role"
-msgstr "పాత్రను కేటాయించండి"
-
-#: 
 msgid "Already in a family"
 msgstr "ఇప్పటికే ఒక కుటుంబంలో"
-
-#: 
-msgid "Create new family"
-msgstr "కొత్త కుటుంబాన్ని సృష్టించండి"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "కొత్త కుటుంబాన్ని జోడిస్తే, దిగువన డేటాను నమోదు చేయండి."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "నుండి చిరునామా/సంప్రదింపు డేటాను ఉపయోగించండి"
-
-#: 
-msgid "Only the new data below"
-msgstr "దిగువన ఉన్న కొత్త డేటా మాత్రమే"
 
 #: 
 msgid "Do not auto-format"
@@ -319,10 +287,6 @@ msgstr "కుటుంబానికి జోడించండి"
 #: 
 msgid "Add Cart to Group"
 msgstr "గుంపుకు కార్ట్‌ని జోడించండి"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "మీరు మీ కార్ట్‌ను జోడించాలనుకుంటున్న సమూహాన్ని ఎంచుకోండి"
 
 #: 
 msgid "Select Group"
@@ -401,10 +365,6 @@ msgstr "చర్య"
 #: 
 msgid "Member"
 msgstr "సభ్యుడు"
-
-#: 
-msgid " of the"
-msgstr " యొక్క"
 
 #: 
 msgid "(No assigned family)"
@@ -1077,10 +1037,6 @@ msgid "Bank Draft"
 msgstr "బ్యాంక్ డ్రాఫ్ట్"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "కనిష్ట మొత్తం:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0-కనీసం లేదు"
 
@@ -1105,10 +1061,6 @@ msgid "All Families"
 msgstr "అన్ని కుటుంబాలు"
 
 #: 
-msgid "Report Heading:"
-msgstr "నివేదిక శీర్షిక:"
-
-#: 
 msgid "Graphic"
 msgstr "గ్రాఫిక్"
 
@@ -1119,14 +1071,6 @@ msgstr "చర్చి చిరునామా"
 #: 
 msgid "Blank"
 msgstr "ఖాళీ"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "రెమిటెన్స్ స్లిప్:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "దీని ద్వారా డేటాను క్రమబద్ధీకరించండి:"
 
 #: 
 msgid "Deposit"
@@ -1179,10 +1123,6 @@ msgstr "నిధుల సేకరణ జాబితా"
 #: 
 msgid "Date Start"
 msgstr "ప్రారంభ తేదీ"
-
-#: 
-msgid "Apply Filters"
-msgstr "ఫిల్టర్లను వర్తింపజేయి"
 
 #: 
 msgid "Date End"
@@ -1617,10 +1557,6 @@ msgid "Generate Statement"
 msgstr "స్టేట్‌మెంట్ రూపొందించు"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "ఈ ఫండ్‌రైజర్ కోసం కొనుగోలుదారులు:"
-
-#: 
 msgid "Select all"
 msgstr "అన్నీ ఎంచుకో"
 
@@ -1739,10 +1675,6 @@ msgstr "సున్నా కాని చెక్ నంబర్‌ను �
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "'CASH' చెల్లింపుకు చెక్ నంబర్ చెల్లదు"
-
-#: 
-msgid " more entries will fit."
-msgstr " మరిన్ని ఎంట్రీలు సరిపోతాయి."
 
 #: 
 msgid "Deposit closed"
@@ -1874,10 +1806,6 @@ msgid "Query Listing"
 msgstr "క్వరీ జాబితా"
 
 #: 
-msgid " record(s) returned"
-msgstr " రికార్డ్(లు) తిరిగి వచ్చాయి"
-
-#: 
 msgid "Query View"
 msgstr "క్వెరీ వీక్షణ"
 
@@ -1888,22 +1816,6 @@ msgstr "ఈ విలువ అవసరం."
 #: 
 msgid "This value must be numeric."
 msgstr "ఈ విలువ సంఖ్యాత్మకంగా ఉండాలి."
-
-#: 
-msgid "This value must be at least "
-msgstr "ఈ విలువ కనీసం ఉండాలి "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "ఈ విలువ దీని కంటే ఎక్కువ ఉండకూడదు "
-
-#: 
-msgid " characters long"
-msgstr " అక్షరాల పొడవు"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "ఈ విలువ దీని కంటే తక్కువ ఉండకూడదు "
 
 #: 
 msgid "Run Query Again"
@@ -1938,20 +1850,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "హెచ్చరిక: ఈ కుటుంబానికి విరాళాల రికార్డ్‌లు ఉన్నాయి మరియు ఈ విరాళాలు మరొక కుటుంబంతో అనుబంధించబడే వరకు తొలగించబడకపోవచ్చు."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "దయచేసి ఈ విరాళాలను అనుబంధించడానికి మరొక కుటుంబాన్ని ఎంచుకోండి:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "హెచ్చరిక: ఈ చర్య రద్దు చేయబడదు మరియు చట్టపరమైన పరిణామాలు ఉండవచ్చు!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "విరాళాలతో ప్రస్తుత కుటుంబం"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "దయచేసి ఈ కుటుంబ రికార్డ్ తొలగింపును నిర్ధారించండి:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2076,10 +1980,6 @@ msgstr "వాలంటీర్ అవకాశ ఎడిటర్"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "ఇంకా వాలంటీర్ అవకాశాలు జోడించబడలేదు"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "కోసం \"ఎందుకు వచ్చారు\" నోట్స్ "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2323,14 +2223,6 @@ msgid "Cell"
 msgstr "సెల్"
 
 #: 
-msgid "Estimated value "
-msgstr "అంచనా విలువ "
-
-#: 
-msgid "Donated by "
-msgstr "ద్వారా విరాళంగా ఇవ్వబడింది "
-
-#: 
 msgid "Paddle"
 msgstr "పాడిల్"
 
@@ -2339,16 +2231,8 @@ msgid "Bid"
 msgstr "బిడ్"
 
 #: 
-msgid "Minimum bid "
-msgstr "కనిష్ట బిడ్ "
-
-#: 
 msgid "All Funds"
 msgstr "అన్ని నిధులు"
-
-#: 
-msgid " for all funds"
-msgstr " అన్ని ఫండ్‌ల కోసం"
 
 #: 
 msgid " for fund "
@@ -5004,10 +4888,6 @@ msgid "Group Role"
 msgstr "సమూహ పాత్ర"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "లేదా ఒక సమూహాన్ని సృష్టించి ఒకే చర్యలో కార్ట్‌ను జోడించండి"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "సమూహం సృష్టించు + కార్ట్ జోడించు"
 
@@ -5151,14 +5031,6 @@ msgstr "యూజర్‌నేమ్ సెట్ చేయబడలేదు"
 #: 
 msgid "Self Registrations"
 msgstr "స్వీయ రిజిస్ట్రేషన్లు"
-
-#: 
-msgid "Public Calendar"
-msgstr "పబ్లిక్ క్యాలెండర్"
-
-#: 
-msgid "Private Calendar"
-msgstr "ప్రైవేట్ క్యాలెండర్"
 
 #: 
 msgid "Username"
@@ -6036,10 +5908,6 @@ msgstr "మొత్తం అనుమతించబడిన గరిష్�
 #: 
 msgid "Checks"
 msgstr "చెక్కులు"
-
-#: 
-msgid "Clear Filters"
-msgstr "ఫిల్టర్‌లను క్లియర్ చేయండి"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7264,10 +7132,6 @@ msgid "open"
 msgstr "తెరిచివుంది"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(ముందుగా నిర్వచించిన రాష్ట్రాలు లేని దేశాల కోసం రాష్ట్రం/ప్రావిన్స్‌ను నమోదు చేయండి)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "బేస్ URL కాన్ఫిగరేషన్ చెల్లదు. దయచేసి మీ Config.php ఫైల్‌ను తనిఖీ చేయండి."
 
@@ -7632,12 +7496,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d వ్యక్తి కార్ట్‌లో చేర్చబడ్డారు."
 msgstr[1] "%d మందిని కార్ట్‌కు చేర్చారు."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d వ్యక్తి ఎంచుకున్న కుటుంబానికి విజయవంతంగా జోడించబడ్డారు."
-msgstr[1] "%d మందిని ఎంచుకున్న కుటుంబానికి విజయవంతంగా చేర్చారు."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9375,14 +9233,6 @@ msgstr "కాబోదా కవరు సంఖ్యలను కేటాయ
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "నిధిసంచయ కొనుగోలుదారు సంఖ్యలను కేటాయించండి మరియు నిర్వహించండి"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "జోడించిన అంశాలను కుటుంబ రికార్డుకు కేటాయించండి"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "జోడించిన అంశాలను సమూహానికి కేటాయించండి"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11132,11 +10982,6 @@ msgstr "డిఫాల్ట్ దేశం"
 #: 
 msgid "Default State"
 msgstr "డిఫాల్ట్ స్థితి"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "mailto: లింక్‌లలో ఇమెయిల్‌లను వేరు చేయడానికి డిలిమిటర్"
 
 #: 
 msgid "Distance Unit"
@@ -14765,10 +14610,6 @@ msgid "Code is invalid"
 msgstr "కోడ్ చెల్లదు"
 
 #: 
-msgid "Coming soon"
-msgstr "త్వరలో వస్తుంది"
-
-#: 
 msgid "Confirm Activation"
 msgstr "క్రియాశీలతను నిర్ధారించండి"
 
@@ -16363,10 +16204,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "ఈ ఫీల్డ్‌లు ఫార్మాటింగ్ కోడ్‌లను ఉపయోగిస్తాయి (తేదీ భాగాలను సూచించే అక్షరాలు). ప్రతి ఫీల్డ్ క్రింద ప్రీసెట్ ఎంచుకోండి లేదా సూచన ఉపయోగించి మీ స్వంతది నిర్మించండి. లైవ్ ప్రివ్యూ ఖచ్చితంగా ఎలా కనిపిస్తుందో చూపుతుంది. సిస్టమ్ డిఫాల్ట్ ఉపయోగించడానికి ఖాళీగా వదిలండి."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "సిస్టమ్ అంతటా తేదీలు మరియు ఫోన్ నంబర్లు ఇలా కనిపిస్తాయి."
-
-#: 
 msgid "Translation completeness"
 msgstr "అనువాద సంపూర్ణత"
 
@@ -16790,4 +16627,496 @@ msgstr "వినియోగదారు కనుగొనబడలేదు."
 #: 
 msgid "— Select a person —"
 msgstr "— ఒక వ్యక్తిని ఎంచుకోండి —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d ఆర్కైవ్ చేయబడిన నిధి సేకరణ"
+msgstr[1] "%d ఆర్కైవ్ చేయబడిన నిధి సేకరణలు"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d వ్యక్తి విజయవంతంగా ఎంచుకున్న కుటుంబానికి జోడించబడ్డారు."
+msgstr[1] "%d వ్యక్తులు విజయవంతంగా ఎంచుకున్న కుటుంబానికి జోడించబడ్డారు."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s నిధి సేకరణలు"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s లక్ష్యంలో %s సేకరించబడింది"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "క్రియాశీల నిధి సేకరణలు"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "నిధి సేకరణ జోడించు"
+
+#: 
+msgid "Add Item"
+msgstr "అంశం జోడించు"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "వ్యక్తులను కుటుంబానికి కేటాయించే ముందు మీ ఎంపికకు జోడించండి."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "ముందు వ్యక్తులను మీ ఎంపికకు జోడించండి, తర్వాత వారిని సమూహానికి జోడించడానికి తిరిగి రండి."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "మొత్తం తర్వాత (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "అన్ని స్థితులు"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "మీ ఎంపికలోని అందరూ ఇప్పటికే ఒక కుటుంబంలో ఉన్నారు. ఎవరినీ కేటాయించడం సాధ్యం కాదు."
+
+#: 
+msgid "All types"
+msgstr "అన్ని రకాలు"
+
+#: 
+msgid "Already in"
+msgstr "ఇప్పటికే లో ఉన్నారు"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "అనుకోని లోపం సంభవించింది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Apply"
+msgstr "వర్తించు"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "ఎంపిక సభ్యులను సమూహానికి కేటాయించు"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "మీ ఎంపిక నుండి వ్యక్తులను కుటుంబానికి కేటాయించు"
+
+#: 
+msgid "Assign role to all:"
+msgstr "అందరికీ పాత్ర కేటాయించు:"
+
+#: 
+msgid "Assign to Family"
+msgstr "కుటుంబానికి కేటాయించు"
+
+#: 
+msgid "Associated Fund"
+msgstr "అనుబంధ నిధి"
+
+#: 
+msgid "At a Glance"
+msgstr "ఒకే చూపులో"
+
+#: 
+msgid "Auction Reports"
+msgstr "వేలం నివేదికలు"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "సగటు విక్రయ ధర"
+
+#: 
+msgid "Back to Cart"
+msgstr "ఎంపికకు తిరిగి"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "నిధి సేకరణలకు తిరిగి"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "మొత్తానికి ముందు (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "అత్యుత్తమ వరుస"
+
+#: 
+msgid "Bid Sheets"
+msgstr "బిడ్ పత్రాలు"
+
+#: 
+msgid "Buyer Statements"
+msgstr "కొనుగోలుదారు వివరణలు"
+
+#: 
+msgid "Buyers Registered"
+msgstr "నమోదైన కొనుగోలుదారులు"
+
+#: 
+msgid "Buyers This Year"
+msgstr "ఈ సంవత్సరం కొనుగోలుదారులు"
+
+#: 
+msgid "Catalog"
+msgstr "కేటలాగ్"
+
+#: 
+msgid "Certificates"
+msgstr "ధృవపత్రాలు"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "ద్రవ్య మొత్తాలలో దశాంశ బిందువుగా ఉపయోగించే అక్షరం (ఉదా. . లేదా ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "ద్రవ్య మొత్తాలలో వేలలను వేరు చేయడానికి ఉపయోగించే అక్షరం (ఉదా. , లేదా .)"
+
+#: 
+msgid "Check-out"
+msgstr "చెక్-అవుట్"
+
+#: 
+msgid "Choose a group..."
+msgstr "ఒక సమూహాన్ని ఎంచుకోండి..."
+
+#: 
+msgid "Choose family"
+msgstr "కుటుంబాన్ని ఎంచుకోండి"
+
+#: 
+msgid "Code"
+msgstr "కోడ్"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "వ్యవస్థ అంతటా ద్రవ్య మొత్తాలు ఎలా ప్రదర్శించబడతాయో కాన్ఫిగర్ చేయండి."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "నిధి సేకరణ సృష్టించు"
+
+#: 
+msgid "Create new family…"
+msgstr "కొత్త కుటుంబాన్ని సృష్టించు…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "కరెన్సీ & ఆర్థిక ఆకృతులు"
+
+#: 
+msgid "Currency Format"
+msgstr "కరెన్సీ ఆకృతి"
+
+#: 
+msgid "Currency Symbol"
+msgstr "కరెన్సీ చిహ్నం"
+
+#: 
+msgid "Currency presets"
+msgstr "కరెన్సీ ముందే నిర్ధారించిన సెట్టింగులు"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "ద్రవ్య మొత్తాల పక్కన ప్రదర్శించే కరెన్సీ చిహ్నం (ఉదా. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "దశాంశ వేర్పాటు అక్షరం"
+
+#: 
+msgid "Did Not Attend"
+msgstr "హాజరు కాలేదు"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "ముగింపు తేదీ ప్రారంభ తేదీ నాడు లేదా తర్వాత ఉండాలి"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "ముందే నిర్ధారించిన రాష్ట్రాలు లేని దేశాలకు రాష్ట్రం/ప్రావిన్స్ నమోదు చేయండి"
+
+#: 
+msgid "Est. Value Total"
+msgstr "అంచనా మొత్తం విలువ"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "అనుసంధానిత సమూహాల నుండి అందరూ చెక్-ఇన్ చేశారు!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "హాజరు చరిత్రను లోడ్ చేయడం విఫలమైంది."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "కొత్త కుటుంబాన్ని సృష్టించేటప్పుడు కుటుంబ పేరు అవసరం."
+
+#: 
+msgid "Filter by event type"
+msgstr "కార్యక్రమ రకం ద్వారా వడగట్టు"
+
+#: 
+msgid "Financials"
+msgstr "ఆర్థిక వివరాలు"
+
+#: 
+msgid "From date"
+msgstr "ప్రారంభ తేదీ"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "నిధి సేకరణ సమీక్ష"
+
+#: 
+msgid "Fundraisers"
+msgstr "నిధి సేకరణలు"
+
+#: 
+msgid "Fundraising"
+msgstr "నిధి సేకరణ"
+
+#: 
+msgid "Goal %"
+msgstr "లక్ష్యం %"
+
+#: 
+msgid "Goal Amount"
+msgstr "లక్ష్య మొత్తం"
+
+#: 
+msgid "Highest Sale"
+msgstr "అత్యధిక విక్రయం"
+
+#: 
+msgid "Invalid status value"
+msgstr "చెల్లని స్థితి విలువ"
+
+#: 
+msgid "Invalid type value"
+msgstr "చెల్లని రకం విలువ"
+
+#: 
+msgid "Items"
+msgstr "అంశాలు"
+
+#: 
+msgid "Items Donated"
+msgstr "దానం చేసిన అంశాలు"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "దానం చేసిన అంశాలు (ఈ సంవత్సరం)"
+
+#: 
+msgid "Items Sold"
+msgstr "విక్రయించిన అంశాలు"
+
+#: 
+msgid "Last Attendance"
+msgstr "చివరి హాజరు"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "అనుసంధానిత దాన నిధి"
+
+#: 
+msgid "Live Preview"
+msgstr "లైవ్ ప్రివ్యూ"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "హాజరు చరిత్రను లోడ్ చేస్తోంది…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "బహుళ కొనుగోలు అంశాలు"
+
+#: 
+msgid "New family details"
+msgstr "కొత్త కుటుంబ వివరాలు"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "%s నిధి సేకరణలు ఏవీ కనుగొనబడలేదు."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "క్రియాశీల నిధి సేకరణలు ఏవీ కనుగొనబడలేదు."
+
+#: 
+msgid "No attendance records found."
+msgstr "హాజరు రికార్డులు ఏవీ కనుగొనబడలేదు."
+
+#: 
+msgid "No donated items yet."
+msgstr "ఇంకా దానం చేసిన అంశాలు లేవు."
+
+#: 
+msgid "Not a valid end date"
+msgstr "చెల్లని ముగింపు తేదీ"
+
+#: 
+msgid "Not included"
+msgstr "చేర్చబడలేదు"
+
+#: 
+msgid "People to assign"
+msgstr "కేటాయించాల్సిన వ్యక్తులు"
+
+#: 
+msgid "Planning"
+msgstr "ప్రణాళిక"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "దయచేసి %s కోసం కుటుంబ పాత్రను ఎంచుకోండి."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "సేవ్ చేయకుండా క్రింది ఫీల్డులను నింపుతుంది. వర్తించడానికి సేవ్ క్లిక్ చేయండి."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "మొత్తానికి సంబంధించి కరెన్సీ చిహ్నం యొక్క స్థానం."
+
+#: 
+msgid "Quick presets"
+msgstr "త్వరిత ముందే నిర్ధారించిన సెట్టింగులు"
+
+#: 
+msgid "Raised"
+msgstr "సేకరించబడింది"
+
+#: 
+msgid "Raised This Year"
+msgstr "ఈ సంవత్సరం సేకరించబడింది"
+
+#: 
+msgid "Sample Amount"
+msgstr "నమూనా మొత్తం"
+
+#: 
+msgid "Sell-through"
+msgstr "సంపూర్ణ విక్రయం"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "దశాంశ బిందువుగా ఉపయోగించే ఒకే అక్షరం (ఉదా. . లేదా ,). డిఫాల్ట్: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "వేలలను సమూహపరచడానికి ఉపయోగించే ఒకే అక్షరం (ఉదా. , లేదా .). డిఫాల్ట్: ,"
+
+#: 
+msgid "Sold"
+msgstr "విక్రయించబడింది"
+
+#: 
+msgid "State / Province"
+msgstr "రాష్ట్రం / ప్రావిన్స్"
+
+#: 
+msgid "Streak"
+msgstr "వరుస"
+
+#: 
+msgid "Symbol Position"
+msgstr "చిహ్నం స్థానం"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "మొత్తాల పక్కన చూపబడే చిహ్నం లేదా కోడ్ (ఉదా. $, €, £, CHF, CAD $). డిఫాల్ట్: $"
+
+#: 
+msgid "Target family"
+msgstr "లక్ష్య కుటుంబం"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "సమూహం కనుగొనబడలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "ఎంచుకున్న కుటుంబం ఇకపై ఉనికిలో లేదు. దయచేసి పేజీని రిఫ్రెష్ చేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "ఎంచుకున్న సమూహం కనుగొనబడలేదు. దయచేసి చెల్లుబాటు అయ్యే సమూహాన్ని ఎంచుకోండి."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "తేదీలు, కరెన్సీ మొత్తాలు మరియు ఫోన్ నంబర్లు వ్యవస్థ అంతటా ఎలా కనిపిస్తాయో ఇది చూపిస్తుంది."
+
+#: 
+msgid "Thousands Separator"
+msgstr "వేల వేర్పాటు అక్షరం"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "వేల వేర్పాటు అక్షరం మరియు దశాంశ వేర్పాటు అక్షరం వేర్వేరుగా ఉండాలి."
+
+#: 
+msgid "To date"
+msgstr "ముగింపు తేదీ"
+
+#: 
+msgid "Total Events"
+msgstr "మొత్తం కార్యక్రమాలు"
+
+#: 
+msgid "Total Raised"
+msgstr "మొత్తం సేకరించబడింది"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "మొత్తం సేకరించబడింది (లక్ష్యం నిర్ధారించబడలేదు)"
+
+#: 
+msgid "Unsold"
+msgstr "విక్రయించబడలేదు"
+
+#: 
+msgid "Updates as you type."
+msgstr "మీరు టైప్ చేస్తున్నప్పుడు నవీకరించబడుతుంది."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "చిహ్నం సంఖ్యా మొత్తానికి ముందు లేదా తర్వాత కనిపిస్తుందా. డిఫాల్ట్: మొత్తానికి ముందు"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "మీ ఎంపిక ఖాళీగా ఉంది. ముందు వ్యక్తులను మీ ఎంపికకు జోడించండి."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "జిప్ / పోస్టల్ కోడ్"
+
+#: 
+msgid "events"
+msgstr "కార్యక్రమాలు"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "లక్ష్య మొత్తం ప్రతికూలేతర సంఖ్యగా ఉండాలి"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "లక్ష్య మొత్తం ప్రతికూలేతరంగా ఉండాలి"
+
+#: 
+msgid "thru %s"
+msgstr "%s వరకు"
+
+#: 
+msgid "— Select role —"
+msgstr "— పాత్రను ఎంచుకోండి —"
+
+#: 
+msgid "— pick —"
+msgstr "— ఎంచుకోండి —"
 

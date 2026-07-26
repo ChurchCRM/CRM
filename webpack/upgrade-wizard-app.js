@@ -379,10 +379,10 @@ function renderWhatsNew(data) {
 
   if (releasesAhead >= 2 && upgradePath && upgradePath.length >= 2) {
     const count = upgradePath.length;
-    $("#upgradePathSummary").html(
-      i18next.t("You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:", {
+    $("#upgradePathSummary").text(
+      `${i18next.t("You are {{releaseCount}} releases behind. Here's what you'll gain", {
         releaseCount: count,
-      }),
+      })}:`,
     );
     renderUpgradePath(upgradePath);
     $("#upgradePathPanel").removeClass("d-none");

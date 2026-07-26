@@ -370,7 +370,7 @@ class UserService
 
         $user = UserQuery::create()->findPk($personId);
         if ($user === null) {
-            throw new \RuntimeException(gettext('User not found.'));
+            throw new \RuntimeException(gettext('User not found'));
         }
 
         $user->setAddRecords($perms['addRecords'])

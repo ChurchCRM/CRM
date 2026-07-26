@@ -198,10 +198,6 @@ msgid "Anniversary Date"
 msgstr "सालगिरह की तिथि"
 
 #: 
-msgid "Output Method:"
-msgstr "आउटपुट विधि:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "सीएसवी व्यक्तिगत रिकॉर्ड"
 
@@ -272,42 +268,14 @@ msgstr "कार्ट को इवेंट में जोड़ें"
 msgid "Your cart is empty!"
 msgstr "आपका कार्ट खाली है!"
 
-#: 
-msgid "No family name entered!"
-msgstr "कोई परिवार का नाम नहीं डाला गया!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "कार्ट को परिवार में जोड़ें"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "नाम"
 
 #: 
-msgid "Assign Role"
-msgstr "भूमिका सौंपें"
-
-#: 
 msgid "Already in a family"
 msgstr "पहले से ही एक परिवार में"
-
-#: 
-msgid "Create new family"
-msgstr "नया परिवार बनाएं"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "यदि नया परिवार जोड़ रहे हैं, तो नीचे डेटा दर्ज करें।"
-
-#: 
-msgid "Use address/contact data from"
-msgstr "पता/संपर्क डेटा का उपयोग यहाँ से करें"
-
-#: 
-msgid "Only the new data below"
-msgstr "केवल नीचे दिया गया नया डेटा"
 
 #: 
 msgid "Do not auto-format"
@@ -320,10 +288,6 @@ msgstr "परिवार में जोड़ें"
 #: 
 msgid "Add Cart to Group"
 msgstr "कार्ट को समूह में जोड़ें"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "उस समूह का चयन करें जिसमें आप अपना कार्ट जोड़ना चाहते हैं"
 
 #: 
 msgid "Select Group"
@@ -401,10 +365,6 @@ msgstr "कार्रवाई"
 #: 
 msgid "Member"
 msgstr "सदस्य"
-
-#: 
-msgid " of the"
-msgstr " का"
 
 #: 
 msgid "(No assigned family)"
@@ -1068,10 +1028,6 @@ msgid "Bank Draft"
 msgstr "बैंक ड्राफ्ट"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "न्यूनतम कुल राशि:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - कोई न्यूनतम नहीं"
 
@@ -1096,10 +1052,6 @@ msgid "All Families"
 msgstr "सभी परिवार"
 
 #: 
-msgid "Report Heading:"
-msgstr "रिपोर्ट का शीर्षक:"
-
-#: 
 msgid "Graphic"
 msgstr "ग्राफिक"
 
@@ -1110,14 +1062,6 @@ msgstr "चर्च का पता"
 #: 
 msgid "Blank"
 msgstr "खाली"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "प्रेषण पर्ची:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "डेटा को इसके द्वारा क्रमबद्ध करें:"
 
 #: 
 msgid "Deposit"
@@ -1170,10 +1114,6 @@ msgstr "फंडरेज़र सूची"
 #: 
 msgid "Date Start"
 msgstr "प्रारंभ तिथि"
-
-#: 
-msgid "Apply Filters"
-msgstr "फ़िल्टर लागू करें"
 
 #: 
 msgid "Date End"
@@ -1608,10 +1548,6 @@ msgid "Generate Statement"
 msgstr "विवरण तैयार करें"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "इस फंडरेज़र के लिए खरीदार:"
-
-#: 
 msgid "Select all"
 msgstr "सभी चुनें"
 
@@ -1730,10 +1666,6 @@ msgstr "गैर-शून्य चेक संख्या निर्द�
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "'नकद' भुगतान के लिए चेक संख्या मान्य नहीं है"
-
-#: 
-msgid " more entries will fit."
-msgstr " और प्रविष्टियाँ आ जाएँगी।"
 
 #: 
 msgid "Deposit closed"
@@ -1865,10 +1797,6 @@ msgid "Query Listing"
 msgstr "क्वेरी सूची"
 
 #: 
-msgid " record(s) returned"
-msgstr "रिकॉर्ड प्राप्त हुए"
-
-#: 
 msgid "Query View"
 msgstr "क्वेरी दृश्य"
 
@@ -1879,22 +1807,6 @@ msgstr "यह मान आवश्यक है।"
 #: 
 msgid "This value must be numeric."
 msgstr "यह मान संख्यात्मक होना चाहिए।"
-
-#: 
-msgid "This value must be at least "
-msgstr "यह मान कम से कम होना चाहिए "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "यह मान इससे अधिक नहीं हो सकता "
-
-#: 
-msgid " characters long"
-msgstr " अक्षर लंबा"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "यह मान इससे कम नहीं हो सकता "
 
 #: 
 msgid "Run Query Again"
@@ -1929,20 +1841,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "चेतावनी: इस परिवार के पास दान का रिकॉर्ड है और जब तक ये दान किसी अन्य परिवार से नहीं जुड़ जाते, तब तक इसे हटाया नहीं जा सकता।"
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "कृपया एक अन्य परिवार चुनें जिसके साथ इन दानों को जोड़ना है:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "चेतावनी: यह क्रिया पूर्ववत नहीं की जा सकती और इसके कानूनी निहितार्थ हो सकते हैं!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "दान के साथ वर्तमान परिवार"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "कृपया इस परिवार के रिकॉर्ड को हटाने की पुष्टि करें:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2067,10 +1971,6 @@ msgstr "स्वयंसेवक अवसर संपादक"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "अभी तक कोई स्वयंसेवक अवसर नहीं जोड़ा गया है"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"क्यों आए\" नोट्स इसके लिए: "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2314,14 +2214,6 @@ msgid "Cell"
 msgstr "सेल"
 
 #: 
-msgid "Estimated value "
-msgstr "अनुमानित मूल्य "
-
-#: 
-msgid "Donated by "
-msgstr "इनके द्वारा दान किया गया: "
-
-#: 
 msgid "Paddle"
 msgstr "पैडल"
 
@@ -2330,16 +2222,8 @@ msgid "Bid"
 msgstr "बोली"
 
 #: 
-msgid "Minimum bid "
-msgstr "न्यूनतम बोली "
-
-#: 
 msgid "All Funds"
 msgstr "सभी फंड"
-
-#: 
-msgid " for all funds"
-msgstr " सभी फंडों के लिए"
 
 #: 
 msgid " for fund "
@@ -4995,10 +4879,6 @@ msgid "Group Role"
 msgstr "समूह भूमिका"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "या एक समूह बनाएं और कार्ट को एक बार में जोड़ें"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "समूह बनाएं + कार्ट जोड़ें"
 
@@ -5142,14 +5022,6 @@ msgstr "उपयोगकर्ता नाम सेट नहीं है"
 #: 
 msgid "Self Registrations"
 msgstr "स्व-पंजीकरण"
-
-#: 
-msgid "Public Calendar"
-msgstr "सार्वजनिक कैलेंडर"
-
-#: 
-msgid "Private Calendar"
-msgstr "निजी कैलेंडर"
 
 #: 
 msgid "Username"
@@ -6023,10 +5895,6 @@ msgstr "राशि अधिकतम अनुमत मान (999999.99) �
 #: 
 msgid "Checks"
 msgstr "चेक"
-
-#: 
-msgid "Clear Filters"
-msgstr "फ़िल्टर साफ़ करें"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7251,10 +7119,6 @@ msgid "open"
 msgstr "खुला"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(पूर्वनिर्धारित राज्यों के बिना देशों के लिए राज्य/प्रांत दर्ज करें)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "बेस URL कॉन्फ़िगरेशन अमान्य है। कृपया अपनी Config.php फ़ाइल जांचें।"
 
@@ -7619,12 +7483,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d व्यक्ति कार्ट में जोड़ा गया।"
 msgstr[1] "%d लोग कार्ट में जोड़े गए।"
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d व्यक्ति सफलतापूर्वक चयनित परिवार में जोड़ा गया।"
-msgstr[1] "%d लोग सफलतापूर्वक चयनित परिवार में जोड़े गए।"
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9362,14 +9220,6 @@ msgstr "दान लिफ़ाफ़ा संख्याएँ निर्
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "धन संग्रह क्रेता संख्याएँ निर्धारित और प्रबंधित करें"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "सूची की वस्तुओं को परिवार रिकॉर्ड में निर्धारित करें"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "सूची की वस्तुओं को समूह में निर्धारित करें"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11119,11 +10969,6 @@ msgstr "डिफ़ॉल्ट देश"
 #: 
 msgid "Default State"
 msgstr "डिफ़ॉल्ट स्टेट"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Mailto: लिंक में ईमेल को अलग करने के लिए सीमांकक"
 
 #: 
 msgid "Distance Unit"
@@ -14752,10 +14597,6 @@ msgid "Code is invalid"
 msgstr "कोड अमान्य है"
 
 #: 
-msgid "Coming soon"
-msgstr "जल्द आ रहा है"
-
-#: 
 msgid "Confirm Activation"
 msgstr "सक्रियण की पुष्टि करें"
 
@@ -16350,10 +16191,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "ये फ़ील्ड स्वरूपण कोड (दिनांक के भागों को दर्शाने वाले अक्षर) का उपयोग करते हैं। प्रत्येक फ़ील्ड के नीचे एक प्रीसेट चुनें, या संदर्भ का उपयोग करके अपना बनाएं। लाइव पूर्वावलोकन दिखाता है कि यह बिल्कुल कैसा दिखेगा। सिस्टम डिफ़ॉल्ट उपयोग करने के लिए रिक्त छोड़ें।"
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "पूरे सिस्टम में दिनांक और फ़ोन नंबर इस प्रकार दिखाई देंगे।"
-
-#: 
 msgid "Translation completeness"
 msgstr "अनुवाद पूर्णता"
 
@@ -16777,4 +16614,496 @@ msgstr "उपयोगकर्ता नहीं मिला।"
 #: 
 msgid "— Select a person —"
 msgstr "— एक व्यक्ति चुनें —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d संग्रहीत धनसंग्रह"
+msgstr[1] "%d संग्रहीत धनसंग्रह"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d व्यक्ति को चुने गए परिवार में सफलतापूर्वक जोड़ा गया।"
+msgstr[1] "%d व्यक्तियों को चुने गए परिवार में सफलतापूर्वक जोड़ा गया।"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s धनसंग्रह"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s लक्ष्य में से %s एकत्र किया गया"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "सक्रिय धनसंग्रह"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "धनसंग्रह जोड़ें"
+
+#: 
+msgid "Add Item"
+msgstr "आइटम जोड़ें"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "लोगों को परिवार में नियत करने से पहले अपनी सूची में जोड़ें।"
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "पहले लोगों को अपनी सूची में जोड़ें, फिर वापस आकर उन्हें समूह में जोड़ें।"
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "राशि के बाद (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "सभी स्थितियाँ"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "आपकी सूची के सभी लोग पहले से किसी परिवार में हैं। किसी को नियत नहीं किया जा सकता।"
+
+#: 
+msgid "All types"
+msgstr "सभी प्रकार"
+
+#: 
+msgid "Already in"
+msgstr "पहले से शामिल"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "एक अप्रत्याशित त्रुटि हुई। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Apply"
+msgstr "लागू करें"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "सूची के सदस्यों को समूह में नियत करें"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "अपनी सूची से लोगों को परिवार में नियत करें"
+
+#: 
+msgid "Assign role to all:"
+msgstr "सभी को भूमिका नियत करें:"
+
+#: 
+msgid "Assign to Family"
+msgstr "परिवार में नियत करें"
+
+#: 
+msgid "Associated Fund"
+msgstr "संबद्ध निधि"
+
+#: 
+msgid "At a Glance"
+msgstr "एक नज़र में"
+
+#: 
+msgid "Auction Reports"
+msgstr "नीलामी रिपोर्ट"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "औसत विक्रय मूल्य"
+
+#: 
+msgid "Back to Cart"
+msgstr "सूची पर वापस जाएँ"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "धनसंग्रह पर वापस जाएँ"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "राशि से पहले (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "सर्वश्रेष्ठ क्रम"
+
+#: 
+msgid "Bid Sheets"
+msgstr "बोली पत्र"
+
+#: 
+msgid "Buyer Statements"
+msgstr "क्रेता विवरण"
+
+#: 
+msgid "Buyers Registered"
+msgstr "पंजीकृत क्रेता"
+
+#: 
+msgid "Buyers This Year"
+msgstr "इस वर्ष के क्रेता"
+
+#: 
+msgid "Catalog"
+msgstr "सूचीपत्र"
+
+#: 
+msgid "Certificates"
+msgstr "प्रमाणपत्र"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "मौद्रिक राशियों में दशमलव बिंदु के रूप में उपयोग किया जाने वाला वर्ण (जैसे . या ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "मौद्रिक राशियों में हजार अलग करने के लिए उपयोग किया जाने वाला वर्ण (जैसे , या .)"
+
+#: 
+msgid "Check-out"
+msgstr "चेक-आउट"
+
+#: 
+msgid "Choose a group..."
+msgstr "एक समूह चुनें..."
+
+#: 
+msgid "Choose family"
+msgstr "परिवार चुनें"
+
+#: 
+msgid "Code"
+msgstr "कोड"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "यहाँ कॉन्फ़िगर करें कि पूरे सिस्टम में मौद्रिक राशियाँ कैसे प्रदर्शित होती हैं।"
+
+#: 
+msgid "Create Fundraiser"
+msgstr "धनसंग्रह बनाएँ"
+
+#: 
+msgid "Create new family…"
+msgstr "नया परिवार बनाएँ…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "मुद्रा और वित्त प्रारूप"
+
+#: 
+msgid "Currency Format"
+msgstr "मुद्रा प्रारूप"
+
+#: 
+msgid "Currency Symbol"
+msgstr "मुद्रा प्रतीक"
+
+#: 
+msgid "Currency presets"
+msgstr "मुद्रा प्रीसेट"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "मौद्रिक राशियों के पास प्रदर्शित करने के लिए मुद्रा प्रतीक (जैसे $, €, £, CHF, CAD $)।"
+
+#: 
+msgid "Decimal Separator"
+msgstr "दशमलव विभाजक"
+
+#: 
+msgid "Did Not Attend"
+msgstr "उपस्थित नहीं हुए"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "समाप्ति तिथि प्रारंभ तिथि पर या उसके बाद होनी चाहिए"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "पूर्वनिर्धारित राज्यों के बिना देशों के लिए राज्य/प्रांत दर्ज करें"
+
+#: 
+msgid "Est. Value Total"
+msgstr "अनुमानित कुल मूल्य"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "जुड़े हुए समूहों के सभी लोगों ने चेक इन किया!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "उपस्थिति इतिहास लोड करने में विफल।"
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "नया परिवार बनाते समय परिवार का नाम आवश्यक है।"
+
+#: 
+msgid "Filter by event type"
+msgstr "आयोजन प्रकार द्वारा फ़िल्टर करें"
+
+#: 
+msgid "Financials"
+msgstr "वित्तीय"
+
+#: 
+msgid "From date"
+msgstr "तिथि से"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "धनसंग्रह अवलोकन"
+
+#: 
+msgid "Fundraisers"
+msgstr "धनसंग्रह"
+
+#: 
+msgid "Fundraising"
+msgstr "धनसंग्रहण"
+
+#: 
+msgid "Goal %"
+msgstr "लक्ष्य %"
+
+#: 
+msgid "Goal Amount"
+msgstr "लक्ष्य राशि"
+
+#: 
+msgid "Highest Sale"
+msgstr "सर्वोच्च बिक्री"
+
+#: 
+msgid "Invalid status value"
+msgstr "अमान्य स्थिति मूल्य"
+
+#: 
+msgid "Invalid type value"
+msgstr "अमान्य प्रकार मूल्य"
+
+#: 
+msgid "Items"
+msgstr "आइटम"
+
+#: 
+msgid "Items Donated"
+msgstr "दान की गई वस्तुएँ"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "दान की गई वस्तुएँ (इस वर्ष)"
+
+#: 
+msgid "Items Sold"
+msgstr "बेची गई वस्तुएँ"
+
+#: 
+msgid "Last Attendance"
+msgstr "अंतिम उपस्थिति"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "जुड़ी दान निधि"
+
+#: 
+msgid "Live Preview"
+msgstr "लाइव पूर्वावलोकन"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "उपस्थिति इतिहास लोड हो रहा है…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "बहु-क्रय वस्तुएँ"
+
+#: 
+msgid "New family details"
+msgstr "नए परिवार का विवरण"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "कोई %s धनसंग्रह नहीं मिला।"
+
+#: 
+msgid "No active fundraisers found."
+msgstr "कोई सक्रिय धनसंग्रह नहीं मिला।"
+
+#: 
+msgid "No attendance records found."
+msgstr "कोई उपस्थिति रिकॉर्ड नहीं मिला।"
+
+#: 
+msgid "No donated items yet."
+msgstr "अभी तक कोई दान की गई वस्तु नहीं।"
+
+#: 
+msgid "Not a valid end date"
+msgstr "मान्य समाप्ति तिथि नहीं है"
+
+#: 
+msgid "Not included"
+msgstr "शामिल नहीं"
+
+#: 
+msgid "People to assign"
+msgstr "नियत करने के लिए लोग"
+
+#: 
+msgid "Planning"
+msgstr "योजना"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "कृपया %s के लिए परिवार की भूमिका चुनें।"
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "बिना सहेजे नीचे के फ़ील्ड भरता है। लागू करने के लिए सहेजें पर क्लिक करें।"
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "राशि के सापेक्ष मुद्रा प्रतीक की स्थिति।"
+
+#: 
+msgid "Quick presets"
+msgstr "त्वरित प्रीसेट"
+
+#: 
+msgid "Raised"
+msgstr "एकत्रित"
+
+#: 
+msgid "Raised This Year"
+msgstr "इस वर्ष एकत्रित"
+
+#: 
+msgid "Sample Amount"
+msgstr "नमूना राशि"
+
+#: 
+msgid "Sell-through"
+msgstr "बिक्री दर"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "दशमलव बिंदु के रूप में उपयोग किया जाने वाला एकल वर्ण (जैसे . या ,)। डिफ़ॉल्ट: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "हजार समूह करने के लिए उपयोग किया जाने वाला एकल वर्ण (जैसे , या .)। डिफ़ॉल्ट: ,"
+
+#: 
+msgid "Sold"
+msgstr "बेचा गया"
+
+#: 
+msgid "State / Province"
+msgstr "राज्य / प्रांत"
+
+#: 
+msgid "Streak"
+msgstr "क्रम"
+
+#: 
+msgid "Symbol Position"
+msgstr "प्रतीक स्थिति"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "राशियों के पास दिखाया जाने वाला प्रतीक या कोड (जैसे $, €, £, CHF, CAD $)। डिफ़ॉल्ट: $"
+
+#: 
+msgid "Target family"
+msgstr "लक्षित परिवार"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "समूह नहीं मिला। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "चुना गया परिवार अब मौजूद नहीं है। कृपया पृष्ठ रीफ्रेश करें और पुनः प्रयास करें।"
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "चुना गया समूह नहीं मिला। कृपया एक मान्य समूह चुनें।"
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "तिथियाँ, मुद्रा राशियाँ और फ़ोन नंबर पूरे सिस्टम में इस तरह दिखेंगे। यहाँ वर्तमान प्रारूपों की समीक्षा करें, फिर नीचे के अनुभागों में उन्हें संपादित करें।"
+
+#: 
+msgid "Thousands Separator"
+msgstr "हजार विभाजक"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "हजार विभाजक और दशमलव विभाजक अलग-अलग वर्ण होने चाहिए।"
+
+#: 
+msgid "To date"
+msgstr "तिथि तक"
+
+#: 
+msgid "Total Events"
+msgstr "कुल आयोजन"
+
+#: 
+msgid "Total Raised"
+msgstr "कुल एकत्रित"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "कुल एकत्रित (कोई लक्ष्य निर्धारित नहीं)"
+
+#: 
+msgid "Unsold"
+msgstr "अबिका"
+
+#: 
+msgid "Updates as you type."
+msgstr "टाइप करते समय अपडेट होता है।"
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "प्रतीक संख्यात्मक राशि से पहले या बाद में दिखे। डिफ़ॉल्ट: राशि से पहले"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "आपकी सूची खाली है। पहले लोगों को अपनी सूची में जोड़ें।"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "ज़िप / पिन कोड"
+
+#: 
+msgid "events"
+msgstr "आयोजन"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount एक गैर-ऋणात्मक संख्या होनी चाहिए"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount गैर-ऋणात्मक होनी चाहिए"
+
+#: 
+msgid "thru %s"
+msgstr "%s तक"
+
+#: 
+msgid "— Select role —"
+msgstr "— भूमिका चुनें —"
+
+#: 
+msgid "— pick —"
+msgstr "— चुनें —"
 

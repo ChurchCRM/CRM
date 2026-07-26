@@ -33,7 +33,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-md-6 text-end">
             <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-primary">
                 <i class="fa-solid fa-plus me-1"></i>
-                <?= gettext('Add New') . ' ' . gettext('Pledge') ?>
+                <?= gettext('Add New Pledge') ?>
             </a>
         </div>
     </div>

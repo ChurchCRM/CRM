@@ -102,6 +102,12 @@ $calendarSettingsPanelConfig = [
             'label'   => gettext('Enable External Calendar API'),
             'tooltip' => gettext('Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps.'),
         ],
+        [
+            'name'    => 'sCalendarEmbedOrigins',
+            'type'    => 'text',
+            'label'   => gettext('Calendar Embed Origins'),
+            'tooltip' => gettext('Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any site. Restrict for tighter security, e.g. "https://mysite.org".'),
+        ],
     ],
 ];
 ?>

@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "Datum godišnjice"
 
 #: 
-msgid "Output Method:"
-msgstr "Metoda ispisa:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Individualni zapisi (CSV)"
 
@@ -269,42 +265,14 @@ msgstr "Dodaj košaricu na događaj"
 msgid "Your cart is empty!"
 msgstr "Vaša košarica je prazna!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nije uneseno obiteljsko ime!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Dodaj košaricu obitelji"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Ime"
 
 #: 
-msgid "Assign Role"
-msgstr "Dodijeli ulogu"
-
-#: 
 msgid "Already in a family"
 msgstr "Već u obitelji"
-
-#: 
-msgid "Create new family"
-msgstr "Kreiraj novu obitelj"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Ako dodajete novu obitelj, unesite podatke u nastavku."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Koristi adresu/kontaktne podatke od"
-
-#: 
-msgid "Only the new data below"
-msgstr "Samo novi podaci u nastavku"
 
 #: 
 msgid "Do not auto-format"
@@ -317,10 +285,6 @@ msgstr "Dodaj u obitelj"
 #: 
 msgid "Add Cart to Group"
 msgstr "Dodaj košaricu skupini"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Odaberi skupinu kojoj želite dodati košaricu"
 
 #: 
 msgid "Select Group"
@@ -398,10 +362,6 @@ msgstr "Radnja"
 #: 
 msgid "Member"
 msgstr "Član"
-
-#: 
-msgid " of the"
-msgstr " od"
 
 #: 
 msgid "(No assigned family)"
@@ -1065,10 +1025,6 @@ msgid "Bank Draft"
 msgstr "Bankovni nalog"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Minimalni ukupni iznos:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Bez minimuma"
 
@@ -1093,10 +1049,6 @@ msgid "All Families"
 msgstr "Sve obitelji"
 
 #: 
-msgid "Report Heading:"
-msgstr "Zaglavlje izvještaja:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafika"
 
@@ -1107,14 +1059,6 @@ msgstr "Adresa župe"
 #: 
 msgid "Blank"
 msgstr "Prazno"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Uplatnica:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortiraj podatke po:"
 
 #: 
 msgid "Deposit"
@@ -1167,10 +1111,6 @@ msgstr "Popis prikupljanja sredstava"
 #: 
 msgid "Date Start"
 msgstr "Datum početka"
-
-#: 
-msgid "Apply Filters"
-msgstr "Primijeni filtere"
 
 #: 
 msgid "Date End"
@@ -1605,10 +1545,6 @@ msgid "Generate Statement"
 msgstr "Generiraj izjavu"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Kupci za ovu akciju:"
-
-#: 
 msgid "Select all"
 msgstr "Odaberi sve"
 
@@ -1727,10 +1663,6 @@ msgstr "Mora se navesti nenulti broj čeka"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Broj čeka nije valjan za plaćanje 'GOTOVINOM'"
-
-#: 
-msgid " more entries will fit."
-msgstr " više unosa može stati."
 
 #: 
 msgid "Deposit closed"
@@ -1862,10 +1794,6 @@ msgid "Query Listing"
 msgstr "Popis upita"
 
 #: 
-msgid " record(s) returned"
-msgstr " zapisa pronađeno"
-
-#: 
 msgid "Query View"
 msgstr "Prikaz upita"
 
@@ -1876,22 +1804,6 @@ msgstr "Ova vrijednost je obavezna."
 #: 
 msgid "This value must be numeric."
 msgstr "Ova vrijednost mora biti numerička."
-
-#: 
-msgid "This value must be at least "
-msgstr "Ova vrijednost mora biti najmanje "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Ova vrijednost ne može biti veća od "
-
-#: 
-msgid " characters long"
-msgstr " znakova"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Ova vrijednost ne može biti manja od "
 
 #: 
 msgid "Run Query Again"
@@ -1926,20 +1838,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "UPOZORENJE: Ova obitelj ima zapise o darovima i NE MOŽE biti obrisana dok ti darovi nisu pridruženi drugoj obitelji."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Odaberite drugu obitelj s kojom ćete pridružiti ove darove:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "UPOZORENJE: Ova radnja se ne može poništiti i može imati pravne posljedice!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "TRENUTNA OBITELJ S DAROVIMA"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Potvrdite brisanje ovog obiteljskog zapisa:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2064,10 +1968,6 @@ msgstr "Urednik volonterskih mogućnosti"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Još nisu dodane volonterske mogućnosti"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Bilješke „Zašto sam došao“ za "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2311,14 +2211,6 @@ msgid "Cell"
 msgstr "Mobitel"
 
 #: 
-msgid "Estimated value "
-msgstr "Procijenjena vrijednost "
-
-#: 
-msgid "Donated by "
-msgstr "Donirao "
-
-#: 
 msgid "Paddle"
 msgstr "Lopatica"
 
@@ -2327,16 +2219,8 @@ msgid "Bid"
 msgstr "Ponuda"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimalna ponuda "
-
-#: 
 msgid "All Funds"
 msgstr "Svi fondovi"
-
-#: 
-msgid " for all funds"
-msgstr " za sve fondove"
 
 #: 
 msgid " for fund "
@@ -4991,10 +4875,6 @@ msgid "Group Role"
 msgstr "Uloga u skupini"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ILI kreirajte skupinu i dodajte KOŠARICU U JEDNOJ RADNJI"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Kreiraj skupinu + DODAJ košaricu"
 
@@ -5137,14 +5017,6 @@ msgstr "Korisničko ime nije postavljeno"
 #: 
 msgid "Self Registrations"
 msgstr "Samo-registracije"
-
-#: 
-msgid "Public Calendar"
-msgstr "Javni kalendar"
-
-#: 
-msgid "Private Calendar"
-msgstr "Privatni kalendar"
 
 #: 
 msgid "Username"
@@ -6024,10 +5896,6 @@ msgstr "Iznos premašuje maksimalno dozvoljenu vrijednost (999999,99)."
 #: 
 msgid "Checks"
 msgstr "Čekovi"
-
-#: 
-msgid "Clear Filters"
-msgstr "Očisti filtere"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7253,10 +7121,6 @@ msgid "open"
 msgstr "otvoreno"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Unesite regiju/provinciju za države bez predefiniranih regija)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfiguracija osnovnog URL-a je nevažeća. Molim provjerite svoju datoteku Config.php."
 
@@ -7622,13 +7486,6 @@ msgid_plural "%d People added to the Cart."
 msgstr[0] "%d osoba dodana u košaricu."
 msgstr[1] "%d osobe dodane u košaricu."
 msgstr[2] "%d osoba dodano u košaricu."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d osoba uspješno dodana u odabranu obitelj."
-msgstr[1] "%d osobe uspješno dodane u odabranu obitelj."
-msgstr[2] "%d osoba uspješno dodano u odabranu obitelj."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9370,14 +9227,6 @@ msgstr "Dodijeli i upravljaj brojevima kuverta za darove"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Dodijeli i upravljaj brojevima kupaca akcije prikupljanja"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Dodijeli stavke košarice zapisu obitelji"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Dodijeli stavke košarice skupini"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11127,11 +10976,6 @@ msgstr "Zadana država"
 #: 
 msgid "Default State"
 msgstr "Zadana županija"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Razdjelnik za odvajanje e-pošta u mailto: vezama"
 
 #: 
 msgid "Distance Unit"
@@ -14761,10 +14605,6 @@ msgid "Code is invalid"
 msgstr "Kod je nevažeći"
 
 #: 
-msgid "Coming soon"
-msgstr "Dolazi uskoro"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Potvrdi aktivaciju"
 
@@ -16360,10 +16200,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Ova polja koriste kodove za oblikovanje (slova koja predstavljaju dijelove datuma). Odaberite unaprijed postavljenu vrijednost ispod svakog polja ili izradite vlastitu koristeći referencu. Pregled uživo prikazuje točno kako će izgledati. Ostavite prazno za korištenje zadane sistemske vrijednosti."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Ovako će se datumi i telefonski brojevi prikazivati diljem sustava."
-
-#: 
 msgid "Translation completeness"
 msgstr "Potpunost prijevoda"
 
@@ -16787,4 +16623,498 @@ msgstr "Korisnik nije pronađen."
 #: 
 msgid "— Select a person —"
 msgstr "— Odaberite osobu —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d arhivirana akcija prikupljanja sredstava"
+msgstr[1] "%d arhivirane akcije prikupljanja sredstava"
+msgstr[2] "%d arhiviranih akcija prikupljanja sredstava"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d osoba uspješno dodana odabranoj obitelji."
+msgstr[1] "%d osobe uspješno dodane odabranoj obitelji."
+msgstr[2] "%d osoba uspješno dodano odabranoj obitelji."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s akcija prikupljanja sredstava"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s od cilja %s prikupljeno"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktivne akcije prikupljanja sredstava"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Dodaj akciju prikupljanja sredstava"
+
+#: 
+msgid "Add Item"
+msgstr "Dodaj stavku"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Dodajte osobe u odabir prije dodjeljivanja obitelji."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Najprije dodajte osobe u odabir, a zatim se vratite kako biste ih dodali u skupinu."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Iza iznosa (100,00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Svi statusi"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Sve osobe u odabiru već su u obitelji. Nije moguće dodijeliti nijednu osobu."
+
+#: 
+msgid "All types"
+msgstr "Sve vrste"
+
+#: 
+msgid "Already in"
+msgstr "Već u"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Došlo je do neočekivane pogreške. Molimo pokušajte ponovo."
+
+#: 
+msgid "Apply"
+msgstr "Primijeni"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Dodijeli članove odabira skupini"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Dodijeli osobe iz odabira obitelji"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Dodijeli ulogu svima:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Dodijeli obitelji"
+
+#: 
+msgid "Associated Fund"
+msgstr "Pridruženi fond"
+
+#: 
+msgid "At a Glance"
+msgstr "Na prvi pogled"
+
+#: 
+msgid "Auction Reports"
+msgstr "Izvještaji o aukciji"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Prosječna prodajna cijena"
+
+#: 
+msgid "Back to Cart"
+msgstr "Natrag na odabir"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Natrag na akcije prikupljanja sredstava"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Ispred iznosa (¤ 100,00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Najbolji niz"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Licitacijski listovi"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Izjave kupaca"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Registrirani kupci"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Kupci ove godine"
+
+#: 
+msgid "Catalog"
+msgstr "Katalog"
+
+#: 
+msgid "Certificates"
+msgstr "Certifikati"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Znak koji se koristi kao decimalni separator u novčanim iznosima (npr. . ili ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Znak koji se koristi za odvajanje tisućica u novčanim iznosima (npr. , ili .)"
+
+#: 
+msgid "Check-out"
+msgstr "Odjava"
+
+#: 
+msgid "Choose a group..."
+msgstr "Odaberite skupinu..."
+
+#: 
+msgid "Choose family"
+msgstr "Odaberite obitelj"
+
+#: 
+msgid "Code"
+msgstr "Kod"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Konfigurišite kako se novčani iznosi prikazuju u cijelom sustavu."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Stvori akciju prikupljanja sredstava"
+
+#: 
+msgid "Create new family…"
+msgstr "Stvori novu obitelj…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Valuta i financijski formati"
+
+#: 
+msgid "Currency Format"
+msgstr "Format valute"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Symbol valute"
+
+#: 
+msgid "Currency presets"
+msgstr "Unaprijed postavljene valute"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Symbol valute koji se prikazuje pored novčanih iznosa (npr. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Decimalni separator"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Nije prisustvovao"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Datum završetka mora biti na ili nakon datuma početka"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Unesite državu/pokrajinu za zemlje bez unaprijed definiranih država"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Ukupna procjenjena vrijednost"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Svi iz povezanih skupina su prijavljeni!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Učitavanje povijesti pohađanja nije uspjelo."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Naziv obitelji je obavezan pri stvaranju nove obitelji."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filtriraj prema vrsti događaja"
+
+#: 
+msgid "Financials"
+msgstr "Financije"
+
+#: 
+msgid "From date"
+msgstr "Od datuma"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Pregled akcije prikupljanja sredstava"
+
+#: 
+msgid "Fundraisers"
+msgstr "Akcije prikupljanja sredstava"
+
+#: 
+msgid "Fundraising"
+msgstr "Prikupljanje sredstava"
+
+#: 
+msgid "Goal %"
+msgstr "Cilj %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Ciljani iznos"
+
+#: 
+msgid "Highest Sale"
+msgstr "Najveća prodaja"
+
+#: 
+msgid "Invalid status value"
+msgstr "Nevažeća vrijednost statusa"
+
+#: 
+msgid "Invalid type value"
+msgstr "Nevažeća vrijednost vrste"
+
+#: 
+msgid "Items"
+msgstr "Stavke"
+
+#: 
+msgid "Items Donated"
+msgstr "Donirane stavke"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Donirane stavke (ove godine)"
+
+#: 
+msgid "Items Sold"
+msgstr "Prodane stavke"
+
+#: 
+msgid "Last Attendance"
+msgstr "Posljednje pohađanje"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Povezani donacijski fond"
+
+#: 
+msgid "Live Preview"
+msgstr "Pregled uživo"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Učitavanje povijesti pohađanja…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Stavke za višestruku kupnju"
+
+#: 
+msgid "New family details"
+msgstr "Podaci o novoj obitelji"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Nije pronađena nijedna akcija prikupljanja sredstava (%s)."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Nije pronađena nijedna aktivna akcija prikupljanja sredstava."
+
+#: 
+msgid "No attendance records found."
+msgstr "Nije pronađen nijedan zapis o pohađanju."
+
+#: 
+msgid "No donated items yet."
+msgstr "Još nema donatiranih stavki."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Nije važeći datum završetka"
+
+#: 
+msgid "Not included"
+msgstr "Nije uključeno"
+
+#: 
+msgid "People to assign"
+msgstr "Osobe za dodjelu"
+
+#: 
+msgid "Planning"
+msgstr "Planiranje"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Molimo odaberite ulogu u obitelji za %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Popunjava polja ispod bez spremanja. Kliknite Spremi za primjenu."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Položaj simbola valute u odnosu na iznos."
+
+#: 
+msgid "Quick presets"
+msgstr "Brze unaprijed postavljene vrijednosti"
+
+#: 
+msgid "Raised"
+msgstr "Prikupljeno"
+
+#: 
+msgid "Raised This Year"
+msgstr "Prikupljeno ove godine"
+
+#: 
+msgid "Sample Amount"
+msgstr "Primjerni iznos"
+
+#: 
+msgid "Sell-through"
+msgstr "Rasprodaja"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Jedan znak koji se koristi kao decimalna točka (npr. . ili ,). Zadano: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Jedan znak koji se koristi za grupiranje tisućica (npr. , ili .). Zadano: ,"
+
+#: 
+msgid "Sold"
+msgstr "Prodano"
+
+#: 
+msgid "State / Province"
+msgstr "Država / Pokrajina"
+
+#: 
+msgid "Streak"
+msgstr "Niz"
+
+#: 
+msgid "Symbol Position"
+msgstr "Položaj simbola"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Symbol ili kod koji se prikazuje pored iznosa (npr. $, €, £, CHF, CAD $). Zadano: $"
+
+#: 
+msgid "Target family"
+msgstr "Ciljna obitelj"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Skupina nije pronađena. Molimo pokušajte ponovo."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Odabrana obitelj više ne postoji. Molimo osvježite stranicu i pokušajte ponovo."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Odabrana skupina nije pronađena. Molimo odaberite važeću skupinu."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Ovako će se datumi, novčani iznosi i telefonski brojevi prikazivati u cijelom sustavu."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Separator tisućica"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Separator tisućica i decimalni separator moraju biti različiti znakovi."
+
+#: 
+msgid "To date"
+msgstr "Do datuma"
+
+#: 
+msgid "Total Events"
+msgstr "Ukupno događaja"
+
+#: 
+msgid "Total Raised"
+msgstr "Ukupno prikupljeno"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Ukupno prikupljeno (bez postavljenog cilja)"
+
+#: 
+msgid "Unsold"
+msgstr "Neprodano"
+
+#: 
+msgid "Updates as you type."
+msgstr "Ažurira se dok tipkate."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Pojavljuje li se simbol ispred ili iza numeričkog iznosa. Zadano: Ispred iznosa"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Vaš odabir je prazan. Najprije dodajte osobe u odabir."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Poštanski broj"
+
+#: 
+msgid "events"
+msgstr "događaji"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount mora biti nenegativan broj"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount mora biti nenegativan"
+
+#: 
+msgid "thru %s"
+msgstr "do %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Odaberite ulogu —"
+
+#: 
+msgid "— pick —"
+msgstr "— odaberi —"
 

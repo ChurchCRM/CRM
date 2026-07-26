@@ -44,7 +44,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
             <label class="col-sm-3 col-form-label"><?= gettext('Person') ?></label>
             <div class="col-sm-9">
                 <select name="PersonID" id="personSelect" class="form-select">
-                    <option value="" disabled selected><?= gettext('— Select a person —') ?></option>
+                    <option value="" disabled selected>— <?= gettext('Select a person') ?> —</option>
                     <?php foreach ($people as $p): ?>
                     <option value="<?= $p->getId() ?>"><?= InputUtils::escapeHTML($p->getLastName() . ', ' . $p->getFirstName()) ?></option>
                     <?php endforeach; ?>
@@ -157,7 +157,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
 
         <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <hr>
-            <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions:') ?></p>
+            <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions') ?>:</p>
             <?php
             $permissions = [
                 ['name' => 'MenuOptions',  'label' => gettext('Manage Properties and Classifications'), 'checked' => $perms['menuOptions']],

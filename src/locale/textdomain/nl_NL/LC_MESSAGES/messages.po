@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "Trouwdatum"
 
 #: 
-msgid "Output Method:"
-msgstr "Uitvoermethode:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Individuele CSV-records"
 
@@ -269,42 +265,14 @@ msgstr "Voeg werkbestand toe aan activiteit"
 msgid "Your cart is empty!"
 msgstr "Uw werkbestand is leeg."
 
-#: 
-msgid "No family name entered!"
-msgstr "Geen naam gezin ingevoerd!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Voeg werkbestand toe aan gezin"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Naam"
 
 #: 
-msgid "Assign Role"
-msgstr "Toewijzen aan Rol"
-
-#: 
 msgid "Already in a family"
 msgstr "Reeds in een gezin "
-
-#: 
-msgid "Create new family"
-msgstr "Voer nieuw gezin in"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Indien nieuw gezin, voeg onderstaande gegevens toe."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Gebruik adres/contact gegevens van"
-
-#: 
-msgid "Only the new data below"
-msgstr "Onderstaand alleen de nieuwe gegevens"
 
 #: 
 msgid "Do not auto-format"
@@ -317,10 +285,6 @@ msgstr "Voeg toe aan gezin"
 #: 
 msgid "Add Cart to Group"
 msgstr "Voeg werkbestand toe aan groep"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Selecteer de groep welke u wilt toevoegen aan het werkbestand"
 
 #: 
 msgid "Select Group"
@@ -398,10 +362,6 @@ msgstr "Actie"
 #: 
 msgid "Member"
 msgstr "Lid"
-
-#: 
-msgid " of the"
-msgstr "van de"
 
 #: 
 msgid "(No assigned family)"
@@ -1065,10 +1025,6 @@ msgid "Bank Draft"
 msgstr "Bank Overschrijving"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Minimum Totaal Bedrag:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0- Geen Minimum"
 
@@ -1093,10 +1049,6 @@ msgid "All Families"
 msgstr "Alle Gezinnen"
 
 #: 
-msgid "Report Heading:"
-msgstr "Raport Titel:"
-
-#: 
 msgid "Graphic"
 msgstr "Graphisch"
 
@@ -1107,14 +1059,6 @@ msgstr "Kerk Adres"
 #: 
 msgid "Blank"
 msgstr "Blank"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Overschrijvings Strookje:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sorteer Data op:"
 
 #: 
 msgid "Deposit"
@@ -1167,10 +1111,6 @@ msgstr "Fundraiser Lijst"
 #: 
 msgid "Date Start"
 msgstr "Start Datum"
-
-#: 
-msgid "Apply Filters"
-msgstr "Zet Filters"
 
 #: 
 msgid "Date End"
@@ -1605,10 +1545,6 @@ msgid "Generate Statement"
 msgstr "Genereer Rapportage"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Kopers van deze fundraiser:"
-
-#: 
 msgid "Select all"
 msgstr "Selecteer alles"
 
@@ -1727,10 +1663,6 @@ msgstr "Dient aan te geven niet-nul controlenummer"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Controleer nummer niet geldig voor \"CASH\" betaling"
-
-#: 
-msgid " more entries will fit."
-msgstr "Er is ruimte voor meer."
 
 #: 
 msgid "Deposit closed"
@@ -1862,10 +1794,6 @@ msgid "Query Listing"
 msgstr "Overzicht van queries"
 
 #: 
-msgid " record(s) returned"
-msgstr "recors(s) ontvangen"
-
-#: 
 msgid "Query View"
 msgstr "Query Overzicht"
 
@@ -1876,22 +1804,6 @@ msgstr "Deze waarde is vereist."
 #: 
 msgid "This value must be numeric."
 msgstr "Deze waarde moet numeriek zijn."
-
-#: 
-msgid "This value must be at least "
-msgstr "Deze waarde moet op zijn minst "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Deze waarde kan niet meer zijn dan "
-
-#: 
-msgid " characters long"
-msgstr " karakters lang"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Deze waarde kan niet minder zijn dan "
 
 #: 
 msgid "Run Query Again"
@@ -1926,20 +1838,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "WAARSCHUWING: Deze familie heeft gekoppelde donaties, en mag niet worden verwijderd totdat deze gekoppeld zijn aan een andere familie."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Selecteer aub een andere familie aan wie deze donaties worden gekoppeld:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "Waarschuwing: Deze actie kan niet ongedaan worden gemaakt, en zou legale consequenties kunnen hebben!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "HUIDIGE FAMILIE MET DONATIES"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Bevestig aub verwijdering van deze familie:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2064,10 +1968,6 @@ msgstr "Beheer vrijwilligerswerk"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Er zijn nog geen vrijwilligers mogelijkheden toegevoegd"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"Waarom Kwam\" notities for "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2311,14 +2211,6 @@ msgid "Cell"
 msgstr "Mobiel"
 
 #: 
-msgid "Estimated value "
-msgstr "Geschatte Waarde"
-
-#: 
-msgid "Donated by "
-msgstr "Geschonken door"
-
-#: 
 msgid "Paddle"
 msgstr "Peddel"
 
@@ -2327,16 +2219,8 @@ msgid "Bid"
 msgstr "Bod"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimum bod"
-
-#: 
 msgid "All Funds"
 msgstr "Alle Fonds"
-
-#: 
-msgid " for all funds"
-msgstr " voor alle fondsen"
 
 #: 
 msgid " for fund "
@@ -4995,10 +4879,6 @@ msgid "Group Role"
 msgstr "Rol van de groep"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "OF Maak een groep aan en voeg aan werkbestand toe in ÉÉN ACTIE"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Groep maken en aan het werkbestand toevoegen"
 
@@ -5142,14 +5022,6 @@ msgstr "De gebruikersnaam is niet ingevuld"
 #: 
 msgid "Self Registrations"
 msgstr "Zelf registraties"
-
-#: 
-msgid "Public Calendar"
-msgstr "Openbare agenda"
-
-#: 
-msgid "Private Calendar"
-msgstr "Persoonlijke agenda"
 
 #: 
 msgid "Username"
@@ -6028,10 +5900,6 @@ msgstr "Bedrag overschrijdt de maximaal toegestane waarde (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Controles"
-
-#: 
-msgid "Clear Filters"
-msgstr "Filters wissen"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7256,10 +7124,6 @@ msgid "open"
 msgstr "open"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Voer staat/provincie in voor landen zonder vooraf bepaalde staten)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Base URL-configuratie is ongeldig. Controleer uw Config.php-bestand."
 
@@ -7624,12 +7488,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d persoon aan winkelwagen toegevoegd."
 msgstr[1] "%d personen aan winkelwagen toegevoegd."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde familie."
-msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde familie."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9367,14 +9225,6 @@ msgstr "Collecte-envelopnummers toewijzen en beheren"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Kopersnummers voor inzamelingsacties toewijzen en beheren"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Winkelwagenartikelen toewijzen aan een gezinsdossier"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Winkelwagenartikelen toewijzen aan een groep"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11124,11 +10974,6 @@ msgstr "Standaardland"
 #: 
 msgid "Default State"
 msgstr "Standaardstaat"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Scheidingsteken om e-mails in mailto: koppelingen te scheiden"
 
 #: 
 msgid "Distance Unit"
@@ -14757,10 +14602,6 @@ msgid "Code is invalid"
 msgstr "Code is ongeldig"
 
 #: 
-msgid "Coming soon"
-msgstr "Binnenkort beschikbaar"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Activering bevestigen"
 
@@ -16355,10 +16196,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Deze velden gebruiken opmaakcodes (letters die staan voor delen van een datum). Kies een voorinstelling onder elk veld of bouw uw eigen met behulp van de referentie. De live-preview toont exact hoe het eruit ziet. Laat leeg om de systeemstandaard te gebruiken."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Zo worden datums en telefoonnummers in het hele systeem weergegeven."
-
-#: 
 msgid "Translation completeness"
 msgstr "Vertaalvolledigheid"
 
@@ -16782,4 +16619,484 @@ msgstr "Gebruiker niet gevonden."
 #: 
 msgid "— Select a person —"
 msgstr "— Selecteer een persoon —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d gearchiveerde inzamelingsactie"
+msgstr[1] "%d gearchiveerde inzamelingsacties"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d persoon succesvol toegevoegd aan de geselecteerde familie."
+msgstr[1] "%d personen succesvol toegevoegd aan de geselecteerde familie."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s Inzamelingsacties"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s van %s doel opgehaald"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Actieve inzamelingsacties"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Inzamelingsactie toevoegen"
+
+#: 
+msgid "Add Item"
+msgstr "Item toevoegen"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Voeg mensen toe aan uw selectie voordat u ze aan een familie toewijst."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Voeg eerst mensen toe aan uw selectie en kom dan terug om ze aan een groep toe te voegen."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Na bedrag (100,00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Alle statussen"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Alle mensen in uw selectie zijn al in een familie. Niemand kan worden toegewezen."
+
+#: 
+msgid "All types"
+msgstr "Alle typen"
+
+#: 
+msgid "Already in"
+msgstr "Al in"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Er is een onverwachte fout opgetreden. Probeer het opnieuw."
+
+#: 
+msgid "Apply"
+msgstr "Toepassen"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Selectieleden aan een groep toewijzen"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Personen uit uw selectie aan een familie toewijzen"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Rol aan iedereen toewijzen:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Toewijzen aan familie"
+
+#: 
+msgid "Associated Fund"
+msgstr "Gekoppeld fonds"
+
+#: 
+msgid "At a Glance"
+msgstr "In één oogopslag"
+
+#: 
+msgid "Auction Reports"
+msgstr "Veilingrapporten"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Gemiddelde verkoopprijs"
+
+#: 
+msgid "Back to Cart"
+msgstr "Terug naar selectie"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Terug naar inzamelingsacties"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Voor bedrag (¤ 100,00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Beste reeks"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Biedformulieren"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Kopersoverzichten"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Kopers geregistreerd"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Kopers dit jaar"
+
+#: 
+msgid "Catalog"
+msgstr "Catalogus"
+
+#: 
+msgid "Certificates"
+msgstr "Certificaten"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Teken als decimaalteken in geldbedragen (bijv. . of ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Teken als duizendtalscheidingsteken in geldbedragen (bijv. , of .)"
+
+#: 
+msgid "Check-out"
+msgstr "Afrekenen"
+
+#: 
+msgid "Choose a group..."
+msgstr "Kies een groep..."
+
+#: 
+msgid "Choose family"
+msgstr "Kies familie"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Stel in hoe geldbedragen in het systeem worden weergegeven. Naarmate financiële pagina's worden bijgewerkt om deze instellingen te gebruiken (epic #8459), zijn het symbool, de positie en de scheidingstekens die hier zijn ingesteld systeembreed van toepassing."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Inzamelingsactie aanmaken"
+
+#: 
+msgid "Create new family…"
+msgstr "Nieuwe familie aanmaken…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Valuta- en financiële indelingen"
+
+#: 
+msgid "Currency Format"
+msgstr "Valuta-indeling"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Valutasymbool"
+
+#: 
+msgid "Currency presets"
+msgstr "Valutavoorinstellingen"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Valutasymbool naast geldbedragen (bijv. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Decimaalteken"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Niet aanwezig"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Einddatum moet op of na de startdatum liggen"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Voer staat/provincie in voor landen zonder vooraf gedefinieerde staten"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Geschatte totaalwaarde"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Iedereen van gekoppelde groepen heeft ingecheckt!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Aanwezigheidsgeschiedenis kon niet worden geladen."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Familienaam is vereist bij het aanmaken van een nieuwe familie."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filteren op activiteitstype"
+
+#: 
+msgid "Financials"
+msgstr "Financiën"
+
+#: 
+msgid "From date"
+msgstr "Vanaf datum"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Overzicht inzamelingsacties"
+
+#: 
+msgid "Fundraisers"
+msgstr "Inzamelingsacties"
+
+#: 
+msgid "Fundraising"
+msgstr "Fondsenwerving"
+
+#: 
+msgid "Goal %"
+msgstr "Doel %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Doelbedrag"
+
+#: 
+msgid "Highest Sale"
+msgstr "Hoogste verkoop"
+
+#: 
+msgid "Invalid status value"
+msgstr "Ongeldige statuswaarde"
+
+#: 
+msgid "Invalid type value"
+msgstr "Ongeldige typewaarde"
+
+#: 
+msgid "Items Donated"
+msgstr "Gedoneerde items"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Gedoneerde items (dit jaar)"
+
+#: 
+msgid "Items Sold"
+msgstr "Verkochte items"
+
+#: 
+msgid "Last Attendance"
+msgstr "Laatste aanwezigheid"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Gekoppeld donatiesfonds"
+
+#: 
+msgid "Live Preview"
+msgstr "Live voorbeeld"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Aanwezigheidsgeschiedenis laden…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Items met meervoudige aankoop"
+
+#: 
+msgid "New family details"
+msgstr "Gegevens nieuwe familie"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Geen %s inzamelingsacties gevonden."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Geen actieve inzamelingsacties gevonden."
+
+#: 
+msgid "No attendance records found."
+msgstr "Geen aanwezigheidsregistraties gevonden."
+
+#: 
+msgid "No donated items yet."
+msgstr "Nog geen gedoneerde items."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Geen geldige einddatum"
+
+#: 
+msgid "Not included"
+msgstr "Niet inbegrepen"
+
+#: 
+msgid "People to assign"
+msgstr "Te wijzen personen"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Selecteer een familierol voor %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Vult de onderstaande velden in zonder op te slaan. Klik op Opslaan om toe te passen."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Positie van het valutasymbool ten opzichte van het bedrag."
+
+#: 
+msgid "Quick presets"
+msgstr "Snelle voorinstellingen"
+
+#: 
+msgid "Raised"
+msgstr "Opgehaald"
+
+#: 
+msgid "Raised This Year"
+msgstr "Dit jaar opgehaald"
+
+#: 
+msgid "Sample Amount"
+msgstr "Voorbeeldbedrag"
+
+#: 
+msgid "Sell-through"
+msgstr "Verkooppercentage"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Enkel teken als decimaalteken (bijv. . of ,). Standaard: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Enkel teken als duizendtalscheidingsteken (bijv. , of .). Standaard: ,"
+
+#: 
+msgid "Sold"
+msgstr "Verkocht"
+
+#: 
+msgid "State / Province"
+msgstr "Staat / Provincie"
+
+#: 
+msgid "Streak"
+msgstr "Reeks"
+
+#: 
+msgid "Symbol Position"
+msgstr "Symboolpositie"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Symbool of code naast bedragen (bijv. $, €, £, CHF, CAD $). Standaard: $"
+
+#: 
+msgid "Target family"
+msgstr "Doelfamilie"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "De groep kon niet worden gevonden. Probeer het opnieuw."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "De geselecteerde familie bestaat niet meer. Vernieuw de pagina en probeer het opnieuw."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "De geselecteerde groep is niet gevonden. Selecteer een geldige groep."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Zo worden datums, valutabedragen en telefoonnummers in het systeem weergegeven. Bekijk de huidige indelingen hier en bewerk ze in de onderstaande secties."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Duizendtalscheidingsteken"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Het duizendtalscheidingsteken en het decimaalteken moeten verschillende tekens zijn."
+
+#: 
+msgid "To date"
+msgstr "Tot datum"
+
+#: 
+msgid "Total Events"
+msgstr "Totale activiteiten"
+
+#: 
+msgid "Total Raised"
+msgstr "Totaal opgehaald"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Totaal opgehaald (geen doel ingesteld)"
+
+#: 
+msgid "Unsold"
+msgstr "Onverkocht"
+
+#: 
+msgid "Updates as you type."
+msgstr "Wordt bijgewerkt terwijl u typt."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Of het symbool voor of na het numerieke bedrag verschijnt. Standaard: Voor bedrag"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Uw selectie is leeg. Voeg eerst mensen toe aan uw selectie."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Postcode"
+
+#: 
+msgid "events"
+msgstr "activiteiten"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "doelbedrag moet een niet-negatief getal zijn"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "doelbedrag moet niet-negatief zijn"
+
+#: 
+msgid "thru %s"
+msgstr "t/m %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Selecteer rol —"
+
+#: 
+msgid "— pick —"
+msgstr "— kies —"
 

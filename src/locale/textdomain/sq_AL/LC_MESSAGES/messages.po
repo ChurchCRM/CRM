@@ -198,10 +198,6 @@ msgid "Anniversary Date"
 msgstr "Anniversary Data"
 
 #: 
-msgid "Output Method:"
-msgstr "Output Metoda:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV Të dhënat individuale"
 
@@ -272,42 +268,14 @@ msgstr "Shto te Shporta Event"
 msgid "Your cart is empty!"
 msgstr "Shporta juaj është bosh!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Asnjë emër i familjes hyri!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Shto te Shporta Family"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Emëri"
 
 #: 
-msgid "Assign Role"
-msgstr "Cakto Rolit"
-
-#: 
 msgid "Already in a family"
 msgstr "Tashmë në një familje"
-
-#: 
-msgid "Create new family"
-msgstr "Krijo familje të re"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Në qoftë se duke shtuar një familje të re, hyrë në të dhënat më poshtë."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Përdorin të dhënat e adresën / e kontaktit nga"
-
-#: 
-msgid "Only the new data below"
-msgstr "Vetëm të dhënat e reja më poshtë"
 
 #: 
 msgid "Do not auto-format"
@@ -320,10 +288,6 @@ msgstr "Shtoni në të Familjes"
 #: 
 msgid "Add Cart to Group"
 msgstr "Shto te Shporta Group"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Zgjidh grupin për të cilën ju do të donte për të shtuar karrocë tuaj"
 
 #: 
 msgid "Select Group"
@@ -402,10 +366,6 @@ msgstr "Veprim"
 #: 
 msgid "Member"
 msgstr "Anëtar"
-
-#: 
-msgid " of the"
-msgstr " i"
 
 #: 
 msgid "(No assigned family)"
@@ -1078,11 +1038,6 @@ msgid "Bank Draft"
 msgstr "Draft Bank"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Minimun Shuma totale:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - No Minimum"
 
@@ -1107,10 +1062,6 @@ msgid "All Families"
 msgstr "Të gjitha Familjet"
 
 #: 
-msgid "Report Heading:"
-msgstr "Raporti Titulli:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafik"
 
@@ -1121,14 +1072,6 @@ msgstr "Kisha Adresa"
 #: 
 msgid "Blank"
 msgstr "Bosh"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Remitencat Shqip:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Rendit dhënave nga:"
 
 #: 
 msgid "Deposit"
@@ -1181,10 +1124,6 @@ msgstr "Fondesh Listing"
 #: 
 msgid "Date Start"
 msgstr "Date Fillimi"
-
-#: 
-msgid "Apply Filters"
-msgstr "Aplikoni Filters"
 
 #: 
 msgid "Date End"
@@ -1627,10 +1566,6 @@ msgid "Generate Statement"
 msgstr "Generate Deklarata"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Blerësit për këtë fondesh:"
-
-#: 
 msgid "Select all"
 msgstr "Zgjidh gjithë"
 
@@ -1749,10 +1684,6 @@ msgstr "Specifiko jo-zero numër kontrolloni"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Numri i çekut nuk është i vlefshëm për pagesë me 'PARA NË DORË'"
-
-#: 
-msgid " more entries will fit."
-msgstr " më shumë të hyra do të përshtaten."
 
 #: 
 msgid "Deposit closed"
@@ -1885,10 +1816,6 @@ msgid "Query Listing"
 msgstr "Query Listing"
 
 #: 
-msgid " record(s) returned"
-msgstr " dhënat (s) kthyer"
-
-#: 
 msgid "Query View"
 msgstr "Query Shiko"
 
@@ -1899,22 +1826,6 @@ msgstr "Kjo vlerë është e nevojshme."
 #: 
 msgid "This value must be numeric."
 msgstr "Kjo vlerë duhet të jetë një numër."
-
-#: 
-msgid "This value must be at least "
-msgstr "Kjo vlerë duhet të jetë së paku "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Kjo vlerë nuk mund të jetë më shumë se "
-
-#: 
-msgid " characters long"
-msgstr " karaktere të gjatë"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Kjo vlerë nuk mund të jetë më pak se "
 
 #: 
 msgid "Run Query Again"
@@ -1949,20 +1860,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "KUJDES: Kjo familje ka të dhënat e donacioneve dhe nuk mund të fshihen deri sa këto donacione janë të lidhur me një familje tjetër."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Ju lutem zgjidhni një tjetër familje me të cilin që të lidhen këto donacione:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "KUJDES: Ky veprim nuk mund të zhbëhet dhe mund të ketë pasoja ligjore!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "FAMILJA AKTUALE ME DONACIONET"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Ju lutem konfirmoni fshirjen e këtij rekord të familjes:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2087,10 +1990,6 @@ msgstr "Volunteer Opportunity Editor"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nuk ka mundësi vullnetare janë shtuar ende"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Shënimet \"Pse erdhi\" për "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2336,14 +2235,6 @@ msgid "Cell"
 msgstr "Qelizë"
 
 #: 
-msgid "Estimated value "
-msgstr "Vlera e parashikuar "
-
-#: 
-msgid "Donated by "
-msgstr "Dhuruar nga "
-
-#: 
 msgid "Paddle"
 msgstr "Vozis"
 
@@ -2352,16 +2243,8 @@ msgid "Bid"
 msgstr "Ofertës"
 
 #: 
-msgid "Minimum bid "
-msgstr "Oferta minimale "
-
-#: 
 msgid "All Funds"
 msgstr "Të gjitha Fondet"
-
-#: 
-msgid " for all funds"
-msgstr " për të gjitha fondet e"
 
 #: 
 msgid " for fund "
@@ -5021,10 +4904,6 @@ msgid "Group Role"
 msgstr "Roli i grupit"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "OSE Krijoni një grup dhe shtoni SHPORTËN në NJË VEPRIM"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Krijo grup + SHTO shportën"
 
@@ -5168,14 +5047,6 @@ msgstr "Emri i përdoruesit nuk është vendosur"
 #: 
 msgid "Self Registrations"
 msgstr "Vetë-regjistrimet"
-
-#: 
-msgid "Public Calendar"
-msgstr "Kalendari publik"
-
-#: 
-msgid "Private Calendar"
-msgstr "Kalendari privat"
 
 #: 
 msgid "Username"
@@ -6053,10 +5924,6 @@ msgstr "Shuma tejkalon vlerën maksimale të lejuar (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Çeqe"
-
-#: 
-msgid "Clear Filters"
-msgstr "Pastro filtrat"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7281,10 +7148,6 @@ msgid "open"
 msgstr "hap"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Vendosni shtetin/provincën për vendet pa shtete të paracaktuara)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurimi i URL bazë është i pavlefshëm. Ju lutem kontrolloni skedarin tuaj Config.php."
 
@@ -7649,12 +7512,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d person u shtua në shportë."
 msgstr[1] "%d persona u shtuan në shportë."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d person u shtua me sukses në familjen e zgjedhur."
-msgstr[1] "%d persona u shtuan me sukses në familjen e zgjedhur."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9392,14 +9249,6 @@ msgstr "Caktoni dhe administroni numrat e kopertinave të dhuratave"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Caktoni dhe administroni numrat e blerësve të ngjarjeve mbledhjes fondesh"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Caktoni artikujt e listës në një rekord familje"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Caktoni artikujt e listës në një grupmesion"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11149,11 +10998,6 @@ msgstr "Vendi i Parazgjedhur"
 #: 
 msgid "Default State"
 msgstr "Shteti i Parazgjedhur"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Ndarës për të ndarë email-et në lidhjet mailto:"
 
 #: 
 msgid "Distance Unit"
@@ -14782,10 +14626,6 @@ msgid "Code is invalid"
 msgstr "Kodi është i pavlefshëm"
 
 #: 
-msgid "Coming soon"
-msgstr "Së shpejti"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Konfirmo aktivizimin"
 
@@ -16380,10 +16220,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Këto fusha përdorin kode formatimi (shkronja që përfaqësojnë pjesë të një date). Zgjidhni një paracaktim nën çdo fushë, ose ndërtoni tuajin duke përdorur referencën. Parapamja e drejtpërdrejtë tregon saktësisht si do të duket. Lëreni bosh për të përdorur paracaktimin e sistemit."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Kështu do të shfaqen datat dhe numrat e telefonit në të gjithë sistemin."
-
-#: 
 msgid "Translation completeness"
 msgstr "Plotësia e përkthimit"
 
@@ -16807,4 +16643,496 @@ msgstr "Përdoruesi nuk u gjet."
 #: 
 msgid "— Select a person —"
 msgstr "— Zgjidhni një person —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d mbledhje fondesh e arkivuar"
+msgstr[1] "%d mbledhje fondesh të arkivuara"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d person u shtua me sukses në familjen e zgjedhur."
+msgstr[1] "%d persona u shtuan me sukses në familjen e zgjedhur."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "Mbledhje Fondesh %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s nga %s e qëllimit të mbledhur"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Mbledhje Fondesh Aktive"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Shto Mbledhje Fondesh"
+
+#: 
+msgid "Add Item"
+msgstr "Shto Artikull"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Shtoni persona në listën tuaj para se t'i caktoni në një familje."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Shtoni fillimisht persona në listën tuaj, pastaj kthehuni për t'i shtuar në një grup."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Pas shumës (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Të gjitha Statuset"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Të gjithë personat në listën tuaj janë tashmë në një familje. Askush nuk mund të caktohet."
+
+#: 
+msgid "All types"
+msgstr "Të gjitha llojet"
+
+#: 
+msgid "Already in"
+msgstr "Tashmë në"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Ndodhi një gabim i papritur. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Apply"
+msgstr "Apliko"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Cakto anëtarët e listës në një grup"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Cakto persona nga lista juaj në një familje"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Cakto rol të gjithëve:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Cakto në Familje"
+
+#: 
+msgid "Associated Fund"
+msgstr "Fond i Lidhur"
+
+#: 
+msgid "At a Glance"
+msgstr "Vështrim i Shpejtë"
+
+#: 
+msgid "Auction Reports"
+msgstr "Raporte të Ankandit"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Çmimi Mesatar i Shitjes"
+
+#: 
+msgid "Back to Cart"
+msgstr "Kthehu te Lista"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Kthehu te Mbledhjet e Fondeve"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Para shumës (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Seria më e Mirë"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Fletë Ofertash"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Deklarata Blerësi"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Blerës të Regjistruar"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Blerës Këtë Vit"
+
+#: 
+msgid "Catalog"
+msgstr "Katalog"
+
+#: 
+msgid "Certificates"
+msgstr "Certifikata"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Karakteri i përdorur si pikë dhjetore në shumat monetare (p.sh. . ose ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Karakteri i përdorur për të ndarë mijëshet në shumat monetare (p.sh. , ose .)"
+
+#: 
+msgid "Check-out"
+msgstr "Dalje"
+
+#: 
+msgid "Choose a group..."
+msgstr "Zgjidhni një grup..."
+
+#: 
+msgid "Choose family"
+msgstr "Zgjidhni familjen"
+
+#: 
+msgid "Code"
+msgstr "Kod"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Konfiguroni mënyrën e shfaqjes së shumave monetare në të gjithë sistemin."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Krijo Mbledhje Fondesh"
+
+#: 
+msgid "Create new family…"
+msgstr "Krijo familje të re…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Formatet e Monedhës dhe Financave"
+
+#: 
+msgid "Currency Format"
+msgstr "Format i Monedhës"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Simboli i Monedhës"
+
+#: 
+msgid "Currency presets"
+msgstr "Paracaktimet e Monedhës"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Simboli i monedhës për të shfaqur pranë shumave monetare (p.sh. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Ndarësi Dhjetor"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Nuk Mori Pjesë"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Data e mbarimit duhet të jetë në ose pas datës së fillimit"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Vendosni shtetin/provincën për vendet pa shtete të paracaktuara"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Totali i Vlerës së Vlerësuar"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Të gjithë nga grupet e lidhura u regjistruan!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Ngarkimi i historikut të pjesëmarrjes dështoi."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Emri i familjes është i detyrueshëm kur krijohet një familje e re."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filtro sipas llojit të ngjarjes"
+
+#: 
+msgid "Financials"
+msgstr "Financiare"
+
+#: 
+msgid "From date"
+msgstr "Nga data"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Përmbledhje e Mbledhjes së Fondeve"
+
+#: 
+msgid "Fundraisers"
+msgstr "Mbledhje Fondesh"
+
+#: 
+msgid "Fundraising"
+msgstr "Mbledhje Fondesh"
+
+#: 
+msgid "Goal %"
+msgstr "% e Qëllimit"
+
+#: 
+msgid "Goal Amount"
+msgstr "Shuma e Qëllimit"
+
+#: 
+msgid "Highest Sale"
+msgstr "Shitja më e Lartë"
+
+#: 
+msgid "Invalid status value"
+msgstr "Vlerë statusi e pavlefshme"
+
+#: 
+msgid "Invalid type value"
+msgstr "Vlerë lloji e pavlefshme"
+
+#: 
+msgid "Items"
+msgstr "Artikuj"
+
+#: 
+msgid "Items Donated"
+msgstr "Artikuj të Dhuruar"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Artikuj të Dhuruar (Këtë Vit)"
+
+#: 
+msgid "Items Sold"
+msgstr "Artikuj të Shitur"
+
+#: 
+msgid "Last Attendance"
+msgstr "Pjesëmarrja e Fundit"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Fond Dhurimi i Lidhur"
+
+#: 
+msgid "Live Preview"
+msgstr "Pamje e Drejtpërdrejtë"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Po ngarkohet historiku i pjesëmarrjes…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Artikuj Shumëblerje"
+
+#: 
+msgid "New family details"
+msgstr "Detajet e familjes së re"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Nuk u gjetën mbledhje fondesh %s."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Nuk u gjetën mbledhje fondesh aktive."
+
+#: 
+msgid "No attendance records found."
+msgstr "Nuk u gjetën regjistrime pjesëmarrjeje."
+
+#: 
+msgid "No donated items yet."
+msgstr "Ende nuk ka artikuj të dhuruar."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Data e mbarimit nuk është e vlefshme"
+
+#: 
+msgid "Not included"
+msgstr "Nuk përfshihet"
+
+#: 
+msgid "People to assign"
+msgstr "Persona për t'u caktuar"
+
+#: 
+msgid "Planning"
+msgstr "Planifikim"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Ju lutemi zgjidhni një rol familjar për %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Plotëson fushat më poshtë pa ruajtur. Klikoni Ruaj për të aplikuar."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Pozicioni i simbolit të monedhës në raport me shumën."
+
+#: 
+msgid "Quick presets"
+msgstr "Paracaktime të Shpejta"
+
+#: 
+msgid "Raised"
+msgstr "Mbledhur"
+
+#: 
+msgid "Raised This Year"
+msgstr "Mbledhur Këtë Vit"
+
+#: 
+msgid "Sample Amount"
+msgstr "Shumë Shembull"
+
+#: 
+msgid "Sell-through"
+msgstr "Shitje e Plotë"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Karakter i vetëm i përdorur si pikë dhjetore (p.sh. . ose ,). Parazgjedhja: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Karakter i vetëm i përdorur për të grupuar mijëshët (p.sh. , ose .). Parazgjedhja: ,"
+
+#: 
+msgid "Sold"
+msgstr "Shitur"
+
+#: 
+msgid "State / Province"
+msgstr "Shteti / Provinca"
+
+#: 
+msgid "Streak"
+msgstr "Seri"
+
+#: 
+msgid "Symbol Position"
+msgstr "Pozicioni i Simbolit"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Simboli ose kodi i shfaqur pranë shumave (p.sh. $, €, £, CHF, CAD $). Parazgjedhja: $"
+
+#: 
+msgid "Target family"
+msgstr "Familja e synuar"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Grupi nuk u gjet. Ju lutemi provoni përsëri."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Familja e zgjedhur nuk ekziston më. Ju lutemi rifreskoni faqen dhe provoni përsëri."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Grupi i zgjedhur nuk u gjet. Ju lutemi zgjidhni një grup të vlefshëm."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Kështu do të shfaqen datat, shumat monetare dhe numrat e telefonit në të gjithë sistemin."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Ndarësi i Mijësheve"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Ndarësi i mijësheve dhe ndarësi dhjetor duhet të jenë karaktere të ndryshme."
+
+#: 
+msgid "To date"
+msgstr "Deri në datë"
+
+#: 
+msgid "Total Events"
+msgstr "Ngjarje Gjithsej"
+
+#: 
+msgid "Total Raised"
+msgstr "Gjithsej Mbledhur"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Gjithsej mbledhur (pa qëllim të vendosur)"
+
+#: 
+msgid "Unsold"
+msgstr "I pashitur"
+
+#: 
+msgid "Updates as you type."
+msgstr "Përditësohet ndërsa shkruani."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Nëse simboli shfaqet para ose pas shumës numerike. Parazgjedhja: Para shumës"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Lista juaj është bosh. Shtoni fillimisht persona në listën tuaj."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Kodi Postar"
+
+#: 
+msgid "events"
+msgstr "ngjarje"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount duhet të jetë një numër jo-negativ"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount duhet të jetë jo-negativ"
+
+#: 
+msgid "thru %s"
+msgstr "deri %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Zgjidhni rolin —"
+
+#: 
+msgid "— pick —"
+msgstr "— zgjidhni —"
 

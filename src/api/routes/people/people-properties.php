@@ -318,7 +318,7 @@ function deletePropertyDefinition(Request $request, Response $response, array $a
 
     $property = PropertyQuery::create()->findPk($propertyId);
     if ($property === null) {
-        throw new HttpNotFoundException($request, gettext('Property not found.'));
+        throw new HttpNotFoundException($request, gettext('Property not found'));
     }
 
     // Delete all record assignments first, then the definition

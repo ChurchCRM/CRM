@@ -195,10 +195,6 @@ msgid "Anniversary Date"
 msgstr "Petsa ng Anibersaryo"
 
 #: 
-msgid "Output Method:"
-msgstr "Paraan ng Output:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV na Indibidwal na mga Rekord"
 
@@ -269,42 +265,14 @@ msgstr "Idagdag ang Cart sa Kaganapan"
 msgid "Your cart is empty!"
 msgstr "Ang iyong cart ay walang laman!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Walang pangalan ng pamilyang naipasok!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Idagdag ang Cart sa Pamilya"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Pangalan"
 
 #: 
-msgid "Assign Role"
-msgstr "Italaga ang Papel"
-
-#: 
 msgid "Already in a family"
 msgstr "Nasa isang pamilya na"
-
-#: 
-msgid "Create new family"
-msgstr "Lumikha ng bagong pamilya"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Kung nagdaragdag ng bagong pamilya, ipasok ang datos sa ibaba."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Gamitin ang datos ng address/contact mula sa"
-
-#: 
-msgid "Only the new data below"
-msgstr "Ang bagong datos lamang sa ibaba"
 
 #: 
 msgid "Do not auto-format"
@@ -317,10 +285,6 @@ msgstr "Idagdag sa Pamilya"
 #: 
 msgid "Add Cart to Group"
 msgstr "Idagdag ang Cart sa Grupo"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Piliin ang grupo kung saan mo gustong idagdag ang iyong cart"
 
 #: 
 msgid "Select Group"
@@ -398,10 +362,6 @@ msgstr "Aksyon"
 #: 
 msgid "Member"
 msgstr "Miyembro"
-
-#: 
-msgid " of the"
-msgstr " ng"
 
 #: 
 msgid "(No assigned family)"
@@ -1065,10 +1025,6 @@ msgid "Bank Draft"
 msgstr "Tseke ng Bangko"
 
 #: 
-msgid "Minimum Total Amount:"
-msgstr "Pinakamababang Kabuuang Halaga:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Walang Minimum"
 
@@ -1093,10 +1049,6 @@ msgid "All Families"
 msgstr "Lahat ng Pamilya"
 
 #: 
-msgid "Report Heading:"
-msgstr "Pamagat ng Ulat:"
-
-#: 
 msgid "Graphic"
 msgstr "Grapiko"
 
@@ -1107,14 +1059,6 @@ msgstr "Address ng Simbahan"
 #: 
 msgid "Blank"
 msgstr "Blangko"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Resibo ng Remittance:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Ayusin ang Data ayon sa:"
 
 #: 
 msgid "Deposit"
@@ -1167,10 +1111,6 @@ msgstr "Listahan ng Fundraiser"
 #: 
 msgid "Date Start"
 msgstr "Petsa ng Simula"
-
-#: 
-msgid "Apply Filters"
-msgstr "Ilapat ang mga Filter"
 
 #: 
 msgid "Date End"
@@ -1605,10 +1545,6 @@ msgid "Generate Statement"
 msgstr "Gumawa ng Pahayag"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Mga Mamimili para sa fundraiser na ito:"
-
-#: 
 msgid "Select all"
 msgstr "Piliin lahat"
 
@@ -1727,10 +1663,6 @@ msgstr "Kailangan tukuyin ang hindi zero na numero ng tseke"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Ang numero ng tseke ay hindi wasto para sa pagbabayad na 'CASH'"
-
-#: 
-msgid " more entries will fit."
-msgstr " pang mga entry ang magkasya."
 
 #: 
 msgid "Deposit closed"
@@ -1862,10 +1794,6 @@ msgid "Query Listing"
 msgstr "Listahan ng Query"
 
 #: 
-msgid " record(s) returned"
-msgstr " rekord(s) na ibinalik"
-
-#: 
 msgid "Query View"
 msgstr "View ng Query"
 
@@ -1876,22 +1804,6 @@ msgstr "Ang halagang ito ay kinakailangan."
 #: 
 msgid "This value must be numeric."
 msgstr "Ang halagang ito ay dapat numeric."
-
-#: 
-msgid "This value must be at least "
-msgstr "Ang halagang ito ay dapat kahit "
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Ang halagang ito ay hindi maaaring higit sa "
-
-#: 
-msgid " characters long"
-msgstr " karakter ang haba"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Ang halagang ito ay hindi maaaring mas mababa sa "
 
 #: 
 msgid "Run Query Again"
@@ -1926,20 +1838,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "BABALA: Ang pamilyang ito ay may mga rekord ng mga donasyon at HINDI maaaring burahin hanggang ang mga donasyong ito ay maiugnay sa ibang pamilya."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Pakipili ng ibang pamilya upang maiugnay ang mga donasyong ito:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "BABALA: Ang aksyong ito ay hindi na mababawi at maaaring may legal na implikasyon!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "KASALUKUYANG PAMILYA NA MAY MGA DONASYON"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Pakikumpirma ang pagbubura ng rekord ng pamilyang ito:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2064,10 +1968,6 @@ msgstr "Editor ng Pagkakataon bilang Boluntaryo"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Wala pang mga pagkakataon bilang boluntaryo na naidagdag"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Mga tala ng \"Bakit Dumating\" para sa "
 
 #: 
 msgid "Why did you come to the church?"
@@ -2311,14 +2211,6 @@ msgid "Cell"
 msgstr "Cell"
 
 #: 
-msgid "Estimated value "
-msgstr "Tinatayang halaga "
-
-#: 
-msgid "Donated by "
-msgstr "Ibinigay ni "
-
-#: 
 msgid "Paddle"
 msgstr "Paddle"
 
@@ -2327,16 +2219,8 @@ msgid "Bid"
 msgstr "Alok"
 
 #: 
-msgid "Minimum bid "
-msgstr "Pinakamababang alok "
-
-#: 
 msgid "All Funds"
 msgstr "Lahat ng Pondo"
-
-#: 
-msgid " for all funds"
-msgstr " para sa lahat ng pondo"
 
 #: 
 msgid " for fund "
@@ -4992,10 +4876,6 @@ msgid "Group Role"
 msgstr "Papel sa Grupo"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "O Lumikha ng Grupo at idagdag ang CART sa ISANG AKSYON"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Lumikha ng Grupo + IDAGDAG ang Cart"
 
@@ -5139,14 +5019,6 @@ msgstr "Hindi nakatakda ang UserName"
 #: 
 msgid "Self Registrations"
 msgstr "Mga Sariling Pagpaparehistro"
-
-#: 
-msgid "Public Calendar"
-msgstr "Pampublikong Kalendaryo"
-
-#: 
-msgid "Private Calendar"
-msgstr "Pribadong Kalendaryo"
 
 #: 
 msgid "Username"
@@ -6024,10 +5896,6 @@ msgstr "Ang halaga ay lumagpas sa pinakamataas na pinapayagang halaga (999999.99
 #: 
 msgid "Checks"
 msgstr "Mga Tseke"
-
-#: 
-msgid "Clear Filters"
-msgstr "Linisin ang mga Filter"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7252,10 +7120,6 @@ msgid "open"
 msgstr "bukas"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Ipasok ang estado/probinsya para sa mga bansa na walang mga paunang natukoy na estado)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Ang konfigurasyong Base URL ay hindi wasto. Pakitingnan ang iyong Config.php file."
 
@@ -7620,12 +7484,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Tao ay naidagdag sa Listahan."
 msgstr[1] "%d Tao ay naidagdag sa Listahan."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d Tao ay matagumpay na naidagdag sa napiling Pamilya."
-msgstr[1] "%d Tao ay matagumpay na naidagdag sa napiling Pamilya."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9363,14 +9221,6 @@ msgstr "Italaga at pamahalaan ang mga numero ng sobre ng donasyon"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Italaga at pamahalaan ang mga numero ng mamimili ng fundraiser"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Italaga ang mga item ng cart sa isang rekord ng pamilya"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Italaga ang mga item ng cart sa isang grupo"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11120,11 +10970,6 @@ msgstr "Default na Bansa"
 #: 
 msgid "Default State"
 msgstr "Default na Estado"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Delimiter para paghiwalayin ang mga email sa mga link na mailto:"
 
 #: 
 msgid "Distance Unit"
@@ -14753,10 +14598,6 @@ msgid "Code is invalid"
 msgstr "Hindi wasto ang code"
 
 #: 
-msgid "Coming soon"
-msgstr "Darating na"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Kumpirmahin ang Pag-activate"
 
@@ -16351,10 +16192,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Ang mga field na ito ay gumagamit ng mga formatting code (mga titik na kumakatawan sa mga bahagi ng petsa). Pumili ng preset sa ibaba ng bawat field, o gumawa ng sarili gamit ang sanggunian. Ang live preview ay nagpapakita ng eksakto kung paano ito magmumukhang. Iwanang blangko para gamitin ang default ng sistema."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Ganito ang hitsura ng mga petsa at numero ng telepono sa buong sistema."
-
-#: 
 msgid "Translation completeness"
 msgstr "Pagkakumpleto ng Pagsasalin"
 
@@ -16762,4 +16599,476 @@ msgstr "Hindi natagpuan ang gumagamit."
 #: 
 msgid "— Select a person —"
 msgstr "— Pumili ng tao —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d naka-archive na pangongolekta"
+msgstr[1] "%d naka-archive na pangongolekta"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d tao ang matagumpay na naidagdag sa napiling pamilya."
+msgstr[1] "%d mga tao ang matagumpay na naidagdag sa napiling pamilya."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s Mga Pangongolekta"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s ng %s na layunin ang naipon"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Mga Aktibong Pangongolekta"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Magdagdag ng Pangongolekta"
+
+#: 
+msgid "Add Item"
+msgstr "Magdagdag ng Aytem"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Magdagdag ng mga tao sa iyong listahan bago italaga sa isang pamilya."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Magdagdag muna ng mga tao sa iyong listahan, pagkatapos ay bumalik upang idagdag sila sa isang grupo."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Pagkatapos ng halaga (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Lahat ng Katayuan"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Lahat ng tao sa iyong listahan ay nasa pamilya na. Walang maaaring italaga."
+
+#: 
+msgid "All types"
+msgstr "Lahat ng uri"
+
+#: 
+msgid "Already in"
+msgstr "Nasa loob na"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Nagkaroon ng hindi inaasahang error. Pakisubukan muli."
+
+#: 
+msgid "Apply"
+msgstr "Ilapat"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Italaga ang mga miyembro ng listahan sa isang grupo"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Italaga ang mga tao mula sa iyong listahan sa isang pamilya"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Italaga ang papel sa lahat:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Italaga sa Pamilya"
+
+#: 
+msgid "Associated Fund"
+msgstr "Kaugnay na Pondo"
+
+#: 
+msgid "At a Glance"
+msgstr "Sa Isang Tingin"
+
+#: 
+msgid "Auction Reports"
+msgstr "Mga Ulat ng Auction"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Karaniwang Presyo ng Benta"
+
+#: 
+msgid "Back to Cart"
+msgstr "Bumalik sa Listahan"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Bumalik sa Mga Pangongolekta"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Bago ang halaga (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Pinakamahusay na Sunud-sunod"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Mga Sheet ng Bid"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Mga Pahayag ng Bumibili"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Mga Nakarehistrong Bumibili"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Mga Bumibili Ngayong Taon"
+
+#: 
+msgid "Catalog"
+msgstr "Katalogo"
+
+#: 
+msgid "Certificates"
+msgstr "Mga Sertipiko"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Karakter na ginagamit bilang decimal point sa mga halaga ng pera (hal. . o ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Karakter na ginagamit upang paghiwalayin ang libo-libo sa mga halaga ng pera (hal. , o .)"
+
+#: 
+msgid "Choose a group..."
+msgstr "Pumili ng grupo..."
+
+#: 
+msgid "Choose family"
+msgstr "Pumili ng pamilya"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "I-configure kung paano ipinapakita ang mga halaga ng pera sa buong sistema. Habang ina-update ang mga pahina ng pananalapi upang gamitin ang mga setting na ito (epic #8459), ang simbolo, posisyon, at mga separator na na-configure dito ay ilalapat sa buong sistema."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Lumikha ng Pangongolekta"
+
+#: 
+msgid "Create new family…"
+msgstr "Lumikha ng bagong pamilya…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Mga Format ng Pera at Pananalapi"
+
+#: 
+msgid "Currency Format"
+msgstr "Format ng Pera"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Simbolo ng Pera"
+
+#: 
+msgid "Currency presets"
+msgstr "Mga preset ng pera"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Simbolo ng pera na ipapakita sa tabi ng mga halaga ng pera (hal. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Separator ng Decimal"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Hindi Dumalo"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Ang petsa ng pagtatapos ay dapat na sa o pagkatapos ng petsa ng simula"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Ilagay ang estado/lalawigan para sa mga bansang walang mga paunang natukoy na estado"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Kabuuang Tinatayang Halaga"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Lahat mula sa mga naka-link na grupo ay naka-check in na!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Nabigong i-load ang kasaysayan ng pagdalo."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Kinakailangan ang pangalan ng pamilya kapag lumilikha ng bagong pamilya."
+
+#: 
+msgid "Filter by event type"
+msgstr "I-filter ayon sa uri ng kaganapan"
+
+#: 
+msgid "Financials"
+msgstr "Mga Pananalapi"
+
+#: 
+msgid "From date"
+msgstr "Mula sa petsa"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Pangkalahatang-ideya ng Pangongolekta"
+
+#: 
+msgid "Fundraisers"
+msgstr "Mga Pangongolekta"
+
+#: 
+msgid "Fundraising"
+msgstr "Pangongolekta ng Pondo"
+
+#: 
+msgid "Goal %"
+msgstr "% ng Layunin"
+
+#: 
+msgid "Goal Amount"
+msgstr "Halaga ng Layunin"
+
+#: 
+msgid "Highest Sale"
+msgstr "Pinakamataas na Benta"
+
+#: 
+msgid "Invalid status value"
+msgstr "Hindi wastong halaga ng katayuan"
+
+#: 
+msgid "Invalid type value"
+msgstr "Hindi wastong halaga ng uri"
+
+#: 
+msgid "Items"
+msgstr "Mga Aytem"
+
+#: 
+msgid "Items Donated"
+msgstr "Mga Aytem na Ibinigay"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Mga Aytem na Ibinigay (Ngayong Taon)"
+
+#: 
+msgid "Items Sold"
+msgstr "Mga Aytem na Naibenta"
+
+#: 
+msgid "Last Attendance"
+msgstr "Huling Pagdalo"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Naka-link na Pondo ng Donasyon"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Nilo-load ang kasaysayan ng pagdalo…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Mga Aytem na Multibuy"
+
+#: 
+msgid "New family details"
+msgstr "Mga detalye ng bagong pamilya"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Walang nahanap na %s mga pangongolekta."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Walang nahanap na aktibong pangongolekta."
+
+#: 
+msgid "No attendance records found."
+msgstr "Walang nahanap na mga rekord ng pagdalo."
+
+#: 
+msgid "No donated items yet."
+msgstr "Wala pang mga ibinigay na aytem."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Hindi wastong petsa ng pagtatapos"
+
+#: 
+msgid "Not included"
+msgstr "Hindi kasama"
+
+#: 
+msgid "People to assign"
+msgstr "Mga taong italaga"
+
+#: 
+msgid "Planning"
+msgstr "Pagpaplano"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Pakipili ng papel sa pamilya para sa %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Pinupuno ang mga field sa ibaba nang hindi sine-save. I-click ang I-save upang ilapat."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Posisyon ng simbolo ng pera kaugnay ng halaga."
+
+#: 
+msgid "Quick presets"
+msgstr "Mga mabilis na preset"
+
+#: 
+msgid "Raised"
+msgstr "Naipon"
+
+#: 
+msgid "Raised This Year"
+msgstr "Naipon Ngayong Taon"
+
+#: 
+msgid "Sample Amount"
+msgstr "Halimbawang Halaga"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Isang karakter na ginagamit bilang decimal point (hal. . o ,). Default: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Isang karakter na ginagamit upang pangkatin ang libo-libo (hal. , o .). Default: ,"
+
+#: 
+msgid "Sold"
+msgstr "Naibenta"
+
+#: 
+msgid "State / Province"
+msgstr "Estado / Lalawigan"
+
+#: 
+msgid "Streak"
+msgstr "Sunud-sunod"
+
+#: 
+msgid "Symbol Position"
+msgstr "Posisyon ng Simbolo"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Simbolo o code na ipinapakita sa tabi ng mga halaga (hal. $, €, £, CHF, CAD $). Default: $"
+
+#: 
+msgid "Target family"
+msgstr "Target na pamilya"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Hindi mahanap ang grupo. Pakisubukan muli."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Ang napiling pamilya ay wala na. Pakirefresh ang pahina at subukan muli."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Hindi nahanap ang napiling grupo. Pakipili ng wastong grupo."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Ganito ang hitsura ng mga petsa, halaga ng pera, at numero ng telepono sa buong sistema. Suriin ang mga kasalukuyang format dito, pagkatapos ay i-edit ang mga ito sa mga seksyon sa ibaba."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Separator ng Libo"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Ang thousands separator at decimal separator ay dapat na magkaibang karakter."
+
+#: 
+msgid "To date"
+msgstr "Hanggang petsa"
+
+#: 
+msgid "Total Events"
+msgstr "Kabuuang Mga Kaganapan"
+
+#: 
+msgid "Total Raised"
+msgstr "Kabuuang Naipon"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Kabuuang naipon (walang itinakdang layunin)"
+
+#: 
+msgid "Unsold"
+msgstr "Hindi Naibenta"
+
+#: 
+msgid "Updates as you type."
+msgstr "Ina-update habang nagta-type."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Kung ang simbolo ay lumalabas bago o pagkatapos ng numerikong halaga. Default: Bago ang halaga"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Ang iyong listahan ay walang laman. Magdagdag muna ng mga tao sa iyong listahan."
+
+#: 
+msgid "events"
+msgstr "mga kaganapan"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "Ang goalAmount ay dapat na hindi negatibong numero"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "Ang goalAmount ay dapat na hindi negatibo"
+
+#: 
+msgid "thru %s"
+msgstr "hanggang %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Pumili ng papel —"
+
+#: 
+msgid "— pick —"
+msgstr "— pumili —"
 

@@ -32,7 +32,7 @@ $i18n = [
     'currentStreak'    => gettext('Streak'),
     'streakEvents'     => gettext('events'),
     'never'            => gettext('Never'),
-    'noStreak'         => gettext('—'),
+    'noStreak'         => '—',
 ];
 ?>
 

@@ -10,6 +10,9 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.5.0](./changelog/7.5.0.md) | July 2026 | ChurchCRM 7.5.0 adds smarter attendance tracking and group management
+
+Did Not Attend follow-up lists, Cart to Group utility, Custom currency formatting, Per-person attendance history, Improved kiosk check-ins |
 | [7.4.3](./changelog/7.4.3.md) | July 2026 | ChurchCRM 7.4.3 streamlines privacy, settings, and performance for faster ministry operations
 
 Locked profile media privacy, removed redundant user permission checkboxes, modernized user editor backend, faster fundraiser page loads, improved translations for 42 languages |

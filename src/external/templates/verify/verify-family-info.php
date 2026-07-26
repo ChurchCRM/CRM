@@ -237,7 +237,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
             <div class="modal-body" id="confirm-modal-collect">
                 <form id="verifyForm">
                     <div class="mb-3 mb-3">
-                        <label class="form-label"><?= gettext("Please confirm your family information:") ?></label>
+                        <label class="form-label"><?= gettext("Please confirm your family information") ?>:</label>
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="radio" name="verifyType" id="NoChanges" value="no-change" checked>
                             <label class="form-check-label" for="NoChanges">

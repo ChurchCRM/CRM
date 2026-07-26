@@ -210,10 +210,6 @@ msgid "Anniversary Date"
 msgstr "周年日期"
 
 #: 
-msgid "Output Method:"
-msgstr "输出方式："
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV个人纪录"
 
@@ -284,43 +280,14 @@ msgstr "加入购物车事件"
 msgid "Your cart is empty!"
 msgstr "您的购物车是空的！"
 
-#: 
-msgid "No family name entered!"
-msgstr "没有家人的名字进了！"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "加入购物车家庭"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "名称"
 
 #: 
-msgid "Assign Role"
-msgstr "分配角色"
-
-#: 
 msgid "Already in a family"
 msgstr "早在一个家庭中"
-
-#: 
-msgid "Create new family"
-msgstr "建立新的家庭"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "如果要添加一个新的家庭，输入以下数据。"
-
-#: 
-#, fuzzy
-msgid "Use address/contact data from"
-msgstr "使用地址/联系数据​​"
-
-#: 
-msgid "Only the new data below"
-msgstr "只有以下的新数据"
 
 #: 
 msgid "Do not auto-format"
@@ -333,11 +300,6 @@ msgstr "添加到家庭"
 #: 
 msgid "Add Cart to Group"
 msgstr "加入购物车集团"
-
-#: 
-#, fuzzy
-msgid "Select the group to which you would like to add your cart"
-msgstr "选择您想添加您的购物车"
 
 #: 
 #, fuzzy
@@ -417,10 +379,6 @@ msgstr "行动"
 #: 
 msgid "Member"
 msgstr "成员"
-
-#: 
-msgid " of the"
-msgstr "的"
 
 #: 
 msgid "(No assigned family)"
@@ -1108,11 +1066,6 @@ msgid "Bank Draft"
 msgstr "银行汇票"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "最小起总金额："
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0  - 不设最低"
 
@@ -1137,10 +1090,6 @@ msgid "All Families"
 msgstr "所有的家庭"
 
 #: 
-msgid "Report Heading:"
-msgstr "报告标题："
-
-#: 
 msgid "Graphic"
 msgstr "图形"
 
@@ -1151,14 +1100,6 @@ msgstr "教会地址"
 #: 
 msgid "Blank"
 msgstr "空白"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "汇款时："
-
-#: 
-msgid "Sort Data by:"
-msgstr "通过对数据进行排序："
 
 #: 
 msgid "Deposit"
@@ -1213,10 +1154,6 @@ msgstr "筹款上市"
 #, fuzzy
 msgid "Date Start"
 msgstr "日期开始"
-
-#: 
-msgid "Apply Filters"
-msgstr "应用过滤器"
 
 #: 
 #, fuzzy
@@ -1670,10 +1607,6 @@ msgid "Generate Statement"
 msgstr "生成语句"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "这个筹款活动的买家："
-
-#: 
 msgid "Select all"
 msgstr "选择所有"
 
@@ -1795,10 +1728,6 @@ msgstr "必须指定非零的支票号码"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "检查数量不适用于“现金”支付"
-
-#: 
-msgid " more entries will fit."
-msgstr "更多的项目将适合。"
 
 #: 
 msgid "Deposit closed"
@@ -1932,10 +1861,6 @@ msgid "Query Listing"
 msgstr "查询上市"
 
 #: 
-msgid " record(s) returned"
-msgstr "返回记录（S）"
-
-#: 
 msgid "Query View"
 msgstr "查询视图"
 
@@ -1946,22 +1871,6 @@ msgstr "此值是必需的。"
 #: 
 msgid "This value must be numeric."
 msgstr "此值必须是数字。"
-
-#: 
-msgid "This value must be at least "
-msgstr "这个值必须是至少"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "这个值不能超过"
-
-#: 
-msgid " characters long"
-msgstr "个字符长"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "这个值不能小于"
 
 #: 
 msgid "Run Query Again"
@@ -1997,20 +1906,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "警告：本系列有记录的捐款，这些捐款不被删除，直到与另一个家庭。"
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "请选择另一个家庭，并与他们相关联，这些捐赠："
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "警告：此操作不可撤消和法律问题！"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "目前的家庭捐款"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "请确认这个家庭的记录删除："
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2145,10 +2046,6 @@ msgstr "义工机会编辑器"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "尚未添加任何志愿服务机会"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "“为什么来了”的注意事项"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2401,14 +2298,6 @@ msgid "Cell"
 msgstr "细胞"
 
 #: 
-msgid "Estimated value "
-msgstr "估价值"
-
-#: 
-msgid "Donated by "
-msgstr "捐赠"
-
-#: 
 msgid "Paddle"
 msgstr "桨"
 
@@ -2417,16 +2306,8 @@ msgid "Bid"
 msgstr "出价"
 
 #: 
-msgid "Minimum bid "
-msgstr "最低竞标价格"
-
-#: 
 msgid "All Funds"
 msgstr "所有基金"
-
-#: 
-msgid " for all funds"
-msgstr "所有资金"
 
 #: 
 msgid " for fund "
@@ -5101,10 +4982,6 @@ msgid "Group Role"
 msgstr "群组角色"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "或创建一个组并在一个动作中添加购物车"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "建立群组＋新增购物车\n"
 ""
@@ -5252,14 +5129,6 @@ msgstr "用户名未设置"
 #: 
 msgid "Self Registrations"
 msgstr "自助注册"
-
-#: 
-msgid "Public Calendar"
-msgstr "公共日历"
-
-#: 
-msgid "Private Calendar"
-msgstr "私人日历"
 
 #: 
 msgid "Username"
@@ -6139,10 +6008,6 @@ msgstr "金额超过允许的最大值 (999999.99)。"
 #: 
 msgid "Checks"
 msgstr "支票"
-
-#: 
-msgid "Clear Filters"
-msgstr "清除过滤器"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7365,10 +7230,6 @@ msgid "open"
 msgstr "开启"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "（为没有预定义州/省的国家输入州/省）"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "基础 URL 配置无效。请检查您的 Config.php 文件。"
 
@@ -7732,11 +7593,6 @@ msgstr "双重身份验证 (2FA)"
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d 人已加入清单。"
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d 人已成功加入选定的家庭。"
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9470,14 +9326,6 @@ msgstr "分配和管理捐赠信封号码"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "分配和管理筹款活动买家号码"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "将列表项目分配给家族记录"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "将列表项目分配给组"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11227,11 +11075,6 @@ msgstr "默认国家"
 #: 
 msgid "Default State"
 msgstr "默认状态"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "在mailto:链接中分隔电子邮件的分隔符"
 
 #: 
 msgid "Distance Unit"
@@ -14859,10 +14702,6 @@ msgid "Code is invalid"
 msgstr "验证码无效"
 
 #: 
-msgid "Coming soon"
-msgstr "即将推出"
-
-#: 
 msgid "Confirm Activation"
 msgstr "确认激活"
 
@@ -16456,10 +16295,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "这些字段使用格式代码（代表日期各部分的字母）。在每个字段下方选择预设，或使用参考资料自定义。实时预览显示确切效果。留空则使用系统默认值。"
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "这就是日期和电话号码在整个系统中的显示方式。"
-
-#: 
 msgid "Translation completeness"
 msgstr "翻译完整性"
 
@@ -16883,4 +16718,484 @@ msgstr "未找到用户。"
 #: 
 msgid "— Select a person —"
 msgstr "— 选择一位人员 —"
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s 募款活动"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "已筹得目标 %s 中的 %s"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "进行中的募款活动"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "添加募款活动"
+
+#: 
+msgid "Add Item"
+msgstr "添加项目"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "请先将人员添加到选择列表，再将其分配到家庭。"
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "请先将人员添加到选择列表，然后再回来将其添加到小组。"
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "金额后（100.00 ¤）"
+
+#: 
+msgid "All Statuses"
+msgstr "所有状态"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "您选择列表中的所有人已在家庭中，无法再分配。"
+
+#: 
+msgid "All types"
+msgstr "所有类型"
+
+#: 
+msgid "Already in"
+msgstr "已在"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "发生意外错误，请重试。"
+
+#: 
+msgid "Apply"
+msgstr "应用"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "将选择列表中的成员分配到小组"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "将选择列表中的人员分配到家庭"
+
+#: 
+msgid "Assign role to all:"
+msgstr "为所有人分配角色："
+
+#: 
+msgid "Assign to Family"
+msgstr "分配到家庭"
+
+#: 
+msgid "Associated Fund"
+msgstr "关联奉献基金"
+
+#: 
+msgid "At a Glance"
+msgstr "概览"
+
+#: 
+msgid "Auction Reports"
+msgstr "拍卖报告"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "平均售价"
+
+#: 
+msgid "Back to Cart"
+msgstr "返回选择列表"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "返回募款活动"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "金额前（¤ 100.00）"
+
+#: 
+msgid "Best Streak"
+msgstr "最佳连续记录"
+
+#: 
+msgid "Bid Sheets"
+msgstr "竞价单"
+
+#: 
+msgid "Buyer Statements"
+msgstr "买家结算单"
+
+#: 
+msgid "Buyers Registered"
+msgstr "已注册买家"
+
+#: 
+msgid "Buyers This Year"
+msgstr "今年买家"
+
+#: 
+msgid "Catalog"
+msgstr "目录"
+
+#: 
+msgid "Certificates"
+msgstr "证书"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "用作金额小数点的字符（例如 . 或 ,）"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "用于分隔金额千位的字符（例如 , 或 .）"
+
+#: 
+msgid "Check-out"
+msgstr "结账"
+
+#: 
+msgid "Choose a group..."
+msgstr "选择小组..."
+
+#: 
+msgid "Choose family"
+msgstr "选择家庭"
+
+#: 
+msgid "Code"
+msgstr "代码"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "配置金额在系统中的显示方式。随着财务页面更新以使用这些设置（epic #8459），此处配置的符号、位置和分隔符将在全系统生效。"
+
+#: 
+msgid "Create Fundraiser"
+msgstr "创建募款活动"
+
+#: 
+msgid "Create new family…"
+msgstr "创建新家庭…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "货币与财务格式"
+
+#: 
+msgid "Currency Format"
+msgstr "货币格式"
+
+#: 
+msgid "Currency Symbol"
+msgstr "货币符号"
+
+#: 
+msgid "Currency presets"
+msgstr "货币预设"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "显示在金额旁边的货币符号（例如 $、€、£、CHF、CAD $）。"
+
+#: 
+msgid "Decimal Separator"
+msgstr "小数分隔符"
+
+#: 
+msgid "Did Not Attend"
+msgstr "未出席"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "结束日期必须在开始日期当天或之后"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "对于没有预定义州/省的国家，请手动输入州/省"
+
+#: 
+msgid "Est. Value Total"
+msgstr "估计总价值"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "所有关联小组的成员均已签到！"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "加载出席记录失败。"
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "创建新家庭时必须填写家庭姓名。"
+
+#: 
+msgid "Filter by event type"
+msgstr "按活动类型筛选"
+
+#: 
+msgid "Financials"
+msgstr "财务"
+
+#: 
+msgid "From date"
+msgstr "开始日期"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "募款活动概览"
+
+#: 
+msgid "Fundraisers"
+msgstr "募款活动"
+
+#: 
+msgid "Fundraising"
+msgstr "募款"
+
+#: 
+msgid "Goal %"
+msgstr "目标完成%"
+
+#: 
+msgid "Goal Amount"
+msgstr "目标金额"
+
+#: 
+msgid "Highest Sale"
+msgstr "最高售价"
+
+#: 
+msgid "Invalid status value"
+msgstr "无效的状态值"
+
+#: 
+msgid "Invalid type value"
+msgstr "无效的类型值"
+
+#: 
+msgid "Items"
+msgstr "项目"
+
+#: 
+msgid "Items Donated"
+msgstr "捐赠物品"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "捐赠物品（本年度）"
+
+#: 
+msgid "Items Sold"
+msgstr "已售出物品"
+
+#: 
+msgid "Last Attendance"
+msgstr "最近出席"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "关联奉献基金"
+
+#: 
+msgid "Live Preview"
+msgstr "实时预览"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "正在加载出席记录…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "批量购买项目"
+
+#: 
+msgid "New family details"
+msgstr "新家庭详情"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "未找到 %s 募款活动。"
+
+#: 
+msgid "No active fundraisers found."
+msgstr "未找到进行中的募款活动。"
+
+#: 
+msgid "No attendance records found."
+msgstr "未找到出席记录。"
+
+#: 
+msgid "No donated items yet."
+msgstr "暂无捐赠物品。"
+
+#: 
+msgid "Not a valid end date"
+msgstr "无效的结束日期"
+
+#: 
+msgid "Not included"
+msgstr "不包含"
+
+#: 
+msgid "People to assign"
+msgstr "待分配人员"
+
+#: 
+msgid "Planning"
+msgstr "计划"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "请为 %s 选择家庭角色。"
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "填充以下字段但不保存。点击保存以应用。"
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "货币符号相对于金额的位置。"
+
+#: 
+msgid "Quick presets"
+msgstr "快速预设"
+
+#: 
+msgid "Raised"
+msgstr "已筹集"
+
+#: 
+msgid "Raised This Year"
+msgstr "本年度已筹集"
+
+#: 
+msgid "Sample Amount"
+msgstr "示例金额"
+
+#: 
+msgid "Sell-through"
+msgstr "售罄率"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "用作小数点的单个字符（例如 . 或 ,）。默认值：."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "用于分组千位的单个字符（例如 , 或 .）。默认值：,"
+
+#: 
+msgid "Sold"
+msgstr "已售出"
+
+#: 
+msgid "State / Province"
+msgstr "州 / 省"
+
+#: 
+msgid "Streak"
+msgstr "连续记录"
+
+#: 
+msgid "Symbol Position"
+msgstr "符号位置"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "显示在金额旁边的符号或代码（例如 $、€、£、CHF、CAD $）。默认值：$"
+
+#: 
+msgid "Target family"
+msgstr "目标家庭"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "未找到该小组，请重试。"
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "所选家庭已不存在，请刷新页面后重试。"
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "未找到所选小组，请选择有效的小组。"
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "这是日期、金额和电话号码在系统中的显示方式。请在此查看当前格式，然后在下方各节中进行编辑。"
+
+#: 
+msgid "Thousands Separator"
+msgstr "千位分隔符"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "千位分隔符和小数分隔符必须是不同的字符。"
+
+#: 
+msgid "To date"
+msgstr "截止日期"
+
+#: 
+msgid "Total Events"
+msgstr "活动总数"
+
+#: 
+msgid "Total Raised"
+msgstr "总筹集金额"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "总筹集金额（未设定目标）"
+
+#: 
+msgid "Unsold"
+msgstr "未售出"
+
+#: 
+msgid "Updates as you type."
+msgstr "实时更新。"
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "符号显示在金额之前还是之后。默认值：金额前"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "您的选择列表为空，请先添加人员。"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "邮政编码"
+
+#: 
+msgid "events"
+msgstr "活动"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "目标金额必须为非负数"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "目标金额必须为非负数"
+
+#: 
+msgid "thru %s"
+msgstr "至 %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— 选择角色 —"
+
+#: 
+msgid "— pick —"
+msgstr "— 请选择 —"
 

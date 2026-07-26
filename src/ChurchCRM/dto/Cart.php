@@ -2,11 +2,12 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\PersonService;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 
@@ -246,23 +247,46 @@ class Cart
             ->find();
     }
 
-    public static function getEmailLink(): string
+    /**
+     * Returns unique email addresses for all people in the cart.
+     * Respects the iDoNotEmailPropertyId exclusion setting.
+     *
+     * The configured sToEmailAddress is intentionally NOT included here; it is a system
+     * setting the composer reads from window.CRM.comm.defaultEmailToAddress and offers as a
+     * removable default recipient.
+     *
+     * @return string[]
+     */
+    public static function getEmails(): array
     {
-        /* @var $cartPerson ChurchCRM\Person */
-        $people = Cart::getCartPeople();
-        $emailAddressArray = [];
-        foreach ($people as $cartPerson) {
-            if (!empty($cartPerson->getEmail())) {
-                $emailAddressArray[] = $cartPerson->getEmail();
-            }
-        }
-        $delimiter = AuthenticationManager::getCurrentUser()->getUserConfigString('sMailtoDelimiter');
-        $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
-        if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
-            $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
+        self::checkCart();
+        $cartIds = array_values(array_filter(array_map('intval', $_SESSION['aPeopleCart']), fn ($id) => $id > 0));
+        if (empty($cartIds)) {
+            return [];
         }
 
-        return $sEmailLink;
+        // Delegate to PersonService to avoid duplicating the DoNotEmail exclusion logic
+        $doNotEmailSet = (new PersonService())->buildDoNotEmailSet($cartIds);
+
+        $emails = [];
+        $emailsSeen = [];
+        // No per_fam_ID filter here: the cart may intentionally contain persons
+        // with per_fam_ID=0 (unassigned). We email whoever is in the cart.
+        foreach (PersonQuery::create()
+            ->filterById($cartIds)
+            ->filterByEmail('', Criteria::NOT_EQUAL)
+            ->find() as $cartPerson) {
+            if (isset($doNotEmailSet[(int) $cartPerson->getId()])) {
+                continue;
+            }
+            $email = trim((string) $cartPerson->getEmail());
+            if ($email !== '' && !isset($emailsSeen[strtolower($email)])) {
+                $emailsSeen[strtolower($email)] = true;
+                $emails[] = $email;
+            }
+        }
+
+        return $emails;
     }
 
     public static function getSMSLink(): string

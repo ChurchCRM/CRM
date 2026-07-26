@@ -349,19 +349,16 @@ echo gettext('File Name') . ':';
 
 **Apply to:** All UI labels, field names, and sentence-ending colons (introducing lists).
 
-**Also update messages.po:** When moving a colon out of a gettext call, update the `msgid` in `locale/terms/messages.po`:
+**Do not hand-edit `locale/messages.po` for this change** <!-- learned: 2026-07-24 -->
+Extraction is automated (see `git-workflow.md` → "Mandatory Pre-Push Biome Check" area and
+`i18n-localization.md` → "Never rebuild the locale catalog"). Moving the colon out of the
+`gettext()`/`i18next.t()` call in source is the whole fix — do not touch `messages.po` yourself.
 
-```gettext
-# BEFORE
-msgid "Birth Date:"
-msgstr ""
-
-# AFTER
-msgid "Birth Date"
-msgstr ""
-```
-
-The `msgid` key must exactly match the string passed to gettext() in PHP code.
+**A batch audit (2026-07-24) found and fixed ~54 colon-suffixed `gettext()`/`i18next.t()` calls**
+across the codebase, several of which duplicated an existing colon-less msgid for the same term
+(`Warning`, `Family Members`, `Database`, `Version`, `Orphaned Files`, `Tip`) — see
+`i18n-localization.md` → "Punctuation & Colon Placement" for the detection grep and full list of
+real-world fixes.
 
 ## Unified Page Header Standard (MANDATORY) <!-- learned: 2026-03-25 -->
 

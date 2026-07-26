@@ -99,11 +99,11 @@ function ValidateInput()
                         // Is it more than the minimum?
                         if ($_POST[$qrp_Alias] < $qrp_NumericMin) {
                             $bError = true;
-                            $aErrorText[$qrp_Alias] = gettext('This value must be at least ') . $qrp_NumericMin;
+                            $aErrorText[$qrp_Alias] = sprintf(gettext('This value must be at least %s'), $qrp_NumericMin);
                         } elseif ($_POST[$qrp_Alias] > $qrp_NumericMax) {
                             // Is it less than the maximum?
                             $bError = true;
-                            $aErrorText[$qrp_Alias] = gettext('This value cannot be more than ') . $qrp_NumericMax;
+                            $aErrorText[$qrp_Alias] = sprintf(gettext('This value cannot be more than %s'), $qrp_NumericMax);
                         }
                     }
 
@@ -115,11 +115,11 @@ function ValidateInput()
                     // Is the length less than the maximum?
                     if (strlen($_POST[$qrp_Alias]) > $qrp_AlphaMaxLength) {
                         $bError = true;
-                        $aErrorText[$qrp_Alias] = gettext('This value cannot be more than ') . $qrp_AlphaMaxLength . gettext(' characters long');
+                        $aErrorText[$qrp_Alias] = sprintf(gettext('This value cannot be more than %d characters long'), $qrp_AlphaMaxLength);
                     } elseif (strlen($_POST[$qrp_Alias]) < $qrp_AlphaMinLength) {
                         // Is the length more than the minimum?
                         $bError = true;
-                        $aErrorText[$qrp_Alias] = gettext('This value cannot be less than ') . $qrp_AlphaMinLength . gettext(' characters long');
+                        $aErrorText[$qrp_Alias] = sprintf(gettext('This value cannot be less than %d characters long'), $qrp_AlphaMinLength);
                     }
 
                     $vPOST[$qrp_Alias] = InputUtils::legacyFilterInput($_POST[$qrp_Alias]);
@@ -190,7 +190,7 @@ function DisplayRecordCount()
     if ($qry_Count === 1) {
         //Display the count of the recordset
         echo '<p class="text-center">';
-        echo mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned');
+        echo sprintf(gettext('%d record(s) returned'), mysqli_num_rows($rsQueryResults));
         echo '</p>';
     }
 }
@@ -212,7 +212,7 @@ function DoQuery()
 
     <div class="card-body">
         <p class="text-end">
-            <?= $qry_Count ? mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned') : ''; ?>
+            <?= $qry_Count ? sprintf(gettext('%d record(s) returned'), mysqli_num_rows($rsQueryResults)) : ''; ?>
         </p>
 
         <div class="table-responsive">

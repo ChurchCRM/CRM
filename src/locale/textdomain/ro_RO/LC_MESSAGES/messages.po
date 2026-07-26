@@ -210,10 +210,6 @@ msgid "Anniversary Date"
 msgstr "Data aniversării"
 
 #: 
-msgid "Output Method:"
-msgstr "Metoda de export:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "Înregistrări CSV individuale"
 
@@ -284,43 +280,14 @@ msgstr "Adauga in cos la eveniment"
 msgid "Your cart is empty!"
 msgstr "Cosul dvs. este gol!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nici un nume de familie nu a intrat!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Adauga in cos la Familie"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nume"
 
 #: 
-msgid "Assign Role"
-msgstr "Atribuirea Rol"
-
-#: 
 msgid "Already in a family"
 msgstr "Deja într-o familie"
-
-#: 
-msgid "Create new family"
-msgstr "Creați o nouă familie"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Dacă adăugați o nouă familie, introduceți datele de mai jos."
-
-#: 
-#, fuzzy
-msgid "Use address/contact data from"
-msgstr "Folosiți adresa / datele de contact de la"
-
-#: 
-msgid "Only the new data below"
-msgstr "Numai datele noi de mai jos"
 
 #: 
 msgid "Do not auto-format"
@@ -333,11 +300,6 @@ msgstr "Adauga la Familie"
 #: 
 msgid "Add Cart to Group"
 msgstr "Adauga in cos la Grup"
-
-#: 
-#, fuzzy
-msgid "Select the group to which you would like to add your cart"
-msgstr "Selectați grupul pe care doriți să îl adăugați în coș"
 
 #: 
 #, fuzzy
@@ -417,10 +379,6 @@ msgstr "Acțiune"
 #: 
 msgid "Member"
 msgstr "Membru"
-
-#: 
-msgid " of the"
-msgstr "␣al"
 
 #: 
 msgid "(No assigned family)"
@@ -1107,11 +1065,6 @@ msgid "Bank Draft"
 msgstr "Ordin de plată bancar"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Suma minima totala"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - nici un minim"
 
@@ -1136,10 +1089,6 @@ msgid "All Families"
 msgstr "Toate familiile"
 
 #: 
-msgid "Report Heading:"
-msgstr "Antetul raportului"
-
-#: 
 msgid "Graphic"
 msgstr "Grafic"
 
@@ -1150,14 +1099,6 @@ msgstr "Adresa bisericii"
 #: 
 msgid "Blank"
 msgstr "Gol"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Cupon de Remitere"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortați Datele După"
 
 #: 
 msgid "Deposit"
@@ -1212,10 +1153,6 @@ msgstr "Listă de Evenimente de Strângere de Fonduri"
 #, fuzzy
 msgid "Date Start"
 msgstr "Data de începere"
-
-#: 
-msgid "Apply Filters"
-msgstr "Aplica filtre"
 
 #: 
 #, fuzzy
@@ -1669,10 +1606,6 @@ msgid "Generate Statement"
 msgstr "Genera Declarația"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Cumpărători de pe această strângere de fonduri:"
-
-#: 
 msgid "Select all"
 msgstr "Selectați toate"
 
@@ -1794,10 +1727,6 @@ msgstr "Trebuie să specificați numărul de verificare de zero"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Verifica numărul nu este valabil pentru plata \"numerar\""
-
-#: 
-msgid " more entries will fit."
-msgstr "mai multe intrări se va potrivi."
 
 #: 
 msgid "Deposit closed"
@@ -1931,10 +1860,6 @@ msgid "Query Listing"
 msgstr "Listarea interogare"
 
 #: 
-msgid " record(s) returned"
-msgstr "înregistrări (e) a revenit"
-
-#: 
 msgid "Query View"
 msgstr "Vezi interogare"
 
@@ -1945,22 +1870,6 @@ msgstr "Este nevoie de această valoare."
 #: 
 msgid "This value must be numeric."
 msgstr "Această valoare trebuie să fie numeric."
-
-#: 
-msgid "This value must be at least "
-msgstr "Această valoare trebuie să fie de cel puțin"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Această valoare nu poate fi mai mult decât"
-
-#: 
-msgid " characters long"
-msgstr "caractere"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Această valoare nu poate fi mai mică"
 
 #: 
 msgid "Run Query Again"
@@ -1996,20 +1905,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "AVERTISMENT: Această familie are înregistrări de donații și nu pot fi șterse până când aceste donații sunt asociate cu o alta familie."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Vă rugăm selectați o altă familie cu care să se asocieze aceste donații:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "AVERTISMENT: Această acțiune nu poate fi anulată și ar putea avea implicații juridice!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "Curente ale familiei cu donatii"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Vă rugăm să confirmați ștergerea din acest livret de familie:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2141,10 +2042,6 @@ msgstr "Voluntari oportunitate Editor"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nu oportunitățile de voluntariat au fost încă adăugate"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"De ce a venit\" note de"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2396,14 +2293,6 @@ msgid "Cell"
 msgstr "Celulă"
 
 #: 
-msgid "Estimated value "
-msgstr "Valoarea estimată"
-
-#: 
-msgid "Donated by "
-msgstr "Donate de"
-
-#: 
 msgid "Paddle"
 msgstr "Paletă"
 
@@ -2412,16 +2301,8 @@ msgid "Bid"
 msgstr "Ofertă"
 
 #: 
-msgid "Minimum bid "
-msgstr "Oferta minimă"
-
-#: 
 msgid "All Funds"
 msgstr "Toate fondurile"
-
-#: 
-msgid " for all funds"
-msgstr "pentru toate fondurile"
 
 #: 
 msgid " for fund "
@@ -5096,10 +4977,6 @@ msgid "Group Role"
 msgstr "Rol grup"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "SAU creați un grup și adăugați coșul într-o singură acțiune"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Creați grup + ADD coș"
 
@@ -5245,14 +5122,6 @@ msgstr "UserName nesetat"
 #: 
 msgid "Self Registrations"
 msgstr "Înregistrare personală"
-
-#: 
-msgid "Public Calendar"
-msgstr "Calendar public"
-
-#: 
-msgid "Private Calendar"
-msgstr "Calendar privat"
 
 #: 
 msgid "Username"
@@ -6132,10 +6001,6 @@ msgstr "Suma depășește valoarea maximă permisă (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Cecuri"
-
-#: 
-msgid "Clear Filters"
-msgstr "Șterge filtrele"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7362,10 +7227,6 @@ msgid "open"
 msgstr "deschis"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Introduceți statul/provincia pentru țările fără state predefinite)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Configurația URL-ului de bază este nevalidă. Vă rugăm să verificați fișierul Config.php."
 
@@ -7731,13 +7592,6 @@ msgid_plural "%d People added to the Cart."
 msgstr[0] "%d persoană adăugată în coș."
 msgstr[1] "%d persoane adăugate în coș."
 msgstr[2] "%d persoane adăugate în coș."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d persoană adăugată cu succes la familia selectată."
-msgstr[1] "%d persoane adăugate cu succes la familia selectată."
-msgstr[2] "%d persoane adăugate cu succes la familia selectată."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9479,14 +9333,6 @@ msgstr "Atribuiți și gestionați numerele plicurilor de ofertă"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Atribuiți și gestionați numerele cumpărătorilor la strângeri de fonduri"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Atribuiți persoanele din selecție unei înregistrări de familie"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Atribuiți persoanele din selecție unui grup"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11236,11 +11082,6 @@ msgstr "Țară implicită"
 #: 
 msgid "Default State"
 msgstr "Stare implicită"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Delimitator pentru separarea e-mailurilor în linkuri mailto:"
 
 #: 
 msgid "Distance Unit"
@@ -14870,10 +14711,6 @@ msgid "Code is invalid"
 msgstr "Codul este nevalid"
 
 #: 
-msgid "Coming soon"
-msgstr "În curând"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Confirmați activarea"
 
@@ -16465,10 +16302,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Aceste câmpuri folosesc coduri de formatare (litere care reprezintă părți dintr-o dată). Alegeți o presetare sub fiecare câmp sau creați-vă propria folosind referința. Previzualizarea arată exact cum va arăta. Lăsați gol pentru a folosi valoarea implicită a sistemului."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Astfel vor apărea datele și numerele de telefon în tot sistemul."
-
-#: 
 msgid "Translation completeness"
 msgstr "Completitudinea traducerii"
 
@@ -16888,4 +16721,494 @@ msgstr "Utilizatorul nu a fost găsit."
 #: 
 msgid "— Select a person —"
 msgstr "— Selectați o persoană —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d strângere de fonduri arhivată"
+msgstr[1] "%d strângeri de fonduri arhivate"
+msgstr[2] "%d strângeri de fonduri arhivate"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d persoană adăugată cu succes în familia selectată."
+msgstr[1] "%d persoane adăugate cu succes în familia selectată."
+msgstr[2] "%d de persoane adăugate cu succes în familia selectată."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "Strângeri de fonduri %s"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s din obiectivul de %s colectat"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Strângeri de fonduri active"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Adaugă strângere de fonduri"
+
+#: 
+msgid "Add Item"
+msgstr "Adaugă element"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Adaugă persoane în selecție înainte de a le atribui unei familii."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Adaugă mai întâi persoane în selecție, apoi revino pentru a le adăuga într-un grup."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "După sumă (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Toate statusurile"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Toate persoanele din selecție fac deja parte dintr-o familie. Nimeni nu poate fi atribuit."
+
+#: 
+msgid "All types"
+msgstr "Toate tipurile"
+
+#: 
+msgid "Already in"
+msgstr "Deja în"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "A apărut o eroare neașteptată. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Apply"
+msgstr "Aplică"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Atribuie membrii din selecție unui grup"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Atribuie persoanele din selecție unei familii"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Atribuie rol tuturor:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Atribuie familiei"
+
+#: 
+msgid "Associated Fund"
+msgstr "Fond asociat"
+
+#: 
+msgid "At a Glance"
+msgstr "Privire de ansamblu"
+
+#: 
+msgid "Auction Reports"
+msgstr "Rapoarte licitație"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Preț mediu de vânzare"
+
+#: 
+msgid "Back to Cart"
+msgstr "Înapoi la selecție"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Înapoi la strângerile de fonduri"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Înaintea sumei (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Cea mai bună serie"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Fișe de licitație"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Declarații cumpărători"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Cumpărători înregistrați"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Cumpărători în acest an"
+
+#: 
+msgid "Certificates"
+msgstr "Certificate"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Caracterul folosit ca separator zecimal în sume monetare (ex. . sau ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Caracterul folosit pentru separarea miilor în sume monetare (ex. , sau .)"
+
+#: 
+msgid "Check-out"
+msgstr "Finalizare"
+
+#: 
+msgid "Choose a group..."
+msgstr "Alegeți un grup..."
+
+#: 
+msgid "Choose family"
+msgstr "Alegeți familia"
+
+#: 
+msgid "Code"
+msgstr "Cod"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Configurați modul în care sumele monetare sunt afișate în întregul sistem. Pe măsură ce paginile financiare sunt actualizate pentru a utiliza aceste setări (epic #8459), simbolul, poziția și separatorii configurați aici se vor aplica la nivel de sistem."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Creează strângere de fonduri"
+
+#: 
+msgid "Create new family…"
+msgstr "Creează familie nouă…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Formate valutare și financiare"
+
+#: 
+msgid "Currency Format"
+msgstr "Format valutar"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Simbol valutar"
+
+#: 
+msgid "Currency presets"
+msgstr "Presetări valutare"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Simbolul valutar afișat lângă sumele monetare (ex. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Separator zecimal"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Nu a participat"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Data de sfârșit trebuie să fie la sau după data de început"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Introduceți județul/provincia pentru țările fără unități administrative predefinite"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Valoare totală estimată"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Toți membrii din grupurile asociate au fost înregistrați!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Încărcarea istoricului de prezență a eșuat."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Numele familiei este obligatoriu la crearea unei familii noi."
+
+#: 
+msgid "Filter by event type"
+msgstr "Filtrează după tipul evenimentului"
+
+#: 
+msgid "Financials"
+msgstr "Financiar"
+
+#: 
+msgid "From date"
+msgstr "De la data"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Prezentare generală strângere de fonduri"
+
+#: 
+msgid "Fundraisers"
+msgstr "Strângeri de fonduri"
+
+#: 
+msgid "Fundraising"
+msgstr "Colectare de fonduri"
+
+#: 
+msgid "Goal %"
+msgstr "% Obiectiv"
+
+#: 
+msgid "Goal Amount"
+msgstr "Suma obiectiv"
+
+#: 
+msgid "Highest Sale"
+msgstr "Cea mai mare vânzare"
+
+#: 
+msgid "Invalid status value"
+msgstr "Valoare de status invalidă"
+
+#: 
+msgid "Invalid type value"
+msgstr "Valoare de tip invalidă"
+
+#: 
+msgid "Items"
+msgstr "Articole"
+
+#: 
+msgid "Items Donated"
+msgstr "Articole donate"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Articole donate (în acest an)"
+
+#: 
+msgid "Items Sold"
+msgstr "Articole vândute"
+
+#: 
+msgid "Last Attendance"
+msgstr "Ultima participare"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Fond de donații asociat"
+
+#: 
+msgid "Live Preview"
+msgstr "Previzualizare în timp real"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Se încarcă istoricul de prezență…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Articole cu achiziție multiplă"
+
+#: 
+msgid "New family details"
+msgstr "Detalii familie nouă"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Nu s-au găsit strângeri de fonduri %s."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Nu s-au găsit strângeri de fonduri active."
+
+#: 
+msgid "No attendance records found."
+msgstr "Nu s-au găsit înregistrări de prezență."
+
+#: 
+msgid "No donated items yet."
+msgstr "Niciun articol donat încă."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Dată de sfârșit invalidă"
+
+#: 
+msgid "Not included"
+msgstr "Neinclus"
+
+#: 
+msgid "People to assign"
+msgstr "Persoane de atribuit"
+
+#: 
+msgid "Planning"
+msgstr "Planificare"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Vă rugăm selectați un rol în familie pentru %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Completează câmpurile de mai jos fără a salva. Faceți clic pe Salvare pentru a aplica."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Poziția simbolului valutar față de sumă."
+
+#: 
+msgid "Quick presets"
+msgstr "Presetări rapide"
+
+#: 
+msgid "Raised"
+msgstr "Colectat"
+
+#: 
+msgid "Raised This Year"
+msgstr "Colectat în acest an"
+
+#: 
+msgid "Sample Amount"
+msgstr "Sumă exemplu"
+
+#: 
+msgid "Sell-through"
+msgstr "Rata de vânzare"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Un singur caracter folosit ca separator zecimal (ex. . sau ,). Implicit: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Un singur caracter folosit pentru gruparea miilor (ex. , sau .). Implicit: ,"
+
+#: 
+msgid "Sold"
+msgstr "Vândut"
+
+#: 
+msgid "State / Province"
+msgstr "Județ / Provincie"
+
+#: 
+msgid "Streak"
+msgstr "Serie"
+
+#: 
+msgid "Symbol Position"
+msgstr "Poziția simbolului"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Simbolul sau codul afișat lângă sume (ex. $, €, £, CHF, CAD $). Implicit: $"
+
+#: 
+msgid "Target family"
+msgstr "Familia destinatară"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Grupul nu a putut fi găsit. Vă rugăm să încercați din nou."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Familia selectată nu mai există. Vă rugăm să reîncărcați pagina și să încercați din nou."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Grupul selectat nu a fost găsit. Vă rugăm să selectați un grup valid."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Astfel vor apărea datele, sumele valutare și numerele de telefon în întregul sistem. Revizuiți formatele curente aici, apoi editați-le în secțiunile de mai jos."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Separator de mii"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Separatorul de mii și separatorul zecimal trebuie să fie caractere diferite."
+
+#: 
+msgid "To date"
+msgstr "Până la data"
+
+#: 
+msgid "Total Events"
+msgstr "Total evenimente"
+
+#: 
+msgid "Total Raised"
+msgstr "Total colectat"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Total colectat (fără obiectiv stabilit)"
+
+#: 
+msgid "Unsold"
+msgstr "Nevândut"
+
+#: 
+msgid "Updates as you type."
+msgstr "Se actualizează pe măsură ce tastați."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Dacă simbolul apare înainte sau după suma numerică. Implicit: Înaintea sumei"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Selecția dvs. este goală. Adăugați mai întâi persoane în selecție."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Cod poștal"
+
+#: 
+msgid "events"
+msgstr "evenimente"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount trebuie să fie un număr non-negativ"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount trebuie să fie non-negativ"
+
+#: 
+msgid "thru %s"
+msgstr "până la %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Selectați rolul —"
+
+#: 
+msgid "— pick —"
+msgstr "— alegeți —"
 

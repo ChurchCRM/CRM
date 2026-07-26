@@ -25,7 +25,7 @@ $person = PersonQuery::create()->findOneById($iPerson);
 $per_FirstName = $person->getFirstName();
 $per_LastName = $person->getLastName();
 
-$sPageTitle = gettext('"Why Came" notes for ') . $per_FirstName . ' ' . $per_LastName;
+$sPageTitle = sprintf(gettext('"Why Came" notes for %1$s %2$s'), $per_FirstName, $per_LastName);
 $sPageSubtitle = gettext('Record why attendees visited your church');
 
 // Is this the second pass?

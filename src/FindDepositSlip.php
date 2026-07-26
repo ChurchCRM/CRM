@@ -27,7 +27,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="card">
   <div class="card-header d-flex align-items-center">
-    <h3 class="card-title"><?php echo gettext('Add New') . ' ' . gettext('Deposit') . ': '; ?></h3>
+    <h3 class="card-title"><?php echo gettext('Add New Deposit') . ': '; ?></h3>
   </div>
   <div class="card-body">
     <form action="#" method="get" class="form">
@@ -54,7 +54,7 @@ require_once __DIR__ . '/Include/Header.php';
       <p>
       <div class="row">
         <div class="col-3">
-          <button type="button" class="btn btn-primary" id="addNewDeposit"><?= gettext('Add New') . ' ' . gettext('Deposit') ?></button>
+          <button type="button" class="btn btn-primary" id="addNewDeposit"><?= gettext('Add New Deposit') ?></button>
         </div>
       </div>
     </form>

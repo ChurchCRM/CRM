@@ -129,7 +129,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             <i class="fa-solid fa-clipboard-check fa-2x"></i>
         </div>
         <div>
-            <strong><?= gettext('Data Quality:') ?></strong>
+            <strong><?= gettext('Data Quality') ?>:</strong>
             <?php
             $issues = [];
             if ($genderDataCheckCount > 0) {
@@ -222,7 +222,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     <?php 
                     // Map of column names to localized display titles
                     $htmlColumnTitleMap = [
-                        'Id' => gettext('Id'),
+                        'Id' => gettext('ID'),
                         'Name' => gettext('Name'),
                         'Family Name' => gettext('Family Name'),
                         'Family Status' => gettext('Family Status'),
@@ -515,7 +515,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 $columns = $personListColumns;
                 // Map of column names to localized display titles
                 $columnTitleMap = [
-                    'Id' => gettext('Id'),
+                    'Id' => gettext('ID'),
                     'Name' => gettext('Name'),
                     'Family Name' => gettext('Family Name'),
                     'Family Status' => gettext('Family Status'),

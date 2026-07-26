@@ -196,10 +196,6 @@ msgid "Anniversary Date"
 msgstr "Évforduló dátuma"
 
 #: 
-msgid "Output Method:"
-msgstr "Kimeneti módszer:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV egyén rekordok"
 
@@ -270,42 +266,14 @@ msgstr "A kosár eseményhez adása"
 msgid "Your cart is empty!"
 msgstr "Az Ön kosara üres!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Nincs családnév megadva!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "A kosár családhoz adása"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Név"
 
 #: 
-msgid "Assign Role"
-msgstr "Szerepkör hozzárendelése"
-
-#: 
 msgid "Already in a family"
 msgstr "Már egy családban van"
-
-#: 
-msgid "Create new family"
-msgstr "Új család létrehozása"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Ha új családot szeretne hozzáadni, adja meg az alábbi adatokat."
-
-#: 
-msgid "Use address/contact data from"
-msgstr "Használja a címet / kapcsolattartó adatait"
-
-#: 
-msgid "Only the new data below"
-msgstr "Csak az alábbi új adatok"
 
 #: 
 msgid "Do not auto-format"
@@ -318,10 +286,6 @@ msgstr "Hozzáadás családhoz"
 #: 
 msgid "Add Cart to Group"
 msgstr "A kosár hozzáadása csoporthoz"
-
-#: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Válassza ki azt a csoportot, amelyhez hozzá szeretné adni a kosarát"
 
 #: 
 msgid "Select Group"
@@ -399,10 +363,6 @@ msgstr "Művelet"
 #: 
 msgid "Member"
 msgstr "Tag"
-
-#: 
-msgid " of the"
-msgstr "Az"
 
 #: 
 msgid "(No assigned family)"
@@ -1083,11 +1043,6 @@ msgid "Bank Draft"
 msgstr "Bank-tervezet"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Minimum Teljes összeg:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - Nincs Minimum"
 
@@ -1112,10 +1067,6 @@ msgid "All Families"
 msgstr "All Families"
 
 #: 
-msgid "Report Heading:"
-msgstr "Jelentés Jogcím:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafikus"
 
@@ -1126,14 +1077,6 @@ msgstr "Templom Cím"
 #: 
 msgid "Blank"
 msgstr "Üres"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Átutalási Slip:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Rendezés Adatok:"
 
 #: 
 msgid "Deposit"
@@ -1187,10 +1130,6 @@ msgstr "Adománygyűjtő Listing"
 #, fuzzy
 msgid "Date Start"
 msgstr "Dátum Kezdés"
-
-#: 
-msgid "Apply Filters"
-msgstr "Szűrők alkalmazása"
 
 #: 
 msgid "Date End"
@@ -1642,10 +1581,6 @@ msgid "Generate Statement"
 msgstr "Generálása Statement"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Vevők erre adománygyűjtő:"
-
-#: 
 msgid "Select all"
 msgstr "Az összes,"
 
@@ -1767,10 +1702,6 @@ msgstr "Meg kell adni a nem nulla szám ellenőrzés"
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Ellenőrizze szám nem érvényes a \"készpénz\" fizetési"
-
-#: 
-msgid " more entries will fit."
-msgstr "több bejegyzés fér."
 
 #: 
 msgid "Deposit closed"
@@ -1904,10 +1835,6 @@ msgid "Query Listing"
 msgstr "Lekérdezés Listing"
 
 #: 
-msgid " record(s) returned"
-msgstr "bejegyzés (ek) iránt"
-
-#: 
 msgid "Query View"
 msgstr "Lekérdezés megnézése"
 
@@ -1918,22 +1845,6 @@ msgstr "Ez az érték szükséges."
 #: 
 msgid "This value must be numeric."
 msgstr "Ez a számérték kell legyen."
-
-#: 
-msgid "This value must be at least "
-msgstr "Ennek az értéknek legalább"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Ez az érték nem lehet nagyobb, mint a"
-
-#: 
-msgid " characters long"
-msgstr "karakter hosszú"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Ez az érték nem lehet kisebb, mint"
 
 #: 
 msgid "Run Query Again"
@@ -1969,20 +1880,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "FIGYELEM: A család nyilvántartást adományok és nem kell hagyni, amíg ezek adományt társítva van egy másik család."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Kérjük, válasszon egy másik család, akikkel társítani ezeket az adományokat:"
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "FIGYELEM: Ez a művelet nem vonható vissza, és jogi hatásai lehetnek!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "FOLYÓ család ADOMÁNYOK"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Kérjük, erősítse meg törlés a család eredménye:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2116,10 +2019,6 @@ msgstr "Önkéntes Opportunity szerkesztő"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nem önkéntes lehetőségeket adtak még"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "\"Miért jött\" megjegyzések"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2372,14 +2271,6 @@ msgid "Cell"
 msgstr "Sejt"
 
 #: 
-msgid "Estimated value "
-msgstr "Becsült érték"
-
-#: 
-msgid "Donated by "
-msgstr "Által adományozott"
-
-#: 
 msgid "Paddle"
 msgstr "Evez"
 
@@ -2388,16 +2279,8 @@ msgid "Bid"
 msgstr "Árajánlat"
 
 #: 
-msgid "Minimum bid "
-msgstr "Minimális ajánlat"
-
-#: 
 msgid "All Funds"
 msgstr "Összes alapok"
-
-#: 
-msgid " for all funds"
-msgstr "Ha az összes alap"
 
 #: 
 msgid " for fund "
@@ -5062,10 +4945,6 @@ msgid "Group Role"
 msgstr "Csoport szerepe"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "VAGY hozzon létre egy csoportot és adja hozzá a KOSARAT egy műveletben"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Csoport létrehozása + Kosár hozzáadása"
 
@@ -5209,14 +5088,6 @@ msgstr "A felhasználónév nincs beállítva"
 #: 
 msgid "Self Registrations"
 msgstr "Önregisztrációk"
-
-#: 
-msgid "Public Calendar"
-msgstr "Nyilvános naptár"
-
-#: 
-msgid "Private Calendar"
-msgstr "Magánév naptár"
 
 #: 
 msgid "Username"
@@ -6094,10 +5965,6 @@ msgstr "Az összeg meghaladja a megengedett maximális értéket (999999.99)."
 #: 
 msgid "Checks"
 msgstr "Csekkek"
-
-#: 
-msgid "Clear Filters"
-msgstr "Szűrők törlése"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7322,10 +7189,6 @@ msgid "open"
 msgstr "nyitott"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Adja meg az államot/tartományt az elődefiniált államok nélküli országokhoz)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Az alapvető URL-konfiguráció érvénytelen. Ellenőrizze a Config.php fájlt."
 
@@ -7690,12 +7553,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d személy hozzáadva a kosárhoz."
 msgstr[1] "%d személy hozzáadva a kosárhoz."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
-msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9433,14 +9290,6 @@ msgstr "Adományboriték-számok kiosztása és kezelése"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Adománygyűjtési vásárlószámok kiosztása és kezelése"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Lista elemeinek hozzárendelése egy családi rekordhoz"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Lista elemeinek hozzárendelése egy csoporthoz"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11190,11 +11039,6 @@ msgstr "Alapértelmezett ország"
 #: 
 msgid "Default State"
 msgstr "Alapértelmezett állapot"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Elválasztó az e-mailek szétválasztásához a mailto: linkekben"
 
 #: 
 msgid "Distance Unit"
@@ -14823,10 +14667,6 @@ msgid "Code is invalid"
 msgstr "A kód érvénytelen"
 
 #: 
-msgid "Coming soon"
-msgstr "Hamarosan"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Aktiválás megerősítése"
 
@@ -16421,10 +16261,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Ezek a mezők formázási kódokat használnak (betűk a dátum részeit jelölik). Válasszon egy előbeállítást minden mező alatt, vagy hozzon létre sajátot a referencia segítségével. Az élő előnézet pontosan megmutatja a végeredményt. Hagyja üresen a rendszer alapértelmezéséhez."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "Így fognak megjelenni a dátumok és telefonszámok az egész rendszerben."
-
-#: 
 msgid "Translation completeness"
 msgstr "Fordítás teljessége"
 
@@ -16848,4 +16684,496 @@ msgstr "A felhasználó nem található."
 #: 
 msgid "— Select a person —"
 msgstr "— Válasszon személyt —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d archivált adománygyűjtő"
+msgstr[1] "%d archivált adománygyűjtő"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
+msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s adománygyűjtők"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s összegyűjtve a(z) %s célból"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktív adománygyűjtők"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Adománygyűjtő hozzáadása"
+
+#: 
+msgid "Add Item"
+msgstr "Elem hozzáadása"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Adjon személyeket a kosarához, mielőtt hozzárendeli őket egy családhoz."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Először adjon személyeket a kosarához, majd jöjjön vissza, hogy hozzáadja őket egy csoporthoz."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Összeg után (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Minden állapot"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "A kosárban lévő összes személy már tartozik egy családhoz. Senki sem rendelhető hozzá."
+
+#: 
+msgid "All types"
+msgstr "Minden típus"
+
+#: 
+msgid "Already in"
+msgstr "Már tagja"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Váratlan hiba történt. Kérjük, próbálja újra."
+
+#: 
+msgid "Apply"
+msgstr "Alkalmaz"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Kosár tagjainak hozzárendelése csoporthoz"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Kosárból személyek hozzárendelése családhoz"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Szerep hozzárendelése mindenkihez:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Hozzárendelés családhoz"
+
+#: 
+msgid "Associated Fund"
+msgstr "Kapcsolódó alap"
+
+#: 
+msgid "At a Glance"
+msgstr "Áttekintés"
+
+#: 
+msgid "Auction Reports"
+msgstr "Árverési jelentések"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Átlagos eladási ár"
+
+#: 
+msgid "Back to Cart"
+msgstr "Vissza a kosárhoz"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Vissza az adománygyűjtőkhöz"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Összeg előtt (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Legjobb sorozat"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Ajánlati lapok"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Vevői kimutatások"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Regisztrált vevők"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Vevők ebben az évben"
+
+#: 
+msgid "Catalog"
+msgstr "Katalógus"
+
+#: 
+msgid "Certificates"
+msgstr "Tanúsítványok"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "A tizedes elválasztóként használt karakter pénzösszegekben (pl. . vagy ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Az ezres elválasztóként használt karakter pénzösszegekben (pl. , vagy .)"
+
+#: 
+msgid "Check-out"
+msgstr "Pénztár"
+
+#: 
+msgid "Choose a group..."
+msgstr "Válasszon csoportot..."
+
+#: 
+msgid "Choose family"
+msgstr "Válasszon családot"
+
+#: 
+msgid "Code"
+msgstr "Kód"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Állítsa be, hogyan jelenjenek meg a pénzösszegek a rendszerben. Ahogy a pénzügyi oldalak frissülnek ezeknek a beállításoknak a használatára (epic #8459), az itt konfigurált szimbólum, pozíció és elválasztók az egész rendszerre érvényesek lesznek."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Adománygyűjtő létrehozása"
+
+#: 
+msgid "Create new family…"
+msgstr "Új család létrehozása…"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Pénznem és pénzügyi formátumok"
+
+#: 
+msgid "Currency Format"
+msgstr "Pénznem formátum"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Pénznem szimbólum"
+
+#: 
+msgid "Currency presets"
+msgstr "Pénznem előbeállítások"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "A pénzösszegek mellett megjelenítendő pénznem szimbólum (pl. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Tizedes elválasztó"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Nem jelent meg"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "A befejező dátumnak a kezdő dátummal egyezőnek vagy azt követőnek kell lennie"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Adja meg az állam/tartomány nevét azon országok esetén, amelyekhez nincs előre meghatározott lista"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Becsült érték összesen"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "A kapcsolódó csoportok összes tagja bejelentkezett!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "A jelenléti előzmények betöltése sikertelen."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Új család létrehozásakor a családnév megadása kötelező."
+
+#: 
+msgid "Filter by event type"
+msgstr "Szűrés eseménytípus szerint"
+
+#: 
+msgid "Financials"
+msgstr "Pénzügyek"
+
+#: 
+msgid "From date"
+msgstr "Kezdő dátum"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Adománygyűjtő áttekintés"
+
+#: 
+msgid "Fundraisers"
+msgstr "Adománygyűjtők"
+
+#: 
+msgid "Fundraising"
+msgstr "Adománygyűjtés"
+
+#: 
+msgid "Goal %"
+msgstr "Cél %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Célösszeg"
+
+#: 
+msgid "Highest Sale"
+msgstr "Legmagasabb eladás"
+
+#: 
+msgid "Invalid status value"
+msgstr "Érvénytelen állapotérték"
+
+#: 
+msgid "Invalid type value"
+msgstr "Érvénytelen típusérték"
+
+#: 
+msgid "Items"
+msgstr "Elemek"
+
+#: 
+msgid "Items Donated"
+msgstr "Adományozott tételek"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Adományozott tételek (ebben az évben)"
+
+#: 
+msgid "Items Sold"
+msgstr "Eladott tételek"
+
+#: 
+msgid "Last Attendance"
+msgstr "Utolsó jelenlét"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Kapcsolódó adományalap"
+
+#: 
+msgid "Live Preview"
+msgstr "Élő előnézet"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Jelenléti előzmények betöltése…"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Többszörös vásárlású tételek"
+
+#: 
+msgid "New family details"
+msgstr "Új család adatai"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Nem található %s adománygyűjtő."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Nem található aktív adománygyűjtő."
+
+#: 
+msgid "No attendance records found."
+msgstr "Nem található jelenléti rekord."
+
+#: 
+msgid "No donated items yet."
+msgstr "Még nincs adományozott tétel."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Érvénytelen befejező dátum"
+
+#: 
+msgid "Not included"
+msgstr "Nem szerepel"
+
+#: 
+msgid "People to assign"
+msgstr "Hozzárendelendő személyek"
+
+#: 
+msgid "Planning"
+msgstr "Tervezés"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Kérjük, válasszon családi szerepet %s számára."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Kitölti az alábbi mezőket mentés nélkül. Kattintson a Mentés gombra az alkalmazáshoz."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "A pénznem szimbólum elhelyezése az összeghez képest."
+
+#: 
+msgid "Quick presets"
+msgstr "Gyors előbeállítások"
+
+#: 
+msgid "Raised"
+msgstr "Összegyűjtve"
+
+#: 
+msgid "Raised This Year"
+msgstr "Ebben az évben összegyűjtve"
+
+#: 
+msgid "Sample Amount"
+msgstr "Minta összeg"
+
+#: 
+msgid "Sell-through"
+msgstr "Értékesítési arány"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Egyetlen karakter tizedes elválasztóként (pl. . vagy ,). Alapértelmezett: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Egyetlen karakter az ezresek csoportosításához (pl. , vagy .). Alapértelmezett: ,"
+
+#: 
+msgid "Sold"
+msgstr "Eladva"
+
+#: 
+msgid "State / Province"
+msgstr "Állam / Tartomány"
+
+#: 
+msgid "Streak"
+msgstr "Sorozat"
+
+#: 
+msgid "Symbol Position"
+msgstr "Szimbólum pozíciója"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Az összegek mellett megjelenített szimbólum vagy kód (pl. $, €, £, CHF, CAD $). Alapértelmezett: $"
+
+#: 
+msgid "Target family"
+msgstr "Célcsalád"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "A csoport nem található. Kérjük, próbálja újra."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "A kiválasztott család már nem létezik. Kérjük, frissítse az oldalt, és próbálja újra."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "A kiválasztott csoport nem található. Kérjük, válasszon érvényes csoportot."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "Így jelennek meg a dátumok, pénzösszegek és telefonszámok a rendszerben. Tekintse át az aktuális formátumokat itt, majd szerkessze őket az alábbi szakaszokban."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Ezres elválasztó"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Az ezres elválasztónak és a tizedes elválasztónak különböző karaktereknek kell lenniük."
+
+#: 
+msgid "To date"
+msgstr "Befejező dátum"
+
+#: 
+msgid "Total Events"
+msgstr "Összes esemény"
+
+#: 
+msgid "Total Raised"
+msgstr "Összesen összegyűjtve"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Összesen összegyűjtve (nincs meghatározott cél)"
+
+#: 
+msgid "Unsold"
+msgstr "Eladatlan"
+
+#: 
+msgid "Updates as you type."
+msgstr "Gépelés közben frissül."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Hogy a szimbólum az összeg előtt vagy után jelenik-e meg. Alapértelmezett: Összeg előtt"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "A kosara üres. Először adjon személyeket a kosarához."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Irányítószám"
+
+#: 
+msgid "events"
+msgstr "események"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "A célösszeg nem lehet negatív szám"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "A célösszeg nem lehet negatív"
+
+#: 
+msgid "thru %s"
+msgstr "%s-ig"
+
+#: 
+msgid "— Select role —"
+msgstr "— Válasszon szerepet —"
+
+#: 
+msgid "— pick —"
+msgstr "— válasszon —"
 

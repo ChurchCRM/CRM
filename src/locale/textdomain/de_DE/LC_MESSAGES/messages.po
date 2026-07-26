@@ -213,10 +213,6 @@ msgid "Anniversary Date"
 msgstr "Jahrestag"
 
 #: 
-msgid "Output Method:"
-msgstr "Ausgabemethode:"
-
-#: 
 msgid "CSV Individual Records"
 msgstr "CSV einzelne Einträge"
 
@@ -287,43 +283,14 @@ msgstr "Korb zur Veranstaltung hinzufügen"
 msgid "Your cart is empty!"
 msgstr "Der Korb ist leer!"
 
-#: 
-msgid "No family name entered!"
-msgstr "Kein Familienname eingegeben!"
-
-#: 
-msgid "Add Cart to Family"
-msgstr "Korb zur Familie hinzufügen"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Name"
 
 #: 
-msgid "Assign Role"
-msgstr "Rolle festlegen"
-
-#: 
 msgid "Already in a family"
 msgstr "Ist schon in einer Familie"
-
-#: 
-msgid "Create new family"
-msgstr "Neue Familie anlegen"
-
-#: 
-msgid "If adding a new family, enter data below."
-msgstr "Wenn eine neue Familie angelget werden soll bitte unten Daten eingeben."
-
-#: 
-#, fuzzy
-msgid "Use address/contact data from"
-msgstr "Benutze Adressen/Kontaktdaten von"
-
-#: 
-msgid "Only the new data below"
-msgstr "Nur die neuen Daten unten"
 
 #: 
 msgid "Do not auto-format"
@@ -336,11 +303,6 @@ msgstr "Zur Familie hinzufügen"
 #: 
 msgid "Add Cart to Group"
 msgstr "Korb zur Gruppe hinzufügen"
-
-#: 
-#, fuzzy
-msgid "Select the group to which you would like to add your cart"
-msgstr "Wähle die Gruppe aus zu der du den Korb hinzufügen willst"
 
 #: 
 #, fuzzy
@@ -420,10 +382,6 @@ msgstr "Aktion"
 #: 
 msgid "Member"
 msgstr "Mitglied"
-
-#: 
-msgid " of the"
-msgstr " der"
 
 #: 
 msgid "(No assigned family)"
@@ -1112,11 +1070,6 @@ msgid "Bank Draft"
 msgstr "Scheck"
 
 #: 
-#, fuzzy
-msgid "Minimum Total Amount:"
-msgstr "Minimaler Gesamtbetrag:"
-
-#: 
 msgid "0 - No Minimum"
 msgstr "0 - kein Minimum"
 
@@ -1141,10 +1094,6 @@ msgid "All Families"
 msgstr "Alle Familien"
 
 #: 
-msgid "Report Heading:"
-msgstr "Berichts Überschrift:"
-
-#: 
 msgid "Graphic"
 msgstr "Grafik"
 
@@ -1155,14 +1104,6 @@ msgstr "Adresse der Gemeinde"
 #: 
 msgid "Blank"
 msgstr "Leer"
-
-#: 
-msgid "Remittance Slip:"
-msgstr "Überweisungsbeleg:"
-
-#: 
-msgid "Sort Data by:"
-msgstr "Sortiere Dante nach:"
 
 #: 
 msgid "Deposit"
@@ -1217,10 +1158,6 @@ msgstr "Liste Spendensammlungen"
 #, fuzzy
 msgid "Date Start"
 msgstr "Starttermin"
-
-#: 
-msgid "Apply Filters"
-msgstr "Filter anwenden"
 
 #: 
 #, fuzzy
@@ -1679,10 +1616,6 @@ msgid "Generate Statement"
 msgstr "Mache Angabe"
 
 #: 
-msgid "Buyers for this fundraiser:"
-msgstr "Käufer bei dieser Spendenaktion:"
-
-#: 
 msgid "Select all"
 msgstr "Alle auswählen"
 
@@ -1804,10 +1737,6 @@ msgstr "Du  mußt eine von Null verschiedene Schecknummer angeben."
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Kontonummer nicht gültig für Barzahlung"
-
-#: 
-msgid " more entries will fit."
-msgstr "mehr Einträge passen."
 
 #: 
 msgid "Deposit closed"
@@ -1942,10 +1871,6 @@ msgid "Query Listing"
 msgstr "Abfrageliste"
 
 #: 
-msgid " record(s) returned"
-msgstr "Ausgegebene(r) Eintr."
-
-#: 
 msgid "Query View"
 msgstr "Suchergebnis anzeigen"
 
@@ -1956,22 +1881,6 @@ msgstr "Dieser Wert wird benötigt."
 #: 
 msgid "This value must be numeric."
 msgstr "Dieser Wert muss numerisch sein."
-
-#: 
-msgid "This value must be at least "
-msgstr "Dieser Wert muss mindestens"
-
-#: 
-msgid "This value cannot be more than "
-msgstr "Dieser Wert kann größer sein als"
-
-#: 
-msgid " characters long"
-msgstr "Stellen"
-
-#: 
-msgid "This value cannot be less than "
-msgstr "Dieser Wert darf nicht kleiner als"
 
 #: 
 msgid "Run Query Again"
@@ -2007,20 +1916,12 @@ msgid "WARNING: This family has records of donations and may NOT be deleted unti
 msgstr "ACHTUNG: Dieser Familie wurden Spenden zugewiesen und darf erst gelöscht werden wenn diese Spenden einer anderen Familie zugwiesen werden."
 
 #: 
-msgid "Please select another family with whom to associate these donations:"
-msgstr "Bitte wählen sie eine andere Familie aus mit jemandem dem sie diese Spenden zuweisen können."
-
-#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "ACHTUNG: Diese Aktion kann nicht zurückgenommen werden und könnte rechtliche Konsequenzen haben!"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "AKTUELLE FAMILIEN MIT SPENDEN"
-
-#: 
-msgid "Please confirm deletion of this family record:"
-msgstr "Bitte bestätige die Löschung der Familieneinträge:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -2154,10 +2055,6 @@ msgstr "Editor zu den ehrenamtlichen Fähigkeiten"
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Bisher wurden keine ehrenamtlichen Fähigkeiten erfasst"
-
-#: 
-msgid "\"Why Came\" notes for "
-msgstr "Besuchsgrund"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2411,16 +2308,6 @@ msgstr "Cell"
 
 #: 
 #, fuzzy
-msgid "Estimated value "
-msgstr "Geschätzter Preis:"
-
-#: 
-#, fuzzy
-msgid "Donated by "
-msgstr "Spenden nach Fonds"
-
-#: 
-#, fuzzy
 msgid "Paddle"
 msgstr "Mittleres"
 
@@ -2429,16 +2316,8 @@ msgid "Bid"
 msgstr "Angebot"
 
 #: 
-msgid "Minimum bid "
-msgstr "Mindestgebot"
-
-#: 
 msgid "All Funds"
 msgstr "Alle Spendenaktionen"
-
-#: 
-msgid " for all funds"
-msgstr " für alle Aktionen"
 
 #: 
 msgid " for fund "
@@ -5115,10 +4994,6 @@ msgid "Group Role"
 msgstr "Gruppenrolle"
 
 #: 
-msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "ODER Erstellen Sie eine Gruppe und fügen Sie den WARENWAGEN in EINER AKTION hinzu"
-
-#: 
 msgid "Create Group + ADD Cart"
 msgstr "Gruppe erstellen + Einkaufswagen HINZUFÜGEN"
 
@@ -5264,14 +5139,6 @@ msgstr "Benutzername nicht festgelegt"
 #: 
 msgid "Self Registrations"
 msgstr "Selbst-Registrierungen"
-
-#: 
-msgid "Public Calendar"
-msgstr "Öffentlicher Kalender"
-
-#: 
-msgid "Private Calendar"
-msgstr "Privater Kalender"
 
 #: 
 msgid "Username"
@@ -6153,10 +6020,6 @@ msgstr "Der Betrag übersteigt den maximal zulässigen Wert (999999,99)."
 #: 
 msgid "Checks"
 msgstr "Schecks"
-
-#: 
-msgid "Clear Filters"
-msgstr "Filter löschen"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -7381,10 +7244,6 @@ msgid "open"
 msgstr "offen"
 
 #: 
-msgid "(Enter state/province for countries without predefined states)"
-msgstr "(Geben Sie Staat/Provinz für Länder ohne vordefinierte Staaten ein)"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Basis-URL-Konfiguration ist ungültig. Bitte überprüfen Sie Ihre Config.php-Datei."
 
@@ -7749,12 +7608,6 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Person zum Warenkorb hinzugefügt."
 msgstr[1] "%d Personen zum Warenkorb hinzugefügt."
-
-#: 
-msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d Person erfolgreich zur ausgewählten Familie hinzugefügt."
-msgstr[1] "%d Personen erfolgreich zur ausgewählten Familie hinzugefügt."
 
 #: 
 msgid "%d Person successfully added to selected Group."
@@ -9492,14 +9345,6 @@ msgstr "Spendenmappennummern zuweisen und verwalten"
 #: 
 msgid "Assign and manage fundraiser buyer numbers"
 msgstr "Käufernummern für Spendenaktionen zuweisen und verwalten"
-
-#: 
-msgid "Assign cart items to a family record"
-msgstr "Warenkorbelemente einem Familiendatensatz zuweisen"
-
-#: 
-msgid "Assign cart items to a group"
-msgstr "Warenkorbelemente einer Gruppe zuweisen"
 
 #: 
 msgid "Assign cart items to an event"
@@ -11249,11 +11094,6 @@ msgstr "Standardland"
 #: 
 msgid "Default State"
 msgstr "Standardstaat"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Trennzeichen zum Trennen von E-Mails in Mailto-Links"
 
 #: 
 msgid "Distance Unit"
@@ -14882,10 +14722,6 @@ msgid "Code is invalid"
 msgstr "Code ist ungültig"
 
 #: 
-msgid "Coming soon"
-msgstr "Kommt in Kürze"
-
-#: 
 msgid "Confirm Activation"
 msgstr "Bestätige die Aktivierung"
 
@@ -16480,10 +16316,6 @@ msgid "These fields use formatting codes (letters that stand for parts of a date
 msgstr "Diese Felder verwenden Formatierungscodes (Buchstaben, die Teile eines Datums darstellen). Wählen Sie ein Preset unter jedem Feld oder erstellen Sie Ihres eigenes mithilfe der Referenz. Die Live-Vorschau zeigt genau das Ergebnis. Leer lassen, um den Systemstandard zu verwenden."
 
 #: 
-msgid "This is how dates and phone numbers will appear throughout the system."
-msgstr "So werden Datumsangaben und Telefonnummern im gesamten System angezeigt."
-
-#: 
 msgid "Translation completeness"
 msgstr "Übersetzungsvollständigkeit"
 
@@ -16907,4 +16739,492 @@ msgstr "Benutzer nicht gefunden."
 #: 
 msgid "— Select a person —"
 msgstr "— Person auswählen —"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d archivierte Spendenaktion"
+msgstr[1] "%d archivierte Spendenaktionen"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "%d Person erfolgreich zur ausgewählten Familie hinzugefügt."
+msgstr[1] "%d Personen erfolgreich zur ausgewählten Familie hinzugefügt."
+
+#: 
+msgid "%s Fundraisers"
+msgstr "%s Spendenaktionen"
+
+#: 
+msgid "%s of %s goal raised"
+msgstr "%s von %s Ziel gesammelt"
+
+#: 
+msgid "Active Fundraisers"
+msgstr "Aktive Spendenaktionen"
+
+#: 
+msgid "Add Fundraiser"
+msgstr "Spendenaktion hinzufügen"
+
+#: 
+msgid "Add Item"
+msgstr "Artikel hinzufügen"
+
+#: 
+msgid "Add people to your cart before assigning them to a family."
+msgstr "Fügen Sie zuerst Personen zur Auswahl hinzu, bevor Sie sie einer Familie zuweisen."
+
+#: 
+msgid "Add people to your cart first, then come back to add them to a group."
+msgstr "Fügen Sie zuerst Personen zur Auswahl hinzu und weisen Sie sie dann einer Gruppe zu."
+
+#: 
+msgid "After amount (100.00 ¤)"
+msgstr "Nach dem Betrag (100.00 ¤)"
+
+#: 
+msgid "All Statuses"
+msgstr "Alle Status"
+
+#: 
+msgid "All people in your cart are already in a family. No one can be assigned."
+msgstr "Alle Personen in Ihrer Auswahl sind bereits einer Familie zugeordnet. Niemand kann zugewiesen werden."
+
+#: 
+msgid "All types"
+msgstr "Alle Typen"
+
+#: 
+msgid "Already in"
+msgstr "Bereits in"
+
+#: 
+msgid "An unexpected error occurred. Please try again."
+msgstr "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Apply"
+msgstr "Übernehmen"
+
+#: 
+msgid "Assign cart members to a group"
+msgstr "Ausgewählte Personen einer Gruppe zuweisen"
+
+#: 
+msgid "Assign people from your cart to a family"
+msgstr "Ausgewählte Personen einer Familie zuweisen"
+
+#: 
+msgid "Assign role to all:"
+msgstr "Allen eine Rolle zuweisen:"
+
+#: 
+msgid "Assign to Family"
+msgstr "Familie zuweisen"
+
+#: 
+msgid "Associated Fund"
+msgstr "Zugehöriger Fonds"
+
+#: 
+msgid "At a Glance"
+msgstr "Auf einen Blick"
+
+#: 
+msgid "Auction Reports"
+msgstr "Auktionsberichte"
+
+#: 
+msgid "Avg Sale Price"
+msgstr "Durchschnittlicher Verkaufspreis"
+
+#: 
+msgid "Back to Cart"
+msgstr "Zurück zur Auswahl"
+
+#: 
+msgid "Back to Fundraisers"
+msgstr "Zurück zu den Spendenaktionen"
+
+#: 
+msgid "Before amount (¤ 100.00)"
+msgstr "Vor dem Betrag (¤ 100.00)"
+
+#: 
+msgid "Best Streak"
+msgstr "Beste Serie"
+
+#: 
+msgid "Bid Sheets"
+msgstr "Gebotsblätter"
+
+#: 
+msgid "Buyer Statements"
+msgstr "Käuferabrechnungen"
+
+#: 
+msgid "Buyers Registered"
+msgstr "Registrierte Käufer"
+
+#: 
+msgid "Buyers This Year"
+msgstr "Käufer dieses Jahr"
+
+#: 
+msgid "Catalog"
+msgstr "Katalog"
+
+#: 
+msgid "Certificates"
+msgstr "Zertifikate"
+
+#: 
+msgid "Character used as the decimal point in monetary amounts (e.g. . or ,)"
+msgstr "Zeichen als Dezimaltrennzeichen in Geldbeträgen (z. B. . oder ,)"
+
+#: 
+msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
+msgstr "Zeichen als Tausendertrennzeichen in Geldbeträgen (z. B. , oder .)"
+
+#: 
+msgid "Check-out"
+msgstr "Auschecken"
+
+#: 
+msgid "Choose a group..."
+msgstr "Gruppe auswählen ..."
+
+#: 
+msgid "Choose family"
+msgstr "Familie auswählen"
+
+#: 
+msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
+msgstr "Legen Sie fest, wie Geldbeträge im gesamten System angezeigt werden. Sobald die Finanzseiten auf diese Einstellungen aktualisiert werden (Epic #8459), gelten das hier konfigurierte Symbol, die Position und die Trennzeichen systemweit."
+
+#: 
+msgid "Create Fundraiser"
+msgstr "Spendenaktion erstellen"
+
+#: 
+msgid "Create new family…"
+msgstr "Neue Familie erstellen …"
+
+#: 
+msgid "Currency & Finance Formats"
+msgstr "Währungs- und Finanzformate"
+
+#: 
+msgid "Currency Format"
+msgstr "Währungsformat"
+
+#: 
+msgid "Currency Symbol"
+msgstr "Währungssymbol"
+
+#: 
+msgid "Currency presets"
+msgstr "Währungsvoreinstellungen"
+
+#: 
+msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr "Währungssymbol neben Geldbeträgen (z. B. $, €, £, CHF, CAD $)."
+
+#: 
+msgid "Decimal Separator"
+msgstr "Dezimaltrennzeichen"
+
+#: 
+msgid "Did Not Attend"
+msgstr "Nicht teilgenommen"
+
+#: 
+msgid "End date must be on or after the start date"
+msgstr "Das Enddatum muss auf oder nach dem Startdatum liegen"
+
+#: 
+msgid "Enter state/province for countries without predefined states"
+msgstr "Bundesland/Provinz für Länder ohne vordefinierte Bundesländer eingeben"
+
+#: 
+msgid "Est. Value Total"
+msgstr "Geschätzter Gesamtwert"
+
+#: 
+msgid "Everyone from linked groups checked in!"
+msgstr "Alle Personen aus verknüpften Gruppen haben eingecheckt!"
+
+#: 
+msgid "Failed to load attendance history."
+msgstr "Anwesenheitsverlauf konnte nicht geladen werden."
+
+#: 
+msgid "Family name is required when creating a new family."
+msgstr "Der Familienname ist beim Erstellen einer neuen Familie erforderlich."
+
+#: 
+msgid "Filter by event type"
+msgstr "Nach Veranstaltungstyp filtern"
+
+#: 
+msgid "Financials"
+msgstr "Finanzen"
+
+#: 
+msgid "From date"
+msgstr "Von Datum"
+
+#: 
+msgid "Fundraiser Overview"
+msgstr "Übersicht Spendenaktionen"
+
+#: 
+msgid "Fundraisers"
+msgstr "Spendenaktionen"
+
+#: 
+msgid "Fundraising"
+msgstr "Spendensammlung"
+
+#: 
+msgid "Goal %"
+msgstr "Ziel %"
+
+#: 
+msgid "Goal Amount"
+msgstr "Zielbetrag"
+
+#: 
+msgid "Highest Sale"
+msgstr "Höchster Verkauf"
+
+#: 
+msgid "Invalid status value"
+msgstr "Ungültiger Statuswert"
+
+#: 
+msgid "Invalid type value"
+msgstr "Ungültiger Typwert"
+
+#: 
+msgid "Items"
+msgstr "Artikel"
+
+#: 
+msgid "Items Donated"
+msgstr "Gespendete Artikel"
+
+#: 
+msgid "Items Donated (This Year)"
+msgstr "Gespendete Artikel (dieses Jahr)"
+
+#: 
+msgid "Items Sold"
+msgstr "Verkaufte Artikel"
+
+#: 
+msgid "Last Attendance"
+msgstr "Letzte Anwesenheit"
+
+#: 
+msgid "Linked Donation Fund"
+msgstr "Verknüpfter Spendenfonds"
+
+#: 
+msgid "Live Preview"
+msgstr "Live-Vorschau"
+
+#: 
+msgid "Loading attendance history…"
+msgstr "Anwesenheitsverlauf wird geladen …"
+
+#: 
+msgid "Multibuy Items"
+msgstr "Mehrfachkaufartikel"
+
+#: 
+msgid "New family details"
+msgstr "Details zur neuen Familie"
+
+#: 
+msgid "No %s fundraisers found."
+msgstr "Keine %s Spendenaktionen gefunden."
+
+#: 
+msgid "No active fundraisers found."
+msgstr "Keine aktiven Spendenaktionen gefunden."
+
+#: 
+msgid "No attendance records found."
+msgstr "Keine Anwesenheitseinträge gefunden."
+
+#: 
+msgid "No donated items yet."
+msgstr "Noch keine gespendeten Artikel."
+
+#: 
+msgid "Not a valid end date"
+msgstr "Kein gültiges Enddatum"
+
+#: 
+msgid "Not included"
+msgstr "Nicht enthalten"
+
+#: 
+msgid "People to assign"
+msgstr "Zuzuweisende Personen"
+
+#: 
+msgid "Planning"
+msgstr "Planung"
+
+#: 
+msgid "Please select a family role for %s."
+msgstr "Bitte wählen Sie eine Familienrolle für %s."
+
+#: 
+msgid "Populates the fields below without saving. Click Save to apply."
+msgstr "Füllt die Felder unten aus, ohne zu speichern. Klicken Sie auf Speichern, um die Änderungen zu übernehmen."
+
+#: 
+msgid "Position of the currency symbol relative to the amount."
+msgstr "Position des Währungssymbols relativ zum Betrag."
+
+#: 
+msgid "Quick presets"
+msgstr "Schnellvoreinstellungen"
+
+#: 
+msgid "Raised"
+msgstr "Gesammelt"
+
+#: 
+msgid "Raised This Year"
+msgstr "Dieses Jahr gesammelt"
+
+#: 
+msgid "Sample Amount"
+msgstr "Beispielbetrag"
+
+#: 
+msgid "Sell-through"
+msgstr "Abverkauf"
+
+#: 
+msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
+msgstr "Einzelnes Zeichen als Dezimaltrennzeichen (z. B. . oder ,). Standard: ."
+
+#: 
+msgid "Single character used to group thousands (e.g. , or .). Default: ,"
+msgstr "Einzelnes Zeichen als Tausendertrennzeichen (z. B. , oder .). Standard: ,"
+
+#: 
+msgid "Sold"
+msgstr "Verkauft"
+
+#: 
+msgid "State / Province"
+msgstr "Bundesland / Provinz"
+
+#: 
+msgid "Streak"
+msgstr "Serie"
+
+#: 
+msgid "Symbol Position"
+msgstr "Symbolposition"
+
+#: 
+msgid "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $"
+msgstr "Symbol oder Code neben Beträgen (z. B. $, €, £, CHF, CAD $). Standard: $"
+
+#: 
+msgid "Target family"
+msgstr "Zielfamilie"
+
+#: 
+msgid "The group could not be found. Please try again."
+msgstr "Die Gruppe konnte nicht gefunden werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "The selected family no longer exists. Please refresh the page and try again."
+msgstr "Die ausgewählte Familie existiert nicht mehr. Bitte laden Sie die Seite neu und versuchen Sie es erneut."
+
+#: 
+msgid "The selected group was not found. Please select a valid group."
+msgstr "Die ausgewählte Gruppe wurde nicht gefunden. Bitte wählen Sie eine gültige Gruppe."
+
+#: 
+msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
+msgstr "So werden Datumsangaben, Geldbeträge und Telefonnummern im gesamten System angezeigt. Überprüfen Sie die aktuellen Formate hier und bearbeiten Sie sie in den folgenden Abschnitten."
+
+#: 
+msgid "Thousands Separator"
+msgstr "Tausendertrennzeichen"
+
+#: 
+msgid "Thousands separator and decimal separator must be different characters."
+msgstr "Tausendertrennzeichen und Dezimaltrennzeichen müssen unterschiedliche Zeichen sein."
+
+#: 
+msgid "To date"
+msgstr "Bis Datum"
+
+#: 
+msgid "Total Events"
+msgstr "Veranstaltungen gesamt"
+
+#: 
+msgid "Total Raised"
+msgstr "Insgesamt gesammelt"
+
+#: 
+msgid "Total raised (no goal set)"
+msgstr "Insgesamt gesammelt (kein Ziel festgelegt)"
+
+#: 
+msgid "Unsold"
+msgstr "Unverkauft"
+
+#: 
+msgid "Updates as you type."
+msgstr "Wird beim Tippen aktualisiert."
+
+#: 
+msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr "Ob das Symbol vor oder nach dem numerischen Betrag erscheint. Standard: Vor dem Betrag"
+
+#: 
+msgid "Your cart is empty. Add people to your cart first."
+msgstr "Ihre Auswahl ist leer. Fügen Sie zuerst Personen zur Auswahl hinzu."
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "PLZ / Postleitzahl"
+
+#: 
+msgid "events"
+msgstr "Veranstaltungen"
+
+#: 
+msgid "goalAmount must be a non-negative number"
+msgstr "goalAmount muss eine nicht-negative Zahl sein"
+
+#: 
+msgid "goalAmount must be non-negative"
+msgstr "goalAmount darf nicht negativ sein"
+
+#: 
+msgid "thru %s"
+msgstr "bis %s"
+
+#: 
+msgid "— Select role —"
+msgstr "— Rolle auswählen —"
+
+#: 
+msgid "— pick —"
+msgstr "— auswählen —"
 
