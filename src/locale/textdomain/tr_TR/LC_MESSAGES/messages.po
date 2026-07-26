@@ -263,10 +263,6 @@ msgstr "Sınıflandırma"
 msgid "Add Cart to Event"
 msgstr "Etkinliğe Sepet Ekle"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "Sepetiniz boş!"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1446,10 +1442,6 @@ msgid "Current Role"
 msgstr "Mevcut rol"
 
 #: 
-msgid "All People"
-msgstr "Tüm insanlar"
-
-#: 
 msgid "Email All"
 msgstr "Hepsini e -posta ile gönder"
 
@@ -1520,10 +1512,6 @@ msgstr "Güncellenmiş aileler"
 #: 
 msgid "Updated"
 msgstr "Güncellenmiş"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "Evet, bu kaydı sil"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2176,10 +2164,6 @@ msgid "Start Column"
 msgstr "Başlat sütunu"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "Eksik <br> adresleri yok say"
-
-#: 
 msgid "File Type"
 msgstr "Dosya tipi"
 
@@ -2244,14 +2228,6 @@ msgid "All Funds"
 msgstr "Tüm Fonlar"
 
 #: 
-msgid " for fund "
-msgstr " fon için"
-
-#: 
-msgid "for funds "
-msgstr "fon için"
-
-#: 
 #, fuzzy
 msgid "Donated Items"
 msgstr "Bağışlanan Ürünler"
@@ -2276,10 +2252,6 @@ msgstr "Ödenen miktar: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "() Cash () check () tarafından ödenen kredi kartı __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "                                        İmza ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2312,10 +2284,6 @@ msgstr "Grup dizin"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Lütfen bu kaymayı ayırın ve bir sonraki hediyenizle postalayın."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "Lütfen size bir sonraki hediyeyi postalayın"
 
 #: 
 #, fuzzy
@@ -2464,10 +2432,6 @@ msgid "Family Select"
 msgstr "Aile Seçimi"
 
 #: 
-msgid "with at least one:"
-msgstr "en az biriyle:"
-
-#: 
 msgid "Welcome to"
 msgstr "Hoşgeldiniz"
 
@@ -2572,18 +2536,6 @@ msgid "item"
 msgstr "öğe"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-------------------------------------------------- -------------------------------------------------- -------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "Alıcı #"
-
-#: 
-msgid "Family Members:"
-msgstr "Aile üyeleri:"
-
-#: 
 msgid "Anniversary"
 msgstr "Yıl dönümü"
 
@@ -2594,10 +2546,6 @@ msgstr "Notalar"
 #: 
 msgid "Reports"
 msgstr "Raporlar"
-
-#: 
-msgid "family"
-msgstr "aile"
 
 #: 
 #, fuzzy
@@ -2678,10 +2626,6 @@ msgstr "Varsayılan şehir"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Varsayılan durum - 2 harfli kısaltma olmalıdır!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "Tüm e -postaların bir kopyasını almak için varsayılan hesap"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4750,10 +4694,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "Özel Grup Ayarları: Pazar Okulu Türü"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "Pazar Okulu Grubu sadece bu iki durumda değiştirilemez:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Yeni roller ekleyin, ancak öğrenciyi ve öğretmen rollerini değiştirmeyin veya yeniden adlandırmayın."
 
@@ -5349,10 +5289,6 @@ msgid "Review"
 msgstr "Gözden geçirmek"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "API anahtarı aracılığıyla kimliği doğrulanmış kullanıcı:"
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "Başarısız API Anahtar Kimlik Doğrulama Girişimi"
 
@@ -5666,20 +5602,12 @@ msgid "Log File Viewer"
 msgstr "Günlük Dosyası Görüntüleyici"
 
 #: 
-msgid "Filter by log level:"
-msgstr "Günlük seviyesine göre filtrele:"
-
-#: 
 msgid "Error"
 msgstr "Hata"
 
 #: 
 msgid "Info"
 msgstr "Bilgi"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "Görüntülenecek satır sayısı:"
 
 #: 
 msgid "Loading log file..."
@@ -6041,10 +5969,6 @@ msgstr "Kök Yolu"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP Sunucusu"
-
-#: 
-msgid "Tip:"
-msgstr "İpucu:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6476,10 +6400,6 @@ msgid "Please check the backup file and try again."
 msgstr "Lütfen yedekleme dosyasını kontrol edin ve tekrar deneyin."
 
 #: 
-msgid "Redirecting in"
-msgstr "Yönlendiriliyor:"
-
-#: 
 msgid "Refresh List"
 msgstr "Listeyi Yenile"
 
@@ -6518,10 +6438,6 @@ msgstr "Güvenlik Önerisi"
 #: 
 msgid "Select Backup File"
 msgstr "Yedekleme Dosyası Seçin"
-
-#: 
-msgid "Supported formats:"
-msgstr "Desteklenen formatlar:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6574,14 +6490,6 @@ msgstr "ChurchCRM kurulumunuz temiz. Sunucudaki tüm dosyalar resmi sürümle e�
 #: 
 msgid "or click to browse"
 msgstr "veya göz atmak için tıklayın"
-
-#: 
-msgid "seconds..."
-msgstr "saniye..."
-
-#: 
-msgid " Deposit #"
-msgstr " Para Yatırma #"
 
 #: 
 msgid "%d missing classification"
@@ -6668,20 +6576,12 @@ msgid "Close All Deposits"
 msgstr "Tüm Para Yatırmaları Kapat"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "Kapatılan Para Yatırmalar:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "Kapatılan ve Toplam Karşılaştırması"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "Bağışçılarınız için doğru yıl sonu vergi raporlaması sağlamak üzere bu görevleri tamamlayın."
-
-#: 
-msgid "Configuration:"
-msgstr "Yapılandırma:"
 
 #: 
 msgid "Configure Email"
@@ -6722,14 +6622,6 @@ msgstr "Tarih, fon, aile ve ödeme yöntemine göre filtreleme yapılabilen öze
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "Vergi beyannamelerinde görünen metni özelleştirin (sTaxReport1, sTaxReport2, vb.)."
-
-#: 
-msgid "Data Quality:"
-msgstr "Veri Kalitesi:"
-
-#: 
-msgid "Database:"
-msgstr "Veritabanı:"
 
 #: 
 msgid "Day"
@@ -6802,10 +6694,6 @@ msgstr "Aile Navigasyonu"
 #: 
 msgid "Feb"
 msgstr "Şub"
-
-#: 
-msgid "File Integrity:"
-msgstr "Dosya Bütünlüğü:"
 
 #: 
 msgid "Filtering"
@@ -6956,14 +6844,6 @@ msgid "Open"
 msgstr "Açık"
 
 #: 
-msgid "Open Deposits:"
-msgstr "Açık Para Yatırmalar:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "Sahipsiz Dosyalar:"
-
-#: 
 msgid "Payment"
 msgstr "Ödeme"
 
@@ -7052,10 +6932,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Mali yıl için fon bazında taahhütler ve ödemelerin özeti."
 
 #: 
-msgid "System Configuration:"
-msgstr "Sistem Yapılandırması:"
-
-#: 
 msgid "System Health"
 msgstr "Sistem Sağlığı"
 
@@ -7088,10 +6964,6 @@ msgid "Total Amount"
 msgstr "Toplam Tutar"
 
 #: 
-msgid "Total Deposits:"
-msgstr "Toplam Para Yatırmalar:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Kampanyalar ve mali yıl bütçelemesi için taahhütleri ve ödeme ilerlemesini takip edin."
 
@@ -7118,10 +6990,6 @@ msgstr "Kilise adının, adresinin ve iletişim bilgilerinin vergi beyannameleri
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "Beyannameler için fon adlarının ve açıklamalarının doğru olduğunu doğrulayın."
-
-#: 
-msgid "Version:"
-msgstr "Sürüm:"
 
 #: 
 msgid "YTD Payments"
@@ -7180,28 +7048,8 @@ msgid "Critical Configuration Error"
 msgstr "Kritik Yapılandırma Hatası"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "Mevcut $URL[0] değeri:"
-
-#: 
-msgid "Custom port:"
-msgstr "Özel port:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "Bir <strong>eğik çizgi</strong> (/) ile biter"
-
-#: 
-msgid "Find the line:"
-msgstr "Şu satırı bulun:"
-
-#: 
 msgid "Group Memberships"
 msgstr "Grup Üyelikleri"
-
-#: 
-msgid "How to Fix:"
-msgstr "Nasıl Düzeltilir:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7210,10 +7058,6 @@ msgstr "ChurchCRM topluluğuna katılın ve bilgilerinizi paylaşarak gelişmemi
 #: 
 msgid "Language"
 msgstr "Dil"
-
-#: 
-msgid "Local development:"
-msgstr "Yerel geliştirme:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7234,10 +7078,6 @@ msgstr "Kilisenizi Kaydedin"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "Dosyayı kaydedin ve bu sayfayı yenileyin"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "<strong>http://</strong> veya <strong>https://</strong> ile başlar"
 
 #: 
 msgid "System Locale Support"
@@ -7262,14 +7102,6 @@ msgstr "URL bir eğik çizgi (/) ile bitmelidir"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL http:// veya https:// ile başlamalıdır"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "Bunu şu özelliklere sahip geçerli bir URL ile güncelleyin:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "Geçerli Örnekler:"
 
 #: 
 msgid "View Logs"
@@ -7330,10 +7162,6 @@ msgstr "Bülten"
 #: 
 msgid "Personal"
 msgstr "Kişisel"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "Lütfen aile bilgilerinizi onaylayın:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7616,20 +7444,8 @@ msgid "Property Type"
 msgstr "Özellik Türü"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "Bu Gönüllü Fırsatına atanmış kişiler var. Silme işlemi şu kişilerin atamasını kaldıracaktır:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "Gönüllü Fırsatı"
-
-#: 
-msgid "Warning:"
-msgstr "Uyarı:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "Evet, bu Fırsatı sil"
 
 #. Context: locales
 #: 
@@ -8302,10 +8118,6 @@ msgstr "MailChimp'ten API anahtarınızı alın: Hesap Ayarları > Ekstralar > A
 #: 
 msgid "Help"
 msgstr "Yardım"
-
-#: 
-msgid "Id"
-msgstr "Kimlik"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9587,10 +9399,6 @@ msgid "Edit custom properties for a group member"
 msgstr "Bir grup üyesi için özel özellikleri düzenle"
 
 #: 
-msgid "Email BCC"
-msgstr "E-posta GBK"
-
-#: 
 msgid "Email Families"
 msgstr "Ailelere E-posta Gönder"
 
@@ -9601,14 +9409,6 @@ msgstr "E-posta Ayarları"
 #: 
 msgid "Email Tools"
 msgstr "E-posta Araçları"
-
-#: 
-msgid "Email cart items"
-msgstr "Listedeki öğeleri e-posta ile gönder"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "Gizli alıcılı e-posta"
 
 #: 
 msgid "Empty"
@@ -9823,10 +9623,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "MailChimp hedef kitlelerinizden kişileri içe aktarın"
 
 #: 
-msgid "Import failed: "
-msgstr "İçe aktarım başarısız: "
-
-#: 
 msgid "Import from CSV"
 msgstr "CSV'den İçe Aktar"
 
@@ -9869,10 +9665,6 @@ msgstr "Geçersiz \"Gönderen Numara\": \"%s\". Ülke kodunu ekleyin, ör. +1415
 #: 
 msgid "Invite Your Team"
 msgstr "Ekibinizi Davet Edin"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "Herhangi bir kurulum adımına atlayın:"
 
 #: 
 msgid "Key People"
@@ -10227,10 +10019,6 @@ msgstr "Özellik ataması bulunamadı."
 #: 
 msgid "Property deleted successfully."
 msgstr "Özellik başarıyla silindi."
-
-#: 
-msgid "Property not found."
-msgstr "Özellik bulunamadı."
 
 #: 
 msgid "Quick Tips"
@@ -10701,14 +10489,6 @@ msgid "properties"
 msgstr "özellikler"
 
 #: 
-msgid "— Select a group —"
-msgstr "— Bir grup seçin —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— Tür seçin (isteğe bağlı) —"
-
-#: 
 msgid "Add Event"
 msgstr "Etkinlik Ekle"
 
@@ -11022,10 +10802,6 @@ msgstr "E-posta Panosu"
 #: 
 msgid "Email Integrations"
 msgstr "E-posta Entegrasyonları"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "E-posta işlevi şu anda devre dışıdır. E-posta etkinleştirilene kadar aşağıdaki özellikler çalışmayacaktır:"
 
 #: 
 msgid "Email is Disabled"
@@ -11600,10 +11376,6 @@ msgstr "Otomatik TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "Otomatik Yedekleme"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "Tüm Postaları BCC'ye Gönder"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12422,10 +12194,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "Açık ve koyu renk şeması arasında seçim yapın"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "ChurchCRM çevirileri topluluk tarafından POEditor'da yönetilmektedir. Şu şekillerde yardımcı olabilirsiniz:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Uygulamanın görünümünü ve hissini özelleştirin"
 
@@ -12469,10 +12237,6 @@ msgstr "Çevirileri İyileştirmeye Yardım Edin"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "Bozuk karakterler, metin olarak görünen HTML varlıkları veya sayfa düzenini bozan çeviriler fark ederseniz, lütfen sorunu GitHub'da bildirin; böylece herkes için düzeltilebilir."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "İsteklere x-api-key başlığını kullanarak API anahtarınızı ekleyin:"
 
 #: 
 msgid "Indigo"
@@ -12906,10 +12670,6 @@ msgid "Everyone is checked in!"
 msgstr "Herkes giriş yaptı!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "En hızlı iş akışı:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "Hâlâ aktif olan veya çıkış yapmamış katılımcıları bulunan geçmiş etkinlikleri bul"
 
@@ -13024,10 +12784,6 @@ msgstr "RangeEnd, RangeStart'ta veya sonrasında olmalıdır"
 #: 
 msgid "Recommended"
 msgstr "Önerilen"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "Sıfırlama kalıcı olarak silecektir:"
 
 #: 
 msgid "SQL Only"
@@ -13526,10 +13282,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "Kilise E-posta adresi ayarlanmamış — test e-postasının gidecek bir yeri yok."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "Kilise e-postası — şurada yapılandırıldı:"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "ChurchCRM Test E-postası"
 
@@ -13636,10 +13388,6 @@ msgstr "Bellek"
 #: 
 msgid "Memory Limit"
 msgstr "Bellek Limiti"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "Şimdi teslimatı doğrulamak için alıcının gelen kutusunu kontrol edin. Şu konuyu arayın:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13760,14 +13508,6 @@ msgstr "Ayarları Güncelle"
 #: 
 msgid "View full photo"
 msgstr "Fotoğrafın tamamını görüntüle"
-
-#: 
-msgid "page."
-msgstr "sayfa."
-
-#: 
-msgid "user:"
-msgstr "kullanıcı:"
 
 #: 
 msgid "1. Download the template"
@@ -13966,10 +13706,6 @@ msgstr "Ülkeleri ayarlama"
 msgid "Show all"
 msgstr "Tümünü göster"
 
-#: 
-msgid "Show:"
-msgstr "Göster:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14150,10 +13886,6 @@ msgid "Plugin uninstalled"
 msgstr "Eklenti kaldırıldı"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "Eklenti kaldırıldı."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "Eklenti zip URL'si (yalnızca HTTPS)"
 
@@ -14214,10 +13946,6 @@ msgid "Verified"
 msgstr "Doğrulandı"
 
 #: 
-msgid "What this plugin does:"
-msgstr "Bu eklentinin işlevi:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "Doğrulanmamış yüklemeler için downloadUrl, sha256 ve pluginId alanlarının tümü gereklidir."
 
@@ -14232,10 +13960,6 @@ msgstr "Ad boş olamaz"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "Ad %d karakterden uzun olamaz"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "Cihazların şuraya kaydolması için 2 dakikalık pencere açar:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14530,10 +14254,6 @@ msgid "Available after the event is saved."
 msgstr "Etkinlik kaydedildikten sonra kullanılabilir."
 
 #: 
-msgid "BCC All"
-msgstr "Tümüne GBK"
-
-#: 
 msgid "Background Color"
 msgstr "Arka plan rengi"
 
@@ -14666,10 +14386,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "Kimlik doğrulama uygulamanızdaki kodla onaylayın"
 
 #: 
-msgid "Copied"
-msgstr "Kopyalandı"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "Panoya kopyalandı"
 
@@ -14680,10 +14396,6 @@ msgstr "Kopyalandı!"
 #: 
 msgid "Copy"
 msgstr "Kopyala"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Tüm E-postaları Kopyala"
 
 #: 
 msgid "Copy All Numbers"
@@ -15925,10 +15637,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "etkinlik. Bunun yerine türü devre dışı bırakın veya önce etkinlikleri yeniden atayın."
 
 #: 
-msgid "from this class?"
-msgstr "bu sınıftan?"
-
-#: 
 msgid "from this group?"
 msgstr "bu gruptan?"
 
@@ -16007,18 +15715,6 @@ msgstr "yıl"
 #: 
 msgid "yrs"
 msgstr "yıl"
-
-#: 
-msgid "— Ignore —"
-msgstr "— Yok Say —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— Ülke Seçin —"
-
-#: 
-msgid "— Select State —"
-msgstr "— İl Seçin —"
 
 #: 
 msgid "Account options"
@@ -16329,10 +16025,6 @@ msgid "Full access — grants all privileges."
 msgstr "Tam erişim — tüm ayrıcalıkları verir."
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "Bireysel izinler ver:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "Ek erişime ihtiyaç duyarsanız lütfen kilise yöneticinizle iletişime geçin."
 
@@ -16557,10 +16249,6 @@ msgid "What's New in {{version}}"
 msgstr "{{version}} Sürümündeki Yenilikler"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "<strong>{{releaseCount}}</strong> sürüm geride kaldınız. İşte kazanacaklarınız:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "Bir ön sürüm çalıştırıyorsunuz."
 
@@ -16649,14 +16337,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "Kullanıcı Yönetici olmalı veya Bağış Kampanyalarını Yönet iznine sahip olmalıdır"
 
 #: 
-msgid "User not found."
-msgstr "Kullanıcı bulunamadı."
-
-#: 
-msgid "— Select a person —"
-msgstr "— Bir kişi seçin —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "%d arşivlenmiş bağış kampanyası"
@@ -16731,10 +16411,6 @@ msgstr "Sepet üyelerini bir gruba ata"
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "Sepetinizdeki kişileri bir aileye atayın"
-
-#: 
-msgid "Assign role to all:"
-msgstr "Herkese rol ata:"
 
 #: 
 msgid "Assign to Family"
@@ -17045,10 +16721,6 @@ msgid "Sold"
 msgstr "Satıldı"
 
 #: 
-msgid "State / Province"
-msgstr "Eyalet / İl"
-
-#: 
 msgid "Streak"
 msgstr "Seri"
 
@@ -17121,10 +16793,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "Sepetiniz boş. Önce sepetinize kişi ekleyin."
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Posta Kodu"
-
-#: 
 msgid "events"
 msgstr "etkinlikler"
 
@@ -17139,12 +16807,4 @@ msgstr "goalAmount negatif olmamalıdır"
 #: 
 msgid "thru %s"
 msgstr "%s tarihine kadar"
-
-#: 
-msgid "— Select role —"
-msgstr "— Rol seçin —"
-
-#: 
-msgid "— pick —"
-msgstr "— seçin —"
 

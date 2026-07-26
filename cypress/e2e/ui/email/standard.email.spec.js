@@ -12,7 +12,9 @@ describe("Email Pages", () => {
     it("Duplicate Emails", () => {
         cy.visit("v2/email/duplicate");
         cy.contains("Duplicate Emails");
-        cy.contains("lady@nower.com");
+        // Wait for the DataTable AJAX call to complete before asserting row content
+        cy.get("#dupEmails tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
+        cy.contains("boby@example.com");
     });
 
     it("People Without Emails page loads with breadcrumb and table", () => {

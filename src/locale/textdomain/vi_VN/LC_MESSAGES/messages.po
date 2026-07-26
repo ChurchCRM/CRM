@@ -274,10 +274,6 @@ msgstr "Phân loại"
 msgid "Add Cart to Event"
 msgstr "Thêm vào giỏ rồi gửi đến Sự kiện"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "Giỏ của bạn đang trống!"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1457,10 +1453,6 @@ msgid "Current Role"
 msgstr "Vai trò hiện tại"
 
 #: 
-msgid "All People"
-msgstr "Tất cả thành viên"
-
-#: 
 msgid "Email All"
 msgstr "Email cho tất cả"
 
@@ -1531,10 +1523,6 @@ msgstr "Gia đình vừa cập nhật"
 #: 
 msgid "Updated"
 msgstr "Đã cập nhật"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "Vâng, xóa thành viên này"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2187,10 +2175,6 @@ msgid "Start Column"
 msgstr "Bắt đầu cột"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "Bỏ qua Địa chỉ <br> Không đầy đủ"
-
-#: 
 msgid "File Type"
 msgstr "Loại tệp"
 
@@ -2255,14 +2239,6 @@ msgid "All Funds"
 msgstr "Tất cả các quỹ"
 
 #: 
-msgid " for fund "
-msgstr "cho quỹ"
-
-#: 
-msgid "for funds "
-msgstr "cho quỹ"
-
-#: 
 #, fuzzy
 msgid "Donated Items"
 msgstr "Các mặt hàng được tặng"
@@ -2287,10 +2263,6 @@ msgstr "Số tiền đã thanh toán: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Thanh toán bằng () Tiền mặt () Séc () Thẻ tín dụng __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ Hết hạn __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "Chữ ký ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2323,10 +2295,6 @@ msgstr "Thư mục nhóm"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Vui lòng tách phiếu này và gửi qua thư với món quà tiếp theo của bạn."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "Xin vui lòng gửi cho bạn món quà tiếp theo qua thư"
 
 #: 
 #, fuzzy
@@ -2475,10 +2443,6 @@ msgid "Family Select"
 msgstr "Lựa chọn gia đình"
 
 #: 
-msgid "with at least one:"
-msgstr "với ít nhất một:"
-
-#: 
 msgid "Welcome to"
 msgstr "Chào mừng bạn đến với"
 
@@ -2583,18 +2547,6 @@ msgid "item"
 msgstr "mục"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-------------------------------------------------- -------------------------------------------------- -------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "Người mua #"
-
-#: 
-msgid "Family Members:"
-msgstr "Thành viên trong gia đình:"
-
-#: 
 msgid "Anniversary"
 msgstr "Kỷ niệm ngày cưới"
 
@@ -2605,10 +2557,6 @@ msgstr "Ghi chú"
 #: 
 msgid "Reports"
 msgstr "Báo cáo"
-
-#: 
-msgid "family"
-msgstr "gia đình"
 
 #: 
 #, fuzzy
@@ -2689,10 +2637,6 @@ msgstr "Thành phố mặc định"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Trạng thái mặc định - Phải là chữ viết tắt 2 chữ cái!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "Tài khoản mặc định để nhận bản sao của tất cả các email"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4761,10 +4705,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "Cài đặt Nhóm Đặc biệt: Loại Trường Chủ nhật"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "Không thể sửa đổi nhóm Trường Chúa Nhật, chỉ trong hai trường hợp sau:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Thêm vai trò mới, nhưng không sửa đổi hoặc đổi tên các vai trò của Học sinh và Giáo viên."
 
@@ -5351,10 +5291,6 @@ msgid "Review"
 msgstr "Ôn tập"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "Người dùng được xác thực qua Khóa API:"
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "Nỗ lực xác thực Khóa API không thành công"
 
@@ -5668,20 +5604,12 @@ msgid "Log File Viewer"
 msgstr "Trình xem nhật ký"
 
 #: 
-msgid "Filter by log level:"
-msgstr "Lọc theo mức độ:"
-
-#: 
 msgid "Error"
 msgstr "Lỗi"
 
 #: 
 msgid "Info"
 msgstr "Thông tin"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "Số dòng hiển thị:"
 
 #: 
 msgid "Loading log file..."
@@ -6043,10 +5971,6 @@ msgstr "Đường dẫn gốc"
 #: 
 msgid "SMTP Host"
 msgstr "Máy chủ SMTP"
-
-#: 
-msgid "Tip:"
-msgstr "Mẹo:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6476,10 +6400,6 @@ msgid "Please check the backup file and try again."
 msgstr "Vui lòng kiểm tra tệp sao lưu và thử lại."
 
 #: 
-msgid "Redirecting in"
-msgstr "Chuyển hướng sau"
-
-#: 
 msgid "Refresh List"
 msgstr "Làm mới danh sách"
 
@@ -6518,10 +6438,6 @@ msgstr "Khuyến nghị bảo mật"
 #: 
 msgid "Select Backup File"
 msgstr "Chọn tệp sao lưu"
-
-#: 
-msgid "Supported formats:"
-msgstr "Định dạng hỗ trợ:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6574,14 +6490,6 @@ msgstr "Bản cài đặt của bạn sạch sẽ. Tất cả các tệp đều 
 #: 
 msgid "or click to browse"
 msgstr "hoặc nhấp để duyệt tệp"
-
-#: 
-msgid "seconds..."
-msgstr "giây..."
-
-#: 
-msgid " Deposit #"
-msgstr " Lần gửi tiền số #"
 
 #: 
 msgid "%d missing classification"
@@ -6668,20 +6576,12 @@ msgid "Close All Deposits"
 msgstr "Đóng tất cả các lần gửi tiền"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "Các lần gửi tiền đã đóng:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "Đã đóng so với Tổng số"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "Hoàn thành các tác vụ này để đảm bảo báo cáo thuế cuối năm chính xác."
-
-#: 
-msgid "Configuration:"
-msgstr "Cấu hình:"
 
 #: 
 msgid "Configure Email"
@@ -6722,14 +6622,6 @@ msgstr "Báo cáo có thể tùy chỉnh với các bộ lọc."
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "Tùy chỉnh văn bản xuất hiện trên báo cáo thuế."
-
-#: 
-msgid "Data Quality:"
-msgstr "Chất lượng dữ liệu:"
-
-#: 
-msgid "Database:"
-msgstr "Cơ sở dữ liệu:"
 
 #: 
 msgid "Day"
@@ -6802,10 +6694,6 @@ msgstr "Điều hướng gia đình"
 #: 
 msgid "Feb"
 msgstr "Th2"
-
-#: 
-msgid "File Integrity:"
-msgstr "Tính toàn vẹn của tệp:"
 
 #: 
 msgid "Filtering"
@@ -6956,14 +6844,6 @@ msgid "Open"
 msgstr "Mở"
 
 #: 
-msgid "Open Deposits:"
-msgstr "Các lần gửi tiền đang mở:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "Các tệp mồ côi:"
-
-#: 
 msgid "Payment"
 msgstr "Thanh toán"
 
@@ -7052,10 +6932,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Tóm tắt lời hứa so với thanh toán theo quỹ."
 
 #: 
-msgid "System Configuration:"
-msgstr "Cấu hình hệ thống:"
-
-#: 
 msgid "System Health"
 msgstr "Sức khỏe hệ thống"
 
@@ -7088,10 +6964,6 @@ msgid "Total Amount"
 msgstr "Tổng số tiền"
 
 #: 
-msgid "Total Deposits:"
-msgstr "Tổng số lần gửi tiền:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Theo dõi lời hứa và tiến độ thanh toán cho các chiến dịch."
 
@@ -7118,10 +6990,6 @@ msgstr "Xác minh tên, địa chỉ và thông tin liên hệ trên báo cáo t
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "Xác minh tên quỹ và mô tả là chính xác."
-
-#: 
-msgid "Version:"
-msgstr "Phiên bản:"
 
 #: 
 msgid "YTD Payments"
@@ -7180,28 +7048,8 @@ msgid "Critical Configuration Error"
 msgstr "Lỗi cấu hình nghiêm trọng"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "Giá trị $URL[0] hiện tại:"
-
-#: 
-msgid "Custom port:"
-msgstr "Cổng tùy chỉnh:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "Kết thúc bằng một <strong>dấu gạch chéo</strong> (/)"
-
-#: 
-msgid "Find the line:"
-msgstr "Tìm dòng:"
-
-#: 
 msgid "Group Memberships"
 msgstr "Thành viên nhóm"
-
-#: 
-msgid "How to Fix:"
-msgstr "Cách khắc phục:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7210,10 +7058,6 @@ msgstr "Tham gia cộng đồng ChurchCRM."
 #: 
 msgid "Language"
 msgstr "Ngôn ngữ"
-
-#: 
-msgid "Local development:"
-msgstr "Phát triển cục bộ:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7234,10 +7078,6 @@ msgstr "Đăng ký Giáo hội của bạn"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "Lưu tệp và tải lại trang này"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "Bắt đầu bằng <strong>http://</strong> hoặc <strong>https://</strong>"
 
 #: 
 msgid "System Locale Support"
@@ -7262,14 +7102,6 @@ msgstr "URL phải kết thúc bằng dấu gạch chéo (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL phải bắt đầu bằng http:// hoặc https://"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "Cập nhật thành một URL hợp lệ mà:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "Các ví dụ hợp lệ:"
 
 #: 
 msgid "View Logs"
@@ -7330,10 +7162,6 @@ msgstr "Bản tin/Thông báo"
 #: 
 msgid "Personal"
 msgstr "Cá nhân"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "Vui lòng xác nhận thông tin gia đình của bạn:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7614,20 +7442,8 @@ msgid "Property Type"
 msgstr "Loại thuộc tính"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "Có những người được giao cho cơ hội tình nguyện này. Việc xóa sẽ hủy phân công:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "Cơ hội tình nguyện"
-
-#: 
-msgid "Warning:"
-msgstr "Cảnh báo:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "Có, xóa cơ hội này"
 
 #. Context: locales
 #: 
@@ -8298,10 +8114,6 @@ msgstr "Lấy khóa API từ MailChimp: Cài đặt tài khoản > Extras > Khó
 #: 
 msgid "Help"
 msgstr "Trợ giúp"
-
-#: 
-msgid "Id"
-msgstr "Id"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9582,10 +9394,6 @@ msgid "Edit custom properties for a group member"
 msgstr "Chinh sua thuoc tinh tuy chinh cho thanh vien nhom"
 
 #: 
-msgid "Email BCC"
-msgstr "Email BCC"
-
-#: 
 msgid "Email Families"
 msgstr "Gui email cho gia dinh"
 
@@ -9596,14 +9404,6 @@ msgstr "Cai dat email"
 #: 
 msgid "Email Tools"
 msgstr "Cong cu email"
-
-#: 
-msgid "Email cart items"
-msgstr "Gui email danh sach"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "Email an nguoi nhan"
 
 #: 
 msgid "Empty"
@@ -9818,10 +9618,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "Nhap danh ba tu doi tuong MailChimp cua ban"
 
 #: 
-msgid "Import failed: "
-msgstr "Nhap that bai: "
-
-#: 
 msgid "Import from CSV"
 msgstr "Nhap tu CSV"
 
@@ -9864,10 +9660,6 @@ msgstr "\"So gui\" khong hop le: \"%s\". Bao gom ma quoc gia, vi du +14155551234
 #: 
 msgid "Invite Your Team"
 msgstr "Moi doi cua ban"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "Chuyen den bat ky buoc cai dat nao:"
 
 #: 
 msgid "Key People"
@@ -10222,10 +10014,6 @@ msgstr "Khong tim thay gan thuoc tinh."
 #: 
 msgid "Property deleted successfully."
 msgstr "Da xoa thuoc tinh thanh cong."
-
-#: 
-msgid "Property not found."
-msgstr "Khong tim thay thuoc tinh."
 
 #: 
 msgid "Quick Tips"
@@ -10696,14 +10484,6 @@ msgid "properties"
 msgstr "thuoc tinh"
 
 #: 
-msgid "— Select a group —"
-msgstr "— Chon mot nhom —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— Chon loai (tuy chon) —"
-
-#: 
 msgid "Add Event"
 msgstr "Them su kien"
 
@@ -11017,10 +10797,6 @@ msgstr "Bảng điều khiển Email"
 #: 
 msgid "Email Integrations"
 msgstr "Tích hợp Email"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "Chức năng email hiện đang bị vô hiệu hóa. Các tính năng sau sẽ không hoạt động cho đến khi bật email:"
 
 #: 
 msgid "Email is Disabled"
@@ -11595,10 +11371,6 @@ msgstr "TLS tự động"
 #: 
 msgid "Auto-Backup"
 msgstr "Sao lưu tự động"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "BCC tất cả email đến"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12417,10 +12189,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "Chọn giữa giao diện sáng và tối"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "Bản dịch ChurchCRM được cộng đồng quản lý trên POEditor. Bạn có thể đóng góp bằng cách:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Tùy chỉnh giao diện và trải nghiệm của ứng dụng"
 
@@ -12464,10 +12232,6 @@ msgstr "Giúp cải thiện bản dịch"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "Nếu bạn nhận thấy ký tự bị lỗi, thực thể HTML hiển thị dưới dạng văn bản, hoặc bản dịch làm hỏng bố cục trang, vui lòng báo cáo sự cố trên GitHub để có thể được sửa cho tất cả mọi người."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "Bao gồm khóa API của bạn trong các yêu cầu bằng tiêu đề x-api-key:"
 
 #: 
 msgid "Indigo"
@@ -12900,10 +12664,6 @@ msgid "Everyone is checked in!"
 msgstr "Tất cả đã đăng ký!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "Quy trình nhanh nhất:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "Tìm các sự kiện đã qua vẫn còn hoạt động hoặc có người tham dự chưa đăng xuất"
 
@@ -13018,10 +12778,6 @@ msgstr "RangeEnd phải bằng hoặc sau RangeStart"
 #: 
 msgid "Recommended"
 msgstr "Được khuyến nghị"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "Đặt lại sẽ xóa vĩnh viễn:"
 
 #: 
 msgid "SQL Only"
@@ -13520,10 +13276,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "Địa chỉ email nhà thờ chưa được đặt — email kiểm tra không có nơi gửi đến."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "Email nhà thờ — được cấu hình trên trang"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "Email kiểm tra ChurchCRM"
 
@@ -13630,10 +13382,6 @@ msgstr "Bộ nhớ"
 #: 
 msgid "Memory Limit"
 msgstr "Giới hạn bộ nhớ"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "Bây giờ hãy kiểm tra hộp thư của người nhận để xác nhận đã gửi. Tìm tiêu đề:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13754,14 +13502,6 @@ msgstr "Cập nhật cài đặt"
 #: 
 msgid "View full photo"
 msgstr "Xem ảnh đầy đủ"
-
-#: 
-msgid "page."
-msgstr "trang."
-
-#: 
-msgid "user:"
-msgstr "người dùng:"
 
 #: 
 msgid "1. Download the template"
@@ -13960,10 +13700,6 @@ msgstr "Thiết lập quốc gia"
 msgid "Show all"
 msgstr "Hiển thị tất cả"
 
-#: 
-msgid "Show:"
-msgstr "Hiển thị:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14144,10 +13880,6 @@ msgid "Plugin uninstalled"
 msgstr "Tiện ích đã gỡ cài đặt"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "Tiện ích đã được gỡ cài đặt."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "URL zip tiện ích (chỉ HTTPS)"
 
@@ -14208,10 +13940,6 @@ msgid "Verified"
 msgstr "Đã xác minh"
 
 #: 
-msgid "What this plugin does:"
-msgstr "Tiện ích này làm gì:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl, sha256 và pluginId đều bắt buộc cho các cài đặt chưa được xác minh."
 
@@ -14226,10 +13954,6 @@ msgstr "Tên không được để trống"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "Tên không được dài hơn %d ký tự"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "Mở cửa sổ 2 phút để thiết bị đăng ký tại:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14524,10 +14248,6 @@ msgid "Available after the event is saved."
 msgstr "Có sẵn sau khi sự kiện được lưu."
 
 #: 
-msgid "BCC All"
-msgstr "BCC tat ca"
-
-#: 
 msgid "Background Color"
 msgstr "Màu nền"
 
@@ -14660,10 +14380,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "Xác nhận bằng mã từ ứng dụng xác thực"
 
 #: 
-msgid "Copied"
-msgstr "Da sao chep"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "Đã sao chép vào clipboard"
 
@@ -14674,10 +14390,6 @@ msgstr "Đã sao chép!"
 #: 
 msgid "Copy"
 msgstr "Sao chép"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Sao chép tất cả Email"
 
 #: 
 msgid "Copy All Numbers"
@@ -15919,10 +15631,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "sự kiện. Hãy vô hiệu hóa loại này hoặc giao lại các sự kiện trước."
 
 #: 
-msgid "from this class?"
-msgstr "khoi lop hoc nay?"
-
-#: 
 msgid "from this group?"
 msgstr "khoi nhom nay?"
 
@@ -16001,18 +15709,6 @@ msgstr "năm"
 #: 
 msgid "yrs"
 msgstr "năm"
-
-#: 
-msgid "— Ignore —"
-msgstr "— Bo qua —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— Chọn quốc gia —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Chọn tỉnh/thành phố —"
 
 #: 
 msgid "Account options"
@@ -16322,10 +16018,6 @@ msgid "Full access — grants all privileges."
 msgstr "Toàn quyền truy cập — cấp tất cả các đặc quyền."
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "Cấp quyền riêng lẻ:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "Nếu bạn cần quyền truy cập bổ sung, vui lòng liên hệ quản trị viên hội thánh của bạn."
 
@@ -16550,10 +16242,6 @@ msgid "What's New in {{version}}"
 msgstr "Có gì mới trong {{version}}"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "Bạn đang chậm <strong>{{releaseCount}}</strong> bản phát hành. Đây là những gì bạn sẽ nhận được:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "Bạn đang chạy phiên bản tiền phát hành."
 
@@ -16642,14 +16330,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "Người dùng phải là Quản trị viên hoặc có quyền Quản Lý Gây Quỹ"
 
 #: 
-msgid "User not found."
-msgstr "Không tìm thấy người dùng."
-
-#: 
-msgid "— Select a person —"
-msgstr "— Chọn một người —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "%d chiến dịch gây quỹ đã lưu trữ"
@@ -16722,10 +16402,6 @@ msgstr "Phân công thành viên trong danh sách vào một nhóm"
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "Phân công người trong danh sách vào một gia đình"
-
-#: 
-msgid "Assign role to all:"
-msgstr "Gán vai trò cho tất cả:"
 
 #: 
 msgid "Assign to Family"
@@ -17036,10 +16712,6 @@ msgid "Sold"
 msgstr "Đã bán"
 
 #: 
-msgid "State / Province"
-msgstr "Tỉnh / Thành phố"
-
-#: 
 msgid "Streak"
 msgstr "Chuỗi liên tiếp"
 
@@ -17112,10 +16784,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "Danh sách chọn của bạn trống. Hãy thêm người vào danh sách trước."
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Mã bưu chính"
-
-#: 
 msgid "events"
 msgstr "sự kiện"
 
@@ -17130,12 +16798,4 @@ msgstr "goalAmount phải không âm"
 #: 
 msgid "thru %s"
 msgstr "đến %s"
-
-#: 
-msgid "— Select role —"
-msgstr "— Chọn vai trò —"
-
-#: 
-msgid "— pick —"
-msgstr "— chọn —"
 

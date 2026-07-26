@@ -50,7 +50,7 @@ codebase:
 - Stat cards: `col-6` (two-up, never stack to one-up — looks empty on 375px)
 - Main columns: `col-12` (stack everything)
 - Form fields: `col-12`
-- Tables: **must** be wrapped in `.table-responsive`. If rows have action dropdowns, ensure button has `data-bs-display="static"` to prevent clipping (see [`table-action-menu.md`](./table-action-menu.md))
+- Tables: **must** be wrapped in `.table-responsive` — UNLESS rows have action dropdowns, in which case use `<div style="overflow: visible;">` instead (`data-bs-display="static"` alone does NOT prevent clipping — see [`table-action-menu.md`](./table-action-menu.md))
 - Touch targets: minimum **44×44px** (Apple HIG)
 - Page headers: use icon-only buttons (`font-size: 0` trick, see `_tabler-bridge.scss`)
 - Labels on multi-step forms: hide under 400px (`d-none d-sm-inline`)
@@ -70,7 +70,7 @@ codebase:
   balanced two-column layouts. Do NOT use the 8/4 split at md — it cramps the
   narrow column.
 - Form fields: `col-md-6` for paired fields (name/email, date range)
-- Tables: wrap in `.table-responsive`; if rows have action dropdowns, use `data-bs-display="static"` on button (see `table-action-menu.md`)
+- Tables: wrap in `.table-responsive` — UNLESS rows have action dropdowns, in which case use `<div style="overflow: visible;">` instead (see `table-action-menu.md`)
 - Card header tabs: keep visible but consider shorter labels
   (`<span class="d-none d-xl-inline">Latest Families</span><span class="d-xl-none">New</span>`)
 
@@ -368,9 +368,9 @@ at the back of the room):
 | Page | File | Issue found | Fix |
 |---|---|---|---|
 | Event Editor | `src/event/views/editor.php` | Form built as `<table>` with 9× `style="width:180px"` on `<td>` labels — broke mobile entirely | Converted to Bootstrap `row`/`col-md-3`+`col-md-9` form pattern 2026-04-09 |
-| Event Types List | `src/event/views/types-list.php` | Has row action dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
+| Event Types List | `src/event/views/types-list.php` | Row action dropdowns hardcoded in PHP were wrapped in `table-responsive`, clipping them — doc previously claimed this was already `overflow:visible` (it wasn't) | Fixed to `overflow:visible` 2026-07-26 |
 | Event Type Edit | `src/event/views/types-edit.php` | `<th style="width: 200px;">` on Actions column | Replaced with `w-1` utility class 2026-04-09 |
-| Group View | `src/groups/views/group-view.php` | `#membersTable` populated by GroupView.js with row dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
+| Group View | `src/groups/views/group-view.php` | `#membersTable`'s hand-rolled dropdown (built in GroupView.js, not the shared `render*ActionMenu()` helper) was wrapped in `table-responsive` — doc previously claimed this was already `overflow:visible` (it wasn't) | Fixed to `overflow:visible` 2026-07-26 |
 | Sunday School Class View | `src/groups/views/sundayschool/class-view.php` | Student roster has row action dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
 | Event Repeat Editor | `src/event/views/repeat-editor.php` | Small fixed-width inline selects (`w:auto`, `w:100px`) inside `flex-wrap` rows | ✅ (wraps cleanly, intentionally small) |
 | Event Types New | `src/event/views/types-new.php` | Narrow time-picker widths (70/100/150px) | ✅ (inline time-pickers, acceptable sizing) |

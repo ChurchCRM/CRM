@@ -261,10 +261,6 @@ msgstr "Kenmerken"
 msgid "Add Cart to Event"
 msgstr "Voeg werkbestand toe aan activiteit"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "Uw werkbestand is leeg."
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1425,10 +1421,6 @@ msgid "Current Role"
 msgstr "Huidige Rol"
 
 #: 
-msgid "All People"
-msgstr "Alle personen"
-
-#: 
 msgid "Email All"
 msgstr "Email allen"
 
@@ -1499,10 +1491,6 @@ msgstr "Bijgewerkte gezinnen"
 #: 
 msgid "Updated"
 msgstr "Bijgewerkt"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "Ja, Verwijder dit record"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2155,10 +2143,6 @@ msgid "Start Column"
 msgstr "Start Kolom"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "Negeer Incompleet"
-
-#: 
 msgid "File Type"
 msgstr "Bestand Type"
 
@@ -2223,14 +2207,6 @@ msgid "All Funds"
 msgstr "Alle Fonds"
 
 #: 
-msgid " for fund "
-msgstr " Voor fonds "
-
-#: 
-msgid "for funds "
-msgstr "Voor fondsen"
-
-#: 
 msgid "Donated Items"
 msgstr "Geschonken items"
 
@@ -2253,10 +2229,6 @@ msgstr "Bedrag betaald: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Ten laste van () Cash () Check () Creditcard ________________________________ Belichtingstijd __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "Handtekening ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2289,10 +2261,6 @@ msgstr "Groep Adresboek"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Maak dit strookje los, en post het tegelijkertijd met uw bijdrage."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "Mail alstublieft uw volgende gift naar"
 
 #: 
 msgid "Gift Amount"
@@ -2441,10 +2409,6 @@ msgid "Family Select"
 msgstr "Selecteer gezin"
 
 #: 
-msgid "with at least one:"
-msgstr "met ten minste één:"
-
-#: 
 msgid "Welcome to"
 msgstr "Welkom bij"
 
@@ -2549,18 +2513,6 @@ msgid "item"
 msgstr "object"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "Inkoper"
-
-#: 
-msgid "Family Members:"
-msgstr "Gezinsleden"
-
-#: 
 msgid "Anniversary"
 msgstr "Verjaardag"
 
@@ -2571,10 +2523,6 @@ msgstr "Notities"
 #: 
 msgid "Reports"
 msgstr "Rapporten"
-
-#: 
-msgid "family"
-msgstr "Gezin"
 
 #: 
 msgid "Date Entered"
@@ -2651,10 +2599,6 @@ msgstr "Plaats (standaard)"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Standaard staat - Moet 2 letters afkorting zijn!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "Standaard rekening voor het ontvangen van een kopie van alle e-mails"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4719,10 +4663,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "Specifieke groep parameter: type zondagsschool "
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "De catechisatie groep kan niet worden gewijzigd, dan alleen in deze twee gevallen. "
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Voeg nieuwe rollen toe, maar wijzig of hernoem de rollen Student en Docent niet."
 
@@ -5313,10 +5253,6 @@ msgid "Review"
 msgstr "Recensie"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "Gebruiker geverifieerd via API-sleutel: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "Mislukte verificatiepoging met API-sleutel"
 
@@ -5629,20 +5565,12 @@ msgid "Log File Viewer"
 msgstr "Bekijk logbestand"
 
 #: 
-msgid "Filter by log level:"
-msgstr "Filter op logniveau:"
-
-#: 
 msgid "Error"
 msgstr "Fout"
 
 #: 
 msgid "Info"
 msgstr "Info"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "Aantal weer te geven regels:"
 
 #: 
 msgid "Loading log file..."
@@ -6005,10 +5933,6 @@ msgstr "Rootpad"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP-host"
-
-#: 
-msgid "Tip:"
-msgstr "Tip:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6440,10 +6364,6 @@ msgid "Please check the backup file and try again."
 msgstr "Controleer het back-upbestand en probeer het opnieuw."
 
 #: 
-msgid "Redirecting in"
-msgstr "Doorsturen naar"
-
-#: 
 msgid "Refresh List"
 msgstr "Lijst Vernieuwen"
 
@@ -6482,10 +6402,6 @@ msgstr "Beveiligingsaanbeveling"
 #: 
 msgid "Select Backup File"
 msgstr "Selecteer Back-upbestand"
-
-#: 
-msgid "Supported formats:"
-msgstr "Ondersteunde indelingen:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6538,14 +6454,6 @@ msgstr "Uw ChurchCRM-installatie is schoon. Alle bestanden op de server komen ov
 #: 
 msgid "or click to browse"
 msgstr "of klik om te bladeren"
-
-#: 
-msgid "seconds..."
-msgstr "seconden..."
-
-#: 
-msgid " Deposit #"
-msgstr " Storting #"
 
 #: 
 msgid "%d missing classification"
@@ -6632,20 +6540,12 @@ msgid "Close All Deposits"
 msgstr "Sluit Alle Stortingen"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "Gesloten Stortingen:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "Gesloten vs Totaal"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "Voltooi deze taken om nauwkeurige belastingrapportage aan het einde van het jaar voor uw donateurs te garanderen."
-
-#: 
-msgid "Configuration:"
-msgstr "Configuratie:"
 
 #: 
 msgid "Configure Email"
@@ -6686,14 +6586,6 @@ msgstr "Aanpasbaar rapport met filteren op datum, fonds, familie en betalingsmet
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "Pas de tekst aan die op belastingafschriften verschijnt (sTaxReport1, sTaxReport2, enz.)."
-
-#: 
-msgid "Data Quality:"
-msgstr "Gegevenskwaliteit:"
-
-#: 
-msgid "Database:"
-msgstr "Database:"
 
 #: 
 msgid "Day"
@@ -6766,10 +6658,6 @@ msgstr "Familienavigatie"
 #: 
 msgid "Feb"
 msgstr "Feb"
-
-#: 
-msgid "File Integrity:"
-msgstr "Bestandsintegriteit:"
 
 #: 
 msgid "Filtering"
@@ -6920,14 +6808,6 @@ msgid "Open"
 msgstr "Open"
 
 #: 
-msgid "Open Deposits:"
-msgstr "Open Stortingen:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "Verweesde Bestanden:"
-
-#: 
 msgid "Payment"
 msgstr "Betaling"
 
@@ -7016,10 +6896,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Samenvatting van toezeggingen versus betalingen per fonds voor het fiscale jaar."
 
 #: 
-msgid "System Configuration:"
-msgstr "Systeemconfiguratie:"
-
-#: 
 msgid "System Health"
 msgstr "Systeemgezondheid"
 
@@ -7052,10 +6928,6 @@ msgid "Total Amount"
 msgstr "Totaalbedrag"
 
 #: 
-msgid "Total Deposits:"
-msgstr "Totale Stortingen:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Volg toezeggingen en betalingsvoortgang voor campagnes en budgettering van fiscale jaren."
 
@@ -7082,10 +6954,6 @@ msgstr "Controleer of kerknaam, adres en contactgegevens op belastingafschriften
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "Controleer of fondsnamen en beschrijvingen nauwkeurig zijn voor afschriften."
-
-#: 
-msgid "Version:"
-msgstr "Versie:"
 
 #: 
 msgid "YTD Payments"
@@ -7144,28 +7012,8 @@ msgid "Critical Configuration Error"
 msgstr "Kritieke Configuratiefout"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "Huiges $URL[0] waarde:"
-
-#: 
-msgid "Custom port:"
-msgstr "Aangepaste poort:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "Eindigt met een <strong>trailing slash</strong> (/)"
-
-#: 
-msgid "Find the line:"
-msgstr "Vind de regel:"
-
-#: 
 msgid "Group Memberships"
 msgstr "Groepslidmaatschappen"
-
-#: 
-msgid "How to Fix:"
-msgstr "Hoe te herstellen:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7174,10 +7022,6 @@ msgstr "Sluit u aan bij de ChurchCRM-gemeenschap en help ons verbeteren door uw 
 #: 
 msgid "Language"
 msgstr "Taal"
-
-#: 
-msgid "Local development:"
-msgstr "Lokale ontwikkeling:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7198,10 +7042,6 @@ msgstr "Registreer Uw Kerk"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "Sla het bestand op en vernieuw deze pagina"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "Begint met <strong>http://</strong> of <strong>https://</strong>"
 
 #: 
 msgid "System Locale Support"
@@ -7226,14 +7066,6 @@ msgstr "URL moet eindigen met een trailing slash (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL moet beginnen met http:// of https://"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "Werk het bij naar een geldig URL dat:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "Geldige Voorbeelden:"
 
 #: 
 msgid "View Logs"
@@ -7294,10 +7126,6 @@ msgstr "Nieuwsbrief"
 #: 
 msgid "Personal"
 msgstr "Persoonlijk"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "Bevestig alstublieft uw familiegegevens:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7580,20 +7408,8 @@ msgid "Property Type"
 msgstr "Eigendomstype"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "Er zijn personen toegewezen aan deze Vrijwilligersmogelijkheid. Verwijdering zal unassign:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "Vrijwilligersmogelijkheid"
-
-#: 
-msgid "Warning:"
-msgstr "Waarschuwing:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "Ja, verwijder deze Mogelijkheid"
 
 #. Context: locales
 #: 
@@ -8266,10 +8082,6 @@ msgstr "Haal uw API-sleutel op bij MailChimp: Account Settings > Extras > API Ke
 #: 
 msgid "Help"
 msgstr "Help"
-
-#: 
-msgid "Id"
-msgstr "Id"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9551,10 +9363,6 @@ msgid "Edit custom properties for a group member"
 msgstr "Aangepaste eigenschappen voor een groepslid bewerken"
 
 #: 
-msgid "Email BCC"
-msgstr "E-mail BCC"
-
-#: 
 msgid "Email Families"
 msgstr "Gezinnen e-mailen"
 
@@ -9565,14 +9373,6 @@ msgstr "E-mailinstellingen"
 #: 
 msgid "Email Tools"
 msgstr "E-mailhulpmiddelen"
-
-#: 
-msgid "Email cart items"
-msgstr "Winkelwagenartikelen e-mailen"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "E-mail met verborgen ontvangers"
 
 #: 
 msgid "Empty"
@@ -9787,10 +9587,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "Contacten importeren uit uw MailChimp-doelgroepen"
 
 #: 
-msgid "Import failed: "
-msgstr "Import mislukt: "
-
-#: 
 msgid "Import from CSV"
 msgstr "Importeren vanuit CSV"
 
@@ -9833,10 +9629,6 @@ msgstr "Ongeldige \"Van nummer\": \"%s\". Voeg de landcode toe, bijv. +141555512
 #: 
 msgid "Invite Your Team"
 msgstr "Uw team uitnodigen"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "Spring naar een installatiestap:"
 
 #: 
 msgid "Key People"
@@ -10191,10 +9983,6 @@ msgstr "Eigenschapstoewijzing niet gevonden."
 #: 
 msgid "Property deleted successfully."
 msgstr "Eigenschap succesvol verwijderd."
-
-#: 
-msgid "Property not found."
-msgstr "Eigenschap niet gevonden."
 
 #: 
 msgid "Quick Tips"
@@ -10665,14 +10453,6 @@ msgid "properties"
 msgstr "eigenschappen"
 
 #: 
-msgid "— Select a group —"
-msgstr "— Selecteer een groep —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— Selecteer type (optioneel) —"
-
-#: 
 msgid "Add Event"
 msgstr "Evenement toevoegen"
 
@@ -10986,10 +10766,6 @@ msgstr "E-maildashboard"
 #: 
 msgid "Email Integrations"
 msgstr "E-mailintegraties"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "E-mailfunctionaliteit is momenteel uitgeschakeld. De volgende functies werken niet totdat e-mail is ingeschakeld:"
 
 #: 
 msgid "Email is Disabled"
@@ -11564,10 +11340,6 @@ msgstr "Automatische TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "Automatische back-up"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "BCC Alle E-mail Naar"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12386,10 +12158,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "Kies tussen licht en donker kleurenschema"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "ChurchCRM-vertalingen worden beheerd door de community op POEditor. U kunt helpen door:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Pas het uiterlijk van de applicatie aan"
 
@@ -12433,10 +12201,6 @@ msgstr "Help vertalingen te verbeteren"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "Als u verminkte tekens, HTML-entiteiten als tekst of vertalingen die de pagina-indeling verstoren opmerkt, meld het probleem dan op GitHub zodat het voor iedereen kan worden opgelost."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "Neem uw API-sleutel op in verzoeken via de x-api-key header:"
 
 #: 
 msgid "Indigo"
@@ -12870,10 +12634,6 @@ msgid "Everyone is checked in!"
 msgstr "Iedereen is ingecheckt!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "Snelste werkwijze:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "Zoek oude evenementen die nog actief zijn of deelnemers hebben die niet zijn uitgecheckt"
 
@@ -12988,10 +12748,6 @@ msgstr "RangeEnd moet op of na RangeStart liggen"
 #: 
 msgid "Recommended"
 msgstr "Aanbevolen"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "Resetten zal permanent verwijderen:"
 
 #: 
 msgid "SQL Only"
@@ -13490,10 +13246,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "Het e-mailadres van de kerk is niet ingesteld — de test-e-mail heeft geen bestemming."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "Kerk-e-mail — geconfigureerd op de"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "ChurchCRM Test-e-mail"
 
@@ -13600,10 +13352,6 @@ msgstr "Geheugen"
 #: 
 msgid "Memory Limit"
 msgstr "Geheugenlimiet"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "Controleer nu het postvak van de ontvanger om de bezorging te bevestigen. Zoek naar het onderwerp:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13724,14 +13472,6 @@ msgstr "Instellingen bijwerken"
 #: 
 msgid "View full photo"
 msgstr "Volledige foto bekijken"
-
-#: 
-msgid "page."
-msgstr "pagina."
-
-#: 
-msgid "user:"
-msgstr "gebruiker:"
 
 #: 
 msgid "1. Download the template"
@@ -13930,10 +13670,6 @@ msgstr "Landen instellen"
 msgid "Show all"
 msgstr "Alles tonen"
 
-#: 
-msgid "Show:"
-msgstr "Tonen:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14114,10 +13850,6 @@ msgid "Plugin uninstalled"
 msgstr "Plugin verwijderd"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "Plugin verwijderd."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "Plugin zip-URL (alleen HTTPS)"
 
@@ -14178,10 +13910,6 @@ msgid "Verified"
 msgstr "Geverifieerd"
 
 #: 
-msgid "What this plugin does:"
-msgstr "Wat deze plugin doet:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl, sha256 en pluginId zijn allemaal vereist voor niet-geverifieerde installaties."
 
@@ -14196,10 +13924,6 @@ msgstr "Naam mag niet leeg zijn"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "Naam mag niet langer zijn dan %d tekens"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "Opent een venster van 2 minuten voor apparaten om te registreren op:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14494,10 +14218,6 @@ msgid "Available after the event is saved."
 msgstr "Beschikbaar nadat het evenement is opgeslagen."
 
 #: 
-msgid "BCC All"
-msgstr "BCC aan allen"
-
-#: 
 msgid "Background Color"
 msgstr "Achtergrond kleur"
 
@@ -14630,10 +14350,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "Bevestigen met een code van uw authenticator-app"
 
 #: 
-msgid "Copied"
-msgstr "Gekopieerd"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "Gekopieerd naar klembord"
 
@@ -14644,10 +14360,6 @@ msgstr "Gekopieerd!"
 #: 
 msgid "Copy"
 msgstr "Kopiëren"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Alle e-mails kopiëren"
 
 #: 
 msgid "Copy All Numbers"
@@ -15889,10 +15601,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "evenement(en). Deactiveer het type of wijs de evenementen eerst opnieuw toe."
 
 #: 
-msgid "from this class?"
-msgstr "uit deze klas?"
-
-#: 
 msgid "from this group?"
 msgstr "uit deze groep?"
 
@@ -15971,18 +15679,6 @@ msgstr "jr."
 #: 
 msgid "yrs"
 msgstr "jr."
-
-#: 
-msgid "— Ignore —"
-msgstr "— Negeren —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— Selecteer land —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Selecteer provincie —"
 
 #: 
 msgid "Account options"
@@ -16293,10 +15989,6 @@ msgid "Full access — grants all privileges."
 msgstr "Volledige toegang — verleent alle bevoegdheden."
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "Individuele machtigingen verlenen:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "Als u extra toegang nodig heeft, neem dan contact op met uw kerkbeheerder."
 
@@ -16521,10 +16213,6 @@ msgid "What's New in {{version}}"
 msgstr "Wat is er nieuw in {{version}}"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "U loopt <strong>{{releaseCount}}</strong> versies achter. Dit zijn de verbeteringen:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "U gebruikt een voorlopige versie."
 
@@ -16613,14 +16301,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "De gebruiker moet beheerder zijn of de machtiging 'Fondsenwerving beheren' hebben"
 
 #: 
-msgid "User not found."
-msgstr "Gebruiker niet gevonden."
-
-#: 
-msgid "— Select a person —"
-msgstr "— Selecteer een persoon —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "%d gearchiveerde inzamelingsactie"
@@ -16695,10 +16375,6 @@ msgstr "Selectieleden aan een groep toewijzen"
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "Personen uit uw selectie aan een familie toewijzen"
-
-#: 
-msgid "Assign role to all:"
-msgstr "Rol aan iedereen toewijzen:"
 
 #: 
 msgid "Assign to Family"
@@ -16997,10 +16673,6 @@ msgid "Sold"
 msgstr "Verkocht"
 
 #: 
-msgid "State / Province"
-msgstr "Staat / Provincie"
-
-#: 
 msgid "Streak"
 msgstr "Reeks"
 
@@ -17073,10 +16745,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "Uw selectie is leeg. Voeg eerst mensen toe aan uw selectie."
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Postcode"
-
-#: 
 msgid "events"
 msgstr "activiteiten"
 
@@ -17091,12 +16759,4 @@ msgstr "doelbedrag moet niet-negatief zijn"
 #: 
 msgid "thru %s"
 msgstr "t/m %s"
-
-#: 
-msgid "— Select role —"
-msgstr "— Selecteer rol —"
-
-#: 
-msgid "— pick —"
-msgstr "— kies —"
 

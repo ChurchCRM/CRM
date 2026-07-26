@@ -261,10 +261,6 @@ msgstr "Klasifikacija"
 msgid "Add Cart to Event"
 msgstr "Dodaj košaricu na događaj"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "Vaša košarica je prazna!"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1425,10 +1421,6 @@ msgid "Current Role"
 msgstr "Trenutna uloga"
 
 #: 
-msgid "All People"
-msgstr "Sve osobe"
-
-#: 
 msgid "Email All"
 msgstr "Pošalji svima e-poštu"
 
@@ -1499,10 +1491,6 @@ msgstr "Ažurirane obitelji"
 #: 
 msgid "Updated"
 msgstr "Ažurirano"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "Da, obriši ovaj zapis"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2155,10 +2143,6 @@ msgid "Start Column"
 msgstr "Početni stupac"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "Zanemari nepotpune<br>adrese"
-
-#: 
 msgid "File Type"
 msgstr "Vrsta datoteke"
 
@@ -2223,14 +2207,6 @@ msgid "All Funds"
 msgstr "Svi fondovi"
 
 #: 
-msgid " for fund "
-msgstr " za fond "
-
-#: 
-msgid "for funds "
-msgstr "za fondove "
-
-#: 
 msgid "Donated Items"
 msgstr "Donirane stavke"
 
@@ -2253,10 +2229,6 @@ msgstr "Plaćeni iznos: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Plaćeno (  ) Gotovinom    (  ) Čekom    (  ) Kreditnom karticom __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Istek __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "                                        Potpis ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2289,10 +2261,6 @@ msgstr "Imenik skupini"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Molim odvojite ovaj listić i pošaljite s vašim sljedećim darom."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "Molim pošaljite vaš sljedeći dar na "
 
 #: 
 msgid "Gift Amount"
@@ -2439,10 +2407,6 @@ msgid "Family Select"
 msgstr "Odabir obitelji"
 
 #: 
-msgid "with at least one:"
-msgstr "s barem jednim:"
-
-#: 
 msgid "Welcome to"
 msgstr "Dobrodošli u"
 
@@ -2547,18 +2511,6 @@ msgid "item"
 msgstr "stavka"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "Kupac # "
-
-#: 
-msgid "Family Members:"
-msgstr "Članovi obitelji:"
-
-#: 
 msgid "Anniversary"
 msgstr "Godišnjica"
 
@@ -2569,10 +2521,6 @@ msgstr "Bilješke"
 #: 
 msgid "Reports"
 msgstr "Izvještaji"
-
-#: 
-msgid "family"
-msgstr "obitelj"
 
 #: 
 msgid "Date Entered"
@@ -2649,10 +2597,6 @@ msgstr "Zadani grad"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Zadana županija - Mora biti kratica od 2 slova!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "Zadani račun za primanje kopije svih e-poruka"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4715,10 +4659,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "Posebne postavke skupini: Vrsta nedjeljne škole"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "Skupinu nedjeljne škole ne može se mijenjati, samo u ova dva slučaja:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Dodajte nove uloge, ali ne mijenjajte niti preimujte uloge Učenika i Učitelja."
 
@@ -5310,10 +5250,6 @@ msgid "Review"
 msgstr "Pregled"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "Korisnik autentificiran putem API ključa: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "Neuspješni pokušaj autentifikacije API ključem"
 
@@ -5626,20 +5562,12 @@ msgid "Log File Viewer"
 msgstr "Preglednik datoteke dnevnika"
 
 #: 
-msgid "Filter by log level:"
-msgstr "Filtriraj prema razini dnevnika:"
-
-#: 
 msgid "Error"
 msgstr "Greška"
 
 #: 
 msgid "Info"
 msgstr "Informacija"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "Broj redaka za prikaz:"
 
 #: 
 msgid "Loading log file..."
@@ -6000,10 +5928,6 @@ msgstr "Korijenski put"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP domaćin"
-
-#: 
-msgid "Tip:"
-msgstr "Savjet:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6437,10 +6361,6 @@ msgid "Please check the backup file and try again."
 msgstr "Molim provjerite datoteku sigurnosne kopije i pokušajte ponovo."
 
 #: 
-msgid "Redirecting in"
-msgstr "Preusmjeravanje za"
-
-#: 
 msgid "Refresh List"
 msgstr "Osvježi popis"
 
@@ -6479,10 +6399,6 @@ msgstr "Sigurnosna preporuka"
 #: 
 msgid "Select Backup File"
 msgstr "Odaberi datoteku sigurnosne kopije"
-
-#: 
-msgid "Supported formats:"
-msgstr "Podržani formati:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6535,14 +6451,6 @@ msgstr "Vaša instalacija ChurchCRM-a je čista. Sve datoteke na poslužitelju o
 #: 
 msgid "or click to browse"
 msgstr "ili kliknite za pretraživanje"
-
-#: 
-msgid "seconds..."
-msgstr "sekundi..."
-
-#: 
-msgid " Deposit #"
-msgstr " Uplata #"
 
 #: 
 msgid "%d missing classification"
@@ -6629,20 +6537,12 @@ msgid "Close All Deposits"
 msgstr "Zatvori sve uplate"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "Zatvorene uplate:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "Zatvoreno vs Ukupno"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "Dovršite ove zadatke kako biste osigurali točno porezno izvješćivanje na kraju godine za vaše darivatelje."
-
-#: 
-msgid "Configuration:"
-msgstr "Konfiguracija:"
 
 #: 
 msgid "Configure Email"
@@ -6683,14 +6583,6 @@ msgstr "Prilagodljivi izvještaj s filtriranjem prema datumu, fondu, obitelji i 
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "Prilagodite tekst koji se prikazuje na poreznim izjavama (sTaxReport1, sTaxReport2, itd.)."
-
-#: 
-msgid "Data Quality:"
-msgstr "Kvaliteta podataka:"
-
-#: 
-msgid "Database:"
-msgstr "Baza podataka:"
 
 #: 
 msgid "Day"
@@ -6763,10 +6655,6 @@ msgstr "Navigacija obiteljima"
 #: 
 msgid "Feb"
 msgstr "Velj"
-
-#: 
-msgid "File Integrity:"
-msgstr "Integritet datoteka:"
 
 #: 
 msgid "Filtering"
@@ -6917,14 +6805,6 @@ msgid "Open"
 msgstr "Otvori"
 
 #: 
-msgid "Open Deposits:"
-msgstr "Otvorene uplate:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "Sirotih datoteke:"
-
-#: 
 msgid "Payment"
 msgstr "Plaćanje"
 
@@ -7013,10 +6893,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Sažetak zavjeta nasuprot plaćanjima po fondu za fiskalnu godinu."
 
 #: 
-msgid "System Configuration:"
-msgstr "Konfiguracija sustava:"
-
-#: 
 msgid "System Health"
 msgstr "Stanje sustava"
 
@@ -7049,10 +6925,6 @@ msgid "Total Amount"
 msgstr "Ukupni iznos"
 
 #: 
-msgid "Total Deposits:"
-msgstr "Ukupne uplate:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Pratite napredak zavjeta i plaćanja za kampanje i planiranje fiskalne godine."
 
@@ -7079,10 +6951,6 @@ msgstr "Provjerite da se naziv župe, adresa i kontaktni podaci prikazuju na por
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "Provjerite da su nazivi i opisi fondova točni za izjave."
-
-#: 
-msgid "Version:"
-msgstr "Verzija:"
 
 #: 
 msgid "YTD Payments"
@@ -7141,28 +7009,8 @@ msgid "Critical Configuration Error"
 msgstr "Kritična greška konfiguracije"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "Trenutna vrijednost $URL[0]:"
-
-#: 
-msgid "Custom port:"
-msgstr "Prilagođeni port:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "Završava s <strong>krajem kose crte</strong> (/)"
-
-#: 
-msgid "Find the line:"
-msgstr "Pronađite redak:"
-
-#: 
 msgid "Group Memberships"
 msgstr "Članstva u skupinama"
-
-#: 
-msgid "How to Fix:"
-msgstr "Kako popraviti:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7171,10 +7019,6 @@ msgstr "Pridružite se zajednici ChurchCRM-a i pomozite nam poboljšati dijeljen
 #: 
 msgid "Language"
 msgstr "Jezik"
-
-#: 
-msgid "Local development:"
-msgstr "Lokalni razvoj:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7195,10 +7039,6 @@ msgstr "Registrirajte svoju župu"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "Spremite datoteku i osvježite ovu stranicu"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "Počinje s <strong>http://</strong> ili <strong>https://</strong>"
 
 #: 
 msgid "System Locale Support"
@@ -7223,14 +7063,6 @@ msgstr "URL mora završavati s kosom crtom (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL mora počinjati s http:// ili https://"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "Ažurirajte ga na valjani URL koji:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "Valjani primjeri:"
 
 #: 
 msgid "View Logs"
@@ -7291,10 +7123,6 @@ msgstr "Bilten"
 #: 
 msgid "Personal"
 msgstr "Osobno"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "Molim potvrdite svoje obiteljske informacije:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7579,20 +7407,8 @@ msgid "Property Type"
 msgstr "Vrsta svojstva"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "Postoje osobe dodijeljene ovoj volonterskoj mogućnosti. Brisanje će ukloniti dodjelu:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "Volonterska mogućnost"
-
-#: 
-msgid "Warning:"
-msgstr "Upozorenje:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "Da, obriši ovu mogućnost"
 
 #. Context: locales
 #: 
@@ -8267,10 +8083,6 @@ msgstr "Nabavite vaš API ključ iz MailChimpa: Postavke računa > Dodaci > API 
 #: 
 msgid "Help"
 msgstr "Pomoć"
-
-#: 
-msgid "Id"
-msgstr "ID"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9553,10 +9365,6 @@ msgid "Edit custom properties for a group member"
 msgstr "Uredi prilagođena svojstva za člana skupini"
 
 #: 
-msgid "Email BCC"
-msgstr "E-pošta BCC"
-
-#: 
 msgid "Email Families"
 msgstr "Pošalji e-poštu obiteljima"
 
@@ -9567,14 +9375,6 @@ msgstr "Postavke e-pošte"
 #: 
 msgid "Email Tools"
 msgstr "Alati za e-poštu"
-
-#: 
-msgid "Email cart items"
-msgstr "Pošalji stavke košarice e-poštom"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "E-pošta sa skrivenim primateljima"
 
 #: 
 msgid "Empty"
@@ -9789,10 +9589,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "Uvezi kontakte iz vaših MailChimp publika"
 
 #: 
-msgid "Import failed: "
-msgstr "Uvoz nije uspio: "
-
-#: 
 msgid "Import from CSV"
 msgstr "Uvezi iz CSV-a"
 
@@ -9835,10 +9631,6 @@ msgstr "Nevažeći \"Broj pošiljatelja\":\"%s\". Uključite pozivni broj držav
 #: 
 msgid "Invite Your Team"
 msgstr "Pozovite vaš tim"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "Skočite na bilo koji korak postavljanja:"
 
 #: 
 msgid "Key People"
@@ -10193,10 +9985,6 @@ msgstr "Dodjela svojstva nije pronađena."
 #: 
 msgid "Property deleted successfully."
 msgstr "Svojstvo je uspješno obrisano."
-
-#: 
-msgid "Property not found."
-msgstr "Svojstvo nije pronađeno."
 
 #: 
 msgid "Quick Tips"
@@ -10667,14 +10455,6 @@ msgid "properties"
 msgstr "svojstva"
 
 #: 
-msgid "— Select a group —"
-msgstr "— Odaberi skupinu —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— Odaberi vrstu (neobavezno) —"
-
-#: 
 msgid "Add Event"
 msgstr "Dodaj događaj"
 
@@ -10988,10 +10768,6 @@ msgstr "Nadzorna ploča e-pošte"
 #: 
 msgid "Email Integrations"
 msgstr "Integracije e-pošte"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "Funkcionalnost e-pošte je trenutno onemogućena. Sljedeće značajke neće raditi dok e-pošta ne bude omogućena:"
 
 #: 
 msgid "Email is Disabled"
@@ -11566,10 +11342,6 @@ msgstr "Automatski TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "Automatska sigurnosna kopija"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "BCC sva pošta na"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12388,10 +12160,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "Odaberite između svijetlih i tamnih boja"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "Prijevode ChurchCRM-a upravlja zajednica na POEditor-u. Možete pomoći:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Prilagodite izgled i dojam aplikacije"
 
@@ -12435,10 +12203,6 @@ msgstr "Pomozite poboljšati prijevode"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "Ako primijetite iskrivljene znakove, HTML entitete koji se prikazuju kao tekst ili prijevode koji kvare raspored stranice, molim prijavite problem na GitHubu kako bi moglo biti ispravljeno za sve."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "Uključite vaš API ključ u zahtjeve koristeći x-api-key zaglavlje:"
 
 #: 
 msgid "Indigo"
@@ -12873,10 +12637,6 @@ msgid "Everyone is checked in!"
 msgstr "Svi su prijavljeni!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "Najbrži tijek rada:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "Pronađi prošle događaje koji su i dalje aktivni ili imaju sudionik koji se nisu odjavili"
 
@@ -12991,10 +12751,6 @@ msgstr "RangeEnd mora biti na ili nakon RangeStart"
 #: 
 msgid "Recommended"
 msgstr "Preporučeno"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "Resetiranje će trajno obrisati:"
 
 #: 
 msgid "SQL Only"
@@ -13493,10 +13249,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "Adresa e-pošte župe nije postavljena — testna e-poruka nema kamo ići."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "E-pošta župe — konfigurirana na"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "ChurchCRM testna e-poruka"
 
@@ -13603,10 +13355,6 @@ msgstr "Memorija"
 #: 
 msgid "Memory Limit"
 msgstr "Memorijsko ograničenje"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "Sada provjerite pristiglu poštu primatelja za potvrdu dostave. Potražite temu:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13727,14 +13475,6 @@ msgstr "Ažuriraj postavke"
 #: 
 msgid "View full photo"
 msgstr "Prikaži punu fotografiju"
-
-#: 
-msgid "page."
-msgstr "stranici."
-
-#: 
-msgid "user:"
-msgstr "korisnik:"
 
 #: 
 msgid "1. Download the template"
@@ -13933,10 +13673,6 @@ msgstr "Postavljanje zemalja"
 msgid "Show all"
 msgstr "Prikaži sve"
 
-#: 
-msgid "Show:"
-msgstr "Prikaži:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14117,10 +13853,6 @@ msgid "Plugin uninstalled"
 msgstr "Dodatak je deinstaliran"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "Dodatak je deinstaliran."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "URL zip datoteke dodatka (samo HTTPS)"
 
@@ -14181,10 +13913,6 @@ msgid "Verified"
 msgstr "Provjereno"
 
 #: 
-msgid "What this plugin does:"
-msgstr "Što ovaj dodatak radi:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl, sha256 i pluginId su svi obavezni za neprovjerene instalacije."
 
@@ -14199,10 +13927,6 @@ msgstr "Naziv ne može biti prazan"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "Naziv ne može biti duži od %d znakova"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "Otvara 2-minutni prozor za registraciju uređaja na:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14497,10 +14221,6 @@ msgid "Available after the event is saved."
 msgstr "Dostupno nakon što je događaj spremljen."
 
 #: 
-msgid "BCC All"
-msgstr "BCC sve"
-
-#: 
 msgid "Background Color"
 msgstr "Boja pozadine"
 
@@ -14633,10 +14353,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "Potvrdite kodom iz vaše autentifikacijske aplikacije"
 
 #: 
-msgid "Copied"
-msgstr "Kopirano"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "Kopirano u međuspremnik"
 
@@ -14647,10 +14363,6 @@ msgstr "Kopirano!"
 #: 
 msgid "Copy"
 msgstr "Kopiraj"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Kopiraj sve e-pošte"
 
 #: 
 msgid "Copy All Numbers"
@@ -15892,10 +15604,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "događaj/događaji. Umjesto toga deaktivirajte vrstu ili premjestite događaje."
 
 #: 
-msgid "from this class?"
-msgstr "iz ovog razreda?"
-
-#: 
 msgid "from this group?"
 msgstr "iz ove skupini?"
 
@@ -15974,18 +15682,6 @@ msgstr "god."
 #: 
 msgid "yrs"
 msgstr "god."
-
-#: 
-msgid "— Ignore —"
-msgstr "— Zanemari —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— Odaberi državu —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Odaberi županiju —"
 
 #: 
 msgid "Account options"
@@ -16297,10 +15993,6 @@ msgid "Full access — grants all privileges."
 msgstr "Puni pristup — dodjeljuje sve ovlasti."
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "Dodijeli pojedinačne dozvole:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "Ako trebate dodatni pristup, obratite se župnom administratoru."
 
@@ -16525,10 +16217,6 @@ msgid "What's New in {{version}}"
 msgstr "Što je novo u verziji {{version}}"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "Zaostajete za <strong>{{releaseCount}}</strong> izdanja. Evo što ćete dobiti:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "Pokrećete predverziju."
 
@@ -16617,14 +16305,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "Korisnik mora biti administrator ili imati dopuštenje za upravljanje prikupljanjem sredstava"
 
 #: 
-msgid "User not found."
-msgstr "Korisnik nije pronađen."
-
-#: 
-msgid "— Select a person —"
-msgstr "— Odaberite osobu —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "%d arhivirana akcija prikupljanja sredstava"
@@ -16701,10 +16381,6 @@ msgstr "Dodijeli članove odabira skupini"
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "Dodijeli osobe iz odabira obitelji"
-
-#: 
-msgid "Assign role to all:"
-msgstr "Dodijeli ulogu svima:"
 
 #: 
 msgid "Assign to Family"
@@ -17015,10 +16691,6 @@ msgid "Sold"
 msgstr "Prodano"
 
 #: 
-msgid "State / Province"
-msgstr "Država / Pokrajina"
-
-#: 
 msgid "Streak"
 msgstr "Niz"
 
@@ -17091,10 +16763,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "Vaš odabir je prazan. Najprije dodajte osobe u odabir."
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Poštanski broj"
-
-#: 
 msgid "events"
 msgstr "događaji"
 
@@ -17109,12 +16777,4 @@ msgstr "goalAmount mora biti nenegativan"
 #: 
 msgid "thru %s"
 msgstr "do %s"
-
-#: 
-msgid "— Select role —"
-msgstr "— Odaberite ulogu —"
-
-#: 
-msgid "— pick —"
-msgstr "— odaberi —"
 

@@ -276,10 +276,6 @@ msgstr "Kategoria"
 msgid "Add Cart to Event"
 msgstr "Dodaj Koszyk do Wydarzenia"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "Twój Koszyk jest pusty!"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1485,10 +1481,6 @@ msgid "Current Role"
 msgstr "Rola"
 
 #: 
-msgid "All People"
-msgstr "Wszystkie Osoby"
-
-#: 
 msgid "Email All"
 msgstr "Email do Wszystkich"
 
@@ -1559,10 +1551,6 @@ msgstr "Zaktualizowane Rodziny"
 #: 
 msgid "Updated"
 msgstr "Zaktualizowane"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "Tak, USUŃ ten Wpis"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2238,11 +2226,6 @@ msgstr "Kolumna Początkowa"
 
 #: 
 #, fuzzy
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "Zignoruj Niekompletne<br>Adresy"
-
-#: 
-#, fuzzy
 msgid "File Type"
 msgstr "Typ Pliku"
 
@@ -2308,14 +2291,6 @@ msgid "All Funds"
 msgstr "Wszystkie Cele"
 
 #: 
-msgid " for fund "
-msgstr " dla celu "
-
-#: 
-msgid "for funds "
-msgstr "dla celów"
-
-#: 
 #, fuzzy
 msgid "Donated Items"
 msgstr "Przedmioty Darowane"
@@ -2340,10 +2315,6 @@ msgstr "Zapłacono: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Sposób płatności (  ) Gotówka    (  ) Czek    (  ) Karta Płatnicza __ __ __ __    __ __ ____    __ __ __ __    __ __ __ __  Ważna do __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "                                        Podpis ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2376,10 +2347,6 @@ msgstr "Katalog Grup"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Prosimy o oderwanie tego odcinka i przesłanie z następnym Datkiem."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "Prosimy przesłać kolejny datek do"
 
 #: 
 #, fuzzy
@@ -2533,10 +2500,6 @@ msgid "Family Select"
 msgstr "Wybór rodziny"
 
 #: 
-msgid "with at least one:"
-msgstr "z co najmniej jednym:"
-
-#: 
 msgid "Welcome to"
 msgstr "Witaj w"
 
@@ -2641,18 +2604,6 @@ msgid "item"
 msgstr "element"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "Kupujący nr "
-
-#: 
-msgid "Family Members:"
-msgstr "Członkowie rodziny:"
-
-#: 
 msgid "Anniversary"
 msgstr "Rocznica"
 
@@ -2663,10 +2614,6 @@ msgstr "Notatki"
 #: 
 msgid "Reports"
 msgstr "Raporty"
-
-#: 
-msgid "family"
-msgstr "rodzina"
 
 #: 
 msgid "Date Entered"
@@ -2744,10 +2691,6 @@ msgstr "Domyślne miasto"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Domyślne województwo - musi być skrótem!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "Domyślne konto do otrzymywania kopii wszystkich e-maili"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4812,10 +4755,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "Specjalne ustawienia grupy: Typ Szkoły Niedzielnej"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "Grupa Szkoły Niedzielnej nie może być modyfikowana, z wyjątkiem tych dwóch przypadków:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Możesz dodawać role, ale nie zmieniać ról Uczeń i Nauczyciel."
 
@@ -5412,10 +5351,6 @@ msgid "Review"
 msgstr "Przegląd"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "Użytkownik autoryzowany przez klucz API: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "Nie udana próba uwierzytelnienia przez klucz API"
 
@@ -5729,20 +5664,12 @@ msgid "Log File Viewer"
 msgstr "Przeglądarka plików logów"
 
 #: 
-msgid "Filter by log level:"
-msgstr "Filtruj wg poziomu:"
-
-#: 
 msgid "Error"
 msgstr "Błąd"
 
 #: 
 msgid "Info"
 msgstr "Info"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "Liczba linii do wyświetlenia:"
 
 #: 
 msgid "Loading log file..."
@@ -6104,10 +6031,6 @@ msgstr "Ścieżka główna"
 #: 
 msgid "SMTP Host"
 msgstr "Host SMTP"
-
-#: 
-msgid "Tip:"
-msgstr "Wskazówka:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6541,10 +6464,6 @@ msgid "Please check the backup file and try again."
 msgstr "Sprawdź plik kopii i spróbuj ponownie."
 
 #: 
-msgid "Redirecting in"
-msgstr "Przekierowanie za"
-
-#: 
 msgid "Refresh List"
 msgstr "Odśwież listę"
 
@@ -6583,10 +6502,6 @@ msgstr "Zalecenie bezpieczeństwa"
 #: 
 msgid "Select Backup File"
 msgstr "Wybierz plik kopii"
-
-#: 
-msgid "Supported formats:"
-msgstr "Obsługiwane formaty:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6639,14 +6554,6 @@ msgstr "System jest czysty. Pliki są zgodne z oficjalnym wydaniem."
 #: 
 msgid "or click to browse"
 msgstr "lub kliknij, by przeglądać"
-
-#: 
-msgid "seconds..."
-msgstr "sekund..."
-
-#: 
-msgid " Deposit #"
-msgstr " Wpłata #"
 
 #: 
 msgid "%d missing classification"
@@ -6733,20 +6640,12 @@ msgid "Close All Deposits"
 msgstr "Zamknij wszystkie wpłaty"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "Zamknięte wpłaty:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "Zamknięte vs Suma"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "Wykonaj te zadania, by zapewnić poprawne raporty podatkowe."
-
-#: 
-msgid "Configuration:"
-msgstr "Konfiguracja:"
 
 #: 
 msgid "Configure Email"
@@ -6787,14 +6686,6 @@ msgstr "Raport z filtrowaniem wg daty, funduszu, rodziny i metody."
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "Dostosuj tekst na oświadczeniach podatkowych."
-
-#: 
-msgid "Data Quality:"
-msgstr "Jakość danych:"
-
-#: 
-msgid "Database:"
-msgstr "Baza danych:"
 
 #: 
 msgid "Day"
@@ -6867,10 +6758,6 @@ msgstr "Nawigacja rodzin"
 #: 
 msgid "Feb"
 msgstr "Lut"
-
-#: 
-msgid "File Integrity:"
-msgstr "Integralność plików:"
 
 #: 
 msgid "Filtering"
@@ -7021,14 +6908,6 @@ msgid "Open"
 msgstr "Otwórz"
 
 #: 
-msgid "Open Deposits:"
-msgstr "Otwarte wpłaty:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "Osierocone pliki:"
-
-#: 
 msgid "Payment"
 msgstr "Płatność"
 
@@ -7117,10 +6996,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Podsumowanie deklaracji vs wpłat w roku fiskalnym."
 
 #: 
-msgid "System Configuration:"
-msgstr "Konfiguracja systemu:"
-
-#: 
 msgid "System Health"
 msgstr "Zdrowie systemu"
 
@@ -7153,10 +7028,6 @@ msgid "Total Amount"
 msgstr "Kwota całkowita"
 
 #: 
-msgid "Total Deposits:"
-msgstr "Suma wpłat:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Śledź postępy deklaracji i płatności dla kampanii."
 
@@ -7183,10 +7054,6 @@ msgstr "Sprawdź, czy dane kościoła są poprawne na oświadczeniach."
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "Sprawdź, czy nazwy funduszy są poprawne."
-
-#: 
-msgid "Version:"
-msgstr "Wersja:"
 
 #: 
 msgid "YTD Payments"
@@ -7245,28 +7112,8 @@ msgid "Critical Configuration Error"
 msgstr "Krytyczny błąd konfiguracji"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "Obecna wartość $URL[0]:"
-
-#: 
-msgid "Custom port:"
-msgstr "Niestandardowy port:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "Kończy się <strong>ukośnikiem</strong> (/)"
-
-#: 
-msgid "Find the line:"
-msgstr "Znajdź linię:"
-
-#: 
 msgid "Group Memberships"
 msgstr "Przynależność do grup"
-
-#: 
-msgid "How to Fix:"
-msgstr "Jak to naprawić:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7275,10 +7122,6 @@ msgstr "Dołącz do społeczności ChurchCRM. Zajmie to mniej niż minutę!"
 #: 
 msgid "Language"
 msgstr "Język"
-
-#: 
-msgid "Local development:"
-msgstr "Środowisko lokalne:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7299,10 +7142,6 @@ msgstr "Zarejestruj swój kościół"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "Zapisz plik i odśwież stronę"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "Zaczyna się od <strong>http://</strong> lub <strong>https://</strong>"
 
 #: 
 msgid "System Locale Support"
@@ -7327,14 +7166,6 @@ msgstr "URL musi kończyć się ukośnikiem (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL musi zaczynać się od http:// lub https://"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "Zaktualizuj do poprawnego adresu URL, który:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "Prawidłowe przykłady:"
 
 #: 
 msgid "View Logs"
@@ -7395,10 +7226,6 @@ msgstr "Newsletter"
 #: 
 msgid "Personal"
 msgstr "Osobiste"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "Proszę potwierdzić dane rodziny:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7683,20 +7510,8 @@ msgid "Property Type"
 msgstr "Typ właściwości"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "Osoby są przypisane do tego zadania. Usunięcie spowoduje ich odpięcie:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "Zadanie wolontariatu"
-
-#: 
-msgid "Warning:"
-msgstr "Ostrzeżenie:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "Tak, usuń to zadanie"
 
 #. Context: locales
 #: 
@@ -8371,10 +8186,6 @@ msgstr "Uzyskaj klucz API z MailChimp: Ustawienia konta > Dodatki > Klucze API"
 #: 
 msgid "Help"
 msgstr "Pomoc"
-
-#: 
-msgid "Id"
-msgstr "Id"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9657,10 +9468,6 @@ msgid "Edit custom properties for a group member"
 msgstr "Edytuj niestandardowe właściwości członka grupy"
 
 #: 
-msgid "Email BCC"
-msgstr "E-mail UDW"
-
-#: 
 msgid "Email Families"
 msgstr "Wyślij e-mail do rodzin"
 
@@ -9671,14 +9478,6 @@ msgstr "Ustawienia e-mail"
 #: 
 msgid "Email Tools"
 msgstr "Narzędzia e-mail"
-
-#: 
-msgid "Email cart items"
-msgstr "Wyślij e-mail do osób z listy"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "E-mail z ukrytymi odbiorcami"
 
 #: 
 msgid "Empty"
@@ -9893,10 +9692,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "Importuj kontakty z odbiorców MailChimp"
 
 #: 
-msgid "Import failed: "
-msgstr "Import nie powiódł się: "
-
-#: 
 msgid "Import from CSV"
 msgstr "Importuj z CSV"
 
@@ -9939,10 +9734,6 @@ msgstr "Nieprawidłowy \"Numer nadawcy\": \"%s\". Podaj numer kierunkowy kraju, 
 #: 
 msgid "Invite Your Team"
 msgstr "Zaproś swój zespół"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "Przejdź do dowolnego kroku konfiguracji:"
 
 #: 
 msgid "Key People"
@@ -10297,10 +10088,6 @@ msgstr "Nie znaleziono przypisania właściwości."
 #: 
 msgid "Property deleted successfully."
 msgstr "Właściwość została pomyślnie usunięta."
-
-#: 
-msgid "Property not found."
-msgstr "Nie znaleziono właściwości."
 
 #: 
 msgid "Quick Tips"
@@ -10771,14 +10558,6 @@ msgid "properties"
 msgstr "właściwości"
 
 #: 
-msgid "— Select a group —"
-msgstr "— Wybierz grupę —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— Wybierz typ (opcjonalne) —"
-
-#: 
 msgid "Add Event"
 msgstr "Dodaj wydarzenie"
 
@@ -11092,10 +10871,6 @@ msgstr "Pulpit nawigacyjny poczty e-mail"
 #: 
 msgid "Email Integrations"
 msgstr "Integracje poczty e-mail"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "Funkcja poczty e-mail jest obecnie wyłączona. Następujące funkcje nie będą działać, dopóki nie będzie włączona poczta e-mail:"
 
 #: 
 msgid "Email is Disabled"
@@ -11670,10 +11445,6 @@ msgstr "Automatyczny TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "Automatyczna kopia zapasowa"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "UDW do wszystkich wiadomości"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12492,10 +12263,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "Wybierz między jasnym a ciemnym schematem kolorów"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "Tłumaczenia ChurchCRM są zarządzane przez społeczność na POEditor. Możesz pomóc przez:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Dostosuj wygląd i działanie aplikacji"
 
@@ -12539,10 +12306,6 @@ msgstr "Pomóż ulepszyć tłumaczenia"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "Jeśli zauważysz zniekształcone znaki, encje HTML wyświetlane jako tekst lub tłumaczenia psujące układ strony, zgłoś problem na GitHub, aby można było to naprawić dla wszystkich."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "Dołącz klucz API do żądań używając nagłówka x-api-key:"
 
 #: 
 msgid "Indigo"
@@ -12977,10 +12740,6 @@ msgid "Everyone is checked in!"
 msgstr "Wszyscy są zameldowani!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "Najszybszy sposób pracy:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "Znajdź minione wydarzenia, które są nadal aktywne lub mają uczestników bez wymeldowania"
 
@@ -13095,10 +12854,6 @@ msgstr "RangeEnd musi być równy lub późniejszy niż RangeStart"
 #: 
 msgid "Recommended"
 msgstr "Zalecane"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "Resetowanie trwale usunie:"
 
 #: 
 msgid "SQL Only"
@@ -13597,10 +13352,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "Adres e-mail parafii nie jest ustawiony — testowa wiadomość nie ma dokąd trafić."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "E-mail parafii — skonfigurowany na"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "Testowa wiadomość e-mail ChurchCRM"
 
@@ -13707,10 +13458,6 @@ msgstr "Pamięć"
 #: 
 msgid "Memory Limit"
 msgstr "Limit pamięci"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "Sprawdź skrzynkę odbiorcy, aby potwierdzić dostarczenie. Szukaj tematu:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13831,14 +13578,6 @@ msgstr "Zaktualizuj ustawienia"
 #: 
 msgid "View full photo"
 msgstr "Zobacz pełne zdjęcie"
-
-#: 
-msgid "page."
-msgstr "stronie."
-
-#: 
-msgid "user:"
-msgstr "użytkownik:"
 
 #: 
 msgid "1. Download the template"
@@ -14037,10 +13776,6 @@ msgstr "Konfigurowanie krajów"
 msgid "Show all"
 msgstr "Pokaż wszystkie"
 
-#: 
-msgid "Show:"
-msgstr "Pokaż:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14221,10 +13956,6 @@ msgid "Plugin uninstalled"
 msgstr "Wtyczka odinstalowana"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "Wtyczka odinstalowana."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "URL pliku zip wtyczki (tylko HTTPS)"
 
@@ -14285,10 +14016,6 @@ msgid "Verified"
 msgstr "Zweryfikowana"
 
 #: 
-msgid "What this plugin does:"
-msgstr "Co robi ta wtyczka:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl, sha256 i pluginId są wymagane dla niezweryfikowanych instalacji."
 
@@ -14303,10 +14030,6 @@ msgstr "Nazwa nie może być pusta"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "Nazwa nie może być dłuższa niż %d znaków"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "Otwiera 2-minutowe okno rejestracji urządzeń pod adresem:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14601,10 +14324,6 @@ msgid "Available after the event is saved."
 msgstr "Dostępne po zapisaniu wydarzenia."
 
 #: 
-msgid "BCC All"
-msgstr "UDW do wszystkich"
-
-#: 
 msgid "Background Color"
 msgstr "Kolor Tła"
 
@@ -14737,10 +14456,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "Potwierdź kodem z aplikacji uwierzytelniającej"
 
 #: 
-msgid "Copied"
-msgstr "Skopiowano"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "Skopiowano do schowka"
 
@@ -14751,10 +14466,6 @@ msgstr "Skopiowano!"
 #: 
 msgid "Copy"
 msgstr "Kopiuj"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Skopiuj wszystkie e-maile"
 
 #: 
 msgid "Copy All Numbers"
@@ -15996,10 +15707,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "zdarzenie(a). Dezaktywuj typ lub najpierw przypisz zdarzenia ponownie."
 
 #: 
-msgid "from this class?"
-msgstr "z tej klasy?"
-
-#: 
 msgid "from this group?"
 msgstr "z tej grupy?"
 
@@ -16078,18 +15785,6 @@ msgstr "rok"
 #: 
 msgid "yrs"
 msgstr "lata"
-
-#: 
-msgid "— Ignore —"
-msgstr "— Ignoruj —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— Wybierz kraj —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Wybierz województwo —"
 
 #: 
 msgid "Account options"
@@ -16401,10 +16096,6 @@ msgid "Full access — grants all privileges."
 msgstr "Pełny dostęp — przyznaje wszystkie uprawnienia."
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "Przyznaj indywidualne uprawnienia:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "Jeśli potrzebujesz dodatkowego dostępu, skontaktuj się z administratorem parafii."
 
@@ -16629,10 +16320,6 @@ msgid "What's New in {{version}}"
 msgstr "Co nowego w {{version}}"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "Jesteś <strong>{{releaseCount}}</strong> wydań do tyłu. Oto co zyskasz:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "Używasz wersji przedpremierowej."
 
@@ -16721,14 +16408,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "Użytkownik musi być administratorem lub posiadać uprawnienie Zarządzaj zbiórkami"
 
 #: 
-msgid "User not found."
-msgstr "Nie znaleziono użytkownika."
-
-#: 
-msgid "— Select a person —"
-msgstr "— Wybierz osobę —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "%d zarchiwizowana zbiórka"
@@ -16805,10 +16484,6 @@ msgstr "Przypisz osoby z listy do grupy"
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "Przypisz osoby z listy do rodziny"
-
-#: 
-msgid "Assign role to all:"
-msgstr "Przypisz rolę wszystkim:"
 
 #: 
 msgid "Assign to Family"
@@ -17119,10 +16794,6 @@ msgid "Sold"
 msgstr "Sprzedano"
 
 #: 
-msgid "State / Province"
-msgstr "Stan / Województwo"
-
-#: 
 msgid "Streak"
 msgstr "Seria"
 
@@ -17195,10 +16866,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "Twoja lista jest pusta. Najpierw dodaj osoby do swojej listy."
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Kod pocztowy"
-
-#: 
 msgid "events"
 msgstr "wydarzenia"
 
@@ -17213,12 +16880,4 @@ msgstr "goalAmount musi być nieujemny"
 #: 
 msgid "thru %s"
 msgstr "do %s"
-
-#: 
-msgid "— Select role —"
-msgstr "— Wybierz rolę —"
-
-#: 
-msgid "— pick —"
-msgstr "— wybierz —"
 
