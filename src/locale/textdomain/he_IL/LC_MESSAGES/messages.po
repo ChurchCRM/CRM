@@ -16794,3 +16794,527 @@ msgstr "סכום היעד חייב להיות לא שלילי"
 msgid "thru %s"
 msgstr "עד %s"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "הערות \"מדוע הגיע\" עבור %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s ממשפחת %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "עוד %d רשומות יכולות להתאים."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d רשומות הוחזרו"
+
+#: 
+msgid "Assign role to all"
+msgstr "הקצא תפקיד לכולם"
+
+#: 
+msgid "Buyer #"
+msgstr "קונה מס'"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "קונים לגיוס כספים זה"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "מקורות הטמעת לוח שנה"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "תרגומי ChurchCRM מנוהלים על ידי הקהילה ב-POEditor. תוכל לעזור על ידי"
+
+#: 
+msgid "Closed Deposits"
+msgstr "פיקדונות סגורים"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "ערך $URL[0] נוכחי"
+
+#: 
+msgid "Custom port"
+msgstr "פורט מותאם אישית"
+
+#: 
+msgid "Data Quality"
+msgstr "איכות נתונים"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "נתרם על ידי %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "פונקציית הדואר האלקטרוני מושבתת כרגע. התכונות הבאות לא יפעלו עד שהדואר האלקטרוני יופעל"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "ערך משוער $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "תהליך עבודה מהיר ביותר"
+
+#: 
+msgid "File Integrity"
+msgstr "תקינות קובץ"
+
+#: 
+msgid "Filter by log level"
+msgstr "סנן לפי רמת יומן"
+
+#: 
+msgid "Find the line"
+msgstr "מצא את השורה"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "הענק הרשאות אישיות"
+
+#: 
+msgid "How to Fix"
+msgstr "כיצד לתקן"
+
+#: 
+msgid "Import failed: %s"
+msgstr "ייבוא נכשל: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "כלול את מפתח ה-API בבקשות באמצעות כותרת x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "קפוץ לכל שלב הגדרה"
+
+#: 
+msgid "Local development"
+msgstr "פיתוח מקומי"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "סכום כולל מינימלי"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "הצעת מחיר מינימלית $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "תשלום חדש - %1$s פיקדון # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "בדוק כעת את תיבת הדואר הנכנס של הנמען לאישור מסירה. חפש את הנושא"
+
+#: 
+msgid "Number of lines to display"
+msgstr "מספר שורות להצגה"
+
+#: 
+msgid "Open Deposits"
+msgstr "פיקדונות פתוחים"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "פותח חלון של 2 דקות לרישום מכשירים"
+
+#: 
+msgid "Output Method"
+msgstr "שיטת פלט"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "אנא אשר מחיקה של רשומת משפחה זו"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "אנא אשר את פרטי המשפחה שלך"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "אנא שלח את תרומתך הבאה בדואר אל %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "אנא בחר משפחה אחרת לשיוך תרומות אלו"
+
+#: 
+msgid "Remittance Slip"
+msgstr "שובר העברה"
+
+#: 
+msgid "Report Heading"
+msgstr "כותרת דוח"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "איפוס ימחק לצמיתות"
+
+#: 
+msgid "Show"
+msgstr "הצג"
+
+#: 
+msgid "Signature"
+msgstr "חתימה"
+
+#: 
+msgid "Sort Data by"
+msgstr "מיין נתונים לפי"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "רשימת מקורות מופרדים ברווח המורשים להטמיע את דף לוח השנה ב-iframe."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "מקורות מופרדים ברווח המורשים להטמיע את דף לוח השנה ב-iframe."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "קבוצת בית ספר ראשון לא ניתנת לשינוי, רק בשני המקרים הבאים"
+
+#: 
+msgid "Supported formats"
+msgstr "פורמטים נתמכים"
+
+#: 
+msgid "System Configuration"
+msgstr "תצורת מערכת"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "יש אנשים שהוקצו להזדמנות ההתנדבות זו. המחיקה תבטל את הקצאתם"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "ערך זה לא יכול להיות פחות מ-%d תווים"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "ערך זה לא יכול להיות יותר מ-%d תווים"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "ערך זה לא יכול להיות יותר מ-%s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "ערך זה חייב להיות לפחות %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "סך הפיקדונות"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "עדכן אותו לכתובת URL תקנית ש"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "משתמש אומת באמצעות מפתח API: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "דוגמאות תקניות"
+
+#: 
+msgid "What this plugin does"
+msgstr "מה תוסף זה עושה"
+
+#: 
+msgid "for all funds"
+msgstr "לכל הקרנות"
+
+#: 
+msgid "for fund"
+msgstr "לקרן"
+
+#: 
+msgid "for funds"
+msgstr "לקרנות"
+
+#: 
+msgid "user"
+msgstr "משתמש"
+
+#: 
+msgid "with at least one"
+msgstr "עם לפחות אחד"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "שלח גם לכתובת הכנסייה ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "האם אתה בטוח שברצונך להסיר אדם זה מ"
+
+#: 
+msgid "BCC Mode"
+msgstr "מצב BCC"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "בוצע צ'ק-אין ל-{{count}} אנשים."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "כתובת הדואר האלקטרוני של הכנסייה מתווספת אוטומטית כנמען הניתן להסרה בעת כתיבת הודעות מה-CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "דואר אלקטרוני של הכנסייה — מוגדר בדף %s."
+
+#: 
+msgid "Closing"
+msgstr "סגירה"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "קואורדינטות עודכנו"
+
+#: 
+msgid "Copy Addresses"
+msgstr "העתק כתובות"
+
+#: 
+msgid "Copy Church Email"
+msgstr "העתק דואר אלקטרוני של הכנסייה"
+
+#: 
+msgid "Email All Members"
+msgstr "שלח דואר לכל החברים"
+
+#: 
+msgid "Email Cart Members"
+msgstr "שלח דואר לחברי הרשימה"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "מסתיים בלוכסן (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "הגיאוקידוד נכשל"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "טעינת הנמענים נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "אחזור כתובות הדואר האלקטרוני מהרשימה נכשל"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "צ'ק-אין המשפחה נכשל. אנא נסה שוב."
+
+#: 
+msgid "Ignore"
+msgstr "התעלם"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "התעלם מכתובות חלקיות"
+
+#: 
+msgid "Kids"
+msgstr "ילדים"
+
+#: 
+msgid "Loading family members..."
+msgstr "טוען בני משפחה..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "טוען נמענים…"
+
+#: 
+msgid "No email addresses found."
+msgstr "לא נמצאו כתובות דואר אלקטרוני."
+
+#: 
+msgid "Open in Email Client"
+msgstr "פתח בלקוח דואר אלקטרוני"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "מפנה בעוד %s שניות..."
+
+#: 
+msgid "Refreshing..."
+msgstr "מרענן..."
+
+#: 
+msgid "Remove from Group"
+msgstr "הסר מהקבוצה"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "להסיר את {{personName}} מהכיתה הזו?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "הבקשה נכשלה ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "תפקידים לכלול"
+
+#: 
+msgid "Select Country"
+msgstr "בחר מדינה"
+
+#: 
+msgid "Select State"
+msgstr "בחר מחוז"
+
+#: 
+msgid "Select a person"
+msgstr "בחר אדם"
+
+#: 
+msgid "Select role"
+msgstr "בחר תפקיד"
+
+#: 
+msgid "Select type (optional)"
+msgstr "בחר סוג (אופציונלי)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "מתחיל ב-http:// או https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "לקבוצה זו יש רק תפקיד אחד."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "מי מביא את {{name}}?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "מי אוסף את {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "עובד..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "אתה {{releaseCount}} גרסאות מאחור. הנה מה שתרוויח"
+
+#: 
+msgid "click to expand"
+msgstr "לחץ להרחבה"
+
+#: 
+msgid "pick"
+msgstr "בחר"
+
+#: 
+msgid "recipient"
+msgstr "נמען"
+
+#: 
+msgid "recipients"
+msgstr "נמענים"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "נותרו {{hours}}ש' {{mins}}ד'"
+
+#: 
+msgid "Add New Deposit"
+msgstr "הוסף פיקדון חדש"
+
+#: 
+msgid "Add New Event"
+msgstr "הוסף אירוע חדש"
+
+#: 
+msgid "Add New Event Type"
+msgstr "הוסף סוג אירוע חדש"
+
+#: 
+msgid "Add New Family"
+msgstr "הוסף משפחה חדשה"
+
+#: 
+msgid "Add New Field"
+msgstr "הוסף שדה חדש"
+
+#: 
+msgid "Add New Fund"
+msgstr "הוסף קרן חדש"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "הוסף הזדמנות חדשה"
+
+#: 
+msgid "Add New Person"
+msgstr "הוסף אדם חדש"
+
+#: 
+msgid "Add New Pledge"
+msgstr "הוסף התחייבות חדשה"
+
+#: 
+msgid "Add New Role"
+msgstr "הוסף תפקיד חדש"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "הוסף הזדמנות התנדבות חדשה"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "הוסף כיתה לבית ספר ראשון"
+
+#: 
+msgid "Delete this family?"
+msgstr "למחוק משפחה זו?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "האם ברצונך למחוק משפחה זו? תועבר לדף לבחירת מה למחוק. פעולה זו אינה הפיכה."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "אישור מחיקת משפחה"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "יחידים (ללא משפחה)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "רישומים עצמאיים חדשים"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "אישור מחיקת סוג נכס"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "סקור משפחות ויחידים חדשים שנרשמו בטופס הרשומה הציבורי שלך"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "סקור רישומים חדשים מהטופס הציבורי השלך להלן. רשומות ללא דואר אלקטרוני או טלפון מסומנות — אמת פרטי קשר לפני המעקב."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "אישור מחיקת הזדמנות התנדבות"
+

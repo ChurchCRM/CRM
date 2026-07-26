@@ -16784,3 +16784,527 @@ msgstr "goalAmount duhet të jetë jo-negativ"
 msgid "thru %s"
 msgstr "deri %s"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "Shënime Pse erdhi për %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s i familjes %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d regjistrime të tjera do të përshtaten."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d regjistrim(e) u kthyen"
+
+#: 
+msgid "Assign role to all"
+msgstr "Cakto rolin për të gjithë"
+
+#: 
+msgid "Buyer #"
+msgstr "Blerës #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Blerësit për këtë mbledhje fondesh"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Origjina e integrimit të kalendarit"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "Përkthimet e ChurchCRM menaxhohen nga komuniteti në POEditor. Mund të ndihmoni duke"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Depozita të mbyllura"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Vlera aktuale e $URL[0]"
+
+#: 
+msgid "Custom port"
+msgstr "Port i personalizuar"
+
+#: 
+msgid "Data Quality"
+msgstr "Cilësia e të dhënave"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Dhuruar nga %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "Funksionaliteti i email-it është aktualisht i çaktivizuar. Veçoritë e mëposhtme nuk do të funksionojnë derisa email-i të aktivizohet"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Vlera e vlerësuar $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Rrjedha e punës më e shpejtë"
+
+#: 
+msgid "File Integrity"
+msgstr "Integriteti i skedarit"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filtro sipas nivelit të regjistrit"
+
+#: 
+msgid "Find the line"
+msgstr "Gjej rreshtin"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Jep leje individuale"
+
+#: 
+msgid "How to Fix"
+msgstr "Si ta rregullosh"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Importimi dështoi: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Përfshi çelësin tuaj API në kërkesa duke përdorur kokën x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Hidhu tek çdo hap konfigurimi"
+
+#: 
+msgid "Local development"
+msgstr "Zhvillim lokal"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Shuma minimale totale"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Oferta minimale $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Pagesë e re - %1$s Depozitë # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Tani kontrolloni kutinë hyrëse të marrësit për të konfirmuar dërgimin. Kërkoni subjektin"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Numri i rreshtave për të shfaqur"
+
+#: 
+msgid "Open Deposits"
+msgstr "Depozita të hapura"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Hap një dritare 2-minutëshe për regjistrim të pajisjeve"
+
+#: 
+msgid "Output Method"
+msgstr "Metoda e daljes"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Ju lutem konfirmoni fshirjen e këtij rekordii familjes"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Ju lutem konfirmoni informacionin e familjes tuaj"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Ju lutem dërgoni dhurimin tuaj tjetër te %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Ju lutem zgjidhni një familje tjetër me të cilën të lidhni këto dhurime"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Fletë dërgese"
+
+#: 
+msgid "Report Heading"
+msgstr "Titulli i raportit"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Rivendosja do të fshijë përgjithmonë"
+
+#: 
+msgid "Show"
+msgstr "Shfaq"
+
+#: 
+msgid "Signature"
+msgstr "Nënshkrim"
+
+#: 
+msgid "Sort Data by"
+msgstr "Rendit të dhënat sipas"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Listë origjinash të ndara me hapësirë të lejuara të ngulisin faqen publike të kalendarit të jashtëm në një iframe."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Origjina të ndara me hapësirë të lejuara të ngulisin faqen publike të kalendarit në një iframe."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Grupi i Shkollës së Dielës nuk mund të ndryshohet, vetëm në këto dy raste"
+
+#: 
+msgid "Supported formats"
+msgstr "Formatet e mbështetura"
+
+#: 
+msgid "System Configuration"
+msgstr "Konfigurimi i sistemit"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Ka njerëz të caktuar për këtë Mundësi Vullnetare. Fshirja do t'i heqë caktimet"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Kjo vlerë nuk mund të jetë më e shkurtër se %d karaktere"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Kjo vlerë nuk mund të jetë më e gjatë se %d karaktere"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Kjo vlerë nuk mund të jetë më shumë se %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Kjo vlerë duhet të jetë të paktën %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Depozita totale"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Përditësojeni me një URL të vlefshme që"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Përdoruesi u autentifikua me çelës API: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Shembuj të vlefshëm"
+
+#: 
+msgid "What this plugin does"
+msgstr "Çfarë bën ky shtojcë"
+
+#: 
+msgid "for all funds"
+msgstr "për të gjitha fondet"
+
+#: 
+msgid "for fund"
+msgstr "për fondin"
+
+#: 
+msgid "for funds"
+msgstr "për fondet"
+
+#: 
+msgid "user"
+msgstr "përdorues"
+
+#: 
+msgid "with at least one"
+msgstr "me të paktën një"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Dërgo gjithashtu te adresa e kishës ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Jeni të sigurt që doni të hiqni këtë person nga"
+
+#: 
+msgid "BCC Mode"
+msgstr "Modaliteti BCC"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "U regjistruan {{count}} persona."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "Adresa e email-it të kishës shtohet automatikisht si marrës i heqshëm kur shkruhen email-e nga CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "Email-i i kishës — i konfiguruar në faqen %s."
+
+#: 
+msgid "Closing"
+msgstr "Po mbyll"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Koordinatat u përditësuan"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Kopjo Adresat"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Kopjo Email-in e Kishës"
+
+#: 
+msgid "Email All Members"
+msgstr "Email të gjithë anëtarëve"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Email anëtarëve të zgjedhur"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Mbaron me prerje në fund (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Gjeokodifikimi dështoi"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Marrja e marrësve dështoi. Ju lutem provoni përsëri."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Marrja e adresave email të zgjedhurve dështoi"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Regjistrimi i familjes dështoi. Ju lutem provoni përsëri."
+
+#: 
+msgid "Ignore"
+msgstr "Inoro"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Inoro adresat e paplotësuara"
+
+#: 
+msgid "Kids"
+msgstr "Fëmijë"
+
+#: 
+msgid "Loading family members..."
+msgstr "Po ngarkon anëtarët e familjes..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Po ngarkon marrësit…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Nuk u gjetën adresa email."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Hap në klientin e email-it"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Po ridrejton në %s sekonda..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Po rifreskoj..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Hiq nga Grupi"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Hiq {{personName}} nga kjo klasë?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Kërkesa dështoi ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Rolet për të përfshirë"
+
+#: 
+msgid "Select Country"
+msgstr "Zgjidh Shtetin"
+
+#: 
+msgid "Select State"
+msgstr "Zgjidh Rajonin"
+
+#: 
+msgid "Select a person"
+msgstr "Zgjidh një person"
+
+#: 
+msgid "Select role"
+msgstr "Zgjidh rolin"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Zgjidh llojin (opsionale)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Fillon me http:// ose https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Ky grup ka vetëm një rol."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Kush e sjell {{name}}?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Kush e merr {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "Duke punuar..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Jeni {{releaseCount}} versione prapa. Ja çfarë do të fitoni"
+
+#: 
+msgid "click to expand"
+msgstr "klikoni për të zgjeruar"
+
+#: 
+msgid "pick"
+msgstr "zgjidh"
+
+#: 
+msgid "recipient"
+msgstr "marrës"
+
+#: 
+msgid "recipients"
+msgstr "marrës"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}h {{mins}}m mbetur"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Shto Depozitë të Re"
+
+#: 
+msgid "Add New Event"
+msgstr "Shto Ngjarje të Re"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Shto Lloj të Ri Ngjarjeje"
+
+#: 
+msgid "Add New Family"
+msgstr "Shto Familje të Re"
+
+#: 
+msgid "Add New Field"
+msgstr "Shto Fushë të Re"
+
+#: 
+msgid "Add New Fund"
+msgstr "Shto Fond të Ri"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Shto Mundësi të Re"
+
+#: 
+msgid "Add New Person"
+msgstr "Shto Person të Ri"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Shto Zotim të Ri"
+
+#: 
+msgid "Add New Role"
+msgstr "Shto Rol të Ri"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Shto Mundësi të Re Vullnetare"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Shto Klasë të Shkollës së Dielës"
+
+#: 
+msgid "Delete this family?"
+msgstr "Fshi këtë familje?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Dëshironi të fshini këtë familje? Do të çoheni në një faqe për të zgjedhur çfarë të fshini. Kjo nuk mund të zhbëhet."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Konfirmim i fshirjes së familjes"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Individë (pa familje)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Regjistrimi të reja vetjake"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Konfirmim i fshirjes së llojit të pronësisë"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Rishikoni familjet dhe individët e rinj që u regjistruan në formularin tuaj publik të regjistrimit"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Rishikoni regjistrimet e reja nga formulari juaj publik. Shënimet pa email ose telefon janë shënuar — verifikoni informacionin e kontaktit para se të ndiqni."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Konfirmim i fshirjes së mundësisë vullnetare"
+

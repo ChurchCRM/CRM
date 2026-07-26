@@ -16733,3 +16733,527 @@ msgstr "goalAmount は非負でなければなりません"
 msgid "thru %s"
 msgstr "%s まで"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "%1$s %2$s の「来た理由」メモ"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s 家族の %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "あと %d 件入力できます。"
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d 件のレコードが返されました"
+
+#: 
+msgid "Assign role to all"
+msgstr "全員に役割を割り当てる"
+
+#: 
+msgid "Buyer #"
+msgstr "購入者番号"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "この募金活動の購入者"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "カレンダー埋め込み元"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM の翻訳は POEditor のコミュニティによって管理されています。次の方法でご協力いただけます："
+
+#: 
+msgid "Closed Deposits"
+msgstr "締め済み献金"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "現在の $URL[0] の値"
+
+#: 
+msgid "Custom port"
+msgstr "カスタムポート"
+
+#: 
+msgid "Data Quality"
+msgstr "データ品質"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "%1$s %2$s より献品。"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "メール機能は現在無効になっています。メールを有効にするまで、以下の機能は動作しません"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "推定価格 $%s。"
+
+#: 
+msgid "Fastest workflow"
+msgstr "最速のワークフロー"
+
+#: 
+msgid "File Integrity"
+msgstr "ファイルの整合性"
+
+#: 
+msgid "Filter by log level"
+msgstr "ログレベルでフィルター"
+
+#: 
+msgid "Find the line"
+msgstr "行を検索"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "個別に権限を付与する"
+
+#: 
+msgid "How to Fix"
+msgstr "修正方法"
+
+#: 
+msgid "Import failed: %s"
+msgstr "インポートに失敗しました：%s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "x-api-key ヘッダーを使用してリクエストに API キーを含めてください"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "任意のセットアップ手順へ移動"
+
+#: 
+msgid "Local development"
+msgstr "ローカル開発"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "最低合計金額"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "最低入札額 $%s。"
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "新しい献金 - %1$s 入金番号 %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "受信者の受信トレイを確認して、配信を確認してください。件名を探してください"
+
+#: 
+msgid "Number of lines to display"
+msgstr "表示する行数"
+
+#: 
+msgid "Open Deposits"
+msgstr "未締め献金"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "デバイスが登録するための2分間のウィンドウを開きます"
+
+#: 
+msgid "Output Method"
+msgstr "出力方法"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "この家族のレコードを削除することを確認してください"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "家族情報を確認してください"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "次の献品を %s に郵送してください"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "これらの献金を関連付ける別の家族を選択してください"
+
+#: 
+msgid "Remittance Slip"
+msgstr "送金票"
+
+#: 
+msgid "Report Heading"
+msgstr "レポートの見出し"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "リセットすると完全に削除されます"
+
+#: 
+msgid "Show"
+msgstr "表示"
+
+#: 
+msgid "Signature"
+msgstr "署名"
+
+#: 
+msgid "Sort Data by"
+msgstr "データの並び替え"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "公開外部カレンダーページを iframe に埋め込むことを許可するオリジンのスペース区切りリスト。デフォルトは任意のオリジンを許可します。"
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "公開カレンダーページを iframe に埋め込むことを許可するオリジンのスペース区切りリスト。デフォルトは任意のサイトを許可します。"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "日曜学校グループはこの2つのケースでのみ変更できます"
+
+#: 
+msgid "Supported formats"
+msgstr "サポートされている形式"
+
+#: 
+msgid "System Configuration"
+msgstr "システム設定"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "このボランティア機会に割り当てられている人がいます。削除すると割り当てが解除されます"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "この値は %d 文字以上である必要があります"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "この値は %d 文字以内である必要があります"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "この値は %s 以下である必要があります"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "この値は %s 以上である必要があります"
+
+#: 
+msgid "Total Deposits"
+msgstr "合計献金"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "有効な URL に更新してください："
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "API キーで認証されたユーザー：%s"
+
+#: 
+msgid "Valid Examples"
+msgstr "有効な例"
+
+#: 
+msgid "What this plugin does"
+msgstr "このプラグインの機能"
+
+#: 
+msgid "for all funds"
+msgstr "すべての献金基金"
+
+#: 
+msgid "for fund"
+msgstr "献金基金"
+
+#: 
+msgid "for funds"
+msgstr "献金基金"
+
+#: 
+msgid "user"
+msgstr "ユーザー"
+
+#: 
+msgid "with at least one"
+msgstr "少なくとも1つ"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "教会のアドレス ({{email}}) にも送信する"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "この人を削除してもよろしいですか："
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC モード"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}} 人がチェックインしました。"
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "CRM からメールを作成する際に教会のメールアドレスが削除可能な受信者として自動的に追加されます"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "教会のメール — %s ページで設定されています。"
+
+#: 
+msgid "Closing"
+msgstr "締め切り"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "座標が更新されました"
+
+#: 
+msgid "Copy Addresses"
+msgstr "アドレスをコピー"
+
+#: 
+msgid "Copy Church Email"
+msgstr "教会のメールをコピー"
+
+#: 
+msgid "Email All Members"
+msgstr "全会員にメール送信"
+
+#: 
+msgid "Email Cart Members"
+msgstr "選択した会員にメール送信"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "末尾にスラッシュ (/) が付いている"
+
+#: 
+msgid "Failed to geocode"
+msgstr "ジオコーディングに失敗しました"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "受信者の読み込みに失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "選択したメールアドレスの取得に失敗しました"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "家族のチェックインに失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Ignore"
+msgstr "無視する"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "不完全な住所を無視する"
+
+#: 
+msgid "Kids"
+msgstr "子ども"
+
+#: 
+msgid "Loading family members..."
+msgstr "家族を読み込んでいます..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "受信者を読み込んでいます…"
+
+#: 
+msgid "No email addresses found."
+msgstr "メールアドレスが見つかりません。"
+
+#: 
+msgid "Open in Email Client"
+msgstr "メールクライアントで開く"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "%s 秒後にリダイレクトします..."
+
+#: 
+msgid "Refreshing..."
+msgstr "更新中..."
+
+#: 
+msgid "Remove from Group"
+msgstr "グループから削除"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "{{personName}} をこのクラスから削除しますか？"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "リクエストに失敗しました ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "含める役割"
+
+#: 
+msgid "Select Country"
+msgstr "国を選択"
+
+#: 
+msgid "Select State"
+msgstr "都道府県を選択"
+
+#: 
+msgid "Select a person"
+msgstr "人物を選択"
+
+#: 
+msgid "Select role"
+msgstr "役割を選択"
+
+#: 
+msgid "Select type (optional)"
+msgstr "種類を選択（任意）"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "http:// または https:// で始まる"
+
+#: 
+msgid "This group only has one role."
+msgstr "このグループには役割が1つしかありません。"
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "{{name}} を連れてくるのは誰ですか？"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "{{name}} を迎えに行くのは誰ですか？"
+
+#: 
+msgid "Working..."
+msgstr "処理中..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "{{releaseCount}} バージョン遅れています。以下のものが得られます"
+
+#: 
+msgid "click to expand"
+msgstr "クリックして展開"
+
+#: 
+msgid "pick"
+msgstr "選択"
+
+#: 
+msgid "recipient"
+msgstr "受信者"
+
+#: 
+msgid "recipients"
+msgstr "受信者"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "残り {{hours}} 時間 {{mins}} 分"
+
+#: 
+msgid "Add New Deposit"
+msgstr "新しい献金を追加"
+
+#: 
+msgid "Add New Event"
+msgstr "新しいイベントを追加"
+
+#: 
+msgid "Add New Event Type"
+msgstr "新しいイベント種別を追加"
+
+#: 
+msgid "Add New Family"
+msgstr "新しい家族を追加"
+
+#: 
+msgid "Add New Field"
+msgstr "新しいフィールドを追加"
+
+#: 
+msgid "Add New Fund"
+msgstr "新しい基金を追加"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "新しい奉仕機会を追加"
+
+#: 
+msgid "Add New Person"
+msgstr "新しい人物を追加"
+
+#: 
+msgid "Add New Pledge"
+msgstr "新しい献金誓約を追加"
+
+#: 
+msgid "Add New Role"
+msgstr "新しい役割を追加"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "新しいボランティア機会を追加"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "日曜学校クラスを追加"
+
+#: 
+msgid "Delete this family?"
+msgstr "この家族を削除しますか？"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "この家族を削除しますか？削除する内容を選択するページに移動します。この操作は元に戻せません。"
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "家族削除の確認"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "個人（家族なし）"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "新しい自己登録"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "プロパティ種別削除の確認"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "公開登録フォームから登録した新しい家族と個人を確認してください"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "以下に公開登録フォームからの新しい登録を確認してください。メールまたは電話番号がない登録はフラグが立てられています — フォローアップ前に連絡先情報を確認してください。"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "ボランティア機会削除の確認"
+
