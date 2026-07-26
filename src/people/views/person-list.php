@@ -40,14 +40,14 @@ echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.js"
 // filter links when OptionId and insertion-sequence diverge (issue #9182).
 $ListItem = ListOptionQuery::create()->select(['OptionId', 'OptionName'])->filterById(1)->find()->toArray();
 $ClassificationList = [];
-$ClassificationList[] = ['id' => 0, 'name' => 'Unassigned'];
+$ClassificationList[] = ['id' => 0, 'name' => gettext('Unassigned')];
 foreach ($ListItem as $element) {
     $ClassificationList[] = ['id' => $element['OptionId'], 'name' => $element['OptionName']];
 }
 // Role list — same {id, name} structure so setValue(OptionId) matches correctly.
 $ListItem = ListOptionQuery::create()->select(['OptionId', 'OptionName'])->filterById(2)->find()->toArray();
 $RoleList = [];
-$RoleList[] = ['id' => 0, 'name' => 'Unassigned'];
+$RoleList[] = ['id' => 0, 'name' => gettext('Unassigned')];
 foreach ($ListItem as $element) {
     $RoleList[] = ['id' => $element['OptionId'], 'name' => $element['OptionName']];
 }

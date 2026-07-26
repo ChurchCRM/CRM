@@ -38,12 +38,11 @@ describe("People classification filters", () => {
 
         cy.url().should("include", "Classification=5");
 
-        // TomSelect must show "Non-Attender", NOT the 5th positional entry ("Non-Attender (staff)")
+        // TomSelect must show exactly "Non-Attender", NOT the 5th positional entry ("Non-Attender (staff)")
         cy.get(".filter-Classification")
             .siblings(".ts-wrapper")
             .find(".ts-control .item")
-            .should("contain", "Non-Attender")
-            .and("not.contain", "staff");
+            .should("have.text", "Non-Attender");
     });
 
     it("filter-by-dropdown-choice filters table to matching row", () => {
