@@ -145,7 +145,7 @@ npm run docker:test:stop        # stop containers
 | `npm run docker:test:stop` | Stop running containers |
 | `npm run docker:test:down` | Stop + remove containers and volumes |
 | `npm run docker:test:rebuild` | Rebuild webserver image (no cache) |
-| `npm run docker:test:reset:db` | Reset database to fresh seed data |
+| `npm run docker:test:reset:db` | Reload `cypress/data/seed.sql` into the running database (no container restart) |
 | `npm run docker:test:logs` | View container logs (live) |
 | `npm run docker:test:login:web` | Open shell in webserver |
 | `npm run docker:test:login:db` | Open shell in database |
