@@ -5,9 +5,46 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
+<div class="row mb-3">
+    <div class="col-6 col-lg-3">
+        <a href="#families-card" class="card card-sm text-decoration-none">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-secondary text-white avatar rounded-circle">
+                            <i class="ti ti-users icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium text-body"><?= $familyCount ?></div>
+                        <div class="text-body-secondary"><?= gettext('Families') ?></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-6 col-lg-3">
+        <a href="#people-card" class="card card-sm text-decoration-none">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-success text-white avatar rounded-circle">
+                            <i class="ti ti-user icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium text-body"><?= $personCount ?></div>
+                        <div class="text-body-secondary"><?= gettext('People') ?></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
+        <div class="card" id="families-card">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Families') ?></h3>
             </div>
@@ -24,7 +61,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
+        <div class="card" id="people-card">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('People') ?></h3>
             </div>
