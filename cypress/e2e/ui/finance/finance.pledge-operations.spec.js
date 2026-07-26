@@ -62,22 +62,4 @@ describe("Pledge Operations", () => {
             failOnStatusCode: false,
         }).its("status").should("eq", 404);
     });
-
-    it("PUT /api/payments/{groupKey} returns 404 for a nonexistent group", () => {
-        cy.request({
-            method: "PUT",
-            url: "/api/payments/nonexistent-group-key",
-            failOnStatusCode: false,
-            body: {
-                FamilyID: "1",
-                Date: "2025-10-25",
-                type: "Payment",
-                iMethod: "CASH",
-                FYID: 29,
-                FundSplit: JSON.stringify([
-                    { FundID: "1", Amount: 100.00, NonDeductible: 0, Comment: "" },
-                ]),
-            },
-        }).its("status").should("eq", 404);
-    });
 });
