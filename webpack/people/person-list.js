@@ -14,17 +14,20 @@ window.TomSelect = TomSelect;
 window.initializePeopleListFromServer = (serverVars) => {
   const { RoleList, PropertyList, CustomList, GroupList } = serverVars;
 
-  // Classification - use DOM APIs to escape server values and prevent XSS
+  // Classification — each entry is {id, name}; use the real DB OptionId as the
+  // option value so that setValue(optionId) from URL params maps correctly (issue #9182).
   if (Array.isArray(serverVars.ClassificationList)) {
     for (let i = 0; i < serverVars.ClassificationList.length; i++) {
-      $("<option>").val(i).text(serverVars.ClassificationList[i]).appendTo(".filter-Classification");
+      const item = serverVars.ClassificationList[i];
+      $("<option>").val(item.id).text(item.name).appendTo(".filter-Classification");
     }
   }
 
-  // Populate Role select
+  // Role — same {id, name} structure; use OptionId as value for consistent URL → filter mapping.
   if (Array.isArray(RoleList)) {
     for (let i = 0; i < RoleList.length; i++) {
-      $("<option>").val(i).text(RoleList[i]).appendTo(".filter-Role");
+      const item = RoleList[i];
+      $("<option>").val(item.id).text(item.name).appendTo(".filter-Role");
     }
   }
 
