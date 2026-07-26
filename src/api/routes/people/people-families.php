@@ -130,10 +130,10 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/families/self-register",
-     *     summary="Get the last 100 self-registered families",
+     *     summary="Get the last 100 self-registered families still awaiting review",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Response(response=200, description="Self-registered families ordered by date entered descending",
+     *     @OA\Response(response=200, description="Self-registered families awaiting review, ordered by date entered descending",
      *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(type="object")))
      *     )
      * )
@@ -141,6 +141,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
+            ->filterByNeedsReview(true)
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();

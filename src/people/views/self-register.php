@@ -89,7 +89,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     name: f.FamilyString,
                     email: f.Email,
                     phone: f.HomePhone,
-                    dateEntered: f.DateEntered
+                    dateEntered: f.DateEntered,
+                    needsReview: !!f.NeedsReview
                 };
             });
             var people = (peopleResp[0].people || []).map(function (p) {
@@ -99,7 +100,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     name: p.FullName,
                     email: p.Email,
                     phone: p.HomePhone || p.CellPhone,
-                    dateEntered: p.DateEntered
+                    dateEntered: p.DateEntered,
+                    needsReview: !!p.NeedsReview
                 };
             });
 
@@ -158,8 +160,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         width: '15%',
                         render: function (data, type, row) {
                             return row.type === 'family'
-                                ? window.CRM.renderFamilyActionMenu(row.id, row.name)
-                                : window.CRM.renderPersonActionMenu(row.id, row.name);
+                                ? window.CRM.renderFamilyActionMenu(row.id, row.name, { needsReview: row.needsReview })
+                                : window.CRM.renderPersonActionMenu(row.id, row.name, { needsReview: row.needsReview });
                         }
                     }
                 ],
@@ -175,6 +177,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             );
         });
     }
+
+    // Approve a self-registered family or family-less person, clearing its needs-review flag
+    $(document).on('click', '.approve-review', function () {
+        var entityType = $(this).data('entity-type');
+        var entityId = $(this).data('entity-id');
+        var apiPath = (entityType === 'family' ? 'family/' : 'person/') + entityId + '/approve-review';
+
+        window.CRM.APIRequest({
+            method: 'POST',
+            path: apiPath
+        }).done(function () {
+            window.CRM.notify(i18next.t('Approved'), { type: 'success', delay: 3000 });
+            $('#selfRegistrations').DataTable().destroy();
+            initializeSelfRegister();
+        });
+    });
 
     // Wait for locales to load before initializing
     $(document).ready(function () {

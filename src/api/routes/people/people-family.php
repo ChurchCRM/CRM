@@ -386,6 +386,32 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
     /**
      * @OA\Post(
+     *     path="/family/{familyId}/approve-review",
+     *     summary="Approve a self-registered family, clearing its needs-review flag and its members' flags",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Family and its members approved",
+     *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
+     *     )
+     * )
+     */
+    $group->post('/approve-review', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+        $family->setNeedsReview(false);
+        $family->save();
+
+        foreach ($family->getPeople() as $person) {
+            $person->setNeedsReview(false);
+            $person->save();
+        }
+
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    })->add(EditRecordsRoleAuthMiddleware::class);
+
+    /**
+     * @OA\Post(
      *     path="/family/{familyId}/geocode",
      *     summary="Refresh geocoding (latitude/longitude) for a family's address",
      *     tags={"Families"},

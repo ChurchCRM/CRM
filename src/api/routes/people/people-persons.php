@@ -126,8 +126,8 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      * @OA\Get(
      *     path="/persons/self-register",
      *     operationId="getSelfRegisteredPersons",
-     *     summary="List recently self-registered persons",
-     *     description="Returns up to 100 persons who registered via the public self-registration form, newest first.",
+     *     summary="List recently self-registered persons still awaiting review",
+     *     description="Returns up to 100 family-less persons who registered via the public self-registration form and are still awaiting review, newest first.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(response=200, description="List of self-registered persons",
@@ -145,6 +145,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->filterByFamId(0)
+            ->filterByNeedsReview(true)
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
