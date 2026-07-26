@@ -24,7 +24,7 @@ function initializeDepositSlip() {
     );
   }
 
-  $("#deleteSelectedRows").click(function () {
+  $("#deleteSelectedRows").click(() => {
     var deletedRows = dataT.rows(".selected").data();
     bootbox.confirm({
       title: i18next.t("Confirm Delete"),
@@ -53,13 +53,13 @@ function initializeDepositSlip() {
           label: i18next.t("Delete"),
         },
       },
-      callback: function (result) {
+      callback: (result) => {
         if (result) {
-          $.each(deletedRows, function (index, value) {
+          $.each(deletedRows, (index, value) => {
             window.CRM.APIRequest({
               method: "DELETE",
               path: "deposits/" + value.Id,
-            }).done(function (data) {
+            }).done((data) => {
               dataT.rows(".selected").remove().draw(false);
               updateSelectedCount();
             });
@@ -70,7 +70,7 @@ function initializeDepositSlip() {
   });
 
   $("#depositDate").datepicker({ format: "yyyy-mm-dd", language: window.CRM.lang }).datepicker("setDate", new Date());
-  $("#addNewDeposit").click(function (e) {
+  $("#addNewDeposit").click((e) => {
     var newDeposit = {
       depositType: $("#depositType option:selected").val(),
       depositComment: $("#depositComment").val(),
@@ -79,7 +79,7 @@ function initializeDepositSlip() {
 
     if (!$("#depositComment").val().trim()) {
       bootbox.confirm({
-        title: i18next.t("Add New") + " " + i18next.t("Deposit"),
+        title: i18next.t("Add New Deposit"),
         message: i18next.t("You are about to add a new deposit without a comment"),
         buttons: {
           cancel: {
@@ -89,7 +89,7 @@ function initializeDepositSlip() {
             label: i18next.t("Confirm"),
           },
         },
-        callback: function (result) {
+        callback: (result) => {
           if (result == true) {
             addNewDepositRequest(newDeposit);
           }
@@ -107,7 +107,7 @@ function initializeDepositSlip() {
       data: JSON.stringify(newDeposit),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
-    }).done(function (data) {
+    }).done((data) => {
       window.location.href = window.CRM.root + "/DepositSlipEditor.php?DepositSlipID=" + data.Id;
     });
   }
@@ -122,7 +122,7 @@ function initializeDepositSlip() {
       {
         title: i18next.t("Deposit ID"),
         data: "Id",
-        render: function (data, type, full, meta) {
+        render: (data, type, full, meta) => {
           if (type === "display") {
             return full.Id;
           } else {
@@ -134,7 +134,7 @@ function initializeDepositSlip() {
       {
         title: i18next.t("Deposit Date"),
         data: "Date",
-        render: function (data, type, full, meta) {
+        render: (data, type, full, meta) => {
           if (type === "display") {
             return moment(data).format("MM-DD-YY");
           } else {
@@ -157,9 +157,7 @@ function initializeDepositSlip() {
         title: i18next.t("Closed"),
         data: "Closed",
         searchable: true,
-        render: function (data, type, full, meta) {
-          return data == 1 ? "Yes" : "No";
-        },
+        render: (data, type, full, meta) => (data == 1 ? "Yes" : "No"),
       },
       {
         title: i18next.t("Deposit Type"),
@@ -172,7 +170,7 @@ function initializeDepositSlip() {
         orderable: false,
         searchable: false,
         className: "text-end w-1 no-export",
-        render: function (data, type, full, meta) {
+        render: (data, type, full, meta) => {
           var addPaymentUrl =
             window.CRM.root +
             "/PledgeEditor.php?CurrentDeposit=" +
@@ -244,12 +242,12 @@ function initializeDepositSlip() {
         cancel: { label: i18next.t("Close") },
         confirm: { label: i18next.t("Delete") },
       },
-      callback: function (result) {
+      callback: (result) => {
         if (result) {
           window.CRM.APIRequest({
             method: "DELETE",
             path: "deposits/" + depositId,
-          }).done(function () {
+          }).done(() => {
             dataT.ajax.reload();
             updateSelectedCount();
           });
@@ -268,13 +266,13 @@ function initializeDepositSlip() {
       var skippedCount = 0;
       var validationPending = selectedRows.length;
 
-      $.each(selectedRows, function (index, value) {
+      $.each(selectedRows, (index, value) => {
         $.ajax({
           method: "GET",
           url: window.CRM.root + "/api/deposits/" + value.Id + "/payments",
           dataType: "json",
         })
-          .done(function (data) {
+          .done((data) => {
             var count = Array.isArray(data) ? data.length : 0;
             if (count > 0) {
               validDeposits.push(value);
@@ -282,10 +280,10 @@ function initializeDepositSlip() {
               skippedCount++;
             }
           })
-          .fail(function (jqXHR) {
+          .fail((jqXHR) => {
             skippedCount++;
           })
-          .always(function () {
+          .always(() => {
             validationPending--;
             if (validationPending === 0) {
               // All validations done, show summary and export valid deposits
@@ -295,7 +293,7 @@ function initializeDepositSlip() {
                   { type: "warning", delay: 5000 },
                 );
               }
-              $.each(validDeposits, function (idx, deposit) {
+              $.each(validDeposits, (idx, deposit) => {
                 var url = window.CRM.root + "/api/deposits/" + deposit.Id + "/pdf";
                 window.CRM.VerifyThenLoadAPIContent(url);
               });
@@ -304,7 +302,7 @@ function initializeDepositSlip() {
       });
     } else {
       // csv or other types - proceed as before
-      $.each(selectedRows, function (index, value) {
+      $.each(selectedRows, (index, value) => {
         var url = window.CRM.root + "/api/deposits/" + value.Id + "/" + type;
         window.CRM.VerifyThenLoadAPIContent(url);
       });
@@ -313,6 +311,6 @@ function initializeDepositSlip() {
 }
 
 // Wait for locales to load before initializing
-$(document).ready(function () {
+$(document).ready(() => {
   window.CRM.onLocalesReady(initializeDepositSlip);
 });

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(() => {
   $("#user-listing-table").DataTable(window.CRM.plugin.dataTable);
 
   $(".setting-tip").click(function () {
@@ -64,12 +64,12 @@ function deleteUser(userId, userName) {
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
       "</b></p>",
-    callback: function (result) {
+    callback: (result) => {
       if (result) {
         window.CRM.AdminAPIRequest({
           path: "user/" + userId + "/",
           method: "DELETE",
-        }).done(function () {
+        }).done(() => {
           window.location.href = window.CRM.root + "/admin/system/users";
         });
       }
@@ -86,12 +86,12 @@ function restUserLoginCount(userId, userName) {
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
       "</b></p>",
-    callback: function (result) {
+    callback: (result) => {
       if (result) {
         window.CRM.AdminAPIRequest({
           path: "user/" + userId + "/login/reset",
           method: "POST",
-        }).done(function (data) {
+        }).done((data) => {
           if (data.status === "success") window.location.href = window.CRM.root + "/admin/system/users";
         });
       }
@@ -108,12 +108,12 @@ function resetUserPassword(userId, userName) {
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
       "</b></p>",
-    callback: function (result) {
+    callback: (result) => {
       if (result) {
         window.CRM.AdminAPIRequest({
           path: "user/" + userId + "/password/reset",
           method: "POST",
-        }).done(function (data) {
+        }).done((data) => {
           window.CRM.notify(i18next.t("Password reset for") + " " + window.CRM.escapeHtml(String(userName || "")), {
             type: "success",
           });
@@ -132,12 +132,12 @@ function disableUserTwoFactorAuth(userId, userName) {
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
       "</b></p>",
-    callback: function (result) {
+    callback: (result) => {
       if (result) {
         window.CRM.AdminAPIRequest({
           path: "user/" + userId + "/disableTwoFactor",
           method: "POST",
-        }).done(function (data) {
+        }).done((data) => {
           window.location.href = window.CRM.root + "/admin/system/users";
         });
       }

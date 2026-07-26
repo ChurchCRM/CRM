@@ -391,7 +391,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h4 class="modal-title" id="add-class-label">
-                        <?= gettext('Add') . ' ' . gettext('Sunday School') . ' ' . gettext('Class') ?>
+                        <?= gettext('Add Sunday School Class') ?>
                     </h4>
                 </div>
                 <div class="modal-body">

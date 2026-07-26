@@ -325,7 +325,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <div class="card-header">
                 <h5 class="mb-0">
                     <i class="fa-solid fa-plus"></i>
-                    <?= gettext('Add New') . ' ' . gettext('Field') ?>
+                    <?= gettext('Add New Field') ?>
                 </h5>
             </div>
             <div class="card-body">

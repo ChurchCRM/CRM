@@ -83,7 +83,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <div class="card-footer text-end">
         <a class="btn btn-primary" href="<?= $sRootPath ?>/event/editor">
-            <i class="ti ti-plus me-1"></i><?= gettext('Add New') . ' ' . gettext('Event') ?>
+            <i class="ti ti-plus me-1"></i><?= gettext('Add New Event') ?>
         </a>
     </div>
 </div>

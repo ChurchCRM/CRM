@@ -37,7 +37,7 @@ if (isset($_GET['CancelFamily'])) {
 $DonationMessage = '';
 
 //Set the Page Title
-$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Family');
+$sPageTitle = gettext('Family Delete Confirmation');
 
 // Delete and MoveDonations are now handled by API endpoints:
 // DELETE /api/family/{familyId} and POST /api/family/{familyId}/donations/move

@@ -11,7 +11,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card-status-top bg-primary"></div>
   <div class="card-header">
     <h3 class="card-title mb-0">
-      <i class="ti ti-plus me-2"></i><?= gettext('Add New') . ' ' . gettext('Event Type') ?>
+      <i class="ti ti-plus me-2"></i><?= gettext('Add New Event Type') ?>
     </h3>
   </div>
   <div class="card-body">
