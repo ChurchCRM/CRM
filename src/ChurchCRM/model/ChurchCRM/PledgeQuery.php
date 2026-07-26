@@ -86,6 +86,7 @@ class PledgeQuery extends BasePledgeQuery
         string $sort = 'deposit'
     ): self {
         $this->filterByPledgeOrPayment('Payment');
+        $this->addSelfSelectColumns(); // pin Pledge columns first before any leftJoinWithXxx()
 
         // Apply date filtering based on selected datetype
         if ($datetype === 'Deposit') {
