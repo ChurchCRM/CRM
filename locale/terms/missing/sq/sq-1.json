@@ -48,7 +48,7 @@
   "Sunday School group can't be modified, only in this two cases": "Grupi i Shkollës së Dielës nuk mund të ndryshohet, vetëm në këto dy raste",
   "Supported formats": "Formatet e mbështetura",
   "System Configuration": "Konfigurimi i sistemit",
-  "There are people assigned to this Volunteer Opportunity. Deletion will unassign": "Ka njerëz të caktuar për këtë Mundësi Vullnetare. Fshirja do t'''i heqë caktimet",
+  "There are people assigned to this Volunteer Opportunity. Deletion will unassign": "Ka njerëz të caktuar për këtë Mundësi Vullnetare. Fshirja do t'i heqë caktimet",
   "This value cannot be less than %d characters long": "Kjo vlerë nuk mund të jetë më e shkurtër se %d karaktere",
   "This value cannot be more than %d characters long": "Kjo vlerë nuk mund të jetë më e gjatë se %d karaktere",
   "This value cannot be more than %s": "Kjo vlerë nuk mund të jetë më shumë se %s",
@@ -142,6 +142,6 @@
   "Review new families and individuals who signed up on your public registration form": "Rishikoni familjet dhe individët e rinj që u regjistruan në formularin tuaj publik të regjistrimit",
   "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up.": "Rishikoni regjistrimet e reja nga formulari juaj publik. Shënimet pa email ose telefon janë shënuar — verifikoni informacionin e kontaktit para se të ndiqni.",
   "Volunteer Opportunity Delete Confirmation": "Konfirmim i fshirjes së mundësisë vullnetare",
-  "You are {{releaseCount}} releases behind. Here'''s what you'''ll gain": "Jeni {{releaseCount}} versione prapa. Ja çfarë do të fitoni",
-  "Do you want to delete this family? You'''ll be taken to a page to choose what to delete. This cannot be undone.": "Dëshironi të fshini këtë familje? Do të çoheni në një faqe për të zgjedhur çfarë të fshini. Kjo nuk mund të zhbëhet."
+  "You are {{releaseCount}} releases behind. Here's what you'll gain": "Jeni {{releaseCount}} versione prapa. Ja çfarë do të fitoni",
+  "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone.": "Dëshironi të fshini këtë familje? Do të çoheni në një faqe për të zgjedhur çfarë të fshini. Kjo nuk mund të zhbëhet."
 }
