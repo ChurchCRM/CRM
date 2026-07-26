@@ -73,6 +73,8 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
         it("POST /api/payments/pledges - Valid CASH payload returns payment with GroupKey", () => {
             // Verifies that the post-save redirect in the JS editor receives a GroupKey.
             // Seed data has FamilyID 1 and FundID 1, so this request should succeed.
+            // Note: the /api/payments/pledges endpoint returns `payment` as a decoded JSON
+            // object (not a double-encoded string), so resp.body.payment is already parsed.
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/payments/pledges",
@@ -80,7 +82,7 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 200
             ).then((resp) => {
                 expect(resp.body).to.have.property("payment");
-                const parsed = JSON.parse(resp.body.payment);
+                const parsed = resp.body.payment;
                 expect(parsed).to.have.property("GroupKey");
                 expect(parsed.GroupKey).to.be.a("string").and.to.have.length.greaterThan(0);
                 expect(parsed).to.have.property("total");
@@ -92,6 +94,8 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
             // Verifies the core fix: multi-fund FundSplit no longer stops after the first row.
             // Both rows use FundID 1 (the only fund in seed data); the pledge table has
             // no unique constraint on (famId, fundId, date), so two rows are valid.
+            // Note: the /api/payments/pledges endpoint returns `payment` as a decoded JSON
+            // object (not a double-encoded string), so resp.body.payment is already parsed.
             const multiSplit = JSON.stringify([
                 { FundID: "1", Amount: 75.00, NonDeductible: 0, Comment: "Fund split 1" },
                 { FundID: "1", Amount: 25.00, NonDeductible: 0, Comment: "Fund split 2" },
@@ -103,7 +107,7 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 200
             ).then((resp) => {
                 expect(resp.body).to.have.property("payment");
-                const parsed = JSON.parse(resp.body.payment);
+                const parsed = resp.body.payment;
                 expect(parsed).to.have.property("GroupKey");
                 // Both rows persisted — funds array should have 2 entries
                 expect(parsed.funds).to.be.an("array").with.length(2);
