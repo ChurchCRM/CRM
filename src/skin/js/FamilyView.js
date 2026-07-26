@@ -303,13 +303,15 @@ function initializeFamilyView() {
   });
 
   $("#verifyDownloadPDF").on("click", () => {
-    window.open(`${window.CRM.root}/Reports/ConfirmReport.php?familyId=${window.CRM.currentFamily}`, "_blank");
+    window.open(`${window.CRM.root}/people/report/verify?familyId=${window.CRM.currentFamily}`, "_blank");
     $("#confirm-verify").modal("hide");
   });
 
   $("#verifyEmailPDF").on("click", () => {
     $("#confirm-verify").modal("hide");
-    window.location.href = `${window.CRM.root}/Reports/ConfirmReportEmail.php?familyId=${window.CRM.currentFamily}`;
+    const form = document.getElementById("verifyEmailPDFForm");
+    form.querySelector('input[name="familyId"]').value = window.CRM.currentFamily;
+    form.submit();
   });
 
   // Photos
