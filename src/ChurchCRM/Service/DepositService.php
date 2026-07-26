@@ -164,7 +164,6 @@ class DepositService {
             ->addAsColumn('sumAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->addAsColumn('FundName', 'GROUP_CONCAT(' . DonationFundTableMap::COL_FUN_NAME . " SEPARATOR ', ')")
             ->joinDonationFund()
-            ->leftJoinWithFamily()
             ->orderBy('GroupKey', 'ASC')
             ->find();
 
