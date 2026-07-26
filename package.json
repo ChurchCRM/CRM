@@ -62,7 +62,7 @@
         "docker:test:login:web": "docker compose -f docker/docker-compose.yaml --profile test exec webserver bash",
         "docker:test:login:db": "docker compose -f docker/docker-compose.yaml --profile test exec database bash",
         "docker:test:rebuild": "docker compose -f docker/docker-compose.yaml --profile test build --no-cache webserver && docker compose -f docker/docker-compose.yaml --profile test up -d webserver",
-        "docker:test:reset:db": "docker compose -f docker/docker-compose.yaml --profile test exec -T database sh -c 'exec mysql -u\"$MYSQL_USER\" -p\"$MYSQL_PASSWORD\" \"$MYSQL_DATABASE\"' < cypress/data/seed.sql",
+        "docker:test:reset:db": "docker compose -f docker/docker-compose.yaml --profile test exec -T database sh -c 'MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\"' < cypress/data/seed.sql",
         "docker:dev:start": "cp docker/Config.php src/Include/Config.php && docker compose -f docker/docker-compose.dev.yaml up -d",
         "docker:dev:stop": "docker compose -f docker/docker-compose.dev.yaml stop",
         "docker:dev:down": "docker compose -f docker/docker-compose.dev.yaml down -v",

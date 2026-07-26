@@ -139,8 +139,12 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
+        // Only standalone individuals (no family) — family members are already
+        // represented via GET /families/self-register and would otherwise be
+        // duplicated in both lists.
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
+            ->filterByFamId(0)
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();

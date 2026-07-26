@@ -5927,6 +5927,64 @@
       "weddingDate": "2003-08-10",
       "active": true,
       "verified": false
+    },
+    {
+      "name": "Bennett",
+      "selfRegistered": true,
+      "address": {
+        "line1": "77 Willow Creek Dr",
+        "line2": null,
+        "city": "Kansas City",
+        "state": "MO",
+        "zip": "64105",
+        "country": "United States"
+      },
+      "contact": {
+        "phone": {
+          "home": "(816) 555-0175",
+          "work": null,
+          "cell": null
+        },
+        "email": "family.bennett@demo.churchcrm.io"
+      },
+      "members": [
+        {
+          "title": "Mr",
+          "firstName": "Daniel",
+          "middleName": null,
+          "lastName": "Bennett",
+          "birthYear": 1988,
+          "birthMonth": 4,
+          "birthDay": 15,
+          "gender": "male",
+          "email": "daniel.bennett@demo.churchcrm.io",
+          "phone": "(816) 555-0176",
+          "notes": [],
+          "createdAt": "2024-06-20T08:00:00.000Z",
+          "classification": "Guest",
+          "familyRole": 1
+        },
+        {
+          "title": "Mrs",
+          "firstName": "Emily",
+          "middleName": null,
+          "lastName": "Bennett",
+          "birthYear": 1990,
+          "birthMonth": 7,
+          "birthDay": 22,
+          "gender": "female",
+          "email": "emily.bennett@demo.churchcrm.io",
+          "phone": null,
+          "notes": [],
+          "createdAt": "2024-06-20T08:00:00.000Z",
+          "classification": "Guest",
+          "familyRole": 2
+        }
+      ],
+      "notes": [],
+      "createdAt": "2024-06-20",
+      "active": true,
+      "verified": false
     }
   ],
   "individuals": [
@@ -6006,6 +6064,22 @@
       "createdAt": "2024-05-15T08:00:00.000Z",
       "classification": "Member",
       "familyRole": 3
+    },
+    {
+      "firstName": "Olivia",
+      "middleName": null,
+      "lastName": "Reyes",
+      "birthYear": 1994,
+      "birthMonth": 8,
+      "birthDay": 2,
+      "gender": "female",
+      "email": "olivia.reyes@demo.churchcrm.io",
+      "phone": "(816) 555-0210",
+      "notes": [],
+      "createdAt": "2024-06-22T08:00:00.000Z",
+      "classification": "Guest",
+      "familyRole": 1,
+      "selfRegistered": true
     }
   ]
 }
