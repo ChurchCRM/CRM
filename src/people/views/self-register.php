@@ -1,26 +1,21 @@
 <?php
 
-require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/PageInit.php';
-
-$sPageTitle = gettext('Self Registrations');
-require_once __DIR__ . '/../Include/Header.php';
-
 use ChurchCRM\dto\SystemURLs;
 
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= _("Families") ?></h3>
+                <h3 class="card-title"><?= gettext('Families') ?></h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                <table id="families" class="table table-bordered data-table">
-                    <tbody></tbody>
-                </table>
+                    <table id="families" class="table table-bordered data-table">
+                        <tbody></tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -31,13 +26,13 @@ use ChurchCRM\dto\SystemURLs;
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= _("People") ?></h3>
+                <h3 class="card-title"><?= gettext('People') ?></h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                <table id="people" class="table table-bordered data-table">
-                    <tbody></tbody>
-                </table>
+                    <table id="people" class="table table-bordered data-table">
+                        <tbody></tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -49,7 +44,7 @@ use ChurchCRM\dto\SystemURLs;
 
         var dataTableConfig = {
             ajax: {
-                url: window.CRM.root +"/api/families/self-register",
+                url: window.CRM.root + "/api/families/self-register",
                 dataSrc: 'families'
             },
             autoWidth: false,
@@ -85,13 +80,13 @@ use ChurchCRM\dto\SystemURLs;
                     searchable: false,
                     className: 'text-end w-1 no-export',
                     width: '15%',
-                    render: function(data, type, row) {
+                    render: function (data, type, row) {
                         return window.CRM.renderFamilyActionMenu(row.Id, row.FamilyString);
                     }
                 }
             ],
-            order: [[2,"desc"]]
-        }
+            order: [[2, "desc"]]
+        };
 
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
@@ -99,7 +94,7 @@ use ChurchCRM\dto\SystemURLs;
 
         dataTableConfig = {
             ajax: {
-                url: window.CRM.root +"/api/persons/self-register",
+                url: window.CRM.root + "/api/persons/self-register",
                 dataSrc: 'people'
             },
             autoWidth: false,
@@ -141,13 +136,14 @@ use ChurchCRM\dto\SystemURLs;
                     searchable: false,
                     className: 'text-end w-1 no-export',
                     width: '12%',
-                    render: function(data, type, row) {
+                    render: function (data, type, row) {
                         return window.CRM.renderPersonActionMenu(row.Id, row.FirstName + ' ' + row.LastName, { familyId: row.FamId });
                     }
                 }
             ],
-            order: [[3,"desc"]]
-        }
+            order: [[3, "desc"]]
+        };
+
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#people").DataTable(dataTableConfig);
     }
@@ -158,4 +154,4 @@ use ChurchCRM\dto\SystemURLs;
     });
 </script>
 <?php
-require_once __DIR__ . '/../Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
