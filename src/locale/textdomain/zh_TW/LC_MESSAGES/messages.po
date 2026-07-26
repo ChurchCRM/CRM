@@ -16927,3 +16927,527 @@ msgstr "目標金額必須為非負數"
 msgid "thru %s"
 msgstr "至 %s"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "「來訪原因」備註（%1$s %2$s）"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s 家庭的 %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "還可再新增 %d 筆資料。"
+
+#: 
+msgid "%d record(s) returned"
+msgstr "已回傳 %d 筆記錄"
+
+#: 
+msgid "Assign role to all"
+msgstr "指派角色給所有人"
+
+#: 
+msgid "Buyer #"
+msgstr "買家編號"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "此募款活動的買家"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "行事曆嵌入來源"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM 的翻譯由社群在 POEditor 上共同維護，您可以透過以下方式協助"
+
+#: 
+msgid "Closed Deposits"
+msgstr "已結算奉獻"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "目前的 $URL[0] 值"
+
+#: 
+msgid "Custom port"
+msgstr "自訂連接埠"
+
+#: 
+msgid "Data Quality"
+msgstr "資料品質"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "由 %1$s %2$s 捐贈。"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "電子郵件功能目前已停用，以下功能在啟用電子郵件前將無法使用"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "估計金額 $%s。"
+
+#: 
+msgid "Fastest workflow"
+msgstr "最快速的工作流程"
+
+#: 
+msgid "File Integrity"
+msgstr "檔案完整性"
+
+#: 
+msgid "Filter by log level"
+msgstr "依記錄層級篩選"
+
+#: 
+msgid "Find the line"
+msgstr "找到該行"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "授予個人權限"
+
+#: 
+msgid "How to Fix"
+msgstr "如何修復"
+
+#: 
+msgid "Import failed: %s"
+msgstr "匯入失敗：%s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "在請求中使用 x-api-key 標頭加入您的 API 金鑰"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "跳至任意設定步驟"
+
+#: 
+msgid "Local development"
+msgstr "本機開發"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "最低總金額"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "最低出價 $%s。"
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "新奉獻款項 - %1$s 存款編號 %2$s（%3$s）"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "請查看收件人的收件匣以確認送達，請尋找主旨"
+
+#: 
+msgid "Number of lines to display"
+msgstr "顯示行數"
+
+#: 
+msgid "Open Deposits"
+msgstr "未結算奉獻"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "開啟 2 分鐘的裝置登錄視窗"
+
+#: 
+msgid "Output Method"
+msgstr "輸出方式"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "請確認刪除此家庭記錄"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "請確認您的家庭資訊"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "請將您下一次的奉獻郵寄至 %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "請選擇另一個家庭以關聯這些奉獻"
+
+#: 
+msgid "Remittance Slip"
+msgstr "奉獻回條"
+
+#: 
+msgid "Report Heading"
+msgstr "報告標題"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "重設將永久刪除"
+
+#: 
+msgid "Show"
+msgstr "顯示"
+
+#: 
+msgid "Signature"
+msgstr "簽名"
+
+#: 
+msgid "Sort Data by"
+msgstr "資料排序依據"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "以空格分隔的來源清單，允許將公開外部行事曆頁面嵌入 iframe。預設值允許任何來源。"
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "以空格分隔的來源，允許將公開行事曆頁面嵌入 iframe。預設值允許任何網站。"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "主日學班級只有在以下兩種情況下才能修改"
+
+#: 
+msgid "Supported formats"
+msgstr "支援的格式"
+
+#: 
+msgid "System Configuration"
+msgstr "系統設定"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "此義工機會已有人員指派，刪除將取消指派"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "此值不可少於 %d 個字元"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "此值不可多於 %d 個字元"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "此值不可超過 %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "此值必須至少為 %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "奉獻總計"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "請將其更新為有效的 URL，"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "使用者已透過 API 金鑰驗證：%s"
+
+#: 
+msgid "Valid Examples"
+msgstr "有效範例"
+
+#: 
+msgid "What this plugin does"
+msgstr "此外掛程式的功能"
+
+#: 
+msgid "for all funds"
+msgstr "適用於所有基金"
+
+#: 
+msgid "for fund"
+msgstr "適用於基金"
+
+#: 
+msgid "for funds"
+msgstr "適用於基金"
+
+#: 
+msgid "user"
+msgstr "使用者"
+
+#: 
+msgid "with at least one"
+msgstr "至少包含一個"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "同時傳送至教會地址（{{email}}）"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "您確定要將此人從以下移除嗎"
+
+#: 
+msgid "BCC Mode"
+msgstr "密件副本模式"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "已報到 {{count}} 人。"
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "從 CRM 撰寫電子郵件時，教會電子郵件地址將自動新增為可移除的收件人"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "教會電子郵件 — 在 %s 頁面上設定。"
+
+#: 
+msgid "Closing"
+msgstr "關閉"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "座標已更新"
+
+#: 
+msgid "Copy Addresses"
+msgstr "複製地址"
+
+#: 
+msgid "Copy Church Email"
+msgstr "複製教會電子郵件"
+
+#: 
+msgid "Email All Members"
+msgstr "傳送電子郵件給所有會友"
+
+#: 
+msgid "Email Cart Members"
+msgstr "傳送電子郵件給選單中的會友"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "以斜線（/）結尾"
+
+#: 
+msgid "Failed to geocode"
+msgstr "地理編碼失敗"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "載入收件人失敗，請再試一次。"
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "擷取選單電子郵件地址失敗"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "家庭報到失敗，請再試一次。"
+
+#: 
+msgid "Ignore"
+msgstr "忽略"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "忽略不完整的地址"
+
+#: 
+msgid "Kids"
+msgstr "兒童"
+
+#: 
+msgid "Loading family members..."
+msgstr "正在載入家庭成員⋯"
+
+#: 
+msgid "Loading recipients…"
+msgstr "正在載入收件人⋯"
+
+#: 
+msgid "No email addresses found."
+msgstr "找不到電子郵件地址。"
+
+#: 
+msgid "Open in Email Client"
+msgstr "在電子郵件用戶端中開啟"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "將在 %s 秒後重新導向⋯"
+
+#: 
+msgid "Refreshing..."
+msgstr "正在重新整理⋯"
+
+#: 
+msgid "Remove from Group"
+msgstr "從群組中移除"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "要將 {{personName}} 從此班級移除嗎？"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "請求失敗（{{status}}）"
+
+#: 
+msgid "Roles to include"
+msgstr "要包含的角色"
+
+#: 
+msgid "Select Country"
+msgstr "選擇國家"
+
+#: 
+msgid "Select State"
+msgstr "選擇州／省"
+
+#: 
+msgid "Select a person"
+msgstr "選擇一位成員"
+
+#: 
+msgid "Select role"
+msgstr "選擇角色"
+
+#: 
+msgid "Select type (optional)"
+msgstr "選擇類型（選填）"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "以 http:// 或 https:// 開頭"
+
+#: 
+msgid "This group only has one role."
+msgstr "此群組只有一個角色。"
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "誰負責帶 {{name}} 進來？"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "誰負責接 {{name}}？"
+
+#: 
+msgid "Working..."
+msgstr "處理中⋯"
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "您落後了 {{releaseCount}} 個版本，以下是您將獲得的更新"
+
+#: 
+msgid "click to expand"
+msgstr "點擊展開"
+
+#: 
+msgid "pick"
+msgstr "選取"
+
+#: 
+msgid "recipient"
+msgstr "收件人"
+
+#: 
+msgid "recipients"
+msgstr "收件人"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "剩餘 {{hours}} 小時 {{mins}} 分鐘"
+
+#: 
+msgid "Add New Deposit"
+msgstr "新增奉獻款項"
+
+#: 
+msgid "Add New Event"
+msgstr "新增活動"
+
+#: 
+msgid "Add New Event Type"
+msgstr "新增活動類型"
+
+#: 
+msgid "Add New Family"
+msgstr "新增家庭"
+
+#: 
+msgid "Add New Field"
+msgstr "新增欄位"
+
+#: 
+msgid "Add New Fund"
+msgstr "新增基金"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "新增機會"
+
+#: 
+msgid "Add New Person"
+msgstr "新增成員"
+
+#: 
+msgid "Add New Pledge"
+msgstr "新增奉獻承諾"
+
+#: 
+msgid "Add New Role"
+msgstr "新增角色"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "新增義工機會"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "新增主日學班級"
+
+#: 
+msgid "Delete this family?"
+msgstr "要刪除此家庭嗎？"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "您確定要刪除此家庭嗎？您將被帶往一個頁面以選擇要刪除的內容，此操作無法復原。"
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "確認刪除家庭"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "個人（無家庭）"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "新自助登記"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "確認刪除屬性類型"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "審查透過公開登記表單新登記的家庭與個人"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "請在下方審查來自公開登記表單的新登記資料，沒有電子郵件或電話的項目已被標記，請在後續跟進前確認聯絡資訊。"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "確認刪除義工機會"
+

@@ -16777,3 +16777,527 @@ msgstr "goalAmount harus non-negatif"
 msgid "thru %s"
 msgstr "s.d. %s"
 
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "Catatan \"Alasan Datang\" untuk %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s dari keluarga %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d entri lagi dapat ditambahkan."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d rekaman dikembalikan"
+
+#: 
+msgid "Assign role to all"
+msgstr "Tetapkan peran ke semua"
+
+#: 
+msgid "Buyer #"
+msgstr "Pembeli #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Pembeli untuk penggalangan dana ini"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Asal Sematkan Kalender"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "Terjemahan ChurchCRM dikelola oleh komunitas di POEditor. Anda dapat membantu dengan"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Setoran Ditutup"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Nilai $URL[0] saat ini"
+
+#: 
+msgid "Custom port"
+msgstr "Port khusus"
+
+#: 
+msgid "Data Quality"
+msgstr "Kualitas Data"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Disumbangkan oleh %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "Fungsi email saat ini dinonaktifkan. Fitur-fitur berikut tidak akan berfungsi hingga email diaktifkan"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Nilai perkiraan $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Alur kerja tercepat"
+
+#: 
+msgid "File Integrity"
+msgstr "Integritas Berkas"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filter berdasarkan tingkat log"
+
+#: 
+msgid "Find the line"
+msgstr "Temukan baris"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Berikan izin individual"
+
+#: 
+msgid "How to Fix"
+msgstr "Cara Memperbaiki"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Impor gagal: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Sertakan kunci API Anda dalam permintaan menggunakan header x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Loncat ke langkah pengaturan mana pun"
+
+#: 
+msgid "Local development"
+msgstr "Pengembangan lokal"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Jumlah Total Minimum"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Penawaran minimum $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Pembayaran Baru - %1$s Setoran # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Periksa kotak masuk penerima untuk mengonfirmasi pengiriman. Cari subjek"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Jumlah baris yang ditampilkan"
+
+#: 
+msgid "Open Deposits"
+msgstr "Setoran Terbuka"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Membuka jendela 2 menit bagi perangkat untuk mendaftar di"
+
+#: 
+msgid "Output Method"
+msgstr "Metode Output"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Harap konfirmasi penghapusan rekaman keluarga ini"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Harap konfirmasi informasi keluarga Anda"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Kirimkan persembahan Anda berikutnya ke %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Pilih keluarga lain untuk dikaitkan dengan persembahan ini"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Slip Pengiriman"
+
+#: 
+msgid "Report Heading"
+msgstr "Judul Laporan"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Pengaturan ulang akan menghapus secara permanen"
+
+#: 
+msgid "Show"
+msgstr "Tampilkan"
+
+#: 
+msgid "Signature"
+msgstr "Tanda Tangan"
+
+#: 
+msgid "Sort Data by"
+msgstr "Urutkan Data berdasarkan"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Daftar asal yang dipisahkan spasi yang diizinkan untuk menyematkan halaman kalender eksternal publik dalam iframe."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Asal yang dipisahkan spasi yang diizinkan untuk menyematkan halaman kalender publik dalam iframe."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Kelompok Sekolah Minggu tidak dapat diubah, hanya dalam dua kasus ini"
+
+#: 
+msgid "Supported formats"
+msgstr "Format yang didukung"
+
+#: 
+msgid "System Configuration"
+msgstr "Konfigurasi Sistem"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Ada orang yang ditugaskan ke Kesempatan Sukarela ini. Penghapusan akan mencabut penugasan"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Nilai ini tidak boleh kurang dari %d karakter"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Nilai ini tidak boleh lebih dari %d karakter"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Nilai ini tidak boleh lebih dari %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Nilai ini harus minimal %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Total Setoran"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Perbarui ke URL yang valid yang"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Pengguna terautentikasi melalui Kunci API: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Contoh yang Valid"
+
+#: 
+msgid "What this plugin does"
+msgstr "Apa yang dilakukan plugin ini"
+
+#: 
+msgid "for all funds"
+msgstr "untuk semua dana"
+
+#: 
+msgid "for fund"
+msgstr "untuk dana"
+
+#: 
+msgid "for funds"
+msgstr "untuk dana-dana"
+
+#: 
+msgid "user"
+msgstr "pengguna"
+
+#: 
+msgid "with at least one"
+msgstr "dengan setidaknya satu"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Kirim juga ke alamat gereja ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Apakah Anda yakin ingin menghapus orang ini dari"
+
+#: 
+msgid "BCC Mode"
+msgstr "Mode BCC"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}} orang telah check-in."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "Alamat email gereja secara otomatis ditambahkan sebagai penerima yang dapat dihapus saat membuat email dari CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "Email gereja — dikonfigurasi di halaman %s."
+
+#: 
+msgid "Closing"
+msgstr "Penutupan"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Koordinat Diperbarui"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Salin Alamat"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Salin Email Gereja"
+
+#: 
+msgid "Email All Members"
+msgstr "Email Semua Anggota Jemaat"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Email Anggota yang Dipilih"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Diakhiri dengan garis miring (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Gagal melakukan geokode"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Gagal memuat penerima. Silakan coba lagi."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Gagal mengambil alamat email yang dipilih"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Check-in keluarga gagal. Silakan coba lagi."
+
+#: 
+msgid "Ignore"
+msgstr "Abaikan"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Abaikan Alamat yang Tidak Lengkap"
+
+#: 
+msgid "Kids"
+msgstr "Anak-anak"
+
+#: 
+msgid "Loading family members..."
+msgstr "Memuat anggota keluarga..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Memuat penerima…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Tidak ada alamat email yang ditemukan."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Buka di Klien Email"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Mengalihkan dalam %s detik..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Memperbarui..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Hapus dari Kelompok"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Hapus {{personName}} dari kelas ini?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Permintaan gagal ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Peran yang disertakan"
+
+#: 
+msgid "Select Country"
+msgstr "Pilih Negara"
+
+#: 
+msgid "Select State"
+msgstr "Pilih Provinsi"
+
+#: 
+msgid "Select a person"
+msgstr "Pilih seseorang"
+
+#: 
+msgid "Select role"
+msgstr "Pilih peran"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Pilih jenis (opsional)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Dimulai dengan http:// atau https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Kelompok ini hanya memiliki satu peran."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Siapa yang mengantar {{name}}?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Siapa yang menjemput {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "Memproses..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Anda tertinggal {{releaseCount}} rilis. Inilah yang akan Anda dapatkan"
+
+#: 
+msgid "click to expand"
+msgstr "klik untuk perluas"
+
+#: 
+msgid "pick"
+msgstr "pilih"
+
+#: 
+msgid "recipient"
+msgstr "penerima"
+
+#: 
+msgid "recipients"
+msgstr "penerima"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}j {{mins}}m tersisa"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Tambah Setoran Baru"
+
+#: 
+msgid "Add New Event"
+msgstr "Tambah Acara Baru"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Tambah Jenis Acara Baru"
+
+#: 
+msgid "Add New Family"
+msgstr "Tambah Keluarga Baru"
+
+#: 
+msgid "Add New Field"
+msgstr "Tambah Bidang Baru"
+
+#: 
+msgid "Add New Fund"
+msgstr "Tambah Dana Baru"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Tambah Kesempatan Baru"
+
+#: 
+msgid "Add New Person"
+msgstr "Tambah Orang Baru"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Tambah Komitmen Persembahan Baru"
+
+#: 
+msgid "Add New Role"
+msgstr "Tambah Peran Baru"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Tambah Kesempatan Sukarela Baru"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Tambah Kelas Sekolah Minggu"
+
+#: 
+msgid "Delete this family?"
+msgstr "Hapus keluarga ini?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Apakah Anda ingin menghapus keluarga ini? Anda akan dibawa ke halaman untuk memilih apa yang akan dihapus. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Konfirmasi Penghapusan Keluarga"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Individu (tanpa keluarga)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Pendaftaran Mandiri Baru"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Konfirmasi Penghapusan Jenis Properti"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Tinjau keluarga dan individu baru yang mendaftar melalui formulir pendaftaran publik Anda"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Tinjau pendaftaran baru dari formulir pendaftaran publik Anda di bawah ini. Entri tanpa email atau telepon ditandai — verifikasi informasi kontak sebelum menindaklanjuti."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Konfirmasi Penghapusan Kesempatan Sukarela"
+
