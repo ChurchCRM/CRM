@@ -256,7 +256,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <td class="text-end" data-order="<?= InputUtils::escapeAttribute($pledge['payment_amount']) ?>">
                                         <?= CurrencyFormatter::formatHtml($pledge['payment_amount']) ?>
                                     </td>
-                                    <td class="text-end <?= $statusClass ?>" data-order="<?= InputUtils::escapeAttribute($remaining ?? $pledge['payment_amount']) ?>">
+                                    <td class="text-end <?= $statusClass ?>" data-order="<?= InputUtils::escapeAttribute($remaining ?? 0) ?>">
                                         <?= $remaining !== null ? CurrencyFormatter::formatHtml($remaining) : '<span class="text-body-secondary">—</span>' ?>
                                         <small class="d-block text-body-secondary"><?= $remaining !== null ? number_format($percentComplete, 0) . '%' : gettext('No pledge') ?></small>
                                     </td>
@@ -272,8 +272,46 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.addEventListener('DOMContentLoaded', function () {
+    // Currency config for footerCallback — mirrors PHP CurrencyFormatter::format()
+    var _crmCur = {
+        sym: <?= json_encode(CurrencyFormatter::symbol()) ?>,
+        pos: <?= json_encode(CurrencyFormatter::position()) ?>,
+        th:  <?= json_encode(SystemConfig::getValue('sThousandsSeparator')) ?>,
+        dec: <?= json_encode(SystemConfig::getValue('sDecimalSeparator')) ?>
+    };
+    function _fmtCur(n) {
+        var parts = Math.abs(n).toFixed(2).split('.');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, _crmCur.th || ',');
+        var s = parts.join(_crmCur.dec || '.');
+        return _crmCur.pos === 'after'
+            ? s + '\u00A0' + _crmCur.sym
+            : _crmCur.sym + '\u00A0' + s;
+    }
+
     if (document.getElementById('pledgeFundSummary')) {
-        var fundCfg = $.extend({}, window.CRM.plugin.dataTable, { order: [[0, 'asc']], pageLength: 25 });
+        var fundCfg = $.extend({}, window.CRM.plugin.dataTable, {
+            order: [[0, 'asc']],
+            pageLength: 25,
+            footerCallback: function () {
+                var api = this.api();
+                // Currency columns: 1=Pledges, 2=Payments, 5=Overpaid, 6=Underpaid
+                [1, 2, 5, 6].forEach(function (colIdx) {
+                    var total = 0;
+                    api.column(colIdx, {search: 'applied'}).nodes().each(function (cell) {
+                        total += parseFloat(cell.dataset.order) || 0;
+                    });
+                    $(api.column(colIdx).footer()).text(_fmtCur(total));
+                });
+                // Integer count columns: 3=# Pledges, 4=# Payments
+                [3, 4].forEach(function (colIdx) {
+                    var total = 0;
+                    api.column(colIdx, {search: 'applied'}).nodes().each(function (cell) {
+                        total += parseInt(cell.textContent, 10) || 0;
+                    });
+                    $(api.column(colIdx).footer()).text(total);
+                });
+            }
+        });
         $('#pledgeFundSummary').DataTable(fundCfg);
     }
 
