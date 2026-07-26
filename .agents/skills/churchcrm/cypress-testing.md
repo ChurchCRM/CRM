@@ -1086,7 +1086,8 @@ Config files live in `cypress/configs/` (NOT `docker/`):
 **CRITICAL: Always install Cypress via `npm install`** <!-- learned: 2026-03-07 -->
 - Never use `npx cypress install` — it can produce a corrupt binary with wrong permissions.
 - If Cypress binary is broken or missing, fix with: `npx cypress cache clear && npm install`
-- The config points at a Docker container. Start the stack (`npm run docker:test`) before running tests.
+- The config points at a Docker container. Start the stack (`npm run docker:test:start`) before running tests. There is **no** `docker:test` script — that name doesn't exist in `package.json`.
+- If the stack is already running (containers up but from a prior/stale run), `docker:test:start` is a no-op that just confirms health — it does **not** reseed the database. Use `npm run docker:test:reset:db` to tear down volumes and bring the containers back up with fresh seed data when a spec depends on specific seeded rows (e.g. `DepositSlipID=5`). <!-- learned: 2026-07-25 -->
 
 ### Running Tests <!-- learned: 2026-03-26 -->
 
@@ -1129,7 +1130,7 @@ Tests cannot run locally without Docker — the app server lives in a container.
 node --version  # must be v24.x
 
 # 1. Start test containers
-npm run docker:test
+npm run docker:test:start
 
 # 2. Run tests
 npm run test                          # full suite
@@ -1683,6 +1684,16 @@ npx cypress run --config-file cypress/configs/docker.config.ts \
 ```
 
 Then read `src/event-tests-output.txt` for the full result. Do **not** run `npx cypress install` / `cache clear` to try to "fix" it — the project rules forbid touching the binary cache and the issue isn't in the cache anyway.
+
+**Faster diagnostic than `DEBUG=cypress:*`**: `npx cypress verify` fails immediately with a clean, undoctored error instead of the truncated `MODULE_NOT_FOUND` from `cypress run`: <!-- learned: 2026-07-25 -->
+
+```
+/Users/.../Cypress.app/Contents/MacOS/Cypress: bad option: --no-sandbox
+/Users/.../Cypress.app/Contents/MacOS/Cypress: bad option: --smoke-test
+/Users/.../Cypress.app/Contents/MacOS/Cypress: bad option: --ping=439
+```
+
+This confirms the same root cause from a different angle: whatever binary the sandbox actually invokes at that path isn't the real Electron entry point (it doesn't recognize standard Electron CLI flags), consistent with the doubled-`Contents/` path corruption above. Use `npx cypress verify` as the quick sanity check before spending time on a full spec run.
 
 ### Filtering DataTables 2.x via JS API, not Selectors <!-- learned: 2026-04-09 -->
 
