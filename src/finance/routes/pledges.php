@@ -44,6 +44,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'fundTotals' => $pledgeData['fund_totals'],
             'totalPledges' => $pledgeData['total_pledges'],
             'totalPayments' => $pledgeData['total_payments'],
+            'overallTotals' => $pledgeData['overall_totals'],
             'availableYears' => $availableYears,
             'selectedFyid' => $fyid,
             'currentFyid' => $currentFyid,

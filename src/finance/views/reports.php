@@ -86,17 +86,17 @@ if ($iFYMonth === 1) {
                     </p>
                     
                     <div class="list-group list-group-flush">
-                        <!-- Pledge Summary -->
-                        <a href="<?= SystemURLs::getRootPath() ?>/FinancialReports.php?ReportType=Pledge%20Summary" class="list-group-item list-group-item-action finance-list-group-item py-3">
+                        <!-- Pledge Summary (now interactive DataTable dashboard) -->
+                        <a href="<?= SystemURLs::getRootPath() ?>/finance/pledge/dashboard" class="list-group-item list-group-item-action finance-list-group-item py-3">
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
                                         <i class="fa-solid fa-chart-bar text-info me-2"></i>
                                         <?= gettext('Pledge Summary') ?>
                                     </h6>
-                                    <small class="text-body-secondary"><?= gettext('Summary of pledges vs payments by fund for the fiscal year.') ?></small>
+                                    <small class="text-body-secondary"><?= gettext('Interactive pledges-vs-payments summary by fund with sort, search, and export.') ?></small>
                                 </div>
-                                <span class="badge bg-info rounded-pill">PDF/CSV</span>
+                                <span class="badge bg-info rounded-pill">DataTable</span>
                             </div>
                         </a>
                         

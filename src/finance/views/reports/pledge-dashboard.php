@@ -111,7 +111,83 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <?php endif; ?>
 
-    <!-- Results Table -->
+    <!-- Fund Summary DataTable -->
+    <?php if (!empty($fundTotals)): ?>
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card finance-card shadow-sm border-0">
+                <div class="card-status-top bg-info"></div>
+                <div class="card-header py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-chart-bar me-1"></i>
+                        <?= gettext('Fund Summary') ?>
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table id="pledgeFundSummary" class="table table-hover table-vcenter mb-0 w-100">
+                            <thead>
+                                <tr>
+                                    <th><?= gettext('Fund') ?></th>
+                                    <th class="text-end"><?= gettext('Pledges') ?></th>
+                                    <th class="text-end"><?= gettext('Payments') ?></th>
+                                    <th class="text-end"><?= gettext('# Pledges') ?></th>
+                                    <th class="text-end"><?= gettext('# Payments') ?></th>
+                                    <th class="text-end"><?= gettext('Overpaid') ?></th>
+                                    <th class="text-end"><?= gettext('Underpaid') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($fundTotals as $fundTotal): ?>
+                                    <tr>
+                                        <td><?= InputUtils::escapeHTML($fundTotal['fund_name']) ?></td>
+                                        <td class="text-end" data-order="<?= $fundTotal['total_pledged'] ?>">
+                                            <?= CurrencyFormatter::formatHtml($fundTotal['total_pledged']) ?>
+                                        </td>
+                                        <td class="text-end" data-order="<?= $fundTotal['total_paid'] ?>">
+                                            <?= CurrencyFormatter::formatHtml($fundTotal['total_paid']) ?>
+                                        </td>
+                                        <td class="text-end"><?= (int) $fundTotal['pledge_count'] ?></td>
+                                        <td class="text-end"><?= (int) $fundTotal['payment_count'] ?></td>
+                                        <td class="text-end" data-order="<?= $fundTotal['overpaid'] ?>">
+                                            <?= CurrencyFormatter::formatHtml($fundTotal['overpaid']) ?>
+                                        </td>
+                                        <td class="text-end" data-order="<?= $fundTotal['underpaid'] ?>">
+                                            <?= CurrencyFormatter::formatHtml($fundTotal['underpaid']) ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                            <?php if (!empty($overallTotals)): ?>
+                            <tfoot>
+                                <tr class="fw-bold table-secondary">
+                                    <td><?= gettext('Total') ?></td>
+                                    <td class="text-end" data-order="<?= $overallTotals['total_pledged'] ?>">
+                                        <?= CurrencyFormatter::formatHtml($overallTotals['total_pledged']) ?>
+                                    </td>
+                                    <td class="text-end" data-order="<?= $overallTotals['total_paid'] ?>">
+                                        <?= CurrencyFormatter::formatHtml($overallTotals['total_paid']) ?>
+                                    </td>
+                                    <td class="text-end"><?= (int) $overallTotals['pledge_count'] ?></td>
+                                    <td class="text-end"><?= (int) $overallTotals['payment_count'] ?></td>
+                                    <td class="text-end" data-order="<?= $overallTotals['overpaid'] ?>">
+                                        <?= CurrencyFormatter::formatHtml($overallTotals['overpaid']) ?>
+                                    </td>
+                                    <td class="text-end" data-order="<?= $overallTotals['underpaid'] ?>">
+                                        <?= CurrencyFormatter::formatHtml($overallTotals['underpaid']) ?>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            <?php endif; ?>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <!-- Family Pledges DataTable -->
     <div class="row">
         <div class="col-12">
             <?php if (empty($familyPledges)): ?>
@@ -127,12 +203,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <h5 class="mb-0">
                             <i class="fa-solid fa-handshake me-1"></i>
                             <?= gettext('Family Pledges') ?>
-                            <span class="badge bg-light text-dark ms-2"><?= count($familyPledges) ?></span>
                         </h5>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table table-hover mb-0">
+                            <table id="familyPledges" class="table table-hover table-vcenter mb-0 w-100">
                                 <thead>
                                     <tr>
                                         <th><?= gettext('Family Name') ?></th>
@@ -146,48 +221,40 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($familyPledges as $familyIdx => $family): ?>
-                                        <?php
-                                        $pledgeCount = count($family['pledges']);
-                                        $isMultiplePledges = $pledgeCount > 1;
-                                        ?>
-                                        <?php foreach ($family['pledges'] as $idx => $pledge): ?>
-                                            <tr <?= $isMultiplePledges ? 'style="border-left: 3px solid #007bff;"' : '' ?>>
-                                                <td class="<?= $idx === 0 ? 'fw-bold' : 'text-body-secondary small ps-4' ?>">
-                                                    <?php if ($idx === 0): ?>
-                                                        <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $family['family_id'] ?>">
-                                                            <?= InputUtils::escapeHTML($family['family_name']) ?>
-                                                        </a>
-                                                    <?php else: ?>
-                                                        <span class="text-body-secondary">↳</span>
-                                                    <?php endif; ?>
+                                    <?php foreach ($familyPledges as $family): ?>
+                                        <?php foreach ($family['pledges'] as $pledge): ?>
+                                            <?php
+                                            $remaining = $pledge['pledge_amount'] - $pledge['payment_amount'];
+                                            $percentComplete = $pledge['pledge_amount'] > 0 ? ($pledge['payment_amount'] / $pledge['pledge_amount']) * 100 : 0;
+                                            if ($percentComplete >= 100) {
+                                                $statusClass = 'text-success fw-bold';
+                                            } elseif ($percentComplete >= 75) {
+                                                $statusClass = 'text-info';
+                                            } elseif ($percentComplete >= 50) {
+                                                $statusClass = 'text-warning';
+                                            } else {
+                                                $statusClass = 'text-danger';
+                                            }
+                                            ?>
+                                            <tr>
+                                                <td class="fw-bold">
+                                                    <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $family['family_id'] ?>">
+                                                        <?= InputUtils::escapeHTML($family['family_name']) ?>
+                                                    </a>
                                                 </td>
                                                 <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                                 <td class="text-body-secondary small">
-                                                    <?= $idx === 0 ? InputUtils::escapeHTML($family['envelope'] ?? '') : '' ?>
+                                                    <?= InputUtils::escapeHTML($family['envelope'] ?? '') ?>
                                                 </td>
                                                 <?php endif; ?>
                                                 <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
-                                                <td class="text-end fw-bold">
+                                                <td class="text-end fw-bold" data-order="<?= $pledge['pledge_amount'] ?>">
                                                     <?= CurrencyFormatter::formatHtml($pledge['pledge_amount']) ?>
                                                 </td>
-                                                <td class="text-end">
+                                                <td class="text-end" data-order="<?= $pledge['payment_amount'] ?>">
                                                     <?= CurrencyFormatter::formatHtml($pledge['payment_amount']) ?>
                                                 </td>
-                                                <?php
-                                                $remaining = $pledge['pledge_amount'] - $pledge['payment_amount'];
-                                                $percentComplete = $pledge['pledge_amount'] > 0 ? ($pledge['payment_amount'] / $pledge['pledge_amount']) * 100 : 0;
-                                                if ($percentComplete >= 100) {
-                                                    $statusClass = 'text-success fw-bold';
-                                                } elseif ($percentComplete >= 75) {
-                                                    $statusClass = 'text-info';
-                                                } elseif ($percentComplete >= 50) {
-                                                    $statusClass = 'text-warning';
-                                                } else {
-                                                    $statusClass = 'text-danger';
-                                                }
-                                                ?>
-                                                <td class="text-end <?= $statusClass ?>">
+                                                <td class="text-end <?= $statusClass ?>" data-order="<?= $remaining ?>">
                                                     <?= CurrencyFormatter::formatHtml($remaining) ?>
                                                     <small class="d-block text-body-secondary"><?= number_format($percentComplete, 0) ?>%</small>
                                                 </td>
@@ -203,5 +270,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+document.addEventListener('DOMContentLoaded', function () {
+    var fundCfg = { order: [[0, 'asc']], pageLength: 25 };
+    $.extend(fundCfg, window.CRM.plugin.dataTable);
+    $('#pledgeFundSummary').DataTable(fundCfg);
+
+    var famCfg = { order: [[0, 'asc']], pageLength: 25 };
+    $.extend(famCfg, window.CRM.plugin.dataTable);
+    $('#familyPledges').DataTable(famCfg);
+});
+</script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
