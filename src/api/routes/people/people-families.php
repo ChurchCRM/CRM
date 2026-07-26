@@ -187,8 +187,8 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
             ->filterByRemainingUses(['min' => 1])
             ->filterByValidUntilDate(['min' => DateTimeUtils::getToday()])
             ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
-            ->addAsColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
-            ->addAsColumn(TokenTableMap::COL_REFERENCE_ID, 'FamilyId')
+            ->addAsColumn('FamilyName', FamilyTableMap::COL_FAM_NAME)
+            ->addAsColumn('FamilyId', TokenTableMap::COL_REFERENCE_ID)
             ->limit(100)
             ->find();
 

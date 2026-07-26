@@ -99,7 +99,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         // Pre-fetch member counts per group
         $memberCounts = [];
         foreach (Person2group2roleP2g2rQuery::create()
-            ->addAsColumn('COUNT(*)', 'cnt')
+            ->addAsColumn('cnt', 'COUNT(*)')
             ->select(['GroupId', 'cnt'])
             ->groupByGroupId()
             ->find() as $row) {

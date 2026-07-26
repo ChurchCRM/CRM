@@ -652,7 +652,7 @@ class Person extends BasePerson implements PhotoInterface
         $rawQry = PersonCustomQuery::create();
         foreach ($allPersonCustomFields as $customfield) {
             if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
-                $rawQry->addAsColumn($customfield->getId());
+                $rawQry->addAsColumn(str_replace(['.', '(', ')'], '', $customfield->getId()), $customfield->getId());
             }
         }
         $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());

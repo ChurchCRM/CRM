@@ -173,9 +173,12 @@ class Deposit extends BaseDeposit
         $pledges = PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->groupByGroupKey()
-            ->addAsColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->addAsColumn('sumAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->joinFamily(null, Criteria::LEFT_JOIN)
-            ->addAsColumn(FamilyTableMap::COL_FAM_NAME)
+            ->addAsColumn(
+                str_replace(['.', '(', ')'], '', FamilyTableMap::COL_FAM_NAME),
+                FamilyTableMap::COL_FAM_NAME
+            )
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
@@ -431,7 +434,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CHECK')
-            ->addAsColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->addAsColumn('sumAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
@@ -441,7 +444,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CASH')
-            ->addAsColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->addAsColumn('sumAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
@@ -471,9 +474,9 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
         ->filterByDepId($this->getId())
         ->groupByFundId()
-        ->addAsColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'Total')
+        ->addAsColumn('Total', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
         ->joinDonationFund()
-        ->addAsColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
+        ->addAsColumn('Name', DonationFundTableMap::COL_FUN_NAME)
         ->orderBy(DonationFundTableMap::COL_FUN_NAME)
         ->select(['Name', 'Total'])
         ->find();
