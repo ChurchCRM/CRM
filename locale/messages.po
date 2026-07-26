@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-25 23:41+0000\n"
+"POT-Creation-Date: 2026-07-26 00:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -475,7 +475,40 @@ msgstr ""
 msgid "Add New Class"
 msgstr ""
 
+msgid "Add New Deposit"
+msgstr ""
+
+msgid "Add New Event"
+msgstr ""
+
+msgid "Add New Event Type"
+msgstr ""
+
+msgid "Add New Family"
+msgstr ""
+
+msgid "Add New Field"
+msgstr ""
+
+msgid "Add New Fund"
+msgstr ""
+
 msgid "Add New Group"
+msgstr ""
+
+msgid "Add New Opportunity"
+msgstr ""
+
+msgid "Add New Person"
+msgstr ""
+
+msgid "Add New Pledge"
+msgstr ""
+
+msgid "Add New Role"
+msgstr ""
+
+msgid "Add New Volunteer Opportunity"
 msgstr ""
 
 msgid "Add Note"
@@ -506,6 +539,9 @@ msgid "Add Students"
 msgstr ""
 
 msgid "Add Students to Cart"
+msgstr ""
+
+msgid "Add Sunday School Class"
 msgstr ""
 
 msgid "Add Teachers to Cart"
@@ -4683,6 +4719,9 @@ msgstr ""
 msgid "Family Data Verified"
 msgstr ""
 
+msgid "Family Delete Confirmation"
+msgstr ""
+
 msgid "Family Editor"
 msgstr ""
 
@@ -8105,9 +8144,6 @@ msgstr ""
 msgid "Opens a 2-minute window for devices to register at"
 msgstr ""
 
-msgid "Opportunity"
-msgstr ""
-
 msgid "Option name is required"
 msgstr ""
 
@@ -9034,7 +9070,7 @@ msgstr ""
 msgid "Property List"
 msgstr ""
 
-msgid "Property Type"
+msgid "Property Type Delete Confirmation"
 msgstr ""
 
 msgid "Property Type List"
@@ -12121,7 +12157,7 @@ msgstr ""
 msgid "Volunteer Opportunities"
 msgstr ""
 
-msgid "Volunteer Opportunity"
+msgid "Volunteer Opportunity Delete Confirmation"
 msgstr ""
 
 msgid "Volunteer Opportunity Editor"
