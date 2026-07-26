@@ -44,6 +44,10 @@ class FamilyPledgeSummaryService
         $fundPledgeCounts = [];
         $fundPaymentCounts = [];
 
+        // Store family and fund info for payment-only backfill step below
+        $familyInfo = []; // famId => ['family_id', 'family_name', 'envelope']
+        $fundInfo = [];   // fundId => fund_name
+
         // Organize payments by family and fund for lookup
         $familyPayments = [];
         foreach ($payments as $payment) {
@@ -56,6 +60,7 @@ class FamilyPledgeSummaryService
             }
             
             $fundId = $fund ? (int) $fund->getId() : ($rawFundId ?: -1);
+            $fundName = $fund ? $fund->getName() : gettext('Other');
             
             if (!isset($familyPayments[$famId])) {
                 $familyPayments[$famId] = [];
@@ -65,6 +70,21 @@ class FamilyPledgeSummaryService
             }
             
             $familyPayments[$famId][$fundId] += (float) $payment->getAmount();
+
+            // Save family/fund metadata so we can backfill payment-only rows later
+            if (!isset($familyInfo[$famId])) {
+                $payFamily = $payment->getFamily();
+                if ($payFamily) {
+                    $familyInfo[$famId] = [
+                        'family_id' => $famId,
+                        'family_name' => $payFamily->getName(),
+                        'envelope' => $payFamily->getEnvelope(),
+                    ];
+                }
+            }
+            if (!isset($fundInfo[$fundId])) {
+                $fundInfo[$fundId] = $fundName;
+            }
 
             // Count individual payment records per fund
             if (!isset($fundPaymentCounts[$fundId])) {
@@ -133,6 +153,41 @@ class FamilyPledgeSummaryService
             $familiesPledges[$famId]['pledges'][$fundId]['pledge_amount'] += $pledgeAmount;
         }
 
+        // Backfill payment-only entries: payments for a family-fund pair that has
+        // no matching pledge (e.g. ad-hoc / one-time donations). Without this step
+        // those amounts would be excluded from fund totals entirely.
+        foreach ($familyPayments as $famId => $fundPayments) {
+            foreach ($fundPayments as $fundId => $paymentAmount) {
+                // Skip if the pledge loop already created an entry for this pair
+                if (isset($familiesPledges[$famId]['pledges'][$fundId])) {
+                    continue;
+                }
+
+                // Ensure the family container exists (payment-only family has no pledge row)
+                if (!isset($familiesPledges[$famId])) {
+                    if (!isset($familyInfo[$famId])) {
+                        continue; // No metadata available — cannot reconstruct; skip
+                    }
+                    $info = $familyInfo[$famId];
+                    $familiesPledges[$famId] = [
+                        'family_id' => $info['family_id'],
+                        'family_name' => $info['family_name'],
+                        'envelope' => $info['envelope'],
+                        'pledges' => [],
+                    ];
+                }
+
+                $familiesPledges[$famId]['pledges'][$fundId] = [
+                    'fund_id' => $fundId,
+                    'fund_name' => $fundInfo[$fundId] ?? gettext('Other'),
+                    'pledge_amount' => 0.0,
+                    'payment_amount' => $paymentAmount,
+                    'group_key' => null,
+                    'pledge_type' => 'Payment',
+                ];
+            }
+        }
+
         // Convert pledges associative array to indexed array and sort by fund name
         foreach ($familiesPledges as &$family) {
             $family['pledges'] = array_values($family['pledges']);
@@ -177,7 +232,7 @@ class FamilyPledgeSummaryService
                 $diff = $pledge['payment_amount'] - $pledge['pledge_amount'];
                 if ($diff > 0) {
                     $fundTotals[$fundId]['overpaid'] += $diff;
-                } else {
+                } elseif ($diff < 0) {
                     $fundTotals[$fundId]['underpaid'] -= $diff;
                 }
                 

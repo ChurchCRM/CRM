@@ -274,14 +274,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('pledgeFundSummary')) {
-        var fundCfg = { order: [[0, 'asc']], pageLength: 25 };
-        $.extend(fundCfg, window.CRM.plugin.dataTable);
+        var fundCfg = $.extend({}, window.CRM.plugin.dataTable, { order: [[0, 'asc']], pageLength: 25 });
         $('#pledgeFundSummary').DataTable(fundCfg);
     }
 
     if (document.getElementById('familyPledges')) {
-        var famCfg = { order: [[0, 'asc']], pageLength: 25 };
-        $.extend(famCfg, window.CRM.plugin.dataTable);
+        var famCfg = $.extend({}, window.CRM.plugin.dataTable, { order: [[0, 'asc']], pageLength: 25 });
         $('#familyPledges').DataTable(famCfg);
     }
 });
