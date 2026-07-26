@@ -1,9 +1,9 @@
 {
   "%d archived fundraiser": {
-    "other": ""
+    "other": "กิจกรรมระดมทุนที่เก็บถาวร %d รายการ"
   },
   "%d person successfully added to selected family.": {
-    "other": ""
+    "other": "เพิ่ม %d คนในครอบครัวที่เลือกเรียบร้อยแล้ว"
   },
   "\"Why Came\" notes for %1$s %2$s": "บันทึก \"เหตุผลที่มา\" สำหรับ %1$s %2$s",
   "%1$s of the %2$s family": "%1$s จากครอบครัว %2$s",

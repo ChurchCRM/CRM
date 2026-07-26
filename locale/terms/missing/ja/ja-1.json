@@ -1,9 +1,9 @@
 {
   "%d archived fundraiser": {
-    "other": ""
+    "other": "%d 件のアーカイブされた募金"
   },
   "%d person successfully added to selected family.": {
-    "other": ""
+    "other": "%d 人を選択した家族に正常に追加しました。"
   },
   "\"Why Came\" notes for %1$s %2$s": "%1$s %2$s の「来た理由」メモ",
   "%1$s of the %2$s family": "%2$s 家族の %1$s",

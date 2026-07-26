@@ -1,9 +1,9 @@
 {
   "%d archived fundraiser": {
-    "other": ""
+    "other": "%d 个已存档的募捐活动"
   },
   "%d person successfully added to selected family.": {
-    "other": ""
+    "other": "已成功将 %d 人添加到所选家庭。"
   },
   "\"Why Came\" notes for %1$s %2$s": "%1$s %2$s 的“来访原因”备注",
   "%1$s of the %2$s family": "%2$s 家庭的 %1$s",
