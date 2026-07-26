@@ -472,7 +472,10 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Email contact info segmented by role (teachers/parents/kids)")
+     *     @OA\Response(response=200, description="Email contact info segmented by role (teachers/parents/kids)"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Email permission required"),
+     *     @OA\Response(response=404, description="Group not found")
      * )
      */
     $group->get('/{groupID:[0-9]+}/sundayschool/emails', function (Request $request, Response $response, array $args): Response {
@@ -553,7 +556,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve email addresses'), [], 500, $e, $request);
         }
-    })->add(GroupMiddleware::class);
+    })->add(GroupMiddleware::class)->add(EmailRoleAuthMiddleware::class);
 
     /**
      * @OA\Get(
