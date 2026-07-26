@@ -44,6 +44,23 @@ describe("Main Dashboard - Deposits widget authorization", () => {
         beforeEach(() => cy.setupAdminSession());
 
         it("renders the deposit chart and calls the deposits API", () => {
+            // Deposit #1 is the only fixture deposit with pledges attached, so
+            // it's the only one with real chart data (the others sum to
+            // null). The fixture ships a static date that inevitably ages
+            // past the API's 90-day window, starving the chart of data —
+            // refreshing it to today here keeps the test stable regardless
+            // of when it runs.
+            cy.request({
+                method: "POST",
+                url: "/api/deposits/1",
+                body: {
+                    depositType: "Bank",
+                    depositComment: "Updated Test Deposit",
+                    depositDate: new Date().toISOString().slice(0, 10),
+                    depositClosed: false,
+                },
+            });
+
             cy.intercept("GET", "**/api/deposits/dashboard").as("depositsApi");
 
             cy.visit("v2/dashboard");
