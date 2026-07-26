@@ -63,15 +63,15 @@ class FundRaiserService
             $itemQuery->filterByFrId($fundraiserIds);
         }
         $itemRows = $itemQuery
-            ->withColumn(DonatedItemTableMap::COL_DI_FR_ID, 'frId')
-            ->withColumn('COUNT(*)', 'items')
-            ->withColumn(
+            ->addAsColumn('frId', DonatedItemTableMap::COL_DI_FR_ID)
+            ->addAsColumn('items', 'COUNT(*)')
+            ->addAsColumn(
+                'raised',
                 'COALESCE(SUM(CASE WHEN ' . DonatedItemTableMap::COL_DI_BUYER_ID . ' > 0 AND '
                 . DonatedItemTableMap::COL_DI_SELLPRICE . ' > 0 THEN '
-                . DonatedItemTableMap::COL_DI_SELLPRICE . ' ELSE 0 END), 0)',
-                'raised'
+                . DonatedItemTableMap::COL_DI_SELLPRICE . ' ELSE 0 END), 0)'
             )
-            ->withColumn('COALESCE(SUM(' . DonatedItemTableMap::COL_DI_ESTPRICE . '), 0)', 'est')
+            ->addAsColumn('est', 'COALESCE(SUM(' . DonatedItemTableMap::COL_DI_ESTPRICE . '), 0)')
             ->groupBy('FrId')
             ->select(['frId', 'items', 'raised', 'est'])
             ->find();
@@ -93,8 +93,8 @@ class FundRaiserService
             $buyerQuery->filterByPnFrId($fundraiserIds);
         }
         $buyerRows = $buyerQuery
-            ->withColumn(PaddleNumTableMap::COL_PN_FR_ID, 'frId')
-            ->withColumn('COUNT(*)', 'buyers')
+            ->addAsColumn('frId', PaddleNumTableMap::COL_PN_FR_ID)
+            ->addAsColumn('buyers', 'COUNT(*)')
             ->groupBy('PnFrId')
             ->select(['frId', 'buyers'])
             ->find();
@@ -234,12 +234,12 @@ class FundRaiserService
             // "Raised" mirrors getViewModel(): sold items only (buyer > 0 AND sell > 0).
             $itemRow = DonatedItemQuery::create()
                 ->filterByFrId($yearIds)
-                ->withColumn('COUNT(*)', 'items')
-                ->withColumn(
+                ->addAsColumn('items', 'COUNT(*)')
+                ->addAsColumn(
+                    'raised',
                     'COALESCE(SUM(CASE WHEN ' . DonatedItemTableMap::COL_DI_BUYER_ID . ' > 0 AND '
                     . DonatedItemTableMap::COL_DI_SELLPRICE . ' > 0 THEN '
-                    . DonatedItemTableMap::COL_DI_SELLPRICE . ' ELSE 0 END), 0)',
-                    'raised'
+                    . DonatedItemTableMap::COL_DI_SELLPRICE . ' ELSE 0 END), 0)'
                 )
                 ->select(['items', 'raised'])
                 ->findOne();

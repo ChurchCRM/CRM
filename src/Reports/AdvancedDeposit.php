@@ -101,7 +101,7 @@ $pledgeObjects = $financialService->getAdvancedDepositReportData(
 );
 
 // Convert Propel objects to array format for backward compatibility with existing PDF/CSV code
-// Using withColumn() fields (FamilyName, FamilyAddress1, etc.) added by PledgeQuery
+// Using addAsColumn() fields (FamilyName, FamilyAddress1, etc.) added by PledgeQuery
 $rsReport = [];
 foreach ($pledgeObjects as $pledge) {
     $row = [
