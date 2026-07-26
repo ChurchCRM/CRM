@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
@@ -559,8 +560,86 @@ $fmtBytes = static function ($bytes): string {
             </div>
         </div>
     </div>
-    <!-- PHP Configuration and Web Server standalone cards were merged into
-         the Environment card's PHP and Web Server tabs above. -->
+    <!-- Anonymous Telemetry configuration card -->
+    <?php
+    $telemetryLevel   = TelemetryService::getLevel();
+    $telemetryEnabled = TelemetryService::isEnabled();
+    $levelLabels = [
+        TelemetryService::LEVEL_NONE     => gettext('Disabled'),
+        TelemetryService::LEVEL_ERRORS   => gettext('Errors — server errors and JS exceptions'),
+        TelemetryService::LEVEL_WARNINGS => gettext('Warnings — warnings, errors, and JS exceptions'),
+        TelemetryService::LEVEL_FULL     => gettext('Full — page views, warnings, errors, and JS exceptions'),
+    ];
+    ?>
+    <div class="col-12">
+    <div class="card <?= $telemetryEnabled ? '' : 'border-secondary' ?>">
+        <div class="card-status-top <?= $telemetryEnabled ? 'bg-success' : 'bg-secondary' ?>"></div>
+        <div class="card-header">
+            <h4 class="mb-0">
+                <i class="ti ti-broadcast me-2"></i><?= gettext('Anonymous Telemetry') ?>
+                <?php if ($telemetryEnabled): ?>
+                    <span class="badge bg-success ms-2"><?= InputUtils::escapeHTML($levelLabels[$telemetryLevel]) ?></span>
+                <?php else: ?>
+                    <span class="badge bg-secondary ms-2"><?= gettext('Disabled') ?></span>
+                <?php endif; ?>
+            </h4>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <h5 class="mb-2"><?= gettext('Collection level') ?></h5>
+                    <div class="d-flex flex-column gap-2">
+                        <?php foreach ($levelLabels as $lv => $label): ?>
+                            <?php $active = $lv === $telemetryLevel; ?>
+                            <button type="button"
+                                    class="btn text-start <?= $active ? ($lv === TelemetryService::LEVEL_NONE ? 'btn-secondary' : 'btn-success') : ($lv === TelemetryService::LEVEL_NONE ? 'btn-ghost-danger' : 'btn-ghost-success') ?> js-debug-telemetry-toggle"
+                                    data-level="<?= InputUtils::escapeAttribute($lv) ?>"
+                                    <?= $active ? 'disabled aria-current="true"' : '' ?>>
+                                <?php if ($active): ?><i class="ti ti-check me-1"></i><?php endif; ?>
+                                <?= InputUtils::escapeHTML($label) ?>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php if ($telemetryEnabled): ?>
+                        <p class="text-secondary small mt-2 mb-0">
+                            <?= gettext('Sending to') ?> <code class="debug-code"><?= InputUtils::escapeHTML(TelemetryService::POSTHOG_ENDPOINT) ?></code>
+                        </p>
+                    <?php endif; ?>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h5 class="mb-2"><?= gettext('What is sent') ?></h5>
+                    <div class="table-responsive">
+                        <table class="table table-sm mb-2">
+                            <thead><tr><th><?= gettext('Data') ?></th><th><?= gettext('Purpose') ?></th></tr></thead>
+                            <tbody>
+                                <tr><td><?= gettext('Installation UUID') ?></td><td><?= gettext('Count unique installs') ?></td></tr>
+                                <tr><td><?= gettext('ChurchCRM version') ?></td><td><?= gettext('Track adoption') ?></td></tr>
+                                <tr><td><?= gettext('Locale') ?></td><td><?= gettext('Prioritise translations') ?></td></tr>
+                                <tr><td><?= gettext('Page route') ?> <span class="badge bg-info-lt text-info ms-1"><?= gettext('full only') ?></span></td><td><?= gettext('Understand feature usage') ?></td></tr>
+                                <tr><td><?= gettext('PHP version') ?></td><td><?= gettext('Plan runtime support') ?></td></tr>
+                                <tr><td><?= gettext('OS family') ?></td><td><?= gettext('Understand deployments') ?></td></tr>
+                                <tr><td><?= gettext('Log level + message') ?> <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('errors+') ?></span></td><td><?= gettext('Catch recurring errors') ?></td></tr>
+                                <tr><td><?= gettext('JS exceptions') ?> <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('errors+') ?></span></td><td><?= gettext('Catch JS errors') ?></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <strong class="d-block mb-1 small"><?= gettext('Never sent') ?></strong>
+                    <ul class="mb-0 ps-3 small text-secondary">
+                        <li><?= gettext('Church name, address, or contact details') ?></li>
+                        <li><?= gettext('User names, emails, or roles') ?></li>
+                        <li><?= gettext('Member or family records') ?></li>
+                        <li><?= gettext('Financial data') ?></li>
+                        <li><?= gettext('IP addresses') ?></li>
+                        <li><?= gettext('URLs with query strings (record IDs are stripped)') ?></li>
+                    </ul>
+                    <p class="small text-secondary mt-2 mb-0">
+                        <?= gettext('Data is processed by PostHog on EU infrastructure.') ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 </div>
 
 <style nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -834,6 +913,9 @@ $fmtBytes = static function ($bytes): string {
             initializeDebugPage();
         });
     }
+
+
 </script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/debug.min.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

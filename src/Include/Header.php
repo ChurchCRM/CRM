@@ -9,11 +9,12 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
-use ChurchCRM\view\MenuRenderer;
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\NotificationService;
+use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\MenuRenderer;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
 
@@ -47,6 +48,7 @@ $MenuFirst = 1;
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
   <?= PluginManager::getPluginHeadContent() ?>
+
 </head>
 
 <body class="antialiased">
@@ -169,7 +171,13 @@ $MenuFirst = 1;
               addRecords: <?= json_encode($currentUser->isAddRecordsEnabled()) ?>,
               editRecords: <?= json_encode($currentUser->isEditRecordsEnabled()) ?>,
           },
-          PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
+          PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
+          telemetry: <?= json_encode([
+              'level'      => TelemetryService::getLevel(),
+              'key'        => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
+              'endpoint'   => TelemetryService::POSTHOG_ENDPOINT,
+              'distinctID' => SystemConfig::getValue('sSystemID'),
+          ]) ?>
       });
       // Initialize moment locale if available
       if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
@@ -422,9 +430,9 @@ $MenuFirst = 1;
               </li>
               <?php foreach ($aBreadcrumbs as $crumb) : ?>
                 <?php if (!empty($crumb['active'])) : ?>
-              <li class="breadcrumb-item active" aria-current="page"><?= $crumb['label'] ?></li>
+              <li class="breadcrumb-item active" aria-current="page"><?= InputUtils::escapeHTML($crumb['label']) ?></li>
                 <?php else : ?>
-              <li class="breadcrumb-item"><a href="<?= $crumb['url'] ?>"><?= $crumb['label'] ?></a></li>
+              <li class="breadcrumb-item"><a href="<?= InputUtils::escapeAttribute($crumb['url']) ?>"><?= InputUtils::escapeHTML($crumb['label']) ?></a></li>
                 <?php endif; ?>
               <?php endforeach; ?>
             </ol>
@@ -439,9 +447,9 @@ $MenuFirst = 1;
         <?php endif; ?>
         <div class="row g-2 align-items-center">
           <div class="col">
-            <h2 class="page-title"><?= $sPageTitle ?></h2>
+            <h2 class="page-title"><?= InputUtils::escapeHTML($sPageTitle) ?></h2>
             <?php if (!empty($sPageSubtitle)) : ?>
-            <div class="text-body-secondary mt-1"><?= $sPageSubtitle ?></div>
+            <div class="text-body-secondary mt-1"><?= InputUtils::escapeHTML($sPageSubtitle) ?></div>
             <?php endif; ?>
           </div>
         </div>
@@ -484,3 +492,13 @@ foreach (NotificationService::getNotifications() as $notification) {
         <?php endif; ?>
       </div>
 <?php } ?>
+<?php
+// Server-side page view telemetry for legacy (non-API) pages.
+// Strip query string so no record IDs reach PostHog.
+$_telemetryRoute = explode('?', $_SERVER['PHP_SELF'] ?? 'unknown', 2)[0];
+TelemetryService::capturePageView($_telemetryRoute);
+
+if (TelemetryService::isEnabled()):
+?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/telemetry.min.js') ?>" defer></script>
+<?php endif; ?>
