@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-// GET /groups/cart-to-group — display the cart-to-group assignment page.
+// GET /groups/cart/add — display the cart-to-group assignment page.
 // Also handles the one-action "Create Group + ADD Cart" flow:
 // when ?groupeCreationID=<id> is present and the cart is non-empty the
 // cart is immediately emptied into the newly-created group (role 0 ->
@@ -20,7 +20,7 @@ use Slim\Views\PhpRenderer;
 // /groups/* routes in src/groups/index.php via MvcAppFactory::create().
 // It enforces isManageGroupsEnabled() and returns HTTP 403 before any
 // closure runs when the user lacks the permission.
-$app->get('/cart-to-group', function (Request $request, Response $response) {
+$app->get('/cart/add', function (Request $request, Response $response) {
     $params = $request->getQueryParams();
 
     // One-action create-group-and-add-cart flow (legacy compatibility).
@@ -97,13 +97,13 @@ $app->get('/cart-to-group', function (Request $request, Response $response) {
     ]);
 });
 
-// POST /groups/cart-to-group — process form submission.
+// POST /groups/cart/add — process form submission.
 // Guards on GroupID only (not on the submit button value) so that the
 // handler works correctly regardless of how the button value is serialised
 // by the browser.
 //
 // Auth: same ManageGroupRoleAuthMiddleware guard as the GET handler above.
-$app->post('/cart-to-group', function (Request $request, Response $response) {
+$app->post('/cart/add', function (Request $request, Response $response) {
     $body     = $request->getParsedBody();
     $iGroupID = !empty($body['GroupID']) ? (int) $body['GroupID'] : 0;
 
@@ -147,6 +147,6 @@ $app->post('/cart-to-group', function (Request $request, Response $response) {
     // No message for $iGroupID === 0: the browser-side 'required' attribute
     // prevents submission without a selection; no server-side flash needed.
     return $response
-        ->withHeader('Location', SystemURLs::getRootPath() . '/groups/cart-to-group')
+        ->withHeader('Location', SystemURLs::getRootPath() . '/groups/cart/add')
         ->withStatus(302);
 });

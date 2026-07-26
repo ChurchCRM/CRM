@@ -9,7 +9,7 @@ describe('Group XSS Security Tests', () => {
   it('Should prevent stored XSS in group description via GroupEditor', () => {
     const xssPayload = '<script>alert("XSS")</script>';
 
-    cy.visit('/GroupEditor.php?GroupID=9');
+    cy.visit('/groups/editor/9');
     // Ensure editor loaded
     cy.get('input[name="Name"]').should('exist');
 

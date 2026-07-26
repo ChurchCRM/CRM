@@ -115,7 +115,7 @@ if ($bCanManageGroups) {
                 <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
             </button>
             <?php if ($bCanManageGroups): ?>
-            <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>">
+            <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/groups/editor/<?= $iGroupId ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Class') ?>
             </a>
             <?php endif; ?>
@@ -155,7 +155,7 @@ if ($bCanManageGroups) {
                     <a class="dropdown-item ss-move-role" data-role="Teacher" href="#"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $teacherCount ?></span></a>
                     <div class="dropdown-divider"></div>
                     <?php if ($thisGroup && $thisGroup->getHasSpecialProps()): ?>
-                    <a class="dropdown-item" href="<?= $sRootPath ?>/GroupPropsFormEditor.php?GroupID=<?= $iGroupId ?>">
+                    <a class="dropdown-item" href="<?= $sRootPath ?>/groups/<?= $iGroupId ?>/properties/form">
                         <i class="fa-solid fa-rectangle-list me-2"></i><?= gettext('Edit Member Properties Form') ?>
                     </a>
                     <?php endif; ?>
