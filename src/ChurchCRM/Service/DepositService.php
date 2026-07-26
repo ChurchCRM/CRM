@@ -161,8 +161,9 @@ class DepositService {
             ->filterByDepId($depositId)
             ->filterByPledgeOrPayment($type)
             ->groupByGroupKey()
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
-            ->withColumn('GROUP_CONCAT(' . DonationFundTableMap::COL_FUN_NAME . " SEPARATOR ', ')", 'FundName')
+            ->addSelfSelectColumns()   // pin Pledge columns first so leftJoinWithFamily() offsets are correct
+            ->addAsColumn('sumAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
+            ->addAsColumn('FundName', 'GROUP_CONCAT(' . DonationFundTableMap::COL_FUN_NAME . " SEPARATOR ', ')")
             ->joinDonationFund()
             ->leftJoinWithFamily()
             ->orderBy('GroupKey', 'ASC')

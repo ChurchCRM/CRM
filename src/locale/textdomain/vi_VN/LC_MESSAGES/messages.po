@@ -7418,10 +7418,6 @@ msgid "Move up"
 msgstr "Di chuyển lên"
 
 #: 
-msgid "Opportunity"
-msgstr "Cơ hội"
-
-#: 
 msgid "Order"
 msgstr "Thứ tự"
 
@@ -7436,14 +7432,6 @@ msgstr "Tỷ lệ phần trăm"
 #: 
 msgid "Person Properties"
 msgstr "Thuộc tính cá nhân"
-
-#: 
-msgid "Property Type"
-msgstr "Loại thuộc tính"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Cơ hội tình nguyện"
 
 #. Context: locales
 #: 
@@ -16798,4 +16786,528 @@ msgstr "goalAmount phải không âm"
 #: 
 msgid "thru %s"
 msgstr "đến %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "Ghi chú \"Lý do đến\" cho %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s thuộc gia đình %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "Còn %d mục nữa có thể thêm vào."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "Trả về %d bản ghi"
+
+#: 
+msgid "Assign role to all"
+msgstr "Gán vai trò cho tất cả"
+
+#: 
+msgid "Buyer #"
+msgstr "Người mua #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Người mua cho chương trình gây quỹ này"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Nguồn gốc nhúng lịch"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "Bản dịch ChurchCRM được cộng đồng quản lý trên POEditor. Bạn có thể đóng góp bằng cách"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Khoản nộp đã đóng"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Giá trị $URL[0] hiện tại"
+
+#: 
+msgid "Custom port"
+msgstr "Cổng tùy chỉnh"
+
+#: 
+msgid "Data Quality"
+msgstr "Chất lượng dữ liệu"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Được dâng tặng bởi %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "Chức năng email hiện đang bị tắt. Các tính năng sau sẽ không hoạt động cho đến khi email được bật"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Giá trị ước tính $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Quy trình làm việc nhanh nhất"
+
+#: 
+msgid "File Integrity"
+msgstr "Toàn vẹn tệp"
+
+#: 
+msgid "Filter by log level"
+msgstr "Lọc theo mức nhật ký"
+
+#: 
+msgid "Find the line"
+msgstr "Tìm dòng"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Cấp quyền cá nhân"
+
+#: 
+msgid "How to Fix"
+msgstr "Cách khắc phục"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Nhập thất bại: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Thêm khóa API của bạn vào yêu cầu bằng tiêu đề x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Chuyển đến bất kỳ bước cài đặt nào"
+
+#: 
+msgid "Local development"
+msgstr "Phát triển cục bộ"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Tổng số tiền tối thiểu"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Giá đặt tối thiểu $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Thanh toán mới - %1$s Khoản nộp # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Hãy kiểm tra hộp thư đến của người nhận để xác nhận đã giao. Tìm tiêu đề"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Số dòng cần hiển thị"
+
+#: 
+msgid "Open Deposits"
+msgstr "Khoản nộp đang mở"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Mở cửa sổ 2 phút để các thiết bị đăng ký tại"
+
+#: 
+msgid "Output Method"
+msgstr "Phương thức xuất"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Vui lòng xác nhận xóa hồ sơ gia đình này"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Vui lòng xác nhận thông tin gia đình của bạn"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Vui lòng gửi dâng hiến tiếp theo của bạn đến %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Vui lòng chọn một gia đình khác để liên kết các khoản dâng hiến này"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Phiếu chuyển tiền"
+
+#: 
+msgid "Report Heading"
+msgstr "Tiêu đề báo cáo"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Đặt lại sẽ xóa vĩnh viễn"
+
+#: 
+msgid "Show"
+msgstr "Hiển thị"
+
+#: 
+msgid "Signature"
+msgstr "Chữ ký"
+
+#: 
+msgid "Sort Data by"
+msgstr "Sắp xếp dữ liệu theo"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Danh sách các nguồn gốc phân cách bằng dấu cách được phép nhúng trang lịch công kờ bên ngoài trong iframe."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Các nguồn gốc phân cách bằng dấu cách được phép nhúng trang lịch công kờ trong iframe."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Nhóm Trường Chúa nhật không thể sửa đổi, chỉ trong hai trường hợp này"
+
+#: 
+msgid "Supported formats"
+msgstr "Định dạng được hỗ trợ"
+
+#: 
+msgid "System Configuration"
+msgstr "Cấu hình hệ thống"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Có người được phân công cho Cơ hội Tình nguyện này. Xóa sẽ hủy phân công"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Giá trị này không được ít hơn %d ký tự"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Giá trị này không được nhiều hơn %d ký tự"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Giá trị này không được nhiều hơn %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Giá trị này phải ít nhất là %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Tổng khoản nộp"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Cập nhật thành URL hợp lệ"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Người dùng đã xác thực qua khóa API: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Ví dụ hợp lệ"
+
+#: 
+msgid "What this plugin does"
+msgstr "Chức năng của plugin này"
+
+#: 
+msgid "for all funds"
+msgstr "cho tất cả các quỹ"
+
+#: 
+msgid "for fund"
+msgstr "cho quỹ"
+
+#: 
+msgid "for funds"
+msgstr "cho các quỹ"
+
+#: 
+msgid "user"
+msgstr "người dùng"
+
+#: 
+msgid "with at least one"
+msgstr "với ít nhất một"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Cũng gửi đến địa chỉ hội thánh ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Bạn có chắc muốn xóa người này khỏi"
+
+#: 
+msgid "BCC Mode"
+msgstr "Chế độ BCC"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "Đã điểm danh {{count}} người."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "Địa chỉ email hội thánh được tự động thêm làm người nhận có thể xóa khi soạn email từ CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "Email hội thánh — được cấu hình trên trang %s."
+
+#: 
+msgid "Closing"
+msgstr "Đang đóng"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Tọa độ đã được cập nhật"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Sao chép địa chỉ"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Sao chép email hội thánh"
+
+#: 
+msgid "Email All Members"
+msgstr "Gửi email cho tất cả thành viên"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Gửi email cho thành viên đã chọn"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Kết thúc bằng dấu gạch chéo (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Không thể định vị địa lý"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Không thể tải người nhận. Vui lòng thử lại."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Không thể lấy địa chỉ email đã chọn"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Điểm danh gia đình thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Ignore"
+msgstr "Bỏ qua"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Bỏ qua địa chỉ chưa đầy đủ"
+
+#: 
+msgid "Kids"
+msgstr "Thiếu nhi"
+
+#: 
+msgid "Loading family members..."
+msgstr "Đang tải thành viên gia đình..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Đang tải người nhận…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Không tìm thấy địa chỉ email."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Mở trong ứng dụng email"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Đang chuyển hướng sau %s giây..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Đang làm mới..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Xóa khỏi nhóm"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Xóa {{personName}} khỏi lớp này?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Yêu cầu thất bại ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Các vai trò cần bao gồm"
+
+#: 
+msgid "Select Country"
+msgstr "Chọn quốc gia"
+
+#: 
+msgid "Select State"
+msgstr "Chọn tỉnh/thành"
+
+#: 
+msgid "Select a person"
+msgstr "Chọn một người"
+
+#: 
+msgid "Select role"
+msgstr "Chọn vai trò"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Chọn loại (tùy chọn)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Bắt đầu bằng http:// hoặc https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Nhóm này chỉ có một vai trò."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Ai đưa {{name}} đến?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Ai đón {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "Đang xử lý..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Bạn đang chậm {{releaseCount}} phiên bản. Đây là những gì bạn sẽ nhận được"
+
+#: 
+msgid "click to expand"
+msgstr "nhấp để mở rộng"
+
+#: 
+msgid "pick"
+msgstr "chọn"
+
+#: 
+msgid "recipient"
+msgstr "người nhận"
+
+#: 
+msgid "recipients"
+msgstr "những người nhận"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "Còn {{hours}} giờ {{mins}} phút"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Thêm khoản nộp mới"
+
+#: 
+msgid "Add New Event"
+msgstr "Thêm sự kiện mới"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Thêm loại sự kiện mới"
+
+#: 
+msgid "Add New Family"
+msgstr "Thêm gia đình mới"
+
+#: 
+msgid "Add New Field"
+msgstr "Thêm trường mới"
+
+#: 
+msgid "Add New Fund"
+msgstr "Thêm quỹ mới"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Thêm cơ hội mới"
+
+#: 
+msgid "Add New Person"
+msgstr "Thêm người mới"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Thêm cam kết dâng hiến mới"
+
+#: 
+msgid "Add New Role"
+msgstr "Thêm vai trò mới"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Thêm cơ hội tình nguyện mới"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Thêm lớp Trường Chúa nhật"
+
+#: 
+msgid "Delete this family?"
+msgstr "Xóa gia đình này?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Bạn có muốn xóa gia đình này không? Bạn sẽ được chuyển đến trang để chọn những gì cần xóa. Thao tác này không thể hoàn tác."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Xác nhận xóa gia đình"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Cá nhân (không có gia đình)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Đăng ký mới tự thực hiện"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Xác nhận xóa loại thuộc tính"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Xem xét các gia đình và cá nhân mới đã đăng ký qua biểu mẫu đăng ký công khai của bạn"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Xem xét các đăng ký mới từ biểu mẫu đăng ký công khai của bạn bên dưới. Các mục không có email hoặc số điện thoại được đánh dấu — hãy xác minh thông tin liên lạc trước khi theo dõi."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Xác nhận xóa cơ hội tình nguyện"
 

@@ -7448,10 +7448,6 @@ msgid "Move up"
 msgstr "Mozgatás felfelé"
 
 #: 
-msgid "Opportunity"
-msgstr "Lehetőség"
-
-#: 
 msgid "Order"
 msgstr "Sorrend"
 
@@ -7466,14 +7462,6 @@ msgstr "Százalék"
 #: 
 msgid "Person Properties"
 msgstr "Személy tulajdonságai"
-
-#: 
-msgid "Property Type"
-msgstr "Tulajdonság típusa"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Önkéntes lehetőség"
 
 #. Context: locales
 #: 
@@ -16835,4 +16823,528 @@ msgstr "A célösszeg nem lehet negatív"
 #: 
 msgid "thru %s"
 msgstr "%s-ig"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "Miért jött jegyzetek %1$s %2$s számára"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s család %1$s tagja"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "Még %d bejegyzés fér el."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d rekord visszaadva"
+
+#: 
+msgid "Assign role to all"
+msgstr "Szerepkör hozzárendelése mindenkihez"
+
+#: 
+msgid "Buyer #"
+msgstr "Vevő #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Vevők ehhez az adománygyűjtőhöz"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Naptár beágyazási források"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "A ChurchCRM fordításait a közösség kezeli a POEditor oldalon. Segíthet azzal, hogy"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Lezárt befizetések"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Jelenlegi $URL[0] érték"
+
+#: 
+msgid "Custom port"
+msgstr "Egyéni port"
+
+#: 
+msgid "Data Quality"
+msgstr "Adatminőség"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Adományozta: %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "Az e-mail funkció jelenleg le van tiltva. A következő funkciók nem működnek, amíg az e-mail nincs engedélyezve"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Becsült érték: $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Leggyorsabb munkafolyamat"
+
+#: 
+msgid "File Integrity"
+msgstr "Fájlintegritás"
+
+#: 
+msgid "Filter by log level"
+msgstr "Szűrés naplószint szerint"
+
+#: 
+msgid "Find the line"
+msgstr "Keresse meg a sort"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Egyéni engedélyek megadása"
+
+#: 
+msgid "How to Fix"
+msgstr "Hogyan javítható"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Importálás sikertelen: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Az API kulcsát foglalja bele a kérésekbe az x-api-key fejléc segítségével"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Ugrás bármely beállítási lépésre"
+
+#: 
+msgid "Local development"
+msgstr "Helyi fejlesztés"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Minimális összeg"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Minimális ajánlat: $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Új befizetés – %1$s Betét # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Ellenőrizze a címzett postafiókját a kézbesítés megerősítéséhez. Keresse a tárgyat"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Megjelenítendő sorok száma"
+
+#: 
+msgid "Open Deposits"
+msgstr "Nyitott befizetések"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "2 perces ablakot nyit az eszközök regisztrációjához"
+
+#: 
+msgid "Output Method"
+msgstr "Kimeneti módszer"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Kérjük, erősítse meg a családi rekord törlését"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Kérjük, erősítse meg a családi adatokat"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Kérjük, küldje el a következő adományát erre a címre: %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Kérjük, válasszon másik családot, amelyhez ezeket az adományokat társítja"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Átutalási szelvény"
+
+#: 
+msgid "Report Heading"
+msgstr "Jelentés fejléce"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Az alaphelyzetbe állítás véglegesen törli"
+
+#: 
+msgid "Show"
+msgstr "Megjelenítés"
+
+#: 
+msgid "Signature"
+msgstr "Aláírás"
+
+#: 
+msgid "Sort Data by"
+msgstr "Adatok rendezése"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Szóközzel elválasztott lista, amelyek beágyazhatják a nyilvános naptároldalt egy iframe-be. A csillag bármely forrást engedélyezi."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Szóközzel elválasztott forrásokból beágyazható a nyilvános naptároldal egy iframe-be. A csillag bármely oldalt engedélyezi."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "A vasárnapi iskolai csoport csak ebben a két esetben módosítható"
+
+#: 
+msgid "Supported formats"
+msgstr "Támogatott formátumok"
+
+#: 
+msgid "System Configuration"
+msgstr "Rendszerkonfiguráció"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Ehhez az önkéntes lehetőséghez személyek vannak hozzárendelve. A törlés megszünteti a hozzárendelést"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Ez az érték nem lehet rövidebb %d karakternél"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Ez az érték nem lehet hosszabb %d karakternél"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Ez az érték nem lehet több mint %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Ez az érték legalább %s kell legyen"
+
+#: 
+msgid "Total Deposits"
+msgstr "Összes befizetés"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Frissítse érvényes URL-re, amely"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Felhasználó hitelesítve API kulcson keresztül: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Érvényes példák"
+
+#: 
+msgid "What this plugin does"
+msgstr "Mit csinál ez a bővítmény"
+
+#: 
+msgid "for all funds"
+msgstr "minden alaphoz"
+
+#: 
+msgid "for fund"
+msgstr "alaphoz"
+
+#: 
+msgid "for funds"
+msgstr "alapokhoz"
+
+#: 
+msgid "user"
+msgstr "felhasználó"
+
+#: 
+msgid "with at least one"
+msgstr "legalább eggyel"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Küldés a gyülekezet címére is ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Biztosan el kívánja távolítani ezt a személyt innen:"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC mód"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}} személy bejelentkezett."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "A gyülekezet e-mail-címe automatikusan hozzáadódik eltávolítható címzettként a CRM-ből írt e-mailek esetén"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "Gyülekezeti e-mail – a %s oldalon konfigurálva."
+
+#: 
+msgid "Closing"
+msgstr "Zárás"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Koordináták frissítve"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Címek másolása"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Gyülekezeti e-mail másolása"
+
+#: 
+msgid "Email All Members"
+msgstr "E-mail küldése minden tagnak"
+
+#: 
+msgid "Email Cart Members"
+msgstr "E-mail küldése a kiválasztott tagoknak"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Perjellel (/) végződik"
+
+#: 
+msgid "Failed to geocode"
+msgstr "A geokódolás sikertelen"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "A címzettek betöltése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "A kiválasztott e-mail-címek lekérése sikertelen"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "A család bejelentkezése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Ignore"
+msgstr "Kihagyás"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Hiányos címek kihagyása"
+
+#: 
+msgid "Kids"
+msgstr "Gyerekek"
+
+#: 
+msgid "Loading family members..."
+msgstr "Családtagok betöltése..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Címzettek betöltése…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Nem található e-mail-cím."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Megnyitás e-mail kliensben"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Átirányítás %s másodperc múlva..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Frissítés..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Eltávolítás a csoportból"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Eltávolítja {{personName}}-t ebből az osztályból?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "A kérés sikertelen ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Belefoglalandó szerepkörök"
+
+#: 
+msgid "Select Country"
+msgstr "Ország kiválasztása"
+
+#: 
+msgid "Select State"
+msgstr "Megye/tartomány kiválasztása"
+
+#: 
+msgid "Select a person"
+msgstr "Személy kiválasztása"
+
+#: 
+msgid "Select role"
+msgstr "Szerepkör kiválasztása"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Típus kiválasztása (opcionális)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "http:// vagy https:// karakterekkel kezdődik"
+
+#: 
+msgid "This group only has one role."
+msgstr "Ennek a csoportnak csak egy szerepköre van."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Ki hozza be {{name}}-t?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Ki veszi fel {{name}}-t?"
+
+#: 
+msgid "Working..."
+msgstr "Folyamatban..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "{{releaseCount}} kiadással le van maradva. Íme, amit nyerni fog"
+
+#: 
+msgid "click to expand"
+msgstr "kattintson a kibontáshoz"
+
+#: 
+msgid "pick"
+msgstr "kiválaszt"
+
+#: 
+msgid "recipient"
+msgstr "címzett"
+
+#: 
+msgid "recipients"
+msgstr "címzettek"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}} ó {{mins}} perc van hátra"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Új befizetés hozzáadása"
+
+#: 
+msgid "Add New Event"
+msgstr "Új esemény hozzáadása"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Új eseménytípus hozzáadása"
+
+#: 
+msgid "Add New Family"
+msgstr "Új család hozzáadása"
+
+#: 
+msgid "Add New Field"
+msgstr "Új mező hozzáadása"
+
+#: 
+msgid "Add New Fund"
+msgstr "Új alap hozzáadása"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Új lehetőség hozzáadása"
+
+#: 
+msgid "Add New Person"
+msgstr "Új személy hozzáadása"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Új fogadalom hozzáadása"
+
+#: 
+msgid "Add New Role"
+msgstr "Új szerepkör hozzáadása"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Új önkéntes lehetőség hozzáadása"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Vasárnapi iskola osztály hozzáadása"
+
+#: 
+msgid "Delete this family?"
+msgstr "Törli ezt a családot?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Törölni szeretné ezt a családot? Egy oldalra kerül, ahol kiválaszthatja, mit töröljön. Ez nem vonható vissza."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Család törlésének megerősítése"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Egyének (nincs családjuk)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Új önregisztrációk"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Tulajdonságtípus törlésének megerősítése"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Tekintse át a nyilvános regisztrációs urlapon feliratkozott új családokat és egyéneket"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Az alábbiakban tekintse át a nyilvános regisztrációs urlap új regisztrációit. Az e-mail vagy telefonszám nélküli bejegyzések meg vannak jelölve — ellenőrizze az adatokat."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Önkéntes lehetőség törlésének megerősítése"
 

@@ -62,7 +62,7 @@ class Group extends BaseGroup
         if ($this->isSundaySchool()) {
             $defaultRole = 2;
         }
-        $newListID = ListOptionQuery::create()->withColumn('MAX(' . ListOptionTableMap::COL_LST_ID . ')', 'newListId')->find()->getColumnValues('newListId')[0] + 1;
+        $newListID = ListOptionQuery::create()->addAsColumn('newListId', 'MAX(' . ListOptionTableMap::COL_LST_ID . ')')->find()->getColumnValues('newListId')[0] + 1;
         $this->setRoleListId($newListID);
         $this->setDefaultRole($defaultRole);
         parent::preInsert($con);

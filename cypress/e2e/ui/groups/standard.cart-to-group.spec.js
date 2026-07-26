@@ -77,7 +77,7 @@ describe("Standard Groups - Cart to Group", () => {
 
         cy.visit("/groups/cart-to-group");
 
-        cy.contains("Your cart is empty!").should("be.visible");
+        cy.contains("Your cart is empty").should("be.visible");
         cy.contains("Add people to your cart first").should("be.visible");
     });
 });

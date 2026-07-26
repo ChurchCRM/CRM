@@ -7439,10 +7439,6 @@ msgid "Move up"
 msgstr "Sposta verso l'alto"
 
 #: 
-msgid "Opportunity"
-msgstr "Opportunità"
-
-#: 
 msgid "Order"
 msgstr "Ordine"
 
@@ -7457,14 +7453,6 @@ msgstr "Percentuale"
 #: 
 msgid "Person Properties"
 msgstr "Proprietà Persona"
-
-#: 
-msgid "Property Type"
-msgstr "Tipo di Proprietà"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Opportunità Volontaria"
 
 #. Context: locales
 #: 
@@ -16822,4 +16810,528 @@ msgstr "goalAmount deve essere non negativo"
 #: 
 msgid "thru %s"
 msgstr "fino al %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "Note \"Motivo della visita\" per %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s della famiglia %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "Ci sono altri %d voci disponibili."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d record restituiti"
+
+#: 
+msgid "Assign role to all"
+msgstr "Assegna ruolo a tutti"
+
+#: 
+msgid "Buyer #"
+msgstr "Acquirente n."
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Acquirenti per questa raccolta fondi"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Origini incorporamento calendario"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "Le traduzioni di ChurchCRM sono gestite dalla comunità su POEditor. Puoi contribuire"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Depositi chiusi"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Valore attuale di $URL[0]"
+
+#: 
+msgid "Custom port"
+msgstr "Porta personalizzata"
+
+#: 
+msgid "Data Quality"
+msgstr "Qualità dei dati"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Donato da %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "La funzionalità e-mail è attualmente disabilitata. Le seguenti funzioni non saranno disponibili fino all'abilitazione dell'e-mail"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Valore stimato $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Flusso di lavoro più rapido"
+
+#: 
+msgid "File Integrity"
+msgstr "Integrità dei file"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filtra per livello di log"
+
+#: 
+msgid "Find the line"
+msgstr "Trova la riga"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Concedi permessi individuali"
+
+#: 
+msgid "How to Fix"
+msgstr "Come correggere"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Importazione non riuscita: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Includi la chiave API nelle richieste utilizzando l'intestazione x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Salta a qualsiasi passaggio di configurazione"
+
+#: 
+msgid "Local development"
+msgstr "Sviluppo locale"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Importo totale minimo"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Offerta minima $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Nuovo pagamento - %1$s Deposito n. %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Controlla ora la casella di posta del destinatario per confermare la consegna. Cerca l'oggetto"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Numero di righe da visualizzare"
+
+#: 
+msgid "Open Deposits"
+msgstr "Depositi aperti"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Apre una finestra di 2 minuti per la registrazione dei dispositivi"
+
+#: 
+msgid "Output Method"
+msgstr "Metodo di output"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Conferma l'eliminazione di questo record familiare"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Conferma le informazioni della tua famiglia"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Si prega di inviare per posta il prossimo dono a %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Seleziona un'altra famiglia a cui associare queste offerte"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Bolletta di versamento"
+
+#: 
+msgid "Report Heading"
+msgstr "Intestazione del report"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Il ripristino eliminerà definitivamente"
+
+#: 
+msgid "Show"
+msgstr "Mostra"
+
+#: 
+msgid "Signature"
+msgstr "Firma"
+
+#: 
+msgid "Sort Data by"
+msgstr "Ordina dati per"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Elenco di origini separate da spazio autorizzate a incorporare la pagina del calendario esterno pubblico in un <iframe> (CSP frame-ancestors). Il valore predefinito \"*\" consente qualsiasi origine. Limita a origini specifiche per una maggiore sicurezza, ad es. \"https://mysite.org https://embed.example.com\"."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Origini separate da spazio autorizzate a incorporare la pagina del calendario pubblico in un <iframe> (CSP frame-ancestors). Il valore predefinito \"*\" consente qualsiasi sito. Limita per una maggiore sicurezza, ad es. \"https://mysite.org\"."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Il gruppo della scuola domenicale non può essere modificato, solo in questi due casi"
+
+#: 
+msgid "Supported formats"
+msgstr "Formati supportati"
+
+#: 
+msgid "System Configuration"
+msgstr "Configurazione di sistema"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Ci sono persone assegnate a questa opportunità di volontariato. L'eliminazione le rimuoverà dall'incarico"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Questo valore non può essere inferiore a %d caratteri"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Questo valore non può superare %d caratteri"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Questo valore non può essere superiore a %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Questo valore deve essere almeno %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Totale depositi"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Aggiornarlo con un URL valido che"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Utente autenticato tramite chiave API: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Esempi validi"
+
+#: 
+msgid "What this plugin does"
+msgstr "Cosa fa questo plugin"
+
+#: 
+msgid "for all funds"
+msgstr "per tutti i fondi"
+
+#: 
+msgid "for fund"
+msgstr "per il fondo"
+
+#: 
+msgid "for funds"
+msgstr "per i fondi"
+
+#: 
+msgid "user"
+msgstr "utente"
+
+#: 
+msgid "with at least one"
+msgstr "con almeno uno"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Invia anche all'indirizzo della parrocchia ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Sei sicuro di voler rimuovere questa persona da"
+
+#: 
+msgid "BCC Mode"
+msgstr "Modalità CCN"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "Check-in effettuato per {{count}} persone."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "L'indirizzo e-mail della parrocchia viene aggiunto automaticamente come destinatario rimovibile durante la composizione di e-mail dal CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "E-mail della parrocchia — configurata nella pagina %s."
+
+#: 
+msgid "Closing"
+msgstr "Chiusura"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Coordinate aggiornate"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Copia indirizzi"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Copia e-mail della parrocchia"
+
+#: 
+msgid "Email All Members"
+msgstr "Invia e-mail a tutti i fedeli"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Invia e-mail ai fedeli selezionati"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Termina con una barra finale (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Geocodifica non riuscita"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Caricamento destinatari non riuscito. Riprova."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Recupero degli indirizzi e-mail dalla selezione non riuscito"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Check-in della famiglia non riuscito. Riprova."
+
+#: 
+msgid "Ignore"
+msgstr "Ignora"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Ignora indirizzi incompleti"
+
+#: 
+msgid "Kids"
+msgstr "Bambini"
+
+#: 
+msgid "Loading family members..."
+msgstr "Caricamento membri della famiglia..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Caricamento destinatari…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Nessun indirizzo e-mail trovato."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Apri nel client e-mail"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Reindirizzamento in %s secondi..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Aggiornamento in corso..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Rimuovi dal gruppo"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Rimuovere {{personName}} da questa classe?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Richiesta non riuscita ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Ruoli da includere"
+
+#: 
+msgid "Select Country"
+msgstr "Seleziona Paese"
+
+#: 
+msgid "Select State"
+msgstr "Seleziona Regione"
+
+#: 
+msgid "Select a person"
+msgstr "Seleziona una persona"
+
+#: 
+msgid "Select role"
+msgstr "Seleziona ruolo"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Seleziona tipo (opzionale)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Inizia con http:// o https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Questo gruppo ha un solo ruolo."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Chi accompagna {{name}}?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Chi viene a prendere {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "Elaborazione in corso..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Sei indietro di {{releaseCount}} versioni. Ecco cosa guadagnerai"
+
+#: 
+msgid "click to expand"
+msgstr "clicca per espandere"
+
+#: 
+msgid "pick"
+msgstr "seleziona"
+
+#: 
+msgid "recipient"
+msgstr "destinatario"
+
+#: 
+msgid "recipients"
+msgstr "destinatari"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}h {{mins}}m rimanenti"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Aggiungi nuovo deposito"
+
+#: 
+msgid "Add New Event"
+msgstr "Aggiungi nuovo evento"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Aggiungi nuovo tipo di evento"
+
+#: 
+msgid "Add New Family"
+msgstr "Aggiungi nuova famiglia"
+
+#: 
+msgid "Add New Field"
+msgstr "Aggiungi nuovo campo"
+
+#: 
+msgid "Add New Fund"
+msgstr "Aggiungi nuovo fondo"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Aggiungi nuova opportunità"
+
+#: 
+msgid "Add New Person"
+msgstr "Aggiungi nuova persona"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Aggiungi nuova promessa di offerta"
+
+#: 
+msgid "Add New Role"
+msgstr "Aggiungi nuovo ruolo"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Aggiungi nuova opportunità di volontariato"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Aggiungi classe di scuola domenicale"
+
+#: 
+msgid "Delete this family?"
+msgstr "Eliminare questa famiglia?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Vuoi eliminare questa famiglia? Verrai indirizzato a una pagina per scegliere cosa eliminare. Questa azione non può essere annullata."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Conferma eliminazione famiglia"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Individui (senza famiglia)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Nuove auto-registrazioni"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Conferma eliminazione tipo di proprietà"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Esamina le nuove famiglie e i singoli fedeli che si sono registrati tramite il modulo pubblico"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Esamina di seguito le nuove iscrizioni dal modulo pubblico. Le voci prive di e-mail o telefono sono contrassegnate — verifica le informazioni di contatto prima di procedere."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Conferma eliminazione opportunità di volontariato"
 

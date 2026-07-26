@@ -14,10 +14,108 @@ msgid "State"
 msgstr "Parish"
 
 #: 
+msgid "Generate Catalog"
+msgstr "Generate Catalogue"
+
+#: 
+msgid "Maximum number of neighbors"
+msgstr "Maximum number of neighbours"
+
+#: 
+msgid "Neighbor Families"
+msgstr "Neighbour Families"
+
+#: 
+msgid "Show Neighbors"
+msgstr "Show Neighbours"
+
+#: 
 msgid "City, State, Zip"
 msgstr "City, Parish, Zip"
 
 #: 
+msgid "Localization"
+msgstr "Localisation"
+
+#: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Default Parish - Must be 2-letter abbreviation!"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "Internationalisation (I18n) support"
+
+#: 
+msgid "Show neighbors with these classifications"
+msgstr "Show neighbours with these classifications"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Customisable report with filtering by date, fund, family, and payment method."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Customise the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "Reports related to member voting eligibility and organisation governance."
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics collects anonymised usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp Integration enables synchronisation between ChurchCRM contacts and your MailChimp email marketing lists."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "The month that starts your organisation's fiscal year"
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Choose between light and dark colour scheme"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Customise the look and feel of the application"
+
+#: 
+msgid "Primary Color"
+msgstr "Primary Colour"
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Set the accent colour used for buttons, links, and active elements"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Invalid colour format. Use hex colours like #FF0000."
+
+#: 
+msgid "Background Color"
+msgstr "Background Colour"
+
+#: 
+msgid "Foreground Color"
+msgstr "Foreground Colour"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Localisation & Formats"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Localisation settings saved successfully"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Save Localisation Settings"
+
+#: 
+msgid "Catalog"
+msgstr "Catalogue"
 

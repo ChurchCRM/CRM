@@ -7386,10 +7386,6 @@ msgid "Move up"
 msgstr "เลื่อนขึ้น"
 
 #: 
-msgid "Opportunity"
-msgstr "โอกาส"
-
-#: 
 msgid "Order"
 msgstr "ลำดับ"
 
@@ -7404,14 +7400,6 @@ msgstr "เปอร์เซ็นต์"
 #: 
 msgid "Person Properties"
 msgstr "คุณสมบัติบุคคล"
-
-#: 
-msgid "Property Type"
-msgstr "ประเภทคุณสมบัติ"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "โอกาสอาสาสมัคร"
 
 #. Context: locales
 #: 
@@ -16756,4 +16744,528 @@ msgstr "goalAmount ต้องไม่ติดลบ"
 #: 
 msgid "thru %s"
 msgstr "ถึง %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "บันทึก \"เหตุผลที่มา\" สำหรับ %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s จากครอบครัว %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "สามารถเพิ่มได้อีก %d รายการ"
+
+#: 
+msgid "%d record(s) returned"
+msgstr "พบ %d รายการ"
+
+#: 
+msgid "Assign role to all"
+msgstr "กำหนดบทบาทให้ทุกคน"
+
+#: 
+msgid "Buyer #"
+msgstr "ผู้ซื้อ #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "ผู้ซื้อสำหรับการระดมทุนนี้"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "แหล่งที่มาของการฝังปฏิทิน"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "การแปล ChurchCRM ดูแลโดยชุมชนบน POEditor คุณสามารถช่วยได้โดย"
+
+#: 
+msgid "Closed Deposits"
+msgstr "เงินฝากที่ปิดแล้ว"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "ค่า $URL[0] ปัจจุบัน"
+
+#: 
+msgid "Custom port"
+msgstr "พอร์ตกำหนดเอง"
+
+#: 
+msgid "Data Quality"
+msgstr "คุณภาพข้อมูล"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "บริจาคโดย %1$s %2$s"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "ฟังก์ชันอีเมลถูกปิดใช้งานอยู่ในขณะนี้ คุณสมบัติต่อไปนี้จะไม่ทำงานจนกว่าจะเปิดใช้งานอีเมล"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "มูลค่าประมาณ $%s"
+
+#: 
+msgid "Fastest workflow"
+msgstr "ขั้นตอนการทำงานที่เร็วที่สุด"
+
+#: 
+msgid "File Integrity"
+msgstr "ความสมบูรณ์ของไฟล์"
+
+#: 
+msgid "Filter by log level"
+msgstr "กรองตามระดับบันทึก"
+
+#: 
+msgid "Find the line"
+msgstr "ค้นหาบรรทัด"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "มอบสิทธิ์รายบุคคล"
+
+#: 
+msgid "How to Fix"
+msgstr "วิธีแก้ไข"
+
+#: 
+msgid "Import failed: %s"
+msgstr "การนำเข้าล้มเหลว: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "ใส่ API key ของคุณในคำขอโดยใช้ส่วนหัว x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "ข้ามไปยังขั้นตอนการตั้งค่าใดก็ได้"
+
+#: 
+msgid "Local development"
+msgstr "การพัฒนาในเครื่อง"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "จำนวนเงินรวมขั้นต่ำ"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "ราคาเสนอขั้นต่ำ $%s"
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "การชำระเงินใหม่ - %1$s เงินฝาก # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "ตรวจสอบกล่องจดหมายของผู้รับเพื่อยืนยันการส่ง ค้นหาหัวเรื่อง"
+
+#: 
+msgid "Number of lines to display"
+msgstr "จำนวนบรรทัดที่แสดง"
+
+#: 
+msgid "Open Deposits"
+msgstr "เงินฝากที่เปิดอยู่"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "เปิดช่วงเวลา 2 นาทีสำหรับอุปกรณ์ในการลงทะเบียน"
+
+#: 
+msgid "Output Method"
+msgstr "วิธีการส่งออก"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "กรุณายืนยันการลบบันทึกครอบครัวนี้"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "กรุณายืนยันข้อมูลครอบครัวของคุณ"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "กรุณาส่งเครื่องถวายครั้งต่อไปของคุณไปที่ %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "กรุณาเลือกครอบครัวอื่นเพื่อเชื่อมโยงการถวายทรัพย์เหล่านี้"
+
+#: 
+msgid "Remittance Slip"
+msgstr "ใบโอนเงิน"
+
+#: 
+msgid "Report Heading"
+msgstr "หัวข้อรายงาน"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "การรีเซ็ตจะลบอย่างถาวร"
+
+#: 
+msgid "Show"
+msgstr "แสดง"
+
+#: 
+msgid "Signature"
+msgstr "ลายเซ็น"
+
+#: 
+msgid "Sort Data by"
+msgstr "จัดเรียงข้อมูลตาม"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "รายการแหล่งที่มาคั่นด้วยช่องว่างที่อนุญาตให้ฝังหน้าปฏิทินสาธารณใน iframe"
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "แหล่งที่มาคั่นด้วยช่องว่างที่อนุญาตให้ฝังหน้าปฏิทินสาธารณใน iframe"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "กลุ่มโรงเรียนวันอาทิตย์ไม่สามารถแก้ไขได้ ยกเว้นสองกรณีนี้เท่านั้น"
+
+#: 
+msgid "Supported formats"
+msgstr "รูปแบบที่รองรับ"
+
+#: 
+msgid "System Configuration"
+msgstr "การตั้งค่าระบบ"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "มีคนถูกกำหนดให้กับโอกาสอาสาสมัครนี้ การลบจะยกเลิกการกำหนด"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "ค่านี้ต้องมีความยาวไม่น้อยกว่า %d ตัวอักษร"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "ค่านี้ต้องมีความยาวไม่เกิน %d ตัวอักษร"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "ค่านี้ต้องไม่เกิน %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "ค่านี้ต้องมีอย่างน้อย %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "เงินฝากทั้งหมด"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "อัปเดตเป็น URL ที่ถูกต้องซึ่ง"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "ผู้ใช้ได้รับการยืนยันตัวตนผ่าน API Key: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "ตัวอย่างที่ถูกต้อง"
+
+#: 
+msgid "What this plugin does"
+msgstr "สิ่งที่ปลั๊กอินนี้ทำ"
+
+#: 
+msgid "for all funds"
+msgstr "สำหรับกองทุนทั้งหมด"
+
+#: 
+msgid "for fund"
+msgstr "สำหรับกองทุน"
+
+#: 
+msgid "for funds"
+msgstr "สำหรับกองทุน"
+
+#: 
+msgid "user"
+msgstr "ผู้ใช้"
+
+#: 
+msgid "with at least one"
+msgstr "พร้อมอย่างน้อยหนึ่งรายการ"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "ส่งไปยังที่อยู่คริสตจักรด้วย ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบบุคคลนี้ออกจาก"
+
+#: 
+msgid "BCC Mode"
+msgstr "โหมด BCC"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "เช็คอินแล้ว {{count}} คน"
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "ที่อยู่อีเมลคริสตจักรถูกเพิ่มโดยอัตโนมัติเป็นผู้รับที่สามารถลบได้เมื่อเขียนอีเมลจาก CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "อีเมลคริสตจักร — ตั้งค่าบนหน้า %s"
+
+#: 
+msgid "Closing"
+msgstr "กำลังปิด"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "อัปเดตพิกัดแล้ว"
+
+#: 
+msgid "Copy Addresses"
+msgstr "คัดลอกที่อยู่"
+
+#: 
+msgid "Copy Church Email"
+msgstr "คัดลอกอีเมลคริสตจักร"
+
+#: 
+msgid "Email All Members"
+msgstr "ส่งอีเมลสมาชิกทุกคน"
+
+#: 
+msgid "Email Cart Members"
+msgstr "ส่งอีเมลสมาชิกในรายการที่เลือก"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "ลงท้ายด้วยเครื่องหมายทับ (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "ไม่สามารถระบุพิกัดภูมิศาสตร์ได้"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "ไม่สามารถโหลดรายชื่อผู้รับได้ กรุณาลองใหม่อีกครั้ง"
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "ไม่สามารถดึงที่อยู่อีเมลในรายการที่เลือกได้"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "การเช็คอินครอบครัวล้มเหลว กรุณาลองใหม่อีกครั้ง"
+
+#: 
+msgid "Ignore"
+msgstr "ละเว้น"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "ละเว้นที่อยู่ที่ไม่สมบูรณ์"
+
+#: 
+msgid "Kids"
+msgstr "เด็ก"
+
+#: 
+msgid "Loading family members..."
+msgstr "กำลังโหลดสมาชิกครอบครัว..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "กำลังโหลดรายชื่อผู้รับ…"
+
+#: 
+msgid "No email addresses found."
+msgstr "ไม่พบที่อยู่อีเมล"
+
+#: 
+msgid "Open in Email Client"
+msgstr "เปิดในโปรแกรมอีเมล"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "กำลังเปลี่ยนเส้นทางใน %s วินาที..."
+
+#: 
+msgid "Refreshing..."
+msgstr "กำลังรีเฟรช..."
+
+#: 
+msgid "Remove from Group"
+msgstr "ลบออกจากกลุ่ม"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "ลบ {{personName}} ออกจากชั้นเรียนนี้?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "คำขอล้มเหลว ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "บทบาทที่จะรวม"
+
+#: 
+msgid "Select Country"
+msgstr "เลือกประเทศ"
+
+#: 
+msgid "Select State"
+msgstr "เลือกจังหวัด/รัฐ"
+
+#: 
+msgid "Select a person"
+msgstr "เลือกบุคคล"
+
+#: 
+msgid "Select role"
+msgstr "เลือกบทบาท"
+
+#: 
+msgid "Select type (optional)"
+msgstr "เลือกประเภท (ไม่บังคับ)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "ขึ้นต้นด้วย http:// หรือ https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "กลุ่มนี้มีเพียงบทบาทเดียว"
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "ใครนำ {{name}} มาส่ง?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "ใครมารับ {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "กำลังดำเนินการ..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "คุณล้าหลัง {{releaseCount}} เวอร์ชัน นี่คือสิ่งที่คุณจะได้รับ"
+
+#: 
+msgid "click to expand"
+msgstr "คลิกเพื่อขยาย"
+
+#: 
+msgid "pick"
+msgstr "เลือก"
+
+#: 
+msgid "recipient"
+msgstr "ผู้รับ"
+
+#: 
+msgid "recipients"
+msgstr "ผู้รับ"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "เหลือ {{hours}} ชม. {{mins}} น. "
+
+#: 
+msgid "Add New Deposit"
+msgstr "เพิ่มเงินฝากใหม่"
+
+#: 
+msgid "Add New Event"
+msgstr "เพิ่มกิจกรรมใหม่"
+
+#: 
+msgid "Add New Event Type"
+msgstr "เพิ่มประเภทกิจกรรมใหม่"
+
+#: 
+msgid "Add New Family"
+msgstr "เพิ่มครอบครัวใหม่"
+
+#: 
+msgid "Add New Field"
+msgstr "เพิ่มฟิลด์ใหม่"
+
+#: 
+msgid "Add New Fund"
+msgstr "เพิ่มกองทุนใหม่"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "เพิ่มโอกาสใหม่"
+
+#: 
+msgid "Add New Person"
+msgstr "เพิ่มบุคคลใหม่"
+
+#: 
+msgid "Add New Pledge"
+msgstr "เพิ่มคำมั่นสัญญาการถวายทรัพย์ใหม่"
+
+#: 
+msgid "Add New Role"
+msgstr "เพิ่มบทบาทใหม่"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "เพิ่มโอกาสอาสาสมัครใหม่"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "เพิ่มชั้นเรียนโรงเรียนวันอาทิตย์"
+
+#: 
+msgid "Delete this family?"
+msgstr "ลบครอบครัวนี้?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "คุณต้องการลบครอบครัวนี้หรือไม่? คุณจะถูกนำไปยังหน้าเพื่อเลือกสิ่งที่จะลบ การดำเนินการนี้ไม่สามารถเรียกคืนได้"
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "ยืนยันการลบครอบครัว"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "บุคคล (ไม่มีครอบครัว)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "การลงทะเบียนด้วยตนเองใหม่"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "ยืนยันการลบประเภทคุณสมบัติ"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "ตรวจสอบครอบครัวและบุคคลใหม่ที่ลงทะเบียนในแบบฟอร์มการลงทะเบียนสาธารณของคุณ"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "ตรวจสอบการลงทะเบียนใหม่จากแบบฟอร์มสาธารณของคุณด้านล่าง รายการที่ไม่มีอีเมลหรือโทรศัพท์จะถูกตั้งธง — ยืนยันข้อมูลติดต่อก่อนติดตามผล"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "ยืนยันการลบโอกาสอาสาสมัคร"
 

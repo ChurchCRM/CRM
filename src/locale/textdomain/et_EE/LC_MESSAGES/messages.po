@@ -7419,10 +7419,6 @@ msgid "Move up"
 msgstr "Liiguta üles"
 
 #: 
-msgid "Opportunity"
-msgstr "Võimalus"
-
-#: 
 msgid "Order"
 msgstr "Tellimus"
 
@@ -7437,14 +7433,6 @@ msgstr "Protsent"
 #: 
 msgid "Person Properties"
 msgstr "Inimese omadused"
-
-#: 
-msgid "Property Type"
-msgstr "Vara tüüp"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vabatahtliku võimalus"
 
 #. Context: locales
 #: 
@@ -16806,4 +16794,528 @@ msgstr "goalAmount peab olema mitte-negatiivne"
 #: 
 msgid "thru %s"
 msgstr "kuni %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "„Miks tuli“ märkmed kasutajale %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s pere liige %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d kirjet mahub veel."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d kirjet leitud"
+
+#: 
+msgid "Assign role to all"
+msgstr "Määra roll kõigile"
+
+#: 
+msgid "Buyer #"
+msgstr "Ostja nr"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Selle korjandusaktsiooni ostjad"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Kalendri manustamise päritolud"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM tõlkeid haldab kogukond POEditoris. Saad aidata"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Suletud sissemaksed"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Praegune $URL[0] väärtus"
+
+#: 
+msgid "Custom port"
+msgstr "Kohandatud port"
+
+#: 
+msgid "Data Quality"
+msgstr "Andmete kvaliteet"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Annetanud %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "E-posti funktsioon on praegu keelatud. Järgmised funktsioonid ei tööta enne, kui e-post on lubatud"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Hinnanguline väärtus $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Kiireim töövoog"
+
+#: 
+msgid "File Integrity"
+msgstr "Faili terviklikkus"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filtreeri logi taseme järgi"
+
+#: 
+msgid "Find the line"
+msgstr "Leia rida"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Anna individuaalsed õigused"
+
+#: 
+msgid "How to Fix"
+msgstr "Kuidas parandada"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Import ebaõnnestus: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Lisa oma API võti päringutele x-api-key päise abil"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Hüppa mistahes seadistuse sammu juurde"
+
+#: 
+msgid "Local development"
+msgstr "Kohalik arendus"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Minimaalne kogusumma"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Minimaalne pakkumine $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Uus makse – %1$s sissemakse nr %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Kontrolli nüüd saaja postkasti kättetoimetamise kinnitamiseks. Otsi teemat"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Kuvatavate ridade arv"
+
+#: 
+msgid "Open Deposits"
+msgstr "Avatud sissemaksed"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Avab 2-minutilise akna seadmete registreerimiseks"
+
+#: 
+msgid "Output Method"
+msgstr "Väljundmeetod"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Palun kinnita selle pere kirje kustutamine"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Palun kinnita oma pere andmed"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Palun saada oma järgmine annetus aadressile %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Palun vali teine pere, kellega seostada need annetused"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Makseslip"
+
+#: 
+msgid "Report Heading"
+msgstr "Aruande pealkiri"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Lähtestamine kustutab jäädavalt"
+
+#: 
+msgid "Show"
+msgstr "Näita"
+
+#: 
+msgid "Signature"
+msgstr "Allkiri"
+
+#: 
+msgid "Sort Data by"
+msgstr "Sorteeri andmeid järgi"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Tühikutega eraldatud päritolute loend, millel on lubatud manustada avalikku väliskalendri lehte iframe-i. Vaikeväärtus lubab kõiki päritoluid."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Tühikutega eraldatud päritolud, millel on lubatud manustada avalikku kalendrilehte iframe-i. Vaikeväärtus lubab kõiki saite."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Pühapäevakooli rühma ei saa muuta, ainult nendel kahel juhul"
+
+#: 
+msgid "Supported formats"
+msgstr "Toetatud vormingud"
+
+#: 
+msgid "System Configuration"
+msgstr "Süsteemi konfiguratsioon"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Sellele vabatahtliku võimalusele on määratud inimesi. Kustutamine tühistab määramise"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "See väärtus ei tohi olla lühem kui %d tähemärki"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "See väärtus ei tohi olla pikem kui %d tähemärki"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "See väärtus ei tohi olla suurem kui %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "See väärtus peab olema vähemalt %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Sissemaksete kogusumma"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Uuenda see kehtivaks URL-iks, mis"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Kasutaja autenditud API võtmega: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Kehtivad näited"
+
+#: 
+msgid "What this plugin does"
+msgstr "Mida see pistikprogramm teeb"
+
+#: 
+msgid "for all funds"
+msgstr "kõigi fondide jaoks"
+
+#: 
+msgid "for fund"
+msgstr "fondi jaoks"
+
+#: 
+msgid "for funds"
+msgstr "fondide jaoks"
+
+#: 
+msgid "user"
+msgstr "kasutaja"
+
+#: 
+msgid "with at least one"
+msgstr "vähemalt ühega"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Saada ka koguduse aadressile ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Kas oled kindel, et soovid selle isiku eemaldada"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC režiim"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "Registreeritud {{count}} inimest."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "Koguduse e-posti aadress lisatakse automaatselt eemaldatava saajana CRM-ist kirju koostades"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "Koguduse e-post — seadistatud lehel %s."
+
+#: 
+msgid "Closing"
+msgstr "Sulgemine"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Koordinaadid uuendatud"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Kopeeri aadressid"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Kopeeri koguduse e-post"
+
+#: 
+msgid "Email All Members"
+msgstr "Saada kiri kõigile liikmetele"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Saada kiri valitud liikmetele"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Lõpeb kaldkraipsuga (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Geokodeerimine ebaõnnestus"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Saajate laadimine ebaõnnestus. Palun proovi uuesti."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Valiku e-posti aadresside toomine ebaõnnestus"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Pere registreerimine ebaõnnestus. Palun proovi uuesti."
+
+#: 
+msgid "Ignore"
+msgstr "Ignoreeri"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Ignoreeri puudulikke aadresse"
+
+#: 
+msgid "Kids"
+msgstr "Lapsed"
+
+#: 
+msgid "Loading family members..."
+msgstr "Pereliikmete laadimine..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Saajate laadimine…"
+
+#: 
+msgid "No email addresses found."
+msgstr "E-posti aadresse ei leitud."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Ava e-posti kliendis"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Suunamine %s sekundi pärast..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Värskendamine..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Eemalda rühmast"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Eemaldada {{personName}} sellest klassist?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Päring ebaõnnestus ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Kaasatavad rollid"
+
+#: 
+msgid "Select Country"
+msgstr "Vali riik"
+
+#: 
+msgid "Select State"
+msgstr "Vali piirkond"
+
+#: 
+msgid "Select a person"
+msgstr "Vali isik"
+
+#: 
+msgid "Select role"
+msgstr "Vali roll"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Vali tüüp (valikuline)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Algab http:// või https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Sellel rühmal on ainult üks roll."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Kes toob {{name}} sisse?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Kes võtab {{name}} vastu?"
+
+#: 
+msgid "Working..."
+msgstr "Töötab..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Oled {{releaseCount}} versiooni võrra maas. Siin on, mida saad"
+
+#: 
+msgid "click to expand"
+msgstr "klõpsa laiendamiseks"
+
+#: 
+msgid "pick"
+msgstr "vali"
+
+#: 
+msgid "recipient"
+msgstr "saaja"
+
+#: 
+msgid "recipients"
+msgstr "saajad"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}h {{mins}}m jäänud"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Lisa uus sissemakse"
+
+#: 
+msgid "Add New Event"
+msgstr "Lisa uus sündmus"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Lisa uus sündmuse tüüp"
+
+#: 
+msgid "Add New Family"
+msgstr "Lisa uus pere"
+
+#: 
+msgid "Add New Field"
+msgstr "Lisa uus väli"
+
+#: 
+msgid "Add New Fund"
+msgstr "Lisa uus fond"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Lisa uus võimalus"
+
+#: 
+msgid "Add New Person"
+msgstr "Lisa uus isik"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Lisa uus lubadus"
+
+#: 
+msgid "Add New Role"
+msgstr "Lisa uus roll"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Lisa uus vabatahtliku võimalus"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Lisa pühapäevakooli klass"
+
+#: 
+msgid "Delete this family?"
+msgstr "Kustuta see pere?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Kas soovid selle pere kustutada? Sind suunatakse lehele, kus saad valida, mida kustutada. Seda ei saa tagasi võtta."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Pere kustutamise kinnitus"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Üksikisikud (ilma pereta)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Uued isiklikud registreerumised"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Omaduse tüübi kustutamise kinnitus"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Vaata üle uued pered ja isikud, kes registreerusid avaliku registreerimisvormiga"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Vaata allpool üle uued registreerumised avaliku registreerimisvormiga. Kirjed ilma e-posti või telefonita on märgistatud — kontrolli kontaktandmeid enne järeltegevust."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Vabatahtliku võimaluse kustutamise kinnitus"
 

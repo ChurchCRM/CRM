@@ -7414,10 +7414,6 @@ msgid "Move up"
 msgstr "Posunout nahoru"
 
 #: 
-msgid "Opportunity"
-msgstr "Přílĕitost"
-
-#: 
 msgid "Order"
 msgstr "Pořadí"
 
@@ -7432,14 +7428,6 @@ msgstr "Procento"
 #: 
 msgid "Person Properties"
 msgstr "Vlastnosti osob"
-
-#: 
-msgid "Property Type"
-msgstr "Typ vlastnosti"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Dobrovolnícka přílĕitost"
 
 #. Context: locales
 #: 
@@ -16804,4 +16792,528 @@ msgstr "Cílová částka musí být nezáporná"
 #: 
 msgid "thru %s"
 msgstr "do %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "Poznámky „Proč přišel/přišla“ pro %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s z rodiny %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "Zbývá místo pro %d dalších záznamů."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "Vráceno %d záznam(ů)"
+
+#: 
+msgid "Assign role to all"
+msgstr "Přiřadit roli všem"
+
+#: 
+msgid "Buyer #"
+msgstr "Kupující č."
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Kupující pro tento fundraising"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Zdroje pro vložení kalendáře"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "Překlady ChurchCRM spravuje komunita na POEditor. Můžete pomoci"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Uzavřené vklady"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Aktuální hodnota $URL[0]"
+
+#: 
+msgid "Custom port"
+msgstr "Vlastní port"
+
+#: 
+msgid "Data Quality"
+msgstr "Kvalita dat"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Darováno od %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "Funkce e-mailu je momentálně vypnuta. Následující funkce nebudou fungovat, dokud nebude e-mail povolen"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Odhadovaná hodnota $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Nejrychlejší pracovní postup"
+
+#: 
+msgid "File Integrity"
+msgstr "Integrita souborů"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filtrovat podle úrovně protokolu"
+
+#: 
+msgid "Find the line"
+msgstr "Najít řádek"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Udělit individuální oprávnění"
+
+#: 
+msgid "How to Fix"
+msgstr "Jak opravit"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Import selhal: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Zahrňte svůj API klíč do požadavků pomocí hlavičky x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Přejít na libovolný krok nastavení"
+
+#: 
+msgid "Local development"
+msgstr "Lokální vývoj"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Minimální celková částka"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Minimální příhoz $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Nová platba – %1$s Vklad č. %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Nyní zkontrolujte schránku příjemce pro potvrzení doručení. Hledejte předmět"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Počet řádků k zobrazení"
+
+#: 
+msgid "Open Deposits"
+msgstr "Otevřené vklady"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Otevře 2minutové okno pro registraci zařízení na"
+
+#: 
+msgid "Output Method"
+msgstr "Metoda výstupu"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Potvrďte prosím smazání záznamu této rodiny"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Potvrďte prosím informace o vaší rodině"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Zašlete prosím svůj příští dar na %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Vyberte prosím jinou rodinu, se kterou chcete tato darování spojit"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Pokladní doklad"
+
+#: 
+msgid "Report Heading"
+msgstr "Záhlaví zprávy"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Obnovení trvale smaže"
+
+#: 
+msgid "Show"
+msgstr "Zobrazit"
+
+#: 
+msgid "Signature"
+msgstr "Podpis"
+
+#: 
+msgid "Sort Data by"
+msgstr "Seřadit data podle"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Mezerami oddělený seznam zdrojů, které smí vložit veřejnou stránku externího kalendáře do <iframe> (CSP frame-ancestors). Výchozí hodnota „*“ povoluje jakýkoliv zdroj. Pro vyšší bezpečnost omezte na konkrétní zdroje, např. „https://mysite.org https://embed.example.com“."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Mezerami oddělené zdroje, které smí vložit veřejnou stránku kalendáře do <iframe> (CSP frame-ancestors). Výchozí hodnota „*“ povoluje jakoukoliv stránku. Pro vyšší bezpečnost omezte, např. na „https://mysite.org“."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Skupinu nedělní školy nelze upravit, pouze v těchto dvou případech"
+
+#: 
+msgid "Supported formats"
+msgstr "Podporované formáty"
+
+#: 
+msgid "System Configuration"
+msgstr "Konfigurace systému"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "K této dobrovolnické příležitosti jsou přiřazeny osoby. Smazáním dojde k jejich odebrání"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Tato hodnota nesmí mít méně než %d znaků"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Tato hodnota nesmí mít více než %d znaků"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Tato hodnota nesmí být více než %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Tato hodnota musí být alespoň %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Celkové vklady"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Aktualizujte na platnou URL adresu, která"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Uživatel ověřen pomocí API klíče: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Platné příklady"
+
+#: 
+msgid "What this plugin does"
+msgstr "Co tento plugin dělá"
+
+#: 
+msgid "for all funds"
+msgstr "pro všechny fondy"
+
+#: 
+msgid "for fund"
+msgstr "pro fond"
+
+#: 
+msgid "for funds"
+msgstr "pro fondy"
+
+#: 
+msgid "user"
+msgstr "uživatel"
+
+#: 
+msgid "with at least one"
+msgstr "s alespoň jedním"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Odeslat také na adresu sboru ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Opravdu chcete odebrat tuto osobu z"
+
+#: 
+msgid "BCC Mode"
+msgstr "Režim skrytá kopie (BCC)"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "Přihlášeno {{count}} lidí."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "E-mailová adresa sboru je automaticky přidána jako odebratelný příjemce při psaní e-mailů z CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "E-mail sboru — nastaveno na stránce %s."
+
+#: 
+msgid "Closing"
+msgstr "Zavírání"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Souřadnice aktualizovány"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Kopírovat adresy"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Kopírovat e-mail sboru"
+
+#: 
+msgid "Email All Members"
+msgstr "Poslat e-mail všem členům"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Poslat e-mail vybraným členům"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Končí lomítkem (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Geokódování se nezdařilo"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Načtení příjemců se nezdařilo. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Nepodařilo se načíst e-mailové adresy výběru"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Přihlášení rodiny se nezdařilo. Zkuste to prosím znovu."
+
+#: 
+msgid "Ignore"
+msgstr "Ignorovat"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Ignorovat neúplné adresy"
+
+#: 
+msgid "Kids"
+msgstr "Děti"
+
+#: 
+msgid "Loading family members..."
+msgstr "Načítání členů rodiny..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Načítání příjemců…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Nebyly nalezeny žádné e-mailové adresy."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Otevřít v e-mailovém klientovi"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Přesměrování za %s sekund..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Obnovování..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Odebrat ze skupiny"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Odebrat {{personName}} z této třídy?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Požadavek selhal ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Role k zahrnutí"
+
+#: 
+msgid "Select Country"
+msgstr "Vyberte zemi"
+
+#: 
+msgid "Select State"
+msgstr "Vyberte stát"
+
+#: 
+msgid "Select a person"
+msgstr "Vyberte osobu"
+
+#: 
+msgid "Select role"
+msgstr "Vyberte roli"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Vyberte typ (volitelné)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Začíná http:// nebo https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Tato skupina má pouze jednu roli."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Kdo přivádí {{name}}?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Kdo vyzvedává {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "Probíhá..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Jste pozadu o {{releaseCount}} vydání. Zde je to, co získáte"
+
+#: 
+msgid "click to expand"
+msgstr "klikněte pro rozbalení"
+
+#: 
+msgid "pick"
+msgstr "vybrat"
+
+#: 
+msgid "recipient"
+msgstr "příjemce"
+
+#: 
+msgid "recipients"
+msgstr "příjemci"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "Zbývá {{hours}}h {{mins}}m"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Přidat nový vklad"
+
+#: 
+msgid "Add New Event"
+msgstr "Přidat novou událost"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Přidat nový typ události"
+
+#: 
+msgid "Add New Family"
+msgstr "Přidat novou rodinu"
+
+#: 
+msgid "Add New Field"
+msgstr "Přidat nové pole"
+
+#: 
+msgid "Add New Fund"
+msgstr "Přidat nový fond"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Přidat novou příležitost"
+
+#: 
+msgid "Add New Person"
+msgstr "Přidat novou osobu"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Přidat nový finanční závazek"
+
+#: 
+msgid "Add New Role"
+msgstr "Přidat novou roli"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Přidat novou dobrovolnickou příležitost"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Přidat třídu nedělní školy"
+
+#: 
+msgid "Delete this family?"
+msgstr "Smazat tuto rodinu?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Chcete smazat tuto rodinu? Budete přesměrováni na stránku, kde si vyberete, co smazat. Tuto akci nelze vrátit zpět."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Potvrzení smazání rodiny"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Jednotlivci (bez rodiny)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Nové vlastní registrace"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Potvrzení smazání typu vlastnosti"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Zkontrolujte nové rodiny a jednotlivce, kteří se zaregistrovali prostřednictvím veřejného registračního formuláře"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Níže zkontrolujte nové přihlášky z veřejného registračního formuláře. Záznamy bez e-mailu nebo telefonu jsou označeny — před dalším kontaktem ověřte kontaktní údaje."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Potvrzení smazání dobrovolnické příležitosti"
 

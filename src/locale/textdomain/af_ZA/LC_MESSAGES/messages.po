@@ -7420,10 +7420,6 @@ msgid "Move up"
 msgstr "Beweeg Op"
 
 #: 
-msgid "Opportunity"
-msgstr "Geleentheid"
-
-#: 
 msgid "Order"
 msgstr "Bestel"
 
@@ -7438,14 +7434,6 @@ msgstr "Persentasie"
 #: 
 msgid "Person Properties"
 msgstr "Persoon Eienskappe"
-
-#: 
-msgid "Property Type"
-msgstr "Eiendom Tipe"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vrywilliger-geleentheid"
 
 #. Context: locales
 #: 
@@ -16803,4 +16791,528 @@ msgstr "doelwitBedrag moet nie-negatief wees"
 #: 
 msgid "thru %s"
 msgstr "tot %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "\"Hoekom Gekom\" notas vir %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s van die %2$s-gesin"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d meer inskrywings sal pas."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d rekord(s) teruggekeer"
+
+#: 
+msgid "Assign role to all"
+msgstr "Ken rol aan almal toe"
+
+#: 
+msgid "Buyer #"
+msgstr "Koper #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Kopers vir hierdie fondsinsamelingsgeleentheid"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Kalender-insluit-oorspronge"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM-vertalings word deur die gemeenskap op POEditor bestuur. Jy kan help deur"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Geslote Deposito's"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Huidige $URL[0]-waarde"
+
+#: 
+msgid "Custom port"
+msgstr "Pasgemaakte poort"
+
+#: 
+msgid "Data Quality"
+msgstr "Datakwaliteit"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Geskenk deur %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "E-posfunksionaliteit is tans gedeaktiveer. Die volgende funksies sal nie werk totdat e-pos geaktiveer is nie"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Geskatte waarde $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Vinnigste werksvloei"
+
+#: 
+msgid "File Integrity"
+msgstr "Lêerintegriteit"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filtreer volgens logniveau"
+
+#: 
+msgid "Find the line"
+msgstr "Vind die reël"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Verleen individuele toestemmings"
+
+#: 
+msgid "How to Fix"
+msgstr "Hoe om te Herstel"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Invoer het misluk: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Sluit jou API-sleutel in versoeke in deur die x-api-key-opskrif te gebruik"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Spring na enige opstapstap"
+
+#: 
+msgid "Local development"
+msgstr "Plaaslike ontwikkeling"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Minimum Totale Bedrag"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Minimum bod $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Nuwe Betaling - %1$s Deposito # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Gaan nou die ontvanger se inkassie na om aflewering te bevestig. Soek die onderwerp"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Aantal reëls om te vertoon"
+
+#: 
+msgid "Open Deposits"
+msgstr "Oop Deposito's"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Maak 'n 2-minuut-venster oop vir toestelle om by te registreer"
+
+#: 
+msgid "Output Method"
+msgstr "Uitsetmetode"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Bevestig asseblief die verwydering van hierdie gesinrekord"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Bevestig asseblief jou gesininligting"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Stuur asseblief jou volgende gawe aan %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Kies asseblief 'n ander gesin waarmee hierdie skenkings geassosieer moet word"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Betalingstrokie"
+
+#: 
+msgid "Report Heading"
+msgstr "Verslagopskrif"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Herstel sal permanent uitvee"
+
+#: 
+msgid "Show"
+msgstr "Wys"
+
+#: 
+msgid "Signature"
+msgstr "Handtekening"
+
+#: 
+msgid "Sort Data by"
+msgstr "Sorteer data volgens"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Spasie-geskeide lys van oorspronge wat toegelaat word om die openbare eksterne kalenderblad in 'n iframe in te sluit."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Spasie-geskeide oorspronge wat toegelaat word om die openbare kalenderblad in 'n iframe in te sluit."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Sondagskool-groep kan nie gewysig word nie, slegs in hierdie twee gevalle"
+
+#: 
+msgid "Supported formats"
+msgstr "Ondersteunde formate"
+
+#: 
+msgid "System Configuration"
+msgstr "Stelselkonfigurasie"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Daar is mense aan hierdie Vrywilligersgeleentheid toegewys. Verwydering sal hulle onttoes"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Hierdie waarde kan nie minder as %d karakters lank wees nie"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Hierdie waarde kan nie meer as %d karakters lank wees nie"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Hierdie waarde kan nie meer as %s wees nie"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Hierdie waarde moet minstens %s wees"
+
+#: 
+msgid "Total Deposits"
+msgstr "Totale Deposito's"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Dateer dit op na 'n geldige URL wat"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Gebruiker geoutentiseer via API-sleutel: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Geldige Voorbeelde"
+
+#: 
+msgid "What this plugin does"
+msgstr "Wat hierdie inpropmodule doen"
+
+#: 
+msgid "for all funds"
+msgstr "vir alle fondse"
+
+#: 
+msgid "for fund"
+msgstr "vir fonds"
+
+#: 
+msgid "for funds"
+msgstr "vir fondse"
+
+#: 
+msgid "user"
+msgstr "gebruiker"
+
+#: 
+msgid "with at least one"
+msgstr "met ten minste een"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Stuur ook na kerkadres ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Is jy seker jy wil hierdie persoon verwyder van"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC-modus"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}} persone ingeskryf."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "Kerk-e-posadres word outomaties as 'n verwyderde ontvanger bygevoeg wanneer e-posse van CRM geskryf word"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "Kerk-e-pos — op die %s-bladsy gekonfigureer."
+
+#: 
+msgid "Closing"
+msgstr "Sluit"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Koördinate Opgedateer"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Kopieer Adresse"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Kopieer Kerk-e-pos"
+
+#: 
+msgid "Email All Members"
+msgstr "E-pos Alle Lede"
+
+#: 
+msgid "Email Cart Members"
+msgstr "E-pos Keuselede"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Eindig met 'n nakomende skuinsstreep (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Geografiese kodering het misluk"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Ontvangers kon nie gelaai word nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Keuse-e-posadresse kon nie herwin word nie"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Gesin-inskrywing het misluk. Probeer asseblief weer."
+
+#: 
+msgid "Ignore"
+msgstr "Ignoreer"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Ignoreer Onvolledige Adresse"
+
+#: 
+msgid "Kids"
+msgstr "Kinders"
+
+#: 
+msgid "Loading family members..."
+msgstr "Gesinslede word gelaai..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Ontvangers word gelaai…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Geen e-posadresse gevind nie."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Maak oop in E-poskliënt"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Herlei in %s sekondes..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Verfris..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Verwyder uit Groep"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Verwyder {{personName}} uit hierdie klas?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Versoek het misluk ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Rolle om in te sluit"
+
+#: 
+msgid "Select Country"
+msgstr "Kies Land"
+
+#: 
+msgid "Select State"
+msgstr "Kies Staat"
+
+#: 
+msgid "Select a person"
+msgstr "Kies 'n persoon"
+
+#: 
+msgid "Select role"
+msgstr "Kies rol"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Kies tipe (opsioneel)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Begin met http:// of https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Hierdie groep het slegs een rol."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Wie bring {{name}} in?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Wie haal {{name}} op?"
+
+#: 
+msgid "Working..."
+msgstr "Besig..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Jy is {{releaseCount}} vrystellings agter. Dit is wat jy sal kry"
+
+#: 
+msgid "click to expand"
+msgstr "klik om uit te brei"
+
+#: 
+msgid "pick"
+msgstr "kies"
+
+#: 
+msgid "recipient"
+msgstr "ontvanger"
+
+#: 
+msgid "recipients"
+msgstr "ontvangers"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}u {{mins}}m oor"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Voeg Nuwe Deposito By"
+
+#: 
+msgid "Add New Event"
+msgstr "Voeg Nuwe Geleentheid By"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Voeg Nuwe Geleentheidstipe By"
+
+#: 
+msgid "Add New Family"
+msgstr "Voeg Nuwe Gesin By"
+
+#: 
+msgid "Add New Field"
+msgstr "Voeg Nuwe Veld By"
+
+#: 
+msgid "Add New Fund"
+msgstr "Voeg Nuwe Fonds By"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Voeg Nuwe Geleentheid By"
+
+#: 
+msgid "Add New Person"
+msgstr "Voeg Nuwe Persoon By"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Voeg Nuwe Toewyding By"
+
+#: 
+msgid "Add New Role"
+msgstr "Voeg Nuwe Rol By"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Voeg Nuwe Vrywilligersgeleentheid By"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Voeg Sondagskoolklas By"
+
+#: 
+msgid "Delete this family?"
+msgstr "Verwyder hierdie gesin?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Wil jy hierdie gesin verwyder? Jy sal na 'n bladsy geneem word om te kies wat verwyder moet word. Dit kan nie ongedaan gemaak word nie."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Gesin-verwyderingsbevestiging"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Individue (geen gesin)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Nuwe Self-registrasies"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Eiendomstipe-verwyderingsbevestiging"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Hersien nuwe gesinne en individue wat op jou openbare registrasievorm aangemeld het"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Hersien nuwe aanmeldings van jou openbare registrasievorm hieronder. Inskrywings sonder e-pos of telefoon is gemerk — verifieer kontakinligting voor opvolging."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Vrywilligersgeleentheid-verwyderingsbevestiging"
 

@@ -7409,10 +7409,6 @@ msgid "Move up"
 msgstr "위로 이동"
 
 #: 
-msgid "Opportunity"
-msgstr "기회"
-
-#: 
 msgid "Order"
 msgstr "순서"
 
@@ -7427,14 +7423,6 @@ msgstr "백분율"
 #: 
 msgid "Person Properties"
 msgstr "사람 속성"
-
-#: 
-msgid "Property Type"
-msgstr "속성 유형"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "자원봉사 기회"
 
 #. Context: locales
 #: 
@@ -16789,4 +16777,528 @@ msgstr "목표 금액은 음수가 아니어야 합니다"
 #: 
 msgid "thru %s"
 msgstr "%s까지"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "%1$s %2$s의 \"방문 이유\" 메모"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s 가정의 %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d개의 항목을 더 추가할 수 있습니다."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d개의 레코드가 반환되었습니다"
+
+#: 
+msgid "Assign role to all"
+msgstr "모든 구성원에게 역할 할당"
+
+#: 
+msgid "Buyer #"
+msgstr "구매자 번호"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "이 모금 행사의 구매자"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "캘린더 임베드 출처"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM 번역은 POEditor의 커뮤니티에서 관리됩니다."
+
+#: 
+msgid "Closed Deposits"
+msgstr "마감된 헌금"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "현재 $URL[0] 값"
+
+#: 
+msgid "Custom port"
+msgstr "사용자 지정 포트"
+
+#: 
+msgid "Data Quality"
+msgstr "데이터 품질"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "%1$s %2$s이(가) 헌물하였습니다."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "현재 이메일 기능이 비활성화되어 있습니다."
+
+#: 
+msgid "Estimated value $%s."
+msgstr "예상 가치 $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "가장 빠른 작업 흐름"
+
+#: 
+msgid "File Integrity"
+msgstr "파일 무결성"
+
+#: 
+msgid "Filter by log level"
+msgstr "로그 수준으로 필터링"
+
+#: 
+msgid "Find the line"
+msgstr "줄 찾기"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "개별 권한 부여"
+
+#: 
+msgid "How to Fix"
+msgstr "해결 방법"
+
+#: 
+msgid "Import failed: %s"
+msgstr "가져오기 실패: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "x-api-key 헤더를 사용하여 요청에 API 키를 포함하세요"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "임의의 설정 단계로 이동"
+
+#: 
+msgid "Local development"
+msgstr "로컬 개발"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "최소 총액"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "최소 입찰가 $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "새 헌금 - %1$s 입금 번호 %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "수신자의 받은 편지함에서 전달 여부를 확인하세요. 제목을 찾으세요"
+
+#: 
+msgid "Number of lines to display"
+msgstr "표시할 줄 수"
+
+#: 
+msgid "Open Deposits"
+msgstr "열린 헌금"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "기기가 등록할 수 있는 2분 창을 엽니다"
+
+#: 
+msgid "Output Method"
+msgstr "출력 방법"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "이 가족 기록 삭제를 확인해 주세요"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "가족 정보를 확인해 주세요"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "다음 헌금을 %s로 우편 발송해 주세요"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "이 헌금을 연결할 다른 가정을 선택해 주세요"
+
+#: 
+msgid "Remittance Slip"
+msgstr "헌금 영수증"
+
+#: 
+msgid "Report Heading"
+msgstr "보고서 제목"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "초기화하면 영구적으로 삭제됩니다"
+
+#: 
+msgid "Show"
+msgstr "표시"
+
+#: 
+msgid "Signature"
+msgstr "서명"
+
+#: 
+msgid "Sort Data by"
+msgstr "데이터 정렬 기준"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "공개 외부 캘린더 페이지를 iframe에 임베드할 수 있는 출처 목록. 기본값은 모든 출처를 허용합니다."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "공개 캘린더 페이지를 iframe에 임베드할 수 있는 출처. 기본값은 모든 사이트를 허용합니다."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "주일학교 그룹은 다음 두 가지 경우에만 수정할 수 있습니다"
+
+#: 
+msgid "Supported formats"
+msgstr "지원되는 형식"
+
+#: 
+msgid "System Configuration"
+msgstr "시스템 구성"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "이 봉사 기회에 배정된 사람들이 있습니다. 삭제하면 배정이 취소됩니다"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "이 값은 %d자 미만일 수 없습니다"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "이 값은 %d자를 초과할 수 없습니다"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "이 값은 %s을(를) 초과할 수 없습니다"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "이 값은 최소 %s 이상이어야 합니다"
+
+#: 
+msgid "Total Deposits"
+msgstr "총 헌금"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "유효한 URL로 업데이트하세요"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "API 키로 사용자 인증됨: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "유효한 예시"
+
+#: 
+msgid "What this plugin does"
+msgstr "이 플러그인의 기능"
+
+#: 
+msgid "for all funds"
+msgstr "모든 기금에 대해"
+
+#: 
+msgid "for fund"
+msgstr "기금에 대해"
+
+#: 
+msgid "for funds"
+msgstr "기금들에 대해"
+
+#: 
+msgid "user"
+msgstr "사용자"
+
+#: 
+msgid "with at least one"
+msgstr "최소 하나 이상의"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "교회 주소({{email}})로도 보내기"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "이 사람을 다음에서 제거하시겠습니까"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC 모드"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}}명이 체크인되었습니다."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "CRM에서 이메일 작성 시 교회 이메일 주소가 제거 가능한 수신자로 자동 추가됩니다"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "교회 이메일 — %s 페이지에서 구성됩니다."
+
+#: 
+msgid "Closing"
+msgstr "마감"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "좌표가 업데이트되었습니다"
+
+#: 
+msgid "Copy Addresses"
+msgstr "주소 복사"
+
+#: 
+msgid "Copy Church Email"
+msgstr "교회 이메일 복사"
+
+#: 
+msgid "Email All Members"
+msgstr "모든 교인에게 이메일 보내기"
+
+#: 
+msgid "Email Cart Members"
+msgstr "선택된 교인에게 이메일 보내기"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "끝에 슬래시(/)가 있습니다"
+
+#: 
+msgid "Failed to geocode"
+msgstr "지오코딩 실패"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "수신자를 불러오지 못했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "선택된 교인의 이메일 주소를 가져오지 못했습니다"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "가족 체크인에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Ignore"
+msgstr "무시"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "불완전한 주소 무시"
+
+#: 
+msgid "Kids"
+msgstr "어린이"
+
+#: 
+msgid "Loading family members..."
+msgstr "가족 구성원을 불러오는 중..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "수신자를 불러오는 중…"
+
+#: 
+msgid "No email addresses found."
+msgstr "이메일 주소를 찾을 수 없습니다."
+
+#: 
+msgid "Open in Email Client"
+msgstr "이메일 클라이언트에서 열기"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "%s초 후 이동합니다..."
+
+#: 
+msgid "Refreshing..."
+msgstr "새로고침 중..."
+
+#: 
+msgid "Remove from Group"
+msgstr "그룹에서 제거"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "{{personName}}을(를) 이 반에서 제거하시겠습니까?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "요청 실패 ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "포함할 역할"
+
+#: 
+msgid "Select Country"
+msgstr "국가 선택"
+
+#: 
+msgid "Select State"
+msgstr "주/도 선택"
+
+#: 
+msgid "Select a person"
+msgstr "사람 선택"
+
+#: 
+msgid "Select role"
+msgstr "역할 선택"
+
+#: 
+msgid "Select type (optional)"
+msgstr "유형 선택 (선택 사항)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "http:// 또는 https://로 시작합니다"
+
+#: 
+msgid "This group only has one role."
+msgstr "이 그룹에는 역할이 하나뿐입니다."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "{{name}}을(를) 데려오는 분은 누구입니까?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "{{name}}을(를) 데리러 가는 분은 누구입니까?"
+
+#: 
+msgid "Working..."
+msgstr "처리 중..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "{{releaseCount}}개 버전이 뒤처져 있습니다. 업데이트 시 얻게 되는 내용"
+
+#: 
+msgid "click to expand"
+msgstr "클릭하여 펼치기"
+
+#: 
+msgid "pick"
+msgstr "선택"
+
+#: 
+msgid "recipient"
+msgstr "수신자"
+
+#: 
+msgid "recipients"
+msgstr "수신자들"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}시간 {{mins}}분 남음"
+
+#: 
+msgid "Add New Deposit"
+msgstr "새 헌금 추가"
+
+#: 
+msgid "Add New Event"
+msgstr "새 행사 추가"
+
+#: 
+msgid "Add New Event Type"
+msgstr "새 행사 유형 추가"
+
+#: 
+msgid "Add New Family"
+msgstr "새 가정 추가"
+
+#: 
+msgid "Add New Field"
+msgstr "새 필드 추가"
+
+#: 
+msgid "Add New Fund"
+msgstr "새 기금 추가"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "새 기회 추가"
+
+#: 
+msgid "Add New Person"
+msgstr "새 교인 추가"
+
+#: 
+msgid "Add New Pledge"
+msgstr "새 헌금 서약 추가"
+
+#: 
+msgid "Add New Role"
+msgstr "새 역할 추가"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "새 봉사 기회 추가"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "주일학교 반 추가"
+
+#: 
+msgid "Delete this family?"
+msgstr "이 가정을 삭제하시겠습니까?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "이 가정을 삭제하시겠습니까? 삭제할 항목을 선택하는 페이지로 이동합니다. 이 작업은 취소할 수 없습니다."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "가정 삭제 확인"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "개인 (가정 없음)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "새 자기 등록"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "속성 유형 삭제 확인"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "공개 등록 양식에서 등록한 새 가정 및 개인을 검토하세요"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "아래에서 공개 등록 양식의 새 등록자를 검토하세요. 이메일이나 전화번호가 없는 항목은 표시됩니다."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "봉사 기회 삭제 확인"
 

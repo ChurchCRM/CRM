@@ -7424,10 +7424,6 @@ msgid "Move up"
 msgstr "மேலே நகர்வு"
 
 #: 
-msgid "Opportunity"
-msgstr "வாய்ப்பு"
-
-#: 
 msgid "Order"
 msgstr "ஆணை"
 
@@ -7442,14 +7438,6 @@ msgstr "சதவீதம்"
 #: 
 msgid "Person Properties"
 msgstr "நபர் பண்புகள்"
-
-#: 
-msgid "Property Type"
-msgstr "சொத்து வகை"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "தன்னார்வ வாய்ப்பு"
 
 #. Context: locales
 #: 
@@ -16820,4 +16808,528 @@ msgstr "இலக்கு தொகை எதிர்மறையற்றத�
 #: 
 msgid "thru %s"
 msgstr "%s வரை"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "%1$s %2$s-க்கான \"ஏன் வந்தார்\" குறிப்புகள்"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s குடும்பத்தின் %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d மேலும் பதிவுகள் பொருந்தும்."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d பதிவு(கள்) திரும்பியது"
+
+#: 
+msgid "Assign role to all"
+msgstr "அனைவருக்கும் பாத்திரம் ஒதுக்கு"
+
+#: 
+msgid "Buyer #"
+msgstr "வாங்குபவர் #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "இந்த நிதி திரட்டலுக்கான வாங்குபவர்கள்"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "நாட்காட்டி உட்பொதிப்பு மூலங்கள்"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM மொழிபெயர்ப்புகள் POEditor-இல் சமூகத்தால் நிர்வகிக்கப்படுகின்றன. நீங்கள் உதவலாம்"
+
+#: 
+msgid "Closed Deposits"
+msgstr "மூடப்பட்ட வைப்புகள்"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "தற்போதைய $URL[0] மதிப்பு"
+
+#: 
+msgid "Custom port"
+msgstr "தனிப்பயன் போர்ட்"
+
+#: 
+msgid "Data Quality"
+msgstr "தரவு தரம்"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "%1$s %2$s-ஆல் நன்கொடை அளிக்கப்பட்டது."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "மின்னஞ்சல் செயல்பாடு தற்போது முடக்கப்பட்டுள்ளது. மின்னஞ்சல் இயக்கப்படும் வரை பின்வரும் அம்சங்கள் வேலை செய்யாது"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "மதிப்பிடப்பட்ட மதிப்பு $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "விரைவான பணிப்பாய்வு"
+
+#: 
+msgid "File Integrity"
+msgstr "கோப்பு ஒருமைப்பாடு"
+
+#: 
+msgid "Filter by log level"
+msgstr "பதிவு நிலையால் வடிகட்டு"
+
+#: 
+msgid "Find the line"
+msgstr "வரியைக் கண்டறி"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "தனிப்பட்ட அனுமதிகளை வழங்கு"
+
+#: 
+msgid "How to Fix"
+msgstr "எப்படி சரிசெய்வது"
+
+#: 
+msgid "Import failed: %s"
+msgstr "இறக்குமதி தோல்வியடைந்தது: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "x-api-key தலைப்பைப் பயன்படுத்தி கோரிக்கைகளில் உங்கள் API விசையை சேர்க்கவும்"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "எந்த அமைப்பு படிக்கும் செல்லவும்"
+
+#: 
+msgid "Local development"
+msgstr "உள்ளூர் மேம்பாடு"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "குறைந்தபட்ச மொத்த தொகை"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "குறைந்தபட்ச ஏலம் $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "புதிய கட்டணம் - %1$s வைப்பு # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "வழங்கலை உறுதிப்படுத்த பெறுநரின் இன்பாக்ஸைச் சரிபாருங்கள். தலைப்பைத் தேடுங்கள்"
+
+#: 
+msgid "Number of lines to display"
+msgstr "காட்ட வேண்டிய வரிகளின் எண்ணிக்கை"
+
+#: 
+msgid "Open Deposits"
+msgstr "திறந்த வைப்புகள்"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "சாதனங்கள் பதிவு செய்ய 2 நிமிட சாளரத்தைத் திறக்கிறது"
+
+#: 
+msgid "Output Method"
+msgstr "வெளியீட்டு முறை"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "இந்த குடும்பப் பதிவை நீக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "உங்கள் குடும்ப தகவலை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "உங்கள் அடுத்த பரிசை %s-க்கு அஞ்சல் செய்யவும்"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "இந்த நன்கொடைகளை இணைக்க வேறு குடும்பத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Remittance Slip"
+msgstr "பணம் அனுப்பும் சீட்டு"
+
+#: 
+msgid "Report Heading"
+msgstr "அறிக்கை தலைப்பு"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "மீட்டமைத்தல் நிரந்தரமாக நீக்கும்"
+
+#: 
+msgid "Show"
+msgstr "காட்டு"
+
+#: 
+msgid "Signature"
+msgstr "கையொப்பம்"
+
+#: 
+msgid "Sort Data by"
+msgstr "தரவை வரிசைப்படுத்து"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "பொது வெளிப்புற நாட்காட்டி பக்கத்தை iframe-இல் உட்பொதிக்க அனுமதிக்கப்பட்ட இடைவெளியால் பிரிக்கப்பட்ட மூலங்களின் பட்டியல்."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "பொது நாட்காட்டி பக்கத்தை iframe-இல் உட்பொதிக்க அனுமதிக்கப்பட்ட இடைவெளியால் பிரிக்கப்பட்ட மூலங்கள்."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "ஞாயிற்றுக்கிழமை பள்ளி குழுவை மாற்ற முடியாது, இந்த இரண்டு சந்தர்ப்பங்களில் மட்டுமே"
+
+#: 
+msgid "Supported formats"
+msgstr "ஆதரிக்கப்படும் வடிவங்கள்"
+
+#: 
+msgid "System Configuration"
+msgstr "கணினி கட்டமைப்பு"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "இந்த தன்னார்வ வாய்ப்பிற்கு நியமிக்கப்பட்டவர்கள் உள்ளனர். நீக்குதல் நியமனத்தை நீக்கும்"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "இந்த மதிப்பு %d எழுத்துகளுக்கும் குறைவாக இருக்கக்கூடாது"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "இந்த மதிப்பு %d எழுத்துகளுக்கும் அதிகமாக இருக்கக்கூடாது"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "இந்த மதிப்பு %s-ஐ விட அதிகமாக இருக்கக்கூடாது"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "இந்த மதிப்பு குறைந்தபட்சம் %s ஆக இருக்க வேண்டும்"
+
+#: 
+msgid "Total Deposits"
+msgstr "மொத்த வைப்புகள்"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "செல்லுபடியான URL-ஆக புதுப்பிக்கவும்"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "API விசை மூலம் பயனர் அங்கீகரிக்கப்பட்டார்: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "செல்லுபடியான எடுத்துக்காட்டுகள்"
+
+#: 
+msgid "What this plugin does"
+msgstr "இந்த செருகுநிரல் என்ன செய்கிறது"
+
+#: 
+msgid "for all funds"
+msgstr "அனைத்து நிதிகளுக்கும்"
+
+#: 
+msgid "for fund"
+msgstr "நிதிக்கு"
+
+#: 
+msgid "for funds"
+msgstr "நிதிகளுக்கு"
+
+#: 
+msgid "user"
+msgstr "பயனர்"
+
+#: 
+msgid "with at least one"
+msgstr "குறைந்தபட்சம் ஒன்றுடன்"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "தேவாலய முகவரிக்கும் அனுப்பு ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "இந்த நபரை இதிலிருந்து நீக்க விரும்புகிறீர்களா"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC முறை"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}} நபர்களை உள்ளே சரிபார்த்தது."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "CRM-இலிருந்து மின்னஞ்சல் எழுதும்போது தேவாலய மின்னஞ்சல் முகவரி நீக்கக்கூடிய பெறுநராக தானாகவே சேர்க்கப்படும்"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "தேவாலய மின்னஞ்சல் — %s பக்கத்தில் கட்டமைக்கப்பட்டது."
+
+#: 
+msgid "Closing"
+msgstr "மூடுகிறது"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "ஆயத்தொலைவுகள் புதுப்பிக்கப்பட்டன"
+
+#: 
+msgid "Copy Addresses"
+msgstr "முகவரிகளை நகலெடு"
+
+#: 
+msgid "Copy Church Email"
+msgstr "தேவாலய மின்னஞ்சலை நகலெடு"
+
+#: 
+msgid "Email All Members"
+msgstr "அனைத்து உறுப்பினர்களுக்கும் மின்னஞ்சல் அனுப்பு"
+
+#: 
+msgid "Email Cart Members"
+msgstr "தேர்ந்தெடுத்த உறுப்பினர்களுக்கு மின்னஞ்சல் அனுப்பு"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "இறுதியில் சாய்வு கோடுடன் முடிகிறது (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "புவியியல் குறியீடு தோல்வியடைந்தது"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "பெறுநர்களை ஏற்றுவதில் தோல்வி. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "தேர்ந்தெடுத்த மின்னஞ்சல் முகவரிகளை மீட்டெடுப்பதில் தோல்வி"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "குடும்ப உள்வருகை தோல்வியடைந்தது. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Ignore"
+msgstr "புறக்கணி"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "முழுமையற்ற முகவரிகளை புறக்கணி"
+
+#: 
+msgid "Kids"
+msgstr "குழந்தைகள்"
+
+#: 
+msgid "Loading family members..."
+msgstr "குடும்ப உறுப்பினர்களை ஏற்றுகிறது..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "பெறுநர்களை ஏற்றுகிறது…"
+
+#: 
+msgid "No email addresses found."
+msgstr "மின்னஞ்சல் முகவரிகள் எதுவும் இல்லை."
+
+#: 
+msgid "Open in Email Client"
+msgstr "மின்னஞ்சல் கிளையண்டில் திற"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "%s விநாடிகளில் திருப்பிவிடுகிறது..."
+
+#: 
+msgid "Refreshing..."
+msgstr "புதுப்பிக்கிறது..."
+
+#: 
+msgid "Remove from Group"
+msgstr "குழுவிலிருந்து நீக்கு"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "{{personName}}-ஐ இந்த வகுப்பிலிருந்து நீக்கவா?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "கோரிக்கை தோல்வியடைந்தது ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "சேர்க்க வேண்டிய பாத்திரங்கள்"
+
+#: 
+msgid "Select Country"
+msgstr "நாட்டைத் தேர்ந்தெடு"
+
+#: 
+msgid "Select State"
+msgstr "மாநிலத்தைத் தேர்ந்தெடு"
+
+#: 
+msgid "Select a person"
+msgstr "ஒரு நபரைத் தேர்ந்தெடு"
+
+#: 
+msgid "Select role"
+msgstr "பாத்திரத்தைத் தேர்ந்தெடு"
+
+#: 
+msgid "Select type (optional)"
+msgstr "வகையைத் தேர்ந்தெடு (விருப்பமானது)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "http:// அல்லது https:// உடன் தொடங்குகிறது"
+
+#: 
+msgid "This group only has one role."
+msgstr "இந்த குழுவில் ஒரே ஒரு பாத்திரம் மட்டுமே உள்ளது."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "{{name}}-ஐ யார் அழைத்து வருகிறார்?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "{{name}}-ஐ யார் அழைத்துச் செல்கிறார்?"
+
+#: 
+msgid "Working..."
+msgstr "செயல்படுகிறது..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "நீங்கள் {{releaseCount}} வெளியீடுகள் பின்தங்கியுள்ளீர்கள். நீங்கள் பெறுவது இதுதான்"
+
+#: 
+msgid "click to expand"
+msgstr "விரிவாக்க கிளிக் செய்யவும்"
+
+#: 
+msgid "pick"
+msgstr "தேர்ந்தெடு"
+
+#: 
+msgid "recipient"
+msgstr "பெறுநர்"
+
+#: 
+msgid "recipients"
+msgstr "பெறுநர்கள்"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}} மணி {{mins}} நிமிடம் மீதமுள்ளது"
+
+#: 
+msgid "Add New Deposit"
+msgstr "புதிய வைப்பு சேர்"
+
+#: 
+msgid "Add New Event"
+msgstr "புதிய நிகழ்வு சேர்"
+
+#: 
+msgid "Add New Event Type"
+msgstr "புதிய நிகழ்வு வகை சேர்"
+
+#: 
+msgid "Add New Family"
+msgstr "புதிய குடும்பம் சேர்"
+
+#: 
+msgid "Add New Field"
+msgstr "புதிய புலம் சேர்"
+
+#: 
+msgid "Add New Fund"
+msgstr "புதிய நிதி சேர்"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "புதிய வாய்ப்பு சேர்"
+
+#: 
+msgid "Add New Person"
+msgstr "புதிய நபரை சேர்"
+
+#: 
+msgid "Add New Pledge"
+msgstr "புதிய உறுதிமொழி சேர்"
+
+#: 
+msgid "Add New Role"
+msgstr "புதிய பாத்திரம் சேர்"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "புதிய தன்னார்வ வாய்ப்பு சேர்"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "ஞாயிற்றுக்கிழமை பள்ளி வகுப்பு சேர்"
+
+#: 
+msgid "Delete this family?"
+msgstr "இந்த குடும்பத்தை நீக்கவா?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "இந்த குடும்பத்தை நீக்க விரும்புகிறீர்களா? என்னை நீக்குவது என்று தேர்வு செய்யும் பக்கத்திற்கு அழைத்துச் செல்லப்படுவீர்கள். இதை செயல்தவிர்க்க முடியாது."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "குடும்பம் நீக்கும் உறுதிப்படுத்தல்"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "தனியாட்கள் (குடும்பம் இல்லாதவர்கள்)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "புதிய சுய-பதிவுகள்"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "சொத்து வகை நீக்கும் உறுதிப்படுத்தல்"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "உங்கள் பொது பதிவு படிவத்தில் பதிவு செய்த புதிய குடும்பங்கள் மற்றும் தனியாட்களை மதிப்பாய்வு செய்யுங்கள்"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "கீழே உங்கள் பொது பதிவு படிவத்திலிருந்து புதிய பதிவுகளை மதிப்பாய்வு செய்யுங்கள். மின்னஞ்சல் அல்லது தொலைபேசி இல்லாத பதிவுகள் கொடியிடப்பட்டுள்ளன — தொடர்பு கொள்வதற்கு முன் தொடர்பு தகவலை சரிபாருங்கள்."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "தன்னார்வ வாய்ப்பு நீக்கும் உறுதிப்படுத்தல்"
 

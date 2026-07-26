@@ -7517,10 +7517,6 @@ msgid "Move up"
 msgstr "Flytta upp"
 
 #: 
-msgid "Opportunity"
-msgstr "Möjlighet"
-
-#: 
 msgid "Order"
 msgstr "Ordning"
 
@@ -7535,14 +7531,6 @@ msgstr "Procent"
 #: 
 msgid "Person Properties"
 msgstr "Personegenskaper"
-
-#: 
-msgid "Property Type"
-msgstr "Egenskapstyp"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Volontärmöjlighet"
 
 #. Context: locales
 #: 
@@ -16904,4 +16892,528 @@ msgstr "goalAmount måste vara icke-negativt"
 #: 
 msgid "thru %s"
 msgstr "t.o.m. %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "\"Varför kom\"-anteckningar för %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s av familjen %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "%d fler poster får plats."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d post(er) returnerade"
+
+#: 
+msgid "Assign role to all"
+msgstr "Tilldela roll till alla"
+
+#: 
+msgid "Buyer #"
+msgstr "Köpare #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Köpare för denna insamling"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Kalender-inbäddningsursprung"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM-översättningar hanteras av gemenskapen på POEditor. Du kan hjälpa till genom att"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Stängda insättningar"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Aktuellt $URL[0]-värde"
+
+#: 
+msgid "Custom port"
+msgstr "Anpassad port"
+
+#: 
+msgid "Data Quality"
+msgstr "Datakvalitet"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Donerad av %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "E-postfunktionen är för närvarande inaktiverad. Följande funktioner fungerar inte förrän e-post aktiveras"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Uppskattat värde $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Snabbaste arbetsflödet"
+
+#: 
+msgid "File Integrity"
+msgstr "Filintegritet"
+
+#: 
+msgid "Filter by log level"
+msgstr "Filtrera efter loggnivå"
+
+#: 
+msgid "Find the line"
+msgstr "Hitta raden"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Bevilja individuella behörigheter"
+
+#: 
+msgid "How to Fix"
+msgstr "Hur man åtgärdar"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Import misslyckades: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Inkludera din API-nyckel i förfrågningar med hjälp av x-api-key-huvudet"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Hoppa till vilket installationssteg som helst"
+
+#: 
+msgid "Local development"
+msgstr "Lokal utveckling"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Lägsta totalbelopp"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Lägsta bud $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Ny betalning – %1$s insättning # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Kontrollera nu mottagarens inkorg för att bekräfta leveransen. Leta efter ämnesraden"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Antal rader att visa"
+
+#: 
+msgid "Open Deposits"
+msgstr "Öppna insättningar"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Öppnar ett 2-minutersfönster för enheter att registrera sig på"
+
+#: 
+msgid "Output Method"
+msgstr "Utmatningsmetod"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Bekräfta borttagning av detta familjeregister"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Bekräfta din familjeinformation"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Skicka gärna din nästa gåva till %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Välj en annan familj att koppla dessa gåvor till"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Inbetalningskort"
+
+#: 
+msgid "Report Heading"
+msgstr "Rapportrubrik"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Återställning tar bort permanent"
+
+#: 
+msgid "Show"
+msgstr "Visa"
+
+#: 
+msgid "Signature"
+msgstr "Underskrift"
+
+#: 
+msgid "Sort Data by"
+msgstr "Sortera data efter"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Blankstegsavgränsad lista över ursprung som tillåts bädda in den offentliga externa kalendersidan i en iframe. Standard tillåter vilket ursprung som helst."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Blankstegsavgränsade ursprung som tillåts bädda in den offentliga kalendersidan i en iframe. Standard tillåter vilken webbplats som helst."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Söndagsskolgruppen kan inte ändras, endast i dessa två fall"
+
+#: 
+msgid "Supported formats"
+msgstr "Format som stöds"
+
+#: 
+msgid "System Configuration"
+msgstr "Systemkonfiguration"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Det finns personer tilldelade till detta frivilligtillfälle. Borttagning kommer att ta bort tilldelningen"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Det här värdet får inte vara kortare än %d tecken"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Det här värdet får inte vara längre än %d tecken"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Det här värdet får inte vara mer än %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Det här värdet måste vara minst %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Totala insättningar"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Uppdatera det till en giltig URL som"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Användare autentiserad via API-nyckel: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Giltiga exempel"
+
+#: 
+msgid "What this plugin does"
+msgstr "Vad detta plugin gör"
+
+#: 
+msgid "for all funds"
+msgstr "för alla fonder"
+
+#: 
+msgid "for fund"
+msgstr "för fond"
+
+#: 
+msgid "for funds"
+msgstr "för fonder"
+
+#: 
+msgid "user"
+msgstr "användare"
+
+#: 
+msgid "with at least one"
+msgstr "med minst en"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Skicka även till kyrkans adress ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Är du säker på att du vill ta bort den här personen från"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC-läge"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "Checkade in {{count}} personer."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "Kyrkans e-postadress läggs automatiskt till som ett borttagbart mottagarfält när e-post skrivs i CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "Kyrkans e-post – konfigurerad på sidan %s."
+
+#: 
+msgid "Closing"
+msgstr "Stänger"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Koordinater uppdaterade"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Kopiera adresser"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Kopiera kyrkans e-post"
+
+#: 
+msgid "Email All Members"
+msgstr "Skicka e-post till alla medlemmar"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Skicka e-post till valda medlemmar"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Slutar med ett avslutande snedstreck (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Geokodning misslyckades"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Det gick inte att ladda mottagare. Försök igen."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Det gick inte att hämta e-postadresser från urval"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Familjens incheckning misslyckades. Försök igen."
+
+#: 
+msgid "Ignore"
+msgstr "Ignorera"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Ignorera ofullständiga adresser"
+
+#: 
+msgid "Kids"
+msgstr "Barn"
+
+#: 
+msgid "Loading family members..."
+msgstr "Laddar familjemedlemmar..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Laddar mottagare…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Inga e-postadresser hittades."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Öppna i e-postklient"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Omdirigerar om %s sekunder..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Uppdaterar..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Ta bort från grupp"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Ta bort {{personName}} från den här klassen?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Begäran misslyckades ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Roller att inkludera"
+
+#: 
+msgid "Select Country"
+msgstr "Välj land"
+
+#: 
+msgid "Select State"
+msgstr "Välj stat"
+
+#: 
+msgid "Select a person"
+msgstr "Välj en person"
+
+#: 
+msgid "Select role"
+msgstr "Välj roll"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Välj typ (valfritt)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Börjar med http:// eller https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Den här gruppen har bara en roll."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Vem lämnar in {{name}}?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Vem hämtar {{name}}?"
+
+#: 
+msgid "Working..."
+msgstr "Arbetar..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Du ligger {{releaseCount}} versioner efter. Här är vad du kommer att få"
+
+#: 
+msgid "click to expand"
+msgstr "klicka för att expandera"
+
+#: 
+msgid "pick"
+msgstr "välj"
+
+#: 
+msgid "recipient"
+msgstr "mottagare"
+
+#: 
+msgid "recipients"
+msgstr "mottagare"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}h {{mins}}m kvar"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Lägg till ny insättning"
+
+#: 
+msgid "Add New Event"
+msgstr "Lägg till ny händelse"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Lägg till ny händelsetyp"
+
+#: 
+msgid "Add New Family"
+msgstr "Lägg till ny familj"
+
+#: 
+msgid "Add New Field"
+msgstr "Lägg till nytt fält"
+
+#: 
+msgid "Add New Fund"
+msgstr "Lägg till ny fond"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Lägg till nytt tillfälle"
+
+#: 
+msgid "Add New Person"
+msgstr "Lägg till ny person"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Lägg till nytt löfte"
+
+#: 
+msgid "Add New Role"
+msgstr "Lägg till ny roll"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Lägg till nytt frivilligtillfälle"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Lägg till söndagsskolklass"
+
+#: 
+msgid "Delete this family?"
+msgstr "Ta bort den här familjen?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Vill du ta bort den här familjen? Du kommer att föras till en sida där du kan välja vad som ska tas bort. Detta kan inte ångras."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Bekräftelse på borttagning av familj"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Enskilda personer (ingen familj)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Nya självregistreringar"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Bekräftelse på borttagning av egenskapstyp"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Granska nya familjer och enskilda personer som registrerade sig via ditt offentliga registreringsformulär"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Granska nya registreringar från ditt offentliga registreringsformulär nedan. Poster utan e-post eller telefon är markerade – verifiera kontaktuppgifter innan du följer upp."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Bekräftelse på borttagning av frivilligtillfälle"
 

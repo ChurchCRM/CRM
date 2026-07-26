@@ -7392,10 +7392,6 @@ msgid "Move up"
 msgstr "పైకి తరలించు"
 
 #: 
-msgid "Opportunity"
-msgstr "అవకాశం"
-
-#: 
 msgid "Order"
 msgstr "ఆర్డర్"
 
@@ -7410,14 +7406,6 @@ msgstr "శాతం"
 #: 
 msgid "Person Properties"
 msgstr "వ్యక్తి లక్షణాలు"
-
-#: 
-msgid "Property Type"
-msgstr "ఆస్తి రకం"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "స్వచ్ఛంద అవకాశం"
 
 #. Context: locales
 #: 
@@ -16779,4 +16767,528 @@ msgstr "లక్ష్య మొత్తం ప్రతికూలేతర�
 #: 
 msgid "thru %s"
 msgstr "%s వరకు"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "%1$s %2$s కోసం \"ఎందుకు వచ్చారు\" గమనికలు"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%2$s కుటుంబంలోని %1$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "మరొ %d ఎంట్రీలు సరిపోతాయి."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "%d రికార్డ్(లు) తిరిగి వచ్చాయి"
+
+#: 
+msgid "Assign role to all"
+msgstr "అందరికీ పాత్రను కేటాయించు"
+
+#: 
+msgid "Buyer #"
+msgstr "కొనుగోలుదారు #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "ఈ నిధి సేకరణ కోసం కొనుగోలుదారులు"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "క్యాలెండర్ ఎంబెడ్ మూలాలు"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "ChurchCRM అనువాదాలు POEditor లో సమాజం ద్వారా నిర్వహించబడతాయి. మీరు సహాయపడవచ్చు"
+
+#: 
+msgid "Closed Deposits"
+msgstr "మూసివేసిన డిపాజిట్లు"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "ప్రస్తుత $URL[0] విలువ"
+
+#: 
+msgid "Custom port"
+msgstr "కస్టమ్ పోర్ట్"
+
+#: 
+msgid "Data Quality"
+msgstr "డేటా నాణ్యత"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "%1$s %2$s చేత దానం చేయబడింది."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "ఇమెయిల్ విధి ప్రస్తుతం నిష్క్రియంగా ఉంది. ఇమెయిల్ ప్రారంభించే వరకు కింది లక్షణాలు పనిచేయవు"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "అంచనా విలువ $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "వేగవంతమైన వర్క్‌ఫ్లో"
+
+#: 
+msgid "File Integrity"
+msgstr "ఫైల్ సమగ్రత"
+
+#: 
+msgid "Filter by log level"
+msgstr "లాగ్ స్థాయి ద్వారా వడపోత"
+
+#: 
+msgid "Find the line"
+msgstr "పంక్తిని కనుగొనండి"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "వ్యక్తిగత అనుమతులు మంజూరు చేయండి"
+
+#: 
+msgid "How to Fix"
+msgstr "ఎలా పరిష్కరించాలి"
+
+#: 
+msgid "Import failed: %s"
+msgstr "దిగుమతి విఫలమైంది: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "x-api-key హెడర్ ఉపయోగించి అభ్యర్థనలలో మీ API కీని చేర్చండి"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "ఏదైనా సెటప్ దశకు దూకండి"
+
+#: 
+msgid "Local development"
+msgstr "స్థానిక అభివృద్ధి"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "కనీస మొత్తం మొత్తం"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "కనీస బిడ్ $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "కొత్త చెల్లింపు - %1$s డిపాజిట్ # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "డెలివరీని నిర్ధారించడానికి స్వీకర్త ఇన్‌బాక్స్ తనిఖీ చేయండి. విషయం కోసం వెతకండి"
+
+#: 
+msgid "Number of lines to display"
+msgstr "ప్రదర్శించాల్సిన పంక్తుల సంఖ్య"
+
+#: 
+msgid "Open Deposits"
+msgstr "తెరచిన డిపాజిట్లు"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "పరికరాలు నమోదు చేసుకొవడానికి 2-నిమిష విండోను తెరుస్తుంది"
+
+#: 
+msgid "Output Method"
+msgstr "ఆఉట్‌పుట్ పద్ధతి"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "దయచేసి ఈ కుటుంబ రికార్డును తొలగించడానికి నిర్ధారించండి"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "దయచేసి మీ కుటుంబ సమాచారాన్ని నిర్ధారించండి"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "దయచేసి మీ తదుపరి కానుకను %s కి పంపండి"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "దయచేసి ఈ విరాళాలను అనుసంధానించడానికి మరొక కుటుంబాన్ని ఎంచుకొండి"
+
+#: 
+msgid "Remittance Slip"
+msgstr "రెమిటెన్స్ స్లిప్"
+
+#: 
+msgid "Report Heading"
+msgstr "నివేదిక శీర్షిక"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "రీసెట్ చేయడం శాశ్వతంగా తొలగిస్తుంది"
+
+#: 
+msgid "Show"
+msgstr "చూపించు"
+
+#: 
+msgid "Signature"
+msgstr "సంతకం"
+
+#: 
+msgid "Sort Data by"
+msgstr "డేటాను దీని ద్వారా క్రమబద్ధీకరించు"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "పబ్లిక్ బాహ్య క్యాలెండర్ పేజీని iframe లో పొందుపరచడానికి అనుమతించిన మూలాల జాబితా."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "పబ్లిక్ క్యాలెండర్ పేజీని iframe లో పొందుపరచడానికి అనుమతించిన మూలాలు."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "ఆదివారం పాఠశాల సమూహాన్ని సవరించలేరు, ఈ రెండు సందర్భాల్లో మాత్రమే"
+
+#: 
+msgid "Supported formats"
+msgstr "మద్దతు ఉన్న ఆకృతులు"
+
+#: 
+msgid "System Configuration"
+msgstr "సిస్టమ్ కాన్ఫిగరేషన్"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "ఈ స్వయంసేవక అవకాశానికి కేటాయించిన వ్యక్తులు ఉన్నారు. తొలగించడం వారి కేటాయింపును రద్దు చేస్తుంది"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "ఈ విలువ %d అక్షరాల కంటె తక్కువగా ఉండకూడదు"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "ఈ విలువ %d అక్షరాల కంటె ఎక్కువగా ఉండకూడదు"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "ఈ విలువ %s కంటె ఎక్కువగా ఉండకూడదు"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "ఈ విలువ కనీసం %s అయి ఉండాలి"
+
+#: 
+msgid "Total Deposits"
+msgstr "మొత్తం డిపాజిట్లు"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "దీన్ని చెల్లుబాటు అయ్యే URL కి అప్‌డేట్ చేయండి"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "API Key ద్వారా వినియోగదారు ధృవీకరించబడ్డారు: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "చెల్లుబాటు అయ్యే ఉదాహరణలు"
+
+#: 
+msgid "What this plugin does"
+msgstr "ఈ ప్లగిన్ ఏం చేస్తుంది"
+
+#: 
+msgid "for all funds"
+msgstr "అన్ని నిధుల కోసం"
+
+#: 
+msgid "for fund"
+msgstr "నిధి కోసం"
+
+#: 
+msgid "for funds"
+msgstr "నిధుల కోసం"
+
+#: 
+msgid "user"
+msgstr "వినియోగదారు"
+
+#: 
+msgid "with at least one"
+msgstr "కనీసం ఒకదానితో"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "చర్చి చిరునామాకు కూడా పంపండి ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "మీరు ఈ వ్యక్తిని దీనిలో నుండి తొలగించాలని నిజంగా అనుకుంటున్నారా"
+
+#: 
+msgid "BCC Mode"
+msgstr "BCC మోడ్"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "{{count}} మంది చెక్-ఇన్ చేశారు."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "CRM నుండి ఇమెయిల్‌లు రాసేటప్పుడు చర్చి ఇమెయిల్ చిరునామా స్వచాలకంగా తొలగించగల స్వీకర్తగా జోడించబడుతుంది"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "చర్చి ఇమెయిల్ — %s పేజీలో కాన్ఫిగర్ చేయబడింది."
+
+#: 
+msgid "Closing"
+msgstr "మూయడం"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "కోఆర్డినేట్‌లు నవీకరించబడ్డాయి"
+
+#: 
+msgid "Copy Addresses"
+msgstr "చిరునామాలు కాపీ చేయండి"
+
+#: 
+msgid "Copy Church Email"
+msgstr "చర్చి ఇమెయిల్ కాపీ చేయండి"
+
+#: 
+msgid "Email All Members"
+msgstr "అందరు సభ్యులకు ఇమెయిల్ పంపండి"
+
+#: 
+msgid "Email Cart Members"
+msgstr "కార్ట్ సభ్యులకు ఇమెయిల్ పంపండి"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "చివరలో స్లాష్ (/) తో ముగుస్తుంది"
+
+#: 
+msgid "Failed to geocode"
+msgstr "జియోకోడ్ విఫలమైంది"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "స్వీకర్తలను లోడ్ చేయడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "కార్ట్ ఇమెయిల్ చిరునామాలను తిరిగి పొందడం విఫలమైంది"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "కుటుంబ చెక్-ఇన్ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Ignore"
+msgstr "విస్మరించు"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "అసంపూర్ణ చిరునామాలను విస్మరించు"
+
+#: 
+msgid "Kids"
+msgstr "పిల్లలు"
+
+#: 
+msgid "Loading family members..."
+msgstr "కుటుంబ సభ్యులను లోడ్ చేస్తోంది..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "స్వీకర్తలను లోడ్ చేస్తోంది…"
+
+#: 
+msgid "No email addresses found."
+msgstr "ఇమెయిల్ చిరునామాలు కనుగొనబడలేదు."
+
+#: 
+msgid "Open in Email Client"
+msgstr "ఇమెయిల్ క్లయింట్‌లో తెరవండి"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "%s సెకన్లలో దారి మళ్ళిస్తోంది..."
+
+#: 
+msgid "Refreshing..."
+msgstr "రిఫ్రెష్ అవుతోంది..."
+
+#: 
+msgid "Remove from Group"
+msgstr "సమూహం నుండి తొలగించు"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "{{personName}} ని ఈ తరగతి నుండి తొలగించాలా?"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "అభ్యర్థన విఫలమైంది ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "చేర్చాల్సిన పాత్రలు"
+
+#: 
+msgid "Select Country"
+msgstr "దేశాన్ని ఎంచుకొండి"
+
+#: 
+msgid "Select State"
+msgstr "రాష్ట్రాన్ని ఎంచుకొండి"
+
+#: 
+msgid "Select a person"
+msgstr "ఒక వ్యక్తిని ఎంచుకొండి"
+
+#: 
+msgid "Select role"
+msgstr "పాత్రను ఎంచుకొండి"
+
+#: 
+msgid "Select type (optional)"
+msgstr "రకాన్ని ఎంచుకొండి (ఐచ్ఛికం)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "http:// లేదా https:// తో ప్రారంభమవుతుంది"
+
+#: 
+msgid "This group only has one role."
+msgstr "ఈ సమూహానికి కేవలం ఒక పాత్ర మాత్రమే ఉంది."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "{{name}}ని ఎవరు తీసుకొస్తున్నారు?"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "{{name}}ని ఎవరు తీసుకెళ్ళుతున్నారు?"
+
+#: 
+msgid "Working..."
+msgstr "పని చేస్తోంది..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "మీరు {{releaseCount}} విడుదలల వెనుకబడ్డారు. ఇక్కడ మీరు పొందేది ఉంది"
+
+#: 
+msgid "click to expand"
+msgstr "విస్తరించడానికి క్లిక్ చేయండి"
+
+#: 
+msgid "pick"
+msgstr "ఎంచుకో"
+
+#: 
+msgid "recipient"
+msgstr "స్వీకర్త"
+
+#: 
+msgid "recipients"
+msgstr "స్వీకర్తలు"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}గం {{mins}}నిమి మిగిలాయి"
+
+#: 
+msgid "Add New Deposit"
+msgstr "కొత్త డిపాజిట్ జోడించు"
+
+#: 
+msgid "Add New Event"
+msgstr "కొత్త కార్యక్రమం జోడించు"
+
+#: 
+msgid "Add New Event Type"
+msgstr "కొత్త కార్యక్రమ రకం జోడించు"
+
+#: 
+msgid "Add New Family"
+msgstr "కొత్త కుటుంబాన్ని జోడించు"
+
+#: 
+msgid "Add New Field"
+msgstr "కొత్త ఫీల్డ్ జోడించు"
+
+#: 
+msgid "Add New Fund"
+msgstr "కొత్త నిధి జోడించు"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "కొత్త అవకాశం జోడించు"
+
+#: 
+msgid "Add New Person"
+msgstr "కొత్త వ్యక్తిని జోడించు"
+
+#: 
+msgid "Add New Pledge"
+msgstr "కొత్త ప్రతిజ్ఞను జోడించు"
+
+#: 
+msgid "Add New Role"
+msgstr "కొత్త పాత్రను జోడించు"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "కొత్త స్వయంసేవక అవకాశం జోడించు"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "ఆదివారం పాఠశాల తరగతిని జోడించు"
+
+#: 
+msgid "Delete this family?"
+msgstr "ఈ కుటుంబాన్ని తొలగించాలా?"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "మీరు ఈ కుటుంబాన్ని తొలగించాలనుకుంటున్నారా? తొలగించాల్సినదాన్ని ఎంచుకొన్తున్న పేజీకి తీసుకెళ్ళబడతారు. ఇది రద్దు చేయలేరు."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "కుటుంబ తొలగింపు నిర్ధారణ"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "వ్యక్తులు (కుటుంబం లేచు)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "కొత్త స్వయం నమోదులు"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "ఆస్తి రకం తొలగింపు నిర్ధారణ"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "మీ పబ్లిక్ నమోదు ఫార్మ్లో సైన్ అప్ చేసిన కొత్త కుటుంబాలు మరియు వ్యక్తులను సమీక్షించండి"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "దిగువ మీ పబ్లిక్ నమోదు ఫార్మ్ నుండి కొత్త సైన్-అప్‌లను సమీక్షించండి. ఇమెయిల్ లేదా ఫోన్ లేని ఎంట్రీలు ఫ్లాగ్ చేయబడ్డాయి — అనుసరించే ముందు సంపర్క సమాచారాన్ని ధృవీకరించండి."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "స్వయంసేవక అవకాశం తొలగింపు నిర్ధారణ"
 

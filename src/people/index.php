@@ -16,5 +16,6 @@ require __DIR__ . '/routes/family.php';
 require __DIR__ . '/routes/person.php';
 require __DIR__ . '/routes/view.php';
 require __DIR__ . '/routes/cart.php';
+require __DIR__ . '/routes/self-register.php';
 
 $app->run();

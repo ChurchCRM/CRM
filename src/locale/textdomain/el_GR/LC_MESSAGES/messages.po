@@ -7420,10 +7420,6 @@ msgid "Move up"
 msgstr "Μετακίνηση Πάνω"
 
 #: 
-msgid "Opportunity"
-msgstr "Ευκαιρία"
-
-#: 
 msgid "Order"
 msgstr "Παραγγελία"
 
@@ -7438,14 +7434,6 @@ msgstr "Ποσοστό"
 #: 
 msgid "Person Properties"
 msgstr "Ιδιότητες Προσώπου"
-
-#: 
-msgid "Property Type"
-msgstr "Τύπος Περιουσίας"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Ευκαιρία εθελοντισμού"
 
 #. Context: locales
 #: 
@@ -16807,4 +16795,524 @@ msgstr "Το ποσό στόχου πρέπει να είναι μη αρνητ�
 #: 
 msgid "thru %s"
 msgstr "έως %s"
+
+#: 
+msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr "Σημειώσεις «Λόγος Προσέλευσης» για %1$s %2$s"
+
+#: 
+msgid "%1$s of the %2$s family"
+msgstr "%1$s από την οικογένεια %2$s"
+
+#: 
+msgid "%d more entries will fit."
+msgstr "Χωράνε %d ακόμα εγγραφές."
+
+#: 
+msgid "%d record(s) returned"
+msgstr "Επεστράφησαν %d εγγραφές"
+
+#: 
+msgid "Assign role to all"
+msgstr "Ανάθεση ρόλου σε όλους"
+
+#: 
+msgid "Buyer #"
+msgstr "Αγοραστής #"
+
+#: 
+msgid "Buyers for this fundraiser"
+msgstr "Αγοραστές για αυτή την εκδήλωση συγκέντρωσης πόρων"
+
+#: 
+msgid "Calendar Embed Origins"
+msgstr "Προελεύσεις ενσωμάτωσης ημερολογίου"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgstr "Οι μεταφράσεις του ChurchCRM διαχειρίζονται από την κοινότητα στο POEditor. Μπορείτε να βοηθήσετε"
+
+#: 
+msgid "Closed Deposits"
+msgstr "Κλειστές Καταθέσεις"
+
+#: 
+msgid "Current $URL[0] value"
+msgstr "Τρέχουσα τιμή $URL[0]"
+
+#: 
+msgid "Custom port"
+msgstr "Προσαρμοσμένη θύρα"
+
+#: 
+msgid "Data Quality"
+msgstr "Ποιότητα Δεδομένων"
+
+#: 
+msgid "Donated by %1$s %2$s."
+msgstr "Δωρήθηκε από τον/την %1$s %2$s."
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
+msgstr "Η λειτουργία email είναι απενεργοποιημένη. Οι παρακάτω λειτουργίες δεν θα είναι διαθέσιμες έως ότου ενεργοποιηθεί το email"
+
+#: 
+msgid "Estimated value $%s."
+msgstr "Εκτιμώμενη αξία $%s."
+
+#: 
+msgid "Fastest workflow"
+msgstr "Ταχύτερη ροή εργασίας"
+
+#: 
+msgid "File Integrity"
+msgstr "Ακεραιότητα Αρχείου"
+
+#: 
+msgid "Filter by log level"
+msgstr "Φιλτράρισμα κατά επίπεδο καταγραφής"
+
+#: 
+msgid "Find the line"
+msgstr "Εύρεση γραμμής"
+
+#: 
+msgid "Grant individual permissions"
+msgstr "Παροχή ατομικών δικαιωμάτων"
+
+#: 
+msgid "How to Fix"
+msgstr "Πώς να Το Διορθώσετε"
+
+#: 
+msgid "Import failed: %s"
+msgstr "Η εισαγωγή απέτυχε: %s"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header"
+msgstr "Συμπεριλάβετε το κλειδί API στα αιτήματα χρησιμοποιώντας την κεφαλίδα x-api-key"
+
+#: 
+msgid "Jump to any setup step"
+msgstr "Μεταβείτε σε οποιοδήποτε βήμα ρύθμισης"
+
+#: 
+msgid "Local development"
+msgstr "Τοπική ανάπτυξη"
+
+#: 
+msgid "Minimum Total Amount"
+msgstr "Ελάχιστο Συνολικό Ποσό"
+
+#: 
+msgid "Minimum bid $%s."
+msgstr "Ελάχιστη προσφορά $%s."
+
+#: 
+msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
+msgstr "Νέα Πληρωμή - %1$s Κατάθεση # %2$s (%3$s)"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
+msgstr "Ελέγξτε τώρα τα εισερχόμενα του παραλήπτη για επιβεβαίωση παράδοσης. Αναζητήστε το θέμα"
+
+#: 
+msgid "Number of lines to display"
+msgstr "Αριθμός γραμμών για εμφάνιση"
+
+#: 
+msgid "Open Deposits"
+msgstr "Ανοικτές Καταθέσεις"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at"
+msgstr "Ανοίγει παράθυρο 2 λεπτών για εγγραφή συσκευών στο"
+
+#: 
+msgid "Output Method"
+msgstr "Μέθοδος Εξόδου"
+
+#: 
+msgid "Please confirm deletion of this family record"
+msgstr "Παρακαλώ επιβεβαιώστε τη διαγραφή αυτής της οικογενειακής εγγραφής"
+
+#: 
+msgid "Please confirm your family information"
+msgstr "Παρακαλώ επιβεβαιώστε τα στοιχεία της οικογένειάς σας"
+
+#: 
+msgid "Please mail you next gift to %s"
+msgstr "Παρακαλώ αποστείλετε την επόμενη προσφορά σας στο %s"
+
+#: 
+msgid "Please select another family with whom to associate these donations"
+msgstr "Παρακαλώ επιλέξτε άλλη οικογένεια με την οποία θα συσχετιστούν αυτές οι προσφορές"
+
+#: 
+msgid "Remittance Slip"
+msgstr "Απόδειξη Εμβάσματος"
+
+#: 
+msgid "Report Heading"
+msgstr "Τίτλος Αναφοράς"
+
+#: 
+msgid "Resetting will permanently delete"
+msgstr "Η επαναφορά θα διαγράψει μόνιμα"
+
+#: 
+msgid "Show"
+msgstr "Εμφάνιση"
+
+#: 
+msgid "Signature"
+msgstr "Υπογραφή"
+
+#: 
+msgid "Sort Data by"
+msgstr "Ταξινόμηση Δεδομένων κατά"
+
+#: 
+msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
+msgstr "Λίστα προελεύσεων (διαχωρισμένες με κενά) που επιτρέπεται να ενσωματώνουν τη δημόσια σελίδα εξωτερικού ημερολογίου σε iframe."
+
+#: 
+msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
+msgstr "Προελεύσεις (διαχωρισμένες με κενά) που επιτρέπεται να ενσωματώνουν τη δημόσια σελίδα ημερολογίου σε iframe."
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases"
+msgstr "Η ομάδα Κατηχητικού Σχολείου δεν μπορεί να τροποποιηθεί, μόνο σε αυτές τις δύο περιπτώσεις"
+
+#: 
+msgid "Supported formats"
+msgstr "Υποστηριζόμενες μορφές"
+
+#: 
+msgid "System Configuration"
+msgstr "Διαμόρφωση Συστήματος"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgstr "Υπάρχουν άτομα ανατεθειμένα σε αυτή τη Θέση Εθελοντισμού. Η διαγραφή θα τα αποδεσμεύσει"
+
+#: 
+msgid "This value cannot be less than %d characters long"
+msgstr "Αυτή η τιμή δεν μπορεί να είναι μικρότερη από %d χαρακτήρες"
+
+#: 
+msgid "This value cannot be more than %d characters long"
+msgstr "Αυτή η τιμή δεν μπορεί να είναι μεγαλύτερη από %d χαρακτήρες"
+
+#: 
+msgid "This value cannot be more than %s"
+msgstr "Αυτή η τιμή δεν μπορεί να είναι μεγαλύτερη από %s"
+
+#: 
+msgid "This value must be at least %s"
+msgstr "Αυτή η τιμή πρέπει να είναι τουλάχιστον %s"
+
+#: 
+msgid "Total Deposits"
+msgstr "Σύνολο Καταθέσεων"
+
+#: 
+msgid "Update it to a valid URL that"
+msgstr "Ενημερώστε το σε έγκυρο URL που"
+
+#: 
+msgid "User authenticated via API Key: %s"
+msgstr "Χρήστης πιστοποιήθηκε μέσω κλειδιού API: %s"
+
+#: 
+msgid "Valid Examples"
+msgstr "Έγκυρα Παραδείγματα"
+
+#: 
+msgid "What this plugin does"
+msgstr "Τι κάνει αυτή η προσθήκη"
+
+#: 
+msgid "for all funds"
+msgstr "για όλα τα κονδύλια"
+
+#: 
+msgid "for fund"
+msgstr "για κονδύλι"
+
+#: 
+msgid "for funds"
+msgstr "για κονδύλια"
+
+#: 
+msgid "user"
+msgstr "χρήστης"
+
+#: 
+msgid "with at least one"
+msgstr "με τουλάχιστον ένα"
+
+#: 
+msgid "Also send to church address ({{email}})"
+msgstr "Αποστολή επίσης στη διεύθυνση της εκκλησίας ({{email}})"
+
+#: 
+msgid "Are you sure you want to remove this person from"
+msgstr "Είστε βέβαιοι ότι θέλετε να αφαιρέσετε αυτό το άτομο από"
+
+#: 
+msgid "Checked in {{count}} people."
+msgstr "Έγινε είσοδος {{count}} ατόμων."
+
+#: 
+msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
+msgstr "Η διεύθυνση email της εκκλησίας προστίθεται αυτόματα ως παραλήπτης (αφαιρέσιμος) κατά τη σύνταξη email από το CRM"
+
+#: 
+msgid "Church email — configured on the %s page."
+msgstr "Email εκκλησίας — ρυθμισμένο στη σελίδα %s."
+
+#: 
+msgid "Closing"
+msgstr "Κλείσιμο"
+
+#: 
+msgid "Coordinates Updated"
+msgstr "Οι συντεταγμένες ενημερώθηκαν"
+
+#: 
+msgid "Copy Addresses"
+msgstr "Αντιγραφή Διευθύνσεων"
+
+#: 
+msgid "Copy Church Email"
+msgstr "Αντιγραφή Email Εκκλησίας"
+
+#: 
+msgid "Email All Members"
+msgstr "Email σε Όλα τα Μέλη"
+
+#: 
+msgid "Email Cart Members"
+msgstr "Email σε Επιλεγμένα Μέλη"
+
+#: 
+msgid "Ends with a trailing slash (/)"
+msgstr "Τελειώνει με κάθετο (/)"
+
+#: 
+msgid "Failed to geocode"
+msgstr "Αποτυχία γεωκωδικοποίησης"
+
+#: 
+msgid "Failed to load recipients. Please try again."
+msgstr "Αποτυχία φόρτωσης παραληπτών. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to retrieve cart email addresses"
+msgstr "Αποτυχία ανάκτησης διευθύνσεων email επιλογής"
+
+#: 
+msgid "Family check-in failed. Please try again."
+msgstr "Αποτυχία εισόδου οικογένειας. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Ignore"
+msgstr "Παράβλεψη"
+
+#: 
+msgid "Ignore Incomplete Addresses"
+msgstr "Παράβλεψη Ελλιπών Διευθύνσεων"
+
+#: 
+msgid "Kids"
+msgstr "Παιδιά"
+
+#: 
+msgid "Loading family members..."
+msgstr "Φόρτωση μελών οικογένειας..."
+
+#: 
+msgid "Loading recipients…"
+msgstr "Φόρτωση παραληπτών…"
+
+#: 
+msgid "No email addresses found."
+msgstr "Δεν βρέθηκαν διευθύνσεις email."
+
+#: 
+msgid "Open in Email Client"
+msgstr "Άνοιγμα σε Πρόγραμμα Email"
+
+#: 
+msgid "Redirecting in %s seconds..."
+msgstr "Ανακατεύθυνση σε %s δευτερόλεπτα..."
+
+#: 
+msgid "Refreshing..."
+msgstr "Ανανέωση..."
+
+#: 
+msgid "Remove from Group"
+msgstr "Αφαίρεση από Ομάδα"
+
+#: 
+msgid "Remove {{personName}} from this class?"
+msgstr "Αφαίρεση του/της {{personName}} από αυτή την τάξη;"
+
+#: 
+msgid "Request failed ({{status}})"
+msgstr "Αποτυχία αιτήματος ({{status}})"
+
+#: 
+msgid "Roles to include"
+msgstr "Ρόλοι για συμπερίληψη"
+
+#: 
+msgid "Select Country"
+msgstr "Επιλογή Χώρας"
+
+#: 
+msgid "Select State"
+msgstr "Επιλογή Περιφέρειας"
+
+#: 
+msgid "Select a person"
+msgstr "Επιλογή ατόμου"
+
+#: 
+msgid "Select role"
+msgstr "Επιλογή ρόλου"
+
+#: 
+msgid "Select type (optional)"
+msgstr "Επιλογή τύπου (προαιρετικό)"
+
+#: 
+msgid "Starts with http:// or https://"
+msgstr "Αρχίζει με http:// ή https://"
+
+#: 
+msgid "This group only has one role."
+msgstr "Αυτή η ομάδα έχει μόνο έναν ρόλο."
+
+#: 
+msgid "Who is bringing in {{name}}?"
+msgstr "Ποιος φέρνει τον/την {{name}};"
+
+#: 
+msgid "Who is picking up {{name}}?"
+msgstr "Ποιος παραλαμβάνει τον/την {{name}};"
+
+#: 
+msgid "Working..."
+msgstr "Επεξεργασία..."
+
+#: 
+msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
+msgstr "Είστε {{releaseCount}} εκδόσεις πίσω. Να τι θα κερδίσετε"
+
+#: 
+msgid "click to expand"
+msgstr "κλικ για επέκταση"
+
+#: 
+msgid "pick"
+msgstr "επιλογή"
+
+#: 
+msgid "recipient"
+msgstr "παραλήπτης"
+
+#: 
+msgid "recipients"
+msgstr "παραλήπτες"
+
+#: 
+msgid "{{hours}}h {{mins}}m left"
+msgstr "{{hours}}ω {{mins}}λ απομένουν"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Προσθήκη Νέας Κατάθεσης"
+
+#: 
+msgid "Add New Event"
+msgstr "Προσθήκη Νέας Εκδήλωσης"
+
+#: 
+msgid "Add New Event Type"
+msgstr "Προσθήκη Νέου Τύπου Εκδήλωσης"
+
+#: 
+msgid "Add New Family"
+msgstr "Προσθήκη Νέας Οικογένειας"
+
+#: 
+msgid "Add New Field"
+msgstr "Προσθήκη Νέου Πεδίου"
+
+#: 
+msgid "Add New Fund"
+msgstr "Προσθήκη Νέου Κονδυλίου"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Προσθήκη Νέας Ευκαιρίας"
+
+#: 
+msgid "Add New Person"
+msgstr "Προσθήκη Νέου Ατόμου"
+
+#: 
+msgid "Add New Pledge"
+msgstr "Προσθήκη Νέας Οικονομικής Δέσμευσης"
+
+#: 
+msgid "Add New Role"
+msgstr "Προσθήκη Νέου Ρόλου"
+
+#: 
+msgid "Add New Volunteer Opportunity"
+msgstr "Προσθήκη Νέας Θέσης Εθελοντισμού"
+
+#: 
+msgid "Add Sunday School Class"
+msgstr "Προσθήκη Τάξης Κατηχητικού Σχολείου"
+
+#: 
+msgid "Delete this family?"
+msgstr "Διαγραφή αυτής της οικογένειας;"
+
+#: 
+msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
+msgstr "Θέλετε να διαγράψετε αυτή την οικογένεια; Θα μεταφερθείτε σε σελίδα επιλογής στοιχείων προς διαγραφή. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Επιβεβαίωση Διαγραφής Οικογένειας"
+
+#: 
+msgid "Individuals (no family)"
+msgstr "Μεμονωμένα Άτομα (χωρίς οικογένεια)"
+
+#: 
+msgid "New Self-Registrations"
+msgstr "Νέες Αυτο-Εγγραφές"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Επιβεβαίωση Διαγραφής Τύπου Ιδιότητας"
+
+#: 
+msgid "Review new families and individuals who signed up on your public registration form"
+msgstr "Ελέγξτε νέες οικογένειες και άτομα που εγγράφηκαν μέσω της δημόσιας φόρμας εγγραφής"
+
+#: 
+msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Ελέγξτε παρακάτω τις νέες εγγραφές από τη δημόσια φόρμα σας. Οι εγγραφές χωρίς email ή τηλέφωνο επισημαίνονται — επαληθεύστε τα στοιχεία επικοινωνίας πριν από οποιαδήποτε ενέργεια."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Επιβεβαίωση Διαγραφής Θέσης Εθελοντισμού"
 
