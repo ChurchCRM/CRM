@@ -157,7 +157,7 @@ jobs:
       run: npm run package
 
     - name: Validate PHP syntax
-      run: npm run build:php:validate
+      run: npm run build:php:validate:all
 
     - name: Build Docker images
       run: |
