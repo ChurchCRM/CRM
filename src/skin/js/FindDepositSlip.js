@@ -79,7 +79,7 @@ function initializeDepositSlip() {
 
     if (!$("#depositComment").val().trim()) {
       bootbox.confirm({
-        title: i18next.t("Add New") + " " + i18next.t("Deposit"),
+        title: i18next.t("Add New Deposit"),
         message: i18next.t("You are about to add a new deposit without a comment"),
         buttons: {
           cancel: {

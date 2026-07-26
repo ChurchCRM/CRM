@@ -332,7 +332,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         <div class="card-header">
             <h5 class="mb-0">
                 <i class="fa-solid fa-plus"></i>
-                <?= gettext('Add New') . ' ' . gettext('Field') ?>
+                <?= gettext('Add New Field') ?>
             </h5>
         </div>
         <div class="card-body">
@@ -368,7 +368,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                 <div class="col-md-3 d-flex align-items-end">
                     <button type="submit" class="btn btn-success w-100" name="AddField">
                         <i class="fa-solid fa-plus"></i>
-                        <?= gettext('Add New') . ' ' . gettext('Field') ?>
+                        <?= gettext('Add New Field') ?>
                     </button>
                 </div>
             </div>

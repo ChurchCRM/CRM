@@ -161,7 +161,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <div class="card-header">
                 <h5 class="mb-0">
                     <i class="fa-solid fa-plus"></i>
-                    <?= gettext('Add New') . ' ' . gettext('Fund') ?>
+                    <?= gettext('Add New Fund') ?>
                 </h5>
             </div>
             <div class="card-body">
@@ -185,7 +185,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     <div class="col-md-3 d-flex align-items-end">
                         <button type="submit" class="btn btn-success w-100" name="AddField">
                             <i class="fa-solid fa-plus"></i>
-                            <?= gettext('Add New') . ' ' . gettext('Fund') ?>
+                            <?= gettext('Add New Fund') ?>
                         </button>
                     </div>
                 </div>

@@ -283,27 +283,55 @@ gettext('Group Delete Confirmation')
 // ... more, 45 languages = 315+ translations!
 ```
 
-### Solution: Component-Based Terms
+### Correctness Outranks Term-Count Savings <!-- learned: 2026-07-25 -->
+
+> [!WARNING] Raw two-piece concatenation (`gettext('Delete') . ' ' . gettext('Group')`) has a real, confirmed grammar defect. **Do not use this pattern for new consolidations.** If in doubt between saving a term and getting every language's grammar right, get the grammar right — the cost math in this file exists to eliminate *waste*, not to buy savings at the price of broken output in any of the 45+ languages this project ships.
+
+**The defect, confirmed against real translations, not theoretical:** Japanese and Korean are verb-final (SOV) languages — a correct translation of "Delete Group" puts the verb *last* ("Group['s] deletion", not "Delete Group"). Checking the actual shipped translations of the pre-existing `gettext('Add New') . ' ' . gettext('Fund')` pattern:
+
+```
+ja_JP: "新規追加" (Add New) + " " + "基金" (Fund)  →  "新規追加 基金"  — reads backwards; natural Japanese is "基金の新規追加" (Fund['s] new-addition)
+ko_KR: "새로 추가" (Add New) + " " + "헌금 항목" (Fund)  →  same problem
+```
+
+Each piece is translated **in isolation** — the "Add New" translator has no idea what noun follows, so they cannot place the verb where their language's grammar requires it. This is different from RTL (Arabic/Hebrew): those two are commonly verb-first like English for short commands, so the RTL-specific concern is bidi *punctuation positioning* (see the RTL section below), not clause order. The word-order defect is specifically about SOV languages already in this project's 49-locale list (`ja_JP`, `ko_KR`), independent of text direction.
+
+**What to do instead, in priority order:**
+
+1. **Keep it as one whole, indivisible phrase** (`gettext('Delete Group')`) whenever the entity is fixed at that call site. This costs one term instead of zero, but it is the only option with *zero* grammar risk — the translator sees the complete real-world phrase and can write it in whatever order their language needs.
+2. **If the entity is genuinely dynamic** (a loop over entity types, a runtime variable), use a single parameterized msgid with `sprintf()`/`{{placeholder}}` — `sprintf(gettext('Delete %s'), gettext($entityType))`. This is **fundamentally different from concatenation**: the whole string `"Delete %s"` is one translatable unit, and the translator repositions `%s` anywhere their grammar requires (e.g. a ja/ko translation of `"Delete %s"` can legally be `"%sを削除"`, placing `%s` first). This is exactly the same reasoning already established for split-sentence fragments elsewhere in this file — a single parameterized string, never pieces glued by code.
+3. **Never** `gettext('A') . ' ' . gettext('B')` where A and B are independently common words (a verb and a noun) that only make sense in a fixed relative order in English.
+
+**Full-codebase audit completed and fixed (2026-07-25).** Given a choice between term-count savings and correct grammar in every supported language, correctness wins — full stop. A repo-wide sweep found 20 genuine verb+object concatenation call sites across 15 files (`gettext('Add New') . ' ' . gettext('Fund')`, `gettext('Delete Confirmation') . ': ' . gettext('Family')`, and JS equivalents in `Footer.js`/`FindDepositSlip.js`) — all were collapsed into single whole-phrase msgids (e.g. `gettext('Add New Fund')`, `gettext('Family Delete Confirmation')`), each verified against the existing "`{Entity} Delete Confirmation`" naming convention already used by `users.js`'s `"User Delete Confirmation"`. This re-adds roughly 20 terms to the catalog — an accepted, deliberate cost, not an oversight. Five *new* instances of the pattern were also caught mid-session (introduced while chasing pure term-count savings on "Add New Class"/"Add New Group"/"Delete Event"/"Delete Calendar"/"User Delete Confirmation") and reverted the same way before they shipped.
+
+**Detection — repo-wide sweep for this pattern:**
+```bash
+grep -rnoE "gettext\(['\"][^'\"]*['\"]\)\s*\.\s*['\"][^'\"]{0,3}['\"]\s*\.\s*gettext\(['\"][^'\"]*['\"]\)" src --include="*.php" | grep -v vendor
+grep -rnoE "i18next\.t\(['\"][^'\"]*['\"]\)\s*\+\s*['\"][^'\"]{0,3}['\"]\s*\+\s*i18next\.t\(['\"][^'\"]*['\"]\)" webpack src --include="*.js" --include="*.ts" | grep -v "\.min\.js"
+```
+Not every hit is a violation — skip pairs where both sides are already complete, independent phrases joined by a separator (`gettext('New Payment') . ' - ' . gettext('New Deposit Will Be Created')`), a noun/noun compound (`gettext('Birth Date') . ' / ' . gettext('Anniversary Date')`), or a `Label: Value` pair (`gettext('Gender') . ': ' . gettext('Male')`) — those don't have a verb that needs repositioning, so there's no SOV risk to fix.
+
+### Solution: Component-Based Terms (Legacy Pattern — Read the Warning Above First)
 
 Consolidate compound terms into reusable parts:
 
 ```php
-// ✅ CORRECT - 1 action + entity names = fewer translations
+// ⚠️ Pre-existing pattern, has the SOV defect above — don't add new instances
 gettext('Add New') . ' ' . gettext('Field')
 gettext('Add New') . ' ' . gettext('Fund')
 gettext('Add New') . ' ' . gettext('User')
 // Result: 10 total strings, 45 languages = 450 translations (saves 430!)
 
-// ✅ CORRECT - 1 pattern + type names
+// ⚠️ Same defect via ': ' concatenation — don't add new instances
 gettext('Delete Confirmation') . ': ' . gettext('Family')
 gettext('Delete Confirmation') . ': ' . gettext('Note')
 // Result: 9 total strings (5 entity types), saves 98 translations
 ```
 
-### Pattern: "Add New" Button
+### Pattern: "Add New" Button (Legacy — Do Not Add New Instances)
 
 ```php
-// ✅ CORRECT - Consolidated pattern
+// ⚠️ Pre-existing, has the SOV word-order defect above — don't copy this for new code
 <input type="submit" 
        value="<?= gettext('Add New') . ' ' . gettext('Fund') ?>" />
 
@@ -316,14 +344,17 @@ gettext('Delete Confirmation') . ': ' . gettext('Note')
 
 ### Pattern: Delete Confirmation
 
+The page-title line below is the same `A . ': ' . B` concatenation shape and has the same known defect — it's existing, accepted debt in `VolunteerOpportunityEditor.php`/`PropertyTypeDelete.php`, not a pattern to extend. The `sprintf()` line directly under it is the **correct** approach for a genuinely dynamic entity — one parameterized msgid, translator controls word order:
+
 ```php
-// ✅ CORRECT - Consolidated deletion dialog
 <?php
 $entityType = 'Family';  // Dynamic
+// ⚠️ Legacy concatenation — has the SOV defect, don't copy for new code
 $pageTitle = gettext('Delete Confirmation') . ': ' . gettext($entityType);
 ?>
 
 <h1><?= $pageTitle ?></h1>
+<!-- ✅ CORRECT — single parameterised msgid, translator repositions %s freely -->
 <p><?= sprintf(gettext('Are you sure you want to delete this %s?'), gettext($entityType)) ?></p>
 ```
 
@@ -1278,6 +1309,13 @@ if (window.CRM.isRTL) {
     // flip any LTR-specific logic (e.g. swipe direction, chart axis)
 }
 ```
+
+### Why the Term-Hygiene Rules Matter Even More for RTL <!-- learned: 2026-07-25 -->
+
+Two of the RTL locales (`ar`, `he`) are part of the same 45+ language set every rule in this file applies to — RTL isn't a separate concern, it's a reason several of these rules exist in the first place:
+
+- **Decorative punctuation outside the call (colon, em-dash wrappers) is *more* important for RTL, not just tidier.** The browser's bidi algorithm positions `— X —` / `X:` correctly around translated text automatically based on `dir="rtl"` (see the table above) — but only if that punctuation is plain surrounding text the browser controls, not characters baked into the middle of a translated msgid where a translator would have to reason manually about which visual side they render on.
+- **Raw string concatenation for consolidation (`gettext('Delete') . ' ' . gettext('Group')`) hard-codes English word order** (action, then entity). Not every language — including RTL ones — necessarily wants the verb before the noun. This is an accepted, pre-existing trade-off in this pattern (used throughout the codebase), not something to rip out, but it's the reason `sprintf()`/`{{placeholder}}` parameterization is the *stronger* choice whenever there's a real full sentence involved: `sprintf(gettext('Add New %s'), gettext($entityType))` lets each language's translation place `%s` wherever its own grammar needs it, RTL or not. The split-sentence-fragment rule earlier in this file is the same principle at the sentence level — concatenating pieces around a runtime value locks in one language's word order for all 45+.
 
 ### Critical: all headers must initialize `$localeInfo`
 

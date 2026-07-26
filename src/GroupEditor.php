@@ -187,7 +187,7 @@ require_once __DIR__ . '/Include/Header.php';
       </div>
     <label for="newRole"><?= gettext('New Role')?>: </label><input type="text" class="form-control" id="newRole" name="newRole">
     <br>
-    <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext('Add New') . ' ' . gettext('Role')?></button>
+    <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext('Add New Role')?></button>
   </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

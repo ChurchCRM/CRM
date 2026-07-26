@@ -355,8 +355,8 @@ function initializeFAB() {
   }
 
   // Set localized labels
-  fabPersonLabel.text(i18next.t("Add New") + " " + i18next.t("Person"));
-  fabFamilyLabel.text(i18next.t("Add New") + " " + i18next.t("Family"));
+  fabPersonLabel.text(i18next.t("Add New Person"));
+  fabFamilyLabel.text(i18next.t("Add New Family"));
 
   // Auto-hide FAB action buttons after 5 seconds (menu toggle stays visible)
   setTimeout(() => {
