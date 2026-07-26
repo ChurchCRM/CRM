@@ -346,7 +346,9 @@ never rely on CI to execute it first (bot-authored PRs may not trigger e2e jobs)
 
 ## OpenAPI Documentation (REQUIRED for all API changes)
 
-ChurchCRM uses `zircote/swagger-php` 4.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference in the Documentation.
+ChurchCRM uses `zircote/swagger-php` 6.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference in the Documentation. <!-- learned: 2026-07-26 -->
+
+v6 kept full support for the legacy `@OA\*` DocBlock annotation style used throughout this codebase (it only *added* PHP 8 attribute syntax as an alternative) — no annotation rewrite was needed when upgrading from 4.x. See `.github/workflows/docs.yml` for the CI job that regenerates and validates the spec on every API-touching PR.
 
 **When adding or updating any API endpoint, you MUST add/update the `@OA\*` annotation.**
 
