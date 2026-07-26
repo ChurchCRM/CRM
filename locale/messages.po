@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-26 20:49+0000\n"
+"POT-Creation-Date: 2026-07-26 21:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -276,6 +276,9 @@ msgstr ""
 msgid "A payment is an actual donation received. It will be added to the current deposit."
 msgstr ""
 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr ""
+
 msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
 msgstr ""
 
@@ -446,6 +449,9 @@ msgid "Add Family Member"
 msgstr ""
 
 msgid "Add First Family"
+msgstr ""
+
+msgid "Add Fund"
 msgstr ""
 
 msgid "Add Fundraiser"
@@ -933,6 +939,12 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+msgid "Amount ($)"
+msgstr ""
+
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr ""
+
 msgid "Amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
@@ -1113,6 +1125,9 @@ msgstr ""
 msgid "Are you sure you want to move"
 msgstr ""
 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr ""
+
 msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr ""
 
@@ -1205,6 +1220,12 @@ msgid "At a Glance"
 msgstr ""
 
 msgid "At least one family member is required"
+msgstr ""
+
+msgid "At least one fund allocation is required"
+msgstr ""
+
+msgid "At least one fund must have a non-zero amount"
 msgstr ""
 
 msgid "At least one fund must have a non-zero amount."
@@ -1340,6 +1361,9 @@ msgid "Back to Events Dashboard"
 msgstr ""
 
 msgid "Back to Families"
+msgstr ""
+
+msgid "Back to Finance"
 msgstr ""
 
 msgid "Back to Finance Dashboard"
@@ -1989,6 +2013,9 @@ msgid "Charset"
 msgstr ""
 
 msgid "Check"
+msgstr ""
+
+msgid "Check #"
 msgstr ""
 
 msgid "Check In"
@@ -3108,6 +3135,9 @@ msgstr ""
 msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
 msgstr ""
 
+msgid "Date is required"
+msgstr ""
+
 msgid "Date range cannot exceed 1 year"
 msgstr ""
 
@@ -3311,6 +3341,9 @@ msgstr ""
 msgid "Deleted from group"
 msgstr ""
 
+msgid "Deleted successfully"
+msgstr ""
+
 msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
 msgstr ""
 
@@ -3351,6 +3384,9 @@ msgstr ""
 msgid "Deposit"
 msgstr ""
 
+msgid "Deposit #"
+msgstr ""
+
 msgid "Deposit Comment"
 msgstr ""
 
@@ -3373,6 +3409,9 @@ msgid "Deposit Navigation"
 msgstr ""
 
 msgid "Deposit Reports"
+msgstr ""
+
+msgid "Deposit Slip"
 msgstr ""
 
 msgid "Deposit Slip Number"
@@ -3733,6 +3772,9 @@ msgstr ""
 msgid "Edit Person"
 msgstr ""
 
+msgid "Edit Pledge"
+msgstr ""
+
 msgid "Edit Property"
 msgstr ""
 
@@ -3754,6 +3796,9 @@ msgstr ""
 msgid "Edit custom properties for a group member"
 msgstr ""
 
+msgid "Edit existing pledge or payment"
+msgstr ""
+
 msgid "Edit records permission"
 msgstr ""
 
@@ -3761,6 +3806,12 @@ msgid "Edited"
 msgstr ""
 
 msgid "Editing"
+msgstr ""
+
+msgid "Editing a Payment"
+msgstr ""
+
+msgid "Editing a Pledge"
 msgstr ""
 
 #. Context: countries
@@ -4463,6 +4514,9 @@ msgstr ""
 msgid "Failed to create link"
 msgstr ""
 
+msgid "Failed to create pledge"
+msgstr ""
+
 msgid "Failed to create property type"
 msgstr ""
 
@@ -4497,6 +4551,9 @@ msgid "Failed to delete note."
 msgstr ""
 
 msgid "Failed to delete orphaned files"
+msgstr ""
+
+msgid "Failed to delete pledge"
 msgstr ""
 
 msgid "Failed to delete property type"
@@ -4536,6 +4593,9 @@ msgid "Failed to empty cart to group"
 msgstr ""
 
 msgid "Failed to enable plugin"
+msgstr ""
+
+msgid "Failed to encode payment response"
 msgstr ""
 
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
@@ -4635,6 +4695,9 @@ msgid "Failed to retrieve email addresses"
 msgstr ""
 
 msgid "Failed to retrieve phone numbers"
+msgstr ""
+
+msgid "Failed to retrieve pledge"
 msgstr ""
 
 msgid "Failed to save event. Please try again."
@@ -4805,6 +4868,9 @@ msgid "Family has no emails to use"
 msgstr ""
 
 msgid "Family has no street address to geocode"
+msgstr ""
+
+msgid "Family is required"
 msgstr ""
 
 msgid "Family name is required"
@@ -5577,6 +5643,9 @@ msgid "Group added to cart"
 msgstr ""
 
 msgid "Group deleted successfully."
+msgstr ""
+
+msgid "Group key is required"
 msgstr ""
 
 msgid "Group management access"
@@ -7499,6 +7568,9 @@ msgstr ""
 msgid "Netherlands (Nederland)"
 msgstr ""
 
+msgid "Network error, please try again"
+msgstr ""
+
 msgid "Never"
 msgstr ""
 
@@ -7711,6 +7783,9 @@ msgstr ""
 msgid "No custom person fields have been added yet"
 msgstr ""
 
+msgid "No deposit / create new deposit"
+msgstr ""
+
 msgid "No deposit data available yet"
 msgstr ""
 
@@ -7865,7 +7940,16 @@ msgstr ""
 msgid "Non-Attender (staff)"
 msgstr ""
 
+msgid "Non-Deductible"
+msgstr ""
+
+msgid "Non-Deductible ($)"
+msgstr ""
+
 msgid "Non-deductible amount"
+msgstr ""
+
+msgid "Non-deductible amount can't exceed fund amount"
 msgstr ""
 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -8378,6 +8462,12 @@ msgstr ""
 msgid "Payment Date"
 msgstr ""
 
+msgid "Payment Details"
+msgstr ""
+
+msgid "Payment Method"
+msgstr ""
+
 msgid "Payment Schedule"
 msgstr ""
 
@@ -8734,6 +8824,9 @@ msgstr ""
 msgid "Please ensure this what you want to do."
 msgstr ""
 
+msgid "Please enter a date"
+msgstr ""
+
 msgid "Please enter a group name."
 msgstr ""
 
@@ -8793,8 +8886,14 @@ msgstr ""
 msgid "Please select a date"
 msgstr ""
 
+msgid "Please select a family"
+msgstr ""
+
 #, php-format
 msgid "Please select a family role for %s."
+msgstr ""
+
+msgid "Please select a fund for all rows"
 msgstr ""
 
 msgid "Please select a group."
@@ -8858,6 +8957,9 @@ msgstr ""
 msgid "Pledge Dashboard"
 msgstr ""
 
+msgid "Pledge Details"
+msgstr ""
+
 msgid "Pledge Family Summary"
 msgstr ""
 
@@ -8883,11 +8985,17 @@ msgstr ""
 msgid "Pledge comparison"
 msgstr ""
 
+msgid "Pledge group not found"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Pledged this year"
 msgstr ""
 
 msgid "Pledges"
+msgstr ""
+
+msgid "Pledges & Payments"
 msgstr ""
 
 msgid "Pledges and Payments"
@@ -9766,16 +9874,25 @@ msgstr ""
 msgid "Save and Add"
 msgstr ""
 
+msgid "Save and Add Another"
+msgstr ""
+
 msgid "Save and Add New Family"
 msgstr ""
 
 msgid "Save changes to this category name"
 msgstr ""
 
+msgid "Save failed"
+msgstr ""
+
 msgid "Save the file and refresh this page"
 msgstr ""
 
 msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr ""
+
+msgid "Saved successfully"
 msgstr ""
 
 msgid "Saving..."
@@ -9944,6 +10061,9 @@ msgid "Select a backup file and click Restore Database."
 msgstr ""
 
 msgid "Select a family"
+msgstr ""
+
+msgid "Select a fund"
 msgstr ""
 
 msgid "Select a group"
@@ -11521,6 +11641,9 @@ msgstr ""
 msgid "Type RESET to confirm"
 msgstr ""
 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr ""
+
 msgid "Type of Group"
 msgstr ""
 
@@ -12137,6 +12260,9 @@ msgid "View full photo"
 msgstr ""
 
 msgid "View group members, roles, and properties"
+msgstr ""
+
+msgid "View pledge or payment details"
 msgstr ""
 
 msgid "View query results"
