@@ -32,7 +32,7 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
 
     <script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>
 
-    <title>ChurchCRM: <?= $sPageTitle ?></title>
+    <title>ChurchCRM: <?= InputUtils::escapeHTML($sPageTitle) ?></title>
 
     <?= PluginManager::getPluginHeadContent() ?>
 

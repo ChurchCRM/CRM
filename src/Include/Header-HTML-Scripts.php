@@ -1,9 +1,10 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 ?>
-<title>ChurchCRM: <?= $sPageTitle ?></title>
+<title>ChurchCRM: <?= InputUtils::escapeHTML($sPageTitle) ?></title>
 
 <link rel="icon" href="<?= SystemURLs::getRootPath() ?>/favicon.ico" type="image/x-icon">
 

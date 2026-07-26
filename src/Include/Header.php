@@ -422,9 +422,9 @@ $MenuFirst = 1;
               </li>
               <?php foreach ($aBreadcrumbs as $crumb) : ?>
                 <?php if (!empty($crumb['active'])) : ?>
-              <li class="breadcrumb-item active" aria-current="page"><?= $crumb['label'] ?></li>
+              <li class="breadcrumb-item active" aria-current="page"><?= InputUtils::escapeHTML($crumb['label']) ?></li>
                 <?php else : ?>
-              <li class="breadcrumb-item"><a href="<?= $crumb['url'] ?>"><?= $crumb['label'] ?></a></li>
+              <li class="breadcrumb-item"><a href="<?= InputUtils::escapeAttribute($crumb['url']) ?>"><?= InputUtils::escapeHTML($crumb['label']) ?></a></li>
                 <?php endif; ?>
               <?php endforeach; ?>
             </ol>
@@ -439,9 +439,9 @@ $MenuFirst = 1;
         <?php endif; ?>
         <div class="row g-2 align-items-center">
           <div class="col">
-            <h2 class="page-title"><?= $sPageTitle ?></h2>
+            <h2 class="page-title"><?= InputUtils::escapeHTML($sPageTitle) ?></h2>
             <?php if (!empty($sPageSubtitle)) : ?>
-            <div class="text-body-secondary mt-1"><?= $sPageSubtitle ?></div>
+            <div class="text-body-secondary mt-1"><?= InputUtils::escapeHTML($sPageSubtitle) ?></div>
             <?php endif; ?>
           </div>
         </div>
