@@ -263,10 +263,6 @@ msgstr "분류"
 msgid "Add Cart to Event"
 msgstr "카트를 행사에 추가"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "카트가 비어 있습니다!"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1446,10 +1442,6 @@ msgid "Current Role"
 msgstr "현재 역할"
 
 #: 
-msgid "All People"
-msgstr "전체 성도"
-
-#: 
 msgid "Email All"
 msgstr "전체 메일 발송"
 
@@ -1520,10 +1512,6 @@ msgstr "최근 수정 가족"
 #: 
 msgid "Updated"
 msgstr "수정일"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "예, 이 기록을 삭제합니다"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2176,10 +2164,6 @@ msgid "Start Column"
 msgstr "시작 열"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "불완전한<br>주소 제외"
-
-#: 
 msgid "File Type"
 msgstr "파일 형식"
 
@@ -2244,14 +2228,6 @@ msgid "All Funds"
 msgstr "모든 헌금"
 
 #: 
-msgid " for fund "
-msgstr " 해당 헌금: "
-
-#: 
-msgid "for funds "
-msgstr "헌금 항목 "
-
-#: 
 #, fuzzy
 msgid "Donated Items"
 msgstr "기증 물품"
@@ -2276,10 +2252,6 @@ msgstr "지불 금액: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "지불 방법 (  ) 현금    (  ) 수표    (  ) 카드 __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  유효기간 __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "                                        서명 ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2312,10 +2284,6 @@ msgstr "그룹 명부"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "이 영수증을 떼어 다음 헌금과 함께 보내주세요."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "다음 헌금은 아래 주소로 보내주세요: "
 
 #: 
 #, fuzzy
@@ -2464,10 +2432,6 @@ msgid "Family Select"
 msgstr "가족 선택"
 
 #: 
-msgid "with at least one:"
-msgstr "다음 항목이 있는 경우:"
-
-#: 
 msgid "Welcome to"
 msgstr "환영합니다:"
 
@@ -2572,18 +2536,6 @@ msgid "item"
 msgstr "항목"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "구매자 번호 "
-
-#: 
-msgid "Family Members:"
-msgstr "가족 구성원:"
-
-#: 
 msgid "Anniversary"
 msgstr "결혼기념일"
 
@@ -2594,10 +2546,6 @@ msgstr "메모"
 #: 
 msgid "Reports"
 msgstr "보고서"
-
-#: 
-msgid "family"
-msgstr "가족"
 
 #: 
 #, fuzzy
@@ -2676,10 +2624,6 @@ msgstr "기본 도시"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "기본 주/도(2글자 약어)"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "모든 이메일 사본을 받을 기본 계정"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4747,10 +4691,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "특별 그룹 설정: 주일학교 유형"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "주일학교 그룹은 두 가지 경우에만 수정할 수 있습니다:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "새 역할을 추가할 수 있지만 학생과 교사 역할은 수정·이름 변경할 수 없습니다."
 
@@ -5342,10 +5282,6 @@ msgid "Review"
 msgstr "검토"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "API 키로 인증된 사용자: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "API 키 인증 실패"
 
@@ -5658,20 +5594,12 @@ msgid "Log File Viewer"
 msgstr "로그 파일 뷰어"
 
 #: 
-msgid "Filter by log level:"
-msgstr "로그 레벨로 필터링:"
-
-#: 
 msgid "Error"
 msgstr "오류"
 
 #: 
 msgid "Info"
 msgstr "정보"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "표시할 줄 수:"
 
 #: 
 msgid "Loading log file..."
@@ -6033,10 +5961,6 @@ msgstr "루트 경로"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP 호스트"
-
-#: 
-msgid "Tip:"
-msgstr "팁:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6466,10 +6390,6 @@ msgid "Please check the backup file and try again."
 msgstr "백업 파일을 확인하고 다시 시도해 주세요."
 
 #: 
-msgid "Redirecting in"
-msgstr "다음 시간 후 리디렉션"
-
-#: 
 msgid "Refresh List"
 msgstr "목록 새로고침"
 
@@ -6508,10 +6428,6 @@ msgstr "보안 권장사항"
 #: 
 msgid "Select Backup File"
 msgstr "백업 파일 선택"
-
-#: 
-msgid "Supported formats:"
-msgstr "지원되는 형식:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6564,14 +6480,6 @@ msgstr "ChurchCRM 설치가 깨끗합니다. 서버의 모든 파일이 공식 �
 #: 
 msgid "or click to browse"
 msgstr "또는 클릭하여 찾아보기"
-
-#: 
-msgid "seconds..."
-msgstr "초..."
-
-#: 
-msgid " Deposit #"
-msgstr " 입금 #"
 
 #: 
 msgid "%d missing classification"
@@ -6658,20 +6566,12 @@ msgid "Close All Deposits"
 msgstr "모든 입금 닫기"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "닫힌 입금:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "닫힌 것 대 전체"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "기부자를 위한 정확한 연말 세금 보고를 위해 다음 작업을 완료하세요."
-
-#: 
-msgid "Configuration:"
-msgstr "구성:"
 
 #: 
 msgid "Configure Email"
@@ -6713,14 +6613,6 @@ msgstr "날짜, 기금, 가족 및 결제 방법별로 필터링할 수 있는 �
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "세금 명세서에 표시되는 텍스트를 사용자 정의합니다 (sTaxReport1, sTaxReport2 등)."
-
-#: 
-msgid "Data Quality:"
-msgstr "데이터 품질:"
-
-#: 
-msgid "Database:"
-msgstr "데이터베이스:"
 
 #: 
 msgid "Day"
@@ -6793,10 +6685,6 @@ msgstr "가족 탐색"
 #: 
 msgid "Feb"
 msgstr "2월"
-
-#: 
-msgid "File Integrity:"
-msgstr "파일 무결성:"
 
 #: 
 msgid "Filtering"
@@ -6947,14 +6835,6 @@ msgid "Open"
 msgstr "열기"
 
 #: 
-msgid "Open Deposits:"
-msgstr "열린 입금:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "고아 파일:"
-
-#: 
 msgid "Payment"
 msgstr "결제"
 
@@ -7043,10 +6923,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "회계연도의 기금별 서약 대 결제 요약입니다."
 
 #: 
-msgid "System Configuration:"
-msgstr "시스템 구성:"
-
-#: 
 msgid "System Health"
 msgstr "시스템 상태"
 
@@ -7079,10 +6955,6 @@ msgid "Total Amount"
 msgstr "총액"
 
 #: 
-msgid "Total Deposits:"
-msgstr "총 입금:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "캠페인 및 회계연도 예산을 위한 서약 및 결제 진행 상황을 추적합니다."
 
@@ -7109,10 +6981,6 @@ msgstr "교회 이름, 주소 및 연락처 정보가 세금 명세서에 표시
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "명세서에 대한 기금 이름 및 설명이 정확한지 확인하세요."
-
-#: 
-msgid "Version:"
-msgstr "버전:"
 
 #: 
 msgid "YTD Payments"
@@ -7171,28 +7039,8 @@ msgid "Critical Configuration Error"
 msgstr "중요한 구성 오류"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "현재 $URL[0] 값:"
-
-#: 
-msgid "Custom port:"
-msgstr "사용자 정의 포트:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "<strong>끝에 슬래시</strong> (/)로 끝남"
-
-#: 
-msgid "Find the line:"
-msgstr "다음 줄을 찾으세요:"
-
-#: 
 msgid "Group Memberships"
 msgstr "그룹 회원"
-
-#: 
-msgid "How to Fix:"
-msgstr "수정 방법:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7201,10 +7049,6 @@ msgstr "ChurchCRM 커뮤니티에 참여하고 정보를 공유하여 개선에 
 #: 
 msgid "Language"
 msgstr "언어"
-
-#: 
-msgid "Local development:"
-msgstr "로컬 개발:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7225,10 +7069,6 @@ msgstr "교회 등록"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "파일을 저장하고 이 페이지를 새로고침하세요"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "<strong>http://</strong> 또는 <strong>https://</strong>로 시작"
 
 #: 
 msgid "System Locale Support"
@@ -7253,14 +7093,6 @@ msgstr "URL은 끝에 슬래시 (/)로 끝나야 합니다"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL은 http:// 또는 https://로 시작해야 합니다"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "다음과 같은 유효한 URL로 업데이트하세요:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "유효한 예:"
 
 #: 
 msgid "View Logs"
@@ -7321,10 +7153,6 @@ msgstr "뉴스레터"
 #: 
 msgid "Personal"
 msgstr "개인"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "가족 정보를 확인해 주세요:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7605,20 +7433,8 @@ msgid "Property Type"
 msgstr "속성 유형"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "이 자원봉사 기회에 할당된 사람들이 있습니다. 삭제하면 할당이 해제됩니다:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "자원봉사 기회"
-
-#: 
-msgid "Warning:"
-msgstr "경고:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "예, 이 기회 삭제"
 
 #. Context: locales
 #: 
@@ -8289,10 +8105,6 @@ msgstr "MailChimp에서 API 키 받기: 계정 설정 > 추가 기능 > API 키"
 #: 
 msgid "Help"
 msgstr "도움말"
-
-#: 
-msgid "Id"
-msgstr "ID"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9573,10 +9385,6 @@ msgid "Edit custom properties for a group member"
 msgstr "그룹 교인의 사용자 정의 속성 편집"
 
 #: 
-msgid "Email BCC"
-msgstr "이메일 BCC"
-
-#: 
 msgid "Email Families"
 msgstr "가족에게 이메일 보내기"
 
@@ -9587,14 +9395,6 @@ msgstr "이메일 설정"
 #: 
 msgid "Email Tools"
 msgstr "이메일 도구"
-
-#: 
-msgid "Email cart items"
-msgstr "목록 항목 이메일 보내기"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "숨은 수신자로 이메일 보내기"
 
 #: 
 msgid "Empty"
@@ -9809,10 +9609,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "MailChimp 대상에서 연락처 가져오기"
 
 #: 
-msgid "Import failed: "
-msgstr "가져오기 실패: "
-
-#: 
 msgid "Import from CSV"
 msgstr "CSV에서 가져오기"
 
@@ -9855,10 +9651,6 @@ msgstr "잘못된 \"발신 번호\": \"%s\". 국가 코드를 포함하세요. �
 #: 
 msgid "Invite Your Team"
 msgstr "팀 초대"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "원하는 설정 단계로 이동:"
 
 #: 
 msgid "Key People"
@@ -10213,10 +10005,6 @@ msgstr "속성 지정을 찾을 수 없습니다."
 #: 
 msgid "Property deleted successfully."
 msgstr "속성이 삭제되었습니다."
-
-#: 
-msgid "Property not found."
-msgstr "속성을 찾을 수 없습니다."
 
 #: 
 msgid "Quick Tips"
@@ -10687,14 +10475,6 @@ msgid "properties"
 msgstr "속성"
 
 #: 
-msgid "— Select a group —"
-msgstr "— 그룹 선택 —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— 유형 선택 (선택 사항) —"
-
-#: 
 msgid "Add Event"
 msgstr "행사 추가"
 
@@ -11008,10 +10788,6 @@ msgstr "이메일 대시보드"
 #: 
 msgid "Email Integrations"
 msgstr "이메일 통합"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "이메일 기능이 현재 비활성화되어 있습니다. 이메일을 활성화할 때까지 다음 기능이 작동하지 않습니다:"
 
 #: 
 msgid "Email is Disabled"
@@ -11586,10 +11362,6 @@ msgstr "자동 TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "자동 백업"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "모든 메일 BCC 수신자"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12408,10 +12180,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "밝은 테마와 어두운 테마 중 선택"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "ChurchCRM 번역은 POEditor에서 커뮤니티가 관리합니다. 다음과 같이 도움을 주실 수 있습니다:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "애플리케이션의 외관과 느낌을 사용자 정의하세요"
 
@@ -12455,10 +12223,6 @@ msgstr "번역 개선에 참여하세요"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "문자가 깨지거나, HTML 엔티티가 텍스트로 표시되거나, 번역으로 인해 페이지 레이아웃이 깨지는 경우 GitHub에 문제를 보고해 주시면 모든 사용자를 위해 수정될 것입니다."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "x-api-key 헤더를 사용하여 요청에 API 키를 포함하세요:"
 
 #: 
 msgid "Indigo"
@@ -12891,10 +12655,6 @@ msgid "Everyone is checked in!"
 msgstr "모두 체크인 완료!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "가장 빠른 작업 흐름:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "아직 활성 상태이거나 체크아웃하지 않은 참가자가 있는 과거 이벤트 찾기"
 
@@ -13009,10 +12769,6 @@ msgstr "RangeEnd는 RangeStart 이후여야 합니다"
 #: 
 msgid "Recommended"
 msgstr "권장"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "초기화하면 다음이 영구적으로 삭제됩니다:"
 
 #: 
 msgid "SQL Only"
@@ -13511,10 +13267,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "교회 이메일 주소가 설정되지 않았습니다 — 테스트 이메일을 보낼 곳이 없습니다."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "교회 이메일 — 다음에서 설정:"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "ChurchCRM 테스트 이메일"
 
@@ -13621,10 +13373,6 @@ msgstr "메모리"
 #: 
 msgid "Memory Limit"
 msgstr "메모리 한도"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "수신자 받은 편지함에서 전송 여부를 확인하세요. 제목을 찾아보세요:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13745,14 +13493,6 @@ msgstr "설정 업데이트"
 #: 
 msgid "View full photo"
 msgstr "전체 사진 보기"
-
-#: 
-msgid "page."
-msgstr "페이지."
-
-#: 
-msgid "user:"
-msgstr "사용자:"
 
 #: 
 msgid "1. Download the template"
@@ -13951,10 +13691,6 @@ msgstr "국가 설정"
 msgid "Show all"
 msgstr "모두 보기"
 
-#: 
-msgid "Show:"
-msgstr "표시:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14135,10 +13871,6 @@ msgid "Plugin uninstalled"
 msgstr "플러그인 제거됨"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "플러그인이 제거되었습니다."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "플러그인 zip URL (HTTPS 전용)"
 
@@ -14199,10 +13931,6 @@ msgid "Verified"
 msgstr "검증됨"
 
 #: 
-msgid "What this plugin does:"
-msgstr "이 플러그인의 기능:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "미검증 설치에는 downloadUrl, sha256, pluginId가 모두 필요합니다."
 
@@ -14217,10 +13945,6 @@ msgstr "이름을 비워둘 수 없습니다"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "이름은 %d자를 초과할 수 없습니다"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "기기 등록을 위한 2분간의 창이 열립니다:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14515,10 +14239,6 @@ msgid "Available after the event is saved."
 msgstr "일정이 저장된 후 사용 가능합니다."
 
 #: 
-msgid "BCC All"
-msgstr "전체 BCC"
-
-#: 
 msgid "Background Color"
 msgstr "배경 색상"
 
@@ -14651,10 +14371,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "인증 앱의 코드로 확인"
 
 #: 
-msgid "Copied"
-msgstr "복사됨"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "클립보드에 복사됨"
 
@@ -14665,10 +14381,6 @@ msgstr "복사됨!"
 #: 
 msgid "Copy"
 msgstr "복사"
-
-#: 
-msgid "Copy All Emails"
-msgstr "모든 이메일 복사"
 
 #: 
 msgid "Copy All Numbers"
@@ -15910,10 +15622,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "개 이벤트. 대신 유형을 비활성화하거나 먼저 이벤트를 재할당하십시오."
 
 #: 
-msgid "from this class?"
-msgstr "이 반에서?"
-
-#: 
 msgid "from this group?"
 msgstr "이 그룹에서?"
 
@@ -15992,18 +15700,6 @@ msgstr "년"
 #: 
 msgid "yrs"
 msgstr "년"
-
-#: 
-msgid "— Ignore —"
-msgstr "— 무시 —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— 국가 선택 —"
-
-#: 
-msgid "— Select State —"
-msgstr "— 시/도 선택 —"
 
 #: 
 msgid "Account options"
@@ -16313,10 +16009,6 @@ msgid "Full access — grants all privileges."
 msgstr "전체 접근 — 모든 권한이 부여됩니다."
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "개별 권한 부여:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "추가 접근 권한이 필요하면 교회 관리자에게 문의하세요."
 
@@ -16541,10 +16233,6 @@ msgid "What's New in {{version}}"
 msgstr "{{version}}의 새로운 기능"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "<strong>{{releaseCount}}</strong>개의 릴리즈가 뒤처져 있습니다. 업그레이드하면 얻을 수 있는 것:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "프리릴리즈 버전을 실행 중입니다."
 
@@ -16633,14 +16321,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "사용자는 관리자이거나 모금 행사 관리 권한이 있어야 합니다."
 
 #: 
-msgid "User not found."
-msgstr "사용자를 찾을 수 없습니다."
-
-#: 
-msgid "— Select a person —"
-msgstr "— 사람 선택 —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "%d개의 보관된 모금 행사"
@@ -16713,10 +16393,6 @@ msgstr "선택 목록의 구성원을 소그룹에 배정"
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "선택 목록의 사람을 가정에 배정"
-
-#: 
-msgid "Assign role to all:"
-msgstr "모두에게 역할 배정:"
 
 #: 
 msgid "Assign to Family"
@@ -17027,10 +16703,6 @@ msgid "Sold"
 msgstr "판매됨"
 
 #: 
-msgid "State / Province"
-msgstr "주 / 도"
-
-#: 
 msgid "Streak"
 msgstr "연속 출석"
 
@@ -17103,10 +16775,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "선택 목록이 비어 있습니다. 먼저 선택 목록에 사람을 추가하세요."
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "우편번호"
-
-#: 
 msgid "events"
 msgstr "행사"
 
@@ -17121,12 +16789,4 @@ msgstr "목표 금액은 음수가 아니어야 합니다"
 #: 
 msgid "thru %s"
 msgstr "%s까지"
-
-#: 
-msgid "— Select role —"
-msgstr "— 역할 선택 —"
-
-#: 
-msgid "— pick —"
-msgstr "— 선택 —"
 

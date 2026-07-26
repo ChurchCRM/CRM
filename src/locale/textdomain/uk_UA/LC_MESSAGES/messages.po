@@ -263,10 +263,6 @@ msgstr "Класифікація"
 msgid "Add Cart to Event"
 msgstr "Додати кошик до події"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "Ваш кошик порожній!"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1446,10 +1442,6 @@ msgid "Current Role"
 msgstr "Поточна роль"
 
 #: 
-msgid "All People"
-msgstr "Все населення"
-
-#: 
 msgid "Email All"
 msgstr "Надіслати всім електронною поштою"
 
@@ -1520,10 +1512,6 @@ msgstr "Оновлені сім'ї"
 #: 
 msgid "Updated"
 msgstr "Оновлено"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "Так, видалити цей запис"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2176,10 +2164,6 @@ msgid "Start Column"
 msgstr "Початок стовпця"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "Ігнорувати неповні <br> адреси"
-
-#: 
 msgid "File Type"
 msgstr "Тип файлу"
 
@@ -2244,14 +2228,6 @@ msgid "All Funds"
 msgstr "Усі кошти"
 
 #: 
-msgid " for fund "
-msgstr " для фонду "
-
-#: 
-msgid "for funds "
-msgstr "за кошти "
-
-#: 
 #, fuzzy
 msgid "Donated Items"
 msgstr "Пожертвувані предмети"
@@ -2276,10 +2252,6 @@ msgstr "Виплачувана сума: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Оплачується () Готівкою () Чеком () Кредитна картка __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ Опит __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "                                        Підпис ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2312,10 +2284,6 @@ msgstr "Каталог груп"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Будь ласка, від'єднайте цей лист і надішліть лист із наступним подарунком."
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "Будь ласка, надішліть вам наступний подарунок на "
 
 #: 
 #, fuzzy
@@ -2464,10 +2432,6 @@ msgid "Family Select"
 msgstr "Сімейний вибір"
 
 #: 
-msgid "with at least one:"
-msgstr "принаймні з одним:"
-
-#: 
 msgid "Welcome to"
 msgstr "Ласкаво просимо до"
 
@@ -2572,18 +2536,6 @@ msgid "item"
 msgstr "пункт"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-------------------------------------------------- -------------------------------------------------- -------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "Номер покупця "
-
-#: 
-msgid "Family Members:"
-msgstr "Члени сім'ї:"
-
-#: 
 msgid "Anniversary"
 msgstr "Ювілей"
 
@@ -2594,10 +2546,6 @@ msgstr "Примітки"
 #: 
 msgid "Reports"
 msgstr "Звіти"
-
-#: 
-msgid "family"
-msgstr "сім'я"
 
 #: 
 #, fuzzy
@@ -2678,10 +2626,6 @@ msgstr "Місто за замовчуванням"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Стан за замовчуванням - Має бути двобуквене скорочення!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "Обліковий запис за замовчуванням для отримання копії всіх листів"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4750,10 +4694,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "Спеціальні налаштування групи: тип недільної школи"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "Групу недільної школи не можна змінити, лише в цих двох випадках:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Додайте нові ролі, але не змінюйте та не перейменовуйте ролі студента та викладача."
 
@@ -5353,10 +5293,6 @@ msgid "Review"
 msgstr "Огляд"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "Аутентифікація користувача за допомогою ключа API: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "Невдала спроба автентифікації ключа ключа API"
 
@@ -5670,20 +5606,12 @@ msgid "Log File Viewer"
 msgstr "Переглядач файлів журналу"
 
 #: 
-msgid "Filter by log level:"
-msgstr "Фільтрувати за рівнем:"
-
-#: 
 msgid "Error"
 msgstr "Помилка"
 
 #: 
 msgid "Info"
 msgstr "Інфо"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "Кількість рядків для відображення:"
 
 #: 
 msgid "Loading log file..."
@@ -6045,10 +5973,6 @@ msgstr "Кореневий шлях"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP-хост"
-
-#: 
-msgid "Tip:"
-msgstr "Порада:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6484,10 +6408,6 @@ msgid "Please check the backup file and try again."
 msgstr "Будь ласка, перевірте файл резервної копії та спробуйте ще раз."
 
 #: 
-msgid "Redirecting in"
-msgstr "Перенаправлення через"
-
-#: 
 msgid "Refresh List"
 msgstr "Оновити список"
 
@@ -6526,10 +6446,6 @@ msgstr "Рекомендація з безпеки"
 #: 
 msgid "Select Backup File"
 msgstr "Вибрати файл резервної копії"
-
-#: 
-msgid "Supported formats:"
-msgstr "Підтримувані формати:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6582,14 +6498,6 @@ msgstr "Ваша інсталяція ChurchCRM чиста. Усі файли н
 #: 
 msgid "or click to browse"
 msgstr "або натисніть, щоб вибрати"
-
-#: 
-msgid "seconds..."
-msgstr "секунд..."
-
-#: 
-msgid " Deposit #"
-msgstr " Внесок №"
 
 #: 
 msgid "%d missing classification"
@@ -6676,20 +6584,12 @@ msgid "Close All Deposits"
 msgstr "Закрити всі депозити"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "Закриті депозити:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "Закриті порівняно з загальною кількістю"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "Виконайте ці завдання для точної податкової звітності в кінці року."
-
-#: 
-msgid "Configuration:"
-msgstr "Конфігурація:"
 
 #: 
 msgid "Configure Email"
@@ -6730,14 +6630,6 @@ msgstr "Настроюваний звіт із фільтрацією за да�
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "Налаштуйте текст для податкових виписок."
-
-#: 
-msgid "Data Quality:"
-msgstr "Якість даних:"
-
-#: 
-msgid "Database:"
-msgstr "База даних:"
 
 #: 
 msgid "Day"
@@ -6810,10 +6702,6 @@ msgstr "Навігація сім'ями"
 #: 
 msgid "Feb"
 msgstr "Лют"
-
-#: 
-msgid "File Integrity:"
-msgstr "Цілісність файлів:"
 
 #: 
 msgid "Filtering"
@@ -6964,14 +6852,6 @@ msgid "Open"
 msgstr "Відкрити"
 
 #: 
-msgid "Open Deposits:"
-msgstr "Відкриті депозити:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "Застарілі файли:"
-
-#: 
 msgid "Payment"
 msgstr "Платіж"
 
@@ -7060,10 +6940,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Підсумок обіцянок та платежів по фондах."
 
 #: 
-msgid "System Configuration:"
-msgstr "Конфігурація системи:"
-
-#: 
 msgid "System Health"
 msgstr "Стан системи"
 
@@ -7096,10 +6972,6 @@ msgid "Total Amount"
 msgstr "Загальна сума"
 
 #: 
-msgid "Total Deposits:"
-msgstr "Усього депозитів:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Відстежуйте обіцянки для бюджетування."
 
@@ -7126,10 +6998,6 @@ msgstr "Перевірте дані церкви у податкових вип�
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "Перевірте назви фондів для виписок."
-
-#: 
-msgid "Version:"
-msgstr "Версія:"
 
 #: 
 msgid "YTD Payments"
@@ -7188,28 +7056,8 @@ msgid "Critical Configuration Error"
 msgstr "Критична помилка конфігурації"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "Поточне значення $URL[0]:"
-
-#: 
-msgid "Custom port:"
-msgstr "Власний порт:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "Закінчується на <strong>косу риску</strong> (/)"
-
-#: 
-msgid "Find the line:"
-msgstr "Знайдіть рядок:"
-
-#: 
 msgid "Group Memberships"
 msgstr "Членство в групах"
-
-#: 
-msgid "How to Fix:"
-msgstr "Як виправити:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7218,10 +7066,6 @@ msgstr "Приєднуйтеся до спільноти ChurchCRM!"
 #: 
 msgid "Language"
 msgstr "Мова"
-
-#: 
-msgid "Local development:"
-msgstr "Локальна розробка:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7242,10 +7086,6 @@ msgstr "Зареєструвати вашу церкву"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "Збережіть файл та оновіть цю сторінку"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "Починається з <strong>http://</strong> або <strong>https://</strong>"
 
 #: 
 msgid "System Locale Support"
@@ -7270,14 +7110,6 @@ msgstr "URL має закінчуватися косою рискою (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL має починатися з http:// або https://"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "Оновіть її на дійсну URL-адресу, яка:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "Дійсні приклади:"
 
 #: 
 msgid "View Logs"
@@ -7338,10 +7170,6 @@ msgstr "Інформаційний бюлетень"
 #: 
 msgid "Personal"
 msgstr "Особисте"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "Будь ласка, підтвердьте інформацію про сім'ю:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7628,20 +7456,8 @@ msgid "Property Type"
 msgstr "Тип властивості"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "На цю можливість призначені люди. Видалення скасує їх призначення:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "Служіння / Волонтерство"
-
-#: 
-msgid "Warning:"
-msgstr "Попередження:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "Так, видалити цю можливість"
 
 #. Context: locales
 #: 
@@ -8318,10 +8134,6 @@ msgstr "Отримайте API-ключ у MailChimp: Налаштування �
 #: 
 msgid "Help"
 msgstr "Допомога"
-
-#: 
-msgid "Id"
-msgstr "Ідентифікатор"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9605,10 +9417,6 @@ msgid "Edit custom properties for a group member"
 msgstr "Редагувати спеціальні властивості члена групи"
 
 #: 
-msgid "Email BCC"
-msgstr "Електронна пошта прихована копія"
-
-#: 
 msgid "Email Families"
 msgstr "Електронна пошта сім'ям"
 
@@ -9619,14 +9427,6 @@ msgstr "Налаштування електронної пошти"
 #: 
 msgid "Email Tools"
 msgstr "Інструменти електронної пошти"
-
-#: 
-msgid "Email cart items"
-msgstr "Електронна пошта вибраних елементів"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "Електронна пошта з прихованими одержувачами"
 
 #: 
 msgid "Empty"
@@ -9841,10 +9641,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "Імпортуйте контакти з ваших аудиторій MailChimp"
 
 #: 
-msgid "Import failed: "
-msgstr "Імпорт не вдався: "
-
-#: 
 msgid "Import from CSV"
 msgstr "Імпортувати з CSV"
 
@@ -9887,10 +9683,6 @@ msgstr "Недійсний \"номер від\":\"%s\". Включіть код
 #: 
 msgid "Invite Your Team"
 msgstr "Запросіть вашу команду"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "Перейдіть до будь-якого кроку налаштування:"
 
 #: 
 msgid "Key People"
@@ -10245,10 +10037,6 @@ msgstr "Призначення властивості не знайдено."
 #: 
 msgid "Property deleted successfully."
 msgstr "Властивість успішно видалена."
-
-#: 
-msgid "Property not found."
-msgstr "Властивість не знайдена."
 
 #: 
 msgid "Quick Tips"
@@ -10719,14 +10507,6 @@ msgid "properties"
 msgstr "властивості"
 
 #: 
-msgid "— Select a group —"
-msgstr "— Виберіть групу —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— Виберіть тип (необов'язково) —"
-
-#: 
 msgid "Add Event"
 msgstr "Додати подію"
 
@@ -11040,10 +10820,6 @@ msgstr "Панель управління електронною поштою"
 #: 
 msgid "Email Integrations"
 msgstr "Інтеграція електронної пошти"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "Функція електронної пошти наразі вимкнена. Наступні функції не працюватимуть, поки не буде увімкнена електронна пошта:"
 
 #: 
 msgid "Email is Disabled"
@@ -11618,10 +11394,6 @@ msgstr "Автоматичний TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "Автоматичне резервне копіювання"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "BCC усієї пошти на"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12440,10 +12212,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "Оберіть між світлою та темною кольоровою схемою"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "Переклади ChurchCRM управляються спільнотою на POEditor. Ви можете допомогти:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Налаштуйте зовнішній вигляд та відчуття програми"
 
@@ -12487,10 +12255,6 @@ msgstr "Допоможіть покращити переклади"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "Якщо ви помітили спотворені символи, HTML-сутності у вигляді тексту або переклади, що порушують макет сторінки, будь ласка, повідомте про проблему на GitHub, щоб її можна було виправити для всіх."
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "Включіть ваш ключ API у запити, використовуючи заголовок x-api-key:"
 
 #: 
 msgid "Indigo"
@@ -12926,10 +12690,6 @@ msgid "Everyone is checked in!"
 msgstr "Всі відмічені!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "Найшвидший спосіб:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "Знайти минулі події, які ще активні або мають учасників без знятої відмітки"
 
@@ -13044,10 +12804,6 @@ msgstr "RangeEnd має бути не раніше RangeStart"
 #: 
 msgid "Recommended"
 msgstr "Рекомендовано"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "Скидання назавжди видалить:"
 
 #: 
 msgid "SQL Only"
@@ -13546,10 +13302,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "Адресу електронної пошти церкви не налаштовано — тестовий лист нікуди надсилати."
 
 #: 
-msgid "Church email — configured on the"
-msgstr "Електронна пошта церкви — налаштована на"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "Тестовий лист ChurchCRM"
 
@@ -13656,10 +13408,6 @@ msgstr "Пам'ять"
 #: 
 msgid "Memory Limit"
 msgstr "Ліміт пам'яті"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "Перевірте скриньку отримувача для підтвердження доставки. Шукайте тему:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13780,14 +13528,6 @@ msgstr "Оновити налаштування"
 #: 
 msgid "View full photo"
 msgstr "Переглянути повне фото"
-
-#: 
-msgid "page."
-msgstr "сторінці."
-
-#: 
-msgid "user:"
-msgstr "користувач:"
 
 #: 
 msgid "1. Download the template"
@@ -13986,10 +13726,6 @@ msgstr "Налаштування країн"
 msgid "Show all"
 msgstr "Показати все"
 
-#: 
-msgid "Show:"
-msgstr "Показати:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14170,10 +13906,6 @@ msgid "Plugin uninstalled"
 msgstr "Плагін видалено"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "Плагін видалено."
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "URL zip-архіву плагіна (лише HTTPS)"
 
@@ -14234,10 +13966,6 @@ msgid "Verified"
 msgstr "Перевірений"
 
 #: 
-msgid "What this plugin does:"
-msgstr "Що робить цей плагін:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl, sha256 та pluginId — усі обов'язкові для неперевірених встановлень."
 
@@ -14252,10 +13980,6 @@ msgstr "Назва не може бути порожньою"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "Назва не може бути довшою за %d символів"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "Відкриває 2-хвилинне вікно для реєстрації пристроїв за адресою:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14550,10 +14274,6 @@ msgid "Available after the event is saved."
 msgstr "Доступно після збереження події."
 
 #: 
-msgid "BCC All"
-msgstr "BCC всім"
-
-#: 
 msgid "Background Color"
 msgstr "Колір фону"
 
@@ -14686,10 +14406,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "Підтвердіть кодом із програми автентифікації"
 
 #: 
-msgid "Copied"
-msgstr "Скопійовано"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "Скопійовано в буфер обміну"
 
@@ -14700,10 +14416,6 @@ msgstr "Скопійовано!"
 #: 
 msgid "Copy"
 msgstr "Копіювати"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Скопіювати всі електронні листи"
 
 #: 
 msgid "Copy All Numbers"
@@ -15945,10 +15657,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "подій. Деактивуйте тип або спочатку перепризначте події."
 
 #: 
-msgid "from this class?"
-msgstr "з цього класу?"
-
-#: 
 msgid "from this group?"
 msgstr "з цієї групи?"
 
@@ -16027,18 +15735,6 @@ msgstr "рік"
 #: 
 msgid "yrs"
 msgstr "рр."
-
-#: 
-msgid "— Ignore —"
-msgstr "— Ігнорувати —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— Виберіть країну —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Виберіть область —"
 
 #: 
 msgid "Account options"
@@ -16351,10 +16047,6 @@ msgid "Full access — grants all privileges."
 msgstr "Повний доступ — надає всі привілеї."
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "Надати індивідуальні дозволи:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "Якщо вам потрібен додатковий доступ, будь ласка, зверніться до адміністратора вашої церкви."
 
@@ -16579,10 +16271,6 @@ msgid "What's New in {{version}}"
 msgstr "Що нового у версії {{version}}"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "Ви відстаєте на <strong>{{releaseCount}}</strong> випусків. Ось що ви отримаєте:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "Ви використовуєте попередню версію."
 
@@ -16671,14 +16359,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "Користувач має бути адміністратором або мати дозвіл на керування зборами пожертв"
 
 #: 
-msgid "User not found."
-msgstr "Користувача не знайдено."
-
-#: 
-msgid "— Select a person —"
-msgstr "— Оберіть особу —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "%d архівний збір коштів"
@@ -16757,10 +16437,6 @@ msgstr "Призначити учасників списку до групи"
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "Призначити людей зі свого списку до родини"
-
-#: 
-msgid "Assign role to all:"
-msgstr "Призначити роль усім:"
 
 #: 
 msgid "Assign to Family"
@@ -17071,10 +16747,6 @@ msgid "Sold"
 msgstr "Продано"
 
 #: 
-msgid "State / Province"
-msgstr "Область / Провінція"
-
-#: 
 msgid "Streak"
 msgstr "Серія"
 
@@ -17147,10 +16819,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "Ваш список порожній. Спочатку додайте людей до свого списку."
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Поштовий індекс"
-
-#: 
 msgid "events"
 msgstr "події"
 
@@ -17165,12 +16833,4 @@ msgstr "goalAmount має бути невід'ємним"
 #: 
 msgid "thru %s"
 msgstr "до %s"
-
-#: 
-msgid "— Select role —"
-msgstr "— Оберіть роль —"
-
-#: 
-msgid "— pick —"
-msgstr "— оберіть —"
 

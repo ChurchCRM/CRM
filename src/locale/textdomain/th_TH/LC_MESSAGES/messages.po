@@ -273,10 +273,6 @@ msgstr "การจัดประเภท"
 msgid "Add Cart to Event"
 msgstr "เพิ่มตะกร้าไปยังกิจกรรม"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "ตะกร้าของคุณว่างเปล่า!"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1437,10 +1433,6 @@ msgid "Current Role"
 msgstr "บทบาทปัจจุบัน"
 
 #: 
-msgid "All People"
-msgstr "คนทั้งหมด"
-
-#: 
 msgid "Email All"
 msgstr "ส่งอีเมลทั้งหมด"
 
@@ -1511,10 +1503,6 @@ msgstr "ครอบครัวที่อัปเดต"
 #: 
 msgid "Updated"
 msgstr "อัปเดตแล้ว"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "ใช่ ลบระเบียนนี้"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2167,10 +2155,6 @@ msgid "Start Column"
 msgstr "คอลัมน์เริ่มต้น"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "ละเว้นที่อยู่<br>ไม่สมบูรณ์"
-
-#: 
 msgid "File Type"
 msgstr "ประเภทไฟล์"
 
@@ -2235,14 +2219,6 @@ msgid "All Funds"
 msgstr "กองทุนทั้งหมด"
 
 #: 
-msgid " for fund "
-msgstr " สำหรับกองทุน "
-
-#: 
-msgid "for funds "
-msgstr "สำหรับกองทุน "
-
-#: 
 msgid "Donated Items"
 msgstr "รายการบริจาค"
 
@@ -2265,10 +2241,6 @@ msgstr "จำนวนที่ชำระ: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "ชำระโดย (  ) เงินสด    (  ) เช็ค    (  ) บัตรเครดิต __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  หมดอายุ __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "                                        ลายเซ็น ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2301,10 +2273,6 @@ msgstr "ไดเรกทอรีกลุ่ม"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "กรุณาแยกใบนี้และส่งไปรษณีย์พร้อมของขวัญครั้งต่อไปของคุณ"
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "กรุณาส่งของขวัญครั้งต่อไปของคุณไปที่ "
 
 #: 
 msgid "Gift Amount"
@@ -2451,10 +2419,6 @@ msgid "Family Select"
 msgstr "เลือกครอบครัว"
 
 #: 
-msgid "with at least one:"
-msgstr "ที่มีอย่างน้อยหนึ่ง:"
-
-#: 
 msgid "Welcome to"
 msgstr "ยินดีต้อนรับสู่"
 
@@ -2559,18 +2523,6 @@ msgid "item"
 msgstr "รายการ"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "หมายเลขผู้ซื้อ "
-
-#: 
-msgid "Family Members:"
-msgstr "สมาชิกครอบครัว:"
-
-#: 
 msgid "Anniversary"
 msgstr "วันครบรอบ"
 
@@ -2581,10 +2533,6 @@ msgstr "บันทึก"
 #: 
 msgid "Reports"
 msgstr "รายงาน"
-
-#: 
-msgid "family"
-msgstr "ครอบครัว"
 
 #: 
 msgid "Date Entered"
@@ -2661,10 +2609,6 @@ msgstr "เมืองเริ่มต้น"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "รัฐเริ่มต้น - ต้องเป็นตัวย่อ 2 ตัวอักษร!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "บัญชีเริ่มต้นสำหรับรับสำเนาอีเมลทั้งหมด"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4728,10 +4672,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "การตั้งค่ากลุ่มพิเศษ: ประเภทโรงเรียนวันอาทิตย์"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "กลุ่มโรงเรียนวันอาทิตย์ไม่สามารถแก้ไขได้ ยกเว้นในสองกรณีนี้:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "เพิ่มบทบาทใหม่ แต่ไม่สามารถแก้ไขหรือเปลี่ยนชื่อบทบาทนักเรียนและครู"
 
@@ -5320,10 +5260,6 @@ msgid "Review"
 msgstr "ตรวจสอบ"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "ผู้ใช้ยืนยันตัวตนผ่านคีย์ API: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "ความพยายามยืนยันตัวตนด้วยคีย์ API ไม่สำเร็จ"
 
@@ -5636,20 +5572,12 @@ msgid "Log File Viewer"
 msgstr "ตัวดูไฟล์บันทึก"
 
 #: 
-msgid "Filter by log level:"
-msgstr "กรองตามระดับบันทึก:"
-
-#: 
 msgid "Error"
 msgstr "ข้อผิดพลาด"
 
 #: 
 msgid "Info"
 msgstr "ข้อมูล"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "จำนวนบรรทัดที่จะแสดง:"
 
 #: 
 msgid "Loading log file..."
@@ -6011,10 +5939,6 @@ msgstr "พาธราก"
 #: 
 msgid "SMTP Host"
 msgstr "โฮสต์ SMTP"
-
-#: 
-msgid "Tip:"
-msgstr "เคล็ดลับ:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6444,10 +6368,6 @@ msgid "Please check the backup file and try again."
 msgstr "กรุณาตรวจสอบไฟล์สำรองข้อมูลแล้วลองอีกครั้ง"
 
 #: 
-msgid "Redirecting in"
-msgstr "กำลังเปลี่ยนเส้นทางใน"
-
-#: 
 msgid "Refresh List"
 msgstr "รีเฟรชรายการ"
 
@@ -6486,10 +6406,6 @@ msgstr "คำแนะนำด้านความปลอดภัย"
 #: 
 msgid "Select Backup File"
 msgstr "เลือกไฟล์สำรองข้อมูล"
-
-#: 
-msgid "Supported formats:"
-msgstr "รูปแบบที่รองรับ:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6542,14 +6458,6 @@ msgstr "การติดตั้ง ChurchCRM ของคุณสะอา�
 #: 
 msgid "or click to browse"
 msgstr "หรือคลิกเพื่อเรียกดู"
-
-#: 
-msgid "seconds..."
-msgstr "วินาที..."
-
-#: 
-msgid " Deposit #"
-msgstr " การฝาก #"
 
 #: 
 msgid "%d missing classification"
@@ -6636,20 +6544,12 @@ msgid "Close All Deposits"
 msgstr "ปิดการฝากทั้งหมด"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "การฝากที่ปิด:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "ปิดเทียบกับทั้งหมด"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "ทำงานเหล่านี้เพื่อให้แน่ใจว่าการรายงานภาษีสิ้นปีสำหรับผู้บริจาคของคุณถูกต้อง"
-
-#: 
-msgid "Configuration:"
-msgstr "การกำหนดค่า:"
 
 #: 
 msgid "Configure Email"
@@ -6690,14 +6590,6 @@ msgstr "รายงานที่ปรับแต่งได้พร้อ
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "ปรับแต่งข้อความที่ปรากฏบนใบแจ้งภาษี (sTaxReport1, sTaxReport2 ฯลฯ)"
-
-#: 
-msgid "Data Quality:"
-msgstr "คุณภาพข้อมูล:"
-
-#: 
-msgid "Database:"
-msgstr "ฐานข้อมูล:"
 
 #: 
 msgid "Day"
@@ -6770,10 +6662,6 @@ msgstr "การนำทางครอบครัว"
 #: 
 msgid "Feb"
 msgstr "ก.พ."
-
-#: 
-msgid "File Integrity:"
-msgstr "ความสมบูรณ์ของไฟล์:"
 
 #: 
 msgid "Filtering"
@@ -6924,14 +6812,6 @@ msgid "Open"
 msgstr "เปิด"
 
 #: 
-msgid "Open Deposits:"
-msgstr "การฝากที่เปิด:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "ไฟล์กำพร้า:"
-
-#: 
 msgid "Payment"
 msgstr "การชำระเงิน"
 
@@ -7020,10 +6900,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "สรุปคำมั่นสัญญาเทียบกับการชำระเงินตามกองทุนสำหรับปีงบประมาณ"
 
 #: 
-msgid "System Configuration:"
-msgstr "การกำหนดค่าระบบ:"
-
-#: 
 msgid "System Health"
 msgstr "สุขภาพระบบ"
 
@@ -7056,10 +6932,6 @@ msgid "Total Amount"
 msgstr "จำนวนรวม"
 
 #: 
-msgid "Total Deposits:"
-msgstr "ยอดรวมการฝาก:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "ติดตามคำมั่นสัญญาและความคืบหน้าการชำระเงินสำหรับแคมเปญและการจัดทำงบประมาณปีงบประมาณ"
 
@@ -7086,10 +6958,6 @@ msgstr "ยืนยันว่าชื่อคริสตจักร ท�
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "ยืนยันว่าชื่อและคำอธิบายกองทุนถูกต้องสำหรับใบแจ้ง"
-
-#: 
-msgid "Version:"
-msgstr "เวอร์ชัน:"
 
 #: 
 msgid "YTD Payments"
@@ -7148,28 +7016,8 @@ msgid "Critical Configuration Error"
 msgstr "ข้อผิดพลาดการกำหนดค่าร้ายแรง"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "ค่า $URL[0] ปัจจุบัน:"
-
-#: 
-msgid "Custom port:"
-msgstr "พอร์ตกำหนดเอง:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "ลงท้ายด้วย <strong>เครื่องหมายทับต่อท้าย</strong> (/)"
-
-#: 
-msgid "Find the line:"
-msgstr "ค้นหาบรรทัด:"
-
-#: 
 msgid "Group Memberships"
 msgstr "สมาชิกภาพกลุ่ม"
-
-#: 
-msgid "How to Fix:"
-msgstr "วิธีแก้ไข:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7178,10 +7026,6 @@ msgstr "เข้าร่วมชุมชน ChurchCRM และช่วย�
 #: 
 msgid "Language"
 msgstr "ภาษา"
-
-#: 
-msgid "Local development:"
-msgstr "การพัฒนาในเครื่อง:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7202,10 +7046,6 @@ msgstr "ลงทะเบียนคริสตจักรของคุณ
 #: 
 msgid "Save the file and refresh this page"
 msgstr "บันทึกไฟล์และรีเฟรชหน้านี้"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "เริ่มต้นด้วย <strong>http://</strong> หรือ <strong>https://</strong>"
 
 #: 
 msgid "System Locale Support"
@@ -7230,14 +7070,6 @@ msgstr "URL ต้องลงท้ายด้วยเครื่องห�
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL ต้องเริ่มต้นด้วย http:// หรือ https://"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "อัปเดตเป็น URL ที่ถูกต้องที่:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "ตัวอย่างที่ถูกต้อง:"
 
 #: 
 msgid "View Logs"
@@ -7298,10 +7130,6 @@ msgstr "จดหมายข่าว"
 #: 
 msgid "Personal"
 msgstr "ส่วนตัว"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "กรุณายืนยันข้อมูลครอบครัวของคุณ:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7582,20 +7410,8 @@ msgid "Property Type"
 msgstr "ประเภทคุณสมบัติ"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "มีคนที่กำหนดให้กับโอกาสอาสาสมัครนี้ การลบจะยกเลิกการกำหนด:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "โอกาสอาสาสมัคร"
-
-#: 
-msgid "Warning:"
-msgstr "คำเตือน:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "ใช่ ลบโอกาสนี้"
 
 #. Context: locales
 #: 
@@ -8266,10 +8082,6 @@ msgstr "รับคีย์ API ของคุณจาก MailChimp: กา�
 #: 
 msgid "Help"
 msgstr "ช่วยเหลือ"
-
-#: 
-msgid "Id"
-msgstr "รหัส"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9550,10 +9362,6 @@ msgid "Edit custom properties for a group member"
 msgstr "แก้ไขคุณสมบัติกำหนดเองสำหรับสมาชิกกลุ่ม"
 
 #: 
-msgid "Email BCC"
-msgstr "อีเมล BCC"
-
-#: 
 msgid "Email Families"
 msgstr "ส่งอีเมลถึงครอบครัว"
 
@@ -9564,14 +9372,6 @@ msgstr "ตั้งค่าอีเมล"
 #: 
 msgid "Email Tools"
 msgstr "เครื่องมืออีเมล"
-
-#: 
-msgid "Email cart items"
-msgstr "ส่งอีเมลรายการ"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "อีเมลที่ซ่อนผู้รับ"
 
 #: 
 msgid "Empty"
@@ -9786,10 +9586,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "นำเข้ารายชื่อจากกลุ่มเป้าหมาย MailChimp ของคุณ"
 
 #: 
-msgid "Import failed: "
-msgstr "การนำเข้าล้มเหลว: "
-
-#: 
 msgid "Import from CSV"
 msgstr "นำเข้าจาก CSV"
 
@@ -9832,10 +9628,6 @@ msgstr "\"หมายเลขผู้ส่ง\" ไม่ถูกต้อ�
 #: 
 msgid "Invite Your Team"
 msgstr "เชิญทีมของคุณ"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "ข้ามไปยังขั้นตอนการตั้งค่า:"
 
 #: 
 msgid "Key People"
@@ -10190,10 +9982,6 @@ msgstr "ไม่พบการกำหนดคุณสมบัติ"
 #: 
 msgid "Property deleted successfully."
 msgstr "ลบคุณสมบัติเรียบร้อยแล้ว"
-
-#: 
-msgid "Property not found."
-msgstr "ไม่พบคุณสมบัติ"
 
 #: 
 msgid "Quick Tips"
@@ -10664,14 +10452,6 @@ msgid "properties"
 msgstr "คุณสมบัติ"
 
 #: 
-msgid "— Select a group —"
-msgstr "— เลือกกลุ่ม —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— เลือกประเภท (ไม่บังคับ) —"
-
-#: 
 msgid "Add Event"
 msgstr "เพิ่มกิจกรรม"
 
@@ -10985,10 +10765,6 @@ msgstr "แดชบอร์ดอีเมล"
 #: 
 msgid "Email Integrations"
 msgstr "การรวมอีเมล"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "ฟังก์ชันอีเมลปิดอยู่ ฟีเจอร์ต่อไปนี้จะไม่ทำงานจนกว่าจะเปิดใช้อีเมล:"
 
 #: 
 msgid "Email is Disabled"
@@ -11563,10 +11339,6 @@ msgstr "TLS อัตโนมัติ"
 #: 
 msgid "Auto-Backup"
 msgstr "สำรองข้อมูลอัตโนมัติ"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "BCC อีเมลทั้งหมดไปยัง"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12385,10 +12157,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "เลือกระหว่างโทนสีสว่างและโทนสีเข้ม"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "การแปลภาษา ChurchCRM ได้รับการจัดการโดยชุมชนบน POEditor คุณสามารถช่วยได้โดย:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "ปรับแต่งรูปแบบและการใช้งานของแอปพลิเคชัน"
 
@@ -12432,10 +12200,6 @@ msgstr "ช่วยปรับปรุงการแปล"
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "หากคุณพบอักขระที่แสดงผิดปกติ HTML entities ที่ปรากฏเป็นข้อความ หรือการแปลที่ทำให้เลย์เอาต์หน้าผิดพลาด กรุณารายงานปัญหาบน GitHub เพื่อให้แก้ไขได้สำหรับทุกคน"
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "ใส่คีย์ API ของคุณในคำขอโดยใช้ header x-api-key:"
 
 #: 
 msgid "Indigo"
@@ -12868,10 +12632,6 @@ msgid "Everyone is checked in!"
 msgstr "ทุกคนลงทะเบียนแล้ว!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "ขั้นตอนที่รวดเร็วที่สุด:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "ค้นหากิจกรรมที่ผ่านมาที่ยังคงใช้งานอยู่หรือมีผู้เข้าร่วมที่ยังไม่ได้ลงทะเบียนออก"
 
@@ -12986,10 +12746,6 @@ msgstr "RangeEnd ต้องอยู่ในหรือหลัง RangeSta
 #: 
 msgid "Recommended"
 msgstr "แนะนำ"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "การรีเซ็ตจะลบอย่างถาวร:"
 
 #: 
 msgid "SQL Only"
@@ -13488,10 +13244,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "ยังไม่ได้ตั้งค่าที่อยู่อีเมลของคริสตจักร — อีเมลทดสอบไม่มีปลายทางที่จะส่งไป"
 
 #: 
-msgid "Church email — configured on the"
-msgstr "อีเมลของคริสตจักร — ตั้งค่าไว้ในหน้า"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "อีเมลทดสอบ ChurchCRM"
 
@@ -13598,10 +13350,6 @@ msgstr "หน่วยความจำ"
 #: 
 msgid "Memory Limit"
 msgstr "ขีดจำกัดหน่วยความจำ"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "ตอนนี้ให้ตรวจสอบกล่องจดหมายของผู้รับเพื่อยืนยันการส่ง โดยมองหาหัวเรื่อง:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13722,14 +13470,6 @@ msgstr "อัปเดตการตั้งค่า"
 #: 
 msgid "View full photo"
 msgstr "ดูภาพเต็ม"
-
-#: 
-msgid "page."
-msgstr "หน้า"
-
-#: 
-msgid "user:"
-msgstr "ผู้ใช้:"
 
 #: 
 msgid "1. Download the template"
@@ -13928,10 +13668,6 @@ msgstr "การตั้งค่าประเทศ"
 msgid "Show all"
 msgstr "แสดงทั้งหมด"
 
-#: 
-msgid "Show:"
-msgstr "แสดง:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14112,10 +13848,6 @@ msgid "Plugin uninstalled"
 msgstr "ถอนการติดตั้งปลั๊กอินแล้ว"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "ถอนการติดตั้งปลั๊กอินแล้ว"
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "URL ไฟล์ zip ปลั๊กอิน (HTTPS เท่านั้น)"
 
@@ -14176,10 +13908,6 @@ msgid "Verified"
 msgstr "ผ่านการตรวจสอบแล้ว"
 
 #: 
-msgid "What this plugin does:"
-msgstr "ปลั๊กอินนี้ทำอะไร:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl, sha256 และ pluginId จำเป็นต้องระบุทั้งหมดสำหรับการติดตั้งที่ไม่ผ่านการตรวจสอบ"
 
@@ -14194,10 +13922,6 @@ msgstr "ชื่อต้องไม่ว่างเปล่า"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "ชื่อต้องไม่เกิน %d ตัวอักษร"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "เปิดหน้าต่าง 2 นาทีให้อุปกรณ์ลงทะเบียนที่:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14492,10 +14216,6 @@ msgid "Available after the event is saved."
 msgstr "ใช้งานได้หลังจากบันทึกกิจกรรมแล้ว"
 
 #: 
-msgid "BCC All"
-msgstr "BCC ทั้งหมด"
-
-#: 
 msgid "Background Color"
 msgstr "สีพื้นหลัง"
 
@@ -14628,10 +14348,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "ยืนยันด้วยรหัสจากแอปยืนยันตัวตนของคุณ"
 
 #: 
-msgid "Copied"
-msgstr "คัดลอกแล้ว"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ด"
 
@@ -14642,10 +14358,6 @@ msgstr "คัดลอกแล้ว!"
 #: 
 msgid "Copy"
 msgstr "คัดลอก"
-
-#: 
-msgid "Copy All Emails"
-msgstr "คัดลอกอีเมลทั้งหมด"
 
 #: 
 msgid "Copy All Numbers"
@@ -15887,10 +15599,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "กิจกรรม ให้ปิดใช้งานประเภทแทน หรือมอบหมายกิจกรรมใหม่ก่อน"
 
 #: 
-msgid "from this class?"
-msgstr "จากชั้นเรียนนี้?"
-
-#: 
 msgid "from this group?"
 msgstr "จากกลุ่มนี้?"
 
@@ -15969,18 +15677,6 @@ msgstr "ปี"
 #: 
 msgid "yrs"
 msgstr "ปี"
-
-#: 
-msgid "— Ignore —"
-msgstr "— ข้าม —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— เลือกประเทศ —"
-
-#: 
-msgid "— Select State —"
-msgstr "— เลือกจังหวัด —"
 
 #: 
 msgid "Account options"
@@ -16290,10 +15986,6 @@ msgid "Full access — grants all privileges."
 msgstr "การเข้าถึงแบบเต็ม — ให้สิทธิ์ทั้งหมด"
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "มอบสิทธิ์รายบุคคล:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "หากคุณต้องการสิทธิ์เพิ่มเติม โปรดติดต่อผู้ดูแลระบบคริสตจักรของคุณ"
 
@@ -16518,10 +16210,6 @@ msgid "What's New in {{version}}"
 msgstr "มีอะไรใหม่ใน {{version}}"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "คุณล้าหลัง <strong>{{releaseCount}}</strong> รุ่น นี่คือสิ่งที่คุณจะได้รับ:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "คุณกำลังใช้งานเวอร์ชันก่อนเผยแพร่"
 
@@ -16610,14 +16298,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "ผู้ใช้ต้องเป็นผู้ดูแลระบบหรือมีสิทธิ์จัดการกิจกรรมระดมทุน"
 
 #: 
-msgid "User not found."
-msgstr "ไม่พบผู้ใช้"
-
-#: 
-msgid "— Select a person —"
-msgstr "— เลือกบุคคล —"
-
-#: 
 msgid "%s Fundraisers"
 msgstr "กิจกรรมระดมทุน %s"
 
@@ -16680,10 +16360,6 @@ msgstr "มอบหมายสมาชิกในรายการเข้
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "มอบหมายสมาชิกจากรายการเข้าครอบครัว"
-
-#: 
-msgid "Assign role to all:"
-msgstr "มอบหมายบทบาทให้ทุกคน:"
 
 #: 
 msgid "Assign to Family"
@@ -16994,10 +16670,6 @@ msgid "Sold"
 msgstr "ขายแล้ว"
 
 #: 
-msgid "State / Province"
-msgstr "รัฐ / จังหวัด"
-
-#: 
 msgid "Streak"
 msgstr "ต่อเนื่อง"
 
@@ -17070,10 +16742,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "รายการของคุณว่างเปล่า กรุณาเพิ่มสมาชิกลงในรายการก่อน"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "รหัสไปรษณีย์"
-
-#: 
 msgid "events"
 msgstr "กิจกรรม"
 
@@ -17088,12 +16756,4 @@ msgstr "goalAmount ต้องไม่ติดลบ"
 #: 
 msgid "thru %s"
 msgstr "ถึง %s"
-
-#: 
-msgid "— Select role —"
-msgstr "— เลือกบทบาท —"
-
-#: 
-msgid "— pick —"
-msgstr "— เลือก —"
 

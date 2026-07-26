@@ -264,10 +264,6 @@ msgstr "वर्गीकरण"
 msgid "Add Cart to Event"
 msgstr "कार्ट को इवेंट में जोड़ें"
 
-#: 
-msgid "Your cart is empty!"
-msgstr "आपका कार्ट खाली है!"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
@@ -1428,10 +1424,6 @@ msgid "Current Role"
 msgstr "वर्तमान भूमिका"
 
 #: 
-msgid "All People"
-msgstr "सभी लोग"
-
-#: 
 msgid "Email All"
 msgstr "सभी को ईमेल करें"
 
@@ -1502,10 +1494,6 @@ msgstr "अपडेट किए गए परिवार"
 #: 
 msgid "Updated"
 msgstr "अपडेट किया गया"
-
-#: 
-msgid "Yes, delete this record"
-msgstr "हाँ, इस रिकॉर्ड को हटाएँ"
 
 #: 
 msgid "(this action cannot be undone)"
@@ -2158,10 +2146,6 @@ msgid "Start Column"
 msgstr "प्रारंभ कॉलम"
 
 #: 
-msgid "Ignore Incomplete<br>Addresses"
-msgstr "अधूरे पते<br>नजरअंदाज करें"
-
-#: 
 msgid "File Type"
 msgstr "फ़ाइल प्रकार"
 
@@ -2226,14 +2210,6 @@ msgid "All Funds"
 msgstr "सभी फंड"
 
 #: 
-msgid " for fund "
-msgstr " फंड के लिए "
-
-#: 
-msgid "for funds "
-msgstr "फंडों के लिए "
-
-#: 
 msgid "Donated Items"
 msgstr "दान की गई वस्तुएं"
 
@@ -2256,10 +2232,6 @@ msgstr "भुगतान की गई राशि: ________________"
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "भुगतान का माध्यम: ( ) नकद ( ) चेक ( ) क्रेडिट कार्ड __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ वैधता तिथि __ / __"
-
-#: 
-msgid "                                        Signature ________________________________________________________________"
-msgstr "                                        हस्ताक्षर ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -2292,10 +2264,6 @@ msgstr "समूह निर्देशिका"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "कृपया इस पर्ची को अलग करें और अपने अगले उपहार के साथ मेल करें।"
-
-#: 
-msgid "Please mail you next gift to "
-msgstr "कृपया अपना अगला उपहार यहाँ मेल करें: "
 
 #: 
 msgid "Gift Amount"
@@ -2442,10 +2410,6 @@ msgid "Family Select"
 msgstr "परिवार चयन"
 
 #: 
-msgid "with at least one:"
-msgstr "कम से कम एक के साथ:"
-
-#: 
 msgid "Welcome to"
 msgstr "स्वागत है"
 
@@ -2550,18 +2514,6 @@ msgid "item"
 msgstr "वस्तु"
 
 #: 
-msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
-msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
-
-#: 
-msgid "Buyer # "
-msgstr "खरीदार # "
-
-#: 
-msgid "Family Members:"
-msgstr "परिवार के सदस्य:"
-
-#: 
 msgid "Anniversary"
 msgstr "वर्षगांठ"
 
@@ -2572,10 +2524,6 @@ msgstr "नोट्स"
 #: 
 msgid "Reports"
 msgstr "रिपोर्ट"
-
-#: 
-msgid "family"
-msgstr "परिवार"
 
 #: 
 msgid "Date Entered"
@@ -2652,10 +2600,6 @@ msgstr "डिफ़ॉल्ट शहर"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "डिफ़ॉल्ट राज्य - 2-अक्षर का संक्षिप्त नाम होना चाहिए!"
-
-#: 
-msgid "Default account for receiving a copy of all emails"
-msgstr "सभी ईमेल की एक प्रति प्राप्त करने के लिए डिफ़ॉल्ट खाता"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -4719,10 +4663,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr "विशेष समूह सेटिंग: संडे स्कूल प्रकार"
 
 #: 
-msgid "Sunday School group can't be modified, only in this two cases :"
-msgstr "संडे स्कूल समूह को संशोधित नहीं किया जा सकता, केवल इन दो मामलों में:"
-
-#: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "नई भूमिकाएँ जोड़ें, लेकिन छात्र और शिक्षक भूमिकाओं को संशोधित या नाम न बदलें।"
 
@@ -5309,10 +5249,6 @@ msgid "Review"
 msgstr "समीक्षा"
 
 #: 
-msgid "User authenticated via API Key: "
-msgstr "API कुंजी के माध्यम से उपयोगकर्ता प्रमाणित: "
-
-#: 
 msgid "Unsuccessful API Key authentication attempt"
 msgstr "असफल API कुंजी प्रमाणीकरण प्रयास"
 
@@ -5625,20 +5561,12 @@ msgid "Log File Viewer"
 msgstr "लॉग फ़ाइल दर्शक"
 
 #: 
-msgid "Filter by log level:"
-msgstr "लॉग स्तर द्वारा फ़िल्टर करें:"
-
-#: 
 msgid "Error"
 msgstr "त्रुटि"
 
 #: 
 msgid "Info"
 msgstr "जानकारी"
-
-#: 
-msgid "Number of lines to display:"
-msgstr "प्रदर्शित करने के लिए पंक्तियों की संख्या:"
 
 #: 
 msgid "Loading log file..."
@@ -6000,10 +5928,6 @@ msgstr "रूट पथ"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP होस्ट"
-
-#: 
-msgid "Tip:"
-msgstr "सुझाव:"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6435,10 +6359,6 @@ msgid "Please check the backup file and try again."
 msgstr "कृपया बैकअप फ़ाइल की जाँच करें और पुन: प्रयास करें।"
 
 #: 
-msgid "Redirecting in"
-msgstr "इसमें रीडायरेक्ट किया जा रहा है:"
-
-#: 
 msgid "Refresh List"
 msgstr "सूची ताज़ा करें"
 
@@ -6477,10 +6397,6 @@ msgstr "सुरक्षा अनुशंसा"
 #: 
 msgid "Select Backup File"
 msgstr "बैकअप फ़ाइल चुनें"
-
-#: 
-msgid "Supported formats:"
-msgstr "समर्थित प्रारूप:"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -6533,14 +6449,6 @@ msgstr "आपका ChurchCRM इंस्टॉलेशन साफ़ ह�
 #: 
 msgid "or click to browse"
 msgstr "या ब्राउज़ करने के लिए क्लिक करें"
-
-#: 
-msgid "seconds..."
-msgstr "सेकंड..."
-
-#: 
-msgid " Deposit #"
-msgstr "जमा #"
 
 #: 
 msgid "%d missing classification"
@@ -6627,20 +6535,12 @@ msgid "Close All Deposits"
 msgstr "सभी जमा बंद करें"
 
 #: 
-msgid "Closed Deposits:"
-msgstr "बंद की गई जमा राशि:"
-
-#: 
 msgid "Closed vs Total"
 msgstr "बंद बनाम कुल"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr "अपने दाताओं के लिए सटीक वर्ष के अंत कर रिपोर्टिंग सुनिश्चित करने के लिए इन कार्यों को पूरा करें।"
-
-#: 
-msgid "Configuration:"
-msgstr "कॉन्फ़िगरेशन:"
 
 #: 
 msgid "Configure Email"
@@ -6681,14 +6581,6 @@ msgstr "तिथि, फंड, परिवार और भुगतान �
 #: 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "कर विवरण पर दिखाई देने वाले टेक्स्ट को अनुकूलित करें (sTaxReport1, sTaxReport2, आदि)।"
-
-#: 
-msgid "Data Quality:"
-msgstr "डेटा गुणवत्ता:"
-
-#: 
-msgid "Database:"
-msgstr "डेटाबेस:"
 
 #: 
 msgid "Day"
@@ -6761,10 +6653,6 @@ msgstr "परिवार नेविगेशन"
 #: 
 msgid "Feb"
 msgstr "फरवरी"
-
-#: 
-msgid "File Integrity:"
-msgstr "फ़ाइल अखंडता:"
 
 #: 
 msgid "Filtering"
@@ -6915,14 +6803,6 @@ msgid "Open"
 msgstr "खुला"
 
 #: 
-msgid "Open Deposits:"
-msgstr "खुली जमा:"
-
-#: 
-msgid "Orphaned Files:"
-msgstr "अनाथ फ़ाइलें:"
-
-#: 
 msgid "Payment"
 msgstr "भुगतान"
 
@@ -7011,10 +6891,6 @@ msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "वित्तीय वर्ष के लिए फंड द्वारा प्रतिज्ञाओं बनाम भुगतानों का सारांश।"
 
 #: 
-msgid "System Configuration:"
-msgstr "सिस्टम कॉन्फ़िगरेशन:"
-
-#: 
 msgid "System Health"
 msgstr "सिस्टम स्वास्थ्य"
 
@@ -7047,10 +6923,6 @@ msgid "Total Amount"
 msgstr "कुल राशि"
 
 #: 
-msgid "Total Deposits:"
-msgstr "कुल जमा:"
-
-#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "अभियानों और वित्तीय वर्ष बजट के लिए प्रतिज्ञाओं और भुगतान प्रगति को ट्रैक करें।"
 
@@ -7077,10 +6949,6 @@ msgstr "सत्यापित करें कि कर विवरण प�
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr "सत्यापित करें कि फंड नाम और विवरण विवरणों के लिए सटीक हैं।"
-
-#: 
-msgid "Version:"
-msgstr "संस्करण:"
 
 #: 
 msgid "YTD Payments"
@@ -7139,28 +7007,8 @@ msgid "Critical Configuration Error"
 msgstr "महत्वपूर्ण कॉन्फ़िगरेशन त्रुटि"
 
 #: 
-msgid "Current $URL[0] value:"
-msgstr "वर्तमान $URL[0] मान:"
-
-#: 
-msgid "Custom port:"
-msgstr "कस्टम पोर्ट:"
-
-#: 
-msgid "Ends with a <strong>trailing slash</strong> (/)"
-msgstr "<strong>अनुगामी स्लैश</strong> (/) के साथ समाप्त होता है"
-
-#: 
-msgid "Find the line:"
-msgstr "पंक्ति खोजें:"
-
-#: 
 msgid "Group Memberships"
 msgstr "समूह सदस्यता"
-
-#: 
-msgid "How to Fix:"
-msgstr "कैसे ठीक करें:"
 
 #: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -7169,10 +7017,6 @@ msgstr "ChurchCRM समुदाय में शामिल हों और 
 #: 
 msgid "Language"
 msgstr "भाषा"
-
-#: 
-msgid "Local development:"
-msgstr "स्थानीय विकास:"
 
 #: 
 msgid "Location & Contact Information"
@@ -7193,10 +7037,6 @@ msgstr "अपने चर्च को पंजीकृत करें"
 #: 
 msgid "Save the file and refresh this page"
 msgstr "फ़ाइल सहेजें और इस पेज को रिफ्रेश करें"
-
-#: 
-msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
-msgstr "<strong>http://</strong> या <strong>https://</strong> से शुरू होता है"
 
 #: 
 msgid "System Locale Support"
@@ -7221,14 +7061,6 @@ msgstr "URL का अंत स्लैश (/) के साथ होना �
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL http:// या https:// से शुरू होना चाहिए"
-
-#: 
-msgid "Update it to a valid URL that:"
-msgstr "इसे एक वैध URL में अपडेट करें जो:"
-
-#: 
-msgid "Valid Examples:"
-msgstr "मान्य उदाहरण:"
 
 #: 
 msgid "View Logs"
@@ -7289,10 +7121,6 @@ msgstr "न्यूज़लेटर"
 #: 
 msgid "Personal"
 msgstr "व्यक्तिगत"
-
-#: 
-msgid "Please confirm your family information:"
-msgstr "कृपया अपनी परिवार की जानकारी की पुष्टि करें:"
 
 #: 
 msgid "Please update our records with corrections"
@@ -7575,20 +7403,8 @@ msgid "Property Type"
 msgstr "संपत्ति प्रकार"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
-msgstr "इस स्वयंसेवक अवसर को लोग असाइन किए गए हैं। हटाने से असाइनमेंट हटेगा:"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "स्वयंसेवक अवसर"
-
-#: 
-msgid "Warning:"
-msgstr "चेतावनी:"
-
-#: 
-msgid "Yes, delete this Opportunity"
-msgstr "हाँ, यह अवसर हटाएं"
 
 #. Context: locales
 #: 
@@ -8261,10 +8077,6 @@ msgstr "MailChimp से अपनी API Key प्राप्त करें
 #: 
 msgid "Help"
 msgstr "सहायता"
-
-#: 
-msgid "Id"
-msgstr "आईडी"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -9546,10 +9358,6 @@ msgid "Edit custom properties for a group member"
 msgstr "समूह सदस्य की कस्टम विशेषताएँ संपादित करें"
 
 #: 
-msgid "Email BCC"
-msgstr "ईमेल BCC"
-
-#: 
 msgid "Email Families"
 msgstr "परिवारों को ईमेल करें"
 
@@ -9560,14 +9368,6 @@ msgstr "ईमेल सेटिंग्स"
 #: 
 msgid "Email Tools"
 msgstr "ईमेल उपकरण"
-
-#: 
-msgid "Email cart items"
-msgstr "सूची की वस्तुओं को ईमेल करें"
-
-#: 
-msgid "Email with hidden recipients"
-msgstr "छिपे हुए प्राप्तकर्ताओं के साथ ईमेल"
 
 #: 
 msgid "Empty"
@@ -9782,10 +9582,6 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr "अपने MailChimp ऑडियंस से संपर्क आयात करें"
 
 #: 
-msgid "Import failed: "
-msgstr "आयात विफल: "
-
-#: 
 msgid "Import from CSV"
 msgstr "CSV से आयात करें"
 
@@ -9828,10 +9624,6 @@ msgstr "अमान्य \"प्रेषक नंबर\": \"%s\"। दे
 #: 
 msgid "Invite Your Team"
 msgstr "अपनी टीम को आमंत्रित करें"
-
-#: 
-msgid "Jump to any setup step:"
-msgstr "किसी भी सेटअप चरण पर जाएँ:"
 
 #: 
 msgid "Key People"
@@ -10186,10 +9978,6 @@ msgstr "विशेषता निर्धारण नहीं मिला
 #: 
 msgid "Property deleted successfully."
 msgstr "विशेषता सफलतापूर्वक हटाई गई।"
-
-#: 
-msgid "Property not found."
-msgstr "विशेषता नहीं मिली।"
 
 #: 
 msgid "Quick Tips"
@@ -10660,14 +10448,6 @@ msgid "properties"
 msgstr "विशेषताएँ"
 
 #: 
-msgid "— Select a group —"
-msgstr "— एक समूह चुनें —"
-
-#: 
-msgid "— Select type (optional) —"
-msgstr "— प्रकार चुनें (वैकल्पिक) —"
-
-#: 
 msgid "Add Event"
 msgstr "कार्यक्रम जोड़ें"
 
@@ -10981,10 +10761,6 @@ msgstr "ईमेल डैशबोर्ड"
 #: 
 msgid "Email Integrations"
 msgstr "ईमेल एकीकरण"
-
-#: 
-msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
-msgstr "ईमेल कार्यक्षमता वर्तमान में अक्षम है। जब तक ईमेल सक्षम न हो जाए तब तक निम्नलिखित सुविधाएं काम नहीं करेंगी:"
 
 #: 
 msgid "Email is Disabled"
@@ -11559,10 +11335,6 @@ msgstr "स्वचालित TLS"
 #: 
 msgid "Auto-Backup"
 msgstr "स्वचालित बैकअप"
-
-#: 
-msgid "BCC All Mail To"
-msgstr "सभी मेल BCC में भेजें"
 
 #. plugin:external-backup:section:4:content
 #: 
@@ -12381,10 +12153,6 @@ msgid "Choose between light and dark color scheme"
 msgstr "हल्की और गहरी रंग योजना के बीच चुनें"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
-msgstr "ChurchCRM अनुवाद POEditor पर समुदाय द्वारा प्रबंधित किए जाते हैं। आप इस प्रकार सहायता कर सकते हैं:"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "एप्लिकेशन का रूप और अनुभव अनुकूलित करें"
 
@@ -12428,10 +12196,6 @@ msgstr "अनुवाद सुधारने में सहायता �
 #: 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
 msgstr "यदि आप गड़बड़ अक्षर, टेक्स्ट के रूप में दिखने वाली HTML एंटिटी, या ऐसे अनुवाद देखें जो पृष्ठ का लेआउट तोड़ते हैं, तो कृपया GitHub पर समस्या रिपोर्ट करें ताकि इसे सभी के लिए ठीक किया जा सके।"
-
-#: 
-msgid "Include your API key in requests using the x-api-key header:"
-msgstr "x-api-key हेडर का उपयोग करके अनुरोधों में अपनी API कुंजी शामिल करें:"
 
 #: 
 msgid "Indigo"
@@ -12865,10 +12629,6 @@ msgid "Everyone is checked in!"
 msgstr "सभी चेक इन हो गए हैं!"
 
 #: 
-msgid "Fastest workflow:"
-msgstr "सबसे तेज़ कार्यप्रवाह:"
-
-#: 
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr "ऐसे पुराने कार्यक्रम खोजें जो अभी भी सक्रिय हैं या जिनके प्रतिभागी चेक आउट नहीं हुए"
 
@@ -12983,10 +12743,6 @@ msgstr "RangeEnd, RangeStart पर या उसके बाद होना �
 #: 
 msgid "Recommended"
 msgstr "अनुशंसित"
-
-#: 
-msgid "Resetting will permanently delete:"
-msgstr "रीसेट करने से स्थायी रूप से हट जाएगा:"
 
 #: 
 msgid "SQL Only"
@@ -13485,10 +13241,6 @@ msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr "चर्च का ईमेल पता सेट नहीं है — परीक्षण ईमेल भेजने के लिए कोई पता नहीं है।"
 
 #: 
-msgid "Church email — configured on the"
-msgstr "चर्च ईमेल — इस पर कॉन्फ़िगर किया गया:"
-
-#: 
 msgid "ChurchCRM Test Email"
 msgstr "ChurchCRM परीक्षण ईमेल"
 
@@ -13595,10 +13347,6 @@ msgstr "मेमोरी"
 #: 
 msgid "Memory Limit"
 msgstr "मेमोरी सीमा"
-
-#: 
-msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
-msgstr "डिलीवरी की पुष्टि के लिए प्राप्तकर्ता का इनबॉक्स जाँचें। इस विषय के साथ खोजें:"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -13719,14 +13467,6 @@ msgstr "सेटिंग्स अपडेट करें"
 #: 
 msgid "View full photo"
 msgstr "पूर्ण फ़ोटो देखें"
-
-#: 
-msgid "page."
-msgstr "पृष्ठ।"
-
-#: 
-msgid "user:"
-msgstr "उपयोगकर्ता:"
 
 #: 
 msgid "1. Download the template"
@@ -13925,10 +13665,6 @@ msgstr "देश सेट करना"
 msgid "Show all"
 msgstr "सब दिखाएं"
 
-#: 
-msgid "Show:"
-msgstr "दिखाएं:"
-
 #. plugin:holidays:section:2:title
 #: 
 msgid "Showing and hiding individual countries"
@@ -14109,10 +13845,6 @@ msgid "Plugin uninstalled"
 msgstr "प्लगइन अनइंस्टॉल हुआ"
 
 #: 
-msgid "Plugin uninstalled."
-msgstr "प्लगइन अनइंस्टॉल हुआ।"
-
-#: 
 msgid "Plugin zip URL (HTTPS only)"
 msgstr "प्लगइन zip URL (केवल HTTPS)"
 
@@ -14173,10 +13905,6 @@ msgid "Verified"
 msgstr "सत्यापित"
 
 #: 
-msgid "What this plugin does:"
-msgstr "यह प्लगइन क्या करता है:"
-
-#: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "असत्यापित स्थापनाओं के लिए downloadUrl, sha256 और pluginId सभी आवश्यक हैं।"
 
@@ -14191,10 +13919,6 @@ msgstr "नाम खाली नहीं हो सकता"
 #: 
 msgid "Name cannot be longer than %d characters"
 msgstr "नाम %d अक्षरों से अधिक लंबा नहीं हो सकता"
-
-#: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "उपकरणों को पंजीकरण करने के लिए 2-मिनट की विंडो खोलता है:"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14489,10 +14213,6 @@ msgid "Available after the event is saved."
 msgstr "कार्यक्रम सहेजने के बाद उपलब्ध।"
 
 #: 
-msgid "BCC All"
-msgstr "सभी को BCC करें"
-
-#: 
 msgid "Background Color"
 msgstr "पृष्ठभूमि रंग"
 
@@ -14625,10 +14345,6 @@ msgid "Confirm with a code from your authenticator app"
 msgstr "अपने प्रमाणीकरण ऐप के कोड से पुष्टि करें"
 
 #: 
-msgid "Copied"
-msgstr "कॉपी किया गया"
-
-#: 
 msgid "Copied to clipboard"
 msgstr "क्लिपबोर्ड में कॉपी किया गया"
 
@@ -14639,10 +14355,6 @@ msgstr "कॉपी किया गया!"
 #: 
 msgid "Copy"
 msgstr "कॉपी करें"
-
-#: 
-msgid "Copy All Emails"
-msgstr "सभी ईमेल कॉपी करें"
 
 #: 
 msgid "Copy All Numbers"
@@ -15884,10 +15596,6 @@ msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "ईवेंट। इसके बजाय प्रकार को निष्क्रिय करें, या पहले ईवेंट को पुनः सौंपें।"
 
 #: 
-msgid "from this class?"
-msgstr "इस कक्षा से?"
-
-#: 
 msgid "from this group?"
 msgstr "इस समूह से?"
 
@@ -15966,18 +15674,6 @@ msgstr "वर्ष"
 #: 
 msgid "yrs"
 msgstr "वर्ष"
-
-#: 
-msgid "— Ignore —"
-msgstr "— अनदेखा करें —"
-
-#: 
-msgid "— Select Country —"
-msgstr "— देश चुनें —"
-
-#: 
-msgid "— Select State —"
-msgstr "— राज्य चुनें —"
 
 #: 
 msgid "Account options"
@@ -16288,10 +15984,6 @@ msgid "Full access — grants all privileges."
 msgstr "पूर्ण पहुँच — सभी विशेषाधिकार प्रदान करता है।"
 
 #: 
-msgid "Grant individual permissions:"
-msgstr "व्यक्तिगत अनुमतियाँ दें:"
-
-#: 
 msgid "If you need additional access, please contact your church administrator."
 msgstr "यदि आपको अतिरिक्त पहुँच की आवश्यकता है, तो कृपया अपने कलीसिया प्रशासक से संपर्क करें।"
 
@@ -16516,10 +16208,6 @@ msgid "What's New in {{version}}"
 msgstr "{{version}} में नया क्या है"
 
 #: 
-msgid "You are <strong>{{releaseCount}}</strong> releases behind. Here's what you'll gain:"
-msgstr "आप <strong>{{releaseCount}}</strong> रिलीज़ पीछे हैं। यहाँ जानें आपको क्या मिलेगा:"
-
-#: 
 msgid "You are running a pre-release version."
 msgstr "आप प्री-रिलीज़ संस्करण चला रहे हैं।"
 
@@ -16608,14 +16296,6 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "उपयोगकर्ता को व्यवस्थापक होना चाहिए या धन संग्रह अभियान प्रबंधित करने की अनुमति होनी चाहिए"
 
 #: 
-msgid "User not found."
-msgstr "उपयोगकर्ता नहीं मिला।"
-
-#: 
-msgid "— Select a person —"
-msgstr "— एक व्यक्ति चुनें —"
-
-#: 
 msgid "%d archived fundraiser"
 msgid_plural "%d archived fundraisers"
 msgstr[0] "%d संग्रहीत धनसंग्रह"
@@ -16690,10 +16370,6 @@ msgstr "सूची के सदस्यों को समूह में 
 #: 
 msgid "Assign people from your cart to a family"
 msgstr "अपनी सूची से लोगों को परिवार में नियत करें"
-
-#: 
-msgid "Assign role to all:"
-msgstr "सभी को भूमिका नियत करें:"
 
 #: 
 msgid "Assign to Family"
@@ -17004,10 +16680,6 @@ msgid "Sold"
 msgstr "बेचा गया"
 
 #: 
-msgid "State / Province"
-msgstr "राज्य / प्रांत"
-
-#: 
 msgid "Streak"
 msgstr "क्रम"
 
@@ -17080,10 +16752,6 @@ msgid "Your cart is empty. Add people to your cart first."
 msgstr "आपकी सूची खाली है। पहले लोगों को अपनी सूची में जोड़ें।"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "ज़िप / पिन कोड"
-
-#: 
 msgid "events"
 msgstr "आयोजन"
 
@@ -17098,12 +16766,4 @@ msgstr "goalAmount गैर-ऋणात्मक होनी चाहिए"
 #: 
 msgid "thru %s"
 msgstr "%s तक"
-
-#: 
-msgid "— Select role —"
-msgstr "— भूमिका चुनें —"
-
-#: 
-msgid "— pick —"
-msgstr "— चुनें —"
 
