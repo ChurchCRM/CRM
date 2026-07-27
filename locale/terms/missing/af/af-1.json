@@ -1,15 +1,15 @@
 {
-  "Items": "",
+  "Items": "Items",
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "{{count}} lid gekopieer",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Hierdie lys het {{count}} ontvanger — te veel vir 'n mailto:-skakel. Gebruik Kopieer Adresse in plaas daarvan.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Te veel ontvangers vir e-poskliënt ({{count}} > {{max}}). Gebruik Kopieer Adresse in plaas daarvan.",
+    "{{count}} min left": "{{count}} min oor"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "{{count}} lede gekopieer",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Hierdie lys het {{count}} ontvangers — te veel vir 'n mailto:-skakel. Gebruik Kopieer Adresse in plaas daarvan.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Te veel ontvangers vir e-poskliënt ({{count}} > {{max}}). Gebruik Kopieer Adresse in plaas daarvan.",
+    "{{count}} min left": "{{count}} min oor"
   }
 }
