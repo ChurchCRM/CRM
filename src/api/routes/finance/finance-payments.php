@@ -253,6 +253,80 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
     });
 
     /**
+     * @OA\Put(
+     *     path="/payments/{groupKey}",
+     *     summary="Update an existing pledge or payment group (Finance role required)",
+     *     description="Replaces the fund rows for the given GroupKey with the submitted FundSplit. Supports the same multi-fund split fields as POST /payments/pledges.",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(
+     *         name="groupKey",
+     *         in="path",
+     *         required=true,
+     *         description="The pledge group key (plg_GroupKey)",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(description="Pledge or payment fields (FamilyID, Date, FYID, type, FundSplit, iMethod, etc.)")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Updated pledge/payment group key and details",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="groupKey", type="string", example="abc123"),
+     *             @OA\Property(property="payment", type="object", description="Pledge details object")
+     *         )
+     *     ),
+     *     @OA\Response(response=400, description="Validation error (invalid date, fund, check number, etc.)"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required"),
+     *     @OA\Response(response=404, description="Pledge group not found")
+     * )
+     */
+    $group->put('/{groupKey}', function (Request $request, Response $response, array $args): Response {
+        try {
+            $groupKey = $args['groupKey'] ?? '';
+            if ($groupKey === '') {
+                return SlimUtils::renderErrorJSON($response, gettext('Group key is required'), [], 400);
+            }
+
+            $body = $request->getParsedBody() ?? [];
+            $payment = (object) $body;
+
+            if (empty($payment->FamilyID)) {
+                return SlimUtils::renderErrorJSON($response, gettext('Family is required'), [], 400);
+            }
+            if (empty($payment->Date)) {
+                return SlimUtils::renderErrorJSON($response, gettext('Date is required'), [], 400);
+            }
+            if (empty($payment->type) || !in_array($payment->type, ['Pledge', 'Payment'], true)) {
+                return SlimUtils::renderErrorJSON($response, gettext("Type must be 'Pledge' or 'Payment'"), [], 400);
+            }
+            if (empty($payment->FundSplit)) {
+                return SlimUtils::renderErrorJSON($response, gettext('At least one fund allocation is required'), [], 400);
+            }
+
+            $financialService = new FinancialService();
+            $groupPayment = $financialService->updatePledgeOrPayment($payment, $groupKey);
+        } catch (\InvalidArgumentException $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Pledge group not found'), [], 404);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to update pledge'), [], 500, $e, $request);
+        }
+        try {
+            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to encode payment response'), [], 500, $e, $request);
+        }
+
+        return SlimUtils::renderJSON($response, [
+            'groupKey' => $paymentObj['GroupKey'] ?? $groupKey,
+            'payment'  => $paymentObj,
+        ]);
+    });
+
+    /**
      * @OA\Delete(
      *     path="/payments/{groupKey}",
      *     summary="Delete a payment by group key (Finance role required)",

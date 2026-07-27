@@ -229,11 +229,10 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
     if (deleteBtn) {
         deleteBtn.addEventListener('click', async function () {
             const groupKey = this.dataset.groupKey;
-            const confirmMsg = <?= json_encode(
+            const confirmMsg = <?= InputUtils::jsonEncodeForScript(
                 $isPledge
                     ? gettext('Are you sure you want to permanently delete this pledge record?')
-                    : gettext('Are you sure you want to permanently delete this payment record?'),
-                JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+                    : gettext('Are you sure you want to permanently delete this payment record?')
             ) ?>;
             if (!confirm(confirmMsg)) return;
 
@@ -242,17 +241,17 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                     method: 'DELETE'
                 });
                 if (res.ok) {
-                    showToast(<?= json_encode(gettext('Deleted successfully'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, false);
+                    showToast(<?= InputUtils::jsonEncodeForScript(gettext('Deleted successfully')) ?>, false);
                     setTimeout(function () {
                         window.location.href = ROOT + '/finance/';
                     }, 800);
                 } else {
                     const data = await res.json().catch(function () { return {}; });
-                    const msg = (data && (data.error || data.message)) || <?= json_encode(gettext('Delete failed'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+                    const msg = (data && (data.error || data.message)) || <?= InputUtils::jsonEncodeForScript(gettext('Delete failed')) ?>;
                     showToast(msg, true);
                 }
             } catch (err) {
-                showToast(<?= json_encode(gettext('Network error, please try again'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, true);
+                showToast(<?= InputUtils::jsonEncodeForScript(gettext('Network error, please try again')) ?>, true);
             }
         });
     }

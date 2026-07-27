@@ -50,7 +50,7 @@ declare namespace Cypress {
       sessionName: string,
       username: string,
       password: string,
-      options?: { forceLogin?: boolean }
+      options?: { forceLogin?: boolean; validate?: () => void }
     ): Chainable<void>;
 
     /**

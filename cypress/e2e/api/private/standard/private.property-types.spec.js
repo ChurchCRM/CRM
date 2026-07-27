@@ -258,6 +258,11 @@ describe("API Private Property Types", () => {
 
     describe("Access control", () => {
         it("Returns 401 when no API key is provided", () => {
+            // cy.clearCookies() removes the session cookie from Cypress's cookie jar
+            // so the request is truly unauthenticated (no API key, no session cookie).
+            // Note: withCredentials:false is NOT effective for cy.request() — it uses a
+            // Node-side HTTP client that ignores that XHR option.
+            cy.clearCookies();
             cy.request({
                 method: "GET",
                 url: "/api/property-types",

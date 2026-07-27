@@ -2106,3 +2106,75 @@ describe("CSV Export Authorization", () => {
 4. **Always test the happy path first** (admin can do it), then test denials
 5. **Test both GET and POST paths** when a feature has both (form page + form submission)
 6. **Use `failOnStatusCode: false`** on `cy.visit()` and `cy.request()` when expecting non-2xx responses
+
+---
+
+## Gotchas: URL Assertions with linkBack Query Params <!-- learned: 2026-07-27 -->
+
+**Anti-pattern:** `cy.url().should("contain", "DepositSlipEditor.php")` when the current page URL contains `DepositSlipEditor.php` in an encoded `linkBack` parameter:
+```
+/finance/pledge/new?type=Payment&depositId=7&linkBack=%2FDepositSlipEditor.php%3FDepositSlipID%3D7
+```
+The string `DepositSlipEditor.php` appears literally in the URL and the assertion false-positives while the page is still at `/finance/pledge/new`.
+
+**Fix:** Use `cy.location('pathname')` to check only the path, not query params:
+```js
+// ❌ Fails: matches encoded linkBack in query string
+cy.url().should("contain", "DepositSlipEditor.php");
+
+// ✅ Correct: checks pathname only
+cy.location("pathname").should("include", "DepositSlipEditor.php");
+```
+
+---
+
+## Gotcha: TomSelect Fields Not Auto-Populated in CI <!-- learned: 2026-07-27 -->
+
+The pledge/payment editor uses TomSelect for the family picker (`#FamilyName`). TomSelect only loads options when the user types ≥2 characters (async search). It does **not** auto-select anything.
+
+When the form is loaded without a `familyId` URL param, `#FamilyID` is `0`, and the JS validation fails with a toast — the form is never submitted, the page never redirects.
+
+**Fix:** For tests that need to submit the pledge editor form, set `#FamilyID` directly after navigating to the editor. Family ID 1 always exists in the test environment. Register the `cy.intercept()` call at the top of the test with the `**/` glob prefix (required for subdirectory CI mode) — see the Subdirectory-Aware section above:
+```js
+// At the top of the it() block — before any navigation
+cy.intercept("POST", "**/api/payments/pledges").as("submitPayment");
+
+// After cy.get(".btn-success").click() navigates to /finance/pledge/new
+cy.get(".fund-amount").first().should("be.visible"); // wait for page load
+cy.get("#FamilyID").invoke("val", "1");              // provide required family
+// ... fill rest of form ...
+cy.get("#savePledgeBtn").click();
+cy.wait("@submitPayment").its("response.statusCode").should("eq", 200);
+```
+
+Alternatively, use the API directly (as in `finance.pledge-operations.spec.js`) to avoid UI form interaction altogether.
+
+---
+
+## Gotcha: `*/` inside `/* */` JSDoc Comments Causes Babel SyntaxError <!-- learned: 2026-07-27 -->
+
+Cypress spec files go through a Babel/webpack preprocessor that is stricter than plain JS. A `*/` sequence inside a block comment (even quoted) prematurely closes the comment and causes `SyntaxError: Unexpected token` pointing to the first non-whitespace character after the `*/`.
+
+The failure manifests in CI as:
+```
+Error: Webpack Compilation Error
+SyntaxError: ... Unexpected token (NN:CC)
+```
+
+**Common trap:** Writing `'**/api/...'` inside a `/* ... */` block comment — the `*/` in `**/` closes the block.
+
+**Fix:** Avoid any `*/` inside block comments. Rewrite to use concatenation notation or plain prose:
+```js
+// ❌ Breaks Babel — '*/' closes the block comment prematurely
+/**
+ * Always use '**/api/payments' glob in cy.intercept.
+ */
+
+// ✅ Safe alternatives
+/**
+ * Always use the double-glob ('**') prefix: '**' + '/api/payments'.
+ * Always use the '**' glob prefix in cy.intercept path patterns.
+ */
+```
+
+Note: `*/` inside double-quoted strings (`"**/api/..."`) within actual code is fine — only the parser is affected by comment context.

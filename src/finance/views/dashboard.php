@@ -131,11 +131,11 @@ $sRootPath = SystemURLs::getRootPath();
                 <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-success">
                     <i class="fa-solid fa-circle-plus me-1"></i><?= gettext('Create Deposit') ?>
                 </a>
-                <a href="<?= $sRootPath ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-primary">
+                <a href="<?= $sRootPath ?>/finance/pledge/new?type=Pledge" class="btn btn-primary">
                     <i class="fa-solid fa-file-signature me-1"></i><?= gettext('Add Pledge') ?>
                 </a>
                 <?php if ($currentDeposit && !$currentDeposit->getClosed()): ?>
-                <a href="<?= $sRootPath ?>/PledgeEditor.php?CurrentDeposit=<?= $currentDepositId ?>&PledgeOrPayment=Payment" class="btn btn-secondary">
+                <a href="<?= $sRootPath ?>/finance/pledge/new?type=Payment&depositId=<?= (int) $currentDepositId ?>" class="btn btn-secondary">
                     <i class="fa-solid fa-hand-holding-dollar me-1"></i><?= gettext('Add Payment') ?>
                 </a>
                 <?php else: ?>
@@ -459,17 +459,17 @@ $sRootPath = SystemURLs::getRootPath();
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#financialSettings',
-        title: <?= json_encode(gettext('Financial Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('Financial Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
-            { name: 'iFYMonth',          type: 'choice', label: <?= json_encode(gettext('First month of the fiscal year'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, choices: <?= json_encode(SystemConfig::getChoices('iFYMonth'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'sDepositSlipType',  type: 'choice', label: <?= json_encode(gettext('Deposit ticket type'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, tooltip: <?= json_encode(SystemConfig::getTooltip('sDepositSlipType'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, choices: <?= json_encode(SystemConfig::getChoices('sDepositSlipType'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'iChecksPerDepositForm', type: 'number',  label: <?= json_encode(gettext('Number of checks for Deposit Slip Report'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, min: 1, max: 100 },
-            { name: 'bDisplayBillCounts',    type: 'boolean', label: <?= json_encode(gettext('Display bill counts on deposit slip'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'bUseScannedChecks',     type: 'boolean', label: <?= json_encode(gettext('Enable use of scanned checks'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'bEnableNonDeductible',  type: 'boolean', label: <?= json_encode(gettext('Enable non-deductible payments'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'bUseDonationEnvelopes', type: 'boolean', label: <?= json_encode(gettext('Enable use of donation envelopes'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'aFinanceQueries',       type: 'text',    label: <?= json_encode(gettext('Finance permission query IDs'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, placeholder: '30,31,32' }
+            { name: 'iFYMonth',          type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('First month of the fiscal year')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('iFYMonth')) ?> },
+            { name: 'sDepositSlipType',  type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('Deposit ticket type')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sDepositSlipType')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('sDepositSlipType')) ?> },
+            { name: 'iChecksPerDepositForm', type: 'number',  label: <?= InputUtils::jsonEncodeForScript(gettext('Number of checks for Deposit Slip Report')) ?>, min: 1, max: 100 },
+            { name: 'bDisplayBillCounts',    type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Display bill counts on deposit slip')) ?> },
+            { name: 'bUseScannedChecks',     type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable use of scanned checks')) ?> },
+            { name: 'bEnableNonDeductible',  type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable non-deductible payments')) ?> },
+            { name: 'bUseDonationEnvelopes', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable use of donation envelopes')) ?> },
+            { name: 'aFinanceQueries',       type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('Finance permission query IDs')) ?>, placeholder: '30,31,32' }
         ],
         onSave: function() {
             // Reload page after short delay to show updated fiscal year data

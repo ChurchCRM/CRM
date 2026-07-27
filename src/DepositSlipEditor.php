@@ -146,7 +146,11 @@ require_once __DIR__ . '/Include/Header.php';
                     <i class="fa-solid fa-floppy-disk"></i><?= gettext('Save'); ?>
                   </button>
                   <?php if (!$thisDeposit->getClosed()): ?>
-                  <a href="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success me-2">
+                  <?php
+                  $addPaymentLinkBack = '/DepositSlipEditor.php?DepositSlipID=' . $iDepositSlipID;
+                  $addPaymentUrl = SystemURLs::getRootPath() . '/finance/pledge/new?type=Payment&depositId=' . $iDepositSlipID . '&linkBack=' . urlencode($addPaymentLinkBack);
+                  ?>
+                  <a href="<?= InputUtils::escapeAttribute($addPaymentUrl) ?>" class="btn btn-success me-2">
                     <i class="fa-solid fa-circle-plus"></i><?= gettext('Add Payment'); ?>
                   </a>
                   <?php endif; ?>

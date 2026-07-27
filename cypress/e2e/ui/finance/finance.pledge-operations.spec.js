@@ -1,36 +1,83 @@
 /// <reference types="cypress" />
 
 describe("Pledge Operations", () => {
-    beforeEach(() => cy.setupStandardSession());
-
-    it("PledgeDelete page loads confirmation form without errors", () => {
-        cy.visit("PledgeDelete.php?GroupKey=test&linkBack=v2/dashboard");
-        cy.contains("Confirm Delete");
-        cy.get("body").should("not.contain", "Fatal error");
-        cy.get("body").should("not.contain", "Warning:");
-        cy.get('input[name="Delete"]').should("exist");
-        cy.get('input[name="Cancel"]').should("exist");
+    const getPaymentPayload = (overrides = {}) => ({
+        type: "Payment",
+        iMethod: "CASH",
+        Date: "2025-10-25",
+        FamilyID: "1",
+        FYID: 29,
+        tScanString: "",
+        FundSplit: JSON.stringify([
+            { FundID: "1", Amount: 100.00, NonDeductible: 0, Comment: "" },
+        ]),
+        ...overrides,
     });
 
-    it("PledgeDelete cancel redirects back", () => {
-        cy.visit("PledgeDelete.php?GroupKey=test&linkBack=v2/dashboard");
-        cy.get('input[name="Cancel"]').click();
-        cy.url().should("contain", "v2/dashboard");
+    beforeEach(() => cy.setupAdminSession());
+
+    it("Pledge editor shows a Delete button in edit mode", () => {
+        cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
+            const groupKey = resp.body.groupKey;
+            cy.visit("/finance/pledge/" + groupKey + "/edit");
+            cy.get("#deletePledgeBtn").should("be.visible");
+        });
     });
 
-    // GHSA-3xq9-c86x-cwpp — CSRF protection on delete
-    it("PledgeDelete renders a CSRF token input", () => {
-        cy.visit("PledgeDelete.php?GroupKey=test&linkBack=v2/dashboard");
-        cy.get('input[name="csrf_token"]').should("have.attr", "value").and("match", /^[a-f0-9]{64}$/);
+    it("Delete button removes the payment and redirects away", () => {
+        cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
+            const groupKey = resp.body.groupKey;
+            cy.visit("/finance/pledge/" + groupKey + "/edit");
+
+            cy.on("window:confirm", () => true);
+            cy.get("#deletePledgeBtn").click();
+
+            cy.url().should("contain", "/finance/");
+
+            cy.request({
+                method: "GET",
+                url: "/api/payments/pledges/" + groupKey,
+                failOnStatusCode: false,
+            }).its("status").should("eq", 404);
+        });
     });
 
-    it("PledgeDelete rejects POST without a valid CSRF token", () => {
+    it("Cancelling the delete confirmation keeps the payment", () => {
+        cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
+            const groupKey = resp.body.groupKey;
+            cy.visit("/finance/pledge/" + groupKey + "/edit");
+
+            cy.on("window:confirm", () => false);
+            cy.get("#deletePledgeBtn").click();
+
+            cy.request("/api/payments/pledges/" + groupKey)
+                .its("status").should("eq", 200);
+        });
+    });
+
+    it("DELETE /api/payments/{groupKey} returns 404 for a nonexistent group", () => {
         cy.request({
-            method: "POST",
-            url: "PledgeDelete.php?GroupKey=test&linkBack=v2/dashboard",
-            form: true,
-            body: { Delete: "Delete", csrf_token: "bogus" },
+            method: "DELETE",
+            url: "/api/payments/nonexistent-group-key",
             failOnStatusCode: false,
-        }).its("status").should("eq", 403);
+        }).its("status").should("eq", 404);
+    });
+
+    it("PUT /api/payments/{groupKey} returns 404 for a nonexistent group", () => {
+        cy.request({
+            method: "PUT",
+            url: "/api/payments/nonexistent-group-key",
+            failOnStatusCode: false,
+            body: {
+                FamilyID: "1",
+                Date: "2025-10-25",
+                type: "Payment",
+                iMethod: "CASH",
+                FYID: 29,
+                FundSplit: JSON.stringify([
+                    { FundID: "1", Amount: 100.00, NonDeductible: 0, Comment: "" },
+                ]),
+            },
+        }).its("status").should("eq", 404);
     });
 });

@@ -55,13 +55,14 @@ describe("Finance Deposits", () => {
         cy.url().should("contain", "DepositSlipEditor.php");
 
         cy.get(".btn-success").click();
-        cy.url().should("contain", "PledgeEditor.php");
+        cy.url().should("contain", "/finance/pledge/new");
 
-        cy.get("#1_Amount").type("1000");
+        cy.get(".fund-select").first().select(1);
+        cy.get(".fund-amount").first().type("1000");
         cy.get("#CheckNo").type(uniqueSeed);
+        cy.get("#FamilyID").invoke("val", "1");
 
-        cy.get("#saveBtn").click();
-        cy.get("#DepositSlipEditor").submit();
+        cy.get("#savePledgeBtn").click();
         cy.url().should("contain", "DepositSlipEditor.php");
     });
 
@@ -71,13 +72,14 @@ describe("Finance Deposits", () => {
         cy.contains("Payments");
 
         cy.get(".btn-success").click();
-        cy.url().should("contain", "PledgeEditor.php");
+        cy.url().should("contain", "/finance/pledge/new");
 
-        cy.get("#1_Amount").type("1000");
+        cy.get(".fund-select").first().select(1);
+        cy.get(".fund-amount").first().type("1000");
         cy.get("#CheckNo").type("111");
+        cy.get("#FamilyID").invoke("val", "1");
 
-        cy.get("#saveBtn").click();
-        cy.get("#DepositSlipEditor").submit();
+        cy.get("#savePledgeBtn").click();
         cy.url().should("contain", "DepositSlipEditor.php");
     });
 

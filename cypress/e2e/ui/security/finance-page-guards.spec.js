@@ -117,15 +117,8 @@ describe("Finance permission guard on pledge pages", () => {
             cy.setupNoFinanceSession();
         });
 
-        it("denies PledgeEditor.php", () => {
-            cy.visit("/PledgeEditor.php", { failOnStatusCode: false });
-            cy.url().should("include", ACCESS_DENIED);
-            cy.url().should("include", "role=Finance");
-        });
-
-        // New MVC pledge/payment editor (see #8482) — FinanceRoleAuthMiddleware
-        // wraps the whole /finance app, so /finance/pledge/new must be denied
-        // the same way the legacy PledgeEditor.php is above.
+        // MVC pledge/payment editor (see #8482) — FinanceRoleAuthMiddleware
+        // wraps the whole /finance app, so /finance/pledge/new must be denied.
         it("denies /finance/pledge/new", () => {
             cy.visit("/finance/pledge/new", { failOnStatusCode: false });
             cy.url().should("include", ACCESS_DENIED);

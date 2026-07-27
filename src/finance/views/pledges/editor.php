@@ -21,7 +21,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
  * @var bool    $enableNonDeductible
  * @var bool    $isEdit             true when editing, false when creating
  * @var array|null $pledge          Pledge data array from FinancialService::getPledgesByGroupKey()
+ * @var string  $linkBack           Root-relative redirect target after save/delete/cancel (empty string if none)
  */
+
+$linkBackTarget = $linkBack !== '' ? $sRootPath . '/' . ltrim($linkBack, '/') : $sRootPath . '/finance/';
 
 $isPledge = ($type === 'Pledge');
 $cardClass = $isPledge ? 'bg-warning' : 'bg-primary text-white';
@@ -293,7 +296,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                 <i class="fa-solid fa-plus me-1"></i><?= gettext('Save and Add Another') ?>
             </button>
             <?php endif; ?>
-            <a href="<?= $sRootPath ?>/finance/" class="btn btn-secondary">
+            <a href="<?= InputUtils::escapeAttribute($linkBackTarget) ?>" class="btn btn-secondary">
                 <i class="fa-solid fa-xmark me-1"></i><?= gettext('Cancel') ?>
             </a>
             <?php if ($isEdit): ?>
@@ -345,9 +348,12 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     'use strict';
 
     const ROOT = window.CRM.root;
-    const GROUP_KEY = <?= json_encode($groupKey, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
-    const PLEDGE_TYPE = <?= json_encode($type, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    const GROUP_KEY = <?= InputUtils::jsonEncodeForScript($groupKey) ?>;
+    const PLEDGE_TYPE = <?= InputUtils::jsonEncodeForScript($type) ?>;
     const FY_MONTH    = <?= (int) SystemConfig::getIntValue('iFYMonth') ?>;
+    const DEPOSIT_ID  = <?= (int) $depositId ?>;
+    const LINK_BACK_RAW = <?= InputUtils::jsonEncodeForScript($linkBack) ?>;
+    const LINK_BACK_TARGET = <?= InputUtils::jsonEncodeForScript($linkBack !== '' ? $linkBackTarget : '') ?>;
 
     // ---- Toast helper ----
     function showToast(message, isError) {
@@ -413,7 +419,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         if (!btn) return;
         const rows = document.querySelectorAll('.fund-row');
         if (rows.length <= 1) {
-            showToast(<?= json_encode(gettext('At least one fund allocation is required'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, true);
+            showToast(<?= InputUtils::jsonEncodeForScript(gettext('At least one fund allocation is required')) ?>, true);
             return;
         }
         btn.closest('tr').remove();
@@ -476,11 +482,11 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         const schedule = schedEl ? schedEl.value : 'Once';
 
         if (!familyId) {
-            showToast(<?= json_encode(gettext('Please select a family'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, true);
+            showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please select a family')) ?>, true);
             return null;
         }
         if (!date) {
-            showToast(<?= json_encode(gettext('Please enter a date'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, true);
+            showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please enter a date')) ?>, true);
             return null;
         }
 
@@ -502,15 +508,15 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             const comment = commentInput ? commentInput.value : '';
 
             if (!fundId || fundId === '') {
-                validationError = <?= json_encode(gettext('Please select a fund for all rows'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+                validationError = <?= InputUtils::jsonEncodeForScript(gettext('Please select a fund for all rows')) ?>;
                 return;
             }
             if (amount > 999999.99) {
-                validationError = <?= json_encode(gettext('Amount exceeds maximum allowed (999999.99)'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+                validationError = <?= InputUtils::jsonEncodeForScript(gettext('Amount exceeds maximum allowed (999999.99)')) ?>;
                 return;
             }
             if (nd > amount) {
-                validationError = <?= json_encode(gettext("Non-deductible amount can't exceed fund amount"), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+                validationError = <?= InputUtils::jsonEncodeForScript(gettext("Non-deductible amount can't exceed fund amount")) ?>;
                 return;
             }
             if (amount > 0) hasAmount = true;
@@ -528,7 +534,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             return null;
         }
         if (!hasAmount) {
-            showToast(<?= json_encode(gettext('At least one fund must have a non-zero amount'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, true);
+            showToast(<?= InputUtils::jsonEncodeForScript(gettext('At least one fund must have a non-zero amount')) ?>, true);
             return null;
         }
 
@@ -552,24 +558,35 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         if (!payload) return;
 
         try {
-            const res = await fetch(ROOT + '/api/payments/pledges', {
-                method: 'POST',
+            const isEditMode = !!GROUP_KEY;
+            const url = isEditMode
+                ? ROOT + '/api/payments/' + encodeURIComponent(GROUP_KEY)
+                : ROOT + '/api/payments/pledges';
+            const res = await fetch(url, {
+                method: isEditMode ? 'PUT' : 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
             const data = await res.json().catch(function () { return {}; });
 
             if (!res.ok) {
-                const msg = (data && (data.error || data.message)) || <?= json_encode(gettext('Save failed'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+                const msg = (data && (data.error || data.message)) || <?= InputUtils::jsonEncodeForScript(gettext('Save failed')) ?>;
                 showToast(msg, true);
                 return;
             }
 
-            showToast(<?= json_encode(gettext('Saved successfully'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, false);
+            showToast(<?= InputUtils::jsonEncodeForScript(gettext('Saved successfully')) ?>, false);
 
             if (redirectAfter === 'new') {
                 setTimeout(function () {
-                    window.location.href = ROOT + '/finance/pledge/new?type=' + encodeURIComponent(PLEDGE_TYPE);
+                    var newUrl = ROOT + '/finance/pledge/new?type=' + encodeURIComponent(PLEDGE_TYPE);
+                    if (DEPOSIT_ID) newUrl += '&depositId=' + encodeURIComponent(DEPOSIT_ID);
+                    if (LINK_BACK_RAW) newUrl += '&linkBack=' + encodeURIComponent(LINK_BACK_RAW);
+                    window.location.href = newUrl;
+                }, 800);
+            } else if (LINK_BACK_TARGET) {
+                setTimeout(function () {
+                    window.location.href = LINK_BACK_TARGET;
                 }, 800);
             } else if (data && data.groupKey) {
                 setTimeout(function () {
@@ -581,7 +598,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                 }, 800);
             }
         } catch (err) {
-            showToast(<?= json_encode(gettext('Network error, please try again'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, true);
+            showToast(<?= InputUtils::jsonEncodeForScript(gettext('Network error, please try again')) ?>, true);
         }
     }
 
@@ -601,8 +618,8 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     if (deleteBtn && GROUP_KEY) {
         deleteBtn.addEventListener('click', async function () {
             const confirmMsg = PLEDGE_TYPE === 'Pledge'
-                ? <?= json_encode(gettext('Are you sure you want to permanently delete this pledge record?'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
-                : <?= json_encode(gettext('Are you sure you want to permanently delete this payment record?'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+                ? <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to permanently delete this pledge record?')) ?>
+                : <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to permanently delete this payment record?')) ?>;
             if (!confirm(confirmMsg)) return;
 
             try {
@@ -610,17 +627,17 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                     method: 'DELETE'
                 });
                 if (res.ok) {
-                    showToast(<?= json_encode(gettext('Deleted successfully'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, false);
+                    showToast(<?= InputUtils::jsonEncodeForScript(gettext('Deleted successfully')) ?>, false);
                     setTimeout(function () {
-                        window.location.href = ROOT + '/finance/';
+                        window.location.href = LINK_BACK_TARGET || (ROOT + '/finance/');
                     }, 800);
                 } else {
                     const data = await res.json().catch(function () { return {}; });
-                    const msg = (data && (data.error || data.message)) || <?= json_encode(gettext('Delete failed'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+                    const msg = (data && (data.error || data.message)) || <?= InputUtils::jsonEncodeForScript(gettext('Delete failed')) ?>;
                     showToast(msg, true);
                 }
             } catch (err) {
-                showToast(<?= json_encode(gettext('Network error, please try again'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, true);
+                showToast(<?= InputUtils::jsonEncodeForScript(gettext('Network error, please try again')) ?>, true);
             }
         });
     }
