@@ -60,6 +60,7 @@ describe("Finance Deposits", () => {
         cy.get(".fund-select").first().select(1);
         cy.get(".fund-amount").first().type("1000");
         cy.get("#CheckNo").type(uniqueSeed);
+        cy.get("#FamilyID").invoke("val", "1");
 
         cy.get("#savePledgeBtn").click();
         cy.url().should("contain", "DepositSlipEditor.php");
@@ -76,6 +77,7 @@ describe("Finance Deposits", () => {
         cy.get(".fund-select").first().select(1);
         cy.get(".fund-amount").first().type("1000");
         cy.get("#CheckNo").type("111");
+        cy.get("#FamilyID").invoke("val", "1");
 
         cy.get("#savePledgeBtn").click();
         cy.url().should("contain", "DepositSlipEditor.php");
