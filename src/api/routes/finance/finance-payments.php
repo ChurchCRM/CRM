@@ -311,8 +311,6 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $groupPayment = $financialService->updatePledgeOrPayment($payment, $groupKey);
         } catch (\InvalidArgumentException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Pledge group not found'), [], 404);
-        } catch (\Exception $e) {
-            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, $e, $request);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update pledge'), [], 500, $e, $request);
         }
