@@ -30,6 +30,7 @@ use Slim\Views\PhpRenderer;
 $app->get('/{groupID:[0-9]+}/members/{personID:[0-9]+}/properties', function (Request $request, Response $response, array $args): Response {
     if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
         AuthenticationManager::redirectHomeIfFalse(false, 'EditRecords');
+        return $response;
     }
 
     $iGroupID  = (int) $args['groupID'];
@@ -74,6 +75,7 @@ $app->get('/{groupID:[0-9]+}/members/{personID:[0-9]+}/properties', function (Re
 $app->post('/{groupID:[0-9]+}/members/{personID:[0-9]+}/properties', function (Request $request, Response $response, array $args): Response {
     if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
         AuthenticationManager::redirectHomeIfFalse(false, 'EditRecords');
+        return $response;
     }
 
     $iGroupID  = (int) $args['groupID'];

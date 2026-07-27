@@ -35,14 +35,12 @@ function preparePropsFormData(int $iGroupID): array
 
     for ($row = 1; $row <= $data['numRows']; $row++) {
         $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
-        // phpcs:ignore -- intentional extract on known-controlled array
-        extract($aRow, EXTR_SKIP);
-        $data['aNameFields'][$row]          = $prop_Name;
-        $data['aDescFields'][$row]          = $prop_Description;
-        $data['aSpecialFields'][$row]       = $prop_Special;
-        $data['aFieldFields'][$row]         = $prop_Field;
-        $data['aTypeFields'][$row]          = $type_ID;
-        $data['aPersonDisplayFields'][$row] = ($prop_PersonDisplay === 'true');
+        $data['aNameFields'][$row]          = $aRow['prop_Name'];
+        $data['aDescFields'][$row]          = $aRow['prop_Description'];
+        $data['aSpecialFields'][$row]       = $aRow['prop_Special'];
+        $data['aFieldFields'][$row]         = $aRow['prop_Field'];
+        $data['aTypeFields'][$row]          = $aRow['type_ID'];
+        $data['aPersonDisplayFields'][$row] = ($aRow['prop_PersonDisplay'] === 'true');
     }
 
     return $data;
@@ -113,11 +111,9 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
 
         for ($row = 1; $row <= $numRows; $row++) {
             $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
-            // phpcs:ignore
-            extract($aRow, EXTR_SKIP);
-            $aFieldFields[$row]   = $prop_Field;
-            $aTypeFields[$row]    = $type_ID;
-            $aSpecialFields[$row] = isset($prop_Special) ? $prop_Special : 'NULL';
+            $aFieldFields[$row]   = $aRow['prop_Field'];
+            $aTypeFields[$row]    = $aRow['type_ID'];
+            $aSpecialFields[$row] = isset($aRow['prop_Special']) ? $aRow['prop_Special'] : 'NULL';
         }
 
         for ($iPropID = 1; $iPropID <= $numRows; $iPropID++) {
