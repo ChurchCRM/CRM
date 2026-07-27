@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 15:02+0000\n"
+"POT-Creation-Date: 2026-07-27 22:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,10 +98,6 @@ msgid "%d month old"
 msgid_plural "%d months old"
 msgstr[0] ""
 msgstr[1] ""
-
-#, php-format
-msgid "%d more entries will fit."
-msgstr ""
 
 #, php-format
 msgid "%d orphaned files were detected on your server."
@@ -277,9 +273,6 @@ msgid "A map will appear here once coordinates are saved — either auto-detecte
 msgstr ""
 
 msgid "A new password has been generated and sent to your email address."
-msgstr ""
-
-msgid "A payment is an actual donation received. It will be added to the current deposit."
 msgstr ""
 
 msgid "A payment is an actual donation received. It will be added to the selected deposit."
@@ -949,9 +942,6 @@ msgid "Amount ($)"
 msgstr ""
 
 msgid "Amount exceeds maximum allowed (999999.99)"
-msgstr ""
-
-msgid "Amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "Amount paid: ________________"
@@ -3331,9 +3321,6 @@ msgstr ""
 msgid "Delete Photo"
 msgstr ""
 
-msgid "Delete Pledge"
-msgstr ""
-
 msgid "Delete Selected"
 msgstr ""
 
@@ -3469,9 +3456,6 @@ msgid "Deposit Type"
 msgstr ""
 
 msgid "Deposit Value"
-msgstr ""
-
-msgid "Deposit closed"
 msgstr ""
 
 msgid "Deposit not found"
@@ -4775,6 +4759,9 @@ msgstr ""
 msgid "Failed to update group. Please try again."
 msgstr ""
 
+msgid "Failed to update pledge"
+msgstr ""
+
 msgid "Failed to update properties. Please try again."
 msgstr ""
 
@@ -5111,9 +5098,6 @@ msgid "Financial data"
 msgstr ""
 
 msgid "Financials"
-msgstr ""
-
-msgid "Find family"
 msgstr ""
 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
@@ -6353,9 +6337,6 @@ msgstr ""
 msgid "Invalid request data"
 msgstr ""
 
-msgid "Invalid security token. Please try again."
-msgstr ""
-
 msgid "Invalid server URL format."
 msgstr ""
 
@@ -7387,9 +7368,6 @@ msgstr ""
 msgid "Missing people"
 msgstr ""
 
-msgid "Missing pledge identifier."
-msgstr ""
-
 #. Context: query_qry
 msgid "Missing pledges"
 msgstr ""
@@ -7668,9 +7646,6 @@ msgstr ""
 msgid "New Calendar"
 msgstr ""
 
-msgid "New Deposit Will Be Created"
-msgstr ""
-
 msgid "New Family"
 msgstr ""
 
@@ -7684,10 +7659,6 @@ msgid "New Password"
 msgstr ""
 
 msgid "New Payment"
-msgstr ""
-
-#, php-format
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
 msgstr ""
 
 msgid "New Person"
@@ -8030,16 +8001,10 @@ msgstr ""
 msgid "Non-Deductible ($)"
 msgstr ""
 
-msgid "Non-deductible amount"
-msgstr ""
-
 msgid "Non-deductible amount can't exceed fund amount"
 msgstr ""
 
 msgid "NonDeductible amount can't be greater than total amount."
-msgstr ""
-
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "None"
@@ -8568,9 +8533,6 @@ msgid "Payment Method"
 msgstr ""
 
 msgid "Payment Schedule"
-msgstr ""
-
-msgid "Payment by"
 msgstr ""
 
 msgid "Payments"
@@ -10009,9 +9971,6 @@ msgstr ""
 msgid "Scan QR Code"
 msgstr ""
 
-msgid "Scan check"
-msgstr ""
-
 msgid "Schedule"
 msgstr ""
 
@@ -10154,9 +10113,6 @@ msgid "Select Report Type"
 msgstr ""
 
 msgid "Select Role"
-msgstr ""
-
-msgid "Select Schedule"
 msgstr ""
 
 msgid "Select Season"
@@ -10350,9 +10306,6 @@ msgid "Set Up Authenticator"
 msgstr ""
 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
-msgstr ""
-
-msgid "Set default check account number for family"
 msgstr ""
 
 msgid "Set the accent color used for buttons, links, and active elements"
@@ -11585,9 +11538,6 @@ msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addr
 msgstr ""
 
 msgid "Total"
-msgstr ""
-
-msgid "Total $"
 msgstr ""
 
 msgid "Total Amount"
@@ -13117,9 +13067,6 @@ msgid "families"
 msgstr ""
 
 msgid "fields"
-msgstr ""
-
-msgid "find family from check account #"
 msgstr ""
 
 msgid "for all funds"
