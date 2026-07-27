@@ -253,6 +253,9 @@ describe("API Private Volunteer Opportunities", () => {
                 url: "/api/volunteer-opportunities",
                 failOnStatusCode: false,
                 headers: { "content-type": "application/json" },
+                // withCredentials: false prevents the browser session cookie from
+                // being sent, ensuring we test unauthenticated access (no key, no session).
+                withCredentials: false,
             }).then((response) => {
                 expect(response.status).to.equal(401);
             });
