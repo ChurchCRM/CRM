@@ -2148,3 +2148,33 @@ cy.wait("@submitPayment").its("response.statusCode").should("eq", 200);
 ```
 
 Alternatively, use the API directly (as in `finance.pledge-operations.spec.js`) to avoid UI form interaction altogether.
+
+---
+
+## Gotcha: `*/` inside `/* */` JSDoc Comments Causes Babel SyntaxError <!-- learned: 2026-07-27 -->
+
+Cypress spec files go through a Babel/webpack preprocessor that is stricter than plain JS. A `*/` sequence inside a block comment (even quoted) prematurely closes the comment and causes `SyntaxError: Unexpected token` pointing to the first non-whitespace character after the `*/`.
+
+The failure manifests in CI as:
+```
+Error: Webpack Compilation Error
+SyntaxError: ... Unexpected token (NN:CC)
+```
+
+**Common trap:** Writing `'**/api/...'` inside a `/* ... */` block comment — the `*/` in `**/` closes the block.
+
+**Fix:** Avoid any `*/` inside block comments. Rewrite to use concatenation notation or plain prose:
+```js
+// ❌ Breaks Babel — '*/' closes the block comment prematurely
+/**
+ * Always use '**/api/payments' glob in cy.intercept.
+ */
+
+// ✅ Safe alternatives
+/**
+ * Always use the double-glob ('**') prefix: '**' + '/api/payments'.
+ * Always use the '**' glob prefix in cy.intercept path patterns.
+ */
+```
+
+Note: `*/` inside double-quoted strings (`"**/api/..."`) within actual code is fine — only the parser is affected by comment context.
