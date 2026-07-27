@@ -122,26 +122,58 @@ jobs:
         retention-days: 1
 
   # ---------------------------------------------------------------------------
-  # Upgrade test: ChurchCRM 6.0.0 → current
-  # Restores a 6.0.0 SQL snapshot, lets the bootstrapper auto-migrate, and
-  # verifies login + API smoke checks.
-  # Matrix: php-version × database (mariadb, mysql)
+  # Upgrade tests — 4 explicitly named group+database combinations.
+  # Each group runs against all configured PHP versions.
+  #
+  # Groups:
+  #   churchcrm-mysql   — ChurchInfo 1.3.1 → current, MySQL
+  #   churchcrm-mariadb — ChurchInfo 1.3.1 → current, MariaDB
+  #   v6-mysql          — ChurchCRM 6.0.0  → current, MySQL
+  #   v6-mariadb        — ChurchCRM 6.0.0  → current, MariaDB
   # ---------------------------------------------------------------------------
-  test-upgrade-from-6:
+  test-upgrade:
     needs: [configure, build]
+    name: ${{ matrix.group.name }} / PHP ${{ matrix.php-version }}
     timeout-minutes: 30
     permissions:
       contents: read
       checks: write
     runs-on: ubuntu-latest
     env:
-      # For the mysql leg, append the MySQL override compose file; empty for mariadb.
-      COMPOSE_MYSQL: ${{ matrix.database == 'mysql' && '-f docker/docker-compose.mysql.yaml' || '' }}
+      COMPOSE_MYSQL: ${{ matrix.group.database == 'mysql' && '-f docker/docker-compose.mysql.yaml' || '' }}
     strategy:
       fail-fast: false
       matrix:
         php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
-        database: [mariadb, mysql]
+        group:
+          - name: churchcrm-mysql
+            database: mysql
+            sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
+            admin_user: Admin
+            admin_pass: churchinfoadmin
+            force_password_change: 'true'
+            label: 'ChurchInfo 1.3.1'
+          - name: churchcrm-mariadb
+            database: mariadb
+            sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
+            admin_user: Admin
+            admin_pass: churchinfoadmin
+            force_password_change: 'true'
+            label: 'ChurchInfo 1.3.1'
+          - name: v6-mysql
+            database: mysql
+            sql_file: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
+            admin_user: Admin
+            admin_pass: changeme
+            force_password_change: ''
+            label: '6.0.0'
+          - name: v6-mariadb
+            database: mariadb
+            sql_file: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
+            admin_user: Admin
+            admin_pass: changeme
+            force_password_change: ''
+            label: '6.0.0'
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -172,7 +204,7 @@ jobs:
     - name: Remove Config.php for fresh install
       run: rm -f src/Include/Config.php
 
-    - name: Start Docker (upgrade from 6.0.0)
+    - name: Start Docker (${{ matrix.group.name }})
       run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system up -d
 
     - name: Wait for server
@@ -192,28 +224,29 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run Cypress upgrade test (6.0.0 → current, PHP ${{ matrix.php-version }}, ${{ matrix.database }})
+    - name: Run Cypress upgrade test (${{ matrix.group.name }}, PHP ${{ matrix.php-version }})
       uses: cypress-io/github-action@v7
       with:
-        command: npx cypress run --config-file cypress/configs/upgrade.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-6-[hash].xml
+        command: npx cypress run --config-file cypress/configs/upgrade.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-[hash].xml
       env:
-        CYPRESS_UPGRADE_SQL_FILE: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
-        CYPRESS_UPGRADE_ADMIN_USER: Admin
-        CYPRESS_UPGRADE_ADMIN_PASS: changeme
+        CYPRESS_UPGRADE_SQL_FILE: ${{ matrix.group.sql_file }}
+        CYPRESS_UPGRADE_ADMIN_USER: ${{ matrix.group.admin_user }}
+        CYPRESS_UPGRADE_ADMIN_PASS: ${{ matrix.group.admin_pass }}
+        CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE: ${{ matrix.group.force_password_change }}
 
     - name: Collect Docker logs on failure
       if: failure()
       run: |
         mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-6.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-6.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.group.name }}.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.group.name }}.log 2>&1 || true
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
       if: always()
       uses: actions/upload-artifact@v7
       with:
-        name: cypress-artifacts-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-6-${{ github.run_id }}
+        name: cypress-artifacts-php${{ matrix.php-version }}-${{ matrix.group.name }}-${{ github.run_id }}
         path: |
           cypress/logs
           cypress/screenshots
@@ -225,128 +258,8 @@ jobs:
       uses: dorny/test-reporter@v3
       if: always()
       with:
-        name: 'PHP ${{ matrix.php-version }} / ${{ matrix.database }}: Upgrade from 6.0.0'
-        path: cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-6-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
-
-    - name: Stop Docker
-      if: always()
-      run: npm run docker:ci:new-system:down
-
-  # ---------------------------------------------------------------------------
-  # Upgrade test: ChurchInfo 1.3.1 → current
-  # Restores a ChurchInfo 1.3.1 SQL snapshot (MD5 password hashes), lets the
-  # bootstrapper auto-migrate, and verifies login (MD5→bcrypt migration) +
-  # API smoke checks. Requires User::isPasswordValid() MD5 support (this PR).
-  # Matrix: php-version × database (mariadb, mysql)
-  # ---------------------------------------------------------------------------
-  test-upgrade-from-churchinfo:
-    needs: [configure, build]
-    timeout-minutes: 30
-    permissions:
-      contents: read
-      checks: write
-    runs-on: ubuntu-latest
-    env:
-      # For the mysql leg, append the MySQL override compose file; empty for mariadb.
-      COMPOSE_MYSQL: ${{ matrix.database == 'mysql' && '-f docker/docker-compose.mysql.yaml' || '' }}
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
-        database: [mariadb, mysql]
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v7
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v6
-      with:
-        node-version-file: '.nvmrc'
-        cache: 'npm'
-
-    - name: Install npm dependencies
-      run: npm ci
-
-    - name: Download build artifact
-      uses: actions/download-artifact@v8.0.1
-      with:
-        name: build-${{ github.run_id }}
-        path: .
-
-    - name: Load Docker image
-      run: |
-        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
-        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
-
-    - name: Generate file signatures
-      run: node scripts/generate-signatures-node.js
-
-    - name: Remove Config.php for fresh install
-      run: rm -f src/Include/Config.php
-
-    - name: Start Docker (upgrade from ChurchInfo)
-      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system up -d
-
-    - name: Wait for server
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
-
-    - name: Run Cypress upgrade test (ChurchInfo 1.3.1 → current, PHP ${{ matrix.php-version }}, ${{ matrix.database }})
-      uses: cypress-io/github-action@v7
-      with:
-        command: npx cypress run --config-file cypress/configs/upgrade.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-churchinfo-[hash].xml
-      env:
-        CYPRESS_UPGRADE_SQL_FILE: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
-        CYPRESS_UPGRADE_ADMIN_USER: Admin
-        CYPRESS_UPGRADE_ADMIN_PASS: churchinfoadmin
-        CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE: 'true'
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-churchinfo.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-churchinfo.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: always()
-      uses: actions/upload-artifact@v7
-      with:
-        name: cypress-artifacts-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-churchinfo-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: dorny/test-reporter@v3
-      if: always()
-      with:
-        name: 'PHP ${{ matrix.php-version }} / ${{ matrix.database }}: Upgrade from ChurchInfo 1.3.1'
-        path: cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.database }}-upgrade-churchinfo-*.xml
+        name: 'PHP ${{ matrix.php-version }} / ${{ matrix.group.name }}: Upgrade from ${{ matrix.group.label }}'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-*.xml
         reporter: java-junit
         fail-on-error: true
         fail-on-empty: false
