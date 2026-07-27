@@ -52,5 +52,7 @@ DROP TABLE IF EXISTS `roles`;
 
 -- Remove Work Phone and Cell Phone from family table
 -- Drop work phone and cell phone columns from family table
-ALTER TABLE `family_fam` DROP COLUMN IF EXISTS `fam_WorkPhone`;
-ALTER TABLE `family_fam` DROP COLUMN IF EXISTS `fam_CellPhone`;
+-- Note: plain DROP COLUMN (no IF EXISTS) — MySQL does not support DROP COLUMN IF EXISTS;
+-- the version-gated upgrade runner guarantees these columns exist when this script runs.
+ALTER TABLE `family_fam` DROP COLUMN `fam_WorkPhone`;
+ALTER TABLE `family_fam` DROP COLUMN `fam_CellPhone`;

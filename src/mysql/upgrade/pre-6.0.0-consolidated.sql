@@ -18,7 +18,7 @@
 --   • church_location_person / church_location_role omitted (also dropped by 6.5.0 IF EXISTS).
 --   • church_location CREATE + 3.0.0 RENAME compacted: CREATE locations directly;
 --     DROP TABLE IF EXISTS church_location as a normaliser.
---   • events_event.event_grpid ADD omitted (transient, never read; DROP IF EXISTS kept below).
+--   • events_event.event_grpid ADD omitted (transient, never read; conditional dynamic DROP kept below).
 --   • 2.9.0 UPDATE menuconfig_mcf omitted (table is dropped in the 3.0.0 section).
 --   • 4.1.0 DROP INDEX canvassdata_can omitted (table dropped in the 5.9.0 section).
 --   • permissions row DELETEs from 5.1.0 / 5.9.0 omitted (table is omitted).
@@ -33,7 +33,11 @@
 
 ALTER TABLE version_ver ADD COLUMN `ver_update_start` datetime DEFAULT NULL;
 ALTER TABLE version_ver ADD COLUMN `ver_update_end` datetime DEFAULT NULL;
-ALTER TABLE version_ver DROP COLUMN IF EXISTS `ver_date`;
+-- MySQL-compatible conditional column drop (DROP COLUMN IF EXISTS is MariaDB-only).
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='version_ver' AND COLUMN_NAME='ver_date')>0,'ALTER TABLE `version_ver` DROP COLUMN `ver_date`','DO 0');
+PREPARE _s FROM @_sql;
+EXECUTE _s;
+DEALLOCATE PREPARE _s;
 
 DELETE FROM config_cfg WHERE cfg_id IN (2, 4, 15, 17, 24, 32, 35, 999);
 
@@ -166,9 +170,13 @@ MODIFY `cfg_type` ENUM('text','number','date','boolean','textarea','json','choic
 INSERT IGNORE INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`) VALUES
 (1047, 'sChurchCountry', 'United States', 'country', '', 'Church Country', 'ChurchInfoReport');
 
-ALTER TABLE user_usr DROP COLUMN IF EXISTS `usr_BaseFontSize`;
-ALTER TABLE user_usr DROP COLUMN IF EXISTS `usr_Communication`;
-ALTER TABLE user_usr DROP COLUMN IF EXISTS `usr_Workspacewidth`;
+-- MySQL-compatible conditional column drops (DROP COLUMN IF EXISTS is MariaDB-only).
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='user_usr' AND COLUMN_NAME='usr_BaseFontSize')>0,'ALTER TABLE `user_usr` DROP COLUMN `usr_BaseFontSize`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='user_usr' AND COLUMN_NAME='usr_Communication')>0,'ALTER TABLE `user_usr` DROP COLUMN `usr_Communication`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='user_usr' AND COLUMN_NAME='usr_Workspacewidth')>0,'ALTER TABLE `user_usr` DROP COLUMN `usr_Workspacewidth`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
 
 ALTER TABLE `user_usr`
 CHANGE COLUMN `usr_NeedPasswordChange` `usr_NeedPasswordChange` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1',
@@ -215,12 +223,19 @@ UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id` IN (1011,1012,1013,
 
 DELETE FROM config_cfg WHERE cfg_value = cfg_default;
 
-ALTER TABLE config_cfg DROP COLUMN IF EXISTS `cfg_type`;
-ALTER TABLE config_cfg DROP COLUMN IF EXISTS `cfg_tooltip`;
-ALTER TABLE config_cfg DROP COLUMN IF EXISTS `cfg_section`;
-ALTER TABLE config_cfg DROP COLUMN IF EXISTS `cfg_category`;
-ALTER TABLE config_cfg DROP COLUMN IF EXISTS `cfg_data`;
-ALTER TABLE config_cfg DROP COLUMN IF EXISTS `cfg_default`;
+-- MySQL-compatible conditional column drops (DROP COLUMN IF EXISTS is MariaDB-only).
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='config_cfg' AND COLUMN_NAME='cfg_type')>0,'ALTER TABLE `config_cfg` DROP COLUMN `cfg_type`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='config_cfg' AND COLUMN_NAME='cfg_tooltip')>0,'ALTER TABLE `config_cfg` DROP COLUMN `cfg_tooltip`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='config_cfg' AND COLUMN_NAME='cfg_section')>0,'ALTER TABLE `config_cfg` DROP COLUMN `cfg_section`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='config_cfg' AND COLUMN_NAME='cfg_category')>0,'ALTER TABLE `config_cfg` DROP COLUMN `cfg_category`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='config_cfg' AND COLUMN_NAME='cfg_data')>0,'ALTER TABLE `config_cfg` DROP COLUMN `cfg_data`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='config_cfg' AND COLUMN_NAME='cfg_default')>0,'ALTER TABLE `config_cfg` DROP COLUMN `cfg_default`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
 
 
 -- ===== from 2.7.0.sql =====
@@ -401,10 +416,13 @@ SELECT (SELECT calendar_id FROM calendars WHERE name = 'Private Calendar' LIMIT 
 FROM events_event WHERE COALESCE(event_publicly_visible, 0) = 0;
 
 -- Drop the transient column; it was only used for this one-time migration.
-ALTER TABLE events_event DROP COLUMN IF EXISTS `event_publicly_visible`;
+-- MySQL-compatible conditional column drops (DROP COLUMN IF EXISTS is MariaDB-only).
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='events_event' AND COLUMN_NAME='event_publicly_visible')>0,'ALTER TABLE `events_event` DROP COLUMN `event_publicly_visible`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
 
 -- Normaliser: installs that historically ran 2.8.0 may still have event_grpid.
-ALTER TABLE events_event DROP COLUMN IF EXISTS `event_grpid`;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='events_event' AND COLUMN_NAME='event_grpid')>0,'ALTER TABLE `events_event` DROP COLUMN `event_grpid`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
 
 
 -- ===== from 3.4.0.sql =====
@@ -429,17 +447,17 @@ DELETE FROM list_lst WHERE lst_OptionName = 'bMenuOptions';
 
 -- ===== converted from 3.5.0.php (inline SQL; removes raw PHP dependency) =====
 
-ALTER TABLE family_custom_master DROP COLUMN IF EXISTS `fam_custom_Side`;
-ALTER TABLE person_custom_master DROP COLUMN IF EXISTS `custom_Side`;
+-- MySQL-compatible conditional column drops (DROP COLUMN IF EXISTS is MariaDB-only).
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='family_custom_master' AND COLUMN_NAME='fam_custom_Side')>0,'ALTER TABLE `family_custom_master` DROP COLUMN `fam_custom_Side`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='person_custom_master' AND COLUMN_NAME='custom_Side')>0,'ALTER TABLE `person_custom_master` DROP COLUMN `custom_Side`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
 
 -- custom_master may not exist at all in some ChurchInfo 1.x installs (original PHP used
--- try/catch for this reason).  Guard the entire ALTER with a table-existence check.
-SET @_pre6_tbl = (
-  SELECT COUNT(*) FROM information_schema.TABLES
-  WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'custom_master'
-);
-SET @_pre6_sql = IF(@_pre6_tbl > 0, 'ALTER TABLE custom_master DROP COLUMN IF EXISTS `custom_Side`', 'DO 0');
-PREPARE _pre6_stmt FROM @_pre6_sql;
+-- try/catch for this reason).  Guard the entire ALTER with a column-existence check
+-- (implicitly also checks table existence). MySQL-compatible: no IF EXISTS in ALTER TABLE.
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='custom_master' AND COLUMN_NAME='custom_Side')>0,'ALTER TABLE `custom_master` DROP COLUMN `custom_Side`','DO 0');
+PREPARE _pre6_stmt FROM @_sql;
 EXECUTE _pre6_stmt;
 DEALLOCATE PREPARE _pre6_stmt;
 
@@ -552,17 +570,23 @@ ALTER TABLE person_per MODIFY per_BirthYear smallint(4) unsigned null;
 
 -- ===== from 5.8.0.sql =====
 
-ALTER TABLE events_event DROP COLUMN IF EXISTS `event_typename`;
+-- MySQL-compatible conditional column drop (DROP COLUMN IF EXISTS is MariaDB-only).
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='events_event' AND COLUMN_NAME='event_typename')>0,'ALTER TABLE `events_event` DROP COLUMN `event_typename`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
 
 
 -- ===== from 5.9.0.sql =====
 
 DROP TABLE IF EXISTS canvassdata_can;
-ALTER TABLE family_fam DROP COLUMN IF EXISTS fam_OkToCanvass;
-ALTER TABLE family_fam DROP COLUMN IF EXISTS fam_Canvasser;
+-- MySQL-compatible conditional column drops (DROP COLUMN IF EXISTS is MariaDB-only).
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='family_fam' AND COLUMN_NAME='fam_OkToCanvass')>0,'ALTER TABLE `family_fam` DROP COLUMN `fam_OkToCanvass`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='family_fam' AND COLUMN_NAME='fam_Canvasser')>0,'ALTER TABLE `family_fam` DROP COLUMN `fam_Canvasser`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
 DELETE FROM list_lst WHERE lst_OptionName = 'bCanvasser';
 DELETE FROM query_qry WHERE qry_ID = '27';
-ALTER TABLE user_usr DROP COLUMN IF EXISTS usr_Canvasser;
+SET @_sql = IF((SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='user_usr' AND COLUMN_NAME='usr_Canvasser')>0,'ALTER TABLE `user_usr` DROP COLUMN `usr_Canvasser`','DO 0');
+PREPARE _s FROM @_sql; EXECUTE _s; DEALLOCATE PREPARE _s;
 -- "DELETE FROM permissions ..." omitted: table is omitted (see compaction notes).
 
 
