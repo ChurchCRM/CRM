@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "تم نسخ {{count}} عضو",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "تحتوي هذه القائمة على {{count}} مستلم — عدد كبير جداً لرابط mailto:. استخدم نسخ العناوين بدلاً من ذلك.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "عدد المستلمين كبير جداً لعميل البريد الإلكتروني ({{count}} > {{max}}). استخدم نسخ العناوين بدلاً من ذلك.",
+    "{{count}} min left": "دقيقة {{count}} متبقية"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "تم نسخ {{count}} أعضاء",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "تحتوي هذه القائمة على {{count}} مستلمين — عدد كبير جداً لرابط mailto:. استخدم نسخ العناوين بدلاً من ذلك.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "عدد المستلمين كبير جداً لعميل البريد الإلكتروني ({{count}} > {{max}}). استخدم نسخ العناوين بدلاً من ذلك.",
+    "{{count}} min left": "{{count}} دقائق متبقية"
   }
 }

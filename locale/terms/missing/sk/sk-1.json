@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Skopírovaný {{count}} člen",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Tento zoznam má {{count}} príjemcu — príliš veľa pre odkaz mailto:. Namiesto toho použite Kopírovať adresy.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Namiesto toho použite Kopírovať adresy.",
+    "{{count}} min left": "{{count}} min zostáva"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Skopírovaných {{count}} členov",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Namiesto toho použite Kopírovať adresy.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Namiesto toho použite Kopírovať adresy.",
+    "{{count}} min left": "{{count}} min zostáva"
   }
 }

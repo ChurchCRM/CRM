@@ -1,15 +1,15 @@
 {
-  "BCC Mode": "",
+  "BCC Mode": "Λειτουργία BCC",
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Αντιγράφηκε {{count}} μέλος",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Αυτή η λίστα έχει {{count}} παραλήπτη — πάρα πολλοί για έναν σύνδεσμο mailto:. Χρησιμοποιήστε αντ’ αυτού την Αντιγραφή Διευθύνσεων.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Πάρα πολλοί παραλήπτες για το πρόγραμμα email ({{count}} > {{max}}). Χρησιμοποιήστε αντ’ αυτού την Αντιγραφή Διευθύνσεων.",
+    "{{count}} min left": "Απομένει {{count}} λεπτό"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Αντιγράφηκαν {{count}} μέλη",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Αυτή η λίστα έχει {{count}} παραλήπτες — πάρα πολλοί για έναν σύνδεσμο mailto:. Χρησιμοποιήστε αντ’ αυτού την Αντιγραφή Διευθύνσεων.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Πάρα πολλοί παραλήπτες για το πρόγραμμα email ({{count}} > {{max}}). Χρησιμοποιήστε αντ’ αυτού την Αντιγραφή Διευθύνσεων.",
+    "{{count}} min left": "Απομένουν {{count}} λεπτά"
   }
 }

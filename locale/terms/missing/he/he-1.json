@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "הועתק חבר {{count}}",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "לרשימה זו יש {{count}} נמען — יותר מדי עבור קישור mailto:. השתמש ב’העתק כתובות’ במקום.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "יותר מדי נמענים עבור לקוח הדואר האלקטרוני ({{count}} > {{max}}). השתמש ב’העתק כתובות’ במקום.",
+    "{{count}} min left": "נותרה {{count}} דקה"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "הועתקו {{count}} חברים",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "לרשימה זו יש {{count}} נמענים — יותר מדי עבור קישור mailto:. השתמש ב’העתק כתובות’ במקום.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "יותר מדי נמענים עבור לקוח הדואר האלקטרוני ({{count}} > {{max}}). השתמש ב’העתק כתובות’ במקום.",
+    "{{count}} min left": "נותרו {{count}} דקות"
   }
 }
