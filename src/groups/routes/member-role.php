@@ -87,6 +87,8 @@ $app->post('/{groupID:[0-9]+}/members/{personID:[0-9]+}/role', function (Request
     if ($p2g2r !== null) {
         $p2g2r->setRoleId($iNewRole);
         $p2g2r->save();
+    } else {
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/groups/dashboard');
     }
 
     if ($sReturn === 'group') {

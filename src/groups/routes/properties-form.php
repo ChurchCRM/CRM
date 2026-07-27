@@ -187,6 +187,10 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
                 $fieldsResult = FunctionsUtils::runQuery('SELECT * FROM ' . $tableName);
                 $newFieldNum  = mysqli_num_fields($fieldsResult);
 
+                // Guard: only types 1–12 have a known column definition.
+                if (!in_array($newFieldType, range(1, 12), true)) {
+                    $bNewNameError = true; // re-render form with no change
+                } else {
                 if ($newFieldType == 12) {
                     $rsTempMax = FunctionsUtils::runQuery('SELECT MAX(lst_ID) FROM list_lst');
                     $aTemp     = mysqli_fetch_array($rsTempMax);
@@ -232,6 +236,7 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
                 }
 
                 $bNewNameError = false;
+                } // end type-range guard
             }
         }
     }
