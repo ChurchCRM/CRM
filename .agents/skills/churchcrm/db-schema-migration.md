@@ -80,6 +80,36 @@ Checklist for any `ALTER TABLE` migration:
 | `cypress/data/seed.sql` | Update the `CREATE TABLE` block — **ask user first** |
 | `orm/schema.xml` | Update column/table attributes if Propel schema tracks this |
 
+### MySQL-Compatible Conditional Column Drops <!-- learned: 2026-07-27 -->
+
+`ALTER TABLE ... DROP COLUMN IF EXISTS` is a **MariaDB-only extension** — MySQL (any version including 9.x) rejects it with `SQLSTATE[42000] error 1064`. This breaks upgrade paths on MySQL silently passing on MariaDB.
+
+**Wrong (MariaDB-only):**
+```sql
+ALTER TABLE my_table DROP COLUMN IF EXISTS old_col;
+```
+
+**Correct (MySQL 8.0+ and MariaDB 10.2+):**
+```sql
+-- When version-gating GUARANTEES the column exists: just plain DROP COLUMN
+ALTER TABLE my_table DROP COLUMN old_col;
+
+-- When the column might not exist (use information_schema guard):
+SET @_sql = IF(
+    (SELECT COUNT(*) FROM information_schema.COLUMNS
+     WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='my_table' AND COLUMN_NAME='old_col')>0,
+    'ALTER TABLE `my_table` DROP COLUMN `old_col`',
+    'DO 0'
+);
+PREPARE _s FROM @_sql;
+EXECUTE _s;
+DEALLOCATE PREPARE _s;
+```
+
+Also note: `DROP TABLE IF EXISTS` and `DROP INDEX IF EXISTS` work fine on MySQL. Only `DROP COLUMN IF EXISTS` in ALTER TABLE is MariaDB-only.
+
+Similarly, `@var:=expr` assignments inside DML (UPDATE SET, SELECT) are deprecated since MySQL 8.0.22 and may cause warnings; prefer `ROW_NUMBER() OVER (ORDER BY ...)` for row numbering in migrations.
+
 ### Use utf8mb4 for All User-Content Tables <!-- learned: 2026-04-29 -->
 
 MySQL `utf8` / `utf8mb3` is 3-byte max and silently fails on emoji and other 4-byte Unicode (`SQLSTATE[22007] Incorrect string value`). Any table that stores user-generated text must use `utf8mb4_unicode_ci`.
