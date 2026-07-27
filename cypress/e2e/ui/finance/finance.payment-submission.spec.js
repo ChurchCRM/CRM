@@ -30,8 +30,9 @@
  * only, which correctly distinguishes the two pages.
  *
  * Note on cy.intercept prefix: ChurchCRM runs under both root ('/') and a
- * subdirectory ('/churchcrm/') in CI.  Always use '**/api/...' so the
- * intercept matches regardless of installation path.
+ * subdirectory ('/churchcrm/') in CI.  Always prefix cy.intercept paths
+ * with the double-glob ('**') so the intercept matches regardless of
+ * installation path (e.g. '**' + '/api/payments/pledges').
  */
 
 describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
