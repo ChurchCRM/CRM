@@ -81,8 +81,7 @@ describe("Finance Reports Index", () => {
         cy.visit("/finance/reports");
 
         cy.contains("h6", "Pledge Summary").click();
-        cy.url().should("contain", "FinancialReports.php");
-        cy.url().should("contain", "Pledge%20Summary");
+        cy.url().should("include", "/finance/pledge/dashboard");
     });
 
     it("should navigate to Advanced Deposit Report from link", () => {

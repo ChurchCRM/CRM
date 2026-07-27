@@ -1,0 +1,28 @@
+# MySQL override for upgrade-test CI jobs.
+# Layer this on top of docker-compose.yaml + docker-compose.parallel.yaml to replace
+# the MariaDB image in the ci-new-system profile with the latest MySQL image.
+# Only the image and healthcheck differ from the base definition; every other
+# property (profile, ports, MYSQL_* env, depends_on, hostname) is inherited.
+#
+# Usage (Upgrade Tests workflow):
+#   docker compose -f docker/docker-compose.yaml \
+#                  -f docker/docker-compose.parallel.yaml \
+#                  -f docker/docker-compose.mysql.yaml \
+#                  --profile ci-new-system up -d
+
+services:
+  database-new-system:
+    image: mysql:latest
+    # Use TCP (-h 127.0.0.1) so the healthcheck only passes after the full
+    # server is up with networking — MySQL's mid-init temp server runs with
+    # --skip-networking, which prevents premature "healthy" signals.
+    # mysqladmin ping exits 0 whenever the server responds (even access-denied),
+    # so no credentials are required for the liveness check.
+    # No --mysql-native-password flag: PHP 8.4 pdo_mysql supports the default
+    # caching_sha2_password plugin over plain TCP without native-password mode.
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s

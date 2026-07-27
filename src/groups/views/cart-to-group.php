@@ -57,7 +57,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h3 class="card-title"><?= gettext('Add to Group') ?></h3>
                 </div>
                 <div class="card-body">
-                    <form name="CartToGroup" action="<?= $sRootPath ?>/groups/cart-to-group" method="POST">
+                    <form name="CartToGroup" action="<?= $sRootPath ?>/groups/cart/add" method="POST">
                         <div class="mb-3">
                             <label class="form-label" for="GroupID"><?= gettext('Select Group') ?></label>
                             <select id="GroupID" name="GroupID" class="form-select" onchange="UpdateRoles();" required>

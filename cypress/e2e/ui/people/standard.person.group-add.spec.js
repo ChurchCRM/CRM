@@ -168,10 +168,8 @@ describe("PersonView: Update Properties for group with special props", () => {
                 cy.contains("Update Properties").click();
             });
 
-        // Should land on GroupPropsEditor without fatal PHP error
-        cy.url().should("include", "GroupPropsEditor.php");
-        cy.url().should("include", `GroupID=${specialPropsGroupId}`);
-        cy.url().should("include", `PersonID=${personId}`);
+        // Should land on member properties page without fatal PHP error
+        cy.url().should("include", `/groups/${specialPropsGroupId}/members/${personId}/properties`);
 
         // The page should NOT show a PHP error or blank page
         cy.get("body").should("not.contain.text", "Fatal error");
@@ -197,9 +195,9 @@ describe("PersonView: Update Properties for group with special props", () => {
         // Login
         freshAdminLogin();
 
-        // Navigate directly to GroupPropsEditor
+        // Navigate directly to member properties page
         cy.visit(
-            `/GroupPropsEditor.php?GroupID=${specialPropsGroupId}&PersonID=${personId}`,
+            `/groups/${specialPropsGroupId}/members/${personId}/properties`,
         );
 
         // Page should load without errors

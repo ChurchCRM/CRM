@@ -641,7 +641,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/groups/view/<?= $grp_ID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View Group') ?></a>
                                                     <a class="dropdown-item changeRole" data-groupid="<?= $grp_ID ?>" data-current-role-id="<?= (int)$roleId ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext('Change Role') ?></a>
                                                     <?php if ($grp_hasSpecialProps) { ?>
-                                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
+                                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/groups/<?= $grp_ID ?>/members/<?= $iPersonID ?>/properties"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
                                                     <?php } ?>
                                                     <div class="dropdown-divider"></div>
                                                     <button class="dropdown-item text-danger groupRemove" data-groupid="<?= (int)$grp_ID ?>" data-groupname="<?= InputUtils::escapeAttribute($grp_Name) ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Remove') ?></button>
