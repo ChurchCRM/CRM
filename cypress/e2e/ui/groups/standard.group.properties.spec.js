@@ -375,7 +375,7 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
 
         // Now login and create a test field via UI
         freshAdminLogin();
-        cy.visit(`GroupPropsFormEditor.php?GroupID=${groupID}`);
+        cy.visit(`/groups/${groupID}/properties/form`);
         cy.get("select#newFieldType").select("1");
         cy.get("input#newFieldName").clear().type(fieldName);
         cy.get('button[name="AddField"]').click();
@@ -384,7 +384,7 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
 
     beforeEach(() => {
         freshAdminLogin();
-        cy.visit(`GroupPropsFormEditor.php?GroupID=${groupID}`);
+        cy.visit(`/groups/${groupID}/properties/form`);
     });
 
     it("Delete button has data-field-name/data-prop-id/data-field-id attrs and no onclick", () => {
@@ -428,7 +428,7 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
         cy.wait("@deleteFormProp").its("response.statusCode").should("eq", 200);
 
         // After reload, the field should be gone
-        cy.url().should("include", "GroupPropsFormEditor.php");
+        cy.url().should("include", "/properties/form");
         cy.get(`input[value="${fieldName}"]`, { timeout: 10000 }).should("not.exist");
     });
 });

@@ -245,7 +245,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <a class="dropdown-item" href="<?= $sRootPath ?>/groups/sundayschool/class/<?= $class['id'] ?>">
                                         <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                                     </a>
-                                    <a class="dropdown-item" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>">
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/groups/editor/<?= $class['id'] ?>">
                                         <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
                                     <div class="dropdown-divider"></div>

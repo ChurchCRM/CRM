@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 /**
- * These tests exercise the /groups/cart-to-group MVC page.
+ * These tests exercise the /groups/cart/add MVC page.
  * They are self-sufficient — every precondition (target group, cart
  * members) is created via the API at the start of each test so the
  * tests do not depend on whatever happens to be in the seed database.
@@ -39,7 +39,7 @@ describe("Standard Groups - Cart to Group", () => {
             const groupId = resp.body.Id;
             expect(groupId).to.be.a("number").and.be.greaterThan(0);
 
-            cy.visit("/groups/cart-to-group");
+            cy.visit("/groups/cart/add");
 
             // Cart contents card should be visible with our person
             cy.contains("People in Cart").should("be.visible");
@@ -75,7 +75,7 @@ describe("Standard Groups - Cart to Group", () => {
             body:    {},
         });
 
-        cy.visit("/groups/cart-to-group");
+        cy.visit("/groups/cart/add");
 
         cy.contains("Your cart is empty").should("be.visible");
         cy.contains("Add people to your cart first").should("be.visible");
