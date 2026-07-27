@@ -289,6 +289,9 @@ describe("API Private Donation Funds", () => {
                 url: "/api/donation-funds",
                 failOnStatusCode: false,
                 headers: { "content-type": "application/json" },
+                // withCredentials: false prevents the browser session cookie from
+                // being sent, ensuring we test unauthenticated access (no key, no session).
+                withCredentials: false,
             }).then((response) => {
                 expect(response.status).to.equal(401);
             });
