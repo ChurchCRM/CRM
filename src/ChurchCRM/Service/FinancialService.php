@@ -490,14 +490,27 @@ class FinancialService
         $this->validateChecks($payment, $groupKey);
         $this->validateDate($payment);
 
-        $existingCount = PledgeQuery::create()->filterByGroupKey($groupKey)->count();
-        if ($existingCount === 0) {
-            throw new \InvalidArgumentException('Pledge group not found');
-        }
-
         $con = Propel::getWriteConnection(PledgeTableMap::DATABASE_NAME);
         $con->beginTransaction();
         try {
+            // Existence check is inside the transaction so the check, denomination
+            // cleanup, and pledge delete are all atomic — avoids a TOCTOU race.
+            $existingCount = PledgeQuery::create()->filterByGroupKey($groupKey)->count($con);
+            if ($existingCount === 0) {
+                // No explicit rollBack() here — the catch (\Throwable) block below
+                // handles rollback for every exception thrown inside this try{},
+                // including \InvalidArgumentException.  Calling rollBack() here first
+                // and then rethrowing would close the transaction before catch fires,
+                // causing a second rollBack() on an inactive transaction (PDOException).
+                throw new \InvalidArgumentException('Pledge group not found');
+            }
+            // Remove orphaned denomination rows. pledge_denominations_pdem has no FK
+            // constraint and no Propel model, so we use a parameterized statement on
+            // the same connection to keep the deletion within this transaction.
+            $stmt = $con->prepare(
+                'DELETE FROM pledge_denominations_pdem WHERE pdem_plg_GroupKey = :groupKey'
+            );
+            $stmt->execute([':groupKey' => $groupKey]);
             PledgeQuery::create()->filterByGroupKey($groupKey)->delete($con);
             $this->insertPledgeorPayment($payment, $groupKey);
             $con->commit();
