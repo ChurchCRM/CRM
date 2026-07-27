@@ -42,7 +42,7 @@ function initializeGroupList() {
     })
       .done((data) => {
         // Redirect to the GroupEditor page for the newly created group
-        window.location.href = `${window.CRM.root}/GroupEditor.php?GroupID=${data.Id}`;
+        window.location.href = `${window.CRM.root}/groups/editor/${data.Id}`;
       })
       .fail((xhr, status, error) => {
         console.error("Failed to create group:", error);
@@ -139,7 +139,7 @@ function initializeGroupList() {
             "</button>" +
             '<div class="dropdown-menu dropdown-menu-end">' +
             `<a class="dropdown-item" href="${window.CRM.root}/groups/view/${full.Id}"><i class="ti ti-eye me-2"></i>${i18next.t("View")}</a>` +
-            `<a class="dropdown-item" href="${window.CRM.root}/GroupEditor.php?GroupID=${full.Id}"><i class="ti ti-pencil me-2"></i>${i18next.t("Edit")}</a>` +
+            `<a class="dropdown-item" href="${window.CRM.root}/groups/editor/${full.Id}"><i class="ti ti-pencil me-2"></i>${i18next.t("Edit")}</a>` +
             (hasMembers ? '<div class="dropdown-divider"></div>' + cartBtn : "") +
             '<div class="dropdown-divider"></div>' +
             `<button type="button" class="dropdown-item text-danger delete-group" data-group-id="${full.Id}" data-group-name="${escapedName}"><i class="ti ti-trash me-2"></i>${i18next.t("Delete")}</button>` +

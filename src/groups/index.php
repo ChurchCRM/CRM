@@ -16,6 +16,10 @@ require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/reports.php';
 require __DIR__ . '/routes/sundayschool.php';
 require __DIR__ . '/routes/view.php';
-require __DIR__ . '/routes/cart-to-group.php';
+require __DIR__ . '/routes/editor.php';
+require __DIR__ . '/routes/properties-form.php';
+require __DIR__ . '/routes/member-properties.php';
+require __DIR__ . '/routes/member-role.php';
+require __DIR__ . '/routes/cart.php';
 
 $app->run();

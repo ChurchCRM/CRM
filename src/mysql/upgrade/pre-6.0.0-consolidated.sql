@@ -31,8 +31,8 @@
 
 -- ===== from 2.0.0.sql =====
 
-ALTER TABLE version_ver ADD COLUMN IF NOT EXISTS `ver_update_start` datetime DEFAULT NULL;
-ALTER TABLE version_ver ADD COLUMN IF NOT EXISTS `ver_update_end` datetime DEFAULT NULL;
+ALTER TABLE version_ver ADD COLUMN `ver_update_start` datetime DEFAULT NULL;
+ALTER TABLE version_ver ADD COLUMN `ver_update_end` datetime DEFAULT NULL;
 ALTER TABLE version_ver DROP COLUMN IF EXISTS `ver_date`;
 
 DELETE FROM config_cfg WHERE cfg_id IN (2, 4, 15, 17, 24, 32, 35, 999);
@@ -54,7 +54,7 @@ UPDATE user_usr SET usr_Style = 'skin-blue';
 
 -- ===== from 2.1.0.sql =====
 
-ALTER TABLE note_nte ADD COLUMN IF NOT EXISTS nte_Type VARCHAR(45) NOT NULL DEFAULT 'note' AFTER nte_EditedBy;
+ALTER TABLE note_nte ADD COLUMN nte_Type VARCHAR(45) NOT NULL DEFAULT 'note' AFTER nte_EditedBy;
 
 -- Back-fill create/edit timeline notes for existing persons and families.
 INSERT IGNORE INTO note_nte
@@ -125,7 +125,7 @@ ALTER TABLE group_grp MODIFY grp_hasSpecialProps BOOLEAN;
 ALTER TABLE `config_cfg`
 MODIFY `cfg_type` ENUM('text','number','date','boolean','textarea','json','choice') NOT NULL default 'text';
 
-ALTER TABLE `config_cfg` ADD COLUMN IF NOT EXISTS `cfg_data` text default NULL;
+ALTER TABLE `config_cfg` ADD COLUMN `cfg_data` text default NULL;
 
 UPDATE `config_cfg` SET `cfg_data` = '{"Choices":["smtp","SendMail"]}',    `cfg_type` = 'choice' WHERE `cfg_id` = 25;
 UPDATE `config_cfg` SET `cfg_data` = '{"Choices":["miles","kilometers"]}',  `cfg_type` = 'choice' WHERE `cfg_id` = 64;
@@ -225,8 +225,8 @@ ALTER TABLE config_cfg DROP COLUMN IF EXISTS `cfg_default`;
 
 -- ===== from 2.7.0.sql =====
 
-ALTER TABLE group_grp ADD COLUMN IF NOT EXISTS grp_active               BOOLEAN DEFAULT 1 NOT NULL AFTER grp_hasSpecialProps;
-ALTER TABLE group_grp ADD COLUMN IF NOT EXISTS grp_include_email_export BOOLEAN DEFAULT 1 NOT NULL AFTER grp_active;
+ALTER TABLE group_grp ADD COLUMN grp_active               BOOLEAN DEFAULT 1 NOT NULL AFTER grp_hasSpecialProps;
+ALTER TABLE group_grp ADD COLUMN grp_include_email_export BOOLEAN DEFAULT 1 NOT NULL AFTER grp_active;
 
 ALTER TABLE queryparameteroptions_qpo MODIFY qpo_Value VARCHAR(255) NOT NULL DEFAULT '';
 
@@ -238,7 +238,7 @@ WHERE qry_ID = 15;
 
 DELETE FROM userconfig_ucfg WHERE ucfg_name IN ('sFromEmailAddress', 'sFromName', 'bSendPHPMail');
 
-ALTER TABLE event_attend ADD COLUMN IF NOT EXISTS attend_id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+ALTER TABLE event_attend ADD COLUMN attend_id INT PRIMARY KEY AUTO_INCREMENT FIRST;
 
 
 -- ===== from 2.8.0.sql =====
@@ -271,7 +271,7 @@ CREATE TABLE `kioskassginment_kasm` (
   UNIQUE KEY `kasm_ID` (`kasm_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-ALTER TABLE event_types ADD COLUMN IF NOT EXISTS type_grpid mediumint(9) AFTER type_active;
+ALTER TABLE event_types ADD COLUMN type_grpid mediumint(9) AFTER type_active;
 
 ALTER TABLE `tokens` CHANGE COLUMN `type` `type` VARCHAR(50);
 
@@ -297,8 +297,8 @@ UPDATE config_cfg SET cfg_name = 'aDisallowedPasswords'        WHERE cfg_name = 
 
 -- ===== from 2.9.0.sql =====
 
-ALTER TABLE person_per ADD COLUMN IF NOT EXISTS per_Twitter  varchar(50) default NULL AFTER per_Flags;
-ALTER TABLE person_per ADD COLUMN IF NOT EXISTS per_LinkedIn varchar(50) default NULL AFTER per_Twitter;
+ALTER TABLE person_per ADD COLUMN per_Twitter  varchar(50) default NULL AFTER per_Flags;
+ALTER TABLE person_per ADD COLUMN per_LinkedIn varchar(50) default NULL AFTER per_Twitter;
 
 ALTER TABLE person_custom_master ADD PRIMARY KEY (custom_Field);
 
@@ -310,15 +310,15 @@ ALTER TABLE person_custom_master ADD PRIMARY KEY (custom_Field);
 -- ===== from 2.10.0.sql =====
 
 -- AFTER clause omitted: event_grpid is not created in this consolidated script.
-ALTER TABLE events_event ADD COLUMN IF NOT EXISTS event_publicly_visible BOOLEAN DEFAULT FALSE;
+ALTER TABLE events_event ADD COLUMN event_publicly_visible BOOLEAN DEFAULT FALSE;
 
 
 -- ===== from 3.0.0.sql =====
 
-ALTER TABLE events_event ADD COLUMN IF NOT EXISTS location_id                 INT DEFAULT NULL AFTER `event_typename`;
-ALTER TABLE events_event ADD COLUMN IF NOT EXISTS primary_contact_person_id   INT DEFAULT NULL AFTER `location_id`;
-ALTER TABLE events_event ADD COLUMN IF NOT EXISTS secondary_contact_person_id INT DEFAULT NULL AFTER `primary_contact_person_id`;
-ALTER TABLE events_event ADD COLUMN IF NOT EXISTS event_url                   text DEFAULT NULL AFTER `secondary_contact_person_id`;
+ALTER TABLE events_event ADD COLUMN location_id                 INT DEFAULT NULL AFTER `event_typename`;
+ALTER TABLE events_event ADD COLUMN primary_contact_person_id   INT DEFAULT NULL AFTER `location_id`;
+ALTER TABLE events_event ADD COLUMN secondary_contact_person_id INT DEFAULT NULL AFTER `primary_contact_person_id`;
+ALTER TABLE events_event ADD COLUMN event_url                   text DEFAULT NULL AFTER `secondary_contact_person_id`;
 
 DROP TABLE IF EXISTS `event_audience`;
 CREATE TABLE `event_audience` (
@@ -366,8 +366,8 @@ CREATE TABLE IF NOT EXISTS `locations` (
 DROP TABLE IF EXISTS `church_location`;
 
 -- Split the original combined ALTER (ADD COLUMN + ADD UNIQUE INDEX) into two statements.
-ALTER TABLE user_usr ADD COLUMN IF NOT EXISTS usr_apiKey VARCHAR(255) AFTER usr_UserName;
-ALTER TABLE user_usr ADD UNIQUE INDEX IF NOT EXISTS `usr_apiKey_unique` (`usr_apiKey` ASC);
+ALTER TABLE user_usr ADD COLUMN usr_apiKey VARCHAR(255) AFTER usr_UserName;
+ALTER TABLE user_usr ADD UNIQUE INDEX `usr_apiKey_unique` (`usr_apiKey` ASC);
 
 DROP TABLE IF EXISTS menuconfig_mcf;
 
@@ -446,9 +446,9 @@ DEALLOCATE PREPARE _pre6_stmt;
 
 -- ===== from 4.0.0-TwoFactorAuth.sql =====
 
-ALTER TABLE user_usr ADD COLUMN IF NOT EXISTS usr_TwoFactorAuthSecret          VARCHAR(255) NULL AFTER `usr_Canvasser`;
-ALTER TABLE user_usr ADD COLUMN IF NOT EXISTS usr_TwoFactorAuthLastKeyTimestamp INT NULL AFTER `usr_TwoFactorAuthSecret`;
-ALTER TABLE user_usr ADD COLUMN IF NOT EXISTS usr_TwoFactorAuthRecoveryCodes    TEXT NULL AFTER `usr_TwoFactorAuthLastKeyTimestamp`;
+ALTER TABLE user_usr ADD COLUMN usr_TwoFactorAuthSecret          VARCHAR(255) NULL AFTER `usr_Canvasser`;
+ALTER TABLE user_usr ADD COLUMN usr_TwoFactorAuthLastKeyTimestamp INT NULL AFTER `usr_TwoFactorAuthSecret`;
+ALTER TABLE user_usr ADD COLUMN usr_TwoFactorAuthRecoveryCodes    TEXT NULL AFTER `usr_TwoFactorAuthLastKeyTimestamp`;
 
 
 -- ===== from 4.1.0-cleanup.sql =====
@@ -515,7 +515,7 @@ INSERT IGNORE INTO user_settings SELECT usr_per_ID, 'finance.FY',               
 
 -- ===== from 4.4.0-FB.sql =====
 
-ALTER TABLE person_per ADD COLUMN IF NOT EXISTS per_Facebook VARCHAR(50) NULL;
+ALTER TABLE person_per ADD COLUMN per_Facebook VARCHAR(50) NULL;
 
 
 -- ===== from 5.1.0.sql =====

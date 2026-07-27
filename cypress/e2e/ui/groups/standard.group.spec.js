@@ -11,9 +11,8 @@ describe("Standard Groups", () => {
         cy.get("#groupName").type(newGroupName);
         cy.get("#addNewGroup").click();
 
-        // Should redirect to GroupEditor page
-        cy.url().should("contain", "GroupEditor.php");
-        cy.url().should("contain", "GroupID=");
+        // Should redirect to group editor page
+        cy.url().should("contain", "/groups/editor/");
 
         // Verify we're on the editor page with the new group name
         // Using a more flexible selector that works with both Name and name attributes

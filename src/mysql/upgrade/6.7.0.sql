@@ -1,5 +1,7 @@
--- Add order column to donation funds table for custom sorting (IF NOT EXISTS for idempotency)
-ALTER TABLE donationfund_fun ADD COLUMN IF NOT EXISTS fun_Order INT NOT NULL DEFAULT 0 AFTER fun_Description;
+-- Add order column to donation funds table for custom sorting.
+-- Plain ALTER TABLE (no IF NOT EXISTS): that clause is MariaDB-only; the version-gated
+-- upgrade runner guarantees this script never runs on a DB that already has this column.
+ALTER TABLE donationfund_fun ADD COLUMN fun_Order INT NOT NULL DEFAULT 0 AFTER fun_Description;
 
 -- Initialize order values based on current fund IDs
 SET @row_number = 0;

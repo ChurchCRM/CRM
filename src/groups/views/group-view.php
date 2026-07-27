@@ -107,7 +107,7 @@ if ($bCanManageGroups) {
         <!-- Action Toolbar (ghost buttons, family-view pattern) -->
         <div id="group-view-toolbar" class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <?php if ($bCanManageGroups): ?>
-            <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupID ?>">
+            <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/groups/editor/<?= $iGroupID ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
             </a>
             <?php endif; ?>
@@ -157,7 +157,7 @@ if ($bCanManageGroups) {
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <?php if ($thisGroup->getHasSpecialProps()): ?>
-                    <a class="dropdown-item" href="<?= $sRootPath ?>/GroupPropsFormEditor.php?GroupID=<?= $iGroupID ?>">
+                    <a class="dropdown-item" href="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form">
                         <i class="fa-solid fa-rectangle-list me-2"></i><?= gettext('Edit Member Properties Form') ?>
                     </a>
                     <div class="dropdown-divider"></div>
@@ -323,7 +323,7 @@ if ($bCanManageGroups) {
                 <h3 class="card-title m-0"><i class="fa-solid fa-sliders me-1"></i> <?= gettext('Member Properties') ?></h3>
                 <span class="badge bg-info-lt text-info ms-2"><?= $groupSpecificProps->count() ?></span>
                 <?php if ($bCanManageGroups): ?>
-                <a href="<?= $sRootPath ?>/GroupPropsFormEditor.php?GroupID=<?= $iGroupID ?>" class="btn btn-sm btn-ghost-secondary ms-auto" title="<?= gettext('Edit Form') ?>">
+                <a href="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form" class="btn btn-sm btn-ghost-secondary ms-auto" title="<?= gettext('Edit Form') ?>">
                     <i class="fa-solid fa-pen"></i>
                 </a>
                 <?php endif; ?>
