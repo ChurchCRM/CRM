@@ -4098,6 +4098,7 @@
     "with at least one": "με τουλάχιστον ένα",
     "Also send to church address ({{email}})": "Αποστολή επίσης στη διεύθυνση της εκκλησίας ({{email}})",
     "Are you sure you want to remove this person from": "Είστε βέβαιοι ότι θέλετε να αφαιρέσετε αυτό το άτομο από",
+    "BCC Mode": "Λειτουργία BCC",
     "Checked in {{count}} people.": "Έγινε είσοδος {{count}} ατόμων.",
     "Church email address automatically added as a removable recipient when composing emails from CRM": "Η διεύθυνση email της εκκλησίας προστίθεται αυτόματα ως παραλήπτης (αφαιρέσιμος) κατά τη σύνταξη email από το CRM",
     "Church email — configured on the %s page.": "Email εκκλησίας — ρυθμισμένο στη σελίδα %s.",
