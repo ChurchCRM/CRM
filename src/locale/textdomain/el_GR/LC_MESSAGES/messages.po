@@ -17061,6 +17061,10 @@ msgid "Are you sure you want to remove this person from"
 msgstr "Είστε βέβαιοι ότι θέλετε να αφαιρέσετε αυτό το άτομο από"
 
 #: 
+msgid "BCC Mode"
+msgstr "Λειτουργία BCC"
+
+#: 
 msgid "Checked in {{count}} people."
 msgstr "Έγινε είσοδος {{count}} ατόμων."
 

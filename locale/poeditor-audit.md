@@ -16,6 +16,7 @@
 | `hr` | Croatian | 4125 | 99.81% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 4125 | 99.81% | 🟢 Complete | ✅ Yes |
 | `fi` | Finnish | 4125 | 99.81% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 4125 | 99.81% | 🟢 Complete | ✅ Yes |
 | `he` | Hebrew | 4125 | 99.81% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 4125 | 99.81% | 🟢 Complete | ✅ Yes |
 | `hu` | Hungarian | 4125 | 99.81% | 🟢 Complete | ✅ Yes |
@@ -43,7 +44,6 @@
 | `af` | Afrikaans | 4124 | 99.78% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 4124 | 99.78% | 🟢 Complete | ✅ Yes |
 | `de` | German | 4124 | 99.78% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 4124 | 99.78% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 4124 | 99.78% | 🟢 Complete | ✅ Yes |
 | `zh-cn` | Chinese | 4123 | 99.76% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 4123 | 99.76% | 🟢 Complete | ✅ Yes |
