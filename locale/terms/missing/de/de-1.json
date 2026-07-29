@@ -1,15 +1,15 @@
 {
-  "Code": "",
+  "Code": "Code",
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "{{count}} Mitglied kopiert",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Diese Liste hat {{count}} Empfänger – zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Zu viele Empfänger für den E-Mail-Client ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“.",
+    "{{count}} min left": "{{count}} Min. übrig"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "{{count}} Mitglieder kopiert",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Diese Liste hat {{count}} Empfänger – zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Zu viele Empfänger für den E-Mail-Client ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“.",
+    "{{count}} min left": "{{count}} Min. übrig"
   }
 }
