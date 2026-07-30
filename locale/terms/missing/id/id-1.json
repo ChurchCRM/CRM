@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Menyalin {{count}} anggota",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat.",
+    "{{count}} min left": "Tersisa {{count}} menit"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Menyalin {{count}} anggota",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat.",
+    "{{count}} min left": "Tersisa {{count}} menit"
   }
 }

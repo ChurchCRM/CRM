@@ -1,17 +1,17 @@
 {
-  "Code": "",
-  "Items": "",
-  "Planning": "",
+  "Code": "Code",
+  "Items": "Items",
+  "Planning": "Planning",
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "{{count}} lid gekopieerd",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Deze lijst heeft {{count}} ontvanger — te veel voor een mailto:-koppeling. Gebruik Adressen kopiëren in plaats daarvan.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik Adressen kopiëren in plaats daarvan.",
+    "{{count}} min left": "{{count}} min over"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "{{count}} leden gekopieerd",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Deze lijst heeft {{count}} ontvangers — te veel voor een mailto:-koppeling. Gebruik Adressen kopiëren in plaats daarvan.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik Adressen kopiëren in plaats daarvan.",
+    "{{count}} min left": "{{count}} min over"
   }
 }

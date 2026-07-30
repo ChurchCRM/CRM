@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Imenakili mwanachama {{count}}",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Orodha hii ina mpokeaji {{count}} — wengi sana kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Wapokeaji wengi sana kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
+    "{{count}} min left": "{{count}} dak imebaki"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Imenakili wanachama {{count}}",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Orodha hii ina wapokeaji {{count}} — wengi sana kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Wapokeaji wengi sana kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
+    "{{count}} min left": "{{count}} dak zimebaki"
   }
 }

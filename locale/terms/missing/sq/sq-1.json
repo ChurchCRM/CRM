@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "U kopjua {{count}} anëtar",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Shumë marrës për klientin e email-it ({{count}} > {{max}}). Përdorni Kopjo Adresat.",
+    "{{count}} min left": "{{count}} min mbetur"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "U kopjuan {{count}} anëtarë",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Shumë marrës për klientin e email-it ({{count}} > {{max}}). Përdorni Kopjo Adresat.",
+    "{{count}} min left": "{{count}} min mbetur"
   }
 }
