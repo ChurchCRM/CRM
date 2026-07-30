@@ -32,6 +32,9 @@ class BirthdayEmailService
             return;
         }
 
+        // Persist before sending so a crash cannot result in duplicate emails.
+        SystemConfig::setValue('sLastBirthdayEmailRunDate', $todayString);
+
         $logger = LoggerUtils::getAppLogger();
         $sentCount = 0;
         $skippedCount = 0;
@@ -59,8 +62,6 @@ class BirthdayEmailService
                 $logger?->warning('BirthdayEmailService: exception sending to person ID ' . $person->getId() . ': ' . $e->getMessage());
             }
         }
-
-        SystemConfig::setValue('sLastBirthdayEmailRunDate', $todayString);
 
         $logger?->info("BirthdayEmailService: sent {$sentCount} birthday email(s), skipped {$skippedCount} (no email on file)");
     }

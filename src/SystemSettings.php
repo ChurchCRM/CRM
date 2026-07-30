@@ -119,7 +119,7 @@ function categoryId(string $category): string {
   </div>
 </div>
 
-</div>
+
 <form name="SystemSettingsForm" method="post" action="SystemSettings.php">
 <div class="row g-4">
 
