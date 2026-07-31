@@ -1,15 +1,15 @@
 {
-  "Fundraising": "",
+  "Fundraising": "Fundraising",
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Zkopírován {{count}} člen",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Tento seznam má {{count}} příjemce — příliš mnoho pro odkaz mailto:. Místo toho použijte Kopírovat adresy.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Místo toho použijte Kopírovat adresy.",
+    "{{count}} min left": "Zbývá {{count}} min"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Zkopírováno {{count}} členů",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Tento seznam má {{count}} příjemců — příliš mnoho pro odkaz mailto:. Místo toho použijte Kopírovat adresy.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Místo toho použijte Kopírovat adresy.",
+    "{{count}} min left": "Zbývá {{count}} min"
   }
 }
