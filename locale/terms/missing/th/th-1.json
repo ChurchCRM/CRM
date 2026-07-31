@@ -1,20 +1,20 @@
 {
   "%d archived fundraiser": {
-    "other": ""
+    "other": "%d แคมเปญระดมทุนที่เก็บถาวร"
   },
   "%d person successfully added to selected family.": {
-    "other": ""
+    "other": "เพิ่ม %d คนเข้าครอบครัวที่เลือกสำเร็จแล้ว"
   },
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "คัดลอกสมาชิก {{count}} คนแล้ว",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "รายการนี้มีผู้รับ {{count}} คน — มากเกินไปสำหรับลิงก์ mailto: กรุณาใช้คัดลอกที่อยู่แทน",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) กรุณาใช้คัดลอกที่อยู่แทน",
+    "{{count}} min left": "เหลืออีก {{count}} นาที"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "คัดลอกสมาชิก {{count}} คนแล้ว",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "รายการนี้มีผู้รับ {{count}} คน — มากเกินไปสำหรับลิงก์ mailto: กรุณาใช้คัดลอกที่อยู่แทน",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) กรุณาใช้คัดลอกที่อยู่แทน",
+    "{{count}} min left": "เหลืออีก {{count}} นาที"
   }
 }
