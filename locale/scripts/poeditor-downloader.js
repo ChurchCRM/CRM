@@ -156,8 +156,8 @@ function restructurePluralForms(data) {
         const termKeys = new Set([...Object.keys(data.one || {}), ...Object.keys(data.other || {})]);
         for (const term of termKeys) {
             const pluralForms = {};
-            if (data.one && data.one[term]) pluralForms.one = data.one[term];
-            if (data.other && data.other[term]) pluralForms.other = data.other[term];
+            if (data.one != null && data.one[term] !== undefined && data.one[term] !== null) pluralForms.one = data.one[term];
+            if (data.other != null && data.other[term] !== undefined && data.other[term] !== null) pluralForms.other = data.other[term];
             if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
         }
         return restructured;
