@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "Скопійовано {{count}} парафіянина",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Цей список містить {{count}} одержувача — надто багато для посилання mailto:. Натомість скористайтеся функцією «Копіювати адреси».",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Надто багато одержувачів для поштового клієнта ({{count}} > {{max}}). Натомість скористайтеся функцією «Копіювати адреси».",
-    "{{count}} min left": "{{count}} хвилина залишилась"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   },
   "other": {
-    "Copied {{count}} members": "Скопійовано {{count}} парафіян",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Цей список містить {{count}} одержувачів — надто багато для посилання mailto:. Натомість скористайтеся функцією «Копіювати адреси».",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Надто багато одержувачів для поштового клієнта ({{count}} > {{max}}). Натомість скористайтеся функцією «Копіювати адреси».",
-    "{{count}} min left": "{{count}} хвилин залишилось"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   }
 }

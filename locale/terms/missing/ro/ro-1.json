@@ -1,17 +1,17 @@
 {
-  "Important": "Important",
-  "Major": "Major",
-  "Catalog": "Catalog",
+  "Important": "",
+  "Major": "",
+  "Catalog": "",
   "one": {
-    "Copied {{count}} members": "A fost copiat {{count}} membru",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Această listă are {{count}} destinatar — prea mulți pentru un link mailto:. Folosiți în schimb Copiați adresele.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți în schimb Copiați adresele.",
-    "{{count}} min left": "A mai rămas {{count}} minut"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   },
   "other": {
-    "Copied {{count}} members": "Au fost copiați {{count}} membri",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Această listă are {{count}} destinatari — prea mulți pentru un link mailto:. Folosiți în schimb Copiați adresele.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți în schimb Copiați adresele.",
-    "{{count}} min left": "Au mai rămas {{count}} minute"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   }
 }

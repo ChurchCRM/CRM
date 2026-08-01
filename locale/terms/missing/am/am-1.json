@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "{{count}} አባል ተቀድቷል",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "ይህ ዝርዝር {{count}} ተቀባይ አለው — ለ mailto: አገናኝ በጣም ብዙ ነው። ይልቁን አድራሻዎችን ቅዳ ይጠቀሙ።",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባዮች ({{count}} > {{max}})። ይልቁን አድራሻዎችን ቅዳ ይጠቀሙ።",
-    "{{count}} min left": "{{count}} ደቂቃ ቀርቷል"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   },
   "other": {
-    "Copied {{count}} members": "{{count}} አባላት ተቀድተዋል",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "ይህ ዝርዝር {{count}} ተቀባዮች አሉት — ለ mailto: አገናኝ በጣም ብዙ ናቸው። ይልቁን አድራሻዎችን ቅዳ ይጠቀሙ።",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባዮች ({{count}} > {{max}})። ይልቁን አድራሻዎችን ቅዳ ይጠቀሙ።",
-    "{{count}} min left": "{{count}} ደቂቃዎች ቀርተዋል"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   }
 }

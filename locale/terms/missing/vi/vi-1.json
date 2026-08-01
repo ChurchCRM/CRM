@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "Da sao chep {{count}} thanh vien",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Danh sach nay co {{count}} nguoi nhan — qua nhieu cho lien ket mailto:. Vui long su dung Sao chep dia chi.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Qua nhieu nguoi nhan cho ung dung email ({{count}} > {{max}}). Vui long su dung Sao chep dia chi.",
-    "{{count}} min left": "Con {{count}} phut"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   },
   "other": {
-    "Copied {{count}} members": "Da sao chep {{count}} thanh vien",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Danh sach nay co {{count}} nguoi nhan — qua nhieu cho lien ket mailto:. Vui long su dung Sao chep dia chi.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Qua nhieu nguoi nhan cho ung dung email ({{count}} > {{max}}). Vui long su dung Sao chep dia chi.",
-    "{{count}} min left": "Con {{count}} phut"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   }
 }

@@ -1,20 +1,20 @@
 {
   "%d archived fundraiser": {
-    "other": "%d 个已归档的募款活动"
+    "other": ""
   },
   "%d person successfully added to selected family.": {
-    "other": "%d 人已成功添加到所选家庭。"
+    "other": ""
   },
   "one": {
-    "Copied {{count}} members": "已复制 {{count}} 位成员",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "此列表有 {{count}} 位收件人——对于 mailto: 链接来说太多了。请改用复制地址。",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "电子邮件客户端的收件人过多（{{count}} > {{max}}）。请改用复制地址。",
-    "{{count}} min left": "剩余 {{count}} 分钟"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   },
   "other": {
-    "Copied {{count}} members": "已复制 {{count}} 位成员",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "此列表有 {{count}} 位收件人——对于 mailto: 链接来说太多了。请改用复制地址。",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "电子邮件客户端的收件人过多（{{count}} > {{max}}）。请改用复制地址。",
-    "{{count}} min left": "剩余 {{count}} 分钟"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   }
 }

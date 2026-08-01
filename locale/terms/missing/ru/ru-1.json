@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "Скопирован {{count}} участник",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "В этом списке {{count}} получатель — слишком много для ссылки mailto:. Используйте «Копировать адреса».",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Слишком много получателей для почтового клиента ({{count}} > {{max}}). Используйте «Копировать адреса».",
-    "{{count}} min left": "Осталась {{count}} минута"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   },
   "other": {
-    "Copied {{count}} members": "Скопировано {{count}} участников",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "В этом списке {{count}} получателей — слишком много для ссылки mailto:. Используйте «Копировать адреса».",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Слишком много получателей для почтового клиента ({{count}} > {{max}}). Используйте «Копировать адреса».",
-    "{{count}} min left": "Осталось {{count}} минут"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   }
 }

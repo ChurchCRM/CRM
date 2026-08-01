@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "{{count}} सदस्य कॉपी किया गया",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "इस सूची में {{count}} प्राप्तकर्ता है — mailto: लिंक के लिए बहुत अधिक। इसके बजाय पते कॉपी करें का उपयोग करें।",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "ईमेल क्लाइंट के लिए बहुत अधिक प्राप्तकर्ता ({{count}} > {{max}})। इसके बजाय पते कॉपी करें का उपयोग करें।",
-    "{{count}} min left": "{{count}} मिनट शेष"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   },
   "other": {
-    "Copied {{count}} members": "{{count}} सदस्य कॉपी किए गए",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "इस सूची में {{count}} प्राप्तकर्ता हैं — mailto: लिंक के लिए बहुत अधिक। इसके बजाय पते कॉपी करें का उपयोग करें।",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "ईमेल क्लाइंट के लिए बहुत अधिक प्राप्तकर्ता ({{count}} > {{max}})। इसके बजाय पते कॉपी करें का उपयोग करें।",
-    "{{count}} min left": "{{count}} मिनट शेष"
+    "Copied {{count}} members": "",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{count}} min left": ""
   }
 }
