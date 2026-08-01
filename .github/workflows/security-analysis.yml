@@ -83,17 +83,7 @@ jobs:
 
       - name: Run Semgrep
         uses: returntocorp/semgrep-action@v1
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
         with:
-          config: >-
-            p/security-audit
-            p/owasp-top-ten
-            p/php
-          generateSarif: "true"
-
-      - name: Upload Semgrep results to GitHub Security tab
-        if: always()
-        uses: github/codeql-action/upload-sarif@v4
-        with:
-          sarif_file: semgrep.sarif
-          category: 'semgrep'
-          wait-for-processing: true
+          config: p/security-audit
