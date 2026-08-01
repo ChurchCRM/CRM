@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "{{count}}명의 교인을 복사했습니다",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "이 목록에는 수신자가 {{count}}명 있습니다 — mailto: 링크에 사용하기에 너무 많습니다. 대신 주소 복사를 사용하세요.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "이메일 클라이언트에 수신자가 너무 많습니다 ({{count}} > {{max}}). 대신 주소 복사를 사용하세요.",
+    "{{count}} min left": "{{count}}분 남음"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "{{count}}명의 교인을 복사했습니다",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "이 목록에는 수신자가 {{count}}명 있습니다 — mailto: 링크에 사용하기에 너무 많습니다. 대신 주소 복사를 사용하세요.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "이메일 클라이언트에 수신자가 너무 많습니다 ({{count}} > {{max}}). 대신 주소 복사를 사용하세요.",
+    "{{count}} min left": "{{count}}분 남음"
   }
 }
