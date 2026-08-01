@@ -67,7 +67,14 @@ class Menu
         
         // Allow plugins to add top-level menus via the MENU_BUILDING hook
         $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
-        
+
+        // Ensure Admin is always last (at bottom of nav) by moving it to the end
+        if ($isAdmin && isset($menus['Admin'])) {
+            $admin = $menus['Admin'];
+            unset($menus['Admin']);
+            $menus['Admin'] = $admin;
+        }
+
         return $menus;
 
     }

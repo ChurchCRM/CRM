@@ -1,15 +1,15 @@
 {
-  "Check-out": "",
+  "Check-out": "Check-out",
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Copiato {{count}} membro",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Questa lista ha {{count}} destinatario — troppi per un link mailto:. Usa Copia indirizzi.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Troppi destinatari per il client email ({{count}} > {{max}}). Usa Copia indirizzi.",
+    "{{count}} min left": "{{count}} min rimanente"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Copiati {{count}} membri",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Questa lista ha {{count}} destinatari — troppi per un link mailto:. Usa Copia indirizzi.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Troppi destinatari per il client email ({{count}} > {{max}}). Usa Copia indirizzi.",
+    "{{count}} min left": "{{count}} min rimanenti"
   }
 }
