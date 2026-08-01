@@ -109,6 +109,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         // Provide a family (required by the new pledge editor form)
         cy.get("#FamilyID").invoke("val", "1");
 
+        cy.get("#Method").select("CHECK");
         cy.get(".fund-select").first().select(1);
         cy.get("#CheckNo").type(checkNumber); // Fill check number first
 
@@ -155,6 +156,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         // Provide a family (required by the new pledge editor form)
         cy.get("#FamilyID").invoke("val", "1");
 
+        cy.get("#Method").select("CHECK");
         cy.get("#CheckNo").type(checkNumber); // Fill check number first
 
         // Fill payment form with multiple funds
