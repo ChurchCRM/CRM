@@ -298,7 +298,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         var csrfInput = document.createElement('input');
                         csrfInput.type = 'hidden';
                         csrfInput.name = 'csrf_token';
-                        csrfInput.value = <?= json_encode(CSRFUtils::generateToken('deletePersonCustomField')) ?>;
+                        csrfInput.value = <?= json_encode(CSRFUtils::generateToken('personCustomFieldsAction')) ?>;
                         form.appendChild(csrfInput);
 
                         document.body.appendChild(form);

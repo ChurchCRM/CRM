@@ -304,7 +304,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                     var csrfInput = document.createElement('input');
                     csrfInput.type = 'hidden';
                     csrfInput.name = 'csrf_token';
-                    csrfInput.value = <?= json_encode(CSRFUtils::generateToken('deleteFamilyCustomField')) ?>;
+                    csrfInput.value = <?= json_encode(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>;
                     form.appendChild(csrfInput);
 
                     document.body.appendChild(form);
