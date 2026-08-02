@@ -188,6 +188,33 @@ function loadEnglishOkAllowlist() {
     }
 }
 
+// ── Plural form restructuring ───────────────────────────────────────────────
+
+/**
+ * Defensive restructure for malformed plural forms from POEditor export.
+ * If batch file has top-level "one"/"other", fixes to proper nesting.
+ */
+function restructurePluralForms(data) {
+    if (!data.one && !data.other) return data;
+    if (typeof data.one === 'object' && typeof data.other === 'object') {
+        const restructured = {};
+        for (const [key, value] of Object.entries(data)) {
+            if (key !== 'one' && key !== 'other' && typeof value === 'string') {
+                restructured[key] = value;
+            }
+        }
+        const termKeys = new Set([...Object.keys(data.one || {}), ...Object.keys(data.other || {})]);
+        for (const term of termKeys) {
+            const pluralForms = {};
+            if (data.one != null && data.one[term] !== undefined && data.one[term] !== null) pluralForms.one = data.one[term];
+            if (data.other != null && data.other[term] !== undefined && data.other[term] !== null) pluralForms.other = data.other[term];
+            if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
+        }
+        return restructured;
+    }
+    return data;
+}
+
 // ── Term analysis ────────────────────────────────────────────────────────────
 
 /**
@@ -229,7 +256,8 @@ function isNotIdenticalToKey(termKey, value) {
  * @param {Set<string>} [englishOkSet] - optional set of terms safe to upload as-is
  */
 function analyzeFile(filePath, englishOkSet = new Set()) {
-    const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    let raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    raw = restructurePluralForms(raw); // Defensive: fix malformed plural structure if present
     const localizedTerms = {};
     const suspectTerms = {};
     const emptyTerms = {};
