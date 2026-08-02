@@ -82,33 +82,47 @@ function ValidateInput()
         extract($aRow);
 
         // Is the value required?
+        $runLegacySwitch = false;
         if ($qrp_Required && empty($_POST[$qrp_Alias])) {
             $bError = true;
             $aErrorText[$qrp_Alias] = gettext('This value is required.');
         } elseif ((int)$qrp_Type === 1) {
-            // SELECT-type parameters (qrp_Type=1) are backed by the server-side option
-            // list in queryparameteroptions_qpo. The whitelist IS the security control:
-            // only values that exist in that table are accepted. This correctly handles
-            // SQL-expression-valued options (e.g. CONCAT(...) for "Name") that a regex
-            // identifier check would reject. An is_string() guard (M2) prevents an
-            // array-injection PHP TypeError before the in_array() check runs.
+            // SELECT-type parameters are validated against the server-side whitelist in
+            // queryparameteroptions_qpo. If no option rows exist for this parameter
+            // (e.g. a custom query with qrp_Type=1 but no qpo rows), fall through to
+            // the legacy switch block to preserve pre-PR behaviour.
             $sOptSQL = 'SELECT qpo_Value FROM queryparameteroptions_qpo WHERE qpo_qrp_ID = ' . (int)$qrp_ID;
             $rsOpts = RunQuery($sOptSQL);
             $allowedValues = [];
-            while ($optRow = mysqli_fetch_array($rsOpts)) {
-                $allowedValues[] = $optRow['qpo_Value'];
+            if ($rsOpts) {                                          // LOW 1: guard RunQuery result
+                while ($optRow = mysqli_fetch_array($rsOpts)) {
+                    $allowedValues[] = $optRow['qpo_Value'];
+                }
             }
-            $submittedValue = $_POST[$qrp_Alias] ?? null;
-            if (!is_string($submittedValue) || !in_array($submittedValue, $allowedValues, true)) {
-                $bError = true;
-                $aErrorText[$qrp_Alias] = gettext('This value is not a valid option.');
+            if (!empty($allowedValues)) {
+                // Whitelist available — validate against it.
+                // is_string() guard (M2) prevents PHP 8 TypeError on array POST input.
+                $submittedValue = $_POST[$qrp_Alias] ?? null;
+                if (!$qrp_Required && ($submittedValue === '' || $submittedValue === null)) {
+                    // Optional param submitted empty — allow it
+                    $vPOST[$qrp_Alias] = '';
+                } elseif (!is_string($submittedValue) || !in_array($submittedValue, $allowedValues, true)) {
+                    $bError = true;
+                    $aErrorText[$qrp_Alias] = gettext('This value is not a valid option.');
+                } else {
+                    // Validated against whitelist; store verbatim for SQL substitution
+                    // (M1: written to $vPOST only on success).
+                    $vPOST[$qrp_Alias] = $submittedValue;
+                }
             } else {
-                // Value validated against the server-side whitelist; store as-is for
-                // verbatim SQL substitution — no quoting or escaping needed (M1: only
-                // written to $vPOST on success).
-                $vPOST[$qrp_Alias] = $submittedValue;
+                // No qpo rows — fall through to legacy switch below
+                $runLegacySwitch = true;
             }
         } else {
+            $runLegacySwitch = true;
+        }
+
+        if ($runLegacySwitch) {
             // Validate differently depending on the contents of the qrp_Validation field
             switch ($qrp_Validation) {
                 // Numeric validation
@@ -177,7 +191,7 @@ function ProcessSQL()
         // Replace the placeholder with the parameter value
         // GHSA-qc2c-qmw4-52fp: SELECT-type (qrp_Type=1) values were already validated
         // against the server-side whitelist in queryparameteroptions_qpo; substitute
-        // verbatim. All other values go through real_escape_string quoting.
+        // verbatim. All other values: strings are real_escape_string-quoted, numerics are substituted unquoted.
         $isWhitelisted = ((int)$qrp_Type === 1);
         $qrp_Value = escapeQueryParameter($vPOST[$qrp_Alias], $cnInfoCentral, $isWhitelisted);
         $qry_SQL = str_replace('~' . $qrp_Alias . '~', $qrp_Value, $qry_SQL);
@@ -190,11 +204,9 @@ function ProcessSQL()
 function escapeQueryParameter($value, $connection, $isWhitelisted = false)
 {
     if ($isWhitelisted) {
-        // The whitelist in queryparameteroptions_qpo is the security control;
-        // values may be SQL expressions (e.g. CONCAT(...)) that must not be quoted.
-        if (is_array($value)) {
-            return implode(',', array_map('strval', $value));
-        }
+        // Value was validated against queryparameteroptions_qpo whitelist in ValidateInput();
+        // option values may be SQL expressions (e.g. CONCAT(...)) — substitute verbatim.
+        // Only scalar strings reach here (is_string() enforced upstream).
         return (string)$value;
     }
 
