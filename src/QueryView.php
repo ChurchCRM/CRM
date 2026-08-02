@@ -88,35 +88,32 @@ function ValidateInput()
             $aErrorText[$qrp_Alias] = gettext('This value is required.');
         } elseif ((int)$qrp_Type === 1) {
             // SELECT-type parameters are validated against the server-side whitelist in
-            // queryparameteroptions_qpo. If no option rows exist for this parameter
-            // (e.g. a custom query with qrp_Type=1 but no qpo rows), fall through to
-            // the legacy switch block to preserve pre-PR behaviour.
+            // queryparameteroptions_qpo. A type=1 param with no qpo rows is
+            // misconfigured — fail safe (reject) rather than fall through to the legacy
+            // switch, which would cause ProcessSQL() to substitute the value verbatim
+            // (via $isWhitelisted = qrp_Type===1) without it having been whitelisted.
             $sOptSQL = 'SELECT qpo_Value FROM queryparameteroptions_qpo WHERE qpo_qrp_ID = ' . (int)$qrp_ID;
             $rsOpts = RunQuery($sOptSQL);
             $allowedValues = [];
-            if ($rsOpts) {                                          // LOW 1: guard RunQuery result
+            if ($rsOpts) {
                 while ($optRow = mysqli_fetch_array($rsOpts)) {
                     $allowedValues[] = $optRow['qpo_Value'];
                 }
             }
-            if (!empty($allowedValues)) {
-                // Whitelist available — validate against it.
-                // is_string() guard (M2) prevents PHP 8 TypeError on array POST input.
-                $submittedValue = $_POST[$qrp_Alias] ?? null;
-                if (!$qrp_Required && ($submittedValue === '' || $submittedValue === null)) {
-                    // Optional param submitted empty — allow it
-                    $vPOST[$qrp_Alias] = '';
-                } elseif (!is_string($submittedValue) || !in_array($submittedValue, $allowedValues, true)) {
-                    $bError = true;
-                    $aErrorText[$qrp_Alias] = gettext('This value is not a valid option.');
-                } else {
-                    // Validated against whitelist; store verbatim for SQL substitution
-                    // (M1: written to $vPOST only on success).
-                    $vPOST[$qrp_Alias] = $submittedValue;
-                }
+            // Null-coalescing captures missing POST keys; is_string() guard (M2)
+            // prevents PHP 8 TypeError on array POST input before in_array() runs.
+            $submittedValue = $_POST[$qrp_Alias] ?? null;
+            if (!$qrp_Required && ($submittedValue === '' || $submittedValue === null)) {
+                // Optional param submitted empty — allow regardless of whitelist state
+                $vPOST[$qrp_Alias] = '';
+            } elseif (empty($allowedValues) || !is_string($submittedValue) || !in_array($submittedValue, $allowedValues, true)) {
+                // No whitelist rows (misconfigured) or value not in whitelist — reject
+                $bError = true;
+                $aErrorText[$qrp_Alias] = gettext('This value is not a valid option.');
             } else {
-                // No qpo rows — fall through to legacy switch below
-                $runLegacySwitch = true;
+                // Validated against whitelist; store verbatim for SQL substitution
+                // (M1: written to $vPOST only on success).
+                $vPOST[$qrp_Alias] = $submittedValue;
             }
         } else {
             $runLegacySwitch = true;
