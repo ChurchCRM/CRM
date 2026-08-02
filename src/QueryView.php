@@ -201,9 +201,13 @@ function ProcessSQL()
 function escapeQueryParameter($value, $connection, $isWhitelisted = false)
 {
     if ($isWhitelisted) {
-        // Value was validated against queryparameteroptions_qpo whitelist in ValidateInput();
-        // option values may be SQL expressions (e.g. CONCAT(...)) — substitute verbatim.
-        // Only scalar strings reach here (is_string() enforced upstream).
+        // Value validated against queryparameteroptions_qpo whitelist; may be a SQL
+        // expression (e.g. CONCAT(...)). Substitute verbatim — only scalar strings
+        // reach here (is_string() enforced upstream).
+        // Empty string (optional param, nothing selected) → quoted empty literal.
+        if ((string)$value === '') {
+            return "''";
+        }
         return (string)$value;
     }
 
