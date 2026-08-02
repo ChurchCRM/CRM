@@ -98,14 +98,15 @@ function ValidateInput()
             while ($optRow = mysqli_fetch_array($rsOpts)) {
                 $allowedValues[] = $optRow['qpo_Value'];
             }
-            if (!is_string($_POST[$qrp_Alias]) || !in_array($_POST[$qrp_Alias], $allowedValues, true)) {
+            $submittedValue = $_POST[$qrp_Alias] ?? null;
+            if (!is_string($submittedValue) || !in_array($submittedValue, $allowedValues, true)) {
                 $bError = true;
                 $aErrorText[$qrp_Alias] = gettext('This value is not a valid option.');
             } else {
                 // Value validated against the server-side whitelist; store as-is for
                 // verbatim SQL substitution — no quoting or escaping needed (M1: only
                 // written to $vPOST on success).
-                $vPOST[$qrp_Alias] = $_POST[$qrp_Alias];
+                $vPOST[$qrp_Alias] = $submittedValue;
             }
         } else {
             // Validate differently depending on the contents of the qrp_Validation field
