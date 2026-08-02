@@ -37,7 +37,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Use Node.js (from .nvmrc)
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
@@ -65,7 +65,7 @@ jobs:
           ref: ${{ github.head_ref }}
           persist-credentials: true
       - name: Use Node.js (from .nvmrc)
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'

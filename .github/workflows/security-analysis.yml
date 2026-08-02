@@ -82,8 +82,21 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Run Semgrep
-        uses: returntocorp/semgrep-action@v1
-        env:
-          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+        run: |
+          pip install semgrep
+          semgrep scan \
+            --config p/security-audit \
+            --config p/owasp-top-ten \
+            --config p/php \
+            --sarif \
+            --output semgrep.sarif \
+            --error
+        continue-on-error: true
+
+      - name: Upload Semgrep results to GitHub Security tab
+        if: always() && hashFiles('semgrep.sarif') != ''
+        uses: github/codeql-action/upload-sarif@v4.37.3
         with:
-          config: p/security-audit
+          sarif_file: semgrep.sarif
+          category: semgrep
+          wait-for-processing: true
