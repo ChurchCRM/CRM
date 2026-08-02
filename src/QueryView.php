@@ -125,6 +125,16 @@ function ValidateInput()
                     $vPOST[$qrp_Alias] = InputUtils::legacyFilterInput($_POST[$qrp_Alias]);
                     break;
 
+                // Identifier validation (column/field names)
+                case 'i':
+                    // Validate that the value is a safe MySQL identifier (letters, digits, underscores only)
+                    if (!preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $_POST[$qrp_Alias])) {
+                        $bError = true;
+                        $aErrorText[$qrp_Alias] = gettext('This value must be a valid field name.');
+                    }
+                    $vPOST[$qrp_Alias] = $_POST[$qrp_Alias];
+                    break;
+
                 default:
                     // Sanitize input to prevent SQL injection
                     $vPOST[$qrp_Alias] = InputUtils::sanitizeText($_POST[$qrp_Alias]);
@@ -154,30 +164,38 @@ function ProcessSQL()
 
         // Replace the placeholder with the parameter value
         // GHSA-qc2c-qmw4-52fp: Properly escape values before SQL substitution to prevent injection
-        $qrp_Value = escapeQueryParameter($vPOST[$qrp_Alias], $cnInfoCentral);
+        $isIdentifier = ($qrp_Validation === 'i');
+        $qrp_Value = escapeQueryParameter($vPOST[$qrp_Alias], $cnInfoCentral, $isIdentifier);
         $qry_SQL = str_replace('~' . $qrp_Alias . '~', $qrp_Value, $qry_SQL);
     }
 }
 
 // Helper function to safely escape and format query parameters
-function escapeQueryParameter($value, $connection)
+function escapeQueryParameter($value, $connection, $isIdentifier = false)
 {
+    if ($isIdentifier) {
+        if (is_array($value)) {
+            $escaped = array_map(fn($val) =>
+                '`' . str_replace('`', '``', (string)$val) . '`',
+                $value
+            );
+            return implode(',', $escaped);
+        }
+        return '`' . str_replace('`', '``', (string)$value) . '`';
+    }
+
     if (is_array($value)) {
-        // For arrays, escape each element and quote it, then join with commas
         $escapedValues = array_map(function($val) use ($connection) {
-            return"'" . $connection->real_escape_string((string)$val) ."'";
+            return "'" . $connection->real_escape_string((string)$val) . "'";
         }, $value);
         return implode(',', $escapedValues);
     }
-    
-    // For single values, determine if numeric or string
+
     if (is_numeric($value)) {
-        // Numeric values don't need quotes
         return (string)$value;
     }
-    
-    // String values need quotes and escaping
-    return"'" . $connection->real_escape_string((string)$value) ."'";
+
+    return "'" . $connection->real_escape_string((string)$value) . "'";
 }
 
 // Checks if a count is to be displayed, and displays it if required
