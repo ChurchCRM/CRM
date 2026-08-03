@@ -211,8 +211,10 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
                 "moment-with-locales.min.js must be removed (file does not exist on disk)",
             ).not.to.include("moment-with-locales.min.js");
 
-            // FullCalendar's timeZone option must be wired up
-            expect(resp.body).to.include("timeZone:");
+            // FullCalendar's timeZone option must be wired up.
+            // The value is passed as a JSON blob (window.CRM.externalCalendarArgs),
+            // so the key is quoted: '"timeZone":' not 'timeZone:'.
+            expect(resp.body).to.include('"timeZone":');
 
             // --- Framing headers: calendar.php (happy path) ---
             // The page must be embeddable in a cross-origin <iframe>.
