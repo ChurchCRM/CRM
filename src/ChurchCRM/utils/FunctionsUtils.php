@@ -87,6 +87,13 @@ class FunctionsUtils
         if (mysqli_stmt_field_count($stmt) > 0) {
             $result = mysqli_stmt_get_result($stmt);
             mysqli_stmt_close($stmt);
+            if ($result === false) {
+                if ($bStopOnError) {
+                    LoggerUtils::getAppLogger()->error('mysqli_stmt_get_result failed: ' . $sSQL);
+                    throw new \Exception('Database error or invalid data, change sLogLevel to debug to see more.');
+                }
+                return false;
+            }
             return $result;
         }
 

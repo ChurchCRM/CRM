@@ -80,12 +80,15 @@ switch ($sAction) {
             ListOptionQuery::create()->filterById((int)$customField->getSpecial())->delete();
         }
 
-        // Delete the custom field record
-        $customField->delete();
-
-        // Column identifier is regex-validated (^c\d+$) above; DDL identifiers cannot be parameterised.
+        // Drop the column from the person_custom table first (DDL-first order matches original behaviour).
+        // If the ORM delete ran first and ALTER TABLE failed, the master record would be gone
+        // while the physical column with user data remained — an unrecoverable orphan.
+        // $sField is regex-validated (^c\d+$) above; DDL identifiers cannot be parameterised.
         $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '` ;'; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
         RunQuery($sSQL); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+
+        // Delete the custom field record only after the DDL succeeds
+        $customField->delete();
 
         // Fetch remaining custom fields to reorder
         $remainingFields = PersonCustomMasterQuery::create()
