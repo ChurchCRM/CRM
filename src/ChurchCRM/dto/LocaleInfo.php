@@ -38,7 +38,7 @@ class LocaleInfo
                 $this->name = $key;
                 $this->language = $value['languageCode'];
                 $this->country = $value['countryCode'];
-                $this->dataTables = $value['dataTables'];
+                $this->dataTables = $value['dataTables'] ?? null;
                 $this->poLocaleId = $value['poEditor'];
                 $this->localeConfig = $value;
             }
