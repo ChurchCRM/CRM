@@ -1,14 +1,14 @@
 {
   "one": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Αντιγράφηκε {{count}} μέλος",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Αυτή η λίστα έχει {{count}} παραλήπτη — πολύ περισσότεροι για έναν σύνδεσμο mailto:. Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Πολλοί παραλήπτες για το πρόγραμμα email ({{count}} > {{max}}). Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων.",
+    "{{count}} min left": "{{count}} λεπτό απομένει"
   },
   "other": {
-    "Copied {{count}} members": "",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-    "{{count}} min left": ""
+    "Copied {{count}} members": "Αντιγράφηκαν {{count}} μέλη",
+    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Αυτή η λίστα έχει {{count}} παραλήπτες — πολύ περισσότεροι για έναν σύνδεσμο mailto:. Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων.",
+    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Πολλοί παραλήπτες για το πρόγραμμα email ({{count}} > {{max}}). Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων.",
+    "{{count}} min left": "{{count}} λεπτά απομένουν"
   }
 }

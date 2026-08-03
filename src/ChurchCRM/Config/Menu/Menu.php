@@ -53,7 +53,13 @@ class Menu
             $menus['Email'] = $menus['Communication'];
         }
 
-        // Add plugin menu items to their parent menus
+        // Admin menu is always last (at bottom of nav)
+        if ($isAdmin) {
+            $menus['Admin'] = self::getAdminMenu($isAdmin);
+        }
+
+        // Add plugin menu items to their parent menus (must run after Admin menu is set,
+        // so plugins can attach submenu items to the Admin menu)
         self::addPluginMenuItems($menus);
 
         // Remove the backward-compat alias so it doesn't appear as a duplicate menu
@@ -61,12 +67,14 @@ class Menu
         
         // Allow plugins to add top-level menus via the MENU_BUILDING hook
         $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
-        
-        // Admin menu is always last (at bottom of nav)
-        if ($isAdmin) {
-            $menus['Admin'] = self::getAdminMenu($isAdmin);
+
+        // Ensure Admin is always last (at bottom of nav) by moving it to the end
+        if ($isAdmin && isset($menus['Admin'])) {
+            $admin = $menus['Admin'];
+            unset($menus['Admin']);
+            $menus['Admin'] = $admin;
         }
-        
+
         return $menus;
 
     }
