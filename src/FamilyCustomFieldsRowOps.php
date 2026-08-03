@@ -84,10 +84,10 @@ switch ($sAction) {
         // Delete the custom field record
         $customField->delete();
 
-        // Drop the column from the family_custom table (DDL — column name is regex-validated above)
-        // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
-        $sSQL = 'ALTER TABLE `family_custom` DROP IF EXISTS `' . $sField . '` ;';
-        RunQuery($sSQL);
+        // Drop the column from the family_custom table; $sField is regex-validated (^c\d+$) above.
+        // DDL identifiers cannot be parameterised — this is a controlled false positive.
+        $sSQL = 'ALTER TABLE `family_custom` DROP IF EXISTS `' . $sField . '` ;'; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+        RunQuery($sSQL); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
         // Fetch remaining custom fields to reorder
         $remainingFields = FamilyCustomMasterQuery::create()

@@ -169,9 +169,8 @@ if (isset($_POST['SaveChanges'])) {
                 $familyCustomMaster->save();
 
                 // Insert into the custom fields table
-                // $newFieldNum is always an integer derived from existing column names; DDL identifiers cannot be parameterised.
-                // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
-                $sSQL = 'ALTER TABLE `family_custom` ADD `c' . $newFieldNum . '` ';
+                // $newFieldNum is (int)-cast from a DB column count; DDL identifiers cannot be parameterised.
+                $sSQL = 'ALTER TABLE `family_custom` ADD `c' . $newFieldNum . '` '; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
                 switch ($newFieldType) {
                     case 1:
@@ -212,7 +211,7 @@ if (isset($_POST['SaveChanges'])) {
                 }
 
                 $sSQL .= ' DEFAULT NULL ;';
-                RunQuery($sSQL);
+                RunQuery($sSQL); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
                 $bNewNameError = false;
             }
