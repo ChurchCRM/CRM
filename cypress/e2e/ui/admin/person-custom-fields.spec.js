@@ -215,6 +215,16 @@ describe("Family Custom Fields Row Operations — prepared-statement paths (PR #
             expect(response.status).to.equal(405);
         });
     });
+
+    it("delete action rejects GET with 405 (CSRF guard — GHSA-v4x7-hgpq-29r6)", () => {
+        cy.request({
+            method: "GET",
+            url: "FamilyCustomFieldsRowOps.php?Action=delete&Field=c1",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.equal(405);
+        });
+    });
 });
 
 describe("Person Custom Fields Row Operations — prepared-statement paths (PR #9351)", () => {
@@ -239,6 +249,16 @@ describe("Person Custom Fields Row Operations — prepared-statement paths (PR #
             url: "PersonCustomFieldsRowOps.php?Action=down&OrderID=1&Field=c1",
             failOnStatusCode: false,
             followRedirect: false,
+        }).then((response) => {
+            expect(response.status).to.equal(405);
+        });
+    });
+
+    it("delete action rejects GET with 405 (CSRF guard — GHSA-v4x7-hgpq-29r6)", () => {
+        cy.request({
+            method: "GET",
+            url: "PersonCustomFieldsRowOps.php?Action=delete&Field=c1",
+            failOnStatusCode: false,
         }).then((response) => {
             expect(response.status).to.equal(405);
         });
