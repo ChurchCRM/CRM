@@ -1,18 +1,18 @@
 {
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Αντιγράφηκε {{count}} μέλος",
+    "other": "Αντιγράφηκαν {{count}} μέλη"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Αυτή η λίστα έχει {{count}} παραλήπτη — πολύ πολλοί για έναν σύνδεσμο mailto:. Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων.",
+    "other": "Αυτή η λίστα έχει {{count}} παραλήπτες — πολύ πολλοί για έναν σύνδεσμο mailto:. Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Πάρα πολλοί παραλήπτες για το πρόγραμμα ηλεκτρονικού ταχυδρομείου ({{count}} > {{max}}). Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων.",
+    "other": "Πάρα πολλοί παραλήπτες για το πρόγραμμα ηλεκτρονικού ταχυδρομείου ({{count}} > {{max}}). Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Απομένει {{count}} λεπτό",
+    "other": "Απομένουν {{count}} λεπτά"
   }
 }

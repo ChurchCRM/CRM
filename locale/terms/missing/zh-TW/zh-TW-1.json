@@ -1,18 +1,18 @@
 {
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "已複製 {{count}} 位會員",
+    "other": "已複製 {{count}} 位會員"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "此清單有 {{count}} 位收件人——對 mailto: 連結而言過多，請改用「複製地址」。",
+    "other": "此清單有 {{count}} 位收件人——對 mailto: 連結而言過多，請改用「複製地址」。"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "收件人數對電子郵件用戶端而言過多（{{count}} > {{max}}），請改用「複製地址」。",
+    "other": "收件人數對電子郵件用戶端而言過多（{{count}} > {{max}}），請改用「複製地址」。"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "剩餘 {{count}} 分鐘",
+    "other": "剩餘 {{count}} 分鐘"
   }
 }
