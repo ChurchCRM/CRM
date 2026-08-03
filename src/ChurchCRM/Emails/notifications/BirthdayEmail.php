@@ -35,7 +35,7 @@ class BirthdayEmail extends BaseEmail
         $body = gettext('Happy Birthday') . ', ' . $this->person->getFullName() . '!';
         $body .= "\n\n";
         if ($age !== null) {
-            $body .= sprintf(gettext('Wishing you a wonderful %d%s birthday!'), $age, $this->getOrdinalSuffix($age));
+            $body .= sprintf(gettext('Wishing you a wonderful %d year birthday!'), $age);
         } else {
             $body .= gettext('Wishing you a wonderful birthday!');
         }
@@ -47,24 +47,6 @@ class BirthdayEmail extends BaseEmail
         ];
 
         return array_merge($this->getCommonTokens(), $myTokens);
-    }
-
-    private function getOrdinalSuffix(int $number): string
-    {
-        if ($number % 100 >= 11 && $number % 100 <= 13) {
-            return 'th';
-        }
-
-        switch ($number % 10) {
-            case 1:
-                return 'st';
-            case 2:
-                return 'nd';
-            case 3:
-                return 'rd';
-            default:
-                return 'th';
-        }
     }
 
     protected function getFullURL(): string
