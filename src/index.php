@@ -6,30 +6,28 @@ require_once __DIR__ . '/vendor/autoload.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\PathUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
 
-// Get required PHP version from composer.json (single source of truth)
-// Throws RuntimeException if system state cannot be determined
-try {
-    $requiredPhp = VersionUtils::getRequiredPhpVersion();
-} catch (\RuntimeException $e) {
-    // System cannot determine PHP requirements - fail loudly with clear error
-    http_response_code(500);
-    header('Content-Type: text/plain; charset=utf-8');
-    echo"Critical System Error:" . $e->getMessage() ."\n\n";
-    echo"Please contact your system administrator or check your ChurchCRM installation.";
-    exit(1);
-}
-
 // Derive install prefix from SCRIPT_NAME — works for root and nested subdir installs.
-// Computed before any redirect so both the PHP-version and setup redirects resolve correctly.
+// Computed before any redirect so the config-error, PHP-version, and setup
+// redirects below all resolve correctly.
 //   /churchcrm/index.php  →  dirname → /churchcrm
 //   /index.php            →  dirname → /  → ''
 $_idx_script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '/index.php');
 $_idx_root   = dirname($_idx_script);
 if ($_idx_root === '/' || $_idx_root === '.') {
     $_idx_root = '';
+}
+
+// Get required PHP version from composer.json (single source of truth)
+// Throws RuntimeException if system state cannot be determined
+try {
+    $requiredPhp = VersionUtils::getRequiredPhpVersion();
+} catch (\RuntimeException $e) {
+    header("Location: {$_idx_root}/errors/config-error.php?error=" . rawurlencode($e->getMessage()));
+    exit;
 }
 
 $phpVersion = phpversion();
@@ -45,36 +43,6 @@ if (file_exists(__DIR__ . '/Include/Config.php')) {
     exit;
 }
 
-mb_internal_encoding('UTF-8');
-
-// Resolve $candidate against $docRoot and return the real, on-disk path only if
-// it exists as a regular .php file *inside* $docRoot. Returns null for anything
-// that escapes $docRoot (e.g. "../" traversal), isn't a .php file, or doesn't
-// resolve to a real file — so non-PHP files (config, .env, images) can never be
-// dumped raw via require().
-function _idx_resolveSafeRequirePath(string $candidate, string $docRoot): ?string
-{
-    if (strtolower(pathinfo($candidate, PATHINFO_EXTENSION)) !== 'php') {
-        return null;
-    }
-
-    $docRootReal = realpath($docRoot);
-    if ($docRootReal === false) {
-        return null;
-    }
-
-    $candidateReal = realpath($docRoot . '/' . $candidate);
-    if ($candidateReal === false || !is_file($candidateReal)) {
-        return null;
-    }
-
-    if (!str_starts_with($candidateReal, $docRootReal . DIRECTORY_SEPARATOR)) {
-        return null;
-    }
-
-    return $candidateReal;
-}
-
 // Get the current request path with query string stripped.
 $_idx_requestPath = strtok($_SERVER['REQUEST_URI'], '?');
 $shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_idx_requestPath);
@@ -83,39 +51,26 @@ $shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_idx_requestPath)
 AuthenticationManager::ensureAuthentication();
 
 // On a fresh install (sChurchName empty), redirect admin users to complete setup.
+// getCurrentUser() is safe to call unguarded here: ensureAuthentication() above
+// already guarantees an authenticated session, or it would have redirected/exited.
 if (empty(SystemConfig::getValue('sChurchName'))) {
-    try {
-        $currentUser = AuthenticationManager::getCurrentUser();
-        if ($currentUser->isAdmin()) {
-            RedirectUtils::redirect('admin/system/church-info');
-        }
-    } catch (\Throwable) {
-        // Not logged in or session error — ensureAuthentication() above handles it
+    $currentUser = AuthenticationManager::getCurrentUser();
+    if ($currentUser->isAdmin()) {
+        RedirectUtils::redirect('admin/system/church-info');
     }
-}
-
-// Legacy URL shims — redirect removed pages to their MVC replacements.
-// $shortName is already the path-only portion, so bookmarks like
-// /UserEditor.php?PersonID=5 resolve correctly.
-if ($shortName === 'UserEditor.php') {
-    if (!empty($_GET['PersonID'])) {
-        RedirectUtils::redirect('admin/system/users/' . (int) $_GET['PersonID'] . '/edit');
-    } elseif (!empty($_GET['NewPersonID'])) {
-        RedirectUtils::redirect('admin/system/users/new?personId=' . (int) $_GET['NewPersonID']);
-    } else {
-        RedirectUtils::redirect('admin/system/users/new');
-    }
-} elseif ($shortName === 'SettingsUser.php') {
-    RedirectUtils::redirect('admin/system/users');
 }
 
 if (strtolower($shortName) === 'index.php') {
     RedirectUtils::redirect('v2/dashboard');
-} elseif (($_idx_safeShortPath = _idx_resolveSafeRequirePath($shortName, SystemURLs::getDocumentRoot())) !== null) {
+} elseif (($_idx_safeShortPath = PathUtils::resolveSafeRequirePath($shortName)) !== null) {
     require $_idx_safeShortPath;
-} elseif (str_contains($_SERVER['REQUEST_URI'], 'js') || str_contains($_SERVER['REQUEST_URI'], 'css')) {
-    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
+} elseif (in_array(strtolower(pathinfo($shortName, PATHINFO_EXTENSION)), ['js', 'css'], true)) {
+    // Missing static asset (e.g. a stale webpack chunk hash after a deploy) —
+    // bare 404, no need for a full error page.
+    http_response_code(404);
     exit;
 } else {
-    RedirectUtils::redirect('index.php');
+    // Self-contained error page (see src/errors/.htaccess) — no Header/Footer
+    // or session/DB state required, same pattern as php-error.php and setup.
+    RedirectUtils::redirect('errors/not-found.php?path=' . rawurlencode($shortName));
 }
