@@ -1,16 +1,20 @@
 {
-  "Code": "Code",
-  "Signature": "Signature",
-  "one": {
-    "Copied {{count}} members": "{{count}} membre copié",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Cette liste contient {{count}} destinataire — trop pour un lien mailto:. Utilisez plutôt Copier les adresses.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez plutôt Copier les adresses.",
-    "{{count}} min left": "{{count}} min restante"
+  "Code": "",
+  "Signature": "",
+  "Copied {{count}} members": {
+    "one": "",
+    "other": ""
   },
-  "other": {
-    "Copied {{count}} members": "{{count}} membres copiés",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Cette liste contient {{count}} destinataires — trop pour un lien mailto:. Utilisez plutôt Copier les adresses.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez plutôt Copier les adresses.",
-    "{{count}} min left": "{{count}} min restantes"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} min left": {
+    "one": "",
+    "other": ""
   }
 }

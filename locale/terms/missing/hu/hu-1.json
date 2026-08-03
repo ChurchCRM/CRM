@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "{{count}} tag másolva",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Ez a lista {{count}} címzettet tartalmaz — túl sok egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Túl sok címzett az e-mail kliensnek ({{count}} > {{max}}). Használja a Címek másolása funkciót.",
-    "{{count}} min left": "{{count}} perc van hátra"
+  "Copied {{count}} members": {
+    "one": "",
+    "other": ""
   },
-  "other": {
-    "Copied {{count}} members": "{{count}} tag másolva",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Ez a lista {{count}} címzettet tartalmaz — túl sok egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Túl sok címzett az e-mail kliensnek ({{count}} > {{max}}). Használja a Címek másolása funkciót.",
-    "{{count}} min left": "{{count}} perc van hátra"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} min left": {
+    "one": "",
+    "other": ""
   }
 }
