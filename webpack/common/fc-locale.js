@@ -16,9 +16,16 @@
  * @returns {Promise<void>}
  */
 export async function applyFcLocale(cal) {
-  // Resolved by locale-loader.js from localeConfig (honours fullCalendarLocale
-  // override for region codes like pt-br vs pt). Falls back to window.CRM.lang.
-  const code = (window.CRM.fcLocaleCode || window.CRM.lang || "").toLowerCase();
+  // window.CRM.fcLocaleCode is set by locale-loader.js:
+  //   - non-empty string → the resolved FC locale code (e.g. "nl", "pt-br")
+  //   - empty string ""  → language is configured but has no FC locale file
+  //   - undefined        → locale-loader hasn't run (e.g. public calendar)
+  // We only fall through to window.CRM.lang when fcLocaleCode is ABSENT (undefined),
+  // not when it is explicitly "" (meaning "no locale available, use English default").
+  const code =
+    window.CRM.fcLocaleCode !== undefined && window.CRM.fcLocaleCode !== ""
+      ? window.CRM.fcLocaleCode.toLowerCase()
+      : (window.CRM.lang || "").toLowerCase();
   // 'en' is the built-in default (no locales/en directory in FC v7); skip loading.
   if (!code || code === "en") return;
   try {
