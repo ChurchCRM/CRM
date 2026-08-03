@@ -91,8 +91,7 @@ if (empty(SystemConfig::getValue('sChurchName'))) {
 // Legacy URL shims — redirect removed pages to their MVC replacements.
 // $shortName is already the path-only portion, so bookmarks like
 // /UserEditor.php?PersonID=5 resolve correctly.
-$_legacyBase = $shortName;
-if ($_legacyBase === 'UserEditor.php') {
+if ($shortName === 'UserEditor.php') {
     if (!empty($_GET['PersonID'])) {
         RedirectUtils::redirect('admin/system/users/' . (int) $_GET['PersonID'] . '/edit');
     } elseif (!empty($_GET['NewPersonID'])) {
@@ -100,17 +99,13 @@ if ($_legacyBase === 'UserEditor.php') {
     } else {
         RedirectUtils::redirect('admin/system/users/new');
     }
-} elseif ($_legacyBase === 'SettingsUser.php') {
+} elseif ($shortName === 'SettingsUser.php') {
     RedirectUtils::redirect('admin/system/users');
 }
-unset($_legacyBase);
-
-$_idx_docRoot = SystemURLs::getDocumentRoot();
-$_idx_safeShortPath = _idx_resolveSafeRequirePath($shortName, $_idx_docRoot);
 
 if (strtolower($shortName) === 'index.php') {
     RedirectUtils::redirect('v2/dashboard');
-} elseif ($_idx_safeShortPath !== null) {
+} elseif (($_idx_safeShortPath = _idx_resolveSafeRequirePath($shortName, SystemURLs::getDocumentRoot())) !== null) {
     require $_idx_safeShortPath;
 } elseif (strpos($_SERVER['REQUEST_URI'], 'js') || strpos($_SERVER['REQUEST_URI'], 'css')) {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
