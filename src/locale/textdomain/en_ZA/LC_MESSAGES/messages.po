@@ -92,18 +92,6 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Cheque number not valid for 'CASH' payment"
 
 #: 
-msgid "Scan check"
-msgstr "Scan cheque"
-
-#: 
-msgid "find family from check account #"
-msgstr "find family from cheque account #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Set default cheque account number for family"
-
-#: 
 msgid "Fall"
 msgstr "Autumn"
 
@@ -142,10 +130,6 @@ msgstr "Cell"
 #: 
 msgid "Localization"
 msgstr "Localisation"
-
-#: 
-msgid "Total $"
-msgstr "Total R"
 
 #: 
 #, fuzzy

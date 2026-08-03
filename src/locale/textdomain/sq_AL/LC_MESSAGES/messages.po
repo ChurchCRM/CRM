@@ -1263,18 +1263,6 @@ msgid "Type of Group"
 msgstr "Lloji i Grupit"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Grupi Rolet anëtare"
-
-#: 
-msgid "Clone roles"
-msgstr "Klon role"
-
-#: 
-msgid "from group"
-msgstr "nga grupi"
-
-#: 
 msgid "Select a group"
 msgstr "Zgjidhni një grup"
 
@@ -1674,16 +1662,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Numri i çekut nuk është i vlefshëm për pagesë me 'PARA NË DORË'"
 
 #: 
-msgid "Deposit closed"
-msgstr "Depozita u mbyll"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Orari Pagesa"
-
-#: 
-msgid "Select Schedule"
-msgstr "Zgjidhni Listën"
 
 #: 
 msgid "Weekly"
@@ -1706,28 +1686,8 @@ msgid "Other"
 msgstr "Tjera"
 
 #: 
-msgid "Payment by"
-msgstr "Pagesa nga"
-
-#: 
-msgid "Scan check"
-msgstr "Kontrolloni Scan"
-
-#: 
-msgid "find family from check account #"
-msgstr "gjeni familjen nga llogaria check #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Set Default Numri i llogarisë kontrolloni për familjen"
-
-#: 
 msgid "Fund Name"
 msgstr "Fondi Emri"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Shuma jo-deductible"
 
 #: 
 msgid "Age"
@@ -2587,10 +2547,6 @@ msgid "Groups"
 msgstr "Grupet"
 
 #: 
-msgid "Total $"
-msgstr "Totali $"
-
-#: 
 msgid "with this property..."
 msgstr "me këtë veçori..."
 
@@ -2715,10 +2671,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Nënshkruesi i raportit të konfirmimit dhe korrigjimit të informacionit"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Teksti për raportin e përmbledhjes së zotimit"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Teksti për raportin e direktorisë"
 
@@ -2782,11 +2734,6 @@ msgstr "Llojet e veçorive"
 #: 
 msgid "Zip Code"
 msgstr "Kodi postar"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Fusha"
 
 #. Context: query_qry
 #: 
@@ -5846,10 +5793,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Shtoni çdo shënim shtesë rreth kësaj depozite"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Shuma tejkalon vlerën maksimale të lejuar (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Çeqe"
 
@@ -5876,10 +5819,6 @@ msgstr "Pa para të gatshme"
 #: 
 msgid "No Checks"
 msgstr "Pa çeqe"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Shuma e pazbritshme tejkalon vlerën maksimale të lejuar (999999.99)."
 
 #: 
 msgid "Payments"
@@ -6492,10 +6431,6 @@ msgid "%d missing role"
 msgstr "%d role që mungojnë"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Një pagesë është një dhurim i pranuar faktikisht. Do të shtohet në depozitën aktuale."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Një zotim është një angazhim për të dhënë. Nuk është i lidhur me një fletë depozite."
 
@@ -6792,10 +6727,6 @@ msgid "Name & Identity"
 msgstr "Emri dhe identiteti"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Do të krijohet depozitë e re"
-
-#: 
 msgid "New Payment"
 msgstr "Pagesë e re"
 
@@ -6914,10 +6845,6 @@ msgstr "Disa parakushte të aplikacionit nuk janë plotësuar"
 #: 
 msgid "State (Other)"
 msgstr "Shteti (Tjetër)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Përmbledhja e zotimeve vs pagesave sipas fondit për vitin fiskal."
 
 #: 
 msgid "System Health"
@@ -8899,10 +8826,6 @@ msgid "Account Recovery"
 msgstr "Rikuperimi i Llogarisë"
 
 #: 
-msgid "Add Family"
-msgstr "Shto Familje"
-
-#: 
 msgid "Add First Family"
 msgstr "Shto Familjën e Parë"
 
@@ -8921,10 +8844,6 @@ msgstr "Shto Shënim"
 #: 
 msgid "Add People to the Family"
 msgstr "Shto Njerëzit në Familje"
-
-#: 
-msgid "Add Person"
-msgstr "Shto Person"
 
 #: 
 msgid "Add Students to Cart"
@@ -9303,10 +9222,6 @@ msgid "Delete Person"
 msgstr "Fshi Person"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Fshi Premtim"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Fshirja e kësaj prone do të hiqet gjithashtu të gjitha caktimet e saj nga ndonjë rekord të Njerëzve, Familjes ose Grupmesionit."
 
@@ -9469,10 +9384,6 @@ msgstr "VF %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Familjet ndajnë një adresë dhe numër telefoni."
-
-#: 
-msgid "Family List"
-msgstr "Lista e Familjes"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9671,10 +9582,6 @@ msgid "Letters and Labels"
 msgstr "Letrat dhe Etiketat"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Lista familjet e krijuara përmes vetë-regjistrimit"
-
-#: 
 msgid "Load demo data"
 msgstr "Ngarko të dhëna demo"
 
@@ -9783,10 +9690,6 @@ msgid "Minimum"
 msgstr "Minimumi"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Modifiko rolet e familjes për anëtarët e grupmesionit"
-
-#: 
 msgid "Move to Group"
 msgstr "Zhvendos në Grupmesion"
 
@@ -9813,10 +9716,6 @@ msgstr "i Ri"
 #: 
 msgid "New Family"
 msgstr "Familje e Re"
-
-#: 
-msgid "New Group"
-msgstr "Grupmesion i Ri"
 
 #: 
 msgid "New Person"
@@ -9931,10 +9830,6 @@ msgstr "Rimëkëmbja e Fjalëkalimit"
 #: 
 msgid "Past & next 7 days"
 msgstr "E kaluara & 7 ditët e ardhshme"
-
-#: 
-msgid "People List"
-msgstr "Lista e Njerëzve"
 
 #: 
 msgid "People by Classification"
@@ -10115,10 +10010,6 @@ msgstr "Zgjidh një skedar rezerve dhe kliko Rivendos Bazën e Të Dhënave."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Zgjidh opsionet tuaja më sipër dhe kliko një buton rezerve."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Raporti i Vetë-Regjistrimit"
 
 #: 
 msgid "Send email to families"
@@ -10681,11 +10572,6 @@ msgstr "Adresa Parazgjedhur"
 msgid "Allow user to add new event"
 msgstr "Lejojuni përdoruesit të shtojnë ngjarje të reja"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Data e fillimit"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Cilësimet e Kalendarit"
@@ -10795,16 +10681,6 @@ msgstr "Listat e email-it sinkronizohen me Mailchimp."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Aktivizoni email në panelin e cilësimeve më poshtë, pastaj konfiguroni serverin tuaj SMTP."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Data e përfundimit"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Futni ndonjë pjesë të mëposhtme: Emri, Qyteti, Shteti, Zip, Telefoni i Shtëpisë, Email, ose Email i Punës."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "API e Kalendarit të Jashtëm i Çaktivizuar"
@@ -10898,11 +10774,6 @@ msgstr "Përputhet fusha e përshtatshme me këtë vlerë"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Mosha Maksimale"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Anëtar i komunitetit të besimtarëve, Vizitor i Rregullt, etj."
 
@@ -10915,11 +10786,6 @@ msgstr "Anëtarët e komunitetit të besimtarëve që u bashkuan në muaj të ve
 #: 
 msgid "Membership anniversaries"
 msgstr "Përvjetorët e anëtarësimit"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Mosha Minimale"
 
 #. Context: query_qry
 #: 
@@ -10993,16 +10859,6 @@ msgstr "Prona e personit e përdorur për të përjashtuar anëtarët e komunite
 msgid "Person property used to exclude members from email lists"
 msgstr "Prona e personit e përdorur për të përjashtuar anëtarët e komunitetit të besimtarëve nga listat e email-it"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Ju lutemi futni datën e fundit për të llogaritur kontributet totale për secilin anëtar të komunitetit të besimtarëve (d.m.th. YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Ju lutemi zgjidhni datën e fillimit për të llogaritur kontributet totale për secilin anëtar të komunitetit të besimtarëve (d.m.th. YYYY-MM-DD). SHËNIM: Mund të zgjidhni vetëm datat që përmbajnë donacione."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11051,11 +10907,6 @@ msgstr "SMTP Jo i Konfiguruar"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Kërko"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Viti i dytë Financiar"
 
@@ -11068,16 +10919,6 @@ msgstr "Viti i dytë financiar për krahasim"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Zgjedhja e dytë e mundësisë pë voluntareve"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Zgjedh fushën për të kërkuar."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Zgjedh rolin e dëshiruar të familjes."
 
 #: 
 msgid "Send text message"
@@ -11118,38 +10959,13 @@ msgstr "Muaji i ditëlindjes për të cilin dëshiron që të rekordet të ktheh
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Gjinia e dëshiruar për të kërkuar në bazë të të dhënave."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Gjinia për të cilën dëshiron që të rekordet të kthehet."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Mosha maksimale për të cilën dëshiron që të rekordet të kthehet."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Muaji i ndërrimit të anëtarësimit për të cilin dëshiron që të rekordet të kthehet."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Mosha minimale për të cilën dëshiron që të rekordet të kthehet."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Prona për të cilën dëshiron që të rekorde persone të kthehet."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Klasa e të dielës për të cilën dëshiron që të rekordet të kthehet."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11185,11 +11001,6 @@ msgstr "Vonage SMS Jo i Konfiguruar"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Pa Vonage, veprimet e tekstit do të hapim aplikacionin nativo SMS të pajisjes suaj ose do të kopjojme numrat e telefonit në clipboard."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "E-posta e Punës"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11511,10 +11322,6 @@ msgstr "Veçoritë"
 #: 
 msgid "Finance permission query IDs"
 msgstr "ID-të e pyetësorëve me leje financiare"
-
-#: 
-msgid "Find family"
-msgstr "Gjej familjen"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13617,10 +13424,6 @@ msgstr "Ngarkoni një CSV për të krijuar familje dhe persona në masë."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-ja juaj ka emra kolonash të dublifikuar. Riemërtoni kolonat e dublifikuara (p.sh. shtoni \"(2)\" të dytës) dhe ngarkoni përsëri."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Tokeni i sigurisë është i pavlefshëm. Ju lutemi provoni përsëri."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13652,10 +13455,6 @@ msgstr "Festat (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Festat janë etiketuar sipas llojit: Zyrtare, Vëzhgime, Festa bankare, Stinore dhe Fetare. Lini të gjitha kategoritë të pazgjedhura për të shfaqur çdo festë, ose zgjidhni lloje specifike për të ngushtuar shfaqjen."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Identifikuesi i angazhimit financiar mungon."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16793,10 +16592,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s i familjes %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d regjistrime të tjera do të përshtaten."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d regjistrim(e) u kthyen"
 
@@ -16895,10 +16690,6 @@ msgstr "Shuma minimale totale"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Oferta minimale $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Pagesë e re - %1$s Depozitë # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

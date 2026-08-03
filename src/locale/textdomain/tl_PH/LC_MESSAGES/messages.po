@@ -1245,18 +1245,6 @@ msgid "Type of Group"
 msgstr "Uri ng Grupo"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Mga Papel ng Miyembro ng Grupo"
-
-#: 
-msgid "Clone roles"
-msgstr "Kopyahin ang mga papel"
-
-#: 
-msgid "from group"
-msgstr "mula sa grupo"
-
-#: 
 msgid "Select a group"
 msgstr "Pumili ng grupo"
 
@@ -1653,16 +1641,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Ang numero ng tseke ay hindi wasto para sa pagbabayad na 'CASH'"
 
 #: 
-msgid "Deposit closed"
-msgstr "Deposito ay sarado na"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Iskedyul ng Pagbabayad"
-
-#: 
-msgid "Select Schedule"
-msgstr "Pumili ng Iskedyul"
 
 #: 
 msgid "Weekly"
@@ -1685,28 +1665,8 @@ msgid "Other"
 msgstr "Iba pa"
 
 #: 
-msgid "Payment by"
-msgstr "Pagbabayad ni"
-
-#: 
-msgid "Scan check"
-msgstr "I-scan ang tseke"
-
-#: 
-msgid "find family from check account #"
-msgstr "hanapin ang pamilya mula sa check account #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Itakda ang default na numero ng check account para sa pamilya"
-
-#: 
 msgid "Fund Name"
 msgstr "Pangalan ng Pondo"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Halagang hindi mababawas"
 
 #: 
 msgid "Age"
@@ -2559,10 +2519,6 @@ msgid "Groups"
 msgstr "Mga Grupo"
 
 #: 
-msgid "Total $"
-msgstr "Kabuuan $"
-
-#: 
 msgid "with this property..."
 msgstr "na may katangiang ito..."
 
@@ -2687,10 +2643,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Pumirma sa ulat ng kumpirmasyon at pagwawasto ng impormasyon ng database"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Teksto para sa ulat ng buod ng pangako"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Teksto para sa ulat ng direktoryo"
 
@@ -2754,11 +2706,6 @@ msgstr "Mga Uri ng Katangian"
 #: 
 msgid "Zip Code"
 msgstr "Zip Code"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Larangan"
 
 #. Context: query_qry
 #: 
@@ -5818,10 +5765,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Magdagdag ng anumang karagdagang tala tungkol sa depositong ito"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Ang halaga ay lumagpas sa pinakamataas na pinapayagang halaga (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Mga Tseke"
 
@@ -5848,10 +5791,6 @@ msgstr "Walang Cash"
 #: 
 msgid "No Checks"
 msgstr "Walang mga Tseke"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Ang halagang hindi mababawas ay lumagpas sa pinakamataas na pinapayagang halaga (999999.99)."
 
 #: 
 msgid "Payments"
@@ -6464,10 +6403,6 @@ msgid "%d missing role"
 msgstr "%d nawawalang papel"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Ang isang pagbabayad ay isang aktwal na natanggap na donasyon. Ito ay idadagdag sa kasalukuyang deposito."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Ang isang pangako ay isang pangakong magbigay. Hindi ito nakatali sa isang deposit slip."
 
@@ -6764,10 +6699,6 @@ msgid "Name & Identity"
 msgstr "Pangalan at Pagkakakilanlan"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Isang Bagong Deposito ang Malilikha"
-
-#: 
 msgid "New Payment"
 msgstr "Bagong Pagbabayad"
 
@@ -6886,10 +6817,6 @@ msgstr "Ilang mga kinakailangan ng aplikasyon ay hindi natutugunan"
 #: 
 msgid "State (Other)"
 msgstr "Estado (Iba pa)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Buod ng mga pangako kumpara sa mga pagbabayad ayon sa pondo para sa taong piskal."
 
 #: 
 msgid "System Health"
@@ -8871,10 +8798,6 @@ msgid "Account Recovery"
 msgstr "Pagbawi ng Account"
 
 #: 
-msgid "Add Family"
-msgstr "Magdagdag ng Pamilya"
-
-#: 
 msgid "Add First Family"
 msgstr "Magdagdag ng Unang Pamilya"
 
@@ -8893,10 +8816,6 @@ msgstr "Magdagdag ng Tala"
 #: 
 msgid "Add People to the Family"
 msgstr "Magdagdag ng mga Tao sa Pamilya"
-
-#: 
-msgid "Add Person"
-msgstr "Magdagdag ng Tao"
 
 #: 
 msgid "Add Students to Cart"
@@ -9275,10 +9194,6 @@ msgid "Delete Person"
 msgstr "Burahin ang Tao"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Burahin ang Pangako"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Ang pagbubura ng katangiang ito ay mag-aalis din ng lahat ng mga takda nito mula sa anumang mga rekord ng Tao, Pamilya, o Grupo."
 
@@ -9441,10 +9356,6 @@ msgstr "FY %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Ang mga pamilya ay nagbabahagi ng address at numero ng telepono."
-
-#: 
-msgid "Family List"
-msgstr "Listahan ng Pamilya"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9643,10 +9554,6 @@ msgid "Letters and Labels"
 msgstr "Mga Sulat at Mga Label"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Ilista ang mga pamilyang nilikha sa pamamagitan ng sariling pagpaparehistro"
-
-#: 
 msgid "Load demo data"
 msgstr "Mag-load ng demo data"
 
@@ -9755,10 +9662,6 @@ msgid "Minimum"
 msgstr "Minimum"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Baguhin ang mga papel sa pamilya para sa mga miyembro ng grupo"
-
-#: 
 msgid "Move to Group"
 msgstr "Ilipat sa Grupo"
 
@@ -9785,10 +9688,6 @@ msgstr "Bago"
 #: 
 msgid "New Family"
 msgstr "Bagong Pamilya"
-
-#: 
-msgid "New Group"
-msgstr "Bagong Grupo"
 
 #: 
 msgid "New Person"
@@ -9903,10 +9802,6 @@ msgstr "Pagbawi ng Password"
 #: 
 msgid "Past & next 7 days"
 msgstr "Nakaraan at susunod na 7 araw"
-
-#: 
-msgid "People List"
-msgstr "Listahan ng mga Tao"
 
 #: 
 msgid "People by Classification"
@@ -10087,10 +9982,6 @@ msgstr "Pumili ng backup file at i-click ang I-restore ang Database."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Piliin ang iyong mga opsyon sa itaas at i-click ang isang backup button."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Ulat ng Sariling Pagpaparehistro"
 
 #: 
 msgid "Send email to families"
@@ -10653,11 +10544,6 @@ msgstr "Mga Default na Address"
 msgid "Allow user to add new event"
 msgstr "Payagan ang user na magdagdag ng bagong kaganapan"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Petsa ng Simula"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Mga Setting ng Kalendaryo"
@@ -10767,16 +10653,6 @@ msgstr "Ang mga listahan ng email ay naka-sync sa Mailchimp."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Paganahin ang email sa panel ng mga setting sa ibaba, pagkatapos ay i-configure ang iyong SMTP server."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Petsa ng Pagtatapos"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Ipasok ang anumang bahagi ng sumusunod: Pangalan, Lungsod, Estado, Zip, Telepono sa Bahay, Email, o Work Email."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "Hindi Pinagana ang External Calendar API"
@@ -10870,11 +10746,6 @@ msgstr "Itugma ang pasadyang larangan sa halagang ito"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Pinakamataas na Edad"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Miyembro, Regular na Dumadalo, atbp."
 
@@ -10887,11 +10758,6 @@ msgstr "Mga miyembrong sumali sa isang partikular na buwan"
 #: 
 msgid "Membership anniversaries"
 msgstr "Mga anibersaryo ng pagiging miyembro"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Pinakamaliit na Edad"
 
 #. Context: query_qry
 #: 
@@ -10965,16 +10831,6 @@ msgstr "Katangian ng tao na ginagamit upang ibukod ang mga miyembro mula sa mga 
 msgid "Person property used to exclude members from email lists"
 msgstr "Katangian ng tao na ginagamit upang ibukod ang mga miyembro mula sa mga listahan ng email"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Pakipasok ang huling petsa para kalkulahin ang kabuuang mga kontribusyon para sa bawat miyembro (hal. YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Pakipili ang petsa ng simula para kalkulahin ang kabuuang mga kontribusyon para sa bawat miyembro (hal. YYYY-MM-DD). TANDAAN: Maaari ka lamang pumili ng mga petsa na naglalaman ng mga donasyon."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11023,11 +10879,6 @@ msgstr "Hindi Na-configure ang SMTP"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Maghanap"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Pangalawang Taong Piskal"
 
@@ -11040,16 +10891,6 @@ msgstr "Pangalawang taong piskal para sa paghahambing"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Pangalawang pagpipilian ng pagkakataon bilang boluntaryo"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Pumili ng larangan para hanapin."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Piliin ang gustong papel sa pamilya."
 
 #: 
 msgid "Send text message"
@@ -11090,38 +10931,13 @@ msgstr "Ang buwan ng kaarawan kung saan gusto mong ibalik ang mga rekord."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Ang gustong kasarian para hanapin sa database."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Ang kasarian kung saan gusto mong ibalik ang mga rekord."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Ang pinakamataas na edad kung saan gusto mong ibalik ang mga rekord."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Ang buwan ng anibersaryo ng pagiging miyembro kung saan gusto mong ibalik ang mga rekord."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Ang pinakamaliit na edad kung saan gusto mong ibalik ang mga rekord."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Ang katangian kung saan gusto mong ibalik ang mga rekord ng tao."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Ang klase ng paaralan ng linggo kung saan gusto mong ibalik ang mga rekord."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11157,11 +10973,6 @@ msgstr "Hindi Na-configure ang Vonage SMS"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Nang walang Vonage, ang mga aksyon ng text ay magbubukas ng native SMS app ng iyong device o kokopyahin ang mga numero ng telepono sa clipboard."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "EmailSaTrabaho"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11483,10 +11294,6 @@ msgstr "Mga Tampok"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Mga ID ng query ng pahintulot sa pananalapi"
-
-#: 
-msgid "Find family"
-msgstr "Hanapin ang pamilya"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13589,10 +13396,6 @@ msgstr "Mag-upload ng CSV para gumawa ng mga pamilya at tao nang sabay-sabay."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "May duplicate na column names ang iyong CSV. Palitan ang pangalan ng mga duplicate column (hal. magdagdag ng \"(2)\" sa pangalawa) at mag-upload muli."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Hindi wastong security token. Mangyaring subukan muli."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13624,10 +13427,6 @@ msgstr "Mga Pista Opisyal (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Ang mga pista opisyal ay inuri ayon sa uri: Opisyal, Paggunita, Pista ng mga Bangko, Pana-panahon, at Relihiyoso. Iwanang walang napili ang lahat ng kategorya upang ipakita ang bawat pista opisyal, o pumili ng mga tiyak na uri upang paliit ang display."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Nawawalang identifier ng pangako sa pananalapi."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16733,10 +16532,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s ng pamilyang %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d pang mga entry ang maaaring magkasya."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d rekord ang ibinalik"
 
@@ -16835,10 +16630,6 @@ msgstr "Pinakamababang Kabuuang Halaga"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Pinakamababang bid na $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Bagong Bayad - %1$s Deposito # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

@@ -1295,21 +1295,6 @@ msgid "Type of Group"
 msgstr "Tipul Grupului"
 
 #: 
-#, fuzzy
-msgid "Group Member Roles"
-msgstr "Rolurile Membrilor Grupului"
-
-#: 
-#, fuzzy
-msgid "Clone roles"
-msgstr "Clonare roluri"
-
-#: 
-#, fuzzy
-msgid "from group"
-msgstr "din grup"
-
-#: 
 msgid "Select a group"
 msgstr "Selectați un grup"
 
@@ -1717,16 +1702,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Verifica numărul nu este valabil pentru plata \"numerar\""
 
 #: 
-msgid "Deposit closed"
-msgstr "Depozit închis"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Program de plata"
-
-#: 
-msgid "Select Schedule"
-msgstr "Selectați Program"
 
 #: 
 msgid "Weekly"
@@ -1749,28 +1726,8 @@ msgid "Other"
 msgstr "Alte"
 
 #: 
-msgid "Payment by"
-msgstr "Plata prin"
-
-#: 
-msgid "Scan check"
-msgstr "Scanare verifica"
-
-#: 
-msgid "find family from check account #"
-msgstr "găsi familie din contul control #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Setați verificare implicit numărul de cont pentru familie"
-
-#: 
 msgid "Fund Name"
 msgstr "Numele fond"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Valoarea nedeductibile"
 
 #: 
 msgid "Age"
@@ -2650,10 +2607,6 @@ msgid "Groups"
 msgstr "Grupuri"
 
 #: 
-msgid "Total $"
-msgstr "Total Lei"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "cu această proprietate..."
@@ -2781,10 +2734,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Semnatar confirmarea informațiilor de bază de date"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Verbalizare pentru sumarul raportul de gaj"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Verbalizare pentru raportul directorului"
 
@@ -2848,11 +2797,6 @@ msgstr "Tipuri proprietăți"
 #: 
 msgid "Zip Code"
 msgstr "Cod postal"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Câmp"
 
 #. Context: query_qry
 #: 
@@ -5922,10 +5866,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Adăugați orice note suplimentare despre acest depozit"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Suma depășește valoarea maximă permisă (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Cecuri"
 
@@ -5952,10 +5892,6 @@ msgstr "Fără numerar"
 #: 
 msgid "No Checks"
 msgstr "Fără cecuri"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Suma nedeductibilă depășește valoarea maximă permisă (999999.99)."
 
 #: 
 msgid "Payments"
@@ -6570,10 +6506,6 @@ msgid "%d missing role"
 msgstr "%d rol lipsă"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "O plată este o donație efectivă primită. Ea va fi adăugată la depozitul curent."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Un angajament este o promisiune de a oferi. Nu este legat de un borderou de depozit."
 
@@ -6870,10 +6802,6 @@ msgid "Name & Identity"
 msgstr "Nume și identitate"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Va fi creat un nou depozit"
-
-#: 
 msgid "New Payment"
 msgstr "Plată nouă"
 
@@ -6992,10 +6920,6 @@ msgstr "Unele cerințe prealabile ale aplicației nu sunt îndeplinite"
 #: 
 msgid "State (Other)"
 msgstr "Județ/Provincie (Altele)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Rezumatul angajamentelor vs plăți pe fond pentru anul fiscal."
 
 #: 
 msgid "System Health"
@@ -8982,10 +8906,6 @@ msgid "Account Recovery"
 msgstr "Recuperare cont"
 
 #: 
-msgid "Add Family"
-msgstr "Adaugă familie"
-
-#: 
 msgid "Add First Family"
 msgstr "Adaugă prima familie"
 
@@ -9004,10 +8924,6 @@ msgstr "Adaugă notă"
 #: 
 msgid "Add People to the Family"
 msgstr "Adaugă persoane în familie"
-
-#: 
-msgid "Add Person"
-msgstr "Adaugă persoană"
 
 #: 
 msgid "Add Students to Cart"
@@ -9386,10 +9302,6 @@ msgid "Delete Person"
 msgstr "Șterge persoana"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Șterge angajamentul"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Ștergerea acestei proprietăți va elimina și toate atribuirile sale din orice înregistrare de persoane, familii sau grupuri."
 
@@ -9552,10 +9464,6 @@ msgstr "An fiscal %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Familiile au aceeași adresă și număr de telefon."
-
-#: 
-msgid "Family List"
-msgstr "Lista familiilor"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9754,10 +9662,6 @@ msgid "Letters and Labels"
 msgstr "Scrisori și etichete"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Listează familiile create prin autoînregistrare"
-
-#: 
 msgid "Load demo data"
 msgstr "Încarcă date demonstrative"
 
@@ -9866,10 +9770,6 @@ msgid "Minimum"
 msgstr "Minim"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Modifică rolurile familiale ale membrilor de grup"
-
-#: 
 msgid "Move to Group"
 msgstr "Mută în grup"
 
@@ -9896,10 +9796,6 @@ msgstr "Nou"
 #: 
 msgid "New Family"
 msgstr "Familie nouă"
-
-#: 
-msgid "New Group"
-msgstr "Grup nou"
 
 #: 
 msgid "New Person"
@@ -10014,10 +9910,6 @@ msgstr "Recuperare parolă"
 #: 
 msgid "Past & next 7 days"
 msgstr "Ultimele și următoarele 7 zile"
-
-#: 
-msgid "People List"
-msgstr "Lista persoanelor"
 
 #: 
 msgid "People by Classification"
@@ -10198,10 +10090,6 @@ msgstr "Selectați un fișier de copie de siguranță și faceți clic pe Restau
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Selectați opțiunile de mai sus și faceți clic pe butonul de copie de siguranță."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Raport autoînregistrare"
 
 #: 
 msgid "Send email to families"
@@ -10764,11 +10652,6 @@ msgstr "Setări implicite adresă"
 msgid "Allow user to add new event"
 msgstr "Permiteți utilizatorului să adauge un nou eveniment"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Data de început"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Setări calendar"
@@ -10878,16 +10761,6 @@ msgstr "Listele de e-mailuri sunt sincronizate cu Mailchimp."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Activați e-mailul în panoul de setări de mai jos, apoi configurați serverul SMTP."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Data de încheiere"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Introduceți orice parte a următoarelor: Nume, Oraș, Stat, Cod poștal, Telefon acasă, E-mail sau E-mail de lucru."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "API Calendar extern dezactivat"
@@ -10981,11 +10854,6 @@ msgstr "Potriviți câmpul personalizat la această valoare"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Vârstă maximă"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Membru, participant regulat etc."
 
@@ -10998,11 +10866,6 @@ msgstr "Membri care s-au alăturat într-o anumită lună"
 #: 
 msgid "Membership anniversaries"
 msgstr "Aniversări de membri"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Vârstă minimă"
 
 #. Context: query_qry
 #: 
@@ -11076,16 +10939,6 @@ msgstr "Proprietate persoană utilizată pentru a exclude membrii din listele SM
 msgid "Person property used to exclude members from email lists"
 msgstr "Proprietate persoană utilizată pentru a exclude membrii din listele de e-mail"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Vă rugăm să introduceți data ultimă pentru a calcula contribuțiile totale pentru fiecare membru (de exemplu YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Vă rugăm să selectați data de început pentru a calcula contribuțiile totale pentru fiecare membru (de exemplu YYYY-MM-DD). NOTĂ: Puteți alege doar datele care conțin donații."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11134,11 +10987,6 @@ msgstr "SMTP nu este configurat"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Căutare"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Al doilea an fiscal"
 
@@ -11151,16 +10999,6 @@ msgstr "Al doilea an fiscal pentru comparație"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "A doua alegere de oportunitate de voluntar"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Selectați câmpul de căutat."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Selectați rolul familiar dorit."
 
 #: 
 msgid "Send text message"
@@ -11201,38 +11039,13 @@ msgstr "Luna de naștere pentru care doriți să se returneze înregistrări."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Sexul dorit pentru a căuta în bază de date."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Sexul pentru care doriți să se returneze înregistrări."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Vârsta maximă pentru care doriți să se returneze înregistrări."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Luna aniversării de membru pentru care doriți să se returneze înregistrări."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Vârsta minimă pentru care doriți să se returneze înregistrări."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Proprietatea pentru care doriți să se returneze înregistrări de persoană."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Clasa de Școală de Duminică pentru care doriți să se returneze înregistrări."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11268,11 +11081,6 @@ msgstr "Vonage SMS nu este configurat"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Fără Vonage, acțiunile text vor deschide aplicația SMS nativă a dispozitivului sau vor copia numerele de telefon în clipboard."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "E-mail de lucru"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11594,10 +11402,6 @@ msgstr "Funcționalități"
 #: 
 msgid "Finance permission query IDs"
 msgstr "ID-uri interogări permisiuni finanțe"
-
-#: 
-msgid "Find family"
-msgstr "Găsește familie"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13701,10 +13505,6 @@ msgstr "Încărcați un CSV pentru a crea familii și persoane în masă."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-ul dvs. are nume de coloane duplicate. Redenumiți coloanele duplicate (de ex. adăugați \"(2)\" la a doua) și încărcați din nou."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Token de securitate invalid. Vă rugăm să încercați din nou."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13736,10 +13536,6 @@ msgstr "Sărbători (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Sărbătorile sunt etichetate după tip: Oficiale, Comemorative, Zile bancare, Sezoniere și Religioase. Lăsați toate categoriile neselectate pentru a afișa toate sărbătorile sau selectați tipuri specifice pentru a restrânge afișarea."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Identificatorul angajamentului financiar lipsește."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16868,10 +16664,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s din familia %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "Mai sunt %d intrari posibile."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d inregistrare(i) returnata(e)"
 
@@ -16970,10 +16762,6 @@ msgstr "Suma totala minima"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Oferta minima $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Plata noua - %1$s Depozit # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

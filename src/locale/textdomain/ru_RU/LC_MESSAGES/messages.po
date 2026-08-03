@@ -1293,21 +1293,6 @@ msgid "Type of Group"
 msgstr "Тип группы"
 
 #: 
-#, fuzzy
-msgid "Group Member Roles"
-msgstr "Роли Группа"
-
-#: 
-#, fuzzy
-msgid "Clone roles"
-msgstr "Клонов роли"
-
-#: 
-#, fuzzy
-msgid "from group"
-msgstr "от группы"
-
-#: 
 msgid "Select a group"
 msgstr "Выбор группы"
 
@@ -1715,16 +1700,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Номер чека недействителен для оплаты НАЛИЧНЫМИ"
 
 #: 
-msgid "Deposit closed"
-msgstr "Депозит закрыт"
-
-#: 
 msgid "Payment Schedule"
 msgstr "График оплаты"
-
-#: 
-msgid "Select Schedule"
-msgstr "Выберите Расписание"
 
 #: 
 msgid "Weekly"
@@ -1747,28 +1724,8 @@ msgid "Other"
 msgstr "Другое"
 
 #: 
-msgid "Payment by"
-msgstr "Оплата"
-
-#: 
-msgid "Scan check"
-msgstr "Проверка Scan"
-
-#: 
-msgid "find family from check account #"
-msgstr "найти семью от проверки счета #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Установите номер регистрации учетной записи по умолчанию для семьи"
-
-#: 
 msgid "Fund Name"
 msgstr "Наименование фонда"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Не уменьшающие налогооблагаемую базу количество"
 
 #: 
 msgid "Age"
@@ -2651,10 +2608,6 @@ msgid "Groups"
 msgstr "Группы"
 
 #: 
-msgid "Total $"
-msgstr "Итого $"
-
-#: 
 msgid "with this property..."
 msgstr "с этим свойством"
 
@@ -2781,10 +2734,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Подписчик отчета о подтверждении и исправлении информации в базе данных"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Вербаж для сводного отчета о залоге"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Вербаж для отчета каталога"
 
@@ -2848,11 +2797,6 @@ msgstr "Типы собственности"
 #: 
 msgid "Zip Code"
 msgstr "Почтовый индекс"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Поле"
 
 #. Context: query_qry
 #: 
@@ -5918,10 +5862,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Добавьте дополнительные заметки к этому депозиту"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Сумма превышает максимум (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Чеки"
 
@@ -5948,10 +5888,6 @@ msgstr "Без наличных"
 #: 
 msgid "No Checks"
 msgstr "Без чеков"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Не облагаемая налогом сумма превышает максимум."
 
 #: 
 msgid "Payments"
@@ -6568,10 +6504,6 @@ msgid "%d missing role"
 msgstr "%d пропущенная роль"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Платеж — это полученное пожертвование. Оно добавится в текущий депозит."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Обещание — это обязательство дать. Оно не привязано к депозиту."
 
@@ -6868,10 +6800,6 @@ msgid "Name & Identity"
 msgstr "Имя и личность"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Будет создан новый депозит"
-
-#: 
 msgid "New Payment"
 msgstr "Новый платеж"
 
@@ -6990,10 +6918,6 @@ msgstr "Некоторые требования не выполнены"
 #: 
 msgid "State (Other)"
 msgstr "Область/Регион (другое)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Сводка обещаний и платежей."
 
 #: 
 msgid "System Health"
@@ -8985,10 +8909,6 @@ msgid "Account Recovery"
 msgstr "Восстановление аккаунта"
 
 #: 
-msgid "Add Family"
-msgstr "Добавить семью"
-
-#: 
 msgid "Add First Family"
 msgstr "Добавить первую семью"
 
@@ -9007,10 +8927,6 @@ msgstr "Добавить заметку"
 #: 
 msgid "Add People to the Family"
 msgstr "Добавить людей в семью"
-
-#: 
-msgid "Add Person"
-msgstr "Добавить человека"
 
 #: 
 msgid "Add Students to Cart"
@@ -9389,10 +9305,6 @@ msgid "Delete Person"
 msgstr "Удалить человека"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Удалить обязательство по пожертвованию"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Удаление этого свойства также удалит все его назначения из записей людей, семей и групп."
 
@@ -9555,10 +9467,6 @@ msgstr "Финансовый год %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Семьи имеют общий адрес и номер телефона."
-
-#: 
-msgid "Family List"
-msgstr "Список семей"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9757,10 +9665,6 @@ msgid "Letters and Labels"
 msgstr "Письма и наклейки"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Список семей, созданных через самостоятельную регистрацию"
-
-#: 
 msgid "Load demo data"
 msgstr "Загрузить демо-данные"
 
@@ -9869,10 +9773,6 @@ msgid "Minimum"
 msgstr "Минимум"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Изменить семейные роли для участников группы"
-
-#: 
 msgid "Move to Group"
 msgstr "Переместить в группу"
 
@@ -9899,10 +9799,6 @@ msgstr "Новый"
 #: 
 msgid "New Family"
 msgstr "Новая семья"
-
-#: 
-msgid "New Group"
-msgstr "Новая группа"
 
 #: 
 msgid "New Person"
@@ -10017,10 +9913,6 @@ msgstr "Восстановление пароля"
 #: 
 msgid "Past & next 7 days"
 msgstr "Прошедшие и следующие 7 дней"
-
-#: 
-msgid "People List"
-msgstr "Список людей"
 
 #: 
 msgid "People by Classification"
@@ -10201,10 +10093,6 @@ msgstr "Выберите файл резервной копии и нажмит�
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Выберите параметры выше и нажмите кнопку резервного копирования."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Отчёт о самостоятельной регистрации"
 
 #: 
 msgid "Send email to families"
@@ -10767,11 +10655,6 @@ msgstr "Значения адреса по умолчанию"
 msgid "Allow user to add new event"
 msgstr "Разрешить пользователю добавлять новые события"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Дата начала"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Параметры календаря"
@@ -10881,16 +10764,6 @@ msgstr "Списки электронной почты синхронизиро�
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Включите электронную почту на панели параметров ниже, а затем настройте сервер SMTP."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Дата окончания"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Введите любую часть из следующего: Имя, Город, Штат, Почтовый индекс, Домашний телефон, Электронная почта или Рабочая электронная почта."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "API внешнего календаря отключён"
@@ -10984,11 +10857,6 @@ msgstr "Сопоставить пользовательское поле с эт
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Максимальный возраст"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Член, постоянный участник и т. д."
 
@@ -11001,11 +10869,6 @@ msgstr "Члены, присоединившиеся в определенном
 #: 
 msgid "Membership anniversaries"
 msgstr "Годовщины членства"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Минимальный возраст"
 
 #. Context: query_qry
 #: 
@@ -11079,16 +10942,6 @@ msgstr "Свойство личности, используемое для ис�
 msgid "Person property used to exclude members from email lists"
 msgstr "Свойство личности, используемое для исключения членов из списков рассылки"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Пожалуйста, введите последнюю дату для расчета общих взносов для каждого члена (например, YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Пожалуйста, выберите дату начала для расчета общих взносов для каждого члена (например, YYYY-MM-DD). ПРИМЕЧАНИЕ: Вы можете выбрать только даты, содержащие пожертвования."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11137,11 +10990,6 @@ msgstr "SMTP не настроен"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Поиск"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Второй финансовый год"
 
@@ -11154,16 +11002,6 @@ msgstr "Второй финансовый год для сравнения"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Второй выбор возможности волонтера"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Выберите поле для поиска."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Выберите желаемую роль в семье."
 
 #: 
 msgid "Send text message"
@@ -11204,38 +11042,13 @@ msgstr "Месяц дня рождения, для которого вы хот�
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Желаемый пол для поиска в базе данных."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Пол, для которого вы хотите вернуть записи."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Максимальный возраст, для которого вы хотите вернуть записи."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Месяц годовщины членства, для которого вы хотите вернуть записи."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Минимальный возраст, для которого вы хотите вернуть записи."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Свойство, для которого вы хотите вернуть записи персоны."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Класс воскресной школы, для которого вы хотите вернуть записи."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11271,11 +11084,6 @@ msgstr "Vonage SMS не настроен"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Без Vonage текстовые действия откроют собственное приложение SMS вашего устройства или скопируют номера телефонов в буфер обмена."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Рабочая электронная почта"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11597,10 +11405,6 @@ msgstr "Возможности"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Идентификаторы запросов с финансовыми правами"
-
-#: 
-msgid "Find family"
-msgstr "Найти семью"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13705,10 +13509,6 @@ msgstr "Загрузите CSV-файл для массового создани
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "В вашем CSV-файле есть повторяющиеся названия столбцов. Переименуйте дублирующиеся столбцы (например, добавьте «(2)» ко второму) и загрузите снова."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Недействительный токен безопасности. Пожалуйста, попробуйте снова."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13740,10 +13540,6 @@ msgstr "Праздники (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Праздники разделены по типам: Официальные, Памятные даты, Банковские праздники, Сезонные и Религиозные. Оставьте все категории невыбранными, чтобы отобразить все праздники, или выберите конкретные типы для уточнения."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Отсутствует идентификатор финансового обязательства."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16887,10 +16683,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s из семьи %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "Ещё %d записей поместится."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "Возвращено записей: %d"
 
@@ -16989,10 +16781,6 @@ msgstr "Минимальная общая сумма"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Минимальная ставка $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Новый платёж — %1$s Депозит № %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

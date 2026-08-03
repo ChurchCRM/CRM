@@ -1245,18 +1245,6 @@ msgid "Type of Group"
 msgstr "ഗ്രൂപ്പ് തരം"
 
 #: 
-msgid "Group Member Roles"
-msgstr "ഗ്രൂപ്പ് അംഗ പങ്കുകൾ"
-
-#: 
-msgid "Clone roles"
-msgstr "പങ്കുകൾ ക്ലോൺ ചെയ്യുക"
-
-#: 
-msgid "from group"
-msgstr "ഗ്രൂപ്പിൽ നിന്ന്"
-
-#: 
 msgid "Select a group"
 msgstr "ഒരു ഗ്രൂപ്പ് തിരഞ്ഞെടുക്കുക"
 
@@ -1653,16 +1641,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "'CASH' പേമെന്റിന് ചെക്ക് നമ്പർ സാധുവല്ല"
 
 #: 
-msgid "Deposit closed"
-msgstr "ഡിപ്പോസിറ്റ് അടച്ചു"
-
-#: 
 msgid "Payment Schedule"
 msgstr "പേമെന്റ് ഷെഡ്യൂൾ"
-
-#: 
-msgid "Select Schedule"
-msgstr "ഷെഡ്യൂൾ തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Weekly"
@@ -1685,28 +1665,8 @@ msgid "Other"
 msgstr "മറ്റുള്ളത്"
 
 #: 
-msgid "Payment by"
-msgstr "പേമെന്റ്"
-
-#: 
-msgid "Scan check"
-msgstr "ചെക്ക് സ്കാൻ ചെയ്യുക"
-
-#: 
-msgid "find family from check account #"
-msgstr "ചെക്ക് അക്കൗണ്ട് # ൽ നിന്ന് കുടുംബം കണ്ടെത്തുക"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "കുടുംബത്തിനായി ഡിഫോൾട്ട് ചെക്ക് അക്കൗണ്ട് നമ്പർ സജ്ജമാക്കുക"
-
-#: 
 msgid "Fund Name"
 msgstr "ഫണ്ട് നാമം"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "കിഴിവ് ലഭിക്കാത്ത തുക"
 
 #: 
 msgid "Age"
@@ -2559,10 +2519,6 @@ msgid "Groups"
 msgstr "ഗ്രൂപ്പുകൾ"
 
 #: 
-msgid "Total $"
-msgstr "ആകെ $"
-
-#: 
 msgid "with this property..."
 msgstr "ഈ സ്വഭാവമുള്ള..."
 
@@ -2687,10 +2643,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "ഡേറ്റാബേസ് വിവര സ്ഥിരീകരണ-തിരുത്തൽ റിപ്പോർട്ട് ഒപ്പിടുന്നയാൾ"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "സംഭാവന പ്രതിജ്ഞ സംഗ്രഹ റിപ്പോർട്ടിനുള്ള വാക്കുകൾ"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "ഡയറക്ടറി റിപ്പോർട്ടിനുള്ള വാക്കുകൾ"
 
@@ -2754,11 +2706,6 @@ msgstr "സ്വഭാവ തരങ്ങൾ"
 #: 
 msgid "Zip Code"
 msgstr "പിൻകോഡ്"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "ഫീൽഡ്"
 
 #. Context: query_qry
 #: 
@@ -5818,10 +5765,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "ഈ ഡിപ്പോസിറ്റിനെ കുറിച്ച് അധിക കുറിപ്പുകൾ ചേർക്കുക"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "തുക പരമാവധി അനുവദനീയ മൂല്യം (999999.99) കവിഞ്ഞു."
-
-#: 
 msgid "Checks"
 msgstr "ചെക്കുകൾ"
 
@@ -5848,10 +5791,6 @@ msgstr "പണമില്ല"
 #: 
 msgid "No Checks"
 msgstr "ചെക്കുകൾ ഇല്ല"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "കിഴിവ് ലഭിക്കാത്ത തുക പരമാവധി അനുവദനീയ മൂല്യം (999999.99) കവിഞ്ഞു."
 
 #: 
 msgid "Payments"
@@ -6464,10 +6403,6 @@ msgid "%d missing role"
 msgstr "%d പങ്ക് ഇല്ല"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "ഒരു പേമെന്റ് ലഭിച്ച ഒരു യഥാർത്ഥ സംഭാവനയാണ്. ഇത് നിലവിലെ ഡിപ്പോസിറ്റിൽ ചേർക്കും."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "ഒരു സംഭാവന പ്രതിജ്ഞ ഒരു ദക്ഷിണ നൽകാനുള്ള പ്രതിബദ്ധതയാണ്. ഇത് ഡിപ്പോസിറ്റ് സ്ലിപ്പുമായി ബന്ധിക്കില്ല."
 
@@ -6764,10 +6699,6 @@ msgid "Name & Identity"
 msgstr "പേര് & ഐഡൻ്റിറ്റി"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "പുതിയ ഡിപ്പോസിറ്റ് ഉണ്ടാക്കും"
-
-#: 
 msgid "New Payment"
 msgstr "പുതിയ പേമെന്റ്"
 
@@ -6886,10 +6817,6 @@ msgstr "ചില ആപ്ലിക്കേഷൻ ആവശ്യകതകൾ 
 #: 
 msgid "State (Other)"
 msgstr "സംസ്ഥാനം (മറ്റ്)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "ധനകാര്യ വർഷത്തിലെ ഫണ്ട് അനുസരിച്ചുള്ള സംഭാവന പ്രതിജ്ഞ vs പേമെന്റ് സംഗ്രഹം."
 
 #: 
 msgid "System Health"
@@ -8871,10 +8798,6 @@ msgid "Account Recovery"
 msgstr "അക്കൗണ്ട് പുനഃസ്ഥാപനം"
 
 #: 
-msgid "Add Family"
-msgstr "കുടുംബം ചേർക്കൂ"
-
-#: 
 msgid "Add First Family"
 msgstr "ആദ്യ കുടുംബം ചേർക്കൂ"
 
@@ -8893,10 +8816,6 @@ msgstr "കുറിപ്പ് ചേർക്കൂ"
 #: 
 msgid "Add People to the Family"
 msgstr "കുടുംബത്തിൽ ആളുകളെ ചേർക്കൂ"
-
-#: 
-msgid "Add Person"
-msgstr "വ്യക്തിയെ ചേർക്കൂ"
 
 #: 
 msgid "Add Students to Cart"
@@ -9275,10 +9194,6 @@ msgid "Delete Person"
 msgstr "വ്യക്തിയെ ഇല്ലാതാക്കുക"
 
 #: 
-msgid "Delete Pledge"
-msgstr "സാമ്പത്തിക പ്രതിബദ്ധത ഇല്ലാതാക്കുക"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "ഈ ഗുണം ഇല്ലാതാക്കുന്നത് ഏതൊരു വ്യക്തി, കുടുംബം, അല്ലെങ്കിൽ ഗ്രൂപ്പ് രേഖകളിൽ നിന്നും അതിന്റെ എല്ലാ നിയോഗങ്ങളും നീക്കം ചെയ്യും."
 
@@ -9441,10 +9356,6 @@ msgstr "സാമ്പത്തിക വർഷം %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "കുടുംബങ്ങൾ ഒരു വിലാസവും ഫോൺ നമ്പറും പങ്കിടുന്നു."
-
-#: 
-msgid "Family List"
-msgstr "കുടുംബ പട്ടിക"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9643,10 +9554,6 @@ msgid "Letters and Labels"
 msgstr "കത്തുകളും ലേബലുകളും"
 
 #: 
-msgid "List families created via self registration"
-msgstr "സ്വയം രജിസ്ട്രേഷൻ വഴി സൃഷ്ടിച്ച കുടുംബങ്ങളുടെ പട്ടിക"
-
-#: 
 msgid "Load demo data"
 msgstr "ഡെമോ ഡേറ്റ ലോഡ് ചെയ്യുക"
 
@@ -9755,10 +9662,6 @@ msgid "Minimum"
 msgstr "കുറഞ്ഞത്"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "ഗ്രൂപ്പ് അംഗങ്ങളുടെ കുടുംബ റോളുകൾ മാറ്റുക"
-
-#: 
 msgid "Move to Group"
 msgstr "ഗ്രൂപ്പിലേക്ക് നീക്കുക"
 
@@ -9785,10 +9688,6 @@ msgstr "പുതിയത്"
 #: 
 msgid "New Family"
 msgstr "പുതിയ കുടുംബം"
-
-#: 
-msgid "New Group"
-msgstr "പുതിയ ഗ്രൂപ്പ്"
 
 #: 
 msgid "New Person"
@@ -9903,10 +9802,6 @@ msgstr "പാസ്‌വേഡ് വീണ്ടെടുക്കൽ"
 #: 
 msgid "Past & next 7 days"
 msgstr "കഴിഞ്ഞ & അടുത്ത 7 ദിവസങ്ങൾ"
-
-#: 
-msgid "People List"
-msgstr "വ്യക്തി പട്ടിക"
 
 #: 
 msgid "People by Classification"
@@ -10087,10 +9982,6 @@ msgstr "ഒരു ബാക്കപ്പ് ഫയൽ തിരഞ്ഞെട
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "മുകളിൽ നിങ്ങളുടെ ഓപ്ഷനുകൾ തിരഞ്ഞെടുത്ത് ഒരു ബാക്കപ്പ് ബട്ടൺ ക്ലിക്ക് ചെയ്യുക."
-
-#: 
-msgid "Self Registration Report"
-msgstr "സ്വയം രജിസ്ട്രേഷൻ റിപ്പോർട്ട്"
 
 #: 
 msgid "Send email to families"
@@ -10653,11 +10544,6 @@ msgstr "വിലാസ ഡിഫോൾട്ടുകൾ"
 msgid "Allow user to add new event"
 msgstr "ഉപയോക്താവിന് പുതിയ ഇവന്റ് ചേർക്കാൻ അനുവദിക്കുക"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "ആരംഭ തീയതി"
-
 #: 
 msgid "Calendar Settings"
 msgstr "കലണ്ടർ ക്രമീകരണം"
@@ -10767,16 +10653,6 @@ msgstr "ഇമെയിൽ ലിസ്‌റ്റുകൾ Mailchimp-മായ
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "ചുവടെ ഉള്ള ക്രമീകരണ പാനലിൽ ഇമെയിൽ പ്രവർത്തനക്ഷമമാക്കുക, തുടർന്ന് SMTP സർവ്വർ ക്രമീകരിക്കുക."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "അവസാന തീയതി"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "ഇനിപ്പറയുന്നതിന്റെ ഏതെങ്കിലും ഭാഗം നൽകുക: പേര്, നഗരം, സംസ്ഥാനം, പിൻ കോഡ്, ഹോം ഫോൺ, ഇമെയിൽ, അല്ലെങ്കിൽ ജോലി ഇമെയിൽ."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "ബാഹ്യ കലണ്ടർ API പ്രവർത്തനരഹിതം"
@@ -10870,11 +10746,6 @@ msgstr "ഈ മൂല്യത്തിലേക്ക് ഇഷ്ടാനു�
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "പരമാവധി പ്രായം"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "അംഗം, സ്ഥിര ഹാജർക്കാരൻ, മുതലായവ"
 
@@ -10887,11 +10758,6 @@ msgstr "ഒരു പ്രത്യേക മാസത്തിൽ ചേർന
 #: 
 msgid "Membership anniversaries"
 msgstr "അംഗത്വ വാർഷികദിനങ്ങൾ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "കുറഞ്ഞ പ്രായം"
 
 #. Context: query_qry
 #: 
@@ -10965,16 +10831,6 @@ msgstr "SMS/ടെക്സ്റ്റ് പട്ടികകളിൽ നി
 msgid "Person property used to exclude members from email lists"
 msgstr "ഇമെയിൽ പട്ടികകളിൽ നിന്ന് അംഗങ്ങളെ ഒഴിവാക്കാൻ ഉപയോഗിക്കുന്ന വ്യക്തി ഗുണം"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "ഓരോ അംഗത്തിന്റെയും ആകെ സംഭാവനകൾ കണക്കാക്കാൻ അവസാന തീയതി നൽകുക (ഉദാ: YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "ഓരോ അംഗത്തിന്റെയും ആകെ സംഭാവനകൾ കണക്കാക്കാൻ ആരംഭ തീയതി തിരഞ്ഞെടുക്കുക (ഉദാ: YYYY-MM-DD). ശ്രദ്ധിക്കുക: ദാനങ്ങൾ ഉള്ള തീയതികൾ മാത്രം തിരഞ്ഞെടുക്കാൻ കഴിയും."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11023,11 +10879,6 @@ msgstr "SMTP ക്രമീകരിച്ചിട്ടില്ല"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "തിരയൽ"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "രണ്ടാം ധനകാര്യ വർഷം"
 
@@ -11040,16 +10891,6 @@ msgstr "താരതമ്യത്തിനുള്ള രണ്ടാം ധ�
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "രണ്ടാം സ്വയംസേവക അവസര തിരഞ്ഞെടുപ്പ്"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "തിരയാൻ ഫീൽഡ് തിരഞ്ഞെടുക്കുക."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "ആഗ്രഹിക്കുന്ന കുടുംബ പങ്ക് തിരഞ്ഞെടുക്കുക."
 
 #: 
 msgid "Send text message"
@@ -11090,38 +10931,13 @@ msgstr "ഏത് ജന്മദിന മാസത്തിലെ ആളുക
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "ഡേറ്റാബേസിൽ തിരയാൻ ആഗ്രഹിക്കുന്ന ലിംഗം."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "ഏത് ലിംഗത്തിന്റെ രേഖകൾ വേണ്ടത്."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "ഏറ്റവും കൂടിയ പ്രായ പരിധി."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "അംഗത്വ വാർഷിക മാസം."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "ഏറ്റവും കുറഞ്ഞ പ്രായ പരിധി."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "ഏത് ഗുണം ഉള്ള ആളുകളുടെ രേഖകൾ വേണ്ടത്."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "ഏത് Sunday School ക്ലാസ്സിന്റെ രേഖകൾ വേണ്ടത്."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11157,11 +10973,6 @@ msgstr "Vonage SMS ക്രമീകരിച്ചിട്ടില്ല"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage ഇല്ലാതെ, ടെക്സ്റ്റ് പ്രവർത്തനങ്ങൾ ഉപകരണത്തിന്റെ നേറ്റീവ് SMS ആപ്പ് തുറക്കും അല്ലെങ്കിൽ ഫോൺ നമ്പറുകൾ ക്ലിപ്‌ബോർഡിലേക്ക് പകർത്തും."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "ജോലി ഇമെയിൽ"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11483,10 +11294,6 @@ msgstr "ഫീച്ചറുകൾ"
 #: 
 msgid "Finance permission query IDs"
 msgstr "ഫിനാൻസ് അനുമതി query IDs"
-
-#: 
-msgid "Find family"
-msgstr "കുടുംബം കണ്ടെത്തുക"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13589,10 +13396,6 @@ msgstr "കൂട്ടത്തോടെ കുടുംബങ്ങളും �
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "നിങ്ങളുടെ CSV-യിൽ തനിയാവർത്തിച്ച കോളം പേരുകൾ ഉണ്ട്. തനിയാവർത്തിച്ച കോളങ്ങൾ പുനർനാമകരണം ചെയ്യുക (ഉദാ. രണ്ടാമത്തേതിലേക്ക് \"(2)\" ചേർക്കുക) വീണ്ടും അപ്‌ലോഡ് ചെയ്യുക."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "അസാധുവായ സുരക്ഷാ ടോക്കൺ. ദയവായി വീണ്ടും ശ്രമിക്കുക."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13624,10 +13427,6 @@ msgstr "അവധി ദിനങ്ങൾ (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "അവധി ദിനങ്ങൾ തരം അനുസരിച്ച് ടാഗ് ചെയ്‌തിരിക്കുന്നു: ഔദ്യോഗിക, ആചരണം, ബാങ്ക് അവധി, കാലികം, മതപരം. എല്ലാ അവധി ദിനങ്ങളും കാണിക്കാൻ എല്ലാ വിഭാഗങ്ങളും തിരഞ്ഞെടുക്കാതെ വിടുക, അല്ലെങ്കിൽ ഡിസ്‌പ്ലേ കുറയ്ക്കാൻ പ്രത്യേക തരങ്ങൾ തിരഞ്ഞെടുക്കുക."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "സാമ്പത്തിക പ്രതിബദ്ധത ഐഡന്റിഫയർ കണ്ടെത്തിയില്ല."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16765,10 +16564,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s കുടുംബത്തിലെ %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d എന്റ്രികൾ കൂടി ഉൾകൊള്ളാം."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d റെക്കോർഡ്(കൾ) തിരികെ ലഭിച്ചു"
 
@@ -16867,10 +16662,6 @@ msgstr "കുറഞ്ഞ മൊത്തം തുക"
 #: 
 msgid "Minimum bid $%s."
 msgstr "കുറഞ്ഞ ലേലം $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "പുതിയ പേയ്‌മെന്റ് - %1$s നിക്ഷേപം # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

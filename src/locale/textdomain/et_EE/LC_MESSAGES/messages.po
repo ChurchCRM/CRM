@@ -1264,18 +1264,6 @@ msgid "Type of Group"
 msgstr "Rühma tüüp"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Rühma liikmete rollid"
-
-#: 
-msgid "Clone roles"
-msgstr "Klooni rollid"
-
-#: 
-msgid "from group"
-msgstr "grupist"
-
-#: 
 msgid "Select a group"
 msgstr "Valige rühm"
 
@@ -1674,16 +1662,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Tšeki number ei kehti 'CASH' makse korral"
 
 #: 
-msgid "Deposit closed"
-msgstr "Sissemaksed suletud"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Maksegraafik"
-
-#: 
-msgid "Select Schedule"
-msgstr "Valige Ajakava"
 
 #: 
 msgid "Weekly"
@@ -1706,28 +1686,8 @@ msgid "Other"
 msgstr "Muu"
 
 #: 
-msgid "Payment by"
-msgstr "Makse"
-
-#: 
-msgid "Scan check"
-msgstr "Skaneerimise kontroll"
-
-#: 
-msgid "find family from check account #"
-msgstr "otsi perekontot kontolt #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Määrake perekonna vaikekontrollkonto number"
-
-#: 
 msgid "Fund Name"
 msgstr "Fondi nimi"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Mahaarvatav summa"
 
 #: 
 msgid "Age"
@@ -2585,10 +2545,6 @@ msgid "Groups"
 msgstr "Grupid"
 
 #: 
-msgid "Total $"
-msgstr "Kokku $"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "selle omadusega ..."
@@ -2715,10 +2671,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Andmebaasi teabe kinnitus ja paranduste aruande allkirjastaja"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Sõnastus annetuste aruande kohta"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Sõnastus kataloogiaruande jaoks"
 
@@ -2782,11 +2734,6 @@ msgstr "Omaduse tüübid"
 #: 
 msgid "Zip Code"
 msgstr "Postiindeks"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Väli"
 
 #. Context: query_qry
 #: 
@@ -5857,10 +5804,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Lisage sellest deposiidist märkusi"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Summa ületab maksimaalse lubatud väärtuse (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Tsekkid"
 
@@ -5887,10 +5830,6 @@ msgstr "Raha puudub"
 #: 
 msgid "No Checks"
 msgstr "Tsekkisid pole"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Mittemahaarvatatav summa ületab maksimaalse lubatud väärtuse (999999.99)."
 
 #: 
 msgid "Payments"
@@ -6503,10 +6442,6 @@ msgid "%d missing role"
 msgstr "%d puuduvat rolli"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Maksmine on saadud tegelik annetamine. See lisatakse praegusele deposiidile."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Lubadus on andamise kohustus. See ei ole seotud deposiidi lehega."
 
@@ -6803,10 +6738,6 @@ msgid "Name & Identity"
 msgstr "Nimi ja identiteet"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Uus deposiit luuakse"
-
-#: 
 msgid "New Payment"
 msgstr "Uus makse"
 
@@ -6925,10 +6856,6 @@ msgstr "Mõned rakenduse eeltingimused pole täidetud"
 #: 
 msgid "State (Other)"
 msgstr "Olek (Muu)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Lubaduste vs maksete kokkuvõte rahastuse alusel rahanduslikuks aastaks."
 
 #: 
 msgid "System Health"
@@ -8910,10 +8837,6 @@ msgid "Account Recovery"
 msgstr "Konto taastamine"
 
 #: 
-msgid "Add Family"
-msgstr "Lisa perekond"
-
-#: 
 msgid "Add First Family"
 msgstr "Lisa esimene perekond"
 
@@ -8932,10 +8855,6 @@ msgstr "Lisa märge"
 #: 
 msgid "Add People to the Family"
 msgstr "Lisa inimesi perekonda"
-
-#: 
-msgid "Add Person"
-msgstr "Lisa isik"
 
 #: 
 msgid "Add Students to Cart"
@@ -9314,10 +9233,6 @@ msgid "Delete Person"
 msgstr "Kustuta isik"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Kustuta lubadus"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Selle omaduse kustutamine eemaldab ka kõik selle määrangud isikute, perekondade ja gruppide kirjetest."
 
@@ -9480,10 +9395,6 @@ msgstr "MA %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Perekonnad jagavad aadressi ja telefoninumbrit."
-
-#: 
-msgid "Family List"
-msgstr "Perekondade nimekiri"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9682,10 +9593,6 @@ msgid "Letters and Labels"
 msgstr "Kirjad ja etiketid"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Loetlege iseregistreerimise teel loodud perekonnad"
-
-#: 
 msgid "Load demo data"
 msgstr "Laadi demo andmed"
 
@@ -9794,10 +9701,6 @@ msgid "Minimum"
 msgstr "Miinimum"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Muutke grupi liikmete perekonna rolle"
-
-#: 
 msgid "Move to Group"
 msgstr "Liiguta gruppi"
 
@@ -9824,10 +9727,6 @@ msgstr "Uus"
 #: 
 msgid "New Family"
 msgstr "Uus perekond"
-
-#: 
-msgid "New Group"
-msgstr "Uus grupp"
 
 #: 
 msgid "New Person"
@@ -9942,10 +9841,6 @@ msgstr "Parooli taastamine"
 #: 
 msgid "Past & next 7 days"
 msgstr "Eelmised ja järgmised 7 päeva"
-
-#: 
-msgid "People List"
-msgstr "Isikute nimekiri"
 
 #: 
 msgid "People by Classification"
@@ -10126,10 +10021,6 @@ msgstr "Valige varukoopiafail ja klõpsake Taasta andmebaas."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Valige ülaltoodud valikud ja klõpsake varundamise nuppu."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Iseregistreerimise aruanne"
 
 #: 
 msgid "Send email to families"
@@ -10692,11 +10583,6 @@ msgstr "Aadressi vaikeväärtused"
 msgid "Allow user to add new event"
 msgstr "Luba kasutajal lisada uus sündmus"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Alguskuupäev"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Kalendri seaded"
@@ -10806,16 +10692,6 @@ msgstr "E-posti loendid on Mailchimpiga sünkroonitud."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Lubake e-post alltoodud seadete paneelil ja seejärel konfigureerige SMTP-server."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Lõppkuupäev"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Sisestage ükskõik milline osa järgmisest: nimi, linn, riik, postikood, kodutelefonid, e-post või tööposte."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "Väline kalendri API on keelatud"
@@ -10909,11 +10785,6 @@ msgstr "Kohandatud välja vaste sellele väärtusele"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Maksimaalne vanus"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Liige, korraline osaleja jne"
 
@@ -10926,11 +10797,6 @@ msgstr "Liikmed, kes liitusid konkreetsel kuul"
 #: 
 msgid "Membership anniversaries"
 msgstr "Liikmeteaastapäevad"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Minimaalne vanus"
 
 #. Context: query_qry
 #: 
@@ -11004,16 +10870,6 @@ msgstr "Inimese omadus, mida kasutatakse liikmete välistamiseks SMS/tekstsõnum
 msgid "Person property used to exclude members from email lists"
 msgstr "Inimese omadus, mida kasutatakse liikmete välistamiseks e-posti loendist"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Sisestage kõigi liikmete kogu panuste arvutamiseks viimane kuupäev (nt YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Valige kõigi liikmete kogu panuste arvutamiseks alguskuupäev (nt YYYY-MM-DD). MÄRKUS: saate valida ainult annetusi sisaldavaid kuupäevi."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11062,11 +10918,6 @@ msgstr "SMTP pole konfigureeritud"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Otsing"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Teine majandusaasta"
 
@@ -11079,16 +10930,6 @@ msgstr "Teine majandusaasta võrdluseks"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Teine vabatahtliku võimaluse valik"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Valige otsingu väli."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Valige soovitud perekonna roll."
 
 #: 
 msgid "Send text message"
@@ -11129,38 +10970,13 @@ msgstr "Sünnipäevakuu, mille jaoks soovite kirjeid tagasi saada."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Soovitud sugu andmebaasis otsimiseks."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Sugu, mille jaoks soovite kirjeid tagasi saada."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Maksimaalne vanus, mille jaoks soovite kirjeid tagasi saada."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Liikmeteaastapäeva kuu, mille jaoks soovite kirjeid tagasi saada."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Minimaalne vanus, mille jaoks soovite kirjeid tagasi saada."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Vara, mille jaoks soovite inimeste kirjeid tagasi saada."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Pühapäevakool klassi, mille jaoks soovite kirjeid tagasi saada."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11196,11 +11012,6 @@ msgstr "Vonage SMS pole konfigureeritud"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Ilma Vonage'ita avavad tekstitegevused teie seadme SMS-rakenduse või kopeerivad telefoninumbrid lõikelauale."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Töö e-post"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11522,10 +11333,6 @@ msgstr "Funktsioonid"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Finantsloa päringu ID-d"
-
-#: 
-msgid "Find family"
-msgstr "Leia perekond"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13628,10 +13435,6 @@ msgstr "Laadige CSV üles, et luua massimpordi teel peresid ja inimesi."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Teie CSV-s on duplikaatseid veerunimesid. Nimetage duplikaatide veerud ümber (nt lisage teisele \"(2)\") ja laadige uuesti üles."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Kehtetu turvatokeni. Palun proovige uuesti."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13663,10 +13466,6 @@ msgstr "Pühad (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Pühad on märgistatud tüübi järgi: Ametlikud, Tähtpäevad, Pangapühad, Hooajalised ja Usulised. Jätke kõik kategooriad valimata, et kuvada kõik pühad, või valige konkreetsed tüübid kuvamise kitsendamiseks."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Finantskohustuse identifikaator puudub."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16804,10 +16603,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s pere liige %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d kirjet mahub veel."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d kirjet leitud"
 
@@ -16906,10 +16701,6 @@ msgstr "Minimaalne kogusumma"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Minimaalne pakkumine $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Uus makse – %1$s sissemakse nr %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
