@@ -47,7 +47,16 @@ describe("API Private - index.php Routing", () => {
                 expect(redirectResponse.status).to.equal(302);
                 expect(redirectResponse.headers.location).to.include("/errors/not-found.php");
 
-                cy.request({ url: redirectResponse.headers.location, failOnStatusCode: false })
+                // Use new URL() to resolve the Location header against baseUrl — Cypress
+                // cy.request concatenates baseUrl + url for paths starting with '/', which
+                // in a subdir install doubles the prefix (e.g. /churchcrm/ + /churchcrm/errors/…
+                // → /churchcrm/churchcrm/errors/…). Constructing an absolute URL first
+                // prevents Cypress from prepending baseUrl again.
+                const resolvedUrl = new URL(
+                    redirectResponse.headers.location,
+                    Cypress.config('baseUrl')
+                ).href;
+                cy.request({ url: resolvedUrl, failOnStatusCode: false })
                     .then((finalResponse) => {
                         expect(finalResponse.status).to.equal(404);
                         expect(finalResponse.body).to.include("Page Not Found");

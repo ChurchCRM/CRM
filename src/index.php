@@ -51,12 +51,15 @@ $shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_idx_requestPath)
 AuthenticationManager::ensureAuthentication();
 
 // On a fresh install (sChurchName empty), redirect admin users to complete setup.
-// getCurrentUser() is safe to call unguarded here: ensureAuthentication() above
-// already guarantees an authenticated session, or it would have redirected/exited.
 if (empty(SystemConfig::getValue('sChurchName'))) {
-    $currentUser = AuthenticationManager::getCurrentUser();
-    if ($currentUser->isAdmin()) {
-        RedirectUtils::redirect('admin/system/church-info');
+    try {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if ($currentUser->isAdmin()) {
+            RedirectUtils::redirect('admin/system/church-info');
+        }
+    } catch (\Throwable) {
+        // ensureAuthentication() above should have handled any auth failure;
+        // swallow here to avoid a 500 on edge-case provider errors.
     }
 }
 
