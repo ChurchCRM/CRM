@@ -126,7 +126,7 @@
     "devDependencies": {
         "@biomejs/biome": "^2.5.5",
         "@types/jquery": "^3.5.33",
-        "archiver": "^8.0.0",
+        "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
         "cypress": "^15.19.0",
@@ -151,6 +151,17 @@
         "webpack-cli": "^7.2.1"
     },
     "overrides": {
+        "archiver": {
+            "archiver-utils": {
+                "glob": {
+                    "minimatch": "9.0.7"
+                }
+            },
+            "readdir-glob": {
+                "minimatch": "5.1.8",
+                "brace-expansion": "2.1.4"
+            }
+        },
         "lodash": "4.18.1",
         "lodash-es": "4.18.1",
         "@xmldom/xmldom": "0.9.10",

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { ZipArchive } = require('archiver');
+const archiver = require('archiver');
 
 const pkg = require('../package.json');
 const version = pkg.version || 'unknown';
@@ -12,7 +12,7 @@ if (!fs.existsSync(outDir)) {
 
 const outPath = path.join(outDir, `ChurchCRM-${version}.zip`);
 const output = fs.createWriteStream(outPath);
-const archive = new ZipArchive({ zlib: { level: 9 } });
+const archive = archiver('zip', { zlib: { level: 9 } });
 
 output.on('close', () => {
   const bytes = archive.pointer();
