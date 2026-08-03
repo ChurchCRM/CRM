@@ -27,3 +27,9 @@ use ChurchCRM\Utils\InputUtils;
 <script src="<?= SystemURLs::assetVersioned('/skin/js/card-widgets.js') ?>"></script>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>
+
+<!-- FullCalendar v7 CSS: skeleton (structure) + Forma theme + blue palette.
+     In v7 the global bundle no longer auto-injects styles — explicit <link> tags are required. -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/skeleton.css') ?>">
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/forma-theme.css') ?>">
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/forma-palette-blue.css') ?>">

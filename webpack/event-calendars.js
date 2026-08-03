@@ -543,12 +543,8 @@ function initializeCalendar() {
     headerToolbar: window.innerWidth < 768 ? mobileHeaderToolbar : desktopHeaderToolbar,
     footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
     contentHeight: "auto",
-    windowResizeDelay: 200,
-    windowResize: () => {
-      const nowMobile = window.innerWidth < 768;
-      window.CRM.fullcalendar.setOption("headerToolbar", nowMobile ? mobileHeaderToolbar : desktopHeaderToolbar);
-      window.CRM.fullcalendar.setOption("footerToolbar", nowMobile ? mobileFooterToolbar : false);
-    },
+    footerToolbarClass: "crm-fc-footer-toolbar",
+    headerToolbarClass: "crm-fc-header-toolbar",
     selectable: true,
     editable: window.CRM.calendarJSArgs.isModifiable,
     eventDrop: window.moveEventModal.handleEventDrop,
@@ -588,6 +584,23 @@ function initializeCalendar() {
       window.CRM.isCalendarLoading = isLoading;
     },
   });
+
+  // FullCalendar v7 removed the windowResize option. Replicate the debounced
+  // resize behaviour with a native event listener. Clean up the old handler
+  // when initializeCalendar() is called again (e.g. after locale reload).
+  if (window.CRM._calendarResizeHandler) {
+    window.removeEventListener("resize", window.CRM._calendarResizeHandler);
+  }
+  let _resizeTimer;
+  window.CRM._calendarResizeHandler = () => {
+    clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => {
+      const nowMobile = window.innerWidth < 768;
+      window.CRM.fullcalendar.setOption("headerToolbar", nowMobile ? mobileHeaderToolbar : desktopHeaderToolbar);
+      window.CRM.fullcalendar.setOption("footerToolbar", nowMobile ? mobileFooterToolbar : false);
+    }, 200);
+  };
+  window.addEventListener("resize", window.CRM._calendarResizeHandler);
 }
 
 /**

@@ -13,7 +13,13 @@ $allowFraming = true;
 
 require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
 ?>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
+<!-- FullCalendar v7 CSS: must load before the FC script renders (v7 no longer auto-injects styles) -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/skeleton.css') ?>">
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/forma-theme.css') ?>">
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/forma-palette-blue.css') ?>">
+<!-- Temporal polyfill: must load before FullCalendar v7 which requires globalThis.Temporal -->
+<script src="<?= SystemURLs::assetVersioned('/skin/external/temporal-polyfill/global.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.js') ?>"></script>
 <div class="register-box w-100" style="margin-top:5px;">
     <div class="register-logo">
       <a href="<?= SystemURLs::getRootPath() ?>/"><?= ChurchMetaData::getChurchName() ?></a>: <?= InputUtils::escapeHTML($calendarName) ?>

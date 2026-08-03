@@ -1,5 +1,21 @@
 /// <reference types="cypress" />
 
+/**
+ * Open the new-event creation modal via the stable global function.
+ *
+ * In FullCalendar v7 CSS class names are hashed so .fc-daygrid-day no longer
+ * exists in the rendered DOM. Drive the modal via window.showNewEventForm() \u2014
+ * the same global the FullCalendar select / eventClick handlers call internally.
+ * This makes the tests selector-independent and robust across FC upgrades.
+ */
+function openNewEventModal() {
+    cy.window().should("have.property", "showNewEventForm");
+    cy.window().then((win) => {
+        const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+        win.showNewEventForm({ startStr: today, endStr: today, allDay: true });
+    });
+}
+
 describe("Standard Calendar", () => {
     beforeEach(() => cy.setupStandardSession());
 
@@ -8,8 +24,9 @@ describe("Standard Calendar", () => {
         cy.visit("event/calendars");
         cy.url().should("include", "event/calendars");
 
-        // Click an empty calendar day to trigger showNewEventForm
-        cy.get(".fc-daygrid-day").first().click();
+        // Open the new-event form via the stable global (avoids relying on
+        // FullCalendar's hashed DOM class names which changed in v7)
+        openNewEventModal();
 
         // Wait for the edit modal to load (loading spinner replaced by form)
         cy.get("#event-title-input").should("be.visible").type(title);
@@ -27,7 +44,7 @@ describe("Standard Calendar", () => {
         cy.visit("event/calendars");
         cy.url().should("include", "event/calendars");
 
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
 
         // Wait for the modal edit form to load
         cy.get("#event-title-input").should("be.visible");
@@ -49,7 +66,7 @@ describe("Standard Calendar", () => {
     it("Save button is disabled until title is filled (calendar is optional)", () => {
         cy.visit("event/calendars");
 
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible");
 
         // Save starts disabled with no title. Start/End are pre-filled from
@@ -71,7 +88,7 @@ describe("Standard Calendar", () => {
     it("All-day toggle switches date input types", () => {
         cy.visit("event/calendars");
 
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible");
 
         // Verify start/end date inputs exist
@@ -92,7 +109,7 @@ describe("Standard Calendar", () => {
     it("Delete button is hidden for new events", () => {
         cy.visit("event/calendars");
 
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible");
 
         // Delete button should be hidden for new (unsaved) events
@@ -102,7 +119,7 @@ describe("Standard Calendar", () => {
     it("Modal closes on Cancel button click", () => {
         cy.visit("event/calendars");
 
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible");
 
         // Click Cancel — modal should close and be removed from DOM
@@ -113,7 +130,7 @@ describe("Standard Calendar", () => {
     it("Modal cleanup removes element and restores body state", () => {
         cy.visit("event/calendars");
 
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible");
 
         // Close the modal
@@ -130,7 +147,7 @@ describe("Standard Calendar", () => {
     it("TomSelect dropdowns initialize correctly", () => {
         cy.visit("event/calendars");
 
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible");
 
         // Event type TomSelect should be initialized
@@ -150,7 +167,7 @@ describe("Standard Calendar", () => {
      */
     it("Advanced section starts collapsed and expands on toggle", () => {
         cy.visit("event/calendars");
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible");
 
         cy.get("#eventAdvancedFields").should("not.have.class", "show");
@@ -188,7 +205,7 @@ describe("Standard Calendar — save (admin-session)", () => {
         cy.intercept("POST", "**/api/events").as("createEvent");
 
         cy.visit("event/calendars");
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible").type(title);
 
         // Pin a calendar. Do NOT touch Event Type — we want the default
@@ -223,7 +240,7 @@ describe("Standard Calendar — save (admin-session)", () => {
         cy.intercept("POST", "**/api/events").as("createEvent");
 
         cy.visit("event/calendars");
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible").type(title);
 
         // Empty-state hint should be visible since no calendar is pinned.
@@ -310,7 +327,7 @@ describe("Standard Calendar — save (admin-session)", () => {
         cy.intercept("POST", "**/api/events").as("createEvent");
 
         cy.visit("event/calendars");
-        cy.get(".fc-daygrid-day").first().click();
+        openNewEventModal();
         cy.get("#event-title-input").should("be.visible").type(`Modal Advanced ${Date.now()}`);
         cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
 

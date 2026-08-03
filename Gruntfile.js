@@ -6,11 +6,45 @@ module.exports = function (grunt) {
             skin: {
                 files: [
                     {
+                        // FullCalendar v7: all-in-one global bundle (includes forma theme JS).
+                        // v6 shipped index.global.min.js; v7 ships all/global.js.
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["node_modules/fullcalendar/index.global.min.js"],
+                        src: ["node_modules/fullcalendar/all/global.js"],
                         dest: "src/skin/external/fullcalendar/",
+                        rename: function () {
+                            return "src/skin/external/fullcalendar/index.global.js";
+                        },
+                    },
+                    {
+                        // FullCalendar v7: CSS is no longer auto-injected by the global bundle.
+                        // Load skeleton (structure), Forma theme, and blue palette explicitly.
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: [
+                            "node_modules/fullcalendar/skeleton.css",
+                            "node_modules/fullcalendar/themes/forma/theme.css",
+                            "node_modules/fullcalendar/themes/forma/palettes/blue.css",
+                        ],
+                        dest: "src/skin/external/fullcalendar/",
+                        rename: function (dest, src) {
+                            const map = {
+                                "theme.css": "forma-theme.css",
+                                "blue.css": "forma-palette-blue.css",
+                            };
+                            return dest + (map[src] || src);
+                        },
+                    },
+                    {
+                        // temporal-polyfill: sets globalThis.Temporal — required by FullCalendar v7.
+                        // Must be loaded before the FullCalendar script.
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: ["node_modules/temporal-polyfill/global.js"],
+                        dest: "src/skin/external/temporal-polyfill/",
                     },
                     {
                         expand: true,
@@ -163,14 +197,16 @@ module.exports = function (grunt) {
                         dest: "src/locale/vendor/bootstrap-datepicker/",
                     },
                     {
+                        // FullCalendar v7: locales moved from @fullcalendar/core/locales/*.global.min.js
+                        // to fullcalendar/locales/<lang>/global.js (one directory per locale).
+                        // rename: "en-gb/global.js" -> "en-gb.js" by stripping /global.js suffix.
                         expand: true,
                         filter: "isFile",
-                        flatten: true,
-                        cwd: "node_modules/@fullcalendar/core",
-                        src: ["locales/*.global.min.js"],
+                        cwd: "node_modules/fullcalendar/locales",
+                        src: ["*/global.js"],
                         dest: "src/locale/vendor/fullcalendar/",
                         rename: function (dest, src) {
-                            return dest + src.replace(/\.global\.min\.js$/, ".js");
+                            return dest + src.replace(/\/global\.js$/, ".js");
                         },
                     },
                 ],

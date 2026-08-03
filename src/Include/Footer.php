@@ -94,7 +94,9 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.select.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/select.bootstrap5.min.js') ?>"></script>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
+<!-- Temporal polyfill: must load before FullCalendar v7 which requires globalThis.Temporal -->
+<script src="<?= SystemURLs::assetVersioned('/skin/external/temporal-polyfill/global.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootbox/bootbox.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/i18next/i18next.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/just-validate/just-validate.production.min.js') ?>"></script>

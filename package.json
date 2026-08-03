@@ -121,6 +121,7 @@
         "pdfmake": "^0.3.11",
         "posthog-js": "^1.407.3",
         "quill": "2.0.2",
+        "temporal-polyfill": "^1.0.1",
         "tom-select": "^2.6.2"
     },
     "devDependencies": {

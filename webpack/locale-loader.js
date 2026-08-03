@@ -178,7 +178,7 @@ async function loadLocaleFiles(localeConfig) {
 
     // Load FullCalendar locale only when FullCalendar is available.
     // FooterNotLoggedIn.php (login page) runs this loader but never loads
-    // index.global.min.js, so ar.js / other locale IIFEs would throw
+    // index.global.js, so ar.js / other locale IIFEs would throw
     // "FullCalendar is not defined" if loaded there.
     if (localeConfig.fullCalendar && typeof FullCalendar !== "undefined") {
       let fcLocale = localeConfig.languageCode.toLowerCase();
