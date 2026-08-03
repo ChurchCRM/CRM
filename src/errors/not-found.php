@@ -19,7 +19,7 @@ $requestedPath = $_rawPath;
 unset($_rawPath, $_uri);
 
 $customSections = "### Requested Path\n\n";
-$customSections .= "```\n" . $requestedPath . "\n```";
+$customSections .= "```\n" . str_replace('`', "'", $requestedPath) . "\n```";
 
 $issueBody = buildGitHubIssueBody('Page Not Found (404)', $customSections);
 
