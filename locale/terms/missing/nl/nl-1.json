@@ -1,21 +1,21 @@
 {
-  "Code": "",
-  "Items": "",
-  "Planning": "",
+  "Code": "Code",
+  "Items": "Items",
+  "Planning": "Planning",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} lid gekopieerd",
+    "other": "{{count}} leden gekopieerd"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Deze lijst heeft {{count}} ontvanger — te veel voor een mailto:-link. Gebruik 'Adressen kopiëren' in plaats daarvan.",
+    "other": "Deze lijst heeft {{count}} ontvangers — te veel voor een mailto:-link. Gebruik 'Adressen kopiëren' in plaats daarvan."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik 'Adressen kopiëren' in plaats daarvan.",
+    "other": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik 'Adressen kopiëren' in plaats daarvan."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min. resterend",
+    "other": "{{count}} min. resterend"
   }
 }
