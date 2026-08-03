@@ -75,6 +75,8 @@ class SystemService
     {
         LoggerUtils::getAppLogger()->debug('Starting background job processing');
 
+        BirthdayEmailService::run();
+
         // Fire the CRON_RUN hook so plugins can register scheduled tasks.
         // Each active plugin registers a handler on Hooks::CRON_RUN in boot().
         // HookManager catches and logs any per-plugin errors so one failing
