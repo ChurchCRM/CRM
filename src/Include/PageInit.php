@@ -103,3 +103,14 @@ function RunQuery(string $sSQL, bool $bStopOnError = true)
 {
     return FunctionsUtils::runQuery($sSQL, $bStopOnError);
 }
+
+//
+// Global function shim for parameterized prepared statements.
+// Use in place of RunQuery() when user-supplied values must be bound as parameters
+// rather than string-concatenated into the SQL. Returns a mysqli_result for SELECTs
+// and true for write queries, preserving compatibility with mysqli_fetch_array().
+//
+function RunPreparedQuery(string $sSQL, string $types = '', array $params = [], bool $bStopOnError = true)
+{
+    return FunctionsUtils::runPreparedQuery($sSQL, $types, $params, $bStopOnError);
+}

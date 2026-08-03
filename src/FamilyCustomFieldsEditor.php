@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMaster;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\CSRFUtils;
@@ -153,20 +154,23 @@ if (isset($_POST['SaveChanges'])) {
                         ->setOptionName(gettext('Default Option'));
                     $listOption->save();
 
-                    $newSpecial ="'$newListID'";
-                } else {
-                    $newSpecial = 'NULL';
-                }
+                } // end if ($newFieldType == 12)
 
-                // Insert into the master table
+                // Insert into the master table via ORM (avoids SQL injection from user-supplied field name/type)
                 $newOrderID = $last + 1;
-                $sSQL ="INSERT INTO `family_custom_master`
-                        (`fam_custom_Order` , `fam_custom_Field` , `fam_custom_Name` ,  `fam_custom_Special` , `fam_custom_FieldSec` , `type_ID`)
-                        VALUES ('" . $newOrderID ."', 'c" . $newFieldNum ."', '" . $newFieldName ."'," . $newSpecial .", '" . $newFieldSec ."', '" . $newFieldType ."');";
-                RunQuery($sSQL);
+                $familyCustomMaster = new FamilyCustomMaster();
+                $familyCustomMaster
+                    ->setOrder($newOrderID)
+                    ->setField('c' . $newFieldNum)
+                    ->setName($newFieldName)
+                    ->setCustomSpecial($newFieldType == 12 ? $newListID : null)
+                    ->setFieldSecurity($newFieldSec)
+                    ->setTypeId($newFieldType);
+                $familyCustomMaster->save();
 
                 // Insert into the custom fields table
-                $sSQL = 'ALTER TABLE `family_custom` ADD `c' . $newFieldNum . '` ';
+                // $newFieldNum is (int)-cast from a DB column count; DDL identifiers cannot be parameterised.
+                $sSQL = 'ALTER TABLE `family_custom` ADD `c' . $newFieldNum . '` '; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
                 switch ($newFieldType) {
                     case 1:
@@ -207,7 +211,7 @@ if (isset($_POST['SaveChanges'])) {
                 }
 
                 $sSQL .= ' DEFAULT NULL ;';
-                RunQuery($sSQL);
+                RunQuery($sSQL); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
                 $bNewNameError = false;
             }
