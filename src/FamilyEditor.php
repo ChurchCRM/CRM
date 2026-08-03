@@ -279,13 +279,11 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //If the user added a new record, we need to key back to the route to the FamilyView page
         if ($iFamilyID < 1) {
             $iFamilyID = $family->getId();
-            $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('$iFamilyID')";
-            RunQuery($sSQL);
+            RunPreparedQuery('INSERT INTO `family_custom` (`fam_ID`) VALUES (?)', 'i', [$iFamilyID]);
 
             // Add property if assigned
             if ($iPropertyID) {
-                $sSQL ="INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID) VALUES ($iPropertyID, $iFamilyID)";
-                RunQuery($sSQL);
+                RunPreparedQuery('INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID) VALUES (?, ?)', 'ii', [$iPropertyID, $iFamilyID]);
             }
 
             //Run through the family member arrays...
@@ -396,8 +394,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     if ($family) {
         //Editing....
         //Get the information on this family
-        $sSQL = "SELECT * FROM family_fam WHERE fam_ID = $iFamilyID";
-        $rsFamily = RunQuery($sSQL);
+        $rsFamily = RunPreparedQuery('SELECT * FROM family_fam WHERE fam_ID = ?', 'i', [$iFamilyID]);
         extract(mysqli_fetch_array($rsFamily));
 
         $iFamilyID = $family->getId();
@@ -422,8 +419,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         // If field is empty: checkbox unchecked, mask applied
         $bNoFormat_HomePhone = !empty($sHomePhone);
 
-        $sSQL = "SELECT * FROM family_custom WHERE fam_ID = $iFamilyID";
-        $rsCustomData = RunQuery($sSQL);
+        $rsCustomData = RunPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [$iFamilyID]);
         $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
         $aCustomErrors = [];
@@ -435,8 +431,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             }
         }
 
-        $sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = $iFamilyID ORDER BY per_fmr_ID";
-        $rsMembers = RunQuery($sSQL);
+        $rsMembers = RunPreparedQuery('SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = ? ORDER BY per_fmr_ID', 'i', [$iFamilyID]);
         $iCount = 0;
         $iFamilyMemberRows = 0;
         while ($aRow = mysqli_fetch_array($rsMembers)) {

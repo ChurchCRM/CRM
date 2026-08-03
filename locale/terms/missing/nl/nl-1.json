@@ -2,16 +2,20 @@
   "Code": "Code",
   "Items": "Items",
   "Planning": "Planning",
-  "one": {
-    "Copied {{count}} members": "{{count}} lid gekopieerd",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Deze lijst heeft {{count}} ontvanger — te veel voor een mailto:-link. Gebruik in plaats daarvan Adressen kopiëren.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik in plaats daarvan Adressen kopiëren.",
-    "{{count}} min left": "{{count}} min over"
+  "Copied {{count}} members": {
+    "one": "{{count}} lid gekopieerd",
+    "other": "{{count}} leden gekopieerd"
   },
-  "other": {
-    "Copied {{count}} members": "{{count}} leden gekopieerd",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Deze lijst heeft {{count}} ontvangers — te veel voor een mailto:-link. Gebruik in plaats daarvan Adressen kopiëren.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik in plaats daarvan Adressen kopiëren.",
-    "{{count}} min left": "{{count}} min over"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Deze lijst heeft {{count}} ontvanger — te veel voor een mailto:-link. Gebruik 'Adressen kopiëren' in plaats daarvan.",
+    "other": "Deze lijst heeft {{count}} ontvangers — te veel voor een mailto:-link. Gebruik 'Adressen kopiëren' in plaats daarvan."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik 'Adressen kopiëren' in plaats daarvan.",
+    "other": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik 'Adressen kopiëren' in plaats daarvan."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} min. resterend",
+    "other": "{{count}} min. resterend"
   }
 }

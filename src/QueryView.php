@@ -29,13 +29,11 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 
 // Get the query information
-$sSQL = 'SELECT * FROM query_qry WHERE qry_ID = ' . $iQueryID;
-$rsSQL = RunQuery($sSQL);
+$rsSQL = RunPreparedQuery('SELECT * FROM query_qry WHERE qry_ID = ?', 'i', [(int) $iQueryID]);
 extract(mysqli_fetch_array($rsSQL));
 
 // Get the parameters for this query
-$sSQL = 'SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID = ' . $iQueryID . ' ORDER BY qrp_ID';
-$rsParameters = RunQuery($sSQL);
+$rsParameters = RunPreparedQuery('SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID = ? ORDER BY qrp_ID', 'i', [(int) $iQueryID]);
 
 // If the form was submitted or there are no parameters, run the query
 if (isset($_POST['Submit']) || mysqli_num_rows($rsParameters) === 0) {

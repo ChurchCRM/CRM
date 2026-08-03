@@ -20,6 +20,21 @@ $sAction = $_GET['Action'] ?? $_POST['Action'] ?? '';
 
 $iOrderID = (int)$iOrderID;
 
+// All state-changing operations (up, down, delete) require POST + a valid
+// CSRF token.  The previous check was gated on REQUEST_METHOD === 'POST',
+// which meant a cross-site GET navigation bypassed it entirely (CWE-352 /
+// CWE-650 — see GHSA-v4x7-hgpq-29r6).
+if (in_array($sAction, ['up', 'down', 'delete'], true)) {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        http_response_code(405);
+        die(gettext('Method Not Allowed'));
+    }
+    if (!CSRFUtils::verifyRequest($_POST, 'personCustomFieldsAction')) {
+        http_response_code(403);
+        die(gettext('Invalid CSRF token'));
+    }
+}
+
 // Validate field name to prevent DDL injection (column names follow pattern c1, c2, etc.)
 if ($sField !== '' && !preg_match('/^c\d+$/', $sField)) {
     RedirectUtils::redirect('PersonCustomFieldsEditor.php');
@@ -53,14 +68,8 @@ switch ($sAction) {
 
         // Delete a field from the form
     case 'delete':
-        // Verify CSRF token for POST requests
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!CSRFUtils::verifyRequest($_POST, 'deletePersonCustomField')) {
-                http_response_code(403);
-                die(gettext('Invalid CSRF token'));
-            }
-        }
-        
+        // CSRF + POST already verified above for all state-changing actions.
+
         // Fetch the custom field record by primary key (custom_field)
         $customField = PersonCustomMasterQuery::create()
             ->findOneById($sField);
@@ -74,20 +83,21 @@ switch ($sAction) {
         // Get the order ID for reordering after delete
         $iOrderID = (int)$customField->getOrder();
 
-        // Check if this field is a custom list type (type_ID = 12).  If so, delete the list from list_lst
+        // Check if this field is a custom list type (type_ID = 12). If so, delete all options for the list from list_lst
         if ($customField->getTypeId() === 12) {
-            $listOption = ListOptionQuery::create()
-                ->findOneById((int)$customField->getSpecial());
-            if ($listOption !== null) {
-                $listOption->delete();
-            }
+            // filterById() matches all rows WHERE lst_ID = special (entire list), not just the first one
+            ListOptionQuery::create()->filterById((int)$customField->getSpecial())->delete();
         }
 
-        // Delete the custom field record
-        $customField->delete();
+        // Drop the column from the person_custom table first (DDL-first order matches original behaviour).
+        // If the ORM delete ran first and ALTER TABLE failed, the master record would be gone
+        // while the physical column with user data remained — an unrecoverable orphan.
+        // $sField is regex-validated (^c\d+$) above; DDL identifiers cannot be parameterised.
+        $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '` ;'; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+        RunQuery($sSQL); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
-        $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '` ;';
-        RunQuery($sSQL);
+        // Delete the custom field record only after the DDL succeeds
+        $customField->delete();
 
         // Fetch remaining custom fields to reorder
         $remainingFields = PersonCustomMasterQuery::create()

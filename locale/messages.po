@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 22:05+0000\n"
+"POT-Creation-Date: 2026-08-03 15:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1541,10 +1541,6 @@ msgstr ""
 msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Beginning Date"
-msgstr ""
-
 #. Context: countries
 msgid "Belarus (Беларусь)"
 msgstr ""
@@ -1895,6 +1891,9 @@ msgid "Cannot execute query."
 msgstr ""
 
 msgid "Cannot move property in that direction"
+msgstr ""
+
+msgid "Cannot prepare query."
 msgstr ""
 
 msgid "Cannot send test email"
@@ -2277,7 +2276,6 @@ msgstr ""
 msgid "ChurchCRM version"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "City"
 msgstr ""
 
@@ -2290,7 +2288,6 @@ msgstr ""
 msgid "City, State, Zip"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Class"
 msgstr ""
 
@@ -3848,7 +3845,6 @@ msgstr ""
 msgid "Electronic Transaction Details"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "Email"
 msgstr ""
 
@@ -4041,10 +4037,6 @@ msgstr ""
 msgid "Ended"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Ending Date"
-msgstr ""
-
 msgid "Endpoint URL"
 msgstr ""
 
@@ -4097,10 +4089,6 @@ msgid "Enter Winners"
 msgstr ""
 
 msgid "Enter a search term"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr ""
 
 msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
@@ -4871,7 +4859,6 @@ msgstr ""
 msgid "Family Registration"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Family Role"
 msgstr ""
 
@@ -4958,15 +4945,10 @@ msgstr ""
 msgid "February"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "Female"
 msgstr ""
 
 msgid "Fetching latest registry…"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Field"
 msgstr ""
 
 msgid "Field Selection"
@@ -5379,7 +5361,6 @@ msgstr ""
 msgid "Gambia"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Gender"
 msgstr ""
 
@@ -5850,7 +5831,6 @@ msgstr ""
 msgid "Home Address"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "Home Phone"
 msgstr ""
 
@@ -6974,7 +6954,6 @@ msgstr ""
 msgid "Maldives"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "Male"
 msgstr ""
 
@@ -7159,10 +7138,6 @@ msgstr ""
 msgid "Max Upload Size"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Maximum Age"
-msgstr ""
-
 msgid "Maximum distance"
 msgstr ""
 
@@ -7316,10 +7291,6 @@ msgid "Middle Name"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Minimum Age"
 msgstr ""
 
 msgid "Minimum Price"
@@ -7573,7 +7544,6 @@ msgstr ""
 msgid "NW"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "Name"
 msgstr ""
 
@@ -8918,10 +8888,6 @@ msgstr ""
 msgid "Please enter the following to start your family's verification"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr ""
-
 msgid "Please fill in all required fields correctly."
 msgstr ""
 
@@ -8991,10 +8957,6 @@ msgid "Please select target Role for members"
 msgstr ""
 
 msgid "Please select target group for members"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr ""
 
 msgid "Please try again"
@@ -9977,10 +9939,6 @@ msgstr ""
 msgid "Schema Version"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Search"
-msgstr ""
-
 msgid "Search Addresses"
 msgstr ""
 
@@ -10157,10 +10115,6 @@ msgstr ""
 msgid "Select event type..."
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Select field to search for."
-msgstr ""
-
 msgid "Select how do you want to request the family information to be verified"
 msgstr ""
 
@@ -10172,10 +10126,6 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "Select the desired event"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Select the desired family role."
 msgstr ""
 
 msgid "Select the type of record this property applies to"
@@ -10662,7 +10612,6 @@ msgstr ""
 msgid "Starts with http:// or https://"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "State"
 msgstr ""
 
@@ -11058,14 +11007,6 @@ msgstr ""
 msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "The desired gender to search the database for."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "The gender for which you would like records returned."
-msgstr ""
-
 msgid "The group could not be found. Please try again."
 msgstr ""
 
@@ -11073,15 +11014,7 @@ msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr ""
 
 #. Context: queryparameters_qrp
-msgid "The maximum age for which you want records returned."
-msgstr ""
-
-#. Context: queryparameters_qrp
 msgid "The membership anniversary month for which you would like records returned."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "The minimum age for which you want records returned."
 msgstr ""
 
 msgid "The month that starts your organization's fiscal year"
@@ -11156,10 +11089,6 @@ msgid "The selected person was not found."
 msgstr ""
 
 msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "The sunday school class for which you would like records returned."
 msgstr ""
 
 msgid "The teacher sent this alert at"
@@ -12672,10 +12601,6 @@ msgstr ""
 msgid "Work/Other Email"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
-msgid "WorkEmail"
-msgstr ""
-
 msgid "Working..."
 msgstr ""
 
@@ -12953,7 +12878,6 @@ msgstr ""
 msgid "Zip"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "Zip Code"
 msgstr ""
 

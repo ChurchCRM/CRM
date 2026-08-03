@@ -180,3 +180,87 @@ describe("Family Custom Fields — Delete button (CSP regression #8520)", () => 
         cy.get(`input[value="${fieldName}"]`).should("not.exist");
     });
 });
+
+// ------------------------------------------------------------------ //
+// RowOps up/down CSRF guard paths (PR #9345)
+// FamilyCustomFieldsRowOps.php and PersonCustomFieldsRowOps.php now require
+// POST + a valid CSRF token for all state-changing actions (up, down, delete)
+// as part of the GHSA-v4x7-hgpq-29r6 security fix.  A bare GET request must
+// be rejected with 405 Method Not Allowed — not redirect or 500.
+// ------------------------------------------------------------------ //
+
+describe("Family Custom Fields Row Operations — prepared-statement paths (PR #9351)", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("up action rejects GET with 405 (CSRF guard — GHSA-v4x7-hgpq-29r6)", () => {
+        // GHSA-v4x7-hgpq-29r6: state-changing actions require POST + CSRF.
+        // A bare GET to Action=up must return 405, not a redirect.
+        cy.request({
+            method: "GET",
+            url: "FamilyCustomFieldsRowOps.php?Action=up&OrderID=2&Field=c1",
+            failOnStatusCode: false,
+            followRedirect: false,
+        }).then((response) => {
+            expect(response.status).to.equal(405);
+        });
+    });
+
+    it("down action rejects GET with 405 (CSRF guard — GHSA-v4x7-hgpq-29r6)", () => {
+        cy.request({
+            method: "GET",
+            url: "FamilyCustomFieldsRowOps.php?Action=down&OrderID=1&Field=c1",
+            failOnStatusCode: false,
+            followRedirect: false,
+        }).then((response) => {
+            expect(response.status).to.equal(405);
+        });
+    });
+
+    it("delete action rejects GET with 405 (CSRF guard — GHSA-v4x7-hgpq-29r6)", () => {
+        cy.request({
+            method: "GET",
+            url: "FamilyCustomFieldsRowOps.php?Action=delete&Field=c1",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.equal(405);
+        });
+    });
+});
+
+describe("Person Custom Fields Row Operations — prepared-statement paths (PR #9351)", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("up action rejects GET with 405 (CSRF guard — GHSA-v4x7-hgpq-29r6)", () => {
+        // GHSA-v4x7-hgpq-29r6: state-changing actions require POST + CSRF.
+        // A bare GET to Action=up must return 405, not a redirect.
+        cy.request({
+            method: "GET",
+            url: "PersonCustomFieldsRowOps.php?Action=up&OrderID=2&Field=c1",
+            failOnStatusCode: false,
+            followRedirect: false,
+        }).then((response) => {
+            expect(response.status).to.equal(405);
+        });
+    });
+
+    it("down action rejects GET with 405 (CSRF guard — GHSA-v4x7-hgpq-29r6)", () => {
+        cy.request({
+            method: "GET",
+            url: "PersonCustomFieldsRowOps.php?Action=down&OrderID=1&Field=c1",
+            failOnStatusCode: false,
+            followRedirect: false,
+        }).then((response) => {
+            expect(response.status).to.equal(405);
+        });
+    });
+
+    it("delete action rejects GET with 405 (CSRF guard — GHSA-v4x7-hgpq-29r6)", () => {
+        cy.request({
+            method: "GET",
+            url: "PersonCustomFieldsRowOps.php?Action=delete&Field=c1",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.equal(405);
+        });
+    });
+});

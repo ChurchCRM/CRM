@@ -1,15 +1,19 @@
 {
   "Code": "Code",
-  "one": {
-    "Copied {{count}} members": "{{count}} Gemeindemitglied kopiert",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Diese Liste hat {{count}} Empfaenger - zu viele fuer einen mailto:-Link. Verwenden Sie stattdessen Adressen kopieren.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Zu viele Empfaenger fuer den E-Mail-Client ({{count}} > {{max}}). Verwenden Sie stattdessen Adressen kopieren.",
-    "{{count}} min left": "{{count}} Min. verbleibend"
+  "Copied {{count}} members": {
+    "one": "{{count}} Mitglied kopiert",
+    "other": "{{count}} Mitglieder kopiert"
   },
-  "other": {
-    "Copied {{count}} members": "{{count}} Gemeindemitglieder kopiert",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Diese Liste hat {{count}} Empfaenger - zu viele fuer einen mailto:-Link. Verwenden Sie stattdessen Adressen kopieren.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Zu viele Empfaenger fuer den E-Mail-Client ({{count}} > {{max}}). Verwenden Sie stattdessen Adressen kopieren.",
-    "{{count}} min left": "{{count}} Min. verbleibend"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Diese Liste hat {{count}} Empfänger – zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“.",
+    "other": "Diese Liste hat {{count}} Empfänger – zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Zu viele Empfänger für das E-Mail-Programm ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“.",
+    "other": "Zu viele Empfänger für das E-Mail-Programm ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} Min. verbleibend",
+    "other": "{{count}} Min. verbleibend"
   }
 }

@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "{{count}} உறுப்பினர் நகலெடுக்கப்பட்டார்",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "இந்தப் பட்டியலில் {{count}} பெறுனர் உள்ளார் — mailto: இணைப்பிற்கு மிகவும் அதிகம். பதிலாக முகவரிகளை நகலெடு பயன்படுத்தவும்.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "மின்னஞ்சல் கிளையண்டிற்கு மிகவும் அதிகமான பெறுனர்கள் ({{count}} > {{max}}). பதிலாக முகவரிகளை நகலெடு பயன்படுத்தவும்.",
-    "{{count}} min left": "{{count}} நிமிடம் மீதமுள்ளது"
+  "Copied {{count}} members": {
+    "one": "{{count}} உறுப்பினர் நகலெடுக்கப்பட்டார்",
+    "other": "{{count}} உறுப்பினர்கள் நகலெடுக்கப்பட்டனர்"
   },
-  "other": {
-    "Copied {{count}} members": "{{count}} உறுப்பினர்கள் நகலெடுக்கப்பட்டனர்",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "இந்தப் பட்டியலில் {{count}} பெறுனர்கள் உள்ளனர் — mailto: இணைப்பிற்கு மிகவும் அதிகம். பதிலாக முகவரிகளை நகலெடு பயன்படுத்தவும்.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "மின்னஞ்சல் கிளையண்டிற்கு மிகவும் அதிகமான பெறுனர்கள் ({{count}} > {{max}}). பதிலாக முகவரிகளை நகலெடு பயன்படுத்தவும்.",
-    "{{count}} min left": "{{count}} நிமிடங்கள் மீதமுள்ளன"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "இந்தப் பட்டியலில் {{count}} பெறுநர் உள்ளார் — mailto: இணைப்பிற்கு மிகவும் அதிகம். பதிலாக முகவரிகளை நகலெடு பயன்படுத்தவும்.",
+    "other": "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — mailto: இணைப்பிற்கு மிகவும் அதிகம். பதிலாக முகவரிகளை நகலெடு பயன்படுத்தவும்."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "மின்னஞ்சல் பயன்பாட்டிற்கு மிகவும் அதிகமான பெறுநர்கள் ({{count}} > {{max}}). பதிலாக முகவரிகளை நகலெடு பயன்படுத்தவும்.",
+    "other": "மின்னஞ்சல் பயன்பாட்டிற்கு மிகவும் அதிகமான பெறுநர்கள் ({{count}} > {{max}}). பதிலாக முகவரிகளை நகலெடு பயன்படுத்தவும்."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} நிமிடம் மீதமுள்ளது",
+    "other": "{{count}} நிமிடங்கள் மீதமுள்ளன"
   }
 }

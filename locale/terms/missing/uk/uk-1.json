@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "Скопійовано {{count}} парафіянина",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Цей список містить {{count}} одержувача — надто багато для посилання mailto:. Натомість скористайтеся функцією «Копіювати адреси».",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Надто багато одержувачів для поштового клієнта ({{count}} > {{max}}). Натомість скористайтеся функцією «Копіювати адреси».",
-    "{{count}} min left": "{{count}} хвилина залишилась"
+  "Copied {{count}} members": {
+    "one": "Скопійовано {{count}} члена",
+    "other": "Скопійовано {{count}} членів"
   },
-  "other": {
-    "Copied {{count}} members": "Скопійовано {{count}} парафіян",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Цей список містить {{count}} одержувачів — надто багато для посилання mailto:. Натомість скористайтеся функцією «Копіювати адреси».",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Надто багато одержувачів для поштового клієнта ({{count}} > {{max}}). Натомість скористайтеся функцією «Копіювати адреси».",
-    "{{count}} min left": "{{count}} хвилин залишилось"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Цей список містить {{count}} одержувача — забагато для посилання mailto:. Скористайтеся функцією «Копіювати адреси».",
+    "other": "Цей список містить {{count}} одержувачів — забагато для посилання mailto:. Скористайтеся функцією «Копіювати адреси»."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Забагато одержувачів для поштового клієнта ({{count}} > {{max}}). Скористайтеся функцією «Копіювати адреси».",
+    "other": "Забагато одержувачів для поштового клієнта ({{count}} > {{max}}). Скористайтеся функцією «Копіювати адреси»."
+  },
+  "{{count}} min left": {
+    "one": "Залишилась {{count}} хвилина",
+    "other": "Залишилося {{count}} хвилин"
   }
 }

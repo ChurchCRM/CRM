@@ -3,6 +3,7 @@
 use ChurchCRM\Service\UpgradeAPIService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\PathUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -111,9 +112,8 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
                 return SlimUtils::renderErrorJSON($response, gettext('Missing required fields: fullPath and sha1'), [], 400, null, $request);
             }
             // Prevent path traversal: ensure the file is inside the system temp directory
-            $realPath = realpath($fullPath);
-            $tempDir = realpath(sys_get_temp_dir());
-            if ($realPath === false || $tempDir === false || !str_starts_with($realPath, $tempDir . DIRECTORY_SEPARATOR)) {
+            $realPath = PathUtils::resolveRealPathWithin($fullPath, sys_get_temp_dir());
+            if ($realPath === null) {
                 return SlimUtils::renderErrorJSON($response, gettext('Invalid file path'), [], 400, null, $request);
             }
             // Guard against stray PHP output (warnings/notices from the legacy

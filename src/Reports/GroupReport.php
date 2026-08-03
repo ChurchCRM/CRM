@@ -21,16 +21,14 @@ if ($iMode == 1) {
 }
 
 // Get the group name
-$sSQL = 'SELECT grp_Name, grp_RoleListID FROM group_grp WHERE grp_ID = ' . $iGroupID;
-$rsGroupName = RunQuery($sSQL);
+$rsGroupName = RunPreparedQuery('SELECT grp_Name, grp_RoleListID FROM group_grp WHERE grp_ID = ?', 'i', [(int) $iGroupID]);
 $aRow = mysqli_fetch_array($rsGroupName);
 $sGroupName = $aRow[0];
 $iRoleListID = $aRow[1];
 
 // Get the selected role name for the PDF header
 if ($iRoleID > 0) {
-    $sSQL = 'SELECT lst_OptionName FROM list_lst WHERE lst_ID = ' . $iRoleListID . ' AND lst_OptionID = ' . $iRoleID;
-    $rsTemp = RunQuery($sSQL);
+    $rsTemp = RunPreparedQuery('SELECT lst_OptionName FROM list_lst WHERE lst_ID = ? AND lst_OptionID = ?', 'ii', [(int) $iRoleListID, (int) $iRoleID]);
     $aRow = mysqli_fetch_array($rsTemp);
     $sRoleName = $aRow[0];
 }
@@ -38,8 +36,7 @@ if ($iRoleID > 0) {
 // Always fetch all role names when Group Role field is enabled — needed for per-person display
 // regardless of whether a specific role filter is active
 if (isset($_POST['GroupRoleEnable'])) {
-    $sSQL = 'SELECT lst_OptionName,lst_OptionID FROM list_lst WHERE lst_ID = ' . $iRoleListID;
-    $rsTemp = RunQuery($sSQL);
+    $rsTemp = RunPreparedQuery('SELECT lst_OptionName,lst_OptionID FROM list_lst WHERE lst_ID = ?', 'i', [(int) $iRoleListID]);
 
     while ($aRow = mysqli_fetch_array($rsTemp)) {
         $aRoleNames[$aRow[1]] = $aRow[0];
@@ -49,8 +46,7 @@ if (isset($_POST['GroupRoleEnable'])) {
 $pdf = new PdfGroupDirectory();
 
 // See if this group has special properties.
-$sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
-$rsProps = RunQuery($sSQL);
+$rsProps = RunPreparedQuery('SELECT * FROM groupprop_master WHERE grp_ID = ? ORDER BY prop_ID', 'i', [(int) $iGroupID]);
 $bHasProps = (mysqli_num_rows($rsProps) > 0);
 
 $sSQL = 'SELECT * FROM person_per
