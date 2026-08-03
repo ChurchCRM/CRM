@@ -180,3 +180,68 @@ describe("Family Custom Fields — Delete button (CSP regression #8520)", () => 
         cy.get(`input[value="${fieldName}"]`).should("not.exist");
     });
 });
+
+// ------------------------------------------------------------------ //
+// RowOps up/down ORM paths (PR #9351)
+// FamilyCustomFieldsRowOps.php and PersonCustomFieldsRowOps.php use
+// Propel ORM queries (filterByOrder / filterByField) that were
+// converted from raw SQL in PR #9351.  A GET request with a valid
+// Action and a well-formed Field param should redirect (302) — not 500.
+// ------------------------------------------------------------------ //
+
+describe("Family Custom Fields Row Operations — prepared-statement paths (PR #9351)", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("up action redirects cleanly (no 500)", () => {
+        // Action=up with a non-existent field: ORM returns null, code skips
+        // gracefully and redirects back to FamilyCustomFieldsEditor.php.
+        cy.request({
+            method: "GET",
+            url: "FamilyCustomFieldsRowOps.php?Action=up&OrderID=2&Field=c1",
+            failOnStatusCode: false,
+            followRedirect: false,
+        }).then((response) => {
+            expect(response.status).to.be.oneOf([301, 302]);
+        });
+    });
+
+    it("down action redirects cleanly (no 500)", () => {
+        cy.request({
+            method: "GET",
+            url: "FamilyCustomFieldsRowOps.php?Action=down&OrderID=1&Field=c1",
+            failOnStatusCode: false,
+            followRedirect: false,
+        }).then((response) => {
+            expect(response.status).to.be.oneOf([301, 302]);
+        });
+    });
+});
+
+describe("Person Custom Fields Row Operations — prepared-statement paths (PR #9351)", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("up action redirects cleanly (no 500)", () => {
+        // PersonCustomFieldsRowOps.php uses filterById($sField) where sField is
+        // the primary-key column name (e.g. 'c1').  If no matching row exists
+        // the ORM returns null and the page redirects without error.
+        cy.request({
+            method: "GET",
+            url: "PersonCustomFieldsRowOps.php?Action=up&OrderID=2&Field=c1",
+            failOnStatusCode: false,
+            followRedirect: false,
+        }).then((response) => {
+            expect(response.status).to.be.oneOf([301, 302]);
+        });
+    });
+
+    it("down action redirects cleanly (no 500)", () => {
+        cy.request({
+            method: "GET",
+            url: "PersonCustomFieldsRowOps.php?Action=down&OrderID=1&Field=c1",
+            failOnStatusCode: false,
+            followRedirect: false,
+        }).then((response) => {
+            expect(response.status).to.be.oneOf([301, 302]);
+        });
+    });
+});
