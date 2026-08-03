@@ -1,6 +1,6 @@
 /**
  * Dynamic Locale Loader
- * Loads locale files on-demand for moment, FullCalendar, and Bootstrap DatePicker
+ * Loads locale files on-demand for moment and Bootstrap DatePicker.
  */
 
 window.CRM = window.CRM || {};
@@ -176,19 +176,18 @@ async function loadLocaleFiles(localeConfig) {
       );
     }
 
-    // Load FullCalendar locale only when FullCalendar is available.
-    // FooterNotLoggedIn.php (login page) runs this loader but never loads
-    // index.global.js, so ar.js / other locale IIFEs would throw
-    // "FullCalendar is not defined" if loaded there.
-    if (localeConfig.fullCalendar && typeof FullCalendar !== "undefined") {
-      let fcLocale = localeConfig.languageCode.toLowerCase();
-      if (localeConfig.fullCalendarLocale) {
-        fcLocale = localeConfig.fullCalendarLocale;
-      }
-      const fcPath = `${rootPath}/locale/vendor/fullcalendar/${fcLocale}.js`;
-      promises.push(
-        loadScript(fcPath).catch((e) => console.warn(`Failed to load FullCalendar locale ${fcLocale}:`, e)),
-      );
+    // Resolve the FullCalendar locale code from localeConfig.
+    // calendar modules (event-calendars.js, external-calendar.js) read
+    // window.CRM.fcLocaleCode and dynamically import the locale chunk.
+    // Honours the fullCalendarLocale override (e.g. pt-br vs pt) and
+    // lowercases the language code to match fullcalendar/locales/<dir> names.
+    // Set to empty string for locales with no FC equivalent (fullCalendar: false)
+    // or for English (built-in default; no locales/en directory).
+    if (localeConfig.fullCalendar) {
+      const code = (localeConfig.fullCalendarLocale || localeConfig.languageCode).toLowerCase();
+      window.CRM.fcLocaleCode = code === "en" ? "" : code;
+    } else {
+      window.CRM.fcLocaleCode = "";
     }
 
     // Wait for all locale files to load

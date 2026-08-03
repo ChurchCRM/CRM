@@ -199,8 +199,10 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
             expect(resp.status, "HTML calendar page must return 200").to.equal(200);
             expect(resp.headers["content-type"]).to.include("text/html");
 
-            // FullCalendar bundle must be loaded
-            expect(resp.body).to.include("fullcalendar/index.global.min.js");
+            // FullCalendar webpack bundle must be loaded (temporal-polyfill + FC bundled via ESM).
+            // v6: fullcalendar/index.global.min.js (old, removed)
+            // v7 webpack: external-calendar.min.js
+            expect(resp.body).to.include("external-calendar.min.js");
 
             // The stale moment-with-locales.min.js (which 404ed and broke the page)
             // must no longer be referenced

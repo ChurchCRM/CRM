@@ -1,3 +1,13 @@
+// FullCalendar v7 — bundled via webpack (ESM imports).
+// temporal-polyfill must come first: it sets globalThis.Temporal, which FC reads at module load.
+import "temporal-polyfill/global";
+import { Calendar } from "fullcalendar/all";
+import formaTheme from "fullcalendar/themes/forma";
+import "fullcalendar/skeleton.css";
+import "fullcalendar/themes/forma/theme.css";
+import "fullcalendar/themes/forma/palettes/blue.css";
+import { applyFcLocale } from "./common/fc-locale";
+
 window.moveEventModal = {
   getButtons: (confirmLabel, confirmClass) => ({
     cancel: {
@@ -536,7 +546,8 @@ function initializeCalendar() {
     return new Date(`${get("year")}-${get("month")}-${get("day")}T${hh}:${get("minute")}:${get("second")}`);
   })();
 
-  window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
+  window.CRM.fullcalendar = new Calendar(document.getElementById("calendar"), {
+    plugins: [formaTheme],
     locale: window.CRM.lang || "en",
     timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
     now: churchNow,
@@ -830,13 +841,14 @@ function displayAccessTokenAPITest() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.CRM.onLocalesReady(() => {
+  window.CRM.onLocalesReady(async () => {
     initializeCalendar();
     initializeFilterSettings();
     initializeNewCalendarButton();
     registerCalendarSelectionEvents();
     displayAccessTokenAPITest();
 
+    await applyFcLocale(window.CRM.fullcalendar);
     window.CRM.fullcalendar.render();
   });
 

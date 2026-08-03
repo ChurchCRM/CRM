@@ -13,18 +13,16 @@
 describe("FullCalendar v7 Integration", () => {
     beforeEach(() => cy.setupStandardSession());
 
-    it("temporal-polyfill and FullCalendar v7 globals are available after page load", () => {
+    it("temporal-polyfill is installed on globalThis and FC calendar instance is created", () => {
         cy.visit("event/calendars");
         cy.url().should("include", "event/calendars");
 
-        // temporal-polyfill must expose globalThis.Temporal before FC script runs.
+        // temporal-polyfill must expose globalThis.Temporal before FC module loads.
         // If missing, FC v7 throws at parse time and no calendar renders.
         cy.window().should("have.property", "Temporal");
 
-        // FullCalendar global must be defined (loaded from all/global.js).
-        cy.window().should("have.property", "FullCalendar");
-
-        // CRM's fullcalendar instance must be created after onLocalesReady fires.
+        // FullCalendar is now bundled via webpack (no longer a global).
+        // Verify the calendar instance is created instead.
         cy.window({ timeout: 15000 }).should((win) => {
             expect(win.CRM?.fullcalendar, "window.CRM.fullcalendar").to.exist;
         });
@@ -76,7 +74,7 @@ describe("FullCalendar v7 Integration", () => {
         });
     });
 
-    it("FullCalendar locale option is populated on the calendar instance", () => {
+    it("FullCalendar locale option is a string on the calendar instance", () => {
         cy.visit("event/calendars");
 
         cy.window({ timeout: 15000 }).should((win) => {
@@ -85,7 +83,9 @@ describe("FullCalendar v7 Integration", () => {
 
         cy.window().then((win) => {
             const fcLocale = win.CRM.fullcalendar.getOption("locale");
-            // Locale is always set (defaults to the CRM configured language).
+            // Locale is always a string (either the CRM configured code or the
+            // built-in FC default 'en'). After applyFcLocale(), locale is set
+            // via setOption('locale', mod.default.code) — still a string.
             expect(fcLocale, "FC locale option").to.be.a("string").and.to.have.length.greaterThan(0);
         });
     });
