@@ -560,8 +560,7 @@ if ($sFormat === 'addtocart') {
                 }
 
                 if ($bUsedCustomFields && ($sFormat === 'default')) {
-                    $sSQLcustom = 'SELECT * FROM person_custom WHERE per_ID = ' . $per_ID;
-                    $rsCustomData = RunQuery($sSQLcustom);
+                    $rsCustomData = RunPreparedQuery('SELECT * FROM person_custom WHERE per_ID = ?', 'i', [(int) $per_ID]);
                     $aCustomData = mysqli_fetch_array($rsCustomData);
 
                     if (mysqli_num_rows($rsCustomData) > 0) {
@@ -584,8 +583,7 @@ if ($sFormat === 'addtocart') {
                         }
                     }
 
-                    $sSQLFamCustom = 'SELECT * FROM family_custom WHERE fam_ID = ' . $per_fam_ID;
-                    $rsFamCustomData = RunQuery($sSQLFamCustom);
+                    $rsFamCustomData = RunPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
                     $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 
                     if (@mysqli_num_rows($rsFamCustomData) > 0) {
@@ -608,8 +606,7 @@ if ($sFormat === 'addtocart') {
                 }
 
                 if ($bUsedCustomFields && ($sFormat === 'rollup')) {
-                    $sSQLFamCustom = 'SELECT * FROM family_custom WHERE fam_ID = ' . $per_fam_ID;
-                    $rsFamCustomData = RunQuery($sSQLFamCustom);
+                    $rsFamCustomData = RunPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
                     $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 
                     if (@mysqli_num_rows($rsFamCustomData) > 0) {

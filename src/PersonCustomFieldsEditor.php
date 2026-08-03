@@ -164,7 +164,9 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     $personCustomMaster->save();
 
                     // Insert into the custom fields table
-                    $sSQL = 'ALTER TABLE person_custom ADD c' . $newFieldNum . ' ';
+                // $newFieldNum is always an integer derived from existing column names; DDL identifiers cannot be parameterised.
+                // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+                $sSQL = 'ALTER TABLE person_custom ADD c' . $newFieldNum . ' ';
 
                     switch ($newFieldType) {
                         case 1:

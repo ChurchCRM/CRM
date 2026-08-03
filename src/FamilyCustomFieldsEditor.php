@@ -169,6 +169,8 @@ if (isset($_POST['SaveChanges'])) {
                 $familyCustomMaster->save();
 
                 // Insert into the custom fields table
+                // $newFieldNum is always an integer derived from existing column names; DDL identifiers cannot be parameterised.
+                // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
                 $sSQL = 'ALTER TABLE `family_custom` ADD `c' . $newFieldNum . '` ';
 
                 switch ($newFieldType) {

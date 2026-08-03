@@ -74,13 +74,10 @@ switch ($sAction) {
         // Get the order ID for reordering after delete
         $iOrderID = (int)$customField->getOrder();
 
-        // Check if this field is a custom list type (type_ID = 12).  If so, delete the list from list_lst
+        // Check if this field is a custom list type (type_ID = 12). If so, delete all options for the list from list_lst
         if ($customField->getTypeId() === 12) {
-            $listOption = ListOptionQuery::create()
-                ->findOneById((int)$customField->getSpecial());
-            if ($listOption !== null) {
-                $listOption->delete();
-            }
+            // filterById() matches all rows WHERE lst_ID = special (entire list), not just the first one
+            ListOptionQuery::create()->filterById((int)$customField->getSpecial())->delete();
         }
 
         // Delete the custom field record
