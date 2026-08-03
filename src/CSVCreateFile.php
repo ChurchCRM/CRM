@@ -69,8 +69,11 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 // Prepare the MySQL query
 $sJoinFamTable = ' LEFT JOIN family_fam ON per_fam_ID = fam_ID ';
 $sPerTable = 'person_per';
+$whereParams = [];  // Bound parameter values for RunPreparedQuery
+$whereTypes  = '';  // MySQLi type string (i=int, s=string)
 
-// If our source is the cart contents, we don't need to build a WHERE filter string
+// If our source is the cart contents, we don't need to build a WHERE filter string.
+// Cart IDs come from the session (trusted), so no parameterisation needed here.
 if ($sSource === 'cart') {
     $sWhereExt = 'AND per_ID IN (' . Cart::getCartIdString() . ')';
 } else {
@@ -79,64 +82,65 @@ if ($sSource === 'cart') {
         $sPerTable = '(person_per, person2group2role_p2g2r)';
     }
 
-    // Prepare any extensions to the WHERE clauses
+    // Prepare any extensions to the WHERE clauses using ? placeholders (SQL injection prevention)
     $sWhereExt = '';
     if (!empty($_POST['Classification'])) {
         $count = 0;
         foreach ($_POST['Classification'] as $Cls) {
-            $Class[$count++] = InputUtils::legacyFilterInput($Cls, 'int');
+            $Class[$count++] = (int) InputUtils::legacyFilterInput($Cls, 'int');
         }
         if ($count === 1) {
             if ($Class[0]) {
-                $sWhereExt .= 'AND per_cls_ID = ' . $Class[0] . ' ';
+                $sWhereExt .= 'AND per_cls_ID = ? ';
+                $whereParams[] = $Class[0];
+                $whereTypes .= 'i';
             }
         } else {
-            $sWhereExt .= 'AND (per_cls_ID = ' . $Class[0];
-            for ($i = 1; $i < $count; $i++) {
-                $sWhereExt .= ' OR per_cls_ID = ' . $Class[$i];
-            }
-            $sWhereExt .= ') ';
-            // this is silly: should be something like..  $sWhereExt .="AND per_cls_ID IN
+            $placeholders = implode(',', array_fill(0, $count, '?'));
+            $sWhereExt .= 'AND per_cls_ID IN (' . $placeholders . ') ';
+            foreach ($Class as $v) { $whereParams[] = $v; $whereTypes .= 'i'; }
         }
     }
 
     if (!empty($_POST['FamilyRole'])) {
         $count = 0;
         foreach ($_POST['FamilyRole'] as $Fmr) {
-            $Class[$count++] = InputUtils::legacyFilterInput($Fmr, 'int');
+            $Class[$count++] = (int) InputUtils::legacyFilterInput($Fmr, 'int');
         }
         if ($count === 1) {
             if ($Class[0]) {
-                $sWhereExt .= 'AND per_fmr_ID = ' . $Class[0] . ' ';
+                $sWhereExt .= 'AND per_fmr_ID = ? ';
+                $whereParams[] = $Class[0];
+                $whereTypes .= 'i';
             }
         } else {
-            $sWhereExt .= 'AND (per_fmr_ID = ' . $Class[0];
-            for ($i = 1; $i < $count; $i++) {
-                $sWhereExt .= ' OR per_fmr_ID = ' . $Class[$i];
-            }
-            $sWhereExt .= ') ';
+            $placeholders = implode(',', array_fill(0, $count, '?'));
+            $sWhereExt .= 'AND per_fmr_ID IN (' . $placeholders . ') ';
+            foreach ($Class as $v) { $whereParams[] = $v; $whereTypes .= 'i'; }
         }
     }
 
     if (!empty($_POST['Gender'])) {
-        $sWhereExt .= 'AND per_Gender = ' . InputUtils::legacyFilterInput($_POST['Gender'], 'int') . ' ';
+        $sWhereExt .= 'AND per_Gender = ? ';
+        $whereParams[] = (int) InputUtils::legacyFilterInput($_POST['Gender'], 'int');
+        $whereTypes .= 'i';
     }
 
     if (!empty($_POST['GroupID'])) {
         $count = 0;
         foreach ($_POST['GroupID'] as $Grp) {
-            $Class[$count++] = InputUtils::legacyFilterInput($Grp, 'int');
+            $Class[$count++] = (int) InputUtils::legacyFilterInput($Grp, 'int');
         }
         if ($count === 1) {
             if ($Class[0]) {
-                $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID = ' . $Class[0] . ' ';
+                $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID = ? ';
+                $whereParams[] = $Class[0];
+                $whereTypes .= 'i';
             }
         } else {
-            $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND (p2g2r_grp_ID = ' . $Class[0];
-            for ($i = 1; $i < $count; $i++) {
-                $sWhereExt .= ' OR p2g2r_grp_ID = ' . $Class[$i];
-            }
-            $sWhereExt .= ') ';
+            $placeholders = implode(',', array_fill(0, $count, '?'));
+            $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID IN (' . $placeholders . ') ';
+            foreach ($Class as $v) { $whereParams[] = $v; $whereTypes .= 'i'; }
         }
 
         // This is used for individual mode to remove duplicate rows from people assigned multiple groups.
@@ -146,20 +150,28 @@ if ($sSource === 'cart') {
     }
 
     if (!empty($_POST['MembershipDate1'])) {
-        $sWhereExt .="AND per_MembershipDate >= '" . InputUtils::legacyFilterInput($_POST['MembershipDate1'], 'char', 10) ."'";
+        $sWhereExt .= 'AND per_MembershipDate >= ? ';
+        $whereParams[] = InputUtils::legacyFilterInput($_POST['MembershipDate1'], 'char', 10);
+        $whereTypes .= 's';
     }
     if ($_POST['MembershipDate2'] !== date('Y-m-d')) {
-        $sWhereExt .="AND per_MembershipDate <= '" . InputUtils::legacyFilterInput($_POST['MembershipDate2'], 'char', 10) ."'";
+        $sWhereExt .= 'AND per_MembershipDate <= ? ';
+        $whereParams[] = InputUtils::legacyFilterInput($_POST['MembershipDate2'], 'char', 10);
+        $whereTypes .= 's';
     }
 
     $refDate = getdate(time());
 
     if (!empty($_POST['BirthDate1'])) {
-        $sWhereExt .="AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= '" . InputUtils::legacyFilterInput($_POST['BirthDate1'], 'char', 10) ."'";
+        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= ? ";
+        $whereParams[] = InputUtils::legacyFilterInput($_POST['BirthDate1'], 'char', 10);
+        $whereTypes .= 's';
     }
 
     if ($_POST['BirthDate2'] !== date('Y-m-d')) {
-        $sWhereExt .="AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= '" . InputUtils::legacyFilterInput($_POST['BirthDate2'], 'char', 10) ."'";
+        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= ? ";
+        $whereParams[] = InputUtils::legacyFilterInput($_POST['BirthDate2'], 'char', 10);
+        $whereTypes .= 's';
     }
 
     if (!empty($_POST['AnniversaryDate1'])) {
@@ -167,10 +179,12 @@ if ($sSource === 'cart') {
 
         // Add year to query if not in future
         if ($annivStart['year'] < date('Y') || ($annivStart['year'] === date('Y') && $annivStart['mon'] <= date('m') && $annivStart['mday'] <= date('d'))) {
-            $sWhereExt .="AND fam_WeddingDate >= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) ."'";
+            $sWhereExt .= 'AND fam_WeddingDate >= ? ';
         } else {
-            $sWhereExt .="AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) ."')";
+            $sWhereExt .= 'AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR(?) ';
         }
+        $whereParams[] = InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10);
+        $whereTypes .= 's';
     }
 
     if ($_POST['AnniversaryDate2'] !== date('Y-m-d')) {
@@ -178,27 +192,35 @@ if ($sSource === 'cart') {
 
         // Add year to query if not in future
         if ($annivEnd['year'] < date('Y') || ($annivEnd['year'] === date('Y') && $annivEnd['mon'] <= date('m') && $annivEnd['mday'] <= date('d'))) {
-            $sWhereExt .="AND  fam_WeddingDate <= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) ."'";
+            $sWhereExt .= 'AND fam_WeddingDate <= ? ';
         } else {
             $refDate = getdate(strtotime($_POST['AnniversaryDate2']));
-            $sWhereExt .="AND  DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) ."')";
+            $sWhereExt .= 'AND DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR(?) ';
         }
+        $whereParams[] = InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10);
+        $whereTypes .= 's';
     }
 
     if (!empty($_POST['EnterDate1'])) {
-        $sWhereExt .="AND per_DateEntered >= '" . InputUtils::legacyFilterInput($_POST['EnterDate1'], 'char', 10) ."'";
+        $sWhereExt .= 'AND per_DateEntered >= ? ';
+        $whereParams[] = InputUtils::legacyFilterInput($_POST['EnterDate1'], 'char', 10);
+        $whereTypes .= 's';
     }
     if ($_POST['EnterDate2'] !== date('Y-m-d')) {
-        $sWhereExt .="AND per_DateEntered <= '" . InputUtils::legacyFilterInput($_POST['EnterDate2'], 'char', 10) ."'";
+        $sWhereExt .= 'AND per_DateEntered <= ? ';
+        $whereParams[] = InputUtils::legacyFilterInput($_POST['EnterDate2'], 'char', 10);
+        $whereTypes .= 's';
     }
 }
 
 if ($sFormat === 'addtocart') {
     // Get individual records to add to the cart
 
-    $sSQL ="SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
-    $sSQL .= ' ORDER BY per_LastName';
-    $rsLabelsToWrite = RunQuery($sSQL);
+    $rsLabelsToWrite = RunPreparedQuery(
+        "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName",
+        $whereTypes,
+        $whereParams
+    );
     while ($aRow = mysqli_fetch_array($rsLabelsToWrite)) {
         extract($aRow);
         Cart::addPerson($per_ID);
@@ -208,15 +230,23 @@ if ($sFormat === 'addtocart') {
     // Build the complete SQL statement
 
     if ($sFormat === 'rollup') {
-        $sSQL ="(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
+        // UNION query uses $sWhereExt three times → bind params three times in sequence
+        $rsLabelsToWrite = RunPreparedQuery(
+            "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
         UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
-        UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe";
+        UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe",
+            str_repeat($whereTypes, 3),
+            array_merge($whereParams, $whereParams, $whereParams)
+        );
     } else {
-        $sSQL ="SELECT * FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName";
+        $rsLabelsToWrite = RunPreparedQuery(
+            "SELECT * FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName",
+            $whereTypes,
+            $whereParams
+        );
     }
 
-    //Execute whatever SQL was entered
-    $rsLabelsToWrite = RunQuery($sSQL);
+    //Execute whatever SQL was entered (RunPreparedQuery called above)
 
     // Build headers array
     // Note: CsvExporter will handle gettext localization, charset translation, and formula injection escaping
@@ -530,8 +560,7 @@ if ($sFormat === 'addtocart') {
                 }
 
                 if ($bUsedCustomFields && ($sFormat === 'default')) {
-                    $sSQLcustom = 'SELECT * FROM person_custom WHERE per_ID = ' . $per_ID;
-                    $rsCustomData = RunQuery($sSQLcustom);
+                    $rsCustomData = RunPreparedQuery('SELECT * FROM person_custom WHERE per_ID = ?', 'i', [(int) $per_ID]);
                     $aCustomData = mysqli_fetch_array($rsCustomData);
 
                     if (mysqli_num_rows($rsCustomData) > 0) {
@@ -554,8 +583,7 @@ if ($sFormat === 'addtocart') {
                         }
                     }
 
-                    $sSQLFamCustom = 'SELECT * FROM family_custom WHERE fam_ID = ' . $per_fam_ID;
-                    $rsFamCustomData = RunQuery($sSQLFamCustom);
+                    $rsFamCustomData = RunPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
                     $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 
                     if (@mysqli_num_rows($rsFamCustomData) > 0) {
@@ -578,8 +606,7 @@ if ($sFormat === 'addtocart') {
                 }
 
                 if ($bUsedCustomFields && ($sFormat === 'rollup')) {
-                    $sSQLFamCustom = 'SELECT * FROM family_custom WHERE fam_ID = ' . $per_fam_ID;
-                    $rsFamCustomData = RunQuery($sSQLFamCustom);
+                    $rsFamCustomData = RunPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
                     $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 
                     if (@mysqli_num_rows($rsFamCustomData) > 0) {

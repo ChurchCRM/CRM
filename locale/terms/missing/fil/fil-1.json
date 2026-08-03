@@ -8,16 +8,20 @@
   "Live Preview": "Live Preview",
   "Sell-through": "Sell-through",
   "BCC Mode": "BCC Mode",
-  "one": {
-    "Copied {{count}} members": "Nakopya ang {{count}} miyembro",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Ang listahang ito ay may {{count}} tatanggap — masyadong marami para sa isang mailto: link. Gamitin ang Kopyahin ang mga Address sa halip.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang mga Address sa halip.",
-    "{{count}} min left": "{{count}} minuto na lang"
+  "Copied {{count}} members": {
+    "one": "Nakopya ang {{count}} miyembro",
+    "other": "Nakopya ang {{count}} na miyembro"
   },
-  "other": {
-    "Copied {{count}} members": "Nakopya ang {{count}} mga miyembro",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Ang listahang ito ay may {{count}} mga tatanggap — masyadong marami para sa isang mailto: link. Gamitin ang Kopyahin ang mga Address sa halip.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang mga Address sa halip.",
-    "{{count}} min left": "{{count}} minuto na lang"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Ang listahang ito ay may {{count}} tatanggap — masyadong marami para sa isang mailto: link. Gamitin ang Kopyahin ang mga Address sa halip.",
+    "other": "Ang listahang ito ay may {{count}} na tatanggap — masyadong marami para sa isang mailto: link. Gamitin ang Kopyahin ang mga Address sa halip."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang mga Address sa halip.",
+    "other": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang mga Address sa halip."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} minuto na natitira",
+    "other": "{{count}} na minuto na natitira"
   }
 }

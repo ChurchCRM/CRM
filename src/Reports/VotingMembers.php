@@ -66,10 +66,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $enddate .= '-' . SystemConfig::getValue('iFYMonth') . '-' . '01';
 
         // Get payments only
-        $sSQL = 'SELECT COUNT(plg_plgID) AS count FROM pledge_plg
-            WHERE plg_FamID = ' . $fam_ID ." AND plg_PledgeOrPayment = 'Payment' AND
-                 plg_date >= '$startdate' AND plg_date < '$enddate'";
-        $rsPledges = RunQuery($sSQL);
+        $rsPledges = RunPreparedQuery(
+            'SELECT COUNT(plg_plgID) AS count FROM pledge_plg WHERE plg_FamID = ? AND plg_PledgeOrPayment = ? AND plg_date >= ? AND plg_date < ?',
+            'isss',
+            [(int) $fam_ID, 'Payment', $startdate, $enddate]
+        );
         [$count] = mysqli_fetch_row($rsPledges);
         if ($count > 0) {
             $donation = 'yes';

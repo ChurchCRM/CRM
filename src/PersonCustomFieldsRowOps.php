@@ -74,20 +74,21 @@ switch ($sAction) {
         // Get the order ID for reordering after delete
         $iOrderID = (int)$customField->getOrder();
 
-        // Check if this field is a custom list type (type_ID = 12).  If so, delete the list from list_lst
+        // Check if this field is a custom list type (type_ID = 12). If so, delete all options for the list from list_lst
         if ($customField->getTypeId() === 12) {
-            $listOption = ListOptionQuery::create()
-                ->findOneById((int)$customField->getSpecial());
-            if ($listOption !== null) {
-                $listOption->delete();
-            }
+            // filterById() matches all rows WHERE lst_ID = special (entire list), not just the first one
+            ListOptionQuery::create()->filterById((int)$customField->getSpecial())->delete();
         }
 
-        // Delete the custom field record
-        $customField->delete();
+        // Drop the column from the person_custom table first (DDL-first order matches original behaviour).
+        // If the ORM delete ran first and ALTER TABLE failed, the master record would be gone
+        // while the physical column with user data remained — an unrecoverable orphan.
+        // $sField is regex-validated (^c\d+$) above; DDL identifiers cannot be parameterised.
+        $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '` ;'; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+        RunQuery($sSQL); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
-        $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '` ;';
-        RunQuery($sSQL);
+        // Delete the custom field record only after the DDL succeeds
+        $customField->delete();
 
         // Fetch remaining custom fields to reorder
         $remainingFields = PersonCustomMasterQuery::create()

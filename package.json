@@ -124,7 +124,7 @@
         "tom-select": "^2.6.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.5.4",
+        "@biomejs/biome": "^2.5.5",
         "@types/jquery": "^3.5.33",
         "archiver": "^8.0.0",
         "css-loader": "^7.1.4",
@@ -147,7 +147,7 @@
         "style-loader": "^4.0.0",
         "ts-loader": "^9.6.2",
         "typescript": "^6.0.3",
-        "webpack": "^5.108.4",
+        "webpack": "^5.109.0",
         "webpack-cli": "^7.2.1"
     },
     "overrides": {
@@ -157,14 +157,15 @@
         "picomatch": "4.0.4",
         "grunt": {
             "minimatch": "3.1.4",
-            "brace-expansion": "1.1.13"
+            "brace-expansion": "1.1.18",
+            "js-yaml": "3.15.1"
         },
         "npm-run-all": {
             "minimatch": "3.1.4",
-            "brace-expansion": "1.1.13"
+            "brace-expansion": "1.1.18"
         },
         "svgicons2svgfont": {
-            "brace-expansion": "5.0.5"
+            "brace-expansion": "5.0.9"
         }
     }
 }

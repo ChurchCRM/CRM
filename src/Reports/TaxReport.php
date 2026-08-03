@@ -154,8 +154,7 @@ if ($output === 'pdf') {
             $curY += 2 * SystemConfig::getValue('incrementY');
             if ($iDepID) {
                 // Get Deposit Date
-                $sSQL ="SELECT dep_Date, dep_Date FROM deposit_dep WHERE dep_ID='$iDepID'";
-                $rsDep = RunQuery($sSQL);
+                $rsDep = RunPreparedQuery('SELECT dep_Date, dep_Date FROM deposit_dep WHERE dep_ID = ?', 'i', [(int) $iDepID]);
                 [$sDateStart, $sDateEnd] = mysqli_fetch_row($rsDep);
             }
             if ($sDateStart == $sDateEnd) {

@@ -154,13 +154,15 @@ require_once __DIR__ . '/Include/Header.php';
             // -----------------------------------
             echo '<br><br>';
             //Get the pledges for this family
-            $sSQL = 'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
+            $rsPledges = RunPreparedQuery(
+                'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
                  plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName
                  FROM pledge_plg
                  LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
                  LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-                 WHERE plg_famID = ' . (int) $iFamilyID . ' ORDER BY pledge_plg.plg_date';
-            $rsPledges = RunQuery($sSQL); ?>
+                 WHERE plg_famID = ? ORDER BY pledge_plg.plg_date',
+                'i', [(int) $iFamilyID]
+            ); ?>
             <table class="table w-100">
                 <tr class="TableHeader">
                     <td><?= gettext('Type') ?></td>

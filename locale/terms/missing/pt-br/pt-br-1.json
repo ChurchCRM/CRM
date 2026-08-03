@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "{{count}} membro copiado",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Esta lista tem {{count}} destinatário — muitos para um link mailto:. Use Copiar Endereços.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Destinatários demais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar Endereços.",
-    "{{count}} min left": "{{count}} min restante"
+  "Copied {{count}} members": {
+    "one": "{{count}} membro copiado",
+    "other": "{{count}} membros copiados"
   },
-  "other": {
-    "Copied {{count}} members": "{{count}} membros copiados",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Esta lista tem {{count}} destinatários — muitos para um link mailto:. Use Copiar Endereços.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Destinatários demais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar Endereços.",
-    "{{count}} min left": "{{count}} min restantes"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Esta lista tem {{count}} destinatário — muitos para um link mailto:. Use Copiar Endereços.",
+    "other": "Esta lista tem {{count}} destinatários — muitos para um link mailto:. Use Copiar Endereços."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Destinatários demais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar Endereços.",
+    "other": "Destinatários demais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar Endereços."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} min restante",
+    "other": "{{count}} min restantes"
   }
 }

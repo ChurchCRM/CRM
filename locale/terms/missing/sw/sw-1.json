@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "Imenakili mwanachama {{count}}",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Orodha hii ina mpokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Wapokeaji wengi mno kwa mteja wa barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
-    "{{count}} min left": "Dakika {{count}} iliyobaki"
+  "Copied {{count}} members": {
+    "one": "Amenakiliwa mwanachama {{count}}",
+    "other": "Wamenakiliwa wanachama {{count}}"
   },
-  "other": {
-    "Copied {{count}} members": "Imenakili wanachama {{count}}",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Orodha hii ina wapokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Wapokeaji wengi mno kwa mteja wa barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
-    "{{count}} min left": "Dakika {{count}} zilizobaki"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Orodha hii ina mpokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
+    "other": "Orodha hii ina wapokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Mpokeaji ni wengi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
+    "other": "Wapokeaji ni wengi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake."
+  },
+  "{{count}} min left": {
+    "one": "Dakika {{count}} iliyobaki",
+    "other": "Dakika {{count}} zilizobaki"
   }
 }

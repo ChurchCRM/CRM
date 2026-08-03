@@ -134,6 +134,20 @@ describe("Family Wedding Date Edit Workflow", () => {
     });
 });
 
+describe("Family Editor — edit existing record (PR #9351 prepared-statement smoke)", () => {
+    beforeEach(() => cy.setupStandardSession());
+
+    it("loads existing family for editing without crash", () => {
+        // FamilyEditor.php?FamilyID=1 exercises the FamilyQuery::create()->findOneById()
+        // ORM path introduced in PR #9351 to replace raw SQL.
+        cy.visit("FamilyEditor.php?FamilyID=1");
+        cy.contains("Family Editor").should("exist");
+        cy.get("#FamilyName").should("exist");
+        cy.get("body").should("not.contain", "Fatal error");
+        cy.get("body").should("not.contain", "Warning:");
+    });
+});
+
 describe("Standard Family Activation", () => {
     beforeEach(() => {
         // Reset family 3 to active BEFORE registering intercepts so the setup

@@ -78,6 +78,16 @@ describe("Person Profile", () => {
         cy.contains(noteText);
     });
 
+    it("loads existing person for editing without crash — PR #9351 prepared-statement smoke", () => {
+        // PersonEditor.php?PersonID=2 exercises the PersonQuery::create()->findOneById() ORM
+        // path introduced in PR #9351 to replace raw SQL.
+        cy.visit(`PersonEditor.php?PersonID=${personId}`);
+        cy.contains("Person Editor").should("exist");
+        cy.get("#FirstName").should("exist");
+        cy.get("body").should("not.contain", "Fatal error");
+        cy.get("body").should("not.contain", "Warning:");
+    });
+
     it("Edit Why Came", () => {
         cy.visit(`/people/view/${personId}`);
 

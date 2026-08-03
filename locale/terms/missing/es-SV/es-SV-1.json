@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "Se copió {{count}} miembro",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Esta lista tiene {{count}} destinatario — demasiados para un enlace mailto:. Use Copiar Direcciones en su lugar.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar Direcciones en su lugar.",
-    "{{count}} min left": "Queda {{count}} minuto"
+  "Copied {{count}} members": {
+    "one": "Se copió {{count}} miembro",
+    "other": "Se copiaron {{count}} miembros"
   },
-  "other": {
-    "Copied {{count}} members": "Se copiaron {{count}} miembros",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Esta lista tiene {{count}} destinatarios — demasiados para un enlace mailto:. Use Copiar Direcciones en su lugar.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar Direcciones en su lugar.",
-    "{{count}} min left": "Quedan {{count}} minutos"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Esta lista tiene {{count}} destinatario — demasiados para un enlace mailto:. Use Copiar direcciones en su lugar.",
+    "other": "Esta lista tiene {{count}} destinatarios — demasiados para un enlace mailto:. Use Copiar direcciones en su lugar."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar direcciones en su lugar.",
+    "other": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar direcciones en su lugar."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} min restante",
+    "other": "{{count}} min restantes"
   }
 }
