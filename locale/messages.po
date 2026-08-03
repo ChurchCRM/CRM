@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-03 00:22+0000\n"
+"POT-Creation-Date: 2026-08-03 15:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1891,6 +1891,9 @@ msgid "Cannot execute query."
 msgstr ""
 
 msgid "Cannot move property in that direction"
+msgstr ""
+
+msgid "Cannot prepare query."
 msgstr ""
 
 msgid "Cannot send test email"
