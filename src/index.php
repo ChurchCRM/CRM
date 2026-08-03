@@ -6,7 +6,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
 
@@ -48,10 +47,31 @@ if (file_exists(__DIR__ . '/Include/Config.php')) {
 
 mb_internal_encoding('UTF-8');
 
-// Get the current request path and convert it into a magic filename
-// e.g. /list-events => /ListEvents.php
-$shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_SERVER['REQUEST_URI']);
-$fileName = MiscUtils::dashesToCamelCase($shortName, true) . '.php';
+// Resolve $candidate against $docRoot and return the real, on-disk path only if
+// it exists as a regular file *inside* $docRoot. Returns null for anything that
+// escapes $docRoot (e.g. "../" traversal) or doesn't resolve to a real file.
+function _idx_resolveSafeRequirePath(string $candidate, string $docRoot): ?string
+{
+    $docRootReal = realpath($docRoot);
+    if ($docRootReal === false) {
+        return null;
+    }
+
+    $candidateReal = realpath($docRoot . '/' . $candidate);
+    if ($candidateReal === false || !is_file($candidateReal)) {
+        return null;
+    }
+
+    if (!str_starts_with($candidateReal, $docRootReal . DIRECTORY_SEPARATOR)) {
+        return null;
+    }
+
+    return $candidateReal;
+}
+
+// Get the current request path with query string stripped.
+$_idx_requestPath = strtok($_SERVER['REQUEST_URI'], '?');
+$shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_idx_requestPath);
 
 // First, ensure that the user is authenticated.
 AuthenticationManager::ensureAuthentication();
@@ -69,9 +89,9 @@ if (empty(SystemConfig::getValue('sChurchName'))) {
 }
 
 // Legacy URL shims — redirect removed pages to their MVC replacements.
-// Must match the path-only portion (strtok strips query string) so that
-// bookmarks like /UserEditor.php?PersonID=5 resolve correctly.
-$_legacyBase = strtok($shortName, '?');
+// $shortName is already the path-only portion, so bookmarks like
+// /UserEditor.php?PersonID=5 resolve correctly.
+$_legacyBase = $shortName;
 if ($_legacyBase === 'UserEditor.php') {
     if (!empty($_GET['PersonID'])) {
         RedirectUtils::redirect('admin/system/users/' . (int) $_GET['PersonID'] . '/edit');
@@ -85,16 +105,14 @@ if ($_legacyBase === 'UserEditor.php') {
 }
 unset($_legacyBase);
 
-if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
-    // Index.php -> v2/dashboard
+$_idx_docRoot = SystemURLs::getDocumentRoot();
+$_idx_safeShortPath = _idx_resolveSafeRequirePath($shortName, $_idx_docRoot);
+
+if (strtolower($shortName) === 'index.php') {
     RedirectUtils::redirect('v2/dashboard');
-} elseif (is_file($shortName)) {
-    // Try actual path
-    require $shortName;
-} elseif (file_exists($fileName)) {
-    // Try magic filename
-    require $fileName;
-} elseif (strpos($_SERVER['REQUEST_URI'], 'js') || strpos($_SERVER['REQUEST_URI'], 'css')) { // if this is a CSS or JS file that we can't find, return 404
+} elseif ($_idx_safeShortPath !== null) {
+    require $_idx_safeShortPath;
+} elseif (strpos($_SERVER['REQUEST_URI'], 'js') || strpos($_SERVER['REQUEST_URI'], 'css')) {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
     exit;
 } else {
