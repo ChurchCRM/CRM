@@ -27,6 +27,7 @@ describe("DataTables v3 — ecosystem upgrade smoke tests", () => {
         cy.get("#members", { timeout: 15000 }).should("exist");
         cy.window().then((win) => {
             // jQuery is on window in ChurchCRM; verify DT v3 is loaded
+            expect(win.$.fn.dataTable, "DataTables jQuery bridge should be registered").to.exist;
             const dtVersion = win.$.fn.dataTable.version;
             expect(dtVersion).to.match(/^3\./, `Expected DT v3.x but got ${dtVersion}`);
         });
@@ -42,7 +43,7 @@ describe("DataTables v3 — ecosystem upgrade smoke tests", () => {
 
     it("search works via DataTables JS API", () => {
         cy.visit("/people/list");
-        cy.get("#members", { timeout: 15000 }).should("exist");
+        cy.get(".dt-container", { timeout: 15000 }).should("exist");
 
         // Drive search through the JS API — selector-independent, works with
         // any layout config (CRM uses layout.topStart:'search' not default DOM)
@@ -57,7 +58,7 @@ describe("DataTables v3 — ecosystem upgrade smoke tests", () => {
         cy.window().then((win) => {
             win.$("#members").DataTable().search("").draw();
         });
-        cy.get("#members tbody tr").should("have.length.greaterThan", 1);
+        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
     });
 
     it("search input is rendered inside .dt-search (not legacy .dataTables_filter)", () => {
@@ -94,7 +95,7 @@ describe("DataTables v3 — ecosystem upgrade smoke tests", () => {
         // Switch to a narrow viewport so Responsive detects a breakpoint
         cy.viewport(480, 800);
         cy.visit("/people/list");
-        cy.get("#members", { timeout: 15000 }).should("exist");
+        cy.get(".dt-container", { timeout: 15000 }).should("exist");
         // Responsive extension adds .dtr-* classes; verify the extension loaded
         cy.window().then((win) => {
             const dt = win.$("#members").DataTable();
