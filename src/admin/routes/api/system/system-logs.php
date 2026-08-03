@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\PathUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -100,15 +101,14 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         }
 
         // Security: Verify the file is inside the logs directory (prevent directory traversal)
-        $resolvedPath = realpath($logPath);
-        $resolvedDir = realpath($logsDir);
-        if (!$resolvedPath || !$resolvedDir || strpos($resolvedPath, $resolvedDir) !== 0) {
+        $resolvedPath = PathUtils::resolveRealPathWithin($logPath, $logsDir);
+        if ($resolvedPath === null) {
             $response->getBody()->write('Invalid file path');
             return $response->withStatus(400);
         }
 
         $content = file_get_contents($resolvedPath);
-        
+
         // Parse log lines and return as JSON array
         // Split by newline and filter empty lines, then reindex array for proper JSON output
         $allLines = explode("\n", $content);
@@ -151,9 +151,8 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         }
 
         // Security: Verify the file is inside the logs directory (prevent directory traversal)
-        $resolvedPath = realpath($logPath);
-        $resolvedDir = realpath($logsDir);
-        if (!$resolvedPath || !$resolvedDir || strpos($resolvedPath, $resolvedDir) !== 0) {
+        $resolvedPath = PathUtils::resolveRealPathWithin($logPath, $logsDir);
+        if ($resolvedPath === null) {
             return $response->withStatus(400);
         }
 
@@ -200,9 +199,8 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         }
 
         // Security: Verify the file is inside the logs directory (prevent directory traversal)
-        $resolvedPath = realpath($logPath);
-        $resolvedDir = realpath($logsDir);
-        if (!$resolvedPath || !$resolvedDir || strpos($resolvedPath, $resolvedDir) !== 0) {
+        $resolvedPath = PathUtils::resolveRealPathWithin($logPath, $logsDir);
+        if ($resolvedPath === null) {
             $response->getBody()->write('Invalid file path');
             return $response->withStatus(400);
         }
