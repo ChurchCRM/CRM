@@ -1264,18 +1264,6 @@ msgid "Type of Group"
 msgstr "Aina ya Kikundi"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Majukumu ya Wanakikundi"
-
-#: 
-msgid "Clone roles"
-msgstr "Majukumu ya Clone"
-
-#: 
-msgid "from group"
-msgstr "kutoka kwa kikundi"
-
-#: 
 msgid "Select a group"
 msgstr "Chagua kikundi"
 
@@ -1674,16 +1662,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Nambari ya hundi si halali kwa malipo ya 'PESA'"
 
 #: 
-msgid "Deposit closed"
-msgstr "Amana imefungwa"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Ratiba ya Malipo"
-
-#: 
-msgid "Select Schedule"
-msgstr "Chagua Ratiba"
 
 #: 
 msgid "Weekly"
@@ -1706,28 +1686,8 @@ msgid "Other"
 msgstr "Nyingine"
 
 #: 
-msgid "Payment by"
-msgstr "Malipo kwa"
-
-#: 
-msgid "Scan check"
-msgstr "Cheki cheki"
-
-#: 
-msgid "find family from check account #"
-msgstr "tafuta familia kutoka kwa akaunti ya hundi #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Weka nambari ya akaunti ya hundi chaguomsingi ya familia"
-
-#: 
 msgid "Fund Name"
 msgstr "Jina la Mfuko"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Kiasi kisichokatwa"
 
 #: 
 msgid "Age"
@@ -2585,10 +2545,6 @@ msgid "Groups"
 msgstr "Vikundi"
 
 #: 
-msgid "Total $"
-msgstr "Jumla ya $"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "na mali hii.."
@@ -2714,10 +2670,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Kitiaji sahihi cha taarifa ya hifadhidata na ripoti ya marekebisho"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Verbage kwa ripoti ya muhtasari wa ahadi"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Verbage kwa ripoti ya saraka"
 
@@ -2781,11 +2733,6 @@ msgstr "Aina za Mali"
 #: 
 msgid "Zip Code"
 msgstr "Namba ya Posta"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Shamba"
 
 #. Context: query_qry
 #: 
@@ -5854,10 +5801,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Ongeza maelezo yoyote kuhusu amana hii"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Kiasi kinazidi thamani ya juu inayoruhusiwa (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Hundi"
 
@@ -5884,10 +5827,6 @@ msgstr "Hakuna Pesa Taslimu"
 #: 
 msgid "No Checks"
 msgstr "Hakuna Hundi"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Kiasi kisichopunguzwa kodi kinazidi thamani ya juu inayoruhusiwa."
 
 #: 
 msgid "Payments"
@@ -6500,10 +6439,6 @@ msgid "%d missing role"
 msgstr "%d jukumu linalokosekana"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Malipo ni mchango halisi uliopokelewa. Yataongezwa kwenye amana ya sasa."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Ahadi ni ahadi ya kutoa. Haiunganishwi na hati ya amana."
 
@@ -6800,10 +6735,6 @@ msgid "Name & Identity"
 msgstr "Jina na Utambulisho"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Amana Mpya Itatengenezwa"
-
-#: 
 msgid "New Payment"
 msgstr "Malipo Mapya"
 
@@ -6922,10 +6853,6 @@ msgstr "Baadhi ya mahitaji ya programu hayajafikiwa"
 #: 
 msgid "State (Other)"
 msgstr "Mkoa (Mwingine)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Muhtasari wa ahadi dhidi ya malipo kwa mwaka wa fedha."
 
 #: 
 msgid "System Health"
@@ -8907,10 +8834,6 @@ msgid "Account Recovery"
 msgstr "Kurejesha Akaunti"
 
 #: 
-msgid "Add Family"
-msgstr "Ongeza Familia"
-
-#: 
 msgid "Add First Family"
 msgstr "Ongeza Familia ya Kwanza"
 
@@ -8929,10 +8852,6 @@ msgstr "Ongeza Dokezo"
 #: 
 msgid "Add People to the Family"
 msgstr "Ongeza Watu katika Familia"
-
-#: 
-msgid "Add Person"
-msgstr "Ongeza Mtu"
 
 #: 
 msgid "Add Students to Cart"
@@ -9311,10 +9230,6 @@ msgid "Delete Person"
 msgstr "Futa Mtu"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Futa Ahadi ya Sadaka"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Kufuta sifa hii pia kutaondoa mgawanyo wake wote kutoka rekodi yoyote ya Watu, Familia, au Kikundi."
 
@@ -9477,10 +9392,6 @@ msgstr "MF %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Familia zinashiriki anwani na nambari ya simu."
-
-#: 
-msgid "Family List"
-msgstr "Orodha ya Familia"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9679,10 +9590,6 @@ msgid "Letters and Labels"
 msgstr "Barua na Lebo"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Orodhesha familia zilizoundwa kupitia usajili wa kibinafsi"
-
-#: 
 msgid "Load demo data"
 msgstr "Pakia data ya maonyesho"
 
@@ -9791,10 +9698,6 @@ msgid "Minimum"
 msgstr "Kiwango cha chini"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Badilisha majukumu ya familia kwa washiriki wa kikundi"
-
-#: 
 msgid "Move to Group"
 msgstr "Hamisha kwenye Kikundi"
 
@@ -9821,10 +9724,6 @@ msgstr "Mpya"
 #: 
 msgid "New Family"
 msgstr "Familia Mpya"
-
-#: 
-msgid "New Group"
-msgstr "Kikundi Kipya"
 
 #: 
 msgid "New Person"
@@ -9939,10 +9838,6 @@ msgstr "Kurejesha Nenosiri"
 #: 
 msgid "Past & next 7 days"
 msgstr "Siku 7 zilizopita na zijazo"
-
-#: 
-msgid "People List"
-msgstr "Orodha ya Watu"
 
 #: 
 msgid "People by Classification"
@@ -10123,10 +10018,6 @@ msgstr "Chagua faili ya nakala na ubofye Rejesha Hifadhidata."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Chagua chaguo zako hapo juu na ubofye kitufe cha nakala."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Ripoti ya Usajili wa Kibinafsi"
 
 #: 
 msgid "Send email to families"
@@ -10689,11 +10580,6 @@ msgstr "Anwani za Chaguo Msingi"
 msgid "Allow user to add new event"
 msgstr "Ruhusu mtumiaji kuongeza tukio jipya"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Tarehe ya Kuanza"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Mipangilio ya Kalenda"
@@ -10803,16 +10689,6 @@ msgstr "Orodha za barua pepe zinasambazwa na Mailchimp."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Wezesha barua pepe katika paneli la mipangilio hapa chini, kisha sanidi seva yako ya SMTP."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Tarehe ya Kumalizia"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Ingiza sehemu yoyote ya lufupi: Jina, Jiji, Jibu, Zip, Simu ya Nyumbani, Barua pepe, au Barua pepe ya Kazi."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "API ya Kalenda ya Nje imezimwa"
@@ -10906,11 +10782,6 @@ msgstr "Faatanisha sehemu iliyobadilishwa na thamani hii"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Umri wa Juu Zaidi"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Mwanajamii, Mlipukaji wa kawaida, n.k."
 
@@ -10923,11 +10794,6 @@ msgstr "Wanajamii ambao walijiunga katika mwezi fulani"
 #: 
 msgid "Membership anniversaries"
 msgstr "Maadhimisho ya uanachama"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Umri wa Chini Zaidi"
 
 #. Context: query_qry
 #: 
@@ -11001,16 +10867,6 @@ msgstr "Umiliki wa mtu unaotumika kuwatenga wanajamii kutoka sehemu za ujumbe wa
 msgid "Person property used to exclude members from email lists"
 msgstr "Umiliki wa mtu unaotumika kuwatenga wanajamii kutoka sehemu za barua pepe"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Tafadhali ingiza tarehe ya mwisho ili kuhesabu jumla ya michango kwa kila mwanajamii (yaani YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Tafadhali chagua tarehe ya kuanza ili kuhesabu jumla ya michango kwa kila mwanajamii (yaani YYYY-MM-DD). ONYO: Unaweza kuchagua tu tarehe ambazo zina zawadi."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11059,11 +10915,6 @@ msgstr "SMTP haijasanidiwa"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Tafuta"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Mwaka wa Fedha wa Pili"
 
@@ -11076,16 +10927,6 @@ msgstr "Mwaka wa fedha wa pili kwa kulinganisha"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Chaguzi la furaha la mtalamuoni la pili"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Chagua sehemu ya kutafuta."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Chagua jukumu la familia linalotaka."
 
 #: 
 msgid "Send text message"
@@ -11126,38 +10967,13 @@ msgstr "Mwezi wa kuzaliwa ambao ungependa kurudisha rekodi."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Jinsia inayotaka kutafuta katika hifadhidata."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Jinsia ambayo ungependa kurudisha rekodi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Umri wa juu zaidi ambao ungependa kurudisha rekodi."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Mwezi wa maadhimisho ya uanachama ambao ungependa kurudisha rekodi."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Umri wa chini zaidi ambao ungependa kurudisha rekodi."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Umiliki ambao ungependa kurudisha rekodi za mtu."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Darasa la Shule ya Jumapili ambalo ungependa kurudisha rekodi."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11193,11 +11009,6 @@ msgstr "Vonage SMS haijasanidiwa"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Bila Vonage, hatua za ujumbe zitafungua programu ya SMS ya asili ya kifaa chako au kunakili nambari za simu kwenye ubao la kunakili."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Barua pepe ya Kazi"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11519,10 +11330,6 @@ msgstr "Vipengele"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Vitambulisho vya hoja ya ruhusa ya fedha"
-
-#: 
-msgid "Find family"
-msgstr "Tafuta familia"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13625,10 +13432,6 @@ msgstr "Pakia CSV kuunda familia na watu kwa wingi."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV yako ina majina ya safu wima yanayorudiwa. Badilisha jina la safu wima zinazorudiwa (mf. ongeza \"(2)\" kwa ya pili) na upaki tena."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Tokeni ya usalama batili. Tafadhali jaribu tena."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13660,10 +13463,6 @@ msgstr "Likizo (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Likizo zimepewa lebo kwa aina: Rasmi, Matukio, Likizo za Benki, za Msimu, na za Kidini. Acha makundi yote bila kuchaguliwa kuonyesha kila likizo, au chagua aina mahususi kupunguza maonyesho."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Kitambulisho cha ahadi ya fedha hakipo."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16801,10 +16600,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s wa familia ya %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "Ingizo %d zaidi zitafaa."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "Rekodi %d zimerudishwa"
 
@@ -16903,10 +16698,6 @@ msgstr "Kiwango cha Chini cha Jumla"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Zabuni ya chini $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Malipo Mapya - %1$s Amana # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

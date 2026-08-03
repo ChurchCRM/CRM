@@ -1264,18 +1264,6 @@ msgid "Type of Group"
 msgstr "Typ skupiny"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Role členů skupiny"
-
-#: 
-msgid "Clone roles"
-msgstr "Klonovat role"
-
-#: 
-msgid "from group"
-msgstr "ze skupiny"
-
-#: 
 msgid "Select a group"
 msgstr "Vyberte skupinu"
 
@@ -1674,16 +1662,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Číslo šeku není platné pro platbu \"CASH\""
 
 #: 
-msgid "Deposit closed"
-msgstr "Vklad uzavřen"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Splátkový kalendář"
-
-#: 
-msgid "Select Schedule"
-msgstr "Zvolte plán"
 
 #: 
 msgid "Weekly"
@@ -1706,28 +1686,8 @@ msgid "Other"
 msgstr "Jiný"
 
 #: 
-msgid "Payment by"
-msgstr "Platba do"
-
-#: 
-msgid "Scan check"
-msgstr "Kontrola skenování"
-
-#: 
-msgid "find family from check account #"
-msgstr "najít rodinu z kontrolního účtu #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Nastavení výchozího čísla kontrolního účtu pro rodinu"
-
-#: 
 msgid "Fund Name"
 msgstr "Název fondu"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Neodečitatelná částka"
 
 #: 
 msgid "Age"
@@ -2585,10 +2545,6 @@ msgid "Groups"
 msgstr "Skupiny"
 
 #: 
-msgid "Total $"
-msgstr "Celkem $"
-
-#: 
 msgid "with this property..."
 msgstr "s touto vlastností..."
 
@@ -2713,10 +2669,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Signatář potvrzení informací o databázi a opravné zprávy"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Text pro souhrnnou zprávu o příslibech"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Text pro zprávu o adresáři"
 
@@ -2780,11 +2732,6 @@ msgstr "Typy vlastností"
 #: 
 msgid "Zip Code"
 msgstr "PSČ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Pole"
 
 #. Context: query_qry
 #: 
@@ -5848,10 +5795,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Přidejte další poznámky k této záloze"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Částka přesahuje maximální povolenou hodnotu (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Šeky"
 
@@ -5878,10 +5821,6 @@ msgstr "Bez hotovosti"
 #: 
 msgid "No Checks"
 msgstr "Bez šeků"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Neodpočitatelná částka přesahuje maximální povolenou hodnotu (999999,99)."
 
 #: 
 msgid "Payments"
@@ -6496,10 +6435,6 @@ msgid "%d missing role"
 msgstr "%d chybějící role"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Platba je skutečně přijatý dar. Bude připočtena k aktuálnímu vkladu."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Příslib je závazek darovat. Není vázán na vkladový lístek."
 
@@ -6796,10 +6731,6 @@ msgid "Name & Identity"
 msgstr "Jméno a identita"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Bude vytvořen nový vklad"
-
-#: 
 msgid "New Payment"
 msgstr "Nová platba"
 
@@ -6918,10 +6849,6 @@ msgstr "Některé požadavky aplikace nejsou splněny"
 #: 
 msgid "State (Other)"
 msgstr "Stát (Jiný)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Souhrn závazků a plateb podle fondů za daný fiskální rok."
 
 #: 
 msgid "System Health"
@@ -8908,10 +8835,6 @@ msgid "Account Recovery"
 msgstr "Obnovení účtu"
 
 #: 
-msgid "Add Family"
-msgstr "Přidat rodinu"
-
-#: 
 msgid "Add First Family"
 msgstr "Přidat první rodinu"
 
@@ -8930,10 +8853,6 @@ msgstr "Přidat poznámku"
 #: 
 msgid "Add People to the Family"
 msgstr "Přidat osoby do rodiny"
-
-#: 
-msgid "Add Person"
-msgstr "Přidat osobu"
 
 #: 
 msgid "Add Students to Cart"
@@ -9312,10 +9231,6 @@ msgid "Delete Person"
 msgstr "Smazat osobu"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Smazat závazek"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Smazáním této vlastnosti budou také odstraněna všechna její přiřazení ze záznamů osob, rodin nebo skupin."
 
@@ -9478,10 +9393,6 @@ msgstr "RR %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Rodiny sdílejí adresu a telefonní číslo."
-
-#: 
-msgid "Family List"
-msgstr "Seznam rodin"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9680,10 +9591,6 @@ msgid "Letters and Labels"
 msgstr "Dopisy a štítky"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Seznam rodin vytvořených přes samoregistraci"
-
-#: 
 msgid "Load demo data"
 msgstr "Načíst ukázková data"
 
@@ -9792,10 +9699,6 @@ msgid "Minimum"
 msgstr "Minimální"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Upravit rodinné role pro členy skupiny"
-
-#: 
 msgid "Move to Group"
 msgstr "Přesunout do skupiny"
 
@@ -9822,10 +9725,6 @@ msgstr "Nový"
 #: 
 msgid "New Family"
 msgstr "Nová rodina"
-
-#: 
-msgid "New Group"
-msgstr "Nová skupina"
 
 #: 
 msgid "New Person"
@@ -9940,10 +9839,6 @@ msgstr "Obnovení hesla"
 #: 
 msgid "Past & next 7 days"
 msgstr "Uplynulých a příštích 7 dní"
-
-#: 
-msgid "People List"
-msgstr "Seznam osob"
 
 #: 
 msgid "People by Classification"
@@ -10124,10 +10019,6 @@ msgstr "Vyberte záložní soubor a klikněte na Obnovit databázi."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Vyberte možnosti výše a klikněte na tlačítko zálohy."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Sestava samoregistrací"
 
 #: 
 msgid "Send email to families"
@@ -10690,11 +10581,6 @@ msgstr "Výchozí hodnoty adresy"
 msgid "Allow user to add new event"
 msgstr "Povolte uživateli přidávat nové akce"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Počáteční datum"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Nastavení kalendáře"
@@ -10804,16 +10690,6 @@ msgstr "Seznamy e-mailů jsou synchronizovány s Mailchimp."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Povolte e-mail v níže uvedeném panelu nastavení a pak nakonfigurujte server SMTP."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Datum konce"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Zadejte libovolnou část následujícího: Jméno, Město, Stát, PSČ, Domácí telefon, E-mail nebo Pracovní e-mail."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "Externí API kalendáře je zakázáno"
@@ -10907,11 +10783,6 @@ msgstr "Spárujte vlastní pole s touto hodnotou"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Maximální věk"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Člen, běžný účastník atd."
 
@@ -10924,11 +10795,6 @@ msgstr "Členové sboru, kteří se připojili v určitém měsíci"
 #: 
 msgid "Membership anniversaries"
 msgstr "Výročí členství"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Minimální věk"
 
 #. Context: query_qry
 #: 
@@ -11002,16 +10868,6 @@ msgstr "Vlastnost osoby používaná k vyloučení členů sboru ze seznamů SMS
 msgid "Person property used to exclude members from email lists"
 msgstr "Vlastnost osoby používaná k vyloučení členů sboru ze seznamů e-mailů"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Prosím zadejte poslední datum pro výpočet celkového příspěvku každého člena sboru (tj. YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Prosím vyberte počáteční datum pro výpočet celkového příspěvku každého člena sboru (tj. YYYY-MM-DD). POZNÁMKA: Můžete vybrat pouze data, která obsahují příspěvky."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11060,11 +10916,6 @@ msgstr "SMTP není nakonfigurován"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Hledat"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Druhý účetní rok"
 
@@ -11077,16 +10928,6 @@ msgstr "Druhý účetní rok pro srovnání"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Druhá volba příležitosti dobrovolníka"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Vyberte pole k vyhledávání."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Vyberte požadovanou roli rodiny."
 
 #: 
 msgid "Send text message"
@@ -11127,38 +10968,13 @@ msgstr "Měsíc narozenin, pro který chcete vrátit záznamy."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Požadované pohlaví pro vyhledávání v databázi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Pohlaví, pro které chcete vrátit záznamy."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Maximální věk, pro který chcete vrátit záznamy."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Měsíc výročí členství, pro který chcete vrátit záznamy."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Minimální věk, pro který chcete vrátit záznamy."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Vlastnost, pro kterou chcete vrátit záznamy osob."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Třída nedělní školy, pro kterou chcete vrátit záznamy."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11194,11 +11010,6 @@ msgstr "Vonage SMS není nakonfigurován"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Bez Vonage budou textové akce otevírat nativní aplikaci SMS vašeho zařízení nebo kopírovat telefonní čísla do schránky."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Pracovní e-mail"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11520,10 +11331,6 @@ msgstr "Funkce"
 #: 
 msgid "Finance permission query IDs"
 msgstr "ID dotazů pro finanční oprávnění"
-
-#: 
-msgid "Find family"
-msgstr "Najít rodinu"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13627,10 +13434,6 @@ msgstr "Nahrajte CSV pro hromadné vytvoření rodin a osob."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Váš CSV má duplicitní názvy sloupců. Přejmenujte duplicitní sloupce (např. přidejte \"(2)\" k druhému) a nahrajte znovu."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Neplatný bezpečnostní token. Zkuste to prosím znovu."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13662,10 +13465,6 @@ msgstr "Svátky (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Svátky jsou označeny podle typu: Úřední, Připomínky, Bankovní svátky, Sezónní a Náboženské. Ponechte všechny kategorie nevybrané pro zobrazení všech svátků, nebo vyberte konkrétní typy pro zúžení zobrazení."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Chybí identifikátor finančního závazku."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16802,10 +16601,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s z rodiny %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "Zbývá místo pro %d dalších záznamů."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "Vráceno %d záznam(ů)"
 
@@ -16904,10 +16699,6 @@ msgstr "Minimální celková částka"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Minimální příhoz $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Nová platba – %1$s Vklad č. %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

@@ -1275,18 +1275,6 @@ msgid "Type of Group"
 msgstr "Phân loại Ban/Mục vụ"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Vai trò thành viên trong Ban/Mục vụ"
-
-#: 
-msgid "Clone roles"
-msgstr "Vai trò nhân bản"
-
-#: 
-msgid "from group"
-msgstr "từ nhóm"
-
-#: 
 msgid "Select a group"
 msgstr "Lựa chọn Ban/Mục vụ"
 
@@ -1685,16 +1673,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Số séc không hợp lệ để thanh toán bằng 'TIỀN MẶT'"
 
 #: 
-msgid "Deposit closed"
-msgstr "Tiền gửi đã đóng"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Lịch trình thanh toán"
-
-#: 
-msgid "Select Schedule"
-msgstr "Chọn lịch biểu"
 
 #: 
 msgid "Weekly"
@@ -1717,28 +1697,8 @@ msgid "Other"
 msgstr "Khác"
 
 #: 
-msgid "Payment by"
-msgstr "Thanh toán bằng"
-
-#: 
-msgid "Scan check"
-msgstr "Kiểm tra quét"
-
-#: 
-msgid "find family from check account #"
-msgstr "tìm gia đình từ tài khoản séc #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Đặt số tài khoản séc mặc định cho gia đình"
-
-#: 
 msgid "Fund Name"
 msgstr "Tên quỹ"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Số tiền không được khấu trừ"
 
 #: 
 msgid "Age"
@@ -2596,10 +2556,6 @@ msgid "Groups"
 msgstr "Ban/Mục vụ"
 
 #: 
-msgid "Total $"
-msgstr "Tổng $"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "với tài sản này .."
@@ -2727,10 +2683,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Người ký báo cáo xác nhận và chỉnh sửa thông tin cơ sở dữ liệu"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Rác cho báo cáo tóm tắt cam kết"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Rác cho báo cáo thư mục"
 
@@ -2794,11 +2746,6 @@ msgstr "Các loại thuộc tính"
 #: 
 msgid "Zip Code"
 msgstr "Mã bưu chính"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Cánh đồng"
 
 #. Context: query_qry
 #: 
@@ -5860,10 +5807,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Thêm bất kỳ ghi chú bổ sung nào về khoản tiền gửi này"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Số tiền vượt quá giá trị tối đa cho phép (999,999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Chi phiếu"
 
@@ -5890,10 +5833,6 @@ msgstr "Không có tiền mặt"
 #: 
 msgid "No Checks"
 msgstr "Không có chi phiếu"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Số tiền không được khấu trừ thuế vượt quá giá trị tối đa cho phép."
 
 #: 
 msgid "Payments"
@@ -6504,10 +6443,6 @@ msgid "%d missing role"
 msgstr "thiếu %d vai trò"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Thanh toán là một khoản quyên góp thực tế đã nhận được."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Lời hứa dâng hiến là một cam kết sẽ đóng góp."
 
@@ -6804,10 +6739,6 @@ msgid "Name & Identity"
 msgstr "Tên & Định danh"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Khoản gửi tiền mới sẽ được tạo"
-
-#: 
 msgid "New Payment"
 msgstr "Khoản thanh toán mới"
 
@@ -6926,10 +6857,6 @@ msgstr "Một số điều kiện tiên quyết của ứng dụng chưa đượ
 #: 
 msgid "State (Other)"
 msgstr "Tỉnh/Thành phố (Khác)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Tóm tắt lời hứa so với thanh toán theo quỹ."
 
 #: 
 msgid "System Health"
@@ -8906,10 +8833,6 @@ msgid "Account Recovery"
 msgstr "Khoi phuc tai khoan"
 
 #: 
-msgid "Add Family"
-msgstr "Them gia dinh"
-
-#: 
 msgid "Add First Family"
 msgstr "Them gia dinh dau tien"
 
@@ -8928,10 +8851,6 @@ msgstr "Them ghi chu"
 #: 
 msgid "Add People to the Family"
 msgstr "Them nguoi vao gia dinh"
-
-#: 
-msgid "Add Person"
-msgstr "Them nguoi"
 
 #: 
 msgid "Add Students to Cart"
@@ -9310,10 +9229,6 @@ msgid "Delete Person"
 msgstr "Xoa nguoi"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Xoa cam ket dang hien"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Xoa thuoc tinh nay cung se go bo tat ca cac gan cua no khoi bat ky ho so Ca nhan, Gia dinh hoac Nhom nao."
 
@@ -9476,10 +9391,6 @@ msgstr "Nam tai chinh %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Cac gia dinh dung chung dia chi va so dien thoai."
-
-#: 
-msgid "Family List"
-msgstr "Danh sach gia dinh"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9678,10 +9589,6 @@ msgid "Letters and Labels"
 msgstr "Thu va nhan"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Liet ke cac gia dinh da tao qua tu dang ky"
-
-#: 
 msgid "Load demo data"
 msgstr "Tai du lieu mau"
 
@@ -9790,10 +9697,6 @@ msgid "Minimum"
 msgstr "Tối thiểu"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Thay doi vai tro gia dinh cho thanh vien nhom"
-
-#: 
 msgid "Move to Group"
 msgstr "Di chuyen den nhom"
 
@@ -9820,10 +9723,6 @@ msgstr "Moi"
 #: 
 msgid "New Family"
 msgstr "Gia dinh moi"
-
-#: 
-msgid "New Group"
-msgstr "Nhom moi"
 
 #: 
 msgid "New Person"
@@ -9938,10 +9837,6 @@ msgstr "Khoi phuc mat khau"
 #: 
 msgid "Past & next 7 days"
 msgstr "7 ngay qua va toi"
-
-#: 
-msgid "People List"
-msgstr "Danh sach nguoi"
 
 #: 
 msgid "People by Classification"
@@ -10122,10 +10017,6 @@ msgstr "Chon mot tep sao luu va nhan Khoi phuc co so du lieu."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Chon cac tuy chon o tren va nhan nut sao luu."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Bao cao tu dang ky"
 
 #: 
 msgid "Send email to families"
@@ -10688,11 +10579,6 @@ msgstr "Địa chỉ Mặc định"
 msgid "Allow user to add new event"
 msgstr "Cho phép người dùng thêm sự kiện mới"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Ngày bắt đầu"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Cài đặt Lịch"
@@ -10802,16 +10688,6 @@ msgstr "Danh sách email được đồng bộ hóa với Mailchimp."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Bật email trong bảng cài đặt bên dưới, sau đó cấu hình máy chủ SMTP của bạn."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Ngày kết thúc"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Nhập bất kỳ phần nào sau đây: Tên, Thành phố, Tỉnh/Thành phố, Mã bưu điện, Điện thoại nhà, Email hoặc Email công việc."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "API Lịch bên ngoài bị vô hiệu hóa"
@@ -10905,11 +10781,6 @@ msgstr "Khớp trường tùy chỉnh với giá trị này"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Tuổi Tối đa"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Thành viên, Người tham dự thường xuyên, v.v."
 
@@ -10922,11 +10793,6 @@ msgstr "Các thành viên tham gia trong một tháng cụ thể"
 #: 
 msgid "Membership anniversaries"
 msgstr "Ngày kỷ niệm thành viên"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Tuổi Tối thiểu"
 
 #. Context: query_qry
 #: 
@@ -11000,16 +10866,6 @@ msgstr "Tài sản người được sử dụng để loại trừ thành viên
 msgid "Person property used to exclude members from email lists"
 msgstr "Tài sản người được sử dụng để loại trừ thành viên khỏi danh sách email"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Vui lòng nhập ngày cuối cùng để tính tổng đóng góp cho mỗi thành viên (ví dụ YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Vui lòng chọn ngày bắt đầu để tính tổng đóng góp cho mỗi thành viên (ví dụ YYYY-MM-DD). LƯU Ý: Bạn chỉ có thể chọn các ngày chứa các khoản quyên góp."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11058,11 +10914,6 @@ msgstr "SMTP Chưa được cấu hình"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Tìm kiếm"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Năm Tài chính Thứ hai"
 
@@ -11075,16 +10926,6 @@ msgstr "Năm tài chính thứ hai để so sánh"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Lựa chọn cơ hội tình nguyện thứ hai"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Chọn trường để tìm kiếm."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Chọn vai trò gia đình mong muốn."
 
 #: 
 msgid "Send text message"
@@ -11125,38 +10966,13 @@ msgstr "Tháng sinh nhật mà bạn muốn trả lại bản ghi."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Giới tính mong muốn để tìm kiếm trong cơ sở dữ liệu."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Giới tính mà bạn muốn trả lại bản ghi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Tuổi tối đa mà bạn muốn trả lại bản ghi."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Tháng kỷ niệm thành viên mà bạn muốn trả lại bản ghi."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Tuổi tối thiểu mà bạn muốn trả lại bản ghi."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Tài sản mà bạn muốn trả lại bản ghi người."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Lớp Trường Chủ nhật mà bạn muốn trả lại bản ghi."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11192,11 +11008,6 @@ msgstr "Vonage SMS Chưa được cấu hình"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Không có Vonage, các hành động văn bản sẽ mở ứng dụng SMS gốc của thiết bị hoặc sao chép số điện thoại vào bộ nhớ tạm."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Email công việc"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11518,10 +11329,6 @@ msgstr "Tính năng"
 #: 
 msgid "Finance permission query IDs"
 msgstr "ID truy vấn quyền tài chính"
-
-#: 
-msgid "Find family"
-msgstr "Tìm gia đình"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13623,10 +13430,6 @@ msgstr "Tải lên CSV để tạo gia đình và giáo dân hàng loạt."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV của bạn có tên cột trùng lặp. Đổi tên các cột trùng lặp (ví dụ: thêm \"(2)\" vào cột thứ hai) và tải lên lại."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Mã thông báo bảo mật không hợp lệ. Vui lòng thử lại."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13658,10 +13461,6 @@ msgstr "Ngày lễ (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Ngày lễ được phân loại theo: Chính thức, Ngày kỷ niệm, Ngày nghỉ ngân hàng, Theo mùa và Tôn giáo. Để trống tất cả danh mục để hiển thị mọi ngày lễ, hoặc chọn loại cụ thể để thu hẹp hiển thị."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Thiếu mã định danh cam kết tài chính."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16796,10 +16595,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s thuộc gia đình %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "Còn %d mục nữa có thể thêm vào."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "Trả về %d bản ghi"
 
@@ -16898,10 +16693,6 @@ msgstr "Tổng số tiền tối thiểu"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Giá đặt tối thiểu $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Thanh toán mới - %1$s Khoản nộp # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

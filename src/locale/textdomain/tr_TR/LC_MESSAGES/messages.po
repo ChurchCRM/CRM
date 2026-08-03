@@ -1264,18 +1264,6 @@ msgid "Type of Group"
 msgstr "Grup türü"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Grup Üye Rolleri"
-
-#: 
-msgid "Clone roles"
-msgstr "Klon Rolleri"
-
-#: 
-msgid "from group"
-msgstr "Gruptan"
-
-#: 
 msgid "Select a group"
 msgstr "Bir Grup Seçin"
 
@@ -1674,16 +1662,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "'Nakit' ödemesi için geçerli olmayan kontrol numarası"
 
 #: 
-msgid "Deposit closed"
-msgstr "Depozito kapalı"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Ödeme planı"
-
-#: 
-msgid "Select Schedule"
-msgstr "Program seçin"
 
 #: 
 msgid "Weekly"
@@ -1706,28 +1686,8 @@ msgid "Other"
 msgstr "Başka"
 
 #: 
-msgid "Payment by"
-msgstr "Ödeme"
-
-#: 
-msgid "Scan check"
-msgstr "Tarama kontrolü"
-
-#: 
-msgid "find family from check account #"
-msgstr "Check Hesabından Aileyi Bul #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Aile için varsayılan kontrol hesap numarasını ayarlayın"
-
-#: 
 msgid "Fund Name"
 msgstr "Fon adı"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Düşülemez tutar"
 
 #: 
 msgid "Age"
@@ -2585,10 +2545,6 @@ msgid "Groups"
 msgstr "Grup"
 
 #: 
-msgid "Total $"
-msgstr "Toplam $"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "Bu mülkle .."
@@ -2716,10 +2672,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Veritabanı Bilgileri Onaylama ve Düzeltme Raporu Signer"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Rehin Özeti Raporu için Vaka"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Dizin Raporu için Vaka"
 
@@ -2783,11 +2735,6 @@ msgstr "Mülk türleri"
 #: 
 msgid "Zip Code"
 msgstr "Posta kodu"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Alan"
 
 #. Context: query_qry
 #: 
@@ -5858,10 +5805,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Bu para yatırma işlemi hakkında ek notlar ekleyin"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Miktar, izin verilen maksimum değeri (999999.99) aşıyor."
-
-#: 
 msgid "Checks"
 msgstr "Çekler"
 
@@ -5888,10 +5831,6 @@ msgstr "Nakit Yok"
 #: 
 msgid "No Checks"
 msgstr "Çek Yok"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Vergi düşülemez miktar, izin verilen maksimum değeri (999999.99) aşıyor."
 
 #: 
 msgid "Payments"
@@ -6504,10 +6443,6 @@ msgid "%d missing role"
 msgstr "%d eksik rol"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Ödeme, alınan gerçek bir bağıştır. Mevcut para yatırma işlemine eklenecektir."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Taahhüt, verme sözüdür. Bir para yatırma makbuzuna bağlı değildir."
 
@@ -6804,10 +6739,6 @@ msgid "Name & Identity"
 msgstr "İsim ve Kimlik"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Yeni Para Yatırma Oluşturulacak"
-
-#: 
 msgid "New Payment"
 msgstr "Yeni Ödeme"
 
@@ -6926,10 +6857,6 @@ msgstr "Bazı uygulama önkoşulları karşılanmadı"
 #: 
 msgid "State (Other)"
 msgstr "Eyalet/Bölge (Diğer)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Mali yıl için fon bazında taahhütler ve ödemelerin özeti."
 
 #: 
 msgid "System Health"
@@ -8911,10 +8838,6 @@ msgid "Account Recovery"
 msgstr "Hesap Kurtarma"
 
 #: 
-msgid "Add Family"
-msgstr "Aile Ekle"
-
-#: 
 msgid "Add First Family"
 msgstr "İlk Aileyi Ekle"
 
@@ -8933,10 +8856,6 @@ msgstr "Not Ekle"
 #: 
 msgid "Add People to the Family"
 msgstr "Aileye Kişi Ekle"
-
-#: 
-msgid "Add Person"
-msgstr "Kişi Ekle"
 
 #: 
 msgid "Add Students to Cart"
@@ -9315,10 +9234,6 @@ msgid "Delete Person"
 msgstr "Kişiyi Sil"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Bağış Taahhüdünü Sil"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Bu özelliğin silinmesi, herhangi bir Kişi, Aile veya Grup kaydından tüm atamalarını da kaldıracaktır."
 
@@ -9481,10 +9396,6 @@ msgstr "MY %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Aileler bir adres ve telefon numarasını paylaşır."
-
-#: 
-msgid "Family List"
-msgstr "Aile Listesi"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9683,10 +9594,6 @@ msgid "Letters and Labels"
 msgstr "Mektuplar ve Etiketler"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Kendi kendine kayıt yoluyla oluşturulan aileleri listele"
-
-#: 
 msgid "Load demo data"
 msgstr "Demo verileri yükle"
 
@@ -9795,10 +9702,6 @@ msgid "Minimum"
 msgstr "Asgari"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Grup üyeleri için aile rollerini değiştir"
-
-#: 
 msgid "Move to Group"
 msgstr "Gruba Taşı"
 
@@ -9825,10 +9728,6 @@ msgstr "Yeni"
 #: 
 msgid "New Family"
 msgstr "Yeni Aile"
-
-#: 
-msgid "New Group"
-msgstr "Yeni Grup"
 
 #: 
 msgid "New Person"
@@ -9943,10 +9842,6 @@ msgstr "Şifre Kurtarma"
 #: 
 msgid "Past & next 7 days"
 msgstr "Geçmiş ve gelecek 7 gün"
-
-#: 
-msgid "People List"
-msgstr "Kişi Listesi"
 
 #: 
 msgid "People by Classification"
@@ -10127,10 +10022,6 @@ msgstr "Bir yedek dosyası seçin ve Veritabanını Geri Yükle'ye tıklayın."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Yukarıdaki seçeneklerinizi belirleyin ve bir yedekleme düğmesine tıklayın."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Kendi Kendine Kayıt Raporu"
 
 #: 
 msgid "Send email to families"
@@ -10693,11 +10584,6 @@ msgstr "Adres Varsayılanları"
 msgid "Allow user to add new event"
 msgstr "Kullanıcının yeni etkinlik eklemesine izin ver"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Başlangıç Tarihi"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Takvim Ayarları"
@@ -10807,16 +10693,6 @@ msgstr "E-posta listeleri Mailchimp ile senkronize edilir."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Aşağıdaki ayarlar panelinde e-postayı etkinleştirin, ardından SMTP sunucunuzu yapılandırın."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Bitiş Tarihi"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Aşağıdakilerden herhangi bir bölümü girin: Ad, Şehir, Durum, Posta Kodu, Ev Telefonu, E-posta veya İş E-postası."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "Dış Takvim API'si Devre Dışı Bırakıldı"
@@ -10910,11 +10786,6 @@ msgstr "Özel alanı bu değerle eşleştirin"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Maksimum Yaş"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Üye, Düzenli Katılımcı vb."
 
@@ -10927,11 +10798,6 @@ msgstr "Belirli bir ayda katılan üyeler"
 #: 
 msgid "Membership anniversaries"
 msgstr "Üyelik yıldönümleri"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Minimum Yaş"
 
 #. Context: query_qry
 #: 
@@ -11005,16 +10871,6 @@ msgstr "Üyeleri SMS/metin listelerinden hariç tutmak için kullanılan kişi �
 msgid "Person property used to exclude members from email lists"
 msgstr "Üyeleri e-posta listelerinden hariç tutmak için kullanılan kişi özelliği"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Her üyenin toplam katkılarını hesaplamak için lütfen son tarihi girin (ör. YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Her üyenin toplam katkılarını hesaplamak için lütfen başlangıç tarihini seçin (ör. YYYY-MM-DD). NOT: Yalnızca bağış içeren tarihleri seçebilirsiniz."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11063,11 +10919,6 @@ msgstr "SMTP Yapılandırılmamış"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Ara"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "İkinci Mali Yıl"
 
@@ -11080,16 +10931,6 @@ msgstr "Karşılaştırma için ikinci mali yıl"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "İkinci gönüllü fırsat seçimi"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Aranacak alanı seçin."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "İstediğiniz aile rolünü seçin."
 
 #: 
 msgid "Send text message"
@@ -11130,38 +10971,13 @@ msgstr "Kayıtların döndürülmesini istediğiniz doğum ayı."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Veritabanında aranacak istenen cinsiyet."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Kayıtların döndürülmesini istediğiniz cinsiyet."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Kayıtların döndürülmesini istediğiniz maksimum yaş."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Kayıtların döndürülmesini istediğiniz üyelik yıldönümü ayı."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Kayıtların döndürülmesini istediğiniz minimum yaş."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Kişi kayıtlarının döndürülmesini istediğiniz mülkiyet."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Kayıtların döndürülmesini istediğiniz Pazar Okulu sınıfı."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11197,11 +11013,6 @@ msgstr "Vonage SMS Yapılandırılmamış"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage olmadan, metin eylemleri cihazınızın yerel SMS uygulamasını açar veya telefon numaralarını panoya kopyalar."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "İş E-postası"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11523,10 +11334,6 @@ msgstr "Özellikler"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Finans izni sorgu kimlikleri"
-
-#: 
-msgid "Find family"
-msgstr "Aile bul"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13629,10 +13436,6 @@ msgstr "Aileleri ve kişileri toplu olarak oluşturmak için bir CSV yükleyin."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV dosyanızda yinelenen sütun adları var. Yinelenen sütunları yeniden adlandırın (örneğin ikincisine \"(2)\" ekleyin) ve tekrar yükleyin."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Geçersiz güvenlik tokenı. Lütfen tekrar deneyin."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13664,10 +13467,6 @@ msgstr "Tatiller (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Tatiller türlerine göre etiketlenir: Resmî, Anma Günleri, Banka Tatilleri, Mevsimsel ve Dinî. Tüm tatilleri göstermek için hiçbir kategoriyi seçmeden bırakın ya da görünümü daraltmak için belirli türleri seçin."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Mali taahhüt tanımlayıcısı eksik."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16805,10 +16604,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s ailesinden %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d kayıt daha sığacak."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d kayıt döndürüldü"
 
@@ -16907,10 +16702,6 @@ msgstr "Minimum Toplam Tutar"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Minimum teklif $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Yeni Ödeme - %1$s Yatırma # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

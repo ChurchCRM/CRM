@@ -1297,21 +1297,6 @@ msgid "Type of Group"
 msgstr "群組類型"
 
 #: 
-#, fuzzy
-msgid "Group Member Roles"
-msgstr "群組成員角色"
-
-#: 
-#, fuzzy
-msgid "Clone roles"
-msgstr "複製角色"
-
-#: 
-#, fuzzy
-msgid "from group"
-msgstr "由群組"
-
-#: 
 msgid "Select a group"
 msgstr "選擇群組"
 
@@ -1721,16 +1706,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "檢查數量不適用於“現金”支付"
 
 #: 
-msgid "Deposit closed"
-msgstr "存款已關閉"
-
-#: 
 msgid "Payment Schedule"
 msgstr "付款時間表"
-
-#: 
-msgid "Select Schedule"
-msgstr "選擇計劃"
 
 #: 
 msgid "Weekly"
@@ -1753,28 +1730,8 @@ msgid "Other"
 msgstr "其他"
 
 #: 
-msgid "Payment by"
-msgstr "付款"
-
-#: 
-msgid "Scan check"
-msgstr "掃描檢查"
-
-#: 
-msgid "find family from check account #"
-msgstr "找到家人從支票帳戶＃"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "設置默認的支票帳戶的家庭"
-
-#: 
 msgid "Fund Name"
 msgstr "基金名稱"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "不可稅前抵扣的金額"
 
 #: 
 msgid "Age"
@@ -2662,10 +2619,6 @@ msgid "Groups"
 msgstr "組"
 
 #: 
-msgid "Total $"
-msgstr "總共$"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "有這個屬性.."
@@ -2800,11 +2753,6 @@ msgstr "資料庫信息確認和更正報告簽名者"
 
 #: 
 #, fuzzy
-msgid "Verbage for the pledge summary report"
-msgstr "用於認獻總結報告的用語"
-
-#: 
-#, fuzzy
 msgid "Verbage for the directory report"
 msgstr "用於目錄報告的用語"
 
@@ -2870,11 +2818,6 @@ msgstr "屬性類型"
 #: 
 msgid "Zip Code"
 msgstr "郵政編碼"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "領域"
 
 #. Context: query_qry
 #: 
@@ -6010,10 +5953,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "添加有關此存款的任何額外筆記"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "金額超過允許的最大值 (999999.99)。"
-
-#: 
 msgid "Checks"
 msgstr "支票"
 
@@ -6040,10 +5979,6 @@ msgstr "無現金"
 #: 
 msgid "No Checks"
 msgstr "無支票"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "不可扣除金額超過允許的最大值 (999999.99)。"
 
 #: 
 msgid "Payments"
@@ -6654,10 +6589,6 @@ msgid "%d missing role"
 msgstr "%d 個缺失的角色"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "付款是實際收到的捐款。它將被添加到當前存款中。"
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "認獻是給予的承諾。它不與存款單綁定。"
 
@@ -6954,10 +6885,6 @@ msgid "Name & Identity"
 msgstr "姓名與身分"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "將建立新存款"
-
-#: 
 msgid "New Payment"
 msgstr "新付款"
 
@@ -7076,10 +7003,6 @@ msgstr "未滿足某些應用程式先決條件"
 #: 
 msgid "State (Other)"
 msgstr "州/省（其他）"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "財政年度各基金的認獻與付款摘要。"
 
 #: 
 msgid "System Health"
@@ -9056,10 +8979,6 @@ msgid "Account Recovery"
 msgstr "帳號恢復"
 
 #: 
-msgid "Add Family"
-msgstr "新增家庭"
-
-#: 
 msgid "Add First Family"
 msgstr "新增第一個家庭"
 
@@ -9078,10 +8997,6 @@ msgstr "新增備註"
 #: 
 msgid "Add People to the Family"
 msgstr "將成員加入家庭"
-
-#: 
-msgid "Add Person"
-msgstr "新增人員"
 
 #: 
 msgid "Add Students to Cart"
@@ -9460,10 +9375,6 @@ msgid "Delete Person"
 msgstr "刪除人員"
 
 #: 
-msgid "Delete Pledge"
-msgstr "刪除奉獻承諾"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "刪除此屬性也會從所有人員、家庭或小組記錄中移除其分配。"
 
@@ -9626,10 +9537,6 @@ msgstr "會計年度 %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "家庭成員共用地址和電話號碼。"
-
-#: 
-msgid "Family List"
-msgstr "家庭列表"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9828,10 +9735,6 @@ msgid "Letters and Labels"
 msgstr "信函與標籤"
 
 #: 
-msgid "List families created via self registration"
-msgstr "列出透過自助註冊建立的家庭"
-
-#: 
 msgid "Load demo data"
 msgstr "載入示範資料"
 
@@ -9940,10 +9843,6 @@ msgid "Minimum"
 msgstr "最低限度"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "修改小組成員的家庭角色"
-
-#: 
 msgid "Move to Group"
 msgstr "移動到小組"
 
@@ -9970,10 +9869,6 @@ msgstr "新增"
 #: 
 msgid "New Family"
 msgstr "新增家庭"
-
-#: 
-msgid "New Group"
-msgstr "新增小組"
 
 #: 
 msgid "New Person"
@@ -10088,10 +9983,6 @@ msgstr "密碼恢復"
 #: 
 msgid "Past & next 7 days"
 msgstr "過去與未來7天"
-
-#: 
-msgid "People List"
-msgstr "人員列表"
 
 #: 
 msgid "People by Classification"
@@ -10272,10 +10163,6 @@ msgstr "選擇備份檔案並點擊還原資料庫。"
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "在上方選擇選項並點擊備份按鈕。"
-
-#: 
-msgid "Self Registration Report"
-msgstr "自助註冊報告"
 
 #: 
 msgid "Send email to families"
@@ -10838,11 +10725,6 @@ msgstr "地址預設值"
 msgid "Allow user to add new event"
 msgstr "允許使用者新增事件"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "開始日期"
-
 #: 
 msgid "Calendar Settings"
 msgstr "行事曆設定"
@@ -10952,16 +10834,6 @@ msgstr "電子郵件清單與Mailchimp同步。"
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "在下方的設定面板中啟用電子郵件,然後設定SMTP伺服器。"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "結束日期"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "輸入下列任何部分: 姓名、城市、州、郵遞區號、家庭電話、電子郵件或工作電子郵件。"
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "外部行事曆API已停用"
@@ -11055,11 +10927,6 @@ msgstr "將自訂欄位匹配到此值"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "最大年齡"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "成員、經常參加者等"
 
@@ -11072,11 +10939,6 @@ msgstr "在特定月份加入的成員"
 #: 
 msgid "Membership anniversaries"
 msgstr "會員週年紀念"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "最小年齡"
 
 #. Context: query_qry
 #: 
@@ -11150,16 +11012,6 @@ msgstr "用於將成員從簡訊/文本列表中排除的人員屬性"
 msgid "Person property used to exclude members from email lists"
 msgstr "用於將成員從電子郵件列表中排除的人員屬性"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "請輸入最後日期以計算每個成員的總貢獻（即 YYYY-MM-DD）。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "請選擇起始日期以計算每個成員的總貢獻（即 YYYY-MM-DD）。注意：您只能選擇包含捐款的日期。"
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11208,11 +11060,6 @@ msgstr "SMTP 未配置"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "搜尋"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "第二個財政年度"
 
@@ -11225,16 +11072,6 @@ msgstr "用於比較的第二個財政年度"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "第二個志願者機會選擇"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "選擇要搜尋的欄位。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "選擇所需的家庭角色。"
 
 #: 
 msgid "Send text message"
@@ -11275,38 +11112,13 @@ msgstr "您想要返回記錄的生日月份。"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "您想要搜尋的所需性別。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "您想要返回記錄的性別。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "您想要返回記錄的最大年齡。"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "您想要返回記錄的會員週年月份。"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "您想要返回記錄的最小年齡。"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "您想要返回人員記錄的屬性。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "您想要返回記錄的主日學班級。"
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11342,11 +11154,6 @@ msgstr "Vonage 簡訊未配置"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "沒有 Vonage，文本操作將打開您設備的原生簡訊應用或將電話號碼複製到剪貼板。"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "工作電子郵件"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11668,10 +11475,6 @@ msgstr "功能"
 #: 
 msgid "Finance permission query IDs"
 msgstr "財務權限查詢 ID"
-
-#: 
-msgid "Find family"
-msgstr "尋找家庭"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13773,10 +13576,6 @@ msgstr "上傳 CSV 以批次建立家庭和個人資料。"
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "您的 CSV 檔案有重複的欄位名稱。請重新命名重複的欄位（例如在第二個欄位後加上「(2)」），然後重新上傳。"
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "安全權杖無效。請重試。"
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13808,10 +13607,6 @@ msgstr "假期（%s）"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "假期依類型標記：官方假期、紀念日、銀行假日、季節性假期與宗教節日。不選取任何類別可顯示所有假期，或選擇特定類型以縮小顯示範圍。"
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "缺少財務承諾識別碼。"
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16936,10 +16731,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s 家庭的 %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "還可再新增 %d 筆資料。"
-
-#: 
 msgid "%d record(s) returned"
 msgstr "已回傳 %d 筆記錄"
 
@@ -17038,10 +16829,6 @@ msgstr "最低總金額"
 #: 
 msgid "Minimum bid $%s."
 msgstr "最低出價 $%s。"
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "新奉獻款項 - %1$s 存款編號 %2$s（%3$s）"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

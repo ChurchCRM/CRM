@@ -35,10 +35,6 @@ msgid "Show Neighbors"
 msgstr "Show Neighbours"
 
 #: 
-msgid "Scan check"
-msgstr "Scan cheque"
-
-#: 
 msgid "City, State, Zip"
 msgstr "City, Province, Postal Code"
 

@@ -59,10 +59,6 @@ msgid "Show Neighbors"
 msgstr "Show Neighbours"
 
 #: 
-msgid "Scan check"
-msgstr "Scan cheque"
-
-#: 
 msgid "Fall"
 msgstr "Autumn"
 

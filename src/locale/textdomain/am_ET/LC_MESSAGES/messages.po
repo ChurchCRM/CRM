@@ -1263,18 +1263,6 @@ msgid "Type of Group"
 msgstr "የቡድን አይነት"
 
 #: 
-msgid "Group Member Roles"
-msgstr "የቡድን አባል ሚናዎች"
-
-#: 
-msgid "Clone roles"
-msgstr "የክሎን ሚናዎች"
-
-#: 
-msgid "from group"
-msgstr "ከቡድን"
-
-#: 
 msgid "Select a group"
 msgstr "ቡድን ይምረጡ"
 
@@ -1673,16 +1661,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "የቼክ ቁጥር ለ'እጅ በእጅ' ክፍያ አይሰራም"
 
 #: 
-msgid "Deposit closed"
-msgstr "ተቀማጭ ሞልቷል"
-
-#: 
 msgid "Payment Schedule"
 msgstr "የክፍያ መርሃግብር"
-
-#: 
-msgid "Select Schedule"
-msgstr "መርሃግብር ምረጥ"
 
 #: 
 msgid "Weekly"
@@ -1705,28 +1685,8 @@ msgid "Other"
 msgstr "ሌላ"
 
 #: 
-msgid "Payment by"
-msgstr "አከፋፈል"
-
-#: 
-msgid "Scan check"
-msgstr "ቼክ ስካን አርግ"
-
-#: 
-msgid "find family from check account #"
-msgstr "የቤተሰብ ከቼክ መለያ ቁጥር ፈልግ #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "ለቤተሰብ ነባር የቼክ መለያ ቁጥር ያዘጋጁ"
-
-#: 
 msgid "Fund Name"
 msgstr "የገንዘብ ምንጭ ስም"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "ተቀናሽ የማይሆን መጠን"
 
 #: 
 msgid "Age"
@@ -2584,10 +2544,6 @@ msgid "Groups"
 msgstr "ቡድኖች"
 
 #: 
-msgid "Total $"
-msgstr "ጠቅላላ ብር"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "ከዚህ ንብረት ጋር..."
@@ -2715,10 +2671,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "የውሂብ ጎታ መረጃ ማረጋገጫ እና እርማት ሪፖርት ፈራሚ"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "የቃል ኪዳኑ ማጠቃለያ ዘገባ"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "ለማውጫ ሪፖርቱ ቃል"
 
@@ -2783,11 +2735,6 @@ msgstr "የንብረት ዓይነቶች"
 #: 
 msgid "Zip Code"
 msgstr "አካባቢያዊ መለያ ቁጥር"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "መስክ"
 
 #. Context: query_qry
 #: 
@@ -5865,10 +5812,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "ስለዚህ ተቀማጭ ማንኛውንም ተጨማሪ ማስታወሻ ያክሉ"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "መጠኑ ከተፈቀደው ከፍተኛ መጠን (999999.99) በላይ ነው።"
-
-#: 
 msgid "Checks"
 msgstr "ቼኮች"
 
@@ -5895,10 +5838,6 @@ msgstr "ጥሬ ገንዘብ የለም"
 #: 
 msgid "No Checks"
 msgstr "ቼኮች የሉም"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "ከቀረጥ ነጻ ያልሆነው መጠን ከተፈቀደው ከፍተኛ መጠን (999999.99) በላይ ነው።"
 
 #: 
 msgid "Payments"
@@ -6511,10 +6450,6 @@ msgid "%d missing role"
 msgstr "%d የጎደለ ሚና"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "ክፍያ ማለት በትክክል የተገኘ ልገሳ ነው። አሁን ባለው ተቀማጭ ላይ ይጨመራል።"
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "ቃል ኪዳን ለመስጠት የሚገባ ግዴታ ነው። ከተቀማጭ ወረቀት ጋር የተያያዘ አይደለም።"
 
@@ -6811,10 +6746,6 @@ msgid "Name & Identity"
 msgstr "ስም እና ማንነት"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "አዲስ ተቀማጭ ይፈጠራል"
-
-#: 
 msgid "New Payment"
 msgstr "አዲስ ክፍያ"
 
@@ -6933,10 +6864,6 @@ msgstr "አንዳንድ የመተግበሪያ ቅድመ-ሁኔታዎች አል�
 #: 
 msgid "State (Other)"
 msgstr "ክልል (ሌላ)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "የበጀት ዓመቱ የቃል ኪዳኖች እና ክፍያዎች ማጠቃለያ በፈንድ።"
 
 #: 
 msgid "System Health"
@@ -8918,10 +8845,6 @@ msgid "Account Recovery"
 msgstr "ሂሳብ ወደሌላ ያቅናል"
 
 #: 
-msgid "Add Family"
-msgstr "ቤተሰብ ያክሉ"
-
-#: 
 msgid "Add First Family"
 msgstr "መጀመሪያ ቤተሰብ ያክሉ"
 
@@ -8940,10 +8863,6 @@ msgstr "ማስታወሻ ያክሉ"
 #: 
 msgid "Add People to the Family"
 msgstr "ሰዎችን ቤተሰብ ያክሉ"
-
-#: 
-msgid "Add Person"
-msgstr "ሰው ያክሉ"
 
 #: 
 msgid "Add Students to Cart"
@@ -9322,10 +9241,6 @@ msgid "Delete Person"
 msgstr "ሰው ሰሪ"
 
 #: 
-msgid "Delete Pledge"
-msgstr "ቃል ሰሪ"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "ይህ ንብረት ሰሪ ሁሉም ከ ግለሰብ ፣ ቤተሰብ ወይም ቡድን ሰነዶች ውገዝ ይሰራል።"
 
@@ -9488,10 +9403,6 @@ msgstr "የገንዘብ ዓመት %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "ቤተሰቦች አድራሻ እና ስልክ ቁጥር ይጋራሉ።"
-
-#: 
-msgid "Family List"
-msgstr "የቤተሰብ ዝርዝር"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9690,10 +9601,6 @@ msgid "Letters and Labels"
 msgstr "ደብዳቤዎች እና ሌቤሎች"
 
 #: 
-msgid "List families created via self registration"
-msgstr "ወደ ስሌት ቤተሰቦች ራስ ተመዝገብ ወጣ"
-
-#: 
 msgid "Load demo data"
 msgstr "ምሳሌ መረጃ ጫኑ"
 
@@ -9802,10 +9709,6 @@ msgid "Minimum"
 msgstr "አነስተኛ"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "ቤተሰብ ሚና ቡድን አባላት ለ ይቀይሩ"
-
-#: 
 msgid "Move to Group"
 msgstr "ወደ ቡድን ዘዋወር"
 
@@ -9832,10 +9735,6 @@ msgstr "ተፈላጊ"
 #: 
 msgid "New Family"
 msgstr "ተፈላጊ ቤተሰብ"
-
-#: 
-msgid "New Group"
-msgstr "ተፈላጊ ቡድን"
 
 #: 
 msgid "New Person"
@@ -9950,10 +9849,6 @@ msgstr "የይለፍ ቃል ዳብ"
 #: 
 msgid "Past & next 7 days"
 msgstr "ሙሉ እና ቀጣኙ 7 ቀናት"
-
-#: 
-msgid "People List"
-msgstr "ሰውነት ዝርዝር"
 
 #: 
 msgid "People by Classification"
@@ -10134,10 +10029,6 @@ msgstr "ተጠቀጥብ ፋይል ምረጫ እና ዳብ ዳቦ ይጭቁ።"
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "ከዚህ ዓላይ ምረጫ ምረጫ እና ተጠቀጥብ አዝራር ይጭቁ።"
-
-#: 
-msgid "Self Registration Report"
-msgstr "ራስ ተመዝገብ ሪፖርት"
 
 #: 
 msgid "Send email to families"
@@ -10700,11 +10591,6 @@ msgstr "የአድራሻ ነባሮች"
 msgid "Allow user to add new event"
 msgstr "ተጠቃሚ አዲስ ክስተት ለመጨመር ይፈቅድ"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "የመጀመር ቀን"
-
 #: 
 msgid "Calendar Settings"
 msgstr "የቀን መቁጠሪያ ቅንብሮች"
@@ -10814,16 +10700,6 @@ msgstr "ኢሜይል ዝርዝር ከ Mailchimp ጋር ተመሳሳይ ነው።
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "ከስር በቅንብር ፓነል ውስጥ ኢሜይል ዋ, ከዚያ በሌላ SMTP ሰርቨር ያዋቅሩ።"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "ማብቂያ ቀን"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "ከዚህ በታች ማንኛውም ክፍል ያስገቡ: ስም, ከተማ, ስቴት, ዚፕ, የቤት ስልክ, ኢሜይል ወይም ሥራ ኢሜይል።"
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "ውጫዊ ቀን መቁጠሪያ API ተሰናክሏል"
@@ -10917,11 +10793,6 @@ msgstr "ብጁ መስክ ከዚህ እሴት ጋር ያገናኙ"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "ከፍተኛ ዕድሜ"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "አባል, አሃዱ ተሳታፊ, ወዘተ"
 
@@ -10934,11 +10805,6 @@ msgstr "በአንድ ተወሰነ ወር ውስጥ ተጠቃሚዎች"
 #: 
 msgid "Membership anniversaries"
 msgstr "አባልነት ዓመታዊ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "ዝቅተኛ ዕድሜ"
 
 #. Context: query_qry
 #: 
@@ -11012,16 +10878,6 @@ msgstr "ግለሠብ ንብረት አባላት ከ SMS/ጽሁፍ ዝርዝር �
 msgid "Person property used to exclude members from email lists"
 msgstr "ግለሠብ ንብረት አባላት ከ ኢሜይል ዝርዝር ለማስቀር ጥቅም ላይ ይውላል"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "እባክዎ ለእያንዳንዱ አባል አጠቃላይ ትብነት ለማስላት የመጨረሻ ቀን ያስገቡ (ማለት YYYY-MM-DD)።"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "እባክዎ ለእያንዳንዱ አባል አጠቃላይ ትብነት ለማስላት የመጀመር ቀን ይምረጡ (ማለት YYYY-MM-DD)። ማስታወስ: ደሞ ወይም አገልግሎት ያለ ቀን ብቻ መምረጥ ይችላሉ።"
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11070,11 +10926,6 @@ msgstr "SMTP ያልተዋቀረ"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "ፍለጋ"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "ሁለተኛ ገቢ ዓመት"
 
@@ -11087,16 +10938,6 @@ msgstr "ለንጽጽር ሁለተኛ ገቢ ዓመት"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "ሁለተኛ ምሕረት ተ��ዋጩ ምርጫ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "ለመፈለግ የመስክ ምርጫ።"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "የተፈለገውን የቤተሰብ ሚና ይምረጡ።"
 
 #: 
 msgid "Send text message"
@@ -11137,38 +10978,13 @@ msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት ብዕር �
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "ውሂብ ታሪኩ ውስጥ ለመፈለግ የተፈለገ ጾታ።"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት ጾታ።"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት ከፍተኛ ዕድሜ።"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "አባልነት ወለድ ወር ለመዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት።"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት ዝቅተኛ ዕድሜ።"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "የሰው መዝገቦች ለመመለስ ይሚደለገው ንብረት።"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት የቅዳሜ ት/ቤት ክፍል።"
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11204,11 +11020,6 @@ msgstr "Vonage SMS ያልተዋቀረ"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage ምስክር፣ የጽሑፍ ድርጊቶች የእርስዎን መሳሪያ ዋና ኤስ ኤም ኤስ መተግበሪያ ይከፍታሉ ወይም ስልክ ቁጥሮችን ወደ ብሎክ ቦርድ ይቅዳሉ።"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "የሥራ ኢሜል"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11530,10 +11341,6 @@ msgstr "ባህሪያት"
 #: 
 msgid "Finance permission query IDs"
 msgstr "የፋይናንስ ፈቃድ ጥያቄ መታወቂያዎች"
-
-#: 
-msgid "Find family"
-msgstr "ቤተሰብ ፈልግ"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13636,10 +13443,6 @@ msgstr "ቤተሰቦችን እና ሰዎችን በጅምላ ለመፍጠር CSV 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV ዓምዶቻችሁ ተደጋጋሚ ስሞች አሏቸው። ተደጋጋሚ ዓምዶቹን እንደገና ሰይሙ (ለምሳሌ ለሁለተኛው \"(2)\" ጨምሩ) እና እንደገና ስቀሉ።"
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "ልክ ያልሆነ የደህንነት ቶከን። እባኮን እንደገና ይሞክሩ።"
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13671,10 +13474,6 @@ msgstr "በዓላት (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "በዓላት በዓይነት ይመደባሉ፡ ይፋዊ፣ ክብረ-በዓላት፣ የባንክ በዓላት፣ ወቅታዊ እና ሃይማኖታዊ። ሁሉንም በዓላት ለማሳየት ምድቦቹን ሳይምርጡ ይተዉ፤ ወይም ማሳያውን ለማጥበብ ልዩ ዓይነቶችን ይምረጡ።"
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "የገንዘብ ቁርጠኝነት መለያ አልተገኘም።"
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16813,10 +16612,6 @@ msgid "%1$s of the %2$s family"
 msgstr "የ %2$s ቤተሰብ %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d ተጨማሪ ግቤቶች ይስማማሉ።"
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d መዝገብ ተመለሱ"
 
@@ -16915,10 +16710,6 @@ msgstr "አነስተኛ ጠቅላላ መጠን"
 #: 
 msgid "Minimum bid $%s."
 msgstr "አነስተኛ ጨረታ $%s።"
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "አዲስ ክፍያ - %1$s ተቀማጭ # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
