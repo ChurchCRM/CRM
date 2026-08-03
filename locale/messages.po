@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-03 15:35+0000\n"
+"POT-Creation-Date: 2026-08-03 18:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1317,6 +1317,9 @@ msgid "Automatically detect coordinates using address"
 msgstr ""
 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr ""
+
+msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr ""
 
 msgid "Available after the event is saved."
@@ -5757,6 +5760,9 @@ msgstr ""
 msgid "Haiti"
 msgstr ""
 
+msgid "Happy Birthday"
+msgstr ""
+
 msgid "Have Existing Data?"
 msgstr ""
 
@@ -6203,6 +6209,9 @@ msgid "Integrity"
 msgstr ""
 
 msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr ""
+
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
 msgstr ""
 
 msgid "Internationalization (I18n) support"
@@ -10176,6 +10185,9 @@ msgstr ""
 msgid "Send Reset Email"
 msgstr ""
 
+msgid "Send Test Birthday Email to Myself"
+msgstr ""
+
 msgid "Send a test message to verify your SMTP configuration"
 msgstr ""
 
@@ -10917,6 +10929,9 @@ msgid "Test email accepted by SMTP server"
 msgstr ""
 
 msgid "Test email failed to send"
+msgstr ""
+
+msgid "Test email sent to"
 msgstr ""
 
 #. plugin:external-backup:section:4:title
@@ -12580,6 +12595,13 @@ msgstr ""
 msgid "Winter"
 msgstr ""
 
+#, php-format
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr ""
+
+msgid "Wishing you a wonderful birthday!"
+msgstr ""
+
 msgid "With Photos"
 msgstr ""
 
@@ -12784,6 +12806,9 @@ msgid "Your MailChimp account does not have any audiences (lists) configured."
 msgstr ""
 
 msgid "Your New Account"
+msgstr ""
+
+msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr ""
 
 msgid "Your account is now protected"
@@ -13048,6 +13073,9 @@ msgid "invalid status value"
 msgstr ""
 
 msgid "is disabled"
+msgstr ""
+
+msgid "is thinking of you today."
 msgstr ""
 
 msgid "issues"
