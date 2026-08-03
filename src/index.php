@@ -60,7 +60,7 @@ if (empty(SystemConfig::getValue('sChurchName'))) {
     }
 }
 
-if (strtolower($shortName) === 'index.php') {
+if ($shortName === '' || strtolower($shortName) === 'index.php') {
     RedirectUtils::redirect('v2/dashboard');
 } elseif (($_idx_safeShortPath = PathUtils::resolveSafeRequirePath($shortName)) !== null) {
     require $_idx_safeShortPath;

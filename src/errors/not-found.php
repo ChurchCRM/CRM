@@ -5,6 +5,9 @@ http_response_code(404);
 require_once __DIR__ . '/template.php';
 
 $requestedPath = $_GET['path'] ?? ($_SERVER['REQUEST_URI'] ?? 'unknown');
+if (!is_string($requestedPath)) {
+    $requestedPath = 'unknown';
+}
 
 $customSections = "### Requested Path\n\n";
 $customSections .= "```\n" . htmlspecialchars($requestedPath) . "\n```";
