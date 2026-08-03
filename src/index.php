@@ -48,10 +48,16 @@ if (file_exists(__DIR__ . '/Include/Config.php')) {
 mb_internal_encoding('UTF-8');
 
 // Resolve $candidate against $docRoot and return the real, on-disk path only if
-// it exists as a regular file *inside* $docRoot. Returns null for anything that
-// escapes $docRoot (e.g. "../" traversal) or doesn't resolve to a real file.
+// it exists as a regular .php file *inside* $docRoot. Returns null for anything
+// that escapes $docRoot (e.g. "../" traversal), isn't a .php file, or doesn't
+// resolve to a real file — so non-PHP files (config, .env, images) can never be
+// dumped raw via require().
 function _idx_resolveSafeRequirePath(string $candidate, string $docRoot): ?string
 {
+    if (strtolower(pathinfo($candidate, PATHINFO_EXTENSION)) !== 'php') {
+        return null;
+    }
+
     $docRootReal = realpath($docRoot);
     if ($docRootReal === false) {
         return null;
@@ -107,7 +113,7 @@ if (strtolower($shortName) === 'index.php') {
     RedirectUtils::redirect('v2/dashboard');
 } elseif (($_idx_safeShortPath = _idx_resolveSafeRequirePath($shortName, SystemURLs::getDocumentRoot())) !== null) {
     require $_idx_safeShortPath;
-} elseif (strpos($_SERVER['REQUEST_URI'], 'js') || strpos($_SERVER['REQUEST_URI'], 'css')) {
+} elseif (str_contains($_SERVER['REQUEST_URI'], 'js') || str_contains($_SERVER['REQUEST_URI'], 'css')) {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
     exit;
 } else {
