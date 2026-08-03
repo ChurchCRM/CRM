@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "{{count}} അംഗത്തെ പകർത്തി",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "ഈ പട്ടികയിൽ {{count}} സ്വീകർത്താവ് ഉണ്ട് — mailto: ലിങ്കിന് വളരെ അധികം. പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "ഇമെയിൽ ക്ലയന്റിന് വളരെ അധികം സ്വീകർത്താക്കൾ ({{count}} > {{max}}). പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "{{count}} min left": "{{count}} മിനിറ്റ് ശേഷിക്കുന്നു"
+  "Copied {{count}} members": {
+    "one": "",
+    "other": ""
   },
-  "other": {
-    "Copied {{count}} members": "{{count}} അംഗങ്ങളെ പകർത്തി",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "ഈ പട്ടികയിൽ {{count}} സ്വീകർത്താക്കൾ ഉണ്ട് — mailto: ലിങ്കിന് വളരെ അധികം. പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "ഇമെയിൽ ക്ലയന്റിന് വളരെ അധികം സ്വീകർത്താക്കൾ ({{count}} > {{max}}). പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "{{count}} min left": "{{count}} മിനിറ്റുകൾ ശേഷിക്കുന്നു"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} min left": {
+    "one": "",
+    "other": ""
   }
 }
