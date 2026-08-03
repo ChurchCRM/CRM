@@ -471,8 +471,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         //Editing....
         //Get all the data on this record
 
-        $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_ID = ' . $iPersonID;
-        $rsPerson = RunQuery($sSQL);
+        $rsPerson = RunPreparedQuery('SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_ID = ?', 'i', [$iPersonID]);
         extract(mysqli_fetch_array($rsPerson));
 
         $sTitle = $per_Title;
@@ -536,8 +535,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bTwitter = strlen($per_Twitter);
         $bLinkedIn = strlen($per_LinkedIn);
 
-        $sSQL = 'SELECT * FROM person_custom WHERE per_ID = ' . $iPersonID;
-        $rsCustomData = RunQuery($sSQL);
+        $rsCustomData = RunPreparedQuery('SELECT * FROM person_custom WHERE per_ID = ?', 'i', [$iPersonID]);
         $aCustomData = [];
         if (mysqli_num_rows($rsCustomData) >= 1) {
             $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);

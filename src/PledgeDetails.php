@@ -30,8 +30,7 @@ if ($pledge === null) {
     RedirectUtils::redirect($linkBack);
 }
 
-$sSQL = 'SELECT * FROM result_res WHERE res_ID=' . (int) $pledge->getAutResultId();
-$rsResultRec = RunQuery($sSQL);
+$rsResultRec = RunPreparedQuery('SELECT * FROM result_res WHERE res_ID = ?', 'i', [(int) $pledge->getAutResultId()]);
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Finance'), '/finance/'],

@@ -86,6 +86,8 @@ switch ($sAction) {
         // Delete the custom field record
         $customField->delete();
 
+        // Column identifier is regex-validated (^c\d+$) above; DDL identifiers cannot be parameterised.
+        // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
         $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '` ;';
         RunQuery($sSQL);
 

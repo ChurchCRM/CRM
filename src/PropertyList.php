@@ -40,12 +40,15 @@ switch ($sType) {
 $sPageTitle = $sTypeName . ' ' . gettext('Property List');
 
 // Get the properties, grouped by type
-$sSQL = "SELECT pro_ID, pro_Name, pro_Description, pro_Prompt, prt_ID, prt_Name
-         FROM property_pro
-         JOIN propertytype_prt ON prt_ID = pro_prt_ID
-         WHERE pro_Class = '" . $sType . "'
-         ORDER BY prt_Name, pro_Name";
-$rsProperties = RunQuery($sSQL);
+$rsProperties = RunPreparedQuery(
+    'SELECT pro_ID, pro_Name, pro_Description, pro_Prompt, prt_ID, prt_Name
+     FROM property_pro
+     JOIN propertytype_prt ON prt_ID = pro_prt_ID
+     WHERE pro_Class = ?
+     ORDER BY prt_Name, pro_Name',
+    's',
+    [$sType]
+);
 
 // Pre-process into groups
 $groups = [];

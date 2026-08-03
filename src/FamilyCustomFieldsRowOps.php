@@ -4,6 +4,8 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -16,6 +18,8 @@ $iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'] ?? $_POST['OrderID'] 
 $sField = InputUtils::legacyFilterInput($_GET['Field'] ?? $_POST['Field'] ?? '');
 $sAction = $_GET['Action'] ?? $_POST['Action'] ?? '';
 
+$iOrderID = (int)$iOrderID;
+
 // Validate field name to prevent DDL injection (column names follow pattern c1, c2, etc.)
 if ($sField !== '' && !preg_match('/^c\d+$/', $sField)) {
     RedirectUtils::redirect('FamilyCustomFieldsEditor.php');
@@ -25,18 +29,26 @@ if ($sField !== '' && !preg_match('/^c\d+$/', $sField)) {
 switch ($sAction) {
     // Move a field up: Swap the fam_custom_Order (ordering) of the selected row and the one above it
     case 'up':
-        $sSQL ="UPDATE family_custom_master SET fam_custom_Order = '" . $iOrderID ."' WHERE fam_custom_Order = '" . ($iOrderID - 1) ."'";
-        RunQuery($sSQL);
-        $sSQL ="UPDATE family_custom_master SET fam_custom_Order = '" . ($iOrderID - 1) ."' WHERE fam_custom_Field = '" . $sField ."'";
-        RunQuery($sSQL);
+        $neighbor = FamilyCustomMasterQuery::create()->filterByOrder($iOrderID - 1)->findOne();
+        if ($neighbor !== null) {
+            $neighbor->setOrder($iOrderID)->save();
+        }
+        $current = FamilyCustomMasterQuery::create()->filterByField($sField)->findOne();
+        if ($current !== null) {
+            $current->setOrder($iOrderID - 1)->save();
+        }
         break;
 
         // Move a field down: Swap the fam_custom_Order (ordering) of the selected row and the one below it
     case 'down':
-        $sSQL ="UPDATE family_custom_master SET fam_custom_Order = '" . $iOrderID ."' WHERE fam_custom_Order = '" . ($iOrderID + 1) ."'";
-        RunQuery($sSQL);
-        $sSQL ="UPDATE family_custom_master SET fam_custom_Order = '" . ($iOrderID + 1) ."' WHERE fam_custom_Field = '" . $sField ."'";
-        RunQuery($sSQL);
+        $neighbor = FamilyCustomMasterQuery::create()->filterByOrder($iOrderID + 1)->findOne();
+        if ($neighbor !== null) {
+            $neighbor->setOrder($iOrderID)->save();
+        }
+        $current = FamilyCustomMasterQuery::create()->filterByField($sField)->findOne();
+        if ($current !== null) {
+            $current->setOrder($iOrderID + 1)->save();
+        }
         break;
 
         // Delete a field from the form
@@ -48,41 +60,54 @@ switch ($sAction) {
                 die(gettext('Invalid CSRF token'));
             }
         }
-        
-        // Get the order ID for this field first (needed for reordering after delete)
-        $sSQL ="SELECT fam_custom_Order, type_ID, fam_custom_Special FROM family_custom_master WHERE fam_custom_Field = '" . $sField ."'";
-        $rsTemp = RunQuery($sSQL);
-        $aTemp = mysqli_fetch_array($rsTemp);
-        
-        if ($aTemp === null) {
+
+        // Fetch the custom field record by primary key (fam_custom_Field)
+        $customField = FamilyCustomMasterQuery::create()
+            ->filterByField($sField)
+            ->findOne();
+
+        if ($customField === null) {
             // Field doesn't exist, redirect back
             RedirectUtils::redirect('FamilyCustomFieldsEditor.php');
             break;
         }
-        
-        $iOrderID = (int)$aTemp['fam_custom_Order'];
-        
-        // Check if this field is a custom list type. If so, the list needs to be deleted from list_lst.
-        if ($aTemp['type_ID'] == 12) {
-            $sSQL ="DELETE FROM list_lst WHERE lst_ID =" . (int)$aTemp['fam_custom_Special'];
-            RunQuery($sSQL);
+
+        // Get the order ID for reordering after delete
+        $iOrderID = (int)$customField->getOrder();
+
+        // Check if this field is a custom list type (type_ID = 12). If so, delete the list from list_lst
+        if ($customField->getTypeId() === 12) {
+            $listOption = ListOptionQuery::create()
+                ->findOneById((int)$customField->getCustomSpecial());
+            if ($listOption !== null) {
+                $listOption->delete();
+            }
         }
 
-        $sSQL = 'ALTER TABLE `family_custom` DROP `' . $sField . '` ;';
+        // Delete the custom field record
+        $customField->delete();
+
+        // Drop the column from the family_custom table (DDL — column name is regex-validated above)
+        // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+        $sSQL = 'ALTER TABLE `family_custom` DROP IF EXISTS `' . $sField . '` ;';
         RunQuery($sSQL);
 
-        $sSQL ="DELETE FROM family_custom_master WHERE fam_custom_Field = '" . $sField ."'";
-        RunQuery($sSQL);
-
-        $sSQL = 'SELECT * FROM family_custom_master';
-        $rsPropList = RunQuery($sSQL);
-        $numRows = mysqli_num_rows($rsPropList);
+        // Fetch remaining custom fields to reorder
+        $remainingFields = FamilyCustomMasterQuery::create()
+            ->orderByOrder()
+            ->find();
+        $numRows = count($remainingFields);
 
         // Shift the remaining rows up by one, unless we've just deleted the only row
-        if ($numRows > 0) {
+        if ($numRows !== 0) {
             for ($reorderRow = $iOrderID + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
-                $sSQL ="UPDATE family_custom_master SET fam_custom_Order = '" . ($reorderRow - 1) ."' WHERE fam_custom_Order = '" . $reorderRow ."'";
-                RunQuery($sSQL);
+                $fieldToReorder = FamilyCustomMasterQuery::create()
+                    ->filterByOrder($reorderRow)
+                    ->findOne();
+                if ($fieldToReorder !== null) {
+                    $fieldToReorder->setOrder($reorderRow - 1)
+                        ->save();
+                }
             }
         }
         break;

@@ -459,6 +459,8 @@ if (isset($_POST['SaveChanges'])) {
                                 if ($row !== 1 || $row !== $numRows) {
                                     echo '<div class="dropdown-divider"></div>';
                                 }
+                                // $aIDFields[$row] is an integer ID from ORM getId(); this echo constructs HTML, not SQL.
+                                // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
                                 echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
                                 echo '</div>';
                                 echo '</div>';

@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\PersonCustomMaster;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -148,17 +149,19 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             ->setOptionName(gettext('Default Option'));
                         $listOption->save();
 
-                        $newSpecial ="'$newListID'";
-                    } else {
-                        $newSpecial = 'NULL';
-                    }
+                    } // end if ($newFieldType == 12)
 
-                    // Insert into the master table
+                    // Insert into the master table via ORM (avoids SQL injection from user-supplied field name/type)
                     $newOrderID = $last + 1;
-                    $sSQL ="INSERT INTO person_custom_master
-                        (custom_Order , custom_Field , custom_Name ,  custom_Special , custom_FieldSec, type_ID)
-                        VALUES ('" . $newOrderID ."', 'c" . $newFieldNum ."', '" . $newFieldName ."'," . $newSpecial .", '" . $newFieldSec ."', '" . $newFieldType ."');";
-                    RunQuery($sSQL);
+                    $personCustomMaster = new PersonCustomMaster();
+                    $personCustomMaster
+                        ->setOrder($newOrderID)
+                        ->setId('c' . $newFieldNum)
+                        ->setName($newFieldName)
+                        ->setSpecial($newFieldType == 12 ? $newListID : null)
+                        ->setFieldSecurity($newFieldSec)
+                        ->setTypeId($newFieldType);
+                    $personCustomMaster->save();
 
                     // Insert into the custom fields table
                     $sSQL = 'ALTER TABLE person_custom ADD c' . $newFieldNum . ' ';
