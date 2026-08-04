@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
 use PragmaRX\Google2FA\Google2FA;
@@ -700,6 +701,8 @@ class User extends BaseUser
         $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
         if ($isKeyValid) {
             $this->setTwoFactorAuthSecret($this->provisional2FAKey);
+            // Clear grace period start: enrollment completed, fresh window on any future re-enroll
+            $this->setTwoFactorAuthGracePeriodStart(null);
             $this->save();
 
             return true;
@@ -736,12 +739,99 @@ class User extends BaseUser
     {
         $this->setTwoFactorAuthRecoveryCodes(null);
         $this->setTwoFactorAuthSecret(null);
+        // If the 2FA mandate is active, stamp a fresh grace period start so the user
+        // gets a new window rather than being instantly locked out after disabling.
+        if (SystemConfig::getBooleanValue('bRequire2FA')) {
+            $this->setTwoFactorAuthGracePeriodStart(DateTimeUtils::getToday());
+        }
         $this->save();
     }
 
     public function is2FactorAuthEnabled(): bool
     {
         return !empty($this->getTwoFactorAuthSecret());
+    }
+
+    /**
+     * Returns the mandatory-2FA grace status for this user.
+     *
+     * Possible values:
+     *   'enrolled'     — user already has 2FA set up
+     *   'not-required' — bRequire2FA is off
+     *   'immediate'    — mandate active, grace period is 0 (legacy hard-block)
+     *   'within-grace' — mandate active, deadline not yet reached
+     *   'expired'      — mandate active, deadline has passed
+     *
+     * Side-effect: lazy-stamps usr_TwoFactorAuthGracePeriodStart on the first
+     * call for a user who has not yet been marked under the mandate.
+     */
+    public function getTwoFactorGraceStatus(): string
+    {
+        if ($this->is2FactorAuthEnabled()) {
+            return 'enrolled';
+        }
+
+        if (!SystemConfig::getBooleanValue('bRequire2FA')) {
+            return 'not-required';
+        }
+
+        $graceDays = SystemConfig::getIntValue('i2FAGracePeriodDays');
+        if ($graceDays <= 0) {
+            return 'immediate';
+        }
+
+        // Lazy-stamp: record when this user first encountered the active mandate.
+        $start = $this->getTwoFactorAuthGracePeriodStart();
+        if ($start === null) {
+            $now = DateTimeUtils::getToday();
+            $this->setTwoFactorAuthGracePeriodStart($now);
+            $this->save();
+
+            return 'within-grace';
+        }
+
+        $deadline = (clone $start)->modify('+' . $graceDays . ' days');
+        $now = DateTimeUtils::getToday();
+
+        return $now >= $deadline ? 'expired' : 'within-grace';
+    }
+
+    /**
+     * Returns the absolute DateTime at which this user's grace window closes,
+     * or null if the grace period has not been started yet.
+     */
+    public function getTwoFactorGraceDeadline(): ?\DateTimeInterface
+    {
+        $start = $this->getTwoFactorAuthGracePeriodStart();
+        if ($start === null) {
+            return null;
+        }
+        $graceDays = SystemConfig::getIntValue('i2FAGracePeriodDays');
+
+        return (clone $start)->modify('+' . max($graceDays, 0) . ' days');
+    }
+
+    /**
+     * Returns the number of whole days remaining in this user's grace window,
+     * rounded UP so that any partial day (even <24 h) counts as 1.
+     * Returns 0 when the deadline has passed or no deadline has been set.
+     */
+    public function getTwoFactorGraceDaysRemaining(): int
+    {
+        $deadline = $this->getTwoFactorGraceDeadline();
+        if ($deadline === null) {
+            return 0;
+        }
+        $now = DateTimeUtils::getToday();
+        if ($deadline <= $now) {
+            return 0;
+        }
+        $diff = $now->diff($deadline);
+        // $diff->days is a floor value; add 1 whenever any sub-day component
+        // remains so that, e.g., "23 h 59 m" shows as 1 day, not 0.
+        $hasSubDayRemainder = $diff->h > 0 || $diff->i > 0 || $diff->s > 0;
+
+        return $diff->days + ($hasSubDayRemainder ? 1 : 0);
     }
 
     public function getNewTwoFARecoveryCodes(): array
