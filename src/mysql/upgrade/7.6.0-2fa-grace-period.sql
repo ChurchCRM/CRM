@@ -1,4 +1,4 @@
--- ChurchCRM 7.4.0 — Mandatory 2FA grace period
+-- ChurchCRM 7.6.0 — Mandatory 2FA grace period
 -- Adds a per-user timestamp tracking when the 2FA mandate first applied to them.
 --
 -- Existing installs: column is NULL for all users. On first request after
