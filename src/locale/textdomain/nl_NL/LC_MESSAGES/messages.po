@@ -17063,3 +17063,431 @@ msgstr "Bekijk hieronder nieuwe aanmeldingen van uw openbare registratieformulie
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Bevestiging vrijwilligersmogelijkheid verwijderen"
 
+#: 
+msgid "# Payments"
+msgstr "# Betalingen"
+
+#: 
+msgid "# Pledges"
+msgstr "# Toezeggingen"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Een betaling is een daadwerkelijk ontvangen donatie. Deze wordt toegevoegd aan de geselecteerde storting."
+
+#: 
+msgid "Add Fund"
+msgstr "Fonds toevoegen"
+
+#: 
+msgid "Amount ($)"
+msgstr "Bedrag ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Bedrag overschrijdt het maximaal toegestane bedrag (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Er is een fout opgetreden tijdens het opslaan. Probeer het opnieuw."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonieme telemetrie"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Anoniem telemetrieniveau. Bepaalt hoeveel anonieme diagnostische gegevens worden gedeeld met het ChurchCRM-team. Er worden nooit kerkennamen, ledengegevens of persoonlijke informatie verzonden."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Weet u zeker dat u dit betalingsrecord permanent wilt verwijderen?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Er is minimaal één fondstoewijzing vereist"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Ten minste één fonds moet een bedrag groter dan nul hebben"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Automatisch een verjaardagsgroet per e-mail sturen op iemands verjaardag"
+
+#: 
+msgid "Back to Finance"
+msgstr "Terug naar Financiën"
+
+#: 
+msgid "Back to Group"
+msgstr "Terug naar Groep"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Query kan niet worden voorbereid."
+
+#: 
+msgid "Catch JS errors"
+msgstr "JS-fouten opvangen"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Terugkerende fouten opvangen"
+
+#: 
+msgid "Check #"
+msgstr "Cheque #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Kerknaam, adres of contactgegevens"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM-versie"
+
+#: 
+msgid "Collection level"
+msgstr "Verzamelingsniveau"
+
+#: 
+msgid "Count unique installs"
+msgstr "Unieke installaties tellen"
+
+#: 
+msgid "Data"
+msgstr "Gegevens"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Gegevens worden verwerkt door PostHog op EU-infrastructuur."
+
+#: 
+msgid "Date is required"
+msgstr "Datum is vereist"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Succesvol verwijderd"
+
+#: 
+msgid "Deposit #"
+msgstr "Storting #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Stortingsbewijs"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Toezegging bewerken"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Bestaande toezegging of betaling bewerken"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Betaling bewerken"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Toezegging bewerken"
+
+#: 
+msgid "Enable (full)"
+msgstr "Inschakelen (volledig)"
+
+#: 
+msgid "Errors only"
+msgstr "Alleen fouten"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Fouten — serverfouten en JS-uitzonderingen"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Toezegging maken mislukt"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Toezegging verwijderen mislukt"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Coderen van betalingsreactie mislukt"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Toezegging ophalen mislukt"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Toezegging bijwerken mislukt"
+
+#: 
+msgid "Family is required"
+msgstr "Gezin is vereist"
+
+#: 
+msgid "Financial data"
+msgstr "Financiële gegevens"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Volledig — alles van het bovenstaande plus paginaweergaven"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Volledig — paginaweergaven, waarschuwingen, fouten en JS-uitzonderingen"
+
+#: 
+msgid "Fund Summary"
+msgstr "Fondsoverzicht"
+
+#: 
+msgid "Group key is required"
+msgstr "Groepssleutel is vereist"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Gefeliciteerd met uw verjaardag"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Help ChurchCRM te verbeteren"
+
+#: 
+msgid "IP addresses"
+msgstr "IP-adressen"
+
+#: 
+msgid "Installation UUID"
+msgstr "Installatie-UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interactief overzicht van toezeggingen versus betalingen per fonds, met sorteren, zoeken en exporteren."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Intern: laatste datum waarop verjaardagse-mails zijn verzonden (JJJJ-MM-DD). Niet handmatig bewerken."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS-uitzonderingen"
+
+#: 
+msgid "Log level + message"
+msgstr "Logniveau + bericht"
+
+#: 
+msgid "Member or family records"
+msgstr "Leden- of gezinsrecords"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "De rol van dit groepslid wijzigen"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Netwerkfout, probeer het opnieuw"
+
+#: 
+msgid "Never sent"
+msgstr "Nooit verzonden"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Geen storting / nieuwe storting aanmaken"
+
+#: 
+msgid "No pledge"
+msgstr "Geen toezegging"
+
+#: 
+msgid "No thanks"
+msgstr "Nee, bedankt"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Niet-aftrekbaar"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Niet-aftrekbaar ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Het niet-aftrekbare bedrag mag het fondsbedrag niet overschrijden"
+
+#: 
+msgid "None (disabled)"
+msgstr "Geen (uitgeschakeld)"
+
+#: 
+msgid "OS family"
+msgstr "OS-familie"
+
+#: 
+msgid "Overpaid"
+msgstr "Te veel betaald"
+
+#: 
+msgid "PHP version"
+msgstr "PHP-versie"
+
+#: 
+msgid "Page route"
+msgstr "Paginapad"
+
+#: 
+msgid "Payment Details"
+msgstr "Betalingsgegevens"
+
+#: 
+msgid "Payment Method"
+msgstr "Betaalmethode"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Runtime-ondersteuning plannen"
+
+#: 
+msgid "Please enter a date"
+msgstr "Voer een datum in"
+
+#: 
+msgid "Please select a family"
+msgstr "Selecteer een gezin"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Selecteer een fonds voor alle rijen"
+
+#: 
+msgid "Pledge Details"
+msgstr "Toezeggingsgegevens"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Toezeggingsgroep niet gevonden"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Toezeggingen & Betalingen"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Vertalingen prioriteren"
+
+#: 
+msgid "Purpose"
+msgstr "Doel"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Opslaan en nog een toevoegen"
+
+#: 
+msgid "Save failed"
+msgstr "Opslaan mislukt"
+
+#: 
+msgid "Saved successfully"
+msgstr "Succesvol opgeslagen"
+
+#: 
+msgid "Select a fund"
+msgstr "Selecteer een fonds"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Verjaardagstest-e-mail naar mezelf sturen"
+
+#: 
+msgid "Sending to"
+msgstr "Verzenden naar"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Deel anonieme gebruiksstatistieken met het ChurchCRM-team, zodat we weten welke functies en talen we moeten prioriteren. Er worden nooit kerkennamen, ledengegevens of persoonlijke informatie verzonden."
+
+#: 
+msgid "Test email sent to"
+msgstr "Test-e-mail verzonden naar"
+
+#: 
+msgid "Track adoption"
+msgstr "Gebruik bijhouden"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Type moet 'Toezegging' of 'Betaling' zijn"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL's met queryreeksen (record-ID's worden verwijderd)"
+
+#: 
+msgid "Underpaid"
+msgstr "Te weinig betaald"
+
+#: 
+msgid "Understand deployments"
+msgstr "Implementaties begrijpen"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Functiegebruik begrijpen"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Gebruikersnamen, e-mailadressen of rollen"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Toezeggings- of betalingsgegevens bekijken"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Waarschuwingen — waarschuwingen, fouten en JS-uitzonderingen"
+
+#: 
+msgid "What is sent"
+msgstr "Wat wordt verzonden"
+
+#: 
+msgid "What we collect"
+msgstr "Wat we verzamelen"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "We wensen u een prachtige %d-jarige verjaardag!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "We wensen u een prachtige verjaardag!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Uw account heeft geen e-mailadres opgeslagen. Voeg er een toe aan uw profiel om een test te verzenden."
+
+#: 
+msgid "errors+"
+msgstr "fouten+"
+
+#: 
+msgid "full only"
+msgstr "alleen volledig"
+
+#: 
+msgid "is thinking of you today."
+msgstr "denkt vandaag aan u."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "paginapaden, actieve taal, CRM-versie, PHP-versie, OS-familie en een willekeurig installatie-ID. Niets anders. Gegevens worden opgeslagen in de EU."
+

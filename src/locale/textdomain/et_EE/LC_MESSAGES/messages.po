@@ -17110,3 +17110,431 @@ msgstr "Vaata allpool üle uued registreerumised avaliku registreerimisvormiga. 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Vabatahtliku võimaluse kustutamise kinnitus"
 
+#: 
+msgid "# Payments"
+msgstr "# Makseid"
+
+#: 
+msgid "# Pledges"
+msgstr "# Lubadusi"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Makse on tegelikult laekunud annetus. See lisatakse valitud deposiidile."
+
+#: 
+msgid "Add Fund"
+msgstr "Lisa fond"
+
+#: 
+msgid "Amount ($)"
+msgstr "Summa ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Summa ületab lubatud maksimumi (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Salvestamisel ilmnes viga. Palun proovige uuesti."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonüümne telemeetria"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Anonüümse telemeetria tase. Määrab, kui palju anonüümseid diagnostikaandmeid ChurchCRM-i meeskonnaga jagatakse. Koguduse nimed, liikmete andmed ega isikuandmed ei saadeta kunagi."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Kas olete kindel, et soovite selle maksekirje jäädavalt kustutada?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Vähemalt üks fondi eraldis on nõutav"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Vähemalt ühe fondi summa peab olema nullist erinev"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Saada inimestele nende sünnipäeval automaatselt sünnipäevatervituse e-kiri"
+
+#: 
+msgid "Back to Finance"
+msgstr "Tagasi rahanduse juurde"
+
+#: 
+msgid "Back to Group"
+msgstr "Tagasi grupi juurde"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Päringut ei saa ette valmistada."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Püüa JS-vigu"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Püüa korduvaid vigu"
+
+#: 
+msgid "Check #"
+msgstr "Tšeki nr"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Koguduse nimi, aadress või kontaktandmed"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM-i versioon"
+
+#: 
+msgid "Collection level"
+msgstr "Kogumistase"
+
+#: 
+msgid "Count unique installs"
+msgstr "Loe unikaalseid paigaldusi"
+
+#: 
+msgid "Data"
+msgstr "Andmed"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Andmeid töötleb PostHog EL-i infrastruktuuril."
+
+#: 
+msgid "Date is required"
+msgstr "Kuupäev on nõutav"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Edukalt kustutatud"
+
+#: 
+msgid "Deposit #"
+msgstr "Deposiit nr"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Deposiidi tšekk"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Muuda annetuslubarust"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Muuda olemasolevat annetuslubadust või makset"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Makse muutmine"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Annetuslubaduse muutmine"
+
+#: 
+msgid "Enable (full)"
+msgstr "Luba (täielik)"
+
+#: 
+msgid "Errors only"
+msgstr "Ainult vead"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Vead — serveri vead ja JS-erandid"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Annetuslubaduse loomine ebaõnnestus"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Annetuslubaduse kustutamine ebaõnnestus"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Makse vastuse kodeerimine ebaõnnestus"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Annetuslubaduse toomine ebaõnnestus"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Annetuslubaduse uuendamine ebaõnnestus"
+
+#: 
+msgid "Family is required"
+msgstr "Pere on nõutav"
+
+#: 
+msgid "Financial data"
+msgstr "Finantsandmed"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Täielik — kõik eelnev pluss lehekülje vaatamised"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Täielik — lehekülje vaatamised, hoiatused, vead ja JS-erandid"
+
+#: 
+msgid "Fund Summary"
+msgstr "Fondi kokkuvõte"
+
+#: 
+msgid "Group key is required"
+msgstr "Grupi võti on nõutav"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Head sünnipäeva"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Aita ChurchCRM-i parandada"
+
+#: 
+msgid "IP addresses"
+msgstr "IP-aadressid"
+
+#: 
+msgid "Installation UUID"
+msgstr "Paigalduse UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktiivne annetuslubaduste ja maksete kokkuvõte fondi kaupa sortimise, otsimise ja eksportimisega."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Sisemine: viimane kuupäev, millal sünnipäeva e-kirjad saadeti (AAAA-KK-PP). Ärge muutke käsitsi."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS-erandid"
+
+#: 
+msgid "Log level + message"
+msgstr "Logitase + sõnum"
+
+#: 
+msgid "Member or family records"
+msgstr "Liikme või pere kirjed"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Muuda selle grupi liikme rolli"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Võrgu viga, palun proovige uuesti"
+
+#: 
+msgid "Never sent"
+msgstr "Pole kunagi saadetud"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Pole deposiiti / loo uus deposiit"
+
+#: 
+msgid "No pledge"
+msgstr "Pole annetuslubadust"
+
+#: 
+msgid "No thanks"
+msgstr "Ei, tänan"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Mitte-mahaarvatav"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Mitte-mahaarvatav ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Mitte-mahaarvatav summa ei tohi ületada fondi summat"
+
+#: 
+msgid "None (disabled)"
+msgstr "Puudub (keelatud)"
+
+#: 
+msgid "OS family"
+msgstr "OS-i perekond"
+
+#: 
+msgid "Overpaid"
+msgstr "Ülemakstud"
+
+#: 
+msgid "PHP version"
+msgstr "PHP versioon"
+
+#: 
+msgid "Page route"
+msgstr "Lehekülje marsruut"
+
+#: 
+msgid "Payment Details"
+msgstr "Makse üksikasjad"
+
+#: 
+msgid "Payment Method"
+msgstr "Makseviis"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Planeeri käitusaja tugi"
+
+#: 
+msgid "Please enter a date"
+msgstr "Palun sisestage kuupäev"
+
+#: 
+msgid "Please select a family"
+msgstr "Palun valige pere"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Palun valige fond kõikidele ridadele"
+
+#: 
+msgid "Pledge Details"
+msgstr "Annetuslubaduse üksikasjad"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Annetuslubaduse gruppi ei leitud"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Annetuslubadused ja maksed"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Prioritiseeri tõlkeid"
+
+#: 
+msgid "Purpose"
+msgstr "Eesmärk"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Salvesta ja lisa veel üks"
+
+#: 
+msgid "Save failed"
+msgstr "Salvestamine ebaõnnestus"
+
+#: 
+msgid "Saved successfully"
+msgstr "Edukalt salvestatud"
+
+#: 
+msgid "Select a fund"
+msgstr "Valige fond"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Saada katse-sünnipäeva e-kiri iseendale"
+
+#: 
+msgid "Sending to"
+msgstr "Saatmine aadressile"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Jagage anonüümseid kasutusstratistikat ChurchCRM-i meeskonnaga, et teaksime, milliseid funktsioone ja keeli prioritiseerida. Koguduse nimed, liikmete andmed ega isikuandmed ei saadeta kunagi."
+
+#: 
+msgid "Test email sent to"
+msgstr "Teste-kiri saadetud aadressile"
+
+#: 
+msgid "Track adoption"
+msgstr "Jälgi kasutuselevõttu"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Tüüp peab olema 'Annetuslubadus' või 'Makse'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL-id päringstringidega (kirje ID-d eemaldatakse)"
+
+#: 
+msgid "Underpaid"
+msgstr "Alamakstud"
+
+#: 
+msgid "Understand deployments"
+msgstr "Mõista juurutusi"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Mõista funktsioonide kasutust"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Kasutajate nimed, e-posti aadressid või rollid"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Vaata annetuslubaduse või makse üksikasju"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Hoiatused — hoiatused, vead ja JS-erandid"
+
+#: 
+msgid "What is sent"
+msgstr "Mida saadetakse"
+
+#: 
+msgid "What we collect"
+msgstr "Mida me kogume"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Soovime teile imelist %d. sünnipäeva!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Soovime teile imelist sünnipäeva!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Teie kontol pole salvestatud e-posti aadressi. Lisage see oma profiilile katse saatmiseks."
+
+#: 
+msgid "errors+"
+msgstr "vead+"
+
+#: 
+msgid "full only"
+msgstr "ainult täielik"
+
+#: 
+msgid "is thinking of you today."
+msgstr "mõtleb täna teist."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "lehekülje marsruudid, aktiivne lokaad, CRM-i versioon, PHP versioon, OS-i perekond ja juhuslik paigalduse ID. Midagi muud. Andmeid hoitakse EL-is."
+

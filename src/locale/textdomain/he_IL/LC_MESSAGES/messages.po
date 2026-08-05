@@ -17109,3 +17109,431 @@ msgstr "סקור רישומים חדשים מהטופס הציבורי השלך 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "אישור מחיקת הזדמנות התנדבות"
 
+#: 
+msgid "# Payments"
+msgstr "# תשלומים"
+
+#: 
+msgid "# Pledges"
+msgstr "# התחייבויות"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "תשלום הוא תרומה בפועל שהתקבלה. הוא יתווסף לפיקדון הנבחר."
+
+#: 
+msgid "Add Fund"
+msgstr "הוסף קרן"
+
+#: 
+msgid "Amount ($)"
+msgstr "סכום ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "הסכום עולה על המקסימום המותר (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "אירעה שגיאה בעת השמירה. אנא נסה שוב."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "טלמטריה אנונימית"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "רמת טלמטריה אנונימית. קובעת כמה נתוני אבחון אנונימיים משותפים עם צוות ChurchCRM. שמות כנסיות, נתוני חברים או מידע אישי אינם נשלחים לעולם."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "האם אתה בטוח שברצונך למחוק לצמיתות את רשומת התשלום הזו?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "נדרשת הקצאה לקרן אחת לפחות"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "לפחות קרן אחת חייבת לכלול סכום שאינו אפס"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "שלח אוטומטית הודעת ברכת יום הולדת לאנשים ביום הולדתם"
+
+#: 
+msgid "Back to Finance"
+msgstr "חזרה לכספים"
+
+#: 
+msgid "Back to Group"
+msgstr "חזרה לקבוצה"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "לא ניתן להכין שאילתה."
+
+#: 
+msgid "Catch JS errors"
+msgstr "לכוד שגיאות JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "לכוד שגיאות חוזרות"
+
+#: 
+msgid "Check #"
+msgstr "מספר צ'ק"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "שם הכנסייה, כתובת או פרטי קשר"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "גרסת ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "רמת איסוף"
+
+#: 
+msgid "Count unique installs"
+msgstr "ספור התקנות ייחודיות"
+
+#: 
+msgid "Data"
+msgstr "נתונים"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "הנתונים מעובדים על ידי PostHog בתשתית האיחוד האירופי."
+
+#: 
+msgid "Date is required"
+msgstr "תאריך נדרש"
+
+#: 
+msgid "Deleted successfully"
+msgstr "נמחק בהצלחה"
+
+#: 
+msgid "Deposit #"
+msgstr "מספר פיקדון"
+
+#: 
+msgid "Deposit Slip"
+msgstr "תלוש פיקדון"
+
+#: 
+msgid "Edit Pledge"
+msgstr "ערוך התחייבות"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "ערוך התחייבות או תשלום קיים"
+
+#: 
+msgid "Editing a Payment"
+msgstr "עריכת תשלום"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "עריכת התחייבות"
+
+#: 
+msgid "Enable (full)"
+msgstr "הפעל (מלא)"
+
+#: 
+msgid "Errors only"
+msgstr "שגיאות בלבד"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "שגיאות — שגיאות שרת וחריגות JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "יצירת ההתחייבות נכשלה"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "מחיקת ההתחייבות נכשלה"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "קידוד תגובת התשלום נכשל"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "אחזור ההתחייבות נכשל"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "עדכון ההתחייבות נכשל"
+
+#: 
+msgid "Family is required"
+msgstr "משפחה נדרשת"
+
+#: 
+msgid "Financial data"
+msgstr "נתונים פיננסיים"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "מלא — כל האמור לעיל בתוספת צפיות בדפים"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "מלא — צפיות בדפים, אזהרות, שגיאות וחריגות JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "סיכום קרן"
+
+#: 
+msgid "Group key is required"
+msgstr "מפתח קבוצה נדרש"
+
+#: 
+msgid "Happy Birthday"
+msgstr "יום הולדת שמח"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "עזור לשפר את ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "כתובות IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID התקנה"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "סיכום אינטראקטיבי של התחייבויות מול תשלומים לפי קרן עם מיון, חיפוש וייצוא."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "פנימי: תאריך אחרון שבו נשלחו הודעות יום הולדת (YYYY-MM-DD). אל תערוך ידנית."
+
+#: 
+msgid "JS exceptions"
+msgstr "חריגות JS"
+
+#: 
+msgid "Log level + message"
+msgstr "רמת יומן + הודעה"
+
+#: 
+msgid "Member or family records"
+msgstr "רשומות חבר או משפחה"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "שנה את תפקיד חבר הקבוצה הזה"
+
+#: 
+msgid "Network error, please try again"
+msgstr "שגיאת רשת, אנא נסה שוב"
+
+#: 
+msgid "Never sent"
+msgstr "לא נשלח מעולם"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "ללא פיקדון / צור פיקדון חדש"
+
+#: 
+msgid "No pledge"
+msgstr "אין התחייבות"
+
+#: 
+msgid "No thanks"
+msgstr "לא תודה"
+
+#: 
+msgid "Non-Deductible"
+msgstr "לא ניתן לניכוי"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "לא ניתן לניכוי ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "הסכום שאינו ניתן לניכוי אינו יכול לעלות על סכום הקרן"
+
+#: 
+msgid "None (disabled)"
+msgstr "ללא (מושבת)"
+
+#: 
+msgid "OS family"
+msgstr "משפחת מערכת הפעלה"
+
+#: 
+msgid "Overpaid"
+msgstr "שולם יתר"
+
+#: 
+msgid "PHP version"
+msgstr "גרסת PHP"
+
+#: 
+msgid "Page route"
+msgstr "נתיב דף"
+
+#: 
+msgid "Payment Details"
+msgstr "פרטי תשלום"
+
+#: 
+msgid "Payment Method"
+msgstr "אמצעי תשלום"
+
+#: 
+msgid "Plan runtime support"
+msgstr "תמיכת זמן ריצה מתוכנן"
+
+#: 
+msgid "Please enter a date"
+msgstr "אנא הזן תאריך"
+
+#: 
+msgid "Please select a family"
+msgstr "אנא בחר משפחה"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "אנא בחר קרן עבור כל השורות"
+
+#: 
+msgid "Pledge Details"
+msgstr "פרטי התחייבות"
+
+#: 
+msgid "Pledge group not found"
+msgstr "קבוצת התחייבות לא נמצאה"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "התחייבויות ותשלומים"
+
+#: 
+msgid "Prioritise translations"
+msgstr "תעדף תרגומים"
+
+#: 
+msgid "Purpose"
+msgstr "מטרה"
+
+#: 
+msgid "Save and Add Another"
+msgstr "שמור והוסף עוד"
+
+#: 
+msgid "Save failed"
+msgstr "השמירה נכשלה"
+
+#: 
+msgid "Saved successfully"
+msgstr "נשמר בהצלחה"
+
+#: 
+msgid "Select a fund"
+msgstr "בחר קרן"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "שלח לי הודעת יום הולדת לדוגמה"
+
+#: 
+msgid "Sending to"
+msgstr "שולח אל"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "שתף סטטיסטיקות שימוש אנונימיות עם צוות ChurchCRM כדי שנדע אילו תכונות ושפות לתעדף. שמות כנסיות, נתוני חברים או מידע אישי אינם נשלחים לעולם."
+
+#: 
+msgid "Test email sent to"
+msgstr "הודעת דוגמה נשלחה אל"
+
+#: 
+msgid "Track adoption"
+msgstr "עקוב אחר אימוץ"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "הסוג חייב להיות 'התחייבות' או 'תשלום'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "כתובות URL עם מחרוזות שאילתה (מזהי רשומות מוסרים)"
+
+#: 
+msgid "Underpaid"
+msgstr "שולם חסר"
+
+#: 
+msgid "Understand deployments"
+msgstr "הבן פריסות"
+
+#: 
+msgid "Understand feature usage"
+msgstr "הבן שימוש בתכונות"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "שמות משתמש, כתובות דוא\"ל או תפקידים"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "הצג פרטי התחייבות או תשלום"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "אזהרות — אזהרות, שגיאות וחריגות JS"
+
+#: 
+msgid "What is sent"
+msgstr "מה נשלח"
+
+#: 
+msgid "What we collect"
+msgstr "מה אנו אוספים"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "מאחלים לך יום הולדת %d נפלא!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "מאחלים לך יום הולדת נפלא!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "לחשבונך אין כתובת דוא\"ל רשומה. הוסף כתובת לפרופיל שלך כדי לשלוח הודעת דוגמה."
+
+#: 
+msgid "errors+"
+msgstr "שגיאות+"
+
+#: 
+msgid "full only"
+msgstr "מלא בלבד"
+
+#: 
+msgid "is thinking of you today."
+msgstr "חושב עליך היום."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "נתיבי דפים, לוקאל פעיל, גרסת CRM, גרסת PHP, משפחת מערכת הפעלה ומזהה התקנה אקראי. שום דבר אחר. הנתונים מאוחסנים באיחוד האירופי."
+

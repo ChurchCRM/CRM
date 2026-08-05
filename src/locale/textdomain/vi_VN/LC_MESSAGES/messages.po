@@ -17102,3 +17102,431 @@ msgstr "Xem xét các đăng ký mới từ biểu mẫu đăng ký công khai c
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Xác nhận xóa cơ hội tình nguyện"
 
+#: 
+msgid "# Payments"
+msgstr "# Dâng hiến"
+
+#: 
+msgid "# Pledges"
+msgstr "# Cam kết dâng"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Một khoản dâng hiến thực tế đã nhận được. Nó sẽ được thêm vào khoản ký gửi đã chọn."
+
+#: 
+msgid "Add Fund"
+msgstr "Thêm Quỹ"
+
+#: 
+msgid "Amount ($)"
+msgstr "Số tiền ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Số tiền vượt quá mức tối đa cho phép (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Đã xảy ra lỗi khi lưu. Vui lòng thử lại."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Dữ liệu đo lường ẩn danh"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Mức độ đo lường ẩn danh. Kiểm soát lượng dữ liệu chẩn đoán ẩn danh được chia sẻ với nhóm ChurchCRM. Không bao giờ gửi tên hội thánh, dữ liệu thành viên hay thông tin cá nhân."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn bản ghi dâng hiến này không?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Cần ít nhất một phân bổ quỹ"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Ít nhất một quỹ phải có số tiền khác không"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Tự động gửi email chúc mừng sinh nhật cho mọi người vào ngày sinh nhật của họ"
+
+#: 
+msgid "Back to Finance"
+msgstr "Quay lại Tài chính"
+
+#: 
+msgid "Back to Group"
+msgstr "Quay lại Nhóm"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Không thể chuẩn bị truy vấn."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Bắt lỗi JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Bắt lỗi lặp lại"
+
+#: 
+msgid "Check #"
+msgstr "Số Séc #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Tên hội thánh, địa chỉ hoặc thông tin liên hệ"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Phiên bản ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Mức độ thu thập"
+
+#: 
+msgid "Count unique installs"
+msgstr "Đếm số lượt cài đặt duy nhất"
+
+#: 
+msgid "Data"
+msgstr "Dữ liệu"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Dữ liệu được xử lý bởi PostHog trên cơ sở hạ tầng EU."
+
+#: 
+msgid "Date is required"
+msgstr "Ngày là bắt buộc"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Đã xóa thành công"
+
+#: 
+msgid "Deposit #"
+msgstr "Số Ký gửi #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Phiếu Ký gửi"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Chỉnh sửa Cam kết dâng"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Chỉnh sửa cam kết dâng hoặc khoản dâng hiến hiện có"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Chỉnh sửa Khoản dâng hiến"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Chỉnh sửa Cam kết dâng"
+
+#: 
+msgid "Enable (full)"
+msgstr "Bật (đầy đủ)"
+
+#: 
+msgid "Errors only"
+msgstr "Chỉ lỗi"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Lỗi — lỗi máy chủ và ngoại lệ JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Không thể tạo cam kết dâng"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Không thể xóa cam kết dâng"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Không thể mã hóa phản hồi dâng hiến"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Không thể truy xuất cam kết dâng"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Không thể cập nhật cam kết dâng"
+
+#: 
+msgid "Family is required"
+msgstr "Gia đình là bắt buộc"
+
+#: 
+msgid "Financial data"
+msgstr "Dữ liệu tài chính"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Đầy đủ — tất cả những điều trên cộng với lượt xem trang"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Đầy đủ — lượt xem trang, cảnh báo, lỗi và ngoại lệ JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Tóm tắt Quỹ"
+
+#: 
+msgid "Group key is required"
+msgstr "Khóa nhóm là bắt buộc"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Chúc mừng Sinh nhật"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Giúp cải thiện ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Địa chỉ IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID Cài đặt"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Tóm tắt cam kết dâng so với dâng hiến theo quỹ có thể tương tác với sắp xếp, tìm kiếm và xuất dữ liệu."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Nội bộ: ngày cuối cùng email chúc sinh nhật được gửi (YYYY-MM-DD). Không chỉnh sửa thủ công."
+
+#: 
+msgid "JS exceptions"
+msgstr "Ngoại lệ JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Cấp độ nhật ký + thông điệp"
+
+#: 
+msgid "Member or family records"
+msgstr "Hồ sơ thành viên hoặc gia đình"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Thay đổi vai trò cho thành viên nhóm này"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Lỗi mạng, vui lòng thử lại"
+
+#: 
+msgid "Never sent"
+msgstr "Chưa bao giờ gửi"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Không có ký gửi / tạo ký gửi mới"
+
+#: 
+msgid "No pledge"
+msgstr "Không có cam kết dâng"
+
+#: 
+msgid "No thanks"
+msgstr "Không, cảm ơn"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Không được khấu trừ"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Không được khấu trừ ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Số tiền không được khấu trừ không thể vượt quá số tiền quỹ"
+
+#: 
+msgid "None (disabled)"
+msgstr "Không có (đã tắt)"
+
+#: 
+msgid "OS family"
+msgstr "Hệ điều hành"
+
+#: 
+msgid "Overpaid"
+msgstr "Dâng dư"
+
+#: 
+msgid "PHP version"
+msgstr "Phiên bản PHP"
+
+#: 
+msgid "Page route"
+msgstr "Đường dẫn trang"
+
+#: 
+msgid "Payment Details"
+msgstr "Chi tiết Dâng hiến"
+
+#: 
+msgid "Payment Method"
+msgstr "Phương thức Dâng hiến"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Lên kế hoạch hỗ trợ thời gian chạy"
+
+#: 
+msgid "Please enter a date"
+msgstr "Vui lòng nhập ngày"
+
+#: 
+msgid "Please select a family"
+msgstr "Vui lòng chọn một gia đình"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Vui lòng chọn quỹ cho tất cả các hàng"
+
+#: 
+msgid "Pledge Details"
+msgstr "Chi tiết Cam kết dâng"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Không tìm thấy nhóm cam kết dâng"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Cam kết dâng & Dâng hiến"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Ưu tiên bản dịch"
+
+#: 
+msgid "Purpose"
+msgstr "Mục đích"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Lưu và Thêm mục khác"
+
+#: 
+msgid "Save failed"
+msgstr "Lưu thất bại"
+
+#: 
+msgid "Saved successfully"
+msgstr "Đã lưu thành công"
+
+#: 
+msgid "Select a fund"
+msgstr "Chọn một quỹ"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Gửi Email Sinh nhật Thử nghiệm cho Tôi"
+
+#: 
+msgid "Sending to"
+msgstr "Đang gửi đến"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Chia sẻ thống kê sử dụng ẩn danh với nhóm ChurchCRM để chúng tôi biết những tính năng và ngôn ngữ nào cần ưu tiên. Không bao giờ gửi tên hội thánh, dữ liệu thành viên hay thông tin cá nhân."
+
+#: 
+msgid "Test email sent to"
+msgstr "Email thử nghiệm đã gửi đến"
+
+#: 
+msgid "Track adoption"
+msgstr "Theo dõi mức độ sử dụng"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Loại phải là 'Cam kết dâng' hoặc 'Dâng hiến'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL kèm chuỗi truy vấn (ID bản ghi đã bị loại bỏ)"
+
+#: 
+msgid "Underpaid"
+msgstr "Dâng thiếu"
+
+#: 
+msgid "Understand deployments"
+msgstr "Hiểu các lần triển khai"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Hiểu mức độ sử dụng tính năng"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Tên người dùng, email hoặc vai trò"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Xem chi tiết cam kết dâng hoặc dâng hiến"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Cảnh báo — cảnh báo, lỗi và ngoại lệ JS"
+
+#: 
+msgid "What is sent"
+msgstr "Những gì được gửi"
+
+#: 
+msgid "What we collect"
+msgstr "Những gì chúng tôi thu thập"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Chúc bạn một sinh nhật tuyệt vời %d tuổi!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Chúc bạn một sinh nhật thật tuyệt vời!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Tài khoản của bạn chưa có địa chỉ email. Hãy thêm vào hồ sơ của bạn để gửi thử nghiệm."
+
+#: 
+msgid "errors+"
+msgstr "lỗi+"
+
+#: 
+msgid "full only"
+msgstr "chỉ đầy đủ"
+
+#: 
+msgid "is thinking of you today."
+msgstr "đang nghĩ đến bạn hôm nay."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "đường dẫn trang, ngôn ngữ đang dùng, phiên bản CRM, phiên bản PHP, hệ điều hành và một ID cài đặt ngẫu nhiên. Không có gì khác. Dữ liệu được lưu trữ tại EU."
+

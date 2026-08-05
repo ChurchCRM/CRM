@@ -17136,3 +17136,431 @@ msgstr "Az alábbiakban tekintse át a nyilvános regisztrációs urlap új regi
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Önkéntes lehetőség törlésének megerősítése"
 
+#: 
+msgid "# Payments"
+msgstr "# Adományok"
+
+#: 
+msgid "# Pledges"
+msgstr "# Fogadalmak"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Az adomány egy ténylegesen beérkezett felajánlás. Hozzáadódik a kiválasztott befizetéshez."
+
+#: 
+msgid "Add Fund"
+msgstr "Alap hozzáadása"
+
+#: 
+msgid "Amount ($)"
+msgstr "Összeg ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Az összeg meghaladja a megengedett maximumot (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Hiba történt a mentés során. Kérjük, próbálja újra."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Névtelen telemetria"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Névtelen telemetria szintje. Meghatározza, hogy mennyi névtelen diagnosztikai adat kerül megosztásra a ChurchCRM csapatával. Egyháznév, tagi adat vagy személyes információ soha nem kerül elküldésre."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Biztosan véglegesen törölni szeretné ezt az adomány-rekordot?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Legalább egy alaphoz való hozzárendelés szükséges"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Legalább egy alapnak nullától eltérő összeggel kell rendelkeznie"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Születésnapi köszöntő e-mail automatikus küldése a tagoknak születésnapjukon"
+
+#: 
+msgid "Back to Finance"
+msgstr "Vissza a pénzügyekhez"
+
+#: 
+msgid "Back to Group"
+msgstr "Vissza a csoporthoz"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "A lekérdezés nem készíthető elő."
+
+#: 
+msgid "Catch JS errors"
+msgstr "JS hibák rögzítése"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Visszatérő hibák rögzítése"
+
+#: 
+msgid "Check #"
+msgstr "Csekk #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Egyháznév, cím vagy elérhetőség"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM verzió"
+
+#: 
+msgid "Collection level"
+msgstr "Gyűjtési szint"
+
+#: 
+msgid "Count unique installs"
+msgstr "Egyedi telepítések számlálása"
+
+#: 
+msgid "Data"
+msgstr "Adat"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Az adatokat a PostHog dolgozza fel EU-s infrastruktúrán."
+
+#: 
+msgid "Date is required"
+msgstr "A dátum megadása kötelező"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Sikeresen törölve"
+
+#: 
+msgid "Deposit #"
+msgstr "Befizetés #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Befizetési bizonylat"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Fogadalom szerkesztése"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Meglévő fogadalom vagy adomány szerkesztése"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Adomány szerkesztése"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Fogadalom szerkesztése"
+
+#: 
+msgid "Enable (full)"
+msgstr "Engedélyezés (teljes)"
+
+#: 
+msgid "Errors only"
+msgstr "Csak hibák"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Hibák – szerverhiba és JS kivételek"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "A fogadalom létrehozása sikertelen"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "A fogadalom törlése sikertelen"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Az adomány-válasz kódolása sikertelen"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "A fogadalom lekérése sikertelen"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "A fogadalom frissítése sikertelen"
+
+#: 
+msgid "Family is required"
+msgstr "A család megadása kötelező"
+
+#: 
+msgid "Financial data"
+msgstr "Pénzügyi adatok"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Teljes – mindez plusz oldalmegtekintések"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Teljes – oldalmegtekintések, figyelmeztetések, hibák és JS kivételek"
+
+#: 
+msgid "Fund Summary"
+msgstr "Alap összefoglaló"
+
+#: 
+msgid "Group key is required"
+msgstr "A csoportkulcs megadása kötelező"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Boldog születésnapot"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Segítsen fejleszteni a ChurchCRM-et"
+
+#: 
+msgid "IP addresses"
+msgstr "IP-címek"
+
+#: 
+msgid "Installation UUID"
+msgstr "Telepítési UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktív fogadalom-adomány összefoglaló alaponként, rendezési, keresési és exportálási lehetőséggel."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Belső: a születésnapi e-mailek utolsó küldési dátuma (ÉÉÉÉ-HH-NN). Ne szerkessze manuálisan."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS kivételek"
+
+#: 
+msgid "Log level + message"
+msgstr "Naplószint + üzenet"
+
+#: 
+msgid "Member or family records"
+msgstr "Tag- vagy családi rekordok"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Csoporttag szerepkörének módosítása"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Hálózati hiba, kérjük, próbálja újra"
+
+#: 
+msgid "Never sent"
+msgstr "Soha nem küldött"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Nincs befizetés / új befizetés létrehozása"
+
+#: 
+msgid "No pledge"
+msgstr "Nincs fogadalom"
+
+#: 
+msgid "No thanks"
+msgstr "Nem, köszönöm"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Nem levonható"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Nem levonható ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "A nem levonható összeg nem haladhatja meg az alap összegét"
+
+#: 
+msgid "None (disabled)"
+msgstr "Nincs (letiltva)"
+
+#: 
+msgid "OS family"
+msgstr "Operációs rendszer família"
+
+#: 
+msgid "Overpaid"
+msgstr "Túlfizetett"
+
+#: 
+msgid "PHP version"
+msgstr "PHP verzió"
+
+#: 
+msgid "Page route"
+msgstr "Oldal útvonal"
+
+#: 
+msgid "Payment Details"
+msgstr "Adomány részletei"
+
+#: 
+msgid "Payment Method"
+msgstr "Fizetési mód"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Futásidei támogatás tervezése"
+
+#: 
+msgid "Please enter a date"
+msgstr "Kérjük, adjon meg egy dátumot"
+
+#: 
+msgid "Please select a family"
+msgstr "Kérjük, válasszon egy családot"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Kérjük, minden sorhoz válasszon alapot"
+
+#: 
+msgid "Pledge Details"
+msgstr "Fogadalom részletei"
+
+#: 
+msgid "Pledge group not found"
+msgstr "A fogadalom-csoport nem található"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Fogadalmak és adományok"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Fordítások priorizálása"
+
+#: 
+msgid "Purpose"
+msgstr "Cél"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Mentés és újabb hozzáadása"
+
+#: 
+msgid "Save failed"
+msgstr "Mentés sikertelen"
+
+#: 
+msgid "Saved successfully"
+msgstr "Sikeresen mentve"
+
+#: 
+msgid "Select a fund"
+msgstr "Válasszon alapot"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Születésnapi teszt e-mail küldése magamnak"
+
+#: 
+msgid "Sending to"
+msgstr "Küldés ide"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Névtelen használati statisztikák megosztása a ChurchCRM csapatával, hogy tudjuk, mely funkciókat és nyelveket priorizáljuk. Egyháznév, tagi adat vagy személyes információ soha nem kerül elküldésre."
+
+#: 
+msgid "Test email sent to"
+msgstr "Teszt e-mail elküldve ide"
+
+#: 
+msgid "Track adoption"
+msgstr "Bevezetés nyomon követése"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "A típusnak 'Pledge' vagy 'Payment' értékűnek kell lennie"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL-ek lekérdezési karakterlánccal (rekord azonosítók eltávolítva)"
+
+#: 
+msgid "Underpaid"
+msgstr "Alulfizetett"
+
+#: 
+msgid "Understand deployments"
+msgstr "Telepítések megértése"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Funkcióhasználat megértése"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Felhasználónevek, e-mail-címek vagy szerepkörök"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Fogadalom vagy adomány részleteinek megtekintése"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Figyelmeztetések – figyelmeztetések, hibák és JS kivételek"
+
+#: 
+msgid "What is sent"
+msgstr "Mi kerül elküldésre"
+
+#: 
+msgid "What we collect"
+msgstr "Mit gyűjtünk"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Boldog %d. születésnapot kívánunk!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Csodálatos születésnapot kívánunk!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Fiókjához nincs e-mail-cím megadva. Adjon hozzá egyet a profiljához a teszt küldéséhez."
+
+#: 
+msgid "errors+"
+msgstr "hibák+"
+
+#: 
+msgid "full only"
+msgstr "csak teljes"
+
+#: 
+msgid "is thinking of you today."
+msgstr "ma rád gondol."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "oldal útvonalak, aktív területi beállítás, CRM verzió, PHP verzió, operációs rendszer família és egy véletlenszerű telepítési azonosító. Semmi más. Az adatok az EU-ban tárolódnak."
+

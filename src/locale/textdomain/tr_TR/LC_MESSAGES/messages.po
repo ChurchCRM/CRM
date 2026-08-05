@@ -17111,3 +17111,431 @@ msgstr "Aşağıda genel kayıt formunuzdan gelen yeni kayıtları inceleyin. E-
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Gönüllü Fırsatı Silme Onayı"
 
+#: 
+msgid "# Payments"
+msgstr "# Ödemeler"
+
+#: 
+msgid "# Pledges"
+msgstr "# Taahhütler"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Ödeme, alınan gerçek bir bağıştır. Seçilen depozitoya eklenecektir."
+
+#: 
+msgid "Add Fund"
+msgstr "Fon Ekle"
+
+#: 
+msgid "Amount ($)"
+msgstr "Tutar ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Tutar izin verilen maksimumu (999999.99) aşıyor"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Kaydedilirken bir hata oluştu. Lütfen tekrar deneyin."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonim Telemetri"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Anonim telemetri düzeyi. ChurchCRM ekibiyle ne kadar anonim tanılama verisinin paylaşılacağını denetler. Hiçbir zaman kilise adı, üye verisi veya kişisel bilgi gönderilmez."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Bu ödeme kaydını kalıcı olarak silmek istediğinizden emin misiniz?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "En az bir fon tahsisi gereklidir"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "En az bir fonun sıfır olmayan bir tutarı olmalıdır"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Kişilere doğum günlerinde otomatik olarak doğum günü tebrik e-postası gönder"
+
+#: 
+msgid "Back to Finance"
+msgstr "Finansa Geri Dön"
+
+#: 
+msgid "Back to Group"
+msgstr "Gruba Geri Dön"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Sorgu hazırlanamıyor."
+
+#: 
+msgid "Catch JS errors"
+msgstr "JS hatalarını yakala"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Yinelenen hataları yakala"
+
+#: 
+msgid "Check #"
+msgstr "Çek #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Kilise adı, adresi veya iletişim bilgileri"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM sürümü"
+
+#: 
+msgid "Collection level"
+msgstr "Toplama düzeyi"
+
+#: 
+msgid "Count unique installs"
+msgstr "Benzersiz kurulumları say"
+
+#: 
+msgid "Data"
+msgstr "Veri"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Veriler, AB altyapısında PostHog tarafından işlenir."
+
+#: 
+msgid "Date is required"
+msgstr "Tarih zorunludur"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Başarıyla silindi"
+
+#: 
+msgid "Deposit #"
+msgstr "Depozito #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Depozito Makbuzu"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Taahhüdü Düzenle"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Mevcut taahhüt veya ödemeyi düzenle"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Ödeme Düzenleniyor"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Taahhüt Düzenleniyor"
+
+#: 
+msgid "Enable (full)"
+msgstr "Etkinleştir (tam)"
+
+#: 
+msgid "Errors only"
+msgstr "Yalnızca hatalar"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Hatalar — sunucu hataları ve JS istisnaları"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Taahhüt oluşturulamadı"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Taahhüt silinemedi"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Ödeme yanıtı kodlanamadı"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Taahhüt alınamadı"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Taahhüt güncellenemedi"
+
+#: 
+msgid "Family is required"
+msgstr "Aile zorunludur"
+
+#: 
+msgid "Financial data"
+msgstr "Mali veri"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Tam — yukarıdakilerin tümü ve sayfa görüntülemeleri"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Tam — sayfa görüntülemeleri, uyarılar, hatalar ve JS istisnaları"
+
+#: 
+msgid "Fund Summary"
+msgstr "Fon Özeti"
+
+#: 
+msgid "Group key is required"
+msgstr "Grup anahtarı zorunludur"
+
+#: 
+msgid "Happy Birthday"
+msgstr "İyi Doğum Günler"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ChurchCRM'yi geliştirmeye yardım et"
+
+#: 
+msgid "IP addresses"
+msgstr "IP adresleri"
+
+#: 
+msgid "Installation UUID"
+msgstr "Kurulum UUID'si"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Fona göre sıralama, arama ve dışa aktarma özellikli etkileşimli taahhüt-ödeme özeti."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Dahili: doğum günü e-postalarının son gönderildiği tarih (YYYY-AA-GG). Manuel olarak düzenlemeyin."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS istisnaları"
+
+#: 
+msgid "Log level + message"
+msgstr "Günlük düzeyi + mesaj"
+
+#: 
+msgid "Member or family records"
+msgstr "Üye veya aile kayıtları"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Bu grup üyesinin rolünü değiştir"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Ağ hatası, lütfen tekrar deneyin"
+
+#: 
+msgid "Never sent"
+msgstr "Hiç gönderilmedi"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Depozito yok / yeni depozito oluştur"
+
+#: 
+msgid "No pledge"
+msgstr "Taahhüt yok"
+
+#: 
+msgid "No thanks"
+msgstr "Hayır, teşekkürler"
+
+#: 
+msgid "Non-Deductible"
+msgstr "İndirilemeyen"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "İndirilemeyen ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "İndirilemez tutar, fon tutarını aşamaz"
+
+#: 
+msgid "None (disabled)"
+msgstr "Hiçbiri (devre dışı)"
+
+#: 
+msgid "OS family"
+msgstr "İşletim sistemi ailesi"
+
+#: 
+msgid "Overpaid"
+msgstr "Fazla ödendi"
+
+#: 
+msgid "PHP version"
+msgstr "PHP sürümü"
+
+#: 
+msgid "Page route"
+msgstr "Sayfa yolu"
+
+#: 
+msgid "Payment Details"
+msgstr "Ödeme Ayrıntıları"
+
+#: 
+msgid "Payment Method"
+msgstr "Ödeme Yöntemi"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Çalışma zamanı desteğini planla"
+
+#: 
+msgid "Please enter a date"
+msgstr "Lütfen bir tarih girin"
+
+#: 
+msgid "Please select a family"
+msgstr "Lütfen bir aile seçin"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Lütfen tüm satırlar için bir fon seçin"
+
+#: 
+msgid "Pledge Details"
+msgstr "Taahhüt Ayrıntıları"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Taahhüt grubu bulunamadı"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Taahhütler ve Ödemeler"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Çevirileri önceliklendir"
+
+#: 
+msgid "Purpose"
+msgstr "Amaç"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Kaydet ve Başka Ekle"
+
+#: 
+msgid "Save failed"
+msgstr "Kaydetme başarısız oldu"
+
+#: 
+msgid "Saved successfully"
+msgstr "Başarıyla kaydedildi"
+
+#: 
+msgid "Select a fund"
+msgstr "Bir fon seçin"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Kendime Test Doğum Günü E-postası Gönder"
+
+#: 
+msgid "Sending to"
+msgstr "Gönderiliyor:"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Hangi özellik ve dillere öncelik vereceğimizi bilmemiz için ChurchCRM ekibiyle anonim kullanım istatistiklerini paylaşın. Hiçbir zaman kilise adı, üye verisi veya kişisel bilgi gönderilmez."
+
+#: 
+msgid "Test email sent to"
+msgstr "Test e-postası gönderildi:"
+
+#: 
+msgid "Track adoption"
+msgstr "Benimsemeyi izle"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Tür 'Taahhüt' veya 'Ödeme' olmalıdır"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "Sorgu dizili URL'ler (kayıt kimlikleri çıkarılır)"
+
+#: 
+msgid "Underpaid"
+msgstr "Eksik ödendi"
+
+#: 
+msgid "Understand deployments"
+msgstr "Dağıtımları anla"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Özellik kullanımını anla"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Kullanıcı adları, e-postalar veya roller"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Taahhüt veya ödeme ayrıntılarını görüntüle"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Uyarılar — uyarılar, hatalar ve JS istisnaları"
+
+#: 
+msgid "What is sent"
+msgstr "Ne gönderilir"
+
+#: 
+msgid "What we collect"
+msgstr "Ne topluyoruz"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Sizi %d. yaş gününüzde tebrik ediyoruz!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Sizi doğum gününüzde tebrik ediyoruz!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Hesabınızda kayıtlı bir e-posta adresi yok. Test göndermek için profilinize bir tane ekleyin."
+
+#: 
+msgid "errors+"
+msgstr "hatalar+"
+
+#: 
+msgid "full only"
+msgstr "yalnızca tam"
+
+#: 
+msgid "is thinking of you today."
+msgstr "bugün sizi düşünüyor."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "sayfa yolları, etkin yerel ayar, CRM sürümü, PHP sürümü, işletim sistemi ailesi ve rastgele bir kurulum kimliği. Bunların dışında hiçbir şey. Veriler AB'de depolanır."
+

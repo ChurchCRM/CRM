@@ -17093,3 +17093,431 @@ msgstr "아래에서 공개 등록 양식의 새 등록자를 검토하세요. �
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "봉사 기회 삭제 확인"
 
+#: 
+msgid "# Payments"
+msgstr "# 헌금"
+
+#: 
+msgid "# Pledges"
+msgstr "# 서약"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "헌금은 실제로 받은 기부금입니다. 선택한 입금 항목에 추가됩니다."
+
+#: 
+msgid "Add Fund"
+msgstr "헌금 항목 추가"
+
+#: 
+msgid "Amount ($)"
+msgstr "금액 ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "허용 최대 금액(999999.99)을 초과했습니다"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "저장 중 오류가 발생했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "익명 원격 측정"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "익명 원격 측정 수준입니다. ChurchCRM 팀과 공유되는 익명 진단 데이터의 양을 제어합니다. 교회 이름, 교인 데이터 또는 개인 정보는 전송되지 않습니다."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "이 헌금 기록을 영구적으로 삭제하시겠습니까?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "최소 하나의 헌금 항목 배분이 필요합니다"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "최소 하나의 헌금 항목에 0이 아닌 금액이 있어야 합니다"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "생일에 교인들에게 생일 축하 이메일을 자동으로 발송합니다"
+
+#: 
+msgid "Back to Finance"
+msgstr "재정으로 돌아가기"
+
+#: 
+msgid "Back to Group"
+msgstr "그룹으로 돌아가기"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "쿼리를 준비할 수 없습니다."
+
+#: 
+msgid "Catch JS errors"
+msgstr "JS 오류 수집"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "반복 오류 수집"
+
+#: 
+msgid "Check #"
+msgstr "수표 번호"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "교회 이름, 주소 또는 연락처 정보"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM 버전"
+
+#: 
+msgid "Collection level"
+msgstr "수집 수준"
+
+#: 
+msgid "Count unique installs"
+msgstr "고유 설치 수 집계"
+
+#: 
+msgid "Data"
+msgstr "데이터"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "데이터는 EU 인프라에서 PostHog에 의해 처리됩니다."
+
+#: 
+msgid "Date is required"
+msgstr "날짜는 필수입니다"
+
+#: 
+msgid "Deleted successfully"
+msgstr "성공적으로 삭제되었습니다"
+
+#: 
+msgid "Deposit #"
+msgstr "입금 번호"
+
+#: 
+msgid "Deposit Slip"
+msgstr "입금 전표"
+
+#: 
+msgid "Edit Pledge"
+msgstr "서약 편집"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "기존 서약 또는 헌금 편집"
+
+#: 
+msgid "Editing a Payment"
+msgstr "헌금 편집 중"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "서약 편집 중"
+
+#: 
+msgid "Enable (full)"
+msgstr "활성화 (전체)"
+
+#: 
+msgid "Errors only"
+msgstr "오류만"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "오류 — 서버 오류 및 JS 예외"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "서약 생성에 실패했습니다"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "서약 삭제에 실패했습니다"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "헌금 응답 인코딩에 실패했습니다"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "서약 조회에 실패했습니다"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "서약 업데이트에 실패했습니다"
+
+#: 
+msgid "Family is required"
+msgstr "가족은 필수입니다"
+
+#: 
+msgid "Financial data"
+msgstr "재정 데이터"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "전체 — 위의 모든 항목과 페이지 조회수 포함"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "전체 — 페이지 조회수, 경고, 오류 및 JS 예외"
+
+#: 
+msgid "Fund Summary"
+msgstr "헌금 항목 요약"
+
+#: 
+msgid "Group key is required"
+msgstr "그룹 키는 필수입니다"
+
+#: 
+msgid "Happy Birthday"
+msgstr "생일을 축하합니다"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ChurchCRM 개선에 도움 주기"
+
+#: 
+msgid "IP addresses"
+msgstr "IP 주소"
+
+#: 
+msgid "Installation UUID"
+msgstr "설치 UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "정렬, 검색 및 내보내기 기능을 갖춘 헌금 항목별 서약 대 헌금 요약 표입니다."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "내부용: 생일 이메일이 마지막으로 발송된 날짜 (YYYY-MM-DD). 직접 수정하지 마십시오."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS 예외"
+
+#: 
+msgid "Log level + message"
+msgstr "로그 수준 + 메시지"
+
+#: 
+msgid "Member or family records"
+msgstr "교인 또는 가족 기록"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "이 그룹 구성원의 역할 수정"
+
+#: 
+msgid "Network error, please try again"
+msgstr "네트워크 오류입니다. 다시 시도해 주세요"
+
+#: 
+msgid "Never sent"
+msgstr "발송된 적 없음"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "입금 없음 / 새 입금 생성"
+
+#: 
+msgid "No pledge"
+msgstr "서약 없음"
+
+#: 
+msgid "No thanks"
+msgstr "괜찮습니다"
+
+#: 
+msgid "Non-Deductible"
+msgstr "비공제"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "비공제 ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "비공제 금액은 헌금 항목 금액을 초과할 수 없습니다"
+
+#: 
+msgid "None (disabled)"
+msgstr "없음 (비활성화)"
+
+#: 
+msgid "OS family"
+msgstr "OS 계열"
+
+#: 
+msgid "Overpaid"
+msgstr "초과 납부"
+
+#: 
+msgid "PHP version"
+msgstr "PHP 버전"
+
+#: 
+msgid "Page route"
+msgstr "페이지 경로"
+
+#: 
+msgid "Payment Details"
+msgstr "헌금 상세 정보"
+
+#: 
+msgid "Payment Method"
+msgstr "헌금 방법"
+
+#: 
+msgid "Plan runtime support"
+msgstr "런타임 지원 계획"
+
+#: 
+msgid "Please enter a date"
+msgstr "날짜를 입력해 주세요"
+
+#: 
+msgid "Please select a family"
+msgstr "가족을 선택해 주세요"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "모든 행에 헌금 항목을 선택해 주세요"
+
+#: 
+msgid "Pledge Details"
+msgstr "서약 상세 정보"
+
+#: 
+msgid "Pledge group not found"
+msgstr "서약 그룹을 찾을 수 없습니다"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "서약 및 헌금"
+
+#: 
+msgid "Prioritise translations"
+msgstr "번역 우선 순위 지정"
+
+#: 
+msgid "Purpose"
+msgstr "목적"
+
+#: 
+msgid "Save and Add Another"
+msgstr "저장 후 다른 항목 추가"
+
+#: 
+msgid "Save failed"
+msgstr "저장에 실패했습니다"
+
+#: 
+msgid "Saved successfully"
+msgstr "성공적으로 저장되었습니다"
+
+#: 
+msgid "Select a fund"
+msgstr "헌금 항목 선택"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "나에게 테스트 생일 이메일 보내기"
+
+#: 
+msgid "Sending to"
+msgstr "발송 대상"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "ChurchCRM 팀과 익명 사용 통계를 공유하여 어떤 기능과 언어를 우선적으로 개선할지 파악할 수 있도록 도와주세요. 교회 이름, 교인 데이터 또는 개인 정보는 전송되지 않습니다."
+
+#: 
+msgid "Test email sent to"
+msgstr "테스트 이메일이 다음으로 발송되었습니다"
+
+#: 
+msgid "Track adoption"
+msgstr "도입 현황 추적"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "유형은 '서약' 또는 '헌금'이어야 합니다"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "쿼리 문자열이 포함된 URL (레코드 ID 제외)"
+
+#: 
+msgid "Underpaid"
+msgstr "미납"
+
+#: 
+msgid "Understand deployments"
+msgstr "배포 현황 파악"
+
+#: 
+msgid "Understand feature usage"
+msgstr "기능 사용 현황 파악"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "사용자 이름, 이메일 또는 역할"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "서약 또는 헌금 상세 정보 보기"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "경고 — 경고, 오류 및 JS 예외"
+
+#: 
+msgid "What is sent"
+msgstr "전송되는 항목"
+
+#: 
+msgid "What we collect"
+msgstr "수집 항목"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "멋진 %d번째 생일을 축하합니다!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "멋진 생일이 되기를 바랍니다!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "계정에 등록된 이메일 주소가 없습니다. 테스트를 위해 프로필에 이메일을 추가해 주세요."
+
+#: 
+msgid "errors+"
+msgstr "오류+"
+
+#: 
+msgid "full only"
+msgstr "전체만"
+
+#: 
+msgid "is thinking of you today."
+msgstr "오늘 당신을 생각하고 있습니다."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "페이지 경로, 활성 언어, CRM 버전, PHP 버전, OS 계열 및 임의 설치 ID. 그 외에는 없습니다. 데이터는 EU에 저장됩니다."
+

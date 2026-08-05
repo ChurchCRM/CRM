@@ -17081,3 +17081,431 @@ msgstr "Pregledajte nove prijave s vašeg javnog obrasca za registraciju ispod. 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Potvrda brisanja volonterske prilike"
 
+#: 
+msgid "# Payments"
+msgstr "# Uplata"
+
+#: 
+msgid "# Pledges"
+msgstr "# Zavjeta"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Uplata je stvarna primljena donacija. Bit će dodana odabranom depozitu."
+
+#: 
+msgid "Add Fund"
+msgstr "Dodaj fond"
+
+#: 
+msgid "Amount ($)"
+msgstr "Iznos ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Iznos premašuje maksimalno dozvoljeno (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Došlo je do pogreške pri spremanju. Molimo pokušajte ponovo."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonimna telemetrija"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Razina anonimne telemetrije. Kontrolira koliko se anonimnih dijagnostičkih podataka dijeli s timom ChurchCRM. Nikada se ne šalju nazivi župa, podaci o vjernicima ni osobni podaci."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Jeste li sigurni da želite trajno izbrisati ovaj zapis o uplati?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Potrebna je najmanje jedna dodjela fonda"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Najmanje jedan fond mora imati nenulti iznos"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Automatski pošalji čestitku e-poštom na dan rođendana"
+
+#: 
+msgid "Back to Finance"
+msgstr "Natrag na financije"
+
+#: 
+msgid "Back to Group"
+msgstr "Natrag na grupu"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Nije moguće pripremiti upit."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Hvata JS greške"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Hvata ponavljajuće greške"
+
+#: 
+msgid "Check #"
+msgstr "Ček #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Naziv župe, adresa ili kontaktni podaci"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Verzija ChurchCRM-a"
+
+#: 
+msgid "Collection level"
+msgstr "Razina prikupljanja"
+
+#: 
+msgid "Count unique installs"
+msgstr "Broji jedinstvene instalacije"
+
+#: 
+msgid "Data"
+msgstr "Podaci"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Podatke obrađuje PostHog na EU infrastrukturi."
+
+#: 
+msgid "Date is required"
+msgstr "Datum je obavezan"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Uspješno izbrisano"
+
+#: 
+msgid "Deposit #"
+msgstr "Depozit #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Uplatnica"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Uredi zavjet"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Uredi postojeći zavjet ili uplatu"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Uređivanje uplate"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Uređivanje zavjeta"
+
+#: 
+msgid "Enable (full)"
+msgstr "Omogući (potpuno)"
+
+#: 
+msgid "Errors only"
+msgstr "Samo greške"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Greške — serverske greške i JS iznimke"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Nije uspjelo kreiranje zavjeta"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Nije uspjelo brisanje zavjeta"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Nije uspjelo kodiranje odgovora na uplatu"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Nije uspjelo dohvaćanje zavjeta"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Nije uspjelo ažuriranje zavjeta"
+
+#: 
+msgid "Family is required"
+msgstr "Obitelj je obavezna"
+
+#: 
+msgid "Financial data"
+msgstr "Financijski podaci"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Potpuno — sve navedeno plus pregledi stranica"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Potpuno — pregledi stranica, upozorenja, greške i JS iznimke"
+
+#: 
+msgid "Fund Summary"
+msgstr "Sažetak fonda"
+
+#: 
+msgid "Group key is required"
+msgstr "Ključ grupe je obavezan"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Sretan rođendan"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Pomozite poboljšati ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "IP adrese"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID instalacije"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktivni sažetak zavjeta u odnosu na uplate po fondu s mogućnostima sortiranja, pretraživanja i izvoza."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Interno: zadnji datum slanja e-poruka za rođendan (GGGG-MM-DD). Ne uređujte ručno."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS iznimke"
+
+#: 
+msgid "Log level + message"
+msgstr "Razina zapisa + poruka"
+
+#: 
+msgid "Member or family records"
+msgstr "Zapisi o vjernicima ili obiteljima"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Izmijeni ulogu ovog člana grupe"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Mrežna greška, molimo pokušajte ponovo"
+
+#: 
+msgid "Never sent"
+msgstr "Nikad poslano"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Nema depozita / stvori novi depozit"
+
+#: 
+msgid "No pledge"
+msgstr "Nema zavjeta"
+
+#: 
+msgid "No thanks"
+msgstr "Ne, hvala"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Nije odbitno"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Nije odbitno ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Neodbitni iznos ne može premašiti iznos fonda"
+
+#: 
+msgid "None (disabled)"
+msgstr "Ništa (onemogućeno)"
+
+#: 
+msgid "OS family"
+msgstr "OS obitelj"
+
+#: 
+msgid "Overpaid"
+msgstr "Preplaćeno"
+
+#: 
+msgid "PHP version"
+msgstr "PHP verzija"
+
+#: 
+msgid "Page route"
+msgstr "Ruta stranice"
+
+#: 
+msgid "Payment Details"
+msgstr "Detalji uplate"
+
+#: 
+msgid "Payment Method"
+msgstr "Način plaćanja"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Planiraj podršku za izvođenje"
+
+#: 
+msgid "Please enter a date"
+msgstr "Molimo unesite datum"
+
+#: 
+msgid "Please select a family"
+msgstr "Molimo odaberite obitelj"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Molimo odaberite fond za sve retke"
+
+#: 
+msgid "Pledge Details"
+msgstr "Detalji zavjeta"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Grupa zavjeta nije pronađena"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Zavjeti i uplate"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Daj prednost prijevodima"
+
+#: 
+msgid "Purpose"
+msgstr "Svrha"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Spremi i dodaj još jedan"
+
+#: 
+msgid "Save failed"
+msgstr "Spremanje nije uspjelo"
+
+#: 
+msgid "Saved successfully"
+msgstr "Uspješno spremljeno"
+
+#: 
+msgid "Select a fund"
+msgstr "Odaberi fond"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Pošalji sebi testnu e-poruku za rođendan"
+
+#: 
+msgid "Sending to"
+msgstr "Šaljem na"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Dijelite anonimnu statistiku korištenja s timom ChurchCRM kako bismo znali kojim značajkama i jezicima dati prednost. Nikada se ne šalju nazivi župa, podaci o vjernicima ni osobni podaci."
+
+#: 
+msgid "Test email sent to"
+msgstr "Testna e-poruka poslana na"
+
+#: 
+msgid "Track adoption"
+msgstr "Prati prihvaćenost"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Vrsta mora biti 'Zavjet' ili 'Uplata'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL-ovi s nizovima upita (ID-ovi zapisa su uklonjeni)"
+
+#: 
+msgid "Underpaid"
+msgstr "Nedovoljno plaćeno"
+
+#: 
+msgid "Understand deployments"
+msgstr "Razumjeti implementacije"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Razumjeti korištenje značajki"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Korisnička imena, e-adrese ili uloge"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Prikaži detalje zavjeta ili uplate"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Upozorenja — upozorenja, greške i JS iznimke"
+
+#: 
+msgid "What is sent"
+msgstr "Što se šalje"
+
+#: 
+msgid "What we collect"
+msgstr "Što prikupljamo"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Želimo vam prekrasan %d. rođendan!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Želimo vam prekrasan rođendan!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Vaš račun nema e-mail adresu u evidenciji. Dodajte je svom profilu kako biste poslali test."
+
+#: 
+msgid "errors+"
+msgstr "greške+"
+
+#: 
+msgid "full only"
+msgstr "samo potpuno"
+
+#: 
+msgid "is thinking of you today."
+msgstr "misli na vas danas."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "rute stranica, aktivna lokalizacija, verzija CRM-a, PHP verzija, OS obitelj i nasumični ID instalacije. Ništa drugo. Podaci se pohranjuju u EU."
+

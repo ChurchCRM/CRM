@@ -17238,3 +17238,431 @@ msgstr "請在下方審查來自公開登記表單的新登記資料，沒有電
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "確認刪除義工機會"
 
+#: 
+msgid "# Payments"
+msgstr "# 奉獻款項"
+
+#: 
+msgid "# Pledges"
+msgstr "# 承諾奉獻"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "款項是實際收到的奉獻。它將被添加到所選的存款中。"
+
+#: 
+msgid "Add Fund"
+msgstr "新增基金"
+
+#: 
+msgid "Amount ($)"
+msgstr "金額（$）"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "金額超過允許的上限（999999.99）"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "儲存時發生錯誤，請再試一次。"
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "匿名遙測"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "匿名遙測級別。控制與 ChurchCRM 團隊共享多少匿名診斷資料。不會傳送任何教會名稱、會員資料或個人資訊。"
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "您確定要永久刪除此奉獻記錄嗎？"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "至少需要一個基金分配"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "至少一個基金必須有非零金額"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "在會員生日當天自動發送生日祝福電子郵件"
+
+#: 
+msgid "Back to Finance"
+msgstr "返回財務"
+
+#: 
+msgid "Back to Group"
+msgstr "返回小組"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "無法準備查詢。"
+
+#: 
+msgid "Catch JS errors"
+msgstr "捕獲 JS 錯誤"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "捕獲重複錯誤"
+
+#: 
+msgid "Check #"
+msgstr "支票號碼"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "教會名稱、地址或聯絡資訊"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM 版本"
+
+#: 
+msgid "Collection level"
+msgstr "收集級別"
+
+#: 
+msgid "Count unique installs"
+msgstr "計算唯一安裝次數"
+
+#: 
+msgid "Data"
+msgstr "資料"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "資料由 PostHog 在歐盟基礎設施上處理。"
+
+#: 
+msgid "Date is required"
+msgstr "日期為必填項"
+
+#: 
+msgid "Deleted successfully"
+msgstr "刪除成功"
+
+#: 
+msgid "Deposit #"
+msgstr "存款編號"
+
+#: 
+msgid "Deposit Slip"
+msgstr "存款單"
+
+#: 
+msgid "Edit Pledge"
+msgstr "編輯承諾奉獻"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "編輯現有承諾奉獻或款項"
+
+#: 
+msgid "Editing a Payment"
+msgstr "編輯奉獻款項"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "編輯承諾奉獻"
+
+#: 
+msgid "Enable (full)"
+msgstr "啟用（完整）"
+
+#: 
+msgid "Errors only"
+msgstr "僅錯誤"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "錯誤——伺服器錯誤及 JS 異常"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "建立承諾奉獻失敗"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "刪除承諾奉獻失敗"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "編碼款項回應失敗"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "擷取承諾奉獻失敗"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "更新承諾奉獻失敗"
+
+#: 
+msgid "Family is required"
+msgstr "家庭為必填項"
+
+#: 
+msgid "Financial data"
+msgstr "財務資料"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "完整——以上所有項目加上頁面瀏覽"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "完整——頁面瀏覽、警告、錯誤及 JS 異常"
+
+#: 
+msgid "Fund Summary"
+msgstr "基金摘要"
+
+#: 
+msgid "Group key is required"
+msgstr "小組鍵值為必填項"
+
+#: 
+msgid "Happy Birthday"
+msgstr "生日快樂"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "協助改善 ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "IP 位址"
+
+#: 
+msgid "Installation UUID"
+msgstr "安裝 UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "依基金的互動式承諾奉獻與款項摘要，支援排序、搜尋及匯出。"
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "內部：上次發送生日電子郵件的日期（YYYY-MM-DD）。請勿手動編輯。"
+
+#: 
+msgid "JS exceptions"
+msgstr "JS 異常"
+
+#: 
+msgid "Log level + message"
+msgstr "日誌級別＋訊息"
+
+#: 
+msgid "Member or family records"
+msgstr "會員或家庭記錄"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "修改此小組成員的角色"
+
+#: 
+msgid "Network error, please try again"
+msgstr "網路錯誤，請再試一次"
+
+#: 
+msgid "Never sent"
+msgstr "從未發送"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "無存款／建立新存款"
+
+#: 
+msgid "No pledge"
+msgstr "無承諾奉獻"
+
+#: 
+msgid "No thanks"
+msgstr "不，謝謝"
+
+#: 
+msgid "Non-Deductible"
+msgstr "不可扣稅"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "不可扣稅（$）"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "不可扣稅金額不能超過基金金額"
+
+#: 
+msgid "None (disabled)"
+msgstr "無（已停用）"
+
+#: 
+msgid "OS family"
+msgstr "作業系統類型"
+
+#: 
+msgid "Overpaid"
+msgstr "超額奉獻"
+
+#: 
+msgid "PHP version"
+msgstr "PHP 版本"
+
+#: 
+msgid "Page route"
+msgstr "頁面路由"
+
+#: 
+msgid "Payment Details"
+msgstr "款項詳情"
+
+#: 
+msgid "Payment Method"
+msgstr "付款方式"
+
+#: 
+msgid "Plan runtime support"
+msgstr "規劃執行時間支援"
+
+#: 
+msgid "Please enter a date"
+msgstr "請輸入日期"
+
+#: 
+msgid "Please select a family"
+msgstr "請選擇家庭"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "請為所有行選擇基金"
+
+#: 
+msgid "Pledge Details"
+msgstr "承諾奉獻詳情"
+
+#: 
+msgid "Pledge group not found"
+msgstr "找不到承諾奉獻群組"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "承諾奉獻與款項"
+
+#: 
+msgid "Prioritise translations"
+msgstr "優先翻譯"
+
+#: 
+msgid "Purpose"
+msgstr "用途"
+
+#: 
+msgid "Save and Add Another"
+msgstr "儲存並新增另一筆"
+
+#: 
+msgid "Save failed"
+msgstr "儲存失敗"
+
+#: 
+msgid "Saved successfully"
+msgstr "儲存成功"
+
+#: 
+msgid "Select a fund"
+msgstr "選擇基金"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "向自己發送測試生日電子郵件"
+
+#: 
+msgid "Sending to"
+msgstr "發送至"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "與 ChurchCRM 團隊分享匿名使用統計資料，以便我們了解優先開發哪些功能和語言。不會傳送任何教會名稱、會員資料或個人資訊。"
+
+#: 
+msgid "Test email sent to"
+msgstr "測試電子郵件已發送至"
+
+#: 
+msgid "Track adoption"
+msgstr "追蹤採用情況"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "類型必須為「承諾奉獻」或「款項」"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "含查詢字串的 URL（記錄 ID 已移除）"
+
+#: 
+msgid "Underpaid"
+msgstr "奉獻不足"
+
+#: 
+msgid "Understand deployments"
+msgstr "了解部署情況"
+
+#: 
+msgid "Understand feature usage"
+msgstr "了解功能使用情況"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "使用者名稱、電子郵件或角色"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "查看承諾奉獻或款項詳情"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "警告——警告、錯誤及 JS 異常"
+
+#: 
+msgid "What is sent"
+msgstr "發送的內容"
+
+#: 
+msgid "What we collect"
+msgstr "我們收集的資料"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "祝您 %d 歲生日快樂！"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "祝您生日快樂！"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "您的帳號尚未設定電子郵件地址。請在個人資料中新增電子郵件以發送測試。"
+
+#: 
+msgid "errors+"
+msgstr "錯誤＋"
+
+#: 
+msgid "full only"
+msgstr "僅完整"
+
+#: 
+msgid "is thinking of you today."
+msgstr "今天想到了您。"
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "頁面路由、使用中的語言、CRM 版本、PHP 版本、作業系統類型及隨機安裝 ID。不包含其他資訊。資料儲存於歐盟。"
+

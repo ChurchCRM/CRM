@@ -17119,3 +17119,431 @@ msgstr "ከታች ያለውን የህዝብ ምዝገባ ቅጽዎ አዲስ ተ
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "የበጎ ፈቃደኝነት እድል ሰርዛ ማረጋገጫ"
 
+#: 
+msgid "# Payments"
+msgstr "# ክፍያዎች"
+
+#: 
+msgid "# Pledges"
+msgstr "# ቃል-ኪዳኖች"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "ክፍያ ማለት የተቀበሉት ትክክለኛ ስጦታ ነው። ወደ ተመረጠው ተቀማጭ ይጨምራል።"
+
+#: 
+msgid "Add Fund"
+msgstr "ፈንድ አክል"
+
+#: 
+msgid "Amount ($)"
+msgstr "መጠን ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "መጠኑ ከፍተኛውን ወሰን አልፏል (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "በማስቀመጥ ጊዜ ስህተት ተከስቷል። እባክዎ እንደገና ሞክሩ።"
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "ስም-አልባ ቴሌሜትሪ"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "ስም-አልባ የቴሌሜትሪ ደረጃ። ምን ያህል ስም-አልባ የምርመራ ዳታ ከChurchCRM ቡድን ጋር እንደሚጋራ ይቆጣጠራል። የቤተ-ክርስቲያን ስሞች፣ የአባላት ዳታ ወይም የግል መረጃ ፈጽሞ አይላክም።"
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "ይህን የክፍያ መዝገብ እስከመጨረሻ ለመሰረዝ እርግጠኛ ነዎት?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "ቢያንስ አንድ የፈንድ ክፍፍል ያስፈልጋል"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "ቢያንስ አንድ ፈንድ ዜሮ ያልሆነ መጠን ሊኖረው ይገባል"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "በልደት ቀናቸው ለሰዎች ራስ-ሰር የልደት ቀን መልዕክት ኢሜይል ላክ"
+
+#: 
+msgid "Back to Finance"
+msgstr "ወደ ፋይናንስ ተመለስ"
+
+#: 
+msgid "Back to Group"
+msgstr "ወደ ቡድን ተመለስ"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "ጥያቄን ማዘጋጀት አልተቻለም።"
+
+#: 
+msgid "Catch JS errors"
+msgstr "የ JS ስህተቶችን ያዝ"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "ተደጋጋሚ ስህተቶችን ያዝ"
+
+#: 
+msgid "Check #"
+msgstr "ቼክ #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "የቤተ-ክርስቲያን ስም፣ አድራሻ ወይም የዕውቂያ ዝርዝሮች"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM ስሪት"
+
+#: 
+msgid "Collection level"
+msgstr "የስብስብ ደረጃ"
+
+#: 
+msgid "Count unique installs"
+msgstr "ልዩ ጭነቶችን ቁጠር"
+
+#: 
+msgid "Data"
+msgstr "ዳታ"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "ዳታው በEU መሠረተ-ልማት ላይ በPostHog ይሰናዳል።"
+
+#: 
+msgid "Date is required"
+msgstr "ቀን ያስፈልጋል"
+
+#: 
+msgid "Deleted successfully"
+msgstr "በተሳካ ሁኔታ ተሰርዟል"
+
+#: 
+msgid "Deposit #"
+msgstr "ተቀማጭ #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "የተቀማጭ ደረሰኝ"
+
+#: 
+msgid "Edit Pledge"
+msgstr "ቃል-ኪዳን አርትዕ"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "ያለውን ቃል-ኪዳን ወይም ክፍያ አርትዕ"
+
+#: 
+msgid "Editing a Payment"
+msgstr "ክፍያ በማርትዕ ላይ"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "ቃል-ኪዳን በማርትዕ ላይ"
+
+#: 
+msgid "Enable (full)"
+msgstr "አንቃ (ሙሉ)"
+
+#: 
+msgid "Errors only"
+msgstr "ስህተቶች ብቻ"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "ስህተቶች — የሰርቨር ስህተቶች እና የ JS ልዩ ሁኔታዎች"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "ቃል-ኪዳን መፍጠር አልተሳካም"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "ቃል-ኪዳን መሰረዝ አልተሳካም"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "የክፍያ ምላሽ ኢንኮድ ማድረግ አልተሳካም"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "ቃል-ኪዳን ማምጣት አልተሳካም"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "ቃል-ኪዳን ማዘመን አልተሳካም"
+
+#: 
+msgid "Family is required"
+msgstr "ቤተሰብ ያስፈልጋል"
+
+#: 
+msgid "Financial data"
+msgstr "የፋይናንስ ዳታ"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "ሙሉ — ከላይ ያሉት ሁሉ እና የገጽ እይታዎች"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "ሙሉ — የገጽ እይታዎች፣ ማስጠንቀቂያዎች፣ ስህተቶች እና የ JS ልዩ ሁኔታዎች"
+
+#: 
+msgid "Fund Summary"
+msgstr "የፈንድ ማጠቃለያ"
+
+#: 
+msgid "Group key is required"
+msgstr "የቡድን ቁልፍ ያስፈልጋል"
+
+#: 
+msgid "Happy Birthday"
+msgstr "መልካም የልደት ቀን"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ChurchCRM ማሻሻል ላይ ይሳተፉ"
+
+#: 
+msgid "IP addresses"
+msgstr "IP አድራሻዎች"
+
+#: 
+msgid "Installation UUID"
+msgstr "የጭነት UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "በፈንድ ደረጃ ቃል-ኪዳን ከክፍያ ጋር ያለ መስተጋብራዊ ማጠቃለያ፣ ከደርደር፣ ፈልጎ-ማግኛ እና ወደ-ውጭ-ልኬት ጋር።"
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "ውስጣዊ፡ የልደት ቀን ኢሜይሎች የተላኩበት የመጨረሻ ቀን (YYYY-MM-DD)። እጅ-በእጅ አይቀይሩ።"
+
+#: 
+msgid "JS exceptions"
+msgstr "የ JS ልዩ ሁኔታዎች"
+
+#: 
+msgid "Log level + message"
+msgstr "የምዝገባ ደረጃ + መልዕክት"
+
+#: 
+msgid "Member or family records"
+msgstr "የአባል ወይም የቤተሰብ መዝገቦች"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "ለዚህ የቡድን አባል ሚና ቀይር"
+
+#: 
+msgid "Network error, please try again"
+msgstr "የአውታረ-መረብ ስህተት፣ እባክዎ እንደገና ሞክሩ"
+
+#: 
+msgid "Never sent"
+msgstr "ፈጽሞ አልተላከም"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "ተቀማጭ የለም / አዲስ ተቀማጭ ፍጠር"
+
+#: 
+msgid "No pledge"
+msgstr "ቃል-ኪዳን የለም"
+
+#: 
+msgid "No thanks"
+msgstr "አይ፣ አመሰግናለሁ"
+
+#: 
+msgid "Non-Deductible"
+msgstr "ተቀናሽ-የማይደረግ"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "ተቀናሽ-የማይደረግ ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "ተቀናሽ-የማይደረገው መጠን የፈንዱን መጠን ሊያልፍ አይችልም"
+
+#: 
+msgid "None (disabled)"
+msgstr "ምንም (ተሰናክሏል)"
+
+#: 
+msgid "OS family"
+msgstr "የOS ቤተሰብ"
+
+#: 
+msgid "Overpaid"
+msgstr "በልጦ የተከፈለ"
+
+#: 
+msgid "PHP version"
+msgstr "PHP ስሪት"
+
+#: 
+msgid "Page route"
+msgstr "የገጽ መስመር"
+
+#: 
+msgid "Payment Details"
+msgstr "የክፍያ ዝርዝሮች"
+
+#: 
+msgid "Payment Method"
+msgstr "የክፍያ ዘዴ"
+
+#: 
+msgid "Plan runtime support"
+msgstr "የፕላን የሩጫ ጊዜ ድጋፍ"
+
+#: 
+msgid "Please enter a date"
+msgstr "እባክዎ ቀን ያስገቡ"
+
+#: 
+msgid "Please select a family"
+msgstr "እባክዎ ቤተሰብ ይምረጡ"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "እባክዎ ለሁሉም ረድፎች ፈንድ ይምረጡ"
+
+#: 
+msgid "Pledge Details"
+msgstr "የቃል-ኪዳን ዝርዝሮች"
+
+#: 
+msgid "Pledge group not found"
+msgstr "የቃል-ኪዳን ቡድን አልተገኘም"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "ቃል-ኪዳኖች እና ክፍያዎች"
+
+#: 
+msgid "Prioritise translations"
+msgstr "ትርጉሞችን ቅደምተከተል ስጥ"
+
+#: 
+msgid "Purpose"
+msgstr "ዓላማ"
+
+#: 
+msgid "Save and Add Another"
+msgstr "አስቀምጥ እና ሌላ አክል"
+
+#: 
+msgid "Save failed"
+msgstr "ማስቀመጥ አልተሳካም"
+
+#: 
+msgid "Saved successfully"
+msgstr "በተሳካ ሁኔታ ተቀምጧል"
+
+#: 
+msgid "Select a fund"
+msgstr "ፈንድ ይምረጡ"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "ለራሴ የሙከራ የልደት ቀን ኢሜይል ላክ"
+
+#: 
+msgid "Sending to"
+msgstr "ወደ እየላከ ነው"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "የትኞቹን ባህሪያት እና ቋንቋዎች ቅደምተከተል ማስያዝ እንዳለብን ለማወቅ ስም-አልባ የአጠቃቀም ስታቲስቲክስን ከChurchCRM ቡድን ጋር ያጋሩ። የቤተ-ክርስቲያን ስሞች፣ የአባላት ዳታ ወይም የግል መረጃ ፈጽሞ አይላክም።"
+
+#: 
+msgid "Test email sent to"
+msgstr "የሙከራ ኢሜይል ተልኳል ወደ"
+
+#: 
+msgid "Track adoption"
+msgstr "ተቀባይነት ክትትል ያድርጉ"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "አይነቱ 'Pledge' ወይም 'Payment' መሆን አለበት"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "ከጥያቄ ሕብረቁምፊዎች ጋር URLs (የመዝገብ IDዎች ይወገዳሉ)"
+
+#: 
+msgid "Underpaid"
+msgstr "ያነሰ የተከፈለ"
+
+#: 
+msgid "Understand deployments"
+msgstr "ሰፈራዎችን ተረዱ"
+
+#: 
+msgid "Understand feature usage"
+msgstr "የባህሪ አጠቃቀምን ተረዱ"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "የተጠቃሚ ስሞች፣ ኢሜይሎች ወይም ሚናዎች"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "የቃል-ኪዳን ወይም የክፍያ ዝርዝሮች ይመልከቱ"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "ማስጠንቀቂያዎች — ማስጠንቀቂያዎች፣ ስህተቶች እና የ JS ልዩ ሁኔታዎች"
+
+#: 
+msgid "What is sent"
+msgstr "ምን እንደሚላክ"
+
+#: 
+msgid "What we collect"
+msgstr "ምን እንሰበስባለን"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "መልካም %d ዓመት የልደት ቀን!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "መልካም የልደት ቀን እንዲሆንልዎ እምኛለን!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "መለያዎ ምንም ኢሜይል አድራሻ የለውም። ሙከራ ለመላክ ወደ መገለጫዎ አንድ ያክሉ።"
+
+#: 
+msgid "errors+"
+msgstr "ስህተቶች+"
+
+#: 
+msgid "full only"
+msgstr "ሙሉ ብቻ"
+
+#: 
+msgid "is thinking of you today."
+msgstr "ዛሬ ስለ እርስዎ እያሰበ ነው።"
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "የገጽ መስመሮች፣ ንቁ ቋንቋ፣ CRM ስሪት፣ PHP ስሪት፣ የOS ቤተሰብ እና የዘፈቀደ የጭነት ID። ሌላ ምንም አይደለም። ዳታ በEU ውስጥ ይቀመጣል።"
+
