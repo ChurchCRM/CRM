@@ -17111,3 +17111,431 @@ msgstr "Ελέγξτε παρακάτω τις νέες εγγραφές από 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Επιβεβαίωση Διαγραφής Θέσης Εθελοντισμού"
 
+#: 
+msgid "# Payments"
+msgstr "# Προσφορές"
+
+#: 
+msgid "# Pledges"
+msgstr "# Υποσχέσεις"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Μια προσφορά είναι μια πραγματική δωρεά που ελήφθη. Θα προστεθεί στην επιλεγμένη κατάθεση."
+
+#: 
+msgid "Add Fund"
+msgstr "Προσθήκη Ταμείου"
+
+#: 
+msgid "Amount ($)"
+msgstr "Ποσό ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Το ποσό υπερβαίνει το μέγιστο επιτρεπόμενο (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Ανώνυμη Τηλεμετρία"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Επίπεδο ανώνυμης τηλεμετρίας. Ελέγχει πόσα ανώνυμα διαγνωστικά δεδομένα κοινοποιούνται στην ομάδα ChurchCRM. Δεν αποστέλλονται ποτέ ονόματα εκκλησιών, δεδομένα μελών ή προσωπικές πληροφορίες."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτή την εγγραφή προσφοράς;"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Απαιτείται τουλάχιστον μία κατανομή ταμείου"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Τουλάχιστον ένα ταμείο πρέπει να έχει μη μηδενικό ποσό"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Αυτόματη αποστολή μηνύματος γενεθλίων στα άτομα κατά την ημέρα των γενεθλίων τους"
+
+#: 
+msgid "Back to Finance"
+msgstr "Επιστροφή στα Οικονομικά"
+
+#: 
+msgid "Back to Group"
+msgstr "Επιστροφή στην Ομάδα"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Αδύνατη η προετοιμασία ερωτήματος."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Καταγραφή σφαλμάτων JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Καταγραφή επαναλαμβανόμενων σφαλμάτων"
+
+#: 
+msgid "Check #"
+msgstr "Αριθμός Επιταγής #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Όνομα ενορίας, διεύθυνση ή στοιχεία επικοινωνίας"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Έκδοση ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Επίπεδο συλλογής"
+
+#: 
+msgid "Count unique installs"
+msgstr "Καταμέτρηση μοναδικών εγκαταστάσεων"
+
+#: 
+msgid "Data"
+msgstr "Δεδομένα"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Τα δεδομένα επεξεργάζονται από την PostHog σε υποδομή της ΕΕ."
+
+#: 
+msgid "Date is required"
+msgstr "Η ημερομηνία είναι υποχρεωτική"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Διαγράφηκε επιτυχώς"
+
+#: 
+msgid "Deposit #"
+msgstr "Κατάθεση #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Απόδειξη Κατάθεσης"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Επεξεργασία Υπόσχεσης"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Επεξεργασία υπάρχουσας υπόσχεσης ή προσφοράς"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Επεξεργασία Προσφοράς"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Επεξεργασία Υπόσχεσης"
+
+#: 
+msgid "Enable (full)"
+msgstr "Ενεργοποίηση (πλήρης)"
+
+#: 
+msgid "Errors only"
+msgstr "Μόνο σφάλματα"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Σφάλματα — σφάλματα διακομιστή και εξαιρέσεις JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Αποτυχία δημιουργίας υπόσχεσης"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Αποτυχία διαγραφής υπόσχεσης"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Αποτυχία κωδικοποίησης απόκρισης προσφοράς"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Αποτυχία ανάκτησης υπόσχεσης"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Αποτυχία ενημέρωσης υπόσχεσης"
+
+#: 
+msgid "Family is required"
+msgstr "Η οικογένεια είναι υποχρεωτική"
+
+#: 
+msgid "Financial data"
+msgstr "Οικονομικά δεδομένα"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Πλήρης — όλα τα παραπάνω συν προβολές σελίδων"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Πλήρης — προβολές σελίδων, προειδοποιήσεις, σφάλματα και εξαιρέσεις JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Σύνοψη Ταμείου"
+
+#: 
+msgid "Group key is required"
+msgstr "Το κλειδί ομάδας είναι υποχρεωτικό"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Χρόνια Πολλά"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Βοηθήστε στη βελτίωση του ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Διευθύνσεις IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID Εγκατάστασης"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Διαδραστική σύνοψη υποσχέσεων έναντι προσφορών ανά ταμείο με ταξινόμηση, αναζήτηση και εξαγωγή."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Εσωτερικό: τελευταία ημερομηνία αποστολής email γενεθλίων (YYYY-MM-DD). Μην επεξεργαστείτε χειροκίνητα."
+
+#: 
+msgid "JS exceptions"
+msgstr "Εξαιρέσεις JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Επίπεδο καταγραφής + μήνυμα"
+
+#: 
+msgid "Member or family records"
+msgstr "Εγγραφές μελών ή οικογενειών"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Τροποποίηση ρόλου για αυτό το μέλος της ομάδας"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Σφάλμα δικτύου, παρακαλώ δοκιμάστε ξανά"
+
+#: 
+msgid "Never sent"
+msgstr "Δεν εστάλη ποτέ"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Χωρίς κατάθεση / δημιουργία νέας κατάθεσης"
+
+#: 
+msgid "No pledge"
+msgstr "Χωρίς υπόσχεση"
+
+#: 
+msgid "No thanks"
+msgstr "Όχι, ευχαριστώ"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Μη Εκπεστέο"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Μη Εκπεστέο ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Το μη εκπεστέο ποσό δεν μπορεί να υπερβαίνει το ποσό του ταμείου"
+
+#: 
+msgid "None (disabled)"
+msgstr "Κανένα (απενεργοποιημένο)"
+
+#: 
+msgid "OS family"
+msgstr "Οικογένεια ΛΣ"
+
+#: 
+msgid "Overpaid"
+msgstr "Υπερπληρωμή"
+
+#: 
+msgid "PHP version"
+msgstr "Έκδοση PHP"
+
+#: 
+msgid "Page route"
+msgstr "Διαδρομή σελίδας"
+
+#: 
+msgid "Payment Details"
+msgstr "Λεπτομέρειες Προσφοράς"
+
+#: 
+msgid "Payment Method"
+msgstr "Μέθοδος Πληρωμής"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Προγραμματισμός υποστήριξης χρόνου εκτέλεσης"
+
+#: 
+msgid "Please enter a date"
+msgstr "Παρακαλώ εισάγετε μια ημερομηνία"
+
+#: 
+msgid "Please select a family"
+msgstr "Παρακαλώ επιλέξτε οικογένεια"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Παρακαλώ επιλέξτε ταμείο για όλες τις γραμμές"
+
+#: 
+msgid "Pledge Details"
+msgstr "Λεπτομέρειες Υπόσχεσης"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Η ομάδα υποσχέσεων δεν βρέθηκε"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Υποσχέσεις & Προσφορές"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Προτεραιότητα μεταφράσεων"
+
+#: 
+msgid "Purpose"
+msgstr "Σκοπός"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Αποθήκευση και Προσθήκη Άλλου"
+
+#: 
+msgid "Save failed"
+msgstr "Αποτυχία αποθήκευσης"
+
+#: 
+msgid "Saved successfully"
+msgstr "Αποθηκεύτηκε επιτυχώς"
+
+#: 
+msgid "Select a fund"
+msgstr "Επιλέξτε ταμείο"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Αποστολή Δοκιμαστικού Email Γενεθλίων στον Εαυτό μου"
+
+#: 
+msgid "Sending to"
+msgstr "Αποστολή σε"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Κοινοποιήστε ανώνυμα στατιστικά χρήσης με την ομάδα ChurchCRM ώστε να γνωρίζουμε ποιες λειτουργίες και γλώσσες να προτεραιοποιήσουμε. Δεν αποστέλλονται ποτέ ονόματα εκκλησιών, δεδομένα μελών ή προσωπικές πληροφορίες."
+
+#: 
+msgid "Test email sent to"
+msgstr "Δοκιμαστικό email εστάλη σε"
+
+#: 
+msgid "Track adoption"
+msgstr "Παρακολούθηση υιοθέτησης"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Ο τύπος πρέπει να είναι «Υπόσχεση» ή «Προσφορά»"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URLs με συμβολοσειρές ερωτήματος (τα αναγνωριστικά εγγραφών αφαιρούνται)"
+
+#: 
+msgid "Underpaid"
+msgstr "Υποπληρωμή"
+
+#: 
+msgid "Understand deployments"
+msgstr "Κατανόηση αναπτύξεων"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Κατανόηση χρήσης λειτουργιών"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Ονόματα χρηστών, email ή ρόλοι"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Προβολή λεπτομερειών υπόσχεσης ή προσφοράς"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Προειδοποιήσεις — προειδοποιήσεις, σφάλματα και εξαιρέσεις JS"
+
+#: 
+msgid "What is sent"
+msgstr "Τι αποστέλλεται"
+
+#: 
+msgid "What we collect"
+msgstr "Τι συλλέγουμε"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Σας ευχόμαστε χρόνια πολλά για τα %d σας χρόνια!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Σας ευχόμαστε χρόνια πολλά!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Ο λογαριασμός σας δεν έχει καταχωρημένη διεύθυνση email. Προσθέστε μία στο προφίλ σας για να στείλετε δοκιμή."
+
+#: 
+msgid "errors+"
+msgstr "σφάλματα+"
+
+#: 
+msgid "full only"
+msgstr "μόνο πλήρης"
+
+#: 
+msgid "is thinking of you today."
+msgstr "σας σκέφτεται σήμερα."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "διαδρομές σελίδων, ενεργή γλώσσα, έκδοση CRM, έκδοση PHP, οικογένεια ΛΣ και τυχαίο αναγνωριστικό εγκατάστασης. Τίποτα άλλο. Τα δεδομένα αποθηκεύονται στην ΕΕ."
+

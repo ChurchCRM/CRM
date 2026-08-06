@@ -17154,3 +17154,431 @@ msgstr "راجع التسجيلات الجديدة من نموذج التسجي�
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "تأكيد حذف فرصة التطوع"
 
+#: 
+msgid "# Payments"
+msgstr "# المدفوعات"
+
+#: 
+msgid "# Pledges"
+msgstr "# التعهدات"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "الدفعة هي تبرع فعلي مستلم. سيتم إضافتها إلى الإيداع المحدد."
+
+#: 
+msgid "Add Fund"
+msgstr "إضافة صندوق"
+
+#: 
+msgid "Amount ($)"
+msgstr "المبلغ ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "المبلغ يتجاوز الحد الأقصى المسموح به (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "حدث خطأ أثناء الحفظ. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "القياس عن بُعد المجهول"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "مستوى القياس عن بُعد المجهول. يتحكم في مقدار البيانات التشخيصية المجهولة المشتركة مع فريق ChurchCRM. لا يتم إرسال أسماء الكنائس أو بيانات الأعضاء أو المعلومات الشخصية أبدًا."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "هل أنت متأكد أنك تريد حذف سجل الدفعة هذا نهائيًا؟"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "مطلوب تخصيص صندوق واحد على الأقل"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "يجب أن يكون لصندوق واحد على الأقل مبلغ غير صفري"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "إرسال رسالة تهنئة بعيد الميلاد تلقائيًا إلى الأشخاص في أيام ميلادهم"
+
+#: 
+msgid "Back to Finance"
+msgstr "العودة إلى المالية"
+
+#: 
+msgid "Back to Group"
+msgstr "العودة إلى المجموعة"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "تعذّر تحضير الاستعلام."
+
+#: 
+msgid "Catch JS errors"
+msgstr "التقاط أخطاء JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "التقاط الأخطاء المتكررة"
+
+#: 
+msgid "Check #"
+msgstr "رقم الشيك"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "اسم الكنيسة أو العنوان أو تفاصيل الاتصال"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "إصدار ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "مستوى الجمع"
+
+#: 
+msgid "Count unique installs"
+msgstr "احتساب التثبيتات الفريدة"
+
+#: 
+msgid "Data"
+msgstr "البيانات"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "تتم معالجة البيانات بواسطة PostHog على البنية التحتية للاتحاد الأوروبي."
+
+#: 
+msgid "Date is required"
+msgstr "التاريخ مطلوب"
+
+#: 
+msgid "Deleted successfully"
+msgstr "تم الحذف بنجاح"
+
+#: 
+msgid "Deposit #"
+msgstr "رقم الإيداع"
+
+#: 
+msgid "Deposit Slip"
+msgstr "إيصال الإيداع"
+
+#: 
+msgid "Edit Pledge"
+msgstr "تعديل التعهد"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "تعديل تعهد أو دفعة موجودة"
+
+#: 
+msgid "Editing a Payment"
+msgstr "تعديل دفعة"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "تعديل تعهد"
+
+#: 
+msgid "Enable (full)"
+msgstr "تفعيل (كامل)"
+
+#: 
+msgid "Errors only"
+msgstr "الأخطاء فقط"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "الأخطاء — أخطاء الخادم واستثناءات JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "فشل في إنشاء التعهد"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "فشل في حذف التعهد"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "فشل في ترميز استجابة الدفعة"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "فشل في استرداد التعهد"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "فشل في تحديث التعهد"
+
+#: 
+msgid "Family is required"
+msgstr "العائلة مطلوبة"
+
+#: 
+msgid "Financial data"
+msgstr "البيانات المالية"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "كامل — كل ما سبق بالإضافة إلى مشاهدات الصفحة"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "كامل — مشاهدات الصفحة والتحذيرات والأخطاء واستثناءات JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "ملخص الصندوق"
+
+#: 
+msgid "Group key is required"
+msgstr "مفتاح المجموعة مطلوب"
+
+#: 
+msgid "Happy Birthday"
+msgstr "عيد ميلاد سعيد"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ساعد في تحسين ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "عناوين IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "معرّف التثبيت UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "ملخص تفاعلي للتعهدات مقابل المدفوعات حسب الصندوق مع الفرز والبحث والتصدير."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "داخلي: آخر تاريخ تم إرسال رسائل أعياد الميلاد فيه (YYYY-MM-DD). لا تعدّل يدويًا."
+
+#: 
+msgid "JS exceptions"
+msgstr "استثناءات JS"
+
+#: 
+msgid "Log level + message"
+msgstr "مستوى السجل + الرسالة"
+
+#: 
+msgid "Member or family records"
+msgstr "سجلات الأعضاء أو العائلات"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "تعديل دور هذا العضو في المجموعة"
+
+#: 
+msgid "Network error, please try again"
+msgstr "خطأ في الشبكة، يرجى المحاولة مرة أخرى"
+
+#: 
+msgid "Never sent"
+msgstr "لم يُرسَل قط"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "بدون إيداع / إنشاء إيداع جديد"
+
+#: 
+msgid "No pledge"
+msgstr "لا يوجد تعهد"
+
+#: 
+msgid "No thanks"
+msgstr "لا شكرًا"
+
+#: 
+msgid "Non-Deductible"
+msgstr "غير قابل للخصم"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "غير قابل للخصم ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "لا يمكن أن يتجاوز المبلغ غير القابل للخصم مبلغ الصندوق"
+
+#: 
+msgid "None (disabled)"
+msgstr "لا شيء (معطّل)"
+
+#: 
+msgid "OS family"
+msgstr "عائلة نظام التشغيل"
+
+#: 
+msgid "Overpaid"
+msgstr "دُفع أكثر من المطلوب"
+
+#: 
+msgid "PHP version"
+msgstr "إصدار PHP"
+
+#: 
+msgid "Page route"
+msgstr "مسار الصفحة"
+
+#: 
+msgid "Payment Details"
+msgstr "تفاصيل الدفعة"
+
+#: 
+msgid "Payment Method"
+msgstr "طريقة الدفع"
+
+#: 
+msgid "Plan runtime support"
+msgstr "دعم وقت تشغيل الخطة"
+
+#: 
+msgid "Please enter a date"
+msgstr "يرجى إدخال تاريخ"
+
+#: 
+msgid "Please select a family"
+msgstr "يرجى اختيار عائلة"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "يرجى اختيار صندوق لجميع الصفوف"
+
+#: 
+msgid "Pledge Details"
+msgstr "تفاصيل التعهد"
+
+#: 
+msgid "Pledge group not found"
+msgstr "مجموعة التعهدات غير موجودة"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "التعهدات والمدفوعات"
+
+#: 
+msgid "Prioritise translations"
+msgstr "إعطاء الأولوية للترجمات"
+
+#: 
+msgid "Purpose"
+msgstr "الغرض"
+
+#: 
+msgid "Save and Add Another"
+msgstr "حفظ وإضافة آخر"
+
+#: 
+msgid "Save failed"
+msgstr "فشل الحفظ"
+
+#: 
+msgid "Saved successfully"
+msgstr "تم الحفظ بنجاح"
+
+#: 
+msgid "Select a fund"
+msgstr "اختر صندوقًا"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "إرسال رسالة تهنئة بعيد الميلاد تجريبية إلى نفسي"
+
+#: 
+msgid "Sending to"
+msgstr "إرسال إلى"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "شارك إحصائيات الاستخدام المجهولة مع فريق ChurchCRM حتى نعرف الميزات واللغات التي نُعطيها الأولوية. لا يتم إرسال أسماء الكنائس أو بيانات الأعضاء أو المعلومات الشخصية أبدًا."
+
+#: 
+msgid "Test email sent to"
+msgstr "تم إرسال رسالة اختبار إلى"
+
+#: 
+msgid "Track adoption"
+msgstr "تتبع الاعتماد"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "يجب أن يكون النوع 'تعهد' أو 'دفعة'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "روابط URL مع سلاسل الاستعلام (يتم إزالة معرفات السجلات)"
+
+#: 
+msgid "Underpaid"
+msgstr "دُفع أقل من المطلوب"
+
+#: 
+msgid "Understand deployments"
+msgstr "فهم عمليات النشر"
+
+#: 
+msgid "Understand feature usage"
+msgstr "فهم استخدام الميزات"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "أسماء المستخدمين أو البريد الإلكتروني أو الأدوار"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "عرض تفاصيل التعهد أو الدفعة"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "التحذيرات — التحذيرات والأخطاء واستثناءات JS"
+
+#: 
+msgid "What is sent"
+msgstr "ما الذي يُرسَل"
+
+#: 
+msgid "What we collect"
+msgstr "ما الذي نجمعه"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "نتمنى لك عيد ميلاد رائع في عامك الـ %d!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "نتمنى لك عيد ميلاد رائع!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "لا يوجد عنوان بريد إلكتروني مسجّل في حسابك. أضف عنوانًا إلى ملفك الشخصي لإرسال رسالة اختبار."
+
+#: 
+msgid "errors+"
+msgstr "أخطاء+"
+
+#: 
+msgid "full only"
+msgstr "كامل فقط"
+
+#: 
+msgid "is thinking of you today."
+msgstr "يفكر فيك اليوم."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "مسارات الصفحة واللغة النشطة وإصدار CRM وإصدار PHP وعائلة نظام التشغيل ومعرّف تثبيت عشوائي. لا شيء آخر. تُخزَّن البيانات في الاتحاد الأوروبي."
+

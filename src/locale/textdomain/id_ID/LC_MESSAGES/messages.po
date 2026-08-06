@@ -17092,3 +17092,427 @@ msgstr "Tinjau pendaftaran baru dari formulir pendaftaran publik Anda di bawah i
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Konfirmasi Penghapusan Kesempatan Sukarela"
 
+#: 
+msgid "# Payments"
+msgstr "# Pembayaran"
+
+#: 
+msgid "# Pledges"
+msgstr "# Janji Persembahan"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Pembayaran adalah donasi aktual yang diterima. Ini akan ditambahkan ke setoran yang dipilih."
+
+#: 
+msgid "Add Fund"
+msgstr "Tambah Dana"
+
+#: 
+msgid "Amount ($)"
+msgstr "Jumlah ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Jumlah melebihi batas maksimum yang diizinkan (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Terjadi kesalahan saat menyimpan. Silakan coba lagi."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Telemetri Anonim"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Tingkat telemetri anonim. Mengontrol seberapa banyak data diagnostik anonim yang dibagikan kepada tim ChurchCRM. Nama gereja, data jemaat, atau informasi pribadi tidak pernah dikirimkan."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Apakah Anda yakin ingin menghapus catatan pembayaran ini secara permanen?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Diperlukan setidaknya satu alokasi dana"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Setidaknya satu dana harus memiliki jumlah yang tidak nol"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Secara otomatis kirim email ucapan ulang tahun kepada jemaat pada hari ulang tahun mereka"
+
+#: 
+msgid "Back to Finance"
+msgstr "Kembali ke Keuangan"
+
+#: 
+msgid "Back to Group"
+msgstr "Kembali ke Kelompok"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Tidak dapat menyiapkan kueri."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Tangkap kesalahan JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Tangkap kesalahan berulang"
+
+#: 
+msgid "Check #"
+msgstr "No. Cek"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Nama gereja, alamat, atau detail kontak"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Versi ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Tingkat pengumpulan"
+
+#: 
+msgid "Count unique installs"
+msgstr "Hitung instalasi unik"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Data diproses oleh PostHog pada infrastruktur EU."
+
+#: 
+msgid "Date is required"
+msgstr "Tanggal wajib diisi"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Berhasil dihapus"
+
+#: 
+msgid "Deposit #"
+msgstr "No. Setoran"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Slip Setoran"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Edit Janji Persembahan"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Edit janji persembahan atau pembayaran yang ada"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Mengedit Pembayaran"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Mengedit Janji Persembahan"
+
+#: 
+msgid "Enable (full)"
+msgstr "Aktifkan (penuh)"
+
+#: 
+msgid "Errors only"
+msgstr "Hanya kesalahan"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Kesalahan — kesalahan server dan pengecualian JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Gagal membuat janji persembahan"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Gagal menghapus janji persembahan"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Gagal mengenkode respons pembayaran"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Gagal mengambil janji persembahan"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Gagal memperbarui janji persembahan"
+
+#: 
+msgid "Family is required"
+msgstr "Keluarga wajib dipilih"
+
+#: 
+msgid "Financial data"
+msgstr "Data keuangan"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Penuh — semua di atas ditambah kunjungan halaman"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Penuh — kunjungan halaman, peringatan, kesalahan, dan pengecualian JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Ringkasan Dana"
+
+#: 
+msgid "Group key is required"
+msgstr "Kunci kelompok wajib diisi"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Selamat Ulang Tahun"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Bantu tingkatkan ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Alamat IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID Instalasi"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Ringkasan interaktif janji persembahan vs pembayaran per dana dengan pengurutan, pencarian, dan ekspor."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Internal: tanggal terakhir email ulang tahun dikirim (YYYY-MM-DD). Jangan edit secara manual."
+
+#: 
+msgid "JS exceptions"
+msgstr "Pengecualian JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Tingkat log + pesan"
+
+#: 
+msgid "Member or family records"
+msgstr "Catatan jemaat atau keluarga"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Ubah peran untuk anggota kelompok ini"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Kesalahan jaringan, silakan coba lagi"
+
+#: 
+msgid "Never sent"
+msgstr "Belum pernah dikirim"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Tanpa setoran / buat setoran baru"
+
+#: 
+msgid "No pledge"
+msgstr "Tanpa janji persembahan"
+
+#: 
+msgid "No thanks"
+msgstr "Tidak, terima kasih"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Tidak Dapat Dikurangkan"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Tidak Dapat Dikurangkan ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Jumlah tidak dapat dikurangkan tidak boleh melebihi jumlah dana"
+
+#: 
+msgid "None (disabled)"
+msgstr "Tidak ada (dinonaktifkan)"
+
+#: 
+msgid "OS family"
+msgstr "Keluarga OS"
+
+#: 
+msgid "Overpaid"
+msgstr "Kelebihan Bayar"
+
+#: 
+msgid "PHP version"
+msgstr "Versi PHP"
+
+#: 
+msgid "Page route"
+msgstr "Rute halaman"
+
+#: 
+msgid "Payment Details"
+msgstr "Detail Pembayaran"
+
+#: 
+msgid "Payment Method"
+msgstr "Metode Pembayaran"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Rencanakan dukungan waktu proses"
+
+#: 
+msgid "Please enter a date"
+msgstr "Silakan masukkan tanggal"
+
+#: 
+msgid "Please select a family"
+msgstr "Silakan pilih keluarga"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Silakan pilih dana untuk semua baris"
+
+#: 
+msgid "Pledge Details"
+msgstr "Detail Janji Persembahan"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Grup janji persembahan tidak ditemukan"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Janji Persembahan & Pembayaran"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Prioritaskan terjemahan"
+
+#: 
+msgid "Purpose"
+msgstr "Tujuan"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Simpan dan Tambah Lagi"
+
+#: 
+msgid "Save failed"
+msgstr "Gagal menyimpan"
+
+#: 
+msgid "Saved successfully"
+msgstr "Berhasil disimpan"
+
+#: 
+msgid "Select a fund"
+msgstr "Pilih dana"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Kirim Email Ulang Tahun Percobaan ke Diri Sendiri"
+
+#: 
+msgid "Sending to"
+msgstr "Mengirim ke"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Bagikan statistik penggunaan anonim dengan tim ChurchCRM agar kami mengetahui fitur dan bahasa mana yang perlu diprioritaskan. Nama gereja, data jemaat, atau informasi pribadi tidak pernah dikirimkan."
+
+#: 
+msgid "Test email sent to"
+msgstr "Email percobaan dikirim ke"
+
+#: 
+msgid "Track adoption"
+msgstr "Lacak adopsi"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Tipe harus 'Pledge' atau 'Payment'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL dengan string kueri (ID rekaman dihapus)"
+
+#: 
+msgid "Underpaid"
+msgstr "Kekurangan Bayar"
+
+#: 
+msgid "Understand deployments"
+msgstr "Pahami penerapan"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Pahami penggunaan fitur"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Nama pengguna, email, atau peran"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Lihat detail janji persembahan atau pembayaran"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Peringatan — peringatan, kesalahan, dan pengecualian JS"
+
+#: 
+msgid "What is sent"
+msgstr "Apa yang dikirimkan"
+
+#: 
+msgid "What we collect"
+msgstr "Apa yang kami kumpulkan"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Selamat ulang tahun yang ke-%d yang luar biasa!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Selamat ulang tahun yang luar biasa!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Akun Anda tidak memiliki alamat email yang tersimpan. Tambahkan ke profil Anda untuk mengirim percobaan."
+
+#: 
+msgid "errors+"
+msgstr "kesalahan+"
+
+#: 
+msgid "full only"
+msgstr "penuh saja"
+
+#: 
+msgid "is thinking of you today."
+msgstr "sedang memikirkan Anda hari ini."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "rute halaman, lokal aktif, versi CRM, versi PHP, keluarga OS, dan ID instalasi acak. Tidak ada yang lain. Data disimpan di EU."
+

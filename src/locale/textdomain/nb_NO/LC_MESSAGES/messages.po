@@ -17180,3 +17180,427 @@ msgstr "Gjennomgå nye påmeldinger fra det offentlige registreringsskjemaet ned
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Bekreft sletting av frivilligoppgave"
 
+#: 
+msgid "# Payments"
+msgstr "# Betalinger"
+
+#: 
+msgid "# Pledges"
+msgstr "# Løfter"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "En betaling er en faktisk mottatt donasjon. Den vil bli lagt til det valgte innskuddet."
+
+#: 
+msgid "Add Fund"
+msgstr "Legg til fond"
+
+#: 
+msgid "Amount ($)"
+msgstr "Beløp ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Beløpet overskrider maksimalt tillatt (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Det oppstod en feil under lagring. Vennligst prøv igjen."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonym telemetri"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Anonymt telemetrinivå. Styrer hvor mye anonym diagnostikkdata som deles med ChurchCRM-teamet. Ingen menighetsnavnr, medlemsdata eller personlig informasjon sendes noen gang."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Er du sikker på at du vil slette denne betalingsposten permanent?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Minst én fondstildeling er påkrevd"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Minst ett fond må ha et beløp som ikke er null"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Send automatisk en bursdagshilsen på e-post til personer på bursdagen deres"
+
+#: 
+msgid "Back to Finance"
+msgstr "Tilbake til økonomi"
+
+#: 
+msgid "Back to Group"
+msgstr "Tilbake til gruppe"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Kan ikke klargjøre spørring."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Fang opp JS-feil"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Fang opp gjentakende feil"
+
+#: 
+msgid "Check #"
+msgstr "Sjekknr."
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Menighetsnavn, adresse eller kontaktopplysninger"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM-versjon"
+
+#: 
+msgid "Collection level"
+msgstr "Innsamlingsnivå"
+
+#: 
+msgid "Count unique installs"
+msgstr "Tell unike installasjoner"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Data behandles av PostHog på EU-infrastruktur."
+
+#: 
+msgid "Date is required"
+msgstr "Dato er påkrevd"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Slettet"
+
+#: 
+msgid "Deposit #"
+msgstr "Innskuddsnr."
+
+#: 
+msgid "Deposit Slip"
+msgstr "Innskuddskvittering"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Rediger løfte"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Rediger eksisterende løfte eller betaling"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Redigerer en betaling"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Redigerer et løfte"
+
+#: 
+msgid "Enable (full)"
+msgstr "Aktiver (full)"
+
+#: 
+msgid "Errors only"
+msgstr "Kun feil"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Feil — tjenerfeil og JS-unntak"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Kunne ikke opprette løfte"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Kunne ikke slette løfte"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Kunne ikke kode betalingsrespons"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Kunne ikke hente løfte"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Kunne ikke oppdatere løfte"
+
+#: 
+msgid "Family is required"
+msgstr "Familie er påkrevd"
+
+#: 
+msgid "Financial data"
+msgstr "Finansielle data"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Full — alt ovenfor pluss sidevisninger"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Full — sidevisninger, advarsler, feil og JS-unntak"
+
+#: 
+msgid "Fund Summary"
+msgstr "Fondssammendrag"
+
+#: 
+msgid "Group key is required"
+msgstr "Gruppenøkkel er påkrevd"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Gratulerer med dagen"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Hjelp med å forbedre ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "IP-adresser"
+
+#: 
+msgid "Installation UUID"
+msgstr "Installasjons-UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktivt sammendrag av løfter vs. betalinger per fond med sortering, søk og eksport."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Internt: siste dato bursdags-e-poster ble sendt (ÅÅÅÅ-MM-DD). Ikke rediger manuelt."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS-unntak"
+
+#: 
+msgid "Log level + message"
+msgstr "Loggnivå + melding"
+
+#: 
+msgid "Member or family records"
+msgstr "Medlems- eller familieoppføringer"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Endre rollen for dette gruppemedlemmet"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Nettverksfeil, vennligst prøv igjen"
+
+#: 
+msgid "Never sent"
+msgstr "Aldri sendt"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Intet innskudd / opprett nytt innskudd"
+
+#: 
+msgid "No pledge"
+msgstr "Intet løfte"
+
+#: 
+msgid "No thanks"
+msgstr "Nei takk"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Ikke fradragsberettiget"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Ikke fradragsberettiget ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Ikke-fradragsberettiget beløp kan ikke overstige fondsbeløpet"
+
+#: 
+msgid "None (disabled)"
+msgstr "Ingen (deaktivert)"
+
+#: 
+msgid "OS family"
+msgstr "OS-familie"
+
+#: 
+msgid "Overpaid"
+msgstr "Overbetalt"
+
+#: 
+msgid "PHP version"
+msgstr "PHP-versjon"
+
+#: 
+msgid "Page route"
+msgstr "Siderute"
+
+#: 
+msgid "Payment Details"
+msgstr "Betalingsdetaljer"
+
+#: 
+msgid "Payment Method"
+msgstr "Betalingsmetode"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Planlegg kjøretidsstøtte"
+
+#: 
+msgid "Please enter a date"
+msgstr "Vennligst angi en dato"
+
+#: 
+msgid "Please select a family"
+msgstr "Vennligst velg en familie"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Vennligst velg et fond for alle rader"
+
+#: 
+msgid "Pledge Details"
+msgstr "Løftedetaljer"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Løftegruppe ikke funnet"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Løfter og betalinger"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Prioriter oversettelser"
+
+#: 
+msgid "Purpose"
+msgstr "Formål"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Lagre og legg til ny"
+
+#: 
+msgid "Save failed"
+msgstr "Lagring mislyktes"
+
+#: 
+msgid "Saved successfully"
+msgstr "Lagret"
+
+#: 
+msgid "Select a fund"
+msgstr "Velg et fond"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Send test-bursdags-e-post til meg selv"
+
+#: 
+msgid "Sending to"
+msgstr "Sender til"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Del anonym bruksstatistikk med ChurchCRM-teamet slik at vi vet hvilke funksjoner og språk vi bør prioritere. Ingen menighetsnavnr, medlemsdata eller personlig informasjon sendes noen gang."
+
+#: 
+msgid "Test email sent to"
+msgstr "Test-e-post sendt til"
+
+#: 
+msgid "Track adoption"
+msgstr "Spor bruksadopsjon"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Type må være 'Løfte' eller 'Betaling'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL-er med spørringsstrenger (post-ID-er fjernes)"
+
+#: 
+msgid "Underpaid"
+msgstr "Underbetalt"
+
+#: 
+msgid "Understand deployments"
+msgstr "Forstå distribusjoner"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Forstå funksjonsbruk"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Brukernavn, e-postadresser eller roller"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Vis løfte- eller betalingsdetaljer"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Advarsler — advarsler, feil og JS-unntak"
+
+#: 
+msgid "What is sent"
+msgstr "Hva som sendes"
+
+#: 
+msgid "What we collect"
+msgstr "Hva vi samler inn"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Vi ønsker deg en fantastisk %d-årsdag!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Vi ønsker deg en fantastisk bursdag!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Kontoen din har ingen e-postadresse registrert. Legg til én i profilen din for å sende en test."
+
+#: 
+msgid "errors+"
+msgstr "feil+"
+
+#: 
+msgid "full only"
+msgstr "kun full"
+
+#: 
+msgid "is thinking of you today."
+msgstr "tenker på deg i dag."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "sideruter, aktivt språk, CRM-versjon, PHP-versjon, OS-familie og en tilfeldig installasjons-ID. Ingenting annet. Data lagres i EU."
+

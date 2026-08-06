@@ -17171,3 +17171,431 @@ msgstr "Examinati mai jos inregistrarile noi din formularul public. Intrarile fa
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Confirmare stergere oportunitate de voluntariat"
 
+#: 
+msgid "# Payments"
+msgstr "# Plăți"
+
+#: 
+msgid "# Pledges"
+msgstr "# Angajamente"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "O plată este o donație efectiv primită. Va fi adăugată la depozitul selectat."
+
+#: 
+msgid "Add Fund"
+msgstr "Adaugă fond"
+
+#: 
+msgid "Amount ($)"
+msgstr "Sumă ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Suma depășește maximul permis (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "A apărut o eroare la salvare. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Telemetrie anonimă"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Nivel de telemetrie anonimă. Controlează cât de multe date de diagnosticare anonime sunt partajate cu echipa ChurchCRM. Nu se trimit niciodată nume de biserici, date despre membri sau informații personale."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Sigur doriți să ștergeți definitiv această înregistrare de plată?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Este necesară cel puțin o alocare de fond"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Cel puțin un fond trebuie să aibă o sumă diferită de zero"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Trimite automat un e-mail de felicitare de ziua de naștere persoanelor în ziua lor"
+
+#: 
+msgid "Back to Finance"
+msgstr "Înapoi la Finanțe"
+
+#: 
+msgid "Back to Group"
+msgstr "Înapoi la Grup"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Nu se poate pregăti interogarea."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Captează erorile JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Captează erorile recurente"
+
+#: 
+msgid "Check #"
+msgstr "Număr cec"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Numele bisericii, adresa sau datele de contact"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Versiunea ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Nivel de colectare"
+
+#: 
+msgid "Count unique installs"
+msgstr "Numără instalările unice"
+
+#: 
+msgid "Data"
+msgstr "Date"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Datele sunt procesate de PostHog pe infrastructura UE."
+
+#: 
+msgid "Date is required"
+msgstr "Data este obligatorie"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Șters cu succes"
+
+#: 
+msgid "Deposit #"
+msgstr "Depozit #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Chitanță de depozit"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Editează angajamentul"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Editează angajamentul sau plata existentă"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Editarea unei plăți"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Editarea unui angajament"
+
+#: 
+msgid "Enable (full)"
+msgstr "Activează (complet)"
+
+#: 
+msgid "Errors only"
+msgstr "Doar erori"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Erori — erori de server și excepții JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Crearea angajamentului a eșuat"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Ștergerea angajamentului a eșuat"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Codificarea răspunsului de plată a eșuat"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Recuperarea angajamentului a eșuat"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Actualizarea angajamentului a eșuat"
+
+#: 
+msgid "Family is required"
+msgstr "Familia este obligatorie"
+
+#: 
+msgid "Financial data"
+msgstr "Date financiare"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Complet — toate cele de mai sus plus vizualizări de pagini"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Complet — vizualizări de pagini, avertismente, erori și excepții JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Sumar fonduri"
+
+#: 
+msgid "Group key is required"
+msgstr "Cheia grupului este obligatorie"
+
+#: 
+msgid "Happy Birthday"
+msgstr "La mulți ani"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Ajutați la îmbunătățirea ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Adrese IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID instalare"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Rezumat interactiv angajamente vs. plăți pe fond, cu sortare, căutare și export."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Intern: ultima dată când au fost trimise e-mailuri de ziua de naștere (YYYY-MM-DD). Nu editați manual."
+
+#: 
+msgid "JS exceptions"
+msgstr "Excepții JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Nivel jurnal + mesaj"
+
+#: 
+msgid "Member or family records"
+msgstr "Înregistrări membri sau familie"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Modificați rolul acestui membru al grupului"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Eroare de rețea, vă rugăm să încercați din nou"
+
+#: 
+msgid "Never sent"
+msgstr "Niciodată trimis"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Fără depozit / creați un depozit nou"
+
+#: 
+msgid "No pledge"
+msgstr "Fără angajament"
+
+#: 
+msgid "No thanks"
+msgstr "Nu, mulțumesc"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Nedeductibil"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Nedeductibil ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Suma nedeductibilă nu poate depăși suma fondului"
+
+#: 
+msgid "None (disabled)"
+msgstr "Niciunul (dezactivat)"
+
+#: 
+msgid "OS family"
+msgstr "Familie SO"
+
+#: 
+msgid "Overpaid"
+msgstr "Plătit în exces"
+
+#: 
+msgid "PHP version"
+msgstr "Versiune PHP"
+
+#: 
+msgid "Page route"
+msgstr "Rută pagină"
+
+#: 
+msgid "Payment Details"
+msgstr "Detalii plată"
+
+#: 
+msgid "Payment Method"
+msgstr "Metodă de plată"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Planifică suportul de execuție"
+
+#: 
+msgid "Please enter a date"
+msgstr "Vă rugăm să introduceți o dată"
+
+#: 
+msgid "Please select a family"
+msgstr "Vă rugăm să selectați o familie"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Vă rugăm să selectați un fond pentru toate rândurile"
+
+#: 
+msgid "Pledge Details"
+msgstr "Detalii angajament"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Grupul de angajamente nu a fost găsit"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Angajamente și plăți"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Prioritizați traducerile"
+
+#: 
+msgid "Purpose"
+msgstr "Scop"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Salvează și adaugă altul"
+
+#: 
+msgid "Save failed"
+msgstr "Salvarea a eșuat"
+
+#: 
+msgid "Saved successfully"
+msgstr "Salvat cu succes"
+
+#: 
+msgid "Select a fund"
+msgstr "Selectați un fond"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Trimite-mi un e-mail de test de ziua de naștere"
+
+#: 
+msgid "Sending to"
+msgstr "Se trimite către"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Partajați statistici anonime de utilizare cu echipa ChurchCRM, astfel încât să știm ce funcții și limbi să prioritizăm. Nu se trimit niciodată nume de biserici, date despre membri sau informații personale."
+
+#: 
+msgid "Test email sent to"
+msgstr "E-mail de test trimis către"
+
+#: 
+msgid "Track adoption"
+msgstr "Urmăriți adoptarea"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Tipul trebuie să fie \"Angajament\" sau \"Plată\""
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL-uri cu șiruri de interogare (ID-urile înregistrărilor sunt eliminate)"
+
+#: 
+msgid "Underpaid"
+msgstr "Plătit insuficient"
+
+#: 
+msgid "Understand deployments"
+msgstr "Înțelegeți implementările"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Înțelegeți utilizarea funcțiilor"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Nume de utilizator, e-mailuri sau roluri"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Vizualizați detaliile angajamentului sau plății"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Avertismente — avertismente, erori și excepții JS"
+
+#: 
+msgid "What is sent"
+msgstr "Ce se trimite"
+
+#: 
+msgid "What we collect"
+msgstr "Ce colectăm"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Vă dorim un minunat birthday de %d ani!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Vă dorim o zi de naștere minunată!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Contul dvs. nu are o adresă de e-mail înregistrată. Adăugați una în profilul dvs. pentru a trimite un test."
+
+#: 
+msgid "errors+"
+msgstr "erori+"
+
+#: 
+msgid "full only"
+msgstr "doar complet"
+
+#: 
+msgid "is thinking of you today."
+msgstr "se gândește la dvs. astăzi."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "rute de pagini, localizare activă, versiune CRM, versiune PHP, familie SO și un ID de instalare aleatoriu. Nimic altceva. Datele sunt stocate în UE."
+

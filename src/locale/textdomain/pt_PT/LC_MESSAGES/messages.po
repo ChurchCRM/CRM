@@ -17231,3 +17231,431 @@ msgstr "Reveja abaixo as novas inscrições do seu formulário de registo públi
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Confirmação de eliminação de oportunidade de voluntariado"
 
+#: 
+msgid "# Payments"
+msgstr "Nº de Pagamentos"
+
+#: 
+msgid "# Pledges"
+msgstr "Nº de Promessas"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Um pagamento é uma doação efectivamente recebida. Será adicionado ao depósito seleccionado."
+
+#: 
+msgid "Add Fund"
+msgstr "Adicionar Fundo"
+
+#: 
+msgid "Amount ($)"
+msgstr "Valor ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "O valor excede o máximo permitido (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Ocorreu um erro ao guardar. Por favor, tente novamente."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Telemetria Anónima"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Nível de telemetria anónima. Controla a quantidade de dados de diagnóstico anónimos partilhados com a equipa do ChurchCRM. Nunca são enviados nomes de igrejas, dados de membros ou informações pessoais."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Tem a certeza de que pretende eliminar permanentemente este registo de pagamento?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "É necessária pelo menos uma alocação de fundo"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Pelo menos um fundo deve ter um valor diferente de zero"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Enviar automaticamente um e-mail de parabéns às pessoas no dia do seu aniversário"
+
+#: 
+msgid "Back to Finance"
+msgstr "Voltar às Finanças"
+
+#: 
+msgid "Back to Group"
+msgstr "Voltar ao Grupo"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Não é possível preparar a consulta."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Capturar erros de JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Capturar erros recorrentes"
+
+#: 
+msgid "Check #"
+msgstr "Nº de Cheque"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Nome da igreja, morada ou dados de contacto"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Versão do ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Nível de recolha"
+
+#: 
+msgid "Count unique installs"
+msgstr "Contar instalações únicas"
+
+#: 
+msgid "Data"
+msgstr "Dados"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Os dados são processados pelo PostHog em infraestrutura da UE."
+
+#: 
+msgid "Date is required"
+msgstr "A data é obrigatória"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Eliminado com sucesso"
+
+#: 
+msgid "Deposit #"
+msgstr "Nº de Depósito"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Comprovativo de Depósito"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Editar Promessa"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Editar promessa ou pagamento existente"
+
+#: 
+msgid "Editing a Payment"
+msgstr "A editar um Pagamento"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "A editar uma Promessa"
+
+#: 
+msgid "Enable (full)"
+msgstr "Activar (completo)"
+
+#: 
+msgid "Errors only"
+msgstr "Apenas erros"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Erros — erros de servidor e excepções de JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Falha ao criar promessa"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Falha ao eliminar promessa"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Falha ao codificar resposta de pagamento"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Falha ao recuperar promessa"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Falha ao actualizar promessa"
+
+#: 
+msgid "Family is required"
+msgstr "A família é obrigatória"
+
+#: 
+msgid "Financial data"
+msgstr "Dados financeiros"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Completo — tudo o acima mais visualizações de página"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Completo — visualizações de página, avisos, erros e excepções de JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Resumo do Fundo"
+
+#: 
+msgid "Group key is required"
+msgstr "A chave do grupo é obrigatória"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Feliz Aniversário"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Ajudar a melhorar o ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Endereços IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID de Instalação"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Resumo interactivo de promessas vs pagamentos por fundo, com ordenação, pesquisa e exportação."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Interno: última data em que os e-mails de aniversário foram enviados (AAAA-MM-DD). Não editar manualmente."
+
+#: 
+msgid "JS exceptions"
+msgstr "Excepções de JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Nível de registo + mensagem"
+
+#: 
+msgid "Member or family records"
+msgstr "Registos de membros ou famílias"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Modificar a função deste membro do grupo"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Erro de rede, por favor tente novamente"
+
+#: 
+msgid "Never sent"
+msgstr "Nunca enviado"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Sem depósito / criar novo depósito"
+
+#: 
+msgid "No pledge"
+msgstr "Sem promessa"
+
+#: 
+msgid "No thanks"
+msgstr "Não, obrigado"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Não Dedutível"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Não Dedutível ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "O valor não dedutível não pode exceder o valor do fundo"
+
+#: 
+msgid "None (disabled)"
+msgstr "Nenhum (desactivado)"
+
+#: 
+msgid "OS family"
+msgstr "Família de SO"
+
+#: 
+msgid "Overpaid"
+msgstr "Pago em excesso"
+
+#: 
+msgid "PHP version"
+msgstr "Versão de PHP"
+
+#: 
+msgid "Page route"
+msgstr "Rota de página"
+
+#: 
+msgid "Payment Details"
+msgstr "Detalhes do Pagamento"
+
+#: 
+msgid "Payment Method"
+msgstr "Método de Pagamento"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Planear suporte em tempo de execução"
+
+#: 
+msgid "Please enter a date"
+msgstr "Por favor, introduza uma data"
+
+#: 
+msgid "Please select a family"
+msgstr "Por favor, seleccione uma família"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Por favor, seleccione um fundo para todas as linhas"
+
+#: 
+msgid "Pledge Details"
+msgstr "Detalhes da Promessa"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Grupo de promessas não encontrado"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Promessas e Pagamentos"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Priorizar traduções"
+
+#: 
+msgid "Purpose"
+msgstr "Finalidade"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Guardar e Adicionar Outro"
+
+#: 
+msgid "Save failed"
+msgstr "Falha ao guardar"
+
+#: 
+msgid "Saved successfully"
+msgstr "Guardado com sucesso"
+
+#: 
+msgid "Select a fund"
+msgstr "Seleccionar um fundo"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Enviar E-mail de Aniversário de Teste para Mim"
+
+#: 
+msgid "Sending to"
+msgstr "A enviar para"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Partilhe estatísticas de utilização anónimas com a equipa do ChurchCRM para sabermos quais as funcionalidades e idiomas a priorizar. Nunca são enviados nomes de igrejas, dados de membros ou informações pessoais."
+
+#: 
+msgid "Test email sent to"
+msgstr "E-mail de teste enviado para"
+
+#: 
+msgid "Track adoption"
+msgstr "Acompanhar adopção"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "O tipo deve ser 'Promessa' ou 'Pagamento'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URLs com cadeias de consulta (os IDs de registo são removidos)"
+
+#: 
+msgid "Underpaid"
+msgstr "Pago a menos"
+
+#: 
+msgid "Understand deployments"
+msgstr "Compreender implementações"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Compreender a utilização de funcionalidades"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Nomes de utilizador, e-mails ou funções"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Ver detalhes de promessa ou pagamento"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Avisos — avisos, erros e excepções de JS"
+
+#: 
+msgid "What is sent"
+msgstr "O que é enviado"
+
+#: 
+msgid "What we collect"
+msgstr "O que recolhemos"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Desejamos-lhe um maravilhoso %d º aniversário!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Desejamos-lhe um maravilhoso aniversário!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "A sua conta não tem nenhum endereço de e-mail registado. Adicione um ao seu perfil para enviar um teste."
+
+#: 
+msgid "errors+"
+msgstr "erros+"
+
+#: 
+msgid "full only"
+msgstr "apenas completo"
+
+#: 
+msgid "is thinking of you today."
+msgstr "está a pensar em si hoje."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "rotas de página, idioma activo, versão do CRM, versão de PHP, família de SO e um ID de instalação aleatório. Nada mais. Os dados são armazenados na UE."
+

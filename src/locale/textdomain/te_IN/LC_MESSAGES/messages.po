@@ -17083,3 +17083,431 @@ msgstr "దిగువ మీ పబ్లిక్ నమోదు ఫార�
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "స్వయంసేవక అవకాశం తొలగింపు నిర్ధారణ"
 
+#: 
+msgid "# Payments"
+msgstr "# చెల్లింపులు"
+
+#: 
+msgid "# Pledges"
+msgstr "# ప్రతిజ్ఞలు"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "చెల్లింపు అంటే వాస్తవంగా స్వీకరించిన విరాళం. ఇది ఎంచుకున్న డిపాజిట్‌కు జోడించబడుతుంది."
+
+#: 
+msgid "Add Fund"
+msgstr "నిధిని జోడించు"
+
+#: 
+msgid "Amount ($)"
+msgstr "మొత్తం ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "మొత్తం గరిష్ట అనుమతిని మించింది (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "సేవ్ చేసేటప్పుడు లోపం సంభవించింది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "అనామక టెలిమెట్రీ"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "అనామక టెలిమెట్రీ స్థాయి. ChurchCRM బృందంతో ఎంత అనామక నిర్ధారణ డేటా పంచుకోబడుతుందో నియంత్రిస్తుంది. చర్చి పేర్లు, సభ్యుల డేటా లేదా వ్యక్తిగత సమాచారం ఏదీ పంపబడదు."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "మీరు నిజంగా ఈ చెల్లింపు రికార్డును శాశ్వతంగా తొలగించాలనుకుంటున్నారా?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "కనీసం ఒక నిధి కేటాయింపు అవసరం"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "కనీసం ఒక నిధికి శూన్యేతర మొత్తం ఉండాలి"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "వ్యక్తుల పుట్టినరోజున వారికి స్వయంచాలకంగా శుభాకాంక్షల ఇమెయిల్ పంపండి"
+
+#: 
+msgid "Back to Finance"
+msgstr "ఆర్థికానికి తిరిగి వెళ్ళు"
+
+#: 
+msgid "Back to Group"
+msgstr "గుంపుకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "ప్రశ్నను సిద్ధం చేయలేకపోయింది."
+
+#: 
+msgid "Catch JS errors"
+msgstr "JS లోపాలను పట్టుకో"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "పునరావృత లోపాలను పట్టుకో"
+
+#: 
+msgid "Check #"
+msgstr "చెక్ #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "చర్చి పేరు, చిరునామా లేదా సంప్రదింపు వివరాలు"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM వెర్షన్"
+
+#: 
+msgid "Collection level"
+msgstr "సేకరణ స్థాయి"
+
+#: 
+msgid "Count unique installs"
+msgstr "ప్రత్యేక ఇన్‌స్టాల్‌లను లెక్కించు"
+
+#: 
+msgid "Data"
+msgstr "డేటా"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "డేటా EU మౌలిక సదుపాయాలపై PostHog ద్వారా ప్రాసెస్ చేయబడుతుంది."
+
+#: 
+msgid "Date is required"
+msgstr "తేదీ అవసరం"
+
+#: 
+msgid "Deleted successfully"
+msgstr "విజయవంతంగా తొలగించబడింది"
+
+#: 
+msgid "Deposit #"
+msgstr "డిపాజిట్ #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "డిపాజిట్ స్లిప్"
+
+#: 
+msgid "Edit Pledge"
+msgstr "ప్రతిజ్ఞను సవరించు"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "ఇప్పటికే ఉన్న ప్రతిజ్ఞ లేదా చెల్లింపును సవరించు"
+
+#: 
+msgid "Editing a Payment"
+msgstr "చెల్లింపును సవరిస్తున్నారు"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "ప్రతిజ్ఞను సవరిస్తున్నారు"
+
+#: 
+msgid "Enable (full)"
+msgstr "ప్రారంభించు (పూర్తి)"
+
+#: 
+msgid "Errors only"
+msgstr "లోపాలు మాత్రమే"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "లోపాలు — సర్వర్ లోపాలు మరియు JS మినహాయింపులు"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "ప్రతిజ్ఞను సృష్టించడం విఫలమైంది"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "ప్రతిజ్ఞను తొలగించడం విఫలమైంది"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "చెల్లింపు ప్రతిస్పందనను ఎన్‌కోడ్ చేయడం విఫలమైంది"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "ప్రతిజ్ఞను తిరిగి పొందడం విఫలమైంది"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "ప్రతిజ్ఞను నవీకరించడం విఫలమైంది"
+
+#: 
+msgid "Family is required"
+msgstr "కుటుంబం అవసరం"
+
+#: 
+msgid "Financial data"
+msgstr "ఆర్థిక డేటా"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "పూర్తి — పైవన్నీ మరియు పేజీ వీక్షణలు"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "పూర్తి — పేజీ వీక్షణలు, హెచ్చరికలు, లోపాలు మరియు JS మినహాయింపులు"
+
+#: 
+msgid "Fund Summary"
+msgstr "నిధి సారాంశం"
+
+#: 
+msgid "Group key is required"
+msgstr "గుంపు కీ అవసరం"
+
+#: 
+msgid "Happy Birthday"
+msgstr "పుట్టినరోజు శుభాకాంక్షలు"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ChurchCRM మెరుగుపరచడంలో సహాయపడండి"
+
+#: 
+msgid "IP addresses"
+msgstr "IP చిరునామాలు"
+
+#: 
+msgid "Installation UUID"
+msgstr "ఇన్‌స్టాలేషన్ UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "క్రమబద్ధీకరణ, శోధన మరియు ఎగుమతితో నిధి వారీగా ప్రతిజ్ఞలు-వర్సెస్-చెల్లింపుల ఇంటరాక్టివ్ సారాంశం."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "అంతర్గతం: పుట్టినరోజు ఇమెయిల్‌లు చివరిగా పంపిన తేదీ (YYYY-MM-DD). మాన్యువల్‌గా సవరించవద్దు."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS మినహాయింపులు"
+
+#: 
+msgid "Log level + message"
+msgstr "లాగ్ స్థాయి + సందేశం"
+
+#: 
+msgid "Member or family records"
+msgstr "సభ్యుడు లేదా కుటుంబ రికార్డులు"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "ఈ గుంపు సభ్యుని పాత్రను మార్చండి"
+
+#: 
+msgid "Network error, please try again"
+msgstr "నెట్‌వర్క్ లోపం, దయచేసి మళ్ళీ ప్రయత్నించండి"
+
+#: 
+msgid "Never sent"
+msgstr "ఎప్పుడూ పంపబడలేదు"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "డిపాజిట్ లేదు / కొత్త డిపాజిట్ సృష్టించు"
+
+#: 
+msgid "No pledge"
+msgstr "ప్రతిజ్ఞ లేదు"
+
+#: 
+msgid "No thanks"
+msgstr "వద్దు, ధన్యవాదాలు"
+
+#: 
+msgid "Non-Deductible"
+msgstr "తీసివేయబడని"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "తీసివేయబడని ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "తీసివేయబడని మొత్తం నిధి మొత్తాన్ని మించలేదు"
+
+#: 
+msgid "None (disabled)"
+msgstr "ఏదీ లేదు (నిష్క్రియం)"
+
+#: 
+msgid "OS family"
+msgstr "OS కుటుంబం"
+
+#: 
+msgid "Overpaid"
+msgstr "అదనంగా చెల్లించబడింది"
+
+#: 
+msgid "PHP version"
+msgstr "PHP వెర్షన్"
+
+#: 
+msgid "Page route"
+msgstr "పేజీ మార్గం"
+
+#: 
+msgid "Payment Details"
+msgstr "చెల్లింపు వివరాలు"
+
+#: 
+msgid "Payment Method"
+msgstr "చెల్లింపు పద్ధతి"
+
+#: 
+msgid "Plan runtime support"
+msgstr "రన్‌టైమ్ మద్దతును ప్లాన్ చేయండి"
+
+#: 
+msgid "Please enter a date"
+msgstr "దయచేసి తేదీని నమోదు చేయండి"
+
+#: 
+msgid "Please select a family"
+msgstr "దయచేసి కుటుంబాన్ని ఎంచుకోండి"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "దయచేసి అన్ని వరుసలకు నిధిని ఎంచుకోండి"
+
+#: 
+msgid "Pledge Details"
+msgstr "ప్రతిజ్ఞ వివరాలు"
+
+#: 
+msgid "Pledge group not found"
+msgstr "ప్రతిజ్ఞ గుంపు కనుగొనబడలేదు"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "ప్రతిజ్ఞలు & చెల్లింపులు"
+
+#: 
+msgid "Prioritise translations"
+msgstr "అనువాదాలకు ప్రాధాన్యత ఇవ్వండి"
+
+#: 
+msgid "Purpose"
+msgstr "ఉద్దేశ్యం"
+
+#: 
+msgid "Save and Add Another"
+msgstr "సేవ్ చేసి మరొకటి జోడించు"
+
+#: 
+msgid "Save failed"
+msgstr "సేవ్ విఫలమైంది"
+
+#: 
+msgid "Saved successfully"
+msgstr "విజయవంతంగా సేవ్ చేయబడింది"
+
+#: 
+msgid "Select a fund"
+msgstr "నిధిని ఎంచుకోండి"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "నాకు పరీక్ష పుట్టినరోజు ఇమెయిల్ పంపండి"
+
+#: 
+msgid "Sending to"
+msgstr "కు పంపుతున్నారు"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "ChurchCRM బృందంతో అనామక వినియోగ గణాంకాలను పంచుకోండి, తద్వారా మేము ఏ లక్షణాలు మరియు భాషలకు ప్రాధాన్యత ఇవ్వాలో తెలుస్తుంది. చర్చి పేర్లు, సభ్యుల డేటా లేదా వ్యక్తిగత సమాచారం ఏదీ పంపబడదు."
+
+#: 
+msgid "Test email sent to"
+msgstr "పరీక్ష ఇమెయిల్ పంపబడింది"
+
+#: 
+msgid "Track adoption"
+msgstr "స్వీకరణను ట్రాక్ చేయండి"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "రకం 'Pledge' లేదా 'Payment' అయి ఉండాలి"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "క్వెరీ స్ట్రింగ్‌లతో URLs (రికార్డ్ IDలు తొలగించబడతాయి)"
+
+#: 
+msgid "Underpaid"
+msgstr "తక్కువ చెల్లించబడింది"
+
+#: 
+msgid "Understand deployments"
+msgstr "విన్యాసాలను అర్థం చేసుకోండి"
+
+#: 
+msgid "Understand feature usage"
+msgstr "లక్షణాల వినియోగాన్ని అర్థం చేసుకోండి"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "వినియోగదారు పేర్లు, ఇమెయిల్‌లు లేదా పాత్రలు"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "ప్రతిజ్ఞ లేదా చెల్లింపు వివరాలను చూడండి"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "హెచ్చరికలు — హెచ్చరికలు, లోపాలు మరియు JS మినహాయింపులు"
+
+#: 
+msgid "What is sent"
+msgstr "ఏమి పంపబడుతుంది"
+
+#: 
+msgid "What we collect"
+msgstr "మేము ఏమి సేకరిస్తాం"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "మీకు అద్భుతమైన %d వ పుట్టినరోజు శుభాకాంక్షలు!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "మీకు అద్భుతమైన పుట్టినరోజు శుభాకాంక్షలు!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "మీ ఖాతాలో ఇమెయిల్ చిరునామా లేదు. పరీక్ష పంపడానికి మీ ప్రొఫైల్‌కు ఒకటి జోడించండి."
+
+#: 
+msgid "errors+"
+msgstr "లోపాలు+"
+
+#: 
+msgid "full only"
+msgstr "పూర్తి మాత్రమే"
+
+#: 
+msgid "is thinking of you today."
+msgstr "ఈరోజు మిమ్మల్ని గుర్తు చేసుకుంటున్నారు."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "పేజీ మార్గాలు, చురుకైన లొకేల్, CRM వెర్షన్, PHP వెర్షన్, OS కుటుంబం మరియు యాదృచ్ఛిక ఇన్‌స్టాలేషన్ ID. మరేమీ లేదు. డేటా EU లో నిల్వ చేయబడుతుంది."
+

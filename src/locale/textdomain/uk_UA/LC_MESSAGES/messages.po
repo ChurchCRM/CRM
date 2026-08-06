@@ -17137,3 +17137,431 @@ msgstr "Перегляньте нові реєстрації з вашої пу�
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Підтвердження видалення волонтерської можливості"
 
+#: 
+msgid "# Payments"
+msgstr "# Пожертвувань"
+
+#: 
+msgid "# Pledges"
+msgstr "# Обітниць"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Пожертвування — це фактично отримана пожертва. Її буде додано до обраного депозиту."
+
+#: 
+msgid "Add Fund"
+msgstr "Додати фонд"
+
+#: 
+msgid "Amount ($)"
+msgstr "Сума ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Сума перевищує максимально допустиму (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Під час збереження сталася помилка. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Анонімна телеметрія"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Рівень анонімної телеметрії. Визначає, який обсяг анонімних діагностичних даних передається команді ChurchCRM. Назви церков, дані парафіян або особиста інформація ніколи не надсилаються."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Ви впевнені, що хочете остаточно видалити цей запис про пожертвування?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Потрібен розподіл хоча б до одного фонду"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Принаймні один фонд повинен мати ненульову суму"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Автоматично надсилати вітальний лист з днем народження у день народження парафіянина"
+
+#: 
+msgid "Back to Finance"
+msgstr "Повернутися до фінансів"
+
+#: 
+msgid "Back to Group"
+msgstr "Повернутися до групи"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Неможливо підготувати запит."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Перехоплювати помилки JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Перехоплювати повторювані помилки"
+
+#: 
+msgid "Check #"
+msgstr "Чек №"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Назва церкви, адреса або контактні дані"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Версія ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Рівень збору"
+
+#: 
+msgid "Count unique installs"
+msgstr "Підраховувати унікальні інсталяції"
+
+#: 
+msgid "Data"
+msgstr "Дані"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Дані обробляються PostHog на інфраструктурі ЄС."
+
+#: 
+msgid "Date is required"
+msgstr "Дата є обов'язковою"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Успішно видалено"
+
+#: 
+msgid "Deposit #"
+msgstr "Депозит №"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Квитанція про депозит"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Редагувати обітницю"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Редагувати наявну обітницю або пожертвування"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Редагування пожертвування"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Редагування обітниці"
+
+#: 
+msgid "Enable (full)"
+msgstr "Увімкнути (повністю)"
+
+#: 
+msgid "Errors only"
+msgstr "Лише помилки"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Помилки — серверні помилки та виключення JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Не вдалося створити обітницю"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Не вдалося видалити обітницю"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Не вдалося закодувати відповідь про пожертвування"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Не вдалося отримати обітницю"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Не вдалося оновити обітницю"
+
+#: 
+msgid "Family is required"
+msgstr "Сім'я є обов'язковою"
+
+#: 
+msgid "Financial data"
+msgstr "Фінансові дані"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Повний — усе вищезазначене плюс перегляди сторінок"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Повний — перегляди сторінок, попередження, помилки та виключення JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Зведення по фонду"
+
+#: 
+msgid "Group key is required"
+msgstr "Ключ групи є обов'язковим"
+
+#: 
+msgid "Happy Birthday"
+msgstr "З Днем народження"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Допоможіть покращити ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "IP-адреси"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID інсталяції"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Інтерактивне зведення обітниць і пожертвувань по фондах із сортуванням, пошуком та експортом."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Внутрішнє: дата останнього надсилання листів з днем народження (РРРР-ММ-ДД). Не редагуйте вручну."
+
+#: 
+msgid "JS exceptions"
+msgstr "Виключення JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Рівень журналу + повідомлення"
+
+#: 
+msgid "Member or family records"
+msgstr "Записи парафіянина або сімʼї"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Змінити роль для цього члена групи"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Помилка мережі, будь ласка, спробуйте ще раз"
+
+#: 
+msgid "Never sent"
+msgstr "Ніколи не надсилалось"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Без депозиту / створити новий депозит"
+
+#: 
+msgid "No pledge"
+msgstr "Без обітниці"
+
+#: 
+msgid "No thanks"
+msgstr "Ні, дякую"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Без відрахування"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Без відрахування ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Сума без відрахування не може перевищувати суму фонду"
+
+#: 
+msgid "None (disabled)"
+msgstr "Вимкнено"
+
+#: 
+msgid "OS family"
+msgstr "Сімейство ОС"
+
+#: 
+msgid "Overpaid"
+msgstr "Переплачено"
+
+#: 
+msgid "PHP version"
+msgstr "Версія PHP"
+
+#: 
+msgid "Page route"
+msgstr "Маршрут сторінки"
+
+#: 
+msgid "Payment Details"
+msgstr "Деталі пожертвування"
+
+#: 
+msgid "Payment Method"
+msgstr "Спосіб пожертвування"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Планування підтримки середовища виконання"
+
+#: 
+msgid "Please enter a date"
+msgstr "Будь ласка, введіть дату"
+
+#: 
+msgid "Please select a family"
+msgstr "Будь ласка, оберіть сім'ю"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Будь ласка, оберіть фонд для всіх рядків"
+
+#: 
+msgid "Pledge Details"
+msgstr "Деталі обітниці"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Групу обітниць не знайдено"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Обітниці та пожертвування"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Пріоритизувати переклади"
+
+#: 
+msgid "Purpose"
+msgstr "Призначення"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Зберегти та додати ще"
+
+#: 
+msgid "Save failed"
+msgstr "Збереження не вдалося"
+
+#: 
+msgid "Saved successfully"
+msgstr "Успішно збережено"
+
+#: 
+msgid "Select a fund"
+msgstr "Оберіть фонд"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Надіслати тестовий лист з днем народження собі"
+
+#: 
+msgid "Sending to"
+msgstr "Надсилається до"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Поділіться анонімною статистикою використання з командою ChurchCRM, щоб ми знали, яким функціям і мовам надавати пріоритет. Назви церков, дані парафіян або особиста інформація ніколи не надсилаються."
+
+#: 
+msgid "Test email sent to"
+msgstr "Тестовий лист надіслано до"
+
+#: 
+msgid "Track adoption"
+msgstr "Відстежувати поширення"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Тип має бути «Обітниця» або «Пожертвування»"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL-адреси з рядками запиту (ідентифікатори записів видаляються)"
+
+#: 
+msgid "Underpaid"
+msgstr "Недоплачено"
+
+#: 
+msgid "Understand deployments"
+msgstr "Розуміти розгортання"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Розуміти використання функцій"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Імена користувачів, електронні адреси або ролі"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Переглянути деталі обітниці або пожертвування"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Попередження — попередження, помилки та виключення JS"
+
+#: 
+msgid "What is sent"
+msgstr "Що надсилається"
+
+#: 
+msgid "What we collect"
+msgstr "Що ми збираємо"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Бажаємо чудового святкування %d-річчя!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Бажаємо чудового дня народження!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "У вашому обліковому записі немає збереженої електронної адреси. Додайте її до свого профілю, щоб надіслати тест."
+
+#: 
+msgid "errors+"
+msgstr "помилки+"
+
+#: 
+msgid "full only"
+msgstr "лише повний"
+
+#: 
+msgid "is thinking of you today."
+msgstr "сьогодні думає про вас."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "маршрути сторінок, активна мова, версія CRM, версія PHP, сімейство ОС та випадковий ідентифікатор інсталяції. Нічого більше. Дані зберігаються в ЄС."
+

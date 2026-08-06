@@ -17098,3 +17098,431 @@ msgstr "Nižšie skontrolujte nové registrácie z vášho verejného formulára
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Potvrdení vymazania dobrovoľníckej príležitosti"
 
+#: 
+msgid "# Payments"
+msgstr "# Platieb"
+
+#: 
+msgid "# Pledges"
+msgstr "# Záväzkov"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Platba je skutočný prijatý dar. Bude pridaná k vybranému vkladu."
+
+#: 
+msgid "Add Fund"
+msgstr "Pridať fond"
+
+#: 
+msgid "Amount ($)"
+msgstr "Suma ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Suma prekračuje povolené maximum (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Pri ukladaní došlo k chybe. Skúste to znova."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonymná telemetria"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Úroveň anonymnej telemetrie. Určuje, koľko anonymných diagnostických údajov sa zdieľa s tímom ChurchCRM. Nikdy sa neodosielajú názvy cirkví, údaje členov ani osobné informácie."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Naozaj chcete natrvalo vymazať tento záznam platby?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Vyžaduje sa aspoň jedno priradenie fondu"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Aspoň jeden fond musí mať nenulovú sumu"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Automaticky odoslať narodeninový pozdravný e-mail ľuďom v deň ich narodenín"
+
+#: 
+msgid "Back to Finance"
+msgstr "Späť na financie"
+
+#: 
+msgid "Back to Group"
+msgstr "Späť na skupinu"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Nie je možné pripraviť dotaz."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Zachytávať JS chyby"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Zachytávať opakujúce sa chyby"
+
+#: 
+msgid "Check #"
+msgstr "Č. šeku"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Názov cirkvi, adresa alebo kontaktné údaje"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Verzia ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Úroveň zberu"
+
+#: 
+msgid "Count unique installs"
+msgstr "Počítať jedinečné inštalácie"
+
+#: 
+msgid "Data"
+msgstr "Údaje"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Údaje spracováva PostHog na infraštruktúre EÚ."
+
+#: 
+msgid "Date is required"
+msgstr "Dátum je povinný"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Úspešne vymazané"
+
+#: 
+msgid "Deposit #"
+msgstr "Č. vkladu"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Potvrdenie o vklade"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Upraviť záväzok"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Upraviť existujúci záväzok alebo platbu"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Úprava platby"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Úprava záväzku"
+
+#: 
+msgid "Enable (full)"
+msgstr "Povoliť (úplné)"
+
+#: 
+msgid "Errors only"
+msgstr "Iba chyby"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Chyby — chyby servera a výnimky JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Nepodarilo sa vytvoriť záväzok"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Nepodarilo sa vymazať záväzok"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Nepodarilo sa zakódovať odpoveď platby"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Nepodarilo sa načítať záväzok"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Nepodarilo sa aktualizovať záväzok"
+
+#: 
+msgid "Family is required"
+msgstr "Rodina je povinná"
+
+#: 
+msgid "Financial data"
+msgstr "Finančné údaje"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Úplné — všetko vyššie uvedené plus zobrazenia stránok"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Úplné — zobrazenia stránok, upozornenia, chyby a výnimky JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Prehľad fondu"
+
+#: 
+msgid "Group key is required"
+msgstr "Kľúč skupiny je povinný"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Všetko najlepšie k narodeninám"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Pomôžte zlepšiť ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "IP adresy"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID inštalácie"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktívny prehľad záväzkov oproti platbám podľa fondu s triedením, vyhľadávaním a exportom."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Interné: posledný dátum odoslania narodeninových e-mailov (YYYY-MM-DD). Neupravujte manuálne."
+
+#: 
+msgid "JS exceptions"
+msgstr "Výnimky JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Úroveň záznamu + správa"
+
+#: 
+msgid "Member or family records"
+msgstr "Záznamy členov alebo rodín"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Zmeniť rolu tohto člena skupiny"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Chyba siete, skúste to znova"
+
+#: 
+msgid "Never sent"
+msgstr "Nikdy neodoslané"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Žiadny vklad / vytvoriť nový vklad"
+
+#: 
+msgid "No pledge"
+msgstr "Žiadny záväzok"
+
+#: 
+msgid "No thanks"
+msgstr "Nie, ďakujem"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Neodpočítateľné"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Neodpočítateľné ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Neodpočítateľná suma nesmie presiahnuť sumu fondu"
+
+#: 
+msgid "None (disabled)"
+msgstr "Žiadne (zakázané)"
+
+#: 
+msgid "OS family"
+msgstr "Rodina OS"
+
+#: 
+msgid "Overpaid"
+msgstr "Preplatené"
+
+#: 
+msgid "PHP version"
+msgstr "Verzia PHP"
+
+#: 
+msgid "Page route"
+msgstr "Trasa stránky"
+
+#: 
+msgid "Payment Details"
+msgstr "Podrobnosti platby"
+
+#: 
+msgid "Payment Method"
+msgstr "Spôsob platby"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Plánovaná podpora behu"
+
+#: 
+msgid "Please enter a date"
+msgstr "Zadajte dátum"
+
+#: 
+msgid "Please select a family"
+msgstr "Vyberte rodinu"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Vyberte fond pre všetky riadky"
+
+#: 
+msgid "Pledge Details"
+msgstr "Podrobnosti záväzku"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Skupina záväzkov sa nenašla"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Záväzky a platby"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Uprednostniť preklady"
+
+#: 
+msgid "Purpose"
+msgstr "Účel"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Uložiť a pridať ďalší"
+
+#: 
+msgid "Save failed"
+msgstr "Uloženie zlyhalo"
+
+#: 
+msgid "Saved successfully"
+msgstr "Úspešne uložené"
+
+#: 
+msgid "Select a fund"
+msgstr "Vyberte fond"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Odoslať testovacie narodeninové e-mail sebe"
+
+#: 
+msgid "Sending to"
+msgstr "Odosielanie komu"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Zdieľajte anonymné štatistiky používania s tímom ChurchCRM, aby sme vedeli, ktoré funkcie a jazyky uprednostniť. Nikdy sa neodosielajú názvy cirkví, údaje členov ani osobné informácie."
+
+#: 
+msgid "Test email sent to"
+msgstr "Testovací e-mail odoslaný na"
+
+#: 
+msgid "Track adoption"
+msgstr "Sledovať rozšírenosť"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Typ musí byť 'Záväzok' alebo 'Platba'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL adresy s reťazcami dotazov (ID záznamov sú odstránené)"
+
+#: 
+msgid "Underpaid"
+msgstr "Nedoplatené"
+
+#: 
+msgid "Understand deployments"
+msgstr "Pochopiť nasadenia"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Pochopiť využívanie funkcií"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Mená používateľov, e-maily alebo roly"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Zobraziť podrobnosti záväzku alebo platby"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Upozornenia — upozornenia, chyby a výnimky JS"
+
+#: 
+msgid "What is sent"
+msgstr "Čo sa odosiela"
+
+#: 
+msgid "What we collect"
+msgstr "Čo zbierame"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Prajeme vám nádherné %d. narodeniny!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Prajeme vám nádherné narodeniny!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Váš účet nemá uloženú e-mailovú adresu. Pridajte ju do svojho profilu, aby ste mohli odoslať test."
+
+#: 
+msgid "errors+"
+msgstr "chyby+"
+
+#: 
+msgid "full only"
+msgstr "iba úplné"
+
+#: 
+msgid "is thinking of you today."
+msgstr "dnes na vás myslí."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "trasy stránok, aktívne miestne nastavenie, verzia CRM, verzia PHP, rodina OS a náhodné ID inštalácie. Nič iné. Údaje sú uložené v EÚ."
+

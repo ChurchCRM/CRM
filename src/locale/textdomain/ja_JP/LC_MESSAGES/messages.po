@@ -17048,3 +17048,431 @@ msgstr "以下に公開登録フォームからの新しい登録を確認して
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "ボランティア機会削除の確認"
 
+#: 
+msgid "# Payments"
+msgstr "献金件数"
+
+#: 
+msgid "# Pledges"
+msgstr "誓約件数"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "献金とは実際に受け取った捧げものです。選択した預金に追加されます。"
+
+#: 
+msgid "Add Fund"
+msgstr "ファンドを追加"
+
+#: 
+msgid "Amount ($)"
+msgstr "金額（$）"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "金額が許容最大値（999999.99）を超えています"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "保存中にエラーが発生しました。もう一度お試しください。"
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "匿名テレメトリー"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "匿名テレメトリーのレベル。ChurchCRMチームと共有する匿名診断データの量を制御します。教会名、会員データ、個人情報は一切送信されません。"
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "この献金記録を完全に削除してもよろしいですか？"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "少なくとも1つのファンド割り当てが必要です"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "少なくとも1つのファンドにゼロ以外の金額が必要です"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "誕生日に自動的にお祝いメールを送信する"
+
+#: 
+msgid "Back to Finance"
+msgstr "財務に戻る"
+
+#: 
+msgid "Back to Group"
+msgstr "グループに戻る"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "クエリを準備できません。"
+
+#: 
+msgid "Catch JS errors"
+msgstr "JSエラーをキャッチ"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "繰り返しエラーをキャッチ"
+
+#: 
+msgid "Check #"
+msgstr "小切手番号"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "教会名、住所、または連絡先"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRMバージョン"
+
+#: 
+msgid "Collection level"
+msgstr "収集レベル"
+
+#: 
+msgid "Count unique installs"
+msgstr "ユニークインストール数をカウント"
+
+#: 
+msgid "Data"
+msgstr "データ"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "データはEUインフラ上のPostHogによって処理されます。"
+
+#: 
+msgid "Date is required"
+msgstr "日付は必須です"
+
+#: 
+msgid "Deleted successfully"
+msgstr "正常に削除されました"
+
+#: 
+msgid "Deposit #"
+msgstr "預金番号"
+
+#: 
+msgid "Deposit Slip"
+msgstr "入金伝票"
+
+#: 
+msgid "Edit Pledge"
+msgstr "誓約を編集"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "既存の誓約または献金を編集"
+
+#: 
+msgid "Editing a Payment"
+msgstr "献金を編集中"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "誓約を編集中"
+
+#: 
+msgid "Enable (full)"
+msgstr "有効（フル）"
+
+#: 
+msgid "Errors only"
+msgstr "エラーのみ"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "エラー — サーバーエラーおよびJS例外"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "誓約の作成に失敗しました"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "誓約の削除に失敗しました"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "献金レスポンスのエンコードに失敗しました"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "誓約の取得に失敗しました"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "誓約の更新に失敗しました"
+
+#: 
+msgid "Family is required"
+msgstr "家族は必須です"
+
+#: 
+msgid "Financial data"
+msgstr "財務データ"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "フル — 上記すべてにページビューを加えたもの"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "フル — ページビュー、警告、エラー、およびJS例外"
+
+#: 
+msgid "Fund Summary"
+msgstr "ファンドサマリー"
+
+#: 
+msgid "Group key is required"
+msgstr "グループキーは必須です"
+
+#: 
+msgid "Happy Birthday"
+msgstr "誕生日おめでとうございます"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ChurchCRMの改善にご協力ください"
+
+#: 
+msgid "IP addresses"
+msgstr "IPアドレス"
+
+#: 
+msgid "Installation UUID"
+msgstr "インストールUUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "ファンド別の誓約対献金のインタラクティブなサマリー（ソート、検索、エクスポート対応）。"
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "内部：誕生日メールが最後に送信された日付（YYYY-MM-DD）。手動で編集しないでください。"
+
+#: 
+msgid "JS exceptions"
+msgstr "JS例外"
+
+#: 
+msgid "Log level + message"
+msgstr "ログレベル＋メッセージ"
+
+#: 
+msgid "Member or family records"
+msgstr "会員または家族の記録"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "このグループメンバーの役割を変更する"
+
+#: 
+msgid "Network error, please try again"
+msgstr "ネットワークエラーです。もう一度お試しください"
+
+#: 
+msgid "Never sent"
+msgstr "未送信"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "預金なし／新しい預金を作成"
+
+#: 
+msgid "No pledge"
+msgstr "誓約なし"
+
+#: 
+msgid "No thanks"
+msgstr "不要です"
+
+#: 
+msgid "Non-Deductible"
+msgstr "非控除"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "非控除額（$）"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "非控除額はファンド金額を超えることはできません"
+
+#: 
+msgid "None (disabled)"
+msgstr "なし（無効）"
+
+#: 
+msgid "OS family"
+msgstr "OSファミリー"
+
+#: 
+msgid "Overpaid"
+msgstr "超過支払い"
+
+#: 
+msgid "PHP version"
+msgstr "PHPバージョン"
+
+#: 
+msgid "Page route"
+msgstr "ページルート"
+
+#: 
+msgid "Payment Details"
+msgstr "献金詳細"
+
+#: 
+msgid "Payment Method"
+msgstr "支払い方法"
+
+#: 
+msgid "Plan runtime support"
+msgstr "ランタイムサポートを計画する"
+
+#: 
+msgid "Please enter a date"
+msgstr "日付を入力してください"
+
+#: 
+msgid "Please select a family"
+msgstr "家族を選択してください"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "すべての行にファンドを選択してください"
+
+#: 
+msgid "Pledge Details"
+msgstr "誓約詳細"
+
+#: 
+msgid "Pledge group not found"
+msgstr "誓約グループが見つかりません"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "誓約と献金"
+
+#: 
+msgid "Prioritise translations"
+msgstr "翻訳を優先する"
+
+#: 
+msgid "Purpose"
+msgstr "目的"
+
+#: 
+msgid "Save and Add Another"
+msgstr "保存してさらに追加"
+
+#: 
+msgid "Save failed"
+msgstr "保存に失敗しました"
+
+#: 
+msgid "Saved successfully"
+msgstr "正常に保存されました"
+
+#: 
+msgid "Select a fund"
+msgstr "ファンドを選択"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "自分にテスト誕生日メールを送信"
+
+#: 
+msgid "Sending to"
+msgstr "送信先"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "ChurchCRMチームと匿名の使用統計を共有して、優先すべき機能や言語を把握できるようにしてください。教会名、会員データ、個人情報は一切送信されません。"
+
+#: 
+msgid "Test email sent to"
+msgstr "テストメールの送信先"
+
+#: 
+msgid "Track adoption"
+msgstr "導入状況を追跡"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "種別は「誓約」または「献金」である必要があります"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "クエリ文字列付きURL（レコードIDは除外されます）"
+
+#: 
+msgid "Underpaid"
+msgstr "支払い不足"
+
+#: 
+msgid "Understand deployments"
+msgstr "導入状況を把握する"
+
+#: 
+msgid "Understand feature usage"
+msgstr "機能の使用状況を把握する"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "ユーザー名、メールアドレス、または役割"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "誓約または献金の詳細を表示"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "警告 — 警告、エラー、およびJS例外"
+
+#: 
+msgid "What is sent"
+msgstr "送信される内容"
+
+#: 
+msgid "What we collect"
+msgstr "収集する情報"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "素晴らしい%d歳の誕生日をお祝いします！"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "素晴らしい誕生日をお祝いします！"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "アカウントにメールアドレスが登録されていません。テストを送信するにはプロフィールに追加してください。"
+
+#: 
+msgid "errors+"
+msgstr "エラー以上"
+
+#: 
+msgid "full only"
+msgstr "フルのみ"
+
+#: 
+msgid "is thinking of you today."
+msgstr "今日あなたのことを思っています。"
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "ページルート、有効なロケール、CRMバージョン、PHPバージョン、OSファミリー、およびランダムなインストールID。それ以外は何もありません。データはEUに保存されます。"
+

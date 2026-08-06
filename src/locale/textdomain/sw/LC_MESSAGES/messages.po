@@ -17107,3 +17107,427 @@ msgstr "Kagua usajili mpya kutoka kwenye fomu yako ya usajili ya umma hapa chini
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Uthibitisho wa Kufuta Fursa ya Kujitolea"
 
+#: 
+msgid "# Payments"
+msgstr "# Malipo"
+
+#: 
+msgid "# Pledges"
+msgstr "# Ahadi za Mchango"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Malipo ni mchango halisi uliopokelewa. Utaongezwa kwenye amana iliyochaguliwa."
+
+#: 
+msgid "Add Fund"
+msgstr "Ongeza Mfuko"
+
+#: 
+msgid "Amount ($)"
+msgstr "Kiasi ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Kiasi kinazidi kiwango cha juu kinachoruhusiwa (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Hitilafu ilitokea wakati wa kuhifadhi. Tafadhali jaribu tena."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Telemetry Isiyojulikana"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Kiwango cha telemetry isiyojulikana. Inadhibiti kiasi gani cha data ya uchunzuji isiyojulikana inayoshirikiwa na timu ya ChurchCRM. Hakuna majina ya kanisa, data ya wanachama, au taarifa za kibinafsi zinazotumwa."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Je, una uhakika unataka kufuta kabisa rekodi hii ya malipo?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Mgawanyo wa mfuko mmoja angalau unahitajika"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Mfuko mmoja angalau lazima uwe na kiasi kisichokuwa sifuri"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Tuma barua pepe ya salamu za siku ya kuzaliwa kwa watu siku yao ya kuzaliwa kiotomatiki"
+
+#: 
+msgid "Back to Finance"
+msgstr "Rudi kwa Fedha"
+
+#: 
+msgid "Back to Group"
+msgstr "Rudi kwa Kikundi"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Haiwezekani kuandaa ombi."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Kamata makosa ya JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Kamata makosa yanayojirudia"
+
+#: 
+msgid "Check #"
+msgstr "Nambari ya Hundi #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Jina la kanisa, anwani, au maelezo ya mawasiliano"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Toleo la ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Kiwango cha ukusanyaji"
+
+#: 
+msgid "Count unique installs"
+msgstr "Hesabu usakinishaji wa kipekee"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Data inashughulikiwa na PostHog kwenye miundombinu ya EU."
+
+#: 
+msgid "Date is required"
+msgstr "Tarehe inahitajika"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Imefutwa kwa mafanikio"
+
+#: 
+msgid "Deposit #"
+msgstr "Amana #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Stakabadhi ya Amana"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Hariri Ahadi ya Mchango"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Hariri ahadi ya mchango au malipo yaliyopo"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Kuhariri Malipo"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Kuhariri Ahadi ya Mchango"
+
+#: 
+msgid "Enable (full)"
+msgstr "Wezesha (kamili)"
+
+#: 
+msgid "Errors only"
+msgstr "Makosa peke yake"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Makosa — makosa ya seva na vighairi vya JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Imeshindwa kuunda ahadi ya mchango"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Imeshindwa kufuta ahadi ya mchango"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Imeshindwa kusimba jibu la malipo"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Imeshindwa kupata ahadi ya mchango"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Imeshindwa kusasisha ahadi ya mchango"
+
+#: 
+msgid "Family is required"
+msgstr "Familia inahitajika"
+
+#: 
+msgid "Financial data"
+msgstr "Data ya fedha"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Kamili — yote yaliyotajwa hapo juu pamoja na mionekano ya ukurasa"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Kamili — mionekano ya ukurasa, maonyo, makosa, na vighairi vya JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Muhtasari wa Mfuko"
+
+#: 
+msgid "Group key is required"
+msgstr "Ufunguo wa kikundi unahitajika"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Heri ya Siku ya Kuzaliwa"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Saidia kuboresha ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Anwani za IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID ya Usakinishaji"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Muhtasari shirikishi wa ahadi dhidi ya malipo kwa mfuko ukiwa na upangaji, utafutaji, na usafirishaji."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Ya ndani: tarehe ya mwisho barua pepe za siku ya kuzaliwa zilipotumwa (YYYY-MM-DD). Usihariri kwa mkono."
+
+#: 
+msgid "JS exceptions"
+msgstr "Vighairi vya JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Kiwango cha kumbukumbu + ujumbe"
+
+#: 
+msgid "Member or family records"
+msgstr "Rekodi za mwanachama au familia"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Badilisha jukumu la mwanachama huyu wa kikundi"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Hitilafu ya mtandao, tafadhali jaribu tena"
+
+#: 
+msgid "Never sent"
+msgstr "Haijawahi kutumwa"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Hakuna amana / unda amana mpya"
+
+#: 
+msgid "No pledge"
+msgstr "Hakuna ahadi ya mchango"
+
+#: 
+msgid "No thanks"
+msgstr "Hapana, asante"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Isiyokatwa"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Isiyokatwa ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Kiasi kisichokatwa hakiwezi kuzidi kiasi cha mfuko"
+
+#: 
+msgid "None (disabled)"
+msgstr "Hakuna (imezimwa)"
+
+#: 
+msgid "OS family"
+msgstr "Familia ya OS"
+
+#: 
+msgid "Overpaid"
+msgstr "Umelipwa zaidi"
+
+#: 
+msgid "PHP version"
+msgstr "Toleo la PHP"
+
+#: 
+msgid "Page route"
+msgstr "Njia ya ukurasa"
+
+#: 
+msgid "Payment Details"
+msgstr "Maelezo ya Malipo"
+
+#: 
+msgid "Payment Method"
+msgstr "Njia ya Malipo"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Panga msaada wa wakati wa utekelezaji"
+
+#: 
+msgid "Please enter a date"
+msgstr "Tafadhali ingiza tarehe"
+
+#: 
+msgid "Please select a family"
+msgstr "Tafadhali chagua familia"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Tafadhali chagua mfuko kwa safu zote"
+
+#: 
+msgid "Pledge Details"
+msgstr "Maelezo ya Ahadi ya Mchango"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Kikundi cha ahadi ya mchango hakikupatikana"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Ahadi za Mchango na Malipo"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Ipa kipaumbele tafsiri"
+
+#: 
+msgid "Purpose"
+msgstr "Madhumuni"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Hifadhi na Ongeza Kingine"
+
+#: 
+msgid "Save failed"
+msgstr "Kuhifadhi kumeshindwa"
+
+#: 
+msgid "Saved successfully"
+msgstr "Imehifadhiwa kwa mafanikio"
+
+#: 
+msgid "Select a fund"
+msgstr "Chagua mfuko"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Nitumie Mimi Mwenyewe Barua Pepe ya Majaribio ya Siku ya Kuzaliwa"
+
+#: 
+msgid "Sending to"
+msgstr "Inatumwa kwa"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Shiriki takwimu za matumizi zisizojulikana na timu ya ChurchCRM ili tujue vipengele na lugha zipi za kutanguliza. Hakuna majina ya kanisa, data ya wanachama, au taarifa za kibinafsi zinazotumwa."
+
+#: 
+msgid "Test email sent to"
+msgstr "Barua pepe ya majaribio imetumwa kwa"
+
+#: 
+msgid "Track adoption"
+msgstr "Fuatilia utumizi"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Aina lazima iwe 'Ahadi ya Mchango' au 'Malipo'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL zenye mistari ya hoja (vitambulisho vya rekodi vimeondolewa)"
+
+#: 
+msgid "Underpaid"
+msgstr "Umelipwa kidogo"
+
+#: 
+msgid "Understand deployments"
+msgstr "Elewa usambazaji"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Elewa matumizi ya vipengele"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Majina ya watumiaji, barua pepe, au majukumu"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Tazama maelezo ya ahadi ya mchango au malipo"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Maonyo — maonyo, makosa, na vighairi vya JS"
+
+#: 
+msgid "What is sent"
+msgstr "Kinachotumwa"
+
+#: 
+msgid "What we collect"
+msgstr "Tunachokusanya"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Tunakutakia siku njema ya kuzaliwa ya miaka %d!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Tunakutakia siku njema ya kuzaliwa!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Akaunti yako haina anwani ya barua pepe iliyohifadhiwa. Ongeza moja kwenye wasifu wako ili kutuma majaribio."
+
+#: 
+msgid "errors+"
+msgstr "makosa+"
+
+#: 
+msgid "full only"
+msgstr "kamili peke yake"
+
+#: 
+msgid "is thinking of you today."
+msgstr "anakufikiria leo."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "njia za ukurasa, lugha inayotumika, toleo la CRM, toleo la PHP, familia ya OS, na kitambulisho cha usakinishaji cha nasibu. Hakuna kingine. Data inahifadhiwa EU."
+

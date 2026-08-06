@@ -17035,3 +17035,423 @@ msgstr "Suriin ang mga bagong nag-sign up mula sa iyong pampublikong form sa iba
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Kumpirmasyon ng Pagbubura ng Pagkakataon para sa Boluntaryo"
 
+#: 
+msgid "# Payments"
+msgstr "# ng mga Bayad"
+
+#: 
+msgid "# Pledges"
+msgstr "# ng mga Pangako"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Ang isang bayad ay isang totoong donasyon na natanggap. Idadagdag ito sa napiling deposito."
+
+#: 
+msgid "Add Fund"
+msgstr "Magdagdag ng Pondo"
+
+#: 
+msgid "Amount ($)"
+msgstr "Halaga ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Ang halaga ay lumagpas sa pinakamataas na pinapayagan (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Nagkaroon ng error habang sine-save. Pakisubukan muli."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonymous na Telemetry"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Antas ng anonymous na telemetry. Kinokontrol kung gaano karaming anonymous na diagnostic na datos ang ibinabahagi sa koponan ng ChurchCRM. Walang pangalan ng simbahan, datos ng miyembro, o personal na impormasyon ang ipinapadala."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Sigurado ka bang gusto mong permanenteng burahin ang rekord ng bayad na ito?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Kailangan ng hindi bababa sa isang paglaan ng pondo"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Hindi bababa sa isang pondo ang dapat may halagang hindi zero"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Awtomatikong magpadala ng email na pagbati sa kaarawan sa mga tao sa kanilang kaarawan"
+
+#: 
+msgid "Back to Finance"
+msgstr "Bumalik sa Pananalapi"
+
+#: 
+msgid "Back to Group"
+msgstr "Bumalik sa Grupo"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Hindi maihanda ang query."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Hulihin ang mga JS error"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Hulihin ang mga paulit-ulit na error"
+
+#: 
+msgid "Check #"
+msgstr "Tseke #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Pangalan ng simbahan, address, o mga detalye ng pakikipag-ugnayan"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Bersyon ng ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Antas ng koleksyon"
+
+#: 
+msgid "Count unique installs"
+msgstr "Bilangin ang mga natatanging pag-install"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Ang Data ay pinoproseso ng PostHog sa imprastraktura ng EU."
+
+#: 
+msgid "Date is required"
+msgstr "Kailangan ang petsa"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Matagumpay na nabura"
+
+#: 
+msgid "Deposit #"
+msgstr "Deposito #"
+
+#: 
+msgid "Edit Pledge"
+msgstr "I-edit ang Pangako"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "I-edit ang umiiral na pangako o bayad"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Ine-edit ang isang Bayad"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Ine-edit ang isang Pangako"
+
+#: 
+msgid "Enable (full)"
+msgstr "I-enable (buo)"
+
+#: 
+msgid "Errors only"
+msgstr "Mga error lamang"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Mga Error — mga error sa server at JS exceptions"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Nabigo sa paglikha ng pangako"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Nabigo sa pagbura ng pangako"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Nabigo sa pag-encode ng tugon sa bayad"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Nabigo sa pagkuha ng pangako"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Nabigo sa pag-update ng pangako"
+
+#: 
+msgid "Family is required"
+msgstr "Kailangan ang pamilya"
+
+#: 
+msgid "Financial data"
+msgstr "Datos ng pananalapi"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Buo — lahat ng nasa itaas kasama ang mga page view"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Buo — mga page view, babala, error, at JS exceptions"
+
+#: 
+msgid "Fund Summary"
+msgstr "Buod ng Pondo"
+
+#: 
+msgid "Group key is required"
+msgstr "Kailangan ang susi ng grupo"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Maligayang Kaarawan"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Tumulong sa pagpapabuti ng ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Mga IP address"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID ng Pag-install"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktibong buod ng mga pangako kumpara sa mga bayad ayon sa pondo na may pag-uuri, paghahanap, at pag-export."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Panloob: huling petsa na naipadala ang mga email sa kaarawan (YYYY-MM-DD). Huwag i-edit nang manu-mano."
+
+#: 
+msgid "JS exceptions"
+msgstr "Mga JS exception"
+
+#: 
+msgid "Log level + message"
+msgstr "Antas ng log + mensahe"
+
+#: 
+msgid "Member or family records"
+msgstr "Mga rekord ng miyembro o pamilya"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Baguhin ang papel ng miyembro ng grupong ito"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Error sa network, pakisubukan muli"
+
+#: 
+msgid "Never sent"
+msgstr "Hindi pa naipadala"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Walang deposito / lumikha ng bagong deposito"
+
+#: 
+msgid "No pledge"
+msgstr "Walang pangako"
+
+#: 
+msgid "No thanks"
+msgstr "Hindi na salamat"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Hindi Mababawas"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Hindi Mababawas ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Ang halagang hindi mababawas ay hindi maaaring lumampas sa halaga ng pondo"
+
+#: 
+msgid "None (disabled)"
+msgstr "Wala (hindi pinagana)"
+
+#: 
+msgid "OS family"
+msgstr "Pamilya ng OS"
+
+#: 
+msgid "Overpaid"
+msgstr "Sobrang Bayad"
+
+#: 
+msgid "PHP version"
+msgstr "Bersyon ng PHP"
+
+#: 
+msgid "Page route"
+msgstr "Ruta ng pahina"
+
+#: 
+msgid "Payment Details"
+msgstr "Mga Detalye ng Bayad"
+
+#: 
+msgid "Payment Method"
+msgstr "Paraan ng Bayad"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Planuhin ang suporta sa runtime"
+
+#: 
+msgid "Please enter a date"
+msgstr "Mangyaring magpasok ng petsa"
+
+#: 
+msgid "Please select a family"
+msgstr "Mangyaring pumili ng pamilya"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Mangyaring pumili ng pondo para sa lahat ng row"
+
+#: 
+msgid "Pledge Details"
+msgstr "Mga Detalye ng Pangako"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Hindi nahanap ang grupo ng pangako"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Mga Pangako at Bayad"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Unahin ang mga pagsasalin"
+
+#: 
+msgid "Purpose"
+msgstr "Layunin"
+
+#: 
+msgid "Save and Add Another"
+msgstr "I-save at Magdagdag ng Isa Pa"
+
+#: 
+msgid "Save failed"
+msgstr "Nabigo ang pag-save"
+
+#: 
+msgid "Saved successfully"
+msgstr "Matagumpay na na-save"
+
+#: 
+msgid "Select a fund"
+msgstr "Pumili ng pondo"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Magpadala ng Test na Email sa Kaarawan sa Aking Sarili"
+
+#: 
+msgid "Sending to"
+msgstr "Ipinapadala sa"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Ibahagi ang anonymous na mga istatistika ng paggamit sa koponan ng ChurchCRM upang malaman namin kung aling mga tampok at wika ang uunahin. Walang pangalan ng simbahan, datos ng miyembro, o personal na impormasyon ang ipinapadala."
+
+#: 
+msgid "Test email sent to"
+msgstr "Naipadala ang test na email sa"
+
+#: 
+msgid "Track adoption"
+msgstr "Subaybayan ang paggamit"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Ang uri ay dapat na 'Pangako' o 'Bayad'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "Mga URL na may query string (ang mga ID ng rekord ay tinatanggal)"
+
+#: 
+msgid "Underpaid"
+msgstr "Kulang ang Bayad"
+
+#: 
+msgid "Understand deployments"
+msgstr "Unawain ang mga deployment"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Unawain ang paggamit ng mga tampok"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Mga pangalan ng gumagamit, email, o mga papel"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Tingnan ang mga detalye ng pangako o bayad"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Mga Babala — mga babala, error, at JS exceptions"
+
+#: 
+msgid "What is sent"
+msgstr "Ano ang ipinapadala"
+
+#: 
+msgid "What we collect"
+msgstr "Ano ang aming kinokolekta"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Binabati kita sa iyong %d taong kaarawan!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Binabati kita sa iyong magandang kaarawan!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Ang iyong account ay walang email address na naka-file. Magdagdag ng isa sa iyong profile upang magpadala ng test."
+
+#: 
+msgid "errors+"
+msgstr "mga error+"
+
+#: 
+msgid "full only"
+msgstr "buo lamang"
+
+#: 
+msgid "is thinking of you today."
+msgstr "nag-iisip sa iyo ngayon."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "mga ruta ng pahina, aktibong lokal, bersyon ng CRM, bersyon ng PHP, pamilya ng OS, at isang random na ID ng pag-install. Wala nang iba. Ang data ay nakaimbak sa EU."
+
