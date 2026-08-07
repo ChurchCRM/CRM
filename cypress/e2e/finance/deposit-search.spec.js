@@ -203,13 +203,13 @@ describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
       function parseCsvRow(line) {
         const fields = [];
         let i = 0;
-        while (i <= line.length) {
+        while (i < line.length) {
           if (line[i] === '"') {
             // Quoted field — scan to the closing quote, collapsing "" → "
             let field = '';
             i++;
             while (i < line.length) {
-              if (line[i] === '"' && line[i + 1] === '"') {
+              if (line[i] === '"' && i + 1 < line.length && line[i + 1] === '"') {
                 field += '"';
                 i += 2;
               } else if (line[i] === '"') {
