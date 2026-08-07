@@ -55,11 +55,13 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
     containerFinder(context);
   }
 
-  // Items inside the menu must be accessible (not hidden or disabled).
+  // Items inside the menu must be accessible — Bootstrap disables <a> items
+  // via the .disabled CSS class (not the HTML disabled attribute, which is
+  // invalid on anchors and always passes should("not.be.disabled")).
   cy.get("@menu")
     .find(".dropdown-item")
     .first()
-    .should("not.be.disabled");
+    .should("not.have.class", "disabled");
 
   // Close the menu before next iteration to avoid state leakage.
   cy.get("@trigger").click();
