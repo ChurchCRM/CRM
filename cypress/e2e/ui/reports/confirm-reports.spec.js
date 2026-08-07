@@ -372,6 +372,8 @@ describe("Confirmation Reports - MVC Routes", () => {
             cy.get("#verifyEmail").click();
             cy.wait("@previewOk", { timeout: 10000 });
 
+            // Error container must be hidden after a successful fetch (resetModal clears it)
+            cy.get("#previewFetchError").should("have.class", "d-none");
             // Preview should populate without TypeError
             cy.get('[data-cy="modal-recipient-count"]').should("be.visible");
         });

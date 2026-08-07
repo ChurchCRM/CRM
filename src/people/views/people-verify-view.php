@@ -275,6 +275,9 @@ if ($emailErrorReason !== '') {
             document.getElementById('modalPreview').classList.add('d-none');
             document.getElementById('modalResultBanner').classList.add('d-none');
             document.getElementById('modalResultBanner').innerHTML = '';
+            // Clear fetch-error banner (does not touch #modalPreview children)
+            document.getElementById('previewFetchError').classList.add('d-none');
+            document.getElementById('previewFetchError').innerHTML = '';
             // Guard: showInModalResult() may have replaced #modalSendBtn
             var sendBtn = document.getElementById('modalSendBtn');
             if (sendBtn) {
