@@ -118,7 +118,21 @@ describe("Deposit Search: row selection and export buttons", () => {
     });
   });
 
-  it("checking individual row enables export buttons", () => {
+  it("Delete button is present but disabled when no rows are selected", () => {
+    cy.get("#btnDeleteSelected").should("exist").and("be.disabled");
+  });
+
+  it("Delete button enables when rows are selected", () => {
+    cy.get("body").then(($body) => {
+      const rowCount = $body.find("#depositsTable tbody tr .row-select").length;
+      if (rowCount === 0) return;
+
+      cy.get("#depositsTable tbody tr .row-select").first().check();
+      cy.get("#btnDeleteSelected").should("not.be.disabled");
+    });
+  });
+
+
     cy.get("body").then(($body) => {
       const rowCount = $body.find("#depositsTable tbody tr .row-select").length;
       if (rowCount === 0) return;

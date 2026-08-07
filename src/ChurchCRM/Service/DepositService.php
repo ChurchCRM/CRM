@@ -19,6 +19,23 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class DepositService {
     /**
+     * Column headers for deposit payment CSV exports.
+     * Used by both the bulk and per-deposit CSV endpoints.
+     * Extracted here so all callers stay in sync automatically.
+     */
+    public const EXPORT_HEADERS = [
+        'Deposit ID',
+        'Pledge ID',
+        'Family Name',
+        'Date',
+        'Amount',
+        'Fund',
+        'Method',
+        'Check No',
+        'Comment',
+        'Fiscal Year',
+    ];
+    /**
      * @return \stdClass[]
      */
     public function getPayments($depID = null): array
@@ -112,45 +129,6 @@ class DepositService {
 
     public function getDepositPDF($depID): void
     {
-    }
-
-    /**
-     * Get CSV export data for a single deposit, RFC 4180-compliant and
-     * formula-injection-safe via CsvExporter.
-     */
-    public function getDepositCSV(string $depID): \stdClass
-    {
-        AuthService::requireUserGroupMembership('bFinance');
-
-        $rows = $this->getDepositsForExport([(int) $depID]);
-        if (empty($rows)) {
-            throw new \Exception('No Payments on this Deposit', 404);
-        }
-
-        $headers = [
-            gettext('Deposit ID'),
-            gettext('Pledge ID'),
-            gettext('Family Name'),
-            gettext('Date'),
-            gettext('Amount'),
-            gettext('Fund'),
-            gettext('Method'),
-            gettext('Check No'),
-            gettext('Comment'),
-            gettext('Fiscal Year'),
-        ];
-
-        $exporter = new CsvExporter();
-        $exporter->insertHeaders($headers);
-        foreach ($rows as $row) {
-            $exporter->insertRow(array_values($row));
-        }
-
-        $CSVReturn = new \stdClass();
-        $CSVReturn->content = $exporter->getContent();
-        $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-' . $depID . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
-
-        return $CSVReturn;
     }
 
     public function getViewURI(string $Id): string

@@ -557,35 +557,6 @@ class FinancialService
     {
     }
 
-    public function getDepositCSV(string $depID): \stdClass
-    {
-        AuthService::requireUserGroupMembership('bFinance');
-        $retstring = '';
-        $line = [];
-        $payments = $this->getPayments($depID);
-        if (count($payments) === 0) {
-            throw new \Exception('No Payments on this Deposit', 404);
-        }
-        foreach ($payments[0] as $key => $value) {
-            $line[] = $key;
-        }
-        $retstring = implode(',', $line) . "\n";
-        foreach ($payments as $payment) {
-            $line = [];
-            foreach ($payment as $value) {
-                $line[] = str_replace(',', '', $value);
-            }
-            $retstring .= implode(',', $line) . "\n";
-        }
-
-        $CSVReturn = new \stdClass();
-        $CSVReturn->content = $retstring;
-        // Export file
-        $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-' . $depID . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
-
-        return $CSVReturn;
-    }
-
     public function getCurrencyTypeOnDeposit(string $currencyID, string $depositID)
     {
         // Get the list of Currency denominations
