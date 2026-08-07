@@ -363,12 +363,12 @@ function initializeGroupEditor() {
         data: null,
         render: (data, type, full, meta) => {
           const isProtected = full.lst_OptionName === "Student" || full.lst_OptionName === "Teacher";
-          const escapedName = $('<div>').text(full.lst_OptionName).html().replace(/"/g, '&quot;');
+          const escapedName = $("<div>").text(full.lst_OptionName).html().replace(/"/g, "&quot;");
           if (isProtected) {
-            const titleAttr = i18next.t('This role cannot be deleted.').replace(/"/g, '&quot;');
-            return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" disabled title="${titleAttr}" data-role-name="${escapedName}">${i18next.t('Delete')}</button>`;
+            const titleAttr = i18next.t("This role cannot be deleted.").replace(/"/g, "&quot;");
+            return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" disabled title="${titleAttr}" data-role-name="${escapedName}">${i18next.t("Delete")}</button>`;
           }
-          return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" data-role-name="${escapedName}">${i18next.t('Delete')}</button>`;
+          return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" data-role-name="${escapedName}">${i18next.t("Delete")}</button>`;
         },
       },
     ],
