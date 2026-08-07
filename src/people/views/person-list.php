@@ -601,7 +601,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 // These columns are hidden on-screen (see columnDefs above) but exported.
                 foreach ($exportCustomFields as $cf) {
                     $columnId++;
-                    echo json_encode(['title' => $cf->getName()]) . ",\n";
+                    echo json_encode(['title' => $cf->getName()], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) . ",\n";
                 }
                 ?>
                 {
