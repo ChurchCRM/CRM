@@ -13,7 +13,15 @@
  *   - Family 1 (Campbell): pledges in FYID 22 (2018), none in current FY
  *   - Deposits: deposit_dep rows include IDs 1–5, dates in 2018 (FY22)
  *   - Pledge Dashboard: pledges in FYID 22, 23, 25
+ *
+ * ⚠️  SEED-DATA DEPENDENCY: SEED_FYID_2018 is the single source of truth
+ *   for all `fyid=22` references in this file. If seed.sql changes (rows
+ *   moved to a different fiscal year), update this constant and the seed
+ *   comments above; the rest of the spec will follow automatically.
  */
+
+/** Fiscal-year ID 22 maps to calendar year 2018 in the seed data. */
+const SEED_FYID_2018 = 22;
 
 describe("Fiscal-Year Scoping — Issue #9378", () => {
   // ──────────────────────────────────────────────────────────────────
@@ -81,15 +89,15 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       );
 
       // Click FY22 pill (2018) — should still show the same rows
-      cy.get(".pledge-fy-pill[data-fy='22']").should("exist").as("fy22Pill");
+      cy.get(`.pledge-fy-pill[data-fy='${SEED_FYID_2018}']`).should("exist").as("fy22Pill");
       cy.intercept("GET", "**/api/payments/family/1/list*").as("fy22");
       cy.get("@fy22Pill").click();
       cy.wait("@fy22").then((interception) => {
-        expect(interception.request.url).to.include("fyid=22");
+        expect(interception.request.url).to.include(`fyid=${SEED_FYID_2018}`);
       });
       cy.get(".pledge-fy-pill.active")
         .invoke("data", "fy")
-        .should("eq", 22);
+        .should("eq", SEED_FYID_2018);
     });
 
     it("persists FY selection in URL params", () => {
@@ -139,8 +147,8 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       // Without any FY filter, check we can see at least some deposit (current FY default)
       // Navigate to a FY with known seed deposits: FY 22 (2018)
       // This triggers a page reload with ?fyid=22
-      cy.get("#deposit-fyid").select("22");
-      cy.url().should("include", "fyid=22");
+      cy.get("#deposit-fyid").select(String(SEED_FYID_2018));
+      cy.url().should("include", `fyid=${SEED_FYID_2018}`);
 
       // Deposits table should show deposits from 2018 (FY22)
       cy.get(".card").contains("Recent Deposits").parent().parent()
@@ -149,7 +157,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
     });
 
     it("All Time option shows all deposits (no fyid in URL)", () => {
-      cy.visit("finance/?fyid=22");
+      cy.visit(`finance/?fyid=${SEED_FYID_2018}`);
       cy.get("#deposit-fyid").select("0"); // "0" = All Time
       cy.url().then((url) => {
         // Either no fyid or fyid=0 in URL
@@ -183,10 +191,10 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.visit("finance/pledge/dashboard");
 
       // Pick FY 22 (2018) which has seed data
-      cy.get("#fyid").select("22");
+      cy.get("#fyid").select(String(SEED_FYID_2018));
 
       // URL should now contain fyid=22 (form GET submit)
-      cy.url().should("include", "fyid=22");
+      cy.url().should("include", `fyid=${SEED_FYID_2018}`);
 
       // Both Fund Summary and Family Pledges reload together (same page request)
       cy.contains("Pledge Dashboard");
@@ -195,7 +203,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
     });
 
     it("FY 22 (2018) shows pledge data that current FY does not", () => {
-      cy.visit("finance/pledge/dashboard?fyid=22");
+      cy.visit(`finance/pledge/dashboard?fyid=${SEED_FYID_2018}`);
       cy.contains("Pledge Dashboard");
 
       // Seed has pledges in FY22 — fund total section should render
@@ -261,9 +269,9 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.wait("@depositsInit");
 
       cy.intercept("GET", "**/api/deposits*").as("depositsFY22");
-      cy.get("#deposit-slip-fyid").select("22");
+      cy.get("#deposit-slip-fyid").select(String(SEED_FYID_2018));
       cy.wait("@depositsFY22").then((interception) => {
-        expect(interception.request.url).to.include("fyid=22");
+        expect(interception.request.url).to.include(`fyid=${SEED_FYID_2018}`);
       });
 
       // Table should show the 2018 deposits (seed has 5 deposits in FY22)
