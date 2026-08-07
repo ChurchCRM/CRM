@@ -123,6 +123,7 @@ describe("Pledge update regression — pledge_denominations_pdem table (#9376)",
                     200,
                 ).then((createResp) => {
                     const groupKey = createResp.body.groupKey;
+                    expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
 
                     // PUT with cashDenominations payload — the field is currently a no-op
                     // server-side, but the DELETE FROM pledge_denominations_pdem must succeed.

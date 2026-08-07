@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `pledge_denominations_pdem` (
   `pdem_id`                  mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `pdem_plg_GroupKey`        varchar(64)           NOT NULL,
   `plg_depID`                mediumint(9) unsigned DEFAULT NULL,
-  `pdem_denominationID`      mediumint(9)          DEFAULT NULL,
+  `pdem_denominationID`      mediumint(9) unsigned NOT NULL DEFAULT '0',
   `pdem_denominationQuantity` int(11)               DEFAULT NULL,
   PRIMARY KEY (`pdem_id`),
   KEY `pdem_groupkey_idx`           (`pdem_plg_GroupKey`),
