@@ -128,7 +128,8 @@ function sendVerifyReportEmail(Request $request, Response $response, array $args
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=1&reason=unexpected');
     }
 
-    // Single-family path: redirect to the family page, surfacing errors when the send fails
+    // Single-family path: on success redirect to the family page; on failure redirect to
+    // /people/verify which already handles all EmailsError display logic.
     if ($familyId !== null) {
         if (!$result->isSuccess()) {
             $query = http_build_query([
@@ -137,10 +138,7 @@ function sendVerifyReportEmail(Request $request, Response $response, array $args
                 'sent'        => $result->sentCount,
                 'failed'      => $result->failedCount,
             ]);
-            return SlimUtils::renderRedirect(
-                $response,
-                SystemURLs::getRootPath() . '/people/family/' . $familyId . '?' . $query
-            );
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?' . $query);
         }
         return SlimUtils::renderRedirect(
             $response,

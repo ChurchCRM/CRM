@@ -220,8 +220,11 @@ if ($emailErrorReason !== '') {
                                     <th>
                                         <?= gettext('Family email') ?>
                                         <span class="ms-1 text-muted"
-                                              title="<?= gettext('Member emails are also used when no family email is on file') ?>"
-                                              data-bs-toggle="tooltip">
+                                              title="<?= htmlspecialchars(gettext('Member emails are also used when no family email is on file')) ?>"
+                                              data-bs-toggle="tooltip"
+                                              tabindex="0"
+                                              role="img"
+                                              aria-label="<?= htmlspecialchars(gettext('Member emails are also used when no family email is on file')) ?>">
                                             <i class="ti ti-info-circle" aria-hidden="true"></i>
                                         </span>
                                     </th>
