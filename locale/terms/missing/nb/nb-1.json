@@ -1,14 +1,19 @@
 {
-  "one": {
-    "Copied {{count}} members": "Kopierte {{count}} medlem",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Denne listen har {{count}} mottaker — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "For mange mottakere for e-postklienten ({{count}} > {{max}}). Bruk Kopier adresser i stedet.",
-    "{{count}} min left": "{{count}} min igjen"
+  "Data": "Data",
+  "Copied {{count}} members": {
+    "one": "Kopierte {{count}} medlem",
+    "other": "Kopierte {{count}} medlemmer"
   },
-  "other": {
-    "Copied {{count}} members": "Kopierte {{count}} medlemmer",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Denne listen har {{count}} mottakere — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "For mange mottakere for e-postklienten ({{count}} > {{max}}). Bruk Kopier adresser i stedet.",
-    "{{count}} min left": "{{count}} min igjen"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Denne listen har {{count}} mottaker — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet.",
+    "other": "Denne listen har {{count}} mottakere — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "For mange mottakere for e-postklient ({{count}} > {{max}}). Bruk Kopier adresser i stedet.",
+    "other": "For mange mottakere for e-postklient ({{count}} > {{max}}). Bruk Kopier adresser i stedet."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} min igjen",
+    "other": "{{count}} min igjen"
   }
 }

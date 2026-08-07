@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "Da sao chep {{count}} thanh vien",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Danh sach nay co {{count}} nguoi nhan — qua nhieu cho lien ket mailto:. Vui long su dung Sao chep dia chi.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Qua nhieu nguoi nhan cho ung dung email ({{count}} > {{max}}). Vui long su dung Sao chep dia chi.",
-    "{{count}} min left": "Con {{count}} phut"
+  "Copied {{count}} members": {
+    "one": "Đã sao chép {{count}} thành viên",
+    "other": "Đã sao chép {{count}} thành viên"
   },
-  "other": {
-    "Copied {{count}} members": "Da sao chep {{count}} thanh vien",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Danh sach nay co {{count}} nguoi nhan — qua nhieu cho lien ket mailto:. Vui long su dung Sao chep dia chi.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Qua nhieu nguoi nhan cho ung dung email ({{count}} > {{max}}). Vui long su dung Sao chep dia chi.",
-    "{{count}} min left": "Con {{count}} phut"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Danh sách này có {{count}} người nhận — quá nhiều cho liên kết mailto:. Hãy dùng Sao chép địa chỉ thay thế.",
+    "other": "Danh sách này có {{count}} người nhận — quá nhiều cho liên kết mailto:. Hãy dùng Sao chép địa chỉ thay thế."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Quá nhiều người nhận cho ứng dụng email ({{count}} > {{max}}). Hãy dùng Sao chép địa chỉ thay thế.",
+    "other": "Quá nhiều người nhận cho ứng dụng email ({{count}} > {{max}}). Hãy dùng Sao chép địa chỉ thay thế."
+  },
+  "{{count}} min left": {
+    "one": "Còn {{count}} phút",
+    "other": "Còn {{count}} phút"
   }
 }

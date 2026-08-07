@@ -83,7 +83,7 @@
   },
   "current": {
     "versions": ["7.5.1"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.6.0-remove-orphaned-query-parameters.sql"],
     "dbVersion": "7.6.0"
   }
 }

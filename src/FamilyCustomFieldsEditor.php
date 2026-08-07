@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMaster;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\CSRFUtils;
@@ -153,20 +154,23 @@ if (isset($_POST['SaveChanges'])) {
                         ->setOptionName(gettext('Default Option'));
                     $listOption->save();
 
-                    $newSpecial ="'$newListID'";
-                } else {
-                    $newSpecial = 'NULL';
-                }
+                } // end if ($newFieldType == 12)
 
-                // Insert into the master table
+                // Insert into the master table via ORM (avoids SQL injection from user-supplied field name/type)
                 $newOrderID = $last + 1;
-                $sSQL ="INSERT INTO `family_custom_master`
-                        (`fam_custom_Order` , `fam_custom_Field` , `fam_custom_Name` ,  `fam_custom_Special` , `fam_custom_FieldSec` , `type_ID`)
-                        VALUES ('" . $newOrderID ."', 'c" . $newFieldNum ."', '" . $newFieldName ."'," . $newSpecial .", '" . $newFieldSec ."', '" . $newFieldType ."');";
-                RunQuery($sSQL);
+                $familyCustomMaster = new FamilyCustomMaster();
+                $familyCustomMaster
+                    ->setOrder($newOrderID)
+                    ->setField('c' . $newFieldNum)
+                    ->setName($newFieldName)
+                    ->setCustomSpecial($newFieldType == 12 ? $newListID : null)
+                    ->setFieldSecurity($newFieldSec)
+                    ->setTypeId($newFieldType);
+                $familyCustomMaster->save();
 
                 // Insert into the custom fields table
-                $sSQL = 'ALTER TABLE `family_custom` ADD `c' . $newFieldNum . '` ';
+                // $newFieldNum is (int)-cast from a DB column count; DDL identifiers cannot be parameterised.
+                $sSQL = 'ALTER TABLE `family_custom` ADD `c' . $newFieldNum . '` '; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
                 switch ($newFieldType) {
                     case 1:
@@ -207,7 +211,7 @@ if (isset($_POST['SaveChanges'])) {
                 }
 
                 $sSQL .= ' DEFAULT NULL ;';
-                RunQuery($sSQL);
+                RunQuery($sSQL); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
                 $bNewNameError = false;
             }
@@ -300,7 +304,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                     var csrfInput = document.createElement('input');
                     csrfInput.type = 'hidden';
                     csrfInput.name = 'csrf_token';
-                    csrfInput.value = <?= json_encode(CSRFUtils::generateToken('deleteFamilyCustomField')) ?>;
+                    csrfInput.value = <?= json_encode(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>;
                     form.appendChild(csrfInput);
 
                     document.body.appendChild(form);
@@ -314,6 +318,23 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     $(document).on('click', '.js-delete-field', function () {
         var btn = $(this);
         confirmDeleteField(btn.data('field-name'), btn.data('field-id'));
+    });
+
+    // Reorder (up/down) — POST with CSRF so the 405 guard in RowOps is satisfied.
+    $(document).on('click', '.js-reorder-field', function () {
+        var btn = $(this);
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'FamilyCustomFieldsRowOps.php';
+        [['OrderID', btn.data('order-id')], ['Field', btn.data('field-id')],
+         ['Action', btn.data('direction')], ['csrf_token', <?= json_encode(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>]]
+        .forEach(function (p) {
+            var inp = document.createElement('input');
+            inp.type = 'hidden'; inp.name = p[0]; inp.value = p[1];
+            form.appendChild(inp);
+        });
+        document.body.appendChild(form);
+        form.submit();
     });
 
     <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
@@ -482,10 +503,10 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                             <div class="dropdown-menu dropdown-menu-end">
                                 <?php
                                 if ($row > 1) {
-                                    echo '<a class="dropdown-item" href="FamilyCustomFieldsRowOps.php?OrderID=' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                    echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</button>';
                                 }
                                 if ($row < $numRows) {
-                                    echo '<a class="dropdown-item" href="FamilyCustomFieldsRowOps.php?OrderID=' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                    echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</button>';
                                 }
                                 if ($row != 1 || $row < $numRows) {
                                     echo '<div class="dropdown-divider"></div>';

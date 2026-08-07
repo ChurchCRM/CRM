@@ -1252,18 +1252,6 @@ msgid "Type of Group"
 msgstr "Ryhmän tyyppi"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Ryhmän jäsenten roolit"
-
-#: 
-msgid "Clone roles"
-msgstr "Kloonaa roolit"
-
-#: 
-msgid "from group"
-msgstr "ryhmästä"
-
-#: 
 msgid "Select a group"
 msgstr "Valitse ryhmä"
 
@@ -1660,16 +1648,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Shekin numero ei kelpaa käteismaksuun"
 
 #: 
-msgid "Deposit closed"
-msgstr "Talletus suljettu"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Maksusuunnitelma"
-
-#: 
-msgid "Select Schedule"
-msgstr "Valitse aikataulu"
 
 #: 
 msgid "Weekly"
@@ -1692,28 +1672,8 @@ msgid "Other"
 msgstr "Muu"
 
 #: 
-msgid "Payment by"
-msgstr "Maksaja"
-
-#: 
-msgid "Scan check"
-msgstr "Skannaa shekki"
-
-#: 
-msgid "find family from check account #"
-msgstr "etsi perhe shekkitilin numerolla #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Aseta perheen oletusshekkitilin numero"
-
-#: 
 msgid "Fund Name"
 msgstr "Rahaston nimi"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Vähennyskelvoton osuus"
 
 #: 
 msgid "Age"
@@ -2566,10 +2526,6 @@ msgid "Groups"
 msgstr "Ryhmät"
 
 #: 
-msgid "Total $"
-msgstr "Yhteensä "
-
-#: 
 msgid "with this property..."
 msgstr "tällä ominaisuudella..."
 
@@ -2694,10 +2650,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Tietojen vahvistusraportin allekirjoittaja"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Lupausyhteenvedon teksti"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Hakemistoraportin teksti"
 
@@ -2761,11 +2713,6 @@ msgstr "Ominaisuustyypit"
 #: 
 msgid "Zip Code"
 msgstr "Postinumero"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Kenttä"
 
 #. Context: query_qry
 #: 
@@ -5820,10 +5767,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Lisää lisähuomautuksia tästä talletuksesta"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Summa ylittää suurimman sallitun arvon (999999,99)."
-
-#: 
 msgid "Checks"
 msgstr "Shekit"
 
@@ -5850,10 +5793,6 @@ msgstr "Ei käteistä"
 #: 
 msgid "No Checks"
 msgstr "Ei shekkejä"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Vähennyskelvoton summa ylittää suurimman sallitun arvon (999999,99)."
 
 #: 
 msgid "Payments"
@@ -6466,10 +6405,6 @@ msgid "%d missing role"
 msgstr "%d puuttuvaa roolia"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Maksu on vastaanotettu lahjoitus. Se lisätään nykyiseen talletusliuskaan."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Sitoumus on antamissitoumusta. Se ei ole sidottu talletusliuskaan."
 
@@ -6766,10 +6701,6 @@ msgid "Name & Identity"
 msgstr "Nimi ja henkilöllisyys"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Uusi talletus luodaan"
-
-#: 
 msgid "New Payment"
 msgstr "Uusi maksu"
 
@@ -6888,10 +6819,6 @@ msgstr "Joitakin sovelluksen esivaatimuksia ei ole täytetty"
 #: 
 msgid "State (Other)"
 msgstr "Osavaltio/Maakunta (Muu)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Yhteenveto sitoumuksista vs. maksut rahastoittain tilikaudelta."
 
 #: 
 msgid "System Health"
@@ -8873,10 +8800,6 @@ msgid "Account Recovery"
 msgstr "Tilin palautus"
 
 #: 
-msgid "Add Family"
-msgstr "Lisää perhe"
-
-#: 
 msgid "Add First Family"
 msgstr "Lisää ensimmäinen perhe"
 
@@ -8895,10 +8818,6 @@ msgstr "Lisää muistiinpano"
 #: 
 msgid "Add People to the Family"
 msgstr "Lisää henkilöitä perheeseen"
-
-#: 
-msgid "Add Person"
-msgstr "Lisää henkilö"
 
 #: 
 msgid "Add Students to Cart"
@@ -9277,10 +9196,6 @@ msgid "Delete Person"
 msgstr "Poista henkilö"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Poista lupaus"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Tämän ominaisuuden poistaminen poistaa myös kaikki sen liitokset henkilö-, perhe- tai ryhmätietueista."
 
@@ -9443,10 +9358,6 @@ msgstr "TV %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Perheet jakavat osoitteen ja puhelinnumeron."
-
-#: 
-msgid "Family List"
-msgstr "Perheluettelo"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9645,10 +9556,6 @@ msgid "Letters and Labels"
 msgstr "Kirjeet ja tarrat"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Luettele itse rekisteröitymällä luodut perheet"
-
-#: 
 msgid "Load demo data"
 msgstr "Lataa demotiedot"
 
@@ -9757,10 +9664,6 @@ msgid "Minimum"
 msgstr "Vähintään"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Muokkaa ryhmän jäsenten perherooleja"
-
-#: 
 msgid "Move to Group"
 msgstr "Siirrä ryhmään"
 
@@ -9787,10 +9690,6 @@ msgstr "Uusi"
 #: 
 msgid "New Family"
 msgstr "Uusi perhe"
-
-#: 
-msgid "New Group"
-msgstr "Uusi ryhmä"
 
 #: 
 msgid "New Person"
@@ -9905,10 +9804,6 @@ msgstr "Salasanan palautus"
 #: 
 msgid "Past & next 7 days"
 msgstr "Edelliset ja seuraavat 7 päivää"
-
-#: 
-msgid "People List"
-msgstr "Henkilöluettelo"
 
 #: 
 msgid "People by Classification"
@@ -10089,10 +9984,6 @@ msgstr "Valitse varmuuskopiotiedosto ja napsauta Palauta tietokanta."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Valitse vaihtoehdot yllä ja napsauta varmuuskopiointipainiketta."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Itse rekisteröitymisen raportti"
 
 #: 
 msgid "Send email to families"
@@ -10655,11 +10546,6 @@ msgstr "Osoitteen oletusasetukset"
 msgid "Allow user to add new event"
 msgstr "Salli käyttäjän lisätä uusi tapahtuma"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Alkamispäivä"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Kalenterin asetukset"
@@ -10769,16 +10655,6 @@ msgstr "Sähköpostiluettelot synkronoidaan Mailchimpin kanssa."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Ota sähköposti käyttöön alla olevassa asetuspaneelissa ja määritä sitten SMTP-palvelimesi."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Päättymispäivä"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Kirjoita mikä tahansa seuraavista osista: Nimi, Kaupunki, Osavaltio, Postinumero, Kotipuhelin, Sähköposti tai Työsähköposti."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "Ulkoinen kalenterin API poistettu käytöstä"
@@ -10872,11 +10748,6 @@ msgstr "Sovita mukautettu kenttä tälle arvolle"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Maksimikäyttäjä-ikä"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Jäsen, tavallinen osallistuja jne."
 
@@ -10889,11 +10760,6 @@ msgstr "Jäsenet, jotka liittyivät tietyllä kuukaudella"
 #: 
 msgid "Membership anniversaries"
 msgstr "Jäsenyyden vuosipäivät"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Vähimmäisikä"
 
 #. Context: query_qry
 #: 
@@ -10967,16 +10833,6 @@ msgstr "Henkilön omaisuus, jota käytetään jäsenten poissulkemiseen SMS/teks
 msgid "Person property used to exclude members from email lists"
 msgstr "Henkilön omaisuus, jota käytetään jäsenten poissulkemiseen sähköpostiluetteloista"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Syötä viimeinen päivämäärä kunkin jäsenen kokonaispanoksen laskemiseksi (esim. YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Valitse aloituspäivä kunkin jäsenen kokonaispanoksen laskemiseksi (esim. YYYY-MM-DD). HUOMAUTUS: Voit valita vain päivämääriä, jotka sisältävät lahjoituksia."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11025,11 +10881,6 @@ msgstr "SMTP:tä ei ole konfiguroitu"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Haku"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Toinen tilikausi"
 
@@ -11042,16 +10893,6 @@ msgstr "Toinen tilikausi vertailua varten"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Toinen vapaaehtoisen mahdollisuuden valinta"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Valitse haun kenttä."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Valitse haluamasi perherooli."
 
 #: 
 msgid "Send text message"
@@ -11092,38 +10933,13 @@ msgstr "Syntymäpäiväkuukausi, jolle haluat tietueet palautetuksi."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Haluamasi sukupuoli tietokannan etsimiseen."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Sukupuoli, jolle haluat tietueet palautetuksi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Maksimikäyttäjä-ikä, jolle haluat tietueet palautetuksi."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Jäsenyyden vuosipäivän kuukausi, jolle haluat tietueet palautetuksi."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Vähimmäisikä, jolle haluat tietueet palautetuksi."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Omaisuus, jolle haluat henkilön tietueet palautetuksi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Pyhäkoululuokka, jolle haluat tietueet palautetuksi."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11159,11 +10975,6 @@ msgstr "Vonage SMS:tä ei ole konfiguroitu"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Ilman Vonagea tekstintoiminnot avaavat laitteesi native SMS-sovelluksen tai kopioivat puhelinnumerot leikepöydälle."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Sähköpostiosoite"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11485,10 +11296,6 @@ msgstr "Ominaisuudet"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Taloushallinnon lupa-kyselyjen tunnukset"
-
-#: 
-msgid "Find family"
-msgstr "Etsi perhe"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13591,10 +13398,6 @@ msgstr "Lataa CSV luodaksesi perheitä ja ihmisiä eräajona."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV:ssä on päällekkäisiä sarakkeiden nimiä. Nimeä päällekkäiset sarakkeet uudelleen (esim. lisää \"(2)\" toiseen) ja lataa uudelleen."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Virheellinen suojausmerkki. Yritä uudelleen."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13626,10 +13429,6 @@ msgstr "Pyhäpäivät (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Pyhäpäivät on merkitty tyypin mukaan: Viralliset, Muistopäivät, Pankkivapaat, Kausittaiset ja Uskonnolliset. Jätä kaikki kategoriat valitsematta näyttääksesi kaikki pyhäpäivät tai valitse tietyt tyypit rajaaksesi näyttöä."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Taloudellisen sitoumuksen tunniste puuttuu."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16767,10 +16566,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s perheen %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d merkintää mahtuu vielä."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d tietue(tta) palautettu"
 
@@ -16869,10 +16664,6 @@ msgstr "Vähimmäiskokonaissumma"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Vähimmäistarjous $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Uusi maksu – %1$s Talletus nro %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17281,4 +17072,432 @@ msgstr "Tarkista alla julkisen rekisteröintilomakkeen uudet ilmoittautumiset. M
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Vapaaehtoistehtävän poistamisen vahvistus"
+
+#: 
+msgid "# Payments"
+msgstr "# Maksut"
+
+#: 
+msgid "# Pledges"
+msgstr "# Sitoumukset"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Maksu on vastaanotettu todellinen lahjoitus. Se lisätään valittuun talletukseen."
+
+#: 
+msgid "Add Fund"
+msgstr "Lisää rahasto"
+
+#: 
+msgid "Amount ($)"
+msgstr "Summa ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Summa ylittää sallitun enimmäismäärän (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Tallennuksessa tapahtui virhe. Yritä uudelleen."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonyymi telemetria"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Anonyymi telemetriataso. Määrittää, kuinka paljon anonyymiä diagnostiikkatietoa jaetaan ChurchCRM-tiimille. Seurakunnan nimiä, jäsentietoja tai henkilökohtaisia tietoja ei koskaan lähetetä."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Haluatko varmasti poistaa tämän maksutietueen pysyvästi?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Vähintään yksi rahaston kohdistus vaaditaan"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Vähintään yhdellä rahastolla on oltava nollasta poikkeava summa"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Lähetä syntymäpäiväonnittelusähköposti automaattisesti henkilöille heidän syntymäpäivänään"
+
+#: 
+msgid "Back to Finance"
+msgstr "Takaisin talouteen"
+
+#: 
+msgid "Back to Group"
+msgstr "Takaisin ryhmään"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Kyselyä ei voida valmistella."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Kaappaa JS-virheet"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Kaappaa toistuvat virheet"
+
+#: 
+msgid "Check #"
+msgstr "Shekin #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Seurakunnan nimi, osoite tai yhteystiedot"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM-versio"
+
+#: 
+msgid "Collection level"
+msgstr "Keräystaso"
+
+#: 
+msgid "Count unique installs"
+msgstr "Laske yksilölliset asennukset"
+
+#: 
+msgid "Data"
+msgstr "Tiedot"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Tiedot käsitellään PostHog:lla EU-infrastruktuurissa."
+
+#: 
+msgid "Date is required"
+msgstr "Päivämäärä vaaditaan"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Poistettu onnistuneesti"
+
+#: 
+msgid "Deposit #"
+msgstr "Talletus #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Talletustosite"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Muokkaa sitoumusta"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Muokkaa olemassa olevaa sitoumusta tai maksua"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Maksun muokkaaminen"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Sitoumuksen muokkaaminen"
+
+#: 
+msgid "Enable (full)"
+msgstr "Ota käyttöön (täysi)"
+
+#: 
+msgid "Errors only"
+msgstr "Vain virheet"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Virheet — palvelinvirheet ja JS-poikkeukset"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Sitoumuksen luominen epäonnistui"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Sitoumuksen poistaminen epäonnistui"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Maksuvastauksen koodaaminen epäonnistui"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Sitoumuksen hakeminen epäonnistui"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Sitoumuksen päivittäminen epäonnistui"
+
+#: 
+msgid "Family is required"
+msgstr "Perhe vaaditaan"
+
+#: 
+msgid "Financial data"
+msgstr "Taloustiedot"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Täysi — kaikki edellä mainittu sekä sivunäkymät"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Täysi — sivunäkymät, varoitukset, virheet ja JS-poikkeukset"
+
+#: 
+msgid "Fund Summary"
+msgstr "Rahaston yhteenveto"
+
+#: 
+msgid "Group key is required"
+msgstr "Ryhmäavain vaaditaan"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Hyvää syntymäpäivää"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Auta parantamaan ChurchCRM:ää"
+
+#: 
+msgid "IP addresses"
+msgstr "IP-osoitteet"
+
+#: 
+msgid "Installation UUID"
+msgstr "Asennuksen UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktiivinen sitoumusten ja maksujen yhteenveto rahastoittain lajittelu-, haku- ja vientitoiminnoilla."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Sisäinen: viimeisin päivämäärä, jolloin syntymäpäiväsähköpostit lähetettiin (VVVV-KK-PP). Älä muokkaa manuaalisesti."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS-poikkeukset"
+
+#: 
+msgid "Log level + message"
+msgstr "Lokitaso + viesti"
+
+#: 
+msgid "Member or family records"
+msgstr "Jäsenen tai perheen tietueet"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Muokkaa tämän ryhmän jäsenen roolia"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Verkkovirhe, yritä uudelleen"
+
+#: 
+msgid "Never sent"
+msgstr "Ei koskaan lähetetty"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Ei talletusta / luo uusi talletus"
+
+#: 
+msgid "No pledge"
+msgstr "Ei sitoumusta"
+
+#: 
+msgid "No thanks"
+msgstr "Ei kiitos"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Ei vähennyskelpoinen"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Ei vähennyskelpoinen ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Ei-vähennyskelpoinen summa ei voi ylittää rahaston summaa"
+
+#: 
+msgid "None (disabled)"
+msgstr "Ei mitään (poistettu käytöstä)"
+
+#: 
+msgid "OS family"
+msgstr "Käyttöjärjestelmäperhe"
+
+#: 
+msgid "Overpaid"
+msgstr "Ylimaksuttu"
+
+#: 
+msgid "PHP version"
+msgstr "PHP-versio"
+
+#: 
+msgid "Page route"
+msgstr "Sivureitti"
+
+#: 
+msgid "Payment Details"
+msgstr "Maksun tiedot"
+
+#: 
+msgid "Payment Method"
+msgstr "Maksutapa"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Suunnittele ajonaikainen tuki"
+
+#: 
+msgid "Please enter a date"
+msgstr "Anna päivämäärä"
+
+#: 
+msgid "Please select a family"
+msgstr "Valitse perhe"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Valitse rahasto kaikille riveille"
+
+#: 
+msgid "Pledge Details"
+msgstr "Sitoumuksen tiedot"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Sitoumuksen ryhmää ei löydy"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Sitoumukset & maksut"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Priorisoi käännökset"
+
+#: 
+msgid "Purpose"
+msgstr "Tarkoitus"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Tallenna ja lisää toinen"
+
+#: 
+msgid "Save failed"
+msgstr "Tallennus epäonnistui"
+
+#: 
+msgid "Saved successfully"
+msgstr "Tallennettu onnistuneesti"
+
+#: 
+msgid "Select a fund"
+msgstr "Valitse rahasto"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Lähetä testisyntymäpäiväsähköposti itselleni"
+
+#: 
+msgid "Sending to"
+msgstr "Lähetetään kohteelle"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Jaa anonyymiä käyttötilastoa ChurchCRM-tiimille, jotta tiedämme, mitä ominaisuuksia ja kieliä priorisoida. Seurakunnan nimiä, jäsentietoja tai henkilökohtaisia tietoja ei koskaan lähetetä."
+
+#: 
+msgid "Test email sent to"
+msgstr "Testisähköposti lähetetty kohteelle"
+
+#: 
+msgid "Track adoption"
+msgstr "Seuraa käyttöönottoa"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Tyypin on oltava 'Sitoumus' tai 'Maksu'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL-osoitteet kyselymerkkijonoilla (tietuetunnukset poistetaan)"
+
+#: 
+msgid "Underpaid"
+msgstr "Alimaksuttu"
+
+#: 
+msgid "Understand deployments"
+msgstr "Ymmärrä käyttöönotot"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Ymmärrä ominaisuuksien käyttö"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Käyttäjänimet, sähköpostit tai roolit"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Näytä sitoumuksen tai maksun tiedot"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Varoitukset — varoitukset, virheet ja JS-poikkeukset"
+
+#: 
+msgid "What is sent"
+msgstr "Mitä lähetetään"
+
+#: 
+msgid "What we collect"
+msgstr "Mitä keräämme"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Toivotaan sinulle ihanaa %d. syntymäpäivää!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Toivotaan sinulle ihanaa syntymäpäivää!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Tililläsi ei ole sähköpostiosoitetta tallennettu. Lisää yksi profiiliisi lähettääksesi testin."
+
+#: 
+msgid "errors+"
+msgstr "virheet+"
+
+#: 
+msgid "full only"
+msgstr "vain täysi"
+
+#: 
+msgid "is thinking of you today."
+msgstr "ajattelee sinua tänään."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "sivureitit, aktiivinen kieli, CRM-versio, PHP-versio, käyttöjärjestelmäperhe ja satunnainen asennustunnus. Ei mitään muuta. Tiedot tallennetaan EU:hun."
 

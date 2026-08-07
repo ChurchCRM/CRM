@@ -1257,18 +1257,6 @@ msgid "Type of Group"
 msgstr "ประเภทกลุ่ม"
 
 #: 
-msgid "Group Member Roles"
-msgstr "บทบาทสมาชิกกลุ่ม"
-
-#: 
-msgid "Clone roles"
-msgstr "โคลนบทบาท"
-
-#: 
-msgid "from group"
-msgstr "จากกลุ่ม"
-
-#: 
 msgid "Select a group"
 msgstr "เลือกกลุ่ม"
 
@@ -1665,16 +1653,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "หมายเลขเช็คไม่ถูกต้องสำหรับการชำระเงินแบบ 'เงินสด'"
 
 #: 
-msgid "Deposit closed"
-msgstr "ปิดการฝากแล้ว"
-
-#: 
 msgid "Payment Schedule"
 msgstr "กำหนดการชำระเงิน"
-
-#: 
-msgid "Select Schedule"
-msgstr "เลือกกำหนดการ"
 
 #: 
 msgid "Weekly"
@@ -1697,28 +1677,8 @@ msgid "Other"
 msgstr "อื่นๆ"
 
 #: 
-msgid "Payment by"
-msgstr "ชำระเงินโดย"
-
-#: 
-msgid "Scan check"
-msgstr "สแกนเช็ค"
-
-#: 
-msgid "find family from check account #"
-msgstr "ค้นหาครอบครัวจากหมายเลขบัญชีเช็ค"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "ตั้งค่าหมายเลขบัญชีเช็คเริ่มต้นสำหรับครอบครัว"
-
-#: 
 msgid "Fund Name"
 msgstr "ชื่อกองทุน"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "จำนวนที่ไม่สามารถหักลดหย่อน"
 
 #: 
 msgid "Age"
@@ -2571,10 +2531,6 @@ msgid "Groups"
 msgstr "กลุ่ม"
 
 #: 
-msgid "Total $"
-msgstr "รวม $"
-
-#: 
 msgid "with this property..."
 msgstr "กับคุณสมบัตินี้..."
 
@@ -2699,10 +2655,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "ผู้ลงนามรายงานการยืนยันและแก้ไขข้อมูลฐานข้อมูล"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "ข้อความสำหรับรายงานสรุปคำมั่นสัญญา"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "ข้อความสำหรับรายงานไดเรกทอรี"
 
@@ -2766,11 +2718,6 @@ msgstr "ประเภทคุณสมบัติ"
 #: 
 msgid "Zip Code"
 msgstr "รหัสไปรษณีย์"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "ฟิลด์"
 
 #. Context: query_qry
 #: 
@@ -5828,10 +5775,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "เพิ่มบันทึกเพิ่มเติมเกี่ยวกับการฝากนี้"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "จำนวนเงินเกินค่าสูงสุดที่อนุญาต (999999.99)"
-
-#: 
 msgid "Checks"
 msgstr "เช็ค"
 
@@ -5858,10 +5801,6 @@ msgstr "ไม่มีเงินสด"
 #: 
 msgid "No Checks"
 msgstr "ไม่มีเช็ค"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "จำนวนที่ไม่หักลดหย่อนเกินค่าสูงสุดที่อนุญาต (999999.99)"
 
 #: 
 msgid "Payments"
@@ -6472,10 +6411,6 @@ msgid "%d missing role"
 msgstr "%d บทบาทหายไป"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "การชำระเงินคือการบริจาคจริงที่ได้รับ จะถูกเพิ่มไปยังการฝากปัจจุบัน"
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "คำมั่นสัญญาคือความมุ่งมั่นที่จะให้ ไม่ผูกติดกับใบนำฝาก"
 
@@ -6772,10 +6707,6 @@ msgid "Name & Identity"
 msgstr "ชื่อและตัวตน"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "จะสร้างการฝากใหม่"
-
-#: 
 msgid "New Payment"
 msgstr "การชำระเงินใหม่"
 
@@ -6894,10 +6825,6 @@ msgstr "ข้อกำหนดเบื้องต้นของแอปพ
 #: 
 msgid "State (Other)"
 msgstr "รัฐ (อื่นๆ)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "สรุปคำมั่นสัญญาเทียบกับการชำระเงินตามกองทุนสำหรับปีงบประมาณ"
 
 #: 
 msgid "System Health"
@@ -8874,10 +8801,6 @@ msgid "Account Recovery"
 msgstr "กู้คืนบัญชี"
 
 #: 
-msgid "Add Family"
-msgstr "เพิ่มครอบครัว"
-
-#: 
 msgid "Add First Family"
 msgstr "เพิ่มครอบครัวแรก"
 
@@ -8896,10 +8819,6 @@ msgstr "เพิ่มบันทึก"
 #: 
 msgid "Add People to the Family"
 msgstr "เพิ่มบุคคลเข้าสู่ครอบครัว"
-
-#: 
-msgid "Add Person"
-msgstr "เพิ่มบุคคล"
 
 #: 
 msgid "Add Students to Cart"
@@ -9278,10 +9197,6 @@ msgid "Delete Person"
 msgstr "ลบบุคคล"
 
 #: 
-msgid "Delete Pledge"
-msgstr "ลบคำปฏิญาณถวาย"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "การลบคุณสมบัตินี้จะลบการกำหนดทั้งหมดออกจากข้อมูลบุคคล ครอบครัว หรือกลุ่มด้วย"
 
@@ -9444,10 +9359,6 @@ msgstr "ปีงบประมาณ %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "ครอบครัวใช้ที่อยู่และหมายเลขโทรศัพท์ร่วมกัน"
-
-#: 
-msgid "Family List"
-msgstr "รายชื่อครอบครัว"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9646,10 +9557,6 @@ msgid "Letters and Labels"
 msgstr "จดหมายและป้าย"
 
 #: 
-msgid "List families created via self registration"
-msgstr "แสดงรายชื่อครอบครัวที่สร้างจากการลงทะเบียนด้วยตนเอง"
-
-#: 
 msgid "Load demo data"
 msgstr "โหลดข้อมูลตัวอย่าง"
 
@@ -9758,10 +9665,6 @@ msgid "Minimum"
 msgstr "ขั้นต่ำ"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "แก้ไขบทบาทครอบครัวสำหรับสมาชิกกลุ่ม"
-
-#: 
 msgid "Move to Group"
 msgstr "ย้ายไปยังกลุ่ม"
 
@@ -9788,10 +9691,6 @@ msgstr "ใหม่"
 #: 
 msgid "New Family"
 msgstr "ครอบครัวใหม่"
-
-#: 
-msgid "New Group"
-msgstr "กลุ่มใหม่"
 
 #: 
 msgid "New Person"
@@ -9906,10 +9805,6 @@ msgstr "กู้คืนรหัสผ่าน"
 #: 
 msgid "Past & next 7 days"
 msgstr "7 วันที่ผ่านมาและถัดไป"
-
-#: 
-msgid "People List"
-msgstr "รายชื่อบุคคล"
 
 #: 
 msgid "People by Classification"
@@ -10090,10 +9985,6 @@ msgstr "เลือกไฟล์สำรองและคลิกกู้
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "เลือกตัวเลือกด้านบนและคลิกปุ่มสำรองข้อมูล"
-
-#: 
-msgid "Self Registration Report"
-msgstr "รายงานการลงทะเบียนด้วยตนเอง"
 
 #: 
 msgid "Send email to families"
@@ -10656,11 +10547,6 @@ msgstr "ค่าเริ่มต้นที่อยู่"
 msgid "Allow user to add new event"
 msgstr "อนุญาตให้ผู้ใช้เพิ่มเหตุการณ์ใหม่"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "วันที่เริ่มต้น"
-
 #: 
 msgid "Calendar Settings"
 msgstr "การตั้งค่าปฏิทิน"
@@ -10770,16 +10656,6 @@ msgstr "รายการอีเมลซิงค์กับ Mailchimp"
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "เปิดใช้งานอีเมลในแผงการตั้งค่าด้านล่าง จากนั้นกำหนดค่าเซิร์ฟเวอร์ SMTP ของคุณ"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "วันที่สิ้นสุด"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "ป้อนส่วนใดส่วนหนึ่งของต่อไปนี้: ชื่อ เมือง รัฐ ไปรษณีย์ โทรศัพท์บ้าน อีเมล หรืออีเมลที่ทำงาน"
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "ปิดใช้งาน External Calendar API แล้ว"
@@ -10873,11 +10749,6 @@ msgstr "จับคู่ฟิลด์ที่กำหนดเองกั
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "อายุสูงสุด"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "สมาชิก ผู้เข้าร่วมประจำ ฯลฯ"
 
@@ -10890,11 +10761,6 @@ msgstr "สมาชิกที่เข้าร่วมในเดือน
 #: 
 msgid "Membership anniversaries"
 msgstr "วันครบรอบการเป็นสมาชิก"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "อายุต่ำสุด"
 
 #. Context: query_qry
 #: 
@@ -10968,16 +10834,6 @@ msgstr "คุณสมบัติของคนที่ใช้เพื่
 msgid "Person property used to exclude members from email lists"
 msgstr "คุณสมบัติของคนที่ใช้เพื่อแยกสมาชิกออกจากรายชื่ออีเมล"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "โปรดป้อนวันที่สุดท้ายเพื่อคำนวณการมีส่วนร่วมทั้งหมดสำหรับสมาชิกแต่ละคน (เช่น YYYY-MM-DD)"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "โปรดเลือกวันที่เริ่มต้นเพื่อคำนวณการมีส่วนร่วมทั้งหมดสำหรับสมาชิกแต่ละคน (เช่น YYYY-MM-DD) หมายเหตุ: คุณสามารถเลือกวันที่ที่มีการบริจาคเท่านั้น"
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11026,11 +10882,6 @@ msgstr "SMTP ไม่ได้รับการกำหนดค่า"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "ค้นหา"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "ปีการคลังที่สอง"
 
@@ -11043,16 +10894,6 @@ msgstr "ปีการคลังที่สองเพื่อเปรี
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "ตัวเลือกโอกาสการเป็นอาสาสมัครที่สอง"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "เลือกฟิลด์ที่จะค้นหา"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "เลือกบทบาทครอบครัวที่ต้องการ"
 
 #: 
 msgid "Send text message"
@@ -11093,38 +10934,13 @@ msgstr "เดือนวันเกิดที่คุณต้องกา
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "เพศที่ต้องการค้นหาในฐานข้อมูล"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "เพศที่คุณต้องการให้ส่งคืนบันทึก"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "อายุสูงสุดที่คุณต้องการให้ส่งคืนบันทึก"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "เดือนวันครบรอบการเป็นสมาชิกที่คุณต้องการให้ส่งคืนบันทึก"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "อายุต่ำสุดที่คุณต้องการให้ส่งคืนบันทึก"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "คุณสมบัติที่คุณต้องการให้บันทึกบุคคลส่งคืน"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "ชั้นเรียนโรงเรียนวันอาทิตย์ที่คุณต้องการให้ส่งคืนบันทึก"
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11160,11 +10976,6 @@ msgstr "Vonage SMS ไม่ได้รับการกำหนดค่า"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "โดยไม่มี Vonage การดำเนินการข้อความจะเปิดแอป SMS ดั้งเดิมของอุปกรณ์หรือคัดลอกหมายเลขโทรศัพท์ไปยังคลิปบอร์ด"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "อีเมลการทำงาน"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11486,10 +11297,6 @@ msgstr "คุณสมบัติ"
 #: 
 msgid "Finance permission query IDs"
 msgstr "ID คิวรีสิทธิ์ทางการเงิน"
-
-#: 
-msgid "Find family"
-msgstr "ค้นหาครอบครัว"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13591,10 +13398,6 @@ msgstr "อัปโหลด CSV เพื่อสร้างครอบค�
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "ไฟล์ CSV ของคุณมีชื่อคอลัมน์ที่ซ้ำกัน โปรดเปลี่ยนชื่อคอลัมน์ที่ซ้ำ (เช่น เพิ่ม \"(2)\" ในคอลัมน์ที่สอง) แล้วอัปโหลดอีกครั้ง"
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "โทเค็นความปลอดภัยไม่ถูกต้อง โปรดลองอีกครั้ง"
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13626,10 +13429,6 @@ msgstr "วันหยุด (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "วันหยุดจัดแบ่งตามประเภท: ราชการ, ประเพณี, ธนาคาร, ฤดูกาล และศาสนา เลือกทั้งหมดเพื่อแสดงทุกวันหยุด หรือเลือกเฉพาะประเภทที่ต้องการ"
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "ไม่พบรหัสคำมั่นสัญญาทางการเงิน"
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16754,10 +16553,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s จากครอบครัว %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "สามารถเพิ่มได้อีก %d รายการ"
-
-#: 
 msgid "%d record(s) returned"
 msgstr "พบ %d รายการ"
 
@@ -16856,10 +16651,6 @@ msgstr "จำนวนเงินรวมขั้นต่ำ"
 #: 
 msgid "Minimum bid $%s."
 msgstr "ราคาเสนอขั้นต่ำ $%s"
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "การชำระเงินใหม่ - %1$s เงินฝาก # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17268,4 +17059,432 @@ msgstr "ตรวจสอบการลงทะเบียนใหม่จ
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "ยืนยันการลบโอกาสอาสาสมัคร"
+
+#: 
+msgid "# Payments"
+msgstr "# การถวาย"
+
+#: 
+msgid "# Pledges"
+msgstr "# คำมั่นสัญญา"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "การถวายคือเงินบริจาคที่ได้รับจริง จะถูกเพิ่มไปยังเงินฝากที่เลือก"
+
+#: 
+msgid "Add Fund"
+msgstr "เพิ่มกองทุน"
+
+#: 
+msgid "Amount ($)"
+msgstr "จำนวนเงิน ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "จำนวนเงินเกินกว่าที่อนุญาตสูงสุด (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "เกิดข้อผิดพลาดขณะบันทึก กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "การรวบรวมข้อมูลนิรนาม"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "ระดับการรวบรวมข้อมูลนิรนาม ควบคุมปริมาณข้อมูลวินิจฉัยนิรนามที่แบ่งปันกับทีม ChurchCRM ไม่มีการส่งชื่อคริสตจักร ข้อมูลสมาชิก หรือข้อมูลส่วนตัวใดๆ"
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบบันทึกการถวายนี้อย่างถาวร?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "ต้องมีการจัดสรรกองทุนอย่างน้อยหนึ่งรายการ"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "กองทุนอย่างน้อยหนึ่งรายการต้องมีจำนวนเงินที่ไม่ใช่ศูนย์"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "ส่งอีเมลอวยพรวันเกิดโดยอัตโนมัติถึงสมาชิกในวันเกิดของพวกเขา"
+
+#: 
+msgid "Back to Finance"
+msgstr "กลับไปยังการเงิน"
+
+#: 
+msgid "Back to Group"
+msgstr "กลับไปยังกลุ่ม"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "ไม่สามารถเตรียมคำสั่งค้นหาได้"
+
+#: 
+msgid "Catch JS errors"
+msgstr "ดักจับข้อผิดพลาด JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "ดักจับข้อผิดพลาดที่เกิดซ้ำ"
+
+#: 
+msgid "Check #"
+msgstr "เลขที่เช็ค"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "ชื่อคริสตจักร ที่อยู่ หรือรายละเอียดติดต่อ"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "เวอร์ชัน ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "ระดับการเก็บรวบรวมข้อมูล"
+
+#: 
+msgid "Count unique installs"
+msgstr "นับการติดตั้งที่ไม่ซ้ำกัน"
+
+#: 
+msgid "Data"
+msgstr "ข้อมูล"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "ข้อมูลถูกประมวลผลโดย PostHog บนโครงสร้างพื้นฐานในสหภาพยุโรป"
+
+#: 
+msgid "Date is required"
+msgstr "ต้องระบุวันที่"
+
+#: 
+msgid "Deleted successfully"
+msgstr "ลบเรียบร้อยแล้ว"
+
+#: 
+msgid "Deposit #"
+msgstr "เลขที่เงินฝาก"
+
+#: 
+msgid "Deposit Slip"
+msgstr "ใบนำฝากเงิน"
+
+#: 
+msgid "Edit Pledge"
+msgstr "แก้ไขคำมั่นสัญญา"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "แก้ไขคำมั่นสัญญาหรือการถวายที่มีอยู่"
+
+#: 
+msgid "Editing a Payment"
+msgstr "กำลังแก้ไขการถวาย"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "กำลังแก้ไขคำมั่นสัญญา"
+
+#: 
+msgid "Enable (full)"
+msgstr "เปิดใช้งาน (เต็มรูปแบบ)"
+
+#: 
+msgid "Errors only"
+msgstr "เฉพาะข้อผิดพลาด"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "ข้อผิดพลาด — ข้อผิดพลาดเซิร์ฟเวอร์และข้อยกเว้น JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "ไม่สามารถสร้างคำมั่นสัญญาได้"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "ไม่สามารถลบคำมั่นสัญญาได้"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "ไม่สามารถเข้ารหัสการตอบสนองการถวายได้"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "ไม่สามารถดึงข้อมูลคำมั่นสัญญาได้"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "ไม่สามารถอัปเดตคำมั่นสัญญาได้"
+
+#: 
+msgid "Family is required"
+msgstr "ต้องระบุครอบครัว"
+
+#: 
+msgid "Financial data"
+msgstr "ข้อมูลทางการเงิน"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "เต็มรูปแบบ — ทั้งหมดข้างต้นรวมถึงการดูหน้าเพจ"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "เต็มรูปแบบ — การดูหน้าเพจ คำเตือน ข้อผิดพลาด และข้อยกเว้น JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "สรุปกองทุน"
+
+#: 
+msgid "Group key is required"
+msgstr "ต้องระบุคีย์กลุ่ม"
+
+#: 
+msgid "Happy Birthday"
+msgstr "สุขสันต์วันเกิด"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ช่วยพัฒนา ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "ที่อยู่ IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID การติดตั้ง"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "สรุปคำมั่นสัญญาเทียบกับการถวายแบบโต้ตอบตามกองทุน พร้อมการเรียงลำดับ ค้นหา และส่งออก"
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "ภายใน: วันที่ล่าสุดที่ส่งอีเมลวันเกิด (YYYY-MM-DD) อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "JS exceptions"
+msgstr "ข้อยกเว้น JS"
+
+#: 
+msgid "Log level + message"
+msgstr "ระดับบันทึก + ข้อความ"
+
+#: 
+msgid "Member or family records"
+msgstr "บันทึกสมาชิกหรือครอบครัว"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "แก้ไขบทบาทของสมาชิกกลุ่มนี้"
+
+#: 
+msgid "Network error, please try again"
+msgstr "ข้อผิดพลาดเครือข่าย กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Never sent"
+msgstr "ยังไม่เคยส่ง"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "ไม่มีเงินฝาก / สร้างเงินฝากใหม่"
+
+#: 
+msgid "No pledge"
+msgstr "ไม่มีคำมั่นสัญญา"
+
+#: 
+msgid "No thanks"
+msgstr "ไม่ขอบคุณ"
+
+#: 
+msgid "Non-Deductible"
+msgstr "ไม่สามารถหักลดหย่อนได้"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "ไม่สามารถหักลดหย่อนได้ ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "จำนวนเงินที่ไม่สามารถหักลดหย่อนไม่สามารถเกินจำนวนกองทุน"
+
+#: 
+msgid "None (disabled)"
+msgstr "ไม่มี (ปิดใช้งาน)"
+
+#: 
+msgid "OS family"
+msgstr "ตระกูล OS"
+
+#: 
+msgid "Overpaid"
+msgstr "ถวายเกิน"
+
+#: 
+msgid "PHP version"
+msgstr "เวอร์ชัน PHP"
+
+#: 
+msgid "Page route"
+msgstr "เส้นทางหน้าเพจ"
+
+#: 
+msgid "Payment Details"
+msgstr "รายละเอียดการถวาย"
+
+#: 
+msgid "Payment Method"
+msgstr "วิธีการถวาย"
+
+#: 
+msgid "Plan runtime support"
+msgstr "วางแผนการสนับสนุนรันไทม์"
+
+#: 
+msgid "Please enter a date"
+msgstr "กรุณาระบุวันที่"
+
+#: 
+msgid "Please select a family"
+msgstr "กรุณาเลือกครอบครัว"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "กรุณาเลือกกองทุนสำหรับทุกแถว"
+
+#: 
+msgid "Pledge Details"
+msgstr "รายละเอียดคำมั่นสัญญา"
+
+#: 
+msgid "Pledge group not found"
+msgstr "ไม่พบกลุ่มคำมั่นสัญญา"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "คำมั่นสัญญาและการถวาย"
+
+#: 
+msgid "Prioritise translations"
+msgstr "ให้ความสำคัญกับการแปล"
+
+#: 
+msgid "Purpose"
+msgstr "วัตถุประสงค์"
+
+#: 
+msgid "Save and Add Another"
+msgstr "บันทึกและเพิ่มอีกรายการ"
+
+#: 
+msgid "Save failed"
+msgstr "การบันทึกล้มเหลว"
+
+#: 
+msgid "Saved successfully"
+msgstr "บันทึกเรียบร้อยแล้ว"
+
+#: 
+msgid "Select a fund"
+msgstr "เลือกกองทุน"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "ส่งอีเมลทดสอบวันเกิดถึงตัวเอง"
+
+#: 
+msgid "Sending to"
+msgstr "กำลังส่งถึง"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "แบ่งปันสถิติการใช้งานนิรนามกับทีม ChurchCRM เพื่อให้เราทราบว่าควรให้ความสำคัญกับฟีเจอร์และภาษาใด ไม่มีการส่งชื่อคริสตจักร ข้อมูลสมาชิก หรือข้อมูลส่วนตัวใดๆ"
+
+#: 
+msgid "Test email sent to"
+msgstr "ส่งอีเมลทดสอบถึง"
+
+#: 
+msgid "Track adoption"
+msgstr "ติดตามการนำไปใช้"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "ประเภทต้องเป็น 'Pledge' หรือ 'Payment'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL พร้อมสตริงการค้นหา (รหัสบันทึกถูกลบออก)"
+
+#: 
+msgid "Underpaid"
+msgstr "ถวายไม่ครบ"
+
+#: 
+msgid "Understand deployments"
+msgstr "ทำความเข้าใจการปรับใช้"
+
+#: 
+msgid "Understand feature usage"
+msgstr "ทำความเข้าใจการใช้งานฟีเจอร์"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "ชื่อผู้ใช้ อีเมล หรือบทบาท"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "ดูรายละเอียดคำมั่นสัญญาหรือการถวาย"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "คำเตือน — คำเตือน ข้อผิดพลาด และข้อยกเว้น JS"
+
+#: 
+msgid "What is sent"
+msgstr "สิ่งที่ส่ง"
+
+#: 
+msgid "What we collect"
+msgstr "สิ่งที่เรารวบรวม"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "ขออวยพรให้คุณมีวันเกิดปีที่ %d ที่แสนงดงาม!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "ขออวยพรให้คุณมีวันเกิดที่แสนงดงาม!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "บัญชีของคุณไม่มีที่อยู่อีเมลในระบบ เพิ่มอีเมลในโปรไฟล์ของคุณเพื่อส่งการทดสอบ"
+
+#: 
+msgid "errors+"
+msgstr "ข้อผิดพลาด+"
+
+#: 
+msgid "full only"
+msgstr "เต็มรูปแบบเท่านั้น"
+
+#: 
+msgid "is thinking of you today."
+msgstr "คิดถึงคุณในวันนี้"
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "เส้นทางหน้าเพจ ภาษาที่ใช้งาน เวอร์ชัน CRM เวอร์ชัน PHP ตระกูล OS และรหัสการติดตั้งแบบสุ่ม ไม่มีอะไรอื่น ข้อมูลถูกจัดเก็บในสหภาพยุโรป"
 

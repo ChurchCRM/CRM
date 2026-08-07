@@ -8,7 +8,7 @@ $errorMessage = $_GET['error'] ?? 'Configuration error';
 
 // Build custom sections for this error
 $customSections = "### Configuration Error Details\n\n";
-$customSections .= "```\n" . htmlspecialchars($errorMessage) . "\n```";
+$customSections .= "```\n" . str_replace(["\r", "\n", '`'], [' ', ' ', "'"], $errorMessage) . "\n```";
 
 $issueBody = buildGitHubIssueBody('Configuration Error', $customSections);
 

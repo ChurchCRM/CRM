@@ -140,10 +140,38 @@ async function fetchUntranslatedTerms(poEditorLocale) {
 }
 
 /**
+ * Restructure POEditor export from malformed to correct format for upload.
+ * POEditor returns: { "one": { term1: "...", term2: "..." }, "other": { ... } }
+ * We need: { "term1": { "one": "...", "other": "..." }, "term2": { ... } }
+ */
+function restructurePluralForms(data) {
+    if (!data.one && !data.other) return data;
+    if (typeof data.one === 'object' && typeof data.other === 'object') {
+        const restructured = {};
+        for (const [key, value] of Object.entries(data)) {
+            if (key !== 'one' && key !== 'other' && typeof value === 'string') {
+                restructured[key] = value;
+            }
+        }
+        const termKeys = new Set([...Object.keys(data.one || {}), ...Object.keys(data.other || {})]);
+        for (const term of termKeys) {
+            const pluralForms = {};
+            if (data.one != null && data.one[term] !== undefined && data.one[term] !== null) pluralForms.one = data.one[term];
+            if (data.other != null && data.other[term] !== undefined && data.other[term] !== null) pluralForms.other = data.other[term];
+            if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
+        }
+        return restructured;
+    }
+    return data;
+}
+
+/**
  * Save missing terms in batched JSON files under MISSING_OUTPUT_DIR/{poEditorCode}/
  * Returns array of written file paths.
  */
 function saveBatchedMissingTerms(poEditorCode, missingTerms) {
+    missingTerms = restructurePluralForms(missingTerms);
+
     const localeOutDir = path.join(MISSING_OUTPUT_DIR, poEditorCode);
 
     if (!fs.existsSync(localeOutDir)) {

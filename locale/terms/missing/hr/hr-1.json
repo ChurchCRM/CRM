@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "Kopiran {{count}} clan",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Ovaj popis ima {{count}} primatelja — previse za mailto: vezu. Umjesto toga upotrijebite Kopiraj adrese.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Previse primatelja za klijent e-poste ({{count}} > {{max}}). Umjesto toga upotrijebite Kopiraj adrese.",
-    "{{count}} min left": "Jos {{count}} min"
+  "Copied {{count}} members": {
+    "one": "Kopiran {{count}} član",
+    "other": "Kopirano {{count}} članova"
   },
-  "other": {
-    "Copied {{count}} members": "Kopirano {{count}} clanova",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Ovaj popis ima {{count}} primatelja — previse za mailto: vezu. Umjesto toga upotrijebite Kopiraj adrese.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Previse primatelja za klijent e-poste ({{count}} > {{max}}). Umjesto toga upotrijebite Kopiraj adrese.",
-    "{{count}} min left": "Jos {{count}} min"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Ovaj popis ima {{count}} primatelja — previše za mailto: vezu. Umjesto toga upotrijebite Kopiraj adrese.",
+    "other": "Ovaj popis ima {{count}} primatelja — previše za mailto: vezu. Umjesto toga upotrijebite Kopiraj adrese."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Previše primatelja za klijent e-pošte ({{count}} > {{max}}). Umjesto toga upotrijebite Kopiraj adrese.",
+    "other": "Previše primatelja za klijent e-pošte ({{count}} > {{max}}). Umjesto toga upotrijebite Kopiraj adrese."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} min preostalo",
+    "other": "{{count}} min preostalo"
   }
 }

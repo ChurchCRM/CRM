@@ -1,14 +1,18 @@
 {
-  "one": {
-    "Copied {{count}} members": "{{count}} uye kopyalandi",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Bu listede {{count}} alici var — mailto: baglantisi icin cok fazla. Bunun yerine Adresleri Kopyala'yi kullanin.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "E-posta istemcisi icin cok fazla alici ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala'yi kullanin.",
-    "{{count}} min left": "{{count}} dakika kaldi"
+  "Copied {{count}} members": {
+    "one": "{{count}} üye kopyalındı",
+    "other": "{{count}} üye kopyalındı"
   },
-  "other": {
-    "Copied {{count}} members": "{{count}} uye kopyalandi",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Bu listede {{count}} alici var — mailto: baglantisi icin cok fazla. Bunun yerine Adresleri Kopyala'yi kullanin.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "E-posta istemcisi icin cok fazla alici ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala'yi kullanin.",
-    "{{count}} min left": "{{count}} dakika kaldi"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyal'yı kullanın.",
+    "other": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyal'yı kullanın."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyal'yı kullanın.",
+    "other": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyal'yı kullanın."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} dakika kaldı",
+    "other": "{{count}} dakika kaldı"
   }
 }

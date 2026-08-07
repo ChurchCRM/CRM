@@ -2,16 +2,20 @@
   "Important": "Important",
   "Major": "Major",
   "Catalog": "Catalog",
-  "one": {
-    "Copied {{count}} members": "A fost copiat {{count}} membru",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Această listă are {{count}} destinatar — prea mulți pentru un link mailto:. Folosiți în schimb Copiați adresele.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți în schimb Copiați adresele.",
-    "{{count}} min left": "A mai rămas {{count}} minut"
+  "Copied {{count}} members": {
+    "one": "{{count}} membru copiat",
+    "other": "{{count}} membri copiați"
   },
-  "other": {
-    "Copied {{count}} members": "Au fost copiați {{count}} membri",
-    "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "Această listă are {{count}} destinatari — prea mulți pentru un link mailto:. Folosiți în schimb Copiați adresele.",
-    "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți în schimb Copiați adresele.",
-    "{{count}} min left": "Au mai rămas {{count}} minute"
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "Această listă are {{count}} destinatar — prea mulți pentru un link mailto:. Folosiți Copiați adresele în schimb.",
+    "other": "Această listă are {{count}} destinatari — prea mulți pentru un link mailto:. Folosiți Copiați adresele în schimb."
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți Copiați adresele în schimb.",
+    "other": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți Copiați adresele în schimb."
+  },
+  "{{count}} min left": {
+    "one": "{{count}} minut rămas",
+    "other": "{{count}} minute rămase"
   }
 }

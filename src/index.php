@@ -6,31 +6,28 @@ require_once __DIR__ . '/vendor/autoload.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\PathUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
 
-// Get required PHP version from composer.json (single source of truth)
-// Throws RuntimeException if system state cannot be determined
-try {
-    $requiredPhp = VersionUtils::getRequiredPhpVersion();
-} catch (\RuntimeException $e) {
-    // System cannot determine PHP requirements - fail loudly with clear error
-    http_response_code(500);
-    header('Content-Type: text/plain; charset=utf-8');
-    echo"Critical System Error:" . $e->getMessage() ."\n\n";
-    echo"Please contact your system administrator or check your ChurchCRM installation.";
-    exit(1);
-}
-
 // Derive install prefix from SCRIPT_NAME — works for root and nested subdir installs.
-// Computed before any redirect so both the PHP-version and setup redirects resolve correctly.
+// Computed before any redirect so the config-error, PHP-version, and setup
+// redirects below all resolve correctly.
 //   /churchcrm/index.php  →  dirname → /churchcrm
 //   /index.php            →  dirname → /  → ''
 $_idx_script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '/index.php');
 $_idx_root   = dirname($_idx_script);
 if ($_idx_root === '/' || $_idx_root === '.') {
     $_idx_root = '';
+}
+
+// Get required PHP version from composer.json (single source of truth)
+// Throws RuntimeException if system state cannot be determined
+try {
+    $requiredPhp = VersionUtils::getRequiredPhpVersion();
+} catch (\RuntimeException $e) {
+    header("Location: {$_idx_root}/errors/config-error.php?error=" . rawurlencode($e->getMessage()));
+    exit;
 }
 
 $phpVersion = phpversion();
@@ -46,12 +43,9 @@ if (file_exists(__DIR__ . '/Include/Config.php')) {
     exit;
 }
 
-mb_internal_encoding('UTF-8');
-
-// Get the current request path and convert it into a magic filename
-// e.g. /list-events => /ListEvents.php
-$shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_SERVER['REQUEST_URI']);
-$fileName = MiscUtils::dashesToCamelCase($shortName, true) . '.php';
+// Get the current request path with query string stripped.
+$_idx_requestPath = strtok($_SERVER['REQUEST_URI'], '?');
+$shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_idx_requestPath);
 
 // First, ensure that the user is authenticated.
 AuthenticationManager::ensureAuthentication();
@@ -64,39 +58,22 @@ if (empty(SystemConfig::getValue('sChurchName'))) {
             RedirectUtils::redirect('admin/system/church-info');
         }
     } catch (\Throwable) {
-        // Not logged in or session error — ensureAuthentication() above handles it
+        // ensureAuthentication() above should have handled any auth failure;
+        // swallow here to avoid a 500 on edge-case provider errors.
     }
 }
 
-// Legacy URL shims — redirect removed pages to their MVC replacements.
-// Must match the path-only portion (strtok strips query string) so that
-// bookmarks like /UserEditor.php?PersonID=5 resolve correctly.
-$_legacyBase = strtok($shortName, '?');
-if ($_legacyBase === 'UserEditor.php') {
-    if (!empty($_GET['PersonID'])) {
-        RedirectUtils::redirect('admin/system/users/' . (int) $_GET['PersonID'] . '/edit');
-    } elseif (!empty($_GET['NewPersonID'])) {
-        RedirectUtils::redirect('admin/system/users/new?personId=' . (int) $_GET['NewPersonID']);
-    } else {
-        RedirectUtils::redirect('admin/system/users/new');
-    }
-} elseif ($_legacyBase === 'SettingsUser.php') {
-    RedirectUtils::redirect('admin/system/users');
-}
-unset($_legacyBase);
-
-if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
-    // Index.php -> v2/dashboard
+if ($shortName === '' || strtolower($shortName) === 'index.php') {
     RedirectUtils::redirect('v2/dashboard');
-} elseif (is_file($shortName)) {
-    // Try actual path
-    require $shortName;
-} elseif (file_exists($fileName)) {
-    // Try magic filename
-    require $fileName;
-} elseif (strpos($_SERVER['REQUEST_URI'], 'js') || strpos($_SERVER['REQUEST_URI'], 'css')) { // if this is a CSS or JS file that we can't find, return 404
-    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
+} elseif (($_idx_safeShortPath = PathUtils::resolveSafeRequirePath($shortName)) !== null) {
+    require $_idx_safeShortPath;
+} elseif (in_array(strtolower(pathinfo($shortName, PATHINFO_EXTENSION)), ['js', 'css'], true)) {
+    // Missing static asset (e.g. a stale webpack chunk hash after a deploy) —
+    // bare 404, no need for a full error page.
+    http_response_code(404);
     exit;
 } else {
-    RedirectUtils::redirect('index.php');
+    // Self-contained error page (see src/errors/.htaccess) — no Header/Footer
+    // or session/DB state required, same pattern as php-error.php and setup.
+    RedirectUtils::redirect('errors/not-found.php?path=' . rawurlencode($shortName));
 }
