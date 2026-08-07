@@ -910,13 +910,10 @@ class FinancialService
     public function getOldestPledgeFyId(): int
     {
         $oldest = PledgeQuery::create()
-            ->orderByDate(Criteria::ASC)
+            ->orderByFyId()          // plg_FYID is integer — no NULL risk (unlike plg_date)
+            ->select(['FyId'])
             ->findOne();
-        if ($oldest === null) {
-            return FiscalYearUtils::getCurrentFiscalYearId();
-        }
-        $dateStr = $oldest->getDate('Y-m-d');
-        return FiscalYearUtils::getFiscalYearIdForDate(is_string($dateStr) ? $dateStr : '');
+        return $oldest !== null ? (int) $oldest : FiscalYearUtils::getCurrentFiscalYearId();
     }
 
     /**
