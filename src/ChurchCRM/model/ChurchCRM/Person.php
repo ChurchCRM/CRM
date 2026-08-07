@@ -713,43 +713,6 @@ class Person extends BasePerson implements PhotoInterface
         return ['filterNames' => $filterNames, 'exportValues' => $exportValues];
     }
 
-    // return array of person custom fields
-    // created for the person-list.php datatable
-    /**
-     * @return string[]
-     */
-    public function getCustomFields($allPersonCustomFields, array $customMapping, array &$CustomList, $name_func): array
-    {
-        // add custom fields to person_custom table since they are not defined in the propel schema
-        $rawQry = PersonCustomQuery::create();
-        foreach ($allPersonCustomFields as $customfield) {
-            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
-                $rawQry->addAsColumn(str_replace(['.', '(', ')'], '', $customfield->getId()), $customfield->getId());
-            }
-        }
-        $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
-
-        // get custom column names and values
-        $personCustom = [];
-        if ($thisPersonCustomFields) {
-            //Lets use the map created instead of querying the column name
-            foreach ($thisPersonCustomFields->getVirtualColumns() as $column => $value) {
-                if (!empty($value)) {
-                    $temp = $customMapping[$column]['Name'];
-                    $personCustom[] = $temp;
-                    $CustomList[$temp] += 1;
-
-                    if (array_key_exists($value, $customMapping[$column]['Elements'])) {
-                        $temp = $name_func($customMapping[$column]['Name'], $customMapping[$column]['Elements'][$value]);
-                        $personCustom[] = $temp;
-                        $CustomList[$temp] += 1;
-                    }
-                }
-            }
-        }
-
-        return $personCustom;
-    }
     // return array of person groups
     // created for the person-list.php datatable
     /**
