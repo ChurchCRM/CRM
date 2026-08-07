@@ -190,11 +190,12 @@ document.addEventListener("DOMContentLoaded", () => {
       stateContainer.appendChild(buildStateInput("sChurchState", "sChurchState", userSelectedState)[0]);
       stateReady = $.Deferred().resolve().promise();
     }
-    // Sync the snapshot after the state field is populated (async). Without this,
-    // the snapshot captures "" while the field is still loading, and the stale-
-    // coordinates banner fires immediately after the AJAX resolves — even though
-    // the user has not edited anything.
+    // Sync the snapshot after both country and state fields are populated (async).
+    // sChurchCountry options are loaded async by populateCountrySelect(); without
+    // re-syncing here, initialAddressSnapshot.sChurchCountry stays "" while the
+    // field holds e.g. "US", causing a false-positive stale banner on every page load.
     stateReady.always(() => {
+      initialAddressSnapshot.sChurchCountry = document.getElementById("sChurchCountry")?.value || "";
       initialAddressSnapshot.sChurchState = document.getElementById("sChurchState")?.value || "";
       updateStaleCoordinatesState();
     });
