@@ -160,7 +160,10 @@ function initializeGroupEditor() {
     pendingDeleteRoleID = roleID;
 
     // Populate modal message using safe text insertion
-    const msg = i18next.t("Are you sure you want to remove the role '{{name}}'?", { name: roleName, interpolation: { escapeValue: false } });
+    const msg = i18next.t("Are you sure you want to remove the role '{{name}}'?", {
+      name: roleName,
+      interpolation: { escapeValue: false },
+    });
     $("#deleteRoleMessage").text(msg);
 
     // Show last-role warning and block confirm when this is the only role
