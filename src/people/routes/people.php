@@ -128,8 +128,20 @@ function sendVerifyReportEmail(Request $request, Response $response, array $args
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=1&reason=unexpected');
     }
 
-    // Single-family path: still redirect to the family page (existing behaviour)
+    // Single-family path: redirect to the family page, surfacing errors when the send fails
     if ($familyId !== null) {
+        if (!$result->isSuccess()) {
+            $query = http_build_query([
+                'EmailsError' => '1',
+                'reason'      => $result->status,
+                'sent'        => $result->sentCount,
+                'failed'      => $result->failedCount,
+            ]);
+            return SlimUtils::renderRedirect(
+                $response,
+                SystemURLs::getRootPath() . '/people/family/' . $familyId . '?' . $query
+            );
+        }
         return SlimUtils::renderRedirect(
             $response,
             SystemURLs::getRootPath() . '/people/family/' . $familyId . '?PDFEmailed=' . $result->sentCount

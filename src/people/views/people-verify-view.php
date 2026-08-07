@@ -217,7 +217,14 @@ if ($emailErrorReason !== '') {
                             <thead>
                                 <tr>
                                     <th><?= gettext('Family') ?></th>
-                                    <th><?= gettext('Email') ?></th>
+                                    <th>
+                                        <?= gettext('Family email') ?>
+                                        <span class="ms-1 text-muted"
+                                              title="<?= gettext('Member emails are also used when no family email is on file') ?>"
+                                              data-bs-toggle="tooltip">
+                                            <i class="ti ti-info-circle" aria-hidden="true"></i>
+                                        </span>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody id="recipientTableBody"></tbody>
@@ -405,7 +412,10 @@ if ($emailErrorReason !== '') {
                 },
                 body: 'csrf_token=' + encodeURIComponent(csrfToken),
             })
-            .then(function (res) { return res.json(); })
+            .then(function (res) {
+                if (!res.ok) { throw new Error('HTTP ' + res.status); }
+                return res.json();
+            })
             .then(function (data) {
                 showInModalResult(data);
             })
@@ -414,13 +424,26 @@ if ($emailErrorReason !== '') {
             });
         });
 
+        // Tracks the pending hidden.bs.modal listener so stale closures from
+        // previous calls to showInModalResult() can be cancelled before a new
+        // one is registered.  Without this, multiple independent listeners
+        // accumulate and the oldest one redirects based on stale result data.
+        var _pendingHiddenListener = null;
+
         function showInModalResult(data) {
+            var modal     = document.getElementById('verifyEmailModal');
             var banner    = document.getElementById('modalResultBanner');
             var footer    = document.getElementById('modalFooter');
             var isSuccess = (data.status === 'success');
             var isPartial = (data.status === 'partial_failure');
             var alertClass = isSuccess ? 'success' : (isPartial ? 'warning' : 'danger');
             var icon       = isSuccess ? 'ti-circle-check' : (isPartial ? 'ti-alert-triangle' : 'ti-alert-circle');
+
+            // Cancel any listener registered by a previous call
+            if (_pendingHiddenListener) {
+                modal.removeEventListener('hidden.bs.modal', _pendingHiddenListener);
+                _pendingHiddenListener = null;
+            }
 
             banner.innerHTML =
                 '<div class="alert alert-' + alertClass + ' alert-dismissible fade show mt-0 mb-0 rounded-0" ' +
@@ -439,7 +462,8 @@ if ($emailErrorReason !== '') {
                 '</button>';
 
             // Reload the page on close to show updated alert
-            document.getElementById('verifyEmailModal').addEventListener('hidden.bs.modal', function () {
+            _pendingHiddenListener = function () {
+                _pendingHiddenListener = null;
                 if (isSuccess) {
                     window.location.href = window.CRM.root + '/people/verify?AllPDFsEmailed=' + (data.sentCount || 0);
                 } else if (data.status !== 'no_recipients') {
@@ -447,7 +471,8 @@ if ($emailErrorReason !== '') {
                         '&sent=' + (data.sentCount || 0) + '&failed=' + (data.failedCount || 0);
                     window.location.href = window.CRM.root + '/people/verify?' + q;
                 }
-            }, { once: true });
+            };
+            modal.addEventListener('hidden.bs.modal', _pendingHiddenListener, { once: true });
         }
 
         function escapeHtml(str) {
