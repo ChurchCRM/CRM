@@ -493,8 +493,10 @@ describe("UI: GroupPropsFormEditor Back button and Show in Profile (#9381)", () 
     });
 
     it("Show in Profile column header has an accessible tooltip icon", () => {
+        // Bootstrap 5 Tooltip._fixTitle() moves `title` into `data-bs-original-title`
+        // and clears `title` to suppress the native browser tooltip.
         cy.get('th [data-bs-toggle="tooltip"]')
-            .should("have.attr", "title")
+            .should("have.attr", "data-bs-original-title")
             .and("contain", "profile page");
     });
 
