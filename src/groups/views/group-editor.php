@@ -17,7 +17,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="mb-3">
           <label for="newRole" class="form-label"><?= gettext('Role Name') ?></label>
           <input type="text" class="form-control" id="newRole" name="newRole"
-            placeholder="<?= gettext('Enter role name') ?>" autocomplete="off">
+            placeholder="<?= gettext('Enter role name') ?>" maxlength="50" autocomplete="off">
         </div>
       </div>
       <div class="modal-footer">
