@@ -357,8 +357,12 @@ describe("Confirmation Reports - MVC Routes", () => {
         });
 
         it("modal can recover after a failed fetch: reopen shows preview correctly", () => {
-            // First open: intercept fails
-            cy.intercept("GET", "**/api/families/verify-email-preview", { statusCode: 500, body: { error: true } }).as("previewFail");
+            // First open: intercept fails (times:1 ensures it expires after one use
+            // so it doesn't interfere with the second modal open below).
+            cy.intercept(
+                { method: "GET", url: "**/api/families/verify-email-preview", times: 1 },
+                { statusCode: 500, body: { error: true } }
+            ).as("previewFail");
 
             cy.get("#verifyEmail").click();
             cy.wait("@previewFail", { timeout: 10000 });
@@ -372,12 +376,30 @@ describe("Confirmation Reports - MVC Routes", () => {
             // Closing and re-opening the modal with data-bs-dismiss races against
             // BS5's async fade animation in headless CI — a full page reload is
             // the only reliable way to reset state between the two opens.
-            cy.intercept("GET", "**/api/families/verify-email-preview").as("previewOk");
+            //
+            // Use an explicit 200 response on @previewOk so that:
+            //   a) the test doesn\'t rely on real server state, and
+            //   b) the @previewFail intercept (which expired via times:1) can’t
+            //      accidentally shadow this request.
+            cy.intercept(
+                "GET",
+                "**/api/families/verify-email-preview",
+                {
+                    statusCode: 200,
+                    body: {
+                        recipientCount: 1,
+                        recipients: [{ familyId: 1, email: "test@example.com" }],
+                        familiesWithoutEmail: [],
+                        templatePreview: { subject: "Test", bodyExcerpt: "Body" }
+                    }
+                }
+            ).as("previewOk");
             cy.visit("people/verify");
             cy.get("#verifyEmail").click();
             cy.wait("@previewOk", { timeout: 10000 });
 
             // After page reload the error container starts with d-none (HTML default)
+            // and a successful fetch leaves it d-none.
             cy.get("#previewFetchError").should("have.class", "d-none");
             // Preview should populate without TypeError
             cy.get('[data-cy="modal-recipient-count"]').should("be.visible");
