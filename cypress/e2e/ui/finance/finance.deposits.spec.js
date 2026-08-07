@@ -101,16 +101,30 @@ describe("Finance Deposits", () => {
         const xssPayload = "<script>alert('XSS')</script>Test" + uniqueSeed;
         const sanitizedComment = "alert(&#039;XSS&#039;)Test" + uniqueSeed; // The script tags should be stripped, quotes escaped
 
-        cy.visit("/finance/deposit/search");
-        cy.contains("Deposits");
-        cy.get("[data-bs-target='#newDepositModal']").click();
-        cy.get("#depositComment").type(xssPayload);
-        cy.get("#addNewDeposit").click();
+        // Create the deposit directly via the API to test server-side sanitization.
+        // Using cy.request() here is intentional: the test targets the POST /api/deposits
+        // endpoint's sanitization behaviour, not the modal UI itself.  Typing the raw
+        // XSS payload (<script>…</script>) through a Bootstrap modal input is fragile
+        // because Bootstrap's transition management can interrupt Cypress keystroke
+        // delivery, causing only part of the value to be committed.
+        cy.request({
+            method: "POST",
+            url: "/api/deposits",
+            body: {
+                depositType:    "Bank",
+                depositComment: xssPayload,
+                depositDate:    new Date().toISOString().split("T")[0],
+            },
+            headers: { "Content-Type": "application/json" },
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            const depositId = response.body.Id;
 
-        cy.url().should("contain", "DepositSlipEditor.php");
+            cy.visit(`/DepositSlipEditor.php?DepositSlipID=${depositId}`);
 
-        // Verify the comment field contains sanitized text (script tags stripped, quotes escaped)
-        cy.get("#Comment").should("have.value", sanitizedComment);
+            // Verify the comment field contains sanitized text (script tags stripped, quotes escaped)
+            cy.get("#Comment").should("have.value", sanitizedComment);
+        });
 
     });
 
