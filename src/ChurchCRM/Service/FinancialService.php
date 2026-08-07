@@ -898,6 +898,38 @@ class FinancialService
     }
 
     /**
+     * Get the oldest fiscal year ID that has pledge/payment data (plg_date).
+     *
+     * Used to build the FY selector on the Finance Dashboard, where YTD stat
+     * methods filter by pledge date — not deposit date. FYs that have pledges
+     * but no deposit slips would be absent from the dropdown if we used the
+     * deposit-based helper instead.
+     *
+     * @return int Oldest pledge FY ID (falls back to current FY when no pledges exist)
+     */
+    public function getOldestPledgeFyId(): int
+    {
+        $oldest = PledgeQuery::create()
+            ->orderByDate(Criteria::ASC)
+            ->findOne();
+        if ($oldest === null) {
+            return FiscalYearUtils::getCurrentFiscalYearId();
+        }
+        $dateStr = $oldest->getDate('Y-m-d');
+        return FiscalYearUtils::getFiscalYearIdForDate(is_string($dateStr) ? $dateStr : '');
+    }
+
+    /**
+     * Get available fiscal years for the pledge-based FY selector (Finance Dashboard).
+     *
+     * @return array<int, array{id: int, label: string}>
+     */
+    public function getAvailablePledgeFiscalYears(): array
+    {
+        return FiscalYearUtils::buildFiscalYearList($this->getOldestPledgeFyId());
+    }
+
+    /**
      * Get Year-to-Date payment total for a fiscal year (or all time when dates are null).
      *
      * @param string|null $fyStartDate Fiscal year start date; null = all time
@@ -1027,7 +1059,7 @@ class FinancialService
         return [
             'fiscalYear'       => $fiscalYear,
             'selectedFyid'     => $allTime ? 0 : $actualFyid,
-            'availableYears'   => $this->getAvailableDepositFiscalYears(),
+            'availableYears'   => $this->getAvailablePledgeFiscalYears(),
             'currentFyid'      => FiscalYearUtils::getCurrentFiscalYearId(),
             'depositStats'     => $depositStats,
             'recentDeposits'   => $this->getRecentDeposits(5, $allTime ? null : $actualFyid),

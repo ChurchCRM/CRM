@@ -78,7 +78,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="ms-3 d-inline-flex align-items-center gap-2">
       <label for="deposit-slip-fyid" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Fiscal Year') ?>:</label>
       <select id="deposit-slip-fyid" class="form-select form-select-sm" style="width: auto;">
-        <option value="0"><?= gettext('All Time') ?></option>
+        <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
         <?php foreach ($availableYears as $year): ?>
         <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
           <?= InputUtils::escapeHTML($year['label']) ?>
