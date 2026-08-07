@@ -5,6 +5,58 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
+<!-- ADD ROLE MODAL -->
+<div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog" aria-labelledby="addRoleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addRoleModalLabel"><?= gettext('Add New Role') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="newRole" class="form-label"><?= gettext('Role Name') ?></label>
+          <input type="text" class="form-control" id="newRole" name="newRole"
+            placeholder="<?= gettext('Enter role name') ?>" maxlength="50" autocomplete="off">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" id="submitNewRole" class="btn btn-success" disabled>
+          <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Role') ?>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END ADD ROLE MODAL -->
+
+<!-- DELETE ROLE CONFIRMATION MODAL -->
+<div class="modal fade" id="deleteRoleModal" tabindex="-1" role="dialog" aria-labelledby="deleteRoleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteRoleModalLabel"><?= gettext('Delete Confirmation') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning d-none" id="lastRoleWarning">
+          <i class="fa-solid fa-triangle-exclamation me-1"></i>
+          <?= gettext('This is the only role in this group.') ?>
+        </div>
+        <p id="deleteRoleMessage"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" id="confirmDeleteRole" class="btn btn-danger">
+          <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END DELETE ROLE CONFIRMATION MODAL -->
+
 <!-- GROUP SPECIFIC PROPERTIES MODAL-->
 <div class="modal fade" id="groupSpecificPropertiesModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
   <div class="modal-dialog">
@@ -109,9 +161,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <table class="table" id="groupRoleTable">
       </table>
     </div>
-    <label for="newRole"><?= gettext('New Role') ?>: </label><input type="text" class="form-control" id="newRole" name="newRole">
-    <br>
-    <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext('Add New Role') ?></button>
+    <button type="button" class="btn btn-success" id="addNewRoleBtn" data-bs-toggle="modal" data-bs-target="#addRoleModal">
+      <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Role') ?>
+    </button>
   </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

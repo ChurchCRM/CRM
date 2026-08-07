@@ -87,8 +87,32 @@ function initializeGroupEditor() {
       });
   });
 
-  $("#addNewRole").click((e) => {
-    const newRoleName = $("#newRole").val();
+  // Add Role modal wiring
+  $("#newRole").on("input", () => {
+    const hasValue = $("#newRole").val().trim().length > 0;
+    $("#submitNewRole").prop("disabled", !hasValue);
+  });
+
+  // Allow Enter key to submit the add-role modal
+  $("#newRole").on("keydown", (e) => {
+    if (e.key === "Enter" && !$("#submitNewRole").prop("disabled")) {
+      $("#submitNewRole").trigger("click");
+    }
+  });
+
+  // Clear input and reset button state when modal hides
+  $("#addRoleModal").on("hidden.bs.modal", () => {
+    $("#newRole").val("");
+    $("#submitNewRole").prop("disabled", true);
+  });
+
+  $("#submitNewRole").click(() => {
+    const newRoleName = $("#newRole").val().trim();
+    if (!newRoleName) {
+      return;
+    }
+
+    $("#submitNewRole").prop("disabled", true);
 
     $.ajax({
       method: "POST",
@@ -107,7 +131,7 @@ function initializeGroupEditor() {
         roleCount += 1;
         dataT.row.add(newRow);
         dataT.rows().invalidate().draw(true);
-        $("#newRole").val("");
+        $("#addRoleModal").modal("hide");
         window.CRM.notify(i18next.t("Role added successfully."), {
           type: "success",
           delay: 3000,
@@ -115,6 +139,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to add new role:", error);
+        $("#submitNewRole").prop("disabled", false);
         window.CRM.notify(i18next.t("Failed to add role. Please try again."), {
           type: "danger",
           delay: 5000,
@@ -122,8 +147,49 @@ function initializeGroupEditor() {
       });
   });
 
+  // Store the role ID pending delete confirmation
+  let pendingDeleteRoleID = null;
+
   $(document).on("click", ".deleteRole", (e) => {
-    const roleID = e.currentTarget.id.split("-")[1];
+    const btn = e.currentTarget;
+    const roleID = btn.id.split("-")[1];
+    // Prefer the live input value so renames are reflected before page refresh
+    const roleNameInput = document.querySelector(`.roleName[id$="-${roleID}"]`);
+    const roleName = roleNameInput ? roleNameInput.value : String($(btn).data("role-name") || "");
+
+    pendingDeleteRoleID = roleID;
+
+    // Populate modal message using safe text insertion
+    const msg = i18next.t("Are you sure you want to remove the role '{{name}}'?", {
+      name: roleName,
+      interpolation: { escapeValue: false },
+    });
+    $("#deleteRoleMessage").text(msg);
+
+    // Show last-role warning and block confirm when this is the only role
+    if (roleCount <= 1) {
+      $("#lastRoleWarning").removeClass("d-none");
+      $("#confirmDeleteRole").prop("disabled", true);
+    } else {
+      $("#lastRoleWarning").addClass("d-none");
+      $("#confirmDeleteRole").prop("disabled", false);
+    }
+
+    $("#deleteRoleModal").modal("show");
+  });
+
+  $("#deleteRoleModal").on("hidden.bs.modal", () => {
+    pendingDeleteRoleID = null;
+  });
+
+  $("#confirmDeleteRole").click(() => {
+    const roleID = pendingDeleteRoleID;
+    if (!roleID) {
+      return;
+    }
+
+    $("#confirmDeleteRole").prop("disabled", true);
+
     $.ajax({
       method: "DELETE",
       url: `${window.CRM.root}/api/groups/${groupID}/roles/${roleID}`,
@@ -137,7 +203,9 @@ function initializeGroupEditor() {
         if (roleID == defaultRoleID) {
           defaultRoleID = 1;
         }
+        roleCount = data.length;
         dataT.rows().invalidate().draw(true);
+        $("#deleteRoleModal").modal("hide");
         window.CRM.notify(i18next.t("Role deleted successfully."), {
           type: "success",
           delay: 3000,
@@ -145,6 +213,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to delete role:", error);
+        $("#confirmDeleteRole").prop("disabled", false);
         window.CRM.notify(i18next.t("Failed to delete role. Please try again."), {
           type: "danger",
           delay: 5000,
@@ -299,8 +368,12 @@ function initializeGroupEditor() {
         data: null,
         render: (data, type, full, meta) => {
           const isProtected = full.lst_OptionName === "Student" || full.lst_OptionName === "Teacher";
-          const disabledAttr = isProtected ? " disabled" : "";
-          return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole"${disabledAttr}>${i18next.t("Delete")}</button>`;
+          const escapedName = window.CRM.escapeAttribute(full.lst_OptionName);
+          if (isProtected) {
+            const titleAttr = window.CRM.escapeAttribute(i18next.t("This role cannot be deleted."));
+            return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" disabled title="${titleAttr}" data-role-name="${escapedName}">${i18next.t("Delete")}</button>`;
+          }
+          return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" data-role-name="${escapedName}">${i18next.t("Delete")}</button>`;
         },
       },
     ],
