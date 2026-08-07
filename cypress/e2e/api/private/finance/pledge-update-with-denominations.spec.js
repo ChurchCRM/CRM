@@ -103,7 +103,7 @@ describe("Pledge update regression — pledge_denominations_pdem table (#9376)",
             // present in the request body.
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/deposits/",
+                "/api/deposits",
                 {
                     depositType: "Bank",
                     depositComment: "9376 regression test",
