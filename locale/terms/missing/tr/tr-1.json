@@ -1,18 +1,18 @@
 {
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} üye kopyalındı",
+    "other": "{{count}} üye kopyalındı"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyal'yı kullanın.",
+    "other": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyal'yı kullanın."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyal'yı kullanın.",
+    "other": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyal'yı kullanın."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} dakika kaldı",
+    "other": "{{count}} dakika kaldı"
   }
 }

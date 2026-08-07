@@ -1,18 +1,22 @@
 {
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Skopírovaný {{count}} člen",
+    "few": "Skopírovaní {{count}} členovia",
+    "other": "Skopírovaných {{count}} členov"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Tento zoznam má {{count}} príjemcu — príliš veľa pre odkaz mailto:. Použite namiesto toho Kopírovanie adries.",
+    "few": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Použite namiesto toho Kopírovanie adries.",
+    "other": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Použite namiesto toho Kopírovanie adries."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite namiesto toho Kopírovanie adries.",
+    "few": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite namiesto toho Kopírovanie adries.",
+    "other": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite namiesto toho Kopírovanie adries."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min zostáva",
+    "few": "{{count}} min zostáva",
+    "other": "{{count}} min zostáva"
   }
 }
