@@ -345,4 +345,135 @@ describe("Admin - Church Information Page", () => {
             });
         });
     });
+
+    // Tests for the "Generate Coordinates" button and live map preview added in PR #9375.
+    describe("Generate Coordinates button and live map preview", () => {
+        it("should display the Generate Coordinates button on the page", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#generate-coordinates-btn").should("be.visible");
+            cy.contains("Generate Coordinates").should("be.visible");
+        });
+
+        it("should show warning notification when no address fields are filled", () => {
+            cy.visit("admin/system/church-info");
+
+            // Wait for country TomSelect to be ready, then clear it (blank country)
+            cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
+            cy.tomSelectByValue("#sChurchCountry", "");
+
+            // Clear all address text fields so buildAddressForGeocoding() returns empty
+            cy.get("#sChurchAddress").clear();
+            cy.get("#sChurchCity").clear();
+            cy.get("#sChurchZip").clear();
+
+            cy.get("#generate-coordinates-btn").click();
+
+            cy.contains("Enter a street address first.", { timeout: 5000 }).should("be.visible");
+        });
+
+        it("should populate lat/lng fields after successful geocoding", () => {
+            cy.intercept("POST", "**/api/geocoder/address", {
+                statusCode: 200,
+                body: { Latitude: 40.7128, Longitude: -74.006 },
+            }).as("geocode");
+
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchAddress").clear().type("123 Main St");
+            cy.get("#sChurchCity").clear().type("New York");
+            cy.get("#sChurchZip").clear().type("10001");
+
+            cy.get("#generate-coordinates-btn").click();
+            cy.wait("@geocode");
+
+            cy.get("#iChurchLatitude").should("have.value", "40.7128");
+            cy.get("#iChurchLongitude").should("have.value", "-74.006");
+        });
+
+        it("should show success notification and reveal map container after geocoding", () => {
+            cy.intercept("POST", "**/api/geocoder/address", {
+                statusCode: 200,
+                body: { Latitude: 51.5074, Longitude: -0.1278 },
+            }).as("geocode");
+
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchAddress").clear().type("1 London Bridge");
+            cy.get("#sChurchCity").clear().type("London");
+
+            cy.get("#generate-coordinates-btn").click();
+            cy.wait("@geocode");
+
+            // Notyf success toast
+            cy.contains("Coordinates updated.", { timeout: 5000 }).should("be.visible");
+
+            // Map container should have d-none removed
+            cy.get("#church-location-map").should("not.have.class", "d-none");
+
+            // "Add coordinates to see a map" alert should be hidden
+            cy.get("#no-coords-alert").should("have.class", "d-none");
+        });
+
+        it("should show warning when geocoding returns zero coordinates (address not found)", () => {
+            cy.intercept("POST", "**/api/geocoder/address", {
+                statusCode: 200,
+                body: { Latitude: 0, Longitude: 0 },
+            }).as("geocodeNotFound");
+
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchAddress").clear().type("Nonexistent Street XYZ12345");
+            cy.get("#sChurchCity").clear().type("Nowhere");
+
+            cy.get("#generate-coordinates-btn").click();
+            cy.wait("@geocodeNotFound");
+
+            cy.contains("Could not find coordinates for that address", { timeout: 5000 }).should("be.visible");
+        });
+
+        it("should show error notification when geocoding request fails (network/server error)", () => {
+            cy.intercept("POST", "**/api/geocoder/address", {
+                statusCode: 500,
+                body: {},
+            }).as("geocodeFail");
+
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchAddress").clear().type("123 Main St");
+            cy.get("#sChurchCity").clear().type("Springfield");
+
+            cy.get("#generate-coordinates-btn").click();
+            cy.wait("@geocodeFail");
+
+            cy.contains("Geocoding request failed. Please try again.", { timeout: 5000 }).should("be.visible");
+        });
+
+        it("should flag coordinates as stale when address is edited after geocoding", () => {
+            cy.intercept("POST", "**/api/geocoder/address", {
+                statusCode: 200,
+                body: { Latitude: 40.7128, Longitude: -74.006 },
+            }).as("geocode");
+
+            cy.visit("admin/system/church-info");
+
+            // Geocode a valid address
+            cy.get("#sChurchAddress").clear().type("123 Main St");
+            cy.get("#sChurchCity").clear().type("New York");
+
+            cy.get("#generate-coordinates-btn").click();
+            cy.wait("@geocode");
+
+            // Confirm coordinates were set
+            cy.get("#iChurchLatitude").should("have.value", "40.7128");
+
+            // Now edit the city — this should trigger the stale-coordinates warning
+            cy.get("#sChurchCity").clear().type("Boston");
+
+            // #generate-coordinates-help should switch to text-warning style
+            cy.get("#generate-coordinates-help")
+                .should("have.class", "text-warning")
+                .and("contain", "Address changed since coordinates were last set");
+        });
+    });
 });

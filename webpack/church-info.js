@@ -486,7 +486,10 @@ function initChurchInfoPreview() {
     const previewEmail = document.getElementById("preview-email");
     if (previewEmail) {
       previewEmail.textContent = email;
-      previewEmail.href = email ? `mailto:${email}` : "#";
+      // Only create a mailto: link when the value looks like a real email address;
+      // reject anything that could be a javascript: or data: scheme injection.
+      const safeEmailHref = email && /^[^\s<>"'\\]+@[^\s<>"'\\]+\.[^\s<>"'\\]+$/.test(email) ? `mailto:${email}` : "#";
+      previewEmail.href = safeEmailHref;
     }
 
     const website = document.getElementById("sChurchWebSite")?.value.trim() || "";
@@ -494,7 +497,9 @@ function initChurchInfoPreview() {
     const previewWebsite = document.getElementById("preview-website");
     if (previewWebsite) {
       previewWebsite.textContent = website;
-      previewWebsite.href = website || "#";
+      // Only allow http:// and https:// URLs to prevent javascript: / data: injection.
+      const safeWebsiteHref = /^https?:\/\//i.test(website) ? website : "#";
+      previewWebsite.href = safeWebsiteHref;
     }
   }
 
