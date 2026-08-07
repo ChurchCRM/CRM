@@ -305,3 +305,23 @@ select {
     max-width: 100% !important;
   }
 }
+
+// --- #9373: action-menu dropdowns must escape their scroll/overflow wrapper ---
+// `.table-responsive` uses `overflow-x: auto`; per the CSS Overflow spec that
+// forces `overflow-y` to compute as `auto` too, clipping the absolutely-
+// positioned `.dropdown-menu`. Our own ≤575px mobile rules also add
+// `overflow-x: auto` to `.card-body` — this clips dropdowns inside list-group
+// wrappers (e.g. the Person-view Groups tab) at small viewports.
+//
+// Bootstrap toggles `.show` on the open `.dropdown-menu`, so `:has()` lets us
+// relax the clipping ONLY while a menu is open — horizontal scrolling is fully
+// preserved the rest of the time.
+//
+// NOTE: `overflow-x: auto; overflow-y: visible` does NOT fix this — when
+// `overflow-x` is `auto`/`scroll`, the spec forces `overflow-y: visible` to
+// compute as `auto`, so the clip remains. See table-action-menu.md for full
+// explanation and the audit that confirmed it.
+.table-responsive:has(.dropdown-menu.show),
+.card-body:has(.dropdown-menu.show) {
+  overflow: visible;
+}
