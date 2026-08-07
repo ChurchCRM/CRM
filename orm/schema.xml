@@ -511,6 +511,9 @@
         <foreign-key foreignTable="person_per">
             <reference local="plg_EditedBy" foreign="per_ID"/>
         </foreign-key>
+        <index name="plg_FYID">
+            <index-column name="plg_FYID"/>
+        </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>

@@ -94,9 +94,22 @@ function initializeFamilyView() {
 
   // Pledges & Payments table — init after ensuring both types are returned by API
   if ($("#pledge-payment-v2-table").length) {
-    const dataTableConfig = {
+    // Build the ajax URL with an optional FY filter.
+    // fyid 0 or empty string means all-time; positive int means specific FY.
+    function getPledgeAjaxUrl(fyid) {
+      var base = window.CRM.root + "/api/payments/family/" + window.CRM.currentFamily + "/list";
+      return fyid > 0 ? base + "?fyid=" + fyid : base;
+    }
+
+    // Determine initial FY from URL param, falling back to the active pill's data-fy
+    // (the active pill is set server-side to the current FY by default).
+    var urlParams = new URLSearchParams(window.location.search);
+    var activePillFy = parseInt($(".pledge-fy-pill.active").data("fy") || "0", 10) || 0;
+    var initialFyid = parseInt(urlParams.get("fyid") || "", 10) || activePillFy;
+
+    var dataTableConfig = {
       ajax: {
-        url: `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list`,
+        url: getPledgeAjaxUrl(initialFyid),
         dataSrc: "data",
       },
       columns: [
@@ -172,7 +185,15 @@ function initializeFamilyView() {
       .then(() => {
         const pledgeTable = $("#pledge-payment-v2-table").DataTable(dataTableConfig);
 
-        // Type filter pills: client-side column 0 (Type) search
+        // Set the active FY pill based on the initial fyid
+        $(".pledge-fy-pill").removeClass("active");
+        $(".pledge-fy-pill[data-fy='" + (initialFyid || 0) + "']").addClass("active");
+        if (!$(".pledge-fy-pill.active").length) {
+          // If no pill matched (e.g. initialFyid not in list), default to first pill
+          $(".pledge-fy-pill").first().addClass("active");
+        }
+
+        // Type filter pills: client-side column 0 (Type) search — unchanged
         $(".pledge-type-pill").on("click", function (e) {
           e.preventDefault();
           $(".pledge-type-pill").removeClass("active");
@@ -183,22 +204,27 @@ function initializeFamilyView() {
             .draw();
         });
 
-        // Fiscal year filter pills: client-side column 4 (Fiscal Year) search
+        // Fiscal year filter pills: server-side reload via fyid param
         $(".pledge-fy-pill").on("click", function (e) {
           e.preventDefault();
           $(".pledge-fy-pill").removeClass("active");
           $(this).addClass("active");
-          pledgeTable
-            .column(4)
-            .search($(this).data("fy") || "")
-            .draw();
+          var fy = parseInt($(this).data("fy") || "0", 10) || 0;
+          // Persist selection in URL without page reload
+          var params = new URLSearchParams(window.location.search);
+          if (fy > 0) {
+            params.set("fyid", fy);
+          } else {
+            params.delete("fyid");
+          }
+          window.history.replaceState(
+            {},
+            "",
+            window.location.pathname + (params.toString() ? "?" + params.toString() : "")
+          );
+          // Reload DataTable with the new server-side fyid
+          pledgeTable.ajax.url(getPledgeAjaxUrl(fy)).load();
         });
-
-        // Apply default FY filter (Current FY pill is active by default)
-        const defaultFY = $(".pledge-fy-pill.active").data("fy") || "";
-        if (defaultFY) {
-          pledgeTable.column(4).search(defaultFY).draw();
-        }
       });
   }
 

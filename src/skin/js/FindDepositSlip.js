@@ -6,6 +6,12 @@
 var dataT = 0;
 
 function initializeDepositSlip() {
+  // Build the ajax URL with an optional fyid filter.
+  // fyid 0 means all-time (no filter); positive integer = specific FY.
+  function getDepositsAjaxUrl(fyid) {
+    var base = window.CRM.root + "/api/deposits";
+    return fyid > 0 ? base + "?fyid=" + fyid : base;
+  }
   function updateSelectedCount() {
     var selectedRows = dataT.rows(".selected").data().length;
     $("#deleteSelectedRows").prop("disabled", !selectedRows);
@@ -114,7 +120,7 @@ function initializeDepositSlip() {
 
   var dataTableConfig = {
     ajax: {
-      url: window.CRM.root + "/api/deposits",
+      url: getDepositsAjaxUrl(window.CRM.depositSelectedFyid || 0),
       dataSrc: "Deposits",
     },
     deferRender: true,
@@ -213,6 +219,20 @@ function initializeDepositSlip() {
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
   dataT = $("#depositsTable").DataTable(dataTableConfig);
+
+  // Fiscal Year selector: reload DataTable via updated ajax URL and persist in URL
+  $("#deposit-slip-fyid").on("change", function () {
+    var fyid = parseInt($(this).val(), 10) || 0;
+    // Update URL without page reload so the selection survives navigation
+    var params = new URLSearchParams(window.location.search);
+    if (fyid > 0) {
+      params.set("fyid", fyid);
+    } else {
+      params.delete("fyid");
+    }
+    window.history.replaceState({}, "", window.location.pathname + (params.toString() ? "?" + params.toString() : ""));
+    dataT.ajax.url(getDepositsAjaxUrl(fyid)).load();
+  });
 
   $("#depositsTable tbody").on("click", "tr", function (e) {
     // Don't toggle selection when clicking dropdown or its children

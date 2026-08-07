@@ -16,6 +16,7 @@ use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Service\AuthService;
@@ -820,46 +821,16 @@ class FinancialService
     // =========================================================================
 
     /**
-     * Calculate fiscal year date range based on system configuration.
+     * Calculate fiscal year date range based on system configuration (current FY).
+     *
+     * Delegates to FiscalYearUtils::getFiscalYearDatesById() with the current FY ID
+     * so all FY computation is in one place.
      *
      * @return array{startDate: string, endDate: string, label: string, month: int}
      */
     public function getFiscalYearDates(): array
     {
-        $iFYMonth = SystemConfig::getIntValue('iFYMonth');
-        $currentYear = (int) date('Y');
-        $currentMonth = (int) date('n');
-
-        if ($iFYMonth === 1) {
-            // Calendar year fiscal year
-            $fyStartDate = $currentYear . '-01-01';
-            $fyEndDate = $currentYear . '-12-31';
-            $fyLabel = (string) $currentYear;
-        } else {
-            // Non-calendar fiscal year
-            if ($currentMonth >= $iFYMonth) {
-                $fyStartYear = $currentYear;
-                $fyEndYear = $currentYear + 1;
-            } else {
-                $fyStartYear = $currentYear - 1;
-                $fyEndYear = $currentYear;
-            }
-            $fyStartDate = $fyStartYear . '-' . str_pad($iFYMonth, 2, '0', STR_PAD_LEFT) . '-01';
-            // Calculate end date (last day of month before fiscal year month)
-            $endMonth = $iFYMonth - 1;
-            if ($endMonth === 0) {
-                $endMonth = 12;
-            }
-            $fyEndDate = $fyEndYear . '-' . str_pad($endMonth, 2, '0', STR_PAD_LEFT) . '-' . date('t', strtotime($fyEndYear . '-' . $endMonth . '-01'));
-            $fyLabel = $fyStartYear . '/' . substr((string) $fyEndYear, 2, 2);
-        }
-
-        return [
-            'startDate' => $fyStartDate,
-            'endDate' => $fyEndDate,
-            'label' => $fyLabel,
-            'month' => $iFYMonth,
-        ];
+        return FiscalYearUtils::getFiscalYearDatesById(FiscalYearUtils::getCurrentFiscalYearId());
     }
 
     /**
@@ -877,24 +848,53 @@ class FinancialService
     }
 
     /**
-     * Get recent deposits within the current fiscal year.
+     * Get recent deposits, optionally scoped to a specific fiscal year.
      *
      * @param int $limit Maximum number of deposits to return
-     * @param string|null $fyStartDate Optional fiscal year start date filter
+     * @param int|null $fyid Fiscal year ID to filter by; null or 0 returns all time
      * @return ObjectCollection Collection of Deposit objects
      */
-    public function getRecentDeposits(int $limit = 5, ?string $fyStartDate = null): ObjectCollection
+    public function getRecentDeposits(int $limit = 5, ?int $fyid = null): ObjectCollection
     {
         $query = DepositQuery::create()
             ->orderByDate(Criteria::DESC)
             ->limit($limit);
 
-        // Filter to only show deposits from current fiscal year
-        if ($fyStartDate !== null) {
-            $query->filterByDate($fyStartDate, Criteria::GREATER_EQUAL);
+        if ($fyid !== null && $fyid > 0) {
+            $fyDates = FiscalYearUtils::getFiscalYearDatesById($fyid);
+            $query->filterByDate(['min' => $fyDates['startDate'], 'max' => $fyDates['endDate']]);
         }
 
         return $query->find();
+    }
+
+    /**
+     * Get the oldest fiscal year ID that has deposit data.
+     *
+     * Used to build the FY selector on the Finance Dashboard and Find Deposit Slip.
+     *
+     * @return int Oldest fiscal year ID (falls back to current FY when no deposits exist)
+     */
+    public function getOldestDepositFyId(): int
+    {
+        $oldest = DepositQuery::create()
+            ->orderByDate(Criteria::ASC)
+            ->findOne();
+        if ($oldest === null) {
+            return FiscalYearUtils::getCurrentFiscalYearId();
+        }
+        $dateStr = $oldest->getDate('Y-m-d');
+        return FiscalYearUtils::getFiscalYearIdForDate(is_string($dateStr) ? $dateStr : '');
+    }
+
+    /**
+     * Get available fiscal years for the deposit-based FY selector.
+     *
+     * @return array<int, array{id: int, label: string}>
+     */
+    public function getAvailableDepositFiscalYears(): array
+    {
+        return FiscalYearUtils::buildFiscalYearList($this->getOldestDepositFyId());
     }
 
     /**
@@ -989,32 +989,37 @@ class FinancialService
 
     /**
      * Get all dashboard data in a single call.
-     * 
-     * This method consolidates all the dashboard queries into a single 
-     * service call to simplify the view layer.
      *
+     * Accepts an optional $fyid; when null/0 the current fiscal year is used for stats
+     * (deposits, YTD totals). The recent-deposits card uses the same FY scope.
+     *
+     * @param int|null $fyid Fiscal year ID (null/0 = current FY)
      * @return array Dashboard data including fiscal year info, statistics, and deposits
      */
-    public function getDashboardData(): array
+    public function getDashboardData(?int $fyid = null): array
     {
-        $fiscalYear = $this->getFiscalYearDates();
+        $actualFyid  = ($fyid !== null && $fyid > 0) ? $fyid : FiscalYearUtils::getCurrentFiscalYearId();
+        $fiscalYear  = FiscalYearUtils::getFiscalYearDatesById($actualFyid);
         $depositStats = $this->getDepositStatistics();
         $currentDeposit = $this->getCurrentDeposit();
         $donationFundService = new DonationFundService();
         $activeFunds = $donationFundService->getAll();
 
         return [
-            'fiscalYear' => $fiscalYear,
-            'depositStats' => $depositStats,
-            'recentDeposits' => $this->getRecentDeposits(5, $fiscalYear['startDate']),
-            'activeFunds' => $activeFunds,
-            'activeFundCount' => $activeFunds->count(),
-            'totalFundCount' => $donationFundService->getCount(),
-            'ytdPaymentTotal' => $this->getYtdPaymentTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
-            'ytdPledgeTotal' => $this->getYtdPledgeTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
-            'ytdPaymentCount' => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'fiscalYear'       => $fiscalYear,
+            'selectedFyid'     => $actualFyid,
+            'availableYears'   => $this->getAvailableDepositFiscalYears(),
+            'currentFyid'      => FiscalYearUtils::getCurrentFiscalYearId(),
+            'depositStats'     => $depositStats,
+            'recentDeposits'   => $this->getRecentDeposits(5, $actualFyid),
+            'activeFunds'      => $activeFunds,
+            'activeFundCount'  => $activeFunds->count(),
+            'totalFundCount'   => $donationFundService->getCount(),
+            'ytdPaymentTotal'  => $this->getYtdPaymentTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'ytdPledgeTotal'   => $this->getYtdPledgeTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'ytdPaymentCount'  => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdDonorFamilies' => $this->getYtdDonorFamilyCount($fiscalYear['startDate'], $fiscalYear['endDate']),
-            'currentDeposit' => $currentDeposit,
+            'currentDeposit'   => $currentDeposit,
             'currentDepositId' => $this->getCurrentDepositId(),
         ];
     }

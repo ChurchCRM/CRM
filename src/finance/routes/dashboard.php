@@ -1,6 +1,8 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -9,6 +11,13 @@ use Slim\Views\PhpRenderer;
 // Match /finance root path - Finance Dashboard
 $app->get('/', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+    $queryParams  = $request->getQueryParams();
+    $selectedFyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : 0;
+    // 0 = current FY (default); a positive integer = specific FY
+
+    $financialService = new FinancialService();
+    $dashboardData    = $financialService->getDashboardData($selectedFyid ?: null);
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
@@ -23,6 +32,7 @@ $app->get('/', function (Request $request, Response $response) {
             ['label' => gettext('Donation Funds'), 'url' => '/DonationFundEditor.php', 'icon' => 'fa-hand-holding-dollar'],
             ['label' => gettext('Manage Envelopes'), 'url' => '/ManageEnvelopes.php', 'icon' => 'fa-envelope'],
         ]),
+        'dashboardData' => $dashboardData,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

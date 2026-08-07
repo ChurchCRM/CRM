@@ -9,16 +9,17 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Use FinancialService for all dashboard data
-$financialService = new FinancialService();
-$dashboardData = $financialService->getDashboardData();
-
-// Extract data for template use
+// $dashboardData is injected by the route controller (finance/routes/dashboard.php)
+// It includes FY-scoped data for the selectedFyid passed in the GET ?fyid param.
 $fiscalYear = $dashboardData['fiscalYear'];
 $fyStartDate = $fiscalYear['startDate'];
 $fyEndDate = $fiscalYear['endDate'];
 $fyLabel = $fiscalYear['label'];
 $iFYMonth = $fiscalYear['month'];
+
+$selectedFyid  = $dashboardData['selectedFyid'];
+$availableYears = $dashboardData['availableYears'];
+$currentFyid   = $dashboardData['currentFyid'];
 
 $depositStats = $dashboardData['depositStats'];
 $totalDeposits = $depositStats['total'];
@@ -283,6 +284,19 @@ $sRootPath = SystemURLs::getRootPath();
             <div class="card mb-3">
                 <div class="card-header d-flex align-items-center">
                     <h3 class="card-title"><i class="fa-solid fa-clock-rotate-left me-2"></i><?= gettext('Recent Deposits') ?></h3>
+                    <!-- Fiscal Year selector -->
+                    <form method="GET" class="ms-3 d-inline-flex align-items-center gap-2">
+                        <label for="deposit-fyid" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Fiscal Year') ?>:</label>
+                        <select name="fyid" id="deposit-fyid" class="form-select form-select-sm" style="width: auto;" onchange="this.form.submit();">
+                            <option value="0" <?= $selectedFyid === $currentFyid ? '' : ($selectedFyid === 0 ? 'selected' : '') ?>><?= gettext('All Time') ?></option>
+                            <?php foreach ($availableYears as $year): ?>
+                            <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
+                                <?= InputUtils::escapeHTML($year['label']) ?>
+                                <?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </form>
                     <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-secondary ms-auto">
                         <i class="fa-solid fa-list me-1"></i><?= gettext('View All') ?>
                     </a>
