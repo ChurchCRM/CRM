@@ -411,13 +411,14 @@ class ConfirmReportService
     /**
      * Generate a per-family PDF and email it to the family.
      *
+     * Returns a structured result object instead of throwing on SMTP failure,
+     * so callers can surface a specific error message to the user.
+     *
      * @param int|null $familyId If set, only email that one family.
      * @param bool     $updated  Append "** Updated **" to the email subject.
-     * @return int Number of families successfully emailed.
-     *
-     * @throws \RuntimeException if an email send fails (caller should redirect with error).
+     * @return ConfirmReportEmailResult Structured result with status/counts.
      */
-    public function sendFamilyEmails(?int $familyId, bool $updated = false): int
+    public function sendFamilyEmails(?int $familyId, bool $updated = false): ConfirmReportEmailResult
     {
         $customFields = PersonCustomMasterQuery::create()->orderByOrder()->find();
 
@@ -435,7 +436,8 @@ class ConfirmReportService
 
         $dataCol = 55;
         $dataWid = 65;
-        $familiesEmailed = 0;
+        $sentCount = 0;
+        $failedFamilies = [];
 
         foreach ($families as $family) {
             $pdf = new ConfirmEmailPdf();
@@ -666,14 +668,128 @@ class ConfirmReportService
                 $mail->addStringAttachment($pdfBytes, $attachmentFilename);
 
                 if ($mail->send()) {
-                    $familiesEmailed++;
+                    $sentCount++;
                 } else {
-                    LoggerUtils::getAppLogger()->error('ConfirmReportService email error: ' . $mail->getError());
-                    throw new \RuntimeException('Email send failed for family: ' . $famName);
+                    LoggerUtils::getAppLogger()->error(
+                        'ConfirmReportService email error for family "' . $famName . '": ' . $mail->getError()
+                    );
+                    $failedFamilies[] = $famName;
                 }
             }
         }
 
-        return $familiesEmailed;
+        // Classify the overall result
+        if (count($families) === 0) {
+            return new ConfirmReportEmailResult(
+                ConfirmReportEmailResult::STATUS_NO_RECIPIENTS,
+                0,
+                0,
+            );
+        }
+
+        if (empty($failedFamilies)) {
+            return new ConfirmReportEmailResult(
+                ConfirmReportEmailResult::STATUS_SUCCESS,
+                $sentCount,
+                0,
+            );
+        }
+
+        if ($sentCount === 0) {
+            return new ConfirmReportEmailResult(
+                ConfirmReportEmailResult::STATUS_SMTP_FAILURE,
+                0,
+                count($failedFamilies),
+                $failedFamilies,
+            );
+        }
+
+        return new ConfirmReportEmailResult(
+            ConfirmReportEmailResult::STATUS_PARTIAL_FAILURE,
+            $sentCount,
+            count($failedFamilies),
+            $failedFamilies,
+        );
+    }
+
+    /**
+     * Return preview data for the send-confirmation modal without actually sending.
+     *
+     * @param int|null $familyId If set, scope to a single family.
+     * @return array{recipientCount: int, recipients: list<array{id: int, name: string, email: string}>, familiesWithoutEmail: list<array{id: int, name: string}>, templatePreview: array{subject: string, bodyExcerpt: string}}
+     */
+    public function getEmailPreview(?int $familyId): array
+    {
+        // Families that WILL receive an email (same filter as sendFamilyEmails)
+        $recipientQuery = FamilyQuery::create()
+            ->usePersonQuery()
+                ->filterByEmail('', Criteria::NOT_EQUAL)
+            ->endUse()
+            ->orderByName();
+
+        if ($familyId !== null) {
+            $recipientQuery->filterById($familyId);
+        }
+
+        $recipientFamilies = $recipientQuery->distinct()->find();
+
+        $recipients = [];
+        foreach ($recipientFamilies as $fam) {
+            $emails = $fam->getEmails();
+            $recipients[] = [
+                'id'    => $fam->getId(),
+                'name'  => $fam->getName(),
+                'email' => implode(', ', $emails),
+            ];
+        }
+
+        // Families WITHOUT any email (family email blank AND no member email/workEmail)
+        $allFamilyQuery = FamilyQuery::create()->orderByName();
+        if ($familyId !== null) {
+            $allFamilyQuery->filterById($familyId);
+        }
+        $allFamilies = $allFamilyQuery->find();
+
+        $familiesWithoutEmail = [];
+        foreach ($allFamilies as $fam) {
+            if (!empty($fam->getEmail())) {
+                continue;
+            }
+            $hasAnyEmail = false;
+            foreach ($fam->getPeopleSorted() as $person) {
+                if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) {
+                    $hasAnyEmail = true;
+                    break;
+                }
+            }
+            if (!$hasAnyEmail) {
+                $familiesWithoutEmail[] = [
+                    'id'   => $fam->getId(),
+                    'name' => $fam->getName(),
+                ];
+            }
+        }
+
+        // Template preview — mirror FamilyVerificationEmail subject/body format
+        $subjectTemplate = sprintf(
+            gettext('%s: Please verify your family\'s information'),
+            gettext('[Family Name]')
+        );
+
+        $rawBody    = (string) SystemConfig::getValue('sConfirm1');
+        $bodyPlain  = trim(strip_tags($rawBody));
+        $bodyExcerpt = mb_strlen($bodyPlain) > 200
+            ? mb_substr($bodyPlain, 0, 200) . '…'
+            : $bodyPlain;
+
+        return [
+            'recipientCount'      => count($recipients),
+            'recipients'          => $recipients,
+            'familiesWithoutEmail' => $familiesWithoutEmail,
+            'templatePreview'     => [
+                'subject'     => $subjectTemplate,
+                'bodyExcerpt' => $bodyExcerpt,
+            ],
+        ];
     }
 }

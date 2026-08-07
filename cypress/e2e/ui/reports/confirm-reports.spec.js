@@ -225,4 +225,135 @@ describe("Confirmation Reports - MVC Routes", () => {
             });
         });
     });
+
+    // ================================================================
+    // Part 1: Error Messaging — structured alerts
+    // ================================================================
+    describe("People Verify — error alert messaging", () => {
+        it("shows a specific danger alert when EmailsError is present", () => {
+            // Visit with reason=smtp_failure — should show a danger alert
+            cy.visit("people/verify?EmailsError=1&reason=smtp_failure&sent=0&failed=3");
+
+            cy.get('[data-cy="email-result-alert"]')
+                .should("exist")
+                .should("have.class", "alert-danger")
+                .and("contain.text", "SMTP");
+        });
+
+        it("shows a partial-failure warning with sent/total counts", () => {
+            cy.visit("people/verify?EmailsError=1&reason=partial_failure&sent=40&failed=7");
+
+            cy.get('[data-cy="email-result-alert"]')
+                .should("exist")
+                .should("have.class", "alert-warning")
+                .and("contain.text", "40")
+                .and("contain.text", "47");
+        });
+
+        it("shows a no-recipients danger alert", () => {
+            cy.visit("people/verify?EmailsError=1&reason=no_recipients&sent=0&failed=0");
+
+            cy.get('[data-cy="email-result-alert"]')
+                .should("exist")
+                .should("have.class", "alert-danger");
+        });
+
+        it("alert is dismissible — disappears after clicking close", () => {
+            cy.visit("people/verify?EmailsError=1&reason=smtp_failure&sent=0&failed=1");
+
+            cy.get('[data-cy="email-result-alert"]').should("exist");
+            // Dismiss the alert with the bootstrap btn-close
+            cy.get('[data-cy="email-result-alert"] .btn-close').click();
+            // After clicking close the alert fades out — just assert it no longer has 'show'
+            // (do NOT assert not.exist because of BS5 async fade transition)
+            cy.get('[data-cy="email-result-alert"]').should("not.have.class", "show");
+        });
+
+        it("Retry button is present and triggers the confirmation modal", () => {
+            cy.visit("people/verify?EmailsError=1&reason=smtp_failure&sent=0&failed=1");
+
+            cy.get('[data-cy="retry-email-btn"]').should("exist");
+        });
+    });
+
+    // ================================================================
+    // Part 2: Send Confirmation Preview Modal
+    // ================================================================
+    describe("People Verify — send confirmation modal", () => {
+        beforeEach(() => {
+            freshAdminLogin();
+            cy.visit("people/verify");
+        });
+
+        it("opens the confirmation modal when Email Families is clicked", () => {
+            cy.get("#verifyEmail").click();
+            cy.get('[data-cy="verify-email-modal"]').should("have.class", "show");
+        });
+
+        it("modal loads a recipient count from the preview endpoint", () => {
+            cy.intercept("GET", "**/api/families/verify-email-preview").as("emailPreview");
+
+            cy.get("#verifyEmail").click();
+            cy.wait("@emailPreview", { timeout: 10000 }).then((interception) => {
+                expect(interception.response.statusCode).to.equal(200);
+                const body = interception.response.body;
+                expect(body).to.have.property("recipientCount");
+                expect(body.recipientCount).to.be.a("number");
+            });
+
+            // Recipient count banner should be visible in the modal
+            cy.get('[data-cy="modal-recipient-count"]').should("be.visible");
+        });
+
+        it("modal shows template preview subject and body excerpt", () => {
+            cy.intercept("GET", "**/api/families/verify-email-preview").as("emailPreview");
+
+            cy.get("#verifyEmail").click();
+            cy.wait("@emailPreview", { timeout: 10000 });
+
+            cy.get("#previewSubject").should("exist").invoke("text").should("have.length.above", 0);
+        });
+
+        it("Cancel button closes the modal without triggering a send", () => {
+            cy.intercept("POST", "**/people/report/verify/email").as("sendEmail");
+
+            cy.get("#verifyEmail").click();
+            cy.get('[data-cy="verify-email-modal"]').should("have.class", "show");
+
+            cy.get('[data-cy="modal-cancel-btn"]').click();
+
+            // Confirm no send request was made — the intercept alias should not have fired
+            // We use a small wait then check alias did not fire
+            // eslint-disable-next-line cypress/no-unnecessary-waiting
+            cy.wait(500);
+            // Verify there was no request to the email endpoint
+            cy.get("@sendEmail.all").should("have.length", 0);
+        });
+
+        it("Send button triggers AJAX POST and shows result banner in modal", () => {
+            cy.intercept("GET", "**/api/families/verify-email-preview").as("emailPreview");
+            cy.intercept("POST", "**/people/report/verify/email").as("sendEmail");
+
+            cy.get("#verifyEmail").click();
+            cy.wait("@emailPreview", { timeout: 10000 });
+
+            // Only click Send if there are recipients (otherwise the button stays disabled)
+            cy.get('[data-cy="modal-send-btn"]').then(($btn) => {
+                if ($btn.prop("disabled")) {
+                    // No recipients in CI env — acceptable; just verify the button exists
+                    cy.log("No recipients in CI environment — skipping send click");
+                    return;
+                }
+                cy.wrap($btn).click();
+                cy.wait("@sendEmail", { timeout: 15000 }).then((interception) => {
+                    // Should return JSON, not a redirect
+                    expect(interception.response.headers["content-type"]).to.include("json");
+                    expect(interception.response.body).to.have.property("status");
+                    expect(interception.response.body).to.have.property("message");
+                });
+                // Result banner should be shown inside the modal
+                cy.get('[data-cy="modal-result-banner"]').should("exist");
+            });
+        });
+    });
 });

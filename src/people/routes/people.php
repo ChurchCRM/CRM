@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\ConfirmReportEmailResult;
 use ChurchCRM\Service\ConfirmReportService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -33,23 +34,26 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
 {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
+    $queryParams = $request->getQueryParams();
+
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
     ];
 
-    if ($request->getQueryParams()['EmailsError'] ?? false) {
-        $errorArgs = [
-            'sGlobalMessage' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
-            'sGlobalMessageClass' => 'danger'
-        ];
-        $pageArgs = array_merge($pageArgs, $errorArgs);
+    // Structured email-error alert (replaces generic ?EmailsError=true toast)
+    if (!empty($queryParams['EmailsError'])) {
+        $reason     = $queryParams['reason']     ?? 'unknown';
+        $sentCount  = isset($queryParams['sent'])    ? (int) $queryParams['sent']    : 0;
+        $failedCount = isset($queryParams['failed']) ? (int) $queryParams['failed']  : 0;
+
+        $pageArgs['emailErrorReason']  = $reason;
+        $pageArgs['emailErrorSent']    = $sentCount;
+        $pageArgs['emailErrorFailed']  = $failedCount;
     }
 
-    $queryParam = $request->getQueryParams()['AllPDFsEmailed'] ?? null;
-    if ($queryParam) {
-        $headerArgs = ['sGlobalMessage' => sprintf(gettext('PDFs successfully emailed to %s families.'), $queryParam),
-            'sGlobalMessageClass'       => 'success'];
-        $pageArgs = array_merge($pageArgs, $headerArgs);
+    // Success: keep existing AllPDFsEmailed handling (shown via toast + inline)
+    if (!empty($queryParams['AllPDFsEmailed'])) {
+        $pageArgs['emailSuccessCount'] = (int) $queryParams['AllPDFsEmailed'];
     }
 
     return $renderer->render($response, 'people-verify-view.php', $pageArgs);
@@ -110,19 +114,75 @@ function sendVerifyReportEmail(Request $request, Response $response, array $args
         : null;
     $updated = !empty($params['updated']);
 
+    // Detect AJAX requests — these get a JSON response instead of a redirect
+    $isAjax = $request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest'
+        || str_contains(strtolower($request->getHeaderLine('Accept')), 'application/json');
+
     try {
         $service = new ConfirmReportService();
-        $familiesEmailed = $service->sendFamilyEmails($familyId, $updated);
+        $result  = $service->sendFamilyEmails($familyId, $updated);
     } catch (\Throwable $e) {
         LoggerUtils::getAppLogger()->error('sendVerifyReportEmail error: ' . $e->getMessage(), ['exception' => $e]);
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=true');
+        if ($isAjax) {
+            return SlimUtils::renderErrorJSON($response, gettext('Unexpected error while sending emails. Please check logs.'), [], 500, $e, $request);
+        }
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=1&reason=unexpected');
     }
 
+    // Single-family path: still redirect to the family page (existing behaviour)
     if ($familyId !== null) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/family/' . $familyId . '?PDFEmailed=' . $familiesEmailed);
+        return SlimUtils::renderRedirect(
+            $response,
+            SystemURLs::getRootPath() . '/people/family/' . $familyId . '?PDFEmailed=' . $result->sentCount
+        );
     }
 
-    return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?AllPDFsEmailed=' . $familiesEmailed);
+    if ($isAjax) {
+        // Build a localised message to include alongside the structured data
+        $message = buildEmailResultMessage($result);
+        return SlimUtils::renderJSON($response, array_merge($result->toArray(), ['message' => $message]));
+    }
+
+    // Full-page redirect — encode enough info to render a specific inline alert
+    if ($result->isSuccess()) {
+        return SlimUtils::renderRedirect(
+            $response,
+            SystemURLs::getRootPath() . '/people/verify?AllPDFsEmailed=' . $result->sentCount
+        );
+    }
+
+    $query = http_build_query([
+        'EmailsError' => '1',
+        'reason'      => $result->status,
+        'sent'        => $result->sentCount,
+        'failed'      => $result->failedCount,
+    ]);
+    return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?' . $query);
+}
+
+/**
+ * Produce a human-readable summary of a sendFamilyEmails() result.
+ */
+function buildEmailResultMessage(ConfirmReportEmailResult $result): string
+{
+    switch ($result->status) {
+        case ConfirmReportEmailResult::STATUS_NO_RECIPIENTS:
+            return gettext('No families with an email address were found. Nothing was sent.');
+        case ConfirmReportEmailResult::STATUS_SMTP_FAILURE:
+            return gettext('All email sends failed. Please check your SMTP settings in System Settings.');
+        case ConfirmReportEmailResult::STATUS_PARTIAL_FAILURE:
+            return sprintf(
+                gettext('Sent %1$d of %2$d — %3$d families could not be reached.'),
+                $result->sentCount,
+                $result->sentCount + $result->failedCount,
+                $result->failedCount
+            );
+        default:
+            return sprintf(
+                ngettext('Email sent to %d family.', 'Emails sent to %d families.', $result->sentCount),
+                $result->sentCount
+            );
+    }
 }
 
 function listPeople(Request $request, Response $response, array $args): Response
