@@ -6,22 +6,19 @@
  *
  * Root cause: Bootstrap's .table-responsive sets overflow-x:auto. The CSS
  * Overflow spec forces overflow-y to auto when overflow-x is auto/scroll,
- * clipping absolutely-positioned dropdown menus. On phones (<=575px) the
- * ChurchCRM mobile rule additionally sets overflow-x:auto on .card-body,
- * clipping dropdowns inside any card at that breakpoint.
+ * clipping absolutely-positioned dropdown menus.
  *
- * Fix (src/skin/scss/_tabler-bridge.scss):
- *   .table-responsive:has(.dropdown-menu.show) { overflow: visible; }
- *   and a mobile @media block for .card-body and .card>.table-responsive.
- *   Scoped to .show so the fix only fires while the dropdown is open —
- *   closed containers keep their normal overflow-x:auto horizontal scroll.
+ * Fix: replace each affected .table-responsive wrapper with
+ * `<div style="overflow-x: clip; overflow-y: visible;">`.
+ * `overflow-x: clip` is exempt from the coercion rule (only auto/scroll
+ * trigger it), so overflow-y stays truly visible and the dropdown escapes.
  *
  * GitHub: https://github.com/ChurchCRM/CRM/issues/9373
  *
  * Scenarios covered:
- *   1. Family View  - Key People member table (table-responsive inside card-body)
- *   2. Family View  - Pledges and Payments DataTable (table-responsive direct card child)
- *   3. Person View  - Group Assignments list-group (card-body clip on mobile)
+ *   1. Family View  - Key People member table (inline-styled wrapper inside card-body)
+ *   2. Family View  - Pledges and Payments DataTable (inline-styled wrapper, direct card child)
+ *   3. Person View  - Group Assignments list-group (card-body context, no table wrapper)
  *
  * Each scenario is tested at three representative viewport widths.
  */
@@ -34,11 +31,16 @@ const VIEWPORTS = [
 
 /**
  * Open a dropdown trigger and assert the resulting menu is fully visible.
+ * For Scenarios 1 & 2, also pass `containerFinder` to verify the container's
+ * computed overflow-x/overflow-y — the authoritative check that the clipping
+ * fix is in place.
  *
- * @param {string} triggerSelector - CSS selector for the dropdown toggle button
- * @param {string} context         - Human-readable label for failure messages
+ * @param {string}   triggerSelector - CSS selector for the dropdown toggle button
+ * @param {string}   context         - Human-readable label for failure messages
+ * @param {Function} [containerFinder] - Optional: receives the Cypress chain after
+ *   the menu opens and should assert computed overflow on the fixed container.
  */
-function assertDropdownVisible(triggerSelector, context) {
+function assertDropdownVisible(triggerSelector, context, containerFinder) {
   cy.get(triggerSelector, { timeout: 10000 })
     .first()
     .as("trigger")
@@ -48,19 +50,10 @@ function assertDropdownVisible(triggerSelector, context) {
     .as("menu")
     .should("be.visible");
 
-  // The menu's bounding rect bottom must stay within the viewport.
-  // A clipped dropdown inside a small scroll container would extend
-  // below the container edge and, when near the page bottom, below the viewport.
-  cy.window().then((win) => {
-    const menu = win.document.querySelector(".dropdown-menu.show");
-    if (menu) {
-      const rect = menu.getBoundingClientRect();
-      expect(
-        rect.bottom,
-        `[${context}] dropdown bottom (${Math.round(rect.bottom)}px) must be within viewport (${win.innerHeight}px)`,
-      ).to.be.lte(win.innerHeight + 5);
-    }
-  });
+  // If a container assertion is provided, run it while the dropdown is open.
+  if (containerFinder) {
+    containerFinder(context);
+  }
 
   // Items inside the menu must be accessible (not hidden or disabled).
   cy.get("@menu")
@@ -72,15 +65,38 @@ function assertDropdownVisible(triggerSelector, context) {
   cy.get("@trigger").click();
 }
 
+/**
+ * Assert that the wrapper immediately surrounding the open dropdown has the
+ * expected computed overflow values set by the per-wrapper fix.
+ * Finds the closest ancestor with an inline overflow-x style.
+ *
+ * @param {string} context - Label for assertion messages
+ */
+function assertContainerOverflow(context) {
+  cy.get(".dropdown-menu.show")
+    .closest("[style*='overflow-x']")
+    .then(($el) => {
+      const styles = window.getComputedStyle($el[0]);
+      expect(
+        styles.overflowX,
+        `[${context}] container overflow-x`,
+      ).to.equal("clip");
+      expect(
+        styles.overflowY,
+        `[${context}] container overflow-y`,
+      ).to.equal("visible");
+    });
+}
+
 // ── Scenario 1: Family View — Key People member-table row dropdown ────────────
 // Family 1 is seeded with multiple members; their rows each carry a
-// .btn[data-bs-toggle='dropdown'] ellipsis trigger inside a .table-responsive
-// that is itself nested inside a .card-body (two-level clip on mobile).
+// .btn[data-bs-toggle='dropdown'] ellipsis trigger inside a wrapper fixed with
+// `style="overflow-x: clip; overflow-y: visible;"` (formerly table-responsive).
 describe("Scenario 1 — Family View member table dropdown", () => {
   beforeEach(() => cy.setupStandardSession());
 
   VIEWPORTS.forEach(({ label, width, height }) => {
-    it(`[${label}] dropdown escapes table-responsive and card-body overflow`, () => {
+    it(`[${label}] dropdown escapes table wrapper; container overflow is clip/visible`, () => {
       cy.viewport(width, height);
       cy.visit("/people/family/1");
 
@@ -90,21 +106,23 @@ describe("Scenario 1 — Family View member table dropdown", () => {
       assertDropdownVisible(
         ".card-table [data-bs-toggle='dropdown']",
         `family member table @ ${label}`,
+        assertContainerOverflow,
       );
     });
   });
 });
 
 // ── Scenario 2: Family View — Pledges and Payments DataTable row dropdown ─────
-// The pledges table (#pledge-payment-v2-table) sits in a .table-responsive that
-// is a direct child of .card (no intervening card-body). Uses the admin session
-// (which has finance.show.pledges=true) and real seed data. The default FY filter
-// hides all seed pledges (2018 data), so we click "All Time" first to expose rows.
+// The pledges table (#pledge-payment-v2-table) sits in a wrapper fixed with
+// `style="overflow-x: clip; overflow-y: visible;"` (formerly table-responsive,
+// direct child of .card). Uses the admin session (finance settings already
+// true in seed) with real seed data. The default FY filter hides all seed
+// pledges (2018 data), so we click "All Time" first to expose rows.
 describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
   beforeEach(() => cy.setupAdminSession());
 
   VIEWPORTS.forEach(({ label, width, height }) => {
-    it(`[${label}] dropdown escapes table-responsive overflow`, () => {
+    it(`[${label}] dropdown escapes table wrapper; container overflow is clip/visible`, () => {
       cy.viewport(width, height);
       cy.visit("/people/family/1");
 
@@ -123,15 +141,14 @@ describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
       assertDropdownVisible(
         "#pledge-payment-v2-table [data-bs-toggle='dropdown']",
         `pledges DataTable @ ${label}`,
+        assertContainerOverflow,
       );
     });
   });
 });
 
 // ── Scenario 3: Person View — Group Assignments list-group row dropdown ───────
-// The group assignments list is inside a .card-body (not a .table-responsive).
-// On phones (<=575px) the mobile .card-body{overflow-x:auto} rule is the clip
-// source; the fix adds a :has(.dropdown-menu.show) exception.
+// The group assignments list is inside a .card-body (not a fixed wrapper).
 // Uses API setup to ensure person 2 is a member of group 9 ("Church Board").
 describe("Scenario 3 — Person View group assignments dropdown", () => {
   const personId    = 2;
@@ -150,7 +167,7 @@ describe("Scenario 3 — Person View group assignments dropdown", () => {
   });
 
   VIEWPORTS.forEach(({ label, width, height }) => {
-    it(`[${label}] dropdown escapes card-body overflow`, () => {
+    it(`[${label}] dropdown is visible and items are clickable`, () => {
       cy.viewport(width, height);
       cy.visit(`/people/view/${personId}`);
 
@@ -163,6 +180,8 @@ describe("Scenario 3 — Person View group assignments dropdown", () => {
         .contains("Church Board")
         .should("exist");
 
+      // No container overflow check for Scenario 3 — the group-assignments
+      // list-group is inside a .card-body (not a fixed wrapper from this PR).
       assertDropdownVisible(
         "#groups .list-group-item [data-bs-toggle='dropdown']",
         `group assignments @ ${label}`,

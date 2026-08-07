@@ -274,7 +274,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="px-3 py-3 border-bottom bg-light">
       <!-- Subtle spacing -->
     </div>
-    <div class="table-responsive">
+    <div style="overflow-x: clip; overflow-y: visible;">
       <table class="table table-hover mb-0" id="paymentsTable"></table>
     </div>
     <?php
