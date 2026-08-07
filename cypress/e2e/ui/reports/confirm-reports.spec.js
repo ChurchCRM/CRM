@@ -353,5 +353,27 @@ describe("Confirmation Reports - MVC Routes", () => {
                 cy.get('[data-cy="modal-result-banner"]').should("exist");
             });
         });
+
+        it("modal can recover after a failed fetch: reopen shows preview correctly", () => {
+            // First open: intercept fails
+            cy.intercept("GET", "**/api/families/verify-email-preview", { statusCode: 500, body: { error: true } }).as("previewFail");
+
+            cy.get("#verifyEmail").click();
+            cy.wait("@previewFail", { timeout: 10000 });
+
+            // Error banner should appear in #previewFetchError without breaking modal
+            cy.get("#previewFetchError").should("not.have.class", "d-none");
+            // #modalPreview children must still exist (not replaced)
+            cy.get("#recipientCountText").should("exist");
+
+            // Second open: intercept succeeds
+            cy.intercept("GET", "**/api/families/verify-email-preview").as("previewOk");
+            cy.get('[data-bs-dismiss="modal"]').first().click();
+            cy.get("#verifyEmail").click();
+            cy.wait("@previewOk", { timeout: 10000 });
+
+            // Preview should populate without TypeError
+            cy.get('[data-cy="modal-recipient-count"]').should("be.visible");
+        });
     });
 });

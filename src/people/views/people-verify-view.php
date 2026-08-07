@@ -10,7 +10,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 /* -----------------------------------------------------------------------
  * Structured email result alert vars (set by the route handler)
  * --------------------------------------------------------------------- */
-$emailErrorReason  = htmlspecialchars((string) ($emailErrorReason  ?? ''), ENT_QUOTES, 'UTF-8');
+$emailErrorReason  = (string) ($emailErrorReason  ?? '');
 $emailErrorSent    = (int) ($emailErrorSent   ?? 0);
 $emailErrorFailed  = (int) ($emailErrorFailed ?? 0);
 $emailSuccessCount = (int) ($emailSuccessCount ?? 0);
@@ -157,6 +157,12 @@ if ($emailErrorReason !== '') {
                 <p class="mt-2 text-muted"><?= gettext('Loading email preview…') ?></p>
             </div>
 
+            <!-- Fetch-error banner (shown inside the modal when the API call fails;
+                 does NOT replace #modalPreview children so a retry succeeds) -->
+            <div id="previewFetchError" class="modal-body d-none">
+                <!-- populated by fetchPreview() .catch() -->
+            </div>
+
             <!-- Preview content (hidden until loaded) -->
             <div id="modalPreview" class="modal-body d-none">
 
@@ -291,13 +297,17 @@ if ($emailErrorReason !== '') {
                 populatePreview(data);
             })
             .catch(function (err) {
-                document.getElementById('modalLoading').classList.add('d-none');
-                document.getElementById('modalPreview').classList.remove('d-none');
-                document.getElementById('modalPreview').innerHTML =
+                // Inject error into dedicated container — does NOT replace #modalPreview
+                // children so that a subsequent successful fetch (e.g. after a retry)
+                // can still populate them correctly.
+                var errContainer = document.getElementById('previewFetchError');
+                errContainer.innerHTML =
                     '<div class="alert alert-danger">' +
-                    '<i class="ti ti-alert-circle me-2"></i>' +
-                    i18next.t('Could not load email preview. Please check your connection and try again.') +
+                    '<i class="ti ti-alert-circle me-2" aria-hidden="true"></i>' +
+                    i18next.t('Could not load email preview. Please close and try again.') +
                     '</div>';
+                errContainer.classList.remove('d-none');
+                document.getElementById('modalLoading').classList.add('d-none');
             });
         }
 
