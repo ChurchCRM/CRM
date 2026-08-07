@@ -76,7 +76,11 @@ function assertContainerOverflow(context) {
   cy.get(".dropdown-menu.show")
     .closest("[style*='overflow-x']")
     .then(($el) => {
-      const styles = window.getComputedStyle($el[0]);
+      // Use ownerDocument.defaultView rather than window — window in a .then()
+      // callback is the spec-runner frame, not the AUT. In Firefox this returns
+      // an empty CSSStyleDeclaration; ownerDocument.defaultView always returns
+      // the correct window for the element being inspected.
+      const styles = $el[0].ownerDocument.defaultView.getComputedStyle($el[0]);
       expect(
         styles.overflowX,
         `[${context}] container overflow-x`,

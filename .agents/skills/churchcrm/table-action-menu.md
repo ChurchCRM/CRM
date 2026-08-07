@@ -168,6 +168,7 @@ menu escape downward.
 - `src/people/views/family-view.php:190, 264, 636`
 - `src/people/views/family-list.php:62`
 - `src/people/views/person-view.php:408`
+- `src/DepositSlipEditor.php:277`
 
 ### Still required: `data-bs-display="static"` on each trigger
 
