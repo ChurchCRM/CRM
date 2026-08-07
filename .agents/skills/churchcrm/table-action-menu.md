@@ -108,33 +108,33 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 
 ---
 
-## Overflow / Dropdown Clipping <!-- learned: 2026-03-26, corrected: 2026-07-26 -->
+## Overflow / Dropdown Clipping <!-- learned: 2026-03-26, corrected: 2026-07-26, updated: 2026-08-07 -->
 
-**`.table-responsive` clips the dropdown — `data-bs-display="static"` does NOT fix this.**
-The previous version of this section (2026-05-01) claimed `data-bs-display="static"`
-prevents clipping inside `.table-responsive` via `position: fixed`. That claim was wrong —
-confirmed by a codebase audit that found three real, currently-broken instances
-(`src/people/views/self-register.php`, `src/groups/views/group-view.php`,
-`src/event/views/types-list.php`) that all already had `data-bs-display="static"` and were
-still clipped, because `.table-responsive` sets `overflow-x: auto`, which forces
-`overflow-y: auto` too — that clips any absolutely/fixed-positioned dropdown regardless of
-Popper's positioning strategy.
+**Systemic fix (v7.6+):** `_tabler-bridge.scss` adds
+```scss
+.table-responsive:has(.dropdown-menu.show),
+.card-body:has(.dropdown-menu.show) { overflow: visible; }
+```
+This relaxes the overflow wrapper only while a Bootstrap dropdown is open (Bootstrap
+toggles `.show` on the active `.dropdown-menu`), so `.table-responsive` is now safe to
+use with action-menu dropdowns. Horizontal scrolling is preserved when no menu is open.
 
-**Rule: use `<div style="overflow: visible;">` instead of `<div class="table-responsive">`
-on any table wrapper whose rows contain a dropdown menu.** Keep `data-bs-display="static"`
-on the button too — it's still needed to stop Popper from miscalculating position in
-scrollable ancestors, it just isn't sufficient on its own.
+**Required:** trigger buttons MUST have `data-bs-display="static"`. Without it Popper.js
+appends `.dropdown-menu` directly under `<body>` (outside the `.table-responsive` / `.card-body`
+ancestor), so the `:has()` selector never fires and the fix has no effect.
 
 ```html
-<!-- ✅ CORRECT — dropdown can escape the wrapper -->
-<div style="overflow: visible;">
+<!-- ✅ CORRECT — dropdown escapes the scroll wrapper via the :has() CSS rule -->
+<div class="table-responsive">
     <table class="table table-vcenter table-hover card-table">
         <tbody>
             <tr>
                 <td>...</td>
                 <td class="w-1">
                     <div class="dropdown">
-                        <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">
+                        <button class="btn btn-sm btn-ghost-secondary"
+                                data-bs-toggle="dropdown"
+                                data-bs-display="static">
                             <i class="ti ti-dots-vertical"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">...</div>
@@ -144,18 +144,18 @@ scrollable ancestors, it just isn't sufficient on its own.
         </tbody>
     </table>
 </div>
-
-<!-- ❌ WRONG — overflow-x: auto forces overflow-y: auto, clips the dropdown -->
-<div class="table-responsive">
-    ...
-</div>
 ```
 
-Reference examples already using the correct pattern: `src/people/views/self-register.php`,
-`src/event/views/list-events.php`, `src/v2/templates/email/without.php`,
-`src/groups/views/group-view.php`, `src/event/views/types-list.php`.
+**Legacy pages** that already replaced `.table-responsive` with `<div style="overflow: visible;">`
+continue to work (overflow:visible is the correct final state). No migration is required for
+those pages; new code should use `.table-responsive` normally.
 
-**Never** add `z-index` or `position: relative` to the `<td>` or `.dropdown` container — they do not fix clipping.
+**Why `overflow-x:auto; overflow-y:visible` does NOT work:** when `overflow-x` is `auto` or
+`scroll`, the CSS Overflow spec forces `overflow-y:visible` to compute as `auto`, so the
+dropdown remains clipped (confirmed by codebase audit 2026-07-26; documented in this skill).
+
+**Never** add `z-index` or `position: relative` to the `<td>` or `.dropdown` container — they
+do not fix clipping.
 
 ---
 
@@ -264,4 +264,4 @@ No Delete action is shown on the cart page — users can only remove from cart, 
 - [ ] Destructive items use `text-danger` class
 - [ ] All icons have `me-2` spacing
 - [ ] Actions `<th>` has `w-1 text-center no-export`
-- [ ] Dropdown clipping fixed (see Overflow section above)
+- [ ] Dropdown clipping fixed: trigger has `data-bs-display="static"`; wrapper is `.table-responsive` (or `.card-body` for list-group sections); the global `:has(.dropdown-menu.show)` SCSS rule handles the rest

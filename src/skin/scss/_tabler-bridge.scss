@@ -317,6 +317,11 @@ select {
 // relax the clipping ONLY while a menu is open — horizontal scrolling is fully
 // preserved the rest of the time.
 //
+// DEPENDENCY: trigger buttons must have `data-bs-display="static"` so Popper.js
+// does NOT move `.dropdown-menu` to `<body>`. Without that attribute Popper
+// appends the menu directly under `<body>`, making it a non-descendant of the
+// wrapper — `:has()` never matches and this rule has no effect.
+//
 // NOTE: `overflow-x: auto; overflow-y: visible` does NOT fix this — when
 // `overflow-x` is `auto`/`scroll`, the spec forces `overflow-y: visible` to
 // compute as `auto`, so the clip remains. See table-action-menu.md for full

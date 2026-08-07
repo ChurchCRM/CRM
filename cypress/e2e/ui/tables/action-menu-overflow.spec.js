@@ -171,6 +171,15 @@ describe("Dropdown overflow fix — Person View Groups list (#9373)", () => {
 
       // Admin session has isManageGroupsEnabled() === true, so each
       // list-group-item has a [data-bs-toggle="dropdown"] action button.
+      //
+      // Note: the computed overflow-y regression guard is only meaningful at
+      // 375px — that is the sole viewport where our mobile rule adds
+      // `overflow-x: auto` to `.card-body` (inside @media max-width:575.98px),
+      // which is what clips the dropdown. At 768px and 1920px `.card-body`
+      // already has default `overflow: visible`, so the assertion passes
+      // trivially. The be.visible and items-enabled checks still have value at
+      // those wider viewports (verifying the dropdown renders correctly at all
+      // sizes), but the clip regression itself is only covered at 375px.
       assertDropdownEscapes(
         "#groups .list-group-item [data-bs-toggle='dropdown']",
         ".card-body",
