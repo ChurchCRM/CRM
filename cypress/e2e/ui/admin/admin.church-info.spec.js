@@ -362,10 +362,21 @@ describe("Admin - Church Information Page", () => {
             cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
             cy.tomSelectByValue("#sChurchCountry", "");
 
-            // Clear all address text fields so buildAddressForGeocoding() returns empty
+            // Clear all fields that buildAddressForGeocoding() reads.
+            // sChurchState is zeroed out directly via the window because the
+            // country-change jQuery handler that replaces the state dropdown with
+            // an empty text input may not fire in time (TomSelect's setValue("")
+            // does not always dispatch the native 'change' event that jQuery
+            // intercepts). Without this, the state field retains its saved value
+            // (e.g. "IL") and buildAddressForGeocoding() returns a non-empty
+            // string, causing the geocoder to fire instead of the warning.
             cy.get("#sChurchAddress").clear();
             cy.get("#sChurchCity").clear();
             cy.get("#sChurchZip").clear();
+            cy.window().then((win) => {
+                const stateEl = win.document.getElementById("sChurchState");
+                if (stateEl) stateEl.value = "";
+            });
 
             cy.get("#generate-coordinates-btn").click();
 
