@@ -460,6 +460,25 @@ $btn.trigger("click");
 
 After clicking Cancel on a bootbox dialog, **do NOT assert that the dialog is gone** (`should("not.be.visible")` or `should("not.exist")`). Bootstrap 5 modal hide is asynchronous — the CSS fade-out keeps `.show` on the backdrop during the transition, causing these assertions to fail intermittently or permanently.
 
+### `should('not.have.class', 'show')` is equally unreliable for BS5 modals <!-- learned: 2026-08-07 -->
+
+BS5 removes the `show` class from the modal element only **after** the fade animation completes (~300 ms). In headless CI this transition does not always complete within Cypress's default command timeout, causing flaky `should('not.have.class', 'show')` failures. The same timing issue that makes `should('not.be.visible')` unreliable applies here too.
+
+If you need the modal to close before the next action (e.g. to re-open it), use `cy.visit()` to do a full page reload instead of waiting for the animation:
+
+```javascript
+// ✅ CORRECT — reload the page to get a clean modal state
+cy.visit("people/verify"); // re-navigates to the same page; modal resets
+cy.get("#openModalBtn").click(); // re-open cleanly
+
+// ❌ WRONG — times out in CI headless
+cy.get('[data-bs-dismiss="modal"]').click();
+cy.get("#myModal").should("not.have.class", "show"); // flaky
+cy.get("#openModalBtn").click();
+```
+
+When the test goal is only to verify an action was NOT taken (e.g. Cancel didn't send), check the side-effect alias immediately after clicking Cancel — no modal-close assertion needed:
+
 Instead, assert the **side effect** (the action was not taken):
 
 ```javascript
