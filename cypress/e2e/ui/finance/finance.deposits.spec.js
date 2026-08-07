@@ -17,8 +17,8 @@ describe("Finance Deposits", () => {
         
         // Click Create Deposit from Quick Actions
         cy.contains("a", "Create Deposit").click();
-        cy.url().should("contain", "FindDepositSlip.php");
-        cy.contains("Deposit Listing");
+        cy.url().should("contain", "/finance/deposit/search");
+        cy.contains("Deposits");
     });
 
     it("Navigate to deposits from Finance Menu", () => {
@@ -31,12 +31,13 @@ describe("Finance Deposits", () => {
             .contains("View All")
             .click();
             
-        cy.url().should("contain", "FindDepositSlip.php");
-        cy.contains("Deposit Listing");
+        cy.url().should("contain", "/finance/deposit/search");
+        cy.contains("Deposits");
     });
 
     it("Create a new Deposit without comment", () => {
-        cy.visit("/FindDepositSlip.php");
+        cy.visit("/finance/deposit/search");
+        cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").clear();
         cy.get("#addNewDeposit").click();
         cy.contains("You are about to add a new deposit without a comment");
@@ -46,9 +47,9 @@ describe("Finance Deposits", () => {
         const uniqueSeed = Date.now().toString();
         const name = "New Test Deposit " + uniqueSeed;
 
-        cy.visit("/FindDepositSlip.php");
-        cy.contains("Add New Deposit");
+        cy.visit("/finance/deposit/search");
         cy.contains("Deposits");
+        cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").type(name);
         cy.get("#addNewDeposit").click();
 
@@ -85,14 +86,14 @@ describe("Finance Deposits", () => {
 
     it("Edit Deposit without an ID", () => {
         cy.visit("/DepositSlipEditor.php?DepositSlipID=9999");
-        cy.url().should("contain", "FindDepositSlip.php");
-        cy.contains("Deposit Listing");
+        cy.url().should("contain", "/finance/deposit/search");
+        cy.contains("Deposits");
     });
 
     it("Open Deposit with the Bad / deleted Deposits id", () => {
         cy.visit("/DepositSlipEditor.php?");
-        cy.url().should("contain", "FindDepositSlip.php");
-        cy.contains("Deposit Listing");
+        cy.url().should("contain", "/finance/deposit/search");
+        cy.contains("Deposits");
     });
 
     it("Create a Deposit with XSS attempt - should be sanitized", () => {
@@ -100,8 +101,9 @@ describe("Finance Deposits", () => {
         const xssPayload = "<script>alert('XSS')</script>Test" + uniqueSeed;
         const sanitizedComment = "alert(&#039;XSS&#039;)Test" + uniqueSeed; // The script tags should be stripped, quotes escaped
 
-        cy.visit("/FindDepositSlip.php");
-        cy.contains("Add New Deposit");
+        cy.visit("/finance/deposit/search");
+        cy.contains("Deposits");
+        cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").type(xssPayload);
         cy.get("#addNewDeposit").click();
 
