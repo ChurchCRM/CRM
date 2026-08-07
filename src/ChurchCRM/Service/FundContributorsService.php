@@ -156,21 +156,27 @@ class FundContributorsService
         }
 
         // Compute derived columns and status, then flatten to an indexed array
-        $totalPledged   = 0.0;
-        $totalPaid      = 0.0;
-        $totalRemaining = 0.0;
+        $totalPledged    = 0.0;
+        $totalPaid       = 0.0;
+        $totalRemaining  = 0.0;
+        // Only count payments against pledged amounts for the aggregate %
+        // (payment-only families have no pledge, so including their payments
+        // would make the ratio exceed 100%).
+        $pledgeOnlyPaid  = 0.0;
 
         foreach ($contributors as &$row) {
-            $pledged   = $row['pledged'];
-            $paid      = $row['paid'];
-            $remaining = $pledged > 0 ? $pledged - $paid : null;
+            $pledged = $row['pledged'];
+            $paid    = $row['paid'];
 
             if ($pledged <= 0.0) {
-                // Payment-only contributor
-                $percent = 100.0;
-                $status  = 'payment-only';
+                // Payment-only contributor — no pledge to track against
+                $remaining = null;
+                $percent   = 100.0;
+                $status    = 'payment-only';
             } else {
-                $percent = ($paid / $pledged) * 100.0;
+                // Cap remaining at 0; overpayment is already reflected by 'complete' status
+                $remaining = max(0.0, $pledged - $paid);
+                $percent   = ($paid / $pledged) * 100.0;
                 if ($percent >= 100.0) {
                     $status = 'complete';
                 } elseif ($percent >= 75.0) {
@@ -180,6 +186,7 @@ class FundContributorsService
                 } else {
                     $status = 'critical';
                 }
+                $pledgeOnlyPaid += $paid;
             }
 
             $row['remaining'] = $remaining;
@@ -188,7 +195,7 @@ class FundContributorsService
 
             $totalPledged   += $pledged;
             $totalPaid      += $paid;
-            $totalRemaining += max(0.0, $remaining ?? 0.0);
+            $totalRemaining += ($remaining ?? 0.0);
         }
         unset($row); // break reference
 
@@ -198,9 +205,10 @@ class FundContributorsService
         });
 
         $contributorCount = count($contributors);
+        // Use only pledge-backed payments so the ratio never exceeds 100%
         $percentPaid      = $totalPledged > 0
-            ? ($totalPaid / $totalPledged) * 100.0
-            : ($totalPaid > 0 ? 100.0 : 0.0);
+            ? ($pledgeOnlyPaid / $totalPledged) * 100.0
+            : ($pledgeOnlyPaid > 0 ? 100.0 : 0.0);
 
         $this->logger->info('FundContributorsService: loaded contributors', [
             'fundId'           => $fundId,

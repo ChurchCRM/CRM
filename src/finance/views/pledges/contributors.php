@@ -223,7 +223,7 @@ $statusClasses = [
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item contributor-view-link"
                                                href="<?= $sRootPath ?>/finance/pledge/<?= urlencode($groupKey) ?>">
-                                                <i class="ti ti-eye me-2"></i><?= gettext('View Pledge') ?>
+                                                <i class="ti ti-eye me-2"></i><?= $contributor['status'] === 'payment-only' ? gettext('View Payment') : gettext('View Pledge') ?>
                                             </a>
                                         </div>
                                     </div>
