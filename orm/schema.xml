@@ -546,6 +546,24 @@
         </vendor>
     </table>
 
+    <table name="pledge_denominations_pdem" idMethod="native" phpName="PledgeDenomination" description="Cash denomination counts recorded per pledge/payment GroupKey for a deposit (cash-counting workflow). Column plg_depID mirrors the name used in FinancialService raw SQL.">
+        <column name="pdem_id" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="pdem_plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>
+        <column name="plg_depID" phpName="DepId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="pdem_denominationID" phpName="DenominationId" type="SMALLINT" size="9" sqlType="mediumint(9)"/>
+        <column name="pdem_denominationQuantity" phpName="DenominationQuantity" type="INTEGER"/>
+        <index name="pdem_groupkey_idx">
+            <index-column name="pdem_plg_GroupKey"/>
+        </index>
+        <index name="pdem_deposit_denom_idx">
+            <index-column name="plg_depID"/>
+            <index-column name="pdem_denominationID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
     <table name="list_lst" idMethod="native" phpName="ListOption" description="This table stores the options for most of the drop down lists in churchCRM, including person classifications, family roles, group types, group roles, group-specific property types, and custom field value lists.">
         <column name="lst_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" description="The ID of the list.  Since this is a composite primary key, there may be multiple List IDs"/>
         <column name="lst_OptionID" phpName="OptionId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" description="The ID of the option in this list.  ***List ID + List Option ID must be unique***"/>

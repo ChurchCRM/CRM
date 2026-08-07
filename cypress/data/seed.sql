@@ -2128,6 +2128,26 @@ DROP TABLE IF EXISTS `email_list`;
 /*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
 /*!50001 VIEW `email_list` AS select `family_fam`.`fam_Email` AS `email`,'family' AS `type`,`family_fam`.`fam_ID` AS `id` from `family_fam` where `family_fam`.`fam_Email` is not null and `family_fam`.`fam_Email` <> '' union select `person_per`.`per_Email` AS `email`,'person_home' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where `person_per`.`per_Email` is not null and `person_per`.`per_Email` <> '' union select `person_per`.`per_WorkEmail` AS `email`,'person_work' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where `person_per`.`per_WorkEmail` is not null and `person_per`.`per_WorkEmail` <> '' */;
 
+--
+-- Table structure for table `pledge_denominations_pdem`
+-- (added by migration 7.6.0-pledge-denominations.sql, issue #9376)
+--
+
+DROP TABLE IF EXISTS `pledge_denominations_pdem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pledge_denominations_pdem` (
+  `pdem_id`                   mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `pdem_plg_GroupKey`         varchar(64)           NOT NULL,
+  `plg_depID`                 mediumint(9) unsigned DEFAULT NULL,
+  `pdem_denominationID`       mediumint(9)          DEFAULT NULL,
+  `pdem_denominationQuantity` int(11)               DEFAULT NULL,
+  PRIMARY KEY (`pdem_id`),
+  KEY `pdem_groupkey_idx`      (`pdem_plg_GroupKey`),
+  KEY `pdem_deposit_denom_idx` (`plg_depID`, `pdem_denominationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET AUTOCOMMIT=@OLD_AUTOCOMMIT */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
