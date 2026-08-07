@@ -186,6 +186,7 @@ function viewFamily(Request $request, Response $response, array $args): Response
                 ->filterByFamId($familyId)
                 ->addAsColumn('FyId', PledgeTableMap::COL_PLG_FYID)
                 ->select(['FyId'])
+                ->distinct()
                 ->find()
                 ->toArray();
             $unique = array_unique(array_filter(array_map('intval', $fyids)));

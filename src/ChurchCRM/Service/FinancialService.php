@@ -888,66 +888,77 @@ class FinancialService
     }
 
     /**
-     * Get Year-to-Date payment total for a fiscal year.
+     * Get Year-to-Date payment total for a fiscal year (or all time when dates are null).
      *
-     * @param string $fyStartDate Fiscal year start date
-     * @param string $fyEndDate Fiscal year end date
+     * @param string|null $fyStartDate Fiscal year start date; null = all time
+     * @param string|null $fyEndDate   Fiscal year end date;   null = all time
      * @return float|null
      */
-    public function getYtdPaymentTotal(string $fyStartDate, string $fyEndDate): ?float
+    public function getYtdPaymentTotal(?string $fyStartDate = null, ?string $fyEndDate = null): ?float
     {
-        return PledgeQuery::create()
-            ->filterByPledgeOrPayment('Payment')
-            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment');
+        if ($fyStartDate !== null && $fyEndDate !== null) {
+            $query->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate]);
+        }
+        return $query
             ->addAsColumn('TotalAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->select(['TotalAmount'])
             ->findOne();
     }
 
     /**
-     * Get Year-to-Date pledge total for a fiscal year.
+     * Get Year-to-Date pledge total for a fiscal year (or all time when dates are null).
      *
-     * @param string $fyStartDate Fiscal year start date
-     * @param string $fyEndDate Fiscal year end date
+     * @param string|null $fyStartDate Fiscal year start date; null = all time
+     * @param string|null $fyEndDate   Fiscal year end date;   null = all time
      * @return float|null
      */
-    public function getYtdPledgeTotal(string $fyStartDate, string $fyEndDate): ?float
+    public function getYtdPledgeTotal(?string $fyStartDate = null, ?string $fyEndDate = null): ?float
     {
-        return PledgeQuery::create()
-            ->filterByPledgeOrPayment('Pledge')
-            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Pledge');
+        if ($fyStartDate !== null && $fyEndDate !== null) {
+            $query->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate]);
+        }
+        return $query
             ->addAsColumn('TotalAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->select(['TotalAmount'])
             ->findOne();
     }
 
     /**
-     * Get Year-to-Date payment count for a fiscal year.
+     * Get Year-to-Date payment count for a fiscal year (or all time when dates are null).
      *
-     * @param string $fyStartDate Fiscal year start date
-     * @param string $fyEndDate Fiscal year end date
+     * @param string|null $fyStartDate Fiscal year start date; null = all time
+     * @param string|null $fyEndDate   Fiscal year end date;   null = all time
      * @return int
      */
-    public function getYtdPaymentCount(string $fyStartDate, string $fyEndDate): int
+    public function getYtdPaymentCount(?string $fyStartDate = null, ?string $fyEndDate = null): int
     {
-        return PledgeQuery::create()
-            ->filterByPledgeOrPayment('Payment')
-            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
-            ->count();
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment');
+        if ($fyStartDate !== null && $fyEndDate !== null) {
+            $query->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate]);
+        }
+        return $query->count();
     }
 
     /**
-     * Get count of unique donor families for a fiscal year.
+     * Get count of unique donor families for a fiscal year (or all time when dates are null).
      *
-     * @param string $fyStartDate Fiscal year start date
-     * @param string $fyEndDate Fiscal year end date
+     * @param string|null $fyStartDate Fiscal year start date; null = all time
+     * @param string|null $fyEndDate   Fiscal year end date;   null = all time
      * @return int|null
      */
-    public function getYtdDonorFamilyCount(string $fyStartDate, string $fyEndDate): ?int
+    public function getYtdDonorFamilyCount(?string $fyStartDate = null, ?string $fyEndDate = null): ?int
     {
-        return PledgeQuery::create()
-            ->filterByPledgeOrPayment('Payment')
-            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment');
+        if ($fyStartDate !== null && $fyEndDate !== null) {
+            $query->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate]);
+        }
+        return $query
             ->addAsColumn('FamilyCount', 'COUNT(DISTINCT ' . PledgeTableMap::COL_PLG_FAMID . ')')
             ->select(['FamilyCount'])
             ->findOne();
@@ -980,28 +991,36 @@ class FinancialService
     /**
      * Get all dashboard data in a single call.
      *
-     * Accepts an optional $fyid; when null/0 the current fiscal year is used for stats
-     * (deposits, YTD totals). The recent-deposits card uses the same FY scope.
+     * - null  → current fiscal year (backward-compatible default for callers with no opinion)
+     * - 0     → "All Time": no date-range filter on stats or recent-deposits
+     * - n > 0 → specific fiscal year n
      *
-     * @param int|null $fyid Fiscal year ID (null/0 = current FY)
+     * @param int|null $fyid Fiscal year ID (null = current FY, 0 = All Time, >0 = specific FY)
      * @return array Dashboard data including fiscal year info, statistics, and deposits
      */
     public function getDashboardData(?int $fyid = null): array
     {
-        $actualFyid  = ($fyid !== null && $fyid > 0) ? $fyid : FiscalYearUtils::getCurrentFiscalYearId();
-        $fiscalYear  = FiscalYearUtils::getFiscalYearDatesById($actualFyid);
-        $depositStats = $this->getDepositStatistics();
-        $currentDeposit = $this->getCurrentDeposit();
+        $allTime    = ($fyid === 0);
+        $actualFyid = $allTime
+            ? null
+            : (($fyid !== null && $fyid > 0) ? $fyid : FiscalYearUtils::getCurrentFiscalYearId());
+
+        $fiscalYear = $allTime
+            ? ['startDate' => null, 'endDate' => null, 'label' => gettext('All Time'), 'month' => 1]
+            : FiscalYearUtils::getFiscalYearDatesById($actualFyid);
+
+        $depositStats        = $this->getDepositStatistics();
+        $currentDeposit      = $this->getCurrentDeposit();
         $donationFundService = new DonationFundService();
-        $activeFunds = $donationFundService->getAll();
+        $activeFunds         = $donationFundService->getAll();
 
         return [
             'fiscalYear'       => $fiscalYear,
-            'selectedFyid'     => $actualFyid,
+            'selectedFyid'     => $allTime ? 0 : $actualFyid,
             'availableYears'   => $this->getAvailableDepositFiscalYears(),
             'currentFyid'      => FiscalYearUtils::getCurrentFiscalYearId(),
             'depositStats'     => $depositStats,
-            'recentDeposits'   => $this->getRecentDeposits(5, $actualFyid),
+            'recentDeposits'   => $this->getRecentDeposits(5, $allTime ? null : $actualFyid),
             'activeFunds'      => $activeFunds,
             'activeFundCount'  => $activeFunds->count(),
             'totalFundCount'   => $donationFundService->getCount(),
