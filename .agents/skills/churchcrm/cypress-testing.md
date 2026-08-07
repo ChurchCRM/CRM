@@ -647,6 +647,35 @@ cy.intercept("GET", "/api/people/properties/definition/*").as("getDef");
 
 **Note:** This does NOT apply to `cy.visit()` or `cy.request()` — those use `baseUrl` from config and handle the prefix automatically. Only `cy.intercept()` needs the `**` glob because it matches against the full request URL.
 
+### Intercept stubs are NOT cleared by `cy.visit()` within a test — use `times: 1` <!-- learned: 2026-08-07 -->
+
+`cy.intercept()` stubs are cleared between `it()` blocks, NOT within them. Calling `cy.visit()` mid-test does **not** reset intercepts. If a failure stub (e.g. 500) is set up and then you re-open a modal on a reloaded page, Cypress processes interceptors LIFO: a later `cy.intercept()` with no explicit response falls through to the still-active failure stub, causing the second request to also fail.
+
+**Fix:** Use `times: 1` in the route matcher and always give the "success" intercept an **explicit response** so it never falls through:
+
+```javascript
+// ❌ WRONG — @previewFail stays active for the entire test;
+//   the second open after cy.visit() falls through to it and also returns 500.
+cy.intercept("GET", "**/api/.../preview", { statusCode: 500, body: {} }).as("previewFail");
+// ... test actions ...
+cy.intercept("GET", "**/api/.../preview").as("previewOk"); // no response → falls through to @previewFail!
+cy.visit("page");
+
+// ✅ CORRECT — times:1 expires @previewFail after one match;
+//   explicit 200 on @previewOk means it never falls through.
+cy.intercept(
+    { method: "GET", url: "**/api/.../preview", times: 1 },
+    { statusCode: 500, body: { error: true } }
+).as("previewFail");
+// ... test actions ...
+cy.intercept(
+    "GET",
+    "**/api/.../preview",
+    { statusCode: 200, body: { recipientCount: 1, recipients: [], familiesWithoutEmail: [], templatePreview: {} } }
+).as("previewOk");
+cy.visit("page");
+```
+
 ## Editable Table Cells: Names Render in Input Values <!-- learned: 2026-04-12 -->
 
 When a table renders option/option names in `<input>` elements (like the OptionManager and many Tabler tables with inline editing), `cy.contains("Member")` does NOT find the value — `cy.contains` searches text content, not input value attributes.
