@@ -153,12 +153,14 @@ function initializeGroupEditor() {
   $(document).on("click", ".deleteRole", (e) => {
     const btn = e.currentTarget;
     const roleID = btn.id.split("-")[1];
-    const roleName = String($(btn).data("role-name") || "");
+    // Prefer the live input value so renames are reflected before page refresh
+    const roleNameInput = document.querySelector(`.roleName[id$="-${roleID}"]`);
+    const roleName = roleNameInput ? roleNameInput.value : String($(btn).data("role-name") || "");
 
     pendingDeleteRoleID = roleID;
 
     // Populate modal message using safe text insertion
-    const msg = i18next.t("Are you sure you want to remove the role '{{name}}'?", { name: roleName });
+    const msg = i18next.t("Are you sure you want to remove the role '{{name}}'?", { name: roleName, interpolation: { escapeValue: false } });
     $("#deleteRoleMessage").text(msg);
 
     // Show last-role warning and block confirm when this is the only role
@@ -363,9 +365,9 @@ function initializeGroupEditor() {
         data: null,
         render: (data, type, full, meta) => {
           const isProtected = full.lst_OptionName === "Student" || full.lst_OptionName === "Teacher";
-          const escapedName = $("<div>").text(full.lst_OptionName).html().replace(/"/g, "&quot;");
+          const escapedName = window.CRM.escapeAttribute(full.lst_OptionName);
           if (isProtected) {
-            const titleAttr = i18next.t("This role cannot be deleted.").replace(/"/g, "&quot;");
+            const titleAttr = window.CRM.escapeAttribute(i18next.t("This role cannot be deleted."));
             return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" disabled title="${titleAttr}" data-role-name="${escapedName}">${i18next.t("Delete")}</button>`;
           }
           return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" data-role-name="${escapedName}">${i18next.t("Delete")}</button>`;
