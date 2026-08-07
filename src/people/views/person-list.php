@@ -66,12 +66,14 @@ $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
 // Each entry becomes its own DataTables column (real name as header, formatted value as cell)
 // in the CSV and Print/PDF export.  The existing single 'Custom' filter column is marked
 // no-export so the raw JSON name-list no longer pollutes the export output.
-$exportCustomFields = [];
-foreach (PersonCustomMasterQuery::create()->orderByOrder()->find() as $cf) {
-    if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($cf->getFieldSecurity())) {
-        $exportCustomFields[] = $cf;
-    }
-}
+// We reuse the already-fetched $allPersonCustomFields collection (sorted in PHP) to avoid
+// an extra DB round-trip.
+$exportCustomFields = iterator_to_array($allPersonCustomFields, false);
+usort($exportCustomFields, fn($a, $b) => $a->getOrder() <=> $b->getOrder());
+$exportCustomFields = array_values(array_filter(
+    $exportCustomFields,
+    fn($cf) => AuthenticationManager::getCurrentUser()->isEnabledSecurity($cf->getFieldSecurity())
+));
 
 // Person custom list
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity', 'Id', 'TypeId', 'Special'])->find();
@@ -279,6 +281,18 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             <tr>
                 <?php
                 $columns = $personListColumns;
+                // Fetch custom-field data once per person (single DB round-trip):
+                // returns both the filter name-list (for the hidden 'Custom' column)
+                // and the per-field formatted values (for the export columns).
+                $customFieldsResult  = $person->getCustomFieldsAll(
+                    $allPersonCustomFields,
+                    $CustomMapping,
+                    $CustomList,
+                    $option_name,
+                    $exportCustomFields
+                );
+                $customFilterNames   = $customFieldsResult['filterNames'];
+                $customExportValues  = $customFieldsResult['exportValues'];
                 foreach ($columns as $column) {
                     // Output ALL columns - DataTables JS config controls visibility
                     
@@ -307,7 +321,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         // Skip method call for Family Status column (handled separately below)
                         if (!isset($column->isFamilyStatus) || $column->isFamilyStatus !== true) {
                             if ($column->displayFunction === 'getCustomFields') {
-                                $columnData = [$person, $column->displayFunction]($allPersonCustomFields, $CustomMapping, $CustomList, $option_name);
+                                // Use pre-fetched result from getCustomFieldsAll (no extra DB query)
+                                $columnData = $customFilterNames;
                             } else {
                                 $columnData = [$person, $column->displayFunction]();
                             }
@@ -430,8 +445,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 <?php
                 // Export columns: per-custom-field values for CSV/Print export.
                 // One <td> per accessible custom field, with the field's real formatted value.
-                // A single PersonCustomQuery fetches all fields at once (see Person::getCustomFieldExportValues).
-                $customExportValues = $person->getCustomFieldExportValues($exportCustomFields);
+                // Values come from getCustomFieldsAll() called above (no extra DB query).
                 foreach ($exportCustomFields as $cf) {
                     echo '<td>' . InputUtils::escapeHTML($customExportValues[$cf->getId()] ?? '') . '</td>';
                 }

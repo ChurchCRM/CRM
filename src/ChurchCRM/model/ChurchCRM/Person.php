@@ -6,13 +6,13 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
@@ -640,6 +640,77 @@ class Person extends BasePerson implements PhotoInterface
         }
 
         return $PropertiesList;
+    }
+
+    /**
+     * Combined replacement for getCustomFields + getCustomFieldExportValues.
+     *
+     * Runs a single PersonCustomQuery per person instead of two, eliminating
+     * the duplicate N+1 round-trip that would otherwise occur when person-list.php
+     * needs both the filter-name list (for the hidden 'Custom' column JSON) and the
+     * per-field formatted export values.
+     *
+     * @param mixed  $allPersonCustomFields  All PersonCustomMaster records (Propel collection)
+     * @param array  $customMapping          {fieldId => ['Name'=>string,'Elements'=>[...]]}
+     * @param array  $CustomList             Counter map mutated in place (same as getCustomFields)
+     * @param mixed  $name_func              Callable producing 'FieldName:OptionName' composite key
+     * @param PersonCustomMaster[] $exportCustomDefs  Ordered, security-filtered defs for export cols
+     *
+     * @return array{filterNames: string[], exportValues: array<string,string>}
+     */
+    public function getCustomFieldsAll(
+        $allPersonCustomFields,
+        array $customMapping,
+        array &$CustomList,
+        $name_func,
+        array $exportCustomDefs
+    ): array {
+        $rawQry = PersonCustomQuery::create();
+        foreach ($allPersonCustomFields as $customfield) {
+            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+                $rawQry->addAsColumn(
+                    str_replace(['.', '(', ')'], '', $customfield->getId()),
+                    $customfield->getId()
+                );
+            }
+        }
+        $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
+
+        // Build filter name list (replicates getCustomFields logic)
+        $filterNames = [];
+        if ($thisPersonCustomFields) {
+            foreach ($thisPersonCustomFields->getVirtualColumns() as $column => $value) {
+                if (!empty($value)) {
+                    $temp = $customMapping[$column]['Name'];
+                    $filterNames[] = $temp;
+                    $CustomList[$temp] += 1;
+                    if (array_key_exists($value, $customMapping[$column]['Elements'])) {
+                        $temp = $name_func($customMapping[$column]['Name'], $customMapping[$column]['Elements'][$value]);
+                        $filterNames[] = $temp;
+                        $CustomList[$temp] += 1;
+                    }
+                }
+            }
+        }
+
+        // Build per-field export values (replicates getCustomFieldExportValues logic)
+        $exportValues = [];
+        if ($thisPersonCustomFields) {
+            $vcols = $thisPersonCustomFields->getVirtualColumns();
+            foreach ($exportCustomDefs as $def) {
+                $alias = str_replace(['.', '(', ')'], '', $def->getId());
+                $raw   = $vcols[$alias] ?? null;
+                $exportValues[$def->getId()] = ($raw === null || $raw === '')
+                    ? ''
+                    : CustomFieldUtils::display($def->getTypeId(), (string) $raw, $def->getSpecial());
+            }
+        } else {
+            foreach ($exportCustomDefs as $def) {
+                $exportValues[$def->getId()] = '';
+            }
+        }
+
+        return ['filterNames' => $filterNames, 'exportValues' => $exportValues];
     }
 
     // return array of person custom fields
