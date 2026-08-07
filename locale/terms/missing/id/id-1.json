@@ -1,19 +1,19 @@
 {
-  "Data": "",
+  "Data": "Data",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Menyalin {{count}} anggota",
+    "other": "Menyalin {{count}} anggota"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat sebagai gantinya.",
+    "other": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat sebagai gantinya."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat sebagai gantinya.",
+    "other": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat sebagai gantinya."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} menit tersisa",
+    "other": "{{count}} menit tersisa"
   }
 }
