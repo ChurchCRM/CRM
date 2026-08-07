@@ -336,7 +336,11 @@ if ($emailErrorReason !== '') {
             // Show preview, hide loading, enable send button
             document.getElementById('modalLoading').classList.add('d-none');
             document.getElementById('modalPreview').classList.remove('d-none');
-            document.getElementById('modalSendBtn').disabled = (data.recipientCount === 0);
+            // Guard: showInModalResult() may have replaced #modalSendBtn
+            var sendBtn = document.getElementById('modalSendBtn');
+            if (sendBtn) {
+                sendBtn.disabled = (data.recipientCount === 0);
+            }
         }
 
         function renderRecipientTable(list) {
