@@ -550,7 +550,7 @@
         <column name="pdem_id" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="pdem_plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>
         <column name="plg_depID" phpName="DepId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
-        <column name="pdem_denominationID" phpName="DenominationId" type="SMALLINT" size="9" sqlType="mediumint(9)"/>
+        <column name="pdem_denominationID" phpName="DenominationId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
         <column name="pdem_denominationQuantity" phpName="DenominationQuantity" type="INTEGER"/>
         <index name="pdem_groupkey_idx">
             <index-column name="pdem_plg_GroupKey"/>
