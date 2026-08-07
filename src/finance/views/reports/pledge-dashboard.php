@@ -145,7 +145,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?php if ((int) $fundTotal['fund_id'] > 0): ?>
                                     <a class="fund-summary-link"
                                        data-fund-id="<?= (int) $fundTotal['fund_id'] ?>"
-                                       href="<?= SystemURLs::getRootPath() ?>/finance/fund/<?= (int) $fundTotal['fund_id'] ?>/contributors?fyid=<?= (int) $selectedFyid ?>">
+                                       href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/finance/fund/<?= (int) $fundTotal['fund_id'] ?>/contributors?fyid=<?= (int) $selectedFyid ?>">
                                         <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
                                     </a>
                                 <?php else: ?>
