@@ -127,6 +127,10 @@ class FundContributorsService
                     'envelope'    => (string) ($family->getEnvelope() ?? ''),
                     'pledged'     => 0.0,
                     'paid'        => $paymentsByFamily[$famId] ?? 0.0,
+                    // Known limitation: only the first pledge record's group_key is
+                    // stored. Families with multiple pledge records for the same
+                    // fund/FY will have their pledged amounts aggregated correctly,
+                    // but the 'View Pledge' action links to the first record only.
                     'group_key'   => (string) $pledge->getGroupKey(),
                 ];
             }
@@ -171,12 +175,15 @@ class FundContributorsService
             if ($pledged <= 0.0) {
                 // Payment-only contributor — no pledge to track against
                 $remaining = null;
-                $percent   = 100.0;
-                $status    = 'payment-only';
+                // Cap at 100% for display consistency; use $totalPaid in the
+                // aggregate fallback (see below) — $pledgeOnlyPaid stays 0 here
+                $percent = 100.0;
+                $status  = 'payment-only';
             } else {
-                // Cap remaining at 0; overpayment is already reflected by 'complete' status
+                // Cap remaining at 0; overpayment is communicated by 'complete' status
                 $remaining = max(0.0, $pledged - $paid);
-                $percent   = ($paid / $pledged) * 100.0;
+                // Cap per-row % at 100% so it is consistent with remaining = 0
+                $percent   = min(100.0, ($paid / $pledged) * 100.0);
                 if ($percent >= 100.0) {
                     $status = 'complete';
                 } elseif ($percent >= 75.0) {
@@ -205,10 +212,13 @@ class FundContributorsService
         });
 
         $contributorCount = count($contributors);
-        // Use only pledge-backed payments so the ratio never exceeds 100%
-        $percentPaid      = $totalPledged > 0
-            ? ($pledgeOnlyPaid / $totalPledged) * 100.0
-            : ($pledgeOnlyPaid > 0 ? 100.0 : 0.0);
+        // $pledgeOnlyPaid is 0 when every contributor is payment-only, so fall
+        // back to $totalPaid (which includes those amounts) for the display label.
+        // Cap at 100% — collective overpayment by pledging families can push the
+        // raw ratio above 1.0, which would be misleading on the stat card.
+        $percentPaid = $totalPledged > 0
+            ? min(100.0, ($pledgeOnlyPaid / $totalPledged) * 100.0)
+            : ($totalPaid > 0 ? 100.0 : 0.0);
 
         $this->logger->info('FundContributorsService: loaded contributors', [
             'fundId'           => $fundId,
