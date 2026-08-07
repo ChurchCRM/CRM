@@ -529,6 +529,10 @@
             <index-column name="plg_depID"/>
             <index-column name="pdem_denominationID"/>
         </index>
+        <unique name="pdem_groupkey_denom_uidx">
+            <unique-column name="pdem_plg_GroupKey"/>
+            <unique-column name="pdem_denominationID"/>
+        </unique>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>

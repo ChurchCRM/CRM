@@ -111,14 +111,9 @@ describe("Pledge update regression — pledge_denominations_pdem table (#9376)",
                 },
                 200,
             ).then((depResp) => {
-                // POST /api/deposits/ returns the new deposit ID
-                const depositId = depResp.body.Id ?? depResp.body.DepositSlipID;
-                if (!depositId) {
-                    // If we can't get a deposit ID from response, skip the denomination assertion
-                    // but still verify the PUT itself does not throw a table-not-found error.
-                    cy.log("Skipping denomination sub-test: could not resolve deposit ID from POST /api/deposits/");
-                    return;
-                }
+                // POST /api/deposits returns the deposit record; Propel maps dep_ID → Id
+                const depositId = depResp.body.Id;
+                expect(depositId, "POST /api/deposits must return an Id").to.be.a("number").and.to.be.greaterThan(0);
 
                 // Create pledge targeting this deposit
                 cy.makePrivateAdminAPICall(
