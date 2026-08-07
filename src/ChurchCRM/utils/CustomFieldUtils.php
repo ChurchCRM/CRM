@@ -101,9 +101,17 @@ class CustomFieldUtils
                     return '';
                 }
 
-                $person = PersonQuery::create()->findPk($personId);
+                // Static memoization: the People List calls display() for every person
+                // row, so the same type-9 value (a person ID) may be looked up N times
+                // per request. Cache the resolved full name to collapse those lookups
+                // into at most one SELECT per unique person ID.
+                static $personNameCache = [];
+                if (!array_key_exists($personId, $personNameCache)) {
+                    $person = PersonQuery::create()->findPk($personId);
+                    $personNameCache[$personId] = $person ? $person->getFullName() : '';
+                }
 
-                return $person ? $person->getFullName() : '';
+                return $personNameCache[$personId];
 
             case 11:
                 return $data;
@@ -114,12 +122,21 @@ class CustomFieldUtils
                     return '';
                 }
 
-                $option = ListOptionQuery::create()
-                    ->filterById((int) $special)
-                    ->filterByOptionId($optionId)
-                    ->findOne();
+                // Static memoization: filterBy* does not use Propel's InstancePool,
+                // so without caching the same (listId, optionId) pair would hit the
+                // DB once per row per field. Cache the option name string to collapse
+                // N×M queries into at most K (unique list+option combinations).
+                static $optionNameCache = [];
+                $cacheKey = ((int) $special) . ':' . $optionId;
+                if (!array_key_exists($cacheKey, $optionNameCache)) {
+                    $option = ListOptionQuery::create()
+                        ->filterById((int) $special)
+                        ->filterByOptionId($optionId)
+                        ->findOne();
+                    $optionNameCache[$cacheKey] = $option ? $option->getOptionName() : '';
+                }
 
-                return $option ? $option->getOptionName() : '';
+                return $optionNameCache[$cacheKey];
 
             default:
                 return gettext('Invalid Editor ID!');
