@@ -13,11 +13,12 @@ $app->get('/', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $queryParams  = $request->getQueryParams();
-    $selectedFyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : 0;
-    // 0 = current FY (default); a positive integer = specific FY
+    $currentFyid  = FiscalYearUtils::getCurrentFiscalYearId();
+    // 0 = All Time sentinel; positive int = specific FY; default = current FY
+    $selectedFyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : $currentFyid;
 
     $financialService = new FinancialService();
-    $dashboardData    = $financialService->getDashboardData($selectedFyid ?: null);
+    $dashboardData    = $financialService->getDashboardData($selectedFyid);
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
