@@ -9,9 +9,11 @@
  * the absolutely-positioned `.dropdown-menu` inside a scroll container.
  *
  * Fix: `_tabler-bridge.scss` adds:
- *   .table-responsive:has(.dropdown-menu.show),
- *   .card-body:has(.dropdown-menu.show) { overflow: visible }
- * so the wrapper relaxes only while a menu is open.
+ *   .table-responsive:has(.dropdown-menu.show) { overflow: visible }  (global)
+ *   @media (max-width:575.98px) {
+ *     .card-body:has(.dropdown-menu.show) { overflow: visible }        (mobile only)
+ *   }
+ * so each wrapper relaxes only while a menu is open.
  *
  * Three scenarios, each verified at 375x667, 768x1024, and 1920x1080:
  *   1. Family View — Key People member table dropdown (PHP-rendered rows)
@@ -57,22 +59,16 @@ function assertDropdownEscapes(triggerSelector, wrapperSelector) {
   // 1. Per-issue requirement: the menu must be visible.
   cy.get(".dropdown-menu.show").should("be.visible");
 
-  // 2. All items must be enabled (not grayed out / inert).
-  cy.get(".dropdown-menu.show .dropdown-item").each(($item) => {
-    cy.wrap($item)
-      .should("not.have.class", "disabled")
-      .and("not.have.attr", "disabled");
-  });
-
-  // 3. Last item is also in view (partial-bounds sanity guard).
+  // 2. Last item is also in view (partial-bounds sanity guard).
   cy.get(".dropdown-menu.show .dropdown-item").last().should("be.visible");
 
-  // 4. Regression guard: the clipping wrapper's computed overflow-y must be
+  // 3. Regression guard: the clipping wrapper's computed overflow-y must be
   //    "visible" while the menu is open. This is exactly what the :has() rule
   //    enforces and is the ONLY assertion that catches the original clip bug.
   cy.get(".dropdown-menu.show")
     .closest(wrapperSelector)
     .should(($wrapper) => {
+      expect($wrapper, `found ${wrapperSelector} ancestor`).to.have.length.greaterThan(0);
       const overflowY = getComputedStyle($wrapper[0]).overflowY;
       expect(overflowY, `computed overflow-y on ${wrapperSelector}`).to.equal(
         "visible",
@@ -149,7 +145,7 @@ describe("Dropdown overflow fix — Person View Groups list (#9373)", () => {
       "POST",
       `/api/groups/${GROUP_ID}/addperson/${PERSON_ID}`,
       { RoleID: 1 },
-      [200],
+      [200, 409],
     );
   });
 

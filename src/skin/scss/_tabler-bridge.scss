@@ -326,7 +326,16 @@ select {
 // `overflow-x` is `auto`/`scroll`, the spec forces `overflow-y: visible` to
 // compute as `auto`, so the clip remains. See table-action-menu.md for full
 // explanation and the audit that confirmed it.
-.table-responsive:has(.dropdown-menu.show),
-.card-body:has(.dropdown-menu.show) {
+// .table-responsive sets overflow-x:auto at all viewport widths.
+.table-responsive:has(.dropdown-menu.show) {
   overflow: visible;
+}
+
+// .card-body only acquires overflow-x:auto inside our ≤575.98px mobile rule
+// (which clips list-group dropdowns such as the Person-view Groups tab).
+// Scope this fix to match so it has no effect at wider widths.
+@media (max-width: 575.98px) {
+  .card-body:has(.dropdown-menu.show) {
+    overflow: visible;
+  }
 }

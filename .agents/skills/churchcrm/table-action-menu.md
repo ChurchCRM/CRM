@@ -18,7 +18,7 @@ Every table row that has per-row actions **must** use the standard Tabler action
 <td class="w-1">
     <div class="dropdown">
         <button class="btn btn-sm btn-ghost-secondary" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
+                data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
             <i class="ti ti-dots-vertical"></i>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
