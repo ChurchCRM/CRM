@@ -118,10 +118,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!countryCode) {
       container.innerHTML = "";
       container.appendChild(buildStateInput(fieldId, fieldName, selectedValue)[0]);
-      return;
+      // Return a resolved deferred so callers can uniformly chain .always().
+      return $.Deferred().resolve().promise();
     }
 
-    $.ajax({
+    return $.ajax({
       type: "GET",
       url: `${window.CRM.root}/api/public/data/countries/${countryCode.toLowerCase()}/states`,
     })
@@ -181,16 +182,31 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── Church country → church state ───────────────────────────────────────
 
   populateCountrySelect($countrySelect, userSelectedCountry, (preselected) => {
+    let stateReady;
     if (preselected) {
-      updateStateField(stateContainer, "sChurchState", "sChurchState", preselected, userSelectedState);
+      stateReady = updateStateField(stateContainer, "sChurchState", "sChurchState", preselected, userSelectedState);
     } else {
       stateContainer.innerHTML = "";
       stateContainer.appendChild(buildStateInput("sChurchState", "sChurchState", userSelectedState)[0]);
+      stateReady = $.Deferred().resolve().promise();
     }
+    // Sync the snapshot after the state field is populated (async). Without this,
+    // the snapshot captures "" while the field is still loading, and the stale-
+    // coordinates banner fires immediately after the AJAX resolves — even though
+    // the user has not edited anything.
+    stateReady.always(() => {
+      initialAddressSnapshot.sChurchState = document.getElementById("sChurchState")?.value || "";
+      updateStaleCoordinatesState();
+    });
   });
 
   $countrySelect.on("change", function () {
-    updateStateField(stateContainer, "sChurchState", "sChurchState", this.value, "");
+    updateStateField(stateContainer, "sChurchState", "sChurchState", this.value, "").always(() => {
+      // After the new state field is ready, sync the snapshot so the freshly-
+      // reset state value is not flagged as a stale-coordinates change.
+      initialAddressSnapshot.sChurchState = document.getElementById("sChurchState")?.value || "";
+      updateStaleCoordinatesState();
+    });
   });
 
   // ── Default country → default state ─────────────────────────────────────
@@ -329,7 +345,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hasCoords && addressChanged) {
       generateHelp.classList.add("text-warning");
       generateHelp.classList.remove("text-body-secondary");
-      generateHelp.innerHTML = `<i class="fa-solid fa-triangle-exclamation me-1"></i>${window.i18next ? i18next.t("Address changed since coordinates were last set.") : "Address changed since coordinates were last set."}`;
+      // Use DOM methods instead of innerHTML to avoid CodeQL js/xss-through-dom;
+      // i18next output goes through createTextNode which never interprets HTML.
+      const icon = document.createElement("i");
+      icon.className = "fa-solid fa-triangle-exclamation me-1";
+      const msg = window.i18next
+        ? i18next.t("Address changed since coordinates were last set.")
+        : "Address changed since coordinates were last set.";
+      generateHelp.textContent = "";
+      generateHelp.appendChild(icon);
+      generateHelp.appendChild(document.createTextNode(msg));
     } else {
       generateHelp.classList.remove("text-warning");
       generateHelp.classList.add("text-body-secondary");
@@ -375,7 +400,10 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ address }),
       })
-        .then((r) => r.json())
+        .then((r) => {
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          return r.json();
+        })
         .then((data) => {
           if (!data || (data.Latitude === 0 && data.Longitude === 0)) {
             window.CRM?.notify?.(t("Could not find coordinates for that address. Try entering them manually."), {
