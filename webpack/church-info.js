@@ -202,13 +202,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   $countrySelect.on("change", function () {
     updateStateField(stateContainer, "sChurchState", "sChurchState", this.value, "").always(() => {
-      // Sync only sChurchState, not sChurchCountry. The country mismatch between
-      // the snapshot (geocoded country) and the new value keeps the stale-
-      // coordinates banner alive for any A→B switch. On A→B→A the banner also
-      // stays: country matches again but sChurchState is now "" vs the
-      // original geocoded state, so addressChanged remains true until the
-      // user re-geocodes (which calls resetStaleCoordinatesSnapshot).
-      initialAddressSnapshot.sChurchState = document.getElementById("sChurchState")?.value || "";
+      // Do NOT mutate initialAddressSnapshot here. The country mismatch between
+      // the snapshot (geocoded country) and the new value already keeps the
+      // stale-coordinates banner alive for A→B. On A→B→A the snapshot's
+      // original sChurchState (e.g. "IL") is preserved, so the state mismatch
+      // keeps the banner alive even after country returns to A. The banner
+      // only clears when the user re-geocodes (resetStaleCoordinatesSnapshot).
       updateStaleCoordinatesState();
     });
   });
@@ -395,7 +394,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const originalHtml = generateBtn.innerHTML;
+      // Capture child nodes now (before the loading state overwrites them) so
+      // .finally() can restore them without an innerHTML read→write round-trip.
+      const originalChildren = [...generateBtn.childNodes].map((n) => n.cloneNode(true));
       generateBtn.disabled = true;
       // Use DOM methods (same pattern as generateHelp) so i18next output is
       // never parsed as HTML.
@@ -452,7 +453,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .finally(() => {
           generateBtn.disabled = false;
-          generateBtn.innerHTML = originalHtml;
+          generateBtn.replaceChildren(...originalChildren);
         });
     });
   }
