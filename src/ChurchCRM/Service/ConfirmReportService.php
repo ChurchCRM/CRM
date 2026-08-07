@@ -733,17 +733,24 @@ class ConfirmReportService
 
         $recipientFamilies = $recipientQuery->distinct()->find();
 
-        $recipients = [];
+        // Build recipients list; track IDs for the set-difference below.
+        // Use the family-level email for display (avoids N+1 from getEmails()/getPeopleSorted()).
+        $recipientIds = [];
+        $recipients   = [];
         foreach ($recipientFamilies as $fam) {
-            $emails = $fam->getEmails();
+            $recipientIds[$fam->getId()] = true;
             $recipients[] = [
                 'id'    => $fam->getId(),
                 'name'  => $fam->getName(),
-                'email' => implode(', ', $emails),
+                // Family-level email for display; actual sends also use member-level emails
+                'email' => (string) ($fam->getEmail() ?? ''),
             ];
         }
 
-        // Families WITHOUT any email (family email blank AND no member email/workEmail)
+        // Families WITHOUT any email = all families not in the recipient set.
+        // Computed as a set-difference to avoid a second round of N+1 queries and
+        // correctly captures families that have a fam_Email but no per_Email
+        // (those are excluded from the recipient query and belong in this list).
         $allFamilyQuery = FamilyQuery::create()->orderByName();
         if ($familyId !== null) {
             $allFamilyQuery->filterById($familyId);
@@ -752,17 +759,7 @@ class ConfirmReportService
 
         $familiesWithoutEmail = [];
         foreach ($allFamilies as $fam) {
-            if (!empty($fam->getEmail())) {
-                continue;
-            }
-            $hasAnyEmail = false;
-            foreach ($fam->getPeopleSorted() as $person) {
-                if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) {
-                    $hasAnyEmail = true;
-                    break;
-                }
-            }
-            if (!$hasAnyEmail) {
+            if (!isset($recipientIds[$fam->getId()])) {
                 $familiesWithoutEmail[] = [
                     'id'   => $fam->getId(),
                     'name' => $fam->getName(),
@@ -776,17 +773,17 @@ class ConfirmReportService
             gettext('[Family Name]')
         );
 
-        $rawBody    = (string) SystemConfig::getValue('sConfirm1');
-        $bodyPlain  = trim(strip_tags($rawBody));
+        $rawBody     = (string) SystemConfig::getValue('sConfirm1');
+        $bodyPlain   = trim(strip_tags($rawBody));
         $bodyExcerpt = mb_strlen($bodyPlain) > 200
             ? mb_substr($bodyPlain, 0, 200) . '…'
             : $bodyPlain;
 
         return [
-            'recipientCount'      => count($recipients),
-            'recipients'          => $recipients,
+            'recipientCount'       => count($recipients),
+            'recipients'           => $recipients,
             'familiesWithoutEmail' => $familiesWithoutEmail,
-            'templatePreview'     => [
+            'templatePreview'      => [
                 'subject'     => $subjectTemplate,
                 'bodyExcerpt' => $bodyExcerpt,
             ],

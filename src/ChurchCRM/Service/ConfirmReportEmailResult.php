@@ -42,6 +42,47 @@ class ConfirmReportEmailResult
     }
 
     /**
+     * Build a human-readable summary message for this result.
+     *
+     * Both the route handler (AJAX JSON response) and the view template delegate
+     * to this single implementation so adding a new status code only requires
+     * one change.
+     */
+    public function toMessage(): string
+    {
+        return self::messageForStatus($this->status, $this->sentCount, $this->failedCount);
+    }
+
+    /**
+     * Build a human-readable summary from raw status/count values.
+     *
+     * Used by the view when reconstructing a message from query-string params
+     * (which carry the same status codes).
+     */
+    public static function messageForStatus(string $status, int $sentCount, int $failedCount): string
+    {
+        switch ($status) {
+            case self::STATUS_NO_RECIPIENTS:
+                return gettext('No families with an email address were found. Nothing was sent.');
+            case self::STATUS_SMTP_FAILURE:
+                return gettext('All email sends failed. Please check your SMTP settings in System Settings.');
+            case self::STATUS_PARTIAL_FAILURE:
+                $total = $sentCount + $failedCount;
+                return sprintf(
+                    gettext('Sent %1$d of %2$d — %3$d families could not be reached.'),
+                    $sentCount,
+                    $total,
+                    $failedCount
+                );
+            default:
+                return sprintf(
+                    ngettext('Email sent to %d family.', 'Emails sent to %d families.', $sentCount),
+                    $sentCount
+                );
+        }
+    }
+
+    /**
      * Serialize to an associative array for JSON responses.
      *
      * @return array{status: string, sentCount: int, failedCount: int, failedFamilies: string[]}

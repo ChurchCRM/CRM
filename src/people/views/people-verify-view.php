@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\ConfirmReportEmailResult;
 use ChurchCRM\Utils\CSRFUtils;
 
 $sPageTitle = gettext('People Verify Dashboard');
@@ -14,38 +15,31 @@ $emailErrorSent    = (int) ($emailErrorSent   ?? 0);
 $emailErrorFailed  = (int) ($emailErrorFailed ?? 0);
 $emailSuccessCount = (int) ($emailSuccessCount ?? 0);
 
-// Compute a PHP-side alert message for the reason code
+// Compute a PHP-side alert message using the value object’s central method
 $emailAlertClass   = '';
 $emailAlertMsg     = '';
 $emailAlertIcon    = '';
 if ($emailErrorReason !== '') {
+    // Map reason → alert class and icon (display concerns stay in the view)
     switch ($emailErrorReason) {
-        case 'no_recipients':
+        case ConfirmReportEmailResult::STATUS_NO_RECIPIENTS:
             $emailAlertClass = 'danger';
             $emailAlertIcon  = 'ti ti-mail-off';
-            $emailAlertMsg   = gettext('No families with an email address were found. Nothing was sent.');
             break;
-        case 'smtp_failure':
+        case ConfirmReportEmailResult::STATUS_SMTP_FAILURE:
             $emailAlertClass = 'danger';
             $emailAlertIcon  = 'ti ti-cloud-off';
-            $emailAlertMsg   = gettext('All email sends failed. Please check your SMTP settings in System Settings.');
             break;
-        case 'partial_failure':
+        case ConfirmReportEmailResult::STATUS_PARTIAL_FAILURE:
             $emailAlertClass = 'warning';
             $emailAlertIcon  = 'ti ti-alert-triangle';
-            $total = $emailErrorSent + $emailErrorFailed;
-            $emailAlertMsg = sprintf(
-                gettext('Sent %1$d of %2$d — %3$d families could not be reached. Check application logs for details.'),
-                $emailErrorSent,
-                $total,
-                $emailErrorFailed
-            );
             break;
         default:
             $emailAlertClass = 'danger';
             $emailAlertIcon  = 'ti ti-alert-circle';
-            $emailAlertMsg   = gettext('An unexpected error occurred while sending emails. Please check the application logs.');
     }
+    // Message text delegated to the value object’s static method (single source of truth)
+    $emailAlertMsg = ConfirmReportEmailResult::messageForStatus($emailErrorReason, $emailErrorSent, $emailErrorFailed);
 }
 ?>
 
@@ -275,10 +269,14 @@ if ($emailErrorReason !== '') {
             document.getElementById('modalPreview').classList.add('d-none');
             document.getElementById('modalResultBanner').classList.add('d-none');
             document.getElementById('modalResultBanner').innerHTML = '';
-            document.getElementById('modalSendBtn').disabled = true;
-            document.getElementById('modalSendBtn').innerHTML =
-                '<i class="ti ti-send me-1" aria-hidden="true"></i>' +
-                i18next.t('Send Emails');
+            // Guard: showInModalResult() may have replaced #modalSendBtn
+            var sendBtn = document.getElementById('modalSendBtn');
+            if (sendBtn) {
+                sendBtn.disabled = true;
+                sendBtn.innerHTML =
+                    '<i class="ti ti-send me-1" aria-hidden="true"></i>' +
+                    i18next.t('Send Emails');
+            }
         }
 
         function fetchPreview() {
@@ -372,7 +370,13 @@ if ($emailErrorReason !== '') {
                 '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>' +
                 i18next.t('Sending…');
 
-            var csrfToken = document.querySelector('#verifyEmailAllForm input[name="csrf_token"]').value;
+            // Guard against missing CSRF form (partial render, CSP block, etc.)
+            var csrfInput = document.querySelector('#verifyEmailAllForm input[name="csrf_token"]');
+            if (!csrfInput) {
+                showInModalResult({ status: 'error', message: i18next.t('Security token missing. Please refresh the page.') });
+                return;
+            }
+            var csrfToken = csrfInput.value;
 
             fetch(window.CRM.root + '/people/report/verify/email', {
                 method: 'POST',

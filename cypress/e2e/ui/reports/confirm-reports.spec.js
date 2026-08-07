@@ -280,8 +280,9 @@ describe("Confirmation Reports - MVC Routes", () => {
     // Part 2: Send Confirmation Preview Modal
     // ================================================================
     describe("People Verify — send confirmation modal", () => {
+        // The outer beforeEach already calls freshAdminLogin(). This inner beforeEach
+        // only navigates to the verify page — no second login needed.
         beforeEach(() => {
-            freshAdminLogin();
             cy.visit("people/verify");
         });
 
@@ -322,11 +323,8 @@ describe("Confirmation Reports - MVC Routes", () => {
 
             cy.get('[data-cy="modal-cancel-btn"]').click();
 
-            // Confirm no send request was made — the intercept alias should not have fired
-            // We use a small wait then check alias did not fire
-            // eslint-disable-next-line cypress/no-unnecessary-waiting
-            cy.wait(500);
-            // Verify there was no request to the email endpoint
+            // Wait for modal to close (BS5 async fade) then assert no send request was made
+            cy.get('[data-cy="verify-email-modal"]').should('not.have.class', 'show');
             cy.get("@sendEmail.all").should("have.length", 0);
         });
 
