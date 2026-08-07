@@ -202,8 +202,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   $countrySelect.on("change", function () {
     updateStateField(stateContainer, "sChurchState", "sChurchState", this.value, "").always(() => {
-      // After the new state field is ready, sync the snapshot so the freshly-
-      // reset state value is not flagged as a stale-coordinates change.
+      // Advance both sides of the comparison together so a A→B→A round-trip
+      // does not hide the stale-coordinates banner. Without syncing country
+      // here, switching back to the original country sets sChurchState back
+      // to "" while snapshot.sChurchCountry still holds the original code,
+      // making addressChanged evaluate to false even though state was cleared.
+      initialAddressSnapshot.sChurchCountry = document.getElementById("sChurchCountry")?.value || "";
       initialAddressSnapshot.sChurchState = document.getElementById("sChurchState")?.value || "";
       updateStaleCoordinatesState();
     });
@@ -415,6 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const latEl = document.getElementById("iChurchLatitude");
           const lngEl = document.getElementById("iChurchLongitude");
+          if (!latEl || !lngEl) return; // elements unexpectedly missing — don't show a misleading error
           latEl.value = data.Latitude;
           lngEl.value = data.Longitude;
           latEl.dispatchEvent(new Event("input", { bubbles: true }));
@@ -516,10 +521,11 @@ function initChurchInfoPreview() {
       previewEmail.textContent = email;
       // Only create a mailto: link when the value looks like a real email address;
       // reject anything that could be a javascript: or data: scheme injection.
-      // encodeURIComponent is a CodeQL-recognised sanitiser that breaks the taint path;
-      // the regex additionally ensures only valid-looking addresses get a mailto: link.
+      // The regex already blocks scheme injection; encodeURI (unlike encodeURIComponent)
+      // does not encode '@', so the mailto: address remains RFC-compliant and
+      // is decoded correctly by all mail clients including embedded webviews.
       const safeEmailHref =
-        email && /^[^\s<>"'\\]+@[^\s<>"'\\]+\.[^\s<>"'\\]+$/.test(email) ? `mailto:${encodeURIComponent(email)}` : "#";
+        email && /^[^\s<>"'\\]+@[^\s<>"'\\]+\.[^\s<>"'\\]+$/.test(email) ? `mailto:${encodeURI(email)}` : "#";
       previewEmail.href = safeEmailHref;
     }
 
