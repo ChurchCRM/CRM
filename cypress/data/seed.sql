@@ -2143,8 +2143,9 @@ CREATE TABLE `pledge_denominations_pdem` (
   `pdem_denominationID`       mediumint(9)          DEFAULT NULL,
   `pdem_denominationQuantity` int(11)               DEFAULT NULL,
   PRIMARY KEY (`pdem_id`),
-  KEY `pdem_groupkey_idx`      (`pdem_plg_GroupKey`),
-  KEY `pdem_deposit_denom_idx` (`plg_depID`, `pdem_denominationID`)
+  KEY `pdem_groupkey_idx`           (`pdem_plg_GroupKey`),
+  KEY `pdem_deposit_denom_idx`      (`plg_depID`, `pdem_denominationID`),
+  UNIQUE KEY `pdem_groupkey_denom_uidx` (`pdem_plg_GroupKey`, `pdem_denominationID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
