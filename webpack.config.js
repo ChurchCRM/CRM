@@ -37,6 +37,7 @@ module.exports = {
     'repeat-event-editor': './webpack/repeat-event-editor',
     'event-checkin': './webpack/event-checkin',
     'event-calendars': './webpack/event-calendars',
+    'external-calendar': './webpack/external-calendar',
     'event-types': './webpack/event-types',
     'event-editor': './webpack/event-editor',
     'event-types-list': './webpack/event-types-list',

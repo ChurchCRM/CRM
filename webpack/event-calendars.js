@@ -1,3 +1,13 @@
+// FullCalendar v7 — bundled via webpack (ESM imports).
+// temporal-polyfill must come first: it sets globalThis.Temporal, which FC reads at module load.
+import "temporal-polyfill/global";
+import { Calendar } from "fullcalendar/all";
+import formaTheme from "fullcalendar/themes/forma";
+import "fullcalendar/skeleton.css";
+import "fullcalendar/themes/forma/theme.css";
+import "fullcalendar/themes/forma/palettes/blue.css";
+import { applyFcLocale } from "./common/fc-locale";
+
 window.moveEventModal = {
   getButtons: (confirmLabel, confirmClass) => ({
     cancel: {
@@ -536,19 +546,16 @@ function initializeCalendar() {
     return new Date(`${get("year")}-${get("month")}-${get("day")}T${hh}:${get("minute")}:${get("second")}`);
   })();
 
-  window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
+  window.CRM.fullcalendar = new Calendar(document.getElementById("calendar"), {
+    plugins: [formaTheme],
     locale: window.CRM.lang || "en",
     timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
     now: churchNow,
     headerToolbar: window.innerWidth < 768 ? mobileHeaderToolbar : desktopHeaderToolbar,
     footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
     contentHeight: "auto",
-    windowResizeDelay: 200,
-    windowResize: () => {
-      const nowMobile = window.innerWidth < 768;
-      window.CRM.fullcalendar.setOption("headerToolbar", nowMobile ? mobileHeaderToolbar : desktopHeaderToolbar);
-      window.CRM.fullcalendar.setOption("footerToolbar", nowMobile ? mobileFooterToolbar : false);
-    },
+    footerToolbarClass: "crm-fc-footer-toolbar",
+    headerToolbarClass: "crm-fc-header-toolbar",
     selectable: true,
     editable: window.CRM.calendarJSArgs.isModifiable,
     eventDrop: window.moveEventModal.handleEventDrop,
@@ -588,6 +595,23 @@ function initializeCalendar() {
       window.CRM.isCalendarLoading = isLoading;
     },
   });
+
+  // FullCalendar v7 removed the windowResize option. Replicate the debounced
+  // resize behaviour with a native event listener. Clean up the old handler
+  // when initializeCalendar() is called again (e.g. after locale reload).
+  if (window.CRM._calendarResizeHandler) {
+    window.removeEventListener("resize", window.CRM._calendarResizeHandler);
+  }
+  let _resizeTimer;
+  window.CRM._calendarResizeHandler = () => {
+    clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => {
+      const nowMobile = window.innerWidth < 768;
+      window.CRM.fullcalendar.setOption("headerToolbar", nowMobile ? mobileHeaderToolbar : desktopHeaderToolbar);
+      window.CRM.fullcalendar.setOption("footerToolbar", nowMobile ? mobileFooterToolbar : false);
+    }, 200);
+  };
+  window.addEventListener("resize", window.CRM._calendarResizeHandler);
 }
 
 /**
@@ -817,13 +841,14 @@ function displayAccessTokenAPITest() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.CRM.onLocalesReady(() => {
+  window.CRM.onLocalesReady(async () => {
     initializeCalendar();
     initializeFilterSettings();
     initializeNewCalendarButton();
     registerCalendarSelectionEvents();
     displayAccessTokenAPITest();
 
+    await applyFcLocale(window.CRM.fullcalendar);
     window.CRM.fullcalendar.render();
   });
 

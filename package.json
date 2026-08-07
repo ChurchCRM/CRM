@@ -109,7 +109,7 @@
         "daterangepicker": "^3.1.0",
         "dompurify": "^3.4.12",
         "flag-icons": "^7.5.0",
-        "fullcalendar": "^6.1.21",
+        "fullcalendar": "^7.0.2",
         "i18next": "^26.3.6",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
@@ -121,6 +121,7 @@
         "pdfmake": "^0.3.11",
         "posthog-js": "^1.407.3",
         "quill": "2.0.2",
+        "temporal-polyfill": "^1.0.1",
         "tom-select": "^2.6.2"
     },
     "devDependencies": {
