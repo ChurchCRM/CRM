@@ -151,6 +151,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <button type="button" id="btnSelectAll" class="btn btn-sm btn-outline-secondary">
           <?= gettext('Select All') ?>
         </button>
+        <button type="button" id="btnDeleteSelected" class="btn btn-sm btn-danger" disabled>
+          <i class="ti ti-trash me-1"></i><?= gettext('Delete') ?>
+        </button>
         <button type="button" id="btnExportCSV" class="btn btn-sm btn-success" disabled data-export-type="csv">
           <i class="ti ti-download me-1"></i><?= gettext('CSV') ?>
         </button>
@@ -177,7 +180,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <th><?= gettext('Date') ?></th>
               <th><?= gettext('Type') ?></th>
               <th><?= gettext('Comment') ?></th>
-              <th><?= gettext('Total') ?></th>
+              <th>
+                <?php if (!empty($filters['fundId'])) : ?>
+                  <?= gettext('Fund Total') ?> <span class="badge bg-orange ms-1" title="<?= InputUtils::escapeAttribute(gettext('Showing total for selected fund only')) ?>"><?= gettext('Fund') ?></span>
+                <?php else : ?>
+                  <?= gettext('Total') ?>
+                <?php endif; ?>
+              </th>
               <th><?= gettext('Status') ?></th>
               <th><?= gettext('Teller') ?></th>
               <th class="w-1"><?= gettext('Actions') ?></th>

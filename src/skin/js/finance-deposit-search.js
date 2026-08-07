@@ -5,10 +5,10 @@
  * - DataTable enhancement of the server-rendered deposits table
  * - Row checkbox selection (individual + Select All)
  * - Export button enable/disable with live selected count
- * - Bulk CSV / per-row OFX / per-row PDF export
- * - Filter persistence (repopulate form fields from URL params on page load)
+ * - Bulk delete / CSV / OFX / PDF export
+ * - New-Deposit modal (comment, type, date → POST /api/deposits → redirect to editor)
  *
- * Requires: jQuery, DataTables, i18next, window.CRM (loaded globally)
+ * Requires: jQuery, DataTables, bootbox, i18next, window.CRM (loaded globally)
  */
 
 (function initDepositSearch() {
@@ -17,16 +17,6 @@
   // ---------------------------------------------------------------------------
   // Utilities
   // ---------------------------------------------------------------------------
-
-  /**
-   * Read a single URL query parameter by name.
-   * @param {string} name
-   * @returns {string}
-   */
-  function _getQueryParam(name) {
-    var params = new URLSearchParams(window.location.search);
-    return params.get(name) || "";
-  }
 
   /**
    * Collect deposit IDs for all selected (checked) rows.
@@ -41,15 +31,14 @@
   }
 
   /**
-   * Update the export buttons and the selected-count badge based on current
-   * checkbox selection state.
+   * Update action buttons (delete + export) based on current checkbox state.
    */
-  function updateExportButtons() {
+  function updateActionButtons() {
     var ids = getSelectedIds();
     var count = ids.length;
     var enabled = count > 0;
 
-    $("#btnExportCSV, #btnExportOFX, #btnExportPDF").prop("disabled", !enabled);
+    $("#btnDeleteSelected, #btnExportCSV, #btnExportOFX, #btnExportPDF").prop("disabled", !enabled);
 
     var $badge = $("#selectedCount");
     if (enabled) {
@@ -90,10 +79,9 @@
   // ---------------------------------------------------------------------------
 
   function bindSelectionHandlers() {
-    // Individual row checkbox click — do NOT bubble to row-click handler
+    // Individual row checkbox — sync header + update buttons
     $("#depositsTable tbody").on("change", ".row-select", () => {
-      updateExportButtons();
-      // Sync the header checkbox to reflect partial/full selection
+      updateActionButtons();
       var total = $("#depositsTable tbody .row-select").length;
       var checked = $("#depositsTable tbody .row-select:checked").length;
       var $header = $("#selectAllCheckbox");
@@ -104,29 +92,66 @@
     // "Select All" checkbox in the header
     $("#selectAllCheckbox").on("change", function () {
       var checked = $(this).is(":checked");
-      // Select/deselect only the rows currently visible in the DataTable
       dataT.rows({ search: "applied" }).nodes().to$().find(".row-select").prop("checked", checked);
-      updateExportButtons();
+      updateActionButtons();
     });
 
-    // "Select All" button (text button above table)
+    // "Select All" text button above the table
     $("#btnSelectAll").on("click", () => {
       var allChecked =
         $("#depositsTable tbody .row-select").length === $("#depositsTable tbody .row-select:checked").length;
       var newState = !allChecked;
       dataT.rows({ search: "applied" }).nodes().to$().find(".row-select").prop("checked", newState);
       $("#selectAllCheckbox").prop("checked", newState).prop("indeterminate", false);
-      updateExportButtons();
+      updateActionButtons();
     });
 
-    // Re-sync header checkbox after DataTable redraws (page change, search, sort)
+    // Re-sync after DataTable redraws (page change, search, sort)
     dataT.on("draw", () => {
       var total = $("#depositsTable tbody .row-select").length;
       var checked = $("#depositsTable tbody .row-select:checked").length;
       var $header = $("#selectAllCheckbox");
       $header.prop("checked", checked === total && total > 0);
       $header.prop("indeterminate", checked > 0 && checked < total);
-      updateExportButtons();
+      updateActionButtons();
+    });
+  }
+
+  // ---------------------------------------------------------------------------
+  // Delete handler
+  // ---------------------------------------------------------------------------
+
+  function bindDeleteHandler() {
+    $("#btnDeleteSelected").on("click", () => {
+      var ids = getSelectedIds();
+      if (!ids.length) return;
+
+      bootbox.confirm({
+        title: i18next.t("Confirm Delete"),
+        message:
+          `<p>${i18next.t("Are you sure you want to delete the selected")} ${ids.length} ${i18next.t("Deposit(s)")}?</p>` +
+          `<p>${i18next.t("This will also delete all payments associated with this deposit")}</p>` +
+          `<p class="text-danger fw-bold">${i18next.t("This action CANNOT be undone, and may have legal implications!")}</p>`,
+        buttons: {
+          cancel: { label: i18next.t("Close"), className: "btn-secondary" },
+          confirm: { label: i18next.t("Delete"), className: "btn-danger" },
+        },
+        callback: (result) => {
+          if (!result) return;
+
+          var deletePromises = ids.map((id) =>
+            window.CRM.APIRequest({
+              method: "DELETE",
+              path: `deposits/${id}`,
+            }),
+          );
+
+          $.when(...deletePromises).always(() => {
+            // Reload page to reflect deletions (server-side filtered table)
+            window.location.reload();
+          });
+        },
+      });
     });
   }
 
@@ -138,35 +163,28 @@
     $("#btnExportCSV").on("click", () => {
       var ids = getSelectedIds();
       if (!ids.length) return;
-      var url = `${window.CRM.root}/api/deposits/csv?ids=${ids.join(",")}`;
-      window.CRM.VerifyThenLoadAPIContent(url);
+      window.CRM.VerifyThenLoadAPIContent(`${window.CRM.root}/api/deposits/csv?ids=${ids.join(",")}`);
     });
 
     $("#btnExportOFX").on("click", () => {
       var ids = getSelectedIds();
       $.each(ids, (_i, id) => {
-        var url = `${window.CRM.root}/api/deposits/${id}/ofx`;
-        window.CRM.VerifyThenLoadAPIContent(url);
+        window.CRM.VerifyThenLoadAPIContent(`${window.CRM.root}/api/deposits/${id}/ofx`);
       });
     });
 
     $("#btnExportPDF").on("click", () => {
       var ids = getSelectedIds();
+      if (!ids.length) return;
+
       var validDeposits = [];
       var skippedCount = 0;
       var validationPending = ids.length;
 
-      if (!ids.length) return;
-
       $.each(ids, (_i, id) => {
-        $.ajax({
-          method: "GET",
-          url: `${window.CRM.root}/api/deposits/${id}/payments`,
-          dataType: "json",
-        })
+        $.ajax({ method: "GET", url: `${window.CRM.root}/api/deposits/${id}/payments`, dataType: "json" })
           .done((data) => {
-            var count = Array.isArray(data) ? data.length : 0;
-            if (count > 0) {
+            if (Array.isArray(data) && data.length > 0) {
               validDeposits.push(id);
             } else {
               skippedCount++;
@@ -194,21 +212,12 @@
   }
 
   // ---------------------------------------------------------------------------
-  // New deposit shortcut — the "New Deposit" button in the card header
-  // redirects to the deposit editor after creation, same pattern as FindDepositSlip.js
-  // ---------------------------------------------------------------------------
-
-  // (No inline deposit-creation form on this page — handled by DepositSlipEditor.php
-  //  via the "New Deposit" link which goes to the dashboard or editor directly.)
-
-  // ---------------------------------------------------------------------------
-  // New Deposit creation (modal)
+  // New Deposit modal
   // ---------------------------------------------------------------------------
 
   function initNewDepositModal() {
     // Pre-fill today's date
-    var today = new Date().toISOString().split("T")[0];
-    $("#depositDate").val(today);
+    $("#depositDate").val(new Date().toISOString().split("T")[0]);
 
     $("#addNewDeposit").on("click", () => {
       var newDeposit = {
@@ -225,8 +234,8 @@
             cancel: { label: i18next.t("Cancel") },
             confirm: { label: i18next.t("Confirm") },
           },
-          callback: (result) => {
-            if (result) {
+          callback: (confirmed) => {
+            if (confirmed) {
               createDepositRequest(newDeposit);
             }
           },
@@ -243,9 +252,16 @@
         data: JSON.stringify(newDeposit),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-      }).done((data) => {
-        window.location.href = `${window.CRM.root}/DepositSlipEditor.php?DepositSlipID=${data.Id}`;
-      });
+      })
+        .done((data) => {
+          window.location.href = `${window.CRM.root}/DepositSlipEditor.php?DepositSlipID=${data.Id}`;
+        })
+        .fail((_jqXHR, _textStatus, errorThrown) => {
+          window.CRM.notify(`${i18next.t("Failed to create deposit")}: ${errorThrown || i18next.t("Unknown error")}`, {
+            type: "error",
+            delay: 6000,
+          });
+        });
     }
   }
 
@@ -256,9 +272,10 @@
   function init() {
     initDataTable();
     bindSelectionHandlers();
+    bindDeleteHandler();
     bindExportHandlers();
     initNewDepositModal();
-    updateExportButtons();
+    updateActionButtons();
   }
 
   $(document).ready(() => {

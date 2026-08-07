@@ -218,18 +218,8 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         }
 
         $filename = 'ChurchCRM-Deposits-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
-        $headers = [
-            gettext('Deposit ID'),
-            gettext('Pledge ID'),
-            gettext('Family Name'),
-            gettext('Date'),
-            gettext('Amount'),
-            gettext('Fund'),
-            gettext('Method'),
-            gettext('Check No'),
-            gettext('Comment'),
-            gettext('Fiscal Year'),
-        ];
+        // Headers defined once in DepositService::EXPORT_HEADERS — all CSV endpoints share this list
+        $headers  = array_map('gettext', DepositService::EXPORT_HEADERS);
 
         $exporter = new CsvExporter();
         $exporter->insertHeaders($headers);
@@ -272,18 +262,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         }
 
         $filename = 'ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
-        $headers = [
-            gettext('Deposit ID'),
-            gettext('Pledge ID'),
-            gettext('Family Name'),
-            gettext('Date'),
-            gettext('Amount'),
-            gettext('Fund'),
-            gettext('Method'),
-            gettext('Check No'),
-            gettext('Comment'),
-            gettext('Fiscal Year'),
-        ];
+        $headers  = array_map('gettext', DepositService::EXPORT_HEADERS);
 
         $exporter = new CsvExporter();
         $exporter->insertHeaders($headers);
