@@ -74,6 +74,11 @@ class ConfirmReportEmailResult
                     $total,
                     $failedCount
                 );
+            case self::STATUS_SUCCESS:
+                return sprintf(
+                    ngettext('Email sent to %d family.', 'Emails sent to %d families.', $sentCount),
+                    $sentCount
+                );
             default:
                 return gettext('An unexpected error occurred while sending emails. Please check your SMTP settings and server logs.');
         }

@@ -223,7 +223,6 @@ if ($emailErrorReason !== '') {
                                               title="<?= htmlspecialchars(gettext('Member emails are also used when no family email is on file')) ?>"
                                               data-bs-toggle="tooltip"
                                               tabindex="0"
-                                              role="img"
                                               aria-label="<?= htmlspecialchars(gettext('Member emails are also used when no family email is on file')) ?>">
                                             <i class="ti ti-info-circle" aria-hidden="true"></i>
                                         </span>
