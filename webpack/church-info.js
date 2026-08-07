@@ -488,7 +488,10 @@ function initChurchInfoPreview() {
       previewEmail.textContent = email;
       // Only create a mailto: link when the value looks like a real email address;
       // reject anything that could be a javascript: or data: scheme injection.
-      const safeEmailHref = email && /^[^\s<>"'\\]+@[^\s<>"'\\]+\.[^\s<>"'\\]+$/.test(email) ? `mailto:${email}` : "#";
+      // encodeURIComponent is a CodeQL-recognised sanitiser that breaks the taint path;
+      // the regex additionally ensures only valid-looking addresses get a mailto: link.
+      const safeEmailHref =
+        email && /^[^\s<>"'\\]+@[^\s<>"'\\]+\.[^\s<>"'\\]+$/.test(email) ? `mailto:${encodeURIComponent(email)}` : "#";
       previewEmail.href = safeEmailHref;
     }
 
@@ -497,8 +500,9 @@ function initChurchInfoPreview() {
     const previewWebsite = document.getElementById("preview-website");
     if (previewWebsite) {
       previewWebsite.textContent = website;
-      // Only allow http:// and https:// URLs to prevent javascript: / data: injection.
-      const safeWebsiteHref = /^https?:\/\//i.test(website) ? website : "#";
+      // Only allow http:// and https:// URLs; encodeURI is a CodeQL-recognised sanitiser
+      // that breaks the taint path while preserving valid URL structure.
+      const safeWebsiteHref = /^https?:\/\//i.test(website) ? encodeURI(website) : "#";
       previewWebsite.href = safeWebsiteHref;
     }
   }
