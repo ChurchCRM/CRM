@@ -750,61 +750,6 @@ class Person extends BasePerson implements PhotoInterface
 
         return $personCustom;
     }
-
-    /**
-     * Return formatted custom-field values for this person, keyed by the
-     * custom field column identifier (custom_Field).  Used by the people-list
-     * export so each custom field gets its own column with its real value.
-     *
-     * The method runs a single PersonCustomQuery per person (same pattern as
-     * getCustomFields), fetches all accessible fields at once, then formats
-     * each raw value with CustomFieldUtils::display() — which handles dates,
-     * booleans, list options, etc.  Empty / NULL values are returned as ''.
-     *
-     * @param PersonCustomMaster[] $customFieldDefs  security-filtered, ordered defs
-     * @return array<string,string>  map of custom_Field => formatted display value
-     */
-    public function getCustomFieldExportValues(array $customFieldDefs): array
-    {
-        if (empty($customFieldDefs)) {
-            return [];
-        }
-
-        $rawQry = PersonCustomQuery::create();
-        foreach ($customFieldDefs as $def) {
-            $rawQry->addAsColumn(
-                str_replace(['.', '(', ')'], '', $def->getId()),
-                $def->getId()
-            );
-        }
-        $row = $rawQry->findOneByPerId($this->getId());
-
-        $values = [];
-        if ($row) {
-            $vcols = $row->getVirtualColumns(); // alias => raw DB value
-            foreach ($customFieldDefs as $def) {
-                $alias = str_replace(['.', '(', ')'], '', $def->getId());
-                $raw   = $vcols[$alias] ?? null;
-                if ($raw === null || $raw === '') {
-                    $values[$def->getId()] = '';
-                } else {
-                    $values[$def->getId()] = CustomFieldUtils::display(
-                        $def->getTypeId(),
-                        (string) $raw,
-                        $def->getSpecial()
-                    );
-                }
-            }
-        } else {
-            // No person_custom row at all — every field is empty
-            foreach ($customFieldDefs as $def) {
-                $values[$def->getId()] = '';
-            }
-        }
-
-        return $values;
-    }
-
     // return array of person groups
     // created for the person-list.php datatable
     /**
