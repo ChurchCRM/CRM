@@ -158,13 +158,10 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
 
     it("All Time option shows all deposits (no fyid in URL)", () => {
       cy.visit(`finance/?fyid=${SEED_FYID_2018}`);
-      cy.get("#deposit-fyid").select("0"); // "0" = All Time
-      cy.url().then((url) => {
-        // Either no fyid or fyid=0 in URL
-        const params = new URLSearchParams(url.split("?")[1] || "");
-        const fyid = params.get("fyid");
-        expect(["0", null]).to.include(fyid);
-      });
+      cy.get("#deposit-fyid").select("0"); // triggers form submit → page reload
+      // Use a retryable assertion: cy.url().then() reads the pre-navigation URL;
+      // cy.location().should() retries until navigation completes.
+      cy.location("search").should("satisfy", (s) => s === "" || s === "?fyid=0");
     });
   });
 
