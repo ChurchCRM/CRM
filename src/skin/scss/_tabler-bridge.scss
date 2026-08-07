@@ -305,3 +305,26 @@ select {
     max-width: 100% !important;
   }
 }
+
+// --- Dropdown clipping fix: allow action menus to escape overflow containers ---
+// Bootstrap's .table-responsive sets overflow-x: auto. Per the CSS Overflow spec,
+// when overflow-x is auto/scroll and overflow-y is visible (default), the browser
+// computes overflow-y to auto — clipping any absolutely-positioned descendant
+// (including Bootstrap dropdowns) that extends outside the container.
+// The mobile rule above adds a second clip source: .card-body also gets
+// overflow-x: auto at <=575px.
+//
+// Fix: use :has(.dropdown-menu) to opt ONLY containers with row-action dropdowns
+// out of the overflow constraint — tables and cards without dropdowns retain
+// their horizontal scroll. :has() is already used in this file (mobile btn rule).
+// <!-- learned: 2026-08-07 -- fixes GitHub issue #9373 -->
+.table-responsive:has(.dropdown-menu) {
+  overflow: visible;
+}
+
+@media (max-width: 575.98px) {
+  .card-body:has(.dropdown-menu),
+  .card > .table-responsive:has(.dropdown-menu) {
+    overflow: visible;
+  }
+}

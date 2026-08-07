@@ -108,54 +108,72 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 
 ---
 
-## Overflow / Dropdown Clipping <!-- learned: 2026-03-26, corrected: 2026-07-26 -->
+## Overflow / Dropdown Clipping <!-- learned: 2026-03-26, corrected: 2026-07-26, updated: 2026-08-07 -->
 
-**`.table-responsive` clips the dropdown — `data-bs-display="static"` does NOT fix this.**
-The previous version of this section (2026-05-01) claimed `data-bs-display="static"`
-prevents clipping inside `.table-responsive` via `position: fixed`. That claim was wrong —
-confirmed by a codebase audit that found three real, currently-broken instances
-(`src/people/views/self-register.php`, `src/groups/views/group-view.php`,
-`src/event/views/types-list.php`) that all already had `data-bs-display="static"` and were
-still clipped, because `.table-responsive` sets `overflow-x: auto`, which forces
-`overflow-y: auto` too — that clips any absolutely/fixed-positioned dropdown regardless of
-Popper's positioning strategy.
+### Root cause
 
-**Rule: use `<div style="overflow: visible;">` instead of `<div class="table-responsive">`
-on any table wrapper whose rows contain a dropdown menu.** Keep `data-bs-display="static"`
-on the button too — it's still needed to stop Popper from miscalculating position in
-scrollable ancestors, it just isn't sufficient on its own.
+Bootstrap's `.table-responsive` sets `overflow-x: auto`. Per the CSS Overflow spec, when
+`overflow-x` is `auto` and `overflow-y` is the default `visible`, the browser **computes**
+`overflow-y` to `auto` — clipping any absolutely-positioned descendant (including
+Bootstrap dropdowns). At viewports ≤575px, ChurchCRM's mobile rule in
+`_tabler-bridge.scss` additionally sets `overflow-x: auto` on **every `.card-body`**,
+causing the same clipping for list-group or non-table content inside a card.
 
-```html
-<!-- ✅ CORRECT — dropdown can escape the wrapper -->
-<div style="overflow: visible;">
-    <table class="table table-vcenter table-hover card-table">
-        <tbody>
-            <tr>
-                <td>...</td>
-                <td class="w-1">
-                    <div class="dropdown">
-                        <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">
-                            <i class="ti ti-dots-vertical"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end">...</div>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+`data-bs-display="static"` (disables Popper) does **not** fix this — confirmed by a
+codebase audit of three still-broken instances that already had it.
 
-<!-- ❌ WRONG — overflow-x: auto forces overflow-y: auto, clips the dropdown -->
-<div class="table-responsive">
-    ...
-</div>
+### The fix — `:has(.dropdown-menu)` in `_tabler-bridge.scss` (2026-08-07, #9373)
+
+A `:has()` CSS scoped rule in `src/skin/scss/_tabler-bridge.scss` (added at the end of
+the file, after the mobile block) opts **only** containers that actually hold a dropdown
+out of the overflow constraint. Tables and cards without row actions keep horizontal scroll.
+
+```scss
+// In _tabler-bridge.scss — these rules exist; do NOT add them again.
+.table-responsive:has(.dropdown-menu) { overflow: visible; }
+
+@media (max-width: 575.98px) {
+  .card-body:has(.dropdown-menu),
+  .card > .table-responsive:has(.dropdown-menu) { overflow: visible; }
+}
 ```
 
-Reference examples already using the correct pattern: `src/people/views/self-register.php`,
+`:has()` is a live selector — it matches as soon as a `.dropdown-menu` element appears
+in the subtree (including DataTables rows rendered after page load). Browser support:
+Chrome 105+, Safari 15.4+, Firefox 121+ — all current. `:has()` is already used
+elsewhere in `_tabler-bridge.scss` (mobile `btn:has(i)` rule).
+
+**This is the app-wide canonical fix for issue #9373.** All existing tables with row-action
+dropdowns are covered automatically — no per-table PHP changes required.
+
+### Still required on each dropdown trigger: `data-bs-display="static"`
+
+Keep `data-bs-display="static"` on every dropdown toggle button inside a table. It
+stops Popper from miscalculating position in scrollable ancestors and is still
+required; it is just not *sufficient* without the SCSS rule above.
+
+```html
+<!-- ✅ CORRECT — trigger has data-bs-display="static" -->
+<button class="btn btn-sm btn-ghost-secondary"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-expanded="false">
+    <i class="ti ti-dots-vertical"></i>
+</button>
+```
+
+### Older per-wrapper approach (pre-2026-08-07, still valid for isolated cases)
+
+Before the `:has()` SCSS rule existed, the recommended workaround was to replace the
+`<div class="table-responsive">` wrapper with `<div style="overflow: visible;">` for
+tables that had row dropdowns. This still works and may appear in older pages. New pages
+should rely on the SCSS rule instead and keep the standard `table-responsive` class.
+
+Reference pages using the older inline-style pattern: `src/people/views/self-register.php`,
 `src/event/views/list-events.php`, `src/v2/templates/email/without.php`,
 `src/groups/views/group-view.php`, `src/event/views/types-list.php`.
 
-**Never** add `z-index` or `position: relative` to the `<td>` or `.dropdown` container — they do not fix clipping.
+**Never** add `z-index` or `position: relative` to the `<td>` or `.dropdown` — they do not fix clipping.
 
 ---
 
