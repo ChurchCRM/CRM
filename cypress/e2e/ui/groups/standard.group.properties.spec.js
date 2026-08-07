@@ -493,7 +493,7 @@ describe("UI: GroupPropsFormEditor Back button and Show in Profile (#9381)", () 
     });
 
     it("Show in Profile column header has an accessible tooltip icon", () => {
-        cy.get('[data-bs-toggle="tooltip"]')
+        cy.get('th [data-bs-toggle="tooltip"]')
             .should("have.attr", "title")
             .and("contain", "profile page");
     });

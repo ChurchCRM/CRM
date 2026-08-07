@@ -150,7 +150,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?= gettext('Show in Profile') ?>
                                 <i class="fa-solid fa-circle-question text-body-secondary ms-1"
                                    data-bs-toggle="tooltip"
-                                   title="<?= gettext('When checked, this property will be displayed alongside the group in the person\'s group list on their profile page.') ?>"
+                                   title="<?= htmlspecialchars(gettext('When checked, this property will be displayed alongside the group in the person\'s group list on their profile page.'), ENT_QUOTES, 'UTF-8') ?>"
                                 ></i>
                             </th>
                             <th class="no-export"><?= gettext('Actions') ?></th>
