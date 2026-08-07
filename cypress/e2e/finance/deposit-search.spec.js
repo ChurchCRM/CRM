@@ -132,7 +132,7 @@ describe("Deposit Search: row selection and export buttons", () => {
     });
   });
 
-
+  it("checking individual row enables export buttons", () => {
     cy.get("body").then(($body) => {
       const rowCount = $body.find("#depositsTable tbody tr .row-select").length;
       if (rowCount === 0) return;
