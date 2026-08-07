@@ -225,7 +225,7 @@ function initializeFamilyView() {
           window.history.replaceState(
             {},
             "",
-            window.location.pathname + (params.toString() ? "?" + params.toString() : "")
+            window.location.pathname + (params.toString() ? "?" + params.toString() : ""),
           );
           // Reload DataTable with the new server-side fyid
           pledgeTable.ajax.url(getPledgeAjaxUrl(fy)).load();
