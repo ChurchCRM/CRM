@@ -314,17 +314,19 @@ select {
 // The mobile rule above adds a second clip source: .card-body also gets
 // overflow-x: auto at <=575px.
 //
-// Fix: use :has(.dropdown-menu) to opt ONLY containers with row-action dropdowns
-// out of the overflow constraint — tables and cards without dropdowns retain
-// their horizontal scroll. :has() is already used in this file (mobile btn rule).
+// Fix: scope to :has(.dropdown-menu.show) so the overflow change only fires while
+// a dropdown is open. Closed containers keep their normal overflow (auto/scroll),
+// preserving horizontal scrollbars on wide tables. Bootstrap adds .show to the
+// .dropdown-menu element at the same time it shows the menu, so the CSS recalculates
+// in the same paint frame. :has() is already used in this file (mobile btn rule).
 // <!-- learned: 2026-08-07 -- fixes GitHub issue #9373 -->
-.table-responsive:has(.dropdown-menu) {
+.table-responsive:has(.dropdown-menu.show) {
   overflow: visible;
 }
 
 @media (max-width: 575.98px) {
-  .card-body:has(.dropdown-menu),
-  .card > .table-responsive:has(.dropdown-menu) {
+  .card-body:has(.dropdown-menu.show),
+  .card > .table-responsive:has(.dropdown-menu.show) {
     overflow: visible;
   }
 }

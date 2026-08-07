@@ -122,29 +122,29 @@ causing the same clipping for list-group or non-table content inside a card.
 `data-bs-display="static"` (disables Popper) does **not** fix this — confirmed by a
 codebase audit of three still-broken instances that already had it.
 
-### The fix — `:has(.dropdown-menu)` in `_tabler-bridge.scss` (2026-08-07, #9373)
+### The fix — `:has(.dropdown-menu.show)` in `_tabler-bridge.scss` (2026-08-07, #9373)
 
 A `:has()` CSS scoped rule in `src/skin/scss/_tabler-bridge.scss` (added at the end of
-the file, after the mobile block) opts **only** containers that actually hold a dropdown
-out of the overflow constraint. Tables and cards without row actions keep horizontal scroll.
+the file, after the mobile block) opts **only** containers that actively have an open
+dropdown out of the overflow constraint. When the dropdown is closed, the container keeps
+its normal `overflow-x: auto` (horizontal scroll). When the dropdown opens (Bootstrap adds
+`.show` to the menu element), the container's overflow changes to `visible` in the same
+paint frame, allowing the menu to escape the clip.
+
+Critical: use `.dropdown-menu.show`, NOT `.dropdown-menu`. Using `.dropdown-menu` (without
+`.show`) fires the rule for ALL containers that have a dropdown button, even when nothing
+is open — this removes horizontal scroll on mobile and causes `scrollWidth > clientWidth`
+failures in layout tests.
 
 ```scss
 // In _tabler-bridge.scss — these rules exist; do NOT add them again.
-.table-responsive:has(.dropdown-menu) { overflow: visible; }
+.table-responsive:has(.dropdown-menu.show) { overflow: visible; }
 
 @media (max-width: 575.98px) {
-  .card-body:has(.dropdown-menu),
-  .card > .table-responsive:has(.dropdown-menu) { overflow: visible; }
+  .card-body:has(.dropdown-menu.show),
+  .card > .table-responsive:has(.dropdown-menu.show) { overflow: visible; }
 }
 ```
-
-`:has()` is a live selector — it matches as soon as a `.dropdown-menu` element appears
-in the subtree (including DataTables rows rendered after page load). Browser support:
-Chrome 105+, Safari 15.4+, Firefox 121+ — all current. `:has()` is already used
-elsewhere in `_tabler-bridge.scss` (mobile `btn:has(i)` rule).
-
-**This is the app-wide canonical fix for issue #9373.** All existing tables with row-action
-dropdowns are covered automatically — no per-table PHP changes required.
 
 ### Still required on each dropdown trigger: `data-bs-display="static"`
 

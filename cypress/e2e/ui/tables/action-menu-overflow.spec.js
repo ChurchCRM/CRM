@@ -11,8 +11,10 @@
  * clipping dropdowns inside any card at that breakpoint.
  *
  * Fix (src/skin/scss/_tabler-bridge.scss):
- *   .table-responsive:has(.dropdown-menu) { overflow: visible; }
+ *   .table-responsive:has(.dropdown-menu.show) { overflow: visible; }
  *   and a mobile @media block for .card-body and .card>.table-responsive.
+ *   Scoped to .show so the fix only fires while the dropdown is open —
+ *   closed containers keep their normal overflow-x:auto horizontal scroll.
  *
  * GitHub: https://github.com/ChurchCRM/CRM/issues/9373
  *
@@ -29,29 +31,6 @@ const VIEWPORTS = [
   { label: "768px tablet",   width: 768,  height: 1024 },
   { label: "1920px desktop", width: 1920, height: 1080 },
 ];
-
-/**
- * Stub payload for the pledges-and-payments DataTable AJAX call so the table
- * always renders at least one row regardless of seed-data state.
- */
-const PLEDGE_STUB = {
-  data: [
-    {
-      FormattedFY:     "2025",
-      GroupKey:        "stub-9373-abc",
-      Amount:          50,
-      Nondeductible:   0,
-      Schedule:        "Once",
-      Method:          "Check",
-      Comment:         "overflow regression stub",
-      PledgeOrPayment: "Pledge",
-      Date:            "2025-01-15",
-      DateLastEdited:  "2025-01-15",
-      EditedBy:        "Admin",
-      Fund:            "General Fund",
-    },
-  ],
-};
 
 /**
  * Open a dropdown trigger and assert the resulting menu is fully visible.
@@ -118,25 +97,27 @@ describe("Scenario 1 — Family View member table dropdown", () => {
 
 // ── Scenario 2: Family View — Pledges and Payments DataTable row dropdown ─────
 // The pledges table (#pledge-payment-v2-table) sits in a .table-responsive that
-// is a direct child of .card (no intervening card-body). The intercept stubs the
-// AJAX response so the test runs without finance seed data.
+// is a direct child of .card (no intervening card-body). Uses the admin session
+// (which has finance.show.pledges=true) and real seed data. The default FY filter
+// hides all seed pledges (2018 data), so we click "All Time" first to expose rows.
 describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
-  beforeEach(() => {
-    // Register the intercept before session setup; it fires when the family
-    // page initializes the DataTable (after login completes).
-    // Regex matches path with optional jQuery cache-buster query param.
-    cy.intercept("GET", /\/api\/payments\/family\/[0-9]+\/list/, PLEDGE_STUB).as("pledgeList");
-    cy.setupStandardSession();
-  });
+  beforeEach(() => cy.setupAdminSession());
 
   VIEWPORTS.forEach(({ label, width, height }) => {
     it(`[${label}] dropdown escapes table-responsive overflow`, () => {
       cy.viewport(width, height);
       cy.visit("/people/family/1");
 
-      // Wait for DataTable AJAX and row render
-      cy.wait("@pledgeList", { timeout: 10000 });
-      cy.get("#pledge-payment-v2-table tbody tr", { timeout: 10000 })
+      // DataTable initialises after two async user-setting POSTs.
+      // Wait for the DataTables wrapper element that appears on init.
+      cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
+
+      // Seed pledges for family 1 are from 2018; the default FY filter hides them.
+      // Click "All Time" to remove the filter and reveal all rows.
+      cy.get('.pledge-fy-pill[data-fy=""]').click();
+
+      // Wait for actual data rows (not the DataTables "No data available" empty row).
+      cy.get("#pledge-payment-v2-table tbody tr:not(.dataTables_empty)", { timeout: 10000 })
         .should("have.length.at.least", 1);
 
       assertDropdownVisible(
@@ -150,7 +131,7 @@ describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
 // ── Scenario 3: Person View — Group Assignments list-group row dropdown ───────
 // The group assignments list is inside a .card-body (not a .table-responsive).
 // On phones (<=575px) the mobile .card-body{overflow-x:auto} rule is the clip
-// source; the fix adds a :has(.dropdown-menu) exception.
+// source; the fix adds a :has(.dropdown-menu.show) exception.
 // Uses API setup to ensure person 2 is a member of group 9 ("Church Board").
 describe("Scenario 3 — Person View group assignments dropdown", () => {
   const personId    = 2;
