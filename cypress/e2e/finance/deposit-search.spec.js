@@ -193,14 +193,53 @@ describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
         return;
       }
 
+      /**
+       * RFC 4180 quoted-field-aware row parser.
+       * Handles quoted fields that contain commas or escaped double-quotes
+       * (e.g. `"=HYPERLINK(evil),extra"` must be treated as ONE field, not two).
+       * A naive split(",") would split that example and silently miss the
+       * formula-injection trigger in the full field value.
+       */
+      function parseCsvRow(line) {
+        const fields = [];
+        let i = 0;
+        while (i <= line.length) {
+          if (line[i] === '"') {
+            // Quoted field — scan to the closing quote, collapsing "" → "
+            let field = '';
+            i++;
+            while (i < line.length) {
+              if (line[i] === '"' && line[i + 1] === '"') {
+                field += '"';
+                i += 2;
+              } else if (line[i] === '"') {
+                i++;
+                break;
+              } else {
+                field += line[i++];
+              }
+            }
+            fields.push(field);
+            if (line[i] === ',') i++;
+          } else {
+            // Unquoted field — everything up to the next comma (or EOL)
+            const end = line.indexOf(',', i);
+            if (end === -1) {
+              fields.push(line.slice(i));
+              break;
+            }
+            fields.push(line.slice(i, end));
+            i = end + 1;
+          }
+        }
+        return fields;
+      }
+
       const lines = res.body.trim().split(/\r?\n/);
       // Check data rows (skip header row at index 0)
       lines.slice(1).forEach((line, rowIdx) => {
-        // Split naively on comma; enough for checking leading chars
-        const fields = line.split(",");
-        fields.forEach((rawField, colIdx) => {
-          // Strip surrounding double-quotes if present (RFC 4180 quoting)
-          const value = rawField.replace(/^"(.+)"$/, "$1").replace(/^"(.*)"$/, "$1");
+        const fields = parseCsvRow(line);
+        fields.forEach((value, colIdx) => {
           // CsvExporter prepends \t to formula triggers, so an unescaped
           // trigger at position 0 would be a regression.
           expect(FORMULA_TRIGGERS.test(value)).to.eq(
