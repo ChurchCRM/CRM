@@ -8,6 +8,10 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
+// Pre-escape $sRootPath once; it is a server-controlled value but project
+// convention requires escapeAttribute on every echoed href attribute.
+$sRootPathEsc = InputUtils::escapeAttribute($sRootPath);
+
 /**
  * Variables injected by /finance/routes/fund.php:
  *
@@ -51,7 +55,7 @@ $statusClasses = [
             </div>
         </div>
         <div class="col-md-6 text-end">
-            <a href="<?= $sRootPath ?>/finance/pledge/dashboard?fyid=<?= (int) $selectedFyid ?>"
+            <a href="<?= $sRootPathEsc ?>/finance/pledge/dashboard?fyid=<?= (int) $selectedFyid ?>"
                class="btn btn-secondary">
                 <i class="fa-solid fa-arrow-left me-1"></i>
                 <?= gettext('Back to Pledge Dashboard') ?>
@@ -187,7 +191,7 @@ $statusClasses = [
                             ?>
                             <tr>
                                 <td class="fw-bold">
-                                    <a href="<?= $sRootPath ?>/people/family/<?= (int) $contributor['family_id'] ?>">
+                                    <a href="<?= $sRootPathEsc ?>/people/family/<?= (int) $contributor['family_id'] ?>">
                                         <?= InputUtils::escapeHTML($contributor['family_name']) ?>
                                     </a>
                                 </td>
@@ -222,7 +226,7 @@ $statusClasses = [
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item contributor-view-link"
-                                               href="<?= $sRootPath ?>/finance/pledge/<?= urlencode($groupKey) ?>">
+                                               href="<?= $sRootPathEsc ?>/finance/pledge/<?= urlencode($groupKey) ?>">
                                                 <i class="ti ti-eye me-2"></i><?= $contributor['status'] === 'payment-only' ? gettext('View Payment') : gettext('View Pledge') ?>
                                             </a>
                                         </div>

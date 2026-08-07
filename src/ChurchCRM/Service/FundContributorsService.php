@@ -160,13 +160,13 @@ class FundContributorsService
         }
 
         // Compute derived columns and status, then flatten to an indexed array
-        $totalPledged    = 0.0;
-        $totalPaid       = 0.0;
-        $totalRemaining  = 0.0;
-        // Only count payments against pledged amounts for the aggregate %
-        // (payment-only families have no pledge, so including their payments
-        // would make the ratio exceed 100%).
-        $pledgeOnlyPaid  = 0.0;
+        $totalPledged         = 0.0;
+        $totalPaid            = 0.0;
+        $totalRemaining       = 0.0;
+        // Accumulate each family's contribution capped at their pledge so that
+        // overpayment in one family never masks underpayment in another and
+        // the aggregate % stays internally consistent with $totalRemaining.
+        $pledgeDeficitCovered = 0.0;
 
         foreach ($contributors as &$row) {
             $pledged = $row['pledged'];
@@ -175,10 +175,8 @@ class FundContributorsService
             if ($pledged <= 0.0) {
                 // Payment-only contributor — no pledge to track against
                 $remaining = null;
-                // Cap at 100% for display consistency; use $totalPaid in the
-                // aggregate fallback (see below) — $pledgeOnlyPaid stays 0 here
-                $percent = 100.0;
-                $status  = 'payment-only';
+                $percent   = 100.0;
+                $status    = 'payment-only';
             } else {
                 // Cap remaining at 0; overpayment is communicated by 'complete' status
                 $remaining = max(0.0, $pledged - $paid);
@@ -193,7 +191,9 @@ class FundContributorsService
                 } else {
                     $status = 'critical';
                 }
-                $pledgeOnlyPaid += $paid;
+                // Each family contributes at most their pledged amount to the
+                // aggregate coverage so overpayers don't hide underpayers.
+                $pledgeDeficitCovered += min($paid, $pledged);
             }
 
             $row['remaining'] = $remaining;
@@ -212,12 +212,12 @@ class FundContributorsService
         });
 
         $contributorCount = count($contributors);
-        // $pledgeOnlyPaid is 0 when every contributor is payment-only, so fall
-        // back to $totalPaid (which includes those amounts) for the display label.
-        // Cap at 100% — collective overpayment by pledging families can push the
-        // raw ratio above 1.0, which would be misleading on the stat card.
+        // $pledgeDeficitCovered is the sum of min(paid, pledged) across pledging
+        // families, so it never exceeds $totalPledged and the ratio stays ≤1.0.
+        // Fall back to $totalPaid when there are no pledges at all so the stat
+        // card shows 100% for payment-only funds rather than 0%.
         $percentPaid = $totalPledged > 0
-            ? min(100.0, ($pledgeOnlyPaid / $totalPledged) * 100.0)
+            ? ($pledgeDeficitCovered / $totalPledged) * 100.0
             : ($totalPaid > 0 ? 100.0 : 0.0);
 
         $this->logger->info('FundContributorsService: loaded contributors', [
