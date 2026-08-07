@@ -202,12 +202,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   $countrySelect.on("change", function () {
     updateStateField(stateContainer, "sChurchState", "sChurchState", this.value, "").always(() => {
-      // Advance both sides of the comparison together so a A→B→A round-trip
-      // does not hide the stale-coordinates banner. Without syncing country
-      // here, switching back to the original country sets sChurchState back
-      // to "" while snapshot.sChurchCountry still holds the original code,
-      // making addressChanged evaluate to false even though state was cleared.
-      initialAddressSnapshot.sChurchCountry = document.getElementById("sChurchCountry")?.value || "";
+      // Sync only sChurchState, not sChurchCountry. The country mismatch between
+      // the snapshot (geocoded country) and the new value keeps the stale-
+      // coordinates banner alive for any A→B switch. On A→B→A the banner also
+      // stays: country matches again but sChurchState is now "" vs the
+      // original geocoded state, so addressChanged remains true until the
+      // user re-geocodes (which calls resetStaleCoordinatesSnapshot).
       initialAddressSnapshot.sChurchState = document.getElementById("sChurchState")?.value || "";
       updateStaleCoordinatesState();
     });
@@ -397,8 +397,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const originalHtml = generateBtn.innerHTML;
       generateBtn.disabled = true;
-      generateBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1"></i> ${t("Generating...")}`;
-
+      // Use DOM methods (same pattern as generateHelp) so i18next output is
+      // never parsed as HTML.
+      const spinner = document.createElement("i");
+      spinner.className = "fa-solid fa-spinner fa-spin me-1";
+      generateBtn.textContent = "";
+      generateBtn.appendChild(spinner);
+      generateBtn.appendChild(document.createTextNode(` ${t("Generating...")}`));
       fetch(`${window.CRM.root}/api/geocoder/address`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -419,7 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const latEl = document.getElementById("iChurchLatitude");
           const lngEl = document.getElementById("iChurchLongitude");
-          if (!latEl || !lngEl) return; // elements unexpectedly missing — don't show a misleading error
+          if (!latEl || !lngEl) throw new Error("Coordinate inputs not found"); // unexpected — let .catch() handle it
           latEl.value = data.Latitude;
           lngEl.value = data.Longitude;
           latEl.dispatchEvent(new Event("input", { bubbles: true }));
