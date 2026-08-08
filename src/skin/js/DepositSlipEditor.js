@@ -14,7 +14,9 @@ function initPaymentTable() {
           return '<em class="text-body-secondary">' + i18next.t("Anonymous") + "</em>";
         }
         // Extract just the family name (before the colon) - FamilyString includes address
-        var familyName = data.split(":")[0].trim();
+        // Guard against 0-HoH families which produce no colon in the string
+        var colonIdx = data.indexOf(":");
+        var familyName = colonIdx !== -1 ? data.substring(0, colonIdx).trim() : data.trim();
         return familyName;
       },
     },
