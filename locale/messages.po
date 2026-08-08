@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 21:02+0000\n"
+"POT-Creation-Date: 2026-08-08 23:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,6 +160,10 @@ msgstr ""
 
 #, php-format
 msgid "%s's Account"
+msgstr ""
+
+#, php-format
+msgid "%s: Please verify your family's information"
 msgstr ""
 
 msgid "(No assigned family)"
@@ -830,6 +834,9 @@ msgstr ""
 msgid "All deposits within date range"
 msgstr ""
 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr ""
+
 msgid "All events and attendance records"
 msgstr ""
 
@@ -1005,6 +1012,9 @@ msgid "An option with that name already exists"
 msgstr ""
 
 msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr ""
+
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
 msgstr ""
 
 msgid "An unexpected error occurred."
@@ -3889,6 +3899,9 @@ msgstr ""
 msgid "Email Debug"
 msgstr ""
 
+msgid "Email Error"
+msgstr ""
+
 msgid "Email Export"
 msgstr ""
 
@@ -3934,11 +3947,20 @@ msgstr ""
 msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
 msgstr ""
 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr ""
+
 msgid "Email links in group and people views"
 msgstr ""
 
 msgid "Email lists are synced with Mailchimp."
 msgstr ""
+
+#, php-format
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Email/Username"
 msgstr ""
@@ -4675,6 +4697,9 @@ msgid "Failed to load calendar data. Please try again."
 msgstr ""
 
 msgid "Failed to load cart status."
+msgstr ""
+
+msgid "Failed to load email preview"
 msgstr ""
 
 msgid "Failed to load event editor. Please refresh and try again."
@@ -7027,6 +7052,9 @@ msgstr ""
 msgid "Manage Event Types"
 msgstr ""
 
+msgid "Manage Events"
+msgstr ""
+
 msgid "Manage Fundraisers"
 msgstr ""
 
@@ -7888,6 +7916,9 @@ msgstr ""
 msgid "No events linked to this class."
 msgstr ""
 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr ""
+
 msgid "No file uploaded"
 msgstr ""
 
@@ -8400,11 +8431,13 @@ msgid ""
 "2 = Open in current browser window"
 msgstr ""
 
-msgid "PDF successfully emailed to family members."
-msgstr ""
-
 #, php-format
-msgid "PDFs successfully emailed to %s families."
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "PDF successfully emailed to family members."
 msgstr ""
 
 msgid "PHP & Server Requirements"
@@ -8480,6 +8513,9 @@ msgid "Parents/Guardians"
 msgstr ""
 
 msgid "Part"
+msgstr ""
+
+msgid "Partial Send"
 msgstr ""
 
 msgid "Passed"
@@ -8848,9 +8884,6 @@ msgid "Please add at least one family member."
 msgstr ""
 
 msgid "Please check everything looks right before submitting."
-msgstr ""
-
-msgid "Please check logs for more information"
 msgstr ""
 
 msgid "Please check the backup file and try again."
@@ -9687,6 +9720,9 @@ msgstr ""
 msgid "Restore your church database from a backup file"
 msgstr ""
 
+msgid "Retry"
+msgstr ""
+
 msgid "Retry Download"
 msgstr ""
 
@@ -10240,6 +10276,12 @@ msgstr ""
 msgid "Send Again"
 msgstr ""
 
+msgid "Send Emails"
+msgstr ""
+
+msgid "Send Family Verification Emails"
+msgstr ""
+
 msgid "Send Newsletter"
 msgstr ""
 
@@ -10266,6 +10308,10 @@ msgstr ""
 
 #. Context: countries
 msgid "Senegal (Sénégal)"
+msgstr ""
+
+#, php-format
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
 msgstr ""
 
 msgid "Sep"
@@ -11820,6 +11866,9 @@ msgstr ""
 msgid "Unexpected Person Id"
 msgstr ""
 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr ""
+
 msgid "Unfocus"
 msgstr ""
 
@@ -12995,6 +13044,9 @@ msgid "Zip code is required"
 msgstr ""
 
 msgid "ZipArchive extension required for upgrades"
+msgstr ""
+
+msgid "[Family Name]"
 msgstr ""
 
 msgid "active"
