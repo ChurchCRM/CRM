@@ -86,7 +86,7 @@ function initPaymentTable() {
         var editUrl =
           window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
         var detailsUrl = "PledgeDetails.php?PledgeID=" + full.Id;
-        var familyUrl = window.CRM.root + "/people/family/" + full.FamilyID;
+        var familyUrl = window.CRM.root + "/people/family/" + full.FamId;
 
         var html =
           '<div class="dropdown">' +
@@ -103,7 +103,7 @@ function initPaymentTable() {
           (isDepositClosed ? i18next.t("View") : i18next.t("Edit")) +
           "</a>";
 
-        if (full.FamilyID) {
+        if (full.FamId) {
           html +=
             '<a class="dropdown-item" href="' +
             familyUrl +
