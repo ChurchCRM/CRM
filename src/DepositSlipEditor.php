@@ -276,15 +276,13 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
     <?php
     if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()) {
-        if ($thisDeposit->getType() == 'Bank') {
-            ?>
+        ?>
     <div class="card-footer">
       <button type="button" id="deleteSelectedRows" class="btn btn-sm btn-danger" disabled>
         <i class="fa-solid fa-trash-can"></i><?php echo gettext('Delete Selected'); ?>
       </button>
     </div>
-            <?php
-        }
+        <?php
     }
     ?>
   </div>
