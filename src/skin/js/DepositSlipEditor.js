@@ -481,7 +481,9 @@ function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
     // Use ApexCharts default color palette (distributed: true assigns one per bar)
     xaxis: {
       categories: fundLabels,
-      tickFormatter: (value) => window.CRM.currency.format(value),
+      labels: {
+        formatter: (value) => window.CRM.currency.format(value),
+      },
     },
     yaxis: {
       tickFormatter: (value) => value,
