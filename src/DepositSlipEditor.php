@@ -260,7 +260,7 @@ require_once __DIR__ . '/Include/Header.php';
       <span class="badge bg-blue-lt text-blue" id="payment-count">0</span>
     </h3>
     <div class="d-flex gap-2">
-      <?php if ($iDepositSlipID && $thisDeposit->getType()): ?>
+      <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()): ?>
         <button type="button" id="deleteSelectedRows" class="btn btn-sm btn-danger" disabled>
           <i class="fa-solid fa-trash-can"></i><?php echo gettext('Delete Selected'); ?>
         </button>
