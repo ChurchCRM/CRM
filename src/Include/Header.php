@@ -238,7 +238,8 @@ $MenuFirst = 1;
       // can render localised money via window.CRM.currency.format(amount [, decimals]).
       window.CRM.currency.format = function (amount, decimals) {
           if (decimals === undefined) decimals = 2;
-          var val = parseFloat(amount || 0);
+          var val = parseFloat(amount);
+          if (isNaN(val)) return '';          // match PHP empty-string fallback for non-numeric input
           var parts = val.toFixed(decimals).split('.');
           parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousand);
           var formatted = parts[0] + (decimals > 0 ? this.decimal + parts[1] : '');

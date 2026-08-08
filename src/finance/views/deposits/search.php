@@ -218,7 +218,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <td><?= $depositDate ?></td>
                 <td><?= $depositType ?></td>
                 <td><?= $depositComm ?></td>
-                <td><?= $totalAmount ?></td>
+                <td data-order="<?= htmlspecialchars((string) ($deposit['totalAmount'] ?? 0), ENT_QUOTES, 'UTF-8') ?>"><?= $totalAmount ?></td>
                 <td>
                   <?php if ($isClosed) : ?>
                     <span class="badge bg-secondary"><?= gettext('Closed') ?></span>
