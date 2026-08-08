@@ -460,6 +460,25 @@ $btn.trigger("click");
 
 After clicking Cancel on a bootbox dialog, **do NOT assert that the dialog is gone** (`should("not.be.visible")` or `should("not.exist")`). Bootstrap 5 modal hide is asynchronous — the CSS fade-out keeps `.show` on the backdrop during the transition, causing these assertions to fail intermittently or permanently.
 
+### `should('not.have.class', 'show')` is equally unreliable for BS5 modals <!-- learned: 2026-08-07 -->
+
+BS5 removes the `show` class from the modal element only **after** the fade animation completes (~300 ms). In headless CI this transition does not always complete within Cypress's default command timeout, causing flaky `should('not.have.class', 'show')` failures. The same timing issue that makes `should('not.be.visible')` unreliable applies here too.
+
+If you need the modal to close before the next action (e.g. to re-open it), use `cy.visit()` to do a full page reload instead of waiting for the animation:
+
+```javascript
+// ✅ CORRECT — reload the page to get a clean modal state
+cy.visit("people/verify"); // re-navigates to the same page; modal resets
+cy.get("#openModalBtn").click(); // re-open cleanly
+
+// ❌ WRONG — times out in CI headless
+cy.get('[data-bs-dismiss="modal"]').click();
+cy.get("#myModal").should("not.have.class", "show"); // flaky
+cy.get("#openModalBtn").click();
+```
+
+When the test goal is only to verify an action was NOT taken (e.g. Cancel didn't send), check the side-effect alias immediately after clicking Cancel — no modal-close assertion needed:
+
 Instead, assert the **side effect** (the action was not taken):
 
 ```javascript
@@ -627,6 +646,35 @@ cy.intercept("GET", "/api/people/properties/definition/*").as("getDef");
 **Rule:** Always prefix `cy.intercept()` URL patterns with `**/` when matching API paths. This applies to ALL HTTP methods (GET, POST, PUT, DELETE, PATCH).
 
 **Note:** This does NOT apply to `cy.visit()` or `cy.request()` — those use `baseUrl` from config and handle the prefix automatically. Only `cy.intercept()` needs the `**` glob because it matches against the full request URL.
+
+### Intercept stubs are NOT cleared by `cy.visit()` within a test — use `times: 1` <!-- learned: 2026-08-07 -->
+
+`cy.intercept()` stubs are cleared between `it()` blocks, NOT within them. Calling `cy.visit()` mid-test does **not** reset intercepts. If a failure stub (e.g. 500) is set up and then you re-open a modal on a reloaded page, Cypress processes interceptors LIFO: a later `cy.intercept()` with no explicit response falls through to the still-active failure stub, causing the second request to also fail.
+
+**Fix:** Use `times: 1` in the route matcher and always give the "success" intercept an **explicit response** so it never falls through:
+
+```javascript
+// ❌ WRONG — @previewFail stays active for the entire test;
+//   the second open after cy.visit() falls through to it and also returns 500.
+cy.intercept("GET", "**/api/.../preview", { statusCode: 500, body: {} }).as("previewFail");
+// ... test actions ...
+cy.intercept("GET", "**/api/.../preview").as("previewOk"); // no response → falls through to @previewFail!
+cy.visit("page");
+
+// ✅ CORRECT — times:1 expires @previewFail after one match;
+//   explicit 200 on @previewOk means it never falls through.
+cy.intercept(
+    { method: "GET", url: "**/api/.../preview", times: 1 },
+    { statusCode: 500, body: { error: true } }
+).as("previewFail");
+// ... test actions ...
+cy.intercept(
+    "GET",
+    "**/api/.../preview",
+    { statusCode: 200, body: { recipientCount: 1, recipients: [], familiesWithoutEmail: [], templatePreview: {} } }
+).as("previewOk");
+cy.visit("page");
+```
 
 ## Editable Table Cells: Names Render in Input Values <!-- learned: 2026-04-12 -->
 
