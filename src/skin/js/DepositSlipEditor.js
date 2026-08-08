@@ -13,8 +13,9 @@ function initPaymentTable() {
         var familyName = data && data.trim() ? data : '<em class="text-muted">' + i18next.t("Anonymous") + "</em>";
         var icon = isDepositClosed ? '<i class="fa-solid fa-magnifying-glass"></i>' : '<i class="fa-solid fa-pen"></i>';
         var linkBack = encodeURIComponent("/DepositSlipEditor.php?DepositSlipID=" + depositSlipID);
-        var editUrl =
-          window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
+        var editUrl = isDepositClosed
+          ? window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey)
+          : window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
         return (
           '<a class="btn btn-sm btn-outline-primary" href="' +
           editUrl +

@@ -244,7 +244,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         try {
             $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to encode payment response'), [], 500, $e, $request);
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }
         return SlimUtils::renderJSON($response, [
             'groupKey' => $paymentObj['GroupKey'] ?? '',
@@ -319,7 +319,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         try {
             $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to encode payment response'), [], 500, $e, $request);
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }
 
         return SlimUtils::renderJSON($response, [

@@ -211,6 +211,17 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         $familyId = $pledge['familyId'];
         $familyName = $pledge['familyName'];
         $depositId = $pledge['depositId'] ?? 0;
+
+        // Defence-in-depth: if this payment belongs to a closed deposit, editing
+        // is not permitted — redirect to the read-only detail view.
+        if ($depositId > 0) {
+            $deposit = DepositQuery::create()->findOneById($depositId);
+            if ($deposit !== null && $deposit->getClosed()) {
+                RedirectUtils::redirect('/finance/pledge/' . rawurlencode($groupKey));
+                return $response;
+            }
+        }
+
         $linkBack = RedirectUtils::getLinkBackFromRequest('');
 
         // Active donation funds
