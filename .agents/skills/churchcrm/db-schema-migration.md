@@ -52,6 +52,37 @@ When a new release ships with a DB migration SQL file, use a **two-block pattern
 
 Name SQL files after the target version: `7.3.1-<description>.sql`. Use full paths: `/mysql/upgrade/7.3.1-cleanup.sql`.
 
+### When to Add to "current" vs Create a New Version Block <!-- learned: 2026-08-08 -->
+
+**`current` block rules:**
+
+- `current` represents the **ongoing development version** currently in development
+- Multiple cleanup/fix scripts in the same release go into the same `scripts` array — **do not bump the version**, keep all scripts targeting the same `dbVersion`:
+  ```json
+  "current": {
+    "versions": ["7.5.1"],
+    "scripts": [
+      "/mysql/upgrade/7.6.0-remove-orphaned-query-parameters.sql",
+      "/mysql/upgrade/7.6.0-remove-legacy-custom-search-query.sql"
+    ],
+    "dbVersion": "7.6.0"
+  }
+  ```
+- **Add to the existing `current` block** when:
+  - You're adding a cleanup/fix script to the version currently in development
+  - The script targets the same `dbVersion` the `current` block is building toward
+  - Keep `dbVersion` unchanged — all scripts for a release target the same version
+  - Name the script file to match that version (e.g., `7.6.0-description.sql`)
+
+- **Create a new `pre-X.Y.Z` block** only when:
+  - Shipping a new release — moving `current` to `pre-X.Y.Z` and creating a new `current` for the next version
+  - Do NOT create intermediate blocks — the upgrade path is: old version → `pre-X.Y.Z` → new `current`
+
+**Example flow:**
+1. Developing 7.6.0: add multiple cleanup scripts to `current`, all target `dbVersion: 7.6.0`
+2. Release 7.6.0 ships → rename old `current` to `pre-7.5.1` with `dbVersion: 7.6.0`, create new `current` for 7.7.0
+3. Developing 7.7.0: add cleanup scripts to the new `current`, all target `dbVersion: 7.7.0`
+
 ### Removing a Dead Table: Full Checklist <!-- learned: 2026-04-27 -->
 
 When removing an unused DB table, touch **all four locations** — missing any leaves dead schema or broken installs:
