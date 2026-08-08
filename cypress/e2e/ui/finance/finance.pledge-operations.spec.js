@@ -35,7 +35,7 @@ describe("Pledge Operations", () => {
             cy.on("window:confirm", () => true);
             cy.get("#deletePledgeBtn").click();
 
-            cy.url().should("contain", "/finance/");
+            cy.url().should("not.contain", "/edit");
 
             cy.request({
                 method: "GET",

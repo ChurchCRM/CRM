@@ -217,8 +217,9 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         if ($depositId > 0) {
             $deposit = DepositQuery::create()->findOneById($depositId);
             if ($deposit !== null && $deposit->getClosed()) {
-                RedirectUtils::redirect('/finance/pledge/' . rawurlencode($groupKey));
-                return $response;
+                return $response
+                    ->withHeader('Location', SystemURLs::getRootPath() . '/finance/pledge/' . rawurlencode($groupKey))
+                    ->withStatus(302);
             }
         }
 
