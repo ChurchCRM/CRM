@@ -49,7 +49,8 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         cy.intercept("POST", "**/api/payments/pledges").as("submitPayment");
 
         // Create a new deposit
-        cy.visit("FindDepositSlip.php");
+        cy.visit("/finance/deposit/search");
+        cy.get("[data-bs-target='#newDepositModal']").click();
         cy.contains("Add New Deposit");
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
@@ -86,15 +87,16 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         const uniqueSeed = Date.now().toString();
         const depositComment = "Test Deposit Check " + uniqueSeed;
         const paymentAmount = (Math.floor(Math.random() * 900) + 100).toString(); // Random amount 100-999
-        // Use last 8 digits (millisecond portion) — first 8 are year prefix and identical
-        // across tests, causing duplicate-check-number failures for the same FamilyID.
-        const checkNumber = uniqueSeed.slice(-8);
+        // Use a random 8-digit numeric value to avoid duplicate-check-number failures
+        // when two parallel CI runs occur within the same second.
+        const checkNumber = (Math.floor(Math.random() * 90000000) + 10000000).toString();
 
         // Register intercept before any navigation that could trigger the request
         cy.intercept("POST", "**/api/payments/pledges").as("submitCheckPayment");
 
         // Create a new deposit
-        cy.visit("FindDepositSlip.php");
+        cy.visit("/finance/deposit/search");
+        cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
         cy.location("pathname").should("include", "DepositSlipEditor.php");
@@ -129,9 +131,9 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
     it("Add payment with multiple funds - validates FundSplit object handling", () => {
         const uniqueSeed = Date.now().toString();
         const depositComment = "Test Deposit Split " + uniqueSeed;
-        // Use last 8 digits (millisecond portion) — first 8 are year prefix and identical
-        // across tests, causing duplicate-check-number failures for the same FamilyID.
-        const checkNumber = uniqueSeed.slice(-8);
+        // Use a random 8-digit numeric value to avoid duplicate-check-number failures
+        // when two parallel CI runs occur within the same second.
+        const checkNumber = (Math.floor(Math.random() * 90000000) + 10000000).toString();
         const fund1Amount = (Math.floor(Math.random() * 400) + 50).toString(); // Random 50-449
         const fund2Amount = (Math.floor(Math.random() * 400) + 50).toString(); // Random 50-449
         const totalAmount = (parseInt(fund1Amount) + parseInt(fund2Amount)).toString();
@@ -140,7 +142,8 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         cy.intercept("POST", "**/api/payments/pledges").as("submitSplitPayment");
 
         // Create a new deposit
-        cy.visit("FindDepositSlip.php");
+        cy.visit("/finance/deposit/search");
+        cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
         cy.location("pathname").should("include", "DepositSlipEditor.php");
