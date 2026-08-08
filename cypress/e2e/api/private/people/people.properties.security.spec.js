@@ -86,8 +86,17 @@ describe("People Properties API — EditRecords authorization gate (GHSA-4wmp-3v
     });
 
     context("Person record property routes: MenuOptions + EditRecords user succeeds", () => {
-        // POST assigns the property; DELETE removes it — run in this order.
-        // Seed has no pre-existing record2property_r2p rows so state starts clean.
+        before(() => {
+            // Ensure the assignment row exists before DELETE runs.
+            // addPropertyToPerson returns 200 whether the row is new or already present.
+            cy.makePrivateUserAPICall(
+                "POST",
+                `/api/people/properties/person/${PERSON_ID}/${PERSON_PROPERTY_ID}`,
+                {},
+                200,
+            );
+        });
+
         it("GET /api/people/properties/person/:id -> 200", () => {
             cy.makePrivateUserAPICall(
                 "GET",
@@ -154,7 +163,16 @@ describe("People Properties API — EditRecords authorization gate (GHSA-4wmp-3v
     });
 
     context("Family record property routes: MenuOptions + EditRecords user succeeds", () => {
-        // POST assigns the property; DELETE removes it — run in this order.
+        before(() => {
+            // Ensure the assignment row exists before DELETE runs.
+            cy.makePrivateUserAPICall(
+                "POST",
+                `/api/people/properties/family/${FAMILY_ID}/${FAMILY_PROPERTY_ID}`,
+                {},
+                200,
+            );
+        });
+
         it("GET /api/people/properties/family/:id -> 200", () => {
             cy.makePrivateUserAPICall(
                 "GET",
