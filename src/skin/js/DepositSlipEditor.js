@@ -87,40 +87,41 @@ function initPaymentTable() {
 
         var html =
           '<div class="dropdown">' +
-          '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
+          '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
           '<i class="ti ti-dots-vertical"></i>' +
           "</button>" +
-          '<ul class="dropdown-menu dropdown-menu-end">' +
-          '<li><a class="dropdown-item" href="' +
+          '<div class="dropdown-menu dropdown-menu-end">' +
+          '<a class="dropdown-item" href="' +
           editUrl +
           '">' +
           '<i class="ti ti-' +
           (isDepositClosed ? "eye" : "pencil") +
           ' me-2"></i>' +
           (isDepositClosed ? i18next.t("View") : i18next.t("Edit")) +
-          "</a></li>";
+          "</a>";
 
         if (full.FamilyID) {
           html +=
-            '<li><a class="dropdown-item" href="' +
+            '<a class="dropdown-item" href="' +
             familyUrl +
             '">' +
             '<i class="ti ti-users me-2"></i>' +
             i18next.t("View Family") +
-            "</a></li>";
+            "</a>";
         }
 
         if (depositType === "CreditCard") {
           html +=
-            '<li><a class="dropdown-item" href="' +
+            '<div class="dropdown-divider"></div>' +
+            '<a class="dropdown-item" href="' +
             detailsUrl +
             '">' +
             '<i class="ti ti-info-circle me-2"></i>' +
             i18next.t("Details") +
-            "</a></li>";
+            "</a>";
         }
 
-        html += "</ul></div>";
+        html += "</div></div>";
         return html;
       },
     },
