@@ -85,7 +85,8 @@
     "versions": ["7.5.1"],
     "scripts": [
       "/mysql/upgrade/7.6.0-remove-orphaned-query-parameters.sql",
-      "/mysql/upgrade/7.6.0-remove-legacy-custom-search-query.sql"
+      "/mysql/upgrade/7.6.0-remove-legacy-custom-search-query.sql",
+      "/mysql/upgrade/7.6.0-2fa-grace-period.sql"
     ],
     "dbVersion": "7.6.0"
   }
