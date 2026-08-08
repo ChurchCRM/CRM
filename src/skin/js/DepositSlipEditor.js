@@ -10,37 +10,30 @@ function initPaymentTable() {
       title: i18next.t("Family"),
       data: "FamilyString",
       render: (data, type, full, meta) => {
-        var familyName = data && data.trim() ? data : '<em class="text-muted">' + i18next.t("Anonymous") + "</em>";
-        var icon = isDepositClosed ? '<i class="fa-solid fa-magnifying-glass"></i>' : '<i class="fa-solid fa-pen"></i>';
-        var linkBack = encodeURIComponent("/DepositSlipEditor.php?DepositSlipID=" + depositSlipID);
-        var editUrl =
-          window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
-        return (
-          '<a class="btn btn-sm btn-outline-primary" href="' +
-          editUrl +
-          '" title="' +
-          (isDepositClosed ? i18next.t("View") : i18next.t("Edit")) +
-          '">' +
-          icon +
-          "</a>&nbsp;<span>" +
-          familyName +
-          "</span>"
-        );
+        if (!data || !data.trim()) {
+          return '<em class="text-body-secondary">' + i18next.t("Anonymous") + "</em>";
+        }
+        // Extract just the family name (before the colon) - FamilyString includes address
+        // Guard against 0-HoH families which produce no colon in the string
+        var colonIdx = data.indexOf(":");
+        var familyName = colonIdx !== -1 ? data.substring(0, colonIdx).trim() : data.trim();
+        return familyName;
       },
     },
     {
-      width: "8%",
+      width: "10%",
       title: i18next.t("Check Number"),
       data: "CheckNo",
-      render: (data, type, full, meta) => (data ? "<code>" + data + "</code>" : '<em class="text-muted">-</em>'),
+      render: (data, type, full, meta) =>
+        data ? "<code>" + data + "</code>" : '<em class="text-body-secondary">-</em>',
     },
     {
-      width: "30%",
+      width: "25%",
       title: i18next.t("Fund"),
       data: "FundName",
       render: (data, type, full, meta) => {
         if (!data) {
-          return '<em class="text-muted">-</em>';
+          return '<em class="text-body-secondary">-</em>';
         }
 
         // For sorting and filtering, return plain text
@@ -48,12 +41,10 @@ function initPaymentTable() {
           return data;
         }
 
-        // For display, split multiple funds and show as individual badges
+        // For display, split multiple funds and show as individual badges using Tabler style
         var funds = data.split(", ");
-        var badges = funds.map(
-          (fund) => '<span class="badge badge-info text-white mr-1 mb-1">' + fund.trim() + "</span>",
-        );
-        return '<div class="d-flex flex-wrap">' + badges.join("") + "</div>";
+        var badges = funds.map((fund) => '<span class="badge bg-info-lt text-info">' + fund.trim() + "</span>");
+        return '<div class="d-flex flex-wrap gap-1">' + badges.join("") + "</div>";
       },
     },
     {
@@ -68,38 +59,78 @@ function initPaymentTable() {
       },
     },
     {
-      width: "10%",
+      width: "12%",
       title: i18next.t("Method"),
       data: "Method",
       render: (data, type, full, meta) => {
-        var badgeClass = "badge-secondary";
+        var badgeClass = "bg-secondary-lt text-secondary";
         var icon = "";
         if (data === "CHECK") {
-          badgeClass = "badge-primary";
-          icon = '<i class="fa-solid fa-check-double"></i> ';
+          badgeClass = "bg-primary-lt text-primary";
+          icon = '<i class="ti ti-check me-1"></i>';
         } else if (data === "CASH") {
-          badgeClass = "badge-success";
-          icon = '<i class="fa-solid fa-money-bill"></i> ';
+          badgeClass = "bg-success-lt text-success";
+          icon = '<i class="ti ti-coins me-1"></i>';
         } else if (data === "CREDITCARD") {
-          badgeClass = "badge-warning";
-          icon = '<i class="fa-solid fa-credit-card"></i> ';
+          badgeClass = "bg-warning-lt text-warning";
+          icon = '<i class="ti ti-credit-card me-1"></i>';
         }
         return '<span class="badge ' + badgeClass + '">' + icon + data + "</span>";
       },
     },
-  ];
+    {
+      width: "6%",
+      title: i18next.t("Actions"),
+      orderable: false,
+      data: null,
+      render: (data, type, full, meta) => {
+        var linkBack = encodeURIComponent("/DepositSlipEditor.php?DepositSlipID=" + depositSlipID);
+        var editUrl =
+          window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
+        var detailsUrl = "PledgeDetails.php?PledgeID=" + full.Id;
+        var familyUrl = window.CRM.root + "/people/family/" + full.FamId;
 
-  if (depositType === "CreditCard") {
-    colDef.push({
-      width: "auto",
-      title: i18next.t("Details"),
-      data: "Id",
-      render: (data, type, full, meta) =>
-        '<a class="btn btn-sm btn-info" href="PledgeDetails.php?PledgeID=' +
-        data +
-        '"><i class="fa-solid fa-circle-info"></i>Details</a>',
-    });
-  }
+        var html =
+          '<div class="dropdown">' +
+          '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
+          '<i class="ti ti-dots-vertical"></i>' +
+          "</button>" +
+          '<div class="dropdown-menu dropdown-menu-end">' +
+          '<a class="dropdown-item" href="' +
+          editUrl +
+          '">' +
+          '<i class="ti ti-' +
+          (isDepositClosed ? "eye" : "pencil") +
+          ' me-2"></i>' +
+          (isDepositClosed ? i18next.t("View") : i18next.t("Edit")) +
+          "</a>";
+
+        if (full.FamId) {
+          html +=
+            '<a class="dropdown-item" href="' +
+            familyUrl +
+            '">' +
+            '<i class="ti ti-users me-2"></i>' +
+            i18next.t("View Family") +
+            "</a>";
+        }
+
+        if (depositType === "CreditCard") {
+          html +=
+            '<div class="dropdown-divider"></div>' +
+            '<a class="dropdown-item" href="' +
+            detailsUrl +
+            '">' +
+            '<i class="ti ti-info-circle me-2"></i>' +
+            i18next.t("Details") +
+            "</a>";
+        }
+
+        html += "</div></div>";
+        return html;
+      },
+    },
+  ];
 
   var dataTableConfig = {
     ajax: {
@@ -112,7 +143,11 @@ function initPaymentTable() {
     },
     columns: colDef,
     createdRow: (row, data, index) => {
-      $(row).addClass("paymentRow").css("cursor", "pointer");
+      $(row).addClass("paymentRow");
+      // Only allow selection on open deposits
+      if (!isDepositClosed) {
+        $(row).css("cursor", "pointer");
+      }
     },
     initComplete: function () {
       // Update payment count badge
@@ -298,6 +333,11 @@ function initDepositSlipEditor() {
   });
 
   $(document).on("click", ".paymentRow", function (event) {
+    // Don't allow selection on closed deposits
+    if (isDepositClosed) {
+      return;
+    }
+
     // Prevent selecting when clicking on buttons or links
     if (
       $(event.target).closest(".btn").length ||
