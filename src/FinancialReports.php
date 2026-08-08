@@ -232,7 +232,7 @@ if ($sReportType === '') {
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Summary', 'Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) :
+    <?php if (in_array($sReportType, ['Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) :
         $funds = DonationFundQuery::create()
             ->orderByActive()
             ->orderByName()
