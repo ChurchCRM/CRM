@@ -56,10 +56,16 @@ $statusClasses = [
         </div>
         <div class="col-md-6 text-end">
             <a href="<?= $sRootPathEsc ?>/finance/pledge/dashboard?fyid=<?= (int) $selectedFyid ?>"
-               class="btn btn-secondary">
+               class="btn btn-secondary me-2">
                 <i class="fa-solid fa-arrow-left me-1"></i>
                 <?= gettext('Back to Pledge Dashboard') ?>
             </a>
+            <?php if (\ChurchCRM\Authentication\AuthenticationManager::getCurrentUser()->isAdmin()): ?>
+            <a href="<?= $sRootPathEsc ?>/DonationFundEditor.php" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-cog me-1"></i>
+                <?= gettext('Manage Funds') ?>
+            </a>
+            <?php endif; ?>
         </div>
     </div>
 
