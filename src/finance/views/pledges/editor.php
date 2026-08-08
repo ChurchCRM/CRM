@@ -351,7 +351,6 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     const GROUP_KEY = <?= InputUtils::jsonEncodeForScript($groupKey) ?>;
     const PLEDGE_TYPE = <?= InputUtils::jsonEncodeForScript($type) ?>;
     const FY_MONTH    = <?= (int) SystemConfig::getIntValue('iFYMonth') ?>;
-    const DEPOSIT_ID  = <?= (int) $depositId ?>;
     const LINK_BACK_RAW = <?= InputUtils::jsonEncodeForScript($linkBack) ?>;
     const LINK_BACK_TARGET = <?= InputUtils::jsonEncodeForScript($linkBack !== '' ? $linkBackTarget : '') ?>;
 
