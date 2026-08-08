@@ -1071,4 +1071,20 @@ CREATE TABLE `menu_links` (
   PRIMARY KEY (`linkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Table structure for table `pledge_denominations_pdem`
+--
+
+CREATE TABLE `pledge_denominations_pdem` (
+  `pdem_id`                   mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `pdem_plg_GroupKey`         varchar(64)           NOT NULL,
+  `plg_depID`                 mediumint(9) unsigned DEFAULT NULL,
+  `pdem_denominationID`       mediumint(9) unsigned NOT NULL DEFAULT '0',
+  `pdem_denominationQuantity` int(11)               DEFAULT NULL,
+  PRIMARY KEY (`pdem_id`),
+  KEY `pdem_groupkey_idx`           (`pdem_plg_GroupKey`),
+  KEY `pdem_deposit_denom_idx`      (`plg_depID`, `pdem_denominationID`),
+  UNIQUE KEY `pdem_groupkey_denom_uidx` (`pdem_plg_GroupKey`, `pdem_denominationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 update version_ver set ver_update_end = now();
