@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 19:21+0000\n"
+"POT-Creation-Date: 2026-08-08 21:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -799,6 +799,9 @@ msgstr ""
 msgid "All System Settings"
 msgstr ""
 
+msgid "All Tellers"
+msgstr ""
+
 msgid "All Time"
 msgstr ""
 
@@ -945,6 +948,12 @@ msgid "Amount"
 msgstr ""
 
 msgid "Amount ($)"
+msgstr ""
+
+msgid "Amount Max"
+msgstr ""
+
+msgid "Amount Min"
 msgstr ""
 
 msgid "Amount exceeds maximum allowed (999999.99)"
@@ -1116,9 +1125,6 @@ msgid "Are you sure you want to delete all orphaned files?"
 msgstr ""
 
 msgid "Are you sure you want to delete the selected"
-msgstr ""
-
-msgid "Are you sure you want to delete this deposit?"
 msgstr ""
 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
@@ -1303,10 +1309,10 @@ msgstr ""
 msgid "Auto"
 msgstr ""
 
-msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgid "Auto TLS"
 msgstr ""
 
-msgid "Auto TLS"
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
 msgstr ""
 
 #. plugin:external-backup:section:2:title
@@ -1769,6 +1775,9 @@ msgstr ""
 msgid "CRM Members Not Subscribed"
 msgstr ""
 
+msgid "CSV"
+msgstr ""
+
 msgid "CSV Column"
 msgstr ""
 
@@ -2184,9 +2193,6 @@ msgid "Choose a volunteer opportunity"
 msgstr ""
 
 msgid "Choose an event..."
-msgstr ""
-
-msgid "Choose between light and dark color scheme"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -3344,9 +3350,6 @@ msgstr ""
 msgid "Delete Selected"
 msgstr ""
 
-msgid "Delete Selected Rows"
-msgstr ""
-
 msgid "Delete User"
 msgstr ""
 
@@ -3448,9 +3451,6 @@ msgstr ""
 msgid "Deposit ID"
 msgstr ""
 
-msgid "Deposit Listing"
-msgstr ""
-
 msgid "Deposit Navigation"
 msgstr ""
 
@@ -3464,9 +3464,6 @@ msgid "Deposit Slip Number"
 msgstr ""
 
 msgid "Deposit Statistics"
-msgstr ""
-
-msgid "Deposit Total"
 msgstr ""
 
 msgid "Deposit Tracking"
@@ -4421,12 +4418,6 @@ msgstr ""
 msgid "Export Options"
 msgstr ""
 
-msgid "Export Selected Rows (CSV)"
-msgstr ""
-
-msgid "Export Selected Rows (OFX)"
-msgstr ""
-
 msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
 msgstr ""
 
@@ -4540,6 +4531,9 @@ msgid "Failed to create backup."
 msgstr ""
 
 msgid "Failed to create class. Please try again."
+msgstr ""
+
+msgid "Failed to create deposit"
 msgstr ""
 
 msgid "Failed to create donation fund"
@@ -5290,6 +5284,9 @@ msgstr ""
 msgid "From"
 msgstr ""
 
+msgid "From Date"
+msgstr ""
+
 msgid "From Phone Number"
 msgstr ""
 
@@ -5338,6 +5335,9 @@ msgstr ""
 msgid "Fund Summary"
 msgstr ""
 
+msgid "Fund Total"
+msgstr ""
+
 msgid "Fund contributor pledge summary by fiscal year"
 msgstr ""
 
@@ -5354,6 +5354,9 @@ msgid "Fundraiser Listing"
 msgstr ""
 
 msgid "Fundraiser Overview"
+msgstr ""
+
+msgid "Fundraiser is disabled"
 msgstr ""
 
 msgid "Fundraiser not found"
@@ -5408,9 +5411,6 @@ msgid "Generate Certificates"
 msgstr ""
 
 msgid "Generate Coordinates"
-msgstr ""
-
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
 msgstr ""
 
 msgid "Generate Report"
@@ -7027,6 +7027,9 @@ msgstr ""
 msgid "Manage Event Types"
 msgstr ""
 
+msgid "Manage Events"
+msgstr ""
+
 msgid "Manage Fundraisers"
 msgstr ""
 
@@ -7659,6 +7662,9 @@ msgstr ""
 msgid "New Calendar"
 msgstr ""
 
+msgid "New Deposit"
+msgstr ""
+
 msgid "New Family"
 msgstr ""
 
@@ -7937,6 +7943,9 @@ msgstr ""
 msgid "No past events are still marked Active."
 msgstr ""
 
+msgid "No payments found for the selected deposits"
+msgstr ""
+
 msgid "No payments on this deposit"
 msgstr ""
 
@@ -7992,6 +8001,9 @@ msgid "No timeline events yet."
 msgstr ""
 
 msgid "No upgrades are available for your current version."
+msgstr ""
+
+msgid "No valid deposit IDs provided"
 msgstr ""
 
 msgid "No volunteer opportunities have been added yet"
@@ -8163,6 +8175,9 @@ msgid "Number of records using this property type"
 msgstr ""
 
 msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr ""
+
+msgid "OFX"
 msgstr ""
 
 msgid "OK"
@@ -9991,6 +10006,9 @@ msgstr ""
 msgid "Schema Version"
 msgstr ""
 
+msgid "Search"
+msgstr ""
+
 msgid "Search Addresses"
 msgstr ""
 
@@ -10018,7 +10036,7 @@ msgstr ""
 msgid "Search across people, families, groups, addresses, and more."
 msgstr ""
 
-msgid "Search and view deposit slip records"
+msgid "Search and manage deposit slip records"
 msgstr ""
 
 msgid "Search by name or email..."
@@ -10078,6 +10096,9 @@ msgid "Security Recommendation"
 msgstr ""
 
 msgid "Select"
+msgstr ""
+
+msgid "Select All"
 msgstr ""
 
 msgid "Select Backup File"
@@ -10443,6 +10464,9 @@ msgid "Showing members of: %s"
 msgstr ""
 
 msgid "Showing students with birthdays in"
+msgstr ""
+
+msgid "Showing total for selected fund only"
 msgstr ""
 
 #. Context: countries
@@ -10955,6 +10979,9 @@ msgstr ""
 msgid "Tell us about your family"
 msgstr ""
 
+msgid "Teller"
+msgstr ""
+
 #. Context: locales
 msgid "Telugu - India"
 msgstr ""
@@ -11427,6 +11454,9 @@ msgid "Title page"
 msgstr ""
 
 msgid "To"
+msgstr ""
+
+msgid "To Date"
 msgstr ""
 
 msgid "To Family"
@@ -13280,6 +13310,12 @@ msgid "records"
 msgstr ""
 
 msgid "risk"
+msgstr ""
+
+msgid "row selected"
+msgstr ""
+
+msgid "rows selected"
 msgstr ""
 
 msgid "s"
