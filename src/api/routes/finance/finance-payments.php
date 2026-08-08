@@ -282,7 +282,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=400, description="Validation error (invalid date, fund, check number, etc.)"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required"),
-     *     @OA\Response(response=404, description="Pledge group not found")
+     *     @OA\Response(response=404, description="Pledge group not found"),
+     *     @OA\Response(response=409, description="Deposit is closed — payment cannot be edited")
      * )
      */
     $group->put('/{groupKey}', function (Request $request, Response $response, array $args): Response {
@@ -329,6 +330,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $groupPayment = $financialService->updatePledgeOrPayment($payment, $groupKey);
         } catch (\InvalidArgumentException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Pledge group not found'), [], 404);
+        } catch (\RuntimeException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 409);
         } catch (\Exception $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, $e, $request);
         } catch (\Throwable $e) {
