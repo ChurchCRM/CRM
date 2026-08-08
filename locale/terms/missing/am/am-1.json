@@ -1,18 +1,18 @@
 {
   "Copied {{count}} members": {
-    "one": "{{count}} አባል ተቀድ᝱ል",
-    "other": "{{count}} አባላት ተቀድተዋል"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ይህ ዝርዝር {{count}} ተቀባይ አለው — ለ mailto: አገናኝ በጣም ብዛ ነው። ይልቃንስ አድራሻወንን ቅዳ ይጠቀሙ።",
-    "other": "ይህ ዝርዝር {{count}} ተቀባዮች አሉት — ለ mailto: አገናኝ በጣም ብዛ ናቸወ። ይልቃንስ አድራሻወንን ቅዳ ይጠቀሙ።"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ለኢሜይል ደንበኛ በጣም ብዛ ተቀባዮች ({{count}} > {{max}})። ይልቃንስ አድራሻወንን ቅዳ ይጠቀሙ።",
-    "other": "ለኢሜይል ደንበኛ በጣም ብዛ ተቀባዮች ({{count}} > {{max}})። ይልቃንስ አድራሻወንን ቅዳ ይጠቀሙ።"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} ደቂቃ ቅር᝱ል",
-    "other": "{{count}} ደቂቃወች ቅርተዋል"
+    "one": "",
+    "other": ""
   }
 }

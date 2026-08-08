@@ -1,18 +1,18 @@
 {
   "Copied {{count}} members": {
-    "one": "{{count}} సభ్యుడిని కాపీ చేయబడింది",
-    "other": "{{count}} సభ్యులను కాపీ చేయబడింది"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ఈ జాబితాలో {{count}} గ్రహీత ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలను కాపీ చేయండి ఉపయోగించండి.",
-    "other": "ఈ జాబితాలో {{count}} గ్రహీతలు ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలను కాపీ చేయండి ఉపయోగించండి."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ఇమెయిల్ క్లయింట్‌కు చాలా ఎక్కువ గ్రహీతలు ({{count}} > {{max}}). బదులుగా చిరునామాలను కాపీ చేయండి ఉపయోగించండి.",
-    "other": "ఇమెయిల్ క్లయింట్‌కు చాలా ఎక్కువ గ్రహీతలు ({{count}} > {{max}}). బదులుగా చిరునామాలను కాపీ చేయండి ఉపయోగించండి."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} నిమిషం మిగిలింది",
-    "other": "{{count}} నిమిషాలు మిగిలాయి"
+    "one": "",
+    "other": ""
   }
 }

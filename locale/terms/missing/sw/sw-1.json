@@ -1,19 +1,19 @@
 {
-  "Data": "Data",
+  "Data": "",
   "Copied {{count}} members": {
-    "one": "Nakili mwanachama {{count}}",
-    "other": "Nakili wanachama {{count}}"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Orodha hii ina mpokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
-    "other": "Orodha hii ina wapokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Mpokeaji {{count}} ni wengi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
-    "other": "Wapokeaji {{count}} ni wengi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Dakika {{count}} imebaki",
-    "other": "Dakika {{count}} zimebaki"
+    "one": "",
+    "other": ""
   }
 }
