@@ -81,49 +81,49 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= ($thisGroup->isSundaySchool()) ? gettext('Special Group Settings : Sunday School Type') : gettext('Group Settings') ?></h3>
   </div>
-  <div class="card-body">
+  <div class="card-body p-4">
     <form name="groupEditForm" id="groupEditForm">
-      <div class="mb-3">
-        <div class="row">
-          <div class="col-sm-4">
-            <label for="Name"><?= gettext('Name') ?>:</label>
-            <input class="form-control" type="text" Name="Name" value="<?= InputUtils::escapeAttribute($thisGroup->getName()) ?>">
-          </div>
+      <div class="row mb-4">
+        <div class="col-sm-4">
+          <label for="Name" class="form-label"><?= gettext('Name') ?>:</label>
+          <input class="form-control" type="text" Name="Name" value="<?= InputUtils::escapeAttribute($thisGroup->getName()) ?>">
         </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <label for="Description"><?= gettext('Description') ?>:</label>
-            <textarea class="form-control" name="Description" cols="40" rows="5"><?= InputUtils::escapeAttribute($thisGroup->getDescription()) ?></textarea>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
-            <?php if ($thisGroup->isSundaySchool()): ?>
-            <select class="form-select input-small d-none" name="GroupType">
-            <?php else: ?>
-            <select class="form-select input-small" name="GroupType">
-            <?php endif; ?>
-              <option value="0"><?= gettext('Unassigned') ?></option>
-              <option value="" disabled>-----------------------</option>
-              <?php foreach ($rsGroupTypes as $groupType): ?>
-                <option value="<?= InputUtils::escapeAttribute($groupType->getOptionId()) ?>"<?= $thisGroup->getType() == $groupType->getOptionId() ? ' selected' : '' ?>><?= InputUtils::escapeHTML($groupType->getOptionName()) ?></option>
-              <?php endforeach; ?>
-            </select>
-            <?php if ($thisGroup->isSundaySchool()): ?>
-                <b><?= gettext('Sunday School') ?></b>
-                <p><?= gettext("Sunday School group can't be modified, only in this two cases") ?>:</p>
-                <ul>
+      </div>
+      <div class="row mb-4">
+        <div class="col-sm-3">
+          <label for="GroupType" class="form-label"><?= gettext('Type of Group') ?>:</label>
+          <?php if ($thisGroup->isSundaySchool()): ?>
+          <select class="form-select input-small d-none" name="GroupType">
+          <?php else: ?>
+          <select class="form-select input-small" name="GroupType">
+          <?php endif; ?>
+            <option value="0"><?= gettext('Unassigned') ?></option>
+            <option value="" disabled>-----------------------</option>
+            <?php foreach ($rsGroupTypes as $groupType): ?>
+              <option value="<?= InputUtils::escapeAttribute($groupType->getOptionId()) ?>"<?= $thisGroup->getType() == $groupType->getOptionId() ? ' selected' : '' ?>><?= InputUtils::escapeHTML($groupType->getOptionName()) ?></option>
+            <?php endforeach; ?>
+          </select>
+          <?php if ($thisGroup->isSundaySchool()): ?>
+              <div class="mt-3">
+                <p class="fw-semibold mb-2"><?= gettext('Sunday School') ?></p>
+                <p class="text-muted small"><?= gettext("Sunday School group can't be modified, only in this two cases") ?>:</p>
+                <ul class="ps-3">
                     <li><?= gettext('You can create/delete sunday school group.') ?></li>
                     <li><?= gettext('Add new roles, but not modify or rename the Student and the Teacher roles.') ?></li>
                 </ul>
-            <?php endif; ?>
-          </div>
+              </div>
+          <?php endif; ?>
         </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <input type="submit" id="saveGroup" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupSubmit">
-          </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-sm-4">
+          <label for="Description" class="form-label"><?= gettext('Description') ?>:</label>
+          <textarea class="form-control" name="Description" cols="40" rows="5"><?= InputUtils::escapeAttribute($thisGroup->getDescription()) ?></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="submit" id="saveGroup" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupSubmit">
         </div>
       </div>
     </form>
@@ -133,14 +133,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Group Specific Properties') ?></h3>
   </div>
-  <div class="card-body">
-    <div class="d-flex align-items-center gap-3">
+  <div class="card-body p-4">
+    <div class="d-flex align-items-center justify-content-between">
       <?php if ($thisGroup->getHasSpecialProps()): ?>
         <div>
-          <p class="text-muted mb-0"><?= gettext('Custom properties for this group') ?></p>
+          <p class="text-muted mb-2"><?= gettext('Custom properties for this group') ?></p>
           <span class="badge badge-success"><?= gettext('Enabled') ?></span>
         </div>
-        <div class="ms-auto d-flex gap-2">
+        <div class="d-flex gap-2">
           <button type="button" id="disableGroupProps" class="btn btn-sm btn-ghost-danger groupSpecificProperties">
             <i class="fa-solid fa-toggle-on me-1"></i><?= gettext('Disable') ?>
           </button>
@@ -150,10 +150,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
       <?php else: ?>
         <div>
-          <p class="text-muted mb-0"><?= gettext('Add custom properties specific to this group') ?></p>
+          <p class="text-muted mb-2"><?= gettext('Add custom properties specific to this group') ?></p>
           <span class="badge badge-secondary"><?= gettext('Disabled') ?></span>
         </div>
-        <button type="button" id="enableGroupProps" class="btn btn-sm btn-ghost-success groupSpecificProperties ms-auto">
+        <button type="button" id="enableGroupProps" class="btn btn-sm btn-ghost-success groupSpecificProperties">
           <i class="fa-solid fa-toggle-off me-1"></i><?= gettext('Enable') ?>
         </button>
       <?php endif; ?>
@@ -167,8 +167,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Role') ?>
     </button>
   </div>
-  <div class="card-body">
-    <div class="alert alert-info alert-dismissable">
+  <div class="card-body p-4">
+    <div class="alert alert-info alert-dismissable mb-4">
       <i class="fa-solid fa-info"></i>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <strong></strong><?= gettext('Group role name changes are saved as soon as the box loses focus') ?>
