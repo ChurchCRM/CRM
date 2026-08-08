@@ -217,8 +217,8 @@ function categoryId(string $category): string {
 
                     <?php elseif ($setting->getType() === 'boolean') : ?>
                     <select name="new_value[<?= $setting->getName() ?>]" class="form-select choiceSelectBox">
-                      <option value="0" <?= !$setting->getValue() ? 'selected' : '' ?>><?= gettext('False') ?></option>
-                      <option value="1" <?= $setting->getValue() ? 'selected' : '' ?>><?= gettext('True') ?></option>
+                      <option value="0" <?= !$setting->getValue() ? 'selected' : '' ?>><?= gettext('No') ?></option>
+                      <option value="1" <?= $setting->getValue() ? 'selected' : '' ?>><?= gettext('Yes') ?></option>
                     </select>
                     <?php if ($setting->getName() === 'bEnableBirthdayEmails') : ?>
                       <div class="mt-2">
@@ -266,7 +266,7 @@ function categoryId(string $category): string {
                   if ($setting->getType() !== 'password') :
                       $display_default = $setting->getDefault();
                       if ($setting->getType() === 'boolean') {
-                          $display_default = $setting->getDefault() ? 'True' : 'False';
+                          $display_default = $setting->getDefault() ? 'Yes' : 'No';
                       }
                       echo InputUtils::escapeHTML($display_default);
                   endif; ?>
