@@ -10,8 +10,11 @@ function initPaymentTable() {
       title: i18next.t("Family"),
       data: "FamilyString",
       render: (data, type, full, meta) => {
-        var familyName =
-          data && data.trim() ? data : '<em class="text-body-secondary">' + i18next.t("Anonymous") + "</em>";
+        if (!data || !data.trim()) {
+          return '<em class="text-body-secondary">' + i18next.t("Anonymous") + "</em>";
+        }
+        // Extract just the family name (before the colon) - FamilyString includes address
+        var familyName = data.split(":")[0].trim();
         return familyName;
       },
     },
