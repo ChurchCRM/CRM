@@ -123,15 +123,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <br>
         <div class="row">
           <div class="col-sm-6">
-            <label for="UseGroupProps"><?= gettext('Group Specific Properties') . ': ' ?></label>
-            <?php if ($thisGroup->getHasSpecialProps()): ?>
-                <?= gettext('Enabled') ?><br>
-                <button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties"><?= gettext('Disable Group Specific Properties') ?></button><br>
-                <a class="btn btn-success" href="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form"><?= gettext('Edit Group-Specific Properties Form') ?> </a>
-            <?php else: ?>
-                <?= gettext('Disabled') ?><br>
-                <button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties"><?= gettext('Enable Group Specific Properties') ?></button>&nbsp;
-            <?php endif; ?>
+            <label><?= gettext('Group Specific Properties') ?>:</label>
+            <div class="d-flex align-items-center gap-2">
+              <?php if ($thisGroup->getHasSpecialProps()): ?>
+                <span class="badge badge-success"><?= gettext('Enabled') ?></span>
+                <button type="button" id="disableGroupProps" class="btn btn-sm btn-ghost-danger groupSpecificProperties">
+                  <i class="fa-solid fa-toggle-on me-1"></i><?= gettext('Disable') ?>
+                </button>
+                <a class="btn btn-sm btn-primary" href="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form">
+                  <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Form') ?>
+                </a>
+              <?php else: ?>
+                <span class="badge badge-secondary"><?= gettext('Disabled') ?></span>
+                <button type="button" id="enableGroupProps" class="btn btn-sm btn-ghost-success groupSpecificProperties">
+                  <i class="fa-solid fa-toggle-off me-1"></i><?= gettext('Enable') ?>
+                </button>
+              <?php endif; ?>
+            </div>
           </div>
         </div>
         <br>
