@@ -20,6 +20,21 @@ $sAction = $_GET['Action'] ?? $_POST['Action'] ?? '';
 
 $iOrderID = (int)$iOrderID;
 
+// All state-changing operations (up, down, delete) require POST + a valid
+// CSRF token.  The previous check was gated on REQUEST_METHOD === 'POST',
+// which meant a cross-site GET navigation bypassed it entirely (CWE-352 /
+// CWE-650 — see GHSA-v4x7-hgpq-29r6).
+if (in_array($sAction, ['up', 'down', 'delete'], true)) {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        http_response_code(405);
+        die(gettext('Method Not Allowed'));
+    }
+    if (!CSRFUtils::verifyRequest($_POST, 'personCustomFieldsAction')) {
+        http_response_code(403);
+        die(gettext('Invalid CSRF token'));
+    }
+}
+
 // Validate field name to prevent DDL injection (column names follow pattern c1, c2, etc.)
 if ($sField !== '' && !preg_match('/^c\d+$/', $sField)) {
     RedirectUtils::redirect('PersonCustomFieldsEditor.php');
@@ -53,14 +68,8 @@ switch ($sAction) {
 
         // Delete a field from the form
     case 'delete':
-        // Verify CSRF token for POST requests
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!CSRFUtils::verifyRequest($_POST, 'deletePersonCustomField')) {
-                http_response_code(403);
-                die(gettext('Invalid CSRF token'));
-            }
-        }
-        
+        // CSRF + POST already verified above for all state-changing actions.
+
         // Fetch the custom field record by primary key (custom_field)
         $customField = PersonCustomMasterQuery::create()
             ->findOneById($sField);

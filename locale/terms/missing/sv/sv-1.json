@@ -1,4 +1,6 @@
 {
+  "Check #": "Check nr",
+  "Data": "Data",
   "Copied {{count}} members": {
     "one": "Kopierade {{count}} medlem",
     "other": "Kopierade {{count}} medlemmar"

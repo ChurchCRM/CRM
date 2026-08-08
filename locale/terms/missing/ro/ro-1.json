@@ -3,8 +3,8 @@
   "Major": "Major",
   "Catalog": "Catalog",
   "Copied {{count}} members": {
-    "one": "A fost copiat {{count}} membru",
-    "other": "Au fost copiați {{count}} membri"
+    "one": "{{count}} membru copiat",
+    "other": "{{count}} membri copiați"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
     "one": "Această listă are {{count}} destinatar — prea mulți pentru un link mailto:. Folosiți Copiați adresele în schimb.",

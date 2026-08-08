@@ -1264,18 +1264,6 @@ msgid "Type of Group"
 msgstr "그룹 유형"
 
 #: 
-msgid "Group Member Roles"
-msgstr "그룹 역할 설정"
-
-#: 
-msgid "Clone roles"
-msgstr "역할 복사"
-
-#: 
-msgid "from group"
-msgstr "원본 그룹"
-
-#: 
 msgid "Select a group"
 msgstr "그룹 선택"
 
@@ -1674,16 +1662,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "'현금' 헌금에는 수표 번호를 입력할 수 없습니다."
 
 #: 
-msgid "Deposit closed"
-msgstr "입금 내역서가 마감되었습니다."
-
-#: 
 msgid "Payment Schedule"
 msgstr "헌금 주기"
-
-#: 
-msgid "Select Schedule"
-msgstr "주기 선택"
 
 #: 
 msgid "Weekly"
@@ -1706,28 +1686,8 @@ msgid "Other"
 msgstr "기타"
 
 #: 
-msgid "Payment by"
-msgstr "헌금 방식"
-
-#: 
-msgid "Scan check"
-msgstr "수표 스캔"
-
-#: 
-msgid "find family from check account #"
-msgstr "수표 계좌 번호로 가족 찾기"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "가족 기본 수표 계좌 번호로 설정"
-
-#: 
 msgid "Fund Name"
 msgstr "헌금 항목명"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "공제 불가 금액"
 
 #: 
 msgid "Age"
@@ -2585,10 +2545,6 @@ msgid "Groups"
 msgstr "그룹"
 
 #: 
-msgid "Total $"
-msgstr "총액 $"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "이 속성을 가진..."
@@ -2714,10 +2670,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "데이터 확인·수정 보고서 서명자"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "서약 요약 보고서 문구"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "명부 보고서 문구"
 
@@ -2781,11 +2733,6 @@ msgstr "속성 유형"
 #: 
 msgid "Zip Code"
 msgstr "우편번호"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "필드"
 
 #. Context: query_qry
 #: 
@@ -5850,10 +5797,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "이 입금에 대한 추가 메모를 입력하세요"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "금액이 최대 허용 값(999999.99)을 초과합니다."
-
-#: 
 msgid "Checks"
 msgstr "수표"
 
@@ -5880,10 +5823,6 @@ msgstr "현금 없음"
 #: 
 msgid "No Checks"
 msgstr "수표 없음"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "비공제 금액이 최대 허용 값(999999.99)을 초과합니다."
 
 #: 
 msgid "Payments"
@@ -6494,10 +6433,6 @@ msgid "%d missing role"
 msgstr "%d개 역할 누락"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "결제는 실제로 받은 헌금입니다. 현재 입금에 추가됩니다."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "서약은 헌금하겠다는 약속입니다. 입금 전표와 연결되지 않습니다."
 
@@ -6795,10 +6730,6 @@ msgid "Name & Identity"
 msgstr "이름 및 신원"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "새 입금이 생성됩니다"
-
-#: 
 msgid "New Payment"
 msgstr "새 결제"
 
@@ -6917,10 +6848,6 @@ msgstr "일부 애플리케이션 전제 조건이 충족되지 않았습니다"
 #: 
 msgid "State (Other)"
 msgstr "주 (기타)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "회계연도의 기금별 서약 대 결제 요약입니다."
 
 #: 
 msgid "System Health"
@@ -8897,10 +8824,6 @@ msgid "Account Recovery"
 msgstr "계정 복구"
 
 #: 
-msgid "Add Family"
-msgstr "가족 추가"
-
-#: 
 msgid "Add First Family"
 msgstr "첫 번째 가족 추가"
 
@@ -8919,10 +8842,6 @@ msgstr "메모 추가"
 #: 
 msgid "Add People to the Family"
 msgstr "가족에 사람 추가"
-
-#: 
-msgid "Add Person"
-msgstr "사람 추가"
 
 #: 
 msgid "Add Students to Cart"
@@ -9301,10 +9220,6 @@ msgid "Delete Person"
 msgstr "사람 삭제"
 
 #: 
-msgid "Delete Pledge"
-msgstr "서약 삭제"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "이 속성을 삭제하면 모든 사람, 가족 또는 그룹 기록에서도 해당 지정이 제거됩니다."
 
@@ -9467,10 +9382,6 @@ msgstr "회계연도 %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "가족은 주소와 전화번호를 공유합니다."
-
-#: 
-msgid "Family List"
-msgstr "가족 목록"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9669,10 +9580,6 @@ msgid "Letters and Labels"
 msgstr "편지 및 라벨"
 
 #: 
-msgid "List families created via self registration"
-msgstr "자체 등록으로 생성된 가족 목록"
-
-#: 
 msgid "Load demo data"
 msgstr "데모 데이터 로드"
 
@@ -9781,10 +9688,6 @@ msgid "Minimum"
 msgstr "최소값"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "그룹 교인의 가족 역할 수정"
-
-#: 
 msgid "Move to Group"
 msgstr "그룹으로 이동"
 
@@ -9811,10 +9714,6 @@ msgstr "새로 만들기"
 #: 
 msgid "New Family"
 msgstr "새 가족"
-
-#: 
-msgid "New Group"
-msgstr "새 그룹"
 
 #: 
 msgid "New Person"
@@ -9929,10 +9828,6 @@ msgstr "비밀번호 복구"
 #: 
 msgid "Past & next 7 days"
 msgstr "지난 7일 및 향후 7일"
-
-#: 
-msgid "People List"
-msgstr "사람 목록"
 
 #: 
 msgid "People by Classification"
@@ -10113,10 +10008,6 @@ msgstr "백업 파일을 선택하고 데이터베이스 복원을 클릭하세�
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "위에서 옵션을 선택하고 백업 버튼을 클릭하세요."
-
-#: 
-msgid "Self Registration Report"
-msgstr "자체 등록 보고서"
 
 #: 
 msgid "Send email to families"
@@ -10679,11 +10570,6 @@ msgstr "주소 기본값"
 msgid "Allow user to add new event"
 msgstr "사용자가 새 이벤트를 추가할 수 있도록 허용"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "시작 날짜"
-
 #: 
 msgid "Calendar Settings"
 msgstr "달력 설정"
@@ -10793,16 +10679,6 @@ msgstr "이메일 목록이 Mailchimp과 동기화됩니다."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "아래 설정 패널에서 이메일을 활성화한 다음 SMTP 서버를 구성합니다."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "종료 날짜"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "다음 중 일부를 입력하십시오: 이름, 도시, 주, 우편 번호, 집 전화, 이메일 또는 회사 이메일."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "외부 달력 API 비활성화됨"
@@ -10896,11 +10772,6 @@ msgstr "사용자 정의 필드를 이 값으로 일치"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "최대 나이"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "회원, 정기 참석자 등"
 
@@ -10913,11 +10784,6 @@ msgstr "특정 달에 가입한 회원"
 #: 
 msgid "Membership anniversaries"
 msgstr "회원 기념일"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "최소 나이"
 
 #. Context: query_qry
 #: 
@@ -10991,16 +10857,6 @@ msgstr "SMS/텍스트 목록에서 회원을 제외하는 데 사용되는 사�
 msgid "Person property used to exclude members from email lists"
 msgstr "이메일 목록에서 회원을 제외하는 데 사용되는 사람 속성"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "각 회원의 총 기여도를 계산하기 위해 마지막 날짜를 입력하세요 (예: YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "각 회원의 총 기여도를 계산하기 위해 시작 날짜를 선택하세요 (예: YYYY-MM-DD). 참고: 기부금을 포함하는 날짜만 선택할 수 있습니다."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11049,11 +10905,6 @@ msgstr "SMTP 미구성"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "검색"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "두 번째 회계 연도"
 
@@ -11066,16 +10917,6 @@ msgstr "비교할 두 번째 회계 연도"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "두 번째 자원봉사 기회 선택"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "검색할 필드를 선택합니다."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "원하는 가족 역할을 선택합니다."
 
 #: 
 msgid "Send text message"
@@ -11116,38 +10957,13 @@ msgstr "레코드를 반환하고 싶은 생일 월입니다."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "데이터베이스를 검색할 원하는 성별입니다."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "레코드를 반환하고 싶은 성별입니다."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "레코드를 반환하고 싶은 최대 나이입니다."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "레코드를 반환하고 싶은 회원 기념일 월입니다."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "레코드를 반환하고 싶은 최소 나이입니다."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "사람 레코드를 반환하고 싶은 속성입니다."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "레코드를 반환하고 싶은 주일학교 반입니다."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11183,11 +10999,6 @@ msgstr "Vonage SMS 미구성"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage가 없으면 문자 작업은 기기의 기본 SMS 앱을 열거나 전화번호를 클립보드에 복사합니다."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "직장 이메일"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11509,10 +11320,6 @@ msgstr "기능"
 #: 
 msgid "Finance permission query IDs"
 msgstr "재정 권한 쿼리 ID"
-
-#: 
-msgid "Find family"
-msgstr "가족 검색"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13614,10 +13421,6 @@ msgstr "CSV를 업로드하여 가족과 성도를 일괄 등록하세요."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV에 중복된 열 이름이 있습니다. 중복된 열의 이름을 변경(예: 두 번째 열에 \"(2)\" 추가)한 후 다시 업로드하세요."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "보안 토큰이 유효하지 않습니다. 다시 시도해 주세요."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13649,10 +13452,6 @@ msgstr "공휴일 (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "공휴일은 유형별로 분류됩니다: 공식 공휴일, 기념일, 은행 휴일, 계절 행사, 종교 행사. 모든 카테고리를 선택 해제하면 모든 공휴일이 표시되며, 특정 유형을 선택하면 표시 범위를 좁힐 수 있습니다."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "재정 서약 식별자가 없습니다."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16787,10 +16586,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s 가정의 %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d개의 항목을 더 추가할 수 있습니다."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d개의 레코드가 반환되었습니다"
 
@@ -16889,10 +16684,6 @@ msgstr "최소 총액"
 #: 
 msgid "Minimum bid $%s."
 msgstr "최소 입찰가 $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "새 헌금 - %1$s 입금 번호 %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17301,4 +17092,432 @@ msgstr "아래에서 공개 등록 양식의 새 등록자를 검토하세요. �
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "봉사 기회 삭제 확인"
+
+#: 
+msgid "# Payments"
+msgstr "# 헌금"
+
+#: 
+msgid "# Pledges"
+msgstr "# 서약"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "헌금은 실제로 받은 기부금입니다. 선택한 입금 항목에 추가됩니다."
+
+#: 
+msgid "Add Fund"
+msgstr "헌금 항목 추가"
+
+#: 
+msgid "Amount ($)"
+msgstr "금액 ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "허용 최대 금액(999999.99)을 초과했습니다"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "저장 중 오류가 발생했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "익명 원격 측정"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "익명 원격 측정 수준입니다. ChurchCRM 팀과 공유되는 익명 진단 데이터의 양을 제어합니다. 교회 이름, 교인 데이터 또는 개인 정보는 전송되지 않습니다."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "이 헌금 기록을 영구적으로 삭제하시겠습니까?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "최소 하나의 헌금 항목 배분이 필요합니다"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "최소 하나의 헌금 항목에 0이 아닌 금액이 있어야 합니다"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "생일에 교인들에게 생일 축하 이메일을 자동으로 발송합니다"
+
+#: 
+msgid "Back to Finance"
+msgstr "재정으로 돌아가기"
+
+#: 
+msgid "Back to Group"
+msgstr "그룹으로 돌아가기"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "쿼리를 준비할 수 없습니다."
+
+#: 
+msgid "Catch JS errors"
+msgstr "JS 오류 수집"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "반복 오류 수집"
+
+#: 
+msgid "Check #"
+msgstr "수표 번호"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "교회 이름, 주소 또는 연락처 정보"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM 버전"
+
+#: 
+msgid "Collection level"
+msgstr "수집 수준"
+
+#: 
+msgid "Count unique installs"
+msgstr "고유 설치 수 집계"
+
+#: 
+msgid "Data"
+msgstr "데이터"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "데이터는 EU 인프라에서 PostHog에 의해 처리됩니다."
+
+#: 
+msgid "Date is required"
+msgstr "날짜는 필수입니다"
+
+#: 
+msgid "Deleted successfully"
+msgstr "성공적으로 삭제되었습니다"
+
+#: 
+msgid "Deposit #"
+msgstr "입금 번호"
+
+#: 
+msgid "Deposit Slip"
+msgstr "입금 전표"
+
+#: 
+msgid "Edit Pledge"
+msgstr "서약 편집"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "기존 서약 또는 헌금 편집"
+
+#: 
+msgid "Editing a Payment"
+msgstr "헌금 편집 중"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "서약 편집 중"
+
+#: 
+msgid "Enable (full)"
+msgstr "활성화 (전체)"
+
+#: 
+msgid "Errors only"
+msgstr "오류만"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "오류 — 서버 오류 및 JS 예외"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "서약 생성에 실패했습니다"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "서약 삭제에 실패했습니다"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "헌금 응답 인코딩에 실패했습니다"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "서약 조회에 실패했습니다"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "서약 업데이트에 실패했습니다"
+
+#: 
+msgid "Family is required"
+msgstr "가족은 필수입니다"
+
+#: 
+msgid "Financial data"
+msgstr "재정 데이터"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "전체 — 위의 모든 항목과 페이지 조회수 포함"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "전체 — 페이지 조회수, 경고, 오류 및 JS 예외"
+
+#: 
+msgid "Fund Summary"
+msgstr "헌금 항목 요약"
+
+#: 
+msgid "Group key is required"
+msgstr "그룹 키는 필수입니다"
+
+#: 
+msgid "Happy Birthday"
+msgstr "생일을 축하합니다"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ChurchCRM 개선에 도움 주기"
+
+#: 
+msgid "IP addresses"
+msgstr "IP 주소"
+
+#: 
+msgid "Installation UUID"
+msgstr "설치 UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "정렬, 검색 및 내보내기 기능을 갖춘 헌금 항목별 서약 대 헌금 요약 표입니다."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "내부용: 생일 이메일이 마지막으로 발송된 날짜 (YYYY-MM-DD). 직접 수정하지 마십시오."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS 예외"
+
+#: 
+msgid "Log level + message"
+msgstr "로그 수준 + 메시지"
+
+#: 
+msgid "Member or family records"
+msgstr "교인 또는 가족 기록"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "이 그룹 구성원의 역할 수정"
+
+#: 
+msgid "Network error, please try again"
+msgstr "네트워크 오류입니다. 다시 시도해 주세요"
+
+#: 
+msgid "Never sent"
+msgstr "발송된 적 없음"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "입금 없음 / 새 입금 생성"
+
+#: 
+msgid "No pledge"
+msgstr "서약 없음"
+
+#: 
+msgid "No thanks"
+msgstr "괜찮습니다"
+
+#: 
+msgid "Non-Deductible"
+msgstr "비공제"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "비공제 ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "비공제 금액은 헌금 항목 금액을 초과할 수 없습니다"
+
+#: 
+msgid "None (disabled)"
+msgstr "없음 (비활성화)"
+
+#: 
+msgid "OS family"
+msgstr "OS 계열"
+
+#: 
+msgid "Overpaid"
+msgstr "초과 납부"
+
+#: 
+msgid "PHP version"
+msgstr "PHP 버전"
+
+#: 
+msgid "Page route"
+msgstr "페이지 경로"
+
+#: 
+msgid "Payment Details"
+msgstr "헌금 상세 정보"
+
+#: 
+msgid "Payment Method"
+msgstr "헌금 방법"
+
+#: 
+msgid "Plan runtime support"
+msgstr "런타임 지원 계획"
+
+#: 
+msgid "Please enter a date"
+msgstr "날짜를 입력해 주세요"
+
+#: 
+msgid "Please select a family"
+msgstr "가족을 선택해 주세요"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "모든 행에 헌금 항목을 선택해 주세요"
+
+#: 
+msgid "Pledge Details"
+msgstr "서약 상세 정보"
+
+#: 
+msgid "Pledge group not found"
+msgstr "서약 그룹을 찾을 수 없습니다"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "서약 및 헌금"
+
+#: 
+msgid "Prioritise translations"
+msgstr "번역 우선 순위 지정"
+
+#: 
+msgid "Purpose"
+msgstr "목적"
+
+#: 
+msgid "Save and Add Another"
+msgstr "저장 후 다른 항목 추가"
+
+#: 
+msgid "Save failed"
+msgstr "저장에 실패했습니다"
+
+#: 
+msgid "Saved successfully"
+msgstr "성공적으로 저장되었습니다"
+
+#: 
+msgid "Select a fund"
+msgstr "헌금 항목 선택"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "나에게 테스트 생일 이메일 보내기"
+
+#: 
+msgid "Sending to"
+msgstr "발송 대상"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "ChurchCRM 팀과 익명 사용 통계를 공유하여 어떤 기능과 언어를 우선적으로 개선할지 파악할 수 있도록 도와주세요. 교회 이름, 교인 데이터 또는 개인 정보는 전송되지 않습니다."
+
+#: 
+msgid "Test email sent to"
+msgstr "테스트 이메일이 다음으로 발송되었습니다"
+
+#: 
+msgid "Track adoption"
+msgstr "도입 현황 추적"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "유형은 '서약' 또는 '헌금'이어야 합니다"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "쿼리 문자열이 포함된 URL (레코드 ID 제외)"
+
+#: 
+msgid "Underpaid"
+msgstr "미납"
+
+#: 
+msgid "Understand deployments"
+msgstr "배포 현황 파악"
+
+#: 
+msgid "Understand feature usage"
+msgstr "기능 사용 현황 파악"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "사용자 이름, 이메일 또는 역할"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "서약 또는 헌금 상세 정보 보기"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "경고 — 경고, 오류 및 JS 예외"
+
+#: 
+msgid "What is sent"
+msgstr "전송되는 항목"
+
+#: 
+msgid "What we collect"
+msgstr "수집 항목"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "멋진 %d번째 생일을 축하합니다!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "멋진 생일이 되기를 바랍니다!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "계정에 등록된 이메일 주소가 없습니다. 테스트를 위해 프로필에 이메일을 추가해 주세요."
+
+#: 
+msgid "errors+"
+msgstr "오류+"
+
+#: 
+msgid "full only"
+msgstr "전체만"
+
+#: 
+msgid "is thinking of you today."
+msgstr "오늘 당신을 생각하고 있습니다."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "페이지 경로, 활성 언어, CRM 버전, PHP 버전, OS 계열 및 임의 설치 ID. 그 외에는 없습니다. 데이터는 EU에 저장됩니다."
 

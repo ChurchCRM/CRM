@@ -12,7 +12,7 @@
     "other": "Previše primatelja za klijent e-pošte ({{count}} > {{max}}). Umjesto toga upotrijebite Kopiraj adrese."
   },
   "{{count}} min left": {
-    "one": "Još {{count}} min",
-    "other": "Još {{count}} min"
+    "one": "{{count}} min preostalo",
+    "other": "{{count}} min preostalo"
   }
 }

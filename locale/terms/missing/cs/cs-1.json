@@ -1,5 +1,6 @@
 {
   "Fundraising": "Fundraising",
+  "Data": "Data",
   "Copied {{count}} members": {
     "one": "Zkopírován {{count}} člen",
     "other": "Zkopírováno {{count}} členů"
@@ -13,7 +14,7 @@
     "other": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Použijte místo toho Kopírovat adresy."
   },
   "{{count}} min left": {
-    "one": "{{count}} min zbývá",
-    "other": "{{count}} min zbývá"
+    "one": "{{count}} minuta zbývá",
+    "other": "{{count}} minut zbývá"
   }
 }

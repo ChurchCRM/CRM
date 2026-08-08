@@ -1248,18 +1248,6 @@ msgid "Type of Group"
 msgstr "समूह का प्रकार"
 
 #: 
-msgid "Group Member Roles"
-msgstr "समूह सदस्य की भूमिकाएँ"
-
-#: 
-msgid "Clone roles"
-msgstr "भूमिकाओं की नकल करें"
-
-#: 
-msgid "from group"
-msgstr "समूह से"
-
-#: 
 msgid "Select a group"
 msgstr "एक समूह चुनें"
 
@@ -1656,16 +1644,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "'नकद' भुगतान के लिए चेक संख्या मान्य नहीं है"
 
 #: 
-msgid "Deposit closed"
-msgstr "जमा बंद"
-
-#: 
 msgid "Payment Schedule"
 msgstr "भुगतान अनुसूची"
-
-#: 
-msgid "Select Schedule"
-msgstr "अनुसूची चुनें"
 
 #: 
 msgid "Weekly"
@@ -1688,28 +1668,8 @@ msgid "Other"
 msgstr "अन्य"
 
 #: 
-msgid "Payment by"
-msgstr "द्वारा भुगतान"
-
-#: 
-msgid "Scan check"
-msgstr "चेक स्कैन करें"
-
-#: 
-msgid "find family from check account #"
-msgstr "चेक खाता संख्या से परिवार खोजें"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "परिवार के लिए डिफ़ॉल्ट चेक खाता संख्या सेट करें"
-
-#: 
 msgid "Fund Name"
 msgstr "फंड का नाम"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "गैर-कटौती योग्य राशि"
 
 #: 
 msgid "Age"
@@ -2562,10 +2522,6 @@ msgid "Groups"
 msgstr "समूह"
 
 #: 
-msgid "Total $"
-msgstr "कुल $"
-
-#: 
 msgid "with this property..."
 msgstr "इस गुण के साथ..."
 
@@ -2690,10 +2646,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "डेटाबेस जानकारी पुष्टि और सुधार रिपोर्ट हस्ताक्षरकर्ता"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "प्रतिज्ञा सारांश रिपोर्ट के लिए शब्दावली"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "निर्देशिका रिपोर्ट के लिए शब्दावली"
 
@@ -2757,11 +2709,6 @@ msgstr "गुणों के प्रकार"
 #: 
 msgid "Zip Code"
 msgstr "पिन कोड"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "क्षेत्र"
 
 #. Context: query_qry
 #: 
@@ -5817,10 +5764,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "इस जमा के बारे में कोई अतिरिक्त नोट जोड़ें"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "राशि अधिकतम अनुमत मान (999999.99) से अधिक है।"
-
-#: 
 msgid "Checks"
 msgstr "चेक"
 
@@ -5847,10 +5790,6 @@ msgstr "कोई नकद नहीं"
 #: 
 msgid "No Checks"
 msgstr "कोई चेक नहीं"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "गैर-कटौती योग्य राशि अधिकतम अनुमत मान (999999.99) से अधिक है।"
 
 #: 
 msgid "Payments"
@@ -6463,10 +6402,6 @@ msgid "%d missing role"
 msgstr "%d गायब भूमिका"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "भुगतान एक वास्तविक प्राप्त दान है। इसे वर्तमान जमा में जोड़ा जाएगा।"
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "प्रतिज्ञा देने की प्रतिबद्धता है। यह जमा पर्ची से बंधी नहीं है।"
 
@@ -6763,10 +6698,6 @@ msgid "Name & Identity"
 msgstr "नाम और पहचान"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "नई जमा बनाई जाएगी"
-
-#: 
 msgid "New Payment"
 msgstr "नया भुगतान"
 
@@ -6885,10 +6816,6 @@ msgstr "कुछ एप्लिकेशन पूर्वापेक्ष�
 #: 
 msgid "State (Other)"
 msgstr "राज्य (अन्य)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "वित्तीय वर्ष के लिए फंड द्वारा प्रतिज्ञाओं बनाम भुगतानों का सारांश।"
 
 #: 
 msgid "System Health"
@@ -8870,10 +8797,6 @@ msgid "Account Recovery"
 msgstr "खाता पुनर्प्राप्ति"
 
 #: 
-msgid "Add Family"
-msgstr "परिवार जोड़ें"
-
-#: 
 msgid "Add First Family"
 msgstr "पहला परिवार जोड़ें"
 
@@ -8892,10 +8815,6 @@ msgstr "नोट जोड़ें"
 #: 
 msgid "Add People to the Family"
 msgstr "परिवार में लोगों को जोड़ें"
-
-#: 
-msgid "Add Person"
-msgstr "व्यक्ति जोड़ें"
 
 #: 
 msgid "Add Students to Cart"
@@ -9274,10 +9193,6 @@ msgid "Delete Person"
 msgstr "व्यक्ति हटाएँ"
 
 #: 
-msgid "Delete Pledge"
-msgstr "प्रतिज्ञा हटाएँ"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "इस विशेषता को हटाने से किसी भी व्यक्ति, परिवार या समूह रिकॉर्ड से इसकी सभी निर्धारणाएँ भी हट जाएँगी।"
 
@@ -9440,10 +9355,6 @@ msgstr "वित्तीय वर्ष %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "परिवार एक पता और फ़ोन नंबर साझा करते हैं।"
-
-#: 
-msgid "Family List"
-msgstr "परिवार सूची"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9642,10 +9553,6 @@ msgid "Letters and Labels"
 msgstr "पत्र और लेबल"
 
 #: 
-msgid "List families created via self registration"
-msgstr "स्व-पंजीकरण द्वारा बनाए गए परिवारों की सूची"
-
-#: 
 msgid "Load demo data"
 msgstr "डेमो डेटा लोड करें"
 
@@ -9754,10 +9661,6 @@ msgid "Minimum"
 msgstr "न्यूनतम"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "समूह सदस्यों की पारिवारिक भूमिकाएँ संशोधित करें"
-
-#: 
 msgid "Move to Group"
 msgstr "समूह में स्थानांतरित करें"
 
@@ -9784,10 +9687,6 @@ msgstr "नया"
 #: 
 msgid "New Family"
 msgstr "नया परिवार"
-
-#: 
-msgid "New Group"
-msgstr "नया समूह"
 
 #: 
 msgid "New Person"
@@ -9902,10 +9801,6 @@ msgstr "पासवर्ड पुनर्प्राप्ति"
 #: 
 msgid "Past & next 7 days"
 msgstr "पिछले और अगले 7 दिन"
-
-#: 
-msgid "People List"
-msgstr "व्यक्ति सूची"
 
 #: 
 msgid "People by Classification"
@@ -10086,10 +9981,6 @@ msgstr "एक बैकअप फ़ाइल चुनें और डेट�
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "ऊपर अपने विकल्प चुनें और बैकअप बटन पर क्लिक करें।"
-
-#: 
-msgid "Self Registration Report"
-msgstr "स्व-पंजीकरण रिपोर्ट"
 
 #: 
 msgid "Send email to families"
@@ -10652,11 +10543,6 @@ msgstr "पता डिफ़ॉल्ट"
 msgid "Allow user to add new event"
 msgstr "उपयोगकर्ता को नई घटना जोड़ने की अनुमति दें"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "शुरुआत की तारीख"
-
 #: 
 msgid "Calendar Settings"
 msgstr "कैलेंडर सेटिंग्स"
@@ -10766,16 +10652,6 @@ msgstr "ईमेल सूचियां Mailchimp के साथ सिं�
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "नीचे दिए गए सेटिंग्स पैनल में ईमेल सक्षम करें, फिर अपने SMTP सर्वर को कॉन्फ़िगर करें।"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "समाप्ति तारीख"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "निम्नलिखित में से कोई भी भाग दर्ज करें: नाम, शहर, राज्य, ज़िप, गृह फ़ोन, ईमेल, या कार्य ईमेल।"
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "बाहरी कैलेंडर API अक्षम"
@@ -10869,11 +10745,6 @@ msgstr "कस्टम फील्ड को इस मान से मेल
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "अधिकतम आयु"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "सदस्य, नियमित उपस्थिति आदि"
 
@@ -10886,11 +10757,6 @@ msgstr "जो सदस्य किसी विशेष महीने म�
 #: 
 msgid "Membership anniversaries"
 msgstr "सदस्यता वर्षगांठि"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "न्यूनतम आयु"
 
 #. Context: query_qry
 #: 
@@ -10964,16 +10830,6 @@ msgstr "एसएमएस/टेक्स्ट सूचियों से �
 msgid "Person property used to exclude members from email lists"
 msgstr "ईमेल सूचियों से सदस्यों को बाहर करने के लिए व्यक्ति संपत्ति"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "प्रत्येक सदस्य के कुल योगदान की गणना करने के लिए अंतिम तारीख दर्ज करें (यानी YYYY-MM-DD)।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "प्रत्येक सदस्य के कुल योगदान की गणना करने के लिए शुरुआती तारीख चुनें (यानी YYYY-MM-DD)। नोट: आप केवल वे तारीखें चुन सकते हैं जिनमें दान हों।"
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11022,11 +10878,6 @@ msgstr "SMTP कॉन्फ़िगर नहीं है"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "खोज"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "दूसरा वित्तीय वर्ष"
 
@@ -11039,16 +10890,6 @@ msgstr "तुलना के लिए दूसरा वित्तीय �
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "दूसरी स्वयंसेवक अवसर पसंद"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "खोज के लिए फील्ड चुनें।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "वांछित परिवार की भूमिका चुनें।"
 
 #: 
 msgid "Send text message"
@@ -11089,38 +10930,13 @@ msgstr "जन्मदिन का महीना जिसके लिए �
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "डेटाबेस में खोज करने के लिए वांछित लिंग।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "लिंग जिसके लिए आप रिकॉर्ड लौटाना चाहते हैं।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "अधिकतम आयु जिसके लिए आप रिकॉर्ड लौटाना चाहते हैं।"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "सदस्यता वर्षगांठि का महीना जिसके लिए आप रिकॉर्ड लौटाना चाहते हैं।"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "न्यूनतम आयु जिसके लिए आप रिकॉर्ड लौटाना चाहते हैं।"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "संपत्ति जिसके लिए आप व्यक्ति रिकॉर्ड लौटाना चाहते हैं।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "रविवार स्कूल की कक्षा जिसके लिए आप रिकॉर्ड लौटाना चाहते हैं।"
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11156,11 +10972,6 @@ msgstr "Vonage SMS कॉन्फ़िगर नहीं है"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage के बिना, टेक्स्ट क्रियाएं आपके डिवाइस के मूल एसएमएस ऐप को खोलेंगी या फोन नंबर को क्लिपबोर्ड पर कॉपी करेंगी।"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "कार्य ईमेल"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11482,10 +11293,6 @@ msgstr "सुविधाएँ"
 #: 
 msgid "Finance permission query IDs"
 msgstr "वित्त अनुमति क्वेरी ID"
-
-#: 
-msgid "Find family"
-msgstr "परिवार खोजें"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13588,10 +13395,6 @@ msgstr "परिवारों और लोगों को बड़ी स�
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "आपकी CSV में डुप्लिकेट कॉलम नाम हैं। डुप्लिकेट कॉलम का नाम बदलें (जैसे दूसरे में \"(2)\" जोड़ें) और पुनः अपलोड करें।"
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "अमान्य सुरक्षा टोकन। कृपया पुनः प्रयास करें।"
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13623,10 +13426,6 @@ msgstr "अवकाश (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "अवकाश को प्रकार के अनुसार टैग किया जाता है: आधिकारिक, पर्यवेक्षण, बैंक अवकाश, मौसमी और धार्मिक। सभी अवकाश दिखाने के लिए सभी श्रेणियाँ अनचुनी छोड़ें, या प्रदर्शन संकुचित करने के लिए विशिष्ट प्रकार चुनें।"
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "वित्तीय प्रतिबद्धता पहचानकर्ता गायब है।"
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16764,10 +16563,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s परिवार के %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d और प्रविष्टियाँ आ सकती हैं।"
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d रिकॉर्ड वापस मिले"
 
@@ -16866,10 +16661,6 @@ msgstr "न्यूनतम कुल राशि"
 #: 
 msgid "Minimum bid $%s."
 msgstr "न्यूनतम बोली $%s।"
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "नया भुगतान - %1$s जमा # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17278,4 +17069,432 @@ msgstr "नीचे अपने सार्वजनिक पंजीकर
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "स्वयंसेवी अवसर हटाने की पुष्टि"
+
+#: 
+msgid "# Payments"
+msgstr "# भुगतान"
+
+#: 
+msgid "# Pledges"
+msgstr "# प्रतिज्ञाएँ"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "भुगतान एक वास्तविक प्राप्त दान है। इसे चयनित जमा में जोड़ा जाएगा।"
+
+#: 
+msgid "Add Fund"
+msgstr "निधि जोड़ें"
+
+#: 
+msgid "Amount ($)"
+msgstr "राशि ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "राशि अधिकतम अनुमत सीमा (999999.99) से अधिक है"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "सहेजते समय एक त्रुटि हुई। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "अनाम टेलीमेट्री"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "अनाम टेलीमेट्री स्तर। यह नियंत्रित करता है कि ChurchCRM टीम के साथ कितना अनाम निदान डेटा साझा किया जाता है। कोई चर्च नाम, सदस्य डेटा या व्यक्तिगत जानकारी कभी नहीं भेजी जाती।"
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "क्या आप वाकई इस भुगतान रिकॉर्ड को स्थायी रूप से हटाना चाहते हैं?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "कम से कम एक निधि आवंटन आवश्यक है"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "कम से कम एक निधि में शून्य से अधिक राशि होनी चाहिए"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "लोगों को उनके जन्मदिन पर स्वचालित रूप से जन्मदिन शुभकामना ईमेल भेजें"
+
+#: 
+msgid "Back to Finance"
+msgstr "वित्त पर वापस जाएं"
+
+#: 
+msgid "Back to Group"
+msgstr "समूह पर वापस जाएं"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "क्वेरी तैयार नहीं की जा सकती।"
+
+#: 
+msgid "Catch JS errors"
+msgstr "JS त्रुटियाँ पकड़ें"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "बार-बार होने वाली त्रुटियाँ पकड़ें"
+
+#: 
+msgid "Check #"
+msgstr "चेक #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "चर्च का नाम, पता या संपर्क विवरण"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM संस्करण"
+
+#: 
+msgid "Collection level"
+msgstr "संग्रह स्तर"
+
+#: 
+msgid "Count unique installs"
+msgstr "अद्वितीय इंस्टॉलेशन गिनें"
+
+#: 
+msgid "Data"
+msgstr "डेटा"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "डेटा को EU अवसंरचना पर PostHog द्वारा संसाधित किया जाता है।"
+
+#: 
+msgid "Date is required"
+msgstr "तारीख आवश्यक है"
+
+#: 
+msgid "Deleted successfully"
+msgstr "सफलतापूर्वक हटाया गया"
+
+#: 
+msgid "Deposit #"
+msgstr "जमा #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "जमा पर्ची"
+
+#: 
+msgid "Edit Pledge"
+msgstr "प्रतिज्ञा संपादित करें"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "मौजूदा प्रतिज्ञा या भुगतान संपादित करें"
+
+#: 
+msgid "Editing a Payment"
+msgstr "भुगतान संपादित करना"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "प्रतिज्ञा संपादित करना"
+
+#: 
+msgid "Enable (full)"
+msgstr "सक्षम करें (पूर्ण)"
+
+#: 
+msgid "Errors only"
+msgstr "केवल त्रुटियाँ"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "त्रुटियाँ — सर्वर त्रुटियाँ और JS अपवाद"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "प्रतिज्ञा बनाने में विफल"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "प्रतिज्ञा हटाने में विफल"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "भुगतान प्रतिक्रिया एन्कोड करने में विफल"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "प्रतिज्ञा प्राप्त करने में विफल"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "प्रतिज्ञा अपडेट करने में विफल"
+
+#: 
+msgid "Family is required"
+msgstr "परिवार आवश्यक है"
+
+#: 
+msgid "Financial data"
+msgstr "वित्तीय डेटा"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "पूर्ण — उपर्युक्त सभी के साथ-साथ पृष्ठ दृश्य"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "पूर्ण — पृष्ठ दृश्य, चेतावनियाँ, त्रुटियाँ और JS अपवाद"
+
+#: 
+msgid "Fund Summary"
+msgstr "निधि सारांश"
+
+#: 
+msgid "Group key is required"
+msgstr "समूह कुंजी आवश्यक है"
+
+#: 
+msgid "Happy Birthday"
+msgstr "जन्मदिन मुबारक हो"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ChurchCRM को बेहतर बनाने में सहायता करें"
+
+#: 
+msgid "IP addresses"
+msgstr "IP पते"
+
+#: 
+msgid "Installation UUID"
+msgstr "इंस्टॉलेशन UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "क्रमबद्धता, खोज और निर्यात के साथ निधि द्वारा इंटरएक्टिव प्रतिज्ञाएँ-बनाम-भुगतान सारांश।"
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "आंतरिक: जन्मदिन ईमेल भेजने की अंतिम तिथि (YYYY-MM-DD)। मैन्युअल रूप से संपादित न करें।"
+
+#: 
+msgid "JS exceptions"
+msgstr "JS अपवाद"
+
+#: 
+msgid "Log level + message"
+msgstr "लॉग स्तर + संदेश"
+
+#: 
+msgid "Member or family records"
+msgstr "सदस्य या परिवार रिकॉर्ड"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "इस समूह सदस्य की भूमिका बदलें"
+
+#: 
+msgid "Network error, please try again"
+msgstr "नेटवर्क त्रुटि, कृपया पुनः प्रयास करें"
+
+#: 
+msgid "Never sent"
+msgstr "कभी नहीं भेजा गया"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "कोई जमा नहीं / नई जमा बनाएं"
+
+#: 
+msgid "No pledge"
+msgstr "कोई प्रतिज्ञा नहीं"
+
+#: 
+msgid "No thanks"
+msgstr "नहीं, धन्यवाद"
+
+#: 
+msgid "Non-Deductible"
+msgstr "गैर-कटौती योग्य"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "गैर-कटौती योग्य ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "गैर-कटौती योग्य राशि निधि राशि से अधिक नहीं हो सकती"
+
+#: 
+msgid "None (disabled)"
+msgstr "कोई नहीं (अक्षम)"
+
+#: 
+msgid "OS family"
+msgstr "OS परिवार"
+
+#: 
+msgid "Overpaid"
+msgstr "अधिक भुगतान"
+
+#: 
+msgid "PHP version"
+msgstr "PHP संस्करण"
+
+#: 
+msgid "Page route"
+msgstr "पृष्ठ मार्ग"
+
+#: 
+msgid "Payment Details"
+msgstr "भुगतान विवरण"
+
+#: 
+msgid "Payment Method"
+msgstr "भुगतान विधि"
+
+#: 
+msgid "Plan runtime support"
+msgstr "रनटाइम समर्थन की योजना बनाएं"
+
+#: 
+msgid "Please enter a date"
+msgstr "कृपया एक तारीख दर्ज करें"
+
+#: 
+msgid "Please select a family"
+msgstr "कृपया एक परिवार चुनें"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "कृपया सभी पंक्तियों के लिए एक निधि चुनें"
+
+#: 
+msgid "Pledge Details"
+msgstr "प्रतिज्ञा विवरण"
+
+#: 
+msgid "Pledge group not found"
+msgstr "प्रतिज्ञा समूह नहीं मिला"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "प्रतिज्ञाएँ और भुगतान"
+
+#: 
+msgid "Prioritise translations"
+msgstr "अनुवादों को प्राथमिकता दें"
+
+#: 
+msgid "Purpose"
+msgstr "उद्देश्य"
+
+#: 
+msgid "Save and Add Another"
+msgstr "सहेजें और एक और जोड़ें"
+
+#: 
+msgid "Save failed"
+msgstr "सहेजना विफल"
+
+#: 
+msgid "Saved successfully"
+msgstr "सफलतापूर्वक सहेजा गया"
+
+#: 
+msgid "Select a fund"
+msgstr "एक निधि चुनें"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "स्वयं को परीक्षण जन्मदिन ईमेल भेजें"
+
+#: 
+msgid "Sending to"
+msgstr "भेजा जा रहा है"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "ChurchCRM टीम के साथ अनाम उपयोग सांख्यिकी साझा करें ताकि हम जान सकें कि कौन सी सुविधाओं और भाषाओं को प्राथमिकता दी जाए। कोई चर्च नाम, सदस्य डेटा या व्यक्तिगत जानकारी कभी नहीं भेजी जाती।"
+
+#: 
+msgid "Test email sent to"
+msgstr "परीक्षण ईमेल भेजा गया"
+
+#: 
+msgid "Track adoption"
+msgstr "अपनाने को ट्रैक करें"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "प्रकार 'Pledge' या 'Payment' होना चाहिए"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "क्वेरी स्ट्रिंग वाले URL (रिकॉर्ड ID हटा दिए जाते हैं)"
+
+#: 
+msgid "Underpaid"
+msgstr "कम भुगतान"
+
+#: 
+msgid "Understand deployments"
+msgstr "परिनियोजन समझें"
+
+#: 
+msgid "Understand feature usage"
+msgstr "सुविधा उपयोग समझें"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "उपयोगकर्ता नाम, ईमेल या भूमिकाएँ"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "प्रतिज्ञा या भुगतान विवरण देखें"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "चेतावनियाँ — चेतावनियाँ, त्रुटियाँ और JS अपवाद"
+
+#: 
+msgid "What is sent"
+msgstr "क्या भेजा जाता है"
+
+#: 
+msgid "What we collect"
+msgstr "हम क्या एकत्र करते हैं"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "आपको एक शानदार %d वर्ष के जन्मदिन की शुभकामनाएँ!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "आपको एक शानदार जन्मदिन की शुभकामनाएँ!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "आपके खाते में कोई ईमेल पता दर्ज नहीं है। परीक्षण भेजने के लिए अपनी प्रोफ़ाइल में एक जोड़ें।"
+
+#: 
+msgid "errors+"
+msgstr "त्रुटियाँ+"
+
+#: 
+msgid "full only"
+msgstr "केवल पूर्ण"
+
+#: 
+msgid "is thinking of you today."
+msgstr "आज आपके बारे में सोच रहा है।"
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "पृष्ठ मार्ग, सक्रिय लोकेल, CRM संस्करण, PHP संस्करण, OS परिवार और एक यादृच्छिक इंस्टॉलेशन ID। कुछ और नहीं। डेटा EU में संग्रहीत है।"
 

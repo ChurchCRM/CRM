@@ -11,11 +11,11 @@
     "other": "Deze lijst heeft {{count}} ontvangers — te veel voor een mailto:-link. Gebruik 'Adressen kopiëren' in plaats daarvan."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik 'Adressen kopiëren' in plaats daarvan.",
-    "other": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik 'Adressen kopiëren' in plaats daarvan."
+    "one": "Te veel ontvangers voor e-mailprogramma ({{count}} > {{max}}). Gebruik 'Adressen kopiëren' in plaats daarvan.",
+    "other": "Te veel ontvangers voor e-mailprogramma ({{count}} > {{max}}). Gebruik 'Adressen kopiëren' in plaats daarvan."
   },
   "{{count}} min left": {
-    "one": "{{count}} min. resterend",
-    "other": "{{count}} min. resterend"
+    "one": "{{count}} min over",
+    "other": "{{count}} min over"
   }
 }

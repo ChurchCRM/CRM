@@ -1302,21 +1302,6 @@ msgid "Type of Group"
 msgstr "Type Gruppe"
 
 #: 
-#, fuzzy
-msgid "Group Member Roles"
-msgstr "Gruppemedlem Roller"
-
-#: 
-#, fuzzy
-msgid "Clone roles"
-msgstr "Klone roller"
-
-#: 
-#, fuzzy
-msgid "from group"
-msgstr "fra gruppe"
-
-#: 
 msgid "Select a group"
 msgstr "Velg en gruppe"
 
@@ -1735,17 +1720,9 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Sjekk nummeret ikke gyldig for 'Cash' betaling"
 
 #: 
-msgid "Deposit closed"
-msgstr "Innskudd lukket"
-
-#: 
 #, fuzzy
 msgid "Payment Schedule"
 msgstr "Betalingsplan:"
-
-#: 
-msgid "Select Schedule"
-msgstr "Velg Planlegg"
 
 #: 
 msgid "Weekly"
@@ -1769,31 +1746,8 @@ msgstr "Andre"
 
 #: 
 #, fuzzy
-msgid "Payment by"
-msgstr "Betalingsdato"
-
-#: 
-msgid "Scan check"
-msgstr "Skanne sjekk"
-
-#: 
-msgid "find family from check account #"
-msgstr "finne familie fra sjekk-konto #"
-
-#: 
-#, fuzzy
-msgid "Set default check account number for family"
-msgstr "Angi standard sjekk for familien"
-
-#: 
-#, fuzzy
 msgid "Fund Name"
 msgstr "Banknavn"
-
-#: 
-#, fuzzy
-msgid "Non-deductible amount"
-msgstr "Nondeductible"
 
 #: 
 msgid "Age"
@@ -2679,10 +2633,6 @@ msgid "Groups"
 msgstr "Grupper"
 
 #: 
-msgid "Total $"
-msgstr "Total sum"
-
-#: 
 msgid "with this property..."
 msgstr "med denne egenskapen..."
 
@@ -2807,10 +2757,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Undertegner av rapport om bekreftelse og korrigering av databaseinformasjon"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Tekst for rapport om lovnadssammendrag"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Tekst for katalograpporten"
 
@@ -2874,11 +2820,6 @@ msgstr "Egenskapstyper"
 #: 
 msgid "Zip Code"
 msgstr "Postnummer"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Felt"
 
 #. Context: query_qry
 #: 
@@ -5933,10 +5874,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Legg til eventuelle notater om dette innskuddet"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Beløpet overskrider maksimalt tillatt verdi (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Sjekker"
 
@@ -5963,10 +5900,6 @@ msgstr "Ingen kontanter"
 #: 
 msgid "No Checks"
 msgstr "Ingen sjekker"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Ikke-fradragsberettiget beløp overskrider maksimalt tillatt verdi (999999.99)."
 
 #: 
 msgid "Payments"
@@ -6579,10 +6512,6 @@ msgid "%d missing role"
 msgstr "%d mangler rolle"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "En betaling er en faktisk donasjon mottatt. Den vil bli lagt til det gjeldende innskuddet."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Et løfte er en forpliktelse til å gi. Det er ikke knyttet til en innskuddsseddel."
 
@@ -6879,10 +6808,6 @@ msgid "Name & Identity"
 msgstr "Navn og identitet"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Nytt innskudd vil bli opprettet"
-
-#: 
 msgid "New Payment"
 msgstr "Ny betaling"
 
@@ -7001,10 +6926,6 @@ msgstr "Noen forutsetninger for programmet er ikke oppfylt"
 #: 
 msgid "State (Other)"
 msgstr "Fylke (Annet)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Sammendrag av løfter mot betalinger per fond for regnskapsåret."
 
 #: 
 msgid "System Health"
@@ -8986,10 +8907,6 @@ msgid "Account Recovery"
 msgstr "Kontogjenoppretting"
 
 #: 
-msgid "Add Family"
-msgstr "Legg til familie"
-
-#: 
 msgid "Add First Family"
 msgstr "Legg til første familie"
 
@@ -9008,10 +8925,6 @@ msgstr "Legg til notat"
 #: 
 msgid "Add People to the Family"
 msgstr "Legg til personer i familien"
-
-#: 
-msgid "Add Person"
-msgstr "Legg til person"
 
 #: 
 msgid "Add Students to Cart"
@@ -9390,10 +9303,6 @@ msgid "Delete Person"
 msgstr "Slett person"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Slett giverløfte"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Sletting av denne egenskapen vil også fjerne alle tildelinger fra person-, familie- eller gruppeposter."
 
@@ -9556,10 +9465,6 @@ msgstr "Regnskapsår %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Familier deler adresse og telefonnummer."
-
-#: 
-msgid "Family List"
-msgstr "Familieliste"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9758,10 +9663,6 @@ msgid "Letters and Labels"
 msgstr "Brev og etiketter"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Vis familier opprettet via selvregistrering"
-
-#: 
 msgid "Load demo data"
 msgstr "Last inn demodata"
 
@@ -9870,10 +9771,6 @@ msgid "Minimum"
 msgstr "Minimum"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Endre familieroller for gruppemedlemmer"
-
-#: 
 msgid "Move to Group"
 msgstr "Flytt til gruppe"
 
@@ -9900,10 +9797,6 @@ msgstr "Ny"
 #: 
 msgid "New Family"
 msgstr "Ny familie"
-
-#: 
-msgid "New Group"
-msgstr "Ny gruppe"
 
 #: 
 msgid "New Person"
@@ -10018,10 +9911,6 @@ msgstr "Passordgjenoppretting"
 #: 
 msgid "Past & next 7 days"
 msgstr "Siste og neste 7 dager"
-
-#: 
-msgid "People List"
-msgstr "Personliste"
 
 #: 
 msgid "People by Classification"
@@ -10202,10 +10091,6 @@ msgstr "Velg en sikkerhetskopifil og klikk Gjenopprett database."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Velg alternativene ovenfor og klikk på en sikkerhetskopiknapp."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Rapport for selvregistrering"
 
 #: 
 msgid "Send email to families"
@@ -10768,11 +10653,6 @@ msgstr "Adresse standarder"
 msgid "Allow user to add new event"
 msgstr "Tillat bruker å legge til ny hendelse"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Startdato"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Kalenderinnstillinger"
@@ -10882,16 +10762,6 @@ msgstr "E-postlister er synkronisert med Mailchimp."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Aktiver e-post i innstillingspanelet nedenfor, og konfigurer deretter SMTP-serveren."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Sluttdato"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Skriv inn en hvilken som helst del av følgende: Navn, By, Fylke, Postnummer, Hjemmetelefon, E-post eller Arbeids-e-post."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "Ekstern kalender-API deaktivert"
@@ -10985,11 +10855,6 @@ msgstr "Samsvar egendefinert felt med denne verdien"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Maksimal alder"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Medlem, vanlig deltaker osv."
 
@@ -11002,11 +10867,6 @@ msgstr "Medlemmer som ble med i en bestemt måned"
 #: 
 msgid "Membership anniversaries"
 msgstr "Medlemskapsjubilæer"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Minimumalder"
 
 #. Context: query_qry
 #: 
@@ -11080,16 +10940,6 @@ msgstr "Personegenskap som brukes for å utelukke medlemmer fra SMS/tekstlister"
 msgid "Person property used to exclude members from email lists"
 msgstr "Personegenskap som brukes for å utelukke medlemmer fra e-postlister"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Vennligst angi siste dato for å beregne totale bidrag for hvert medlem (f.eks. YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Vennligst velg startdatoen for å beregne totale bidrag for hvert medlem (f.eks. YYYY-MM-DD). MERK: Du kan bare velge datoer som inneholder donasjoner."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11138,11 +10988,6 @@ msgstr "SMTP ikke konfigurert"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Søk"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Andre regnskapsår"
 
@@ -11155,16 +11000,6 @@ msgstr "Andre regnskapsår for sammenligning"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Andre valg for frivilligmulighet"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Velg felt du vil søke i."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Velg ønsket familieroll."
 
 #: 
 msgid "Send text message"
@@ -11205,38 +11040,13 @@ msgstr "Bursdagsmåneden du vil ha oppgjøringer for."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Ønsket kjønn for å søke i databasen etter."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Kjønnet du vil ha oppgjøringer for."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Maksimalalderen du vil ha oppgjøringer for."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Medlemskapsjubilæumsmåneden du vil ha oppgjøringer for."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Minimalalalderen du vil ha oppgjøringer for."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Eiendommen du vil ha personposter for."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Søndagsskoleklassen du vil ha oppgjøringer for."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11272,11 +11082,6 @@ msgstr "Vonage SMS ikke konfigurert"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Uten Vonage vil teksthandlinger åpne enhetens native SMS-app eller kopiere telefonnumre til utklippstavle."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Arbeidse-post"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11598,10 +11403,6 @@ msgstr "Funksjoner"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Finansieringstillatelse spørre-ID-er"
-
-#: 
-msgid "Find family"
-msgstr "Finn familie"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -13704,10 +13505,6 @@ msgstr "Last opp en CSV for å opprette familier og personer i bulk."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-filen din har duplikate kolonnenavn. Gi de duplikate kolonnene nytt navn (f.eks. legg til \"(2)\" til den andre) og last opp igjen."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Ugyldig sikkerhetstoken. Vennligst prøv igjen."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13739,10 +13536,6 @@ msgstr "Helligdager (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Helligdager er merket etter type: Offisielle, Høytider, Bankhelligdager, Sesongbaserte og Religiøse. La alle kategorier stå uvalgte for å vise alle helligdager, eller velg spesifikke typer for å begrense visningen."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Manglende identifikator for finansielt løfte."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -16880,10 +16673,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s av familien %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d flere oppføringer får plass."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d post(er) returnert"
 
@@ -16982,10 +16771,6 @@ msgstr "Minste totale beløp"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Minimumsbud $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Ny betaling – %1$s innskudd nr. %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17394,4 +17179,428 @@ msgstr "Gjennomgå nye påmeldinger fra det offentlige registreringsskjemaet ned
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Bekreft sletting av frivilligoppgave"
+
+#: 
+msgid "# Payments"
+msgstr "# Betalinger"
+
+#: 
+msgid "# Pledges"
+msgstr "# Løfter"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "En betaling er en faktisk mottatt donasjon. Den vil bli lagt til det valgte innskuddet."
+
+#: 
+msgid "Add Fund"
+msgstr "Legg til fond"
+
+#: 
+msgid "Amount ($)"
+msgstr "Beløp ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Beløpet overskrider maksimalt tillatt (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Det oppstod en feil under lagring. Vennligst prøv igjen."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonym telemetri"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Anonymt telemetrinivå. Styrer hvor mye anonym diagnostikkdata som deles med ChurchCRM-teamet. Ingen menighetsnavnr, medlemsdata eller personlig informasjon sendes noen gang."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Er du sikker på at du vil slette denne betalingsposten permanent?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Minst én fondstildeling er påkrevd"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Minst ett fond må ha et beløp som ikke er null"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Send automatisk en bursdagshilsen på e-post til personer på bursdagen deres"
+
+#: 
+msgid "Back to Finance"
+msgstr "Tilbake til økonomi"
+
+#: 
+msgid "Back to Group"
+msgstr "Tilbake til gruppe"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Kan ikke klargjøre spørring."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Fang opp JS-feil"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Fang opp gjentakende feil"
+
+#: 
+msgid "Check #"
+msgstr "Sjekknr."
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Menighetsnavn, adresse eller kontaktopplysninger"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM-versjon"
+
+#: 
+msgid "Collection level"
+msgstr "Innsamlingsnivå"
+
+#: 
+msgid "Count unique installs"
+msgstr "Tell unike installasjoner"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Data behandles av PostHog på EU-infrastruktur."
+
+#: 
+msgid "Date is required"
+msgstr "Dato er påkrevd"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Slettet"
+
+#: 
+msgid "Deposit #"
+msgstr "Innskuddsnr."
+
+#: 
+msgid "Deposit Slip"
+msgstr "Innskuddskvittering"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Rediger løfte"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Rediger eksisterende løfte eller betaling"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Redigerer en betaling"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Redigerer et løfte"
+
+#: 
+msgid "Enable (full)"
+msgstr "Aktiver (full)"
+
+#: 
+msgid "Errors only"
+msgstr "Kun feil"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Feil — tjenerfeil og JS-unntak"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Kunne ikke opprette løfte"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Kunne ikke slette løfte"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Kunne ikke kode betalingsrespons"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Kunne ikke hente løfte"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Kunne ikke oppdatere løfte"
+
+#: 
+msgid "Family is required"
+msgstr "Familie er påkrevd"
+
+#: 
+msgid "Financial data"
+msgstr "Finansielle data"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Full — alt ovenfor pluss sidevisninger"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Full — sidevisninger, advarsler, feil og JS-unntak"
+
+#: 
+msgid "Fund Summary"
+msgstr "Fondssammendrag"
+
+#: 
+msgid "Group key is required"
+msgstr "Gruppenøkkel er påkrevd"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Gratulerer med dagen"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Hjelp med å forbedre ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "IP-adresser"
+
+#: 
+msgid "Installation UUID"
+msgstr "Installasjons-UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktivt sammendrag av løfter vs. betalinger per fond med sortering, søk og eksport."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Internt: siste dato bursdags-e-poster ble sendt (ÅÅÅÅ-MM-DD). Ikke rediger manuelt."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS-unntak"
+
+#: 
+msgid "Log level + message"
+msgstr "Loggnivå + melding"
+
+#: 
+msgid "Member or family records"
+msgstr "Medlems- eller familieoppføringer"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Endre rollen for dette gruppemedlemmet"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Nettverksfeil, vennligst prøv igjen"
+
+#: 
+msgid "Never sent"
+msgstr "Aldri sendt"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Intet innskudd / opprett nytt innskudd"
+
+#: 
+msgid "No pledge"
+msgstr "Intet løfte"
+
+#: 
+msgid "No thanks"
+msgstr "Nei takk"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Ikke fradragsberettiget"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Ikke fradragsberettiget ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Ikke-fradragsberettiget beløp kan ikke overstige fondsbeløpet"
+
+#: 
+msgid "None (disabled)"
+msgstr "Ingen (deaktivert)"
+
+#: 
+msgid "OS family"
+msgstr "OS-familie"
+
+#: 
+msgid "Overpaid"
+msgstr "Overbetalt"
+
+#: 
+msgid "PHP version"
+msgstr "PHP-versjon"
+
+#: 
+msgid "Page route"
+msgstr "Siderute"
+
+#: 
+msgid "Payment Details"
+msgstr "Betalingsdetaljer"
+
+#: 
+msgid "Payment Method"
+msgstr "Betalingsmetode"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Planlegg kjøretidsstøtte"
+
+#: 
+msgid "Please enter a date"
+msgstr "Vennligst angi en dato"
+
+#: 
+msgid "Please select a family"
+msgstr "Vennligst velg en familie"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Vennligst velg et fond for alle rader"
+
+#: 
+msgid "Pledge Details"
+msgstr "Løftedetaljer"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Løftegruppe ikke funnet"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Løfter og betalinger"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Prioriter oversettelser"
+
+#: 
+msgid "Purpose"
+msgstr "Formål"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Lagre og legg til ny"
+
+#: 
+msgid "Save failed"
+msgstr "Lagring mislyktes"
+
+#: 
+msgid "Saved successfully"
+msgstr "Lagret"
+
+#: 
+msgid "Select a fund"
+msgstr "Velg et fond"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Send test-bursdags-e-post til meg selv"
+
+#: 
+msgid "Sending to"
+msgstr "Sender til"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Del anonym bruksstatistikk med ChurchCRM-teamet slik at vi vet hvilke funksjoner og språk vi bør prioritere. Ingen menighetsnavnr, medlemsdata eller personlig informasjon sendes noen gang."
+
+#: 
+msgid "Test email sent to"
+msgstr "Test-e-post sendt til"
+
+#: 
+msgid "Track adoption"
+msgstr "Spor bruksadopsjon"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Type må være 'Løfte' eller 'Betaling'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL-er med spørringsstrenger (post-ID-er fjernes)"
+
+#: 
+msgid "Underpaid"
+msgstr "Underbetalt"
+
+#: 
+msgid "Understand deployments"
+msgstr "Forstå distribusjoner"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Forstå funksjonsbruk"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Brukernavn, e-postadresser eller roller"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Vis løfte- eller betalingsdetaljer"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Advarsler — advarsler, feil og JS-unntak"
+
+#: 
+msgid "What is sent"
+msgstr "Hva som sendes"
+
+#: 
+msgid "What we collect"
+msgstr "Hva vi samler inn"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Vi ønsker deg en fantastisk %d-årsdag!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Vi ønsker deg en fantastisk bursdag!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Kontoen din har ingen e-postadresse registrert. Legg til én i profilen din for å sende en test."
+
+#: 
+msgid "errors+"
+msgstr "feil+"
+
+#: 
+msgid "full only"
+msgstr "kun full"
+
+#: 
+msgid "is thinking of you today."
+msgstr "tenker på deg i dag."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "sideruter, aktivt språk, CRM-versjon, PHP-versjon, OS-familie og en tilfeldig installasjons-ID. Ingenting annet. Data lagres i EU."
 

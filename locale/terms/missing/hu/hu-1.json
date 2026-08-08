@@ -4,8 +4,8 @@
     "other": "{{count}} tag másolva"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Ez a lista {{count}} címzettet tartalmaz — túl sok a mailto: hivatkozáshoz. Használja a Címek másolása funkciót.",
-    "other": "Ez a lista {{count}} címzettet tartalmaz — túl sok a mailto: hivatkozáshoz. Használja a Címek másolása funkciót."
+    "one": "Ez a lista {{count}} címzettet tartalmaz — túl sok egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót.",
+    "other": "Ez a lista {{count}} címzettet tartalmaz — túl sok egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
     "one": "Túl sok címzett az e-mail kliensnek ({{count}} > {{max}}). Használja a Címek másolása funkciót.",

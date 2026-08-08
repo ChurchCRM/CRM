@@ -8,8 +8,8 @@
     "other": "此列表有 {{count}} 位收件人——对于 mailto: 链接来说太多了。请改用“复制地址”。"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "邮件客户端收件人过多（{{count}} > {{max}}）。请改用“复制地址”。",
-    "other": "邮件客户端收件人过多（{{count}} > {{max}}）。请改用“复制地址”。"
+    "one": "电子邮件客户端的收件人太多（{{count}} > {{max}}）。请改用“复制地址”。",
+    "other": "电子邮件客户端的收件人太多（{{count}} > {{max}}）。请改用“复制地址”。"
   },
   "{{count}} min left": {
     "one": "剩余 {{count}} 分钟",

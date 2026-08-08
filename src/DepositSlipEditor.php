@@ -274,7 +274,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="px-3 py-3 border-bottom bg-light">
       <!-- Subtle spacing -->
     </div>
-    <div class="table-responsive">
+    <div style="overflow-x: clip; overflow-y: visible;">
       <table class="table table-hover mb-0" id="paymentsTable"></table>
     </div>
     <?php
@@ -316,12 +316,12 @@ require_once __DIR__ . '/Include/Header.php';
 #paymentsTable {
     margin-bottom: 0;
 }
-#paymentsTable_wrapper .dataTables_length,
-#paymentsTable_wrapper .dataTables_filter {
+.dt-length,
+.dt-search {
     padding: 1rem 0.75rem;
 }
-#paymentsTable_wrapper .dataTables_info,
-#paymentsTable_wrapper .dataTables_paginate {
+.dt-info,
+.dt-paging {
     padding: 1rem 0.75rem;
 }
 .dt-buttons {

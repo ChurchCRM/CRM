@@ -4,15 +4,15 @@
     "other": "{{count}} 人のメンバーをコピーしました"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "このリストには {{count}} 人の受信者がいます。mailto: リンクには多すぎます。代わりに「アドレスをコピー」をご使用ください。",
-    "other": "このリストには {{count}} 人の受信者がいます。mailto: リンクには多すぎます。代わりに「アドレスをコピー」をご使用ください。"
+    "one": "このリストには {{count}} 人の受信者がいます — mailto: リンクには多すぎます。代わりに「アドレスをコピー」を使用してください。",
+    "other": "このリストには {{count}} 人の受信者がいます — mailto: リンクには多すぎます。代わりに「アドレスをコピー」を使用してください。"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "メールクライアントには受信者が多すぎます ({{count}} > {{max}})。代わりに「アドレスをコピー」をご使用ください。",
-    "other": "メールクライアントには受信者が多すぎます ({{count}} > {{max}})。代わりに「アドレスをコピー」をご使用ください。"
+    "one": "メールクライアントに対して受信者が多すぎます ({{count}} > {{max}})。代わりに「アドレスをコピー」を使用してください。",
+    "other": "メールクライアントに対して受信者が多すぎます ({{count}} > {{max}})。代わりに「アドレスをコピー」を使用してください。"
   },
   "{{count}} min left": {
-    "one": "正1 {{count}} 分",
-    "other": "正1 {{count}} 分"
+    "one": "残り {{count}} 分",
+    "other": "残り {{count}} 分"
   }
 }
