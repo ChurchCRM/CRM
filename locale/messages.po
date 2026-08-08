@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 18:43+0000\n"
+"POT-Creation-Date: 2026-08-08 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3047,10 +3047,6 @@ msgstr ""
 msgid "Custom port"
 msgstr ""
 
-#. Context: query_qry
-msgid "CustomSearch"
-msgstr ""
-
 msgid "Customizable report with filtering by date, fund, family, and payment method."
 msgstr ""
 
@@ -5118,10 +5114,6 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Find people who pledged one year but not another"
-msgstr ""
-
-#. Context: query_qry
-msgid "Find people with a custom field value"
 msgstr ""
 
 msgid "Find the line"
