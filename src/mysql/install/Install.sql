@@ -913,6 +913,13 @@ CREATE TABLE `user_settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `user_settings`
+--
+
+INSERT INTO `user_settings` (`user_id`, `setting_name`, `setting_value`) VALUES
+(1, 'ui.style', 'auto');
+
+--
 -- Indexes for dumped tables
 --
 
