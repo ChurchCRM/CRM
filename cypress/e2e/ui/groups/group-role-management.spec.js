@@ -97,17 +97,17 @@ describe("Group Role Management", () => {
   });
 
   after(() => {
-    // Hard-fail if IDs were never set — a silent skip would leave orphaned groups in
-    // the DB and could cause flakiness in unrelated tests.
-    if (!testGroupAddDeleteId || !testGroupSingleId || !testGroupSundayId) {
-      throw new Error(
-        `Test group IDs were never assigned — before() likely failed.\n` +
-          `testGroupAddDeleteId=${testGroupAddDeleteId}, testGroupSingleId=${testGroupSingleId}, testGroupSundayId=${testGroupSundayId}`,
-      );
+    // Clean up whichever groups were successfully created — individual guards
+    // ensure a partial before() failure doesn't leave orphaned groups in the DB.
+    if (testGroupAddDeleteId) {
+      cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupAddDeleteId}`, null, 200);
     }
-    cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupAddDeleteId}`, null, 200);
-    cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupSingleId}`, null, 200);
-    cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupSundayId}`, null, 200);
+    if (testGroupSingleId) {
+      cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupSingleId}`, null, 200);
+    }
+    if (testGroupSundayId) {
+      cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupSundayId}`, null, 200);
+    }
   });
 
   beforeEach(() => cy.setupAdminSession());
@@ -267,8 +267,6 @@ describe("Group Role Management", () => {
   // ─── Protected roles ───────────────────────────────────────────────────────
 
   describe("Protected roles", () => {
-    // Force a fresh login to avoid stale session state from prior mutation tests.
-    beforeEach(() => cy.setupAdminSession({ forceLogin: true }));
 
     it("Delete button is disabled with a title for Student and Teacher roles", () => {
       // Use the dynamically-created Sunday-school group (Teacher + Student roles)

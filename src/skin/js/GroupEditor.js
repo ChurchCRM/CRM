@@ -152,6 +152,7 @@ function initializeGroupEditor() {
 
   $(document).on("click", ".deleteRole", (e) => {
     const btn = e.currentTarget;
+    if (btn.disabled) return; // guard against programmatic clicks on protected-role buttons
     const roleID = btn.id.split("-")[1];
     // Prefer the live input value so renames are reflected before page refresh
     const roleNameInput = document.querySelector(`.roleName[id$="-${roleID}"]`);
