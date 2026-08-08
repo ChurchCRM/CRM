@@ -30,7 +30,7 @@ if (AuthenticationManager::getCurrentUser()->isAdmin()) {
 $viewedUserLocaleInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), $user->getSetting('ui.locale'));
 
 // Read user settings server-side so controls are pre-populated without JS API calls
-$_userStyle = $user->getSettingValue('ui.style');
+$_userThemeMode = $user->getThemeMode(); // 'auto' | 'default' | 'dark'
 $_userPrimary = $user->getSettingValue('ui.theme.primary');
 $_userTableSize = $user->getSettingValue('ui.table.size');
 
@@ -221,19 +221,25 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <div class="form-selectgroup">
                   <label class="form-selectgroup-item">
-                    <input type="radio" name="themeMode" value="default" class="form-selectgroup-input" id="themeModeLight"<?= $_userStyle !== 'dark' ? ' checked' : '' ?>>
+                    <input type="radio" name="themeMode" value="auto" class="form-selectgroup-input" id="themeModeAuto"<?= $_userThemeMode === 'auto' ? ' checked' : '' ?>>
+                    <span class="form-selectgroup-label">
+                      <i class="ti ti-device-desktop me-1"></i><?= gettext("Auto") ?>
+                    </span>
+                  </label>
+                  <label class="form-selectgroup-item">
+                    <input type="radio" name="themeMode" value="default" class="form-selectgroup-input" id="themeModeLight"<?= $_userThemeMode === 'default' ? ' checked' : '' ?>>
                     <span class="form-selectgroup-label">
                       <i class="ti ti-sun me-1"></i><?= gettext("Light") ?>
                     </span>
                   </label>
                   <label class="form-selectgroup-item">
-                    <input type="radio" name="themeMode" value="dark" class="form-selectgroup-input" id="themeModeDark"<?= $_userStyle === 'dark' ? ' checked' : '' ?>>
+                    <input type="radio" name="themeMode" value="dark" class="form-selectgroup-input" id="themeModeDark"<?= $_userThemeMode === 'dark' ? ' checked' : '' ?>>
                     <span class="form-selectgroup-label">
                       <i class="ti ti-moon me-1"></i><?= gettext("Dark") ?>
                     </span>
                   </label>
                 </div>
-                <small class="form-hint"><?= gettext("Choose between light and dark color scheme") ?></small>
+                <small class="form-hint"><?= gettext("Auto follows your OS or browser setting; Light and Dark override it") ?></small>
               </div>
             </div>
 
