@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-03 18:34+0000\n"
+"POT-Creation-Date: 2026-08-08 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -662,6 +662,9 @@ msgid "Address Defaults"
 msgstr ""
 
 msgid "Address Status"
+msgstr ""
+
+msgid "Address changed since coordinates were last set."
 msgstr ""
 
 msgid "Address entered but coordinates not yet set"
@@ -2355,6 +2358,9 @@ msgstr ""
 msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
 msgstr ""
 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr ""
+
 msgid "Click Save to apply."
 msgstr ""
 
@@ -2691,7 +2697,7 @@ msgstr ""
 msgid "Coordinates Updated"
 msgstr ""
 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgid "Coordinates updated."
 msgstr ""
 
 msgid "Copied to clipboard"
@@ -2753,6 +2759,9 @@ msgid "Costs"
 msgstr ""
 
 msgid "Could not connect to MailChimp. Please check your API key."
+msgstr ""
+
+msgid "Could not find coordinates for that address. Try entering them manually."
 msgstr ""
 
 msgid "Could not load note."
@@ -4094,6 +4103,9 @@ msgstr ""
 msgid "Enter a search term"
 msgstr ""
 
+msgid "Enter a street address first."
+msgstr ""
+
 msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
 msgstr ""
 
@@ -5385,6 +5397,9 @@ msgstr ""
 msgid "Generate Certificates"
 msgstr ""
 
+msgid "Generate Coordinates"
+msgstr ""
+
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
 msgstr ""
 
@@ -5451,10 +5466,16 @@ msgstr ""
 msgid "Generate tax statement documents for donors"
 msgstr ""
 
+msgid "Generating..."
+msgstr ""
+
 msgid "Geocoded"
 msgstr ""
 
 msgid "Geocoding failed"
+msgstr ""
+
+msgid "Geocoding request failed. Please try again."
 msgstr ""
 
 msgid "Geocoding successful"
@@ -9143,6 +9164,9 @@ msgstr ""
 msgid "Prev"
 msgstr ""
 
+msgid "Preview"
+msgstr ""
+
 msgid "Previous"
 msgstr ""
 
@@ -12050,6 +12074,9 @@ msgid "Username and password are required."
 msgstr ""
 
 msgid "Users"
+msgstr ""
+
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
 msgstr ""
 
 #. Context: countries
