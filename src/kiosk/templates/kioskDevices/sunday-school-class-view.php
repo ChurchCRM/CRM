@@ -192,12 +192,12 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
         <div class="row g-3">
           <div class="col-md-6">
             <label class="form-label" for="guestFirstName"><?= gettext('First Name') ?> <span class="text-danger">*</span></label>
-            <input type="text" class="form-control form-control-lg" id="guestFirstName" autocomplete="given-name" placeholder="<?= gettext('First Name') ?>">
+            <input type="text" class="form-control form-control-lg" id="guestFirstName" autocomplete="given-name" maxlength="50" placeholder="<?= gettext('First Name') ?>">
             <div class="invalid-feedback"><?= gettext('First name is required') ?></div>
           </div>
           <div class="col-md-6">
             <label class="form-label" for="guestLastName"><?= gettext('Last Name') ?> <span class="text-danger">*</span></label>
-            <input type="text" class="form-control form-control-lg" id="guestLastName" autocomplete="family-name" placeholder="<?= gettext('Last Name') ?>">
+            <input type="text" class="form-control form-control-lg" id="guestLastName" autocomplete="family-name" maxlength="50" placeholder="<?= gettext('Last Name') ?>">
             <div class="invalid-feedback"><?= gettext('Last name is required') ?></div>
           </div>
           <div class="col-md-4">

@@ -1349,6 +1349,7 @@ function cancelScheduledRefresh(): void {
     if (instance) instance.hide();
   }
   scheduleNextRefresh();
+}
 
 /**
  * Show the guest registration modal, resetting any previous form state.
@@ -1558,8 +1559,6 @@ export const kiosk: KioskJSOM = {
   resolveCheckinByModal,
   cancelCheckinByModal,
   cancelScheduledRefresh,
-
-/**
   showGuestRegistrationModal,
   submitGuestRegistration,
 };

@@ -452,6 +452,13 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
     });
 
     $group->post('/registerGuest', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
+        // Authenticate before reading body params to avoid leaking endpoint structure
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
+        }
+        [, , $event] = $result;
+
         $input = $request->getParsedBody();
 
         $firstName = InputUtils::sanitizeText($input['FirstName'] ?? '');
@@ -460,12 +467,14 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         if ($firstName === '' || $lastName === '') {
             return SlimUtils::renderErrorJSON($response, gettext('First name and last name are required'), [], 400);
         }
-
-        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
-        if ($result instanceof Response) {
-            return $result;
+        // Schema enforces minimum 2 characters for first and last name
+        if (mb_strlen($firstName) < 2 || mb_strlen($lastName) < 2) {
+            return SlimUtils::renderErrorJSON($response, gettext('First name and last name must each be at least 2 characters'), [], 400);
         }
-        [, , $event] = $result;
+        // Schema enforces maximum 50 characters for first and last name (per_FirstName / per_LastName VARCHAR(50))
+        if (mb_strlen($firstName) > 50 || mb_strlen($lastName) > 50) {
+            return SlimUtils::renderErrorJSON($response, gettext('First name and last name must each be 50 characters or fewer'), [], 400);
+        }
 
         // Create a new Person record for the walk-in guest
         $person = new Person();
@@ -494,6 +503,9 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             $person->setCellPhone($phone);
         }
         $email = InputUtils::sanitizeText($input['Email'] ?? '');
+        if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid email address'), [], 400);
+        }
         if ($email !== '') {
             $person->setEmail($email);
         }
