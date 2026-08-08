@@ -9,6 +9,7 @@ use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageFundraisersRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Setting\FundraiserEnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -272,4 +273,4 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete fundraiser'), [], 500, $e, $request);
         }
     });
-})->add(ManageFundraisersRoleAuthMiddleware::class);
+})->add(new FundraiserEnabledMiddleware())->add(ManageFundraisersRoleAuthMiddleware::class);
