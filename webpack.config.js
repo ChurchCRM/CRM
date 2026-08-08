@@ -1,7 +1,61 @@
 const path = require('path');
+const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
+
+// Plugin to fix unquoted URLs in CSS (especially fonts)
+class FixCssUrlQuotesPlugin {
+  apply(compiler) {
+    compiler.hooks.afterEmit.tap('FixCssUrlQuotesPlugin', (compilation) => {
+      const outputPath = compiler.outputPath;
+      const missingFiles = [];
+
+      compilation.getAssets().forEach((asset) => {
+        if (asset.name.endsWith('.css')) {
+          const filePath = path.join(outputPath, asset.name);
+          if (fs.existsSync(filePath)) {
+            let content = fs.readFileSync(filePath, 'utf-8');
+
+            // Check for missing font/asset files referenced in url() declarations
+            const urlMatches = content.matchAll(/url\(["']?([^"')\s]+)["']?\)/g);
+            for (const match of urlMatches) {
+              const urlPath = match[1];
+              // Only check relative URLs (not data:, external, or absolute paths)
+              if (!urlPath.startsWith('data:') && !urlPath.startsWith('http') && !urlPath.startsWith('//') && !urlPath.startsWith('/')) {
+                const fullPath = path.join(outputPath, urlPath);
+                if (!fs.existsSync(fullPath)) {
+                  missingFiles.push({ file: asset.name, url: urlPath, fullPath });
+                }
+              }
+            }
+
+            // Add quotes around unquoted URLs
+            content = content.replace(
+              /url\(([^'")\s][^)]*)\)/g,
+              (match, url) => {
+                if (url.startsWith('"') || url.startsWith("'")) {
+                  return match;
+                }
+                return `url("${url}")`;
+              }
+            );
+            fs.writeFileSync(filePath, content, 'utf-8');
+          }
+        }
+      });
+
+      // Report missing files as errors
+      if (missingFiles.length > 0) {
+        const errorMsg = missingFiles
+          .map((f) => `  ❌ ${f.file}: url("${f.url}") → ${f.fullPath}`)
+          .join('\n');
+        console.error('\n⚠️  Missing font/asset files referenced in CSS:\n' + errorMsg + '\n');
+        throw new Error(`${missingFiles.length} missing asset file(s) referenced in CSS`);
+      }
+    });
+  }
+}
 
 module.exports = {
   mode: isProduction ? 'production' : 'development',
@@ -109,5 +163,6 @@ module.exports = {
       filename: '[name].min.css',
       ignoreOrder: false,
     }),
+    new FixCssUrlQuotesPlugin(),
   ],
 };
