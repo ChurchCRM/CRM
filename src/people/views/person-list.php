@@ -62,6 +62,19 @@ $option_name = fn (string $t1, string $t2): string => $t1 . ':' . $t2;
 
 $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
 
+// Build ordered, security-filtered custom field list for export columns.
+// Each entry becomes its own DataTables column (real name as header, formatted value as cell)
+// in the CSV and Print/PDF export.  The existing single 'Custom' filter column is marked
+// no-export so the raw JSON name-list no longer pollutes the export output.
+// We reuse the already-fetched $allPersonCustomFields collection (sorted in PHP) to avoid
+// an extra DB round-trip.
+$exportCustomFields = iterator_to_array($allPersonCustomFields, false);
+usort($exportCustomFields, fn($a, $b) => $a->getOrder() <=> $b->getOrder());
+$exportCustomFields = array_values(array_filter(
+    $exportCustomFields,
+    fn($cf) => AuthenticationManager::getCurrentUser()->isEnabledSecurity($cf->getFieldSecurity())
+));
+
 // Person custom list
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity', 'Id', 'TypeId', 'Special'])->find();
 
@@ -242,7 +255,19 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     foreach ($personListColumns as $column) {
                         // Output all columns - DataTables JS config controls visibility
                         $localizedHeader = $htmlColumnTitleMap[$column->name] ?? $column->name;
-                        echo '<th>' . $localizedHeader . '</th>';
+                        // The 'Custom' column holds filter JSON (field names), not user data;
+                        // exclude it from export and add per-field columns below instead.
+                        if ($column->name === 'Custom') {
+                            echo '<th class="no-export">' . $localizedHeader . '</th>';
+                        } else {
+                            echo '<th>' . $localizedHeader . '</th>';
+                        }
+                    }
+                    // Export columns: one <th> per accessible custom field with real name as header.
+                    // These are hidden on-screen (DataTables visibility config below) but included
+                    // in CSV/Print export so users see actual field values, not the filter JSON.
+                    foreach ($exportCustomFields as $cf) {
+                        echo '<th>' . InputUtils::escapeHTML($cf->getName()) . '</th>';
                     } ?>
                     <th class="no-export w-1"><?= gettext('Actions') ?></th>
                 </tr>
@@ -256,6 +281,18 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             <tr>
                 <?php
                 $columns = $personListColumns;
+                // Fetch custom-field data once per person (single DB round-trip):
+                // returns both the filter name-list (for the hidden 'Custom' column)
+                // and the per-field formatted values (for the export columns).
+                $customFieldsResult  = $person->getCustomFieldsAll(
+                    $allPersonCustomFields,
+                    $CustomMapping,
+                    $CustomList,
+                    $option_name,
+                    $exportCustomFields
+                );
+                $customFilterNames   = $customFieldsResult['filterNames'];
+                $customExportValues  = $customFieldsResult['exportValues'];
                 foreach ($columns as $column) {
                     // Output ALL columns - DataTables JS config controls visibility
                     
@@ -284,7 +321,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         // Skip method call for Family Status column (handled separately below)
                         if (!isset($column->isFamilyStatus) || $column->isFamilyStatus !== true) {
                             if ($column->displayFunction === 'getCustomFields') {
-                                $columnData = [$person, $column->displayFunction]($allPersonCustomFields, $CustomMapping, $CustomList, $option_name);
+                                // Use pre-fetched result from getCustomFieldsAll (no extra DB query)
+                                $columnData = $customFilterNames;
                             } else {
                                 $columnData = [$person, $column->displayFunction]();
                             }
@@ -404,6 +442,14 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     echo '</td>';
                 }
                 ?>
+                <?php
+                // Export columns: per-custom-field values for CSV/Print export.
+                // One <td> per accessible custom field, with the field's real formatted value.
+                // Values come from getCustomFieldsAll() called above (no extra DB query).
+                foreach ($exportCustomFields as $cf) {
+                    echo '<td>' . InputUtils::escapeHTML($customExportValues[$cf->getId()] ?? '') . '</td>';
+                }
+                ?>
                 <td>
                     <div class="dropdown">
                         <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -507,6 +553,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         echo"{ targets:" . $columnId .", visible: false },\n";
                     }
                 }
+                // Export custom-field columns are hidden on-screen but included in the export
+                foreach ($exportCustomFields as $cf) {
+                    $columnId++;
+                    echo "{ targets:" . $columnId . ", visible: false },\n";
+                }
                 ?>
             ],
             columns: [
@@ -545,6 +596,12 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         }
                     }
                     echo json_encode($columnTitle) .",\n";
+                }
+                // Export custom-field columns: one title entry per accessible custom field.
+                // These columns are hidden on-screen (see columnDefs above) but exported.
+                foreach ($exportCustomFields as $cf) {
+                    $columnId++;
+                    echo json_encode(['title' => $cf->getName()], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) . ",\n";
                 }
                 ?>
                 {
