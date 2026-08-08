@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Map\PaddleNumTableMap;
 use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -197,11 +198,11 @@ class FundRaiserService
     }
 
     /**
-     * Returns this-year aggregates for the landing-page stat widgets.
+     * Returns this-fiscal-year aggregates for the landing-page stat widgets.
      *
-     * "This year" means fundraisers whose fr_date falls in the current calendar year.
-     * Two-step approach: first fetch the IDs of this-year's fundraisers via FundRaiserQuery,
-     * then aggregate donated items and paddle numbers for those IDs — no raw SQL join needed.
+     * "This fiscal year" means fundraisers whose fr_date falls within the current fiscal year
+     * as determined by FiscalYearUtils (respects the iFYMonth system configuration).
+     * Previously used a calendar year (Jan 1–Dec 31); this was updated in issue #9378.
      *
      * @return array{activeCount:int, raisedThisYear:float, itemsThisYear:int, buyersThisYear:int}
      */
@@ -209,17 +210,18 @@ class FundRaiserService
     {
         $this->logger->debug('FundRaiserService::getWidgetStats');
 
-        $year = DateTimeUtils::getCurrentYear();
+        // Use fiscal year boundaries instead of calendar year
+        $fyDates   = FiscalYearUtils::getFiscalYearDatesById(FiscalYearUtils::getCurrentFiscalYearId());
+        $yearStart = $fyDates['startDate'];
+        $yearEnd   = $fyDates['endDate'];
 
         // Active fundraisers count (Active + Planning)
         $activeCount = FundRaiserQuery::create()
             ->filterByStatus(['Active', 'Planning'])
             ->count();
 
-        // This-year fundraiser IDs (step 1 of 2-step approach — no FK relations defined)
-        $yearStart = $year . '-01-01';
-        $yearEnd   = $year . '-12-31';
-        $yearIds   = FundRaiserQuery::create()
+        // This-fiscal-year fundraiser IDs (step 1 of 2-step approach)
+        $yearIds = FundRaiserQuery::create()
             ->filterByDate(['min' => $yearStart, 'max' => $yearEnd])
             ->select(['Id'])
             ->find()
@@ -230,8 +232,7 @@ class FundRaiserService
         $buyersThisYear = 0;
 
         if (!empty($yearIds)) {
-            // Item stats for this year's fundraisers
-            // "Raised" mirrors getViewModel(): sold items only (buyer > 0 AND sell > 0).
+            // Item stats for this fiscal year's fundraisers
             $itemRow = DonatedItemQuery::create()
                 ->filterByFrId($yearIds)
                 ->addAsColumn('items', 'COUNT(*)')
@@ -247,7 +248,7 @@ class FundRaiserService
             $raisedThisYear = (float) ($itemRow['raised'] ?? 0);
             $itemsThisYear  = (int)   ($itemRow['items']  ?? 0);
 
-            // Buyer count for this year's fundraisers
+            // Buyer count for this fiscal year's fundraisers
             $buyersThisYear = PaddleNumQuery::create()
                 ->filterByPnFrId($yearIds)
                 ->count();

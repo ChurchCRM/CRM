@@ -61,6 +61,76 @@ class FiscalYearUtils
     }
 
     /**
+     * Compute the date range (startDate, endDate, label, month) for a given fiscal year ID.
+     *
+     * This is the inverse of calculateFiscalYearId:
+     *   - Calendar year (iFYMonth == 1): fyid == year - 1996, so year == fyid + 1996
+     *   - Non-calendar year (iFYMonth > 1): fyStartYear == fyid + 1995, fyEndYear == fyid + 1996
+     *
+     * @param int $fyid Fiscal year ID
+     * @return array{startDate: string, endDate: string, label: string, month: int}
+     */
+    public static function getFiscalYearDatesById(int $fyid): array
+    {
+        $iFYMonth = SystemConfig::getIntValue('iFYMonth');
+
+        if ($iFYMonth === 1) {
+            // Calendar year fiscal year: fyid == year - 1996 => year == fyid + 1996
+            $year = $fyid + 1996;
+            return [
+                'startDate' => $year . '-01-01',
+                'endDate'   => $year . '-12-31',
+                'label'     => (string) $year,
+                'month'     => 1,
+            ];
+        }
+
+        // Non-calendar fiscal year: FY starts in fyStartYear at iFYMonth and ends the month before in fyEndYear
+        $fyStartYear = $fyid + 1995;
+        $fyEndYear   = $fyid + 1996;
+        $fyStartDate = $fyStartYear . '-' . str_pad((string) $iFYMonth, 2, '0', STR_PAD_LEFT) . '-01';
+        $endMonth    = $iFYMonth - 1 === 0 ? 12 : $iFYMonth - 1;
+        $fyEndDate   = $fyEndYear . '-' . str_pad((string) $endMonth, 2, '0', STR_PAD_LEFT) . '-'
+            . date('t', strtotime($fyEndYear . '-' . $endMonth . '-01'));
+        $label       = $fyStartYear . '/' . mb_substr((string) $fyEndYear, 2, 2);
+
+        return [
+            'startDate' => $fyStartDate,
+            'endDate'   => $fyEndDate,
+            'label'     => $label,
+            'month'     => $iFYMonth,
+        ];
+    }
+
+    /**
+     * Build a sorted (newest-first) list of fiscal year options from $oldestFyId to the next FY.
+     *
+     * Each entry is ['id' => int, 'label' => string].
+     * Callers obtain $oldestFyId by querying their own data source (pledges, deposits, etc.).
+     * This helper is intentionally ORM-free so it can be used anywhere.
+     *
+     * @param int $oldestFyId Oldest fiscal year ID to include (defaults to current FY only)
+     * @return array<int, array{id: int, label: string}>
+     */
+    public static function buildFiscalYearList(int $oldestFyId = 0): array
+    {
+        $currentFyId = self::getCurrentFiscalYearId();
+        if ($oldestFyId <= 0) {
+            $oldestFyId = $currentFyId;
+        }
+        $nextFyId = $currentFyId + 1;
+        $years    = [];
+        for ($fyid = max(1, $oldestFyId); $fyid <= $nextFyId; $fyid++) {
+            $years[] = [
+                'id'    => $fyid,
+                'label' => FinancialService::formatFiscalYear($fyid),
+            ];
+        }
+        // newest first
+        return array_reverse($years);
+    }
+
+    /**
      * Renders an HTML <select> dropdown for fiscal year selection.
      * Migrated from PrintFYIDSelect() in Functions.php.
      */

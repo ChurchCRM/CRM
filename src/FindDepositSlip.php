@@ -5,6 +5,9 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
@@ -17,6 +20,13 @@ $sPageSubtitle = gettext('Search and view deposit slip records');
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::redirect('index.php');
 }
+
+// Fiscal Year selector data
+$financialService   = new FinancialService();
+$currentFyid        = FiscalYearUtils::getCurrentFiscalYearId();
+$availableYears     = $financialService->getAvailableDepositFiscalYears();
+// Selected FY: from GET param; 0 = current FY (default)
+$selectedFyid       = isset($_GET['fyid']) ? (int) $_GET['fyid'] : $currentFyid;
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Finance'), '/finance/'],
@@ -64,6 +74,19 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="card">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?php echo gettext('Deposits') . ': '; ?></h3>
+    <!-- Fiscal Year filter -->
+    <div class="ms-3 d-inline-flex align-items-center gap-2">
+      <label for="deposit-slip-fyid" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Fiscal Year') ?>:</label>
+      <select id="deposit-slip-fyid" class="form-select form-select-sm" style="width: auto;">
+        <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
+        <?php foreach ($availableYears as $year): ?>
+        <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
+          <?= InputUtils::escapeHTML($year['label']) ?>
+          <?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
+        </option>
+        <?php endforeach; ?>
+      </select>
+    </div>
   </div>
   <div class="card-body">
     <div class="container-fluid">
@@ -82,5 +105,9 @@ require_once __DIR__ . '/Include/Header.php';
 </div>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/js/FindDepositSlip.js') ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  window.CRM.depositCurrentFyid = <?= (int) $currentFyid ?>;
+  window.CRM.depositSelectedFyid = <?= htmlspecialchars((string) $selectedFyid, ENT_QUOTES, 'UTF-8') ?>;
+</script>
 <?php
 require_once __DIR__ . '/Include/Footer.php';
