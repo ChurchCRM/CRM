@@ -1362,6 +1362,36 @@ cy.get(".modal-footer .btn-secondary").click();           // matches settings pa
 cy.get("#eventEditorModal").should("not.be.visible");     // element is removed, not hidden
 ```
 
+### Bootstrap 5 Modal Textareas — Use `invoke("val", …)` Not `.type()` <!-- learned: 2026-08-08 -->
+
+Bootstrap 5 modals have a focus-trap that can steal keyboard focus mid-delivery,
+causing `cy.type()` to deposit only the first ~10 characters into a textarea. The
+root cause: as keyboard events fire, Bootstrap's `focusin` handler can redirect
+focus to a different modal element between keystrokes.
+
+**Fix:** set textarea values with `invoke("val", text)` instead of `.type(text)`.
+The submit handler (or any code that reads `textarea.value` at event time) will
+receive the complete value because `invoke("val", …)` is a direct DOM-property
+write that bypasses the keyboard-event delivery path.
+
+```javascript
+// ❌ WRONG — Bootstrap 5 focus-trap can cut off delivery after ~10 chars
+cy.get("#confirm-info-data").should("be.visible").click().type(longMessage);
+
+// ✅ CORRECT — sets textarea.value directly; submit handler reads it at click-time
+cy.get("#confirm-info-data").should("be.visible").invoke("val", longMessage);
+cy.get("#onlineVerifyBtn").click();
+```
+
+Note: `invoke("val", …)` does **not** fire `input`/`change` events. If the page
+has event listeners that validate on `input` (e.g. character counter, live
+validation), you also need to trigger those events:
+```javascript
+cy.get("#myTextarea").invoke("val", text).trigger("input");
+```
+For forms that only read `textarea.value` on submit (most ChurchCRM verify/note
+forms), the bare `invoke("val", …)` is sufficient.
+
 ### Tabler Form-Selectgroup (Radio/Checkbox Pills) <!-- learned: 2026-04-06 -->
 
 Tabler hides the actual `<input>` inside `form-selectgroup-item`. Click the parent
