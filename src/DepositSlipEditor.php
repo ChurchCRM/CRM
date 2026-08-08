@@ -41,7 +41,7 @@ if ($iDepositSlipID) {
 }
 
 if ($noDeposit) {
-    RedirectUtils::redirect('FindDepositSlip.php');
+    RedirectUtils::redirect('finance/deposit/search');
 }
 
 $sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number') . ': ' . $iDepositSlipID;
@@ -67,7 +67,7 @@ $currentUser->save();
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Finance'), '/finance/'],
-    [gettext('Deposits'), '/FindDepositSlip.php'],
+    [gettext('Deposits'), '/finance/deposit/search'],
     [gettext('Edit Deposit')],
 ]);
 require_once __DIR__ . '/Include/Header.php';
@@ -76,7 +76,7 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="row mb-3">
   <div class="col-12">
     <div class="d-flex justify-content-between align-items-center">
-      <a href="FindDepositSlip.php" class="btn btn-outline-secondary">
+      <a href="<?= SystemURLs::getRootPath() ?>/finance/deposit/search" class="btn btn-outline-secondary">
         <i class="fa-solid fa-arrow-left"></i><?= gettext('Back to Deposits'); ?>
       </a>
       <div class="btn-group" role="group" aria-label="<?= gettext('Deposit Navigation'); ?>">
