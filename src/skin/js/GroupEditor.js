@@ -351,11 +351,10 @@ function initializeGroupEditor() {
           if (type === "display") {
             let sequenceCell = "";
             if (data > 1) {
-              sequenceCell += `<button type="button" id="roleUp-${full.lst_OptionID}" class="btn btn-sm btn-ghost-secondary rollOrder" title="${i18next.t('Move up')}"><i class="fa-solid fa-arrow-up"></i></button>`;
+              sequenceCell += `<button type="button" id="roleUp-${full.lst_OptionID}" class="btn btn-sm btn-ghost-secondary rollOrder" title="${i18next.t("Move up")}"><i class="fa-solid fa-arrow-up"></i></button>`;
             }
-            sequenceCell += `<span class="mx-2">${data}</span>`;
             if (data != roleCount) {
-              sequenceCell += `<button type="button" id="roleDown-${full.lst_OptionID}" class="btn btn-sm btn-ghost-secondary rollOrder" title="${i18next.t('Move down')}"><i class="fa-solid fa-arrow-down"></i></button>`;
+              sequenceCell += `&nbsp;<button type="button" id="roleDown-${full.lst_OptionID}" class="btn btn-sm btn-ghost-secondary rollOrder" title="${i18next.t("Move down")}"><i class="fa-solid fa-arrow-down"></i></button>`;
             }
             return sequenceCell;
           }
@@ -384,7 +383,7 @@ function initializeGroupEditor() {
 }
 
 // Wait for locales to load before initializing
-$(document).ready(function () {
+$(document).ready(() => {
   window.CRM.onLocalesReady(initializeGroupEditor);
 });
 
