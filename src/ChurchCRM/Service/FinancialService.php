@@ -511,7 +511,7 @@ class FinancialService
             if ($onePledge !== null && $onePledge->getDepId()) {
                 $deposit = DepositQuery::create()->findOneById($onePledge->getDepId(), $con);
                 if ($deposit !== null && $deposit->getClosed()) {
-                    throw new \RuntimeException(gettext('Cannot edit a payment in a closed deposit'));
+                    throw new \DomainException(gettext('Cannot edit a payment in a closed deposit'));
                 }
             }
             // Remove orphaned denomination rows. pledge_denominations_pdem has no FK

@@ -332,7 +332,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Pledge group not found'), [], 404);
         } catch (\JsonException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid payment data'), [], 400, $e, $request);
-        } catch (\RuntimeException $e) {
+        } catch (\DomainException $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 409);
         } catch (\Exception $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, $e, $request);
