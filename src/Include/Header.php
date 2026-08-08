@@ -54,7 +54,7 @@ $MenuFirst = 1;
       // Ensure window.CRM exists; body script will Object.assign more properties later.
       window.CRM = window.CRM || {};
 
-      var mql = window.matchMedia('(prefers-color-scheme: dark)');
+      var mql = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
       var _listening = false;
 
       function _applyDark() {
@@ -63,11 +63,13 @@ $MenuFirst = 1;
       function _applyLight() {
         document.documentElement.removeAttribute('data-bs-theme');
       }
-      function _applySystem() {
-        if (mql.matches) { _applyDark(); } else { _applyLight(); }
-      }
       function _onChange(e) {
         if (e.matches) { _applyDark(); } else { _applyLight(); }
+      }
+      // Delegate to _onChange so both paths share the same dark/light logic.
+      // Falls back to light when matchMedia is unavailable (mql === null).
+      function _applySystem() {
+        _onChange({ matches: mql ? mql.matches : false });
       }
 
       /**
@@ -79,7 +81,7 @@ $MenuFirst = 1;
         setMode: function (mode) {
           if (mode === 'auto') {
             _applySystem();
-            if (!_listening) {
+            if (mql && !_listening) {
               mql.addEventListener('change', _onChange);
               _listening = true;
             }

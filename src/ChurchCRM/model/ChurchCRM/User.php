@@ -659,7 +659,7 @@ class User extends BaseUser
     public function getThemeMode(): string
     {
         $raw = $this->getSettingValue(UserSetting::UI_STYLE);
-        if ($raw === '' || $raw === 'auto') {
+        if ($raw === null || $raw === '' || $raw === 'auto') {
             return 'auto';
         }
         if ($raw === 'dark') {
