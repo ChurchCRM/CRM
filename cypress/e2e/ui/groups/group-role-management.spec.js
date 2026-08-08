@@ -12,6 +12,10 @@
  * Both groups are deleted in after() for full cleanup.
  *
  * Admin session is required throughout (bManageGroups permission).
+ *
+ * NOTE: Role names are rendered as <input class="roleName" value="..."> in the DataTable,
+ * NOT as visible text nodes. Use input.roleName[value="..."] attribute-selector assertions
+ * instead of cy.contains() / should("contain") for role-name checks in #groupRoleTable.
  */
 describe("Group Role Management", () => {
   let testGroupAddDeleteId;
@@ -94,7 +98,8 @@ describe("Group Role Management", () => {
       cy.get("#addRoleModal .btn-secondary").click();
 
       cy.get("#addRoleModal").should("not.be.visible");
-      cy.get("#groupRoleTable").should("not.contain", roleName);
+      // Role names live in <input class="roleName" value="..."> — check by attribute
+      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`).should("not.exist");
     });
 
     it("successfully adds a role: modal closes, row appears in table, success toast shown", () => {
@@ -113,7 +118,8 @@ describe("Group Role Management", () => {
       cy.wait("@addRole").its("response.statusCode").should("eq", 200);
 
       cy.get("#addRoleModal").should("not.be.visible");
-      cy.get("#groupRoleTable").should("contain", roleName);
+      // Role names live in <input class="roleName" value="..."> — check by attribute
+      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`).should("exist");
       cy.get(".notyf__toast--success", { timeout: 5000 }).should("be.visible");
     });
   });
@@ -130,9 +136,10 @@ describe("Group Role Management", () => {
       cy.get("#groupRoleTable .deleteRole:not(.disabled)").first().click();
 
       cy.get("#deleteRoleModal").should("be.visible");
+      // #deleteRoleMessage is populated via $.text() — IS a text node, .contain() works here
       cy.get("#deleteRoleMessage").should("contain", "Member");
 
-      // Clean up: close the modal so subsequent tests start with clean state
+      // Close the modal so subsequent tests start clean
       cy.get("#deleteRoleModal .btn-secondary").click();
       cy.get("#deleteRoleModal").should("not.be.visible");
     });
@@ -147,7 +154,7 @@ describe("Group Role Management", () => {
       cy.get("#lastRoleWarning").should("be.visible");
       cy.get("#confirmDeleteRole").should("be.disabled");
 
-      // Clean up: close the modal so subsequent tests start with clean state
+      // Close the modal so subsequent tests start clean
       cy.get("#deleteRoleModal .btn-secondary").click();
       cy.get("#deleteRoleModal").should("not.be.visible");
     });
@@ -162,7 +169,8 @@ describe("Group Role Management", () => {
       cy.get("#deleteRoleModal .btn-secondary").click();
 
       cy.get("#deleteRoleModal").should("not.be.visible");
-      cy.get("#groupRoleTable").should("contain", "Member");
+      // "Member" is in <input class="roleName" value="Member"> — check by attribute
+      cy.get('#groupRoleTable input.roleName[value="Member"]').should("exist");
     });
 
     it("successfully deletes a role: row removed from table, success toast shown", () => {
@@ -181,15 +189,17 @@ describe("Group Role Management", () => {
       cy.get("#submitNewRole").click();
       cy.wait("@addRole").its("response.statusCode").should("eq", 200);
       cy.get("#addRoleModal").should("not.be.visible");
-      cy.get("#groupRoleTable").should("contain", roleName);
+      // Role names live in <input class="roleName" value="..."> — check by attribute
+      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`).should("exist");
 
-      // Delete the newly added role
-      cy.contains("#groupRoleTable tr", roleName)
+      // Locate this role's delete button via its input sibling
+      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`)
+        .closest("tr")
         .find(".deleteRole:not(.disabled)")
         .click();
 
       cy.get("#deleteRoleModal").should("be.visible");
-      // Last-role warning must be hidden (2+ roles exist)
+      // Last-role warning must be hidden (2+ roles exist now)
       cy.get("#lastRoleWarning").should("have.class", "d-none");
       cy.get("#confirmDeleteRole").should("not.be.disabled");
 
@@ -197,7 +207,8 @@ describe("Group Role Management", () => {
       cy.wait("@deleteRole").its("response.statusCode").should("eq", 200);
 
       cy.get("#deleteRoleModal").should("not.be.visible");
-      cy.get("#groupRoleTable").should("not.contain", roleName);
+      // Role should no longer be in the table
+      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`).should("not.exist");
       cy.get(".notyf__toast--success", { timeout: 5000 }).should("be.visible");
     });
   });
@@ -210,12 +221,11 @@ describe("Group Role Management", () => {
 
     it("Delete button is disabled with a title for Student and Teacher roles", () => {
       // Sunday school groups (e.g. group 1 - Angels class) have Student/Teacher roles.
-      // GroupEditor.js marks these buttons with both the HTML disabled attribute and
-      // the Bootstrap .disabled CSS class, so either [disabled] or .disabled selectors work.
+      // GroupEditor.js renders protected buttons with CSS class .disabled.
       cy.visit("/groups/editor/1");
       cy.get("#groupRoleTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
 
-      cy.get("#groupRoleTable [id^='roleDelete-'][disabled]")
+      cy.get("#groupRoleTable .deleteRole.disabled")
         .first()
         .should("have.attr", "title")
         .and("not.be.empty");
