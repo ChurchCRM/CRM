@@ -86,7 +86,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <?php if ($thisGroup->getHasSpecialProps()): ?>
         <div>
           <p class="text-muted mb-2"><?= gettext('Custom properties for this group') ?></p>
-          <span class="badge badge-success"><?= gettext('Enabled') ?></span>
+          <span class="badge bg-success"><?= gettext('Enabled') ?></span>
         </div>
         <div class="d-flex gap-2">
           <button type="button" id="disableGroupProps" class="btn btn-sm btn-ghost-danger groupSpecificProperties">
@@ -99,7 +99,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <?php else: ?>
         <div>
           <p class="text-muted mb-2"><?= gettext('Add custom properties specific to this group') ?></p>
-          <span class="badge badge-secondary"><?= gettext('Disabled') ?></span>
+          <span class="badge bg-secondary"><?= gettext('Disabled') ?></span>
         </div>
         <button type="button" id="enableGroupProps" class="btn btn-sm btn-ghost-success groupSpecificProperties">
           <i class="fa-solid fa-toggle-off me-1"></i><?= gettext('Enable') ?>

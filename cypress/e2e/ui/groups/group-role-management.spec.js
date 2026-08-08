@@ -3,13 +3,14 @@
 /**
  * Group Role Management UI Tests — Issue #9380
  *
- * Creates two fresh test groups in before() so no test depends on hardcoded seed data:
+ * Creates three fresh test groups in before() so no test depends on hardcoded seed data:
  *  - testGroupAddDeleteId  — for add/delete happy-path tests (may accumulate roles)
  *  - testGroupSingleId     — for last-role boundary tests (never mutated; always 1 "Member")
+ *  - testGroupSundayId     — Sunday-school type; gets Teacher + Student roles via postInsert
  *
  * The Group model's postInsert hook creates exactly one "Member" role for every new group,
- * so both groups start in a known state without any extra seed dependency.
- * Both groups are deleted in after() for full cleanup.
+ * and Teacher + Student roles for Sunday-school groups.
+ * All three groups are deleted in after() for full cleanup.
  *
  * Admin session is required throughout (bManageGroups permission).
  *
@@ -60,6 +61,7 @@ function clickDeleteForRole(roleName) {
 describe("Group Role Management", () => {
   let testGroupAddDeleteId;
   let testGroupSingleId;
+  let testGroupSundayId;
 
   before(() => {
     // Use API-key auth (makePrivateAdminAPICall) so we don't depend on cy.session()
@@ -82,19 +84,30 @@ describe("Group Role Management", () => {
     ).then((resp) => {
       testGroupSingleId = resp.body.Id;
     });
+
+    // Create a Sunday-school group — postInsert gives it Teacher + Student roles
+    cy.makePrivateAdminAPICall(
+      "POST",
+      "/api/groups/",
+      { groupName: `RoleMgmt-Sunday-${Date.now()}`, description: "", isSundaySchool: true },
+      200,
+    ).then((resp) => {
+      testGroupSundayId = resp.body.Id;
+    });
   });
 
   after(() => {
     // Hard-fail if IDs were never set — a silent skip would leave orphaned groups in
     // the DB and could cause flakiness in unrelated tests.
-    if (!testGroupAddDeleteId || !testGroupSingleId) {
+    if (!testGroupAddDeleteId || !testGroupSingleId || !testGroupSundayId) {
       throw new Error(
         `Test group IDs were never assigned — before() likely failed.\n` +
-          `testGroupAddDeleteId=${testGroupAddDeleteId}, testGroupSingleId=${testGroupSingleId}`,
+          `testGroupAddDeleteId=${testGroupAddDeleteId}, testGroupSingleId=${testGroupSingleId}, testGroupSundayId=${testGroupSundayId}`,
       );
     }
     cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupAddDeleteId}`, null, 200);
     cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupSingleId}`, null, 200);
+    cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupSundayId}`, null, 200);
   });
 
   beforeEach(() => cy.setupAdminSession());
@@ -258,9 +271,9 @@ describe("Group Role Management", () => {
     beforeEach(() => cy.setupAdminSession({ forceLogin: true }));
 
     it("Delete button is disabled with a title for Student and Teacher roles", () => {
-      // Sunday school groups (e.g. group 1 - Angels class) have Student/Teacher roles.
-      // GroupEditor.js renders protected buttons with CSS class .disabled.
-      cy.visit("/groups/editor/1");
+      // Use the dynamically-created Sunday-school group (Teacher + Student roles)
+      // to avoid any dependency on hardcoded seed IDs.
+      cy.visit(`/groups/editor/${testGroupSundayId}`);
       cy.get("#groupRoleTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
 
       cy.get("#groupRoleTable .deleteRole.disabled")
