@@ -74,6 +74,7 @@ describe("Standard User Settings Page", () => {
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
         cy.get("#tab-appearance").should("be.visible");
 
+        cy.get("#themeModeAuto").should("exist");
         cy.get("#themeModeLight").should("exist");
         cy.get("#themeModeDark").should("exist");
 
