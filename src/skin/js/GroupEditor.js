@@ -351,11 +351,11 @@ function initializeGroupEditor() {
           if (type === "display") {
             let sequenceCell = "";
             if (data > 1) {
-              sequenceCell += `<button type="button" id="roleUp-${full.lst_OptionID}" class="btn rollOrder"> <i class="fa-solid fa-arrow-up"></i></button>&nbsp;`;
+              sequenceCell += `<button type="button" id="roleUp-${full.lst_OptionID}" class="btn btn-sm btn-ghost-secondary rollOrder" title="${i18next.t('Move up')}"><i class="fa-solid fa-arrow-up"></i></button>`;
             }
-            sequenceCell += data;
+            sequenceCell += `<span class="mx-2">${data}</span>`;
             if (data != roleCount) {
-              sequenceCell += `&nbsp;<button type="button" id="roleDown-${full.lst_OptionID}" class="btn rollOrder"> <i class="fa-solid fa-arrow-down"></i></button>`;
+              sequenceCell += `<button type="button" id="roleDown-${full.lst_OptionID}" class="btn btn-sm btn-ghost-secondary rollOrder" title="${i18next.t('Move down')}"><i class="fa-solid fa-arrow-down"></i></button>`;
             }
             return sequenceCell;
           }

@@ -138,9 +138,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="row">
           <div class="col-sm-6">
             <input type="submit" id="saveGroup" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupSubmit">
-            <a href="<?= $sRootPath ?>/groups/dashboard" class="btn btn-secondary">
-              <i class="fa fa-arrow-left"></i><?= gettext('Back to Group List') ?>
-            </a>
           </div>
         </div>
       </div>
