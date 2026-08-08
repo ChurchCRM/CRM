@@ -256,40 +256,31 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="card-status-top bg-secondary"></div>
   <div class="card-header d-flex justify-content-between align-items-center">
     <h3 class="card-title mb-0">
-      <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?> 
-      <span class="badge bg-light text-dark text-dark" id="payment-count">0</span>
+      <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?>
+      <span class="badge bg-blue-lt text-blue" id="payment-count">0</span>
     </h3>
-    <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
-    <div class="btn-group" role="group">
-      <button type="submit" class="btn btn-sm btn-primary" name="DepositSlipLoadAuthorized">
-        <i class="fa-solid fa-sync"></i><?= gettext('Load Authorized'); ?>
-      </button>
-      <button type="submit" class="btn btn-sm btn-warning" name="DepositSlipRunTransactions">
-        <i class="fa-solid fa-play-circle"></i><?= gettext('Run Transactions'); ?>
-      </button>
+    <div class="d-flex gap-2">
+      <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()): ?>
+        <button type="button" id="deleteSelectedRows" class="btn btn-sm btn-danger" disabled>
+          <i class="fa-solid fa-trash-can"></i><?php echo gettext('Delete Selected'); ?>
+        </button>
+      <?php endif; ?>
+      <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
+      <div class="btn-group" role="group">
+        <button type="submit" class="btn btn-sm btn-primary" name="DepositSlipLoadAuthorized">
+          <i class="fa-solid fa-sync"></i><?= gettext('Load Authorized'); ?>
+        </button>
+        <button type="submit" class="btn btn-sm btn-warning" name="DepositSlipRunTransactions">
+          <i class="fa-solid fa-play-circle"></i><?= gettext('Run Transactions'); ?>
+        </button>
+      </div>
+      <?php endif; ?>
     </div>
-    <?php endif; ?>
   </div>
   <div class="card-body p-0">
-    <div class="px-3 py-3 border-bottom bg-light">
-      <!-- Subtle spacing -->
-    </div>
     <div style="overflow-x: clip; overflow-y: visible;">
       <table class="table table-hover mb-0" id="paymentsTable"></table>
     </div>
-    <?php
-    if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()) {
-        if ($thisDeposit->getType() == 'Bank') {
-            ?>
-    <div class="card-footer">
-      <button type="button" id="deleteSelectedRows" class="btn btn-sm btn-danger" disabled>
-        <i class="fa-solid fa-trash-can"></i><?php echo gettext('Delete Selected'); ?>
-      </button>
-    </div>
-            <?php
-        }
-    }
-    ?>
   </div>
 </div>
 
@@ -358,6 +349,12 @@ require_once __DIR__ . '/Include/Header.php';
     font-size: 0.75rem;
     padding: 0.35rem 0.65rem;
     font-weight: 500;
+}
+#paymentsTable .dropdown {
+    display: inline-block;
+}
+#paymentsTable .dropdown-menu {
+    min-width: auto;
 }
 .stat-card {
     padding: 1.25rem 1rem;
