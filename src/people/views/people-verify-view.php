@@ -33,6 +33,10 @@ if ($emailErrorReason !== '') {
             $emailAlertClass = 'danger';
             $emailAlertIcon  = 'ti ti-cloud-off';
             break;
+        case ConfirmReportEmailResult::STATUS_EMAIL_DISABLED:
+            $emailAlertClass = 'danger';
+            $emailAlertIcon  = 'ti ti-mail-off';
+            break;
         case ConfirmReportEmailResult::STATUS_PARTIAL_FAILURE:
             $emailAlertClass = 'warning';
             $emailAlertIcon  = 'ti ti-alert-triangle';

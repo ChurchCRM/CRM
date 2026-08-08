@@ -19,6 +19,9 @@ class ConfirmReportEmailResult
     /** Every send attempt failed (SMTP/connection error or email disabled). */
     public const STATUS_SMTP_FAILURE = 'smtp_failure';
 
+    /** Route guard: email is not configured in System Settings. */
+    public const STATUS_EMAIL_DISABLED = 'email_disabled';
+
     /** At least one family was emailed but at least one failed. */
     public const STATUS_PARTIAL_FAILURE = 'partial_failure';
 
@@ -66,6 +69,8 @@ class ConfirmReportEmailResult
                 return gettext('No families with an email address were found. Nothing was sent.');
             case self::STATUS_SMTP_FAILURE:
                 return gettext('All email sends failed. Please check your SMTP settings in System Settings.');
+            case self::STATUS_EMAIL_DISABLED:
+                return gettext('Email is not configured. Please configure SMTP settings in System Settings.');
             case self::STATUS_PARTIAL_FAILURE:
                 $total = $sentCount + $failedCount;
                 return sprintf(

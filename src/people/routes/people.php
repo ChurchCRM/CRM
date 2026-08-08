@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\ConfirmReportEmailResult;
 use ChurchCRM\Service\ConfirmReportService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -107,15 +108,15 @@ function sendVerifyReportEmail(Request $request, Response $response, array $args
         'MenuOptions'
     );
 
-    if (!SystemConfig::isEmailEnabled()) {
-        // Detect AJAX requests — these get a JSON response instead of a redirect
-        $isAjax = $request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest'
-            || str_contains(strtolower($request->getHeaderLine('Accept')), 'application/json');
+    // Detect AJAX requests — these get a JSON response instead of a redirect
+    $isAjax = $request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest'
+        || str_contains(strtolower($request->getHeaderLine('Accept')), 'application/json');
 
+    if (!SystemConfig::isEmailEnabled()) {
         if ($isAjax) {
             return SlimUtils::renderErrorJSON($response, gettext('Email is not configured. Please configure SMTP settings in System Settings.'), [], 400);
         }
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=1&reason=email_disabled');
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=1&reason=' . ConfirmReportEmailResult::STATUS_EMAIL_DISABLED);
     }
 
     $params = array_merge($request->getQueryParams(), (array) ($request->getParsedBody() ?? []));
@@ -123,10 +124,6 @@ function sendVerifyReportEmail(Request $request, Response $response, array $args
         ? InputUtils::filterInt($params['familyId'])
         : null;
     $updated = !empty($params['updated']);
-
-    // Detect AJAX requests — these get a JSON response instead of a redirect
-    $isAjax = $request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest'
-        || str_contains(strtolower($request->getHeaderLine('Accept')), 'application/json');
 
     try {
         $service = new ConfirmReportService();
