@@ -645,6 +645,30 @@ class User extends BaseUser
         return null;
     }
 
+    /**
+     * Returns the effective theme mode for this user.
+     *
+     * Maps the raw ui.style setting to a canonical value:
+     *   '' (unset) => 'auto'  — users who never chose a theme default to system preference
+     *   'auto'     => 'auto'
+     *   'default'  => 'default' (explicit light)
+     *   'dark'     => 'dark'
+     *
+     * @return string 'auto' | 'default' | 'dark'
+     */
+    public function getThemeMode(): string
+    {
+        $raw = $this->getSettingValue(UserSetting::UI_STYLE);
+        if ($raw === null || $raw === '' || $raw === 'auto') {
+            return 'auto';
+        }
+        if ($raw === 'dark') {
+            return 'dark';
+        }
+
+        return 'default';
+    }
+
     public function getStyle(): string
     {
         $skin = $this->getSetting(UserSetting::UI_STYLE) ?? 'skin-red';
