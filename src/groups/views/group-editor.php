@@ -120,29 +120,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <?php endif; ?>
           </div>
         </div>
-        <br>
-        <div class="row">
-          <div class="col-sm-6">
-            <label><?= gettext('Group Specific Properties') ?>:</label>
-            <div class="d-flex align-items-center gap-2">
-              <?php if ($thisGroup->getHasSpecialProps()): ?>
-                <span class="badge badge-success"><?= gettext('Enabled') ?></span>
-                <button type="button" id="disableGroupProps" class="btn btn-sm btn-ghost-danger groupSpecificProperties">
-                  <i class="fa-solid fa-toggle-on me-1"></i><?= gettext('Disable') ?>
-                </button>
-                <a class="btn btn-sm btn-primary" href="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form">
-                  <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Form') ?>
-                </a>
-              <?php else: ?>
-                <span class="badge badge-secondary"><?= gettext('Disabled') ?></span>
-                <button type="button" id="enableGroupProps" class="btn btn-sm btn-ghost-success groupSpecificProperties">
-                  <i class="fa-solid fa-toggle-off me-1"></i><?= gettext('Enable') ?>
-                </button>
-              <?php endif; ?>
-            </div>
-          </div>
-        </div>
-        <br>
         <div class="row">
           <div class="col-sm-6">
             <input type="submit" id="saveGroup" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupSubmit">
@@ -150,6 +127,37 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
       </div>
     </form>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Group Specific Properties') ?></h3>
+  </div>
+  <div class="card-body">
+    <div class="d-flex align-items-center gap-3">
+      <?php if ($thisGroup->getHasSpecialProps()): ?>
+        <div>
+          <p class="text-muted mb-0"><?= gettext('Custom properties for this group') ?></p>
+          <span class="badge badge-success"><?= gettext('Enabled') ?></span>
+        </div>
+        <div class="ms-auto d-flex gap-2">
+          <button type="button" id="disableGroupProps" class="btn btn-sm btn-ghost-danger groupSpecificProperties">
+            <i class="fa-solid fa-toggle-on me-1"></i><?= gettext('Disable') ?>
+          </button>
+          <a class="btn btn-sm btn-primary" href="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form">
+            <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Form') ?>
+          </a>
+        </div>
+      <?php else: ?>
+        <div>
+          <p class="text-muted mb-0"><?= gettext('Add custom properties specific to this group') ?></p>
+          <span class="badge badge-secondary"><?= gettext('Disabled') ?></span>
+        </div>
+        <button type="button" id="enableGroupProps" class="btn btn-sm btn-ghost-success groupSpecificProperties ms-auto">
+          <i class="fa-solid fa-toggle-off me-1"></i><?= gettext('Enable') ?>
+        </button>
+      <?php endif; ?>
+    </div>
   </div>
 </div>
 <div class="card">
