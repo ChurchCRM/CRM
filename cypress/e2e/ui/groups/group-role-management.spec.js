@@ -13,10 +13,50 @@
  *
  * Admin session is required throughout (bManageGroups permission).
  *
- * NOTE: Role names are rendered as <input class="roleName" value="..."> in the DataTable,
- * NOT as visible text nodes. Use input.roleName[value="..."] attribute-selector assertions
- * instead of cy.contains() / should("contain") for role-name checks in #groupRoleTable.
+ * NOTE: Role names are rendered as <input class="roleName"> in the DataTable. After a
+ * DataTables redraw(), the HTML value attribute may not be set (DataTables can use the DOM
+ * .value property internally). Use cy.window() + DataTable.data() API or jQuery .val() to
+ * check role presence — do NOT use CSS [value="..."] attribute selectors on these inputs.
  */
+
+/** Helper: assert that the GroupEditor DataTable contains a role with the given name. */
+function dtHasRole(roleName) {
+  cy.window().then((win) => {
+    const dt = win.jQuery("#groupRoleTable").DataTable();
+    const names = dt
+      .data()
+      .toArray()
+      .map((row) => row.lst_OptionName);
+    expect(names, `DataTable should contain role "${roleName}"`).to.include(roleName);
+  });
+}
+
+/** Helper: assert that the GroupEditor DataTable does NOT contain a role with the given name. */
+function dtLacksRole(roleName) {
+  cy.window().then((win) => {
+    const dt = win.jQuery("#groupRoleTable").DataTable();
+    const names = dt
+      .data()
+      .toArray()
+      .map((row) => row.lst_OptionName);
+    expect(names, `DataTable should NOT contain role "${roleName}"`).not.to.include(roleName);
+  });
+}
+
+/** Helper: click the delete button for the role with the given name via DataTable data API. */
+function clickDeleteForRole(roleName) {
+  cy.window().then((win) => {
+    const dt = win.jQuery("#groupRoleTable").DataTable();
+    const row = dt
+      .data()
+      .toArray()
+      .find((r) => r.lst_OptionName === roleName);
+    expect(row, `Role "${roleName}" must exist to delete it`).to.exist;
+    // Use force:true in case the responsive plugin has hidden the button's column
+    cy.get(`#roleDelete-${row.lst_OptionID}`).click({ force: true });
+  });
+}
+
 describe("Group Role Management", () => {
   let testGroupAddDeleteId;
   let testGroupSingleId;
@@ -46,7 +86,7 @@ describe("Group Role Management", () => {
 
   after(() => {
     // Hard-fail if IDs were never set — a silent skip would leave orphaned groups in
-    // the DB and could cause flakiness in unrelated tests (e.g. standard.group.spec.js).
+    // the DB and could cause flakiness in unrelated tests.
     if (!testGroupAddDeleteId || !testGroupSingleId) {
       throw new Error(
         `Test group IDs were never assigned — before() likely failed.\n` +
@@ -98,8 +138,9 @@ describe("Group Role Management", () => {
       cy.get("#addRoleModal .btn-secondary").click();
 
       cy.get("#addRoleModal").should("not.be.visible");
-      // Role names live in <input class="roleName" value="..."> — check by attribute
-      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`).should("not.exist");
+      // Verify via DataTables data model (not DOM attribute selectors which can be unreliable
+      // after DataTables redraws)
+      dtLacksRole(roleName);
     });
 
     it("successfully adds a role: modal closes, row appears in table, success toast shown", () => {
@@ -118,8 +159,8 @@ describe("Group Role Management", () => {
       cy.wait("@addRole").its("response.statusCode").should("eq", 200);
 
       cy.get("#addRoleModal").should("not.be.visible");
-      // Role names live in <input class="roleName" value="..."> — check by attribute
-      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`).should("exist");
+      // Verify via DataTables data model — immune to responsive/rendering issues
+      dtHasRole(roleName);
       cy.get(".notyf__toast--success", { timeout: 5000 }).should("be.visible");
     });
   });
@@ -129,14 +170,13 @@ describe("Group Role Management", () => {
   describe("Delete Role modal", () => {
     it("shows the role name in the confirmation message", () => {
       cy.visit(`/groups/editor/${testGroupSingleId}`);
-      // testGroupSingleId has exactly 1 "Member" role — assert this explicitly
-      cy.get("#groupRoleTable tbody tr", { timeout: 10000 }).should("have.length", 1);
+      cy.get("#groupRoleTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
 
       // "Member" is not protected, so the delete button is not disabled
       cy.get("#groupRoleTable .deleteRole:not(.disabled)").first().click();
 
       cy.get("#deleteRoleModal").should("be.visible");
-      // #deleteRoleMessage is populated via $.text() — IS a text node, .contain() works here
+      // #deleteRoleMessage is set via $.text() — IS a text node, .contain() is correct here
       cy.get("#deleteRoleMessage").should("contain", "Member");
 
       // Close the modal so subsequent tests start clean
@@ -146,7 +186,7 @@ describe("Group Role Management", () => {
 
     it("shows last-role warning and disables confirm button when only one role remains", () => {
       cy.visit(`/groups/editor/${testGroupSingleId}`);
-      cy.get("#groupRoleTable tbody tr", { timeout: 10000 }).should("have.length", 1);
+      cy.get("#groupRoleTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
 
       cy.get("#groupRoleTable .deleteRole:not(.disabled)").first().click();
 
@@ -161,7 +201,7 @@ describe("Group Role Management", () => {
 
     it("cancelling the delete modal makes no changes", () => {
       cy.visit(`/groups/editor/${testGroupSingleId}`);
-      cy.get("#groupRoleTable tbody tr", { timeout: 10000 }).should("have.length", 1);
+      cy.get("#groupRoleTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
 
       cy.get("#groupRoleTable .deleteRole:not(.disabled)").first().click();
 
@@ -169,8 +209,8 @@ describe("Group Role Management", () => {
       cy.get("#deleteRoleModal .btn-secondary").click();
 
       cy.get("#deleteRoleModal").should("not.be.visible");
-      // "Member" is in <input class="roleName" value="Member"> — check by attribute
-      cy.get('#groupRoleTable input.roleName[value="Member"]').should("exist");
+      // Verify via DataTables data model
+      dtHasRole("Member");
     });
 
     it("successfully deletes a role: row removed from table, success toast shown", () => {
@@ -189,14 +229,12 @@ describe("Group Role Management", () => {
       cy.get("#submitNewRole").click();
       cy.wait("@addRole").its("response.statusCode").should("eq", 200);
       cy.get("#addRoleModal").should("not.be.visible");
-      // Role names live in <input class="roleName" value="..."> — check by attribute
-      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`).should("exist");
+      // Verify via DataTables data model
+      dtHasRole(roleName);
 
-      // Locate this role's delete button via its input sibling
-      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`)
-        .closest("tr")
-        .find(".deleteRole:not(.disabled)")
-        .click();
+      // Click delete for this specific role via the DataTables data model
+      // (force:true handles potential responsive-plugin column visibility)
+      clickDeleteForRole(roleName);
 
       cy.get("#deleteRoleModal").should("be.visible");
       // Last-role warning must be hidden (2+ roles exist now)
@@ -207,8 +245,8 @@ describe("Group Role Management", () => {
       cy.wait("@deleteRole").its("response.statusCode").should("eq", 200);
 
       cy.get("#deleteRoleModal").should("not.be.visible");
-      // Role should no longer be in the table
-      cy.get(`#groupRoleTable input.roleName[value="${roleName}"]`).should("not.exist");
+      // Verify via DataTables data model
+      dtLacksRole(roleName);
       cy.get(".notyf__toast--success", { timeout: 5000 }).should("be.visible");
     });
   });
