@@ -239,15 +239,6 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/verify-email-preview', function (Request $request, Response $response, array $args): Response {
-        if (!SystemConfig::isEmailEnabled()) {
-            return SlimUtils::renderErrorJSON(
-                $response,
-                gettext('Email is not configured. Please configure SMTP settings in System Settings.'),
-                [],
-                400
-            );
-        }
-
         try {
             $queryParams = $request->getQueryParams();
             $familyId    = isset($queryParams['familyId']) && $queryParams['familyId'] !== ''
