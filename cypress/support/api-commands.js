@@ -167,6 +167,24 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivateMenuOptionsAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // menuoptions.user (id=902): usr_MenuOptions=1, all other permission flags 0,
+        // non-admin, non-EditSelf. Used to verify EditRecords gate on person/family
+        // property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but
+        // is blocked by EditRecordsRoleAuthMiddleware (expects 403 on record routes).
+        return cy.makePrivateAPICall(
+            Cypress.env("menuoptions.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivateAPICall",
     (key, method, url, body, expectedStatus = 200, timeoutMs) => {
         const requestOptions = {

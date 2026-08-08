@@ -1,11 +1,10 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
-use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DepositService;
+use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Slim\Middleware\Api\DepositMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
@@ -187,12 +186,64 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Get(
+     *     path="/deposits/csv",
+     *     summary="Bulk-download a RFC 4180-compliant CSV of payments for multiple deposits (Finance role required)",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="ids", in="query", required=true,
+     *         @OA\Schema(type="string"),
+     *         description="Comma-separated list of deposit IDs, e.g. '1,2,3'"
+     *     ),
+     *     @OA\Response(response=200, description="CSV file attachment with payment data for all requested deposits"),
+     *     @OA\Response(response=400, description="No valid deposit IDs provided"),
+     *     @OA\Response(response=404, description="No payments found for the requested deposits"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->get('/csv', function (Request $request, Response $response, array $args): Response {
+        $queryParams  = $request->getQueryParams();
+        $idsParam     = $queryParams['ids'] ?? '';
+        $ids          = array_filter(array_map('intval', explode(',', $idsParam)), fn(int $id): bool => $id > 0);
+
+        if (empty($ids)) {
+            return SlimUtils::renderErrorJSON($response, gettext('No valid deposit IDs provided'), [], 400);
+        }
+
+        $depositService = new DepositService();
+        $rows = $depositService->getDepositsForExport(array_values($ids));
+
+        if (empty($rows)) {
+            return SlimUtils::renderErrorJSON($response, gettext('No payments found for the selected deposits'), [], 404);
+        }
+
+        $filename = 'ChurchCRM-Deposits-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
+        // Headers defined once in DepositService::EXPORT_HEADERS — all CSV endpoints share this list
+        $headers  = array_map('gettext', DepositService::EXPORT_HEADERS);
+
+        $exporter = new CsvExporter();
+        $exporter->insertHeaders($headers);
+        foreach ($rows as $row) {
+            $exporter->insertRow(array_values($row));
+        }
+
+        $response = $response
+            ->withHeader('Content-Type', 'text/csv; charset=UTF-8')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+        $response->getBody()->write($exporter->getContent());
+
+        return $response;
+    });
+
+    /**
+     * @OA\Get(
      *     path="/deposits/{id}/csv",
-     *     summary="Download a CSV export of payments for a deposit (Finance role required)",
+     *     summary="Download a RFC 4180-compliant CSV of payments for a single deposit (Finance role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="CSV file attachment with pledge/payment data"),
+     *     @OA\Response(response=200, description="CSV file attachment with payment data"),
+     *     @OA\Response(response=404, description="No payments found for this deposit"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required")
      * )
@@ -200,21 +251,29 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->get('/{id:[0-9]+}/csv', function (Request $request, Response $response, array $args): Response {
         $id = (int) $args['id'];
 
+        $depositService = new DepositService();
+        $rows = $depositService->getDepositsForExport([$id]);
+
+        if (empty($rows)) {
+            return SlimUtils::renderJSON(
+                $response->withStatus(404),
+                ['message' => gettext('No Payments on this Deposit')]
+            );
+        }
+
         $filename = 'ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
-        $csvData = PledgeQuery::create()->filterByDepId($id)
-            ->joinDonationFund()->useDonationFundQuery()
-            ->addAsColumn('DonationFundName', DonationFundTableMap::COL_FUN_NAME)
-            ->endUse()
-            ->leftJoinFamily()->useFamilyQuery()
-            ->addAsColumn('FamilyName', FamilyTableMap::COL_FAM_NAME)
-            ->endUse()
-            ->find()
-            ->toCSV();
+        $headers  = array_map('gettext', DepositService::EXPORT_HEADERS);
 
-        $response = $response->withHeader('Content-Type', 'text/csv');
-        $response = $response->withHeader('Content-Disposition', 'attachment; filename=' . $filename);
+        $exporter = new CsvExporter();
+        $exporter->insertHeaders($headers);
+        foreach ($rows as $row) {
+            $exporter->insertRow(array_values($row));
+        }
 
-        $response->getBody()->write($csvData);
+        $response = $response
+            ->withHeader('Content-Type', 'text/csv; charset=UTF-8')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+        $response->getBody()->write($exporter->getContent());
 
         return $response;
     });

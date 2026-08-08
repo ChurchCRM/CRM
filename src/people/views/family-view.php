@@ -187,7 +187,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             if (empty($members)) { return; } ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div class="table-responsive">
+                <div style="overflow-x: clip; overflow-y: visible;">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
@@ -261,7 +261,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
         ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div class="table-responsive">
+                <div style="overflow-x: clip; overflow-y: visible;">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
@@ -633,7 +633,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     </ul>
                 </div>
             </div>
-            <div class="table-responsive">
+            <div style="overflow-x: clip; overflow-y: visible;">
                 <table id="pledge-payment-v2-table" class="table table-vcenter card-table" style="width: 100%;">
                     <tbody></tbody>
                 </table>

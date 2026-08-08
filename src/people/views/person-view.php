@@ -405,7 +405,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <a href="<?= $person->getFamily()->getViewURI() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
             </div>
-            <div class="table-responsive">
+            <div style="overflow-x: clip; overflow-y: visible;">
                 <table class="table table-vcenter card-table">
                     <thead>
                         <tr>

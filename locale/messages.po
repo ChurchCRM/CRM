@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-03 18:34+0000\n"
+"POT-Creation-Date: 2026-08-08 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,9 @@ msgid "# Payments"
 msgstr ""
 
 msgid "# Pledges"
+msgstr ""
+
+msgid "% Paid"
 msgstr ""
 
 #, php-format
@@ -664,6 +667,9 @@ msgstr ""
 msgid "Address Status"
 msgstr ""
 
+msgid "Address changed since coordinates were last set."
+msgstr ""
+
 msgid "Address entered but coordinates not yet set"
 msgstr ""
 
@@ -1294,6 +1300,12 @@ msgstr ""
 msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
 msgstr ""
 
+msgid "Auto"
+msgstr ""
+
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr ""
+
 msgid "Auto TLS"
 msgstr ""
 
@@ -1402,6 +1414,9 @@ msgid "Back to Menu"
 msgstr ""
 
 msgid "Back to People Dashboard"
+msgstr ""
+
+msgid "Back to Pledge Dashboard"
 msgstr ""
 
 msgid "Back to Users"
@@ -2355,6 +2370,9 @@ msgstr ""
 msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
 msgstr ""
 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr ""
+
 msgid "Click Save to apply."
 msgstr ""
 
@@ -2666,6 +2684,12 @@ msgstr ""
 msgid "Contributing"
 msgstr ""
 
+msgid "Contributor"
+msgstr ""
+
+msgid "Contributors"
+msgstr ""
+
 msgid "Convert All"
 msgstr ""
 
@@ -2689,9 +2713,6 @@ msgid "Coordinate database file name"
 msgstr ""
 
 msgid "Coordinates Updated"
-msgstr ""
-
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
 msgstr ""
 
 msgid "Copied to clipboard"
@@ -2753,6 +2774,9 @@ msgid "Costs"
 msgstr ""
 
 msgid "Could not connect to MailChimp. Please check your API key."
+msgstr ""
+
+msgid "Could not find coordinates for that address. Try entering them manually."
 msgstr ""
 
 msgid "Could not load note."
@@ -3027,10 +3051,6 @@ msgid "Custom permissions"
 msgstr ""
 
 msgid "Custom port"
-msgstr ""
-
-#. Context: query_qry
-msgid "CustomSearch"
 msgstr ""
 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -4094,6 +4114,9 @@ msgstr ""
 msgid "Enter a search term"
 msgstr ""
 
+msgid "Enter a street address first."
+msgstr ""
+
 msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
 msgstr ""
 
@@ -5099,10 +5122,6 @@ msgstr ""
 msgid "Find people who pledged one year but not another"
 msgstr ""
 
-#. Context: query_qry
-msgid "Find people with a custom field value"
-msgstr ""
-
 msgid "Find the line"
 msgstr ""
 
@@ -5319,6 +5338,9 @@ msgstr ""
 msgid "Fund Summary"
 msgstr ""
 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr ""
+
 msgid "Fund deleted successfully"
 msgstr ""
 
@@ -5383,6 +5405,9 @@ msgid "Generate Catalog"
 msgstr ""
 
 msgid "Generate Certificates"
+msgstr ""
+
+msgid "Generate Coordinates"
 msgstr ""
 
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
@@ -5451,10 +5476,16 @@ msgstr ""
 msgid "Generate tax statement documents for donors"
 msgstr ""
 
+msgid "Generating..."
+msgstr ""
+
 msgid "Geocoded"
 msgstr ""
 
 msgid "Geocoding failed"
+msgstr ""
+
+msgid "Geocoding request failed. Please try again."
 msgstr ""
 
 msgid "Geocoding successful"
@@ -7541,6 +7572,9 @@ msgstr ""
 msgid "N"
 msgstr ""
 
+msgid "N/A"
+msgstr ""
+
 msgid "NE"
 msgstr ""
 
@@ -7797,6 +7831,9 @@ msgid "No cell phone on file"
 msgstr ""
 
 msgid "No community plugins installed"
+msgstr ""
+
+msgid "No contributors found for this fund in the selected fiscal year"
 msgstr ""
 
 msgid "No core plugins found"
@@ -8520,6 +8557,9 @@ msgstr ""
 msgid "Payments deleted successfully"
 msgstr ""
 
+msgid "Payments only"
+msgstr ""
+
 msgid "Pending"
 msgstr ""
 
@@ -8633,9 +8673,6 @@ msgid "Person Properties"
 msgstr ""
 
 msgid "Person Property"
-msgstr ""
-
-msgid "Person View"
 msgstr ""
 
 msgid "Person already in cart"
@@ -9023,6 +9060,9 @@ msgstr ""
 msgid "Pledge group not found"
 msgstr ""
 
+msgid "Pledged Amount"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Pledged this year"
 msgstr ""
@@ -9141,6 +9181,9 @@ msgid "Press CTRL + C to copy"
 msgstr ""
 
 msgid "Prev"
+msgstr ""
+
+msgid "Preview"
 msgstr ""
 
 msgid "Previous"
@@ -10370,7 +10413,7 @@ msgstr ""
 msgid "Show full upgrade path"
 msgstr ""
 
-msgid "Show in"
+msgid "Show in Profile"
 msgstr ""
 
 msgid "Show more options"
@@ -11511,6 +11554,9 @@ msgstr ""
 msgid "Total Payments"
 msgstr ""
 
+msgid "Total Pledged"
+msgstr ""
+
 msgid "Total Pledges"
 msgstr ""
 
@@ -12052,6 +12098,9 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr ""
+
 #. Context: countries
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr ""
@@ -12219,6 +12268,9 @@ msgstr ""
 msgid "View Logs"
 msgstr ""
 
+msgid "View Payment"
+msgstr ""
+
 msgid "View People"
 msgstr ""
 
@@ -12229,6 +12281,9 @@ msgid "View Person Page"
 msgstr ""
 
 msgid "View Photo"
+msgstr ""
+
+msgid "View Pledge"
 msgstr ""
 
 msgid "View Profile"
@@ -12544,6 +12599,9 @@ msgid ""
 "- Daily backup: 24 hours\n"
 "- Twice daily: 12 hours\n"
 "- Weekly: 168 hours"
+msgstr ""
+
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
 msgstr ""
 
 #. plugin:openlp:section:1:content
