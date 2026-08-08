@@ -29,9 +29,11 @@ PluginManager::init($pluginsPath);
 
 // Resolve theme attributes from user settings
 $_themeUser = AuthenticationManager::getCurrentUser();
+$_themeMode = $_themeUser->getThemeMode(); // 'auto' | 'default' | 'dark'
 $_themeAttrs = '';
-$_themeStyle = $_themeUser->getSettingValue('ui.style');
-if ($_themeStyle === 'dark') {
+// Explicit dark: stamp data-bs-theme on <html> server-side for FOWT-safe rendering
+// without JS. Auto mode is handled by the inline <head> script below.
+if ($_themeMode === 'dark') {
     $_themeAttrs .= ' data-bs-theme="dark"';
 }
 $_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
@@ -46,6 +48,55 @@ $MenuFirst = 1;
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Theme controller: must run synchronously before page paint to prevent flash-of-wrong-theme. -->
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    (function () {
+      // Ensure window.CRM exists; body script will Object.assign more properties later.
+      window.CRM = window.CRM || {};
+
+      var mql = window.matchMedia('(prefers-color-scheme: dark)');
+      var _listening = false;
+
+      function _applyDark() {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      }
+      function _applyLight() {
+        document.documentElement.removeAttribute('data-bs-theme');
+      }
+      function _applySystem() {
+        if (mql.matches) { _applyDark(); } else { _applyLight(); }
+      }
+      function _onChange(e) {
+        if (e.matches) { _applyDark(); } else { _applyLight(); }
+      }
+
+      /**
+       * Apply a theme mode and manage the matchMedia listener lifecycle.
+       * mode: 'auto' | 'default' | 'dark'
+       * Called once on page load (below) and by user.js when the user toggles the setting.
+       */
+      window.CRM.theme = {
+        setMode: function (mode) {
+          if (mode === 'auto') {
+            _applySystem();
+            if (!_listening) {
+              mql.addEventListener('change', _onChange);
+              _listening = true;
+            }
+          } else {
+            if (_listening) {
+              mql.removeEventListener('change', _onChange);
+              _listening = false;
+            }
+            if (mode === 'dark') { _applyDark(); } else { _applyLight(); }
+          }
+        }
+      };
+
+      // Apply the server-resolved theme mode immediately (FOWT prevention).
+      window.CRM.theme.setMode(<?= json_encode($_themeMode) ?>);
+    }());
+  </script>
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
   <?= PluginManager::getPluginHeadContent() ?>
 
