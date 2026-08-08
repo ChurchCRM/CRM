@@ -481,19 +481,14 @@ function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
     // Use ApexCharts default color palette (distributed: true assigns one per bar)
     xaxis: {
       categories: fundLabels,
-      tickFormatter: (value) =>
-        "$" +
-        parseFloat(value).toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        }),
+      tickFormatter: (value) => window.CRM.currency.format(value),
     },
     yaxis: {
       tickFormatter: (value) => value,
     },
     tooltip: {
       y: {
-        formatter: (value) => "$" + parseFloat(value).toFixed(2),
+        formatter: (value) => window.CRM.currency.format(value),
       },
     },
     states: {

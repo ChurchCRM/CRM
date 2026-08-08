@@ -12,6 +12,7 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\MenuRenderer;
@@ -230,8 +231,21 @@ $MenuFirst = 1;
               'key'        => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
               'endpoint'   => TelemetryService::POSTHOG_ENDPOINT,
               'distinctID' => SystemConfig::getValue('sSystemID'),
-          ]) ?>
+          ]) ?>,
+          currency: <?= json_encode(CurrencyFormatter::toArray(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
       });
+      // Attach format() to window.CRM.currency so JS callers (DataTables, Chart.js)
+      // can render localised money via window.CRM.currency.format(amount [, decimals]).
+      window.CRM.currency.format = function (amount, decimals) {
+          if (decimals === undefined) decimals = 2;
+          var val = parseFloat(amount || 0);
+          var parts = val.toFixed(decimals).split('.');
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousand);
+          var formatted = parts[0] + (decimals > 0 ? this.decimal + parts[1] : '');
+          return this.position === 'after'
+              ? formatted + '\u00A0' + this.symbol
+              : this.symbol + '\u00A0' + formatted;
+      };
       // Initialize moment locale if available
       if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
           moment.locale(window.CRM.shortLocale);
