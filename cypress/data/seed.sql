@@ -1955,7 +1955,7 @@ INSERT INTO `user_usr` VALUES (1,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0b
 
 -- MenuOptions-only user (usr_MenuOptions=1, all other permission flags 0, non-admin, non-EditSelf).
 -- Used by people.properties.security.spec.js (GHSA-4wmp-3v34-g7q8).
-INSERT INTO `user_usr` VALUES (902,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,1,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'menuoptions.user','menuOptionsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (902,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,1,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'menuoptions.user','menuOptionsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
