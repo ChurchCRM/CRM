@@ -147,7 +147,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header d-flex align-items-center justify-content-between">
       <h3 class="card-title"><?= gettext('Deposits') ?></h3>
       <div class="card-options d-flex align-items-center gap-2">
-        <span id="selectedCount" class="badge bg-blue me-2" style="display:none!important"></span>
+        <span id="selectedCount" class="badge bg-blue-lt text-blue me-2" style="display:none!important"></span>
         <button type="button" id="btnSelectAll" class="btn btn-sm btn-outline-secondary">
           <?= gettext('Select All') ?>
         </button>
@@ -220,7 +220,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <td><?= $totalAmount ?></td>
                 <td>
                   <?php if ($isClosed) : ?>
-                    <span class="badge bg-secondary"><?= gettext('Closed') ?></span>
+                    <span class="badge bg-secondary-lt text-secondary"><?= gettext('Closed') ?></span>
                   <?php else : ?>
                     <span class="badge bg-success"><?= gettext('Open') ?></span>
                   <?php endif; ?>
