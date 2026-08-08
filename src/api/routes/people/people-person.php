@@ -255,7 +255,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/approve-review', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
 
-        if (!empty($person->getFamId())) {
+        if ($person->getFamId() > 0) {
             return SlimUtils::renderErrorJSON(
                 $response,
                 gettext('This person belongs to a family — approve the family instead'),

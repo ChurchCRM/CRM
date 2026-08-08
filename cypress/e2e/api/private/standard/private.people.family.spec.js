@@ -138,6 +138,19 @@ describe("API Private Family", () => {
         it("Clears the family's needs-review flag and cascades to its members", () => {
             // seed.sql family 23 (Turner) is self-registered (fam_EnteredBy = -1)
             // with members 115 and 116, all still pending review.
+
+            // First: assert family 23 IS in the pending list
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/families/self-register",
+                null,
+                200,
+            ).then((response) => {
+                const ids = response.body.families.map((f) => f.Id);
+                expect(ids).to.include(23);
+            });
+
+            // Then approve and verify removal
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/family/23/approve-review",

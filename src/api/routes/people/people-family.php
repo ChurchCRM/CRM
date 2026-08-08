@@ -21,6 +21,8 @@ use ChurchCRM\Slim\Middleware\Api\FamilyReadMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -399,12 +401,19 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/approve-review', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
-        $family->setNeedsReview(false);
-        $family->save();
-
-        foreach ($family->getPeople() as $person) {
-            $person->setNeedsReview(false);
-            $person->save();
+        $con = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+        try {
+            $family->setNeedsReview(false);
+            $family->save($con);
+            foreach ($family->getPeople() as $person) {
+                $person->setNeedsReview(false);
+                $person->save($con);
+            }
+            $con->commit();
+        } catch (\Exception $e) {
+            $con->rollBack();
+            throw $e;
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);
