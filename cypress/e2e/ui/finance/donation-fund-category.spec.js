@@ -143,7 +143,7 @@ describe("Donation Fund Category - Financial Reports Fund Filter", () => {
 
     it("should show fund filter optgroups on Pledge Summary", () => {
         cy.visit("/FinancialReports.php");
-        cy.get("#FinancialReportTypes").select("Pledge Summary");
+        cy.get("#FinancialReportTypes").select("Pledge Family Summary");
         cy.get("#FinancialReports").submit();
 
         cy.get("#fundsList").should("be.visible");
