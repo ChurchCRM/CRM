@@ -152,87 +152,21 @@ if ($emailErrorReason !== '') {
             <!-- Loading state -->
             <div id="modalLoading" class="modal-body text-center py-4">
                 <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden"><?= gettext('Loading preview…') ?></span>
+                    <span class="visually-hidden"><?= gettext('Loading…') ?></span>
                 </div>
-                <p class="mt-2 text-muted"><?= gettext('Loading email preview…') ?></p>
             </div>
 
-            <!-- Fetch-error banner (shown inside the modal when the API call fails;
-                 does NOT replace #modalPreview children so a retry succeeds) -->
+            <!-- Fetch-error banner (shown inside the modal when the API call fails) -->
             <div id="previewFetchError" class="modal-body d-none">
                 <!-- populated by fetchPreview() .catch() -->
             </div>
 
-            <!-- Preview content (hidden until loaded) -->
+            <!-- Summary content (hidden until loaded) -->
             <div id="modalPreview" class="modal-body d-none">
-
-                <!-- Recipient count -->
-                <div class="alert alert-info d-flex align-items-center mb-3" data-cy="modal-recipient-count">
-                    <i class="ti ti-users me-2 fs-4" aria-hidden="true"></i>
-                    <span id="recipientCountText"></span>
-                </div>
-
-                <!-- No-email warning -->
-                <div id="noEmailWarning" class="alert alert-warning d-none mb-3" data-cy="modal-no-email-warning">
-                    <i class="ti ti-alert-triangle me-2" aria-hidden="true"></i>
-                    <span id="noEmailWarningText"></span>
-                </div>
-
-                <!-- Template preview -->
-                <div class="mb-3">
-                    <h6><?= gettext('Email Template Preview') ?></h6>
-                    <table class="table table-sm table-bordered mb-1">
-                        <tr>
-                            <th class="text-nowrap" style="width:6rem"><?= gettext('Subject') ?></th>
-                            <td id="previewSubject" class="font-monospace"></td>
-                        </tr>
-                        <tr>
-                            <th><?= gettext('Body excerpt') ?></th>
-                            <td id="previewBody" style="white-space:pre-wrap;word-break:break-word"></td>
-                        </tr>
-                    </table>
-                </div>
-
-                <!-- Recipient list (collapsible) -->
-                <div class="mb-2">
-                    <button class="btn btn-sm btn-outline-secondary" type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#recipientListCollapse"
-                            aria-expanded="false"
-                            aria-controls="recipientListCollapse"
-                            data-cy="toggle-recipient-list">
-                        <i class="ti ti-list me-1" aria-hidden="true"></i>
-                        <span id="recipientListToggleLabel"><?= gettext('Show recipient list') ?></span>
-                    </button>
-                </div>
-                <div class="collapse" id="recipientListCollapse">
-                    <div class="mb-2">
-                        <input type="search" id="recipientSearch"
-                               class="form-control form-control-sm"
-                               placeholder="<?= gettext('Filter families…') ?>"
-                               data-cy="recipient-search">
-                    </div>
-                    <div id="recipientList" style="max-height:250px;overflow-y:auto">
-                        <table class="table table-sm table-hover" id="recipientTable">
-                            <thead>
-                                <tr>
-                                    <th><?= gettext('Family') ?></th>
-                                    <th>
-                                        <?= gettext('Family email') ?>
-                                        <span class="ms-1 text-muted"
-                                              title="<?= htmlspecialchars(gettext('Member emails are also used when no family email is on file')) ?>"
-                                              data-bs-toggle="tooltip"
-                                              tabindex="0"
-                                              aria-label="<?= htmlspecialchars(gettext('Member emails are also used when no family email is on file')) ?>">
-                                            <i class="ti ti-info-circle" aria-hidden="true"></i>
-                                        </span>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="recipientTableBody"></tbody>
-                        </table>
-                    </div>
-                </div>
+                <p id="recipientCountText" data-cy="modal-recipient-count"></p>
+                <p id="noEmailWarningText" class="d-none">
+                    <!-- populated by JS when familiesWithoutEmail > 0 -->
+                </p>
             </div>
 
             <!-- In-modal result banner (shown after AJAX send) -->
@@ -260,7 +194,6 @@ if ($emailErrorReason !== '') {
     function initializePeopleVerify() {
 
         var verifyModal = new bootstrap.Modal(document.getElementById('verifyEmailModal'));
-        var allRecipients = [];
 
         /* ---- Open modal: fetch preview data ---- */
         document.getElementById('verifyEmail').addEventListener('click', function () {
@@ -324,69 +257,39 @@ if ($emailErrorReason !== '') {
         }
 
         function populatePreview(data) {
-            allRecipients = data.recipients || [];
+            var recipientCount   = data.recipientCount || 0;
+            var noEmailCount     = (data.familiesWithoutEmail || []).length;
 
-            // Recipient count
-            var countText = i18next.t('About to email {{count}} families.', { count: data.recipientCount });
-            document.getElementById('recipientCountText').textContent = countText;
-            document.getElementById('recipientListToggleLabel').textContent =
-                i18next.t('Show recipient list ({{count}})', { count: allRecipients.length });
+            // Recipient count sentence
+            document.getElementById('recipientCountText').textContent = i18next.t(
+                'You are about to send confirmation emails to {{count}} families.',
+                { count: recipientCount }
+            );
 
-            // No-email warning
-            var noEmailWarning = document.getElementById('noEmailWarning');
-            if (data.familiesWithoutEmail && data.familiesWithoutEmail.length > 0) {
-                noEmailWarning.classList.remove('d-none');
-                document.getElementById('noEmailWarningText').textContent = i18next.t(
-                    '{{count}} families have no email address on file and will not receive this email.',
-                    { count: data.familiesWithoutEmail.length }
+            // No-email warning with link to /v2/email/missing
+            var noEmailEl = document.getElementById('noEmailWarningText');
+            if (noEmailCount > 0) {
+                var linkHref = window.CRM.root + '/v2/email/missing';
+                var linkText = escapeHtml(i18next.t('view families missing an email'));
+                var sentence = i18next.t(
+                    '{{count}} families have no email address on file and will be skipped',
+                    { count: noEmailCount }
                 );
+                noEmailEl.innerHTML =
+                    escapeHtml(sentence) + ' — <a href="' + linkHref + '">' + linkText + '</a>.';
+                noEmailEl.classList.remove('d-none');
             } else {
-                noEmailWarning.classList.add('d-none');
+                noEmailEl.classList.add('d-none');
             }
 
-            // Template preview
-            if (data.templatePreview) {
-                document.getElementById('previewSubject').textContent =
-                    data.templatePreview.subject || '';
-                document.getElementById('previewBody').textContent =
-                    data.templatePreview.bodyExcerpt || i18next.t('(no body text configured)');
-            }
-
-            // Recipient table
-            renderRecipientTable(allRecipients);
-
-            // Show preview, hide loading, enable send button
+            // Show summary, hide loading, enable/disable send
             document.getElementById('modalLoading').classList.add('d-none');
             document.getElementById('modalPreview').classList.remove('d-none');
-            // Guard: showInModalResult() may have replaced #modalSendBtn
             var sendBtn = document.getElementById('modalSendBtn');
             if (sendBtn) {
-                sendBtn.disabled = (data.recipientCount === 0);
+                sendBtn.disabled = (recipientCount === 0);
             }
         }
-
-        function renderRecipientTable(list) {
-            var tbody = document.getElementById('recipientTableBody');
-            tbody.innerHTML = '';
-            list.forEach(function (fam) {
-                var tr = document.createElement('tr');
-                tr.innerHTML =
-                    '<td>' + escapeHtml(fam.name) + '</td>' +
-                    '<td><small class="text-muted">' + escapeHtml(fam.email) + '</small></td>';
-                tbody.appendChild(tr);
-            });
-        }
-
-        // Filter recipient table as user types
-        document.getElementById('recipientSearch').addEventListener('input', function () {
-            var q = this.value.toLowerCase();
-            var filtered = q
-                ? allRecipients.filter(function (f) {
-                    return f.name.toLowerCase().includes(q) || f.email.toLowerCase().includes(q);
-                })
-                : allRecipients;
-            renderRecipientTable(filtered);
-        });
 
         /* ---- Send button: AJAX POST with CSRF token ---- */
         document.getElementById('modalSendBtn').addEventListener('click', function () {

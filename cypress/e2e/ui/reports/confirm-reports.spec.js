@@ -306,13 +306,13 @@ describe("Confirmation Reports - MVC Routes", () => {
             cy.get('[data-cy="modal-recipient-count"]').should("be.visible");
         });
 
-        it("modal shows template preview subject and body excerpt", () => {
+        it("modal shows recipient count summary text", () => {
             cy.intercept("GET", "**/api/families/verify-email-preview").as("emailPreview");
 
             cy.get("#verifyEmail").click();
             cy.wait("@emailPreview", { timeout: 10000 });
 
-            cy.get("#previewSubject").should("exist").invoke("text").should("have.length.above", 0);
+            cy.get("#recipientCountText").invoke("text").should("have.length.above", 0);
         });
 
         it("Cancel button closes the modal without triggering a send", () => {
