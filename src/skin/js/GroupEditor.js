@@ -371,7 +371,10 @@ function initializeGroupEditor() {
           const escapedName = window.CRM.escapeAttribute(full.lst_OptionName);
           const title = isProtected ? i18next.t("This role cannot be deleted.") : i18next.t("Delete role");
           const disabledAttr = isProtected ? " disabled" : "";
-          return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-sm btn-ghost-danger deleteRole${disabledAttr}" title="${title}" data-role-name="${escapedName}"><i class="fa-solid fa-trash"></i></button>`;
+          // disabledAttr is used both in the class (Bootstrap visual disabled style)
+          // and as a standalone HTML attribute (functionally disables the button,
+          // preventing click events and making it detectable via [disabled] selector).
+          return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-sm btn-ghost-danger deleteRole${disabledAttr}" title="${title}" data-role-name="${escapedName}"${disabledAttr}><i class="fa-solid fa-trash"></i></button>`;
         },
       },
     ],
