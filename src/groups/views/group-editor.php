@@ -148,8 +148,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 <div class="card">
-  <div class="card-header d-flex align-items-center">
+  <div class="card-header d-flex align-items-center justify-content-between">
     <h3 class="card-title"><?= gettext('Group Roles') ?>:</h3>
+    <button type="button" class="btn btn-success" id="addNewRoleBtn" data-bs-toggle="modal" data-bs-target="#addRoleModal">
+      <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Role') ?>
+    </button>
   </div>
   <div class="card-body">
     <div class="alert alert-info alert-dismissable">
@@ -161,9 +164,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <table class="table" id="groupRoleTable">
       </table>
     </div>
-    <button type="button" class="btn btn-success" id="addNewRoleBtn" data-bs-toggle="modal" data-bs-target="#addRoleModal">
-      <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Role') ?>
-    </button>
   </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
