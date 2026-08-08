@@ -52,7 +52,7 @@ function initPaymentTable() {
         // For display, split multiple funds and show as individual badges
         var funds = data.split(", ");
         var badges = funds.map(
-          (fund) => '<span class="badge badge-info text-white mr-1 mb-1">' + fund.trim() + "</span>",
+          (fund) => '<span class="badge bg-info-lt text-info me-1 mb-1">' + fund.trim() + "</span>",
         );
         return '<div class="d-flex flex-wrap">' + badges.join("") + "</div>";
       },
@@ -73,16 +73,16 @@ function initPaymentTable() {
       title: i18next.t("Method"),
       data: "Method",
       render: (data, type, full, meta) => {
-        var badgeClass = "badge-secondary";
+        var badgeClass = "bg-secondary";
         var icon = "";
         if (data === "CHECK") {
-          badgeClass = "badge-primary";
+          badgeClass = "bg-primary";
           icon = '<i class="fa-solid fa-check-double"></i> ';
         } else if (data === "CASH") {
-          badgeClass = "badge-success";
+          badgeClass = "bg-success";
           icon = '<i class="fa-solid fa-money-bill"></i> ';
         } else if (data === "CREDITCARD") {
-          badgeClass = "badge-warning";
+          badgeClass = "bg-warning text-dark";
           icon = '<i class="fa-solid fa-credit-card"></i> ';
         }
         return '<span class="badge ' + badgeClass + '">' + icon + data + "</span>";

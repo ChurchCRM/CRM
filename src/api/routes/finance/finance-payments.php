@@ -335,6 +335,12 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         } catch (\DomainException $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 409);
         } catch (\Exception $e) {
+            if ($e instanceof \PDOException
+                || $e instanceof \Propel\Runtime\Exception\PropelException) {
+                return SlimUtils::renderErrorJSON(
+                    $response, gettext('Failed to update pledge'), [], 500, $e, $request
+                );
+            }
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, $e, $request);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update pledge'), [], 500, $e, $request);
