@@ -797,14 +797,16 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                         <?php
                     } ?>
             <div class="modal-footer text-center">
-                <?php if (count($familyEmails) > 0 && SystemConfig::isEmailEnabled()) {
+                <?php if (count($familyEmails) > 0) {
+                    $emailEnabled = SystemConfig::isEmailEnabled();
+                    $emailDisabledTitle = $emailEnabled ? '' : gettext('Email is not configured. Please configure SMTP settings in System Settings.');
                     ?>
                     <button type="button" id="onlineVerify"
-                            class="btn btn-warning warning"><i
+                            class="btn btn-warning warning" <?php if (!$emailEnabled) echo 'disabled'; ?> title="<?= $emailDisabledTitle ?>"><i
                             class="fa-solid fa-envelope"></i><?= gettext("Online Verification") ?>
                     </button>
                     <button type="button" id="verifyEmailPDF"
-                            class="btn btn-warning"><i
+                            class="btn btn-warning" <?php if (!$emailEnabled) echo 'disabled'; ?> title="<?= $emailDisabledTitle ?>"><i
                             class="fa-solid fa-file-pdf"></i><?= gettext("Email PDF") ?>
                     </button>
                     <?php

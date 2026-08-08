@@ -1,11 +1,14 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\ConfirmReportEmailResult;
 use ChurchCRM\Utils\CSRFUtils;
 
 $sPageTitle = gettext('People Verify Dashboard');
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+$bEmailEnabled = SystemConfig::isEmailEnabled();
 
 /* -----------------------------------------------------------------------
  * Structured email result alert vars (set by the route handler)
@@ -101,7 +104,7 @@ if ($emailErrorReason !== '') {
             <a href="<?= SystemURLs::getRootPath()?>/people/report/verify" class="btn btn-outline-danger" title="<?= gettext('Generate and download confirmation letters') ?>">
                 <i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Letters') ?>
             </a>
-            <button type="button" class="btn btn-outline-primary" id="verifyEmail" title="<?= gettext('Send email to families') ?>">
+            <button type="button" class="btn btn-outline-primary" id="verifyEmail" <?php if (!$bEmailEnabled) echo 'disabled'; ?> title="<?= $bEmailEnabled ? gettext('Send email to families') : gettext('Email is not configured. Please configure SMTP settings in System Settings.') ?>">
                 <i class="fa-solid fa-envelope me-2"></i><?= gettext('Email Families') ?>
             </button>
         </div>

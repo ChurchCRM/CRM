@@ -107,6 +107,17 @@ function sendVerifyReportEmail(Request $request, Response $response, array $args
         'MenuOptions'
     );
 
+    if (!SystemConfig::isEmailEnabled()) {
+        // Detect AJAX requests — these get a JSON response instead of a redirect
+        $isAjax = $request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest'
+            || str_contains(strtolower($request->getHeaderLine('Accept')), 'application/json');
+
+        if ($isAjax) {
+            return SlimUtils::renderErrorJSON($response, gettext('Email is not configured. Please configure SMTP settings in System Settings.'), [], 400);
+        }
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=1&reason=email_disabled');
+    }
+
     $params = array_merge($request->getQueryParams(), (array) ($request->getParsedBody() ?? []));
     $familyId = isset($params['familyId']) && $params['familyId'] !== ''
         ? InputUtils::filterInt($params['familyId'])
