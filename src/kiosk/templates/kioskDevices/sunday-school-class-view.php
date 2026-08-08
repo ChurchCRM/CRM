@@ -207,7 +207,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           <div class="col-md-4">
             <label class="form-label" for="guestBirthMonth"><?= gettext('Birth Month') ?></label>
             <select class="form-select" id="guestBirthMonth">
-              <option value=""><?= gettext('— Month —') ?></option>
+              <option value=""><?= '— ' . gettext('Month') . ' —' ?></option>
               <option value="1"><?= gettext('January') ?></option>
               <option value="2"><?= gettext('February') ?></option>
               <option value="3"><?= gettext('March') ?></option>

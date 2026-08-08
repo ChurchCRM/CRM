@@ -485,7 +485,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
 
         // Optional demographic fields
         $birthYear = InputUtils::filterInt($input['BirthYear'] ?? 0);
-        if ($birthYear > 0) {
+        if ($birthYear >= 1900 && $birthYear <= (int) date('Y')) {
             $person->setBirthYear($birthYear);
         }
         $birthMonth = InputUtils::filterInt($input['BirthMonth'] ?? 0);
