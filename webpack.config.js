@@ -14,7 +14,7 @@ class FixCssUrlQuotesPlugin {
       compilation.getAssets().forEach((asset) => {
         if (asset.name.endsWith('.css')) {
           const filePath = path.join(outputPath, asset.name);
-          if (fs.existsSync(filePath)) {
+          try {
             let content = fs.readFileSync(filePath, 'utf-8');
 
             // Check for missing font/asset files referenced in url() declarations
@@ -24,7 +24,9 @@ class FixCssUrlQuotesPlugin {
               // Only check relative URLs (not data:, external, or absolute paths)
               if (!urlPath.startsWith('data:') && !urlPath.startsWith('http') && !urlPath.startsWith('//') && !urlPath.startsWith('/')) {
                 const fullPath = path.join(outputPath, urlPath);
-                if (!fs.existsSync(fullPath)) {
+                try {
+                  fs.accessSync(fullPath, fs.constants.F_OK);
+                } catch {
                   missingFiles.push({ file: asset.name, url: urlPath, fullPath });
                 }
               }
@@ -41,6 +43,9 @@ class FixCssUrlQuotesPlugin {
               }
             );
             fs.writeFileSync(filePath, content, 'utf-8');
+          } catch (err) {
+            // Skip if file cannot be read (might have been deleted between emit and this hook)
+            console.warn(`Warning: Could not process CSS file ${asset.name}: ${err.message}`);
           }
         }
       });
