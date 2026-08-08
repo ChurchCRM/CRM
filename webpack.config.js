@@ -28,8 +28,11 @@ class FixCssUrlQuotesPlugin {
                 const fullPath = path.join(outputPath, cleanPath);
                 try {
                   fs.accessSync(fullPath, fs.constants.F_OK);
-                } catch {
-                  missingFiles.push({ file: asset.name, url: urlPath, fullPath });
+                } catch (accessErr) {
+                  if (accessErr.code === 'ENOENT') {
+                    missingFiles.push({ file: asset.name, url: urlPath, fullPath });
+                  }
+                  // else: EPERM / EINVAL — file may exist but be unreadable; skip silently
                 }
               }
             }
@@ -38,7 +41,7 @@ class FixCssUrlQuotesPlugin {
             // Note: the regex [^'")\ s] already excludes quote chars, so every captured
             // url is unquoted — no dead-code guard needed.
             content = content.replace(
-              /url\(([^'")\s][^)]*)\)/g,
+              /url\(([^'")\s]+)\)/g,
               (_match, url) => `url("${url}")`
             );
             fs.writeFileSync(filePath, content, 'utf-8');
