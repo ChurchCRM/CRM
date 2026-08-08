@@ -80,9 +80,13 @@ describe("Family verification — self-verify token link (no account)", () => {
         cy.get("#confirmVerifyBtn").click();
         cy.get("#confirm-Verify").should("be.visible");
 
-        // Select "changes needed" and provide our unique traceable message
+        // Select "changes needed" and set the textarea value directly.
+        // Using invoke("val") instead of .type() avoids a Bootstrap 5 modal
+        // focus-trap issue where the keyboard delivery gets cut off mid-string;
+        // the submit handler reads textarea.value at click-time, so a direct
+        // DOM-property write produces the same result as typing.
         cy.get("#UpdateNeeded").click();
-        cy.get("#confirm-info-data").should("be.visible").click().type(uniqueMessage);
+        cy.get("#confirm-info-data").should("be.visible").invoke("val", uniqueMessage);
         cy.get("#onlineVerifyBtn").click();
 
         // Wait for the fetch POST to complete successfully
@@ -98,8 +102,10 @@ describe("Family verification — self-verify token link (no account)", () => {
         // the exact value set by the external POST handler in src/external/routes/verify.php.
         cy.makePrivateAdminAPICall("GET", "/api/families/self-verify", null, 200).then((resp) => {
             const notes = resp.body.families;
+            // Number() coercion guards against PHP/PDO returning integer
+            // columns as strings in some MariaDB/PDO configurations.
             const found = notes.find(
-                (n) => n.FamId === familyId && n.Text === uniqueMessage
+                (n) => Number(n.FamId) === familyId && n.Text === uniqueMessage
             );
             expect(found, "self-verify note for the family should exist with the submitted message").to.exist;
         });
