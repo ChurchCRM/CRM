@@ -141,7 +141,11 @@ function initPaymentTable() {
     },
     columns: colDef,
     createdRow: (row, data, index) => {
-      $(row).addClass("paymentRow").css("cursor", "pointer");
+      $(row).addClass("paymentRow");
+      // Only allow selection on open deposits
+      if (!isDepositClosed) {
+        $(row).css("cursor", "pointer");
+      }
     },
     initComplete: function () {
       // Update payment count badge
@@ -327,6 +331,11 @@ function initDepositSlipEditor() {
   });
 
   $(document).on("click", ".paymentRow", function (event) {
+    // Don't allow selection on closed deposits
+    if (isDepositClosed) {
+      return;
+    }
+
     // Prevent selecting when clicking on buttons or links
     if (
       $(event.target).closest(".btn").length ||
