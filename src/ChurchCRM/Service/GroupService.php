@@ -352,7 +352,7 @@ class GroupService
         $groupMembers = $this->getGroupMembers($groupID);
 
         foreach ($groupMembers as $member) {
-            $sSQLr = 'INSERT INTO groupprop_' . $groupID . " ( per_ID ) VALUES ( '" . $member['per_ID'] . "' );";
+            $sSQLr = 'INSERT IGNORE INTO groupprop_' . $groupID . " ( per_ID ) VALUES ( '" . $member['per_ID'] . "' );";
             FunctionsUtils::runQuery($sSQLr);
         }
     }

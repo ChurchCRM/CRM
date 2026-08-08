@@ -430,7 +430,7 @@ describe("Admin - Church Information Page", () => {
             cy.wait("@geocode");
 
             // Notyf success toast
-            cy.contains("Coordinates updated", { timeout: 5000 }).should("be.visible");
+            cy.contains("Coordinates Updated", { timeout: 5000 }).should("be.visible");
 
             // Map container should have d-none removed
             cy.get("#church-location-map").should("not.have.class", "d-none");
