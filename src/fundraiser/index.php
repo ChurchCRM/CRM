@@ -5,6 +5,7 @@ require_once __DIR__ . '/../Include/LoadConfigs.php';
 use ChurchCRM\Slim\MvcAppFactory;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageFundraisersRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Setting\FundraiserEnabledMiddleware;
 use Slim\Routing\RouteCollectorProxy;
 
 // Global gate: every /fundraiser/* request requires login (AuthMiddleware) AND
@@ -16,12 +17,12 @@ $app = MvcAppFactory::create('/fundraiser', [
     'roleMiddleware' => ManageFundraisersRoleAuthMiddleware::class,
 ]);
 
-// Register routes inside a group guarded by CSRFMiddleware. Group middleware
-// runs inside the routing/body-parsing layer, so the parsed body (and its
-// csrf_token) is available for validation — an app-level middleware would run
-// before body parsing and never see it. This validates every state-changing
-// request (POST/PUT/DELETE/PATCH) automatically, replacing the per-route
-// inline CSRFUtils::verifyRequest() checks. The route files reference $app, so
+// Register routes inside a group guarded by CSRFMiddleware and
+// FundraiserEnabledMiddleware (LIFO: FundraiserEnabled runs first, then CSRF).
+// FundraiserEnabledMiddleware ensures ALL access — including by admins who
+// would otherwise pass the app-level ManageFundraisersRoleAuthMiddleware —
+// is blocked when bEnabledFundraiser is false (redirects browser to home;
+// returns 403 JSON for API clients). The route files reference $app, so
 // alias the group proxy to $app for them.
 $app->group('', function (RouteCollectorProxy $group): void {
     $app = $group;
@@ -31,6 +32,6 @@ $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/donors.php';
     require __DIR__ . '/routes/batch-winner.php';
     require __DIR__ . '/routes/reports.php';
-})->add(new CSRFMiddleware());
+})->add(new CSRFMiddleware())->add(new FundraiserEnabledMiddleware());
 
 $app->run();
