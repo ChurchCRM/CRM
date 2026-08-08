@@ -10,7 +10,8 @@ function initPaymentTable() {
       title: i18next.t("Family"),
       data: "FamilyString",
       render: (data, type, full, meta) => {
-        var familyName = data && data.trim() ? data : '<em class="text-body-secondary">' + i18next.t("Anonymous") + "</em>";
+        var familyName =
+          data && data.trim() ? data : '<em class="text-body-secondary">' + i18next.t("Anonymous") + "</em>";
         return familyName;
       },
     },
@@ -18,7 +19,8 @@ function initPaymentTable() {
       width: "10%",
       title: i18next.t("Check Number"),
       data: "CheckNo",
-      render: (data, type, full, meta) => (data ? "<code>" + data + "</code>" : '<em class="text-body-secondary">-</em>'),
+      render: (data, type, full, meta) =>
+        data ? "<code>" + data + "</code>" : '<em class="text-body-secondary">-</em>',
     },
     {
       width: "25%",
@@ -36,9 +38,7 @@ function initPaymentTable() {
 
         // For display, split multiple funds and show as individual badges using Tabler style
         var funds = data.split(", ");
-        var badges = funds.map(
-          (fund) => '<span class="badge bg-info-lt text-info">' + fund.trim() + "</span>",
-        );
+        var badges = funds.map((fund) => '<span class="badge bg-info-lt text-info">' + fund.trim() + "</span>");
         return '<div class="d-flex flex-wrap gap-1">' + badges.join("") + "</div>";
       },
     },
@@ -80,26 +80,47 @@ function initPaymentTable() {
       data: null,
       render: (data, type, full, meta) => {
         var linkBack = encodeURIComponent("/DepositSlipEditor.php?DepositSlipID=" + depositSlipID);
-        var editUrl = window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
+        var editUrl =
+          window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
         var detailsUrl = "PledgeDetails.php?PledgeID=" + full.Id;
+        var familyUrl = window.CRM.root + "/people/family/" + full.FamilyID;
 
-        var html = '<div class="dropdown">' +
+        var html =
+          '<div class="dropdown">' +
           '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
           '<i class="ti ti-dots-vertical"></i>' +
-          '</button>' +
+          "</button>" +
           '<ul class="dropdown-menu dropdown-menu-end">' +
-          '<li><a class="dropdown-item" href="' + editUrl + '">' +
-          '<i class="ti ti-' + (isDepositClosed ? 'eye' : 'pencil') + ' me-2"></i>' +
+          '<li><a class="dropdown-item" href="' +
+          editUrl +
+          '">' +
+          '<i class="ti ti-' +
+          (isDepositClosed ? "eye" : "pencil") +
+          ' me-2"></i>' +
           (isDepositClosed ? i18next.t("View") : i18next.t("Edit")) +
-          '</a></li>';
+          "</a></li>";
 
-        if (depositType === "CreditCard") {
-          html += '<li><a class="dropdown-item" href="' + detailsUrl + '">' +
-            '<i class="ti ti-info-circle me-2"></i>' + i18next.t("Details") +
-            '</a></li>';
+        if (full.FamilyID) {
+          html +=
+            '<li><a class="dropdown-item" href="' +
+            familyUrl +
+            '">' +
+            '<i class="ti ti-users me-2"></i>' +
+            i18next.t("View Family") +
+            "</a></li>";
         }
 
-        html += '</ul></div>';
+        if (depositType === "CreditCard") {
+          html +=
+            '<li><a class="dropdown-item" href="' +
+            detailsUrl +
+            '">' +
+            '<i class="ti ti-info-circle me-2"></i>' +
+            i18next.t("Details") +
+            "</a></li>";
+        }
+
+        html += "</ul></div>";
         return html;
       },
     },
