@@ -23,7 +23,9 @@ class FixCssUrlQuotesPlugin {
               const urlPath = match[1];
               // Only check relative URLs (not data:, external, or absolute paths)
               if (!urlPath.startsWith('data:') && !urlPath.startsWith('http') && !urlPath.startsWith('//') && !urlPath.startsWith('/')) {
-                const fullPath = path.join(outputPath, urlPath);
+                // Strip query-string and fragment before testing for file existence
+                const cleanPath = urlPath.split('?')[0].split('#')[0];
+                const fullPath = path.join(outputPath, cleanPath);
                 try {
                   fs.accessSync(fullPath, fs.constants.F_OK);
                 } catch {
@@ -33,14 +35,11 @@ class FixCssUrlQuotesPlugin {
             }
 
             // Add quotes around unquoted URLs
+            // Note: the regex [^'")\ s] already excludes quote chars, so every captured
+            // url is unquoted — no dead-code guard needed.
             content = content.replace(
               /url\(([^'")\s][^)]*)\)/g,
-              (match, url) => {
-                if (url.startsWith('"') || url.startsWith("'")) {
-                  return match;
-                }
-                return `url("${url}")`;
-              }
+              (_match, url) => `url("${url}")`
             );
             fs.writeFileSync(filePath, content, 'utf-8');
           } catch (err) {
@@ -56,7 +55,7 @@ class FixCssUrlQuotesPlugin {
           .map((f) => `  ❌ ${f.file}: url("${f.url}") → ${f.fullPath}`)
           .join('\n');
         console.error('\n⚠️  Missing font/asset files referenced in CSS:\n' + errorMsg + '\n');
-        throw new Error(`${missingFiles.length} missing asset file(s) referenced in CSS`);
+        compilation.errors.push(new Error(`${missingFiles.length} missing asset file(s) referenced in CSS`));
       }
     });
   }
