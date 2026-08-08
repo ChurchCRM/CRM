@@ -343,17 +343,18 @@ function initializeGroupEditor() {
         },
       },
       {
-        width: "200px",
+        width: "auto",
         title: i18next.t("Sequence"),
         data: "lst_OptionSequence",
         className: "dt-body-center",
         render: (data, type, full, meta) => {
           if (type === "display") {
+            const rows = dataT.rows().data().length;
             let sequenceCell = "";
             if (data > 1) {
               sequenceCell += `<button type="button" id="roleUp-${full.lst_OptionID}" class="btn btn-sm btn-ghost-secondary rollOrder" title="${i18next.t("Move up")}"><i class="fa-solid fa-arrow-up"></i></button>`;
             }
-            if (data != roleCount) {
+            if (data < rows) {
               sequenceCell += `&nbsp;<button type="button" id="roleDown-${full.lst_OptionID}" class="btn btn-sm btn-ghost-secondary rollOrder" title="${i18next.t("Move down")}"><i class="fa-solid fa-arrow-down"></i></button>`;
             }
             return sequenceCell;
@@ -368,15 +369,13 @@ function initializeGroupEditor() {
         render: (data, type, full, meta) => {
           const isProtected = full.lst_OptionName === "Student" || full.lst_OptionName === "Teacher";
           const escapedName = window.CRM.escapeAttribute(full.lst_OptionName);
-          if (isProtected) {
-            const titleAttr = window.CRM.escapeAttribute(i18next.t("This role cannot be deleted."));
-            return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" disabled title="${titleAttr}" data-role-name="${escapedName}">${i18next.t("Delete")}</button>`;
-          }
-          return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole" data-role-name="${escapedName}">${i18next.t("Delete")}</button>`;
+          const title = isProtected ? i18next.t("This role cannot be deleted.") : i18next.t("Delete role");
+          const disabledAttr = isProtected ? " disabled" : "";
+          return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-sm btn-ghost-danger deleteRole${disabledAttr}" title="${title}" data-role-name="${escapedName}"><i class="fa-solid fa-trash"></i></button>`;
         },
       },
     ],
-    order: [[3, "asc"]],
+    order: [[2, "asc"]],
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
   dataT = $("#groupRoleTable").DataTable(dataTableConfig);
