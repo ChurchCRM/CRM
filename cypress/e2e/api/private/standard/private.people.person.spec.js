@@ -103,6 +103,19 @@ describe("API Private Person", () => {
         it("Clears the needs-review flag for a family-less person", () => {
             // seed.sql person 229 (Jordan Casey) is self-registered
             // (per_EnteredBy = -1) with no family (per_fam_ID = 0)
+
+            // Pre-condition: person 229 must be in the pending list
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/persons/self-register",
+                null,
+                200,
+            ).then((response) => {
+                const ids = response.body.people.map((p) => p.Id);
+                expect(ids).to.include(229);
+            });
+
+            // Then approve and verify removal
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/person/229/approve-review",
