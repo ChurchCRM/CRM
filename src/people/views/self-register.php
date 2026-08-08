@@ -191,6 +191,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             window.CRM.notify(i18next.t('Approved'), { type: 'success', delay: 3000 });
             $('#selfRegistrations').DataTable().destroy();
             initializeSelfRegister();
+        }).fail(function (xhr) {
+            var msg = xhr.responseJSON && xhr.responseJSON.message
+                ? xhr.responseJSON.message
+                : i18next.t('An error occurred');
+            window.CRM.notify(msg, { type: 'danger', delay: 5000 });
         });
     });
 
