@@ -432,7 +432,9 @@ $sRootPath = SystemURLs::getRootPath();
                     <ul class="list-group list-group-flush">
                         <?php foreach ($activeFunds as $fund): ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center py-2">
-                            <span><?= InputUtils::escapeHTML($fund->getName()) ?></span>
+                            <a href="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/fund/<?= (int) $fund->getId() ?>/contributors" class="text-decoration-none">
+                                <?= InputUtils::escapeHTML($fund->getName()) ?>
+                            </a>
                             <span class="badge bg-green-lt text-green">
                                 <i class="fa-solid fa-check"></i>
                             </span>
