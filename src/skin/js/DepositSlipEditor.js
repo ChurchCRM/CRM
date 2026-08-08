@@ -53,7 +53,7 @@ function initPaymentTable() {
       data: "sumAmount",
       render: (data, type, full, meta) => {
         if (type === "display") {
-          return '<strong class="text-end d-block">$' + parseFloat(data || 0).toFixed(2) + "</strong>";
+          return '<strong class="text-end d-block">' + window.CRM.currency.format(data) + "</strong>";
         }
         return parseFloat(data || 0);
       },

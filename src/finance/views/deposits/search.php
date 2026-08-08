@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 
 /**
@@ -199,7 +200,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 $depositDate  = InputUtils::escapeHTML($deposit['Date'] ?? '');
                 $depositType  = InputUtils::escapeHTML($deposit['Type'] ?? '');
                 $depositComm  = InputUtils::escapeHTML($deposit['Comment'] ?? '');
-                $totalAmount  = number_format((float) ($deposit['totalAmount'] ?? 0), 2);
+                $totalAmount  = CurrencyFormatter::formatHtml($deposit['totalAmount'] ?? 0);
                 $isClosed     = (bool) ($deposit['Closed'] ?? false);
                 $tellerName   = InputUtils::escapeHTML($deposit['tellerName'] ?? '');
                 $editUrl      = InputUtils::escapeAttribute($sRootPath . '/DepositSlipEditor.php?DepositSlipID=' . $depositId);
