@@ -270,13 +270,17 @@ if ($emailErrorReason !== '') {
             var noEmailEl = document.getElementById('noEmailWarningText');
             if (noEmailCount > 0) {
                 var linkHref = window.CRM.root + '/v2/email/missing';
-                var linkText = escapeHtml(i18next.t('view families missing an email'));
                 var sentence = i18next.t(
                     '{{count}} families have no email address on file and will be skipped',
                     { count: noEmailCount }
                 );
-                noEmailEl.innerHTML =
-                    escapeHtml(sentence) + ' — <a href="' + linkHref + '">' + linkText + '</a>.';
+                // Build via DOM APIs so linkHref is never concatenated raw into innerHTML
+                var link = document.createElement('a');
+                link.href = linkHref;
+                link.textContent = i18next.t('view families missing an email');
+                noEmailEl.textContent = sentence + ' — ';
+                noEmailEl.appendChild(link);
+                noEmailEl.appendChild(document.createTextNode('.'));
                 noEmailEl.classList.remove('d-none');
             } else {
                 noEmailEl.classList.add('d-none');
@@ -375,6 +379,9 @@ if ($emailErrorReason !== '') {
                     var q = 'EmailsError=1&reason=' + encodeURIComponent(data.status || 'unknown') +
                         '&sent=' + (data.sentCount || 0) + '&failed=' + (data.failedCount || 0);
                     window.location.href = window.CRM.root + '/people/verify?' + q;
+                } else {
+                    // no_recipients: reload to clear any stale error alert from a prior attempt
+                    window.location.reload();
                 }
             };
             modal.addEventListener('hidden.bs.modal', _pendingHiddenListener, { once: true });

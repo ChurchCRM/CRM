@@ -678,8 +678,11 @@ class ConfirmReportService
             }
         }
 
-        // Classify the overall result
-        if (count($families) === 0) {
+        // Classify the overall result.
+        // Also treat sentCount=0 with no explicit failures as no-recipients:
+        // this covers families that pass the ORM query (have a member email) but
+        // are silently skipped by the send loop (no family-level email set).
+        if (count($families) === 0 || ($sentCount === 0 && empty($failedFamilies))) {
             return new ConfirmReportEmailResult(
                 ConfirmReportEmailResult::STATUS_NO_RECIPIENTS,
                 0,
