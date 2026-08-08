@@ -424,6 +424,7 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
   options = options || {};
   const inCart = options.inCart || false;
   const familyId = options.familyId || null;
+  const needsReview = options.needsReview || false;
   const root = window.CRM.root;
   const escapedName = window.CRM.escapeHtml(personName || "");
   const familyItem = familyId
@@ -436,12 +437,22 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
       i18next.t("View Family") +
       "</a>"
     : "";
+  const approveItem = needsReview
+    ? '<button type="button" class="dropdown-item approve-review" data-entity-type="person" data-entity-id="' +
+      personId +
+      '">' +
+      '<i class="ti ti-check me-2"></i>' +
+      i18next.t("Approve") +
+      "</button>" +
+      '<div class="dropdown-divider"></div>'
+    : "";
   return (
     '<div class="dropdown">' +
     '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
     '<i class="ti ti-dots-vertical"></i>' +
     "</button>" +
     '<div class="dropdown-menu dropdown-menu-end">' +
+    approveItem +
     '<a class="dropdown-item" href="' +
     root +
     "/people/view/" +
@@ -506,13 +517,24 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
 window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
   options = options || {};
   const inCart = options.inCart || false;
+  const needsReview = options.needsReview || false;
   const root = window.CRM.root;
+  const approveItem = needsReview
+    ? '<button type="button" class="dropdown-item approve-review" data-entity-type="family" data-entity-id="' +
+      familyId +
+      '">' +
+      '<i class="ti ti-check me-2"></i>' +
+      i18next.t("Approve") +
+      "</button>" +
+      '<div class="dropdown-divider"></div>'
+    : "";
   return (
     '<div class="dropdown">' +
     '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
     '<i class="ti ti-dots-vertical"></i>' +
     "</button>" +
     '<div class="dropdown-menu dropdown-menu-end">' +
+    approveItem +
     '<a class="dropdown-item" href="' +
     root +
     "/people/family/" +

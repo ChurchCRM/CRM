@@ -120,6 +120,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     $family->setEmail($familyMetadata['Email'] ?? '');
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new DateTime());
+    $family->setNeedsReview(true);
 
     if (!$family->validate()) {
         return SlimUtils::renderJSON(
@@ -142,6 +143,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
         $person = new Person();
         $person->setEnteredBy(Person::SELF_REGISTER);
         $person->setDateEntered(new DateTime());
+        $person->setNeedsReview(true);
         $person->setFirstName($personMetaData['firstName']);
         $person->setLastName($personMetaData['lastName']);
         $person->setGender($personMetaData['gender']);
@@ -282,6 +284,7 @@ function registerPersonAPI(Request $request, Response $response, array $args): R
     
     $person->setEnteredBy(Person::SELF_REGISTER);
     $person->setDateEntered(new DateTime());
+    $person->setNeedsReview(true);
 
     if (!$person->validate()) {
         return SlimUtils::renderJSON(
