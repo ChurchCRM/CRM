@@ -174,6 +174,20 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * MenuOptions-only user (id=902): usr_MenuOptions=1, all other perm flags 0,
+     * non-admin, non-EditSelf. Used to verify the EditRecords gate on person/family
+     * property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but is
+     * blocked by EditRecordsRoleAuthMiddleware — expects 403 on record-level routes.
+     */
+    makePrivateMenuOptionsAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number,
+      timeoutMs?: number
+    ): Chainable<any>;
+
+    /**
      * Regression sentinel: EditSelf+Notes user (user 100, Lena Black, family 20).
      * Post-PR#9016 the user is blocked by AuthMiddleware (403). Once EditSelf
      * exclusivity is relaxed, avatar/nav/photo should assert 200 (FamilyReadMiddleware)
