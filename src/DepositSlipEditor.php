@@ -256,8 +256,8 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="card-status-top bg-secondary"></div>
   <div class="card-header d-flex justify-content-between align-items-center">
     <h3 class="card-title mb-0">
-      <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?> 
-      <span class="badge bg-light text-dark text-dark" id="payment-count">0</span>
+      <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?>
+      <span class="badge bg-blue-lt text-blue" id="payment-count">0</span>
     </h3>
     <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
     <div class="btn-group" role="group">
@@ -358,6 +358,12 @@ require_once __DIR__ . '/Include/Header.php';
     font-size: 0.75rem;
     padding: 0.35rem 0.65rem;
     font-weight: 500;
+}
+#paymentsTable .dropdown {
+    display: inline-block;
+}
+#paymentsTable .dropdown-menu {
+    min-width: auto;
 }
 .stat-card {
     padding: 1.25rem 1rem;
