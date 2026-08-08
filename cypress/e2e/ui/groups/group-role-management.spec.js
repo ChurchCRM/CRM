@@ -18,35 +18,39 @@ describe("Group Role Management", () => {
   let testGroupSingleId;
 
   before(() => {
-    cy.setupAdminSession();
-
-    // Create the group used for add/delete happy-path tests
-    cy.request({
-      method: "POST",
-      url: "/api/groups/",
-      body: { groupName: `RoleMgmt-AddDelete-${Date.now()}`, description: "" },
-    }).then((res) => {
-      testGroupAddDeleteId = res.body.Id;
+    // Use API-key auth (makePrivateAdminAPICall) so we don't depend on cy.session()
+    // being properly initialised in a before() hook — cy.session() is designed for
+    // beforeEach() and may not establish cookies reliably when called in before().
+    cy.makePrivateAdminAPICall(
+      "POST",
+      "/api/groups/",
+      { groupName: `RoleMgmt-AddDelete-${Date.now()}`, description: "" },
+      200,
+    ).then((resp) => {
+      testGroupAddDeleteId = resp.body.Id;
     });
 
-    // Create the group used for last-role boundary tests — never mutated by this suite
-    cy.request({
-      method: "POST",
-      url: "/api/groups/",
-      body: { groupName: `RoleMgmt-Single-${Date.now()}`, description: "" },
-    }).then((res) => {
-      testGroupSingleId = res.body.Id;
+    cy.makePrivateAdminAPICall(
+      "POST",
+      "/api/groups/",
+      { groupName: `RoleMgmt-Single-${Date.now()}`, description: "" },
+      200,
+    ).then((resp) => {
+      testGroupSingleId = resp.body.Id;
     });
   });
 
   after(() => {
-    cy.setupAdminSession();
-    if (testGroupAddDeleteId) {
-      cy.request({ method: "DELETE", url: `/api/groups/${testGroupAddDeleteId}` });
+    // Hard-fail if IDs were never set — a silent skip would leave orphaned groups in
+    // the DB and could cause flakiness in unrelated tests (e.g. standard.group.spec.js).
+    if (!testGroupAddDeleteId || !testGroupSingleId) {
+      throw new Error(
+        `Test group IDs were never assigned — before() likely failed.\n` +
+          `testGroupAddDeleteId=${testGroupAddDeleteId}, testGroupSingleId=${testGroupSingleId}`,
+      );
     }
-    if (testGroupSingleId) {
-      cy.request({ method: "DELETE", url: `/api/groups/${testGroupSingleId}` });
-    }
+    cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupAddDeleteId}`, null, 200);
+    cy.makePrivateAdminAPICall("DELETE", `/api/groups/${testGroupSingleId}`, null, 200);
   });
 
   beforeEach(() => cy.setupAdminSession());
