@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
           document.getElementById("no-coords-alert")?.classList.add("d-none");
           reinitChurchMap();
 
-          window.CRM?.notify?.(t("Coordinates updated"), { type: "success", delay: 3000 });
+          window.CRM?.notify?.(t("Coordinates Updated"), { type: "success", delay: 3000 });
           resetStaleCoordinatesSnapshot();
         })
         .catch(() => {
