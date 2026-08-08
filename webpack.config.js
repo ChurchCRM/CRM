@@ -37,14 +37,17 @@ class FixCssUrlQuotesPlugin {
               }
             }
 
-            // Add quotes around unquoted URLs
+            // Add quotes around unquoted URLs; only write when something changed
+            // to avoid unnecessary I/O and mtime churn on unchanged CSS files.
             // Note: the regex [^'")\ s] already excludes quote chars, so every captured
             // url is unquoted — no dead-code guard needed.
-            content = content.replace(
+            const fixed = content.replace(
               /url\(([^'")\s]+)\)/g,
               (_match, url) => `url("${url}")`
             );
-            fs.writeFileSync(filePath, content, 'utf-8');
+            if (fixed !== content) {
+              fs.writeFileSync(filePath, fixed, 'utf-8');
+            }
           } catch (err) {
             // Skip if file cannot be read (might have been deleted between emit and this hook)
             console.warn(`Warning: Could not process CSS file ${asset.name}: ${err.message}`);
