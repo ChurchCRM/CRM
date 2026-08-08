@@ -243,9 +243,10 @@ $MenuFirst = 1;
           var parts = val.toFixed(decimals).split('.');
           parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousand);
           var formatted = parts[0] + (decimals > 0 ? this.decimal + parts[1] : '');
+          var sym = this.symbol.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
           return this.position === 'after'
-              ? formatted + '\u00A0' + this.symbol
-              : this.symbol + '\u00A0' + formatted;
+              ? formatted + '\u00A0' + sym
+              : sym + '\u00A0' + formatted;
       };
       // Initialize moment locale if available
       if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
