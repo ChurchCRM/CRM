@@ -137,15 +137,15 @@ class User extends BaseUser
     }
 
     // -- Module-gated permissions (backed by userconfig_ucfg) --
-    //    These additionally require a system-wide feature flag to be ON
-    //    for non-admin users. Admins bypass the feature flag.
+    //    These require a system-wide feature flag to be ON for all users,
+    //    regardless of role or admin status. The flag gates access; permissions gate specific features.
 
     public function isFinanceEnabled(): bool
     {
         if ($this->isEditSelfExclusive()) {
             return false;
         }
-        return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance());
+        return SystemConfig::getBooleanValue('bEnabledFinance') && ($this->isAdmin() || $this->isFinance());
     }
 
     public function isManageFundraisersEnabled(): bool
@@ -153,7 +153,7 @@ class User extends BaseUser
         if ($this->isEditSelfExclusive()) {
             return false;
         }
-        return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFundraiser') && $this->isManageFundraisers());
+        return SystemConfig::getBooleanValue('bEnabledFundraiser') && ($this->isAdmin() || $this->isManageFundraisers());
     }
 
     public function isAddEventEnabled(): bool
