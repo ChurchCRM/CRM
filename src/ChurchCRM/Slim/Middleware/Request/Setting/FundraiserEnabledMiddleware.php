@@ -31,7 +31,8 @@ class FundraiserEnabledMiddleware implements MiddlewareInterface
             }
 
             $response = new Response();
-            $body     = json_encode(['error' => gettext('Fundraiser is disabled'), 'code' => 403]);
+            $body     = json_encode(['error' => gettext('Fundraiser is disabled'), 'code' => 403])
+                ?: '{"error":"Fundraiser is disabled","code":403}';
             $response->getBody()->write($body);
             return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
         }

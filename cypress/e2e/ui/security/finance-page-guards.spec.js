@@ -128,6 +128,7 @@ describe("bEnabledFundraiser feature flag — fundraiser module disabled", () =>
             url: "/admin/api/system/config/bEnabledFundraiser",
             body: { value: "1" },
             headers: { "Content-Type": "application/json" },
+            failOnStatusCode: false,
         });
     });
 
