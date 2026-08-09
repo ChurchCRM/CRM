@@ -145,20 +145,19 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         });
     });
 
-    describe("Query list hides finance-only queries", () => {
+    describe("Query list and QueryView are admin-only (GHSA-6rgg-mrx3-92w7)", () => {
         beforeEach(login);
 
-        // aFinanceQueries defaults to "28,30" — those rows require Finance=1.
-        it("Query list renders without the finance queries", () => {
-            cy.visit("QueryList.php");
-            cy.get('a[href*="QueryView.php"]').should("have.length.greaterThan", 0);
-            cy.get('a[href*="QueryID=28"]').should("not.exist");
-            cy.get('a[href*="QueryID=30"]').should("not.exist");
+        // After the admin gate fix, non-admin users are redirected to access-denied
+        // on both QueryList.php and QueryView.php.
+        it("Query list redirects non-admins to access-denied", () => {
+            cy.visit("QueryList.php", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/access-denied");
         });
 
-        it("Opening a finance query directly redirects away", () => {
+        it("Opening any QueryView directly redirects non-admins to access-denied", () => {
             cy.visit("QueryView.php?QueryID=28", { failOnStatusCode: false });
-            cy.url().should("include", "/v2/dashboard");
+            cy.url().should("include", "/v2/access-denied");
         });
     });
 
@@ -220,12 +219,13 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             });
         });
 
-        it("Data/Reports links straight to the query list", () => {
+        it("Data/Reports nav link is hidden from non-admins (GHSA-6rgg-mrx3-92w7)", () => {
             cy.visit("v2/dashboard");
-            cy.get(".navbar-nav")
-                .contains("a", "Data/Reports")
-                .should("have.attr", "href")
-                .and("include", "QueryList.php");
+            cy.get(".navbar-nav").each(($nav) => {
+                cy.wrap($nav).within(() => {
+                    cy.contains("Data/Reports").should("not.exist");
+                });
+            });
         });
     });
 

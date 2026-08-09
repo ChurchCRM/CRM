@@ -735,7 +735,8 @@ function initDataTable() {
         title: i18next.t("Name"),
         data: "PersonId",
         render: (data, type, full) => {
-          var escapedName = $("<div>").text(full.Person.FullName).html();
+          // GHSA-m649-24q9-q6r4: HTML-escape for HTML content context (not attribute)
+          var escapedName = window.CRM.escapeHtml(full.Person.FullName || "");
           return (
             '<div class="d-flex align-items-center">' +
             '<img data-image-entity-type="person" data-image-entity-id="' +
@@ -768,8 +769,10 @@ function initDataTable() {
         defaultContent: "",
         render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
+          // GHSA-m649-24q9-q6r4: HTML attribute-escape href value to prevent quote breakout;
+          // escapeAttribute preserves @ and + (not HTML-special) while encoding "
           var escaped = $("<div>").text(data).html();
-          return '<a href="tel:' + escaped + '">' + escaped + "</a>";
+          return '<a href="tel:' + window.CRM.escapeAttribute(data) + '">' + escaped + "</a>";
         },
       },
       {
@@ -779,8 +782,16 @@ function initDataTable() {
         defaultContent: "",
         render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
+          // GHSA-m649-24q9-q6r4: HTML attribute-escape href value to prevent quote breakout;
+          // escapeAttribute preserves @ and + (not HTML-special) while encoding "
           var escaped = $("<div>").text(data).html();
-          return '<a href="mailto:' + escaped + '" target="_blank" rel="noopener noreferrer">' + escaped + "</a>";
+          return (
+            '<a href="mailto:' +
+            window.CRM.escapeAttribute(data) +
+            '" target="_blank" rel="noopener noreferrer">' +
+            escaped +
+            "</a>"
+          );
         },
       },
       {
@@ -791,7 +802,8 @@ function initDataTable() {
         searchable: false,
         className: "text-end w-1 no-export",
         render: (data, type, full) => {
-          var escapedName = $("<div>").text(full.Person.FullName).html();
+          // GHSA-m649-24q9-q6r4: use escapeAttribute for data-name attribute context (encodes quotes)
+          var escapedName = window.CRM.escapeAttribute(full.Person.FullName || "");
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static">' +

@@ -425,7 +425,8 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
   const inCart = options.inCart || false;
   const familyId = options.familyId || null;
   const root = window.CRM.root;
-  const escapedName = window.CRM.escapeHtml(personName || "");
+  // GHSA-hm7v-jrhm-fmfx: use escapeAttribute (encodes quotes) for data-* attribute context
+  const escapedName = window.CRM.escapeAttribute(personName || "");
   const familyItem = familyId
     ? '<a class="dropdown-item" href="' +
       root +

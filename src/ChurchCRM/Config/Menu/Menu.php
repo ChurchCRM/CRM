@@ -45,7 +45,7 @@ class Menu
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
-            'Reports'      => self::getReportsMenu(),
+            'Reports'      => self::getReportsMenu($isAdmin),
         ];
         
         // Backward compatibility: plugins that declare parent 'Email' still attach to Communication
@@ -325,10 +325,11 @@ class Menu
         return $fundraiserMenu;
     }
 
-    private static function getReportsMenu(): MenuItem
+    private static function getReportsMenu(bool $isAdmin): MenuItem
     {
         // Query Menu is the only entry, so link straight to it rather than nesting a single child.
-        return new MenuItem(gettext('Data/Reports'), 'QueryList.php', true, 'fa-database');
+        // GHSA-6rgg-mrx3-92w7: QueryList.php now requires isAdmin(); hide from non-admins.
+        return new MenuItem(gettext('Data/Reports'), 'QueryList.php', $isAdmin, 'fa-database');
     }
 
     private static function addGroupSubMenus($menuName, $groupId, string $viewURl, ?array $groupsByType = null): ?MenuItem
