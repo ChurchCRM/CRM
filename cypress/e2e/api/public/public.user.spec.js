@@ -136,7 +136,7 @@ describe("API Public User", () => {
                 // wrong code path.
                 cy.makePrivateAdminAPICall(
                     "GET",
-                    "/api/system/config/iMaxFailedLogins",
+                    "/admin/api/system/config/iMaxFailedLogins",
                     null,
                     200,
                 ).then((resp) => {
