@@ -150,6 +150,7 @@ describe("Group Role Management", () => {
       // click delegation does not fire reliably via Cypress synthetic click in
       // headless Electron/subdir CI.  Bootstrap handles ESC natively via its
       // own keyboard listener, which is immune to synthetic-click propagation issues.
+      cy.wait(400); // absorb Bootstrap's 300ms CSS transition + buffer (_isTransitioning race)
       cy.get("#newRole").type("x");
       cy.get("#newRole").type("{esc}");
 
