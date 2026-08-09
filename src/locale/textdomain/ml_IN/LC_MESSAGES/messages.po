@@ -17425,3 +17425,263 @@ msgstr "ഇന്ന് നിങ്ങളെ ഓർക്കുന്നു."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "പേജ് റൂട്ടുകൾ, സജീവ ലൊക്കേൽ, CRM പതിപ്പ്, PHP പതിപ്പ്, OS കുടുംബം, ഒരു ക്രമരഹിത ഇൻസ്റ്റലേഷൻ ID. മറ്റൊന്നുമില്ല. ഡേറ്റ EU-ൽ സൂക്ഷിക്കുന്നു."
 
+#: 
+msgid "% Paid"
+msgstr "% അടച്ചു"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: നിങ്ങളുടെ കുടുംബ വിവരങ്ങൾ സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Add Role"
+msgstr "റോൾ ചേർക്കുക"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "ഈ ഗ്രൂപ്പിന് പ്രത്യേകമായ ഇഷ്ടാനുസൃത ഗുണങ്ങൾ ചേർക്കുക"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "കോർഡിനേറ്റുകൾ അവസാനമായി സജ്ജമാക്കിയതിന് ശേഷം വിലാസം മാറി."
+
+#: 
+msgid "All Tellers"
+msgstr "എല്ലാ ടെല്ലർമാരും"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "എല്ലാ ഇമെയിൽ അയക്കലുകളും പരാജയപ്പെട്ടു. സിസ്റ്റം ക്രമീകരണങ്ങളിലെ SMTP ക്രമീകരണങ്ങൾ പരിശോധിക്കുക."
+
+#: 
+msgid "Amount Max"
+msgstr "തുക പരമാവധി"
+
+#: 
+msgid "Amount Min"
+msgstr "തുക കുറഞ്ഞത്"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "ഇമെയിൽ അയക്കുമ്പോൾ അപ്രതീക്ഷിത പിശക് സംഭവിച്ചു. നിങ്ങളുടെ SMTP ക്രമീകരണങ്ങളും സെർവർ ലോഗുകളും പരിശോധിക്കുക."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' എന്ന റോൾ നീക്കം ചെയ്യണമെന്ന് ഉറപ്പാണോ?"
+
+#: 
+msgid "Auto"
+msgstr "ഓട്ടോ"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "ഓട്ടോ നിങ്ങളുടെ OS അല്ലെങ്കിൽ ബ്രൗസർ ക്രമീകരണം പിന്തുടരുന്നു; ലൈറ്റും ഡാർക്കും അത് മറികടക്കുന്നു"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "പ്രതിജ്ഞ ഡാഷ്‌ബോർഡിലേക്ക് മടങ്ങുക"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "മുകളിലെ വിലാസത്തിന്റെ ഭൂപട സ്ഥാനം കണ്ടെത്താൻ \"കോർഡിനേറ്റുകൾ സൃഷ്ടിക്കുക\" ക്ലിക്ക് ചെയ്യുക, അല്ലെങ്കിൽ അക്ഷാംശം/രേഖാംശം സ്വമേധയാ നൽകുക. ശൂന്യമായി വിട്ടാൽ, ഫോം സംരക്ഷിക്കുമ്പോൾ കോർഡിനേറ്റുകൾ സ്വയം കണ്ടെത്തും."
+
+#: 
+msgid "Contributor"
+msgstr "സംഭാവകൻ"
+
+#: 
+msgid "Contributors"
+msgstr "സംഭാവകർ"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "ആ വിലാസത്തിന്റെ കോർഡിനേറ്റുകൾ കണ്ടെത്താനായില്ല. സ്വമേധയാ നൽകാൻ ശ്രമിക്കുക."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "ഈ ഗ്രൂപ്പിനുള്ള ഇഷ്ടാനുസൃത ഗുണങ്ങൾ"
+
+#: 
+msgid "Delete role"
+msgstr "റോൾ ഇല്ലാതാക്കുക"
+
+#: 
+msgid "Email Error"
+msgstr "ഇമെയിൽ പിശക്"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "ഇമെയിൽ കോൺഫിഗർ ചെയ്തിട്ടില്ല. സിസ്റ്റം ക്രമീകരണങ്ങളിൽ SMTP ക്രമീകരണങ്ങൾ കോൺഫിഗർ ചെയ്യുക."
+
+#: 
+msgid "Enter a street address first."
+msgstr "ആദ്യം ഒരു തെരുവ് വിലാസം നൽകുക."
+
+#: 
+msgid "Enter role name"
+msgstr "റോളിന്റെ പേര് നൽകുക"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "നിക്ഷേപം സൃഷ്ടിക്കുന്നതിൽ പരാജയം"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "ഇമെയിൽ പ്രിവ്യൂ ലോഡ് ചെയ്യുന്നതിൽ പരാജയം"
+
+#: 
+msgid "From Date"
+msgstr "തീയതി മുതൽ"
+
+#: 
+msgid "Fund Total"
+msgstr "ഫണ്ട് ആകെ"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "സാമ്പത്തിക വർഷം അനുസരിച്ച് ഫണ്ട് സംഭാവകരുടെ പ്രതിജ്ഞ സംഗ്രഹം"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "ഫണ്ട്ശേഖരണം പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "കോർഡിനേറ്റുകൾ സൃഷ്ടിക്കുക"
+
+#: 
+msgid "Generating..."
+msgstr "സൃഷ്ടിക്കുന്നു..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "ജിയോകോഡിങ് അഭ്യർത്ഥന പരാജയപ്പെട്ടു. വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Manage Events"
+msgstr "ഇവന്റുകൾ നിയന്ത്രിക്കുക"
+
+#: 
+msgid "New Deposit"
+msgstr "പുതിയ നിക്ഷേപം"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "തിരഞ്ഞെടുത്ത സാമ്പത്തിക വർഷത്തിൽ ഈ ഫണ്ടിൽ സംഭാവകരെ കണ്ടെത്തിയില്ല"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "ഇമെയിൽ വിലാസമുള്ള കുടുംബങ്ങളെ കണ്ടെത്തിയില്ല. ഒന്നും അയച്ചിട്ടില്ല."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "തിരഞ്ഞെടുത്ത നിക്ഷേപങ്ങൾക്ക് പേയ്‌മെന്റുകളൊന്നും കണ്ടെത്തിയില്ല"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "സാധുതയുള്ള നിക്ഷേപ ഐഡികളൊന്നും നൽകിയിട്ടില്ല"
+
+#: 
+msgid "Partial Send"
+msgstr "ഭാഗിക അയക്കൽ"
+
+#: 
+msgid "Payments only"
+msgstr "പേയ്‌മെന്റുകൾ മാത്രം"
+
+#: 
+msgid "Pledged Amount"
+msgstr "പ്രതിജ്ഞ തുക"
+
+#: 
+msgid "Preview"
+msgstr "പ്രിവ്യൂ"
+
+#: 
+msgid "Retry"
+msgstr "വീണ്ടും ശ്രമിക്കുക"
+
+#: 
+msgid "Search"
+msgstr "തിരയുക"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "നിക്ഷേപ സ്ലിപ്പ് രേഖകൾ തിരയുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
+
+#: 
+msgid "Select All"
+msgstr "എല്ലാം തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Send Emails"
+msgstr "ഇമെയിലുകൾ അയക്കുക"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "കുടുംബ സ്ഥിരീകരണ ഇമെയിലുകൾ അയക്കുക"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d ൽ %1$d അയച്ചു — %3$d കുടുംബങ്ങളെ ബന്ധപ്പെടാനായില്ല."
+
+#: 
+msgid "Show in Profile"
+msgstr "പ്രൊഫൈലിൽ കാണിക്കുക"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "തിരഞ്ഞെടുത്ത ഫണ്ടിന്റെ മാത്രം ആകെ കാണിക്കുന്നു"
+
+#: 
+msgid "Teller"
+msgstr "ടെല്ലർ"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "ഈ ഗ്രൂപ്പിലെ ഏകൈക റോൾ ഇതാണ്."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "ഈ റോൾ ഇല്ലാതാക്കാൻ കഴിയില്ല."
+
+#: 
+msgid "To Date"
+msgstr "തീയതി വരെ"
+
+#: 
+msgid "Total Pledged"
+msgstr "ആകെ പ്രതിജ്ഞ"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "ഇമെയിൽ അയക്കുമ്പോൾ അപ്രതീക്ഷിത പിശക്. ലോഗുകൾ പരിശോധിക്കുക."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "OpenStreetMap വഴി കോർഡിനേറ്റുകൾ കണ്ടെത്താൻ മുകളിലെ നിങ്ങളുടെ തെരുവ് വിലാസം ഉപയോഗിക്കുന്നു."
+
+#: 
+msgid "View Payment"
+msgstr "പേയ്‌മെന്റ് കാണുക"
+
+#: 
+msgid "View Pledge"
+msgstr "പ്രതിജ്ഞ കാണുക"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "അടയാളപ്പെടുത്തിയാൽ, ഈ ഗുണം പ്രൊഫൈൽ പേജിലെ ഗ്രൂപ്പ് പട്ടികയിൽ ഗ്രൂപ്പിനോടൊപ്പം പ്രദർശിപ്പിക്കും."
+
+#: 
+msgid "[Family Name]"
+msgstr "[കുടുംബ നാമം]"
+
+#: 
+msgid "row selected"
+msgstr "വരി തിരഞ്ഞെടുത്തു"
+
+#: 
+msgid "rows selected"
+msgstr "വരികൾ തിരഞ്ഞെടുത്തു"
+

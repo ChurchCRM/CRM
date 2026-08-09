@@ -17508,3 +17508,263 @@ msgstr "يفكر فيك اليوم."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "مسارات الصفحة واللغة النشطة وإصدار CRM وإصدار PHP وعائلة نظام التشغيل ومعرّف تثبيت عشوائي. لا شيء آخر. تُخزَّن البيانات في الاتحاد الأوروبي."
 
+#: 
+msgid "% Paid"
+msgstr "% المدفوع"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: يرجى التحقق من معلومات عائلتك"
+
+#: 
+msgid "Add Role"
+msgstr "إضافة دور"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "إضافة خصائص مخصصة لهذه المجموعة"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "تم تغيير العنوان منذ آخر تحديد للإحداثيات."
+
+#: 
+msgid "All Tellers"
+msgstr "جميع أمناء الصندوق"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "فشل إرسال جميع الرسائل الإلكترونية. يرجى التحقق من إعدادات SMTP في إعدادات النظام."
+
+#: 
+msgid "Amount Max"
+msgstr "الحد الأقصى للمبلغ"
+
+#: 
+msgid "Amount Min"
+msgstr "الحد الأدنى للمبلغ"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "حدث خطأ غير متوقع أثناء إرسال الرسائل الإلكترونية. يرجى التحقق من إعدادات SMTP وسجلات الخادم."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "هل أنت متأكد أنك تريد إزالة الدور '{{name}}'؟"
+
+#: 
+msgid "Auto"
+msgstr "تلقائي"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "يتبع الوضع التلقائي إعداد نظام التشغيل أو المتصفح؛ ويتجاوزه الوضع الفاتح والداكن"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "العودة إلى لوحة التعهدات"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "انقر على \"توليد الإحداثيات\" للبحث عن موقع العنوان أعلاه على الخريطة، أو أدخل خط العرض/الطول يدويًا. إذا تُرك فارغًا، سيتم الكشف التلقائي عن الإحداثيات عند حفظ النموذج."
+
+#: 
+msgid "Contributor"
+msgstr "المُساهم"
+
+#: 
+msgid "Contributors"
+msgstr "المُساهمون"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "تعذّر العثور على إحداثيات لذلك العنوان. حاول إدخالها يدويًا."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "الخصائص المخصصة لهذه المجموعة"
+
+#: 
+msgid "Delete role"
+msgstr "حذف الدور"
+
+#: 
+msgid "Email Error"
+msgstr "خطأ في البريد الإلكتروني"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "لم يتم تهيئة البريد الإلكتروني. يرجى تهيئة إعدادات SMTP في إعدادات النظام."
+
+#: 
+msgid "Enter a street address first."
+msgstr "يرجى إدخال عنوان الشارع أولًا."
+
+#: 
+msgid "Enter role name"
+msgstr "أدخل اسم الدور"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "فشل إنشاء الإيداع"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "فشل تحميل معاينة البريد الإلكتروني"
+
+#: 
+msgid "From Date"
+msgstr "من تاريخ"
+
+#: 
+msgid "Fund Total"
+msgstr "إجمالي الصندوق"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "ملخص تعهدات المُساهمين في الصندوق حسب السنة المالية"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "جمع التبرعات معطّل"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "توليد الإحداثيات"
+
+#: 
+msgid "Generating..."
+msgstr "جارٍ التوليد..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "فشل طلب تحديد الموقع الجغرافي. يرجى المحاولة مجددًا."
+
+#: 
+msgid "Manage Events"
+msgstr "إدارة الفعاليات"
+
+#: 
+msgid "New Deposit"
+msgstr "إيداع جديد"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "لم يُعثر على مُساهمين لهذا الصندوق في السنة المالية المحددة"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "لم يُعثر على عائلات تمتلك عنوان بريد إلكتروني. لم يتم إرسال أي شيء."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "لم تُوجد مدفوعات للإيداعات المحددة"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "لم يتم تقديم معرّفات إيداع صالحة"
+
+#: 
+msgid "Partial Send"
+msgstr "إرسال جزئي"
+
+#: 
+msgid "Payments only"
+msgstr "المدفوعات فقط"
+
+#: 
+msgid "Pledged Amount"
+msgstr "المبلغ المتعهَّد به"
+
+#: 
+msgid "Preview"
+msgstr "معاينة"
+
+#: 
+msgid "Retry"
+msgstr "إعادة المحاولة"
+
+#: 
+msgid "Search"
+msgstr "بحث"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "البحث وإدارة سجلات إذونات الإيداع"
+
+#: 
+msgid "Select All"
+msgstr "تحديد الكل"
+
+#: 
+msgid "Send Emails"
+msgstr "إرسال الرسائل الإلكترونية"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "إرسال رسائل التحقق من العائلة"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "تم إرسال %1$d من %2$d — تعذّر الوصول إلى %3$d من العائلات."
+
+#: 
+msgid "Show in Profile"
+msgstr "عرض في الملف الشخصي"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "عرض الإجمالي للصندوق المحدد فقط"
+
+#: 
+msgid "Teller"
+msgstr "أمين الصندوق"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "هذا هو الدور الوحيد في هذه المجموعة."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "لا يمكن حذف هذا الدور."
+
+#: 
+msgid "To Date"
+msgstr "إلى تاريخ"
+
+#: 
+msgid "Total Pledged"
+msgstr "إجمالي التعهدات"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "خطأ غير متوقع أثناء إرسال الرسائل الإلكترونية. يرجى مراجعة السجلات."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "يستخدم عنوان الشارع أعلاه للبحث عن الإحداثيات عبر OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "عرض الدفعة"
+
+#: 
+msgid "View Pledge"
+msgstr "عرض التعهد"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "عند التحديد، ستُعرض هذه الخاصية بجانب المجموعة في قائمة مجموعات الشخص على صفحة ملفه الشخصي."
+
+#: 
+msgid "[Family Name]"
+msgstr "[اسم العائلة]"
+
+#: 
+msgid "row selected"
+msgstr "صف محدد"
+
+#: 
+msgid "rows selected"
+msgstr "صفوف محددة"
+

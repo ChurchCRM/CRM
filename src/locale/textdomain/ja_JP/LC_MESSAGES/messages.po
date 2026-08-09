@@ -17402,3 +17402,263 @@ msgstr "今日あなたのことを思っています。"
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "ページルート、有効なロケール、CRMバージョン、PHPバージョン、OSファミリー、およびランダムなインストールID。それ以外は何もありません。データはEUに保存されます。"
 
+#: 
+msgid "% Paid"
+msgstr "支払い済み %"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: 家族の情報を確認してください"
+
+#: 
+msgid "Add Role"
+msgstr "役割を追加"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "このグループ固有のカスタムプロパティを追加"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "座標が最後に設定されてから住所が変更されました。"
+
+#: 
+msgid "All Tellers"
+msgstr "すべての会計係"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "すべてのメール送信が失敗しました。システム設定のSMTP設定を確認してください。"
+
+#: 
+msgid "Amount Max"
+msgstr "金額（最大）"
+
+#: 
+msgid "Amount Min"
+msgstr "金額（最小）"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "メール送信中に予期しないエラーが発生しました。SMTP設定とサーバーログを確認してください。"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "役割「{{name}}」を削除してもよろしいですか？"
+
+#: 
+msgid "Auto"
+msgstr "自動"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "「自動」はOSまたはブラウザの設定に従います。「ライト」と「ダーク」はそれを上書きします"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "献金ダッシュボードに戻る"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "「座標を生成」をクリックして上記の住所の地図上の位置を検索するか、緯度/経度を手動で入力してください。空白のままにした場合、フォームを保存する際に座標が自動検出されます。"
+
+#: 
+msgid "Contributor"
+msgstr "献金者"
+
+#: 
+msgid "Contributors"
+msgstr "献金者一覧"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "その住所の座標が見つかりませんでした。手動で入力してください。"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "このグループのカスタムプロパティ"
+
+#: 
+msgid "Delete role"
+msgstr "役割を削除"
+
+#: 
+msgid "Email Error"
+msgstr "メールエラー"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "メールが設定されていません。システム設定でSMTP設定を構成してください。"
+
+#: 
+msgid "Enter a street address first."
+msgstr "まず住所を入力してください。"
+
+#: 
+msgid "Enter role name"
+msgstr "役割名を入力"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "入金の作成に失敗しました"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "メールプレビューの読み込みに失敗しました"
+
+#: 
+msgid "From Date"
+msgstr "開始日"
+
+#: 
+msgid "Fund Total"
+msgstr "基金合計"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "会計年度別の基金献金者の誓約サマリー"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "募金活動は無効です"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "座標を生成"
+
+#: 
+msgid "Generating..."
+msgstr "生成中..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "ジオコーディングのリクエストが失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Manage Events"
+msgstr "イベントを管理"
+
+#: 
+msgid "New Deposit"
+msgstr "新規入金"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "選択した会計年度にこの基金の献金者が見つかりませんでした"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "メールアドレスを持つ家族が見つかりませんでした。何も送信されませんでした。"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "選択した入金に対する支払いが見つかりませんでした"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "有効な入金IDが指定されていません"
+
+#: 
+msgid "Partial Send"
+msgstr "一部送信"
+
+#: 
+msgid "Payments only"
+msgstr "支払いのみ"
+
+#: 
+msgid "Pledged Amount"
+msgstr "献金誓約額"
+
+#: 
+msgid "Preview"
+msgstr "プレビュー"
+
+#: 
+msgid "Retry"
+msgstr "再試行"
+
+#: 
+msgid "Search"
+msgstr "検索"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "入金伝票記録を検索・管理"
+
+#: 
+msgid "Select All"
+msgstr "すべて選択"
+
+#: 
+msgid "Send Emails"
+msgstr "メールを送信"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "家族確認メールを送信"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d件中%1$d件を送信しました — %3$d家族に届きませんでした。"
+
+#: 
+msgid "Show in Profile"
+msgstr "プロフィールに表示"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "選択した基金の合計のみを表示"
+
+#: 
+msgid "Teller"
+msgstr "会計係"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "これはこのグループで唯一の役割です。"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "この役割は削除できません。"
+
+#: 
+msgid "To Date"
+msgstr "終了日"
+
+#: 
+msgid "Total Pledged"
+msgstr "誓約合計"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "メール送信中に予期しないエラーが発生しました。ログを確認してください。"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "上記の住所を使用して、OpenStreetMapで座標を検索します。"
+
+#: 
+msgid "View Payment"
+msgstr "支払いを表示"
+
+#: 
+msgid "View Pledge"
+msgstr "誓約を表示"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "チェックを入れると、このプロパティはプロフィールページのグループ一覧でグループと共に表示されます。"
+
+#: 
+msgid "[Family Name]"
+msgstr "[家族名]"
+
+#: 
+msgid "row selected"
+msgstr "行が選択されました"
+
+#: 
+msgid "rows selected"
+msgstr "行が選択されました"
+

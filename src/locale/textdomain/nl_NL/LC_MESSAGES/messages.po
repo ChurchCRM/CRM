@@ -17417,3 +17417,263 @@ msgstr "denkt vandaag aan u."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "paginapaden, actieve taal, CRM-versie, PHP-versie, OS-familie en een willekeurig installatie-ID. Niets anders. Gegevens worden opgeslagen in de EU."
 
+#: 
+msgid "% Paid"
+msgstr "% Betaald"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Verifieer uw gezinsinformatie"
+
+#: 
+msgid "Add Role"
+msgstr "Rol toevoegen"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Aangepaste eigenschappen toevoegen voor deze groep"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adres gewijzigd sinds de coordinaten voor het laatst zijn ingesteld."
+
+#: 
+msgid "All Tellers"
+msgstr "Alle kassiers"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Alle e-mails zijn mislukt. Controleer uw SMTP-instellingen in de systeeminstellingen."
+
+#: 
+msgid "Amount Max"
+msgstr "Maximumbedrag"
+
+#: 
+msgid "Amount Min"
+msgstr "Minimumbedrag"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Er is een onverwachte fout opgetreden bij het verzenden van e-mails. Controleer uw SMTP-instellingen en serverlogboeken."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Weet u zeker dat u de rol '{{name}}' wilt verwijderen?"
+
+#: 
+msgid "Auto"
+msgstr "Automatisch"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automatisch volgt uw besturingssysteem- of browserinstelling; Licht en Donker overschrijven dit"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Terug naar het beloftedashboard"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Klik op \"Coordinaten genereren\" om de kaartlocatie voor het bovenstaande adres op te zoeken, of voer breedtegraad/lengtegraad handmatig in. Als dit leeg wordt gelaten, worden de coordinaten ook automatisch gedetecteerd wanneer u het formulier opslaat."
+
+#: 
+msgid "Contributor"
+msgstr "Bijdrager"
+
+#: 
+msgid "Contributors"
+msgstr "Bijdragers"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Coordinaten voor dat adres konden niet worden gevonden. Probeer ze handmatig in te voeren."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Aangepaste eigenschappen voor deze groep"
+
+#: 
+msgid "Delete role"
+msgstr "Rol verwijderen"
+
+#: 
+msgid "Email Error"
+msgstr "E-mailfout"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-mail is niet geconfigureerd. Configureer de SMTP-instellingen in de systeeminstellingen."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Voer eerst een straatadres in."
+
+#: 
+msgid "Enter role name"
+msgstr "Rolnaam invoeren"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Aanmaken van storting mislukt"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Laden van e-mailvoorvertoning mislukt"
+
+#: 
+msgid "From Date"
+msgstr "Vanaf datum"
+
+#: 
+msgid "Fund Total"
+msgstr "Fondstotaal"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Overzicht van toezeggingen van fondsbijdragers per boekjaar"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Fondswerving is uitgeschakeld"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Coordinaten genereren"
+
+#: 
+msgid "Generating..."
+msgstr "Genereren..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Geolocatieverzoek mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Manage Events"
+msgstr "Evenementen beheren"
+
+#: 
+msgid "New Deposit"
+msgstr "Nieuwe storting"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Geen bijdragers gevonden voor dit fonds in het geselecteerde boekjaar"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Er zijn geen gezinnen met een e-mailadres gevonden. Er is niets verzonden."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Geen betalingen gevonden voor de geselecteerde stortingen"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Geen geldige stortings-ID's opgegeven"
+
+#: 
+msgid "Partial Send"
+msgstr "Gedeeltelijk verzonden"
+
+#: 
+msgid "Payments only"
+msgstr "Alleen betalingen"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Toegezegd bedrag"
+
+#: 
+msgid "Preview"
+msgstr "Voorvertoning"
+
+#: 
+msgid "Retry"
+msgstr "Opnieuw proberen"
+
+#: 
+msgid "Search"
+msgstr "Zoeken"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Stortingsbewijzen zoeken en beheren"
+
+#: 
+msgid "Select All"
+msgstr "Alles selecteren"
+
+#: 
+msgid "Send Emails"
+msgstr "E-mails verzenden"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Gezinsverificatie-e-mails verzenden"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%1$d van %2$d verzonden — %3$d gezinnen konden niet worden bereikt."
+
+#: 
+msgid "Show in Profile"
+msgstr "Weergeven in profiel"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Totaal weergegeven alleen voor geselecteerd fonds"
+
+#: 
+msgid "Teller"
+msgstr "Kassier"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Dit is de enige rol in deze groep."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Deze rol kan niet worden verwijderd."
+
+#: 
+msgid "To Date"
+msgstr "Tot datum"
+
+#: 
+msgid "Total Pledged"
+msgstr "Totaal toegezegd"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Onverwachte fout bij het verzenden van e-mails. Controleer de logboeken."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Gebruikt uw bovenstaande straatadres om coordinaten op te zoeken via OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Betaling bekijken"
+
+#: 
+msgid "View Pledge"
+msgstr "Toezegging bekijken"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Wanneer aangevinkt, wordt deze eigenschap naast de groep weergegeven in de groepenlijst van de persoon op hun profielpagina."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Gezinsnaam]"
+
+#: 
+msgid "row selected"
+msgstr "rij geselecteerd"
+
+#: 
+msgid "rows selected"
+msgstr "rijen geselecteerd"
+

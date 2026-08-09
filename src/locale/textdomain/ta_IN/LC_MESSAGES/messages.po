@@ -17524,3 +17524,275 @@ msgstr "இன்று உங்களை நினைக்கிறார்.
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "பக்க பாதைகள், செயலில் உள்ள மொழி, CRM பதிப்பு, PHP பதிப்பு, இயக்க முறைமை வகை மற்றும் ஒரு சீரற்ற நிறுவல் ID. வேறு எதுவும் இல்லை. தரவு EU-ல் சேமிக்கப்படுகிறது."
 
+#: 
+msgid "% Paid"
+msgstr "% செலுத்தப்பட்டது"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: உங்கள் குடும்பத்தின் தகவலை சரிபார்க்கவும்"
+
+#: 
+msgid "Add Role"
+msgstr "பங்கு சேர்க்கவும்"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "இந்த குழுவிற்கு குறிப்பிட்ட தனிப்பயன் பண்புகளை சேர்க்கவும்"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "கடைசியாக ஆயத்தொலைவுகள் அமைக்கப்பட்டதிலிருந்து முகவரி மாறியுள்ளது."
+
+#: 
+msgid "All Tellers"
+msgstr "அனைத்து பணம் ஏற்பாளர்களும்"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "அனைத்து மின்னஞ்சல் அனுப்புதல்களும் தோல்வியடைந்தன. கணினி அமைப்புகளில் உங்கள் SMTP அமைப்புகளை சரிபார்க்கவும்."
+
+#: 
+msgid "Amount Max"
+msgstr "அதிகபட்ச தொகை"
+
+#: 
+msgid "Amount Min"
+msgstr "குறைந்தபட்ச தொகை"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "மின்னஞ்சல்கள் அனுப்புவதில் எதிர்பாராத பிழை ஏற்பட்டது. உங்கள் SMTP அமைப்புகளையும் சேவையக பதிவுகளையும் சரிபார்க்கவும்."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' பங்கை நீக்க விரும்புகிறீர்களா?"
+
+#: 
+msgid "Auto"
+msgstr "தானியங்கி"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "தானியங்கி உங்கள் இயக்க முறைமை அல்லது உலாவி அமைப்பைப் பின்தொடர்கிறது; ஒளி மற்றும் இருள் அதை மேலெழுதும்"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "உறுதிமொழி டாஷ்போர்டுக்கு திரும்பு"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "மேலே உள்ள முகவரிக்கான வரைபட இடத்தை தேட \"ஆயத்தொலைவுகள் உருவாக்கு\" என்பதை கிளிக் செய்யவும், அல்லது அட்சரேகை/தீர்க்கரேகையை கைமுறையாக உள்ளிடவும். வெறுமனே விட்டால், படிவத்தை சேமிக்கும்போது ஆயத்தொலைவுகள் தானாகவே கண்டறியப்படும்."
+
+#: 
+msgid "Contributor"
+msgstr "பங்களிப்பாளர்"
+
+#: 
+msgid "Contributors"
+msgstr "பங்களிப்பாளர்கள்"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "அந்த முகவரிக்கான ஆயத்தொலைவுகளை கண்டுபிடிக்க முடியவில்லை. கைமுறையாக உள்ளிட முயற்சிக்கவும்."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "இந்த குழுவிற்கான தனிப்பயன் பண்புகள்"
+
+#: 
+msgid "Delete role"
+msgstr "பங்கை நீக்கு"
+
+#: 
+msgid "Email Error"
+msgstr "மின்னஞ்சல் பிழை"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "மின்னஞ்சல் கட்டமைக்கப்படவில்லை. கணினி அமைப்புகளில் SMTP அமைப்புகளை கட்டமைக்கவும்."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "%d குடும்பத்திற்கு மின்னஞ்சல் அனுப்பப்பட்டது."
+msgstr[1] "%d குடும்பங்களுக்கு மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
+msgid "Enter a street address first."
+msgstr "முதலில் தெரு முகவரியை உள்ளிடவும்."
+
+#: 
+msgid "Enter role name"
+msgstr "பங்கின் பெயரை உள்ளிடவும்"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "வைப்புத்தொகை உருவாக்குவதில் தோல்வி"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "மின்னஞ்சல் முன்னோட்டம் ஏற்றுவதில் தோல்வி"
+
+#: 
+msgid "From Date"
+msgstr "தொடக்க தேதி"
+
+#: 
+msgid "Fund Total"
+msgstr "நிதி மொத்தம்"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "நிதியாண்டு வாரியான நிதி பங்களிப்பாளர் உறுதிமொழி சுருக்கம்"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "நிதி திரட்டல் முடக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "ஆயத்தொலைவுகள் உருவாக்கு"
+
+#: 
+msgid "Generating..."
+msgstr "உருவாக்குகிறது..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "புவியியல் குறியீட்டு கோரிக்கை தோல்வியடைந்தது. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Manage Events"
+msgstr "நிகழ்வுகளை நிர்வகி"
+
+#: 
+msgid "New Deposit"
+msgstr "புதிய வைப்புத்தொகை"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "தேர்ந்தெடுக்கப்பட்ட நிதியாண்டில் இந்த நிதிக்கு பங்களிப்பாளர்கள் எவரும் இல்லை"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "மின்னஞ்சல் முகவரி உள்ள குடும்பங்கள் எதுவும் கண்டுபிடிக்கப்படவில்லை. எதுவும் அனுப்பப்படவில்லை."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "தேர்ந்தெடுக்கப்பட்ட வைப்புத்தொகைகளுக்கு செலுத்துதல்கள் எதுவும் இல்லை"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "செல்லுபடியான வைப்பு அடையாள எண்கள் வழங்கப்படவில்லை"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF வெற்றிகரமாக %d குடும்பத்திற்கு மின்னஞ்சல் செய்யப்பட்டது."
+msgstr[1] "PDF வெற்றிகரமாக %d குடும்பங்களுக்கு மின்னஞ்சல் செய்யப்பட்டது."
+
+#: 
+msgid "Partial Send"
+msgstr "பகுதி அனுப்புதல்"
+
+#: 
+msgid "Payments only"
+msgstr "செலுத்துதல்கள் மட்டும்"
+
+#: 
+msgid "Pledged Amount"
+msgstr "உறுதியளிக்கப்பட்ட தொகை"
+
+#: 
+msgid "Preview"
+msgstr "முன்னோட்டம்"
+
+#: 
+msgid "Retry"
+msgstr "மீண்டும் முயற்சி"
+
+#: 
+msgid "Search"
+msgstr "தேடு"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "வைப்பு சீட்டு பதிவுகளை தேடி நிர்வகி"
+
+#: 
+msgid "Select All"
+msgstr "அனைத்தையும் தேர்ந்தெடு"
+
+#: 
+msgid "Send Emails"
+msgstr "மின்னஞ்சல்கள் அனுப்பு"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "குடும்ப சரிபார்ப்பு மின்னஞ்சல்கள் அனுப்பு"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d இல் %1$d அனுப்பப்பட்டது — %3$d குடும்பங்களை அடைய முடியவில்லை."
+
+#: 
+msgid "Show in Profile"
+msgstr "சுயவிவரத்தில் காட்டு"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "தேர்ந்தெடுக்கப்பட்ட நிதிக்கான மொத்தம் மட்டும் காட்டப்படுகிறது"
+
+#: 
+msgid "Teller"
+msgstr "பணம் ஏற்பாளர்"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "இது இந்த குழுவில் உள்ள ஒரே பங்கு."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "இந்த பங்கை நீக்க முடியாது."
+
+#: 
+msgid "To Date"
+msgstr "இறுதி தேதி"
+
+#: 
+msgid "Total Pledged"
+msgstr "மொத்த உறுதிமொழி"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "மின்னஞ்சல்கள் அனுப்புவதில் எதிர்பாராத பிழை. பதிவுகளை சரிபார்க்கவும்."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "மேலே உள்ள உங்கள் தெரு முகவரியை பயன்படுத்தி OpenStreetMap வழியாக ஆயத்தொலைவுகளை தேடுகிறது."
+
+#: 
+msgid "View Payment"
+msgstr "செலுத்துதலை பார்க்கவும்"
+
+#: 
+msgid "View Pledge"
+msgstr "உறுதிமொழியை பார்க்கவும்"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "தேர்ந்தெடுக்கப்படும்போது, இந்த பண்பு அவர்களின் சுயவிவர பக்கத்தில் குழு பட்டியலில் குழுவுடன் காட்டப்படும்."
+
+#: 
+msgid "[Family Name]"
+msgstr "[குடும்பப் பெயர்]"
+
+#: 
+msgid "row selected"
+msgstr "வரிசை தேர்ந்தெடுக்கப்பட்டது"
+
+#: 
+msgid "rows selected"
+msgstr "வரிசைகள் தேர்ந்தெடுக்கப்பட்டன"
+

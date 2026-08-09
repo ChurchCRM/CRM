@@ -17525,3 +17525,259 @@ msgstr "se gândește la dvs. astăzi."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "rute de pagini, localizare activă, versiune CRM, versiune PHP, familie SO și un ID de instalare aleatoriu. Nimic altceva. Datele sunt stocate în UE."
 
+#: 
+msgid "% Paid"
+msgstr "% Platit"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Va rugam sa verificati informatiile familiei"
+
+#: 
+msgid "Add Role"
+msgstr "Adauga rol"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Adauga proprietati personalizate specifice acestui grup"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adresa s-a schimbat de la ultima setare a coordonatelor."
+
+#: 
+msgid "All Tellers"
+msgstr "Toti casierii"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Toate trimiturile de e-mail au esuat. Verificati setarile SMTP din Setarile sistemului."
+
+#: 
+msgid "Amount Max"
+msgstr "Suma maxima"
+
+#: 
+msgid "Amount Min"
+msgstr "Suma minima"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "A aparut o eroare neasteptata la trimiterea e-mailurilor. Verificati setarile SMTP si jurnalele serverului."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Sigur doriti sa eliminati rolul '{{name}}'?"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Auto urmeaza setarile sistemului de operare sau ale browserului; Luminos si Intunecat le suprascriu"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Inapoi la tabloul de bord al angajamentelor"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Faceti clic pe \"Genereaza coordonate\" pentru a cauta locatia pe harta pentru adresa de mai sus, sau introduceti manual latitudinea/longitudinea. Daca este lasat necompletat, coordonatele sunt detectate automat la salvarea formularului."
+
+#: 
+msgid "Contributor"
+msgstr "Donator"
+
+#: 
+msgid "Contributors"
+msgstr "Donatori"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Nu s-au putut gasi coordonate pentru aceasta adresa. Incercati sa le introduceti manual."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Proprietati personalizate pentru acest grup"
+
+#: 
+msgid "Delete role"
+msgstr "Sterge rol"
+
+#: 
+msgid "Email Error"
+msgstr "Eroare e-mail"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-mailul nu este configurat. Configurati setarile SMTP din Setarile sistemului."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Introduceti mai intai o adresa stradala."
+
+#: 
+msgid "Enter role name"
+msgstr "Introduceti numele rolului"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Crearea depozitului a esuat"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Incarcarea previzualizarii e-mailului a esuat"
+
+#: 
+msgid "From Date"
+msgstr "De la data"
+
+#: 
+msgid "Fund Total"
+msgstr "Total fond"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Rezumatul angajamentelor donatorilor fondului pe an fiscal"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Strangerea de fonduri este dezactivata"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Genereaza coordonate"
+
+#: 
+msgid "Generating..."
+msgstr "Se genereaza..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Solicitarea de geocodificare a esuat. Va rugam sa incercati din nou."
+
+#: 
+msgid "Manage Events"
+msgstr "Gestioneaza evenimente"
+
+#: 
+msgid "New Deposit"
+msgstr "Depozit nou"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Nu s-au gasit donatori pentru acest fond in anul fiscal selectat"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Nu s-au gasit familii cu adresa de e-mail. Nimic nu a fost trimis."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Nu s-au gasit plati pentru depozitele selectate"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Nu au fost furnizate ID-uri valide de depozit"
+
+#: 
+msgid "Partial Send"
+msgstr "Trimitere partiala"
+
+#: 
+msgid "Payments only"
+msgstr "Doar plati"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Suma angajata"
+
+#: 
+msgid "Preview"
+msgstr "Previzualizare"
+
+#: 
+msgid "Retry"
+msgstr "Reincearca"
+
+#: 
+msgid "Search"
+msgstr "Cautare"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Cauta si gestioneaza inregistrarile chitantelor de depozit"
+
+#: 
+msgid "Select All"
+msgstr "Selecteaza tot"
+
+#: 
+msgid "Send Emails"
+msgstr "Trimite e-mailuri"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Trimite e-mailuri de verificare a familiei"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Trimis %1$d din %2$d — %3$d familii nu au putut fi contactate."
+
+#: 
+msgid "Show in Profile"
+msgstr "Afiseaza in profil"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Se afiseaza totalul doar pentru fondul selectat"
+
+#: 
+msgid "Teller"
+msgstr "Casier"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Acesta este singurul rol din acest grup."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Acest rol nu poate fi sters."
+
+#: 
+msgid "To Date"
+msgstr "Pana la data"
+
+#: 
+msgid "Total Pledged"
+msgstr "Total angajat"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Eroare neasteptata la trimiterea e-mailurilor. Verificati jurnalele."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Foloseste adresa stradala de mai sus pentru a cauta coordonate prin OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Vizualizeaza plata"
+
+#: 
+msgid "View Pledge"
+msgstr "Vizualizeaza angajamentul"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Daca este bifata, aceasta proprietate va fi afisata alaturi de grup in lista de grupuri a persoanei de pe pagina profilului."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Nume familie]"
+
+#: 
+msgid "row selected"
+msgstr "rand selectat"
+
+#: 
+msgid "rows selected"
+msgstr "randuri selectate"
+

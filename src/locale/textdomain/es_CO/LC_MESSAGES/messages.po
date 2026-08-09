@@ -17441,3 +17441,263 @@ msgstr "está pensando en usted hoy."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "rutas de página, idioma activo, versión del CRM, versión de PHP, familia de SO y un ID de instalación aleatorio. Nada más. Los datos se almacenan en la UE."
 
+#: 
+msgid "% Paid"
+msgstr "% Pagado"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Por favor verifique la información de su familia"
+
+#: 
+msgid "Add Role"
+msgstr "Agregar rol"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Agregar propiedades personalizadas específicas para este grupo"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "La dirección cambió desde la última vez que se establecieron las coordenadas."
+
+#: 
+msgid "All Tellers"
+msgstr "Todos los cajeros"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Todos los envíos de correo electrónico fallaron. Por favor verifique la configuración SMTP en Configuración del sistema."
+
+#: 
+msgid "Amount Max"
+msgstr "Monto máximo"
+
+#: 
+msgid "Amount Min"
+msgstr "Monto mínimo"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Ocurrió un error inesperado al enviar correos electrónicos. Por favor verifique la configuración SMTP y los registros del servidor."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "¿Está seguro de que desea eliminar el rol '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Automático"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automático sigue la configuración de su sistema operativo o navegador; Claro y Oscuro la anulan"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Volver al panel de compromisos"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Haga clic en \"Generar coordenadas\" para buscar la ubicación en el mapa para la dirección anterior, o ingrese la latitud/longitud manualmente. Si se deja en blanco, las coordenadas también se detectan automáticamente al guardar el formulario."
+
+#: 
+msgid "Contributor"
+msgstr "Contribuyente"
+
+#: 
+msgid "Contributors"
+msgstr "Contribuyentes"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "No se pudieron encontrar coordenadas para esa dirección. Intente ingresarlas manualmente."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Propiedades personalizadas para este grupo"
+
+#: 
+msgid "Delete role"
+msgstr "Eliminar rol"
+
+#: 
+msgid "Email Error"
+msgstr "Error de correo electrónico"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "El correo electrónico no está configurado. Por favor configure los ajustes SMTP en Configuración del sistema."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Ingrese primero una dirección."
+
+#: 
+msgid "Enter role name"
+msgstr "Ingrese el nombre del rol"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Error al crear el depósito"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Error al cargar la vista previa del correo electrónico"
+
+#: 
+msgid "From Date"
+msgstr "Desde la fecha"
+
+#: 
+msgid "Fund Total"
+msgstr "Total del fondo"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Resumen de compromisos de contribuyentes del fondo por año fiscal"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "La recaudación de fondos está desactivada"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Generar coordenadas"
+
+#: 
+msgid "Generating..."
+msgstr "Generando..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "La solicitud de geocodificación falló. Por favor intente de nuevo."
+
+#: 
+msgid "Manage Events"
+msgstr "Administrar eventos"
+
+#: 
+msgid "New Deposit"
+msgstr "Nuevo depósito"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "No se encontraron contribuyentes para este fondo en el año fiscal seleccionado"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "No se encontraron familias con dirección de correo electrónico. No se envió nada."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "No se encontraron pagos para los depósitos seleccionados"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "No se proporcionaron IDs de depósito válidos"
+
+#: 
+msgid "Partial Send"
+msgstr "Envío parcial"
+
+#: 
+msgid "Payments only"
+msgstr "Solo pagos"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Monto comprometido"
+
+#: 
+msgid "Preview"
+msgstr "Vista previa"
+
+#: 
+msgid "Retry"
+msgstr "Reintentar"
+
+#: 
+msgid "Search"
+msgstr "Buscar"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Buscar y administrar registros de comprobantes de depósito"
+
+#: 
+msgid "Select All"
+msgstr "Seleccionar todo"
+
+#: 
+msgid "Send Emails"
+msgstr "Enviar correos electrónicos"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Enviar correos de verificación familiar"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Se enviaron %1$d de %2$d — no se pudo contactar a %3$d familias."
+
+#: 
+msgid "Show in Profile"
+msgstr "Mostrar en el perfil"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Mostrando el total solo para el fondo seleccionado"
+
+#: 
+msgid "Teller"
+msgstr "Cajero"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Este es el único rol en este grupo."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Este rol no puede ser eliminado."
+
+#: 
+msgid "To Date"
+msgstr "Hasta la fecha"
+
+#: 
+msgid "Total Pledged"
+msgstr "Total comprometido"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Error inesperado al enviar correos electrónicos. Por favor revise los registros."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Usa la dirección indicada arriba para buscar coordenadas a través de OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Ver pago"
+
+#: 
+msgid "View Pledge"
+msgstr "Ver compromiso"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Cuando esté marcada, esta propiedad se mostrará junto al grupo en la lista de grupos de la persona en su página de perfil."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Nombre de familia]"
+
+#: 
+msgid "row selected"
+msgstr "fila seleccionada"
+
+#: 
+msgid "rows selected"
+msgstr "filas seleccionadas"
+

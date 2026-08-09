@@ -17512,3 +17512,263 @@ msgstr "今天在想念您。"
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "页面路由、当前语言环境、CRM 版本、PHP 版本、操作系统类型及随机安装 ID。仅此而已。数据存储于欧盟。"
 
+#: 
+msgid "% Paid"
+msgstr "已付百分比"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s：请核实您家庭的信息"
+
+#: 
+msgid "Add Role"
+msgstr "添加角色"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "为此小组添加自定义属性"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "自上次设置坐标以来，地址已更改。"
+
+#: 
+msgid "All Tellers"
+msgstr "所有收款员"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "所有邮件发送均失败。请在系统设置中检查您的SMTP设置。"
+
+#: 
+msgid "Amount Max"
+msgstr "最大金额"
+
+#: 
+msgid "Amount Min"
+msgstr "最小金额"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "发送邮件时发生意外错误。请检查您的SMTP设置和服务器日志。"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "您确定要删除角色\"{{name}}\"吗？"
+
+#: 
+msgid "Auto"
+msgstr "自动"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "自动跟随操作系统或浏览器设置；浅色和深色模式可覆盖此设置"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "返回奉献承诺仪表板"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "点击\"生成坐标\"以查找上方地址的地图位置，或手动输入经纬度。如果留空，保存表单时也会自动检测坐标。"
+
+#: 
+msgid "Contributor"
+msgstr "奉献者"
+
+#: 
+msgid "Contributors"
+msgstr "奉献者"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "无法找到该地址的坐标。请尝试手动输入。"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "此小组的自定义属性"
+
+#: 
+msgid "Delete role"
+msgstr "删除角色"
+
+#: 
+msgid "Email Error"
+msgstr "邮件错误"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "邮件未配置。请在系统设置中配置SMTP设置。"
+
+#: 
+msgid "Enter a street address first."
+msgstr "请先输入街道地址。"
+
+#: 
+msgid "Enter role name"
+msgstr "输入角色名称"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "创建收款记录失败"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "加载邮件预览失败"
+
+#: 
+msgid "From Date"
+msgstr "开始日期"
+
+#: 
+msgid "Fund Total"
+msgstr "基金总额"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "按财年显示基金奉献承诺汇总"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "募款功能已禁用"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "生成坐标"
+
+#: 
+msgid "Generating..."
+msgstr "生成中……"
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "地理编码请求失败。请重试。"
+
+#: 
+msgid "Manage Events"
+msgstr "管理活动"
+
+#: 
+msgid "New Deposit"
+msgstr "新建收款记录"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "在所选财年内，未找到此基金的奉献者"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "未找到有邮件地址的家庭。未发送任何邮件。"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "所选收款记录中未找到付款记录"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "未提供有效的收款记录ID"
+
+#: 
+msgid "Partial Send"
+msgstr "部分发送"
+
+#: 
+msgid "Payments only"
+msgstr "仅付款"
+
+#: 
+msgid "Pledged Amount"
+msgstr "承诺奉献金额"
+
+#: 
+msgid "Preview"
+msgstr "预览"
+
+#: 
+msgid "Retry"
+msgstr "重试"
+
+#: 
+msgid "Search"
+msgstr "搜索"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "搜索和管理收款凭条记录"
+
+#: 
+msgid "Select All"
+msgstr "全选"
+
+#: 
+msgid "Send Emails"
+msgstr "发送邮件"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "发送家庭信息核实邮件"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "已发送 %1$d／%2$d 封——%3$d 个家庭无法送达。"
+
+#: 
+msgid "Show in Profile"
+msgstr "在个人资料中显示"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "仅显示所选基金的总额"
+
+#: 
+msgid "Teller"
+msgstr "收款员"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "这是此小组中唯一的角色。"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "此角色无法删除。"
+
+#: 
+msgid "To Date"
+msgstr "结束日期"
+
+#: 
+msgid "Total Pledged"
+msgstr "承诺奉献总额"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "发送邮件时发生意外错误。请检查日志。"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "使用上方的街道地址通过OpenStreetMap查找坐标。"
+
+#: 
+msgid "View Payment"
+msgstr "查看付款"
+
+#: 
+msgid "View Pledge"
+msgstr "查看奉献承诺"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "勾选后，此属性将与小组一起显示在成员个人资料页的小组列表中。"
+
+#: 
+msgid "[Family Name]"
+msgstr "【家庭姓名】"
+
+#: 
+msgid "row selected"
+msgstr "行已选中"
+
+#: 
+msgid "rows selected"
+msgstr "行已选中"
+

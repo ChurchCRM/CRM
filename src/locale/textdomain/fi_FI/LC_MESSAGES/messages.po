@@ -17427,3 +17427,263 @@ msgstr "ajattelee sinua tänään."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "sivureitit, aktiivinen kieli, CRM-versio, PHP-versio, käyttöjärjestelmäperhe ja satunnainen asennustunnus. Ei mitään muuta. Tiedot tallennetaan EU:hun."
 
+#: 
+msgid "% Paid"
+msgstr "% Maksettu"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Tarkista perheen tiedot"
+
+#: 
+msgid "Add Role"
+msgstr "Lisaa rooli"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Lisaa tahan ryhmaan liittyvia mukautettuja ominaisuuksia"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Osoite on muuttunut koordinaattien viimeisen paivityksen jalkeen."
+
+#: 
+msgid "All Tellers"
+msgstr "Kaikki kassanhoitajat"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Kaikkien sahkopostien lahetys epaonnistui. Tarkista SMTP-asetukset jarjestelmasetuksista."
+
+#: 
+msgid "Amount Max"
+msgstr "Enimmaissum ma"
+
+#: 
+msgid "Amount Min"
+msgstr "Vahimmaissum ma"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Sahkopostien lahetyksessa tapahtui odottamaton virhe. Tarkista SMTP-asetukset ja palvelinlokit."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Haluatko varmasti poistaa roolin '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Automaattinen"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automaattinen noudattaa kayttojarjestelman tai selaimen asetusta; Vaalea ja Tumma ohittavat sen"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Takaisin lupausten kojelautaan"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Napsauta \"Luo koordinaatit\" hakeaksesi yllä olevan osoitteen sijaintia kartalta, tai syota leveys- ja pituusaste manuaalisesti. Jos kentta jatetaan tyhjaksesi, koordinaatit tunnistetaan automaattisesti lomakkeen tallennuksen yhteydessa."
+
+#: 
+msgid "Contributor"
+msgstr "Lahjoittaja"
+
+#: 
+msgid "Contributors"
+msgstr "Lahjoittajat"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Koordinaatteja ei loydetty kyseiselle osoitteelle. Yrita syottaa ne manuaalisesti."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Ryhmän mukautetut ominaisuudet"
+
+#: 
+msgid "Delete role"
+msgstr "Poista rooli"
+
+#: 
+msgid "Email Error"
+msgstr "Sahkopostivirhe"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Sahkopostia ei ole maaritetty. Maarita SMTP-asetukset jarjestelmasetuksissa."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Syota ensin katuosoite."
+
+#: 
+msgid "Enter role name"
+msgstr "Syota roolin nimi"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Talletuksen luonti epaonnistui"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Sahkopostin esikatselun lataus epaonnistui"
+
+#: 
+msgid "From Date"
+msgstr "Alkupaivamaara"
+
+#: 
+msgid "Fund Total"
+msgstr "Rahaston yhteissumma"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Rahaston lahjoittajien lupaukset tilikausittain"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Varainkeruu on poistettu kaytosta"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Luo koordinaatit"
+
+#: 
+msgid "Generating..."
+msgstr "Luodaan..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Geokoodauspyynto epaonnistui. Yrita uudelleen."
+
+#: 
+msgid "Manage Events"
+msgstr "Hallinnoi tapahtumia"
+
+#: 
+msgid "New Deposit"
+msgstr "Uusi talletus"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Talle rahastolle ei loytynyт lahjoittajia valitulla tilikaudella"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Yhtaan perhetta sahkopostiosoitteella ei loytynyт. Mitaan ei lahetetty."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Valituille talletuksille ei loytynyт maksuja"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Yhtaan kelvollista talletustunnusta ei annettu"
+
+#: 
+msgid "Partial Send"
+msgstr "Osittainen lahetys"
+
+#: 
+msgid "Payments only"
+msgstr "Vain maksut"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Luvattu summa"
+
+#: 
+msgid "Preview"
+msgstr "Esikatselu"
+
+#: 
+msgid "Retry"
+msgstr "Yrita uudelleen"
+
+#: 
+msgid "Search"
+msgstr "Haku"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Etsi ja hallinnoi talletuskuitteja"
+
+#: 
+msgid "Select All"
+msgstr "Valitse kaikki"
+
+#: 
+msgid "Send Emails"
+msgstr "Laheta sahkopostit"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Laheta perheen vahvistussahkopostit"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Lahetetty %1$d / %2$d — %3$d perhetta ei tavoitettu."
+
+#: 
+msgid "Show in Profile"
+msgstr "Nayta profiilissa"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Naytetaan yhteissumma vain valitulle rahastolle"
+
+#: 
+msgid "Teller"
+msgstr "Kassanhoitaja"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Tama on ryhmän ainoa rooli."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Tata roolia ei voi poistaa."
+
+#: 
+msgid "To Date"
+msgstr "Loppupaivamaara"
+
+#: 
+msgid "Total Pledged"
+msgstr "Yhteensa luvattu"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Odottamaton virhe sahkoposteja lahetettaessa. Tarkista lokit."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Kayttaa yllä olevaa katuosoitettasi koordinaattien hakuun OpenStreetMapin kautta."
+
+#: 
+msgid "View Payment"
+msgstr "Nayta maksu"
+
+#: 
+msgid "View Pledge"
+msgstr "Nayta lupaus"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Kun valittu, tama ominaisuus naytetaan ryhmän yhteydessa henkilön profiilisivun ryhmäluettelossa."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Sukunimi]"
+
+#: 
+msgid "row selected"
+msgstr "rivi valittu"
+
+#: 
+msgid "rows selected"
+msgstr "rivia valittu"
+

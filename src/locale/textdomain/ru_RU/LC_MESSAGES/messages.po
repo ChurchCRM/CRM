@@ -17544,3 +17544,263 @@ msgstr "думает о вас сегодня."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "маршруты страниц, активный язык, версия CRM, версия PHP, семейство ОС и случайный идентификатор установки. Ничего более. Данные хранятся в ЕС."
 
+#: 
+msgid "% Paid"
+msgstr "% Oplacheno"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Pozhaluysta, proverte informatsiyu o vashey seme"
+
+#: 
+msgid "Add Role"
+msgstr "Dobavit rol"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Dobavit polzovatelskie svoystva dlya etoy gruppy"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adres izmenilsya s momenta poslednego opredeleniya koordinat."
+
+#: 
+msgid "All Tellers"
+msgstr "Vse kassiry"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Vse pisma ne udalos otpravit. Pozhaluysta, proverte nastroyki SMTP v sistemnykh nastroykakh."
+
+#: 
+msgid "Amount Max"
+msgstr "Maksimalnaya summa"
+
+#: 
+msgid "Amount Min"
+msgstr "Minimalnaya summa"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Proizoshla nepredvidennaya oshibka pri otpravke pisem. Pozhaluysta, proverte nastroyki SMTP i zhurnaly servera."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Vy uvereny, chto khotite udalit rol '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Avto"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Avto sleduet nastroykam OS ili brauzera; Svetlaya i Tyomnaya temy pereopredelyayut ego"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Vernutsya k paneli pozhertvovaniy"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Nazhimte «Opredelit koordinaty», chtoby nayti mestopolozheniye na karte po ukazannomu vyshe adresu, ili vvedite shirotu/dolgotu vruchnuyu. Yesli pole ostavit pustym, koordinaty takzhe opredélyatsya avtomaticheski pri sokhranenii formy."
+
+#: 
+msgid "Contributor"
+msgstr "Zhertvovatel"
+
+#: 
+msgid "Contributors"
+msgstr "Zhertvovately"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Ne udalos nayti koordinaty dlya etogo adresa. Poprobuite vvesti ikh vruchnuyu."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Polzovatelskie svoystva dlya etoy gruppy"
+
+#: 
+msgid "Delete role"
+msgstr "Udalit rol"
+
+#: 
+msgid "Email Error"
+msgstr "Oshibka elektronnoy pochty"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Elektronnaya pochta ne nastroena. Pozhaluysta, nastroyte parametry SMTP v sistemnykh nastroykakh."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Snachala vvedite pochtovyy adres."
+
+#: 
+msgid "Enter role name"
+msgstr "Vvedite nazvaniye roli"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Ne udalos sozdat depozit"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Ne udalos zagruzit predvaritelnyy prosmotr pisma"
+
+#: 
+msgid "From Date"
+msgstr "S daty"
+
+#: 
+msgid "Fund Total"
+msgstr "Itogo po fondu"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Svodnaya pozhertvovaniy zhertvovately fonda po finansovomu godu"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Sbor pozhertvovaniy otkluchon"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Opredelit koordinaty"
+
+#: 
+msgid "Generating..."
+msgstr "Opredeleniye..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Zapros geokodirovanya ne vypolnen. Pozhaluysta, poprobuyte eshcho raz."
+
+#: 
+msgid "Manage Events"
+msgstr "Upravleniye meropriyatiyami"
+
+#: 
+msgid "New Deposit"
+msgstr "Novyy depozit"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Zhertvovately dlya etogo fonda v vybrannom finansovom godu ne naydeny"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Semi s adresom elektronnoy pochty ne naydeny. Nichego ne otpravleno."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Platezhi po vybrannym depozitam ne naydeny"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Ne ukazany deystvitelnye identifikatory depozitov"
+
+#: 
+msgid "Partial Send"
+msgstr "Chastichnaya otpravka"
+
+#: 
+msgid "Payments only"
+msgstr "Tolko platezhi"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Summa pozhertvovaniya"
+
+#: 
+msgid "Preview"
+msgstr "Predprosmotr"
+
+#: 
+msgid "Retry"
+msgstr "Povtorit"
+
+#: 
+msgid "Search"
+msgstr "Poisk"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Poisk i upravleniye zapisyami kvitantsiy o depozitakh"
+
+#: 
+msgid "Select All"
+msgstr "Vybrat vse"
+
+#: 
+msgid "Send Emails"
+msgstr "Otpravit pisma"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Otpravit pisma dlya podtverzhdeniya dannykh semi"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Otpravleno %1$d iz %2$d — %3$d semey nedostupny."
+
+#: 
+msgid "Show in Profile"
+msgstr "Pokazat v profle"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Otobrazhaetsya itog tolko dlya vybrannnogo fonda"
+
+#: 
+msgid "Teller"
+msgstr "Kassir"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Eto edinstvennaya rol v dannoy gruppe."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Eta rol ne mozhet byt udalena."
+
+#: 
+msgid "To Date"
+msgstr "Po datu"
+
+#: 
+msgid "Total Pledged"
+msgstr "Vsego pozhertvovano"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Nepredvidennaya oshibka pri otpravke pisem. Pozhaluysta, proverte zhurnaly."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Ispolzuyet ukazannyy vyshe pochtovyy adres dlya poiska koordinat cherez OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Prosmotr platezha"
+
+#: 
+msgid "View Pledge"
+msgstr "Prosmotr pozhertvovaniya"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Yesli otmecheno, eto svoystvo budet otobrazhatstya ryadom s gruppoy v spiske grupp cheloveka na ego stranitse profilya."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Familiya]"
+
+#: 
+msgid "row selected"
+msgstr "stroka vybrana"
+
+#: 
+msgid "rows selected"
+msgstr "strok vybrano"
+

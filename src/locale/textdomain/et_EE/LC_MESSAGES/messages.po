@@ -17464,3 +17464,263 @@ msgstr "mõtleb täna teist."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "lehekülje marsruudid, aktiivne lokaad, CRM-i versioon, PHP versioon, OS-i perekond ja juhuslik paigalduse ID. Midagi muud. Andmeid hoitakse EL-is."
 
+#: 
+msgid "% Paid"
+msgstr "% Makstud"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Palun kontrollige oma pere andmeid"
+
+#: 
+msgid "Add Role"
+msgstr "Lisa roll"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Lisa sellele grupile kohandatud omadused"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Aadress on muutunud parast koordinaatide viimast seadistamist."
+
+#: 
+msgid "All Tellers"
+msgstr "Koik kassapidajad"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Koik e-kirjade saatmised ebaonnestusid. Palun kontrollige susteemiseadetes SMTP-seadeid."
+
+#: 
+msgid "Amount Max"
+msgstr "Summa max"
+
+#: 
+msgid "Amount Min"
+msgstr "Summa min"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "E-kirjade saatmisel ilmnes ootamatu viga. Palun kontrollige SMTP-seadeid ja serveri logisid."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Kas olete kindel, et soovite rolli '{{name}}' eemaldada?"
+
+#: 
+msgid "Auto"
+msgstr "Automaatne"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automaatne jargib teie OS-i voi brauseri seadeid; Hele ja Tume tuhistavad selle"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Tagasi annetuste armatuurlauale"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Klopsake \"Genereeri koordinaadid\", et otsida ulaltoodud aadressi kaardiasukoht, voi sisestage laiuskraad/pikkuskraad kasitsi. Kui jaetakse tuhjaks, tuvastatakse koordinaadid automaatselt vormi salvestamisel."
+
+#: 
+msgid "Contributor"
+msgstr "Annetaja"
+
+#: 
+msgid "Contributors"
+msgstr "Annetajad"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Sellele aadressile ei leitud koordinaate. Proovige sisestada need kasitsi."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Selle grupi kohandatud omadused"
+
+#: 
+msgid "Delete role"
+msgstr "Kustuta roll"
+
+#: 
+msgid "Email Error"
+msgstr "E-posti viga"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-post ei ole seadistatud. Palun seadistage SMTP-satted susteemiseadetes."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Sisestage esmalt tanavaadress."
+
+#: 
+msgid "Enter role name"
+msgstr "Sisestage rolli nimi"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Deposiidi loomine ebaonnestus"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "E-kirja eelvaate laadimine ebaonnestus"
+
+#: 
+msgid "From Date"
+msgstr "Alguskuupaev"
+
+#: 
+msgid "Fund Total"
+msgstr "Fondi kokku"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Fondi annetajate annetuste kokkuvote eelarveaasta kaupa"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Korjandusaktsion on keelatud"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Genereeri koordinaadid"
+
+#: 
+msgid "Generating..."
+msgstr "Genereerimine..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Geokodeerimise paring ebaonnestus. Palun proovige uuesti."
+
+#: 
+msgid "Manage Events"
+msgstr "Halda uritusi"
+
+#: 
+msgid "New Deposit"
+msgstr "Uus deposiit"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Valitud eelarveaastal ei leitud selle fondi jaoks annetajaid"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "E-posti aadressiga perekondi ei leitud. Midagi ei saadetud."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Valitud deposiitide jaoks ei leitud makseid"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Uhtegi kehtivat deposiidi ID-d ei esitatud"
+
+#: 
+msgid "Partial Send"
+msgstr "Osaline saatmine"
+
+#: 
+msgid "Payments only"
+msgstr "Ainult maksed"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Lubatud summa"
+
+#: 
+msgid "Preview"
+msgstr "Eelvaade"
+
+#: 
+msgid "Retry"
+msgstr "Proovi uuesti"
+
+#: 
+msgid "Search"
+msgstr "Otsing"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Otsi ja halda deposiidikviitungi kirjeid"
+
+#: 
+msgid "Select All"
+msgstr "Vali koik"
+
+#: 
+msgid "Send Emails"
+msgstr "Saada e-kirjad"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Saada pere kinnituse e-kirjad"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Saadetud %1$d / %2$d — %3$d perekonnaga ei onnestunud uhendust saada."
+
+#: 
+msgid "Show in Profile"
+msgstr "Kuva profiilil"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Kuvatakse ainult valitud fondi kogusumma"
+
+#: 
+msgid "Teller"
+msgstr "Kassapidaja"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "See on selle grupi ainus roll."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Seda rolli ei saa kustutada."
+
+#: 
+msgid "To Date"
+msgstr "Loppkuupaev"
+
+#: 
+msgid "Total Pledged"
+msgstr "Kokku lubatud"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Ootamatu viga e-kirjade saatmisel. Palun kontrollige logisid."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Kasutab ulaltoodud tanavaadressit koordinaatide otsimiseks OpenStreetMapi kaudu."
+
+#: 
+msgid "View Payment"
+msgstr "Vaata makset"
+
+#: 
+msgid "View Pledge"
+msgstr "Vaata annetust"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Kui see on margitud, kuvatakse see omadus grupi korval isiku profiililehel tema gruppide loendis."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Perekonnanimi]"
+
+#: 
+msgid "row selected"
+msgstr "rida valitud"
+
+#: 
+msgid "rows selected"
+msgstr "rida valitud"
+

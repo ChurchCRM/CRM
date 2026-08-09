@@ -17591,3 +17591,263 @@ msgstr "今天想到了您。"
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "頁面路由、使用中的語言、CRM 版本、PHP 版本、作業系統類型及隨機安裝 ID。不包含其他資訊。資料儲存於歐盟。"
 
+#: 
+msgid "% Paid"
+msgstr "已付款 %"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s：請確認您家庭的資訊"
+
+#: 
+msgid "Add Role"
+msgstr "新增角色"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "新增此小組的自訂屬性"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "自上次設定座標以來，地址已變更。"
+
+#: 
+msgid "All Tellers"
+msgstr "所有收款員"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "所有電子郵件傳送失敗。請在系統設定中檢查您的 SMTP 設定。"
+
+#: 
+msgid "Amount Max"
+msgstr "金額上限"
+
+#: 
+msgid "Amount Min"
+msgstr "金額下限"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "傳送電子郵件時發生意外錯誤。請檢查您的 SMTP 設定和伺服器日誌。"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "您確定要移除角色「{{name}}」嗎？"
+
+#: 
+msgid "Auto"
+msgstr "自動"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "自動跟隨作業系統或瀏覽器設定；淺色和深色模式可覆蓋此設定"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "返回奉獻承諾儀表板"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "點擊「產生座標」以查詢上方地址的地圖位置，或手動輸入緯度/經度。若留空，儲存表單時也會自動偵測座標。"
+
+#: 
+msgid "Contributor"
+msgstr "奉獻者"
+
+#: 
+msgid "Contributors"
+msgstr "奉獻者"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "找不到該地址的座標。請嘗試手動輸入。"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "此小組的自訂屬性"
+
+#: 
+msgid "Delete role"
+msgstr "刪除角色"
+
+#: 
+msgid "Email Error"
+msgstr "電子郵件錯誤"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "電子郵件尚未設定。請在系統設定中配置 SMTP 設定。"
+
+#: 
+msgid "Enter a street address first."
+msgstr "請先輸入街道地址。"
+
+#: 
+msgid "Enter role name"
+msgstr "輸入角色名稱"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "建立存款失敗"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "載入電子郵件預覽失敗"
+
+#: 
+msgid "From Date"
+msgstr "開始日期"
+
+#: 
+msgid "Fund Total"
+msgstr "基金總計"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "按財務年度列出的基金奉獻承諾摘要"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "募款功能已停用"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "產生座標"
+
+#: 
+msgid "Generating..."
+msgstr "產生中..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "地理編碼請求失敗。請再試一次。"
+
+#: 
+msgid "Manage Events"
+msgstr "管理活動"
+
+#: 
+msgid "New Deposit"
+msgstr "新增存款"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "在所選財務年度內，此基金找不到奉獻者"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "找不到有電子郵件地址的家庭。未傳送任何郵件。"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "所選存款記錄中找不到付款資料"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "未提供有效的存款編號"
+
+#: 
+msgid "Partial Send"
+msgstr "部分傳送"
+
+#: 
+msgid "Payments only"
+msgstr "僅限付款"
+
+#: 
+msgid "Pledged Amount"
+msgstr "承諾奉獻金額"
+
+#: 
+msgid "Preview"
+msgstr "預覽"
+
+#: 
+msgid "Retry"
+msgstr "重試"
+
+#: 
+msgid "Search"
+msgstr "搜尋"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "搜尋及管理存款單記錄"
+
+#: 
+msgid "Select All"
+msgstr "全選"
+
+#: 
+msgid "Send Emails"
+msgstr "傳送電子郵件"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "傳送家庭驗證電子郵件"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "已傳送 %2$d 封中的 %1$d 封 — %3$d 個家庭無法聯繫。"
+
+#: 
+msgid "Show in Profile"
+msgstr "在個人檔案中顯示"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "僅顯示所選基金的總計"
+
+#: 
+msgid "Teller"
+msgstr "收款員"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "這是此小組中唯一的角色。"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "此角色無法刪除。"
+
+#: 
+msgid "To Date"
+msgstr "結束日期"
+
+#: 
+msgid "Total Pledged"
+msgstr "承諾奉獻總額"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "傳送電子郵件時發生意外錯誤。請檢查日誌。"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "使用上方的街道地址透過 OpenStreetMap 查詢座標。"
+
+#: 
+msgid "View Payment"
+msgstr "查看付款"
+
+#: 
+msgid "View Pledge"
+msgstr "查看奉獻承諾"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "勾選後，此屬性將在個人檔案頁面的小組列表中與小組一起顯示。"
+
+#: 
+msgid "[Family Name]"
+msgstr "【家庭名稱】"
+
+#: 
+msgid "row selected"
+msgstr "列已選取"
+
+#: 
+msgid "rows selected"
+msgstr "列已選取"
+
