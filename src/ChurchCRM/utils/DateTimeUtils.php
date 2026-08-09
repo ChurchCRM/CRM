@@ -449,4 +449,33 @@ class DateTimeUtils
 
         return false;
     }
+
+    /**
+     * Format a date range string for display in report letters.
+     *
+     * Returns a single date if start == end, otherwise a range.
+     * Uses the configured timezone for date parsing.
+     *
+     * @note Returns English month/day names regardless of the system locale.
+     *       PHP's DateTime::format('F') / format('M') always produces English.
+     *       For locale-aware formatting, use IntlDateFormatter instead.
+     *       Locale-aware output is tracked as a separate improvement ticket.
+     *
+     * @param string $dateStart Start date in Y-m-d format
+     * @param string $dateEnd   End date in Y-m-d format
+     *
+     * @throws \Exception If either date string cannot be parsed
+     *
+     * @return string e.g. "January 1, 2024" or "Jan 1, 2024 – Dec 31, 2024"
+     */
+    public static function formatDateRange(string $dateStart, string $dateEnd): string
+    {
+        if ($dateStart === $dateEnd) {
+            return self::createDateTime($dateStart)->format('F j, Y');
+        }
+
+        return self::createDateTime($dateStart)->format('M j, Y')
+            . ' – '
+            . self::createDateTime($dateEnd)->format('M j, Y');
+    }
 }
