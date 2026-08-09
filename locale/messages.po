@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 23:38+0000\n"
+"POT-Creation-Date: 2026-08-09 05:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -541,6 +541,9 @@ msgstr ""
 msgid "Add Results to Cart"
 msgstr ""
 
+msgid "Add Role"
+msgstr ""
+
 msgid "Add Students"
 msgstr ""
 
@@ -590,6 +593,9 @@ msgid "Add cart items to a family"
 msgstr ""
 
 msgid "Add custom external links to the navigation menu."
+msgstr ""
+
+msgid "Add custom properties specific to this group"
 msgstr ""
 
 msgid "Add event permission"
@@ -1164,6 +1170,9 @@ msgstr ""
 msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
 msgstr ""
 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr ""
+
 msgid "Are you sure you want to remove this person from"
 msgstr ""
 
@@ -1412,9 +1421,6 @@ msgid "Back to Get Started"
 msgstr ""
 
 msgid "Back to Group"
-msgstr ""
-
-msgid "Back to Group List"
 msgstr ""
 
 msgid "Back to Groups Dashboard"
@@ -3069,6 +3075,9 @@ msgstr ""
 msgid "Custom port"
 msgstr ""
 
+msgid "Custom properties for this group"
+msgstr ""
+
 msgid "Customizable report with filtering by date, fund, family, and payment method."
 msgstr ""
 
@@ -3373,6 +3382,9 @@ msgid "Delete failed"
 msgstr ""
 
 msgid "Delete records permission"
+msgstr ""
+
+msgid "Delete role"
 msgstr ""
 
 msgid "Delete this event?"
@@ -3804,9 +3816,6 @@ msgstr ""
 msgid "Edit Group"
 msgstr ""
 
-msgid "Edit Group-Specific Properties Form"
-msgstr ""
-
 msgid "Edit JSON Settings"
 msgstr ""
 
@@ -4158,6 +4167,9 @@ msgid "Enter one of your backup recovery codes"
 msgstr ""
 
 msgid "Enter one of your backup recovery codes to access your account"
+msgstr ""
+
+msgid "Enter role name"
 msgstr ""
 
 msgid "Enter sermon notes or event text..."
@@ -11321,6 +11333,9 @@ msgstr ""
 msgid "This is how your church information will appear on reports and directories."
 msgstr ""
 
+msgid "This is the only role in this group."
+msgstr ""
+
 msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
 msgstr ""
 
@@ -11375,6 +11390,9 @@ msgid "This property type is still being used by at least one property."
 msgstr ""
 
 msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr ""
+
+msgid "This role cannot be deleted."
 msgstr ""
 
 msgid "This title will be used for all generated events."
