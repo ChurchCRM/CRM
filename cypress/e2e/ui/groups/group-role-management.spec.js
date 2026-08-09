@@ -198,6 +198,7 @@ describe("Group Role Management", () => {
       cy.get("#groupRoleTable .deleteRole:not(.disabled)").first().click();
 
       cy.get("#deleteRoleModal").should("be.visible");
+      cy.wait(400); // absorb Bootstrap's 300ms CSS transition + buffer
       // #deleteRoleMessage is set via $.text() — IS a text node, .contain() is correct here
       cy.get("#deleteRoleMessage").should("contain", "Member");
 
@@ -213,6 +214,7 @@ describe("Group Role Management", () => {
       cy.get("#groupRoleTable .deleteRole:not(.disabled)").first().click();
 
       cy.get("#deleteRoleModal").should("be.visible");
+      cy.wait(400); // absorb Bootstrap's 300ms CSS transition + buffer
       cy.get("#lastRoleWarning").should("be.visible");
       cy.get("#confirmDeleteRole").should("be.disabled");
 
@@ -228,6 +230,7 @@ describe("Group Role Management", () => {
       cy.get("#groupRoleTable .deleteRole:not(.disabled)").first().click();
 
       cy.get("#deleteRoleModal").should("be.visible");
+      cy.wait(400); // absorb Bootstrap's 300ms CSS transition + buffer
       cy.get("#deleteRoleModal .btn-secondary").click();
 
       cy.get("#deleteRoleModal").should("not.be.visible");
@@ -264,6 +267,7 @@ describe("Group Role Management", () => {
       clickDeleteForRole(roleName);
 
       cy.get("#deleteRoleModal").should("be.visible");
+      cy.wait(400); // absorb Bootstrap's 300ms CSS transition + buffer
       // Last-role warning must be hidden (2+ roles exist now)
       cy.get("#lastRoleWarning").should("have.class", "d-none");
       cy.get("#confirmDeleteRole").should("not.be.disabled");
