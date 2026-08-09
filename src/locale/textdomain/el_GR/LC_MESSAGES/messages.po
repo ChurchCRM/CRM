@@ -17465,3 +17465,263 @@ msgstr "σας σκέφτεται σήμερα."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "διαδρομές σελίδων, ενεργή γλώσσα, έκδοση CRM, έκδοση PHP, οικογένεια ΛΣ και τυχαίο αναγνωριστικό εγκατάστασης. Τίποτα άλλο. Τα δεδομένα αποθηκεύονται στην ΕΕ."
 
+#: 
+msgid "% Paid"
+msgstr "% Πληρώθηκε"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Παρακαλούμε επαληθεύστε τα στοιχεία της οικογένειάς σας"
+
+#: 
+msgid "Add Role"
+msgstr "Προσθήκη Ρόλου"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Προσθήκη προσαρμοσμένων ιδιοτήτων για αυτή την ομάδα"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Η διεύθυνση άλλαξε από την τελευταία ρύθμιση συντεταγμένων."
+
+#: 
+msgid "All Tellers"
+msgstr "Όλοι οι Ταμίες"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Όλες οι αποστολές email απέτυχαν. Παρακαλούμε ελέγξτε τις ρυθμίσεις SMTP στις Ρυθμίσεις Συστήματος."
+
+#: 
+msgid "Amount Max"
+msgstr "Μέγιστο Ποσό"
+
+#: 
+msgid "Amount Min"
+msgstr "Ελάχιστο Ποσό"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Παρουσιάστηκε μη αναμενόμενο σφάλμα κατά την αποστολή email. Παρακαλούμε ελέγξτε τις ρυθμίσεις SMTP και τα αρχεία καταγραφής του διακομιστή."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Είστε σίγουροι ότι θέλετε να αφαιρέσετε τον ρόλο '{{name}}';"
+
+#: 
+msgid "Auto"
+msgstr "Αυτόματο"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Το Αυτόματο ακολουθεί τη ρύθμιση του λειτουργικού συστήματος ή του προγράμματος περιήγησης· το Φωτεινό και το Σκοτεινό το παρακάμπτουν"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Επιστροφή στον Πίνακα Υποσχέσεων"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Κάντε κλικ στο «Δημιουργία Συντεταγμένων» για αναζήτηση της τοποθεσίας στον χάρτη για την παραπάνω διεύθυνση, ή εισαγάγετε γεωγραφικό πλάτος/μήκος χειροκίνητα. Αν αφεθεί κενό, οι συντεταγμένες εντοπίζονται αυτόματα κατά την αποθήκευση της φόρμας."
+
+#: 
+msgid "Contributor"
+msgstr "Συνεισφέρων"
+
+#: 
+msgid "Contributors"
+msgstr "Συνεισφέροντες"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Δεν ήταν δυνατή η εύρεση συντεταγμένων για αυτή τη διεύθυνση. Δοκιμάστε να τις εισαγάγετε χειροκίνητα."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Προσαρμοσμένες ιδιότητες για αυτή την ομάδα"
+
+#: 
+msgid "Delete role"
+msgstr "Διαγραφή ρόλου"
+
+#: 
+msgid "Email Error"
+msgstr "Σφάλμα Email"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Το email δεν έχει ρυθμιστεί. Παρακαλούμε ρυθμίστε τις παραμέτρους SMTP στις Ρυθμίσεις Συστήματος."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Εισαγάγετε πρώτα μια διεύθυνση."
+
+#: 
+msgid "Enter role name"
+msgstr "Εισαγάγετε όνομα ρόλου"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Αποτυχία δημιουργίας κατάθεσης"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Αποτυχία φόρτωσης προεπισκόπησης email"
+
+#: 
+msgid "From Date"
+msgstr "Από Ημερομηνία"
+
+#: 
+msgid "Fund Total"
+msgstr "Σύνολο Ταμείου"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Σύνοψη υποσχέσεων συνεισφερόντων ταμείου ανά οικονομικό έτος"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Η δράση συγκέντρωσης προσφορών είναι απενεργοποιημένη"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Δημιουργία Συντεταγμένων"
+
+#: 
+msgid "Generating..."
+msgstr "Δημιουργία..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Η αίτηση γεωκωδικοποίησης απέτυχε. Παρακαλούμε δοκιμάστε ξανά."
+
+#: 
+msgid "Manage Events"
+msgstr "Διαχείριση Εκδηλώσεων"
+
+#: 
+msgid "New Deposit"
+msgstr "Νέα Κατάθεση"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Δεν βρέθηκαν συνεισφέροντες για αυτό το ταμείο στο επιλεγμένο οικονομικό έτος"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Δεν βρέθηκαν οικογένειες με διεύθυνση email. Δεν εστάλη τίποτα."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Δεν βρέθηκαν πληρωμές για τις επιλεγμένες καταθέσεις"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Δεν παρασχέθηκαν έγκυρα αναγνωριστικά κατάθεσης"
+
+#: 
+msgid "Partial Send"
+msgstr "Μερική Αποστολή"
+
+#: 
+msgid "Payments only"
+msgstr "Μόνο πληρωμές"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Ποσό Υπόσχεσης"
+
+#: 
+msgid "Preview"
+msgstr "Προεπισκόπηση"
+
+#: 
+msgid "Retry"
+msgstr "Επανάληψη"
+
+#: 
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Αναζήτηση και διαχείριση αρχείων αποδείξεων κατάθεσης"
+
+#: 
+msgid "Select All"
+msgstr "Επιλογή Όλων"
+
+#: 
+msgid "Send Emails"
+msgstr "Αποστολή Email"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Αποστολή Email Επαλήθευσης Οικογένειας"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Εστάλησαν %1$d από %2$d — %3$d οικογένειες δεν ήταν δυνατό να επικοινωνηθούν."
+
+#: 
+msgid "Show in Profile"
+msgstr "Εμφάνιση στο Προφίλ"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Εμφάνιση συνόλου μόνο για το επιλεγμένο ταμείο"
+
+#: 
+msgid "Teller"
+msgstr "Ταμίας"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Αυτός είναι ο μοναδικός ρόλος σε αυτή την ομάδα."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Αυτός ο ρόλος δεν μπορεί να διαγραφεί."
+
+#: 
+msgid "To Date"
+msgstr "Έως Ημερομηνία"
+
+#: 
+msgid "Total Pledged"
+msgstr "Συνολικές Υποσχέσεις"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Μη αναμενόμενο σφάλμα κατά την αποστολή email. Παρακαλούμε ελέγξτε τα αρχεία καταγραφής."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Χρησιμοποιεί την παραπάνω διεύθυνσή σας για αναζήτηση συντεταγμένων μέσω OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Προβολή Πληρωμής"
+
+#: 
+msgid "View Pledge"
+msgstr "Προβολή Υπόσχεσης"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Όταν είναι επιλεγμένο, αυτή η ιδιότητα θα εμφανίζεται μαζί με την ομάδα στη λίστα ομάδων του ατόμου στη σελίδα προφίλ του."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Επώνυμο Οικογένειας]"
+
+#: 
+msgid "row selected"
+msgstr "γραμμή επιλεγμένη"
+
+#: 
+msgid "rows selected"
+msgstr "γραμμές επιλεγμένες"
+

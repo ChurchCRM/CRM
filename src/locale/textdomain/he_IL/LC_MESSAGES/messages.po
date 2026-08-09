@@ -17463,3 +17463,263 @@ msgstr "חושב עליך היום."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "נתיבי דפים, לוקאל פעיל, גרסת CRM, גרסת PHP, משפחת מערכת הפעלה ומזהה התקנה אקראי. שום דבר אחר. הנתונים מאוחסנים באיחוד האירופי."
 
+#: 
+msgid "% Paid"
+msgstr "% שולם"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: אנא אמת את פרטי משפחתך"
+
+#: 
+msgid "Add Role"
+msgstr "הוסף תפקיד"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "הוסף מאפיינים מותאמים אישית לקבוצה זו"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "הכתובת השתנתה מאז שהקואורדינטות הוגדרו לאחרונה."
+
+#: 
+msgid "All Tellers"
+msgstr "כל הגזברים"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "שליחת כל הדוא\"ל נכשלה. אנא בדוק את הגדרות ה-SMTP בהגדרות המערכת."
+
+#: 
+msgid "Amount Max"
+msgstr "סכום מקסימלי"
+
+#: 
+msgid "Amount Min"
+msgstr "סכום מינימלי"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "אירעה שגיאה בלתי צפויה בעת שליחת הדוא\"ל. אנא בדוק את הגדרות ה-SMTP ויומני השרת."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "האם אתה בטוח שברצונך להסיר את התפקיד '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "אוטומטי"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "אוטומטי עוקב אחר הגדרות מערכת ההפעלה או הדפדפן; בהיר וכהה דורסים אותן"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "חזרה ללוח ההתחייבויות"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "לחץ על \"צור קואורדינטות\" כדי לחפש את מיקום המפה לכתובת לעיל, או הזן קו רוחב/אורך ידנית. אם יישאר ריק, הקואורדינטות יזוהו אוטומטית בעת שמירת הטופס."
+
+#: 
+msgid "Contributor"
+msgstr "תורם"
+
+#: 
+msgid "Contributors"
+msgstr "תורמים"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "לא ניתן היה למצוא קואורדינטות לכתובת זו. נסה להזין אותן ידנית."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "מאפיינים מותאמים אישית לקבוצה זו"
+
+#: 
+msgid "Delete role"
+msgstr "מחק תפקיד"
+
+#: 
+msgid "Email Error"
+msgstr "שגיאת דוא\"ל"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "הדוא\"ל אינו מוגדר. אנא הגדר את הגדרות ה-SMTP בהגדרות המערכת."
+
+#: 
+msgid "Enter a street address first."
+msgstr "הזן כתובת רחוב תחילה."
+
+#: 
+msgid "Enter role name"
+msgstr "הזן שם תפקיד"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "יצירת הפקדון נכשלה"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "טעינת תצוגה מקדימה של הדוא\"ל נכשלה"
+
+#: 
+msgid "From Date"
+msgstr "מתאריך"
+
+#: 
+msgid "Fund Total"
+msgstr "סך הקרן"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "סיכום התחייבויות תורמי הקרן לפי שנת כספים"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "גיוס הכספים מושבת"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "צור קואורדינטות"
+
+#: 
+msgid "Generating..."
+msgstr "יוצר..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "בקשת הגיאו-קידוד נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Manage Events"
+msgstr "נהל אירועים"
+
+#: 
+msgid "New Deposit"
+msgstr "הפקדון חדש"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "לא נמצאו תורמים לקרן זו בשנת הכספים שנבחרה"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "לא נמצאו משפחות עם כתובת דוא\"ל. לא נשלח דבר."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "לא נמצאו תשלומים עבור ההפקדות שנבחרו"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "לא סופקו מזהי הפקדון תקינים"
+
+#: 
+msgid "Partial Send"
+msgstr "שליחה חלקית"
+
+#: 
+msgid "Payments only"
+msgstr "תשלומים בלבד"
+
+#: 
+msgid "Pledged Amount"
+msgstr "סכום ההתחייבות"
+
+#: 
+msgid "Preview"
+msgstr "תצוגה מקדימה"
+
+#: 
+msgid "Retry"
+msgstr "נסה שוב"
+
+#: 
+msgid "Search"
+msgstr "חיפוש"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "חפש ונהל רשומות תלושי הפקדה"
+
+#: 
+msgid "Select All"
+msgstr "בחר הכול"
+
+#: 
+msgid "Send Emails"
+msgstr "שלח הודעות דוא\"ל"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "שלח הודעות אימות משפחה"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "נשלח %1$d מתוך %2$d — לא ניתן היה להגיע ל-%3$d משפחות."
+
+#: 
+msgid "Show in Profile"
+msgstr "הצג בפרופיל"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "מציג סך הכול עבור הקרן שנבחרה בלבד"
+
+#: 
+msgid "Teller"
+msgstr "גזבר"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "זהו התפקיד היחיד בקבוצה זו."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "לא ניתן למחוק תפקיד זה."
+
+#: 
+msgid "To Date"
+msgstr "עד תאריך"
+
+#: 
+msgid "Total Pledged"
+msgstr "סך ההתחייבויות"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "שגיאה בלתי צפויה בעת שליחת הדוא\"ל. אנא בדוק את היומנים."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "משתמש בכתובת הרחוב לעיל כדי לחפש קואורדינטות דרך OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "הצג תשלום"
+
+#: 
+msgid "View Pledge"
+msgstr "הצג התחייבות"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "כאשר מסומן, מאפיין זה יוצג לצד הקבוצה ברשימת הקבוצות של האדם בדף הפרופיל שלו."
+
+#: 
+msgid "[Family Name]"
+msgstr "[שם משפחה]"
+
+#: 
+msgid "row selected"
+msgstr "שורה נבחרה"
+
+#: 
+msgid "rows selected"
+msgstr "שורות נבחרו"
+

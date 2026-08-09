@@ -17437,3 +17437,263 @@ msgstr "ఈరోజు మిమ్మల్ని గుర్తు చేస
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "పేజీ మార్గాలు, చురుకైన లొకేల్, CRM వెర్షన్, PHP వెర్షన్, OS కుటుంబం మరియు యాదృచ్ఛిక ఇన్‌స్టాలేషన్ ID. మరేమీ లేదు. డేటా EU లో నిల్వ చేయబడుతుంది."
 
+#: 
+msgid "% Paid"
+msgstr "% చెల్లించబడింది"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: దయచేసి మీ కుటుంబ సమాచారాన్ని ధృవీకరించండి"
+
+#: 
+msgid "Add Role"
+msgstr "పాత్రను జోడించు"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "ఈ సమూహానికి నిర్దిష్టమైన అనుకూల లక్షణాలను జోడించు"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "అక్షాంశరేఖాంశాలు చివరిసారి సెట్ చేసిన తర్వాత చిరునామా మారింది."
+
+#: 
+msgid "All Tellers"
+msgstr "అందరు టెల్లర్లు"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "అన్ని ఇమెయిల్ పంపడాలు విఫలమయ్యాయి. దయచేసి సిస్టమ్ సెట్టింగ్‌లలో మీ SMTP సెట్టింగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Amount Max"
+msgstr "గరిష్ట మొత్తం"
+
+#: 
+msgid "Amount Min"
+msgstr "కనిష్ట మొత్తం"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "ఇమెయిల్‌లు పంపేటప్పుడు ఊహించని లోపం సంభవించింది. దయచేసి మీ SMTP సెట్టింగ్‌లు మరియు సర్వర్ లాగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' పాత్రను తొలగించాలని మీరు నిశ్చితంగా ఉన్నారా?"
+
+#: 
+msgid "Auto"
+msgstr "ఆటో"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "ఆటో మీ OS లేదా బ్రౌజర్ సెట్టింగ్‌ను అనుసరిస్తుంది; లైట్ మరియు డార్క్ దాన్ని భర్తీ చేస్తాయి"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "ప్రతిజ్ఞా డాష్‌బోర్డ్‌కు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "పై చిరునామా కోసం మ్యాప్ స్థానాన్ని చూడటానికి \"అక్షాంశరేఖాంశాలు రూపొందించు\" క్లిక్ చేయండి, లేదా అక్షాంశం/రేఖాంశాన్ని మానవీయంగా నమోదు చేయండి. ఖాళీగా వదిలితే, ఫారమ్ సేవ్ చేసేటప్పుడు అక్షాంశరేఖాంశాలు స్వయంచాలకంగా గుర్తించబడతాయి."
+
+#: 
+msgid "Contributor"
+msgstr "విరాళదారు"
+
+#: 
+msgid "Contributors"
+msgstr "విరాళదారులు"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "ఆ చిరునామాకు అక్షాంశరేఖాంశాలు కనుగొనలేకపోయాము. వాటిని మానవీయంగా నమోదు చేయడానికి ప్రయత్నించండి."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "ఈ సమూహానికి అనుకూల లక్షణాలు"
+
+#: 
+msgid "Delete role"
+msgstr "పాత్రను తొలగించు"
+
+#: 
+msgid "Email Error"
+msgstr "ఇమెయిల్ లోపం"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "ఇమెయిల్ కాన్ఫిగర్ చేయబడలేదు. దయచేసి సిస్టమ్ సెట్టింగ్‌లలో SMTP సెట్టింగ్‌లను కాన్ఫిగర్ చేయండి."
+
+#: 
+msgid "Enter a street address first."
+msgstr "ముందుగా వీధి చిరునామాను నమోదు చేయండి."
+
+#: 
+msgid "Enter role name"
+msgstr "పాత్ర పేరు నమోదు చేయండి"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "డిపాజిట్ సృష్టించడం విఫలమైంది"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "ఇమెయిల్ ముందుచూపు లోడ్ చేయడం విఫలమైంది"
+
+#: 
+msgid "From Date"
+msgstr "తేదీ నుండి"
+
+#: 
+msgid "Fund Total"
+msgstr "నిధి మొత్తం"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "ఆర్థిక సంవత్సరం వారీగా నిధి విరాళదారుల ప్రతిజ్ఞా సారాంశం"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "నిధి సేకరణ నిలిపివేయబడింది"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "అక్షాంశరేఖాంశాలు రూపొందించు"
+
+#: 
+msgid "Generating..."
+msgstr "రూపొందిస్తోంది..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "జియోకోడింగ్ అభ్యర్థన విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Manage Events"
+msgstr "కార్యక్రమాలను నిర్వహించు"
+
+#: 
+msgid "New Deposit"
+msgstr "కొత్త డిపాజిట్"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "ఎంచుకున్న ఆర్థిక సంవత్సరంలో ఈ నిధికి విరాళదారులు ఎవరూ కనుగొనబడలేదు"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "ఇమెయిల్ చిరునామాతో ఏ కుటుంబాలు కనుగొనబడలేదు. ఏమీ పంపబడలేదు."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "ఎంచుకున్న డిపాజిట్‌లకు చెల్లింపులు ఏవీ కనుగొనబడలేదు"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "చెల్లుబాటు అయ్యే డిపాజిట్ IDలు ఏవీ అందించబడలేదు"
+
+#: 
+msgid "Partial Send"
+msgstr "పాక్షిక పంపడం"
+
+#: 
+msgid "Payments only"
+msgstr "చెల్లింపులు మాత్రమే"
+
+#: 
+msgid "Pledged Amount"
+msgstr "ప్రతిజ్ఞా మొత్తం"
+
+#: 
+msgid "Preview"
+msgstr "ముందుచూపు"
+
+#: 
+msgid "Retry"
+msgstr "మళ్ళీ ప్రయత్నించు"
+
+#: 
+msgid "Search"
+msgstr "శోధించు"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "డిపాజిట్ స్లిప్ రికార్డులను శోధించు మరియు నిర్వహించు"
+
+#: 
+msgid "Select All"
+msgstr "అన్నీ ఎంచుకో"
+
+#: 
+msgid "Send Emails"
+msgstr "ఇమెయిల్‌లు పంపు"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "కుటుంబ ధృవీకరణ ఇమెయిల్‌లు పంపు"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d లో %1$d పంపబడింది — %3$d కుటుంబాలను చేరుకోలేకపోయాము."
+
+#: 
+msgid "Show in Profile"
+msgstr "ప్రొఫైల్‌లో చూపించు"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "ఎంచుకున్న నిధికి మాత్రమే మొత్తం చూపిస్తోంది"
+
+#: 
+msgid "Teller"
+msgstr "టెల్లర్"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "ఇది ఈ సమూహంలో ఉన్న ఏకైక పాత్ర."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "ఈ పాత్రను తొలగించలేరు."
+
+#: 
+msgid "To Date"
+msgstr "తేదీ వరకు"
+
+#: 
+msgid "Total Pledged"
+msgstr "మొత్తం ప్రతిజ్ఞా"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "ఇమెయిల్‌లు పంపేటప్పుడు ఊహించని లోపం. దయచేసి లాగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "అక్షాంశరేఖాంశాలను OpenStreetMap ద్వారా చూడడానికి పై వీధి చిరునామాను ఉపయోగిస్తుంది."
+
+#: 
+msgid "View Payment"
+msgstr "చెల్లింపు చూడు"
+
+#: 
+msgid "View Pledge"
+msgstr "ప్రతిజ్ఞ చూడు"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "తనిఖీ చేసినప్పుడు, ఈ లక్షణం వారి ప్రొఫైల్ పేజీలోని వ్యక్తి యొక్క సమూహ జాబితాలో సమూహంతో పాటు ప్రదర్శించబడుతుంది."
+
+#: 
+msgid "[Family Name]"
+msgstr "[కుటుంబ పేరు]"
+
+#: 
+msgid "row selected"
+msgstr "వరుస ఎంచుకోబడింది"
+
+#: 
+msgid "rows selected"
+msgstr "వరుసలు ఎంచుకోబడ్డాయి"
+

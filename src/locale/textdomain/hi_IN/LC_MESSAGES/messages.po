@@ -17424,3 +17424,263 @@ msgstr "आज आपके बारे में सोच रहा है।
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "पृष्ठ मार्ग, सक्रिय लोकेल, CRM संस्करण, PHP संस्करण, OS परिवार और एक यादृच्छिक इंस्टॉलेशन ID। कुछ और नहीं। डेटा EU में संग्रहीत है।"
 
+#: 
+msgid "% Paid"
+msgstr "% भुगतान"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: कृपया अपने परिवार की जानकारी सत्यापित करें"
+
+#: 
+msgid "Add Role"
+msgstr "भूमिका जोड़ें"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "इस समूह के लिए विशिष्ट कस्टम गुण जोड़ें"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "निर्देशांक अंतिम बार सेट किए जाने के बाद से पता बदल गया है।"
+
+#: 
+msgid "All Tellers"
+msgstr "सभी कोषाध्यक्ष"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "सभी ईमेल भेजने में विफल रहे। कृपया सिस्टम सेटिंग्स में अपनी SMTP सेटिंग्स जांचें।"
+
+#: 
+msgid "Amount Max"
+msgstr "अधिकतम राशि"
+
+#: 
+msgid "Amount Min"
+msgstr "न्यूनतम राशि"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "ईमेल भेजते समय एक अप्रत्याशित त्रुटि हुई। कृपया अपनी SMTP सेटिंग्स और सर्वर लॉग जांचें।"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "क्या आप वाकई '{{name}}' भूमिका हटाना चाहते हैं?"
+
+#: 
+msgid "Auto"
+msgstr "स्वचालित"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "स्वचालित आपके OS या ब्राउज़र सेटिंग का अनुसरण करता है; लाइट और डार्क इसे ओवरराइड करते हैं"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "प्रतिज्ञा डैशबोर्ड पर वापस जाएं"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "ऊपर दिए गए पते के लिए मानचित्र स्थान देखने हेतु \"निर्देशांक उत्पन्न करें\" पर क्लिक करें, या अक्षांश/देशांतर मैन्युअल रूप से दर्ज करें। यदि रिक्त छोड़ा गया, तो फॉर्म सहेजने पर निर्देशांक स्वतः पता चल जाएंगे।"
+
+#: 
+msgid "Contributor"
+msgstr "अंशदाता"
+
+#: 
+msgid "Contributors"
+msgstr "अंशदाता"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "उस पते के लिए निर्देशांक नहीं मिल सके। उन्हें मैन्युअल रूप से दर्ज करने का प्रयास करें।"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "इस समूह के लिए कस्टम गुण"
+
+#: 
+msgid "Delete role"
+msgstr "भूमिका हटाएं"
+
+#: 
+msgid "Email Error"
+msgstr "ईमेल त्रुटि"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "ईमेल कॉन्फ़िगर नहीं किया गया है। कृपया सिस्टम सेटिंग्स में SMTP सेटिंग्स कॉन्फ़िगर करें।"
+
+#: 
+msgid "Enter a street address first."
+msgstr "पहले सड़क का पता दर्ज करें."
+
+#: 
+msgid "Enter role name"
+msgstr "भूमिका का नाम दर्ज करें"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "जमा बनाने में विफल"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "ईमेल पूर्वावलोकन लोड करने में विफल"
+
+#: 
+msgid "From Date"
+msgstr "तारीख से"
+
+#: 
+msgid "Fund Total"
+msgstr "कोष कुल"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "वित्तीय वर्ष के अनुसार कोष अंशदाता प्रतिज्ञा सारांश"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "फंडरेज़र अक्षम है"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "निर्देशांक उत्पन्न करें"
+
+#: 
+msgid "Generating..."
+msgstr "उत्पन्न हो रहा है..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "जियोकोडिंग अनुरोध विफल हुआ। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Manage Events"
+msgstr "आयोजन प्रबंधित करें"
+
+#: 
+msgid "New Deposit"
+msgstr "नई जमा"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "चयनित वित्तीय वर्ष में इस कोष के लिए कोई अंशदाता नहीं मिला"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "ईमेल पते वाला कोई परिवार नहीं मिला। कुछ भी नहीं भेजा गया।"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "चयनित जमाओं के लिए कोई भुगतान नहीं मिला"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "कोई वैध जमा आईडी नहीं दी गई"
+
+#: 
+msgid "Partial Send"
+msgstr "आंशिक भेजना"
+
+#: 
+msgid "Payments only"
+msgstr "केवल भुगतान"
+
+#: 
+msgid "Pledged Amount"
+msgstr "प्रतिज्ञा राशि"
+
+#: 
+msgid "Preview"
+msgstr "पूर्वावलोकन"
+
+#: 
+msgid "Retry"
+msgstr "पुनः प्रयास करें"
+
+#: 
+msgid "Search"
+msgstr "खोज"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "जमा पर्ची रिकॉर्ड खोजें और प्रबंधित करें"
+
+#: 
+msgid "Select All"
+msgstr "सभी चुनें"
+
+#: 
+msgid "Send Emails"
+msgstr "ईमेल भेजें"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "परिवार सत्यापन ईमेल भेजें"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d में से %1$d भेजे गए — %3$d परिवारों तक नहीं पहुंचा जा सका।"
+
+#: 
+msgid "Show in Profile"
+msgstr "प्रोफ़ाइल में दिखाएं"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "केवल चयनित कोष के लिए कुल दिखाया जा रहा है"
+
+#: 
+msgid "Teller"
+msgstr "कोषाध्यक्ष"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "यह इस समूह की एकमात्र भूमिका है।"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "इस भूमिका को हटाया नहीं जा सकता।"
+
+#: 
+msgid "To Date"
+msgstr "तारीख तक"
+
+#: 
+msgid "Total Pledged"
+msgstr "कुल प्रतिज्ञा"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "ईमेल भेजते समय अप्रत्याशित त्रुटि। कृपया लॉग जांचें।"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "OpenStreetMap के माध्यम से निर्देशांक देखने के लिए ऊपर दिए गए आपके सड़क पते का उपयोग करता है।"
+
+#: 
+msgid "View Payment"
+msgstr "भुगतान देखें"
+
+#: 
+msgid "View Pledge"
+msgstr "प्रतिज्ञा देखें"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "चेक करने पर, यह गुण उनकी प्रोफ़ाइल पेज पर व्यक्ति की समूह सूची में समूह के साथ प्रदर्शित होगा।"
+
+#: 
+msgid "[Family Name]"
+msgstr "[परिवार का नाम]"
+
+#: 
+msgid "row selected"
+msgstr "पंक्ति चयनित"
+
+#: 
+msgid "rows selected"
+msgstr "पंक्तियाँ चयनित"
+

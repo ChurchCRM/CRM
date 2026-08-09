@@ -17456,3 +17456,263 @@ msgstr "đang nghĩ đến bạn hôm nay."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "đường dẫn trang, ngôn ngữ đang dùng, phiên bản CRM, phiên bản PHP, hệ điều hành và một ID cài đặt ngẫu nhiên. Không có gì khác. Dữ liệu được lưu trữ tại EU."
 
+#: 
+msgid "% Paid"
+msgstr "% Đã thanh toán"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Vui lòng xác minh thông tin gia đình của bạn"
+
+#: 
+msgid "Add Role"
+msgstr "Thêm vai trò"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Thêm thuộc tính tùy chỉnh cho nhóm này"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Địa chỉ đã thay đổi kể từ lần cuối cập nhật tọa độ."
+
+#: 
+msgid "All Tellers"
+msgstr "Tất cả thủ quỹ"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Tất cả email gửi đi đều thất bại. Vui lòng kiểm tra cài đặt SMTP trong Cài đặt hệ thống."
+
+#: 
+msgid "Amount Max"
+msgstr "Số tiền tối đa"
+
+#: 
+msgid "Amount Min"
+msgstr "Số tiền tối thiểu"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Đã xảy ra lỗi không mong muốn khi gửi email. Vui lòng kiểm tra cài đặt SMTP và nhật ký máy chủ."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Bạn có chắc chắn muốn xóa vai trò '{{name}}' không?"
+
+#: 
+msgid "Auto"
+msgstr "Tự động"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Tự động theo cài đặt hệ điều hành hoặc trình duyệt; Sáng và Tối sẽ ghi đè cài đặt đó"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Quay lại Bảng điều khiển Cam kết dâng hiến"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Nhấp vào \"Tạo tọa độ\" để tra cứu vị trí bản đồ cho địa chỉ trên, hoặc nhập vĩ độ/kinh độ thủ công. Nếu để trống, tọa độ cũng sẽ được tự động phát hiện khi bạn lưu biểu mẫu."
+
+#: 
+msgid "Contributor"
+msgstr "Người dâng hiến"
+
+#: 
+msgid "Contributors"
+msgstr "Những người dâng hiến"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Không thể tìm thấy tọa độ cho địa chỉ đó. Hãy thử nhập thủ công."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Thuộc tính tùy chỉnh cho nhóm này"
+
+#: 
+msgid "Delete role"
+msgstr "Xóa vai trò"
+
+#: 
+msgid "Email Error"
+msgstr "Lỗi email"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Email chưa được cấu hình. Vui lòng cấu hình cài đặt SMTP trong Cài đặt hệ thống."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Vui lòng nhập địa chỉ đường phố trước."
+
+#: 
+msgid "Enter role name"
+msgstr "Nhập tên vai trò"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Không thể tạo khoản nộp"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Không thể tải xem trước email"
+
+#: 
+msgid "From Date"
+msgstr "Từ ngày"
+
+#: 
+msgid "Fund Total"
+msgstr "Tổng quỹ"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Tóm tắt cam kết dâng hiến vào quỹ theo năm tài chính"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Chương trình gây quỹ đã bị tắt"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Tạo tọa độ"
+
+#: 
+msgid "Generating..."
+msgstr "Đang tạo..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Yêu cầu định vị địa lý thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Manage Events"
+msgstr "Quản lý sự kiện"
+
+#: 
+msgid "New Deposit"
+msgstr "Khoản nộp mới"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Không tìm thấy người dâng hiến nào cho quỹ này trong năm tài chính đã chọn"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Không tìm thấy gia đình nào có địa chỉ email. Không có gì được gửi đi."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Không tìm thấy khoản thanh toán nào cho các khoản nộp đã chọn"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Không có mã khoản nộp hợp lệ nào được cung cấp"
+
+#: 
+msgid "Partial Send"
+msgstr "Gửi một phần"
+
+#: 
+msgid "Payments only"
+msgstr "Chỉ thanh toán"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Số tiền cam kết dâng hiến"
+
+#: 
+msgid "Preview"
+msgstr "Xem trước"
+
+#: 
+msgid "Retry"
+msgstr "Thử lại"
+
+#: 
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Tìm kiếm và quản lý hồ sơ phiếu nộp tiền"
+
+#: 
+msgid "Select All"
+msgstr "Chọn tất cả"
+
+#: 
+msgid "Send Emails"
+msgstr "Gửi email"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Gửi email xác minh thông tin gia đình"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Đã gửi %1$d trong số %2$d — %3$d gia đình không thể liên lạc được."
+
+#: 
+msgid "Show in Profile"
+msgstr "Hiển thị trong hồ sơ"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Chỉ hiển thị tổng cho quỹ đã chọn"
+
+#: 
+msgid "Teller"
+msgstr "Thủ quỹ"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Đây là vai trò duy nhất trong nhóm này."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Vai trò này không thể bị xóa."
+
+#: 
+msgid "To Date"
+msgstr "Đến ngày"
+
+#: 
+msgid "Total Pledged"
+msgstr "Tổng cam kết dâng hiến"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Lỗi không mong muốn khi gửi email. Vui lòng kiểm tra nhật ký."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Sử dụng địa chỉ đường phố ở trên để tra cứu tọa độ qua OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Xem khoản thanh toán"
+
+#: 
+msgid "View Pledge"
+msgstr "Xem cam kết dâng hiến"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Khi được chọn, thuộc tính này sẽ được hiển thị cùng với nhóm trong danh sách nhóm của người đó trên trang hồ sơ của họ."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Tên gia đình]"
+
+#: 
+msgid "row selected"
+msgstr "hàng đã chọn"
+
+#: 
+msgid "rows selected"
+msgstr "hàng đã chọn"
+

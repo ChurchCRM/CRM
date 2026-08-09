@@ -17465,3 +17465,263 @@ msgstr "bugün sizi düşünüyor."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "sayfa yolları, etkin yerel ayar, CRM sürümü, PHP sürümü, işletim sistemi ailesi ve rastgele bir kurulum kimliği. Bunların dışında hiçbir şey. Veriler AB'de depolanır."
 
+#: 
+msgid "% Paid"
+msgstr "% Odendi"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Lutfen ailenizin bilgilerini dogrulayin"
+
+#: 
+msgid "Add Role"
+msgstr "Rol Ekle"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Bu gruba ozel ozellikler ekle"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Koordinatlar son ayarlandigından bu yana adres degisti."
+
+#: 
+msgid "All Tellers"
+msgstr "Tum Gorevliler"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Tum e-posta gonderimleri basarisiz oldu. Lutfen Sistem Ayarlarindaki SMTP ayarlarinizi kontrol edin."
+
+#: 
+msgid "Amount Max"
+msgstr "Maksimum Tutar"
+
+#: 
+msgid "Amount Min"
+msgstr "Minimum Tutar"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "E-posta gonderilirken beklenmedik bir hata olustu. Lutfen SMTP ayarlarinizi ve sunucu gunluklerini kontrol edin."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' rolunu kaldirmak istediginizden emin misiniz?"
+
+#: 
+msgid "Auto"
+msgstr "Otomatik"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Otomatik, isletim sisteminizin veya tarayicinizin ayarini izler; Acik ve Koyu bunu gecersiz kilar"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Taahhut Panosuna Geri Don"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Yukaridaki adresin harita konumunu aramak icin \"Koordinat Olustur\" secenegine tiklayin veya enlem/boylami manuel olarak girin. Bos birakilirsa, formu kaydettiginizde koordinatlar otomatik olarak algilanir."
+
+#: 
+msgid "Contributor"
+msgstr "Bagisci"
+
+#: 
+msgid "Contributors"
+msgstr "Bagiscilar"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Bu adres icin koordinatlar bulunamadi. Lutfen manuel olarak girmeyi deneyin."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Bu gruba ozel ozellikler"
+
+#: 
+msgid "Delete role"
+msgstr "Rolu Sil"
+
+#: 
+msgid "Email Error"
+msgstr "E-posta Hatasi"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-posta yapilandirilmamis. Lutfen Sistem Ayarlarinda SMTP ayarlarini yapilandirin."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Once bir sokak adresi girin."
+
+#: 
+msgid "Enter role name"
+msgstr "Rol adini girin"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Depozito olusturulamadi"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "E-posta onizlemesi yuklenemedi"
+
+#: 
+msgid "From Date"
+msgstr "Baslangic Tarihi"
+
+#: 
+msgid "Fund Total"
+msgstr "Fon Toplami"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Mali yila gore fon bagiscisi taahhut ozeti"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Bagis kampanyasi devre disi"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Koordinat Olustur"
+
+#: 
+msgid "Generating..."
+msgstr "Olusturuluyor..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Cografi kodlama istegi basarisiz oldu. Lutfen tekrar deneyin."
+
+#: 
+msgid "Manage Events"
+msgstr "Etkinlikleri Yonet"
+
+#: 
+msgid "New Deposit"
+msgstr "Yeni Depozito"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Secilen mali yilda bu fon icin bagisci bulunamadi"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "E-posta adresi olan aile bulunamadi. Hicbir sey gonderilmedi."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Secilen depozitolar icin odeme bulunamadi"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Gecerli depozito kimligi saglanmadi"
+
+#: 
+msgid "Partial Send"
+msgstr "Kismi Gonderim"
+
+#: 
+msgid "Payments only"
+msgstr "Yalnizca odemeler"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Taahhut Edilen Tutar"
+
+#: 
+msgid "Preview"
+msgstr "Onizleme"
+
+#: 
+msgid "Retry"
+msgstr "Yeniden Dene"
+
+#: 
+msgid "Search"
+msgstr "Ara"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Depozito makbuzu kayitlarini ara ve yonet"
+
+#: 
+msgid "Select All"
+msgstr "Tumunu Sec"
+
+#: 
+msgid "Send Emails"
+msgstr "E-posta Gonder"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Aile Dogrulama E-postalari Gonder"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d aileden %1$d'ine gonderildi — %3$d aileye ulasilamadi."
+
+#: 
+msgid "Show in Profile"
+msgstr "Profilde Goster"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Yalnizca secilen fon icin toplam gosteriliyor"
+
+#: 
+msgid "Teller"
+msgstr "Gorevli"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Bu, bu gruptaki tek roldur."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Bu rol silinemez."
+
+#: 
+msgid "To Date"
+msgstr "Bitis Tarihi"
+
+#: 
+msgid "Total Pledged"
+msgstr "Toplam Taahhut"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "E-posta gonderilirken beklenmedik hata. Lutfen gunlukleri kontrol edin."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Koordinatlari OpenStreetMap araciligiyla aramak icin yukaridaki sokak adresinizi kullanir."
+
+#: 
+msgid "View Payment"
+msgstr "Odemeyi Goruntule"
+
+#: 
+msgid "View Pledge"
+msgstr "Taahhudü Goruntule"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Isaretlendiginde, bu ozellik kisinin profil sayfasindaki grup listesinde grubun yaninda gosterilir."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Aile Adi]"
+
+#: 
+msgid "row selected"
+msgstr "satir secildi"
+
+#: 
+msgid "rows selected"
+msgstr "satir secildi"
+

@@ -17452,3 +17452,263 @@ msgstr "dnes na vás myslí."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "trasy stránok, aktívne miestne nastavenie, verzia CRM, verzia PHP, rodina OS a náhodné ID inštalácie. Nič iné. Údaje sú uložené v EÚ."
 
+#: 
+msgid "% Paid"
+msgstr "% zaplatene"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Prosim, overte informacie o vasej rodine"
+
+#: 
+msgid "Add Role"
+msgstr "Pridat rolu"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Pridat vlastne vlastnosti specificke pre tuto skupinu"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adresa sa zmenila od posledneho nastavenia suradnic."
+
+#: 
+msgid "All Tellers"
+msgstr "Vsetci pokladnici"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Odoslanie vsetkych e-mailov zlyhalo. Skontrolujte nastavenia SMTP v Systemovych nastaveniach."
+
+#: 
+msgid "Amount Max"
+msgstr "Maximalna suma"
+
+#: 
+msgid "Amount Min"
+msgstr "Minimalna suma"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Pri odosielani e-mailov doslo k neocakavanej chybe. Skontrolujte nastavenia SMTP a serverove zaznamy."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Naozaj chcete odstranit rolu '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Automaticky"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automaticky sleduje nastavenie vasho OS alebo prehliadaca; Svetly a Tmavy ho prepisu"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Spat na prehlad zavazkov"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Kliknite na \"Generovat suradnice\" pre vyhladanie polohy na mape pre vyssie uvedenu adresu, alebo zadajte zemepisnu sirku/dlzku rucne. Ak ponechate pole prazdne, suradnice sa automaticky zistia pri ulozeni formulara."
+
+#: 
+msgid "Contributor"
+msgstr "Prispievatel"
+
+#: 
+msgid "Contributors"
+msgstr "Prispievatelia"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Pre tuto adresu sa nepodarilo najst suradnice. Skuste ich zadat rucne."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Vlastne vlastnosti pre tuto skupinu"
+
+#: 
+msgid "Delete role"
+msgstr "Odstranit rolu"
+
+#: 
+msgid "Email Error"
+msgstr "Chyba e-mailu"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-mail nie je nakonfigurovany. Nakonfigurujte nastavenia SMTP v Systemovych nastaveniach."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Najprv zadajte adresu ulice."
+
+#: 
+msgid "Enter role name"
+msgstr "Zadajte nazov roly"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Nepodarilo sa vytvorit vklad"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Nepodarilo sa nacitat nahlad e-mailu"
+
+#: 
+msgid "From Date"
+msgstr "Od datumu"
+
+#: 
+msgid "Fund Total"
+msgstr "Celkovy fond"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Prehlad zavazkov prispievatelov do fondu podla fiskalneho roka"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Zbierka je deaktivovana"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Generovat suradnice"
+
+#: 
+msgid "Generating..."
+msgstr "Generovanie..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Poziadavka na geokodovanie zlyhala. Skuste to znova."
+
+#: 
+msgid "Manage Events"
+msgstr "Spravovat udalosti"
+
+#: 
+msgid "New Deposit"
+msgstr "Novy vklad"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Pre tento fond v zvolenom fiskalnom roku neboli najdeni zinadni prispievatelia"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Neboli najdene ziadne rodiny s e-mailovou adresou. Nic nebolo odoslane."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Pre vybrane vklady neboli najdene ziadne platby"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Neboli zadane ziadne platne ID vkladov"
+
+#: 
+msgid "Partial Send"
+msgstr "Ciastocne odoslanie"
+
+#: 
+msgid "Payments only"
+msgstr "Iba platby"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Suma zavazku"
+
+#: 
+msgid "Preview"
+msgstr "Nahlad"
+
+#: 
+msgid "Retry"
+msgstr "Skusit znova"
+
+#: 
+msgid "Search"
+msgstr "Hladat"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Vyhladavat a spravovat zaznamy kladovych dokladov"
+
+#: 
+msgid "Select All"
+msgstr "Vybrat vsetko"
+
+#: 
+msgid "Send Emails"
+msgstr "Odoslat e-maily"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Odoslat overovaci e-mail rodine"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Odoslanych %1$d z %2$d — %3$d rodin sa nepodarilo zastihnut."
+
+#: 
+msgid "Show in Profile"
+msgstr "Zobrazit v profile"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Zobrazuje sa celkovy sucet iba pre vybrany fond"
+
+#: 
+msgid "Teller"
+msgstr "Pokladnik"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Toto je jedina rola v tejto skupine."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Tato rola nemoze byt odstranena."
+
+#: 
+msgid "To Date"
+msgstr "Do datumu"
+
+#: 
+msgid "Total Pledged"
+msgstr "Celkovy zavazok"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Neocakavana chyba pri odosielani e-mailov. Skontrolujte zaznamy."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Pouziva vashu vyssie uvedenu adresu ulice na vyhladanie suradnic cez OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Zobrazit platbu"
+
+#: 
+msgid "View Pledge"
+msgstr "Zobrazit zavazok"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Ak je zaskrtnute, tato vlastnost sa zobrazi spolu so skupinou v zozname skupin osoby na jej profilovej stranke."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Meno rodiny]"
+
+#: 
+msgid "row selected"
+msgstr "riadok vybrany"
+
+#: 
+msgid "rows selected"
+msgstr "riadky vybrane"
+

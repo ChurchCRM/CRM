@@ -17070,6 +17070,10 @@ msgid "Deposit #"
 msgstr "Deposito #"
 
 #: 
+msgid "Deposit Slip"
+msgstr "Resibo ng Deposito"
+
+#: 
 msgid "Edit Pledge"
 msgstr "I-edit ang Pangako"
 
@@ -17380,4 +17384,256 @@ msgstr "nag-iisip sa iyo ngayon."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "mga ruta ng pahina, aktibong lokal, bersyon ng CRM, bersyon ng PHP, pamilya ng OS, at isang random na ID ng pag-install. Wala nang iba. Ang data ay nakaimbak sa EU."
+
+#: 
+msgid "% Paid"
+msgstr "% Nabayaran"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Pakipatunayan ang impormasyon ng inyong pamilya"
+
+#: 
+msgid "Add Role"
+msgstr "Magdagdag ng Papel"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Magdagdag ng mga custom na katangian para sa grupong ito"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Nabago ang address mula nang itakda ang mga coordinate."
+
+#: 
+msgid "All Tellers"
+msgstr "Lahat ng Teller"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Nabigo ang lahat ng pagpapadala ng email. Pakisuri ang iyong mga setting ng SMTP sa Mga Setting ng System."
+
+#: 
+msgid "Amount Max"
+msgstr "Pinakamataas na Halaga"
+
+#: 
+msgid "Amount Min"
+msgstr "Pinakamababang Halaga"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Nagkaroon ng hindi inaasahang error habang nagpapadala ng mga email. Pakisuri ang iyong mga setting ng SMTP at mga log ng server."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Sigurado ka bang gusto mong alisin ang papel na '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Awtomatiko"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Sinusundan ng Awtomatiko ang setting ng iyong OS o browser; ang Light at Dark ay nangangibabaw nito"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Bumalik sa Pledge Dashboard"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "I-click ang \"Bumuo ng mga Coordinate\" upang hanapin ang lokasyon ng mapa para sa address sa itaas, o manu-manong ilagay ang latitude/longitude. Kung iniwan na blangko, awtomatiko ring makikita ang mga coordinate kapag nai-save mo ang form."
+
+#: 
+msgid "Contributor"
+msgstr "Nagbibigay"
+
+#: 
+msgid "Contributors"
+msgstr "Mga Nagbibigay"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Hindi mahanap ang mga coordinate para sa address na iyon. Subukang ilagay ang mga ito nang manu-mano."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Mga custom na katangian para sa grupong ito"
+
+#: 
+msgid "Delete role"
+msgstr "Tanggalin ang papel"
+
+#: 
+msgid "Email Error"
+msgstr "Error sa Email"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Hindi na-configure ang email. Pakiayos ang mga setting ng SMTP sa Mga Setting ng System."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Maglagay muna ng address ng kalye."
+
+#: 
+msgid "Enter role name"
+msgstr "Ilagay ang pangalan ng papel"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Nabigo ang paglikha ng deposito"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Nabigo ang pag-load ng preview ng email"
+
+#: 
+msgid "From Date"
+msgstr "Mula sa Petsa"
+
+#: 
+msgid "Fund Total"
+msgstr "Kabuuang Pondo"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Buod ng pangako ng nagbibigay sa pondo ayon sa taong piskal"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Naka-disable ang fundraiser"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Bumuo ng mga Coordinate"
+
+#: 
+msgid "Generating..."
+msgstr "Bumubuo..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Nabigo ang kahilingan sa geocoding. Pakisubukan muli."
+
+#: 
+msgid "Manage Events"
+msgstr "Pamahalaan ang mga Kaganapan"
+
+#: 
+msgid "New Deposit"
+msgstr "Bagong Deposito"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Walang nahanap na nagbibigay para sa pondong ito sa napiling taong piskal"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Walang nahanap na mga pamilyang may email address. Walang naipadala."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Walang nahanap na mga bayad para sa mga napiling deposito"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Walang ibinigay na mga wastong deposit ID"
+
+#: 
+msgid "Partial Send"
+msgstr "Bahagyang Pagpapadala"
+
+#: 
+msgid "Payments only"
+msgstr "Mga bayad lamang"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Halagang Ipinangako"
+
+#: 
+msgid "Retry"
+msgstr "Subukan Muli"
+
+#: 
+msgid "Search"
+msgstr "Maghanap"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Maghanap at pamahalaan ang mga rekord ng resibo ng deposito"
+
+#: 
+msgid "Select All"
+msgstr "Piliin Lahat"
+
+#: 
+msgid "Send Emails"
+msgstr "Magpadala ng mga Email"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Magpadala ng mga Email sa Pag-verify ng Pamilya"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Naipadala ang %1$d sa %2$d — %3$d na mga pamilya ang hindi maabot."
+
+#: 
+msgid "Show in Profile"
+msgstr "Ipakita sa Profile"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Ipinapakita ang kabuuan para sa napiling pondo lamang"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Ito ang tanging papel sa grupong ito."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Hindi maaaring tanggalin ang papel na ito."
+
+#: 
+msgid "To Date"
+msgstr "Hanggang Petsa"
+
+#: 
+msgid "Total Pledged"
+msgstr "Kabuuang Ipinangako"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Hindi inaasahang error habang nagpapadala ng mga email. Pakisuri ang mga log."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Ginagamit ang iyong address ng kalye sa itaas upang hanapin ang mga coordinate sa pamamagitan ng OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Tingnan ang Bayad"
+
+#: 
+msgid "View Pledge"
+msgstr "Tingnan ang Pangako"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Kapag napili, ipapakita ang katangiang ito kasama ng grupo sa listahan ng grupo ng tao sa kanilang pahina ng profile."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Pangalan ng Pamilya]"
+
+#: 
+msgid "row selected"
+msgstr "row na napili"
+
+#: 
+msgid "rows selected"
+msgstr "mga row na napili"
 

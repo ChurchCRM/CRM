@@ -17453,3 +17453,263 @@ msgstr "po mendon për ju sot."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "rrugët e faqeve, lokali aktiv, versioni CRM, versioni PHP, familja OS dhe një ID instalimi e rastësishme. Asgjë tjetër. Të dhënat ruhen në BE."
 
+#: 
+msgid "% Paid"
+msgstr "% Paguar"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Ju lutemi verifikoni informacionin e familjes suaj"
+
+#: 
+msgid "Add Role"
+msgstr "Shto Rol"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Shto veti te personalizuara specifike per kete grup"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adresa eshte ndryshuar qe kur u vendosen koordinatat per here te fundit."
+
+#: 
+msgid "All Tellers"
+msgstr "Te gjithe Arketaret"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Dergimi i te gjitha emaileve deshtoi. Ju lutemi kontrolloni cilesimet tuaja SMTP ne Cilesimet e Sistemit."
+
+#: 
+msgid "Amount Max"
+msgstr "Shuma Maksimale"
+
+#: 
+msgid "Amount Min"
+msgstr "Shuma Minimale"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Ndodhi nje gabim i papritur gjate dergimit te emaileve. Ju lutemi kontrolloni cilesimet tuaja SMTP dhe regjistrat e serverit."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Jeni i sigurt qe deshironi te hiqni rolin '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Automatik"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automatiku ndjek cilesimet e sistemit operativ ose shfletuesit tuaj; Drita dhe Erresia e anashkalojne ate"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Kthehu te Paneli i Premtimeve"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Klikoni \"Gjenero Koordinata\" per te kerkuar vendndodhjen ne harte per adresen e mesipeme, ose vendosni gjeresin/gjatesine gjeografike manualisht. Nese lihet bosh, koordinatat zbulohen automatikisht kur ruani formularin."
+
+#: 
+msgid "Contributor"
+msgstr "Kontribues"
+
+#: 
+msgid "Contributors"
+msgstr "Kontribues"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Nuk u gjeten koordinata per ate adrese. Provoni t'i vendosni manualisht."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Veti te personalizuara per kete grup"
+
+#: 
+msgid "Delete role"
+msgstr "Fshi rolin"
+
+#: 
+msgid "Email Error"
+msgstr "Gabim Email"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Email-i nuk eshte konfiguruar. Ju lutemi konfiguroni cilesimet SMTP ne Cilesimet e Sistemit."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Vendosni fillimisht nje adrese rruge."
+
+#: 
+msgid "Enter role name"
+msgstr "Vendosni emrin e rolit"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Deshtoi krijimi i depozites"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Deshtoi ngarkimi i paraparjes se email-it"
+
+#: 
+msgid "From Date"
+msgstr "Nga Data"
+
+#: 
+msgid "Fund Total"
+msgstr "Totali i Fondit"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Permbledhje e premtimeve te kontribuesve te fondit sipas vitit fiskal"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Mbledhja e fondeve eshte caktivizuar"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Gjenero Koordinata"
+
+#: 
+msgid "Generating..."
+msgstr "Duke gjeneruar..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Kerkesa e gjeokodimit deshtoi. Ju lutemi provoni perseri."
+
+#: 
+msgid "Manage Events"
+msgstr "Administro Ngjarjet"
+
+#: 
+msgid "New Deposit"
+msgstr "Depozte e Re"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Nuk u gjeten kontribues per kete fond ne vitin fiskal te zgjedhur"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Nuk u gjeten familje me adrese email. Asgje nuk u dergua."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Nuk u gjeten pagesa per depozitat e zgjedhura"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Nuk u dhan ID-te e vlefshme te depozitave"
+
+#: 
+msgid "Partial Send"
+msgstr "Dergim i Pjesshem"
+
+#: 
+msgid "Payments only"
+msgstr "Vetem pagesat"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Shuma e Premtuar"
+
+#: 
+msgid "Preview"
+msgstr "Parapamje"
+
+#: 
+msgid "Retry"
+msgstr "Riprovo"
+
+#: 
+msgid "Search"
+msgstr "Kerko"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Kerko dhe administro rekordet e fleteve te depozitave"
+
+#: 
+msgid "Select All"
+msgstr "Zgjidh te Gjitha"
+
+#: 
+msgid "Send Emails"
+msgstr "Dergo Email-e"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Dergo Email-e Verifikimi te Familjes"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "U dergua %1$d nga %2$d — %3$d familje nuk mund te kontaktoheshin."
+
+#: 
+msgid "Show in Profile"
+msgstr "Shfaq ne Profil"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Duke shfaqur totalin vetem per fondin e zgjedhur"
+
+#: 
+msgid "Teller"
+msgstr "Arketar"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Ky eshte roli i vetem ne kete grup."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Ky rol nuk mund te fshihet."
+
+#: 
+msgid "To Date"
+msgstr "Deri ne Date"
+
+#: 
+msgid "Total Pledged"
+msgstr "Totali i Premtuar"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Gabim i papritur gjate dergimit te email-eve. Ju lutemi kontrolloni regjistrat."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Perdor adresen tuaj te rruges me siper per te kerkuar koordinata nepermjet OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Shiko Pagesen"
+
+#: 
+msgid "View Pledge"
+msgstr "Shiko Premtimin"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Kur aktivizohet, kjo veti do te shfaqet prane grupit ne listen e grupeve te personit ne faqen e tij te profilit."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Emri i Familjes]"
+
+#: 
+msgid "row selected"
+msgstr "rresht i zgjedhur"
+
+#: 
+msgid "rows selected"
+msgstr "rreshta te zgjedhur"
+

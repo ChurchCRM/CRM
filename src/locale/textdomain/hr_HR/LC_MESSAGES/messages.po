@@ -17435,3 +17435,263 @@ msgstr "misli na vas danas."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "rute stranica, aktivna lokalizacija, verzija CRM-a, PHP verzija, OS obitelj i nasumični ID instalacije. Ništa drugo. Podaci se pohranjuju u EU."
 
+#: 
+msgid "% Paid"
+msgstr "% Placeno"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Molimo provjerite podatke vase obitelji"
+
+#: 
+msgid "Add Role"
+msgstr "Dodaj ulogu"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Dodaj prilagodena svojstva specificna za ovu grupu"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adresa je promijenjena od posljednjeg postavljanja koordinata."
+
+#: 
+msgid "All Tellers"
+msgstr "Svi blagajnici"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Slanje svih e-poruka nije uspjelo. Molimo provjerite SMTP postavke u Postavkama sustava."
+
+#: 
+msgid "Amount Max"
+msgstr "Maksimalni iznos"
+
+#: 
+msgid "Amount Min"
+msgstr "Minimalni iznos"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Doslo je do neocekivane pogres ke pri slanju e-poruka. Molimo provjerite SMTP postavke i zapisnike posluzitelja."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Jeste li sigurni da zelite ukloniti ulogu '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Automatski"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automatski prati postavke vaseg OS-a ili preglednika; Svijetlo i Tamno to nadjacavaju"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Povratak na nadzornu plocu zavjeta"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Kliknite \"Generiraj koordinate\" za pretrazivanje lokacije na karti za gornju adresu ili rucno unesite geografsku sirinu/duzinu. Ako se ostavi prazno, koordinate se automatski otkrivaju pri spremanju obrasca."
+
+#: 
+msgid "Contributor"
+msgstr "Priloznik"
+
+#: 
+msgid "Contributors"
+msgstr "Priloznici"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Nije moguce pronaci koordinate za tu adresu. Pokusajte ih unijeti rucno."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Prilagodena svojstva za ovu grupu"
+
+#: 
+msgid "Delete role"
+msgstr "Izbrisi ulogu"
+
+#: 
+msgid "Email Error"
+msgstr "Pogres ka e-poste"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-posta nije konfigurirana. Molimo konfigurirajte SMTP postavke u Postavkama sustava."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Prvo unesite adresu ulice."
+
+#: 
+msgid "Enter role name"
+msgstr "Unesite naziv uloge"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Nije uspjelo kreiranje depozita"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Nije uspjelo ucitavanje pregleda e-poruke"
+
+#: 
+msgid "From Date"
+msgstr "Od datuma"
+
+#: 
+msgid "Fund Total"
+msgstr "Ukupno fonda"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Sazetak zavjeta priloznika fonda po fiskalnoj godini"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Prikupljanje priloga je onemoguceno"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Generiraj koordinate"
+
+#: 
+msgid "Generating..."
+msgstr "Generiranje..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Zahtjev za geokodiranje nije uspio. Molimo pokusajte ponovo."
+
+#: 
+msgid "Manage Events"
+msgstr "Upravljanje dogadajima"
+
+#: 
+msgid "New Deposit"
+msgstr "Novi depozit"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Nisu pronadeni priloznici za ovaj fond u odabranoj fiskalnoj godini"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Nisu pronadene obitelji s adresom e-poste. Nista nije poslano."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Nisu pronadene uplate za odabrane depozite"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Nisu navedeni valjani ID-ovi depozita"
+
+#: 
+msgid "Partial Send"
+msgstr "Djelomicno slanje"
+
+#: 
+msgid "Payments only"
+msgstr "Samo uplate"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Zavjetovani iznos"
+
+#: 
+msgid "Preview"
+msgstr "Pregled"
+
+#: 
+msgid "Retry"
+msgstr "Pokusaj ponovo"
+
+#: 
+msgid "Search"
+msgstr "Pretrazi"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Pretrazi i upravljaj zapisima uplatnica"
+
+#: 
+msgid "Select All"
+msgstr "Odaberi sve"
+
+#: 
+msgid "Send Emails"
+msgstr "Posalji e-poruke"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Posalji e-poruke za provjeru obitelji"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Poslano %1$d od %2$d — %3$d obitelji nije moglo biti dosegnuto."
+
+#: 
+msgid "Show in Profile"
+msgstr "Prikazi u profilu"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Prikazuje se ukupno samo za odabrani fond"
+
+#: 
+msgid "Teller"
+msgstr "Blagajnik"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Ovo je jedina uloga u ovoj grupi."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Ova uloga ne moze biti izbrisana."
+
+#: 
+msgid "To Date"
+msgstr "Do datuma"
+
+#: 
+msgid "Total Pledged"
+msgstr "Ukupno zavjetovano"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Neocekivana pogres ka pri slanju e-poruka. Molimo provjerite zapisnike."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Koristi gornju adresu ulice za pretrazivanje koordinata putem OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Pregledaj uplatu"
+
+#: 
+msgid "View Pledge"
+msgstr "Pregledaj zavjet"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Kada je oznaceno, ovo svojstvo bit ce prikazano uz grupu na popisu grupa osobe na njezinoj profilnoj stranici."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Prezime obitelji]"
+
+#: 
+msgid "row selected"
+msgstr "redak odabran"
+
+#: 
+msgid "rows selected"
+msgstr "redaka odabrano"
+

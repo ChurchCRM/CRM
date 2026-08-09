@@ -17473,3 +17473,263 @@ msgstr "ዛሬ ስለ እርስዎ እያሰበ ነው።"
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "የገጽ መስመሮች፣ ንቁ ቋንቋ፣ CRM ስሪት፣ PHP ስሪት፣ የOS ቤተሰብ እና የዘፈቀደ የጭነት ID። ሌላ ምንም አይደለም። ዳታ በEU ውስጥ ይቀመጣል።"
 
+#: 
+msgid "% Paid"
+msgstr "% ተከፍሏል"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: እባክዎ የቤተሰብዎን መረጃ ያረጋግጡ"
+
+#: 
+msgid "Add Role"
+msgstr "ሚና ጨምር"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "ለዚህ ቡድን የሚስማሙ ብጁ ባሕሪያትን ጨምር"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "መጋጠሚያዎቹ ከተቀመጡ ጀምሮ አድራሻው ተቀይሯል።"
+
+#: 
+msgid "All Tellers"
+msgstr "ሁሉም ገንዘብ ተቀባዮች"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "ሁሉም ኢሜሎች አልተላኩም። እባክዎ በስርዓት ቅንጅቶች ውስጥ የ SMTP ቅንጅቶቹን ያረጋግጡ።"
+
+#: 
+msgid "Amount Max"
+msgstr "ከፍተኛ መጠን"
+
+#: 
+msgid "Amount Min"
+msgstr "ዝቅተኛ መጠን"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "ኢሜሎችን በመላክ ወቅት ያልተጠበቀ ስህተት ተፈጥሯል። እባክዎ የ SMTP ቅንጅቶቹን እና የሰርቨር ምዝገባዎቹን ያረጋግጡ።"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' ሚናን ማስወገድ እንደሚፈልጉ እርግጠኛ ነዎት?"
+
+#: 
+msgid "Auto"
+msgstr "አውቶ"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "አውቶ የስርዓትዎን ወይም አሳሽዎን ቅንጅት ይከተላል; ብርሃን እና ጨለማ ይሽሩታል"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "ወደ ቃልኪዳን ዳሽቦርድ ተመለስ"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "ለላዩ አድራሻ የካርታ ቦታ ለመፈለግ \"መጋጠሚያዎችን አፍጠር\" ን ጠቅ ያድርጉ፣ ወይም ኬክሮስ/ኬንትሮስን እጅ ሲሠሩ ያስገቡ። ባዶ ከቀረ፣ ቅጹን ሲያስቀምጡ መጋጠሚያዎቹ ራስ-ሰር ይታወቃሉ።"
+
+#: 
+msgid "Contributor"
+msgstr "አስተዋጽዖ አበርካች"
+
+#: 
+msgid "Contributors"
+msgstr "አስተዋጽዖ አበርካቾች"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "ለዚያ አድራሻ መጋጠሚያዎቹ አልተገኙም። እጅ ሲሠሩ ለማስገባት ይሞክሩ።"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "ለዚህ ቡድን ብጁ ባሕሪያት"
+
+#: 
+msgid "Delete role"
+msgstr "ሚና ሰርዝ"
+
+#: 
+msgid "Email Error"
+msgstr "የኢሜል ስህተት"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "ኢሜል አልተዋቀረም። እባክዎ በስርዓት ቅንጅቶች ውስጥ የ SMTP ቅንጅቶቹን ያዋቅሩ።"
+
+#: 
+msgid "Enter a street address first."
+msgstr "መጀመሪያ የጎዳና አድራሻ ያስገቡ።"
+
+#: 
+msgid "Enter role name"
+msgstr "የሚና ስም ያስገቡ"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "ተቀማጭ ፈጠር አልተሳካም"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "የኢሜል ቅድሚያ ዕይታ መጫን አልተሳካም"
+
+#: 
+msgid "From Date"
+msgstr "ከቀን"
+
+#: 
+msgid "Fund Total"
+msgstr "የፈንድ ድምር"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "በፊስካል ዓመት የፈንድ አስተዋጽዖ አበርካቾች ቃልኪዳን ማጠቃለያ"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "የገንዘብ ማሰባሰቢያ ተሰናክሏል"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "መጋጠሚያዎችን አፍጠር"
+
+#: 
+msgid "Generating..."
+msgstr "በማፍጠር ላይ..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "የጂኦኮዲንግ ጥያቄ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Manage Events"
+msgstr "ዝግጅቶችን አስተዳድር"
+
+#: 
+msgid "New Deposit"
+msgstr "አዲስ ተቀማጭ"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "ለተመረጠው ፊስካል ዓመት ለዚህ ፈንድ ምንም አስተዋጽዖ አበርካቾች አልተገኙም"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "ኢሜል አድራሻ ያላቸው ቤተሰቦች አልተገኙም። ምንም አልተላከም።"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "ለተመረጡ ተቀማጮች ምንም ክፍያዎች አልተገኙም"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "ምንም ትክክለኛ የተቀማጭ መታወቂያዎች አልቀረቡም"
+
+#: 
+msgid "Partial Send"
+msgstr "ከፊል ላክ"
+
+#: 
+msgid "Payments only"
+msgstr "ክፍያዎች ብቻ"
+
+#: 
+msgid "Pledged Amount"
+msgstr "የተቃማው መጠን"
+
+#: 
+msgid "Preview"
+msgstr "ቅድሚያ ዕይታ"
+
+#: 
+msgid "Retry"
+msgstr "እንደገና ሞክር"
+
+#: 
+msgid "Search"
+msgstr "ፈልግ"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "የተቀማጭ ደረሰኝ መዝገቦችን ፈልግ እና አስተዳድር"
+
+#: 
+msgid "Select All"
+msgstr "ሁሉንም ምረጥ"
+
+#: 
+msgid "Send Emails"
+msgstr "ኢሜሎችን ላክ"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "የቤተሰብ ማረጋገጫ ኢሜሎችን ላክ"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d ከሆኑ ውስጥ %1$d ተልኳል — %3$d ቤተሰቦች ሊደረሱ አልቻሉም።"
+
+#: 
+msgid "Show in Profile"
+msgstr "በፕሮፋይል ውስጥ አሳይ"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "ለተመረጠው ፈንድ ብቻ ድምር በማሳየት ላይ"
+
+#: 
+msgid "Teller"
+msgstr "ገንዘብ ተቀባይ"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "ይህ በዚህ ቡድን ውስጥ ያለው ብቸኛ ሚና ነው።"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "ይህ ሚና ሊሰረዝ አይችልም።"
+
+#: 
+msgid "To Date"
+msgstr "እስከ ቀን"
+
+#: 
+msgid "Total Pledged"
+msgstr "ጠቅላላ ቃል የተገባው"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "ኢሜሎችን በመላክ ወቅት ያልተጠበቀ ስህተት። እባክዎ ምዝገባዎቹን ያረጋግጡ።"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "ከላይ ያለውን የጎዳና አድራሻዎን ሲጠቀም OpenStreetMap በኩል መጋጠሚያዎቹን ይፈልጋል።"
+
+#: 
+msgid "View Payment"
+msgstr "ክፍያ ዕይታ"
+
+#: 
+msgid "View Pledge"
+msgstr "ቃልኪዳን ዕይታ"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "ሲመረጥ፣ ይህ ባሕሪ በሰውዬው የቡድን ዝርዝር ውስጥ ከቡድኑ ጎን ጎን በፕሮፋይል ገጹ ላይ ይታያል።"
+
+#: 
+msgid "[Family Name]"
+msgstr "[የቤተሰብ ስም]"
+
+#: 
+msgid "row selected"
+msgstr "ረድፍ ተመርጧል"
+
+#: 
+msgid "rows selected"
+msgstr "ረድፎች ተመርጠዋል"
+

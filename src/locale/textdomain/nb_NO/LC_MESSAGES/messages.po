@@ -17530,3 +17530,259 @@ msgstr "tenker på deg i dag."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "sideruter, aktivt språk, CRM-versjon, PHP-versjon, OS-familie og en tilfeldig installasjons-ID. Ingenting annet. Data lagres i EU."
 
+#: 
+msgid "% Paid"
+msgstr "% Betalt"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Vennligst bekreft familiens informasjon"
+
+#: 
+msgid "Add Role"
+msgstr "Legg til rolle"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Legg til egendefinerte egenskaper for denne gruppen"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adressen er endret siden koordinatene sist ble satt."
+
+#: 
+msgid "All Tellers"
+msgstr "Alle kasserer"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Alle e-postutsendinger mislyktes. Kontroller SMTP-innstillingene i systeminnstillingene."
+
+#: 
+msgid "Amount Max"
+msgstr "Belop maks"
+
+#: 
+msgid "Amount Min"
+msgstr "Belop min"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "En uventet feil oppsto under sending av e-post. Kontroller SMTP-innstillingene og serverloggene."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Er du sikker pa at du vil fjerne rollen '{{name}}'?"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Auto folger OS- eller nettleserinnstillingen din; Lys og Mork overstyrer den"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Tilbake til gaveoversikten"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Klikk \"Generer koordinater\" for a sla opp kartplasseringen for adressen ovenfor, eller skriv inn breddegrad/lengdegrad manuelt. Hvis feltet er tomt, blir koordinatene ogsa automatisk registrert nar du lagrer skjemaet."
+
+#: 
+msgid "Contributor"
+msgstr "Bidragsyter"
+
+#: 
+msgid "Contributors"
+msgstr "Bidragsytere"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Fant ikke koordinater for den adressen. Prov a angi dem manuelt."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Egendefinerte egenskaper for denne gruppen"
+
+#: 
+msgid "Delete role"
+msgstr "Slett rolle"
+
+#: 
+msgid "Email Error"
+msgstr "E-postfeil"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-post er ikke konfigurert. Konfigurer SMTP-innstillingene i systeminnstillingene."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Skriv inn en gateadresse forst."
+
+#: 
+msgid "Enter role name"
+msgstr "Skriv inn rollenavn"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Kunne ikke opprette innbetaling"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Kunne ikke laste inn e-postforhandsvisning"
+
+#: 
+msgid "From Date"
+msgstr "Fra dato"
+
+#: 
+msgid "Fund Total"
+msgstr "Fondstotal"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Oversikt over gavebidrag per regnskapsar"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Innsamlingsaksjon er deaktivert"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Generer koordinater"
+
+#: 
+msgid "Generating..."
+msgstr "Genererer..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Geokodingsforsporselen mislyktes. Prov igjen."
+
+#: 
+msgid "Manage Events"
+msgstr "Administrer arrangementer"
+
+#: 
+msgid "New Deposit"
+msgstr "Ny innbetaling"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Ingen bidragsytere funnet for dette fondet i valgt regnskapsar"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Ingen familier med e-postadresse ble funnet. Ingenting ble sendt."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Ingen betalinger funnet for de valgte innbetalingene"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Ingen gyldige innbetalings-IDer angitt"
+
+#: 
+msgid "Partial Send"
+msgstr "Delvis sendt"
+
+#: 
+msgid "Payments only"
+msgstr "Kun betalinger"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Lovet belop"
+
+#: 
+msgid "Preview"
+msgstr "Forhandsvisning"
+
+#: 
+msgid "Retry"
+msgstr "Prov igjen"
+
+#: 
+msgid "Search"
+msgstr "Sok"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Sok og administrer innbetalingsbilag"
+
+#: 
+msgid "Select All"
+msgstr "Velg alle"
+
+#: 
+msgid "Send Emails"
+msgstr "Send e-poster"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Send e-poster for familiebekreftelse"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Sendt %1$d av %2$d — %3$d familier kunne ikke nas."
+
+#: 
+msgid "Show in Profile"
+msgstr "Vis i profil"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Viser totalt for kun valgt fond"
+
+#: 
+msgid "Teller"
+msgstr "Kasserer"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Dette er den eneste rollen i denne gruppen."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Denne rollen kan ikke slettes."
+
+#: 
+msgid "To Date"
+msgstr "Til dato"
+
+#: 
+msgid "Total Pledged"
+msgstr "Totalt lovet"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Uventet feil under sending av e-post. Kontroller loggene."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Bruker gateadressen ovenfor til a sla opp koordinater via OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Vis betaling"
+
+#: 
+msgid "View Pledge"
+msgstr "Vis gave"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Nar dette er avkrysset, vises denne egenskapen sammen med gruppen i personens gruppeliste pa profilsiden."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Familienavn]"
+
+#: 
+msgid "row selected"
+msgstr "rad valgt"
+
+#: 
+msgid "rows selected"
+msgstr "rader valgt"
+

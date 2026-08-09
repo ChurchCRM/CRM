@@ -17457,3 +17457,263 @@ msgstr "anakufikiria leo."
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "njia za ukurasa, lugha inayotumika, toleo la CRM, toleo la PHP, familia ya OS, na kitambulisho cha usakinishaji cha nasibu. Hakuna kingine. Data inahifadhiwa EU."
 
+#: 
+msgid "% Paid"
+msgstr "% Iliyolipwa"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Tafadhali thibitisha taarifa za familia yako"
+
+#: 
+msgid "Add Role"
+msgstr "Ongeza Jukumu"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Ongeza sifa maalum za kikundi hiki"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Anwani imebadilika tangu kuratibu zilipowekwa mara ya mwisho."
+
+#: 
+msgid "All Tellers"
+msgstr "Wahesabu Wote"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Kutuma barua pepe zote kumeshindwa. Tafadhali angalia mipangilio ya SMTP katika Mipangilio ya Mfumo."
+
+#: 
+msgid "Amount Max"
+msgstr "Kiasi Kikubwa Zaidi"
+
+#: 
+msgid "Amount Min"
+msgstr "Kiasi Kidogo Zaidi"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Hitilafu isiyotarajiwa imetokea wakati wa kutuma barua pepe. Tafadhali angalia mipangilio ya SMTP na kumbukumbu za seva."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Je, una uhakika unataka kuondoa jukumu '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Moja kwa Moja"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Moja kwa moja inafuata mipangilio ya mfumo wako au kivinjari; Mwanga na Giza inabatilisha hiyo"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Rudi kwenye Dashibodi ya Ahadi"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Bonyeza \"Tengeneza Kuratibu\" kutafuta eneo la ramani kwa anwani iliyo juu, au ingiza latitudo/longitudo kwa mkono. Ikiachwa wazi, kuratibu pia hugunduliwa moja kwa moja unapohifadhi fomu."
+
+#: 
+msgid "Contributor"
+msgstr "Mchangiaji"
+
+#: 
+msgid "Contributors"
+msgstr "Wachangiaji"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Haikuweza kupata kuratibu kwa anwani hiyo. Jaribu kuingiza kwa mkono."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Sifa maalum za kikundi hiki"
+
+#: 
+msgid "Delete role"
+msgstr "Futa jukumu"
+
+#: 
+msgid "Email Error"
+msgstr "Hitilafu ya Barua Pepe"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Barua pepe haijasanidiwa. Tafadhali sanidi mipangilio ya SMTP katika Mipangilio ya Mfumo."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Ingiza anwani ya mtaa kwanza."
+
+#: 
+msgid "Enter role name"
+msgstr "Ingiza jina la jukumu"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Imeshindwa kuunda amana"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Imeshindwa kupakia hakikisho la barua pepe"
+
+#: 
+msgid "From Date"
+msgstr "Kuanzia Tarehe"
+
+#: 
+msgid "Fund Total"
+msgstr "Jumla ya Mfuko"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Muhtasari wa ahadi za wachangiaji wa mfuko kwa mwaka wa fedha"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Ukusanyaji wa fedha umezimwa"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Tengeneza Kuratibu"
+
+#: 
+msgid "Generating..."
+msgstr "Inatengeneza..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Ombi la kijiografia limeshindwa. Tafadhali jaribu tena."
+
+#: 
+msgid "Manage Events"
+msgstr "Simamia Matukio"
+
+#: 
+msgid "New Deposit"
+msgstr "Amana Mpya"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Hakuna wachangiaji waliopatikana kwa mfuko huu katika mwaka wa fedha uliochaguliwa"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Hakuna familia zenye anwani ya barua pepe zilizopatikana. Hakuna kilichotumwa."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Hakuna malipo yaliyopatikana kwa amana zilizochaguliwa"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Hakuna vitambulisho sahihi vya amana vilivyotolewa"
+
+#: 
+msgid "Partial Send"
+msgstr "Kutuma kwa Sehemu"
+
+#: 
+msgid "Payments only"
+msgstr "Malipo tu"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Kiasi Kilichoahidiwa"
+
+#: 
+msgid "Preview"
+msgstr "Hakikisho"
+
+#: 
+msgid "Retry"
+msgstr "Jaribu Tena"
+
+#: 
+msgid "Search"
+msgstr "Tafuta"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Tafuta na simamia kumbukumbu za stakabadhi za amana"
+
+#: 
+msgid "Select All"
+msgstr "Chagua Zote"
+
+#: 
+msgid "Send Emails"
+msgstr "Tuma Barua Pepe"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Tuma Barua Pepe za Uthibitishaji wa Familia"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Imetumwa %1$d kati ya %2$d — familia %3$d hazikuweza kufikiwa."
+
+#: 
+msgid "Show in Profile"
+msgstr "Onyesha kwenye Wasifu"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Inaonyesha jumla kwa mfuko uliochaguliwa tu"
+
+#: 
+msgid "Teller"
+msgstr "Mhesabu"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Hili ndilo jukumu pekee katika kikundi hiki."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Jukumu hili haliwezi kufutwa."
+
+#: 
+msgid "To Date"
+msgstr "Hadi Tarehe"
+
+#: 
+msgid "Total Pledged"
+msgstr "Jumla Iliyoahidiwa"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Hitilafu isiyotarajiwa wakati wa kutuma barua pepe. Tafadhali angalia kumbukumbu."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Inatumia anwani yako ya mtaa iliyo juu kutafuta kuratibu kupitia OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Angalia Malipo"
+
+#: 
+msgid "View Pledge"
+msgstr "Angalia Ahadi"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Inapochaguliwa, sifa hii itaonyeshwa pamoja na kikundi katika orodha ya vikundi vya mtu kwenye ukurasa wake wa wasifu."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Jina la Familia]"
+
+#: 
+msgid "row selected"
+msgstr "mstari umechaguliwa"
+
+#: 
+msgid "rows selected"
+msgstr "mistari imechaguliwa"
+
