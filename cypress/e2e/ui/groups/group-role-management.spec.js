@@ -22,7 +22,8 @@
 
 /** Helper: assert that the GroupEditor DataTable contains a role with the given name. */
 function dtHasRole(roleName) {
-  cy.window().then((win) => {
+  // Use should() so Cypress retries the assertion until the DataTable data updates
+  cy.window().should((win) => {
     const dt = win.jQuery("#groupRoleTable").DataTable();
     const names = dt
       .data()
@@ -34,7 +35,7 @@ function dtHasRole(roleName) {
 
 /** Helper: assert that the GroupEditor DataTable does NOT contain a role with the given name. */
 function dtLacksRole(roleName) {
-  cy.window().then((win) => {
+  cy.window().should((win) => {
     const dt = win.jQuery("#groupRoleTable").DataTable();
     const names = dt
       .data()
@@ -146,7 +147,9 @@ describe("Group Role Management", () => {
 
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
-      cy.get("#newRole").type(roleName);
+      // Use invoke+trigger instead of type() to set value atomically — avoids
+      // character-dropping on slow CI (cy.type is character-by-character)
+      cy.get("#newRole").invoke("val", roleName).trigger("input");
 
       cy.get("#addRoleModal .btn-secondary").click();
 
@@ -166,7 +169,9 @@ describe("Group Role Management", () => {
 
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
-      cy.get("#newRole").type(roleName);
+      // Use invoke+trigger instead of type() to set value atomically — avoids
+      // character-dropping on slow CI (cy.type is character-by-character)
+      cy.get("#newRole").invoke("val", roleName).trigger("input");
       cy.get("#submitNewRole").click();
 
       cy.wait("@addRole").its("response.statusCode").should("eq", 200);
@@ -238,7 +243,9 @@ describe("Group Role Management", () => {
       // Add a second role so deleting it won't hit the last-role block
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
-      cy.get("#newRole").type(roleName);
+      // Use invoke+trigger instead of type() to set value atomically — avoids
+      // character-dropping on slow CI (cy.type is character-by-character)
+      cy.get("#newRole").invoke("val", roleName).trigger("input");
       cy.get("#submitNewRole").click();
       cy.wait("@addRole").its("response.statusCode").should("eq", 200);
       cy.get("#addRoleModal").should("not.be.visible");
