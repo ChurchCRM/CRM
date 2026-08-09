@@ -121,6 +121,15 @@ describe("API Public User", () => {
             const MAX_FAILURES = 5; // must match iMaxFailedLogins in SystemConfig
 
             before(() => {
+                // Reset twofa_lockout_user's FailedLogins to 0 so re-runs against
+                // the same DB don't silently pass via the top-level isLocked() gate
+                // instead of exercising the OTP-failure counter code path.
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    "/admin/api/user/903/login/reset",
+                    null,
+                    200,
+                );
                 // Guard: assert the server's iMaxFailedLogins matches MAX_FAILURES.
                 // If this assertion fails, the loop below may trigger lockout at the
                 // password gate before exhausting OTP failures, silently testing the
