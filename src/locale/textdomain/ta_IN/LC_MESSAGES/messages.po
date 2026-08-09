@@ -16889,6 +16889,18 @@ msgid "Coordinates Updated"
 msgstr "ஆயத்தொலைவுகள் புதுப்பிக்கப்பட்டன"
 
 #: 
+msgctxt "one"
+msgid "Copied {{count}} members"
+msgstr "{{count}} உறுப்பினர்கள் நகலெடுக்கப்பட்டனர்\n"
+"சூழல்: ஒன்று"
+
+#: 
+msgctxt "other"
+msgid "Copied {{count}} members"
+msgstr "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — இது mailto: இணைப்புக்கு மிக அதிகம். அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
+"சூழல்: ஒன்று"
+
+#: 
 msgid "Copy Addresses"
 msgstr "முகவரிகளை நகலெடு"
 
@@ -17005,6 +17017,30 @@ msgid "This group only has one role."
 msgstr "இந்த குழுவில் ஒரே ஒரு பாத்திரம் மட்டுமே உள்ளது."
 
 #: 
+msgctxt "one"
+msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — இது mailto: இணைப்புக்கு மிக அதிகம். அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
+"சூழல்: மற்றவை"
+
+#: 
+msgctxt "other"
+msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "மின்னஞ்சல் செயலிக்கு அதிகப்படியான பெறுநர்கள் ({{count}} > {{max}}). அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
+"சூழல்: ஒன்று"
+
+#: 
+msgctxt "one"
+msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
+msgstr "மின்னஞ்சல் செயலிக்கு அதிகப்படியான பெறுநர்கள் ({{count}} > {{max}}). அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
+"சூழல்: மற்றவை"
+
+#: 
+msgctxt "other"
+msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
+msgstr "{{count}} நிமிடம் மீதமுள்ளது\n"
+"சூழல்: ஒன்று"
+
+#: 
 msgid "Who is bringing in {{name}}?"
 msgstr "{{name}}-ஐ யார் அழைத்து வருகிறார்?"
 
@@ -17035,6 +17071,16 @@ msgstr "பெறுநர்"
 #: 
 msgid "recipients"
 msgstr "பெறுநர்கள்"
+
+#: 
+msgctxt "one"
+msgid "{{count}} min left"
+msgstr "{{count}} நிமிடங்கள் மீதமுள்ளன"
+
+#: 
+msgctxt "other"
+msgid "{{count}} min left"
+msgstr "{{count}} நிமிடங்கள் மீதமுள்ளன"
 
 #: 
 msgid "{{hours}}h {{mins}}m left"

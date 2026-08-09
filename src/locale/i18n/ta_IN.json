@@ -4056,6 +4056,18 @@
     "Church email — configured on the %s page.": "தேவாலய மின்னஞ்சல் — %s பக்கத்தில் கட்டமைக்கப்பட்டது.",
     "Closing": "மூடுகிறது",
     "Coordinates Updated": "ஆயத்தொலைவுகள் புதுப்பிக்கப்பட்டன",
+    "one": {
+        "Copied {{count}} members": "{{count}} உறுப்பினர்கள் நகலெடுக்கப்பட்டனர்\nசூழல்: ஒன்று",
+        "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — இது mailto: இணைப்புக்கு மிக அதிகம். அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\nசூழல்: மற்றவை",
+        "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "மின்னஞ்சல் செயலிக்கு அதிகப்படியான பெறுநர்கள் ({{count}} > {{max}}). அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\nசூழல்: மற்றவை",
+        "{{count}} min left": "{{count}} நிமிடங்கள் மீதமுள்ளன"
+    },
+    "other": {
+        "Copied {{count}} members": "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — இது mailto: இணைப்புக்கு மிக அதிகம். அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\nசூழல்: ஒன்று",
+        "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "மின்னஞ்சல் செயலிக்கு அதிகப்படியான பெறுநர்கள் ({{count}} > {{max}}). அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\nசூழல்: ஒன்று",
+        "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "{{count}} நிமிடம் மீதமுள்ளது\nசூழல்: ஒன்று",
+        "{{count}} min left": "{{count}} நிமிடங்கள் மீதமுள்ளன"
+    },
     "Copy Addresses": "முகவரிகளை நகலெடு",
     "Copy Church Email": "தேவாலய மின்னஞ்சலை நகலெடு",
     "Email All Members": "அனைத்து உறுப்பினர்களுக்கும் மின்னஞ்சல் அனுப்பு",

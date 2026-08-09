@@ -1,18 +1,18 @@
 {
   "Copied {{count}} members": {
-    "one": "{{count}} सदस्य की प्रतिलिपि बनाई गई",
-    "other": "{{count}} सदस्यों की प्रतिलिपि बनाई गई"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "इस सूची में {{count}} प्राप्तकर्ता है — mailto: लिंक के लिए बहुत अधिक। इसके बजाय पते कॉपी करें का उपयोग करें।",
-    "other": "इस सूची में {{count}} प्राप्तकर्ता हैं — mailto: लिंक के लिए बहुत अधिक। इसके बजाय पते कॉपी करें का उपयोग करें।"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ईमेल क्लाइंट के लिए बहुत अधिक प्राप्तकर्ता ({{count}} > {{max}})। इसके बजाय पते कॉपी करें का उपयोग करें।",
-    "other": "ईमेल क्लाइंट के लिए बहुत अधिक प्राप्तकर्ता ({{count}} > {{max}})। इसके बजाय पते कॉपी करें का उपयोग करें।"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} मिनट शेष",
-    "other": "{{count}} मिनट शेष"
+    "one": "",
+    "other": ""
   }
 }

@@ -1,18 +1,18 @@
 {
   "Copied {{count}} members": {
-    "one": "Kopioitu {{count}} jäsen",
-    "other": "Kopioitu {{count}} jäsentä"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Tässä listassa on {{count}} vastaanottaja — liian monta mailto:-linkkiä varten. Käytä sen sijaan Kopioi osoitteet -toimintoa.",
-    "other": "Tässä listassa on {{count}} vastaanottajaa — liian monta mailto:-linkkiä varten. Käytä sen sijaan Kopioi osoitteet -toimintoa."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Liian monta vastaanottajaa sähköpostiohjelmalle ({{count}} > {{max}}). Käytä sen sijaan Kopioi osoitteet -toimintoa.",
-    "other": "Liian monta vastaanottajaa sähköpostiohjelmalle ({{count}} > {{max}}). Käytä sen sijaan Kopioi osoitteet -toimintoa."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min jäljellä",
-    "other": "{{count}} min jäljellä"
+    "one": "",
+    "other": ""
   }
 }
