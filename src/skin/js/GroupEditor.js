@@ -129,8 +129,7 @@ function initializeGroupEditor() {
           lst_OptionSequence: newRole.sequence,
         };
         roleCount += 1;
-        dataT.row.add(newRow);
-        dataT.rows().invalidate().draw(true);
+        dataT.row.add(newRow).draw(false);
         $("#addRoleModal").modal("hide");
         window.CRM.notify(i18next.t("Role added successfully."), {
           type: "success",
