@@ -1084,24 +1084,8 @@ msgid "Create Report"
 msgstr "रिपोर्ट बनाएँ"
 
 #: 
-msgid "Deposit Listing"
-msgstr "जमा सूची"
-
-#: 
 msgid "Deposits"
 msgstr "जमा"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "चयनित पंक्तियाँ हटाएँ"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "चयनित पंक्तियाँ निर्यात करें (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "चयनित पंक्तियाँ निर्यात करें (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1260,10 +1244,6 @@ msgid "Enabled"
 msgstr "सक्षम"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "समूह-विशिष्ट गुण फ़ॉर्म संपादित करें"
-
-#: 
 msgid "Disabled"
 msgstr "अक्षम"
 
@@ -1314,14 +1294,6 @@ msgstr "समूह-विशिष्ट गुण फ़ॉर्म सं�
 #: 
 msgid "No properties have been added yet"
 msgstr "अभी तक कोई गुण नहीं जोड़ा गया है"
-
-#: 
-msgid "Show in"
-msgstr "इसमें दिखाएं"
-
-#: 
-msgid "Person View"
-msgstr "व्यक्ति दृश्य"
 
 #: 
 msgid "Other Email"
@@ -4842,10 +4814,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "उपयोग करने के लिए एन्क्रिप्शन सिस्टम सेट करें - ssl या tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "चयनित पंक्तियों के लिए जमा पर्ची जनरेट करें (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "सभी को कार्ट में जोड़ें"
 
@@ -5133,10 +5101,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "ईमेल भेजने में त्रुटि"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "अधिक जानकारी के लिए कृपया लॉग देखें"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5526,10 +5490,6 @@ msgstr "परिवार को कार्ट से हटा दिया 
 #: 
 msgid "Add Group"
 msgstr "समूह जोड़ें"
-
-#: 
-msgid "Back to Group List"
-msgstr "समूह सूची पर वापस जाएँ"
 
 #: 
 msgid "Edit Group"
@@ -7308,10 +7268,6 @@ msgstr "ऊपर ले जाएं"
 #: 
 msgid "Order"
 msgstr "क्रम"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF सफलतापूर्वक %s परिवारों को ईमेल किए गए।"
 
 #: 
 msgid "Percentage"
@@ -9955,10 +9911,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "लोगों, परिवारों, समूहों, पतों और अधिक में खोजें।"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "चढ़ावा जमा पर्ची रिकॉर्ड खोजें और देखें"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "लोग, परिवार, समूह खोजें…"
 
@@ -10611,11 +10563,6 @@ msgstr "क्लिपबोर्ड में कॉपी करें"
 msgid "Custom field"
 msgstr "कस्टम फ़ील्ड"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "कस्टम खोज"
-
 #: 
 msgid "Default Country"
 msgstr "डिफ़ॉल्ट देश"
@@ -10677,11 +10624,6 @@ msgstr "फ़ील्ड मान"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "उन लोगों को खोजें जिन्होंने एक साल प्रतिज्ञा की लेकिन दूसरे साल नहीं"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "कस्टम फील्ड वैल्यू वाले लोगों को खोजें"
 
 #. Context: query_qry
 #: 
@@ -11944,10 +11886,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "परिवर्तन अगले लॉगऑन तक प्रभावी नहीं होंगे।"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "हल्की और गहरी रंग योजना के बीच चुनें"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "एप्लिकेशन का रूप और अनुभव अनुकूलित करें"
 
@@ -12702,10 +12640,6 @@ msgstr "अक्षांश और देशांतर दोनों क�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "कलीसिया की जानकारी सहेजी गई, लेकिन पता स्वतः नहीं मिल सका। कृपया मानचित्र निर्देशांक के अंतर्गत अक्षांश और देशांतर मैन्युअल रूप से दर्ज करें।"
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "सहेजते समय आपके पते से निर्देशांक स्वतः पहचाने जाते हैं (OpenStreetMap के माध्यम से)। आप उन्हें नीचे मैन्युअल रूप से भी दर्ज कर सकते हैं — मैन्युअल मान हमेशा स्वतः पहचान से प्राथमिकता लेते हैं। पते से जियोकोड करने के लिए दोनों को रिक्त छोड़ें।"
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13964,10 +13898,6 @@ msgid "Are you sure you want to continue?"
 msgstr "क्या आप आगे बढ़ना सुनिश्चित हैं?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "क्या आप वाकई इस चढ़ावा जमा को हटाना चाहते हैं?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "क्या आप वाकई इस ईवेंट प्रकार को हटाना चाहते हैं? इसे पूर्ववत नहीं किया जा सकता।"
 
@@ -14218,10 +14148,6 @@ msgstr "डेमो डेटा सामान्यतः केवल न�
 #: 
 msgid "Deposit ID"
 msgstr "जमा आईडी"
-
-#: 
-msgid "Deposit Total"
-msgstr "जमा कुल"
 
 #: 
 msgid "Deposit Value"

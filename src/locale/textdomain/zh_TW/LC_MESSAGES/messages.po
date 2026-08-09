@@ -1123,25 +1123,9 @@ msgid "Create Report"
 msgstr "建立報告"
 
 #: 
-msgid "Deposit Listing"
-msgstr "存款上市"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "存款"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "刪除選定的行"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "刪除選定的行（OFX）"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "刪除選定的行（CSV）"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1310,10 +1294,6 @@ msgid "Enabled"
 msgstr "應用"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "編輯特定群組的屬性表"
-
-#: 
 msgid "Disabled"
 msgstr "停用"
 
@@ -1367,14 +1347,6 @@ msgstr "組特定的屬性表編輯器"
 #: 
 msgid "No properties have been added yet"
 msgstr "尚未添加任何屬性"
-
-#: 
-msgid "Show in"
-msgstr "顯示在"
-
-#: 
-msgid "Person View"
-msgstr "人稱視角"
 
 #: 
 msgid "Other Email"
@@ -4966,10 +4938,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "將加密系統設置為使用 - ssl（不建議使用）或tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "為選定的行生成存款單（PDF）"
-
-#: 
 msgid "Add All to Cart"
 msgstr "全部添加至購物車"
 
@@ -5281,11 +5249,6 @@ msgstr "PDF"
 #, fuzzy
 msgid "Error sending email(s)"
 msgstr "發送電子郵件時出錯"
-
-#: 
-#, fuzzy
-msgid "Please check logs for more information"
-msgstr "請查看日誌以獲取更多信息"
 
 #: 
 #, fuzzy
@@ -5715,10 +5678,6 @@ msgstr "家庭已從購物車移除"
 #: 
 msgid "Add Group"
 msgstr "添加團體"
-
-#: 
-msgid "Back to Group List"
-msgstr "返回團體列表"
 
 #: 
 msgid "Edit Group"
@@ -7493,10 +7452,6 @@ msgstr "上移"
 #: 
 msgid "Order"
 msgstr "順序"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF 已成功發送至 %s 個家庭。"
 
 #: 
 msgid "Percentage"
@@ -10137,10 +10092,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "搜尋人員、家庭、小組、地址等。"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "搜尋和檢視奉獻存款單記錄"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "搜尋人員、家庭、小組…"
 
@@ -10793,11 +10744,6 @@ msgstr "複製到剪貼簿"
 msgid "Custom field"
 msgstr "自訂欄位"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "自訂搜尋"
-
 #: 
 msgid "Default Country"
 msgstr "預設國家"
@@ -10859,11 +10805,6 @@ msgstr "欄位值"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "找出有志在某一年但不是另一年的人"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "找出具有自訂欄位值的人"
 
 #. Context: query_qry
 #: 
@@ -12126,10 +12067,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "變更將在下次登入後生效。"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "選擇淺色或深色配色方案"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "自訂應用程式的外觀與操作體驗"
 
@@ -12883,10 +12820,6 @@ msgstr "緯度與經度必須同時填寫（或同時留空以自動偵測）。
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "教會資訊已儲存，但地址無法自動定位。請在「地圖座標」下方手動輸入緯度和經度。"
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "儲存時將透過 OpenStreetMap 從地址自動偵測座標。您也可以在下方手動輸入——手動輸入的數值優先於自動偵測。兩者皆留空時，系統將從地址進行地理編碼。"
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14145,10 +14078,6 @@ msgid "Are you sure you want to continue?"
 msgstr "您確定要繼續嗎?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "您確定要刪除此奉獻存款嗎？"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "您確定要刪除此事件類型嗎？此操作無法復原。"
 
@@ -14399,10 +14328,6 @@ msgstr "示範資料通常僅在全新安裝時載入。現在匯入將在現有
 #: 
 msgid "Deposit ID"
 msgstr "存款編號"
-
-#: 
-msgid "Deposit Total"
-msgstr "存款總額"
 
 #: 
 msgid "Deposit Value"

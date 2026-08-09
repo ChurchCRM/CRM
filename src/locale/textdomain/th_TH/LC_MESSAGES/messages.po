@@ -1093,24 +1093,8 @@ msgid "Create Report"
 msgstr "สร้างรายงาน"
 
 #: 
-msgid "Deposit Listing"
-msgstr "รายการการฝาก"
-
-#: 
 msgid "Deposits"
 msgstr "การฝาก"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "ลบแถวที่เลือก"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "ส่งออกแถวที่เลือก (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "ส่งออกแถวที่เลือก (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1269,10 +1253,6 @@ msgid "Enabled"
 msgstr "เปิดใช้งาน"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "แก้ไขแบบฟอร์มคุณสมบัติเฉพาะกลุ่ม"
-
-#: 
 msgid "Disabled"
 msgstr "ปิดใช้งาน"
 
@@ -1323,14 +1303,6 @@ msgstr "ตัวแก้ไขแบบฟอร์มคุณสมบัต
 #: 
 msgid "No properties have been added yet"
 msgstr "ยังไม่มีคุณสมบัติที่เพิ่ม"
-
-#: 
-msgid "Show in"
-msgstr "แสดงใน"
-
-#: 
-msgid "Person View"
-msgstr "มุมมองบุคคล"
 
 #: 
 msgid "Other Email"
@@ -4851,10 +4823,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ตั้งค่าระบบการเข้ารหัสที่จะใช้ - ssl (เลิกใช้แล้ว) หรือ tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "สร้างใบนำฝากสำหรับแถวที่เลือก (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "เพิ่มทั้งหมดลงในตะกร้า"
 
@@ -5146,10 +5114,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "ข้อผิดพลาดในการส่งอีเมล"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "กรุณาตรวจสอบบันทึกสำหรับข้อมูลเพิ่มเติม"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5537,10 +5501,6 @@ msgstr "ลบครอบครัวออกจากตะกร้าแล
 #: 
 msgid "Add Group"
 msgstr "เพิ่มกลุ่ม"
-
-#: 
-msgid "Back to Group List"
-msgstr "กลับไปที่รายการกลุ่ม"
 
 #: 
 msgid "Edit Group"
@@ -7315,10 +7275,6 @@ msgstr "เลื่อนขึ้น"
 #: 
 msgid "Order"
 msgstr "ลำดับ"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "ส่งอีเมล PDF ถึง %s ครอบครัวสำเร็จ"
 
 #: 
 msgid "Percentage"
@@ -9959,10 +9915,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "ค้นหาบุคคล ครอบครัว กลุ่ม ที่อยู่ และอื่นๆ"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "ค้นหาและดูบันทึกใบรับถวาย"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "ค้นหาบุคคล ครอบครัว กลุ่ม…"
 
@@ -10615,11 +10567,6 @@ msgstr "คัดลอกไปยังคลิปบอร์ด"
 msgid "Custom field"
 msgstr "ฟิลด์ที่กำหนดเอง"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "ค้นหาแบบกำหนดเอง"
-
 #: 
 msgid "Default Country"
 msgstr "ประเทศเริ่มต้น"
@@ -10681,11 +10628,6 @@ msgstr "ค่าฟิลด์"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ค้นหาผู้คนที่สัญญาในปีหนึ่ง แต่ไม่ใช่อีกปีหนึ่ง"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "ค้นหาผู้คนที่มีค่าฟิลด์ที่กำหนดเอง"
 
 #. Context: query_qry
 #: 
@@ -11948,10 +11890,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "การเปลี่ยนแปลงจะมีผลเมื่อเข้าสู่ระบบครั้งถัดไป"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "เลือกระหว่างโทนสีสว่างและโทนสีเข้ม"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "ปรับแต่งรูปแบบและการใช้งานของแอปพลิเคชัน"
 
@@ -12705,10 +12643,6 @@ msgstr "ต้องระบุทั้งละติจูดและลอ
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "บันทึกข้อมูลคริสตจักรแล้ว แต่ไม่สามารถค้นหาที่อยู่อัตโนมัติได้ กรุณากรอกละติจูดและลองจิจูดด้วยตนเองในส่วนพิกัดแผนที่"
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "พิกัดจะถูกตรวจจับอัตโนมัติจากที่อยู่เมื่อบันทึก (ผ่าน OpenStreetMap) คุณยังสามารถกรอกด้วยตนเองด้านล่าง — ค่าที่กรอกด้วยตนเองจะมีความสำคัญกว่าการตรวจจับอัตโนมัติเสมอ เว้นว่างทั้งคู่เพื่อให้ระบบค้นหาพิกัดจากที่อยู่"
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13967,10 +13901,6 @@ msgid "Are you sure you want to continue?"
 msgstr "คุณแน่ใจหรือว่าต้องการดำเนินการต่อ?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบรายการรับถวายนี้?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบประเภทกิจกรรมนี้? การดำเนินการนี้ไม่สามารถยกเลิกได้"
 
@@ -14221,10 +14151,6 @@ msgstr "โดยปกติข้อมูลตัวอย่างจะโ
 #: 
 msgid "Deposit ID"
 msgstr "ID การฝาก"
-
-#: 
-msgid "Deposit Total"
-msgstr "ยอดรวมการฝาก"
 
 #: 
 msgid "Deposit Value"

@@ -1122,25 +1122,9 @@ msgid "Create Report"
 msgstr "Opprett rapport"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Innskudd Listing"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Inskudd"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Slett Valgte Rader"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Eksporter Valgte Rader (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Eksporter Valgte Rader (CSV)"
 
 #: 
 #, fuzzy
@@ -1315,10 +1299,6 @@ msgid "Enabled"
 msgstr "Aktivert"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Rediger gruppe-spesifikke egenskaper Form"
-
-#: 
 msgid "Disabled"
 msgstr "Deaktivert"
 
@@ -1372,14 +1352,6 @@ msgstr "Gruppe-spesifikke egenskaper Form Redaktør"
 #: 
 msgid "No properties have been added yet"
 msgstr "Ingen egenskaper er ennå ikke lagt"
-
-#: 
-msgid "Show in"
-msgstr "Vis i"
-
-#: 
-msgid "Person View"
-msgstr "Person Vis"
 
 #: 
 msgid "Other Email"
@@ -4953,10 +4925,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Angi krypteringssystem - ssl (foreldet) eller tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Generer innskuddsseddel for valgte rader (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Legg alle i handlekurven"
 
@@ -5243,10 +5211,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Feil ved sending av e-post"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Vennligst sjekk loggene for mer informasjon"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5636,10 +5600,6 @@ msgstr "Familie fjernet fra handlekurven"
 #: 
 msgid "Add Group"
 msgstr "Legg til gruppe"
-
-#: 
-msgid "Back to Group List"
-msgstr "Tilbake til gruppeliste"
 
 #: 
 msgid "Edit Group"
@@ -7418,10 +7378,6 @@ msgstr "Flytt opp"
 #: 
 msgid "Order"
 msgstr "Rekkefølge"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF-er ble sendt per e-post til %s familier."
 
 #: 
 msgid "Percentage"
@@ -10065,10 +10021,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Søk blant personer, familier, grupper, adresser og mer."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Søk og vis kollektinnskuddsposter"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Søk blant personer, familier, grupper..."
 
@@ -10721,11 +10673,6 @@ msgstr "Kopier til utklippstavle"
 msgid "Custom field"
 msgstr "Egendefinert felt"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Egendefinert søk"
-
 #: 
 msgid "Default Country"
 msgstr "Standardland"
@@ -10787,11 +10734,6 @@ msgstr "Feltverdi"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Finn personer som lovet ett år men ikke et annet"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Finn personer med en egendefinert feltverdi"
 
 #. Context: query_qry
 #: 
@@ -12054,10 +11996,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Endringer trer ikke i kraft før neste innlogging."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Velg mellom lyst og mørkt fargetema"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Tilpass utseendet og opplevelsen av applikasjonen"
 
@@ -12812,10 +12750,6 @@ msgstr "Både breddegrad og lengdegrad må oppgis sammen (eller begge la stå bl
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Kirkeinformasjon lagret, men adressen kunne ikke lokaliseres automatisk. Vennligst angi breddegrad og lengdegrad manuelt under Kartkoordinater."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koordinater registreres automatisk fra adressen din ved lagring (via OpenStreetMap). Du kan også angi dem manuelt nedenfor — manuelle verdier har alltid forrang over automatisk registrering. La begge stå blankt for å la systemet geokode fra adressen."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14074,10 +14008,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Er du sikker på at du vil fortsette?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Er du sikker på at du vil slette dette kollektinnskuddet?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Er du sikker på at du vil slette denne hendelsestypen? Dette kan ikke angres."
 
@@ -14328,10 +14258,6 @@ msgstr "Demodata lastes normalt bare inn ved nye installasjoner. Import nå vil 
 #: 
 msgid "Deposit ID"
 msgstr "Innskudds-ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Totalt innskudd"
 
 #: 
 msgid "Deposit Value"

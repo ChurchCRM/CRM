@@ -1105,25 +1105,9 @@ msgid "Create Report"
 msgstr "Tạo báo cáo"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Đăng ký tiền gửi"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Tiền dâng hiến"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Xóa hàng đã chọn"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Xuất hàng đã chọn (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Xuất hàng đã chọn (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1288,10 +1272,6 @@ msgid "Enabled"
 msgstr "Kích hoạt"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Chỉnh sửa mẫu thuộc tính cho Ban/Mục vụ đặc biệt"
-
-#: 
 msgid "Disabled"
 msgstr "Vô hiệu hóa"
 
@@ -1343,14 +1323,6 @@ msgstr "Chỉnh sửa mẫu thuộc tính cho Ban/Mục vụ đặc biệt"
 #: 
 msgid "No properties have been added yet"
 msgstr "Chưa có thuộc tính nào được thêm vào"
-
-#: 
-msgid "Show in"
-msgstr "Hiển thị trong"
-
-#: 
-msgid "Person View"
-msgstr "Xem Thành viên"
 
 #: 
 msgid "Other Email"
@@ -4884,10 +4856,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Đặt hệ thống mã hóa để sử dụng - ssl (không dùng nữa) hoặc tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Tạo phiếu gửi tiền cho các hàng đã chọn (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Thêm hết vào giỏ"
 
@@ -5177,10 +5145,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Lỗi khi gửi (các) email"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Vui lòng kiểm tra nhật ký để biết thêm thông tin"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5569,10 +5533,6 @@ msgstr "Đã xóa hộ gia đình khỏi danh sách"
 #: 
 msgid "Add Group"
 msgstr "Thêm nhóm"
-
-#: 
-msgid "Back to Group List"
-msgstr "Quay lại danh sách nhóm"
 
 #: 
 msgid "Edit Group"
@@ -7347,10 +7307,6 @@ msgstr "Di chuyển lên"
 #: 
 msgid "Order"
 msgstr "Thứ tự"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "Các tệp PDF đã được gửi email thành công đến %s gia đình."
 
 #: 
 msgid "Percentage"
@@ -9991,10 +9947,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Tim kiem qua nguoi, gia dinh, nhom, dia chi va nhieu hon nua."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Tim kiem va xem cac ban ghi phieu thu hien"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Tim kiem nguoi, gia dinh, nhom…"
 
@@ -10647,11 +10599,6 @@ msgstr "Sao chép vào clipboard"
 msgid "Custom field"
 msgstr "Trường tùy chỉnh"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Tìm kiếm tùy chỉnh"
-
 #: 
 msgid "Default Country"
 msgstr "Quốc gia mặc định"
@@ -10713,11 +10660,6 @@ msgstr "Giá trị trường"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Tìm những người đã cam kết một năm nhưng không phải là năm khác"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Tìm người có giá trị trường tùy chỉnh"
 
 #. Context: query_qry
 #: 
@@ -11980,10 +11922,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Thay đổi sẽ không có hiệu lực cho đến lần đăng nhập tiếp theo."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Chọn giữa giao diện sáng và tối"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Tùy chỉnh giao diện và trải nghiệm của ứng dụng"
 
@@ -12737,10 +12675,6 @@ msgstr "Cả vĩ độ và kinh độ phải được cung cấp cùng nhau (ho�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Thông tin giáo xứ đã được lưu, nhưng địa chỉ không thể tự động xác định vị trí. Vui lòng nhập vĩ độ và kinh độ thủ công trong phần Tọa độ bản đồ."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Tọa độ được tự động phát hiện từ địa chỉ của bạn khi lưu (qua OpenStreetMap). Bạn cũng có thể nhập thủ công bên dưới — giá trị thủ công luôn được ưu tiên hơn tự động phát hiện. Để trống cả hai để hệ thống tự địa mã hóa từ địa chỉ."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13999,10 +13933,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Bạn có chắc chắn muốn tiếp tục không?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Ban co chac chan muon xoa dot thu hien nay khong?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Bạn có chắc chắn muốn xóa loại sự kiện này không? Hành động này không thể hoàn tác."
 
@@ -14253,10 +14183,6 @@ msgstr "Dữ liệu mẫu thường chỉ được tải trên các cài đặt 
 #: 
 msgid "Deposit ID"
 msgstr "ID tiền gửi"
-
-#: 
-msgid "Deposit Total"
-msgstr "Tổng số tiền gửi"
 
 #: 
 msgid "Deposit Value"

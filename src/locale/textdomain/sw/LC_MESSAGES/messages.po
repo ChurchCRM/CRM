@@ -1094,25 +1094,9 @@ msgid "Create Report"
 msgstr "Unda Ripoti"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Orodha ya Amana"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Amana"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Futa Safu Ulizochaguliwa"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Hamisha Safu Mlalo Zilizochaguliwa (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Hamisha Safu Mlalo Zilizochaguliwa (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1261,6 @@ msgid "Enabled"
 msgstr "Imewashwa"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Badilisha Fomu ya Sifa Maalum za Kikundi"
-
-#: 
 msgid "Disabled"
 msgstr "Imezimwa"
 
@@ -1332,14 +1312,6 @@ msgstr "Kihariri cha Fomu ya Sifa Maalum za Kikundi"
 #: 
 msgid "No properties have been added yet"
 msgstr "Bado hakuna sifa zilizoongezwa"
-
-#: 
-msgid "Show in"
-msgstr "Onyesha ndani"
-
-#: 
-msgid "Person View"
-msgstr "Mtazamo wa Mtu"
 
 #: 
 msgid "Other Email"
@@ -4871,10 +4843,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Weka mfumo wa usimbaji fiche wa kutumia - ssl (imeacha kutumika) au tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Tengeneza Kipande cha Amana kwa Safu Mlalo Zilizochaguliwa (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Ongeza Yote kwenye Cart"
 
@@ -5170,10 +5138,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Hitilafu katika kutuma barua pepe"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Tafadhali angalia kumbukumbu kwa habari zaidi"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5563,10 +5527,6 @@ msgstr "Familia imeondolewa kwenye kigari"
 #: 
 msgid "Add Group"
 msgstr "Ongeza Kikundi"
-
-#: 
-msgid "Back to Group List"
-msgstr "Rudi kwenye Orodha ya Vikundi"
 
 #: 
 msgid "Edit Group"
@@ -7345,10 +7305,6 @@ msgstr "Sogeza juu"
 #: 
 msgid "Order"
 msgstr "Mpangilio"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF zimetumwa kwa barua pepe kwa mafanikio kwa familia %s."
 
 #: 
 msgid "Percentage"
@@ -9992,10 +9948,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Tafuta katika watu, familia, vikundi, anwani, na zaidi."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Tafuta na uone rekodi za risiti za amana"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Tafuta watu, familia, vikundi…"
 
@@ -10648,11 +10600,6 @@ msgstr "Nakili kwenye clipboard"
 msgid "Custom field"
 msgstr "Shamba la kawaida"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Utaftaji Kwa Kawaida"
-
 #: 
 msgid "Default Country"
 msgstr "Nchi ya Chaguo Msingi"
@@ -10714,11 +10661,6 @@ msgstr "Thamani ya Shamba"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Tafuta watu ambao waliamuon kwa mwaka mmoja lakini si mwingine"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Tafuta watu wenye thamani ya sehemu iliyobadilishwa"
 
 #. Context: query_qry
 #: 
@@ -11981,10 +11923,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Mabadiliko hayatafanya kazi hadi kuingia tena."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Chagua kati ya mpango wa rangi nyepesi au nyeusi"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Badilisha muonekano na hisia ya programu"
 
@@ -12739,10 +12677,6 @@ msgstr "Latitudo na longitudo lazima zitolewe pamoja (au zote ziachwe wazi kwa u
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Taarifa za kanisa zimehifadhiwa, lakini anwani haikuweza kupatikana kiotomatiki. Tafadhali ingiza latitudo na longitudo kwa mkono chini ya Kuratibu za Ramani."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Kuratibu zinagunduliwa kiotomatiki kutoka kwa anwani yako ukihifadhi (kupitia OpenStreetMap). Unaweza pia kuziingiza kwa mkono hapa chini — maadili ya mkono daima yana kipaumbele juu ya ugunduzi wa kiotomatiki. Acha zote wazi ili mfumo uweze kupata jiografia kutoka anwanini."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14001,10 +13935,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Je, una uhakika unataka kuendelea?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Una uhakika unataka kufuta amana hii ya sadaka?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Je, una uhakika unataka kufuta aina hii ya tukio? Hii haiwezi kutendwa tena."
 
@@ -14255,10 +14185,6 @@ msgstr "Data ya maonyesho kwa kawaida hupakiwa tu kwenye usakinishaji mpya. Kuin
 #: 
 msgid "Deposit ID"
 msgstr "Kitambulisho cha amana"
-
-#: 
-msgid "Deposit Total"
-msgstr "Jumla ya Amana"
 
 #: 
 msgid "Deposit Value"

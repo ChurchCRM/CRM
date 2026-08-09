@@ -1081,24 +1081,8 @@ msgid "Create Report"
 msgstr "レポートを作成する"
 
 #: 
-msgid "Deposit Listing"
-msgstr "入金一覧"
-
-#: 
 msgid "Deposits"
 msgstr "入金"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "選択した行を削除"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "選択した行をエクスポート　OFX"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "選択した行をエクスポート　CSV"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1257,10 +1241,6 @@ msgid "Enabled"
 msgstr "有効"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "グループ固有プロパティフォームを編集"
-
-#: 
 msgid "Disabled"
 msgstr "無効"
 
@@ -1311,14 +1291,6 @@ msgstr "グループ固有プロパティフォームエディター"
 #: 
 msgid "No properties have been added yet"
 msgstr "プロパティはまだ追加されていません"
-
-#: 
-msgid "Show in"
-msgstr "表示先:"
-
-#: 
-msgid "Person View"
-msgstr "個人ビュー"
 
 #: 
 msgid "Other Email"
@@ -4839,10 +4811,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "使用する暗号化システムを設定 - ssl（非推奨）またはtls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "選択した行の入金伝票を生成（PDF）"
-
-#: 
 msgid "Add All to Cart"
 msgstr "すべてをカートに追加"
 
@@ -5134,10 +5102,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "メール送信エラー"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "詳細についてはログを確認してください"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5525,10 +5489,6 @@ msgstr "家族がカートから削除されました"
 #: 
 msgid "Add Group"
 msgstr "グループを追加"
-
-#: 
-msgid "Back to Group List"
-msgstr "グループリストに戻る"
 
 #: 
 msgid "Edit Group"
@@ -7303,10 +7263,6 @@ msgstr "上に移動"
 #: 
 msgid "Order"
 msgstr "順序"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "%s 世帯に PDF を正常に送信しました。"
 
 #: 
 msgid "Percentage"
@@ -9947,10 +9903,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "人物、家族、グループ、住所などを横断検索します。"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "献金預かり伝票レコードを検索・表示"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "人物、家族、グループを検索…"
 
@@ -10603,11 +10555,6 @@ msgstr "クリップボードにコピー"
 msgid "Custom field"
 msgstr "カスタムフィールド"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "カスタム検索"
-
 #: 
 msgid "Default Country"
 msgstr "デフォルト国"
@@ -10669,11 +10616,6 @@ msgstr "フィールド値"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ある年は誓約したが別の年は誓約しなかった人を探す"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "カスタムフィールド値を持つ人を探す"
 
 #. Context: query_qry
 #: 
@@ -11936,10 +11878,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "変更は次回ログイン時に有効になります。"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "ライトまたはダークのカラースキームを選択してください"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "アプリケーションの外観をカスタマイズする"
 
@@ -12693,10 +12631,6 @@ msgstr "緯度と経度は両方同時に入力してください（自動検出
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "教会情報を保存しましたが、住所を自動的に位置特定できませんでした。「地図座標」で緯度と経度を手動で入力してください。"
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "座標は保存時に住所から自動検出されます（OpenStreetMap経由）。以下に手動で入力することもできます。手動入力値は常に自動検出より優先されます。システムに住所からジオコーディングさせる場合は両方空欄にしてください。"
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13955,10 +13889,6 @@ msgid "Are you sure you want to continue?"
 msgstr "本当に続行してもよろしいですか?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "この献金預かりを削除してもよろしいですか？"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "このイベントタイプを削除してよろしいですか？この操作は元に戻せません。"
 
@@ -14209,10 +14139,6 @@ msgstr "デモデータは通常、新規インストール時のみ読み込ま
 #: 
 msgid "Deposit ID"
 msgstr "入金ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "入金合計"
 
 #: 
 msgid "Deposit Value"

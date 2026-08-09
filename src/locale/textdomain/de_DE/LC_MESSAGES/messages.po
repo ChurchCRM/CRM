@@ -1126,25 +1126,9 @@ msgid "Create Report"
 msgstr "Bericht erstellen"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Auflistung der Einzahlungen"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Zahlungen"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Ausgewählte Reihe löschen"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Ausgewählte Reihe exportieren (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Ausgewählte Reihe exportieren (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1317,10 +1301,6 @@ msgid "Enabled"
 msgstr "Aktiviert"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Bearbeiten der gruppenspezifischen Einstellungenform"
-
-#: 
 msgid "Disabled"
 msgstr "Deaktiviert"
 
@@ -1374,14 +1354,6 @@ msgstr "Gruppenspezifische Einstellungen aus dem Editor"
 #: 
 msgid "No properties have been added yet"
 msgstr "Bisher sind keine Einstellungen vorgenommen worden"
-
-#: 
-msgid "Show in"
-msgstr "Anzeigen in"
-
-#: 
-msgid "Person View"
-msgstr "Person anzeigen"
 
 #: 
 msgid "Other Email"
@@ -4951,10 +4923,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Stellen Sie das zu verwendende Verschlüsselungssystem ein - ssl (veraltet) oder tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Einzahlungsbeleg für ausgewählte Zeilen erzeugen (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Alle zum Warenkorb hinzufügen"
 
@@ -5251,10 +5219,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Fehler beim Versenden der E-Mail(s)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Überprüfen Sie die Logs für weitere Informationen"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5645,10 +5609,6 @@ msgstr "Familie aus dem Warenkorb entfernt"
 #: 
 msgid "Add Group"
 msgstr "Gruppe hinzufügen"
-
-#: 
-msgid "Back to Group List"
-msgstr "Zurück zur Gruppenliste"
 
 #: 
 msgid "Edit Group"
@@ -7427,10 +7387,6 @@ msgstr "Nach oben verschieben"
 #: 
 msgid "Order"
 msgstr "Auftrag"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDFs erfolgreich an %s Familien per E-Mail versendet."
 
 #: 
 msgid "Percentage"
@@ -10074,10 +10030,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Personen, Familien, Gruppen, Adressen und mehr durchsuchen."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Einlagebelegdatensätze suchen und anzeigen"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Personen, Familien, Gruppen suchen…"
 
@@ -10730,11 +10682,6 @@ msgstr "In Zwischenablage kopieren"
 msgid "Custom field"
 msgstr "Benutzerdefiniertes Feld"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Benutzerdefinierte Suche"
-
 #: 
 msgid "Default Country"
 msgstr "Standardland"
@@ -10796,11 +10743,6 @@ msgstr "Feldwert"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Personen finden, die ein Jahr verpflichtet haben, aber nicht das andere"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Personen mit einem benutzerdefinierten Feldwert finden"
 
 #. Context: query_qry
 #: 
@@ -12063,10 +12005,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Änderungen werden erst nach der nächsten Anmeldung wirksam."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Wählen Sie zwischen hellem und dunklem Farbschema"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Passen Sie das Erscheinungsbild und die Bedienung der Anwendung an"
 
@@ -12821,10 +12759,6 @@ msgstr "Breiten- und Längengrad müssen gemeinsam angegeben werden (oder beide 
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Gemeindedaten wurden gespeichert, aber die Adresse konnte nicht automatisch geortet werden. Bitte geben Sie Breiten- und Längengrad manuell unter Kartenkoordinaten ein."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Die Koordinaten werden beim Speichern automatisch aus Ihrer Adresse ermittelt (über OpenStreetMap). Sie können sie auch manuell unten eingeben – manuelle Werte haben immer Vorrang vor der automatischen Erkennung. Lassen Sie beide Felder leer, um die Adresse automatisch zu geokodieren."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14083,10 +14017,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Möchten Sie wirklich fortfahren?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Sind Sie sicher, dass Sie diese Einlage löschen möchten?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Möchten Sie diesen Veranstaltungstyp wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden."
 
@@ -14337,10 +14267,6 @@ msgstr "Demodaten werden normalerweise nur bei Neuinstallationen geladen. Ein Im
 #: 
 msgid "Deposit ID"
 msgstr "Kaution ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Einzahlung Gesamt"
 
 #: 
 msgid "Deposit Value"

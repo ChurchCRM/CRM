@@ -1119,25 +1119,9 @@ msgid "Create Report"
 msgstr "Создать отчет"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Депозит Листинг"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Депозиты"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Удалить выделенные строки"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Экспорт выбранных строк (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Экспорт выбранных строк (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1306,10 +1290,6 @@ msgid "Enabled"
 msgstr "Включен"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Edit Group-Specific Properties Форма"
-
-#: 
 msgid "Disabled"
 msgstr "Отключен"
 
@@ -1363,14 +1343,6 @@ msgstr "Группа-специфических свойств Редактор 
 #: 
 msgid "No properties have been added yet"
 msgstr "Нет свойства, которые были добавлены еще"
-
-#: 
-msgid "Show in"
-msgstr "Показать в"
-
-#: 
-msgid "Person View"
-msgstr "Человек Посмотреть"
 
 #: 
 msgid "Other Email"
@@ -4931,10 +4903,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Установите систему шифрования — ssl (устарело) или tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Создать депозитный талон для выбранных строк (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Добавить всех в корзину"
 
@@ -5226,10 +5194,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Ошибка при отправке почты."
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Пожалуйста, проверьте журналы для получения дополнительной информации"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5624,10 +5588,6 @@ msgstr "Семья удалена из корзины"
 #: 
 msgid "Add Group"
 msgstr "Добавить группу"
-
-#: 
-msgid "Back to Group List"
-msgstr "К списку групп"
 
 #: 
 msgid "Edit Group"
@@ -7414,10 +7374,6 @@ msgstr "Вверх"
 #: 
 msgid "Order"
 msgstr "Порядок"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF успешно отправлены %s семьям."
 
 #: 
 msgid "Percentage"
@@ -10067,10 +10023,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Поиск по людям, семьям, группам, адресам и многому другому."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Поиск и просмотр записей о депозитах"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Поиск людей, семей, групп…"
 
@@ -10723,11 +10675,6 @@ msgstr "Скопировать в буфер обмена"
 msgid "Custom field"
 msgstr "Пользовательское поле"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Пользовательский поиск"
-
 #: 
 msgid "Default Country"
 msgstr "Страна по умолчанию"
@@ -10789,11 +10736,6 @@ msgstr "Значение поля"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Найти людей, которые обещали в одном году, но не в другом"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Найти людей с пользовательским значением поля"
 
 #. Context: query_qry
 #: 
@@ -12056,10 +11998,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Изменения вступят в силу при следующем входе."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Выберите между светлой и тёмной цветовой схемой"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Настройте внешний вид приложения"
 
@@ -12816,10 +12754,6 @@ msgstr "Широта и долгота должны быть указаны вм
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Информация о приходе сохранена, но адрес не удалось определить автоматически. Введите широту и долготу вручную в разделе «Координаты на карте»."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Координаты автоматически определяются по вашему адресу при сохранении (через OpenStreetMap). Вы также можете ввести их вручную ниже — введённые вручную значения всегда имеют приоритет над автоматическим определением. Оставьте оба поля пустыми, чтобы система определила координаты по адресу."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14078,10 +14012,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Вы уверены, что хотите продолжить?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Вы уверены, что хотите удалить этот депозит?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Вы уверены, что хотите удалить этот тип мероприятия? Это действие нельзя отменить."
 
@@ -14332,10 +14262,6 @@ msgstr "Демонстрационные данные обычно загруж�
 #: 
 msgid "Deposit ID"
 msgstr "ID депозита"
-
-#: 
-msgid "Deposit Total"
-msgstr "Итого по депозиту"
 
 #: 
 msgid "Deposit Value"

@@ -1081,24 +1081,8 @@ msgid "Create Report"
 msgstr "Vytvoriť správu"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Zoznam vkladov"
-
-#: 
 msgid "Deposits"
 msgstr "Vklady"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Odstrániť vybrané riadky"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Exportovať vybrané riadky (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Exportovať vybrané riadky (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1257,10 +1241,6 @@ msgid "Enabled"
 msgstr "Povolený"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Upraviť formulár vlastností skupiny"
-
-#: 
 msgid "Disabled"
 msgstr "Zakázaný"
 
@@ -1311,14 +1291,6 @@ msgstr "Editor formulára vlastností skupiny"
 #: 
 msgid "No properties have been added yet"
 msgstr "Zatiaľ neboli pridané žiadne vlastnosti"
-
-#: 
-msgid "Show in"
-msgstr "Zobraziť v"
-
-#: 
-msgid "Person View"
-msgstr "Zobrazenie osoby"
 
 #: 
 msgid "Other Email"
@@ -4838,10 +4810,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Nastaviť šifrovací systém – ssl (zastarané) alebo tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Vygenerovať vkladový lístok pre vybrané riadky (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Pridať všetko do košíka"
 
@@ -5136,10 +5104,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Chyba pri odosielaní e-mailu(-ov)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Skontrolujte protokoly pre viac informácií"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5533,10 +5497,6 @@ msgstr "Rodina odstránená z košíka"
 #: 
 msgid "Add Group"
 msgstr "Pridať skupinu"
-
-#: 
-msgid "Back to Group List"
-msgstr "Späť na zoznam skupín"
 
 #: 
 msgid "Edit Group"
@@ -7322,10 +7282,6 @@ msgstr "Presunúť nahor"
 #: 
 msgid "Order"
 msgstr "Poradie"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF úspešne zaslané e-mailom %s rodinám."
 
 #: 
 msgid "Percentage"
@@ -9975,10 +9931,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Vyhľadávať medzi osobami, rodinami, skupinami, adresami a ďalšími."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Vyhľadávať a zobrazovať záznamy vkladových dokladov"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Vyhľadávať osoby, rodiny, skupiny…"
 
@@ -10631,11 +10583,6 @@ msgstr "Kopírovať do schránky"
 msgid "Custom field"
 msgstr "Vlastné pole"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Vlastné vyhľadávanie"
-
 #: 
 msgid "Default Country"
 msgstr "Predvolená krajina"
@@ -10697,11 +10644,6 @@ msgstr "Hodnota poľa"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Nájsť osoby, ktoré sa zaviazali jeden rok, ale nie druhý"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Nájsť osoby s hodnotou vlastného poľa"
 
 #. Context: query_qry
 #: 
@@ -11964,10 +11906,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Zmeny nadobudnú účinnosť pri ďalšom prihlásení."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Vyberte medzi svetlou a tmavou farebnou schémou"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Prispôsobiť vzhľad a dojem z aplikácie"
 
@@ -12724,10 +12662,6 @@ msgstr "Zemepisná šírka aj dĺžka musia byť poskytnuté spolu (alebo obe po
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Informácie o cirkvi uložené, ale adresu sa nepodarilo automaticky lokalizovať. Zadajte zemepisnú šírku a dĺžku ručne pod Súradnice mapy."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Súradnice sú automaticky zistené z vašej adresy pri ukladaní (cez OpenStreetMap). Môžete ich tiež zadať ručne nižšie — ručné hodnoty vždy majú prednosť pred automatickým zistením. Ponechajte obe prázdne, aby systém geokódoval z adresy."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13986,10 +13920,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Ste si istí, že chcete pokračovať?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Ste si istí, že chcete odstrániť tento vklad?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Ste si istí, že chcete odstrániť tento typ podujatia? Toto nie je možné vrátiť."
 
@@ -14240,10 +14170,6 @@ msgstr "Ukážkové dáta sa zvyčajne načítavajú iba na nových inštaláci�
 #: 
 msgid "Deposit ID"
 msgstr "ID vkladu"
-
-#: 
-msgid "Deposit Total"
-msgstr "Celkový vklad"
 
 #: 
 msgid "Deposit Value"

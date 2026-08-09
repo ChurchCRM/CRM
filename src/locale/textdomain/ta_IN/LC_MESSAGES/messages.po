@@ -1094,25 +1094,9 @@ msgid "Create Report"
 msgstr "அறிக்கையை உருவாக்கவும்"
 
 #: 
-msgid "Deposit Listing"
-msgstr "வைப்பு/டெபாசிட் பட்டியல்"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "வைப்புத்தொகை"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளை நீக்கு"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளை ஏற்றுமதி செய்யவும் (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளை ஏற்றுமதி செய்யவும் (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1261,6 @@ msgid "Enabled"
 msgstr "இயக்கப்பட்டது"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "குழு-குறிப்பிட்ட பண்புகள் படிவத்தைத் திருத்தவும்"
-
-#: 
 msgid "Disabled"
 msgstr "முடக்கப்பட்டது"
 
@@ -1332,14 +1312,6 @@ msgstr "குழு-குறிப்பிட்ட பண்புகள் 
 #: 
 msgid "No properties have been added yet"
 msgstr "இதுவரை சொத்துக்கள் எதுவும் சேர்க்கப்படவில்லை"
-
-#: 
-msgid "Show in"
-msgstr "காண்பிக்க"
-
-#: 
-msgid "Person View"
-msgstr "நபர் பார்வைக்கு"
 
 #: 
 msgid "Other Email"
@@ -4870,10 +4842,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "பயன்படுத்த குறியாக்க அமைப்பை அமைக்கவும் - ssl (நிறுத்தப்பட்டது) அல்லது tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளுக்கு (PDF) வைப்புச் சீட்டை உருவாக்கவும்"
-
-#: 
 msgid "Add All to Cart"
 msgstr "அனைத்தையும் மென்வண்டியில் சேர்க்கவும்"
 
@@ -5169,10 +5137,6 @@ msgstr "பி டி எஃப் (PDF)  "
 #: 
 msgid "Error sending email(s)"
 msgstr "மின்னஞ்சல்(களை) அனுப்புவதில் பிழை"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "மேலும் தகவலுக்கு பதிவுகளைப் பார்க்கவும்"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5566,10 +5530,6 @@ msgstr "மென்வண்டியில் இருந்து குட�
 #: 
 msgid "Add Group"
 msgstr "குழுவைச் சேர்"
-
-#: 
-msgid "Back to Group List"
-msgstr "குழு பட்டியலுக்குத் திரும்பு"
 
 #: 
 msgid "Edit Group"
@@ -7353,10 +7313,6 @@ msgstr "மேலே நகர்வு"
 #: 
 msgid "Order"
 msgstr "ஆணை"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF ஐ %s குடும்பங்களுக்கு வெற்றிகரமாக மின்னஞ்சல் செய்யப்பட்டது."
 
 #: 
 msgid "Percentage"
@@ -10003,10 +9959,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "நபர்கள், குடும்பங்கள், குழுக்கள், முகவரிகள் மற்றும் பலவற்றில் தேடுங்கள்."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "காணிக்கை வைப்பு சீட்டு பதிவுகளைத் தேடி பார்க்கவும்"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "நபர்கள், குடும்பங்கள், குழுக்களைத் தேடு…"
 
@@ -10659,11 +10611,6 @@ msgstr "கிளிப்போர்டுக்கு நகலெடுக�
 msgid "Custom field"
 msgstr "தனிப்பயன் புலம்"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "தனிப்பயன் தேடல்"
-
 #: 
 msgid "Default Country"
 msgstr "இயல்பு நாடு"
@@ -10725,11 +10672,6 @@ msgstr "புல மதிப்பு"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ஒரு ஆண்டுக்கு உறுதி அளித்தும் மற்றொரு ஆண்டுக்கு அளிக்காதவர்களை கண்டுபிடிக்கவும்"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "தனிப்பயன் புல மதிப்பைக் கொண்டவர்களை கண்டுபிடிக்கவும்"
 
 #. Context: query_qry
 #: 
@@ -11996,10 +11938,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "அடுத்த உள்நுழைவு வரை மாற்றங்கள் செயல்படாது."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "இலகு மற்றும் இருண்ட வண்ண திட்டத்தை தேர்வு செய்யவும்"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "பயன்பாட்டின் தோற்றத்தையும் உணர்வையும் தனிப்பயனாக்கவும்"
 
@@ -12754,10 +12692,6 @@ msgstr "அட்சரேகை மற்றும் தீர்க்கர�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "சபை தகவல் சேமிக்கப்பட்டது, ஆனால் முகவரியை தானியங்கியாக கண்டறிய முடியவில்லை. வரைபட ஆள்கூறுகளின் கீழ் அட்சரேகை மற்றும் தீர்க்கரேகையை கைமுறையாக உள்ளிடவும்."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "ஆள்கூறுகள் சேமிக்கும்போது உங்கள் முகவரியிலிருந்து தானாக கண்டறியப்படும் (OpenStreetMap மூலம்). நீங்கள் கீழே கைமுறையாகவும் உள்ளிடலாம் — கைமுறை மதிப்புகள் எப்போதும் தானியங்கி கண்டறிதலை விட முன்னுரிமை பெறும். முகவரியிலிருந்து கணினி ஜியோகோட் செய்ய இரண்டையும் வெற்றிடமாக விடவும்."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14016,10 +13950,6 @@ msgid "Are you sure you want to continue?"
 msgstr "நீங்கள் தொடர விரும்புகிறீர்களா?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "இந்த வைப்புத்தொகையை நீக்க விரும்புகிறீர்களா?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "இந்த நிகழ்வு வகையை நீக்க விரும்புகிறீர்களா? இதைத் திரும்பப் பெற இயலாது."
 
@@ -14270,10 +14200,6 @@ msgstr "மாதிரித் தரவு பொதுவாகப் பு
 #: 
 msgid "Deposit ID"
 msgstr "வைப்புத்தொகை ஐடி"
-
-#: 
-msgid "Deposit Total"
-msgstr "வைப்புத்தொகை மொத்தம்"
 
 #: 
 msgid "Deposit Value"

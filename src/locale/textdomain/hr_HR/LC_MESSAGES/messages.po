@@ -1081,24 +1081,8 @@ msgid "Create Report"
 msgstr "Kreiraj izvještaj"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Popis uplata"
-
-#: 
 msgid "Deposits"
 msgstr "Uplate"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Obriši odabrane retke"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Izvezi odabrane retke (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Izvezi odabrane retke (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1257,10 +1241,6 @@ msgid "Enabled"
 msgstr "Omogućeno"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Uredi obrazac posebnih svojstava skupini"
-
-#: 
 msgid "Disabled"
 msgstr "Onemogućeno"
 
@@ -1311,14 +1291,6 @@ msgstr "Urednik obrasca posebnih svojstava skupini"
 #: 
 msgid "No properties have been added yet"
 msgstr "Još nisu dodana svojstva"
-
-#: 
-msgid "Show in"
-msgstr "Prikaži u"
-
-#: 
-msgid "Person View"
-msgstr "Prikaz osobe"
 
 #: 
 msgid "Other Email"
@@ -4838,10 +4810,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Postavite sustav šifriranja - ssl (zastarjelo) ili tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Generiraj uplatnicu za odabrane retke (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Dodaj sve u košaricu"
 
@@ -5132,10 +5100,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Greška pri slanju e-poruke/e-poruka"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Molim provjerite dnevnike za više informacija"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5527,10 +5491,6 @@ msgstr "Obitelj uklonjena iz košarice"
 #: 
 msgid "Add Group"
 msgstr "Dodaj skupinu"
-
-#: 
-msgid "Back to Group List"
-msgstr "Povratak na popis skupini"
 
 #: 
 msgid "Edit Group"
@@ -7312,10 +7272,6 @@ msgstr "Premjesti gore"
 #: 
 msgid "Order"
 msgstr "Redoslijed"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF-ovi su uspješno poslani e-poštom na %s obitelji."
 
 #: 
 msgid "Percentage"
@@ -9962,10 +9918,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Pretražujte vjernike, obitelji, skupini, adrese i više."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Pretražite i pregledajte zapise uplatnica"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Pretražite vjernike, obitelji, skupini…"
 
@@ -10618,11 +10570,6 @@ msgstr "Kopiraj u međuspremnik"
 msgid "Custom field"
 msgstr "Prilagođeno polje"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Prilagođena pretraga"
-
 #: 
 msgid "Default Country"
 msgstr "Zadana država"
@@ -10684,11 +10631,6 @@ msgstr "Vrijednost polja"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Pronađi vjernike koji su dali zavjet jedne godine ali ne i druge"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Pronađi vjernike s prilagođenom vrijednošću polja"
 
 #. Context: query_qry
 #: 
@@ -11951,10 +11893,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Promjene neće stupiti na snagu do sljedeće prijave."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Odaberite između svijetlih i tamnih boja"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Prilagodite izgled i dojam aplikacije"
 
@@ -12710,10 +12648,6 @@ msgstr "I geografska širina i dužina moraju biti navedene zajedno (ili obje os
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Župne informacije su spremljene, ali adresa nije mogla biti automatski locirana. Molim ručno unesite geografsku širinu i dužinu pod Koordinate karte."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koordinate se automatski otkrivaju iz vaše adrese pri spremanju (putem OpenStreetMapa). Možete ih ručno unijeti u nastavku — ručne vrijednosti uvijek imaju prednost pred automatskim otkrivanjem. Ostavite oboje prazno da sustav geokodira iz adrese."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13972,10 +13906,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Jeste li sigurni da želite nastaviti?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Jeste li sigurni da želite obrisati ovu uplatu?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Jeste li sigurni da želite obrisati ovu vrstu događaja? Ovo se ne može poništiti."
 
@@ -14226,10 +14156,6 @@ msgstr "Demo podaci se normalno učitavaju samo na svježim instalacijama. Uvoz 
 #: 
 msgid "Deposit ID"
 msgstr "ID uplate"
-
-#: 
-msgid "Deposit Total"
-msgstr "Ukupna uplata"
 
 #: 
 msgid "Deposit Value"
