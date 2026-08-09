@@ -785,7 +785,13 @@ function initDataTable() {
           // GHSA-m649-24q9-q6r4: HTML attribute-escape href value to prevent quote breakout;
           // escapeAttribute preserves @ and + (not HTML-special) while encoding "
           var escaped = $("<div>").text(data).html();
-          return '<a href="mailto:' + window.CRM.escapeAttribute(data) + '" target="_blank" rel="noopener noreferrer">' + escaped + "</a>";
+          return (
+            '<a href="mailto:' +
+            window.CRM.escapeAttribute(data) +
+            '" target="_blank" rel="noopener noreferrer">' +
+            escaped +
+            "</a>"
+          );
         },
       },
       {
