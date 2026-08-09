@@ -13,6 +13,13 @@ use ChurchCRM\view\PageHeader;
 $sPageTitle = gettext('Query View');
 $sPageSubtitle = gettext('View query results');
 
+// GHSA-6rgg-mrx3-92w7: QueryView.php is deprecated. Gate behind admin to prevent
+// zero-permission users from reaching the parameterised SQL runner.
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::securityRedirect('Admin');
+    exit;
+}
+
 // Get the QueryID from the querystring
 $iQueryID = InputUtils::legacyFilterInput($_GET['QueryID'], 'int');
 

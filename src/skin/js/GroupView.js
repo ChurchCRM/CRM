@@ -735,7 +735,8 @@ function initDataTable() {
         title: i18next.t("Name"),
         data: "PersonId",
         render: (data, type, full) => {
-          var escapedName = $("<div>").text(full.Person.FullName).html();
+          // GHSA-m649-24q9-q6r4: use escapeAttribute for data-name attribute context (encodes quotes)
+          var escapedName = window.CRM.escapeAttribute(full.Person.FullName || "");
           return (
             '<div class="d-flex align-items-center">' +
             '<img data-image-entity-type="person" data-image-entity-id="' +
@@ -768,8 +769,9 @@ function initDataTable() {
         defaultContent: "",
         render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
+          // GHSA-m649-24q9-q6r4: URL-encode href value; HTML-escape display text only
           var escaped = $("<div>").text(data).html();
-          return '<a href="tel:' + escaped + '">' + escaped + "</a>";
+          return '<a href="tel:' + encodeURIComponent(data) + '">' + escaped + "</a>";
         },
       },
       {
@@ -779,8 +781,9 @@ function initDataTable() {
         defaultContent: "",
         render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
+          // GHSA-m649-24q9-q6r4: URL-encode href value; HTML-escape display text only
           var escaped = $("<div>").text(data).html();
-          return '<a href="mailto:' + escaped + '" target="_blank" rel="noopener noreferrer">' + escaped + "</a>";
+          return '<a href="mailto:' + encodeURIComponent(data) + '" target="_blank" rel="noopener noreferrer">' + escaped + "</a>";
         },
       },
       {
@@ -791,7 +794,8 @@ function initDataTable() {
         searchable: false,
         className: "text-end w-1 no-export",
         render: (data, type, full) => {
-          var escapedName = $("<div>").text(full.Person.FullName).html();
+          // GHSA-m649-24q9-q6r4: use escapeAttribute for data-name attribute context (encodes quotes)
+          var escapedName = window.CRM.escapeAttribute(full.Person.FullName || "");
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static">' +
