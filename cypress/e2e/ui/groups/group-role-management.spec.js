@@ -167,6 +167,11 @@ describe("Group Role Management", () => {
 
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
+      // Bootstrap 5 modal-dialog has a 300ms CSS transition; the same _isTransitioning
+      // race applies here: if the POST resolves before 300ms (Docker loopback is very
+      // fast), JS calls modal("hide") while isTransitioning=true and it is silently
+      // rejected. cy.wait(400) = 300ms animation + 100ms buffer.
+      cy.wait(400);
       // Use invoke+trigger instead of type() to set value atomically — avoids
       // character-dropping on slow CI (cy.type is character-by-character)
       cy.get("#newRole").invoke("val", roleName).trigger("input");
@@ -241,6 +246,9 @@ describe("Group Role Management", () => {
       // Add a second role so deleting it won't hit the last-role block
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
+      // Same _isTransitioning race: wait for the 300ms animation to complete
+      // before submitting so modal("hide") in the success handler is not rejected.
+      cy.wait(400);
       // Use invoke+trigger instead of type() to set value atomically — avoids
       // character-dropping on slow CI (cy.type is character-by-character)
       cy.get("#newRole").invoke("val", roleName).trigger("input");
