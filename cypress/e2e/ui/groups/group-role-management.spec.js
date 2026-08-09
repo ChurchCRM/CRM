@@ -155,8 +155,8 @@ describe("Group Role Management", () => {
       cy.get("#newRole").type("{esc}");
 
       cy.get("#addRoleModal").should("not.be.visible");
-      // Verify via DataTables data model
-      dtLacksRole(roleName);
+      // roleName was never submitted; verify the typed text "x" is also absent
+      dtLacksRole("x");
     });
 
     it("successfully adds a role: modal closes, row appears in table, success toast shown", () => {
