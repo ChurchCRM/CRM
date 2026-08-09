@@ -1,29 +1,29 @@
 {
-  "Access": "",
-  "Self-service": "",
-  "Changelog": "",
-  "Feature": "",
-  "Check-out": "",
-  "Code": "",
-  "Live Preview": "",
-  "Sell-through": "",
-  "BCC Mode": "",
-  "Data": "",
-  "Deposit Slip": "",
+  "Access": "Access",
+  "Self-service": "Self-service",
+  "Changelog": "Changelog",
+  "Feature": "Feature",
+  "Check-out": "Check-out",
+  "Code": "Code",
+  "Live Preview": "Live Preview",
+  "Sell-through": "Sell-through",
+  "BCC Mode": "BCC Mode",
+  "Data": "Data",
+  "Deposit Slip": "Deposit Slip",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} miyembro ang nakopya",
+    "other": "{{count}} miyembro ang nakopya"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ang listahang ito ay may {{count}} tatanggap — napakarami para sa isang mailto: link. Gamitin ang Kopyahin ang mga Address sa halip.",
+    "other": "Ang listahang ito ay may {{count}} tatanggap — napakarami para sa isang mailto: link. Gamitin ang Kopyahin ang mga Address sa halip."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Napakaraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang mga Address sa halip.",
+    "other": "Napakaraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang mga Address sa halip."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuto na lang",
+    "other": "{{count}} minuto na lang"
   }
 }
