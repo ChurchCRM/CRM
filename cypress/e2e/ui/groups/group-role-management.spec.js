@@ -145,12 +145,10 @@ describe("Group Role Management", () => {
 
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
-      // Type something to enable the submit button, then close via ESC.
-      // Using ESC (not a button click) because Bootstrap 5's data-bs-dismiss
-      // click delegation does not fire reliably via Cypress synthetic click in
-      // headless Electron/subdir CI.  Bootstrap handles ESC natively via its
-      // own keyboard listener, which is immune to synthetic-click propagation issues.
-      cy.wait(400); // absorb Bootstrap's 300ms CSS transition + buffer (_isTransitioning race)
+      // Bootstrap 5's modal-dialog has a 300ms CSS transform transition; _isTransitioning
+      // is true for the full 300ms and hide() silently no-ops during that window — for both
+      // ESC key and data-bs-dismiss button clicks. cy.wait(400) = 300ms animation + 100ms buffer.
+      cy.wait(400);
       cy.get("#newRole").type("x");
       cy.get("#newRole").type("{esc}");
 
