@@ -769,7 +769,8 @@ function initDataTable() {
         defaultContent: "",
         render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
-          // GHSA-m649-24q9-q6r4: URL-encode href value; HTML-escape display text only
+          // GHSA-m649-24q9-q6r4: HTML attribute-escape href value to prevent quote breakout;
+          // escapeAttribute preserves @ and + (not HTML-special) while encoding "
           var escaped = $("<div>").text(data).html();
           return '<a href="tel:' + window.CRM.escapeAttribute(data) + '">' + escaped + "</a>";
         },
@@ -781,7 +782,8 @@ function initDataTable() {
         defaultContent: "",
         render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
-          // GHSA-m649-24q9-q6r4: URL-encode href value; HTML-escape display text only
+          // GHSA-m649-24q9-q6r4: HTML attribute-escape href value to prevent quote breakout;
+          // escapeAttribute preserves @ and + (not HTML-special) while encoding "
           var escaped = $("<div>").text(data).html();
           return '<a href="mailto:' + window.CRM.escapeAttribute(data) + '" target="_blank" rel="noopener noreferrer">' + escaped + "</a>";
         },
