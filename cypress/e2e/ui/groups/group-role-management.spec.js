@@ -130,6 +130,7 @@ describe("Group Role Management", () => {
 
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
+      cy.wait(400);
 
       // Initially disabled
       cy.get("#submitNewRole").should("be.disabled");
