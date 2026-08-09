@@ -140,22 +140,21 @@ describe("Group Role Management", () => {
     });
 
     it("cancelling the modal makes no changes to the role table", () => {
-      const roleName = `CancelRole-${Date.now()}`;
-
       cy.visit(`/groups/editor/${testGroupAddDeleteId}`);
       cy.get("#groupRoleTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
 
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
-      // Bootstrap 5 modal-dialog has a 300ms CSS transform transition.
-      // isTransitioning=true for the full 300ms; hide() is silently rejected during that window.
-      // cy.type("x") alone (~50ms) is insufficient — cy.wait(400) gives 300ms + 100ms buffer.
-      cy.wait(400);
+      // Type something to enable the submit button, then close via ESC.
+      // Using ESC (not a button click) because Bootstrap 5's data-bs-dismiss
+      // click delegation does not fire reliably via Cypress synthetic click in
+      // headless Electron/subdir CI.  Bootstrap handles ESC natively via its
+      // own keyboard listener, which is immune to synthetic-click propagation issues.
       cy.get("#newRole").type("x");
       cy.get("#newRole").type("{esc}");
 
       cy.get("#addRoleModal").should("not.be.visible");
-      // roleName was never submitted; verify the typed text "x" is also absent
+      // "x" is what was actually typed — assert it was not submitted
       dtLacksRole("x");
     });
 
