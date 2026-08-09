@@ -1094,25 +1094,9 @@ msgid "Create Report"
 msgstr "צור דוח"
 
 #: 
-msgid "Deposit Listing"
-msgstr "רשימת הפקדות"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "הפקדות: "
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "מחק שורות נבחרות"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "יצא שורות נבחרות (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "יצא שורות נבחרות (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1261,6 @@ msgid "Enabled"
 msgstr "מאופשר"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "ערוך טופס מאפיינים ספציפיים לקבוצה"
-
-#: 
 msgid "Disabled"
 msgstr "מושבת"
 
@@ -1332,14 +1312,6 @@ msgstr "עורך טופס מאפיינים ספציפיים לקבוצה"
 #: 
 msgid "No properties have been added yet"
 msgstr "עדיין לא נוספו מאפיינים"
-
-#: 
-msgid "Show in"
-msgstr "הצג ב"
-
-#: 
-msgid "Person View"
-msgstr "תצוגת אדם"
 
 #: 
 msgid "Other Email"
@@ -4873,10 +4845,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "הגדר את מערכת ההצפנה לשימוש - SSL (מיושן) או TLS"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "צור שובר הפקדה עבור השורות הנבחרות (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "הוסף הכל לעגלה"
 
@@ -5172,10 +5140,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "שגיאה בשליחת אימייל/ים"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "לקבלת מידע נוסף - אנא בדוק רישומי מערכת"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5565,10 +5529,6 @@ msgstr "המשפחה הוסרה מהסל"
 #: 
 msgid "Add Group"
 msgstr "הוסף קבוצה"
-
-#: 
-msgid "Back to Group List"
-msgstr "חזרה לרשימת הקבוצות"
 
 #: 
 msgid "Edit Group"
@@ -7347,10 +7307,6 @@ msgstr "הזז למעלה"
 #: 
 msgid "Order"
 msgstr "סדר"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "קבצי PDF נשלחו בהצלחה ל-%s משפחות."
 
 #: 
 msgid "Percentage"
@@ -9994,10 +9950,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "חיפוש באנשים, משפחות, קבוצות, כתובות ועוד."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "חיפוש וצפייה ברשומות שוברי הפקדה"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "חיפוש אנשים, משפחות, קבוצות…"
 
@@ -10650,11 +10602,6 @@ msgstr "העתק ללוח הגזירים"
 msgid "Custom field"
 msgstr "שדה מותאם אישית"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "חיפוש מותאם אישית"
-
 #: 
 msgid "Default Country"
 msgstr "מדינה ברירת מחדל"
@@ -10716,11 +10663,6 @@ msgstr "ערך שדה"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "מצא אנשים שהתחייבו בשנה אחת אך לא בשנייה"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "מצא אנשים עם ערך שדה מותאם"
 
 #. Context: query_qry
 #: 
@@ -11983,10 +11925,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "השינויים ייכנסו לתוקף בכניסה הבאה."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "בחר בין ערכת צבעים בהירה לכהה"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "התאם אישית את מראה היישום ותחושתו"
 
@@ -12741,10 +12679,6 @@ msgstr "יש לספק גם קו רוחב וגם קו אורך יחד (או לה�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "מידע הקהילה נשמר, אך לא ניתן לאתר את הכתובת אוטומטית. אנא הזן קו רוחב ואורך ידנית תחת קואורדינטות מפה."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "קואורדינטות מזוהות אוטומטית מהכתובת בשמירה (דרך OpenStreetMap). ניתן גם להזין אותן ידנית למטה — ערכים ידניים תמיד גוברים על זיהוי אוטומטי. השאר שניהם ריקים כדי לאפשר למערכת לקודד גיאוגרפית מהכתובת."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14003,10 +13937,6 @@ msgid "Are you sure you want to continue?"
 msgstr "האם אתה בטוח שאתה רוצה להמשיך?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "האם אתם בטוחים שברצונכם למחוק הפקדת תרומות זו?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "האם אתה בטוח שברצונך למחוק סוג אירוע זה? לא ניתן לבטל פעולה זו."
 
@@ -14257,10 +14187,6 @@ msgstr "נתוני הדגמה נטענים בדרך כלל רק בהתקנות �
 #: 
 msgid "Deposit ID"
 msgstr "מזהה ההפקדה"
-
-#: 
-msgid "Deposit Total"
-msgstr "סך ההפקדה"
 
 #: 
 msgid "Deposit Value"

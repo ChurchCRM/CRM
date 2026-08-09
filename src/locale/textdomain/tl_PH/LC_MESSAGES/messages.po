@@ -1081,24 +1081,8 @@ msgid "Create Report"
 msgstr "Lumikha ng Ulat"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Listahan ng Deposito"
-
-#: 
 msgid "Deposits"
 msgstr "Mga Deposito"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Burahin ang mga Napiling Row"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "I-export ang mga Napiling Row (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "I-export ang mga Napiling Row (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1257,10 +1241,6 @@ msgid "Enabled"
 msgstr "Pinagana"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "I-edit ang Form ng mga Katangiang Tukoy sa Grupo"
-
-#: 
 msgid "Disabled"
 msgstr "Hindi Pinagana"
 
@@ -1311,14 +1291,6 @@ msgstr "Editor ng Form ng mga Katangiang Tukoy sa Grupo"
 #: 
 msgid "No properties have been added yet"
 msgstr "Wala pang mga katangiang naidagdag"
-
-#: 
-msgid "Show in"
-msgstr "Ipakita sa"
-
-#: 
-msgid "Person View"
-msgstr "View ng Tao"
 
 #: 
 msgid "Other Email"
@@ -4839,10 +4811,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Itakda ang sistema ng encryption na gagamitin - ssl (deprecated) o tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Gumawa ng Deposit Slip para sa mga Napiling Row (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Idagdag ang Lahat sa Cart"
 
@@ -5134,10 +5102,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Error sa pagpapadala ng email(s)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Pakitingnan ang mga log para sa karagdagang impormasyon"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5527,10 +5491,6 @@ msgstr "Pamilya ay naalis mula sa cart"
 #: 
 msgid "Add Group"
 msgstr "Magdagdag ng Grupo"
-
-#: 
-msgid "Back to Group List"
-msgstr "Bumalik sa Listahan ng Grupo"
 
 #: 
 msgid "Edit Group"
@@ -7309,10 +7269,6 @@ msgstr "Ilipat pataas"
 #: 
 msgid "Order"
 msgstr "Ayos"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "Matagumpay na na-email ang mga PDF sa %s pamilya."
 
 #: 
 msgid "Percentage"
@@ -9956,10 +9912,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Maghanap sa mga tao, pamilya, grupo, address, at higit pa."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Maghanap at tingnan ang mga rekord ng deposit slip"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Maghanap ng mga tao, pamilya, grupo..."
 
@@ -10612,11 +10564,6 @@ msgstr "Kopyahin sa clipboard"
 msgid "Custom field"
 msgstr "Pasadyang larangan"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "PasadyangPaghahanap"
-
 #: 
 msgid "Default Country"
 msgstr "Default na Bansa"
@@ -10678,11 +10625,6 @@ msgstr "Halaga ng larangan"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Hanapin ang mga taong nangako ng isang taon ngunit hindi ng isa pa"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Hanapin ang mga tao na may pasadyang halaga ng larangan"
 
 #. Context: query_qry
 #: 
@@ -11945,10 +11887,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Hindi magkakabisa ang mga pagbabago hanggang sa susunod na pag-login."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Pumili sa pagitan ng maliwanag at madilim na color scheme"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "I-customize ang hitsura ng application"
 
@@ -12703,10 +12641,6 @@ msgstr "Ang parehong latitude at longitude ay dapat ibigay nang magkasama (o par
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Na-save ang impormasyon ng simbahan, ngunit hindi awtomatikong natukoy ang address. Mangyaring ipasok ang latitude at longitude nang manu-mano sa ilalim ng Mga Koordinado ng Mapa."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Ang mga koordinado ay awtomatikong natutukoy mula sa iyong address kapag na-save (sa pamamagitan ng OpenStreetMap). Maaari mo rin itong ipasok nang manu-mano sa ibaba — ang mga manu-manong halaga ay palaging nangunguna kaysa sa awtomatikong pagtukoy. Iwanang blangko ang pareho para hayaan ang sistema na mag-geocode mula sa address."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13965,10 +13899,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Sigurado ka bang gusto mong magpatuloy?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Sigurado ka bang gusto mong burahin ang depositong ito?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Sigurado ka bang gusto mong burahin ang uri ng kaganapan na ito? Hindi ito maaaring ibalik."
 
@@ -14219,10 +14149,6 @@ msgstr "Ang demo na datos ay karaniwang inilalagay lamang sa mga bagong instalas
 #: 
 msgid "Deposit ID"
 msgstr "ID ng Deposito"
-
-#: 
-msgid "Deposit Total"
-msgstr "Kabuuan ng Deposito"
 
 #: 
 msgid "Deposit Value"

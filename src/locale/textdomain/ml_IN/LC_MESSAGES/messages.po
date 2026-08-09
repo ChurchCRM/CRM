@@ -1081,24 +1081,8 @@ msgid "Create Report"
 msgstr "റിപ്പോർട്ട് ഉണ്ടാക്കുക"
 
 #: 
-msgid "Deposit Listing"
-msgstr "ഡിപ്പോസിറ്റ് ലിസ്‌റ്റ്"
-
-#: 
 msgid "Deposits"
 msgstr "ഡിപ്പോസിറ്റുകൾ"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "തിരഞ്ഞെടുത്ത വരികൾ ഇല്ലാതാക്കുക"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "തിരഞ്ഞെടുത്ത വരികൾ കയറ്റുമതി ചെയ്യുക (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "തിരഞ്ഞെടുത്ത വരികൾ കയറ്റുമതി ചെയ്യുക (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1257,10 +1241,6 @@ msgid "Enabled"
 msgstr "പ്രവർത്തനക്ഷമം"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "ഗ്രൂപ്പ് പ്രത്യേക സ്വഭാവ ഫോം എഡിറ്റ് ചെയ്യുക"
-
-#: 
 msgid "Disabled"
 msgstr "പ്രവർത്തനരഹിതം"
 
@@ -1311,14 +1291,6 @@ msgstr "ഗ്രൂപ്പ് പ്രത്യേക സ്വഭാവ ഫ
 #: 
 msgid "No properties have been added yet"
 msgstr "ഇതുവരെ സ്വഭാവങ്ങൾ ഒന്നും ചേർത്തിട്ടില്ല"
-
-#: 
-msgid "Show in"
-msgstr "ഇതിൽ കാണിക്കുക"
-
-#: 
-msgid "Person View"
-msgstr "വ്യക്തി കാഴ്ച"
 
 #: 
 msgid "Other Email"
@@ -4839,10 +4811,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ഉപയോഗിക്കേണ്ട എൻക്രിപ്ഷൻ സിസ്റ്റം ക്രമീകരിക്കുക - ssl (പഴഞ്ചൻ) അല്ലെങ്കിൽ tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "തിരഞ്ഞെടുത്ത വരികൾക്ക് ഡിപ്പോസിറ്റ് സ്ലിപ്പ് ഉണ്ടാക്കുക (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "എല്ലാം കാർട്ടിൽ ചേർക്കുക"
 
@@ -5134,10 +5102,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "ഇമെയിൽ(കൾ) അയക്കുന്നതിൽ പിശക്"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "കൂടുതൽ വിവരത്തിന് ലോഗ് പരിശോധിക്കുക"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5527,10 +5491,6 @@ msgstr "കുടുംബം കാർട്ടിൽ നിന്ന് നീ
 #: 
 msgid "Add Group"
 msgstr "ഗ്രൂപ്പ് ചേർക്കുക"
-
-#: 
-msgid "Back to Group List"
-msgstr "ഗ്രൂപ്പ് ലിസ്‌റ്റിലേക്ക് മടങ്ങുക"
 
 #: 
 msgid "Edit Group"
@@ -7309,10 +7269,6 @@ msgstr "മുകളിലേക്ക് നീക്കുക"
 #: 
 msgid "Order"
 msgstr "ക്രമം"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF %s കുടുംബങ്ങൾക്ക് ഇമെയിൽ ചെയ്തു."
 
 #: 
 msgid "Percentage"
@@ -9956,10 +9912,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "വ്യക്തികൾ, കുടുംബങ്ങൾ, ഗ്രൂപ്പുകൾ, വിലാസങ്ങൾ, കൂടുതൽ ഇവ ഉടനീളം തിരയുക."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "നിക്ഷേപ സ്ലിപ്പ് രേഖകൾ തിരയുകയും കാണുകയും ചെയ്യുക"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "വ്യക്തികൾ, കുടുംബങ്ങൾ, ഗ്രൂപ്പുകൾ തിരയുക..."
 
@@ -10612,11 +10564,6 @@ msgstr "ക്ലിപ്‌ബോർഡിലേക്ക് പകർത്�
 msgid "Custom field"
 msgstr "ഇഷ്ടാനുസൃത ഫീൽഡ്"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "ഇഷ്ടാനുസൃത തിരയൽ"
-
 #: 
 msgid "Default Country"
 msgstr "ഡിഫോൾട്ട് രാജ്യം"
@@ -10678,11 +10625,6 @@ msgstr "ഫീൽഡ് മൂല്യം"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ഒരു വർഷം സാമ്പത്തിക പ്രതിബദ്ധത ഉണ്ടായിരുന്നെങ്കിലും മറ്റൊരു വർഷം ഇല്ലാത്ത ആളുകളെ കണ്ടെത്തുക"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "ഒരു ഇഷ്ടാനുസൃത ഫീൽഡ് മൂല്യമുള്ള ആളുകളെ കണ്ടെത്തുക"
 
 #. Context: query_qry
 #: 
@@ -11945,10 +11887,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "അടുത്ത logon വരെ മാറ്റങ്ങൾ പ്രാബല്യത്തിൽ വരില്ല."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Light, dark color scheme-ൽ ഒന്ന് തിരഞ്ഞെടുക്കുക"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Application-ന്റെ look and feel customize ചെയ്യുക"
 
@@ -12703,10 +12641,6 @@ msgstr "അക്ഷാംശവും രേഖാംശവും ഒരുമ�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "സഭ വിവരങ്ങൾ സേവ് ചെയ്തു, പക്ഷേ വിലാസം സ്വയം കണ്ടെത്താനായില്ല. ദയവായി ഭൂപട നിർദ്ദേശാംകങ്ങൾ കൈകൊണ്ട് ടൈപ്പ് ചെയ്യുക."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "സേവ് ചെയ്യുമ്പോൾ (OpenStreetMap വഴി) നിർദ്ദേശാംകങ്ങൾ നിങ്ങളുടെ വിലാസത്തിൽ നിന്ന് സ്വയം കണ്ടെത്തുന്നു. താഴെ ഇവ കൈകൊണ്ടും ടൈപ്പ് ചെയ്യാം — കൈകൊണ്ട് ടൈപ്പ് ചെയ്ത മൂല്യങ്ങൾ എല്ലായ്‌പ്പോഴും സ്വയം കണ്ടെത്തലിനേക്കാൾ മുൻഗണന നൽകുന്നു. വിലാസത്തിൽ നിന്ന് ജിയോകോഡ് ചെയ്യാൻ സിസ്റ്റം ഉപേക്ഷിക്കാൻ ഇരണ്ടും ശൂന്യമായി ഇടുക."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13965,10 +13899,6 @@ msgid "Are you sure you want to continue?"
 msgstr "നിങ്ങൾ തുടരാൻ ആഗ്രഹിക്കുന്നുണ്ടോ?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "ഈ ഡിപ്പോസിറ്റ് ഇല്ലാതാക്കണോ?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "ഈ ഇവന്റ് തരം ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ? ഇത് പഴയപടിയാക്കാൻ കഴിയില്ല."
 
@@ -14219,10 +14149,6 @@ msgstr "ഡെമോ ഡേറ്റ സാധാരണ പുതിയ ഇൻ�
 #: 
 msgid "Deposit ID"
 msgstr "ഡിപ്പോസിറ്റ് ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "ഡിപ്പോസിറ്റ് ആകെ"
 
 #: 
 msgid "Deposit Value"

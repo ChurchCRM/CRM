@@ -1094,25 +1094,9 @@ msgid "Create Report"
 msgstr "Loo aruanne"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Sissetulekute noteerimine"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Sissetulekud"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Kustuta valitud read"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Ekspordi valitud read (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Ekspordi valitud read (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1261,6 @@ msgid "Enabled"
 msgstr "Lubatud"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Redigeerige rühma spetsiifiliste omaduste vormi"
-
-#: 
 msgid "Disabled"
 msgstr "Keelatud"
 
@@ -1332,14 +1312,6 @@ msgstr "Grupispetsiifiliste omaduste vormi muutja"
 #: 
 msgid "No properties have been added yet"
 msgstr "Ühtegi atribuuti pole veel lisatud"
-
-#: 
-msgid "Show in"
-msgstr "Näita"
-
-#: 
-msgid "Person View"
-msgstr "Isiku vaade"
 
 #: 
 msgid "Other Email"
@@ -4872,10 +4844,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Seadistage krüptimissüsteem kasutamiseks - ssl (aegunud) või tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Genereerige valitud ridade jaoks sissemaksete tõend (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Lisa kõik korvi"
 
@@ -5172,10 +5140,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Viga e-kirjade saatmisel"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Lisateabe saamiseks kontrollige logisid"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5566,10 +5530,6 @@ msgstr "Perekond on eemaldatud ostukorvist"
 #: 
 msgid "Add Group"
 msgstr "Lisa rühm"
-
-#: 
-msgid "Back to Group List"
-msgstr "Tagasi rühmade loendisse"
 
 #: 
 msgid "Edit Group"
@@ -7348,10 +7308,6 @@ msgstr "Liiguta üles"
 #: 
 msgid "Order"
 msgstr "Tellimus"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF-id saadeti edukalt %s perekondade e-postiga."
 
 #: 
 msgid "Percentage"
@@ -9995,10 +9951,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Otsige isikute, perekondade, gruppide, aadresside ja muu hulgast."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Otsige ja vaadake korjanduste kirjeid"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Otsi isikuid, perekondi, gruppe…"
 
@@ -10651,11 +10603,6 @@ msgstr "Kopeerige lõikepuhvrisse"
 msgid "Custom field"
 msgstr "Kohandatud väli"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Kohandatud otsing"
-
 #: 
 msgid "Default Country"
 msgstr "Vaikeriik"
@@ -10717,11 +10664,6 @@ msgstr "Välja väärtus"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Leia inimesed, kes lubasid ühel aastal, kuid mitte teisel"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Leia inimesed kohandatud välja väärtusega"
 
 #. Context: query_qry
 #: 
@@ -11984,10 +11926,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Muudatused jõustuvad järgmisel sisselogimisel."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Valige heleda ja tumeda värviskeemi vahel"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Kohandage rakenduse välimust ja tunnetust"
 
@@ -12742,10 +12680,6 @@ msgstr "Nii laiuskraad kui ka pikkuskraad tuleb sisestada koos (või mõlemad j�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Koguduse andmed salvestatud, kuid aadressi ei õnnestunud automaatselt tuvastada. Palun sisestage laiuskraad ja pikkuskraad käsitsi kaardi koordinaatide all."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koordinaadid tuvastatakse salvestamisel automaatselt teie aadressist (OpenStreetMap kaudu). Võite need ka allpool käsitsi sisestada — käsitsi sisestatud väärtused on alati eelistatud automaatsele tuvastamisele. Jätke mõlemad tühjaks, et süsteem tuvastaks koordinaadid aadressi põhjal."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14004,10 +13938,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Kas olete kindel, et soovite jätkata?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Kas olete kindel, et soovite selle korjanduse kustutada?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Kas olete kindel, et soovite selle sündmuse tüübi kustutada? Seda toimingut ei saa tagasi võtta."
 
@@ -14258,10 +14188,6 @@ msgstr "Demoandmeid laaditakse tavaliselt ainult uuele installile. Nüüd import
 #: 
 msgid "Deposit ID"
 msgstr "Sissemakse ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Sissemakse kokku"
 
 #: 
 msgid "Deposit Value"

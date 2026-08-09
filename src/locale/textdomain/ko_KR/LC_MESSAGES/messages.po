@@ -1094,25 +1094,9 @@ msgid "Create Report"
 msgstr "보고서 생성"
 
 #: 
-msgid "Deposit Listing"
-msgstr "입금 내역서 목록"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "입금 내역서"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "선택한 행 삭제"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "선택한 행 내보내기(OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "선택한 행 내보내기(CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1261,6 @@ msgid "Enabled"
 msgstr "사용"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "그룹 전용 속성 양식 편집"
-
-#: 
 msgid "Disabled"
 msgstr "사용 안 함"
 
@@ -1332,14 +1312,6 @@ msgstr "그룹 전용 속성 양식 편집"
 #: 
 msgid "No properties have been added yet"
 msgstr "추가된 속성이 없습니다."
-
-#: 
-msgid "Show in"
-msgstr "표시 위치"
-
-#: 
-msgid "Person View"
-msgstr "개인 화면"
 
 #: 
 msgid "Other Email"
@@ -4870,10 +4842,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "사용할 암호화 방식을 설정합니다 - ssl(사용 중단) 또는 tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "선택한 행의 입금 내역서 생성(PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "모두 카트에 추가"
 
@@ -5168,10 +5136,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "이메일 발송 중 오류가 발생했습니다"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "자세한 내용은 로그를 확인하세요"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5559,10 +5523,6 @@ msgstr "가족이 장바구니에서 제거되었습니다"
 #: 
 msgid "Add Group"
 msgstr "그룹 추가"
-
-#: 
-msgid "Back to Group List"
-msgstr "그룹 목록으로 돌아가기"
 
 #: 
 msgid "Edit Group"
@@ -7338,10 +7298,6 @@ msgstr "위로 이동"
 #: 
 msgid "Order"
 msgstr "순서"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF가 %s 가족에 성공적으로 이메일로 전송되었습니다."
 
 #: 
 msgid "Percentage"
@@ -9982,10 +9938,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "사람, 가족, 그룹, 주소 등을 검색합니다."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "헌금 입금 전표 기록 검색 및 보기"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "사람, 가족, 그룹 검색…"
 
@@ -10638,11 +10590,6 @@ msgstr "클립보드에 복사"
 msgid "Custom field"
 msgstr "사용자 정의 필드"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "맞춤 검색"
-
 #: 
 msgid "Default Country"
 msgstr "기본 국가"
@@ -10704,11 +10651,6 @@ msgstr "필드 값"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "한 해에는 약속했지만 다른 해에는 약속하지 않은 사람을 찾기"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "사용자 정의 필드 값이 있는 사람 찾기"
 
 #. Context: query_qry
 #: 
@@ -11971,10 +11913,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "변경 사항은 다음 로그인 시 적용됩니다."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "밝은 테마와 어두운 테마 중 선택"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "애플리케이션의 외관과 느낌을 사용자 정의하세요"
 
@@ -12728,10 +12666,6 @@ msgstr "위도와 경도는 함께 입력해야 합니다 (또는 자동 감지�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "교회 정보가 저장되었지만 주소를 자동으로 찾을 수 없었습니다. 지도 좌표 항목에서 위도와 경도를 수동으로 입력해 주세요."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "저장 시 주소에서 좌표가 자동으로 감지됩니다 (OpenStreetMap 사용). 아래에서 수동으로 입력할 수도 있습니다 — 수동 값은 항상 자동 감지보다 우선합니다. 시스템이 주소에서 좌표를 자동 검색하도록 하려면 둘 다 비워 두세요."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13990,10 +13924,6 @@ msgid "Are you sure you want to continue?"
 msgstr "계속 진행하시겠습니까?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "이 헌금 입금을 삭제하시겠습니까?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "이 이벤트 유형을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
 
@@ -14244,10 +14174,6 @@ msgstr "데모 데이터는 일반적으로 새로 설치할 때만 불러옵니
 #: 
 msgid "Deposit ID"
 msgstr "입금 ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "입금 합계"
 
 #: 
 msgid "Deposit Value"

@@ -1094,25 +1094,9 @@ msgid "Create Report"
 msgstr "Skep verslag"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Deposito-lys"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Deposito's"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Skrap geselekteerde rye"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Voer geselekteerde rye (OFX) uit"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Voer geselekteerde rye (CSV) uit"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1261,6 @@ msgid "Enabled"
 msgstr "Geaktiveer"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Wysig die groepspesifieke eienskappe"
-
-#: 
 msgid "Disabled"
 msgstr "Gestremd"
 
@@ -1332,14 +1312,6 @@ msgstr "Groepspesifieke eienskappe Vormredakteur"
 #: 
 msgid "No properties have been added yet"
 msgstr "Geen eiendomme is nog bygevoeg nie"
-
-#: 
-msgid "Show in"
-msgstr "Wys in"
-
-#: 
-msgid "Person View"
-msgstr "Persoon aansig"
 
 #: 
 msgid "Other Email"
@@ -4873,10 +4845,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Stel die koderingstelsel in om te gebruik - ssl (verouderd) of tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Genereer depositostrokie vir geselekteerde rye (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Voeg alles in mandjie"
 
@@ -5173,10 +5141,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Kon nie e-pos (s) stuur nie"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Gaan die logboeke na vir meer inligting"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5567,10 +5531,6 @@ msgstr "Familie uit mandjie verwyder"
 #: 
 msgid "Add Group"
 msgstr "Voeg Groep By"
-
-#: 
-msgid "Back to Group List"
-msgstr "Terug na Groeplys"
 
 #: 
 msgid "Edit Group"
@@ -7349,10 +7309,6 @@ msgstr "Beweeg Op"
 #: 
 msgid "Order"
 msgstr "Bestel"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF's suksesvol per e-pos gestuur aan %s gesinne."
 
 #: 
 msgid "Percentage"
@@ -9996,10 +9952,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Soek oor mense, families, ministerieë, adresse, en meer."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Soek en kyk insameling-sliprekords"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Soek mense, families, ministerieë…"
 
@@ -10652,11 +10604,6 @@ msgstr "Kopieer na knipbord"
 msgid "Custom field"
 msgstr "Pasgemaakte veld"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Pasgemaakte Soektog"
-
 #: 
 msgid "Default Country"
 msgstr "Verstek Land"
@@ -10718,11 +10665,6 @@ msgstr "Veld waarde"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Soek mense wat een jaar verbind het maar nie 'n ander nie"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Soek mense met 'n pasgemaakte veldwaarde"
 
 #. Context: query_qry
 #: 
@@ -11985,10 +11927,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Veranderinge sal nie van krag word tot die volgende aanmelding nie."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Kies tussen ligte en donker kleurskema"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Pasmaak die voorkoms en gevoel van die toepassing"
 
@@ -12743,10 +12681,6 @@ msgstr "Breedtegraad en lengtegraad moet saam verskaf word (of albei leeg gelaat
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Gemeenteinligting gestoor, maar die adres kon nie outomaties gevind word nie. Voer asseblief die breedtegraad en lengtegraad handmatig in onder Kaartkoördinate."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koördinate word outomaties vanuit u adres bespeur tydens stoor (via OpenStreetMap). U kan dit ook handmatig hieronder invoer — handmatige waardes het altyd voorkeur bo outomatiese bespeur. Laat albei leeg om die stelsel toe te laat om die adres te geokodeer."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14005,10 +13939,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Is jy seker jy wil voortgaan?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Wil jy seker hierdie insameling verwyder?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Is jy seker jy wil hierdie tipe geleentheid uitvee? Dit kan nie ongedaan gemaak word nie."
 
@@ -14259,10 +14189,6 @@ msgstr "Demo-data word gewoonlik slegs by nuwe installasies gelaai. Die invoer n
 #: 
 msgid "Deposit ID"
 msgstr "Deposito ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Deposito Totaal"
 
 #: 
 msgid "Deposit Value"

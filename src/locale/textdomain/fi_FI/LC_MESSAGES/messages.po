@@ -1088,24 +1088,8 @@ msgid "Create Report"
 msgstr "Luo raportti"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Talletusluettelo"
-
-#: 
 msgid "Deposits"
 msgstr "Talletukset"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Poista valitut rivit"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Vie valitut rivit (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Vie valitut rivit (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1264,10 +1248,6 @@ msgid "Enabled"
 msgstr "Käytössä"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Muokkaa ryhmäkohtaisten ominaisuuksien lomaketta"
-
-#: 
 msgid "Disabled"
 msgstr "Ei käytössä"
 
@@ -1318,14 +1298,6 @@ msgstr "Ryhmäkohtaisten ominaisuuksien lomakkeen muokkaus"
 #: 
 msgid "No properties have been added yet"
 msgstr "Ominaisuuksia ei ole vielä lisätty"
-
-#: 
-msgid "Show in"
-msgstr "Näytä kohteessa"
-
-#: 
-msgid "Person View"
-msgstr "Henkilönäkymä"
 
 #: 
 msgid "Other Email"
@@ -4846,10 +4818,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Aseta käytettävä salausjärjestelmä - ssl (vanhentunut) tai tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Luo talletuslipuke valituille riveille (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Lisää kaikki koriin"
 
@@ -5136,10 +5104,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Virhe sähköpostien lähetyksessä"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Tarkista lokit saadaksesi lisätietoja"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5529,10 +5493,6 @@ msgstr "Perhe poistettu ostoskorista"
 #: 
 msgid "Add Group"
 msgstr "Lisää ryhmä"
-
-#: 
-msgid "Back to Group List"
-msgstr "Takaisin ryhmäluetteloon"
 
 #: 
 msgid "Edit Group"
@@ -7311,10 +7271,6 @@ msgstr "Siirrä ylös"
 #: 
 msgid "Order"
 msgstr "Järjestys"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF:t lähetetty onnistuneesti sähköpostilla %s perheelle."
 
 #: 
 msgid "Percentage"
@@ -9958,10 +9914,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Hae henkilöistä, perheistä, ryhmistä, osoitteista ja muusta."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Hae ja tarkastele kolehtikeräystietueita"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Hae henkilöitä, perheitä, ryhmiä…"
 
@@ -10614,11 +10566,6 @@ msgstr "Kopioi leikepöydälle"
 msgid "Custom field"
 msgstr "Mukautettu kenttä"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Mukautettu haku"
-
 #: 
 msgid "Default Country"
 msgstr "Oletusarvoinen maa"
@@ -10680,11 +10627,6 @@ msgstr "Kentän arvo"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Etsi ihmisiä, jotka luvattivat yhtenä vuonna mutta eivät toisena"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Etsi ihmisiä, joilla on mukautetun kentän arvo"
 
 #. Context: query_qry
 #: 
@@ -11947,10 +11889,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Muutokset tulevat voimaan vasta seuraavalla kirjautumiskerralla."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Valitse vaalea tai tumma väriteema"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Mukauta sovelluksen ulkoasua"
 
@@ -12705,10 +12643,6 @@ msgstr "Sekä leveysaste että pituusaste on annettava yhdessä (tai molemmat j�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Seurakunnan tiedot tallennettu, mutta osoitetta ei voitu paikallistaa automaattisesti. Syötä leveysaste ja pituusaste manuaalisesti Karttakoordinaatit-kohdassa."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koordinaatit tunnistetaan automaattisesti osoitteestasi tallennettaessa (OpenStreetMapin kautta). Voit myös syöttää ne manuaalisesti alla — manuaaliset arvot ohittavat aina automaattisen tunnistuksen. Jätä molemmat tyhjiksi, jotta järjestelmä voi geokoodata osoitteesta."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13967,10 +13901,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Oletko varma, että haluat jatkaa?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Haluatko varmasti poistaa tämän kolehtikeräyksen?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Haluatko varmasti poistaa tämän tapahtumatyypin? Tätä toimintoa ei voi kumota."
 
@@ -14221,10 +14151,6 @@ msgstr "Esimerkkitiedot ladataan tavallisesti vain uusiin asennuksiin. Tuominen 
 #: 
 msgid "Deposit ID"
 msgstr "Talletustunnus"
-
-#: 
-msgid "Deposit Total"
-msgstr "Talletus yhteensä"
 
 #: 
 msgid "Deposit Value"

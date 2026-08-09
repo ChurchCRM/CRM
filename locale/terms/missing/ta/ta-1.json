@@ -1,7 +1,4 @@
 {
-  "Code": "",
-  "Items": "",
-  "Planning": "",
   "% Paid": "",
   "%s: Please verify your family's information": "",
   "Add Role": "",
@@ -25,6 +22,10 @@
   "Delete role": "",
   "Email Error": "",
   "Email is not configured. Please configure SMTP settings in System Settings.": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "Enter a street address first.": "",
   "Enter role name": "",
   "Failed to create deposit": "",
@@ -44,6 +45,10 @@
   "No payments found for the selected deposits": "",
   "No valid deposit IDs provided": "",
   "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "Partial Send": "",
   "Payments only": "",
   "Pledged Amount": "",
@@ -69,21 +74,5 @@
   "When checked, this property will be displayed alongside the group in the person's group list on their profile page.": "",
   "[Family Name]": "",
   "row selected": "",
-  "rows selected": "",
-  "Copied {{count}} members": {
-    "one": "",
-    "other": ""
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} min left": {
-    "one": "",
-    "other": ""
-  }
+  "rows selected": ""
 }

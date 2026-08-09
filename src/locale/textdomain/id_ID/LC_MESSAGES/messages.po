@@ -1095,25 +1095,9 @@ msgid "Create Report"
 msgstr "Buat laporan"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Daftar deposit"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Simpanan"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Hapus Baris yang Dipilih"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Ekspor Baris Dipilih (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Ekspor Baris Dipilih (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1278,10 +1262,6 @@ msgid "Enabled"
 msgstr "Diaktifkan"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Edit Formulir Properti Khusus Grup"
-
-#: 
 msgid "Disabled"
 msgstr "Dengan disabilitas"
 
@@ -1333,14 +1313,6 @@ msgstr "Editor Formulir Properti Spesifik Kelompok"
 #: 
 msgid "No properties have been added yet"
 msgstr "Belum ada properti yang ditambahkan"
-
-#: 
-msgid "Show in"
-msgstr "Tampilkan di"
-
-#: 
-msgid "Person View"
-msgstr "Tampilan Perorangan"
 
 #: 
 msgid "Other Email"
@@ -4874,10 +4846,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Setel sistem enkripsi untuk menggunakan - ssl (usang) atau tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Hasilkan Slip Setoran untuk Baris Terpilih (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Tambahkan Semua ke Troli"
 
@@ -5167,10 +5135,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Kesalahan mengirim email"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Silakan periksa log untuk informasi lebih lanjut"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5559,10 +5523,6 @@ msgstr "Keluarga dihapus dari keranjang"
 #: 
 msgid "Add Group"
 msgstr "Tambah Grup"
-
-#: 
-msgid "Back to Group List"
-msgstr "Kembali ke Daftar Grup"
 
 #: 
 msgid "Edit Group"
@@ -7337,10 +7297,6 @@ msgstr "Naikkan"
 #: 
 msgid "Order"
 msgstr "Urutan"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF berhasil dikirim ke %s keluarga."
 
 #: 
 msgid "Percentage"
@@ -9981,10 +9937,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Cari di seluruh orang, keluarga, grup, alamat, dan lainnya."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Cari dan lihat catatan slip setoran"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Cari orang, keluarga, grup…"
 
@@ -10637,11 +10589,6 @@ msgstr "Salin ke papan klip"
 msgid "Custom field"
 msgstr "Bidang khusus"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Pencarian Khusus"
-
 #: 
 msgid "Default Country"
 msgstr "Negara Default"
@@ -10703,11 +10650,6 @@ msgstr "Nilai bidang"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Temukan orang yang berjanji satu tahun tetapi tidak tahun lain"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Temukan orang dengan nilai bidang khusus"
 
 #. Context: query_qry
 #: 
@@ -11970,10 +11912,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Perubahan tidak akan berlaku hingga masuk berikutnya."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Pilih antara skema warna terang dan gelap"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Sesuaikan tampilan dan nuansa aplikasi"
 
@@ -12727,10 +12665,6 @@ msgstr "Lintang dan bujur harus diberikan bersama (atau keduanya dibiarkan koson
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Informasi gereja tersimpan, tetapi alamat tidak dapat dilokasi secara otomatis. Silakan masukkan lintang dan bujur secara manual di bawah Koordinat Peta."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koordinat terdeteksi otomatis dari alamat Anda saat disimpan (melalui OpenStreetMap). Anda juga dapat memasukkannya secara manual di bawah — nilai manual selalu lebih diutamakan daripada deteksi otomatis. Biarkan keduanya kosong agar sistem melakukan geokode dari alamat."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13989,10 +13923,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Apakah Anda yakin ingin melanjutkan?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Apakah Anda yakin ingin menghapus setoran ini?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Apakah Anda yakin ingin menghapus jenis acara ini? Tindakan ini tidak dapat dibatalkan."
 
@@ -14243,10 +14173,6 @@ msgstr "Data demo biasanya hanya dimuat pada instalasi baru. Mengimpor sekarang 
 #: 
 msgid "Deposit ID"
 msgstr "ID Deposit"
-
-#: 
-msgid "Deposit Total"
-msgstr "Total Deposit"
 
 #: 
 msgid "Deposit Value"

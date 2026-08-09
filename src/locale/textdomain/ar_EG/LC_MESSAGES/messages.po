@@ -1093,24 +1093,8 @@ msgid "Create Report"
 msgstr "انشاء تقرير"
 
 #: 
-msgid "Deposit Listing"
-msgstr "قائمة إيداع"
-
-#: 
 msgid "Deposits"
 msgstr "الإيداعات"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "حذف الصفوف المحددة"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "تصدير مختارة الصفوف (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "تصدير مختارة الصفوف (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1275,10 +1259,6 @@ msgid "Enabled"
 msgstr "مفعّل"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "تحرير المجموعه محددة نموذج خصائص"
-
-#: 
 msgid "Disabled"
 msgstr "معطل"
 
@@ -1330,14 +1310,6 @@ msgstr "جماعة محددة خصائص النموذج المحرر"
 #: 
 msgid "No properties have been added yet"
 msgstr "لم يتم إضافة أي خصائص بعد"
-
-#: 
-msgid "Show in"
-msgstr "عرض في"
-
-#: 
-msgid "Person View"
-msgstr "عرض لشخص"
 
 #: 
 msgid "Other Email"
@@ -4871,10 +4843,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ضبط نظام التشفير الاستخدام - خدمة تصميم المواقع (إهمال) أو TLS"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "توليد الإيداع زلة لصفوف مختارة (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "إضافة الكل إلى العربة"
 
@@ -5164,10 +5132,6 @@ msgstr "بي دي إف"
 #: 
 msgid "Error sending email(s)"
 msgstr "خطأ في إرسال البريد الإلكتروني (الصورة)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "يرجى مراجعة السجلات لمزيد من المعلومات"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5566,10 +5530,6 @@ msgstr "تمت إزالة العائلة من السلة"
 #: 
 msgid "Add Group"
 msgstr "إضافة مجموعة"
-
-#: 
-msgid "Back to Group List"
-msgstr "العودة إلى قائمة المجموعات"
 
 #: 
 msgid "Edit Group"
@@ -7364,10 +7324,6 @@ msgstr "نقل للأعلى"
 #: 
 msgid "Order"
 msgstr "الترتيب"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "تم إرسال ملفات PDF بنجاح إلى %s أسرة."
 
 #: 
 msgid "Percentage"
@@ -10023,10 +9979,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "ابحث عن الأشخاص والعائلات والمجموعات والعناوين والمزيد."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "البحث وعرض سجلات الإيصالات"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "البحث عن الأشخاص والعائلات والمجموعات…"
 
@@ -10679,11 +10631,6 @@ msgstr "انسخ إلى الحافظة"
 msgid "Custom field"
 msgstr "حقل مخصص"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "بحث مخصص"
-
 #: 
 msgid "Default Country"
 msgstr "البلد الافتراضي"
@@ -10745,11 +10692,6 @@ msgstr "قيمة الحقل"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ابحث عن أعضاء الكنيسة الذين التزموا في سنة واحدة ولم يلتزموا في سنة أخرى"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "ابحث عن أعضاء الكنيسة الذين لهم قيمة حقل مخصصة"
 
 #. Context: query_qry
 #: 
@@ -12012,10 +11954,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "لن تسري التغييرات حتى تسجيل الدخول التالي."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "اختر بين نظام الألوان الفاتح والداكن"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "تخصيص مظهر التطبيق وأسلوب عرضه"
 
@@ -12774,10 +12712,6 @@ msgstr "يجب إدخال خط العرض وخط الطول معًا (أو تر�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "تم حفظ معلومات الكنيسة، ولكن تعذّر تحديد موقع العنوان تلقائيًا. يرجى إدخال خط العرض وخط الطول يدويًا تحت إحداثيات الخريطة."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "يتم الاكتشاف التلقائي للإحداثيات من عنوانك عند الحفظ (عبر OpenStreetMap). يمكنك أيضًا إدخالها يدويًا أدناه — تُقدَّم القيم اليدوية دائمًا على الاكتشاف التلقائي. اترك الحقلين فارغَيْن للسماح للنظام بتحديد موقعك الجغرافي من العنوان."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14036,10 +13970,6 @@ msgid "Are you sure you want to continue?"
 msgstr "هل أنت متأكد أنك تريد المتابعة؟"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "هل أنت متأكد من أنك تريد حذف هذا الإيداع؟"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "هل أنت متأكد أنك تريد حذف نوع الحدث هذا؟ لا يمكن التراجع عن هذا الإجراء."
 
@@ -14290,10 +14220,6 @@ msgstr "تُحمَّل بيانات العرض التوضيحي عادةً عل�
 #: 
 msgid "Deposit ID"
 msgstr "معرف الإيداع"
-
-#: 
-msgid "Deposit Total"
-msgstr "إجمالي الإيداع"
 
 #: 
 msgid "Deposit Value"

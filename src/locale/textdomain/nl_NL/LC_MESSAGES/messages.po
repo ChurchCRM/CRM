@@ -1081,24 +1081,8 @@ msgid "Create Report"
 msgstr "Aanmaken rapportage"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Stortings Lijst"
-
-#: 
 msgid "Deposits"
 msgstr "Stortingen"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Verwijder geselecteerde rijen."
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Exporteer geselecteerde regels (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Exporteer geselecteerde regels (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1257,10 +1241,6 @@ msgid "Enabled"
 msgstr "Ingeschakeld"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Formulier - bewerk de groep specifieke eigenschappen"
-
-#: 
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
@@ -1311,14 +1291,6 @@ msgstr "Formulier bewerken voor groepsspecifieke kenmerken"
 #: 
 msgid "No properties have been added yet"
 msgstr "Er zijn nog geen kenmerken toegevoegd"
-
-#: 
-msgid "Show in"
-msgstr "Weergegeven in: "
-
-#: 
-msgid "Person View"
-msgstr "Per persoon"
 
 #: 
 msgid "Other Email"
@@ -4842,10 +4814,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Stel het te gebruiken coderingssysteem in - ssl (verouderd) of tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Aanbetalingsbewijs genereren voor geselecteerde rijen (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Alles in het werkbestand zetten"
 
@@ -5137,10 +5105,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Fout bij het verzenden van e-mail(s)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Controleer de logboeken voor meer informatie"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5530,10 +5494,6 @@ msgstr "Gezin verwijderd uit verzamelmap"
 #: 
 msgid "Add Group"
 msgstr "Groep toevoegen"
-
-#: 
-msgid "Back to Group List"
-msgstr "Terug naar groepslijst"
 
 #: 
 msgid "Edit Group"
@@ -7313,10 +7273,6 @@ msgstr "Omhoog verplaatsen"
 #: 
 msgid "Order"
 msgstr "Volgorde"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF's succesvol per e-mail verzonden naar %s families."
 
 #: 
 msgid "Percentage"
@@ -9960,10 +9916,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Zoeken in personen, gezinnen, groepen, adressen en meer."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Stortingsbondossiers zoeken en bekijken"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Personen, gezinnen, groepen zoeken…"
 
@@ -10616,11 +10568,6 @@ msgstr "Kopiëren naar klembord"
 msgid "Custom field"
 msgstr "Aangepast veld"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Aangepast zoeken"
-
 #: 
 msgid "Default Country"
 msgstr "Standaardland"
@@ -10682,11 +10629,6 @@ msgstr "Veldwaarde"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Zoek mensen die het ene jaar hebben beloofd maar niet het andere"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Zoek mensen met een aangepaste veldwaarde"
 
 #. Context: query_qry
 #: 
@@ -11949,10 +11891,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Wijzigingen worden pas van kracht bij de volgende aanmelding."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Kies tussen licht en donker kleurenschema"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Pas het uiterlijk van de applicatie aan"
 
@@ -12707,10 +12645,6 @@ msgstr "Zowel breedtegraad als lengtegraad moeten samen worden opgegeven (of bei
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Kerkgegevens opgeslagen, maar het adres kon niet automatisch worden gevonden. Voer de breedtegraad en lengtegraad handmatig in onder Kaartcoördinaten."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Coördinaten worden automatisch gedetecteerd uit uw adres bij opslaan (via OpenStreetMap). U kunt ze ook handmatig invoeren hieronder — handmatige waarden hebben altijd voorrang boven automatische detectie. Laat beide leeg om het systeem te laten geocoderen op basis van het adres."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13969,10 +13903,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Weet je zeker dat je wilt doorgaan?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Weet u zeker dat u deze storting wilt verwijderen?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Weet u zeker dat u dit type evenement wilt verwijderen? Dit kan niet ongedaan worden gemaakt."
 
@@ -14223,10 +14153,6 @@ msgstr "Demogegevens worden normaal gesproken alleen bij nieuwe installaties gel
 #: 
 msgid "Deposit ID"
 msgstr "Betaling ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Betaling totaal"
 
 #: 
 msgid "Deposit Value"

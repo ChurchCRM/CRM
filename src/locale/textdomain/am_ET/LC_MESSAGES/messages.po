@@ -1093,25 +1093,9 @@ msgid "Create Report"
 msgstr "ሪፖርት ፍጠር"
 
 #: 
-msgid "Deposit Listing"
-msgstr "የተቀማጭ ገንዘብ ዝርዝር"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "ተቀማጭ ገንዘብ"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "የተመረጡ ረድፎችን ሰርዝ"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "የተመረጡ ረድፎችን ወደ ውጪ ላክ (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "የተመረጡ ረድፎችን ወደ ውጪ ላክ  (CSV) "
 
 #: 
 msgid "Fundraiser Listing"
@@ -1276,10 +1260,6 @@ msgid "Enabled"
 msgstr "ተአ ከ"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "ቡድን-ተኮር ንብረቶች ቅጽን ያርትዑ"
-
-#: 
 msgid "Disabled"
 msgstr "ተአ ደህና ድምዳመ"
 
@@ -1331,14 +1311,6 @@ msgstr "ቡድን-ተኮር ንብረቶች ቅጽ አርታዒ"
 #: 
 msgid "No properties have been added yet"
 msgstr "እስካሁን ምንም ንብረቶች አልተጨመሩም።"
-
-#: 
-msgid "Show in"
-msgstr "ውስጥ አሳይ"
-
-#: 
-msgid "Person View"
-msgstr "የሰው እይታ"
 
 #: 
 msgid "Other Email"
@@ -4873,10 +4845,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ለመጠቀም የመደበቂያ ስርዓቱን ያቀናብሩ - ssl (የተቋረጠ) ወይም tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "ለተመረጡት ረድፎች (PDF) የተቀማጭ ወረቀት ይፍጠሩ"
-
-#: 
 msgid "Add All to Cart"
 msgstr "ሁሉን ወደ ጋሪ ጨምር"
 
@@ -5174,10 +5142,6 @@ msgstr "ፒዲኤፍ"
 #: 
 msgid "Error sending email(s)"
 msgstr "ኢሜል የመላክ ስህተት "
-
-#: 
-msgid "Please check logs for more information"
-msgstr "ለበለጠ መረጃ እባክዎን የምዝግብ ማስታወሻዎችን ይመልከቱ"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5574,10 +5538,6 @@ msgstr "ቤተሰብ ከጋሪ ተወግዷል"
 #: 
 msgid "Add Group"
 msgstr "ቡድን አክል"
-
-#: 
-msgid "Back to Group List"
-msgstr "ወደ ቡድን ዝርዝር ተመለስ"
 
 #: 
 msgid "Edit Group"
@@ -7356,10 +7316,6 @@ msgstr "ወደ ላይ ከፍ አድርግ"
 #: 
 msgid "Order"
 msgstr "ቅደም ተከተል"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDFዎች በተሳካ ሁኔታ ለ %s ቤተሰቦች በኢሜይል ተልከዋል።"
 
 #: 
 msgid "Percentage"
@@ -10003,10 +9959,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "ሰውነት ቤተሰቦች ቡድን አድራሻ እና ተጨማሪ ጠሎ ፈልግ።"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "ዳቦ ሙሙ መያዝ ፈልግ ይተንትን"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "ሰውነት ቤተሰቦች ቡድን ፈልግ…"
 
@@ -10659,11 +10611,6 @@ msgstr "ወደ ክሊፕቦርድ ይቅዱ"
 msgid "Custom field"
 msgstr "ብጁ ሜዳ"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "ብጁ ፍለጋ"
-
 #: 
 msgid "Default Country"
 msgstr "ነባር ሀገር"
@@ -10725,11 +10672,6 @@ msgstr "የመስክ እሴት"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "አንድ ዓመት ግን ሌላ አልጋለበው ሰዎች ያግኙ"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "ብጁ ሜዳ እሴት ሰዎች ያግኙ"
 
 #. Context: query_qry
 #: 
@@ -11992,10 +11934,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "ለውጦቹ እስከሚቀጥለው ግባ ድረስ ተፈጻሚ አይሆኑም።"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "ብርሃን ወይም ጨለማ የቀለም ሥርዓት ይምረጡ"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "የፕሮግራሙን መልክና ስሜት ያብጁ"
 
@@ -12750,10 +12688,6 @@ msgstr "ኬክሮስና ኬንትሮስ ሁለቱም አብረው መሰጠት �
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "የቤተ ክርስቲያን መረጃ ተቀምጧል፣ ግን አድራሻው ራሱ ሊገኝ አልቻለም። እባክዎ ኬክሮስ እና ኬንትሮስ ከካርታ መጋጠሚያዎች ስር ጊዜ ሰጥተው ያስገቡ።"
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "መጋጠሚያዎቹ ሲቀመጡ ከአድራሻዎ ራሱ ይወሰናሉ (በ OpenStreetMap አማካኝነት)። ከዚህ ስር ጊዜ ሰጥተው ማስገባትም ይችላሉ — ጊዜ ሰጥቶ ያስገቡ ዋጋዎች ሁሌ ቅድሚያ ይሰጣቸዋል። ስርዓቱ ከአድራሻ ጂኦኮድ እንዲያደርግ ሁለቱንም ባዶ ያቆዩ።"
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14012,10 +13946,6 @@ msgid "Are you sure you want to continue?"
 msgstr "ይቀጥሉ ይፈልጋሉ?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "ሎ ተቀማጭ ገንዘብ ከሥፈት ወረ አንተ ወደም?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "ይህን የዝግጅት አይነት ለመሰረዝ እርግጠኛ ነዎት? ይህን ድርጊት ሊቀለበስ አይችልም።"
 
@@ -14266,10 +14196,6 @@ msgstr "የናሙና መረጃ በተለምዶ በአዲስ ጭነቶች ላይ 
 #: 
 msgid "Deposit ID"
 msgstr "የተቀማጭ መለያ (ID)"
-
-#: 
-msgid "Deposit Total"
-msgstr "አጠቃላይ ተቀማጭ"
 
 #: 
 msgid "Deposit Value"

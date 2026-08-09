@@ -1094,25 +1094,9 @@ msgid "Create Report"
 msgstr "Δημιουργία αναφοράς"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Καταχώρηση Καταθέσεων"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Καταθέσεις"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Διαγραφή επιλεγμένων σειρών"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Εξαγωγή επιλεγμένων σειρών (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Εξαγωγή επιλεγμένων σειρών (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1261,6 @@ msgid "Enabled"
 msgstr "Ενεργοποιήθηκε"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Επεξεργασία φόρμας ιδιοτήτων για συγκεκριμένες ομάδες"
-
-#: 
 msgid "Disabled"
 msgstr "άτομα με ειδικές ανάγκες"
 
@@ -1332,14 +1312,6 @@ msgstr "Επεξεργαστής φόρμας ιδιοτήτων για συγκ
 #: 
 msgid "No properties have been added yet"
 msgstr "Δεν έχουν προστεθεί ακόμη ιδιότητες"
-
-#: 
-msgid "Show in"
-msgstr "Εμφάνιση"
-
-#: 
-msgid "Person View"
-msgstr "Άποψη προσώπου"
 
 #: 
 msgid "Other Email"
@@ -4873,10 +4845,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Ρυθμίστε το σύστημα κρυπτογράφησης για χρήση - ssl (καταργήθηκε) ή tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Δημιουργία απόδειξης κατάθεσης για επιλεγμένες σειρές (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Προσθήκη όλων στο καλάθι"
 
@@ -5173,10 +5141,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Σφάλμα αποστολής email(ων)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Ελέγξτε τα αρχεία καταγραφής για περισσότερες πληροφορίες"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5567,10 +5531,6 @@ msgstr "Οικογένεια αφαιρέθηκε από το καλάθι"
 #: 
 msgid "Add Group"
 msgstr "Προσθήκη Ομάδας"
-
-#: 
-msgid "Back to Group List"
-msgstr "Επιστροφή σε Λίστα Ομάδων"
 
 #: 
 msgid "Edit Group"
@@ -7349,10 +7309,6 @@ msgstr "Μετακίνηση Πάνω"
 #: 
 msgid "Order"
 msgstr "Παραγγελία"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "Τα PDF στάλθηκαν επιτυχώς με email σε %s οικογένειες."
 
 #: 
 msgid "Percentage"
@@ -9996,10 +9952,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Αναζήτηση σε άτομα, οικογένειες, ομάδες, διευθύνσεις και περισσότερα."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Αναζήτηση και προβολή εγγραφών αποδεικτικών κατάθεσης"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Αναζήτηση ατόμων, οικογενειών, ομάδων…"
 
@@ -10652,11 +10604,6 @@ msgstr "Αντιγράψτε στο πρόχειρο"
 msgid "Custom field"
 msgstr "Προσαρμοσμένο πεδίο"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Προσαρμοσμένη αναζήτηση"
-
 #: 
 msgid "Default Country"
 msgstr "Προεπιλεγμένη χώρα"
@@ -10718,11 +10665,6 @@ msgstr "Τιμή πεδίου"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Βρείτε άτομα που έκαναν υπόσχεση έναν χρόνο αλλά όχι άλλον"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Βρείτε άτομα με προσαρμοσμένη τιμή πεδίου"
 
 #. Context: query_qry
 #: 
@@ -11985,10 +11927,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Οι αλλαγές θα εφαρμοστούν κατά την επόμενη σύνδεση."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Επιλέξτε μεταξύ ανοιχτού και σκούρου χρωματικού θέματος"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Προσαρμόστε την εμφάνιση και τη λειτουργία της εφαρμογής"
 
@@ -12743,10 +12681,6 @@ msgstr "Το γεωγραφικό πλάτος και μήκος πρέπει ν
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Οι πληροφορίες εκκλησίας αποθηκεύτηκαν, αλλά η διεύθυνση δεν μπόρεσε να εντοπιστεί αυτόματα. Παρακαλώ εισαγάγετε χειροκίνητα το γεωγραφικό πλάτος και μήκος στις Συντεταγμένες Χάρτη."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Οι συντεταγμένες εντοπίζονται αυτόματα από τη διεύθυνσή σας κατά την αποθήκευση (μέσω OpenStreetMap). Μπορείτε επίσης να τις εισαγάγετε χειροκίνητα παρακάτω — οι χειροκίνητες τιμές πάντα υπερισχύουν της αυτόματης εντόπισης. Αφήστε και τα δύο κενά για αυτόματη γεωκωδικοποίηση από τη διεύθυνση."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14005,10 +13939,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτή την κατάθεση προσφορών;"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτόν τον τύπο συμβάντος; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
 
@@ -14259,10 +14189,6 @@ msgstr "Τα δεδομένα επίδειξης φορτώνονται συνή
 #: 
 msgid "Deposit ID"
 msgstr "Αναγνωριστικό Κατάθεσης"
-
-#: 
-msgid "Deposit Total"
-msgstr "Σύνολο Κατάθεσης"
 
 #: 
 msgid "Deposit Value"
