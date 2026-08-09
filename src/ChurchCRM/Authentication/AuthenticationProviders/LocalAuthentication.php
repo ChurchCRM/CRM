@@ -166,6 +166,13 @@ class LocalAuthentication implements IAuthenticationProvider
             // Guard: if the account is already locked (e.g. from a prior OTP failure in
             // this session), reject without incrementing the counter or re-sending email.
             if ($this->currentUser->isLocked()) {
+                // Clear the pending-2FA state so the session cannot resume OTP
+                // brute-forcing after an admin resets usr_FailedLogins.
+                // validateUserSessionIsActive() calls currentUser->reload(), which
+                // would pick up the fresh DB state and make isLocked() return false
+                // again — clearing these flags closes that re-entry window.
+                $this->bPendingTwoFactorAuth = false;
+                $this->currentUser = null;
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
                 return $authenticationResult;
@@ -194,8 +201,11 @@ class LocalAuthentication implements IAuthenticationProvider
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
                 if ($this->currentUser->isLocked()) {
-                    // Account is now locked — redirect back to login so the
-                    // lockout gate in the password step blocks further attempts.
+                    // Account is now locked — clear the pending-2FA state so the session
+                    // cannot resume OTP brute-forcing after an admin counter reset,
+                    // then redirect back to login.
+                    $this->bPendingTwoFactorAuth = false;
+                    $this->currentUser = null;
                     $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
                 } else {
                     $recoveryParam = $AuthenticationRequest->isRecoveryMode ? '&recovery' : '';
