@@ -53,7 +53,7 @@ function initPaymentTable() {
       data: "sumAmount",
       render: (data, type, full, meta) => {
         if (type === "display") {
-          return '<strong class="text-end d-block">$' + parseFloat(data || 0).toFixed(2) + "</strong>";
+          return '<strong class="text-end d-block">' + window.CRM.currency.format(data) + "</strong>";
         }
         return parseFloat(data || 0);
       },
@@ -481,19 +481,16 @@ function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
     // Use ApexCharts default color palette (distributed: true assigns one per bar)
     xaxis: {
       categories: fundLabels,
-      tickFormatter: (value) =>
-        "$" +
-        parseFloat(value).toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        }),
+      labels: {
+        formatter: (value) => window.CRM.currency.format(value),
+      },
     },
     yaxis: {
       tickFormatter: (value) => value,
     },
     tooltip: {
       y: {
-        formatter: (value) => "$" + parseFloat(value).toFixed(2),
+        formatter: (value) => window.CRM.currency.format(value),
       },
     },
     states: {

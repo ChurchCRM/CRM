@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 
 /**
@@ -199,7 +200,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 $depositDate  = InputUtils::escapeHTML($deposit['Date'] ?? '');
                 $depositType  = InputUtils::escapeHTML($deposit['Type'] ?? '');
                 $depositComm  = InputUtils::escapeHTML($deposit['Comment'] ?? '');
-                $totalAmount  = number_format((float) ($deposit['totalAmount'] ?? 0), 2);
+                $totalAmount  = CurrencyFormatter::formatHtml($deposit['totalAmount'] ?? 0);
                 $isClosed     = (bool) ($deposit['Closed'] ?? false);
                 $tellerName   = InputUtils::escapeHTML($deposit['tellerName'] ?? '');
                 $editUrl      = InputUtils::escapeAttribute($sRootPath . '/DepositSlipEditor.php?DepositSlipID=' . $depositId);
@@ -217,7 +218,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <td><?= $depositDate ?></td>
                 <td><?= $depositType ?></td>
                 <td><?= $depositComm ?></td>
-                <td><?= $totalAmount ?></td>
+                <td data-order="<?= htmlspecialchars((string) ($deposit['totalAmount'] ?? 0), ENT_QUOTES, 'UTF-8') ?>"><?= $totalAmount ?></td>
                 <td>
                   <?php if ($isClosed) : ?>
                     <span class="badge bg-secondary"><?= gettext('Closed') ?></span>
