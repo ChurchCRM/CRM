@@ -1,18 +1,18 @@
 {
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "חבר {{count}} הועתק",
+    "other": "{{count}} חברים הועתקו"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "לרשימה זו יש {{count}} נמען — יותר מדי לקישור mailto:. השתמש בהעתקת כתובות.",
+    "other": "לרשימה זו יש {{count}} נמענים — יותר מדי לקישור mailto:. השתמש בהעתקת כתובות."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "יותר מדי נמענים ליישום הדואר ({{count}} > {{max}}). השתמש בהעתקת כתובות.",
+    "other": "יותר מדי נמענים ליישום הדואר ({{count}} > {{max}}). השתמש בהעתקת כתובות."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "נותרה {{count}} דקה",
+    "other": "נותרו {{count}} דקות"
   }
 }

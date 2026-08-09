@@ -1,18 +1,18 @@
 {
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kopeeritud {{count}} liige",
+    "other": "Kopeeritud {{count}} liiget"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Sellel loendil on {{count}} adressaat — liiga palju mailto: lingi jaoks. Kasutage selle asemel Kopeeri aadressid.",
+    "other": "Sellel loendil on {{count}} adressaati — liiga palju mailto: lingi jaoks. Kasutage selle asemel Kopeeri aadressid."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Liiga palju adressaate meilikliendile ({{count}} > {{max}}). Kasutage selle asemel Kopeeri aadressid.",
+    "other": "Liiga palju adressaate meilikliendile ({{count}} > {{max}}). Kasutage selle asemel Kopeeri aadressid."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min jäänud",
+    "other": "{{count}} min jäänud"
   }
 }
