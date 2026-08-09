@@ -110,6 +110,43 @@ describe("API Public User", () => {
                 expect(resp.body.error).to.eq("Invalid login or password");
             });
         });
+
+        // Regression test for GHSA-f2fq-4rmp-9x8c: repeated wrong OTP codes
+        // must count toward usr_FailedLogins and eventually lock the account.
+        // Uses dedicated `twofa_lockout_user` (password "changeme", 2FA enrolled)
+        // so the shared `twofa_user` fixture is not corrupted for other tests.
+        it("Account is locked after iMaxFailedLogins wrong OTP submissions (GHSA-f2fq-4rmp-9x8c)", () => {
+            const LOCKOUT_USER = "twofa_lockout_user";
+            const LOCKOUT_PASS = "changeme";
+            const MAX_FAILURES = 5; // iMaxFailedLogins default
+
+            // Submit MAX_FAILURES wrong OTP codes — each should increment usr_FailedLogins
+            for (let i = 0; i < MAX_FAILURES; i++) {
+                cy.apiRequest({
+                    method: "POST",
+                    url: "/api/public/user/login",
+                    headers: { "content-type": "application/json" },
+                    body: { userName: LOCKOUT_USER, password: LOCKOUT_PASS, otp: String(i).padStart(6, "0") },
+                    failOnStatusCode: false,
+                }).then((resp) => {
+                    expect(resp.status).to.eq(401);
+                });
+            }
+
+            // After MAX_FAILURES wrong OTPs the account should be locked.
+            // A fresh login with the correct password (which would normally return 202
+            // requiresOTP) must now return 401 because isLocked() fires first.
+            cy.apiRequest({
+                method: "POST",
+                url: "/api/public/user/login",
+                headers: { "content-type": "application/json" },
+                body: { userName: LOCKOUT_USER, password: LOCKOUT_PASS },
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(401);
+                expect(resp.body.error).to.eq("Invalid login or password");
+            });
+        });
     });
 
     // Lockout tests

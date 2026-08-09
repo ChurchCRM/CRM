@@ -1497,6 +1497,10 @@ INSERT INTO `person_per` VALUES (901,'Ms','Alice','','Noperm','','','','','','',
 -- Used by people.properties.security.spec.js to verify that the EditRecords gate blocks property
 -- read/write on person and family routes (GHSA-4wmp-3v34-g7q8).
 INSERT INTO `person_per` VALUES (902,'Mr','Bob','','Menuonly','','','','','','','USA','','','','bob.menuonly@example.com',NULL,1,1,1990,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
+-- Dedicated 2FA lockout test user (GHSA-f2fq-4rmp-9x8c regression test).
+-- Same TOTP secret as twofa_user; usr_FailedLogins starts at 0 so the lockout test
+-- can exhaust iMaxFailedLogins with wrong OTP codes and assert the account locks.
+INSERT INTO `person_per` VALUES (903,'Mr','Twofa','','Lockout','','','','','','','USA','','','','twofa.lockout@example.com',NULL,1,1,1990,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `person_per` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1955,6 +1959,10 @@ INSERT INTO `user_usr` VALUES (1,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0b
 -- MenuOptions-only user (usr_MenuOptions=1, all other permission flags 0, non-admin, non-EditSelf).
 -- Used by people.properties.security.spec.js (GHSA-4wmp-3v34-g7q8).
 INSERT INTO `user_usr` VALUES (902,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,1,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'menuoptions.user','menuOptionsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+-- Dedicated 2FA lockout test user (GHSA-f2fq-4rmp-9x8c).
+-- Same TOTP secret (JBSWY3DPEBLW64TMMQ======) as twofa_user; starts unlocked (FailedLogins=0)
+-- so the lockout test exhausts iMaxFailedLogins with wrong OTPs and asserts the account locks.
+INSERT INTO `user_usr` VALUES (903,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'twofa_lockout_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'def50200923f831141edcddb9e69c79f4ef68b1f0cdd9acf4223f286f2c6ab7e0f09d397cabc831fdaa5bee117f409a50090ae4ea6ff51203508d29b59869396f303d5fd3cf14fe76cf85dba9c85735750aa4f312e1ab29caa60a15bb1b76aecb4a7be50423d2867e49a69ec',NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
