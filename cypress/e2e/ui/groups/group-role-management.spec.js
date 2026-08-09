@@ -147,9 +147,9 @@ describe("Group Role Management", () => {
 
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
-      // Use invoke+trigger instead of type() to set value atomically — avoids
-      // character-dropping on slow CI (cy.type is character-by-character)
-      cy.get("#newRole").invoke("val", roleName).trigger("input");
+      // type() (not invoke+trigger) so the input is focused — focused input is required
+      // for Bootstrap's data-bs-dismiss click to propagate correctly in headless Electron
+      cy.get("#newRole").type("x");
 
       cy.get("#addRoleModal .btn-secondary").click();
 
