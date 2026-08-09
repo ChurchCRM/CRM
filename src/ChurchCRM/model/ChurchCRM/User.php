@@ -388,10 +388,14 @@ class User extends BaseUser
 
     /**
      * Update password using secure bcrypt hashing.
+     * Also rotates the API key so that any previously-stolen key is revoked
+     * (GHSA-f2fq-4rmp-9x8c: password reset must invalidate compromised API keys).
+     * Callers are responsible for calling save() to persist both changes.
      */
     public function updatePassword(string $password): void
     {
         $this->setPassword($this->hashPassword($password));
+        $this->setApiKey(self::randomApiKey());
     }
 
     /**
