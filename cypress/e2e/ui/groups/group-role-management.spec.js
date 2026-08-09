@@ -147,15 +147,16 @@ describe("Group Role Management", () => {
 
       cy.get("#addNewRoleBtn").click();
       cy.get("#addRoleModal").should("be.visible");
-      // type() (not invoke+trigger) so the input is focused — focused input is required
-      // for Bootstrap's data-bs-dismiss click to propagate correctly in headless Electron
+      // Type something to enable the submit button, then close via ESC.
+      // Using ESC (not a button click) because Bootstrap 5's data-bs-dismiss
+      // click delegation does not fire reliably via Cypress synthetic click in
+      // headless Electron/subdir CI.  Bootstrap handles ESC natively via its
+      // own keyboard listener, which is immune to synthetic-click propagation issues.
       cy.get("#newRole").type("x");
-
-      cy.get("#addRoleModal .btn-secondary").click();
+      cy.get("#newRole").type("{esc}");
 
       cy.get("#addRoleModal").should("not.be.visible");
-      // Verify via DataTables data model (not DOM attribute selectors which can be unreliable
-      // after DataTables redraws)
+      // Verify via DataTables data model
       dtLacksRole(roleName);
     });
 
