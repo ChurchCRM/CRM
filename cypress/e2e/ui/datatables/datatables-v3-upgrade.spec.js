@@ -84,11 +84,12 @@ describe("DataTables v3 — ecosystem upgrade smoke tests", () => {
         cy.get(".dt-container", { timeout: 15000 }).should("exist");
         // CRM layout places buttons in topEnd: 'buttons'; .dt-buttons wraps them
         cy.get(".dt-buttons").should("exist");
-        // Header.php configures: extend:'csv', text:'<i class="ti ti-table-export"></i>'
+        // Header.php configures: extend:'csv', text:'<i class="fa-solid fa-file-csv"></i>'
+        // (Tabler ti-table-export was replaced with FA7 fa-file-csv in fix #9441)
         // Verify at least one button renders and the CSV icon class is present
         cy.get(".dt-buttons button, .dt-buttons a")
             .should("have.length.greaterThan", 0);
-        cy.get(".dt-buttons .ti-table-export").should("exist");
+        cy.get(".dt-buttons .fa-file-csv").should("exist");
     });
 
     it("Responsive extension is active (responsive class on table)", () => {
