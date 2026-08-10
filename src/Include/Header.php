@@ -204,7 +204,7 @@ $MenuFirst = 1;
                   buttons: [
                       {
                           extend: 'csv',
-                          text: '<i class="ti ti-table-export"></i>',
+                          text: '<i class="fa-solid fa-file-csv"></i>',
                           titleAttr: 'Export CSV',
                           exportOptions: {
                               columns: ':not(.no-export)'
@@ -212,7 +212,7 @@ $MenuFirst = 1;
                       },
                       {
                           extend: 'print',
-                          text: '<i class="ti ti-printer"></i>',
+                          text: '<i class="fa-solid fa-print"></i>',
                           titleAttr: 'Print',
                           exportOptions: {
                               columns: ':not(.no-export)'
@@ -352,7 +352,7 @@ $MenuFirst = 1;
         <!-- Cart -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0 position-relative" data-bs-toggle="dropdown" href="#">
-            <i class="fa-duotone fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
             <?php if (Cart::countPeople() > 0): ?>
             <span class="badge bg-info position-absolute top-0 end-0 small" id="iconCount"><?= Cart::countPeople() ?></span>
             <?php else: ?>
@@ -367,7 +367,7 @@ $MenuFirst = 1;
         <!-- Support -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#" id="supportMenu">
-            <i class="ti ti-headset"></i>
+            <i class="fa-solid fa-headset"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item"
