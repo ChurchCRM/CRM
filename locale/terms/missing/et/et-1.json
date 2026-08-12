@@ -1,21 +1,21 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kopeeriti {{count}} liige",
+    "other": "Kopeeriti {{count}} liiget"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Sellel loendil on {{count}} saaja — liiga palju mailto: lingi jaoks. Kasutage selle asemel aadresside kopeerimist.",
+    "other": "Sellel loendil on {{count}} saajat — liiga palju mailto: lingi jaoks. Kasutage selle asemel aadresside kopeerimist."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Liiga palju saajaid meilikliendi jaoks ({{count}} > {{max}}). Kasutage selle asemel aadresside kopeerimist.",
+    "other": "Liiga palju saajaid meilikliendi jaoks ({{count}} > {{max}}). Kasutage selle asemel aadresside kopeerimist."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minut jäänud",
+    "other": "{{count}} minutit jäänud"
   }
 }
