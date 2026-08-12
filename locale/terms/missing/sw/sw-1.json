@@ -1,22 +1,22 @@
 {
-  "Data": "",
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "Data": "Data",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Meneja {{count}} amenakiliwa",
+    "other": "Wanachama {{count}} wamenakiliwa"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Orodha hii ina mpokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
+    "other": "Orodha hii ina wapokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Mpokeaji ni mwingi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
+    "other": "Wapokeaji ni wengi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Dakika {{count}} imebaki",
+    "other": "Dakika {{count}} zimebaki"
   }
 }
