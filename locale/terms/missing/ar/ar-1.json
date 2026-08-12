@@ -1,21 +1,21 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "تم نسخ عضو واحد",
+    "other": "تم نسخ {{count}} أعضاء"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "تحتوي هذه القائمة على مستلم واحد — كثير لرابط mailto:. استخدم نسخ العناوين بدلاً.",
+    "other": "تحتوي هذه القائمة على {{count}} مستلمين — كثير لرابط mailto:. استخدم نسخ العناوين بدلاً."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "عدد المستلمين كبير لبرنامج البريد ({{count}} > {{max}}). استخدم نسخ العناوين بدلاً.",
+    "other": "عدد المستلمين كبير لبرنامج البريد ({{count}} > {{max}}). استخدم نسخ العناوين بدلاً."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "دقيقة واحدة متبقية",
+    "other": "{{count}} دقيقة متبقية"
   }
 }
