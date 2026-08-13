@@ -91,7 +91,7 @@
   },
   "current": {
     "versions": ["7.6.0"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.6.1-add-anniversary-queries.sql"],
     "dbVersion": "7.6.1"
   }
 }
