@@ -354,7 +354,10 @@ function renderWhatsNew(data) {
   selectedTargetVersion = null;
   prereleaseTargetVersion = null;
   // Remove any banners injected by a previous render (e.g. wizard re-entry).
-  $("#whatsNewContent .alert-success, #whatsNewContent .alert-warning, #whatsNewContent .js-uptodate-banner").remove();
+  // IMPORTANT: use .js-dynamic-banner — do NOT sweep .alert-warning or .alert-success
+  // broadly, as #securityRecommendationCallout is a permanent static element that must
+  // survive across renders (it is shown/hidden via the d-none toggle, never removed).
+  $("#whatsNewContent .js-dynamic-banner").remove();
   $("#proceedToDownload")
     .removeClass("d-none")
     .html(`<i class="fa fa-cloud-arrow-down me-1"></i>${i18next.t("Download & Apply")}`);
@@ -372,7 +375,7 @@ function renderWhatsNew(data) {
     $("#whatsNewNotes").html(buildVersionBlock(nextVersion, null, nextReleaseNotes, nextChangelogUrl));
 
     $("#whatsNewContent").prepend(
-      `<div class="alert alert-warning d-flex align-items-center gap-2 mb-3">
+      `<div class="alert alert-warning d-flex align-items-center gap-2 mb-3 js-dynamic-banner">
         <i class="fa fa-triangle-exclamation fa-lg"></i>
         <span>
           <strong>${i18next.t("You are running a pre-release version.")}</strong>
@@ -400,7 +403,7 @@ function renderWhatsNew(data) {
 
     // Remove any stale up-to-date banner from a previous render.
     $("#whatsNewContent .js-uptodate-banner").remove();
-    const upToDateBanner = `<div class="alert alert-success d-flex align-items-center gap-2 mb-3 js-uptodate-banner">
+    const upToDateBanner = `<div class="alert alert-success d-flex align-items-center gap-2 mb-3 js-uptodate-banner js-dynamic-banner">
       <i class="fa fa-circle-check fa-lg"></i>
       <span><strong>${i18next.t("You're up to date!")}</strong> ${i18next.t("No upgrades are available for your current version.")}</span>
     </div>`;
