@@ -1,21 +1,29 @@
 {
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
-    "one": "{{count}} അംഗത്തെ പകർത്തി",
-    "other": "{{count}} അംഗങ്ങളെ പകർത്തി"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ഈ ലിസ്റ്റിൽ {{count}} സ്വീകർത്താവ് ഉണ്ട് — mailto: ലിങ്കിന് വളരെ അധികം. പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "other": "ഈ ലിസ്റ്റിൽ {{count}} സ്വീകർത്താക്കൾ ഉണ്ട് — mailto: ലിങ്കിന് വളരെ അധികം. പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ഇമെയിൽ ക്ലയന്റിന് അധികം സ്വീകർത്താക്കൾ ({{count}} > {{max}}). പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "other": "ഇമെയിൽ ക്ലയന്റിന് അധികം സ്വീകർത്താക്കൾ ({{count}} > {{max}}). പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} മിനിറ്റ് ശേഷിക്കുന്നു",
-    "other": "{{count}} മിനിറ്റ് ശേഷിക്കുന്നു"
+    "one": "",
+    "other": ""
   }
 }

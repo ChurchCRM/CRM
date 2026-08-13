@@ -1,25 +1,33 @@
 {
-  "Fundraising": "Fundraising",
-  "Data": "Data",
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "Fundraising": "",
+  "Data": "",
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "few": "",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "few": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
-    "one": "Zkopírován {{count}} člen",
-    "few": "Zkopírováni {{count}} členové",
-    "other": "Zkopírováno {{count}} členů"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Tento seznam má {{count}} příjemce — příliš mnoho pro odkaz mailto:. Místo toho použijte Kopírovat adresy.",
-    "other": "Tento seznam má {{count}} příjemců — příliš mnoho pro odkaz mailto:. Místo toho použijte Kopírovat adresy."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Místo toho použijte Kopírovat adresy.",
-    "other": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Místo toho použijte Kopírovat adresy."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Zbývá {{count}} minuta",
-    "few": "Zbývají {{count}} minuty",
-    "other": "Zbývá {{count}} minut"
+    "one": "",
+    "other": ""
   }
 }

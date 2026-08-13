@@ -17628,6 +17628,10 @@ msgid "Manage Events"
 msgstr "Keruvannya podiyamy"
 
 #: 
+msgid "N/A"
+msgstr "Н/Д"
+
+#: 
 msgid "New Deposit"
 msgstr "Novyy depozyt"
 

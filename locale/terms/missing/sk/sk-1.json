@@ -1,21 +1,33 @@
 {
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "few": "",
+    "many": "",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "few": "",
+    "many": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
-    "one": "Skopírovaný {{count}} člen",
-    "other": "Skopírovaných {{count}} členov"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Tento zoznam má {{count}} príjemcu — príliš veľa pre odkaz mailto:. Namiesto toho použite Kopírovať adresy.",
-    "other": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Namiesto toho použite Kopírovať adresy."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Namiesto toho použite Kopírovať adresy.",
-    "other": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Namiesto toho použite Kopírovať adresy."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Zostáva {{count}} minúta",
-    "other": "Zostáva {{count}} minút"
+    "one": "",
+    "other": ""
   }
 }

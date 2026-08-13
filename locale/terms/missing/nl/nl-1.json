@@ -1,24 +1,32 @@
 {
-  "Code": "Code",
-  "Items": "Items",
-  "Planning": "Planning",
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "Code": "",
+  "Items": "",
+  "Planning": "",
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
-    "one": "{{count}} lid gekopieerd",
-    "other": "{{count}} leden gekopieerd"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Deze lijst heeft {{count}} ontvanger – te veel voor een mailto:-link. Gebruik in plaats daarvan Adressen kopiëren.",
-    "other": "Deze lijst heeft {{count}} ontvangers – te veel voor een mailto:-link. Gebruik in plaats daarvan Adressen kopiëren."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik in plaats daarvan Adressen kopiëren.",
-    "other": "Te veel ontvangers voor e-mailclient ({{count}} > {{max}}). Gebruik in plaats daarvan Adressen kopiëren."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min. over",
-    "other": "{{count}} min. over"
+    "one": "",
+    "other": ""
   }
 }

@@ -1,22 +1,30 @@
 {
-  "Data": "Data",
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "Data": "",
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
-    "one": "Amenakili mwanachama {{count}}",
-    "other": "Amenakili wanachama {{count}}"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Orodha hii ina mpokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
-    "other": "Orodha hii ina wapokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Wapokeaji wengi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
-    "other": "Wapokeaji wengi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} dak iliyobaki",
-    "other": "{{count}} dak zilizobaki"
+    "one": "",
+    "other": ""
   }
 }
