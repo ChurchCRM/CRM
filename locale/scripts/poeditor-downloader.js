@@ -163,10 +163,22 @@ const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
 function restructurePluralForms(data) {
     if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
 
-    // Detect inverted buckets: top-level keys that are CLDR form names with object values.
-    const invertedFormKeys = CLDR_PLURAL_FORMS.filter(
-        (form) => data[form] != null && typeof data[form] === 'object' && !Array.isArray(data[form])
-    );
+    // Detect inverted buckets: top-level keys whose name is a CLDR plural form, whose
+    // value is a plain object, AND whose own values are all strings (or null/undefined).
+    // The string-values check is the key guard: POEditor's inverted layout always stores
+    // translation strings inside the bucket, whereas a legitimate i18next namespace
+    // segment would contain nested objects as values — so that case is not triggered.
+    const invertedFormKeys = CLDR_PLURAL_FORMS.filter((form) => {
+        const v = data[form];
+        return (
+            v != null &&
+            typeof v === 'object' &&
+            !Array.isArray(v) &&
+            Object.values(v).every(
+                (val) => val === null || val === undefined || typeof val === 'string'
+            )
+        );
+    });
     if (invertedFormKeys.length === 0) return data;
 
     const restructured = {};
@@ -190,7 +202,14 @@ function restructurePluralForms(data) {
             const val = data[form][term];
             if (val !== undefined && val !== null) pluralForms[form] = val;
         }
-        if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
+        if (Object.keys(pluralForms).length > 0) {
+            if (Object.prototype.hasOwnProperty.call(restructured, term)) {
+                // A pass-through key shares the same name as a bucket term.
+                // The re-nested plural value takes precedence.
+                console.warn(`restructurePluralForms: key "${term}" exists both as a pass-through entry and inside plural buckets; plural re-nesting takes precedence.`);
+            }
+            restructured[term] = pluralForms;
+        }
     }
 
     return restructured;
@@ -359,11 +378,6 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                 fs.mkdirSync(outputFileDir, { recursive: true });
             }
             
-            // Delete old file if it exists (just before download to minimize downtime)
-            if (fs.existsSync(outputPath)) {
-                fs.unlinkSync(outputPath);
-            }
-            
             return new Promise((resolve, reject) => {
                 https.get(downloadUrl, (res) => {
                     // Check for non-2xx HTTP status
@@ -395,7 +409,18 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                                 return;
                             }
                         }
-                        fs.writeFileSync(outputPath, fileData);
+                        // Write to a temp file first, then atomically rename to outputPath.
+                        // This ensures the original file is never deleted if the write or
+                        // restructure fails — the original stays in place until we succeed.
+                        const tempPath = outputPath + '.tmp';
+                        try {
+                            fs.writeFileSync(tempPath, fileData);
+                            fs.renameSync(tempPath, outputPath);
+                        } catch (err) {
+                            try { fs.unlinkSync(tempPath); } catch (_) {}
+                            reject(new Error(`Failed to write file for ${format.type}: ${err.message}`));
+                            return;
+                        }
                         const fileSize = fileData.length;
                         console.log(`    ✅ ${format.ext.toUpperCase()}: ${fileSize} bytes`);
                         resolve();
@@ -496,7 +521,8 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
         if (localeCfg && localeCfg.skip_audit === true) {
             console.log(`  ⏭️  Skipping missing-terms for ${locale} (skip_audit)`);
         } else {
-            const missing = await fetchUntranslatedTerms(poEditorLocale);
+            let missing = await fetchUntranslatedTerms(poEditorLocale);
+            missing = restructurePluralForms(missing);
             const termCount = Object.keys(missing).length;
 
             if (termCount === 0) {
