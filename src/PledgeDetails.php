@@ -40,7 +40,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 
 if ($result !== null) {
-    echo $result->getResEchotype2();
+    echo htmlspecialchars($result->getResEchotype2() ?? '', ENT_QUOTES, 'UTF-8');
 }
 
 ?>
