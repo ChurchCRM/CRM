@@ -83,13 +83,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
             }
 
             $service = new DonationFundService();
-            $fund = $service->createFund($name, $description);
-
-            // Apply active flag (service defaults to null/active; set explicitly)
-            if (!$active) {
-                $fund->setActive('false');
-                $fund->save();
-            }
+            $fund = $service->createFund($name, $description, $active);
 
             return SlimUtils::renderJSON($response, ['fund' => $fundToArray($fund)], 201);
         } catch (\InvalidArgumentException $e) {

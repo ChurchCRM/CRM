@@ -76,12 +76,13 @@ class DonationFundService
     /**
      * Create a new donation fund.
      *
-     * @param string $name Fund name (max 30 chars)
-     * @param string $desc Fund description (max 100 chars)
+     * @param string $name   Fund name (max 30 chars)
+     * @param string $desc   Fund description (max 100 chars)
+     * @param bool   $active Whether the fund is active (default true)
      * @return DonationFund The newly created fund
      * @throws \InvalidArgumentException if name is empty or already exists
      */
-    public function createFund(string $name, string $desc): DonationFund
+    public function createFund(string $name, string $desc, bool $active = true): DonationFund
     {
         $name = InputUtils::sanitizeText($name);
         if (strlen($name) === 0) {
@@ -101,6 +102,7 @@ class DonationFundService
         $fund = new DonationFund();
         $fund->setName($name);
         $fund->setDescription(InputUtils::sanitizeText($desc));
+        $fund->setActive($active ? 'true' : 'false');
         $fund->setOrder($nextOrder);
         $fund->save();
 
