@@ -95,7 +95,7 @@ describe("Finance: Donation Funds page - Action menu", () => {
                     });
                 cy.get(".fund-edit-btn").first().click({ force: true });
                 cy.get("#editFundModal").should("be.visible");
-                cy.get("#editFundName").should("have.value").and("not.be.empty");
+                cy.get("#editFundName").invoke("val").should("not.be.empty");
             }
         });
     });
