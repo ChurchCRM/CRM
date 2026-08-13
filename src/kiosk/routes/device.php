@@ -416,7 +416,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
 
             $checkerPhoto = new Photo('Person', $checker->getId());
             $checkerData = [
-                'Id'        => $checker->getId(),
+                'Id'        => (int) $checker->getId(),
                 'FirstName' => $checker->getFirstName(),
                 'LastName'  => $checker->getLastName(),
                 'hasPhoto'  => $checkerPhoto->hasUploadedPhoto(),
