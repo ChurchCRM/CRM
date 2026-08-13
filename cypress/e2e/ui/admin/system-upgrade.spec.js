@@ -193,7 +193,7 @@ describe("System Upgrade Page", () => {
             cy.get("#retryDownload").should("be.visible");
         });
 
-        it("should render upgrade path panel when multiple releases behind", () => {
+        it("should show security callout and stacked release notes when multiple releases behind", () => {
             cy.intercept("GET", "**/admin/api/upgrade/preview", {
                 statusCode: 200,
                 body: {
@@ -236,10 +236,21 @@ describe("System Upgrade Page", () => {
             cy.get("#skipBackup").click();
 
             cy.wait("@previewRequest", { timeout: 10000 });
-            cy.get("#upgradePathPanel").should("not.have.class", "d-none");
-            cy.get("#upgradePathSummary").should("contain", "3");
-            cy.get("#upgradePathAccordion .badge.bg-primary-lt.text-primary").should("contain", "Installing next release");
-            cy.get("#proceedToDownload").should("be.visible");
+
+            // Security callout must be visible (replaces old upgrade-path info panel)
+            cy.get("#securityRecommendationCallout").should("not.have.class", "d-none");
+
+            // Stacked release notes: all 3 versions should be rendered
+            cy.get("#whatsNewNotes .version-notes-block").should("have.length", 3);
+
+            // Default target is the latest version (5.0.3)
+            cy.get("#whatsNewVersion").should("contain", "5.0.3");
+            cy.get("#recommendedBadge").should("not.have.class", "d-none");
+
+            // "Installing next release" badge must NOT appear anywhere
+            cy.get("#whatsNewContent").should("not.contain", "Installing next release");
+
+            cy.get("#proceedToDownload").should("be.visible").and("contain", "5.0.3");
         });
 
         it("should show changelog link in What's New step", () => {
@@ -588,35 +599,39 @@ describe("System Upgrade Page", () => {
             cy.get("#whatsNewContent").should("not.have.class", "d-none");
 
             // Open the advanced selector collapse by its visible text label.
-            // The link uses href='#advancedVersionCollapse' (no data-bs-target),
-            // so we select by text content to avoid href URL-resolution issues.
-            cy.contains('a[data-bs-toggle="collapse"]', 'Advanced: choose a specific target version').click();
+            cy.contains('a[data-bs-toggle="collapse"]', 'Advanced: Install a specific version instead').click();
             cy.get("#advancedVersionCollapse").should("have.class", "show", { timeout: 5000 });
             cy.get("#targetVersionSelect").should("be.visible");
 
-            // Options should include default + all upgrade path entries
-            cy.get("#targetVersionSelect option").should("have.length", 4); // 1 default + 3 versions
+            // Options: 1 latest (Recommended) + 2 non-latest = 3 total
+            cy.get("#targetVersionSelect option").should("have.length", 3);
 
-            // Select version 5.0.3
-            cy.get("#targetVersionSelect").select("5.0.3");
+            // Select non-latest version 5.0.2 — should update version heading and notes
+            cy.get("#targetVersionSelect").select("5.0.2");
 
-            // Release notes heading should update to 5.0.3
-            cy.get("#whatsNewVersion").should("contain", "5.0.3");
-            cy.get("#whatsNewNotes").should("contain", "5.0.3 another fix");
+            // Release notes heading should update to 5.0.2
+            cy.get("#whatsNewVersion").should("contain", "5.0.2");
+            cy.get("#whatsNewNotes").should("contain", "5.0.2 feature");
+
+            // Recommended badge should be hidden when non-latest is selected
+            cy.get("#recommendedBadge").should("have.class", "d-none");
+
+            // Warning banner should be visible
+            cy.get("#advancedWarningBanner").should("not.have.class", "d-none");
         });
 
-        it("should send ?version= query param when specific version is chosen", () => {
+        it("should send ?version= query param when specific non-latest version is chosen", () => {
             cy.intercept("GET", "**/admin/api/upgrade/preview", {
                 statusCode: 200,
                 body: multiReleaseFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release?version=5.0.3", {
+            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release?version=5.0.2", {
                 statusCode: 200,
                 body: {
-                    fileName: "ChurchCRM-5.0.3.zip",
-                    fullPath: "/tmp/ChurchCRM-5.0.3.zip",
-                    releaseNotes: "## 5.0.3\n\n- Another fix\n",
+                    fileName: "ChurchCRM-5.0.2.zip",
+                    fullPath: "/tmp/ChurchCRM-5.0.2.zip",
+                    releaseNotes: "## 5.0.2\n\n- Feature\n",
                     sha1: "aabbcc112233",
                 },
             }).as("downloadSpecific");
@@ -627,21 +642,21 @@ describe("System Upgrade Page", () => {
 
             cy.wait("@previewRequest", { timeout: 10000 });
 
-            // Open advanced selector and pick 5.0.3
-            cy.contains('a[data-bs-toggle="collapse"]', 'Advanced: choose a specific target version').click();
+            // Open advanced selector and pick non-latest 5.0.2
+            cy.contains('a[data-bs-toggle="collapse"]', 'Advanced: Install a specific version instead').click();
             cy.get("#advancedVersionCollapse").should("have.class", "show", { timeout: 5000 });
-            cy.get("#targetVersionSelect").select("5.0.3");
+            cy.get("#targetVersionSelect").select("5.0.2");
 
             // Proceed to download step
             cy.get("#proceedToDownload").click();
 
-            // Verify that the download request used the ?version= param
+            // Verify that the download request used the ?version= param for 5.0.2
             cy.wait("@downloadSpecific", { timeout: 15000 });
             cy.get("#downloadStatus .alert-success").should("be.visible");
-            cy.get("#updateFileName").should("contain", "ChurchCRM-5.0.3.zip");
+            cy.get("#updateFileName").should("contain", "ChurchCRM-5.0.2.zip");
         });
 
-        it("should expand upgrade path accordion and show entry details", () => {
+        it("should render stacked version blocks with deep-link anchors", () => {
             cy.intercept("GET", "**/admin/api/upgrade/preview", {
                 statusCode: 200,
                 body: multiReleaseFixture,
@@ -653,21 +668,19 @@ describe("System Upgrade Page", () => {
 
             cy.wait("@previewRequest", { timeout: 10000 });
 
-            // Upgrade path panel should be visible (3 releases ahead)
-            cy.get("#upgradePathPanel").should("not.have.class", "d-none");
+            // All 3 versions should be rendered as stacked blocks (newest-first)
+            cy.get("#whatsNewNotes .version-notes-block").should("have.length", 3);
 
-            // Expand the upgrade path collapse by its visible text label.
-            // Same reason as above: use text-content selector, not [href='#...'].
-            cy.contains('a[data-bs-toggle="collapse"]', 'Show full upgrade path').click();
-            cy.get("#upgradePathCollapse").should("have.class", "show", { timeout: 5000 });
+            // Each block should have a deep-link anchor id (e.g. v5-0-3)
+            cy.get("#whatsNewNotes #v5-0-3").should("exist");
+            cy.get("#whatsNewNotes #v5-0-2").should("exist");
+            cy.get("#whatsNewNotes #v5-0-1").should("exist");
 
-            // Should render 3 accordion entries
-            cy.get("#upgradePathAccordion .upgrade-path-entry").should("have.length", 3);
+            // Each block should have a "Full release notes" link
+            cy.get("#whatsNewNotes .version-notes-block").first().find("a").should("contain", "Full release notes");
 
-            // Expand the first entry and verify release notes render
-            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".upgrade-path-header").click();
-            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".upgrade-path-notes").should("have.class", "show", { timeout: 5000 });
-            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".release-notes").should("contain", "5.0.1");
+            // Release notes content should be rendered
+            cy.get("#whatsNewNotes").should("contain", "5.0.3 another fix");
         });
     });
 });
