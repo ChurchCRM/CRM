@@ -457,12 +457,12 @@ describe("System Upgrade Page", () => {
             // This tests the server-rendered badge visible before wizard interaction.
             // We rely on the PHP view rendering the badge when $isUpdateAvailable === false.
             cy.visit("/admin/system/upgrade");
-            // The page always shows at least one badge; when up to date it has bg-success-lt
-            // We cannot intercept the PHP page render, so we assert that if the
-            // bg-success-lt badge exists it carries the expected text.
+            // The version-info card shows a bg-success-lt badge when up to date.
+            // Exclude #recommendedBadge (new wizard element with the same classes that is
+            // always rendered but controlled by JS visibility, not server-state).
             cy.get("body").then(($body) => {
-                if ($body.find(".badge.bg-success-lt.text-success").length) {
-                    cy.get(".badge.bg-success-lt.text-success").should("contain", "Up to Date");
+                if ($body.find(".badge.bg-success-lt.text-success:not(#recommendedBadge)").length) {
+                    cy.get(".badge.bg-success-lt.text-success:not(#recommendedBadge)").should("contain", "Up to Date");
                 }
             });
         });
