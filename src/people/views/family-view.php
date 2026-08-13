@@ -614,29 +614,59 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
 
 <?php
 if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
-<!-- Pledges and Payments — full width row -->
+<!-- Giving History tab (#8332) — full-width row, Finance/Admin only -->
 <div class="row">
     <div class="col-12">
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center flex-wrap gap-2">
-                <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot me-1"></i> <?= gettext("Pledges and Payments") ?></h3>
-                <div class="ms-auto d-flex align-items-center gap-2">
-                    <ul class="nav nav-pills" role="tablist">
+                <ul class="nav nav-pills card-header-pills" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" href="#giving" data-bs-toggle="tab"
+                           id="giving-tab" role="tab" aria-selected="true" aria-controls="giving">
+                            <i class="fa-solid fa-hand-holding-dollar me-1"></i>
+                            <?= gettext("Giving") ?>
+                            <span id="giving-ytd-badge"
+                                  class="badge bg-green-lt text-green ms-1 d-none"
+                                  title="<?= InputUtils::escapeAttribute(gettext('Total paid this fiscal year')) ?>"></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="ms-auto d-flex align-items-center gap-2 flex-wrap">
+                    <ul class="nav nav-pills" role="group" aria-label="<?= InputUtils::escapeAttribute(gettext('Filter by type')) ?>">
                         <li class="nav-item"><a class="nav-link active pledge-type-pill" href="#" data-filter=""><?= gettext("All") ?></a></li>
                         <li class="nav-item"><a class="nav-link pledge-type-pill" href="#" data-filter="Pledge"><?= gettext("Pledges") ?></a></li>
                         <li class="nav-item"><a class="nav-link pledge-type-pill" href="#" data-filter="Payment"><?= gettext("Payments") ?></a></li>
                     </ul>
-                    <span class="vr mx-1"></span>
-                    <ul class="nav nav-pills" role="tablist">
-                        <li class="nav-item"><a class="nav-link pledge-fy-pill" href="#" data-fy=""><?= gettext("All Time") ?></a></li>
-                        <li class="nav-item"><a class="nav-link active pledge-fy-pill" href="#" data-fy="<?= $currentFY ?>"><?= sprintf(gettext("FY %s"), $currentFY) ?></a></li>
-                    </ul>
+                    <span class="vr mx-1 d-none d-sm-block"></span>
+                    <div class="d-flex align-items-center gap-1">
+                        <label class="form-label mb-0 text-body-secondary small" for="giving-fy-select"><?= gettext("FY") ?></label>
+                        <select id="giving-fy-select" class="form-select form-select-sm" style="width: auto; min-width: 9rem;">
+                            <option value=""><?= gettext("All Time") ?></option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div style="overflow-x: clip; overflow-y: visible;">
-                <table id="pledge-payment-v2-table" class="table table-vcenter card-table" style="width: 100%;">
-                    <tbody></tbody>
-                </table>
+            <div class="tab-content">
+                <div class="tab-pane active show" id="giving" role="tabpanel" aria-labelledby="giving-tab">
+                    <div style="overflow-x: clip; overflow-y: visible;">
+                        <table id="pledge-payment-v2-table"
+                               class="table table-vcenter card-table"
+                               style="width: 100%;"
+                               data-current-fy="<?= InputUtils::escapeAttribute($currentFY) ?>">
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-end gap-4 px-3 py-2 border-top text-body-secondary small">
+                        <span>
+                            <?= gettext("Total Pledged") ?>:
+                            <strong class="text-body" id="giving-total-pledged">—</strong>
+                        </span>
+                        <span>
+                            <?= gettext("Total Paid") ?>:
+                            <strong class="text-success" id="giving-total-paid">—</strong>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
