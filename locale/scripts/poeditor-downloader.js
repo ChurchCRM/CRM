@@ -174,6 +174,7 @@ function restructurePluralForms(data) {
             v != null &&
             typeof v === 'object' &&
             !Array.isArray(v) &&
+            Object.values(v).length > 0 &&
             Object.values(v).every(
                 (val) => val === null || val === undefined || typeof val === 'string'
             )
@@ -220,8 +221,9 @@ function restructurePluralForms(data) {
  * Returns array of written file paths.
  */
 function saveBatchedMissingTerms(poEditorCode, missingTerms) {
-    missingTerms = restructurePluralForms(missingTerms);
-
+    // Callers are responsible for calling restructurePluralForms before this
+    // function.  Do NOT call it here — a second pass would re-invert any term
+    // whose key happens to be a CLDR plural form name (e.g. "one", "other").
     const localeOutDir = path.join(MISSING_OUTPUT_DIR, poEditorCode);
 
     if (!fs.existsSync(localeOutDir)) {
