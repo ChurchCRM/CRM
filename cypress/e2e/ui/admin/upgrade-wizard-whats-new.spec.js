@@ -121,10 +121,12 @@ describe("Upgrade Wizard — What you'll gain redesign", () => {
                 .and("contain", "security fixes");
         });
 
-        it("does NOT show the 'Installing next release' badge anywhere", () => {
+        it("shows #recommendedBadge with 'Recommended' text", () => {
             reachWhatsNewStep("@previewRequest");
 
-            cy.get("#whatsNewContent").should("not.contain", "Installing next release");
+            cy.get("#recommendedBadge")
+                .should("not.have.class", "d-none")
+                .and("contain", "Recommended");
         });
 
         it("CTA reads 'Download & Apply 99.0.0'", () => {

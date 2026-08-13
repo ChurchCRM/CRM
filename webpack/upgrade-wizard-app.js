@@ -276,8 +276,10 @@ function buildVersionBlock(version, type, notes, changelogUrl) {
   const anchor = `v${version.replace(/\./g, "-")}`;
   const typeHtml = type ? ` ${badgeForType(type)}` : "";
   const notesHtml = marked.parse(notes || "");
-  const changelogLink = changelogUrl
-    ? `<a href="${escapeHtml(changelogUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm flex-shrink-0">
+  // F1: reject non-http(s) URLs (e.g. javascript:) before injecting into href.
+  const safeUrl = /^https?:\/\//i.test(changelogUrl ?? "") ? changelogUrl : null;
+  const changelogLink = safeUrl
+    ? `<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm flex-shrink-0">
          <i class="fa fa-external-link me-1"></i>${i18next.t("Full release notes")}
        </a>`
     : "";
@@ -314,8 +316,13 @@ function renderGainStack(upgradePath, targetVersion) {
  * Returns negative if a < b, 0 if equal, positive if a > b.
  */
 function semverCompare(a, b) {
-  const pa = String(a).split(".").map(Number);
-  const pb = String(b).split(".").map(Number);
+  // F3: use parseInt so pre-release suffixes like "3-rc1" parse as 3 rather than NaN.
+  const pa = String(a)
+    .split(".")
+    .map((s) => Number.parseInt(s, 10) || 0);
+  const pb = String(b)
+    .split(".")
+    .map((s) => Number.parseInt(s, 10) || 0);
   for (let i = 0; i < 3; i++) {
     const diff = (pa[i] || 0) - (pb[i] || 0);
     if (diff !== 0) return diff;
@@ -427,9 +434,15 @@ function renderWhatsNew(data) {
   }
 
   // ── Case 3: Normal upgrade — one or more releases ahead ─────────────────────
+  // F2: guard against a missing or empty upgradePath (API may omit the field).
+  if (!upgradePath || upgradePath.length === 0) {
+    $("#whatsNewNotes").html(`<p class="text-secondary">${i18next.t("No release notes available.")}</p>`);
+    return;
+  }
+
   // The latest version is always the recommended target.  The backend already
   // supports jumping from any installed version to any target directly.
-  const latest = latestVersion || (upgradePath.length > 0 ? upgradePath[upgradePath.length - 1].version : nextVersion);
+  const latest = latestVersion || upgradePath[upgradePath.length - 1].version;
   const latestEntry = upgradePath.find((e) => e.version === latest);
   const latestChangelog = latestEntry?.changelogUrl || nextChangelogUrl || null;
 
@@ -473,8 +486,9 @@ function renderVersionSelector(upgradePath, latestVersion) {
     `<option value="${escapeHtml(latestVersion)}">${escapeHtml(latestVersion)} (${i18next.t("Recommended")})</option>`,
   );
 
-  // All other versions (upgradePath is ascending; latest is already listed above).
-  const nonLatest = upgradePath.filter((e) => e.version !== latestVersion);
+  // All other versions — newest-first so the picker order matches the notes stack.
+  // upgradePath arrives ascending from the API; reverse to get newest-first.
+  const nonLatest = upgradePath.filter((e) => e.version !== latestVersion).reverse();
   nonLatest.forEach((entry) => {
     const friendlyLabel = { major: i18next.t("Major"), minor: i18next.t("Feature"), patch: i18next.t("Bug Fix") };
     const typeLabel = friendlyLabel[entry.type] || entry.type;
