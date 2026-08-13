@@ -92,66 +92,43 @@ function initializeFamilyView() {
     });
   });
 
-  // Pledges & Payments table — init after ensuring both types are returned by API
+  // Giving History table (#8332) — init after ensuring both types are returned by API
   if ($("#pledge-payment-v2-table").length) {
-    // Build the ajax URL, always sending fyid explicitly (including 0 for All
-    // Time). The API distinguishes fyid=0 ("All Time", no date filter at all)
-    // from an absent fyid param (falls back to the user's ShowSince
-    // preference) — this client always has a resolved value (current FY by
-    // default, or an explicit selection), so it must never omit the param,
-    // or an explicit All-Time selection would silently be reinterpreted
-    // server-side as "nothing selected, use ShowSince".
-    function getPledgeAjaxUrl(fyid) {
-      var base = window.CRM.root + "/api/payments/family/" + window.CRM.currentFamily + "/list";
-      return base + "?fyid=" + fyid;
-    }
+    // Escape a string for use in a DataTables regex column search
+    const escapeDTRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-    // Determine initial FY from URL param, falling back to the active pill's data-fy
-    // (the active pill is set server-side to the current FY by default).
-    // Must distinguish an ABSENT fyid param (fall back to current FY) from an
-    // EXPLICIT fyid=0 (All Time) — `parseInt(...) || activePillFy` treated 0 as
-    // falsy and silently reverted an explicit All-Time selection back to the
-    // current FY on refresh or when opening a copied/bookmarked URL.
-    var urlParams = new URLSearchParams(window.location.search);
-    var activePillFy = parseInt($(".pledge-fy-pill.active").data("fy") || "0", 10) || 0;
-    // Use rawFyid-null check rather than parseInt()|| to correctly preserve
-    // an explicit fyid=0 (All Time): parseInt("0") is falsy and would
-    // incorrectly revert to activePillFy on refresh.
-    var rawFyid = urlParams.get("fyid");
-    var initialFyid = rawFyid !== null ? parseInt(rawFyid, 10) : activePillFy;
+    // Recompute the Total Pledged / Total Paid summary bar from currently-filtered rows
+    const updateGivingSummary = (api) => {
+      let totalPledged = 0;
+      let totalPaid = 0;
+      api
+        .rows({ search: "applied" })
+        .data()
+        .each((row) => {
+          const amt = parseFloat(row.Amount || 0);
+          if (row.PledgeOrPayment === "Pledge") {
+            totalPledged += amt;
+          } else if (row.PledgeOrPayment === "Payment") {
+            totalPaid += amt;
+          }
+        });
+      $("#giving-total-pledged").text(window.CRM.currency.format(totalPledged));
+      $("#giving-total-paid").text(window.CRM.currency.format(totalPaid));
+    };
 
-    // If the resolved FY doesn't correspond to any rendered pill (e.g. a
-    // stale bookmark for a fiscal year this family has no history in), fall
-    // back to the current-FY default for BOTH the fetched data and the
-    // highlighted pill — rather than fetching data for a mismatched FY while
-    // a different pill (previously: whichever pill happened to be first,
-    // i.e. All Time) lit up as if it were active.
-    // Also fix the browser URL so a refresh doesn't loop the same mismatch.
-    if (initialFyid !== 0 && !$(".pledge-fy-pill[data-fy='" + initialFyid + "']").length) {
-      initialFyid = activePillFy;
-      // Correct the URL so refreshing/sharing doesn't loop the same mismatch.
-      var fixParams = new URLSearchParams(window.location.search);
-      fixParams.set("fyid", String(initialFyid));
-      window.history.replaceState({}, "", window.location.pathname + "?" + fixParams.toString());
-    }
-
-    var dataTableConfig = {
+    // Columns: Date (0) | Fund (1) | Amount (2) | Type (3) | Method (4) | Fiscal Year hidden (5) | Comment hidden (6) | Actions (7)
+    const dataTableConfig = {
       ajax: {
-        url: getPledgeAjaxUrl(initialFyid),
+        url: `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list`,
         dataSrc: "data",
       },
       columns: [
-        {
-          title: i18next.t("Type"),
-          data: "PledgeOrPayment",
-          render: (data) => {
-            const color = data === "Pledge" ? "blue" : "green";
-            const icon = data === "Pledge" ? "fa-hand-holding-dollar" : "fa-money-bill-wave";
-            return `<span class="badge bg-${color}-lt text-${color}"><i class="fa-solid ${icon} me-1"></i>${data}</span>`;
-          },
-        },
-        { title: i18next.t("Fund"), data: "Fund" },
         { title: i18next.t("Date"), type: "date", data: "Date" },
+        {
+          title: i18next.t("Fund"),
+          data: "Fund",
+          render: (data) => window.CRM.escapeHtml(data || ""),
+        },
         {
           title: i18next.t("Amount"),
           type: "num",
@@ -164,12 +141,21 @@ function initializeFamilyView() {
             return parseFloat(data || 0);
           },
         },
-        { title: i18next.t("Fiscal Year"), data: "FormattedFY" },
-        { title: i18next.t("Method"), data: "Method" },
-        { title: i18next.t("Comment"), data: "Comment" },
+        {
+          title: i18next.t("Type"),
+          data: "PledgeOrPayment",
+          render: (data) => {
+            const color = data === "Pledge" ? "blue" : "green";
+            const icon = data === "Pledge" ? "fa-hand-holding-dollar" : "fa-money-bill-wave";
+            return `<span class="badge bg-${color}-lt text-${color}"><i class="fa-solid ${icon} me-1"></i>${window.CRM.escapeHtml(data)}</span>`;
+          },
+        },
+        { title: i18next.t("Method"), data: "Method", render: (data) => window.CRM.escapeHtml(data || "") },
+        { title: i18next.t("Fiscal Year"), data: "FormattedFY", visible: false },
+        { title: i18next.t("Comment"), data: "Comment", visible: false },
         {
           width: "40px",
-          sortable: false,
+          orderable: false,
           title: "",
           data: "GroupKey",
           className: "all no-export",
@@ -195,9 +181,47 @@ function initializeFamilyView() {
           searchable: false,
         },
       ],
-      order: [[2, "desc"]],
+      order: [[0, "desc"]],
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+
+    // initComplete fires after the first Ajax draw — used to populate FY dropdown & YTD badge
+    dataTableConfig.initComplete = function () {
+      const api = this.api();
+      const currentFY = $("#pledge-payment-v2-table").data("current-fy") || "";
+      const allRows = api.rows().data().toArray();
+
+      // Populate fiscal-year dropdown from unique FormattedFY values, sorted descending
+      const fySet = new Set();
+      allRows.forEach((row) => {
+        if (row.FormattedFY) {
+          fySet.add(row.FormattedFY);
+        }
+      });
+      const fyList = Array.from(fySet).sort((a, b) => b.localeCompare(a));
+      const $fySelect = $("#giving-fy-select");
+      fyList.forEach((fy) => {
+        const $opt = $("<option>").val(fy).text(fy);
+        if (fy === currentFY) {
+          $opt.prop("selected", true);
+        }
+        $fySelect.append($opt);
+      });
+
+      // YTD badge: total Payments in the current fiscal year (always full dataset, not filtered)
+      let ytdTotal = 0;
+      allRows.forEach((row) => {
+        if (row.PledgeOrPayment === "Payment" && row.FormattedFY === currentFY) {
+          ytdTotal += parseFloat(row.Amount || 0);
+        }
+      });
+      if (ytdTotal > 0) {
+        $("#giving-ytd-badge")
+          .attr("data-ytd-total", ytdTotal)
+          .text(window.CRM.currency.format(ytdTotal))
+          .removeClass("d-none");
+      }
+    };
 
     // Force both types visible in API, then init DataTable
     Promise.all([
@@ -217,46 +241,55 @@ function initializeFamilyView() {
       .catch(() => {}) // ignore errors
       .then(() => {
         const pledgeTable = $("#pledge-payment-v2-table").DataTable(dataTableConfig);
+        const currentFY = $("#pledge-payment-v2-table").data("current-fy") || "";
 
-        // Set the active FY pill based on the initial fyid
-        $(".pledge-fy-pill").removeClass("active");
-        $(".pledge-fy-pill[data-fy='" + (initialFyid || 0) + "']").addClass("active");
-        if (!$(".pledge-fy-pill.active").length) {
-          // If no pill matched (e.g. initialFyid not in list), default to first pill
-          $(".pledge-fy-pill").first().addClass("active");
+        // Pre-set default FY filter on the hidden column 5 before ajax completes
+        if (currentFY) {
+          pledgeTable.column(5).search(`^${escapeDTRegex(currentFY)}$`, true, false);
         }
 
-        // Type filter pills: client-side column 0 (Type) search — unchanged
+        // Summary bar: recompute on every draw
+        pledgeTable.on("draw", () => {
+          updateGivingSummary(pledgeTable);
+        });
+
+        // Type filter pills: client-side column 3 (Type/PledgeOrPayment)
         $(".pledge-type-pill").on("click", function (e) {
           e.preventDefault();
           $(".pledge-type-pill").removeClass("active");
           $(this).addClass("active");
-          pledgeTable
-            .column(0)
-            .search($(this).data("filter") || "")
-            .draw();
+          const filter = $(this).data("filter") || "";
+          if (filter) {
+            pledgeTable
+              .column(3)
+              .search(`^${escapeDTRegex(filter)}$`, true, false)
+              .draw();
+          } else {
+            pledgeTable.column(3).search("", false, false).draw();
+          }
         });
 
-        // Fiscal year filter pills: server-side reload via fyid param
-        $(".pledge-fy-pill").on("click", function (e) {
-          e.preventDefault();
-          $(".pledge-fy-pill").removeClass("active");
-          $(this).addClass("active");
-          var fy = parseInt($(this).data("fy") || "0", 10) || 0;
-          // Persist selection in URL without page reload. All Time is written
-          // as an explicit fyid=0 (not by deleting the param) so a refresh or
-          // shared/bookmarked URL can tell "All Time was chosen" apart from
-          // "no selection yet, use the current-FY default" — see initialFyid
-          // parsing above.
-          var params = new URLSearchParams(window.location.search);
-          params.set("fyid", fy);
-          window.history.replaceState(
-            {},
-            "",
-            window.location.pathname + (params.toString() ? "?" + params.toString() : ""),
-          );
-          // Reload DataTable with the new server-side fyid
-          pledgeTable.ajax.url(getPledgeAjaxUrl(fy)).load();
+        // Fiscal year select: client-side column 5 (Fiscal Year, hidden but searchable)
+        // Also toggles the YTD badge — badge only meaningful for the system current FY
+        $("#giving-fy-select").on("change", function () {
+          const fy = $(this).val() || "";
+          if (fy) {
+            pledgeTable
+              .column(5)
+              .search(`^${escapeDTRegex(fy)}$`, true, false)
+              .draw();
+          } else {
+            pledgeTable.column(5).search("", false, false).draw();
+          }
+          // Hide the YTD badge when viewing a year other than the system current FY
+          if (fy && fy !== currentFY) {
+            $("#giving-ytd-badge").addClass("d-none");
+          } else {
+            // Restore badge (it was already computed in initComplete for currentFY)
+            if (parseFloat($("#giving-ytd-badge").data("ytd-total") || 0) > 0) {
+              $("#giving-ytd-badge").removeClass("d-none");
+            }
+          }
         });
       });
   }
@@ -388,10 +421,9 @@ function initializeFamilyView() {
 
   $("#activateDeactivate").on("click", () => {
     const popupTitle = window.CRM.currentActive ? i18next.t("Confirm Deactivation") : i18next.t("Confirm Activation");
-    const safeFamilyName = window.CRM.escapeHtml(window.CRM.currentFamilyName);
     const popupMessage = window.CRM.currentActive
-      ? `${i18next.t("Please confirm deactivation of family")}: ${safeFamilyName}`
-      : `${i18next.t("Please confirm activation of family")}: ${safeFamilyName}`;
+      ? `${i18next.t("Please confirm deactivation of family")}: ${window.CRM.currentFamilyName}`
+      : `${i18next.t("Please confirm activation of family")}: ${window.CRM.currentFamilyName}`;
 
     bootbox.confirm({
       title: popupTitle,
@@ -470,29 +502,30 @@ function initializeFamilyView() {
         }
       },
     });
-
-    // Handle pledge/payment deletion via API
-    $(document).on("click", ".pledge-delete-btn", function () {
-      const groupKey = $(this).data("group-key");
-      if (!confirm(i18next.t("Are you sure you want to permanently delete this pledge record?"))) {
-        return;
-      }
-      fetch(window.CRM.root + "/api/payments/" + encodeURIComponent(groupKey), {
-        method: "DELETE",
-      })
-        .then((res) => {
-          if (res.ok) {
-            window.CRM.notify("Deleted successfully", "success");
-            setTimeout(() => location.reload(), 800);
-          } else {
-            window.CRM.notify("Delete failed", "danger");
-          }
-        })
-        .catch(() => {
-          window.CRM.notify("Network error, please try again", "danger");
-        });
-    });
   }
+
+  // Handle pledge/payment deletion via API
+  // Kept outside the mailchimp check so families without an email can also delete pledges
+  $(document).on("click", ".pledge-delete-btn", function () {
+    const groupKey = $(this).data("group-key");
+    if (!confirm(i18next.t("Are you sure you want to permanently delete this pledge record?"))) {
+      return;
+    }
+    fetch(window.CRM.root + "/api/payments/" + encodeURIComponent(groupKey), {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.ok) {
+          window.CRM.notify(i18next.t("Deleted successfully"), "success");
+          setTimeout(() => location.reload(), 800);
+        } else {
+          window.CRM.notify(i18next.t("Delete failed"), "danger");
+        }
+      })
+      .catch(() => {
+        window.CRM.notify(i18next.t("Network error, please try again"), "danger");
+      });
+  });
 }
 
 // Wait for locales to load before initializing
