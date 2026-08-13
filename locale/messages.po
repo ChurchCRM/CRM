@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-09 05:57+0000\n"
+"POT-Creation-Date: 2026-08-13 22:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4280,7 +4280,7 @@ msgid "Estimated Price"
 msgstr ""
 
 #, php-format
-msgid "Estimated value $%s."
+msgid "Estimated value %s."
 msgstr ""
 
 #. Context: countries
@@ -7385,7 +7385,7 @@ msgid ""
 msgstr ""
 
 #, php-format
-msgid "Minimum bid $%s."
+msgid "Minimum bid %s."
 msgstr ""
 
 msgid "Minimum length a user may set their password to"
@@ -11663,10 +11663,12 @@ msgstr ""
 msgid "Total Users"
 msgstr ""
 
-msgid "Total of all purchases: $"
+#, php-format
+msgid "Total of all purchases: %s"
 msgstr ""
 
-msgid "Total purchases: $"
+#, php-format
+msgid "Total purchases: %s"
 msgstr ""
 
 msgid "Total raised (no goal set)"
