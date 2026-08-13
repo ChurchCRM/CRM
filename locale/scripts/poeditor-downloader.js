@@ -414,7 +414,16 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                         // restructure fails — the original stays in place until we succeed.
                         const tempPath = outputPath + '.tmp';
                         try {
-                            fs.writeFileSync(tempPath, fileData);
+                            // False positive — two independent reasons this write is safe:
+                            // 1. Path safety: outputPath is derived solely from hardcoded __dirname-relative
+                            //    directory constants and a locale code from our own src/locale/locales.json;
+                            //    no part of the path comes from the network response (no path traversal).
+                            // 2. Content safety: for JSON, fileData is fully re-serialised via
+                            //    JSON.parse → restructurePluralForms → JSON.stringify before reaching this
+                            //    point, so the bytes written are locally generated.  For PO/MO, the bytes
+                            //    are raw but are data-only locale files from our own authenticated POEditor
+                            //    project (POEDITOR_TOKEN required) written to a controlled dev directory.
+                            fs.writeFileSync(tempPath, fileData); // lgtm[js/network-data-written-to-file]
                             fs.renameSync(tempPath, outputPath);
                         } catch (err) {
                             try { fs.unlinkSync(tempPath); } catch (_) {}
