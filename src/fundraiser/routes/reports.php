@@ -591,13 +591,13 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
                 $totalAmount += $mb_count * (float) $di_sellprice;
             }
 
-            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Total of all purchases') . ': ' . CurrencyFormatter::format($totalAmount));
+            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, sprintf(gettext('Total of all purchases: %s'), CurrencyFormatter::format($totalAmount)));
             $curY += 2 * SystemConfig::getValue('incrementY');
 
             $curY = 240;
             $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, '-----------------------------------------------------------------------------------------------------------------------------------------------');
             $curY += 2 * SystemConfig::getValue('incrementY');
-            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Buyer #') . ' ' . $pn_Num . ' : ' . $paddleFirstName . ' ' . $paddleLastName . ' : ' . gettext('Total purchases') . ': ' . CurrencyFormatter::format($totalAmount) . ' : ' . gettext('Amount paid: ________________'));
+            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Buyer #') . ' ' . $pn_Num . ' : ' . $paddleFirstName . ' ' . $paddleLastName . ' : ' . sprintf(gettext('Total purchases: %s'), CurrencyFormatter::format($totalAmount)) . ' : ' . gettext('Amount paid: ________________'));
             $curY += 2 * SystemConfig::getValue('incrementY');
             $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __'));
             $curY += 2 * SystemConfig::getValue('incrementY');
