@@ -42,6 +42,10 @@ const kioskState = {
 let pendingCheckinByCallback: ((member: FamilyMember | null) => void) | null = null;
 // The family members fetched for the current modal session
 let currentFamilyMembers: FamilyMember[] = [];
+// Monotonically-increasing token; each showCheckinByModal() call increments it.
+// The XHR .done() handler checks the token before writing currentFamilyMembers
+// so rapid double-tap on touch screens cannot corrupt state with a stale response.
+let currentFamilyRequestToken = 0;
 
 /**
  * HTML escape helper to prevent XSS
@@ -991,8 +995,11 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
     `<div class="text-center py-4"><i class="fa-solid fa-spinner fa-spin fa-2x text-primary"></i><p class="mt-2 text-muted">${i18next.t("Loading family members...")}</p></div>`,
   );
 
-  // Track which child's family we are showing (needed for the guardian photo URL)
+  // Track which child's family we are showing (needed for the guardian photo URL).
+  // Increment token *before* resetting members so any in-flight XHR from a prior
+  // call sees a stale token and discards its result (rapid double-tap guard).
   currentFamilyMembers = [];
+  const myToken = ++currentFamilyRequestToken;
 
   // Store the callback to invoke after selection
   pendingCheckinByCallback = (member) => {
@@ -1012,6 +1019,9 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
     path: `activeClassMember/${personId}/family`,
   })
     .done((data: FamilyMembersResponse) => {
+      // Discard stale responses from a previous modal open (rapid double-tap race).
+      if (myToken !== currentFamilyRequestToken) return;
+
       // Guard against unexpected API responses (defensive check for empty/malformed members array)
       if (!data.members || data.members.length === 0) {
         // No family members found — close modal and proceed without a checker
@@ -1028,6 +1038,9 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
       $("#checkinByModalBody").empty().append(renderFamilyMemberOptions(data.members, personId));
     })
     .fail(() => {
+      // Discard stale failure responses too.
+      if (myToken !== currentFamilyRequestToken) return;
+
       // On API failure close modal and proceed without a checker
       const failEl = document.getElementById("checkinByModal");
       if (failEl) window.bootstrap.Modal.getOrCreateInstance(failEl).hide();
