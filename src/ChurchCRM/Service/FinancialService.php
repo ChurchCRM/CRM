@@ -17,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\FunctionsUtils;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Service\DonationFundService;
@@ -65,6 +66,7 @@ class FinancialService
             $newRow['FormattedFY'] = $row->getFormattedFY();
             $newRow['GroupKey'] = $row->getGroupKey();
             $newRow['Amount'] = $row->getAmount();
+            $newRow['Amount_formatted'] = CurrencyFormatter::format($row->getAmount());
             $newRow['Nondeductible'] = $row->getNondeductible();
             $newRow['Schedule'] = $row->getSchedule();
             $newRow['Method'] = $row->getMethod();
@@ -226,15 +228,17 @@ class FinancialService
             $total += $amount;
 
             $funds[] = [
-                'fundId'       => (int) $pledge->getFundId(),
-                'fundName'     => $fund ? $fund->getName() : '',
-                'amount'       => $amount,
-                'nonDeductible' => (float) $pledge->getNondeductible(),
-                'comment'      => $pledge->getComment() ?? '',
+                'fundId'          => (int) $pledge->getFundId(),
+                'fundName'        => $fund ? $fund->getName() : '',
+                'amount'          => $amount,
+                'amount_formatted' => CurrencyFormatter::format($amount),
+                'nonDeductible'   => (float) $pledge->getNondeductible(),
+                'comment'         => $pledge->getComment() ?? '',
             ];
         }
 
         $header['total'] = $total;
+        $header['total_formatted'] = CurrencyFormatter::format($total);
         $header['funds'] = $funds;
 
         return $header;
@@ -538,6 +542,7 @@ class FinancialService
             $fund = [];
             $fund['FundID'] = $row->getFundId();
             $fund['Amount'] = $row->getAmount();
+            $fund['Amount_formatted'] = CurrencyFormatter::format($row->getAmount());
             $fund['NonDeductible'] = $row->getNondeductible();
             $fund['Comment'] = $row->getComment();
             $payment->funds[] = $fund;
@@ -549,6 +554,7 @@ class FinancialService
         }
         $payment->GroupKey = $GroupKey;
         $payment->total = $total;
+        $payment->total_formatted = CurrencyFormatter::format($total);
 
         return json_encode($payment, JSON_THROW_ON_ERROR);
     }

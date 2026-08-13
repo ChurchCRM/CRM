@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -101,6 +102,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $newRow['FormattedFY'] = $row->getFormattedFY();
             $newRow['GroupKey'] = $row->getGroupKey();
             $newRow['Amount'] = $row->getAmount();
+            $newRow['Amount_formatted'] = CurrencyFormatter::format($row->getAmount());
             $newRow['Nondeductible'] = $row->getNondeductible();
             $newRow['Schedule'] = $row->getSchedule();
             $newRow['Method'] = $row->getMethod();
