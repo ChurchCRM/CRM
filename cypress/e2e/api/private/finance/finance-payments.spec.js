@@ -87,6 +87,15 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 expect(parsed.GroupKey).to.be.a("string").and.to.have.length.greaterThan(0);
                 expect(parsed).to.have.property("total");
                 expect(parsed.total).to.be.closeTo(100.00, 0.01);
+                expect(parsed).to.have.property("total_formatted");
+                expect(parsed.total_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                // Phase 4: fund-level *_formatted siblings (from getPledgeorPayment)
+                expect(parsed.funds).to.be.an("array").with.length.greaterThan(0);
+                const fund = parsed.funds[0];
+                expect(fund).to.have.property("amount_formatted");
+                expect(fund.amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                expect(fund).to.have.property("nonDeductible_formatted");
+                expect(fund.nonDeductible_formatted).to.be.a("string");
             });
         });
 
@@ -113,6 +122,14 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 expect(parsed.funds).to.be.an("array").with.length(2);
                 // Total reflects both allocations
                 expect(parsed.total).to.be.closeTo(100.00, 0.01);
+                expect(parsed).to.have.property("total_formatted");
+                expect(parsed.total_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                // Phase 4: fund-level *_formatted siblings on each fund entry
+                const firstFund = parsed.funds[0];
+                expect(firstFund).to.have.property("amount_formatted");
+                expect(firstFund.amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                expect(firstFund).to.have.property("nonDeductible_formatted");
+                expect(firstFund.nonDeductible_formatted).to.be.a("string");
             });
         });
     });
@@ -138,6 +155,14 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                     expect(getResp.body.pledgeOrPayment).to.equal("Payment");
                     expect(getResp.body.funds).to.be.an("array").with.length(1);
                     expect(getResp.body.total).to.be.closeTo(100.00, 0.01);
+                    // Phase 4: *_formatted siblings must be present
+                    expect(getResp.body).to.have.property("total_formatted");
+                    expect(getResp.body.total_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                    const fund = getResp.body.funds[0];
+                    expect(fund).to.have.property("amount_formatted");
+                    expect(fund.amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                    expect(fund).to.have.property("nonDeductible_formatted");
+                    expect(fund.nonDeductible_formatted).to.be.a("string");
                 });
             });
         });
@@ -247,6 +272,11 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                     expect(payment).to.have.property("Fund");
                     expect(payment).to.have.property("Date");
                     expect(payment).to.have.property("Amount");
+                    // Phase 4: *_formatted siblings must be present
+                    expect(payment).to.have.property("Amount_formatted");
+                    expect(payment.Amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                    expect(payment).to.have.property("Nondeductible_formatted");
+                    expect(payment.Nondeductible_formatted).to.be.a("string");
                     expect(payment).to.have.property("PledgeOrPayment");
                 }
             });
