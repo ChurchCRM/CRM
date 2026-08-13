@@ -43,9 +43,12 @@ if ($_themePrimary !== '') {
 }
 // Top level menu index counter
 $MenuFirst = 1;
+// Currency substrate — used on <html> for CSS custom property and data attribute
+$_currencyAttrs  = ' data-currency-position="' . InputUtils::escapeAttribute(CurrencyFormatter::position()) . '"';
+$_currencyAttrs .= ' style="--currency-symbol: &quot;' . InputUtils::escapeAttribute(CurrencyFormatter::symbol()) . '&quot;"';
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?>>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

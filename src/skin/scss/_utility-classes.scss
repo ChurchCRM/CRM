@@ -104,3 +104,34 @@
 .hide-if-no-photo {
   display: none !important;
 }
+
+/* ============================================
+   CURRENCY / MONEY DISPLAY
+   ============================================ */
+
+/**
+ * .money — renders the configured currency symbol before (or after) a
+ * pre-formatted number using CSS custom properties set on <html>.
+ *
+ * The number inside the element must already use the configured
+ * thousands/decimal separators (use CurrencyFormatter::format() or
+ * window.CRM.currency.format() to produce it).
+ *
+ * Usage: <span class="money">1,234.50</span>
+ * With position=before: "$ 1,234.50"
+ * With position=after:  "1,234.50 €"
+ *
+ * The \00a0 (non-breaking space) prevents line-wrapping between symbol and number.
+ */
+.money {
+  white-space: nowrap;
+
+  &::before {
+    content: var(--currency-symbol) "\00a0";
+  }
+}
+
+[data-currency-position="after"] .money {
+  &::before { content: none; }
+  &::after  { content: "\00a0" var(--currency-symbol); }
+}
