@@ -381,10 +381,13 @@ function renderWhatsNew(data) {
   if (isAheadOfStable && nextVersion) {
     prereleaseTargetVersion = nextVersion;
     $("#whatsNewVersion").text(nextVersion);
-    if (nextChangelogUrl) {
-      $("#whatsNewChangelogLink").attr("href", nextChangelogUrl).removeClass("d-none");
+    const safeNextChangelogUrl = sanitizeChangelogUrl(nextChangelogUrl);
+    if (safeNextChangelogUrl) {
+      $("#whatsNewChangelogLink").attr("href", safeNextChangelogUrl).removeClass("d-none");
+    } else {
+      $("#whatsNewChangelogLink").addClass("d-none");
     }
-    installedChangelogUrl = nextChangelogUrl || null;
+    installedChangelogUrl = safeNextChangelogUrl;
 
     // Render the stable-release notes as a single block.
     $("#whatsNewNotes").html(buildVersionBlock(nextVersion, null, nextReleaseNotes, nextChangelogUrl));
@@ -417,7 +420,7 @@ function renderWhatsNew(data) {
     } else {
       $("#whatsNewChangelogLink").addClass("d-none");
     }
-    installedChangelogUrl = latestUrl;
+    installedChangelogUrl = safeLatestUrl;
 
     // Remove any stale up-to-date banner from a previous render.
     $("#whatsNewContent .js-uptodate-banner").remove();
