@@ -143,6 +143,12 @@ describe("Upgrade Wizard — What you'll gain redesign", () => {
             cy.get("#whatsNewNotes .version-notes-block").first().should("contain", "99.0.0");
         });
 
+        it("does NOT show the advanced picker when only one version ahead (nothing to downgrade to)", () => {
+            reachWhatsNewStep("@previewRequest");
+
+            cy.get("#advancedVersionPanel").should("have.class", "d-none");
+        });
+
         it("renders a deep-link anchor for 99.0.0", () => {
             reachWhatsNewStep("@previewRequest");
 
@@ -317,6 +323,69 @@ describe("Upgrade Wizard — What you'll gain redesign", () => {
             cy.get("#recommendedBadge").should("not.have.class", "d-none");
             cy.get("#whatsNewNotes .version-notes-block").should("have.length", 3);
             cy.get("#proceedToDownload").should("contain", "99.0.0");
+        });
+    });
+
+    // ── (d) Prerelease / dev build ahead of latest stable (Case 1) ──────────────
+
+    describe("(d) Running a pre-release build ahead of latest stable", () => {
+        const prereleaseMockFixture = {
+            installedVersion: "99.5.0-dev",
+            nextVersion: "99.0.0",
+            latestVersion: "99.0.0",
+            nextReleaseNotes: "## 99.0.0\n\n- Latest stable release\n- Security patch included\n",
+            nextChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/99.0.0.md",
+            releasesAhead: 0,
+            latestReleaseNotes: "## 99.0.0\n\n- Latest stable release\n",
+            latestChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/99.0.0.md",
+            upgradePath: [],
+            isAheadOfStable: true,
+        };
+
+        beforeEach(() => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: prereleaseMockFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+        });
+
+        it("shows a pre-release warning banner", () => {
+            reachWhatsNewStep("@previewRequest");
+
+            cy.get("#whatsNewContent .alert-warning").should("be.visible").and("contain", "pre-release");
+        });
+
+        it("shows the stable version in the version heading", () => {
+            reachWhatsNewStep("@previewRequest");
+
+            cy.get("#whatsNewVersion").should("contain", "99.0.0");
+        });
+
+        it("CTA reads 'Install stable 99.0.0'", () => {
+            reachWhatsNewStep("@previewRequest");
+
+            cy.get("#proceedToDownload").should("be.visible").and("contain", "Install stable").and("contain", "99.0.0");
+        });
+
+        it("renders a version block for the stable target", () => {
+            reachWhatsNewStep("@previewRequest");
+
+            cy.get("#whatsNewNotes .version-notes-block").should("have.length", 1);
+            cy.get("#whatsNewNotes .version-notes-block").first().should("contain", "99.0.0");
+        });
+
+        it("does NOT show security callout in prerelease mode", () => {
+            reachWhatsNewStep("@previewRequest");
+
+            cy.get("#securityRecommendationCallout").should("have.class", "d-none");
+        });
+
+        it("does NOT show the advanced version picker in prerelease mode", () => {
+            reachWhatsNewStep("@previewRequest");
+
+            cy.get("#advancedVersionPanel").should("have.class", "d-none");
         });
     });
 });

@@ -45,9 +45,6 @@ let forceReinstallMode = false;
 // Stores the stable version to reinstall when running a prerelease build ahead of latest stable.
 let prereleaseTargetVersion = null;
 
-// Cached preview API response; used by the version-select change handler.
-let _currentPreviewData = null;
-
 // Ensure AdminAPIRequest is available — fallback to regular APIRequest if not defined.
 if (window.CRM && !window.CRM.AdminAPIRequest) {
   window.CRM.AdminAPIRequest = (options) => {
@@ -335,7 +332,6 @@ function semverCompare(a, b) {
  *   Case 3 — normal upgrade: one or more releases ahead.
  */
 function renderWhatsNew(data) {
-  _currentPreviewData = data;
   const {
     nextVersion,
     nextReleaseNotes,
@@ -454,7 +450,8 @@ function renderWhatsNew(data) {
   renderGainStack(upgradePath, latest);
 
   // Populate the advanced version picker.
-  if (upgradePath.length > 0) {
+  // Only reveal when there is at least one non-latest option to offer.
+  if (upgradePath.length > 1) {
     renderVersionSelector(upgradePath, latest);
     $("#advancedVersionPanel").removeClass("d-none");
   }
@@ -507,11 +504,12 @@ function renderVersionSelector(upgradePath, latestVersion) {
       selectedTargetVersion = null;
     } else {
       // ── Non-latest chosen — show security warning ─────────────────────────────
+      // Use .text() — version strings are plain semver (no HTML), no escaping needed.
       const warningMsg = i18next.t(
         "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.",
-        { chosen: escapeHtml(chosen), latest: escapeHtml(latestVersion) },
+        { chosen, latest: latestVersion },
       );
-      $("#advancedWarningText").html(warningMsg);
+      $("#advancedWarningText").text(warningMsg);
       $("#advancedWarningBanner").removeClass("d-none");
       $("#recommendedBadge").addClass("d-none");
 
@@ -807,7 +805,6 @@ function setupForceReinstallButton() {
     window.CRM.updateFile = null;
     selectedTargetVersion = null;
     prereleaseTargetVersion = null;
-    _currentPreviewData = null;
     $("#downloadStatus").empty();
     $("#updateDetails").addClass("d-none");
     $("#applyButtonContainer").addClass("d-none");
