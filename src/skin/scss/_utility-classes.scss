@@ -122,6 +122,14 @@
  * With position=after:  "1,234.50 €"
  *
  * The \00a0 (non-breaking space) prevents line-wrapping between symbol and number.
+ *
+ * Browser compat: Safari < 14 does not substitute CSS custom properties inside
+ * the `content` property, so the symbol will not appear on those browsers.
+ * No polyfill is provided; this is acceptable graceful degradation.
+ *
+ * JS consumers: use `window.CRM.currency.symbol` (not
+ * `getComputedStyle(html).getPropertyValue('--currency-symbol')`, which returns
+ * the value WITH surrounding CSS quotes, e.g. '"$"' not '$').
  */
 .money {
   white-space: nowrap;

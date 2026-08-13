@@ -43,9 +43,11 @@ if ($_themePrimary !== '') {
 }
 // Top level menu index counter
 $MenuFirst = 1;
-// Currency substrate — used on <html> for CSS custom property and data attribute
-$_currencyAttrs  = ' data-currency-position="' . InputUtils::escapeAttribute(CurrencyFormatter::position()) . '"';
-$_currencyAttrs .= ' style="--currency-symbol: &quot;' . InputUtils::escapeAttribute(CurrencyFormatter::symbol()) . '&quot;"';
+// Currency substrate — data attribute on <html> + CSS custom property via <style> block.
+// The symbol is JSON-encoded so any char (including '"' and backslash) produces
+// a valid CSS string literal without breaking the declaration.
+$_currencyAttrs     = ' data-currency-position="' . InputUtils::escapeAttribute(CurrencyFormatter::position()) . '"';
+$_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_THROW_ON_ERROR);
 ?>
 <!DOCTYPE html>
 <html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
@@ -105,6 +107,7 @@ $_currencyAttrs .= ' style="--currency-symbol: &quot;' . InputUtils::escapeAttri
   </script>
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
   <?= PluginManager::getPluginHeadContent() ?>
+  <style nonce="<?= SystemURLs::getCSPNonce() ?>">:root { --currency-symbol: <?= $_currencySymbolCss ?>; }</style>
 
 </head>
 
