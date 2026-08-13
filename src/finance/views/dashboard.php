@@ -155,7 +155,7 @@ $sRootPath = SystemURLs::getRootPath();
                 </a>
                 <?php endif; ?>
                 <?php if ($isAdmin): ?>
-                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-outline-secondary">
+                <a href="<?= $sRootPath ?>/finance/funds" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-piggy-bank me-1"></i><?= gettext('Manage Funds') ?>
                 </a>
                 <?php endif; ?>
@@ -215,7 +215,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div>
                                 <span class="badge bg-blue-lt text-blue"><?= $activeFundCount ?> <?= gettext('active') ?></span>
-                                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary ms-2">
+                                <a href="<?= $sRootPath ?>/finance/funds" class="btn btn-sm btn-outline-secondary ms-2">
                                     <i class="fa-solid fa-cog"></i> <?= gettext('Edit') ?>
                                 </a>
                             </div>

@@ -128,6 +128,11 @@ class DonationFundService
             if (strlen($name) === 0) {
                 throw new \InvalidArgumentException('Fund name cannot be empty.');
             }
+            // Reject rename to a name already used by another fund
+            $existing = DonationFundQuery::create()->findOneByName($name);
+            if ($existing !== null && (int) $existing->getId() !== $id) {
+                throw new \InvalidArgumentException("A fund named '{$name}' already exists.");
+            }
             $fund->setName($name);
         }
 

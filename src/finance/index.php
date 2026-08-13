@@ -17,5 +17,7 @@ require __DIR__ . '/routes/reports.php';
 require __DIR__ . '/routes/pledges.php';
 require __DIR__ . '/routes/fund.php';
 require __DIR__ . '/routes/deposits.php';
+require __DIR__ . '/routes/funds.php';
+require __DIR__ . '/routes/api/funds-api.php';
 
 $app->run();
