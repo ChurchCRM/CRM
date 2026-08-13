@@ -1,21 +1,23 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "N/A": "Н/Д",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Скопійовано {{count}} учасника",
+    "few": "Скопійовано {{count}} учасників",
+    "other": "Скопійовано {{count}} учасників"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "У цьому списку {{count}} одержувач — занадто багато для посилання mailto:. Натомість скористайтеся «Копіювати адреси».",
+    "other": "У цьому списку {{count}} одержувачів — занадто багато для посилання mailto:. Натомість скористайтеся «Копіювати адреси»."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Занадто багато одержувачів для поштового клієнта ({{count}} > {{max}}). Натомість скористайтеся «Копіювати адреси».",
+    "other": "Занадто багато одержувачів для поштового клієнта ({{count}} > {{max}}). Натомість скористайтеся «Копіювати адреси»."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Залишилась {{count}} хвилина",
+    "few": "Залишилось {{count}} хвилини",
+    "other": "Залишилось {{count}} хвилин"
   }
 }
