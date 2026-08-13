@@ -79,8 +79,8 @@ describe("API Admin Finance Funds - PUT (update)", () => {
     });
 
     it("Returns 400 when renaming to a name used by another fund", () => {
-        const nameA = `Cypress DupRename A ${Date.now()}`;
-        const nameB = `Cypress DupRename B ${Date.now()}`;
+        const nameA = `CyRenameA ${Date.now()}`;
+        const nameB = `CyRenameB ${Date.now()}`;
         cy.makePrivateAdminAPICall("POST", BASE, { name: nameA }, 201).then((rA) => {
             const idA = rA.body.fund.id;
             cy.makePrivateAdminAPICall("POST", BASE, { name: nameB }, 201).then((rB) => {
