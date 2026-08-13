@@ -89,6 +89,13 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 expect(parsed.total).to.be.closeTo(100.00, 0.01);
                 expect(parsed).to.have.property("total_formatted");
                 expect(parsed.total_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                // Phase 4: fund-level *_formatted siblings (from getPledgeorPayment)
+                expect(parsed.funds).to.be.an("array").with.length.greaterThan(0);
+                const fund = parsed.funds[0];
+                expect(fund).to.have.property("amount_formatted");
+                expect(fund.amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                expect(fund).to.have.property("nonDeductible_formatted");
+                expect(fund.nonDeductible_formatted).to.be.a("string");
             });
         });
 
@@ -117,6 +124,12 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 expect(parsed.total).to.be.closeTo(100.00, 0.01);
                 expect(parsed).to.have.property("total_formatted");
                 expect(parsed.total_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                // Phase 4: fund-level *_formatted siblings on each fund entry
+                const firstFund = parsed.funds[0];
+                expect(firstFund).to.have.property("amount_formatted");
+                expect(firstFund.amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                expect(firstFund).to.have.property("nonDeductible_formatted");
+                expect(firstFund.nonDeductible_formatted).to.be.a("string");
             });
         });
     });

@@ -544,9 +544,9 @@ class FinancialService
             $fund = [];
             $fund['FundID'] = $row->getFundId();
             $fund['Amount'] = $row->getAmount();
-            $fund['Amount_formatted'] = CurrencyFormatter::format($row->getAmount());
+            $fund['amount_formatted'] = CurrencyFormatter::format($row->getAmount());
             $fund['NonDeductible'] = $row->getNondeductible();
-            $fund['NonDeductible_formatted'] = CurrencyFormatter::format($row->getNondeductible());
+            $fund['nonDeductible_formatted'] = CurrencyFormatter::format($row->getNondeductible());
             $fund['Comment'] = $row->getComment();
             $payment->funds[] = $fund;
             $total += $row->getAmount();
