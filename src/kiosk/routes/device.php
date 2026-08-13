@@ -91,7 +91,7 @@ function getAdultFamilyMembers(Person $person): array
 
         $photo = new Photo('Person', $member->getId());
         $members[] = [
-            'Id'        => $member->getId(),
+            'Id'        => (int) $member->getId(), // explicit int cast — ensures strict in_array() works
             'FirstName' => $member->getFirstName(),
             'LastName'  => $member->getLastName(),
             'hasPhoto'  => $photo->hasUploadedPhoto(),
