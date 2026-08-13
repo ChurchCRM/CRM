@@ -10,8 +10,16 @@
   "BCC Mode": "",
   "Data": "",
   "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "N/A": "",
   "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "Preview": "",
   "Teller": "",
   "Copied {{count}} members": {

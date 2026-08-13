@@ -1,8 +1,18 @@
 {
   "Auto": "",
   "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "few": "",
+    "other": ""
+  },
   "N/A": "",
   "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "few": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
     "one": "",
     "other": ""

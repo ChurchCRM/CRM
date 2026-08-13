@@ -1,7 +1,19 @@
 {
+  "%d archived fundraiser": {
+    "other": ""
+  },
+  "%d person successfully added to selected family.": {
+    "other": ""
+  },
   "CSV": "",
+  "Email sent to %d family.": {
+    "other": ""
+  },
   "N/A": "",
   "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "other": ""
+  },
   "Copied {{count}} members": {
     "one": "",
     "other": ""

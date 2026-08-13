@@ -1,7 +1,15 @@
 {
   "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "N/A": "",
   "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
     "one": "",
     "other": ""
