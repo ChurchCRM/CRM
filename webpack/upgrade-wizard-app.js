@@ -272,12 +272,20 @@ function fetchUpgradePreview() {
  * @param {string}      notes        Markdown release notes
  * @param {string|null} changelogUrl Link to the full release notes on GitHub
  */
+/**
+ * Accept only http(s) changelog URLs; reject everything else (javascript:, data:, etc.).
+ * Returns the URL unchanged if valid, null otherwise.
+ */
+function sanitizeChangelogUrl(url) {
+  return url && /^https?:\/\//i.test(url) ? url : null;
+}
+
 function buildVersionBlock(version, type, notes, changelogUrl) {
   const anchor = `v${version.replace(/\./g, "-")}`;
   const typeHtml = type ? ` ${badgeForType(type)}` : "";
   const notesHtml = marked.parse(notes || "");
-  // F1: reject non-http(s) URLs (e.g. javascript:) before injecting into href.
-  const safeUrl = /^https?:\/\//i.test(changelogUrl ?? "") ? changelogUrl : null;
+  // Use sanitizeChangelogUrl so the same http(s)-only guard applies everywhere.
+  const safeUrl = sanitizeChangelogUrl(changelogUrl);
   const changelogLink = safeUrl
     ? `<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm flex-shrink-0">
          <i class="fa fa-external-link me-1"></i>${i18next.t("Full release notes")}
@@ -403,8 +411,11 @@ function renderWhatsNew(data) {
     const latestVer = data.latestVersion || "";
 
     $("#whatsNewVersion").text(latestVer);
-    if (latestUrl) {
-      $("#whatsNewChangelogLink").attr("href", latestUrl).removeClass("d-none");
+    const safeLatestUrl = sanitizeChangelogUrl(latestUrl);
+    if (safeLatestUrl) {
+      $("#whatsNewChangelogLink").attr("href", safeLatestUrl).removeClass("d-none");
+    } else {
+      $("#whatsNewChangelogLink").addClass("d-none");
     }
     installedChangelogUrl = latestUrl;
 
@@ -448,10 +459,13 @@ function renderWhatsNew(data) {
 
   // Set target to latest.
   $("#whatsNewVersion").text(latest || "");
-  if (latestChangelog) {
-    $("#whatsNewChangelogLink").attr("href", latestChangelog).removeClass("d-none");
+  const safeLatestChangelog = sanitizeChangelogUrl(latestChangelog);
+  if (safeLatestChangelog) {
+    $("#whatsNewChangelogLink").attr("href", safeLatestChangelog).removeClass("d-none");
+  } else {
+    $("#whatsNewChangelogLink").addClass("d-none");
   }
-  installedChangelogUrl = latestChangelog;
+  installedChangelogUrl = safeLatestChangelog;
 
   // Show security callout and the green "Recommended" badge.
   $("#securityRecommendationCallout").removeClass("d-none");
@@ -507,10 +521,13 @@ function renderVersionSelector(upgradePath, latestVersion) {
       $("#recommendedBadge").removeClass("d-none");
 
       const latestEntry = upgradePath.find((e) => e.version === latestVersion);
-      if (latestEntry?.changelogUrl) {
-        $("#whatsNewChangelogLink").attr("href", latestEntry.changelogUrl).removeClass("d-none");
+      const safeLatestHref = sanitizeChangelogUrl(latestEntry?.changelogUrl);
+      if (safeLatestHref) {
+        $("#whatsNewChangelogLink").attr("href", safeLatestHref).removeClass("d-none");
+      } else {
+        $("#whatsNewChangelogLink").addClass("d-none");
       }
-      installedChangelogUrl = latestEntry?.changelogUrl || null;
+      installedChangelogUrl = safeLatestHref;
 
       $("#whatsNewVersion").text(latestVersion);
       $("#proceedToDownload").html(
@@ -531,10 +548,13 @@ function renderVersionSelector(upgradePath, latestVersion) {
       $("#recommendedBadge").addClass("d-none");
 
       const chosenEntry = upgradePath.find((e) => e.version === chosen);
-      if (chosenEntry?.changelogUrl) {
-        $("#whatsNewChangelogLink").attr("href", chosenEntry.changelogUrl).removeClass("d-none");
+      const safeChosenHref = sanitizeChangelogUrl(chosenEntry?.changelogUrl);
+      if (safeChosenHref) {
+        $("#whatsNewChangelogLink").attr("href", safeChosenHref).removeClass("d-none");
+      } else {
+        $("#whatsNewChangelogLink").addClass("d-none");
       }
-      installedChangelogUrl = chosenEntry?.changelogUrl || null;
+      installedChangelogUrl = safeChosenHref;
 
       $("#whatsNewVersion").text(chosen);
       $("#proceedToDownload").html(
