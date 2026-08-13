@@ -55,7 +55,8 @@ CREATE TABLE `donationfund_fun` (
   `fun_Name` varchar(30) default NULL,
   `fun_Description` varchar(100) default NULL,
   `fun_Order` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY  (`fun_ID`)
+  PRIMARY KEY  (`fun_ID`),
+  UNIQUE KEY `fun_Name_unique` (`fun_Name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --

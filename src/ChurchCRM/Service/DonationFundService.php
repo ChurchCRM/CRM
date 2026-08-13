@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Exceptions\DonationFundNotFoundException;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
@@ -120,7 +121,7 @@ class DonationFundService
     {
         $fund = DonationFundQuery::create()->findOneById($id);
         if ($fund === null) {
-            throw new \InvalidArgumentException("Donation fund with ID {$id} not found.");
+            throw new DonationFundNotFoundException("Donation fund with ID {$id} not found.");
         }
 
         if (array_key_exists('name', $data)) {
@@ -160,7 +161,7 @@ class DonationFundService
     {
         $fund = DonationFundQuery::create()->findOneById($id);
         if ($fund === null) {
-            throw new \InvalidArgumentException("Donation fund with ID {$id} not found.");
+            throw new DonationFundNotFoundException("Donation fund with ID {$id} not found.");
         }
 
         $pledgeCount = PledgeQuery::create()->filterByFundId($id)->count();
@@ -197,7 +198,7 @@ class DonationFundService
 
         $fund = DonationFundQuery::create()->findOneById($id);
         if ($fund === null) {
-            throw new \InvalidArgumentException("Donation fund with ID {$id} not found.");
+            throw new DonationFundNotFoundException("Donation fund with ID {$id} not found.");
         }
 
         $currentOrder = $fund->getOrder();

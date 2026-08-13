@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\Exceptions\DonationFundNotFoundException;
+use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
@@ -17,7 +19,23 @@ use Slim\Routing\RouteCollectorProxy;
  * Mounted at /finance/api/funds via src/finance/index.php.
  */
 
-$app->group('/api/funds', function (RouteCollectorProxy $group): void {
+/**
+ * Convert a DonationFund model to a plain array for JSON output.
+ *
+ * Declared as a closure (not a global function) to avoid "Cannot redeclare"
+ * fatal errors if this file is ever included more than once in the same process.
+ */
+$fundToArray = static function (DonationFund $fund): array {
+    return [
+        'id'          => (int) $fund->getId(),
+        'name'        => $fund->getName(),
+        'description' => $fund->getDescription(),
+        'active'      => $fund->getActive() === 'true',
+        'order'       => (int) $fund->getOrder(),
+    ];
+};
+
+$app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArray): void {
 
     /**
      * @OA\Post(
@@ -51,7 +69,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=403, description="Admin role required")
      * )
      */
-    $group->post('', function (Request $request, Response $response): Response {
+    $group->post('', function (Request $request, Response $response) use ($fundToArray): Response {
         try {
             $input = (array) $request->getParsedBody();
             $name = (string) ($input['name'] ?? '');
@@ -73,7 +91,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group): void {
                 $fund->save();
             }
 
-            return SlimUtils::renderJSON($response, ['fund' => fundToArray($fund)], 201);
+            return SlimUtils::renderJSON($response, ['fund' => $fundToArray($fund)], 201);
         } catch (\InvalidArgumentException $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
         } catch (\Throwable $e) {
@@ -104,7 +122,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=404, description="Fund not found")
      * )
      */
-    $group->put('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
+    $group->put('/{id:[0-9]+}', function (Request $request, Response $response, array $args) use ($fundToArray): Response {
         try {
             $id = (int) $args['id'];
             $input = (array) $request->getParsedBody();
@@ -123,11 +141,11 @@ $app->group('/api/funds', function (RouteCollectorProxy $group): void {
             $service = new DonationFundService();
             $fund = $service->updateFund($id, $data);
 
-            return SlimUtils::renderJSON($response, ['fund' => fundToArray($fund)]);
+            return SlimUtils::renderJSON($response, ['fund' => $fundToArray($fund)]);
+        } catch (DonationFundNotFoundException $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Donation fund not found'), [], 404);
         } catch (\InvalidArgumentException $e) {
-            $msg = $e->getMessage();
-            $code = str_contains($msg, 'not found') ? 404 : 400;
-            return SlimUtils::renderErrorJSON($response, $msg, [], $code);
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update donation fund'), [], 500, $e, $request);
         }
@@ -152,7 +170,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group): void {
         try {
             (new DonationFundService())->deleteFund((int) $args['id']);
             return SlimUtils::renderSuccessJSON($response);
-        } catch (\InvalidArgumentException $e) {
+        } catch (DonationFundNotFoundException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Donation fund not found'), [], 404);
         } catch (\RuntimeException $e) {
             return SlimUtils::renderErrorJSON(
@@ -202,27 +220,13 @@ $app->group('/api/funds', function (RouteCollectorProxy $group): void {
 
             (new DonationFundService())->reorderFund($id, $direction);
             return SlimUtils::renderSuccessJSON($response);
+        } catch (DonationFundNotFoundException $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Donation fund not found'), [], 404);
         } catch (\InvalidArgumentException $e) {
-            $msg = $e->getMessage();
-            $code = str_contains($msg, 'not found') ? 404 : 400;
-            return SlimUtils::renderErrorJSON($response, $msg, [], $code);
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to reorder donation fund'), [], 500, $e, $request);
         }
     });
 
 })->add(AdminRoleAuthMiddleware::class);
-
-/**
- * Convert a DonationFund model to a plain array for JSON output.
- */
-function fundToArray(\ChurchCRM\model\ChurchCRM\DonationFund $fund): array
-{
-    return [
-        'id'          => (int) $fund->getId(),
-        'name'        => $fund->getName(),
-        'description' => $fund->getDescription(),
-        'active'      => $fund->getActive() === 'true',
-        'order'       => (int) $fund->getOrder(),
-    ];
-}
