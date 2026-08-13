@@ -190,29 +190,51 @@ function loadEnglishOkAllowlist() {
 
 // ── Plural form restructuring ───────────────────────────────────────────────
 
+// CLDR plural category names, in canonical order.
+const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
+
 /**
- * Defensive restructure for malformed plural forms from POEditor export.
- * If batch file has top-level "one"/"other", fixes to proper nesting.
+ * Defensive restructure for batch files that contain POEditor's inverted plural
+ * format at the top level (can arrive if the downloader skipped re-nesting).
+ *
+ * Handles all 6 CLDR plural categories (zero/one/two/few/many/other) and triggers
+ * whenever ANY plural-form bucket is present, not only when both one and other
+ * exist. Plain string terms and already-nested plural terms are passed through.
  */
 function restructurePluralForms(data) {
-    if (!data.one && !data.other) return data;
-    if (typeof data.one === 'object' && typeof data.other === 'object') {
-        const restructured = {};
-        for (const [key, value] of Object.entries(data)) {
-            if (key !== 'one' && key !== 'other' && typeof value === 'string') {
-                restructured[key] = value;
-            }
-        }
-        const termKeys = new Set([...Object.keys(data.one || {}), ...Object.keys(data.other || {})]);
-        for (const term of termKeys) {
-            const pluralForms = {};
-            if (data.one != null && data.one[term] !== undefined && data.one[term] !== null) pluralForms.one = data.one[term];
-            if (data.other != null && data.other[term] !== undefined && data.other[term] !== null) pluralForms.other = data.other[term];
-            if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
-        }
-        return restructured;
+    if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
+
+    // Detect inverted buckets: top-level keys that are CLDR form names with object values.
+    const invertedFormKeys = CLDR_PLURAL_FORMS.filter(
+        (form) => data[form] != null && typeof data[form] === 'object' && !Array.isArray(data[form])
+    );
+    if (invertedFormKeys.length === 0) return data;
+
+    const restructured = {};
+
+    // Pass through everything that is not an inverted bucket:
+    //   - plain string terms  (e.g. { "term": "translation" })
+    //   - already-nested plural terms  (e.g. { "term": { "one": "...", "other": "..." } })
+    for (const [key, value] of Object.entries(data)) {
+        if (invertedFormKeys.includes(key)) continue;
+        restructured[key] = value;
     }
-    return data;
+
+    // Re-nest each term found across the inverted plural-form buckets.
+    const termKeys = new Set();
+    for (const form of invertedFormKeys) {
+        for (const term of Object.keys(data[form])) termKeys.add(term);
+    }
+    for (const term of termKeys) {
+        const pluralForms = {};
+        for (const form of invertedFormKeys) {
+            const val = data[form][term];
+            if (val !== undefined && val !== null) pluralForms[form] = val;
+        }
+        if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
+    }
+
+    return restructured;
 }
 
 // ── Term analysis ────────────────────────────────────────────────────────────
@@ -495,6 +517,8 @@ async function fetchUntranslatedTerms(poEditorCode) {
  * Clears existing batch files first for a clean rebuild.
  */
 function saveBatchedMissingTerms(poEditorCode, missingTerms) {
+    missingTerms = restructurePluralForms(missingTerms);
+
     const localeOutDir = path.join(MISSING_DIR, poEditorCode);
     if (!fs.existsSync(localeOutDir)) fs.mkdirSync(localeOutDir, { recursive: true });
 

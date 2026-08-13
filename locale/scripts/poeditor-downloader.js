@@ -139,30 +139,61 @@ async function fetchUntranslatedTerms(poEditorLocale) {
     });
 }
 
+// CLDR plural category names, in canonical order.
+const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
+
 /**
- * Restructure POEditor export from malformed to correct format for upload.
- * POEditor returns: { "one": { term1: "...", term2: "..." }, "other": { ... } }
- * We need: { "term1": { "one": "...", "other": "..." }, "term2": { ... } }
+ * Restructure POEditor's inverted plural export into i18next's nested shape.
+ *
+ * POEditor's key_value_json format groups translated plural terms BY plural
+ * form (the inverted layout):
+ *   { "one": { term1: "...", term2: "..." }, "few": { ... }, "many": { ... }, "other": { ... } }
+ *
+ * i18next expects each term to own its plural forms (the nested layout):
+ *   { term1: { "one": "...", "few": "...", "many": "...", "other": "..." }, term2: { ... } }
+ *
+ * This function handles every CLDR plural category (zero/one/two/few/many/other),
+ * not just one/other, and triggers whenever ANY plural-form bucket is present at
+ * the top level — so languages that export e.g. { "one": {...}, "many": {...} }
+ * without an "other" bucket are still correctly re-nested.
+ *
+ * Terms already in the nested shape (Type A: stored as plain JSON objects in
+ * POEditor) and plain string terms are passed through untouched.
  */
 function restructurePluralForms(data) {
-    if (!data.one && !data.other) return data;
-    if (typeof data.one === 'object' && typeof data.other === 'object') {
-        const restructured = {};
-        for (const [key, value] of Object.entries(data)) {
-            if (key !== 'one' && key !== 'other' && typeof value === 'string') {
-                restructured[key] = value;
-            }
-        }
-        const termKeys = new Set([...Object.keys(data.one || {}), ...Object.keys(data.other || {})]);
-        for (const term of termKeys) {
-            const pluralForms = {};
-            if (data.one != null && data.one[term] !== undefined && data.one[term] !== null) pluralForms.one = data.one[term];
-            if (data.other != null && data.other[term] !== undefined && data.other[term] !== null) pluralForms.other = data.other[term];
-            if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
-        }
-        return restructured;
+    if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
+
+    // Detect inverted buckets: top-level keys that are CLDR form names with object values.
+    const invertedFormKeys = CLDR_PLURAL_FORMS.filter(
+        (form) => data[form] != null && typeof data[form] === 'object' && !Array.isArray(data[form])
+    );
+    if (invertedFormKeys.length === 0) return data;
+
+    const restructured = {};
+
+    // Pass through everything that is not an inverted bucket:
+    //   - plain string terms  (e.g. { "term": "translation" })
+    //   - already-nested plural terms  (e.g. { "term": { "one": "...", "other": "..." } })
+    for (const [key, value] of Object.entries(data)) {
+        if (invertedFormKeys.includes(key)) continue;
+        restructured[key] = value;
     }
-    return data;
+
+    // Re-nest each term found across the inverted plural-form buckets.
+    const termKeys = new Set();
+    for (const form of invertedFormKeys) {
+        for (const term of Object.keys(data[form])) termKeys.add(term);
+    }
+    for (const term of termKeys) {
+        const pluralForms = {};
+        for (const form of invertedFormKeys) {
+            const val = data[form][term];
+            if (val !== undefined && val !== null) pluralForms[form] = val;
+        }
+        if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
+    }
+
+    return restructured;
 }
 
 /**
@@ -352,10 +383,18 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                             reject(new Error(`Downloaded file is empty (0 bytes) for ${format.type}`));
                             return;
                         }
-                        // Add trailing newline for JSON files (POSIX standard)
-                        if (format.ext === 'json' && fileData[fileData.length - 1] !== 0x0A) {
-                            fileData = Buffer.concat([fileData, Buffer.from('\n')]);
-                        }                        
+                        if (format.ext === 'json') {
+                            // Re-nest POEditor's inverted plural-form export into the nested
+                            // shape i18next expects, then normalise formatting and add newline.
+                            try {
+                                const parsed = JSON.parse(fileData.toString('utf8'));
+                                const restructured = restructurePluralForms(parsed);
+                                fileData = Buffer.from(JSON.stringify(restructured, null, 2) + '\n', 'utf8');
+                            } catch (err) {
+                                reject(new Error(`Failed to restructure plural forms for ${format.type}: ${err.message}`));
+                                return;
+                            }
+                        }
                         fs.writeFileSync(outputPath, fileData);
                         const fileSize = fileData.length;
                         console.log(`    ✅ ${format.ext.toUpperCase()}: ${fileSize} bytes`);
