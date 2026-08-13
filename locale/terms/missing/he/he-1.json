@@ -1,21 +1,21 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "הועתק חבר {{count}}",
+    "other": "הועתקו {{count}} חברים"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "לרשימה זו יש {{count}} נמען — יותר מדי עבור קישור mailto:. השתמש במקום זאת בהעתקת כתובות.",
+    "other": "לרשימה זו יש {{count}} נמענים — יותר מדי עבור קישור mailto:. השתמש במקום זאת בהעתקת כתובות."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "יותר מדי נמענים לתוכנת הדואר האלקטרוני ({{count}} > {{max}}). השתמש במקום זאת בהעתקת כתובות.",
+    "other": "יותר מדי נמענים לתוכנת הדואר האלקטרוני ({{count}} > {{max}}). השתמש במקום זאת בהעתקת כתובות."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "נותרה {{count}} דקה",
+    "other": "נותרו {{count}} דקות"
   }
 }
