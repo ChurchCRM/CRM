@@ -1,21 +1,21 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Đã sao chép {{count}} thành viên",
+    "other": "Đã sao chép {{count}} thành viên"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Danh sách này có {{count}} người nhận — quá nhiều cho liên kết mailto:. Hãy sử dụng Sao chép Địa chỉ.",
+    "other": "Danh sách này có {{count}} người nhận — quá nhiều cho liên kết mailto:. Hãy sử dụng Sao chép Địa chỉ."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Quá nhiều người nhận cho ứng dụng email ({{count}} > {{max}}). Hãy sử dụng Sao chép Địa chỉ.",
+    "other": "Quá nhiều người nhận cho ứng dụng email ({{count}} > {{max}}). Hãy sử dụng Sao chép Địa chỉ."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Còn {{count}} phút",
+    "other": "Còn {{count}} phút"
   }
 }
