@@ -1,31 +1,31 @@
 {
-  "Auto": "",
-  "CSV": "",
+  "Auto": "Automatycznie",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "",
-    "few": "",
-    "other": ""
+    "one": "Wiadomość e-mail wysłana do %d rodziny.",
+    "few": "Wiadomość e-mail wysłana do %d rodzin.",
+    "other": "Wiadomość e-mail wysłana do %d rodzin."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "",
-    "few": "",
-    "other": ""
+    "one": "PDF został pomyślnie wysłany e-mailem do %d rodziny.",
+    "few": "PDF został pomyślnie wysłany e-mailem do %d rodzin.",
+    "other": "PDF został pomyślnie wysłany e-mailem do %d rodzin."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Skopiowano {{count}} członka",
+    "other": "Skopiowano {{count}} członków"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ta lista ma {{count}} odbiorcę — zbyt wielu jak na łącze mailto:. Użyj opcji Kopiuj adresy.",
+    "other": "Ta lista ma {{count}} odbiorców — zbyt wielu jak na łącze mailto:. Użyj opcji Kopiuj adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Zbyt wielu odbiorców dla klienta poczty ({{count}} > {{max}}). Użyj opcji Kopiuj adresy.",
+    "other": "Zbyt wielu odbiorców dla klienta poczty ({{count}} > {{max}}). Użyj opcji Kopiuj adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Pozostała {{count}} minuta",
+    "other": "Pozostało {{count}} minut"
   }
 }

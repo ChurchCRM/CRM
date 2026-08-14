@@ -1,33 +1,33 @@
 {
   "%d archived fundraiser": {
-    "other": ""
+    "other": "%d 個已封存的募款活動"
   },
   "%d person successfully added to selected family.": {
-    "other": ""
+    "other": "%d 位成員已成功加入所選家庭。"
   },
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "other": ""
+    "other": "電子郵件已傳送至 %d 個家庭。"
   },
-  "N/A": "",
-  "OFX": "",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "other": ""
+    "other": "PDF 已成功以電子郵件傳送至 %d 個家庭。"
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "已複製 {{count}} 位成員",
+    "other": "已複製 {{count}} 位成員"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "此清單有 {{count}} 位收件人，對於 mailto: 連結而言過多。請改用複製地址。",
+    "other": "此清單有 {{count}} 位收件人，對於 mailto: 連結而言過多。請改用複製地址。"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "電子郵件用戶端的收件人過多（{{count}} > {{max}}）。請改用複製地址。",
+    "other": "電子郵件用戶端的收件人過多（{{count}} > {{max}}）。請改用複製地址。"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "剩餘 {{count}} 分鐘",
+    "other": "剩餘 {{count}} 分鐘"
   }
 }
