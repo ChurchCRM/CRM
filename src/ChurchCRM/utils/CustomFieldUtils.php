@@ -246,7 +246,7 @@ class CustomFieldUtils
 
                 foreach ($groupPeople as $p2g2r) {
                     $person = $p2g2r->getPerson();
-                    echo '<option value="' . $person->getId() . '"' . ($data == $person->getId() ? ' selected' : '') . '>' . $person->getFullName() . '</option>';
+                    echo '<option value="' . $person->getId() . '"' . ($data == $person->getId() ? ' selected' : '') . '>' . InputUtils::escapeHTML($person->getFullName()) . '</option>';
                 }
 
                 echo '</select></div>';
