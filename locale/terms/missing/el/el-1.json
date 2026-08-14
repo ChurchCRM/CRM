@@ -1,29 +1,29 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "",
-    "other": ""
+    "one": "Το email στάλθηκε σε %d οικογένεια.",
+    "other": "Το email στάλθηκε σε %d οικογένειες."
   },
-  "N/A": "",
-  "OFX": "",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "",
-    "other": ""
+    "one": "Το PDF στάλθηκε επιτυχώς μέσω email σε %d οικογένεια.",
+    "other": "Το PDF στάλθηκε επιτυχώς μέσω email σε %d οικογένειες."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Αντιγράφηκε {{count}} μέλος",
+    "other": "Αντιγράφηκαν {{count}} μέλη"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Αυτή η λίστα έχει {{count}} παραλήπτη — πάρα πολλοί για σύνδεσμο mailto:. Χρησιμοποιήστε αντ αυτού την Αντιγραφή Διευθύνσεων.",
+    "other": "Αυτή η λίστα έχει {{count}} παραλήπτες — πάρα πολλοί για σύνδεσμο mailto:. Χρησιμοποιήστε αντ αυτού την Αντιγραφή Διευθύνσεων."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Πολλοί παραλήπτες για τον πελάτη email ({{count}} > {{max}}). Χρησιμοποιήστε αντ αυτού την Αντιγραφή Διευθύνσεων.",
+    "other": "Πολλοί παραλήπτες για τον πελάτη email ({{count}} > {{max}}). Χρησιμοποιήστε αντ αυτού την Αντιγραφή Διευθύνσεων."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Απομένει {{count}} λεπτό",
+    "other": "Απομένουν {{count}} λεπτά"
   }
 }
