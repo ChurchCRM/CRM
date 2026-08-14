@@ -1,33 +1,33 @@
 {
   "%d archived fundraiser": {
-    "other": ""
+    "other": "%d件のアーカイブされた募金活動"
   },
   "%d person successfully added to selected family.": {
-    "other": ""
+    "other": "%d人が選択した家族に正常に追加されました。"
   },
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "other": ""
+    "other": "%d世帯にメールを送信しました。"
   },
-  "N/A": "",
-  "OFX": "",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "other": ""
+    "other": "%d世帯にPDFをメールで送信しました。"
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}人のメンバーをコピーしました",
+    "other": "{{count}}人のメンバーをコピーしました"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "このリストには{{count}}人の受信者がいます。mailto: リンクには多すぎます。代わりにアドレスをコピーを使用してください。",
+    "other": "このリストには{{count}}人の受信者がいます。mailto: リンクには多すぎます。代わりにアドレスをコピーを使用してください。"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "メールクライアントの受信者が多すぎます（{{count}} > {{max}}）。代わりにアドレスをコピーを使用してください。",
+    "other": "メールクライアントの受信者が多すぎます（{{count}} > {{max}}）。代わりにアドレスをコピーを使用してください。"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "残り{{count}}分",
+    "other": "残り{{count}}分"
   }
 }
