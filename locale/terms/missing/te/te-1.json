@@ -1,21 +1,29 @@
 {
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
-    "one": "{{count}} సభ్యుడు కాపీ చేయబడ్డారు",
-    "other": "{{count}} సభ్యులు కాపీ చేయబడ్డారు"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ఈ జాబితాలో {{count}} స్వీకర్త ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలు కాపీ చేయి ఉపయోగించండి.",
-    "other": "ఈ జాబితాలో {{count}} స్వీకర్తలు ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలు కాపీ చేయి ఉపయోగించండి."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ఇమెయిల్ క్లయింట్‌కు స్వీకర్తలు చాలా ఎక్కువ ({{count}} > {{max}}). బదులుగా చిరునామాలు కాపీ చేయి ఉపయోగించండి.",
-    "other": "ఇమెయిల్ క్లయింట్‌కు స్వీకర్తలు చాలా ఎక్కువ ({{count}} > {{max}}). బదులుగా చిరునామాలు కాపీ చేయి ఉపయోగించండి."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} నిమిషం మిగిలింది",
-    "other": "{{count}} నిమిషాలు మిగిలాయి"
+    "one": "",
+    "other": ""
   }
 }

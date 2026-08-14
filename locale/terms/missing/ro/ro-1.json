@@ -1,25 +1,35 @@
 {
-  "Important": "Important",
-  "Major": "Major",
-  "Catalog": "Catalog",
-  "Auto": "Auto",
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "Important": "",
+  "Major": "",
+  "Catalog": "",
+  "Auto": "",
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "few": "",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "few": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
-    "one": "{{count}} membru copiat",
-    "other": "{{count}} membri copiați"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Această listă are {{count}} destinatar — prea mulți pentru un link mailto:. Folosiți Copiați adresele în schimb.",
-    "other": "Această listă are {{count}} destinatari — prea mulți pentru un link mailto:. Folosiți Copiați adresele în schimb."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți Copiați adresele în schimb.",
-    "other": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți Copiați adresele în schimb."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min rămas",
-    "other": "{{count}} min rămase"
+    "one": "",
+    "other": ""
   }
 }

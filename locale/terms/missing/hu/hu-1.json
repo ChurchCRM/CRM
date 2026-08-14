@@ -1,21 +1,29 @@
 {
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "",
+    "other": ""
+  },
   "Copied {{count}} members": {
-    "one": "{{count}} tag másolva",
-    "other": "{{count}} tag másolva"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Ez a lista {{count}} címzettet tartalmaz – túl sok egy mailto: hivatkozáshoz. Ehelyett használja a Címek másolása funkciót.",
-    "other": "Ez a lista {{count}} címzettet tartalmaz – túl sok egy mailto: hivatkozáshoz. Ehelyett használja a Címek másolása funkciót."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Túl sok címzett a levelezőprogramnak ({{count}} > {{max}}). Ehelyett használja a Címek másolása funkciót.",
-    "other": "Túl sok címzett a levelezőprogramnak ({{count}} > {{max}}). Ehelyett használja a Címek másolása funkciót."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} perc maradt",
-    "other": "{{count}} perc maradt"
+    "one": "",
+    "other": ""
   }
 }

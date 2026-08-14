@@ -17201,6 +17201,10 @@ msgid "Catch recurring errors"
 msgstr "Fånga återkommande fel"
 
 #: 
+msgid "Check #"
+msgstr "Checknr."
+
+#: 
 msgid "Church name, address, or contact details"
 msgstr "Kyrkonamn, adress eller kontaktuppgifter"
 
