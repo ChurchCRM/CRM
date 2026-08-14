@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
@@ -138,12 +139,42 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location ="DonationFundRowOps.php?FundID=" + fundId +"&Action=delete";
+                        // Submit as POST + CSRF so the 405/403 guard in RowOps is satisfied
+                        // (GHSA-68xh-3jh8-3wvq: GET-based delete was CSRF-exploitable).
+                        var form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = 'DonationFundRowOps.php';
+                        [['FundID', fundId], ['Action', 'delete'],
+                         ['csrf_token', <?= json_encode(CSRFUtils::generateToken('donationFundAction')) ?>]]
+                        .forEach(function(p) {
+                            var inp = document.createElement('input');
+                            inp.type = 'hidden'; inp.name = p[0]; inp.value = p[1];
+                            form.appendChild(inp);
+                        });
+                        document.body.appendChild(form);
+                        form.submit();
                     }
                 }
             });
             return false;
         }
+
+        // Reorder (up/down) — POST with CSRF so the 405 guard in RowOps is satisfied.
+        $(document).on('click', '.js-reorder-fund', function() {
+            var btn = $(this);
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'DonationFundRowOps.php';
+            [['FundID', btn.data('fund-id')], ['Action', btn.data('direction')],
+             ['csrf_token', <?= json_encode(CSRFUtils::generateToken('donationFundAction')) ?>]]
+            .forEach(function(p) {
+                var inp = document.createElement('input');
+                inp.type = 'hidden'; inp.name = p[0]; inp.value = p[1];
+                form.appendChild(inp);
+            });
+            document.body.appendChild(form);
+            form.submit();
+        });
 
         <?php if (isset($_GET['Action']) && $_GET['Action'] === 'delete'): ?>
         $(document).ready(function() {
@@ -290,14 +321,14 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <?php if ($row !== 0): ?>
-                                                        <a class="dropdown-item" href="DonationFundRowOps.php?FundID=<?= $aIDFields[$row] ?>&Action=up">
+                                                        <button type="button" class="dropdown-item js-reorder-fund" data-fund-id="<?= (int) $aIDFields[$row] ?>" data-direction="up">
                                                             <i class="ti ti-arrow-up me-2"></i><?= gettext('Move up') ?>
-                                                        </a>
+                                                        </button>
                                                     <?php endif; ?>
                                                     <?php if ($row < $donationFunds->count() - 1): ?>
-                                                        <a class="dropdown-item" href="DonationFundRowOps.php?FundID=<?= $aIDFields[$row] ?>&Action=down">
+                                                        <button type="button" class="dropdown-item js-reorder-fund" data-fund-id="<?= (int) $aIDFields[$row] ?>" data-direction="down">
                                                             <i class="ti ti-arrow-down me-2"></i><?= gettext('Move down') ?>
-                                                        </a>
+                                                        </button>
                                                     <?php endif; ?>
                                                     <?php if ($row !== 0 || $row < $donationFunds->count() - 1): ?>
                                                     <div class="dropdown-divider"></div>
