@@ -146,7 +146,8 @@ class SystemURLs
             $manifestPath = rtrim(self::$documentRoot, DIRECTORY_SEPARATOR) . '/skin/v2/asset-manifest.json';
             if (file_exists($manifestPath)) {
                 $json = file_get_contents($manifestPath);
-                self::$assetManifest = is_string($json) ? (json_decode($json, true) ?? []) : [];
+                $decoded = is_string($json) ? json_decode($json, true) : null;
+                self::$assetManifest = is_array($decoded) ? $decoded : [];
             } else {
                 self::$assetManifest = []; // manifest not yet built; fall back to mtime versioning
             }

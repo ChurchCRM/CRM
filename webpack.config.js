@@ -92,7 +92,7 @@ class AssetManifestPlugin {
       // Match content-hashed CSS/JS bundles: name.8hexchars.min.{js,css}
       // Does NOT match assets/ sub-files (fonts, images) — already content-hashed
       // by webpack's asset/resource rule and not served by PHP templates directly.
-      const HASHED_BUNDLE = /^(.+)\.[0-9a-f]{8}(\.min\.(?:js|css))$/;
+      const HASHED_BUNDLE = /^(.+?)\.[0-9a-f]{8}(\.min\.(?:js|css))$/;
 
       for (const asset of compilation.getAssets()) {
         const m = HASHED_BUNDLE.exec(asset.name);
@@ -229,6 +229,9 @@ module.exports = {
         pathData.chunk.name === 'setup'
           ? '[name].min.css'
           : '[name].[contenthash:8].min.css',
+      // chunkFilename must be set explicitly: same reason as output.chunkFilename —
+      // MiniCssExtractPlugin defaults to [id].css when filename is a function.
+      chunkFilename: '[name].[contenthash:8].min.css',
       ignoreOrder: false,
     }),
     new AssetManifestPlugin(),
