@@ -148,6 +148,8 @@ window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_HEX_TAG | JSON
 </script>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/calendar-event-editor.min.js') ?>"></script>
+<!-- FullCalendar v7 CSS (webpack-extracted from event-calendars.js: skeleton + Forma theme + blue palette) -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/event-calendars.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/event-calendars.min.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
