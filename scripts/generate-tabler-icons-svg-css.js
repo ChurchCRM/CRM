@@ -86,15 +86,22 @@ for (const dir of SCAN_DIRS) {
 // ─── Step 2: Resolve each name to an SVG file ─────────────────────────────────
 
 /**
- * Minify an SVG string: collapse whitespace between tags, trim, and remove
- * XML declaration. Keeps attribute values unchanged.
+ * Minify an SVG string: collapse whitespace between tags and trim.
+ *
+ * Note: we intentionally do NOT strip HTML/XML comments here.
+ * Attempting to remove `<!--...-->` with a regex constitutes
+ * incomplete multi-character sanitization (CodeQL js/incomplete-multi-
+ * character-sanitization). It is also unnecessary: svgToDataUri() passes
+ * the result through encodeURIComponent(), which percent-encodes `<` as
+ * `%3C` — making any surviving `<!--` sequences harmless in a CSS url().
+ * The SVG source files come from @tabler/icons (a pinned npm dependency),
+ * not from user input, so the risk is zero in practice as well.
  */
 function minifySvg(svg) {
   return svg
-    .replace(/<!--[\s\S]*?-->/g, '') // strip comments
-    .replace(/\r?\n/g, ' ')           // newlines → space
-    .replace(/>\s+</g, '><')          // whitespace between tags
-    .replace(/\s{2,}/g, ' ')          // run of spaces → single
+    .replace(/\r?\n/g, ' ')   // newlines → space
+    .replace(/>\s+</g, '><')  // whitespace between tags
+    .replace(/\s{2,}/g, ' ')  // run of spaces → single
     .trim();
 }
 
