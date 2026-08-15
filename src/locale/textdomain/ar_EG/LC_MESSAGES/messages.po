@@ -558,16 +558,8 @@ msgid "Picture URL"
 msgstr "رابط الصورة"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "تحرير صندوق التبرعات"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "حقول غير صالحة أو التحديدات. التغييرات غير المحفوظة! الرجاء تصحيح وحاول مرة أخرى!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "لم تتم إضافة أي أموال حتى الآن"
 
 #: 
 msgid "Active"
@@ -2166,14 +2158,6 @@ msgstr "عناصر تبرعت"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "قائمة المشتريات"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "مجموعه جميع المشتريات: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "اجمالى المشتريات"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7366,10 +7350,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "بحذف هذا الحقل، ستفقد بشكل لا رجعة فيه جميع بيانات أعضاء المجموعة المخصصة لهذا الحقل!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "بحذف هذا الصندوق، قد تؤثر على سجلات التبرعات التاريخية!"
-
-#: 
 msgid "Category Name"
 msgstr "اسم الفئة"
 
@@ -7422,10 +7402,6 @@ msgid "Filter by Class"
 msgstr "تصفية حسب الفصل"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "تم حذف الصندوق بنجاح"
-
-#: 
 msgid "In Use"
 msgstr "قيد الاستخدام"
 
@@ -7472,10 +7448,6 @@ msgstr "إزالة عدد الحضور هذا؟"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "حدد نوع السجل الذي تنطبق عليه هذه الخاصية"
-
-#: 
-msgid "That fund name already exists."
-msgstr "اسم الصندوق هذا موجود بالفعل."
 
 #: 
 msgid "Total Pledges"
@@ -16621,10 +16593,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "وظيفة البريد الإلكتروني معطّلة حالياً. لن تعمل الميزات التالية حتى يتم تفعيل البريد الإلكتروني"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "القيمة التقديرية $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "أسرع سير عمل"
 
@@ -16667,10 +16635,6 @@ msgstr "التطوير المحلي"
 #: 
 msgid "Minimum Total Amount"
 msgstr "الحد الأدنى للمبلغ الإجمالي"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "الحد الأدنى للعطاء $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17597,6 +17561,16 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "لم يتم تهيئة البريد الإلكتروني. يرجى تهيئة إعدادات SMTP في إعدادات النظام."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "لم يتم إرسال بريد إلكتروني إلى أي عائلة."
+msgstr[1] "تم إرسال بريد إلكتروني إلى عائلة واحدة."
+msgstr[2] "تم إرسال بريد إلكتروني إلى عائلتين."
+msgstr[3] "تم إرسال بريد إلكتروني إلى %d عائلات."
+msgstr[4] "تم إرسال بريد إلكتروني إلى %d عائلة."
+msgstr[5] "تم إرسال بريد إلكتروني إلى %d عائلة."
+
+#: 
 msgid "Enter a street address first."
 msgstr "يرجى إدخال عنوان الشارع أولًا."
 
@@ -17663,6 +17637,16 @@ msgstr "لم تُوجد مدفوعات للإيداعات المحددة"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "لم يتم تقديم معرّفات إيداع صالحة"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "لم يتم إرسال ملف PDF بنجاح إلى أي عائلة."
+msgstr[1] "تم إرسال ملف PDF بنجاح إلى عائلة واحدة."
+msgstr[2] "تم إرسال ملف PDF بنجاح إلى عائلتين."
+msgstr[3] "تم إرسال ملف PDF بنجاح إلى %d عائلات."
+msgstr[4] "تم إرسال ملف PDF بنجاح إلى %d عائلة."
+msgstr[5] "تم إرسال ملف PDF بنجاح إلى %d عائلة."
 
 #: 
 msgid "Partial Send"

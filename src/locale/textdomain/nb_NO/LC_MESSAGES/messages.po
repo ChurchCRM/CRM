@@ -583,16 +583,8 @@ msgid "Picture URL"
 msgstr "Bilde URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Donasjon Fund Editor"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ugyldige felt eller valg. Endringer ikke lagret! Rett opp og prøv igjen!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Ingen midler har blitt lagt til ennå"
 
 #: 
 msgid "Active"
@@ -2251,14 +2243,6 @@ msgstr "Donert elementer"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Kjøpte elementer"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Summen av alle kjøpene: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totalt kjøp: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7420,10 +7404,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Ved å slette dette feltet vil du ugjenkallelig miste alle gruppemedlemsdata tildelt dette feltet!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Ved å slette dette fondet kan du påvirke historiske donasjonsregistre!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategorinavn"
 
@@ -7476,10 +7456,6 @@ msgid "Filter by Class"
 msgstr "Filtrer etter Klasse"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fondet ble slettet"
-
-#: 
 msgid "In Use"
 msgstr "I Bruk"
 
@@ -7526,10 +7502,6 @@ msgstr "Fjerne denne oppmøtetellingen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Velg posttypen denne egenskapen gjelder for"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Det fondnavnet eksisterer allerede."
 
 #: 
 msgid "Total Pledges"
@@ -16647,10 +16619,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-postfunksjonalitet er for øyeblikket deaktivert. Følgende funksjoner vil ikke fungere før e-post er aktivert"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Anslått verdi $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Raskeste arbeidsflyt"
 
@@ -16693,10 +16661,6 @@ msgstr "Lokal utvikling"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minste totale beløp"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimumsbud $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

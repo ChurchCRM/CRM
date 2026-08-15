@@ -1,37 +1,50 @@
 {
-  "CSV": "CSV",
-  "Email sent to %d family.": {
-    "zero": "لم يتم إرسال بريد إلكتروني إلى أي عائلة.",
-    "one": "تم إرسال بريد إلكتروني إلى عائلة واحدة.",
-    "two": "تم إرسال بريد إلكتروني إلى عائلتين.",
-    "few": "تم إرسال بريد إلكتروني إلى %d عائلات.",
-    "many": "تم إرسال بريد إلكتروني إلى %d عائلة.",
-    "other": "تم إرسال بريد إلكتروني إلى %d عائلة."
-  },
-  "N/A": "N/A",
-  "OFX": "OFX",
-  "PDF successfully emailed to %d family.": {
-    "zero": "لم يتم إرسال ملف PDF بنجاح إلى أي عائلة.",
-    "one": "تم إرسال ملف PDF بنجاح إلى عائلة واحدة.",
-    "two": "تم إرسال ملف PDF بنجاح إلى عائلتين.",
-    "few": "تم إرسال ملف PDF بنجاح إلى %d عائلات.",
-    "many": "تم إرسال ملف PDF بنجاح إلى %d عائلة.",
-    "other": "تم إرسال ملف PDF بنجاح إلى %d عائلة."
-  },
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Birthdays & Anniversaries": "",
+  "Estimated value %s.": "",
+  "Minimum bid %s.": "",
+  "No \"%s\" options are available yet. Add the relevant records first.": "",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "",
+  "People with birthdays or wedding anniversaries in a particular month": "",
+  "The month for which you would like birthdays and anniversaries returned.": "",
+  "The wedding anniversary month for which you would like records returned.": "",
+  "Total of all purchases: %s": "",
+  "Total purchases: %s": "",
+  "Wedding Anniversaries": "",
+  "People with wedding anniversaries in a particular month": "",
+  "An error occurred. Please try again.": "",
+  "Are you sure you want to delete this fund?": "",
+  "Cannot delete: fund has associated pledges": "",
+  "Delete Fund": "",
+  "Direction must be 'up' or 'down'.": "",
+  "Edit Donation Fund": "",
+  "Failed to reorder donation fund": "",
+  "Fund added successfully.": "",
+  "Fund deleted successfully.": "",
+  "Fund name": "",
+  "Fund name is required.": "",
+  "Fund order updated.": "",
+  "Fund saved successfully.": "",
+  "No funds have been added yet. Use the form above to add the first fund.": "",
+  "Optional description": "",
+  "Private Calendar": "",
+  "Public Calendar": "",
   "Copied {{count}} members": {
-    "one": "تم نسخ عضو واحد",
-    "other": "تم نسخ {{count}} أعضاء"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "تحتوي هذه القائمة على مستلم واحد — كثير جداً لرابط mailto:. استخدم نسخ العناوين بدلاً من ذلك.",
-    "other": "تحتوي هذه القائمة على {{count}} مستلمين — كثير جداً لرابط mailto:. استخدم نسخ العناوين بدلاً من ذلك."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "عدد المستلمين كبير جداً لعميل البريد الإلكتروني ({{count}} > {{max}}). استخدم نسخ العناوين بدلاً من ذلك.",
-    "other": "عدد المستلمين كبير جداً لعميل البريد الإلكتروني ({{count}} > {{max}}). استخدم نسخ العناوين بدلاً من ذلك."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "دقيقة واحدة متبقية",
-    "other": "{{count}} دقائق متبقية"
+    "one": "",
+    "other": ""
   }
 }

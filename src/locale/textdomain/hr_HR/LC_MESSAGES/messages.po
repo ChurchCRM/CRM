@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "URL slike"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Urednik donacijskog fonda"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Nevažeća polja ili odabiri. Promjene nisu spremljene! Ispravite i pokušajte ponovo!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Još nisu dodani fondovi"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "Donirane stavke"
 #: 
 msgid "Purchased Items"
 msgstr "Kupljene stavke"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Ukupno svih kupovina: "
-
-#: 
-msgid "Total purchases: $"
-msgstr "Ukupno kupovina: "
 
 #: 
 msgid "Amount paid: ________________"
@@ -7314,10 +7298,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Brisanjem ovog polja nepovratno ćete izgubiti sve podatke članova skupini dodijeljene za ovo polje!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Brisanjem ovog fonda možete utjecati na povijesne zapise o darovima!"
-
-#: 
 msgid "Category Name"
 msgstr "Naziv kategorije"
 
@@ -7370,10 +7350,6 @@ msgid "Filter by Class"
 msgstr "Filtriraj prema razredu"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fond uspješno obrisan"
-
-#: 
 msgid "In Use"
 msgstr "U upotrebi"
 
@@ -7420,10 +7396,6 @@ msgstr "Ukloniti ovaj broj prisutnih?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Odaberite vrstu zapisa na koji se ovo svojstvo primjenjuje"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Taj naziv fonda već postoji."
 
 #: 
 msgid "Total Pledges"
@@ -16548,10 +16520,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Funkcionalnost e-pošte trenutno je onemogućena. Sljedeće značajke neće raditi dok se e-pošta ne omogući"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Procijenjena vrijednost $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Najbrži tijek rada"
 
@@ -16594,10 +16562,6 @@ msgstr "Lokalni razvoj"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimalni ukupni iznos"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimalna ponuda $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17524,6 +17488,13 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "E-posta nije konfigurirana. Molimo konfigurirajte SMTP postavke u Postavkama sustava."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-pošta poslana %d obitelji."
+msgstr[1] "E-pošta poslana %d obitelji."
+msgstr[2] "E-pošta poslana %d obitelji."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Prvo unesite adresu ulice."
 
@@ -17590,6 +17561,13 @@ msgstr "Nisu pronadene uplate za odabrane depozite"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nisu navedeni valjani ID-ovi depozita"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF uspješno poslan e-poštom %d obitelji."
+msgstr[1] "PDF uspješno poslan e-poštom %d obitelji."
+msgstr[2] "PDF uspješno poslan e-poštom %d obitelji."
 
 #: 
 msgid "Partial Send"

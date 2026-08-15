@@ -24,8 +24,6 @@
   "City, State, Zip": "City, Province, Postcode",
   "Cell Phone": "Cellphone",
   "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM.": "This option requires at least MySQL version 3.22!  Hit browser back button to return to ChurchCRM.",
-  "Total of all purchases: $": "Total of all purchases: R",
-  "Total purchases: $": "Total purchases: R",
   "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __": "Paid by (  ) Cash    (  ) Cheque    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __",
   "Mobile": "Cell",
   "Localization": "Localisation",

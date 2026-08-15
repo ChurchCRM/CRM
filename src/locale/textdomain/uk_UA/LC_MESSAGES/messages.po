@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "URL-адреса зображення"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Редактор фонду пожертв"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Недійсні поля або виділення. Зміни не збережено! Будь ласка, виправте і спробуйте ще раз!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Коштів ще не додано"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "Пожертвувані предмети"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Придбані товари"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Сума всіх покупок: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Загальна сума покупок: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7363,10 +7347,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Видаливши це поле, ви безповоротно втратите всі дані учасників групи, призначені для цього поля!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Видаливши цей фонд, ви можете вплинути на історичні записи пожертвувань!"
-
-#: 
 msgid "Category Name"
 msgstr "Назва Категорії"
 
@@ -7419,10 +7399,6 @@ msgid "Filter by Class"
 msgstr "Фільтр за Класом"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Фонд успішно видалено"
-
-#: 
 msgid "In Use"
 msgstr "Використовується"
 
@@ -7469,10 +7445,6 @@ msgstr "Видалити цей підрахунок відвідуваност�
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Виберіть тип запису, до якого застосовується ця властивість"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Така назва фонду вже існує."
 
 #: 
 msgid "Total Pledges"
@@ -16604,10 +16576,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Функцію електронної пошти наразі вимкнено. Наступні можливості не працюватимуть, доки не буде увімкнено електронну пошту"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Орієнтовна вартість $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Найшвидший робочий процес"
 
@@ -16650,10 +16618,6 @@ msgstr "Локальна розробка"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Мінімальна загальна сума"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Мінімальна ставка $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

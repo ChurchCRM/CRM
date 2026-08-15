@@ -1,33 +1,62 @@
 {
   "%d archived fundraiser": {
-    "other": "%d 個已封存的募款活動"
+    "other": ""
   },
   "%d person successfully added to selected family.": {
-    "other": "%d 位成員已成功加入所選家庭。"
+    "other": ""
   },
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "other": "電子郵件已傳送至 %d 個家庭。"
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "other": "PDF 已成功以電子郵件傳送至 %d 個家庭。"
+    "other": ""
   },
+  "Birthdays & Anniversaries": "",
+  "Estimated value %s.": "",
+  "Minimum bid %s.": "",
+  "No \"%s\" options are available yet. Add the relevant records first.": "",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "",
+  "People with birthdays or wedding anniversaries in a particular month": "",
+  "The month for which you would like birthdays and anniversaries returned.": "",
+  "The wedding anniversary month for which you would like records returned.": "",
+  "Total of all purchases: %s": "",
+  "Total purchases: %s": "",
+  "Wedding Anniversaries": "",
+  "People with wedding anniversaries in a particular month": "",
+  "An error occurred. Please try again.": "",
+  "Are you sure you want to delete this fund?": "",
+  "Cannot delete: fund has associated pledges": "",
+  "Delete Fund": "",
+  "Direction must be 'up' or 'down'.": "",
+  "Edit Donation Fund": "",
+  "Failed to reorder donation fund": "",
+  "Fund added successfully.": "",
+  "Fund deleted successfully.": "",
+  "Fund name": "",
+  "Fund name is required.": "",
+  "Fund order updated.": "",
+  "Fund saved successfully.": "",
+  "No funds have been added yet. Use the form above to add the first fund.": "",
+  "Optional description": "",
+  "Private Calendar": "",
+  "Public Calendar": "",
   "Copied {{count}} members": {
-    "one": "已複製 {{count}} 位成員",
-    "other": "已複製 {{count}} 位成員"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "此清單有 {{count}} 位收件人，對於 mailto: 連結而言過多。請改用複製地址。",
-    "other": "此清單有 {{count}} 位收件人，對於 mailto: 連結而言過多。請改用複製地址。"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "電子郵件用戶端的收件人過多（{{count}} > {{max}}）。請改用複製地址。",
-    "other": "電子郵件用戶端的收件人過多（{{count}} > {{max}}）。請改用複製地址。"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "剩餘 {{count}} 分鐘",
-    "other": "剩餘 {{count}} 分鐘"
+    "one": "",
+    "other": ""
   }
 }

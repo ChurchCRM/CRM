@@ -1,33 +1,62 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-mail odoslaný %d rodine.",
-    "few": "E-mail odoslaný %d rodinám.",
-    "many": "E-mail odoslaný %d rodinám.",
-    "other": "E-mail odoslaný %d rodinám."
+    "one": "",
+    "few": "",
+    "many": "",
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF úspešne odoslané %d rodine e-mailom.",
-    "few": "PDF úspešne odoslané %d rodinám e-mailom.",
-    "many": "PDF úspešne odoslané %d rodinám e-mailom.",
-    "other": "PDF úspešne odoslané %d rodinám e-mailom."
+    "one": "",
+    "few": "",
+    "many": "",
+    "other": ""
   },
+  "Birthdays & Anniversaries": "",
+  "Estimated value %s.": "",
+  "Minimum bid %s.": "",
+  "No \"%s\" options are available yet. Add the relevant records first.": "",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "",
+  "People with birthdays or wedding anniversaries in a particular month": "",
+  "The month for which you would like birthdays and anniversaries returned.": "",
+  "The wedding anniversary month for which you would like records returned.": "",
+  "Total of all purchases: %s": "",
+  "Total purchases: %s": "",
+  "Wedding Anniversaries": "",
+  "People with wedding anniversaries in a particular month": "",
+  "An error occurred. Please try again.": "",
+  "Are you sure you want to delete this fund?": "",
+  "Cannot delete: fund has associated pledges": "",
+  "Delete Fund": "",
+  "Direction must be 'up' or 'down'.": "",
+  "Edit Donation Fund": "",
+  "Failed to reorder donation fund": "",
+  "Fund added successfully.": "",
+  "Fund deleted successfully.": "",
+  "Fund name": "",
+  "Fund name is required.": "",
+  "Fund order updated.": "",
+  "Fund saved successfully.": "",
+  "No funds have been added yet. Use the form above to add the first fund.": "",
+  "Optional description": "",
+  "Private Calendar": "",
+  "Public Calendar": "",
   "Copied {{count}} members": {
-    "one": "Skopírovaný {{count}} člen",
-    "other": "Skopírovaných {{count}} členov"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Tento zoznam má {{count}} príjemcu — príliš veľa pre odkaz mailto:. Použite namiesto toho Kopírovať adresy.",
-    "other": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Použite namiesto toho Kopírovať adresy."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite namiesto toho Kopírovať adresy.",
-    "other": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite namiesto toho Kopírovať adresy."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min zostáva",
-    "other": "{{count}} min zostáva"
+    "one": "",
+    "other": ""
   }
 }

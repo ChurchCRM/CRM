@@ -578,16 +578,8 @@ msgid "Picture URL"
 msgstr "URL-адрес изображения"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Пожертвование Фонд редактор"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Недействительные поля или выбора. Изменения не сохранены! Пожалуйста, исправьте и попробуйте еще раз!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Никакие средства не были добавлены еще"
 
 #: 
 msgid "Active"
@@ -2226,14 +2218,6 @@ msgstr "Предоставленной продукции"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Приобретенные товары"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Сумма всех покупок: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Всего покупок: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7416,10 +7400,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Удалив это поле, вы безвозвратно потеряете все данные участников группы, назначенные для этого поля!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Удалив этот фонд, вы можете повлиять на исторические записи пожертвований!"
-
-#: 
 msgid "Category Name"
 msgstr "Название Категории"
 
@@ -7472,10 +7452,6 @@ msgid "Filter by Class"
 msgstr "Фильтр по Классу"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Фонд успешно удалён"
-
-#: 
 msgid "In Use"
 msgstr "Используется"
 
@@ -7522,10 +7498,6 @@ msgstr "Удалить этот подсчёт посещаемости?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Выберите тип записи, к которой применяется это свойство"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Такое название фонда уже существует."
 
 #: 
 msgid "Total Pledges"
@@ -16657,10 +16629,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Функция электронной почты в настоящее время отключена. Следующие функции не будут работать, пока не будет включена электронная почта"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Оценочная стоимость $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Наиболее быстрый рабочий процесс"
 
@@ -16703,10 +16671,6 @@ msgstr "Локальная разработка"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Минимальная общая сумма"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Минимальная ставка $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

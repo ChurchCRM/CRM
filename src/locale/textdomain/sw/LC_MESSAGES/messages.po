@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "URL ya picha"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Mhariri wa Mfuko wa Michango"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Sehemu au chaguo batili. Mabadiliko hayajahifadhiwa! Tafadhali sahihisha na ujaribu tena!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Hakuna pesa zilizoongezwa"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "Vipengee Vilivyotolewa"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Bidhaa Zilizonunuliwa"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Jumla ya ununuzi wote: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Jumla ya ununuzi: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7347,10 +7331,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Kwa kufuta sehemu hii, utapoteza bila kurudi data zote za wanakikundi zilizowekwa kwa sehemu hii!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Kwa kufuta mfuko huu, unaweza kuathiri rekodi za michango ya kihistoria!"
-
-#: 
 msgid "Category Name"
 msgstr "Jina la Kategoria"
 
@@ -7403,10 +7383,6 @@ msgid "Filter by Class"
 msgstr "Chuja kwa Darasa"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Mfuko umefutwa kwa mafanikio"
-
-#: 
 msgid "In Use"
 msgstr "Inatumika"
 
@@ -7453,10 +7429,6 @@ msgstr "Ondoa hesabu hii ya mahudhurio?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Chagua aina ya rekodi ambayo mali hii inatumika"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Jina hilo la mfuko tayari lipo."
 
 #: 
 msgid "Total Pledges"
@@ -16574,10 +16546,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Utendaji wa barua pepe umezimwa kwa sasa. Vipengele vifuatavyo havitafanya kazi hadi barua pepe iwezeshwe"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Thamani inayokadiriwa $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Mtiririko wa kazi wa haraka zaidi"
 
@@ -16620,10 +16588,6 @@ msgstr "Maendeleo ya ndani"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Kiwango cha Chini cha Jumla"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Zabuni ya chini $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "URLலின் படம்"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "நன்கொடை நிதி ஆசிரியர்"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "தவறான புலங்கள் அல்லது தேர்வுகள். மாற்றங்கள் சேமிக்கப்படவில்லை! தயவு செய்து திருத்தி மீண்டும் முயற்சிக்கவும்!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "இன்னும் நிதி சேர்க்கப்படவில்லை"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "நன்கொடை பொருட்கள்"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "வாங்கிய பொருட்கள்"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "அனைத்து வாங்குதல்களின் மொத்தம்: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "மொத்த கொள்முதல்: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7355,10 +7339,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "இந்த புலத்தை நீக்குவதன் மூலம், இந்த புலத்திற்கு ஒதுக்கப்பட்ட அனைத்து குழு உறுப்பினர் தரவுகளையும் நீங்கள் மீளமுடியாமல் இழந்துவிடுவீர்கள்!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "இந்த நிதியை நீக்குவதன் மூலம், வரலாற்று நன்கொடைப் பதிவுகளை நீங்கள் பாதிக்கக்கூடும்!"
-
-#: 
 msgid "Category Name"
 msgstr "வகை பெயர்"
 
@@ -7411,10 +7391,6 @@ msgid "Filter by Class"
 msgstr "வகுப்பின்படி வடிகட்டவும்"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "நிதி வெற்றிகரமாக நீக்கப்பட்டது"
-
-#: 
 msgid "In Use"
 msgstr "பயன்பாட்டில் உள்ளது"
 
@@ -7461,10 +7437,6 @@ msgstr "இந்த வருகை எண்ணிக்கையை அகற
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "இந்த பண்பு பொருந்தும் பதிவின் வகையைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "That fund name already exists."
-msgstr "அந்த நிதிப் பெயர் ஏற்கனவே உள்ளது."
 
 #: 
 msgid "Total Pledges"
@@ -16591,10 +16563,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "மின்னஞ்சல் செயல்பாடு தற்போது முடக்கப்பட்டுள்ளது. மின்னஞ்சல் இயக்கப்படும் வரை பின்வரும் அம்சங்கள் வேலை செய்யாது"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "மதிப்பிடப்பட்ட மதிப்பு $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "விரைவான பணிப்பாய்வு"
 
@@ -16637,10 +16605,6 @@ msgstr "உள்ளூர் மேம்பாடு"
 #: 
 msgid "Minimum Total Amount"
 msgstr "குறைந்தபட்ச மொத்த தொகை"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "குறைந்தபட்ச ஏலம் $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

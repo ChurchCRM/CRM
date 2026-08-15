@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "URL da Imagem"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Editor de Fundo de Doações"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Campos ou seleções inválidas. As alterações não foram salvas! Por favor, corrija e tente novamente!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Nenhum fundo foi adicionado ainda"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "Itens doados"
 #: 
 msgid "Purchased Items"
 msgstr "Itens comprados"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Total de todas as compras: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Total de compras: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7312,10 +7296,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Ao excluir este campo, você perderá irremediavelmente todos os dados dos membros do grupo atribuídos a ele!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Ao excluir este fundo, você poderá afetar o histórico de doações!"
-
-#: 
 msgid "Category Name"
 msgstr "Nome da categoria"
 
@@ -7368,10 +7348,6 @@ msgid "Filter by Class"
 msgstr "Filtrar por Classe"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fundo excluído com sucesso"
-
-#: 
 msgid "In Use"
 msgstr "Em uso"
 
@@ -7418,10 +7394,6 @@ msgstr "Remover essa contagem de presença?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Selecione o tipo de registro ao qual esta propriedade se aplica."
-
-#: 
-msgid "That fund name already exists."
-msgstr "Esse nome de fundo já existe."
 
 #: 
 msgid "Total Pledges"
@@ -16539,10 +16511,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "A funcionalidade de e-mail está desativada no momento. Os recursos a seguir não funcionarão até que o e-mail seja habilitado"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Valor estimado $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Fluxo de trabalho mais rápido"
 
@@ -16585,10 +16553,6 @@ msgstr "Desenvolvimento local"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Valor total mínimo"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Lance mínimo $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

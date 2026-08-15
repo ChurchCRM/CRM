@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "כתובת האתר של התמונה"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "עורך קרן תרומות"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "שדות או בחירות לא חוקיים. השינויים לא נשמרו ! אנא תקן ונסה שוב !"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "טרם נוספו קרנות"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "פריטים שנתרמו"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "פריטים שנרכשו"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "סך כל הרכישות: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "סך הרכישות: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7349,10 +7333,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "מחיקת שדה זה תגרום לאובדן בלתי הפיך של כל נתוני חברי הקבוצה שהוקצו לשדה זה!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "מחיקת קרן זו עלולה להשפיע על רשומות תרומות היסטוריות!"
-
-#: 
 msgid "Category Name"
 msgstr "שם קטגוריה"
 
@@ -7405,10 +7385,6 @@ msgid "Filter by Class"
 msgstr "סנן לפי כיתה"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "הקרן נמחקה בהצלחה"
-
-#: 
 msgid "In Use"
 msgstr "בשימוש"
 
@@ -7455,10 +7431,6 @@ msgstr "להסיר ספירת נוכחות זו?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "בחר את סוג הרשומה שאליה מאפיין זה חל"
-
-#: 
-msgid "That fund name already exists."
-msgstr "שם קרן זה כבר קיים."
 
 #: 
 msgid "Total Pledges"
@@ -16576,10 +16548,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "פונקציית הדואר האלקטרוני מושבתת כרגע. התכונות הבאות לא יפעלו עד שהדואר האלקטרוני יופעל"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "ערך משוער $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "תהליך עבודה מהיר ביותר"
 
@@ -16622,10 +16590,6 @@ msgstr "פיתוח מקומי"
 #: 
 msgid "Minimum Total Amount"
 msgstr "סכום כולל מינימלי"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "הצעת מחיר מינימלית $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17552,6 +17516,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "הדוא\"ל אינו מוגדר. אנא הגדר את הגדרות ה-SMTP בהגדרות המערכת."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "אימייל נשלח למשפחה אחת."
+msgstr[1] "אימייל נשלח ל-%d משפחות."
+
+#: 
 msgid "Enter a street address first."
 msgstr "הזן כתובת רחוב תחילה."
 
@@ -17618,6 +17588,12 @@ msgstr "לא נמצאו תשלומים עבור ההפקדות שנבחרו"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "לא סופקו מזהי הפקדון תקינים"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "קובץ PDF נשלח בהצלחה במייל למשפחה אחת."
+msgstr[1] "קובץ PDF נשלח בהצלחה במייל ל-%d משפחות."
 
 #: 
 msgid "Partial Send"

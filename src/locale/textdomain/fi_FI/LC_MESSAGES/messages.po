@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "Kuvan URL-osoite"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Lahjoitusrahastojen muokkaus"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Virheellisiä kenttiä tai valintoja. Muutoksia ei tallennettu! Korjaa tiedot ja yritä uudelleen!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Rahastoja ei ole vielä lisätty"
 
 #: 
 msgid "Active"
@@ -2152,14 +2144,6 @@ msgstr "Lahjoitetut tuotteet"
 #: 
 msgid "Purchased Items"
 msgstr "Ostetut tuotteet"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Kaikkien ostosten yhteissumma: "
-
-#: 
-msgid "Total purchases: $"
-msgstr "Ostokset yhteensä: "
 
 #: 
 msgid "Amount paid: ________________"
@@ -7313,10 +7297,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Poistamalla tämän kentän menetät peruuttamattomasti kaikki tälle kentälle määritetyt ryhmän jäsentiedot!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Poistamalla tämän rahaston saatat vaikuttaa historiallisiin lahjoitustietoihin!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategorian Nimi"
 
@@ -7369,10 +7349,6 @@ msgid "Filter by Class"
 msgstr "Suodata Luokan mukaan"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Rahasto poistettu onnistuneesti"
-
-#: 
 msgid "In Use"
 msgstr "Käytössä"
 
@@ -7419,10 +7395,6 @@ msgstr "Poista tämä läsnäololuku?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Valitse tietuetyyppi, johon tämä ominaisuus liittyy"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Tämä rahaston nimi on jo olemassa."
 
 #: 
 msgid "Total Pledges"
@@ -16540,10 +16512,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Sähköpostitoiminto on tällä hetkellä poistettu käytöstä. Seuraavat ominaisuudet eivät toimi ennen kuin sähköposti otetaan käyttöön"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Arvioitu arvo $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Nopein työnkulku"
 
@@ -16586,10 +16554,6 @@ msgstr "Paikallinen kehitys"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Vähimmäiskokonaissumma"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Vähimmäistarjous $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17516,6 +17480,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Sahkopostia ei ole maaritetty. Maarita SMTP-asetukset jarjestelmasetuksissa."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Sähköposti lähetetty %d perheelle."
+msgstr[1] "Sähköposti lähetetty %d perheelle."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Syota ensin katuosoite."
 
@@ -17582,6 +17552,12 @@ msgstr "Valituille talletuksille ei loytynyт maksuja"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Yhtaan kelvollista talletustunnusta ei annettu"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF lähetetty onnistuneesti %d perheelle sähköpostitse."
+msgstr[1] "PDF lähetetty onnistuneesti %d perheelle sähköpostitse."
 
 #: 
 msgid "Partial Send"

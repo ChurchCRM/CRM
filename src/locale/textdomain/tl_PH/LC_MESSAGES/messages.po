@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "URL ng Larawan"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Editor ng Pondong Donasyon"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Mga invalid na larangan o pagpili. Hindi na-save ang mga pagbabago! Pakitama at subukang muli!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Wala pang mga pondong naidagdag"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "Mga Naibigay na Item"
 #: 
 msgid "Purchased Items"
 msgstr "Mga Nabibling Item"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Kabuuang lahat ng pagbili: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Kabuuang pagbili: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7311,10 +7295,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Sa pagbubura ng larangang ito, mawawala ang lahat ng datos ng miyembro ng grupo na itinalaga para sa larangang ito nang hindi na mababawi!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Sa pagbubura ng pondong ito, maaaring maapektuhan ang mga kasaysayang rekord ng donasyon!"
-
-#: 
 msgid "Category Name"
 msgstr "Pangalan ng Kategorya"
 
@@ -7367,10 +7347,6 @@ msgid "Filter by Class"
 msgstr "I-filter ayon sa Klase"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Matagumpay na nabura ang pondo"
-
-#: 
 msgid "In Use"
 msgstr "Ginagamit"
 
@@ -7417,10 +7393,6 @@ msgstr "Alisin ang bilang ng presensyang ito?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Piliin ang uri ng rekord na inilalapat ng katangiang ito"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Ang pangalan ng pondong iyon ay mayroon na."
 
 #: 
 msgid "Total Pledges"
@@ -16506,10 +16478,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Ang functionality ng email ay kasalukuyang hindi pinagana."
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Tinatayang halaga $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Pinakamabilis na daloy ng trabaho"
 
@@ -16552,10 +16520,6 @@ msgstr "Lokal na pag-unlad"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Pinakamababang Kabuuang Halaga"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Pinakamababang bid na $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17474,6 +17438,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Hindi na-configure ang email. Pakiayos ang mga setting ng SMTP sa Mga Setting ng System."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Naipadala ang email sa %d pamilya."
+msgstr[1] "Naipadala ang email sa %d pamilya."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Maglagay muna ng address ng kalye."
 
@@ -17540,6 +17510,12 @@ msgstr "Walang nahanap na mga bayad para sa mga napiling deposito"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Walang ibinigay na mga wastong deposit ID"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "Matagumpay na naipadala ang PDF sa %d pamilya."
+msgstr[1] "Matagumpay na naipadala ang PDF sa %d pamilya."
 
 #: 
 msgid "Partial Send"

@@ -555,16 +555,8 @@ msgid "Picture URL"
 msgstr "चित्र URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "दान निधि संपादक"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "अमान्य फ़ील्ड या चयन। परिवर्तन सहेजे नहीं गए! कृपया सुधारें और पुनः प्रयास करें!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "अभी तक कोई निधि नहीं जोड़ी गई है"
 
 #: 
 msgid "Active"
@@ -2148,14 +2140,6 @@ msgstr "दान की गई वस्तुएं"
 #: 
 msgid "Purchased Items"
 msgstr "खरीदी गई वस्तुएं"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "कुल खरीदारी: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "कुल खरीदारी: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7310,10 +7294,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "इस फ़ील्ड को हटाकर, आप इस फ़ील्ड के लिए असाइन किए गए सभी ग्रुप सदस्य डेटा को अपरिवर्तनीय रूप से खो देंगे!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "इस फंड को हटाकर, आप ऐतिहासिक दान रिकॉर्ड को प्रभावित कर सकते हैं!"
-
-#: 
 msgid "Category Name"
 msgstr "श्रेणी नाम"
 
@@ -7366,10 +7346,6 @@ msgid "Filter by Class"
 msgstr "कक्षा द्वारा फ़िल्टर करें"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "फंड सफलतापूर्वक हटाया गया"
-
-#: 
 msgid "In Use"
 msgstr "उपयोग में"
 
@@ -7416,10 +7392,6 @@ msgstr "यह उपस्थिति गणना हटाएं?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "इस संपत्ति पर लागू होने वाले रिकॉर्ड का प्रकार चुनें"
-
-#: 
-msgid "That fund name already exists."
-msgstr "वह फंड नाम पहले से मौजूद है।"
 
 #: 
 msgid "Total Pledges"
@@ -16537,10 +16509,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ईमेल कार्यक्षमता अभी अक्षम है। जब तक ईमेल सक्षम नहीं होता।"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "अनुमानित मूल्य $%s।"
-
-#: 
 msgid "Fastest workflow"
 msgstr "सबसे तेज़ कार्यप्रवाह"
 
@@ -16583,10 +16551,6 @@ msgstr "स्थानीय विकास"
 #: 
 msgid "Minimum Total Amount"
 msgstr "न्यूनतम कुल राशि"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "न्यूनतम बोली $%s।"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17513,6 +17477,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "ईमेल कॉन्फ़िगर नहीं किया गया है। कृपया सिस्टम सेटिंग्स में SMTP सेटिंग्स कॉन्फ़िगर करें।"
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "%d परिवार को ईमेल भेजा गया।"
+msgstr[1] "%d परिवारों को ईमेल भेजा गया।"
+
+#: 
 msgid "Enter a street address first."
 msgstr "पहले सड़क का पता दर्ज करें."
 
@@ -17579,6 +17549,12 @@ msgstr "चयनित जमाओं के लिए कोई भुगत�
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "कोई वैध जमा आईडी नहीं दी गई"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF सफलतापूर्वक %d परिवार को ईमेल किया गया।"
+msgstr[1] "PDF सफलतापूर्वक %d परिवारों को ईमेल किया गया।"
 
 #: 
 msgid "Partial Send"

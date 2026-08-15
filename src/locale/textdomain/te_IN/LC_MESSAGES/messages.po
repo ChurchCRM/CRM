@@ -558,16 +558,8 @@ msgid "Picture URL"
 msgstr "చిత్ర URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "విరాళ నిధి ఎడిటర్"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "చెల్లని ఫీల్డ్‌లు లేదా ఎంపికలు. మార్పులు సేవ్ చేయబడలేదు! దయచేసి సరిచేసి, మళ్లీ ప్రయత్నించండి!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "ఇంకా నిధులు జోడించబడలేదు"
 
 #: 
 msgid "Active"
@@ -2157,14 +2149,6 @@ msgstr "విరాళంగా ఇచ్చిన వస్తువులు"
 #: 
 msgid "Purchased Items"
 msgstr "కొనుగోలు చేసిన వస్తువులు"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "అన్ని కొనుగోళ్ల మొత్తం: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "మొత్తం కొనుగోళ్లు: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7323,10 +7307,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "ఈ ఫీల్డ్‌ను తొలగించడం ద్వారా, ఈ ఫీల్డ్ కోసం కేటాయించిన అన్ని గ్రూప్ సభ్యుల డేటాను మీరు శాశ్వతంగా కోల్పోతారు!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "ఈ నిధిని తొలగించడం ద్వారా, మీరు చారిత్రక విరాళాల రికార్డులను ప్రభావితం చేయవచ్చు!"
-
-#: 
 msgid "Category Name"
 msgstr "వర్గం పేరు"
 
@@ -7379,10 +7359,6 @@ msgid "Filter by Class"
 msgstr "తరగతి వారీగా ఫిల్టర్ చేయండి"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "నిధి విజయవంతంగా తొలగించబడింది"
-
-#: 
 msgid "In Use"
 msgstr "వాడకంలో ఉంది"
 
@@ -7429,10 +7405,6 @@ msgstr "ఈ హాజరు గణనను తీసివేయాలా?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ఈ ఆస్తికి వర్తించే రికార్డ్ రకాన్ని ఎంచుకోండి"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ఆ నిధి పేరు ఇప్పటికే ఉంది."
 
 #: 
 msgid "Total Pledges"
@@ -16550,10 +16522,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ఇమెయిల్ విధి ప్రస్తుతం నిష్క్రియంగా ఉంది. ఇమెయిల్ ప్రారంభించే వరకు కింది లక్షణాలు పనిచేయవు"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "అంచనా విలువ $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "వేగవంతమైన వర్క్‌ఫ్లో"
 
@@ -16596,10 +16564,6 @@ msgstr "స్థానిక అభివృద్ధి"
 #: 
 msgid "Minimum Total Amount"
 msgstr "కనీస మొత్తం మొత్తం"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "కనీస బిడ్ $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

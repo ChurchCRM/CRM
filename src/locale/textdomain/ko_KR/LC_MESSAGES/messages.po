@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "사진 URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "헌금 항목 편집"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "잘못된 필드나 선택입니다. 변경 사항이 저장되지 않았습니다! 수정 후 다시 시도하세요!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "등록된 헌금 항목이 없습니다."
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "기증 물품"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "구매 품목"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "총 구매액: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "구매 총액: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7340,10 +7324,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 그룹 구성원 데이터가 영구적으로 삭제됩니다!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "이 기금을 삭제하면 과거 기부 기록에 영향을 줄 수 있습니다!"
-
-#: 
 msgid "Category Name"
 msgstr "카테고리 이름"
 
@@ -7396,10 +7376,6 @@ msgid "Filter by Class"
 msgstr "클래스별 필터"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "기금이 성공적으로 삭제되었습니다"
-
-#: 
 msgid "In Use"
 msgstr "사용 중"
 
@@ -7446,10 +7422,6 @@ msgstr "이 출석 수를 제거하시겠습니까?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "이 속성이 적용되는 레코드 유형을 선택하세요"
-
-#: 
-msgid "That fund name already exists."
-msgstr "해당 기금 이름이 이미 존재합니다."
 
 #: 
 msgid "Total Pledges"
@@ -16560,10 +16532,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "현재 이메일 기능이 비활성화되어 있습니다."
 
 #: 
-msgid "Estimated value $%s."
-msgstr "예상 가치 $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "가장 빠른 작업 흐름"
 
@@ -16606,10 +16574,6 @@ msgstr "로컬 개발"
 #: 
 msgid "Minimum Total Amount"
 msgstr "최소 총액"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "최소 입찰가 $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
