@@ -147,7 +147,22 @@ class SystemURLs
             if (file_exists($manifestPath)) {
                 $json = file_get_contents($manifestPath);
                 $decoded = is_string($json) ? json_decode($json, true) : null;
-                self::$assetManifest = is_array($decoded) ? $decoded : [];
+                if (is_array($decoded)) {
+                    self::$assetManifest = $decoded;
+                } else {
+                    // File exists but could not be read or parsed (e.g. permission denied
+                    // or file truncated mid-write during a concurrent webpack rebuild).
+                    // Log a warning and do NOT cache the empty result so the next request
+                    // retries — mirroring the absent-manifest branch above.
+                    LoggerUtils::getAppLogger()->warning(
+                        'asset-manifest.json exists but could not be read or parsed — v2 assets cannot be resolved to content-hashed URLs',
+                        [
+                            'expected_path' => $manifestPath,
+                            'hint'          => 'File may be truncated (concurrent webpack rebuild) or unreadable (permissions)',
+                        ]
+                    );
+                    return []; // do NOT assign self::$assetManifest so the next request retries
+                }
             } else {
                 // Manifest not yet built.  Log a warning and do NOT cache the
                 // empty result: leave $assetManifest as null so the next request
