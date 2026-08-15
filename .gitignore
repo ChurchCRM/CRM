@@ -27,6 +27,7 @@ src/Images/Person/*
 
 #skins
 src/skin/v2/
+webpack/generated/
 src/skin/external
 
 # Configuration files with passwords

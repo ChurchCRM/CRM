@@ -1504,3 +1504,33 @@ $("#MyTable").on("click", "[data-row-action]", function() {
 
 `$(...).data()` decodes the attribute value back to the original string — the
 JS-context concerns disappear because the string never enters a JS literal.
+
+## Tabler Icons — SVG vs Webfont <!-- learned: 2026-08-15 -->
+
+**Problem:** `@tabler/icons-webfont` renders `<i class="ti ti-NAME">` via `@font-face` + `content: "\fXXXX"`.
+Webpack fingerprints the `.woff2` as `assets/[name].[contenthash].woff2` and it's served `immutable`.
+When the cached woff2 doesn't contain the codepoints the CSS references (version skew after upgrade), affected
+icons render as blank squares — the Tabler 7.6.x glyph failures reported in issue #9479.
+
+**Fix (PR #9479):** Switch to SVG `mask-image` rendering — eliminates the separate woff2 file entirely.
+All existing `<i class="ti ti-NAME">` markup is **unchanged**. The CSS `.ti` base rule is redefined to
+use `background-color: currentColor` + `mask-image: url("data:image/svg+xml,...")` per icon class.
+`@tabler/icons` (raw SVG files, already a transitive dep of `@tabler/icons-webfont`) provides the source geometry.
+
+**Build integration:**
+- Generator: `scripts/generate-tabler-icons-svg-css.js` — scans `src/` and `webpack/` for `ti-NAME` tokens,
+  resolves each to `node_modules/@tabler/icons/icons/outline/NAME.svg` (or `filled/` for `-filled` suffix),
+  and emits `webpack/generated/tabler-icons-svg.css`. Runs automatically as `prebuild:webpack`.
+- Import changed in `webpack/skin-core-css.js`:
+
+```js
+// Before (webfont — broken in 7.6.x):
+import "@tabler/icons-webfont/dist/tabler-icons.min.css";
+
+// After (SVG mask — no woff2 dependency):
+import "./generated/tabler-icons-svg.css";
+```
+
+- Generated file is gitignored (`webpack/generated/`) and excluded from biome format.
+- When you add a new `<i class="ti ti-NEW-ICON">`, the generator picks it up on the next `npm run build:webpack`.
+  Tokens with no matching SVG print a build warning (not an error).

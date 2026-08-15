@@ -27,6 +27,7 @@
         "build:js": "run-p build:js:legacy build:webpack",
         "build:js:legacy": "grunt copy",
         "build:webpack": "webpack",
+        "prebuild:webpack": "node scripts/generate-tabler-icons-svg-css.js",
         "build:webpack:watch": "webpack --watch",
         "build:php": "run-s composer:install build:php:validate",
         "build:openapi": "cd src && composer install --no-interaction --prefer-dist && composer run openapi:public && composer run openapi:private",

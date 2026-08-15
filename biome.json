@@ -9,6 +9,7 @@
     "includes": [
       "src/**",
       "webpack/**",
+      "!webpack/generated/**",
       "!src/skin/v2",
       "!src/skin/external",
       "!src/skin/vendor",

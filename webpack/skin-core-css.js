@@ -16,8 +16,10 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // Import flag-icons CSS - flags are automatically bundled by webpack
 import "flag-icons/css/flag-icons.min.css";
 
-// Import Tabler Icons webfont - font files bundled automatically by webpack
-import "@tabler/icons-webfont/dist/tabler-icons.min.css";
+// Import Tabler Icons SVG CSS (generated from @tabler/icons SVG files).
+// Replaces the webfont variant to eliminate woff2 cache/glyph rendering
+// failures in Tabler >=7.6.x (issue #9479). All ti ti-* markup is unchanged.
+import "./generated/tabler-icons-svg.css";
 
 // DataTables Bootstrap 5 integration CSS
 import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
