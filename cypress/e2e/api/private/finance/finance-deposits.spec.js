@@ -320,6 +320,9 @@ describe("API Private Deposit Operations", () => {
                         const pledge = resp.body[0];
                         expect(pledge).to.have.property("GroupKey");
                         expect(pledge).to.have.property("sumAmount");
+                        // Phase 4: *_formatted siblings must be present
+                        expect(pledge).to.have.property("sumAmount_formatted");
+                        expect(pledge.sumAmount_formatted).to.be.a("string");
                     }
                 }
             });

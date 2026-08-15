@@ -1,23 +1,31 @@
 {
-  "Check-out": "",
-  "Auto": "",
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "Check-out": "Check-out",
+  "Auto": "Auto",
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "one": "Email inviata a %d famiglia.",
+    "other": "Email inviate a %d famiglie."
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF inviato con successo a %d famiglia.",
+    "other": "PDF inviato con successo a %d famiglie."
+  },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Copiato {{count}} membro",
+    "other": "Copiati {{count}} membri"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Questo elenco ha {{count}} destinatario — troppi per un collegamento mailto:. Usa Copia indirizzi.",
+    "other": "Questo elenco ha {{count}} destinatari — troppi per un collegamento mailto:. Usa Copia indirizzi."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa Copia indirizzi.",
+    "other": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa Copia indirizzi."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min rimanente",
+    "other": "{{count}} min rimanenti"
   }
 }

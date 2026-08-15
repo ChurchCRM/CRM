@@ -11,6 +11,8 @@
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
 | `ta` | Tamil | 4241 | 99.93% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 4232 | 99.72% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 4232 | 99.72% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
@@ -23,8 +25,8 @@
 | `hu` | Hungarian | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `ko` | Korean | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `ml` | Malayalam | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `sk` | Slovak | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `es-ar` | Spanish (AR) | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
@@ -33,24 +35,22 @@
 | `es-sv` | Spanish (SV) | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `te` | Telugu | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `vi` | Vietnamese | 4231 | 99.69% | 🟢 Complete | ✅ Yes |
 | `de` | German | 4230 | 99.67% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 4230 | 99.67% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 4230 | 99.67% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 4230 | 99.67% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 4230 | 99.67% | 🟢 Complete | ✅ Yes |
+| `af` | Afrikaans | 4229 | 99.65% | 🟢 Complete | ✅ Yes |
 | `zh-cn` | Chinese | 4229 | 99.65% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 4229 | 99.65% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 4229 | 99.65% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 4229 | 99.65% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 4229 | 99.65% | 🟢 Complete | ✅ Yes |
 | `nb` | Norwegian Bokmål | 4229 | 99.65% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 4229 | 99.65% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 4229 | 99.65% | 🟢 Complete | ✅ Yes |
-| `af` | Afrikaans | 4228 | 99.62% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 4228 | 99.62% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 4228 | 99.62% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 4228 | 99.62% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 4227 | 99.6% | 🟢 Complete | ✅ Yes |
 | `fil` | Filipino | 4219 | 99.41% | 🟢 Complete | ✅ Yes |
 | `en-za` | English (ZA) | 65 | 1.53% | N/A | ✅ Yes |

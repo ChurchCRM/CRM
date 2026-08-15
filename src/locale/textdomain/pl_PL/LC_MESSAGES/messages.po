@@ -17668,6 +17668,10 @@ msgid "Manage Events"
 msgstr "Zarzadzaj wydarzeniami"
 
 #: 
+msgid "N/A"
+msgstr "N/D"
+
+#: 
 msgid "New Deposit"
 msgstr "Nowy depozyt"
 

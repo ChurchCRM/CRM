@@ -1,21 +1,33 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "%d archived fundraiser": {
+    "other": "%d กิจกรรมระดมทุนที่เก็บถาวร"
+  },
+  "%d person successfully added to selected family.": {
+    "other": "เพิ่ม %d คนเข้าครอบครัวที่เลือกสำเร็จแล้ว"
+  },
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "other": "ส่งอีเมลถึง %d ครอบครัวแล้ว"
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "other": "ส่ง PDF ทางอีเมลถึง %d ครอบครัวสำเร็จแล้ว"
+  },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "คัดลอก {{count}} สมาชิกแล้ว",
+    "other": "คัดลอก {{count}} สมาชิกแล้ว"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "รายการนี้มี {{count}} ผู้รับ — มากเกินไปสำหรับลิงก์ mailto: กรุณาใช้คัดลอกที่อยู่แทน",
+    "other": "รายการนี้มี {{count}} ผู้รับ — มากเกินไปสำหรับลิงก์ mailto: กรุณาใช้คัดลอกที่อยู่แทน"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) กรุณาใช้คัดลอกที่อยู่แทน",
+    "other": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) กรุณาใช้คัดลอกที่อยู่แทน"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "เหลือ {{count}} นาที",
+    "other": "เหลือ {{count}} นาที"
   }
 }

@@ -17502,6 +17502,10 @@ msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Is u seker dat u die rol '{{name}}' wil verwyder?"
 
 #: 
+msgid "Auto"
+msgstr "Outomaties"
+
+#: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"
 msgstr "Auto volg u bedryfstelsel- of blaaier-instelling; Lig en Donker oorskryf dit"
 
