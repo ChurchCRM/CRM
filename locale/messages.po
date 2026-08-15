@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-13 22:40+0000\n"
+"POT-Creation-Date: 2026-08-14 23:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1634,6 +1634,10 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Birthdays"
+msgstr ""
+
+#. Context: query_qry
+msgid "Birthdays & Anniversaries"
 msgstr ""
 
 msgid "Birthdays and anniversaries. Default: m/d"
@@ -7786,6 +7790,14 @@ msgid "No"
 msgstr ""
 
 #, php-format
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr ""
+
+#, php-format
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr ""
+
+#, php-format
 msgid "No %s fundraisers found."
 msgstr ""
 
@@ -8672,7 +8684,15 @@ msgstr ""
 msgid "People with birthdays in a particular month"
 msgstr ""
 
+#. Context: query_qry
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr ""
+
 msgid "People with no personal or work email on record"
+msgstr ""
+
+#. Context: query_qry
+msgid "People with wedding anniversaries in a particular month (returns one row per spouse for cart use)"
 msgstr ""
 
 msgid "Percentage"
@@ -11157,6 +11177,10 @@ msgstr ""
 msgid "The membership anniversary month for which you would like records returned."
 msgstr ""
 
+#. Context: queryparameters_qrp
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr ""
+
 msgid "The month that starts your organization's fiscal year"
 msgstr ""
 
@@ -11238,6 +11262,10 @@ msgid "The template already contains every column you can map — the core Perso
 msgstr ""
 
 msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The wedding anniversary month for which you would like records returned."
 msgstr ""
 
 msgid "Theme Mode"
@@ -12601,6 +12629,10 @@ msgid "Website"
 msgstr ""
 
 msgid "Wedding"
+msgstr ""
+
+#. Context: query_qry
+msgid "Wedding Anniversaries"
 msgstr ""
 
 msgid "Wedding Date"
