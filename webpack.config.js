@@ -67,6 +67,48 @@ class FixCssUrlQuotesPlugin {
   }
 }
 
+
+/**
+ * Generates src/skin/v2/asset-manifest.json after every webpack build.
+ *
+ * Maps logical bundle names (e.g. "churchcrm.min.css") to their content-hashed
+ * filenames (e.g. "churchcrm.a1b2c3d4.min.css") so that PHP's
+ * SystemURLs::assetVersioned() can serve the correct immutable-safe URL without
+ * knowing the hash at compile time.
+ *
+ * Why content-hash filenames?
+ * CSS/JS bundles previously used static filenames (churchcrm.min.css) with a
+ * ?v=mtime query string for cache-busting.  Any CDN or reverse proxy that caches
+ * by path (ignoring query strings) would serve stale CSS after an upgrade while
+ * the Tabler webfont .woff2 already reflected a new content-hash URL, causing 404s
+ * for the old woff2 → blank icon glyphs (issue #9479).
+ * Content-hash filenames make the URL itself change on every rebuild, so any web
+ * server can safely cache them without risking stale-CSS / missing-font failures.
+ */
+class AssetManifestPlugin {
+  apply(compiler) {
+    compiler.hooks.afterEmit.tap('AssetManifestPlugin', (compilation) => {
+      const manifest = {};
+      // Match content-hashed CSS/JS bundles: name.8hexchars.min.{js,css}
+      // Does NOT match assets/ sub-files (fonts, images) — already content-hashed
+      // by webpack's asset/resource rule and not served by PHP templates directly.
+      const HASHED_BUNDLE = /^(.+)\.[0-9a-f]{8}(\.min\.(?:js|css))$/;
+
+      for (const asset of compilation.getAssets()) {
+        const m = HASHED_BUNDLE.exec(asset.name);
+        if (m) {
+          const logicalName = m[1] + m[2]; // e.g. "churchcrm.min.css"
+          manifest[logicalName] = asset.name; // e.g. "churchcrm.a1b2c3d4.min.css"
+        }
+      }
+
+      const outFile = path.join(compiler.outputPath, 'asset-manifest.json');
+      fs.writeFileSync(outFile, JSON.stringify(manifest, null, 2));
+      console.log(`✅  Asset manifest: ${Object.keys(manifest).length} entries → ${path.relative(process.cwd(), outFile)}`);
+    });
+  }
+}
+
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: {
@@ -112,7 +154,7 @@ module.exports = {
   },
   output: {
     path: path.resolve('./src/skin/v2'),
-    filename: '[name].min.js',
+    filename: '[name].[contenthash:8].min.js',
     publicPath: 'auto',
   },
   externals: {
@@ -171,9 +213,10 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].min.css',
+      filename: '[name].[contenthash:8].min.css',
       ignoreOrder: false,
     }),
+    new AssetManifestPlugin(),
     new FixCssUrlQuotesPlugin(),
   ],
 };

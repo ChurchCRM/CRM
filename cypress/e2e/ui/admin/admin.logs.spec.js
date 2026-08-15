@@ -14,8 +14,9 @@ describe('Admin System Logs - UI Tests', () => {
     cy.visit('admin/system/logs');
 
     // Quick Settings were moved to the header settings panel — verify settings assets load
-    cy.get('link[href*="system-settings-panel.min.css"]').should('exist');
-    cy.get('script[src*="system-settings-panel.min.js"]').should('exist');
+    // Uses *="system-settings-panel" (not the full .min.css) to match content-hashed filenames
+    cy.get('link[href*="system-settings-panel"]').should('exist');
+    cy.get('script[src*="system-settings-panel"]').should('exist');
   });
 
   it('Should display stat cards with Log Level always present', () => {

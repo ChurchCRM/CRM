@@ -17,6 +17,8 @@ class SystemURLs
     private static $urls;
     private static $documentRoot;
     private static ?string $CSPNonce = null;
+    /** @var array<string,string>|null Manifest mapping logical→hashed bundle names; null = not yet loaded */
+    private static ?array $assetManifest = null;
 
     public static function init($rootPath, $urls, $documentRoot): void
     {
@@ -129,16 +131,62 @@ class SystemURLs
     }
 
     /**
-     * Get versioned asset URL with file modification time for cache-busting.
-     * Appends ?v=<filemtime> to asset URLs to force browser cache refresh after deploys.
+     * Read and cache asset-manifest.json produced by webpack's AssetManifestPlugin.
+     *
+     * The manifest maps logical bundle names (e.g. "churchcrm.min.css") to their
+     * content-hashed filenames (e.g. "churchcrm.a1b2c3d4.min.css").  Cached in a
+     * static property so it is read from disk at most once per PHP worker process.
+     *
+     * @return array<string,string>
+     */
+    private static function getAssetManifest(): array
+    {
+        if (self::$assetManifest === null) {
+            $manifestPath = rtrim(self::$documentRoot, DIRECTORY_SEPARATOR) . '/skin/v2/asset-manifest.json';
+            if (file_exists($manifestPath)) {
+                $json = file_get_contents($manifestPath);
+                self::$assetManifest = is_string($json) ? (json_decode($json, true) ?? []) : [];
+            } else {
+                self::$assetManifest = []; // manifest not yet built; fall back to mtime versioning
+            }
+        }
+        return self::$assetManifest;
+    }
+
+    /**
+     * Get versioned asset URL for reliable browser cache-busting after deploys.
+     *
+     * For webpack-bundled v2 assets (CSS/JS under /skin/v2/), the asset-manifest.json
+     * maps the logical name to a content-hashed filename so that any web server—
+     * including CDNs and reverse proxies that cache by path only—always serves the
+     * correct bundle.  Using a content-hash filename instead of a ?v=mtime query
+     * string prevents the scenario where stale CSS references a Tabler webfont
+     * .woff2 URL that no longer exists on the server, causing blank icon glyphs
+     * (issue #9479).
+     *
+     * For non-v2 assets (legacy JS, external libraries) the previous ?v=mtime
+     * strategy is retained as a safe fallback.
      *
      * @param string $webPath Asset path relative to document root (e.g., '/skin/v2/churchcrm.min.css')
-     * @return string Versioned URL with modification time, or original URL if file doesn't exist
+     * @return string Versioned URL—content-hashed path for v2 bundles, or ?v=mtime for others
      */
     public static function assetVersioned(string $webPath): string
     {
         $rootUrl = self::getRootPath();
         $docRoot = self::getDocumentRoot();
+
+        // For webpack v2 bundles: resolve to content-hashed filename via manifest
+        if (str_starts_with($webPath, '/skin/v2/')) {
+            $manifest = self::getAssetManifest();
+            $basename = basename($webPath);
+            if (isset($manifest[$basename])) {
+                $dir = dirname($webPath); // '/skin/v2'
+                return $rootUrl . $dir . '/' . $manifest[$basename];
+            }
+        }
+
+        // Fallback: append ?v=<mtime> for cache-busting (legacy/external assets,
+        // or v2 assets when the manifest hasn\'t been built yet)
         $fullPath = rtrim($docRoot, DIRECTORY_SEPARATOR) . $webPath;
         if (file_exists($fullPath)) {
             return $rootUrl . $webPath . '?v=' . filemtime($fullPath);

@@ -201,8 +201,8 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
 
             // FullCalendar webpack bundle must be loaded (temporal-polyfill + FC bundled via ESM).
             // v6: fullcalendar/index.global.min.js (old, removed)
-            // v7 webpack: external-calendar.min.js
-            expect(resp.body).to.include("external-calendar.min.js");
+            // v7 webpack: external-calendar.[contenthash].min.js (content-hashed filename)
+            expect(resp.body).to.match(/external-calendar\.[0-9a-f]+\.min\.js/);
 
             // The stale moment-with-locales.min.js (which 404ed and broke the page)
             // must no longer be referenced
