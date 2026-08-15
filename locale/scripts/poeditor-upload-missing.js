@@ -325,8 +325,56 @@ function analyzeFile(filePath, englishOkSet = new Set()) {
 // ── POEditor API helpers ─────────────────────────────────────────────────────
 
 /**
+ * Converts i18next nested plural structure to POEditor's inverted format for upload.
+ *
+ * POEditor's key_value_json upload format expects plural terms grouped BY plural form
+ * (inverted layout):
+ *   { "one": { term1: "...", term2: "..." }, "other": { term1: "...", term2: "..." } }
+ *
+ * i18next locally uses nested structure (each term owns its plural forms):
+ *   { term1: { "one": "...", "other": "..." }, term2: { ... } }
+ *
+ * This function mirrors restructurePluralForms() but in reverse: nested → inverted.
+ * Handles all CLDR plural categories (zero/one/two/few/many/other).
+ * Plain string terms and non-plural objects are passed through unchanged.
+ */
+function invertPluralForms(data) {
+    if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
+
+    const inverted = {};
+
+    for (const [term, value] of Object.entries(data)) {
+        if (typeof value === 'string') {
+            // Plain string term — pass through unchanged
+            inverted[term] = value;
+        } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+            // Check if this is a plural form object (has CLDR keys)
+            const pluralKeys = Object.keys(value).filter(k =>
+                CLDR_PLURAL_FORMS.includes(k)
+            );
+
+            if (pluralKeys.length > 0) {
+                // This is a plural term — invert it
+                for (const form of pluralKeys) {
+                    if (!inverted[form]) inverted[form] = {};
+                    inverted[form][term] = value[form];
+                }
+            } else {
+                // Non-plural object (namespace segment) — pass through unchanged
+                inverted[term] = value;
+            }
+        } else {
+            inverted[term] = value;
+        }
+    }
+
+    return inverted;
+}
+
+/**
  * Builds a key_value_json object ready for file import.
  * Only includes terms that have at least one non-empty translated form.
+ * Inverts plural structure from i18next nested to POEditor's inverted format.
  */
 function buildKeyValueJson(terms) {
     const out = {};
@@ -343,7 +391,8 @@ function buildKeyValueJson(terms) {
             if (Object.keys(filled).length > 0) out[term] = filled;
         }
     }
-    return out;
+    // Convert from i18next nested format to POEditor's inverted format for upload
+    return invertPluralForms(out);
 }
 
 /**
