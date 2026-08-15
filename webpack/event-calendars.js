@@ -326,7 +326,7 @@ window.calendarPropertiesModal = {
     window.calendarPropertiesModal.calendar = calendar;
     const bootboxmessage = window.calendarPropertiesModal.getBootboxContent(calendar);
     window.calendarPropertiesModal.modal = bootbox.dialog({
-      title: getLocalizedCalendarName(calendar.Name),
+      title: escapeHtml(getLocalizedCalendarName(calendar.Name)),
       message: bootboxmessage,
       show: true,
       buttons: window.calendarPropertiesModal.getButtons(),
