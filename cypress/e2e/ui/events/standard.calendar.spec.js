@@ -74,14 +74,19 @@ describe("Standard Calendar", () => {
         // Title field blocks save.
         cy.get("#eventSaveBtn").should("be.disabled");
 
-        cy.get("#event-title-input").type("Validation Test Event");
+        // Use invoke("val").trigger("input") instead of .type() to bypass the
+        // Bootstrap 5 modal focus-trap, which can steal keyboard focus mid-delivery
+        // and cause input events to land on the wrong element, leaving event.Title
+        // empty and the save button permanently disabled. trigger("input") fires the
+        // input event listener that updates event.Title and calls fireValidity().
+        cy.get("#event-title-input").invoke("val", "Validation Test Event").trigger("input");
         cy.get("#eventSaveBtn").should("not.be.disabled");
 
         // Empty-calendar hint is visible because nothing is pinned yet.
         cy.get("#calendarsEmptyHint").should("be.visible");
 
         // Clear the title — save disables again.
-        cy.get("#event-title-input").clear();
+        cy.get("#event-title-input").invoke("val", "").trigger("input");
         cy.get("#eventSaveBtn").should("be.disabled");
     });
 

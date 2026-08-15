@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-15 19:07+0000\n"
+"POT-Creation-Date: 2026-08-15 19:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -726,7 +726,7 @@ msgstr ""
 msgid "Advanced filtering by group, classification, and role"
 msgstr ""
 
-msgid "Advanced: choose a specific target version"
+msgid "Advanced: Install a specific version instead"
 msgstr ""
 
 msgid "Affected Files"
@@ -1780,7 +1780,7 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
 msgstr ""
 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
@@ -2061,9 +2061,6 @@ msgid "Change role"
 msgstr ""
 
 msgid "Change this in System Settings."
-msgstr ""
-
-msgid "Changelog"
 msgstr ""
 
 msgid "Changes not saved! Please correct and try again!"
@@ -3716,7 +3713,7 @@ msgstr ""
 msgid "Download & Apply"
 msgstr ""
 
-msgid "Download & Install"
+msgid "Download & Apply {{version}}"
 msgstr ""
 
 msgid "Download Backup & Continue"
@@ -4397,6 +4394,9 @@ msgid "Events This Year"
 msgstr ""
 
 msgid "Events Today"
+msgstr ""
+
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
 msgstr ""
 
 msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
@@ -5370,6 +5370,9 @@ msgstr ""
 msgid "Full changelog"
 msgstr ""
 
+msgid "Full release notes"
+msgstr ""
+
 msgid "Full — all of the above plus page views"
 msgstr ""
 
@@ -6302,9 +6305,6 @@ msgid "Installed Software Version"
 msgstr ""
 
 msgid "Installed on Server"
-msgstr ""
-
-msgid "Installing next release"
 msgstr ""
 
 msgid "Installing…"
@@ -8074,6 +8074,9 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr ""
 
 msgid "No release notes available for this version."
+msgstr ""
+
+msgid "No release notes available."
 msgstr ""
 
 msgid "No results found"
@@ -10551,9 +10554,6 @@ msgstr ""
 msgid "Show all"
 msgstr ""
 
-msgid "Show full upgrade path"
-msgstr ""
-
 msgid "Show in Profile"
 msgstr ""
 
@@ -12610,6 +12610,9 @@ msgstr ""
 msgid "Warning"
 msgstr ""
 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr ""
+
 msgid "Warnings"
 msgstr ""
 
@@ -12742,10 +12745,10 @@ msgstr ""
 msgid "What went wrong? What did you expect to happen?"
 msgstr ""
 
-msgid "What's New"
+msgid "What you'll gain"
 msgstr ""
 
-msgid "What's New in {{version}}"
+msgid "What's New"
 msgstr ""
 
 #. plugin:mailchimp:section:3:content
@@ -12901,9 +12904,6 @@ msgid "You are about to email copy of the family information to the following em
 msgstr ""
 
 msgid "You are running a pre-release version."
-msgstr ""
-
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
 msgstr ""
 
 #. plugin:external-backup:section:3:content
