@@ -247,6 +247,8 @@ window.CRM.groups = {
     wrapper.addEventListener(
       "hidden.bs.modal",
       () => {
+        if (groupSelectInstance) { groupSelectInstance.destroy(); groupSelectInstance = null; }
+        if (roleSelectInstance) { roleSelectInstance.destroy(); roleSelectInstance = null; }
         bsModal.dispose();
         wrapper.remove();
       },
@@ -258,6 +260,9 @@ window.CRM.groups = {
 
     let selectedGroupId = null;
     let selectedRoleId = null;
+    let groupSelectInstance = null;
+    let roleSelectInstance = null;
+    let noRolesAvailable = false;
 
     // Helper: enable/disable the confirm button based on current selection state
     const updateConfirmState = () => {
@@ -277,7 +282,7 @@ window.CRM.groups = {
       "shown.bs.modal",
       () => {
         if (isGroupOnly || isGroupAndRole) {
-          const groupEl = document.getElementById("crm-gs-group");
+          const groupEl = wrapper.querySelector("#crm-gs-group");
 
           // Fetch all groups and populate the TomSelect
           window.CRM.groups.get().done((rdata) => {
@@ -286,7 +291,7 @@ window.CRM.groups = {
               id: String(item.Id),
             }));
 
-            new TomSelect(groupEl, {
+            groupSelectInstance = new TomSelect(groupEl, {
               valueField: "id",
               labelField: "text",
               searchField: "text",
@@ -300,10 +305,14 @@ window.CRM.groups = {
 
                 if (!isGroupAndRole) return;
 
+                // Disable confirm while roles are loading to prevent premature submit
+                confirmBtn.disabled = true;
+
                 // When the user selects a group, load its roles
-                const roleEl = document.getElementById("crm-gs-role");
+                const roleEl = wrapper.querySelector("#crm-gs-role");
                 if (roleEl && roleEl.tomselect) {
                   roleEl.tomselect.destroy();
+                  roleSelectInstance = null;
                 }
                 selectedRoleId = null;
 
@@ -337,7 +346,7 @@ window.CRM.groups = {
                     id: String(r.OptionId),
                   }));
                   selectedRoleId = roleOptions[0].id; // default to first role
-                  new TomSelect(roleEl, {
+                  roleSelectInstance = new TomSelect(roleEl, {
                     valueField: "id",
                     labelField: "text",
                     searchField: "text",
@@ -358,9 +367,11 @@ window.CRM.groups = {
 
         if (isRoleOnly) {
           // Role-only: load roles for the pre-supplied GroupID
-          const roleEl = document.getElementById("crm-gs-role");
+          const roleEl = wrapper.querySelector("#crm-gs-role");
           window.CRM.groups.getRoles(selectOptions.GroupID).done((roles) => {
             if (!roles || roles.length === 0) {
+              // No roles configured — allow proceed; caller receives RoleID: null
+              noRolesAvailable = true;
               confirmBtn.disabled = false;
               return;
             }
@@ -370,7 +381,7 @@ window.CRM.groups = {
               id: String(r.OptionId),
             }));
             selectedRoleId = roleOptions[0].id;
-            new TomSelect(roleEl, {
+            roleSelectInstance = new TomSelect(roleEl, {
               valueField: "id",
               labelField: "text",
               searchField: "text",
@@ -399,7 +410,7 @@ window.CRM.groups = {
         bsModal.hide();
         selectionCallback({ GroupID: selectedGroupId });
       } else if (isRoleOnly) {
-        if (!selectedRoleId) {
+        if (!selectedRoleId && !noRolesAvailable) {
           window.CRM.notify(i18next.t("Please select a role."), { type: "warning", delay: 3000 });
           return;
         }

@@ -106,7 +106,7 @@ describe("Empty Cart to Group", () => {
 
             // Close modal and clean up the test group
             cy.get(".modal.show .btn-close").click();
-            cy.get(".modal").should("not.have.class", "show");
+            cy.get(".modal.show").should("not.exist");
 
             cy.request({
                 method: "DELETE",
@@ -116,10 +116,8 @@ describe("Empty Cart to Group", () => {
     });
 
     it("shows role dropdown after selecting a group with multiple roles", () => {
-        // Use a group from seed data that has roles defined.
+        // Use a well-known group from seed data that has roles defined.
         // Group ID 11 ("Clergy") has role list 23 per seed data.
-        const TARGET_GROUP_ID = 11;
-
         cy.visit("/v2/cart");
 
         cy.window().should("have.property", "CRM");
@@ -159,7 +157,7 @@ describe("Empty Cart to Group", () => {
 
         // Click Cancel
         cy.get(".modal.show #crm-gs-cancel").click();
-        cy.get(".modal").should("not.have.class", "show");
+        cy.get(".modal.show").should("not.exist");
 
         // Cart should still have the person
         cy.request("GET", "/api/cart/").then((resp) => {
