@@ -510,6 +510,16 @@ class FinancialService
                 // causing a second rollBack() on an inactive transaction (PDOException).
                 throw new \InvalidArgumentException('Pledge group not found');
             }
+            // Guard: refuse edits when the associated deposit is already closed.
+            // This check runs inside the transaction so it is safe against concurrent
+            // deposit-close operations (no TOCTOU gap).
+            $onePledge = PledgeQuery::create()->filterByGroupKey($groupKey)->findOne($con);
+            if ($onePledge !== null && $onePledge->getDepId()) {
+                $deposit = DepositQuery::create()->findOneById($onePledge->getDepId(), $con);
+                if ($deposit !== null && $deposit->getClosed()) {
+                    throw new \DomainException(gettext('Cannot edit a payment in a closed deposit'));
+                }
+            }
             // Remove orphaned denomination rows. pledge_denominations_pdem has no FK
             // constraint and no Propel model, so we use a parameterized statement on
             // the same connection to keep the deletion within this transaction.

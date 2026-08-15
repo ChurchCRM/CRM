@@ -351,7 +351,6 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     const GROUP_KEY = <?= InputUtils::jsonEncodeForScript($groupKey) ?>;
     const PLEDGE_TYPE = <?= InputUtils::jsonEncodeForScript($type) ?>;
     const FY_MONTH    = <?= (int) SystemConfig::getIntValue('iFYMonth') ?>;
-    const DEPOSIT_ID  = <?= (int) $depositId ?>;
     const LINK_BACK_RAW = <?= InputUtils::jsonEncodeForScript($linkBack) ?>;
     const LINK_BACK_TARGET = <?= InputUtils::jsonEncodeForScript($linkBack !== '' ? $linkBackTarget : '') ?>;
 
@@ -580,7 +579,9 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             if (redirectAfter === 'new') {
                 setTimeout(function () {
                     var newUrl = ROOT + '/finance/pledge/new?type=' + encodeURIComponent(PLEDGE_TYPE);
-                    if (DEPOSIT_ID) newUrl += '&depositId=' + encodeURIComponent(DEPOSIT_ID);
+                    var depEl = document.getElementById('DepositID');
+                    var currentDepId = depEl ? parseInt(depEl.value, 10) : 0;
+                    if (currentDepId) newUrl += '&depositId=' + encodeURIComponent(currentDepId);
                     if (LINK_BACK_RAW) newUrl += '&linkBack=' + encodeURIComponent(LINK_BACK_RAW);
                     window.location.href = newUrl;
                 }, 800);
