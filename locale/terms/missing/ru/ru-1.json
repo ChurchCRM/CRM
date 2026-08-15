@@ -1,32 +1,32 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "Письмо отправлено %d семье.",
-    "few": "Письмо отправлено %d семьям.",
-    "many": "Письмо отправлено %d семьям.",
-    "other": "Письмо отправлено %d семье."
+    "one": "",
+    "few": "",
+    "many": "",
+    "other": ""
   },
-  "OFX": "OFX",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF успешно отправлен %d семье.",
-    "few": "PDF успешно отправлен %d семьям.",
-    "many": "PDF успешно отправлен %d семьям.",
-    "other": "PDF успешно отправлен %d семье."
+    "one": "",
+    "few": "",
+    "many": "",
+    "other": ""
   },
   "Copied {{count}} members": {
-    "one": "Скопирован {{count}} участник",
-    "other": "Скопировано {{count}} участников"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "В этом списке {{count}} получатель — слишком много для ссылки mailto:. Используйте «Копировать адреса».",
-    "other": "В этом списке {{count}} получателей — слишком много для ссылки mailto:. Используйте «Копировать адреса»."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Слишком много получателей для почтового клиента ({{count}} > {{max}}). Используйте «Копировать адреса».",
-    "other": "Слишком много получателей для почтового клиента ({{count}} > {{max}}). Используйте «Копировать адреса»."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Осталась {{count}} минута",
-    "other": "Осталось {{count}} минут"
+    "one": "",
+    "other": ""
   }
 }

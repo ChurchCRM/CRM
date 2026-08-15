@@ -1,27 +1,27 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "other": "Email đã được gửi đến %d gia đình."
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "other": "PDF đã được gửi email thành công đến %d gia đình."
+    "other": ""
   },
   "Copied {{count}} members": {
-    "one": "Đã sao chép {{count}} thành viên",
-    "other": "Đã sao chép {{count}} thành viên"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Danh sách này có {{count}} người nhận — quá nhiều cho liên kết mailto:. Hãy dùng Sao chép Địa chỉ thay thế.",
-    "other": "Danh sách này có {{count}} người nhận — quá nhiều cho liên kết mailto:. Hãy dùng Sao chép Địa chỉ thay thế."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Quá nhiều người nhận cho ứng dụng email ({{count}} > {{max}}). Hãy dùng Sao chép Địa chỉ thay thế.",
-    "other": "Quá nhiều người nhận cho ứng dụng email ({{count}} > {{max}}). Hãy dùng Sao chép Địa chỉ thay thế."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Còn {{count}} phút",
-    "other": "Còn {{count}} phút"
+    "one": "",
+    "other": ""
   }
 }

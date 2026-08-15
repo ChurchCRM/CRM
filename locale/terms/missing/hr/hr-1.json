@@ -1,31 +1,31 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-pošta poslana %d obitelji.",
-    "few": "E-pošta poslana %d obitelji.",
-    "other": "E-pošta poslana %d obitelji."
+    "one": "",
+    "few": "",
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF uspješno poslan e-poštom %d obitelji.",
-    "few": "PDF uspješno poslan e-poštom %d obitelji.",
-    "other": "PDF uspješno poslan e-poštom %d obitelji."
+    "one": "",
+    "few": "",
+    "other": ""
   },
   "Copied {{count}} members": {
-    "one": "Kopiran {{count}} član",
-    "other": "Kopirano {{count}} članova"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Ovaj popis ima {{count}} primatelja — previše za mailto: vezu. Umjesto toga koristite Kopiraj adrese.",
-    "other": "Ovaj popis ima {{count}} primatelja — previše za mailto: vezu. Umjesto toga koristite Kopiraj adrese."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Previše primatelja za klijent e-pošte ({{count}} > {{max}}). Umjesto toga koristite Kopiraj adrese.",
-    "other": "Previše primatelja za klijent e-pošte ({{count}} > {{max}}). Umjesto toga koristite Kopiraj adrese."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Ostala je {{count}} min",
-    "other": "Ostalo je {{count}} min"
+    "one": "",
+    "other": ""
   }
 }

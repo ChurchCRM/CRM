@@ -1,32 +1,32 @@
 {
-  "Code": "Code",
-  "Signature": "Signature",
-  "Auto": "Auto",
-  "CSV": "CSV",
+  "Code": "",
+  "Signature": "",
+  "Auto": "",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-mail envoyé à %d famille.",
-    "other": "E-mail envoyé à %d familles."
+    "one": "",
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF envoyé par e-mail avec succès à %d famille.",
-    "other": "PDF envoyé par e-mail avec succès à %d familles."
+    "one": "",
+    "other": ""
   },
   "Copied {{count}} members": {
-    "one": "{{count}} membre copié",
-    "other": "{{count}} membres copiés"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Cette liste contient {{count}} destinataire — trop pour un lien mailto:. Utilisez plutôt Copier les adresses.",
-    "other": "Cette liste contient {{count}} destinataires — trop pour un lien mailto:. Utilisez plutôt Copier les adresses."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez plutôt Copier les adresses.",
-    "other": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez plutôt Copier les adresses."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min restante",
-    "other": "{{count}} min restantes"
+    "one": "",
+    "other": ""
   }
 }

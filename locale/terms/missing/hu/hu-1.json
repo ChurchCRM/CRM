@@ -1,29 +1,29 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-mail elküldve %d családnak.",
-    "other": "E-mail elküldve %d családnak."
+    "one": "",
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "A PDF sikeresen elküldve %d családnak.",
-    "other": "A PDF sikeresen elküldve %d családnak."
+    "one": "",
+    "other": ""
   },
   "Copied {{count}} members": {
-    "one": "{{count}} tag másolva",
-    "other": "{{count}} tag másolva"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Ez a lista {{count}} címzettet tartalmaz – ez túl sok egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót helyette.",
-    "other": "Ez a lista {{count}} címzettet tartalmaz – ez túl sok egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót helyette."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Túl sok címzett az e-mail kliensnek ({{count}} > {{max}}). Használja a Címek másolása funkciót helyette.",
-    "other": "Túl sok címzett az e-mail kliensnek ({{count}} > {{max}}). Használja a Címek másolása funkciót helyette."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} perc van hátra",
-    "other": "{{count}} perc van hátra"
+    "one": "",
+    "other": ""
   }
 }

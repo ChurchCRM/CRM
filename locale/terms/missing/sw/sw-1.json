@@ -1,30 +1,30 @@
 {
-  "Data": "Data",
-  "CSV": "CSV",
+  "Data": "",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "Barua pepe imetumwa kwa familia %d.",
-    "other": "Barua pepe zimetumwa kwa familia %d."
+    "one": "",
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF imetumwa kwa barua pepe kwa familia %d.",
-    "other": "PDF zimetumwa kwa barua pepe kwa familia %d."
+    "one": "",
+    "other": ""
   },
   "Copied {{count}} members": {
-    "one": "Mwanakikundi {{count}} amenakiliwa",
-    "other": "Wanakikundi {{count}} wamenakiliwa"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Orodha hii ina mpokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
-    "other": "Orodha hii ina wapokeaji {{count}} — wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Wapokeaji wengi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
-    "other": "Wapokeaji wengi mno kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Dakika {{count}} iliyobaki",
-    "other": "Dakika {{count}} zilizobaki"
+    "one": "",
+    "other": ""
   }
 }

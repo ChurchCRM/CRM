@@ -1,27 +1,27 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "other": "%d 가정에 이메일을 발송했습니다."
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "other": "%d 가정에 PDF를 성공적으로 이메일로 발송했습니다."
+    "other": ""
   },
   "Copied {{count}} members": {
-    "one": "{{count}}명의 성도를 복사했습니다",
-    "other": "{{count}}명의 성도를 복사했습니다"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "이 목록에는 {{count}}명의 수신자가 있어 mailto: 링크로 사용하기에 너무 많습니다. 대신 주소 복사를 사용하세요.",
-    "other": "이 목록에는 {{count}}명의 수신자가 있어 mailto: 링크로 사용하기에 너무 많습니다. 대신 주소 복사를 사용하세요."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "이메일 클라이언트에 수신자가 너무 많습니다 ({{count}} > {{max}}). 대신 주소 복사를 사용하세요.",
-    "other": "이메일 클라이언트에 수신자가 너무 많습니다 ({{count}} > {{max}}). 대신 주소 복사를 사용하세요."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}}분 남음",
-    "other": "{{count}}분 남음"
+    "one": "",
+    "other": ""
   }
 }

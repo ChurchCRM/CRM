@@ -1,28 +1,28 @@
 {
-  "Data": "Data",
-  "CSV": "CSV",
+  "Data": "",
+  "CSV": "",
   "Email sent to %d family.": {
-    "other": "Email telah dikirim ke %d keluarga."
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "other": "PDF berhasil dikirim melalui email ke %d keluarga."
+    "other": ""
   },
   "Copied {{count}} members": {
-    "one": "Menyalin {{count}} anggota",
-    "other": "Menyalin {{count}} anggota"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat sebagai gantinya.",
-    "other": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat sebagai gantinya."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat sebagai gantinya.",
-    "other": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat sebagai gantinya."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} menit tersisa",
-    "other": "{{count}} menit tersisa"
+    "one": "",
+    "other": ""
   }
 }

@@ -1,29 +1,29 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "אימייל נשלח למשפחה אחת.",
-    "other": "אימייל נשלח ל-%d משפחות."
+    "one": "",
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "קובץ PDF נשלח בהצלחה במייל למשפחה אחת.",
-    "other": "קובץ PDF נשלח בהצלחה במייל ל-%d משפחות."
+    "one": "",
+    "other": ""
   },
   "Copied {{count}} members": {
-    "one": "חבר אחד הועתק",
-    "other": "הועתקו {{count}} חברים"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "לרשימה זו יש נמען אחד — רב מדי עבור קישור mailto:. השתמש בהעתק כתובות במקום.",
-    "other": "לרשימה זו יש {{count}} נמענים — רב מדי עבור קישור mailto:. השתמש בהעתק כתובות במקום."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "יותר מדי נמענים עבור לקוח הדואר האלקטרוני ({{count}} > {{max}}). השתמש בהעתק כתובות במקום.",
-    "other": "יותר מדי נמענים עבור לקוח הדואר האלקטרוני ({{count}} > {{max}}). השתמש בהעתק כתובות במקום."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "נותרת דקה אחת",
-    "other": "נותרו {{count}} דקות"
+    "one": "",
+    "other": ""
   }
 }
