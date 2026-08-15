@@ -247,8 +247,14 @@ window.CRM.groups = {
     wrapper.addEventListener(
       "hidden.bs.modal",
       () => {
-        if (groupSelectInstance) { groupSelectInstance.destroy(); groupSelectInstance = null; }
-        if (roleSelectInstance) { roleSelectInstance.destroy(); roleSelectInstance = null; }
+        if (groupSelectInstance) {
+          groupSelectInstance.destroy();
+          groupSelectInstance = null;
+        }
+        if (roleSelectInstance) {
+          roleSelectInstance.destroy();
+          roleSelectInstance = null;
+        }
         bsModal.dispose();
         wrapper.remove();
       },
