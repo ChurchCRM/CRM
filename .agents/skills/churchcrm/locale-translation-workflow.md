@@ -248,11 +248,22 @@ npm run locale:upload:missing -- --yes
 - Discovers all locale folders in `locale/terms/missing/`
 - Validates each locale: checks for proper translations, suspects identical to key, empties
 - Skips suspect and empty terms (keeps batch files clean)
-- **Plural forms:** Converts i18next's nested format `{ term: { "one": "...", "other": "..." } }` to POEditor's inverted format `{ "one": { term: "..." }, "other": { term: "..." } }` before sending (required by POEditor API)
+- **Plural forms with numeric tokens:** Converts i18next's nested format `{ term: { "one": "...", "other": "..." } }` to POEditor's standard pipe-separated format `"singular|plural"` before sending
 - Uploads to POEditor with metadata (parsing & update counts)
 - After successful upload, refreshes local missing-term files (removes accepted terms)
 
-**Plural form support:** Terms with `{{count}}`, `{{max}}`, or other numeric tokens are properly handled across all CLDR plural categories (zero, one, two, few, many, other). Round-trip (upload → download) preserves all plural variants — no data loss. <!-- learned: 2026-08-15 -->
+**Why pipe-separated format?** Terms with numeric tokens like `{{count}}`, `{{max}}`, etc. need to use i18next's plural handling with the `count` option. POEditor's API recognizes pipe-separated plurals (`"singular|plural"`) as proper plural forms, whereas nested objects are not supported. <!-- learned: 2026-08-15 -->
+
+**Example - Correct pluralization:**
+```
+Source code: i18next.t("Copied {{count}} member", { count: ids.length })
+
+Stored as:   "Copied {{count}} member": "Copied {{count}} member|Copied {{count}} members"
+             (not nested: ❌ "Copied {{count}} members": { "one": "...", "other": "..." })
+
+Uploaded to POEditor: Recognized as plural form ✅
+Downloaded back: Converts to nested format for i18next runtime ✅
+```
 
 ### Upload Flags
 
