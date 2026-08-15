@@ -85,7 +85,10 @@
 
 // When using dropdownParent:'body', TomSelect appends the dropdown directly
 // to <body> so the .ts-wrapper scoped styles above don't apply.
+// z-index must exceed Bootstrap 5's .modal (1055) and .modal-backdrop (1050)
+// so the dropdown is clickable when triggered from inside a modal.
 body > .ts-dropdown {
+  z-index: 1060;
   background-color: var(--tblr-bg-surface);
   border: 1px solid var(--tblr-border-color);
   border-radius: var(--tblr-border-radius);
