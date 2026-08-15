@@ -255,7 +255,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
     it("selecting All Time submits the form and removes fyid from URL", () => {
       cy.visit(`finance/deposit/search?fyid=${SEED_FYID_2018}`);
 
-      // Selecting All Time (value "0") triggers onchange="this.form.submit()"
+      // Selecting All Time (value "0") triggers onchange → window.location.href navigation
       cy.get("#deposit-slip-fyid").select("0");
 
       // cy.location() retries until the post-form-submit navigation settles
