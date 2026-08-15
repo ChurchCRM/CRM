@@ -9,6 +9,7 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 class SystemURLs
@@ -165,7 +166,10 @@ class SystemURLs
      * (issue #9479).
      *
      * For non-v2 assets (legacy JS, external libraries) the previous ?v=mtime
-     * strategy is retained as a safe fallback.
+     * strategy is retained as a safe fallback.  If a v2 asset is not found in
+     * the manifest (manifest missing, stale, or fails to parse), a WARNING is
+     * written to the application log and the method returns the un-versioned
+     * path—which will 404 in the browser—so the root cause is diagnosable.
      *
      * @param string $webPath Asset path relative to document root (e.g., '/skin/v2/churchcrm.min.css')
      * @return string Versioned URL—content-hashed path for v2 bundles, or ?v=mtime for others
@@ -183,10 +187,29 @@ class SystemURLs
                 $dir = dirname($webPath); // '/skin/v2'
                 return $rootUrl . $dir . '/' . $manifest[$basename];
             }
+            // Asset not found in manifest.  Since webpack no longer emits
+            // un-hashed filenames for v2 bundles, the file_exists() fallback
+            // below will always miss and return an un-versioned URL that 404s.
+            // Log a warning so a missing or stale manifest is immediately
+            // diagnosable in the application log rather than showing up as
+            // a generic broken-asset report with no clear cause.
+            LoggerUtils::getAppLogger()->warning(
+                'v2 asset not found in asset-manifest.json — browser will receive a 404 for this asset',
+                [
+                    'asset'            => $webPath,
+                    'manifest_entries' => count($manifest),
+                    'hint'             => empty($manifest)
+                        ? 'Manifest is empty — run `npm run build:webpack` to generate asset-manifest.json'
+                        : 'Key "' . $basename . '" absent from manifest — manifest may be stale; re-run webpack',
+                ]
+            );
         }
 
-        // Fallback: append ?v=<mtime> for cache-busting (legacy/external assets,
-        // or v2 assets when the manifest hasn\'t been built yet)
+        // Fallback: append ?v=<mtime> for cache-busting.
+        // Applies to legacy/external assets that are not bundled by webpack.
+        // For v2 assets this path will not find the file on disk (webpack emits
+        // only content-hashed filenames) and returns an un-versioned URL that
+        // 404s — the warning above makes that visible in the application log.
         $fullPath = rtrim($docRoot, DIRECTORY_SEPARATOR) . $webPath;
         if (file_exists($fullPath)) {
             return $rootUrl . $webPath . '?v=' . filemtime($fullPath);
