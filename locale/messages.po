@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-14 23:15+0000\n"
+"POT-Creation-Date: 2026-08-15 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8692,7 +8692,7 @@ msgid "People with no personal or work email on record"
 msgstr ""
 
 #. Context: query_qry
-msgid "People with wedding anniversaries in a particular month (returns one row per spouse for cart use)"
+msgid "People with wedding anniversaries in a particular month"
 msgstr ""
 
 msgid "Percentage"
