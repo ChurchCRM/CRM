@@ -612,6 +612,19 @@ function GetCalendarSourceId(calendarType, calendarID) {
 }
 
 /**
+ * Escape a string for safe insertion into HTML context.
+ * Mirrors the same utility in event-form.js / system-settings-panel.js.
+ */
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+/**
  * Translate a calendar name when it matches one of the two DB-seeded default
  * calendar names ("Public Calendar", "Private Calendar"). Custom user-defined
  * names are returned unchanged (i18next.t passthrough returns the key as-is
@@ -652,7 +665,7 @@ function getCalendarFilterElement(calendar, type) {
     '"></span>' +
     '<div class="flex-fill">' +
     '<div class="fw-medium small d-flex align-items-center">' +
-    getLocalizedCalendarName(calendar.Name) +
+    escapeHtml(getLocalizedCalendarName(calendar.Name)) +
     publicBadge +
     "</div>" +
     "</div>" +
@@ -664,7 +677,7 @@ function getCalendarFilterElement(calendar, type) {
     '" data-calendarid="' +
     calendar.Id +
     '" aria-label="Toggle ' +
-    getLocalizedCalendarName(calendar.Name) +
+    escapeHtml(getLocalizedCalendarName(calendar.Name)) +
     ' calendar visibility"/>' +
     "</div>" +
     "</div>" +
