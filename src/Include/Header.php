@@ -121,7 +121,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
         <form name="issueReport">
           <input type="hidden" name="pageName" value="<?= InputUtils::escapeAttribute($_SERVER['REQUEST_URI'] ?? '') ?>"/>
           <div class="modal-header">
-            <h5 class="modal-title"><i class="ti ti-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
+            <h5 class="modal-title"><i class="fa-solid fa-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
           </div>
           <div class="modal-body">
@@ -210,7 +210,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
                   buttons: [
                       {
                           extend: 'csv',
-                          text: '<i class="ti ti-table-export"></i>',
+                          text: '<i class="fa-solid fa-file-csv"></i>',
                           titleAttr: 'Export CSV',
                           exportOptions: {
                               columns: ':not(.no-export)'
@@ -218,7 +218,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
                       },
                       {
                           extend: 'print',
-                          text: '<i class="ti ti-printer"></i>',
+                          text: '<i class="fa-solid fa-print"></i>',
                           titleAttr: 'Print',
                           exportOptions: {
                               columns: ':not(.no-export)'
@@ -335,7 +335,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
             <?php } ?>
             <a href="https://github.com/ChurchCRM/CRM/releases/latest" target="_blank"
                class="dropdown-item" title="<?= gettext('Release Notes') ?>">
-              <i class="ti ti-book me-2"></i><?= gettext('Release Notes') ?>
+              <i class="fa-solid fa-book me-2"></i><?= gettext('Release Notes') ?>
             </a>
           </div>
         </div>
@@ -373,18 +373,18 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
         <!-- Support -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#" id="supportMenu">
-            <i class="ti ti-headset"></i>
+            <i class="fa-solid fa-headset"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item"
                title="<?= gettext('Documentation') ?>">
-              <i class="ti ti-book me-2"></i><?= gettext('Documentation') ?>
+              <i class="fa-solid fa-book me-2"></i><?= gettext('Documentation') ?>
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" id="reportIssue" class="dropdown-item"
                data-bs-toggle="modal" data-bs-target="#IssueReportModal"
                title="<?= gettext('Report an issue') ?>">
-              <i class="ti ti-bug me-2"></i><?= gettext('Report an issue') ?>
+              <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an issue') ?>
             </a>
             <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" class="dropdown-item"
                title="<?= gettext('Discord Chat') ?>">
