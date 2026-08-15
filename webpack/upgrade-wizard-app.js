@@ -5,7 +5,7 @@
  * Step indices:
  *   0 - Pre-flight
  *   1 - Backup
- *   2 - What's New
+ *   2 - What's New / What you'll gain
  *   3 - Download & Apply
  *   4 - Complete
  */
@@ -30,20 +30,22 @@ marked.use({
 
 let upgradeStepper;
 
-// Stores the version the user wants to download (may be overridden by target selector)
+// Stores the version the user wants to download.
+// null  = "use latest" — download-latest-release is called without ?version param.
+// "X.Y.Z" = explicit version chosen via the advanced picker or prerelease reinstall.
 let selectedTargetVersion = null;
 
-// Stores changelog URL for the installed version after upgrade completes
+// Stores the changelog URL for the installed version after upgrade completes.
 let installedChangelogUrl = null;
 
 // Set to true when the admin triggers a force-reinstall so the What's New step
 // keeps the proceed button visible even when the system is already up to date.
 let forceReinstallMode = false;
 
-// Stores the stable version to reinstall when running a prerelease build ahead of latest stable
+// Stores the stable version to reinstall when running a prerelease build ahead of latest stable.
 let prereleaseTargetVersion = null;
 
-// Ensure AdminAPIRequest is available - fallback to regular APIRequest if not defined
+// Ensure AdminAPIRequest is available — fallback to regular APIRequest if not defined.
 if (window.CRM && !window.CRM.AdminAPIRequest) {
   window.CRM.AdminAPIRequest = (options) => {
     if (!options.method) {
@@ -66,7 +68,7 @@ if (window.CRM && !window.CRM.AdminAPIRequest) {
 }
 
 /**
- * Initialize the upgrade wizard when DOM is ready
+ * Initialize the upgrade wizard when DOM is ready.
  */
 $(document).ready(() => {
   if (!window.CRM?.AdminAPIRequest) {
@@ -86,7 +88,7 @@ $(document).ready(() => {
 
   const stepElements = document.querySelectorAll("#upgrade-stepper .step");
   document.querySelector("#upgrade-stepper").addEventListener("show.bs-stepper", (event) => {
-    // Mark all previous steps as completed
+    // Mark all previous steps as completed.
     for (let i = 0; i < event.detail.to; i++) {
       stepElements[i].classList.add("completed");
       const circle = stepElements[i].querySelector(".bs-stepper-circle");
@@ -95,25 +97,20 @@ $(document).ready(() => {
       }
     }
 
-    // What's New step (index 2): fetch preview
+    // What you'll gain step (index 2): fetch preview.
     if (event.detail.to === 2) {
       setTimeout(() => fetchUpgradePreview(), 300);
     }
 
-    // Download & Apply step (index 3): auto-download
+    // Download & Apply step (index 3): auto-download.
     if (event.detail.to === 3) {
       setTimeout(() => autoDownloadUpdate(), 300);
     }
-
-    // forceReinstallMode is reset explicitly in the places that clear it
-    // (module initialisation, or when the page reloads after a completed upgrade).
-    // Resetting here would create a timing dependency with the setTimeout in
-    // setupForceReinstallButton, breaking under animation or slow event dispatch.
   });
 });
 
 /**
- * Set up navigation button handlers
+ * Set up navigation button handlers.
  */
 function setupNavigationHandlers() {
   $("#acceptWarnings").click(() => {
@@ -124,23 +121,25 @@ function setupNavigationHandlers() {
     upgradeStepper.next();
   });
 
-  // "Download & Install" — stores the selected version then advances to download step
+  // "Download & Apply" — resolve the selected version then advance to the download step.
+  // selectedTargetVersion is managed by the version-select change handler throughout the step.
+  // For the prerelease reinstall case there is no version selector, so fall through to
+  // prereleaseTargetVersion if selectedTargetVersion has not been set explicitly.
   $("#proceedToDownload").click(() => {
-    const sel = $("#targetVersionSelect").val();
-    // For the prerelease reinstall case there is no version selector; fall back
-    // to the stable version stored by renderWhatsNew().
-    selectedTargetVersion = sel && sel !== "" ? sel : prereleaseTargetVersion;
+    if (selectedTargetVersion === null && prereleaseTargetVersion !== null) {
+      selectedTargetVersion = prereleaseTargetVersion;
+    }
     upgradeStepper.next();
   });
 
-  // "Continue Anyway" on error state
+  // "Continue Anyway" on error state.
   $("#skipWhatsNew").click(() => {
     upgradeStepper.next();
   });
 }
 
 /**
- * Set up handlers for each step's actions
+ * Set up handlers for each step's actions.
  */
 function setupStepHandlers() {
   setupBackupStep();
@@ -148,7 +147,7 @@ function setupStepHandlers() {
 }
 
 /**
- * Set up database backup step
+ * Set up database backup step.
  */
 function setupBackupStep() {
   $("#doBackup").click(function () {
@@ -233,7 +232,7 @@ function setupBackupStep() {
 }
 
 /**
- * Fetch upgrade preview data and render the What's New step
+ * Fetch upgrade preview data and render the What you'll gain step.
  */
 function fetchUpgradePreview() {
   const $loading = $("#whatsNewLoading");
@@ -265,47 +264,136 @@ function fetchUpgradePreview() {
 }
 
 /**
- * Set the "What's New in <version>" heading, keeping #whatsNewVersion
- * accessible for Cypress and other selectors while using a single
- * parameterised i18n string instead of two concatenated fragments.
+ * Build a single version release-notes block with deep-link anchor, type badge,
+ * optional full-release-notes link, and rendered markdown notes.
+ *
+ * @param {string}      version      Semver version string (e.g. "7.6.0")
+ * @param {string|null} type         Release type: "major" | "minor" | "patch" | null
+ * @param {string}      notes        Markdown release notes
+ * @param {string|null} changelogUrl Link to the full release notes on GitHub
  */
-function setWhatsNewHeading(version) {
-  const versionHtml = `<span id="whatsNewVersion" class="text-primary">${escapeHtml(version || "")}</span>`;
-  $("#whatsNewHeading").html(
-    i18next.t("What's New in {{version}}", {
-      version: versionHtml,
-      interpolation: { escapeValue: false },
-    }),
-  );
+/**
+ * Accept only http(s) changelog URLs; reject everything else (javascript:, data:, etc.).
+ * Returns the URL unchanged if valid, null otherwise.
+ */
+function sanitizeChangelogUrl(url) {
+  return url && /^https?:\/\//i.test(url) ? url : null;
+}
+
+function buildVersionBlock(version, type, notes, changelogUrl) {
+  const anchor = `v${version.replace(/\./g, "-")}`;
+  const typeHtml = type ? ` ${badgeForType(type)}` : "";
+  const notesHtml = marked.parse(notes || "");
+  // Use sanitizeChangelogUrl so the same http(s)-only guard applies everywhere.
+  const safeUrl = sanitizeChangelogUrl(changelogUrl);
+  const changelogLink = safeUrl
+    ? `<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm flex-shrink-0">
+         <i class="fa fa-external-link me-1"></i>${i18next.t("Full release notes")}
+       </a>`
+    : "";
+  return `<div class="version-notes-block mb-3">
+    <div id="${escapeHtml(anchor)}" class="d-flex align-items-center justify-content-between mb-1 flex-wrap gap-1">
+      <h5 class="mb-0">${escapeHtml(version)}${typeHtml}</h5>
+      ${changelogLink}
+    </div>
+    <div class="release-notes p-3 border rounded">${notesHtml}</div>
+  </div>`;
 }
 
 /**
- * Render the What's New content from preview API response
+ * Render stacked version blocks (newest-first) into #whatsNewNotes,
+ * filtered to versions <= targetVersion.
+ * upgradePath arrives ascending from the API; we reverse after filtering.
+ */
+function renderGainStack(upgradePath, targetVersion) {
+  const relevant = [...upgradePath].filter((e) => semverCompare(e.version, targetVersion) <= 0).reverse(); // newest first
+
+  if (relevant.length === 0) {
+    $("#whatsNewNotes").html(
+      `<p class="text-secondary">${i18next.t("No release notes available for this version.")}</p>`,
+    );
+    return;
+  }
+
+  const html = relevant.map((e) => buildVersionBlock(e.version, e.type, e.notes, e.changelogUrl)).join("");
+  $("#whatsNewNotes").html(html);
+}
+
+/**
+ * Simple semver comparison for "X.Y.Z" strings.
+ * Returns negative if a < b, 0 if equal, positive if a > b.
+ */
+function semverCompare(a, b) {
+  // F3: use parseInt so pre-release suffixes like "3-rc1" parse as 3 rather than NaN.
+  const pa = String(a)
+    .split(".")
+    .map((s) => Number.parseInt(s, 10) || 0);
+  const pb = String(b)
+    .split(".")
+    .map((s) => Number.parseInt(s, 10) || 0);
+  for (let i = 0; i < 3; i++) {
+    const diff = (pa[i] || 0) - (pb[i] || 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
+
+/**
+ * Render the What you'll gain step from preview API response.
+ *
+ * Three cases:
+ *   Case 1 — isAheadOfStable: running a prerelease/dev build ahead of latest stable.
+ *   Case 2 — releasesAhead === 0: system is fully up to date.
+ *   Case 3 — normal upgrade: one or more releases ahead.
  */
 function renderWhatsNew(data) {
-  const { nextVersion, nextReleaseNotes, nextChangelogUrl, releasesAhead, upgradePath, isAheadOfStable } = data;
+  const {
+    nextVersion,
+    nextReleaseNotes,
+    nextChangelogUrl,
+    releasesAhead,
+    upgradePath,
+    isAheadOfStable,
+    latestVersion,
+  } = data;
 
-  // --- Bug fix: reset stale UI state before every render ---
+  // --- Reset stale UI state before every render ---
   $("#whatsNewChangelogLink").addClass("d-none").attr("href", "#");
-  $("#upgradePathPanel").addClass("d-none");
-  $("#advancedVersionCollapse").closest(".mb-4").addClass("d-none");
-  $("#whatsNewContent .alert-success, #whatsNewContent .alert-warning, #whatsNewContent .js-uptodate-banner").remove();
+  $("#advancedVersionPanel").addClass("d-none");
+  $("#securityRecommendationCallout").addClass("d-none");
+  $("#recommendedBadge").addClass("d-none");
+  $("#advancedWarningBanner").addClass("d-none");
+  $("#targetVersionSelect").empty();
+  $("#whatsNewNotes").empty();
+  $("#whatsNewVersion").text("");
+  selectedTargetVersion = null;
+  prereleaseTargetVersion = null;
+  // Remove any banners injected by a previous render (e.g. wizard re-entry).
+  // IMPORTANT: use .js-dynamic-banner — do NOT sweep .alert-warning or .alert-success
+  // broadly, as #securityRecommendationCallout is a permanent static element that must
+  // survive across renders (it is shown/hidden via the d-none toggle, never removed).
+  $("#whatsNewContent .js-dynamic-banner").remove();
   $("#proceedToDownload")
     .removeClass("d-none")
-    .html(`<i class="fa fa-cloud-arrow-down me-1"></i>${i18next.t("Download & Install")}`);
-  prereleaseTargetVersion = null;
+    .html(`<i class="fa fa-cloud-arrow-down me-1"></i>${i18next.t("Download & Apply")}`);
 
-  // Case 1: Running a prerelease/dev build ahead of latest stable
+  // ── Case 1: Running a prerelease / dev build ahead of latest stable ──────────
   if (isAheadOfStable && nextVersion) {
     prereleaseTargetVersion = nextVersion;
-    setWhatsNewHeading(nextVersion);
-    $("#whatsNewNotes").html(marked.parse(nextReleaseNotes || ""));
-    if (nextChangelogUrl) {
-      $("#whatsNewChangelogLink").attr("href", nextChangelogUrl).removeClass("d-none");
+    $("#whatsNewVersion").text(nextVersion);
+    const safeNextChangelogUrl = sanitizeChangelogUrl(nextChangelogUrl);
+    if (safeNextChangelogUrl) {
+      $("#whatsNewChangelogLink").attr("href", safeNextChangelogUrl).removeClass("d-none");
+    } else {
+      $("#whatsNewChangelogLink").addClass("d-none");
     }
-    installedChangelogUrl = nextChangelogUrl || null;
+    installedChangelogUrl = safeNextChangelogUrl;
+
+    // Render the stable-release notes as a single block.
+    $("#whatsNewNotes").html(buildVersionBlock(nextVersion, null, nextReleaseNotes, nextChangelogUrl));
+
     $("#whatsNewContent").prepend(
-      `<div class="alert alert-warning d-flex align-items-center gap-2 mb-3">
+      `<div class="alert alert-warning d-flex align-items-center gap-2 mb-3 js-dynamic-banner">
         <i class="fa fa-triangle-exclamation fa-lg"></i>
         <span>
           <strong>${i18next.t("You are running a pre-release version.")}</strong>
@@ -319,45 +407,35 @@ function renderWhatsNew(data) {
     return;
   }
 
-  // Case 2: Truly up to date — no releases ahead, not a prerelease
+  // ── Case 2: Truly up to date — no releases ahead, not a prerelease ───────────
   if (releasesAhead === 0) {
     const latestNotes = data.latestReleaseNotes || "";
     const latestUrl = data.latestChangelogUrl || null;
     const latestVer = data.latestVersion || "";
 
-    $("#advancedVersionCollapse").closest(".mb-4").addClass("d-none");
+    $("#whatsNewVersion").text(latestVer);
+    const safeLatestUrl = sanitizeChangelogUrl(latestUrl);
+    if (safeLatestUrl) {
+      $("#whatsNewChangelogLink").attr("href", safeLatestUrl).removeClass("d-none");
+    } else {
+      $("#whatsNewChangelogLink").addClass("d-none");
+    }
+    installedChangelogUrl = safeLatestUrl;
 
-    // Remove any banner left from a previous render (e.g. wizard re-entry or preview re-fetch)
+    // Remove any stale up-to-date banner from a previous render.
     $("#whatsNewContent .js-uptodate-banner").remove();
-
-    const upToDateBanner = `<div class="alert alert-success d-flex align-items-center gap-2 mb-3 js-uptodate-banner">
+    const upToDateBanner = `<div class="alert alert-success d-flex align-items-center gap-2 mb-3 js-uptodate-banner js-dynamic-banner">
       <i class="fa fa-circle-check fa-lg"></i>
       <span><strong>${i18next.t("You're up to date!")}</strong> ${i18next.t("No upgrades are available for your current version.")}</span>
     </div>`;
     $("#whatsNewContent").prepend(upToDateBanner);
 
-    // Render current release notes so admins can review what's already installed.
     if (latestNotes) {
-      setWhatsNewHeading(latestVer);
-      $("#whatsNewNotes").html(marked.parse(latestNotes));
-      if (latestUrl) {
-        $("#whatsNewChangelogLink").attr("href", latestUrl).removeClass("d-none");
-      } else {
-        $("#whatsNewChangelogLink").addClass("d-none");
-      }
-      installedChangelogUrl = latestUrl;
+      $("#whatsNewNotes").html(`<div class="release-notes p-3 border rounded">${marked.parse(latestNotes)}</div>`);
     } else {
-      // GitHub release body is absent — show a short user-facing notice so the
-      // section is not silently blank, and still link to the changelog if available.
-      setWhatsNewHeading(latestVer);
       $("#whatsNewNotes").html(
         `<p class="text-secondary">${i18next.t("No release notes available for this version.")}</p>`,
       );
-      if (latestUrl) {
-        $("#whatsNewChangelogLink").attr("href", latestUrl).removeClass("d-none");
-      } else {
-        $("#whatsNewChangelogLink").addClass("d-none");
-      }
     }
 
     if (forceReinstallMode) {
@@ -369,122 +447,130 @@ function renderWhatsNew(data) {
     return;
   }
 
-  // Case 3: Normal upgrade — one or more releases ahead
-  setWhatsNewHeading(nextVersion);
-  if (nextChangelogUrl) {
-    $("#whatsNewChangelogLink").attr("href", nextChangelogUrl).removeClass("d-none");
-  }
-  $("#whatsNewNotes").html(marked.parse(nextReleaseNotes || ""));
-  installedChangelogUrl = nextChangelogUrl || null;
-
-  if (releasesAhead >= 2 && upgradePath && upgradePath.length >= 2) {
-    const count = upgradePath.length;
-    $("#upgradePathSummary").text(
-      `${i18next.t("You are {{releaseCount}} releases behind. Here's what you'll gain", {
-        releaseCount: count,
-      })}:`,
-    );
-    renderUpgradePath(upgradePath);
-    $("#upgradePathPanel").removeClass("d-none");
-  }
-
-  renderVersionSelector(upgradePath, nextVersion);
-}
-
-/**
- * Render the collapsible upgrade path accordion
- */
-function renderUpgradePath(upgradePath) {
-  const $accordion = $("#upgradePathAccordion").empty();
-
-  upgradePath.forEach((entry, idx) => {
-    const collapseId = `upgradePath-${idx}`;
-    const typeBadge = badgeForType(entry.type);
-    const isNextBadge = entry.isNext
-      ? `<span class="badge bg-primary-lt text-primary ms-1">${i18next.t("Installing next release")}</span>`
-      : "";
-    const changelogLink = entry.changelogUrl
-      ? `<a href="${escapeHtml(entry.changelogUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm ms-2 flex-shrink-0">
-           <i class="fa fa-external-link me-1"></i>${i18next.t("Changelog")}
-         </a>`
-      : "";
-
-    const notes = marked.parse(entry.notes || "");
-
-    $accordion.append(`
-      <div class="upgrade-path-entry">
-        <div class="d-flex align-items-center w-100">
-          <button class="upgrade-path-header collapse-toggle d-flex align-items-center gap-2 flex-grow-1 text-start py-2 px-3 border-0 bg-transparent"
-              data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="false">
-            <i class="fa fa-chevron-down upgrade-path-chevron text-secondary small"></i>
-            <span class="fw-semibold">${escapeHtml(entry.version)}</span>
-            ${typeBadge}
-            ${isNextBadge}
-          </button>
-          ${changelogLink}
-        </div>
-        <div id="${collapseId}" class="collapse upgrade-path-notes px-3 pb-2">
-          <div class="release-notes p-3 border rounded">${notes}</div>
-        </div>
-      </div>
-    `);
-  });
-}
-
-/**
- * Render the target version selector
- */
-function renderVersionSelector(upgradePath, defaultNextVersion) {
-  const $select = $("#targetVersionSelect").empty();
+  // ── Case 3: Normal upgrade — one or more releases ahead ─────────────────────
+  // F2: guard against a missing or empty upgradePath (API may omit the field).
   if (!upgradePath || upgradePath.length === 0) {
-    $("#advancedVersionCollapse").closest(".mb-4").addClass("d-none");
+    $("#whatsNewNotes").html(`<p class="text-secondary">${i18next.t("No release notes available.")}</p>`);
     return;
   }
 
-  // Default option
-  $select.append(`<option value="">${i18next.t("Recommended")}: ${escapeHtml(defaultNextVersion || "")}</option>`);
+  // The latest version is always the recommended target.  The backend already
+  // supports jumping from any installed version to any target directly.
+  const latest = latestVersion || upgradePath[upgradePath.length - 1].version;
+  const latestEntry = upgradePath.find((e) => e.version === latest);
+  const latestChangelog = latestEntry?.changelogUrl || nextChangelogUrl || null;
 
-  upgradePath.forEach((entry) => {
+  // Set target to latest.
+  $("#whatsNewVersion").text(latest || "");
+  const safeLatestChangelog = sanitizeChangelogUrl(latestChangelog);
+  if (safeLatestChangelog) {
+    $("#whatsNewChangelogLink").attr("href", safeLatestChangelog).removeClass("d-none");
+  } else {
+    $("#whatsNewChangelogLink").addClass("d-none");
+  }
+  installedChangelogUrl = safeLatestChangelog;
+
+  // Show security callout and the green "Recommended" badge.
+  $("#securityRecommendationCallout").removeClass("d-none");
+  $("#recommendedBadge").removeClass("d-none");
+
+  // CTA reads "Download & Apply X.Y.Z" for clarity.
+  $("#proceedToDownload").html(
+    `<i class="fa fa-cloud-arrow-down me-1"></i>${i18next.t("Download & Apply {{version}}", { version: escapeHtml(latest || "") })}`,
+  );
+
+  // Stack ALL version notes newest-first by default.
+  renderGainStack(upgradePath, latest);
+
+  // Populate the advanced version picker.
+  // Only reveal when there is at least one non-latest option to offer.
+  if (upgradePath.length > 1) {
+    renderVersionSelector(upgradePath, latest);
+    $("#advancedVersionPanel").removeClass("d-none");
+  }
+}
+
+/**
+ * Populate the advanced version picker.
+ * Latest version is the default selected option, labelled "(Recommended)".
+ * Non-latest selection triggers a red security warning banner.
+ */
+function renderVersionSelector(upgradePath, latestVersion) {
+  const $select = $("#targetVersionSelect").empty();
+
+  // Latest option — selected by default.
+  $select.append(
+    `<option value="${escapeHtml(latestVersion)}">${escapeHtml(latestVersion)} (${i18next.t("Recommended")})</option>`,
+  );
+
+  // All other versions — newest-first so the picker order matches the notes stack.
+  // upgradePath arrives ascending from the API; reverse to get newest-first.
+  const nonLatest = upgradePath.filter((e) => e.version !== latestVersion).reverse();
+  nonLatest.forEach((entry) => {
     const friendlyLabel = { major: i18next.t("Major"), minor: i18next.t("Feature"), patch: i18next.t("Bug Fix") };
     const typeLabel = friendlyLabel[entry.type] || entry.type;
-    const label = `${entry.version} — ${typeLabel}`;
-    $select.append(`<option value="${escapeHtml(entry.version)}">${escapeHtml(label)}</option>`);
+    $select.append(
+      `<option value="${escapeHtml(entry.version)}">${escapeHtml(entry.version)} \u2014 ${escapeHtml(typeLabel)}</option>`,
+    );
   });
 
-  // Re-show the advanced selector panel (hidden by the reset block in renderWhatsNew).
-  $("#advancedVersionCollapse").closest(".mb-4").removeClass("d-none");
-
-  // Update the "What's New" notes when selection changes; deregister any
-  // stale listener from a previous call before attaching a fresh one.
+  // Deregister any stale listener before attaching a fresh one.
   $select.off("change").on("change", function () {
-    const ver = $(this).val();
-    if (!ver) {
-      // Reset to default next version notes
-      const defaultEntry = upgradePath.find((e) => e.isNext);
-      if (defaultEntry) {
-        setWhatsNewHeading(defaultEntry.version);
-        $("#whatsNewNotes").html(marked.parse(defaultEntry.notes || ""));
-        if (defaultEntry.changelogUrl) {
-          $("#whatsNewChangelogLink").attr("href", defaultEntry.changelogUrl).removeClass("d-none");
-        }
-        installedChangelogUrl = defaultEntry.changelogUrl || null;
+    const chosen = $(this).val();
+
+    if (chosen === latestVersion) {
+      // ── Reverted to latest — restore default state ───────────────────────────
+      $("#advancedWarningBanner").addClass("d-none");
+      $("#recommendedBadge").removeClass("d-none");
+
+      const latestEntry = upgradePath.find((e) => e.version === latestVersion);
+      const safeLatestHref = sanitizeChangelogUrl(latestEntry?.changelogUrl);
+      if (safeLatestHref) {
+        $("#whatsNewChangelogLink").attr("href", safeLatestHref).removeClass("d-none");
+      } else {
+        $("#whatsNewChangelogLink").addClass("d-none");
       }
+      installedChangelogUrl = safeLatestHref;
+
+      $("#whatsNewVersion").text(latestVersion);
+      $("#proceedToDownload").html(
+        `<i class="fa fa-cloud-arrow-down me-1"></i>${i18next.t("Download & Apply {{version}}", { version: escapeHtml(latestVersion) })}`,
+      );
+      renderGainStack(upgradePath, latestVersion);
+      // null → download-latest-release called without ?version param (downloads latest)
+      selectedTargetVersion = null;
     } else {
-      const entry = upgradePath.find((e) => e.version === ver);
-      if (entry) {
-        setWhatsNewHeading(entry.version);
-        $("#whatsNewNotes").html(marked.parse(entry.notes || ""));
-        if (entry.changelogUrl) {
-          $("#whatsNewChangelogLink").attr("href", entry.changelogUrl).removeClass("d-none");
-        }
-        installedChangelogUrl = entry.changelogUrl || null;
+      // ── Non-latest chosen — show security warning ─────────────────────────────
+      // Use .text() — version strings are plain semver (no HTML), no escaping needed.
+      const warningMsg = i18next.t(
+        "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.",
+        { chosen, latest: latestVersion },
+      );
+      $("#advancedWarningText").text(warningMsg);
+      $("#advancedWarningBanner").removeClass("d-none");
+      $("#recommendedBadge").addClass("d-none");
+
+      const chosenEntry = upgradePath.find((e) => e.version === chosen);
+      const safeChosenHref = sanitizeChangelogUrl(chosenEntry?.changelogUrl);
+      if (safeChosenHref) {
+        $("#whatsNewChangelogLink").attr("href", safeChosenHref).removeClass("d-none");
+      } else {
+        $("#whatsNewChangelogLink").addClass("d-none");
       }
+      installedChangelogUrl = safeChosenHref;
+
+      $("#whatsNewVersion").text(chosen);
+      $("#proceedToDownload").html(
+        `<i class="fa fa-cloud-arrow-down me-1"></i>${i18next.t("Download & Apply {{version}}", { version: escapeHtml(chosen) })}`,
+      );
+      renderGainStack(upgradePath, chosen);
+      selectedTargetVersion = chosen;
     }
   });
 }
 
 /**
- * Return a Tabler badge HTML string for a release type label
+ * Return a Tabler badge HTML string for a release type label.
  */
 function badgeForType(type) {
   const labelMap = {
@@ -503,7 +589,7 @@ function badgeForType(type) {
 }
 
 /**
- * Minimal HTML escaping for user-supplied version strings
+ * Minimal HTML escaping for user-supplied strings.
  */
 function escapeHtml(str) {
   return String(str)
@@ -515,12 +601,12 @@ function escapeHtml(str) {
 }
 
 /**
- * Auto-download update when the Download & Apply step is shown
+ * Auto-download update when the Download & Apply step is shown.
  */
 function autoDownloadUpdate() {
   const $downloadStatus = $("#downloadStatus");
 
-  // Update the step description to reflect the selected version (if any)
+  // Update the step description to reflect the selected version (if any).
   if (selectedTargetVersion) {
     $("#downloadStepDescription").text(
       i18next.t("Download version {{version}} and apply it to your installation.", { version: selectedTargetVersion }),
@@ -541,7 +627,7 @@ function autoDownloadUpdate() {
 }
 
 /**
- * Perform the actual download operation, using selectedTargetVersion if set
+ * Perform the actual download operation, using selectedTargetVersion if set.
  */
 function performDownload() {
   const $downloadStatus = $("#downloadStatus");
@@ -608,7 +694,7 @@ function performDownload() {
 }
 
 /**
- * Set up apply update step
+ * Set up apply update step.
  */
 function setupApplyStep() {
   $("#applyUpdate").click(function () {
@@ -639,7 +725,7 @@ function setupApplyStep() {
         setTimeout(() => {
           upgradeStepper.next();
 
-          // Show changelog link for the installed version
+          // Show changelog link for the installed version.
           if (installedChangelogUrl) {
             $("#completionChangelogLink").attr("href", installedChangelogUrl).removeClass("d-none");
           }
@@ -686,7 +772,7 @@ function setupApplyStep() {
 }
 
 /**
- * Download backup file
+ * Download backup file.
  */
 function downloadBackup(filename) {
   window.location = `${window.CRM.root}/admin/api/database/download/${filename}`;
@@ -698,7 +784,7 @@ function downloadBackup(filename) {
 window.UpgradeWizard = { downloadBackup };
 
 /**
- * Setup refresh from GitHub button
+ * Setup refresh from GitHub button.
  */
 function setupRefreshButton() {
   $("#refreshFromGitHub").click(function () {
@@ -739,7 +825,7 @@ function setupRefreshButton() {
 }
 
 /**
- * Setup force reinstall button
+ * Setup force reinstall button.
  */
 function setupForceReinstallButton() {
   // Bind both buttons: the integrity-failure button (#forceReinstall) inside the
@@ -755,7 +841,7 @@ function setupForceReinstallButton() {
     // was not created via Bootstrap's normal data-API (e.g. in tests).
     bootstrap.Modal.getOrCreateInstance(document.getElementById("forceReinstallModal")).hide();
 
-    // Clear stale download state so the Download & Apply step starts fresh
+    // Clear stale download state so the Download & Apply step starts fresh.
     window.CRM.updateFile = null;
     selectedTargetVersion = null;
     prereleaseTargetVersion = null;
@@ -775,8 +861,7 @@ function setupForceReinstallButton() {
     $("#resultFiles").empty();
 
     // Set forceReinstallMode before navigating so it is already true when
-    // show.bs-stepper fires — no setTimeout ordering dependency required
-    // now that the step-0 guard no longer resets the flag.
+    // show.bs-stepper fires — no setTimeout ordering dependency required.
     forceReinstallMode = true;
     upgradeStepper.to(1);
     setTimeout(() => {
