@@ -154,7 +154,18 @@ module.exports = {
   },
   output: {
     path: path.resolve('./src/skin/v2'),
-    filename: '[name].[contenthash:8].min.js',
+    // setup entry keeps a static filename — the setup wizard template
+    // (src/setup/templates/header.php) runs before Config.php exists and
+    // cannot use SystemURLs::assetVersioned() to resolve manifest entries.
+    // Setup is a one-time fresh-install flow so CDN caching is irrelevant.
+    filename: (pathData) =>
+      pathData.chunk.name === 'setup'
+        ? '[name].min.js'
+        : '[name].[contenthash:8].min.js',
+    // chunkFilename must be set explicitly: when filename is a function webpack
+    // cannot infer the async-chunk template from it, so it falls back to [id].js.
+    // This restores content-hashed filenames for dynamic chunks (e.g. fc-locale*).
+    chunkFilename: '[name].[contenthash:8].min.js',
     publicPath: 'auto',
   },
   externals: {
@@ -213,7 +224,11 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash:8].min.css',
+      // Same static-vs-hashed split as output.filename above.
+      filename: (pathData) =>
+        pathData.chunk.name === 'setup'
+          ? '[name].min.css'
+          : '[name].[contenthash:8].min.css',
       ignoreOrder: false,
     }),
     new AssetManifestPlugin(),
