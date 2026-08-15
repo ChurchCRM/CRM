@@ -163,6 +163,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                         data-fund-active="<?= $isActive ? 'true' : 'false' ?>">
                                                     <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                                                 </button>
+                                                <a href="<?= SystemURLs::getRootPath() ?>/finance/fund/<?= $fundId ?>/contributors" class="dropdown-item">
+                                                    <i class="ti ti-list-details me-2"></i><?= gettext('View Details') ?>
+                                                </a>
                                                 <?php if (!$isFirst): ?>
                                                     <button type="button" class="dropdown-item fund-order-btn"
                                                             data-fund-id="<?= $fundId ?>"
@@ -181,8 +184,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <div class="dropdown-divider"></div>
                                                 <?php endif; ?>
                                                 <?php if ($hasPledges): ?>
-                                                    <button type="button" class="dropdown-item text-danger disabled"
+                                                    <button type="button" class="dropdown-item text-danger opacity-50"
                                                             disabled
+                                                            style="cursor: not-allowed;"
                                                             title="<?= InputUtils::escapeAttribute(gettext('Cannot delete: fund has associated pledges')) ?>">
                                                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                                     </button>
