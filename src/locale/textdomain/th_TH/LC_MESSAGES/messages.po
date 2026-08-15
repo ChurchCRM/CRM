@@ -564,16 +564,8 @@ msgid "Picture URL"
 msgstr "URL รูปภาพ"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "ตัวแก้ไขกองทุนบริจาค"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "ฟิลด์หรือการเลือกไม่ถูกต้อง การเปลี่ยนแปลงไม่ได้บันทึก! กรุณาแก้ไขและลองอีกครั้ง!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "ยังไม่มีกองทุนที่เพิ่ม"
 
 #: 
 msgid "Active"
@@ -2157,14 +2149,6 @@ msgstr "รายการบริจาค"
 #: 
 msgid "Purchased Items"
 msgstr "รายการที่ซื้อ"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "ยอดรวมการซื้อทั้งหมด: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "ยอดซื้อรวม: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7317,10 +7301,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "การลบฟิลด์นี้จะทำให้คุณสูญเสียข้อมูลสมาชิกกลุ่มทั้งหมดที่กำหนดสำหรับฟิลด์นี้อย่างถาวร!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "การลบกองทุนนี้อาจส่งผลต่อระเบียนการบริจาคในอดีต!"
-
-#: 
 msgid "Category Name"
 msgstr "ชื่อหมวดหมู่"
 
@@ -7373,10 +7353,6 @@ msgid "Filter by Class"
 msgstr "กรองตามชั้นเรียน"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "ลบกองทุนสำเร็จ"
-
-#: 
 msgid "In Use"
 msgstr "ใช้งานอยู่"
 
@@ -7423,10 +7399,6 @@ msgstr "ลบการนับการเข้าร่วมนี้?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "เลือกประเภทระเบียนที่คุณสมบัตินี้ใช้กับ"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ชื่อกองทุนนั้นมีอยู่แล้ว"
 
 #: 
 msgid "Total Pledges"
@@ -16527,10 +16499,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ฟังก์ชันอีเมลถูกปิดใช้งานอยู่ในขณะนี้ คุณสมบัติต่อไปนี้จะไม่ทำงานจนกว่าจะเปิดใช้งานอีเมล"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "มูลค่าประมาณ $%s"
-
-#: 
 msgid "Fastest workflow"
 msgstr "ขั้นตอนการทำงานที่เร็วที่สุด"
 
@@ -16573,10 +16541,6 @@ msgstr "การพัฒนาในเครื่อง"
 #: 
 msgid "Minimum Total Amount"
 msgstr "จำนวนเงินรวมขั้นต่ำ"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "ราคาเสนอขั้นต่ำ $%s"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

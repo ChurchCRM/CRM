@@ -585,16 +585,8 @@ msgid "Picture URL"
 msgstr "Bild URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Insamlingsfond redigerare"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ogiltig fält eller val.  Ändringar sparades inte! Rätta till och försöka igen!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Inga insamlingsfonder skapat än"
 
 #: 
 msgid "Active"
@@ -2253,14 +2245,6 @@ msgstr "Donerade Artiklar"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Köpta artiklar:"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Summan av alla inköp: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totala inköp: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7442,10 +7426,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Genom att ta bort detta fält kommer du oåterkalleligt att förlora all gruppmedlemsdata som tilldelats detta fält!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Genom att ta bort denna fond kan du påverka historiska donationsregister!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategorinamn"
 
@@ -7498,10 +7478,6 @@ msgid "Filter by Class"
 msgstr "Filtrera efter Klass"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fonden har tagits bort"
-
-#: 
 msgid "In Use"
 msgstr "I Användning"
 
@@ -7548,10 +7524,6 @@ msgstr "Ta bort denna närvaroräkning?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Välj den posttyp som denna egenskap gäller för"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Det fondnamnet finns redan."
 
 #: 
 msgid "Total Pledges"
@@ -16669,10 +16641,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-postfunktionen är för närvarande inaktiverad. Följande funktioner fungerar inte förrän e-post aktiveras"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Uppskattat värde $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Snabbaste arbetsflödet"
 
@@ -16715,10 +16683,6 @@ msgstr "Lokal utveckling"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Lägsta totalbelopp"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Lägsta bud $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

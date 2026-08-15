@@ -561,16 +561,8 @@ msgid "Picture URL"
 msgstr "Kép URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Adomány Alap szerkesztő"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Érvénytelen mező vagy kiválasztást. Változtatások nem lettek elmentve! Kérjük, javítsa ki és próbálja újra!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Semmiféle pénzeszközt adtak még"
 
 #: 
 msgid "Active"
@@ -2203,14 +2195,6 @@ msgstr "Adományozott tárgyak"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Vásárolt elemek"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Összesen vásárlások: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Beszerzése összesen: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7376,10 +7360,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "A mező törlésével visszavonhatatlanul elveszíti az ehhez a mezőhöz rendelt összes csoporttag adatot!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Az alap törlésével befolyásolhatja a korábbi adományrekordokat!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategória Neve"
 
@@ -7432,10 +7412,6 @@ msgid "Filter by Class"
 msgstr "Szűrés Osztály szerint"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Alap sikeresen törölve"
-
-#: 
 msgid "In Use"
 msgstr "Használatban"
 
@@ -7482,10 +7458,6 @@ msgstr "Eltávolítja ezt a jelenléti számot?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Válassza ki a rekord típusát, amelyre ez a tulajdonság vonatkozik"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Ez az alap név már létezik."
 
 #: 
 msgid "Total Pledges"
@@ -16603,10 +16575,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Az e-mail funkció jelenleg le van tiltva. A következő funkciók nem működnek, amíg az e-mail nincs engedélyezve"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Becsült érték: $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Leggyorsabb munkafolyamat"
 
@@ -16649,10 +16617,6 @@ msgstr "Helyi fejlesztés"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimális összeg"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimális ajánlat: $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17579,6 +17543,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Az e-mail nincs konfigurálva. Kerjuk, konfigurálja az SMTP-beallitasokat a Rendszerbeallitasokban."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-mail elküldve %d családnak."
+msgstr[1] "E-mail elküldve %d családnak."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Eloszor adjon meg egy utcacimet."
 
@@ -17645,6 +17615,12 @@ msgstr "Nem talalhatok kifizetesek a kivalasztott befizetesekhez"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nem adtak meg ervenyes befizetes azonositokat"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "A PDF sikeresen elküldve %d családnak."
+msgstr[1] "A PDF sikeresen elküldve %d családnak."
 
 #: 
 msgid "Partial Send"

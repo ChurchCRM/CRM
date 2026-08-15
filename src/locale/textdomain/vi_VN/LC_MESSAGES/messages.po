@@ -570,16 +570,8 @@ msgid "Picture URL"
 msgstr "Đường dẫn hình ảnh"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Biên tập viên Quỹ đóng góp"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Các trường hoặc lựa chọn không hợp lệ. Thay đổi không được lưu! Vui lòng sửa và thử lại!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Chưa có tiền nào được thêm vào"
 
 #: 
 msgid "Active"
@@ -2179,14 +2171,6 @@ msgstr "Các mặt hàng được tặng"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Các mặt hàng đã mua"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Tổng tất cả các giao dịch mua: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Tổng số lần mua: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7349,10 +7333,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Bằng cách xóa trường này, bạn sẽ mất vĩnh viễn tất cả dữ liệu thành viên nhóm được gán cho trường này!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Bằng cách xóa quỹ này, bạn có thể ảnh hưởng đến các bản ghi quyên góp lịch sử!"
-
-#: 
 msgid "Category Name"
 msgstr "Tên Danh mục"
 
@@ -7405,10 +7385,6 @@ msgid "Filter by Class"
 msgstr "Lọc theo Lớp"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Quỹ đã được xóa thành công"
-
-#: 
 msgid "In Use"
 msgstr "Đang Sử dụng"
 
@@ -7455,10 +7431,6 @@ msgstr "Xóa số đếm điểm danh này?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Chọn loại bản ghi mà thuộc tính này áp dụng"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Tên quỹ đó đã tồn tại."
 
 #: 
 msgid "Total Pledges"
@@ -16569,10 +16541,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Chức năng email hiện đang bị tắt. Các tính năng sau sẽ không hoạt động cho đến khi email được bật"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Giá trị ước tính $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Quy trình làm việc nhanh nhất"
 
@@ -16615,10 +16583,6 @@ msgstr "Phát triển cục bộ"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Tổng số tiền tối thiểu"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Giá đặt tối thiểu $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

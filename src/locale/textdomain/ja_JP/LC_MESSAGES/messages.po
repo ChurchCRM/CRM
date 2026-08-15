@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "画像 URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "寄付基金エディター"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "無効なフィールドまたは選択があります。変更は保存されませんでした！修正して再試行してください。"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "基金はまだ追加されていません"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "寄付アイテム"
 #: 
 msgid "Purchased Items"
 msgstr "購入済みアイテム"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "全購入合計: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "購入合計: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7305,10 +7289,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "このフィールドを削除すると、このフィールドに割り当てられたすべてのグループメンバーデータが永久に失われます！"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "この基金を削除すると、過去の寄付記録に影響を与える可能性があります！"
-
-#: 
 msgid "Category Name"
 msgstr "カテゴリ名"
 
@@ -7361,10 +7341,6 @@ msgid "Filter by Class"
 msgstr "クラスでフィルター"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "基金が正常に削除されました"
-
-#: 
 msgid "In Use"
 msgstr "使用中"
 
@@ -7411,10 +7387,6 @@ msgstr "この出席カウントを削除しますか？"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "このプロパティが適用されるレコードタイプを選択"
-
-#: 
-msgid "That fund name already exists."
-msgstr "その基金名はすでに存在します。"
 
 #: 
 msgid "Total Pledges"
@@ -16515,10 +16487,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "メール機能は現在無効になっています。メールを有効にするまで、以下の機能は動作しません"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "推定価格 $%s。"
-
-#: 
 msgid "Fastest workflow"
 msgstr "最速のワークフロー"
 
@@ -16561,10 +16529,6 @@ msgstr "ローカル開発"
 #: 
 msgid "Minimum Total Amount"
 msgstr "最低合計金額"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "最低入札額 $%s。"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

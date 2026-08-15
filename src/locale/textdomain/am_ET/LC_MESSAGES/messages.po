@@ -558,16 +558,8 @@ msgid "Picture URL"
 msgstr "የስዕል ዩአርኤል"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "የልገሳ ፈንድ አዘጋጅ"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "ልክ ያልሆኑ መስኮች ወይም ምርጫዎች። ለውጦች አልተቀመጡም! እባክህ አስተካክል እና እንደገና ሞክር!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "እስካሁን ምንም ገንዘብ አልተጨመረም።"
 
 #: 
 msgid "Active"
@@ -2167,14 +2159,6 @@ msgstr "የተለገሱ ዕቃዎች"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "የተገዙ ዕቃዎች"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "የሁሉም ግዢዎች ድምር፡$"
-
-#: 
-msgid "Total purchases: $"
-msgstr "ጠቅላላ ግዢዎች: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7358,10 +7342,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "ይህን መስክ በመሰረዝ፣ ለዚህ መስክ የተመደበውን ሁሉንም የቡድን አባል ውሂብ በማይመለስ ሁኔታ ያጣሉ!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "ይህን ፈንድ በመሰረዝ፣ ታሪካዊ የልገሳ መዝገቦችን ሊጎዱ ይችላሉ!"
-
-#: 
 msgid "Category Name"
 msgstr "የምድብ ስም"
 
@@ -7414,10 +7394,6 @@ msgid "Filter by Class"
 msgstr "በክፍል አጣራ"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "ፈንድ በተሳካ ሁኔታ ተሰርዟል"
-
-#: 
 msgid "In Use"
 msgstr "በአገልግሎት ላይ"
 
@@ -7464,10 +7440,6 @@ msgstr "ይህን የመገኘት ቆጠራ ያስወግዱ?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ይህ ንብረት የሚተገበርበትን የመዝገብ ዓይነት ይምረጡ"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ያ የፈንድ ስም ቀድሞውኑ አለ።"
 
 #: 
 msgid "Total Pledges"
@@ -16586,10 +16558,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "የኢሜይል ተግባር በአሁኑ ጊዜ ተሰናክሏል። ኢሜይል እስኪነቃ ድረስ አይሰሩም"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "የተገመተ ዋጋ $%s።"
-
-#: 
 msgid "Fastest workflow"
 msgstr "ፈጣኑ የሥራ ፍሰት"
 
@@ -16632,10 +16600,6 @@ msgstr "አካባቢያዊ ልማት"
 #: 
 msgid "Minimum Total Amount"
 msgstr "አነስተኛ ጠቅላላ መጠን"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "አነስተኛ ጨረታ $%s።"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17562,6 +17526,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "ኢሜል አልተዋቀረም። እባክዎ በስርዓት ቅንጅቶች ውስጥ የ SMTP ቅንጅቶቹን ያዋቅሩ።"
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "ኢሜይል ለ%d ቤተሰብ ተልኳል።"
+msgstr[1] "ኢሜይል ለ%d ቤተሰቦች ተልኳል።"
+
+#: 
 msgid "Enter a street address first."
 msgstr "መጀመሪያ የጎዳና አድራሻ ያስገቡ።"
 
@@ -17628,6 +17598,12 @@ msgstr "ለተመረጡ ተቀማጮች ምንም ክፍያዎች አልተገ�
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "ምንም ትክክለኛ የተቀማጭ መታወቂያዎች አልቀረቡም"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF ለ%d ቤተሰብ በተሳካ ሁኔታ በኢሜይል ተልኳል።"
+msgstr[1] "PDF ለ%d ቤተሰቦች በተሳካ ሁኔታ በኢሜይል ተልኳል።"
 
 #: 
 msgid "Partial Send"

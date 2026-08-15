@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "ചിത്ര URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "സംഭാവന ഫണ്ട് എഡിറ്റർ"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "അസാധുവായ ഫീൽഡുകൾ അല്ലെങ്കിൽ തിരഞ്ഞെടുപ്പുകൾ. മാറ്റങ്ങൾ സംരക്ഷിച്ചില്ല! ദയവായി ശരിയാക്കി വീണ്ടും ശ്രമിക്കുക!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "ഇതുവരെ ഫണ്ടുകൾ ഒന്നും ചേർത്തിട്ടില്ല"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "സംഭാവന ചെയ്ത വസ്തുക്കൾ"
 #: 
 msgid "Purchased Items"
 msgstr "വാങ്ങിയ വസ്തുക്കൾ"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "എല്ലാ വാങ്ങലുകളുടെ ആകെ: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "ആകെ വാങ്ങലുകൾ: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7311,10 +7295,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "ഈ ഫീൽഡ് ഇല്ലാതാക്കിയാൽ ഈ ഫീൽഡിന് നൽകിയ ഗ്രൂപ്പ് അംഗ ഡേറ്റ നഷ്ടമാകും!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "ഈ ഫണ്ട് ഇല്ലാതാക്കിയാൽ ചരിത്ര സംഭാവന രേഖകളെ ബാധിക്കാം!"
-
-#: 
 msgid "Category Name"
 msgstr "വിഭാഗ നാമം"
 
@@ -7367,10 +7347,6 @@ msgid "Filter by Class"
 msgstr "ക്ലാസ് അനുസരിച്ച് ഫിൽട്ടർ"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "ഫണ്ട് വിജയകരമായി ഇല്ലാതാക്കി"
-
-#: 
 msgid "In Use"
 msgstr "ഉപയോഗത്തിൽ"
 
@@ -7417,10 +7393,6 @@ msgstr "ഈ ഹാജർ എണ്ണം നീക്കണോ?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ഈ സ്വഭാവം ബാധകമാകുന്ന റെക്കോർഡ് തരം തിരഞ്ഞെടുക്കൂ"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ആ ഫണ്ട് നാമം ഇതിനകം നിലവിലുണ്ട്."
 
 #: 
 msgid "Total Pledges"
@@ -16538,10 +16510,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ഇ-മെയിൽ പ്രവർത്തനം നിലവിൽ അപ്രാപ്‌തമാക്കിയിരിക്കുന്നു. ഇ-മെയിൽ പ്രാപ്‌തമാക്കുന്നതുവരേ ഇനിപ്പറയുന്ന സവിശേഷതകൾ പ്രവർത്തിക്കില്‍"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "ഏകദേശ മൂല്യം $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "ഏറ്റവും വേഗമേറിയ വർക്ക്ഫ്ലോ"
 
@@ -16584,10 +16552,6 @@ msgstr "പ്രാദേശിക വികസനം"
 #: 
 msgid "Minimum Total Amount"
 msgstr "കുറഞ്ഞ മൊത്തം തുക"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "കുറഞ്ഞ ലേലം $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

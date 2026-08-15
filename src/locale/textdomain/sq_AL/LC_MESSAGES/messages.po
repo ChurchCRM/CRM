@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "URL e fotos"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Fondi Dhurim Editor"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Fushat e pavlefshme ose zgjedhje. Ndryshimet nuk i shpëtuar! Ju lutem korrigjojeni dhe provoni përsëri!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Asnjë fond janë shtuar ende"
 
 #: 
 msgid "Active"
@@ -2171,14 +2163,6 @@ msgstr "Items dhuruara"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Items blerë"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Totali i të gjitha blerjeve: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totali blerjet: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7339,10 +7323,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Duke fshirë këtë fushë, do të humbni të pakthyeshëm të gjitha të dhënat e anëtarëve të grupit të caktuara për këtë fushë!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Duke fshirë këtë fond, mund të ndikoni rekordet historike të dhurimit!"
-
-#: 
 msgid "Category Name"
 msgstr "Emri i kategorisë"
 
@@ -7395,10 +7375,6 @@ msgid "Filter by Class"
 msgstr "Filtro sipas klasës"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fondi u fshi me sukses"
-
-#: 
 msgid "In Use"
 msgstr "Në përdorim"
 
@@ -7445,10 +7421,6 @@ msgstr "Hiq këtë numërim pjesëmarrjeje?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Zgjidhni llojin e rekordit që kjo veti aplikon"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Ai emër fondi ekziston tashmë."
 
 #: 
 msgid "Total Pledges"
@@ -16566,10 +16538,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Funksionaliteti i email-it është aktualisht i çaktivizuar. Veçoritë e mëposhtme nuk do të funksionojnë derisa email-i të aktivizohet"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Vlera e vlerësuar $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Rrjedha e punës më e shpejtë"
 
@@ -16612,10 +16580,6 @@ msgstr "Zhvillim lokal"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Shuma minimale totale"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Oferta minimale $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

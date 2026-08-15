@@ -560,16 +560,8 @@ msgid "Picture URL"
 msgstr "Indirrizzo URL Foto"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Gestione fondi per le donazioni"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Campo o selezione non valida. Le modifiche non saranno salvate! Per favore, correggi e prova di nuovo!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Nessun fondo è stato ancora aggiunto"
 
 #: 
 msgid "Active"
@@ -2174,14 +2166,6 @@ msgstr "Articoli donati"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Prodotti acquistati"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Totale di tutti gli acquisti: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totale acquisti: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7370,10 +7354,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Eliminando questo campo, perderai irrevocabilmente tutti i dati dei membri del gruppo assegnati a questo campo!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Eliminando questo fondo, potresti influire sui record storici delle donazioni!"
-
-#: 
 msgid "Category Name"
 msgstr "Nome Categoria"
 
@@ -7426,10 +7406,6 @@ msgid "Filter by Class"
 msgstr "Filtra per Classe"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fondo eliminato con successo"
-
-#: 
 msgid "In Use"
 msgstr "In Uso"
 
@@ -7476,10 +7452,6 @@ msgstr "Rimuovere questo conteggio presenze?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Seleziona il tipo di record a cui si applica questa proprietà"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Quel nome di fondo esiste già."
 
 #: 
 msgid "Total Pledges"
@@ -16593,10 +16565,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "La funzionalità e-mail è attualmente disabilitata. Le seguenti funzioni non saranno disponibili fino all'abilitazione dell'e-mail"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Valore stimato $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Flusso di lavoro più rapido"
 
@@ -16639,10 +16607,6 @@ msgstr "Sviluppo locale"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Importo totale minimo"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Offerta minima $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17565,6 +17529,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "L'email non è configurata. Configura le impostazioni SMTP nelle Impostazioni di Sistema."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Email inviata a %d famiglia."
+msgstr[1] "Email inviate a %d famiglie."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Inserisci prima un indirizzo."
 
@@ -17631,6 +17601,12 @@ msgstr "Nessun pagamento trovato per i versamenti selezionati"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nessun ID versamento valido fornito"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF inviato con successo a %d famiglia."
+msgstr[1] "PDF inviato con successo a %d famiglie."
 
 #: 
 msgid "Partial Send"

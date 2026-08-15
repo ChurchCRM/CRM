@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "URL obrázku"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Editor příspěvkových fondů"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Neplatná pole nebo výběry. Změny nebyly uloženy! Proveďte opravu a zkuste to znovu!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Zatím nebyly přidány žádné fondy"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "Darované předměty"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Zakoupené položky"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Celkový počet všech nákupů: Kč"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Celkové nákupy: Kč"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7345,10 +7329,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Smazáním tohoto pole nevratně ztratíte všechna data členů skupiny přiřazená k tomuto poli!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Smazáním tohoto fondu můžete ovlivnit historické záznamy o darech!"
-
-#: 
 msgid "Category Name"
 msgstr "Název kategorie"
 
@@ -7401,10 +7381,6 @@ msgid "Filter by Class"
 msgstr "Filtrovat podle třídy"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fond úspěšně smazán"
-
-#: 
 msgid "In Use"
 msgstr "Používá se"
 
@@ -7451,10 +7427,6 @@ msgstr "Odebrat tento počet účasti?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Vyberte typ záznamu, na který se tato vlastnost vztahuje"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Tento název fondu již existuje."
 
 #: 
 msgid "Total Pledges"
@@ -16575,10 +16547,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Funkce e-mailu je momentálně vypnuta. Následující funkce nebudou fungovat, dokud nebude e-mail povolen"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Odhadovaná hodnota $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Nejrychlejší pracovní postup"
 
@@ -16621,10 +16589,6 @@ msgstr "Lokální vývoj"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimální celková částka"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimální příhoz $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17547,6 +17511,13 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "E-mail neni nakonfigurovan. Prosim nakonfigurujte nastaveni SMTP v Nastaveni systemu."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-mail odeslán %d rodině."
+msgstr[1] "E-mail odeslán %d rodinám."
+msgstr[2] "E-mail odeslán %d rodinám."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Nejprve zadejte adresu ulice."
 
@@ -17613,6 +17584,13 @@ msgstr "Pro vybrane vklady nebyla nalezena zadna platba"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nebyla poskytnuta zadna platna ID vkladu"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF bylo úspěšně zasláno e-mailem %d rodině."
+msgstr[1] "PDF bylo úspěšně zasláno e-mailem %d rodinám."
+msgstr[2] "PDF bylo úspěšně zasláno e-mailem %d rodinám."
 
 #: 
 msgid "Partial Send"

@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "Afbeelding URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Donaties"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ongeldig veld of selectie. Verandering niet aangepast! Graag veranderen en probeer opnieuw"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Er zijn nog geen fondsen toegevoegd"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "Geschonken items"
 #: 
 msgid "Purchased Items"
 msgstr "Gekochte artikelen"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Totaal van alle aankopen: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totaal aankopen: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7315,10 +7299,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Door dit veld te verwijderen, verliest u onherroepelijk alle groepslidgegevens die aan dit veld zijn toegewezen!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Door dit fonds te verwijderen, kunt u historische donatiegegevens beïnvloeden!"
-
-#: 
 msgid "Category Name"
 msgstr "Categorienaam"
 
@@ -7371,10 +7351,6 @@ msgid "Filter by Class"
 msgstr "Filteren op Klasse"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fonds succesvol verwijderd"
-
-#: 
 msgid "In Use"
 msgstr "In Gebruik"
 
@@ -7421,10 +7397,6 @@ msgstr "Deze aanwezigheidstelling verwijderen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Selecteer het recordtype waarop deze eigenschap van toepassing is"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Die fondsnaam bestaat al."
 
 #: 
 msgid "Total Pledges"
@@ -16530,10 +16502,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-mailfunctionaliteit is momenteel uitgeschakeld. De volgende functies werken niet totdat e-mail is ingeschakeld"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Geschatte waarde $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Snelste werkwijze"
 
@@ -16576,10 +16544,6 @@ msgstr "Lokale ontwikkeling"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimaal totaalbedrag"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimumbod $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

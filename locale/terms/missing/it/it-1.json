@@ -1,31 +1,52 @@
 {
-  "Check-out": "Check-out",
-  "Auto": "Auto",
-  "CSV": "CSV",
-  "Email sent to %d family.": {
-    "one": "Email inviata a %d famiglia.",
-    "other": "Email inviate a %d famiglie."
-  },
-  "N/A": "N/A",
-  "OFX": "OFX",
-  "PDF successfully emailed to %d family.": {
-    "one": "PDF inviato con successo a %d famiglia.",
-    "other": "PDF inviato con successo a %d famiglie."
-  },
+  "Check-out": "",
+  "Auto": "",
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Birthdays & Anniversaries": "",
+  "Estimated value %s.": "",
+  "Minimum bid %s.": "",
+  "No \"%s\" options are available yet. Add the relevant records first.": "",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "",
+  "People with birthdays or wedding anniversaries in a particular month": "",
+  "The month for which you would like birthdays and anniversaries returned.": "",
+  "The wedding anniversary month for which you would like records returned.": "",
+  "Total of all purchases: %s": "",
+  "Total purchases: %s": "",
+  "Wedding Anniversaries": "",
+  "People with wedding anniversaries in a particular month": "",
+  "An error occurred. Please try again.": "",
+  "Are you sure you want to delete this fund?": "",
+  "Cannot delete: fund has associated pledges": "",
+  "Delete Fund": "",
+  "Direction must be 'up' or 'down'.": "",
+  "Edit Donation Fund": "",
+  "Failed to reorder donation fund": "",
+  "Fund added successfully.": "",
+  "Fund deleted successfully.": "",
+  "Fund name": "",
+  "Fund name is required.": "",
+  "Fund order updated.": "",
+  "Fund saved successfully.": "",
+  "No funds have been added yet. Use the form above to add the first fund.": "",
+  "Optional description": "",
+  "Private Calendar": "",
+  "Public Calendar": "",
   "Copied {{count}} members": {
-    "one": "Copiato {{count}} membro",
-    "other": "Copiati {{count}} membri"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Questo elenco ha {{count}} destinatario — troppi per un collegamento mailto:. Usa Copia indirizzi.",
-    "other": "Questo elenco ha {{count}} destinatari — troppi per un collegamento mailto:. Usa Copia indirizzi."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa Copia indirizzi.",
-    "other": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa Copia indirizzi."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min rimanente",
-    "other": "{{count}} min rimanenti"
+    "one": "",
+    "other": ""
   }
 }

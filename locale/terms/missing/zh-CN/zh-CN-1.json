@@ -1,33 +1,62 @@
 {
   "%d archived fundraiser": {
-    "other": "%d 个已归档的募捐活动"
+    "other": ""
   },
   "%d person successfully added to selected family.": {
-    "other": "已成功将 %d 人添加至所选家庭。"
+    "other": ""
   },
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "other": "已向 %d 个家庭发送电子邮件。"
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "other": "PDF 已成功发送至 %d 个家庭。"
+    "other": ""
   },
+  "Birthdays & Anniversaries": "",
+  "Estimated value %s.": "",
+  "Minimum bid %s.": "",
+  "No \"%s\" options are available yet. Add the relevant records first.": "",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "",
+  "People with birthdays or wedding anniversaries in a particular month": "",
+  "The month for which you would like birthdays and anniversaries returned.": "",
+  "The wedding anniversary month for which you would like records returned.": "",
+  "Total of all purchases: %s": "",
+  "Total purchases: %s": "",
+  "Wedding Anniversaries": "",
+  "People with wedding anniversaries in a particular month": "",
+  "An error occurred. Please try again.": "",
+  "Are you sure you want to delete this fund?": "",
+  "Cannot delete: fund has associated pledges": "",
+  "Delete Fund": "",
+  "Direction must be 'up' or 'down'.": "",
+  "Edit Donation Fund": "",
+  "Failed to reorder donation fund": "",
+  "Fund added successfully.": "",
+  "Fund deleted successfully.": "",
+  "Fund name": "",
+  "Fund name is required.": "",
+  "Fund order updated.": "",
+  "Fund saved successfully.": "",
+  "No funds have been added yet. Use the form above to add the first fund.": "",
+  "Optional description": "",
+  "Private Calendar": "",
+  "Public Calendar": "",
   "Copied {{count}} members": {
-    "one": "已复制 {{count}} 名成员",
-    "other": "已复制 {{count}} 名成员"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "此列表有 {{count}} 名收件人——对于 mailto: 链接来说过多，请改用复制地址。",
-    "other": "此列表有 {{count}} 名收件人——对于 mailto: 链接来说过多，请改用复制地址。"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "邮件客户端的收件人过多（{{count}} > {{max}}），请改用复制地址。",
-    "other": "邮件客户端的收件人过多（{{count}} > {{max}}），请改用复制地址。"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "剩余 {{count}} 分钟",
-    "other": "剩余 {{count}} 分钟"
+    "one": "",
+    "other": ""
   }
 }

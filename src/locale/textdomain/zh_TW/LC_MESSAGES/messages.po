@@ -583,16 +583,8 @@ msgid "Picture URL"
 msgstr "圖片 URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "捐贈基金的編輯"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "無效的字段或選擇。更改未保存！請更正，然後再試一次！"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "目前沒有資金已"
 
 #: 
 msgid "Active"
@@ -2234,14 +2226,6 @@ msgstr "捐贈的物品"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "購買的物品"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "所有購買總計："
-
-#: 
-msgid "Total purchases: $"
-msgstr "採購總額：$"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7494,10 +7478,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "刪除此欄位後，您將永久遺失指派給此欄位的所有小組成員資料！"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "刪除此基金可能會影響歷史捐款記錄！"
-
-#: 
 msgid "Category Name"
 msgstr "類別名稱"
 
@@ -7550,10 +7530,6 @@ msgid "Filter by Class"
 msgstr "按類別篩選"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "基金刪除成功"
-
-#: 
 msgid "In Use"
 msgstr "使用中"
 
@@ -7600,10 +7576,6 @@ msgstr "移除此出席計數？"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "選擇此屬性適用的記錄類型"
-
-#: 
-msgid "That fund name already exists."
-msgstr "該基金名稱已存在。"
 
 #: 
 msgid "Total Pledges"
@@ -16704,10 +16676,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "電子郵件功能目前已停用，以下功能在啟用電子郵件前將無法使用"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "估計金額 $%s。"
-
-#: 
 msgid "Fastest workflow"
 msgstr "最快速的工作流程"
 
@@ -16750,10 +16718,6 @@ msgstr "本機開發"
 #: 
 msgid "Minimum Total Amount"
 msgstr "最低總金額"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "最低出價 $%s。"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

@@ -581,16 +581,8 @@ msgid "Picture URL"
 msgstr "URL zdjęcia"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Edytor Datków (Celu)"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Nieprawidłowe pola lub wybór. Nie zapisano zmian! Proszę spróbować ponownie!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Nie dodano Celu (Fund)"
 
 #: 
 msgid "Active"
@@ -2228,14 +2220,6 @@ msgstr "Przedmioty Darowane"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Przedmioty Kupione"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Suma dla wszystkich zakupów: £"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Suma Zakupów: £"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7414,10 +7398,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Usuwając to pole, bezpowrotnie utracisz wszystkie dane członków grupy przypisane do tego pola!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Usuwając ten fundusz, możesz wpłynąć na historyczne zapisy darowizn!"
-
-#: 
 msgid "Category Name"
 msgstr "Nazwa Kategorii"
 
@@ -7470,10 +7450,6 @@ msgid "Filter by Class"
 msgstr "Filtruj według Klasy"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fundusz został pomyślnie usunięty"
-
-#: 
 msgid "In Use"
 msgstr "W Użyciu"
 
@@ -7520,10 +7496,6 @@ msgstr "Usunąć ten licznik obecności?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Wybierz typ rekordu, do którego odnosi się ta właściwość"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Ta nazwa funduszu już istnieje."
 
 #: 
 msgid "Total Pledges"
@@ -16648,10 +16620,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Funkcjonalność poczty e-mail jest obecnie wyłączona. Następujące funkcje nie będą działać do czasu włączenia poczty e-mail"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Szacowana wartość: %s zł."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Najszybszy przepływ pracy"
 
@@ -16694,10 +16662,6 @@ msgstr "Lokalne środowisko programistyczne"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimalna łączna kwota"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimalna oferta: %s zł."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"

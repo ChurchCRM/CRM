@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "Διεύθυνση URL εικόνας"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Συντάκτης Ταμείου Δωρεών"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Μη έγκυρα πεδία ή επιλογές. Οι αλλαγές δεν αποθηκεύτηκαν! Διορθώστε και προσπαθήστε ξανά!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Δεν έχουν προστεθεί ακόμη κεφάλαια"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "Δωρεά είδη"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Αγορασμένα αντικείμενα"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Σύνολο όλων των αγορών: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Συνολικές αγορές: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7351,10 +7335,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Διαγράφοντας αυτό το πεδίο, θα χάσετε αμετάκλητα όλα τα δεδομένα μελών ομάδας που έχουν εκχωρηθεί σε αυτό το πεδίο!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Διαγράφοντας αυτό το ταμείο, μπορεί να επηρεάσετε ιστορικά αρχεία δωρεών!"
-
-#: 
 msgid "Category Name"
 msgstr "Όνομα Κατηγορίας"
 
@@ -7407,10 +7387,6 @@ msgid "Filter by Class"
 msgstr "Φιλτράρισμα κατά Τάξη"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Το ταμείο διαγράφηκε επιτυχώς"
-
-#: 
 msgid "In Use"
 msgstr "Σε Χρήση"
 
@@ -7457,10 +7433,6 @@ msgstr "Αφαίρεση αυτής της καταμέτρησης παρουσ
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Επιλέξτε τον τύπο εγγραφής στον οποίο εφαρμόζεται αυτή η ιδιότητα"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Αυτό το όνομα ταμείου υπάρχει ήδη."
 
 #: 
 msgid "Total Pledges"
@@ -16578,10 +16550,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Η λειτουργία email είναι απενεργοποιημένη. Οι παρακάτω λειτουργίες δεν θα είναι διαθέσιμες έως ότου ενεργοποιηθεί το email"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Εκτιμώμενη αξία $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Ταχύτερη ροή εργασίας"
 
@@ -16624,10 +16592,6 @@ msgstr "Τοπική ανάπτυξη"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Ελάχιστο Συνολικό Ποσό"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Ελάχιστη προσφορά $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17554,6 +17518,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Το email δεν έχει ρυθμιστεί. Παρακαλούμε ρυθμίστε τις παραμέτρους SMTP στις Ρυθμίσεις Συστήματος."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Το email στάλθηκε σε %d οικογένεια."
+msgstr[1] "Το email στάλθηκε σε %d οικογένειες."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Εισαγάγετε πρώτα μια διεύθυνση."
 
@@ -17620,6 +17590,12 @@ msgstr "Δεν βρέθηκαν πληρωμές για τις επιλεγμέ�
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Δεν παρασχέθηκαν έγκυρα αναγνωριστικά κατάθεσης"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "Το PDF στάλθηκε επιτυχώς μέσω email σε %d οικογένεια."
+msgstr[1] "Το PDF στάλθηκε επιτυχώς μέσω email σε %d οικογένειες."
 
 #: 
 msgid "Partial Send"

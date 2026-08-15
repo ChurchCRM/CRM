@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "URL obrázka"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Editor darcovských fondov"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Neplatné polia alebo výbery. Zmeny neboli uložené! Opravte a skúste znova!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Zatiaľ neboli pridané žiadne fondy"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "Darované predmety"
 #: 
 msgid "Purchased Items"
 msgstr "Kúpené predmety"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Celková suma nákupov: "
-
-#: 
-msgid "Total purchases: $"
-msgstr "Celkové nákupy: "
 
 #: 
 msgid "Amount paid: ________________"
@@ -7324,10 +7308,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Odstránením tohto poľa neodvolateľne stratíte všetky dáta členov skupiny priradené k tomuto poľu!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Odstránením tohto fondu môžete ovplyvniť historické záznamy o darovaní!"
-
-#: 
 msgid "Category Name"
 msgstr "Názov kategórie"
 
@@ -7380,10 +7360,6 @@ msgid "Filter by Class"
 msgstr "Filtrovať podľa triedy"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fond úspešne odstránený"
-
-#: 
 msgid "In Use"
 msgstr "Používa sa"
 
@@ -7430,10 +7406,6 @@ msgstr "Odstrániť tento počet prítomných?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Vyberte typ záznamu, na ktorý sa táto vlastnosť vzťahuje"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Tento názov fondu už existuje."
 
 #: 
 msgid "Total Pledges"
@@ -16565,10 +16537,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Funkcia e-mailu je momentálne vypnutá. Nasledujúce funkcie nebudú fungovať, kým nebude e-mail povolený"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Odhadovaná hodnota $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Najrýchlejší pracovný postup"
 
@@ -16611,10 +16579,6 @@ msgstr "Lokálny vývoj"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimálna celková suma"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimálna ponuka $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
