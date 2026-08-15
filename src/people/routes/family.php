@@ -189,7 +189,7 @@ function viewFamily(Request $request, Response $response, array $args): Response
                 ->distinct()
                 ->find()
                 ->toArray();
-            $unique = array_unique(array_map('intval', array_filter($fyids, fn($v) => $v !== null)));
+            $unique = array_unique(array_map('intval', array_filter($fyids, fn($v) => $v !== null && $v !== 0)));
             rsort($unique);
             return $unique;
         })(),
