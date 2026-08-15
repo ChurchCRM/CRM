@@ -15,6 +15,7 @@ use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FunctionsUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -213,6 +214,11 @@ class DepositService {
         }
         if (!empty($filters['dateEnd'])) {
             $query->filterByDate(['max' => $filters['dateEnd']]);
+        }
+        // Fiscal-year filter: translate fyid to a date range. fyid=0 means All Time.
+        if (!empty($filters['fyid']) && (int) $filters['fyid'] > 0) {
+            $fyDates = FiscalYearUtils::getFiscalYearDatesById((int) $filters['fyid']);
+            $query->filterByDate(['min' => $fyDates['startDate'], 'max' => $fyDates['endDate']]);
         }
         if (!empty($filters['depositId'])) {
             $query->filterById((int) $filters['depositId']);

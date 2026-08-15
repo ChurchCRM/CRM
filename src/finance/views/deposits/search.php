@@ -15,6 +15,9 @@ use ChurchCRM\Utils\InputUtils;
  * @var \Propel\Runtime\Collection\ObjectCollection $funds  Active DonationFund objects
  * @var array    $tellerList     [personId => 'First Last']
  * @var array    $filters        Active filter values [key => value]
+ * @var array<int, array{id: int, label: string}> $availableYears  FY options (newest first)
+ * @var int      $selectedFyid    Currently-selected FY ID (0 = All Time)
+ * @var int      $currentFyid     Current fiscal-year ID
  */
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -69,6 +72,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div id="depositSearchForm" class="collapse show">
       <div class="card-body">
         <form id="depositFilterForm" method="get" action="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/deposit/search">
+          <!-- Fiscal-Year filter: selecting a FY immediately reloads the page with fyid in the URL -->
+          <div class="row g-3 mb-2">
+            <div class="col-md-3">
+              <label for="deposit-slip-fyid" class="form-label"><?= gettext('Fiscal Year') ?></label>
+              <select class="form-select" id="deposit-slip-fyid" name="fyid" onchange="this.form.submit();">
+                <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
+                <?php foreach ($availableYears as $year): ?>
+                <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
+                  <?= InputUtils::escapeHTML($year['label']) ?>
+                  <?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
+                </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          </div>
           <div class="row g-3">
             <div class="col-md-3">
               <label for="dateStart" class="form-label"><?= gettext('From Date') ?></label>
