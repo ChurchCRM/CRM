@@ -14,8 +14,9 @@ describe('Admin System Logs - UI Tests', () => {
     cy.visit('admin/system/logs');
 
     // Quick Settings were moved to the header settings panel — verify settings assets load
-    // Uses *="system-settings-panel" (not the full .min.css) to match content-hashed filenames
-    cy.get('link[href*="system-settings-panel"]').should('exist');
+    // Uses *="system-settings-panel" (not the full .min.css) to match content-hashed filenames.
+    // rel="stylesheet" constraint ensures we match the actual stylesheet, not prefetch/preload links.
+    cy.get('link[rel="stylesheet"][href*="system-settings-panel"]').should('exist');
     cy.get('script[src*="system-settings-panel"]').should('exist');
   });
 

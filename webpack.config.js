@@ -103,8 +103,12 @@ class AssetManifestPlugin {
       }
 
       const outFile = path.join(compiler.outputPath, 'asset-manifest.json');
-      fs.writeFileSync(outFile, JSON.stringify(manifest, null, 2));
-      console.log(`✅  Asset manifest: ${Object.keys(manifest).length} entries → ${path.relative(process.cwd(), outFile)}`);
+      try {
+        fs.writeFileSync(outFile, JSON.stringify(manifest, null, 2));
+        console.log(`✅  Asset manifest: ${Object.keys(manifest).length} entries → ${path.relative(process.cwd(), outFile)}`);
+      } catch (err) {
+        console.warn(`Warning: Could not write asset-manifest.json: ${err.message}`);
+      }
     });
   }
 }

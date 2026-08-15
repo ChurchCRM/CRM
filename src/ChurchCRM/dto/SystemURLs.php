@@ -149,7 +149,18 @@ class SystemURLs
                 $decoded = is_string($json) ? json_decode($json, true) : null;
                 self::$assetManifest = is_array($decoded) ? $decoded : [];
             } else {
-                self::$assetManifest = []; // manifest not yet built; fall back to mtime versioning
+                // Manifest not yet built.  Log a warning and do NOT cache the
+                // empty result: leave $assetManifest as null so the next request
+                // retries the file check instead of locking every worker into a
+                // permanent 404 loop until the process is restarted.
+                LoggerUtils::getAppLogger()->warning(
+                    'asset-manifest.json not found — v2 assets cannot be resolved to content-hashed URLs',
+                    [
+                        'expected_path' => $manifestPath,
+                        'hint'          => 'Run `npm run build:webpack` to generate the manifest',
+                    ]
+                );
+                return []; // return empty but do not assign to self::$assetManifest
             }
         }
         return self::$assetManifest;
