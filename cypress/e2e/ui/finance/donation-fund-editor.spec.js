@@ -103,7 +103,7 @@ describe("Finance: Donation Funds page - Action menu", () => {
     it("Delete button is disabled for funds with pledges", () => {
         cy.visit("/finance/funds");
         // Fund 1 (seeded as 'Pledges') has pledge rows and must always be disabled
-        cy.get(".dropdown-item.text-danger.disabled")
+        cy.get(".dropdown-item.text-danger[disabled]")
             .should("exist")
             .first()
             .should("have.attr", "disabled");
