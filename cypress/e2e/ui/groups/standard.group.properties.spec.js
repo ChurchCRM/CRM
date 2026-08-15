@@ -432,3 +432,77 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
         cy.get(`input[value="${fieldName}"]`, { timeout: 10000 }).should("not.exist");
     });
 });
+
+// ------------------------------------------------------------------ //
+// Back button + Show in Profile label — #9381
+// Verifies the two UI improvements added in #9381:
+//   1. A "Back to Group" button that navigates to the group view
+//   2. The "Show in Profile" column header with an accessible tooltip
+// ------------------------------------------------------------------ //
+describe("UI: GroupPropsFormEditor Back button and Show in Profile (#9381)", () => {
+    const groupID = 1;
+    const testFieldName = "Cypress Back Button Test Field";
+
+    before(() => {
+        // Ensure group-specific properties are enabled
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `/api/groups/${groupID}/setGroupSpecificPropertyStatus`,
+            { GroupSpecificPropertyStatus: true },
+            200,
+        );
+
+        // Login and create a test field if it doesn't already exist
+        freshAdminLogin();
+        cy.visit(`/groups/${groupID}/properties/form`);
+        cy.get("body").then(($body) => {
+            if (!$body.find(`input[value="${testFieldName}"]`).length) {
+                cy.get("select#newFieldType").select("1");
+                cy.get("input#newFieldName").clear().type(testFieldName);
+                cy.get('button[name="AddField"]').click();
+            }
+        });
+        cy.get(`input[value="${testFieldName}"]`).should("exist");
+    });
+
+    beforeEach(() => {
+        freshAdminLogin();
+        cy.visit(`/groups/${groupID}/properties/form`);
+    });
+
+    it("shows a Back to Group button linking to the group view", () => {
+        cy.get(`a.btn-secondary[href*="/groups/view/${groupID}"]`)
+            .should("be.visible")
+            .and("contain.text", "Back to Group");
+    });
+
+    it("Back to Group button has a left-arrow icon", () => {
+        cy.get(`a.btn-secondary[href*="/groups/view/${groupID}"]`)
+            .find(".fa-arrow-left")
+            .should("exist");
+    });
+
+    it("clicking Back to Group navigates to the group view page", () => {
+        cy.get(`a.btn-secondary[href*="/groups/view/${groupID}"]`).click();
+        cy.location("pathname").should("include", `/groups/view/${groupID}`);
+    });
+
+    it("table header shows 'Show in Profile' (not 'Show in Person View')", () => {
+        cy.get("th").contains("Show in Profile").should("be.visible");
+        cy.get("th").contains("Person View").should("not.exist");
+    });
+
+    it("Show in Profile column header has an accessible tooltip icon", () => {
+        // Bootstrap 5 Tooltip._fixTitle() moves `title` into `data-bs-original-title`
+        // and clears `title` to suppress the native browser tooltip.
+        cy.get('th [data-bs-toggle="tooltip"]')
+            .should("have.attr", "data-bs-original-title")
+            .and("contain", "profile page");
+    });
+
+    it("Save Changes button is visible and form submits without errors", () => {
+        cy.get('button[name="SaveChanges"]').should("be.visible").click();
+        cy.url().should("include", "/properties/form");
+        cy.get(".alert-danger").should("not.exist");
+    });
+});

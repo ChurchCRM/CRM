@@ -13,6 +13,13 @@ use ChurchCRM\view\PageHeader;
 $sPageTitle = gettext('Query View');
 $sPageSubtitle = gettext('View query results');
 
+// GHSA-6rgg-mrx3-92w7: QueryView.php is deprecated. Gate behind admin to prevent
+// zero-permission users from reaching the parameterised SQL runner.
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::securityRedirect('Admin');
+    exit;
+}
+
 // Get the QueryID from the querystring
 $iQueryID = InputUtils::legacyFilterInput($_GET['QueryID'], 'int');
 
@@ -352,47 +359,83 @@ function getQueryFormInput($queryParameters)
             $sSQL = 'SELECT * FROM queryparameteroptions_qpo WHERE qpo_qrp_ID = ' . $qrp_ID;
             $rsParameterOptions = RunQuery($sSQL);
 
-            $input = '<select name="' . $qrp_Alias . '" class="form-select">';
-            $input .= '<option disabled selected value> -- ' . gettext("select an option") . ' -- </option>';
-
-            // Loop through the parameter options
-            while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
-                extract($ThisRow);
-                $input .= '<option value="' . $qpo_Value . '">' . gettext($qpo_Display) . '</option>';
+            // Buffer all rows so we can detect empty results
+            $aOptionRows = [];
+            while ($rsParameterOptions && $ThisRow = mysqli_fetch_array($rsParameterOptions)) {
+                $aOptionRows[] = $ThisRow;
             }
 
-            $input .= '</select>';
+            if (empty($aOptionRows)) {
+                $input = '<div class="text-muted small">' .
+                    InputUtils::escapeHTML(
+                        sprintf(gettext('No "%s" options are configured yet. Add the relevant records first.'), gettext($qrp_Name))
+                    ) . '</div>';
+            } else {
+                $input = '<select name="' . $qrp_Alias . '" class="form-select">';
+                $input .= '<option disabled selected value> -- ' . gettext('select an option') . ' -- </option>';
+                foreach ($aOptionRows as $ThisRow) {
+                    extract($ThisRow);
+                    $input .= '<option value="' . InputUtils::escapeHTML($qpo_Value) . '">' . InputUtils::escapeHTML(gettext($qpo_Display)) . '</option>';
+                }
+                $input .= '</select>';
+            }
             break;
 
         // SELECT box with OPTION tags provided via a SQL query
         case 2:
-            // Run the SQL to get the options
-            $rsParameterOptions = RunQuery($qrp_OptionSQL);
+            // Run the SQL to get the options; guard against query failure
+            $rsParameterOptions = $qrp_OptionSQL ? RunQuery($qrp_OptionSQL, false) : false;
 
-            $input .= '<select name="' . $qrp_Alias . '" class="form-select">';
-            $input .= '<option disabled selected value> -- select an option -- </option>';
-
-            while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
-                extract($ThisRow);
-                $input .= '<option value="' . $Value . '">' . $Display . '</option>';
+            // Buffer all rows so we can detect empty results
+            $aOptionRows = [];
+            while ($rsParameterOptions && $ThisRow = mysqli_fetch_array($rsParameterOptions)) {
+                $aOptionRows[] = $ThisRow;
             }
 
-            $input .= '</select>';
+            if (empty($aOptionRows)) {
+                // #8898 / #8899: when no options exist the select previously rendered as a
+                // lone disabled placeholder, appearing greyed-out and non-functional.
+                // Show a clear empty-state message instead.
+                $input = '<div class="text-muted small">' .
+                    InputUtils::escapeHTML(
+                        sprintf(gettext('No "%s" options are available yet. Add the relevant records first.'), gettext($qrp_Name))
+                    ) . '</div>';
+            } else {
+                $input = '<select name="' . $qrp_Alias . '" class="form-select">';
+                $input .= '<option disabled selected value> -- ' . gettext('select an option') . ' -- </option>';
+                foreach ($aOptionRows as $ThisRow) {
+                    extract($ThisRow);
+                    $input .= '<option value="' . InputUtils::escapeHTML($Value) . '">' . InputUtils::escapeHTML($Display) . '</option>';
+                }
+                $input .= '</select>';
+            }
             break;
 
         case 3:
-            // Run the SQL to get the options
-            $rsParameterOptions = RunQuery($qrp_OptionSQL);
+            // Run the SQL to get the options; guard against query failure
+            $rsParameterOptions = $qrp_OptionSQL ? RunQuery($qrp_OptionSQL, false) : false;
 
-            $input .= '<select name="' . $qrp_Alias . '[]" class="form-select" size="10" multiple="multiple">';
-            $input .= '<option disabled selected value> -- select an option -- </option>';
-
-            while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
-                extract($ThisRow);
-                $input .= '<option value="' . $Value . '">' . $Display . '</option>';
+            // Buffer all rows so we can detect empty results
+            $aOptionRows = [];
+            while ($rsParameterOptions && $ThisRow = mysqli_fetch_array($rsParameterOptions)) {
+                $aOptionRows[] = $ThisRow;
             }
 
-            $input .= '</select>';
+            if (empty($aOptionRows)) {
+                // Same empty-state treatment as case 2 for multiselects (#8898).
+                $input = '<div class="text-muted small">' .
+                    InputUtils::escapeHTML(
+                        sprintf(gettext('No "%s" options are available yet. Add the relevant records first.'), gettext($qrp_Name))
+                    ) . '</div>';
+            } else {
+                $input = '<select name="' . $qrp_Alias . '[]" class="form-select" size="10" multiple="multiple">';
+                $input .= '<option disabled selected value> -- ' . gettext('select an option') . ' -- </option>';
+                foreach ($aOptionRows as $ThisRow) {
+                    extract($ThisRow);
+                    $input .= '<option value="' . InputUtils::escapeHTML($Value) . '">' . InputUtils::escapeHTML($Display) . '</option>';
+                }
+                $input .= '</select>';
+            }
             break;
     }
 

@@ -12,6 +12,7 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\MenuRenderer;
@@ -29,9 +30,11 @@ PluginManager::init($pluginsPath);
 
 // Resolve theme attributes from user settings
 $_themeUser = AuthenticationManager::getCurrentUser();
+$_themeMode = $_themeUser->getThemeMode(); // 'auto' | 'default' | 'dark'
 $_themeAttrs = '';
-$_themeStyle = $_themeUser->getSettingValue('ui.style');
-if ($_themeStyle === 'dark') {
+// Explicit dark: stamp data-bs-theme on <html> server-side for FOWT-safe rendering
+// without JS. Auto mode is handled by the inline <head> script below.
+if ($_themeMode === 'dark') {
     $_themeAttrs .= ' data-bs-theme="dark"';
 }
 $_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
@@ -40,14 +43,71 @@ if ($_themePrimary !== '') {
 }
 // Top level menu index counter
 $MenuFirst = 1;
+// Currency substrate — data attribute on <html> + CSS custom property via <style> block.
+// The symbol is JSON-encoded so any char (including '"' and backslash) produces
+// a valid CSS string literal without breaking the declaration.
+$_currencyAttrs     = ' data-currency-position="' . InputUtils::escapeAttribute(CurrencyFormatter::position()) . '"';
+$_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_THROW_ON_ERROR);
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?>>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Theme controller: must run synchronously before page paint to prevent flash-of-wrong-theme. -->
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    (function () {
+      // Ensure window.CRM exists; body script will Object.assign more properties later.
+      window.CRM = window.CRM || {};
+
+      var mql = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+      var _listening = false;
+
+      function _applyDark() {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      }
+      function _applyLight() {
+        document.documentElement.removeAttribute('data-bs-theme');
+      }
+      function _onChange(e) {
+        if (e.matches) { _applyDark(); } else { _applyLight(); }
+      }
+      // Delegate to _onChange so both paths share the same dark/light logic.
+      // Falls back to light when matchMedia is unavailable (mql === null).
+      function _applySystem() {
+        _onChange({ matches: mql ? mql.matches : false });
+      }
+
+      /**
+       * Apply a theme mode and manage the matchMedia listener lifecycle.
+       * mode: 'auto' | 'default' | 'dark'
+       * Called once on page load (below) and by user.js when the user toggles the setting.
+       */
+      window.CRM.theme = {
+        setMode: function (mode) {
+          if (mode === 'auto') {
+            _applySystem();
+            if (mql && !_listening) {
+              mql.addEventListener('change', _onChange);
+              _listening = true;
+            }
+          } else {
+            if (_listening) {
+              mql.removeEventListener('change', _onChange);
+              _listening = false;
+            }
+            if (mode === 'dark') { _applyDark(); } else { _applyLight(); }
+          }
+        }
+      };
+
+      // Apply the server-resolved theme mode immediately (FOWT prevention).
+      window.CRM.theme.setMode(<?= json_encode($_themeMode) ?>);
+    }());
+  </script>
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
   <?= PluginManager::getPluginHeadContent() ?>
+  <style nonce="<?= SystemURLs::getCSPNonce() ?>">:root { --currency-symbol: <?= $_currencySymbolCss ?>; }</style>
 
 </head>
 
@@ -177,8 +237,23 @@ $MenuFirst = 1;
               'key'        => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
               'endpoint'   => TelemetryService::POSTHOG_ENDPOINT,
               'distinctID' => SystemConfig::getValue('sSystemID'),
-          ]) ?>
+          ]) ?>,
+          currency: <?= json_encode(CurrencyFormatter::toArray(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
       });
+      // Attach format() to window.CRM.currency so JS callers (DataTables, Chart.js)
+      // can render localised money via window.CRM.currency.format(amount [, decimals]).
+      window.CRM.currency.format = function (amount, decimals) {
+          if (decimals === undefined) decimals = 2;
+          var val = parseFloat(amount);
+          if (isNaN(val)) return '';          // match PHP empty-string fallback for non-numeric input
+          var parts = val.toFixed(decimals).split('.');
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousand);
+          var formatted = parts[0] + (decimals > 0 ? this.decimal + parts[1] : '');
+          var sym = this.symbol.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          return this.position === 'after'
+              ? formatted + '\u00A0' + sym
+              : sym + '\u00A0' + formatted;
+      };
       // Initialize moment locale if available
       if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
           moment.locale(window.CRM.shortLocale);
@@ -283,7 +358,7 @@ $MenuFirst = 1;
         <!-- Cart -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0 position-relative" data-bs-toggle="dropdown" href="#">
-            <i class="fa-duotone fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
             <?php if (Cart::countPeople() > 0): ?>
             <span class="badge bg-info position-absolute top-0 end-0 small" id="iconCount"><?= Cart::countPeople() ?></span>
             <?php else: ?>

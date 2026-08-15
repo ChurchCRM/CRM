@@ -35,10 +35,6 @@ msgid "Show Neighbors"
 msgstr "Show Neighbours"
 
 #: 
-msgid "Scan check"
-msgstr "Scan cheque"
-
-#: 
 msgid "City, State, Zip"
 msgstr "City, Province, Postal Code"
 
@@ -55,10 +51,6 @@ msgstr "Postal Code"
 #, fuzzy
 msgid "Show neighbors with these classifications"
 msgstr "Show neighbours with these classifications"
-
-#: 
-msgid "Choose between light and dark color scheme"
-msgstr "Choose between light and dark colour scheme"
 
 #: 
 msgid "Primary Color"

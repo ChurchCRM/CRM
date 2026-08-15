@@ -1,16 +1,27 @@
 {
   "Code": "Code",
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "one": "E-Mail an %d Familie gesendet.",
+    "other": "E-Mail an %d Familien gesendet."
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF erfolgreich an %d Familie per E-Mail gesendet.",
+    "other": "PDF erfolgreich an %d Familien per E-Mail gesendet."
+  },
   "Copied {{count}} members": {
     "one": "{{count}} Mitglied kopiert",
     "other": "{{count}} Mitglieder kopiert"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Diese Liste hat {{count}} Empfänger – zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“.",
-    "other": "Diese Liste hat {{count}} Empfänger – zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“."
+    "one": "Diese Liste hat {{count}} Empfaenger - zu viele fuer einen mailto:-Link. Verwenden Sie stattdessen Adressen kopieren.",
+    "other": "Diese Liste hat {{count}} Empfaenger - zu viele fuer einen mailto:-Link. Verwenden Sie stattdessen Adressen kopieren."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Zu viele Empfänger für das E-Mail-Programm ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“.",
-    "other": "Zu viele Empfänger für das E-Mail-Programm ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“."
+    "one": "Zu viele Empfaenger fuer das E-Mail-Programm ({{count}} > {{max}}). Verwenden Sie stattdessen Adressen kopieren.",
+    "other": "Zu viele Empfaenger fuer das E-Mail-Programm ({{count}} > {{max}}). Verwenden Sie stattdessen Adressen kopieren."
   },
   "{{count}} min left": {
     "one": "{{count}} Min. verbleibend",

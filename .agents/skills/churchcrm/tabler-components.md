@@ -1091,16 +1091,16 @@ Settings saved via `POST /api/user/{userId}/setting/{settingName}` with `{value:
 <i class="ti ti-users"></i>       <!-- Group/team -->
 ```
 
-### Domain Entities → FontAwesome 7 Duotone
+### Domain Entities → FontAwesome 7 Solid
 
 ```html
-<i class="fa-duotone fa-solid fa-user"></i>           <!-- Person -->
-<i class="fa-duotone fa-solid fa-house-user"></i>     <!-- Family -->
-<i class="fa-duotone fa-solid fa-people-group"></i>   <!-- Group -->
-<i class="fa-duotone fa-solid fa-circle-dollar"></i>  <!-- Finance -->
-<i class="fa-duotone fa-solid fa-calendar-days"></i>  <!-- Event -->
-<i class="fa-duotone fa-solid fa-cart-shopping"></i>   <!-- Cart -->
-<i class="fa-duotone fa-solid fa-clipboard-check"></i> <!-- Check-in -->
+<i class="fa-solid fa-user"></i>                       <!-- Person -->
+<i class="fa-solid fa-house-user"></i>                 <!-- Family -->
+<i class="fa-solid fa-people-group"></i>               <!-- Group -->
+<i class="fa-solid fa-circle-dollar-to-slot"></i>      <!-- Finance -->
+<i class="fa-solid fa-calendar-days"></i>              <!-- Event -->
+<i class="fa-solid fa-cart-shopping"></i>              <!-- Cart -->
+<i class="fa-solid fa-clipboard-check"></i>            <!-- Check-in -->
 ```
 
 ### CSS for Tabler Icons (add to Header-HTML-Scripts.php)

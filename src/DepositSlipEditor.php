@@ -41,7 +41,7 @@ if ($iDepositSlipID) {
 }
 
 if ($noDeposit) {
-    RedirectUtils::redirect('FindDepositSlip.php');
+    RedirectUtils::redirect('finance/deposit/search');
 }
 
 $sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number') . ': ' . $iDepositSlipID;
@@ -67,7 +67,7 @@ $currentUser->save();
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Finance'), '/finance/'],
-    [gettext('Deposits'), '/FindDepositSlip.php'],
+    [gettext('Deposits'), '/finance/deposit/search'],
     [gettext('Edit Deposit')],
 ]);
 require_once __DIR__ . '/Include/Header.php';
@@ -76,7 +76,7 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="row mb-3">
   <div class="col-12">
     <div class="d-flex justify-content-between align-items-center">
-      <a href="FindDepositSlip.php" class="btn btn-outline-secondary">
+      <a href="<?= SystemURLs::getRootPath() ?>/finance/deposit/search" class="btn btn-outline-secondary">
         <i class="fa-solid fa-arrow-left"></i><?= gettext('Back to Deposits'); ?>
       </a>
       <div class="btn-group" role="group" aria-label="<?= gettext('Deposit Navigation'); ?>">
@@ -256,40 +256,31 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="card-status-top bg-secondary"></div>
   <div class="card-header d-flex justify-content-between align-items-center">
     <h3 class="card-title mb-0">
-      <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?> 
-      <span class="badge bg-light text-dark text-dark" id="payment-count">0</span>
+      <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?>
+      <span class="badge bg-blue-lt text-blue" id="payment-count">0</span>
     </h3>
-    <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
-    <div class="btn-group" role="group">
-      <button type="submit" class="btn btn-sm btn-primary" name="DepositSlipLoadAuthorized">
-        <i class="fa-solid fa-sync"></i><?= gettext('Load Authorized'); ?>
-      </button>
-      <button type="submit" class="btn btn-sm btn-warning" name="DepositSlipRunTransactions">
-        <i class="fa-solid fa-play-circle"></i><?= gettext('Run Transactions'); ?>
-      </button>
+    <div class="d-flex gap-2">
+      <?php if ($iDepositSlipID && $thisDeposit->getType() === 'Bank' && !$thisDeposit->getClosed()): ?>
+        <button type="button" id="deleteSelectedRows" class="btn btn-sm btn-danger" disabled>
+          <i class="fa-solid fa-trash-can"></i><?php echo gettext('Delete Selected'); ?>
+        </button>
+      <?php endif; ?>
+      <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
+      <div class="btn-group" role="group">
+        <button type="submit" class="btn btn-sm btn-primary" name="DepositSlipLoadAuthorized">
+          <i class="fa-solid fa-sync"></i><?= gettext('Load Authorized'); ?>
+        </button>
+        <button type="submit" class="btn btn-sm btn-warning" name="DepositSlipRunTransactions">
+          <i class="fa-solid fa-play-circle"></i><?= gettext('Run Transactions'); ?>
+        </button>
+      </div>
+      <?php endif; ?>
     </div>
-    <?php endif; ?>
   </div>
   <div class="card-body p-0">
-    <div class="px-3 py-3 border-bottom bg-light">
-      <!-- Subtle spacing -->
-    </div>
-    <div class="table-responsive">
+    <div style="overflow-x: clip; overflow-y: visible;">
       <table class="table table-hover mb-0" id="paymentsTable"></table>
     </div>
-    <?php
-    if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()) {
-        if ($thisDeposit->getType() == 'Bank') {
-            ?>
-    <div class="card-footer">
-      <button type="button" id="deleteSelectedRows" class="btn btn-sm btn-danger" disabled>
-        <i class="fa-solid fa-trash-can"></i><?php echo gettext('Delete Selected'); ?>
-      </button>
-    </div>
-            <?php
-        }
-    }
-    ?>
   </div>
 </div>
 
@@ -316,12 +307,12 @@ require_once __DIR__ . '/Include/Header.php';
 #paymentsTable {
     margin-bottom: 0;
 }
-#paymentsTable_wrapper .dataTables_length,
-#paymentsTable_wrapper .dataTables_filter {
+.dt-length,
+.dt-search {
     padding: 1rem 0.75rem;
 }
-#paymentsTable_wrapper .dataTables_info,
-#paymentsTable_wrapper .dataTables_paginate {
+.dt-info,
+.dt-paging {
     padding: 1rem 0.75rem;
 }
 .dt-buttons {
@@ -358,6 +349,12 @@ require_once __DIR__ . '/Include/Header.php';
     font-size: 0.75rem;
     padding: 0.35rem 0.65rem;
     font-weight: 500;
+}
+#paymentsTable .dropdown {
+    display: inline-block;
+}
+#paymentsTable .dropdown-menu {
+    min-width: auto;
 }
 .stat-card {
     padding: 1.25rem 1rem;

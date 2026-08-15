@@ -167,10 +167,17 @@ $validationError     = $validationError ?? '';
 
                     <hr class="my-3">
                     <h5 class="mb-3"><?= gettext('Map Coordinates') ?></h5>
-                    <p class="text-body-secondary small mb-3">
+                    <p class="text-body-secondary small mb-2">
                         <i class="fa-solid fa-circle-info me-1"></i>
-                        <?= gettext('Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.') ?>
+                        <?= gettext('Click "Generate Coordinates" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form.') ?>
                     </p>
+                    <button type="button" class="btn btn-outline-primary btn-sm mb-3" id="generate-coordinates-btn">
+                        <i class="fa-solid fa-location-crosshairs me-1"></i>
+                        <?= gettext('Generate Coordinates') ?>
+                    </button>
+                    <small class="form-text text-body-secondary d-block mb-3" id="generate-coordinates-help">
+                        <?= gettext('Uses your street address above to look up coordinates via OpenStreetMap.') ?>
+                    </small>
                     <div class="row">
                         <div class="mb-3 col-md-4">
                             <label for="iChurchLatitude"><?= gettext('Latitude') ?></label>
@@ -208,24 +215,22 @@ $validationError     = $validationError ?? '';
                         && $lngFloat >= -180.0 && $lngFloat <= 180.0;
                     ?>
 
-                    <?php if ($hasCoords): ?>
                     <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
-                    <div id="church-location-map" class="mb-2 rounded border" style="height:280px;"></div>
-                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                        window.CRM = window.CRM || {};
-                        window.CRM.churchMapConfig = <?= json_encode([
-                            'lat'  => $latFloat,
-                            'lng'  => $lngFloat,
-                            'name' => $churchInfo['sChurchName'],
-                        ]) ?>;
-                    </script>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
-                    <?php else: ?>
-                    <div class="alert alert-info mt-3 mb-0">
+                    <div id="church-location-map" class="mb-2 rounded border<?= $hasCoords ? '' : ' d-none' ?>" style="height:280px;"></div>
+                    <div class="alert alert-info mt-3 mb-0<?= $hasCoords ? ' d-none' : '' ?>" id="no-coords-alert">
                         <i class="fa-solid fa-location-dot me-2"></i>
                         <?= gettext('A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.') ?>
                     </div>
-                    <?php endif; ?>
+                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                        window.CRM = window.CRM || {};
+                        window.CRM.churchMapConfig = <?= json_encode([
+                            'lat'       => $latFloat,
+                            'lng'       => $lngFloat,
+                            'name'      => $churchInfo['sChurchName'],
+                            'hasCoords' => $hasCoords,
+                        ]) ?>;
+                    </script>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
                 </div>
             </div>
         </div>
@@ -294,43 +299,42 @@ $validationError     = $validationError ?? '';
                         <?= gettext('This is how your church information will appear on reports and directories.') ?>
                     </p>
 
+                    <h5 class="mb-2"><i class="fa-solid fa-eye me-2"></i><?= gettext('Preview') ?></h5>
                     <div class="card-body bg-light rounded">
                         <address class="mb-0">
-                            <?php if (!empty($churchInfo['sChurchName'])): ?>
-                            <strong><?= InputUtils::escapeHTML($churchInfo['sChurchName']) ?></strong><br>
-                            <?php endif; ?>
-                            <?php if (!empty($churchInfo['sChurchAddress'])): ?>
-                            <?= InputUtils::escapeHTML($churchInfo['sChurchAddress']) ?><br>
-                            <?php endif; ?>
+                            <div id="preview-name-line" class="<?= empty($churchInfo['sChurchName']) ? 'd-none' : '' ?>">
+                            <strong id="preview-name"><?= InputUtils::escapeHTML($churchInfo['sChurchName']) ?></strong><br>
+                            </div>
+                            <div id="preview-address-line" class="<?= empty($churchInfo['sChurchAddress']) ? 'd-none' : '' ?>">
+                            <span id="preview-address"><?= InputUtils::escapeHTML($churchInfo['sChurchAddress']) ?></span><br>
+                            </div>
                             <?php
                             $cityStateParts = array_filter([$churchInfo['sChurchCity'], $churchInfo['sChurchState']]);
                             $cityStateStr = implode(', ', $cityStateParts);
                             $zip = $churchInfo['sChurchZip'];
                             $cityLine = trim($cityStateStr . ($zip !== '' ? ' ' . $zip : ''));
-                            if ($cityLine !== ''):
                             ?>
-                            <?= InputUtils::escapeHTML($cityLine) ?><br>
-                            <?php endif; ?>
-                            <?php if (!empty($churchInfo['sChurchCountry'])): ?>
-                            <?= InputUtils::escapeHTML($countries[$churchInfo['sChurchCountry']] ?? $churchInfo['sChurchCountry']) ?><br>
-                            <?php endif; ?>
-                            <?php if (!empty($churchInfo['sChurchPhone'])): ?>
-                            <i class="fa-solid fa-phone me-1"></i><?= InputUtils::escapeHTML($churchInfo['sChurchPhone']) ?><br>
-                            <?php endif; ?>
-                            <?php if (!empty($churchInfo['sChurchEmail'])): ?>
-                            <i class="fa-solid fa-envelope me-1"></i><a href="mailto:<?= InputUtils::escapeAttribute($churchInfo['sChurchEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?></a><br>
-                            <?php endif; ?>
-                            <?php if (!empty($churchInfo['sChurchWebSite'])): ?>
-                            <i class="fa-solid fa-globe me-1"></i><a href="<?= InputUtils::escapeAttribute($churchInfo['sChurchWebSite']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?></a>
-                            <?php endif; ?>
+                            <div id="preview-citystate-line" class="<?= $cityLine === '' ? 'd-none' : '' ?>">
+                            <span id="preview-citystate"><?= InputUtils::escapeHTML($cityLine) ?></span><br>
+                            </div>
+                            <div id="preview-country-line" class="<?= empty($churchInfo['sChurchCountry']) ? 'd-none' : '' ?>">
+                            <span id="preview-country"><?= InputUtils::escapeHTML($countries[$churchInfo['sChurchCountry']] ?? $churchInfo['sChurchCountry']) ?></span><br>
+                            </div>
+                            <div id="preview-phone-line" class="<?= empty($churchInfo['sChurchPhone']) ? 'd-none' : '' ?>">
+                            <i class="fa-solid fa-phone me-1"></i><span id="preview-phone"><?= InputUtils::escapeHTML($churchInfo['sChurchPhone']) ?></span><br>
+                            </div>
+                            <div id="preview-email-line" class="<?= empty($churchInfo['sChurchEmail']) ? 'd-none' : '' ?>">
+                            <i class="fa-solid fa-envelope me-1"></i><a id="preview-email" href="mailto:<?= InputUtils::escapeAttribute($churchInfo['sChurchEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?></a><br>
+                            </div>
+                            <div id="preview-website-line" class="<?= empty($churchInfo['sChurchWebSite']) ? 'd-none' : '' ?>">
+                            <i class="fa-solid fa-globe me-1"></i><a id="preview-website" href="<?= InputUtils::escapeAttribute($churchInfo['sChurchWebSite']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?></a>
+                            </div>
                         </address>
                     </div>
-                    <?php if (empty($churchInfo['sChurchName'])): ?>
-                    <div class="alert alert-warning mt-3">
+                    <div class="alert alert-warning mt-3<?= empty($churchInfo['sChurchName']) ? '' : ' d-none' ?>" id="preview-name-required-alert">
                         <i class="fa-solid fa-triangle-exclamation me-2"></i>
                         <?= gettext('Church name is required. Please fill in the Church Identity section above.') ?>
                     </div>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>

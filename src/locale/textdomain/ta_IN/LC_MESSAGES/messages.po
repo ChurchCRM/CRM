@@ -1094,25 +1094,9 @@ msgid "Create Report"
 msgstr "அறிக்கையை உருவாக்கவும்"
 
 #: 
-msgid "Deposit Listing"
-msgstr "வைப்பு/டெபாசிட் பட்டியல்"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "வைப்புத்தொகை"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளை நீக்கு"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளை ஏற்றுமதி செய்யவும் (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளை ஏற்றுமதி செய்யவும் (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1264,18 +1248,6 @@ msgid "Type of Group"
 msgstr "குழுவின் வகை"
 
 #: 
-msgid "Group Member Roles"
-msgstr "குழு உறுப்பினர் பாத்திரங்கள்/வேலைகள்"
-
-#: 
-msgid "Clone roles"
-msgstr "குளோன்/படியெடுப்பு/படியெடுப்பு  வேலைகள்/பாத்திரங்கள்"
-
-#: 
-msgid "from group"
-msgstr "குழுவிலிருந்து"
-
-#: 
 msgid "Select a group"
 msgstr "ஒரு குழுவைத் தேர்ந்தெடுக்கவும்"
 
@@ -1287,10 +1259,6 @@ msgstr "குழு குறிப்பிட்ட பண்புகள்"
 #: 
 msgid "Enabled"
 msgstr "இயக்கப்பட்டது"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "குழு-குறிப்பிட்ட பண்புகள் படிவத்தைத் திருத்தவும்"
 
 #: 
 msgid "Disabled"
@@ -1344,14 +1312,6 @@ msgstr "குழு-குறிப்பிட்ட பண்புகள் 
 #: 
 msgid "No properties have been added yet"
 msgstr "இதுவரை சொத்துக்கள் எதுவும் சேர்க்கப்படவில்லை"
-
-#: 
-msgid "Show in"
-msgstr "காண்பிக்க"
-
-#: 
-msgid "Person View"
-msgstr "நபர் பார்வைக்கு"
 
 #: 
 msgid "Other Email"
@@ -1674,16 +1634,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "'CASH'/'பணம்' கட்டணத்திற்குச் சரிபார்ப்பு எண் செல்லாது"
 
 #: 
-msgid "Deposit closed"
-msgstr "வைப்பு/டெபாசிட் மூடப்பட்டது"
-
-#: 
 msgid "Payment Schedule"
 msgstr "கட்டண அட்டவணை"
-
-#: 
-msgid "Select Schedule"
-msgstr "அட்டவணையைத் தேர்ந்தெடுக்கவும்"
 
 #: 
 msgid "Weekly"
@@ -1706,28 +1658,8 @@ msgid "Other"
 msgstr "மற்றவை"
 
 #: 
-msgid "Payment by"
-msgstr "மூலம் பணம் செலுத்துதல்"
-
-#: 
-msgid "Scan check"
-msgstr "நுட்பமாய்ச் சோதித்து/ஸ்கேன் சரிபார்க்கவும்"
-
-#: 
-msgid "find family from check account #"
-msgstr "காசோலை கணக்கிலிருந்து குடும்பத்தைக் கண்டறியவும் #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "குடும்பத்திற்கான இயல்புநிலை காசோலை கணக்கு எண்ணை அமைக்கவும்"
-
-#: 
 msgid "Fund Name"
 msgstr "நிதியின் பெயர்"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "கழிக்க முடியாத தொகை"
 
 #: 
 msgid "Age"
@@ -2585,10 +2517,6 @@ msgid "Groups"
 msgstr "குழுக்கள்"
 
 #: 
-msgid "Total $"
-msgstr "மொத்தம் $"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "இந்த பண்புடன்..."
@@ -2714,10 +2642,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "தரவுத்தள தகவல் உறுதிப்படுத்தல் மற்றும் திருத்தம் அறிக்கை கையொப்பமிடுபவர்"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "உறுதிமொழி சுருக்க அறிக்கைக்கான சொல்"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "அடைவு அறிக்கைக்கான சொல்"
 
@@ -2781,11 +2705,6 @@ msgstr "பண்பு வகைகள்"
 #: 
 msgid "Zip Code"
 msgstr "அஞ்சல் குறியீடு"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "களம்"
 
 #. Context: query_qry
 #: 
@@ -4923,10 +4842,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "பயன்படுத்த குறியாக்க அமைப்பை அமைக்கவும் - ssl (நிறுத்தப்பட்டது) அல்லது tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளுக்கு (PDF) வைப்புச் சீட்டை உருவாக்கவும்"
-
-#: 
 msgid "Add All to Cart"
 msgstr "அனைத்தையும் மென்வண்டியில் சேர்க்கவும்"
 
@@ -5222,10 +5137,6 @@ msgstr "பி டி எஃப் (PDF)  "
 #: 
 msgid "Error sending email(s)"
 msgstr "மின்னஞ்சல்(களை) அனுப்புவதில் பிழை"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "மேலும் தகவலுக்கு பதிவுகளைப் பார்க்கவும்"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5621,10 +5532,6 @@ msgid "Add Group"
 msgstr "குழுவைச் சேர்"
 
 #: 
-msgid "Back to Group List"
-msgstr "குழு பட்டியலுக்குத் திரும்பு"
-
-#: 
 msgid "Edit Group"
 msgstr "குழுவைத் திருத்து"
 
@@ -5857,10 +5764,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "இந்த வைப்புத்தொகை பற்றிய கூடுதல் குறிப்புகளைச் சேர்க்கவும்"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "தொகை அனுமதிக்கப்பட்ட அதிகபட்ச மதிப்பை (999999.99) மீறுகிறது."
-
-#: 
 msgid "Checks"
 msgstr "காசோலைகள்"
 
@@ -5887,10 +5790,6 @@ msgstr "ரொக்கம் இல்லை"
 #: 
 msgid "No Checks"
 msgstr "காசோலைகள் இல்லை"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "கழிக்க முடியாத தொகை அனுமதிக்கப்பட்ட அதிகபட்ச மதிப்பை (999999.99) மீறுகிறது."
 
 #: 
 msgid "Payments"
@@ -6507,10 +6406,6 @@ msgid "%d missing role"
 msgstr "%d பங்கு விடுபட்டுள்ளது"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "பணம் செலுத்துதல் என்பது பெறப்பட்ட ஒரு உண்மையான நன்கொடை ஆகும். இது தற்போதைய வைப்புத்தொகையுடன் சேர்க்கப்படும்."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "உறுதிமொழி என்பது கொடுப்பதற்கான ஒரு வாக்குறுதியாகும். இது வைப்புச் சீட்டுடன் தொடர்புடையது அல்ல."
 
@@ -6808,10 +6703,6 @@ msgid "Name & Identity"
 msgstr "பெயர் மற்றும் அடையாளம்"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "புதிய வைப்புத்தொகை உருவாக்கப்படும்"
-
-#: 
 msgid "New Payment"
 msgstr "புதிய கட்டணம்"
 
@@ -6930,10 +6821,6 @@ msgstr "சில விண்ணப்பத் தேவைகள் பூர
 #: 
 msgid "State (Other)"
 msgstr "மாநிலம் (மற்றவை)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "நிதியாண்டுக்கான நிதி வாரியான உறுதிமொழிகள் மற்றும் கொடுப்பனவுகளின் சுருக்கம்."
 
 #: 
 msgid "System Health"
@@ -7426,10 +7313,6 @@ msgstr "மேலே நகர்வு"
 #: 
 msgid "Order"
 msgstr "ஆணை"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF ஐ %s குடும்பங்களுக்கு வெற்றிகரமாக மின்னஞ்சல் செய்யப்பட்டது."
 
 #: 
 msgid "Percentage"
@@ -8918,10 +8801,6 @@ msgid "Account Recovery"
 msgstr "கணக்கு மீட்பு"
 
 #: 
-msgid "Add Family"
-msgstr "குடும்பத்தைச் சேர்"
-
-#: 
 msgid "Add First Family"
 msgstr "முதல் குடும்பத்தைச் சேர்"
 
@@ -8940,10 +8819,6 @@ msgstr "குறிப்பைச் சேர்"
 #: 
 msgid "Add People to the Family"
 msgstr "குடும்பத்தில் நபர்களைச் சேர்"
-
-#: 
-msgid "Add Person"
-msgstr "நபரைச் சேர்"
 
 #: 
 msgid "Add Students to Cart"
@@ -9322,10 +9197,6 @@ msgid "Delete Person"
 msgstr "நபரை நீக்கு"
 
 #: 
-msgid "Delete Pledge"
-msgstr "நிதி உறுதிமொழியை நீக்கு"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "இந்த சொத்தை நீக்குவது எந்த நபர்கள், குடும்பம் அல்லது குழு பதிவுகளிலிருந்தும் அதன் அனைத்து ஒதுக்கீடுகளையும் நீக்கும்."
 
@@ -9488,10 +9359,6 @@ msgstr "நிதி ஆண்டு %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "குடும்பங்கள் ஒரு முகவரி மற்றும் தொலைபேசி எண்ணைப் பகிர்ந்து கொள்கின்றன."
-
-#: 
-msgid "Family List"
-msgstr "குடும்ப பட்டியல்"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9690,10 +9557,6 @@ msgid "Letters and Labels"
 msgstr "கடிதங்கள் மற்றும் லேபிள்கள்"
 
 #: 
-msgid "List families created via self registration"
-msgstr "சுய பதிவு மூலம் உருவாக்கப்பட்ட குடும்பங்களை பட்டியலிடு"
-
-#: 
 msgid "Load demo data"
 msgstr "டெமோ தரவை ஏற்று"
 
@@ -9802,10 +9665,6 @@ msgid "Minimum"
 msgstr "குறைந்தபட்சம்"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "குழு உறுப்பினர்களின் குடும்ப பாத்திரங்களை மாற்றவும்"
-
-#: 
 msgid "Move to Group"
 msgstr "குழுவுக்கு நகர்த்து"
 
@@ -9832,10 +9691,6 @@ msgstr "புதியது"
 #: 
 msgid "New Family"
 msgstr "புதிய குடும்பம்"
-
-#: 
-msgid "New Group"
-msgstr "புதிய குழு"
 
 #: 
 msgid "New Person"
@@ -9950,10 +9805,6 @@ msgstr "கடவுச்சொல் மீட்பு"
 #: 
 msgid "Past & next 7 days"
 msgstr "கடந்த & அடுத்த 7 நாட்கள்"
-
-#: 
-msgid "People List"
-msgstr "நபர்கள் பட்டியல்"
 
 #: 
 msgid "People by Classification"
@@ -10108,10 +9959,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "நபர்கள், குடும்பங்கள், குழுக்கள், முகவரிகள் மற்றும் பலவற்றில் தேடுங்கள்."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "காணிக்கை வைப்பு சீட்டு பதிவுகளைத் தேடி பார்க்கவும்"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "நபர்கள், குடும்பங்கள், குழுக்களைத் தேடு…"
 
@@ -10134,10 +9981,6 @@ msgstr "ஒரு காப்புப் பிரதி கோப்பைத
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "மேலே உங்கள் விருப்பங்களைத் தேர்ந்தெடுத்து காப்புப் பிரதி பொத்தானைக் கிளிக் செய்யவும்."
-
-#: 
-msgid "Self Registration Report"
-msgstr "சுய பதிவு அறிக்கை"
 
 #: 
 msgid "Send email to families"
@@ -10700,11 +10543,6 @@ msgstr "முகவரி இயல்புநிலைகள்"
 msgid "Allow user to add new event"
 msgstr "பயனருக்கு புதிய நிகழ்வைச் சேர்க்க அனுமதிக்கவும்"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "தொடக்க தேதி"
-
 #: 
 msgid "Calendar Settings"
 msgstr "நாட்காட்சி அமைப்புகள்"
@@ -10773,11 +10611,6 @@ msgstr "கிளிப்போர்டுக்கு நகலெடுக�
 msgid "Custom field"
 msgstr "தனிப்பயன் புலம்"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "தனிப்பயன் தேடல்"
-
 #: 
 msgid "Default Country"
 msgstr "இயல்பு நாடு"
@@ -10814,16 +10647,6 @@ msgstr "மின்னஞ்சல் பட்டியல்கள் Mailchi
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "கீழே உள்ள அமைப்பு பேனலில் மின்னஞ்சல்களை இயக்கவும், பின்னர் உங்கள் SMTP சேவையகத்தை உள்ளமைக்கவும்."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "முடிவு தேதி"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "பின்வருவனவற்றின் ஏதேனும் பகுதி உள்ளிடவும்: பெயர், நகரம், மாநிலம், ஜிப், வீட்டு தொலைபேசி, மின்னஞ்சல் அல்லது பணியிட மின்னஞ்சல்."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "வெளிப்புற நாட்காட்சி API முடக்கப்பட்டுள்ளது"
@@ -10849,11 +10672,6 @@ msgstr "புல மதிப்பு"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ஒரு ஆண்டுக்கு உறுதி அளித்தும் மற்றொரு ஆண்டுக்கு அளிக்காதவர்களை கண்டுபிடிக்கவும்"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "தனிப்பயன் புல மதிப்பைக் கொண்டவர்களை கண்டுபிடிக்கவும்"
 
 #. Context: query_qry
 #: 
@@ -10917,11 +10735,6 @@ msgstr "தனிப்பயன் புலத்தை இந்த மதி
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "அதிகபட்ச வயது"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "உறுப்பினர், வழக்கமான பங்கேற்பாளர், போன்றவை"
 
@@ -10934,11 +10747,6 @@ msgstr "குறிப்பிட்ட மாதத்தில் சேர�
 #: 
 msgid "Membership anniversaries"
 msgstr "உறுப்பினர் ஆண்டு நினைவுகள்"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "குறைந்தபட்ச வயது"
 
 #. Context: query_qry
 #: 
@@ -11012,16 +10820,6 @@ msgstr "SMS/உரை பட்டியல்களில் இருந்த
 msgid "Person property used to exclude members from email lists"
 msgstr "மின்னஞ்சல் பட்டியல்களில் இருந்து உறுப்பினர்களை விலக்க பயன்படுத்தப்படும் நபர் பண்பு"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "ஒவ்வொரு உறுப்பினரின் மொத்த பங்களிப்புகளை கணக்கிட கடைசி தேதியை உள்ளிடவும் (அதாவது YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "ஒவ்வொரு உறுப்பினரின் மொத்த பங்களிப்புகளை கணக்கிட தொடக்க தேதியைத் தேர்ந்தெடுக்கவும் (அதாவது YYYY-MM-DD). குறிப்பு: நீங்கள் நன்கொடைகள் உள்ள தேதிகளை மட்டுமே தேர்ந்தெடுக்க முடியும்."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11070,11 +10868,6 @@ msgstr "SMTP கட்டமைக்கப்படவில்லை"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "தேடல்"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "இரண்டாம் நிதியாண்டு"
 
@@ -11087,16 +10880,6 @@ msgstr "ஒப்பிடுவதற்கான இரண்டாம் ந�
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "இரண்டாவது தன்னார்வ வாய்ப்பு தேர்வு"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "தேட வேண்டிய புலத்தைத் தேர்ந்தெடுக்கவும்."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "விரும்பிய குடும்பப் பங்கைக் தேர்ந்தெடுக்கவும்."
 
 #: 
 msgid "Send text message"
@@ -11137,38 +10920,13 @@ msgstr "பதிவுகள் திரும்ப பெற விரும
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "தரவுத்தளத்தில் தேட விரும்பும் பாலினம்."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "பதிவுகள் திரும்ப பெற விரும்பும் பாலினம்."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "பதிவுகள் திரும்ப பெற விரும்பும் அதிகபட்ச வயது."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "பதிவுகள் திரும்ப பெற விரும்பும் உறுப்பினர் ஆண்டு நிறைவு மாதம்."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "நீங்கள் பதிவுகள் திரும்ப பெற விரும்பும் குறைந்தபட்ச வயது."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "நீங்கள் நபர் பதிவுகள் திரும்ப பெற விரும்பும் சொத்து."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "நீங்கள் பதிவுகள் திரும்ப பெற விரும்பும் ஞாயிறு பள்ளி வகுப்பு."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11204,11 +10962,6 @@ msgstr "Vonage SMS அமைக்கப்படவில்லை"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage இல்லாமல், உரை செயல்கள் உங்கள் சாதனத்தின் இயல்புநிலை SMS செயலியைத் திறக்கும் அல்லது தொலைபேசி எண்களை கிளிப்போர்டுக்கு நகலெடுக்கும்."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "WorkEmail"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11531,10 +11284,6 @@ msgstr "அம்சங்கள்"
 #: 
 msgid "Finance permission query IDs"
 msgstr "நிதி அனுமதி வினவல் ஐடிகள்"
-
-#: 
-msgid "Find family"
-msgstr "குடும்பத்தை கண்டுபிடி"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -12187,10 +11936,6 @@ msgstr "புகைப்படம் மாற்று"
 #: 
 msgid "Changes will not take effect until next logon."
 msgstr "அடுத்த உள்நுழைவு வரை மாற்றங்கள் செயல்படாது."
-
-#: 
-msgid "Choose between light and dark color scheme"
-msgstr "இலகு மற்றும் இருண்ட வண்ண திட்டத்தை தேர்வு செய்யவும்"
 
 #: 
 msgid "Customize the look and feel of the application"
@@ -12949,10 +12694,6 @@ msgid "Church information saved, but the address could not be auto-located. Plea
 msgstr "சபை தகவல் சேமிக்கப்பட்டது, ஆனால் முகவரியை தானியங்கியாக கண்டறிய முடியவில்லை. வரைபட ஆள்கூறுகளின் கீழ் அட்சரேகை மற்றும் தீர்க்கரேகையை கைமுறையாக உள்ளிடவும்."
 
 #: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "ஆள்கூறுகள் சேமிக்கும்போது உங்கள் முகவரியிலிருந்து தானாக கண்டறியப்படும் (OpenStreetMap மூலம்). நீங்கள் கீழே கைமுறையாகவும் உள்ளிடலாம் — கைமுறை மதிப்புகள் எப்போதும் தானியங்கி கண்டறிதலை விட முன்னுரிமை பெறும். முகவரியிலிருந்து கணினி ஜியோகோட் செய்ய இரண்டையும் வெற்றிடமாக விடவும்."
-
-#: 
 msgid "Latitude must be a number between -90 and 90."
 msgstr "அட்சரேகை -90 மற்றும் 90 இடையே ஒரு எண்ணாக இருக்க வேண்டும்."
 
@@ -13640,10 +13381,6 @@ msgstr "குடும்பங்களையும் நபர்களை�
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "உங்கள் CSV இல் நகல் நெடுவரிசை பெயர்கள் உள்ளன. நகல் நெடுவரிசைகளை மறுபெயரிடவும் (எ.கா. இரண்டாவதில் \"(2)\" சேர்க்கவும்) மீண்டும் பதிவேற்றவும்."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "தவறான பாதுகாப்பு டோக்கன். மீண்டும் முயலவும்."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13675,10 +13412,6 @@ msgstr "விடுமுறைகள் (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "விடுமுறைகள் வகை வாரியாக குறியிடப்பட்டுள்ளன: அதிகாரப்பூர்வ, கண்காணிப்பு, வங்கி விடுமுறைகள், பருவகால மற்றும் மத விடுமுறைகள். அனைத்து விடுமுறைகளையும் காட்ட எந்த வகையையும் தேர்ந்தெடுக்காமல் விடுங்கள், அல்லது குறிப்பிட்ட வகைகளை தேர்ந்தெடுத்து காட்சியை குறைக்கவும்."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "நிதி உறுதிமொழி அடையாளம் காணவில்லை."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -14217,10 +13950,6 @@ msgid "Are you sure you want to continue?"
 msgstr "நீங்கள் தொடர விரும்புகிறீர்களா?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "இந்த வைப்புத்தொகையை நீக்க விரும்புகிறீர்களா?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "இந்த நிகழ்வு வகையை நீக்க விரும்புகிறீர்களா? இதைத் திரும்பப் பெற இயலாது."
 
@@ -14471,10 +14200,6 @@ msgstr "மாதிரித் தரவு பொதுவாகப் பு
 #: 
 msgid "Deposit ID"
 msgstr "வைப்புத்தொகை ஐடி"
-
-#: 
-msgid "Deposit Total"
-msgstr "வைப்புத்தொகை மொத்தம்"
 
 #: 
 msgid "Deposit Value"
@@ -16818,10 +16543,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s குடும்பத்தின் %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d மேலும் பதிவுகள் பொருந்தும்."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d பதிவு(கள்) திரும்பியது"
 
@@ -16920,10 +16641,6 @@ msgstr "குறைந்தபட்ச மொத்த தொகை"
 #: 
 msgid "Minimum bid $%s."
 msgstr "குறைந்தபட்ச ஏலம் $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "புதிய கட்டணம் - %1$s வைப்பு # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17098,6 +16815,18 @@ msgid "Coordinates Updated"
 msgstr "ஆயத்தொலைவுகள் புதுப்பிக்கப்பட்டன"
 
 #: 
+msgctxt "one"
+msgid "Copied {{count}} members"
+msgstr "{{count}} உறுப்பினர்கள் நகலெடுக்கப்பட்டனர்\n"
+"சூழல்: ஒன்று"
+
+#: 
+msgctxt "other"
+msgid "Copied {{count}} members"
+msgstr "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — இது mailto: இணைப்புக்கு மிக அதிகம். அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
+"சூழல்: ஒன்று"
+
+#: 
 msgid "Copy Addresses"
 msgstr "முகவரிகளை நகலெடு"
 
@@ -17214,6 +16943,30 @@ msgid "This group only has one role."
 msgstr "இந்த குழுவில் ஒரே ஒரு பாத்திரம் மட்டுமே உள்ளது."
 
 #: 
+msgctxt "one"
+msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — இது mailto: இணைப்புக்கு மிக அதிகம். அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
+"சூழல்: மற்றவை"
+
+#: 
+msgctxt "other"
+msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "மின்னஞ்சல் செயலிக்கு அதிகப்படியான பெறுநர்கள் ({{count}} > {{max}}). அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
+"சூழல்: ஒன்று"
+
+#: 
+msgctxt "one"
+msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
+msgstr "மின்னஞ்சல் செயலிக்கு அதிகப்படியான பெறுநர்கள் ({{count}} > {{max}}). அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
+"சூழல்: மற்றவை"
+
+#: 
+msgctxt "other"
+msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
+msgstr "{{count}} நிமிடம் மீதமுள்ளது\n"
+"சூழல்: ஒன்று"
+
+#: 
 msgid "Who is bringing in {{name}}?"
 msgstr "{{name}}-ஐ யார் அழைத்து வருகிறார்?"
 
@@ -17244,6 +16997,16 @@ msgstr "பெறுநர்"
 #: 
 msgid "recipients"
 msgstr "பெறுநர்கள்"
+
+#: 
+msgctxt "one"
+msgid "{{count}} min left"
+msgstr "{{count}} நிமிடங்கள் மீதமுள்ளன"
+
+#: 
+msgctxt "other"
+msgid "{{count}} min left"
+msgstr "{{count}} நிமிடங்கள் மீதமுள்ளன"
 
 #: 
 msgid "{{hours}}h {{mins}}m left"
@@ -17332,4 +17095,704 @@ msgstr "கீழே உங்கள் பொது பதிவு படி�
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "தன்னார்வ வாய்ப்பு நீக்கும் உறுதிப்படுத்தல்"
+
+#: 
+msgid "# Payments"
+msgstr "# கொடுப்பனவுகள்"
+
+#: 
+msgid "# Pledges"
+msgstr "# உறுதிமொழிகள்"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "ஒரு கொடுப்பனவு என்பது பெறப்பட்ட உண்மையான நன்கொடை. இது தேர்ந்தெடுக்கப்பட்ட வைப்பிற்கு சேர்க்கப்படும்."
+
+#: 
+msgid "Add Fund"
+msgstr "நிதி சேர்க்கவும்"
+
+#: 
+msgid "Amount ($)"
+msgstr "தொகை ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "தொகை அனுமதிக்கப்பட்ட அதிகபட்சத்தை மீறுகிறது (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "சேமிக்கும்போது பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "அநாமதேய தொலைமிதி"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "அநாமதேய தொலைமிதி நிலை. ChurchCRM குழுவுடன் எவ்வளவு அநாமதேய கண்டறிதல் தரவு பகிரப்படுகிறது என்பதை கட்டுப்படுத்துகிறது. தேவாலய பெயர்கள், உறுப்பினர் தரவு அல்லது தனிப்பட்ட தகவல்கள் எதுவும் அனுப்பப்படுவதில்லை."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "இந்த கொடுப்பனவு பதிவை நிரந்தரமாக நீக்க விரும்புகிறீர்களா?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "குறைந்தது ஒரு நிதி ஒதுக்கீடு தேவை"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "குறைந்தது ஒரு நிதியில் பூஜ்யமற்ற தொகை இருக்க வேண்டும்"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "பிறந்தநாளில் தானாகவே வாழ்த்து மின்னஞ்சல் அனுப்பவும்"
+
+#: 
+msgid "Back to Finance"
+msgstr "நிதிக்கு திரும்பு"
+
+#: 
+msgid "Back to Group"
+msgstr "குழுவிற்கு திரும்பு"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "வினவலை தயார் செய்ய இயலவில்லை."
+
+#: 
+msgid "Catch JS errors"
+msgstr "JS பிழைகளை பிடிக்கவும்"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "திரும்பத் திரும்ப வரும் பிழைகளை பிடிக்கவும்"
+
+#: 
+msgid "Check #"
+msgstr "காசோலை #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "தேவாலய பெயர், முகவரி அல்லது தொடர்பு விவரங்கள்"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM பதிப்பு"
+
+#: 
+msgid "Collection level"
+msgstr "சேகரிப்பு நிலை"
+
+#: 
+msgid "Count unique installs"
+msgstr "தனிப்பட்ட நிறுவல்களை எண்ணவும்"
+
+#: 
+msgid "Data"
+msgstr "தரவு"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "தரவு EU உள்கட்டமைப்பில் PostHog மூலம் செயலாக்கப்படுகிறது."
+
+#: 
+msgid "Date is required"
+msgstr "தேதி தேவை"
+
+#: 
+msgid "Deleted successfully"
+msgstr "வெற்றிகரமாக நீக்கப்பட்டது"
+
+#: 
+msgid "Deposit #"
+msgstr "வைப்பு #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "வைப்பு சீட்டு"
+
+#: 
+msgid "Edit Pledge"
+msgstr "உறுதிமொழியை திருத்தவும்"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "ஏற்கனவே உள்ள உறுதிமொழி அல்லது கொடுப்பனவை திருத்தவும்"
+
+#: 
+msgid "Editing a Payment"
+msgstr "கொடுப்பனவை திருத்துகிறது"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "உறுதிமொழியை திருத்துகிறது"
+
+#: 
+msgid "Enable (full)"
+msgstr "இயக்கு (முழுமை)"
+
+#: 
+msgid "Errors only"
+msgstr "பிழைகள் மட்டும்"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "பிழைகள் — சேவையக பிழைகள் மற்றும் JS விதிவிலக்குகள்"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "உறுதிமொழியை உருவாக்க தோல்வியடைந்தது"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "உறுதிமொழியை நீக்க தோல்வியடைந்தது"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "கொடுப்பனவு பதிலை குறியாக்கம் செய்ய தோல்வியடைந்தது"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "உறுதிமொழியை மீட்டெடுக்க தோல்வியடைந்தது"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "உறுதிமொழியை புதுப்பிக்க தோல்வியடைந்தது"
+
+#: 
+msgid "Family is required"
+msgstr "குடும்பம் தேவை"
+
+#: 
+msgid "Financial data"
+msgstr "நிதி தரவு"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "முழுமை — மேலே உள்ள அனைத்தும் மற்றும் பக்க பார்வைகள்"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "முழுமை — பக்க பார்வைகள், எச்சரிக்கைகள், பிழைகள் மற்றும் JS விதிவிலக்குகள்"
+
+#: 
+msgid "Fund Summary"
+msgstr "நிதி சுருக்கம்"
+
+#: 
+msgid "Group key is required"
+msgstr "குழு திறவுகோல் தேவை"
+
+#: 
+msgid "Happy Birthday"
+msgstr "பிறந்தநாள் வாழ்த்துகள்"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ChurchCRM-ஐ மேம்படுத்த உதவுங்கள்"
+
+#: 
+msgid "IP addresses"
+msgstr "IP முகவரிகள்"
+
+#: 
+msgid "Installation UUID"
+msgstr "நிறுவல் UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "வரிசைப்படுத்துதல், தேடல் மற்றும் ஏற்றுமதியுடன் நிதி வாரியாக உறுதிமொழிகள்-கொடுப்பனவுகள் ஊடாடும் சுருக்கம்."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "உள்ளகம்: பிறந்தநாள் மின்னஞ்சல்கள் கடைசியாக அனுப்பப்பட்ட தேதி (YYYY-MM-DD). கைமுறையாக திருத்த வேண்டாம்."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS விதிவிலக்குகள்"
+
+#: 
+msgid "Log level + message"
+msgstr "பதிவு நிலை + செய்தி"
+
+#: 
+msgid "Member or family records"
+msgstr "உறுப்பினர் அல்லது குடும்ப பதிவுகள்"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "இந்த குழு உறுப்பினரின் பங்கை மாற்றவும்"
+
+#: 
+msgid "Network error, please try again"
+msgstr "நெட்வொர்க் பிழை, மீண்டும் முயற்சிக்கவும்"
+
+#: 
+msgid "Never sent"
+msgstr "ஒருபோதும் அனுப்பப்படவில்லை"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "வைப்பு இல்லை / புதிய வைப்பை உருவாக்கவும்"
+
+#: 
+msgid "No pledge"
+msgstr "உறுதிமொழி இல்லை"
+
+#: 
+msgid "No thanks"
+msgstr "வேண்டாம், நன்றி"
+
+#: 
+msgid "Non-Deductible"
+msgstr "கழிக்க இயலாத"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "கழிக்க இயலாத ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "கழிக்க இயலாத தொகை நிதி தொகையை மீற முடியாது"
+
+#: 
+msgid "None (disabled)"
+msgstr "எதுவும் இல்லை (முடக்கப்பட்டது)"
+
+#: 
+msgid "OS family"
+msgstr "இயக்க முறைமை வகை"
+
+#: 
+msgid "Overpaid"
+msgstr "அதிகமாக கொடுக்கப்பட்டது"
+
+#: 
+msgid "PHP version"
+msgstr "PHP பதிப்பு"
+
+#: 
+msgid "Page route"
+msgstr "பக்க பாதை"
+
+#: 
+msgid "Payment Details"
+msgstr "கொடுப்பனவு விவரங்கள்"
+
+#: 
+msgid "Payment Method"
+msgstr "கொடுப்பனவு முறை"
+
+#: 
+msgid "Plan runtime support"
+msgstr "இயக்க நேர ஆதரவை திட்டமிடவும்"
+
+#: 
+msgid "Please enter a date"
+msgstr "தேதியை உள்ளிடவும்"
+
+#: 
+msgid "Please select a family"
+msgstr "ஒரு குடும்பத்தை தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "அனைத்து வரிசைகளுக்கும் ஒரு நிதியை தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Pledge Details"
+msgstr "உறுதிமொழி விவரங்கள்"
+
+#: 
+msgid "Pledge group not found"
+msgstr "உறுதிமொழி குழு கண்டுபிடிக்கப்படவில்லை"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "உறுதிமொழிகள் & கொடுப்பனவுகள்"
+
+#: 
+msgid "Prioritise translations"
+msgstr "மொழிபெயர்ப்புகளுக்கு முன்னுரிமை கொடுங்கள்"
+
+#: 
+msgid "Purpose"
+msgstr "நோக்கம்"
+
+#: 
+msgid "Save and Add Another"
+msgstr "சேமித்து மற்றொன்றை சேர்க்கவும்"
+
+#: 
+msgid "Save failed"
+msgstr "சேமிப்பு தோல்வியடைந்தது"
+
+#: 
+msgid "Saved successfully"
+msgstr "வெற்றிகரமாக சேமிக்கப்பட்டது"
+
+#: 
+msgid "Select a fund"
+msgstr "ஒரு நிதியை தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "சோதனை பிறந்தநாள் மின்னஞ்சலை என்னிடம் அனுப்பவும்"
+
+#: 
+msgid "Sending to"
+msgstr "அனுப்புகிறது"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "எந்த அம்சங்கள் மற்றும் மொழிகளுக்கு முன்னுரிமை தர வேண்டும் என்று அறிய ChurchCRM குழுவுடன் அநாமதேய பயன்பாட்டு புள்ளிவிவரங்களை பகிரவும். தேவாலய பெயர்கள், உறுப்பினர் தரவு அல்லது தனிப்பட்ட தகவல்கள் எதுவும் அனுப்பப்படுவதில்லை."
+
+#: 
+msgid "Test email sent to"
+msgstr "சோதனை மின்னஞ்சல் அனுப்பப்பட்டது"
+
+#: 
+msgid "Track adoption"
+msgstr "ஏற்றுக்கொள்ளலை கண்காணிக்கவும்"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "வகை 'உறுதிமொழி' அல்லது 'கொடுப்பனவு' ஆக இருக்க வேண்டும்"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "வினவல் சரங்களுடன் URL-கள் (பதிவு ID-கள் நீக்கப்படும்)"
+
+#: 
+msgid "Underpaid"
+msgstr "குறைவாக கொடுக்கப்பட்டது"
+
+#: 
+msgid "Understand deployments"
+msgstr "வரிசைப்படுத்தல்களை புரிந்துகொள்ளவும்"
+
+#: 
+msgid "Understand feature usage"
+msgstr "அம்ச பயன்பாட்டை புரிந்துகொள்ளவும்"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "பயனர் பெயர்கள், மின்னஞ்சல்கள் அல்லது பங்குகள்"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "உறுதிமொழி அல்லது கொடுப்பனவு விவரங்களை காண்க"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "எச்சரிக்கைகள் — எச்சரிக்கைகள், பிழைகள் மற்றும் JS விதிவிலக்குகள்"
+
+#: 
+msgid "What is sent"
+msgstr "என்ன அனுப்பப்படுகிறது"
+
+#: 
+msgid "What we collect"
+msgstr "நாங்கள் என்ன சேகரிக்கிறோம்"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "உங்களுக்கு அற்புதமான %d வது பிறந்தநாள் வாழ்த்துகள்!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "உங்களுக்கு அற்புதமான பிறந்தநாள் வாழ்த்துகள்!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "உங்கள் கணக்கில் மின்னஞ்சல் முகவரி பதிவு செய்யப்படவில்லை. சோதனை அனுப்ப உங்கள் சுயவிவரத்தில் ஒன்றை சேர்க்கவும்."
+
+#: 
+msgid "errors+"
+msgstr "பிழைகள்+"
+
+#: 
+msgid "full only"
+msgstr "முழுமை மட்டும்"
+
+#: 
+msgid "is thinking of you today."
+msgstr "இன்று உங்களை நினைக்கிறார்."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "பக்க பாதைகள், செயலில் உள்ள மொழி, CRM பதிப்பு, PHP பதிப்பு, இயக்க முறைமை வகை மற்றும் ஒரு சீரற்ற நிறுவல் ID. வேறு எதுவும் இல்லை. தரவு EU-ல் சேமிக்கப்படுகிறது."
+
+#: 
+msgid "% Paid"
+msgstr "% செலுத்தப்பட்டது"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: உங்கள் குடும்பத்தின் தகவலை சரிபார்க்கவும்"
+
+#: 
+msgid "Add Role"
+msgstr "பங்கு சேர்க்கவும்"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "இந்த குழுவிற்கு குறிப்பிட்ட தனிப்பயன் பண்புகளை சேர்க்கவும்"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "கடைசியாக ஆயத்தொலைவுகள் அமைக்கப்பட்டதிலிருந்து முகவரி மாறியுள்ளது."
+
+#: 
+msgid "All Tellers"
+msgstr "அனைத்து பணம் ஏற்பாளர்களும்"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "அனைத்து மின்னஞ்சல் அனுப்புதல்களும் தோல்வியடைந்தன. கணினி அமைப்புகளில் உங்கள் SMTP அமைப்புகளை சரிபார்க்கவும்."
+
+#: 
+msgid "Amount Max"
+msgstr "அதிகபட்ச தொகை"
+
+#: 
+msgid "Amount Min"
+msgstr "குறைந்தபட்ச தொகை"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "மின்னஞ்சல்கள் அனுப்புவதில் எதிர்பாராத பிழை ஏற்பட்டது. உங்கள் SMTP அமைப்புகளையும் சேவையக பதிவுகளையும் சரிபார்க்கவும்."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' பங்கை நீக்க விரும்புகிறீர்களா?"
+
+#: 
+msgid "Auto"
+msgstr "தானியங்கி"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "தானியங்கி உங்கள் இயக்க முறைமை அல்லது உலாவி அமைப்பைப் பின்தொடர்கிறது; ஒளி மற்றும் இருள் அதை மேலெழுதும்"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "உறுதிமொழி டாஷ்போர்டுக்கு திரும்பு"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "மேலே உள்ள முகவரிக்கான வரைபட இடத்தை தேட \"ஆயத்தொலைவுகள் உருவாக்கு\" என்பதை கிளிக் செய்யவும், அல்லது அட்சரேகை/தீர்க்கரேகையை கைமுறையாக உள்ளிடவும். வெறுமனே விட்டால், படிவத்தை சேமிக்கும்போது ஆயத்தொலைவுகள் தானாகவே கண்டறியப்படும்."
+
+#: 
+msgid "Contributor"
+msgstr "பங்களிப்பாளர்"
+
+#: 
+msgid "Contributors"
+msgstr "பங்களிப்பாளர்கள்"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "அந்த முகவரிக்கான ஆயத்தொலைவுகளை கண்டுபிடிக்க முடியவில்லை. கைமுறையாக உள்ளிட முயற்சிக்கவும்."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "இந்த குழுவிற்கான தனிப்பயன் பண்புகள்"
+
+#: 
+msgid "Delete role"
+msgstr "பங்கை நீக்கு"
+
+#: 
+msgid "Email Error"
+msgstr "மின்னஞ்சல் பிழை"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "மின்னஞ்சல் கட்டமைக்கப்படவில்லை. கணினி அமைப்புகளில் SMTP அமைப்புகளை கட்டமைக்கவும்."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "%d குடும்பத்திற்கு மின்னஞ்சல் அனுப்பப்பட்டது."
+msgstr[1] "%d குடும்பங்களுக்கு மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
+msgid "Enter a street address first."
+msgstr "முதலில் தெரு முகவரியை உள்ளிடவும்."
+
+#: 
+msgid "Enter role name"
+msgstr "பங்கின் பெயரை உள்ளிடவும்"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "வைப்புத்தொகை உருவாக்குவதில் தோல்வி"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "மின்னஞ்சல் முன்னோட்டம் ஏற்றுவதில் தோல்வி"
+
+#: 
+msgid "From Date"
+msgstr "தொடக்க தேதி"
+
+#: 
+msgid "Fund Total"
+msgstr "நிதி மொத்தம்"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "நிதியாண்டு வாரியான நிதி பங்களிப்பாளர் உறுதிமொழி சுருக்கம்"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "நிதி திரட்டல் முடக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "ஆயத்தொலைவுகள் உருவாக்கு"
+
+#: 
+msgid "Generating..."
+msgstr "உருவாக்குகிறது..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "புவியியல் குறியீட்டு கோரிக்கை தோல்வியடைந்தது. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Manage Events"
+msgstr "நிகழ்வுகளை நிர்வகி"
+
+#: 
+msgid "New Deposit"
+msgstr "புதிய வைப்புத்தொகை"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "தேர்ந்தெடுக்கப்பட்ட நிதியாண்டில் இந்த நிதிக்கு பங்களிப்பாளர்கள் எவரும் இல்லை"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "மின்னஞ்சல் முகவரி உள்ள குடும்பங்கள் எதுவும் கண்டுபிடிக்கப்படவில்லை. எதுவும் அனுப்பப்படவில்லை."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "தேர்ந்தெடுக்கப்பட்ட வைப்புத்தொகைகளுக்கு செலுத்துதல்கள் எதுவும் இல்லை"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "செல்லுபடியான வைப்பு அடையாள எண்கள் வழங்கப்படவில்லை"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF வெற்றிகரமாக %d குடும்பத்திற்கு மின்னஞ்சல் செய்யப்பட்டது."
+msgstr[1] "PDF வெற்றிகரமாக %d குடும்பங்களுக்கு மின்னஞ்சல் செய்யப்பட்டது."
+
+#: 
+msgid "Partial Send"
+msgstr "பகுதி அனுப்புதல்"
+
+#: 
+msgid "Payments only"
+msgstr "செலுத்துதல்கள் மட்டும்"
+
+#: 
+msgid "Pledged Amount"
+msgstr "உறுதியளிக்கப்பட்ட தொகை"
+
+#: 
+msgid "Preview"
+msgstr "முன்னோட்டம்"
+
+#: 
+msgid "Retry"
+msgstr "மீண்டும் முயற்சி"
+
+#: 
+msgid "Search"
+msgstr "தேடு"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "வைப்பு சீட்டு பதிவுகளை தேடி நிர்வகி"
+
+#: 
+msgid "Select All"
+msgstr "அனைத்தையும் தேர்ந்தெடு"
+
+#: 
+msgid "Send Emails"
+msgstr "மின்னஞ்சல்கள் அனுப்பு"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "குடும்ப சரிபார்ப்பு மின்னஞ்சல்கள் அனுப்பு"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d இல் %1$d அனுப்பப்பட்டது — %3$d குடும்பங்களை அடைய முடியவில்லை."
+
+#: 
+msgid "Show in Profile"
+msgstr "சுயவிவரத்தில் காட்டு"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "தேர்ந்தெடுக்கப்பட்ட நிதிக்கான மொத்தம் மட்டும் காட்டப்படுகிறது"
+
+#: 
+msgid "Teller"
+msgstr "பணம் ஏற்பாளர்"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "இது இந்த குழுவில் உள்ள ஒரே பங்கு."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "இந்த பங்கை நீக்க முடியாது."
+
+#: 
+msgid "To Date"
+msgstr "இறுதி தேதி"
+
+#: 
+msgid "Total Pledged"
+msgstr "மொத்த உறுதிமொழி"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "மின்னஞ்சல்கள் அனுப்புவதில் எதிர்பாராத பிழை. பதிவுகளை சரிபார்க்கவும்."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "மேலே உள்ள உங்கள் தெரு முகவரியை பயன்படுத்தி OpenStreetMap வழியாக ஆயத்தொலைவுகளை தேடுகிறது."
+
+#: 
+msgid "View Payment"
+msgstr "செலுத்துதலை பார்க்கவும்"
+
+#: 
+msgid "View Pledge"
+msgstr "உறுதிமொழியை பார்க்கவும்"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "தேர்ந்தெடுக்கப்படும்போது, இந்த பண்பு அவர்களின் சுயவிவர பக்கத்தில் குழு பட்டியலில் குழுவுடன் காட்டப்படும்."
+
+#: 
+msgid "[Family Name]"
+msgstr "[குடும்பப் பெயர்]"
+
+#: 
+msgid "row selected"
+msgstr "வரிசை தேர்ந்தெடுக்கப்பட்டது"
+
+#: 
+msgid "rows selected"
+msgstr "வரிசைகள் தேர்ந்தெடுக்கப்பட்டன"
 

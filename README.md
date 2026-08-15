@@ -69,7 +69,7 @@ A heartfelt thank you to all our contributors, past and present. Your efforts ma
 
 ### Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=churchcrm/crm&type=Date)](https://star-history.com/#churchcrm/crm&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=churchcrm/crm&type=Date)](https://star-history.dera.page/#churchcrm/crm&Date)
 
 ## 🌐 Stay Connected
 

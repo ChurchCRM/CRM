@@ -1,15 +1,26 @@
 {
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "one": "ኢሜይል ለ%d ቤተሰብ ተልኳል።",
+    "other": "ኢሜይል ለ%d ቤተሰቦች ተልኳል።"
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF ለ%d ቤተሰብ በተሳካ ሁኔታ በኢሜይል ተልኳል።",
+    "other": "PDF ለ%d ቤተሰቦች በተሳካ ሁኔታ በኢሜይል ተልኳል።"
+  },
   "Copied {{count}} members": {
     "one": "{{count}} አባል ተቀድቷል",
     "other": "{{count}} አባላት ተቀድተዋል"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ይህ ዝርዝር {{count}} ተቀባይ አለው — ለ mailto: አገናኝ በጣም ብዙ ነው። ይልቁንስ አድራሻዎችን ቅዳ ይጠቀሙ።",
-    "other": "ይህ ዝርዝር {{count}} ተቀባዮች አሉት — ለ mailto: አገናኝ በጣም ብዙ ናቸው። ይልቁንስ አድራሻዎችን ቅዳ ይጠቀሙ።"
+    "one": "ይህ ዝርዝር {{count}} ተቀባይ አለው — ለ mailto: አገናኝ በጣም ብዙ ነው። ይልቁንም አድራሻዎችን ቅዳ ይጠቀሙ።",
+    "other": "ይህ ዝርዝር {{count}} ተቀባዮች አሉት — ለ mailto: አገናኝ በጣም ብዙ ናቸው። ይልቁንም አድራሻዎችን ቅዳ ይጠቀሙ።"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባይ ({{count}} > {{max}})። ይልቁንስ አድራሻዎችን ቅዳ ይጠቀሙ።",
-    "other": "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባዮች ({{count}} > {{max}})። ይልቁንስ አድራሻዎችን ቅዳ ይጠቀሙ།"
+    "one": "ለኢሜይል ደንበኛ ተቀባዮቹ በጣም ብዙ ናቸው ({{count}} > {{max}})። ይልቁንም አድራሻዎችን ቅዳ ይጠቀሙ።",
+    "other": "ለኢሜይል ደንበኛ ተቀባዮቹ በጣም ብዙ ናቸው ({{count}} > {{max}})። ይልቁንም አድራሻዎችን ቅዳ ይጠቀሙ።"
   },
   "{{count}} min left": {
     "one": "{{count}} ደቂቃ ቀርቷል",

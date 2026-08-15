@@ -1081,24 +1081,8 @@ msgid "Create Report"
 msgstr "Lumikha ng Ulat"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Listahan ng Deposito"
-
-#: 
 msgid "Deposits"
 msgstr "Mga Deposito"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Burahin ang mga Napiling Row"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "I-export ang mga Napiling Row (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "I-export ang mga Napiling Row (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1245,18 +1229,6 @@ msgid "Type of Group"
 msgstr "Uri ng Grupo"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Mga Papel ng Miyembro ng Grupo"
-
-#: 
-msgid "Clone roles"
-msgstr "Kopyahin ang mga papel"
-
-#: 
-msgid "from group"
-msgstr "mula sa grupo"
-
-#: 
 msgid "Select a group"
 msgstr "Pumili ng grupo"
 
@@ -1267,10 +1239,6 @@ msgstr "Mga Katangiang Tukoy sa Grupo"
 #: 
 msgid "Enabled"
 msgstr "Pinagana"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "I-edit ang Form ng mga Katangiang Tukoy sa Grupo"
 
 #: 
 msgid "Disabled"
@@ -1323,14 +1291,6 @@ msgstr "Editor ng Form ng mga Katangiang Tukoy sa Grupo"
 #: 
 msgid "No properties have been added yet"
 msgstr "Wala pang mga katangiang naidagdag"
-
-#: 
-msgid "Show in"
-msgstr "Ipakita sa"
-
-#: 
-msgid "Person View"
-msgstr "View ng Tao"
 
 #: 
 msgid "Other Email"
@@ -1653,16 +1613,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Ang numero ng tseke ay hindi wasto para sa pagbabayad na 'CASH'"
 
 #: 
-msgid "Deposit closed"
-msgstr "Deposito ay sarado na"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Iskedyul ng Pagbabayad"
-
-#: 
-msgid "Select Schedule"
-msgstr "Pumili ng Iskedyul"
 
 #: 
 msgid "Weekly"
@@ -1685,28 +1637,8 @@ msgid "Other"
 msgstr "Iba pa"
 
 #: 
-msgid "Payment by"
-msgstr "Pagbabayad ni"
-
-#: 
-msgid "Scan check"
-msgstr "I-scan ang tseke"
-
-#: 
-msgid "find family from check account #"
-msgstr "hanapin ang pamilya mula sa check account #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Itakda ang default na numero ng check account para sa pamilya"
-
-#: 
 msgid "Fund Name"
 msgstr "Pangalan ng Pondo"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Halagang hindi mababawas"
 
 #: 
 msgid "Age"
@@ -2559,10 +2491,6 @@ msgid "Groups"
 msgstr "Mga Grupo"
 
 #: 
-msgid "Total $"
-msgstr "Kabuuan $"
-
-#: 
 msgid "with this property..."
 msgstr "na may katangiang ito..."
 
@@ -2687,10 +2615,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Pumirma sa ulat ng kumpirmasyon at pagwawasto ng impormasyon ng database"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Teksto para sa ulat ng buod ng pangako"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Teksto para sa ulat ng direktoryo"
 
@@ -2754,11 +2678,6 @@ msgstr "Mga Uri ng Katangian"
 #: 
 msgid "Zip Code"
 msgstr "Zip Code"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Larangan"
 
 #. Context: query_qry
 #: 
@@ -4892,10 +4811,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Itakda ang sistema ng encryption na gagamitin - ssl (deprecated) o tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Gumawa ng Deposit Slip para sa mga Napiling Row (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Idagdag ang Lahat sa Cart"
 
@@ -5187,10 +5102,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Error sa pagpapadala ng email(s)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Pakitingnan ang mga log para sa karagdagang impormasyon"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5582,10 +5493,6 @@ msgid "Add Group"
 msgstr "Magdagdag ng Grupo"
 
 #: 
-msgid "Back to Group List"
-msgstr "Bumalik sa Listahan ng Grupo"
-
-#: 
 msgid "Edit Group"
 msgstr "I-edit ang Grupo"
 
@@ -5818,10 +5725,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Magdagdag ng anumang karagdagang tala tungkol sa depositong ito"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Ang halaga ay lumagpas sa pinakamataas na pinapayagang halaga (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Mga Tseke"
 
@@ -5848,10 +5751,6 @@ msgstr "Walang Cash"
 #: 
 msgid "No Checks"
 msgstr "Walang mga Tseke"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Ang halagang hindi mababawas ay lumagpas sa pinakamataas na pinapayagang halaga (999999.99)."
 
 #: 
 msgid "Payments"
@@ -6464,10 +6363,6 @@ msgid "%d missing role"
 msgstr "%d nawawalang papel"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Ang isang pagbabayad ay isang aktwal na natanggap na donasyon. Ito ay idadagdag sa kasalukuyang deposito."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Ang isang pangako ay isang pangakong magbigay. Hindi ito nakatali sa isang deposit slip."
 
@@ -6764,10 +6659,6 @@ msgid "Name & Identity"
 msgstr "Pangalan at Pagkakakilanlan"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Isang Bagong Deposito ang Malilikha"
-
-#: 
 msgid "New Payment"
 msgstr "Bagong Pagbabayad"
 
@@ -6886,10 +6777,6 @@ msgstr "Ilang mga kinakailangan ng aplikasyon ay hindi natutugunan"
 #: 
 msgid "State (Other)"
 msgstr "Estado (Iba pa)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Buod ng mga pangako kumpara sa mga pagbabayad ayon sa pondo para sa taong piskal."
 
 #: 
 msgid "System Health"
@@ -7382,10 +7269,6 @@ msgstr "Ilipat pataas"
 #: 
 msgid "Order"
 msgstr "Ayos"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "Matagumpay na na-email ang mga PDF sa %s pamilya."
 
 #: 
 msgid "Percentage"
@@ -8871,10 +8754,6 @@ msgid "Account Recovery"
 msgstr "Pagbawi ng Account"
 
 #: 
-msgid "Add Family"
-msgstr "Magdagdag ng Pamilya"
-
-#: 
 msgid "Add First Family"
 msgstr "Magdagdag ng Unang Pamilya"
 
@@ -8893,10 +8772,6 @@ msgstr "Magdagdag ng Tala"
 #: 
 msgid "Add People to the Family"
 msgstr "Magdagdag ng mga Tao sa Pamilya"
-
-#: 
-msgid "Add Person"
-msgstr "Magdagdag ng Tao"
 
 #: 
 msgid "Add Students to Cart"
@@ -9275,10 +9150,6 @@ msgid "Delete Person"
 msgstr "Burahin ang Tao"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Burahin ang Pangako"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Ang pagbubura ng katangiang ito ay mag-aalis din ng lahat ng mga takda nito mula sa anumang mga rekord ng Tao, Pamilya, o Grupo."
 
@@ -9441,10 +9312,6 @@ msgstr "FY %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Ang mga pamilya ay nagbabahagi ng address at numero ng telepono."
-
-#: 
-msgid "Family List"
-msgstr "Listahan ng Pamilya"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9643,10 +9510,6 @@ msgid "Letters and Labels"
 msgstr "Mga Sulat at Mga Label"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Ilista ang mga pamilyang nilikha sa pamamagitan ng sariling pagpaparehistro"
-
-#: 
 msgid "Load demo data"
 msgstr "Mag-load ng demo data"
 
@@ -9755,10 +9618,6 @@ msgid "Minimum"
 msgstr "Minimum"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Baguhin ang mga papel sa pamilya para sa mga miyembro ng grupo"
-
-#: 
 msgid "Move to Group"
 msgstr "Ilipat sa Grupo"
 
@@ -9785,10 +9644,6 @@ msgstr "Bago"
 #: 
 msgid "New Family"
 msgstr "Bagong Pamilya"
-
-#: 
-msgid "New Group"
-msgstr "Bagong Grupo"
 
 #: 
 msgid "New Person"
@@ -9903,10 +9758,6 @@ msgstr "Pagbawi ng Password"
 #: 
 msgid "Past & next 7 days"
 msgstr "Nakaraan at susunod na 7 araw"
-
-#: 
-msgid "People List"
-msgstr "Listahan ng mga Tao"
 
 #: 
 msgid "People by Classification"
@@ -10061,10 +9912,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Maghanap sa mga tao, pamilya, grupo, address, at higit pa."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Maghanap at tingnan ang mga rekord ng deposit slip"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Maghanap ng mga tao, pamilya, grupo..."
 
@@ -10087,10 +9934,6 @@ msgstr "Pumili ng backup file at i-click ang I-restore ang Database."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Piliin ang iyong mga opsyon sa itaas at i-click ang isang backup button."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Ulat ng Sariling Pagpaparehistro"
 
 #: 
 msgid "Send email to families"
@@ -10653,11 +10496,6 @@ msgstr "Mga Default na Address"
 msgid "Allow user to add new event"
 msgstr "Payagan ang user na magdagdag ng bagong kaganapan"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Petsa ng Simula"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Mga Setting ng Kalendaryo"
@@ -10726,11 +10564,6 @@ msgstr "Kopyahin sa clipboard"
 msgid "Custom field"
 msgstr "Pasadyang larangan"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "PasadyangPaghahanap"
-
 #: 
 msgid "Default Country"
 msgstr "Default na Bansa"
@@ -10767,16 +10600,6 @@ msgstr "Ang mga listahan ng email ay naka-sync sa Mailchimp."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Paganahin ang email sa panel ng mga setting sa ibaba, pagkatapos ay i-configure ang iyong SMTP server."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Petsa ng Pagtatapos"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Ipasok ang anumang bahagi ng sumusunod: Pangalan, Lungsod, Estado, Zip, Telepono sa Bahay, Email, o Work Email."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "Hindi Pinagana ang External Calendar API"
@@ -10802,11 +10625,6 @@ msgstr "Halaga ng larangan"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Hanapin ang mga taong nangako ng isang taon ngunit hindi ng isa pa"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Hanapin ang mga tao na may pasadyang halaga ng larangan"
 
 #. Context: query_qry
 #: 
@@ -10870,11 +10688,6 @@ msgstr "Itugma ang pasadyang larangan sa halagang ito"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Pinakamataas na Edad"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Miyembro, Regular na Dumadalo, atbp."
 
@@ -10887,11 +10700,6 @@ msgstr "Mga miyembrong sumali sa isang partikular na buwan"
 #: 
 msgid "Membership anniversaries"
 msgstr "Mga anibersaryo ng pagiging miyembro"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Pinakamaliit na Edad"
 
 #. Context: query_qry
 #: 
@@ -10965,16 +10773,6 @@ msgstr "Katangian ng tao na ginagamit upang ibukod ang mga miyembro mula sa mga 
 msgid "Person property used to exclude members from email lists"
 msgstr "Katangian ng tao na ginagamit upang ibukod ang mga miyembro mula sa mga listahan ng email"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Pakipasok ang huling petsa para kalkulahin ang kabuuang mga kontribusyon para sa bawat miyembro (hal. YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Pakipili ang petsa ng simula para kalkulahin ang kabuuang mga kontribusyon para sa bawat miyembro (hal. YYYY-MM-DD). TANDAAN: Maaari ka lamang pumili ng mga petsa na naglalaman ng mga donasyon."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11023,11 +10821,6 @@ msgstr "Hindi Na-configure ang SMTP"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Maghanap"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Pangalawang Taong Piskal"
 
@@ -11040,16 +10833,6 @@ msgstr "Pangalawang taong piskal para sa paghahambing"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Pangalawang pagpipilian ng pagkakataon bilang boluntaryo"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Pumili ng larangan para hanapin."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Piliin ang gustong papel sa pamilya."
 
 #: 
 msgid "Send text message"
@@ -11090,38 +10873,13 @@ msgstr "Ang buwan ng kaarawan kung saan gusto mong ibalik ang mga rekord."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Ang gustong kasarian para hanapin sa database."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Ang kasarian kung saan gusto mong ibalik ang mga rekord."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Ang pinakamataas na edad kung saan gusto mong ibalik ang mga rekord."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Ang buwan ng anibersaryo ng pagiging miyembro kung saan gusto mong ibalik ang mga rekord."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Ang pinakamaliit na edad kung saan gusto mong ibalik ang mga rekord."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Ang katangian kung saan gusto mong ibalik ang mga rekord ng tao."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Ang klase ng paaralan ng linggo kung saan gusto mong ibalik ang mga rekord."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11157,11 +10915,6 @@ msgstr "Hindi Na-configure ang Vonage SMS"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Nang walang Vonage, ang mga aksyon ng text ay magbubukas ng native SMS app ng iyong device o kokopyahin ang mga numero ng telepono sa clipboard."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "EmailSaTrabaho"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11483,10 +11236,6 @@ msgstr "Mga Tampok"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Mga ID ng query ng pahintulot sa pananalapi"
-
-#: 
-msgid "Find family"
-msgstr "Hanapin ang pamilya"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -12136,10 +11885,6 @@ msgstr "Baguhin ang Larawan"
 #: 
 msgid "Changes will not take effect until next logon."
 msgstr "Hindi magkakabisa ang mga pagbabago hanggang sa susunod na pag-login."
-
-#: 
-msgid "Choose between light and dark color scheme"
-msgstr "Pumili sa pagitan ng maliwanag at madilim na color scheme"
 
 #: 
 msgid "Customize the look and feel of the application"
@@ -12898,10 +12643,6 @@ msgid "Church information saved, but the address could not be auto-located. Plea
 msgstr "Na-save ang impormasyon ng simbahan, ngunit hindi awtomatikong natukoy ang address. Mangyaring ipasok ang latitude at longitude nang manu-mano sa ilalim ng Mga Koordinado ng Mapa."
 
 #: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Ang mga koordinado ay awtomatikong natutukoy mula sa iyong address kapag na-save (sa pamamagitan ng OpenStreetMap). Maaari mo rin itong ipasok nang manu-mano sa ibaba — ang mga manu-manong halaga ay palaging nangunguna kaysa sa awtomatikong pagtukoy. Iwanang blangko ang pareho para hayaan ang sistema na mag-geocode mula sa address."
-
-#: 
 msgid "Latitude must be a number between -90 and 90."
 msgstr "Ang latitude ay dapat na numero sa pagitan ng -90 at 90."
 
@@ -13589,10 +13330,6 @@ msgstr "Mag-upload ng CSV para gumawa ng mga pamilya at tao nang sabay-sabay."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "May duplicate na column names ang iyong CSV. Palitan ang pangalan ng mga duplicate column (hal. magdagdag ng \"(2)\" sa pangalawa) at mag-upload muli."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Hindi wastong security token. Mangyaring subukan muli."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13624,10 +13361,6 @@ msgstr "Mga Pista Opisyal (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Ang mga pista opisyal ay inuri ayon sa uri: Opisyal, Paggunita, Pista ng mga Bangko, Pana-panahon, at Relihiyoso. Iwanang walang napili ang lahat ng kategorya upang ipakita ang bawat pista opisyal, o pumili ng mga tiyak na uri upang paliit ang display."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Nawawalang identifier ng pangako sa pananalapi."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -14166,10 +13899,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Sigurado ka bang gusto mong magpatuloy?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Sigurado ka bang gusto mong burahin ang depositong ito?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Sigurado ka bang gusto mong burahin ang uri ng kaganapan na ito? Hindi ito maaaring ibalik."
 
@@ -14420,10 +14149,6 @@ msgstr "Ang demo na datos ay karaniwang inilalagay lamang sa mga bagong instalas
 #: 
 msgid "Deposit ID"
 msgstr "ID ng Deposito"
-
-#: 
-msgid "Deposit Total"
-msgstr "Kabuuan ng Deposito"
 
 #: 
 msgid "Deposit Value"
@@ -16733,10 +16458,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s ng pamilyang %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "%d pang mga entry ang maaaring magkasya."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "%d rekord ang ibinalik"
 
@@ -16835,10 +16556,6 @@ msgstr "Pinakamababang Kabuuang Halaga"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Pinakamababang bid na $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Bagong Bayad - %1$s Deposito # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17243,4 +16960,680 @@ msgstr "Suriin ang mga bagong nag-sign up mula sa iyong pampublikong form sa iba
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Kumpirmasyon ng Pagbubura ng Pagkakataon para sa Boluntaryo"
+
+#: 
+msgid "# Payments"
+msgstr "# ng mga Bayad"
+
+#: 
+msgid "# Pledges"
+msgstr "# ng mga Pangako"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Ang isang bayad ay isang totoong donasyon na natanggap. Idadagdag ito sa napiling deposito."
+
+#: 
+msgid "Add Fund"
+msgstr "Magdagdag ng Pondo"
+
+#: 
+msgid "Amount ($)"
+msgstr "Halaga ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Ang halaga ay lumagpas sa pinakamataas na pinapayagan (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Nagkaroon ng error habang sine-save. Pakisubukan muli."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonymous na Telemetry"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Antas ng anonymous na telemetry. Kinokontrol kung gaano karaming anonymous na diagnostic na datos ang ibinabahagi sa koponan ng ChurchCRM. Walang pangalan ng simbahan, datos ng miyembro, o personal na impormasyon ang ipinapadala."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Sigurado ka bang gusto mong permanenteng burahin ang rekord ng bayad na ito?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Kailangan ng hindi bababa sa isang paglaan ng pondo"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Hindi bababa sa isang pondo ang dapat may halagang hindi zero"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Awtomatikong magpadala ng email na pagbati sa kaarawan sa mga tao sa kanilang kaarawan"
+
+#: 
+msgid "Back to Finance"
+msgstr "Bumalik sa Pananalapi"
+
+#: 
+msgid "Back to Group"
+msgstr "Bumalik sa Grupo"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Hindi maihanda ang query."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Hulihin ang mga JS error"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Hulihin ang mga paulit-ulit na error"
+
+#: 
+msgid "Check #"
+msgstr "Tseke #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Pangalan ng simbahan, address, o mga detalye ng pakikipag-ugnayan"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Bersyon ng ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Antas ng koleksyon"
+
+#: 
+msgid "Count unique installs"
+msgstr "Bilangin ang mga natatanging pag-install"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Ang Data ay pinoproseso ng PostHog sa imprastraktura ng EU."
+
+#: 
+msgid "Date is required"
+msgstr "Kailangan ang petsa"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Matagumpay na nabura"
+
+#: 
+msgid "Deposit #"
+msgstr "Deposito #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Resibo ng Deposito"
+
+#: 
+msgid "Edit Pledge"
+msgstr "I-edit ang Pangako"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "I-edit ang umiiral na pangako o bayad"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Ine-edit ang isang Bayad"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Ine-edit ang isang Pangako"
+
+#: 
+msgid "Enable (full)"
+msgstr "I-enable (buo)"
+
+#: 
+msgid "Errors only"
+msgstr "Mga error lamang"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Mga Error — mga error sa server at JS exceptions"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Nabigo sa paglikha ng pangako"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Nabigo sa pagbura ng pangako"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Nabigo sa pag-encode ng tugon sa bayad"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Nabigo sa pagkuha ng pangako"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Nabigo sa pag-update ng pangako"
+
+#: 
+msgid "Family is required"
+msgstr "Kailangan ang pamilya"
+
+#: 
+msgid "Financial data"
+msgstr "Datos ng pananalapi"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Buo — lahat ng nasa itaas kasama ang mga page view"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Buo — mga page view, babala, error, at JS exceptions"
+
+#: 
+msgid "Fund Summary"
+msgstr "Buod ng Pondo"
+
+#: 
+msgid "Group key is required"
+msgstr "Kailangan ang susi ng grupo"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Maligayang Kaarawan"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Tumulong sa pagpapabuti ng ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Mga IP address"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID ng Pag-install"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktibong buod ng mga pangako kumpara sa mga bayad ayon sa pondo na may pag-uuri, paghahanap, at pag-export."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Panloob: huling petsa na naipadala ang mga email sa kaarawan (YYYY-MM-DD). Huwag i-edit nang manu-mano."
+
+#: 
+msgid "JS exceptions"
+msgstr "Mga JS exception"
+
+#: 
+msgid "Log level + message"
+msgstr "Antas ng log + mensahe"
+
+#: 
+msgid "Member or family records"
+msgstr "Mga rekord ng miyembro o pamilya"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Baguhin ang papel ng miyembro ng grupong ito"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Error sa network, pakisubukan muli"
+
+#: 
+msgid "Never sent"
+msgstr "Hindi pa naipadala"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Walang deposito / lumikha ng bagong deposito"
+
+#: 
+msgid "No pledge"
+msgstr "Walang pangako"
+
+#: 
+msgid "No thanks"
+msgstr "Hindi na salamat"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Hindi Mababawas"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Hindi Mababawas ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Ang halagang hindi mababawas ay hindi maaaring lumampas sa halaga ng pondo"
+
+#: 
+msgid "None (disabled)"
+msgstr "Wala (hindi pinagana)"
+
+#: 
+msgid "OS family"
+msgstr "Pamilya ng OS"
+
+#: 
+msgid "Overpaid"
+msgstr "Sobrang Bayad"
+
+#: 
+msgid "PHP version"
+msgstr "Bersyon ng PHP"
+
+#: 
+msgid "Page route"
+msgstr "Ruta ng pahina"
+
+#: 
+msgid "Payment Details"
+msgstr "Mga Detalye ng Bayad"
+
+#: 
+msgid "Payment Method"
+msgstr "Paraan ng Bayad"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Planuhin ang suporta sa runtime"
+
+#: 
+msgid "Please enter a date"
+msgstr "Mangyaring magpasok ng petsa"
+
+#: 
+msgid "Please select a family"
+msgstr "Mangyaring pumili ng pamilya"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Mangyaring pumili ng pondo para sa lahat ng row"
+
+#: 
+msgid "Pledge Details"
+msgstr "Mga Detalye ng Pangako"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Hindi nahanap ang grupo ng pangako"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Mga Pangako at Bayad"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Unahin ang mga pagsasalin"
+
+#: 
+msgid "Purpose"
+msgstr "Layunin"
+
+#: 
+msgid "Save and Add Another"
+msgstr "I-save at Magdagdag ng Isa Pa"
+
+#: 
+msgid "Save failed"
+msgstr "Nabigo ang pag-save"
+
+#: 
+msgid "Saved successfully"
+msgstr "Matagumpay na na-save"
+
+#: 
+msgid "Select a fund"
+msgstr "Pumili ng pondo"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Magpadala ng Test na Email sa Kaarawan sa Aking Sarili"
+
+#: 
+msgid "Sending to"
+msgstr "Ipinapadala sa"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Ibahagi ang anonymous na mga istatistika ng paggamit sa koponan ng ChurchCRM upang malaman namin kung aling mga tampok at wika ang uunahin. Walang pangalan ng simbahan, datos ng miyembro, o personal na impormasyon ang ipinapadala."
+
+#: 
+msgid "Test email sent to"
+msgstr "Naipadala ang test na email sa"
+
+#: 
+msgid "Track adoption"
+msgstr "Subaybayan ang paggamit"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Ang uri ay dapat na 'Pangako' o 'Bayad'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "Mga URL na may query string (ang mga ID ng rekord ay tinatanggal)"
+
+#: 
+msgid "Underpaid"
+msgstr "Kulang ang Bayad"
+
+#: 
+msgid "Understand deployments"
+msgstr "Unawain ang mga deployment"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Unawain ang paggamit ng mga tampok"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Mga pangalan ng gumagamit, email, o mga papel"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Tingnan ang mga detalye ng pangako o bayad"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Mga Babala — mga babala, error, at JS exceptions"
+
+#: 
+msgid "What is sent"
+msgstr "Ano ang ipinapadala"
+
+#: 
+msgid "What we collect"
+msgstr "Ano ang aming kinokolekta"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Binabati kita sa iyong %d taong kaarawan!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Binabati kita sa iyong magandang kaarawan!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Ang iyong account ay walang email address na naka-file. Magdagdag ng isa sa iyong profile upang magpadala ng test."
+
+#: 
+msgid "errors+"
+msgstr "mga error+"
+
+#: 
+msgid "full only"
+msgstr "buo lamang"
+
+#: 
+msgid "is thinking of you today."
+msgstr "nag-iisip sa iyo ngayon."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "mga ruta ng pahina, aktibong lokal, bersyon ng CRM, bersyon ng PHP, pamilya ng OS, at isang random na ID ng pag-install. Wala nang iba. Ang data ay nakaimbak sa EU."
+
+#: 
+msgid "% Paid"
+msgstr "% Nabayaran"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Pakipatunayan ang impormasyon ng inyong pamilya"
+
+#: 
+msgid "Add Role"
+msgstr "Magdagdag ng Papel"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Magdagdag ng mga custom na katangian para sa grupong ito"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Nabago ang address mula nang itakda ang mga coordinate."
+
+#: 
+msgid "All Tellers"
+msgstr "Lahat ng Teller"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Nabigo ang lahat ng pagpapadala ng email. Pakisuri ang iyong mga setting ng SMTP sa Mga Setting ng System."
+
+#: 
+msgid "Amount Max"
+msgstr "Pinakamataas na Halaga"
+
+#: 
+msgid "Amount Min"
+msgstr "Pinakamababang Halaga"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Nagkaroon ng hindi inaasahang error habang nagpapadala ng mga email. Pakisuri ang iyong mga setting ng SMTP at mga log ng server."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Sigurado ka bang gusto mong alisin ang papel na '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Awtomatiko"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Sinusundan ng Awtomatiko ang setting ng iyong OS o browser; ang Light at Dark ay nangangibabaw nito"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Bumalik sa Pledge Dashboard"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "I-click ang \"Bumuo ng mga Coordinate\" upang hanapin ang lokasyon ng mapa para sa address sa itaas, o manu-manong ilagay ang latitude/longitude. Kung iniwan na blangko, awtomatiko ring makikita ang mga coordinate kapag nai-save mo ang form."
+
+#: 
+msgid "Contributor"
+msgstr "Nagbibigay"
+
+#: 
+msgid "Contributors"
+msgstr "Mga Nagbibigay"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Hindi mahanap ang mga coordinate para sa address na iyon. Subukang ilagay ang mga ito nang manu-mano."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Mga custom na katangian para sa grupong ito"
+
+#: 
+msgid "Delete role"
+msgstr "Tanggalin ang papel"
+
+#: 
+msgid "Email Error"
+msgstr "Error sa Email"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Hindi na-configure ang email. Pakiayos ang mga setting ng SMTP sa Mga Setting ng System."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Maglagay muna ng address ng kalye."
+
+#: 
+msgid "Enter role name"
+msgstr "Ilagay ang pangalan ng papel"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Nabigo ang paglikha ng deposito"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Nabigo ang pag-load ng preview ng email"
+
+#: 
+msgid "From Date"
+msgstr "Mula sa Petsa"
+
+#: 
+msgid "Fund Total"
+msgstr "Kabuuang Pondo"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Buod ng pangako ng nagbibigay sa pondo ayon sa taong piskal"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Naka-disable ang fundraiser"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Bumuo ng mga Coordinate"
+
+#: 
+msgid "Generating..."
+msgstr "Bumubuo..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Nabigo ang kahilingan sa geocoding. Pakisubukan muli."
+
+#: 
+msgid "Manage Events"
+msgstr "Pamahalaan ang mga Kaganapan"
+
+#: 
+msgid "New Deposit"
+msgstr "Bagong Deposito"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Walang nahanap na nagbibigay para sa pondong ito sa napiling taong piskal"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Walang nahanap na mga pamilyang may email address. Walang naipadala."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Walang nahanap na mga bayad para sa mga napiling deposito"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Walang ibinigay na mga wastong deposit ID"
+
+#: 
+msgid "Partial Send"
+msgstr "Bahagyang Pagpapadala"
+
+#: 
+msgid "Payments only"
+msgstr "Mga bayad lamang"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Halagang Ipinangako"
+
+#: 
+msgid "Retry"
+msgstr "Subukan Muli"
+
+#: 
+msgid "Search"
+msgstr "Maghanap"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Maghanap at pamahalaan ang mga rekord ng resibo ng deposito"
+
+#: 
+msgid "Select All"
+msgstr "Piliin Lahat"
+
+#: 
+msgid "Send Emails"
+msgstr "Magpadala ng mga Email"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Magpadala ng mga Email sa Pag-verify ng Pamilya"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Naipadala ang %1$d sa %2$d — %3$d na mga pamilya ang hindi maabot."
+
+#: 
+msgid "Show in Profile"
+msgstr "Ipakita sa Profile"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Ipinapakita ang kabuuan para sa napiling pondo lamang"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Ito ang tanging papel sa grupong ito."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Hindi maaaring tanggalin ang papel na ito."
+
+#: 
+msgid "To Date"
+msgstr "Hanggang Petsa"
+
+#: 
+msgid "Total Pledged"
+msgstr "Kabuuang Ipinangako"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Hindi inaasahang error habang nagpapadala ng mga email. Pakisuri ang mga log."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Ginagamit ang iyong address ng kalye sa itaas upang hanapin ang mga coordinate sa pamamagitan ng OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Tingnan ang Bayad"
+
+#: 
+msgid "View Pledge"
+msgstr "Tingnan ang Pangako"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Kapag napili, ipapakita ang katangiang ito kasama ng grupo sa listahan ng grupo ng tao sa kanilang pahina ng profile."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Pangalan ng Pamilya]"
+
+#: 
+msgid "row selected"
+msgstr "row na napili"
+
+#: 
+msgid "rows selected"
+msgstr "mga row na napili"
 

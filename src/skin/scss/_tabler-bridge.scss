@@ -25,9 +25,9 @@
 }
 
 // --- DataTables — Tabler skin ----------------------------------------
-.dataTables_wrapper {
-  .dataTables_filter input,
-  .dataTables_length select {
+.dt-container {
+  .dt-search input,
+  .dt-length select {
     border: 1px solid var(--tblr-border-color);
     border-radius: var(--tblr-border-radius);
     padding: 0.375rem 0.75rem;
@@ -217,7 +217,7 @@ select {
   }
 
   // DataTables: compact layout on mobile
-  .dataTables_wrapper {
+  .dt-container {
     .dt-layout-row {
       flex-direction: column;
       gap: 0.5rem;

@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
@@ -267,6 +268,15 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/verify', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
+
+        if (!SystemConfig::isEmailEnabled()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Email is not configured. Please configure SMTP settings in System Settings.'),
+                [],
+                400
+            );
+        }
 
         try {
             $family->sendVerifyEmail();

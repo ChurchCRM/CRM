@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
 
 describe("Query List Page", () => {
-    beforeEach(() => cy.setupStandardSession());
+    // QueryList.php and QueryView.php are now admin-only (GHSA-6rgg-mrx3-92w7)
+    beforeEach(() => cy.setupAdminSession());
 
     it("loads query listing without errors", () => {
         cy.visit("QueryList.php");

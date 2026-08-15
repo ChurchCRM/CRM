@@ -2,6 +2,20 @@
   "Important": "Important",
   "Major": "Major",
   "Catalog": "Catalog",
+  "Auto": "Auto",
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "one": "E-mail trimis către %d familie.",
+    "few": "E-mail trimis către %d familii.",
+    "other": "E-mail trimis către %d de familii."
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF-ul a fost trimis cu succes prin e-mail către %d familie.",
+    "few": "PDF-ul a fost trimis cu succes prin e-mail către %d familii.",
+    "other": "PDF-ul a fost trimis cu succes prin e-mail către %d de familii."
+  },
   "Copied {{count}} members": {
     "one": "A fost copiat {{count}} membru",
     "other": "Au fost copiați {{count}} membri"
@@ -15,7 +29,7 @@
     "other": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți Copiați adresele în schimb."
   },
   "{{count}} min left": {
-    "one": "{{count}} minut rămas",
-    "other": "{{count}} minute rămase"
+    "one": "A mai rămas {{count}} minut",
+    "other": "Au mai rămas {{count}} minute"
   }
 }

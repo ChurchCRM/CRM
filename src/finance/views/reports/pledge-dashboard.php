@@ -17,7 +17,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="mb-3 mb-0">
                 <label for="fyid" class="fw-bold"><?= gettext('Fiscal Year') ?></label>
                 <form method="GET" class="d-inline">
-                    <select name="fyid" id="fyid" class="form-select d-inline-block" style="width: auto;" onchange="this.form.submit();">
+                    <select name="fyid" id="fyid" class="form-select d-inline-block" style="width: auto;">
                         <?php foreach ($availableYears as $year): ?>
                             <option value="<?= $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
                                 <?= InputUtils::escapeHTML($year['label']) ?>
@@ -141,7 +141,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <tbody>
                     <?php foreach ($fundTotals as $fundTotal): ?>
                         <tr>
-                            <td><?= InputUtils::escapeHTML($fundTotal['fund_name']) ?></td>
+                            <td>
+                                <?php if ((int) $fundTotal['fund_id'] > 0): ?>
+                                    <a class="fund-summary-link"
+                                       data-fund-id="<?= (int) $fundTotal['fund_id'] ?>"
+                                       href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/finance/fund/<?= (int) $fundTotal['fund_id'] ?>/contributors?fyid=<?= (int) $selectedFyid ?>">
+                                        <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
+                                    </a>
+                                <?php else: ?>
+                                    <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
+                                <?php endif; ?>
+                            </td>
                             <td class="text-end" data-order="<?= InputUtils::escapeAttribute($fundTotal['total_pledged']) ?>">
                                 <?= CurrencyFormatter::formatHtml($fundTotal['total_pledged']) ?>
                             </td>
@@ -272,6 +282,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.addEventListener('DOMContentLoaded', function () {
+    // Fiscal year selector: submit the form when the selection changes
+    var fyidDashboard = document.getElementById('fyid');
+    if (fyidDashboard) {
+        fyidDashboard.addEventListener('change', function () {
+            this.closest('form').submit();
+        });
+    }
+
     // Currency config for footerCallback — mirrors PHP CurrencyFormatter::format()
     var _crmCur = {
         sym: <?= json_encode(CurrencyFormatter::symbol()) ?>,

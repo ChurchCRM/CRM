@@ -16,6 +16,7 @@ use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Service\AuthService;
@@ -65,7 +66,9 @@ class FinancialService
             $newRow['FormattedFY'] = $row->getFormattedFY();
             $newRow['GroupKey'] = $row->getGroupKey();
             $newRow['Amount'] = $row->getAmount();
+            $newRow['Amount_formatted'] = CurrencyFormatter::format($row->getAmount());
             $newRow['Nondeductible'] = $row->getNondeductible();
+            $newRow['Nondeductible_formatted'] = CurrencyFormatter::format($row->getNondeductible());
             $newRow['Schedule'] = $row->getSchedule();
             $newRow['Method'] = $row->getMethod();
             $newRow['Comment'] = InputUtils::sanitizeAndEscapeText($row->getComment() ?? '');
@@ -226,15 +229,18 @@ class FinancialService
             $total += $amount;
 
             $funds[] = [
-                'fundId'       => (int) $pledge->getFundId(),
-                'fundName'     => $fund ? $fund->getName() : '',
-                'amount'       => $amount,
-                'nonDeductible' => (float) $pledge->getNondeductible(),
-                'comment'      => $pledge->getComment() ?? '',
+                'fundId'               => (int) $pledge->getFundId(),
+                'fundName'             => $fund ? $fund->getName() : '',
+                'amount'               => $amount,
+                'amount_formatted'     => CurrencyFormatter::format($amount),
+                'nonDeductible'        => (float) $pledge->getNondeductible(),
+                'nonDeductible_formatted' => CurrencyFormatter::format($pledge->getNondeductible()),
+                'comment'              => $pledge->getComment() ?? '',
             ];
         }
 
         $header['total'] = $total;
+        $header['total_formatted'] = CurrencyFormatter::format($total);
         $header['funds'] = $funds;
 
         return $header;
@@ -538,7 +544,9 @@ class FinancialService
             $fund = [];
             $fund['FundID'] = $row->getFundId();
             $fund['Amount'] = $row->getAmount();
+            $fund['amount_formatted'] = CurrencyFormatter::format($row->getAmount());
             $fund['NonDeductible'] = $row->getNondeductible();
+            $fund['nonDeductible_formatted'] = CurrencyFormatter::format($row->getNondeductible());
             $fund['Comment'] = $row->getComment();
             $payment->funds[] = $fund;
             $total += $row->getAmount();
@@ -549,41 +557,13 @@ class FinancialService
         }
         $payment->GroupKey = $GroupKey;
         $payment->total = $total;
+        $payment->total_formatted = CurrencyFormatter::format($total);
 
         return json_encode($payment, JSON_THROW_ON_ERROR);
     }
 
     public function getDepositPDF($depID): void
     {
-    }
-
-    public function getDepositCSV(string $depID): \stdClass
-    {
-        AuthService::requireUserGroupMembership('bFinance');
-        $retstring = '';
-        $line = [];
-        $payments = $this->getPayments($depID);
-        if (count($payments) === 0) {
-            throw new \Exception('No Payments on this Deposit', 404);
-        }
-        foreach ($payments[0] as $key => $value) {
-            $line[] = $key;
-        }
-        $retstring = implode(',', $line) . "\n";
-        foreach ($payments as $payment) {
-            $line = [];
-            foreach ($payment as $value) {
-                $line[] = str_replace(',', '', $value);
-            }
-            $retstring .= implode(',', $line) . "\n";
-        }
-
-        $CSVReturn = new \stdClass();
-        $CSVReturn->content = $retstring;
-        // Export file
-        $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-' . $depID . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
-
-        return $CSVReturn;
     }
 
     public function getCurrencyTypeOnDeposit(string $currencyID, string $depositID)

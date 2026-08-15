@@ -59,6 +59,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         var btn = $(this);
         confirmDeleteField(btn.data('field-name'), btn.data('prop-id'), btn.data('field-id'));
     });
+
+    $(function () {
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
 </script>
 
 <form method="post" action="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form" name="GroupPropFormEditor">
@@ -142,7 +146,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <th><?= gettext('Name') ?></th>
                             <th><?= gettext('Description') ?></th>
                             <th><?= gettext('Special option') ?></th>
-                            <th class="text-center"><?= gettext('Show in') ?><br><?= gettext('Person View') ?></th>
+                            <th class="text-center">
+                                <?= gettext('Show in Profile') ?>
+                                <i class="fa-solid fa-circle-question text-body-secondary ms-1"
+                                   data-bs-toggle="tooltip"
+                                   title="<?= htmlspecialchars(gettext('When checked, this property will be displayed alongside the group in the person\'s group list on their profile page.'), ENT_QUOTES, 'UTF-8') ?>"
+                                ></i>
+                            </th>
                             <th class="no-export"><?= gettext('Actions') ?></th>
                         </tr>
                     </thead>
@@ -208,13 +218,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </table>
             </div>
         </div>
-        <div class="d-flex justify-content-center my-3">
+    <?php endif; ?>
+
+    <div class="d-flex justify-content-center gap-2 my-3">
+        <a href="<?= $sRootPath ?>/groups/view/<?= $iGroupID ?>" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-left me-1"></i>
+            <?= gettext('Back to Group') ?>
+        </a>
+        <?php if ($numRows !== 0): ?>
             <button type="submit" class="btn btn-primary" name="SaveChanges">
                 <i class="fa-solid fa-floppy-disk"></i>
                 <?= gettext('Save Changes') ?>
             </button>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
+    </div>
 </form>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

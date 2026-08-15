@@ -119,6 +119,7 @@ function categoryId(string $category): string {
   </div>
 </div>
 
+
 <form name="SystemSettingsForm" method="post" action="SystemSettings.php">
 <div class="row g-4">
 
@@ -214,11 +215,19 @@ function categoryId(string $category): string {
                   <?php elseif ($setting->getType() === 'number' || $setting->getType() === 'date') : ?>
                     <input type="text" maxlength="15" class="form-control" name="new_value[<?= $setting->getName() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
 
-                  <?php elseif ($setting->getType() === 'boolean') : ?>
+                    <?php elseif ($setting->getType() === 'boolean') : ?>
                     <select name="new_value[<?= $setting->getName() ?>]" class="form-select choiceSelectBox">
-                      <option value="0" <?= !$setting->getValue() ? 'selected' : '' ?>><?= gettext('False') ?></option>
-                      <option value="1" <?= $setting->getValue() ? 'selected' : '' ?>><?= gettext('True') ?></option>
+                      <option value="0" <?= !$setting->getValue() ? 'selected' : '' ?>><?= gettext('No') ?></option>
+                      <option value="1" <?= $setting->getValue() ? 'selected' : '' ?>><?= gettext('Yes') ?></option>
                     </select>
+                    <?php if ($setting->getName() === 'bEnableBirthdayEmails') : ?>
+                      <div class="mt-2">
+                        <button type="button" class="btn btn-outline-primary btn-sm" id="sendTestBirthdayEmail">
+                          <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Send Test Birthday Email to Myself') ?>
+                        </button>
+                        <span id="birthdayEmailTestResult" class="ms-2 small"></span>
+                      </div>
+                    <?php endif; ?>
 
                   <?php elseif ($setting->getType() === 'json') : ?>
                     <input type="hidden" name="new_value[<?= $setting->getName() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
@@ -257,7 +266,7 @@ function categoryId(string $category): string {
                   if ($setting->getType() !== 'password') :
                       $display_default = $setting->getDefault();
                       if ($setting->getType() === 'boolean') {
-                          $display_default = $setting->getDefault() ? 'True' : 'False';
+                          $display_default = $setting->getDefault() ? 'Yes' : 'No';
                       }
                       echo InputUtils::escapeHTML($display_default);
                   endif; ?>

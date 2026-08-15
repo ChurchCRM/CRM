@@ -1,4 +1,15 @@
 {
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "one": "%d परिवार को ईमेल भेजा गया।",
+    "other": "%d परिवारों को ईमेल भेजा गया।"
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF सफलतापूर्वक %d परिवार को ईमेल किया गया।",
+    "other": "PDF सफलतापूर्वक %d परिवारों को ईमेल किया गया।"
+  },
   "Copied {{count}} members": {
     "one": "{{count}} सदस्य की प्रतिलिपि बनाई गई",
     "other": "{{count}} सदस्यों की प्रतिलिपि बनाई गई"

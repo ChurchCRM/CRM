@@ -81,9 +81,17 @@
     "scripts": ["/mysql/upgrade/7.5.1-remove-sMailtoDelimiter.sql"],
     "dbVersion": "7.5.1"
   },
-  "current": {
+  "pre-7.6.0": {
     "versions": ["7.5.1"],
-    "scripts": ["/mysql/upgrade/7.6.0-remove-orphaned-query-parameters.sql"],
+    "scripts": [
+      "/mysql/upgrade/7.6.0-remove-orphaned-query-parameters.sql",
+      "/mysql/upgrade/7.6.0-remove-legacy-custom-search-query.sql"
+    ],
     "dbVersion": "7.6.0"
+  },
+  "current": {
+    "versions": ["7.6.0"],
+    "scripts": ["/mysql/upgrade/7.6.1-add-anniversary-queries.sql"],
+    "dbVersion": "7.6.1"
   }
 }

@@ -71,11 +71,11 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                     // fetch avatar info and set photo/initials as appropriate.
                     echo '<img data-image-entity-type="person" data-image-entity-id="' . $Person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2" alt="" />';
                   ?>
-                  <a href="<?= $Person->getViewURI() ?>"><?= $Person->getFullName() ?></a>
+                  <a href="<?= $Person->getViewURI() ?>"><?= InputUtils::escapeHTML($Person->getFullName()) ?></a>
                 </div>
               </td>
-              <td><?= $Person->getAddress() ?></td>
-              <td><?= $Person->getEmail() ?></td>
+              <td><?= InputUtils::escapeHTML($Person->getAddress()) ?></td>
+              <td><?= InputUtils::escapeHTML($Person->getEmail()) ?></td>
               <td><?= $Person->getClassificationName() ?></td>
               <td><?= $Person->getFamilyRoleName() ?></td>
               <td>

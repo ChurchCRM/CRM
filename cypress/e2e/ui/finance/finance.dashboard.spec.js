@@ -45,8 +45,8 @@ describe("Finance Dashboard", () => {
 
         // Find and click the Create Deposit button
         cy.contains("a", "Create Deposit").click();
-        cy.url().should("contain", "FindDepositSlip.php");
-        cy.contains("Deposit Listing");
+        cy.url().should("contain", "/finance/deposit/search");
+        cy.contains("Deposits");
     });
 
     it("should navigate to reports page from Reports button", () => {
@@ -121,7 +121,7 @@ describe("Finance Dashboard", () => {
         cy.url().should("contain", "admin/system/church-info");
     });
 
-    it("should link deposits checklist to FindDepositSlip", () => {
+    it("should link deposits checklist to deposit search page", () => {
         cy.visit("/finance/");
 
         // Find the View button in the Close All Deposits row
@@ -131,7 +131,8 @@ describe("Finance Dashboard", () => {
             .contains("View")
             .click();
 
-        cy.url().should("contain", "FindDepositSlip.php");
+        cy.url().should("contain", "/finance/deposit/search");
+        cy.contains("Deposits");
     });
 });
 

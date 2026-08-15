@@ -8,20 +8,34 @@
   "Live Preview": "Live Preview",
   "Sell-through": "Sell-through",
   "BCC Mode": "BCC Mode",
+  "Data": "Data",
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "one": "Naipadala ang email sa %d pamilya.",
+    "other": "Naipadala ang email sa %d pamilya."
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "one": "Matagumpay na naipadala ang PDF sa %d pamilya.",
+    "other": "Matagumpay na naipadala ang PDF sa %d pamilya."
+  },
+  "Preview": "Preview",
+  "Teller": "Teller",
   "Copied {{count}} members": {
     "one": "Nakopya ang {{count}} miyembro",
-    "other": "Nakopya ang {{count}} na miyembro"
+    "other": "Nakopya ang {{count}} miyembro"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
     "one": "Ang listahang ito ay may {{count}} tatanggap — masyadong marami para sa isang mailto: link. Gamitin ang Kopyahin ang mga Address sa halip.",
-    "other": "Ang listahang ito ay may {{count}} na tatanggap — masyadong marami para sa isang mailto: link. Gamitin ang Kopyahin ang mga Address sa halip."
+    "other": "Ang listahang ito ay may {{count}} tatanggap — masyadong marami para sa isang mailto: link. Gamitin ang Kopyahin ang mga Address sa halip."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
     "one": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang mga Address sa halip.",
     "other": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang mga Address sa halip."
   },
   "{{count}} min left": {
-    "one": "{{count}} minuto na natitira",
-    "other": "{{count}} na minuto na natitira"
+    "one": "{{count}} min na natitira",
+    "other": "{{count}} min na natitira"
   }
 }

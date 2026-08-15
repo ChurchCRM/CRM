@@ -1094,25 +1094,9 @@ msgid "Create Report"
 msgstr "Δημιουργία αναφοράς"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Καταχώρηση Καταθέσεων"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Καταθέσεις"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Διαγραφή επιλεγμένων σειρών"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Εξαγωγή επιλεγμένων σειρών (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Εξαγωγή επιλεγμένων σειρών (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1264,18 +1248,6 @@ msgid "Type of Group"
 msgstr "Τύπος Ομάδας"
 
 #: 
-msgid "Group Member Roles"
-msgstr "Ρόλοι μελών της ομάδας"
-
-#: 
-msgid "Clone roles"
-msgstr "Ρόλοι κλώνων"
-
-#: 
-msgid "from group"
-msgstr "από την ομάδα"
-
-#: 
 msgid "Select a group"
 msgstr "Επιλέξτε μια ομάδα"
 
@@ -1287,10 +1259,6 @@ msgstr "Ειδικές ιδιότητες ομάδας"
 #: 
 msgid "Enabled"
 msgstr "Ενεργοποιήθηκε"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Επεξεργασία φόρμας ιδιοτήτων για συγκεκριμένες ομάδες"
 
 #: 
 msgid "Disabled"
@@ -1344,14 +1312,6 @@ msgstr "Επεξεργαστής φόρμας ιδιοτήτων για συγκ
 #: 
 msgid "No properties have been added yet"
 msgstr "Δεν έχουν προστεθεί ακόμη ιδιότητες"
-
-#: 
-msgid "Show in"
-msgstr "Εμφάνιση"
-
-#: 
-msgid "Person View"
-msgstr "Άποψη προσώπου"
 
 #: 
 msgid "Other Email"
@@ -1674,16 +1634,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Ο αριθμός επιταγής δεν ισχύει για πληρωμή «ΜΕΤΡΗΤΑ»."
 
 #: 
-msgid "Deposit closed"
-msgstr "Η κατάθεση έκλεισε"
-
-#: 
 msgid "Payment Schedule"
 msgstr "ΠΡΟΓΡΑΜΜΑ ΠΛΗΡΩΜΩΝ"
-
-#: 
-msgid "Select Schedule"
-msgstr "Επιλέξτε Χρονοδιάγραμμα"
 
 #: 
 msgid "Weekly"
@@ -1706,28 +1658,8 @@ msgid "Other"
 msgstr "Αλλα"
 
 #: 
-msgid "Payment by"
-msgstr "Πληρωμή από"
-
-#: 
-msgid "Scan check"
-msgstr "Έλεγχος σάρωσης"
-
-#: 
-msgid "find family from check account #"
-msgstr "εύρεση οικογένειας από τον λογαριασμό επιταγής #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Ορίστε τον προεπιλεγμένο αριθμό λογαριασμού ελέγχου για την οικογένεια"
-
-#: 
 msgid "Fund Name"
 msgstr "Όνομα Ταμείου"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Μη εκπιπτόμενο ποσό"
 
 #: 
 msgid "Age"
@@ -2585,10 +2517,6 @@ msgid "Groups"
 msgstr "Ομάδες"
 
 #: 
-msgid "Total $"
-msgstr "Σύνολο $"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "με αυτό το ακίνητο..."
@@ -2716,10 +2644,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Υπογραφή της αναφοράς επιβεβαίωσης και διόρθωσης πληροφοριών βάσης δεδομένων"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Λήμα για τη συνοπτική έκθεση ενεχύρου"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Verbage για την αναφορά καταλόγου"
 
@@ -2783,11 +2707,6 @@ msgstr "Τύποι ιδιοκτησίας"
 #: 
 msgid "Zip Code"
 msgstr "Ταχυδρομικός κώδικας"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Πεδίο"
 
 #. Context: query_qry
 #: 
@@ -4926,10 +4845,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Ρυθμίστε το σύστημα κρυπτογράφησης για χρήση - ssl (καταργήθηκε) ή tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Δημιουργία απόδειξης κατάθεσης για επιλεγμένες σειρές (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Προσθήκη όλων στο καλάθι"
 
@@ -5226,10 +5141,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Σφάλμα αποστολής email(ων)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Ελέγξτε τα αρχεία καταγραφής για περισσότερες πληροφορίες"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5622,10 +5533,6 @@ msgid "Add Group"
 msgstr "Προσθήκη Ομάδας"
 
 #: 
-msgid "Back to Group List"
-msgstr "Επιστροφή σε Λίστα Ομάδων"
-
-#: 
 msgid "Edit Group"
 msgstr "Επεξεργασία Group"
 
@@ -5858,10 +5765,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Προσθέστε οποιαδήποτε πρόσθετη σημείωση σχετικά με αυτή την κατάθεση"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Το ποσό υπερβαίνει τη μέγιστη επιτρεπόμενη τιμή (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Έλεγχοι"
 
@@ -5888,10 +5791,6 @@ msgstr "Χωρίς μετρητά"
 #: 
 msgid "No Checks"
 msgstr "Χωρίς επιταγές"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Το μη εκπιπτόμενο ποσό υπερβαίνει τη μέγιστη επιτρεπόμενη τιμή."
 
 #: 
 msgid "Payments"
@@ -6504,10 +6403,6 @@ msgid "%d missing role"
 msgstr "%d ελλείπουσα ρόλο"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Μια πληρωμή είναι μια πραγματική δωρεά που λήφθηκε. Θα προστεθεί στην τρέχουσα κατάθεση."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Μια υπόσχεση είναι μια δέσμευση να δώσει. Δεν συνδέεται με ένα δελτίο κατάθεσης."
 
@@ -6804,10 +6699,6 @@ msgid "Name & Identity"
 msgstr "Όνομα & Ταυτότητα"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Θα δημιουργηθεί νέα κατάθεση"
-
-#: 
 msgid "New Payment"
 msgstr "Νέα πληρωμή"
 
@@ -6926,10 +6817,6 @@ msgstr "Ορισμένες προϋποθέσεις της εφαρμογής δ
 #: 
 msgid "State (Other)"
 msgstr "Περιφέρεια (Άλλη)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Περίληψη των υποσχέσεων και πληρωμών ανά κεφάλαιο για το οικονομικό έτος."
 
 #: 
 msgid "System Health"
@@ -7422,10 +7309,6 @@ msgstr "Μετακίνηση Πάνω"
 #: 
 msgid "Order"
 msgstr "Παραγγελία"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "Τα PDF στάλθηκαν επιτυχώς με email σε %s οικογένειες."
 
 #: 
 msgid "Percentage"
@@ -8911,10 +8794,6 @@ msgid "Account Recovery"
 msgstr "Ανάκτηση λογαριασμού"
 
 #: 
-msgid "Add Family"
-msgstr "Προσθήκη οικογένειας"
-
-#: 
 msgid "Add First Family"
 msgstr "Προσθήκη πρώτης οικογένειας"
 
@@ -8933,10 +8812,6 @@ msgstr "Προσθήκη σημείωσης"
 #: 
 msgid "Add People to the Family"
 msgstr "Προσθήκη ατόμων στην οικογένεια"
-
-#: 
-msgid "Add Person"
-msgstr "Προσθήκη ατόμου"
 
 #: 
 msgid "Add Students to Cart"
@@ -9315,10 +9190,6 @@ msgid "Delete Person"
 msgstr "Διαγραφή ατόμου"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Διαγραφή οικονομικής δέσμευσης"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Η διαγραφή αυτής της ιδιότητας θα αφαιρέσει επίσης όλες τις αναθέσεις της από εγγραφές Ατόμων, Οικογενειών ή Ομάδων."
 
@@ -9481,10 +9352,6 @@ msgstr "ΔΕ %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Οι οικογένειες μοιράζονται διεύθυνση και τηλέφωνο."
-
-#: 
-msgid "Family List"
-msgstr "Λίστα οικογενειών"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9683,10 +9550,6 @@ msgid "Letters and Labels"
 msgstr "Επιστολές και ετικέτες"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Λίστα οικογενειών που δημιουργήθηκαν μέσω αυτοεγγραφής"
-
-#: 
 msgid "Load demo data"
 msgstr "Φόρτωση δοκιμαστικών δεδομένων"
 
@@ -9795,10 +9658,6 @@ msgid "Minimum"
 msgstr "Ελάχιστο"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Τροποποίηση οικογενειακών ρόλων για μέλη ομάδας"
-
-#: 
 msgid "Move to Group"
 msgstr "Μετακίνηση σε ομάδα"
 
@@ -9825,10 +9684,6 @@ msgstr "Νέο"
 #: 
 msgid "New Family"
 msgstr "Νέα οικογένεια"
-
-#: 
-msgid "New Group"
-msgstr "Νέα ομάδα"
 
 #: 
 msgid "New Person"
@@ -9943,10 +9798,6 @@ msgstr "Ανάκτηση κωδικού πρόσβασης"
 #: 
 msgid "Past & next 7 days"
 msgstr "Τελευταίες & επόμενες 7 ημέρες"
-
-#: 
-msgid "People List"
-msgstr "Λίστα ατόμων"
 
 #: 
 msgid "People by Classification"
@@ -10101,10 +9952,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Αναζήτηση σε άτομα, οικογένειες, ομάδες, διευθύνσεις και περισσότερα."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Αναζήτηση και προβολή εγγραφών αποδεικτικών κατάθεσης"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Αναζήτηση ατόμων, οικογενειών, ομάδων…"
 
@@ -10127,10 +9974,6 @@ msgstr "Επιλέξτε αρχείο αντιγράφου ασφαλείας κ
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Επιλέξτε τις ρυθμίσεις σας παραπάνω και κάντε κλικ σε ένα κουμπί αντιγράφου ασφαλείας."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Αναφορά αυτοεγγραφής"
 
 #: 
 msgid "Send email to families"
@@ -10693,11 +10536,6 @@ msgstr "Προεπιλογές διευθύνσεων"
 msgid "Allow user to add new event"
 msgstr "Να επιτρέψει στο χρήστη να προσθέσει νέο γεγονός"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Ημερομηνία έναρξης"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Ρυθμίσεις Ημερολογίου"
@@ -10766,11 +10604,6 @@ msgstr "Αντιγράψτε στο πρόχειρο"
 msgid "Custom field"
 msgstr "Προσαρμοσμένο πεδίο"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Προσαρμοσμένη αναζήτηση"
-
 #: 
 msgid "Default Country"
 msgstr "Προεπιλεγμένη χώρα"
@@ -10807,16 +10640,6 @@ msgstr "Οι λίστες ηλεκτρονικής αλληλογραφίας σ
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Ενεργοποιήστε την ηλεκτρονική αλληλογραφία στο παρακάτω πάνελ ρυθμίσεων, στη συνέχεια διαμορφώστε τον διακομιστή SMTP σας."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Ημερομηνία λήξης"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Εισάγετε οποιοδήποτε μέρος των ακόλουθων: Όνομα, Πόλη, Κατάσταση, Ταχυδρομικός κώδικας, Σπίτι τηλέφωνο, Email ή Εργασία Email."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "Το εξωτερικό API ημερολογίου είναι απενεργοποιημένο"
@@ -10842,11 +10665,6 @@ msgstr "Τιμή πεδίου"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Βρείτε άτομα που έκαναν υπόσχεση έναν χρόνο αλλά όχι άλλον"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Βρείτε άτομα με προσαρμοσμένη τιμή πεδίου"
 
 #. Context: query_qry
 #: 
@@ -10910,11 +10728,6 @@ msgstr "Αντιστοίχιση προσαρμοσμένου πεδίου σε 
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Μέγιστη Ηλικία"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Μέλος, Τακτικός Παρευρισκόμενος κ.λπ."
 
@@ -10927,11 +10740,6 @@ msgstr "Μέλη που εντάχθηκαν σε συγκεκριμένο μή�
 #: 
 msgid "Membership anniversaries"
 msgstr "Επέτειοι μελών"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Ελάχιστη Ηλικία"
 
 #. Context: query_qry
 #: 
@@ -11005,16 +10813,6 @@ msgstr "Ιδιότητα ατόμου που χρησιμοποιείται γι
 msgid "Person property used to exclude members from email lists"
 msgstr "Ιδιότητα ατόμου που χρησιμοποιείται για εξαίρεση μελών από λίστες email"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Παρακαλώ εισάγετε την τελευταία ημερομηνία για τον υπολογισμό των συνολικών εισφορών για κάθε μέλος (δηλ. ΕΕΕΕ-ΜΜ-ΗΗ)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Παρακαλώ επιλέξτε την αρχική ημερομηνία για τον υπολογισμό των συνολικών εισφορών για κάθε μέλος (δηλ. ΕΕΕΕ-ΜΜ-ΗΗ). ΣΗΜΕΙΩΣΗ: Μπορείτε να επιλέξετε μόνο ημερομηνίες που περιέχουν δωρεές."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11063,11 +10861,6 @@ msgstr "SMTP δεν ρυθμίστηκε"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Αναζήτηση"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Δεύτερο Λογιστικό Έτος"
 
@@ -11080,16 +10873,6 @@ msgstr "Δεύτερο λογιστικό έτος για σύγκριση"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Δεύτερη επιλογή ευκαιρίας εθελοντή"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Επιλέξτε το πεδίο προς αναζήτηση."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Επιλέξτε τον επιθυμητό οικογενειακό ρόλο."
 
 #: 
 msgid "Send text message"
@@ -11130,38 +10913,13 @@ msgstr "Ο μήνας γενεθλίων για τον οποίο θέλετε �
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Το επιθυμητό φύλο για αναζήτηση στη βάση δεδομένων."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Το φύλο για το οποίο θέλετε να επιστραφούν τα αρχεία."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Η μέγιστη ηλικία για την οποία θέλετε να επιστραφούν τα αρχεία."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Ο μήνας επετείου μέλους για τον οποίο θέλετε να επιστραφούν τα αρχεία."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Η ελάχιστη ηλικία για την οποία θέλετε να επιστραφούν τα αρχεία."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Η ιδιοκτησία για την οποία θέλετε να επιστραφούν τα αρχεία ατόμου."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Η τάξη κατηχήσεως για την οποία θέλετε να επιστραφούν τα αρχεία."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11197,11 +10955,6 @@ msgstr "Vonage SMS δεν ρυθμίστηκε"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Χωρίς το Vonage, οι ενέργειες κειμένου θα ανοίξουν την εφαρμογή SMS της συσκευής σας ή θα αντιγράψουν αριθμούς τηλεφώνου στο πρόχειρο."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Εργασιακό ηλεκτρονικό ταχυδρομείο"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11523,10 +11276,6 @@ msgstr "Χαρακτηριστικά"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Αναγνωριστικά ερωτημάτων οικονομικής άδειας"
-
-#: 
-msgid "Find family"
-msgstr "Εύρεση οικογένειας"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -12176,10 +11925,6 @@ msgstr "Αλλαγή Φωτογραφίας"
 #: 
 msgid "Changes will not take effect until next logon."
 msgstr "Οι αλλαγές θα εφαρμοστούν κατά την επόμενη σύνδεση."
-
-#: 
-msgid "Choose between light and dark color scheme"
-msgstr "Επιλέξτε μεταξύ ανοιχτού και σκούρου χρωματικού θέματος"
 
 #: 
 msgid "Customize the look and feel of the application"
@@ -12938,10 +12683,6 @@ msgid "Church information saved, but the address could not be auto-located. Plea
 msgstr "Οι πληροφορίες εκκλησίας αποθηκεύτηκαν, αλλά η διεύθυνση δεν μπόρεσε να εντοπιστεί αυτόματα. Παρακαλώ εισαγάγετε χειροκίνητα το γεωγραφικό πλάτος και μήκος στις Συντεταγμένες Χάρτη."
 
 #: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Οι συντεταγμένες εντοπίζονται αυτόματα από τη διεύθυνσή σας κατά την αποθήκευση (μέσω OpenStreetMap). Μπορείτε επίσης να τις εισαγάγετε χειροκίνητα παρακάτω — οι χειροκίνητες τιμές πάντα υπερισχύουν της αυτόματης εντόπισης. Αφήστε και τα δύο κενά για αυτόματη γεωκωδικοποίηση από τη διεύθυνση."
-
-#: 
 msgid "Latitude must be a number between -90 and 90."
 msgstr "Το γεωγραφικό πλάτος πρέπει να είναι αριθμός μεταξύ -90 και 90."
 
@@ -13629,10 +13370,6 @@ msgstr "Μεταφορτώστε ένα CSV για μαζική δημιουργ
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Το CSV σας έχει διπλότυπα ονόματα στηλών. Μετονομάστε τις διπλότυπες στήλες (π.χ. προσθέστε \"(2)\" στη δεύτερη) και μεταφορτώστε ξανά."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Μη έγκυρο διακριτικό ασφαλείας. Παρακαλώ δοκιμάστε ξανά."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13664,10 +13401,6 @@ msgstr "Αργίες (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Οι αργίες κατηγοριοποιούνται κατά τύπο: Επίσημες, Εορτασμοί, Τραπεζικές αργίες, Εποχιακές και Θρησκευτικές. Αφήστε όλες τις κατηγορίες ανεπιλεγμένες για εμφάνιση όλων των αργιών, ή επιλέξτε συγκεκριμένους τύπους για να περιορίσετε την προβολή."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Λείπει το αναγνωριστικό οικονομικής δέσμευσης."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -14206,10 +13939,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτή την κατάθεση προσφορών;"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτόν τον τύπο συμβάντος; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
 
@@ -14460,10 +14189,6 @@ msgstr "Τα δεδομένα επίδειξης φορτώνονται συνή
 #: 
 msgid "Deposit ID"
 msgstr "Αναγνωριστικό Κατάθεσης"
-
-#: 
-msgid "Deposit Total"
-msgstr "Σύνολο Κατάθεσης"
 
 #: 
 msgid "Deposit Value"
@@ -16805,10 +16530,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s από την οικογένεια %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "Χωράνε %d ακόμα εγγραφές."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "Επεστράφησαν %d εγγραφές"
 
@@ -16907,10 +16628,6 @@ msgstr "Ελάχιστο Συνολικό Ποσό"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Ελάχιστη προσφορά $%s."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Νέα Πληρωμή - %1$s Κατάθεση # %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17319,4 +17036,692 @@ msgstr "Ελέγξτε παρακάτω τις νέες εγγραφές από 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Επιβεβαίωση Διαγραφής Θέσης Εθελοντισμού"
+
+#: 
+msgid "# Payments"
+msgstr "# Προσφορές"
+
+#: 
+msgid "# Pledges"
+msgstr "# Υποσχέσεις"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Μια προσφορά είναι μια πραγματική δωρεά που ελήφθη. Θα προστεθεί στην επιλεγμένη κατάθεση."
+
+#: 
+msgid "Add Fund"
+msgstr "Προσθήκη Ταμείου"
+
+#: 
+msgid "Amount ($)"
+msgstr "Ποσό ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Το ποσό υπερβαίνει το μέγιστο επιτρεπόμενο (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Ανώνυμη Τηλεμετρία"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Επίπεδο ανώνυμης τηλεμετρίας. Ελέγχει πόσα ανώνυμα διαγνωστικά δεδομένα κοινοποιούνται στην ομάδα ChurchCRM. Δεν αποστέλλονται ποτέ ονόματα εκκλησιών, δεδομένα μελών ή προσωπικές πληροφορίες."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτή την εγγραφή προσφοράς;"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Απαιτείται τουλάχιστον μία κατανομή ταμείου"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Τουλάχιστον ένα ταμείο πρέπει να έχει μη μηδενικό ποσό"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Αυτόματη αποστολή μηνύματος γενεθλίων στα άτομα κατά την ημέρα των γενεθλίων τους"
+
+#: 
+msgid "Back to Finance"
+msgstr "Επιστροφή στα Οικονομικά"
+
+#: 
+msgid "Back to Group"
+msgstr "Επιστροφή στην Ομάδα"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Αδύνατη η προετοιμασία ερωτήματος."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Καταγραφή σφαλμάτων JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Καταγραφή επαναλαμβανόμενων σφαλμάτων"
+
+#: 
+msgid "Check #"
+msgstr "Αριθμός Επιταγής #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Όνομα ενορίας, διεύθυνση ή στοιχεία επικοινωνίας"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Έκδοση ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Επίπεδο συλλογής"
+
+#: 
+msgid "Count unique installs"
+msgstr "Καταμέτρηση μοναδικών εγκαταστάσεων"
+
+#: 
+msgid "Data"
+msgstr "Δεδομένα"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Τα δεδομένα επεξεργάζονται από την PostHog σε υποδομή της ΕΕ."
+
+#: 
+msgid "Date is required"
+msgstr "Η ημερομηνία είναι υποχρεωτική"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Διαγράφηκε επιτυχώς"
+
+#: 
+msgid "Deposit #"
+msgstr "Κατάθεση #"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Απόδειξη Κατάθεσης"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Επεξεργασία Υπόσχεσης"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Επεξεργασία υπάρχουσας υπόσχεσης ή προσφοράς"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Επεξεργασία Προσφοράς"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Επεξεργασία Υπόσχεσης"
+
+#: 
+msgid "Enable (full)"
+msgstr "Ενεργοποίηση (πλήρης)"
+
+#: 
+msgid "Errors only"
+msgstr "Μόνο σφάλματα"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Σφάλματα — σφάλματα διακομιστή και εξαιρέσεις JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Αποτυχία δημιουργίας υπόσχεσης"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Αποτυχία διαγραφής υπόσχεσης"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Αποτυχία κωδικοποίησης απόκρισης προσφοράς"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Αποτυχία ανάκτησης υπόσχεσης"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Αποτυχία ενημέρωσης υπόσχεσης"
+
+#: 
+msgid "Family is required"
+msgstr "Η οικογένεια είναι υποχρεωτική"
+
+#: 
+msgid "Financial data"
+msgstr "Οικονομικά δεδομένα"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Πλήρης — όλα τα παραπάνω συν προβολές σελίδων"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Πλήρης — προβολές σελίδων, προειδοποιήσεις, σφάλματα και εξαιρέσεις JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Σύνοψη Ταμείου"
+
+#: 
+msgid "Group key is required"
+msgstr "Το κλειδί ομάδας είναι υποχρεωτικό"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Χρόνια Πολλά"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Βοηθήστε στη βελτίωση του ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Διευθύνσεις IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID Εγκατάστασης"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Διαδραστική σύνοψη υποσχέσεων έναντι προσφορών ανά ταμείο με ταξινόμηση, αναζήτηση και εξαγωγή."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Εσωτερικό: τελευταία ημερομηνία αποστολής email γενεθλίων (YYYY-MM-DD). Μην επεξεργαστείτε χειροκίνητα."
+
+#: 
+msgid "JS exceptions"
+msgstr "Εξαιρέσεις JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Επίπεδο καταγραφής + μήνυμα"
+
+#: 
+msgid "Member or family records"
+msgstr "Εγγραφές μελών ή οικογενειών"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Τροποποίηση ρόλου για αυτό το μέλος της ομάδας"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Σφάλμα δικτύου, παρακαλώ δοκιμάστε ξανά"
+
+#: 
+msgid "Never sent"
+msgstr "Δεν εστάλη ποτέ"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Χωρίς κατάθεση / δημιουργία νέας κατάθεσης"
+
+#: 
+msgid "No pledge"
+msgstr "Χωρίς υπόσχεση"
+
+#: 
+msgid "No thanks"
+msgstr "Όχι, ευχαριστώ"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Μη Εκπεστέο"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Μη Εκπεστέο ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Το μη εκπεστέο ποσό δεν μπορεί να υπερβαίνει το ποσό του ταμείου"
+
+#: 
+msgid "None (disabled)"
+msgstr "Κανένα (απενεργοποιημένο)"
+
+#: 
+msgid "OS family"
+msgstr "Οικογένεια ΛΣ"
+
+#: 
+msgid "Overpaid"
+msgstr "Υπερπληρωμή"
+
+#: 
+msgid "PHP version"
+msgstr "Έκδοση PHP"
+
+#: 
+msgid "Page route"
+msgstr "Διαδρομή σελίδας"
+
+#: 
+msgid "Payment Details"
+msgstr "Λεπτομέρειες Προσφοράς"
+
+#: 
+msgid "Payment Method"
+msgstr "Μέθοδος Πληρωμής"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Προγραμματισμός υποστήριξης χρόνου εκτέλεσης"
+
+#: 
+msgid "Please enter a date"
+msgstr "Παρακαλώ εισάγετε μια ημερομηνία"
+
+#: 
+msgid "Please select a family"
+msgstr "Παρακαλώ επιλέξτε οικογένεια"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Παρακαλώ επιλέξτε ταμείο για όλες τις γραμμές"
+
+#: 
+msgid "Pledge Details"
+msgstr "Λεπτομέρειες Υπόσχεσης"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Η ομάδα υποσχέσεων δεν βρέθηκε"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Υποσχέσεις & Προσφορές"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Προτεραιότητα μεταφράσεων"
+
+#: 
+msgid "Purpose"
+msgstr "Σκοπός"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Αποθήκευση και Προσθήκη Άλλου"
+
+#: 
+msgid "Save failed"
+msgstr "Αποτυχία αποθήκευσης"
+
+#: 
+msgid "Saved successfully"
+msgstr "Αποθηκεύτηκε επιτυχώς"
+
+#: 
+msgid "Select a fund"
+msgstr "Επιλέξτε ταμείο"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Αποστολή Δοκιμαστικού Email Γενεθλίων στον Εαυτό μου"
+
+#: 
+msgid "Sending to"
+msgstr "Αποστολή σε"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Κοινοποιήστε ανώνυμα στατιστικά χρήσης με την ομάδα ChurchCRM ώστε να γνωρίζουμε ποιες λειτουργίες και γλώσσες να προτεραιοποιήσουμε. Δεν αποστέλλονται ποτέ ονόματα εκκλησιών, δεδομένα μελών ή προσωπικές πληροφορίες."
+
+#: 
+msgid "Test email sent to"
+msgstr "Δοκιμαστικό email εστάλη σε"
+
+#: 
+msgid "Track adoption"
+msgstr "Παρακολούθηση υιοθέτησης"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Ο τύπος πρέπει να είναι «Υπόσχεση» ή «Προσφορά»"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URLs με συμβολοσειρές ερωτήματος (τα αναγνωριστικά εγγραφών αφαιρούνται)"
+
+#: 
+msgid "Underpaid"
+msgstr "Υποπληρωμή"
+
+#: 
+msgid "Understand deployments"
+msgstr "Κατανόηση αναπτύξεων"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Κατανόηση χρήσης λειτουργιών"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Ονόματα χρηστών, email ή ρόλοι"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Προβολή λεπτομερειών υπόσχεσης ή προσφοράς"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Προειδοποιήσεις — προειδοποιήσεις, σφάλματα και εξαιρέσεις JS"
+
+#: 
+msgid "What is sent"
+msgstr "Τι αποστέλλεται"
+
+#: 
+msgid "What we collect"
+msgstr "Τι συλλέγουμε"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Σας ευχόμαστε χρόνια πολλά για τα %d σας χρόνια!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Σας ευχόμαστε χρόνια πολλά!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Ο λογαριασμός σας δεν έχει καταχωρημένη διεύθυνση email. Προσθέστε μία στο προφίλ σας για να στείλετε δοκιμή."
+
+#: 
+msgid "errors+"
+msgstr "σφάλματα+"
+
+#: 
+msgid "full only"
+msgstr "μόνο πλήρης"
+
+#: 
+msgid "is thinking of you today."
+msgstr "σας σκέφτεται σήμερα."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "διαδρομές σελίδων, ενεργή γλώσσα, έκδοση CRM, έκδοση PHP, οικογένεια ΛΣ και τυχαίο αναγνωριστικό εγκατάστασης. Τίποτα άλλο. Τα δεδομένα αποθηκεύονται στην ΕΕ."
+
+#: 
+msgid "% Paid"
+msgstr "% Πληρώθηκε"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Παρακαλούμε επαληθεύστε τα στοιχεία της οικογένειάς σας"
+
+#: 
+msgid "Add Role"
+msgstr "Προσθήκη Ρόλου"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Προσθήκη προσαρμοσμένων ιδιοτήτων για αυτή την ομάδα"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Η διεύθυνση άλλαξε από την τελευταία ρύθμιση συντεταγμένων."
+
+#: 
+msgid "All Tellers"
+msgstr "Όλοι οι Ταμίες"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Όλες οι αποστολές email απέτυχαν. Παρακαλούμε ελέγξτε τις ρυθμίσεις SMTP στις Ρυθμίσεις Συστήματος."
+
+#: 
+msgid "Amount Max"
+msgstr "Μέγιστο Ποσό"
+
+#: 
+msgid "Amount Min"
+msgstr "Ελάχιστο Ποσό"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Παρουσιάστηκε μη αναμενόμενο σφάλμα κατά την αποστολή email. Παρακαλούμε ελέγξτε τις ρυθμίσεις SMTP και τα αρχεία καταγραφής του διακομιστή."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Είστε σίγουροι ότι θέλετε να αφαιρέσετε τον ρόλο '{{name}}';"
+
+#: 
+msgid "Auto"
+msgstr "Αυτόματο"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Το Αυτόματο ακολουθεί τη ρύθμιση του λειτουργικού συστήματος ή του προγράμματος περιήγησης· το Φωτεινό και το Σκοτεινό το παρακάμπτουν"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Επιστροφή στον Πίνακα Υποσχέσεων"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Κάντε κλικ στο «Δημιουργία Συντεταγμένων» για αναζήτηση της τοποθεσίας στον χάρτη για την παραπάνω διεύθυνση, ή εισαγάγετε γεωγραφικό πλάτος/μήκος χειροκίνητα. Αν αφεθεί κενό, οι συντεταγμένες εντοπίζονται αυτόματα κατά την αποθήκευση της φόρμας."
+
+#: 
+msgid "Contributor"
+msgstr "Συνεισφέρων"
+
+#: 
+msgid "Contributors"
+msgstr "Συνεισφέροντες"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Δεν ήταν δυνατή η εύρεση συντεταγμένων για αυτή τη διεύθυνση. Δοκιμάστε να τις εισαγάγετε χειροκίνητα."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Προσαρμοσμένες ιδιότητες για αυτή την ομάδα"
+
+#: 
+msgid "Delete role"
+msgstr "Διαγραφή ρόλου"
+
+#: 
+msgid "Email Error"
+msgstr "Σφάλμα Email"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Το email δεν έχει ρυθμιστεί. Παρακαλούμε ρυθμίστε τις παραμέτρους SMTP στις Ρυθμίσεις Συστήματος."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Εισαγάγετε πρώτα μια διεύθυνση."
+
+#: 
+msgid "Enter role name"
+msgstr "Εισαγάγετε όνομα ρόλου"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Αποτυχία δημιουργίας κατάθεσης"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Αποτυχία φόρτωσης προεπισκόπησης email"
+
+#: 
+msgid "From Date"
+msgstr "Από Ημερομηνία"
+
+#: 
+msgid "Fund Total"
+msgstr "Σύνολο Ταμείου"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Σύνοψη υποσχέσεων συνεισφερόντων ταμείου ανά οικονομικό έτος"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Η δράση συγκέντρωσης προσφορών είναι απενεργοποιημένη"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Δημιουργία Συντεταγμένων"
+
+#: 
+msgid "Generating..."
+msgstr "Δημιουργία..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Η αίτηση γεωκωδικοποίησης απέτυχε. Παρακαλούμε δοκιμάστε ξανά."
+
+#: 
+msgid "Manage Events"
+msgstr "Διαχείριση Εκδηλώσεων"
+
+#: 
+msgid "New Deposit"
+msgstr "Νέα Κατάθεση"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Δεν βρέθηκαν συνεισφέροντες για αυτό το ταμείο στο επιλεγμένο οικονομικό έτος"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Δεν βρέθηκαν οικογένειες με διεύθυνση email. Δεν εστάλη τίποτα."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Δεν βρέθηκαν πληρωμές για τις επιλεγμένες καταθέσεις"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Δεν παρασχέθηκαν έγκυρα αναγνωριστικά κατάθεσης"
+
+#: 
+msgid "Partial Send"
+msgstr "Μερική Αποστολή"
+
+#: 
+msgid "Payments only"
+msgstr "Μόνο πληρωμές"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Ποσό Υπόσχεσης"
+
+#: 
+msgid "Preview"
+msgstr "Προεπισκόπηση"
+
+#: 
+msgid "Retry"
+msgstr "Επανάληψη"
+
+#: 
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Αναζήτηση και διαχείριση αρχείων αποδείξεων κατάθεσης"
+
+#: 
+msgid "Select All"
+msgstr "Επιλογή Όλων"
+
+#: 
+msgid "Send Emails"
+msgstr "Αποστολή Email"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Αποστολή Email Επαλήθευσης Οικογένειας"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Εστάλησαν %1$d από %2$d — %3$d οικογένειες δεν ήταν δυνατό να επικοινωνηθούν."
+
+#: 
+msgid "Show in Profile"
+msgstr "Εμφάνιση στο Προφίλ"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Εμφάνιση συνόλου μόνο για το επιλεγμένο ταμείο"
+
+#: 
+msgid "Teller"
+msgstr "Ταμίας"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Αυτός είναι ο μοναδικός ρόλος σε αυτή την ομάδα."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Αυτός ο ρόλος δεν μπορεί να διαγραφεί."
+
+#: 
+msgid "To Date"
+msgstr "Έως Ημερομηνία"
+
+#: 
+msgid "Total Pledged"
+msgstr "Συνολικές Υποσχέσεις"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Μη αναμενόμενο σφάλμα κατά την αποστολή email. Παρακαλούμε ελέγξτε τα αρχεία καταγραφής."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Χρησιμοποιεί την παραπάνω διεύθυνσή σας για αναζήτηση συντεταγμένων μέσω OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Προβολή Πληρωμής"
+
+#: 
+msgid "View Pledge"
+msgstr "Προβολή Υπόσχεσης"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Όταν είναι επιλεγμένο, αυτή η ιδιότητα θα εμφανίζεται μαζί με την ομάδα στη λίστα ομάδων του ατόμου στη σελίδα προφίλ του."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Επώνυμο Οικογένειας]"
+
+#: 
+msgid "row selected"
+msgstr "γραμμή επιλεγμένη"
+
+#: 
+msgid "rows selected"
+msgstr "γραμμές επιλεγμένες"
 

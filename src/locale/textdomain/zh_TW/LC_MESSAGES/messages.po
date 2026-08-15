@@ -1123,25 +1123,9 @@ msgid "Create Report"
 msgstr "建立報告"
 
 #: 
-msgid "Deposit Listing"
-msgstr "存款上市"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "存款"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "刪除選定的行"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "刪除選定的行（OFX）"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "刪除選定的行（CSV）"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1297,21 +1281,6 @@ msgid "Type of Group"
 msgstr "群組類型"
 
 #: 
-#, fuzzy
-msgid "Group Member Roles"
-msgstr "群組成員角色"
-
-#: 
-#, fuzzy
-msgid "Clone roles"
-msgstr "複製角色"
-
-#: 
-#, fuzzy
-msgid "from group"
-msgstr "由群組"
-
-#: 
 msgid "Select a group"
 msgstr "選擇群組"
 
@@ -1323,10 +1292,6 @@ msgstr "群組特定屬性"
 #: 
 msgid "Enabled"
 msgstr "應用"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "編輯特定群組的屬性表"
 
 #: 
 msgid "Disabled"
@@ -1382,14 +1347,6 @@ msgstr "組特定的屬性表編輯器"
 #: 
 msgid "No properties have been added yet"
 msgstr "尚未添加任何屬性"
-
-#: 
-msgid "Show in"
-msgstr "顯示在"
-
-#: 
-msgid "Person View"
-msgstr "人稱視角"
 
 #: 
 msgid "Other Email"
@@ -1721,16 +1678,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "檢查數量不適用於“現金”支付"
 
 #: 
-msgid "Deposit closed"
-msgstr "存款已關閉"
-
-#: 
 msgid "Payment Schedule"
 msgstr "付款時間表"
-
-#: 
-msgid "Select Schedule"
-msgstr "選擇計劃"
 
 #: 
 msgid "Weekly"
@@ -1753,28 +1702,8 @@ msgid "Other"
 msgstr "其他"
 
 #: 
-msgid "Payment by"
-msgstr "付款"
-
-#: 
-msgid "Scan check"
-msgstr "掃描檢查"
-
-#: 
-msgid "find family from check account #"
-msgstr "找到家人從支票帳戶＃"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "設置默認的支票帳戶的家庭"
-
-#: 
 msgid "Fund Name"
 msgstr "基金名稱"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "不可稅前抵扣的金額"
 
 #: 
 msgid "Age"
@@ -2662,10 +2591,6 @@ msgid "Groups"
 msgstr "組"
 
 #: 
-msgid "Total $"
-msgstr "總共$"
-
-#: 
 #, fuzzy
 msgid "with this property..."
 msgstr "有這個屬性.."
@@ -2800,11 +2725,6 @@ msgstr "資料庫信息確認和更正報告簽名者"
 
 #: 
 #, fuzzy
-msgid "Verbage for the pledge summary report"
-msgstr "用於認獻總結報告的用語"
-
-#: 
-#, fuzzy
 msgid "Verbage for the directory report"
 msgstr "用於目錄報告的用語"
 
@@ -2870,11 +2790,6 @@ msgstr "屬性類型"
 #: 
 msgid "Zip Code"
 msgstr "郵政編碼"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "領域"
 
 #. Context: query_qry
 #: 
@@ -5023,10 +4938,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "將加密系統設置為使用 - ssl（不建議使用）或tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "為選定的行生成存款單（PDF）"
-
-#: 
 msgid "Add All to Cart"
 msgstr "全部添加至購物車"
 
@@ -5338,11 +5249,6 @@ msgstr "PDF"
 #, fuzzy
 msgid "Error sending email(s)"
 msgstr "發送電子郵件時出錯"
-
-#: 
-#, fuzzy
-msgid "Please check logs for more information"
-msgstr "請查看日誌以獲取更多信息"
 
 #: 
 #, fuzzy
@@ -5774,10 +5680,6 @@ msgid "Add Group"
 msgstr "添加團體"
 
 #: 
-msgid "Back to Group List"
-msgstr "返回團體列表"
-
-#: 
 msgid "Edit Group"
 msgstr "編輯團體"
 
@@ -6010,10 +5912,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "添加有關此存款的任何額外筆記"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "金額超過允許的最大值 (999999.99)。"
-
-#: 
 msgid "Checks"
 msgstr "支票"
 
@@ -6040,10 +5938,6 @@ msgstr "無現金"
 #: 
 msgid "No Checks"
 msgstr "無支票"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "不可扣除金額超過允許的最大值 (999999.99)。"
 
 #: 
 msgid "Payments"
@@ -6654,10 +6548,6 @@ msgid "%d missing role"
 msgstr "%d 個缺失的角色"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "付款是實際收到的捐款。它將被添加到當前存款中。"
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "認獻是給予的承諾。它不與存款單綁定。"
 
@@ -6954,10 +6844,6 @@ msgid "Name & Identity"
 msgstr "姓名與身分"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "將建立新存款"
-
-#: 
 msgid "New Payment"
 msgstr "新付款"
 
@@ -7076,10 +6962,6 @@ msgstr "未滿足某些應用程式先決條件"
 #: 
 msgid "State (Other)"
 msgstr "州/省（其他）"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "財政年度各基金的認獻與付款摘要。"
 
 #: 
 msgid "System Health"
@@ -7570,10 +7452,6 @@ msgstr "上移"
 #: 
 msgid "Order"
 msgstr "順序"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF 已成功發送至 %s 個家庭。"
 
 #: 
 msgid "Percentage"
@@ -9056,10 +8934,6 @@ msgid "Account Recovery"
 msgstr "帳號恢復"
 
 #: 
-msgid "Add Family"
-msgstr "新增家庭"
-
-#: 
 msgid "Add First Family"
 msgstr "新增第一個家庭"
 
@@ -9078,10 +8952,6 @@ msgstr "新增備註"
 #: 
 msgid "Add People to the Family"
 msgstr "將成員加入家庭"
-
-#: 
-msgid "Add Person"
-msgstr "新增人員"
 
 #: 
 msgid "Add Students to Cart"
@@ -9460,10 +9330,6 @@ msgid "Delete Person"
 msgstr "刪除人員"
 
 #: 
-msgid "Delete Pledge"
-msgstr "刪除奉獻承諾"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "刪除此屬性也會從所有人員、家庭或小組記錄中移除其分配。"
 
@@ -9626,10 +9492,6 @@ msgstr "會計年度 %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "家庭成員共用地址和電話號碼。"
-
-#: 
-msgid "Family List"
-msgstr "家庭列表"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9828,10 +9690,6 @@ msgid "Letters and Labels"
 msgstr "信函與標籤"
 
 #: 
-msgid "List families created via self registration"
-msgstr "列出透過自助註冊建立的家庭"
-
-#: 
 msgid "Load demo data"
 msgstr "載入示範資料"
 
@@ -9940,10 +9798,6 @@ msgid "Minimum"
 msgstr "最低限度"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "修改小組成員的家庭角色"
-
-#: 
 msgid "Move to Group"
 msgstr "移動到小組"
 
@@ -9970,10 +9824,6 @@ msgstr "新增"
 #: 
 msgid "New Family"
 msgstr "新增家庭"
-
-#: 
-msgid "New Group"
-msgstr "新增小組"
 
 #: 
 msgid "New Person"
@@ -10088,10 +9938,6 @@ msgstr "密碼恢復"
 #: 
 msgid "Past & next 7 days"
 msgstr "過去與未來7天"
-
-#: 
-msgid "People List"
-msgstr "人員列表"
 
 #: 
 msgid "People by Classification"
@@ -10246,10 +10092,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "搜尋人員、家庭、小組、地址等。"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "搜尋和檢視奉獻存款單記錄"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "搜尋人員、家庭、小組…"
 
@@ -10272,10 +10114,6 @@ msgstr "選擇備份檔案並點擊還原資料庫。"
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "在上方選擇選項並點擊備份按鈕。"
-
-#: 
-msgid "Self Registration Report"
-msgstr "自助註冊報告"
 
 #: 
 msgid "Send email to families"
@@ -10838,11 +10676,6 @@ msgstr "地址預設值"
 msgid "Allow user to add new event"
 msgstr "允許使用者新增事件"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "開始日期"
-
 #: 
 msgid "Calendar Settings"
 msgstr "行事曆設定"
@@ -10911,11 +10744,6 @@ msgstr "複製到剪貼簿"
 msgid "Custom field"
 msgstr "自訂欄位"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "自訂搜尋"
-
 #: 
 msgid "Default Country"
 msgstr "預設國家"
@@ -10952,16 +10780,6 @@ msgstr "電子郵件清單與Mailchimp同步。"
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "在下方的設定面板中啟用電子郵件,然後設定SMTP伺服器。"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "結束日期"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "輸入下列任何部分: 姓名、城市、州、郵遞區號、家庭電話、電子郵件或工作電子郵件。"
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "外部行事曆API已停用"
@@ -10987,11 +10805,6 @@ msgstr "欄位值"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "找出有志在某一年但不是另一年的人"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "找出具有自訂欄位值的人"
 
 #. Context: query_qry
 #: 
@@ -11055,11 +10868,6 @@ msgstr "將自訂欄位匹配到此值"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "最大年齡"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "成員、經常參加者等"
 
@@ -11072,11 +10880,6 @@ msgstr "在特定月份加入的成員"
 #: 
 msgid "Membership anniversaries"
 msgstr "會員週年紀念"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "最小年齡"
 
 #. Context: query_qry
 #: 
@@ -11150,16 +10953,6 @@ msgstr "用於將成員從簡訊/文本列表中排除的人員屬性"
 msgid "Person property used to exclude members from email lists"
 msgstr "用於將成員從電子郵件列表中排除的人員屬性"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "請輸入最後日期以計算每個成員的總貢獻（即 YYYY-MM-DD）。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "請選擇起始日期以計算每個成員的總貢獻（即 YYYY-MM-DD）。注意：您只能選擇包含捐款的日期。"
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11208,11 +11001,6 @@ msgstr "SMTP 未配置"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "搜尋"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "第二個財政年度"
 
@@ -11225,16 +11013,6 @@ msgstr "用於比較的第二個財政年度"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "第二個志願者機會選擇"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "選擇要搜尋的欄位。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "選擇所需的家庭角色。"
 
 #: 
 msgid "Send text message"
@@ -11275,38 +11053,13 @@ msgstr "您想要返回記錄的生日月份。"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "您想要搜尋的所需性別。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "您想要返回記錄的性別。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "您想要返回記錄的最大年齡。"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "您想要返回記錄的會員週年月份。"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "您想要返回記錄的最小年齡。"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "您想要返回人員記錄的屬性。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "您想要返回記錄的主日學班級。"
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11342,11 +11095,6 @@ msgstr "Vonage 簡訊未配置"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "沒有 Vonage，文本操作將打開您設備的原生簡訊應用或將電話號碼複製到剪貼板。"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "工作電子郵件"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11668,10 +11416,6 @@ msgstr "功能"
 #: 
 msgid "Finance permission query IDs"
 msgstr "財務權限查詢 ID"
-
-#: 
-msgid "Find family"
-msgstr "尋找家庭"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -12321,10 +12065,6 @@ msgstr "更換相片"
 #: 
 msgid "Changes will not take effect until next logon."
 msgstr "變更將在下次登入後生效。"
-
-#: 
-msgid "Choose between light and dark color scheme"
-msgstr "選擇淺色或深色配色方案"
 
 #: 
 msgid "Customize the look and feel of the application"
@@ -13082,10 +12822,6 @@ msgid "Church information saved, but the address could not be auto-located. Plea
 msgstr "教會資訊已儲存，但地址無法自動定位。請在「地圖座標」下方手動輸入緯度和經度。"
 
 #: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "儲存時將透過 OpenStreetMap 從地址自動偵測座標。您也可以在下方手動輸入——手動輸入的數值優先於自動偵測。兩者皆留空時，系統將從地址進行地理編碼。"
-
-#: 
 msgid "Latitude must be a number between -90 and 90."
 msgstr "緯度必須為 -90 至 90 之間的數字。"
 
@@ -13773,10 +13509,6 @@ msgstr "上傳 CSV 以批次建立家庭和個人資料。"
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "您的 CSV 檔案有重複的欄位名稱。請重新命名重複的欄位（例如在第二個欄位後加上「(2)」），然後重新上傳。"
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "安全權杖無效。請重試。"
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13808,10 +13540,6 @@ msgstr "假期（%s）"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "假期依類型標記：官方假期、紀念日、銀行假日、季節性假期與宗教節日。不選取任何類別可顯示所有假期，或選擇特定類型以縮小顯示範圍。"
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "缺少財務承諾識別碼。"
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -14350,10 +14078,6 @@ msgid "Are you sure you want to continue?"
 msgstr "您確定要繼續嗎?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "您確定要刪除此奉獻存款嗎？"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "您確定要刪除此事件類型嗎？此操作無法復原。"
 
@@ -14604,10 +14328,6 @@ msgstr "示範資料通常僅在全新安裝時載入。現在匯入將在現有
 #: 
 msgid "Deposit ID"
 msgstr "存款編號"
-
-#: 
-msgid "Deposit Total"
-msgstr "存款總額"
 
 #: 
 msgid "Deposit Value"
@@ -16936,10 +16656,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s 家庭的 %1$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "還可再新增 %d 筆資料。"
-
-#: 
 msgid "%d record(s) returned"
 msgstr "已回傳 %d 筆記錄"
 
@@ -17038,10 +16754,6 @@ msgstr "最低總金額"
 #: 
 msgid "Minimum bid $%s."
 msgstr "最低出價 $%s。"
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "新奉獻款項 - %1$s 存款編號 %2$s（%3$s）"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17450,4 +17162,692 @@ msgstr "請在下方審查來自公開登記表單的新登記資料，沒有電
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "確認刪除義工機會"
+
+#: 
+msgid "# Payments"
+msgstr "# 奉獻款項"
+
+#: 
+msgid "# Pledges"
+msgstr "# 承諾奉獻"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "款項是實際收到的奉獻。它將被添加到所選的存款中。"
+
+#: 
+msgid "Add Fund"
+msgstr "新增基金"
+
+#: 
+msgid "Amount ($)"
+msgstr "金額（$）"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "金額超過允許的上限（999999.99）"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "儲存時發生錯誤，請再試一次。"
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "匿名遙測"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "匿名遙測級別。控制與 ChurchCRM 團隊共享多少匿名診斷資料。不會傳送任何教會名稱、會員資料或個人資訊。"
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "您確定要永久刪除此奉獻記錄嗎？"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "至少需要一個基金分配"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "至少一個基金必須有非零金額"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "在會員生日當天自動發送生日祝福電子郵件"
+
+#: 
+msgid "Back to Finance"
+msgstr "返回財務"
+
+#: 
+msgid "Back to Group"
+msgstr "返回小組"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "無法準備查詢。"
+
+#: 
+msgid "Catch JS errors"
+msgstr "捕獲 JS 錯誤"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "捕獲重複錯誤"
+
+#: 
+msgid "Check #"
+msgstr "支票號碼"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "教會名稱、地址或聯絡資訊"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM 版本"
+
+#: 
+msgid "Collection level"
+msgstr "收集級別"
+
+#: 
+msgid "Count unique installs"
+msgstr "計算唯一安裝次數"
+
+#: 
+msgid "Data"
+msgstr "資料"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "資料由 PostHog 在歐盟基礎設施上處理。"
+
+#: 
+msgid "Date is required"
+msgstr "日期為必填項"
+
+#: 
+msgid "Deleted successfully"
+msgstr "刪除成功"
+
+#: 
+msgid "Deposit #"
+msgstr "存款編號"
+
+#: 
+msgid "Deposit Slip"
+msgstr "存款單"
+
+#: 
+msgid "Edit Pledge"
+msgstr "編輯承諾奉獻"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "編輯現有承諾奉獻或款項"
+
+#: 
+msgid "Editing a Payment"
+msgstr "編輯奉獻款項"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "編輯承諾奉獻"
+
+#: 
+msgid "Enable (full)"
+msgstr "啟用（完整）"
+
+#: 
+msgid "Errors only"
+msgstr "僅錯誤"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "錯誤——伺服器錯誤及 JS 異常"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "建立承諾奉獻失敗"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "刪除承諾奉獻失敗"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "編碼款項回應失敗"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "擷取承諾奉獻失敗"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "更新承諾奉獻失敗"
+
+#: 
+msgid "Family is required"
+msgstr "家庭為必填項"
+
+#: 
+msgid "Financial data"
+msgstr "財務資料"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "完整——以上所有項目加上頁面瀏覽"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "完整——頁面瀏覽、警告、錯誤及 JS 異常"
+
+#: 
+msgid "Fund Summary"
+msgstr "基金摘要"
+
+#: 
+msgid "Group key is required"
+msgstr "小組鍵值為必填項"
+
+#: 
+msgid "Happy Birthday"
+msgstr "生日快樂"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "協助改善 ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "IP 位址"
+
+#: 
+msgid "Installation UUID"
+msgstr "安裝 UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "依基金的互動式承諾奉獻與款項摘要，支援排序、搜尋及匯出。"
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "內部：上次發送生日電子郵件的日期（YYYY-MM-DD）。請勿手動編輯。"
+
+#: 
+msgid "JS exceptions"
+msgstr "JS 異常"
+
+#: 
+msgid "Log level + message"
+msgstr "日誌級別＋訊息"
+
+#: 
+msgid "Member or family records"
+msgstr "會員或家庭記錄"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "修改此小組成員的角色"
+
+#: 
+msgid "Network error, please try again"
+msgstr "網路錯誤，請再試一次"
+
+#: 
+msgid "Never sent"
+msgstr "從未發送"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "無存款／建立新存款"
+
+#: 
+msgid "No pledge"
+msgstr "無承諾奉獻"
+
+#: 
+msgid "No thanks"
+msgstr "不，謝謝"
+
+#: 
+msgid "Non-Deductible"
+msgstr "不可扣稅"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "不可扣稅（$）"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "不可扣稅金額不能超過基金金額"
+
+#: 
+msgid "None (disabled)"
+msgstr "無（已停用）"
+
+#: 
+msgid "OS family"
+msgstr "作業系統類型"
+
+#: 
+msgid "Overpaid"
+msgstr "超額奉獻"
+
+#: 
+msgid "PHP version"
+msgstr "PHP 版本"
+
+#: 
+msgid "Page route"
+msgstr "頁面路由"
+
+#: 
+msgid "Payment Details"
+msgstr "款項詳情"
+
+#: 
+msgid "Payment Method"
+msgstr "付款方式"
+
+#: 
+msgid "Plan runtime support"
+msgstr "規劃執行時間支援"
+
+#: 
+msgid "Please enter a date"
+msgstr "請輸入日期"
+
+#: 
+msgid "Please select a family"
+msgstr "請選擇家庭"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "請為所有行選擇基金"
+
+#: 
+msgid "Pledge Details"
+msgstr "承諾奉獻詳情"
+
+#: 
+msgid "Pledge group not found"
+msgstr "找不到承諾奉獻群組"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "承諾奉獻與款項"
+
+#: 
+msgid "Prioritise translations"
+msgstr "優先翻譯"
+
+#: 
+msgid "Purpose"
+msgstr "用途"
+
+#: 
+msgid "Save and Add Another"
+msgstr "儲存並新增另一筆"
+
+#: 
+msgid "Save failed"
+msgstr "儲存失敗"
+
+#: 
+msgid "Saved successfully"
+msgstr "儲存成功"
+
+#: 
+msgid "Select a fund"
+msgstr "選擇基金"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "向自己發送測試生日電子郵件"
+
+#: 
+msgid "Sending to"
+msgstr "發送至"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "與 ChurchCRM 團隊分享匿名使用統計資料，以便我們了解優先開發哪些功能和語言。不會傳送任何教會名稱、會員資料或個人資訊。"
+
+#: 
+msgid "Test email sent to"
+msgstr "測試電子郵件已發送至"
+
+#: 
+msgid "Track adoption"
+msgstr "追蹤採用情況"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "類型必須為「承諾奉獻」或「款項」"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "含查詢字串的 URL（記錄 ID 已移除）"
+
+#: 
+msgid "Underpaid"
+msgstr "奉獻不足"
+
+#: 
+msgid "Understand deployments"
+msgstr "了解部署情況"
+
+#: 
+msgid "Understand feature usage"
+msgstr "了解功能使用情況"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "使用者名稱、電子郵件或角色"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "查看承諾奉獻或款項詳情"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "警告——警告、錯誤及 JS 異常"
+
+#: 
+msgid "What is sent"
+msgstr "發送的內容"
+
+#: 
+msgid "What we collect"
+msgstr "我們收集的資料"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "祝您 %d 歲生日快樂！"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "祝您生日快樂！"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "您的帳號尚未設定電子郵件地址。請在個人資料中新增電子郵件以發送測試。"
+
+#: 
+msgid "errors+"
+msgstr "錯誤＋"
+
+#: 
+msgid "full only"
+msgstr "僅完整"
+
+#: 
+msgid "is thinking of you today."
+msgstr "今天想到了您。"
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "頁面路由、使用中的語言、CRM 版本、PHP 版本、作業系統類型及隨機安裝 ID。不包含其他資訊。資料儲存於歐盟。"
+
+#: 
+msgid "% Paid"
+msgstr "已付款 %"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s：請確認您家庭的資訊"
+
+#: 
+msgid "Add Role"
+msgstr "新增角色"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "新增此小組的自訂屬性"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "自上次設定座標以來，地址已變更。"
+
+#: 
+msgid "All Tellers"
+msgstr "所有收款員"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "所有電子郵件傳送失敗。請在系統設定中檢查您的 SMTP 設定。"
+
+#: 
+msgid "Amount Max"
+msgstr "金額上限"
+
+#: 
+msgid "Amount Min"
+msgstr "金額下限"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "傳送電子郵件時發生意外錯誤。請檢查您的 SMTP 設定和伺服器日誌。"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "您確定要移除角色「{{name}}」嗎？"
+
+#: 
+msgid "Auto"
+msgstr "自動"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "自動跟隨作業系統或瀏覽器設定；淺色和深色模式可覆蓋此設定"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "返回奉獻承諾儀表板"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "點擊「產生座標」以查詢上方地址的地圖位置，或手動輸入緯度/經度。若留空，儲存表單時也會自動偵測座標。"
+
+#: 
+msgid "Contributor"
+msgstr "奉獻者"
+
+#: 
+msgid "Contributors"
+msgstr "奉獻者"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "找不到該地址的座標。請嘗試手動輸入。"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "此小組的自訂屬性"
+
+#: 
+msgid "Delete role"
+msgstr "刪除角色"
+
+#: 
+msgid "Email Error"
+msgstr "電子郵件錯誤"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "電子郵件尚未設定。請在系統設定中配置 SMTP 設定。"
+
+#: 
+msgid "Enter a street address first."
+msgstr "請先輸入街道地址。"
+
+#: 
+msgid "Enter role name"
+msgstr "輸入角色名稱"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "建立存款失敗"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "載入電子郵件預覽失敗"
+
+#: 
+msgid "From Date"
+msgstr "開始日期"
+
+#: 
+msgid "Fund Total"
+msgstr "基金總計"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "按財務年度列出的基金奉獻承諾摘要"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "募款功能已停用"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "產生座標"
+
+#: 
+msgid "Generating..."
+msgstr "產生中..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "地理編碼請求失敗。請再試一次。"
+
+#: 
+msgid "Manage Events"
+msgstr "管理活動"
+
+#: 
+msgid "New Deposit"
+msgstr "新增存款"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "在所選財務年度內，此基金找不到奉獻者"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "找不到有電子郵件地址的家庭。未傳送任何郵件。"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "所選存款記錄中找不到付款資料"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "未提供有效的存款編號"
+
+#: 
+msgid "Partial Send"
+msgstr "部分傳送"
+
+#: 
+msgid "Payments only"
+msgstr "僅限付款"
+
+#: 
+msgid "Pledged Amount"
+msgstr "承諾奉獻金額"
+
+#: 
+msgid "Preview"
+msgstr "預覽"
+
+#: 
+msgid "Retry"
+msgstr "重試"
+
+#: 
+msgid "Search"
+msgstr "搜尋"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "搜尋及管理存款單記錄"
+
+#: 
+msgid "Select All"
+msgstr "全選"
+
+#: 
+msgid "Send Emails"
+msgstr "傳送電子郵件"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "傳送家庭驗證電子郵件"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "已傳送 %2$d 封中的 %1$d 封 — %3$d 個家庭無法聯繫。"
+
+#: 
+msgid "Show in Profile"
+msgstr "在個人檔案中顯示"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "僅顯示所選基金的總計"
+
+#: 
+msgid "Teller"
+msgstr "收款員"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "這是此小組中唯一的角色。"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "此角色無法刪除。"
+
+#: 
+msgid "To Date"
+msgstr "結束日期"
+
+#: 
+msgid "Total Pledged"
+msgstr "承諾奉獻總額"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "傳送電子郵件時發生意外錯誤。請檢查日誌。"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "使用上方的街道地址透過 OpenStreetMap 查詢座標。"
+
+#: 
+msgid "View Payment"
+msgstr "查看付款"
+
+#: 
+msgid "View Pledge"
+msgstr "查看奉獻承諾"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "勾選後，此屬性將在個人檔案頁面的小組列表中與小組一起顯示。"
+
+#: 
+msgid "[Family Name]"
+msgstr "【家庭名稱】"
+
+#: 
+msgid "row selected"
+msgstr "列已選取"
+
+#: 
+msgid "rows selected"
+msgstr "列已選取"
 

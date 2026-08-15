@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
+use ChurchCRM\Service\ConfirmReportService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
@@ -212,6 +213,53 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
 
         return SlimUtils::renderJSON($response, $financialService->getMemberByScanString($scanString));
     })->add(FinanceRoleAuthMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/families/verify-email-preview",
+     *     operationId="getVerifyEmailPreview",
+     *     summary="Preview which families would receive a verification email",
+     *     description="Returns recipient count, recipient list, families without email, and a template preview. Used by the send-confirmation modal on the People Verify dashboard.",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="query", required=false, description="Limit preview to a single family", @OA\Schema(type="integer")),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Preview data for the send-confirmation modal",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="recipientCount", type="integer"),
+     *             @OA\Property(property="recipients", type="array", @OA\Items(type="object")),
+     *             @OA\Property(property="familiesWithoutEmail", type="array", @OA\Items(type="object")),
+     *             @OA\Property(property="templatePreview", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Forbidden - insufficient role"),
+     *     @OA\Response(response=500, description="Server error")
+     * )
+     */
+    $group->get('/verify-email-preview', function (Request $request, Response $response, array $args): Response {
+        try {
+            $queryParams = $request->getQueryParams();
+            $familyId    = isset($queryParams['familyId']) && $queryParams['familyId'] !== ''
+                ? (int) $queryParams['familyId']
+                : null;
+
+            $service = new ConfirmReportService();
+            $preview = $service->getEmailPreview($familyId);
+
+            return SlimUtils::renderJSON($response, $preview);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Failed to load email preview'),
+                [],
+                500,
+                $e,
+                $request
+            );
+        }
+    })->add(new EditRecordsRoleAuthMiddleware());
 });
 
 /**

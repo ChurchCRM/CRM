@@ -1,18 +1,29 @@
 {
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "one": "אימייל נשלח למשפחה אחת.",
+    "other": "אימייל נשלח ל-%d משפחות."
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "one": "קובץ PDF נשלח בהצלחה במייל למשפחה אחת.",
+    "other": "קובץ PDF נשלח בהצלחה במייל ל-%d משפחות."
+  },
   "Copied {{count}} members": {
-    "one": "הועתק חבר {{count}}",
+    "one": "חבר אחד הועתק",
     "other": "הועתקו {{count}} חברים"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "לרשימה זו יש נמען {{count}} — יותר מדי עבור קישור mailto:. השתמש ב'העתק כתובות' במקום.",
-    "other": "לרשימה זו יש {{count}} נמענים — יותר מדי עבור קישור mailto:. השתמש ב'העתק כתובות' במקום."
+    "one": "לרשימה זו יש נמען אחד — רב מדי עבור קישור mailto:. השתמש בהעתק כתובות במקום.",
+    "other": "לרשימה זו יש {{count}} נמענים — רב מדי עבור קישור mailto:. השתמש בהעתק כתובות במקום."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "יותר מדי נמענים עבור לקוח הדוא\"ל ({{count}} > {{max}}). השתמש ב'העתק כתובות' במקום.",
-    "other": "יותר מדי נמענים עבור לקוח הדוא\"ל ({{count}} > {{max}}). השתמש ב'העתק כתובות' במקום."
+    "one": "יותר מדי נמענים עבור לקוח הדואר האלקטרוני ({{count}} > {{max}}). השתמש בהעתק כתובות במקום.",
+    "other": "יותר מדי נמענים עבור לקוח הדואר האלקטרוני ({{count}} > {{max}}). השתמש בהעתק כתובות במקום."
   },
   "{{count}} min left": {
-    "one": "נותרה דקה {{count}}",
+    "one": "נותרת דקה אחת",
     "other": "נותרו {{count}} דקות"
   }
 }

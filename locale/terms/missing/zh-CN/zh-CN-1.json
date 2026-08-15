@@ -1,15 +1,30 @@
 {
+  "%d archived fundraiser": {
+    "other": "%d 个已归档的募捐活动"
+  },
+  "%d person successfully added to selected family.": {
+    "other": "已成功将 %d 人添加至所选家庭。"
+  },
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "other": "已向 %d 个家庭发送电子邮件。"
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "other": "PDF 已成功发送至 %d 个家庭。"
+  },
   "Copied {{count}} members": {
-    "one": "已复制 {{count}} 位会众",
-    "other": "已复制 {{count}} 位会众"
+    "one": "已复制 {{count}} 名成员",
+    "other": "已复制 {{count}} 名成员"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "此列表有 {{count}} 位收件人——对于 mailto: 链接来说太多了。请改用“复制地址”。",
-    "other": "此列表有 {{count}} 位收件人——对于 mailto: 链接来说太多了。请改用“复制地址”。"
+    "one": "此列表有 {{count}} 名收件人——对于 mailto: 链接来说过多，请改用复制地址。",
+    "other": "此列表有 {{count}} 名收件人——对于 mailto: 链接来说过多，请改用复制地址。"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "邮件客户端收件人过多（{{count}} > {{max}}）。请改用“复制地址”。",
-    "other": "邮件客户端收件人过多（{{count}} > {{max}}）。请改用“复制地址”。"
+    "one": "邮件客户端的收件人过多（{{count}} > {{max}}），请改用复制地址。",
+    "other": "邮件客户端的收件人过多（{{count}} > {{max}}），请改用复制地址。"
   },
   "{{count}} min left": {
     "one": "剩余 {{count}} 分钟",

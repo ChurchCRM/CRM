@@ -1120,25 +1120,9 @@ msgid "Create Report"
 msgstr "Utwórz Raport"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Lista Deposit"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Depozyty"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Usuń Zaznaczone Wiersze"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Wyeksportuj Zaznaczone Wiersze (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Wyeksportuj Zaznaczone Wiersze (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1294,21 +1278,6 @@ msgid "Type of Group"
 msgstr "Typ Grupy"
 
 #: 
-#, fuzzy
-msgid "Group Member Roles"
-msgstr "Role Członków Grupy"
-
-#: 
-#, fuzzy
-msgid "Clone roles"
-msgstr "Powiel Role"
-
-#: 
-#, fuzzy
-msgid "from group"
-msgstr "z grupy"
-
-#: 
 msgid "Select a group"
 msgstr "Wybierz grupę"
 
@@ -1320,10 +1289,6 @@ msgstr "Właściwości Specjalnie dla Grup"
 #: 
 msgid "Enabled"
 msgstr "Włączone"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Edytuj Ustwatawienia Dodatkowe dla Grupy"
 
 #: 
 msgid "Disabled"
@@ -1379,14 +1344,6 @@ msgstr "Edytor Ustawień Dodatkowych dla Grupy"
 #: 
 msgid "No properties have been added yet"
 msgstr "Nie dodano jeszcze żadnych nowych Ustawień"
-
-#: 
-msgid "Show in"
-msgstr "Pokaż"
-
-#: 
-msgid "Person View"
-msgstr "Widok Osoby"
 
 #: 
 msgid "Other Email"
@@ -1716,16 +1673,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Pole 'Numer Czeku' nie jest potrzebne dla płatności Gotówką"
 
 #: 
-msgid "Deposit closed"
-msgstr "Zamknięty Depozyt"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Częstotliwość Wpłat"
-
-#: 
-msgid "Select Schedule"
-msgstr "Wybierz Częstotliwość"
 
 #: 
 msgid "Weekly"
@@ -1748,28 +1697,8 @@ msgid "Other"
 msgstr "Inne"
 
 #: 
-msgid "Payment by"
-msgstr "Rodzaj wpłaty"
-
-#: 
-msgid "Scan check"
-msgstr "Zeskanuj czek"
-
-#: 
-msgid "find family from check account #"
-msgstr "znajdź rodzinę po numerze konta czeku "
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Ustaw domyślny numer konta dla czeków od rodziny"
-
-#: 
 msgid "Fund Name"
 msgstr "Cel"
-
-#: 
-msgid "Non-deductible amount"
-msgstr "Wartość nie odliczalna"
 
 #: 
 msgid "Age"
@@ -2652,10 +2581,6 @@ msgid "Groups"
 msgstr "Grupy"
 
 #: 
-msgid "Total $"
-msgstr "Suma PLN"
-
-#: 
 msgid "with this property..."
 msgstr "z tą właściwością..."
 
@@ -2781,10 +2706,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr "Osoba podpisująca raport potwierdzenia informacji w bazie danych"
 
 #: 
-msgid "Verbage for the pledge summary report"
-msgstr "Tekst raportu podsumowania deklaracji"
-
-#: 
 msgid "Verbage for the directory report"
 msgstr "Tekst raportu katalogowego"
 
@@ -2848,11 +2769,6 @@ msgstr "Typy właściwości"
 #: 
 msgid "Zip Code"
 msgstr "Kod pocztowy"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field"
-msgstr "Pole"
 
 #. Context: query_qry
 #: 
@@ -4987,10 +4903,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Ustaw system szyfrowania - ssl (przestarzałe) lub tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Generuj dowód wpłaty dla wybranych wierszy (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Dodaj wszystko do koszyka"
 
@@ -5286,10 +5198,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Błąd podczas wysyłania emial"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Sprawdź dziennik zdarzeń aby zobaczyć więcej"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5684,10 +5592,6 @@ msgid "Add Group"
 msgstr "Dodaj grupę"
 
 #: 
-msgid "Back to Group List"
-msgstr "Powrót do listy grup"
-
-#: 
 msgid "Edit Group"
 msgstr "Edytuj grupę"
 
@@ -5920,10 +5824,6 @@ msgid "Add any additional notes about this deposit"
 msgstr "Dodaj dodatkowe notatki do tej wpłaty"
 
 #: 
-msgid "Amount exceeds maximum allowed value (999999.99)."
-msgstr "Kwota przekracza limit (999999.99)."
-
-#: 
 msgid "Checks"
 msgstr "Czeki"
 
@@ -5950,10 +5850,6 @@ msgstr "Brak gotówki"
 #: 
 msgid "No Checks"
 msgstr "Brak czeków"
-
-#: 
-msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
-msgstr "Kwota niepodlegająca odliczeniu przekracza limit."
 
 #: 
 msgid "Payments"
@@ -6568,10 +6464,6 @@ msgid "%d missing role"
 msgstr "Brakująca rola: %d"
 
 #: 
-msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Płatność to faktyczna darowizna. Zostanie dodana do obecnej wpłaty zbiorczej."
-
-#: 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr "Deklaracja to zobowiązanie do wpłaty. Nie jest powiązana z dowodem wpłaty."
 
@@ -6868,10 +6760,6 @@ msgid "Name & Identity"
 msgstr "Nazwisko i tożsamość"
 
 #: 
-msgid "New Deposit Will Be Created"
-msgstr "Zostanie utworzona nowa wpłata"
-
-#: 
 msgid "New Payment"
 msgstr "Nowa płatność"
 
@@ -6990,10 +6878,6 @@ msgstr "Niektóre wymagania aplikacji nie są spełnione"
 #: 
 msgid "State (Other)"
 msgstr "Województwo (inne)"
-
-#: 
-msgid "Summary of pledges vs payments by fund for the fiscal year."
-msgstr "Podsumowanie deklaracji vs wpłat w roku fiskalnym."
 
 #: 
 msgid "System Health"
@@ -7488,10 +7372,6 @@ msgstr "Przenieś w górę"
 #: 
 msgid "Order"
 msgstr "Kolejność"
-
-#: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "Pomyślnie wysłano PDF-y do %s rodzin."
 
 #: 
 msgid "Percentage"
@@ -8980,10 +8860,6 @@ msgid "Account Recovery"
 msgstr "Odzyskiwanie konta"
 
 #: 
-msgid "Add Family"
-msgstr "Dodaj rodzinę"
-
-#: 
 msgid "Add First Family"
 msgstr "Dodaj pierwszą rodzinę"
 
@@ -9002,10 +8878,6 @@ msgstr "Dodaj notatkę"
 #: 
 msgid "Add People to the Family"
 msgstr "Dodaj osoby do rodziny"
-
-#: 
-msgid "Add Person"
-msgstr "Dodaj osobę"
 
 #: 
 msgid "Add Students to Cart"
@@ -9384,10 +9256,6 @@ msgid "Delete Person"
 msgstr "Usuń osobę"
 
 #: 
-msgid "Delete Pledge"
-msgstr "Usuń zobowiązanie"
-
-#: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Usunięcie tej właściwości spowoduje również usunięcie wszystkich jej przypisań z rekordów osób, rodzin lub grup."
 
@@ -9550,10 +9418,6 @@ msgstr "Rok obr. %s"
 #: 
 msgid "Families share an address and phone number."
 msgstr "Rodziny współdzielą adres i numer telefonu."
-
-#: 
-msgid "Family List"
-msgstr "Lista rodzin"
 
 #: 
 msgid "Family Pledge Summary"
@@ -9752,10 +9616,6 @@ msgid "Letters and Labels"
 msgstr "Listy i etykiety"
 
 #: 
-msgid "List families created via self registration"
-msgstr "Lista rodzin utworzonych przez samorejestrację"
-
-#: 
 msgid "Load demo data"
 msgstr "Załaduj dane demonstracyjne"
 
@@ -9864,10 +9724,6 @@ msgid "Minimum"
 msgstr "Minimum"
 
 #: 
-msgid "Modify family roles for group members"
-msgstr "Zmień role rodzinne dla członków grupy"
-
-#: 
 msgid "Move to Group"
 msgstr "Przenieś do grupy"
 
@@ -9894,10 +9750,6 @@ msgstr "Nowy"
 #: 
 msgid "New Family"
 msgstr "Nowa rodzina"
-
-#: 
-msgid "New Group"
-msgstr "Nowa grupa"
 
 #: 
 msgid "New Person"
@@ -10012,10 +9864,6 @@ msgstr "Odzyskiwanie hasła"
 #: 
 msgid "Past & next 7 days"
 msgstr "Ostatnie i następne 7 dni"
-
-#: 
-msgid "People List"
-msgstr "Lista osób"
 
 #: 
 msgid "People by Classification"
@@ -10170,10 +10018,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Wyszukuj wśród osób, rodzin, grup, adresów i więcej."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Wyszukuj i przeglądaj rekordy wpłat ofiar"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Szukaj osób, rodzin, grup..."
 
@@ -10196,10 +10040,6 @@ msgstr "Wybierz plik kopii zapasowej i kliknij Przywróć bazę danych."
 #: 
 msgid "Select your options above and click a backup button."
 msgstr "Wybierz opcje powyżej i kliknij przycisk kopii zapasowej."
-
-#: 
-msgid "Self Registration Report"
-msgstr "Raport samorezjestracji"
 
 #: 
 msgid "Send email to families"
@@ -10762,11 +10602,6 @@ msgstr "Ustawienia domyślne adresu"
 msgid "Allow user to add new event"
 msgstr "Pozwól użytkownikowi dodać nowe zdarzenie"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Data początkowa"
-
 #: 
 msgid "Calendar Settings"
 msgstr "Ustawienia kalendarza"
@@ -10835,11 +10670,6 @@ msgstr "Kopiuj do schowka"
 msgid "Custom field"
 msgstr "Pole niestandardowe"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Wyszukiwanie niestandardowe"
-
 #: 
 msgid "Default Country"
 msgstr "Kraj domyślny"
@@ -10876,16 +10706,6 @@ msgstr "Listy e-mail są synchronizowane z Mailchimp."
 msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr "Włącz pocztę e-mail w panelu ustawień poniżej, a następnie skonfiguruj serwer SMTP."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Data zakończenia"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Wprowadź dowolną część następujących: Imię i nazwisko, Miasto, Województwo, Kod pocztowy, Telefon domowy, E-mail lub E-mail zawodowy."
-
 #: 
 msgid "External Calendar API Disabled"
 msgstr "Interfejs API zewnętrznego kalendarza jest wyłączony"
@@ -10911,11 +10731,6 @@ msgstr "Wartość pola"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Znajdź osoby, które złożyły przyrzeczenie w jednym roku, ale nie w innym"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Znajdź osoby z niestandardową wartością pola"
 
 #. Context: query_qry
 #: 
@@ -10979,11 +10794,6 @@ msgstr "Dopasuj pole niestandardowe do tej wartości"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Maximum Age"
-msgstr "Maksymalny wiek"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Member, Regular Attender, etc."
 msgstr "Członek, Stały uczestnik itp."
 
@@ -10996,11 +10806,6 @@ msgstr "Członkowie, którzy dołączyli w określonym miesiącu"
 #: 
 msgid "Membership anniversaries"
 msgstr "Rocznice członkowstwa"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Minimalny wiek"
 
 #. Context: query_qry
 #: 
@@ -11074,16 +10879,6 @@ msgstr "Właściwość osoby używana do wykluczenia członków z list SMS/tekst
 msgid "Person property used to exclude members from email lists"
 msgstr "Właściwość osoby używana do wykluczenia członków z list e-mailowych"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Wprowadź ostatnią datę, aby obliczyć całkowite wkłady dla każdego członka (np. YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Wybierz datę początkową, aby obliczyć całkowite wkłady dla każdego członka (np. YYYY-MM-DD). UWAGA: Możesz wybierać tylko daty zawierające darowizny."
-
 #. Context: query_qry
 #: 
 msgid "Pledge comparison"
@@ -11132,11 +10927,6 @@ msgstr "SMTP nie skonfigurowany"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Search"
-msgstr "Szukaj"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Second Fiscal Year"
 msgstr "Drugi rok obrachunkowy"
 
@@ -11149,16 +10939,6 @@ msgstr "Drugi rok obrachunkowy do porównania"
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Drugi wybór okazji wolontariackiej"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Wybierz pole do wyszukiwania."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Wybierz żądaną rolę rodziny."
 
 #: 
 msgid "Send text message"
@@ -11199,38 +10979,13 @@ msgstr "Miesiąc urodzin, dla którego chcesz zwrócić rekordy."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The desired gender to search the database for."
-msgstr "Pożądana płeć do wyszukiwania w bazie danych."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Płeć, dla której chcesz zwrócić rekordy."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Maksymalny wiek, dla którego chcesz zwrócić rekordy."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Miesiąc rocznicy członkowstwa, dla którego chcesz zwrócić rekordy."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "The minimum age for which you want records returned."
-msgstr "Minimalny wiek, dla którego chcesz zwrócić rekordy."
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The property for which you would like person records returned."
 msgstr "Właściwość, dla której chcesz zwrócić rekordy osób."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Klasa szkoły niedzielnej, dla której chcesz zwrócić rekordy."
 
 #: 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
@@ -11266,11 +11021,6 @@ msgstr "Vonage SMS nie skonfigurowany"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Bez Vonage akcje tekstowe otworzą natywną aplikację SMS na urządzeniu lub skopiują numery telefonów do schowka."
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "E-mail do pracy"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11592,10 +11342,6 @@ msgstr "Funkcje"
 #: 
 msgid "Finance permission query IDs"
 msgstr "Identyfikatory zapytań o uprawnienia finansowe"
-
-#: 
-msgid "Find family"
-msgstr "Znajdź rodzinę"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -12245,10 +11991,6 @@ msgstr "Zmień zdjęcie"
 #: 
 msgid "Changes will not take effect until next logon."
 msgstr "Zmiany wejdą w życie przy następnym logowaniu."
-
-#: 
-msgid "Choose between light and dark color scheme"
-msgstr "Wybierz między jasnym a ciemnym schematem kolorów"
 
 #: 
 msgid "Customize the look and feel of the application"
@@ -13008,10 +12750,6 @@ msgid "Church information saved, but the address could not be auto-located. Plea
 msgstr "Informacje o parafii zostały zapisane, ale nie udało się automatycznie zlokalizować adresu. Wprowadź ręcznie szerokość i długość geograficzną w sekcji Współrzędne mapy."
 
 #: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Współrzędne są automatycznie wykrywane z adresu podczas zapisywania (przez OpenStreetMap). Możesz je również wprowadzić ręcznie poniżej — wartości ręczne zawsze mają pierwszeństwo przed automatycznym wykrywaniem. Pozostaw oba pola puste, aby system dokonał geokodowania na podstawie adresu."
-
-#: 
 msgid "Latitude must be a number between -90 and 90."
 msgstr "Szerokość geograficzna musi być liczbą z zakresu od -90 do 90."
 
@@ -13699,10 +13437,6 @@ msgstr "Prześlij plik CSV, aby masowo tworzyć rodziny i osoby."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Twój plik CSV ma zduplikowane nazwy kolumn. Zmień nazwy zduplikowanych kolumn (np. dodaj \"(2)\" do drugiej) i prześlij ponownie."
 
-#: 
-msgid "Invalid security token. Please try again."
-msgstr "Nieprawidłowy token bezpieczeństwa. Spróbuj ponownie."
-
 #. plugin:holidays:summary
 #: 
 msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
@@ -13734,10 +13468,6 @@ msgstr "Dni wolne (%s)"
 #: 
 msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr "Dni wolne są oznaczane według typu: Urzędowe, Obchody, Dni bankowe, Sezonowe i Religijne. Pozostaw wszystkie kategorie niezaznaczone, aby wyświetlić wszystkie święta, lub wybierz określone typy."
-
-#: 
-msgid "Missing pledge identifier."
-msgstr "Brak identyfikatora zobowiązania finansowego."
 
 #: 
 msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
@@ -14276,10 +14006,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Czy na pewno chcesz kontynuować?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Czy na pewno chcesz usunąć tę ofiarę?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Czy na pewno chcesz usunąć ten typ zdarzenia? Tej operacji nie można cofnąć."
 
@@ -14530,10 +14256,6 @@ msgstr "Dane demonstracyjne są zazwyczaj ładowane tylko przy nowych instalacja
 #: 
 msgid "Deposit ID"
 msgstr "ID wpłaty"
-
-#: 
-msgid "Deposit Total"
-msgstr "Suma wpłaty"
 
 #: 
 msgid "Deposit Value"
@@ -16878,10 +16600,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s z rodziny %2$s"
 
 #: 
-msgid "%d more entries will fit."
-msgstr "Zmieści się jeszcze %d wpisów."
-
-#: 
 msgid "%d record(s) returned"
 msgstr "Zwrócono %d rekord(ów)"
 
@@ -16980,10 +16698,6 @@ msgstr "Minimalna łączna kwota"
 #: 
 msgid "Minimum bid $%s."
 msgstr "Minimalna oferta: %s zł."
-
-#: 
-msgid "New Payment - %1$s Deposit # %2$s (%3$s)"
-msgstr "Nowa płatność – %1$s depozyt nr %2$s (%3$s)"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17392,4 +17106,692 @@ msgstr "Przejrzyj poniżej nowe rejestracje z publicznego formularza. Wpisy bez 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Potwierdzenie usunięcia możliwości wolontariatu"
+
+#: 
+msgid "# Payments"
+msgstr "# Ofiar"
+
+#: 
+msgid "# Pledges"
+msgstr "# Zobowiązań"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Ofiara to rzeczywista otrzymana darowizna. Zostanie dodana do wybranego depozytu."
+
+#: 
+msgid "Add Fund"
+msgstr "Dodaj fundusz"
+
+#: 
+msgid "Amount ($)"
+msgstr "Kwota ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Kwota przekracza dozwolone maksimum (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Wystąpił błąd podczas zapisywania. Proszę spróbować ponownie."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Anonimowa telemetria"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Poziom anonimowej telemetrii. Kontroluje, ile anonimowych danych diagnostycznych jest udostępnianych zespołowi ChurchCRM. Nigdy nie są wysyłane nazwy parafii, dane wiernych ani informacje osobiste."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Czy na pewno chcesz trwale usunąć ten rekord ofiary?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Wymagane jest co najmniej jedno przypisanie do funduszu"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Co najmniej jeden fundusz musi mieć kwotę różną od zera"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Automatycznie wysyłaj e-mail z życzeniami urodzinowymi do osób w dniu ich urodzin"
+
+#: 
+msgid "Back to Finance"
+msgstr "Powrót do finansów"
+
+#: 
+msgid "Back to Group"
+msgstr "Powrót do grupy"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Nie można przygotować zapytania."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Przechwytuj błędy JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Przechwytuj powtarzające się błędy"
+
+#: 
+msgid "Check #"
+msgstr "Nr czeku"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Nazwa parafii, adres lub dane kontaktowe"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Wersja ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Poziom zbierania danych"
+
+#: 
+msgid "Count unique installs"
+msgstr "Zliczaj unikalne instalacje"
+
+#: 
+msgid "Data"
+msgstr "Dane"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Dane są przetwarzane przez PostHog na infrastrukturze UE."
+
+#: 
+msgid "Date is required"
+msgstr "Data jest wymagana"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Usunięto pomyślnie"
+
+#: 
+msgid "Deposit #"
+msgstr "Nr depozytu"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Blankiet depozytu"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Edytuj zobowiązanie"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Edytuj istniejące zobowiązanie lub ofiarę"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Edycja ofiary"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Edycja zobowiązania"
+
+#: 
+msgid "Enable (full)"
+msgstr "Włącz (pełny)"
+
+#: 
+msgid "Errors only"
+msgstr "Tylko błędy"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Błędy — błędy serwera i wyjątki JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Nie udało się utworzyć zobowiązania"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Nie udało się usunąć zobowiązania"
+
+#: 
+msgid "Failed to encode payment response"
+msgstr "Nie udało się zakodować odpowiedzi dotyczącej ofiary"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Nie udało się pobrać zobowiązania"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Nie udało się zaktualizować zobowiązania"
+
+#: 
+msgid "Family is required"
+msgstr "Rodzina jest wymagana"
+
+#: 
+msgid "Financial data"
+msgstr "Dane finansowe"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Pełny — wszystkie powyższe oraz odsłony stron"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Pełny — odsłony stron, ostrzeżenia, błędy i wyjątki JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Podsumowanie funduszu"
+
+#: 
+msgid "Group key is required"
+msgstr "Klucz grupy jest wymagany"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Wszystkiego najlepszego z okazji urodzin"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Pomóż ulepszyć ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Adresy IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID instalacji"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Interaktywne podsumowanie zobowiązań i ofiar według funduszu z sortowaniem, wyszukiwaniem i eksportem."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Wewnętrzne: ostatnia data wysłania e-maili urodzinowych (RRRR-MM-DD). Nie edytować ręcznie."
+
+#: 
+msgid "JS exceptions"
+msgstr "Wyjątki JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Poziom dziennika + komunikat"
+
+#: 
+msgid "Member or family records"
+msgstr "Rekordy wiernych lub rodzin"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Zmień rolę tego członka grupy"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Błąd sieci, proszę spróbować ponownie"
+
+#: 
+msgid "Never sent"
+msgstr "Nigdy nie wysłano"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Brak depozytu / utwórz nowy depozyt"
+
+#: 
+msgid "No pledge"
+msgstr "Brak zobowiązania"
+
+#: 
+msgid "No thanks"
+msgstr "Nie, dziękuję"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Nieodliczany"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Nieodliczany ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Kwota nieodliczana nie może przekraczać kwoty funduszu"
+
+#: 
+msgid "None (disabled)"
+msgstr "Brak (wyłączone)"
+
+#: 
+msgid "OS family"
+msgstr "Rodzina systemu operacyjnego"
+
+#: 
+msgid "Overpaid"
+msgstr "Nadpłata"
+
+#: 
+msgid "PHP version"
+msgstr "Wersja PHP"
+
+#: 
+msgid "Page route"
+msgstr "Ścieżka strony"
+
+#: 
+msgid "Payment Details"
+msgstr "Szczegóły ofiary"
+
+#: 
+msgid "Payment Method"
+msgstr "Metoda płatności"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Planuj wsparcie środowiska uruchomieniowego"
+
+#: 
+msgid "Please enter a date"
+msgstr "Proszę wprowadzić datę"
+
+#: 
+msgid "Please select a family"
+msgstr "Proszę wybrać rodzinę"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Proszę wybrać fundusz dla wszystkich wierszy"
+
+#: 
+msgid "Pledge Details"
+msgstr "Szczegóły zobowiązania"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Nie znaleziono grupy zobowiązań"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Zobowiązania i ofiary"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Nadaj priorytet tłumaczeniom"
+
+#: 
+msgid "Purpose"
+msgstr "Cel"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Zapisz i dodaj kolejny"
+
+#: 
+msgid "Save failed"
+msgstr "Zapisywanie nie powiodło się"
+
+#: 
+msgid "Saved successfully"
+msgstr "Zapisano pomyślnie"
+
+#: 
+msgid "Select a fund"
+msgstr "Wybierz fundusz"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Wyślij do siebie testowy e-mail urodzinowy"
+
+#: 
+msgid "Sending to"
+msgstr "Wysyłanie do"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Udostępnij anonimowe statystyki użytkowania zespołowi ChurchCRM, abyśmy wiedzieli, którym funkcjom i językom nadać priorytet. Nigdy nie są wysyłane nazwy parafii, dane wiernych ani informacje osobiste."
+
+#: 
+msgid "Test email sent to"
+msgstr "Testowy e-mail wysłany do"
+
+#: 
+msgid "Track adoption"
+msgstr "Śledź adopcję"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Typ musi być 'Pledge' lub 'Payment'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL-e z ciągami zapytań (identyfikatory rekordów są usuwane)"
+
+#: 
+msgid "Underpaid"
+msgstr "Niedopłata"
+
+#: 
+msgid "Understand deployments"
+msgstr "Zrozum wdrożenia"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Zrozum wykorzystanie funkcji"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Nazwy użytkowników, adresy e-mail ani role"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Wyświetl szczegóły zobowiązania lub ofiary"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Ostrzeżenia — ostrzeżenia, błędy i wyjątki JS"
+
+#: 
+msgid "What is sent"
+msgstr "Co jest wysyłane"
+
+#: 
+msgid "What we collect"
+msgstr "Co zbieramy"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Życzymy wspaniałych %d urodzin!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Życzymy wspaniałych urodzin!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Twoje konto nie ma zapisanego adresu e-mail. Dodaj go do swojego profilu, aby wysłać test."
+
+#: 
+msgid "errors+"
+msgstr "błędy+"
+
+#: 
+msgid "full only"
+msgstr "tylko pełny"
+
+#: 
+msgid "is thinking of you today."
+msgstr "myśli dziś o Tobie."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "ścieżki stron, aktywna lokalizacja, wersja CRM, wersja PHP, rodzina systemu operacyjnego i losowy identyfikator instalacji. Nic więcej. Dane są przechowywane w UE."
+
+#: 
+msgid "% Paid"
+msgstr "% Zaplacono"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Prosimy o weryfikacje danych rodziny"
+
+#: 
+msgid "Add Role"
+msgstr "Dodaj role"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Dodaj niestandardowe wlasciwosci dla tej grupy"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adres zmieniony od czasu ostatniego ustawienia wspolrzednych."
+
+#: 
+msgid "All Tellers"
+msgstr "Wszyscy kasjerzy"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Wszystkie wiadomosci e-mail nie zostaly wyslane. Sprawdz ustawienia SMTP w Ustawieniach systemowych."
+
+#: 
+msgid "Amount Max"
+msgstr "Kwota maksymalna"
+
+#: 
+msgid "Amount Min"
+msgstr "Kwota minimalna"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Wystapil nieoczekiwany blad podczas wysylania wiadomosci e-mail. Sprawdz ustawienia SMTP i dzienniki serwera."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Czy na pewno chcesz usunac role '{{name}}'?"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Auto stosuje ustawienie systemu operacyjnego lub przegladarki; Jasny i Ciemny je nadpisuja"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Powrot do panelu zobowiazan"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Kliknij \"Generuj wspolrzedne\", aby wyszukac lokalizacje na mapie dla powyzszego adresu, lub wprowadz szerokosc/dlugosc geograficzna recznie. Jesli pole pozostanie puste, wspolrzedne zostana wykryte automatycznie podczas zapisywania formularza."
+
+#: 
+msgid "Contributor"
+msgstr "Ofiarodawca"
+
+#: 
+msgid "Contributors"
+msgstr "Ofiarodawcy"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Nie mozna znalezc wspolrzednych dla tego adresu. Sprobuj wprowadzic je recznie."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Niestandardowe wlasciwosci dla tej grupy"
+
+#: 
+msgid "Delete role"
+msgstr "Usun role"
+
+#: 
+msgid "Email Error"
+msgstr "Blad e-mail"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Poczta e-mail nie jest skonfigurowana. Skonfiguruj ustawienia SMTP w Ustawieniach systemowych."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Najpierw wprowadz adres ulicy."
+
+#: 
+msgid "Enter role name"
+msgstr "Wprowadz nazwe roli"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Nie udalo sie utworzyc depozytu"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Nie udalo sie zaladowac podgladu wiadomosci e-mail"
+
+#: 
+msgid "From Date"
+msgstr "Od daty"
+
+#: 
+msgid "Fund Total"
+msgstr "Suma funduszu"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Podsumowanie zobowiazan ofiarodawcow funduszu wedlug roku obrachunkowego"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Zbiorka jest wylaczona"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Generuj wspolrzedne"
+
+#: 
+msgid "Generating..."
+msgstr "Generowanie..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Zadanie geokodowania nie powiodlo sie. Sprobuj ponownie."
+
+#: 
+msgid "Manage Events"
+msgstr "Zarzadzaj wydarzeniami"
+
+#: 
+msgid "N/A"
+msgstr "N/D"
+
+#: 
+msgid "New Deposit"
+msgstr "Nowy depozyt"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Nie znaleziono ofiarodawcow dla tego funduszu w wybranym roku obrachunkowym"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Nie znaleziono rodzin z adresem e-mail. Nic nie zostalo wyslane."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Nie znaleziono platnosci dla wybranych depozytow"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Nie podano prawidlowych identyfikatorow depozytow"
+
+#: 
+msgid "Partial Send"
+msgstr "Czesciowe wyslanie"
+
+#: 
+msgid "Payments only"
+msgstr "Tylko platnosci"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Kwota zobowiazania"
+
+#: 
+msgid "Preview"
+msgstr "Podglad"
+
+#: 
+msgid "Retry"
+msgstr "Sprobuj ponownie"
+
+#: 
+msgid "Search"
+msgstr "Szukaj"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Wyszukuj i zarzadzaj zapisami asygnat depozytowych"
+
+#: 
+msgid "Select All"
+msgstr "Zaznacz wszystko"
+
+#: 
+msgid "Send Emails"
+msgstr "Wyslij wiadomosci e-mail"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Wyslij e-maile weryfikacyjne do rodzin"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Wyslano %1$d z %2$d — do %3$d rodzin nie udalo sie dotrzec."
+
+#: 
+msgid "Show in Profile"
+msgstr "Pokaz w profilu"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Wyswietlanie sumy tylko dla wybranego funduszu"
+
+#: 
+msgid "Teller"
+msgstr "Kasjer"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "To jedyna rola w tej grupie."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Tej roli nie mozna usunac."
+
+#: 
+msgid "To Date"
+msgstr "Do daty"
+
+#: 
+msgid "Total Pledged"
+msgstr "Laczne zobowiazania"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Nieoczekiwany blad podczas wysylania wiadomosci e-mail. Sprawdz dzienniki."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Uzywa powyzszego adresu ulicy do wyszukiwania wspolrzednych za pomoca OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Wyswietl platnosc"
+
+#: 
+msgid "View Pledge"
+msgstr "Wyswietl zobowiazanie"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Po zaznaczeniu ta wlasciwosc bedzie wyswietlana obok grupy na liscie grup osoby na jej stronie profilu."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Nazwisko rodziny]"
+
+#: 
+msgid "row selected"
+msgstr "wiersz wybrany"
+
+#: 
+msgid "rows selected"
+msgstr "wiersze wybrane"
 
