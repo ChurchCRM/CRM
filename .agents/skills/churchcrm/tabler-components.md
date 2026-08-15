@@ -1084,9 +1084,11 @@ Settings saved via `POST /api/user/{userId}/setting/{settingName}` with `{value:
 <i class="ti ti-logout"></i>      <!-- Sign out -->
 <i class="ti ti-key"></i>         <!-- Password -->
 <i class="ti ti-shield"></i>      <!-- Security/2FA -->
-<i class="fa-solid fa-bug"></i>    <!-- Report issue (FA: ti-bug fails post-7.6.0, see #9441) -->
-<i class="fa-solid fa-book"></i>   <!-- Documentation (FA: ti-book fails post-7.6.0, see #9441) -->
-<i class="fa-solid fa-headset"></i> <!-- Support (FA: ti-headset fails post-7.6.0, see #9441) -->
+<i class="fa-solid fa-bug"></i>       <!-- Report issue (FA: ti-bug fails post-7.6.0, see #9441) -->
+<i class="fa-solid fa-book"></i>      <!-- Documentation (FA: ti-book fails post-7.6.0, see #9441) -->
+<i class="fa-solid fa-headset"></i>   <!-- Support (FA: ti-headset fails post-7.6.0, see #9441) -->
+<i class="fa-solid fa-file-csv"></i>  <!-- DataTables CSV export (FA: ti-table-export fails post-7.6.0, see #9441) -->
+<i class="fa-solid fa-print"></i>     <!-- DataTables print (FA: ti-printer fails post-7.6.0, see #9441) -->
 <i class="ti ti-confetti"></i>    <!-- New release -->
 <i class="ti ti-users"></i>       <!-- Group/team -->
 ```
