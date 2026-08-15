@@ -325,28 +325,29 @@ function analyzeFile(filePath, englishOkSet = new Set()) {
 // ── POEditor API helpers ─────────────────────────────────────────────────────
 
 /**
- * Converts i18next nested plural structure to POEditor's inverted format for upload.
+ * Converts i18next nested plural structure to pipe-separated plural format for POEditor.
  *
- * POEditor's key_value_json upload format expects plural terms grouped BY plural form
- * (inverted layout):
- *   { "one": { term1: "...", term2: "..." }, "other": { term1: "...", term2: "..." } }
+ * POEditor's key_value_json format understands pipe-separated plurals (standard gettext):
+ *   "term": "singular form|plural form"
  *
- * i18next locally uses nested structure (each term owns its plural forms):
- *   { term1: { "one": "...", "other": "..." }, term2: { ... } }
+ * i18next nested plural structure:
+ *   "term": { "one": "singular", "other": "plural" }
  *
- * This function mirrors restructurePluralForms() but in reverse: nested → inverted.
- * Handles all CLDR plural categories (zero/one/two/few/many/other).
- * Plain string terms and non-plural objects are passed through unchanged.
+ * This converts nested → pipe-separated so POEditor properly recognizes plural forms
+ * in terms with numeric tokens like {{count}} and {{max}}.
+ *
+ * Handles all CLDR plural categories (zero/one/two/few/many/other), preserving order:
+ * zero, one, two, few, many, other.
  */
-function invertPluralForms(data) {
+function convertPluralsToSeparated(data) {
     if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
 
-    const inverted = {};
+    const result = {};
 
     for (const [term, value] of Object.entries(data)) {
         if (typeof value === 'string') {
             // Plain string term — pass through unchanged
-            inverted[term] = value;
+            result[term] = value;
         } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
             // Check if this is a plural form object (has CLDR keys)
             const pluralKeys = Object.keys(value).filter(k =>
@@ -354,27 +355,30 @@ function invertPluralForms(data) {
             );
 
             if (pluralKeys.length > 0) {
-                // This is a plural term — invert it
-                for (const form of pluralKeys) {
-                    if (!inverted[form]) inverted[form] = {};
-                    inverted[form][term] = value[form];
-                }
+                // This is a plural term — convert to pipe-separated format
+                // Order matters: use CLDR canonical order, but only include forms that exist
+                const forms = CLDR_PLURAL_FORMS
+                    .filter(form => pluralKeys.includes(form) && value[form])
+                    .map(form => value[form]);
+
+                // Pipe-separate the forms (POEditor standard for plural support)
+                result[term] = forms.join('|');
             } else {
                 // Non-plural object (namespace segment) — pass through unchanged
-                inverted[term] = value;
+                result[term] = value;
             }
         } else {
-            inverted[term] = value;
+            result[term] = value;
         }
     }
 
-    return inverted;
+    return result;
 }
 
 /**
  * Builds a key_value_json object ready for file import.
  * Only includes terms that have at least one non-empty translated form.
- * Inverts plural structure from i18next nested to POEditor's inverted format.
+ * Converts nested plurals to pipe-separated format for POEditor compatibility.
  */
 function buildKeyValueJson(terms) {
     const out = {};
@@ -391,8 +395,8 @@ function buildKeyValueJson(terms) {
             if (Object.keys(filled).length > 0) out[term] = filled;
         }
     }
-    // Convert from i18next nested format to POEditor's inverted format for upload
-    return invertPluralForms(out);
+    // Convert nested plural forms to pipe-separated format (POEditor standard for plurals)
+    return convertPluralsToSeparated(out);
 }
 
 /**

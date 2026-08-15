@@ -143,6 +143,51 @@ async function fetchUntranslatedTerms(poEditorLocale) {
 const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
 
 /**
+ * Convert pipe-separated plurals to nested plural format for i18next.
+ *
+ * POEditor's key_value_json format with plural support uses pipe-separated strings:
+ *   "Copied {{count}} members": "Copied {{count}} member|Copied {{count}} members"
+ *
+ * i18next expects nested structure:
+ *   "Copied {{count}} members": { "one": "...", "other": "..." }
+ *
+ * This function detects pipe-separated plurals and converts them to nested format.
+ * Handles all CLDR plural categories in order: zero, one, two, few, many, other.
+ */
+function convertPipeSeparatedPlurals(data) {
+    if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
+
+    const result = {};
+
+    for (const [term, value] of Object.entries(data)) {
+        if (typeof value === 'string') {
+            // Check if this is a pipe-separated plural (contains | and multiple non-empty parts)
+            const parts = value.split('|').map(s => s.trim());
+            if (parts.length > 1 && parts.every(p => p.length > 0)) {
+                // This looks like a pipe-separated plural
+                // Map parts to CLDR forms in order: zero, one, two, few, many, other
+                const pluralForms = {};
+                CLDR_PLURAL_FORMS.slice(0, parts.length).forEach((form, index) => {
+                    if (parts[index]) pluralForms[form] = parts[index];
+                });
+                if (Object.keys(pluralForms).length > 1) {
+                    result[term] = pluralForms;
+                } else {
+                    result[term] = value;
+                }
+            } else {
+                result[term] = value;
+            }
+        } else {
+            // Already nested or non-string — pass through
+            result[term] = value;
+        }
+    }
+
+    return result;
+}
+
+/**
  * Restructure POEditor's inverted plural export into i18next's nested shape.
  *
  * POEditor's key_value_json format groups translated plural terms BY plural
@@ -400,11 +445,14 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                             return;
                         }
                         if (format.ext === 'json') {
-                            // Re-nest POEditor's inverted plural-form export into the nested
-                            // shape i18next expects, then normalise formatting and add newline.
+                            // Convert POEditor formats (pipe-separated and inverted plurals) to i18next nested format:
+                            // 1. Pipe-separated plurals: "singular|plural" → { one: "singular", other: "plural" }
+                            // 2. Inverted plural buckets: { one: { term: "..." } } → { term: { one: "..." } }
+                            // Then normalise formatting and add newline.
                             try {
                                 const parsed = JSON.parse(fileData.toString('utf8'));
-                                const restructured = restructurePluralForms(parsed);
+                                let converted = convertPipeSeparatedPlurals(parsed);
+                                const restructured = restructurePluralForms(converted);
                                 fileData = Buffer.from(JSON.stringify(restructured, null, 2) + '\n', 'utf8');
                             } catch (err) {
                                 reject(new Error(`Failed to restructure plural forms for ${format.type}: ${err.message}`));
@@ -533,6 +581,7 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
             console.log(`  ⏭️  Skipping missing-terms for ${locale} (skip_audit)`);
         } else {
             let missing = await fetchUntranslatedTerms(poEditorLocale);
+            missing = convertPipeSeparatedPlurals(missing);
             missing = restructurePluralForms(missing);
             const termCount = Object.keys(missing).length;
 
