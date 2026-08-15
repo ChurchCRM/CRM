@@ -121,7 +121,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
         <form name="issueReport">
           <input type="hidden" name="pageName" value="<?= InputUtils::escapeAttribute($_SERVER['REQUEST_URI'] ?? '') ?>"/>
           <div class="modal-header">
-            <h5 class="modal-title"><i class="fa-solid fa-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
+            <h5 class="modal-title"><i class="ti ti-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
           </div>
           <div class="modal-body">
@@ -210,7 +210,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
                   buttons: [
                       {
                           extend: 'csv',
-                          text: '<i class="fa-solid fa-file-csv"></i>',
+                          text: '<i class="ti ti-table-export"></i>',
                           titleAttr: 'Export CSV',
                           exportOptions: {
                               columns: ':not(.no-export)'
@@ -218,7 +218,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
                       },
                       {
                           extend: 'print',
-                          text: '<i class="fa-solid fa-print"></i>',
+                          text: '<i class="ti ti-printer"></i>',
                           titleAttr: 'Print',
                           exportOptions: {
                               columns: ':not(.no-export)'
@@ -335,7 +335,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
             <?php } ?>
             <a href="https://github.com/ChurchCRM/CRM/releases/latest" target="_blank"
                class="dropdown-item" title="<?= gettext('Release Notes') ?>">
-              <i class="fa-solid fa-book me-2"></i><?= gettext('Release Notes') ?>
+              <i class="ti ti-notebook me-2"></i><?= gettext('Release Notes') ?>
             </a>
           </div>
         </div>
@@ -358,7 +358,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
         <!-- Cart -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0 position-relative" data-bs-toggle="dropdown" href="#">
-            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="ti ti-shopping-cart"></i>
             <?php if (Cart::countPeople() > 0): ?>
             <span class="badge bg-info position-absolute top-0 end-0 small" id="iconCount"><?= Cart::countPeople() ?></span>
             <?php else: ?>
@@ -373,27 +373,27 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
         <!-- Support -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#" id="supportMenu">
-            <i class="fa-solid fa-headset"></i>
+            <i class="ti ti-headset"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item"
                title="<?= gettext('Documentation') ?>">
-              <i class="fa-solid fa-book me-2"></i><?= gettext('Documentation') ?>
+              <i class="ti ti-book me-2"></i><?= gettext('Documentation') ?>
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" id="reportIssue" class="dropdown-item"
                data-bs-toggle="modal" data-bs-target="#IssueReportModal"
                title="<?= gettext('Report an issue') ?>">
-              <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an issue') ?>
+              <i class="ti ti-bug me-2"></i><?= gettext('Report an issue') ?>
             </a>
             <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" class="dropdown-item"
                title="<?= gettext('Discord Chat') ?>">
-              <i class="fa-brands fa-discord me-2"></i><?= gettext('Discord Chat') ?>
+              <i class="ti ti-brand-discord me-2"></i><?= gettext('Discord Chat') ?>
             </a>
             <div class="dropdown-divider"></div>
             <a href="https://docs.churchcrm.io/contributing" target="_blank" class="dropdown-item"
                title="<?= gettext('Contributing') ?>">
-              <i class="fa-brands fa-github me-2"></i><?= gettext('Documentation') ?>
+              <i class="ti ti-brand-github me-2"></i><?= gettext('Documentation') ?>
             </a>
           </div>
         </div>
