@@ -392,7 +392,9 @@ describe("Standard Calendar — save (admin-session)", () => {
             if (nonEmpty) cy.get("#linkedGroupSelect").select(nonEmpty);
         });
 
-        cy.get("#eventSaveBtn").click();
+        // Same TomSelect→validate() race as the first save-path test above;
+        // force-click and rely on the @createEvent intercept as the correctness gate.
+        cy.get("#eventSaveBtn").click({ force: true });
         cy.wait("@createEvent").then((intercepted) => {
             expect(intercepted.request.body.InActive).to.eq(1);
             expect(intercepted.request.body).to.have.property("LinkedGroupId");
