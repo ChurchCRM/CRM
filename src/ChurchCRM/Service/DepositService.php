@@ -209,16 +209,17 @@ class DepositService {
         // and adds the totalAmount virtual column.
         $query = DepositQuery::create();
 
-        if (!empty($filters['dateStart'])) {
-            $query->filterByDate(['min' => $filters['dateStart']]);
-        }
-        if (!empty($filters['dateEnd'])) {
-            $query->filterByDate(['max' => $filters['dateEnd']]);
-        }
-        // Fiscal-year filter: translate fyid to a date range. fyid=0 means All Time.
+        // fyid overrides dateStart/dateEnd: only one date-range block fires.
         if (!empty($filters['fyid']) && (int) $filters['fyid'] > 0) {
             $fyDates = FiscalYearUtils::getFiscalYearDatesById((int) $filters['fyid']);
             $query->filterByDate(['min' => $fyDates['startDate'], 'max' => $fyDates['endDate']]);
+        } else {
+            if (!empty($filters['dateStart'])) {
+                $query->filterByDate(['min' => $filters['dateStart']]);
+            }
+            if (!empty($filters['dateEnd'])) {
+                $query->filterByDate(['max' => $filters['dateEnd']]);
+            }
         }
         if (!empty($filters['depositId'])) {
             $query->filterById((int) $filters['depositId']);
