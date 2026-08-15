@@ -12,8 +12,8 @@ class FullCalendarEvent
 
     public string $title;
     public string $start; // date-string
-    public ?string $backgroundColor = null;
-    public ?string $textColor = null;
+    public ?string $color = null;
+    public ?string $contrastColor = null;
     public ?string $end = null; // date-string
     public bool $allDay;
     public ?string $url = null;
@@ -40,8 +40,8 @@ class FullCalendarEvent
         }
         
         $fce->id = $CRMEvent->getId();
-        $fce->backgroundColor = '#' . $CRMCalendar->getBackgroundColor();
-        $fce->textColor = '#' . $CRMCalendar->getForegroundColor();
+        $fce->color = '#' . $CRMCalendar->getBackgroundColor();
+        $fce->contrastColor = '#' . $CRMCalendar->getForegroundColor();
         $fce->editable = $CRMEvent->isEditable();
 
         $url = $CRMEvent->getURL();
