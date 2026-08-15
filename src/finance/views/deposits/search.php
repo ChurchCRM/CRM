@@ -76,7 +76,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="row g-3 mb-2">
             <div class="col-md-3">
               <label for="deposit-slip-fyid" class="form-label"><?= gettext('Fiscal Year') ?></label>
-              <select class="form-select" id="deposit-slip-fyid" name="fyid" onchange="this.form.submit();">
+              <select class="form-select" id="deposit-slip-fyid" name="fyid" onchange="window.location.href = window.location.pathname + '?fyid=' + encodeURIComponent(this.value);">
                 <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
                 <?php foreach ($availableYears as $year): ?>
                 <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
