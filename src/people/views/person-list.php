@@ -33,8 +33,8 @@ function emptyOrUnassignedJSON($stuff): string
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // Load compiled webpack assets for people list
-echo '<link rel="stylesheet" href="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.css">';
-echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.js"></script>';
+echo '<link rel="stylesheet" href="' . SystemURLs::assetVersioned('/skin/v2/people-list.min.css') . '">';
+echo '<script src="' . SystemURLs::assetVersioned('/skin/v2/people-list.min.js') . '"></script>';
 // Classification list — each entry is {id, name} so the JS can set option values to
 // the real DB OptionId (not a positional index). This fixes mismatched Classification
 // filter links when OptionId and insertion-sequence diverge (issue #9182).

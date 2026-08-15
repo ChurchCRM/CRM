@@ -215,7 +215,7 @@ $(document).ready(function() {
 
 <?php
 // Load compiled webpack asset for family list interactions
-echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-family-list.min.js"></script>';
+echo '<script src="' . SystemURLs::assetVersioned('/skin/v2/people-family-list.min.js') . '"></script>';
 ?>
 <?php
 require SystemURLs::getDocumentRoot() .  '/Include/Footer.php';
