@@ -214,22 +214,23 @@ class SystemURLs
                 $dir = dirname($webPath); // '/skin/v2'
                 return $rootUrl . $dir . '/' . $manifest[$basename];
             }
-            // Asset not found in manifest.  Since webpack no longer emits
-            // un-hashed filenames for v2 bundles, the file_exists() fallback
-            // below will always miss and return an un-versioned URL that 404s.
-            // Log a warning so a missing or stale manifest is immediately
-            // diagnosable in the application log rather than showing up as
-            // a generic broken-asset report with no clear cause.
-            LoggerUtils::getAppLogger()->warning(
-                'v2 asset not found in asset-manifest.json — browser will receive a 404 for this asset',
-                [
-                    'asset'            => $webPath,
-                    'manifest_entries' => count($manifest),
-                    'hint'             => empty($manifest)
-                        ? 'Manifest is empty — run `npm run build:webpack` to generate asset-manifest.json'
-                        : 'Key "' . $basename . '" absent from manifest — manifest may be stale; re-run webpack',
-                ]
-            );
+            // Asset not found in manifest.
+            // Only warn per-asset when the manifest has entries but this specific
+            // key is absent (stale manifest after a rebuild). Skip per-asset noise
+            // when the whole manifest is empty — getAssetManifest() already logged
+            // the root cause (file missing, truncated, or unreadable), and emitting
+            // N per-asset warnings on every request until the worker is recycled
+            // would flood the log without adding diagnostic value.
+            if (!empty($manifest)) {
+                LoggerUtils::getAppLogger()->warning(
+                    'v2 asset not found in asset-manifest.json — browser will receive a 404 for this asset',
+                    [
+                        'asset'            => $webPath,
+                        'manifest_entries' => count($manifest),
+                        'hint'             => 'Key "' . $basename . '" absent from manifest — manifest may be stale; re-run webpack',
+                    ]
+                );
+            }
         }
 
         // Fallback: append ?v=<mtime> for cache-busting.
