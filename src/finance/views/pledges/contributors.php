@@ -61,7 +61,7 @@ $statusClasses = [
                 <?= gettext('Back to Pledge Dashboard') ?>
             </a>
             <?php if (\ChurchCRM\Authentication\AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-            <a href="<?= $sRootPathEsc ?>/DonationFundEditor.php" class="btn btn-outline-secondary">
+            <a href="<?= $sRootPathEsc ?>/finance/funds" class="btn btn-outline-secondary">
                 <i class="fa-solid fa-cog me-1"></i>
                 <?= gettext('Manage Funds') ?>
             </a>

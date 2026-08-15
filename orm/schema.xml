@@ -349,6 +349,9 @@
         <unique name="fun_ID">
             <unique-column name="fun_ID"/>
         </unique>
+        <unique name="fun_Name_unique">
+            <unique-column name="fun_Name"/>
+        </unique>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
