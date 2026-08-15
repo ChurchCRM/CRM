@@ -190,7 +190,9 @@ window.CRM.groups = {
     }
     if (isRoleOnly || isGroupAndRole) {
       bodyHtml +=
-        '<div class="mb-3' + (isGroupAndRole ? " d-none" : "") + '" id="crm-gs-role-wrapper">' +
+        '<div class="mb-3' +
+        (isGroupAndRole ? " d-none" : "") +
+        '" id="crm-gs-role-wrapper">' +
         '<label class="form-label fw-semibold">' +
         i18next.t("Select Role") +
         "</label>" +
