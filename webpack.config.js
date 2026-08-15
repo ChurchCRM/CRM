@@ -105,7 +105,11 @@ class AssetManifestPlugin {
       const outFile = path.join(compiler.outputPath, 'asset-manifest.json');
       try {
         fs.writeFileSync(outFile, JSON.stringify(manifest, null, 2));
-        console.log(`✅  Asset manifest: ${Object.keys(manifest).length} entries → ${path.relative(process.cwd(), outFile)}`);
+        if (Object.keys(manifest).length === 0) {
+          console.warn('⚠️  Asset manifest: 0 entries written — all v2 asset URLs will be unversioned');
+        } else {
+          console.log(`✅  Asset manifest: ${Object.keys(manifest).length} entries → ${path.relative(process.cwd(), outFile)}`);
+        }
       } catch (err) {
         console.warn(`Warning: Could not write asset-manifest.json: ${err.message}`);
       }
