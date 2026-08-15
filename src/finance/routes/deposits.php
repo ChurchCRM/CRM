@@ -4,6 +4,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\DepositService;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -21,8 +23,9 @@ $app->group('/deposit', function (RouteCollectorProxy $group): void {
      * DataTable so the URL always reflects current filter state.
      *
      * Query parameters (all optional):
-     *   dateStart   Y-m-d  Earliest deposit date (inclusive)
-     *   dateEnd     Y-m-d  Latest deposit date (inclusive)
+     *   fyid        int    Fiscal-year ID (0 = All Time; omitted = current FY)
+     *   dateStart   Y-m-d  Earliest deposit date (inclusive; overridden by fyid when fyid>0)
+     *   dateEnd     Y-m-d  Latest deposit date (inclusive; overridden by fyid when fyid>0)
      *   depositId   int    Exact deposit ID
      *   closed      0|1    Deposit status (0=open, 1=closed, ''=all)
      *   enteredBy   int    Teller person ID
@@ -31,10 +34,18 @@ $app->group('/deposit', function (RouteCollectorProxy $group): void {
      *   amountMax   float  Maximum total deposit amount
      */
     $group->get('/search', function (Request $request, Response $response): Response {
-        $depositService = new DepositService();
-        $queryParams    = $request->getQueryParams();
+        $depositService   = new DepositService();
+        $financialService = new FinancialService();
+        $queryParams      = $request->getQueryParams();
+
+        $currentFyid  = FiscalYearUtils::getCurrentFiscalYearId();
+        // Default to current FY when no fyid param is present; 0 = All Time.
+        $selectedFyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : $currentFyid;
+
+        $availableYears = $financialService->getAvailableDepositFiscalYears();
 
         $filters = [
+            'fyid'       => $selectedFyid,
             'dateStart'  => $queryParams['dateStart'] ?? '',
             'dateEnd'    => $queryParams['dateEnd'] ?? '',
             'depositId'  => $queryParams['depositId'] ?? '',
@@ -73,17 +84,20 @@ $app->group('/deposit', function (RouteCollectorProxy $group): void {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         $pageArgs = [
-            'sRootPath'     => SystemURLs::getRootPath(),
-            'sPageTitle'    => gettext('Deposits'),
-            'sPageSubtitle' => gettext('Search and manage deposit slip records'),
-            'aBreadcrumbs'  => PageHeader::breadcrumbs([
+            'sRootPath'      => SystemURLs::getRootPath(),
+            'sPageTitle'     => gettext('Deposits'),
+            'sPageSubtitle'  => gettext('Search and manage deposit slip records'),
+            'aBreadcrumbs'   => PageHeader::breadcrumbs([
                 [gettext('Finance'), '/finance/'],
                 [gettext('Deposits')],
             ]),
-            'deposits'      => $deposits,
-            'funds'         => $funds,
-            'tellerList'    => $tellerList,
-            'filters'       => $filters,
+            'deposits'       => $deposits,
+            'funds'          => $funds,
+            'tellerList'     => $tellerList,
+            'filters'        => $filters,
+            'availableYears' => $availableYears,
+            'selectedFyid'   => $selectedFyid,
+            'currentFyid'    => $currentFyid,
         ];
 
         return $renderer->render($response, 'deposits/search.php', $pageArgs);

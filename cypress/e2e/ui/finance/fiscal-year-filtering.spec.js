@@ -7,7 +7,7 @@
  *   1. Family Pledges & Payments (server-side fyid pill filter)
  *   2. Finance Dashboard → Recent Deposits (FY selector)
  *   3. Pledge Dashboard (FY selector, full-page reload)
- *   4. Find Deposit Slip (FY selector, DataTable reload)
+ *   4. Deposit Search (/finance/deposit/search: FY selector, form GET reload)
  *
  * Seed data facts (cypress/data/seed.sql):
  *   - Family 1 (Campbell): pledges in FYID 22 (2018), none in current FY
@@ -148,7 +148,8 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       // Navigate to a FY with known seed deposits: FY 22 (2018)
       // This triggers a page reload with ?fyid=22
       cy.get("#deposit-fyid").select(String(SEED_FYID_2018));
-      cy.url().should("include", `fyid=${SEED_FYID_2018}`);
+      // Use cy.location() — retries until the post-form-submit navigation settles
+      cy.location("search").should("include", `fyid=${SEED_FYID_2018}`);
 
       // Deposits table should show deposits from 2018 (FY22)
       cy.get(".card").contains("Recent Deposits").parent().parent()
@@ -191,7 +192,8 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.get("#fyid").select(String(SEED_FYID_2018));
 
       // URL should now contain fyid=22 (form GET submit)
-      cy.url().should("include", `fyid=${SEED_FYID_2018}`);
+      // Use cy.location() — retries until the post-form-submit navigation settles
+      cy.location("search").should("include", `fyid=${SEED_FYID_2018}`);
 
       // Both Fund Summary and Family Pledges reload together (same page request)
       cy.contains("Pledge Dashboard");
@@ -208,17 +210,23 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
     });
   });
 
+
   // ──────────────────────────────────────────────────────────────────
-  // 4. Find Deposit Slip: FY selector exists and defaults to current FY
+  // 4. Deposit Search (/finance/deposit/search): FY selector
+  //    NOTE: This page migrated from FindDepositSlip.php (legacy AJAX
+  //    DataTable) to an MVC server-side-rendered table. The FY selector
+  //    (#deposit-slip-fyid) now drives a form GET reload, not an AJAX
+  //    call, so assertions use cy.location().should() rather than
+  //    cy.intercept() waits.
   // ──────────────────────────────────────────────────────────────────
-  describe("Find Deposit Slip — FY selector", () => {
+  describe("Deposit Search (/finance/deposit/search) — FY selector", () => {
     beforeEach(() => {
       cy.setupAdminSession();
     });
 
     it("renders the FY selector with current FY selected by default", () => {
-      cy.visit("FindDepositSlip.php");
-      cy.contains("Deposit Listing");
+      cy.visit("finance/deposit/search");
+      cy.contains("Deposits");
 
       // FY selector exists
       cy.get("#deposit-slip-fyid").should("exist");
@@ -227,51 +235,46 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.get("#deposit-slip-fyid option").should("have.length.at.least", 2);
 
       // One of the options has an "(Current)" label indicator
-      cy.get("#deposit-slip-fyid option").should(
-        "contain.text",
-        "(Current)"
-      );
+      cy.get("#deposit-slip-fyid option").should("contain.text", "(Current)");
     });
 
-    it("DataTable initialises with FY-filtered AJAX URL", () => {
-      // Intercept the deposits API call and verify it uses the selected fyid
-      cy.intercept("GET", "**/api/deposits*").as("depositsApi");
-      cy.visit("FindDepositSlip.php");
-      cy.wait("@depositsApi").then((interception) => {
-        // Should include a fyid param (current FY default is set in PHP)
-        const url = interception.request.url;
-        expect(url).to.match(/fyid=\d+/);
-      });
+    it("visiting with ?fyid= param pre-selects the matching option", () => {
+      // Server-rendered: the selected attribute is set by PHP on page load.
+      cy.visit(`finance/deposit/search?fyid=${SEED_FYID_2018}`);
 
-      // Deposits table should render
+      // The FY22 option should be pre-selected
+      cy.get("#deposit-slip-fyid option:selected").should(
+        "have.value",
+        String(SEED_FYID_2018)
+      );
+
+      // Deposits table must be present
       cy.get("#depositsTable").should("be.visible");
     });
 
-    it("selecting All Time reloads the DataTable without fyid param", () => {
-      cy.intercept("GET", "**/api/deposits*").as("depositsInit");
-      cy.visit("FindDepositSlip.php");
-      cy.wait("@depositsInit");
+    it("selecting All Time submits the form and removes fyid from URL", () => {
+      cy.visit(`finance/deposit/search?fyid=${SEED_FYID_2018}`);
 
-      cy.intercept("GET", "**/api/deposits*").as("depositsAllTime");
-      cy.get("#deposit-slip-fyid").select("0"); // All Time
-      cy.wait("@depositsAllTime").then((interception) => {
-        // No fyid param → all deposits returned
-        expect(interception.request.url).not.to.include("fyid=");
-      });
+      // Selecting All Time (value "0") triggers onchange="this.form.submit()"
+      cy.get("#deposit-slip-fyid").select("0");
+
+      // cy.location() retries until the post-form-submit navigation settles
+      cy.location("search").should(
+        "satisfy",
+        (s) => s === "" || s === "?fyid=0"
+      );
     });
 
-    it("selecting FY 22 (2018) reloads the DataTable with fyid=22", () => {
-      cy.intercept("GET", "**/api/deposits*").as("depositsInit");
-      cy.visit("FindDepositSlip.php");
-      cy.wait("@depositsInit");
+    it("selecting FY 22 (2018) submits the form and filters the table", () => {
+      cy.visit("finance/deposit/search");
 
-      cy.intercept("GET", "**/api/deposits*").as("depositsFY22");
+      // Selecting a FY triggers onchange="this.form.submit()"
       cy.get("#deposit-slip-fyid").select(String(SEED_FYID_2018));
-      cy.wait("@depositsFY22").then((interception) => {
-        expect(interception.request.url).to.include(`fyid=${SEED_FYID_2018}`);
-      });
 
-      // Table should show the 2018 deposits (seed has 5 deposits in FY22)
+      // cy.location() retries until the post-form-submit navigation settles
+      cy.location("search").should("include", `fyid=${SEED_FYID_2018}`);
+
+      // Seed has 2018 deposits — at least one row must appear
       cy.get("#depositsTable tbody tr").should("have.length.at.least", 1);
     });
   });
