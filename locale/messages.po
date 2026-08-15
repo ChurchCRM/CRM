@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-15 18:53+0000\n"
+"POT-Creation-Date: 2026-08-15 19:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1938,6 +1938,9 @@ msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove
 msgstr ""
 
 msgid "Cannot delete: fund has associated pledges"
+msgstr ""
+
+msgid "Cannot edit a payment in a closed deposit"
 msgstr ""
 
 msgid "Cannot execute query."
@@ -4613,6 +4616,9 @@ msgstr ""
 msgid "Failed to create volunteer opportunity"
 msgstr ""
 
+msgid "Failed to decode payment request"
+msgstr ""
+
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
@@ -4683,9 +4689,6 @@ msgid "Failed to empty cart to group"
 msgstr ""
 
 msgid "Failed to enable plugin"
-msgstr ""
-
-msgid "Failed to encode payment response"
 msgstr ""
 
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
@@ -6420,6 +6423,9 @@ msgid "Invalid import request"
 msgstr ""
 
 msgid "Invalid login or password"
+msgstr ""
+
+msgid "Invalid payment data"
 msgstr ""
 
 msgid "Invalid person ID"
