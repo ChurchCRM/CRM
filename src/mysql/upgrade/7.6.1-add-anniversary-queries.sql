@@ -11,19 +11,13 @@ INSERT IGNORE INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Descriptio
   (300,
    'SELECT per_ID as AddToCart, DAYOFMONTH(fam_WeddingDate) as Day, DATE_FORMAT(fam_WeddingDate, \'%Y-%m-%d\') as Date, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per JOIN family_fam ON per_fam_ID=fam_ID WHERE per_fmr_ID IN (1,2) AND fam_WeddingDate IS NOT NULL AND MONTH(fam_WeddingDate)=~weddingmonth~ ORDER BY DAYOFMONTH(fam_WeddingDate), per_LastName',
    'Wedding Anniversaries',
-   'People with wedding anniversaries in a particular month (returns one row per spouse for cart use)',
+   'People with wedding anniversaries in a particular month',
    0),
   (301,
    'SELECT per_ID as AddToCart, \'Birthday\' as Type, per_BirthDay as Day, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_BirthMonth=~month~ AND per_BirthDay>0 UNION ALL SELECT per_ID as AddToCart, \'Anniversary\' as Type, DAYOFMONTH(fam_WeddingDate) as Day, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per JOIN family_fam ON per_fam_ID=fam_ID WHERE per_fmr_ID IN (1,2) AND fam_WeddingDate IS NOT NULL AND MONTH(fam_WeddingDate)=~month~ ORDER BY Day',
    'Birthdays & Anniversaries',
    'People with birthdays or wedding anniversaries in a particular month',
    0);
-
--- Correct description on query 300 if an earlier draft version had already been inserted.
-UPDATE `query_qry`
-SET `qry_Description` = 'People with wedding anniversaries in a particular month (returns one row per spouse for cart use)'
-WHERE `qry_ID` = 300
-  AND `qry_Description` = 'People with wedding anniversaries in a particular month';
 
 INSERT IGNORE INTO `queryparameters_qrp`
   (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_OptionSQL`, `qrp_Name`, `qrp_Description`,
