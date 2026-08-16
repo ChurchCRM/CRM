@@ -30,7 +30,7 @@ function escapeHtml(str) {
 function showError(message) {
   const mount = document.getElementById("event-editor-mount");
   if (!mount) return;
-  mount.innerHTML = `<div class="alert alert-danger mb-0"><i class="ti ti-alert-triangle me-1"></i>${escapeHtml(message)}</div>`;
+  mount.innerHTML = `<div class="alert alert-danger mb-0"><i class="fa-solid fa-triangle-exclamation me-1"></i>${escapeHtml(message)}</div>`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ` <strong>${escapeHtml(event.Title || "")}</strong>`,
             buttons: {
               cancel: { label: `<i class="ti ti-x"></i> ${t("Cancel")}` },
-              confirm: { label: `<i class="ti ti-trash"></i> ${t("Delete")}`, className: "btn-danger" },
+              confirm: { label: `<i class="fa-solid fa-trash"></i> ${t("Delete")}`, className: "btn-danger" },
             },
             callback: (confirmed) => {
               if (!confirmed) return;

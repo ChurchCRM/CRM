@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
             type: "danger",
             delay: 5000,
           });
-          $btn.prop("disabled", false).html(`<i class="ti ti-plus me-1"></i>${i18next.t("Create Today's Event")}`);
+          $btn.prop("disabled", false).html(`<i class="fa-solid fa-plus me-1"></i>${i18next.t("Create Today's Event")}`);
           return;
         }
         window.CRM.notify(
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .fail((jqXHR) => {
         const msg = jqXHR.responseJSON?.message || i18next.t("Failed to create event.");
         window.CRM.notify(msg, { type: "danger", delay: 5000 });
-        $btn.prop("disabled", false).html(`<i class="ti ti-plus me-1"></i>${i18next.t("Create Today's Event")}`);
+        $btn.prop("disabled", false).html(`<i class="fa-solid fa-plus me-1"></i>${i18next.t("Create Today's Event")}`);
       });
   });
 });
