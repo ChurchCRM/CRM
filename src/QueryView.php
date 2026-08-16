@@ -357,7 +357,13 @@ function getQueryParameterAdminLink(string $alias): ?array
         case 'volopp2':
             return ['url' => 'VolunteerOpportunityEditor.php', 'label' => gettext('Volunteer Opportunities')];
         case 'event':
-            return ['url' => 'event/editor', 'label' => gettext('Add Church Event')];
+            // event/editor requires AddEventsRoleAuthMiddleware (canManageEvents()),
+            // which is a stricter gate than the isAdmin() check on QueryView.php.
+            // Only return the link when the current user can actually reach the route.
+            if (AuthenticationManager::getCurrentUser()->canManageEvents()) {
+                return ['url' => 'event/editor', 'label' => gettext('Add Church Event')];
+            }
+            return null;
     }
     return null;
 }
@@ -384,6 +390,10 @@ function renderEmptyOptionState(string $qrp_Name, string $qrp_Alias): string
         $href  = InputUtils::escapeHTML($adminLink['url']);
         $label = InputUtils::escapeHTML($adminLink['label']);
         $msg  .= ' <a href="' . $href . '">' . $label . '</a>';
+    } else {
+        // Generic fallback: no dedicated admin page known for this alias.
+        // Keep the original guidance text so users still know action is required.
+        $msg .= ' ' . InputUtils::escapeHTML(gettext('Add the relevant records first.'));
     }
     return '<div class="text-muted small">' . $msg . '</div>';
 }
