@@ -66,7 +66,8 @@ class MiscUtils
             try {
                 return sprintf($monthStr, $age->m);
             } catch (\Throwable $e) {
-                return (string) $age->m; // graceful fallback: show the numeric age
+                error_log('Age formatting failed for locale string "' . $monthStr . '": ' . $e->getMessage());
+                return $age->m . ' ' . ngettext('month old', 'months old', $age->m);
             }
         }
 
@@ -74,7 +75,8 @@ class MiscUtils
         try {
             return sprintf($yearStr, $age->y);
         } catch (\Throwable $e) {
-            return (string) $age->y; // graceful fallback: show the numeric age
+            error_log('Age formatting failed for locale string "' . $yearStr . '": ' . $e->getMessage());
+            return $age->y . ' ' . ngettext('year old', 'years old', $age->y);
         }
     }
 
