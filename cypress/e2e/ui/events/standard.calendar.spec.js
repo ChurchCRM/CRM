@@ -192,7 +192,7 @@ describe("Standard Calendar", () => {
  * admin session instead of the standard one used above.
  */
 describe("Standard Calendar — save (admin-session)", () => {
-    beforeEach(() => cy.setupAdminSession());
+    beforeEach(() => cy.setupAdminSession({ forceLogin: true }));
 
     /**
      * Regression: new-event payload sent Type:0 (invalid) when the user
