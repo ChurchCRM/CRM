@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageFundraisersRoleAuthMiddleware;
@@ -274,13 +275,32 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
 // Visible to all authenticated users (moved outside role-restricted group).
 // Used by JavaScript to dynamically load the badge on page load (matches Calendar pattern).
 $app->get('/fundraisers/active-count', function (Request $request, Response $response): Response {
+    $logger = LoggerUtils::getAppLogger();
+    $logger->debug('[fundraisers/active-count] Endpoint called', ['user' => $GLOBALS['iUserID'] ?? null]);
+
     try {
-        $activeCount = (new FundRaiserService())->getActiveFundraiserCount();
+        $logger->debug('[fundraisers/active-count] Creating FundRaiserService');
+        $service = new FundRaiserService();
+
+        $logger->debug('[fundraisers/active-count] Calling getActiveFundraiserCount()');
+        $activeCount = $service->getActiveFundraiserCount();
+        $logger->debug('[fundraisers/active-count] Got count', ['count' => $activeCount]);
+
+        $json = json_encode(['count' => $activeCount], JSON_THROW_ON_ERROR);
+        $logger->debug('[fundraisers/active-count] Encoded JSON', ['json' => $json]);
+
         return $response
             ->withHeader('Content-Type', 'application/json')
             ->withStatus(200)
-            ->write(json_encode(['count' => $activeCount], JSON_THROW_ON_ERROR));
+            ->write($json);
     } catch (\Throwable $e) {
+        $logger->error('[fundraisers/active-count] Exception caught', [
+            'exception' => get_class($e),
+            'message' => $e->getMessage(),
+            'code' => $e->getCode(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+        ]);
         return SlimUtils::renderErrorJSON($response, gettext('Failed to get fundraiser count'), [], 500, $e, $request);
     }
 })->add(new FundraiserEnabledMiddleware());
