@@ -20,25 +20,38 @@ describe("Finance Family", () => {
 
         // Gate on initComplete having populated the FY dropdown.
         //
-        // The subdir CI environment (user 3) starts with finance.show.payments='0'
-        // and finance.show.pledges='0', so the page JS fires two POST requests to
-        // update these before initialising DataTables.  In some CI timing
-        // conditions this causes 2-4 rapid page reloads before settling.
+        // Background: the CI test runner may use a user whose
+        // finance.show.pledges / finance.show.payments settings start at '0'.
+        // FamilyView.js fires two POSTs to update those settings to 'true'
+        // before initialising DataTables, which in some CI timing conditions
+        // produces 2-4 rapid page reloads before the page settles.
         //
-        // cy.get() re-queries the live DOM on every retry, so it is safe to use
-        // through page reloads.  initComplete appends one FY <option> per fiscal
-        // year found in the data BEFORE calling draw(), so waiting for at least
-        // 2 options (static "All Time" + at least one FY added by initComplete)
-        // is a reliable signal that draw() has been called and rows are rendered.
+        // In DataTables 2.x (client-side mode), filtered-out rows are *removed*
+        // from the DOM — they only appear in <tbody> once the matching filter
+        // (or no filter) is applied.  initComplete appends one FY <option> per
+        // fiscal year found in the data synchronously before calling draw(), and
+        // auto-clears the FY filter when the family has no current-year data.
         //
-        // 30-second timeout covers any reload loop plus DataTable Ajax latency.
+        // Strategy:
+        //  1. Wait for ≥2 FY options — proves initComplete ran at least once.
+        //  2. Wait for ≥1 visible <tr> in <tbody> — proves the filter was cleared
+        //     and rows were written to the DOM.
+        //  3. Only then assert on specific content and filter interactions.
+        //
+        // 30-second timeouts cover any reload loop plus DataTable Ajax latency.
         cy.get("#giving-fy-select option", { timeout: 30000 }).should(
             "have.length.at.least",
             2,
         );
 
+        // After initComplete cleared the filter, actual data rows must be in the DOM
+        cy.get("#pledge-payment-v2-table tbody tr", { timeout: 30000 }).should(
+            "have.length.at.least",
+            1,
+        );
+
         // Data rows must now be visible
-        cy.contains("Music Ministry").should("be.visible");
+        cy.contains("Music Ministry");
 
         // Test type filter pills (client-side filter, independent of FY)
         cy.get('.pledge-type-pill[data-filter="Pledge"]').click();
@@ -64,6 +77,12 @@ describe("Finance Family", () => {
             2,
         );
 
-        cy.contains("New Building Fund").should("be.visible");
+        // Rows must be in the DOM (filter cleared)
+        cy.get("#pledge-payment-v2-table tbody tr", { timeout: 30000 }).should(
+            "have.length.at.least",
+            1,
+        );
+
+        cy.contains("New Building Fund");
     });
 });
