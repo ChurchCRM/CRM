@@ -729,7 +729,7 @@ private function renderError(
     int $status,
     string $title,
     string $message,
-    string $icon = 'ti-calendar-off',
+    string $icon = 'fa-calendar-slash',
 ): ResponseInterface {
     if ($this->prefersJson($request)) {
         return SlimUtils::renderJSON($response, [

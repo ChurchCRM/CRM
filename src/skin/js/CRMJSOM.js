@@ -592,14 +592,14 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
       "/people/family/" +
       familyId +
       '">' +
-      '<i class="ti ti-users me-2"></i>' +
+      '<i class="fa-solid fa-users me-2"></i>' +
       i18next.t("View Family") +
       "</a>"
     : "";
   return (
     '<div class="dropdown">' +
     '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
-    '<i class="ti ti-dots-vertical"></i>' +
+    '<i class="fa-solid fa-ellipsis-vertical"></i>' +
     "</button>" +
     '<div class="dropdown-menu dropdown-menu-end">' +
     '<a class="dropdown-item" href="' +
@@ -607,7 +607,7 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
     "/people/view/" +
     personId +
     '">' +
-    '<i class="ti ti-eye me-2"></i>' +
+    '<i class="fa-solid fa-eye me-2"></i>' +
     i18next.t("View") +
     "</a>" +
     (window.CRM.permissions && window.CRM.permissions.editRecords
@@ -616,7 +616,7 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
         "/PersonEditor.php?PersonID=" +
         personId +
         '">' +
-        '<i class="ti ti-pencil me-2"></i>' +
+        '<i class="fa-solid fa-pencil me-2"></i>' +
         i18next.t("Edit") +
         "</a>"
       : "") +
@@ -634,7 +634,7 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
     i18next.t("Remove from Cart") +
     '">' +
     '<i class="' +
-    (inCart ? "ti ti-shopping-cart-off" : "ti ti-shopping-cart-plus") +
+    (inCart ? "fa-solid fa-box-open" : "fa-solid fa-cart-shopping") +
     ' me-2"></i>' +
     '<span class="cart-label">' +
     (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) +
@@ -647,7 +647,7 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
     '" data-person_name="' +
     escapedName +
     '">' +
-    '<i class="ti ti-trash me-2"></i>' +
+    '<i class="fa-solid fa-trash me-2"></i>' +
     i18next.t("Delete") +
     "</button>" +
     "</div></div>"
@@ -670,7 +670,7 @@ window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
   return (
     '<div class="dropdown">' +
     '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
-    '<i class="ti ti-dots-vertical"></i>' +
+    '<i class="fa-solid fa-ellipsis-vertical"></i>' +
     "</button>" +
     '<div class="dropdown-menu dropdown-menu-end">' +
     '<a class="dropdown-item" href="' +
@@ -678,7 +678,7 @@ window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
     "/people/family/" +
     familyId +
     '">' +
-    '<i class="ti ti-eye me-2"></i>' +
+    '<i class="fa-solid fa-eye me-2"></i>' +
     i18next.t("View") +
     "</a>" +
     (window.CRM.permissions && window.CRM.permissions.editRecords
@@ -687,7 +687,7 @@ window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
         "/FamilyEditor.php?FamilyID=" +
         familyId +
         '">' +
-        '<i class="ti ti-pencil me-2"></i>' +
+        '<i class="fa-solid fa-pencil me-2"></i>' +
         i18next.t("Edit") +
         "</a>"
       : "") +
@@ -704,7 +704,7 @@ window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
     i18next.t("Remove from Cart") +
     '">' +
     '<i class="' +
-    (inCart ? "ti ti-shopping-cart-off" : "ti ti-shopping-cart-plus") +
+    (inCart ? "fa-solid fa-box-open" : "fa-solid fa-cart-shopping") +
     ' me-2"></i>' +
     '<span class="cart-label">' +
     (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) +
@@ -715,7 +715,7 @@ window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
     ' data-family_id="' +
     familyId +
     '">' +
-    '<i class="ti ti-trash me-2"></i>' +
+    '<i class="fa-solid fa-trash me-2"></i>' +
     i18next.t("Delete") +
     "</button>" +
     "</div></div>"
@@ -742,20 +742,20 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
     ? '<button type="button" class="dropdown-item activate-event" data-event_id="' +
       eventId +
       '">' +
-      '<i class="ti ti-circle-check me-2"></i>' +
+      '<i class="fa-solid fa-circle-check me-2"></i>' +
       i18next.t("Activate") +
       "</button>"
     : '<button type="button" class="dropdown-item deactivate-event" data-event_id="' +
       eventId +
       '">' +
-      '<i class="ti ti-circle-x me-2"></i>' +
+      '<i class="fa-solid fa-circle-xmark me-2"></i>' +
       i18next.t("Deactivate") +
       "</button>";
 
   return (
     '<div class="dropdown">' +
     '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
-    '<i class="ti ti-dots-vertical"></i>' +
+    '<i class="fa-solid fa-ellipsis-vertical"></i>' +
     "</button>" +
     '<div class="dropdown-menu dropdown-menu-end">' +
     '<a class="dropdown-item" href="' +
@@ -763,7 +763,7 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
     "/event/view/" +
     eventId +
     '">' +
-    '<i class="ti ti-eye me-2"></i>' +
+    '<i class="fa-solid fa-eye me-2"></i>' +
     i18next.t("View") +
     "</a>" +
     '<a class="dropdown-item" href="' +
@@ -771,7 +771,7 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
     "/event/editor/" +
     eventId +
     '">' +
-    '<i class="ti ti-pencil me-2"></i>' +
+    '<i class="fa-solid fa-pencil me-2"></i>' +
     i18next.t("Edit") +
     "</a>" +
     '<a class="dropdown-item" href="' +
@@ -779,7 +779,7 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
     "/event/checkin/" +
     eventId +
     '">' +
-    '<i class="ti ti-clipboard-check me-2"></i>' +
+    '<i class="fa-solid fa-clipboard-check me-2"></i>' +
     i18next.t("Check-in") +
     "</a>" +
     '<div class="dropdown-divider"></div>' +
@@ -791,7 +791,7 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
     '" data-event_title="' +
     escapedTitle +
     '">' +
-    '<i class="ti ti-trash me-2"></i>' +
+    '<i class="fa-solid fa-trash me-2"></i>' +
     i18next.t("Delete") +
     "</button>" +
     "</div></div>"
@@ -822,8 +822,8 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
           eventTitle +
           "</b>",
         buttons: {
-          cancel: { label: '<i class="ti ti-x"></i>' + i18next.t("Cancel") },
-          confirm: { label: '<i class="ti ti-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
+          confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
         },
         callback: (result) => {
           if (result) {
@@ -883,8 +883,8 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
           window.CRM.escapeHtml(String(personName || "")) +
           "</b>",
         buttons: {
-          cancel: { label: '<i class="ti ti-x"></i>' + i18next.t("Cancel") },
-          confirm: { label: '<i class="ti ti-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
+          confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
         },
         callback: (result) => {
           if (result) {
@@ -919,8 +919,8 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
           "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone.",
         ),
         buttons: {
-          cancel: { label: '<i class="ti ti-x"></i>' + i18next.t("Cancel") },
-          confirm: { label: '<i class="ti ti-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
+          confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
         },
         callback: (result) => {
           if (result) {

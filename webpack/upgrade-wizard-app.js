@@ -207,7 +207,7 @@ function setupBackupStep() {
         }
 
         $backupStatus.html(`<div class="alert alert-danger">
-                <i class="fa-solid fa-times-circle me-2"></i>${errorMessage}
+                <i class="fa-solid fa-circle-xmark me-2"></i>${errorMessage}
             </div>`);
         $button.prop("disabled", false).html(`<i class="fa fa-database me-1"></i>${i18next.t("Create Backup")}`);
       });
@@ -679,11 +679,11 @@ function performDownload() {
       }
 
       $downloadStatus.html(`<div class="alert alert-danger">
-            <i class="fa-solid fa-times-circle me-2"></i>${errorMessage}
+            <i class="fa-solid fa-circle-xmark me-2"></i>${errorMessage}
         </div>`);
 
       $downloadStatus.append(`<button class="btn btn-warning mt-2" id="retryDownload">
-                <i class="fa-solid fa-redo me-2"></i>${i18next.t("Retry Download")}
+                <i class="fa-solid fa-arrow-rotate-right me-2"></i>${i18next.t("Retry Download")}
             </button>`);
 
       $("#retryDownload").click(function () {
@@ -764,7 +764,7 @@ function setupApplyStep() {
         }
 
         $applyStatus.html(`<div class="alert alert-danger">
-                <i class="fa-solid fa-times-circle me-2"></i>${errorMessage}
+                <i class="fa-solid fa-circle-xmark me-2"></i>${errorMessage}
             </div>`);
         $button.prop("disabled", false).html(`<i class="fa fa-bolt me-1"></i>${i18next.t("Apply Update Now")}`);
       });
@@ -793,7 +793,7 @@ function setupRefreshButton() {
     const $icon = $button.find("i");
 
     $button.prop("disabled", true);
-    $icon.removeClass("fa-sync").addClass("fa-circle-notch fa-spin");
+    $icon.removeClass("fa-arrows-rotate").addClass("fa-circle-notch fa-spin");
     $spinner.addClass("active");
 
     window.CRM.AdminAPIRequest({
@@ -813,7 +813,7 @@ function setupRefreshButton() {
       .fail((xhr, _status, _error) => {
         $spinner.removeClass("active");
         $button.prop("disabled", false);
-        $icon.removeClass("fa-circle-notch fa-spin").addClass("fa-sync");
+        $icon.removeClass("fa-circle-notch fa-spin").addClass("fa-arrows-rotate");
 
         let errorMessage = i18next.t("Failed to refresh upgrade information from GitHub.");
         if (xhr.responseJSON?.message) {

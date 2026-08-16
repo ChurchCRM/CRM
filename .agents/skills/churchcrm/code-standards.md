@@ -451,6 +451,7 @@ Before committing code changes, verify:
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
 - [ ] Money values rendered via `CurrencyFormatter::formatHtml()` (templates), `CurrencyFormatter::format()` (APIs/PDFs), or `window.CRM.currency.format()` (JS) — never hardcoded `$` or raw `number_format()` (see `currency-localization.md`)
 - [ ] No alert() calls - use window.CRM.notify() instead
+- [ ] Icons use Font Awesome only (fa-solid, fa-regular, fa-brands) — no paid variants (fa-light, fa-thin, fa-duotone, fa-sharp)
 - [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
 - [ ] Use `json_encode()` when outputting PHP values into `<script>` blocks (not string interpolation)
 - [ ] Use `window.CRM.escapeHtml()` in JS when inserting API data into DOM via `.html()` or template literals

@@ -82,7 +82,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                 <?php endif; ?>
                 <?php if ($isCommunity && $isVerified): ?>
                     <span class="badge bg-green-lt text-green ms-2" title="<?= gettext('Matches an entry on the approved plugin list') ?>">
-                        <i class="fa-solid fa-shield-check me-1"></i><?= gettext('Verified') ?>
+                        <i class="fa-solid fa-circle-check me-1"></i><?= gettext('Verified') ?>
                     </span>
                 <?php elseif ($isCommunity && !$isVerified): ?>
                     <span class="badge bg-orange-lt text-orange ms-2"
@@ -338,7 +338,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                         </button>
                         <?php endif; ?>
                         <button type="button" class="btn btn-outline-danger btn-sm btn-reset-settings" data-plugin-id="<?= $pluginId ?>">
-                            <i class="fa-solid fa-undo me-2"></i><?= gettext('Reset') ?>
+                            <i class="fa-solid fa-arrow-rotate-left me-2"></i><?= gettext('Reset') ?>
                         </button>
                     </div>
                     <?php if (!empty($plugin['hasTest'])): ?>
@@ -870,7 +870,7 @@ $(document).ready(function() {
             window.CRM.notify(error, { type: 'error' });
         })
         .always(function() {
-            btn.prop('disabled', false).html('<i class="fa-solid fa-undo me-1"></i>' + i18next.t('Reset'));
+            btn.prop('disabled', false).html('<i class="fa-solid fa-arrow-rotate-left me-1"></i>' + i18next.t('Reset'));
         });
             }
         );

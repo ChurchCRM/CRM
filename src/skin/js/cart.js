@@ -482,7 +482,7 @@ export class CartManager {
    */
   updateButtonState(cartId, inCart, cartType = "person") {
     // First try to find the container with the data attributes
-    let $element = $(`[data-cart-id="${cartId}"][data-cart-type="${cartType}"]`);
+    const $element = $(`[data-cart-id="${cartId}"][data-cart-type="${cartType}"]`);
 
     if (!$element.length) return;
 
@@ -498,13 +498,13 @@ export class CartManager {
       $element.removeClass("AddToCart").addClass("RemoveFromCart");
 
       if (isDropdownItem) {
-        // Dropdown item: swap Tabler icon and label text
+        // Dropdown item: swap Font Awesome icon and label text
         $button.addClass("text-danger");
-        $icon.attr("class", "ti ti-trash me-2");
+        $icon.attr("class", "fa-solid fa-box-open me-2");
         $button.find(".cart-label").text($button.data("label-remove") || "");
       } else {
         $button.removeClass("btn-primary").addClass("btn-danger");
-        $icon.removeClass("fa-cart-plus").addClass("fa-shopping-cart");
+        $icon.removeClass("fa-cart-shopping").addClass("fa-box-open");
       }
     } else {
       $element.removeClass("RemoveFromCart").addClass("AddToCart");
@@ -512,11 +512,11 @@ export class CartManager {
       if (isDropdownItem) {
         // Dropdown item: swap Tabler icon and label text
         $button.removeClass("text-danger");
-        $icon.attr("class", "ti ti-shopping-cart-plus me-2");
+        $icon.attr("class", "fa-solid fa-cart-shopping me-2");
         $button.find(".cart-label").text($button.data("label-add") || "");
       } else {
         $button.removeClass("btn-danger").addClass("btn-primary");
-        $icon.removeClass("fa-shopping-cart").addClass("fa-cart-plus");
+        $icon.removeClass("fa-box-open").addClass("fa-cart-shopping");
       }
     }
   }
@@ -594,7 +594,7 @@ export class CartManager {
   }
 
   animateCartIcon() {
-    const $cartIcon = $(".fa-shopping-cart").parent();
+    const $cartIcon = $(".fa-cart-shopping").parent();
     $cartIcon.addClass("cart-pulse");
     setTimeout(() => $cartIcon.removeClass("cart-pulse"), 600);
   }

@@ -194,20 +194,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <i class="ti ti-dots-vertical"></i>
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <button type="button" class="dropdown-item text-danger js-delete-field"
                                             data-field-name="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>"
                                             data-prop-id="<?= $row ?>"
                                             data-field-id="<?= InputUtils::escapeAttribute($aFieldFields[$row]) ?>">
-                                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                            <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                         </button>
                                         <?php if ($row != 1): ?>
-                                            <a href="#" class="dropdown-item js-reorder-field" data-prop-id="<?= $row ?>" data-direction="up"><i class="ti ti-arrow-up me-2"></i><?= gettext('Move up') ?></a>
+                                            <a href="#" class="dropdown-item js-reorder-field" data-prop-id="<?= $row ?>" data-direction="up"><i class="fa-solid fa-arrow-up me-2"></i><?= gettext('Move up') ?></a>
                                         <?php endif; ?>
                                         <?php if ($row < $numRows): ?>
-                                            <a href="#" class="dropdown-item js-reorder-field" data-prop-id="<?= $row ?>" data-direction="down"><i class="ti ti-arrow-down me-2"></i><?= gettext('Move down') ?></a>
+                                            <a href="#" class="dropdown-item js-reorder-field" data-prop-id="<?= $row ?>" data-direction="down"><i class="fa-solid fa-arrow-down me-2"></i><?= gettext('Move down') ?></a>
                                         <?php endif; ?>
                                     </div>
                                 </div>

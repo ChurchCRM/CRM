@@ -25,17 +25,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="d-flex justify-content-between align-items-center mt-4 d-none" id="event-editor-actions">
       <?php if ($eventExists && $eventId > 0): ?>
         <button type="button" class="btn btn-ghost-danger" id="event-editor-delete">
-          <i class="ti ti-trash me-1"></i><?= gettext('Delete Event') ?>
+          <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete Event') ?>
         </button>
       <?php else: ?>
         <div></div>
       <?php endif; ?>
       <div class="d-flex gap-2">
         <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-secondary">
-          <i class="ti ti-x me-1"></i><?= gettext('Cancel') ?>
+          <i class="fa-solid fa-xmark me-1"></i><?= gettext('Cancel') ?>
         </a>
         <button type="button" class="btn btn-primary" id="event-editor-save" disabled>
-          <i class="ti ti-device-floppy me-1"></i><?= gettext('Save Changes') ?>
+          <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Changes') ?>
         </button>
       </div>
     </div>
