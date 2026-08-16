@@ -3,6 +3,62 @@
 describe("Finance Family", () => {
     beforeEach(() => {
         cy.setupAdminSession();
+
+        // Pre-set finance display settings for both users that may own the
+        // admin-session cookie cache (user 1 = admin, user 3 = tony.wade).
+        //
+        // Background: cy.session() cross-contamination from finance.deposits.spec.js
+        // (which calls both setupAdminSession and setupStandardSession) means the
+        // "admin-session" cache sometimes holds user 3's cookies.  User 3 starts
+        // with finance.show.pledges='0' and finance.show.payments='0' in a fresh DB.
+        // When those settings are '0', GET /api/payments/family/{id}/list filters
+        // them out and returns 0 rows — DataTables draws an empty-state row.
+        //
+        // These cy.request calls reach the real server through the current session
+        // and update the DB before the page visits below fire their own XHRs.
+        // failOnStatusCode: false silently ignores 401s when the logged-in user
+        // is not admin and therefore cannot write another user's settings.
+        cy.request({
+            method: "POST",
+            url: "/api/user/1/setting/finance.show.pledges",
+            body: { value: "true" },
+            failOnStatusCode: false,
+        });
+        cy.request({
+            method: "POST",
+            url: "/api/user/1/setting/finance.show.payments",
+            body: { value: "true" },
+            failOnStatusCode: false,
+        });
+        cy.request({
+            method: "POST",
+            url: "/api/user/3/setting/finance.show.pledges",
+            body: { value: "true" },
+            failOnStatusCode: false,
+        });
+        cy.request({
+            method: "POST",
+            url: "/api/user/3/setting/finance.show.payments",
+            body: { value: "true" },
+            failOnStatusCode: false,
+        });
+
+        // Intercept the identical setting POSTs that FamilyView.js fires on
+        // every page load.  The JS fires them unconditionally (it does not
+        // check current value before writing).  Stubbing them ensures:
+        //   (a) Promise.all resolves immediately — no server round-trip latency
+        //       between session setup and DataTable initialisation
+        //   (b) no server-side write occurs on page load, preventing any
+        //       session / ORM side-effect that may be triggering the observed
+        //       3-4 page reload loop in CI
+        cy.intercept("POST", "**/api/user/*/setting/finance.show.pledges", {
+            statusCode: 200,
+            body: { value: "true" },
+        }).as("showPledges");
+        cy.intercept("POST", "**/api/user/*/setting/finance.show.payments", {
+            statusCode: 200,
+            body: { value: "true" },
+        }).as("showPayments");
     });
 
     it("View a Family with Pledges and Payments section", () => {
@@ -18,42 +74,31 @@ describe("Finance Family", () => {
         cy.get(".pledge-type-pill").should("have.length", 3);
         cy.get("#giving-fy-select").should("exist");
 
-        // Gate on initComplete having populated the FY dropdown.
+        // Gate 1: wait for initComplete to populate the FY dropdown.
         //
-        // Background: the CI test runner may use a user whose
-        // finance.show.pledges / finance.show.payments settings start at '0'.
-        // FamilyView.js fires two POSTs to update those settings to 'true'
-        // before initialising DataTables, which in some CI timing conditions
-        // produces 2-4 rapid page reloads before the page settles.
+        // FamilyView.js calls DataTable({ajax:...}).  On the first Ajax draw
+        // initComplete fires, reads all rows, appends FY <option> elements,
+        // and (for families with no current-year data) clears the pre-init
+        // column-5 FY filter so all rows are shown.
         //
-        // In DataTables 2.x (client-side mode), filtered-out rows are *removed*
-        // from the DOM — they only appear in <tbody> once the matching filter
-        // (or no filter) is applied.  initComplete appends one FY <option> per
-        // fiscal year found in the data synchronously before calling draw(), and
-        // auto-clears the FY filter when the family has no current-year data.
-        //
-        // Strategy:
-        //  1. Wait for ≥2 FY options — proves initComplete ran at least once.
-        //  2. Wait for ≥1 visible <tr> in <tbody> — proves the filter was cleared
-        //     and rows were written to the DOM.
-        //  3. Only then assert on specific content and filter interactions.
-        //
-        // 30-second timeouts cover any reload loop plus DataTable Ajax latency.
+        // ≥2 options means initComplete ran AND found at least one historical FY.
+        // Explicit 30 s timeout overrides docker.config.ts's 5 s default.
         cy.get("#giving-fy-select option", { timeout: 30000 }).should(
             "have.length.at.least",
             2,
         );
 
-        // After initComplete cleared the filter, actual data rows must be in the DOM
-        cy.get("#pledge-payment-v2-table tbody tr", { timeout: 30000 }).should(
-            "have.length.at.least",
-            1,
-        );
+        // Gate 2 + content assertion: wait for the data row with "Music Ministry"
+        // to appear inside the table.  Scoping cy.contains to the table element
+        // avoids matching stray page text AND skips DataTables' empty-state row
+        // ('<tr class="odd"><td class="dataTables_empty">No data available…</td></tr>')
+        // which was causing our earlier tbody-tr count gate to fire prematurely.
+        // 30 s timeout covers the initComplete redraw + any CI latency.
+        cy.contains("#pledge-payment-v2-table", "Music Ministry", {
+            timeout: 30000,
+        });
 
-        // Data rows must now be visible
-        cy.contains("Music Ministry");
-
-        // Test type filter pills (client-side filter, independent of FY)
+        // Type filter pills: client-side filter on column 3 (independent of FY)
         cy.get('.pledge-type-pill[data-filter="Pledge"]').click();
         cy.get(".pledge-type-pill.active").should("contain", "Pledges");
 
@@ -69,20 +114,15 @@ describe("Finance Family", () => {
         // Giving tab is present
         cy.contains("Giving");
 
-        // Same gate pattern as test 1 — wait for initComplete to populate FY options.
-        // Family 20 has giving history in FY 2018 only (no current-FY data), so
-        // initComplete auto-switches to All Time view.
+        // Same pattern as test 1.  Family 20 has giving history in FY 2018 only
+        // (no current-FY data) so initComplete auto-switches to All Time.
         cy.get("#giving-fy-select option", { timeout: 30000 }).should(
             "have.length.at.least",
             2,
         );
 
-        // Rows must be in the DOM (filter cleared)
-        cy.get("#pledge-payment-v2-table tbody tr", { timeout: 30000 }).should(
-            "have.length.at.least",
-            1,
-        );
-
-        cy.contains("New Building Fund");
+        cy.contains("#pledge-payment-v2-table", "New Building Fund", {
+            timeout: 30000,
+        });
     });
 });
