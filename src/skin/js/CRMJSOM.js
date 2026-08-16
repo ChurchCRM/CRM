@@ -581,7 +581,8 @@ window.CRM.dashboard = {
       path: "fundraisers/active-count",
       suppressErrorDialog: true,
     }).done((data) => {
-      document.getElementById("activeFundraisers").innerText = data.count;
+      const el = document.getElementById("activeFundraisers");
+      if (el) el.innerText = data.count;
     });
   },
 };
