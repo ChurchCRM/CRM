@@ -46,6 +46,7 @@ on:
       - master
       - develop
       - 'hotfix/**'
+      - 'release/**'
     paths-ignore:
       - '**/*.md'
       - 'docs/**'
@@ -71,11 +72,15 @@ on:
       - '.github/release.yml'
       - '.github/ISSUE_TEMPLATE/**'
       - '.github/issue-comments/**'
+  schedule:
+    # Nightly full locale sweep (all 49 locales × both PHP versions)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
 
 jobs:
   # Determine which PHP versions to test based on trigger
   # PRs: 8.4 only (fast feedback)
-  # Push to master/develop: 8.4 + 8.5 (full coverage before release)
+  # All other events (push, schedule, workflow_dispatch): 8.4 + 8.5 (full coverage)
   configure:
     runs-on: ubuntu-latest
     outputs:
@@ -83,10 +88,10 @@ jobs:
     steps:
     - id: set-matrix
       run: |
-        if [ "${{ github.event_name }}" = "push" ]; then
-          echo 'php-versions=["8.4","8.5"]' >> $GITHUB_OUTPUT
-        else
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
           echo 'php-versions=["8.4"]' >> $GITHUB_OUTPUT
+        else
+          echo 'php-versions=["8.4","8.5"]' >> $GITHUB_OUTPUT
         fi
 
   build:
@@ -599,8 +604,416 @@ jobs:
     - name: Stop Docker
       if: always()
       run: npm run docker:ci:new-system:subdir:down
+
+  test-locale-root:
+    needs: [configure, build]
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    - name: Start Docker (root path)
+      run: |
+        cp docker/Config.root.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
+
+    - name: Wait for server (root path)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -sf http://127.0.0.1/api/public/echo; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run locale smoke tests (root, PHP ${{ matrix.php-version }})
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-root-locale-[hash].xml
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-locale.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-locale.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-php${{ matrix.php-version }}-root-locale-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 15
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: Root (locale)'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-root-locale-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:root:down
+
+  test-locale-subdir:
+    needs: [configure, build]
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    - name: Start Docker (subdirectory path)
+      run: |
+        cp docker/Config.parallel.subdir.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
+
+    - name: Wait for server (subdirectory path)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -sf http://127.0.0.1:8080/churchcrm/api/public/echo; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run locale smoke tests (subdir, PHP ${{ matrix.php-version }})
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-subdir-locale-[hash].xml
+      env:
+        CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-locale.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-locale.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-php${{ matrix.php-version }}-subdir-locale-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 15
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: Subdirectory (locale)'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-subdir-locale-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:subdir:down
+
+  test-locale-full-root:
+    # Full locale sweep (all 49 locales) — release branches, nightly cron, manual dispatch only.
+    # Not in package job needs; serves as a release gate when triggered on release/** branches.
+    if: |
+      github.event_name == 'schedule' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/'))
+    needs: [configure, build]
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    - name: Start Docker (root path)
+      run: |
+        cp docker/Config.root.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
+
+    - name: Wait for server (root path)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -sf http://127.0.0.1/api/public/echo; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run locale full tests (root, PHP ${{ matrix.php-version }})
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-root-locale-full-[hash].xml
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-locale-full.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-locale-full.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-php${{ matrix.php-version }}-root-locale-full-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 15
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: Root (locale-full)'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-root-locale-full-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:root:down
+
+  test-locale-full-subdir:
+    # Full locale sweep (all 49 locales) — release branches, nightly cron, manual dispatch only.
+    if: |
+      github.event_name == 'schedule' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/'))
+    needs: [configure, build]
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    - name: Start Docker (subdirectory path)
+      run: |
+        cp docker/Config.parallel.subdir.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
+
+    - name: Wait for server (subdirectory path)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -sf http://127.0.0.1:8080/churchcrm/api/public/echo; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run locale full tests (subdir, PHP ${{ matrix.php-version }})
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-subdir-locale-full-[hash].xml
+      env:
+        CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-locale-full.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-locale-full.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-php${{ matrix.php-version }}-subdir-locale-full-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 15
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: Subdirectory (locale-full)'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-subdir-locale-full-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:subdir:down
+
   package:
-    needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
+    needs: [test-root, test-subdir, test-new-system, test-new-system-subdir, test-locale-root, test-locale-subdir]
     timeout-minutes: 15
     permissions:
       contents: write
