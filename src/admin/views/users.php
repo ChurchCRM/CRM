@@ -118,9 +118,9 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
         </div>
     </div>
     <div class="card-body border-bottom py-2 text-body-secondary small">
-        <span class="me-3"><i class="ti ti-shield-check text-danger me-1"></i><?= gettext('Admin') ?></span>
-        <span class="me-3"><i class="ti ti-user-check text-warning me-1"></i><?= gettext('Self-service') ?></span>
-        <span><i class="ti ti-adjustments text-azure me-1"></i><?= gettext('Custom') ?></span>
+        <span class="me-3"><i class="fa-solid fa-shield-check text-danger me-1"></i><?= gettext('Admin') ?></span>
+        <span class="me-3"><i class="fa-solid fa-user-check text-warning me-1"></i><?= gettext('Self-service') ?></span>
+        <span><i class="fa-solid fa-cog text-azure me-1"></i><?= gettext('Custom') ?></span>
     </div>
     <div class="card-body" style="overflow: visible;">
         <table class="table table-hover w-100" id="user-listing-table">
@@ -147,11 +147,11 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                             </td>
                             <td class="text-center">
                                 <?php if ($user->isAdmin()): ?>
-                                <i class="ti ti-shield-check text-danger fs-4" title="<?= gettext('Administrator') ?>"></i>
+                                <i class="fa-solid fa-shield-check text-danger fs-4" title="<?= gettext('Administrator') ?>"></i>
                                 <?php elseif ($user->isEditSelf()): ?>
-                                <i class="ti ti-user-check text-warning fs-4" title="<?= gettext('Self-service only') ?>"></i>
+                                <i class="fa-solid fa-user-check text-warning fs-4" title="<?= gettext('Self-service only') ?>"></i>
                                 <?php else: ?>
-                                <i class="ti ti-adjustments text-azure fs-4" title="<?= gettext('Custom permissions') ?>"></i>
+                                <i class="fa-solid fa-cog text-azure fs-4" title="<?= gettext('Custom permissions') ?>"></i>
                                 <?php endif; ?>
                             </td>
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
@@ -184,48 +184,48 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                             <td class="w-1">
                                 <div class="dropdown">
                                     <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <i class="ti ti-dots-vertical"></i>
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/users/<?= $user->getId() ?>/edit">
-                                            <i class="ti ti-pencil me-2"></i><?= gettext('Edit User') ?>
+                                            <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit User') ?>
                                         </a>
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">
-                                            <i class="ti ti-eye me-2"></i><?= gettext('View Details') ?>
+                                            <i class="fa-solid fa-eye me-2"></i><?= gettext('View Details') ?>
                                         </a>
                                         <?php if ($user->getPerson() !== null) { ?>
                                         <a class="dropdown-item" href="<?= Person::getViewURIForId($user->getId()) ?>">
-                                            <i class="ti ti-user me-2"></i><?= gettext('View Person') ?>
+                                            <i class="fa-solid fa-user me-2"></i><?= gettext('View Person') ?>
                                         </a>
                                         <?php if ((int) $user->getPerson()->getFamId() > 0) { ?>
                                         <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $user->getPerson()->getFamId()) ?>">
-                                            <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                            <i class="fa-solid fa-users me-2"></i><?= gettext('View Family') ?>
                                         </a>
                                         <?php } ?>
                                         <?php } ?>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/user/<?= $user->getId() ?>/changePassword">
-                                            <i class="ti ti-tool me-2"></i><?= gettext('Change Password') ?>
+                                            <i class="fa-solid fa-wrench me-2"></i><?= gettext('Change Password') ?>
                                         </a>
                                         <?php if ($bEmailEnabled && $user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) { ?>
                                             <a class="dropdown-item js-reset-user-password" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
-                                                <i class="ti ti-send me-2"></i><?= gettext('Reset Password via Email') ?>
+                                                <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Reset Password via Email') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->getFailedLogins() > 0) { ?>
                                             <a class="dropdown-item js-reset-login-count" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
-                                                <i class="ti ti-eraser me-2"></i><?= gettext('Reset Failed Logins') ?>
+                                                <i class="fa-solid fa-eraser me-2"></i><?= gettext('Reset Failed Logins') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->is2FactorAuthEnabled()) { ?>
                                             <a class="dropdown-item js-disable-2fa" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
-                                                <i class="ti ti-shield-off me-2"></i><?= gettext('Disable 2FA') ?>
+                                                <i class="fa-solid fa-shield-alt me-2"></i><?= gettext('Disable 2FA') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item text-danger js-delete-user" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
-                                                <i class="ti ti-trash me-2"></i><?= gettext('Delete User') ?>
+                                                <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete User') ?>
                                             </a>
                                         <?php } ?>
                                     </div>

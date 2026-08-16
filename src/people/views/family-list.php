@@ -127,15 +127,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <td class="w-1">
                         <div class="dropdown">
                             <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                <i class="ti ti-dots-vertical"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $family->getId() ?>">
-                                    <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                    <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                                 </a>
                                 <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                                 <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>">
-                                    <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                    <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                 </a>
                                 <?php endif; ?>
                                 <div class="dropdown-divider"></div>
@@ -145,12 +145,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     data-cart-type="family"
                                     data-label-add="<?= gettext('Add to Cart') ?>"
                                     data-label-remove="<?= gettext('Remove from Cart') ?>">
-                                    <i class="<?= $isInCart ? 'ti ti-shopping-cart-off' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                    <i class="<?= $isInCart ? 'fa-solid fa-cart-arrow-down' : 'fa-solid fa-cart-plus' ?> me-2"></i>
                                     <span class="cart-label"><?= $isInCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                                 </button>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-danger" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?= $family->getId() ?>">
-                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                    <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                 </a>
                             </div>
                         </div>

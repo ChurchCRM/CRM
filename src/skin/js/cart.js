@@ -500,7 +500,7 @@ export class CartManager {
       if (isDropdownItem) {
         // Dropdown item: swap Tabler icon and label text
         $button.addClass("text-danger");
-        $icon.attr("class", "ti ti-trash me-2");
+        $icon.attr("class", "fa-solid fa-trash me-2");
         $button.find(".cart-label").text($button.data("label-remove") || "");
       } else {
         $button.removeClass("btn-primary").addClass("btn-danger");
@@ -512,7 +512,7 @@ export class CartManager {
       if (isDropdownItem) {
         // Dropdown item: swap Tabler icon and label text
         $button.removeClass("text-danger");
-        $icon.attr("class", "ti ti-shopping-cart-plus me-2");
+        $icon.attr("class", "fa-solid fa-cart-plus me-2");
         $button.find(".cart-label").text($button.data("label-add") || "");
       } else {
         $button.removeClass("btn-danger").addClass("btn-primary");

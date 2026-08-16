@@ -135,7 +135,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
         <div class="card-body">
             <div class="d-flex align-items-start gap-3">
                 <div class="pt-1">
-                    <i class="ti ti-chart-bar fs-2 text-info"></i>
+                    <i class="fa-solid fa-chart-bar fs-2 text-info"></i>
                 </div>
                 <div class="flex-grow-1">
                     <h5 class="mb-1"><?= gettext('Help improve ChurchCRM') ?></h5>
@@ -147,10 +147,10 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     </p>
                     <div class="d-flex gap-2 flex-wrap">
                         <button type="button" class="btn btn-info js-telemetry-consent" data-level="full">
-                            <i class="ti ti-check me-1"></i><?= gettext('Enable (full)') ?>
+                            <i class="fa-solid fa-check me-1"></i><?= gettext('Enable (full)') ?>
                         </button>
                         <button type="button" class="btn btn-ghost-info js-telemetry-consent" data-level="errors">
-                            <i class="ti ti-alert-circle me-1"></i><?= gettext('Errors only') ?>
+                            <i class="fa-solid fa-circle-exclamation me-1"></i><?= gettext('Errors only') ?>
                         </button>
                         <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="none">
                             <?= gettext('No thanks') ?>

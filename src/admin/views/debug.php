@@ -576,7 +576,7 @@ $fmtBytes = static function ($bytes): string {
         <div class="card-status-top <?= $telemetryEnabled ? 'bg-success' : 'bg-secondary' ?>"></div>
         <div class="card-header">
             <h4 class="mb-0">
-                <i class="ti ti-broadcast me-2"></i><?= gettext('Anonymous Telemetry') ?>
+                <i class="fa-solid fa-broadcast-tower me-2"></i><?= gettext('Anonymous Telemetry') ?>
                 <?php if ($telemetryEnabled): ?>
                     <span class="badge bg-success ms-2"><?= InputUtils::escapeHTML($levelLabels[$telemetryLevel]) ?></span>
                 <?php else: ?>
@@ -595,7 +595,7 @@ $fmtBytes = static function ($bytes): string {
                                     class="btn text-start <?= $active ? ($lv === TelemetryService::LEVEL_NONE ? 'btn-secondary' : 'btn-success') : ($lv === TelemetryService::LEVEL_NONE ? 'btn-ghost-danger' : 'btn-ghost-success') ?> js-debug-telemetry-toggle"
                                     data-level="<?= InputUtils::escapeAttribute($lv) ?>"
                                     <?= $active ? 'disabled aria-current="true"' : '' ?>>
-                                <?php if ($active): ?><i class="ti ti-check me-1"></i><?php endif; ?>
+                                <?php if ($active): ?><i class="fa-solid fa-check me-1"></i><?php endif; ?>
                                 <?= InputUtils::escapeHTML($label) ?>
                             </button>
                         <?php endforeach; ?>

@@ -11,7 +11,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card-status-top bg-primary"></div>
   <div class="card-header">
     <h3 class="card-title mb-0">
-      <i class="ti ti-plus me-2"></i><?= gettext('Add New Event Type') ?>
+      <i class="fa-solid fa-plus me-2"></i><?= gettext('Add New Event Type') ?>
     </h3>
   </div>
   <div class="card-body">
@@ -104,10 +104,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <hr>
       <div class="d-flex justify-content-between">
         <a href="<?= $sRootPath ?>/event/types" class="btn btn-outline-secondary">
-          <i class="ti ti-x me-1"></i><?= gettext('Cancel') ?>
+          <i class="fa-solid fa-x me-1"></i><?= gettext('Cancel') ?>
         </a>
         <button type="submit" class="btn btn-primary">
-          <i class="ti ti-device-floppy me-1"></i><?= gettext('Save Event Type') ?>
+          <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Event Type') ?>
         </button>
       </div>
     </form>

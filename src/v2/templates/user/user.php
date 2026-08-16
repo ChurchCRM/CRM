@@ -44,19 +44,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="card-body">
         <div class="list-group list-group-transparent" id="settingsNav">
           <a href="#tab-account" class="list-group-item list-group-item-action d-flex align-items-center active" data-bs-toggle="list">
-            <i class="ti ti-user me-2"></i><?= InputUtils::escapeHTML($accountLabel) ?>
+            <i class="fa-solid fa-user me-2"></i><?= InputUtils::escapeHTML($accountLabel) ?>
           </a>
           <a href="#tab-appearance" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
-            <i class="ti ti-palette me-2"></i><?= gettext("Appearance") ?>
+            <i class="fa-solid fa-palette me-2"></i><?= gettext("Appearance") ?>
           </a>
           <a href="#tab-localization" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
-            <i class="ti ti-language me-2"></i><?= gettext("Localization") ?>
+            <i class="fa-solid fa-language me-2"></i><?= gettext("Localization") ?>
           </a>
           <a href="#tab-api" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
-            <i class="ti ti-api me-2"></i><?= gettext("API Access") ?>
+            <i class="fa-solid fa-cube me-2"></i><?= gettext("API Access") ?>
           </a>
           <a href="#tab-permissions" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
-            <i class="ti ti-shield-lock me-2"></i><?= gettext("Permissions") ?>
+            <i class="fa-solid fa-shield-lock me-2"></i><?= gettext("Permissions") ?>
           </a>
         </div>
       </div>
@@ -80,7 +80,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             ?>
             <?php if ($isLocked): ?>
             <div class="alert alert-danger d-flex align-items-center mb-3" role="alert">
-              <i class="ti ti-lock me-2 flex-shrink-0 fs-3"></i>
+              <i class="fa-solid fa-lock me-2 flex-shrink-0 fs-3"></i>
               <div>
                 <strong><?= gettext('Account locked') ?></strong>
                 <div class="small"><?= gettext('This account is locked because of too many failed login attempts.') ?></div>
@@ -89,7 +89,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <?php endif; ?>
             <?php if ($mustChange): ?>
             <div class="alert alert-warning d-flex align-items-center mb-3" role="alert">
-              <i class="ti ti-key me-2 flex-shrink-0 fs-3"></i>
+              <i class="fa-solid fa-key me-2 flex-shrink-0 fs-3"></i>
               <div>
                 <strong><?= gettext('Password change required') ?></strong>
                 <div class="small"><?= gettext('This user must set a new password the next time they sign in.') ?></div>
@@ -107,7 +107,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                      alt="<?= InputUtils::escapeAttribute($user->getFullName()) ?>">
                 <div>
                   <button id="uploadPhotoBtn" class="btn btn-sm btn-outline-primary">
-                    <i class="ti ti-camera me-1"></i><?= gettext("Change Photo") ?>
+                    <i class="fa-solid fa-camera me-1"></i><?= gettext("Change Photo") ?>
                   </button>
                 </div>
               </div>
@@ -122,7 +122,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getFullName()) ?>
                     <?php if ($canEditUserPerson): ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="fa-solid fa-pencil"></i></a>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getEmail() ?? '') ?: '<span class="text-body-secondary">' . gettext("Not set") . '</span>' ?>
                     <?php if ($canEditUserPerson): ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="fa-solid fa-pencil"></i></a>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -145,9 +145,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-3 text-body-secondary"><?= gettext("Two-Factor Authentication") ?></div>
               <div class="col-sm-9">
                 <?php if ($user->is2FactorAuthEnabled()): ?>
-                <span class="badge bg-success-lt text-success"><i class="ti ti-shield-check me-1"></i><?= gettext("Active") ?></span>
+                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-shield-check me-1"></i><?= gettext("Active") ?></span>
                 <?php else: ?>
-                <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-shield-off me-1"></i><?= gettext("Inactive") ?></span>
+                <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-shield-alt me-1"></i><?= gettext("Inactive") ?></span>
                 <?php endif; ?>
               </div>
             </div>
@@ -155,9 +155,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-3 text-body-secondary"><?= gettext('Account status') ?></div>
               <div class="col-sm-9">
                 <?php if ($isLocked): ?>
-                <span class="badge bg-danger-lt text-danger"><i class="ti ti-lock me-1"></i><?= gettext('Locked') ?></span>
+                <span class="badge bg-danger-lt text-danger"><i class="fa-solid fa-lock me-1"></i><?= gettext('Locked') ?></span>
                 <?php else: ?>
-                <span class="badge bg-success-lt text-success"><i class="ti ti-lock-open me-1"></i><?= gettext('Active') ?></span>
+                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-lock-open me-1"></i><?= gettext('Active') ?></span>
                 <?php endif; ?>
               </div>
             </div>
@@ -165,9 +165,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-3 text-body-secondary"><?= gettext('Password status') ?></div>
               <div class="col-sm-9">
                 <?php if ($mustChange): ?>
-                <span class="badge bg-warning-lt text-warning"><i class="ti ti-key me-1"></i><?= gettext('Change required') ?></span>
+                <span class="badge bg-warning-lt text-warning"><i class="fa-solid fa-key me-1"></i><?= gettext('Change required') ?></span>
                 <?php else: ?>
-                <span class="badge bg-success-lt text-success"><i class="ti ti-check me-1"></i><?= gettext('OK') ?></span>
+                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext('OK') ?></span>
                 <?php endif; ?>
               </div>
             </div>
@@ -189,10 +189,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="row mb-3 mt-3">
               <div class="col-sm-9 offset-sm-3">
                 <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="btn btn-outline-primary me-2">
-                  <i class="ti ti-key me-1"></i><?= gettext("Change Password") ?>
+                  <i class="fa-solid fa-key me-1"></i><?= gettext("Change Password") ?>
                 </a>
                 <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="btn btn-outline-primary">
-                  <i class="ti ti-shield me-1"></i><?= gettext("Manage 2FA") ?>
+                  <i class="fa-solid fa-shield me-1"></i><?= gettext("Manage 2FA") ?>
                 </a>
               </div>
             </div>
@@ -203,7 +203,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="row mb-3">
               <div class="col-sm-9 offset-sm-3">
                 <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-outline-secondary">
-                  <i class="ti ti-settings me-1"></i><?= gettext("Advanced Settings") ?>
+                  <i class="fa-solid fa-cog me-1"></i><?= gettext("Advanced Settings") ?>
                 </a>
                 <small class="form-hint mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
               </div>
@@ -223,19 +223,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <label class="form-selectgroup-item">
                     <input type="radio" name="themeMode" value="auto" class="form-selectgroup-input" id="themeModeAuto"<?= $_userThemeMode === 'auto' ? ' checked' : '' ?>>
                     <span class="form-selectgroup-label">
-                      <i class="ti ti-device-desktop me-1"></i><?= gettext("Auto") ?>
+                      <i class="fa-solid fa-desktop me-1"></i><?= gettext("Auto") ?>
                     </span>
                   </label>
                   <label class="form-selectgroup-item">
                     <input type="radio" name="themeMode" value="default" class="form-selectgroup-input" id="themeModeLight"<?= $_userThemeMode === 'default' ? ' checked' : '' ?>>
                     <span class="form-selectgroup-label">
-                      <i class="ti ti-sun me-1"></i><?= gettext("Light") ?>
+                      <i class="fa-solid fa-sun me-1"></i><?= gettext("Light") ?>
                     </span>
                   </label>
                   <label class="form-selectgroup-item">
                     <input type="radio" name="themeMode" value="dark" class="form-selectgroup-input" id="themeModeDark"<?= $_userThemeMode === 'dark' ? ' checked' : '' ?>>
                     <span class="form-selectgroup-label">
-                      <i class="ti ti-moon me-1"></i><?= gettext("Dark") ?>
+                      <i class="fa-solid fa-moon me-1"></i><?= gettext("Dark") ?>
                     </span>
                   </label>
                 </div>
@@ -331,7 +331,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <h4 class="mb-3"><?= gettext("Help Improve Translations") ?></h4>
             <div class="alert alert-info">
               <div class="d-flex">
-                <div><i class="ti ti-info-circle me-2 mt-1"></i></div>
+                <div><i class="fa-solid fa-circle-info me-2 mt-1"></i></div>
                 <div>
                   <h4 class="alert-title"><?= gettext("Missing or incorrect translations?") ?></h4>
                   <p class="mb-2"><?= gettext("ChurchCRM translations are managed by the community on POEditor. You can help by") ?>:</p>
@@ -341,7 +341,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <li><?= gettext("Suggesting better phrasing for existing translations") ?></li>
                   </ul>
                   <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
-                    <i class="ti ti-external-link me-1"></i><?= gettext("Join the Translation Project on POEditor") ?>
+                    <i class="fa-solid fa-external-link me-1"></i><?= gettext("Join the Translation Project on POEditor") ?>
                   </a>
                 </div>
               </div>
@@ -349,7 +349,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <div class="alert alert-warning">
               <div class="d-flex">
-                <div><i class="ti ti-alert-triangle me-2 mt-1"></i></div>
+                <div><i class="fa-solid fa-triangle-exclamation me-2 mt-1"></i></div>
                 <div>
                   <h4 class="alert-title"><?= gettext("Found a bug with translations?") ?></h4>
                   <p class="mb-0"><?= gettext("If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone.") ?></p>
@@ -369,7 +369,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="input-group">
                   <input id="apiKey" type="text" class="form-control font-monospace" value="<?= InputUtils::escapeAttribute($user->getApiKey()) ?>" readonly>
                   <button id="regenApiKey" class="btn btn-warning" type="button" title="<?= gettext("Regenerate") ?>">
-                    <i class="ti ti-refresh me-1"></i><?= gettext("Regenerate") ?>
+                    <i class="fa-solid fa-sync me-1"></i><?= gettext("Regenerate") ?>
                   </button>
                 </div>
                 <small class="form-hint"><?= gettext("Use this key to authenticate API requests. Regenerating will invalidate the current key.") ?></small>
@@ -394,7 +394,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="text-center py-4">
               <div class="mb-3">
                 <span class="badge bg-warning-lt text-warning px-3 py-2" style="font-size:1rem;">
-                  <i class="ti ti-shield-check me-2"></i><?= gettext("Administrator") ?>
+                  <i class="fa-solid fa-shield-check me-2"></i><?= gettext("Administrator") ?>
                 </span>
               </div>
               <p class="text-body-secondary mb-0"><?= gettext("Administrators have full access to all features and data. Individual permissions do not apply.") ?></p>
@@ -404,7 +404,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="text-center py-4">
               <div class="mb-3">
                 <span class="badge bg-info-lt text-info px-3 py-2" style="font-size:1rem;">
-                  <i class="ti ti-user-check me-2"></i><?= gettext("Self-service only") ?>
+                  <i class="fa-solid fa-user-check me-2"></i><?= gettext("Self-service only") ?>
                 </span>
               </div>
               <p class="text-body-secondary mb-0"><?= gettext("This user can only review and update their own family profile. Individual permissions do not apply.") ?></p>
@@ -418,14 +418,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- People & Families group -->
             <div class="border rounded mb-3">
               <div class="px-3 py-2 border-bottom bg-light">
-                <strong><i class="ti ti-users me-2"></i><?= gettext("People &amp; Families") ?></strong>
+                <strong><i class="fa-solid fa-users me-2"></i><?= gettext("People &amp; Families") ?></strong>
                 <p class="text-body-secondary small mb-0 mt-1"><?= gettext("All users can view congregation members. This permission cannot be removed.") ?></p>
               </div>
               <div class="row align-items-center px-3 py-2">
                 <div class="col-sm-6 text-body-secondary"><?= gettext("View") ?></div>
                 <div class="col-sm-6 d-flex flex-wrap gap-1">
-                  <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext("View") ?></span>
-                  <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext("Always granted") ?></span>
+                  <span class="badge bg-success-lt text-success"><i class="fa-solid fa-eye me-1"></i><?= gettext("View") ?></span>
+                  <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-lock me-1"></i><?= gettext("Always granted") ?></span>
                 </div>
               </div>
               <?php foreach ([
@@ -438,9 +438,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="col-sm-6"><?= InputUtils::escapeHTML($capLabel) ?></div>
                 <div class="col-sm-6">
                   <?php if ($capGranted): ?>
-                  <span class="badge bg-success-lt text-success"><i class="ti ti-check me-1"></i><?= gettext("Yes") ?></span>
+                  <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext("Yes") ?></span>
                   <?php else: ?>
-                  <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-x me-1"></i><?= gettext("No") ?></span>
+                  <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-x me-1"></i><?= gettext("No") ?></span>
                   <?php endif; ?>
                 </div>
               </div>
@@ -461,9 +461,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-6"><?= $perm['label'] ?></div>
               <div class="col-sm-6">
                 <?php if ($perm['granted']): ?>
-                <span class="badge bg-success-lt text-success"><i class="ti ti-check me-1"></i><?= gettext("Yes") ?></span>
+                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext("Yes") ?></span>
                 <?php else: ?>
-                <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-x me-1"></i><?= gettext("No") ?></span>
+                <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-x me-1"></i><?= gettext("No") ?></span>
                 <?php endif; ?>
               </div>
             </div>

@@ -119,10 +119,10 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
         var icon = this.querySelector('i');
         if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen();
-            if (icon) { icon.className = 'ti ti-minimize'; }
+            if (icon) { icon.className = 'fa-solid fa-compress'; }
         } else {
             document.exitFullscreen();
-            if (icon) { icon.className = 'ti ti-maximize'; }
+            if (icon) { icon.className = 'fa-solid fa-maximize'; }
         }
     });
 </script>

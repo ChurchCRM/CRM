@@ -16,7 +16,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
 
 <?php if (!empty($sErrorText)): ?>
 <div class="alert alert-danger alert-dismissible" role="alert">
-    <i class="ti ti-alert-circle me-2"></i><?= InputUtils::escapeHTML($sErrorText) ?>
+    <i class="fa-solid fa-circle-exclamation me-2"></i><?= InputUtils::escapeHTML($sErrorText) ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 </div>
 <?php endif; ?>
@@ -76,7 +76,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
     </div>
     <div class="card-body">
         <div class="alert alert-info mb-3">
-            <i class="ti ti-info-circle me-2"></i><?= gettext('Changes will not take effect until next logon.') ?>
+            <i class="fa-solid fa-circle-info me-2"></i><?= gettext('Changes will not take effect until next logon.') ?>
         </div>
 
         <?php
@@ -111,14 +111,14 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
         <!-- People & Families panel: shown only in Custom mode -->
         <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <div class="px-3 py-2 border-bottom bg-light">
-                <strong><i class="ti ti-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
+                <strong><i class="fa-solid fa-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
                 <p class="text-body-secondary small mb-0 mt-1"><?= gettext('All users can view congregation members. This permission cannot be removed.') ?></p>
             </div>
             <div class="row align-items-center px-3 py-2">
                 <label class="col-sm-5 col-form-label text-body-secondary"><?= gettext('View') ?></label>
                 <div class="col-sm-7 d-flex align-items-center gap-2">
-                    <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext('View') ?></span>
-                    <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+                    <span class="badge bg-success-lt text-success"><i class="fa-solid fa-eye me-1"></i><?= gettext('View') ?></span>
+                    <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-lock me-1"></i><?= gettext('Always granted') ?></span>
                 </div>
             </div>
             <div class="row align-items-center border-top px-3 py-2 permission-row">
@@ -194,7 +194,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
     </div>
     <div class="card-body">
         <div class="alert alert-info mb-3">
-            <i class="ti ti-info-circle me-2"></i><?= gettext('Set Permission to True to allow this user to change the setting themselves.') ?>
+            <i class="fa-solid fa-circle-info me-2"></i><?= gettext('Set Permission to True to allow this user to change the setting themselves.') ?>
         </div>
         <div class="table-responsive">
             <table class="table table-hover align-middle">

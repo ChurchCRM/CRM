@@ -95,7 +95,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card">
                 <div class="card-body text-center py-5">
                     <div class="mb-3">
-                        <i class="ti ti-shopping-cart-off" style="font-size: 3rem; color: var(--tblr-muted);"></i>
+                        <i class="fa-solid fa-cart-arrow-down" style="font-size: 3rem; color: var(--tblr-muted);"></i>
                     </div>
                     <h3 class="text-body-secondary"><?= gettext('Your cart is empty') ?></h3>
                     <p class="text-secondary"><?= gettext('Add people to your cart first, then come back to check them in to an event.') ?></p>

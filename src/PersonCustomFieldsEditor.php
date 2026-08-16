@@ -491,15 +491,15 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             <td class="w-1">
                                 <div class="dropdown">
                                     <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <i class="ti ti-dots-vertical"></i>
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <?php
                                         if ($row != 1) {
-                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . $row . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</button>';
+                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . $row . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="up"><i class="fa-solid fa-arrow-up me-2"></i>' . gettext('Move up') . '</button>';
                                         }
                                         if ($row < $numRows) {
-                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . $row . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</button>';
+                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . $row . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="down"><i class="fa-solid fa-arrow-down me-2"></i>' . gettext('Move down') . '</button>';
                                         }
                                         if ($row != 1 || $row < $numRows) {
                                             echo '<div class="dropdown-divider"></div>';
@@ -508,7 +508,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         <button type="button" class="dropdown-item text-danger js-delete-field"
                                             data-field-name="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>"
                                             data-field-id="<?= InputUtils::escapeAttribute($aFieldFields[$row]) ?>">
-                                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                            <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                         </button>
                                     </div>
                                 </div>

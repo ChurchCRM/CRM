@@ -81,20 +81,20 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
               <td>
                 <div class="dropdown">
                   <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                    <i class="ti ti-dots-vertical"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="<?= $Person->getViewURI() ?>">
-                      <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                      <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                     </a>
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $Person->getId() ?>">
-                      <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                      <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                     </a>
                     <?php endif; ?>
                     <?php if ($Person->getFamId()) { ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $Person->getFamId() ?>">
-                      <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                      <i class="fa-solid fa-users me-2"></i><?= gettext('View Family') ?>
                     </a>
                     <?php } ?>
                     <div class="dropdown-divider"></div>
@@ -104,7 +104,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                       data-cart-type="person"
                       data-label-add="<?= gettext('Add to Cart') ?>"
                       data-label-remove="<?= gettext('Remove from Cart') ?>">
-                      <i class="ti ti-trash me-2"></i>
+                      <i class="fa-solid fa-trash me-2"></i>
                       <span class="cart-label"><?= gettext('Remove from Cart') ?></span>
                     </button>
                   </div>

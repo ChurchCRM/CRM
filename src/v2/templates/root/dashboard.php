@@ -157,28 +157,28 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card mb-3">
             <div class="card-header">
                 <div class="card-title">
-                    <i class="ti ti-users me-2 text-body-secondary"></i><?= gettext('People') ?>
+                    <i class="fa-solid fa-users me-2 text-body-secondary"></i><?= gettext('People') ?>
                 </div>
                 <div class="card-options ms-auto">
                     <ul class="nav nav-tabs card-header-tabs" id="people-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="latest-fam-tab" data-bs-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
-                                <i class="ti ti-home-plus me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest Families') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
+                                <i class="fa-solid fa-house-plus me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest Families') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="updated-fam-tab" data-bs-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
-                                <i class="ti ti-home-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated Families') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
+                                <i class="fa-solid fa-house-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated Families') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="latest-ppl-tab" data-bs-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="latest-ppl-pane" aria-selected="false">
-                                <i class="ti ti-user-plus me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest People') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
+                                <i class="fa-solid fa-user-plus me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest People') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="updated-ppl-tab" data-bs-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
-                                <i class="ti ti-user-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated People') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
+                                <i class="fa-solid fa-user-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated People') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
                             </a>
                         </li>
                     </ul>

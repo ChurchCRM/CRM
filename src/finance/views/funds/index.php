@@ -139,11 +139,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <td>
                                         <?php if ($isActive): ?>
                                             <span class="badge bg-success-lt text-success">
-                                                <i class="ti ti-circle-check me-1"></i><?= gettext('Active') ?>
+                                                <i class="fa-solid fa-circle-check me-1"></i><?= gettext('Active') ?>
                                             </span>
                                         <?php else: ?>
                                             <span class="badge bg-secondary-lt text-secondary">
-                                                <i class="ti ti-circle-x me-1"></i><?= gettext('Inactive') ?>
+                                                <i class="fa-solid fa-circle-xmark me-1"></i><?= gettext('Inactive') ?>
                                             </span>
                                         <?php endif; ?>
                                     </td>
@@ -153,7 +153,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                     data-bs-toggle="dropdown"
                                                     data-bs-display="static"
                                                     aria-expanded="false">
-                                                <i class="ti ti-dots-vertical"></i>
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <button type="button" class="dropdown-item fund-edit-btn"
@@ -161,23 +161,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                         data-fund-name="<?= $nameAttr ?>"
                                                         data-fund-desc="<?= $descAttr ?>"
                                                         data-fund-active="<?= $isActive ? 'true' : 'false' ?>">
-                                                    <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                                    <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                                 </button>
                                                 <a href="<?= SystemURLs::getRootPath() ?>/finance/fund/<?= $fundId ?>/contributors" class="dropdown-item">
-                                                    <i class="ti ti-list-details me-2"></i><?= gettext('View Details') ?>
+                                                    <i class="fa-solid fa-list-details me-2"></i><?= gettext('View Details') ?>
                                                 </a>
                                                 <?php if (!$isFirst): ?>
                                                     <button type="button" class="dropdown-item fund-order-btn"
                                                             data-fund-id="<?= $fundId ?>"
                                                             data-direction="up">
-                                                        <i class="ti ti-arrow-up me-2"></i><?= gettext('Move up') ?>
+                                                        <i class="fa-solid fa-arrow-up me-2"></i><?= gettext('Move up') ?>
                                                     </button>
                                                 <?php endif; ?>
                                                 <?php if (!$isLast): ?>
                                                     <button type="button" class="dropdown-item fund-order-btn"
                                                             data-fund-id="<?= $fundId ?>"
                                                             data-direction="down">
-                                                        <i class="ti ti-arrow-down me-2"></i><?= gettext('Move down') ?>
+                                                        <i class="fa-solid fa-arrow-down me-2"></i><?= gettext('Move down') ?>
                                                     </button>
                                                 <?php endif; ?>
                                                 <?php if (!$isFirst || !$isLast): ?>
@@ -188,13 +188,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                             disabled
                                                             style="cursor: not-allowed;"
                                                             title="<?= InputUtils::escapeAttribute(gettext('Cannot delete: fund has associated pledges')) ?>">
-                                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                                     </button>
                                                 <?php else: ?>
                                                     <button type="button" class="dropdown-item text-danger fund-delete-btn"
                                                             data-fund-id="<?= $fundId ?>"
                                                             data-fund-name="<?= $nameAttr ?>">
-                                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                                     </button>
                                                 <?php endif; ?>
                                             </div>

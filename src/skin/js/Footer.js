@@ -102,7 +102,7 @@ function initializeApp() {
         "/v2/search?q=" +
         term +
         '" class="dropdown-item">' +
-        '<i class="ti ti-arrow-right me-1"></i>' +
+        '<i class="fa-solid fa-arrow-right me-1"></i>' +
         i18next.t("View all results") +
         "</a>";
 

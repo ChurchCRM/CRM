@@ -15,7 +15,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-status-top bg-primary"></div>
     <div class="card-header">
         <h3 class="card-title">
-            <i class="ti ti-repeat me-2"></i><?= gettext('Create Repeat Events') ?>
+            <i class="fa-solid fa-repeat me-2"></i><?= gettext('Create Repeat Events') ?>
         </h3>
     </div>
     <div class="card-body">
@@ -41,7 +41,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <div>
                                         <span class="badge bg-info-lt text-info"><?= InputUtils::escapeHTML($typeName) ?></span>
                                         <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-sm btn-outline-secondary ms-2">
-                                            <i class="ti ti-switch-horizontal me-1"></i><?= gettext('Change') ?>
+                                            <i class="fa-solid fa-arrows-alt-h me-1"></i><?= gettext('Change') ?>
                                         </a>
                                     </div>
                                 <?php else: ?>
@@ -231,11 +231,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="btn-group" role="group">
                             <input type="radio" class="btn-check" name="EventStatus" id="statusActive" value="0" checked autocomplete="off">
                             <label class="btn btn-outline-success" for="statusActive">
-                                <i class="ti ti-check me-1"></i><?= gettext('Active') ?>
+                                <i class="fa-solid fa-check me-1"></i><?= gettext('Active') ?>
                             </label>
                             <input type="radio" class="btn-check" name="EventStatus" id="statusInactive" value="1" autocomplete="off">
                             <label class="btn btn-outline-secondary" for="statusInactive">
-                                <i class="ti ti-ban me-1"></i><?= gettext('Inactive') ?>
+                                <i class="fa-solid fa-ban me-1"></i><?= gettext('Inactive') ?>
                             </label>
                         </div>
                     </div>
@@ -244,10 +244,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <div class="d-flex justify-content-between">
                 <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-outline-secondary">
-                    <i class="ti ti-x me-1"></i><?= gettext('Cancel') ?>
+                    <i class="fa-solid fa-x me-1"></i><?= gettext('Cancel') ?>
                 </a>
                 <button type="submit" name="CreateRepeat" value="1" class="btn btn-primary btn-lg">
-                    <i class="ti ti-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
+                    <i class="fa-solid fa-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
                 </button>
             </div>
         </form>
