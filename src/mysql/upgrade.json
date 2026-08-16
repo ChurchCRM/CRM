@@ -106,7 +106,7 @@
   },
   "current": {
     "versions": ["7.6.4"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.7.0-add-person-deceased-date.sql"],
     "dbVersion": "7.7.0"
   }
 }

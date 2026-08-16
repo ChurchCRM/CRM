@@ -87,6 +87,7 @@ $sBirthDateError = '';
 $sBirthYearError = '';
 $sFriendDateError = '';
 $sMembershipDateError = '';
+$sDateDeceasedError = '';
 $aCustomErrors = [];
 
 $fam_Country = '';
@@ -125,6 +126,8 @@ $iFamily = 0;
 $iFamilyRole = 0;
 $dMembershipDate = '';
 $dFriendDate = date('Y-m-d');
+$bIsDeceased = false;
+$dDateDeceased = '';
 $iClassification = 0;
 $iViewAgeFlag = 0;
 $sPhoneCountry = '';
@@ -213,6 +216,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $bHideAge = isset($_POST['HideAge']);
     $dFriendDate = InputUtils::filterDate($_POST['FriendDate']);
     $dMembershipDate = InputUtils::filterDate($_POST['MembershipDate']);
+    $bIsDeceased = isset($_POST['IsDeceased']);
+    $dDateDeceased = InputUtils::filterDate($_POST['DateDeceased'] ?? '');
     $iClassification = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
     $iEnvelope = 0;
     if (array_key_exists('EnvID', $_POST)) {
@@ -281,6 +286,21 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sMembershipDateError = '<span class="text-danger">'
                 . gettext('Not a valid Membership Date') . '</span>';
             $bErrorFlag = true;
+        }
+    }
+
+    // Validate deceased date if checkbox is ticked and a date was entered
+    if ($bIsDeceased && strlen($dDateDeceased) > 0) {
+        $dDateDeceased = DateTimeUtils::parseAndValidate($dDateDeceased, 'US', 'past');
+        if ($dDateDeceased === false) {
+            $sDateDeceasedError = '<span class="text-danger">'
+                . gettext('Not a valid date of death') . '</span>';
+            $bErrorFlag = true;
+        } elseif ($dDateDeceased > date('Y-m-d')) {
+            $sDateDeceasedError = '<span class="text-danger">'
+                . gettext('Not a valid date of death') . '</span>';
+            $bErrorFlag = true;
+            $dDateDeceased = false;
         }
     }
 
@@ -406,6 +426,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $person->setFriendDate(null);
         }
 
+        if ($bIsDeceased) {
+            $person->setDateDeceased(strlen($dDateDeceased) > 0 ? $dDateDeceased : date('Y-m-d'));
+        } else {
+            $person->setDateDeceased(null);
+        }
+
         if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             $person->setEnvelope($iEnvelope);
         }
@@ -500,6 +526,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iFamilyRole = (int) $per_fmr_ID;
         $dMembershipDate = $per_MembershipDate;
         $dFriendDate = $per_FriendDate;
+        $bIsDeceased = !empty($per_DateDeceased);
+        $dDateDeceased = $per_DateDeceased ?? '';
         $iClassification = (int) $per_cls_ID;
         $iViewAgeFlag = (int) $per_Flags;
 
@@ -1021,6 +1049,23 @@ require_once __DIR__ . '/Include/Header.php';
                     <?php } ?>
                 </div>
                 <?php } ?>
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
+                    <label class="form-label d-block"><?= gettext('Deceased') ?></label>
+                    <div class="form-check mt-2">
+                        <input type="checkbox" class="form-check-input" id="IsDeceased" name="IsDeceased"
+                               value="1" <?= $bIsDeceased ? 'checked' : '' ?>>
+                        <label class="form-check-label" for="IsDeceased"><?= gettext('This person is deceased') ?></label>
+                    </div>
+                    <div class="input-group mt-2" id="DeceasedDateGroup" <?= $bIsDeceased ? '' : 'style="display:none"' ?>>
+                        <span class="input-group-text"><i class="fa-solid fa-cross"></i></span>
+                        <input type="text" name="DateDeceased" id="DateDeceased" class="form-control date-picker"
+                               value="<?= DateTimeUtils::formatForDatePicker($dDateDeceased) ?>" maxlength="10"
+                               placeholder="<?= SystemConfig::getValueForAttr('sDatePickerFormat') ?>">
+                    </div>
+                    <?php if ($sDateDeceasedError) { ?>
+                        <span class="text-danger small"><?= $sDateDeceasedError ?></span>
+                    <?php } ?>
+                </div>
             </div>
         </div>
     </div>
