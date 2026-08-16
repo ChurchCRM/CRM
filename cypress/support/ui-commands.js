@@ -528,6 +528,11 @@ Cypress.Commands.add('setupLocaleAdminSession', (localeValue) => {
     cy.makePrivateAPICall(apiKey, 'POST', `/api/user/${userId}/setting/ui.locale`, { value: localeValue }, 200);
 
     // Establish (or restore from cache) the browser session for locale-admin.
+    // Known limitation: the cy.session key is static ('locale-admin-session'),
+    // so if the locale were ever read at login time rather than per-request
+    // (e.g. persisted in the session cookie), the cache could serve a stale
+    // locale. ChurchCRM resolves locale per-request from the DB preference,
+    // so this is safe for now.
     cy.setupLoginSession('locale-admin-session', username, password);
 });
 

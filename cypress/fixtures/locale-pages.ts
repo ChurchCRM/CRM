@@ -13,7 +13,8 @@ export const LOCALE_TEST_PAGES: { name: string; url: string }[] = [
   { name: 'Sunday School',     url: 'groups/sundayschool/dashboard' },
   { name: 'Finance',           url: 'finance/' },
   { name: 'Reports',           url: 'groups/reports' },
-  { name: 'Admin: Settings',   url: 'admin/system/church-info' },
+  { name: 'Admin: Church Info',  url: 'admin/system/church-info' },
+  { name: 'Admin: Localization',  url: 'admin/system/localization' },
   { name: 'Admin: Users',      url: 'admin/system/users' },
   { name: 'Admin: Debug',      url: 'admin/system/debug' },
   // ← add new pages here

@@ -805,9 +805,9 @@ jobs:
 
   test-locale-full-root:
     # Full locale sweep (all 49 locales). Runs on release branches, nightly
-    # cron, and manual workflow_dispatch. Added to package job needs so
-    # release branches are blocked if any locale breaks; on PR/push builds
-    # the job is skipped and the skip is treated as success by package.
+    # cron, and manual workflow_dispatch. Listed in package job needs so the
+    # full sweep gates package on release branches; skipped on PR/push builds
+    # (package uses always() to avoid skip-propagation).
     if: |
       github.event_name == 'schedule' ||
       github.event_name == 'workflow_dispatch' ||
@@ -911,9 +911,9 @@ jobs:
 
   test-locale-full-subdir:
     # Full locale sweep (all 49 locales). Runs on release branches, nightly
-    # cron, and manual workflow_dispatch. Added to package job needs so
-    # release branches are blocked if any locale breaks; on PR/push builds
-    # the job is skipped and the skip is treated as success by package.
+    # cron, and manual workflow_dispatch. Listed in package job needs so the
+    # full sweep gates package on release branches; skipped on PR/push builds
+    # (package uses always() to avoid skip-propagation).
     if: |
       github.event_name == 'schedule' ||
       github.event_name == 'workflow_dispatch' ||
@@ -1019,6 +1019,11 @@ jobs:
 
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir, test-locale-root, test-locale-subdir, test-locale-full-root, test-locale-full-subdir]
+    # always() prevents "skipped" from full-locale jobs (which only run on
+    # release branches / cron / dispatch) propagating and silently skipping
+    # this job on PR and push builds. The expression still blocks on any
+    # actual failure or cancellation.
+    if: ${{ always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
     timeout-minutes: 15
     permissions:
       contents: write
