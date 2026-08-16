@@ -97,6 +97,12 @@ describe("Empty Cart to Group", () => {
             cy.window().should("have.property", "CRM");
             cy.window().its("CRM.localesLoaded").should("eq", true);
 
+            // Wait for cart dropdown menu to initialize and render the items
+            cy.get("#cart-dropdown-menu", { timeout: 5000 }).should("not.contain", "undefined");
+
+            // Click the cart dropdown toggle to show the menu (find by shopping cart icon)
+            cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .ti-shopping-cart").closest("[data-bs-toggle='dropdown']").click();
+
             cy.get("#emptyCartToGroup").should("be.visible").click();
 
             // Wait for modal to open and TomSelect to initialize
