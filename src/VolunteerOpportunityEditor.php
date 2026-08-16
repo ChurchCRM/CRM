@@ -459,11 +459,8 @@ if (isset($_POST['SaveChanges'])) {
                                 if ($row !== 1 || $row !== $numRows) {
                                     echo '<div class="dropdown-divider"></div>';
                                 }
-                                // False positive: $aIDFields[$row] is an ORM integer ID (not user input) and this constructs HTML, not SQL.
-                                // The tainted-sql-string rule mis-classifies this HTML href as a SQL sink.
-                                // The echoed-request rule also fires here — same false positive, $aIDFields[$row] is an ORM-assigned integer, not user input.
-                                // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string, php.lang.security.injection.echoed-request.echoed-request
-                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="fa-solid fa-trash me-2"></i>' . gettext('Delete') . '</a>';
+                                // False positive: $aIDFields[$row] is an ORM integer ID, not user input. Both tainted-sql-string and echoed-request rules mis-fire here.
+                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="fa-solid fa-trash me-2"></i>' . gettext('Delete') . '</a>'; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string, php.lang.security.injection.echoed-request.echoed-request
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</td>';
