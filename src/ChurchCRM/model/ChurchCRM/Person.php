@@ -825,6 +825,23 @@ class Person extends BasePerson implements PhotoInterface
         return $array;
     }
 
+    /**
+     * Returns true when the person has not been deactivated.
+     * An empty/null per_DateDeactivated means the person is active.
+     */
+    public function isActive(): bool
+    {
+        return empty($this->getDateDeactivated());
+    }
+
+    /**
+     * Return the person's status as text ('Active' or 'Inactive').
+     */
+    public function getStatusText(): string
+    {
+        return $this->isActive() ? gettext('Active') : gettext('Inactive');
+    }
+
     public function getEmail(): ?string
     {
         if (parent::getEmail() === null) {

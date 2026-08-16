@@ -29,6 +29,12 @@ $fam_Latitude       = (float) ($personData['fam_Latitude'] ?? 0);
 $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
 ?>
 
+<?php $currentUserId = AuthenticationManager::getCurrentUser()->getId(); ?>
+
+<div id="person-deactivated" class="alert alert-warning d-none">
+    <strong><?= gettext("This Person is Inactive") ?> </strong>
+</div>
+
 <div class="row">
     <div class="col-lg-4">
         <!-- Photo & Info Card -->
@@ -384,6 +390,12 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             <a class="dropdown-item" id="view-larger-image-btn" href="#"><i class="fa-solid fa-magnifying-glass-plus me-2"></i><?= gettext("View Photo") ?></a>
                             <a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#confirm-delete-image"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Photo") ?></a>
                         <?php } ?>
+                    <?php } ?>
+                    <?php if ($bOkToEdit && $currentUserId !== (int)$iPersonID) { ?>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="activateDeactivatePerson">
+                            <i class="fa-solid fa-power-off me-2"></i><?= ($person->isActive() ? gettext('Set Inactive') : gettext('Set Active')) ?>
+                        </a>
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
@@ -795,6 +807,8 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
         <script src="<?= SystemURLs::assetVersioned('/skin/js/PersonView.js') ?>"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM.currentPersonID = <?= $iPersonID ?>;
+            window.CRM.currentPersonActive = <?= $person->isActive() ? "true" : "false" ?>;
+            window.CRM.currentPersonName = <?= json_encode($person->getFullName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
 
             $("#deletePhoto").click(function() {
                 window.CRM.deletePhoto("person", window.CRM.currentPersonID);

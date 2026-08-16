@@ -525,6 +525,7 @@ CREATE TABLE `person_per` (
   `per_Facebook` varchar(50) default NULL,
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
+  `per_DateDeactivated` date default NULL,
   PRIMARY KEY  (`per_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 

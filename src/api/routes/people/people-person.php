@@ -5,6 +5,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
@@ -235,6 +236,72 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);
+
+
+    /**
+     * @OA\Post(
+     *     path="/person/{personId}/activate/{status}",
+     *     operationId="activatePerson",
+     *     summary="Activate or deactivate a person (EditRecords role required)",
+     *     description="Pass status=true to activate or status=false to deactivate the person. Cannot deactivate yourself.",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+     *     @OA\Parameter(name="status", in="path", required=true, description="true to activate, false to deactivate", @OA\Schema(type="string", enum={"true","false"})),
+     *     @OA\Response(response=200, description="Person activation status updated",
+     *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
+     *     ),
+     *     @OA\Response(response=400, description="Invalid status value"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Cannot deactivate yourself or EditRecords role required"),
+     *     @OA\Response(response=404, description="Person not found")
+     * )
+     */
+    $group->post('/activate/{status}', function (Request $request, Response $response, array $args): Response {
+        /** @var \ChurchCRM\model\ChurchCRM\Person $person */
+        $person = $request->getAttribute('person');
+        $currentUser = AuthenticationManager::getCurrentUser();
+
+        // Guard: cannot deactivate yourself (parity with delete-self guard)
+        if ($currentUser->getId() === (int) $person->getId()) {
+            return SlimUtils::renderErrorJSON($response, gettext("Can't change your own active status"), [], 403);
+        }
+
+        // Normalize incoming status to boolean (true = activate, false = deactivate)
+        $newStatus = filter_var($args['status'], FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+        if ($newStatus === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid status'), [], 400);
+        }
+
+        $currentStatus = $person->isActive();
+
+        // Update only if the value is different
+        if ($currentStatus !== $newStatus) {
+            $currentDate = new \DateTime();
+            if ($newStatus === false) {
+                // Deactivating: set DateDeactivated to now
+                $person->setDateDeactivated($currentDate);
+            } else {
+                // Activating: clear DateDeactivated
+                $person->setDateDeactivated(null);
+            }
+
+            // Create a note to record the status change
+            $note = new Note();
+            $note->setPerId($person->getId());
+            $note->setText($newStatus === false ? gettext('Marked the Person as Inactive') : gettext('Marked the Person as Active'));
+            $note->setType('edit');
+            $note->setEntered($currentUser->getId());
+            $note->save();
+
+            // Update last edited metadata
+            $person->setDateLastEdited($currentDate);
+            $person->setEditedBy($currentUser->getId());
+            $person->save();
+        }
+
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
     // Set person role
     $group->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
