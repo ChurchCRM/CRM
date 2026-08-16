@@ -211,7 +211,12 @@ describe("Standard Calendar — save (admin-session)", () => {
 
         cy.visit("event/calendars");
         openNewEventModal();
-        cy.get("#event-title-input").should("be.visible").type(title);
+        // Use invoke("val").trigger("input") instead of .type() to bypass the
+        // Bootstrap 5 modal focus-trap, which can steal keyboard focus mid-delivery
+        // and cause input events to land on the wrong element, leaving event.Title
+        // empty and the save button permanently disabled. trigger("input") fires the
+        // input event listener that updates event.Title and calls fireValidity().
+        cy.get("#event-title-input").should("be.visible").invoke("val", title).trigger("input");
 
         // Pin a calendar. Do NOT touch Event Type — we want the default
         // value to flow through to the payload.
@@ -246,7 +251,12 @@ describe("Standard Calendar — save (admin-session)", () => {
 
         cy.visit("event/calendars");
         openNewEventModal();
-        cy.get("#event-title-input").should("be.visible").type(title);
+        // Use invoke("val").trigger("input") instead of .type() to bypass the
+        // Bootstrap 5 modal focus-trap, which can steal keyboard focus mid-delivery
+        // and cause input events to land on the wrong element, leaving event.Title
+        // empty and the save button permanently disabled. trigger("input") fires the
+        // input event listener that updates event.Title and calls fireValidity().
+        cy.get("#event-title-input").should("be.visible").invoke("val", title).trigger("input");
 
         // Empty-state hint should be visible since no calendar is pinned.
         cy.get("#calendarsEmptyHint").should("be.visible");
@@ -333,7 +343,12 @@ describe("Standard Calendar — save (admin-session)", () => {
 
         cy.visit("event/calendars");
         openNewEventModal();
-        cy.get("#event-title-input").should("be.visible").type(`Modal Advanced ${Date.now()}`);
+        // Use invoke("val").trigger("input") instead of .type() to bypass the
+        // Bootstrap 5 modal focus-trap, which can steal keyboard focus mid-delivery
+        // and cause input events to land on the wrong element, leaving event.Title
+        // empty and the save button permanently disabled. trigger("input") fires the
+        // input event listener that updates event.Title and calls fireValidity().
+        cy.get("#event-title-input").should("be.visible").invoke("val", `Modal Advanced ${Date.now()}`).trigger("input");
         cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
 
         cy.get('[data-bs-target="#eventAdvancedFields"]').click();
