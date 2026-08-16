@@ -92,6 +92,12 @@ jobs:
         fi
         echo "✅ POEditor token is configured"
 
+    - name: Upload missing translations to POEditor
+      run: |
+        echo "📤 Uploading missing translations to POEditor..."
+        node locale/scripts/poeditor-upload-missing.js
+        echo "✅ Upload completed successfully"
+
     - name: Download locales from POEditor
       if: inputs.operation_mode != 'audit-only'
       run: |
