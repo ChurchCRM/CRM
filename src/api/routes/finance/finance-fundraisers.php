@@ -268,17 +268,19 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
         }
     });
 
-    // GET /api/finance/fundraisers/active-count — active fundraiser count for menu badge
-    // Used by JavaScript to dynamically load the badge on page load (matches Calendar pattern).
-    $group->get('/active-count', function (Request $request, Response $response): Response {
-        try {
-            $activeCount = (new FundRaiserService())->getActiveFundraiserCount();
-            return $response
-                ->withHeader('Content-Type', 'application/json')
-                ->withStatus(200)
-                ->write(json_encode(['count' => $activeCount], JSON_THROW_ON_ERROR));
-        } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to get fundraiser count'), [], 500, $e, $request);
-        }
-    });
 })->add(new FundraiserEnabledMiddleware())->add(ManageFundraisersRoleAuthMiddleware::class);
+
+// GET /api/fundraisers/active-count — active fundraiser count for menu badge
+// Visible to all authenticated users (moved outside role-restricted group).
+// Used by JavaScript to dynamically load the badge on page load (matches Calendar pattern).
+$app->get('/fundraisers/active-count', function (Request $request, Response $response): Response {
+    try {
+        $activeCount = (new FundRaiserService())->getActiveFundraiserCount();
+        return $response
+            ->withHeader('Content-Type', 'application/json')
+            ->withStatus(200)
+            ->write(json_encode(['count' => $activeCount], JSON_THROW_ON_ERROR));
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('Failed to get fundraiser count'), [], 500, $e, $request);
+    }
+})->add(new FundraiserEnabledMiddleware());
