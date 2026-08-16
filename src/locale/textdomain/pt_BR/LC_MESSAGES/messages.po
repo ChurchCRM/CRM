@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "URL da Imagem"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Editor de Fundo de Doações"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Campos ou seleções inválidas. As alterações não foram salvas! Por favor, corrija e tente novamente!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Nenhum fundo foi adicionado ainda"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "Itens doados"
 #: 
 msgid "Purchased Items"
 msgstr "Itens comprados"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Total de todas as compras: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Total de compras: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7312,10 +7296,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Ao excluir este campo, você perderá irremediavelmente todos os dados dos membros do grupo atribuídos a ele!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Ao excluir este fundo, você poderá afetar o histórico de doações!"
-
-#: 
 msgid "Category Name"
 msgstr "Nome da categoria"
 
@@ -7368,10 +7348,6 @@ msgid "Filter by Class"
 msgstr "Filtrar por Classe"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fundo excluído com sucesso"
-
-#: 
 msgid "In Use"
 msgstr "Em uso"
 
@@ -7418,10 +7394,6 @@ msgstr "Remover essa contagem de presença?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Selecione o tipo de registro ao qual esta propriedade se aplica."
-
-#: 
-msgid "That fund name already exists."
-msgstr "Esse nome de fundo já existe."
 
 #: 
 msgid "Total Pledges"
@@ -14465,10 +14437,6 @@ msgid "Group removed from cart"
 msgstr "Grupo removido do carrinho"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "ID do grupo é obrigatório para a regra selecionada"
-
-#: 
 msgid "HTML URL"
 msgstr "URL de HTML"
 
@@ -14846,20 +14814,8 @@ msgid "Please select a role."
 msgstr "Por favor, selecione uma função."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Por favor, selecione um ministério e uma função."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Por favor, selecione linhas para excluir"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Por favor, selecione o papel para os membros"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Por favor, selecione o grupo desejado para os membos"
 
 #: 
 msgid "Please try again"
@@ -15755,24 +15711,12 @@ msgid "Account status"
 msgstr "Status da conta"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avançado: escolher uma versão de destino específica"
-
-#: 
 msgid "Bug Fix"
 msgstr "Correção de bug"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Por padrão, o assistente baixa a próxima versão recomendada. Você pode escolher qualquer versão disponível abaixo."
-
-#: 
 msgid "Change required"
 msgstr "Alteração necessária"
-
-#: 
-msgid "Changelog"
-msgstr "Registro de alterações"
 
 #: 
 msgid "Continue Anyway"
@@ -15781,10 +15725,6 @@ msgstr "Continuar mesmo assim"
 #: 
 msgid "Could not load release information."
 msgstr "Não foi possível carregar as informações da versão."
-
-#: 
-msgid "Download & Install"
-msgstr "Baixar e instalar"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15813,10 +15753,6 @@ msgstr "Registro completo de alterações"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Instalar versão estável {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Instalando próxima versão"
 
 #: 
 msgid "Invalid file path"
@@ -15887,10 +15823,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Mostrar caminho completo de atualização"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "A versão estável mais recente é {{version}}. Você pode reinstalá-la abaixo."
 
@@ -15917,10 +15849,6 @@ msgstr "Ver notas da versão"
 #: 
 msgid "What's New"
 msgstr "Novidades"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Novidades na versão {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16539,10 +16467,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "A funcionalidade de e-mail está desativada no momento. Os recursos a seguir não funcionarão até que o e-mail seja habilitado"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Valor estimado $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Fluxo de trabalho mais rápido"
 
@@ -16585,10 +16509,6 @@ msgstr "Desenvolvimento local"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Valor total mínimo"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Lance mínimo $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16891,10 +16811,6 @@ msgid "Working..."
 msgstr "Processando..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Você está {{releaseCount}} versão(ões) atrás. Veja o que você ganhará"
-
-#: 
 msgid "click to expand"
 msgstr "clique para expandir"
 
@@ -17149,10 +17065,6 @@ msgstr "Falha ao criar promessa"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Falha ao excluir promessa"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Falha ao codificar resposta de pagamento"
 
 #: 
 msgid "Failed to retrieve pledge"

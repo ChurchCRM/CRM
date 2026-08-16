@@ -292,7 +292,7 @@ class Menu
         if ($isAdmin) {
             $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
             $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isAdmin, 'fa-envelope'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'DonationFundEditor.php', $isAdmin, 'fa-piggy-bank'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isAdmin, 'fa-piggy-bank'));
 
             $depositsMenu->addSubMenu($adminMenu);
         }

@@ -1,21 +1,69 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "one": "Email-i u dërgua tek %d familje.",
+    "other": "Email-i u dërgua tek %d familje."
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF-i u dërgua me sukses me email tek %d familje.",
+    "other": "PDF-i u dërgua me sukses me email tek %d familje."
+  },
+  "Birthdays & Anniversaries": "Ditëlindje & Përvjetorë",
+  "Estimated value %s.": "Vlera e vlerësuar %s.",
+  "Minimum bid %s.": "Oferta minimale %s.",
+  "No \"%s\" options are available yet. Add the relevant records first.": "Nuk ka ende opsione \"%s\" të disponueshme. Shtoni fillimisht rekordet përkatëse.",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "Nuk ka ende opsione \"%s\" të konfiguruara. Shtoni fillimisht rekordet përkatëse.",
+  "People with birthdays or wedding anniversaries in a particular month": "Personat me ditëlindje ose përvjetorë martese në një muaj të caktuar",
+  "The month for which you would like birthdays and anniversaries returned.": "Muaji për të cilin dëshironi të kthehen ditëlindje dhe përvjetorët.",
+  "The wedding anniversary month for which you would like records returned.": "Muaji i përvjetorit të martesës për të cilin dëshironi të kthehen rekordet.",
+  "Total of all purchases: %s": "Totali i të gjitha blerjeve: %s",
+  "Total purchases: %s": "Blerje totale: %s",
+  "Wedding Anniversaries": "Përvjetorë Martese",
+  "People with wedding anniversaries in a particular month": "Personat me përvjetorë martese në një muaj të caktuar",
+  "An error occurred. Please try again.": "Ndodhi një gabim. Ju lutemi provoni përsëri.",
+  "Are you sure you want to delete this fund?": "Jeni të sigurt që dëshironi të fshini këtë fond?",
+  "Cannot delete: fund has associated pledges": "Nuk mund të fshihet: fondi ka zotimet e lidhura me të",
+  "Delete Fund": "Fshi Fondin",
+  "Direction must be 'up' or 'down'.": "Drejtimi duhet të jetë 'lart' ose 'poshtë'.",
+  "Edit Donation Fund": "Redakto Fondin e Dhurimit",
+  "Failed to reorder donation fund": "Dështoi rirenditja e fondit të dhurimit",
+  "Fund added successfully.": "Fondi u shtua me sukses.",
+  "Fund deleted successfully.": "Fondi u fshi me sukses.",
+  "Fund name": "Emri i fondit",
+  "Fund name is required.": "Emri i fondit është i detyrueshëm.",
+  "Fund order updated.": "Rendi i fondit u përditësua.",
+  "Fund saved successfully.": "Fondi u ruajt me sukses.",
+  "No funds have been added yet. Use the form above to add the first fund.": "Nuk është shtuar ende asnjë fond. Përdorni formularin më lart për të shtuar fondin e parë.",
+  "Optional description": "Përshkrim opsional",
+  "Private Calendar": "Kalendar Privat",
+  "Public Calendar": "Kalendar Publik",
+  "Advanced: Install a specific version instead": "Avancuar: Instaloni një version specifik",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "Si parazgjedhje, magjistari përditësohet në versionin më të fundit. Mund të zgjidhni një version specifik më poshtë.",
+  "Cannot edit a payment in a closed deposit": "Nuk mund të redaktohet një pagesë në një depozitë të mbyllur",
+  "Download & Apply {{version}}": "Shkarko & Apliko {{version}}",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "Çdo version i ChurchCRM përfshin rregullime sigurie. Rekomandojmë fuqimisht të përditësoheni gjithmonë në versionin më të fundit.",
+  "Failed to decode payment request": "Dështoi dekodimi i kërkesës së pagesës",
+  "Full release notes": "Shënime të plota të versionit",
+  "Invalid payment data": "Të dhëna pagese të pavlefshme",
+  "No release notes available.": "Nuk ka shënime versioni të disponueshme.",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Paralajmërim: {{chosen}} i mungojnë rregullimet e sigurisë të përfshira në {{latest}}. Vazhdoni vetëm nëse keni një arsye specifike.",
+  "What you'll gain": "Çfarë do të fitoni",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "U kopjua {{count}} anëtar",
+    "other": "U kopjuan {{count}} anëtarë"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat.",
+    "other": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Shumë marrës për klientin e email-it ({{count}} > {{max}}). Përdorni Kopjo Adresat.",
+    "other": "Shumë marrës për klientin e email-it ({{count}} > {{max}}). Përdorni Kopjo Adresat."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minutë mbetur",
+    "other": "{{count}} minuta mbetur"
   }
 }

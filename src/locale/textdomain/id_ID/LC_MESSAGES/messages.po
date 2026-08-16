@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "URL dari Gambar"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Sunting Donatur Dana"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ekspresi ataupun pemilihan tidak valid. Perubahan tidak disimpan! Tolong perbaiki dan coba lagi!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Belum ada dana yang ditambahkan."
 
 #: 
 msgid "Active"
@@ -2169,14 +2161,6 @@ msgstr "Item yang disumbangkan"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Barang yang dibeli"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Total semua pembelian: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Total pembelian: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7339,10 +7323,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Dengan menghapus bidang ini, Anda akan kehilangan semua data anggota grup yang ditetapkan untuk bidang ini secara permanen!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Dengan menghapus dana ini, Anda mungkin mempengaruhi catatan donasi historis!"
-
-#: 
 msgid "Category Name"
 msgstr "Nama Kategori"
 
@@ -7395,10 +7375,6 @@ msgid "Filter by Class"
 msgstr "Filter berdasarkan Kelas"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Dana berhasil dihapus"
-
-#: 
 msgid "In Use"
 msgstr "Sedang Digunakan"
 
@@ -7445,10 +7421,6 @@ msgstr "Hapus hitungan kehadiran ini?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Pilih jenis catatan yang berlaku untuk properti ini"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Nama dana tersebut sudah ada."
 
 #: 
 msgid "Total Pledges"
@@ -14488,10 +14460,6 @@ msgid "Group removed from cart"
 msgstr "Grup dihapus dari keranjang"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID diperlukan untuk prompt pemilihan peran"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14869,20 +14837,8 @@ msgid "Please select a role."
 msgstr "Silakan pilih peran."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Silakan pilih pelayanan dan peran."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Harap pilih baris yang akan dihapus"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Silakan pilih Peran target untuk anggota"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Silakan pilih grup target untuk anggota"
 
 #: 
 msgid "Please try again"
@@ -15777,24 +15733,12 @@ msgid "Account status"
 msgstr "Status akun"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Lanjutan: pilih versi target tertentu"
-
-#: 
 msgid "Bug Fix"
 msgstr "Perbaikan Bug"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Secara default, panduan mengunduh rilis berikutnya yang direkomendasikan. Anda dapat memilih versi lain yang tersedia di bawah ini."
-
-#: 
 msgid "Change required"
 msgstr "Perubahan diperlukan"
-
-#: 
-msgid "Changelog"
-msgstr "Catatan Perubahan"
 
 #: 
 msgid "Continue Anyway"
@@ -15803,10 +15747,6 @@ msgstr "Lanjutkan Saja"
 #: 
 msgid "Could not load release information."
 msgstr "Tidak dapat memuat informasi rilis."
-
-#: 
-msgid "Download & Install"
-msgstr "Unduh & Pasang"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15835,10 +15775,6 @@ msgstr "Catatan perubahan lengkap"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Pasang versi stabil {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Memasang rilis berikutnya"
 
 #: 
 msgid "Invalid file path"
@@ -15909,10 +15845,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Tampilkan jalur pembaruan lengkap"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Rilis stabil terbaru adalah {{version}}. Anda dapat memasangnya kembali di bawah ini."
 
@@ -15939,10 +15871,6 @@ msgstr "Lihat catatan rilis"
 #: 
 msgid "What's New"
 msgstr "Yang Baru"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Yang Baru di {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16559,10 +16487,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Fungsi email saat ini dinonaktifkan. Fitur-fitur berikut tidak akan berfungsi hingga email diaktifkan"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Nilai perkiraan $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Alur kerja tercepat"
 
@@ -16605,10 +16529,6 @@ msgstr "Pengembangan lokal"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Jumlah Total Minimum"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Penawaran minimum $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16911,10 +16831,6 @@ msgid "Working..."
 msgstr "Memproses..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Anda tertinggal {{releaseCount}} rilis. Inilah yang akan Anda dapatkan"
-
-#: 
 msgid "click to expand"
 msgstr "klik untuk perluas"
 
@@ -17165,10 +17081,6 @@ msgstr "Gagal membuat janji persembahan"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Gagal menghapus janji persembahan"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Gagal mengenkode respons pembayaran"
 
 #: 
 msgid "Failed to retrieve pledge"

@@ -13,12 +13,13 @@ $allowFraming = true;
 
 require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
 ?>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
+<!-- FullCalendar v7 CSS (webpack-extracted from external-calendar.js: skeleton + Forma theme + blue palette) -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/external-calendar.min.css') ?>">
 <div class="register-box w-100" style="margin-top:5px;">
     <div class="register-logo">
       <a href="<?= SystemURLs::getRootPath() ?>/"><?= ChurchMetaData::getChurchName() ?></a>: <?= InputUtils::escapeHTML($calendarName) ?>
       <?php if ($churchTz) : ?>
-      <p class="text-muted small mb-0"><i class="ti ti-clock me-1"></i><?= gettext('All times shown in') ?> <?= InputUtils::escapeHTML($churchTz) ?></p>
+      <p class="text-muted small mb-0"><i class="fa-solid fa-clock me-1"></i><?= gettext('All times shown in') ?> <?= InputUtils::escapeHTML($churchTz) ?></p>
       <?php endif; ?>
     </div>
     <div class="row">
@@ -44,7 +45,7 @@ require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
       </div>
       <div class="modal-body">
         <div class="d-flex align-items-center text-body-secondary small mb-3" id="eventDetailTime">
-          <i class="ti ti-clock me-2"></i><span id="eventDetailTimeText"></span>
+          <i class="fa-solid fa-clock me-2"></i><span id="eventDetailTimeText"></span>
         </div>
         <p class="mb-0" id="eventDetailDesc"></p>
       </div>
@@ -53,70 +54,15 @@ require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-document.addEventListener('DOMContentLoaded', function() {
-  // Wait for the FullCalendar locale file (e.g. pt-br.js) to finish loading
-  // and register before building the calendar, otherwise the toolbar buttons
-  // (today / month / week / day / list) render with English defaults even
-  // though the dates format correctly via the native Intl locale.
-  // Defensive fallback: if locale-loader.min.js itself failed to load,
-  // onLocalesReady will be undefined — render immediately in English.
-  function initCalendar() {
-  window.CRM.fullcalendar =  new FullCalendar.Calendar(document.getElementById('calendar'), {
-      headerToolbar: {
-        start: 'prev,next today',
-        center: 'title',
-        end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-      },
-      height: 600,
-      selectable: false,
-      editable: false,
-      selectMirror: true,
-      locale: window.CRM.lang,
-      timeZone: '<?= InputUtils::escapeAttribute($churchTz ?: 'local') ?>',
-      eventSources: [
-        '<?= $eventSource ?>'
-      ],
-      eventClick: function(info) {
-        info.jsEvent.preventDefault(); // prevent FullCalendar from following event.url
-
-        var event = info.event;
-        var props = event.extendedProps || {};
-
-        document.getElementById('eventDetailModalLabel').textContent = event.title;
-
-        // Use FullCalendar's own formatter — it applies the calendar's locale and timezone
-        // so times are always shown in the church timezone regardless of the visitor's browser.
-        var cal = window.CRM.fullcalendar;
-        var dateFmt = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        var timeFmt = { hour: '2-digit', minute: '2-digit' };
-        var timeStr = '';
-        if (event.allDay) {
-          timeStr = event.start ? cal.formatDate(event.start, dateFmt) : '';
-        } else {
-          var dateStr   = event.start ? cal.formatDate(event.start, dateFmt) : '';
-          var startTime = event.start ? cal.formatDate(event.start, timeFmt) : '';
-          var endTime   = event.end   ? cal.formatDate(event.end,   timeFmt) : '';
-          timeStr = dateStr + (startTime ? ', ' + startTime : '') + (endTime ? ' – ' + endTime : '');
-        }
-        document.getElementById('eventDetailTimeText').textContent = timeStr;
-
-        var descEl = document.getElementById('eventDetailDesc');
-        descEl.textContent = props.description || '';
-        descEl.style.display = props.description ? '' : 'none';
-
-        bootstrap.Modal.getOrCreateInstance(document.getElementById('eventDetailModal')).show();
-      }
-  });
-
-  window.CRM.fullcalendar.render();
-  }
-  if (typeof window.CRM.onLocalesReady === "function") {
-    window.CRM.onLocalesReady(initCalendar);
-  } else {
-    initCalendar();
-  }
-});
+// Server-side data for the FullCalendar public calendar.
+// Read by webpack/external-calendar.js after DOMContentLoaded.
+window.CRM = window.CRM || {};
+window.CRM.externalCalendarArgs = <?= json_encode([
+    'eventSource' => $eventSource,
+    'timeZone'    => $churchTz ?: 'local',
+], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
 </script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/external-calendar.min.js') ?>"></script>
 
 <?php
 require SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php";

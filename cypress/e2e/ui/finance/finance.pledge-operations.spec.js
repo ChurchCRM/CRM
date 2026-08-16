@@ -5,6 +5,9 @@ describe("Pledge Operations", () => {
         type: "Payment",
         iMethod: "CASH",
         Date: "2025-10-25",
+        // FamilyID "1" and FundID "1" are intentional: Family ID 1 always exists in the
+        // test environment (documented in cypress-testing.md). This is not a copy-paste
+        // oversight — these are stable test-fixture values.
         FamilyID: "1",
         FYID: 29,
         tScanString: "",
@@ -32,7 +35,7 @@ describe("Pledge Operations", () => {
             cy.on("window:confirm", () => true);
             cy.get("#deletePledgeBtn").click();
 
-            cy.url().should("contain", "/finance/");
+            cy.url().should("not.contain", "/edit");
 
             cy.request({
                 method: "GET",

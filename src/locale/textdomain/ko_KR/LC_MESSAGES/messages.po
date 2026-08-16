@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "사진 URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "헌금 항목 편집"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "잘못된 필드나 선택입니다. 변경 사항이 저장되지 않았습니다! 수정 후 다시 시도하세요!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "등록된 헌금 항목이 없습니다."
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "기증 물품"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "구매 품목"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "총 구매액: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "구매 총액: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7340,10 +7324,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 그룹 구성원 데이터가 영구적으로 삭제됩니다!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "이 기금을 삭제하면 과거 기부 기록에 영향을 줄 수 있습니다!"
-
-#: 
 msgid "Category Name"
 msgstr "카테고리 이름"
 
@@ -7396,10 +7376,6 @@ msgid "Filter by Class"
 msgstr "클래스별 필터"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "기금이 성공적으로 삭제되었습니다"
-
-#: 
 msgid "In Use"
 msgstr "사용 중"
 
@@ -7446,10 +7422,6 @@ msgstr "이 출석 수를 제거하시겠습니까?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "이 속성이 적용되는 레코드 유형을 선택하세요"
-
-#: 
-msgid "That fund name already exists."
-msgstr "해당 기금 이름이 이미 존재합니다."
 
 #: 
 msgid "Total Pledges"
@@ -14489,10 +14461,6 @@ msgid "Group removed from cart"
 msgstr "그룹이 장바구니에서 제거되었습니다"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "역할 선택에는 GroupID가 필요합니다"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14870,20 +14838,8 @@ msgid "Please select a role."
 msgstr "역할을 선택해 주세요."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "사역팀과 역할을 모두 선택해 주세요."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "삭제할 행을 선택해 주세요"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "구성원에게 적용할 역할을 선택하세요"
-
-#: 
-msgid "Please select target group for members"
-msgstr "구성원을 이동시킬 대상 그룹을 선택하세요."
 
 #: 
 msgid "Please try again"
@@ -15778,24 +15734,12 @@ msgid "Account status"
 msgstr "계정 상태"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "고급: 특정 대상 버전 선택"
-
-#: 
 msgid "Bug Fix"
 msgstr "버그 수정"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "기본적으로 마법사는 다음 권장 릴리즈를 다운로드합니다. 아래에서 사용 가능한 버전을 직접 선택할 수도 있습니다."
-
-#: 
 msgid "Change required"
 msgstr "변경 필요"
-
-#: 
-msgid "Changelog"
-msgstr "변경 로그"
 
 #: 
 msgid "Continue Anyway"
@@ -15804,10 +15748,6 @@ msgstr "그래도 계속"
 #: 
 msgid "Could not load release information."
 msgstr "릴리즈 정보를 불러올 수 없습니다."
-
-#: 
-msgid "Download & Install"
-msgstr "다운로드 및 설치"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15836,10 +15776,6 @@ msgstr "전체 변경 로그"
 #: 
 msgid "Install stable {{version}}"
 msgstr "안정 버전 {{version}} 설치"
-
-#: 
-msgid "Installing next release"
-msgstr "다음 릴리즈 설치 중"
 
 #: 
 msgid "Invalid file path"
@@ -15910,10 +15846,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "전체 업그레이드 경로 표시"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "최신 안정 릴리즈는 {{version}}입니다. 아래에서 재설치할 수 있습니다."
 
@@ -15940,10 +15872,6 @@ msgstr "릴리즈 노트 보기"
 #: 
 msgid "What's New"
 msgstr "새로운 기능"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}}의 새로운 기능"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16560,10 +16488,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "현재 이메일 기능이 비활성화되어 있습니다."
 
 #: 
-msgid "Estimated value $%s."
-msgstr "예상 가치 $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "가장 빠른 작업 흐름"
 
@@ -16606,10 +16530,6 @@ msgstr "로컬 개발"
 #: 
 msgid "Minimum Total Amount"
 msgstr "최소 총액"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "최소 입찰가 $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16912,10 +16832,6 @@ msgid "Working..."
 msgstr "처리 중..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "{{releaseCount}}개 버전이 뒤처져 있습니다. 업데이트 시 얻게 되는 내용"
-
-#: 
 msgid "click to expand"
 msgstr "클릭하여 펼치기"
 
@@ -17170,10 +17086,6 @@ msgstr "서약 생성에 실패했습니다"
 #: 
 msgid "Failed to delete pledge"
 msgstr "서약 삭제에 실패했습니다"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "헌금 응답 인코딩에 실패했습니다"
 
 #: 
 msgid "Failed to retrieve pledge"

@@ -135,16 +135,16 @@ require_once __DIR__ . '/Include/Header.php';
                     <td class="w-1">
                         <div class="dropdown">
                             <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                <i class="ti ti-dots-vertical"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="PropertyTypeEditor.php?PropertyTypeID=<?= $prt_ID ?>">
-                                    <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                    <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-danger" href="PropertyTypeDelete.php?PropertyTypeID=<?= $prt_ID ?><?= $Properties > 0 ? '&Warn' : '' ?>"
                                    title="<?= $Properties > 0 ? gettext('Delete (will delete all associated records)') : gettext('Delete') ?>">
-                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                    <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                 </a>
                             </div>
                         </div>

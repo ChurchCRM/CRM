@@ -1,7 +1,17 @@
+// FullCalendar v7 — bundled via webpack (ESM imports).
+// temporal-polyfill must come first: it sets globalThis.Temporal, which FC reads at module load.
+import "temporal-polyfill/global";
+import { Calendar } from "fullcalendar/all";
+import formaTheme from "fullcalendar/themes/forma";
+import "fullcalendar/skeleton.css";
+import "fullcalendar/themes/forma/theme.css";
+import "fullcalendar/themes/forma/palettes/blue.css";
+import { applyFcLocale } from "./common/fc-locale";
+
 window.moveEventModal = {
   getButtons: (confirmLabel, confirmClass) => ({
     cancel: {
-      label: `<i class="fa-solid fa-times me-1"></i>${i18next.t("Cancel")}`,
+      label: `<i class="fa-solid fa-xmark me-1"></i>${i18next.t("Cancel")}`,
       className: "btn-secondary",
     },
     confirm: {
@@ -326,7 +336,7 @@ window.calendarPropertiesModal = {
     window.calendarPropertiesModal.calendar = calendar;
     const bootboxmessage = window.calendarPropertiesModal.getBootboxContent(calendar);
     window.calendarPropertiesModal.modal = bootbox.dialog({
-      title: calendar.Name,
+      title: escapeHtml(getLocalizedCalendarName(calendar.Name)),
       message: bootboxmessage,
       show: true,
       buttons: window.calendarPropertiesModal.getButtons(),
@@ -536,19 +546,16 @@ function initializeCalendar() {
     return new Date(`${get("year")}-${get("month")}-${get("day")}T${hh}:${get("minute")}:${get("second")}`);
   })();
 
-  window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
+  window.CRM.fullcalendar = new Calendar(document.getElementById("calendar"), {
+    plugins: [formaTheme],
     locale: window.CRM.lang || "en",
     timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
     now: churchNow,
     headerToolbar: window.innerWidth < 768 ? mobileHeaderToolbar : desktopHeaderToolbar,
     footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
     contentHeight: "auto",
-    windowResizeDelay: 200,
-    windowResize: () => {
-      const nowMobile = window.innerWidth < 768;
-      window.CRM.fullcalendar.setOption("headerToolbar", nowMobile ? mobileHeaderToolbar : desktopHeaderToolbar);
-      window.CRM.fullcalendar.setOption("footerToolbar", nowMobile ? mobileFooterToolbar : false);
-    },
+    footerToolbarClass: "crm-fc-footer-toolbar",
+    headerToolbarClass: "crm-fc-header-toolbar",
     selectable: true,
     editable: window.CRM.calendarJSArgs.isModifiable,
     eventDrop: window.moveEventModal.handleEventDrop,
@@ -588,6 +595,23 @@ function initializeCalendar() {
       window.CRM.isCalendarLoading = isLoading;
     },
   });
+
+  // FullCalendar v7 removed the windowResize option. Replicate the debounced
+  // resize behaviour with a native event listener. Clean up the old handler
+  // when initializeCalendar() is called again (e.g. after locale reload).
+  if (window.CRM._calendarResizeHandler) {
+    window.removeEventListener("resize", window.CRM._calendarResizeHandler);
+  }
+  let _resizeTimer;
+  window.CRM._calendarResizeHandler = () => {
+    clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => {
+      const nowMobile = window.innerWidth < 768;
+      window.CRM.fullcalendar.setOption("headerToolbar", nowMobile ? mobileHeaderToolbar : desktopHeaderToolbar);
+      window.CRM.fullcalendar.setOption("footerToolbar", nowMobile ? mobileFooterToolbar : false);
+    }, 200);
+  };
+  window.addEventListener("resize", window.CRM._calendarResizeHandler);
 }
 
 /**
@@ -609,6 +633,37 @@ function GetCalendarURL(calendarType, calendarID) {
  */
 function GetCalendarSourceId(calendarType, calendarID) {
   return `${calendarType}-${calendarID}`;
+}
+
+/**
+ * Escape a string for safe insertion into HTML context.
+ * Mirrors the same utility in event-form.js / system-settings-panel.js.
+ */
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+/**
+ * Translate a calendar name when it matches one of the two DB-seeded default
+ * calendar names ("Public Calendar", "Private Calendar"). Custom user-defined
+ * names are returned unchanged (i18next.t passthrough returns the key as-is
+ * for unknown strings). The explicit literal calls register these two msgids
+ * for the i18next-cli extractor so they reach the translation pipeline.
+ */
+function getLocalizedCalendarName(name) {
+  switch (name) {
+    case "Public Calendar":
+      return i18next.t("Public Calendar");
+    case "Private Calendar":
+      return i18next.t("Private Calendar");
+    default:
+      return name;
+  }
 }
 
 /**
@@ -634,7 +689,7 @@ function getCalendarFilterElement(calendar, type) {
     '"></span>' +
     '<div class="flex-fill">' +
     '<div class="fw-medium small d-flex align-items-center">' +
-    calendar.Name +
+    escapeHtml(getLocalizedCalendarName(calendar.Name)) +
     publicBadge +
     "</div>" +
     "</div>" +
@@ -646,7 +701,7 @@ function getCalendarFilterElement(calendar, type) {
     '" data-calendarid="' +
     calendar.Id +
     '" aria-label="Toggle ' +
-    calendar.Name +
+    escapeHtml(getLocalizedCalendarName(calendar.Name)) +
     ' calendar visibility"/>' +
     "</div>" +
     "</div>" +
@@ -817,13 +872,14 @@ function displayAccessTokenAPITest() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.CRM.onLocalesReady(() => {
+  window.CRM.onLocalesReady(async () => {
     initializeCalendar();
     initializeFilterSettings();
     initializeNewCalendarButton();
     registerCalendarSelectionEvents();
     displayAccessTokenAPITest();
 
+    await applyFcLocale(window.CRM.fullcalendar);
     window.CRM.fullcalendar.render();
   });
 

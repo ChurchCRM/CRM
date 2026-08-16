@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "URL ng Larawan"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Editor ng Pondong Donasyon"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Mga invalid na larangan o pagpili. Hindi na-save ang mga pagbabago! Pakitama at subukang muli!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Wala pang mga pondong naidagdag"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "Mga Naibigay na Item"
 #: 
 msgid "Purchased Items"
 msgstr "Mga Nabibling Item"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Kabuuang lahat ng pagbili: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Kabuuang pagbili: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7311,10 +7295,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Sa pagbubura ng larangang ito, mawawala ang lahat ng datos ng miyembro ng grupo na itinalaga para sa larangang ito nang hindi na mababawi!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Sa pagbubura ng pondong ito, maaaring maapektuhan ang mga kasaysayang rekord ng donasyon!"
-
-#: 
 msgid "Category Name"
 msgstr "Pangalan ng Kategorya"
 
@@ -7367,10 +7347,6 @@ msgid "Filter by Class"
 msgstr "I-filter ayon sa Klase"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Matagumpay na nabura ang pondo"
-
-#: 
 msgid "In Use"
 msgstr "Ginagamit"
 
@@ -7417,10 +7393,6 @@ msgstr "Alisin ang bilang ng presensyang ito?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Piliin ang uri ng rekord na inilalapat ng katangiang ito"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Ang pangalan ng pondong iyon ay mayroon na."
 
 #: 
 msgid "Total Pledges"
@@ -14464,10 +14436,6 @@ msgid "Group removed from cart"
 msgstr "Grupo ay naalis mula sa cart"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID ay kinakailangan para sa prompt ng pagpili ng papel"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14845,20 +14813,8 @@ msgid "Please select a role."
 msgstr "Pumili ng papel."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Pumili ng grupo at papel."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Pakipili ng mga row na buburahin"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Pakipili ng target na Papel para sa mga miyembro"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Pakipili ng target na grupo para sa mga miyembro"
 
 #: 
 msgid "Please try again"
@@ -15746,16 +15702,8 @@ msgid "Account status"
 msgstr "Katayuan ng account"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Advanced: pumili ng partikular na target na bersyon"
-
-#: 
 msgid "Bug Fix"
 msgstr "Pag-aayos ng bug"
-
-#: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Sa default, dina-download ng wizard ang susunod na inirerekomendang release. Maaari kang pumili ng anumang available na bersyon sa ibaba."
 
 #: 
 msgid "Change required"
@@ -15768,10 +15716,6 @@ msgstr "Magpatuloy Kahit Paano"
 #: 
 msgid "Could not load release information."
 msgstr "Hindi ma-load ang impormasyon ng release."
-
-#: 
-msgid "Download & Install"
-msgstr "I-download at I-install"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15796,10 +15740,6 @@ msgstr "Buong changelog"
 #: 
 msgid "Install stable {{version}}"
 msgstr "I-install ang stable {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Ini-install ang susunod na release"
 
 #: 
 msgid "Invalid file path"
@@ -15870,10 +15810,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Ipakita ang buong upgrade path"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Ang pinakabagong stable na release ay {{version}}. Maaari mo itong i-reinstall sa ibaba."
 
@@ -15900,10 +15836,6 @@ msgstr "Tingnan ang mga release notes"
 #: 
 msgid "What's New"
 msgstr "Ano ang Bago"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Ano ang Bago sa {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16506,10 +16438,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Ang functionality ng email ay kasalukuyang hindi pinagana."
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Tinatayang halaga $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Pinakamabilis na daloy ng trabaho"
 
@@ -16552,10 +16480,6 @@ msgstr "Lokal na pag-unlad"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Pinakamababang Kabuuang Halaga"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Pinakamababang bid na $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16854,10 +16778,6 @@ msgid "Working..."
 msgstr "Nagtatrabaho..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Ikaw ay {{releaseCount}} release na nahuhuli. Narito ang iyong makukuha"
-
-#: 
 msgid "click to expand"
 msgstr "i-click upang palawakin"
 
@@ -17108,10 +17028,6 @@ msgstr "Nabigo sa paglikha ng pangako"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Nabigo sa pagbura ng pangako"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Nabigo sa pag-encode ng tugon sa bayad"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17474,6 +17390,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Hindi na-configure ang email. Pakiayos ang mga setting ng SMTP sa Mga Setting ng System."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Naipadala ang email sa %d pamilya."
+msgstr[1] "Naipadala ang email sa %d pamilya."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Maglagay muna ng address ng kalye."
 
@@ -17540,6 +17462,12 @@ msgstr "Walang nahanap na mga bayad para sa mga napiling deposito"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Walang ibinigay na mga wastong deposit ID"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "Matagumpay na naipadala ang PDF sa %d pamilya."
+msgstr[1] "Matagumpay na naipadala ang PDF sa %d pamilya."
 
 #: 
 msgid "Partial Send"

@@ -578,16 +578,8 @@ msgid "Picture URL"
 msgstr "URL-адрес изображения"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Пожертвование Фонд редактор"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Недействительные поля или выбора. Изменения не сохранены! Пожалуйста, исправьте и попробуйте еще раз!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Никакие средства не были добавлены еще"
 
 #: 
 msgid "Active"
@@ -2226,14 +2218,6 @@ msgstr "Предоставленной продукции"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Приобретенные товары"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Сумма всех покупок: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Всего покупок: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7416,10 +7400,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Удалив это поле, вы безвозвратно потеряете все данные участников группы, назначенные для этого поля!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Удалив этот фонд, вы можете повлиять на исторические записи пожертвований!"
-
-#: 
 msgid "Category Name"
 msgstr "Название Категории"
 
@@ -7472,10 +7452,6 @@ msgid "Filter by Class"
 msgstr "Фильтр по Классу"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Фонд успешно удалён"
-
-#: 
 msgid "In Use"
 msgstr "Используется"
 
@@ -7522,10 +7498,6 @@ msgstr "Удалить этот подсчёт посещаемости?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Выберите тип записи, к которой применяется это свойство"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Такое название фонда уже существует."
 
 #: 
 msgid "Total Pledges"
@@ -14577,10 +14549,6 @@ msgid "Group removed from cart"
 msgstr "Группа удалена из корзины"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID обязателен для выбора роли"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14958,20 +14926,8 @@ msgid "Please select a role."
 msgstr "Пожалуйста, выберите роль."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Пожалуйста, выберите служение и роль."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Пожалуйста, выберите строки для удаления"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Пожалуйста, выберите целевую роль для участников"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Пожалуйста, выберите целевую группу для участников"
 
 #: 
 msgid "Please try again"
@@ -15869,24 +15825,12 @@ msgid "Account status"
 msgstr "Статус аккаунта"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Дополнительно: выбрать конкретную целевую версию"
-
-#: 
 msgid "Bug Fix"
 msgstr "Исправление ошибок"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "По умолчанию мастер загружает следующий рекомендуемый выпуск. Вместо этого вы можете выбрать любую доступную версию ниже."
-
-#: 
 msgid "Change required"
 msgstr "Требуется изменение"
-
-#: 
-msgid "Changelog"
-msgstr "Журнал изменений"
 
 #: 
 msgid "Continue Anyway"
@@ -15895,10 +15839,6 @@ msgstr "Всё равно продолжить"
 #: 
 msgid "Could not load release information."
 msgstr "Не удалось загрузить информацию о выпуске."
-
-#: 
-msgid "Download & Install"
-msgstr "Скачать и установить"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15927,10 +15867,6 @@ msgstr "Полный журнал изменений"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Установить стабильную версию {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Установка следующего выпуска"
 
 #: 
 msgid "Invalid file path"
@@ -16001,10 +15937,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Показать полный путь обновления"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Последний стабильный выпуск — {{version}}. Вы можете переустановить его ниже."
 
@@ -16031,10 +15963,6 @@ msgstr "Просмотр примечаний к выпуску"
 #: 
 msgid "What's New"
 msgstr "Что нового"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Что нового в версии {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16657,10 +16585,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Функция электронной почты в настоящее время отключена. Следующие функции не будут работать, пока не будет включена электронная почта"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Оценочная стоимость $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Наиболее быстрый рабочий процесс"
 
@@ -16703,10 +16627,6 @@ msgstr "Локальная разработка"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Минимальная общая сумма"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Минимальная ставка $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17009,10 +16929,6 @@ msgid "Working..."
 msgstr "Выполняется..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Вы отстаёте на {{releaseCount}} версий. Вот что вы получите"
-
-#: 
 msgid "click to expand"
 msgstr "нажмите для раскрытия"
 
@@ -17267,10 +17183,6 @@ msgstr "Не удалось создать обетование"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Не удалось удалить обетование"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Не удалось закодировать ответ о пожертвовании"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17679,6 +17591,10 @@ msgstr "Zapros geokodirovanya ne vypolnen. Pozhaluysta, poprobuyte eshcho raz."
 #: 
 msgid "Manage Events"
 msgstr "Upravleniye meropriyatiyami"
+
+#: 
+msgid "N/A"
+msgstr "Н/Д"
 
 #: 
 msgid "New Deposit"

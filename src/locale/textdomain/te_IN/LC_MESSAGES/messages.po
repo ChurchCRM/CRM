@@ -558,16 +558,8 @@ msgid "Picture URL"
 msgstr "చిత్ర URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "విరాళ నిధి ఎడిటర్"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "చెల్లని ఫీల్డ్‌లు లేదా ఎంపికలు. మార్పులు సేవ్ చేయబడలేదు! దయచేసి సరిచేసి, మళ్లీ ప్రయత్నించండి!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "ఇంకా నిధులు జోడించబడలేదు"
 
 #: 
 msgid "Active"
@@ -2157,14 +2149,6 @@ msgstr "విరాళంగా ఇచ్చిన వస్తువులు"
 #: 
 msgid "Purchased Items"
 msgstr "కొనుగోలు చేసిన వస్తువులు"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "అన్ని కొనుగోళ్ల మొత్తం: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "మొత్తం కొనుగోళ్లు: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7323,10 +7307,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "ఈ ఫీల్డ్‌ను తొలగించడం ద్వారా, ఈ ఫీల్డ్ కోసం కేటాయించిన అన్ని గ్రూప్ సభ్యుల డేటాను మీరు శాశ్వతంగా కోల్పోతారు!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "ఈ నిధిని తొలగించడం ద్వారా, మీరు చారిత్రక విరాళాల రికార్డులను ప్రభావితం చేయవచ్చు!"
-
-#: 
 msgid "Category Name"
 msgstr "వర్గం పేరు"
 
@@ -7379,10 +7359,6 @@ msgid "Filter by Class"
 msgstr "తరగతి వారీగా ఫిల్టర్ చేయండి"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "నిధి విజయవంతంగా తొలగించబడింది"
-
-#: 
 msgid "In Use"
 msgstr "వాడకంలో ఉంది"
 
@@ -7429,10 +7405,6 @@ msgstr "ఈ హాజరు గణనను తీసివేయాలా?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ఈ ఆస్తికి వర్తించే రికార్డ్ రకాన్ని ఎంచుకోండి"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ఆ నిధి పేరు ఇప్పటికే ఉంది."
 
 #: 
 msgid "Total Pledges"
@@ -14476,10 +14448,6 @@ msgid "Group removed from cart"
 msgstr "గ్రూప్ కార్ట్ నుండి తొలగించబడింది"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "పాత్ర ఎంపిక ప్రాంప్ట్‌కు GroupID అవసరం"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14857,20 +14825,8 @@ msgid "Please select a role."
 msgstr "దయచేసి ఒక పాత్రను ఎంచుకోండి."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "దయచేసి ఒక గుంపు మరియు పాత్ర రెండింటినీ ఎంచుకోండి."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "దయచేసి తొలగించడానికి వరుసలను ఎంచుకోండి"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "సభ్యులకు లక్ష్య పాత్రను ఎంచుకోండి"
-
-#: 
-msgid "Please select target group for members"
-msgstr "సభ్యులకు లక్ష్య గ్రూప్‌ను ఎంచుకోండి"
 
 #: 
 msgid "Please try again"
@@ -15766,24 +15722,12 @@ msgid "Account status"
 msgstr "ఖాతా స్థితి"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "అధునాతన: నిర్దిష్ట లక్ష్య వెర్షన్‌ను ఎంచుకోండి"
-
-#: 
 msgid "Bug Fix"
 msgstr "బగ్ పరిష్కారం"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "డిఫాల్ట్‌గా, విజర్డ్ తదుపరి సిఫార్సు చేసిన విడుదలను డౌన్‌లోడ్ చేస్తుంది. బదులుగా క్రింద అందుబాటులో ఉన్న ఏదైనా వెర్షన్‌ను ఎంచుకోవచ్చు."
-
-#: 
 msgid "Change required"
 msgstr "మార్పు అవసరం"
-
-#: 
-msgid "Changelog"
-msgstr "మార్పుల నమోదు"
 
 #: 
 msgid "Continue Anyway"
@@ -15792,10 +15736,6 @@ msgstr "ఏమైనా కొనసాగించు"
 #: 
 msgid "Could not load release information."
 msgstr "విడుదల సమాచారాన్ని లోడ్ చేయలేకపోయింది."
-
-#: 
-msgid "Download & Install"
-msgstr "డౌన్‌లోడ్ & ఇన్‌స్టాల్"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15824,10 +15764,6 @@ msgstr "పూర్తి మార్పుల నమోదు"
 #: 
 msgid "Install stable {{version}}"
 msgstr "స్థిరమైన {{version}} ను ఇన్‌స్టాల్ చేయండి"
-
-#: 
-msgid "Installing next release"
-msgstr "తదుపరి విడుదలను ఇన్‌స్టాల్ చేస్తోంది"
 
 #: 
 msgid "Invalid file path"
@@ -15898,10 +15834,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "పూర్తి అప్‌గ్రేడ్ మార్గాన్ని చూపించు"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "తాజా స్థిరమైన విడుదల {{version}}. దీన్ని క్రింద తిరిగి ఇన్‌స్టాల్ చేయవచ్చు."
 
@@ -15928,10 +15860,6 @@ msgstr "విడుదల గమనికలను చూడండి"
 #: 
 msgid "What's New"
 msgstr "కొత్తగా ఏమిటి"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} లో కొత్తగా ఏమిటి"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16550,10 +16478,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ఇమెయిల్ విధి ప్రస్తుతం నిష్క్రియంగా ఉంది. ఇమెయిల్ ప్రారంభించే వరకు కింది లక్షణాలు పనిచేయవు"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "అంచనా విలువ $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "వేగవంతమైన వర్క్‌ఫ్లో"
 
@@ -16596,10 +16520,6 @@ msgstr "స్థానిక అభివృద్ధి"
 #: 
 msgid "Minimum Total Amount"
 msgstr "కనీస మొత్తం మొత్తం"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "కనీస బిడ్ $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16902,10 +16822,6 @@ msgid "Working..."
 msgstr "పని చేస్తోంది..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "మీరు {{releaseCount}} విడుదలల వెనుకబడ్డారు. ఇక్కడ మీరు పొందేది ఉంది"
-
-#: 
 msgid "click to expand"
 msgstr "విస్తరించడానికి క్లిక్ చేయండి"
 
@@ -17160,10 +17076,6 @@ msgstr "ప్రతిజ్ఞను సృష్టించడం విఫ�
 #: 
 msgid "Failed to delete pledge"
 msgstr "ప్రతిజ్ఞను తొలగించడం విఫలమైంది"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "చెల్లింపు ప్రతిస్పందనను ఎన్‌కోడ్ చేయడం విఫలమైంది"
 
 #: 
 msgid "Failed to retrieve pledge"

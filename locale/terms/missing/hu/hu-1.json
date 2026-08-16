@@ -1,21 +1,61 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "Birthdays & Anniversaries": "Születésnapok és évfordulók",
+  "Estimated value %s.": "Becsült érték: %s.",
+  "Minimum bid %s.": "Minimális licit: %s.",
+  "No \"%s\" options are available yet. Add the relevant records first.": "Még nem állnak rendelkezésre \"%s\" lehetőségek. Először adja hozzá a megfelelő rekordokat.",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "Még nincsenek konfigurálva \"%s\" lehetőségek. Először adja hozzá a megfelelő rekordokat.",
+  "People with birthdays or wedding anniversaries in a particular month": "Adott hónapban születésnapot vagy házassági évfordulót ünneplő személyek",
+  "The month for which you would like birthdays and anniversaries returned.": "Az a hónap, amelyre a születésnapokat és évfordulókat le kívánja kérdezni.",
+  "The wedding anniversary month for which you would like records returned.": "Az a hónap, amelyre a házassági évfordulókat le kívánja kérdezni.",
+  "Total of all purchases: %s": "Összes vásárlás összege: %s",
+  "Total purchases: %s": "Összes vásárlás: %s",
+  "Wedding Anniversaries": "Házassági évfordulók",
+  "People with wedding anniversaries in a particular month": "Adott hónapban házassági évfordulót ünneplő személyek",
+  "An error occurred. Please try again.": "Hiba történt. Kérjük, próbálja újra.",
+  "Are you sure you want to delete this fund?": "Biztosan törölni szeretné ezt az alapot?",
+  "Cannot delete: fund has associated pledges": "Nem törölhető: az alaphoz adományígéretek tartoznak",
+  "Delete Fund": "Alap törlése",
+  "Direction must be 'up' or 'down'.": "Az irány csak 'fel' vagy 'le' lehet.",
+  "Edit Donation Fund": "Adományalap szerkesztése",
+  "Failed to reorder donation fund": "Az adományalap átrendezése sikertelen",
+  "Fund added successfully.": "Az alap sikeresen hozzáadva.",
+  "Fund deleted successfully.": "Az alap sikeresen törölve.",
+  "Fund name": "Alap neve",
+  "Fund name is required.": "Az alap neve kötelező.",
+  "Fund order updated.": "Az alapok sorrendje frissítve.",
+  "Fund saved successfully.": "Az alap sikeresen mentve.",
+  "No funds have been added yet. Use the form above to add the first fund.": "Még nem lett alap hozzáadva. Használja a fenti űrlapot az első alap hozzáadásához.",
+  "Optional description": "Opcionális leírás",
+  "Private Calendar": "Privát naptár",
+  "Public Calendar": "Nyilvános naptár",
+  "Advanced: Install a specific version instead": "Speciális: Adott verzió telepítése",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "Alapértelmezés szerint a varázsló a legújabb verzióra frissít. Ehelyett alább egy adott verziót is kiválaszthat.",
+  "Cannot edit a payment in a closed deposit": "Lezárt betétben lévő befizetés nem szerkeszthető",
+  "Download & Apply {{version}}": "{{version}} letöltése és alkalmazása",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "Minden ChurchCRM kiadás tartalmaz biztonsági javításokat. Erősen ajánljuk, hogy mindig a legújabb verzióra frissítsen.",
+  "Failed to decode payment request": "A fizetési kérelem dekódolása sikertelen",
+  "Full release notes": "Teljes kiadási megjegyzések",
+  "Invalid payment data": "Érvénytelen fizetési adatok",
+  "No release notes available.": "Nem áll rendelkezésre kiadási megjegyzés.",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Figyelmeztetés: a {{chosen}} verzióból hiányoznak a {{latest}} verzióban szereplő biztonsági javítások. Csak akkor folytassa, ha erre konkrét oka van.",
+  "What you'll gain": "Mit nyer ezzel",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} tag másolva",
+    "other": "{{count}} tag másolva"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ez a lista {{count}} címzettet tartalmaz – ez túl sok egy mailto: hivatkozáshoz. Ehelyett használja a Címek másolása funkciót.",
+    "other": "Ez a lista {{count}} címzettet tartalmaz – ez túl sok egy mailto: hivatkozáshoz. Ehelyett használja a Címek másolása funkciót."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Túl sok címzett az e-mail programhoz ({{count}} > {{max}}). Ehelyett használja a Címek másolása funkciót.",
+    "other": "Túl sok címzett az e-mail programhoz ({{count}} > {{max}}). Ehelyett használja a Címek másolása funkciót."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} perc van hátra",
+    "other": "{{count}} perc van hátra"
   }
 }

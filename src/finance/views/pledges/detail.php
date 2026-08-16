@@ -193,7 +193,7 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
             </a>
             <button type="button" class="btn btn-danger ms-auto" id="deletePledgeBtn"
                 data-group-key="<?= InputUtils::escapeAttribute($pledge['groupKey']) ?>">
-                <i class="fa-solid fa-trash-alt me-1"></i><?= gettext('Delete') ?>
+                <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
             </button>
         </div>
     </div>

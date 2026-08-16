@@ -1,22 +1,68 @@
 {
-  "Data": "",
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "Data": "Data",
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "other": "Email terkirim ke %d keluarga."
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "other": "PDF berhasil dikirim melalui email ke %d keluarga."
+  },
+  "Birthdays & Anniversaries": "Ulang Tahun & Anniversari",
+  "Estimated value %s.": "Perkiraan nilai %s.",
+  "Minimum bid %s.": "Penawaran minimum %s.",
+  "No \"%s\" options are available yet. Add the relevant records first.": "Belum ada opsi \"%s\" yang tersedia. Tambahkan catatan yang relevan terlebih dahulu.",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "Belum ada opsi \"%s\" yang dikonfigurasi. Tambahkan catatan yang relevan terlebih dahulu.",
+  "People with birthdays or wedding anniversaries in a particular month": "Orang-orang yang berulang tahun atau merayakan anniversari pernikahan pada bulan tertentu",
+  "The month for which you would like birthdays and anniversaries returned.": "Bulan yang ingin Anda tampilkan ulang tahun dan anniversarinya.",
+  "The wedding anniversary month for which you would like records returned.": "Bulan anniversari pernikahan yang ingin Anda tampilkan catatannya.",
+  "Total of all purchases: %s": "Total semua pembelian: %s",
+  "Total purchases: %s": "Total pembelian: %s",
+  "Wedding Anniversaries": "Anniversari Pernikahan",
+  "People with wedding anniversaries in a particular month": "Orang-orang yang merayakan anniversari pernikahan pada bulan tertentu",
+  "An error occurred. Please try again.": "Terjadi kesalahan. Silakan coba lagi.",
+  "Are you sure you want to delete this fund?": "Apakah Anda yakin ingin menghapus dana ini?",
+  "Cannot delete: fund has associated pledges": "Tidak dapat dihapus: dana memiliki komitmen persembahan yang terkait",
+  "Delete Fund": "Hapus Dana",
+  "Direction must be 'up' or 'down'.": "Arah harus 'up' atau 'down'.",
+  "Edit Donation Fund": "Edit Dana Persembahan",
+  "Failed to reorder donation fund": "Gagal mengurutkan ulang dana persembahan",
+  "Fund added successfully.": "Dana berhasil ditambahkan.",
+  "Fund deleted successfully.": "Dana berhasil dihapus.",
+  "Fund name": "Nama dana",
+  "Fund name is required.": "Nama dana wajib diisi.",
+  "Fund order updated.": "Urutan dana diperbarui.",
+  "Fund saved successfully.": "Dana berhasil disimpan.",
+  "No funds have been added yet. Use the form above to add the first fund.": "Belum ada dana yang ditambahkan. Gunakan formulir di atas untuk menambahkan dana pertama.",
+  "Optional description": "Deskripsi opsional",
+  "Private Calendar": "Kalender Pribadi",
+  "Public Calendar": "Kalender Publik",
+  "Advanced: Install a specific version instead": "Lanjutan: Instal versi tertentu",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "Secara default, panduan akan memperbarui ke versi terbaru. Anda dapat memilih versi tertentu di bawah ini.",
+  "Cannot edit a payment in a closed deposit": "Tidak dapat mengedit pembayaran dalam setoran yang sudah ditutup",
+  "Download & Apply {{version}}": "Unduh & Terapkan {{version}}",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "Setiap rilis ChurchCRM menyertakan perbaikan keamanan. Kami sangat menyarankan untuk selalu memperbarui ke versi terbaru.",
+  "Failed to decode payment request": "Gagal mendekode permintaan pembayaran",
+  "Full release notes": "Catatan rilis lengkap",
+  "Invalid payment data": "Data pembayaran tidak valid",
+  "No release notes available.": "Tidak ada catatan rilis yang tersedia.",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Peringatan: {{chosen}} tidak memiliki perbaikan keamanan yang terdapat di {{latest}}. Lanjutkan hanya jika Anda memiliki alasan tertentu.",
+  "What you'll gain": "Apa yang akan Anda dapatkan",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Menyalin {{count}} anggota",
+    "other": "Menyalin {{count}} anggota"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat.",
+    "other": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat.",
+    "other": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} menit tersisa",
+    "other": "{{count}} menit tersisa"
   }
 }

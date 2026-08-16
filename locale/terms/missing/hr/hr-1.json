@@ -1,21 +1,61 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "Birthdays & Anniversaries": "Rođendani i godišnjice",
+  "Estimated value %s.": "Procijenjena vrijednost %s.",
+  "Minimum bid %s.": "Minimalna ponuda %s.",
+  "No \"%s\" options are available yet. Add the relevant records first.": "Još nema dostupnih mogućnosti za \"%s\". Najprije dodajte odgovarajuće zapise.",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "Još nisu konfigurirane mogućnosti za \"%s\". Najprije dodajte odgovarajuće zapise.",
+  "People with birthdays or wedding anniversaries in a particular month": "Osobe s rođendanom ili godišnjicom vjenčanja u određenom mjesecu",
+  "The month for which you would like birthdays and anniversaries returned.": "Mjesec za koji želite prikazati rođendane i godišnjice.",
+  "The wedding anniversary month for which you would like records returned.": "Mjesec godišnjice vjenčanja za koji želite prikazati zapise.",
+  "Total of all purchases: %s": "Ukupno svih kupnji: %s",
+  "Total purchases: %s": "Ukupne kupnje: %s",
+  "Wedding Anniversaries": "Godišnjice vjenčanja",
+  "People with wedding anniversaries in a particular month": "Osobe s godišnjicom vjenčanja u određenom mjesecu",
+  "An error occurred. Please try again.": "Došlo je do pogreške. Pokušajte ponovo.",
+  "Are you sure you want to delete this fund?": "Jeste li sigurni da želite izbrisati ovaj fond?",
+  "Cannot delete: fund has associated pledges": "Nije moguće izbrisati: fond ima povezana obećanja davanja",
+  "Delete Fund": "Izbriši fond",
+  "Direction must be 'up' or 'down'.": "Smjer mora biti 'up' ili 'down'.",
+  "Edit Donation Fund": "Uredi fond za darove",
+  "Failed to reorder donation fund": "Promjena redoslijeda fonda za darove nije uspjela",
+  "Fund added successfully.": "Fond je uspješno dodan.",
+  "Fund deleted successfully.": "Fond je uspješno izbrisan.",
+  "Fund name": "Naziv fonda",
+  "Fund name is required.": "Naziv fonda je obavezan.",
+  "Fund order updated.": "Redoslijed fonda je ažuriran.",
+  "Fund saved successfully.": "Fond je uspješno spremljen.",
+  "No funds have been added yet. Use the form above to add the first fund.": "Još nije dodan nijedan fond. Upotrijebite gornji obrazac za dodavanje prvog fonda.",
+  "Optional description": "Neobavezni opis",
+  "Private Calendar": "Privatni kalendar",
+  "Public Calendar": "Javni kalendar",
+  "Advanced: Install a specific version instead": "Napredno: Instalirajte određenu verziju",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "Prema zadanim postavkama čarobnjak nadograđuje na najnoviju verziju. Umjesto toga možete odabrati određenu verziju u nastavku.",
+  "Cannot edit a payment in a closed deposit": "Nije moguće uređivati uplatu u zatvorenom depozitu",
+  "Download & Apply {{version}}": "Preuzmi i primijeni {{version}}",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "Svako izdanje ChurchCRM-a uključuje sigurnosne ispravke. Preporučujemo uvijek nadogradnju na najnoviju verziju.",
+  "Failed to decode payment request": "Dekodiranje zahtjeva za uplatu nije uspjelo",
+  "Full release notes": "Potpune napomene o izdanju",
+  "Invalid payment data": "Nevažeći podaci o uplati",
+  "No release notes available.": "Nema dostupnih napomena o izdanju.",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Upozorenje: {{chosen}} nema sigurnosnih ispravaka uključenih u {{latest}}. Nastavite samo ako imate poseban razlog.",
+  "What you'll gain": "Što ćete dobiti",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kopiran {{count}} član",
+    "other": "Kopirano {{count}} članova"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ovaj popis ima {{count}} primatelja — previše za mailto: poveznicu. Umjesto toga upotrijebite Kopiraj adrese.",
+    "other": "Ovaj popis ima {{count}} primatelja — previše za mailto: poveznicu. Umjesto toga upotrijebite Kopiraj adrese."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Previše primatelja za klijent e-pošte ({{count}} > {{max}}). Umjesto toga upotrijebite Kopiraj adrese.",
+    "other": "Previše primatelja za klijent e-pošte ({{count}} > {{max}}). Umjesto toga upotrijebite Kopiraj adrese."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min preostalo",
+    "other": "{{count}} min preostalo"
   }
 }

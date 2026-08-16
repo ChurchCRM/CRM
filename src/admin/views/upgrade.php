@@ -41,11 +41,11 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                     <div class="ms-auto d-flex align-items-center gap-2">
                         <?php if (!$isUpdateAvailable && $latestGitHubVersion !== null): ?>
                         <button type="button" class="btn btn-outline-warning btn-sm" id="forceReinstallCurrent">
-                            <i class="fa fa-redo me-1"></i><?= gettext('Force Re-install') ?>
+                            <i class="fa fa-arrow-rotate-right me-1"></i><?= gettext('Force Re-install') ?>
                         </button>
                         <?php endif; ?>
                         <button type="button" class="btn btn-ghost-primary btn-sm" id="refreshFromGitHub">
-                            <i class="fa fa-sync me-1"></i><?= gettext('Refresh') ?>
+                            <i class="fa fa-arrows-rotate me-1"></i><?= gettext('Refresh') ?>
                         </button>
                     </div>
                 </div>
@@ -120,7 +120,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-outline-warning btn-sm ms-3 text-nowrap" id="forceReinstall">
-                                            <i class="fa fa-redo me-1"></i><?= gettext('Force Re-install') ?>
+                                            <i class="fa fa-arrow-rotate-right me-1"></i><?= gettext('Force Re-install') ?>
                                         </button>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                             — <?= gettext("Files not part of the official release were found on your server.") ?>
                                         </div>
                                         <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-outline-danger btn-sm ms-3 text-nowrap">
-                                            <i class="fa fa-external-link me-1"></i><?= gettext('Review & Delete') ?>
+                                            <i class="fa fa-arrow-up-right-from-square me-1"></i><?= gettext('Review & Delete') ?>
                                         </a>
                                     </div>
                                 </div>
@@ -206,53 +206,54 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             </div>
 
                             <div id="whatsNewContent" class="d-none">
-                                <!-- Upgrade path panel (shown when ≥2 releases behind) -->
-                                <div id="upgradePathPanel" class="d-none mb-4">
-                                    <div class="alert alert-info d-flex align-items-center gap-2 mb-2">
-                                        <i class="fa fa-layer-group"></i>
-                                        <span id="upgradePathSummary"></span>
-                                    </div>
-                                    <a href="#upgradePathCollapse" class="collapse-toggle d-inline-flex align-items-center gap-1 text-secondary text-decoration-none small fw-medium mb-2"
+                                <!-- Advanced: install a specific version (collapsed by default, JS hides entirely when not applicable) -->
+                                <div class="mb-3 d-none" id="advancedVersionPanel">
+                                    <a href="#advancedVersionCollapse" class="collapse-toggle d-inline-flex align-items-center gap-1 text-warning text-decoration-none small fw-medium"
                                         data-bs-toggle="collapse" aria-expanded="false">
                                         <i class="fa fa-chevron-down"></i>
-                                        <?= gettext('Show full upgrade path') ?>
-                                    </a>
-                                    <div id="upgradePathCollapse" class="collapse">
-                                        <div id="upgradePathAccordion" class="upgrade-path-list mb-2"></div>
-                                    </div>
-                                </div>
-
-                                <!-- Next release notes -->
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <h4 class="mb-0">
-                                        <i class="fa fa-tag me-1 text-primary"></i>
-                                        <span id="whatsNewHeading"></span>
-                                    </h4>
-                                    <a id="whatsNewChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm d-none">
-                                        <i class="fa fa-external-link me-1"></i><?= gettext('Full changelog') ?>
-                                    </a>
-                                </div>
-                                <div id="whatsNewNotes" class="release-notes p-3 border rounded mb-4"></div>
-
-                                <!-- Advanced: target version selector -->
-                                <div class="mb-4">
-                                    <a href="#advancedVersionCollapse" class="collapse-toggle d-inline-flex align-items-center gap-1 text-secondary text-decoration-none small fw-medium"
-                                        data-bs-toggle="collapse" aria-expanded="false">
-                                        <i class="fa fa-chevron-down"></i>
-                                        <?= gettext('Advanced: choose a specific target version') ?>
+                                        <i class="fa fa-triangle-exclamation ms-1 me-1"></i>
+                                        <?= gettext('Advanced: Install a specific version instead') ?>
                                     </a>
                                     <div id="advancedVersionCollapse" class="collapse mt-2">
                                         <div class="card card-sm">
                                             <div class="card-body">
-                                                <p class="text-secondary small mb-2"><?= gettext('By default the wizard downloads the next recommended release. You may instead choose any available version below.') ?></p>
-                                                <select class="form-select form-select-sm" id="targetVersionSelect" style="max-width: 220px;"></select>
+                                                <p class="text-secondary small mb-2"><?= gettext('By default the wizard upgrades to the latest version. You may instead choose a specific version below.') ?></p>
+                                                <select class="form-select form-select-sm mb-2" id="targetVersionSelect" style="max-width: 280px;"></select>
+                                                <div id="advancedWarningBanner" class="alert alert-danger d-none mb-0 py-2">
+                                                    <i class="fa fa-shield-halved me-1"></i>
+                                                    <span id="advancedWarningText"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
+                                <!-- Security recommendation callout (shown by JS when upgrade is available) -->
+                                <div id="securityRecommendationCallout" class="alert alert-warning d-none mb-3">
+                                    <div class="d-flex align-items-start gap-2">
+                                        <i class="fa fa-shield-halved fa-lg mt-1 flex-shrink-0"></i>
+                                        <span><?= gettext('Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.') ?></span>
+                                    </div>
+                                </div>
+
+                                <!-- What you'll gain heading -->
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <h4 class="mb-0">
+                                        <i class="fa fa-arrow-up me-1 text-success"></i>
+                                        <?= gettext("What you'll gain") ?> &mdash;
+                                        <span id="whatsNewVersion" class="text-primary fw-semibold"></span>
+                                        <span id="recommendedBadge" class="badge bg-success-lt text-success ms-1 d-none"><?= gettext('Recommended') ?></span>
+                                    </h4>
+                                    <a id="whatsNewChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm d-none">
+                                        <i class="fa fa-arrow-up-right-from-square me-1"></i><?= gettext('Full changelog') ?>
+                                    </a>
+                                </div>
+
+                                <!-- Release notes container: stacked blocks (upgrade) or single note (up-to-date/prerelease), JS-rendered -->
+                                <div id="whatsNewNotes" class="mb-4"></div>
+
                                 <button class="btn btn-primary" id="proceedToDownload">
-                                    <i class="fa fa-cloud-arrow-down me-1"></i><?= gettext('Download & Install') ?>
+                                    <i class="fa fa-cloud-arrow-down me-1"></i><?= gettext('Download & Apply') ?>
                                 </button>
                             </div>
 

@@ -118,14 +118,14 @@ describe("Access Denied Page", () => {
             cy.visit("/v2/access-denied?role=Admin");
             cy.get(".card.shadow-sm").should("exist");
             cy.get(".card.shadow-sm").contains("Permission Required").should("be.visible");
-            cy.get('.card.shadow-sm i.ti.ti-alert-circle').should("exist");
+            cy.get('.card.shadow-sm i.fa-solid.fa-circle-exclamation').should("exist");
         });
 
         it("Should display warning callout for role information", () => {
             cy.visit("/v2/access-denied?role=Finance");
             // Callout may use legacy `callout-warning` or Bootstrap `alert-warning`
             cy.get('.callout-warning, .callout.callout-warning, .alert-warning').should("exist");
-            cy.get('.callout-warning i.fa-key, .callout-warning i.ti-key, .alert-warning i.fa-key, .alert-warning i.ti-key').should("exist");
+            cy.get('.callout-warning i.fa-key, .callout-warning i.fa-key, .alert-warning i.fa-key, .alert-warning i.fa-key').should("exist");
         });
     });
 });

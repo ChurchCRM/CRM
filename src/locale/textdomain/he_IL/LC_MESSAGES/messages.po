@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "כתובת האתר של התמונה"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "עורך קרן תרומות"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "שדות או בחירות לא חוקיים. השינויים לא נשמרו ! אנא תקן ונסה שוב !"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "טרם נוספו קרנות"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "פריטים שנתרמו"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "פריטים שנרכשו"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "סך כל הרכישות: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "סך הרכישות: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7349,10 +7333,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "מחיקת שדה זה תגרום לאובדן בלתי הפיך של כל נתוני חברי הקבוצה שהוקצו לשדה זה!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "מחיקת קרן זו עלולה להשפיע על רשומות תרומות היסטוריות!"
-
-#: 
 msgid "Category Name"
 msgstr "שם קטגוריה"
 
@@ -7405,10 +7385,6 @@ msgid "Filter by Class"
 msgstr "סנן לפי כיתה"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "הקרן נמחקה בהצלחה"
-
-#: 
 msgid "In Use"
 msgstr "בשימוש"
 
@@ -7455,10 +7431,6 @@ msgstr "להסיר ספירת נוכחות זו?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "בחר את סוג הרשומה שאליה מאפיין זה חל"
-
-#: 
-msgid "That fund name already exists."
-msgstr "שם קרן זה כבר קיים."
 
 #: 
 msgid "Total Pledges"
@@ -14502,10 +14474,6 @@ msgid "Group removed from cart"
 msgstr "הקבוצה הוסרה מהסל"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "נדרש GroupID עבור בחירת תפקיד"
-
-#: 
 msgid "HTML URL"
 msgstr "כתובת URL של HTML"
 
@@ -14883,20 +14851,8 @@ msgid "Please select a role."
 msgstr "אנא בחר תפקיד."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "אנא בחר גם קבוצה וגם תפקיד."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "אנא בחר שורות למחיקה"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "אנא בחר תפקיד יעד עבור החברים"
-
-#: 
-msgid "Please select target group for members"
-msgstr "אנא בחר קבוצת יעד עבור החברים"
 
 #: 
 msgid "Please try again"
@@ -15792,24 +15748,12 @@ msgid "Account status"
 msgstr "סטטוס חשבון"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "מתקדם: בחר גרסת יעד ספציפית"
-
-#: 
 msgid "Bug Fix"
 msgstr "תיקון באג"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "כברירת מחדל, האשף מוריד את הגרסה המומלצת הבאה. באפשרותך לבחור כל גרסה זמינה מהרשימה למטה."
-
-#: 
 msgid "Change required"
 msgstr "נדרש שינוי"
-
-#: 
-msgid "Changelog"
-msgstr "יומן שינויים"
 
 #: 
 msgid "Continue Anyway"
@@ -15818,10 +15762,6 @@ msgstr "המשך בכל זאת"
 #: 
 msgid "Could not load release information."
 msgstr "לא ניתן לטעון את פרטי הגרסה."
-
-#: 
-msgid "Download & Install"
-msgstr "הורד והתקן"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15850,10 +15790,6 @@ msgstr "יומן שינויים מלא"
 #: 
 msgid "Install stable {{version}}"
 msgstr "התקן גרסה יציבה {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "מתקין את הגרסה הבאה"
 
 #: 
 msgid "Invalid file path"
@@ -15924,10 +15860,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "הצג נתיב שדרוג מלא"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "הגרסה היציבה האחרונה היא {{version}}. באפשרותך להתקין אותה מחדש למטה."
 
@@ -15954,10 +15886,6 @@ msgstr "צפה בהערות הגרסה"
 #: 
 msgid "What's New"
 msgstr "מה חדש"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "מה חדש ב-{{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16576,10 +16504,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "פונקציית הדואר האלקטרוני מושבתת כרגע. התכונות הבאות לא יפעלו עד שהדואר האלקטרוני יופעל"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "ערך משוער $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "תהליך עבודה מהיר ביותר"
 
@@ -16622,10 +16546,6 @@ msgstr "פיתוח מקומי"
 #: 
 msgid "Minimum Total Amount"
 msgstr "סכום כולל מינימלי"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "הצעת מחיר מינימלית $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16928,10 +16848,6 @@ msgid "Working..."
 msgstr "עובד..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "אתה {{releaseCount}} גרסאות מאחור. הנה מה שתרוויח"
-
-#: 
 msgid "click to expand"
 msgstr "לחץ להרחבה"
 
@@ -17186,10 +17102,6 @@ msgstr "יצירת ההתחייבות נכשלה"
 #: 
 msgid "Failed to delete pledge"
 msgstr "מחיקת ההתחייבות נכשלה"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "קידוד תגובת התשלום נכשל"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17552,6 +17464,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "הדוא\"ל אינו מוגדר. אנא הגדר את הגדרות ה-SMTP בהגדרות המערכת."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "אימייל נשלח למשפחה אחת."
+msgstr[1] "אימייל נשלח ל-%d משפחות."
+
+#: 
 msgid "Enter a street address first."
 msgstr "הזן כתובת רחוב תחילה."
 
@@ -17618,6 +17536,12 @@ msgstr "לא נמצאו תשלומים עבור ההפקדות שנבחרו"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "לא סופקו מזהי הפקדון תקינים"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "קובץ PDF נשלח בהצלחה במייל למשפחה אחת."
+msgstr[1] "קובץ PDF נשלח בהצלחה במייל ל-%d משפחות."
 
 #: 
 msgid "Partial Send"

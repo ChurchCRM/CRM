@@ -155,7 +155,7 @@ $sRootPath = SystemURLs::getRootPath();
                 </a>
                 <?php endif; ?>
                 <?php if ($isAdmin): ?>
-                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-outline-secondary">
+                <a href="<?= $sRootPath ?>/finance/funds" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-piggy-bank me-1"></i><?= gettext('Manage Funds') ?>
                 </a>
                 <?php endif; ?>
@@ -206,7 +206,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php if ($activeFundCount > 0): ?>
                                 <span class="badge bg-green-lt text-green rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-xmark"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -215,7 +215,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div>
                                 <span class="badge bg-blue-lt text-blue"><?= $activeFundCount ?> <?= gettext('active') ?></span>
-                                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary ms-2">
+                                <a href="<?= $sRootPath ?>/finance/funds" class="btn btn-sm btn-outline-secondary ms-2">
                                     <i class="fa-solid fa-cog"></i> <?= gettext('Edit') ?>
                                 </a>
                             </div>
@@ -230,7 +230,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php if ($hasChurchInfo): ?>
                                 <span class="badge bg-green-lt text-green rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-xmark"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">

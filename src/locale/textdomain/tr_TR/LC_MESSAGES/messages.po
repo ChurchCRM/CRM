@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "Resim url"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Bağış fonu editörü"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Geçersiz alanlar veya seçimler. Değişiklikler kaydedilmedi! Lütfen düzeltin ve tekrar deneyin!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Henüz hiçbir fon eklenmedi"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "Bağışlanan Ürünler"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Satın alınan ürünler"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Tüm alımların toplamı: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Toplam Alımlar: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7351,10 +7335,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Bu alanı silerek, bu alana atanan tüm grup üyesi verilerini geri dönüşsüz olarak kaybedeceksiniz!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Bu fonu silerek, geçmiş bağış kayıtlarını etkileyebilirsiniz!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategori Adı"
 
@@ -7407,10 +7387,6 @@ msgid "Filter by Class"
 msgstr "Sınıfa Göre Filtrele"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fon başarıyla silindi"
-
-#: 
 msgid "In Use"
 msgstr "Kullanımda"
 
@@ -7457,10 +7433,6 @@ msgstr "Bu katılım sayısını kaldır?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Bu özelliğin uygulandığı kayıt türünü seçin"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Bu fon adı zaten mevcut."
 
 #: 
 msgid "Total Pledges"
@@ -14504,10 +14476,6 @@ msgid "Group removed from cart"
 msgstr "Grup sepetten çıkarıldı"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Rol seçimi istemi için gerekli GroupId"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14885,20 +14853,8 @@ msgid "Please select a role."
 msgstr "Lütfen bir rol seçin."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Lütfen hem bir grup hem de bir rol seçin."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Lütfen silinecek satırları seçin"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Lütfen üyeler için hedef rolü seçin"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Lütfen üyeler için Hedef Grubu seçin"
 
 #: 
 msgid "Please try again"
@@ -15794,24 +15750,12 @@ msgid "Account status"
 msgstr "Hesap durumu"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Gelişmiş: belirli bir hedef sürüm seçin"
-
-#: 
 msgid "Bug Fix"
 msgstr "Hata Düzeltmesi"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Sihirbaz varsayılan olarak önerilen sonraki sürümü indirir. Bunun yerine aşağıdan mevcut herhangi bir sürümü seçebilirsiniz."
-
-#: 
 msgid "Change required"
 msgstr "Değişiklik gerekli"
-
-#: 
-msgid "Changelog"
-msgstr "Değişiklik günlüğü"
 
 #: 
 msgid "Continue Anyway"
@@ -15820,10 +15764,6 @@ msgstr "Yine de devam et"
 #: 
 msgid "Could not load release information."
 msgstr "Sürüm bilgileri yüklenemedi."
-
-#: 
-msgid "Download & Install"
-msgstr "İndir ve Yükle"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15852,10 +15792,6 @@ msgstr "Tam değişiklik günlüğü"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Kararlı {{version}} sürümünü yükle"
-
-#: 
-msgid "Installing next release"
-msgstr "Sonraki sürüm yükleniyor"
 
 #: 
 msgid "Invalid file path"
@@ -15926,10 +15862,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Tam yükseltme yolunu göster"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "En son kararlı sürüm {{version}}. Aşağıdan yeniden yükleyebilirsiniz."
 
@@ -15956,10 +15888,6 @@ msgstr "Sürüm notlarını görüntüle"
 #: 
 msgid "What's New"
 msgstr "Yenilikler"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} Sürümündeki Yenilikler"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16578,10 +16506,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-posta işlevi şu anda devre dışı. E-posta etkinleştirilene kadar aşağıdaki özellikler çalışmayacak"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Tahmini değer $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "En hızlı iş akışı"
 
@@ -16624,10 +16548,6 @@ msgstr "Yerel geliştirme"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimum Toplam Tutar"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimum teklif $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16930,10 +16850,6 @@ msgid "Working..."
 msgstr "İşleniyor..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "{{releaseCount}} sürüm geride kaldınız. Kazanacaklarınız:"
-
-#: 
 msgid "click to expand"
 msgstr "genişletmek için tıklayın"
 
@@ -17188,10 +17104,6 @@ msgstr "Taahhüt oluşturulamadı"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Taahhüt silinemedi"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Ödeme yanıtı kodlanamadı"
 
 #: 
 msgid "Failed to retrieve pledge"

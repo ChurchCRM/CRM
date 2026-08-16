@@ -1,21 +1,69 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "one": "%d aileye e-posta gönderildi.",
+    "other": "%d aileye e-posta gönderildi."
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF başarıyla %d aileye e-posta ile gönderildi.",
+    "other": "PDF başarıyla %d aileye e-posta ile gönderildi."
+  },
+  "Birthdays & Anniversaries": "Doğum Günleri ve Yıl Dönümleri",
+  "Estimated value %s.": "Tahmini değer %s.",
+  "Minimum bid %s.": "Minimum teklif %s.",
+  "No \"%s\" options are available yet. Add the relevant records first.": "Henüz \"%s\" seçeneği mevcut değil. Önce ilgili kayıtları ekleyin.",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "Henüz \"%s\" seçeneği yapılandırılmamış. Önce ilgili kayıtları ekleyin.",
+  "People with birthdays or wedding anniversaries in a particular month": "Belirli bir ayda doğum günü veya evlilik yıl dönümü olan kişiler",
+  "The month for which you would like birthdays and anniversaries returned.": "Doğum günleri ve yıl dönümlerinin listelenmesini istediğiniz ay.",
+  "The wedding anniversary month for which you would like records returned.": "Kayıtların listelenmesini istediğiniz evlilik yıl dönümü ayı.",
+  "Total of all purchases: %s": "Tüm satın alımların toplamı: %s",
+  "Total purchases: %s": "Toplam satın alımlar: %s",
+  "Wedding Anniversaries": "Evlilik Yıl Dönümleri",
+  "People with wedding anniversaries in a particular month": "Belirli bir ayda evlilik yıl dönümü olan kişiler",
+  "An error occurred. Please try again.": "Bir hata oluştu. Lütfen tekrar deneyin.",
+  "Are you sure you want to delete this fund?": "Bu bağış fonunu silmek istediğinizden emin misiniz?",
+  "Cannot delete: fund has associated pledges": "Silinemez: fona bağlı taahhütler mevcut",
+  "Delete Fund": "Fonu Sil",
+  "Direction must be 'up' or 'down'.": "Yön 'up' (yukarı) veya 'down' (aşağı) olmalıdır.",
+  "Edit Donation Fund": "Bağış Fonunu Düzenle",
+  "Failed to reorder donation fund": "Bağış fonu yeniden sıralanamadı",
+  "Fund added successfully.": "Fon başarıyla eklendi.",
+  "Fund deleted successfully.": "Fon başarıyla silindi.",
+  "Fund name": "Fon adı",
+  "Fund name is required.": "Fon adı zorunludur.",
+  "Fund order updated.": "Fon sırası güncellendi.",
+  "Fund saved successfully.": "Fon başarıyla kaydedildi.",
+  "No funds have been added yet. Use the form above to add the first fund.": "Henüz hiçbir fon eklenmemiş. İlk fonu eklemek için yukarıdaki formu kullanın.",
+  "Optional description": "İsteğe bağlı açıklama",
+  "Private Calendar": "Özel Takvim",
+  "Public Calendar": "Genel Takvim",
+  "Advanced: Install a specific version instead": "Gelişmiş: Bunun yerine belirli bir sürüm yükleyin",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "Sihirbaz varsayılan olarak en son sürüme yükseltir. Bunun yerine aşağıdan belirli bir sürüm seçebilirsiniz.",
+  "Cannot edit a payment in a closed deposit": "Kapalı bir depozitteki ödeme düzenlenemez",
+  "Download & Apply {{version}}": "{{version}} sürümünü İndir ve Uygula",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "Her ChurchCRM sürümü güvenlik düzeltmeleri içerir. Her zaman en son sürüme yükseltmenizi şiddetle tavsiye ederiz.",
+  "Failed to decode payment request": "Ödeme isteği çözümlenemedi",
+  "Full release notes": "Tam sürüm notları",
+  "Invalid payment data": "Geçersiz ödeme verisi",
+  "No release notes available.": "Mevcut sürüm notu yok.",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Uyarı: {{chosen}} sürümünde {{latest}} sürümüne dahil olan güvenlik düzeltmeleri eksik. Yalnızca belirli bir nedeniniz varsa devam edin.",
+  "What you'll gain": "Ne kazanacaksınız",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} üye kopyalandı",
+    "other": "{{count}} üye kopyalandı"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyala seçeneğini kullanın.",
+    "other": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyala seçeneğini kullanın."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala seçeneğini kullanın.",
+    "other": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala seçeneğini kullanın."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} dakika kaldı",
+    "other": "{{count}} dakika kaldı"
   }
 }

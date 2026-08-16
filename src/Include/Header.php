@@ -43,9 +43,14 @@ if ($_themePrimary !== '') {
 }
 // Top level menu index counter
 $MenuFirst = 1;
+// Currency substrate — data attribute on <html> + CSS custom property via <style> block.
+// The symbol is JSON-encoded so any char (including '"' and backslash) produces
+// a valid CSS string literal without breaking the declaration.
+$_currencyAttrs     = ' data-currency-position="' . InputUtils::escapeAttribute(CurrencyFormatter::position()) . '"';
+$_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_THROW_ON_ERROR);
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?>>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -102,6 +107,7 @@ $MenuFirst = 1;
   </script>
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
   <?= PluginManager::getPluginHeadContent() ?>
+  <style nonce="<?= SystemURLs::getCSPNonce() ?>">:root { --currency-symbol: <?= $_currencySymbolCss ?>; }</style>
 
 </head>
 
@@ -115,12 +121,12 @@ $MenuFirst = 1;
         <form name="issueReport">
           <input type="hidden" name="pageName" value="<?= InputUtils::escapeAttribute($_SERVER['REQUEST_URI'] ?? '') ?>"/>
           <div class="modal-header">
-            <h5 class="modal-title"><i class="ti ti-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
+            <h5 class="modal-title"><i class="fa-solid fa-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
           </div>
           <div class="modal-body">
             <div class="alert alert-info mb-3">
-              <i class="ti ti-info-circle me-1"></i>
+              <i class="fa-solid fa-circle-info me-1"></i>
               <?= gettext('Clicking "Open GitHub Issue" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it.') ?>
             </div>
             <div class="mb-3">
@@ -131,7 +137,7 @@ $MenuFirst = 1;
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
             <button type="button" class="btn btn-primary" id="submitIssue">
-              <i class="ti ti-brand-github me-1"></i><?= gettext('Open GitHub Issue') ?>
+              <i class="fa-brands fa-github me-1"></i><?= gettext('Open GitHub Issue') ?>
             </button>
           </div>
         </form>
@@ -204,7 +210,7 @@ $MenuFirst = 1;
                   buttons: [
                       {
                           extend: 'csv',
-                          text: '<i class="ti ti-table-export"></i>',
+                          text: '<i class="fa-solid fa-table"></i>',
                           titleAttr: 'Export CSV',
                           exportOptions: {
                               columns: ':not(.no-export)'
@@ -212,7 +218,7 @@ $MenuFirst = 1;
                       },
                       {
                           extend: 'print',
-                          text: '<i class="ti ti-printer"></i>',
+                          text: '<i class="fa-solid fa-print"></i>',
                           titleAttr: 'Print',
                           exportOptions: {
                               columns: ':not(.no-export)'
@@ -299,7 +305,7 @@ $MenuFirst = 1;
               data-bs-toggle="collapse" data-bs-target="#navbar-menu"
               aria-controls="navbar-menu" aria-expanded="false"
               aria-label="<?= gettext('Toggle search') ?>">
-        <i class="ti ti-search"></i>
+        <i class="fa-solid fa-search"></i>
       </button>
 
       <!-- Right-side nav items -->
@@ -313,13 +319,13 @@ $MenuFirst = 1;
         <div class="nav-item dropdown <?= $showUpdateMenu ? '' : 'd-none' ?>" id="systemUpdateMenuItem">
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#"
              id="upgradeMenu" title="<?= gettext('New Release') ?>">
-            <i class="ti ti-download"></i>
+            <i class="fa-solid fa-download"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
             <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="dropdown-item"
                title="<?= gettext('New Release') ?>">
-              <i class="ti ti-confetti me-2"></i><?= gettext('New Release') ?>
+              <i class="fa-solid fa-party-horn me-2"></i><?= gettext('New Release') ?>
               <?php if ($updateVersion) { ?>
                 <span id="upgradeToVersion" class="ms-1">
                   <?= $updateVersion->MAJOR ?>.<?= $updateVersion->MINOR ?>.<?= $updateVersion->PATCH ?>
@@ -329,7 +335,7 @@ $MenuFirst = 1;
             <?php } ?>
             <a href="https://github.com/ChurchCRM/CRM/releases/latest" target="_blank"
                class="dropdown-item" title="<?= gettext('Release Notes') ?>">
-              <i class="ti ti-book me-2"></i><?= gettext('Release Notes') ?>
+              <i class="fa-solid fa-notebook me-2"></i><?= gettext('Release Notes') ?>
             </a>
           </div>
         </div>
@@ -352,7 +358,7 @@ $MenuFirst = 1;
         <!-- Cart -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0 position-relative" data-bs-toggle="dropdown" href="#">
-            <i class="fa-duotone fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
             <?php if (Cart::countPeople() > 0): ?>
             <span class="badge bg-info position-absolute top-0 end-0 small" id="iconCount"><?= Cart::countPeople() ?></span>
             <?php else: ?>
@@ -367,18 +373,18 @@ $MenuFirst = 1;
         <!-- Support -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#" id="supportMenu">
-            <i class="ti ti-headset"></i>
+            <i class="fa-solid fa-headphones"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item"
                title="<?= gettext('Documentation') ?>">
-              <i class="ti ti-book me-2"></i><?= gettext('Documentation') ?>
+              <i class="fa-solid fa-book me-2"></i><?= gettext('Documentation') ?>
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" id="reportIssue" class="dropdown-item"
                data-bs-toggle="modal" data-bs-target="#IssueReportModal"
                title="<?= gettext('Report an issue') ?>">
-              <i class="ti ti-bug me-2"></i><?= gettext('Report an issue') ?>
+              <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an issue') ?>
             </a>
             <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" class="dropdown-item"
                title="<?= gettext('Discord Chat') ?>">
@@ -436,22 +442,22 @@ $MenuFirst = 1;
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <a href="<?= Person::getViewURIForId($currentUser->getPersonId()) ?>"
                class="dropdown-item">
-              <i class="ti ti-user me-2"></i><?= gettext("Profile") ?>
+              <i class="fa-solid fa-user me-2"></i><?= gettext("Profile") ?>
             </a>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="dropdown-item">
-              <i class="ti ti-key me-2"></i><?= gettext('Change Password') ?>
+              <i class="fa-solid fa-key me-2"></i><?= gettext('Change Password') ?>
             </a>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $currentUser->getPersonId() ?>"
                class="dropdown-item">
-              <i class="ti ti-settings me-2"></i><?= gettext('Change Settings') ?>
+              <i class="fa-solid fa-cog me-2"></i><?= gettext('Change Settings') ?>
             </a>
             <div class="dropdown-divider"></div>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
-              <i class="ti ti-shield me-2"></i><?= gettext("Manage Two-Factor Authentication") ?>
+              <i class="fa-solid fa-shield me-2"></i><?= gettext("Manage Two-Factor Authentication") ?>
             </a>
             <div class="dropdown-divider"></div>
             <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">
-              <i class="ti ti-logout me-2"></i><?= gettext('Sign out') ?>
+              <i class="fa-solid fa-arrow-right-from-bracket me-2"></i><?= gettext('Sign out') ?>
             </a>
           </div>
         </div>
@@ -463,7 +469,7 @@ $MenuFirst = 1;
         <div style="position: relative; width: min(480px, 100%);">
           <div class="input-icon">
             <span class="input-icon-addon">
-              <i class="ti ti-search"></i>
+              <i class="fa-solid fa-search"></i>
             </span>
             <input type="search" id="globalSearch" class="form-control"
                    placeholder="<?= gettext('Search people, families, groups…') ?>"
@@ -543,7 +549,7 @@ foreach (NotificationService::getNotifications() as $notification) {
            <?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
            <?= $notification->getDismissSettingKey() ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notification->getDismissSettingKey()) . '"' : '' ?>>
         <div class="d-flex">
-          <div><i class="ti ti-<?= InputUtils::escapeHTML($notification->getIcon()) ?> me-2"></i></div>
+          <div><i class="fa-solid fa-<?= InputUtils::escapeHTML($notification->getIcon()) ?> me-2"></i></div>
           <div>
             <strong><?= InputUtils::escapeHTML($notification->getTitle()) ?></strong>
             <?php if ($notification->getMessage()): ?>

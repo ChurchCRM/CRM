@@ -101,12 +101,12 @@ describe("Finance Dashboard", () => {
         cy.contains("Donation Funds");
     });
 
-    it("should link to Donation Fund Editor from Manage Funds button", () => {
+    it("should link to Donation Fund admin page from Manage Funds button", () => {
         cy.visit("/finance/");
 
         // Admin should see Manage Funds link
         cy.contains("a", "Manage Funds").click();
-        cy.url().should("contain", "DonationFundEditor.php");
+        cy.url().should("contain", "/finance/funds");
     });
 
     it("should navigate to settings from Church Information checklist item", () => {

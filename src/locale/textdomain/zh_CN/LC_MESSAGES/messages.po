@@ -582,16 +582,8 @@ msgid "Picture URL"
 msgstr "图片 URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "捐赠基金的编辑"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "无效的字段或选择。更改未保存！请更正，然后再试一次！"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "目前没有资金已"
 
 #: 
 msgid "Active"
@@ -2230,14 +2222,6 @@ msgstr "捐赠的物品"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "购买的物品"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "所有购买总计："
-
-#: 
-msgid "Total purchases: $"
-msgstr "采购总额：$"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7415,10 +7399,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "删除此字段后，您将永久丢失分配给此字段的所有小组成员数据！"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "删除此基金可能会影响历史捐赠记录！"
-
-#: 
 msgid "Category Name"
 msgstr "类别名称"
 
@@ -7471,10 +7451,6 @@ msgid "Filter by Class"
 msgstr "按类别筛选"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "基金删除成功"
-
-#: 
 msgid "In Use"
 msgstr "使用中"
 
@@ -7521,10 +7497,6 @@ msgstr "删除此出席计数？"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "选择此属性适用的记录类型"
-
-#: 
-msgid "That fund name already exists."
-msgstr "该基金名称已存在。"
 
 #: 
 msgid "Total Pledges"
@@ -14564,10 +14536,6 @@ msgid "Group removed from cart"
 msgstr "团体已从购物车移除"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "角色选择提示需要GroupID"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML 网址"
 
@@ -14945,20 +14913,8 @@ msgid "Please select a role."
 msgstr "请选择一个角色。"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "请同时选择一个事工组和一个角色。"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "请选择要删除的行"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "请为会员选择目标角色"
-
-#: 
-msgid "Please select target group for members"
-msgstr "请为会员选择目标群组"
 
 #: 
 msgid "Please try again"
@@ -15853,24 +15809,12 @@ msgid "Account status"
 msgstr "账户状态"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "高级：选择特定目标版本"
-
-#: 
 msgid "Bug Fix"
 msgstr "错误修复"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "默认情况下，向导会下载下一个推荐版本。您也可以在下方选择任意可用版本。"
-
-#: 
 msgid "Change required"
 msgstr "需要更改"
-
-#: 
-msgid "Changelog"
-msgstr "更新日志"
 
 #: 
 msgid "Continue Anyway"
@@ -15879,10 +15823,6 @@ msgstr "仍然继续"
 #: 
 msgid "Could not load release information."
 msgstr "无法加载版本信息。"
-
-#: 
-msgid "Download & Install"
-msgstr "下载并安装"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15911,10 +15851,6 @@ msgstr "完整更新日志"
 #: 
 msgid "Install stable {{version}}"
 msgstr "安装稳定版 {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "正在安装下一个版本"
 
 #: 
 msgid "Invalid file path"
@@ -15985,10 +15921,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "显示完整升级路径"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "最新稳定版本为 {{version}}。您可以在下方重新安装。"
 
@@ -16015,10 +15947,6 @@ msgstr "查看发行说明"
 #: 
 msgid "What's New"
 msgstr "新增内容"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} 新增内容"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16625,10 +16553,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "电子邮件功能当前已禁用。以下功能在启用电子邮件之前将无法使用"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "估计价值 $%s。"
-
-#: 
 msgid "Fastest workflow"
 msgstr "最快工作流程"
 
@@ -16671,10 +16595,6 @@ msgstr "本地开发"
 #: 
 msgid "Minimum Total Amount"
 msgstr "最低总金额"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "最低出价 $%s。"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16977,10 +16897,6 @@ msgid "Working..."
 msgstr "处理中……"
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "您落后了 {{releaseCount}} 个版本，以下是您将获得的更新"
-
-#: 
 msgid "click to expand"
 msgstr "点击展开"
 
@@ -17235,10 +17151,6 @@ msgstr "创建承诺奉献失败"
 #: 
 msgid "Failed to delete pledge"
 msgstr "删除承诺奉献失败"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "编码奉献响应失败"
 
 #: 
 msgid "Failed to retrieve pledge"

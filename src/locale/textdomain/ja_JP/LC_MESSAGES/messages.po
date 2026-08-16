@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "画像 URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "寄付基金エディター"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "無効なフィールドまたは選択があります。変更は保存されませんでした！修正して再試行してください。"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "基金はまだ追加されていません"
 
 #: 
 msgid "Active"
@@ -2145,14 +2137,6 @@ msgstr "寄付アイテム"
 #: 
 msgid "Purchased Items"
 msgstr "購入済みアイテム"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "全購入合計: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "購入合計: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7305,10 +7289,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "このフィールドを削除すると、このフィールドに割り当てられたすべてのグループメンバーデータが永久に失われます！"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "この基金を削除すると、過去の寄付記録に影響を与える可能性があります！"
-
-#: 
 msgid "Category Name"
 msgstr "カテゴリ名"
 
@@ -7361,10 +7341,6 @@ msgid "Filter by Class"
 msgstr "クラスでフィルター"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "基金が正常に削除されました"
-
-#: 
 msgid "In Use"
 msgstr "使用中"
 
@@ -7411,10 +7387,6 @@ msgstr "この出席カウントを削除しますか？"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "このプロパティが適用されるレコードタイプを選択"
-
-#: 
-msgid "That fund name already exists."
-msgstr "その基金名はすでに存在します。"
 
 #: 
 msgid "Total Pledges"
@@ -14454,10 +14426,6 @@ msgid "Group removed from cart"
 msgstr "グループがカートから削除されました"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "役割選択プロンプトにはGroupIDが必要です"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14835,20 +14803,8 @@ msgid "Please select a role."
 msgstr "役割を選択してください。"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "グループと役割の両方を選択してください。"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "削除する行を選択してください"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "メンバーのターゲット役割を選択してください"
-
-#: 
-msgid "Please select target group for members"
-msgstr "メンバーの移行先グループを選択してください"
 
 #: 
 msgid "Please try again"
@@ -15743,24 +15699,12 @@ msgid "Account status"
 msgstr "アカウントの状態"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "詳細設定：特定のターゲットバージョンを選択"
-
-#: 
 msgid "Bug Fix"
 msgstr "バグ修正"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "デフォルトでは、ウィザードは次の推奨リリースをダウンロードします。以下から任意の利用可能なバージョンを選択することもできます。"
-
-#: 
 msgid "Change required"
 msgstr "変更が必要です"
-
-#: 
-msgid "Changelog"
-msgstr "変更履歴"
 
 #: 
 msgid "Continue Anyway"
@@ -15769,10 +15713,6 @@ msgstr "このまま続行"
 #: 
 msgid "Could not load release information."
 msgstr "リリース情報を読み込めませんでした。"
-
-#: 
-msgid "Download & Install"
-msgstr "ダウンロードしてインストール"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15801,10 +15741,6 @@ msgstr "完全な変更履歴"
 #: 
 msgid "Install stable {{version}}"
 msgstr "安定版 {{version}} をインストール"
-
-#: 
-msgid "Installing next release"
-msgstr "次のリリースをインストール中"
 
 #: 
 msgid "Invalid file path"
@@ -15875,10 +15811,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "完全なアップグレードパスを表示"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "最新の安定版リリースは {{version}} です。以下から再インストールできます。"
 
@@ -15905,10 +15837,6 @@ msgstr "リリースノートを表示"
 #: 
 msgid "What's New"
 msgstr "新機能"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} の新機能"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16515,10 +16443,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "メール機能は現在無効になっています。メールを有効にするまで、以下の機能は動作しません"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "推定価格 $%s。"
-
-#: 
 msgid "Fastest workflow"
 msgstr "最速のワークフロー"
 
@@ -16561,10 +16485,6 @@ msgstr "ローカル開発"
 #: 
 msgid "Minimum Total Amount"
 msgstr "最低合計金額"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "最低入札額 $%s。"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16867,10 +16787,6 @@ msgid "Working..."
 msgstr "処理中..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "{{releaseCount}} バージョン遅れています。以下のものが得られます"
-
-#: 
 msgid "click to expand"
 msgstr "クリックして展開"
 
@@ -17125,10 +17041,6 @@ msgstr "誓約の作成に失敗しました"
 #: 
 msgid "Failed to delete pledge"
 msgstr "誓約の削除に失敗しました"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "献金レスポンスのエンコードに失敗しました"
 
 #: 
 msgid "Failed to retrieve pledge"

@@ -662,7 +662,11 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                             $familyProps[$proId] = $value;
                         }
                     } else {
-                        $data[$crmField] = $value;
+                        // Core person/family fields are not prompted and were stored raw
+                        // before this fix. Sanitize at import to strip HTML/script tags so
+                        // that sinks which render names, addresses, etc. without escaping
+                        // cannot be exploited via a crafted CSV (GHSA-9fgc-76p2-8mxh).
+                        $data[$crmField] = InputUtils::sanitizeText($value);
                     }
                 }
 

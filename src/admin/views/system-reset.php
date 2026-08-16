@@ -9,7 +9,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="alert alert-danger" role="alert">
     <div class="d-flex">
         <div>
-            <i class="ti ti-alert-triangle me-2 fs-2"></i>
+            <i class="fa-solid fa-triangle-exclamation me-2 fs-2"></i>
         </div>
         <div>
             <h4 class="alert-title"><?= gettext('Destructive Operation') ?></h4>
@@ -27,11 +27,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card">
             <div class="card-stamp">
                 <div class="card-stamp-icon bg-info">
-                    <i class="ti ti-database-export"></i>
+                    <i class="fa-solid fa-database-export"></i>
                 </div>
             </div>
             <div class="card-header">
-                <h3 class="card-title"><i class="ti ti-download me-2"></i><?= gettext('Step 1: Create a Backup') ?></h3>
+                <h3 class="card-title"><i class="fa-solid fa-download me-2"></i><?= gettext('Step 1: Create a Backup') ?></h3>
                 <span class="badge bg-info-lt"><?= gettext('Recommended') ?></span>
             </div>
             <div class="card-body">
@@ -71,7 +71,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
 
                 <button type="button" class="btn btn-info w-100" id="doBackup">
-                    <i class="ti ti-download me-2"></i><?= gettext('Generate & Download Backup') ?>
+                    <i class="fa-solid fa-download me-2"></i><?= gettext('Generate & Download Backup') ?>
                 </button>
 
                 <!-- Backup status area -->
@@ -85,17 +85,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div id="backupComplete" class="d-none">
                         <div class="alert alert-success mb-0">
                             <div class="d-flex align-items-center">
-                                <i class="ti ti-check me-2"></i>
+                                <i class="fa-solid fa-check me-2"></i>
                                 <span id="backupCompleteMessage"><?= gettext('Backup ready!') ?></span>
                             </div>
                             <button class="btn btn-success btn-sm mt-2 w-100 d-none" id="downloadBackup">
-                                <i class="ti ti-download me-2"></i><span id="downloadFilename"></span>
+                                <i class="fa-solid fa-download me-2"></i><span id="downloadFilename"></span>
                             </button>
                         </div>
                     </div>
                     <div id="backupError" class="d-none">
                         <div class="alert alert-danger mb-0">
-                            <i class="ti ti-alert-circle me-2"></i><?= gettext('Backup failed. You can still proceed with the reset, but your data will be lost.') ?>
+                            <i class="fa-solid fa-circle-exclamation me-2"></i><?= gettext('Backup failed. You can still proceed with the reset, but your data will be lost.') ?>
                         </div>
                     </div>
                 </div>
@@ -108,21 +108,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card border-danger">
             <div class="card-stamp">
                 <div class="card-stamp-icon bg-danger">
-                    <i class="ti ti-trash"></i>
+                    <i class="fa-solid fa-trash"></i>
                 </div>
             </div>
             <div class="card-header">
-                <h3 class="card-title text-danger"><i class="ti ti-alert-triangle me-2"></i><?= gettext('Step 2: Reset Database') ?></h3>
+                <h3 class="card-title text-danger"><i class="fa-solid fa-triangle-exclamation me-2"></i><?= gettext('Step 2: Reset Database') ?></h3>
             </div>
             <div class="card-body">
                 <p class="text-secondary"><?= gettext('Resetting will permanently delete') ?>:</p>
                 <ul class="list-unstyled">
-                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All people and family records') ?></li>
-                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All groups, roles, and memberships') ?></li>
-                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All financial data (pledges, payments, deposits)') ?></li>
-                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All events and attendance records') ?></li>
-                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All uploaded photos and documents') ?></li>
-                    <li class="mb-0"><i class="ti ti-x text-danger me-1"></i><?= gettext('All system settings and custom fields') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All people and family records') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All groups, roles, and memberships') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All financial data (pledges, payments, deposits)') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All events and attendance records') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All uploaded photos and documents') ?></li>
+                    <li class="mb-0"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All system settings and custom fields') ?></li>
                 </ul>
 
                 <div class="hr-text"><?= gettext('Confirm') ?></div>
@@ -137,7 +137,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
 
                 <button type="button" class="btn btn-danger w-100" id="resetBtn" disabled>
-                    <i class="ti ti-trash me-2"></i><?= gettext('Reset Database') ?>
+                    <i class="fa-solid fa-trash me-2"></i><?= gettext('Reset Database') ?>
                 </button>
             </div>
         </div>
@@ -195,12 +195,12 @@ $(document).ready(function () {
         // ── Reset Flow ───────────────────────────────────────────
         $("#resetBtn").on("click", function () {
             bootbox.confirm({
-                title: '<i class="ti ti-alert-triangle text-danger me-2"></i>' + i18next.t("Final Confirmation"),
+                title: '<i class="fa-solid fa-triangle-exclamation text-danger me-2"></i>' + i18next.t("Final Confirmation"),
                 message: '<p>' + i18next.t("Are you absolutely sure? This will erase all data and restore factory defaults.") + '</p>' +
                          '<p class="text-danger fw-bold mb-0">' + i18next.t("This action cannot be undone.") + '</p>',
                 buttons: {
                     confirm: {
-                        label: '<i class="ti ti-trash me-1"></i>' + i18next.t('Reset Database'),
+                        label: '<i class="fa-solid fa-trash me-1"></i>' + i18next.t('Reset Database'),
                         className: 'btn-danger'
                     },
                     cancel: {
@@ -226,7 +226,7 @@ $(document).ready(function () {
                         var password = (data && data.defaultPassword) ? data.defaultPassword : 'changeme';
 
                         bootbox.alert({
-                            title: '<i class="ti ti-check text-success me-2"></i>' + i18next.t('Reset Complete'),
+                            title: '<i class="fa-solid fa-check text-success me-2"></i>' + i18next.t('Reset Complete'),
                             message: '<p>' + i18next.t('The database has been cleared. The system is ready for a fresh start.') + '</p>' +
                                      '<div class="alert alert-info mb-0">' +
                                      '<strong>' + i18next.t('Default admin credentials') + ':</strong><br>' +
@@ -243,11 +243,11 @@ $(document).ready(function () {
                             msg = xhr.responseJSON.msg;
                         }
                         bootbox.alert({
-                            title: '<i class="ti ti-alert-circle text-danger me-2"></i>' + i18next.t('Error'),
+                            title: '<i class="fa-solid fa-circle-exclamation text-danger me-2"></i>' + i18next.t('Error'),
                             message: msg
                         });
                         $("#resetBtn").prop("disabled", false).html(
-                            '<i class="ti ti-trash me-2"></i>' + i18next.t('Reset Database')
+                            '<i class="fa-solid fa-trash me-2"></i>' + i18next.t('Reset Database')
                         );
                         $("#confirmInput").val("");
                     });

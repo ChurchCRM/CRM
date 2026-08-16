@@ -165,7 +165,7 @@ $fundraiserTableTitle = $filterStatus !== ''
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= InputUtils::escapeHTML($fundraiserTableTitle) ?></h3>
     <a href="<?= $sRootPath ?>/fundraiser/editor" class="btn btn-primary btn-sm ms-auto">
-      <i class="ti ti-plus me-1"></i><?= gettext('Add Fundraiser') ?>
+      <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Fundraiser') ?>
     </a>
   </div>
   <div class="card-body p-0">
@@ -222,40 +222,40 @@ $fundraiserTableTitle = $filterStatus !== ''
             <td class="text-center w-1">
               <div class="dropdown">
                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                  <i class="ti ti-dots-vertical"></i>
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/view/<?= $frId ?>">
-                    <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                    <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                   </a>
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/editor/<?= $frId ?>">
-                    <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                    <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                   </a>
                   <div class="dropdown-divider"></div>
                   <?php if ($frShowItemCatalog($frType)): ?>
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/catalog">
-                    <i class="ti ti-book me-2"></i><?= gettext('Catalog') ?>
+                    <i class="fa-solid fa-book me-2"></i><?= gettext('Catalog') ?>
                   </a>
                   <?php endif; ?>
                   <?php if ($frShowBidSheets($frType)): ?>
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/bid-sheets">
-                    <i class="ti ti-list me-2"></i><?= gettext('Bid Sheets') ?>
+                    <i class="fa-solid fa-list me-2"></i><?= gettext('Bid Sheets') ?>
                   </a>
                   <?php endif; ?>
                   <?php if ($frShowItemCatalog($frType)): ?>
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/certificates">
-                    <i class="ti ti-certificate me-2"></i><?= gettext('Certificates') ?>
+                    <i class="fa-solid fa-certificate me-2"></i><?= gettext('Certificates') ?>
                   </a>
                   <?php endif; ?>
                   <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/statement">
-                    <i class="ti ti-file-invoice me-2"></i><?= gettext('Buyer Statements') ?>
+                    <i class="fa-solid fa-file-invoice me-2"></i><?= gettext('Buyer Statements') ?>
                   </a>
                   <div class="dropdown-divider"></div>
                   <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/delete" class="d-inline"
                         data-confirm="<?= InputUtils::escapeAttribute(gettext('Are you sure you want to delete this fundraiser?')) ?>">
                     <?= $csrfFundraiserDeleteField ?>
                     <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
-                      <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                      <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                     </button>
                   </form>
                 </div>
@@ -273,7 +273,7 @@ $fundraiserTableTitle = $filterStatus !== ''
           : gettext('No active fundraisers found.') ?></p>
       <?php if (empty($filterStatus) && empty($filterType) && empty($dateStart) && empty($dateEnd)): ?>
       <a href="<?= $sRootPath ?>/fundraiser/editor" class="btn btn-primary btn-sm">
-        <i class="ti ti-plus me-1"></i><?= gettext('Create Fundraiser') ?>
+        <i class="fa-solid fa-plus me-1"></i><?= gettext('Create Fundraiser') ?>
       </a>
       <?php endif; ?>
     </div>
@@ -292,9 +292,9 @@ $fundraiserTableTitle = $filterStatus !== ''
             data-bs-target="#archiveCollapse"
             aria-expanded="false"
             aria-controls="archiveCollapse">
-      <i class="ti ti-archive me-1 text-body-secondary"></i>
+      <i class="fa-solid fa-archive me-1 text-body-secondary"></i>
       <?= sprintf(ngettext('%d archived fundraiser', '%d archived fundraisers', $archivedCount), $archivedCount) ?>
-      <i class="ti ti-chevron-right ms-auto"></i>
+      <i class="fa-solid fa-chevron-right ms-auto"></i>
     </button>
   </div>
   <div id="archiveCollapse" class="collapse">
@@ -349,40 +349,40 @@ $fundraiserTableTitle = $filterStatus !== ''
               <td class="text-center w-1">
                 <div class="dropdown">
                   <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                    <i class="ti ti-dots-vertical"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/view/<?= $frId ?>">
-                      <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                      <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                     </a>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/editor/<?= $frId ?>">
-                      <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                      <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                     </a>
                     <div class="dropdown-divider"></div>
                     <?php if ($frShowItemCatalog($frType)): ?>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/catalog">
-                      <i class="ti ti-book me-2"></i><?= gettext('Catalog') ?>
+                      <i class="fa-solid fa-book me-2"></i><?= gettext('Catalog') ?>
                     </a>
                     <?php endif; ?>
                     <?php if ($frShowBidSheets($frType)): ?>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/bid-sheets">
-                      <i class="ti ti-list me-2"></i><?= gettext('Bid Sheets') ?>
+                      <i class="fa-solid fa-list me-2"></i><?= gettext('Bid Sheets') ?>
                     </a>
                     <?php endif; ?>
                     <?php if ($frShowItemCatalog($frType)): ?>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/certificates">
-                      <i class="ti ti-certificate me-2"></i><?= gettext('Certificates') ?>
+                      <i class="fa-solid fa-certificate me-2"></i><?= gettext('Certificates') ?>
                     </a>
                     <?php endif; ?>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/reports/statement">
-                      <i class="ti ti-file-invoice me-2"></i><?= gettext('Buyer Statements') ?>
+                      <i class="fa-solid fa-file-invoice me-2"></i><?= gettext('Buyer Statements') ?>
                     </a>
                     <div class="dropdown-divider"></div>
                     <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= $frId ?>/delete" class="d-inline"
                           data-confirm="<?= InputUtils::escapeAttribute(gettext('Are you sure you want to delete this fundraiser?')) ?>">
                       <?= $csrfFundraiserDeleteField ?>
                       <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
-                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                       </button>
                     </form>
                   </div>

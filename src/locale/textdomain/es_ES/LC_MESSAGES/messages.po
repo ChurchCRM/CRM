@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "URL de Imagen"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Editor de fondos de Donación"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Los campos o selecciones no son válidos. ¡No es posible guardar cambios! ¡Por favor, corrija y vuelva a intentarlo!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "No se han añadido fondos aún"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "Los artículos donados"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Los productos comprados"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Total de todas las compras: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Compras totales: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7375,10 +7359,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "¡Al eliminar este campo, perderás irrevocablemente todos los datos de miembros del grupo asignados a este campo!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "¡Al eliminar este fondo, puedes afectar los registros históricos de donaciones!"
-
-#: 
 msgid "Category Name"
 msgstr "Nombre de Categoría"
 
@@ -7431,10 +7411,6 @@ msgid "Filter by Class"
 msgstr "Filtrar por Clase"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fondo eliminado exitosamente"
-
-#: 
 msgid "In Use"
 msgstr "En Uso"
 
@@ -7481,10 +7457,6 @@ msgstr "¿Eliminar este conteo de asistencia?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Seleccione el tipo de registro al que se aplica esta propiedad"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Ese nombre de fondo ya existe."
 
 #: 
 msgid "Total Pledges"
@@ -14529,10 +14501,6 @@ msgid "Group removed from cart"
 msgstr "Grupo removido del carrito"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "ID de grupo requerido para seleccionar rol"
-
-#: 
 msgid "HTML URL"
 msgstr "URL de HTML"
 
@@ -14910,20 +14878,8 @@ msgid "Please select a role."
 msgstr "Por favor, seleccione un rol."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Por favor, seleccione un ministerio y un rol."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Seleccione filas para eliminar"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Por favor seleccione el rol objetivo para miembros"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Por favor seleccione el grupo objetivo para miembros"
 
 #: 
 msgid "Please try again"
@@ -15819,24 +15775,12 @@ msgid "Account status"
 msgstr "Estado de la cuenta"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avanzado: elegir una versión de destino específica"
-
-#: 
 msgid "Bug Fix"
 msgstr "Corrección de errores"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "De forma predeterminada, el asistente descarga la próxima versión recomendada. En su lugar, puede elegir cualquier versión disponible a continuación."
-
-#: 
 msgid "Change required"
 msgstr "Cambio requerido"
-
-#: 
-msgid "Changelog"
-msgstr "Registro de cambios"
 
 #: 
 msgid "Continue Anyway"
@@ -15845,10 +15789,6 @@ msgstr "Continuar de todas formas"
 #: 
 msgid "Could not load release information."
 msgstr "No se pudo cargar la información de la versión."
-
-#: 
-msgid "Download & Install"
-msgstr "Descargar e instalar"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15877,10 +15817,6 @@ msgstr "Registro de cambios completo"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Instalar versión estable {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Instalando la próxima versión"
 
 #: 
 msgid "Invalid file path"
@@ -15951,10 +15887,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Mostrar la ruta de actualización completa"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "La versión estable más reciente es {{version}}. Puede reinstalarla a continuación."
 
@@ -15981,10 +15913,6 @@ msgstr "Ver notas de la versión"
 #: 
 msgid "What's New"
 msgstr "Novedades"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Novedades en {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16603,10 +16531,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "La funcionalidad de correo electrónico está desactivada. Las siguientes funciones no funcionarán hasta que el correo esté habilitado"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Valor estimado $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Flujo de trabajo más rápido"
 
@@ -16649,10 +16573,6 @@ msgstr "Desarrollo local"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Importe total mínimo"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Oferta mínima $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16955,10 +16875,6 @@ msgid "Working..."
 msgstr "Procesando..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Llevas {{releaseCount}} versiones de retraso. Esto es lo que ganarás"
-
-#: 
 msgid "click to expand"
 msgstr "haz clic para expandir"
 
@@ -17213,10 +17129,6 @@ msgstr "Error al crear el compromiso"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Error al eliminar el compromiso"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Error al codificar la respuesta de pago"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17579,6 +17491,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "El correo electrónico no está configurado. Por favor, configure los ajustes SMTP en la Configuración del sistema."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Correo electrónico enviado a %d familia."
+msgstr[1] "Correo electrónico enviado a %d familias."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Primero ingrese una dirección."
 
@@ -17645,6 +17563,12 @@ msgstr "No se encontraron pagos para los depósitos seleccionados"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "No se proporcionaron IDs de depósito válidos"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF enviado correctamente por correo electrónico a %d familia."
+msgstr[1] "PDF enviado correctamente por correo electrónico a %d familias."
 
 #: 
 msgid "Partial Send"

@@ -20,7 +20,7 @@ $app->get('/', function (Request $request, Response $response) {
         'sSettingsCollapseId' => 'financialSettings',
         'sPageHeaderButtons' => PageHeader::buttons([
             ['label' => gettext('Financial Settings'), 'icon' => 'fa-cog', 'collapse' => '#financialSettings'],
-            ['label' => gettext('Donation Funds'), 'url' => '/DonationFundEditor.php', 'icon' => 'fa-hand-holding-dollar'],
+            ['label' => gettext('Donation Funds'), 'url' => '/finance/funds', 'icon' => 'fa-hand-holding-dollar'],
             ['label' => gettext('Manage Envelopes'), 'url' => '/ManageEnvelopes.php', 'icon' => 'fa-envelope'],
         ]),
     ];

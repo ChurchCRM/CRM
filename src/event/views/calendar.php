@@ -25,7 +25,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="alert alert-danger d-none" id="calendarApiWarning">
     <div class="d-flex align-items-center">
-        <i class="ti ti-alert-triangle me-2"></i>
+        <i class="fa-solid fa-triangle-exclamation me-2"></i>
         <div>
             <h4 class="alert-title mb-1"><?= _('External Calendar API Disabled') ?></h4>
             <p class="mb-0"><?= _('Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars.') ?></p>
@@ -44,7 +44,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="offcanvas offcanvas-end" tabindex="-1" id="calendarSidebar" aria-labelledby="calendarSidebarLabel" style="width: 320px;">
     <div class="offcanvas-header border-bottom">
         <h5 class="offcanvas-title" id="calendarSidebarLabel">
-            <i class="ti ti-stack-2 me-2 text-body-secondary"></i><?= _('Calendars') ?>
+            <i class="fa-solid fa-layer-group me-2 text-body-secondary"></i><?= _('Calendars') ?>
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="<?= _('Close') ?>"></button>
     </div>
@@ -53,14 +53,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="px-3 pt-3 pb-1">
             <div class="d-flex align-items-center justify-content-between">
                 <span class="text-uppercase text-body-secondary small fw-bold" style="letter-spacing:.05em;">
-                    <i class="ti ti-user me-1"></i><?= _('My Calendars') ?>
+                    <i class="fa-solid fa-user me-1"></i><?= _('My Calendars') ?>
                 </span>
             </div>
         </div>
         <div class="list-group list-group-flush" id="calendarUserList"></div>
         <div class="px-3 py-2 d-none" id="addCalendarBtn">
             <button class="btn btn-sm btn-ghost-primary w-100">
-                <i class="ti ti-circle-plus me-1"></i><?= _('New Calendar') ?>
+                <i class="fa-solid fa-plus-circle me-1"></i><?= _('New Calendar') ?>
             </button>
         </div>
 
@@ -69,7 +69,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <!-- System Calendars -->
         <div class="px-3 pt-3 pb-1">
             <span class="text-uppercase text-body-secondary small fw-bold" style="letter-spacing:.05em;">
-                <i class="ti ti-settings me-1"></i><?= _('System Calendars') ?>
+                <i class="fa-solid fa-cog me-1"></i><?= _('System Calendars') ?>
             </span>
         </div>
         <div class="list-group list-group-flush" id="calendarSystemList"></div>
@@ -148,6 +148,8 @@ window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_HEX_TAG | JSON
 </script>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/calendar-event-editor.min.js') ?>"></script>
+<!-- FullCalendar v7 CSS (webpack-extracted from event-calendars.js: skeleton + Forma theme + blue palette) -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/event-calendars.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/event-calendars.min.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

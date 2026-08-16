@@ -564,16 +564,8 @@ msgid "Picture URL"
 msgstr "URL รูปภาพ"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "ตัวแก้ไขกองทุนบริจาค"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "ฟิลด์หรือการเลือกไม่ถูกต้อง การเปลี่ยนแปลงไม่ได้บันทึก! กรุณาแก้ไขและลองอีกครั้ง!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "ยังไม่มีกองทุนที่เพิ่ม"
 
 #: 
 msgid "Active"
@@ -2157,14 +2149,6 @@ msgstr "รายการบริจาค"
 #: 
 msgid "Purchased Items"
 msgstr "รายการที่ซื้อ"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "ยอดรวมการซื้อทั้งหมด: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "ยอดซื้อรวม: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7317,10 +7301,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "การลบฟิลด์นี้จะทำให้คุณสูญเสียข้อมูลสมาชิกกลุ่มทั้งหมดที่กำหนดสำหรับฟิลด์นี้อย่างถาวร!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "การลบกองทุนนี้อาจส่งผลต่อระเบียนการบริจาคในอดีต!"
-
-#: 
 msgid "Category Name"
 msgstr "ชื่อหมวดหมู่"
 
@@ -7373,10 +7353,6 @@ msgid "Filter by Class"
 msgstr "กรองตามชั้นเรียน"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "ลบกองทุนสำเร็จ"
-
-#: 
 msgid "In Use"
 msgstr "ใช้งานอยู่"
 
@@ -7423,10 +7399,6 @@ msgstr "ลบการนับการเข้าร่วมนี้?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "เลือกประเภทระเบียนที่คุณสมบัตินี้ใช้กับ"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ชื่อกองทุนนั้นมีอยู่แล้ว"
 
 #: 
 msgid "Total Pledges"
@@ -14466,10 +14438,6 @@ msgid "Group removed from cart"
 msgstr "ลบกลุ่มออกจากตะกร้าแล้ว"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "ต้องการ GroupID สำหรับการแจ้งเตือนเลือกบทบาท"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14847,20 +14815,8 @@ msgid "Please select a role."
 msgstr "กรุณาเลือกบทบาท"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "กรุณาเลือกทั้งกลุ่มและบทบาท"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "กรุณาเลือกแถวที่จะลบ"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "กรุณาเลือกบทบาทเป้าหมายสำหรับสมาชิก"
-
-#: 
-msgid "Please select target group for members"
-msgstr "กรุณาเลือกกลุ่มเป้าหมายสำหรับสมาชิก"
 
 #: 
 msgid "Please try again"
@@ -15755,24 +15711,12 @@ msgid "Account status"
 msgstr "สถานะบัญชี"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "ขั้นสูง: เลือกเวอร์ชันเป้าหมายที่ต้องการ"
-
-#: 
 msgid "Bug Fix"
 msgstr "แก้ไขข้อผิดพลาด"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "โดยค่าเริ่มต้น ตัวช่วยสร้างจะดาวน์โหลดรุ่นที่แนะนำถัดไป คุณสามารถเลือกเวอร์ชันที่มีให้ด้านล่างแทนได้"
-
-#: 
 msgid "Change required"
 msgstr "จำเป็นต้องเปลี่ยนแปลง"
-
-#: 
-msgid "Changelog"
-msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: 
 msgid "Continue Anyway"
@@ -15781,10 +15725,6 @@ msgstr "ดำเนินการต่อไป"
 #: 
 msgid "Could not load release information."
 msgstr "ไม่สามารถโหลดข้อมูลรุ่นได้"
-
-#: 
-msgid "Download & Install"
-msgstr "ดาวน์โหลดและติดตั้ง"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15813,10 +15753,6 @@ msgstr "บันทึกการเปลี่ยนแปลงทั้ง
 #: 
 msgid "Install stable {{version}}"
 msgstr "ติดตั้งเวอร์ชันเสถียร {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "กำลังติดตั้งรุ่นถัดไป"
 
 #: 
 msgid "Invalid file path"
@@ -15887,10 +15823,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "แสดงเส้นทางการอัปเกรดทั้งหมด"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "รุ่นเสถียรล่าสุดคือ {{version}} คุณสามารถติดตั้งใหม่ได้ด้านล่าง"
 
@@ -15917,10 +15849,6 @@ msgstr "ดูบันทึกรุ่น"
 #: 
 msgid "What's New"
 msgstr "มีอะไรใหม่"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "มีอะไรใหม่ใน {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16527,10 +16455,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ฟังก์ชันอีเมลถูกปิดใช้งานอยู่ในขณะนี้ คุณสมบัติต่อไปนี้จะไม่ทำงานจนกว่าจะเปิดใช้งานอีเมล"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "มูลค่าประมาณ $%s"
-
-#: 
 msgid "Fastest workflow"
 msgstr "ขั้นตอนการทำงานที่เร็วที่สุด"
 
@@ -16573,10 +16497,6 @@ msgstr "การพัฒนาในเครื่อง"
 #: 
 msgid "Minimum Total Amount"
 msgstr "จำนวนเงินรวมขั้นต่ำ"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "ราคาเสนอขั้นต่ำ $%s"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16879,10 +16799,6 @@ msgid "Working..."
 msgstr "กำลังดำเนินการ..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "คุณล้าหลัง {{releaseCount}} เวอร์ชัน นี่คือสิ่งที่คุณจะได้รับ"
-
-#: 
 msgid "click to expand"
 msgstr "คลิกเพื่อขยาย"
 
@@ -17137,10 +17053,6 @@ msgstr "ไม่สามารถสร้างคำมั่นสัญญ
 #: 
 msgid "Failed to delete pledge"
 msgstr "ไม่สามารถลบคำมั่นสัญญาได้"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "ไม่สามารถเข้ารหัสการตอบสนองการถวายได้"
 
 #: 
 msgid "Failed to retrieve pledge"

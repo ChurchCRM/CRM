@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-09 05:57+0000\n"
+"POT-Creation-Date: 2026-08-15 23:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -726,7 +726,7 @@ msgstr ""
 msgid "Advanced filtering by group, classification, and role"
 msgstr ""
 
-msgid "Advanced: choose a specific target version"
+msgid "Advanced: Install a specific version instead"
 msgstr ""
 
 msgid "Affected Files"
@@ -1008,6 +1008,9 @@ msgstr ""
 msgid "An error occurred. Please contact your system administrator."
 msgstr ""
 
+msgid "An error occurred. Please try again."
+msgstr ""
+
 msgid "An individual church member. Stores name, birthday, personal email, and mobile."
 msgstr ""
 
@@ -1144,6 +1147,9 @@ msgid "Are you sure you want to delete the selected"
 msgstr ""
 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr ""
+
+msgid "Are you sure you want to delete this fund?"
 msgstr ""
 
 msgid "Are you sure you want to delete this fundraiser?"
@@ -1636,6 +1642,10 @@ msgstr ""
 msgid "Birthdays"
 msgstr ""
 
+#. Context: query_qry
+msgid "Birthdays & Anniversaries"
+msgstr ""
+
 msgid "Birthdays and anniversaries. Default: m/d"
 msgstr ""
 
@@ -1770,7 +1780,7 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
 msgstr ""
 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
@@ -1780,9 +1790,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr ""
 
 msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
-msgstr ""
-
-msgid "By deleting this fund, you may affect historical donation records!"
 msgstr ""
 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
@@ -1930,6 +1937,12 @@ msgstr ""
 msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
 msgstr ""
 
+msgid "Cannot delete: fund has associated pledges"
+msgstr ""
+
+msgid "Cannot edit a payment in a closed deposit"
+msgstr ""
+
 msgid "Cannot execute query."
 msgstr ""
 
@@ -2048,9 +2061,6 @@ msgid "Change role"
 msgstr ""
 
 msgid "Change this in System Settings."
-msgstr ""
-
-msgid "Changelog"
 msgstr ""
 
 msgid "Changes not saved! Please correct and try again!"
@@ -3357,6 +3367,9 @@ msgstr ""
 msgid "Delete Family Record ONLY"
 msgstr ""
 
+msgid "Delete Fund"
+msgstr ""
+
 msgid "Delete Group"
 msgstr ""
 
@@ -3552,6 +3565,9 @@ msgstr ""
 msgid "Direction must be \"up\" or \"down\""
 msgstr ""
 
+msgid "Direction must be 'up' or 'down'."
+msgstr ""
+
 msgid "Directions"
 msgstr ""
 
@@ -3673,9 +3689,6 @@ msgstr ""
 msgid "Donated items for this fundraiser"
 msgstr ""
 
-msgid "Donation Fund Editor"
-msgstr ""
-
 msgid "Donation Funds"
 msgstr ""
 
@@ -3700,7 +3713,7 @@ msgstr ""
 msgid "Download & Apply"
 msgstr ""
 
-msgid "Download & Install"
+msgid "Download & Apply {{version}}"
 msgstr ""
 
 msgid "Download Backup & Continue"
@@ -3796,6 +3809,9 @@ msgid "Edit Deposit"
 msgstr ""
 
 msgid "Edit Deposit Slip"
+msgstr ""
+
+msgid "Edit Donation Fund"
 msgstr ""
 
 msgid "Edit Event"
@@ -4280,7 +4296,7 @@ msgid "Estimated Price"
 msgstr ""
 
 #, php-format
-msgid "Estimated value $%s."
+msgid "Estimated value %s."
 msgstr ""
 
 #. Context: countries
@@ -4378,6 +4394,9 @@ msgid "Events This Year"
 msgstr ""
 
 msgid "Events Today"
+msgstr ""
+
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
 msgstr ""
 
 msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
@@ -4600,6 +4619,9 @@ msgstr ""
 msgid "Failed to create volunteer opportunity"
 msgstr ""
 
+msgid "Failed to decode payment request"
+msgstr ""
+
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
@@ -4670,9 +4692,6 @@ msgid "Failed to empty cart to group"
 msgstr ""
 
 msgid "Failed to enable plugin"
-msgstr ""
-
-msgid "Failed to encode payment response"
 msgstr ""
 
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
@@ -4760,6 +4779,9 @@ msgid "Failed to remove from class. Please try again."
 msgstr ""
 
 msgid "Failed to remove group"
+msgstr ""
+
+msgid "Failed to reorder donation fund"
 msgstr ""
 
 msgid "Failed to reset settings"
@@ -5354,6 +5376,9 @@ msgstr ""
 msgid "Full changelog"
 msgstr ""
 
+msgid "Full release notes"
+msgstr ""
+
 msgid "Full — all of the above plus page views"
 msgstr ""
 
@@ -5381,10 +5406,25 @@ msgstr ""
 msgid "Fund Total"
 msgstr ""
 
+msgid "Fund added successfully."
+msgstr ""
+
 msgid "Fund contributor pledge summary by fiscal year"
 msgstr ""
 
-msgid "Fund deleted successfully"
+msgid "Fund deleted successfully."
+msgstr ""
+
+msgid "Fund name"
+msgstr ""
+
+msgid "Fund name is required."
+msgstr ""
+
+msgid "Fund order updated."
+msgstr ""
+
+msgid "Fund saved successfully."
 msgstr ""
 
 msgid "Fund(s)"
@@ -5784,9 +5824,6 @@ msgid "Group-Specific Properties Form Editor"
 msgstr ""
 
 msgid "GroupID for Cart must be numeric"
-msgstr ""
-
-msgid "GroupID required for role selection prompt"
 msgstr ""
 
 msgid "Grouped by Family"
@@ -6276,9 +6313,6 @@ msgstr ""
 msgid "Installed on Server"
 msgstr ""
 
-msgid "Installing next release"
-msgstr ""
-
 msgid "Installing…"
 msgstr ""
 
@@ -6395,6 +6429,9 @@ msgid "Invalid import request"
 msgstr ""
 
 msgid "Invalid login or password"
+msgstr ""
+
+msgid "Invalid payment data"
 msgstr ""
 
 msgid "Invalid person ID"
@@ -7394,7 +7431,7 @@ msgid ""
 msgstr ""
 
 #, php-format
-msgid "Minimum bid $%s."
+msgid "Minimum bid %s."
 msgstr ""
 
 msgid "Minimum length a user may set their password to"
@@ -7795,6 +7832,14 @@ msgid "No"
 msgstr ""
 
 #, php-format
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr ""
+
+#, php-format
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr ""
+
+#, php-format
 msgid "No %s fundraisers found."
 msgstr ""
 
@@ -7946,7 +7991,7 @@ msgstr ""
 msgid "No format"
 msgstr ""
 
-msgid "No funds have been added yet"
+msgid "No funds have been added yet. Use the form above to add the first fund."
 msgstr ""
 
 msgid "No group"
@@ -8035,6 +8080,9 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr ""
 
 msgid "No release notes available for this version."
+msgstr ""
+
+msgid "No release notes available."
 msgstr ""
 
 msgid "No results found"
@@ -8378,6 +8426,9 @@ msgstr ""
 msgid "Optional Settings"
 msgstr ""
 
+msgid "Optional description"
+msgstr ""
+
 msgid "Optional detailed description of this property type"
 msgstr ""
 
@@ -8681,7 +8732,15 @@ msgstr ""
 msgid "People with birthdays in a particular month"
 msgstr ""
 
+#. Context: query_qry
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr ""
+
 msgid "People with no personal or work email on record"
+msgstr ""
+
+#. Context: query_qry
+msgid "People with wedding anniversaries in a particular month"
 msgstr ""
 
 msgid "Percentage"
@@ -9059,16 +9118,7 @@ msgstr ""
 msgid "Please select at least one buyer to generate statements."
 msgstr ""
 
-msgid "Please select both a group and a role."
-msgstr ""
-
 msgid "Please select rows to delete"
-msgstr ""
-
-msgid "Please select target Role for members"
-msgstr ""
-
-msgid "Please select target group for members"
 msgstr ""
 
 msgid "Please try again"
@@ -9291,6 +9341,9 @@ msgstr ""
 msgid "Private"
 msgstr ""
 
+msgid "Private Calendar"
+msgstr ""
+
 msgid "Profile"
 msgstr ""
 
@@ -9344,6 +9397,9 @@ msgid "Property type not found"
 msgstr ""
 
 msgid "Provide any corrections or additional information here..."
+msgstr ""
+
+msgid "Public Calendar"
 msgstr ""
 
 msgid "Public calendar"
@@ -10495,9 +10551,6 @@ msgstr ""
 msgid "Show all"
 msgstr ""
 
-msgid "Show full upgrade path"
-msgstr ""
-
 msgid "Show in Profile"
 msgstr ""
 
@@ -11116,9 +11169,6 @@ msgstr ""
 msgid "That field name already exists."
 msgstr ""
 
-msgid "That fund name already exists."
-msgstr ""
-
 msgid "That name already exists."
 msgstr ""
 
@@ -11164,6 +11214,10 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "The membership anniversary month for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The month for which you would like birthdays and anniversaries returned."
 msgstr ""
 
 msgid "The month that starts your organization's fiscal year"
@@ -11247,6 +11301,10 @@ msgid "The template already contains every column you can map — the core Perso
 msgstr ""
 
 msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The wedding anniversary month for which you would like records returned."
 msgstr ""
 
 msgid "Theme Mode"
@@ -11675,13 +11733,12 @@ msgstr ""
 msgid "Total Users"
 msgstr ""
 
-msgid "Total of all purchases: $"
+#, php-format
+msgid "Total of all purchases: %s"
 msgstr ""
 
-msgid "Total paid this fiscal year"
-msgstr ""
-
-msgid "Total purchases: $"
+#, php-format
+msgid "Total purchases: %s"
 msgstr ""
 
 msgid "Total raised (no goal set)"
@@ -12553,6 +12610,9 @@ msgstr ""
 msgid "Warning"
 msgstr ""
 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr ""
+
 msgid "Warnings"
 msgstr ""
 
@@ -12614,6 +12674,10 @@ msgid "Website"
 msgstr ""
 
 msgid "Wedding"
+msgstr ""
+
+#. Context: query_qry
+msgid "Wedding Anniversaries"
 msgstr ""
 
 msgid "Wedding Date"
@@ -12681,10 +12745,10 @@ msgstr ""
 msgid "What went wrong? What did you expect to happen?"
 msgstr ""
 
-msgid "What's New"
+msgid "What you'll gain"
 msgstr ""
 
-msgid "What's New in {{version}}"
+msgid "What's New"
 msgstr ""
 
 #. plugin:mailchimp:section:3:content
@@ -12840,9 +12904,6 @@ msgid "You are about to email copy of the family information to the following em
 msgstr ""
 
 msgid "You are running a pre-release version."
-msgstr ""
-
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
 msgstr ""
 
 #. plugin:external-backup:section:3:content

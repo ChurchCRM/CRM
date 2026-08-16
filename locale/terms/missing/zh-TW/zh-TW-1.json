@@ -1,21 +1,73 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "%d archived fundraiser": {
+    "other": "%d 個已封存的募款活動"
+  },
+  "%d person successfully added to selected family.": {
+    "other": "已成功將 %d 位成員新增至所選家庭。"
+  },
+  "CSV": "CSV",
+  "Email sent to %d family.": {
+    "other": "電子郵件已寄送至 %d 個家庭。"
+  },
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "PDF successfully emailed to %d family.": {
+    "other": "PDF 已成功以電子郵件寄送至 %d 個家庭。"
+  },
+  "Birthdays & Anniversaries": "生日與週年紀念日",
+  "Estimated value %s.": "估計價值 %s。",
+  "Minimum bid %s.": "最低出價 %s。",
+  "No \"%s\" options are available yet. Add the relevant records first.": "目前尚無\"%s\"選項可用。請先新增相關記錄。",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "目前尚未設定\"%s\"選項。請先新增相關記錄。",
+  "People with birthdays or wedding anniversaries in a particular month": "特定月份有生日或結婚週年紀念日的成員",
+  "The month for which you would like birthdays and anniversaries returned.": "您希望查詢生日與週年紀念日的月份。",
+  "The wedding anniversary month for which you would like records returned.": "您希望查詢結婚週年紀念日記錄的月份。",
+  "Total of all purchases: %s": "所有購買總計：%s",
+  "Total purchases: %s": "購買總計：%s",
+  "Wedding Anniversaries": "結婚週年紀念日",
+  "People with wedding anniversaries in a particular month": "特定月份有結婚週年紀念日的成員",
+  "An error occurred. Please try again.": "發生錯誤，請再試一次。",
+  "Are you sure you want to delete this fund?": "您確定要刪除此奉獻基金嗎？",
+  "Cannot delete: fund has associated pledges": "無法刪除：此基金有相關的奉獻承諾",
+  "Delete Fund": "刪除基金",
+  "Direction must be 'up' or 'down'.": "方向必須為「上」或「下」。",
+  "Edit Donation Fund": "編輯奉獻基金",
+  "Failed to reorder donation fund": "重新排列奉獻基金失敗",
+  "Fund added successfully.": "基金新增成功。",
+  "Fund deleted successfully.": "基金刪除成功。",
+  "Fund name": "基金名稱",
+  "Fund name is required.": "基金名稱為必填。",
+  "Fund order updated.": "基金順序已更新。",
+  "Fund saved successfully.": "基金儲存成功。",
+  "No funds have been added yet. Use the form above to add the first fund.": "尚未新增任何基金。請使用上方表單新增第一個基金。",
+  "Optional description": "選填說明",
+  "Private Calendar": "私人行事曆",
+  "Public Calendar": "公開行事曆",
+  "Advanced: Install a specific version instead": "進階：改為安裝指定版本",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "精靈預設升級至最新版本，您也可以在下方選擇特定版本。",
+  "Cannot edit a payment in a closed deposit": "無法編輯已關帳存款中的付款記錄",
+  "Download & Apply {{version}}": "下載並套用 {{version}}",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "每個 ChurchCRM 版本均包含安全性修正，強烈建議您始終升級至最新版本。",
+  "Failed to decode payment request": "解碼付款請求失敗",
+  "Full release notes": "完整版本說明",
+  "Invalid payment data": "無效的付款資料",
+  "No release notes available.": "目前沒有可用的版本說明。",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "警告：{{chosen}} 缺少 {{latest}} 中包含的安全性修正，除非有特定原因，否則請勿繼續。",
+  "What you'll gain": "您將獲得的改進",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "已複製 {{count}} 位會眾",
+    "other": "已複製 {{count}} 位會眾"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "此清單有 {{count}} 位收件人——對 mailto: 連結而言過多，請改用複製地址。",
+    "other": "此清單有 {{count}} 位收件人——對 mailto: 連結而言過多，請改用複製地址。"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "電子郵件客戶端收件人數過多（{{count}} > {{max}}），請改用複製地址。",
+    "other": "電子郵件客戶端收件人數過多（{{count}} > {{max}}），請改用複製地址。"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "剩餘 {{count}} 分鐘",
+    "other": "剩餘 {{count}} 分鐘"
   }
 }

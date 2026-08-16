@@ -583,16 +583,8 @@ msgid "Picture URL"
 msgstr "Bilde URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Donasjon Fund Editor"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ugyldige felt eller valg. Endringer ikke lagret! Rett opp og prøv igjen!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Ingen midler har blitt lagt til ennå"
 
 #: 
 msgid "Active"
@@ -2251,14 +2243,6 @@ msgstr "Donert elementer"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Kjøpte elementer"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Summen av alle kjøpene: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totalt kjøp: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7420,10 +7404,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Ved å slette dette feltet vil du ugjenkallelig miste alle gruppemedlemsdata tildelt dette feltet!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Ved å slette dette fondet kan du påvirke historiske donasjonsregistre!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategorinavn"
 
@@ -7476,10 +7456,6 @@ msgid "Filter by Class"
 msgstr "Filtrer etter Klasse"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fondet ble slettet"
-
-#: 
 msgid "In Use"
 msgstr "I Bruk"
 
@@ -7526,10 +7502,6 @@ msgstr "Fjerne denne oppmøtetellingen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Velg posttypen denne egenskapen gjelder for"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Det fondnavnet eksisterer allerede."
 
 #: 
 msgid "Total Pledges"
@@ -14573,10 +14545,6 @@ msgid "Group removed from cart"
 msgstr "Gruppe fjernet fra handlekurven"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID kreves for valg av rolle"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML-URL"
 
@@ -14954,20 +14922,8 @@ msgid "Please select a role."
 msgstr "Vennligst velg en rolle."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Vennligst velg både en gruppe og en rolle."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Vennligst velg rader som skal slettes"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Vennligst velg målrolle for medlemmer"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Velg målgruppe for Medlemmer"
 
 #: 
 msgid "Please try again"
@@ -15863,24 +15819,12 @@ msgid "Account status"
 msgstr "Kontostatus"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avansert: velg en bestemt målversjon"
-
-#: 
 msgid "Bug Fix"
 msgstr "Feilretting"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Som standard laster veiviseren ned neste anbefalte versjon. Du kan i stedet velge en tilgjengelig versjon nedenfor."
-
-#: 
 msgid "Change required"
 msgstr "Endring påkrevd"
-
-#: 
-msgid "Changelog"
-msgstr "Endringslogg"
 
 #: 
 msgid "Continue Anyway"
@@ -15889,10 +15833,6 @@ msgstr "Fortsett likevel"
 #: 
 msgid "Could not load release information."
 msgstr "Kunne ikke laste inn versjonsinformasjon."
-
-#: 
-msgid "Download & Install"
-msgstr "Last ned og installer"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15921,10 +15861,6 @@ msgstr "Fullstendig endringslogg"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installer stabil {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Installerer neste versjon"
 
 #: 
 msgid "Invalid file path"
@@ -15995,10 +15931,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Vis fullstendig oppgraderingsbane"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Den nyeste stabile versjonen er {{version}}. Du kan installere den på nytt nedenfor."
 
@@ -16025,10 +15957,6 @@ msgstr "Vis versjonsmerknader"
 #: 
 msgid "What's New"
 msgstr "Hva er nytt"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Hva er nytt i {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16647,10 +16575,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-postfunksjonalitet er for øyeblikket deaktivert. Følgende funksjoner vil ikke fungere før e-post er aktivert"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Anslått verdi $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Raskeste arbeidsflyt"
 
@@ -16693,10 +16617,6 @@ msgstr "Lokal utvikling"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minste totale beløp"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimumsbud $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16999,10 +16919,6 @@ msgid "Working..."
 msgstr "Arbeider..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Du er {{releaseCount}} versjoner etter. Her er hva du vil få"
-
-#: 
 msgid "click to expand"
 msgstr "klikk for å utvide"
 
@@ -17253,10 +17169,6 @@ msgstr "Kunne ikke opprette løfte"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Kunne ikke slette løfte"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Kunne ikke kode betalingsrespons"
 
 #: 
 msgid "Failed to retrieve pledge"

@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "Prent URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Donasie Fondsredakteur"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ongeldige velde of keuses. Veranderinge kan nie stoor nie! Maak reg en probeer weer. "
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Geen fondse al oorgeplaas nie"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "Skenkingsitems"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Gekoopte items"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Totaal van alle aankope: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totale aankope: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7351,10 +7335,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Deur hierdie veld te verwyder, sal u onherroeplik alle groep-liddata wat aan hierdie veld toegeken is, verloor!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Deur hierdie fonds te verwyder, kan u historiese gifte rekords beïnvloed!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategorie Naam"
 
@@ -7407,10 +7387,6 @@ msgid "Filter by Class"
 msgstr "Filter volgens klas"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fonds suksesvol verwyder"
-
-#: 
 msgid "In Use"
 msgstr "In Gebruik"
 
@@ -7457,10 +7433,6 @@ msgstr "Verwyder hierdie bywoningstelling?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Kies die tipe rekord waarvoor hierdie eiendom van toepassing is"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Daardie fondsnaam bestaan reeds."
 
 #: 
 msgid "Total Pledges"
@@ -14504,10 +14476,6 @@ msgid "Group removed from cart"
 msgstr "Groep uit mandjie verwyder"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID is nodig vir die keuse van die rol"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML-URL"
 
@@ -14885,20 +14853,8 @@ msgid "Please select a role."
 msgstr "Kies asseblief 'n rol."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Kies asseblief beide 'n bediening en 'n rol."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Kies asseblief rye om te wis"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Kies die teikenrol vir lede"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Kies die teikengroep vir lede"
 
 #: 
 msgid "Please try again"
@@ -15794,24 +15750,12 @@ msgid "Account status"
 msgstr "Rekeningstatuts"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Gevorderd: kies 'n spesifieke teikenweergawe"
-
-#: 
 msgid "Bug Fix"
 msgstr "Foutherstel"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "By verstek laai die towenaar die volgende aanbevole vrystelling af. U kan eerder enige beskikbare weergawe hieronder kies."
-
-#: 
 msgid "Change required"
 msgstr "Wysiging vereis"
-
-#: 
-msgid "Changelog"
-msgstr "Wysigingslys"
 
 #: 
 msgid "Continue Anyway"
@@ -15820,10 +15764,6 @@ msgstr "Gaan nietemin voort"
 #: 
 msgid "Could not load release information."
 msgstr "Kon nie vrystellinginligting laai nie."
-
-#: 
-msgid "Download & Install"
-msgstr "Aflaai en installeer"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15852,10 +15792,6 @@ msgstr "Volledige wysigingslys"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installeer stabiele {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Volgende vrystelling word geïnstalleer"
 
 #: 
 msgid "Invalid file path"
@@ -15926,10 +15862,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Wys volledige opgraderingspad"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Die nuutste stabiele vrystelling is {{version}}. U kan dit hieronder herinstalleer."
 
@@ -15956,10 +15888,6 @@ msgstr "Bekyk vrystellingsnotas"
 #: 
 msgid "What's New"
 msgstr "Wat is nuut"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Wat is nuut in {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16318,6 +16246,10 @@ msgid "Invalid type value"
 msgstr "Ongeldige tipewaarde"
 
 #: 
+msgid "Items"
+msgstr "Items"
+
+#: 
 msgid "Items Donated"
 msgstr "Items Geskenk"
 
@@ -16574,10 +16506,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-posfunksionaliteit is tans gedeaktiveer. Die volgende funksies sal nie werk totdat e-pos geaktiveer is nie"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Geskatte waarde $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Vinnigste werksvloei"
 
@@ -16620,10 +16548,6 @@ msgstr "Plaaslike ontwikkeling"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimum Totale Bedrag"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimum bod $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16926,10 +16850,6 @@ msgid "Working..."
 msgstr "Besig..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Jy is {{releaseCount}} vrystellings agter. Dit is wat jy sal kry"
-
-#: 
 msgid "click to expand"
 msgstr "klik om uit te brei"
 
@@ -17126,6 +17046,10 @@ msgid "Count unique installs"
 msgstr "Tel unieke installasies"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data word deur PostHog op EU-infrastruktuur verwerk."
 
@@ -17180,10 +17104,6 @@ msgstr "Kon nie belofte skep nie"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Kon nie belofte uitvee nie"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Kon nie betalingsreaksie enkodeer nie"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17502,12 +17422,20 @@ msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Is u seker dat u die rol '{{name}}' wil verwyder?"
 
 #: 
+msgid "Auto"
+msgstr "Outomaties"
+
+#: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"
 msgstr "Auto volg u bedryfstelsel- of blaaier-instelling; Lig en Donker oorskryf dit"
 
 #: 
 msgid "Back to Pledge Dashboard"
 msgstr "Terug na Belofte-paneelbord"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
 
 #: 
 msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
@@ -17540,6 +17468,12 @@ msgstr "E-posfout"
 #: 
 msgid "Email is not configured. Please configure SMTP settings in System Settings."
 msgstr "E-pos is nie opgestel nie. Stel asseblief SMTP-instellings in Stelselinstellings op."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-pos gestuur aan %d gesin."
+msgstr[1] "E-pos gestuur aan %d gesinne."
 
 #: 
 msgid "Enter a street address first."
@@ -17590,6 +17524,10 @@ msgid "Manage Events"
 msgstr "Bestuur Geleenthede"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Nuwe Deposito"
 
@@ -17608,6 +17546,16 @@ msgstr "Geen betalings gevind vir die geselekteerde depositos nie"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Geen geldige deposito-IDs verskaf nie"
+
+#: 
+msgid "OFX"
+msgstr "OFX"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF suksesvol per e-pos gestuur aan %d gesin."
+msgstr[1] "PDF suksesvol per e-pos gestuur aan %d gesinne."
 
 #: 
 msgid "Partial Send"

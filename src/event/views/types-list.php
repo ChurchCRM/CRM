@@ -58,24 +58,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <td class="w-1">
                   <div class="dropdown">
                     <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                      <i class="ti ti-dots-vertical"></i>
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                       <a class="dropdown-item" href="<?= $sRootPath ?>/event/types/<?= $r['id'] ?>">
-                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                        <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                       </a>
                       <a class="dropdown-item" href="<?= $sRootPath ?>/event/repeat-editor/<?= $r['id'] ?>">
-                        <i class="ti ti-repeat me-2"></i><?= gettext('Create Repeat Events') ?>
+                        <i class="fa-solid fa-repeat me-2"></i><?= gettext('Create Repeat Events') ?>
                       </a>
                       <button type="button" class="dropdown-item create-event-btn" data-type-id="<?= $r['id'] ?>">
-                        <i class="ti ti-plus me-2"></i><?= gettext('Create Event') ?>
+                        <i class="fa-solid fa-plus me-2"></i><?= gettext('Create Event') ?>
                       </button>
                       <div class="dropdown-divider"></div>
                       <button type="button" class="dropdown-item text-danger delete-type-btn"
                               data-type-id="<?= $r['id'] ?>"
                               data-type-name="<?= InputUtils::escapeAttribute($r['name']) ?>"
                               data-event-count="<?= $r['eventCount'] ?>">
-                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                       </button>
                     </div>
                   </div>
@@ -87,10 +87,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     <?php else: ?>
       <div class="text-center text-body-secondary py-5">
-        <i class="ti ti-calendar mb-3" style="font-size: 3rem;"></i>
+        <i class="fa-solid fa-calendar mb-3" style="font-size: 3rem;"></i>
         <p><?= gettext('No event types defined yet.') ?></p>
         <a href="<?= $sRootPath ?>/event/types/new" class="btn btn-primary">
-          <i class="ti ti-plus me-1"></i><?= gettext('Add Event Type') ?>
+          <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event Type') ?>
         </a>
       </div>
     <?php endif; ?>

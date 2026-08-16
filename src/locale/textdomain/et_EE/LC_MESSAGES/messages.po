@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "Pildi URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Annetusfondi toimetaja"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Kehtetud väljad või valikud. Muudatusi ei salvestatud! Parandage ja proovige uuesti!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Rahalisi vahendeid pole veel lisatud"
 
 #: 
 msgid "Active"
@@ -2168,14 +2160,6 @@ msgstr "Kingitud esemed"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Ostetud kaubad"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Kõigi ostude kogusumma: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Ostud kokku: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -7350,10 +7334,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Selle välja kustutamisega kaotate pöördumatult kõik sellele väljale määratud grupi liikmete andmed!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Selle fondi kustutamisega võite mõjutada ajaloolisi annetuste kirjeid!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategooria Nimi"
 
@@ -7406,10 +7386,6 @@ msgid "Filter by Class"
 msgstr "Filtreeri Klassi järgi"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fond edukalt kustutatud"
-
-#: 
 msgid "In Use"
 msgstr "Kasutusel"
 
@@ -7456,10 +7432,6 @@ msgstr "Eemalda see osavõtu arv?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Valige kirje tüüp, millele see omadus kehtib"
-
-#: 
-msgid "That fund name already exists."
-msgstr "See fondi nimi on juba olemas."
 
 #: 
 msgid "Total Pledges"
@@ -14503,10 +14475,6 @@ msgid "Group removed from cart"
 msgstr "Rühm on eemaldatud ostukorvist"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Rollivaliku küsimiseks on vajalik GroupID"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML-i URL"
 
@@ -14884,20 +14852,8 @@ msgid "Please select a role."
 msgstr "Palun valige roll."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Palun valige nii rühm kui ka roll."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Palun valige kustutamiseks read"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Valige liikmetele sihtroll"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Valige liikmete jaoks sihtgrupp"
 
 #: 
 msgid "Please try again"
@@ -15793,24 +15749,12 @@ msgid "Account status"
 msgstr "Konto olek"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Täpsem: vali konkreetne sihtversioon"
-
-#: 
 msgid "Bug Fix"
 msgstr "Veaparandus"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Vaikimisi laadib viisard järgmise soovitatava versiooni. Võite valida ka mõne muu allpool saadaoleva versiooni."
-
-#: 
 msgid "Change required"
 msgstr "Muudatus vajalik"
-
-#: 
-msgid "Changelog"
-msgstr "Muudatuste logi"
 
 #: 
 msgid "Continue Anyway"
@@ -15819,10 +15763,6 @@ msgstr "Jätka ikkagi"
 #: 
 msgid "Could not load release information."
 msgstr "Versiooniteabe laadimine ebaõnnestus."
-
-#: 
-msgid "Download & Install"
-msgstr "Laadi alla ja installi"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15851,10 +15791,6 @@ msgstr "Täielik muudatuste logi"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installi stabiilne {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Järgmise versiooni installimine"
 
 #: 
 msgid "Invalid file path"
@@ -15925,10 +15861,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Näita täielikku uuendusteed"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Uusim stabiilne versioon on {{version}}. Saate selle allpool uuesti installida."
 
@@ -15955,10 +15887,6 @@ msgstr "Vaata väljalaskemärkmeid"
 #: 
 msgid "What's New"
 msgstr "Mis on uut"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Mis on uut versioonis {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16577,10 +16505,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-posti funktsioon on praegu keelatud. Järgmised funktsioonid ei tööta enne, kui e-post on lubatud"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Hinnanguline väärtus $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Kiireim töövoog"
 
@@ -16623,10 +16547,6 @@ msgstr "Kohalik arendus"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimaalne kogusumma"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimaalne pakkumine $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16929,10 +16849,6 @@ msgid "Working..."
 msgstr "Töötab..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Oled {{releaseCount}} versiooni võrra maas. Siin on, mida saad"
-
-#: 
 msgid "click to expand"
 msgstr "klõpsa laiendamiseks"
 
@@ -17187,10 +17103,6 @@ msgstr "Annetuslubaduse loomine ebaõnnestus"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Annetuslubaduse kustutamine ebaõnnestus"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Makse vastuse kodeerimine ebaõnnestus"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17553,6 +17465,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "E-post ei ole seadistatud. Palun seadistage SMTP-satted susteemiseadetes."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-kiri saadeti %d perele."
+msgstr[1] "E-kiri saadeti %d perele."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Sisestage esmalt tanavaadress."
 
@@ -17619,6 +17537,12 @@ msgstr "Valitud deposiitide jaoks ei leitud makseid"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Uhtegi kehtivat deposiidi ID-d ei esitatud"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF saadeti edukalt %d perele."
+msgstr[1] "PDF saadeti edukalt %d perele."
 
 #: 
 msgid "Partial Send"
