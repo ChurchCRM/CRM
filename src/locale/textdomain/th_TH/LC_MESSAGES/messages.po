@@ -15939,6 +15939,16 @@ msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "ผู้ใช้ต้องเป็นผู้ดูแลระบบหรือมีสิทธิ์จัดการกิจกรรมระดมทุน"
 
 #: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d กิจกรรมระดมทุนที่เก็บถาวร"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "เพิ่ม %d คนเข้าครอบครัวที่เลือกเรียบร้อยแล้ว"
+
+#: 
 msgid "%s Fundraisers"
 msgstr "กิจกรรมระดมทุน %s"
 
@@ -17415,6 +17425,11 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "ยังไม่ได้ตั้งค่าอีเมล กรุณาตั้งค่า SMTP ในการตั้งค่าระบบ"
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "ส่งอีเมลถึง %d ครอบครัวแล้ว"
+
+#: 
 msgid "Enter a street address first."
 msgstr "กรุณาป้อนที่อยู่ถนนก่อน"
 
@@ -17481,6 +17496,11 @@ msgstr "ไม่พบการชำระเงินสำหรับรา
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "ไม่มีรหัสรายการฝากที่ถูกต้อง"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "ส่ง PDF ทางอีเมลถึง %d ครอบครัวเรียบร้อยแล้ว"
 
 #: 
 msgid "Partial Send"
@@ -17585,4 +17605,170 @@ msgstr "แถวที่เลือก"
 #: 
 msgid "rows selected"
 msgstr "แถวที่เลือก"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "วันเกิดและวันครบรอบ"
+
+#: 
+msgid "Estimated value %s."
+msgstr "มูลค่าประมาณ %s"
+
+#: 
+msgid "Minimum bid %s."
+msgstr "ราคาเสนอขั้นต่ำ %s"
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "ยังไม่มีตัวเลือก \"%s\" โปรดเพิ่มข้อมูลที่เกี่ยวข้องก่อน"
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "ยังไม่มีการกำหนดค่าตัวเลือก \"%s\" โปรดเพิ่มข้อมูลที่เกี่ยวข้องก่อน"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "สมาชิกที่มีวันเกิดหรือวันครบรอบแต่งงานในเดือนที่ระบุ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "เดือนที่ต้องการดูข้อมูลวันเกิดและวันครบรอบ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "เดือนครบรอบแต่งงานที่ต้องการดูข้อมูล"
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "ยอดรวมการซื้อทั้งหมด: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "ยอดรวมการซื้อ: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "วันครบรอบแต่งงาน"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "สมาชิกที่มีวันครบรอบแต่งงานในเดือนที่ระบุ"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "เกิดข้อผิดพลาด โปรดลองอีกครั้ง"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบกองทุนนี้?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "ไม่สามารถลบได้: กองทุนมีคำมั่นสัญญาการถวายที่เกี่ยวข้อง"
+
+#: 
+msgid "Delete Fund"
+msgstr "ลบกองทุน"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "ทิศทางต้องเป็น 'up' หรือ 'down' เท่านั้น"
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "แก้ไขกองทุนการถวาย"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "ไม่สามารถจัดเรียงกองทุนการถวายใหม่ได้"
+
+#: 
+msgid "Fund added successfully."
+msgstr "เพิ่มกองทุนเรียบร้อยแล้ว"
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "ลบกองทุนเรียบร้อยแล้ว"
+
+#: 
+msgid "Fund name"
+msgstr "ชื่อกองทุน"
+
+#: 
+msgid "Fund name is required."
+msgstr "กรุณาระบุชื่อกองทุน"
+
+#: 
+msgid "Fund order updated."
+msgstr "อัปเดตลำดับกองทุนแล้ว"
+
+#: 
+msgid "Fund saved successfully."
+msgstr "บันทึกกองทุนเรียบร้อยแล้ว"
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "ยังไม่มีการเพิ่มกองทุน โปรดใช้แบบฟอร์มด้านบนเพื่อเพิ่มกองทุนแรก"
+
+#: 
+msgid "Optional description"
+msgstr "คำอธิบาย (ไม่บังคับ)"
+
+#: 
+msgid "Private Calendar"
+msgstr "ปฏิทินส่วนตัว"
+
+#: 
+msgid "Public Calendar"
+msgstr "ปฏิทินสาธารณะ"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "ขั้นสูง: ติดตั้งเวอร์ชันเฉพาะแทน"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "โดยค่าเริ่มต้น ตัวช่วยจะอัปเกรดเป็นเวอร์ชันล่าสุด คุณสามารถเลือกเวอร์ชันเฉพาะด้านล่างแทนได้"
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "ไม่สามารถแก้ไขการชำระเงินในรายการฝากที่ปิดแล้ว"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "ดาวน์โหลดและใช้งาน {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "ChurchCRM ทุกเวอร์ชันมีการแก้ไขความปลอดภัย เราแนะนำอย่างยิ่งให้อัปเกรดเป็นเวอร์ชันล่าสุดเสมอ"
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "ไม่สามารถถอดรหัสคำขอการชำระเงินได้"
+
+#: 
+msgid "Full release notes"
+msgstr "บันทึกการเผยแพร่ฉบับเต็ม"
+
+#: 
+msgid "Invalid payment data"
+msgstr "ข้อมูลการชำระเงินไม่ถูกต้อง"
+
+#: 
+msgid "No release notes available."
+msgstr "ไม่มีบันทึกการเผยแพร่"
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "คำเตือน: {{chosen}} ขาดการแก้ไขความปลอดภัยที่มีอยู่ใน {{latest}} ดำเนินการต่อเฉพาะเมื่อมีเหตุผลเฉพาะเจาะจงเท่านั้น"
+
+#: 
+msgid "What you'll gain"
+msgstr "สิ่งที่คุณจะได้รับ"
 

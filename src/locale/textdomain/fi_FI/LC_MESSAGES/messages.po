@@ -17611,3 +17611,169 @@ msgstr "rivi valittu"
 msgid "rows selected"
 msgstr "rivia valittu"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Syntymäpäivät ja vuosipäivät"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Arvioitu arvo %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Vähimmäistarjous %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Ei \"%s\"-vaihtoehtoja saatavilla vielä. Lisää tarvittavat tietueet ensin."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Ei \"%s\"-vaihtoehtoja määritetty vielä. Lisää tarvittavat tietueet ensin."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Henkilöt, joilla on syntymäpäivä tai häävuosipäivä tietyssä kuussa"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Kuukausi, jonka syntymäpäivät ja vuosipäivät haluat hakea."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Häävuosipäiväkuukausi, jonka tietueet haluat hakea."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Kaikkien ostojen yhteissumma: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Ostokset yhteensä: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Häävuosipäivät"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Henkilöt, joilla on häävuosipäivä tietyssä kuussa"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Tapahtui virhe. Yritä uudelleen."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Haluatko varmasti poistaa tämän rahaston?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Poistaminen ei onnistu: rahastolla on siihen liittyviä lupauksia"
+
+#: 
+msgid "Delete Fund"
+msgstr "Poista rahasto"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Suunnan on oltava 'up' tai 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Muokkaa lahjoitusrahastoa"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Lahjoitusrahaston järjestyksen muuttaminen epäonnistui"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Rahasto lisätty onnistuneesti."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Rahasto poistettu onnistuneesti."
+
+#: 
+msgid "Fund name"
+msgstr "Rahaston nimi"
+
+#: 
+msgid "Fund name is required."
+msgstr "Rahaston nimi on pakollinen."
+
+#: 
+msgid "Fund order updated."
+msgstr "Rahaston järjestys päivitetty."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Rahasto tallennettu onnistuneesti."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Rahastoja ei ole vielä lisätty. Lisää ensimmäinen rahasto yllä olevalla lomakkeella."
+
+#: 
+msgid "Optional description"
+msgstr "Valinnainen kuvaus"
+
+#: 
+msgid "Private Calendar"
+msgstr "Yksityinen kalenteri"
+
+#: 
+msgid "Public Calendar"
+msgstr "Julkinen kalenteri"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Lisäasetukset: Asenna sen sijaan tietty versio"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Oletuksena ohjattu toiminto päivittää uusimpaan versioon. Voit sen sijaan valita tietyn version alta."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Maksua ei voi muokata suljetussa talletuksessa"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Lataa ja asenna {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Jokainen ChurchCRM-julkaisu sisältää tietoturvakorjauksia. Suosittelemme vahvasti päivittämään aina uusimpaan versioon."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Maksupyynnön purkaminen epäonnistui"
+
+#: 
+msgid "Full release notes"
+msgstr "Täydelliset julkistamismuistiinpanot"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Virheelliset maksutiedot"
+
+#: 
+msgid "No release notes available."
+msgstr "Julkistamismuistiinpanoja ei ole saatavilla."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Varoitus: {{chosen}} puuttuvat tietoturvakorjaukset, jotka sisältyvät versioon {{latest}}. Jatka vain, jos sinulla on erityinen syy."
+
+#: 
+msgid "What you'll gain"
+msgstr "Mitä saat"
+
