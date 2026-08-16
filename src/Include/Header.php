@@ -358,7 +358,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
         <!-- Cart -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0 position-relative" data-bs-toggle="dropdown" href="#">
-            <i class="fa-solid fa-shopping-cart"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
             <?php if (Cart::countPeople() > 0): ?>
             <span class="badge bg-info position-absolute top-0 end-0 small" id="iconCount"><?= Cart::countPeople() ?></span>
             <?php else: ?>
@@ -457,7 +457,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
             </a>
             <div class="dropdown-divider"></div>
             <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">
-              <i class="fa-solid fa-sign-out-alt me-2"></i><?= gettext('Sign out') ?>
+              <i class="fa-solid fa-arrow-right-from-bracket me-2"></i><?= gettext('Sign out') ?>
             </a>
           </div>
         </div>

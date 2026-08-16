@@ -37,7 +37,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <i class="fa-solid fa-pencil me-1"></i><?= gettext('Edit Event') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-sm btn-outline-secondary">
-                    <i class="fa-solid fa-arrows-alt-h me-1"></i><?= gettext('Change Event') ?>
+                    <i class="fa-solid fa-arrows-left-right me-1"></i><?= gettext('Change Event') ?>
                 </a>
             </div>
         </div>

@@ -302,7 +302,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       message: i18next.t("Are you sure you want to delete kiosk") + ': <strong>' + window.CRM.escapeHtml(name) + '</strong>?',
       buttons: {
         cancel: {
-          label: '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel")
+          label: '<i class="fa-solid fa-xmark"></i> ' + i18next.t("Cancel")
         },
         confirm: {
           label: '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"),

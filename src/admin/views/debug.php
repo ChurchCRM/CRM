@@ -339,7 +339,7 @@ $fmtBytes = static function ($bytes): string {
                                                 <?php if ($locale['systemAvailable']): ?>
                                                     <span class="badge bg-green-lt text-green"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
                                                 <?php else: ?>
-                                                    <span class="badge bg-light text-dark"><i class="fa fa-times me-1"></i><?= gettext('No') ?></span>
+                                                    <span class="badge bg-light text-dark"><i class="fa fa-xmark me-1"></i><?= gettext('No') ?></span>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -428,7 +428,7 @@ $fmtBytes = static function ($bytes): string {
                     <?php foreach ($appPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
-                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
+                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-xmark text-danger';
                     ?>
                         <tr>
                             <td><i class="fa <?= $iconClass ?> me-2"></i><a href='<?= $prerequisite->getWikiLink() ?>' target="_blank" rel="noopener noreferrer"><?= $prerequisite->getName() ?></a></td>
@@ -441,7 +441,7 @@ $fmtBytes = static function ($bytes): string {
                     <?php foreach ($fsPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
-                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
+                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-xmark text-danger';
                     ?>
                         <tr>
                             <td><i class="fa <?= $iconClass ?> me-2"></i><?= $prerequisite->getName() ?></td>

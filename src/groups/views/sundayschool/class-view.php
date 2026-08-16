@@ -222,7 +222,7 @@ if ($bCanManageGroups) {
             <div class="card-body">
                 <div class="birthday-filter d-none alert alert-info mb-3">
                     <?= gettext('Showing students with birthdays in') ?> <span class="month"></span>
-                    <i class="fa-solid fa-times float-end birthday-filter-clear" style="cursor:pointer;" title="<?= gettext('Clear filter') ?>"></i>
+                    <i class="fa-solid fa-xmark float-end birthday-filter-clear" style="cursor:pointer;" title="<?= gettext('Clear filter') ?>"></i>
                 </div>
                 <div style="overflow: visible;">
                     <table id="sundayschool" class="table table-hover data-table w-100">

@@ -11,7 +11,7 @@ import { applyFcLocale } from "./common/fc-locale";
 window.moveEventModal = {
   getButtons: (confirmLabel, confirmClass) => ({
     cancel: {
-      label: `<i class="fa-solid fa-times me-1"></i>${i18next.t("Cancel")}`,
+      label: `<i class="fa-solid fa-xmark me-1"></i>${i18next.t("Cancel")}`,
       className: "btn-secondary",
     },
     confirm: {

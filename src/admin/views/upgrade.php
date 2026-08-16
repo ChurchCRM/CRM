@@ -41,7 +41,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                     <div class="ms-auto d-flex align-items-center gap-2">
                         <?php if (!$isUpdateAvailable && $latestGitHubVersion !== null): ?>
                         <button type="button" class="btn btn-outline-warning btn-sm" id="forceReinstallCurrent">
-                            <i class="fa fa-redo me-1"></i><?= gettext('Force Re-install') ?>
+                            <i class="fa fa-arrow-rotate-right me-1"></i><?= gettext('Force Re-install') ?>
                         </button>
                         <?php endif; ?>
                         <button type="button" class="btn btn-ghost-primary btn-sm" id="refreshFromGitHub">
@@ -120,7 +120,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-outline-warning btn-sm ms-3 text-nowrap" id="forceReinstall">
-                                            <i class="fa fa-redo me-1"></i><?= gettext('Force Re-install') ?>
+                                            <i class="fa fa-arrow-rotate-right me-1"></i><?= gettext('Force Re-install') ?>
                                         </button>
                                     </div>
                                 </div>

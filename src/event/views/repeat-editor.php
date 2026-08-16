@@ -41,7 +41,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <div>
                                         <span class="badge bg-info-lt text-info"><?= InputUtils::escapeHTML($typeName) ?></span>
                                         <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-sm btn-outline-secondary ms-2">
-                                            <i class="fa-solid fa-arrows-alt-h me-1"></i><?= gettext('Change') ?>
+                                            <i class="fa-solid fa-arrows-left-right me-1"></i><?= gettext('Change') ?>
                                         </a>
                                     </div>
                                 <?php else: ?>

@@ -415,7 +415,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                 <div class="card-status-top <?= $healthStatus ? 'bg-success' : 'bg-warning' ?>"></div>
                 <div class="card-header py-2">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-heartbeat"></i> <?= gettext('System Health') ?>
+                        <i class="fa-solid fa-heart-pulse"></i> <?= gettext('System Health') ?>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -424,7 +424,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                         <?php if ($integrityPassed): ?>
                             <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php else: ?>
-                            <span class="badge bg-danger-lt text-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
+                            <span class="badge bg-danger-lt text-danger"><i class="fa-solid fa-xmark"></i> <?= gettext('Failed') ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">

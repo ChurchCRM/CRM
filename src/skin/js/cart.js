@@ -482,7 +482,7 @@ export class CartManager {
    */
   updateButtonState(cartId, inCart, cartType = "person") {
     // First try to find the container with the data attributes
-    let $element = $(`[data-cart-id="${cartId}"][data-cart-type="${cartType}"]`);
+    const $element = $(`[data-cart-id="${cartId}"][data-cart-type="${cartType}"]`);
 
     if (!$element.length) return;
 

@@ -242,7 +242,7 @@ require_once __DIR__ . '/Include/Header.php';
           <small class="text-body-secondary ms-2"><?= gettext('Click a bar to filter payments'); ?></small>
         </h5>
         <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="clearFundFilter">
-          <i class="fa-solid fa-times"></i><?= gettext('Clear Filter'); ?>
+          <i class="fa-solid fa-xmark"></i><?= gettext('Clear Filter'); ?>
         </button>
       </div>
       <div class="card-body" style="padding: 1rem 0.75rem 1rem 1.5rem;">

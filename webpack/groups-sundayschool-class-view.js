@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     birthDayFilter.classList.add("d-none");
   }
 
-  birthDayFilter.querySelector("i.fa-times")?.addEventListener("click", hideBirthdayFilter);
+  birthDayFilter.querySelector("i.fa-xmark")?.addEventListener("click", hideBirthdayFilter);
 
   // Remove student from class
   $(document).on("click", ".remove-from-class", function () {
