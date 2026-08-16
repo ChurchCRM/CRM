@@ -328,4 +328,68 @@ describe("API Private Deposit Operations", () => {
             });
         });
     });
+
+    describe("Open Deposit Count Badge Endpoint", () => {
+        it("Get open deposit count - Finance enabled user", () => {
+            // Test that authenticated users with Finance enabled can get the open deposit count
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/deposits/open-count`,
+                null,
+                200
+            ).then((resp) => {
+                expect(resp.body).to.be.an("object");
+                expect(resp.body).to.have.property("count");
+                expect(resp.body.count).to.be.a("number");
+                expect(resp.body.count).to.be.gte(0);
+            });
+        });
+
+        it("Get open deposit count - Non-finance user (Finance menu disabled)", () => {
+            // Test that users without Finance enabled cannot access the endpoint
+            cy.makePrivateNoFinanceAPICall(
+                "GET",
+                `/api/deposits/open-count`,
+                null,
+                [401, 403]
+            );
+        });
+
+        it("Verify open deposit count is accurate", () => {
+            // Test that the count returned matches actual open deposits in the database
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/deposits/open-count`,
+                null,
+                200
+            ).then((openResp) => {
+                const expectedCount = openResp.body.count;
+                // Verify against the full deposit list (count deposits where Closed is false/0)
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    `/api/deposits`,
+                    null,
+                    200
+                ).then((allResp) => {
+                    const openDeposits = allResp.body.Deposits.filter(d => !d.Closed);
+                    expect(openDeposits.length).to.equal(expectedCount);
+                });
+            });
+        });
+
+        it("Response structure matches dashboard badge requirements", () => {
+            // Test that the response structure is correct for the badge loader
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/deposits/open-count`,
+                null,
+                200
+            ).then((resp) => {
+                // Verify the response can be used directly by the JavaScript badge loader
+                expect(resp.body).to.deep.equal({ count: resp.body.count });
+                expect(resp.headers).to.have.property("content-type");
+                expect(resp.headers["content-type"]).to.include("application/json");
+            });
+        });
+    });
 });
