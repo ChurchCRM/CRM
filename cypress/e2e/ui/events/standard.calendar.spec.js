@@ -250,6 +250,9 @@ describe("Standard Calendar — save (admin-session)", () => {
         // therefore not stable. Instead, force-click and let the @createEvent
         // intercept be the sole correctness gate: it verifies both the API
         // round-trip and the request body (Type + PinnedCalendars).
+        // Wait for eventTypeSelect TomSelect to finish init before clicking
+        // (same race as the no-calendar test; root CI is slower to init).
+        cy.get("#eventTypeSelect + .ts-wrapper").should("exist");
         cy.get("#eventSaveBtn").click({ force: true });
 
         cy.wait("@createEvent").then((intercepted) => {
@@ -398,7 +401,8 @@ describe("Standard Calendar — save (admin-session)", () => {
         });
 
         // Same TomSelect→validate() race as the first save-path test above;
-        // force-click and rely on the @createEvent intercept as the correctness gate.
+        // wait for eventTypeSelect TomSelect init, then force-click.
+        cy.get("#eventTypeSelect + .ts-wrapper").should("exist");
         cy.get("#eventSaveBtn").click({ force: true });
         cy.wait("@createEvent").then((intercepted) => {
             expect(intercepted.request.body.InActive).to.eq(1);
