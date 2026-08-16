@@ -14435,10 +14435,6 @@ msgid "Group removed from cart"
 msgstr "समूह को कार्ट से हटाया गया"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "भूमिका चयन प्रॉम्प्ट के लिए GroupID आवश्यक है"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14816,20 +14812,8 @@ msgid "Please select a role."
 msgstr "कृपया एक भूमिका चुनें।"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "कृपया एक समूह और एक भूमिका दोनों चुनें।"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "कृपया हटाने के लिए पंक्तियाँ चुनें"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "कृपया सदस्यों के लिए लक्षित भूमिका चुनें"
-
-#: 
-msgid "Please select target group for members"
-msgstr "कृपया सदस्यों के लिए लक्ष्य समूह चुनें"
 
 #: 
 msgid "Please try again"
@@ -15725,24 +15709,12 @@ msgid "Account status"
 msgstr "खाता स्थिति"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "उन्नत: एक विशिष्ट लक्ष्य संस्करण चुनें"
-
-#: 
 msgid "Bug Fix"
 msgstr "बग सुधार"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "डिफ़ॉल्ट रूप से विज़ार्ड अगला अनुशंसित रिलीज़ डाउनलोड करता है। आप नीचे से कोई भी उपलब्ध संस्करण चुन सकते हैं।"
-
-#: 
 msgid "Change required"
 msgstr "परिवर्तन आवश्यक है"
-
-#: 
-msgid "Changelog"
-msgstr "परिवर्तन लॉग"
 
 #: 
 msgid "Continue Anyway"
@@ -15751,10 +15723,6 @@ msgstr "फिर भी जारी रखें"
 #: 
 msgid "Could not load release information."
 msgstr "रिलीज़ जानकारी लोड नहीं हो सकी।"
-
-#: 
-msgid "Download & Install"
-msgstr "डाउनलोड करें और इंस्टॉल करें"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15783,10 +15751,6 @@ msgstr "पूर्ण परिवर्तन लॉग"
 #: 
 msgid "Install stable {{version}}"
 msgstr "स्थिर {{version}} इंस्टॉल करें"
-
-#: 
-msgid "Installing next release"
-msgstr "अगली रिलीज़ इंस्टॉल हो रही है"
 
 #: 
 msgid "Invalid file path"
@@ -15857,10 +15821,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "पूर्ण अपग्रेड पथ दिखाएं"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "नवीनतम स्थिर रिलीज़ {{version}} है। आप इसे नीचे पुनः इंस्टॉल कर सकते हैं।"
 
@@ -15887,10 +15847,6 @@ msgstr "रिलीज़ नोट देखें"
 #: 
 msgid "What's New"
 msgstr "नया क्या है"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} में नया क्या है"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16853,10 +16809,6 @@ msgid "Working..."
 msgstr "काम हो रहा है..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "आप {{releaseCount}} रिलीज़ पीछे हैं। यहाँ बताया गया है कि आपको क्या मिलेगा"
-
-#: 
 msgid "click to expand"
 msgstr "विस्तार के लिए क्लिक करें"
 
@@ -17111,10 +17063,6 @@ msgstr "प्रतिज्ञा बनाने में विफल"
 #: 
 msgid "Failed to delete pledge"
 msgstr "प्रतिज्ञा हटाने में विफल"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "भुगतान प्रतिक्रिया एन्कोड करने में विफल"
 
 #: 
 msgid "Failed to retrieve pledge"

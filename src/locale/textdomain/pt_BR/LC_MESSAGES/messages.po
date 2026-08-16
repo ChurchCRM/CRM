@@ -14437,10 +14437,6 @@ msgid "Group removed from cart"
 msgstr "Grupo removido do carrinho"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "ID do grupo é obrigatório para a regra selecionada"
-
-#: 
 msgid "HTML URL"
 msgstr "URL de HTML"
 
@@ -14818,20 +14814,8 @@ msgid "Please select a role."
 msgstr "Por favor, selecione uma função."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Por favor, selecione um ministério e uma função."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Por favor, selecione linhas para excluir"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Por favor, selecione o papel para os membros"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Por favor, selecione o grupo desejado para os membos"
 
 #: 
 msgid "Please try again"
@@ -15727,24 +15711,12 @@ msgid "Account status"
 msgstr "Status da conta"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avançado: escolher uma versão de destino específica"
-
-#: 
 msgid "Bug Fix"
 msgstr "Correção de bug"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Por padrão, o assistente baixa a próxima versão recomendada. Você pode escolher qualquer versão disponível abaixo."
-
-#: 
 msgid "Change required"
 msgstr "Alteração necessária"
-
-#: 
-msgid "Changelog"
-msgstr "Registro de alterações"
 
 #: 
 msgid "Continue Anyway"
@@ -15753,10 +15725,6 @@ msgstr "Continuar mesmo assim"
 #: 
 msgid "Could not load release information."
 msgstr "Não foi possível carregar as informações da versão."
-
-#: 
-msgid "Download & Install"
-msgstr "Baixar e instalar"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15785,10 +15753,6 @@ msgstr "Registro completo de alterações"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Instalar versão estável {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Instalando próxima versão"
 
 #: 
 msgid "Invalid file path"
@@ -15859,10 +15823,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Mostrar caminho completo de atualização"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "A versão estável mais recente é {{version}}. Você pode reinstalá-la abaixo."
 
@@ -15889,10 +15849,6 @@ msgstr "Ver notas da versão"
 #: 
 msgid "What's New"
 msgstr "Novidades"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Novidades na versão {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16855,10 +16811,6 @@ msgid "Working..."
 msgstr "Processando..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Você está {{releaseCount}} versão(ões) atrás. Veja o que você ganhará"
-
-#: 
 msgid "click to expand"
 msgstr "clique para expandir"
 
@@ -17113,10 +17065,6 @@ msgstr "Falha ao criar promessa"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Falha ao excluir promessa"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Falha ao codificar resposta de pagamento"
 
 #: 
 msgid "Failed to retrieve pledge"

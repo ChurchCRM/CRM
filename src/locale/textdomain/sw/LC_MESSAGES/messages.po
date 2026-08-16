@@ -14472,10 +14472,6 @@ msgid "Group removed from cart"
 msgstr "Kikundi kimeondolewa kwenye kigari"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID inahitajika kwa ajili ya uteuzi jukumu"
-
-#: 
 msgid "HTML URL"
 msgstr "URL ya HTML"
 
@@ -14853,20 +14849,8 @@ msgid "Please select a role."
 msgstr "Tafadhali chagua jukumu."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Tafadhali chagua kikundi na jukumu."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Tafadhali chagua mistari ya kufuta"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Tafadhali chagua Wajibu lengwa kwa wanachama"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Tafadhali chagua kikundi lengwa cha wanachama"
 
 #: 
 msgid "Please try again"
@@ -15762,24 +15746,12 @@ msgid "Account status"
 msgstr "Hali ya akaunti"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Hali ya juu: chagua toleo maalum la lengo"
-
-#: 
 msgid "Bug Fix"
 msgstr "Kurekebisha hitilafu"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Kwa chaguo-msingi, msaidizi hupakulia toleo lijalo linalopendekezwa. Unaweza badala yake kuchagua toleo lolote linalopatikana hapa chini."
-
-#: 
 msgid "Change required"
 msgstr "Mabadiliko yanahitajika"
-
-#: 
-msgid "Changelog"
-msgstr "Kumbukumbu ya mabadiliko"
 
 #: 
 msgid "Continue Anyway"
@@ -15788,10 +15760,6 @@ msgstr "Endelea Hata Hivyo"
 #: 
 msgid "Could not load release information."
 msgstr "Haikuweza kupakia maelezo ya toleo."
-
-#: 
-msgid "Download & Install"
-msgstr "Pakua na Usakinishe"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15820,10 +15788,6 @@ msgstr "Kumbukumbu kamili ya mabadiliko"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Sakinisha toleo thabiti {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Inasanikisha toleo lijalo"
 
 #: 
 msgid "Invalid file path"
@@ -15894,10 +15858,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Onyesha njia kamili ya uboreshaji"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Toleo thabiti jipya zaidi ni {{version}}. Unaweza kulisanikisha tena hapa chini."
 
@@ -15924,10 +15884,6 @@ msgstr "Tazama maelezo ya toleo"
 #: 
 msgid "What's New"
 msgstr "Mambo Mapya"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Mambo Mapya katika {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16890,10 +16846,6 @@ msgid "Working..."
 msgstr "Inafanya kazi..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Uko nyuma na toleo {{releaseCount}}. Hapa kuna utakalopata"
-
-#: 
 msgid "click to expand"
 msgstr "bonyeza kupanua"
 
@@ -17144,10 +17096,6 @@ msgstr "Imeshindwa kuunda ahadi ya mchango"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Imeshindwa kufuta ahadi ya mchango"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Imeshindwa kusimba jibu la malipo"
 
 #: 
 msgid "Failed to retrieve pledge"

@@ -14501,10 +14501,6 @@ msgid "Group removed from cart"
 msgstr "Csoport eltávolítva a kosárból"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Csoportazonosító (GroupID) szükséges a szerepkörválasztáshoz"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14882,20 +14878,8 @@ msgid "Please select a role."
 msgstr "Kérjük, válasszon szerepkört."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Kérjük, válasszon csoportot és szerepkört is."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Kérjük, válasszon az sorokból törléshez"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Kérjük, válassza ki a tagok cél szerepkörét"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Kérjük, válassza ki a tagok célcsoportját"
 
 #: 
 msgid "Please try again"
@@ -15791,24 +15775,12 @@ msgid "Account status"
 msgstr "Fiók állapota"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Speciális: válasszon egy konkrét célverziót"
-
-#: 
 msgid "Bug Fix"
 msgstr "Hibajavítás"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Alapértelmezés szerint a varázsló a következő ajánlott kiadást tölti le. Ehelyett az alábbi elérhető verziók közül is választhat."
-
-#: 
 msgid "Change required"
 msgstr "Változtatás szükséges"
-
-#: 
-msgid "Changelog"
-msgstr "Változásnapló"
 
 #: 
 msgid "Continue Anyway"
@@ -15817,10 +15789,6 @@ msgstr "Folytatás mindenképpen"
 #: 
 msgid "Could not load release information."
 msgstr "Nem sikerült betölteni a kiadási információkat."
-
-#: 
-msgid "Download & Install"
-msgstr "Letöltés és telepítés"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15849,10 +15817,6 @@ msgstr "Teljes változásnapló"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Stabil {{version}} telepítése"
-
-#: 
-msgid "Installing next release"
-msgstr "A következő kiadás telepítése"
 
 #: 
 msgid "Invalid file path"
@@ -15923,10 +15887,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Teljes frissítési útvonal megjelenítése"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "A legújabb stabil kiadás a {{version}}. Alább újratelepítheti."
 
@@ -15953,10 +15913,6 @@ msgstr "Kiadási megjegyzések megtekintése"
 #: 
 msgid "What's New"
 msgstr "Újdonságok"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Újdonságok a {{version}} verzióban"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16919,10 +16875,6 @@ msgid "Working..."
 msgstr "Folyamatban..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "{{releaseCount}} kiadással le van maradva. Íme, amit nyerni fog"
-
-#: 
 msgid "click to expand"
 msgstr "kattintson a kibontáshoz"
 
@@ -17177,10 +17129,6 @@ msgstr "A fogadalom létrehozása sikertelen"
 #: 
 msgid "Failed to delete pledge"
 msgstr "A fogadalom törlése sikertelen"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Az adomány-válasz kódolása sikertelen"
 
 #: 
 msgid "Failed to retrieve pledge"
