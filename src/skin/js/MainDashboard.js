@@ -85,7 +85,7 @@ export function initializeMainDashboard() {
           statusHtml =
             ' <span class="badge bg-secondary-lt text-secondary" title="' +
             i18next.t("Inactive") +
-            '"><i class="ti ti-power me-1"></i>' +
+            '"><i class="fa-solid fa-power-off me-1"></i>' +
             i18next.t("Inactive") +
             "</span>";
         }
@@ -491,7 +491,7 @@ export function initializeMainDashboard() {
           statusHtml =
             ' <span class="badge bg-secondary-lt text-secondary" title="' +
             i18next.t("Inactive") +
-            '"><i class="ti ti-power me-1"></i>' +
+            '"><i class="fa-solid fa-power-off me-1"></i>' +
             i18next.t("Inactive") +
             "</span>";
         }

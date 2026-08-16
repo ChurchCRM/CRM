@@ -8,14 +8,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <!-- How It Works -->
 <div class="card mb-3">
     <div class="card-header">
-        <h3 class="card-title"><i class="ti ti-info-circle me-2"></i><?= gettext('How the CSV Import Works') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-circle-info me-2"></i><?= gettext('How the CSV Import Works') ?></h3>
     </div>
     <div class="card-body">
         <div class="row g-3">
             <div class="col-md-4">
                 <div class="card card-sm h-100">
                     <div class="card-body">
-                        <h4 class="card-title text-primary"><i class="ti ti-download me-2"></i><?= gettext('1. Download the template') ?></h4>
+                        <h4 class="card-title text-primary"><i class="fa-solid fa-download me-2"></i><?= gettext('1. Download the template') ?></h4>
                         <p class="text-secondary mb-0"><?= gettext('The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines.') ?></p>
                     </div>
                 </div>
@@ -23,7 +23,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="col-md-4">
                 <div class="card card-sm h-100">
                     <div class="card-body">
-                        <h4 class="card-title text-info"><i class="ti ti-table-filled me-2"></i><?= gettext('2. Fill in your data') ?></h4>
+                        <h4 class="card-title text-info"><i class="fa-solid fa-table me-2"></i><?= gettext('2. Fill in your data') ?></h4>
                         <p class="text-secondary mb-0"><?= gettext('Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them.') ?></p>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="col-md-4">
                 <div class="card card-sm h-100">
                     <div class="card-body">
-                        <h4 class="card-title text-success"><i class="ti ti-upload me-2"></i><?= gettext('3. Upload and map') ?></h4>
+                        <h4 class="card-title text-success"><i class="fa-solid fa-upload me-2"></i><?= gettext('3. Upload and map') ?></h4>
                         <p class="text-secondary mb-0"><?= gettext('ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore.') ?></p>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="alert alert-info mt-3 mb-0">
             <div class="d-flex">
-                <div><i class="ti ti-bulb fs-3 me-2"></i></div>
+                <div><i class="fa-solid fa-lightbulb fs-3 me-2"></i></div>
                 <div>
                     <h4 class="alert-title mb-1"><?= gettext('Custom fields and properties are supported') ?></h4>
                     <div class="text-secondary">
