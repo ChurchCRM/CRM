@@ -334,9 +334,10 @@ function initializeFamilyView() {
 
   $("#activateDeactivate").on("click", () => {
     const popupTitle = window.CRM.currentActive ? i18next.t("Confirm Deactivation") : i18next.t("Confirm Activation");
+    const safeFamilyName = window.CRM.escapeHtml(window.CRM.currentFamilyName);
     const popupMessage = window.CRM.currentActive
-      ? `${i18next.t("Please confirm deactivation of family")}: ${window.CRM.currentFamilyName}`
-      : `${i18next.t("Please confirm activation of family")}: ${window.CRM.currentFamilyName}`;
+      ? `${i18next.t("Please confirm deactivation of family")}: ${safeFamilyName}`
+      : `${i18next.t("Please confirm activation of family")}: ${safeFamilyName}`;
 
     bootbox.confirm({
       title: popupTitle,
