@@ -233,7 +233,7 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
   if (!subjectInputEl || !bodyTextareaEl) return;
 
   const subject = subjectInputEl.value.trim();
-  const body    = bodyTextareaEl.value.trim();
+  const body = bodyTextareaEl.value.trim();
 
   if (!subject) {
     subjectInputEl.classList.add("is-invalid");
@@ -291,9 +291,7 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
       bannerIcon.className = "fa-solid fa-circle-check me-2";
       banner.appendChild(bannerIcon);
       banner.appendChild(
-        document.createTextNode(
-          i18next.t("Email sent to {{count}} recipient(s).", { count: data.sent }),
-        ),
+        document.createTextNode(i18next.t("Email sent to {{count}} recipient(s).", { count: data.sent })),
       );
       composeFormEl?.appendChild(banner);
 
@@ -306,7 +304,9 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
     } else {
       // ── Failure ──────────────────────────────────────────────────── //
       const errMsg =
-        data.message ?? data.error ?? (data.errors?.[0]) ??
+        data.message ??
+        data.error ??
+        data.errors?.[0] ??
         i18next.t("Failed to send email. Please try again or use 'Open in Email Client'.");
       const banner = document.createElement("div");
       banner.className = "alert alert-danger crm-send-result mt-2 mb-0";
@@ -330,9 +330,7 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
     bannerIcon.className = "fa-solid fa-triangle-exclamation me-2";
     banner.appendChild(bannerIcon);
     banner.appendChild(
-      document.createTextNode(
-        i18next.t("Failed to send email. Please try again or use 'Open in Email Client'."),
-      ),
+      document.createTextNode(i18next.t("Failed to send email. Please try again or use 'Open in Email Client'.")),
     );
     composeFormEl?.appendChild(banner);
 
@@ -411,12 +409,7 @@ function ensureModalExists(): void {
   clientBtn.title = i18next.t("Open recipients in your local email application");
 
   // "Send" button — only shown when SMTP is configured (created unconditionally, visibility controlled)
-  sendBtn = makeBtn(
-    "crm-email-send-btn",
-    "btn btn-sm btn-primary",
-    "fa-solid fa-paper-plane",
-    i18next.t("Send"),
-  );
+  sendBtn = makeBtn("crm-email-send-btn", "btn btn-sm btn-primary", "fa-solid fa-paper-plane", i18next.t("Send"));
   sendBtn.disabled = true;
 
   const closeBtn = document.createElement("button");
@@ -526,8 +519,8 @@ function updateBccToggleAppearance(): void {
 function updateClientButtonHref(): void {
   if (!clientBtn) return;
   clientBtn.removeAttribute("disabled");
-  const tooMany   = currentEmails.length > MAX_MAILTO_RECIPIENTS;
-  const noEmails  = currentEmails.length === 0;
+  const tooMany = currentEmails.length > MAX_MAILTO_RECIPIENTS;
+  const noEmails = currentEmails.length === 0;
   const unavailable = tooMany || noEmails;
 
   if (unavailable) {
@@ -924,10 +917,9 @@ function renderRecipients(
   if (tooManyText instanceof Text) {
     tooManyText.nodeValue =
       tooManyNow && !isSmtpConfigured()
-        ? i18next.t(
-            "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.",
-            { count: currentEmails.length },
-          )
+        ? i18next.t("This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.", {
+            count: currentEmails.length,
+          })
         : "";
   }
   modalBody.appendChild(tooManyHintEl);
