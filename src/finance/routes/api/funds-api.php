@@ -4,17 +4,18 @@ use ChurchCRM\Exceptions\DonationFundNotFoundException;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 /**
- * Admin-only REST API for DonationFund CRUD.
+ * Finance-role REST API for DonationFund CRUD.
  *
- * All routes require AdminRoleAuth (FinanceRoleAuth is already applied at the
- * module level by MvcAppFactory). Delegates to DonationFundService.
+ * All routes require FinanceRoleAuth (Finance role or Admin). FinanceRoleAuth
+ * is also applied at the module level by MvcAppFactory, so this is an explicit
+ * reinforcement for the write operations.
  *
  * Mounted at /finance/api/funds via src/finance/index.php.
  */
@@ -66,7 +67,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      *     ),
      *     @OA\Response(response=400, description="Validation error (missing or duplicate name)"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Admin role required")
+     *     @OA\Response(response=403, description="Finance role required")
      * )
      */
     $group->post('', function (Request $request, Response $response) use ($fundToArray): Response {
@@ -112,7 +113,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      *     @OA\Response(response=200, description="Updated fund"),
      *     @OA\Response(response=400, description="Validation error (blank or duplicate name)"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(response=403, description="Finance role required"),
      *     @OA\Response(response=404, description="Fund not found")
      * )
      */
@@ -155,7 +156,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer"), description="Fund ID"),
      *     @OA\Response(response=200, description="Deleted successfully"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(response=403, description="Finance role required"),
      *     @OA\Response(response=404, description="Fund not found"),
      *     @OA\Response(response=409, description="Fund is still referenced by one or more pledges")
      * )
@@ -198,7 +199,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      *     @OA\Response(response=200, description="Reordered successfully"),
      *     @OA\Response(response=400, description="Invalid direction"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(response=403, description="Finance role required"),
      *     @OA\Response(response=404, description="Fund not found")
      * )
      */
@@ -223,4 +224,4 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
         }
     });
 
-})->add(AdminRoleAuthMiddleware::class);
+})->add(FinanceRoleAuthMiddleware::class);

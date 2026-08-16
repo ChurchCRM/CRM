@@ -39,6 +39,7 @@ $currentDeposit = $dashboardData['currentDeposit'];
 $currentDepositId = $dashboardData['currentDepositId'];
 
 $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
+$isFinanceEnabled = AuthenticationManager::getCurrentUser()->isFinanceEnabled();
 
 $sRootPath = SystemURLs::getRootPath();
 ?>
@@ -154,7 +155,7 @@ $sRootPath = SystemURLs::getRootPath();
                     <i class="fa-solid fa-gavel me-1"></i><?= gettext('Fundraisers') ?>
                 </a>
                 <?php endif; ?>
-                <?php if ($isAdmin): ?>
+                <?php if ($isFinanceEnabled): ?>
                 <a href="<?= $sRootPath ?>/finance/funds" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-piggy-bank me-1"></i><?= gettext('Manage Funds') ?>
                 </a>
@@ -242,7 +243,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <a href="<?= $sRootPath ?>/admin/system/church-info" class="btn btn-sm btn-outline-secondary">
                                     <i class="fa-solid fa-cog"></i> <?= gettext('Settings') ?>
                                 </a>
-                                <?php endif; ?>
+                                <?php endif; ?><!-- Only admins can edit church info (system-level config) -->
                             </div>
                         </div>
 
@@ -455,7 +456,7 @@ $sRootPath = SystemURLs::getRootPath();
     </div>
 </div>
 
-<?php if ($isAdmin): ?>
+<?php if ($isFinanceEnabled): ?>
 <!-- System Settings Panel Component -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

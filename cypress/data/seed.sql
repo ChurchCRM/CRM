@@ -1501,6 +1501,8 @@ INSERT INTO `person_per` VALUES (902,'Mr','Bob','','Menuonly','','','','','','',
 -- Same TOTP secret as twofa_user; usr_FailedLogins starts at 0 so the lockout test
 -- can exhaust iMaxFailedLogins with wrong OTP codes and assert the account locks.
 INSERT INTO `person_per` VALUES (903,'Mr','Twofa','','Lockout','','','','','','','USA','','','','twofa.lockout@example.com',NULL,1,1,1990,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
+INSERT INTO `person_per` VALUES (904,'Ms','Grace','','Financeonly','','','','','','','USA','','','','grace.financeonly@example.com',NULL,1,1,1988,NULL,2,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
+INSERT INTO `person_per` VALUES (905,'Mr','Kyle','','Kioskonly','','','','','','','USA','','','','kyle.kioskonly@example.com',NULL,1,1,1985,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `person_per` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1963,6 +1965,10 @@ INSERT INTO `user_usr` VALUES (902,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB
 -- Same TOTP secret (JBSWY3DPEBLW64TMMQ======) as twofa_user; starts unlocked (FailedLogins=0)
 -- so the lockout test exhausts iMaxFailedLogins with wrong OTPs and asserts the account locks.
 INSERT INTO `user_usr` VALUES (903,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'twofa_lockout_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'def50200923f831141edcddb9e69c79f4ef68b1f0cdd9acf4223f286f2c6ab7e0f09d397cabc831fdaa5bee117f409a50090ae4ea6ff51203508d29b59869396f303d5fd3cf14fe76cf85dba9c85735750aa4f312e1ab29caa60a15bb1b76aecb4a7be50423d2867e49a69ec',NULL,NULL);
+-- finance.only (id=904): Finance=1, non-admin — used to assert Finance role (not Admin) can access fund CRUD and dashboard
+INSERT INTO `user_usr` VALUES (904,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,1,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'grace.financeonly@example.com','financeOnlyApiKeyForTesting12345678901234',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+-- managegroups.only (id=905): ManageGroups=1, non-admin — used to assert ManageGroups role can access kiosk manager
+INSERT INTO `user_usr` VALUES (905,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,1,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'kyle.kioskonly@example.com','manageGroupsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;

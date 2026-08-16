@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
 /**
- * API tests for the admin-only Donation Funds CRUD + reorder endpoints.
+ * API tests for the Finance-role Donation Funds CRUD + reorder endpoints.
  *
- * All write operations require Admin role:
+ * All write operations require Finance role (or Admin):
  *   POST   /finance/api/funds          → Create fund
  *   PUT    /finance/api/funds/{id}     → Update fund
  *   DELETE /finance/api/funds/{id}     → Delete fund (409 if pledges exist)
@@ -14,7 +14,7 @@
 
 const BASE = "/finance/api/funds";
 
-describe("API Admin Finance Funds - POST (create)", () => {
+describe("API Finance Funds - POST (create)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -50,7 +50,7 @@ describe("API Admin Finance Funds - POST (create)", () => {
     });
 });
 
-describe("API Admin Finance Funds - PUT (update)", () => {
+describe("API Finance Funds - PUT (update)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -114,7 +114,7 @@ describe("API Admin Finance Funds - PUT (update)", () => {
     });
 });
 
-describe("API Admin Finance Funds - DELETE", () => {
+describe("API Finance Funds - DELETE", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -143,7 +143,7 @@ describe("API Admin Finance Funds - DELETE", () => {
     });
 });
 
-describe("API Admin Finance Funds - PATCH order (reorder)", () => {
+describe("API Finance Funds - PATCH order (reorder)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -182,7 +182,7 @@ describe("API Admin Finance Funds - PATCH order (reorder)", () => {
     });
 });
 
-describe("API Admin Finance Funds - Access control", () => {
+describe("API Finance Funds - Access control", () => {
     it("Returns 401 when unauthenticated", () => {
         cy.clearCookies();
         cy.request({
@@ -202,13 +202,29 @@ describe("API Admin Finance Funds - Access control", () => {
     it("Returns 401 or 403 for a caller without Admin or Finance permission", () => {
         // makePrivateUserAPICall uses a standard (non-admin, non-finance) key.
         // The /finance module applies FinanceRoleAuthMiddleware at module level,
-        // so a non-finance user is blocked before AdminRoleAuthMiddleware is reached.
+        // so a non-finance user is blocked before the route is reached.
         // Either 401 (unauthenticated key) or 403 (insufficient role) is acceptable.
         cy.makePrivateUserAPICall("POST", BASE, { name: "x" }, [401, 403]);
     });
 
-    // NOTE: Testing the Finance-role-but-not-Admin boundary is not covered here
-    // because there is no seeded Finance-only API key in the test fixtures.
-    // AdminRoleAuthMiddleware rejection in that case is covered by the
-    // middleware unit tests.
+    it("Finance-only user (non-admin) can create, update, reorder, and delete a fund", () => {
+        // Verifies that Finance role alone is sufficient - Admin is not required.
+        const name = `CyFinanceOnly ${Date.now()}`;
+        cy.makePrivateFinanceOnlyAPICall("POST", BASE, { name, description: "Finance role test", active: true }, 201).then(
+            (createResp) => {
+                const id = createResp.body.fund.id;
+                expect(id).to.be.a("number");
+
+                cy.makePrivateFinanceOnlyAPICall("PUT", `${BASE}/${id}`, { name, description: "updated" }, 200).then(
+                    (updateResp) => {
+                        expect(updateResp.body.fund.description).to.equal("updated");
+                    },
+                );
+
+                cy.makePrivateFinanceOnlyAPICall("PATCH", `${BASE}/${id}/order`, { direction: "down" }, 200);
+
+                cy.makePrivateFinanceOnlyAPICall("DELETE", `${BASE}/${id}`, null, 200);
+            },
+        );
+    });
 });

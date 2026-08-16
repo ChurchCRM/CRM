@@ -4,7 +4,7 @@
  * Kiosk API Tests
  * 
  * Tests for the kiosk management API endpoints at /kiosk/api/
- * These endpoints require admin authentication.
+ * These endpoints require ManageGroups role (or Admin) authentication.
  */
 
 describe("Kiosk API - Admin Operations", () => {
@@ -281,7 +281,7 @@ describe("Kiosk API - Access Control", () => {
             cy.setupStandardSession();
         });
 
-        it("should deny GET /kiosk/api/devices for non-admin", () => {
+        it("should deny GET /kiosk/api/devices for non-ManageGroups user", () => {
             cy.request({
                 method: "GET",
                 url: "/kiosk/api/devices",
@@ -291,7 +291,7 @@ describe("Kiosk API - Access Control", () => {
             });
         });
 
-        it("should deny POST /kiosk/api/allowRegistration for non-admin", () => {
+        it("should deny POST /kiosk/api/allowRegistration for non-ManageGroups user", () => {
             cy.request({
                 method: "POST",
                 url: "/kiosk/api/allowRegistration",
@@ -301,7 +301,7 @@ describe("Kiosk API - Access Control", () => {
             });
         });
 
-        it("should deny POST /kiosk/api/devices/1/reload for non-admin", () => {
+        it("should deny POST /kiosk/api/devices/1/reload for non-ManageGroups user", () => {
             cy.request({
                 method: "POST",
                 url: "/kiosk/api/devices/1/reload",
@@ -311,7 +311,7 @@ describe("Kiosk API - Access Control", () => {
             });
         });
 
-        it("should deny DELETE /kiosk/api/devices/1 for non-admin", () => {
+        it("should deny DELETE /kiosk/api/devices/1 for non-ManageGroups user", () => {
             cy.request({
                 method: "DELETE",
                 url: "/kiosk/api/devices/1",
@@ -344,6 +344,33 @@ describe("Kiosk API - Access Control", () => {
                 expect(response.status).to.be.oneOf([401, 302]);
             });
         });
+    });
+});
+
+
+describe("Kiosk API - ManageGroups role access (non-admin)", () => {
+    // Verifies that a user with ManageGroups=1 but Admin=0 can access
+    // the kiosk API endpoints (issue #9476: Kiosk Manager should not require Admin).
+    it("ManageGroups-only user can GET /kiosk/api/devices", () => {
+        cy.makePrivateManageGroupsOnlyAPICall("GET", "/kiosk/api/devices", null, 200).then(
+            (response) => {
+                expect(response.body).to.have.property("KioskDevices");
+                expect(response.body.KioskDevices).to.be.an("array");
+            },
+        );
+    });
+
+    it("ManageGroups-only user can POST /kiosk/api/allowRegistration", () => {
+        cy.makePrivateManageGroupsOnlyAPICall("POST", "/kiosk/api/allowRegistration", null, 200).then(
+            (response) => {
+                expect(response.body).to.have.property("visibleUntil");
+            },
+        );
+    });
+
+    it("Non-ManageGroups user is denied GET /kiosk/api/devices", () => {
+        // nofinance user has Finance=0, ManageGroups=0 — should be denied
+        cy.makePrivateNoFinanceAPICall("GET", "/kiosk/api/devices", null, [401, 403]);
     });
 });
 
