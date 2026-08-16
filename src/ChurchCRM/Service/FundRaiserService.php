@@ -211,10 +211,24 @@ class FundRaiserService
 
         $year = DateTimeUtils::getCurrentYear();
 
-        // Active fundraisers count (Active + Planning)
-        $activeCount = FundRaiserQuery::create()
-            ->filterByStatus(['Active', 'Planning'])
-            ->count();
+        // Active fundraisers count: not Closed AND not archived by end date.
+        // Mirrors the active/archived split logic in fundraiser.php so the stat
+        // card displays only fundraisers that appear in the Active Fundraisers table.
+        $todayDate = DateTimeUtils::getTodayDate();
+        $activeCount = 0;
+
+        $allFundraisers = FundRaiserQuery::create()->find();
+        foreach ($allFundraisers as $fr) {
+            $status = $fr->getStatus() ?? 'Active';
+            if ($status === 'Closed') {
+                continue;
+            }
+            $effectiveEnd = $fr->getEndDate() ?? $fr->getDate();
+            if ($effectiveEnd !== null && $effectiveEnd->format('Y-m-d') < $todayDate) {
+                continue;
+            }
+            $activeCount++;
+        }
 
         // This-year fundraiser IDs (step 1 of 2-step approach — no FK relations defined)
         $yearStart = $year . '-01-01';
