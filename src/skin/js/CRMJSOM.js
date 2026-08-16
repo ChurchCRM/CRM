@@ -578,7 +578,7 @@ window.CRM.dashboard = {
   loadFundraiserCount: () => {
     window.CRM.APIRequest({
       method: "GET",
-      path: "finance/fundraisers/active-count",
+      path: "fundraisers/active-count",
       suppressErrorDialog: true,
     }).done((data) => {
       document.getElementById("activeFundraisers").innerText = data.count;
