@@ -215,6 +215,17 @@ function initializeFamilyView() {
         $fySelect.append($opt);
       });
 
+      // If the family has no giving records in the current FY the pre-init
+      // column-5 filter (^currentFY$) hides everything while the dropdown
+      // still shows "All Time" — an inconsistent state.  Auto-correct by
+      // clearing the filter so the table and the dropdown agree.
+      const hasCurentFYData = allRows.some((row) => row.FormattedFY === currentFY);
+      if (currentFY && !hasCurentFYData) {
+        api.column(5).search("", false, false).draw();
+        $fySelect.val("");
+        return; // No current-FY data → no YTD badge
+      }
+
       // YTD badge: total Payments in the current fiscal year (always full dataset, not filtered)
       let ytdTotal = 0;
       allRows.forEach((row) => {
