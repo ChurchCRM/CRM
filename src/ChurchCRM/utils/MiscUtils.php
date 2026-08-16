@@ -62,10 +62,20 @@ class MiscUtils
         $age = date_diff($now, $birthDate);
 
         if ($age->y < 1) {
-            return sprintf(ngettext('%d month old', '%d months old', $age->m), $age->m);
+            $monthStr = ngettext('%d month old', '%d months old', $age->m);
+            $placeholderCount = substr_count($monthStr, '%d');
+            if ($placeholderCount === 1) {
+                return sprintf($monthStr, $age->m);
+            }
+            return $monthStr;
         }
 
-        return sprintf(ngettext('%d year old', '%d years old', $age->y), $age->y);
+        $yearStr = ngettext('%d year old', '%d years old', $age->y);
+        $placeholderCount = substr_count($yearStr, '%d');
+        if ($placeholderCount === 1) {
+            return sprintf($yearStr, $age->y);
+        }
+        return $yearStr;
     }
 
     // Format a BirthDate
