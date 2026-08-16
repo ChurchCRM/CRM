@@ -813,7 +813,7 @@ jobs:
       github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/'))
     needs: [configure, build]
-    timeout-minutes: 60
+    timeout-minutes: 120
     permissions:
       contents: read
       checks: write
@@ -919,7 +919,7 @@ jobs:
       github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/'))
     needs: [configure, build]
-    timeout-minutes: 60
+    timeout-minutes: 120
     permissions:
       contents: read
       checks: write
@@ -1018,12 +1018,14 @@ jobs:
       run: npm run docker:ci:subdir:down
 
   package:
-    needs: [test-root, test-subdir, test-new-system, test-new-system-subdir, test-locale-root, test-locale-subdir, test-locale-full-root, test-locale-full-subdir]
+    needs: [build, test-root, test-subdir, test-new-system, test-new-system-subdir, test-locale-root, test-locale-subdir, test-locale-full-root, test-locale-full-subdir]
     # always() prevents "skipped" from full-locale jobs (which only run on
     # release branches / cron / dispatch) propagating and silently skipping
-    # this job on PR and push builds. The expression still blocks on any
-    # actual failure or cancellation.
-    if: ${{ always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
+    # this job on PR and push builds. needs.build.result == 'success' guards
+    # against a build failure where all test jobs are skipped (not failed),
+    # which would otherwise let package run and fail on a missing artifact.
+    # The expression still blocks on any test failure or cancellation.
+    if: ${{ always() && needs.build.result == 'success' && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
     timeout-minutes: 15
     permissions:
       contents: write
