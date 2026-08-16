@@ -130,6 +130,18 @@ function ValidateInput()
                     $vPOST[$qrp_Alias] = InputUtils::legacyFilterInput($_POST[$qrp_Alias]);
                     break;
 
+                // Identifier validation (column/table name)
+                case 'i':
+                    if (is_array($_POST[$qrp_Alias])) {
+                        $bError = true;
+                        $aErrorText[$qrp_Alias] = gettext('This value must be a valid field name.');
+                    } elseif (!preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', (string) $_POST[$qrp_Alias])) {
+                        $bError = true;
+                        $aErrorText[$qrp_Alias] = gettext('This value must be a valid field name.');
+                    }
+                    $vPOST[$qrp_Alias] = is_array($_POST[$qrp_Alias]) ? '' : $_POST[$qrp_Alias];
+                    break;
+
                 default:
                     // Sanitize input to prevent SQL injection
                     $vPOST[$qrp_Alias] = InputUtils::sanitizeText($_POST[$qrp_Alias]);
@@ -159,14 +171,19 @@ function ProcessSQL()
 
         // Replace the placeholder with the parameter value
         // GHSA-qc2c-qmw4-52fp: Properly escape values before SQL substitution to prevent injection
-        $qrp_Value = escapeQueryParameter($vPOST[$qrp_Alias], $cnInfoCentral);
+        $isIdentifier = ($qrp_Validation === 'i');
+        $qrp_Value = escapeQueryParameter($vPOST[$qrp_Alias], $cnInfoCentral, $isIdentifier);
         $qry_SQL = str_replace('~' . $qrp_Alias . '~', $qrp_Value, $qry_SQL);
     }
 }
 
 // Helper function to safely escape and format query parameters
-function escapeQueryParameter($value, $connection)
+function escapeQueryParameter($value, $connection, $isIdentifier = false)
 {
+    if ($isIdentifier) {
+        return '`' . str_replace('`', '``', (string) $value) . '`';
+    }
+
     if (is_array($value)) {
         // For arrays, escape each element and quote it, then join with commas
         $escapedValues = array_map(function($val) use ($connection) {
