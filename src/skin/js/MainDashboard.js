@@ -301,7 +301,7 @@ export function initializeMainDashboard() {
               i18next.t("ago") +
               "</span>";
           }
-          return row.Birthday + '<div class="small lh-1 mt-1">' + badge + '</div>';
+          return row.Birthday + '<div class="small lh-1 mt-1">' + badge + "</div>";
         },
       },
     ],
@@ -415,7 +415,7 @@ export function initializeMainDashboard() {
               i18next.t("ago") +
               "</span>";
           }
-          return data + '<div class="small lh-1 mt-1">' + badge + '</div>';
+          return data + '<div class="small lh-1 mt-1">' + badge + "</div>";
         },
       },
     ],
