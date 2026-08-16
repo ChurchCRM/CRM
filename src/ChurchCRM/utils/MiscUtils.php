@@ -67,7 +67,7 @@ class MiscUtils
                 return sprintf($monthStr, $age->m);
             } catch (\Throwable $e) {
                 error_log('Age formatting failed for locale string "' . $monthStr . '": ' . $e->getMessage());
-                return $age->m . ' ' . preg_replace('/%\d*\$?d\s*/u', '', $monthStr);
+                return $age->m . ' ' . trim(preg_replace('/%\d*\$?[sdifuoxX]\s*/u', '', $monthStr) ?? $monthStr);
             }
         }
 
@@ -76,7 +76,7 @@ class MiscUtils
             return sprintf($yearStr, $age->y);
         } catch (\Throwable $e) {
             error_log('Age formatting failed for locale string "' . $yearStr . '": ' . $e->getMessage());
-            return $age->y . ' ' . preg_replace('/%\d*\$?d\s*/u', '', $yearStr);
+            return $age->y . ' ' . trim(preg_replace('/%\d*\$?[sdifuoxX]\s*/u', '', $yearStr) ?? $yearStr);
         }
     }
 
