@@ -14476,10 +14476,6 @@ msgid "Group removed from cart"
 msgstr "Ομάδα αφαιρέθηκε από το καλάθι"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Το GroupID απαιτείται για την προτροπή επιλογής ρόλου"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14857,20 +14853,8 @@ msgid "Please select a role."
 msgstr "Παρακαλώ επιλέξτε ρόλο."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Παρακαλώ επιλέξτε και ομάδα και ρόλο."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Παρακαλούμε επιλέξτε σειρές για διαγραφή"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Επιλέξτε Ρόλο-στόχο για μέλη"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Επιλέξτε ομάδα-στόχο για μέλη"
 
 #: 
 msgid "Please try again"
@@ -15766,24 +15750,12 @@ msgid "Account status"
 msgstr "Κατάσταση λογαριασμού"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Για προχωρημένους: επιλέξτε συγκεκριμένη έκδοση στόχου"
-
-#: 
 msgid "Bug Fix"
 msgstr "Διόρθωση σφάλματος"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Από προεπιλογή, ο οδηγός λήψης κατεβάζει την επόμενη προτεινόμενη έκδοση. Μπορείτε να επιλέξετε οποιαδήποτε διαθέσιμη έκδοση παρακάτω."
-
-#: 
 msgid "Change required"
 msgstr "Απαιτείται αλλαγή"
-
-#: 
-msgid "Changelog"
-msgstr "Αρχείο αλλαγών"
 
 #: 
 msgid "Continue Anyway"
@@ -15792,10 +15764,6 @@ msgstr "Συνέχεια ούτως ή άλλως"
 #: 
 msgid "Could not load release information."
 msgstr "Δεν ήταν δυνατή η φόρτωση πληροφοριών έκδοσης."
-
-#: 
-msgid "Download & Install"
-msgstr "Λήψη και εγκατάσταση"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15824,10 +15792,6 @@ msgstr "Πλήρες αρχείο αλλαγών"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Εγκατάσταση σταθερής έκδοσης {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Εγκατάσταση επόμενης έκδοσης"
 
 #: 
 msgid "Invalid file path"
@@ -15898,10 +15862,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Εμφάνιση πλήρους διαδρομής αναβάθμισης"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Η τελευταία σταθερή έκδοση είναι η {{version}}. Μπορείτε να την επανεγκαταστήσετε παρακάτω."
 
@@ -15928,10 +15888,6 @@ msgstr "Προβολή σημειώσεων έκδοσης"
 #: 
 msgid "What's New"
 msgstr "Τι νέο υπάρχει"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Τι νέο υπάρχει στην {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16894,10 +16850,6 @@ msgid "Working..."
 msgstr "Επεξεργασία..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Είστε {{releaseCount}} εκδόσεις πίσω. Να τι θα κερδίσετε"
-
-#: 
 msgid "click to expand"
 msgstr "κλικ για επέκταση"
 
@@ -17152,10 +17104,6 @@ msgstr "Αποτυχία δημιουργίας υπόσχεσης"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Αποτυχία διαγραφής υπόσχεσης"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Αποτυχία κωδικοποίησης απόκρισης προσφοράς"
 
 #: 
 msgid "Failed to retrieve pledge"

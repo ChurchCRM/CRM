@@ -14464,10 +14464,6 @@ msgid "Group removed from cart"
 msgstr "Grupi u hoq nga shporta"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Kërkohet GroupID për zgjedhjen e rolit"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14845,20 +14841,8 @@ msgid "Please select a role."
 msgstr "Ju lutemi zgjidhni një rol."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Ju lutemi zgjidhni si shërbesen ashtu edhe rolin."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Ju lutem zgjidhni rreshtat për t'u fshirë"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Ju lutem zgjidhni rolin e synuar për anëtarët"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Ju lutemi zgjidhni grupin e synuar për anëtarët"
 
 #: 
 msgid "Please try again"
@@ -15754,24 +15738,12 @@ msgid "Account status"
 msgstr "Statusi i llogarisë"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avancuar: zgjidhni një version të synuar specifik"
-
-#: 
 msgid "Bug Fix"
 msgstr "Korrigjim gabimi"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Si parazgjedhje, magjistari shkarkon lëshimin tjetër të rekomanduar. Mund të zgjidhni çdo version të disponueshëm më poshtë."
-
-#: 
 msgid "Change required"
 msgstr "Ndryshim i kërkuar"
-
-#: 
-msgid "Changelog"
-msgstr "Regjistri i ndryshimeve"
 
 #: 
 msgid "Continue Anyway"
@@ -15780,10 +15752,6 @@ msgstr "Vazhdo gjithsesi"
 #: 
 msgid "Could not load release information."
 msgstr "Nuk mund të ngarkohej informacioni i lëshimit."
-
-#: 
-msgid "Download & Install"
-msgstr "Shkarko dhe instalo"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15812,10 +15780,6 @@ msgstr "Regjistri i plotë i ndryshimeve"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Instalo versionin e qëndrueshëm {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Duke instaluar lëshimin tjetër"
 
 #: 
 msgid "Invalid file path"
@@ -15886,10 +15850,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Shfaq rrugën e plotë të përditësimit"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Lëshimi i fundit i qëndrueshëm është {{version}}. Mund ta riinstaloni më poshtë."
 
@@ -15916,10 +15876,6 @@ msgstr "Shiko shënimet e lëshimit"
 #: 
 msgid "What's New"
 msgstr "Çfarë është e re"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Çfarë është e re në {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16882,10 +16838,6 @@ msgid "Working..."
 msgstr "Duke punuar..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Jeni {{releaseCount}} versione prapa. Ja çfarë do të fitoni"
-
-#: 
 msgid "click to expand"
 msgstr "klikoni për të zgjeruar"
 
@@ -17140,10 +17092,6 @@ msgstr "Dështoi krijimi i premtimit"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Dështoi fshirja e premtimit"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Dështoi kodimi i përgjigjes së pagesës"
 
 #: 
 msgid "Failed to retrieve pledge"

@@ -14487,10 +14487,6 @@ msgid "Group removed from cart"
 msgstr "கூடையிலிருந்து குழு அகற்றப்பட்டது"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "பங்குத் தேர்வுக்கான தூண்டுதலுக்கு குழு ஐடி (GroupID) தேவை"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14870,20 +14866,8 @@ msgid "Please select a role."
 msgstr "Please select a role."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Please select both a group and a role."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Please select rows to delete"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Please select target Role for members"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Please select target group for members"
 
 #: 
 msgid "Please try again"
@@ -15779,24 +15763,12 @@ msgid "Account status"
 msgstr "கணக்கு நிலை"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "மேம்பட்டது: குறிப்பிட்ட இலக்கு பதிப்பைத் தேர்ந்தெடுக்கவும்"
-
-#: 
 msgid "Bug Fix"
 msgstr "பிழை திருத்தம்"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "இயல்பாக, வழிகாட்டி அடுத்த பரிந்துரைக்கப்பட்ட வெளியீட்டை பதிவிறக்குகிறது. அதற்கு பதிலாக கீழே உள்ள எந்த கிடைக்கக்கூடிய பதிப்பையும் தேர்ந்தெடுக்கலாம்."
-
-#: 
 msgid "Change required"
 msgstr "மாற்றம் தேவை"
-
-#: 
-msgid "Changelog"
-msgstr "மாற்றப் பதிவு"
 
 #: 
 msgid "Continue Anyway"
@@ -15805,10 +15777,6 @@ msgstr "எப்படியும் தொடரவும்"
 #: 
 msgid "Could not load release information."
 msgstr "வெளியீட்டு தகவலை ஏற்ற முடியவில்லை."
-
-#: 
-msgid "Download & Install"
-msgstr "பதிவிறக்கு & நிறுவு"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15837,10 +15805,6 @@ msgstr "முழு மாற்றப் பதிவு"
 #: 
 msgid "Install stable {{version}}"
 msgstr "நிலையான {{version}} ஐ நிறுவு"
-
-#: 
-msgid "Installing next release"
-msgstr "அடுத்த வெளியீட்டை நிறுவுகிறது"
 
 #: 
 msgid "Invalid file path"
@@ -15911,10 +15875,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "முழு மேம்படுத்தல் பாதையை காட்டு"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "சமீபத்திய நிலையான வெளியீடு {{version}} ஆகும். கீழே மீண்டும் நிறுவலாம்."
 
@@ -15941,10 +15901,6 @@ msgstr "வெளியீட்டு குறிப்புகளை பா�
 #: 
 msgid "What's New"
 msgstr "புதியது என்ன"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} இல் புதியது என்ன"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16943,10 +16899,6 @@ msgid "Working..."
 msgstr "செயல்படுகிறது..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "நீங்கள் {{releaseCount}} வெளியீடுகள் பின்தங்கியுள்ளீர்கள். நீங்கள் பெறுவது இதுதான்"
-
-#: 
 msgid "click to expand"
 msgstr "விரிவாக்க கிளிக் செய்யவும்"
 
@@ -17211,10 +17163,6 @@ msgstr "உறுதிமொழியை உருவாக்க தோல்�
 #: 
 msgid "Failed to delete pledge"
 msgstr "உறுதிமொழியை நீக்க தோல்வியடைந்தது"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "கொடுப்பனவு பதிலை குறியாக்கம் செய்ய தோல்வியடைந்தது"
 
 #: 
 msgid "Failed to retrieve pledge"

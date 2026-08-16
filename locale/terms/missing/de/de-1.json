@@ -32,6 +32,17 @@
   "Optional description": "",
   "Private Calendar": "",
   "Public Calendar": "",
+  "Advanced: Install a specific version instead": "",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "",
+  "Cannot edit a payment in a closed deposit": "",
+  "Download & Apply {{version}}": "",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "",
+  "Failed to decode payment request": "",
+  "Full release notes": "",
+  "Invalid payment data": "",
+  "No release notes available.": "",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "",
+  "What you'll gain": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""
