@@ -60,7 +60,7 @@ describe("Empty Cart to Group", () => {
         cy.get("#cart-dropdown-menu", { timeout: 5000 }).should("not.contain", "undefined");
 
         // Click the cart dropdown toggle to show the menu (find by shopping cart icon)
-        cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .ti-shopping-cart").closest("[data-bs-toggle='dropdown']").click();
+        cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .fa-cart-shopping").closest("[data-bs-toggle='dropdown']").click();
 
         // The "To Group" button should be visible because the cart is non-empty
         cy.get("#emptyCartToGroup").should("be.visible").click();
@@ -101,7 +101,7 @@ describe("Empty Cart to Group", () => {
             cy.get("#cart-dropdown-menu", { timeout: 5000 }).should("not.contain", "undefined");
 
             // Click the cart dropdown toggle to show the menu (find by shopping cart icon)
-            cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .ti-shopping-cart").closest("[data-bs-toggle='dropdown']").click();
+            cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .fa-cart-shopping").closest("[data-bs-toggle='dropdown']").click();
 
             cy.get("#emptyCartToGroup").should("be.visible").click();
 
@@ -139,7 +139,7 @@ describe("Empty Cart to Group", () => {
         cy.get("#cart-dropdown-menu", { timeout: 5000 }).should("not.contain", "undefined");
 
         // Click the cart dropdown toggle to show the menu (find by shopping cart icon)
-        cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .ti-shopping-cart").closest("[data-bs-toggle='dropdown']").click();
+        cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .fa-cart-shopping").closest("[data-bs-toggle='dropdown']").click();
 
         cy.get("#emptyCartToGroup").should("be.visible").click();
 
@@ -174,7 +174,7 @@ describe("Empty Cart to Group", () => {
         cy.get("#cart-dropdown-menu", { timeout: 5000 }).should("not.contain", "undefined");
 
         // Click the cart dropdown toggle to show the menu (find by shopping cart icon)
-        cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .ti-shopping-cart").closest("[data-bs-toggle='dropdown']").click();
+        cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .fa-cart-shopping").closest("[data-bs-toggle='dropdown']").click();
 
         cy.get("#emptyCartToGroup").should("be.visible").click();
         cy.get(".modal.show").should("be.visible");
