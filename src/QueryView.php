@@ -135,11 +135,14 @@ function ValidateInput()
                     if (is_array($_POST[$qrp_Alias])) {
                         $bError = true;
                         $aErrorText[$qrp_Alias] = gettext('This value must be a valid field name.');
+                        $vPOST[$qrp_Alias] = '';
                     } elseif (!preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', (string) $_POST[$qrp_Alias])) {
                         $bError = true;
                         $aErrorText[$qrp_Alias] = gettext('This value must be a valid field name.');
+                        $vPOST[$qrp_Alias] = '';
+                    } else {
+                        $vPOST[$qrp_Alias] = $_POST[$qrp_Alias];
                     }
-                    $vPOST[$qrp_Alias] = is_array($_POST[$qrp_Alias]) ? '' : $_POST[$qrp_Alias];
                     break;
 
                 default:
