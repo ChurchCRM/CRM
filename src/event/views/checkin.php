@@ -13,7 +13,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <?php if ($addedCount > 0): ?>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <i class="ti ti-circle-check me-2"></i>
+    <i class="fa-solid fa-circle-check me-2"></i>
     <strong><?= $addedCount ?></strong> <?= ngettext('person', 'people', $addedCount) ?> <?= gettext('added to this event') ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -25,19 +25,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
             <span>
-                <i class="ti ti-calendar-check me-2 text-primary"></i>
+                <i class="fa-solid fa-calendar-check me-2 text-primary"></i>
                 <strong><?= gettext('Event') ?>:</strong> <?= InputUtils::escapeHTML($event->getTitle()) ?>
                 <span class="text-secondary">(<?= $event->getStart('M j, Y') ?>)</span>
             </span>
             <div class="btn-group">
                 <a href="<?= $sRootPath ?>/event/view/<?= $eventId ?>" class="btn btn-sm btn-outline-secondary">
-                    <i class="ti ti-eye me-1"></i><?= gettext('View Event') ?>
+                    <i class="fa-solid fa-eye me-1"></i><?= gettext('View Event') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>" class="btn btn-sm btn-outline-secondary">
-                    <i class="ti ti-pencil me-1"></i><?= gettext('Edit Event') ?>
+                    <i class="fa-solid fa-pencil me-1"></i><?= gettext('Edit Event') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-sm btn-outline-secondary">
-                    <i class="ti ti-switch-horizontal me-1"></i><?= gettext('Change Event') ?>
+                    <i class="fa-solid fa-arrows-left-right me-1"></i><?= gettext('Change Event') ?>
                 </a>
             </div>
         </div>
@@ -83,7 +83,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <div class="card-footer text-end">
         <a class="btn btn-primary" href="<?= $sRootPath ?>/event/editor">
-            <i class="ti ti-plus me-1"></i><?= gettext('Add New Event') ?>
+            <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New Event') ?>
         </a>
     </div>
 </div>
@@ -97,16 +97,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center w-100">
                 <h3 class="card-title mb-0">
-                    <i class="ti ti-users me-2"></i><?= gettext('Group Roster') ?>
+                    <i class="fa-solid fa-users me-2"></i><?= gettext('Group Roster') ?>
                     <span id="rosterGroupName" class="text-secondary"></span>
                 </h3>
                 <div class="d-flex align-items-center gap-2">
                     <span class="badge bg-primary-lt text-primary" id="rosterStats"></span>
                     <button type="button" class="btn btn-sm btn-success" id="checkinAllBtn">
-                        <i class="ti ti-checks me-1"></i><?= gettext('Check In All') ?>
+                        <i class="fa-solid fa-check me-1"></i><?= gettext('Check In All') ?>
                     </button>
                     <button type="button" class="btn btn-sm btn-outline-secondary" id="checkoutAllBtn">
-                        <i class="ti ti-door-exit me-1"></i><?= gettext('Check Out All') ?>
+                        <i class="fa-solid fa-door-open me-1"></i><?= gettext('Check Out All') ?>
                     </button>
                 </div>
             </div>
@@ -118,22 +118,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div id="rosterGrid" class="row g-0 p-3 d-none">
                 <div class="col-md-6 pe-md-2">
                     <h4 class="text-secondary mb-2">
-                        <i class="ti ti-clock me-1"></i><?= gettext('Waiting to Check In') ?>
+                        <i class="fa-solid fa-clock me-1"></i><?= gettext('Waiting to Check In') ?>
                         <span class="badge bg-secondary text-white ms-1" id="notCheckedInCount">0</span>
                     </h4>
                     <div id="notCheckedInList" class="d-flex flex-column gap-1"></div>
                     <div id="notCheckedInEmpty" class="text-center text-success py-3 d-none">
-                        <i class="ti ti-circle-check me-1"></i><?= gettext('Everyone is checked in!') ?>
+                        <i class="fa-solid fa-circle-check me-1"></i><?= gettext('Everyone is checked in!') ?>
                     </div>
                 </div>
                 <div class="col-md-6 ps-md-2 mt-3 mt-md-0">
                     <h4 class="text-secondary mb-2">
-                        <i class="ti ti-circle-check me-1"></i><?= gettext('Checked In') ?>
+                        <i class="fa-solid fa-circle-check me-1"></i><?= gettext('Checked In') ?>
                         <span class="badge bg-success text-white ms-1" id="checkedInCount">0</span>
                     </h4>
                     <div id="checkedInList" class="d-flex flex-column gap-1"></div>
                     <div id="checkedInEmpty" class="text-center text-secondary py-3 d-none">
-                        <i class="ti ti-mood-sad me-1"></i><?= gettext('No one checked in yet') ?>
+                        <i class="fa-solid fa-frown me-1"></i><?= gettext('No one checked in yet') ?>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <!-- Inactive event banner — block check-in entirely -->
 <div class="alert alert-warning mb-3">
     <div class="d-flex align-items-center">
-        <i class="ti ti-alert-triangle me-2 fs-3"></i>
+        <i class="fa-solid fa-triangle-exclamation me-2 fs-3"></i>
         <div class="flex-grow-1">
             <strong><?= gettext('This event is inactive.') ?></strong>
             <div class="small text-body-secondary">
@@ -186,7 +186,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </select>
                         <button type="button" class="btn btn-outline-secondary assign-me-btn" id="assignMeCheckin"
                             title="<?= gettext('Assign to me') ?>">
-                            <i class="ti ti-user-check"></i>
+                            <i class="fa-solid fa-user-check"></i>
                         </button>
                     </div>
                     <div id="adultDetails" class="mt-2"></div>
@@ -197,7 +197,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-footer">
         <div class="d-flex gap-2">
             <button type="button" class="btn btn-success" id="checkinBtn" tabindex="3">
-                <i class="ti ti-check me-1"></i><?= gettext('Check In') ?>
+                <i class="fa-solid fa-check me-1"></i><?= gettext('Check In') ?>
             </button>
             <button type="button" class="btn btn-outline-secondary" id="clearBtn" tabindex="4">
                 <?= gettext('Clear') ?>
@@ -242,15 +242,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="dropdown">
                             <button class="btn btn-sm btn-ghost-secondary" type="button"
                                     data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                <i class="ti ti-dots-vertical"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="<?= Person::getViewURIForId($att['personId']) ?>">
-                                    <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                    <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                                 </a>
                                 <?php if ($att['familyId']): ?>
                                 <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= $att['familyId'] ?>">
-                                    <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                    <i class="fa-solid fa-users me-2"></i><?= gettext('View Family') ?>
                                 </a>
                                 <?php endif; ?>
                                 <?php if (!$att['isCheckedOut']): ?>
@@ -260,19 +260,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         data-person-name="<?= InputUtils::escapeAttribute($att['fullName']) ?>"
                                         <?php if ($att['checkinId']): ?>data-checkin-id="<?= $att['checkinId'] ?>"<?php endif; ?>
                                         <?php if ($att['checkinBy']): ?>data-checkin-name="<?= InputUtils::escapeAttribute($att['checkinBy']) ?>"<?php endif; ?>>
-                                    <i class="ti ti-door-exit me-2"></i><?= gettext('Check Out') ?>
+                                    <i class="fa-solid fa-door-open me-2"></i><?= gettext('Check Out') ?>
                                 </button>
                                 <?php else: ?>
                                 <div class="dropdown-divider"></div>
                                 <span class="dropdown-item disabled text-success">
-                                    <i class="ti ti-check me-2"></i><?= gettext('Checked Out') ?>
+                                    <i class="fa-solid fa-check me-2"></i><?= gettext('Checked Out') ?>
                                 </span>
                                 <?php endif; ?>
                                 <div class="dropdown-divider"></div>
                                 <button type="button" class="dropdown-item text-danger delete-attendance-btn"
                                         data-person-id="<?= $att['personId'] ?>"
                                         data-person-name="<?= InputUtils::escapeAttribute($att['fullName']) ?>">
-                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                    <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                 </button>
                             </div>
                         </div>

@@ -807,18 +807,18 @@ function initDataTable() {
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static">' +
-            '<i class="ti ti-dots-vertical"></i></button>' +
+            '<i class="fa-solid fa-ellipsis-vertical"></i></button>' +
             '<div class="dropdown-menu dropdown-menu-end">' +
             '<a class="dropdown-item" href="' +
             window.CRM.root +
             "/people/view/" +
             full.PersonId +
-            '"><i class="ti ti-eye me-2"></i>' +
+            '"><i class="fa-solid fa-eye me-2"></i>' +
             i18next.t("View") +
             "</a>" +
             '<button class="dropdown-item changeMembership" data-personid="' +
             full.PersonId +
-            '"><i class="ti ti-users me-2"></i>' +
+            '"><i class="fa-solid fa-users me-2"></i>' +
             i18next.t("Change Role") +
             "</button>" +
             '<button class="dropdown-item AddToCart" data-cart-id="' +
@@ -827,7 +827,7 @@ function initDataTable() {
             i18next.t("Add to Cart") +
             '" data-label-remove="' +
             i18next.t("Remove from Cart") +
-            '"><i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">' +
+            '"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">' +
             i18next.t("Add to Cart") +
             "</span></button>" +
             '<div class="dropdown-divider"></div>' +
@@ -835,7 +835,7 @@ function initDataTable() {
             full.PersonId +
             '" data-name="' +
             escapedName +
-            '"><i class="ti ti-user-minus me-2"></i>' +
+            '"><i class="fa-solid fa-user-minus me-2"></i>' +
             i18next.t("Remove") +
             "</button></div></div>"
           );

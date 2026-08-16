@@ -60,7 +60,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 404,
                 gettext('Calendar not found'),
                 gettext('This calendar link is invalid or has been revoked. Ask the church for a current link.'),
-                'ti-calendar-off',
+                'fa-calendar-slash',
             );
         }
 
@@ -94,7 +94,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
         int $status,
         string $title,
         string $message,
-        string $icon = 'ti-calendar-off',
+        string $icon = 'fa-calendar-slash',
     ): ResponseInterface {
         if ($this->prefersJson($request)) {
             return SlimUtils::renderJSON(

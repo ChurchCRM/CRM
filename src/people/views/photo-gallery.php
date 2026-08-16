@@ -26,7 +26,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">
-            <i class="ti ti-users me-2"></i>
+            <i class="fa-solid fa-users me-2"></i>
             <?= gettext('Photo Directory') ?>
         </h3>
         <div class="card-options ms-auto">
@@ -61,7 +61,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <input type="checkbox" class="form-check-input" id="photosOnly-toggle"
                            <?= $showOnlyWithPhotos ? 'checked' : '' ?>>
                     <label class="form-check-label text-nowrap" for="photosOnly-toggle">
-                        <i class="ti ti-camera me-1"></i><?= gettext('Photos only') ?>
+                        <i class="fa-solid fa-camera me-1"></i><?= gettext('Photos only') ?>
                     </label>
                 </div>
             </div>
@@ -83,7 +83,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Reset -->
             <div class="col-auto">
                 <a href="<?= $sRootPath ?>/people/photos" class="btn btn-outline-secondary">
-                    <i class="ti ti-refresh"></i>
+                    <i class="fa-solid fa-arrows-rotate"></i>
                     <span class="d-none d-sm-inline ms-1"><?= gettext('Reset') ?></span>
                 </a>
             </div>
@@ -115,7 +115,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php if (empty($peopleData)): ?>
             <div class="empty">
                 <div class="empty-icon">
-                    <i class="ti ti-camera-off fs-1 text-body-secondary"></i>
+                    <i class="fa-solid fa-camera-off fs-1 text-body-secondary"></i>
                 </div>
                 <p class="empty-title"><?= gettext('No people found') ?></p>
                 <p class="empty-subtitle text-body-secondary">
@@ -123,7 +123,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </p>
                 <div class="empty-action">
                     <a href="<?= $sRootPath ?>/people/photos" class="btn btn-primary">
-                        <i class="ti ti-refresh me-1"></i><?= gettext('Reset Filters') ?>
+                        <i class="fa-solid fa-arrows-rotate me-1"></i><?= gettext('Reset Filters') ?>
                     </a>
                 </div>
             </div>
@@ -180,24 +180,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <a href="tel:<?= InputUtils::escapeAttribute(preg_replace('/\D/', '', $phone)) ?>"
                                            class="btn btn-sm btn-icon btn-outline-success"
                                            title="<?= gettext('Call') ?>: <?= InputUtils::escapeAttribute($phone) ?>">
-                                            <i class="ti ti-phone"></i>
+                                            <i class="fa-solid fa-phone"></i>
                                         </a>
                                     <?php else: ?>
                                         <span class="btn btn-sm btn-icon btn-outline-secondary disabled"
                                               title="<?= gettext('No phone number on file') ?>">
-                                            <i class="ti ti-phone"></i>
+                                            <i class="fa-solid fa-phone"></i>
                                         </span>
                                     <?php endif; ?>
                                     <?php if ($cellPhone): ?>
                                         <a href="sms:<?= InputUtils::escapeAttribute(preg_replace('/[^\d+]/', '', $cellPhone)) ?>"
                                            class="btn btn-sm btn-icon btn-outline-secondary"
                                            title="<?= gettext('Send text message') ?>">
-                                            <i class="ti ti-message"></i>
+                                            <i class="fa-solid fa-envelope"></i>
                                         </a>
                                     <?php else: ?>
                                         <span class="btn btn-sm btn-icon btn-outline-secondary disabled"
                                               title="<?= gettext('No cell phone on file') ?>">
-                                            <i class="ti ti-message"></i>
+                                            <i class="fa-solid fa-envelope"></i>
                                         </span>
                                     <?php endif; ?>
                                     <?php if ($email): ?>
@@ -205,12 +205,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                            class="btn btn-sm btn-icon btn-outline-primary"
                                            title="<?= gettext('Email') ?>: <?= InputUtils::escapeAttribute($email) ?>"
                                            target="_blank" rel="noopener noreferrer">
-                                            <i class="ti ti-mail"></i>
+                                            <i class="fa-solid fa-envelope"></i>
                                         </a>
                                     <?php else: ?>
                                         <span class="btn btn-sm btn-icon btn-outline-secondary disabled"
                                               title="<?= gettext('No email address on file') ?>">
-                                            <i class="ti ti-mail"></i>
+                                            <i class="fa-solid fa-envelope"></i>
                                         </span>
                                     <?php endif; ?>
                                 </div>
@@ -237,7 +237,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <ul class="pagination justify-content-center">
                         <li class="page-item <?= $currentPage <= 1 ? 'disabled' : '' ?>">
                             <a class="page-link" href="<?= $baseUrl ?>page=<?= $currentPage - 1 ?>">
-                                <i class="ti ti-chevron-left"></i>
+                                <i class="fa-solid fa-chevron-left"></i>
                                 <span class="d-none d-sm-inline ms-1"><?= gettext('Prev') ?></span>
                             </a>
                         </li>
@@ -249,7 +249,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <li class="page-item <?= $currentPage >= $totalPages ? 'disabled' : '' ?>">
                             <a class="page-link" href="<?= $baseUrl ?>page=<?= $currentPage + 1 ?>">
                                 <span class="d-none d-sm-inline me-1"><?= gettext('Next') ?></span>
-                                <i class="ti ti-chevron-right"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </a>
                         </li>
                     </ul>

@@ -287,7 +287,7 @@ if ($bCanManageGroups) {
                                 data-pro-id="<?= (int) $aRow['pro_ID'] ?>"
                                 data-pro-name="<?= InputUtils::escapeAttribute($aRow['pro_Name']) ?>"
                                 title="<?= gettext('Remove') ?>">
-                                <i class="fa-solid fa-times"></i>
+                                <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
                         <?php endif; ?>
