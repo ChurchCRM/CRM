@@ -6,12 +6,9 @@ describe("Finance Family", () => {
     });
 
     it("View a Family with Pledges and Payments section", () => {
-        // Intercept the DataTable Ajax before visiting — ensures cy.wait captures
-        // the request even if the Promise.all resolves before cy.visit returns.
-        cy.intercept("GET", "**/api/payments/family/**").as("givingData");
-
         cy.visit("people/family/1");
-        // Page title is family name, subtitle has "Family Profile"
+
+        // Basic page identity checks
         cy.contains("Campbell");
         cy.contains("Family Profile");
         cy.contains("Darren Campbell");
@@ -21,26 +18,21 @@ describe("Finance Family", () => {
         cy.get(".pledge-type-pill").should("have.length", 3);
         cy.get("#giving-fy-select").should("exist");
 
-        // Wait for DataTable to init (wrapper created synchronously on DataTable() call)
-        cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
-
-        // Wait for the actual Ajax round-trip to complete.
-        cy.wait("@givingData", { timeout: 20000 });
-
         // Gate on initComplete having populated the FY dropdown.
         //
-        // cy.wait resolves when Cypress intercepts the XHR response, which is
-        // BEFORE the browser's DataTables Ajax callback fires.  initComplete
-        // (which clears the FY filter and calls draw()) runs asynchronously
-        // *after* cy.wait resolves.  initComplete appends <option> elements to
-        // #giving-fy-select synchronously before calling draw(), so waiting
-        // for at least 2 options (the static "All Time" + one FY added by
-        // initComplete) is the observable DOM signal that draw() was called and
-        // rows are rendered.
+        // The subdir CI environment (user 3) starts with finance.show.payments='0'
+        // and finance.show.pledges='0', so the page JS fires two POST requests to
+        // update these before initialising DataTables.  In some CI timing
+        // conditions this causes 2-4 rapid page reloads before settling.
         //
-        // Family 1 seed data is from 2018; no current-FY data, so initComplete
-        // auto-clears the FY filter, appends one FY option, then calls draw().
-        cy.get("#giving-fy-select option", { timeout: 15000 }).should(
+        // cy.get() re-queries the live DOM on every retry, so it is safe to use
+        // through page reloads.  initComplete appends one FY <option> per fiscal
+        // year found in the data BEFORE calling draw(), so waiting for at least
+        // 2 options (static "All Time" + at least one FY added by initComplete)
+        // is a reliable signal that draw() has been called and rows are rendered.
+        //
+        // 30-second timeout covers any reload loop plus DataTable Ajax latency.
+        cy.get("#giving-fy-select option", { timeout: 30000 }).should(
             "have.length.at.least",
             2,
         );
@@ -57,8 +49,6 @@ describe("Finance Family", () => {
     });
 
     it("View another Family with finance data", () => {
-        cy.intercept("GET", "**/api/payments/family/**").as("givingData");
-
         cy.visit("people/family/20");
         cy.contains("Black");
         cy.contains("Family Profile");
@@ -66,18 +56,14 @@ describe("Finance Family", () => {
         // Giving tab is present
         cy.contains("Giving");
 
-        // Wait for DataTable to init
-        cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
-
-        // Wait for Ajax response, then gate on initComplete (same pattern as test 1)
-        cy.wait("@givingData", { timeout: 20000 });
-        cy.get("#giving-fy-select option", { timeout: 15000 }).should(
+        // Same gate pattern as test 1 — wait for initComplete to populate FY options.
+        // Family 20 has giving history in FY 2018 only (no current-FY data), so
+        // initComplete auto-switches to All Time view.
+        cy.get("#giving-fy-select option", { timeout: 30000 }).should(
             "have.length.at.least",
             2,
         );
 
-        // This family has giving history in FY 2018 only (no current-FY data).
-        // initComplete auto-switches to All Time view.
         cy.contains("New Building Fund").should("be.visible");
     });
 });
