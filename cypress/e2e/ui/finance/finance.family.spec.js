@@ -24,13 +24,26 @@ describe("Finance Family", () => {
         // Wait for DataTable to init (wrapper created synchronously on DataTable() call)
         cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
 
-        // Wait for the actual Ajax round-trip to complete.  This is the only
-        // reliable gate: the wrapper exists as soon as DataTable() is called but
-        // the Ajax fires after the Promise.all resolves.  cy.wait blocks until
-        // the response arrives, after which initComplete has run and rows are
-        // rendered (initComplete auto-clears the FY filter because family 1 has
-        // no current-FY giving data, so all-time rows are shown).
+        // Wait for the actual Ajax round-trip to complete.
         cy.wait("@givingData", { timeout: 20000 });
+
+        // Gate on initComplete having populated the FY dropdown.
+        //
+        // cy.wait resolves when Cypress intercepts the XHR response, which is
+        // BEFORE the browser's DataTables Ajax callback fires.  initComplete
+        // (which clears the FY filter and calls draw()) runs asynchronously
+        // *after* cy.wait resolves.  initComplete appends <option> elements to
+        // #giving-fy-select synchronously before calling draw(), so waiting
+        // for at least 2 options (the static "All Time" + one FY added by
+        // initComplete) is the observable DOM signal that draw() was called and
+        // rows are rendered.
+        //
+        // Family 1 seed data is from 2018; no current-FY data, so initComplete
+        // auto-clears the FY filter, appends one FY option, then calls draw().
+        cy.get("#giving-fy-select option", { timeout: 15000 }).should(
+            "have.length.at.least",
+            2,
+        );
 
         // Data rows must now be visible
         cy.contains("Music Ministry").should("be.visible");
@@ -56,8 +69,12 @@ describe("Finance Family", () => {
         // Wait for DataTable to init
         cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
 
-        // Wait for Ajax response before asserting DOM content
+        // Wait for Ajax response, then gate on initComplete (same pattern as test 1)
         cy.wait("@givingData", { timeout: 20000 });
+        cy.get("#giving-fy-select option", { timeout: 15000 }).should(
+            "have.length.at.least",
+            2,
+        );
 
         // This family has giving history in FY 2018 only (no current-FY data).
         // initComplete auto-switches to All Time view.
