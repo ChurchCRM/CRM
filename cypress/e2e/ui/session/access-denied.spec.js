@@ -118,7 +118,7 @@ describe("Access Denied Page", () => {
             cy.visit("/v2/access-denied?role=Admin");
             cy.get(".card.shadow-sm").should("exist");
             cy.get(".card.shadow-sm").contains("Permission Required").should("be.visible");
-            cy.get('.card.shadow-sm i.ti.ti-alert-circle').should("exist");
+            cy.get('.card.shadow-sm i.fa-solid.fa-circle-exclamation').should("exist");
         });
 
         it("Should display warning callout for role information", () => {
