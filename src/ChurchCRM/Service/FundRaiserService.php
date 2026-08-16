@@ -274,28 +274,45 @@ class FundRaiserService
     }
 
     /**
-     * Returns fundraisers not Closed AND not archived by end date.
+     * Returns scalar rows for fundraisers that are not Closed AND not past their end date.
      * Used by both getWidgetStats() and getActiveFundraiserCount() to avoid code duplication.
      * Mirrors the active/archived split logic in fundraiser.php.
      *
-     * @return \Propel\Runtime\Collection\Collection
+     * Uses a DB-level status filter and column projection to avoid full ORM hydration —
+     * returns lightweight associative rows instead of hydrated FundRaiser objects.
+     *
+     * @return array<int, array{Id:string, Date:string|null, EndDate:string|null, Status:string|null}>
      */
-    private function getActiveFundraiserCollection()
+    private function getActiveFundraiserCollection(): array
     {
         $todayDate = DateTimeUtils::getTodayDate();
         $activeFundraisers = [];
 
-        $allFundraisers = FundRaiserQuery::create()->find();
-        foreach ($allFundraisers as $fr) {
-            $status = $fr->getStatus() ?? 'Active';
-            if ($status === 'Closed') {
+        // Filter Closed fundraisers at the DB level; project only the columns we need
+        // to avoid fully hydrating every row as a Propel object.
+        $candidates = FundRaiserQuery::create()
+            ->filterByStatus('Closed', \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+            ->select(['Id', 'Date', 'EndDate', 'Status'])
+            ->find();
+
+        foreach ($candidates as $row) {
+            $status  = $row['Status'] ?? 'Active';
+            $endDate = $row['EndDate'];
+
+            // Fundraisers with Active or Planning status and no explicit end date are
+            // open-ended — always count them as active. Falling back to the start date
+            // (Date) would silently archive such fundraisers the day after they started.
+            if ($endDate === null && in_array($status, ['Active', 'Planning'], true)) {
+                $activeFundraisers[] = $row;
                 continue;
             }
-            $effectiveEnd = $fr->getEndDate() ?? $fr->getDate();
-            if ($effectiveEnd !== null && $effectiveEnd->format('Y-m-d') < $todayDate) {
+
+            $effectiveEnd = $endDate ?? $row['Date'];
+            if ($effectiveEnd !== null && $effectiveEnd < $todayDate) {
                 continue;
             }
-            $activeFundraisers[] = $fr;
+
+            $activeFundraisers[] = $row;
         }
 
         return $activeFundraisers;
