@@ -779,7 +779,7 @@ class Person extends BasePerson implements PhotoInterface
                 return sprintf($monthStr, $age->m);
             } catch (\Throwable $e) {
                 error_log('Age formatting failed for locale string "' . $monthStr . '": ' . $e->getMessage());
-                return $age->m . ' ' . ngettext('month old', 'months old', $age->m);
+                return $age->m . ' ' . preg_replace('/%\d*\$?d\s*/u', '', $monthStr);
             }
         }
 
@@ -788,7 +788,7 @@ class Person extends BasePerson implements PhotoInterface
             return sprintf($yearStr, $age->y);
         } catch (\Throwable $e) {
             error_log('Age formatting failed for locale string "' . $yearStr . '": ' . $e->getMessage());
-            return $age->y . ' ' . ngettext('year old', 'years old', $age->y);
+            return $age->y . ' ' . preg_replace('/%\d*\$?d\s*/u', '', $yearStr);
         }
     }
 
