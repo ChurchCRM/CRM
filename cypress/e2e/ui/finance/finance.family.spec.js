@@ -17,20 +17,19 @@ describe("Finance Family", () => {
         cy.get(".pledge-type-pill").should("have.length", 3);
         cy.get("#giving-fy-select").should("exist");
 
-        // Wait for DataTable to initialise — the _wrapper div is created synchronously
-        // when DataTables runs, which is also when the #giving-fy-select change handler
-        // gets registered. Without this wait the .select() below fires before the handler
-        // exists and has no effect.
+        // Wait for DataTable to init (the wrapper is created synchronously during
+        // DataTable() construction, which also registers the FY-select change handler)
         cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
 
-        // Default FY filter hides older data — "Music Ministry" should NOT be visible
-        cy.contains("Music Ministry").should("not.exist");
+        // This family's data is in FY 2018 — the app auto-switches to All Time view
+        // in initComplete when the current FY has no records.  Wait for data to render.
+        cy.get("#pledge-payment-v2-table tbody tr:not(.dataTables_empty)", { timeout: 10000 })
+            .should("have.length.at.least", 1);
 
-        // Select "All Time" to reveal all records
-        cy.get("#giving-fy-select").select("");
-        cy.contains("Music Ministry", { timeout: 10000 }).should("be.visible");
+        // "Music Ministry" is one of the recorded funds
+        cy.contains("Music Ministry").should("be.visible");
 
-        // Test type filter pills
+        // Test type filter pills (client-side filter, independent of FY)
         cy.get('.pledge-type-pill[data-filter="Pledge"]').click();
         cy.get(".pledge-type-pill.active").should("contain", "Pledges");
 
@@ -43,16 +42,14 @@ describe("Finance Family", () => {
         cy.contains("Black");
         cy.contains("Family Profile");
 
-        // Wait for finance section and table to be ready
+        // Giving tab is present
         cy.contains("Giving");
-        // Wait for DataTable to initialise before interacting with the FY select
+
+        // Wait for DataTable to init
         cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
 
-        // Default FY filter hides older data
-        cy.contains("New Building Fund").should("not.exist");
-
-        // Select "All Time" to reveal all records
-        cy.get("#giving-fy-select").select("");
+        // This family has giving history in FY 2018 only (no current-FY data).
+        // initComplete auto-switches to All Time view.  Wait for rows to appear.
         cy.contains("New Building Fund", { timeout: 10000 }).should("be.visible");
     });
 });
