@@ -210,25 +210,7 @@ class FundRaiserService
         $this->logger->debug('FundRaiserService::getWidgetStats');
 
         $year = DateTimeUtils::getCurrentYear();
-
-        // Active fundraisers count: not Closed AND not archived by end date.
-        // Mirrors the active/archived split logic in fundraiser.php so the stat
-        // card displays only fundraisers that appear in the Active Fundraisers table.
-        $todayDate = DateTimeUtils::getTodayDate();
-        $activeCount = 0;
-
-        $allFundraisers = FundRaiserQuery::create()->find();
-        foreach ($allFundraisers as $fr) {
-            $status = $fr->getStatus() ?? 'Active';
-            if ($status === 'Closed') {
-                continue;
-            }
-            $effectiveEnd = $fr->getEndDate() ?? $fr->getDate();
-            if ($effectiveEnd !== null && $effectiveEnd->format('Y-m-d') < $todayDate) {
-                continue;
-            }
-            $activeCount++;
-        }
+        $activeCount = count($this->getActiveFundraiserCollection());
 
         // This-year fundraiser IDs (step 1 of 2-step approach — no FK relations defined)
         $yearStart = $year . '-01-01';
@@ -288,9 +270,20 @@ class FundRaiserService
     public function getActiveFundraiserCount(): int
     {
         $this->logger->debug('FundRaiserService::getActiveFundraiserCount');
+        return count($this->getActiveFundraiserCollection());
+    }
 
+    /**
+     * Returns fundraisers not Closed AND not archived by end date.
+     * Used by both getWidgetStats() and getActiveFundraiserCount() to avoid code duplication.
+     * Mirrors the active/archived split logic in fundraiser.php.
+     *
+     * @return \Propel\Runtime\Collection\Collection
+     */
+    private function getActiveFundraiserCollection()
+    {
         $todayDate = DateTimeUtils::getTodayDate();
-        $count = 0;
+        $activeFundraisers = [];
 
         $allFundraisers = FundRaiserQuery::create()->find();
         foreach ($allFundraisers as $fr) {
@@ -302,10 +295,10 @@ class FundRaiserService
             if ($effectiveEnd !== null && $effectiveEnd->format('Y-m-d') < $todayDate) {
                 continue;
             }
-            $count++;
+            $activeFundraisers[] = $fr;
         }
 
-        return $count;
+        return $activeFundraisers;
     }
 
     /**
