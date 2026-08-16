@@ -157,9 +157,16 @@ describe("Empty Cart to Group", () => {
 
         // Click Cancel
         cy.get(".modal.show #crm-gs-cancel").click({ force: true });
-        // Target only the cart-to-group modal (ID prefix) — avoid matching other
-        // persistent modals on the page (e.g. #IssueReportModal).
-        // The hidden.bs.modal handler removes the wrapper from the DOM entirely.
+        // Bootstrap 5 event delegation (data-bs-dismiss) doesn't always fire with
+        // Cypress synthetic clicks in headless CI. Call hide() directly as a guarantee.
+        cy.window().then((win) => {
+            const el = win.document.querySelector('[id^="crm-group-select-modal"]');
+            if (el) {
+                const instance = win.bootstrap.Modal.getInstance(el);
+                if (instance) instance.hide();
+            }
+        });
+        // hidden.bs.modal handler calls wrapper.remove(), so the element leaves the DOM.
         cy.get('[id^="crm-group-select-modal"]', { timeout: 10000 }).should("not.exist");
 
         // Cart should still have the person
