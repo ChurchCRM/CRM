@@ -276,18 +276,36 @@ class FundRaiserService
     }
 
     /**
-     * Returns the count of fundraisers in Active or Planning status.
+     * Returns the count of fundraisers not Closed AND not archived by end date.
      *
      * Used by the navigation menu counter. Callers are responsible for any
      * session-level caching (e.g. storing in $_SESSION['iFundraiserActiveCount']
      * and invalidating on state changes).
+     *
+     * Mirrors getWidgetStats() and fundraiser.php active/archived split logic
+     * so the sidebar badge matches the stat card and table.
      */
     public function getActiveFundraiserCount(): int
     {
         $this->logger->debug('FundRaiserService::getActiveFundraiserCount');
-        return FundRaiserQuery::create()
-            ->filterByStatus(['Active', 'Planning'])
-            ->count();
+
+        $todayDate = DateTimeUtils::getTodayDate();
+        $count = 0;
+
+        $allFundraisers = FundRaiserQuery::create()->find();
+        foreach ($allFundraisers as $fr) {
+            $status = $fr->getStatus() ?? 'Active';
+            if ($status === 'Closed') {
+                continue;
+            }
+            $effectiveEnd = $fr->getEndDate() ?? $fr->getDate();
+            if ($effectiveEnd !== null && $effectiveEnd->format('Y-m-d') < $todayDate) {
+                continue;
+            }
+            $count++;
+        }
+
+        return $count;
     }
 
     /**
