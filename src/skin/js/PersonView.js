@@ -14,9 +14,10 @@ $(document).ready(function () {
     const popupTitle = window.CRM.currentPersonActive
       ? i18next.t("Confirm Deactivation")
       : i18next.t("Confirm Activation");
+    const safeName = window.CRM.escapeHtml(window.CRM.currentPersonName);
     const popupMessage = window.CRM.currentPersonActive
-      ? `${i18next.t("Please confirm deactivation of person")}: ${window.CRM.currentPersonName}`
-      : `${i18next.t("Please confirm activation of person")}: ${window.CRM.currentPersonName}`;
+      ? `${i18next.t("Please confirm deactivation of person")}: ${safeName}`
+      : `${i18next.t("Please confirm activation of person")}: ${safeName}`;
 
     bootbox.confirm({
       title: popupTitle,

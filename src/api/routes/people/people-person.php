@@ -294,10 +294,10 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
             $note->setEntered($currentUser->getId());
             $note->save();
 
-            // Update last edited metadata
+            // Update last edited metadata (save without auto-note — the explicit note above is sufficient)
             $person->setDateLastEdited($currentDate);
             $person->setEditedBy($currentUser->getId());
-            $person->save();
+            $person->saveWithoutUpdateNote();
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);

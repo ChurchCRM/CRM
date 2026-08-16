@@ -385,10 +385,10 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             $note->setEntered($currentUserId);
             $note->save();
 
-            // Update last edited metadata
+            // Update last edited metadata (save without auto-note — the explicit note above is sufficient)
             $family->setDateLastEdited($currentDate);
             $family->setEditedBy($currentUserId);
-            $family->save();
+            $family->saveWithoutUpdateNote();
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);
