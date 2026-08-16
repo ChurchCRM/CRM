@@ -191,11 +191,7 @@ function getEvent(Request $request, Response $response, $args): Response
     // needs: first linked group (EventAudience) and attendance counts per
     // the type's categories. Keeps the UI's fetch payload to one call.
     $eventId = (int) $Event->getId();
-    $data = $Event->toArray();
-
-    // Ensure Desc and Text are explicitly included as strings (never null)
-    $data['Desc'] = (string) ($Event->getDesc() ?? '');
-    $data['Text'] = (string) ($Event->getText() ?? '');
+    $data = json_decode($Event->toJSON(), true) ?: [];
 
     $audience = EventAudienceQuery::create()->filterByEventId($eventId)->findOne();
     $data['LinkedGroupId'] = $audience ? (int) $audience->getGroupId() : 0;
