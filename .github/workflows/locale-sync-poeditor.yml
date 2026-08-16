@@ -35,6 +35,9 @@ jobs:
     env:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
+    - name: "🚀 Stage 1: Initialization & Checkout"
+      run: echo "Starting POEditor locale sync workflow..."
+
     - name: Checkout repository
       uses: actions/checkout@v7
       with:
@@ -83,6 +86,9 @@ jobs:
         npm ci
         npm install grunt-cli --save-dev
 
+    - name: "🔧 Stage 2: Pre-flight Checks"
+      run: echo "Validating configuration and dependencies..."
+
     - name: Check POEditor Token
       run: |
         if [ -z "${{ secrets.POEDITOR_TOKEN }}" ]; then
@@ -92,11 +98,17 @@ jobs:
         fi
         echo "✅ POEditor token is configured"
 
+    - name: "📤 Stage 3: Upload Missing Translations to POEditor"
+      run: echo "Beginning upload phase..."
+
     - name: Upload missing translations to POEditor
       run: |
         echo "📤 Uploading missing translations to POEditor..."
         node locale/scripts/poeditor-upload-missing.js
         echo "✅ Upload completed successfully"
+
+    - name: "⬇️ Stage 4: Download Locales from POEditor"
+      run: echo "Beginning download phase..."
 
     - name: Download locales from POEditor
       if: inputs.operation_mode != 'audit-only'
@@ -108,6 +120,9 @@ jobs:
         npm run locale:download
         
         echo "✅ Locale download completed successfully"
+
+    - name: "✅ Stage 5: Validation & Quality Checks"
+      run: echo "Validating downloaded locales..."
 
     - name: Validate locale download integrity
       if: inputs.operation_mode != 'audit-only'
@@ -225,6 +240,9 @@ jobs:
           git diff --name-only
         fi
 
+    - name: "🔀 Stage 6: Finalize & Create Pull Request"
+      run: echo "Preparing PR submission..."
+
     - name: Configure Git
       if: inputs.operation_mode != 'audit-only'
       run: |
@@ -275,6 +293,9 @@ jobs:
           
           **Manual Run Options:**
           ${{ inputs.operation_mode == 'audit-only' && '- 🔍 Audit-only mode (no downloads)' || inputs.skip_audit == true && '- ⏩ Audit skipped' || '- 🔍 Full download and audit' }}
+
+    - name: "📊 Stage 7: Audit & Report Results"
+      run: echo "Running final audit and generating report..."
 
     - name: Run locale audit
       if: inputs.operation_mode == 'audit-only' || (inputs.operation_mode != 'audit-only' && inputs.skip_audit != true)
