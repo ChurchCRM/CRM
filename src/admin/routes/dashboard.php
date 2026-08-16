@@ -19,7 +19,7 @@ $app->get('/get-started', function (Request $request, Response $response) {
     // data import API only runs on a truly fresh install (exactly 1 person,
     // no families). When data is present we surface a warning in the UI
     // *before* the user clicks, instead of letting them discover the 403.
-    $personCount = PersonQuery::create()->count();
+    $personCount = PersonQuery::create()->filterByLiving()->count();
     $familyCount = FamilyQuery::create()->count();
     $hasExistingData = $personCount > 1 || $familyCount > 0;
 

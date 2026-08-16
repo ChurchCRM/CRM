@@ -45,6 +45,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
             ->leftJoinWithFamily()
             ->where('(per_Email IS NULL OR per_Email = "") AND (per_WorkEmail IS NULL OR per_WorkEmail = "")')
             ->where('Family.DateDeactivated IS NULL')
+            ->filterByLiving()
             ->find();
 
         $result = [];
@@ -105,6 +106,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
         _or()->filterByMiddleName($searchLikeString, Criteria::LIKE)->
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
         _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
+        filterByLiving()->
         limit(15)->find();
 
         $id = 1;

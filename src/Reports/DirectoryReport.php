@@ -106,6 +106,9 @@ if (strlen($sDirClassifications)) {
 }
 
 $sWhereExt = '';
+if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {
+    $sWhereExt .= 'AND per_DateDeceased IS NULL ';
+}
 if (!empty($_POST['GroupID'])) {
     $sGroupTable = '(person_per, person2group2role_p2g2r)';
 
