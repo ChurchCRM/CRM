@@ -156,8 +156,11 @@ describe("Empty Cart to Group", () => {
         cy.get(".modal.show").should("be.visible");
 
         // Click Cancel
-        cy.get(".modal.show #crm-gs-cancel").click();
-        cy.get(".modal.show").should("not.exist");
+        cy.get(".modal.show #crm-gs-cancel").click({ force: true });
+        // Wait for Bootstrap 5 fade-out animation: check class removal first,
+        // then confirm the element is gone from the DOM.
+        cy.get(".modal.fade", { timeout: 10000 }).should("not.have.class", "show");
+        cy.get(".modal.show", { timeout: 10000 }).should("not.exist");
 
         // Cart should still have the person
         cy.request("GET", "/api/cart/").then((resp) => {
