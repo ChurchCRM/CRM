@@ -17,17 +17,14 @@ describe("Finance Family", () => {
         cy.get(".pledge-type-pill").should("have.length", 3);
         cy.get("#giving-fy-select").should("exist");
 
-        // Wait for DataTable to init (the wrapper is created synchronously during
-        // DataTable() construction, which also registers the FY-select change handler)
+        // Wait for DataTable to init (wrapper is created synchronously)
         cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
 
-        // This family's data is in FY 2018 — the app auto-switches to All Time view
-        // in initComplete when the current FY has no records.  Wait for data to render.
-        cy.get("#pledge-payment-v2-table tbody tr:not(.dataTables_empty)", { timeout: 10000 })
-            .should("have.length.at.least", 1);
-
-        // "Music Ministry" is one of the recorded funds
-        cy.contains("Music Ministry").should("be.visible");
+        // This family's data is in FY 2018 — initComplete auto-switches to All Time view.
+        // In DataTables 3.x the loading row has class `dt-empty` on the <td>, not the <tr>,
+        // so wait directly for the fund text rather than a row-count assertion (which would
+        // spuriously pass on the loading row and advance Cypress before Ajax returns).
+        cy.contains("Music Ministry", { timeout: 15000 }).should("be.visible");
 
         // Test type filter pills (client-side filter, independent of FY)
         cy.get('.pledge-type-pill[data-filter="Pledge"]').click();
@@ -49,7 +46,7 @@ describe("Finance Family", () => {
         cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
 
         // This family has giving history in FY 2018 only (no current-FY data).
-        // initComplete auto-switches to All Time view.  Wait for rows to appear.
-        cy.contains("New Building Fund", { timeout: 10000 }).should("be.visible");
+        // initComplete auto-switches to All Time view — wait directly for fund text.
+        cy.contains("New Building Fund", { timeout: 15000 }).should("be.visible");
     });
 });
