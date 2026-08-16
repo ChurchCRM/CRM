@@ -554,6 +554,22 @@ window.CRM.dashboard = {
       document.getElementById("EventsNumber").innerText = data.Events;
     });
   },
+
+  /**
+   * Load open deposit count once on page load
+   * Used by Finance menu badge to show real-time count of open deposits
+   */
+  loadOpenDepositCount: () => {
+    const el = document.getElementById("openDeposits");
+    if (!el) return; // Finance menu not present for this user
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "deposits/open-count",
+      suppressErrorDialog: true,
+    }).done((data) => {
+      el.innerText = data.count;
+    });
+  },
 };
 
 /**

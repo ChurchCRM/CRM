@@ -193,6 +193,9 @@ function initializeApp() {
   // Load event counters once on page load (no polling needed - values only change at midnight)
   window.CRM.dashboard.loadEventCounters();
 
+  // Load open deposit count once on page load (replaces session-cached badge)
+  window.CRM.dashboard.loadOpenDepositCount();
+
   // Initialize notification dismissal handlers
   document.querySelectorAll(".js-dismiss-notification").forEach((btn) => {
     btn.addEventListener("click", (e) => {
