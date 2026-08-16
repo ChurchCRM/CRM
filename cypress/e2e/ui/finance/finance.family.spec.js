@@ -17,15 +17,18 @@ describe("Finance Family", () => {
         cy.get(".pledge-type-pill").should("have.length", 3);
         cy.get("#giving-fy-select").should("exist");
 
-        // Table should load with data
-        cy.get("#pledge-payment-v2-table").should("be.visible");
+        // Wait for DataTable to initialise — the _wrapper div is created synchronously
+        // when DataTables runs, which is also when the #giving-fy-select change handler
+        // gets registered. Without this wait the .select() below fires before the handler
+        // exists and has no effect.
+        cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
 
         // Default FY filter hides older data — "Music Ministry" should NOT be visible
         cy.contains("Music Ministry").should("not.exist");
 
         // Select "All Time" to reveal all records
         cy.get("#giving-fy-select").select("");
-        cy.contains("Music Ministry").should("be.visible");
+        cy.contains("Music Ministry", { timeout: 10000 }).should("be.visible");
 
         // Test type filter pills
         cy.get('.pledge-type-pill[data-filter="Pledge"]').click();
@@ -42,13 +45,14 @@ describe("Finance Family", () => {
 
         // Wait for finance section and table to be ready
         cy.contains("Giving");
-        cy.get("#pledge-payment-v2-table").should("be.visible");
+        // Wait for DataTable to initialise before interacting with the FY select
+        cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
 
         // Default FY filter hides older data
         cy.contains("New Building Fund").should("not.exist");
 
         // Select "All Time" to reveal all records
         cy.get("#giving-fy-select").select("");
-        cy.contains("New Building Fund").should("be.visible");
+        cy.contains("New Building Fund", { timeout: 10000 }).should("be.visible");
     });
 });
