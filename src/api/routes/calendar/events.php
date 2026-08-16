@@ -191,7 +191,11 @@ function getEvent(Request $request, Response $response, $args): Response
     // needs: first linked group (EventAudience) and attendance counts per
     // the type's categories. Keeps the UI's fetch payload to one call.
     $eventId = (int) $Event->getId();
-    $data = json_decode($Event->toJSON(), true) ?: [];
+    $data = $Event->toArray();
+
+    // Ensure Desc and Text are explicitly included as strings (never null)
+    $data['Desc'] = (string) ($Event->getDesc() ?? '');
+    $data['Text'] = (string) ($Event->getText() ?? '');
 
     $audience = EventAudienceQuery::create()->filterByEventId($eventId)->findOne();
     $data['LinkedGroupId'] = $audience ? (int) $audience->getGroupId() : 0;
@@ -420,10 +424,13 @@ function newEvent(Request $request, Response $response, array $args): Response
     $event = new Event();
     $event->setTitle($input['Title']);
     $event->setEventType($type);
-    $event->setDesc($input['Desc']);
+    // InputSanitizationMiddleware already sanitizes these HTML fields; just ensure they're set
+    $desc = isset($input['Desc']) ? $input['Desc'] : '';
+    $text = isset($input['Text']) ? $input['Text'] : '';
+    $event->setDesc($desc);
+    $event->setText($text);
     $event->setStart(str_replace('T', ' ', $input['Start']));
     $event->setEnd(str_replace('T', ' ', $input['End']));
-    $event->setText($input['Text']);
     if (array_key_exists('InActive', $input)) {
         $event->setInActive((int) $input['InActive']);
     }
