@@ -131,8 +131,8 @@ describe("Finance: Donation Funds page - Access control", () => {
         cy.setupFinanceOnlySession();
         cy.visit("/finance/");
         cy.url().should("not.include", "access-denied");
-        // Financial Settings collapse button should be visible to Finance users
-        cy.get("button").contains("Financial Settings").should("exist");
+        // Financial Settings button is admin-only; Finance-only users must not see it
+        cy.get("button").contains("Financial Settings").should("not.exist");
     });
 
     it("Finance-role user sees Manage Funds button on dashboard", () => {

@@ -180,8 +180,8 @@ describe("Finance Dashboard - Finance Role (non-admin) Access", () => {
 
     it("Finance-only user sees the Financial Settings button in page header", () => {
         cy.visit("/finance/");
-        // The Financial Settings collapse button must be visible (adminOnly=false in route)
-        cy.get("button").contains("Financial Settings").should("exist");
+        // Financial Settings button is admin-only; Finance-only users must not see it
+        cy.get("button").contains("Financial Settings").should("not.exist");
     });
 
     it("Finance-only user sees Manage Funds button on dashboard", () => {
