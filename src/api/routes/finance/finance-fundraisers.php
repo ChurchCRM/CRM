@@ -127,8 +127,6 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             $fr->setEnteredBy((int) AuthenticationManager::getCurrentUser()->getId());
             $fr->setEnteredDate(DateTimeUtils::getToday()->format('Y-m-d'));
             $fr->save();
-            // Invalidate menu counter cache (new fundraiser may affect active count).
-            unset($_SESSION['iFundraiserActiveCount']);
 
             return SlimUtils::renderJSON($response, ['fundraiser' => fundraiserToArray($fr)], 201);
         } catch (\Throwable $e) {
@@ -217,8 +215,6 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             $fr->save();
-            // Invalidate menu counter cache (status may have changed).
-            unset($_SESSION['iFundraiserActiveCount']);
 
             return SlimUtils::renderJSON($response, ['fundraiser' => fundraiserToArray($fr)]);
         } catch (\Throwable $e) {
@@ -265,12 +261,24 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             $fr->delete();
-            // Invalidate menu counter cache (fundraiser removed).
-            unset($_SESSION['iFundraiserActiveCount']);
 
             return SlimUtils::renderSuccessJSON($response);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete fundraiser'), [], 500, $e, $request);
+        }
+    });
+
+    // GET /api/finance/fundraisers/active-count — active fundraiser count for menu badge
+    // Used by JavaScript to dynamically load the badge on page load (matches Calendar pattern).
+    $app->get('/active-count', function (Request $request, Response $response): Response {
+        try {
+            $activeCount = (new FundRaiserService())->getActiveFundraiserCount();
+            return $response
+                ->withHeader('Content-Type', 'application/json')
+                ->withStatus(200)
+                ->write(json_encode(['count' => $activeCount], JSON_THROW_ON_ERROR));
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to get fundraiser count'), [], 500, $e, $request);
         }
     });
 })->add(new FundraiserEnabledMiddleware())->add(ManageFundraisersRoleAuthMiddleware::class);
