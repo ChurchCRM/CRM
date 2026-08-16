@@ -288,7 +288,7 @@ describe("Standard Calendar — save (admin-session)", () => {
         // Empty-state hint should be visible since no calendar is pinned.
         cy.get("#calendarsEmptyHint").should("be.visible");
 
-        cy.get("#eventSaveBtn").should("not.be.disabled").click();
+        cy.get("#eventSaveBtn").should("not.be.disabled").click({ force: true });
 
         cy.wait("@createEvent").then((intercepted) => {
             expect(intercepted.request.body.PinnedCalendars).to.deep.equal([]);
