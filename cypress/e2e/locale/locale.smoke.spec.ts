@@ -80,27 +80,11 @@ const localesUnderTest: LocaleEntry[] =
 
 localesUnderTest.forEach(({ name, locale, nativeName }) => {
   describe(`Locale smoke: ${nativeName} / ${name} (${locale})`, () => {
-    // Set the locale preference once per describe block (locale is constant
-    // across all 11 page tests — no need to re-POST on every beforeEach).
-    before(() => {
-      cy.makePrivateAPICall(
-        Cypress.env('locale.admin.api.key'),
-        'POST',
-        `/api/user/${Cypress.env('locale.admin.id')}/setting/ui.locale`,
-        { value: locale },
-        200,
-      );
-    });
-
-    // Restore the browser session before each test (cy.session caches and
-    // restores cookies efficiently; calling in beforeEach is the correct
-    // Cypress pattern to ensure the session cookie is present per test).
+    // Single entry point for locale + session setup. The command posts
+    // ui.locale and calls cy.setupLoginSession; cy.session caches the
+    // login so the browser-side overhead per test is minimal.
     beforeEach(() => {
-      cy.setupLoginSession(
-        'locale-admin-session',
-        Cypress.env('locale.admin.username') as string,
-        Cypress.env('locale.admin.password') as string,
-      );
+      cy.setupLocaleAdminSession(locale);
     });
 
     // Iterate every page in the fixture array — adding a page is one line there.

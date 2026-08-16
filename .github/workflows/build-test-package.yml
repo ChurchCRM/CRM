@@ -804,8 +804,10 @@ jobs:
       run: npm run docker:ci:subdir:down
 
   test-locale-full-root:
-    # Full locale sweep (all 49 locales) — release branches, nightly cron, manual dispatch only.
-    # Not in package job needs; serves as a release gate when triggered on release/** branches.
+    # Full locale sweep (all 49 locales). Runs on release branches, nightly
+    # cron, and manual workflow_dispatch. Added to package job needs so
+    # release branches are blocked if any locale breaks; on PR/push builds
+    # the job is skipped and the skip is treated as success by package.
     if: |
       github.event_name == 'schedule' ||
       github.event_name == 'workflow_dispatch' ||
@@ -908,7 +910,10 @@ jobs:
       run: npm run docker:ci:root:down
 
   test-locale-full-subdir:
-    # Full locale sweep (all 49 locales) — release branches, nightly cron, manual dispatch only.
+    # Full locale sweep (all 49 locales). Runs on release branches, nightly
+    # cron, and manual workflow_dispatch. Added to package job needs so
+    # release branches are blocked if any locale breaks; on PR/push builds
+    # the job is skipped and the skip is treated as success by package.
     if: |
       github.event_name == 'schedule' ||
       github.event_name == 'workflow_dispatch' ||
@@ -1013,7 +1018,7 @@ jobs:
       run: npm run docker:ci:subdir:down
 
   package:
-    needs: [test-root, test-subdir, test-new-system, test-new-system-subdir, test-locale-root, test-locale-subdir]
+    needs: [test-root, test-subdir, test-new-system, test-new-system-subdir, test-locale-root, test-locale-subdir, test-locale-full-root, test-locale-full-subdir]
     timeout-minutes: 15
     permissions:
       contents: write
