@@ -74,7 +74,7 @@ if ($emailErrorReason !== '') {
             class="btn btn-sm btn-outline-<?= $emailAlertClass ?> ms-3"
             id="retryVerifyEmail"
             data-cy="retry-email-btn">
-        <i class="fa-solid fa-sync me-1" aria-hidden="true"></i><?= gettext('Retry') ?>
+        <i class="fa-solid fa-arrows-rotate me-1" aria-hidden="true"></i><?= gettext('Retry') ?>
     </button>
     <button type="button"
             class="btn-close"
@@ -187,7 +187,7 @@ if ($emailErrorReason !== '') {
             <div class="modal-footer" id="modalFooter">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                         data-cy="modal-cancel-btn">
-                    <i class="fa-solid fa-x me-1" aria-hidden="true"></i>
+                    <i class="fa-solid fa-xmark me-1" aria-hidden="true"></i>
                     <?= gettext('Cancel') ?>
                 </button>
                 <button type="button" class="btn btn-primary" id="modalSendBtn"
@@ -377,7 +377,7 @@ if ($emailErrorReason !== '') {
             // Replace footer with just a Close button
             footer.innerHTML =
                 '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' +
-                '<i class="fa-solid fa-x me-1" aria-hidden="true"></i>' +
+                '<i class="fa-solid fa-xmark me-1" aria-hidden="true"></i>' +
                 i18next.t('Close') +
                 '</button>';
 

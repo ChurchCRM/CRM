@@ -32,7 +32,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <?php endif; ?>
       <div class="d-flex gap-2">
         <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-secondary">
-          <i class="fa-solid fa-x me-1"></i><?= gettext('Cancel') ?>
+          <i class="fa-solid fa-xmark me-1"></i><?= gettext('Cancel') ?>
         </a>
         <button type="button" class="btn btn-primary" id="event-editor-save" disabled>
           <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Changes') ?>

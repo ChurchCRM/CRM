@@ -83,7 +83,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Reset -->
             <div class="col-auto">
                 <a href="<?= $sRootPath ?>/people/photos" class="btn btn-outline-secondary">
-                    <i class="fa-solid fa-sync"></i>
+                    <i class="fa-solid fa-arrows-rotate"></i>
                     <span class="d-none d-sm-inline ms-1"><?= gettext('Reset') ?></span>
                 </a>
             </div>
@@ -123,7 +123,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </p>
                 <div class="empty-action">
                     <a href="<?= $sRootPath ?>/people/photos" class="btn btn-primary">
-                        <i class="fa-solid fa-sync me-1"></i><?= gettext('Reset Filters') ?>
+                        <i class="fa-solid fa-arrows-rotate me-1"></i><?= gettext('Reset Filters') ?>
                     </a>
                 </div>
             </div>

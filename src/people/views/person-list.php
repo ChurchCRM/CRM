@@ -220,7 +220,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
         </div>
         <div class="mt-3">
             <button id="ClearFilter" type="button" class="btn btn-secondary w-100">
-                <i class="fa-solid fa-x me-1"></i> <span id="clear-filter-text"></span>
+                <i class="fa-solid fa-xmark me-1"></i> <span id="clear-filter-text"></span>
             </button>
         </div>
     </div>

@@ -134,7 +134,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <i class="fa-solid fa-search me-1"></i><?= gettext('Search') ?>
               </button>
               <a href="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/deposit/search" class="btn btn-secondary">
-                <i class="fa-solid fa-x me-1"></i><?= gettext('Clear') ?>
+                <i class="fa-solid fa-xmark me-1"></i><?= gettext('Clear') ?>
               </a>
             </div>
           </div>

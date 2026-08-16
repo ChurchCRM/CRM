@@ -368,7 +368,7 @@ $fmtBytes = static function ($bytes): string {
             <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
             <div class="card-header">
                 <h4 class="mb-0">
-                    <i class="fa fa-shield-alt me-2"></i><?= gettext('Application Integrity') ?>
+                    <i class="fa fa-shield-halved me-2"></i><?= gettext('Application Integrity') ?>
                     <?php if (!$integrityPassed): ?>
                         <span class="badge bg-warning text-dark ms-2"><?= $failingCount ?></span>
                     <?php endif; ?>

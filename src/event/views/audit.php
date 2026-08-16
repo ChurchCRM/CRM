@@ -29,7 +29,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <span id="auditCount" class="badge bg-warning-lt text-warning ms-2"><?= gettext('Loading...') ?></span>
         <div class="ms-auto d-flex gap-2">
             <button id="auditRefreshBtn" type="button" class="btn btn-sm btn-outline-secondary">
-                <i class="fa-solid fa-sync me-1"></i><?= gettext('Refresh') ?>
+                <i class="fa-solid fa-arrows-rotate me-1"></i><?= gettext('Refresh') ?>
             </button>
             <button id="auditCloseAllBtn" type="button" class="btn btn-sm btn-warning d-none">
                 <i class="fa-solid fa-circle-check me-1"></i><?= gettext('Close All Stuck Events') ?>
@@ -125,7 +125,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             title: i18next.t('Close stuck events?'),
             message: message,
             buttons: {
-                cancel: { label: '<i class="fa-solid fa-x"></i> ' + i18next.t('Cancel') },
+                cancel: { label: '<i class="fa-solid fa-xmark"></i> ' + i18next.t('Cancel') },
                 confirm: { label: '<i class="fa-solid fa-circle-check"></i> ' + i18next.t('Close'), className: 'btn-warning' },
             },
             callback: function (confirmed) {

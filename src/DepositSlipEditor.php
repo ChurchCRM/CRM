@@ -268,7 +268,7 @@ require_once __DIR__ . '/Include/Header.php';
       <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
       <div class="btn-group" role="group">
         <button type="submit" class="btn btn-sm btn-primary" name="DepositSlipLoadAuthorized">
-          <i class="fa-solid fa-sync"></i><?= gettext('Load Authorized'); ?>
+          <i class="fa-solid fa-arrows-rotate"></i><?= gettext('Load Authorized'); ?>
         </button>
         <button type="submit" class="btn btn-sm btn-warning" name="DepositSlipRunTransactions">
           <i class="fa-solid fa-play-circle"></i><?= gettext('Run Transactions'); ?>

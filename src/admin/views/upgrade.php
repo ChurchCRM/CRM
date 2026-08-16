@@ -45,7 +45,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                         </button>
                         <?php endif; ?>
                         <button type="button" class="btn btn-ghost-primary btn-sm" id="refreshFromGitHub">
-                            <i class="fa fa-sync me-1"></i><?= gettext('Refresh') ?>
+                            <i class="fa fa-arrows-rotate me-1"></i><?= gettext('Refresh') ?>
                         </button>
                     </div>
                 </div>
@@ -156,7 +156,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                             — <?= gettext("Files not part of the official release were found on your server.") ?>
                                         </div>
                                         <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-outline-danger btn-sm ms-3 text-nowrap">
-                                            <i class="fa fa-external-link me-1"></i><?= gettext('Review & Delete') ?>
+                                            <i class="fa fa-arrow-up-right-from-square me-1"></i><?= gettext('Review & Delete') ?>
                                         </a>
                                     </div>
                                 </div>
@@ -245,7 +245,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                         <span id="recommendedBadge" class="badge bg-success-lt text-success ms-1 d-none"><?= gettext('Recommended') ?></span>
                                     </h4>
                                     <a id="whatsNewChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm d-none">
-                                        <i class="fa fa-external-link me-1"></i><?= gettext('Full changelog') ?>
+                                        <i class="fa fa-arrow-up-right-from-square me-1"></i><?= gettext('Full changelog') ?>
                                     </a>
                                 </div>
 

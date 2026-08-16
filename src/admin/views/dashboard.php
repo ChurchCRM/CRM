@@ -376,7 +376,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i><?= gettext('Register Now') ?>
                     </a>
-                    <p class="small text-body-secondary mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
+                    <p class="small text-body-secondary mt-3 mb-0"><i class="fa-solid fa-shield-halved"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
                 </div>
             </div>
 

@@ -93,7 +93,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-primary text-white avatar rounded-circle">
-                            <i class="fa-solid fa-shield-alt icon"></i>
+                            <i class="fa-solid fa-shield-halved icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -118,7 +118,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
         </div>
     </div>
     <div class="card-body border-bottom py-2 text-body-secondary small">
-        <span class="me-3"><i class="fa-solid fa-shield-check text-danger me-1"></i><?= gettext('Admin') ?></span>
+        <span class="me-3"><i class="fa-solid fa-circle-check text-danger me-1"></i><?= gettext('Admin') ?></span>
         <span class="me-3"><i class="fa-solid fa-user-check text-warning me-1"></i><?= gettext('Self-service') ?></span>
         <span><i class="fa-solid fa-cog text-azure me-1"></i><?= gettext('Custom') ?></span>
     </div>
@@ -147,7 +147,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                             </td>
                             <td class="text-center">
                                 <?php if ($user->isAdmin()): ?>
-                                <i class="fa-solid fa-shield-check text-danger fs-4" title="<?= gettext('Administrator') ?>"></i>
+                                <i class="fa-solid fa-circle-check text-danger fs-4" title="<?= gettext('Administrator') ?>"></i>
                                 <?php elseif ($user->isEditSelf()): ?>
                                 <i class="fa-solid fa-user-check text-warning fs-4" title="<?= gettext('Self-service only') ?>"></i>
                                 <?php else: ?>
@@ -176,7 +176,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                             </td>
                             <td class="text-center">
                                 <?php if ($user->is2FactorAuthEnabled()) { ?>
-                                    <span class="badge rounded-pill bg-success text-white"><i class="fa-solid fa-shield-check me-1"></i><?= gettext('Enabled') ?></span>
+                                    <span class="badge rounded-pill bg-success text-white"><i class="fa-solid fa-circle-check me-1"></i><?= gettext('Enabled') ?></span>
                                 <?php } else { ?>
                                     <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-shield-slash me-1"></i><?= gettext('Disabled') ?></span>
                                 <?php } ?>
@@ -219,7 +219,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                         <?php } ?>
                                         <?php if ($user->is2FactorAuthEnabled()) { ?>
                                             <a class="dropdown-item js-disable-2fa" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
-                                                <i class="fa-solid fa-shield-alt me-2"></i><?= gettext('Disable 2FA') ?>
+                                                <i class="fa-solid fa-shield-halved me-2"></i><?= gettext('Disable 2FA') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>

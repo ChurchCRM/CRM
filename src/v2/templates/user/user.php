@@ -56,7 +56,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <i class="fa-solid fa-cube me-2"></i><?= gettext("API Access") ?>
           </a>
           <a href="#tab-permissions" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
-            <i class="fa-solid fa-shield-lock me-2"></i><?= gettext("Permissions") ?>
+            <i class="fa-solid fa-shield-halved me-2"></i><?= gettext("Permissions") ?>
           </a>
         </div>
       </div>
@@ -145,9 +145,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-3 text-body-secondary"><?= gettext("Two-Factor Authentication") ?></div>
               <div class="col-sm-9">
                 <?php if ($user->is2FactorAuthEnabled()): ?>
-                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-shield-check me-1"></i><?= gettext("Active") ?></span>
+                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-circle-check me-1"></i><?= gettext("Active") ?></span>
                 <?php else: ?>
-                <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-shield-alt me-1"></i><?= gettext("Inactive") ?></span>
+                <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-shield-halved me-1"></i><?= gettext("Inactive") ?></span>
                 <?php endif; ?>
               </div>
             </div>
@@ -341,7 +341,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <li><?= gettext("Suggesting better phrasing for existing translations") ?></li>
                   </ul>
                   <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
-                    <i class="fa-solid fa-external-link me-1"></i><?= gettext("Join the Translation Project on POEditor") ?>
+                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("Join the Translation Project on POEditor") ?>
                   </a>
                 </div>
               </div>
@@ -369,7 +369,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="input-group">
                   <input id="apiKey" type="text" class="form-control font-monospace" value="<?= InputUtils::escapeAttribute($user->getApiKey()) ?>" readonly>
                   <button id="regenApiKey" class="btn btn-warning" type="button" title="<?= gettext("Regenerate") ?>">
-                    <i class="fa-solid fa-sync me-1"></i><?= gettext("Regenerate") ?>
+                    <i class="fa-solid fa-arrows-rotate me-1"></i><?= gettext("Regenerate") ?>
                   </button>
                 </div>
                 <small class="form-hint"><?= gettext("Use this key to authenticate API requests. Regenerating will invalidate the current key.") ?></small>
@@ -394,7 +394,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="text-center py-4">
               <div class="mb-3">
                 <span class="badge bg-warning-lt text-warning px-3 py-2" style="font-size:1rem;">
-                  <i class="fa-solid fa-shield-check me-2"></i><?= gettext("Administrator") ?>
+                  <i class="fa-solid fa-circle-check me-2"></i><?= gettext("Administrator") ?>
                 </span>
               </div>
               <p class="text-body-secondary mb-0"><?= gettext("Administrators have full access to all features and data. Individual permissions do not apply.") ?></p>
@@ -440,7 +440,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <?php if ($capGranted): ?>
                   <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext("Yes") ?></span>
                   <?php else: ?>
-                  <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-x me-1"></i><?= gettext("No") ?></span>
+                  <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-xmark me-1"></i><?= gettext("No") ?></span>
                   <?php endif; ?>
                 </div>
               </div>
@@ -463,7 +463,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php if ($perm['granted']): ?>
                 <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext("Yes") ?></span>
                 <?php else: ?>
-                <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-x me-1"></i><?= gettext("No") ?></span>
+                <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-xmark me-1"></i><?= gettext("No") ?></span>
                 <?php endif; ?>
               </div>
             </div>

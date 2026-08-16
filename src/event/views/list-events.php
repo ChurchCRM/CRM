@@ -141,7 +141,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-md-2 text-end">
           <?php if ($eType !== 'All'): ?>
             <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-sm btn-ghost-secondary">
-              <i class="fa-solid fa-x me-1"></i><?= gettext('Clear Filter') ?>
+              <i class="fa-solid fa-xmark me-1"></i><?= gettext('Clear Filter') ?>
             </a>
           <?php endif; ?>
         </div>

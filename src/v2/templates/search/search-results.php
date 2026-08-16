@@ -44,7 +44,7 @@ $groupIcons = [
 
   <div class="empty">
     <div class="empty-icon">
-      <i class="fa-solid fa-question-circle" style="font-size: 3rem; color: var(--tblr-secondary);"></i>
+      <i class="fa-solid fa-circle-question" style="font-size: 3rem; color: var(--tblr-secondary);"></i>
     </div>
     <p class="empty-title"><?= gettext('No results found') ?></p>
     <p class="empty-subtitle text-secondary">

@@ -104,7 +104,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <hr>
       <div class="d-flex justify-content-between">
         <a href="<?= $sRootPath ?>/event/types" class="btn btn-outline-secondary">
-          <i class="fa-solid fa-x me-1"></i><?= gettext('Cancel') ?>
+          <i class="fa-solid fa-xmark me-1"></i><?= gettext('Cancel') ?>
         </a>
         <button type="submit" class="btn btn-primary">
           <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Event Type') ?>

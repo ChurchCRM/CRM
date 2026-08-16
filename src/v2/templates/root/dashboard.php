@@ -168,7 +168,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="updated-fam-tab" data-bs-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
-                                <i class="fa-solid fa-house-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated Families') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
+                                <i class="fa-solid fa-house-circle-check me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated Families') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -178,7 +178,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="updated-ppl-tab" data-bs-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
-                                <i class="fa-solid fa-user-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated People') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
+                                <i class="fa-solid fa-user-pen me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated People') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
                             </a>
                         </li>
                     </ul>

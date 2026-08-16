@@ -117,12 +117,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body">
                 <p class="text-secondary"><?= gettext('Resetting will permanently delete') ?>:</p>
                 <ul class="list-unstyled">
-                    <li class="mb-1"><i class="fa-solid fa-x text-danger me-1"></i><?= gettext('All people and family records') ?></li>
-                    <li class="mb-1"><i class="fa-solid fa-x text-danger me-1"></i><?= gettext('All groups, roles, and memberships') ?></li>
-                    <li class="mb-1"><i class="fa-solid fa-x text-danger me-1"></i><?= gettext('All financial data (pledges, payments, deposits)') ?></li>
-                    <li class="mb-1"><i class="fa-solid fa-x text-danger me-1"></i><?= gettext('All events and attendance records') ?></li>
-                    <li class="mb-1"><i class="fa-solid fa-x text-danger me-1"></i><?= gettext('All uploaded photos and documents') ?></li>
-                    <li class="mb-0"><i class="fa-solid fa-x text-danger me-1"></i><?= gettext('All system settings and custom fields') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All people and family records') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All groups, roles, and memberships') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All financial data (pledges, payments, deposits)') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All events and attendance records') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All uploaded photos and documents') ?></li>
+                    <li class="mb-0"><i class="fa-solid fa-xmark text-danger me-1"></i><?= gettext('All system settings and custom fields') ?></li>
                 </ul>
 
                 <div class="hr-text"><?= gettext('Confirm') ?></div>
