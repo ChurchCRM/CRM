@@ -153,7 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
             type: "danger",
             delay: 5000,
           });
-          $btn.prop("disabled", false).html(`<i class="fa-solid fa-plus me-1"></i>${i18next.t("Create Today's Event")}`);
+          $btn
+            .prop("disabled", false)
+            .html(`<i class="fa-solid fa-plus me-1"></i>${i18next.t("Create Today's Event")}`);
           return;
         }
         window.CRM.notify(
