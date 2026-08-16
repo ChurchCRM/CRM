@@ -775,19 +775,19 @@ class Person extends BasePerson implements PhotoInterface
 
         if ($age->y < 1) {
             $monthStr = ngettext('%d month old', '%d months old', $age->m);
-            $placeholderCount = substr_count($monthStr, '%d');
-            if ($placeholderCount === 1) {
+            try {
                 return sprintf($monthStr, $age->m);
+            } catch (\Throwable $e) {
+                return (string) $age->m; // graceful fallback: show the numeric age
             }
-            return $monthStr;
         }
 
         $yearStr = ngettext('%d year old', '%d years old', $age->y);
-        $placeholderCount = substr_count($yearStr, '%d');
-        if ($placeholderCount === 1) {
+        try {
             return sprintf($yearStr, $age->y);
+        } catch (\Throwable $e) {
+            return (string) $age->y; // graceful fallback: show the numeric age
         }
-        return $yearStr;
     }
 
     public function getNumericAge(): int
