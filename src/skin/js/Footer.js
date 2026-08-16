@@ -193,6 +193,9 @@ function initializeApp() {
   // Load event counters once on page load (no polling needed - values only change at midnight)
   window.CRM.dashboard.loadEventCounters();
 
+  // Load fundraiser count once on page load (replaces session-cached badge)
+  window.CRM.dashboard.loadFundraiserCount();
+
   // Initialize notification dismissal handlers
   document.querySelectorAll(".js-dismiss-notification").forEach((btn) => {
     btn.addEventListener("click", (e) => {

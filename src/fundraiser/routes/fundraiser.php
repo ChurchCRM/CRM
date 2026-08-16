@@ -410,9 +410,6 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
         $fundraiserId = $fundraiser->getId();
     }
 
-    // Invalidate the session-cached active count so Menu.php refreshes it.
-    unset($_SESSION['iFundraiserActiveCount']);
-
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
     return $response
@@ -438,9 +435,6 @@ $app->post('/{fundraiserId}/delete', function (Request $request, Response $respo
             $fundraiser->delete();
         }
     }
-
-    // Invalidate the session-cached active count so Menu.php refreshes it.
-    unset($_SESSION['iFundraiserActiveCount']);
 
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/fundraiser/')
