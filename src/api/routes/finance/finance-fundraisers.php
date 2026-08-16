@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageFundraisersRoleAuthMiddleware;
@@ -127,8 +128,6 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             $fr->setEnteredBy((int) AuthenticationManager::getCurrentUser()->getId());
             $fr->setEnteredDate(DateTimeUtils::getToday()->format('Y-m-d'));
             $fr->save();
-            // Invalidate menu counter cache (new fundraiser may affect active count).
-            unset($_SESSION['iFundraiserActiveCount']);
 
             return SlimUtils::renderJSON($response, ['fundraiser' => fundraiserToArray($fr)], 201);
         } catch (\Throwable $e) {
@@ -217,8 +216,6 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             $fr->save();
-            // Invalidate menu counter cache (status may have changed).
-            unset($_SESSION['iFundraiserActiveCount']);
 
             return SlimUtils::renderJSON($response, ['fundraiser' => fundraiserToArray($fr)]);
         } catch (\Throwable $e) {
@@ -265,12 +262,45 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             $fr->delete();
-            // Invalidate menu counter cache (fundraiser removed).
-            unset($_SESSION['iFundraiserActiveCount']);
 
             return SlimUtils::renderSuccessJSON($response);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete fundraiser'), [], 500, $e, $request);
         }
     });
+
 })->add(new FundraiserEnabledMiddleware())->add(ManageFundraisersRoleAuthMiddleware::class);
+
+// GET /api/fundraisers/active-count — active fundraiser count for menu badge
+// Visible to all authenticated users (moved outside role-restricted group).
+// Used by JavaScript to dynamically load the badge on page load (matches Calendar pattern).
+$app->get('/fundraisers/active-count', function (Request $request, Response $response): Response {
+    $logger = LoggerUtils::getAppLogger();
+    $logger->debug('[fundraisers/active-count] Endpoint called', ['user' => $GLOBALS['iUserID'] ?? null]);
+
+    try {
+        $logger->debug('[fundraisers/active-count] Creating FundRaiserService');
+        $service = new FundRaiserService();
+
+        $logger->debug('[fundraisers/active-count] Calling getActiveFundraiserCount()');
+        $activeCount = $service->getActiveFundraiserCount();
+        $logger->debug('[fundraisers/active-count] Got count', ['count' => $activeCount]);
+
+        $json = json_encode(['count' => $activeCount], JSON_THROW_ON_ERROR);
+        $logger->debug('[fundraisers/active-count] Encoded JSON', ['json' => $json]);
+
+        $response->getBody()->write($json);
+        return $response
+            ->withHeader('Content-Type', 'application/json')
+            ->withStatus(200);
+    } catch (\Throwable $e) {
+        $logger->error('[fundraisers/active-count] Exception caught', [
+            'exception' => get_class($e),
+            'message' => $e->getMessage(),
+            'code' => $e->getCode(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+        ]);
+        return SlimUtils::renderErrorJSON($response, gettext('Failed to get fundraiser count'), [], 500, $e, $request);
+    }
+})->add(new FundraiserEnabledMiddleware());

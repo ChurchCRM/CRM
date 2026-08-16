@@ -570,6 +570,21 @@ window.CRM.dashboard = {
       el.innerText = data.count;
     });
   },
+
+  /**
+   * Load active fundraiser count once on page load for menu badge.
+   * Replaces session-cached count, ensuring always fresh data.
+   */
+  loadFundraiserCount: () => {
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "fundraisers/active-count",
+      suppressErrorDialog: true,
+    }).done((data) => {
+      const el = document.getElementById("activeFundraisers");
+      if (el) el.innerText = data.count;
+    });
+  },
 };
 
 /**
