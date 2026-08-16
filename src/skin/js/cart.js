@@ -498,13 +498,13 @@ export class CartManager {
       $element.removeClass("AddToCart").addClass("RemoveFromCart");
 
       if (isDropdownItem) {
-        // Dropdown item: swap Tabler icon and label text
+        // Dropdown item: swap Font Awesome icon and label text
         $button.addClass("text-danger");
-        $icon.attr("class", "fa-solid fa-trash me-2");
+        $icon.attr("class", "fa-solid fa-box-open me-2");
         $button.find(".cart-label").text($button.data("label-remove") || "");
       } else {
         $button.removeClass("btn-primary").addClass("btn-danger");
-        $icon.removeClass("fa-cart-shopping").addClass("fa-trash");
+        $icon.removeClass("fa-cart-shopping").addClass("fa-box-open");
       }
     } else {
       $element.removeClass("RemoveFromCart").addClass("AddToCart");
@@ -516,7 +516,7 @@ export class CartManager {
         $button.find(".cart-label").text($button.data("label-add") || "");
       } else {
         $button.removeClass("btn-danger").addClass("btn-primary");
-        $icon.removeClass("fa-trash").addClass("fa-cart-shopping");
+        $icon.removeClass("fa-box-open").addClass("fa-cart-shopping");
       }
     }
   }
