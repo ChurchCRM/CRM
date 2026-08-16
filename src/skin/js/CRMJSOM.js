@@ -792,7 +792,7 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
           eventTitle +
           "</b>",
         buttons: {
-          cancel: { label: '<i class="fa-solid fa-x"></i>' + i18next.t("Cancel") },
+          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
           confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
         },
         callback: (result) => {
@@ -853,7 +853,7 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
           window.CRM.escapeHtml(String(personName || "")) +
           "</b>",
         buttons: {
-          cancel: { label: '<i class="fa-solid fa-x"></i>' + i18next.t("Cancel") },
+          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
           confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
         },
         callback: (result) => {
@@ -889,7 +889,7 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
           "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone.",
         ),
         buttons: {
-          cancel: { label: '<i class="fa-solid fa-x"></i>' + i18next.t("Cancel") },
+          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
           confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
         },
         callback: (result) => {
