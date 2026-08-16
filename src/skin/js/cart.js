@@ -504,7 +504,7 @@ export class CartManager {
         $button.find(".cart-label").text($button.data("label-remove") || "");
       } else {
         $button.removeClass("btn-primary").addClass("btn-danger");
-        $icon.removeClass("fa-cart-plus").addClass("fa-shopping-cart");
+        $icon.removeClass("fa-cart-shopping").addClass("fa-trash");
       }
     } else {
       $element.removeClass("RemoveFromCart").addClass("AddToCart");
@@ -512,11 +512,11 @@ export class CartManager {
       if (isDropdownItem) {
         // Dropdown item: swap Tabler icon and label text
         $button.removeClass("text-danger");
-        $icon.attr("class", "fa-solid fa-cart-plus me-2");
+        $icon.attr("class", "fa-solid fa-cart-shopping me-2");
         $button.find(".cart-label").text($button.data("label-add") || "");
       } else {
         $button.removeClass("btn-danger").addClass("btn-primary");
-        $icon.removeClass("fa-shopping-cart").addClass("fa-cart-plus");
+        $icon.removeClass("fa-trash").addClass("fa-cart-shopping");
       }
     }
   }
@@ -594,7 +594,7 @@ export class CartManager {
   }
 
   animateCartIcon() {
-    const $cartIcon = $(".fa-shopping-cart").parent();
+    const $cartIcon = $(".fa-cart-shopping").parent();
     $cartIcon.addClass("cart-pulse");
     setTimeout(() => $cartIcon.removeClass("cart-pulse"), 600);
   }

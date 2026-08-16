@@ -620,7 +620,7 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
     i18next.t("Remove from Cart") +
     '">' +
     '<i class="' +
-    (inCart ? "fa-solid fa-cart-arrow-down" : "fa-solid fa-cart-plus") +
+    (inCart ? "fa-solid fa-trash" : "fa-solid fa-cart-shopping") +
     ' me-2"></i>' +
     '<span class="cart-label">' +
     (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) +
@@ -690,7 +690,7 @@ window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
     i18next.t("Remove from Cart") +
     '">' +
     '<i class="' +
-    (inCart ? "fa-solid fa-cart-arrow-down" : "fa-solid fa-cart-plus") +
+    (inCart ? "fa-solid fa-trash" : "fa-solid fa-cart-shopping") +
     ' me-2"></i>' +
     '<span class="cart-label">' +
     (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) +
