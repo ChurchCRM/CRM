@@ -40,6 +40,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 
 | Skill | When to Use |
 |-------|------------|
+| [Icon Management](./icon-management.md) | **Font Awesome only** — icon patterns, free tier compliance (no paid variants), Tabler→FA migration reference, common substitutions, accessibility |
 | [Table Action Menu](./table-action-menu.md) | **Required for every table with row-level actions** — dropdown pattern, overflow fix, cart buttons, checklist |
 | [Frontend Development](./frontend-development.md) | **Settings Panel (gold-standard pattern), UI changes, Bootstrap 5, i18n, notifications, confirmations, modals, asset management** |
 | [Timezone Handling](./timezone-handling.md) | **Required for any datetime-aware change** — wall-clock-in-sTimeZone storage, FullCalendar marker quirks, Propel space format Chrome misparse, kiosk timing, cross-tz banner. Read before touching event-form.js, event-calendars.js, calendar-event-editor.js, kiosk-jsom.ts, KioskDevice::heartbeat(), or events.php API |
