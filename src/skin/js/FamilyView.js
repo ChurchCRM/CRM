@@ -95,7 +95,10 @@ function initializeFamilyView() {
   // Giving History table (#8332) — init after ensuring both types are returned by API
   if ($("#pledge-payment-v2-table").length) {
     // Escape a string for use in a DataTables regex column search
-    const escapeDTRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    // Escape a string for use in a DataTables regex column search.
+    // String() coercion guards against jQuery .data() auto-converting numeric-looking
+    // HTML attributes (e.g. data-current-fy="2024") to the integer 2024.
+    const escapeDTRegex = (str) => String(str).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
     // Recompute the Total Pledged / Total Paid summary bar from currently-filtered rows
     const updateGivingSummary = (api) => {
@@ -121,6 +124,9 @@ function initializeFamilyView() {
       ajax: {
         url: `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list`,
         dataSrc: "data",
+        // Silently handle ajax errors (e.g. 401 during session transitions in tests)
+        // so DataTables does not produce a browser alert() that could fail automated tests
+        error: function () {},
       },
       columns: [
         { title: i18next.t("Date"), type: "date", data: "Date" },
@@ -188,7 +194,8 @@ function initializeFamilyView() {
     // initComplete fires after the first Ajax draw — used to populate FY dropdown & YTD badge
     dataTableConfig.initComplete = function () {
       const api = this.api();
-      const currentFY = $("#pledge-payment-v2-table").data("current-fy") || "";
+      // String() coercion: jQuery .data() silently converts numeric-looking attr values
+      const currentFY = String($("#pledge-payment-v2-table").data("current-fy") ?? "");
       const allRows = api.rows().data().toArray();
 
       // Populate fiscal-year dropdown from unique FormattedFY values, sorted descending
@@ -241,7 +248,8 @@ function initializeFamilyView() {
       .catch(() => {}) // ignore errors
       .then(() => {
         const pledgeTable = $("#pledge-payment-v2-table").DataTable(dataTableConfig);
-        const currentFY = $("#pledge-payment-v2-table").data("current-fy") || "";
+        // String() coercion: jQuery .data() silently converts numeric-looking attr values
+        const currentFY = String($("#pledge-payment-v2-table").data("current-fy") ?? "");
 
         // Pre-set default FY filter on the hidden column 5 before ajax completes
         if (currentFY) {
