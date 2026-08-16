@@ -459,8 +459,9 @@ if (isset($_POST['SaveChanges'])) {
                                 if ($row !== 1 || $row !== $numRows) {
                                     echo '<div class="dropdown-divider"></div>';
                                 }
-                                // False positive: $aIDFields[$row] is an ORM integer ID, not user input. Both tainted-sql-string and echoed-request rules mis-fire here.
-                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="fa-solid fa-trash me-2"></i>' . gettext('Delete') . '</a>'; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string, php.lang.security.injection.echoed-request.echoed-request
+                                // $aIDFields[$row] is an ORM-assigned integer ID; cast to int to satisfy static analysis.
+                                $oppId = (int) $aIDFields[$row];
+                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $oppId . '" class="dropdown-item text-danger"><i class="fa-solid fa-trash me-2"></i>' . gettext('Delete') . '</a>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</td>';
