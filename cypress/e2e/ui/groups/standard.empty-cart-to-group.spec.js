@@ -157,10 +157,10 @@ describe("Empty Cart to Group", () => {
 
         // Click Cancel
         cy.get(".modal.show #crm-gs-cancel").click({ force: true });
-        // Wait for Bootstrap 5 fade-out animation: check class removal first,
-        // then confirm the element is gone from the DOM.
-        cy.get(".modal.fade", { timeout: 10000 }).should("not.have.class", "show");
-        cy.get(".modal.show", { timeout: 10000 }).should("not.exist");
+        // Target only the cart-to-group modal (ID prefix) — avoid matching other
+        // persistent modals on the page (e.g. #IssueReportModal).
+        // The hidden.bs.modal handler removes the wrapper from the DOM entirely.
+        cy.get('[id^="crm-group-select-modal"]', { timeout: 10000 }).should("not.exist");
 
         // Cart should still have the person
         cy.request("GET", "/api/cart/").then((resp) => {
