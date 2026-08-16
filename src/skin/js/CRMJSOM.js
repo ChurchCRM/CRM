@@ -560,12 +560,14 @@ window.CRM.dashboard = {
    * Used by Finance menu badge to show real-time count of open deposits
    */
   loadOpenDepositCount: () => {
+    const el = document.getElementById("openDeposits");
+    if (!el) return; // Finance menu not present for this user
     window.CRM.APIRequest({
       method: "GET",
       path: "deposits/open-count",
       suppressErrorDialog: true,
     }).done((data) => {
-      document.getElementById("openDeposits").innerText = data.count;
+      el.innerText = data.count;
     });
   },
 };

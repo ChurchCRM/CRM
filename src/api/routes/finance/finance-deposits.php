@@ -332,19 +332,27 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $result = $depositService->getDepositItemsByType($id, 'Payment');
         return SlimUtils::renderJSON($response, $result);
     });
-})->add(FinanceRoleAuthMiddleware::class);
 
-// GET /api/deposits/open-count — open deposit count for menu badge
-// Visible to all authenticated users (not role-restricted).
-// Used by JavaScript to dynamically load the badge on page load (matches Fundraiser pattern).
-$app->get('/deposits/open-count', function (Request $request, Response $response): Response {
-    try {
-        $openCount = (new DepositService())->getOpenDepositCount();
-        $response->getBody()->write(json_encode(['count' => $openCount], JSON_THROW_ON_ERROR));
-        return $response
-            ->withHeader('Content-Type', 'application/json')
-            ->withStatus(200);
-    } catch (\Throwable $e) {
-        return SlimUtils::renderErrorJSON($response, gettext('Failed to get deposit count'), [], 500, $e, $request);
-    }
-});
+    /**
+     * @OA\Get(
+     *     path="/deposits/open-count",
+     *     summary="Get count of open (non-closed) deposits (Finance role required)",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Open deposit count"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->get('/open-count', function (Request $request, Response $response): Response {
+        try {
+            $openCount = (new DepositService())->getOpenDepositCount();
+            $response->getBody()->write(json_encode(['count' => $openCount], JSON_THROW_ON_ERROR));
+            return $response
+                ->withHeader('Content-Type', 'application/json')
+                ->withStatus(200);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to get deposit count'), [], 500, $e, $request);
+        }
+    });
+})->add(FinanceRoleAuthMiddleware::class);

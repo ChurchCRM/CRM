@@ -385,8 +385,9 @@ describe("API Private Deposit Operations", () => {
                 null,
                 200
             ).then((resp) => {
-                // Verify the response can be used directly by the JavaScript badge loader
-                expect(resp.body).to.deep.equal({ count: resp.body.count });
+                // Verify the response has exactly the expected keys and types
+                expect(Object.keys(resp.body)).to.deep.equal(["count"]);
+                expect(resp.body.count).to.be.a("number").and.gte(0);
                 expect(resp.headers).to.have.property("content-type");
                 expect(resp.headers["content-type"]).to.include("application/json");
             });
