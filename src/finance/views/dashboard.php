@@ -207,7 +207,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php if ($activeFundCount > 0): ?>
                                 <span class="badge bg-green-lt text-green rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-xmark"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -231,7 +231,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php if ($hasChurchInfo): ?>
                                 <span class="badge bg-green-lt text-green rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-xmark"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">

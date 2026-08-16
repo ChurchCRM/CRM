@@ -534,7 +534,7 @@ window.Stepper = Stepper;
       locales.forEach((locale) => {
         const statusBadge = locale.systemAvailable
           ? `<span class="badge bg-success text-white"><i class="fa-solid fa-check me-1"></i>Available</span>`
-          : `<span class="badge bg-secondary text-white"><i class="fa-solid fa-times me-1"></i>Not Available</span>`;
+          : `<span class="badge bg-secondary text-white"><i class="fa-solid fa-xmark me-1"></i>Not Available</span>`;
 
         const $row = $("<tr>")
           .append(
@@ -565,8 +565,8 @@ window.Stepper = Stepper;
 
     $table.empty();
     $summary.attr("class", "alert alert-danger mb-2");
-    $summary.html(`<i class='fa-solid fa-times-circle'></i> Unable to detect system locales`);
-    $status.html('<i class="fa-solid fa-times text-danger"></i>');
+    $summary.html(`<i class='fa-solid fa-circle-xmark'></i> Unable to detect system locales`);
+    $status.html('<i class="fa-solid fa-xmark text-danger"></i>');
 
     const $errorRow = $("<tr>").append(
       $("<td>").html(

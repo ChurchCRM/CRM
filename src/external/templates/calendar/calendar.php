@@ -19,7 +19,7 @@ require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
     <div class="register-logo">
       <a href="<?= SystemURLs::getRootPath() ?>/"><?= ChurchMetaData::getChurchName() ?></a>: <?= InputUtils::escapeHTML($calendarName) ?>
       <?php if ($churchTz) : ?>
-      <p class="text-muted small mb-0"><i class="ti ti-clock me-1"></i><?= gettext('All times shown in') ?> <?= InputUtils::escapeHTML($churchTz) ?></p>
+      <p class="text-muted small mb-0"><i class="fa-solid fa-clock me-1"></i><?= gettext('All times shown in') ?> <?= InputUtils::escapeHTML($churchTz) ?></p>
       <?php endif; ?>
     </div>
     <div class="row">
@@ -45,7 +45,7 @@ require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
       </div>
       <div class="modal-body">
         <div class="d-flex align-items-center text-body-secondary small mb-3" id="eventDetailTime">
-          <i class="ti ti-clock me-2"></i><span id="eventDetailTimeText"></span>
+          <i class="fa-solid fa-clock me-2"></i><span id="eventDetailTimeText"></span>
         </div>
         <p class="mb-0" id="eventDetailDesc"></p>
       </div>

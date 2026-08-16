@@ -339,7 +339,7 @@ $fmtBytes = static function ($bytes): string {
                                                 <?php if ($locale['systemAvailable']): ?>
                                                     <span class="badge bg-green-lt text-green"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
                                                 <?php else: ?>
-                                                    <span class="badge bg-light text-dark"><i class="fa fa-times me-1"></i><?= gettext('No') ?></span>
+                                                    <span class="badge bg-light text-dark"><i class="fa fa-xmark me-1"></i><?= gettext('No') ?></span>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -368,7 +368,7 @@ $fmtBytes = static function ($bytes): string {
             <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
             <div class="card-header">
                 <h4 class="mb-0">
-                    <i class="fa fa-shield-alt me-2"></i><?= gettext('Application Integrity') ?>
+                    <i class="fa fa-shield-halved me-2"></i><?= gettext('Application Integrity') ?>
                     <?php if (!$integrityPassed): ?>
                         <span class="badge bg-warning text-dark ms-2"><?= $failingCount ?></span>
                     <?php endif; ?>
@@ -428,7 +428,7 @@ $fmtBytes = static function ($bytes): string {
                     <?php foreach ($appPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
-                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
+                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-xmark text-danger';
                     ?>
                         <tr>
                             <td><i class="fa <?= $iconClass ?> me-2"></i><a href='<?= $prerequisite->getWikiLink() ?>' target="_blank" rel="noopener noreferrer"><?= $prerequisite->getName() ?></a></td>
@@ -441,7 +441,7 @@ $fmtBytes = static function ($bytes): string {
                     <?php foreach ($fsPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
-                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
+                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-xmark text-danger';
                     ?>
                         <tr>
                             <td><i class="fa <?= $iconClass ?> me-2"></i><?= $prerequisite->getName() ?></td>
@@ -576,7 +576,7 @@ $fmtBytes = static function ($bytes): string {
         <div class="card-status-top <?= $telemetryEnabled ? 'bg-success' : 'bg-secondary' ?>"></div>
         <div class="card-header">
             <h4 class="mb-0">
-                <i class="ti ti-broadcast me-2"></i><?= gettext('Anonymous Telemetry') ?>
+                <i class="fa-solid fa-broadcast-tower me-2"></i><?= gettext('Anonymous Telemetry') ?>
                 <?php if ($telemetryEnabled): ?>
                     <span class="badge bg-success ms-2"><?= InputUtils::escapeHTML($levelLabels[$telemetryLevel]) ?></span>
                 <?php else: ?>
@@ -595,7 +595,7 @@ $fmtBytes = static function ($bytes): string {
                                     class="btn text-start <?= $active ? ($lv === TelemetryService::LEVEL_NONE ? 'btn-secondary' : 'btn-success') : ($lv === TelemetryService::LEVEL_NONE ? 'btn-ghost-danger' : 'btn-ghost-success') ?> js-debug-telemetry-toggle"
                                     data-level="<?= InputUtils::escapeAttribute($lv) ?>"
                                     <?= $active ? 'disabled aria-current="true"' : '' ?>>
-                                <?php if ($active): ?><i class="ti ti-check me-1"></i><?php endif; ?>
+                                <?php if ($active): ?><i class="fa-solid fa-check me-1"></i><?php endif; ?>
                                 <?= InputUtils::escapeHTML($label) ?>
                             </button>
                         <?php endforeach; ?>

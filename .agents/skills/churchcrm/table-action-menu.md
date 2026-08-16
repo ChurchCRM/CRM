@@ -19,15 +19,15 @@ Every table row that has per-row actions **must** use the standard Tabler action
     <div class="dropdown">
         <button class="btn btn-sm btn-ghost-secondary" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="ti ti-dots-vertical"></i>
+            <i class="fa-solid fa-ellipsis-v"></i>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
             <a class="dropdown-item" href="Editor.php?ID=<?= $id ?>">
-                <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
             </a>
             <div class="dropdown-divider"></div>
             <button type="submit" class="dropdown-item text-danger">
-                <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
             </button>
         </div>
     </div>
@@ -79,13 +79,13 @@ All person and family action menus must have these 4 items in this exact order:
 
 | # | Item | Condition |
 |---|------|-----------|
-| 1 | **View** (`ti ti-eye`) | Always |
-| 2 | **Edit** (`ti ti-pencil`) | Always |
-| 2b | **View Family** (`ti ti-users`) | Only if `familyId` is available |
+| 1 | **View** (`fa-solid fa-eye`) | Always |
+| 2 | **Edit** (`fa-solid fa-pencil`) | Always |
+| 2b | **View Family** (`fa-solid fa-users`) | Only if `familyId` is available |
 | — | `dropdown-divider` | Always |
 | 3 | **Cart** (Add/Remove, `.AddToCart` / `.RemoveFromCart`) | Always |
 | — | `dropdown-divider` | Always |
-| 4 | **Delete** (`ti ti-trash`, `text-danger`) | Always |
+| 4 | **Delete** (`fa-solid fa-trash`, `text-danger`) | Always |
 
 For persons, Delete uses a `.delete-person` button with `data-person_id` + `data-person_name` — handled globally by `CRMJSOM.js`.
 For families, Delete links to `SelectDelete.php?FamilyID={id}`.
@@ -97,12 +97,12 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 | Rule | ✅ Correct | ❌ Wrong |
 |------|-----------|---------|
 | Trigger class | `btn-ghost-secondary` | `btn-outline-secondary`, `btn-secondary` |
-| Trigger icon | `ti ti-dots-vertical` | `fa-solid fa-ellipsis-v`, `fa-ellipsis-v` |
+| Trigger icon | `fa-solid fa-ellipsis-v` | `fa-solid fa-ellipsis-v`, `fa-ellipsis-v` |
 | Menu alignment | `dropdown-menu-end` | `dropdown-menu-right` |
 | Aria attribute | `aria-expanded="false"` only | `aria-haspopup="true"` |
 | Inline styles | none | `style="z-index:..."`, `style="position:..."` |
 | stopPropagation | never | `onclick="event.stopPropagation()"` |
-| Icon spacing | `ti ti-pencil me-2` | icon only, no `me-2` |
+| Icon spacing | `fa-solid fa-pencil me-2` | icon only, no `me-2` |
 | Dividers | before destructive actions | none, or between every item |
 | Destructive items | `dropdown-item text-danger` | `dropdown-item btn-danger` |
 
@@ -136,7 +136,7 @@ codebase audit of three still-broken instances that already had it.
                         <button class="btn btn-sm btn-ghost-secondary"
                                 data-bs-toggle="dropdown"
                                 data-bs-display="static">
-                            <i class="ti ti-dots-vertical"></i>
+                            <i class="fa-solid fa-ellipsis-v"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">...</div>
                     </div>
@@ -182,7 +182,7 @@ on its own, but still needed.
         data-bs-toggle="dropdown"
         data-bs-display="static"
         aria-expanded="false">
-    <i class="ti ti-dots-vertical"></i>
+    <i class="fa-solid fa-ellipsis-v"></i>
 </button>
 ```
 
@@ -202,12 +202,12 @@ When a row action toggles cart membership, use this pattern. It works with `cart
     data-cart-type="person"
     data-label-add="<?= gettext('Add to Cart') ?>"
     data-label-remove="<?= gettext('Remove from Cart') ?>">
-    <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+    <i class="<?= $inCart ? 'fa-solid fa-trash' : 'fa-solid fa-cart-shopping' ?> me-2"></i>
     <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
 </button>
 ```
 
-`cart.js::updateButtonState` detects `isDropdownItem` via `.hasClass("dropdown-item")` and swaps Tabler icons + `.cart-label` text accordingly. Never use `stopPropagation` — it silently breaks this delegation.
+`cart.js::updateButtonState` detects `isDropdownItem` via `.hasClass("dropdown-item")` and swaps Font Awesome icons + `.cart-label` text accordingly. Never use `stopPropagation` — it silently breaks this delegation.
 
 ---
 
@@ -219,18 +219,18 @@ When rows support reordering (move up / move down), show the divider **only when
 echo '<div class="dropdown-menu dropdown-menu-end">';
 if ($row !== 1) {
     echo '<a class="dropdown-item" href="Editor.php?act=up&row_num=' . $row . '">
-            <i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+            <i class="fa-solid fa-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
 }
 if ($row !== $numRows) {
     echo '<a class="dropdown-item" href="Editor.php?act=down&row_num=' . $row . '">
-            <i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+            <i class="fa-solid fa-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
 }
 // Only show divider when at least one move action is present
 if ($row !== 1 || $row !== $numRows) {
     echo '<div class="dropdown-divider"></div>';
 }
 echo '<a class="dropdown-item text-danger" href="Editor.php?act=delete&ID=' . $id . '">
-        <i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
+        <i class="fa-solid fa-trash me-2"></i>' . gettext('Delete') . '</a>';
 echo '</div>';
 ```
 
@@ -275,7 +275,7 @@ On the cart view (`/v2/cart`), every person is already in the cart, so the cart 
     data-cart-type="person"
     data-label-add="<?= gettext('Add to Cart') ?>"
     data-label-remove="<?= gettext('Remove from Cart') ?>">
-    <i class="ti ti-trash me-2"></i>
+    <i class="fa-solid fa-trash me-2"></i>
     <span class="cart-label"><?= gettext('Remove from Cart') ?></span>
 </button>
 ```
@@ -286,7 +286,7 @@ No Delete action is shown on the cart page — users can only remove from cart, 
 
 ## Checklist Before Committing Any Table Change
 
-- [ ] Trigger uses `btn-ghost-secondary` + `ti ti-dots-vertical`
+- [ ] Trigger uses `btn-ghost-secondary` + `fa-solid fa-ellipsis-v`
 - [ ] Menu uses `dropdown-menu-end` (not `dropdown-menu-right`)
 - [ ] No `aria-haspopup` attribute
 - [ ] No inline styles on trigger, menu, `<td>`, or `.dropdown`

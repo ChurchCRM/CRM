@@ -165,17 +165,17 @@ require_once __DIR__ . '/Include/Header.php';
                         <td class="text-center w-1">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a class="dropdown-item" href="PropertyEditor.php?PropertyID=<?= InputUtils::escapeAttribute($prop['pro_ID']) ?>&Type=<?= InputUtils::escapeAttribute($sType) ?>">
-                                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                        <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <button class="dropdown-item text-danger delete-property-btn"
                                         data-property-id="<?= InputUtils::escapeAttribute($prop['pro_ID']) ?>"
                                         data-property-name="<?= InputUtils::escapeAttribute($prop['pro_Name']) ?>">
-                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>
                             </div>

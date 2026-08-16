@@ -85,7 +85,7 @@ export function initializeMainDashboard() {
           statusHtml =
             ' <span class="badge bg-secondary-lt text-secondary" title="' +
             i18next.t("Inactive") +
-            '"><i class="ti ti-power me-1"></i>' +
+            '"><i class="fa-solid fa-power-off me-1"></i>' +
             i18next.t("Inactive") +
             "</span>";
         }
@@ -301,7 +301,7 @@ export function initializeMainDashboard() {
               i18next.t("ago") +
               "</span>";
           }
-          return row.Birthday + " " + badge;
+          return row.Birthday + '<div class="small lh-1 mt-1">' + badge + "</div>";
         },
       },
     ],
@@ -415,7 +415,7 @@ export function initializeMainDashboard() {
               i18next.t("ago") +
               "</span>";
           }
-          return data + badge;
+          return data + '<div class="small lh-1 mt-1">' + badge + "</div>";
         },
       },
     ],
@@ -491,7 +491,7 @@ export function initializeMainDashboard() {
           statusHtml =
             ' <span class="badge bg-secondary-lt text-secondary" title="' +
             i18next.t("Inactive") +
-            '"><i class="ti ti-power me-1"></i>' +
+            '"><i class="fa-solid fa-power-off me-1"></i>' +
             i18next.t("Inactive") +
             "</span>";
         }

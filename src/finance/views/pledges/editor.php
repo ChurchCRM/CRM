@@ -228,7 +228,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                             <td>
                                 <button type="button" class="btn btn-sm btn-outline-danger remove-fund-row"
                                     title="<?= gettext('Remove') ?>">
-                                    <i class="fa-solid fa-trash-alt"></i>
+                                    <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
@@ -264,7 +264,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                             <td>
                                 <button type="button" class="btn btn-sm btn-outline-danger remove-fund-row"
                                     title="<?= gettext('Remove') ?>">
-                                    <i class="fa-solid fa-trash-alt"></i>
+                                    <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
@@ -301,7 +301,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             </a>
             <?php if ($isEdit): ?>
             <button type="button" class="btn btn-danger ms-auto" id="deletePledgeBtn">
-                <i class="fa-solid fa-trash-alt me-1"></i><?= gettext('Delete') ?>
+                <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
             </button>
             <?php endif; ?>
         </div>
@@ -337,7 +337,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         <td>
             <button type="button" class="btn btn-sm btn-outline-danger remove-fund-row"
                 title="<?= gettext('Remove') ?>">
-                <i class="fa-solid fa-trash-alt"></i>
+                <i class="fa-solid fa-trash"></i>
             </button>
         </td>
     </tr>
