@@ -372,6 +372,10 @@ describe("Kiosk API - ManageGroups role access (non-admin)", () => {
         // nofinance user has Finance=0, ManageGroups=0 — should be denied
         cy.makePrivateNoFinanceAPICall("GET", "/kiosk/api/devices", null, [401, 403]);
     });
+
+    it("Finance-only user (non-ManageGroups) is denied GET /kiosk/api/devices", () => {
+        cy.makePrivateFinanceOnlyAPICall("GET", "/kiosk/api/devices", null, [401, 403]);
+    });
 });
 
 describe("Kiosk Device Endpoint - Acceptance Enforcement", () => {

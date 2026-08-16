@@ -456,8 +456,7 @@ $sRootPath = SystemURLs::getRootPath();
     </div>
 </div>
 
-<?php if ($isFinanceEnabled): ?>
-<!-- System Settings Panel Component -->
+<?php if ($isAdmin): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

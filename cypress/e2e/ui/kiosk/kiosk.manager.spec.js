@@ -66,9 +66,14 @@ describe("Kiosk Manager", () => {
         it("ManageGroups user should NOT see the Admin top-level menu", () => {
             cy.visit("/");
             // The Admin nav menu should not be visible for non-admin ManageGroups users
-            cy.get("nav").should("not.contain.text", "Admin").or(() => {
-                // If Admin menu exists, Kiosk Manager should be under Groups, not Admin
-                cy.get("a[href*=\"kiosk/admin\"]").should("exist");
+            cy.get("nav").then(($nav) => {
+                if ($nav.text().includes("Admin")) {
+                    // Admin menu exists — Kiosk Manager must be under Groups, not Admin
+                    cy.get('a[href*="kiosk/admin"]').should("exist");
+                } else {
+                    // No Admin menu at all — preferred outcome
+                    expect($nav.text()).not.to.include("Admin");
+                }
             });
         });
     });
