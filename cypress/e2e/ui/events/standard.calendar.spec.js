@@ -288,6 +288,11 @@ describe("Standard Calendar — save (admin-session)", () => {
         // Empty-state hint should be visible since no calendar is pinned.
         cy.get("#calendarsEmptyHint").should("be.visible");
 
+        // Wait for TomSelect on eventTypeSelect to finish initializing;
+        // its validate() callback re-disables the save button while
+        // TomSelect is still booting, causing the POST to never fire
+        // in the root (non-subdir) CI environment.
+        cy.get("#eventTypeSelect + .ts-wrapper").should("exist");
         cy.get("#eventSaveBtn").click({ force: true });
 
         cy.wait("@createEvent").then((intercepted) => {
