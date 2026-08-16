@@ -17720,3 +17720,169 @@ msgstr "rad vald"
 msgid "rows selected"
 msgstr "rader valda"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Födelsedagar & jubileer"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Uppskattat värde %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Lägsta bud %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Inga \"%s\"-alternativ är tillgängliga ännu. Lägg till relevanta poster först."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Inga \"%s\"-alternativ är konfigurerade ännu. Lägg till relevanta poster först."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Personer med födelsedag eller bröllopsdag under en viss månad"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Den månad för vilken du vill hämta födelsedagar och jubileer."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Den månad för bröllopsdag för vilken du vill hämta poster."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Totalt för alla köp: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Totala köp: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Bröllopsdagar"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Personer med bröllopsdag under en viss månad"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Ett fel uppstod. Försök igen."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Är du säker på att du vill ta bort denna fond?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Kan inte ta bort: fonden har tillhörande löften"
+
+#: 
+msgid "Delete Fund"
+msgstr "Ta bort fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Riktningen måste vara 'upp' eller 'ner'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Redigera gåvofond"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Det gick inte att ändra ordning på gåvofonden"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fonden har lagts till."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fonden har tagits bort."
+
+#: 
+msgid "Fund name"
+msgstr "Fondens namn"
+
+#: 
+msgid "Fund name is required."
+msgstr "Fondens namn är obligatoriskt."
+
+#: 
+msgid "Fund order updated."
+msgstr "Fondordningen har uppdaterats."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fonden har sparats."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Inga fonder har lagts till ännu. Använd formuläret ovan för att lägga till den första fonden."
+
+#: 
+msgid "Optional description"
+msgstr "Valfri beskrivning"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privat kalender"
+
+#: 
+msgid "Public Calendar"
+msgstr "Offentlig kalender"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Avancerat: Installera en specifik version istället"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Som standard uppgraderar guiden till den senaste versionen. Du kan istället välja en specifik version nedan."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Det går inte att redigera en betalning i en avslutad insättning"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Hämta och tillämpa {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Varje ChurchCRM-version innehåller säkerhetskorrigeringar. Vi rekommenderar starkt att alltid uppgradera till den senaste versionen."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Det gick inte att avkoda betalningsbegäran"
+
+#: 
+msgid "Full release notes"
+msgstr "Fullständiga versionskommentarer"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Ogiltiga betalningsuppgifter"
+
+#: 
+msgid "No release notes available."
+msgstr "Inga versionskommentarer tillgängliga."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Varning: {{chosen}} saknar säkerhetskorrigeringar som ingår i {{latest}}. Fortsätt bara om du har ett specifikt skäl."
+
+#: 
+msgid "What you'll gain"
+msgstr "Vad du kommer att vinna"
+

@@ -17565,3 +17565,169 @@ msgstr "row na napili"
 msgid "rows selected"
 msgstr "mga row na napili"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Mga Kaarawan at Anibersaryo"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Tinatayang halaga %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Pinakamababang bid %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Walang mga pagpipiliang \"%s\" na magagamit pa. Magdagdag muna ng mga kaugnay na rekord."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Walang mga pagpipiliang \"%s\" na na-configure pa. Magdagdag muna ng mga kaugnay na rekord."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Mga tao na may kaarawan o anibersaryo ng kasal sa isang partikular na buwan"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Ang buwan kung saan nais mong makuha ang mga kaarawan at anibersaryo."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Ang buwan ng anibersaryo ng kasal kung saan nais mong makuha ang mga rekord."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Kabuuan ng lahat ng pagbili: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Kabuuang pagbili: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Mga Anibersaryo ng Kasal"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Mga tao na may anibersaryo ng kasal sa isang partikular na buwan"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "May naganap na error. Pakisubukan muli."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Sigurado ka bang nais mong tanggalin ang pondong ito?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Hindi ma-tanggal: ang pondo ay may mga kaugnay na pangako"
+
+#: 
+msgid "Delete Fund"
+msgstr "Tanggalin ang Pondo"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Ang direksyon ay dapat na 'up' o 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "I-edit ang Pondo ng Donasyon"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Nabigo ang pag-aayos muli ng pondo ng donasyon"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Matagumpay na naidagdag ang pondo."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Matagumpay na natanggal ang pondo."
+
+#: 
+msgid "Fund name"
+msgstr "Pangalan ng pondo"
+
+#: 
+msgid "Fund name is required."
+msgstr "Kinakailangan ang pangalan ng pondo."
+
+#: 
+msgid "Fund order updated."
+msgstr "Na-update na ang pagkakasunod ng pondo."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Matagumpay na na-save ang pondo."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Wala pang pondo na naidagdag. Gamitin ang form sa itaas upang idagdag ang unang pondo."
+
+#: 
+msgid "Optional description"
+msgstr "Opsyonal na paglalarawan"
+
+#: 
+msgid "Private Calendar"
+msgstr "Pribadong Kalendaryo"
+
+#: 
+msgid "Public Calendar"
+msgstr "Pampublikong Kalendaryo"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Advanced: Mag-install ng partikular na bersyon sa halip"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Bilang default, ina-upgrade ng wizard sa pinakabagong bersyon. Maaari kang pumili ng partikular na bersyon sa ibaba."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Hindi ma-edit ang isang bayad sa isang saradong deposito"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "I-download at I-apply ang {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Bawat release ng ChurchCRM ay may kasamang mga pag-aayos sa seguridad. Lubos naming inirerekomenda na palaging mag-upgrade sa pinakabagong bersyon."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Nabigo ang pag-decode ng kahilingan sa bayad"
+
+#: 
+msgid "Full release notes"
+msgstr "Kumpletong release notes"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Hindi wastong data ng bayad"
+
+#: 
+msgid "No release notes available."
+msgstr "Walang available na release notes."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Babala: Ang {{chosen}} ay kulang sa mga pag-aayos sa seguridad na kasama sa {{latest}}. Magpatuloy lamang kung mayroon kang partikular na dahilan."
+
+#: 
+msgid "What you'll gain"
+msgstr "Ano ang iyong makukuha"
+

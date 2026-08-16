@@ -17624,3 +17624,169 @@ msgstr "riadok vybrany"
 msgid "rows selected"
 msgstr "riadky vybrane"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Narodeniny a výročia"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Odhadovaná hodnota %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimálna ponuka %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Zatiaľ nie sú dostupné žiadne možnosti \"%s\". Najprv pridajte príslušné záznamy."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Zatiaľ nie sú nakonfigurované žiadne možnosti \"%s\". Najprv pridajte príslušné záznamy."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Osoby s narodeninami alebo výročiami sobášu v danom mesiaci"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Mesiac, pre ktorý chcete zobraziť narodeniny a výročia."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Mesiac výročia sobášu, pre ktorý chcete zobraziť záznamy."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Celkový súčet všetkých nákupov: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Celkové nákupy: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Výročia sobášu"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Osoby s výročiami sobášu v danom mesiaci"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Vyskytla sa chyba. Skúste to znova."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Naozaj chcete odstrániť tento fond?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Nie je možné odstrániť: fond má priradené záväzky"
+
+#: 
+msgid "Delete Fund"
+msgstr "Odstrániť fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Smer musí byť 'up' alebo 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Upraviť fond príspevkov"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Nepodarilo sa zmeniť poradie fondu príspevkov"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fond bol úspešne pridaný."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fond bol úspešne odstránený."
+
+#: 
+msgid "Fund name"
+msgstr "Názov fondu"
+
+#: 
+msgid "Fund name is required."
+msgstr "Názov fondu je povinný."
+
+#: 
+msgid "Fund order updated."
+msgstr "Poradie fondov bolo aktualizované."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fond bol úspešne uložený."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Zatiaľ neboli pridané žiadne fondy. Použite formulár vyššie na pridanie prvého fondu."
+
+#: 
+msgid "Optional description"
+msgstr "Voliteľný popis"
+
+#: 
+msgid "Private Calendar"
+msgstr "Súkromný kalendár"
+
+#: 
+msgid "Public Calendar"
+msgstr "Verejný kalendár"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Pokročilé: Nainštalovať konkrétnu verziu"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Predvolene sprievodca aktualizuje na najnovšiu verziu. Nižšie môžete zvoliť konkrétnu verziu."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Nie je možné upraviť platbu v uzavretom vklade"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Stiahnuť a použiť {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Každé vydanie ChurchCRM obsahuje bezpečnostné opravy. Dôrazne odporúčame vždy aktualizovať na najnovšiu verziu."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Nepodarilo sa dekódovať požiadavku na platbu"
+
+#: 
+msgid "Full release notes"
+msgstr "Úplné poznámky k vydaniu"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Neplatné platobné údaje"
+
+#: 
+msgid "No release notes available."
+msgstr "Nie sú dostupné žiadne poznámky k vydaniu."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Upozornenie: {{chosen}} neobsahuje bezpečnostné opravy zahrnuté vo verzii {{latest}}. Pokračujte iba v prípade, že máte konkrétny dôvod."
+
+#: 
+msgid "What you'll gain"
+msgstr "Čo získate"
+

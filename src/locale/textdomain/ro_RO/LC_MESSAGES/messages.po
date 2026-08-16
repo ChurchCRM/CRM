@@ -17693,3 +17693,169 @@ msgstr "rand selectat"
 msgid "rows selected"
 msgstr "randuri selectate"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Zile de naștere și aniversări"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Valoare estimată %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Ofertă minimă %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Nu există încă opțiuni pentru \"%s\". Adăugați mai întâi înregistrările relevante."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Nu există încă opțiuni configurate pentru \"%s\". Adăugați mai întâi înregistrările relevante."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Persoane cu zile de naștere sau aniversări de căsătorie într-o anumită lună"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Luna pentru care doriți să fie afișate zilele de naștere și aniversările."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Luna aniversării de căsătorie pentru care doriți să fie afișate înregistrările."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Total toate achizițiile: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Total achiziții: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Aniversări de căsătorie"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Persoane cu aniversări de căsătorie într-o anumită lună"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "A apărut o eroare. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Sigur doriți să ștergeți acest fond?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Nu se poate șterge: fondul are angajamente asociate"
+
+#: 
+msgid "Delete Fund"
+msgstr "Ștergere fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Direcția trebuie să fie 'sus' sau 'jos'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Editare fond de donații"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Nu s-a putut reordona fondul de donații"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fondul a fost adăugat cu succes."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fondul a fost șters cu succes."
+
+#: 
+msgid "Fund name"
+msgstr "Numele fondului"
+
+#: 
+msgid "Fund name is required."
+msgstr "Numele fondului este obligatoriu."
+
+#: 
+msgid "Fund order updated."
+msgstr "Ordinea fondurilor a fost actualizată."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fondul a fost salvat cu succes."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Nu a fost adăugat niciun fond încă. Folosiți formularul de mai sus pentru a adăuga primul fond."
+
+#: 
+msgid "Optional description"
+msgstr "Descriere opțională"
+
+#: 
+msgid "Private Calendar"
+msgstr "Calendar privat"
+
+#: 
+msgid "Public Calendar"
+msgstr "Calendar public"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Avansat: Instalați în schimb o versiune specifică"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "În mod implicit, expertul actualizează la cea mai recentă versiune. Puteți alege în schimb o versiune specifică mai jos."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Nu se poate edita o plată într-un depozit închis"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Descărcare și aplicare {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Fiecare versiune ChurchCRM include corecții de securitate. Recomandăm cu insistență actualizarea întotdeauna la cea mai recentă versiune."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Decodificarea cererii de plată a eșuat"
+
+#: 
+msgid "Full release notes"
+msgstr "Note complete de lansare"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Date de plată invalide"
+
+#: 
+msgid "No release notes available."
+msgstr "Nu sunt disponibile note de lansare."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Avertisment: {{chosen}} nu include corecțiile de securitate din {{latest}}. Continuați doar dacă aveți un motiv specific."
+
+#: 
+msgid "What you'll gain"
+msgstr "Ce veți câștiga"
+

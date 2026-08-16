@@ -17621,3 +17621,169 @@ msgstr "redak odabran"
 msgid "rows selected"
 msgstr "redaka odabrano"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Rođendani i godišnjice"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Procijenjena vrijednost %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimalna ponuda %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Još nema dostupnih mogućnosti za \"%s\". Najprije dodajte odgovarajuće zapise."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Još nisu konfigurirane mogućnosti za \"%s\". Najprije dodajte odgovarajuće zapise."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Osobe s rođendanom ili godišnjicom vjenčanja u određenom mjesecu"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Mjesec za koji želite prikazati rođendane i godišnjice."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Mjesec godišnjice vjenčanja za koji želite prikazati zapise."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Ukupno svih kupnji: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Ukupne kupnje: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Godišnjice vjenčanja"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Osobe s godišnjicom vjenčanja u određenom mjesecu"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Došlo je do pogreške. Pokušajte ponovo."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Jeste li sigurni da želite izbrisati ovaj fond?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Nije moguće izbrisati: fond ima povezana obećanja davanja"
+
+#: 
+msgid "Delete Fund"
+msgstr "Izbriši fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Smjer mora biti 'up' ili 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Uredi fond za darove"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Promjena redoslijeda fonda za darove nije uspjela"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fond je uspješno dodan."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fond je uspješno izbrisan."
+
+#: 
+msgid "Fund name"
+msgstr "Naziv fonda"
+
+#: 
+msgid "Fund name is required."
+msgstr "Naziv fonda je obavezan."
+
+#: 
+msgid "Fund order updated."
+msgstr "Redoslijed fonda je ažuriran."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fond je uspješno spremljen."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Još nije dodan nijedan fond. Upotrijebite gornji obrazac za dodavanje prvog fonda."
+
+#: 
+msgid "Optional description"
+msgstr "Neobavezni opis"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privatni kalendar"
+
+#: 
+msgid "Public Calendar"
+msgstr "Javni kalendar"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Napredno: Instalirajte određenu verziju"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Prema zadanim postavkama čarobnjak nadograđuje na najnoviju verziju. Umjesto toga možete odabrati određenu verziju u nastavku."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Nije moguće uređivati uplatu u zatvorenom depozitu"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Preuzmi i primijeni {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Svako izdanje ChurchCRM-a uključuje sigurnosne ispravke. Preporučujemo uvijek nadogradnju na najnoviju verziju."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Dekodiranje zahtjeva za uplatu nije uspjelo"
+
+#: 
+msgid "Full release notes"
+msgstr "Potpune napomene o izdanju"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Nevažeći podaci o uplati"
+
+#: 
+msgid "No release notes available."
+msgstr "Nema dostupnih napomena o izdanju."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Upozorenje: {{chosen}} nema sigurnosnih ispravaka uključenih u {{latest}}. Nastavite samo ako imate poseban razlog."
+
+#: 
+msgid "What you'll gain"
+msgstr "Što ćete dobiti"
+
