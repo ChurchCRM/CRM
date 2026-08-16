@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card-status-top bg-primary"></div>
   <div class="card-header">
     <h3 class="card-title mb-0">
-      <i class="ti ti-pencil me-2"></i><?= gettext('Edit Event Type') ?>: <?= InputUtils::escapeHTML($eventType->getName()) ?>
+      <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit Event Type') ?>: <?= InputUtils::escapeHTML($eventType->getName()) ?>
     </h3>
   </div>
   <div class="card-body">
@@ -28,7 +28,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
           <div class="col-md-4">
             <button type="submit" name="Action" value="NAME" class="btn btn-primary">
-              <i class="ti ti-device-floppy me-1"></i><?= gettext('Save Name') ?>
+              <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Name') ?>
             </button>
           </div>
         </div>
@@ -95,7 +95,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
           <div class="col-auto">
             <button type="submit" class="btn btn-primary">
-              <i class="ti ti-device-floppy me-1"></i><?= gettext('Save Time') ?>
+              <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Time') ?>
             </button>
           </div>
         </div>
@@ -134,13 +134,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                               class="btn btn-outline-primary"
                               data-cy="rename-attendance-count"
                               title="<?= gettext('Save changes to this category name') ?>">
-                        <i class="ti ti-device-floppy me-1"></i><?= gettext('Save') ?>
+                        <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save') ?>
                       </button>
                       <button type="submit" name="Action" value="DELETE_<?= $cid ?>"
                               class="btn btn-outline-danger"
                               data-cy="remove-attendance-count"
                               data-confirm="<?= InputUtils::escapeAttribute(gettext('Remove this attendance count?')) ?>">
-                        <i class="ti ti-trash"></i>
+                        <i class="fa-solid fa-trash"></i>
                       </button>
                     </div>
                   </td>
@@ -154,7 +154,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <td class="text-end">
                   <button type="submit" name="Action" value="ADD" class="btn btn-primary btn-sm"
                           data-cy="add-attendance-count">
-                    <i class="ti ti-plus me-1"></i><?= gettext('Add') ?>
+                    <i class="fa-solid fa-plus me-1"></i><?= gettext('Add') ?>
                   </button>
                 </td>
               </tr>
@@ -171,7 +171,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="mt-3">
   <a href="<?= $sRootPath ?>/event/types" class="btn btn-outline-secondary">
-    <i class="ti ti-chevron-left me-1"></i><?= gettext('Return to Event Types') ?>
+    <i class="fa-solid fa-chevron-left me-1"></i><?= gettext('Return to Event Types') ?>
   </a>
 </div>
 

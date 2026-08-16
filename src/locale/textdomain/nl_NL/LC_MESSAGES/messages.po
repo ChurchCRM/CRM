@@ -14440,10 +14440,6 @@ msgid "Group removed from cart"
 msgstr "Groep verwijderd van verzamelmap"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Groeps-ID vereist voor prompt rolselectie"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML-URL"
 
@@ -14821,20 +14817,8 @@ msgid "Please select a role."
 msgstr "Selecteer een rol."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Selecteer zowel een groep als een rol."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Selecteer rijen om te verwijderen"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Selecteer de rol voor leden"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Selecteer de doelgroep voor de leden"
 
 #: 
 msgid "Please try again"
@@ -15730,24 +15714,12 @@ msgid "Account status"
 msgstr "Accountstatus"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Geavanceerd: kies een specifieke doelversie"
-
-#: 
 msgid "Bug Fix"
 msgstr "Bugoplossing"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Standaard downloadt de wizard de volgende aanbevolen versie. U kunt hieronder ook een andere beschikbare versie kiezen."
-
-#: 
 msgid "Change required"
 msgstr "Wijziging vereist"
-
-#: 
-msgid "Changelog"
-msgstr "Wijzigingslog"
 
 #: 
 msgid "Continue Anyway"
@@ -15756,10 +15728,6 @@ msgstr "Toch doorgaan"
 #: 
 msgid "Could not load release information."
 msgstr "Kon release-informatie niet laden."
-
-#: 
-msgid "Download & Install"
-msgstr "Downloaden en installeren"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15788,10 +15756,6 @@ msgstr "Volledige wijzigingslog"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Stabiele versie {{version}} installeren"
-
-#: 
-msgid "Installing next release"
-msgstr "Volgende versie wordt geïnstalleerd"
 
 #: 
 msgid "Invalid file path"
@@ -15862,10 +15826,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Volledig upgradepad tonen"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "De nieuwste stabiele versie is {{version}}. U kunt deze hieronder opnieuw installeren."
 
@@ -15892,10 +15852,6 @@ msgstr "Release-notities bekijken"
 #: 
 msgid "What's New"
 msgstr "Wat is er nieuw"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Wat is er nieuw in {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16846,10 +16802,6 @@ msgid "Working..."
 msgstr "Bezig..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "U loopt {{releaseCount}} versies achter. Dit is wat u krijgt"
-
-#: 
 msgid "click to expand"
 msgstr "klik om uit te vouwen"
 
@@ -17104,10 +17056,6 @@ msgstr "Toezegging maken mislukt"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Toezegging verwijderen mislukt"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Coderen van betalingsreactie mislukt"
 
 #: 
 msgid "Failed to retrieve pledge"

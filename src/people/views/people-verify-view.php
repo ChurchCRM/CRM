@@ -27,23 +27,23 @@ if ($emailErrorReason !== '') {
     switch ($emailErrorReason) {
         case ConfirmReportEmailResult::STATUS_NO_RECIPIENTS:
             $emailAlertClass = 'danger';
-            $emailAlertIcon  = 'ti ti-mail-off';
+            $emailAlertIcon  = 'fa-solid fa-envelope-off';
             break;
         case ConfirmReportEmailResult::STATUS_SMTP_FAILURE:
             $emailAlertClass = 'danger';
-            $emailAlertIcon  = 'ti ti-cloud-off';
+            $emailAlertIcon  = 'fa-solid fa-cloud-meatball';
             break;
         case ConfirmReportEmailResult::STATUS_EMAIL_DISABLED:
             $emailAlertClass = 'danger';
-            $emailAlertIcon  = 'ti ti-mail-off';
+            $emailAlertIcon  = 'fa-solid fa-envelope-off';
             break;
         case ConfirmReportEmailResult::STATUS_PARTIAL_FAILURE:
             $emailAlertClass = 'warning';
-            $emailAlertIcon  = 'ti ti-alert-triangle';
+            $emailAlertIcon  = 'fa-solid fa-triangle-exclamation';
             break;
         default:
             $emailAlertClass = 'danger';
-            $emailAlertIcon  = 'ti ti-alert-circle';
+            $emailAlertIcon  = 'fa-solid fa-circle-exclamation';
     }
     // Message text delegated to the value object’s static method (single source of truth)
     $emailAlertMsg = ConfirmReportEmailResult::messageForStatus($emailErrorReason, $emailErrorSent, $emailErrorFailed);
@@ -74,7 +74,7 @@ if ($emailErrorReason !== '') {
             class="btn btn-sm btn-outline-<?= $emailAlertClass ?> ms-3"
             id="retryVerifyEmail"
             data-cy="retry-email-btn">
-        <i class="ti ti-refresh me-1" aria-hidden="true"></i><?= gettext('Retry') ?>
+        <i class="fa-solid fa-arrows-rotate me-1" aria-hidden="true"></i><?= gettext('Retry') ?>
     </button>
     <button type="button"
             class="btn-close"
@@ -86,7 +86,7 @@ if ($emailErrorReason !== '') {
 <?php /* ---- Success alert (inline version of the toast) ---- */ ?>
 <?php if ($emailSuccessCount > 0): ?>
 <div class="alert alert-success alert-dismissible fade show mb-3" role="alert" data-cy="email-success-alert">
-    <i class="ti ti-circle-check me-2" aria-hidden="true"></i>
+    <i class="fa-solid fa-circle-check me-2" aria-hidden="true"></i>
     <?= htmlspecialchars(
         sprintf(
             ngettext('PDF successfully emailed to %d family.', 'PDFs successfully emailed to %d families.', $emailSuccessCount),
@@ -153,7 +153,7 @@ if ($emailErrorReason !== '') {
             <!-- Header -->
             <div class="modal-header">
                 <h5 class="modal-title" id="verifyEmailModalLabel">
-                    <i class="ti ti-send me-2" aria-hidden="true"></i>
+                    <i class="fa-solid fa-paper-plane me-2" aria-hidden="true"></i>
                     <span id="modalTitle"><?= gettext('Send Family Verification Emails') ?></span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -187,12 +187,12 @@ if ($emailErrorReason !== '') {
             <div class="modal-footer" id="modalFooter">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                         data-cy="modal-cancel-btn">
-                    <i class="ti ti-x me-1" aria-hidden="true"></i>
+                    <i class="fa-solid fa-xmark me-1" aria-hidden="true"></i>
                     <?= gettext('Cancel') ?>
                 </button>
                 <button type="button" class="btn btn-primary" id="modalSendBtn"
                         data-cy="modal-send-btn" disabled>
-                    <i class="ti ti-send me-1" aria-hidden="true"></i>
+                    <i class="fa-solid fa-paper-plane me-1" aria-hidden="true"></i>
                     <?= gettext('Send Emails') ?>
                 </button>
             </div>
@@ -236,7 +236,7 @@ if ($emailErrorReason !== '') {
             if (sendBtn) {
                 sendBtn.disabled = true;
                 sendBtn.innerHTML =
-                    '<i class="ti ti-send me-1" aria-hidden="true"></i>' +
+                    '<i class="fa-solid fa-paper-plane me-1" aria-hidden="true"></i>' +
                     i18next.t('Send Emails');
             }
         }
@@ -259,7 +259,7 @@ if ($emailErrorReason !== '') {
                 var errContainer = document.getElementById('previewFetchError');
                 errContainer.innerHTML =
                     '<div class="alert alert-danger">' +
-                    '<i class="ti ti-alert-circle me-2" aria-hidden="true"></i>' +
+                    '<i class="fa-solid fa-circle-exclamation me-2" aria-hidden="true"></i>' +
                     i18next.t('Could not load email preview. Please close and try again.') +
                     '</div>';
                 errContainer.classList.remove('d-none');
@@ -377,7 +377,7 @@ if ($emailErrorReason !== '') {
             // Replace footer with just a Close button
             footer.innerHTML =
                 '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' +
-                '<i class="ti ti-x me-1" aria-hidden="true"></i>' +
+                '<i class="fa-solid fa-xmark me-1" aria-hidden="true"></i>' +
                 i18next.t('Close') +
                 '</button>';
 

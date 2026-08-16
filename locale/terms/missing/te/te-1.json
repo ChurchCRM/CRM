@@ -1,58 +1,69 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "",
-    "other": ""
+    "one": "%d కుటుంబానికి ఇమెయిల్ పంపబడింది.",
+    "other": "%d కుటుంబాలకు ఇమెయిల్ పంపబడింది."
   },
-  "N/A": "",
-  "OFX": "",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "",
-    "other": ""
+    "one": "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.",
+    "other": "%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది."
   },
-  "Birthdays & Anniversaries": "",
-  "Estimated value %s.": "",
-  "Minimum bid %s.": "",
-  "No \"%s\" options are available yet. Add the relevant records first.": "",
-  "No \"%s\" options are configured yet. Add the relevant records first.": "",
-  "People with birthdays or wedding anniversaries in a particular month": "",
-  "The month for which you would like birthdays and anniversaries returned.": "",
-  "The wedding anniversary month for which you would like records returned.": "",
-  "Total of all purchases: %s": "",
-  "Total purchases: %s": "",
-  "Wedding Anniversaries": "",
-  "People with wedding anniversaries in a particular month": "",
-  "An error occurred. Please try again.": "",
-  "Are you sure you want to delete this fund?": "",
-  "Cannot delete: fund has associated pledges": "",
-  "Delete Fund": "",
-  "Direction must be 'up' or 'down'.": "",
-  "Edit Donation Fund": "",
-  "Failed to reorder donation fund": "",
-  "Fund added successfully.": "",
-  "Fund deleted successfully.": "",
-  "Fund name": "",
-  "Fund name is required.": "",
-  "Fund order updated.": "",
-  "Fund saved successfully.": "",
-  "No funds have been added yet. Use the form above to add the first fund.": "",
-  "Optional description": "",
-  "Private Calendar": "",
-  "Public Calendar": "",
+  "Birthdays & Anniversaries": "పుట్టినరోజులు & వివాహ వార్షికోత్సవాలు",
+  "Estimated value %s.": "అంచనా విలువ %s.",
+  "Minimum bid %s.": "కనీస వేలం %s.",
+  "No \"%s\" options are available yet. Add the relevant records first.": "ఇంకా \"%s\" ఎంపికలు అందుబాటులో లేవు. ముందు సంబంధిత రికార్డులను జోడించండి.",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "ఇంకా \"%s\" ఎంపికలు కాన్ఫిగర్ చేయబడలేదు. ముందు సంబంధిత రికార్డులను జోడించండి.",
+  "People with birthdays or wedding anniversaries in a particular month": "నిర్దిష్ట నెలలో పుట్టినరోజులు లేదా వివాహ వార్షికోత్సవాలు ఉన్న వ్యక్తులు",
+  "The month for which you would like birthdays and anniversaries returned.": "మీరు పుట్టినరోజులు మరియు వార్షికోత్సవాలు తిరిగి పొందాలనుకుంటున్న నెల.",
+  "The wedding anniversary month for which you would like records returned.": "మీరు రికార్డులు తిరిగి పొందాలనుకుంటున్న వివాహ వార్షికోత్సవ నెల.",
+  "Total of all purchases: %s": "అన్ని కొనుగోళ్ల మొత్తం: %s",
+  "Total purchases: %s": "మొత్తం కొనుగోళ్లు: %s",
+  "Wedding Anniversaries": "వివాహ వార్షికోత్సవాలు",
+  "People with wedding anniversaries in a particular month": "నిర్దిష్ట నెలలో వివాహ వార్షికోత్సవాలు ఉన్న వ్యక్తులు",
+  "An error occurred. Please try again.": "ఒక లోపం సంభవించింది. దయచేసి మళ్ళీ ప్రయత్నించండి.",
+  "Are you sure you want to delete this fund?": "మీరు నిజంగా ఈ నిధిని తొలగించాలనుకుంటున్నారా?",
+  "Cannot delete: fund has associated pledges": "తొలగించలేరు: నిధికి సంబంధిత నిబద్ధతలు ఉన్నాయి",
+  "Delete Fund": "నిధిని తొలగించు",
+  "Direction must be 'up' or 'down'.": "దిశ 'up' లేదా 'down' అయి ఉండాలి.",
+  "Edit Donation Fund": "విరాళ నిధిని సవరించు",
+  "Failed to reorder donation fund": "విరాళ నిధిని పునర్వ్యవస్థీకరించడం విఫలమైంది",
+  "Fund added successfully.": "నిధి విజయవంతంగా జోడించబడింది.",
+  "Fund deleted successfully.": "నిధి విజయవంతంగా తొలగించబడింది.",
+  "Fund name": "నిధి పేరు",
+  "Fund name is required.": "నిధి పేరు అవసరం.",
+  "Fund order updated.": "నిధి క్రమం నవీకరించబడింది.",
+  "Fund saved successfully.": "నిధి విజయవంతంగా సేవ్ చేయబడింది.",
+  "No funds have been added yet. Use the form above to add the first fund.": "ఇంకా నిధులు జోడించబడలేదు. మొదటి నిధిని జోడించడానికి పై ఫారమ్‌ను ఉపయోగించండి.",
+  "Optional description": "ఐచ్ఛిక వివరణ",
+  "Private Calendar": "ప్రైవేట్ క్యాలెండర్",
+  "Public Calendar": "పబ్లిక్ క్యాలెండర్",
+  "Advanced: Install a specific version instead": "అధునాతన: బదులుగా నిర్దిష్ట వెర్షన్‌ను ఇన్‌స్టాల్ చేయండి",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "డిఫాల్ట్‌గా విజార్డ్ తాజా వెర్షన్‌కు అప్‌గ్రేడ్ చేస్తుంది. మీరు బదులుగా దిగువ నిర్దిష్ట వెర్షన్‌ను ఎంచుకోవచ్చు.",
+  "Cannot edit a payment in a closed deposit": "మూసివేసిన డిపాజిట్‌లో చెల్లింపును సవరించలేరు",
+  "Download & Apply {{version}}": "{{version}}ని డౌన్‌లోడ్ చేసి వర్తింపజేయి",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "ప్రతి ChurchCRM విడుదలలో భద్రతా సవరణలు ఉంటాయి. మేము ఎల్లప్పుడూ తాజా వెర్షన్‌కు అప్‌గ్రేడ్ చేయాలని గట్టిగా సిఫార్సు చేస్తున్నాము.",
+  "Failed to decode payment request": "చెల్లింపు అభ్యర్థనను డీకోడ్ చేయడం విఫలమైంది",
+  "Full release notes": "పూర్తి విడుదల గమనికలు",
+  "Invalid payment data": "చెల్లని చెల్లింపు డేటా",
+  "No release notes available.": "విడుదల గమనికలు అందుబాటులో లేవు.",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "హెచ్చరిక: {{chosen}}లో {{latest}}లో చేర్చిన భద్రతా సవరణలు లేవు. మీకు నిర్దిష్ట కారణం ఉంటేనే కొనసాగండి.",
+  "What you'll gain": "మీరు పొందేది",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} సభ్యుడు కాపీ చేయబడ్డారు",
+    "other": "{{count}} సభ్యులు కాపీ చేయబడ్డారు"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ఈ జాబితాలో {{count}} గ్రహీత ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలు కాపీ చేయండి ఉపయోగించండి.",
+    "other": "ఈ జాబితాలో {{count}} గ్రహీతలు ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలు కాపీ చేయండి ఉపయోగించండి."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ఇమెయిల్ క్లయింట్‌కు చాలా ఎక్కువ గ్రహీతలు ({{count}} > {{max}}). బదులుగా చిరునామాలు కాపీ చేయండి ఉపయోగించండి.",
+    "other": "ఇమెయిల్ క్లయింట్‌కు చాలా ఎక్కువ గ్రహీతలు ({{count}} > {{max}}). బదులుగా చిరునామాలు కాపీ చేయండి ఉపయోగించండి."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} నిమిషం మిగిలింది",
+    "other": "{{count}} నిమిషాలు మిగిలాయి"
   }
 }

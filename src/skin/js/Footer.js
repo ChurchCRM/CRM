@@ -29,13 +29,13 @@ function initializeApp() {
     var highlighted = -1;
 
     var groupIcons = {
-      Persons: "ti-user",
-      Families: "ti-home",
-      Groups: "ti-users-group",
-      Addresses: "ti-map-pin",
-      "Finance Deposits": "ti-building-bank",
-      "Finance Payments": "ti-credit-card",
-      "Calendar Events": "ti-calendar",
+      Persons: "fa-user",
+      Families: "fa-house",
+      Groups: "fa-users",
+      Addresses: "fa-map-pin",
+      "Finance Deposits": "fa-building",
+      "Finance Payments": "fa-credit-card",
+      "Calendar Events": "fa-calendar",
     };
 
     function showDropdown() {
@@ -72,10 +72,10 @@ function initializeApp() {
       groups.forEach((group) => {
         // group.text is "Persons (5)" — strip the count suffix for icon lookup
         var baseName = group.text.split("(")[0].trim();
-        var icon = groupIcons[baseName] || "ti-search";
+        var icon = groupIcons[baseName] || "fa-search";
         html +=
           '<div class="dropdown-header d-flex align-items-center">' +
-          '<i class="ti ' +
+          '<i class="fa-solid ' +
           icon +
           ' me-1"></i> ' +
           window.CRM.escapeHtml(group.text) +
@@ -102,7 +102,7 @@ function initializeApp() {
         "/v2/search?q=" +
         term +
         '" class="dropdown-item">' +
-        '<i class="ti ti-arrow-right me-1"></i>' +
+        '<i class="fa-solid fa-arrow-right me-1"></i>' +
         i18next.t("View all results") +
         "</a>";
 

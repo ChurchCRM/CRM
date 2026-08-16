@@ -14507,10 +14507,6 @@ msgid "Group removed from cart"
 msgstr "تمت إزالة المجموعة من السلة"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID اللازمة لدور اختيار موجه"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14888,20 +14884,8 @@ msgid "Please select a role."
 msgstr "يرجى تحديد دور."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "يرجى تحديد خدمة ودور."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "يرجى اختيار الصفوف المراد حذفها"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "الرجاء تحديد دور هدفا للأعضاء"
-
-#: 
-msgid "Please select target group for members"
-msgstr "يرجى اختيار المجموعة المستهدفة للأعضاء"
 
 #: 
 msgid "Please try again"
@@ -15801,24 +15785,12 @@ msgid "Account status"
 msgstr "حالة الحساب"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "متقدم: اختر إصداراً مستهدفاً محدداً"
-
-#: 
 msgid "Bug Fix"
 msgstr "إصلاح خطأ"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "بشكل افتراضي، يقوم المعالج بتنزيل الإصدار التالي الموصى به. يمكنك بدلاً من ذلك اختيار أي إصدار متاح أدناه."
-
-#: 
 msgid "Change required"
 msgstr "التغيير مطلوب"
-
-#: 
-msgid "Changelog"
-msgstr "سجل التغييرات"
 
 #: 
 msgid "Continue Anyway"
@@ -15827,10 +15799,6 @@ msgstr "المتابعة على أي حال"
 #: 
 msgid "Could not load release information."
 msgstr "تعذر تحميل معلومات الإصدار."
-
-#: 
-msgid "Download & Install"
-msgstr "تنزيل وتثبيت"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15859,10 +15827,6 @@ msgstr "سجل التغييرات الكامل"
 #: 
 msgid "Install stable {{version}}"
 msgstr "تثبيت الإصدار المستقر {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "جارٍ تثبيت الإصدار التالي"
 
 #: 
 msgid "Invalid file path"
@@ -15933,10 +15897,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "إظهار مسار الترقية الكامل"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "أحدث إصدار مستقر هو {{version}}. يمكنك إعادة تثبيته أدناه."
 
@@ -15963,10 +15923,6 @@ msgstr "عرض ملاحظات الإصدار"
 #: 
 msgid "What's New"
 msgstr "ما الجديد"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "ما الجديد في {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16937,10 +16893,6 @@ msgid "Working..."
 msgstr "جارٍ المعالجة..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "أنت متأخر بـ {{releaseCount}} إصدارات. إليك ما ستكسبه"
-
-#: 
 msgid "click to expand"
 msgstr "انقر للتوسيع"
 
@@ -17195,10 +17147,6 @@ msgstr "فشل في إنشاء التعهد"
 #: 
 msgid "Failed to delete pledge"
 msgstr "فشل في حذف التعهد"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "فشل في ترميز استجابة الدفعة"
 
 #: 
 msgid "Failed to retrieve pledge"

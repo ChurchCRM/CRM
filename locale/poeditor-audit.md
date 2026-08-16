@@ -10,55 +10,55 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `ta` | Tamil | 4232 | 99.25% | 🟢 Complete | ✅ Yes |
-| `af` | Afrikaans | 4227 | 99.13% | 🟢 Complete | ✅ Yes |
-| `am` | Amharic | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `ar` | Arabic | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `hr` | Croatian | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `fi` | Finnish | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 4224 | 99.06% | 🟢 Complete | ✅ Yes |
-| `de` | German | 4223 | 99.04% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 4223 | 99.04% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 4223 | 99.04% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `ml` | Malayalam | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `sk` | Slovak | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `tr` | Turkish | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 4222 | 99.02% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 4221 | 98.99% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 4221 | 98.99% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 4221 | 98.99% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 4221 | 98.99% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 4220 | 98.97% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 4220 | 98.97% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 4220 | 98.97% | 🟢 Complete | ✅ Yes |
-| `nb` | Norwegian Bokmål | 4220 | 98.97% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 4220 | 98.97% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 4220 | 98.97% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 4219 | 98.94% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 4218 | 98.92% | 🟢 Complete | ✅ Yes |
-| `fil` | Filipino | 4212 | 98.78% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 4219 | 98.99% | 🟢 Complete | ✅ Yes |
+| `af` | Afrikaans | 4214 | 98.87% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `hr` | Croatian | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `fi` | Finnish | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `hi` | Hindi | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 4211 | 98.8% | 🟢 Complete | ✅ Yes |
+| `de` | German | 4210 | 98.78% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 4210 | 98.78% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 4210 | 98.78% | 🟢 Complete | ✅ Yes |
+| `sq` | Albanian | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `ml` | Malayalam | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `sk` | Slovak | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 4209 | 98.76% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 4208 | 98.73% | 🟢 Complete | ✅ Yes |
+| `id` | Indonesian | 4208 | 98.73% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 4208 | 98.73% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 4208 | 98.73% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 4207 | 98.71% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 4207 | 98.71% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 4207 | 98.71% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian Bokmål | 4207 | 98.71% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 4207 | 98.71% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 4207 | 98.71% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 4206 | 98.69% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 4205 | 98.66% | 🟢 Complete | ✅ Yes |
+| `fil` | Filipino | 4200 | 98.55% | 🟢 Complete | ✅ Yes |
 | `sl` | Slovenian | 64 | 1.5% | 🟠 Needs Work | ❌ No |
 | `en-za` | English (ZA) | 63 | 1.48% | N/A | ✅ Yes |
 | `my` | Burmese | 60 | 1.41% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 57 | 1.34% | 🟠 Needs Work | ❌ No |
 | `en-au` | English (AU) | 48 | 1.13% | N/A | ✅ Yes |
-| `lv` | Latvian | 42 | 0.98% | 🟠 Needs Work | ❌ No |
+| `lv` | Latvian | 42 | 0.99% | 🟠 Needs Work | ❌ No |
 | `en` | English | 36 | 0.84% | N/A | ✅ Yes |
 | `en-jm` | English (JM) | 26 | 0.61% | N/A | ✅ Yes |
 | `en-ca` | English (CA) | 15 | 0.35% | N/A | ✅ Yes |
@@ -81,7 +81,7 @@ These locales have translations but are not yet in locales.json:
 | Slovenian | `sl` | 64 | 1.5% | 📝 Monitor |
 | Burmese | `my` | 60 | 1.41% | 📝 Monitor |
 | Serbian (Cyrillic) | `sr-cyrl` | 57 | 1.34% | 📝 Monitor |
-| Latvian | `lv` | 42 | 0.98% | 📝 Monitor |
+| Latvian | `lv` | 42 | 0.99% | 📝 Monitor |
 
 **Note:** 
 - English variants (en-*) are marked as N/A since English is the default language

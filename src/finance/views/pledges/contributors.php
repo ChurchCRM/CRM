@@ -228,12 +228,12 @@ $statusClasses = [
                                         <button class="btn btn-sm btn-ghost-secondary" type="button"
                                                 data-bs-toggle="dropdown" data-bs-display="static"
                                                 aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item contributor-view-link"
                                                href="<?= $sRootPathEsc ?>/finance/pledge/<?= urlencode($groupKey) ?>">
-                                                <i class="ti ti-eye me-2"></i><?= $contributor['status'] === 'payment-only' ? gettext('View Payment') : gettext('View Pledge') ?>
+                                                <i class="fa-solid fa-eye me-2"></i><?= $contributor['status'] === 'payment-only' ? gettext('View Payment') : gettext('View Pledge') ?>
                                             </a>
                                         </div>
                                     </div>

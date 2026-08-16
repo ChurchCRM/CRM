@@ -122,12 +122,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-status-top bg-blue"></div>
     <div class="card-header">
         <h3 class="card-title">
-            <i class="ti ti-info-circle me-2 text-blue"></i><?= gettext('How Sunday School + Events + Kiosks fit together') ?>
+            <i class="fa-solid fa-circle-info me-2 text-blue"></i><?= gettext('How Sunday School + Events + Kiosks fit together') ?>
         </h3>
         <button class="btn btn-sm btn-ghost-secondary ms-auto" type="button"
                 data-bs-toggle="collapse" data-bs-target="#ssExplainerBody"
                 aria-expanded="false" aria-controls="ssExplainerBody">
-            <i class="ti ti-chevron-down"></i>
+            <i class="fa-solid fa-chevron-down"></i>
         </button>
     </div>
     <div class="collapse" id="ssExplainerBody">
@@ -135,7 +135,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="row g-3">
                 <div class="col-md-3">
                     <div class="text-secondary fw-bold mb-1">
-                        <i class="ti ti-users me-1 text-blue"></i><?= gettext('1. Sunday School Class') ?>
+                        <i class="fa-solid fa-users me-1 text-blue"></i><?= gettext('1. Sunday School Class') ?>
                     </div>
                     <div class="small text-body-secondary">
                         <?= gettext("A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles).") ?>
@@ -143,7 +143,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
                 <div class="col-md-3">
                     <div class="text-secondary fw-bold mb-1">
-                        <i class="ti ti-tags me-1 text-orange"></i><?= gettext('2. Event Type') ?>
+                        <i class="fa-solid fa-tags me-1 text-orange"></i><?= gettext('2. Event Type') ?>
                     </div>
                     <div class="small text-body-secondary">
                         <?= gettext('An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience.') ?>
@@ -151,7 +151,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
                 <div class="col-md-3">
                     <div class="text-secondary fw-bold mb-1">
-                        <i class="ti ti-calendar me-1 text-green"></i><?= gettext('3. Event') ?>
+                        <i class="fa-solid fa-calendar me-1 text-green"></i><?= gettext('3. Event') ?>
                     </div>
                     <div class="small text-body-secondary">
                         <?= gettext("A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against.") ?>
@@ -159,7 +159,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
                 <div class="col-md-3">
                     <div class="text-secondary fw-bold mb-1">
-                        <i class="ti ti-device-ipad me-1 text-purple"></i><?= gettext('4. Kiosk') ?>
+                        <i class="fa-solid fa-tablet me-1 text-purple"></i><?= gettext('4. Kiosk') ?>
                     </div>
                     <div class="small text-body-secondary">
                         <?= gettext('A tablet assigned to one event. The kiosk pulls the event\'s linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display.') ?>
@@ -168,7 +168,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <hr class="my-3">
             <div class="alert alert-info mb-0">
-                <i class="ti ti-rocket me-1"></i>
+                <i class="fa-solid fa-rocket me-1"></i>
                 <strong><?= gettext('Fastest workflow') ?>:</strong>
                 <?= gettext("Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance.") ?>
             </div>
@@ -206,7 +206,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><i class="fa-solid fa-chalkboard-user"></i> <?= gettext('Sunday School Classes') ?></h3>
         <div class="card-tools ms-auto">
             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
     <div class="card-body" style="overflow: visible;">
@@ -235,28 +235,28 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 data-group-id="<?= $class['id'] ?>"
                                 data-group-name="<?= InputUtils::escapeAttribute($class['name']) ?>"
                                 title="<?= gettext('Start Check-in') ?>">
-                                <i class="ti ti-clipboard-check me-1"></i><?= gettext('Check In') ?>
+                                <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check In') ?>
                             </button>
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a class="dropdown-item" href="<?= $sRootPath ?>/groups/sundayschool/class/<?= $class['id'] ?>">
-                                        <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                        <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                                     </a>
                                     <a class="dropdown-item" href="<?= $sRootPath ?>/groups/editor/<?= $class['id'] ?>">
-                                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                        <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <?php if ($class['teachers'] > 0) { ?>
                                     <button type="button" class="dropdown-item add-ss-role-to-cart" data-group-id="<?= $class['id'] ?>" data-role-name="Teacher">
-                                        <i class="ti ti-shopping-cart-plus me-2"></i><?= gettext('Add Teachers to Cart') ?>
+                                        <i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add Teachers to Cart') ?>
                                     </button>
                                     <?php } ?>
                                     <?php if ($class['kids'] > 0) { ?>
                                     <button type="button" class="dropdown-item add-ss-role-to-cart" data-group-id="<?= $class['id'] ?>" data-role-name="Student">
-                                        <i class="ti ti-shopping-cart-plus me-2"></i><?= gettext('Add Students to Cart') ?>
+                                        <i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add Students to Cart') ?>
                                     </button>
                                     <?php } ?>
                                     <?php if ($class['teachers'] > 0 || $class['kids'] > 0) { ?>
@@ -266,7 +266,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         data-cart-type="group"
                                         data-label-add="<?= gettext('Add all to Cart') ?>"
                                         data-label-remove="<?= gettext('Remove all from Cart') ?>">
-                                        <i class="ti ti-shopping-cart-plus me-2"></i>
+                                        <i class="fa-solid fa-cart-plus me-2"></i>
                                         <span class="cart-label"><?= gettext('Add all to Cart') ?></span>
                                     </button>
                                     <?php } ?>
@@ -275,7 +275,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         class="dropdown-item text-danger delete-ss-class"
                                         data-group-id="<?= $class['id'] ?>"
                                         data-group-name="<?= InputUtils::escapeAttribute($class['name']) ?>">
-                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>
                             </div>
@@ -293,7 +293,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><i class="fa-solid fa-user-xmark"></i> <?= gettext('Students not in a Sunday School Class') ?></h3>
         <div class="card-tools ms-auto">
             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
     <div class="card-body" style="overflow: visible;">
@@ -341,20 +341,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td class="w-1">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a class="dropdown-item" href="<?= Person::getViewURIForId($kidId) ?>">
-                                        <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                        <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                                     </a>
                                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                                     <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $kidId ?>">
-                                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                        <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
                                     <?php endif; ?>
                                     <?php if ($famId): ?>
                                     <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= $famId ?>">
-                                        <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                        <i class="fa-solid fa-users me-2"></i><?= gettext('View Family') ?>
                                     </a>
                                     <?php endif; ?>
                                     <div class="dropdown-divider"></div>
@@ -364,7 +364,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         data-cart-type="person"
                                         data-label-add="<?= gettext('Add to Cart') ?>"
                                         data-label-remove="<?= gettext('Remove from Cart') ?>">
-                                        <i class="<?= $inCart ? 'ti ti-shopping-cart-off' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                        <i class="<?= $inCart ? 'fa-solid fa-cart-arrow-down' : 'fa-solid fa-cart-plus' ?> me-2"></i>
                                         <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                                     </button>
                                     <div class="dropdown-divider"></div>
@@ -372,7 +372,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         class="dropdown-item text-danger delete-person"
                                         data-person_id="<?= $kidId ?>"
                                         data-person_name="<?= InputUtils::escapeAttribute($firstName . ' ' . $LastName) ?>">
-                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>
                             </div>

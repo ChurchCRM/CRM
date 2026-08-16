@@ -255,7 +255,7 @@ function bindDeleteHandler(event) {
         ` <strong>${escapeHtml(event.Title || "")}</strong>`,
       buttons: {
         cancel: { label: `<i class="ti ti-x"></i> ${t("Cancel")}` },
-        confirm: { label: `<i class="ti ti-trash"></i> ${t("Delete")}`, className: "btn-danger" },
+        confirm: { label: `<i class="fa-solid fa-trash"></i> ${t("Delete")}`, className: "btn-danger" },
       },
       callback: (confirmed) => {
         if (!confirmed) return;

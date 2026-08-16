@@ -120,7 +120,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <span class="badge bg-primary ms-2"><?= count($itemList) ?></span>
         <?php if ($canEdit): ?>
         <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/editor" class="btn btn-sm btn-success ms-auto">
-          <i class="ti ti-plus me-1"></i><?= gettext('Add Item') ?>
+          <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Item') ?>
         </a>
         <?php endif; ?>
       </div>
@@ -183,7 +183,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <p class="empty-title text-body-secondary"><?= gettext('No donated items yet.') ?></p>
           <?php if ($canEdit): ?>
           <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/editor" class="btn btn-success btn-sm">
-            <i class="ti ti-plus me-1"></i><?= gettext('Add Item') ?>
+            <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Item') ?>
           </a>
           <?php endif; ?>
         </div>
@@ -194,15 +194,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <!-- Footer action bar -->
     <div class="d-flex justify-content-between mb-3 py-2">
       <a href="<?= $sRootPath ?>/fundraiser/" class="btn btn-outline-secondary">
-        <i class="ti ti-chevron-left me-1"></i><?= gettext('Back to Fundraisers') ?>
+        <i class="fa-solid fa-chevron-left me-1"></i><?= gettext('Back to Fundraisers') ?>
       </a>
       <?php if ($canEdit): ?>
       <div class="d-flex gap-2">
         <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/paddle-numbers" class="btn btn-outline-primary">
-          <i class="ti ti-users me-1"></i><?= gettext('View Buyers') ?>
+          <i class="fa-solid fa-users me-1"></i><?= gettext('View Buyers') ?>
         </a>
         <a href="<?= $sRootPath ?>/fundraiser/editor/<?= $fundraiserId ?>" class="btn btn-primary">
-          <i class="ti ti-pencil me-1"></i><?= gettext('Edit') ?>
+          <i class="fa-solid fa-pencil me-1"></i><?= gettext('Edit') ?>
         </a>
       </div>
       <?php endif; ?>
@@ -269,21 +269,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="list-group list-group-flush mb-3">
           <?php if ($showItemCatalog): ?>
           <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/catalog" class="list-group-item list-group-item-action">
-            <i class="ti ti-book me-2 text-body-secondary"></i><?= gettext('Catalog') ?>
+            <i class="fa-solid fa-book me-2 text-body-secondary"></i><?= gettext('Catalog') ?>
           </a>
           <?php endif; ?>
           <?php if ($showBidSheets): ?>
           <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/bid-sheets" class="list-group-item list-group-item-action">
-            <i class="ti ti-list me-2 text-body-secondary"></i><?= gettext('Bid Sheets') ?>
+            <i class="fa-solid fa-list me-2 text-body-secondary"></i><?= gettext('Bid Sheets') ?>
           </a>
           <?php endif; ?>
           <?php if ($showItemCatalog): ?>
           <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/certificates" class="list-group-item list-group-item-action">
-            <i class="ti ti-certificate me-2 text-body-secondary"></i><?= gettext('Certificates') ?>
+            <i class="fa-solid fa-certificate me-2 text-body-secondary"></i><?= gettext('Certificates') ?>
           </a>
           <?php endif; ?>
           <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/statement" class="list-group-item list-group-item-action">
-            <i class="ti ti-file-invoice me-2 text-body-secondary"></i><?= gettext('Buyer Statements') ?>
+            <i class="fa-solid fa-file-invoice me-2 text-body-secondary"></i><?= gettext('Buyer Statements') ?>
           </a>
         </div>
       </div>

@@ -14475,10 +14475,6 @@ msgid "Group removed from cart"
 msgstr "Rühm on eemaldatud ostukorvist"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Rollivaliku küsimiseks on vajalik GroupID"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML-i URL"
 
@@ -14856,20 +14852,8 @@ msgid "Please select a role."
 msgstr "Palun valige roll."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Palun valige nii rühm kui ka roll."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Palun valige kustutamiseks read"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Valige liikmetele sihtroll"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Valige liikmete jaoks sihtgrupp"
 
 #: 
 msgid "Please try again"
@@ -15765,24 +15749,12 @@ msgid "Account status"
 msgstr "Konto olek"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Täpsem: vali konkreetne sihtversioon"
-
-#: 
 msgid "Bug Fix"
 msgstr "Veaparandus"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Vaikimisi laadib viisard järgmise soovitatava versiooni. Võite valida ka mõne muu allpool saadaoleva versiooni."
-
-#: 
 msgid "Change required"
 msgstr "Muudatus vajalik"
-
-#: 
-msgid "Changelog"
-msgstr "Muudatuste logi"
 
 #: 
 msgid "Continue Anyway"
@@ -15791,10 +15763,6 @@ msgstr "Jätka ikkagi"
 #: 
 msgid "Could not load release information."
 msgstr "Versiooniteabe laadimine ebaõnnestus."
-
-#: 
-msgid "Download & Install"
-msgstr "Laadi alla ja installi"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15823,10 +15791,6 @@ msgstr "Täielik muudatuste logi"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installi stabiilne {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Järgmise versiooni installimine"
 
 #: 
 msgid "Invalid file path"
@@ -15897,10 +15861,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Näita täielikku uuendusteed"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Uusim stabiilne versioon on {{version}}. Saate selle allpool uuesti installida."
 
@@ -15927,10 +15887,6 @@ msgstr "Vaata väljalaskemärkmeid"
 #: 
 msgid "What's New"
 msgstr "Mis on uut"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Mis on uut versioonis {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16893,10 +16849,6 @@ msgid "Working..."
 msgstr "Töötab..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Oled {{releaseCount}} versiooni võrra maas. Siin on, mida saad"
-
-#: 
 msgid "click to expand"
 msgstr "klõpsa laiendamiseks"
 
@@ -17151,10 +17103,6 @@ msgstr "Annetuslubaduse loomine ebaõnnestus"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Annetuslubaduse kustutamine ebaõnnestus"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Makse vastuse kodeerimine ebaõnnestus"
 
 #: 
 msgid "Failed to retrieve pledge"

@@ -46,7 +46,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           <?= InputUtils::escapeHTML($message) ?>
         </p>
         <a href="<?= InputUtils::escapeAttribute($rootPath) ?>/" class="btn btn-primary">
-          <i class="ti ti-home me-1"></i><?= gettext('Go to home') ?>
+          <i class="fa-solid fa-house me-1"></i><?= gettext('Go to home') ?>
         </a>
       </div>
     </div>

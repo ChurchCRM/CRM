@@ -14536,10 +14536,6 @@ msgid "Group removed from cart"
 msgstr "团体已从购物车移除"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "角色选择提示需要GroupID"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML 网址"
 
@@ -14917,20 +14913,8 @@ msgid "Please select a role."
 msgstr "请选择一个角色。"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "请同时选择一个事工组和一个角色。"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "请选择要删除的行"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "请为会员选择目标角色"
-
-#: 
-msgid "Please select target group for members"
-msgstr "请为会员选择目标群组"
 
 #: 
 msgid "Please try again"
@@ -15825,24 +15809,12 @@ msgid "Account status"
 msgstr "账户状态"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "高级：选择特定目标版本"
-
-#: 
 msgid "Bug Fix"
 msgstr "错误修复"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "默认情况下，向导会下载下一个推荐版本。您也可以在下方选择任意可用版本。"
-
-#: 
 msgid "Change required"
 msgstr "需要更改"
-
-#: 
-msgid "Changelog"
-msgstr "更新日志"
 
 #: 
 msgid "Continue Anyway"
@@ -15851,10 +15823,6 @@ msgstr "仍然继续"
 #: 
 msgid "Could not load release information."
 msgstr "无法加载版本信息。"
-
-#: 
-msgid "Download & Install"
-msgstr "下载并安装"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15883,10 +15851,6 @@ msgstr "完整更新日志"
 #: 
 msgid "Install stable {{version}}"
 msgstr "安装稳定版 {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "正在安装下一个版本"
 
 #: 
 msgid "Invalid file path"
@@ -15957,10 +15921,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "显示完整升级路径"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "最新稳定版本为 {{version}}。您可以在下方重新安装。"
 
@@ -15987,10 +15947,6 @@ msgstr "查看发行说明"
 #: 
 msgid "What's New"
 msgstr "新增内容"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} 新增内容"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16941,10 +16897,6 @@ msgid "Working..."
 msgstr "处理中……"
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "您落后了 {{releaseCount}} 个版本，以下是您将获得的更新"
-
-#: 
 msgid "click to expand"
 msgstr "点击展开"
 
@@ -17199,10 +17151,6 @@ msgstr "创建承诺奉献失败"
 #: 
 msgid "Failed to delete pledge"
 msgstr "删除承诺奉献失败"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "编码奉献响应失败"
 
 #: 
 msgid "Failed to retrieve pledge"
