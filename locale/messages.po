@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-16 20:12+0000\n"
+"POT-Creation-Date: 2026-08-16 21:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3468,7 +3468,8 @@ msgstr ""
 msgid "Deposit"
 msgstr ""
 
-msgid "Deposit #"
+#, php-format
+msgid "Deposit #%d"
 msgstr ""
 
 msgid "Deposit Comment"
