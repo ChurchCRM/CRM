@@ -292,6 +292,7 @@ class FundRaiserService
         // to avoid fully hydrating every row as a Propel object.
         $candidates = FundRaiserQuery::create()
             ->filterByStatus('Closed', \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+            ->_or()->filterByStatus(null)  // MySQL: NULL != 'Closed' is UNKNOWN, not TRUE — include NULL-status rows explicitly
             ->select(['Id', 'Date', 'EndDate', 'Status'])
             ->find();
 
