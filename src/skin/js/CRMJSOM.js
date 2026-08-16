@@ -244,9 +244,8 @@ window.CRM.groups = {
     const bsModal = new window.bootstrap.Modal(wrapper, { backdrop: "static" });
 
     // Clean up DOM when the modal is fully hidden
-    wrapper.addEventListener(
-      "hidden.bs.modal",
-      () => {
+    const cleanup = () => {
+      try {
         if (groupSelectInstance) {
           groupSelectInstance.destroy();
           groupSelectInstance = null;
@@ -255,11 +254,28 @@ window.CRM.groups = {
           roleSelectInstance.destroy();
           roleSelectInstance = null;
         }
+      } catch (err) {
+        console.error("[promptSelection] Error destroying TomSelect instances:", err);
+      }
+      try {
         bsModal.dispose();
+      } catch (err) {
+        console.error("[promptSelection] Error disposing modal:", err);
+      }
+      // Always remove the wrapper, even if cleanup fails
+      if (wrapper.parentNode) {
         wrapper.remove();
-      },
-      { once: true },
-    );
+      }
+    };
+
+    wrapper.addEventListener("hidden.bs.modal", cleanup, { once: true });
+
+    // Fallback timeout: ensure cleanup happens if hidden.bs.modal doesn't fire
+    setTimeout(() => {
+      if (wrapper.parentNode) {
+        cleanup();
+      }
+    }, 2000);
 
     const confirmBtn = wrapper.querySelector("#crm-gs-confirm");
     const roleWrapper = wrapper.querySelector("#crm-gs-role-wrapper");

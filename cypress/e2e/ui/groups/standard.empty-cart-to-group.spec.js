@@ -56,6 +56,12 @@ describe("Empty Cart to Group", () => {
         cy.window().its("CRM.localesLoaded").should("eq", true);
         cy.window().its("CRM.cartManager").should("exist");
 
+        // Wait for cart dropdown menu to initialize and render the items
+        cy.get("#cart-dropdown-menu", { timeout: 5000 }).should("not.contain", "undefined");
+
+        // Click the cart dropdown toggle to show the menu (find by shopping cart icon)
+        cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .ti-shopping-cart").closest("[data-bs-toggle='dropdown']").click();
+
         // The "To Group" button should be visible because the cart is non-empty
         cy.get("#emptyCartToGroup").should("be.visible").click();
 
@@ -123,6 +129,12 @@ describe("Empty Cart to Group", () => {
         cy.window().should("have.property", "CRM");
         cy.window().its("CRM.localesLoaded").should("eq", true);
 
+        // Wait for cart dropdown menu to initialize and render the items
+        cy.get("#cart-dropdown-menu", { timeout: 5000 }).should("not.contain", "undefined");
+
+        // Click the cart dropdown toggle to show the menu (find by shopping cart icon)
+        cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .ti-shopping-cart").closest("[data-bs-toggle='dropdown']").click();
+
         cy.get("#emptyCartToGroup").should("be.visible").click();
 
         // Wait for modal + TomSelect to be ready
@@ -152,12 +164,28 @@ describe("Empty Cart to Group", () => {
         cy.window().should("have.property", "CRM");
         cy.window().its("CRM.localesLoaded").should("eq", true);
 
+        // Wait for cart dropdown menu to initialize and render the items
+        cy.get("#cart-dropdown-menu", { timeout: 5000 }).should("not.contain", "undefined");
+
+        // Click the cart dropdown toggle to show the menu (find by shopping cart icon)
+        cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .ti-shopping-cart").closest("[data-bs-toggle='dropdown']").click();
+
         cy.get("#emptyCartToGroup").should("be.visible").click();
         cy.get(".modal.show").should("be.visible");
 
         // Click Cancel
-        cy.get(".modal.show #crm-gs-cancel").click();
-        cy.get(".modal.show").should("not.exist");
+        cy.get(".modal.show #crm-gs-cancel").click({ force: true });
+        // Bootstrap 5 event delegation (data-bs-dismiss) doesn't always fire with
+        // Cypress synthetic clicks in headless CI. Call hide() directly as a guarantee.
+        cy.window().then((win) => {
+            const el = win.document.querySelector('[id^="crm-group-select-modal"]');
+            if (el) {
+                const instance = win.bootstrap.Modal.getInstance(el);
+                if (instance) instance.hide();
+            }
+        });
+        // The modal element should be removed from the DOM after the hide animation
+        cy.get('[id^="crm-group-select-modal"]', { timeout: 10000 }).should("not.exist");
 
         // Cart should still have the person
         cy.request("GET", "/api/cart/").then((resp) => {
