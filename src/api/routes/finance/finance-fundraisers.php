@@ -270,7 +270,7 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
 
     // GET /api/finance/fundraisers/active-count — active fundraiser count for menu badge
     // Used by JavaScript to dynamically load the badge on page load (matches Calendar pattern).
-    $app->get('/active-count', function (Request $request, Response $response): Response {
+    $group->get('/active-count', function (Request $request, Response $response): Response {
         try {
             $activeCount = (new FundRaiserService())->getActiveFundraiserCount();
             return $response
