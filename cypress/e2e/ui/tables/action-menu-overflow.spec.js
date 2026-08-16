@@ -144,8 +144,8 @@ describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
       cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
 
       // Seed pledges for family 1 are from 2018; the default FY filter hides them.
-      // Click "All Time" to remove the filter and reveal all rows.
-      cy.get('.pledge-fy-pill[data-fy=""]').click();
+      // Select "All Time" in the FY dropdown to remove the filter and reveal all rows.
+      cy.get("#giving-fy-select").select("");
 
       // Wait for actual data rows (not the DataTables "No data available" empty row).
       cy.get("#pledge-payment-v2-table tbody tr:not(.dataTables_empty)", { timeout: 10000 })
