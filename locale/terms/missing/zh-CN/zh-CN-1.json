@@ -1,73 +1,73 @@
 {
   "%d archived fundraiser": {
-    "other": "%d 个已归档的募款活动"
+    "other": ""
   },
   "%d person successfully added to selected family.": {
-    "other": "已成功将 %d 人添加到所选家庭。"
+    "other": ""
   },
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "other": "已向 %d 个家庭发送电子邮件。"
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "other": "PDF 已成功发送至 %d 个家庭。"
+    "other": ""
   },
-  "Birthdays & Anniversaries": "生日与周年纪念",
-  "Estimated value %s.": "估计价值 %s。",
-  "Minimum bid %s.": "最低出价 %s。",
-  "No \"%s\" options are available yet. Add the relevant records first.": "暂无可用的\"%s\"选项。请先添加相关记录。",
-  "No \"%s\" options are configured yet. Add the relevant records first.": "暂未配置\"%s\"选项。请先添加相关记录。",
-  "People with birthdays or wedding anniversaries in a particular month": "某月有生日或结婚周年纪念的成员",
-  "The month for which you would like birthdays and anniversaries returned.": "您希望查询生日和周年纪念日的月份。",
-  "The wedding anniversary month for which you would like records returned.": "您希望查询结婚周年纪念日记录的月份。",
-  "Total of all purchases: %s": "所有购买总计：%s",
-  "Total purchases: %s": "购买总额：%s",
-  "Wedding Anniversaries": "结婚周年纪念",
-  "People with wedding anniversaries in a particular month": "某月有结婚周年纪念的成员",
-  "An error occurred. Please try again.": "发生错误，请重试。",
-  "Are you sure you want to delete this fund?": "您确定要删除此奉献基金吗？",
-  "Cannot delete: fund has associated pledges": "无法删除：该基金存在关联的奉献承诺",
-  "Delete Fund": "删除基金",
-  "Direction must be 'up' or 'down'.": "方向必须为\"up\"或\"down\"。",
-  "Edit Donation Fund": "编辑奉献基金",
-  "Failed to reorder donation fund": "重新排序奉献基金失败",
-  "Fund added successfully.": "基金已成功添加。",
-  "Fund deleted successfully.": "基金已成功删除。",
-  "Fund name": "基金名称",
-  "Fund name is required.": "基金名称为必填项。",
-  "Fund order updated.": "基金排序已更新。",
-  "Fund saved successfully.": "基金已成功保存。",
-  "No funds have been added yet. Use the form above to add the first fund.": "尚未添加任何基金。请使用上方表单添加第一个基金。",
-  "Optional description": "可选说明",
-  "Private Calendar": "私人日历",
-  "Public Calendar": "公共日历",
-  "Advanced: Install a specific version instead": "高级：改为安装指定版本",
-  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "默认情况下，向导将升级到最新版本。您也可以在下方选择特定版本。",
-  "Cannot edit a payment in a closed deposit": "无法编辑已关闭存款中的付款记录",
-  "Download & Apply {{version}}": "下载并应用 {{version}}",
-  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "每个 ChurchCRM 版本均包含安全修复。我们强烈建议始终升级到最新版本。",
-  "Failed to decode payment request": "解析付款请求失败",
-  "Full release notes": "完整发行说明",
-  "Invalid payment data": "无效的付款数据",
-  "No release notes available.": "暂无发行说明。",
-  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "警告：{{chosen}} 缺少 {{latest}} 中包含的安全修复。仅在有特定原因时才继续操作。",
-  "What you'll gain": "您将获得的改进",
+  "Birthdays & Anniversaries": "",
+  "Estimated value %s.": "",
+  "Minimum bid %s.": "",
+  "No \"%s\" options are available yet. Add the relevant records first.": "",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "",
+  "People with birthdays or wedding anniversaries in a particular month": "",
+  "The month for which you would like birthdays and anniversaries returned.": "",
+  "The wedding anniversary month for which you would like records returned.": "",
+  "Total of all purchases: %s": "",
+  "Total purchases: %s": "",
+  "Wedding Anniversaries": "",
+  "People with wedding anniversaries in a particular month": "",
+  "An error occurred. Please try again.": "",
+  "Are you sure you want to delete this fund?": "",
+  "Cannot delete: fund has associated pledges": "",
+  "Delete Fund": "",
+  "Direction must be 'up' or 'down'.": "",
+  "Edit Donation Fund": "",
+  "Failed to reorder donation fund": "",
+  "Fund added successfully.": "",
+  "Fund deleted successfully.": "",
+  "Fund name": "",
+  "Fund name is required.": "",
+  "Fund order updated.": "",
+  "Fund saved successfully.": "",
+  "No funds have been added yet. Use the form above to add the first fund.": "",
+  "Optional description": "",
+  "Private Calendar": "",
+  "Public Calendar": "",
+  "Advanced: Install a specific version instead": "",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "",
+  "Cannot edit a payment in a closed deposit": "",
+  "Download & Apply {{version}}": "",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "",
+  "Failed to decode payment request": "",
+  "Full release notes": "",
+  "Invalid payment data": "",
+  "No release notes available.": "",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "",
+  "What you'll gain": "",
   "Copied {{count}} members": {
-    "one": "已复制 {{count}} 位成员",
-    "other": "已复制 {{count}} 位成员"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "此列表有 {{count}} 位收件人——对于 mailto: 链接来说过多。请改用复制地址。",
-    "other": "此列表有 {{count}} 位收件人——对于 mailto: 链接来说过多。请改用复制地址。"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "收件人数量对邮件客户端来说过多（{{count}} > {{max}}）。请改用复制地址。",
-    "other": "收件人数量对邮件客户端来说过多（{{count}} > {{max}}）。请改用复制地址。"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "剩余 {{count}} 分钟",
-    "other": "剩余 {{count}} 分钟"
+    "one": "",
+    "other": ""
   }
 }

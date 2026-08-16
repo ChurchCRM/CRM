@@ -1,73 +1,73 @@
 {
   "%d archived fundraiser": {
-    "other": "%d กิจกรรมระดมทุนที่เก็บถาวร"
+    "other": ""
   },
   "%d person successfully added to selected family.": {
-    "other": "เพิ่ม %d คนเข้าครอบครัวที่เลือกเรียบร้อยแล้ว"
+    "other": ""
   },
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "other": "ส่งอีเมลถึง %d ครอบครัวแล้ว"
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "other": "ส่ง PDF ทางอีเมลถึง %d ครอบครัวเรียบร้อยแล้ว"
+    "other": ""
   },
-  "Birthdays & Anniversaries": "วันเกิดและวันครบรอบ",
-  "Estimated value %s.": "มูลค่าประมาณ %s",
-  "Minimum bid %s.": "ราคาเสนอขั้นต่ำ %s",
-  "No \"%s\" options are available yet. Add the relevant records first.": "ยังไม่มีตัวเลือก \"%s\" โปรดเพิ่มข้อมูลที่เกี่ยวข้องก่อน",
-  "No \"%s\" options are configured yet. Add the relevant records first.": "ยังไม่มีการกำหนดค่าตัวเลือก \"%s\" โปรดเพิ่มข้อมูลที่เกี่ยวข้องก่อน",
-  "People with birthdays or wedding anniversaries in a particular month": "สมาชิกที่มีวันเกิดหรือวันครบรอบแต่งงานในเดือนที่ระบุ",
-  "The month for which you would like birthdays and anniversaries returned.": "เดือนที่ต้องการดูข้อมูลวันเกิดและวันครบรอบ",
-  "The wedding anniversary month for which you would like records returned.": "เดือนครบรอบแต่งงานที่ต้องการดูข้อมูล",
-  "Total of all purchases: %s": "ยอดรวมการซื้อทั้งหมด: %s",
-  "Total purchases: %s": "ยอดรวมการซื้อ: %s",
-  "Wedding Anniversaries": "วันครบรอบแต่งงาน",
-  "People with wedding anniversaries in a particular month": "สมาชิกที่มีวันครบรอบแต่งงานในเดือนที่ระบุ",
-  "An error occurred. Please try again.": "เกิดข้อผิดพลาด โปรดลองอีกครั้ง",
-  "Are you sure you want to delete this fund?": "คุณแน่ใจหรือไม่ว่าต้องการลบกองทุนนี้?",
-  "Cannot delete: fund has associated pledges": "ไม่สามารถลบได้: กองทุนมีคำมั่นสัญญาการถวายที่เกี่ยวข้อง",
-  "Delete Fund": "ลบกองทุน",
-  "Direction must be 'up' or 'down'.": "ทิศทางต้องเป็น 'up' หรือ 'down' เท่านั้น",
-  "Edit Donation Fund": "แก้ไขกองทุนการถวาย",
-  "Failed to reorder donation fund": "ไม่สามารถจัดเรียงกองทุนการถวายใหม่ได้",
-  "Fund added successfully.": "เพิ่มกองทุนเรียบร้อยแล้ว",
-  "Fund deleted successfully.": "ลบกองทุนเรียบร้อยแล้ว",
-  "Fund name": "ชื่อกองทุน",
-  "Fund name is required.": "กรุณาระบุชื่อกองทุน",
-  "Fund order updated.": "อัปเดตลำดับกองทุนแล้ว",
-  "Fund saved successfully.": "บันทึกกองทุนเรียบร้อยแล้ว",
-  "No funds have been added yet. Use the form above to add the first fund.": "ยังไม่มีการเพิ่มกองทุน โปรดใช้แบบฟอร์มด้านบนเพื่อเพิ่มกองทุนแรก",
-  "Optional description": "คำอธิบาย (ไม่บังคับ)",
-  "Private Calendar": "ปฏิทินส่วนตัว",
-  "Public Calendar": "ปฏิทินสาธารณะ",
-  "Advanced: Install a specific version instead": "ขั้นสูง: ติดตั้งเวอร์ชันเฉพาะแทน",
-  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "โดยค่าเริ่มต้น ตัวช่วยจะอัปเกรดเป็นเวอร์ชันล่าสุด คุณสามารถเลือกเวอร์ชันเฉพาะด้านล่างแทนได้",
-  "Cannot edit a payment in a closed deposit": "ไม่สามารถแก้ไขการชำระเงินในรายการฝากที่ปิดแล้ว",
-  "Download & Apply {{version}}": "ดาวน์โหลดและใช้งาน {{version}}",
-  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "ChurchCRM ทุกเวอร์ชันมีการแก้ไขความปลอดภัย เราแนะนำอย่างยิ่งให้อัปเกรดเป็นเวอร์ชันล่าสุดเสมอ",
-  "Failed to decode payment request": "ไม่สามารถถอดรหัสคำขอการชำระเงินได้",
-  "Full release notes": "บันทึกการเผยแพร่ฉบับเต็ม",
-  "Invalid payment data": "ข้อมูลการชำระเงินไม่ถูกต้อง",
-  "No release notes available.": "ไม่มีบันทึกการเผยแพร่",
-  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "คำเตือน: {{chosen}} ขาดการแก้ไขความปลอดภัยที่มีอยู่ใน {{latest}} ดำเนินการต่อเฉพาะเมื่อมีเหตุผลเฉพาะเจาะจงเท่านั้น",
-  "What you'll gain": "สิ่งที่คุณจะได้รับ",
+  "Birthdays & Anniversaries": "",
+  "Estimated value %s.": "",
+  "Minimum bid %s.": "",
+  "No \"%s\" options are available yet. Add the relevant records first.": "",
+  "No \"%s\" options are configured yet. Add the relevant records first.": "",
+  "People with birthdays or wedding anniversaries in a particular month": "",
+  "The month for which you would like birthdays and anniversaries returned.": "",
+  "The wedding anniversary month for which you would like records returned.": "",
+  "Total of all purchases: %s": "",
+  "Total purchases: %s": "",
+  "Wedding Anniversaries": "",
+  "People with wedding anniversaries in a particular month": "",
+  "An error occurred. Please try again.": "",
+  "Are you sure you want to delete this fund?": "",
+  "Cannot delete: fund has associated pledges": "",
+  "Delete Fund": "",
+  "Direction must be 'up' or 'down'.": "",
+  "Edit Donation Fund": "",
+  "Failed to reorder donation fund": "",
+  "Fund added successfully.": "",
+  "Fund deleted successfully.": "",
+  "Fund name": "",
+  "Fund name is required.": "",
+  "Fund order updated.": "",
+  "Fund saved successfully.": "",
+  "No funds have been added yet. Use the form above to add the first fund.": "",
+  "Optional description": "",
+  "Private Calendar": "",
+  "Public Calendar": "",
+  "Advanced: Install a specific version instead": "",
+  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "",
+  "Cannot edit a payment in a closed deposit": "",
+  "Download & Apply {{version}}": "",
+  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "",
+  "Failed to decode payment request": "",
+  "Full release notes": "",
+  "Invalid payment data": "",
+  "No release notes available.": "",
+  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "",
+  "What you'll gain": "",
   "Copied {{count}} members": {
-    "one": "คัดลอกสมาชิก {{count}} คนแล้ว",
-    "other": "คัดลอกสมาชิก {{count}} คนแล้ว"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "รายการนี้มีผู้รับ {{count}} คน — มากเกินไปสำหรับลิงก์ mailto: โปรดใช้คัดลอกที่อยู่แทน",
-    "other": "รายการนี้มีผู้รับ {{count}} คน — มากเกินไปสำหรับลิงก์ mailto: โปรดใช้คัดลอกที่อยู่แทน"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) โปรดใช้คัดลอกที่อยู่แทน",
-    "other": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) โปรดใช้คัดลอกที่อยู่แทน"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "เหลืออีก {{count}} นาที",
-    "other": "เหลืออีก {{count}} นาที"
+    "one": "",
+    "other": ""
   }
 }
