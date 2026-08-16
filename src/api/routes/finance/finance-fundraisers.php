@@ -289,10 +289,10 @@ $app->get('/fundraisers/active-count', function (Request $request, Response $res
         $json = json_encode(['count' => $activeCount], JSON_THROW_ON_ERROR);
         $logger->debug('[fundraisers/active-count] Encoded JSON', ['json' => $json]);
 
+        $response->getBody()->write($json);
         return $response
             ->withHeader('Content-Type', 'application/json')
-            ->withStatus(200)
-            ->write($json);
+            ->withStatus(200);
     } catch (\Throwable $e) {
         $logger->error('[fundraisers/active-count] Exception caught', [
             'exception' => get_class($e),
