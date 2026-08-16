@@ -14549,10 +14549,6 @@ msgid "Group removed from cart"
 msgstr "Группа удалена из корзины"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID обязателен для выбора роли"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14930,20 +14926,8 @@ msgid "Please select a role."
 msgstr "Пожалуйста, выберите роль."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Пожалуйста, выберите служение и роль."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Пожалуйста, выберите строки для удаления"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Пожалуйста, выберите целевую роль для участников"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Пожалуйста, выберите целевую группу для участников"
 
 #: 
 msgid "Please try again"
@@ -15841,24 +15825,12 @@ msgid "Account status"
 msgstr "Статус аккаунта"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Дополнительно: выбрать конкретную целевую версию"
-
-#: 
 msgid "Bug Fix"
 msgstr "Исправление ошибок"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "По умолчанию мастер загружает следующий рекомендуемый выпуск. Вместо этого вы можете выбрать любую доступную версию ниже."
-
-#: 
 msgid "Change required"
 msgstr "Требуется изменение"
-
-#: 
-msgid "Changelog"
-msgstr "Журнал изменений"
 
 #: 
 msgid "Continue Anyway"
@@ -15867,10 +15839,6 @@ msgstr "Всё равно продолжить"
 #: 
 msgid "Could not load release information."
 msgstr "Не удалось загрузить информацию о выпуске."
-
-#: 
-msgid "Download & Install"
-msgstr "Скачать и установить"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15899,10 +15867,6 @@ msgstr "Полный журнал изменений"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Установить стабильную версию {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Установка следующего выпуска"
 
 #: 
 msgid "Invalid file path"
@@ -15973,10 +15937,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Показать полный путь обновления"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Последний стабильный выпуск — {{version}}. Вы можете переустановить его ниже."
 
@@ -16003,10 +15963,6 @@ msgstr "Просмотр примечаний к выпуску"
 #: 
 msgid "What's New"
 msgstr "Что нового"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Что нового в версии {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16973,10 +16929,6 @@ msgid "Working..."
 msgstr "Выполняется..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Вы отстаёте на {{releaseCount}} версий. Вот что вы получите"
-
-#: 
 msgid "click to expand"
 msgstr "нажмите для раскрытия"
 
@@ -17231,10 +17183,6 @@ msgstr "Не удалось создать обетование"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Не удалось удалить обетование"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Не удалось закодировать ответ о пожертвовании"
 
 #: 
 msgid "Failed to retrieve pledge"

@@ -14567,10 +14567,6 @@ msgid "Group removed from cart"
 msgstr "Grupp borttagen från kundvagnen"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID krävs för snabbval av roll"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML-URL"
 
@@ -14948,20 +14944,8 @@ msgid "Please select a role."
 msgstr "Välj en roll."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Välj både en grupp och en roll."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Välj rader att radera"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Välj målroll för medlemmarna"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Välj målgrupp för medlemmar"
 
 #: 
 msgid "Please try again"
@@ -15857,24 +15841,12 @@ msgid "Account status"
 msgstr "Kontostatus"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avancerat: välj en specifik målversion"
-
-#: 
 msgid "Bug Fix"
 msgstr "Felkorrigering"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Som standard laddar guiden ned nästa rekommenderade version. Du kan istället välja en tillgänglig version nedan."
-
-#: 
 msgid "Change required"
 msgstr "Ändring krävs"
-
-#: 
-msgid "Changelog"
-msgstr "Ändringslogg"
 
 #: 
 msgid "Continue Anyway"
@@ -15883,10 +15855,6 @@ msgstr "Fortsätt ändå"
 #: 
 msgid "Could not load release information."
 msgstr "Kunde inte läsa in versionsinformation."
-
-#: 
-msgid "Download & Install"
-msgstr "Ladda ned och installera"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15915,10 +15883,6 @@ msgstr "Fullständig ändringslogg"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installera stabil {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Installerar nästa version"
 
 #: 
 msgid "Invalid file path"
@@ -15989,10 +15953,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Visa fullständig uppgraderingsväg"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Den senaste stabila versionen är {{version}}. Du kan ominstallera den nedan."
 
@@ -16019,10 +15979,6 @@ msgstr "Visa versionsanteckningar"
 #: 
 msgid "What's New"
 msgstr "Nyheter"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Nyheter i {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16985,10 +16941,6 @@ msgid "Working..."
 msgstr "Arbetar..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Du ligger {{releaseCount}} versioner efter. Här är vad du kommer att få"
-
-#: 
 msgid "click to expand"
 msgstr "klicka för att expandera"
 
@@ -17239,10 +17191,6 @@ msgstr "Det gick inte att skapa löftet"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Det gick inte att ta bort löftet"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Det gick inte att koda betalningssvar"
 
 #: 
 msgid "Failed to retrieve pledge"

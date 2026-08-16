@@ -14443,10 +14443,6 @@ msgid "Group removed from cart"
 msgstr "Skupini je uklonjena iz košarice"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID je potreban za upit odabira uloge"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14824,20 +14820,8 @@ msgid "Please select a role."
 msgstr "Molim odaberite ulogu."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Molim odaberite i skupinu i ulogu."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Molim odaberite retke za brisanje"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Molim odaberite ciljnu ulogu za članove"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Molim odaberite ciljnu skupinu za članove"
 
 #: 
 msgid "Please try again"
@@ -15734,24 +15718,12 @@ msgid "Account status"
 msgstr "Status računa"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Napredno: odaberite određenu ciljnu verziju"
-
-#: 
 msgid "Bug Fix"
 msgstr "Ispravak greške"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Prema zadanim postavkama čarobnjak preuzima sljedeće preporučeno izdanje. Umjesto toga možete odabrati bilo koju dostupnu verziju ispod."
-
-#: 
 msgid "Change required"
 msgstr "Promjena obavezna"
-
-#: 
-msgid "Changelog"
-msgstr "Dnevnik promjena"
 
 #: 
 msgid "Continue Anyway"
@@ -15760,10 +15732,6 @@ msgstr "Svejedno nastavi"
 #: 
 msgid "Could not load release information."
 msgstr "Nije moguće učitati informacije o izdanju."
-
-#: 
-msgid "Download & Install"
-msgstr "Preuzmi i instaliraj"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15792,10 +15760,6 @@ msgstr "Potpuni dnevnik promjena"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Instaliraj stabilnu verziju {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Instaliranje sljedećeg izdanja"
 
 #: 
 msgid "Invalid file path"
@@ -15866,10 +15830,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Prikaži potpunu putanju nadogradnje"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Najnovije stabilno izdanje je {{version}}. Možete ga ponovo instalirati ispod."
 
@@ -15896,10 +15856,6 @@ msgstr "Pogledaj bilješke o izdanju"
 #: 
 msgid "What's New"
 msgstr "Što je novo"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Što je novo u verziji {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16864,10 +16820,6 @@ msgid "Working..."
 msgstr "Obrada..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Zaostajete za {{releaseCount}} izdanja. Evo što ćete dobiti"
-
-#: 
 msgid "click to expand"
 msgstr "kliknite za proširenje"
 
@@ -17122,10 +17074,6 @@ msgstr "Nije uspjelo kreiranje zavjeta"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Nije uspjelo brisanje zavjeta"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Nije uspjelo kodiranje odgovora na uplatu"
 
 #: 
 msgid "Failed to retrieve pledge"

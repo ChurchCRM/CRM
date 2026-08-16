@@ -14476,10 +14476,6 @@ msgid "Group removed from cart"
 msgstr "Grup sepetten çıkarıldı"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Rol seçimi istemi için gerekli GroupId"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14857,20 +14853,8 @@ msgid "Please select a role."
 msgstr "Lütfen bir rol seçin."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Lütfen hem bir grup hem de bir rol seçin."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Lütfen silinecek satırları seçin"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Lütfen üyeler için hedef rolü seçin"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Lütfen üyeler için Hedef Grubu seçin"
 
 #: 
 msgid "Please try again"
@@ -15766,24 +15750,12 @@ msgid "Account status"
 msgstr "Hesap durumu"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Gelişmiş: belirli bir hedef sürüm seçin"
-
-#: 
 msgid "Bug Fix"
 msgstr "Hata Düzeltmesi"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Sihirbaz varsayılan olarak önerilen sonraki sürümü indirir. Bunun yerine aşağıdan mevcut herhangi bir sürümü seçebilirsiniz."
-
-#: 
 msgid "Change required"
 msgstr "Değişiklik gerekli"
-
-#: 
-msgid "Changelog"
-msgstr "Değişiklik günlüğü"
 
 #: 
 msgid "Continue Anyway"
@@ -15792,10 +15764,6 @@ msgstr "Yine de devam et"
 #: 
 msgid "Could not load release information."
 msgstr "Sürüm bilgileri yüklenemedi."
-
-#: 
-msgid "Download & Install"
-msgstr "İndir ve Yükle"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15824,10 +15792,6 @@ msgstr "Tam değişiklik günlüğü"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Kararlı {{version}} sürümünü yükle"
-
-#: 
-msgid "Installing next release"
-msgstr "Sonraki sürüm yükleniyor"
 
 #: 
 msgid "Invalid file path"
@@ -15898,10 +15862,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Tam yükseltme yolunu göster"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "En son kararlı sürüm {{version}}. Aşağıdan yeniden yükleyebilirsiniz."
 
@@ -15928,10 +15888,6 @@ msgstr "Sürüm notlarını görüntüle"
 #: 
 msgid "What's New"
 msgstr "Yenilikler"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} Sürümündeki Yenilikler"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16894,10 +16850,6 @@ msgid "Working..."
 msgstr "İşleniyor..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "{{releaseCount}} sürüm geride kaldınız. Kazanacaklarınız:"
-
-#: 
 msgid "click to expand"
 msgstr "genişletmek için tıklayın"
 
@@ -17152,10 +17104,6 @@ msgstr "Taahhüt oluşturulamadı"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Taahhüt silinemedi"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Ödeme yanıtı kodlanamadı"
 
 #: 
 msgid "Failed to retrieve pledge"

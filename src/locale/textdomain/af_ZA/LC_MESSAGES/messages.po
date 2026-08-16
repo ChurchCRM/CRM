@@ -14476,10 +14476,6 @@ msgid "Group removed from cart"
 msgstr "Groep uit mandjie verwyder"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID is nodig vir die keuse van die rol"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML-URL"
 
@@ -14857,20 +14853,8 @@ msgid "Please select a role."
 msgstr "Kies asseblief 'n rol."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Kies asseblief beide 'n bediening en 'n rol."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Kies asseblief rye om te wis"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Kies die teikenrol vir lede"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Kies die teikengroep vir lede"
 
 #: 
 msgid "Please try again"
@@ -15766,24 +15750,12 @@ msgid "Account status"
 msgstr "Rekeningstatuts"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Gevorderd: kies 'n spesifieke teikenweergawe"
-
-#: 
 msgid "Bug Fix"
 msgstr "Foutherstel"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "By verstek laai die towenaar die volgende aanbevole vrystelling af. U kan eerder enige beskikbare weergawe hieronder kies."
-
-#: 
 msgid "Change required"
 msgstr "Wysiging vereis"
-
-#: 
-msgid "Changelog"
-msgstr "Wysigingslys"
 
 #: 
 msgid "Continue Anyway"
@@ -15792,10 +15764,6 @@ msgstr "Gaan nietemin voort"
 #: 
 msgid "Could not load release information."
 msgstr "Kon nie vrystellinginligting laai nie."
-
-#: 
-msgid "Download & Install"
-msgstr "Aflaai en installeer"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15824,10 +15792,6 @@ msgstr "Volledige wysigingslys"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installeer stabiele {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Volgende vrystelling word geïnstalleer"
 
 #: 
 msgid "Invalid file path"
@@ -15898,10 +15862,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Wys volledige opgraderingspad"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Die nuutste stabiele vrystelling is {{version}}. U kan dit hieronder herinstalleer."
 
@@ -15928,10 +15888,6 @@ msgstr "Bekyk vrystellingsnotas"
 #: 
 msgid "What's New"
 msgstr "Wat is nuut"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Wat is nuut in {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16894,10 +16850,6 @@ msgid "Working..."
 msgstr "Besig..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Jy is {{releaseCount}} vrystellings agter. Dit is wat jy sal kry"
-
-#: 
 msgid "click to expand"
 msgstr "klik om uit te brei"
 
@@ -17152,10 +17104,6 @@ msgstr "Kon nie belofte skep nie"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Kon nie belofte uitvee nie"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Kon nie betalingsreaksie enkodeer nie"
 
 #: 
 msgid "Failed to retrieve pledge"

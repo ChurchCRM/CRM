@@ -14436,10 +14436,6 @@ msgid "Group removed from cart"
 msgstr "Grupo ay naalis mula sa cart"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID ay kinakailangan para sa prompt ng pagpili ng papel"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14817,20 +14813,8 @@ msgid "Please select a role."
 msgstr "Pumili ng papel."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Pumili ng grupo at papel."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Pakipili ng mga row na buburahin"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Pakipili ng target na Papel para sa mga miyembro"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Pakipili ng target na grupo para sa mga miyembro"
 
 #: 
 msgid "Please try again"
@@ -15718,16 +15702,8 @@ msgid "Account status"
 msgstr "Katayuan ng account"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Advanced: pumili ng partikular na target na bersyon"
-
-#: 
 msgid "Bug Fix"
 msgstr "Pag-aayos ng bug"
-
-#: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Sa default, dina-download ng wizard ang susunod na inirerekomendang release. Maaari kang pumili ng anumang available na bersyon sa ibaba."
 
 #: 
 msgid "Change required"
@@ -15740,10 +15716,6 @@ msgstr "Magpatuloy Kahit Paano"
 #: 
 msgid "Could not load release information."
 msgstr "Hindi ma-load ang impormasyon ng release."
-
-#: 
-msgid "Download & Install"
-msgstr "I-download at I-install"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15768,10 +15740,6 @@ msgstr "Buong changelog"
 #: 
 msgid "Install stable {{version}}"
 msgstr "I-install ang stable {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Ini-install ang susunod na release"
 
 #: 
 msgid "Invalid file path"
@@ -15842,10 +15810,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Ipakita ang buong upgrade path"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Ang pinakabagong stable na release ay {{version}}. Maaari mo itong i-reinstall sa ibaba."
 
@@ -15872,10 +15836,6 @@ msgstr "Tingnan ang mga release notes"
 #: 
 msgid "What's New"
 msgstr "Ano ang Bago"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Ano ang Bago sa {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16818,10 +16778,6 @@ msgid "Working..."
 msgstr "Nagtatrabaho..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Ikaw ay {{releaseCount}} release na nahuhuli. Narito ang iyong makukuha"
-
-#: 
 msgid "click to expand"
 msgstr "i-click upang palawakin"
 
@@ -17072,10 +17028,6 @@ msgstr "Nabigo sa paglikha ng pangako"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Nabigo sa pagbura ng pangako"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Nabigo sa pag-encode ng tugon sa bayad"
 
 #: 
 msgid "Failed to retrieve pledge"
