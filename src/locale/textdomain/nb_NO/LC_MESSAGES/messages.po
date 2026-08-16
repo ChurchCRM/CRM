@@ -14545,10 +14545,6 @@ msgid "Group removed from cart"
 msgstr "Gruppe fjernet fra handlekurven"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID kreves for valg av rolle"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML-URL"
 
@@ -14926,20 +14922,8 @@ msgid "Please select a role."
 msgstr "Vennligst velg en rolle."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Vennligst velg både en gruppe og en rolle."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Vennligst velg rader som skal slettes"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Vennligst velg målrolle for medlemmer"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Velg målgruppe for Medlemmer"
 
 #: 
 msgid "Please try again"
@@ -15835,24 +15819,12 @@ msgid "Account status"
 msgstr "Kontostatus"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avansert: velg en bestemt målversjon"
-
-#: 
 msgid "Bug Fix"
 msgstr "Feilretting"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Som standard laster veiviseren ned neste anbefalte versjon. Du kan i stedet velge en tilgjengelig versjon nedenfor."
-
-#: 
 msgid "Change required"
 msgstr "Endring påkrevd"
-
-#: 
-msgid "Changelog"
-msgstr "Endringslogg"
 
 #: 
 msgid "Continue Anyway"
@@ -15861,10 +15833,6 @@ msgstr "Fortsett likevel"
 #: 
 msgid "Could not load release information."
 msgstr "Kunne ikke laste inn versjonsinformasjon."
-
-#: 
-msgid "Download & Install"
-msgstr "Last ned og installer"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15893,10 +15861,6 @@ msgstr "Fullstendig endringslogg"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installer stabil {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Installerer neste versjon"
 
 #: 
 msgid "Invalid file path"
@@ -15967,10 +15931,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Vis fullstendig oppgraderingsbane"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Den nyeste stabile versjonen er {{version}}. Du kan installere den på nytt nedenfor."
 
@@ -15997,10 +15957,6 @@ msgstr "Vis versjonsmerknader"
 #: 
 msgid "What's New"
 msgstr "Hva er nytt"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Hva er nytt i {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16963,10 +16919,6 @@ msgid "Working..."
 msgstr "Arbeider..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Du er {{releaseCount}} versjoner etter. Her er hva du vil få"
-
-#: 
 msgid "click to expand"
 msgstr "klikk for å utvide"
 
@@ -17217,10 +17169,6 @@ msgstr "Kunne ikke opprette løfte"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Kunne ikke slette løfte"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Kunne ikke kode betalingsrespons"
 
 #: 
 msgid "Failed to retrieve pledge"

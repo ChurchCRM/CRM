@@ -14545,10 +14545,6 @@ msgid "Group removed from cart"
 msgstr "Grup eliminat din coș"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "ID grup necesar pentru selectarea rolului"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14922,20 +14918,8 @@ msgid "Please select a role."
 msgstr "Vă rugăm să selectați un rol."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Vă rugăm să selectați atât un grup, cât și un rol."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Vă rugăm să selectați rândurile pentru ștergere"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Vă rugăm să selectați rolul țintă pentru membri"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Alegeți grupul țintă pentru membri"
 
 #: 
 msgid "Please try again"
@@ -15832,24 +15816,12 @@ msgid "Account status"
 msgstr "Starea contului"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avansat: alegeți o versiune țintă specifică"
-
-#: 
 msgid "Bug Fix"
 msgstr "Corecție de erori"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "În mod implicit, expertul descarcă următoarea versiune recomandată. Puteți alege în schimb orice versiune disponibilă de mai jos."
-
-#: 
 msgid "Change required"
 msgstr "Modificare necesară"
-
-#: 
-msgid "Changelog"
-msgstr "Jurnal de modificări"
 
 #: 
 msgid "Continue Anyway"
@@ -15858,10 +15830,6 @@ msgstr "Continuați oricum"
 #: 
 msgid "Could not load release information."
 msgstr "Informațiile despre versiune nu au putut fi încărcate."
-
-#: 
-msgid "Download & Install"
-msgstr "Descărcare și instalare"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15890,10 +15858,6 @@ msgstr "Jurnal complet de modificări"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Instalați versiunea stabilă {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Se instalează următoarea versiune"
 
 #: 
 msgid "Invalid file path"
@@ -15960,10 +15924,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Afișați calea completă de actualizare"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Cea mai recentă versiune stabilă este {{version}}. O puteți reinstala mai jos."
 
@@ -15990,10 +15950,6 @@ msgstr "Vizualizați notele de versiune"
 #: 
 msgid "What's New"
 msgstr "Noutăți"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Noutăți în {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16954,10 +16910,6 @@ msgid "Working..."
 msgstr "Se proceseaza..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Sunteti cu {{releaseCount}} versiuni in urma. Iata ce veti castiga"
-
-#: 
 msgid "click to expand"
 msgstr "clic pentru a extinde"
 
@@ -17212,10 +17164,6 @@ msgstr "Crearea angajamentului a eșuat"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Ștergerea angajamentului a eșuat"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Codificarea răspunsului de plată a eșuat"
 
 #: 
 msgid "Failed to retrieve pledge"

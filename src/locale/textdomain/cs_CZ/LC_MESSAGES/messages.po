@@ -14474,10 +14474,6 @@ msgid "Group removed from cart"
 msgstr "Skupina byla odstraněna z košíku"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Pro výzvu k výběru role je vyžadované ID skupiny"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14855,20 +14851,8 @@ msgid "Please select a role."
 msgstr "Vyberte prosím roli."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Vyberte prosím skupinu i roli."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Vyberte řádky, které chcete smazat"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Vyberte cílovou roli pro členy"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Vyberte cílovou skupinu členů"
 
 #: 
 msgid "Please try again"
@@ -15765,24 +15749,12 @@ msgid "Account status"
 msgstr "Stav účtu"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Pokročilé: zvolte konkrétní cílovou verzi"
-
-#: 
 msgid "Bug Fix"
 msgstr "Oprava chyby"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Ve výchozím nastavení průvodce stáhne další doporučenou verzi. Níže si můžete vybrat libovolnou dostupnou verzi."
-
-#: 
 msgid "Change required"
 msgstr "Změna vyžadována"
-
-#: 
-msgid "Changelog"
-msgstr "Seznam změn"
 
 #: 
 msgid "Continue Anyway"
@@ -15791,10 +15763,6 @@ msgstr "Přesto pokračovat"
 #: 
 msgid "Could not load release information."
 msgstr "Nepodařilo se načíst informace o vydání."
-
-#: 
-msgid "Download & Install"
-msgstr "Stáhnout a nainstalovat"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15823,10 +15791,6 @@ msgstr "Úplný seznam změn"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Nainstalovat stabilní {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Instalace dalšího vydání"
 
 #: 
 msgid "Invalid file path"
@@ -15897,10 +15861,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Zobrazit celou cestu aktualizace"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Nejnovější stabilní vydání je {{version}}. Níže jej můžete přeinstalovat."
 
@@ -15927,10 +15887,6 @@ msgstr "Zobrazit poznámky k vydání"
 #: 
 msgid "What's New"
 msgstr "Co je nového"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Co je nového ve verzi {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16891,10 +16847,6 @@ msgid "Working..."
 msgstr "Probíhá..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Jste pozadu o {{releaseCount}} vydání. Zde je to, co získáte"
-
-#: 
 msgid "click to expand"
 msgstr "klikněte pro rozbalení"
 
@@ -17145,10 +17097,6 @@ msgstr "Vytvoření příslibu se nezdařilo"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Smazání příslibu se nezdařilo"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Kódování odpovědi platby se nezdařilo"
 
 #: 
 msgid "Failed to retrieve pledge"

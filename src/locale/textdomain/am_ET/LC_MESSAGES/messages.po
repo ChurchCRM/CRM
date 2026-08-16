@@ -14484,10 +14484,6 @@ msgid "Group removed from cart"
 msgstr "ቡድን ከጋሪ ተወግዷል"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "ለሚና ምርጫ ጥያቄ የቡድን መታወቂያ ያስፈልጋል "
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14865,20 +14861,8 @@ msgid "Please select a role."
 msgstr "እባክዎ ሚና ይምረጡ።"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "እባክዎ ቡድን እና ሚና ሁለቱንም ይምረጡ።"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "እባክዎን የሚሰረዙ ረድፎችን ይምረጡ"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "እባክዎ ለአባላት ዒላማ ሚና ይምረጡ"
-
-#: 
-msgid "Please select target group for members"
-msgstr "እባክዎ ለአባላት የታለመ ቡድንን ይምረጡ"
 
 #: 
 msgid "Please try again"
@@ -15774,24 +15758,12 @@ msgid "Account status"
 msgstr "የመለያ ሁኔታ"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "የላቀ: ልዩ ዒላማ ስሪት ይምረጡ"
-
-#: 
 msgid "Bug Fix"
 msgstr "ስህተት ማስተካከያ"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "በነባሪ ሁኔታ አዋቂው ቀጣዩን የሚመከረው ስሪት ያወርዳል። ይልቁንስ ከዚህ በታች ያሉ ማናቸውንም ስሪቶች መምረጥ ይችላሉ።"
-
-#: 
 msgid "Change required"
 msgstr "ለውጥ ያስፈልጋል"
-
-#: 
-msgid "Changelog"
-msgstr "የለውጥ መዝገብ"
 
 #: 
 msgid "Continue Anyway"
@@ -15800,10 +15772,6 @@ msgstr "ያም ሆኖ ቀጥል"
 #: 
 msgid "Could not load release information."
 msgstr "የስሪት መረጃ መጫን አልተቻለም።"
-
-#: 
-msgid "Download & Install"
-msgstr "አውርድ እና ጫን"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15832,10 +15800,6 @@ msgstr "ሙሉ የለውጥ መዝገብ"
 #: 
 msgid "Install stable {{version}}"
 msgstr "የተረጋጋ {{version}} ጫን"
-
-#: 
-msgid "Installing next release"
-msgstr "ቀጣዩን ስሪት እየጫነ ነው"
 
 #: 
 msgid "Invalid file path"
@@ -15906,10 +15870,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "ሙሉ የማሻሻያ ዱካ አሳይ"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "የቅርብ ጊዜ የተረጋጋ ስሪት {{version}} ነው። ከዚህ በታች እንደገና መጫን ይችላሉ።"
 
@@ -15936,10 +15896,6 @@ msgstr "የስሪት ማስታወሻዎችን ይመልከቱ"
 #: 
 msgid "What's New"
 msgstr "ምን አዲስ ነገር አለ"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "በ {{version}} ውስጥ ምን አዲስ ነገር አለ"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16902,10 +16858,6 @@ msgid "Working..."
 msgstr "በሥራ ላይ..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "{{releaseCount}} ሬሊዝ ወደ ኋላ ቀርተዋል። እነሆ የሚያገኙት"
-
-#: 
 msgid "click to expand"
 msgstr "ለማስፋፋት ጠቅ ያድርጉ"
 
@@ -17160,10 +17112,6 @@ msgstr "ቃል-ኪዳን መፍጠር አልተሳካም"
 #: 
 msgid "Failed to delete pledge"
 msgstr "ቃል-ኪዳን መሰረዝ አልተሳካም"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "የክፍያ ምላሽ ኢንኮድ ማድረግ አልተሳካም"
 
 #: 
 msgid "Failed to retrieve pledge"
