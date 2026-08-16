@@ -200,11 +200,10 @@ describe("API Finance Funds - Access control", () => {
     });
 
     it("Returns 401 or 403 for a caller without Admin or Finance permission", () => {
-        // makePrivateUserAPICall uses a standard (non-admin, non-finance) key.
-        // The /finance module applies FinanceRoleAuthMiddleware at module level,
-        // so a non-finance user is blocked before the route is reached.
-        // Either 401 (unauthenticated key) or 403 (insufficient role) is acceptable.
-        cy.makePrivateUserAPICall("POST", BASE, { name: "x" }, [401, 403]);
+        // tony.wade (user.api.key) has usr_Finance=1 and now passes FinanceRoleAuthMiddleware
+        // (funds-api.php was changed from AdminRoleAuthMiddleware in #9476).
+        // Use makePrivateNoFinanceAPICall (judith.matthews: Finance=0, Admin=0) instead.
+        cy.makePrivateNoFinanceAPICall("POST", BASE, { name: "x" }, [401, 403]);
     });
 
     it("Finance-only user (non-admin) can create, update, reorder, and delete a fund", () => {

@@ -278,7 +278,11 @@ describe("Kiosk Registration Window - Disabled State", () => {
 describe("Kiosk API - Access Control", () => {
     describe("Standard User Access", () => {
         beforeEach(() => {
-            cy.setupStandardSession();
+            // tony.wade (standard session) has usr_ManageGroups=1 and now passes
+            // the ManageGroupsRoleAuthMiddleware added in #9476 — use the
+            // nofinance session (judith.matthews: ManageGroups=0, Finance=0, Admin=0)
+            // to correctly exercise the non-ManageGroups denial path.
+            cy.setupNoFinanceSession();
         });
 
         it("should deny GET /kiosk/api/devices for non-ManageGroups user", () => {
