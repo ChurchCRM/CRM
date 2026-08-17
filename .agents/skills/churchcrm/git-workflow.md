@@ -207,7 +207,7 @@ Brief overview of what this PR accomplishes (2-3 sentences).
 - ✅ All existing tests pass
 - ✅ Added new responsive grid tests
 - ✅ Tested on mobile (iPhone 12, Android)
-- Tests: `npm run test -- --spec "cypress/e2e/ui/admin/*.spec.js"`
+- Tests: `npm run test:ui-admin -- --spec "cypress/e2e/ui-admin/*.spec.js"`
 
 ## Related Issues
 Fixes #7698

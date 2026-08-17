@@ -196,8 +196,13 @@ jobs:
         test-type:
           - name: api
             spec: "cypress/e2e/api/**/*.spec.js"
+            config: "cypress/configs/docker.config.ts"
           - name: ui
             spec: "cypress/e2e/ui/**/*.spec.js"
+            config: "cypress/configs/docker.config.ts"
+          - name: admin-ui
+            spec: "cypress/e2e/ui-admin/**/*.spec.js"
+            config: "cypress/configs/docker-admin.config.ts"
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -245,7 +250,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP ${{ matrix.php-version }})
-      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
+      run: npx cypress run --config-file ${{ matrix.test-type.config }} --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -299,8 +304,13 @@ jobs:
         test-type:
           - name: api
             spec: "cypress/e2e/api/**/*.spec.js"
+            config: "cypress/configs/docker.config.ts"
           - name: ui
             spec: "cypress/e2e/ui/**/*.spec.js"
+            config: "cypress/configs/docker.config.ts"
+          - name: admin-ui
+            spec: "cypress/e2e/ui-admin/**/*.spec.js"
+            config: "cypress/configs/docker-admin.config.ts"
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -348,7 +358,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (subdir, PHP ${{ matrix.php-version }})
-      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
+      run: npx cypress run --config-file ${{ matrix.test-type.config }} --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
