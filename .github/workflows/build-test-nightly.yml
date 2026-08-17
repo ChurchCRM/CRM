@@ -1,4 +1,4 @@
-name: Nightly Tests
+name: Build, Test and Package (Nightly)
 
 # Consolidated nightly workflow covering all test types that are too heavy or
 # slow to run on every push/PR. This workflow supersedes upgrade-tests.yml
