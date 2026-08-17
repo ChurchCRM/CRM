@@ -10,6 +10,7 @@
     "one": "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.|%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.",
     "other": ""
   },
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""
