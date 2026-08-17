@@ -133,6 +133,7 @@
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
         "cypress": "^15.20.1",
+        "cypress-split": "^1.25.0",
         "cypress-terminal-report": "^7.3.3",
         "datatables.net-plugins": "^3.0.1",
         "dotenv": "^17.4.2",
