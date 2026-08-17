@@ -394,7 +394,7 @@ class FinancialService
                 if ($sGroupKey === null) {  // GroupKey is shared across all fund rows for one payment.
                     $iAutID = $payment->iAutID ?? null;
                     if ($payment->iMethod === 'CHECK') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo ?? 'check', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo ?: 'check', $payment->FamilyID, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
                         $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $payment->FamilyID, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {

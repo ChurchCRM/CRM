@@ -252,9 +252,8 @@ describe("Standard Calendar — save (admin-session)", () => {
         // CI environments. This is a known Bootstrap 5 timing issue and does not
         // affect the correctness of the save round-trip being tested here.
         cy.on("uncaught:exception", (err) => {
-            if (err.message.includes("Cannot read properties of null (reading 'focus')")) {
-                return false;
-            }
+            return !(err.message.includes("Cannot read properties of null (reading 'focus')")
+                     && err.stack?.includes("bootstrap"));
         });
         const title = "No Calendar Test - " + Cypress._.random(0, 1e6);
         cy.intercept("POST", "**/api/events").as("createEvent");
