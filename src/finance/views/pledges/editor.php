@@ -493,7 +493,7 @@ $requireCheckNumber = SystemConfig::getBooleanValue('bRequireCheckNumber');
             showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please enter a date')) ?>, true);
             return null;
         }
-        if (REQUIRE_CHECK_NO && method === 'CHECK' && !checkNo) {
+        if (REQUIRE_CHECK_NO && method === 'CHECK' && (!checkNo || checkNo === '0')) {
             showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please enter a check number')) ?>, true);
             return null;
         }
