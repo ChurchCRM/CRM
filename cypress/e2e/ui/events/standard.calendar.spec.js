@@ -199,7 +199,7 @@ describe("Standard Calendar — save (admin-session)", () => {
         // callback can fire during the next test, calling .focus() on an element
         // that was removed from the DOM — producing this uncaught exception.
         // This is a timing artifact, not a correctness failure.
-        cy.on("uncaughtException", (err) => {
+        cy.on("uncaught:exception", (err) => {
             if (err.message === "Cannot read properties of null (reading 'focus')") {
                 return false;
             }
@@ -287,6 +287,10 @@ describe("Standard Calendar — save (admin-session)", () => {
             expect(intercepted.request.body.PinnedCalendars).to.deep.equal([]);
             expect(intercepted.response.statusCode).to.eq(200);
         });
+        // Same guard as test 1: ensure closeModal() removes the element before
+        // this test ends so the async FullCalendar re-render fires within this
+        // test's uncaught:exception handler scope rather than test 3's.
+        cy.get("#eventEditorModal").should("not.exist");
     });
 
     /**
