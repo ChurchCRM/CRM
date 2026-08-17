@@ -325,9 +325,6 @@ window.showEventForm = (eventArg) => {
       // Chrome reinterpret space-format as UTC and shift wall-clock numbers.
       if (event.Start) event.Start = toWallClockString(event.Start);
       if (event.End) event.End = toWallClockString(event.End);
-      // Ensure Desc and Text have default values if missing from API response
-      if (!event.Desc) event.Desc = "";
-      if (!event.Text) event.Text = "";
       showViewContent(event, calData.Calendars, typeData.EventTypes, Array.isArray(groups) ? groups : []);
     })
     .catch((err) => {
