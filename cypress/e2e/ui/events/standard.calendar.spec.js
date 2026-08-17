@@ -14,6 +14,13 @@ function openNewEventModal() {
         const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
         win.showNewEventForm({ startStr: today, endStr: today, allDay: true });
     });
+    // showNewEventForm() fires 3 concurrent, unmocked API calls (calendars,
+    // event types, groups) before rendering the form — real backend latency
+    // under CI load can occasionally exceed Cypress's default ~4s command
+    // timeout even though the app itself is behaving correctly (it just shows
+    // its loading spinner longer). Wait here once, with a generous bound, so
+    // every call site below doesn't have to race that latency individually.
+    cy.get("#event-title-input", { timeout: 15000 }).should("exist");
 }
 
 describe("Standard Calendar", () => {
