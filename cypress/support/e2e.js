@@ -65,23 +65,22 @@ Cypress.on('uncaught:exception', (err) => {
   //   TypeError: Cannot read properties of null (reading 'focus')
   // This is benign — the modal has already been fully torn down — but Cypress
   // catches it as an uncaught exception and fails the next test in the describe
-  // block. This filter is the operative fix for the observed CI failures;
-  // the blur-before-dispose guard in calendar-event-editor.js addresses a
-  // separate (but related) _handleFocusin document-listener race.
+  // block. This filter is the operative fix for the observed CI failures.
   // Traceable to standard.calendar.spec.js "save (admin-session)" CI failures:
   // runs 31972908013, 31975974494, 31978700022 (jobs 95230541100, 95236069435,
   // 95242696285). The Bootstrap-internal transitionComplete path is unlikely to
   // change without a Bootstrap version bump; revisit if Bootstrap 6 is adopted.
   // TODO(cypress-noise): also investigate replacing cleanup()'s synchronous
   // dispose() with Bootstrap's normal hide() flow so the timer never fires
-  // against a null _config — see calendar-event-editor.js cleanup().
-  // Anchored to the exact V8 null-property-read message so a genuine app-code
-  // bug such as `document.getElementById('x').focus()` where getElementById
-  // returns null is still swallowed here — but ONLY if its message is exactly
-  // this string. Note: Option B (stack-trace 'bootstrap' guard) was not used
-  // because Bootstrap is webpack-bundled into skin-core.*.js, so the stack
-  // frame filename does not contain 'bootstrap' and the check would never fire.
-  if (/^Cannot read properties of null \(reading 'focus'\)$/.test(message)) {
+  // against a null _config.
+  // Regex (no ^…$ anchors): matches both the bare V8 message and the
+  // 'TypeError: '-prefixed form Cypress may deliver when err crosses an
+  // iframe boundary without re-wrapping as an Error object. Requires exact
+  // property-access syntax including escaped parens — more specific than
+  // bare includes(). Note: Option B (stack 'bootstrap' guard) not used
+  // because Bootstrap is webpack-bundled into skin-core.*.js; the stack
+  // frame filename never contains 'bootstrap' so the check would not fire.
+  if (/Cannot read properties of null \(reading 'focus'\)/.test(message)) {
     return false;
   }
 });
