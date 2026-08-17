@@ -178,7 +178,7 @@ describe("Deceased Person Flag", () => {
             // The deceased person should not appear in the default (Living-only) view
             cy.get("#members tbody").should("not.contain", "DanDeceased");
 
-            // Clear the Deceased Status filter to reveal deceased rows
+            // Clear the Deceased Status filter to reveal deceased rows.
             // TomSelect inserts its .ts-wrapper as a sibling AFTER the <select>,
             // so use .siblings() not .closest() (which only traverses ancestors).
             cy.get(".filter-DeceasedStatus").should("exist");
@@ -186,6 +186,12 @@ describe("Deceased Person Flag", () => {
                 .siblings(".ts-wrapper")
                 .find(".remove")
                 .click({ force: true });
+
+            // After clearing the deceased filter the DataTable shows ALL people
+            // (living + deceased), but results are paginated. DanDeceased may be
+            // on page 2+ alphabetically (after seed-data "A" names). Use the
+            // DataTable global search to bring them onto the first visible page.
+            cy.get(".dt-search input").first().clear().type("DanDeceased");
 
             // The deceased person should now appear
             cy.get("#members tbody", { timeout: 5000 }).should(
