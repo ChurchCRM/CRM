@@ -1,69 +1,30 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "%d കുടുംബത്തിലേക്ക് ഇമെയിൽ അയച്ചു.",
-    "other": "%d കുടുംബങ്ങളിലേക്ക് ഇമെയിൽ അയച്ചു."
+    "one": "%d കുടുംബത്തിലേക്ക് ഇമെയിൽ അയച്ചു.|%d കുടുംബങ്ങളിലേക്ക് ഇമെയിൽ അയച്ചു.",
+    "other": ""
   },
-  "N/A": "N/A",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "%d കുടുംബത്തിലേക്ക് PDF വിജയകരമായി ഇമെയിൽ ചെയ്തു.",
-    "other": "%d കുടുംബങ്ങളിലേക്ക് PDF വിജയകരമായി ഇമെയിൽ ചെയ്തു."
+    "one": "%d കുടുംബത്തിലേക്ക് PDF വിജയകരമായി ഇമെയിൽ ചെയ്തു.|%d കുടുംബങ്ങളിലേക്ക് PDF വിജയകരമായി ഇമെയിൽ ചെയ്തു.",
+    "other": ""
   },
-  "Birthdays & Anniversaries": "ജന്മദിനങ്ങളും വാർഷികങ്ങളും",
-  "Estimated value %s.": "കണക്കാക്കിയ മൂല്യം %s.",
-  "Minimum bid %s.": "കുറഞ്ഞ ലേലം %s.",
-  "No \"%s\" options are available yet. Add the relevant records first.": "ഇതുവരെ \"%s\" ഓപ്ഷനുകൾ ലഭ്യമല്ല. ആദ്യം അനുബന്ധ രേഖകൾ ചേർക്കുക.",
-  "No \"%s\" options are configured yet. Add the relevant records first.": "ഇതുവരെ \"%s\" ഓപ്ഷനുകൾ കോൺഫിഗർ ചെയ്തിട്ടില്ല. ആദ്യം അനുബന്ധ രേഖകൾ ചേർക്കുക.",
-  "People with birthdays or wedding anniversaries in a particular month": "ഒരു പ്രത്യേക മാസത്തിൽ ജന്മദിനമോ വിവാഹ വാർഷികമോ ഉള്ള ആളുകൾ",
-  "The month for which you would like birthdays and anniversaries returned.": "ജന്മദിനങ്ങളും വാർഷികങ്ങളും ലഭിക്കാൻ ആഗ്രഹിക്കുന്ന മാസം.",
-  "The wedding anniversary month for which you would like records returned.": "വിവാഹ വാർഷിക രേഖകൾ ലഭിക്കാൻ ആഗ്രഹിക്കുന്ന മാസം.",
-  "Total of all purchases: %s": "എല്ലാ വാങ്ങലുകളുടെയും ആകെ: %s",
-  "Total purchases: %s": "മൊത്തം വാങ്ങലുകൾ: %s",
-  "Wedding Anniversaries": "വിവാഹ വാർഷികങ്ങൾ",
-  "People with wedding anniversaries in a particular month": "ഒരു പ്രത്യേക മാസത്തിൽ വിവാഹ വാർഷികം ആഘോഷിക്കുന്ന ആളുകൾ",
-  "An error occurred. Please try again.": "ഒരു പിശക് സംഭവിച്ചു. ദയവായി വീണ്ടും ശ്രമിക്കുക.",
-  "Are you sure you want to delete this fund?": "ഈ ഫണ്ട് ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?",
-  "Cannot delete: fund has associated pledges": "ഇല്ലാതാക്കാൻ കഴിയില്ല: ഫണ്ടിന് ബന്ധപ്പെട്ട പ്രതിജ്ഞകൾ ഉണ്ട്",
-  "Delete Fund": "ഫണ്ട് ഇല്ലാതാക്കുക",
-  "Direction must be 'up' or 'down'.": "ദിശ 'up' അല്ലെങ്കിൽ 'down' ആയിരിക്കണം.",
-  "Edit Donation Fund": "സംഭാവന ഫണ്ട് എഡിറ്റ് ചെയ്യുക",
-  "Failed to reorder donation fund": "സംഭാവന ഫണ്ട് പുനഃക്രമീകരിക്കാൻ കഴിഞ്ഞില്ല",
-  "Fund added successfully.": "ഫണ്ട് വിജയകരമായി ചേർത്തു.",
-  "Fund deleted successfully.": "ഫണ്ട് വിജയകരമായി ഇല്ലാതാക്കി.",
-  "Fund name": "ഫണ്ടിന്റെ പേര്",
-  "Fund name is required.": "ഫണ്ടിന്റെ പേര് ആവശ്യമാണ്.",
-  "Fund order updated.": "ഫണ്ട് ക്രമം അപ്‌ഡേറ്റ് ചെയ്തു.",
-  "Fund saved successfully.": "ഫണ്ട് വിജയകരമായി സേവ് ചെയ്തു.",
-  "No funds have been added yet. Use the form above to add the first fund.": "ഇതുവരെ ഫണ്ടുകളൊന്നും ചേർത്തിട്ടില്ല. ആദ്യത്തെ ഫണ്ട് ചേർക്കാൻ മുകളിലുള്ള ഫോം ഉപയോഗിക്കുക.",
-  "Optional description": "ഐച്ഛിക വിവരണം",
-  "Private Calendar": "സ്വകാര്യ കലണ്ടർ",
-  "Public Calendar": "പൊതു കലണ്ടർ",
-  "Advanced: Install a specific version instead": "വിപുലം: പകരം ഒരു പ്രത്യേക പതിപ്പ് ഇൻസ്റ്റാൾ ചെയ്യുക",
-  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "സ്ഥിരസ്ഥിതിയായി, വിസാർഡ് ഏറ്റവും പുതിയ പതിപ്പിലേക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുന്നു. പകരം ചുവടെ ഒരു പ്രത്യേക പതിപ്പ് തിരഞ്ഞെടുക്കാം.",
-  "Cannot edit a payment in a closed deposit": "അടഞ്ഞ നിക്ഷേപത്തിലെ ഒരു പേയ്‌മെന്റ് എഡിറ്റ് ചെയ്യാൻ കഴിയില്ല",
-  "Download & Apply {{version}}": "{{version}} ഡൗൺലോഡ് ചെയ്ത് പ്രയോഗിക്കുക",
-  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "ChurchCRM-ന്റെ ഓരോ റിലീസിലും സുരക്ഷാ പരിഹാരങ്ങൾ ഉൾപ്പെടുന്നു. ഏറ്റവും പുതിയ പതിപ്പിലേക്ക് എല്ലായ്‌പ്പോഴും അപ്‌ഗ്രേഡ് ചെയ്യാൻ ഞങ്ങൾ ശക്തമായി ശുപാർശ ചെയ്യുന്നു.",
-  "Failed to decode payment request": "പേയ്‌മെന്റ് അഭ്യർത്ഥന ഡീകോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല",
-  "Full release notes": "പൂർണ്ണ റിലീസ് കുറിപ്പുകൾ",
-  "Invalid payment data": "അസാധുവായ പേയ്‌മെന്റ് ഡാറ്റ",
-  "No release notes available.": "റിലീസ് കുറിപ്പുകളൊന്നും ലഭ്യമല്ല.",
-  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "മുന്നറിയിപ്പ്: {{latest}}-ൽ ഉൾപ്പെടുത്തിയ സുരക്ഷാ പരിഹാരങ്ങൾ {{chosen}}-ൽ ഇല്ല. നിർദ്ദിഷ്ട കാരണം ഉണ്ടെങ്കിൽ മാത്രം തുടരുക.",
-  "What you'll gain": "നിങ്ങൾക്ക് ലഭിക്കുന്നത്",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "{{count}} അംഗത്തെ പകർത്തി",
-    "other": "{{count}} അംഗങ്ങളെ പകർത്തി"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ഈ പട്ടികയിൽ {{count}} സ്വീകർത്താവ് ഉണ്ട് — ഒരു mailto: ലിങ്കിന് അധികം. പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "other": "ഈ പട്ടികയിൽ {{count}} സ്വീകർത്താക്കൾ ഉണ്ട് — ഒരു mailto: ലിങ്കിന് അധികം. പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ഇമെയിൽ ക്ലയന്റിന് അധികം സ്വീകർത്താക്കൾ ({{count}} > {{max}}). പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "other": "ഇമെയിൽ ക്ലയന്റിന് അധികം സ്വീകർത്താക്കൾ ({{count}} > {{max}}). പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} മിനിറ്റ് ശേഷിക്കുന്നു",
-    "other": "{{count}} മിനിറ്റ് ശേഷിക്കുന്നു"
+    "one": "",
+    "other": ""
   }
 }

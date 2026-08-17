@@ -17707,3 +17707,169 @@ msgstr "wiersz wybrany"
 msgid "rows selected"
 msgstr "wiersze wybrane"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Urodziny i rocznice"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Szacowana wartość %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimalna oferta %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Brak dostępnych opcji \"%s\". Najpierw dodaj odpowiednie rekordy."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Brak skonfigurowanych opcji \"%s\". Najpierw dodaj odpowiednie rekordy."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Osoby z urodzinami lub rocznicami ślubu w danym miesiącu"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Miesiąc, dla którego chcesz wyświetlić urodziny i rocznice."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Miesiąc rocznicy ślubu, dla którego chcesz wyświetlić rekordy."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Łączna wartość wszystkich zakupów: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Łączne zakupy: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Rocznice ślubu"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Osoby z rocznicami ślubu w danym miesiącu"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Wystąpił błąd. Spróbuj ponownie."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Czy na pewno chcesz usunąć ten fundusz?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Nie można usunąć: fundusz ma powiązane zobowiązania"
+
+#: 
+msgid "Delete Fund"
+msgstr "Usuń fundusz"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Kierunek musi być 'w górę' lub 'w dół'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Edytuj fundusz ofiarny"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Nie udało się zmienić kolejności funduszu ofiarnego"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fundusz został pomyślnie dodany."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fundusz został pomyślnie usunięty."
+
+#: 
+msgid "Fund name"
+msgstr "Nazwa funduszu"
+
+#: 
+msgid "Fund name is required."
+msgstr "Nazwa funduszu jest wymagana."
+
+#: 
+msgid "Fund order updated."
+msgstr "Kolejność funduszy została zaktualizowana."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fundusz został pomyślnie zapisany."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Nie dodano jeszcze żadnych funduszy. Użyj powyższego formularza, aby dodać pierwszy fundusz."
+
+#: 
+msgid "Optional description"
+msgstr "Opcjonalny opis"
+
+#: 
+msgid "Private Calendar"
+msgstr "Kalendarz prywatny"
+
+#: 
+msgid "Public Calendar"
+msgstr "Kalendarz publiczny"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Zaawansowane: zainstaluj konkretną wersję"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Domyślnie kreator aktualizuje do najnowszej wersji. Możesz zamiast tego wybrać konkretną wersję poniżej."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Nie można edytować płatności w zamkniętym depozycie"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Pobierz i zastosuj {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Każde wydanie ChurchCRM zawiera poprawki bezpieczeństwa. Zdecydowanie zalecamy zawsze aktualizować do najnowszej wersji."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Nie udało się zdekodować żądania płatności"
+
+#: 
+msgid "Full release notes"
+msgstr "Pełne informacje o wydaniu"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Nieprawidłowe dane płatności"
+
+#: 
+msgid "No release notes available."
+msgstr "Brak dostępnych informacji o wydaniu."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Ostrzeżenie: {{chosen}} nie zawiera poprawek bezpieczeństwa zawartych w {{latest}}. Kontynuuj tylko wtedy, gdy masz konkretny powód."
+
+#: 
+msgid "What you'll gain"
+msgstr "Co zyskasz"
+

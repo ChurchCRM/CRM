@@ -283,6 +283,16 @@ class Menu
     {
         // $isFinanceEnabled already includes admin bypass and checks bEnabledFinance
         $depositsMenu = new MenuItem(gettext('Finance'), '', $isFinanceEnabled, 'fa-cash-register');
+
+        // Open-deposit count badge — initialized to 0, loaded dynamically via JavaScript
+        // on page load (matches Fundraiser badge pattern). See CRMJSOM.js loadOpenDepositCount().
+        $depositsMenu->addCounter(new MenuCounter(
+            'openDeposits',
+            'bg-blue',
+            0,
+            gettext('Open Deposits')
+        ));
+
         $depositsMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'finance/', $isFinanceEnabled, 'fa-gauge'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'finance/deposit/search', $isFinanceEnabled, 'fa-list'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice'));
@@ -307,18 +317,12 @@ class Menu
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'fundraiser/', true, 'fa-list'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'fundraiser/editor', true, 'fa-circle-plus'));
 
-        // Active-fundraiser count badge — cached in session; invalidated by routes on state changes.
-        if (!isset($_SESSION['iFundraiserActiveCount'])) {
-            try {
-                $_SESSION['iFundraiserActiveCount'] = (new FundRaiserService())->getActiveFundraiserCount();
-            } catch (\Throwable $e) {
-                $_SESSION['iFundraiserActiveCount'] = 0;
-            }
-        }
+        // Active-fundraiser count badge — initialized to 0, loaded dynamically via JavaScript
+        // on page load (matches Calendar badge pattern). See CRMJSOM.js loadFundraiserCount().
         $fundraiserMenu->addCounter(new MenuCounter(
             'activeFundraisers',
             'bg-blue',
-            (int) $_SESSION['iFundraiserActiveCount'],
+            0,
             gettext('Active Fundraisers')
         ));
 

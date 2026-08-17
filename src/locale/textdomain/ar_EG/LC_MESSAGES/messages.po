@@ -17700,3 +17700,169 @@ msgstr "صف محدد"
 msgid "rows selected"
 msgstr "صفوف محددة"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "أعياد الميلاد والذكرى السنوية"
+
+#: 
+msgid "Estimated value %s."
+msgstr "القيمة التقديرية %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "الحد الأدنى للعرض %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "لا تتوفر خيارات \"%s\" بعد. أضف السجلات ذات الصلة أولاً."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "لم يتم تكوين خيارات \"%s\" بعد. أضف السجلات ذات الصلة أولاً."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "الأشخاص الذين لديهم أعياد ميلاد أو ذكرى سنوية للزواج في شهر معين"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "الشهر الذي تريد استرداد أعياد الميلاد والذكرى السنوية فيه."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "شهر الذكرى السنوية للزواج الذي تريد استرداد السجلات فيه."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "إجمالي جميع المشتريات: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "إجمالي المشتريات: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "الذكرى السنوية للزواج"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "الأشخاص الذين لديهم ذكرى سنوية للزواج في شهر معين"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "حدث خطأ. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا الصندوق؟"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "لا يمكن الحذف: يحتوي الصندوق على تعهدات مرتبطة به"
+
+#: 
+msgid "Delete Fund"
+msgstr "حذف الصندوق"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "يجب أن يكون الاتجاه 'up' أو 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "تعديل صندوق التبرعات"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "فشل إعادة ترتيب صندوق التبرعات"
+
+#: 
+msgid "Fund added successfully."
+msgstr "تمت إضافة الصندوق بنجاح."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "تم حذف الصندوق بنجاح."
+
+#: 
+msgid "Fund name"
+msgstr "اسم الصندوق"
+
+#: 
+msgid "Fund name is required."
+msgstr "اسم الصندوق مطلوب."
+
+#: 
+msgid "Fund order updated."
+msgstr "تم تحديث ترتيب الصندوق."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "تم حفظ الصندوق بنجاح."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "لم يتم إضافة أي صناديق بعد. استخدم النموذج أعلاه لإضافة الصندوق الأول."
+
+#: 
+msgid "Optional description"
+msgstr "وصف اختياري"
+
+#: 
+msgid "Private Calendar"
+msgstr "تقويم خاص"
+
+#: 
+msgid "Public Calendar"
+msgstr "تقويم عام"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "متقدم: تثبيت إصدار محدد بدلاً من ذلك"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "بشكل افتراضي، يقوم المعالج بالترقية إلى أحدث إصدار. يمكنك بدلاً من ذلك اختيار إصدار محدد أدناه."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "لا يمكن تعديل دفعة في إيداع مغلق"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "تنزيل وتطبيق {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "يتضمن كل إصدار من ChurchCRM إصلاحات أمنية. نوصي بشدة بالترقية دائماً إلى أحدث إصدار."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "فشل فك تشفير طلب الدفع"
+
+#: 
+msgid "Full release notes"
+msgstr "ملاحظات الإصدار الكاملة"
+
+#: 
+msgid "Invalid payment data"
+msgstr "بيانات الدفع غير صالحة"
+
+#: 
+msgid "No release notes available."
+msgstr "لا تتوفر ملاحظات إصدار."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "تحذير: {{chosen}} يفتقر إلى إصلاحات أمنية مضمّنة في {{latest}}. تابع فقط إذا كان لديك سبب محدد."
+
+#: 
+msgid "What you'll gain"
+msgstr "ما ستكسبه"
+

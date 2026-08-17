@@ -498,3 +498,41 @@ Cypress.Commands.add('waitForNotification', (expectedText, options = {}) => {
         .should('contain', expectedText);
 });
 
+/**
+ * Sets the locale-admin user's ui.locale preference to localeValue then establishes
+ * an authenticated browser session for that user.  Uses the dedicated locale-admin
+ * API key so no other user's session is affected.
+ *
+ * Intended for use in locale smoke tests only.  The localeValue must be the
+ * locale field from src/locale/locales.json (e.g. 'ar_EG', 'zh_CN', 'de_DE').
+ *
+ * @param {string} localeValue - The locale field value from locales.json
+ * @example cy.setupLocaleAdminSession('ar_EG')
+ */
+Cypress.Commands.add('setupLocaleAdminSession', (localeValue) => {
+    const userId = Cypress.env('locale.admin.id');
+    const apiKey = Cypress.env('locale.admin.api.key');
+    const username = Cypress.env('locale.admin.username');
+    const password = Cypress.env('locale.admin.password');
+
+    if (!userId || !apiKey || !username || !password) {
+        throw new Error(
+            'Locale-admin credentials not configured. ' +
+            'Ensure locale.admin.id, locale.admin.api.key, locale.admin.username, ' +
+            'and locale.admin.password are set in cypress/configs/locale.config.ts env.',
+        );
+    }
+
+    // Set the user's locale preference via API (withCredentials:false avoids
+    // interfering with the browser session cookie that cy.session manages).
+    cy.makePrivateAPICall(apiKey, 'POST', `/api/user/${userId}/setting/ui.locale`, { value: localeValue }, 200);
+
+    // Establish (or restore from cache) the browser session for locale-admin.
+    // Known limitation: the cy.session key is static ('locale-admin-session'),
+    // so if the locale were ever read at login time rather than per-request
+    // (e.g. persisted in the session cookie), the cache could serve a stale
+    // locale. ChurchCRM resolves locale per-request from the DB preference,
+    // so this is safe for now.
+    cy.setupLoginSession('locale-admin-session', username, password);
+});
+

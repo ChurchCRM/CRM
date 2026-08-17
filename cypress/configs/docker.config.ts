@@ -38,6 +38,13 @@ export default defineConfig({
   numTestsKeptInMemory: 0,
   e2e: {
     ...base.e2e,
+    // Admin UI specs (cypress/e2e/ui-admin) run as a dedicated parallel CI job
+    // (docker-admin.config.ts / npm run test:ui-admin) and are intentionally
+    // excluded here, mirroring how new-system specs are excluded from this config.
+    specPattern: [
+      'cypress/e2e/api/**/*.spec.js',
+      'cypress/e2e/ui/**/*.spec.js'
+    ],
     setupNodeEvents(on, config) {
       const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
       installLogsPrinter(on, {
