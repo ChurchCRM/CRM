@@ -94,7 +94,6 @@ function initializeFamilyView() {
 
   // Giving History table (#8332) — init after ensuring both types are returned by API
   if ($("#pledge-payment-v2-table").length) {
-    // Escape a string for use in a DataTables regex column search
     // Escape a string for use in a DataTables regex column search.
     // String() coercion guards against jQuery .data() auto-converting numeric-looking
     // HTML attributes (e.g. data-current-fy="2024") to the integer 2024.
@@ -126,7 +125,9 @@ function initializeFamilyView() {
         dataSrc: "data",
         // Silently handle ajax errors (e.g. 401 during session transitions in tests)
         // so DataTables does not produce a browser alert() that could fail automated tests
-        error: function () {},
+        error: function () {
+          window.CRM.notify(i18next.t("Failed to load giving history"), "danger");
+        },
       },
       columns: [
         { title: i18next.t("Date"), type: "date", data: "Date" },
@@ -157,8 +158,8 @@ function initializeFamilyView() {
           },
         },
         { title: i18next.t("Method"), data: "Method", render: (data) => window.CRM.escapeHtml(data || "") },
-        { title: i18next.t("Fiscal Year"), data: "FormattedFY", visible: false },
-        { title: i18next.t("Comment"), data: "Comment", visible: false },
+        { title: i18next.t("Fiscal Year"), data: "FormattedFY", visible: false, className: "no-export" },
+        { title: i18next.t("Comment"), data: "Comment", visible: false, className: "no-export" },
         {
           width: "40px",
           orderable: false,
@@ -177,7 +178,7 @@ function initializeFamilyView() {
               i18next.t("Edit") +
               "</a>" +
               '<button type="button" class="dropdown-item text-danger pledge-delete-btn" data-group-key="' +
-              row.GroupKey.replace(/"/g, "&quot;") +
+              window.CRM.escapeAttribute(row.GroupKey) +
               '"><i class="fa-solid fa-trash-can me-2"></i>' +
               i18next.t("Delete") +
               "</button>" +
@@ -219,8 +220,8 @@ function initializeFamilyView() {
       // column-5 filter (^currentFY$) hides everything while the dropdown
       // still shows "All Time" — an inconsistent state.  Auto-correct by
       // clearing the filter so the table and the dropdown agree.
-      const hasCurentFYData = allRows.some((row) => row.FormattedFY === currentFY);
-      if (currentFY && !hasCurentFYData) {
+      const hasCurrentFYData = allRows.some((row) => row.FormattedFY === currentFY);
+      if (currentFY && !hasCurrentFYData) {
         api.column(5).search("", false, false).draw();
         $fySelect.val("");
         return; // No current-FY data → no YTD badge
