@@ -17589,3 +17589,169 @@ msgstr "rij geselecteerd"
 msgid "rows selected"
 msgstr "rijen geselecteerd"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Verjaardagen & Jubilea"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Geschatte waarde %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimumbieding %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Er zijn nog geen \"%s\"-opties beschikbaar. Voeg eerst de relevante gegevens toe."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Er zijn nog geen \"%s\"-opties geconfigureerd. Voeg eerst de relevante gegevens toe."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Gemeenteleden met verjaardagen of huwelijksjubilea in een bepaalde maand"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "De maand waarvoor u verjaardagen en jubilea wilt ophalen."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "De maand van het huwelijksjubileum waarvoor u gegevens wilt ophalen."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Totaal van alle aankopen: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Totaal aankopen: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Huwelijksjubilea"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Gemeenteleden met huwelijksjubilea in een bepaalde maand"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Er is een fout opgetreden. Probeer het opnieuw."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Weet u zeker dat u dit fonds wilt verwijderen?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Kan niet verwijderen: fonds heeft gekoppelde toezeggingen"
+
+#: 
+msgid "Delete Fund"
+msgstr "Fonds verwijderen"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Richting moet 'omhoog' of 'omlaag' zijn."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Bijdragefonds bewerken"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Herschikken van bijdragefonds mislukt"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fonds succesvol toegevoegd."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fonds succesvol verwijderd."
+
+#: 
+msgid "Fund name"
+msgstr "Fondsnaam"
+
+#: 
+msgid "Fund name is required."
+msgstr "Fondsnaam is verplicht."
+
+#: 
+msgid "Fund order updated."
+msgstr "Fondsvolgorde bijgewerkt."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fonds succesvol opgeslagen."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Er zijn nog geen fondsen toegevoegd. Gebruik het bovenstaande formulier om het eerste fonds toe te voegen."
+
+#: 
+msgid "Optional description"
+msgstr "Optionele beschrijving"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privékalender"
+
+#: 
+msgid "Public Calendar"
+msgstr "Openbare kalender"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Geavanceerd: Installeer in plaats daarvan een specifieke versie"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Standaard upgradet de wizard naar de nieuwste versie. U kunt hieronder ook een specifieke versie kiezen."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Kan een betaling in een gesloten storting niet bewerken"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Downloaden & toepassen {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Elke ChurchCRM-release bevat beveiligingsfixes. We raden ten zeerste aan altijd te upgraden naar de nieuwste versie."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Decoderen van betalingsverzoek mislukt"
+
+#: 
+msgid "Full release notes"
+msgstr "Volledige releasenotities"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Ongeldige betalingsgegevens"
+
+#: 
+msgid "No release notes available."
+msgstr "Geen releasenotities beschikbaar."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Waarschuwing: {{chosen}} mist beveiligingsfixes die zijn opgenomen in {{latest}}. Ga alleen door als u een specifieke reden heeft."
+
+#: 
+msgid "What you'll gain"
+msgstr "Wat u wint"
+

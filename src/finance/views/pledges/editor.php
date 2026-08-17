@@ -138,7 +138,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                         <?php foreach ($openDeposits as $deposit): ?>
                             <option value="<?= (int) $deposit->getId() ?>"
                                 <?= ($deposit->getId() == $pledgeDepositId) ? 'selected' : '' ?>>
-                                <?= gettext('Deposit #') . (int) $deposit->getId() ?>
+                                <?= sprintf(gettext('Deposit #%d'), (int) $deposit->getId()) ?>
                                 (<?= InputUtils::escapeHTML($deposit->getDate('Y-m-d')) ?>
                                 - <?= InputUtils::escapeHTML($deposit->getType() ?? '') ?>)
                             </option>

@@ -54,6 +54,9 @@ function cleanup() {
   destroyForm();
 
   if (currentModal) {
+    const modalToDispose = currentModal;
+    const elToWatch = modalEl;
+
     if (modalEl) {
       // Bootstrap's _showElement() queues a transitionComplete callback on the
       // dialog via executeAfterTransition(). If dispose() is called before
@@ -69,10 +72,38 @@ function cleanup() {
       modalEl.classList.remove("fade", "show");
       modalEl.removeAttribute("role");
     }
+    // Deactivate the focus trap immediately regardless of transition state —
+    // this only removes a document-level listener and is always safe.
     try {
-      currentModal.dispose();
+      modalToDispose._focustrap?.deactivate();
     } catch (_e) {
-      // dispose() can throw if called during a show/hide transition
+      // ignore — best-effort cleanup
+    }
+
+    const disposeModal = () => {
+      try {
+        modalToDispose.dispose();
+      } catch (_e) {
+        // ignore — best-effort cleanup
+      }
+    };
+
+    // We call dispose() directly instead of hide() (see closeModal() above),
+    // which is safe once the modal has finished showing. But Bootstrap's
+    // show() queues an internal `transitionComplete` callback (_showElement()
+    // in modal.js) that fires once the dialog's CSS transition ends and
+    // reads `this._config`/`this._focustrap` on the modal instance. dispose()
+    // nulls every own property on that instance (see BaseComponent#dispose).
+    // If we dispose() while still mid show-transition (e.g. the test fills
+    // the form and clicks Save fast enough to close before the fade-in
+    // finishes), that queued callback fires *after* dispose() and throws
+    // "Cannot read properties of null (reading 'focus')" on the now-null
+    // `_config`. Defer disposal until Bootstrap's own `shown.bs.modal` event
+    // confirms that callback has already run.
+    if (modalToDispose._isTransitioning && elToWatch) {
+      elToWatch.addEventListener("shown.bs.modal", disposeModal, { once: true });
+    } else {
+      disposeModal();
     }
     currentModal = null;
   }

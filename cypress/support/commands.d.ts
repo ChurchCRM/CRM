@@ -286,5 +286,17 @@ declare namespace Cypress {
      * @param options - Optional config { timeout: 5000 }
      */
     waitForNotification(expectedText: string, options?: { timeout?: number }): Chainable<void>;
+
+    /**
+     * Set the locale-admin user's ui.locale preference to localeValue and establish
+     * an authenticated browser session for that user.
+     *
+     * localeValue must be the locale field from src/locale/locales.json
+     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the poEditor code).
+     *
+     * Designed for locale smoke tests only; never touches system-wide sLanguage config.
+     * @param localeValue - The locale field value from locales.json
+     */
+    setupLocaleAdminSession(localeValue: string): Chainable<void>;
   }
 }

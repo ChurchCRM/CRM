@@ -1303,7 +1303,7 @@ rg -l "Debug Email Connection" cypress/e2e
 different cards depending on environment (config error / success /
 failure), assert on **structural elements present in every state** — e.g.
 the new title plus a card header like "SMTP Configuration" — rather than a
-state-specific message. See `cypress/e2e/ui/admin/admin.email.spec.js` for
+state-specific message. See `cypress/e2e/ui-admin/admin.debug.spec.js` for
 the pattern.
 
 ## Test File Best Practices
@@ -1757,7 +1757,7 @@ Doubled-up `Contents/`. Same command in the user's interactive terminal works fi
 
 ```bash
 npx cypress run --config-file cypress/configs/docker.config.ts \
-  --spec "cypress/e2e/ui/admin/event-types.spec.js" \
+  --spec "cypress/e2e/ui-admin/event-types.spec.js" \
   > src/event-tests-output.txt 2>&1
 ```
 

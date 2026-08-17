@@ -1,61 +1,22 @@
 {
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
-  "Birthdays & Anniversaries": "Γενέθλια & Επέτειοι",
-  "Estimated value %s.": "Εκτιμώμενη αξία %s.",
-  "Minimum bid %s.": "Ελάχιστη προσφορά %s.",
-  "No \"%s\" options are available yet. Add the relevant records first.": "Δεν υπάρχουν διαθέσιμες επιλογές \"%s\" ακόμα. Προσθέστε πρώτα τις σχετικές εγγραφές.",
-  "No \"%s\" options are configured yet. Add the relevant records first.": "Δεν έχουν ρυθμιστεί επιλογές \"%s\" ακόμα. Προσθέστε πρώτα τις σχετικές εγγραφές.",
-  "People with birthdays or wedding anniversaries in a particular month": "Άτομα με γενέθλια ή επέτειο γάμου σε συγκεκριμένο μήνα",
-  "The month for which you would like birthdays and anniversaries returned.": "Ο μήνας για τον οποίο επιθυμείτε να εμφανιστούν γενέθλια και επέτειοι.",
-  "The wedding anniversary month for which you would like records returned.": "Ο μήνας επετείου γάμου για τον οποίο επιθυμείτε να εμφανιστούν εγγραφές.",
-  "Total of all purchases: %s": "Σύνολο όλων των αγορών: %s",
-  "Total purchases: %s": "Συνολικές αγορές: %s",
-  "Wedding Anniversaries": "Επέτειοι Γάμου",
-  "People with wedding anniversaries in a particular month": "Άτομα με επέτειο γάμου σε συγκεκριμένο μήνα",
-  "An error occurred. Please try again.": "Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.",
-  "Are you sure you want to delete this fund?": "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το ταμείο;",
-  "Cannot delete: fund has associated pledges": "Αδύνατη η διαγραφή: το ταμείο έχει συνδεδεμένες οικονομικές δεσμεύσεις",
-  "Delete Fund": "Διαγραφή Ταμείου",
-  "Direction must be 'up' or 'down'.": "Η κατεύθυνση πρέπει να είναι 'πάνω' ή 'κάτω'.",
-  "Edit Donation Fund": "Επεξεργασία Ταμείου Προσφορών",
-  "Failed to reorder donation fund": "Αποτυχία αναδιάταξης ταμείου προσφορών",
-  "Fund added successfully.": "Το ταμείο προστέθηκε με επιτυχία.",
-  "Fund deleted successfully.": "Το ταμείο διαγράφηκε με επιτυχία.",
-  "Fund name": "Όνομα ταμείου",
-  "Fund name is required.": "Το όνομα του ταμείου είναι υποχρεωτικό.",
-  "Fund order updated.": "Η σειρά του ταμείου ενημερώθηκε.",
-  "Fund saved successfully.": "Το ταμείο αποθηκεύτηκε με επιτυχία.",
-  "No funds have been added yet. Use the form above to add the first fund.": "Δεν έχουν προστεθεί ταμεία ακόμα. Χρησιμοποιήστε την παραπάνω φόρμα για να προσθέσετε το πρώτο ταμείο.",
-  "Optional description": "Προαιρετική περιγραφή",
-  "Private Calendar": "Ιδιωτικό Ημερολόγιο",
-  "Public Calendar": "Δημόσιο Ημερολόγιο",
-  "Advanced: Install a specific version instead": "Για προχωρημένους: Εγκατάσταση συγκεκριμένης έκδοσης",
-  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "Ο οδηγός αναβαθμίζει από προεπιλογή στην τελευταία έκδοση. Μπορείτε να επιλέξετε μια συγκεκριμένη έκδοση παρακάτω.",
-  "Cannot edit a payment in a closed deposit": "Δεν είναι δυνατή η επεξεργασία πληρωμής σε κλειστή κατάθεση",
-  "Download & Apply {{version}}": "Λήψη & Εφαρμογή {{version}}",
-  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "Κάθε έκδοση του ChurchCRM περιλαμβάνει διορθώσεις ασφαλείας. Συνιστούμε ανεπιφύλακτα την αναβάθμιση στην τελευταία έκδοση.",
-  "Failed to decode payment request": "Αποτυχία αποκωδικοποίησης αιτήματος πληρωμής",
-  "Full release notes": "Πλήρεις σημειώσεις έκδοσης",
-  "Invalid payment data": "Μη έγκυρα δεδομένα πληρωμής",
-  "No release notes available.": "Δεν υπάρχουν διαθέσιμες σημειώσεις έκδοσης.",
-  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Προειδοποίηση: Η έκδοση {{chosen}} δεν περιλαμβάνει διορθώσεις ασφαλείας που περιέχονται στην {{latest}}. Συνεχίστε μόνο εάν έχετε συγκεκριμένο λόγο.",
-  "What you'll gain": "Τι θα κερδίσετε",
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "Αντιγράφηκε {{count}} μέλος",
-    "other": "Αντιγράφηκαν {{count}} μέλη"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Αυτή η λίστα έχει {{count}} παραλήπτη — πολύ μεγάλος αριθμός για σύνδεσμο mailto:. Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων.",
-    "other": "Αυτή η λίστα έχει {{count}} παραλήπτες — πολύ μεγάλος αριθμός για σύνδεσμο mailto:. Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Πάρα πολλοί παραλήπτες για το πρόγραμμα email ({{count}} > {{max}}). Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων.",
-    "other": "Πάρα πολλοί παραλήπτες για το πρόγραμμα email ({{count}} > {{max}}). Χρησιμοποιήστε την Αντιγραφή Διευθύνσεων."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} λεπτό απομένει",
-    "other": "{{count}} λεπτά απομένουν"
+    "one": "",
+    "other": ""
   }
 }

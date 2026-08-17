@@ -331,4 +331,18 @@ class DepositService {
 
         return $rows;
     }
+
+    /**
+     * Returns the count of open (non-closed) deposits.
+     *
+     * Used by the navigation menu counter to display the number of deposits
+     * that are still open and need to be reviewed. Uses the same filtering
+     * logic as FinancialService::getDepositStatistics() to ensure consistency.
+     *
+     * @return int
+     */
+    public function getOpenDepositCount(): int
+    {
+        return DepositQuery::create()->filterByClosed(false)->count();
+    }
 }

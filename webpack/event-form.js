@@ -170,7 +170,7 @@ export function isAllDay(event) {
   // Date-only string (length 10) is implicitly all-day.
   if (s.length <= 10) return true;
   const m = s.match(/T(\d{2}):(\d{2})/);
-  if (!m || m[1] !== "00" || m[2] !== "00") return false;
+  if (m?.[1] !== "00" || m?.[2] !== "00") return false;
   if (event.End) {
     const e = toWallClockString(event.End);
     if (e.length > 10) {

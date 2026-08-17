@@ -1,58 +1,19 @@
 {
-  "Birthdays & Anniversaries": "Verjaardae en Herdenkinsdae",
-  "Estimated value %s.": "Geskatte waarde %s.",
-  "Minimum bid %s.": "Minimum bod %s.",
-  "No \"%s\" options are available yet. Add the relevant records first.": "Geen \"%s\"-opsies is nog beskikbaar nie. Voeg eers die relevante rekords by.",
-  "No \"%s\" options are configured yet. Add the relevant records first.": "Geen \"%s\"-opsies is nog opgestel nie. Voeg eers die relevante rekords by.",
-  "People with birthdays or wedding anniversaries in a particular month": "Mense met verjaardae of trou-herdenkinsdae in 'n bepaalde maand",
-  "The month for which you would like birthdays and anniversaries returned.": "Die maand waarvoor u verjaardae en herdenkinsdae wil ontvang.",
-  "The wedding anniversary month for which you would like records returned.": "Die trou-herdenkingsmaand waarvoor u rekords wil ontvang.",
-  "Total of all purchases: %s": "Totaal van alle aankope: %s",
-  "Total purchases: %s": "Totale aankope: %s",
-  "Wedding Anniversaries": "Trou-herdenkinsdae",
-  "People with wedding anniversaries in a particular month": "Mense met trou-herdenkinsdae in 'n bepaalde maand",
-  "An error occurred. Please try again.": "Daar het 'n fout opgetree. Probeer asseblief weer.",
-  "Are you sure you want to delete this fund?": "Is u seker u wil hierdie fonds uitvee?",
-  "Cannot delete: fund has associated pledges": "Kan nie uitvee nie: fonds het geassosieerde beloftes",
-  "Delete Fund": "Vee Fonds Uit",
-  "Direction must be 'up' or 'down'.": "Rigting moet 'op' of 'af' wees.",
-  "Edit Donation Fund": "Wysig Skenkingsfonds",
-  "Failed to reorder donation fund": "Kon nie skenkingsfonds herrangskik nie",
-  "Fund added successfully.": "Fonds suksesvol bygevoeg.",
-  "Fund deleted successfully.": "Fonds suksesvol uitgevee.",
-  "Fund name": "Fondsnaam",
-  "Fund name is required.": "Fondsnaam is verpligtend.",
-  "Fund order updated.": "Fondsvolgorde opgedateer.",
-  "Fund saved successfully.": "Fonds suksesvol gestoor.",
-  "No funds have been added yet. Use the form above to add the first fund.": "Geen fondse is nog bygevoeg nie. Gebruik die vorm hierbo om die eerste fonds by te voeg.",
-  "Optional description": "Opsionele beskrywing",
-  "Private Calendar": "Privaat Kalender",
-  "Public Calendar": "Openbare Kalender",
-  "Advanced: Install a specific version instead": "Gevorderd: Installeer eerder 'n spesifieke weergawe",
-  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "Die towenaar gradeer standaard op na die nuutste weergawe. U kan eerder 'n spesifieke weergawe hieronder kies.",
-  "Cannot edit a payment in a closed deposit": "Kan nie 'n betaling in 'n geslote deposito wysig nie",
-  "Download & Apply {{version}}": "Laai af en Pas toe {{version}}",
-  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "Elke ChurchCRM-vrystelling sluit sekuriteitsreëlings in. Ons beveel sterk aan om altyd na die nuutste weergawe op te gradeer.",
-  "Failed to decode payment request": "Kon nie betalingsversoek dekodeer nie",
-  "Full release notes": "Volledige vrystellingsnotas",
-  "Invalid payment data": "Ongeldige betalingsdata",
-  "No release notes available.": "Geen vrystellingsnotas beskikbaar nie.",
-  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Waarskuwing: {{chosen}} ontbreek sekuriteitsreëlings ingesluit in {{latest}}. Gaan slegs voort as u 'n spesifieke rede het.",
-  "What you'll gain": "Wat u sal wen",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "{{count}} lid gekopieer",
-    "other": "{{count}} lede gekopieer"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Hierdie lys het {{count}} ontvanger — te veel vir 'n mailto:-skakel. Gebruik eerder Kopieer Adresse.",
-    "other": "Hierdie lys het {{count}} ontvangers — te veel vir 'n mailto:-skakel. Gebruik eerder Kopieer Adresse."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Te veel ontvangers vir e-poskliënt ({{count}} > {{max}}). Gebruik eerder Kopieer Adresse.",
-    "other": "Te veel ontvangers vir e-poskliënt ({{count}} > {{max}}). Gebruik eerder Kopieer Adresse."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} minuut oor",
-    "other": "{{count}} minute oor"
+    "one": "",
+    "other": ""
   }
 }

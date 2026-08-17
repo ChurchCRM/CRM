@@ -4309,5 +4309,6 @@
     "Invalid payment data": "",
     "No release notes available.": "",
     "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "",
-    "What you'll gain": ""
+    "What you'll gain": "",
+    "Failed to get deposit count": ""
 }

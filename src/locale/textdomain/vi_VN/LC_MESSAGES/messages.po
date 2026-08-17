@@ -17457,6 +17457,11 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Email chưa được cấu hình. Vui lòng cấu hình cài đặt SMTP trong Cài đặt hệ thống."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Đã gửi email đến %d gia đình."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Vui lòng nhập địa chỉ đường phố trước."
 
@@ -17523,6 +17528,11 @@ msgstr "Không tìm thấy khoản thanh toán nào cho các khoản nộp đã 
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Không có mã khoản nộp hợp lệ nào được cung cấp"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "Đã gửi email PDF thành công đến %d gia đình."
 
 #: 
 msgid "Partial Send"
@@ -17627,4 +17637,170 @@ msgstr "hàng đã chọn"
 #: 
 msgid "rows selected"
 msgstr "hàng đã chọn"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Sinh nhật & Ngày kỷ niệm"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Giá trị ước tính %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Giá đặt tối thiểu %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Chưa có tùy chọn \"%s\" nào. Vui lòng thêm các bản ghi liên quan trước."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Chưa có tùy chọn \"%s\" nào được cấu hình. Vui lòng thêm các bản ghi liên quan trước."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Những người có sinh nhật hoặc ngày kỷ niệm hôn nhân trong một tháng cụ thể"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Tháng bạn muốn tra cứu sinh nhật và ngày kỷ niệm."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Tháng kỷ niệm hôn nhân bạn muốn tra cứu hồ sơ."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Tổng tất cả giao dịch mua: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Tổng giao dịch mua: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Ngày kỷ niệm hôn nhân"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Những người có ngày kỷ niệm hôn nhân trong một tháng cụ thể"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Đã xảy ra lỗi. Vui lòng thử lại."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Bạn có chắc muốn xóa quỹ này không?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Không thể xóa: quỹ có các cam kết dâng hiến liên quan"
+
+#: 
+msgid "Delete Fund"
+msgstr "Xóa Quỹ"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Hướng phải là 'up' hoặc 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Chỉnh sửa Quỹ Dâng hiến"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Không thể sắp xếp lại quỹ dâng hiến"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Đã thêm quỹ thành công."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Đã xóa quỹ thành công."
+
+#: 
+msgid "Fund name"
+msgstr "Tên quỹ"
+
+#: 
+msgid "Fund name is required."
+msgstr "Tên quỹ là bắt buộc."
+
+#: 
+msgid "Fund order updated."
+msgstr "Đã cập nhật thứ tự quỹ."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Đã lưu quỹ thành công."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Chưa có quỹ nào được thêm. Hãy sử dụng biểu mẫu bên trên để thêm quỹ đầu tiên."
+
+#: 
+msgid "Optional description"
+msgstr "Mô tả tùy chọn"
+
+#: 
+msgid "Private Calendar"
+msgstr "Lịch Riêng tư"
+
+#: 
+msgid "Public Calendar"
+msgstr "Lịch Công khai"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Nâng cao: Cài đặt một phiên bản cụ thể thay thế"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Theo mặc định, trình hướng dẫn nâng cấp lên phiên bản mới nhất. Bạn có thể chọn một phiên bản cụ thể bên dưới thay thế."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Không thể chỉnh sửa khoản thanh toán trong một đợt nộp đã đóng"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Tải xuống & Áp dụng {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Mỗi bản phát hành ChurchCRM đều bao gồm các bản vá bảo mật. Chúng tôi khuyến nghị luôn nâng cấp lên phiên bản mới nhất."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Không thể giải mã yêu cầu thanh toán"
+
+#: 
+msgid "Full release notes"
+msgstr "Ghi chú phát hành đầy đủ"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Dữ liệu thanh toán không hợp lệ"
+
+#: 
+msgid "No release notes available."
+msgstr "Không có ghi chú phát hành nào."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Cảnh báo: {{chosen}} thiếu các bản vá bảo mật có trong {{latest}}. Chỉ tiếp tục nếu bạn có lý do cụ thể."
+
+#: 
+msgid "What you'll gain"
+msgstr "Những gì bạn sẽ nhận được"
 

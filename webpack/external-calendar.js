@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const dateStr = event.start ? cal.formatDate(event.start, dateFmt) : "";
           const startTime = event.start ? cal.formatDate(event.start, timeFmt) : "";
           const endTime = event.end ? cal.formatDate(event.end, timeFmt) : "";
-          timeStr = dateStr + (startTime ? ", " + startTime : "") + (endTime ? " \u2013 " + endTime : "");
+          timeStr = `${dateStr}${startTime ? `, ${startTime}` : ""}${endTime ? ` \u2013 ${endTime}` : ""}`;
         }
         document.getElementById("eventDetailTimeText").textContent = timeStr;
 

@@ -554,6 +554,37 @@ window.CRM.dashboard = {
       document.getElementById("EventsNumber").innerText = data.Events;
     });
   },
+
+  /**
+   * Load open deposit count once on page load
+   * Used by Finance menu badge to show real-time count of open deposits
+   */
+  loadOpenDepositCount: () => {
+    const el = document.getElementById("openDeposits");
+    if (!el) return; // Finance menu not present for this user
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "deposits/open-count",
+      suppressErrorDialog: true,
+    }).done((data) => {
+      el.innerText = data.count;
+    });
+  },
+
+  /**
+   * Load active fundraiser count once on page load for menu badge.
+   * Replaces session-cached count, ensuring always fresh data.
+   */
+  loadFundraiserCount: () => {
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "fundraisers/active-count",
+      suppressErrorDialog: true,
+    }).done((data) => {
+      const el = document.getElementById("activeFundraisers");
+      if (el) el.innerText = data.count;
+    });
+  },
 };
 
 /**

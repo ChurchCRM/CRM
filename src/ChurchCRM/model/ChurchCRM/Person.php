@@ -766,13 +766,30 @@ class Person extends BasePerson implements PhotoInterface
             return false;
         }
         $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+
+        if (!$now instanceof \DateTimeImmutable) {
+            return false;
+        }
+
         $age = date_diff($now, $birthDate);
 
         if ($age->y < 1) {
-            return sprintf(ngettext('%d month old', '%d months old', $age->m), $age->m);
+            $monthStr = ngettext('%d month old', '%d months old', $age->m);
+            try {
+                return sprintf($monthStr, $age->m);
+            } catch (\Throwable $e) {
+                error_log('Age formatting failed for locale string "' . $monthStr . '": ' . $e->getMessage());
+                return $age->m . ' ' . trim(preg_replace('/%\d*\$?[sdifuoxX]\s*/u', '', $monthStr) ?? $monthStr);
+            }
         }
 
-        return sprintf(ngettext('%d year old', '%d years old', $age->y), $age->y);
+        $yearStr = ngettext('%d year old', '%d years old', $age->y);
+        try {
+            return sprintf($yearStr, $age->y);
+        } catch (\Throwable $e) {
+            error_log('Age formatting failed for locale string "' . $yearStr . '": ' . $e->getMessage());
+            return $age->y . ' ' . trim(preg_replace('/%\d*\$?[sdifuoxX]\s*/u', '', $yearStr) ?? $yearStr);
+        }
     }
 
     public function getNumericAge(): int

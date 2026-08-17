@@ -1,61 +1,22 @@
 {
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
-  "Birthdays & Anniversaries": "Cumpleaños y aniversarios",
-  "Estimated value %s.": "Valor estimado %s.",
-  "Minimum bid %s.": "Oferta mínima %s.",
-  "No \"%s\" options are available yet. Add the relevant records first.": "Aún no hay opciones de \"%s\" disponibles. Agregue primero los registros relevantes.",
-  "No \"%s\" options are configured yet. Add the relevant records first.": "Aún no hay opciones de \"%s\" configuradas. Agregue primero los registros relevantes.",
-  "People with birthdays or wedding anniversaries in a particular month": "Personas con cumpleaños o aniversarios de matrimonio en un mes determinado",
-  "The month for which you would like birthdays and anniversaries returned.": "El mes para el que desea obtener cumpleaños y aniversarios.",
-  "The wedding anniversary month for which you would like records returned.": "El mes de aniversario de matrimonio para el que desea obtener registros.",
-  "Total of all purchases: %s": "Total de todas las compras: %s",
-  "Total purchases: %s": "Total de compras: %s",
-  "Wedding Anniversaries": "Aniversarios de matrimonio",
-  "People with wedding anniversaries in a particular month": "Personas con aniversarios de matrimonio en un mes determinado",
-  "An error occurred. Please try again.": "Ocurrió un error. Por favor, inténtelo de nuevo.",
-  "Are you sure you want to delete this fund?": "¿Está seguro de que desea eliminar este fondo?",
-  "Cannot delete: fund has associated pledges": "No se puede eliminar: el fondo tiene compromisos de ofrenda asociados",
-  "Delete Fund": "Eliminar fondo",
-  "Direction must be 'up' or 'down'.": "La dirección debe ser 'arriba' o 'abajo'.",
-  "Edit Donation Fund": "Editar fondo de donaciones",
-  "Failed to reorder donation fund": "Error al reordenar el fondo de donaciones",
-  "Fund added successfully.": "Fondo agregado exitosamente.",
-  "Fund deleted successfully.": "Fondo eliminado exitosamente.",
-  "Fund name": "Nombre del fondo",
-  "Fund name is required.": "El nombre del fondo es obligatorio.",
-  "Fund order updated.": "Orden del fondo actualizado.",
-  "Fund saved successfully.": "Fondo guardado exitosamente.",
-  "No funds have been added yet. Use the form above to add the first fund.": "Aún no se han agregado fondos. Use el formulario de arriba para agregar el primer fondo.",
-  "Optional description": "Descripción opcional",
-  "Private Calendar": "Calendario privado",
-  "Public Calendar": "Calendario público",
-  "Advanced: Install a specific version instead": "Avanzado: instalar una versión específica en su lugar",
-  "By default the wizard upgrades to the latest version. You may instead choose a specific version below.": "De forma predeterminada, el asistente actualiza a la versión más reciente. Puede elegir una versión específica a continuación.",
-  "Cannot edit a payment in a closed deposit": "No se puede editar un pago en un depósito cerrado",
-  "Download & Apply {{version}}": "Descargar y aplicar {{version}}",
-  "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.": "Cada versión de ChurchCRM incluye correcciones de seguridad. Recomendamos encarecidamente actualizar siempre a la versión más reciente.",
-  "Failed to decode payment request": "Error al decodificar la solicitud de pago",
-  "Full release notes": "Notas completas de la versión",
-  "Invalid payment data": "Datos de pago inválidos",
-  "No release notes available.": "No hay notas de versión disponibles.",
-  "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Advertencia: {{chosen}} no incluye las correcciones de seguridad presentes en {{latest}}. Proceda solo si tiene una razón específica.",
-  "What you'll gain": "Lo que obtendrá",
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "Se copió {{count}} feligrés",
-    "other": "Se copiaron {{count}} feligreses"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Esta lista tiene {{count}} destinatario — demasiados para un enlace mailto:. Use Copiar direcciones en su lugar.",
-    "other": "Esta lista tiene {{count}} destinatarios — demasiados para un enlace mailto:. Use Copiar direcciones en su lugar."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar direcciones en su lugar.",
-    "other": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar direcciones en su lugar."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min restante",
-    "other": "{{count}} min restantes"
+    "one": "",
+    "other": ""
   }
 }

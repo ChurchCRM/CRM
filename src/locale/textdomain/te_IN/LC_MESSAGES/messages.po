@@ -17609,3 +17609,169 @@ msgstr "వరుస ఎంచుకోబడింది"
 msgid "rows selected"
 msgstr "వరుసలు ఎంచుకోబడ్డాయి"
 
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "పుట్టినరోజులు & వివాహ వార్షికోత్సవాలు"
+
+#: 
+msgid "Estimated value %s."
+msgstr "అంచనా విలువ %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "కనీస వేలం %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "ఇంకా \"%s\" ఎంపికలు అందుబాటులో లేవు. ముందు సంబంధిత రికార్డులను జోడించండి."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "ఇంకా \"%s\" ఎంపికలు కాన్ఫిగర్ చేయబడలేదు. ముందు సంబంధిత రికార్డులను జోడించండి."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "నిర్దిష్ట నెలలో పుట్టినరోజులు లేదా వివాహ వార్షికోత్సవాలు ఉన్న వ్యక్తులు"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "మీరు పుట్టినరోజులు మరియు వార్షికోత్సవాలు తిరిగి పొందాలనుకుంటున్న నెల."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "మీరు రికార్డులు తిరిగి పొందాలనుకుంటున్న వివాహ వార్షికోత్సవ నెల."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "అన్ని కొనుగోళ్ల మొత్తం: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "మొత్తం కొనుగోళ్లు: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "వివాహ వార్షికోత్సవాలు"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "నిర్దిష్ట నెలలో వివాహ వార్షికోత్సవాలు ఉన్న వ్యక్తులు"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "ఒక లోపం సంభవించింది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "మీరు నిజంగా ఈ నిధిని తొలగించాలనుకుంటున్నారా?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "తొలగించలేరు: నిధికి సంబంధిత నిబద్ధతలు ఉన్నాయి"
+
+#: 
+msgid "Delete Fund"
+msgstr "నిధిని తొలగించు"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "దిశ 'up' లేదా 'down' అయి ఉండాలి."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "విరాళ నిధిని సవరించు"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "విరాళ నిధిని పునర్వ్యవస్థీకరించడం విఫలమైంది"
+
+#: 
+msgid "Fund added successfully."
+msgstr "నిధి విజయవంతంగా జోడించబడింది."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "నిధి విజయవంతంగా తొలగించబడింది."
+
+#: 
+msgid "Fund name"
+msgstr "నిధి పేరు"
+
+#: 
+msgid "Fund name is required."
+msgstr "నిధి పేరు అవసరం."
+
+#: 
+msgid "Fund order updated."
+msgstr "నిధి క్రమం నవీకరించబడింది."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "నిధి విజయవంతంగా సేవ్ చేయబడింది."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "ఇంకా నిధులు జోడించబడలేదు. మొదటి నిధిని జోడించడానికి పై ఫారమ్‌ను ఉపయోగించండి."
+
+#: 
+msgid "Optional description"
+msgstr "ఐచ్ఛిక వివరణ"
+
+#: 
+msgid "Private Calendar"
+msgstr "ప్రైవేట్ క్యాలెండర్"
+
+#: 
+msgid "Public Calendar"
+msgstr "పబ్లిక్ క్యాలెండర్"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "అధునాతన: బదులుగా నిర్దిష్ట వెర్షన్‌ను ఇన్‌స్టాల్ చేయండి"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "డిఫాల్ట్‌గా విజార్డ్ తాజా వెర్షన్‌కు అప్‌గ్రేడ్ చేస్తుంది. మీరు బదులుగా దిగువ నిర్దిష్ట వెర్షన్‌ను ఎంచుకోవచ్చు."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "మూసివేసిన డిపాజిట్‌లో చెల్లింపును సవరించలేరు"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "{{version}}ని డౌన్‌లోడ్ చేసి వర్తింపజేయి"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "ప్రతి ChurchCRM విడుదలలో భద్రతా సవరణలు ఉంటాయి. మేము ఎల్లప్పుడూ తాజా వెర్షన్‌కు అప్‌గ్రేడ్ చేయాలని గట్టిగా సిఫార్సు చేస్తున్నాము."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "చెల్లింపు అభ్యర్థనను డీకోడ్ చేయడం విఫలమైంది"
+
+#: 
+msgid "Full release notes"
+msgstr "పూర్తి విడుదల గమనికలు"
+
+#: 
+msgid "Invalid payment data"
+msgstr "చెల్లని చెల్లింపు డేటా"
+
+#: 
+msgid "No release notes available."
+msgstr "విడుదల గమనికలు అందుబాటులో లేవు."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "హెచ్చరిక: {{chosen}}లో {{latest}}లో చేర్చిన భద్రతా సవరణలు లేవు. మీకు నిర్దిష్ట కారణం ఉంటేనే కొనసాగండి."
+
+#: 
+msgid "What you'll gain"
+msgstr "మీరు పొందేది"
+
