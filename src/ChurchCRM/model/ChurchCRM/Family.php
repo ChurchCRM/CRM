@@ -136,7 +136,13 @@ class Family extends BaseFamily implements PhotoInterface
      */
     public function getLivingPeople(): array
     {
-        return array_filter($this->getPeople(), fn ($p) => !$p->isDeceased());
+        $living = [];
+        foreach ($this->getPeople() as $person) {
+            if (!$person->isDeceased()) {
+                $living[] = $person;
+            }
+        }
+        return $living;
     }
 
     public function getHeadPeople(): array
