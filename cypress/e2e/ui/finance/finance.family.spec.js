@@ -16,32 +16,40 @@ describe("Finance Family", () => {
         //
         // cy.request reaches the real server through the current session and updates
         // the DB before the page visits below fire their own XHRs.
-        // failOnStatusCode: false silently ignores 401s (user 3 cannot write user 1's
-        // settings, and vice-versa in the contaminated-session case).
+        // failOnStatusCode: false lets us inspect the status ourselves — we only
+        // tolerate 200 (success) and 401 (cross-user write rejected); anything else
+        // (4xx/5xx server error) throws so CI failures remain diagnosable.
+        const allowCrossUserReject = (url) => (res) => {
+            if (res.status !== 200 && res.status !== 401) {
+                throw new Error(
+                    `Unexpected status ${res.status} for POST ${url}`,
+                );
+            }
+        };
         cy.request({
             method: "POST",
             url: "/api/user/1/setting/finance.show.pledges",
             body: { value: "true" },
             failOnStatusCode: false,
-        });
+        }).then(allowCrossUserReject("/api/user/1/setting/finance.show.pledges"));
         cy.request({
             method: "POST",
             url: "/api/user/1/setting/finance.show.payments",
             body: { value: "true" },
             failOnStatusCode: false,
-        });
+        }).then(allowCrossUserReject("/api/user/1/setting/finance.show.payments"));
         cy.request({
             method: "POST",
             url: "/api/user/3/setting/finance.show.pledges",
             body: { value: "true" },
             failOnStatusCode: false,
-        });
+        }).then(allowCrossUserReject("/api/user/3/setting/finance.show.pledges"));
         cy.request({
             method: "POST",
             url: "/api/user/3/setting/finance.show.payments",
             body: { value: "true" },
             failOnStatusCode: false,
-        });
+        }).then(allowCrossUserReject("/api/user/3/setting/finance.show.payments"));
 
         // Intercept the in-page setting POSTs that FamilyView.js fires on every
         // page load.  The DB is already correct (above); intercepting them ensures
@@ -66,7 +74,7 @@ describe("Finance Family", () => {
         cy.contains("Darren Campbell");
 
         // Finance section should be visible as Giving tab with pill filters
-        cy.contains("Giving");
+        cy.contains("Giving").should("be.visible");
         cy.get(".pledge-type-pill").should("have.length", 3);
         cy.get("#giving-fy-select").should("exist");
 
@@ -117,7 +125,7 @@ describe("Finance Family", () => {
         cy.contains("Family Profile");
 
         // Giving tab is present
-        cy.contains("Giving");
+        cy.contains("Giving").should("be.visible");
 
         // Same gate as test 1 — FY options populated by initComplete.
         cy.get("#giving-fy-select option", { timeout: 30000 }).should(
