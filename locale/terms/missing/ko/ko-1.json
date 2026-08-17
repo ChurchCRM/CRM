@@ -1,22 +1,22 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
-  "Failed to get deposit count": "",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "Failed to get deposit count": "입금 건수를 가져오지 못했습니다",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}명의 교인을 복사했습니다",
+    "other": "{{count}}명의 교인을 복사했습니다"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "이 목록에는 {{count}}명의 수신자가 있어 mailto: 링크로 사용하기에 너무 많습니다. 대신 주소 복사를 사용하세요.",
+    "other": "이 목록에는 {{count}}명의 수신자가 있어 mailto: 링크로 사용하기에 너무 많습니다. 대신 주소 복사를 사용하세요."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "이메일 클라이언트에 수신자가 너무 많습니다 ({{count}} > {{max}}). 대신 주소 복사를 사용하세요.",
+    "other": "이메일 클라이언트에 수신자가 너무 많습니다 ({{count}} > {{max}}). 대신 주소 복사를 사용하세요."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}분 남음",
+    "other": "{{count}}분 남음"
   }
 }
