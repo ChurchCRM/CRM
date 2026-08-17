@@ -60,6 +60,20 @@ function cleanup() {
       modalEl.classList.remove("fade", "show");
       modalEl.removeAttribute("role");
     }
+    // Bootstrap's Modal#dispose() disposes the backdrop, deactivates the
+    // focus trap, then calls super.dispose() — in that order. If disposing
+    // mid-transition throws partway through (see comment below), the focus
+    // trap's document-level focusin/keydown listeners never get removed and
+    // stay bound to this now-detached modal element. The next modal's focus
+    // then trips that stale listener, which reaches into removed DOM and can
+    // call .focus() on null (flaky — depends on transition timing). Deactivate
+    // the focus trap independently first so it always runs regardless of
+    // what dispose() does.
+    try {
+      currentModal._focustrap?.deactivate();
+    } catch (_e) {
+      // ignore — best-effort cleanup
+    }
     try {
       currentModal.dispose();
     } catch (_e) {
