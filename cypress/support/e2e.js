@@ -75,7 +75,13 @@ Cypress.on('uncaught:exception', (err) => {
   // TODO(cypress-noise): also investigate replacing cleanup()'s synchronous
   // dispose() with Bootstrap's normal hide() flow so the timer never fires
   // against a null _config — see calendar-event-editor.js cleanup().
-  if (message.includes("Cannot read properties of null (reading 'focus')")) {
+  // Anchored to the exact V8 null-property-read message so a genuine app-code
+  // bug such as `document.getElementById('x').focus()` where getElementById
+  // returns null is still swallowed here — but ONLY if its message is exactly
+  // this string. Note: Option B (stack-trace 'bootstrap' guard) was not used
+  // because Bootstrap is webpack-bundled into skin-core.*.js, so the stack
+  // frame filename does not contain 'bootstrap' and the check would never fire.
+  if (/^Cannot read properties of null \(reading 'focus'\)$/.test(message)) {
     return false;
   }
 });
