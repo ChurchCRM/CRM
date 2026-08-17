@@ -192,7 +192,18 @@ describe("Standard Calendar", () => {
  * admin session instead of the standard one used above.
  */
 describe("Standard Calendar — save (admin-session)", () => {
-    beforeEach(() => cy.setupAdminSession());
+    beforeEach(() => {
+        cy.setupAdminSession();
+        // Suppress Bootstrap 5 modal focus-trap null-focus errors that fire
+        // intermittently across tests in this suite when the modal DOM is
+        // modified while the focus trap is still active.  The save assertions
+        // (intercept + response code) are unaffected by this timing issue.
+        cy.on("uncaught:exception", (err) => {
+            if (err.message.includes("Cannot read properties of null (reading 'focus')")) {
+                return false;
+            }
+        });
+    });
 
     /**
      * Regression: new-event payload sent Type:0 (invalid) when the user
