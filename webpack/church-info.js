@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const countrySelectEl = document.getElementById("sChurchCountry");
-    if (countrySelectEl && countrySelectEl.value) {
+    if (countrySelectEl?.value) {
       // Use the display name (option text), not the country code, since
       // Nominatim's free-text query works better with a readable name.
       parts.push(countrySelectEl.selectedOptions?.[0]?.text || "");

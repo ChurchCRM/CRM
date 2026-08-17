@@ -111,7 +111,7 @@ function initCurrencyPresets() {
   }
 }
 function flagEmoji(countryCode) {
-  if (!countryCode || countryCode.length !== 2) {
+  if (countryCode?.length !== 2) {
     return "🌐";
   }
   const base = 0x1f1e6;
