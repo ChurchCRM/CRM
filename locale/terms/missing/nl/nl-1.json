@@ -13,6 +13,7 @@
     "one": "PDF succesvol gemaild naar %d gezin.|PDF succesvol gemaild naar %d gezinnen.",
     "other": ""
   },
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""

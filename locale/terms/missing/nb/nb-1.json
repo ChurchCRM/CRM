@@ -12,6 +12,7 @@
     "one": "PDF ble sendt på e-post til %d familie.|PDF ble sendt på e-post til %d familier.",
     "other": ""
   },
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""
