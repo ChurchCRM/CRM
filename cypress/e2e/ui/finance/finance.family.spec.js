@@ -101,7 +101,7 @@ describe("Finance Family", () => {
         // so a short timeout is sufficient.  30 s used defensively for CI latency.
         cy.contains("#pledge-payment-v2-table", "Music Ministry", {
             timeout: 30000,
-        });
+        }).should("be.visible");
 
         // Type filter pills: client-side filter on column 3 (independent of FY)
         cy.get('.pledge-type-pill[data-filter="Pledge"]').click();
@@ -130,6 +130,6 @@ describe("Finance Family", () => {
 
         cy.contains("#pledge-payment-v2-table", "New Building Fund", {
             timeout: 30000,
-        });
+        }).should("be.visible");
     });
 });
