@@ -1,9 +1,9 @@
 name: Nightly Tests
 
 # Consolidated nightly workflow covering all test types that are too heavy or
-# slow to run on every push/PR.  It replaces the separate upgrade-tests.yml
-# nightly cadence; upgrade-tests.yml is intentionally kept alive for the
-# on-release trigger (see that file's header comment).
+# slow to run on every push/PR. This workflow supersedes upgrade-tests.yml
+# (which is deleted). The on-release trigger for upgrade tests is now
+# included in this file's on: block below.
 #
 # What this workflow covers
 # ─────────────────────────
@@ -30,7 +30,7 @@ name: Nightly Tests
 # scheduled and manual dispatch triggers — you always want the latest code).
 
 concurrency:
-  group: ${{ github.workflow }}
+  group: ${{ github.workflow }}-${{ github.event_name }}
   cancel-in-progress: true
 
 permissions:
@@ -944,6 +944,7 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   nightly-summary:
     needs:
+      - build
       - test-root
       - test-subdir
       - test-new-system
@@ -960,6 +961,7 @@ jobs:
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "| Job group | Result |" >> $GITHUB_STEP_SUMMARY
         echo "|-----------|--------|" >> $GITHUB_STEP_SUMMARY
+        echo "| Build (PHP 8.4 + 8.5 images) | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| PHP 8.5 root (api / admin-ui / ui ×3) | ${{ needs.test-root.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| PHP 8.5 subdir (api / admin-ui / ui ×3) | ${{ needs.test-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| PHP 8.5 new-system setup (root) | ${{ needs.test-new-system.result }} |" >> $GITHUB_STEP_SUMMARY
@@ -970,7 +972,8 @@ jobs:
         echo "" >> $GITHUB_STEP_SUMMARY
         # Determine overall status — check for non-success so skipped/cancelled
         # jobs (e.g. when build fails) are also reported as failures.
-        if [[ "${{ needs.test-root.result }}" != "success" || \
+        if [[ "${{ needs.build.result }}" != "success" || \
+              "${{ needs.test-root.result }}" != "success" || \
               "${{ needs.test-subdir.result }}" != "success" || \
               "${{ needs.test-new-system.result }}" != "success" || \
               "${{ needs.test-new-system-subdir.result }}" != "success" || \
