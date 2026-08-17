@@ -58,17 +58,6 @@ function cleanup() {
     const elToWatch = modalEl;
 
     if (modalEl) {
-      // Bootstrap's _showElement() queues a transitionComplete callback on the
-      // dialog via executeAfterTransition(). If dispose() is called before
-      // that callback fires, dispose() nulls this._config and the callback
-      // throws "Cannot read properties of null (reading 'focus')". Force-fire
-      // the dialog's transitionend event now so Bootstrap's callback runs
-      // (while _config is still set) before we null it out with dispose().
-      const dialog = modalEl.querySelector(".modal-dialog");
-      if (dialog) {
-        dialog.dispatchEvent(new Event("transitionend", { bubbles: true }));
-      }
-      // Remove fade/show so no further CSS transitions are triggered.
       modalEl.classList.remove("fade", "show");
       modalEl.removeAttribute("role");
     }
