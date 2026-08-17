@@ -1,7 +1,5 @@
 {
-  "Data": "Data",
   "CSV": "CSV",
-  "N/A": "N/A",
   "OFX": "OFX",
   "Failed to get deposit count": "Gagal mendapatkan jumlah setoran",
   "Copied {{count}} members": {

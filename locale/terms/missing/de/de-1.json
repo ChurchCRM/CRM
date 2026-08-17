@@ -1,7 +1,6 @@
 {
   "Code": "Code",
   "CSV": "CSV",
-  "N/A": "N/A",
   "OFX": "OFX",
   "Failed to get deposit count": "Einlagenzählung konnte nicht abgerufen werden",
   "Copied {{count}} members": {

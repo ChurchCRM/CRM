@@ -1,6 +1,5 @@
 {
   "CSV": "CSV",
-  "N/A": "N/A",
   "OFX": "OFX",
   "Failed to get deposit count": "Neuspješno dohvaćanje broja depozita",
   "Copied {{count}} members": {

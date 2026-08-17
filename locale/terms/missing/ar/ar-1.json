@@ -1,6 +1,5 @@
 {
   "CSV": "CSV",
-  "N/A": "N/A",
   "OFX": "OFX",
   "Failed to get deposit count": "فشل في الحصول على عدد الإيداعات",
   "Copied {{count}} members": {

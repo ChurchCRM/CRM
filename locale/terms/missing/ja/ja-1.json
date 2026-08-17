@@ -1,6 +1,5 @@
 {
   "CSV": "CSV",
-  "N/A": "N/A",
   "OFX": "OFX",
   "Failed to get deposit count": "入金件数の取得に失敗しました",
   "Copied {{count}} members": {

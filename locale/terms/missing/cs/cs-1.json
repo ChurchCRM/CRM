@@ -1,8 +1,6 @@
 {
   "Fundraising": "Fundraising",
-  "Data": "Data",
   "CSV": "CSV",
-  "N/A": "N/A",
   "OFX": "OFX",
   "Failed to get deposit count": "Nepodařilo se získat počet vkladů",
   "Copied {{count}} members": {

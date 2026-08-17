@@ -3,7 +3,6 @@
   "Signature": "Signature",
   "Auto": "Auto",
   "CSV": "CSV",
-  "N/A": "N/A",
   "OFX": "OFX",
   "Failed to get deposit count": "Impossible d'obtenir le nombre de dépôts",
   "Copied {{count}} members": {

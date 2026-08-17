@@ -2,7 +2,6 @@
   "Check-out": "Check-out",
   "Auto": "Auto",
   "CSV": "CSV",
-  "N/A": "N/A",
   "OFX": "OFX",
   "Failed to get deposit count": "Impossibile ottenere il conteggio dei depositi",
   "Copied {{count}} members": {
