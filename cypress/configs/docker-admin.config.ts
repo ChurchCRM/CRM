@@ -2,6 +2,18 @@ import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
 
 import base from './base.config'
+
+/**
+ * Cypress config for the admin UI test suite (cypress/e2e/ui-admin/).
+ *
+ * Admin specs are the heaviest in the project (system-upgrade, church-info,
+ * user-editor, etc.) and are split from the main UI suite so CI can run them
+ * in a dedicated parallel matrix leg, shortening the wall-clock time of the
+ * main UI leg.
+ *
+ * npm run test:ui-admin
+ * CI job: test-type.name == "admin-ui" in test-root / test-subdir matrices
+ */
 export default defineConfig({
   chromeWebSecurity: false,
   video: false,
@@ -38,13 +50,9 @@ export default defineConfig({
   numTestsKeptInMemory: 0,
   e2e: {
     ...base.e2e,
-    // Admin UI specs (cypress/e2e/ui-admin) run as a dedicated parallel CI job
-    // (docker-admin.config.ts / npm run test:ui-admin) and are intentionally
-    // excluded here, mirroring how new-system specs are excluded from this config.
-    specPattern: [
-      'cypress/e2e/api/**/*.spec.js',
-      'cypress/e2e/ui/**/*.spec.js'
-    ],
+    // Admin UI specs live here; the main UI suite (docker.config.ts) excludes
+    // this directory so both suites can run as parallel CI matrix legs.
+    specPattern: ['cypress/e2e/ui-admin/**/*.spec.js'],
     setupNodeEvents(on, config) {
       const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
       installLogsPrinter(on, {
