@@ -1,8 +1,14 @@
 name: Build, Test and Package
 
 concurrency:
-  # On PRs: cancel previous run for same PR; on pushes: allow each branch to run independently
-  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || github.ref }}
+  # PRs: de-dup by PR number (cancel superseded runs).
+  # Pushes: per-commit group so back-to-back master/branch pushes all run
+  # concurrently without waiting or cancelling each other.
+  # Release upload serialisation is handled at the package job level.
+  group: >-
+    ${{ github.event_name == 'pull_request'
+        && format('pr-{0}', github.event.number)
+        || format('{0}-{1}', github.workflow, github.sha) }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
@@ -79,8 +85,10 @@ on:
 
 jobs:
   # Determine which PHP versions to test based on trigger
-  # PRs: 8.4 only (fast feedback)
-  # All other events (push, schedule, workflow_dispatch): 8.4 + 8.5 (full coverage)
+  # matrix decision:
+  #   workflow_dispatch → ["8.4","8.5"]  (manual full-matrix sweep)
+  #   everything else   → ["8.4"]        (push, PR, schedule — 8.5 nightly
+  #                                        coverage lives in nightly.yml, PR #9541)
   configure:
     runs-on: ubuntu-latest
     outputs:
@@ -88,11 +96,10 @@ jobs:
     steps:
     - id: set-matrix
       run: |
-        if [ "${{ github.event_name }}" = "pull_request" ]; then
-          echo 'php-versions=["8.4"]' >> $GITHUB_OUTPUT
-        else
-          echo 'php-versions=["8.4","8.5"]' >> $GITHUB_OUTPUT
-        fi
+        case "${{ github.event_name }}" in
+          workflow_dispatch) echo 'php-versions=["8.4","8.5"]' >> $GITHUB_OUTPUT ;;
+          *)                         echo 'php-versions=["8.4"]'        >> $GITHUB_OUTPUT ;;
+        esac
 
   build:
     needs: configure
@@ -103,8 +110,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v7
-      with:
-        fetch-depth: 0
 
     - name: Set up Node.js
       uses: actions/setup-node@v7
@@ -202,12 +207,23 @@ jobs:
           - name: api
             spec: "cypress/e2e/api/**/*.spec.js"
             config: "cypress/configs/docker.config.ts"
-          - name: ui
-            spec: "cypress/e2e/ui/**/*.spec.js"
-            config: "cypress/configs/docker.config.ts"
           - name: admin-ui
             spec: "cypress/e2e/ui-admin/**/*.spec.js"
             config: "cypress/configs/docker-admin.config.ts"
+        include:
+          # ui specs sharded 3× (PHP 8.4 only; 8.5 ui covered by nightly.yml)
+          - php-version: "8.4"
+            test-type: { name: ui-shard-0, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: 0
+            shard-total: 3
+          - php-version: "8.4"
+            test-type: { name: ui-shard-1, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: 1
+            shard-total: 3
+          - php-version: "8.4"
+            test-type: { name: ui-shard-2, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: 2
+            shard-total: 3
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -217,6 +233,13 @@ jobs:
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
+
+    - name: Cache Cypress binary
+      uses: actions/cache@v6
+      with:
+        path: ~/.cache/Cypress
+        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-cypress-
 
     - name: Install npm dependencies
       run: npm ci
@@ -256,6 +279,9 @@ jobs:
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP ${{ matrix.php-version }})
       run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
+      env:
+        SPLIT: ${{ matrix.shard-total || '' }}
+        SPLIT_INDEX: ${{ matrix.split-index || '' }}
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -266,7 +292,7 @@ jobs:
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
-      if: always()
+      if: failure()
       uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-${{ github.run_id }}
@@ -310,12 +336,23 @@ jobs:
           - name: api
             spec: "cypress/e2e/api/**/*.spec.js"
             config: "cypress/configs/docker.config.ts"
-          - name: ui
-            spec: "cypress/e2e/ui/**/*.spec.js"
-            config: "cypress/configs/docker.config.ts"
           - name: admin-ui
             spec: "cypress/e2e/ui-admin/**/*.spec.js"
             config: "cypress/configs/docker-admin.config.ts"
+        include:
+          # ui specs sharded 3× (PHP 8.4 only; 8.5 ui covered by nightly.yml)
+          - php-version: "8.4"
+            test-type: { name: ui-shard-0, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: 0
+            shard-total: 3
+          - php-version: "8.4"
+            test-type: { name: ui-shard-1, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: 1
+            shard-total: 3
+          - php-version: "8.4"
+            test-type: { name: ui-shard-2, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: 2
+            shard-total: 3
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -325,6 +362,13 @@ jobs:
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
+
+    - name: Cache Cypress binary
+      uses: actions/cache@v6
+      with:
+        path: ~/.cache/Cypress
+        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-cypress-
 
     - name: Install npm dependencies
       run: npm ci
@@ -366,6 +410,8 @@ jobs:
       run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
+        SPLIT: ${{ matrix.shard-total || '' }}
+        SPLIT_INDEX: ${{ matrix.split-index || '' }}
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -376,7 +422,7 @@ jobs:
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
-      if: always()
+      if: failure()
       uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-${{ github.run_id }}
@@ -480,7 +526,7 @@ jobs:
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
-      if: always()
+      if: failure()
       uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-php${{ matrix.php-version }}-new-system-${{ github.run_id }}
@@ -586,7 +632,7 @@ jobs:
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
-      if: always()
+      if: failure()
       uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-php${{ matrix.php-version }}-new-system-subdir-${{ github.run_id }}
@@ -636,6 +682,13 @@ jobs:
         node-version-file: '.nvmrc'
         cache: 'npm'
 
+    - name: Cache Cypress binary
+      uses: actions/cache@v6
+      with:
+        path: ~/.cache/Cypress
+        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-cypress-
+
     - name: Install npm dependencies
       run: npm ci
 
@@ -684,7 +737,7 @@ jobs:
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
-      if: always()
+      if: failure()
       uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-php${{ matrix.php-version }}-root-locale-${{ github.run_id }}
@@ -733,6 +786,13 @@ jobs:
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
+
+    - name: Cache Cypress binary
+      uses: actions/cache@v6
+      with:
+        path: ~/.cache/Cypress
+        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-cypress-
 
     - name: Install npm dependencies
       run: npm ci
@@ -784,7 +844,7 @@ jobs:
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
-      if: always()
+      if: failure()
       uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-php${{ matrix.php-version }}-subdir-locale-${{ github.run_id }}
@@ -842,6 +902,13 @@ jobs:
         node-version-file: '.nvmrc'
         cache: 'npm'
 
+    - name: Cache Cypress binary
+      uses: actions/cache@v6
+      with:
+        path: ~/.cache/Cypress
+        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-cypress-
+
     - name: Install npm dependencies
       run: npm ci
 
@@ -890,7 +957,7 @@ jobs:
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
-      if: always()
+      if: failure()
       uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-php${{ matrix.php-version }}-root-locale-full-${{ github.run_id }}
@@ -948,6 +1015,13 @@ jobs:
         node-version-file: '.nvmrc'
         cache: 'npm'
 
+    - name: Cache Cypress binary
+      uses: actions/cache@v6
+      with:
+        path: ~/.cache/Cypress
+        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-cypress-
+
     - name: Install npm dependencies
       run: npm ci
 
@@ -998,7 +1072,7 @@ jobs:
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
-      if: always()
+      if: failure()
       uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-php${{ matrix.php-version }}-subdir-locale-full-${{ github.run_id }}
@@ -1029,6 +1103,11 @@ jobs:
 
   package:
     needs: [build, test-root, test-subdir, test-new-system, test-new-system-subdir, test-locale-root, test-locale-subdir, test-locale-full-root, test-locale-full-subdir]
+    # Serialize release uploads per branch so concurrent master builds
+    # don't race on gh release upload.
+    concurrency:
+      group: release-${{ github.ref }}
+      cancel-in-progress: false
     # always() prevents "skipped" from full-locale jobs (which only run on
     # release branches / cron / dispatch) propagating and silently skipping
     # this job on PR and push builds. needs.build.result == 'success' guards
@@ -1043,8 +1122,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v7
-      with:
-        fetch-depth: 0
 
     - name: Set up Node.js
       uses: actions/setup-node@v7

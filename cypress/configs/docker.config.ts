@@ -46,6 +46,13 @@ export default defineConfig({
       'cypress/e2e/ui/**/*.spec.js'
     ],
     setupNodeEvents(on, config) {
+      // Register cypress-split for UI spec sharding (SPLIT / SPLIT_INDEX env vars).
+      // Guard: when SPLIT is unset the plugin is a no-op, so it's safe to
+      // require unconditionally, but we skip registration to avoid debug noise.
+      if (process.env.SPLIT) {
+        const cypressSplit = require('cypress-split');
+        cypressSplit(on, config);
+      }
       const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
       installLogsPrinter(on, {
         outputRoot: 'cypress/logs',
