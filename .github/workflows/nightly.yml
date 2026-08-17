@@ -40,8 +40,10 @@ permissions:
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 3 * * *'  # offset from build-test-package.yml (0 2) to avoid runner contention
   workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
@@ -145,14 +147,15 @@ jobs:
             config: "cypress/configs/docker-admin.config.ts"
         include:
           # ui specs sharded 3× — cypress-split balances by spec file
+          # split-index values are strings to avoid JS falsy coercion of 0
           - test-type: { name: ui-shard-0, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: 0
+            split-index: "0"
             shard-total: 3
           - test-type: { name: ui-shard-1, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: 1
+            split-index: "1"
             shard-total: 3
           - test-type: { name: ui-shard-2, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: 2
+            split-index: "2"
             shard-total: 3
     steps:
     - name: Checkout
@@ -211,7 +214,7 @@ jobs:
       run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
       env:
         SPLIT: ${{ matrix.shard-total || '' }}
-        SPLIT_INDEX: ${{ matrix.split-index || '' }}
+        SPLIT_INDEX: ${{ matrix.split-index }}
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -270,14 +273,15 @@ jobs:
             spec: "cypress/e2e/ui-admin/**/*.spec.js"
             config: "cypress/configs/docker-admin.config.ts"
         include:
+          # split-index values are strings to avoid JS falsy coercion of 0
           - test-type: { name: ui-shard-0, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: 0
+            split-index: "0"
             shard-total: 3
           - test-type: { name: ui-shard-1, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: 1
+            split-index: "1"
             shard-total: 3
           - test-type: { name: ui-shard-2, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: 2
+            split-index: "2"
             shard-total: 3
     steps:
     - name: Checkout
@@ -337,7 +341,7 @@ jobs:
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
         SPLIT: ${{ matrix.shard-total || '' }}
-        SPLIT_INDEX: ${{ matrix.split-index || '' }}
+        SPLIT_INDEX: ${{ matrix.split-index }}
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -964,16 +968,17 @@ jobs:
         echo "| PHP 8.5 locale smoke (subdir) | ${{ needs.test-locale-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| Upgrade tests (8.4+8.5 × 4 groups) | ${{ needs.test-upgrade.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        # Determine overall status
-        if [[ "${{ needs.test-root.result }}" == "failure" || \
-              "${{ needs.test-subdir.result }}" == "failure" || \
-              "${{ needs.test-new-system.result }}" == "failure" || \
-              "${{ needs.test-new-system-subdir.result }}" == "failure" || \
-              "${{ needs.test-locale-root.result }}" == "failure" || \
-              "${{ needs.test-locale-subdir.result }}" == "failure" || \
-              "${{ needs.test-upgrade.result }}" == "failure" ]]; then
+        # Determine overall status — check for non-success so skipped/cancelled
+        # jobs (e.g. when build fails) are also reported as failures.
+        if [[ "${{ needs.test-root.result }}" != "success" || \
+              "${{ needs.test-subdir.result }}" != "success" || \
+              "${{ needs.test-new-system.result }}" != "success" || \
+              "${{ needs.test-new-system-subdir.result }}" != "success" || \
+              "${{ needs.test-locale-root.result }}" != "success" || \
+              "${{ needs.test-locale-subdir.result }}" != "success" || \
+              "${{ needs.test-upgrade.result }}" != "success" ]]; then
           echo "**Overall: ❌ FAILED**" >> $GITHUB_STEP_SUMMARY
-          echo "One or more test groups failed — check individual job logs above." >> $GITHUB_STEP_SUMMARY
+          echo "One or more test groups failed, were skipped, or were cancelled — check individual job logs above." >> $GITHUB_STEP_SUMMARY
           exit 1
         else
           echo "**Overall: ✅ PASSED**" >> $GITHUB_STEP_SUMMARY
