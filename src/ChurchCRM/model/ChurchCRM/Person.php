@@ -65,6 +65,11 @@ class Person extends BasePerson implements PhotoInterface
         return $this->getFlags() === 1 || empty($this->getBirthYear());
     }
 
+    public function isDeceased(): bool
+    {
+        return !empty($this->getDateDeceased());
+    }
+
     public function getBirthDate(): ?\DateTimeImmutable
     {
         if (

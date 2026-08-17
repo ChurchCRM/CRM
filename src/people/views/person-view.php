@@ -63,6 +63,16 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         }
                         ?>
                         <ul class="list-unstyled mb-0">
+                            <?php if ($person->isDeceased()) : ?>
+                            <li class="mb-1">
+                                <span class="badge bg-secondary text-white">
+                                    <i class="fa-solid fa-cross me-1"></i><?= gettext('Deceased') ?>
+                                    <?php if ($person->getDateDeceased()) : ?>
+                                        &middot; <?= InputUtils::escapeHTML($person->getDateDeceased()->format(SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d')) ?>
+                                    <?php endif; ?>
+                                </span>
+                            </li>
+                            <?php endif; ?>
                             <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
                             <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
                             <?php if (!empty($sFamRole)) : ?>

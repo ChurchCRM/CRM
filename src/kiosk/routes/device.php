@@ -52,7 +52,7 @@ function getAdultFamilyMembers(Person $person): array
     $today = DateTimeUtils::getToday();
     $members = [];
 
-    foreach ($family->getPeople() as $member) {
+    foreach ($family->getLivingPeople() as $member) {
         if ((int) $member->getId() === (int) $person->getId()) {
             continue; // Exclude the person themselves
         }

@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Classification;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -84,6 +85,9 @@ if ($sSource === 'cart') {
 
     // Prepare any extensions to the WHERE clauses using ? placeholders (SQL injection prevention)
     $sWhereExt = '';
+    if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {
+        $sWhereExt .= 'AND per_DateDeceased IS NULL ';
+    }
     if (!empty($_POST['Classification'])) {
         $count = 0;
         foreach ($_POST['Classification'] as $Cls) {

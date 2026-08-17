@@ -775,10 +775,11 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
 
-        // Get all families with at least one member (classification ID 1)
+        // Get all families with at least one living member (classification ID 1)
         $familyQuery = FamilyQuery::create()
             ->usePersonQuery()
                 ->filterByClsId(1)
+                ->filterByLiving()
             ->endUse();
 
         // Get family IDs that made payments in the date range
