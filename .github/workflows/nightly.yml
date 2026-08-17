@@ -148,13 +148,13 @@ jobs:
         include:
           # ui specs sharded 3× — cypress-split balances by spec file
           # split-index values are strings to avoid JS falsy coercion of 0
-          - test-type: { name: ui-shard-0, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "0"
             shard-total: 3
-          - test-type: { name: ui-shard-1, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "1"
             shard-total: 3
-          - test-type: { name: ui-shard-2, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "2"
             shard-total: 3
     steps:
@@ -274,13 +274,13 @@ jobs:
             config: "cypress/configs/docker-admin.config.ts"
         include:
           # split-index values are strings to avoid JS falsy coercion of 0
-          - test-type: { name: ui-shard-0, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "0"
             shard-total: 3
-          - test-type: { name: ui-shard-1, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "1"
             shard-total: 3
-          - test-type: { name: ui-shard-2, config: "cypress/configs/docker.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "2"
             shard-total: 3
     steps:
