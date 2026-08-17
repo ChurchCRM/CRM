@@ -261,6 +261,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         'Properties' => gettext('Properties'),
                         'Custom' => gettext('Custom'),
                         'Group' => gettext('Group'),
+                        'Deceased Status' => gettext('Deceased'),
                     ];
                     foreach ($personListColumns as $column) {
                         // Output all columns - DataTables JS config controls visibility
@@ -602,6 +603,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     'Properties' => gettext('Properties'),
                     'Custom' => gettext('Custom'),
                     'Group' => gettext('Group'),
+                    'Deceased Status' => gettext('Deceased'),
                 ];
                 foreach ($columns as $column) {
                     // Include ALL columns - DataTables needs config for each <th>
@@ -699,7 +701,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             'Properties': <?php echo $columnIdMap['Properties'] ?>,
             'Custom': <?php echo $columnIdMap['Custom'] ?>,
             'Family Status': <?php echo $columnIdMap['Family Status'] ?>,
-            'Group': <?php echo $columnIdMap['Group'] ?>
+            'Group': <?php echo $columnIdMap['Group'] ?>,
+            'Deceased Status': <?php echo $columnIdMap['Deceased Status'] ?>
         };
 
         function escapeRegExp(string) {
