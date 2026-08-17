@@ -60,6 +60,22 @@ function cleanup() {
       modalEl.classList.remove("fade", "show");
       modalEl.removeAttribute("role");
     }
+    // Blur any element that currently has focus inside the modal before
+    // deactivating the focus trap. This guards against Bootstrap's
+    // _handleFocusin document listener — still active until
+    // FocusTrap.deactivate() is called — intercepting the `focusin` event that
+    // fires on the new focus target after the modal's active element loses
+    // focus, which would call SelectorEngine.focusableChildren(detachedElement)
+    // on removed DOM.
+    // NOTE: this blur does NOT prevent the TypeError tracked in CI runs
+    // 31972908013/31975974494/31978700022; that error originates in Bootstrap
+    // 5.3.x's transitionComplete callback (queued by _showElement) firing ~330 ms
+    // after dispose() has already nullified this._config, then reading
+    // this._config.focus. That path is addressed by the scoped exception filter
+    // in cypress/support/e2e.js.
+    if (modalEl?.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
     // Bootstrap's Modal#dispose() disposes the backdrop, deactivates the
     // focus trap, then calls super.dispose() — in that order. If disposing
     // mid-transition throws partway through (see comment below), the focus
