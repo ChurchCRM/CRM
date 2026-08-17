@@ -341,7 +341,7 @@ class FinancialService
         if (SystemConfig::getBooleanValue('bRequireCheckNumber')
             && !empty($payment->type) && $payment->type === 'Payment'
             && !empty($payment->iMethod) && $payment->iMethod === 'CHECK'
-            && !isset($payment->iCheckNo)) {
+            && empty($payment->iCheckNo)) {
             throw new \Exception(gettext('Must specify non-zero check number'));
         }
         // detect check inconsistencies

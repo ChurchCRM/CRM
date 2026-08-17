@@ -165,7 +165,7 @@ class   SystemConfig
             'bUseDonationEnvelopes'                => new ConfigItem('bUseDonationEnvelopes', 'boolean', '0', gettext('Enable the use of numbered donation envelopes for tracking contributions')),
             'iChecksPerDepositForm'                => new ConfigItem('iChecksPerDepositForm', 'number', '14', gettext('How many checks to print per deposit slip page')),
             'bUseScannedChecks'                    => new ConfigItem('bUseScannedChecks', 'boolean', '0', gettext('Allow scanned check images to be attached to deposit records')),
-            'bRequireCheckNumber'                  => new ConfigItem('bRequireCheckNumber', 'boolean', '1', gettext('Require a check number when recording check payments on deposit entries')),
+            'bRequireCheckNumber'                  => new ConfigItem('bRequireCheckNumber', 'boolean', '1', gettext("Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.")),
 
             'sDistanceUnit'                        => new ConfigItem('sDistanceUnit', 'choice', 'miles', gettext('Unit used to measure distance, miles or km.'), '', '{"Choices":["' . gettext('miles') . '","' . gettext('kilometers') . '"]}'),
             'sTimeZone'                            => new ConfigItem('sTimeZone', 'choice', 'America/New_York', gettext('Time zone'), 'https://www.php.net/manual/en/timezones.php', json_encode(['Choices' => timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
