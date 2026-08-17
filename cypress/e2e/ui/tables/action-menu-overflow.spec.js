@@ -147,9 +147,14 @@ describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
       // Select "All Time" in the FY dropdown to remove the filter and reveal all rows.
       cy.get("#giving-fy-select").select("");
 
-      // Wait for actual data rows (not the DataTables "No data available" empty row).
-      cy.get("#pledge-payment-v2-table tbody tr:not(.dataTables_empty)", { timeout: 10000 })
-        .should("have.length.at.least", 1);
+      // Content-based gate: assert a known fund name is visible rather than
+      // counting rows by class. DataTables 3.x marks the empty-state <td> with
+      // dt-empty (not the <tr>), so :not(.dataTables_empty) on tr always passes
+      // before Ajax returns. "Music Ministry" is a 2018 seed pledge for family 1
+      // (fund ID 3) and appears once the All Time filter is active.
+      cy.contains("#pledge-payment-v2-table", "Music Ministry", { timeout: 10000 }).should(
+        "be.visible",
+      );
 
       assertDropdownVisible(
         "#pledge-payment-v2-table [data-bs-toggle='dropdown']",
