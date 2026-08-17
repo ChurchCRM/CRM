@@ -237,6 +237,13 @@ describe("Standard Calendar — save (admin-session)", () => {
             expect(intercepted.request.body.PinnedCalendars).to.include(1);
             expect(intercepted.response.statusCode).to.eq(200);
         });
+        // Wait for the application's async closeModal() to remove the modal element
+        // before this test ends. Without this, saveEvent().then(closeModal) can fire
+        // during the next test's beforeEach (cy.session navigation to about:blank),
+        // causing Bootstrap to call .focus() on a null document.activeElement in
+        // headless Electron — a timing-dependent failure more common in subdir mode
+        // where the API round-trip is slightly slower.
+        cy.get("#eventEditorModal").should("not.exist");
     });
 
     /**
