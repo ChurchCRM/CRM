@@ -2,6 +2,20 @@ import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
 
 import base from './base.config'
+
+/**
+ * Cypress config for the sharded UI test suite (cypress/e2e/ui/).
+ *
+ * This config intentionally includes ONLY the ui/ spec pattern so that
+ * cypress-split sees only ui specs when splitting. If docker.config.ts
+ * (api + ui combined) were used instead, cypress-split would build its
+ * shard from all 157 specs alphabetically — shard-0 would be mostly api
+ * specs — and the --spec cypress/e2e/ui/**\/\*.spec.js CLI filter would then
+ * find zero matching ui specs in that shard, causing exit-code 1.
+ *
+ * CI jobs: test-type.name == "ui-shard-{0,1,2}" in test-root / test-subdir
+ * matrices (build-test-package.yml, nightly.yml).
+ */
 export default defineConfig({
   chromeWebSecurity: false,
   video: false,
@@ -38,13 +52,10 @@ export default defineConfig({
   numTestsKeptInMemory: 0,
   e2e: {
     ...base.e2e,
-    // Admin UI specs (cypress/e2e/ui-admin) run as a dedicated parallel CI job
-    // (docker-admin.config.ts / npm run test:ui-admin) and are intentionally
-    // excluded here, mirroring how new-system specs are excluded from this config.
-    specPattern: [
-      'cypress/e2e/api/**/*.spec.js',
-      'cypress/e2e/ui/**/*.spec.js'
-    ],
+    // UI specs only — cypress-split must see only ui/ here so every shard
+    // receives a non-empty subset of ui specs. The api/ suite runs in a
+    // separate non-sharded CI job using docker.config.ts.
+    specPattern: ['cypress/e2e/ui/**/*.spec.js'],
     setupNodeEvents(on, config) {
       // Register cypress-split for UI spec sharding (SPLIT / SPLIT_INDEX env vars).
       // Guard: when SPLIT is unset the plugin is a no-op, so it's safe to
