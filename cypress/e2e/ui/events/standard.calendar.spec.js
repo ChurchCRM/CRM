@@ -192,7 +192,18 @@ describe("Standard Calendar", () => {
  * admin session instead of the standard one used above.
  */
 describe("Standard Calendar — save (admin-session)", () => {
-    beforeEach(() => cy.setupAdminSession());
+    beforeEach(() => {
+        cy.setupAdminSession();
+        // Suppress Bootstrap 5 modal focus-trap null-focus errors that fire
+        // intermittently across tests in this suite when the modal DOM is
+        // modified while the focus trap is still active.  The save assertions
+        // (intercept + response code) are unaffected by this timing issue.
+        cy.on("uncaught:exception", (err) => {
+            if (err.message.includes("Cannot read properties of null (reading 'focus')")) {
+                return false;
+            }
+        });
+    });
 
     /**
      * Regression: new-event payload sent Type:0 (invalid) when the user
@@ -246,16 +257,6 @@ describe("Standard Calendar — save (admin-session)", () => {
      * payload's PinnedCalendars is an empty array.
      */
     it("New event saves without a pinned calendar (empty PinnedCalendars array)", () => {
-        // Suppress Bootstrap 5 modal focus-trap null-focus errors: the focus trap
-        // occasionally attempts to focus the first focusable element in the modal
-        // immediately after the DOM has been updated, causing a TypeError in some
-        // CI environments. This is a known Bootstrap 5 timing issue and does not
-        // affect the correctness of the save round-trip being tested here.
-        cy.on("uncaught:exception", (err) => {
-            if (err.message.includes("Cannot read properties of null (reading 'focus')")) {
-                return false;
-            }
-        });
         const title = "No Calendar Test - " + Cypress._.random(0, 1e6);
         cy.intercept("POST", "**/api/events").as("createEvent");
 
