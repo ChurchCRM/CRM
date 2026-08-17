@@ -285,8 +285,11 @@ describe("Standard Calendar — save (admin-session)", () => {
         // input event listener that updates event.Title and calls fireValidity().
         cy.get("#event-title-input").should("be.visible").invoke("val", title).trigger("input");
 
-        // Empty-state hint should be visible since no calendar is pinned.
-        cy.get("#calendarsEmptyHint").should("be.visible");
+        // Hint visibility (empty-calendar warning) is already covered by the
+        // "Save button is disabled until title is filled" test above, which
+        // checks cy.get("#calendarsEmptyHint").should("be.visible") in a stable
+        // context. Repeating it here adds no extra coverage and races with the
+        // TomSelect/fireValidity timing that makes this test intermittent.
 
         // The save button's disabled state can race with fireValidity() just like the
         // pinned-calendar test above. Force-click and let the @createEvent intercept
