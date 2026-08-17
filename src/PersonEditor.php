@@ -1028,7 +1028,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
-                               value="<?= DateTimeUtils::formatForDatePicker($dMembershipDate) ?>" maxlength="10"
+                               value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dMembershipDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
                                placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
@@ -1041,7 +1041,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
-                               value="<?= DateTimeUtils::formatForDatePicker($dFriendDate) ?>" maxlength="10"
+                               value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dFriendDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
                                placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sFriendDateError) { ?>
@@ -1059,7 +1059,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group mt-2" id="DeceasedDateGroup" <?= $bIsDeceased ? '' : 'style="display:none"' ?>>
                         <span class="input-group-text"><i class="fa-solid fa-cross"></i></span>
                         <input type="text" name="DateDeceased" id="DateDeceased" class="form-control date-picker"
-                               value="<?= DateTimeUtils::formatForDatePicker($dDateDeceased) ?>" maxlength="10"
+                               value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dDateDeceased), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
                                placeholder="<?= SystemConfig::getValueForAttr('sDatePickerFormat') ?>">
                     </div>
                     <?php if ($sDateDeceasedError) { ?>
