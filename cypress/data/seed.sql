@@ -1503,8 +1503,8 @@ INSERT INTO `person_per` VALUES (902,'Mr','Bob','','Menuonly','','','','','','',
 INSERT INTO `person_per` VALUES (903,'Mr','Twofa','','Lockout','','','','','','','USA','','','','twofa.lockout@example.com',NULL,1,1,1990,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
 INSERT INTO `person_per` VALUES (904,'Ms','Grace','','Financeonly','','','','','','','USA','','','','grace.financeonly@example.com',NULL,1,1,1988,NULL,2,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
 INSERT INTO `person_per` VALUES (905,'Mr','Kyle','','Kioskonly','','','','','','','USA','','','','kyle.kioskonly@example.com',NULL,1,1,1985,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
--- Locale-admin: dedicated admin user for locale smoke tests (per_ID 904)
--- Locale preference set per-test via POST /api/user/904/setting/ui.locale; never mutates system-wide sLanguage
+-- Locale-admin: dedicated admin user for locale smoke tests (per_ID 906)
+-- Locale preference set per-test via POST /api/user/906/setting/ui.locale; never mutates system-wide sLanguage
 INSERT INTO `person_per` VALUES (906,'Mr','Locale','','Admin','','','','','','','USA','','','','locale-admin@churchcrm.test',NULL,1,1,1980,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `person_per` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1972,7 +1972,7 @@ INSERT INTO `user_usr` VALUES (903,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB
 INSERT INTO `user_usr` VALUES (904,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,1,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'grace.financeonly@example.com','financeOnlyApiKeyForTesting12345678901234',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 -- managegroups.only (id=905): ManageGroups=1, non-admin — used to assert ManageGroups role can access kiosk manager
 INSERT INTO `user_usr` VALUES (905,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,1,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'kyle.kioskonly@example.com','manageGroupsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
--- Locale-admin: dedicated admin user for locale smoke tests (usr_per_ID 904)
+-- Locale-admin: dedicated admin user for locale smoke tests (usr_per_ID 906)
 -- Password: changeme (shared test hash). Locale changed per-test; never touches system-wide sLanguage.
 INSERT INTO `user_usr` VALUES (906,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,1,10,'skin-blue',0,0,'2016-01-01',10,0,'locale-admin@churchcrm.test','localeAdminApiKeyForTesting1234567890',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
