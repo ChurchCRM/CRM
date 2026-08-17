@@ -14,10 +14,10 @@ describe("Finance Family", () => {
         // When those settings are '0', GET /api/payments/family/{id}/list filters
         // them out and returns 0 rows — DataTables draws an empty-state row.
         //
-        // These cy.request calls reach the real server through the current session
-        // and update the DB before the page visits below fire their own XHRs.
-        // failOnStatusCode: false silently ignores 401s when the logged-in user
-        // is not admin and therefore cannot write another user's settings.
+        // cy.request reaches the real server through the current session and updates
+        // the DB before the page visits below fire their own XHRs.
+        // failOnStatusCode: false silently ignores 401s (user 3 cannot write user 1's
+        // settings, and vice-versa in the contaminated-session case).
         cy.request({
             method: "POST",
             url: "/api/user/1/setting/finance.show.pledges",
@@ -43,14 +43,10 @@ describe("Finance Family", () => {
             failOnStatusCode: false,
         });
 
-        // Intercept the identical setting POSTs that FamilyView.js fires on
-        // every page load.  The JS fires them unconditionally (it does not
-        // check current value before writing).  Stubbing them ensures:
-        //   (a) Promise.all resolves immediately — no server round-trip latency
-        //       between session setup and DataTable initialisation
-        //   (b) no server-side write occurs on page load, preventing any
-        //       session / ORM side-effect that may be triggering the observed
-        //       3-4 page reload loop in CI
+        // Intercept the in-page setting POSTs that FamilyView.js fires on every
+        // page load.  The DB is already correct (above); intercepting them ensures
+        // Promise.all resolves instantly and eliminates any server-side side-effect
+        // (the source of the 3-4 page reload loop observed in CI).
         cy.intercept("POST", "**/api/user/*/setting/finance.show.pledges", {
             statusCode: 200,
             body: { value: "true" },
@@ -74,26 +70,35 @@ describe("Finance Family", () => {
         cy.get(".pledge-type-pill").should("have.length", 3);
         cy.get("#giving-fy-select").should("exist");
 
-        // Gate 1: wait for initComplete to populate the FY dropdown.
+        // Gate: wait for initComplete to populate the FY dropdown.
         //
-        // FamilyView.js calls DataTable({ajax:...}).  On the first Ajax draw
-        // initComplete fires, reads all rows, appends FY <option> elements,
-        // and (for families with no current-year data) clears the pre-init
-        // column-5 FY filter so all rows are shown.
+        // FamilyView.js initialises DataTable with ajax:... and pre-sets a
+        // column-5 filter to the current FY.  initComplete fires after the first
+        // Ajax draw, reads all rows, and appends one <option> per unique FY.
+        // ≥2 options (All Time + at least one FY year) proves initComplete ran.
         //
-        // ≥2 options means initComplete ran AND found at least one historical FY.
         // Explicit 30 s timeout overrides docker.config.ts's 5 s default.
         cy.get("#giving-fy-select option", { timeout: 30000 }).should(
             "have.length.at.least",
             2,
         );
 
-        // Gate 2 + content assertion: wait for the data row with "Music Ministry"
-        // to appear inside the table.  Scoping cy.contains to the table element
-        // avoids matching stray page text AND skips DataTables' empty-state row
-        // ('<tr class="odd"><td class="dataTables_empty">No data available…</td></tr>')
-        // which was causing our earlier tbody-tr count gate to fire prematurely.
-        // 30 s timeout covers the initComplete redraw + any CI latency.
+        // Switch to "All Time" to clear the active FY column filter.
+        //
+        // The default view shows the current FY (2026 as of this writing).
+        // Family 1 has giving records in FY 2026, so initComplete does NOT
+        // auto-clear the filter — historical records like "Music Ministry"
+        // (from an earlier FY) are hidden.  Selecting the empty ("All Time")
+        // option fires the jQuery change handler which calls
+        // pledgeTable.column(5).search("").draw(), making all rows visible.
+        //
+        // This mirrors the old master spec's `.pledge-fy-pill[data-fy=""].click()`
+        // and is robust regardless of whether the family has current-year data.
+        cy.get("#giving-fy-select").select("");
+
+        // Content assertion: "Music Ministry" is a historical fund for this family.
+        // After selecting All Time, the redraw is synchronous (client-side mode),
+        // so a short timeout is sufficient.  30 s used defensively for CI latency.
         cy.contains("#pledge-payment-v2-table", "Music Ministry", {
             timeout: 30000,
         });
@@ -114,12 +119,14 @@ describe("Finance Family", () => {
         // Giving tab is present
         cy.contains("Giving");
 
-        // Same pattern as test 1.  Family 20 has giving history in FY 2018 only
-        // (no current-FY data) so initComplete auto-switches to All Time.
+        // Same gate as test 1 — FY options populated by initComplete.
         cy.get("#giving-fy-select option", { timeout: 30000 }).should(
             "have.length.at.least",
             2,
         );
+
+        // Switch to "All Time" for the same reason as test 1.
+        cy.get("#giving-fy-select").select("");
 
         cy.contains("#pledge-payment-v2-table", "New Building Fund", {
             timeout: 30000,
