@@ -84,10 +84,12 @@ describe("Deceased Person Flag", () => {
 
             cy.visit(`/PersonEditor.php?PersonID=${personId}`);
 
-            // Tick deceased and enter a future date (day=01 so filterDate doesn't silently map to 1970)
+            // Tick deceased and enter a future date in yyyy-mm-dd format (bootstrap-datepicker's
+            // configured format). Typing MM/DD/YYYY would get silently cleared by the datepicker
+            // on blur, resulting in an empty field that bypasses server-side validation.
             cy.get("#IsDeceased").check();
             const futureYear = new Date().getFullYear() + 2;
-            cy.get("#DateDeceased").type(`12/01/${futureYear}`);
+            cy.get("#DateDeceased").type(`${futureYear}-12-01`);
 
             cy.get("button[name='PersonSubmit']").click();
 
@@ -177,9 +179,11 @@ describe("Deceased Person Flag", () => {
             cy.get("#members tbody").should("not.contain", "DanDeceased");
 
             // Clear the Deceased Status filter to reveal deceased rows
+            // TomSelect inserts its .ts-wrapper as a sibling AFTER the <select>,
+            // so use .siblings() not .closest() (which only traverses ancestors).
             cy.get(".filter-DeceasedStatus").should("exist");
             cy.get(".filter-DeceasedStatus")
-                .closest(".ts-wrapper")
+                .siblings(".ts-wrapper")
                 .find(".remove")
                 .click({ force: true });
 
