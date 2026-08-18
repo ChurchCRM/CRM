@@ -1,32 +1,32 @@
 {
-  "Auto": "",
-  "CSV": "",
+  "Auto": "Auto",
+  "CSV": "CSV",
   "Email sent to %d family.": {
     "one": "E-mail wysłany do %d rodziny.|E-mail wysłany do %d rodzin.|E-mail wysłany do %d rodzin.",
-    "few": "",
-    "other": ""
+    "few": "E-mail wysłany do %d rodzin.|E-mail wysłany do %d rodzin.|E-mail wysłany do %d rodzin.",
+    "other": "E-mail wysłany do %d rodzin.|E-mail wysłany do %d rodzin.|E-mail wysłany do %d rodzin."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
     "one": "PDF został pomyślnie wysłany e-mailem do %d rodziny.|PDF został pomyślnie wysłany e-mailem do %d rodzin.|PDF został pomyślnie wysłany e-mailem do %d rodzin.",
-    "few": "",
-    "other": ""
+    "few": "PDF został pomyślnie wysłany e-mailem do %d rodzin.|PDF został pomyślnie wysłany e-mailem do %d rodzin.|PDF został pomyślnie wysłany e-mailem do %d rodzin.",
+    "other": "PDF został pomyślnie wysłany e-mailem do %d rodzin.|PDF został pomyślnie wysłany e-mailem do %d rodzin.|PDF został pomyślnie wysłany e-mailem do %d rodzin."
   },
-  "Failed to get deposit count": "",
+  "Failed to get deposit count": "Nie udało się pobrać liczby depozytów",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Skopiowano {{count}} członka",
+    "other": "Skopiowano {{count}} członków"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ta lista ma {{count}} odbiorcę — zbyt wielu dla łącza mailto:. Zamiast tego użyj opcji Kopiuj adresy.",
+    "other": "Ta lista ma {{count}} odbiorców — zbyt wielu dla łącza mailto:. Zamiast tego użyj opcji Kopiuj adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Zbyt wielu odbiorców dla klienta poczty ({{count}} > {{max}}). Zamiast tego użyj opcji Kopiuj adresy.",
+    "other": "Zbyt wielu odbiorców dla klienta poczty ({{count}} > {{max}}). Zamiast tego użyj opcji Kopiuj adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Pozostała {{count}} minuta",
+    "other": "Pozostało {{count}} minut"
   }
 }
