@@ -1125,7 +1125,8 @@ CREATE TABLE `list_lst` (
   `lst_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `lst_OptionID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `lst_OptionSequence` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `lst_OptionName` varchar(50) NOT NULL DEFAULT ''
+  `lst_OptionName` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`lst_ID`, `lst_OptionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1260,7 +1261,9 @@ CREATE TABLE `note_nte` (
   `nte_EnteredBy` mediumint(8) NOT NULL DEFAULT 0,
   `nte_EditedBy` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `nte_Type` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`nte_ID`)
+  PRIMARY KEY (`nte_ID`),
+  INDEX `idx_nte_per_ID` (`nte_per_ID`),
+  INDEX `idx_nte_fam_ID` (`nte_fam_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=639 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1477,7 +1480,10 @@ CREATE TABLE `person_per` (
   `per_Facebook` varchar(50) DEFAULT NULL,
   `per_Twitter` varchar(50) DEFAULT NULL,
   `per_LinkedIn` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`per_ID`)
+  PRIMARY KEY (`per_ID`),
+  INDEX `idx_per_fam_ID` (`per_fam_ID`),
+  INDEX `idx_per_cls_ID` (`per_cls_ID`),
+  INDEX `idx_per_fmr_ID` (`per_fmr_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=230 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1542,7 +1548,11 @@ CREATE TABLE `pledge_plg` (
   `plg_aut_ResultID` mediumint(9) NOT NULL DEFAULT 0,
   `plg_NonDeductible` decimal(8,2) NOT NULL,
   `plg_GroupKey` varchar(64) NOT NULL,
-  PRIMARY KEY (`plg_plgID`)
+  PRIMARY KEY (`plg_plgID`),
+  INDEX `idx_plg_FamID` (`plg_FamID`),
+  INDEX `idx_plg_FYID` (`plg_FYID`),
+  INDEX `idx_plg_fundID` (`plg_fundID`),
+  INDEX `idx_plg_depID` (`plg_depID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
