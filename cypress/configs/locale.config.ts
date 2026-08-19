@@ -16,8 +16,8 @@ export default defineConfig({
   env: {
     // Shared API keys (used by makePrivateAPICall in setupLocaleAdminSession)
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
-    // Locale-admin dedicated test user (per_ID 904, seeded in cypress/data/seed.sql)
-    'locale.admin.id': 904,
+    // Locale-admin dedicated test user (per_ID 906, seeded in cypress/data/seed.sql)
+    'locale.admin.id': 906,
     'locale.admin.username': 'locale-admin@churchcrm.test',
     'locale.admin.password': 'changeme',
     'locale.admin.api.key': 'localeAdminApiKeyForTesting1234567890',
