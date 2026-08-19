@@ -126,7 +126,7 @@ if ($bCanManageGroups) {
                     <!-- Role-specific cart items injected by JS -->
                 </div>
             </div>
-            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/v2/map?groupId=<?= $iGroupID ?>">
+            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/people/map?groupId=<?= $iGroupID ?>">
                 <i class="fa-solid fa-map-location-dot me-1"></i><?= gettext('Map') ?>
             </a>
             <?php if ($thisGroup->isSundaySchool()): ?>

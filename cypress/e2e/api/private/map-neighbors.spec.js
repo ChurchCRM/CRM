@@ -20,9 +20,30 @@ describe('API — Map Neighbors', () => {
         expect(item).to.have.property('distanceText').that.is.a('string');
         expect(item).to.have.property('bearing').that.is.a('string');
         expect(item).to.have.property('profileUrl').that.is.a('string');
+        expect(item).to.have.property('people').that.is.an('array');
+        expect(item.people.length).to.be.at.least(1);
+        item.people.forEach((person) => {
+          expect(person).to.have.property('id').that.is.a('number');
+          expect(person).to.have.property('name').that.is.a('string');
+          expect(person).to.have.property('classificationId').that.is.a('number');
+        });
         expect(item.distance).to.be.at.most(50);
         expect(item.id).to.not.equal(familyId);
       });
+    });
+  });
+
+  it('filters listed people by classificationIds and drops families with no matches', () => {
+    const familyId = 1;
+    cy.makePrivateAdminAPICall(
+      'GET',
+      `/api/map/neighbors/${familyId}?maxNeighbors=5&maxDistance=50&classificationIds=999999`,
+      null,
+      200
+    ).then((resp) => {
+      expect(resp.body).to.be.an('array');
+      // No family member should ever have classification 999999
+      expect(resp.body).to.have.length(0);
     });
   });
 });

@@ -1,14 +1,12 @@
 /**
  * map-view.js — Congregation map powered by Leaflet + OpenStreetMap
  *
- * Reads window.CRM.mapConfig (set by v2/templates/map/map-view.php) and
+ * Reads window.CRM.mapConfig (set by people/views/map-view.php) and
  * fetches family/person data from GET /api/map/families[?groupId=N].
  *
  * No Google Maps API key required.
  */
-(function () {
-  "use strict";
-
+(() => {
   var cfg = window.CRM.mapConfig;
 
   // -- Map init ---------------------------------------------------------------
@@ -33,16 +31,14 @@
 
   // -- Legend control (desktop, bottom-right) ---------------------------------
   var legendControl = L.control({ position: "bottomright" });
-  legendControl.onAdd = function () {
-    return document.getElementById("map-legend");
-  };
+  legendControl.onAdd = () => document.getElementById("map-legend");
   legendControl.addTo(map);
 
   // -- Colour lookup (keyed by legend item id) --------------------------------
   // Build from cfg.legendItems so marker colors always match the legend exactly,
   // regardless of whether ids are sequential or sparse database OptionIds.
   var legendColorMap = {};
-  (cfg.legendItems || []).forEach(function (item) {
+  (cfg.legendItems || []).forEach((item) => {
     legendColorMap[item.id] = item.color;
   });
 
@@ -68,7 +64,7 @@
       weight: 2,
     });
 
-    marker.bindPopup(function () {
+    marker.bindPopup(() => {
       var html =
         '<strong><a href="' + item.profileUrl + '">' + item.salutation + "</a></strong>" + "<br>" + item.address;
       if (item.phone) {
@@ -101,16 +97,16 @@
   }
 
   fetch(apiUrl, { credentials: "same-origin" })
-    .then(function (res) {
+    .then((res) => {
       if (!res.ok) {
         throw new Error("API error " + res.status);
       }
       return res.json();
     })
-    .then(function (items) {
+    .then((items) => {
       items.forEach(addMarker);
     })
-    .catch(function (err) {
+    .catch((err) => {
       console.error("Map: failed to load family data", err);
     });
 
@@ -123,13 +119,13 @@
     var isActive = !item.classList.contains("inactive");
 
     // Toggle all items with the same legendId (desktop + mobile)
-    document.querySelectorAll('.legend-item[data-legend-id="' + legendId + '"]').forEach(function (sibling) {
+    document.querySelectorAll('.legend-item[data-legend-id="' + legendId + '"]').forEach((sibling) => {
       sibling.classList.toggle("inactive", isActive);
       sibling.setAttribute("aria-pressed", isActive ? "false" : "true");
     });
 
     // Show / hide matching map markers
-    (classMarkers[legendId] || []).forEach(function (m) {
+    (classMarkers[legendId] || []).forEach((m) => {
       if (isActive) {
         map.removeLayer(m);
       } else {
@@ -138,11 +134,11 @@
     });
   }
 
-  document.querySelectorAll(".legend-item").forEach(function (item) {
-    item.addEventListener("click", function () {
+  document.querySelectorAll(".legend-item").forEach((item) => {
+    item.addEventListener("click", () => {
       toggleLegendItem(item);
     });
-    item.addEventListener("keydown", function (e) {
+    item.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         toggleLegendItem(item);
