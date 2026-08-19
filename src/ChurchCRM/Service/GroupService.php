@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Utils\FunctionsUtils;
@@ -378,37 +379,26 @@ class GroupService
      */
     public function getGroupMembers(string $groupID, $personID = null): array
     {
-        global $cnInfoCentral;
-        $whereClause = '';
+        // Use ORM with eager-loading to avoid N+1: one query instead of 1 + N
+        $query = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId((int)$groupID)
+            ->joinWithPerson();
+
         if (is_numeric($personID)) {
-            $whereClause = ' AND p2g2r_per_ID = ' . $personID;
+            $query->filterByPersonId((int)$personID);
         }
 
+        $memberships = $query->find();
+
         $members = [];
-        // Main select query
-        $sSQL = 'SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
-
-        INNER JOIN group_grp ON
-        person2group2role_p2g2r.p2g2r_grp_ID = group_grp.grp_ID
-
-        INNER JOIN list_lst ON
-        group_grp.grp_RoleListID = list_lst.lst_ID AND
-        person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID
-
-        WHERE p2g2r_grp_ID =' . $groupID . ' ' . $whereClause;
-        $result = mysqli_query($cnInfoCentral, $sSQL);
-        while ($row = mysqli_fetch_assoc($result)) {
-            //on teste si les propriétés sont bonnes
-            if (array_key_exists('p2g2r_per_ID', $row) && array_key_exists('lst_OptionName', $row)) {
-                /** @var Person|null $dbPerson */
-                $dbPerson = PersonQuery::create()->findPk($row['p2g2r_per_ID']);
-
-                if ($dbPerson instanceof Person) {
-                    $person['per_ID'] = $row['p2g2r_per_ID'];
-                    $person['displayName'] = $dbPerson->getFullName();
-                    $person['groupRole'] = $row['lst_OptionName'];
-                    $members[] = $person;
-                }
+        foreach ($memberships as $membership) {
+            $person = $membership->getPerson();
+            if ($person !== null) {
+                $members[] = [
+                    'per_ID' => $person->getId(),
+                    'displayName' => $person->getFullName(),
+                    'groupRole' => $membership->getListOption()?->getOptionName() ?? '',
+                ];
             }
         }
 
