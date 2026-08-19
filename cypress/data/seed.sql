@@ -1125,7 +1125,8 @@ CREATE TABLE `list_lst` (
   `lst_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `lst_OptionID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `lst_OptionSequence` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `lst_OptionName` varchar(50) NOT NULL DEFAULT ''
+  `lst_OptionName` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`lst_ID`, `lst_OptionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1260,7 +1261,9 @@ CREATE TABLE `note_nte` (
   `nte_EnteredBy` mediumint(8) NOT NULL DEFAULT 0,
   `nte_EditedBy` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `nte_Type` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`nte_ID`)
+  PRIMARY KEY (`nte_ID`),
+  INDEX `idx_nte_per_ID` (`nte_per_ID`),
+  INDEX `idx_nte_fam_ID` (`nte_fam_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=639 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1477,7 +1480,10 @@ CREATE TABLE `person_per` (
   `per_Facebook` varchar(50) DEFAULT NULL,
   `per_Twitter` varchar(50) DEFAULT NULL,
   `per_LinkedIn` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`per_ID`)
+  PRIMARY KEY (`per_ID`),
+  INDEX `idx_per_fam_ID` (`per_fam_ID`),
+  INDEX `idx_per_cls_ID` (`per_cls_ID`),
+  INDEX `idx_per_fmr_ID` (`per_fmr_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=230 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1501,9 +1507,11 @@ INSERT INTO `person_per` VALUES (902,'Mr','Bob','','Menuonly','','','','','','',
 -- Same TOTP secret as twofa_user; usr_FailedLogins starts at 0 so the lockout test
 -- can exhaust iMaxFailedLogins with wrong OTP codes and assert the account locks.
 INSERT INTO `person_per` VALUES (903,'Mr','Twofa','','Lockout','','','','','','','USA','','','','twofa.lockout@example.com',NULL,1,1,1990,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
--- Locale-admin: dedicated admin user for locale smoke tests (per_ID 904)
--- Locale preference set per-test via POST /api/user/904/setting/ui.locale; never mutates system-wide sLanguage
-INSERT INTO `person_per` VALUES (904,'Mr','Locale','','Admin','','','','','','','USA','','','','locale-admin@churchcrm.test',NULL,1,1,1980,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
+INSERT INTO `person_per` VALUES (904,'Ms','Grace','','Financeonly','','','','','','','USA','','','','grace.financeonly@example.com',NULL,1,1,1988,NULL,2,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
+INSERT INTO `person_per` VALUES (905,'Mr','Kyle','','Kioskonly','','','','','','','USA','','','','kyle.kioskonly@example.com',NULL,1,1,1985,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
+-- Locale-admin: dedicated admin user for locale smoke tests (per_ID 906)
+-- Locale preference set per-test via POST /api/user/906/setting/ui.locale; never mutates system-wide sLanguage
+INSERT INTO `person_per` VALUES (906,'Mr','Locale','','Admin','','','','','','','USA','','','','locale-admin@churchcrm.test',NULL,1,1,1980,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `person_per` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1540,7 +1548,11 @@ CREATE TABLE `pledge_plg` (
   `plg_aut_ResultID` mediumint(9) NOT NULL DEFAULT 0,
   `plg_NonDeductible` decimal(8,2) NOT NULL,
   `plg_GroupKey` varchar(64) NOT NULL,
-  PRIMARY KEY (`plg_plgID`)
+  PRIMARY KEY (`plg_plgID`),
+  INDEX `idx_plg_FamID` (`plg_FamID`),
+  INDEX `idx_plg_FYID` (`plg_FYID`),
+  INDEX `idx_plg_fundID` (`plg_fundID`),
+  INDEX `idx_plg_depID` (`plg_depID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1689,7 +1701,7 @@ CREATE TABLE `queryparameters_qrp` (
 LOCK TABLES `queryparameters_qrp` WRITE;
 /*!40000 ALTER TABLE `queryparameters_qrp` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `queryparameters_qrp` VALUES (1,4,0,NULL,'Minimum Age','The minimum age for which you want records returned.','min','0',0,5,'n',120,0,NULL,NULL),(2,4,0,NULL,'Maximum Age','The maximum age for which you want records returned.','max','120',1,5,'n',120,0,NULL,NULL),(4,6,1,'','Gender','The desired gender to search the database for.','gender','1',1,0,'',0,0,0,0),(5,7,2,'SELECT lst_OptionID as Value, lst_OptionName as Display FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence','Family Role','Select the desired family role.','role','1',0,0,'',0,0,0,0),(6,7,1,'','Gender','The gender for which you would like records returned.','gender','1',1,0,'',0,0,0,0),(8,9,2,'SELECT pro_ID AS Value, pro_Name as Display \r\nFROM property_pro\r\nWHERE pro_Class= \'p\' \r\nORDER BY pro_Name ','Property','The property for which you would like person records returned.','PropertyID','0',1,0,'',0,0,0,0),(9,10,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC','Beginning Date','Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.','startdate','1',1,0,'0',0,0,0,0),(10,10,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC','Ending Date','Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).','enddate','1',1,0,'',0,0,0,0),(14,15,0,'','Search','Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email.','searchstring','',1,0,'',0,0,0,0),(15,15,1,'','Field','Select field to search for.','searchwhat','1',1,0,'',0,0,0,0),(16,11,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC','Beginning Date','Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.','startdate','1',1,0,'0',0,0,0,0),(17,11,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC','Ending Date','Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).','enddate','1',1,0,'',0,0,0,0),(18,18,0,'','Month','The birthday month for which you would like records returned.','birthmonth','1',1,0,'',12,1,1,2),(19,19,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2),(20,20,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2),(21,21,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Registered students','Group of registered students','group','1',1,0,'',12,1,1,2),(22,22,0,'','Month','The membership anniversary month for which you would like records returned.','membermonth','1',1,0,'',12,1,1,2),(25,25,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','Choose a volunteer opportunity','volopp','1',1,0,'',12,1,1,2),(26,26,0,'','Months','Number of months since becoming a friend','friendmonths','1',1,0,'',24,1,1,2),(27,28,1,'','First Fiscal Year','First fiscal year for comparison','fyid1','9',1,0,'',12,9,0,0),(28,28,1,'','Second Fiscal Year','Second fiscal year for comparison','fyid2','9',1,0,'',12,9,0,0),(30,30,1,'','First Fiscal Year','Pledged this year','fyid1','9',1,0,'',12,9,0,0),(31,30,1,'','Second Fiscal Year','but not this year','fyid2','9',1,0,'',12,9,0,0),(32,32,1,'','Fiscal Year','Fiscal Year.','fyid','9',1,0,'',12,9,0,0),(33,18,1,'','Classification','Member, Regular Attender, etc.','percls','1',1,0,'',12,1,1,2),(100,100,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','First volunteer opportunity choice','volopp1','1',1,0,'',12,1,1,2),(101,100,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','Second volunteer opportunity choice','volopp2','1',1,0,'',12,1,1,2),(200,200,2,'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master','Custom field','Choose customer person field','custom','1',0,0,'',0,0,0,0),(201,200,0,'','Field value','Match custom field to this value','value','1',0,0,'',0,0,0,0);
+INSERT INTO `queryparameters_qrp` VALUES (1,4,0,NULL,'Minimum Age','The minimum age for which you want records returned.','min','0',0,5,'n',120,0,NULL,NULL),(2,4,0,NULL,'Maximum Age','The maximum age for which you want records returned.','max','120',1,5,'n',120,0,NULL,NULL),(4,6,1,'','Gender','The desired gender to search the database for.','gender','1',1,0,'',0,0,0,0),(5,7,2,'SELECT lst_OptionID as Value, lst_OptionName as Display FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence','Family Role','Select the desired family role.','role','1',0,0,'',0,0,0,0),(6,7,1,'','Gender','The gender for which you would like records returned.','gender','1',1,0,'',0,0,0,0),(8,9,2,'SELECT pro_ID AS Value, pro_Name as Display \r\nFROM property_pro\r\nWHERE pro_Class= \'p\' \r\nORDER BY pro_Name ','Property','The property for which you would like person records returned.','PropertyID','0',1,0,'',0,0,0,0),(9,10,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC','Beginning Date','Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.','startdate','1',1,0,'0',0,0,0,0),(10,10,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC','Ending Date','Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).','enddate','1',1,0,'',0,0,0,0),(14,15,0,'','Search','Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email.','searchstring','',1,0,'',0,0,0,0),(15,15,1,'','Field','Select field to search for.','searchwhat','1',1,0,'',0,0,0,0),(16,11,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC','Beginning Date','Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.','startdate','1',1,0,'0',0,0,0,0),(17,11,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC','Ending Date','Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).','enddate','1',1,0,'',0,0,0,0),(18,18,0,'','Month','The birthday month for which you would like records returned.','birthmonth','1',1,0,'',12,1,1,2),(19,19,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2),(20,20,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2),(21,21,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Registered students','Group of registered students','group','1',1,0,'',12,1,1,2),(22,22,0,'','Month','The membership anniversary month for which you would like records returned.','membermonth','1',1,0,'',12,1,1,2),(25,25,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','Choose a volunteer opportunity','volopp','1',1,0,'',12,1,1,2),(26,26,0,'','Months','Number of months since becoming a friend','friendmonths','1',1,0,'',24,1,1,2),(27,28,1,'','First Fiscal Year','First fiscal year for comparison','fyid1','9',1,0,'',12,9,0,0),(28,28,1,'','Second Fiscal Year','Second fiscal year for comparison','fyid2','9',1,0,'',12,9,0,0),(30,30,1,'','First Fiscal Year','Pledged this year','fyid1','9',1,0,'',12,9,0,0),(31,30,1,'','Second Fiscal Year','but not this year','fyid2','9',1,0,'',12,9,0,0),(32,32,1,'','Fiscal Year','Fiscal Year.','fyid','9',1,0,'',12,9,0,0),(33,18,1,'','Classification','Member, Regular Attender, etc.','percls','1',1,0,'',12,1,1,2),(100,100,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','First volunteer opportunity choice','volopp1','1',1,0,'',12,1,1,2),(101,100,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','Second volunteer opportunity choice','volopp2','1',1,0,'',12,1,1,2),(200,200,2,'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master','Custom field','Choose customer person field','custom','1',0,0,'i',0,0,0,0),(201,200,0,'','Field value','Match custom field to this value','value','1',0,0,'',0,0,0,0);
 /*!40000 ALTER TABLE `queryparameters_qrp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1966,9 +1978,13 @@ INSERT INTO `user_usr` VALUES (902,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB
 -- Same TOTP secret (JBSWY3DPEBLW64TMMQ======) as twofa_user; starts unlocked (FailedLogins=0)
 -- so the lockout test exhausts iMaxFailedLogins with wrong OTPs and asserts the account locks.
 INSERT INTO `user_usr` VALUES (903,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'twofa_lockout_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'def50200923f831141edcddb9e69c79f4ef68b1f0cdd9acf4223f286f2c6ab7e0f09d397cabc831fdaa5bee117f409a50090ae4ea6ff51203508d29b59869396f303d5fd3cf14fe76cf85dba9c85735750aa4f312e1ab29caa60a15bb1b76aecb4a7be50423d2867e49a69ec',NULL,NULL);
--- Locale-admin: dedicated admin user for locale smoke tests (usr_per_ID 904)
+-- finance.only (id=904): Finance=1, non-admin — used to assert Finance role (not Admin) can access fund CRUD and dashboard
+INSERT INTO `user_usr` VALUES (904,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,1,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'grace.financeonly@example.com','financeOnlyApiKeyForTesting12345678901234',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+-- managegroups.only (id=905): ManageGroups=1, non-admin — used to assert ManageGroups role can access kiosk manager
+INSERT INTO `user_usr` VALUES (905,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,1,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'kyle.kioskonly@example.com','manageGroupsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+-- Locale-admin: dedicated admin user for locale smoke tests (usr_per_ID 906)
 -- Password: changeme (shared test hash). Locale changed per-test; never touches system-wide sLanguage.
-INSERT INTO `user_usr` VALUES (904,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,1,10,'skin-blue',0,0,'2016-01-01',10,0,'locale-admin@churchcrm.test','localeAdminApiKeyForTesting1234567890',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (906,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,1,10,'skin-blue',0,0,'2016-01-01',10,0,'locale-admin@churchcrm.test','localeAdminApiKeyForTesting1234567890',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
