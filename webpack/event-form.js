@@ -17,21 +17,15 @@
 
 import DOMPurify from "dompurify";
 import { initializeQuillEditor } from "./quill-editor.js";
+import { escapeHtml } from "./utils/escape-html";
 
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Architecture
 // ---------------------------------------------------------------------------
 
-function escapeHtml(str) {
-  if (!str) return "";
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-}
-
-// Architecture: event.Start / event.End are CHURCH wall-clock STRINGS in
+// event.Start / event.End are CHURCH wall-clock STRINGS in
 // `YYYY-MM-DDTHH:mm:ss` (timed) or `YYYY-MM-DD` (all-day). Never JS Date
 // objects in date logic. This avoids browser-tz contamination — `new Date()`,
 // `getHours()`, `getDate()` etc. all interpret in the user's local tz, which
