@@ -4,7 +4,6 @@ use ChurchCRM\Exceptions\DonationFundNotFoundException;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -13,9 +12,8 @@ use Slim\Routing\RouteCollectorProxy;
 /**
  * Finance-role REST API for DonationFund CRUD.
  *
- * All routes require FinanceRoleAuth (Finance role or Admin). FinanceRoleAuth
- * is also applied at the module level by MvcAppFactory, so this is an explicit
- * reinforcement for the write operations.
+ * All routes require FinanceRoleAuth (Finance role or Admin), enforced by
+ * FinanceRoleAuthMiddleware at the module level in src/finance/index.php.
  *
  * Mounted at /finance/api/funds via src/finance/index.php.
  */
@@ -224,4 +222,4 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
         }
     });
 
-})->add(FinanceRoleAuthMiddleware::class);
+});
