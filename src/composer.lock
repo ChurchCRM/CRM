@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f9633c32396aa24f4d48596cef2573b",
+    "content-hash": "08c701707918940fc7dc6a29240e2ee6",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -5528,16 +5528,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "2.6.1",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "b8e68f058bca43e01a2e1caa51ef022d6551ed95"
+                "reference": "03cd615cdd5648abb5f10ff3a684fdb976687190"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/b8e68f058bca43e01a2e1caa51ef022d6551ed95",
-                "reference": "b8e68f058bca43e01a2e1caa51ef022d6551ed95",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/03cd615cdd5648abb5f10ff3a684fdb976687190",
+                "reference": "03cd615cdd5648abb5f10ff3a684fdb976687190",
                 "shasum": ""
             },
             "require": {
@@ -5576,7 +5576,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.6.1"
+                "source": "https://github.com/rectorphp/rector/tree/2.6.2"
             },
             "funding": [
                 {
@@ -5584,7 +5584,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-03T17:30:34+00:00"
+            "time": "2026-08-12T06:23:05+00:00"
         },
         {
             "name": "symfony/type-info",
@@ -5670,16 +5670,16 @@
         },
         {
             "name": "zircote/swagger-php",
-            "version": "6.5.2",
+            "version": "6.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zircote/swagger-php.git",
-                "reference": "cec9ec9157513ba27f15513d4983acbe03ce10b8"
+                "reference": "d0a5edd84dd5e116643c79e53d46814c5a5e4c04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zircote/swagger-php/zipball/cec9ec9157513ba27f15513d4983acbe03ce10b8",
-                "reference": "cec9ec9157513ba27f15513d4983acbe03ce10b8",
+                "url": "https://api.github.com/repos/zircote/swagger-php/zipball/d0a5edd84dd5e116643c79e53d46814c5a5e4c04",
+                "reference": "d0a5edd84dd5e116643c79e53d46814c5a5e4c04",
                 "shasum": ""
             },
             "require": {
@@ -5747,7 +5747,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zircote/swagger-php/issues",
-                "source": "https://github.com/zircote/swagger-php/tree/6.5.2"
+                "source": "https://github.com/zircote/swagger-php/tree/6.5.3"
             },
             "funding": [
                 {
@@ -5755,7 +5755,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-05T02:31:32+00:00"
+            "time": "2026-08-12T04:26:57+00:00"
         }
     ],
     "aliases": [],

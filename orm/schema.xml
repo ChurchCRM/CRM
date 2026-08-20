@@ -64,6 +64,15 @@
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>
+        <index name="idx_per_fam_ID">
+            <index-column name="per_fam_ID"/>
+        </index>
+        <index name="idx_per_cls_ID">
+            <index-column name="per_cls_ID"/>
+        </index>
+        <index name="idx_per_fmr_ID">
+            <index-column name="per_fmr_ID"/>
+        </index>
         <foreign-key foreignTable="family_fam">
             <reference local="per_fam_ID" foreign="fam_ID"/>
         </foreign-key>
@@ -213,6 +222,12 @@
         <column name="nte_EditedBy" phpName="EditedBy" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 required="true" defaultValue="0"/>
         <column name="nte_Type" phpName="Type" type="VARCHAR" size="50"/>
+        <index name="idx_nte_per_ID">
+            <index-column name="nte_per_ID"/>
+        </index>
+        <index name="idx_nte_fam_ID">
+            <index-column name="nte_fam_ID"/>
+        </index>
         <foreign-key foreignTable="person_per">
             <reference local="nte_per_ID" foreign="per_ID"/>
         </foreign-key>
@@ -503,6 +518,18 @@
         <column name="plg_aut_ResultID" phpName="AutResultId" type="SMALLINT" size="9" sqlType="mediumint(9)" required="true" defaultValue="0"/>
         <column name="plg_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
         <column name="plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>
+        <index name="idx_plg_FamID">
+            <index-column name="plg_FamID"/>
+        </index>
+        <index name="idx_plg_FYID">
+            <index-column name="plg_FYID"/>
+        </index>
+        <index name="idx_plg_fundID">
+            <index-column name="plg_fundID"/>
+        </index>
+        <index name="idx_plg_depID">
+            <index-column name="plg_depID"/>
+        </index>
         <foreign-key foreignTable="deposit_dep">
             <reference local="plg_depID" foreign="dep_ID"/>
         </foreign-key>

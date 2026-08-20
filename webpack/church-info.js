@@ -93,6 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── Generic state field builder ─────────────────────────────────────────
   // Reused for both church state and default state containers.
 
+  const stateFieldTokens = new WeakMap();
+
   function buildStateSelect(fieldId, fieldName, states, selectedValue) {
     const $select = $(`<select id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%"></select>`);
     const blankLabel = window.i18next ? `— ${i18next.t("Select State")} —` : "— Select State —";
@@ -115,6 +117,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateStateField(container, fieldId, fieldName, countryCode, selectedValue) {
+    // Two calls can race against the same container — e.g. the page-load fetch
+    // for the seeded country's states is still in flight when the country is
+    // changed again before it resolves. Tag each call with a token so a
+    // response that's no longer the latest request for this container is
+    // dropped instead of clobbering newer state.
+    const token = (stateFieldTokens.get(container) || 0) + 1;
+    stateFieldTokens.set(container, token);
+    const isStale = () => stateFieldTokens.get(container) !== token;
+
     if (!countryCode) {
       container.innerHTML = "";
       container.appendChild(buildStateInput(fieldId, fieldName, selectedValue)[0]);
@@ -127,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       url: `${window.CRM.root}/api/public/data/countries/${countryCode.toLowerCase()}/states`,
     })
       .done((data) => {
+        if (isStale()) return;
         container.innerHTML = "";
         if (data && Object.keys(data).length > 0) {
           const $select = buildStateSelect(fieldId, fieldName, data, selectedValue);
@@ -137,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .fail(() => {
+        if (isStale()) return;
         container.innerHTML = "";
         container.appendChild(buildStateInput(fieldId, fieldName, selectedValue)[0]);
       });
@@ -311,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const countrySelectEl = document.getElementById("sChurchCountry");
-    if (countrySelectEl && countrySelectEl.value) {
+    if (countrySelectEl?.value) {
       // Use the display name (option text), not the country code, since
       // Nominatim's free-text query works better with a readable name.
       parts.push(countrySelectEl.selectedOptions?.[0]?.text || "");

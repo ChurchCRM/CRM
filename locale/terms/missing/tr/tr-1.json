@@ -10,6 +10,7 @@
     "one": "PDF başarıyla %d aileye e-posta ile gönderildi.|PDF başarıyla %d aileye e-posta ile gönderildi.",
     "other": ""
   },
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""

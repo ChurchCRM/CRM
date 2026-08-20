@@ -341,7 +341,8 @@ CREATE TABLE `list_lst` (
   `lst_ID` mediumint(8) unsigned NOT NULL default '0',
   `lst_OptionID` mediumint(8) unsigned NOT NULL default '0',
   `lst_OptionSequence` tinyint(3) unsigned NOT NULL default '0',
-  `lst_OptionName` varchar(50) NOT NULL default ''
+  `lst_OptionName` varchar(50) NOT NULL default '',
+  PRIMARY KEY (`lst_ID`, `lst_OptionID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
@@ -406,7 +407,9 @@ CREATE TABLE `note_nte` (
   `nte_EnteredBy` mediumint(8) NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_Type` varchar(50) DEFAULT NULL,
-  PRIMARY KEY  (`nte_ID`)
+  PRIMARY KEY  (`nte_ID`),
+  INDEX `idx_nte_per_ID` (`nte_per_ID`),
+  INDEX `idx_nte_fam_ID` (`nte_fam_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -526,7 +529,10 @@ CREATE TABLE `person_per` (
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
   `per_DateDeactivated` date default NULL,
-  PRIMARY KEY  (`per_ID`)
+  PRIMARY KEY  (`per_ID`),
+  INDEX `idx_per_fam_ID` (`per_fam_ID`),
+  INDEX `idx_per_cls_ID` (`per_cls_ID`),
+  INDEX `idx_per_fmr_ID` (`per_fmr_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -564,7 +570,11 @@ CREATE TABLE `pledge_plg` (
   `plg_aut_ResultID` mediumint(9) NOT NULL default '0',
   `plg_NonDeductible` decimal(8,2) NOT NULL,
   `plg_GroupKey` VARCHAR( 64 ) NOT NULL,
-  PRIMARY KEY  (`plg_plgID`)
+  PRIMARY KEY  (`plg_plgID`),
+  INDEX `idx_plg_FamID` (`plg_FamID`),
+  INDEX `idx_plg_FYID` (`plg_FYID`),
+  INDEX `idx_plg_fundID` (`plg_fundID`),
+  INDEX `idx_plg_depID` (`plg_depID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --

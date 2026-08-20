@@ -6,6 +6,7 @@
  */
 
 import { deleteEvent, renderEventEditor, saveEvent } from "./event-form.js";
+import { escapeHtml } from "./utils/escape-html";
 
 const CRMRoot = window.CRM.root;
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
@@ -18,13 +19,6 @@ function fetchJSON(url, fallback = null) {
       return r.status === 204 ? {} : r.json();
     })
     .catch(() => fallback);
-}
-
-function escapeHtml(str) {
-  if (!str) return "";
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
 function showError(message) {
