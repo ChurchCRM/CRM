@@ -5,6 +5,8 @@
  * Uses TomSelect AJAX for person search.
  */
 
+import { escapeHtml } from "./utils/escape-html";
+
 $(() => {
   // Initialize DataTable for already checked-in people
   if ($("#checkedinTable").length > 0) {
@@ -146,19 +148,6 @@ function displayPersonDetails(element, person) {
   } else {
     element.html("").hide();
   }
-}
-
-/**
- * Escape HTML entities to prevent XSS
- *
- * @param {string} text - Text to escape
- * @returns {string} Escaped text
- */
-function escapeHtml(text) {
-  if (!text) return "";
-  const div = document.createElement("div");
-  div.textContent = text;
-  return div.innerHTML;
 }
 
 // =============================================================================

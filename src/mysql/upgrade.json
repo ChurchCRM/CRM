@@ -96,7 +96,7 @@
   },
   "current": {
     "versions": ["7.6.1"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.6.2-add-missing-fk-indexes.sql"],
     "dbVersion": "7.6.2"
   }
 }

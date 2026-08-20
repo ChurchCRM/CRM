@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\Propel;
 
 class GroupService
@@ -104,7 +105,13 @@ class GroupService
             $person2group2role->save();
             $result = true;
         } catch (\Throwable $t) {
-            // do nothing
+            $logger = LoggerUtils::getAppLogger();
+            $logger->warning('Failed to add person to group', [
+                'groupId' => $iGroupID,
+                'personId' => $iPersonID,
+                'roleId' => $iRoleID,
+                'error' => $t->getMessage(),
+            ]);
         }
 
         if ($result) {
@@ -140,7 +147,13 @@ class GroupService
             $person2group2role->save();
             $result = true;
         } catch (\Throwable $t) {
-            // do nothing
+            $logger = LoggerUtils::getAppLogger();
+            $logger->warning('Failed to add person to group (internal import)', [
+                'groupId' => $iGroupID,
+                'personId' => $iPersonID,
+                'roleId' => $iRoleID,
+                'error' => $t->getMessage(),
+            ]);
         }
 
         if ($result) {
