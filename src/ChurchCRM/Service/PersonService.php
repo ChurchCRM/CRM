@@ -61,34 +61,77 @@ class PersonService
      */
     public function getPeopleEmailsAndGroups(): array
     {
-        // Get people with emails
+        // Get people with emails, eagerly loading group memberships and groups to avoid N+1
         $people = PersonQuery::create()
             ->filterByEmail('', Criteria::NOT_EQUAL)
+            ->joinWithPerson2group2roleP2g2r()
+            ->joinWithGroup()
             ->orderById()
+            ->distinct()
             ->find();
 
-        $result = [];
+        // Collect all unique (listId, optionId) pairs needed for role names
+        $roleLookupsNeeded = [];
         foreach ($people as $person) {
+            $memberships = $person->getPerson2group2roleP2g2rs();
+            foreach ($memberships as $membership) {
+                $group = $membership->getGroup();
+                if ($group !== null) {
+                    $listId = $group->getRoleListId();
+                    $optionId = $membership->getRoleId();
+                    if (!isset($roleLookupsNeeded[$listId])) {
+                        $roleLookupsNeeded[$listId] = [];
+                    }
+                    $roleLookupsNeeded[$listId][$optionId] = true;
+                }
+            }
+        }
+
+        // Batch-load all ListOption rows needed for role names: [listId][optionId] => optionName
+        $roleNameMap = [];
+        if (!empty($roleLookupsNeeded)) {
+            foreach ($roleLookupsNeeded as $listId => $optionIds) {
+                $optionIdArray = array_keys($optionIds);
+                $roles = ListOptionQuery::create()
+                    ->filterById($listId)
+                    ->filterByOptionId($optionIdArray)
+                    ->find();
+
+                if (!isset($roleNameMap[$listId])) {
+                    $roleNameMap[$listId] = [];
+                }
+                foreach ($roles as $role) {
+                    $roleNameMap[$listId][$role->getOptionId()] = $role->getOptionName();
+                }
+            }
+        }
+
+        // Build result using pre-loaded data (no more N+1 queries)
+        $result = [];
+        $processedPersonIds = [];
+        foreach ($people as $person) {
+            $personId = $person->getId();
+            // Skip if we've already processed this person (due to distinct() on join)
+            if (isset($processedPersonIds[$personId])) {
+                continue;
+            }
+            $processedPersonIds[$personId] = true;
+
             $personData = [
-                'id' => $person->getId(),
+                'id' => $personId,
                 'email' => $person->getEmail(),
                 'firstName' => $person->getFirstName(),
                 'lastName' => $person->getLastName(),
             ];
 
-            // Get group memberships for this person
-            $groupMemberships = $person->getPerson2group2roleP2g2rs();
-            foreach ($groupMemberships as $membership) {
+            // Use pre-loaded data from eager-loaded relationships
+            $memberships = $person->getPerson2group2roleP2g2rs();
+            foreach ($memberships as $membership) {
                 $group = $membership->getGroup();
                 if ($group !== null) {
-                    $roleName = '';
-                    $roleList = ListOptionQuery::create()
-                        ->filterById($group->getRoleListId())
-                        ->filterByOptionId($membership->getRoleId())
-                        ->findOne();
-                    if ($roleList !== null) {
-                        $roleName = $roleList->getOptionName();
-                    }
+                    $listId = $group->getRoleListId();
+                    $optionId = $membership->getRoleId();
+                    $roleName = $roleNameMap[$listId][$optionId] ?? '';
                     $personData[$group->getName()] = $roleName;
                 }
             }
