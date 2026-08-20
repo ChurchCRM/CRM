@@ -8,6 +8,7 @@
 import type {
   ActiveClassMembersResponse,
   AjaxOptions,
+  CheckinByPerson,
   ClassMember,
   FamilyMember,
   FamilyMembersResponse,
@@ -38,7 +39,13 @@ const kioskState = {
 };
 
 // Pending callback for the "Check-in By" modal
-let pendingCheckinByCallback: ((checkedByPersonId: number | null) => void) | null = null;
+let pendingCheckinByCallback: ((member: FamilyMember | null) => void) | null = null;
+// The family members fetched for the current modal session
+let currentFamilyMembers: FamilyMember[] = [];
+// Monotonically-increasing token; each showCheckinByModal() call increments it.
+// The XHR .done() handler checks the token before writing currentFamilyMembers
+// so rapid double-tap on touch screens cannot corrupt state with a stale response.
+let currentFamilyRequestToken = 0;
 
 /**
  * HTML escape helper to prevent XSS
@@ -65,10 +72,58 @@ function APIRequest(options: AjaxOptions): JQuery.jqXHR {
 }
 
 /**
- * Get photo URL for a person
+ * Get photo URL for a person (roster member — class child)
  */
 function getPhotoUrl(personId: number): string {
   return `${getCRM().root}/kiosk/device/activeClassMember/${personId}/photo`;
+}
+
+/**
+ * Get photo URL for a family member (guardian) of a roster child.
+ * Uses a separate endpoint that authorizes by family relationship
+ * rather than roster membership — required because guardians are
+ * adults, not class members.
+ */
+function getFamilyPhotoUrl(childPersonId: number, memberId: number): string {
+  return `${getCRM().root}/kiosk/device/activeClassMember/${childPersonId}/family/${memberId}/photo`;
+}
+
+/**
+ * Update (or clear) the "Checked in by" line on a roster child's card.
+ *
+ * Shows a small avatar + name when checker is not null; clears the line
+ * when null (e.g. after check-out or when no checker was recorded).
+ * Accepts the roster child's personId so it can build the correct
+ * guardian photo URL (authorized by family relationship, not roster
+ * membership).
+ */
+function updateCheckinByLine(childPersonId: number, checker: CheckinByPerson | null): void {
+  const $byLine = $(`#personId-${childPersonId} .kiosk-member-checkin-by`);
+  if ($byLine.length === 0) return;
+
+  if (!checker) {
+    $byLine.empty();
+    return;
+  }
+
+  $byLine.empty();
+
+  if (checker.hasPhoto) {
+    const photoUrl = getFamilyPhotoUrl(childPersonId, checker.Id);
+    const $img = $("<img>", { class: "checkin-by-inline-photo", alt: `${checker.FirstName} ${checker.LastName}` });
+    // Bind error handler before setting src to guarantee it fires on broken images.
+    // Inline onerror attributes are blocked by the project CSP (no 'unsafe-inline').
+    $img.on("error", () => {
+      $img.replaceWith($("<i>", { class: "fa-solid fa-user-check" }));
+    });
+    $img.attr("src", photoUrl);
+    $byLine.append($img, $("<span>").text(`${checker.FirstName} ${checker.LastName}`));
+  } else {
+    $byLine.append(
+      $("<i>", { class: "fa-solid fa-user-check" }),
+      $("<span>").text(`${checker.FirstName} ${checker.LastName}`),
+    );
+  }
 }
 
 /**
@@ -79,6 +134,8 @@ function renderClassMember(classMember: ClassMember): void {
   if (existingDiv.length > 0) {
     // Card already exists - update data attributes in case familyId or other data changed
     existingDiv.data("familyId", classMember.familyId || null);
+    // Update the checked-in-by line for existing cards (e.g. on refresh)
+    updateCheckinByLine(classMember.personId, classMember.checkedInBy ?? null);
   } else {
     // Create member row
     const memberRow = $("<div>", {
@@ -142,6 +199,9 @@ function renderClassMember(classMember: ClassMember): void {
       );
     }
 
+    // Checked-in-by line (initially empty; populated when checked in)
+    infoDiv.append($("<div>", { class: "kiosk-member-checkin-by" }));
+
     // Actions - icon-only buttons
     const actionsDiv = $("<div>", { class: "kiosk-member-actions" });
 
@@ -170,6 +230,11 @@ function renderClassMember(classMember: ClassMember): void {
       $("#checkedInList").append(memberRow);
     } else {
       $("#notCheckedInList").append(memberRow);
+    }
+
+    // Render initial checked-in-by info (from server on first load / full refresh)
+    if (classMember.checkedInBy) {
+      updateCheckinByLine(classMember.personId, classMember.checkedInBy);
     }
   }
 
@@ -385,6 +450,7 @@ function updateActiveClassMembers(): void {
           birthDay: d.birthDay,
           birthMonth: d.birthMonth,
           familyId: d.familyId,
+          checkedInBy: d.checkedInBy ?? null,
         };
 
         renderClassMember(memberData);
@@ -822,10 +888,10 @@ function checkInPerson(personId: number): void {
 /**
  * Perform the actual check-in API call
  */
-function performCheckin(personId: number, checkedInById: number | null): void {
+function performCheckin(personId: number, checker: FamilyMember | null): void {
   const payload: { PersonId: number; CheckedInById?: number } = { PersonId: personId };
-  if (checkedInById !== null) {
-    payload.CheckedInById = checkedInById;
+  if (checker !== null) {
+    payload.CheckedInById = checker.Id;
   }
   APIRequest({
     path: "checkin",
@@ -833,6 +899,8 @@ function performCheckin(personId: number, checkedInById: number | null): void {
     data: JSON.stringify(payload),
   }).done(() => {
     setCheckedIn(personId);
+    // Optimistically update the checked-in-by line with the selected guardian.
+    updateCheckinByLine(personId, checker);
   });
 }
 
@@ -852,10 +920,10 @@ function checkOutPerson(personId: number): void {
 /**
  * Perform the actual check-out API call
  */
-function performCheckout(personId: number, checkedOutById: number | null): void {
+function performCheckout(personId: number, checker: FamilyMember | null): void {
   const payload: { PersonId: number; CheckedOutById?: number } = { PersonId: personId };
-  if (checkedOutById !== null) {
-    payload.CheckedOutById = checkedOutById;
+  if (checker !== null) {
+    payload.CheckedOutById = checker.Id;
   }
   APIRequest({
     path: "checkout",
@@ -874,26 +942,40 @@ function setCheckinByEnabled(enabled: boolean): void {
 }
 
 /**
- * Render family member selection buttons for the "Check-in By" modal
+ * Render family member selection buttons for the "Check-in By" modal.
+ * Photos are fetched via the guardian photo endpoint, authorized by
+ * family relationship to the roster child ({childPersonId}).
+ * Returns a jQuery element; avoids HTML-string injection to prevent
+ * inline event-handler issues (project CSP forbids 'unsafe-inline').
  */
-function renderFamilyMemberOptions(members: FamilyMember[]): string {
-  let html = '<div class="checkin-by-members">';
+function renderFamilyMemberOptions(members: FamilyMember[], childPersonId: number): JQuery {
+  const $container = $("<div>", { class: "checkin-by-members" });
+
   for (const member of members) {
-    const photoHtml = member.hasPhoto
-      ? `<img src="${getPhotoUrl(member.Id)}" alt="${escapeHtml(member.FirstName)}" class="checkin-by-photo">`
-      : '<i class="fa-solid fa-user fa-2x"></i>';
-    html +=
-      '<button type="button" class="checkin-by-member-btn checkinByMemberBtn" data-memberid="' +
-      member.Id +
-      '">' +
-      photoHtml +
-      '<span class="checkin-by-name">' +
-      escapeHtml(`${member.FirstName} ${member.LastName}`) +
-      "</span>" +
-      "</button>";
+    const $btn = $("<button>", {
+      type: "button",
+      class: "checkin-by-member-btn checkinByMemberBtn",
+      "data-memberid": member.Id,
+    });
+
+    if (member.hasPhoto) {
+      const photoUrl = getFamilyPhotoUrl(childPersonId, member.Id);
+      const $img = $("<img>", { class: "checkin-by-photo", alt: `${member.FirstName} ${member.LastName}` });
+      // Bind error handler before setting src; inline onerror is blocked by project CSP.
+      $img.on("error", () => {
+        $img.replaceWith($("<i>", { class: "fa-solid fa-user fa-2x" }));
+      });
+      $img.attr("src", photoUrl);
+      $btn.append($img);
+    } else {
+      $btn.append($("<i>", { class: "fa-solid fa-user fa-2x" }));
+    }
+
+    $btn.append($("<span>", { class: "checkin-by-name", text: `${member.FirstName} ${member.LastName}` }));
+    $container.append($btn);
   }
-  html += "</div>";
-  return html;
+
+  return $container;
 }
 
 /**
@@ -913,12 +995,18 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
     `<div class="text-center py-4"><i class="fa-solid fa-spinner fa-spin fa-2x text-primary"></i><p class="mt-2 text-muted">${i18next.t("Loading family members...")}</p></div>`,
   );
 
+  // Track which child's family we are showing (needed for the guardian photo URL).
+  // Increment token *before* resetting members so any in-flight XHR from a prior
+  // call sees a stale token and discards its result (rapid double-tap guard).
+  currentFamilyMembers = [];
+  const myToken = ++currentFamilyRequestToken;
+
   // Store the callback to invoke after selection
-  pendingCheckinByCallback = (checkedByPersonId) => {
+  pendingCheckinByCallback = (member) => {
     if (action === "checkin") {
-      performCheckin(personId, checkedByPersonId);
+      performCheckin(personId, member);
     } else {
-      performCheckout(personId, checkedByPersonId);
+      performCheckout(personId, member);
     }
   };
 
@@ -931,6 +1019,9 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
     path: `activeClassMember/${personId}/family`,
   })
     .done((data: FamilyMembersResponse) => {
+      // Discard stale responses from a previous modal open (rapid double-tap race).
+      if (myToken !== currentFamilyRequestToken) return;
+
       // Guard against unexpected API responses (defensive check for empty/malformed members array)
       if (!data.members || data.members.length === 0) {
         // No family members found — close modal and proceed without a checker
@@ -943,9 +1034,13 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
         }
         return;
       }
-      $("#checkinByModalBody").html(renderFamilyMemberOptions(data.members));
+      currentFamilyMembers = data.members;
+      $("#checkinByModalBody").empty().append(renderFamilyMemberOptions(data.members, personId));
     })
     .fail(() => {
+      // Discard stale failure responses too.
+      if (myToken !== currentFamilyRequestToken) return;
+
       // On API failure close modal and proceed without a checker
       const failEl = document.getElementById("checkinByModal");
       if (failEl) window.bootstrap.Modal.getOrCreateInstance(failEl).hide();
@@ -958,13 +1053,19 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
 }
 
 /**
- * Resolve the "Check-in By" modal with the selected person (or null for skip)
+ * Resolve the "Check-in By" modal with the selected person (or null for skip).
+ * Looks up the full FamilyMember object from the currently-loaded members list
+ * so the callback receives name + hasPhoto for immediate card update.
  */
 function resolveCheckinByModal(checkedByPersonId: number | null): void {
   if (pendingCheckinByCallback) {
     const cb = pendingCheckinByCallback;
     pendingCheckinByCallback = null;
-    cb(checkedByPersonId);
+    const member =
+      checkedByPersonId !== null && checkedByPersonId > 0
+        ? (currentFamilyMembers.find((m) => m.Id === checkedByPersonId) ?? null)
+        : null;
+    cb(member);
   }
 }
 
@@ -1086,6 +1187,9 @@ function setCheckedOut(personId: number): void {
 
   // Remove checked-in styling
   $personDiv.removeClass("checked-in");
+
+  // Clear the checked-in-by line (person is no longer checked in)
+  updateCheckinByLine(personId, null);
 
   // Remove alert button when checked out (alert buttons only shown for checked-in students)
   $personDiv.find(".parentAlertButton").remove();
@@ -1382,6 +1486,8 @@ export const kiosk: KioskJSOM = {
   escapeHtml,
   APIRequest,
   getPhotoUrl,
+  getFamilyPhotoUrl,
+  updateCheckinByLine,
   renderClassMember,
   updateMemberCounts,
   renderBirthdaySection,
