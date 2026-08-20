@@ -1,18 +1,22 @@
 {
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "Kopeeriti {{count}} liige",
-    "other": "Kopeeriti {{count}} liiget"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Sellel loendil on {{count}} saaja — liiga palju mailto: lingi jaoks. Kasutage selle asemel aadresside kopeerimist.",
-    "other": "Sellel loendil on {{count}} saajat — liiga palju mailto: lingi jaoks. Kasutage selle asemel aadresside kopeerimist."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Liiga palju saajaid meilikliendi jaoks ({{count}} > {{max}}). Kasutage selle asemel aadresside kopeerimist.",
-    "other": "Liiga palju saajaid meilikliendi jaoks ({{count}} > {{max}}). Kasutage selle asemel aadresside kopeerimist."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} minut jäänud",
-    "other": "{{count}} minutit jäänud"
+    "one": "",
+    "other": ""
   }
 }

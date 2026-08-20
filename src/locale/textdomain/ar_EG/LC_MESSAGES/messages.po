@@ -558,16 +558,8 @@ msgid "Picture URL"
 msgstr "رابط الصورة"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "تحرير صندوق التبرعات"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "حقول غير صالحة أو التحديدات. التغييرات غير المحفوظة! الرجاء تصحيح وحاول مرة أخرى!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "لم تتم إضافة أي أموال حتى الآن"
 
 #: 
 msgid "Active"
@@ -1093,24 +1085,8 @@ msgid "Create Report"
 msgstr "انشاء تقرير"
 
 #: 
-msgid "Deposit Listing"
-msgstr "قائمة إيداع"
-
-#: 
 msgid "Deposits"
 msgstr "الإيداعات"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "حذف الصفوف المحددة"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "تصدير مختارة الصفوف (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "تصدير مختارة الصفوف (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1275,10 +1251,6 @@ msgid "Enabled"
 msgstr "مفعّل"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "تحرير المجموعه محددة نموذج خصائص"
-
-#: 
 msgid "Disabled"
 msgstr "معطل"
 
@@ -1330,14 +1302,6 @@ msgstr "جماعة محددة خصائص النموذج المحرر"
 #: 
 msgid "No properties have been added yet"
 msgstr "لم يتم إضافة أي خصائص بعد"
-
-#: 
-msgid "Show in"
-msgstr "عرض في"
-
-#: 
-msgid "Person View"
-msgstr "عرض لشخص"
 
 #: 
 msgid "Other Email"
@@ -2194,14 +2158,6 @@ msgstr "عناصر تبرعت"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "قائمة المشتريات"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "مجموعه جميع المشتريات: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "اجمالى المشتريات"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4871,10 +4827,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ضبط نظام التشفير الاستخدام - خدمة تصميم المواقع (إهمال) أو TLS"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "توليد الإيداع زلة لصفوف مختارة (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "إضافة الكل إلى العربة"
 
@@ -5164,10 +5116,6 @@ msgstr "بي دي إف"
 #: 
 msgid "Error sending email(s)"
 msgstr "خطأ في إرسال البريد الإلكتروني (الصورة)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "يرجى مراجعة السجلات لمزيد من المعلومات"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5566,10 +5514,6 @@ msgstr "تمت إزالة العائلة من السلة"
 #: 
 msgid "Add Group"
 msgstr "إضافة مجموعة"
-
-#: 
-msgid "Back to Group List"
-msgstr "العودة إلى قائمة المجموعات"
 
 #: 
 msgid "Edit Group"
@@ -7366,10 +7310,6 @@ msgid "Order"
 msgstr "الترتيب"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "تم إرسال ملفات PDF بنجاح إلى %s أسرة."
-
-#: 
 msgid "Percentage"
 msgstr "النسبة المئوية"
 
@@ -7408,10 +7348,6 @@ msgstr "أضف نوع الخاصية الأول"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "بحذف هذا الحقل، ستفقد بشكل لا رجعة فيه جميع بيانات أعضاء المجموعة المخصصة لهذا الحقل!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "بحذف هذا الصندوق، قد تؤثر على سجلات التبرعات التاريخية!"
 
 #: 
 msgid "Category Name"
@@ -7466,10 +7402,6 @@ msgid "Filter by Class"
 msgstr "تصفية حسب الفصل"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "تم حذف الصندوق بنجاح"
-
-#: 
 msgid "In Use"
 msgstr "قيد الاستخدام"
 
@@ -7516,10 +7448,6 @@ msgstr "إزالة عدد الحضور هذا؟"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "حدد نوع السجل الذي تنطبق عليه هذه الخاصية"
-
-#: 
-msgid "That fund name already exists."
-msgstr "اسم الصندوق هذا موجود بالفعل."
 
 #: 
 msgid "Total Pledges"
@@ -10023,10 +9951,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "ابحث عن الأشخاص والعائلات والمجموعات والعناوين والمزيد."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "البحث وعرض سجلات الإيصالات"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "البحث عن الأشخاص والعائلات والمجموعات…"
 
@@ -10679,11 +10603,6 @@ msgstr "انسخ إلى الحافظة"
 msgid "Custom field"
 msgstr "حقل مخصص"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "بحث مخصص"
-
 #: 
 msgid "Default Country"
 msgstr "البلد الافتراضي"
@@ -10745,11 +10664,6 @@ msgstr "قيمة الحقل"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ابحث عن أعضاء الكنيسة الذين التزموا في سنة واحدة ولم يلتزموا في سنة أخرى"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "ابحث عن أعضاء الكنيسة الذين لهم قيمة حقل مخصصة"
 
 #. Context: query_qry
 #: 
@@ -12012,10 +11926,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "لن تسري التغييرات حتى تسجيل الدخول التالي."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "اختر بين نظام الألوان الفاتح والداكن"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "تخصيص مظهر التطبيق وأسلوب عرضه"
 
@@ -12774,10 +12684,6 @@ msgstr "يجب إدخال خط العرض وخط الطول معًا (أو تر�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "تم حفظ معلومات الكنيسة، ولكن تعذّر تحديد موقع العنوان تلقائيًا. يرجى إدخال خط العرض وخط الطول يدويًا تحت إحداثيات الخريطة."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "يتم الاكتشاف التلقائي للإحداثيات من عنوانك عند الحفظ (عبر OpenStreetMap). يمكنك أيضًا إدخالها يدويًا أدناه — تُقدَّم القيم اليدوية دائمًا على الاكتشاف التلقائي. اترك الحقلين فارغَيْن للسماح للنظام بتحديد موقعك الجغرافي من العنوان."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14036,10 +13942,6 @@ msgid "Are you sure you want to continue?"
 msgstr "هل أنت متأكد أنك تريد المتابعة؟"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "هل أنت متأكد من أنك تريد حذف هذا الإيداع؟"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "هل أنت متأكد أنك تريد حذف نوع الحدث هذا؟ لا يمكن التراجع عن هذا الإجراء."
 
@@ -14290,10 +14192,6 @@ msgstr "تُحمَّل بيانات العرض التوضيحي عادةً عل�
 #: 
 msgid "Deposit ID"
 msgstr "معرف الإيداع"
-
-#: 
-msgid "Deposit Total"
-msgstr "إجمالي الإيداع"
 
 #: 
 msgid "Deposit Value"
@@ -14607,10 +14505,6 @@ msgstr "تم حذف الجماعة بنجاح."
 #: 
 msgid "Group removed from cart"
 msgstr "تمت إزالة المجموعة من السلة"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID اللازمة لدور اختيار موجه"
 
 #: 
 msgid "HTML URL"
@@ -14990,20 +14884,8 @@ msgid "Please select a role."
 msgstr "يرجى تحديد دور."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "يرجى تحديد خدمة ودور."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "يرجى اختيار الصفوف المراد حذفها"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "الرجاء تحديد دور هدفا للأعضاء"
-
-#: 
-msgid "Please select target group for members"
-msgstr "يرجى اختيار المجموعة المستهدفة للأعضاء"
 
 #: 
 msgid "Please try again"
@@ -15903,24 +15785,12 @@ msgid "Account status"
 msgstr "حالة الحساب"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "متقدم: اختر إصداراً مستهدفاً محدداً"
-
-#: 
 msgid "Bug Fix"
 msgstr "إصلاح خطأ"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "بشكل افتراضي، يقوم المعالج بتنزيل الإصدار التالي الموصى به. يمكنك بدلاً من ذلك اختيار أي إصدار متاح أدناه."
-
-#: 
 msgid "Change required"
 msgstr "التغيير مطلوب"
-
-#: 
-msgid "Changelog"
-msgstr "سجل التغييرات"
 
 #: 
 msgid "Continue Anyway"
@@ -15929,10 +15799,6 @@ msgstr "المتابعة على أي حال"
 #: 
 msgid "Could not load release information."
 msgstr "تعذر تحميل معلومات الإصدار."
-
-#: 
-msgid "Download & Install"
-msgstr "تنزيل وتثبيت"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15961,10 +15827,6 @@ msgstr "سجل التغييرات الكامل"
 #: 
 msgid "Install stable {{version}}"
 msgstr "تثبيت الإصدار المستقر {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "جارٍ تثبيت الإصدار التالي"
 
 #: 
 msgid "Invalid file path"
@@ -16035,10 +15897,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "إظهار مسار الترقية الكامل"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "أحدث إصدار مستقر هو {{version}}. يمكنك إعادة تثبيته أدناه."
 
@@ -16065,10 +15923,6 @@ msgstr "عرض ملاحظات الإصدار"
 #: 
 msgid "What's New"
 msgstr "ما الجديد"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "ما الجديد في {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16695,10 +16549,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "وظيفة البريد الإلكتروني معطّلة حالياً. لن تعمل الميزات التالية حتى يتم تفعيل البريد الإلكتروني"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "القيمة التقديرية $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "أسرع سير عمل"
 
@@ -16741,10 +16591,6 @@ msgstr "التطوير المحلي"
 #: 
 msgid "Minimum Total Amount"
 msgstr "الحد الأدنى للمبلغ الإجمالي"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "الحد الأدنى للعطاء $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17047,10 +16893,6 @@ msgid "Working..."
 msgstr "جارٍ المعالجة..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "أنت متأخر بـ {{releaseCount}} إصدارات. إليك ما ستكسبه"
-
-#: 
 msgid "click to expand"
 msgstr "انقر للتوسيع"
 
@@ -17305,10 +17147,6 @@ msgstr "فشل في إنشاء التعهد"
 #: 
 msgid "Failed to delete pledge"
 msgstr "فشل في حذف التعهد"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "فشل في ترميز استجابة الدفعة"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17581,4 +17419,450 @@ msgstr "يفكر فيك اليوم."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "مسارات الصفحة واللغة النشطة وإصدار CRM وإصدار PHP وعائلة نظام التشغيل ومعرّف تثبيت عشوائي. لا شيء آخر. تُخزَّن البيانات في الاتحاد الأوروبي."
+
+#: 
+msgid "% Paid"
+msgstr "% المدفوع"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: يرجى التحقق من معلومات عائلتك"
+
+#: 
+msgid "Add Role"
+msgstr "إضافة دور"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "إضافة خصائص مخصصة لهذه المجموعة"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "تم تغيير العنوان منذ آخر تحديد للإحداثيات."
+
+#: 
+msgid "All Tellers"
+msgstr "جميع أمناء الصندوق"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "فشل إرسال جميع الرسائل الإلكترونية. يرجى التحقق من إعدادات SMTP في إعدادات النظام."
+
+#: 
+msgid "Amount Max"
+msgstr "الحد الأقصى للمبلغ"
+
+#: 
+msgid "Amount Min"
+msgstr "الحد الأدنى للمبلغ"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "حدث خطأ غير متوقع أثناء إرسال الرسائل الإلكترونية. يرجى التحقق من إعدادات SMTP وسجلات الخادم."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "هل أنت متأكد أنك تريد إزالة الدور '{{name}}'؟"
+
+#: 
+msgid "Auto"
+msgstr "تلقائي"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "يتبع الوضع التلقائي إعداد نظام التشغيل أو المتصفح؛ ويتجاوزه الوضع الفاتح والداكن"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "العودة إلى لوحة التعهدات"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "انقر على \"توليد الإحداثيات\" للبحث عن موقع العنوان أعلاه على الخريطة، أو أدخل خط العرض/الطول يدويًا. إذا تُرك فارغًا، سيتم الكشف التلقائي عن الإحداثيات عند حفظ النموذج."
+
+#: 
+msgid "Contributor"
+msgstr "المُساهم"
+
+#: 
+msgid "Contributors"
+msgstr "المُساهمون"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "تعذّر العثور على إحداثيات لذلك العنوان. حاول إدخالها يدويًا."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "الخصائص المخصصة لهذه المجموعة"
+
+#: 
+msgid "Delete role"
+msgstr "حذف الدور"
+
+#: 
+msgid "Email Error"
+msgstr "خطأ في البريد الإلكتروني"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "لم يتم تهيئة البريد الإلكتروني. يرجى تهيئة إعدادات SMTP في إعدادات النظام."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "لم يتم إرسال بريد إلكتروني إلى أي عائلة."
+msgstr[1] "تم إرسال بريد إلكتروني إلى عائلة واحدة."
+msgstr[2] "تم إرسال بريد إلكتروني إلى عائلتين."
+msgstr[3] "تم إرسال بريد إلكتروني إلى %d عائلات."
+msgstr[4] "تم إرسال بريد إلكتروني إلى %d عائلة."
+msgstr[5] "تم إرسال بريد إلكتروني إلى %d عائلة."
+
+#: 
+msgid "Enter a street address first."
+msgstr "يرجى إدخال عنوان الشارع أولًا."
+
+#: 
+msgid "Enter role name"
+msgstr "أدخل اسم الدور"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "فشل إنشاء الإيداع"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "فشل تحميل معاينة البريد الإلكتروني"
+
+#: 
+msgid "From Date"
+msgstr "من تاريخ"
+
+#: 
+msgid "Fund Total"
+msgstr "إجمالي الصندوق"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "ملخص تعهدات المُساهمين في الصندوق حسب السنة المالية"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "جمع التبرعات معطّل"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "توليد الإحداثيات"
+
+#: 
+msgid "Generating..."
+msgstr "جارٍ التوليد..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "فشل طلب تحديد الموقع الجغرافي. يرجى المحاولة مجددًا."
+
+#: 
+msgid "Manage Events"
+msgstr "إدارة الفعاليات"
+
+#: 
+msgid "New Deposit"
+msgstr "إيداع جديد"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "لم يُعثر على مُساهمين لهذا الصندوق في السنة المالية المحددة"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "لم يُعثر على عائلات تمتلك عنوان بريد إلكتروني. لم يتم إرسال أي شيء."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "لم تُوجد مدفوعات للإيداعات المحددة"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "لم يتم تقديم معرّفات إيداع صالحة"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "لم يتم إرسال ملف PDF بنجاح إلى أي عائلة."
+msgstr[1] "تم إرسال ملف PDF بنجاح إلى عائلة واحدة."
+msgstr[2] "تم إرسال ملف PDF بنجاح إلى عائلتين."
+msgstr[3] "تم إرسال ملف PDF بنجاح إلى %d عائلات."
+msgstr[4] "تم إرسال ملف PDF بنجاح إلى %d عائلة."
+msgstr[5] "تم إرسال ملف PDF بنجاح إلى %d عائلة."
+
+#: 
+msgid "Partial Send"
+msgstr "إرسال جزئي"
+
+#: 
+msgid "Payments only"
+msgstr "المدفوعات فقط"
+
+#: 
+msgid "Pledged Amount"
+msgstr "المبلغ المتعهَّد به"
+
+#: 
+msgid "Preview"
+msgstr "معاينة"
+
+#: 
+msgid "Retry"
+msgstr "إعادة المحاولة"
+
+#: 
+msgid "Search"
+msgstr "بحث"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "البحث وإدارة سجلات إذونات الإيداع"
+
+#: 
+msgid "Select All"
+msgstr "تحديد الكل"
+
+#: 
+msgid "Send Emails"
+msgstr "إرسال الرسائل الإلكترونية"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "إرسال رسائل التحقق من العائلة"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "تم إرسال %1$d من %2$d — تعذّر الوصول إلى %3$d من العائلات."
+
+#: 
+msgid "Show in Profile"
+msgstr "عرض في الملف الشخصي"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "عرض الإجمالي للصندوق المحدد فقط"
+
+#: 
+msgid "Teller"
+msgstr "أمين الصندوق"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "هذا هو الدور الوحيد في هذه المجموعة."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "لا يمكن حذف هذا الدور."
+
+#: 
+msgid "To Date"
+msgstr "إلى تاريخ"
+
+#: 
+msgid "Total Pledged"
+msgstr "إجمالي التعهدات"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "خطأ غير متوقع أثناء إرسال الرسائل الإلكترونية. يرجى مراجعة السجلات."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "يستخدم عنوان الشارع أعلاه للبحث عن الإحداثيات عبر OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "عرض الدفعة"
+
+#: 
+msgid "View Pledge"
+msgstr "عرض التعهد"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "عند التحديد، ستُعرض هذه الخاصية بجانب المجموعة في قائمة مجموعات الشخص على صفحة ملفه الشخصي."
+
+#: 
+msgid "[Family Name]"
+msgstr "[اسم العائلة]"
+
+#: 
+msgid "row selected"
+msgstr "صف محدد"
+
+#: 
+msgid "rows selected"
+msgstr "صفوف محددة"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "أعياد الميلاد والذكرى السنوية"
+
+#: 
+msgid "Estimated value %s."
+msgstr "القيمة التقديرية %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "الحد الأدنى للعرض %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "لا تتوفر خيارات \"%s\" بعد. أضف السجلات ذات الصلة أولاً."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "لم يتم تكوين خيارات \"%s\" بعد. أضف السجلات ذات الصلة أولاً."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "الأشخاص الذين لديهم أعياد ميلاد أو ذكرى سنوية للزواج في شهر معين"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "الشهر الذي تريد استرداد أعياد الميلاد والذكرى السنوية فيه."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "شهر الذكرى السنوية للزواج الذي تريد استرداد السجلات فيه."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "إجمالي جميع المشتريات: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "إجمالي المشتريات: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "الذكرى السنوية للزواج"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "الأشخاص الذين لديهم ذكرى سنوية للزواج في شهر معين"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "حدث خطأ. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا الصندوق؟"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "لا يمكن الحذف: يحتوي الصندوق على تعهدات مرتبطة به"
+
+#: 
+msgid "Delete Fund"
+msgstr "حذف الصندوق"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "يجب أن يكون الاتجاه 'up' أو 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "تعديل صندوق التبرعات"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "فشل إعادة ترتيب صندوق التبرعات"
+
+#: 
+msgid "Fund added successfully."
+msgstr "تمت إضافة الصندوق بنجاح."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "تم حذف الصندوق بنجاح."
+
+#: 
+msgid "Fund name"
+msgstr "اسم الصندوق"
+
+#: 
+msgid "Fund name is required."
+msgstr "اسم الصندوق مطلوب."
+
+#: 
+msgid "Fund order updated."
+msgstr "تم تحديث ترتيب الصندوق."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "تم حفظ الصندوق بنجاح."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "لم يتم إضافة أي صناديق بعد. استخدم النموذج أعلاه لإضافة الصندوق الأول."
+
+#: 
+msgid "Optional description"
+msgstr "وصف اختياري"
+
+#: 
+msgid "Private Calendar"
+msgstr "تقويم خاص"
+
+#: 
+msgid "Public Calendar"
+msgstr "تقويم عام"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "متقدم: تثبيت إصدار محدد بدلاً من ذلك"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "بشكل افتراضي، يقوم المعالج بالترقية إلى أحدث إصدار. يمكنك بدلاً من ذلك اختيار إصدار محدد أدناه."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "لا يمكن تعديل دفعة في إيداع مغلق"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "تنزيل وتطبيق {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "يتضمن كل إصدار من ChurchCRM إصلاحات أمنية. نوصي بشدة بالترقية دائماً إلى أحدث إصدار."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "فشل فك تشفير طلب الدفع"
+
+#: 
+msgid "Full release notes"
+msgstr "ملاحظات الإصدار الكاملة"
+
+#: 
+msgid "Invalid payment data"
+msgstr "بيانات الدفع غير صالحة"
+
+#: 
+msgid "No release notes available."
+msgstr "لا تتوفر ملاحظات إصدار."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "تحذير: {{chosen}} يفتقر إلى إصلاحات أمنية مضمّنة في {{latest}}. تابع فقط إذا كان لديك سبب محدد."
+
+#: 
+msgid "What you'll gain"
+msgstr "ما ستكسبه"
 

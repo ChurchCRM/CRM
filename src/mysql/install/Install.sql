@@ -55,7 +55,8 @@ CREATE TABLE `donationfund_fun` (
   `fun_Name` varchar(30) default NULL,
   `fun_Description` varchar(100) default NULL,
   `fun_Order` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY  (`fun_ID`)
+  PRIMARY KEY  (`fun_ID`),
+  UNIQUE KEY `fun_Name_unique` (`fun_Name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -340,7 +341,8 @@ CREATE TABLE `list_lst` (
   `lst_ID` mediumint(8) unsigned NOT NULL default '0',
   `lst_OptionID` mediumint(8) unsigned NOT NULL default '0',
   `lst_OptionSequence` tinyint(3) unsigned NOT NULL default '0',
-  `lst_OptionName` varchar(50) NOT NULL default ''
+  `lst_OptionName` varchar(50) NOT NULL default '',
+  PRIMARY KEY (`lst_ID`, `lst_OptionID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
@@ -405,7 +407,9 @@ CREATE TABLE `note_nte` (
   `nte_EnteredBy` mediumint(8) NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_Type` varchar(50) DEFAULT NULL,
-  PRIMARY KEY  (`nte_ID`)
+  PRIMARY KEY  (`nte_ID`),
+  INDEX `idx_nte_per_ID` (`nte_per_ID`),
+  INDEX `idx_nte_fam_ID` (`nte_fam_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -524,7 +528,10 @@ CREATE TABLE `person_per` (
   `per_Facebook` varchar(50) default NULL,
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
-  PRIMARY KEY  (`per_ID`)
+  PRIMARY KEY  (`per_ID`),
+  INDEX `idx_per_fam_ID` (`per_fam_ID`),
+  INDEX `idx_per_cls_ID` (`per_cls_ID`),
+  INDEX `idx_per_fmr_ID` (`per_fmr_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -562,7 +569,11 @@ CREATE TABLE `pledge_plg` (
   `plg_aut_ResultID` mediumint(9) NOT NULL default '0',
   `plg_NonDeductible` decimal(8,2) NOT NULL,
   `plg_GroupKey` VARCHAR( 64 ) NOT NULL,
-  PRIMARY KEY  (`plg_plgID`)
+  PRIMARY KEY  (`plg_plgID`),
+  INDEX `idx_plg_FamID` (`plg_FamID`),
+  INDEX `idx_plg_FYID` (`plg_FYID`),
+  INDEX `idx_plg_fundID` (`plg_fundID`),
+  INDEX `idx_plg_depID` (`plg_depID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -731,7 +742,9 @@ INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_Opti
   (101, 100, 2, 'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name', 'Volunteer opportunities', 'Second volunteer opportunity choice', 'volopp2', '1', 1, 0, '', 12, 1, 1, 2),
   (200, 200, 2, 'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master', 'Custom field', 'Choose customer person field', 'custom', '1', 0, 0, '', 0, 0, 0, 0),
   (201, 200, 0, '', 'Field value', 'Match custom field to this value', 'value', '1', 0, 0, '', 0, 0, 0, 0),
-  (202, 201, 3, 'SELECT event_id as Value, event_title as Display FROM events_event ORDER BY event_start DESC', 'Event', 'Select the desired event', 'event', '', 1, 0, '', 0, 0, 0, 0);
+  (202, 201, 3, 'SELECT event_id as Value, event_title as Display FROM events_event ORDER BY event_start DESC', 'Event', 'Select the desired event', 'event', '', 1, 0, '', 0, 0, 0, 0),
+  (300, 300, 0, '', 'Month', 'The wedding anniversary month for which you would like records returned.', 'weddingmonth', '1', 1, 0, 'n', 12, 1, 1, 2),
+  (301, 301, 0, '', 'Month', 'The month for which you would like birthdays and anniversaries returned.', 'month', '1', 1, 0, 'n', 12, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -761,7 +774,9 @@ INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qr
   (28, 'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=''Pledge'' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=''Pledge'' order by fam_Name', 'Pledge comparison', 'Compare pledges between two fiscal years', 1),
   (30, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)', 'Missing pledges', 'Find people who pledged one year but not another', 1),
   (100, 'SELECT a.per_ID as AddToCart, CONCAT(''<a href=/people/view/'',a.per_ID,''>'',a.per_FirstName,'' '',a.per_LastName,''</a>'') AS Name FROM person_per AS a LEFT JOIN person2volunteeropp_p2vo p2v1 ON (a.per_id = p2v1.p2vo_per_ID AND p2v1.p2vo_vol_ID = ~volopp1~) LEFT JOIN person2volunteeropp_p2vo p2v2 ON (a.per_id = p2v2.p2vo_per_ID AND p2v2.p2vo_vol_ID = ~volopp2~) WHERE p2v1.p2vo_per_ID=p2v2.p2vo_per_ID ORDER BY per_LastName', 'Volunteers', 'Find volunteers for who match two specific opportunity codes', 1),
-  (201, 'SELECT per_ID as AddToCart, CONCAT(''<a href=/people/view/'',per_ID,''>'',per_FirstName,'',per_LastName,''</a>'') AS Name, per_LastName AS Lastname FROM person_per LEFT OUTER JOIN (SELECT event_attend.attend_id, event_attend.person_id FROM event_attend WHERE event_attend.event_id IN (~event~)) a ON person_per.per_ID = a.person_id WHERE a.attend_id is NULL ORDER BY person_per.per_LastName, person_per.per_FirstName', 'Missing people', 'Find people who didn''t attend an event', 1);
+  (201, 'SELECT per_ID as AddToCart, CONCAT(''<a href=/people/view/'',per_ID,''>'',per_FirstName,'',per_LastName,''</a>'') AS Name, per_LastName AS Lastname FROM person_per LEFT OUTER JOIN (SELECT event_attend.attend_id, event_attend.person_id FROM event_attend WHERE event_attend.event_id IN (~event~)) a ON person_per.per_ID = a.person_id WHERE a.attend_id is NULL ORDER BY person_per.per_LastName, person_per.per_FirstName', 'Missing people', 'Find people who didn''t attend an event', 1),
+  (300, 'SELECT per_ID as AddToCart, DAYOFMONTH(fam_WeddingDate) as Day, DATE_FORMAT(fam_WeddingDate, ''%Y-%m-%d'') as Date, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per JOIN family_fam ON per_fam_ID=fam_ID WHERE per_fmr_ID IN (1,2) AND fam_WeddingDate IS NOT NULL AND MONTH(fam_WeddingDate)=~weddingmonth~ ORDER BY DAYOFMONTH(fam_WeddingDate), per_LastName', 'Wedding Anniversaries', 'People with wedding anniversaries in a particular month', 0),
+  (301, 'SELECT per_ID as AddToCart, ''Birthday'' as Type, per_BirthDay as Day, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per WHERE per_BirthMonth=~month~ AND per_BirthDay>0 UNION ALL SELECT per_ID as AddToCart, ''Anniversary'' as Type, DAYOFMONTH(fam_WeddingDate) as Day, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per JOIN family_fam ON per_fam_ID=fam_ID WHERE per_fmr_ID IN (1,2) AND fam_WeddingDate IS NOT NULL AND MONTH(fam_WeddingDate)=~month~ ORDER BY Day', 'Birthdays & Anniversaries', 'People with birthdays or wedding anniversaries in a particular month', 0);
 
 -- --------------------------------------------------------
 

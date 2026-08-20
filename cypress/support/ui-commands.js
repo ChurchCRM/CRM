@@ -129,6 +129,42 @@ Cypress.Commands.add('setupNoManageFundraisersSession', (options = {}) => {
 });
 
 /**
+ * Sets up a cached session for a Finance-only user (per_ID=904: grace.financeonly).
+ * This user has Finance=1 and is NOT an admin. Used to verify that Finance-role
+ * users (not just admins) can access fund CRUD, dashboard Financial Settings panel,
+ * and the Finance nav Admin submenu (Envelope Manager, Donation Funds).
+ */
+Cypress.Commands.add('setupFinanceOnlySession', (options = {}) => {
+    const username = Cypress.env('finance.only.username');
+    const password = Cypress.env('finance.only.password');
+    if (!username || !password) {
+        throw new Error('Finance-only user credentials not configured in cypress/configs/docker.config.ts env: finance.only.username and finance.only.password required');
+    }
+    cy.setupLoginSession('finance-only-session', username, password, {
+        ...options,
+        validate: () => {
+            // Validate by checking a finance-protected endpoint
+            cy.request({ url: '/api/deposits', failOnStatusCode: false })
+                .its('status').should('eq', 200);
+        }
+    });
+});
+
+/**
+ * Sets up a cached session for a ManageGroups-only user (per_ID=905: kyle.kioskonly).
+ * This user has ManageGroups=1 and is NOT an admin. Used to verify that ManageGroups-role
+ * users (not just admins) can access the Kiosk Manager page and API.
+ */
+Cypress.Commands.add('setupManageGroupsOnlySession', (options = {}) => {
+    const username = Cypress.env('managegroups.only.username');
+    const password = Cypress.env('managegroups.only.password');
+    if (!username || !password) {
+        throw new Error('ManageGroups-only user credentials not configured in cypress/configs/docker.config.ts env: managegroups.only.username and managegroups.only.password required');
+    }
+    cy.setupLoginSession('managegroups-only-session', username, password, options);
+});
+
+/**
  * cy.loginWithCredentials(username, password, sessionName, expectSuccess = true)
  * Login with custom credentials (for testing password changes, etc.)
  * Creates a new session with the provided credentials
@@ -496,5 +532,43 @@ Cypress.Commands.add('waitForNotification', (expectedText, options = {}) => {
     cy.get('.notyf__toast', { timeout })
         .should('be.visible')
         .should('contain', expectedText);
+});
+
+/**
+ * Sets the locale-admin user's ui.locale preference to localeValue then establishes
+ * an authenticated browser session for that user.  Uses the dedicated locale-admin
+ * API key so no other user's session is affected.
+ *
+ * Intended for use in locale smoke tests only.  The localeValue must be the
+ * locale field from src/locale/locales.json (e.g. 'ar_EG', 'zh_CN', 'de_DE').
+ *
+ * @param {string} localeValue - The locale field value from locales.json
+ * @example cy.setupLocaleAdminSession('ar_EG')
+ */
+Cypress.Commands.add('setupLocaleAdminSession', (localeValue) => {
+    const userId = Cypress.env('locale.admin.id');
+    const apiKey = Cypress.env('locale.admin.api.key');
+    const username = Cypress.env('locale.admin.username');
+    const password = Cypress.env('locale.admin.password');
+
+    if (!userId || !apiKey || !username || !password) {
+        throw new Error(
+            'Locale-admin credentials not configured. ' +
+            'Ensure locale.admin.id, locale.admin.api.key, locale.admin.username, ' +
+            'and locale.admin.password are set in cypress/configs/locale.config.ts env.',
+        );
+    }
+
+    // Set the user's locale preference via API (withCredentials:false avoids
+    // interfering with the browser session cookie that cy.session manages).
+    cy.makePrivateAPICall(apiKey, 'POST', `/api/user/${userId}/setting/ui.locale`, { value: localeValue }, 200);
+
+    // Establish (or restore from cache) the browser session for locale-admin.
+    // Known limitation: the cy.session key is static ('locale-admin-session'),
+    // so if the locale were ever read at login time rather than per-request
+    // (e.g. persisted in the session cookie), the cache could serve a stale
+    // locale. ChurchCRM resolves locale per-request from the DB preference,
+    // so this is safe for now.
+    cy.setupLoginSession('locale-admin-session', username, password);
 });
 

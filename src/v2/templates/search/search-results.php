@@ -19,7 +19,7 @@ $groupIcons = [
 <form method="get" action="<?= SystemURLs::getRootPath() ?>/v2/search" class="mb-4">
   <div class="input-icon" style="max-width: 600px;">
     <span class="input-icon-addon">
-      <i class="ti ti-search"></i>
+      <i class="fa-solid fa-search"></i>
     </span>
     <input type="search" name="q" class="form-control form-control-lg"
            value="<?= InputUtils::escapeHTML($query) ?>"
@@ -32,7 +32,7 @@ $groupIcons = [
 
   <div class="empty">
     <div class="empty-icon">
-      <i class="ti ti-search" style="font-size: 3rem; color: var(--tblr-secondary);"></i>
+      <i class="fa-solid fa-search" style="font-size: 3rem; color: var(--tblr-secondary);"></i>
     </div>
     <p class="empty-title"><?= gettext('Enter a search term') ?></p>
     <p class="empty-subtitle text-secondary">
@@ -44,7 +44,7 @@ $groupIcons = [
 
   <div class="empty">
     <div class="empty-icon">
-      <i class="ti ti-zoom-question" style="font-size: 3rem; color: var(--tblr-secondary);"></i>
+      <i class="fa-solid fa-circle-question" style="font-size: 3rem; color: var(--tblr-secondary);"></i>
     </div>
     <p class="empty-title"><?= gettext('No results found') ?></p>
     <p class="empty-subtitle text-secondary">
@@ -88,7 +88,7 @@ $groupIcons = [
               <a href="<?= InputUtils::escapeHTML($result->uri) ?>"
                  class="list-group-item list-group-item-action d-flex align-items-center py-3">
                 <span><?= InputUtils::escapeHTML($result->text) ?></span>
-                <i class="ti ti-chevron-right ms-auto text-secondary"></i>
+                <i class="fa-solid fa-chevron-right ms-auto text-secondary"></i>
               </a>
             <?php endforeach; ?>
           </div>

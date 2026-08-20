@@ -53,10 +53,6 @@ msgid "Show neighbors with these classifications"
 msgstr "Show neighbours with these classifications"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Choose between light and dark colour scheme"
-
-#: 
 msgid "Primary Color"
 msgstr "Primary Colour"
 

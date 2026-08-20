@@ -1,18 +1,22 @@
 {
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "{{count}} 人のメンバーをコピーしました",
-    "other": "{{count}} 人のメンバーをコピーしました"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "このリストには {{count}} 人の受信者がいます — mailto: リンクには多すぎます。代わりに「アドレスをコピー」を使用してください。",
-    "other": "このリストには {{count}} 人の受信者がいます — mailto: リンクには多すぎます。代わりに「アドレスをコピー」を使用してください。"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "メールクライアントに対して受信者が多すぎます ({{count}} > {{max}})。代わりに「アドレスをコピー」を使用してください。",
-    "other": "メールクライアントに対して受信者が多すぎます ({{count}} > {{max}})。代わりに「アドレスをコピー」を使用してください。"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "残り {{count}} 分",
-    "other": "残り {{count}} 分"
+    "one": "",
+    "other": ""
   }
 }

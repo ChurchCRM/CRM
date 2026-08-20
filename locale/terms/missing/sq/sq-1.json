@@ -1,18 +1,30 @@
 {
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "Email-i u dërgua tek %d familje.|Email-i u dërgua tek %d familje.",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF-i u dërgua me sukses me email tek %d familje.|PDF-i u dërgua me sukses me email tek %d familje.",
+    "other": ""
+  },
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "U kopjua {{count}} anëtar",
-    "other": "U kopjuan {{count}} anêtarë"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat.",
-    "other": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Shumë marrës për klientin e postës elektronike ({{count}} > {{max}}). Përdorni Kopjo Adresat.",
-    "other": "Shumë marrës për klientin e postës elektronike ({{count}} > {{max}}). Përdorni Kopjo Adresat."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} minutë mbetur",
-    "other": "{{count}} minuta mbetur"
+    "one": "",
+    "other": ""
   }
 }

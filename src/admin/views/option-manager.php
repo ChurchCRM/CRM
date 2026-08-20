@@ -75,13 +75,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <td class="w-1">
                         <div class="dropdown">
                             <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static">
-                                <i class="ti ti-dots-vertical"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <button type="button" class="dropdown-item move-up-btn"><i class="ti ti-arrow-up me-2"></i><?= gettext('Move up') ?></button>
-                                <button type="button" class="dropdown-item move-down-btn"><i class="ti ti-arrow-down me-2"></i><?= gettext('Move down') ?></button>
+                                <button type="button" class="dropdown-item move-up-btn"><i class="fa-solid fa-arrow-up me-2"></i><?= gettext('Move up') ?></button>
+                                <button type="button" class="dropdown-item move-down-btn"><i class="fa-solid fa-arrow-down me-2"></i><?= gettext('Move down') ?></button>
                                 <div class="dropdown-divider"></div>
-                                <button type="button" class="dropdown-item text-danger delete-btn"><i class="ti ti-trash me-2"></i><?= gettext('Delete') ?></button>
+                                <button type="button" class="dropdown-item text-danger delete-btn"><i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?></button>
                             </div>
                         </div>
                     </td>

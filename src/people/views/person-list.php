@@ -169,7 +169,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
 <div class="card mb-3">
     <div class="card-header">
-        <h3 class="card-title"><i class="ti ti-filter me-1"></i> <span id="filters-title"></span></h3>
+        <h3 class="card-title"><i class="fa-solid fa-filter me-1"></i> <span id="filters-title"></span></h3>
     </div>
     <div class="card-body">
         <div class="row g-3">
@@ -220,7 +220,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
         </div>
         <div class="mt-3">
             <button id="ClearFilter" type="button" class="btn btn-secondary w-100">
-                <i class="ti ti-x me-1"></i> <span id="clear-filter-text"></span>
+                <i class="fa-solid fa-xmark me-1"></i> <span id="clear-filter-text"></span>
             </button>
         </div>
     </div>
@@ -228,7 +228,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title"><i class="ti ti-users me-1"></i> <span id="people-title"></span></h3>
+        <h3 class="card-title"><i class="fa-solid fa-users me-1"></i> <span id="people-title"></span></h3>
     </div>
     <div class="card-body">
         <table id="members" class="table table-vcenter table-hover data-table mb-0">
@@ -453,20 +453,20 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 <td>
                     <div class="dropdown">
                         <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                            <i class="ti ti-dots-vertical"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="<?= $person->getViewURI() ?>">
-                                <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                             </a>
                             <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
-                                <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                             </a>
                             <?php endif; ?>
                             <?php if ($person->getFamId()): ?>
                             <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $person->getFamId()) ?>">
-                                <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                <i class="fa-solid fa-users me-2"></i><?= gettext('View Family') ?>
                             </a>
                             <?php endif; ?>
                             <div class="dropdown-divider"></div>
@@ -477,7 +477,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 data-cart-type="person"
                                 data-label-add="<?= gettext('Add to Cart') ?>"
                                 data-label-remove="<?= gettext('Remove from Cart') ?>">
-                                <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                <i class="<?= $inCart ? 'fa-solid fa-trash' : 'fa-solid fa-cart-plus' ?> me-2"></i>
                                 <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                             </button>
                             <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
@@ -486,7 +486,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 class="dropdown-item text-danger delete-person"
                                 data-person_id="<?= $person->getId() ?>"
                                 data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>">
-                                <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                             </button>
                             <?php endif; ?>
                         </div>

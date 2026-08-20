@@ -102,7 +102,7 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                     <div class="text-muted small mb-1"><?= gettext('Deposit Slip') ?></div>
                     <div class="fw-bold">
                         <a href="<?= $sRootPath ?>/DepositSlipEditor.php?DepositSlipID=<?= (int) $pledge['depositId'] ?>">
-                            <?= gettext('Deposit #') . (int) $pledge['depositId'] ?>
+                            <?= sprintf(gettext('Deposit #%d'), (int) $pledge['depositId']) ?>
                         </a>
                     </div>
                 </div>
@@ -193,7 +193,7 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
             </a>
             <button type="button" class="btn btn-danger ms-auto" id="deletePledgeBtn"
                 data-group-key="<?= InputUtils::escapeAttribute($pledge['groupKey']) ?>">
-                <i class="fa-solid fa-trash-alt me-1"></i><?= gettext('Delete') ?>
+                <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
             </button>
         </div>
     </div>

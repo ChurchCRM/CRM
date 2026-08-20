@@ -1,18 +1,22 @@
 {
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "{{count}} tag másolva",
-    "other": "{{count}} tag másolva"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Ez a lista {{count}} címzettet tartalmaz — túl sok egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót.",
-    "other": "Ez a lista {{count}} címzettet tartalmaz — túl sok egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Túl sok címzett az e-mail kliensnek ({{count}} > {{max}}). Használja a Címek másolása funkciót.",
-    "other": "Túl sok címzett az e-mail kliensnek ({{count}} > {{max}}). Használja a Címek másolása funkciót."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} perc van hátra",
-    "other": "{{count}} perc van hátra"
+    "one": "",
+    "other": ""
   }
 }

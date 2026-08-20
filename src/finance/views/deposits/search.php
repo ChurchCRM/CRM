@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 
 /**
@@ -61,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <h3 class="card-title"><?= gettext('Search Deposits') ?></h3>
       <div class="card-options">
         <a href="#" class="card-options-collapse" data-bs-toggle="collapse" data-bs-target="#depositSearchForm">
-          <i class="ti ti-chevron-up"></i>
+          <i class="fa-solid fa-chevron-up"></i>
         </a>
       </div>
     </div>
@@ -130,10 +131,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="col-md-4 d-flex align-items-end gap-2">
               <button type="submit" class="btn btn-primary">
-                <i class="ti ti-search me-1"></i><?= gettext('Search') ?>
+                <i class="fa-solid fa-search me-1"></i><?= gettext('Search') ?>
               </button>
               <a href="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/deposit/search" class="btn btn-secondary">
-                <i class="ti ti-x me-1"></i><?= gettext('Clear') ?>
+                <i class="fa-solid fa-xmark me-1"></i><?= gettext('Clear') ?>
               </a>
             </div>
           </div>
@@ -152,19 +153,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('Select All') ?>
         </button>
         <button type="button" id="btnDeleteSelected" class="btn btn-sm btn-danger" disabled>
-          <i class="ti ti-trash me-1"></i><?= gettext('Delete') ?>
+          <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
         </button>
         <button type="button" id="btnExportCSV" class="btn btn-sm btn-success" disabled data-export-type="csv">
-          <i class="ti ti-download me-1"></i><?= gettext('CSV') ?>
+          <i class="fa-solid fa-download me-1"></i><?= gettext('CSV') ?>
         </button>
         <button type="button" id="btnExportOFX" class="btn btn-sm btn-success" disabled data-export-type="ofx">
-          <i class="ti ti-download me-1"></i><?= gettext('OFX') ?>
+          <i class="fa-solid fa-download me-1"></i><?= gettext('OFX') ?>
         </button>
         <button type="button" id="btnExportPDF" class="btn btn-sm btn-success" disabled data-export-type="pdf">
-          <i class="ti ti-file-type-pdf me-1"></i><?= gettext('PDF') ?>
+          <i class="fa-solid fa-file-type-pdf me-1"></i><?= gettext('PDF') ?>
         </button>
         <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#newDepositModal">
-          <i class="ti ti-plus me-1"></i><?= gettext('New Deposit') ?>
+          <i class="fa-solid fa-plus me-1"></i><?= gettext('New Deposit') ?>
         </a>
       </div>
     </div>
@@ -199,7 +200,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 $depositDate  = InputUtils::escapeHTML($deposit['Date'] ?? '');
                 $depositType  = InputUtils::escapeHTML($deposit['Type'] ?? '');
                 $depositComm  = InputUtils::escapeHTML($deposit['Comment'] ?? '');
-                $totalAmount  = number_format((float) ($deposit['totalAmount'] ?? 0), 2);
+                $totalAmount  = CurrencyFormatter::formatHtml($deposit['totalAmount'] ?? 0);
                 $isClosed     = (bool) ($deposit['Closed'] ?? false);
                 $tellerName   = InputUtils::escapeHTML($deposit['tellerName'] ?? '');
                 $editUrl      = InputUtils::escapeAttribute($sRootPath . '/DepositSlipEditor.php?DepositSlipID=' . $depositId);
@@ -217,7 +218,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <td><?= $depositDate ?></td>
                 <td><?= $depositType ?></td>
                 <td><?= $depositComm ?></td>
-                <td><?= $totalAmount ?></td>
+                <td data-order="<?= htmlspecialchars((string) ($deposit['totalAmount'] ?? 0), ENT_QUOTES, 'UTF-8') ?>"><?= $totalAmount ?></td>
                 <td>
                   <?php if ($isClosed) : ?>
                     <span class="badge bg-secondary"><?= gettext('Closed') ?></span>
@@ -230,14 +231,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="dropdown">
                     <button class="btn btn-sm btn-ghost-secondary" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="ti ti-dots-vertical"></i>
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                       <a class="dropdown-item" href="<?= $editUrl ?>">
-                        <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                        <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                       </a>
                       <a class="dropdown-item" href="<?= $addPayUrl ?>">
-                        <i class="ti ti-plus me-2"></i><?= gettext('Add Payment') ?>
+                        <i class="fa-solid fa-plus me-2"></i><?= gettext('Add Payment') ?>
                       </a>
                     </div>
                   </div>

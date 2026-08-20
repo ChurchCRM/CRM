@@ -558,16 +558,8 @@ msgid "Picture URL"
 msgstr "የስዕል ዩአርኤል"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "የልገሳ ፈንድ አዘጋጅ"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "ልክ ያልሆኑ መስኮች ወይም ምርጫዎች። ለውጦች አልተቀመጡም! እባክህ አስተካክል እና እንደገና ሞክር!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "እስካሁን ምንም ገንዘብ አልተጨመረም።"
 
 #: 
 msgid "Active"
@@ -1093,25 +1085,9 @@ msgid "Create Report"
 msgstr "ሪፖርት ፍጠር"
 
 #: 
-msgid "Deposit Listing"
-msgstr "የተቀማጭ ገንዘብ ዝርዝር"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "ተቀማጭ ገንዘብ"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "የተመረጡ ረድፎችን ሰርዝ"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "የተመረጡ ረድፎችን ወደ ውጪ ላክ (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "የተመረጡ ረድፎችን ወደ ውጪ ላክ  (CSV) "
 
 #: 
 msgid "Fundraiser Listing"
@@ -1276,10 +1252,6 @@ msgid "Enabled"
 msgstr "ተአ ከ"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "ቡድን-ተኮር ንብረቶች ቅጽን ያርትዑ"
-
-#: 
 msgid "Disabled"
 msgstr "ተአ ደህና ድምዳመ"
 
@@ -1331,14 +1303,6 @@ msgstr "ቡድን-ተኮር ንብረቶች ቅጽ አርታዒ"
 #: 
 msgid "No properties have been added yet"
 msgstr "እስካሁን ምንም ንብረቶች አልተጨመሩም።"
-
-#: 
-msgid "Show in"
-msgstr "ውስጥ አሳይ"
-
-#: 
-msgid "Person View"
-msgstr "የሰው እይታ"
 
 #: 
 msgid "Other Email"
@@ -2195,14 +2159,6 @@ msgstr "የተለገሱ ዕቃዎች"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "የተገዙ ዕቃዎች"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "የሁሉም ግዢዎች ድምር፡$"
-
-#: 
-msgid "Total purchases: $"
-msgstr "ጠቅላላ ግዢዎች: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4873,10 +4829,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ለመጠቀም የመደበቂያ ስርዓቱን ያቀናብሩ - ssl (የተቋረጠ) ወይም tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "ለተመረጡት ረድፎች (PDF) የተቀማጭ ወረቀት ይፍጠሩ"
-
-#: 
 msgid "Add All to Cart"
 msgstr "ሁሉን ወደ ጋሪ ጨምር"
 
@@ -5174,10 +5126,6 @@ msgstr "ፒዲኤፍ"
 #: 
 msgid "Error sending email(s)"
 msgstr "ኢሜል የመላክ ስህተት "
-
-#: 
-msgid "Please check logs for more information"
-msgstr "ለበለጠ መረጃ እባክዎን የምዝግብ ማስታወሻዎችን ይመልከቱ"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5574,10 +5522,6 @@ msgstr "ቤተሰብ ከጋሪ ተወግዷል"
 #: 
 msgid "Add Group"
 msgstr "ቡድን አክል"
-
-#: 
-msgid "Back to Group List"
-msgstr "ወደ ቡድን ዝርዝር ተመለስ"
 
 #: 
 msgid "Edit Group"
@@ -7358,10 +7302,6 @@ msgid "Order"
 msgstr "ቅደም ተከተል"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDFዎች በተሳካ ሁኔታ ለ %s ቤተሰቦች በኢሜይል ተልከዋል።"
-
-#: 
 msgid "Percentage"
 msgstr "ፐርሰንት"
 
@@ -7400,10 +7340,6 @@ msgstr "የመጀመሪያ የንብረት ዓይነትዎን ያክሉ"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "ይህን መስክ በመሰረዝ፣ ለዚህ መስክ የተመደበውን ሁሉንም የቡድን አባል ውሂብ በማይመለስ ሁኔታ ያጣሉ!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "ይህን ፈንድ በመሰረዝ፣ ታሪካዊ የልገሳ መዝገቦችን ሊጎዱ ይችላሉ!"
 
 #: 
 msgid "Category Name"
@@ -7458,10 +7394,6 @@ msgid "Filter by Class"
 msgstr "በክፍል አጣራ"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "ፈንድ በተሳካ ሁኔታ ተሰርዟል"
-
-#: 
 msgid "In Use"
 msgstr "በአገልግሎት ላይ"
 
@@ -7508,10 +7440,6 @@ msgstr "ይህን የመገኘት ቆጠራ ያስወግዱ?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ይህ ንብረት የሚተገበርበትን የመዝገብ ዓይነት ይምረጡ"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ያ የፈንድ ስም ቀድሞውኑ አለ።"
 
 #: 
 msgid "Total Pledges"
@@ -10003,10 +9931,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "ሰውነት ቤተሰቦች ቡድን አድራሻ እና ተጨማሪ ጠሎ ፈልግ።"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "ዳቦ ሙሙ መያዝ ፈልግ ይተንትን"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "ሰውነት ቤተሰቦች ቡድን ፈልግ…"
 
@@ -10659,11 +10583,6 @@ msgstr "ወደ ክሊፕቦርድ ይቅዱ"
 msgid "Custom field"
 msgstr "ብጁ ሜዳ"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "ብጁ ፍለጋ"
-
 #: 
 msgid "Default Country"
 msgstr "ነባር ሀገር"
@@ -10725,11 +10644,6 @@ msgstr "የመስክ እሴት"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "አንድ ዓመት ግን ሌላ አልጋለበው ሰዎች ያግኙ"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "ብጁ ሜዳ እሴት ሰዎች ያግኙ"
 
 #. Context: query_qry
 #: 
@@ -11992,10 +11906,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "ለውጦቹ እስከሚቀጥለው ግባ ድረስ ተፈጻሚ አይሆኑም።"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "ብርሃን ወይም ጨለማ የቀለም ሥርዓት ይምረጡ"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "የፕሮግራሙን መልክና ስሜት ያብጁ"
 
@@ -12750,10 +12660,6 @@ msgstr "ኬክሮስና ኬንትሮስ ሁለቱም አብረው መሰጠት �
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "የቤተ ክርስቲያን መረጃ ተቀምጧል፣ ግን አድራሻው ራሱ ሊገኝ አልቻለም። እባክዎ ኬክሮስ እና ኬንትሮስ ከካርታ መጋጠሚያዎች ስር ጊዜ ሰጥተው ያስገቡ።"
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "መጋጠሚያዎቹ ሲቀመጡ ከአድራሻዎ ራሱ ይወሰናሉ (በ OpenStreetMap አማካኝነት)። ከዚህ ስር ጊዜ ሰጥተው ማስገባትም ይችላሉ — ጊዜ ሰጥቶ ያስገቡ ዋጋዎች ሁሌ ቅድሚያ ይሰጣቸዋል። ስርዓቱ ከአድራሻ ጂኦኮድ እንዲያደርግ ሁለቱንም ባዶ ያቆዩ።"
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14012,10 +13918,6 @@ msgid "Are you sure you want to continue?"
 msgstr "ይቀጥሉ ይፈልጋሉ?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "ሎ ተቀማጭ ገንዘብ ከሥፈት ወረ አንተ ወደም?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "ይህን የዝግጅት አይነት ለመሰረዝ እርግጠኛ ነዎት? ይህን ድርጊት ሊቀለበስ አይችልም።"
 
@@ -14266,10 +14168,6 @@ msgstr "የናሙና መረጃ በተለምዶ በአዲስ ጭነቶች ላይ 
 #: 
 msgid "Deposit ID"
 msgstr "የተቀማጭ መለያ (ID)"
-
-#: 
-msgid "Deposit Total"
-msgstr "አጠቃላይ ተቀማጭ"
 
 #: 
 msgid "Deposit Value"
@@ -14584,10 +14482,6 @@ msgstr "ቡድን በስኖ ሞሉሊ።"
 #: 
 msgid "Group removed from cart"
 msgstr "ቡድን ከጋሪ ተወግዷል"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "ለሚና ምርጫ ጥያቄ የቡድን መታወቂያ ያስፈልጋል "
 
 #: 
 msgid "HTML URL"
@@ -14967,20 +14861,8 @@ msgid "Please select a role."
 msgstr "እባክዎ ሚና ይምረጡ።"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "እባክዎ ቡድን እና ሚና ሁለቱንም ይምረጡ።"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "እባክዎን የሚሰረዙ ረድፎችን ይምረጡ"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "እባክዎ ለአባላት ዒላማ ሚና ይምረጡ"
-
-#: 
-msgid "Please select target group for members"
-msgstr "እባክዎ ለአባላት የታለመ ቡድንን ይምረጡ"
 
 #: 
 msgid "Please try again"
@@ -15876,24 +15758,12 @@ msgid "Account status"
 msgstr "የመለያ ሁኔታ"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "የላቀ: ልዩ ዒላማ ስሪት ይምረጡ"
-
-#: 
 msgid "Bug Fix"
 msgstr "ስህተት ማስተካከያ"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "በነባሪ ሁኔታ አዋቂው ቀጣዩን የሚመከረው ስሪት ያወርዳል። ይልቁንስ ከዚህ በታች ያሉ ማናቸውንም ስሪቶች መምረጥ ይችላሉ።"
-
-#: 
 msgid "Change required"
 msgstr "ለውጥ ያስፈልጋል"
-
-#: 
-msgid "Changelog"
-msgstr "የለውጥ መዝገብ"
 
 #: 
 msgid "Continue Anyway"
@@ -15902,10 +15772,6 @@ msgstr "ያም ሆኖ ቀጥል"
 #: 
 msgid "Could not load release information."
 msgstr "የስሪት መረጃ መጫን አልተቻለም።"
-
-#: 
-msgid "Download & Install"
-msgstr "አውርድ እና ጫን"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15934,10 +15800,6 @@ msgstr "ሙሉ የለውጥ መዝገብ"
 #: 
 msgid "Install stable {{version}}"
 msgstr "የተረጋጋ {{version}} ጫን"
-
-#: 
-msgid "Installing next release"
-msgstr "ቀጣዩን ስሪት እየጫነ ነው"
 
 #: 
 msgid "Invalid file path"
@@ -16008,10 +15870,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "ሙሉ የማሻሻያ ዱካ አሳይ"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "የቅርብ ጊዜ የተረጋጋ ስሪት {{version}} ነው። ከዚህ በታች እንደገና መጫን ይችላሉ።"
 
@@ -16038,10 +15896,6 @@ msgstr "የስሪት ማስታወሻዎችን ይመልከቱ"
 #: 
 msgid "What's New"
 msgstr "ምን አዲስ ነገር አለ"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "በ {{version}} ውስጥ ምን አዲስ ነገር አለ"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16660,10 +16514,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "የኢሜይል ተግባር በአሁኑ ጊዜ ተሰናክሏል። ኢሜይል እስኪነቃ ድረስ አይሰሩም"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "የተገመተ ዋጋ $%s።"
-
-#: 
 msgid "Fastest workflow"
 msgstr "ፈጣኑ የሥራ ፍሰት"
 
@@ -16706,10 +16556,6 @@ msgstr "አካባቢያዊ ልማት"
 #: 
 msgid "Minimum Total Amount"
 msgstr "አነስተኛ ጠቅላላ መጠን"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "አነስተኛ ጨረታ $%s።"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17012,10 +16858,6 @@ msgid "Working..."
 msgstr "በሥራ ላይ..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "{{releaseCount}} ሬሊዝ ወደ ኋላ ቀርተዋል። እነሆ የሚያገኙት"
-
-#: 
 msgid "click to expand"
 msgstr "ለማስፋፋት ጠቅ ያድርጉ"
 
@@ -17270,10 +17112,6 @@ msgstr "ቃል-ኪዳን መፍጠር አልተሳካም"
 #: 
 msgid "Failed to delete pledge"
 msgstr "ቃል-ኪዳን መሰረዝ አልተሳካም"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "የክፍያ ምላሽ ኢንኮድ ማድረግ አልተሳካም"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17546,4 +17384,442 @@ msgstr "ዛሬ ስለ እርስዎ እያሰበ ነው።"
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "የገጽ መስመሮች፣ ንቁ ቋንቋ፣ CRM ስሪት፣ PHP ስሪት፣ የOS ቤተሰብ እና የዘፈቀደ የጭነት ID። ሌላ ምንም አይደለም። ዳታ በEU ውስጥ ይቀመጣል።"
+
+#: 
+msgid "% Paid"
+msgstr "% ተከፍሏል"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: እባክዎ የቤተሰብዎን መረጃ ያረጋግጡ"
+
+#: 
+msgid "Add Role"
+msgstr "ሚና ጨምር"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "ለዚህ ቡድን የሚስማሙ ብጁ ባሕሪያትን ጨምር"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "መጋጠሚያዎቹ ከተቀመጡ ጀምሮ አድራሻው ተቀይሯል።"
+
+#: 
+msgid "All Tellers"
+msgstr "ሁሉም ገንዘብ ተቀባዮች"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "ሁሉም ኢሜሎች አልተላኩም። እባክዎ በስርዓት ቅንጅቶች ውስጥ የ SMTP ቅንጅቶቹን ያረጋግጡ።"
+
+#: 
+msgid "Amount Max"
+msgstr "ከፍተኛ መጠን"
+
+#: 
+msgid "Amount Min"
+msgstr "ዝቅተኛ መጠን"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "ኢሜሎችን በመላክ ወቅት ያልተጠበቀ ስህተት ተፈጥሯል። እባክዎ የ SMTP ቅንጅቶቹን እና የሰርቨር ምዝገባዎቹን ያረጋግጡ።"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' ሚናን ማስወገድ እንደሚፈልጉ እርግጠኛ ነዎት?"
+
+#: 
+msgid "Auto"
+msgstr "አውቶ"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "አውቶ የስርዓትዎን ወይም አሳሽዎን ቅንጅት ይከተላል; ብርሃን እና ጨለማ ይሽሩታል"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "ወደ ቃልኪዳን ዳሽቦርድ ተመለስ"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "ለላዩ አድራሻ የካርታ ቦታ ለመፈለግ \"መጋጠሚያዎችን አፍጠር\" ን ጠቅ ያድርጉ፣ ወይም ኬክሮስ/ኬንትሮስን እጅ ሲሠሩ ያስገቡ። ባዶ ከቀረ፣ ቅጹን ሲያስቀምጡ መጋጠሚያዎቹ ራስ-ሰር ይታወቃሉ።"
+
+#: 
+msgid "Contributor"
+msgstr "አስተዋጽዖ አበርካች"
+
+#: 
+msgid "Contributors"
+msgstr "አስተዋጽዖ አበርካቾች"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "ለዚያ አድራሻ መጋጠሚያዎቹ አልተገኙም። እጅ ሲሠሩ ለማስገባት ይሞክሩ።"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "ለዚህ ቡድን ብጁ ባሕሪያት"
+
+#: 
+msgid "Delete role"
+msgstr "ሚና ሰርዝ"
+
+#: 
+msgid "Email Error"
+msgstr "የኢሜል ስህተት"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "ኢሜል አልተዋቀረም። እባክዎ በስርዓት ቅንጅቶች ውስጥ የ SMTP ቅንጅቶቹን ያዋቅሩ።"
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "ኢሜይል ለ%d ቤተሰብ ተልኳል።"
+msgstr[1] "ኢሜይል ለ%d ቤተሰቦች ተልኳል።"
+
+#: 
+msgid "Enter a street address first."
+msgstr "መጀመሪያ የጎዳና አድራሻ ያስገቡ።"
+
+#: 
+msgid "Enter role name"
+msgstr "የሚና ስም ያስገቡ"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "ተቀማጭ ፈጠር አልተሳካም"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "የኢሜል ቅድሚያ ዕይታ መጫን አልተሳካም"
+
+#: 
+msgid "From Date"
+msgstr "ከቀን"
+
+#: 
+msgid "Fund Total"
+msgstr "የፈንድ ድምር"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "በፊስካል ዓመት የፈንድ አስተዋጽዖ አበርካቾች ቃልኪዳን ማጠቃለያ"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "የገንዘብ ማሰባሰቢያ ተሰናክሏል"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "መጋጠሚያዎችን አፍጠር"
+
+#: 
+msgid "Generating..."
+msgstr "በማፍጠር ላይ..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "የጂኦኮዲንግ ጥያቄ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Manage Events"
+msgstr "ዝግጅቶችን አስተዳድር"
+
+#: 
+msgid "New Deposit"
+msgstr "አዲስ ተቀማጭ"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "ለተመረጠው ፊስካል ዓመት ለዚህ ፈንድ ምንም አስተዋጽዖ አበርካቾች አልተገኙም"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "ኢሜል አድራሻ ያላቸው ቤተሰቦች አልተገኙም። ምንም አልተላከም።"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "ለተመረጡ ተቀማጮች ምንም ክፍያዎች አልተገኙም"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "ምንም ትክክለኛ የተቀማጭ መታወቂያዎች አልቀረቡም"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF ለ%d ቤተሰብ በተሳካ ሁኔታ በኢሜይል ተልኳል።"
+msgstr[1] "PDF ለ%d ቤተሰቦች በተሳካ ሁኔታ በኢሜይል ተልኳል።"
+
+#: 
+msgid "Partial Send"
+msgstr "ከፊል ላክ"
+
+#: 
+msgid "Payments only"
+msgstr "ክፍያዎች ብቻ"
+
+#: 
+msgid "Pledged Amount"
+msgstr "የተቃማው መጠን"
+
+#: 
+msgid "Preview"
+msgstr "ቅድሚያ ዕይታ"
+
+#: 
+msgid "Retry"
+msgstr "እንደገና ሞክር"
+
+#: 
+msgid "Search"
+msgstr "ፈልግ"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "የተቀማጭ ደረሰኝ መዝገቦችን ፈልግ እና አስተዳድር"
+
+#: 
+msgid "Select All"
+msgstr "ሁሉንም ምረጥ"
+
+#: 
+msgid "Send Emails"
+msgstr "ኢሜሎችን ላክ"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "የቤተሰብ ማረጋገጫ ኢሜሎችን ላክ"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d ከሆኑ ውስጥ %1$d ተልኳል — %3$d ቤተሰቦች ሊደረሱ አልቻሉም።"
+
+#: 
+msgid "Show in Profile"
+msgstr "በፕሮፋይል ውስጥ አሳይ"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "ለተመረጠው ፈንድ ብቻ ድምር በማሳየት ላይ"
+
+#: 
+msgid "Teller"
+msgstr "ገንዘብ ተቀባይ"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "ይህ በዚህ ቡድን ውስጥ ያለው ብቸኛ ሚና ነው።"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "ይህ ሚና ሊሰረዝ አይችልም።"
+
+#: 
+msgid "To Date"
+msgstr "እስከ ቀን"
+
+#: 
+msgid "Total Pledged"
+msgstr "ጠቅላላ ቃል የተገባው"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "ኢሜሎችን በመላክ ወቅት ያልተጠበቀ ስህተት። እባክዎ ምዝገባዎቹን ያረጋግጡ።"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "ከላይ ያለውን የጎዳና አድራሻዎን ሲጠቀም OpenStreetMap በኩል መጋጠሚያዎቹን ይፈልጋል።"
+
+#: 
+msgid "View Payment"
+msgstr "ክፍያ ዕይታ"
+
+#: 
+msgid "View Pledge"
+msgstr "ቃልኪዳን ዕይታ"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "ሲመረጥ፣ ይህ ባሕሪ በሰውዬው የቡድን ዝርዝር ውስጥ ከቡድኑ ጎን ጎን በፕሮፋይል ገጹ ላይ ይታያል።"
+
+#: 
+msgid "[Family Name]"
+msgstr "[የቤተሰብ ስም]"
+
+#: 
+msgid "row selected"
+msgstr "ረድፍ ተመርጧል"
+
+#: 
+msgid "rows selected"
+msgstr "ረድፎች ተመርጠዋል"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "የልደት እና የዓመት በዓላት"
+
+#: 
+msgid "Estimated value %s."
+msgstr "የተገመተ ዋጋ %s።"
+
+#: 
+msgid "Minimum bid %s."
+msgstr "አነስተኛ ጫረታ %s።"
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "እስካሁን ምንም \"%s\" አማራጮች አይገኙም። መጀመሪያ ተዛማጅ መዛግብትን ያክሉ።"
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "እስካሁን ምንም \"%s\" አማራጮች አልተዋቀሩም። መጀመሪያ ተዛማጅ መዛግብትን ያክሉ።"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "በተወሰነ ወር ልደት ወይም የጋብቻ ዓመት በዓል ያላቸው ሰዎች"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "ልደቶችና ዓመት በዓላት እንዲመለሱ የሚፈልጉበት ወር።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "መዛግብት እንዲመለሱ የሚፈልጉት የጋብቻ ዓመት በዓል ወር።"
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "የሁሉም ግዢዎች ድምር፡ %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "ጠቅላላ ግዢዎች፡ %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "የጋብቻ ዓመት በዓላት"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "በተወሰነ ወር የጋብቻ ዓመት በዓል ያላቸው ሰዎች"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "ይህን ፈንድ መሰረዝ እንደሚፈልጉ እርግጠኛ ነዎት?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "መሰረዝ አይቻልም፡ ፈንዱ ተዛማጅ ቃልኪዳኖች አሉት"
+
+#: 
+msgid "Delete Fund"
+msgstr "ፈንድ ሰርዝ"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "አቅጣጫ 'ወደ ላይ' ወይም 'ወደ ታች' መሆን አለበት።"
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "የልዕዋቃ ፈንድ አርትዕ"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "የልዕዋቃ ፈንድ ቅደም ተከተሉን ማስተካከል አልተቻለም"
+
+#: 
+msgid "Fund added successfully."
+msgstr "ፈንዱ በተሳካ ሁኔታ ተጨምሯል።"
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "ፈንዱ በተሳካ ሁኔታ ተሰርዟል።"
+
+#: 
+msgid "Fund name"
+msgstr "የፈንድ ስም"
+
+#: 
+msgid "Fund name is required."
+msgstr "የፈንድ ስም ያስፈልጋል።"
+
+#: 
+msgid "Fund order updated."
+msgstr "የፈንድ ቅደም ተከተል ተዘምኗል።"
+
+#: 
+msgid "Fund saved successfully."
+msgstr "ፈንዱ በተሳካ ሁኔታ ተቀምጧል።"
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "እስካሁን ምንም ፈንዶች አልተጨመሩም። የመጀመሪያውን ፈንድ ለመጨመር ከላይ ያለውን ቅጽ ይጠቀሙ።"
+
+#: 
+msgid "Optional description"
+msgstr "አማራጭ መግለጫ"
+
+#: 
+msgid "Private Calendar"
+msgstr "የግል የቀን መቁጠሪያ"
+
+#: 
+msgid "Public Calendar"
+msgstr "የጋራ የቀን መቁጠሪያ"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "የተሻሻለ፡ ይልቁኑ የተወሰነ ስሪት ጫን"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "በነባሪ ሁኔታ አጋዡ ወደ የቅርቡ ስሪት ያሻሽላል። ይልቁኑ ከታች የተወሰነ ስሪት መምረጥ ይችላሉ።"
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "በተዘጋ ተቀማጭ ውስጥ ክፍያ ማርትዕ አይቻልም"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "{{version}} አውርድና ተግብር"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "እያንዳንዱ ChurchCRM ዕትም የደህንነት ጥገናዎችን ያካትታል። ሁልጊዜ ወደ የቅርቡ ስሪት ማሻሻልን በጽኑ እንመክራለን።"
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "የክፍያ ጥያቄን መፍታት አልተቻለም"
+
+#: 
+msgid "Full release notes"
+msgstr "ሙሉ የዕትም ማስታወሻዎች"
+
+#: 
+msgid "Invalid payment data"
+msgstr "ልክ ያልሆነ የክፍያ ውሂብ"
+
+#: 
+msgid "No release notes available."
+msgstr "ምንም የዕትም ማስታወሻዎች አይገኙም።"
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "ማስጠንቀቂያ፡ {{chosen}} በ{{latest}} ውስጥ የተካተቱ የደህንነት ጥገናዎች ይጎድሉታል። ልዩ ምክንያት ካለዎት ብቻ ይቀጥሉ።"
+
+#: 
+msgid "What you'll gain"
+msgstr "የሚያገኙት"
 

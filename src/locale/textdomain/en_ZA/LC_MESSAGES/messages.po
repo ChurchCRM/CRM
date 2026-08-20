@@ -112,14 +112,6 @@ msgid "This option requires at least version 3.22 of MySQL!  Hit browser back bu
 msgstr "This option requires at least MySQL version 3.22!  Hit browser back button to return to ChurchCRM."
 
 #: 
-msgid "Total of all purchases: $"
-msgstr "Total of all purchases: R"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Total purchases: R"
-
-#: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Paid by (  ) Cash    (  ) Cheque    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 
@@ -236,10 +228,6 @@ msgstr "MailChimp Integration enables synchronisation between ChurchCRM contacts
 #: 
 msgid "The month that starts your organization's fiscal year"
 msgstr "The month that starts your organisation's fiscal year"
-
-#: 
-msgid "Choose between light and dark color scheme"
-msgstr "Choose between light and dark colour scheme"
 
 #: 
 msgid "Customize the look and feel of the application"

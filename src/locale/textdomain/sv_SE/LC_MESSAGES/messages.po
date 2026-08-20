@@ -585,16 +585,8 @@ msgid "Picture URL"
 msgstr "Bild URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Insamlingsfond redigerare"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ogiltig fält eller val.  Ändringar sparades inte! Rätta till och försöka igen!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Inga insamlingsfonder skapat än"
 
 #: 
 msgid "Active"
@@ -1124,25 +1116,9 @@ msgid "Create Report"
 msgstr "Skapa rapport"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Insättningslista"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "insättningar"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Radera valda rader"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Exportera valda rader (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Exportera valda rader (CSV)"
 
 #: 
 #, fuzzy
@@ -1317,10 +1293,6 @@ msgid "Enabled"
 msgstr "Aktiverad"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Redigera grupp specifik egenskapar formulär"
-
-#: 
 msgid "Disabled"
 msgstr "Inaktiverad"
 
@@ -1374,14 +1346,6 @@ msgstr "Grupp specifik egenskapar formulär redigeringsverktyg"
 #: 
 msgid "No properties have been added yet"
 msgstr "Inga egenskapar tillägd än"
-
-#: 
-msgid "Show in"
-msgstr "Visa in"
-
-#: 
-msgid "Person View"
-msgstr "Person vy"
 
 #: 
 msgid "Other Email"
@@ -2281,14 +2245,6 @@ msgstr "Donerade Artiklar"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Köpta artiklar:"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Summan av alla inköp: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totala inköp: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4964,10 +4920,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Ställ in krypteringssystemet att använda - ssl (deprecated) eller tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Skapa insättningsslip för valda rader (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Lägg till allt i kundvagnen"
 
@@ -5264,10 +5216,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Fel vid skicka e-post (er)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Kontrollera loggarna för mer information"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5658,10 +5606,6 @@ msgstr "Familj borttagen från kundvagnen"
 #: 
 msgid "Add Group"
 msgstr "Lägg till grupp"
-
-#: 
-msgid "Back to Group List"
-msgstr "Tillbaka till grupplistan"
 
 #: 
 msgid "Edit Group"
@@ -7442,10 +7386,6 @@ msgid "Order"
 msgstr "Ordning"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF-filer har skickats till %s familjer."
-
-#: 
 msgid "Percentage"
 msgstr "Procent"
 
@@ -7484,10 +7424,6 @@ msgstr "Lägg till Din Första Egenskapstyp"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Genom att ta bort detta fält kommer du oåterkalleligt att förlora all gruppmedlemsdata som tilldelats detta fält!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Genom att ta bort denna fond kan du påverka historiska donationsregister!"
 
 #: 
 msgid "Category Name"
@@ -7542,10 +7478,6 @@ msgid "Filter by Class"
 msgstr "Filtrera efter Klass"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fonden har tagits bort"
-
-#: 
 msgid "In Use"
 msgstr "I Användning"
 
@@ -7592,10 +7524,6 @@ msgstr "Ta bort denna närvaroräkning?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Välj den posttyp som denna egenskap gäller för"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Det fondnamnet finns redan."
 
 #: 
 msgid "Total Pledges"
@@ -10087,10 +10015,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Sök bland personer, familjer, grupper, adresser och mer."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Sök och visa kollektinsamlingsposter"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Sök personer, familjer, grupper…"
 
@@ -10743,11 +10667,6 @@ msgstr "Vahkke clipboard"
 msgid "Custom field"
 msgstr "Geažes seavvi"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Geažes ohcan"
-
 #: 
 msgid "Default Country"
 msgstr "Čujuhusat riikka"
@@ -10809,11 +10728,6 @@ msgstr "Seavvi vahkka"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Hitta personer som lovade ett år men inte ett annat"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Hitta personer med ett anpassat fältvärde"
 
 #. Context: query_qry
 #: 
@@ -12076,10 +11990,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Ändringar träder inte i kraft förrän nästa inloggning."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Välj mellan ljust och mörkt färgschema"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Anpassa utseendet och känslan i programmet"
 
@@ -12834,10 +12744,6 @@ msgstr "Både latitud och longitud måste anges tillsammans (eller lämnas tomma
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Kyrkinformation sparad, men adressen kunde inte lokaliseras automatiskt. Ange latitud och longitud manuellt under Kartkoordinater."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koordinater detekteras automatiskt från din adress vid sparande (via OpenStreetMap). Du kan också ange dem manuellt nedan — manuella värden har alltid företräde framför automatisk detektering. Lämna båda tomma för att låta systemet geokoda från adressen."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14096,10 +14002,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Jus it dohko ceavvi go jatkat?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Är du säker på att du vill ta bort denna kollektinsamling?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Är du säker på att du vill ta bort den här händelsetypen? Det går inte att ångra."
 
@@ -14350,10 +14252,6 @@ msgstr "Demonstrationsdata laddas normalt bara in vid nya installationer. Om du 
 #: 
 msgid "Deposit ID"
 msgstr "Insättnings-ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Insättning totalt"
 
 #: 
 msgid "Deposit Value"
@@ -14667,10 +14565,6 @@ msgstr "Gruppen har tagits bort."
 #: 
 msgid "Group removed from cart"
 msgstr "Grupp borttagen från kundvagnen"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID krävs för snabbval av roll"
 
 #: 
 msgid "HTML URL"
@@ -15050,20 +14944,8 @@ msgid "Please select a role."
 msgstr "Välj en roll."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Välj både en grupp och en roll."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Välj rader att radera"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Välj målroll för medlemmarna"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Välj målgrupp för medlemmar"
 
 #: 
 msgid "Please try again"
@@ -15959,24 +15841,12 @@ msgid "Account status"
 msgstr "Kontostatus"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avancerat: välj en specifik målversion"
-
-#: 
 msgid "Bug Fix"
 msgstr "Felkorrigering"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Som standard laddar guiden ned nästa rekommenderade version. Du kan istället välja en tillgänglig version nedan."
-
-#: 
 msgid "Change required"
 msgstr "Ändring krävs"
-
-#: 
-msgid "Changelog"
-msgstr "Ändringslogg"
 
 #: 
 msgid "Continue Anyway"
@@ -15985,10 +15855,6 @@ msgstr "Fortsätt ändå"
 #: 
 msgid "Could not load release information."
 msgstr "Kunde inte läsa in versionsinformation."
-
-#: 
-msgid "Download & Install"
-msgstr "Ladda ned och installera"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -16017,10 +15883,6 @@ msgstr "Fullständig ändringslogg"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installera stabil {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Installerar nästa version"
 
 #: 
 msgid "Invalid file path"
@@ -16091,10 +15953,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Visa fullständig uppgraderingsväg"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Den senaste stabila versionen är {{version}}. Du kan ominstallera den nedan."
 
@@ -16121,10 +15979,6 @@ msgstr "Visa versionsanteckningar"
 #: 
 msgid "What's New"
 msgstr "Nyheter"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Nyheter i {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16743,10 +16597,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-postfunktionen är för närvarande inaktiverad. Följande funktioner fungerar inte förrän e-post aktiveras"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Uppskattat värde $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Snabbaste arbetsflödet"
 
@@ -16789,10 +16639,6 @@ msgstr "Lokal utveckling"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Lägsta totalbelopp"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Lägsta bud $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17095,10 +16941,6 @@ msgid "Working..."
 msgstr "Arbetar..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Du ligger {{releaseCount}} versioner efter. Här är vad du kommer att få"
-
-#: 
 msgid "click to expand"
 msgstr "klicka för att expandera"
 
@@ -17275,6 +17117,10 @@ msgid "Catch recurring errors"
 msgstr "Fånga återkommande fel"
 
 #: 
+msgid "Check #"
+msgstr "Checknr."
+
+#: 
 msgid "Church name, address, or contact details"
 msgstr "Kyrkonamn, adress eller kontaktuppgifter"
 
@@ -17345,10 +17191,6 @@ msgstr "Det gick inte att skapa löftet"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Det gick inte att ta bort löftet"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Det gick inte att koda betalningssvar"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17621,4 +17463,426 @@ msgstr "tänker på dig idag."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "sidvägar, aktiv språkinställning, CRM-version, PHP-version, OS-familj och ett slumpmässigt installations-ID. Inget annat. Data lagras i EU."
+
+#: 
+msgid "% Paid"
+msgstr "% Betald"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Verifiera din familjs information"
+
+#: 
+msgid "Add Role"
+msgstr "Lagg till roll"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Lagg till anpassade egenskaper specifika for den har gruppen"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adressen har andrats sedan koordinaterna senast stalldes in."
+
+#: 
+msgid "All Tellers"
+msgstr "Alla kassorер"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Alla e-postutskick misslyckades. Kontrollera dina SMTP-installningar under Systeminstaallningar."
+
+#: 
+msgid "Amount Max"
+msgstr "Belopp max"
+
+#: 
+msgid "Amount Min"
+msgstr "Belopp min"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Ett ovantat fel intradde vid utskick av e-post. Kontrollera dina SMTP-installningar och serverloggar."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Ar du saker pa att du vill ta bort rollen '{{name}}'?"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Auto foljer ditt OS eller webblasarinstaallning; Ljus och Mork asidosatter det"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Tillbaka till loftesoversiкten"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Klicka pa \"Generera koordinater\" for att sla upp kartplatsen for adressen ovan, eller ange latitud/longitud manuellt. Om faltet lamnas tomt identifieras koordinaterna automatiskt nar du sparar formularet."
+
+#: 
+msgid "Contributor"
+msgstr "Bidragsgivare"
+
+#: 
+msgid "Contributors"
+msgstr "Bidragsgivare"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Kunde inte hitta koordinater for den adressen. Forsok att ange dem manuellt."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Anpassade egenskaper for den har gruppen"
+
+#: 
+msgid "Delete role"
+msgstr "Ta bort roll"
+
+#: 
+msgid "Email Error"
+msgstr "E-postfel"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-post ar inte konfigurerat. Konfigurera SMTP-installningar under Systeminstaallningar."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Ange en gatuadress forst."
+
+#: 
+msgid "Enter role name"
+msgstr "Ange rollnamn"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Det gick inte att skapa insattning"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Det gick inte att lasa in forhandsgranskning av e-post"
+
+#: 
+msgid "From Date"
+msgstr "Fran datum"
+
+#: 
+msgid "Fund Total"
+msgstr "Fondtotal"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Sammanfattning av fondgivarnas loften per rakenskapsar"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Insamlingen ar inaktiverad"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Generera koordinater"
+
+#: 
+msgid "Generating..."
+msgstr "Genererar..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Geokodningsforfragan misslyckades. Forsok igen."
+
+#: 
+msgid "Manage Events"
+msgstr "Hantera evenemang"
+
+#: 
+msgid "New Deposit"
+msgstr "Ny insattning"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Inga bidragsgivare hittades for denna fond under det valda rakenskapsaret"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Inga familjer med e-postadress hittades. Inget skickades."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Inga betalningar hittades for de valda insattningarna"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Inga giltiga insattnings-ID angavs"
+
+#: 
+msgid "Partial Send"
+msgstr "Delvis utskick"
+
+#: 
+msgid "Payments only"
+msgstr "Endast betalningar"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Lovat belopp"
+
+#: 
+msgid "Preview"
+msgstr "Forhandsgranskning"
+
+#: 
+msgid "Retry"
+msgstr "Forsok igen"
+
+#: 
+msgid "Search"
+msgstr "Sok"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Sok och hantera insattningskvittoposter"
+
+#: 
+msgid "Select All"
+msgstr "Valj alla"
+
+#: 
+msgid "Send Emails"
+msgstr "Skicka e-post"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Skicka verifieringsmail till familjer"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Skickade %1$d av %2$d — %3$d familjer kunde inte nas."
+
+#: 
+msgid "Show in Profile"
+msgstr "Visa i profil"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Visar totalt for vald fond endast"
+
+#: 
+msgid "Teller"
+msgstr "Kassor"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Det har ar den enda rollen i den har gruppen."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Den har rollen kan inte tas bort."
+
+#: 
+msgid "To Date"
+msgstr "Till datum"
+
+#: 
+msgid "Total Pledged"
+msgstr "Totalt lovat"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Ovantat fel vid utskick av e-post. Kontrollera loggarna."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Anvander din gatuadress ovan for att sla upp koordinater via OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Visa betalning"
+
+#: 
+msgid "View Pledge"
+msgstr "Visa lofte"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Nar detta ar markerat visas egenskapen tillsammans med gruppen i personens grupplista pa profilsidan."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Familjenamn]"
+
+#: 
+msgid "row selected"
+msgstr "rad vald"
+
+#: 
+msgid "rows selected"
+msgstr "rader valda"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Födelsedagar & jubileer"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Uppskattat värde %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Lägsta bud %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Inga \"%s\"-alternativ är tillgängliga ännu. Lägg till relevanta poster först."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Inga \"%s\"-alternativ är konfigurerade ännu. Lägg till relevanta poster först."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Personer med födelsedag eller bröllopsdag under en viss månad"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Den månad för vilken du vill hämta födelsedagar och jubileer."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Den månad för bröllopsdag för vilken du vill hämta poster."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Totalt för alla köp: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Totala köp: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Bröllopsdagar"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Personer med bröllopsdag under en viss månad"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Ett fel uppstod. Försök igen."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Är du säker på att du vill ta bort denna fond?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Kan inte ta bort: fonden har tillhörande löften"
+
+#: 
+msgid "Delete Fund"
+msgstr "Ta bort fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Riktningen måste vara 'upp' eller 'ner'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Redigera gåvofond"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Det gick inte att ändra ordning på gåvofonden"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fonden har lagts till."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fonden har tagits bort."
+
+#: 
+msgid "Fund name"
+msgstr "Fondens namn"
+
+#: 
+msgid "Fund name is required."
+msgstr "Fondens namn är obligatoriskt."
+
+#: 
+msgid "Fund order updated."
+msgstr "Fondordningen har uppdaterats."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fonden har sparats."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Inga fonder har lagts till ännu. Använd formuläret ovan för att lägga till den första fonden."
+
+#: 
+msgid "Optional description"
+msgstr "Valfri beskrivning"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privat kalender"
+
+#: 
+msgid "Public Calendar"
+msgstr "Offentlig kalender"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Avancerat: Installera en specifik version istället"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Som standard uppgraderar guiden till den senaste versionen. Du kan istället välja en specifik version nedan."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Det går inte att redigera en betalning i en avslutad insättning"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Hämta och tillämpa {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Varje ChurchCRM-version innehåller säkerhetskorrigeringar. Vi rekommenderar starkt att alltid uppgradera till den senaste versionen."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Det gick inte att avkoda betalningsbegäran"
+
+#: 
+msgid "Full release notes"
+msgstr "Fullständiga versionskommentarer"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Ogiltiga betalningsuppgifter"
+
+#: 
+msgid "No release notes available."
+msgstr "Inga versionskommentarer tillgängliga."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Varning: {{chosen}} saknar säkerhetskorrigeringar som ingår i {{latest}}. Fortsätt bara om du har ett specifikt skäl."
+
+#: 
+msgid "What you'll gain"
+msgstr "Vad du kommer att vinna"
 

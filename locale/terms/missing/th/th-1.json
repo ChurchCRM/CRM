@@ -1,18 +1,22 @@
 {
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "คัดลอก {{count}} สมาชิกแล้ว",
-    "other": "คัดลอก {{count}} สมาชิกแล้ว"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "รายการนี้มีผู้รับ {{count}} ราย — มากเกินไปสำหรับลิงก์ mailto: ให้ใช้คัดลอกที่อยู่แทน",
-    "other": "รายการนี้มีผู้รับ {{count}} ราย — มากเกินไปสำหรับลิงก์ mailto: ให้ใช้คัดลอกที่อยู่แทน"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) ให้ใช้คัดลอกที่อยู่แทน",
-    "other": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) ให้ใช้คัดลอกที่อยู่แทน"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "เหลืออีก {{count}} นาที",
-    "other": "เหลืออีก {{count}} นาที"
+    "one": "",
+    "other": ""
   }
 }

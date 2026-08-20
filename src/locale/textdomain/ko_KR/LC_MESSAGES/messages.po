@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "사진 URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "헌금 항목 편집"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "잘못된 필드나 선택입니다. 변경 사항이 저장되지 않았습니다! 수정 후 다시 시도하세요!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "등록된 헌금 항목이 없습니다."
 
 #: 
 msgid "Active"
@@ -1094,25 +1086,9 @@ msgid "Create Report"
 msgstr "보고서 생성"
 
 #: 
-msgid "Deposit Listing"
-msgstr "입금 내역서 목록"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "입금 내역서"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "선택한 행 삭제"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "선택한 행 내보내기(OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "선택한 행 내보내기(CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1253,6 @@ msgid "Enabled"
 msgstr "사용"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "그룹 전용 속성 양식 편집"
-
-#: 
 msgid "Disabled"
 msgstr "사용 안 함"
 
@@ -1332,14 +1304,6 @@ msgstr "그룹 전용 속성 양식 편집"
 #: 
 msgid "No properties have been added yet"
 msgstr "추가된 속성이 없습니다."
-
-#: 
-msgid "Show in"
-msgstr "표시 위치"
-
-#: 
-msgid "Person View"
-msgstr "개인 화면"
 
 #: 
 msgid "Other Email"
@@ -2196,14 +2160,6 @@ msgstr "기증 물품"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "구매 품목"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "총 구매액: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "구매 총액: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4870,10 +4826,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "사용할 암호화 방식을 설정합니다 - ssl(사용 중단) 또는 tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "선택한 행의 입금 내역서 생성(PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "모두 카트에 추가"
 
@@ -5168,10 +5120,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "이메일 발송 중 오류가 발생했습니다"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "자세한 내용은 로그를 확인하세요"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5559,10 +5507,6 @@ msgstr "가족이 장바구니에서 제거되었습니다"
 #: 
 msgid "Add Group"
 msgstr "그룹 추가"
-
-#: 
-msgid "Back to Group List"
-msgstr "그룹 목록으로 돌아가기"
 
 #: 
 msgid "Edit Group"
@@ -7340,10 +7284,6 @@ msgid "Order"
 msgstr "순서"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF가 %s 가족에 성공적으로 이메일로 전송되었습니다."
-
-#: 
 msgid "Percentage"
 msgstr "백분율"
 
@@ -7382,10 +7322,6 @@ msgstr "첫 번째 속성 유형 추가"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 그룹 구성원 데이터가 영구적으로 삭제됩니다!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "이 기금을 삭제하면 과거 기부 기록에 영향을 줄 수 있습니다!"
 
 #: 
 msgid "Category Name"
@@ -7440,10 +7376,6 @@ msgid "Filter by Class"
 msgstr "클래스별 필터"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "기금이 성공적으로 삭제되었습니다"
-
-#: 
 msgid "In Use"
 msgstr "사용 중"
 
@@ -7490,10 +7422,6 @@ msgstr "이 출석 수를 제거하시겠습니까?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "이 속성이 적용되는 레코드 유형을 선택하세요"
-
-#: 
-msgid "That fund name already exists."
-msgstr "해당 기금 이름이 이미 존재합니다."
 
 #: 
 msgid "Total Pledges"
@@ -9982,10 +9910,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "사람, 가족, 그룹, 주소 등을 검색합니다."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "헌금 입금 전표 기록 검색 및 보기"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "사람, 가족, 그룹 검색…"
 
@@ -10638,11 +10562,6 @@ msgstr "클립보드에 복사"
 msgid "Custom field"
 msgstr "사용자 정의 필드"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "맞춤 검색"
-
 #: 
 msgid "Default Country"
 msgstr "기본 국가"
@@ -10704,11 +10623,6 @@ msgstr "필드 값"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "한 해에는 약속했지만 다른 해에는 약속하지 않은 사람을 찾기"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "사용자 정의 필드 값이 있는 사람 찾기"
 
 #. Context: query_qry
 #: 
@@ -11971,10 +11885,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "변경 사항은 다음 로그인 시 적용됩니다."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "밝은 테마와 어두운 테마 중 선택"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "애플리케이션의 외관과 느낌을 사용자 정의하세요"
 
@@ -12728,10 +12638,6 @@ msgstr "위도와 경도는 함께 입력해야 합니다 (또는 자동 감지�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "교회 정보가 저장되었지만 주소를 자동으로 찾을 수 없었습니다. 지도 좌표 항목에서 위도와 경도를 수동으로 입력해 주세요."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "저장 시 주소에서 좌표가 자동으로 감지됩니다 (OpenStreetMap 사용). 아래에서 수동으로 입력할 수도 있습니다 — 수동 값은 항상 자동 감지보다 우선합니다. 시스템이 주소에서 좌표를 자동 검색하도록 하려면 둘 다 비워 두세요."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13990,10 +13896,6 @@ msgid "Are you sure you want to continue?"
 msgstr "계속 진행하시겠습니까?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "이 헌금 입금을 삭제하시겠습니까?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "이 이벤트 유형을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
 
@@ -14244,10 +14146,6 @@ msgstr "데모 데이터는 일반적으로 새로 설치할 때만 불러옵니
 #: 
 msgid "Deposit ID"
 msgstr "입금 ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "입금 합계"
 
 #: 
 msgid "Deposit Value"
@@ -14561,10 +14459,6 @@ msgstr "그룹이 삭제되었습니다."
 #: 
 msgid "Group removed from cart"
 msgstr "그룹이 장바구니에서 제거되었습니다"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "역할 선택에는 GroupID가 필요합니다"
 
 #: 
 msgid "HTML URL"
@@ -14944,20 +14838,8 @@ msgid "Please select a role."
 msgstr "역할을 선택해 주세요."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "사역팀과 역할을 모두 선택해 주세요."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "삭제할 행을 선택해 주세요"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "구성원에게 적용할 역할을 선택하세요"
-
-#: 
-msgid "Please select target group for members"
-msgstr "구성원을 이동시킬 대상 그룹을 선택하세요."
 
 #: 
 msgid "Please try again"
@@ -15852,24 +15734,12 @@ msgid "Account status"
 msgstr "계정 상태"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "고급: 특정 대상 버전 선택"
-
-#: 
 msgid "Bug Fix"
 msgstr "버그 수정"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "기본적으로 마법사는 다음 권장 릴리즈를 다운로드합니다. 아래에서 사용 가능한 버전을 직접 선택할 수도 있습니다."
-
-#: 
 msgid "Change required"
 msgstr "변경 필요"
-
-#: 
-msgid "Changelog"
-msgstr "변경 로그"
 
 #: 
 msgid "Continue Anyway"
@@ -15878,10 +15748,6 @@ msgstr "그래도 계속"
 #: 
 msgid "Could not load release information."
 msgstr "릴리즈 정보를 불러올 수 없습니다."
-
-#: 
-msgid "Download & Install"
-msgstr "다운로드 및 설치"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15910,10 +15776,6 @@ msgstr "전체 변경 로그"
 #: 
 msgid "Install stable {{version}}"
 msgstr "안정 버전 {{version}} 설치"
-
-#: 
-msgid "Installing next release"
-msgstr "다음 릴리즈 설치 중"
 
 #: 
 msgid "Invalid file path"
@@ -15984,10 +15846,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "전체 업그레이드 경로 표시"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "최신 안정 릴리즈는 {{version}}입니다. 아래에서 재설치할 수 있습니다."
 
@@ -16014,10 +15872,6 @@ msgstr "릴리즈 노트 보기"
 #: 
 msgid "What's New"
 msgstr "새로운 기능"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}}의 새로운 기능"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16634,10 +16488,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "현재 이메일 기능이 비활성화되어 있습니다."
 
 #: 
-msgid "Estimated value $%s."
-msgstr "예상 가치 $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "가장 빠른 작업 흐름"
 
@@ -16680,10 +16530,6 @@ msgstr "로컬 개발"
 #: 
 msgid "Minimum Total Amount"
 msgstr "최소 총액"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "최소 입찰가 $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16986,10 +16832,6 @@ msgid "Working..."
 msgstr "처리 중..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "{{releaseCount}}개 버전이 뒤처져 있습니다. 업데이트 시 얻게 되는 내용"
-
-#: 
 msgid "click to expand"
 msgstr "클릭하여 펼치기"
 
@@ -17244,10 +17086,6 @@ msgstr "서약 생성에 실패했습니다"
 #: 
 msgid "Failed to delete pledge"
 msgstr "서약 삭제에 실패했습니다"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "헌금 응답 인코딩에 실패했습니다"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17520,4 +17358,440 @@ msgstr "오늘 당신을 생각하고 있습니다."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "페이지 경로, 활성 언어, CRM 버전, PHP 버전, OS 계열 및 임의 설치 ID. 그 외에는 없습니다. 데이터는 EU에 저장됩니다."
+
+#: 
+msgid "% Paid"
+msgstr "% 납부"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: 가족 정보를 확인해 주세요"
+
+#: 
+msgid "Add Role"
+msgstr "역할 추가"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "이 그룹에 특정한 사용자 정의 속성 추가"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "마지막으로 좌표를 설정한 이후 주소가 변경되었습니다."
+
+#: 
+msgid "All Tellers"
+msgstr "모든 헌금 담당자"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "모든 이메일 전송에 실패했습니다. 시스템 설정에서 SMTP 설정을 확인하세요."
+
+#: 
+msgid "Amount Max"
+msgstr "최대 금액"
+
+#: 
+msgid "Amount Min"
+msgstr "최소 금액"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "이메일 전송 중 예기치 않은 오류가 발생했습니다. SMTP 설정 및 서버 로그를 확인하세요."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' 역할을 삭제하시겠습니까?"
+
+#: 
+msgid "Auto"
+msgstr "자동"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "자동은 OS 또는 브라우저 설정을 따르며, 밝음과 어두움은 이를 재정의합니다"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "서약 대시보드로 돌아가기"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "\"좌표 생성\"을 클릭하여 위 주소의 지도 위치를 조회하거나, 위도/경도를 직접 입력하세요. 빈칸으로 두면 양식 저장 시 좌표가 자동으로 감지됩니다."
+
+#: 
+msgid "Contributor"
+msgstr "헌금자"
+
+#: 
+msgid "Contributors"
+msgstr "헌금자들"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "해당 주소의 좌표를 찾을 수 없습니다. 직접 입력해 주세요."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "이 그룹의 사용자 정의 속성"
+
+#: 
+msgid "Delete role"
+msgstr "역할 삭제"
+
+#: 
+msgid "Email Error"
+msgstr "이메일 오류"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "이메일이 구성되지 않았습니다. 시스템 설정에서 SMTP 설정을 구성하세요."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "%d 가정에 이메일을 발송했습니다."
+
+#: 
+msgid "Enter a street address first."
+msgstr "먼저 도로 주소를 입력하세요."
+
+#: 
+msgid "Enter role name"
+msgstr "역할 이름 입력"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "입금 생성에 실패했습니다"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "이메일 미리보기를 불러오지 못했습니다"
+
+#: 
+msgid "From Date"
+msgstr "시작 날짜"
+
+#: 
+msgid "Fund Total"
+msgstr "헌금 합계"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "회계연도별 헌금 기여자 서약 요약"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "모금 활동이 비활성화되어 있습니다"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "좌표 생성"
+
+#: 
+msgid "Generating..."
+msgstr "생성 중..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "지오코딩 요청에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Manage Events"
+msgstr "행사 관리"
+
+#: 
+msgid "New Deposit"
+msgstr "새 입금"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "선택한 회계연도에 이 헌금에 대한 기여자가 없습니다"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "이메일 주소가 있는 가족을 찾을 수 없습니다. 전송된 내용이 없습니다."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "선택한 입금에 대한 납부 내역이 없습니다"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "유효한 입금 ID가 제공되지 않았습니다"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF가 %d 가정에 성공적으로 이메일로 발송되었습니다."
+
+#: 
+msgid "Partial Send"
+msgstr "부분 전송"
+
+#: 
+msgid "Payments only"
+msgstr "납부 내역만"
+
+#: 
+msgid "Pledged Amount"
+msgstr "서약 금액"
+
+#: 
+msgid "Preview"
+msgstr "미리보기"
+
+#: 
+msgid "Retry"
+msgstr "다시 시도"
+
+#: 
+msgid "Search"
+msgstr "검색"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "입금 전표 기록 검색 및 관리"
+
+#: 
+msgid "Select All"
+msgstr "모두 선택"
+
+#: 
+msgid "Send Emails"
+msgstr "이메일 전송"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "가족 확인 이메일 전송"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d명 중 %1$d명에게 전송됨 — %3$d 가족에게 전달할 수 없었습니다."
+
+#: 
+msgid "Show in Profile"
+msgstr "프로필에 표시"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "선택한 헌금 합계만 표시"
+
+#: 
+msgid "Teller"
+msgstr "헌금 담당자"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "이 그룹의 유일한 역할입니다."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "이 역할은 삭제할 수 없습니다."
+
+#: 
+msgid "To Date"
+msgstr "종료 날짜"
+
+#: 
+msgid "Total Pledged"
+msgstr "총 서약 금액"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "이메일 전송 중 예기치 않은 오류가 발생했습니다. 로그를 확인하세요."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "위에 입력한 도로 주소를 사용하여 OpenStreetMap을 통해 좌표를 조회합니다."
+
+#: 
+msgid "View Payment"
+msgstr "납부 내역 보기"
+
+#: 
+msgid "View Pledge"
+msgstr "서약 보기"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "선택하면 이 속성이 프로필 페이지의 그룹 목록에서 그룹과 함께 표시됩니다."
+
+#: 
+msgid "[Family Name]"
+msgstr "[가족 이름]"
+
+#: 
+msgid "row selected"
+msgstr "행 선택됨"
+
+#: 
+msgid "rows selected"
+msgstr "행 선택됨"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "생일 및 기념일"
+
+#: 
+msgid "Estimated value %s."
+msgstr "예상 가치 %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "최소 입찰가 %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "아직 \"%s\" 옵션을 사용할 수 없습니다. 먼저 관련 기록을 추가하세요."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "아직 \"%s\" 옵션이 구성되지 않았습니다. 먼저 관련 기록을 추가하세요."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "특정 월에 생일 또는 결혼 기념일이 있는 성도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "생일 및 기념일을 조회할 월을 선택하세요."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "결혼 기념일 기록을 조회할 월을 선택하세요."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "전체 구매 합계: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "총 구매액: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "결혼 기념일"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "특정 월에 결혼 기념일이 있는 성도"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "오류가 발생했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "이 헌금 기금을 삭제하시겠습니까?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "삭제할 수 없습니다: 기금에 연결된 헌금 서약이 있습니다."
+
+#: 
+msgid "Delete Fund"
+msgstr "기금 삭제"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "방향은 '위' 또는 '아래'여야 합니다."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "헌금 기금 편집"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "헌금 기금 순서 변경에 실패했습니다."
+
+#: 
+msgid "Fund added successfully."
+msgstr "기금이 성공적으로 추가되었습니다."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "기금이 성공적으로 삭제되었습니다."
+
+#: 
+msgid "Fund name"
+msgstr "기금 이름"
+
+#: 
+msgid "Fund name is required."
+msgstr "기금 이름은 필수입니다."
+
+#: 
+msgid "Fund order updated."
+msgstr "기금 순서가 업데이트되었습니다."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "기금이 성공적으로 저장되었습니다."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "아직 추가된 기금이 없습니다. 위의 양식을 사용하여 첫 번째 기금을 추가하세요."
+
+#: 
+msgid "Optional description"
+msgstr "선택적 설명"
+
+#: 
+msgid "Private Calendar"
+msgstr "개인 캘린더"
+
+#: 
+msgid "Public Calendar"
+msgstr "공개 캘린더"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "고급: 특정 버전을 설치합니다."
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "기본적으로 마법사는 최신 버전으로 업그레이드합니다. 아래에서 특정 버전을 선택할 수도 있습니다."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "마감된 입금 내역의 헌금을 편집할 수 없습니다."
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "{{version}} 다운로드 및 적용"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "모든 ChurchCRM 릴리스에는 보안 수정 사항이 포함되어 있습니다. 항상 최신 버전으로 업그레이드할 것을 강력히 권장합니다."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "헌금 요청 디코딩에 실패했습니다."
+
+#: 
+msgid "Full release notes"
+msgstr "전체 릴리스 노트"
+
+#: 
+msgid "Invalid payment data"
+msgstr "유효하지 않은 헌금 데이터"
+
+#: 
+msgid "No release notes available."
+msgstr "사용 가능한 릴리스 노트가 없습니다."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "경고: {{chosen}}에는 {{latest}}에 포함된 보안 수정 사항이 없습니다. 특별한 이유가 있는 경우에만 진행하세요."
+
+#: 
+msgid "What you'll gain"
+msgstr "업그레이드 시 얻는 것"
 

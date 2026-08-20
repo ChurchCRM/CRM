@@ -17,21 +17,15 @@
 
 import DOMPurify from "dompurify";
 import { initializeQuillEditor } from "./quill-editor.js";
+import { escapeHtml } from "./utils/escape-html";
 
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Architecture
 // ---------------------------------------------------------------------------
 
-function escapeHtml(str) {
-  if (!str) return "";
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-}
-
-// Architecture: event.Start / event.End are CHURCH wall-clock STRINGS in
+// event.Start / event.End are CHURCH wall-clock STRINGS in
 // `YYYY-MM-DDTHH:mm:ss` (timed) or `YYYY-MM-DD` (all-day). Never JS Date
 // objects in date logic. This avoids browser-tz contamination — `new Date()`,
 // `getHours()`, `getDate()` etc. all interpret in the user's local tz, which
@@ -170,7 +164,7 @@ export function isAllDay(event) {
   // Date-only string (length 10) is implicitly all-day.
   if (s.length <= 10) return true;
   const m = s.match(/T(\d{2}):(\d{2})/);
-  if (!m || m[1] !== "00" || m[2] !== "00") return false;
+  if (m?.[1] !== "00" || m?.[2] !== "00") return false;
   if (event.End) {
     const e = toWallClockString(event.End);
     if (e.length > 10) {
@@ -243,7 +237,7 @@ function renderAdvancedSection(event, groups) {
     countsMarkup = `
       <div class="mb-3">
         <label class="form-label text-muted">${t("Attendance Counts")}</label>
-        <div class="text-muted small"><i class="ti ti-info-circle me-1"></i>${t("Available after the event is saved.")}</div>
+        <div class="text-muted small"><i class="fa-solid fa-circle-info me-1"></i>${t("Available after the event is saved.")}</div>
       </div>`;
   }
 
@@ -252,7 +246,7 @@ function renderAdvancedSection(event, groups) {
       <button type="button" class="btn btn-link p-0 text-decoration-none"
               data-bs-toggle="collapse" data-bs-target="#eventAdvancedFields"
               aria-expanded="false" aria-controls="eventAdvancedFields">
-        <i class="ti ti-chevron-down me-1" id="eventAdvancedChevron"></i>
+        <i class="fa-solid fa-chevron-down me-1" id="eventAdvancedChevron"></i>
         <span id="eventAdvancedLabel">${t("Show more options")}</span>
       </button>
     </div>
@@ -268,7 +262,7 @@ function renderAdvancedSection(event, groups) {
               </label>
               <label class="form-selectgroup-item">
                 <input type="radio" name="eventInActive" value="1" class="form-selectgroup-input" ${inactive ? "checked" : ""}>
-                <span class="form-selectgroup-label"><i class="ti ti-ban me-1"></i>${t("Inactive")}</span>
+                <span class="form-selectgroup-label"><i class="fa-solid fa-ban me-1"></i>${t("Inactive")}</span>
               </label>
             </div>
           </div>
@@ -330,7 +324,7 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         .replace("{{browser}}", browserTz);
       tzNoticeMarkup = `
     <div id="eventTzNotice" class="small mb-3 text-warning-emphasis ${allDay ? "d-none" : ""}">
-      <i class="ti ti-alert-triangle me-1 text-warning"></i>${escapeHtml(hintText)}
+      <i class="fa-solid fa-triangle-exclamation me-1 text-warning"></i>${escapeHtml(hintText)}
     </div>`;
     }
   }
@@ -345,7 +339,7 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         <label class="form-label" for="pinnedCalendarsSelect">${t("Pinned Calendars")}</label>
         <select id="pinnedCalendarsSelect" class="form-select" multiple>${calOptions}</select>
         <div class="form-text text-warning d-none" id="calendarsEmptyHint">
-          <i class="ti ti-info-circle me-1"></i>${t('No calendar selected — this event will appear under the "Unpinned Events" system calendar until you pin it.')}
+          <i class="fa-solid fa-circle-info me-1"></i>${t('No calendar selected — this event will appear under the "Unpinned Events" system calendar until you pin it.')}
         </div>
       </div>
     </div>
@@ -416,7 +410,7 @@ function renderViewerMarkup(event, calendars, eventTypes, groups = []) {
   metaRows += `<dt class="col-sm-3 text-muted">${t("Status")}</dt>
     <dd class="col-sm-9">${
       inactive
-        ? `<span class="badge bg-secondary-lt"><i class="ti ti-ban me-1"></i>${t("Inactive")}</span>`
+        ? `<span class="badge bg-secondary-lt"><i class="fa-solid fa-ban me-1"></i>${t("Inactive")}</span>`
         : `<span class="badge bg-green-lt text-green"><i class="ti ti-check me-1"></i>${t("Active")}</span>`
     }</dd>`;
   if (matchedType) {
@@ -432,12 +426,12 @@ function renderViewerMarkup(event, calendars, eventTypes, groups = []) {
       <dd class="col-sm-9"><div class="d-flex flex-wrap gap-2">${calBadges}</div></dd>`;
   } else if (pinnedCals.length === 0 && calendars.length > 0) {
     metaRows += `<dt class="col-sm-3 text-muted">${t("Calendars")}</dt>
-      <dd class="col-sm-9"><span class="text-muted small"><i class="ti ti-info-circle me-1"></i>${t("Not pinned to any calendar")}</span></dd>`;
+      <dd class="col-sm-9"><span class="text-muted small"><i class="fa-solid fa-circle-info me-1"></i>${t("Not pinned to any calendar")}</span></dd>`;
   }
   if (matchedGroup) {
     const groupName = matchedGroup.name ?? matchedGroup.Name;
     metaRows += `<dt class="col-sm-3 text-muted">${t("Linked Group")}</dt>
-      <dd class="col-sm-9"><span class="badge bg-purple-lt text-purple"><i class="ti ti-users me-1"></i>${escapeHtml(groupName)}</span></dd>`;
+      <dd class="col-sm-9"><span class="badge bg-purple-lt text-purple"><i class="fa-solid fa-users me-1"></i>${escapeHtml(groupName)}</span></dd>`;
   }
 
   // Attendance counts render as a compact pill list below the meta rows.

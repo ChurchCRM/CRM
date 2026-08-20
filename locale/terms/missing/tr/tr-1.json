@@ -1,18 +1,30 @@
 {
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "%d aileye e-posta gönderildi.|%d aileye e-posta gönderildi.",
+    "other": ""
+  },
+  "N/A": "",
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF başarıyla %d aileye e-posta ile gönderildi.|PDF başarıyla %d aileye e-posta ile gönderildi.",
+    "other": ""
+  },
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "{{count}} üye kopyalındı",
-    "other": "{{count}} üye kopyalındı"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyal'yı kullanın.",
-    "other": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyal'yı kullanın."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyal'yı kullanın.",
-    "other": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyal'yı kullanın."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} dakika kaldı",
-    "other": "{{count}} dakika kaldı"
+    "one": "",
+    "other": ""
   }
 }

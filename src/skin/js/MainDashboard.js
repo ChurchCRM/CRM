@@ -85,7 +85,7 @@ export function initializeMainDashboard() {
           statusHtml =
             ' <span class="badge bg-secondary-lt text-secondary" title="' +
             i18next.t("Inactive") +
-            '"><i class="ti ti-power me-1"></i>' +
+            '"><i class="fa-solid fa-power-off me-1"></i>' +
             i18next.t("Inactive") +
             "</span>";
         }
@@ -301,7 +301,7 @@ export function initializeMainDashboard() {
               i18next.t("ago") +
               "</span>";
           }
-          return row.Birthday + " " + badge;
+          return row.Birthday + '<div class="small lh-1 mt-1">' + badge + "</div>";
         },
       },
     ],
@@ -415,7 +415,7 @@ export function initializeMainDashboard() {
               i18next.t("ago") +
               "</span>";
           }
-          return data + badge;
+          return data + '<div class="small lh-1 mt-1">' + badge + "</div>";
         },
       },
     ],
@@ -491,7 +491,7 @@ export function initializeMainDashboard() {
           statusHtml =
             ' <span class="badge bg-secondary-lt text-secondary" title="' +
             i18next.t("Inactive") +
-            '"><i class="ti ti-power me-1"></i>' +
+            '"><i class="fa-solid fa-power-off me-1"></i>' +
             i18next.t("Inactive") +
             "</span>";
         }
@@ -583,16 +583,22 @@ export function initializeMainDashboard() {
           path: "families/familiesInCart",
           suppressErrorDialog: true,
         }),
-      ]).then((responses) => {
-        const cartData = responses[0];
-        const familiesData = responses[1];
+      ])
+        .then((responses) => {
+          const cartData = responses[0];
+          const familiesData = responses[1];
 
-        const peopleInCart = cartData.PeopleCart || [];
-        const familiesInCart = familiesData.familiesInCart || [];
-        const groupsInCart = cartData.GroupCart || [];
+          const peopleInCart = cartData.PeopleCart || [];
+          const familiesInCart = familiesData.familiesInCart || [];
+          const groupsInCart = cartData.GroupCart || [];
 
-        window.CRM.cartManager.syncButtonStates(peopleInCart, familiesInCart, groupsInCart);
-      });
+          window.CRM.cartManager.syncButtonStates(peopleInCart, familiesInCart, groupsInCart);
+        })
+        .catch(() => {
+          // suppressErrorDialog above already silences the UI; still need a
+          // handler here so a denied request (e.g. a zero-permission user)
+          // doesn't surface as an unhandled promise rejection.
+        });
     }
   }
 

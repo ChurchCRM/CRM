@@ -735,7 +735,8 @@ function initDataTable() {
         title: i18next.t("Name"),
         data: "PersonId",
         render: (data, type, full) => {
-          var escapedName = $("<div>").text(full.Person.FullName).html();
+          // GHSA-m649-24q9-q6r4: HTML-escape for HTML content context (not attribute)
+          var escapedName = window.CRM.escapeHtml(full.Person.FullName || "");
           return (
             '<div class="d-flex align-items-center">' +
             '<img data-image-entity-type="person" data-image-entity-id="' +
@@ -768,8 +769,10 @@ function initDataTable() {
         defaultContent: "",
         render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
+          // GHSA-m649-24q9-q6r4: HTML attribute-escape href value to prevent quote breakout;
+          // escapeAttribute preserves @ and + (not HTML-special) while encoding "
           var escaped = $("<div>").text(data).html();
-          return '<a href="tel:' + escaped + '">' + escaped + "</a>";
+          return '<a href="tel:' + window.CRM.escapeAttribute(data) + '">' + escaped + "</a>";
         },
       },
       {
@@ -779,8 +782,16 @@ function initDataTable() {
         defaultContent: "",
         render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
+          // GHSA-m649-24q9-q6r4: HTML attribute-escape href value to prevent quote breakout;
+          // escapeAttribute preserves @ and + (not HTML-special) while encoding "
           var escaped = $("<div>").text(data).html();
-          return '<a href="mailto:' + escaped + '" target="_blank" rel="noopener noreferrer">' + escaped + "</a>";
+          return (
+            '<a href="mailto:' +
+            window.CRM.escapeAttribute(data) +
+            '" target="_blank" rel="noopener noreferrer">' +
+            escaped +
+            "</a>"
+          );
         },
       },
       {
@@ -791,22 +802,23 @@ function initDataTable() {
         searchable: false,
         className: "text-end w-1 no-export",
         render: (data, type, full) => {
-          var escapedName = $("<div>").text(full.Person.FullName).html();
+          // GHSA-m649-24q9-q6r4: use escapeAttribute for data-name attribute context (encodes quotes)
+          var escapedName = window.CRM.escapeAttribute(full.Person.FullName || "");
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static">' +
-            '<i class="ti ti-dots-vertical"></i></button>' +
+            '<i class="fa-solid fa-ellipsis-vertical"></i></button>' +
             '<div class="dropdown-menu dropdown-menu-end">' +
             '<a class="dropdown-item" href="' +
             window.CRM.root +
             "/people/view/" +
             full.PersonId +
-            '"><i class="ti ti-eye me-2"></i>' +
+            '"><i class="fa-solid fa-eye me-2"></i>' +
             i18next.t("View") +
             "</a>" +
             '<button class="dropdown-item changeMembership" data-personid="' +
             full.PersonId +
-            '"><i class="ti ti-users me-2"></i>' +
+            '"><i class="fa-solid fa-users me-2"></i>' +
             i18next.t("Change Role") +
             "</button>" +
             '<button class="dropdown-item AddToCart" data-cart-id="' +
@@ -815,7 +827,7 @@ function initDataTable() {
             i18next.t("Add to Cart") +
             '" data-label-remove="' +
             i18next.t("Remove from Cart") +
-            '"><i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">' +
+            '"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">' +
             i18next.t("Add to Cart") +
             "</span></button>" +
             '<div class="dropdown-divider"></div>' +
@@ -823,7 +835,7 @@ function initDataTable() {
             full.PersonId +
             '" data-name="' +
             escapedName +
-            '"><i class="ti ti-user-minus me-2"></i>' +
+            '"><i class="fa-solid fa-user-minus me-2"></i>' +
             i18next.t("Remove") +
             "</button></div></div>"
           );

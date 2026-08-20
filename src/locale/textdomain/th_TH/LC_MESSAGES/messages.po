@@ -564,16 +564,8 @@ msgid "Picture URL"
 msgstr "URL รูปภาพ"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "ตัวแก้ไขกองทุนบริจาค"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "ฟิลด์หรือการเลือกไม่ถูกต้อง การเปลี่ยนแปลงไม่ได้บันทึก! กรุณาแก้ไขและลองอีกครั้ง!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "ยังไม่มีกองทุนที่เพิ่ม"
 
 #: 
 msgid "Active"
@@ -1093,24 +1085,8 @@ msgid "Create Report"
 msgstr "สร้างรายงาน"
 
 #: 
-msgid "Deposit Listing"
-msgstr "รายการการฝาก"
-
-#: 
 msgid "Deposits"
 msgstr "การฝาก"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "ลบแถวที่เลือก"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "ส่งออกแถวที่เลือก (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "ส่งออกแถวที่เลือก (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1269,10 +1245,6 @@ msgid "Enabled"
 msgstr "เปิดใช้งาน"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "แก้ไขแบบฟอร์มคุณสมบัติเฉพาะกลุ่ม"
-
-#: 
 msgid "Disabled"
 msgstr "ปิดใช้งาน"
 
@@ -1323,14 +1295,6 @@ msgstr "ตัวแก้ไขแบบฟอร์มคุณสมบัต
 #: 
 msgid "No properties have been added yet"
 msgstr "ยังไม่มีคุณสมบัติที่เพิ่ม"
-
-#: 
-msgid "Show in"
-msgstr "แสดงใน"
-
-#: 
-msgid "Person View"
-msgstr "มุมมองบุคคล"
 
 #: 
 msgid "Other Email"
@@ -2185,14 +2149,6 @@ msgstr "รายการบริจาค"
 #: 
 msgid "Purchased Items"
 msgstr "รายการที่ซื้อ"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "ยอดรวมการซื้อทั้งหมด: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "ยอดซื้อรวม: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4851,10 +4807,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ตั้งค่าระบบการเข้ารหัสที่จะใช้ - ssl (เลิกใช้แล้ว) หรือ tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "สร้างใบนำฝากสำหรับแถวที่เลือก (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "เพิ่มทั้งหมดลงในตะกร้า"
 
@@ -5146,10 +5098,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "ข้อผิดพลาดในการส่งอีเมล"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "กรุณาตรวจสอบบันทึกสำหรับข้อมูลเพิ่มเติม"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5537,10 +5485,6 @@ msgstr "ลบครอบครัวออกจากตะกร้าแล
 #: 
 msgid "Add Group"
 msgstr "เพิ่มกลุ่ม"
-
-#: 
-msgid "Back to Group List"
-msgstr "กลับไปที่รายการกลุ่ม"
 
 #: 
 msgid "Edit Group"
@@ -7317,10 +7261,6 @@ msgid "Order"
 msgstr "ลำดับ"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "ส่งอีเมล PDF ถึง %s ครอบครัวสำเร็จ"
-
-#: 
 msgid "Percentage"
 msgstr "เปอร์เซ็นต์"
 
@@ -7359,10 +7299,6 @@ msgstr "เพิ่มประเภทคุณสมบัติแรกข
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "การลบฟิลด์นี้จะทำให้คุณสูญเสียข้อมูลสมาชิกกลุ่มทั้งหมดที่กำหนดสำหรับฟิลด์นี้อย่างถาวร!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "การลบกองทุนนี้อาจส่งผลต่อระเบียนการบริจาคในอดีต!"
 
 #: 
 msgid "Category Name"
@@ -7417,10 +7353,6 @@ msgid "Filter by Class"
 msgstr "กรองตามชั้นเรียน"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "ลบกองทุนสำเร็จ"
-
-#: 
 msgid "In Use"
 msgstr "ใช้งานอยู่"
 
@@ -7467,10 +7399,6 @@ msgstr "ลบการนับการเข้าร่วมนี้?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "เลือกประเภทระเบียนที่คุณสมบัตินี้ใช้กับ"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ชื่อกองทุนนั้นมีอยู่แล้ว"
 
 #: 
 msgid "Total Pledges"
@@ -9959,10 +9887,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "ค้นหาบุคคล ครอบครัว กลุ่ม ที่อยู่ และอื่นๆ"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "ค้นหาและดูบันทึกใบรับถวาย"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "ค้นหาบุคคล ครอบครัว กลุ่ม…"
 
@@ -10615,11 +10539,6 @@ msgstr "คัดลอกไปยังคลิปบอร์ด"
 msgid "Custom field"
 msgstr "ฟิลด์ที่กำหนดเอง"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "ค้นหาแบบกำหนดเอง"
-
 #: 
 msgid "Default Country"
 msgstr "ประเทศเริ่มต้น"
@@ -10681,11 +10600,6 @@ msgstr "ค่าฟิลด์"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ค้นหาผู้คนที่สัญญาในปีหนึ่ง แต่ไม่ใช่อีกปีหนึ่ง"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "ค้นหาผู้คนที่มีค่าฟิลด์ที่กำหนดเอง"
 
 #. Context: query_qry
 #: 
@@ -11948,10 +11862,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "การเปลี่ยนแปลงจะมีผลเมื่อเข้าสู่ระบบครั้งถัดไป"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "เลือกระหว่างโทนสีสว่างและโทนสีเข้ม"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "ปรับแต่งรูปแบบและการใช้งานของแอปพลิเคชัน"
 
@@ -12705,10 +12615,6 @@ msgstr "ต้องระบุทั้งละติจูดและลอ
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "บันทึกข้อมูลคริสตจักรแล้ว แต่ไม่สามารถค้นหาที่อยู่อัตโนมัติได้ กรุณากรอกละติจูดและลองจิจูดด้วยตนเองในส่วนพิกัดแผนที่"
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "พิกัดจะถูกตรวจจับอัตโนมัติจากที่อยู่เมื่อบันทึก (ผ่าน OpenStreetMap) คุณยังสามารถกรอกด้วยตนเองด้านล่าง — ค่าที่กรอกด้วยตนเองจะมีความสำคัญกว่าการตรวจจับอัตโนมัติเสมอ เว้นว่างทั้งคู่เพื่อให้ระบบค้นหาพิกัดจากที่อยู่"
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13967,10 +13873,6 @@ msgid "Are you sure you want to continue?"
 msgstr "คุณแน่ใจหรือว่าต้องการดำเนินการต่อ?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบรายการรับถวายนี้?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบประเภทกิจกรรมนี้? การดำเนินการนี้ไม่สามารถยกเลิกได้"
 
@@ -14221,10 +14123,6 @@ msgstr "โดยปกติข้อมูลตัวอย่างจะโ
 #: 
 msgid "Deposit ID"
 msgstr "ID การฝาก"
-
-#: 
-msgid "Deposit Total"
-msgstr "ยอดรวมการฝาก"
 
 #: 
 msgid "Deposit Value"
@@ -14538,10 +14436,6 @@ msgstr "ลบกลุ่มเรียบร้อยแล้ว"
 #: 
 msgid "Group removed from cart"
 msgstr "ลบกลุ่มออกจากตะกร้าแล้ว"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "ต้องการ GroupID สำหรับการแจ้งเตือนเลือกบทบาท"
 
 #: 
 msgid "HTML URL"
@@ -14921,20 +14815,8 @@ msgid "Please select a role."
 msgstr "กรุณาเลือกบทบาท"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "กรุณาเลือกทั้งกลุ่มและบทบาท"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "กรุณาเลือกแถวที่จะลบ"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "กรุณาเลือกบทบาทเป้าหมายสำหรับสมาชิก"
-
-#: 
-msgid "Please select target group for members"
-msgstr "กรุณาเลือกกลุ่มเป้าหมายสำหรับสมาชิก"
 
 #: 
 msgid "Please try again"
@@ -15829,24 +15711,12 @@ msgid "Account status"
 msgstr "สถานะบัญชี"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "ขั้นสูง: เลือกเวอร์ชันเป้าหมายที่ต้องการ"
-
-#: 
 msgid "Bug Fix"
 msgstr "แก้ไขข้อผิดพลาด"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "โดยค่าเริ่มต้น ตัวช่วยสร้างจะดาวน์โหลดรุ่นที่แนะนำถัดไป คุณสามารถเลือกเวอร์ชันที่มีให้ด้านล่างแทนได้"
-
-#: 
 msgid "Change required"
 msgstr "จำเป็นต้องเปลี่ยนแปลง"
-
-#: 
-msgid "Changelog"
-msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: 
 msgid "Continue Anyway"
@@ -15855,10 +15725,6 @@ msgstr "ดำเนินการต่อไป"
 #: 
 msgid "Could not load release information."
 msgstr "ไม่สามารถโหลดข้อมูลรุ่นได้"
-
-#: 
-msgid "Download & Install"
-msgstr "ดาวน์โหลดและติดตั้ง"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15887,10 +15753,6 @@ msgstr "บันทึกการเปลี่ยนแปลงทั้ง
 #: 
 msgid "Install stable {{version}}"
 msgstr "ติดตั้งเวอร์ชันเสถียร {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "กำลังติดตั้งรุ่นถัดไป"
 
 #: 
 msgid "Invalid file path"
@@ -15961,10 +15823,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "แสดงเส้นทางการอัปเกรดทั้งหมด"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "รุ่นเสถียรล่าสุดคือ {{version}} คุณสามารถติดตั้งใหม่ได้ด้านล่าง"
 
@@ -15991,10 +15849,6 @@ msgstr "ดูบันทึกรุ่น"
 #: 
 msgid "What's New"
 msgstr "มีอะไรใหม่"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "มีอะไรใหม่ใน {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16083,6 +15937,16 @@ msgstr "บุคคลนี้มีบัญชีผู้ใช้อยู
 #: 
 msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "ผู้ใช้ต้องเป็นผู้ดูแลระบบหรือมีสิทธิ์จัดการกิจกรรมระดมทุน"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d กิจกรรมระดมทุนที่เก็บถาวร"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "เพิ่ม %d คนเข้าครอบครัวที่เลือกเรียบร้อยแล้ว"
 
 #: 
 msgid "%s Fundraisers"
@@ -16601,10 +16465,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ฟังก์ชันอีเมลถูกปิดใช้งานอยู่ในขณะนี้ คุณสมบัติต่อไปนี้จะไม่ทำงานจนกว่าจะเปิดใช้งานอีเมล"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "มูลค่าประมาณ $%s"
-
-#: 
 msgid "Fastest workflow"
 msgstr "ขั้นตอนการทำงานที่เร็วที่สุด"
 
@@ -16647,10 +16507,6 @@ msgstr "การพัฒนาในเครื่อง"
 #: 
 msgid "Minimum Total Amount"
 msgstr "จำนวนเงินรวมขั้นต่ำ"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "ราคาเสนอขั้นต่ำ $%s"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16953,10 +16809,6 @@ msgid "Working..."
 msgstr "กำลังดำเนินการ..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "คุณล้าหลัง {{releaseCount}} เวอร์ชัน นี่คือสิ่งที่คุณจะได้รับ"
-
-#: 
 msgid "click to expand"
 msgstr "คลิกเพื่อขยาย"
 
@@ -17211,10 +17063,6 @@ msgstr "ไม่สามารถสร้างคำมั่นสัญญ
 #: 
 msgid "Failed to delete pledge"
 msgstr "ไม่สามารถลบคำมั่นสัญญาได้"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "ไม่สามารถเข้ารหัสการตอบสนองการถวายได้"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17487,4 +17335,440 @@ msgstr "คิดถึงคุณในวันนี้"
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "เส้นทางหน้าเพจ ภาษาที่ใช้งาน เวอร์ชัน CRM เวอร์ชัน PHP ตระกูล OS และรหัสการติดตั้งแบบสุ่ม ไม่มีอะไรอื่น ข้อมูลถูกจัดเก็บในสหภาพยุโรป"
+
+#: 
+msgid "% Paid"
+msgstr "% ที่ชำระแล้ว"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: กรุณาตรวจสอบข้อมูลครอบครัวของคุณ"
+
+#: 
+msgid "Add Role"
+msgstr "เพิ่มบทบาท"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "เพิ่มคุณสมบัติเฉพาะสำหรับกลุ่มนี้"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "ที่อยู่เปลี่ยนแปลงนับตั้งแต่ตั้งค่าพิกัดครั้งล่าสุด"
+
+#: 
+msgid "All Tellers"
+msgstr "เหรัญญิกทั้งหมด"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "การส่งอีเมลทั้งหมดล้มเหลว กรุณาตรวจสอบการตั้งค่า SMTP ในการตั้งค่าระบบ"
+
+#: 
+msgid "Amount Max"
+msgstr "จำนวนสูงสุด"
+
+#: 
+msgid "Amount Min"
+msgstr "จำนวนต่ำสุด"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "เกิดข้อผิดพลาดที่ไม่คาดคิดขณะส่งอีเมล กรุณาตรวจสอบการตั้งค่า SMTP และบันทึกของเซิร์ฟเวอร์"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบบทบาท '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "อัตโนมัติ"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "โหมดอัตโนมัติจะใช้การตั้งค่าของระบบปฏิบัติการหรือเบราว์เซอร์ของคุณ; โหมดสว่างและมืดจะแทนที่การตั้งค่านั้น"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "กลับไปยังแดชบอร์ดคำมั่นถวาย"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "คลิก \"สร้างพิกัด\" เพื่อค้นหาตำแหน่งแผนที่สำหรับที่อยู่ด้านบน หรือป้อนละติจูด/ลองจิจูดด้วยตนเอง หากเว้นว่างไว้ ระบบจะตรวจหาพิกัดโดยอัตโนมัติเมื่อบันทึกแบบฟอร์ม"
+
+#: 
+msgid "Contributor"
+msgstr "ผู้ถวาย"
+
+#: 
+msgid "Contributors"
+msgstr "ผู้ถวายทั้งหมด"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "ไม่พบพิกัดสำหรับที่อยู่นั้น กรุณาลองป้อนด้วยตนเอง"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "คุณสมบัติเฉพาะสำหรับกลุ่มนี้"
+
+#: 
+msgid "Delete role"
+msgstr "ลบบทบาท"
+
+#: 
+msgid "Email Error"
+msgstr "ข้อผิดพลาดอีเมล"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "ยังไม่ได้ตั้งค่าอีเมล กรุณาตั้งค่า SMTP ในการตั้งค่าระบบ"
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "ส่งอีเมลถึง %d ครอบครัวแล้ว"
+
+#: 
+msgid "Enter a street address first."
+msgstr "กรุณาป้อนที่อยู่ถนนก่อน"
+
+#: 
+msgid "Enter role name"
+msgstr "ป้อนชื่อบทบาท"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "ไม่สามารถสร้างรายการฝากเงินได้"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "ไม่สามารถโหลดตัวอย่างอีเมลได้"
+
+#: 
+msgid "From Date"
+msgstr "จากวันที่"
+
+#: 
+msgid "Fund Total"
+msgstr "ยอดรวมกองทุน"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "สรุปคำมั่นถวายของผู้ถวายต่อกองทุนตามปีงบประมาณ"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "การระดมทุนถูกปิดใช้งาน"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "สร้างพิกัด"
+
+#: 
+msgid "Generating..."
+msgstr "กำลังสร้าง..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "คำขอระบุพิกัดทางภูมิศาสตร์ล้มเหลว กรุณาลองใหม่อีกครั้ง"
+
+#: 
+msgid "Manage Events"
+msgstr "จัดการกิจกรรม"
+
+#: 
+msgid "New Deposit"
+msgstr "รายการฝากเงินใหม่"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "ไม่พบผู้ถวายสำหรับกองทุนนี้ในปีงบประมาณที่เลือก"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "ไม่พบครอบครัวที่มีที่อยู่อีเมล ไม่มีการส่งข้อความใด"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "ไม่พบการชำระเงินสำหรับรายการฝากที่เลือก"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "ไม่มีรหัสรายการฝากที่ถูกต้อง"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "ส่ง PDF ทางอีเมลถึง %d ครอบครัวเรียบร้อยแล้ว"
+
+#: 
+msgid "Partial Send"
+msgstr "ส่งบางส่วน"
+
+#: 
+msgid "Payments only"
+msgstr "เฉพาะการชำระเงิน"
+
+#: 
+msgid "Pledged Amount"
+msgstr "จำนวนที่มั่นถวาย"
+
+#: 
+msgid "Preview"
+msgstr "ดูตัวอย่าง"
+
+#: 
+msgid "Retry"
+msgstr "ลองใหม่"
+
+#: 
+msgid "Search"
+msgstr "ค้นหา"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "ค้นหาและจัดการบันทึกใบนำฝากเงิน"
+
+#: 
+msgid "Select All"
+msgstr "เลือกทั้งหมด"
+
+#: 
+msgid "Send Emails"
+msgstr "ส่งอีเมล"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "ส่งอีเมลยืนยันข้อมูลครอบครัว"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "ส่งแล้ว %1$d จาก %2$d — ไม่สามารถติดต่อครอบครัวได้ %3$d ครอบครัว"
+
+#: 
+msgid "Show in Profile"
+msgstr "แสดงในโปรไฟล์"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "แสดงยอดรวมเฉพาะกองทุนที่เลือก"
+
+#: 
+msgid "Teller"
+msgstr "เหรัญญิก"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "นี่เป็นบทบาทเดียวในกลุ่มนี้"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "ไม่สามารถลบบทบาทนี้ได้"
+
+#: 
+msgid "To Date"
+msgstr "ถึงวันที่"
+
+#: 
+msgid "Total Pledged"
+msgstr "ยอดรวมที่มั่นถวาย"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "เกิดข้อผิดพลาดที่ไม่คาดคิดขณะส่งอีเมล กรุณาตรวจสอบบันทึก"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "ใช้ที่อยู่ถนนด้านบนเพื่อค้นหาพิกัดผ่าน OpenStreetMap"
+
+#: 
+msgid "View Payment"
+msgstr "ดูการชำระเงิน"
+
+#: 
+msgid "View Pledge"
+msgstr "ดูคำมั่นถวาย"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "เมื่อเลือก คุณสมบัตินี้จะแสดงพร้อมกับกลุ่มในรายการกลุ่มของบุคคลในหน้าโปรไฟล์"
+
+#: 
+msgid "[Family Name]"
+msgstr "[ชื่อครอบครัว]"
+
+#: 
+msgid "row selected"
+msgstr "แถวที่เลือก"
+
+#: 
+msgid "rows selected"
+msgstr "แถวที่เลือก"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "วันเกิดและวันครบรอบ"
+
+#: 
+msgid "Estimated value %s."
+msgstr "มูลค่าประมาณ %s"
+
+#: 
+msgid "Minimum bid %s."
+msgstr "ราคาเสนอขั้นต่ำ %s"
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "ยังไม่มีตัวเลือก \"%s\" โปรดเพิ่มข้อมูลที่เกี่ยวข้องก่อน"
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "ยังไม่มีการกำหนดค่าตัวเลือก \"%s\" โปรดเพิ่มข้อมูลที่เกี่ยวข้องก่อน"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "สมาชิกที่มีวันเกิดหรือวันครบรอบแต่งงานในเดือนที่ระบุ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "เดือนที่ต้องการดูข้อมูลวันเกิดและวันครบรอบ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "เดือนครบรอบแต่งงานที่ต้องการดูข้อมูล"
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "ยอดรวมการซื้อทั้งหมด: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "ยอดรวมการซื้อ: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "วันครบรอบแต่งงาน"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "สมาชิกที่มีวันครบรอบแต่งงานในเดือนที่ระบุ"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "เกิดข้อผิดพลาด โปรดลองอีกครั้ง"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบกองทุนนี้?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "ไม่สามารถลบได้: กองทุนมีคำมั่นสัญญาการถวายที่เกี่ยวข้อง"
+
+#: 
+msgid "Delete Fund"
+msgstr "ลบกองทุน"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "ทิศทางต้องเป็น 'up' หรือ 'down' เท่านั้น"
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "แก้ไขกองทุนการถวาย"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "ไม่สามารถจัดเรียงกองทุนการถวายใหม่ได้"
+
+#: 
+msgid "Fund added successfully."
+msgstr "เพิ่มกองทุนเรียบร้อยแล้ว"
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "ลบกองทุนเรียบร้อยแล้ว"
+
+#: 
+msgid "Fund name"
+msgstr "ชื่อกองทุน"
+
+#: 
+msgid "Fund name is required."
+msgstr "กรุณาระบุชื่อกองทุน"
+
+#: 
+msgid "Fund order updated."
+msgstr "อัปเดตลำดับกองทุนแล้ว"
+
+#: 
+msgid "Fund saved successfully."
+msgstr "บันทึกกองทุนเรียบร้อยแล้ว"
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "ยังไม่มีการเพิ่มกองทุน โปรดใช้แบบฟอร์มด้านบนเพื่อเพิ่มกองทุนแรก"
+
+#: 
+msgid "Optional description"
+msgstr "คำอธิบาย (ไม่บังคับ)"
+
+#: 
+msgid "Private Calendar"
+msgstr "ปฏิทินส่วนตัว"
+
+#: 
+msgid "Public Calendar"
+msgstr "ปฏิทินสาธารณะ"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "ขั้นสูง: ติดตั้งเวอร์ชันเฉพาะแทน"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "โดยค่าเริ่มต้น ตัวช่วยจะอัปเกรดเป็นเวอร์ชันล่าสุด คุณสามารถเลือกเวอร์ชันเฉพาะด้านล่างแทนได้"
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "ไม่สามารถแก้ไขการชำระเงินในรายการฝากที่ปิดแล้ว"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "ดาวน์โหลดและใช้งาน {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "ChurchCRM ทุกเวอร์ชันมีการแก้ไขความปลอดภัย เราแนะนำอย่างยิ่งให้อัปเกรดเป็นเวอร์ชันล่าสุดเสมอ"
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "ไม่สามารถถอดรหัสคำขอการชำระเงินได้"
+
+#: 
+msgid "Full release notes"
+msgstr "บันทึกการเผยแพร่ฉบับเต็ม"
+
+#: 
+msgid "Invalid payment data"
+msgstr "ข้อมูลการชำระเงินไม่ถูกต้อง"
+
+#: 
+msgid "No release notes available."
+msgstr "ไม่มีบันทึกการเผยแพร่"
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "คำเตือน: {{chosen}} ขาดการแก้ไขความปลอดภัยที่มีอยู่ใน {{latest}} ดำเนินการต่อเฉพาะเมื่อมีเหตุผลเฉพาะเจาะจงเท่านั้น"
+
+#: 
+msgid "What you'll gain"
+msgstr "สิ่งที่คุณจะได้รับ"
 

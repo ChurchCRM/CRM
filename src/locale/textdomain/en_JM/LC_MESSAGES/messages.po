@@ -76,10 +76,6 @@ msgid "The month that starts your organization's fiscal year"
 msgstr "The month that starts your organisation's fiscal year"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Choose between light and dark colour scheme"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Customise the look and feel of the application"
 

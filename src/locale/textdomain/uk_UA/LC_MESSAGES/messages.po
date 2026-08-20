@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "URL-адреса зображення"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Редактор фонду пожертв"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Недійсні поля або виділення. Зміни не збережено! Будь ласка, виправте і спробуйте ще раз!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Коштів ще не додано"
 
 #: 
 msgid "Active"
@@ -1094,25 +1086,9 @@ msgid "Create Report"
 msgstr "Створити звіт"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Перелік депозитів"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Депозити"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Видалити вибрані рядки"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Експортувати вибрані рядки (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Експортувати вибрані рядки (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1253,6 @@ msgid "Enabled"
 msgstr "Включено"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Редагування форми властивостей, специфічних для групи"
-
-#: 
 msgid "Disabled"
 msgstr "Вимкнено"
 
@@ -1332,14 +1304,6 @@ msgstr "Редактор форми властивостей для групи"
 #: 
 msgid "No properties have been added yet"
 msgstr "Жодних властивостей ще не додано"
-
-#: 
-msgid "Show in"
-msgstr "Показати в"
-
-#: 
-msgid "Person View"
-msgstr "Перегляд особи"
 
 #: 
 msgid "Other Email"
@@ -2196,14 +2160,6 @@ msgstr "Пожертвувані предмети"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Придбані товари"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Сума всіх покупок: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Загальна сума покупок: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4873,10 +4829,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Встановіть для використання систему шифрування - ssl (застаріла) або tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Створити депозит для вибраних рядків (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Додати все в кошик"
 
@@ -5173,10 +5125,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Помилка надсилання електронних листів"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Будь ласка, перевірте журнали для отримання додаткової інформації"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5571,10 +5519,6 @@ msgstr "Сім'ю видалено з кошика"
 #: 
 msgid "Add Group"
 msgstr "Додати групу"
-
-#: 
-msgid "Back to Group List"
-msgstr "Назад до списку груп"
 
 #: 
 msgid "Edit Group"
@@ -7363,10 +7307,6 @@ msgid "Order"
 msgstr "Замовлення"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF успішно надіслано %s сім'ям."
-
-#: 
 msgid "Percentage"
 msgstr "Відсоток"
 
@@ -7405,10 +7345,6 @@ msgstr "Додайте Ваш Перший Тип Властивості"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Видаливши це поле, ви безповоротно втратите всі дані учасників групи, призначені для цього поля!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Видаливши цей фонд, ви можете вплинути на історичні записи пожертвувань!"
 
 #: 
 msgid "Category Name"
@@ -7463,10 +7399,6 @@ msgid "Filter by Class"
 msgstr "Фільтр за Класом"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Фонд успішно видалено"
-
-#: 
 msgid "In Use"
 msgstr "Використовується"
 
@@ -7513,10 +7445,6 @@ msgstr "Видалити цей підрахунок відвідуваност�
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Виберіть тип запису, до якого застосовується ця властивість"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Така назва фонду вже існує."
 
 #: 
 msgid "Total Pledges"
@@ -10014,10 +9942,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Шукайте людей, сімей, груп, адрес та ін."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Шукайте та переглядайте записи квитанцій про депозит"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Пошук людей, сімей, груп…"
 
@@ -10670,11 +10594,6 @@ msgstr "Скопіювати в буфер обміну"
 msgid "Custom field"
 msgstr "Користувацьке поле"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Користувацький пошук"
-
 #: 
 msgid "Default Country"
 msgstr "Країна за замовчуванням"
@@ -10736,11 +10655,6 @@ msgstr "Значення поля"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Знайдіть людей, які обіцяли один рік, але не інший"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Знайдіть людей з користувацьким значенням поля"
 
 #. Context: query_qry
 #: 
@@ -12003,10 +11917,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Зміни набудуть чинності після наступного входу в систему."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Оберіть між світлою та темною кольоровою схемою"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Налаштуйте зовнішній вигляд та відчуття програми"
 
@@ -12763,10 +12673,6 @@ msgstr "Широта та довгота мають бути вказані ра
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Інформацію про церкву збережено, але адресу не вдалося визначити автоматично. Будь ласка, введіть широту та довготу вручну в розділі «Координати карти»."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Координати автоматично визначаються з вашої адреси при збереженні (через OpenStreetMap). Ви також можете ввести їх вручну нижче — ручні значення завжди мають пріоритет над автоматичним визначенням. Залиште обидва поля порожніми, щоб система визначила координати за адресою."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14025,10 +13931,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Ви впевнені, що бажаєте продовжити?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Ви впевнені, що хочете видалити цей депозит?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Ви впевнені, що хочете видалити цей тип події? Цю дію неможливо скасувати."
 
@@ -14279,10 +14181,6 @@ msgstr "Демонстраційні дані зазвичай завантаж�
 #: 
 msgid "Deposit ID"
 msgstr "ID депозиту"
-
-#: 
-msgid "Deposit Total"
-msgstr "Загальна сума внесків"
 
 #: 
 msgid "Deposit Value"
@@ -14596,10 +14494,6 @@ msgstr "Група успішно видалена."
 #: 
 msgid "Group removed from cart"
 msgstr "Групу видалено з кошика"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "Ідентифікатор групи потрібен для підказки щодо вибору ролі"
 
 #: 
 msgid "HTML URL"
@@ -14979,20 +14873,8 @@ msgid "Please select a role."
 msgstr "Будь ласка, виберіть роль."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Будь ласка, виберіть групу та роль."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Будь ласка, виберіть рядки для видалення"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Виберіть цільову роль для членів"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Виберіть цільову групу для членів"
 
 #: 
 msgid "Please try again"
@@ -15890,24 +15772,12 @@ msgid "Account status"
 msgstr "Статус облікового запису"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Додатково: вибрати конкретну цільову версію"
-
-#: 
 msgid "Bug Fix"
 msgstr "Виправлення помилок"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "За замовчуванням майстер завантажує наступний рекомендований випуск. Натомість ви можете вибрати будь-яку доступну версію нижче."
-
-#: 
 msgid "Change required"
 msgstr "Необхідна зміна"
-
-#: 
-msgid "Changelog"
-msgstr "Журнал змін"
 
 #: 
 msgid "Continue Anyway"
@@ -15916,10 +15786,6 @@ msgstr "Продовжити все одно"
 #: 
 msgid "Could not load release information."
 msgstr "Не вдалося завантажити інформацію про випуск."
-
-#: 
-msgid "Download & Install"
-msgstr "Завантажити та встановити"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15948,10 +15814,6 @@ msgstr "Повний журнал змін"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Встановити стабільну версію {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Встановлення наступного випуску"
 
 #: 
 msgid "Invalid file path"
@@ -16022,10 +15884,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Показати повний шлях оновлення"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Останній стабільний випуск — {{version}}. Ви можете перевстановити його нижче."
 
@@ -16052,10 +15910,6 @@ msgstr "Переглянути примітки до випуску"
 #: 
 msgid "What's New"
 msgstr "Що нового"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Що нового у версії {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16678,10 +16532,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Функцію електронної пошти наразі вимкнено. Наступні можливості не працюватимуть, доки не буде увімкнено електронну пошту"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Орієнтовна вартість $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Найшвидший робочий процес"
 
@@ -16724,10 +16574,6 @@ msgstr "Локальна розробка"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Мінімальна загальна сума"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Мінімальна ставка $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17030,10 +16876,6 @@ msgid "Working..."
 msgstr "Обробка..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Ви відстаєте на {{releaseCount}} версій. Ось що ви отримаєте"
-
-#: 
 msgid "click to expand"
 msgstr "натисніть для розгортання"
 
@@ -17288,10 +17130,6 @@ msgstr "Не вдалося створити обітницю"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Не вдалося видалити обітницю"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Не вдалося закодувати відповідь про пожертвування"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17564,4 +17402,434 @@ msgstr "сьогодні думає про вас."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "маршрути сторінок, активна мова, версія CRM, версія PHP, сімейство ОС та випадковий ідентифікатор інсталяції. Нічого більше. Дані зберігаються в ЄС."
+
+#: 
+msgid "% Paid"
+msgstr "% Splacheno"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Bud laska, perevirite informatsiyu vashoyi rodyny"
+
+#: 
+msgid "Add Role"
+msgstr "Dodaty rol"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Dodaty vlasni vlastyvosti dlya tsiyeyi hrupy"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adresu zmineno pislya ostannogo vstanovlennya koordynat."
+
+#: 
+msgid "All Tellers"
+msgstr "Vsi kasyry"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Ne vdalosya nadislaty zhodnoho lysta. Bud laska, perevirte nalashtuvanniya SMTP u systemnykh nalashtuvannyakh."
+
+#: 
+msgid "Amount Max"
+msgstr "Maksymalna suma"
+
+#: 
+msgid "Amount Min"
+msgstr "Minimalna suma"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Pid chas nadsilannya lystiv stalasya neochikvana pomylka. Bud laska, perevirte nalashtuvanniya SMTP ta zhurnaly servera."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Vy vpevneni, shcho khochete vydalyty rol '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Avto"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Avto vidpovidaye nalashtuvanniyam OS abo brauzera; Svitla ta Temna temy perevyznachayut tse"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Povernutysya do paneli zhertvuvann"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Natysnit «Zgeneruvaty koordynaty», shchob znayty mistseznakhodzhenniya na karti dlya vkazanoyi adresy, abo vvedit shyrotu/dovhotu vruchnuyu. Yakshcho zalyshyty pole porozhnim, koordynaty takozh vyznachayutsya avtomatychno pry zberezhenni formy."
+
+#: 
+msgid "Contributor"
+msgstr "Zhertvodavets"
+
+#: 
+msgid "Contributors"
+msgstr "Zhertvodavtsi"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Ne vdalosya znayty koordynaty dlya tsiyeyi adresy. Sprobuite vvesty yikh vruchnuyu."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Vlasni vlastyvosti dlya tsiyeyi hrupy"
+
+#: 
+msgid "Delete role"
+msgstr "Vydalyty rol"
+
+#: 
+msgid "Email Error"
+msgstr "Pomylka elektronnoyi poshty"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Elektronnu poshtu ne nalashtovano. Bud laska, nalashtuite parametry SMTP u systemnykh nalashtuvannyakh."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Spochatku vvedit vulytsiyu ta nomer budinku."
+
+#: 
+msgid "Enter role name"
+msgstr "Vvedit nazvu roli"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Ne vdalosya stvorety depozyt"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Ne vdalosya zavantazhyty poperedny perehliad lysta"
+
+#: 
+msgid "From Date"
+msgstr "Z daty"
+
+#: 
+msgid "Fund Total"
+msgstr "Zahalna suma fondu"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Zvedennya zhertvuvann zhertvodavtsiv fondu za finansovyy rik"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Zbir koshtiv vymkneno"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Zgeneruvaty koordynaty"
+
+#: 
+msgid "Generating..."
+msgstr "Heneruvannya..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Zapyt heokoduvannya ne vdavsya. Bud laska, sprobuite shche raz."
+
+#: 
+msgid "Manage Events"
+msgstr "Keruvannya podiyamy"
+
+#: 
+msgid "N/A"
+msgstr "Н/Д"
+
+#: 
+msgid "New Deposit"
+msgstr "Novyy depozyt"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Zhertvodavtsiv dlya tsyoho fondu u vybranomu finansovomu rotsi ne znaysheno"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Ne znaysheno zhodnoyi rodyny z elektronnoyu adresoyu. Nichogo ne nadislano."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Platezhiv dlya vybranykh depozytiv ne znaysheno"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Ne vkazano diysnych identyfikatoriv depozytiv"
+
+#: 
+msgid "Partial Send"
+msgstr "Chastochne nadsilannya"
+
+#: 
+msgid "Payments only"
+msgstr "Lyshe platezhi"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Suma zhertvuvannya"
+
+#: 
+msgid "Preview"
+msgstr "Poperedny perehliad"
+
+#: 
+msgid "Retry"
+msgstr "Povtoryty"
+
+#: 
+msgid "Search"
+msgstr "Poshuk"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Poshuk ta keruvannya zapysamy depozytnych kvytantsiy"
+
+#: 
+msgid "Select All"
+msgstr "Vybraty vse"
+
+#: 
+msgid "Send Emails"
+msgstr "Nadislaty lysty"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Nadislaty lysty dlya pidtverdzhennya danykh rodyny"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Nadislano %1$d z %2$d — do %3$d rodyn ne vdalosya dodzvonytysya."
+
+#: 
+msgid "Show in Profile"
+msgstr "Pokazaty v profili"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Vidobrazhaietsia zahalna suma lyshe dlya vybranoho fondu"
+
+#: 
+msgid "Teller"
+msgstr "Kasyr"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Tse yedyna rol u tsiy hrupi."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Tsyu rol ne mozhna vydalyty."
+
+#: 
+msgid "To Date"
+msgstr "Do daty"
+
+#: 
+msgid "Total Pledged"
+msgstr "Zahalna suma zhertvuvann"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Neochikvana pomylka pid chas nadsilannya lystiv. Bud laska, perevirte zhurnaly."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Vykorystovuye vashu vulytsiyu ta nomer budinku, vkazani vyshche, dlya poshuku koordynat cherez OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Perehlyanuti platerch"
+
+#: 
+msgid "View Pledge"
+msgstr "Perehlyanuti zhertvuvannya"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Yakshcho poznacheno, tsya vlastyvist vidobrazhatymetsia poruch iz hrupoyu u spysku hrup osoby na yiyi storintsi profilyu."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Prizvyshche rodyny]"
+
+#: 
+msgid "row selected"
+msgstr "ryadok vybrano"
+
+#: 
+msgid "rows selected"
+msgstr "ryadkiv vybrano"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Дні народження та річниці"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Орієнтовна вартість: %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Мінімальна ставка: %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Параметри \"%s\" ще недоступні. Спочатку додайте відповідні записи."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Параметри \"%s\" ще не налаштовані. Спочатку додайте відповідні записи."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Парафіяни з днями народження або річницями вінчання у певному місяці"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Місяць, за який потрібно отримати дні народження та річниці."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Місяць річниці вінчання, за який потрібно отримати записи."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Загальна сума всіх покупок: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Усього покупок: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Річниці вінчання"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Парафіяни з річницями вінчання у певному місяці"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Сталася помилка. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Ви впевнені, що хочете видалити цей фонд?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Неможливо видалити: фонд має пов'язані пожертви"
+
+#: 
+msgid "Delete Fund"
+msgstr "Видалити фонд"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Напрямок має бути «вгору» або «вниз»."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Редагувати жертовний фонд"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Не вдалося змінити порядок жертовного фонду"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Фонд успішно додано."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Фонд успішно видалено."
+
+#: 
+msgid "Fund name"
+msgstr "Назва фонду"
+
+#: 
+msgid "Fund name is required."
+msgstr "Назва фонду є обов'язковою."
+
+#: 
+msgid "Fund order updated."
+msgstr "Порядок фондів оновлено."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Фонд успішно збережено."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Фонди ще не додано. Використайте форму вище, щоб додати перший фонд."
+
+#: 
+msgid "Optional description"
+msgstr "Необов'язковий опис"
+
+#: 
+msgid "Private Calendar"
+msgstr "Приватний календар"
+
+#: 
+msgid "Public Calendar"
+msgstr "Публічний календар"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Додатково: встановити конкретну версію"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "За замовчуванням майстер оновлює до останньої версії. Ви можете вибрати конкретну версію нижче."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Неможливо редагувати платіж у закритому депозиті"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Завантажити та застосувати {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Кожен випуск ChurchCRM містить виправлення безпеки. Ми наполегливо рекомендуємо завжди оновлюватися до останньої версії."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Не вдалося розшифрувати запит на оплату"
+
+#: 
+msgid "Full release notes"
+msgstr "Повні примітки до випуску"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Недійсні дані платежу"
+
+#: 
+msgid "No release notes available."
+msgstr "Примітки до випуску відсутні."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Увага: у {{chosen}} відсутні виправлення безпеки, включені до {{latest}}. Продовжуйте лише за наявності конкретної причини."
+
+#: 
+msgid "What you'll gain"
+msgstr "Що ви отримаєте"
 

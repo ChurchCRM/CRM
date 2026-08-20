@@ -420,10 +420,13 @@ function newEvent(Request $request, Response $response, array $args): Response
     $event = new Event();
     $event->setTitle($input['Title']);
     $event->setEventType($type);
-    $event->setDesc($input['Desc']);
+    // InputSanitizationMiddleware already sanitizes these HTML fields; just ensure they're set
+    $desc = isset($input['Desc']) ? $input['Desc'] : '';
+    $text = isset($input['Text']) ? $input['Text'] : '';
+    $event->setDesc($desc);
+    $event->setText($text);
     $event->setStart(str_replace('T', ' ', $input['Start']));
     $event->setEnd(str_replace('T', ' ', $input['End']));
-    $event->setText($input['Text']);
     if (array_key_exists('InActive', $input)) {
         $event->setInActive((int) $input['InActive']);
     }

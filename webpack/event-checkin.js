@@ -5,6 +5,8 @@
  * Uses TomSelect AJAX for person search.
  */
 
+import { escapeHtml } from "./utils/escape-html";
+
 $(() => {
   // Initialize DataTable for already checked-in people
   if ($("#checkedinTable").length > 0) {
@@ -146,19 +148,6 @@ function displayPersonDetails(element, person) {
   } else {
     element.html("").hide();
   }
-}
-
-/**
- * Escape HTML entities to prevent XSS
- *
- * @param {string} text - Text to escape
- * @returns {string} Escaped text
- */
-function escapeHtml(text) {
-  if (!text) return "";
-  const div = document.createElement("div");
-  div.textContent = text;
-  return div.innerHTML;
 }
 
 // =============================================================================
@@ -508,7 +497,7 @@ $(() => {
         '<button type="button" class="btn btn-outline-secondary" id="assignMeCheckout" title="' +
         i18next.t("Assign to me") +
         '">' +
-        '<i class="ti ti-user-check"></i>' +
+        '<i class="fa-solid fa-user-check"></i>' +
         "</button>" +
         "</div>" +
         '<small class="text-muted mt-2 d-block">' +
@@ -527,7 +516,7 @@ $(() => {
           },
         },
         confirm: {
-          label: `<i class="ti ti-user-check"></i> ${i18next.t("Confirm Check Out")}`,
+          label: `<i class="fa-solid fa-user-check"></i> ${i18next.t("Confirm Check Out")}`,
           className: "btn-primary",
           callback: () => {
             const val = $("#checkoutBySelect").val();
@@ -620,7 +609,7 @@ $(() => {
       message: `${i18next.t("Delete check-in record for")} <strong>${window.CRM.escapeHtml(String(personName || ""))}</strong>?`,
       buttons: {
         cancel: { label: `<i class="ti ti-x"></i> ${i18next.t("Cancel")}` },
-        confirm: { label: `<i class="ti ti-trash"></i> ${i18next.t("Delete")}`, className: "btn-danger" },
+        confirm: { label: `<i class="fa-solid fa-trash"></i> ${i18next.t("Delete")}`, className: "btn-danger" },
       },
       callback: (confirmed) => {
         if (!confirmed) return;

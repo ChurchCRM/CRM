@@ -94,17 +94,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="d-flex flex-wrap gap-2">
           <?php if ($canEditEvents): ?>
             <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary btn-sm">
-              <i class="ti ti-plus me-1"></i><?= gettext('Add Event') ?>
+              <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event') ?>
             </a>
             <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-outline-primary btn-sm">
-              <i class="ti ti-repeat me-1"></i><?= gettext('Add Recurring Event') ?>
+              <i class="fa-solid fa-repeat me-1"></i><?= gettext('Add Recurring Event') ?>
             </a>
           <?php endif; ?>
           <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-outline-secondary btn-sm">
-            <i class="ti ti-user-check me-1"></i><?= gettext('Check-in') ?>
+            <i class="fa-solid fa-user-check me-1"></i><?= gettext('Check-in') ?>
           </a>
           <a href="<?= $sRootPath ?>/event/calendars" class="btn btn-outline-secondary btn-sm">
-            <i class="ti ti-calendar me-1"></i><?= gettext('Calendar') ?>
+            <i class="fa-solid fa-calendar me-1"></i><?= gettext('Calendar') ?>
           </a>
         </div>
       </div>
@@ -141,7 +141,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-md-2 text-end">
           <?php if ($eType !== 'All'): ?>
             <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-sm btn-ghost-secondary">
-              <i class="ti ti-x me-1"></i><?= gettext('Clear Filter') ?>
+              <i class="fa-solid fa-xmark me-1"></i><?= gettext('Clear Filter') ?>
             </a>
           <?php endif; ?>
         </div>
@@ -177,7 +177,7 @@ foreach ($monthlyData as $monthData):
 <div class="card mb-3" id="month-<?= $monthNum ?>">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title mb-0">
-      <i class="ti ti-calendar me-2 text-body-secondary"></i>
+      <i class="fa-solid fa-calendar me-2 text-body-secondary"></i>
       <?= sprintf(ngettext('%d event in %s', '%d events in %s', $numRows), $numRows, gettext($monthName)) ?>
     </h3>
     <span class="badge bg-blue-lt ms-auto"><?= (int) $EventYear ?></span>
@@ -220,8 +220,8 @@ foreach ($monthlyData as $monthData):
                 aria-expanded="<?= $autoExpand ? 'true' : 'false' ?>"
                 aria-controls="<?= $collapseId ?>"
               >
-                <i class="ti ti-chevron-right me-1 past-events-chevron"></i>
-                <i class="ti ti-archive me-1 text-body-secondary"></i>
+                <i class="fa-solid fa-chevron-right me-1 past-events-chevron"></i>
+                <i class="fa-solid fa-archive me-1 text-body-secondary"></i>
                 <?= sprintf(
                     ngettext('%d past event', '%d past events', $pastCount),
                     $pastCount
@@ -301,7 +301,7 @@ foreach ($monthlyData as $monthData):
 <div class="card">
   <div class="card-body text-center py-5">
     <div class="mb-3">
-      <i class="ti ti-calendar-off text-body-secondary" style="font-size: 3rem;"></i>
+      <i class="fa-solid fa-calendar-off text-body-secondary" style="font-size: 3rem;"></i>
     </div>
     <h3 class="text-body-secondary"><?= gettext('No Events Found') ?></h3>
     <p class="text-body-secondary mb-3">
@@ -312,10 +312,10 @@ foreach ($monthlyData as $monthData):
     </p>
     <?php if ($canEditEvents): ?>
       <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary me-2">
-        <i class="ti ti-plus me-1"></i><?= gettext('Create First Event') ?>
+        <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Event') ?>
       </a>
       <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-outline-primary">
-        <i class="ti ti-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
+        <i class="fa-solid fa-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
       </a>
     <?php endif; ?>
   </div>

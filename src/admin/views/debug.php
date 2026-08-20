@@ -339,7 +339,7 @@ $fmtBytes = static function ($bytes): string {
                                                 <?php if ($locale['systemAvailable']): ?>
                                                     <span class="badge bg-green-lt text-green"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
                                                 <?php else: ?>
-                                                    <span class="badge bg-light text-dark"><i class="fa fa-times me-1"></i><?= gettext('No') ?></span>
+                                                    <span class="badge bg-light text-dark"><i class="fa fa-xmark me-1"></i><?= gettext('No') ?></span>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -368,7 +368,7 @@ $fmtBytes = static function ($bytes): string {
             <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
             <div class="card-header">
                 <h4 class="mb-0">
-                    <i class="fa fa-shield-alt me-2"></i><?= gettext('Application Integrity') ?>
+                    <i class="fa fa-shield-halved me-2"></i><?= gettext('Application Integrity') ?>
                     <?php if (!$integrityPassed): ?>
                         <span class="badge bg-warning text-dark ms-2"><?= $failingCount ?></span>
                     <?php endif; ?>
@@ -428,7 +428,7 @@ $fmtBytes = static function ($bytes): string {
                     <?php foreach ($appPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
-                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
+                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-xmark text-danger';
                     ?>
                         <tr>
                             <td><i class="fa <?= $iconClass ?> me-2"></i><a href='<?= $prerequisite->getWikiLink() ?>' target="_blank" rel="noopener noreferrer"><?= $prerequisite->getName() ?></a></td>
@@ -441,7 +441,7 @@ $fmtBytes = static function ($bytes): string {
                     <?php foreach ($fsPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
-                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
+                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-xmark text-danger';
                     ?>
                         <tr>
                             <td><i class="fa <?= $iconClass ?> me-2"></i><?= $prerequisite->getName() ?></td>
@@ -576,7 +576,7 @@ $fmtBytes = static function ($bytes): string {
         <div class="card-status-top <?= $telemetryEnabled ? 'bg-success' : 'bg-secondary' ?>"></div>
         <div class="card-header">
             <h4 class="mb-0">
-                <i class="ti ti-broadcast me-2"></i><?= gettext('Anonymous Telemetry') ?>
+                <i class="fa-solid fa-broadcast-tower me-2"></i><?= gettext('Anonymous Telemetry') ?>
                 <?php if ($telemetryEnabled): ?>
                     <span class="badge bg-success ms-2"><?= InputUtils::escapeHTML($levelLabels[$telemetryLevel]) ?></span>
                 <?php else: ?>
@@ -595,7 +595,7 @@ $fmtBytes = static function ($bytes): string {
                                     class="btn text-start <?= $active ? ($lv === TelemetryService::LEVEL_NONE ? 'btn-secondary' : 'btn-success') : ($lv === TelemetryService::LEVEL_NONE ? 'btn-ghost-danger' : 'btn-ghost-success') ?> js-debug-telemetry-toggle"
                                     data-level="<?= InputUtils::escapeAttribute($lv) ?>"
                                     <?= $active ? 'disabled aria-current="true"' : '' ?>>
-                                <?php if ($active): ?><i class="ti ti-check me-1"></i><?php endif; ?>
+                                <?php if ($active): ?><i class="fa-solid fa-check me-1"></i><?php endif; ?>
                                 <?= InputUtils::escapeHTML($label) ?>
                             </button>
                         <?php endforeach; ?>
@@ -702,13 +702,26 @@ $fmtBytes = static function ($bytes): string {
 </style>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    // Translated strings as a JSON object — never embed raw gettext() output
+    // inside JS string literals; apostrophes in translations (e.g. French
+    // "s'afficher") break single-quoted JS strings.
+    var t = <?= json_encode([
+        'unknown'        => gettext('Unknown'),
+        'mismatch'       => gettext('Mismatch'),
+        'issuesDetected' => gettext('Issues detected'),
+        'allMatch'       => gettext('All timezones match'),
+        'mismatchOne'    => gettext('mismatch detected'),
+        'mismatchMany'   => gettext('mismatches detected'),
+        'browserDiffers' => gettext('Browser differs from system config - dates may display incorrectly for this user.'),
+    ], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) ?>;
+
     var initializeDebugPage = function() {
         // Populate browser timezone information with guard for older browsers
         var browserTimezone;
         try {
-            browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || '<?= gettext('Unknown') ?>';
+            browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || t.unknown;
         } catch (e) {
-            browserTimezone = '<?= gettext('Unknown') ?>';
+            browserTimezone = t.unknown;
         }
         var now = new Date();
         var browserOffset = -now.getTimezoneOffset();
@@ -761,7 +774,7 @@ $fmtBytes = static function ($bytes): string {
         } else {
             $badge.removeClass('bg-success-lt text-success bg-secondary text-white')
                   .addClass('bg-warning-lt text-warning')
-                  .html('<i class="fa fa-triangle-exclamation me-1"></i><?= gettext('Mismatch') ?>');
+                  .html('<i class="fa fa-triangle-exclamation me-1"></i>' + t.mismatch);
             $row.addClass('bg-warning-light');
             // Show alert icon in card header
             $headerAlert.removeClass('d-none');
@@ -773,7 +786,7 @@ $fmtBytes = static function ($bytes): string {
                 .addClass('border-warning')
                 .find('.card-status-top').removeClass('bg-success').addClass('bg-warning');
             if ($bannerHeadline.length) {
-                $bannerHeadline.html('<i class="fa fa-triangle-exclamation text-warning me-1"></i><?= gettext('Issues detected') ?>');
+                $bannerHeadline.html('<i class="fa fa-triangle-exclamation text-warning me-1"></i>' + t.issuesDetected);
                 $banner.removeClass('border-success').addClass('border-warning');
             }
         }
@@ -791,12 +804,12 @@ $fmtBytes = static function ($bytes): string {
         
         var summaryHtml = '';
         if (issueCount === 0) {
-            summaryHtml = '<span class="text-success"><i class="fa fa-circle-check me-1"></i><?= gettext('All timezones match') ?></span>';
+            summaryHtml = '<span class="text-success"><i class="fa fa-circle-check me-1"></i>' + t.allMatch + '</span>';
         } else {
             summaryHtml = '<span class="text-warning"><i class="fa fa-triangle-exclamation me-1"></i>' + 
-                          issueCount + ' ' + (issueCount === 1 ? '<?= gettext('mismatch detected') ?>' : '<?= gettext('mismatches detected') ?>') + '</span>';
+                          issueCount + ' ' + (issueCount === 1 ? t.mismatchOne : t.mismatchMany) + '</span>';
             if (!browserMatchesBaseline) {
-                summaryHtml += '<br><small class="text-body-secondary"><?= gettext('Browser differs from system config - dates may display incorrectly for this user.') ?></small>';
+                summaryHtml += '<br><small class="text-body-secondary">' + t.browserDiffers + '</small>';
             }
         }
         $('#timezone-summary').html(summaryHtml);

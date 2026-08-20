@@ -1,15 +1,17 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
-use ChurchCRM\Service\FinancialService;
 
 $app->group('/payments', function (RouteCollectorProxy $group): void {
     /**
@@ -72,6 +74,9 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *         @OA\JsonContent(@OA\Property(property="data", type="array", @OA\Items(
      *             @OA\Property(property="FormattedFY", type="string"),
      *             @OA\Property(property="Amount", type="number"),
+     *             @OA\Property(property="Amount_formatted", type="string"),
+     *             @OA\Property(property="Nondeductible", type="number"),
+     *             @OA\Property(property="Nondeductible_formatted", type="string"),
      *             @OA\Property(property="PledgeOrPayment", type="string"),
      *             @OA\Property(property="Date", type="string", format="date"),
      *             @OA\Property(property="Fund", type="string")
@@ -101,7 +106,9 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $newRow['FormattedFY'] = $row->getFormattedFY();
             $newRow['GroupKey'] = $row->getGroupKey();
             $newRow['Amount'] = $row->getAmount();
+            $newRow['Amount_formatted'] = CurrencyFormatter::format($row->getAmount());
             $newRow['Nondeductible'] = $row->getNondeductible();
+            $newRow['Nondeductible_formatted'] = CurrencyFormatter::format($row->getNondeductible());
             $newRow['Schedule'] = $row->getSchedule();
             $newRow['Method'] = $row->getMethod();
             $newRow['Comment'] = InputUtils::escapeHTML($row->getComment() ?? '');
@@ -145,11 +152,14 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="pledgeOrPayment", type="string", enum={"Pledge","Payment"}, example="Payment"),
      *             @OA\Property(property="schedule", type="string", nullable=true, example="Monthly"),
      *             @OA\Property(property="total", type="number", format="float", example=250.00),
+     *             @OA\Property(property="total_formatted", type="string", example="$250.00"),
      *             @OA\Property(property="funds", type="array", @OA\Items(
      *                 @OA\Property(property="fundId", type="integer", example=1),
      *                 @OA\Property(property="fundName", type="string", example="General Fund"),
      *                 @OA\Property(property="amount", type="number", format="float", example=200.00),
+     *                 @OA\Property(property="amount_formatted", type="string", example="$200.00"),
      *                 @OA\Property(property="nonDeductible", type="number", format="float", example=0.00),
+     *                 @OA\Property(property="nonDeductible_formatted", type="string", example="$0.00"),
      *                 @OA\Property(property="comment", type="string", example="Annual pledge")
      *             ))
      *         )
@@ -244,7 +254,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         try {
             $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to encode payment response'), [], 500, $e, $request);
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }
         return SlimUtils::renderJSON($response, [
             'groupKey' => $paymentObj['GroupKey'] ?? '',
@@ -281,7 +291,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=400, description="Validation error (invalid date, fund, check number, etc.)"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required"),
-     *     @OA\Response(response=404, description="Pledge group not found")
+     *     @OA\Response(response=404, description="Pledge group not found"),
+     *     @OA\Response(response=409, description="Deposit is closed — payment cannot be edited")
      * )
      */
     $group->put('/{groupKey}', function (Request $request, Response $response, array $args): Response {
@@ -308,16 +319,45 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             }
 
             $financialService = new FinancialService();
+
+            // Guard: prevent edits to payments in a closed deposit
+            $firstPledge = PledgeQuery::create()->filterByGroupKey($groupKey)->findOne();
+            if ($firstPledge !== null) {
+                $deposit = $firstPledge->getDepId()
+                    ? DepositQuery::create()->findOneById($firstPledge->getDepId())
+                    : null;
+                if ($deposit !== null && $deposit->getClosed()) {
+                    return SlimUtils::renderErrorJSON(
+                        $response,
+                        gettext('Cannot edit a payment in a closed deposit'),
+                        [],
+                        409
+                    );
+                }
+            }
+
             $groupPayment = $financialService->updatePledgeOrPayment($payment, $groupKey);
         } catch (\InvalidArgumentException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Pledge group not found'), [], 404);
+        } catch (\JsonException $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid payment data'), [], 400, $e, $request);
+        } catch (\DomainException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 409);
+        } catch (\Exception $e) {
+            if ($e instanceof \PDOException
+                || $e instanceof \Propel\Runtime\Exception\PropelException) {
+                return SlimUtils::renderErrorJSON(
+                    $response, gettext('Failed to update pledge'), [], 500, $e, $request
+                );
+            }
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, $e, $request);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update pledge'), [], 500, $e, $request);
         }
         try {
             $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to encode payment response'), [], 500, $e, $request);
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }
 
         return SlimUtils::renderJSON($response, [

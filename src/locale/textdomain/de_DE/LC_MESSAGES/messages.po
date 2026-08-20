@@ -585,16 +585,8 @@ msgid "Picture URL"
 msgstr "Bild URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Spenden Fonds Editor"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ungültiges Feld oder Auwahlt. Änderungen nicht gespeichert! Bitte korrigieren und nochmal versuchen!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Bisher wurden keine Fonds hinzugefügt"
 
 #: 
 msgid "Active"
@@ -1126,25 +1118,9 @@ msgid "Create Report"
 msgstr "Bericht erstellen"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Auflistung der Einzahlungen"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Zahlungen"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Ausgewählte Reihe löschen"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Ausgewählte Reihe exportieren (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Ausgewählte Reihe exportieren (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1317,10 +1293,6 @@ msgid "Enabled"
 msgstr "Aktiviert"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Bearbeiten der gruppenspezifischen Einstellungenform"
-
-#: 
 msgid "Disabled"
 msgstr "Deaktiviert"
 
@@ -1374,14 +1346,6 @@ msgstr "Gruppenspezifische Einstellungen aus dem Editor"
 #: 
 msgid "No properties have been added yet"
 msgstr "Bisher sind keine Einstellungen vorgenommen worden"
-
-#: 
-msgid "Show in"
-msgstr "Anzeigen in"
-
-#: 
-msgid "Person View"
-msgstr "Person anzeigen"
 
 #: 
 msgid "Other Email"
@@ -2267,14 +2231,6 @@ msgstr "gespendete Sachen"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Gekaufte Artikel"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Summe für alle Einkäufe: €"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Summe der Einkäufe: €"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4951,10 +4907,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Stellen Sie das zu verwendende Verschlüsselungssystem ein - ssl (veraltet) oder tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Einzahlungsbeleg für ausgewählte Zeilen erzeugen (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Alle zum Warenkorb hinzufügen"
 
@@ -5251,10 +5203,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Fehler beim Versenden der E-Mail(s)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Überprüfen Sie die Logs für weitere Informationen"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5645,10 +5593,6 @@ msgstr "Familie aus dem Warenkorb entfernt"
 #: 
 msgid "Add Group"
 msgstr "Gruppe hinzufügen"
-
-#: 
-msgid "Back to Group List"
-msgstr "Zurück zur Gruppenliste"
 
 #: 
 msgid "Edit Group"
@@ -7429,10 +7373,6 @@ msgid "Order"
 msgstr "Auftrag"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDFs erfolgreich an %s Familien per E-Mail versendet."
-
-#: 
 msgid "Percentage"
 msgstr "Prozentsatz"
 
@@ -7471,10 +7411,6 @@ msgstr "Fügen Sie Ihren ersten Eigenschaftstyp hinzu"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Durch das Löschen dieses Feldes verlieren Sie unwiderruflich alle Gruppenmitgliedsdaten, die diesem Feld zugewiesen sind!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Durch das Löschen dieses Fonds können Sie historische Spendensätze beeinflussen!"
 
 #: 
 msgid "Category Name"
@@ -7529,10 +7465,6 @@ msgid "Filter by Class"
 msgstr "Nach Klasse filtern"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fonds erfolgreich gelöscht"
-
-#: 
 msgid "In Use"
 msgstr "In Verwendung"
 
@@ -7579,10 +7511,6 @@ msgstr "Diese Anwesenheitszahl entfernen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Wählen Sie den Datensatztyp, für den diese Eigenschaft gilt"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Dieser Fondsname existiert bereits."
 
 #: 
 msgid "Total Pledges"
@@ -10074,10 +10002,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Personen, Familien, Gruppen, Adressen und mehr durchsuchen."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Einlagebelegdatensätze suchen und anzeigen"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Personen, Familien, Gruppen suchen…"
 
@@ -10730,11 +10654,6 @@ msgstr "In Zwischenablage kopieren"
 msgid "Custom field"
 msgstr "Benutzerdefiniertes Feld"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Benutzerdefinierte Suche"
-
 #: 
 msgid "Default Country"
 msgstr "Standardland"
@@ -10796,11 +10715,6 @@ msgstr "Feldwert"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Personen finden, die ein Jahr verpflichtet haben, aber nicht das andere"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Personen mit einem benutzerdefinierten Feldwert finden"
 
 #. Context: query_qry
 #: 
@@ -12063,10 +11977,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Änderungen werden erst nach der nächsten Anmeldung wirksam."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Wählen Sie zwischen hellem und dunklem Farbschema"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Passen Sie das Erscheinungsbild und die Bedienung der Anwendung an"
 
@@ -12821,10 +12731,6 @@ msgstr "Breiten- und Längengrad müssen gemeinsam angegeben werden (oder beide 
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Gemeindedaten wurden gespeichert, aber die Adresse konnte nicht automatisch geortet werden. Bitte geben Sie Breiten- und Längengrad manuell unter Kartenkoordinaten ein."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Die Koordinaten werden beim Speichern automatisch aus Ihrer Adresse ermittelt (über OpenStreetMap). Sie können sie auch manuell unten eingeben – manuelle Werte haben immer Vorrang vor der automatischen Erkennung. Lassen Sie beide Felder leer, um die Adresse automatisch zu geokodieren."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14083,10 +13989,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Möchten Sie wirklich fortfahren?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Sind Sie sicher, dass Sie diese Einlage löschen möchten?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Möchten Sie diesen Veranstaltungstyp wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden."
 
@@ -14337,10 +14239,6 @@ msgstr "Demodaten werden normalerweise nur bei Neuinstallationen geladen. Ein Im
 #: 
 msgid "Deposit ID"
 msgstr "Kaution ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Einzahlung Gesamt"
 
 #: 
 msgid "Deposit Value"
@@ -14654,10 +14552,6 @@ msgstr "Gruppe erfolgreich gelöscht."
 #: 
 msgid "Group removed from cart"
 msgstr "Gruppe aus dem Warenkorb entfernt"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "Gruppen-ID für die Aufforderung zur Rollenauswahl erforderlich"
 
 #: 
 msgid "HTML URL"
@@ -15037,20 +14931,8 @@ msgid "Please select a role."
 msgstr "Bitte wählen Sie eine Rolle aus."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Bitte wählen Sie sowohl einen Dienst als auch eine Rolle aus."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Bitte wählen Sie Zeilen zum Löschen"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Bitte wählen Sie die Zielfunktion für Mitglieder"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Bitte wählen Sie eine Zielgruppe für Mitglieder aus"
 
 #: 
 msgid "Please try again"
@@ -15946,24 +15828,12 @@ msgid "Account status"
 msgstr "Kontostatus"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Erweitert: eine bestimmte Zielversion auswählen"
-
-#: 
 msgid "Bug Fix"
 msgstr "Fehlerbehebung"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Standardmäßig lädt der Assistent die nächste empfohlene Version herunter. Sie können unten auch eine beliebige verfügbare Version auswählen."
-
-#: 
 msgid "Change required"
 msgstr "Änderung erforderlich"
-
-#: 
-msgid "Changelog"
-msgstr "Änderungsprotokoll"
 
 #: 
 msgid "Continue Anyway"
@@ -15972,10 +15842,6 @@ msgstr "Trotzdem fortfahren"
 #: 
 msgid "Could not load release information."
 msgstr "Versionsinformationen konnten nicht geladen werden."
-
-#: 
-msgid "Download & Install"
-msgstr "Herunterladen & Installieren"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -16004,10 +15870,6 @@ msgstr "Vollständiges Änderungsprotokoll"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Stabile Version {{version}} installieren"
-
-#: 
-msgid "Installing next release"
-msgstr "Nächste Version wird installiert"
 
 #: 
 msgid "Invalid file path"
@@ -16078,10 +15940,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Vollständigen Aktualisierungspfad anzeigen"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Die neueste stabile Version ist {{version}}. Sie können sie unten neu installieren."
 
@@ -16108,10 +15966,6 @@ msgstr "Versionshinweise anzeigen"
 #: 
 msgid "What's New"
 msgstr "Neuigkeiten"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Neuigkeiten in {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16726,10 +16580,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Die E-Mail-Funktion ist derzeit deaktiviert. Die folgenden Funktionen sind erst nach Aktivierung des E-Mail-Versands verfügbar"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Geschätzter Wert $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Schnellster Arbeitsablauf"
 
@@ -16772,10 +16622,6 @@ msgstr "Lokale Entwicklung"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Mindestgesamtbetrag"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Mindestgebot $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17078,10 +16924,6 @@ msgid "Working..."
 msgstr "Wird bearbeitet..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Sie sind {{releaseCount}} Versionen zurück. Das erwartet Sie"
-
-#: 
 msgid "click to expand"
 msgstr "zum Erweitern klicken"
 
@@ -17336,10 +17178,6 @@ msgstr "Zusage konnte nicht erstellt werden"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Zusage konnte nicht gelöscht werden"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Zahlungsantwort konnte nicht kodiert werden"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17612,4 +17450,442 @@ msgstr "denkt heute an Sie."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "Seitenrouten, aktive Spracheinstellung, CRM-Version, PHP-Version, Betriebssystemfamilie und eine zufällige Installations-ID. Nichts weiter. Daten werden in der EU gespeichert."
+
+#: 
+msgid "% Paid"
+msgstr "% Bezahlt"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Bitte uberprufen Sie die Angaben Ihrer Familie"
+
+#: 
+msgid "Add Role"
+msgstr "Rolle hinzufugen"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Benutzerdefinierte Eigenschaften fur diese Gruppe hinzufugen"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adresse wurde geandert, seit die Koordinaten zuletzt gesetzt wurden."
+
+#: 
+msgid "All Tellers"
+msgstr "Alle Kassierer"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Alle E-Mail-Sendungen sind fehlgeschlagen. Bitte uberprufen Sie Ihre SMTP-Einstellungen in den Systemeinstellungen."
+
+#: 
+msgid "Amount Max"
+msgstr "Betrag Maximum"
+
+#: 
+msgid "Amount Min"
+msgstr "Betrag Minimum"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Beim Senden von E-Mails ist ein unerwarteter Fehler aufgetreten. Bitte uberprufen Sie Ihre SMTP-Einstellungen und Server-Protokolle."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Mochten Sie die Rolle '{{name}}' wirklich entfernen?"
+
+#: 
+msgid "Auto"
+msgstr "Automatisch"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automatisch folgt Ihrer Betriebssystem- oder Browsereinstellung; Hell und Dunkel uberschreiben diese"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Zuruck zum Spendenversprechen-Dashboard"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Klicken Sie auf \"Koordinaten generieren\", um den Kartenstandort fur die obige Adresse nachzuschlagen, oder geben Sie Breiten-/Langengrad manuell ein. Wenn das Feld leer bleibt, werden die Koordinaten beim Speichern des Formulars automatisch erkannt."
+
+#: 
+msgid "Contributor"
+msgstr "Spender"
+
+#: 
+msgid "Contributors"
+msgstr "Spender"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Koordinaten fur diese Adresse konnten nicht gefunden werden. Versuchen Sie, diese manuell einzugeben."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Benutzerdefinierte Eigenschaften fur diese Gruppe"
+
+#: 
+msgid "Delete role"
+msgstr "Rolle loschen"
+
+#: 
+msgid "Email Error"
+msgstr "E-Mail-Fehler"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-Mail ist nicht konfiguriert. Bitte konfigurieren Sie die SMTP-Einstellungen in den Systemeinstellungen."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-Mail an %d Familie gesendet."
+msgstr[1] "E-Mail an %d Familien gesendet."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Bitte zuerst eine Strassenadresse eingeben."
+
+#: 
+msgid "Enter role name"
+msgstr "Rollenname eingeben"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Einzahlung konnte nicht erstellt werden"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "E-Mail-Vorschau konnte nicht geladen werden"
+
+#: 
+msgid "From Date"
+msgstr "Von Datum"
+
+#: 
+msgid "Fund Total"
+msgstr "Fonds-Gesamtbetrag"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Zusammenfassung der Spendenversprechen nach Geschaftsjahr"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Spendensammlung ist deaktiviert"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Koordinaten generieren"
+
+#: 
+msgid "Generating..."
+msgstr "Wird generiert..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Geocodierungsanfrage fehlgeschlagen. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Manage Events"
+msgstr "Veranstaltungen verwalten"
+
+#: 
+msgid "New Deposit"
+msgstr "Neue Einzahlung"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Keine Spender fur diesen Fonds im ausgewahlten Geschaftsjahr gefunden"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Es wurden keine Familien mit einer E-Mail-Adresse gefunden. Es wurde nichts gesendet."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Keine Zahlungen fur die ausgewahlten Einzahlungen gefunden"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Keine gultigen Einzahlungs-IDs angegeben"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF erfolgreich an %d Familie per E-Mail gesendet."
+msgstr[1] "PDF erfolgreich an %d Familien per E-Mail gesendet."
+
+#: 
+msgid "Partial Send"
+msgstr "Teilweise gesendet"
+
+#: 
+msgid "Payments only"
+msgstr "Nur Zahlungen"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Zugesagter Betrag"
+
+#: 
+msgid "Preview"
+msgstr "Vorschau"
+
+#: 
+msgid "Retry"
+msgstr "Erneut versuchen"
+
+#: 
+msgid "Search"
+msgstr "Suchen"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Einzahlungsbelege suchen und verwalten"
+
+#: 
+msgid "Select All"
+msgstr "Alle auswahlen"
+
+#: 
+msgid "Send Emails"
+msgstr "E-Mails senden"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Familienverifizierungs-E-Mails senden"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%1$d von %2$d gesendet — %3$d Familien konnten nicht erreicht werden."
+
+#: 
+msgid "Show in Profile"
+msgstr "Im Profil anzeigen"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Zeigt nur den Gesamtbetrag fur den ausgewahlten Fonds"
+
+#: 
+msgid "Teller"
+msgstr "Kassierer"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Dies ist die einzige Rolle in dieser Gruppe."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Diese Rolle kann nicht geloscht werden."
+
+#: 
+msgid "To Date"
+msgstr "Bis Datum"
+
+#: 
+msgid "Total Pledged"
+msgstr "Gesamtes Spendenversprechen"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Unerwarteter Fehler beim Senden von E-Mails. Bitte uberprufen Sie die Protokolle."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Verwendet Ihre oben angegebene Strassenadresse, um Koordinaten uber OpenStreetMap nachzuschlagen."
+
+#: 
+msgid "View Payment"
+msgstr "Zahlung anzeigen"
+
+#: 
+msgid "View Pledge"
+msgstr "Spendenversprechen anzeigen"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Wenn aktiviert, wird diese Eigenschaft neben der Gruppe in der Gruppenliste der Person auf ihrer Profilseite angezeigt."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Familienname]"
+
+#: 
+msgid "row selected"
+msgstr "Zeile ausgewahlt"
+
+#: 
+msgid "rows selected"
+msgstr "Zeilen ausgewahlt"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Geburtstage & Jahrestage"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Geschätzter Wert %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Mindestgebot %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Noch keine \"%s\"-Optionen verfügbar. Fügen Sie zuerst die entsprechenden Einträge hinzu."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Noch keine \"%s\"-Optionen konfiguriert. Fügen Sie zuerst die entsprechenden Einträge hinzu."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Personen mit Geburtstagen oder Hochzeitsjubiläen in einem bestimmten Monat"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Der Monat, für den Geburtstage und Jahrestage angezeigt werden sollen."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Der Monat des Hochzeitsjubiläums, für den Einträge angezeigt werden sollen."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Gesamtsumme aller Käufe: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Gesamtkäufe: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Hochzeitsjubiläen"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Personen mit Hochzeitsjubiläen in einem bestimmten Monat"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Sind Sie sicher, dass Sie diesen Fonds löschen möchten?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Löschen nicht möglich: Dem Fonds sind Zusagen zugeordnet"
+
+#: 
+msgid "Delete Fund"
+msgstr "Fonds löschen"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Die Richtung muss 'up' oder 'down' sein."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Spendenfonds bearbeiten"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Neuanordnung des Spendenfonds fehlgeschlagen"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fonds erfolgreich hinzugefügt."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fonds erfolgreich gelöscht."
+
+#: 
+msgid "Fund name"
+msgstr "Fondsname"
+
+#: 
+msgid "Fund name is required."
+msgstr "Fondsname ist erforderlich."
+
+#: 
+msgid "Fund order updated."
+msgstr "Reihenfolge der Fonds aktualisiert."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fonds erfolgreich gespeichert."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Es wurden noch keine Fonds hinzugefügt. Verwenden Sie das obige Formular, um den ersten Fonds hinzuzufügen."
+
+#: 
+msgid "Optional description"
+msgstr "Optionale Beschreibung"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privater Kalender"
+
+#: 
+msgid "Public Calendar"
+msgstr "Öffentlicher Kalender"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Erweitert: Stattdessen eine bestimmte Version installieren"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Standardmäßig aktualisiert der Assistent auf die neueste Version. Sie können unten stattdessen eine bestimmte Version auswählen."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Eine Zahlung in einem abgeschlossenen Einzahlungsvorgang kann nicht bearbeitet werden"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "{{version}} herunterladen & anwenden"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Jede ChurchCRM-Version enthält Sicherheitskorrekturen. Wir empfehlen dringend, immer auf die neueste Version zu aktualisieren."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Zahlungsanforderung konnte nicht dekodiert werden"
+
+#: 
+msgid "Full release notes"
+msgstr "Vollständige Versionshinweise"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Ungültige Zahlungsdaten"
+
+#: 
+msgid "No release notes available."
+msgstr "Keine Versionshinweise verfügbar."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Warnung: {{chosen}} enthält nicht die in {{latest}} enthaltenen Sicherheitskorrekturen. Fahren Sie nur fort, wenn Sie einen bestimmten Grund haben."
+
+#: 
+msgid "What you'll gain"
+msgstr "Was Sie gewinnen werden"
 

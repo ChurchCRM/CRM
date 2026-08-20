@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "Pildi URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Annetusfondi toimetaja"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Kehtetud väljad või valikud. Muudatusi ei salvestatud! Parandage ja proovige uuesti!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Rahalisi vahendeid pole veel lisatud"
 
 #: 
 msgid "Active"
@@ -1094,25 +1086,9 @@ msgid "Create Report"
 msgstr "Loo aruanne"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Sissetulekute noteerimine"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Sissetulekud"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Kustuta valitud read"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Ekspordi valitud read (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Ekspordi valitud read (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1277,10 +1253,6 @@ msgid "Enabled"
 msgstr "Lubatud"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Redigeerige rühma spetsiifiliste omaduste vormi"
-
-#: 
 msgid "Disabled"
 msgstr "Keelatud"
 
@@ -1332,14 +1304,6 @@ msgstr "Grupispetsiifiliste omaduste vormi muutja"
 #: 
 msgid "No properties have been added yet"
 msgstr "Ühtegi atribuuti pole veel lisatud"
-
-#: 
-msgid "Show in"
-msgstr "Näita"
-
-#: 
-msgid "Person View"
-msgstr "Isiku vaade"
 
 #: 
 msgid "Other Email"
@@ -2196,14 +2160,6 @@ msgstr "Kingitud esemed"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Ostetud kaubad"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Kõigi ostude kogusumma: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Ostud kokku: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4872,10 +4828,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Seadistage krüptimissüsteem kasutamiseks - ssl (aegunud) või tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Genereerige valitud ridade jaoks sissemaksete tõend (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Lisa kõik korvi"
 
@@ -5172,10 +5124,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Viga e-kirjade saatmisel"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Lisateabe saamiseks kontrollige logisid"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5566,10 +5514,6 @@ msgstr "Perekond on eemaldatud ostukorvist"
 #: 
 msgid "Add Group"
 msgstr "Lisa rühm"
-
-#: 
-msgid "Back to Group List"
-msgstr "Tagasi rühmade loendisse"
 
 #: 
 msgid "Edit Group"
@@ -7350,10 +7294,6 @@ msgid "Order"
 msgstr "Tellimus"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF-id saadeti edukalt %s perekondade e-postiga."
-
-#: 
 msgid "Percentage"
 msgstr "Protsent"
 
@@ -7392,10 +7332,6 @@ msgstr "Lisa Oma Esimene Omaduse Tüüp"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Selle välja kustutamisega kaotate pöördumatult kõik sellele väljale määratud grupi liikmete andmed!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Selle fondi kustutamisega võite mõjutada ajaloolisi annetuste kirjeid!"
 
 #: 
 msgid "Category Name"
@@ -7450,10 +7386,6 @@ msgid "Filter by Class"
 msgstr "Filtreeri Klassi järgi"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fond edukalt kustutatud"
-
-#: 
 msgid "In Use"
 msgstr "Kasutusel"
 
@@ -7500,10 +7432,6 @@ msgstr "Eemalda see osavõtu arv?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Valige kirje tüüp, millele see omadus kehtib"
-
-#: 
-msgid "That fund name already exists."
-msgstr "See fondi nimi on juba olemas."
 
 #: 
 msgid "Total Pledges"
@@ -9995,10 +9923,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Otsige isikute, perekondade, gruppide, aadresside ja muu hulgast."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Otsige ja vaadake korjanduste kirjeid"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Otsi isikuid, perekondi, gruppe…"
 
@@ -10651,11 +10575,6 @@ msgstr "Kopeerige lõikepuhvrisse"
 msgid "Custom field"
 msgstr "Kohandatud väli"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Kohandatud otsing"
-
 #: 
 msgid "Default Country"
 msgstr "Vaikeriik"
@@ -10717,11 +10636,6 @@ msgstr "Välja väärtus"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Leia inimesed, kes lubasid ühel aastal, kuid mitte teisel"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Leia inimesed kohandatud välja väärtusega"
 
 #. Context: query_qry
 #: 
@@ -11984,10 +11898,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Muudatused jõustuvad järgmisel sisselogimisel."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Valige heleda ja tumeda värviskeemi vahel"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Kohandage rakenduse välimust ja tunnetust"
 
@@ -12742,10 +12652,6 @@ msgstr "Nii laiuskraad kui ka pikkuskraad tuleb sisestada koos (või mõlemad j�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Koguduse andmed salvestatud, kuid aadressi ei õnnestunud automaatselt tuvastada. Palun sisestage laiuskraad ja pikkuskraad käsitsi kaardi koordinaatide all."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koordinaadid tuvastatakse salvestamisel automaatselt teie aadressist (OpenStreetMap kaudu). Võite need ka allpool käsitsi sisestada — käsitsi sisestatud väärtused on alati eelistatud automaatsele tuvastamisele. Jätke mõlemad tühjaks, et süsteem tuvastaks koordinaadid aadressi põhjal."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14004,10 +13910,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Kas olete kindel, et soovite jätkata?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Kas olete kindel, et soovite selle korjanduse kustutada?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Kas olete kindel, et soovite selle sündmuse tüübi kustutada? Seda toimingut ei saa tagasi võtta."
 
@@ -14258,10 +14160,6 @@ msgstr "Demoandmeid laaditakse tavaliselt ainult uuele installile. Nüüd import
 #: 
 msgid "Deposit ID"
 msgstr "Sissemakse ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Sissemakse kokku"
 
 #: 
 msgid "Deposit Value"
@@ -14575,10 +14473,6 @@ msgstr "Grupp on edukalt kustutatud."
 #: 
 msgid "Group removed from cart"
 msgstr "Rühm on eemaldatud ostukorvist"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "Rollivaliku küsimiseks on vajalik GroupID"
 
 #: 
 msgid "HTML URL"
@@ -14958,20 +14852,8 @@ msgid "Please select a role."
 msgstr "Palun valige roll."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Palun valige nii rühm kui ka roll."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Palun valige kustutamiseks read"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Valige liikmetele sihtroll"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Valige liikmete jaoks sihtgrupp"
 
 #: 
 msgid "Please try again"
@@ -15867,24 +15749,12 @@ msgid "Account status"
 msgstr "Konto olek"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Täpsem: vali konkreetne sihtversioon"
-
-#: 
 msgid "Bug Fix"
 msgstr "Veaparandus"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Vaikimisi laadib viisard järgmise soovitatava versiooni. Võite valida ka mõne muu allpool saadaoleva versiooni."
-
-#: 
 msgid "Change required"
 msgstr "Muudatus vajalik"
-
-#: 
-msgid "Changelog"
-msgstr "Muudatuste logi"
 
 #: 
 msgid "Continue Anyway"
@@ -15893,10 +15763,6 @@ msgstr "Jätka ikkagi"
 #: 
 msgid "Could not load release information."
 msgstr "Versiooniteabe laadimine ebaõnnestus."
-
-#: 
-msgid "Download & Install"
-msgstr "Laadi alla ja installi"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15925,10 +15791,6 @@ msgstr "Täielik muudatuste logi"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installi stabiilne {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Järgmise versiooni installimine"
 
 #: 
 msgid "Invalid file path"
@@ -15999,10 +15861,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Näita täielikku uuendusteed"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Uusim stabiilne versioon on {{version}}. Saate selle allpool uuesti installida."
 
@@ -16029,10 +15887,6 @@ msgstr "Vaata väljalaskemärkmeid"
 #: 
 msgid "What's New"
 msgstr "Mis on uut"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Mis on uut versioonis {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16651,10 +16505,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-posti funktsioon on praegu keelatud. Järgmised funktsioonid ei tööta enne, kui e-post on lubatud"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Hinnanguline väärtus $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Kiireim töövoog"
 
@@ -16697,10 +16547,6 @@ msgstr "Kohalik arendus"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimaalne kogusumma"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimaalne pakkumine $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17003,10 +16849,6 @@ msgid "Working..."
 msgstr "Töötab..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Oled {{releaseCount}} versiooni võrra maas. Siin on, mida saad"
-
-#: 
 msgid "click to expand"
 msgstr "klõpsa laiendamiseks"
 
@@ -17261,10 +17103,6 @@ msgstr "Annetuslubaduse loomine ebaõnnestus"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Annetuslubaduse kustutamine ebaõnnestus"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Makse vastuse kodeerimine ebaõnnestus"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17537,4 +17375,442 @@ msgstr "mõtleb täna teist."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "lehekülje marsruudid, aktiivne lokaad, CRM-i versioon, PHP versioon, OS-i perekond ja juhuslik paigalduse ID. Midagi muud. Andmeid hoitakse EL-is."
+
+#: 
+msgid "% Paid"
+msgstr "% Makstud"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Palun kontrollige oma pere andmeid"
+
+#: 
+msgid "Add Role"
+msgstr "Lisa roll"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Lisa sellele grupile kohandatud omadused"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Aadress on muutunud parast koordinaatide viimast seadistamist."
+
+#: 
+msgid "All Tellers"
+msgstr "Koik kassapidajad"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Koik e-kirjade saatmised ebaonnestusid. Palun kontrollige susteemiseadetes SMTP-seadeid."
+
+#: 
+msgid "Amount Max"
+msgstr "Summa max"
+
+#: 
+msgid "Amount Min"
+msgstr "Summa min"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "E-kirjade saatmisel ilmnes ootamatu viga. Palun kontrollige SMTP-seadeid ja serveri logisid."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Kas olete kindel, et soovite rolli '{{name}}' eemaldada?"
+
+#: 
+msgid "Auto"
+msgstr "Automaatne"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automaatne jargib teie OS-i voi brauseri seadeid; Hele ja Tume tuhistavad selle"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Tagasi annetuste armatuurlauale"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Klopsake \"Genereeri koordinaadid\", et otsida ulaltoodud aadressi kaardiasukoht, voi sisestage laiuskraad/pikkuskraad kasitsi. Kui jaetakse tuhjaks, tuvastatakse koordinaadid automaatselt vormi salvestamisel."
+
+#: 
+msgid "Contributor"
+msgstr "Annetaja"
+
+#: 
+msgid "Contributors"
+msgstr "Annetajad"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Sellele aadressile ei leitud koordinaate. Proovige sisestada need kasitsi."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Selle grupi kohandatud omadused"
+
+#: 
+msgid "Delete role"
+msgstr "Kustuta roll"
+
+#: 
+msgid "Email Error"
+msgstr "E-posti viga"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-post ei ole seadistatud. Palun seadistage SMTP-satted susteemiseadetes."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-kiri saadeti %d perele."
+msgstr[1] "E-kiri saadeti %d perele."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Sisestage esmalt tanavaadress."
+
+#: 
+msgid "Enter role name"
+msgstr "Sisestage rolli nimi"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Deposiidi loomine ebaonnestus"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "E-kirja eelvaate laadimine ebaonnestus"
+
+#: 
+msgid "From Date"
+msgstr "Alguskuupaev"
+
+#: 
+msgid "Fund Total"
+msgstr "Fondi kokku"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Fondi annetajate annetuste kokkuvote eelarveaasta kaupa"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Korjandusaktsion on keelatud"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Genereeri koordinaadid"
+
+#: 
+msgid "Generating..."
+msgstr "Genereerimine..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Geokodeerimise paring ebaonnestus. Palun proovige uuesti."
+
+#: 
+msgid "Manage Events"
+msgstr "Halda uritusi"
+
+#: 
+msgid "New Deposit"
+msgstr "Uus deposiit"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Valitud eelarveaastal ei leitud selle fondi jaoks annetajaid"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "E-posti aadressiga perekondi ei leitud. Midagi ei saadetud."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Valitud deposiitide jaoks ei leitud makseid"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Uhtegi kehtivat deposiidi ID-d ei esitatud"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF saadeti edukalt %d perele."
+msgstr[1] "PDF saadeti edukalt %d perele."
+
+#: 
+msgid "Partial Send"
+msgstr "Osaline saatmine"
+
+#: 
+msgid "Payments only"
+msgstr "Ainult maksed"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Lubatud summa"
+
+#: 
+msgid "Preview"
+msgstr "Eelvaade"
+
+#: 
+msgid "Retry"
+msgstr "Proovi uuesti"
+
+#: 
+msgid "Search"
+msgstr "Otsing"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Otsi ja halda deposiidikviitungi kirjeid"
+
+#: 
+msgid "Select All"
+msgstr "Vali koik"
+
+#: 
+msgid "Send Emails"
+msgstr "Saada e-kirjad"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Saada pere kinnituse e-kirjad"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Saadetud %1$d / %2$d — %3$d perekonnaga ei onnestunud uhendust saada."
+
+#: 
+msgid "Show in Profile"
+msgstr "Kuva profiilil"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Kuvatakse ainult valitud fondi kogusumma"
+
+#: 
+msgid "Teller"
+msgstr "Kassapidaja"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "See on selle grupi ainus roll."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Seda rolli ei saa kustutada."
+
+#: 
+msgid "To Date"
+msgstr "Loppkuupaev"
+
+#: 
+msgid "Total Pledged"
+msgstr "Kokku lubatud"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Ootamatu viga e-kirjade saatmisel. Palun kontrollige logisid."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Kasutab ulaltoodud tanavaadressit koordinaatide otsimiseks OpenStreetMapi kaudu."
+
+#: 
+msgid "View Payment"
+msgstr "Vaata makset"
+
+#: 
+msgid "View Pledge"
+msgstr "Vaata annetust"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Kui see on margitud, kuvatakse see omadus grupi korval isiku profiililehel tema gruppide loendis."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Perekonnanimi]"
+
+#: 
+msgid "row selected"
+msgstr "rida valitud"
+
+#: 
+msgid "rows selected"
+msgstr "rida valitud"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Sünnipäevad ja aastapäevad"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Hinnanguline väärtus %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimaalne pakkumine %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Ühtegi \"%s\" valikut pole veel saadaval. Lisage esmalt vastavad kirjed."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Ühtegi \"%s\" valikut pole veel seadistatud. Lisage esmalt vastavad kirjed."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Inimesed, kellel on konkreetsel kuul sünnipäev või pulma-aastapäev"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Kuu, mille kohta soovite sünnipäevi ja aastapäevi kuvada."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Pulma-aastapäeva kuu, mille kohta soovite kirjeid kuvada."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Kõigi ostude kogusumma: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Ostude kogusumma: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Pulma-aastapäevad"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Inimesed, kellel on konkreetsel kuul pulma-aastapäev"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Ilmnes viga. Palun proovige uuesti."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Kas olete kindel, et soovite selle fondi kustutada?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Kustutamine ebaõnnestus: fondiga on seotud annetuste kohustused"
+
+#: 
+msgid "Delete Fund"
+msgstr "Kustuta fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Suund peab olema 'üles' või 'alla'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Muuda annetusfondi"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Annetusfondi järjestuse muutmine ebaõnnestus"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fond edukalt lisatud."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fond edukalt kustutatud."
+
+#: 
+msgid "Fund name"
+msgstr "Fondi nimi"
+
+#: 
+msgid "Fund name is required."
+msgstr "Fondi nimi on kohustuslik."
+
+#: 
+msgid "Fund order updated."
+msgstr "Fondide järjestus uuendatud."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fond edukalt salvestatud."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Ühtegi fondi pole veel lisatud. Kasutage esimese fondi lisamiseks ülalolevat vormi."
+
+#: 
+msgid "Optional description"
+msgstr "Valikuline kirjeldus"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privaatne kalender"
+
+#: 
+msgid "Public Calendar"
+msgstr "Avalik kalender"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Täpsemalt: installige selle asemel kindel versioon"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Vaikimisi uuendab viisard uusimale versioonile. Soovi korral valige allpool kindel versioon."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Suletud deposiidis olevat makset ei saa muuta"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Laadi alla ja rakenda {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Iga ChurchCRM väljalase sisaldab turvaparandusi. Soovitame tungivalt alati uusimale versioonile uuendada."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Maksepäringu dekodeerimine ebaõnnestus"
+
+#: 
+msgid "Full release notes"
+msgstr "Täielikud väljalaskemärkmed"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Kehtetud makseandmed"
+
+#: 
+msgid "No release notes available."
+msgstr "Väljalaskemärkmeid pole saadaval."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Hoiatus: versioonis {{chosen}} puuduvad turvaparandused, mis sisalduvad versioonis {{latest}}. Jätkake ainult siis, kui teil on selleks konkreetne põhjus."
+
+#: 
+msgid "What you'll gain"
+msgstr "Mida te saate"
 

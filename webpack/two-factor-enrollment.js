@@ -5,6 +5,8 @@
  * Uses Bootstrap 5 cards and vanilla fetch against the 2FA API.
  */
 
+import { escapeHtml } from "./utils/escape-html";
+
 const CRMRoot = window.CRM.root;
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
 
@@ -14,13 +16,6 @@ function fetchJSON(url, opts = {}) {
     if (r.status === 204) return {};
     return r.json();
   });
-}
-
-function escapeHtml(str) {
-  if (!str) return "";
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
 function notifyError(message) {

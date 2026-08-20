@@ -1,18 +1,32 @@
 {
+  "Auto": "",
+  "CSV": "",
+  "Email sent to %d family.": {
+    "one": "E-mail wysłany do %d rodziny.|E-mail wysłany do %d rodzin.|E-mail wysłany do %d rodzin.",
+    "few": "",
+    "other": ""
+  },
+  "OFX": "",
+  "PDF successfully emailed to %d family.": {
+    "one": "PDF został pomyślnie wysłany e-mailem do %d rodziny.|PDF został pomyślnie wysłany e-mailem do %d rodzin.|PDF został pomyślnie wysłany e-mailem do %d rodzin.",
+    "few": "",
+    "other": ""
+  },
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "Skopiowano {{count}} członka",
-    "other": "Skopiowano {{count}} członków"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Ta lista ma {{count}} odbiorcę — zbyt wielu jak na łącze mailto:. Użyj zamiast tego opcji Kopiuj adresy.",
-    "other": "Ta lista ma {{count}} odbiorców — zbyt wielu jak na łącze mailto:. Użyj zamiast tego opcji Kopiuj adresy."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Zbyt wielu odbiorców dla klienta poczty ({{count}} > {{max}}). Użyj zamiast tego opcji Kopiuj adresy.",
-    "other": "Zbyt wielu odbiorców dla klienta poczty ({{count}} > {{max}}). Użyj zamiast tego opcji Kopiuj adresy."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Pozostała {{count}} minuta",
-    "other": "Pozostało {{count}} minut"
+    "one": "",
+    "other": ""
   }
 }

@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -162,8 +163,13 @@ class DepositService {
             ->find();
 
         // Propel's ObjectCollection::toArray() doesn't call individual model's toArray(),
-        // so we iterate to ensure each Pledge's custom toArray() executes (which populates FamilyString)
-        return array_map(fn($pledge) => $pledge->toArray(), iterator_to_array($items));
+        // so we iterate to ensure each Pledge's custom toArray() executes (which populates FamilyString).
+        // sumAmount_formatted is added here so the API contract (raw + formatted sibling) is met.
+        return array_map(function ($pledge) {
+            $row = $pledge->toArray();
+            $row['sumAmount_formatted'] = CurrencyFormatter::format($row['sumAmount'] ?? null);
+            return $row;
+        }, iterator_to_array($items));
     }
 
     public function createDeposit(string $depositType, string $depositComment, string $depositDate): Deposit
@@ -324,5 +330,19 @@ class DepositService {
         }
 
         return $rows;
+    }
+
+    /**
+     * Returns the count of open (non-closed) deposits.
+     *
+     * Used by the navigation menu counter to display the number of deposits
+     * that are still open and need to be reviewed. Uses the same filtering
+     * logic as FinancialService::getDepositStatistics() to ensure consistency.
+     *
+     * @return int
+     */
+    public function getOpenDepositCount(): int
+    {
+        return DepositQuery::create()->filterByClosed(false)->count();
     }
 }

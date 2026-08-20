@@ -97,35 +97,35 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card-body">
     <div class="d-flex flex-wrap gap-2">
       <a href="<?= $sRootPath ?>/fundraiser/view/<?= $fundraiserId ?>" class="btn btn-outline-secondary">
-        <i class="ti ti-eye me-1"></i><?= gettext('View') ?>
+        <i class="fa-solid fa-eye me-1"></i><?= gettext('View') ?>
       </a>
       <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/editor" class="btn btn-success">
-        <i class="ti ti-plus me-1"></i><?= gettext('Add Donated Item') ?>
+        <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Donated Item') ?>
       </a>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-          <i class="ti ti-file-text me-1"></i><?= gettext('Reports') ?>
+          <i class="fa-solid fa-file-text me-1"></i><?= gettext('Reports') ?>
         </button>
         <div class="dropdown-menu">
           <?php if ($showItemCatalog): ?>
           <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/catalog">
-            <i class="ti ti-book me-2"></i><?= gettext('Generate Catalog') ?>
+            <i class="fa-solid fa-book me-2"></i><?= gettext('Generate Catalog') ?>
           </a>
           <?php endif; ?>
           <?php if ($showBidSheets): ?>
           <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/bid-sheets">
-            <i class="ti ti-list me-2"></i><?= gettext('Generate Bid Sheets') ?>
+            <i class="fa-solid fa-list me-2"></i><?= gettext('Generate Bid Sheets') ?>
           </a>
           <?php endif; ?>
           <?php if ($showItemCatalog): ?>
           <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/reports/certificates">
-            <i class="ti ti-certificate me-2"></i><?= gettext('Generate Certificates') ?>
+            <i class="fa-solid fa-certificate me-2"></i><?= gettext('Generate Certificates') ?>
           </a>
           <?php endif; ?>
         </div>
       </div>
       <a href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/batch-winner" class="btn btn-secondary">
-        <i class="ti ti-trophy me-1"></i><?= gettext('Batch Winner Entry') ?>
+        <i class="fa-solid fa-trophy me-1"></i><?= gettext('Batch Winner Entry') ?>
       </a>
     </div>
   </div>
@@ -186,18 +186,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <td class="w-1">
                 <div class="dropdown">
                   <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                    <i class="ti ti-dots-vertical"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/editor/<?= (int) $item->getId() ?>">
-                      <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                      <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                     </a>
                     <div class="dropdown-divider"></div>
                     <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/<?= (int) $item->getId() ?>/delete"
                           onsubmit="return confirm(<?= htmlspecialchars(json_encode(gettext('Delete this item?'))) ?>)">
                       <?= $csrfItemDeleteField ?>
                       <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
-                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                       </button>
                     </form>
                   </div>

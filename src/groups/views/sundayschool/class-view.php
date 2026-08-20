@@ -222,7 +222,7 @@ if ($bCanManageGroups) {
             <div class="card-body">
                 <div class="birthday-filter d-none alert alert-info mb-3">
                     <?= gettext('Showing students with birthdays in') ?> <span class="month"></span>
-                    <i class="fa-solid fa-times float-end birthday-filter-clear" style="cursor:pointer;" title="<?= gettext('Clear filter') ?>"></i>
+                    <i class="fa-solid fa-xmark float-end birthday-filter-clear" style="cursor:pointer;" title="<?= gettext('Clear filter') ?>"></i>
                 </div>
                 <div style="overflow: visible;">
                     <table id="sundayschool" class="table table-hover data-table w-100">
@@ -299,29 +299,29 @@ if ($bCanManageGroups) {
                                 <td class="w-1">
                                     <div class="dropdown">
                                         <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static">
-                                            <i class="ti ti-dots-vertical"></i>
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="<?= Person::getViewURIForId($child['kidId']) ?>"><i class="ti ti-eye me-2"></i><?= gettext('View') ?></a>
+                                            <a class="dropdown-item" href="<?= Person::getViewURIForId($child['kidId']) ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>
                                             <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
-                                            <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>"><i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?></a>
+                                            <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>"><i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?></a>
                                             <?php endif; ?>
                                             <?php if ($child['fam_id']): ?>
-                                            <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= (int) $child['fam_id'] ?>"><i class="ti ti-users me-2"></i><?= gettext('View Family') ?></a>
+                                            <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= (int) $child['fam_id'] ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('View Family') ?></a>
                                             <?php endif; ?>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>"><i class="ti ti-info-circle me-2"></i><?= gettext('Details') ?></button>
+                                            <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>"><i class="fa-solid fa-circle-info me-2"></i><?= gettext('Details') ?></button>
                                             <div class="dropdown-divider"></div>
                                             <button type="button" class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
                                                 data-cart-id="<?= $child['kidId'] ?>" data-cart-type="person"
                                                 data-label-add="<?= gettext('Add to Cart') ?>" data-label-remove="<?= gettext('Remove from Cart') ?>">
-                                                <i class="<?= $inCart ? 'ti ti-shopping-cart-off' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                                <i class="<?= $inCart ? 'fa-solid fa-cart-arrow-down' : 'fa-solid fa-cart-plus' ?> me-2"></i>
                                                 <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                                             </button>
                                             <div class="dropdown-divider"></div>
                                             <button type="button" class="dropdown-item text-warning remove-from-class"
                                                 data-group-id="<?= $iGroupId ?>" data-person-id="<?= $child['kidId'] ?>"
                                                 data-person-name="<?= InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>">
-                                                <i class="ti ti-user-minus me-2"></i><?= gettext('Remove from Class') ?>
+                                                <i class="fa-solid fa-user-minus me-2"></i><?= gettext('Remove from Class') ?>
                                             </button>
                                         </div>
                                     </div>
@@ -514,12 +514,12 @@ if ($bCanManageGroups) {
         <!-- Events Card -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="ti ti-calendar me-1"></i> <?= gettext('Events') ?></h3>
+                <h3 class="card-title m-0"><i class="fa-solid fa-calendar me-1"></i> <?= gettext('Events') ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= count($groupEvents) ?></span>
                 <?php if ($todayEvent !== null): ?>
                 <a href="<?= $sRootPath ?>/event/checkin/<?= (int) $todayEvent->getId() ?>"
                    class="btn btn-sm btn-success ms-auto">
-                    <i class="ti ti-clipboard-check me-1"></i><?= gettext('Take Attendance') ?>
+                    <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Take Attendance') ?>
                 </a>
                 <?php else: ?>
                 <button
@@ -528,7 +528,7 @@ if ($bCanManageGroups) {
                     id="quickCreateTodaysEventBtn"
                     data-group-id="<?= (int) $iGroupId ?>"
                     title="<?= gettext("Create today's class event and link it to this class for kiosk check-in") ?>">
-                    <i class="ti ti-plus me-1"></i><?= gettext("Create Today's Event") ?>
+                    <i class="fa-solid fa-plus me-1"></i><?= gettext("Create Today's Event") ?>
                 </button>
                 <?php endif; ?>
             </div>
@@ -538,7 +538,7 @@ if ($bCanManageGroups) {
             <div class="card-body py-2 border-bottom bg-success-lt">
                 <div class="d-flex align-items-center justify-content-between">
                     <div>
-                        <i class="ti ti-calendar-check me-1 text-success"></i>
+                        <i class="fa-solid fa-calendar-check me-1 text-success"></i>
                         <strong><?= InputUtils::escapeHTML($todayEvent->getTitle()) ?></strong>
                         <span class="text-body-secondary ms-2"><?= $todayEvent->getStart() ? $todayEvent->getStart()->format('g:i A') : '' ?></span>
                     </div>
@@ -552,7 +552,7 @@ if ($bCanManageGroups) {
 
             <?php if (count($groupEvents) === 0): ?>
             <div class="card-body text-center text-body-secondary py-4">
-                <i class="ti ti-calendar-off mb-2 d-block" style="font-size: 2rem;"></i>
+                <i class="fa-solid fa-calendar-off mb-2 d-block" style="font-size: 2rem;"></i>
                 <p class="mb-2"><?= gettext('No events linked to this class.') ?></p>
                 <p class="small text-body-secondary mb-0">
                     <?= gettext("Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster.") ?>
@@ -583,7 +583,7 @@ if ($bCanManageGroups) {
                         </div>
                         <?php if ($hasKiosk): ?>
                         <span class="badge bg-success-lt text-success" title="<?= gettext('Kiosk Enabled') ?>">
-                            <i class="ti ti-device-ipad me-1"></i><?= gettext('Kiosk') ?>
+                            <i class="fa-solid fa-tablet me-1"></i><?= gettext('Kiosk') ?>
                         </span>
                         <?php endif; ?>
                         <?php if (!$isActive): ?>
@@ -593,13 +593,13 @@ if ($bCanManageGroups) {
                         <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>"
                            class="btn btn-sm btn-outline-primary"
                            title="<?= gettext('Take Attendance') ?>">
-                            <i class="ti ti-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+                            <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
                         </a>
                         <?php endif; ?>
                         <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>"
                            class="btn btn-sm btn-ghost-secondary"
                            title="<?= gettext('Edit Event') ?>">
-                            <i class="ti ti-pencil"></i>
+                            <i class="fa-solid fa-pencil"></i>
                         </a>
                     </div>
                 </div>

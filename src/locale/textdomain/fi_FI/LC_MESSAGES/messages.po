@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "Kuvan URL-osoite"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Lahjoitusrahastojen muokkaus"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Virheellisiä kenttiä tai valintoja. Muutoksia ei tallennettu! Korjaa tiedot ja yritä uudelleen!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Rahastoja ei ole vielä lisätty"
 
 #: 
 msgid "Active"
@@ -1088,24 +1080,8 @@ msgid "Create Report"
 msgstr "Luo raportti"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Talletusluettelo"
-
-#: 
 msgid "Deposits"
 msgstr "Talletukset"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Poista valitut rivit"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Vie valitut rivit (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Vie valitut rivit (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1264,10 +1240,6 @@ msgid "Enabled"
 msgstr "Käytössä"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Muokkaa ryhmäkohtaisten ominaisuuksien lomaketta"
-
-#: 
 msgid "Disabled"
 msgstr "Ei käytössä"
 
@@ -1318,14 +1290,6 @@ msgstr "Ryhmäkohtaisten ominaisuuksien lomakkeen muokkaus"
 #: 
 msgid "No properties have been added yet"
 msgstr "Ominaisuuksia ei ole vielä lisätty"
-
-#: 
-msgid "Show in"
-msgstr "Näytä kohteessa"
-
-#: 
-msgid "Person View"
-msgstr "Henkilönäkymä"
 
 #: 
 msgid "Other Email"
@@ -2180,14 +2144,6 @@ msgstr "Lahjoitetut tuotteet"
 #: 
 msgid "Purchased Items"
 msgstr "Ostetut tuotteet"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Kaikkien ostosten yhteissumma: "
-
-#: 
-msgid "Total purchases: $"
-msgstr "Ostokset yhteensä: "
 
 #: 
 msgid "Amount paid: ________________"
@@ -4846,10 +4802,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Aseta käytettävä salausjärjestelmä - ssl (vanhentunut) tai tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Luo talletuslipuke valituille riveille (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Lisää kaikki koriin"
 
@@ -5136,10 +5088,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Virhe sähköpostien lähetyksessä"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Tarkista lokit saadaksesi lisätietoja"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5529,10 +5477,6 @@ msgstr "Perhe poistettu ostoskorista"
 #: 
 msgid "Add Group"
 msgstr "Lisää ryhmä"
-
-#: 
-msgid "Back to Group List"
-msgstr "Takaisin ryhmäluetteloon"
 
 #: 
 msgid "Edit Group"
@@ -7313,10 +7257,6 @@ msgid "Order"
 msgstr "Järjestys"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF:t lähetetty onnistuneesti sähköpostilla %s perheelle."
-
-#: 
 msgid "Percentage"
 msgstr "Prosenttiosuus"
 
@@ -7355,10 +7295,6 @@ msgstr "Lisää Ensimmäinen Ominaisuustyyppisi"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Poistamalla tämän kentän menetät peruuttamattomasti kaikki tälle kentälle määritetyt ryhmän jäsentiedot!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Poistamalla tämän rahaston saatat vaikuttaa historiallisiin lahjoitustietoihin!"
 
 #: 
 msgid "Category Name"
@@ -7413,10 +7349,6 @@ msgid "Filter by Class"
 msgstr "Suodata Luokan mukaan"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Rahasto poistettu onnistuneesti"
-
-#: 
 msgid "In Use"
 msgstr "Käytössä"
 
@@ -7463,10 +7395,6 @@ msgstr "Poista tämä läsnäololuku?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Valitse tietuetyyppi, johon tämä ominaisuus liittyy"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Tämä rahaston nimi on jo olemassa."
 
 #: 
 msgid "Total Pledges"
@@ -9958,10 +9886,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Hae henkilöistä, perheistä, ryhmistä, osoitteista ja muusta."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Hae ja tarkastele kolehtikeräystietueita"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Hae henkilöitä, perheitä, ryhmiä…"
 
@@ -10614,11 +10538,6 @@ msgstr "Kopioi leikepöydälle"
 msgid "Custom field"
 msgstr "Mukautettu kenttä"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Mukautettu haku"
-
 #: 
 msgid "Default Country"
 msgstr "Oletusarvoinen maa"
@@ -10680,11 +10599,6 @@ msgstr "Kentän arvo"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Etsi ihmisiä, jotka luvattivat yhtenä vuonna mutta eivät toisena"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Etsi ihmisiä, joilla on mukautetun kentän arvo"
 
 #. Context: query_qry
 #: 
@@ -11947,10 +11861,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Muutokset tulevat voimaan vasta seuraavalla kirjautumiskerralla."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Valitse vaalea tai tumma väriteema"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Mukauta sovelluksen ulkoasua"
 
@@ -12705,10 +12615,6 @@ msgstr "Sekä leveysaste että pituusaste on annettava yhdessä (tai molemmat j�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Seurakunnan tiedot tallennettu, mutta osoitetta ei voitu paikallistaa automaattisesti. Syötä leveysaste ja pituusaste manuaalisesti Karttakoordinaatit-kohdassa."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koordinaatit tunnistetaan automaattisesti osoitteestasi tallennettaessa (OpenStreetMapin kautta). Voit myös syöttää ne manuaalisesti alla — manuaaliset arvot ohittavat aina automaattisen tunnistuksen. Jätä molemmat tyhjiksi, jotta järjestelmä voi geokoodata osoitteesta."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13967,10 +13873,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Oletko varma, että haluat jatkaa?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Haluatko varmasti poistaa tämän kolehtikeräyksen?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Haluatko varmasti poistaa tämän tapahtumatyypin? Tätä toimintoa ei voi kumota."
 
@@ -14221,10 +14123,6 @@ msgstr "Esimerkkitiedot ladataan tavallisesti vain uusiin asennuksiin. Tuominen 
 #: 
 msgid "Deposit ID"
 msgstr "Talletustunnus"
-
-#: 
-msgid "Deposit Total"
-msgstr "Talletus yhteensä"
 
 #: 
 msgid "Deposit Value"
@@ -14538,10 +14436,6 @@ msgstr "Ryhmä poistettu onnistuneesti."
 #: 
 msgid "Group removed from cart"
 msgstr "Ryhmä poistettu ostoskorista"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "Ryhmätunnus (GroupID) vaaditaan roolin valintaa varten"
 
 #: 
 msgid "HTML URL"
@@ -14921,20 +14815,8 @@ msgid "Please select a role."
 msgstr "Valitse rooli."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Valitse sekä ryhmä että rooli."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Valitse poistettavat rivit"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Valitse kohderooli jäsenille"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Valitse jäsenten kohderyhmä"
 
 #: 
 msgid "Please try again"
@@ -15830,24 +15712,12 @@ msgid "Account status"
 msgstr "Tilin tila"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Lisäasetukset: valitse tietty kohdeversio"
-
-#: 
 msgid "Bug Fix"
 msgstr "Vikorjaus"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Oletuksena ohjattu toiminto lataa seuraavan suositellun julkaisun. Voit myös valita minkä tahansa saatavilla olevan version alla."
-
-#: 
 msgid "Change required"
 msgstr "Muutos vaaditaan"
-
-#: 
-msgid "Changelog"
-msgstr "Muutosloki"
 
 #: 
 msgid "Continue Anyway"
@@ -15856,10 +15726,6 @@ msgstr "Jatka silti"
 #: 
 msgid "Could not load release information."
 msgstr "Julkaisutietoja ei voitu ladata."
-
-#: 
-msgid "Download & Install"
-msgstr "Lataa ja asenna"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15888,10 +15754,6 @@ msgstr "Täydellinen muutosloki"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Asenna vakaa versio {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Asennetaan seuraavaa julkaisua"
 
 #: 
 msgid "Invalid file path"
@@ -15962,10 +15824,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Näytä koko päivityspolku"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Uusin vakaa julkaisu on {{version}}. Voit asentaa sen uudelleen alla."
 
@@ -15992,10 +15850,6 @@ msgstr "Näytä julkaisutiedot"
 #: 
 msgid "What's New"
 msgstr "Uutta"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Uutta versiossa {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16614,10 +16468,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Sähköpostitoiminto on tällä hetkellä poistettu käytöstä. Seuraavat ominaisuudet eivät toimi ennen kuin sähköposti otetaan käyttöön"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Arvioitu arvo $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Nopein työnkulku"
 
@@ -16660,10 +16510,6 @@ msgstr "Paikallinen kehitys"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Vähimmäiskokonaissumma"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Vähimmäistarjous $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16966,10 +16812,6 @@ msgid "Working..."
 msgstr "Käsitellään..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Olet {{releaseCount}} julkaisua jäljessä. Tässä mitä saat"
-
-#: 
 msgid "click to expand"
 msgstr "klikkaa laajentaaksesi"
 
@@ -17224,10 +17066,6 @@ msgstr "Sitoumuksen luominen epäonnistui"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Sitoumuksen poistaminen epäonnistui"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Maksuvastauksen koodaaminen epäonnistui"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17500,4 +17338,442 @@ msgstr "ajattelee sinua tänään."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "sivureitit, aktiivinen kieli, CRM-versio, PHP-versio, käyttöjärjestelmäperhe ja satunnainen asennustunnus. Ei mitään muuta. Tiedot tallennetaan EU:hun."
+
+#: 
+msgid "% Paid"
+msgstr "% Maksettu"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Tarkista perheen tiedot"
+
+#: 
+msgid "Add Role"
+msgstr "Lisaa rooli"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Lisaa tahan ryhmaan liittyvia mukautettuja ominaisuuksia"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Osoite on muuttunut koordinaattien viimeisen paivityksen jalkeen."
+
+#: 
+msgid "All Tellers"
+msgstr "Kaikki kassanhoitajat"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Kaikkien sahkopostien lahetys epaonnistui. Tarkista SMTP-asetukset jarjestelmasetuksista."
+
+#: 
+msgid "Amount Max"
+msgstr "Enimmaissum ma"
+
+#: 
+msgid "Amount Min"
+msgstr "Vahimmaissum ma"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Sahkopostien lahetyksessa tapahtui odottamaton virhe. Tarkista SMTP-asetukset ja palvelinlokit."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Haluatko varmasti poistaa roolin '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Automaattinen"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automaattinen noudattaa kayttojarjestelman tai selaimen asetusta; Vaalea ja Tumma ohittavat sen"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Takaisin lupausten kojelautaan"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Napsauta \"Luo koordinaatit\" hakeaksesi yllä olevan osoitteen sijaintia kartalta, tai syota leveys- ja pituusaste manuaalisesti. Jos kentta jatetaan tyhjaksesi, koordinaatit tunnistetaan automaattisesti lomakkeen tallennuksen yhteydessa."
+
+#: 
+msgid "Contributor"
+msgstr "Lahjoittaja"
+
+#: 
+msgid "Contributors"
+msgstr "Lahjoittajat"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Koordinaatteja ei loydetty kyseiselle osoitteelle. Yrita syottaa ne manuaalisesti."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Ryhmän mukautetut ominaisuudet"
+
+#: 
+msgid "Delete role"
+msgstr "Poista rooli"
+
+#: 
+msgid "Email Error"
+msgstr "Sahkopostivirhe"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Sahkopostia ei ole maaritetty. Maarita SMTP-asetukset jarjestelmasetuksissa."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Sähköposti lähetetty %d perheelle."
+msgstr[1] "Sähköposti lähetetty %d perheelle."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Syota ensin katuosoite."
+
+#: 
+msgid "Enter role name"
+msgstr "Syota roolin nimi"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Talletuksen luonti epaonnistui"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Sahkopostin esikatselun lataus epaonnistui"
+
+#: 
+msgid "From Date"
+msgstr "Alkupaivamaara"
+
+#: 
+msgid "Fund Total"
+msgstr "Rahaston yhteissumma"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Rahaston lahjoittajien lupaukset tilikausittain"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Varainkeruu on poistettu kaytosta"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Luo koordinaatit"
+
+#: 
+msgid "Generating..."
+msgstr "Luodaan..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Geokoodauspyynto epaonnistui. Yrita uudelleen."
+
+#: 
+msgid "Manage Events"
+msgstr "Hallinnoi tapahtumia"
+
+#: 
+msgid "New Deposit"
+msgstr "Uusi talletus"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Talle rahastolle ei loytynyт lahjoittajia valitulla tilikaudella"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Yhtaan perhetta sahkopostiosoitteella ei loytynyт. Mitaan ei lahetetty."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Valituille talletuksille ei loytynyт maksuja"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Yhtaan kelvollista talletustunnusta ei annettu"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF lähetetty onnistuneesti %d perheelle sähköpostitse."
+msgstr[1] "PDF lähetetty onnistuneesti %d perheelle sähköpostitse."
+
+#: 
+msgid "Partial Send"
+msgstr "Osittainen lahetys"
+
+#: 
+msgid "Payments only"
+msgstr "Vain maksut"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Luvattu summa"
+
+#: 
+msgid "Preview"
+msgstr "Esikatselu"
+
+#: 
+msgid "Retry"
+msgstr "Yrita uudelleen"
+
+#: 
+msgid "Search"
+msgstr "Haku"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Etsi ja hallinnoi talletuskuitteja"
+
+#: 
+msgid "Select All"
+msgstr "Valitse kaikki"
+
+#: 
+msgid "Send Emails"
+msgstr "Laheta sahkopostit"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Laheta perheen vahvistussahkopostit"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Lahetetty %1$d / %2$d — %3$d perhetta ei tavoitettu."
+
+#: 
+msgid "Show in Profile"
+msgstr "Nayta profiilissa"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Naytetaan yhteissumma vain valitulle rahastolle"
+
+#: 
+msgid "Teller"
+msgstr "Kassanhoitaja"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Tama on ryhmän ainoa rooli."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Tata roolia ei voi poistaa."
+
+#: 
+msgid "To Date"
+msgstr "Loppupaivamaara"
+
+#: 
+msgid "Total Pledged"
+msgstr "Yhteensa luvattu"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Odottamaton virhe sahkoposteja lahetettaessa. Tarkista lokit."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Kayttaa yllä olevaa katuosoitettasi koordinaattien hakuun OpenStreetMapin kautta."
+
+#: 
+msgid "View Payment"
+msgstr "Nayta maksu"
+
+#: 
+msgid "View Pledge"
+msgstr "Nayta lupaus"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Kun valittu, tama ominaisuus naytetaan ryhmän yhteydessa henkilön profiilisivun ryhmäluettelossa."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Sukunimi]"
+
+#: 
+msgid "row selected"
+msgstr "rivi valittu"
+
+#: 
+msgid "rows selected"
+msgstr "rivia valittu"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Syntymäpäivät ja vuosipäivät"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Arvioitu arvo %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Vähimmäistarjous %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Ei \"%s\"-vaihtoehtoja saatavilla vielä. Lisää tarvittavat tietueet ensin."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Ei \"%s\"-vaihtoehtoja määritetty vielä. Lisää tarvittavat tietueet ensin."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Henkilöt, joilla on syntymäpäivä tai häävuosipäivä tietyssä kuussa"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Kuukausi, jonka syntymäpäivät ja vuosipäivät haluat hakea."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Häävuosipäiväkuukausi, jonka tietueet haluat hakea."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Kaikkien ostojen yhteissumma: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Ostokset yhteensä: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Häävuosipäivät"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Henkilöt, joilla on häävuosipäivä tietyssä kuussa"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Tapahtui virhe. Yritä uudelleen."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Haluatko varmasti poistaa tämän rahaston?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Poistaminen ei onnistu: rahastolla on siihen liittyviä lupauksia"
+
+#: 
+msgid "Delete Fund"
+msgstr "Poista rahasto"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Suunnan on oltava 'up' tai 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Muokkaa lahjoitusrahastoa"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Lahjoitusrahaston järjestyksen muuttaminen epäonnistui"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Rahasto lisätty onnistuneesti."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Rahasto poistettu onnistuneesti."
+
+#: 
+msgid "Fund name"
+msgstr "Rahaston nimi"
+
+#: 
+msgid "Fund name is required."
+msgstr "Rahaston nimi on pakollinen."
+
+#: 
+msgid "Fund order updated."
+msgstr "Rahaston järjestys päivitetty."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Rahasto tallennettu onnistuneesti."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Rahastoja ei ole vielä lisätty. Lisää ensimmäinen rahasto yllä olevalla lomakkeella."
+
+#: 
+msgid "Optional description"
+msgstr "Valinnainen kuvaus"
+
+#: 
+msgid "Private Calendar"
+msgstr "Yksityinen kalenteri"
+
+#: 
+msgid "Public Calendar"
+msgstr "Julkinen kalenteri"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Lisäasetukset: Asenna sen sijaan tietty versio"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Oletuksena ohjattu toiminto päivittää uusimpaan versioon. Voit sen sijaan valita tietyn version alta."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Maksua ei voi muokata suljetussa talletuksessa"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Lataa ja asenna {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Jokainen ChurchCRM-julkaisu sisältää tietoturvakorjauksia. Suosittelemme vahvasti päivittämään aina uusimpaan versioon."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Maksupyynnön purkaminen epäonnistui"
+
+#: 
+msgid "Full release notes"
+msgstr "Täydelliset julkistamismuistiinpanot"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Virheelliset maksutiedot"
+
+#: 
+msgid "No release notes available."
+msgstr "Julkistamismuistiinpanoja ei ole saatavilla."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Varoitus: {{chosen}} puuttuvat tietoturvakorjaukset, jotka sisältyvät versioon {{latest}}. Jatka vain, jos sinulla on erityinen syy."
+
+#: 
+msgid "What you'll gain"
+msgstr "Mitä saat"
 

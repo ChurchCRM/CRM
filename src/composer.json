@@ -3,7 +3,7 @@
   "description": "Free Church CRM Software",
   "license": "MIT",
   "type": "project",
-  "version": "7.6.0",
+  "version": "7.6.2",
   "keywords": ["church", "crm"],
   "authors": [
     {
@@ -101,6 +101,6 @@
     "datadictionary": "php vendor/bin/propel --config-dir=../orm datadictionary:generate",
     "post-autoload-dump": ["@orm-gen"],
     "openapi:public": "php ../docs/openapi/generate.php ../docs/openapi/openapi-public-info.php api/routes/public/ --output ../docs/openapi/generated/public-api.yaml --format yaml",
-    "openapi:private": "php ../docs/openapi/generate.php ../docs/openapi/openapi-private-info.php api/routes/ admin/routes/api/ kiosk/routes/api/ plugins/routes/api/ --exclude api/routes/public --output ../docs/openapi/generated/private-api.yaml --format yaml"
+    "openapi:private": "php ../docs/openapi/generate.php ../docs/openapi/openapi-private-info.php api/routes/ admin/routes/api/ finance/routes/api/ kiosk/routes/api/ plugins/routes/api/ --exclude api/routes/public --output ../docs/openapi/generated/private-api.yaml --format yaml"
   }
 }

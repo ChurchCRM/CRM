@@ -1,19 +1,23 @@
 {
-  "Code": "Code",
+  "Code": "",
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "{{count}} Mitglied kopiert",
-    "other": "{{count}} Mitglieder kopiert"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Diese Liste hat {{count}} Empfänger – zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“.",
-    "other": "Diese Liste hat {{count}} Empfänger – zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Zu viele Empfänger für den E-Mail-Client ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“.",
-    "other": "Zu viele Empfänger für den E-Mail-Client ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} Min. verbleibend",
-    "other": "{{count}} Min. verbleibend"
+    "one": "",
+    "other": ""
   }
 }

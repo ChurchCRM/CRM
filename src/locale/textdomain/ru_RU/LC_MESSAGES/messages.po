@@ -578,16 +578,8 @@ msgid "Picture URL"
 msgstr "URL-адрес изображения"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Пожертвование Фонд редактор"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Недействительные поля или выбора. Изменения не сохранены! Пожалуйста, исправьте и попробуйте еще раз!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Никакие средства не были добавлены еще"
 
 #: 
 msgid "Active"
@@ -1119,25 +1111,9 @@ msgid "Create Report"
 msgstr "Создать отчет"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Депозит Листинг"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Депозиты"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Удалить выделенные строки"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Экспорт выбранных строк (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Экспорт выбранных строк (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1306,10 +1282,6 @@ msgid "Enabled"
 msgstr "Включен"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Edit Group-Specific Properties Форма"
-
-#: 
 msgid "Disabled"
 msgstr "Отключен"
 
@@ -1363,14 +1335,6 @@ msgstr "Группа-специфических свойств Редактор 
 #: 
 msgid "No properties have been added yet"
 msgstr "Нет свойства, которые были добавлены еще"
-
-#: 
-msgid "Show in"
-msgstr "Показать в"
-
-#: 
-msgid "Person View"
-msgstr "Человек Посмотреть"
 
 #: 
 msgid "Other Email"
@@ -2254,14 +2218,6 @@ msgstr "Предоставленной продукции"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Приобретенные товары"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Сумма всех покупок: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Всего покупок: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4931,10 +4887,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Установите систему шифрования — ssl (устарело) или tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Создать депозитный талон для выбранных строк (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Добавить всех в корзину"
 
@@ -5226,10 +5178,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Ошибка при отправке почты."
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Пожалуйста, проверьте журналы для получения дополнительной информации"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5624,10 +5572,6 @@ msgstr "Семья удалена из корзины"
 #: 
 msgid "Add Group"
 msgstr "Добавить группу"
-
-#: 
-msgid "Back to Group List"
-msgstr "К списку групп"
 
 #: 
 msgid "Edit Group"
@@ -7416,10 +7360,6 @@ msgid "Order"
 msgstr "Порядок"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF успешно отправлены %s семьям."
-
-#: 
 msgid "Percentage"
 msgstr "Процент"
 
@@ -7458,10 +7398,6 @@ msgstr "Добавьте Ваш Первый Тип Свойства"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Удалив это поле, вы безвозвратно потеряете все данные участников группы, назначенные для этого поля!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Удалив этот фонд, вы можете повлиять на исторические записи пожертвований!"
 
 #: 
 msgid "Category Name"
@@ -7516,10 +7452,6 @@ msgid "Filter by Class"
 msgstr "Фильтр по Классу"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Фонд успешно удалён"
-
-#: 
 msgid "In Use"
 msgstr "Используется"
 
@@ -7566,10 +7498,6 @@ msgstr "Удалить этот подсчёт посещаемости?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Выберите тип записи, к которой применяется это свойство"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Такое название фонда уже существует."
 
 #: 
 msgid "Total Pledges"
@@ -10067,10 +9995,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Поиск по людям, семьям, группам, адресам и многому другому."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Поиск и просмотр записей о депозитах"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Поиск людей, семей, групп…"
 
@@ -10723,11 +10647,6 @@ msgstr "Скопировать в буфер обмена"
 msgid "Custom field"
 msgstr "Пользовательское поле"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Пользовательский поиск"
-
 #: 
 msgid "Default Country"
 msgstr "Страна по умолчанию"
@@ -10789,11 +10708,6 @@ msgstr "Значение поля"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Найти людей, которые обещали в одном году, но не в другом"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Найти людей с пользовательским значением поля"
 
 #. Context: query_qry
 #: 
@@ -12056,10 +11970,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Изменения вступят в силу при следующем входе."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Выберите между светлой и тёмной цветовой схемой"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Настройте внешний вид приложения"
 
@@ -12816,10 +12726,6 @@ msgstr "Широта и долгота должны быть указаны вм
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Информация о приходе сохранена, но адрес не удалось определить автоматически. Введите широту и долготу вручную в разделе «Координаты на карте»."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Координаты автоматически определяются по вашему адресу при сохранении (через OpenStreetMap). Вы также можете ввести их вручную ниже — введённые вручную значения всегда имеют приоритет над автоматическим определением. Оставьте оба поля пустыми, чтобы система определила координаты по адресу."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14078,10 +13984,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Вы уверены, что хотите продолжить?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Вы уверены, что хотите удалить этот депозит?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Вы уверены, что хотите удалить этот тип мероприятия? Это действие нельзя отменить."
 
@@ -14332,10 +14234,6 @@ msgstr "Демонстрационные данные обычно загруж�
 #: 
 msgid "Deposit ID"
 msgstr "ID депозита"
-
-#: 
-msgid "Deposit Total"
-msgstr "Итого по депозиту"
 
 #: 
 msgid "Deposit Value"
@@ -14649,10 +14547,6 @@ msgstr "Группа успешно удалена."
 #: 
 msgid "Group removed from cart"
 msgstr "Группа удалена из корзины"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID обязателен для выбора роли"
 
 #: 
 msgid "HTML URL"
@@ -15032,20 +14926,8 @@ msgid "Please select a role."
 msgstr "Пожалуйста, выберите роль."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Пожалуйста, выберите служение и роль."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Пожалуйста, выберите строки для удаления"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Пожалуйста, выберите целевую роль для участников"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Пожалуйста, выберите целевую группу для участников"
 
 #: 
 msgid "Please try again"
@@ -15943,24 +15825,12 @@ msgid "Account status"
 msgstr "Статус аккаунта"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Дополнительно: выбрать конкретную целевую версию"
-
-#: 
 msgid "Bug Fix"
 msgstr "Исправление ошибок"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "По умолчанию мастер загружает следующий рекомендуемый выпуск. Вместо этого вы можете выбрать любую доступную версию ниже."
-
-#: 
 msgid "Change required"
 msgstr "Требуется изменение"
-
-#: 
-msgid "Changelog"
-msgstr "Журнал изменений"
 
 #: 
 msgid "Continue Anyway"
@@ -15969,10 +15839,6 @@ msgstr "Всё равно продолжить"
 #: 
 msgid "Could not load release information."
 msgstr "Не удалось загрузить информацию о выпуске."
-
-#: 
-msgid "Download & Install"
-msgstr "Скачать и установить"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -16001,10 +15867,6 @@ msgstr "Полный журнал изменений"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Установить стабильную версию {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Установка следующего выпуска"
 
 #: 
 msgid "Invalid file path"
@@ -16075,10 +15937,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Показать полный путь обновления"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Последний стабильный выпуск — {{version}}. Вы можете переустановить его ниже."
 
@@ -16105,10 +15963,6 @@ msgstr "Просмотр примечаний к выпуску"
 #: 
 msgid "What's New"
 msgstr "Что нового"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Что нового в версии {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16731,10 +16585,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Функция электронной почты в настоящее время отключена. Следующие функции не будут работать, пока не будет включена электронная почта"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Оценочная стоимость $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Наиболее быстрый рабочий процесс"
 
@@ -16777,10 +16627,6 @@ msgstr "Локальная разработка"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Минимальная общая сумма"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Минимальная ставка $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17083,10 +16929,6 @@ msgid "Working..."
 msgstr "Выполняется..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Вы отстаёте на {{releaseCount}} версий. Вот что вы получите"
-
-#: 
 msgid "click to expand"
 msgstr "нажмите для раскрытия"
 
@@ -17341,10 +17183,6 @@ msgstr "Не удалось создать обетование"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Не удалось удалить обетование"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Не удалось закодировать ответ о пожертвовании"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17617,4 +17455,434 @@ msgstr "думает о вас сегодня."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "маршруты страниц, активный язык, версия CRM, версия PHP, семейство ОС и случайный идентификатор установки. Ничего более. Данные хранятся в ЕС."
+
+#: 
+msgid "% Paid"
+msgstr "% Oplacheno"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Pozhaluysta, proverte informatsiyu o vashey seme"
+
+#: 
+msgid "Add Role"
+msgstr "Dobavit rol"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Dobavit polzovatelskie svoystva dlya etoy gruppy"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adres izmenilsya s momenta poslednego opredeleniya koordinat."
+
+#: 
+msgid "All Tellers"
+msgstr "Vse kassiry"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Vse pisma ne udalos otpravit. Pozhaluysta, proverte nastroyki SMTP v sistemnykh nastroykakh."
+
+#: 
+msgid "Amount Max"
+msgstr "Maksimalnaya summa"
+
+#: 
+msgid "Amount Min"
+msgstr "Minimalnaya summa"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Proizoshla nepredvidennaya oshibka pri otpravke pisem. Pozhaluysta, proverte nastroyki SMTP i zhurnaly servera."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Vy uvereny, chto khotite udalit rol '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Avto"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Avto sleduet nastroykam OS ili brauzera; Svetlaya i Tyomnaya temy pereopredelyayut ego"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Vernutsya k paneli pozhertvovaniy"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Nazhimte «Opredelit koordinaty», chtoby nayti mestopolozheniye na karte po ukazannomu vyshe adresu, ili vvedite shirotu/dolgotu vruchnuyu. Yesli pole ostavit pustym, koordinaty takzhe opredélyatsya avtomaticheski pri sokhranenii formy."
+
+#: 
+msgid "Contributor"
+msgstr "Zhertvovatel"
+
+#: 
+msgid "Contributors"
+msgstr "Zhertvovately"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Ne udalos nayti koordinaty dlya etogo adresa. Poprobuite vvesti ikh vruchnuyu."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Polzovatelskie svoystva dlya etoy gruppy"
+
+#: 
+msgid "Delete role"
+msgstr "Udalit rol"
+
+#: 
+msgid "Email Error"
+msgstr "Oshibka elektronnoy pochty"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Elektronnaya pochta ne nastroena. Pozhaluysta, nastroyte parametry SMTP v sistemnykh nastroykakh."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Snachala vvedite pochtovyy adres."
+
+#: 
+msgid "Enter role name"
+msgstr "Vvedite nazvaniye roli"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Ne udalos sozdat depozit"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Ne udalos zagruzit predvaritelnyy prosmotr pisma"
+
+#: 
+msgid "From Date"
+msgstr "S daty"
+
+#: 
+msgid "Fund Total"
+msgstr "Itogo po fondu"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Svodnaya pozhertvovaniy zhertvovately fonda po finansovomu godu"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Sbor pozhertvovaniy otkluchon"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Opredelit koordinaty"
+
+#: 
+msgid "Generating..."
+msgstr "Opredeleniye..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Zapros geokodirovanya ne vypolnen. Pozhaluysta, poprobuyte eshcho raz."
+
+#: 
+msgid "Manage Events"
+msgstr "Upravleniye meropriyatiyami"
+
+#: 
+msgid "N/A"
+msgstr "Н/Д"
+
+#: 
+msgid "New Deposit"
+msgstr "Novyy depozit"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Zhertvovately dlya etogo fonda v vybrannom finansovom godu ne naydeny"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Semi s adresom elektronnoy pochty ne naydeny. Nichego ne otpravleno."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Platezhi po vybrannym depozitam ne naydeny"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Ne ukazany deystvitelnye identifikatory depozitov"
+
+#: 
+msgid "Partial Send"
+msgstr "Chastichnaya otpravka"
+
+#: 
+msgid "Payments only"
+msgstr "Tolko platezhi"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Summa pozhertvovaniya"
+
+#: 
+msgid "Preview"
+msgstr "Predprosmotr"
+
+#: 
+msgid "Retry"
+msgstr "Povtorit"
+
+#: 
+msgid "Search"
+msgstr "Poisk"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Poisk i upravleniye zapisyami kvitantsiy o depozitakh"
+
+#: 
+msgid "Select All"
+msgstr "Vybrat vse"
+
+#: 
+msgid "Send Emails"
+msgstr "Otpravit pisma"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Otpravit pisma dlya podtverzhdeniya dannykh semi"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Otpravleno %1$d iz %2$d — %3$d semey nedostupny."
+
+#: 
+msgid "Show in Profile"
+msgstr "Pokazat v profle"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Otobrazhaetsya itog tolko dlya vybrannnogo fonda"
+
+#: 
+msgid "Teller"
+msgstr "Kassir"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Eto edinstvennaya rol v dannoy gruppe."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Eta rol ne mozhet byt udalena."
+
+#: 
+msgid "To Date"
+msgstr "Po datu"
+
+#: 
+msgid "Total Pledged"
+msgstr "Vsego pozhertvovano"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Nepredvidennaya oshibka pri otpravke pisem. Pozhaluysta, proverte zhurnaly."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Ispolzuyet ukazannyy vyshe pochtovyy adres dlya poiska koordinat cherez OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Prosmotr platezha"
+
+#: 
+msgid "View Pledge"
+msgstr "Prosmotr pozhertvovaniya"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Yesli otmecheno, eto svoystvo budet otobrazhatstya ryadom s gruppoy v spiske grupp cheloveka na ego stranitse profilya."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Familiya]"
+
+#: 
+msgid "row selected"
+msgstr "stroka vybrana"
+
+#: 
+msgid "rows selected"
+msgstr "strok vybrano"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Дни рождения и годовщины"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Ориентировочная стоимость: %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Минимальная ставка: %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Варианты \"%s\" пока недоступны. Сначала добавьте соответствующие записи."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Варианты \"%s\" пока не настроены. Сначала добавьте соответствующие записи."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Прихожане с днями рождения или годовщинами венчания в определённом месяце"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Месяц, за который необходимо отобразить дни рождения и годовщины."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Месяц, за который необходимо отобразить записи о годовщинах венчания."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Итого всех покупок: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Всего покупок: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Годовщины венчания"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Прихожане с годовщинами венчания в определённом месяце"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Произошла ошибка. Пожалуйста, попробуйте ещё раз."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Вы уверены, что хотите удалить этот фонд?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Невозможно удалить: с фондом связаны пожертвования"
+
+#: 
+msgid "Delete Fund"
+msgstr "Удалить фонд"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Направление должно быть «вверх» или «вниз»."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Редактировать фонд пожертвований"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Не удалось изменить порядок фонда пожертвований"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Фонд успешно добавлен."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Фонд успешно удалён."
+
+#: 
+msgid "Fund name"
+msgstr "Название фонда"
+
+#: 
+msgid "Fund name is required."
+msgstr "Необходимо указать название фонда."
+
+#: 
+msgid "Fund order updated."
+msgstr "Порядок фондов обновлён."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Фонд успешно сохранён."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Фонды пока не добавлены. Используйте форму выше, чтобы добавить первый фонд."
+
+#: 
+msgid "Optional description"
+msgstr "Описание (необязательно)"
+
+#: 
+msgid "Private Calendar"
+msgstr "Личный календарь"
+
+#: 
+msgid "Public Calendar"
+msgstr "Общий календарь"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Дополнительно: установить определённую версию"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "По умолчанию мастер обновляет до последней версии. Ниже вы можете выбрать конкретную версию."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Невозможно редактировать платёж в закрытом депозите"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Загрузить и применить {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Каждый выпуск ChurchCRM включает исправления безопасности. Мы настоятельно рекомендуем всегда обновляться до последней версии."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Не удалось расшифровать запрос на оплату"
+
+#: 
+msgid "Full release notes"
+msgstr "Полные примечания к выпуску"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Некорректные платёжные данные"
+
+#: 
+msgid "No release notes available."
+msgstr "Примечания к выпуску недоступны."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Внимание: в версии {{chosen}} отсутствуют исправления безопасности, включённые в {{latest}}. Продолжайте только при наличии веской причины."
+
+#: 
+msgid "What you'll gain"
+msgstr "Что вы получите"
 

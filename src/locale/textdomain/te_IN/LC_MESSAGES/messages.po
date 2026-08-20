@@ -558,16 +558,8 @@ msgid "Picture URL"
 msgstr "చిత్ర URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "విరాళ నిధి ఎడిటర్"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "చెల్లని ఫీల్డ్‌లు లేదా ఎంపికలు. మార్పులు సేవ్ చేయబడలేదు! దయచేసి సరిచేసి, మళ్లీ ప్రయత్నించండి!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "ఇంకా నిధులు జోడించబడలేదు"
 
 #: 
 msgid "Active"
@@ -1093,24 +1085,8 @@ msgid "Create Report"
 msgstr "నివేదికను సృష్టించండి"
 
 #: 
-msgid "Deposit Listing"
-msgstr "డిపాజిట్ జాబితా"
-
-#: 
 msgid "Deposits"
 msgstr "కాబోదాలు"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "ఎంచుకున్న వరుసలను తొలగించు"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "ఎంచుకున్న వరుసలను ఎగుమతి చేయి (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "ఎంచుకున్న వరుసలను ఎగుమతి చేయి (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1269,10 +1245,6 @@ msgid "Enabled"
 msgstr "చేతనం చేయబడిన"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "సమూహ-నిర్దిష్ట లక్షణాల ఫారమ్‌ను సవరించు"
-
-#: 
 msgid "Disabled"
 msgstr "నిలిపివేయబడిన"
 
@@ -1323,14 +1295,6 @@ msgstr "గ్రూప్-నిర్దిష్ట గుణాలు ఫా
 #: 
 msgid "No properties have been added yet"
 msgstr "ఇంకా గుణాలు జోడించబడలేదు"
-
-#: 
-msgid "Show in"
-msgstr "లో చూపించు"
-
-#: 
-msgid "Person View"
-msgstr "వ్యక్తి వీక్షణ"
 
 #: 
 msgid "Other Email"
@@ -2185,14 +2149,6 @@ msgstr "విరాళంగా ఇచ్చిన వస్తువులు"
 #: 
 msgid "Purchased Items"
 msgstr "కొనుగోలు చేసిన వస్తువులు"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "అన్ని కొనుగోళ్ల మొత్తం: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "మొత్తం కొనుగోళ్లు: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4851,10 +4807,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ఉపయోగించడానికి ఎన్‌క్రిప్షన్ సిస్టమ్‌ను సెట్ చేయండి - ssl (deprecated) లేదా tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "ఎంచుకున్న పంక్తుల కోసం డిపాజిట్ స్లిప్‌ను రూపొందించండి (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "అన్నింటినీ కార్ట్‌కు జోడించండి"
 
@@ -5146,10 +5098,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "ఇమెయిల్(లు) పంపడంలో లోపం"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "మరింత సమాచారం కోసం దయచేసి లాగ్‌లను తనిఖీ చేయండి"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5539,10 +5487,6 @@ msgstr "కుటుంబం కార్ట్ నుండి తొలగి
 #: 
 msgid "Add Group"
 msgstr "గ్రూప్ జోడించండి"
-
-#: 
-msgid "Back to Group List"
-msgstr "గ్రూప్ జాబితాకు తిరిగి వెళ్ళండి"
 
 #: 
 msgid "Edit Group"
@@ -7323,10 +7267,6 @@ msgid "Order"
 msgstr "ఆర్డర్"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "%s కుటుంబాలకు PDFలు విజయవంతంగా ఇమెయిల్ చేయబడ్డాయి."
-
-#: 
 msgid "Percentage"
 msgstr "శాతం"
 
@@ -7365,10 +7305,6 @@ msgstr "మీ మొదటి ఆస్తి రకాన్ని జోడ�
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "ఈ ఫీల్డ్‌ను తొలగించడం ద్వారా, ఈ ఫీల్డ్ కోసం కేటాయించిన అన్ని గ్రూప్ సభ్యుల డేటాను మీరు శాశ్వతంగా కోల్పోతారు!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "ఈ నిధిని తొలగించడం ద్వారా, మీరు చారిత్రక విరాళాల రికార్డులను ప్రభావితం చేయవచ్చు!"
 
 #: 
 msgid "Category Name"
@@ -7423,10 +7359,6 @@ msgid "Filter by Class"
 msgstr "తరగతి వారీగా ఫిల్టర్ చేయండి"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "నిధి విజయవంతంగా తొలగించబడింది"
-
-#: 
 msgid "In Use"
 msgstr "వాడకంలో ఉంది"
 
@@ -7473,10 +7405,6 @@ msgstr "ఈ హాజరు గణనను తీసివేయాలా?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ఈ ఆస్తికి వర్తించే రికార్డ్ రకాన్ని ఎంచుకోండి"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ఆ నిధి పేరు ఇప్పటికే ఉంది."
 
 #: 
 msgid "Total Pledges"
@@ -9968,10 +9896,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "వ్యక్తులు, కుటుంబాలు, సమూహాలు, చిరునామాలు మరియు మరిన్నింటిలో శోధించండి."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "డిపాజిట్ స్లిప్ రికార్డులను శోధించి చూడండి"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "వ్యక్తులు, కుటుంబాలు, సమూహాలను శోధించండి…"
 
@@ -10624,11 +10548,6 @@ msgstr "క్లిప్‌బోర్డ్‌కు కాపీ చేయ�
 msgid "Custom field"
 msgstr "కస్టమ్ ఫీల్డ్"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "కస్టమ్ సర్చ్"
-
 #: 
 msgid "Default Country"
 msgstr "డిఫాల్ట్ దేశం"
@@ -10690,11 +10609,6 @@ msgstr "ఫీల్డ్ విలువ"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ఒక సంవత్సరం ప్రతిజ్ఞ చేసిన కానీ మరొక సంవత్సరం చేయని వ్యక్తులను కనుగొనండి"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "కస్టమ్ ఫీల్డ్ విలువ కలిగిన వ్యక్తులను కనుగొనండి"
 
 #. Context: query_qry
 #: 
@@ -11957,10 +11871,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "తదుపరి లాగిన్ వరకు మార్పులు అమలు కావు."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "లైట్ మరియు డార్క్ కలర్ స్కీమ్ మధ్య ఎంచుకోండి"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "అప్లికేషన్ రూపాన్ని మరియు అనుభవాన్ని అనుకూలీకరించండి"
 
@@ -12715,10 +12625,6 @@ msgstr "అక్షాంశం మరియు రేఖాంశం రెం
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "చర్చి సమాచారం సేవ్ చేయబడింది, కానీ చిరునామాను స్వయంచాలకంగా గుర్తించలేకపోయాము. దయచేసి మ్యాప్ నిర్దేశాంకాల కింద అక్షాంశం మరియు రేఖాంశాన్ని మానవీయంగా నమోదు చేయండి."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "నిర్దేశాంకాలు సేవ్ చేసేటప్పుడు మీ చిరునామా నుండి స్వయంచాలకంగా గుర్తించబడతాయి (OpenStreetMap ద్వారా). మీరు వాటిని క్రింద మానవీయంగా కూడా నమోదు చేయవచ్చు — మానవీయ విలువలు ఎల్లప్పుడూ స్వయంచాలక గుర్తింపుకు ప్రాధాన్యత ఇస్తాయి. సిస్టమ్ చిరునామా నుండి జియోకోడ్ చేయడానికి రెండింటినీ ఖాళీగా వదలండి."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13977,10 +13883,6 @@ msgid "Are you sure you want to continue?"
 msgstr "మీరు కొనసాగాలని చేస్తున్నారా?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "ఈ కాబోదానిని తొలగించాలని మీరు నిశ్చితమైనారా?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "మీరు నిజంగా ఈ ఈవెంట్ రకాన్ని తొలగించాలనుకుంటున్నారా? దీన్ని రద్దు చేయడం సాధ్యం కాదు."
 
@@ -14231,10 +14133,6 @@ msgstr "డెమో డేటా సాధారణంగా కొత్త �
 #: 
 msgid "Deposit ID"
 msgstr "డిపాజిట్ ఐడి"
-
-#: 
-msgid "Deposit Total"
-msgstr "డిపాజిట్ మొత్తం"
 
 #: 
 msgid "Deposit Value"
@@ -14548,10 +14446,6 @@ msgstr "గ్రూప్ విజయవంతంగా తొలగించ�
 #: 
 msgid "Group removed from cart"
 msgstr "గ్రూప్ కార్ట్ నుండి తొలగించబడింది"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "పాత్ర ఎంపిక ప్రాంప్ట్‌కు GroupID అవసరం"
 
 #: 
 msgid "HTML URL"
@@ -14931,20 +14825,8 @@ msgid "Please select a role."
 msgstr "దయచేసి ఒక పాత్రను ఎంచుకోండి."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "దయచేసి ఒక గుంపు మరియు పాత్ర రెండింటినీ ఎంచుకోండి."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "దయచేసి తొలగించడానికి వరుసలను ఎంచుకోండి"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "సభ్యులకు లక్ష్య పాత్రను ఎంచుకోండి"
-
-#: 
-msgid "Please select target group for members"
-msgstr "సభ్యులకు లక్ష్య గ్రూప్‌ను ఎంచుకోండి"
 
 #: 
 msgid "Please try again"
@@ -15840,24 +15722,12 @@ msgid "Account status"
 msgstr "ఖాతా స్థితి"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "అధునాతన: నిర్దిష్ట లక్ష్య వెర్షన్‌ను ఎంచుకోండి"
-
-#: 
 msgid "Bug Fix"
 msgstr "బగ్ పరిష్కారం"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "డిఫాల్ట్‌గా, విజర్డ్ తదుపరి సిఫార్సు చేసిన విడుదలను డౌన్‌లోడ్ చేస్తుంది. బదులుగా క్రింద అందుబాటులో ఉన్న ఏదైనా వెర్షన్‌ను ఎంచుకోవచ్చు."
-
-#: 
 msgid "Change required"
 msgstr "మార్పు అవసరం"
-
-#: 
-msgid "Changelog"
-msgstr "మార్పుల నమోదు"
 
 #: 
 msgid "Continue Anyway"
@@ -15866,10 +15736,6 @@ msgstr "ఏమైనా కొనసాగించు"
 #: 
 msgid "Could not load release information."
 msgstr "విడుదల సమాచారాన్ని లోడ్ చేయలేకపోయింది."
-
-#: 
-msgid "Download & Install"
-msgstr "డౌన్‌లోడ్ & ఇన్‌స్టాల్"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15898,10 +15764,6 @@ msgstr "పూర్తి మార్పుల నమోదు"
 #: 
 msgid "Install stable {{version}}"
 msgstr "స్థిరమైన {{version}} ను ఇన్‌స్టాల్ చేయండి"
-
-#: 
-msgid "Installing next release"
-msgstr "తదుపరి విడుదలను ఇన్‌స్టాల్ చేస్తోంది"
 
 #: 
 msgid "Invalid file path"
@@ -15972,10 +15834,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "పూర్తి అప్‌గ్రేడ్ మార్గాన్ని చూపించు"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "తాజా స్థిరమైన విడుదల {{version}}. దీన్ని క్రింద తిరిగి ఇన్‌స్టాల్ చేయవచ్చు."
 
@@ -16002,10 +15860,6 @@ msgstr "విడుదల గమనికలను చూడండి"
 #: 
 msgid "What's New"
 msgstr "కొత్తగా ఏమిటి"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} లో కొత్తగా ఏమిటి"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16624,10 +16478,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ఇమెయిల్ విధి ప్రస్తుతం నిష్క్రియంగా ఉంది. ఇమెయిల్ ప్రారంభించే వరకు కింది లక్షణాలు పనిచేయవు"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "అంచనా విలువ $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "వేగవంతమైన వర్క్‌ఫ్లో"
 
@@ -16670,10 +16520,6 @@ msgstr "స్థానిక అభివృద్ధి"
 #: 
 msgid "Minimum Total Amount"
 msgstr "కనీస మొత్తం మొత్తం"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "కనీస బిడ్ $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16976,10 +16822,6 @@ msgid "Working..."
 msgstr "పని చేస్తోంది..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "మీరు {{releaseCount}} విడుదలల వెనుకబడ్డారు. ఇక్కడ మీరు పొందేది ఉంది"
-
-#: 
 msgid "click to expand"
 msgstr "విస్తరించడానికి క్లిక్ చేయండి"
 
@@ -17234,10 +17076,6 @@ msgstr "ప్రతిజ్ఞను సృష్టించడం విఫ�
 #: 
 msgid "Failed to delete pledge"
 msgstr "ప్రతిజ్ఞను తొలగించడం విఫలమైంది"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "చెల్లింపు ప్రతిస్పందనను ఎన్‌కోడ్ చేయడం విఫలమైంది"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17510,4 +17348,430 @@ msgstr "ఈరోజు మిమ్మల్ని గుర్తు చేస
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "పేజీ మార్గాలు, చురుకైన లొకేల్, CRM వెర్షన్, PHP వెర్షన్, OS కుటుంబం మరియు యాదృచ్ఛిక ఇన్‌స్టాలేషన్ ID. మరేమీ లేదు. డేటా EU లో నిల్వ చేయబడుతుంది."
+
+#: 
+msgid "% Paid"
+msgstr "% చెల్లించబడింది"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: దయచేసి మీ కుటుంబ సమాచారాన్ని ధృవీకరించండి"
+
+#: 
+msgid "Add Role"
+msgstr "పాత్రను జోడించు"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "ఈ సమూహానికి నిర్దిష్టమైన అనుకూల లక్షణాలను జోడించు"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "అక్షాంశరేఖాంశాలు చివరిసారి సెట్ చేసిన తర్వాత చిరునామా మారింది."
+
+#: 
+msgid "All Tellers"
+msgstr "అందరు టెల్లర్లు"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "అన్ని ఇమెయిల్ పంపడాలు విఫలమయ్యాయి. దయచేసి సిస్టమ్ సెట్టింగ్‌లలో మీ SMTP సెట్టింగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Amount Max"
+msgstr "గరిష్ట మొత్తం"
+
+#: 
+msgid "Amount Min"
+msgstr "కనిష్ట మొత్తం"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "ఇమెయిల్‌లు పంపేటప్పుడు ఊహించని లోపం సంభవించింది. దయచేసి మీ SMTP సెట్టింగ్‌లు మరియు సర్వర్ లాగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' పాత్రను తొలగించాలని మీరు నిశ్చితంగా ఉన్నారా?"
+
+#: 
+msgid "Auto"
+msgstr "ఆటో"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "ఆటో మీ OS లేదా బ్రౌజర్ సెట్టింగ్‌ను అనుసరిస్తుంది; లైట్ మరియు డార్క్ దాన్ని భర్తీ చేస్తాయి"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "ప్రతిజ్ఞా డాష్‌బోర్డ్‌కు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "పై చిరునామా కోసం మ్యాప్ స్థానాన్ని చూడటానికి \"అక్షాంశరేఖాంశాలు రూపొందించు\" క్లిక్ చేయండి, లేదా అక్షాంశం/రేఖాంశాన్ని మానవీయంగా నమోదు చేయండి. ఖాళీగా వదిలితే, ఫారమ్ సేవ్ చేసేటప్పుడు అక్షాంశరేఖాంశాలు స్వయంచాలకంగా గుర్తించబడతాయి."
+
+#: 
+msgid "Contributor"
+msgstr "విరాళదారు"
+
+#: 
+msgid "Contributors"
+msgstr "విరాళదారులు"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "ఆ చిరునామాకు అక్షాంశరేఖాంశాలు కనుగొనలేకపోయాము. వాటిని మానవీయంగా నమోదు చేయడానికి ప్రయత్నించండి."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "ఈ సమూహానికి అనుకూల లక్షణాలు"
+
+#: 
+msgid "Delete role"
+msgstr "పాత్రను తొలగించు"
+
+#: 
+msgid "Email Error"
+msgstr "ఇమెయిల్ లోపం"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "ఇమెయిల్ కాన్ఫిగర్ చేయబడలేదు. దయచేసి సిస్టమ్ సెట్టింగ్‌లలో SMTP సెట్టింగ్‌లను కాన్ఫిగర్ చేయండి."
+
+#: 
+msgid "Enter a street address first."
+msgstr "ముందుగా వీధి చిరునామాను నమోదు చేయండి."
+
+#: 
+msgid "Enter role name"
+msgstr "పాత్ర పేరు నమోదు చేయండి"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "డిపాజిట్ సృష్టించడం విఫలమైంది"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "ఇమెయిల్ ముందుచూపు లోడ్ చేయడం విఫలమైంది"
+
+#: 
+msgid "From Date"
+msgstr "తేదీ నుండి"
+
+#: 
+msgid "Fund Total"
+msgstr "నిధి మొత్తం"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "ఆర్థిక సంవత్సరం వారీగా నిధి విరాళదారుల ప్రతిజ్ఞా సారాంశం"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "నిధి సేకరణ నిలిపివేయబడింది"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "అక్షాంశరేఖాంశాలు రూపొందించు"
+
+#: 
+msgid "Generating..."
+msgstr "రూపొందిస్తోంది..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "జియోకోడింగ్ అభ్యర్థన విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Manage Events"
+msgstr "కార్యక్రమాలను నిర్వహించు"
+
+#: 
+msgid "New Deposit"
+msgstr "కొత్త డిపాజిట్"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "ఎంచుకున్న ఆర్థిక సంవత్సరంలో ఈ నిధికి విరాళదారులు ఎవరూ కనుగొనబడలేదు"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "ఇమెయిల్ చిరునామాతో ఏ కుటుంబాలు కనుగొనబడలేదు. ఏమీ పంపబడలేదు."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "ఎంచుకున్న డిపాజిట్‌లకు చెల్లింపులు ఏవీ కనుగొనబడలేదు"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "చెల్లుబాటు అయ్యే డిపాజిట్ IDలు ఏవీ అందించబడలేదు"
+
+#: 
+msgid "Partial Send"
+msgstr "పాక్షిక పంపడం"
+
+#: 
+msgid "Payments only"
+msgstr "చెల్లింపులు మాత్రమే"
+
+#: 
+msgid "Pledged Amount"
+msgstr "ప్రతిజ్ఞా మొత్తం"
+
+#: 
+msgid "Preview"
+msgstr "ముందుచూపు"
+
+#: 
+msgid "Retry"
+msgstr "మళ్ళీ ప్రయత్నించు"
+
+#: 
+msgid "Search"
+msgstr "శోధించు"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "డిపాజిట్ స్లిప్ రికార్డులను శోధించు మరియు నిర్వహించు"
+
+#: 
+msgid "Select All"
+msgstr "అన్నీ ఎంచుకో"
+
+#: 
+msgid "Send Emails"
+msgstr "ఇమెయిల్‌లు పంపు"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "కుటుంబ ధృవీకరణ ఇమెయిల్‌లు పంపు"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d లో %1$d పంపబడింది — %3$d కుటుంబాలను చేరుకోలేకపోయాము."
+
+#: 
+msgid "Show in Profile"
+msgstr "ప్రొఫైల్‌లో చూపించు"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "ఎంచుకున్న నిధికి మాత్రమే మొత్తం చూపిస్తోంది"
+
+#: 
+msgid "Teller"
+msgstr "టెల్లర్"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "ఇది ఈ సమూహంలో ఉన్న ఏకైక పాత్ర."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "ఈ పాత్రను తొలగించలేరు."
+
+#: 
+msgid "To Date"
+msgstr "తేదీ వరకు"
+
+#: 
+msgid "Total Pledged"
+msgstr "మొత్తం ప్రతిజ్ఞా"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "ఇమెయిల్‌లు పంపేటప్పుడు ఊహించని లోపం. దయచేసి లాగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "అక్షాంశరేఖాంశాలను OpenStreetMap ద్వారా చూడడానికి పై వీధి చిరునామాను ఉపయోగిస్తుంది."
+
+#: 
+msgid "View Payment"
+msgstr "చెల్లింపు చూడు"
+
+#: 
+msgid "View Pledge"
+msgstr "ప్రతిజ్ఞ చూడు"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "తనిఖీ చేసినప్పుడు, ఈ లక్షణం వారి ప్రొఫైల్ పేజీలోని వ్యక్తి యొక్క సమూహ జాబితాలో సమూహంతో పాటు ప్రదర్శించబడుతుంది."
+
+#: 
+msgid "[Family Name]"
+msgstr "[కుటుంబ పేరు]"
+
+#: 
+msgid "row selected"
+msgstr "వరుస ఎంచుకోబడింది"
+
+#: 
+msgid "rows selected"
+msgstr "వరుసలు ఎంచుకోబడ్డాయి"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "పుట్టినరోజులు & వివాహ వార్షికోత్సవాలు"
+
+#: 
+msgid "Estimated value %s."
+msgstr "అంచనా విలువ %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "కనీస వేలం %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "ఇంకా \"%s\" ఎంపికలు అందుబాటులో లేవు. ముందు సంబంధిత రికార్డులను జోడించండి."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "ఇంకా \"%s\" ఎంపికలు కాన్ఫిగర్ చేయబడలేదు. ముందు సంబంధిత రికార్డులను జోడించండి."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "నిర్దిష్ట నెలలో పుట్టినరోజులు లేదా వివాహ వార్షికోత్సవాలు ఉన్న వ్యక్తులు"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "మీరు పుట్టినరోజులు మరియు వార్షికోత్సవాలు తిరిగి పొందాలనుకుంటున్న నెల."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "మీరు రికార్డులు తిరిగి పొందాలనుకుంటున్న వివాహ వార్షికోత్సవ నెల."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "అన్ని కొనుగోళ్ల మొత్తం: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "మొత్తం కొనుగోళ్లు: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "వివాహ వార్షికోత్సవాలు"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "నిర్దిష్ట నెలలో వివాహ వార్షికోత్సవాలు ఉన్న వ్యక్తులు"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "ఒక లోపం సంభవించింది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "మీరు నిజంగా ఈ నిధిని తొలగించాలనుకుంటున్నారా?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "తొలగించలేరు: నిధికి సంబంధిత నిబద్ధతలు ఉన్నాయి"
+
+#: 
+msgid "Delete Fund"
+msgstr "నిధిని తొలగించు"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "దిశ 'up' లేదా 'down' అయి ఉండాలి."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "విరాళ నిధిని సవరించు"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "విరాళ నిధిని పునర్వ్యవస్థీకరించడం విఫలమైంది"
+
+#: 
+msgid "Fund added successfully."
+msgstr "నిధి విజయవంతంగా జోడించబడింది."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "నిధి విజయవంతంగా తొలగించబడింది."
+
+#: 
+msgid "Fund name"
+msgstr "నిధి పేరు"
+
+#: 
+msgid "Fund name is required."
+msgstr "నిధి పేరు అవసరం."
+
+#: 
+msgid "Fund order updated."
+msgstr "నిధి క్రమం నవీకరించబడింది."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "నిధి విజయవంతంగా సేవ్ చేయబడింది."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "ఇంకా నిధులు జోడించబడలేదు. మొదటి నిధిని జోడించడానికి పై ఫారమ్‌ను ఉపయోగించండి."
+
+#: 
+msgid "Optional description"
+msgstr "ఐచ్ఛిక వివరణ"
+
+#: 
+msgid "Private Calendar"
+msgstr "ప్రైవేట్ క్యాలెండర్"
+
+#: 
+msgid "Public Calendar"
+msgstr "పబ్లిక్ క్యాలెండర్"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "అధునాతన: బదులుగా నిర్దిష్ట వెర్షన్‌ను ఇన్‌స్టాల్ చేయండి"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "డిఫాల్ట్‌గా విజార్డ్ తాజా వెర్షన్‌కు అప్‌గ్రేడ్ చేస్తుంది. మీరు బదులుగా దిగువ నిర్దిష్ట వెర్షన్‌ను ఎంచుకోవచ్చు."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "మూసివేసిన డిపాజిట్‌లో చెల్లింపును సవరించలేరు"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "{{version}}ని డౌన్‌లోడ్ చేసి వర్తింపజేయి"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "ప్రతి ChurchCRM విడుదలలో భద్రతా సవరణలు ఉంటాయి. మేము ఎల్లప్పుడూ తాజా వెర్షన్‌కు అప్‌గ్రేడ్ చేయాలని గట్టిగా సిఫార్సు చేస్తున్నాము."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "చెల్లింపు అభ్యర్థనను డీకోడ్ చేయడం విఫలమైంది"
+
+#: 
+msgid "Full release notes"
+msgstr "పూర్తి విడుదల గమనికలు"
+
+#: 
+msgid "Invalid payment data"
+msgstr "చెల్లని చెల్లింపు డేటా"
+
+#: 
+msgid "No release notes available."
+msgstr "విడుదల గమనికలు అందుబాటులో లేవు."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "హెచ్చరిక: {{chosen}}లో {{latest}}లో చేర్చిన భద్రతా సవరణలు లేవు. మీకు నిర్దిష్ట కారణం ఉంటేనే కొనసాగండి."
+
+#: 
+msgid "What you'll gain"
+msgstr "మీరు పొందేది"
 

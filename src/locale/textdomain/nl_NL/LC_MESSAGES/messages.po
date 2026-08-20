@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "Afbeelding URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Donaties"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ongeldig veld of selectie. Verandering niet aangepast! Graag veranderen en probeer opnieuw"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Er zijn nog geen fondsen toegevoegd"
 
 #: 
 msgid "Active"
@@ -1081,24 +1073,8 @@ msgid "Create Report"
 msgstr "Aanmaken rapportage"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Stortings Lijst"
-
-#: 
 msgid "Deposits"
 msgstr "Stortingen"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Verwijder geselecteerde rijen."
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Exporteer geselecteerde regels (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Exporteer geselecteerde regels (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1257,10 +1233,6 @@ msgid "Enabled"
 msgstr "Ingeschakeld"
 
 #: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Formulier - bewerk de groep specifieke eigenschappen"
-
-#: 
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
@@ -1311,14 +1283,6 @@ msgstr "Formulier bewerken voor groepsspecifieke kenmerken"
 #: 
 msgid "No properties have been added yet"
 msgstr "Er zijn nog geen kenmerken toegevoegd"
-
-#: 
-msgid "Show in"
-msgstr "Weergegeven in: "
-
-#: 
-msgid "Person View"
-msgstr "Per persoon"
 
 #: 
 msgid "Other Email"
@@ -2173,14 +2137,6 @@ msgstr "Geschonken items"
 #: 
 msgid "Purchased Items"
 msgstr "Gekochte artikelen"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Totaal van alle aankopen: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totaal aankopen: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4842,10 +4798,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Stel het te gebruiken coderingssysteem in - ssl (verouderd) of tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Aanbetalingsbewijs genereren voor geselecteerde rijen (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Alles in het werkbestand zetten"
 
@@ -5137,10 +5089,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Fout bij het verzenden van e-mail(s)"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Controleer de logboeken voor meer informatie"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5530,10 +5478,6 @@ msgstr "Gezin verwijderd uit verzamelmap"
 #: 
 msgid "Add Group"
 msgstr "Groep toevoegen"
-
-#: 
-msgid "Back to Group List"
-msgstr "Terug naar groepslijst"
 
 #: 
 msgid "Edit Group"
@@ -7315,10 +7259,6 @@ msgid "Order"
 msgstr "Volgorde"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF's succesvol per e-mail verzonden naar %s families."
-
-#: 
 msgid "Percentage"
 msgstr "Percentage"
 
@@ -7357,10 +7297,6 @@ msgstr "Voeg Uw Eerste Eigenschapstype Toe"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Door dit veld te verwijderen, verliest u onherroepelijk alle groepslidgegevens die aan dit veld zijn toegewezen!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Door dit fonds te verwijderen, kunt u historische donatiegegevens beïnvloeden!"
 
 #: 
 msgid "Category Name"
@@ -7415,10 +7351,6 @@ msgid "Filter by Class"
 msgstr "Filteren op Klasse"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fonds succesvol verwijderd"
-
-#: 
 msgid "In Use"
 msgstr "In Gebruik"
 
@@ -7465,10 +7397,6 @@ msgstr "Deze aanwezigheidstelling verwijderen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Selecteer het recordtype waarop deze eigenschap van toepassing is"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Die fondsnaam bestaat al."
 
 #: 
 msgid "Total Pledges"
@@ -9960,10 +9888,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Zoeken in personen, gezinnen, groepen, adressen en meer."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Stortingsbondossiers zoeken en bekijken"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Personen, gezinnen, groepen zoeken…"
 
@@ -10616,11 +10540,6 @@ msgstr "Kopiëren naar klembord"
 msgid "Custom field"
 msgstr "Aangepast veld"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Aangepast zoeken"
-
 #: 
 msgid "Default Country"
 msgstr "Standaardland"
@@ -10682,11 +10601,6 @@ msgstr "Veldwaarde"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Zoek mensen die het ene jaar hebben beloofd maar niet het andere"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Zoek mensen met een aangepaste veldwaarde"
 
 #. Context: query_qry
 #: 
@@ -11949,10 +11863,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Wijzigingen worden pas van kracht bij de volgende aanmelding."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Kies tussen licht en donker kleurenschema"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Pas het uiterlijk van de applicatie aan"
 
@@ -12707,10 +12617,6 @@ msgstr "Zowel breedtegraad als lengtegraad moeten samen worden opgegeven (of bei
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Kerkgegevens opgeslagen, maar het adres kon niet automatisch worden gevonden. Voer de breedtegraad en lengtegraad handmatig in onder Kaartcoördinaten."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Coördinaten worden automatisch gedetecteerd uit uw adres bij opslaan (via OpenStreetMap). U kunt ze ook handmatig invoeren hieronder — handmatige waarden hebben altijd voorrang boven automatische detectie. Laat beide leeg om het systeem te laten geocoderen op basis van het adres."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13969,10 +13875,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Weet je zeker dat je wilt doorgaan?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Weet u zeker dat u deze storting wilt verwijderen?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Weet u zeker dat u dit type evenement wilt verwijderen? Dit kan niet ongedaan worden gemaakt."
 
@@ -14223,10 +14125,6 @@ msgstr "Demogegevens worden normaal gesproken alleen bij nieuwe installaties gel
 #: 
 msgid "Deposit ID"
 msgstr "Betaling ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Betaling totaal"
 
 #: 
 msgid "Deposit Value"
@@ -14540,10 +14438,6 @@ msgstr "Groep succesvol verwijderd."
 #: 
 msgid "Group removed from cart"
 msgstr "Groep verwijderd van verzamelmap"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "Groeps-ID vereist voor prompt rolselectie"
 
 #: 
 msgid "HTML URL"
@@ -14923,20 +14817,8 @@ msgid "Please select a role."
 msgstr "Selecteer een rol."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Selecteer zowel een groep als een rol."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Selecteer rijen om te verwijderen"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Selecteer de rol voor leden"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Selecteer de doelgroep voor de leden"
 
 #: 
 msgid "Please try again"
@@ -15832,24 +15714,12 @@ msgid "Account status"
 msgstr "Accountstatus"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Geavanceerd: kies een specifieke doelversie"
-
-#: 
 msgid "Bug Fix"
 msgstr "Bugoplossing"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Standaard downloadt de wizard de volgende aanbevolen versie. U kunt hieronder ook een andere beschikbare versie kiezen."
-
-#: 
 msgid "Change required"
 msgstr "Wijziging vereist"
-
-#: 
-msgid "Changelog"
-msgstr "Wijzigingslog"
 
 #: 
 msgid "Continue Anyway"
@@ -15858,10 +15728,6 @@ msgstr "Toch doorgaan"
 #: 
 msgid "Could not load release information."
 msgstr "Kon release-informatie niet laden."
-
-#: 
-msgid "Download & Install"
-msgstr "Downloaden en installeren"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15890,10 +15756,6 @@ msgstr "Volledige wijzigingslog"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Stabiele versie {{version}} installeren"
-
-#: 
-msgid "Installing next release"
-msgstr "Volgende versie wordt geïnstalleerd"
 
 #: 
 msgid "Invalid file path"
@@ -15964,10 +15826,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Volledig upgradepad tonen"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "De nieuwste stabiele versie is {{version}}. U kunt deze hieronder opnieuw installeren."
 
@@ -15994,10 +15852,6 @@ msgstr "Release-notities bekijken"
 #: 
 msgid "What's New"
 msgstr "Wat is er nieuw"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Wat is er nieuw in {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16604,10 +16458,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-mailfunctionaliteit is momenteel uitgeschakeld. De volgende functies werken niet totdat e-mail is ingeschakeld"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Geschatte waarde $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Snelste werkwijze"
 
@@ -16650,10 +16500,6 @@ msgstr "Lokale ontwikkeling"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimaal totaalbedrag"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimumbod $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16956,10 +16802,6 @@ msgid "Working..."
 msgstr "Bezig..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "U loopt {{releaseCount}} versies achter. Dit is wat u krijgt"
-
-#: 
 msgid "click to expand"
 msgstr "klik om uit te vouwen"
 
@@ -17214,10 +17056,6 @@ msgstr "Toezegging maken mislukt"
 #: 
 msgid "Failed to delete pledge"
 msgstr "Toezegging verwijderen mislukt"
-
-#: 
-msgid "Failed to encode payment response"
-msgstr "Coderen van betalingsreactie mislukt"
 
 #: 
 msgid "Failed to retrieve pledge"
@@ -17490,4 +17328,430 @@ msgstr "denkt vandaag aan u."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "paginapaden, actieve taal, CRM-versie, PHP-versie, OS-familie en een willekeurig installatie-ID. Niets anders. Gegevens worden opgeslagen in de EU."
+
+#: 
+msgid "% Paid"
+msgstr "% Betaald"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Verifieer uw gezinsinformatie"
+
+#: 
+msgid "Add Role"
+msgstr "Rol toevoegen"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Aangepaste eigenschappen toevoegen voor deze groep"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Adres gewijzigd sinds de coordinaten voor het laatst zijn ingesteld."
+
+#: 
+msgid "All Tellers"
+msgstr "Alle kassiers"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Alle e-mails zijn mislukt. Controleer uw SMTP-instellingen in de systeeminstellingen."
+
+#: 
+msgid "Amount Max"
+msgstr "Maximumbedrag"
+
+#: 
+msgid "Amount Min"
+msgstr "Minimumbedrag"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Er is een onverwachte fout opgetreden bij het verzenden van e-mails. Controleer uw SMTP-instellingen en serverlogboeken."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Weet u zeker dat u de rol '{{name}}' wilt verwijderen?"
+
+#: 
+msgid "Auto"
+msgstr "Automatisch"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Automatisch volgt uw besturingssysteem- of browserinstelling; Licht en Donker overschrijven dit"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Terug naar het beloftedashboard"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Klik op \"Coordinaten genereren\" om de kaartlocatie voor het bovenstaande adres op te zoeken, of voer breedtegraad/lengtegraad handmatig in. Als dit leeg wordt gelaten, worden de coordinaten ook automatisch gedetecteerd wanneer u het formulier opslaat."
+
+#: 
+msgid "Contributor"
+msgstr "Bijdrager"
+
+#: 
+msgid "Contributors"
+msgstr "Bijdragers"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Coordinaten voor dat adres konden niet worden gevonden. Probeer ze handmatig in te voeren."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Aangepaste eigenschappen voor deze groep"
+
+#: 
+msgid "Delete role"
+msgstr "Rol verwijderen"
+
+#: 
+msgid "Email Error"
+msgstr "E-mailfout"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "E-mail is niet geconfigureerd. Configureer de SMTP-instellingen in de systeeminstellingen."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Voer eerst een straatadres in."
+
+#: 
+msgid "Enter role name"
+msgstr "Rolnaam invoeren"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Aanmaken van storting mislukt"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Laden van e-mailvoorvertoning mislukt"
+
+#: 
+msgid "From Date"
+msgstr "Vanaf datum"
+
+#: 
+msgid "Fund Total"
+msgstr "Fondstotaal"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Overzicht van toezeggingen van fondsbijdragers per boekjaar"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Fondswerving is uitgeschakeld"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Coordinaten genereren"
+
+#: 
+msgid "Generating..."
+msgstr "Genereren..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Geolocatieverzoek mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Manage Events"
+msgstr "Evenementen beheren"
+
+#: 
+msgid "New Deposit"
+msgstr "Nieuwe storting"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Geen bijdragers gevonden voor dit fonds in het geselecteerde boekjaar"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Er zijn geen gezinnen met een e-mailadres gevonden. Er is niets verzonden."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Geen betalingen gevonden voor de geselecteerde stortingen"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Geen geldige stortings-ID's opgegeven"
+
+#: 
+msgid "Partial Send"
+msgstr "Gedeeltelijk verzonden"
+
+#: 
+msgid "Payments only"
+msgstr "Alleen betalingen"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Toegezegd bedrag"
+
+#: 
+msgid "Preview"
+msgstr "Voorvertoning"
+
+#: 
+msgid "Retry"
+msgstr "Opnieuw proberen"
+
+#: 
+msgid "Search"
+msgstr "Zoeken"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Stortingsbewijzen zoeken en beheren"
+
+#: 
+msgid "Select All"
+msgstr "Alles selecteren"
+
+#: 
+msgid "Send Emails"
+msgstr "E-mails verzenden"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Gezinsverificatie-e-mails verzenden"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%1$d van %2$d verzonden — %3$d gezinnen konden niet worden bereikt."
+
+#: 
+msgid "Show in Profile"
+msgstr "Weergeven in profiel"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Totaal weergegeven alleen voor geselecteerd fonds"
+
+#: 
+msgid "Teller"
+msgstr "Kassier"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Dit is de enige rol in deze groep."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Deze rol kan niet worden verwijderd."
+
+#: 
+msgid "To Date"
+msgstr "Tot datum"
+
+#: 
+msgid "Total Pledged"
+msgstr "Totaal toegezegd"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Onverwachte fout bij het verzenden van e-mails. Controleer de logboeken."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Gebruikt uw bovenstaande straatadres om coordinaten op te zoeken via OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Betaling bekijken"
+
+#: 
+msgid "View Pledge"
+msgstr "Toezegging bekijken"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Wanneer aangevinkt, wordt deze eigenschap naast de groep weergegeven in de groepenlijst van de persoon op hun profielpagina."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Gezinsnaam]"
+
+#: 
+msgid "row selected"
+msgstr "rij geselecteerd"
+
+#: 
+msgid "rows selected"
+msgstr "rijen geselecteerd"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Verjaardagen & Jubilea"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Geschatte waarde %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimumbieding %s."
+
+#: 
+msgid "No \"%s\" options are available yet. Add the relevant records first."
+msgstr "Er zijn nog geen \"%s\"-opties beschikbaar. Voeg eerst de relevante gegevens toe."
+
+#: 
+msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgstr "Er zijn nog geen \"%s\"-opties geconfigureerd. Voeg eerst de relevante gegevens toe."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Gemeenteleden met verjaardagen of huwelijksjubilea in een bepaalde maand"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "De maand waarvoor u verjaardagen en jubilea wilt ophalen."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "De maand van het huwelijksjubileum waarvoor u gegevens wilt ophalen."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Totaal van alle aankopen: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Totaal aankopen: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Huwelijksjubilea"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Gemeenteleden met huwelijksjubilea in een bepaalde maand"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Er is een fout opgetreden. Probeer het opnieuw."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Weet u zeker dat u dit fonds wilt verwijderen?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Kan niet verwijderen: fonds heeft gekoppelde toezeggingen"
+
+#: 
+msgid "Delete Fund"
+msgstr "Fonds verwijderen"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Richting moet 'omhoog' of 'omlaag' zijn."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Bijdragefonds bewerken"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Herschikken van bijdragefonds mislukt"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fonds succesvol toegevoegd."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fonds succesvol verwijderd."
+
+#: 
+msgid "Fund name"
+msgstr "Fondsnaam"
+
+#: 
+msgid "Fund name is required."
+msgstr "Fondsnaam is verplicht."
+
+#: 
+msgid "Fund order updated."
+msgstr "Fondsvolgorde bijgewerkt."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fonds succesvol opgeslagen."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Er zijn nog geen fondsen toegevoegd. Gebruik het bovenstaande formulier om het eerste fonds toe te voegen."
+
+#: 
+msgid "Optional description"
+msgstr "Optionele beschrijving"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privékalender"
+
+#: 
+msgid "Public Calendar"
+msgstr "Openbare kalender"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Geavanceerd: Installeer in plaats daarvan een specifieke versie"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Standaard upgradet de wizard naar de nieuwste versie. U kunt hieronder ook een specifieke versie kiezen."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Kan een betaling in een gesloten storting niet bewerken"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Downloaden & toepassen {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Elke ChurchCRM-release bevat beveiligingsfixes. We raden ten zeerste aan altijd te upgraden naar de nieuwste versie."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Decoderen van betalingsverzoek mislukt"
+
+#: 
+msgid "Full release notes"
+msgstr "Volledige releasenotities"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Ongeldige betalingsgegevens"
+
+#: 
+msgid "No release notes available."
+msgstr "Geen releasenotities beschikbaar."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Waarschuwing: {{chosen}} mist beveiligingsfixes die zijn opgenomen in {{latest}}. Ga alleen door als u een specifieke reden heeft."
+
+#: 
+msgid "What you'll gain"
+msgstr "Wat u wint"
 
