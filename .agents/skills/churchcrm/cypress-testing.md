@@ -2256,3 +2256,23 @@ SyntaxError: ... Unexpected token (NN:CC)
 ```
 
 Note: `*/` inside double-quoted strings (`"**/api/..."`) within actual code is fine — only the parser is affected by comment context.
+
+### DataTables 3.x Loading Row — Do NOT Use `tr:not(.dataTables_empty)` <!-- learned: 2026-08-16 -->
+
+In DataTables 2.x the empty/loading `<tr>` had class `dataTables_empty` on the `<tr>` element.
+In DataTables 3.x the class `dt-empty` is applied to the inner **`<td>`**, not the `<tr>`.
+This means `tbody tr:not(.dataTables_empty)` matches the loading `<tr>` (the row has no class),
+causing Cypress to advance before Ajax returns.
+
+**Don't** use a row-count assertion as a proxy for "data has loaded":
+```js
+// ❌ Passes spuriously on the DataTables 3.x loading row (dt-empty is on <td>, not <tr>)
+cy.get("#myTable tbody tr:not(.dataTables_empty)", { timeout: 10000 })
+    .should("have.length.at.least", 1);
+```
+
+**Do** wait directly for a specific piece of text that only appears after Ajax returns:
+```js
+// ✅ Retries until the fund/row text is actually in the DOM
+cy.contains("Music Ministry", { timeout: 15000 }).should("be.visible");
+```

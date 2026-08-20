@@ -4532,6 +4532,9 @@ msgstr ""
 msgid "F"
 msgstr ""
 
+msgid "FY"
+msgstr ""
+
 #, php-format
 msgid "FY %s"
 msgstr ""
@@ -5128,6 +5131,9 @@ msgstr ""
 msgid "Filter by log level"
 msgstr ""
 
+msgid "Filter by type"
+msgstr ""
+
 msgid "Filtering"
 msgstr ""
 
@@ -5628,6 +5634,9 @@ msgid "Gift Designation"
 msgstr ""
 
 msgid "Girls"
+msgstr ""
+
+msgid "Giving"
 msgstr ""
 
 msgid "Giving Report (Tax Statements)"
@@ -11708,6 +11717,9 @@ msgid "Total Groups"
 msgstr ""
 
 msgid "Total Kiosks"
+msgstr ""
+
+msgid "Total Paid"
 msgstr ""
 
 msgid "Total Payments"
