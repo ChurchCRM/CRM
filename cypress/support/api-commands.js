@@ -38,6 +38,38 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivateFinanceOnlyAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // grace.financeonly (id=904): Finance=1, non-admin.
+        // Used to verify Finance-role (not Admin) can access /finance/api/funds CRUD.
+        return cy.makePrivateAPICall(
+            Cypress.env("finance.only.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
+    "makePrivateManageGroupsOnlyAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // kyle.kioskonly (id=905): ManageGroups=1, non-admin.
+        // Used to verify ManageGroups-role can access /kiosk/api/* endpoints.
+        return cy.makePrivateAPICall(
+            Cypress.env("managegroups.only.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivateNoFinanceAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
         return cy.makePrivateAPICall(

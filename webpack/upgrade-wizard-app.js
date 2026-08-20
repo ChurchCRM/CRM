@@ -13,6 +13,7 @@
 import Stepper from "bs-stepper";
 import "bs-stepper/dist/css/bs-stepper.min.css";
 import { marked } from "marked";
+import { escapeHtml } from "./utils/escape-html";
 
 // Configure marked: strip raw HTML to prevent XSS from release notes
 marked.use({
@@ -586,18 +587,6 @@ function badgeForType(type) {
   const cls = map[type] || map.patch;
   const label = labelMap[type] || escapeHtml(type);
   return `<span class="badge ${cls}">${label}</span>`;
-}
-
-/**
- * Minimal HTML escaping for user-supplied strings.
- */
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 }
 
 /**

@@ -129,6 +129,42 @@ Cypress.Commands.add('setupNoManageFundraisersSession', (options = {}) => {
 });
 
 /**
+ * Sets up a cached session for a Finance-only user (per_ID=904: grace.financeonly).
+ * This user has Finance=1 and is NOT an admin. Used to verify that Finance-role
+ * users (not just admins) can access fund CRUD, dashboard Financial Settings panel,
+ * and the Finance nav Admin submenu (Envelope Manager, Donation Funds).
+ */
+Cypress.Commands.add('setupFinanceOnlySession', (options = {}) => {
+    const username = Cypress.env('finance.only.username');
+    const password = Cypress.env('finance.only.password');
+    if (!username || !password) {
+        throw new Error('Finance-only user credentials not configured in cypress/configs/docker.config.ts env: finance.only.username and finance.only.password required');
+    }
+    cy.setupLoginSession('finance-only-session', username, password, {
+        ...options,
+        validate: () => {
+            // Validate by checking a finance-protected endpoint
+            cy.request({ url: '/api/deposits', failOnStatusCode: false })
+                .its('status').should('eq', 200);
+        }
+    });
+});
+
+/**
+ * Sets up a cached session for a ManageGroups-only user (per_ID=905: kyle.kioskonly).
+ * This user has ManageGroups=1 and is NOT an admin. Used to verify that ManageGroups-role
+ * users (not just admins) can access the Kiosk Manager page and API.
+ */
+Cypress.Commands.add('setupManageGroupsOnlySession', (options = {}) => {
+    const username = Cypress.env('managegroups.only.username');
+    const password = Cypress.env('managegroups.only.password');
+    if (!username || !password) {
+        throw new Error('ManageGroups-only user credentials not configured in cypress/configs/docker.config.ts env: managegroups.only.username and managegroups.only.password required');
+    }
+    cy.setupLoginSession('managegroups-only-session', username, password, options);
+});
+
+/**
  * cy.loginWithCredentials(username, password, sessionName, expectSuccess = true)
  * Login with custom credentials (for testing password changes, etc.)
  * Creates a new session with the provided credentials

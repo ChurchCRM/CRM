@@ -9,6 +9,7 @@ import Uppy from "@uppy/core";
 import Dashboard from "@uppy/dashboard";
 import ImageEditor from "@uppy/image-editor";
 import Webcam from "@uppy/webcam";
+import { escapeHtml } from "./utils/escape-html";
 
 /**
  * Configuration for photo uploader
@@ -302,8 +303,4 @@ function showPersistentError(message) {
 function clearPersistentError() {
   const el = document.getElementById("uppy-error-container");
   if (el) el.innerHTML = "";
-}
-
-function escapeHtml(text) {
-  return text.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[c]);
 }
