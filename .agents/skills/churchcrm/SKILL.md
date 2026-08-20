@@ -185,7 +185,7 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 | [PR Description Guidelines](../pr-description-guidelines.md) | Ensure PR bodies are written in Markdown with required sections (Summary, Changes, Files Changed, Validation, Testing) |
 | [Development Workflows](./development-workflows.md) | Setup, build, Docker management |
 | [Code Standards](./code-standards.md) | General coding, quality checks, PR reviews |
-| [Wiki Documentation](./wiki-documentation.md) | Complex documentation, admin guides |
+| [Documentation Architecture & Wiki](./wiki-documentation.md) | Which doc home to use (end user / 3rd-party dev / core dev), MDX gotchas, wiki article structure |
 | [Release Notes](./release-notes.md) | Authoring GitHub release notes for any version type |
 | [Social Media Release](./social-media-release.md) | Generating platform posts for X, Facebook, Instagram, LinkedIn |
 
