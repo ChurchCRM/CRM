@@ -4,6 +4,39 @@ $(document).ready(function () {
     window.print();
   });
 
+  // Show inactive banner if person is deactivated
+  if (!window.CRM.currentPersonActive) {
+    $("#person-deactivated").removeClass("d-none");
+  }
+
+  // Activate / Deactivate person
+  $("#activateDeactivatePerson").on("click", () => {
+    const popupTitle = window.CRM.currentPersonActive
+      ? i18next.t("Confirm Deactivation")
+      : i18next.t("Confirm Activation");
+    const safeName = window.CRM.escapeHtml(window.CRM.currentPersonName);
+    const popupMessage = window.CRM.currentPersonActive
+      ? `${i18next.t("Please confirm deactivation of person")}: ${safeName}`
+      : `${i18next.t("Please confirm activation of person")}: ${safeName}`;
+
+    bootbox.confirm({
+      title: popupTitle,
+      message: `<p class="text-danger">${popupMessage}</p>`,
+      callback: (result) => {
+        if (result) {
+          window.CRM.APIRequest({
+            method: "POST",
+            path: `person/${window.CRM.currentPersonID}/activate/${!window.CRM.currentPersonActive}`,
+          }).then((data) => {
+            if (data.success) {
+              window.location.reload();
+            }
+          });
+        }
+      },
+    });
+  });
+
   // Group interactions (add, change role, remove) are handled by
   // webpack/people/person-group-manager.js — loaded via the
   // people-person-view webpack entry point.

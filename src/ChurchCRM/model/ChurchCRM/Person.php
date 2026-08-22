@@ -410,6 +410,22 @@ class Person extends BasePerson implements PhotoInterface
         return $this->photo;
     }
 
+    /**
+     * Save the record without generating the automatic 'Updated' timeline note.
+     * Use when the caller creates a more specific note (e.g. status change) to
+     * avoid a duplicate generic entry. Mirrors the private pattern used by
+     * setImageFromBase64().
+     */
+    public function saveWithoutUpdateNote(\Propel\Runtime\Connection\ConnectionInterface $con = null): void
+    {
+        $this->skipPostUpdateNote = true;
+        try {
+            $this->save($con);
+        } finally {
+            $this->skipPostUpdateNote = false;
+        }
+    }
+
     public function setImageFromBase64($base64): void
     {
         $note = new Note();
@@ -823,6 +839,23 @@ class Person extends BasePerson implements PhotoInterface
         $array['HasPhoto'] = $this->getPhoto()->hasUploadedPhoto();
 
         return $array;
+    }
+
+    /**
+     * Returns true when the person has not been deactivated.
+     * An empty/null per_DateDeactivated means the person is active.
+     */
+    public function isActive(): bool
+    {
+        return empty($this->getDateDeactivated());
+    }
+
+    /**
+     * Return the person's status as text ('Active' or 'Inactive').
+     */
+    public function getStatusText(): string
+    {
+        return $this->isActive() ? gettext('Active') : gettext('Inactive');
     }
 
     public function getEmail(): ?string

@@ -528,6 +528,7 @@ CREATE TABLE `person_per` (
   `per_Facebook` varchar(50) default NULL,
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
+  `per_DateDeactivated` date default NULL,
   PRIMARY KEY  (`per_ID`),
   INDEX `idx_per_fam_ID` (`per_fam_ID`),
   INDEX `idx_per_cls_ID` (`per_cls_ID`),
