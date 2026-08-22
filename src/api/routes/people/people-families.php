@@ -81,21 +81,27 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
-        $families = FamilyQuery::create()->joinWithPerson()->find();
+        // Find families with no email. Use database-level filtering instead of loading all families
+        // and filtering in PHP. Only return family IDs that meet the criteria:
+        // - Family.Email is empty AND
+        // - No people in the family have Email or WorkEmail set
+        // This reduces result set before hydration (O(n) families without email instead of all families).
+        $familyIds = FamilyQuery::create()
+            ->filterByEmail('', Criteria::EQUAL)
+            ->leftJoinWithPerson()
+            ->groupByFamilyId()
+            ->having('MAX(COALESCE(person_per.per_Email, \'\')) = \'\'')
+            ->having('MAX(COALESCE(person_per.per_WorkEmail, \'\')) = \'\'')
+            ->select('FamilyId')
+            ->find();
 
         $familiesWithoutEmails = [];
-        foreach ($families as $family) {
-            if (empty($family->getEmail())) {
-                $hasEmail = false;
-                foreach ($family->getPeopleSorted() as $person) {
-                    if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) {
-                        $hasEmail = true;
-                        break;
-                    }
-                }
-                if (!$hasEmail) {
-                    $familiesWithoutEmails[] = $family->toArray();
-                }
+        if (!empty($familyIds)) {
+            $families = FamilyQuery::create()
+                ->filterById($familyIds)
+                ->find();
+            foreach ($families as $family) {
+                $familiesWithoutEmails[] = $family->toArray();
             }
         }
 
