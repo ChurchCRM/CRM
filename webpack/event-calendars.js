@@ -7,6 +7,7 @@ import "fullcalendar/skeleton.css";
 import "fullcalendar/themes/forma/theme.css";
 import "fullcalendar/themes/forma/palettes/blue.css";
 import { applyFcLocale } from "./common/fc-locale";
+import { escapeHtml } from "./utils/escape-html";
 
 window.moveEventModal = {
   getButtons: (confirmLabel, confirmClass) => ({
@@ -633,19 +634,6 @@ function GetCalendarURL(calendarType, calendarID) {
  */
 function GetCalendarSourceId(calendarType, calendarID) {
   return `${calendarType}-${calendarID}`;
-}
-
-/**
- * Escape a string for safe insertion into HTML context.
- * Mirrors the same utility in event-form.js / system-settings-panel.js.
- */
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
 }
 
 /**

@@ -583,16 +583,22 @@ export function initializeMainDashboard() {
           path: "families/familiesInCart",
           suppressErrorDialog: true,
         }),
-      ]).then((responses) => {
-        const cartData = responses[0];
-        const familiesData = responses[1];
+      ])
+        .then((responses) => {
+          const cartData = responses[0];
+          const familiesData = responses[1];
 
-        const peopleInCart = cartData.PeopleCart || [];
-        const familiesInCart = familiesData.familiesInCart || [];
-        const groupsInCart = cartData.GroupCart || [];
+          const peopleInCart = cartData.PeopleCart || [];
+          const familiesInCart = familiesData.familiesInCart || [];
+          const groupsInCart = cartData.GroupCart || [];
 
-        window.CRM.cartManager.syncButtonStates(peopleInCart, familiesInCart, groupsInCart);
-      });
+          window.CRM.cartManager.syncButtonStates(peopleInCart, familiesInCart, groupsInCart);
+        })
+        .catch(() => {
+          // suppressErrorDialog above already silences the UI; still need a
+          // handler here so a denied request (e.g. a zero-permission user)
+          // doesn't surface as an unhandled promise rejection.
+        });
     }
   }
 

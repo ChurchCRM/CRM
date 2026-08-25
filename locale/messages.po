@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-16 21:21+0000\n"
+"POT-Creation-Date: 2026-08-19 14:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11482,6 +11482,9 @@ msgid "This value cannot be more than %s"
 msgstr ""
 
 msgid "This value is required."
+msgstr ""
+
+msgid "This value must be a valid field name."
 msgstr ""
 
 #, php-format
