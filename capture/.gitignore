@@ -1,0 +1,7 @@
+node_modules/
+# Local video/screenshot output — never commit raw capture assets
+*.webm
+*.mp4
+*.png
+out/
+tmp/
