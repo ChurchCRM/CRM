@@ -21,14 +21,14 @@
 
 const path = require('path');
 const fs = require('fs');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const { chromium } = require('@playwright/test');
 const minimist = require('minimist');
 
 const { BASE_URL, DEFAULT_VIEWPORT } = require('../capture.config');
 const { login } = require('../helpers/auth');
 const { installDarkThemeInitScript, forceDarkTheme } = require('../helpers/theme');
-const { smoothMouseMove, pause, typeSlowly } = require('../helpers/interaction');
+const { smoothMouseMove, pause } = require('../helpers/interaction');
 
 // ── CLI argument parsing ───────────────────────────────────────────────────────
 const argv = minimist(process.argv.slice(2), { string: ['out-dir', 'scene-id'] });
@@ -86,10 +86,10 @@ async function run() {
 
     // ── 4. Slow scroll — reveal pledge summary section ───────────────────
     //  Scroll down gently so the viewer can read the totals.
-    const viewportHeight = VIEWPORT.height;
     const scrollSteps = 20;
+    const scrollTarget = VIEWPORT.height * 0.5; // scroll half a viewport
     for (let i = 1; i <= scrollSteps; i++) {
-      await page.evaluate((scrollY) => window.scrollTo(0, scrollY), (i / scrollSteps) * 400);
+      await page.evaluate((scrollY) => window.scrollTo(0, scrollY), (i / scrollSteps) * scrollTarget);
       await pause(60);
     }
     await pause(800);
@@ -150,7 +150,7 @@ async function run() {
 
     // ── 8. Final scroll back to top ────────────────────────────────────────
     for (let i = scrollSteps; i >= 0; i--) {
-      await page.evaluate((scrollY) => window.scrollTo(0, scrollY), (i / scrollSteps) * 400);
+      await page.evaluate((scrollY) => window.scrollTo(0, scrollY), (i / scrollSteps) * scrollTarget);
       await pause(40);
     }
     await pause(800);
@@ -208,8 +208,9 @@ function verifyOutput(webmPath) {
 
   // Attempt duration check via ffprobe; skip gracefully if not installed.
   try {
-    const result = execSync(
-      `ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${webmPath}"`,
+    const result = execFileSync(
+      'ffprobe',
+      ['-v', 'error', '-show_entries', 'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1', webmPath],
       { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] }
     ).trim();
 

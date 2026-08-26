@@ -27,7 +27,7 @@
  *
  * ── importDemoData() ──────────────────────────────────────────────────────────
  *
- * Calls POST /api/demo/load (src/admin/routes/api/demo.php) with the
+ * Calls POST /admin/api/demo/load (src/admin/routes/api/demo.php) with the
  * recommended flags.  Guards:
  *   - The endpoint requires the database to have exactly 1 person (the admin
  *     created by the setup wizard) unless force:true is passed.
@@ -78,7 +78,7 @@ async function importDemoData(page, options = {}) {
     force = false,
   } = options;
 
-  const response = await page.request.post(`${BASE_URL}/api/demo/load`, {
+  const response = await page.request.post(`${BASE_URL}/admin/api/demo/load`, {
     data: { includeFinancial, includeEvents, includeSundaySchool, force },
     headers: { 'Content-Type': 'application/json' },
   });

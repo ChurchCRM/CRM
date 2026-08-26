@@ -79,11 +79,11 @@ npm run docker:ci:new-system:start
 
 # 2. Complete the wizard at http://localhost (set church name, admin password)
 
-# 3. Seed with clean demo data via Node
-node -e "
+# 3. Seed with clean demo data
+cd capture && node - << 'EOF'
 const { chromium } = require('@playwright/test');
-const { login } = require('./capture/helpers/auth');
-const { importDemoData } = require('./capture/helpers/seed');
+const { login } = require('./helpers/auth');
+const { importDemoData } = require('./helpers/seed');
 (async () => {
   const browser = await chromium.launch();
   const page = await (await browser.newContext()).newPage();
@@ -92,7 +92,8 @@ const { importDemoData } = require('./capture/helpers/seed');
   await browser.close();
   console.log('Seeded!');
 })();
-"
+EOF
+cd ..
 ```
 
 This imports from `src/admin/demo/` (people.json, groups.json, events.csv, finance.json)

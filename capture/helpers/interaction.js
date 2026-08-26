@@ -52,8 +52,8 @@ async function pause(ms = 800) {
 
 /**
  * Type text into a selector at a human-paced delay between each character.
- * Uses page.locator().type() with per-character delay so keystrokes appear
- * natural in the recording.
+ * Clicks the selector to focus, then types each character with a deliberate
+ * delay between keystrokes using page.keyboard.type() in a loop.
  *
  * @param {import('playwright').Page} page
  * @param {string} selector  – CSS / Playwright selector

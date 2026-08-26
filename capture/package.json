@@ -4,7 +4,7 @@
   "description": "Standalone Playwright-based visual capture system for ChurchCRM — produces video/screenshot assets for tutorials",
   "private": true,
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "install:browsers": "npx playwright install chromium"
