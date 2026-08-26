@@ -1,34 +1,34 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-mail odoslaný %d rodine.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "E-mail odoslaný %d rodine.",
+    "few": "E-mail odoslaný %d rodinám.",
+    "many": "E-mail odoslaný %d rodinám.",
+    "other": "E-mail odoslaný %d rodinám."
   },
-  "N/A": "",
-  "OFX": "",
+  "N/A": "Neuplatňuje sa",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF úspešne odoslané %d rodine.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "PDF úspešne odoslané %d rodine.",
+    "few": "PDF úspešne odoslané %d rodinám.",
+    "many": "PDF úspešne odoslané %d rodinám.",
+    "other": "PDF úspešne odoslané %d rodinám."
   },
-  "Failed to get deposit count": "",
+  "Failed to get deposit count": "Nepodarilo sa získať počet vkladov",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Skopírovaný {{count}} člen",
+    "other": "Skopírovaných {{count}} členov"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Tento zoznam má {{count}} príjemcu — príliš veľa pre odkaz mailto:. Použite Kopírovať adresy.",
+    "other": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Použite Kopírovať adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Príliš veľa príjemcov pre poštového klienta ({{count}} > {{max}}). Použite Kopírovať adresy.",
+    "other": "Príliš veľa príjemcov pre poštového klienta ({{count}} > {{max}}). Použite Kopírovať adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Zostáva {{count}} min",
+    "other": "Zostáva {{count}} min"
   }
 }

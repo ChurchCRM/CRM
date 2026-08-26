@@ -1,22 +1,22 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
-  "Failed to get deposit count": "",
+  "CSV": "CSV",
+  "N/A": "Δ/Α",
+  "OFX": "OFX",
+  "Failed to get deposit count": "Αποτυχία ανάκτησης αριθμού καταθέσεων",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Αντιγράφηκε {{count}} μέλος",
+    "other": "Αντιγράφηκαν {{count}} μέλη"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Αυτή η λίστα έχει {{count}} παραλήπτη — πάρα πολλοί για σύνδεσμο mailto:. Χρησιμοποιήστε Αντιγραφή διευθύνσεων.",
+    "other": "Αυτή η λίστα έχει {{count}} παραλήπτες — πάρα πολλοί για σύνδεσμο mailto:. Χρησιμοποιήστε Αντιγραφή διευθύνσεων."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Πάρα πολλοί παραλήπτες για τον πελάτη email ({{count}} > {{max}}). Χρησιμοποιήστε Αντιγραφή διευθύνσεων.",
+    "other": "Πάρα πολλοί παραλήπτες για τον πελάτη email ({{count}} > {{max}}). Χρησιμοποιήστε Αντιγραφή διευθύνσεων."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} λεπτό απομένει",
+    "other": "{{count}} λεπτά απομένουν"
   }
 }

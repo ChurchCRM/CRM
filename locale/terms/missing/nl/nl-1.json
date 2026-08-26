@@ -1,33 +1,33 @@
 {
-  "Code": "",
-  "Items": "",
-  "Planning": "",
-  "CSV": "",
+  "Code": "Code",
+  "Items": "Items",
+  "Planning": "Planning",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-mail verzonden naar %d gezin.|E-mail verzonden naar %d gezinnen.",
-    "other": ""
+    "one": "E-mail verzonden naar %d gezin.",
+    "other": "E-mail verzonden naar %d gezinnen."
   },
-  "N/A": "",
-  "OFX": "",
+  "N/A": "N.v.t.",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF succesvol gemaild naar %d gezin.|PDF succesvol gemaild naar %d gezinnen.",
-    "other": ""
+    "one": "PDF succesvol gemaild naar %d gezin.",
+    "other": "PDF succesvol gemaild naar %d gezinnen."
   },
-  "Failed to get deposit count": "",
+  "Failed to get deposit count": "Kan het aantal stortingen niet ophalen",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} lid gekopieerd",
+    "other": "{{count}} leden gekopieerd"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Deze lijst heeft {{count}} ontvanger — te veel voor een mailto:-link. Gebruik in plaats daarvan Adressen kopiëren.",
+    "other": "Deze lijst heeft {{count}} ontvangers — te veel voor een mailto:-link. Gebruik in plaats daarvan Adressen kopiëren."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Te veel ontvangers voor e-mailprogramma ({{count}} > {{max}}). Gebruik in plaats daarvan Adressen kopiëren.",
+    "other": "Te veel ontvangers voor e-mailprogramma ({{count}} > {{max}}). Gebruik in plaats daarvan Adressen kopiëren."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min over",
+    "other": "{{count}} min over"
   }
 }
