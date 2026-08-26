@@ -52,7 +52,7 @@ const VIEWPORT = DEFAULT_VIEWPORT; // 390×844
 // ── Main capture function ──────────────────────────────────────────────────────
 async function run() {
   const browser = await chromium.launch({ headless: true });
-
+  try {
   // Playwright records video per-context.  One context = one video file.
   const context = await browser.newContext({
     viewport: VIEWPORT,
@@ -158,6 +158,8 @@ async function run() {
   } finally {
     // Closing the context flushes the video to disk.
     await context.close();
+  }
+  } finally {
     await browser.close();
   }
 
@@ -220,11 +222,13 @@ function verifyOutput(webmPath) {
     }
     console.log(`[capture] Duration: ${duration.toFixed(2)}s ✓`);
   } catch (e) {
-    if (e.message.includes('zero or invalid duration')) {
-      throw e; // ffprobe ran but duration is bad — re-throw
+    if (e.code === 'ENOENT') {
+      // ffprobe not installed — rely on size check above.
+      console.log('[capture] ffprobe not available; duration check skipped (size check passed).');
+      return;
     }
-    // ffprobe not installed or other exec error — rely on size check above.
-    console.log('[capture] ffprobe not available; duration check skipped (size check passed).');
+    // ffprobe ran but failed (corrupt video, non-zero exit, bad duration…)
+    throw e;
   }
 }
 
