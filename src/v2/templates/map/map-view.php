@@ -65,7 +65,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.mapConfig = <?= json_encode($mapConfig, JSON_THROW_ON_ERROR) ?>;
+    window.CRM.mapConfig = <?= json_encode($mapConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/map-view.js') ?>"></script>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">

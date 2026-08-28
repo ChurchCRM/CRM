@@ -17,7 +17,7 @@ require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/external-calendar.min.css') ?>">
 <div class="register-box w-100" style="margin-top:5px;">
     <div class="register-logo">
-      <a href="<?= SystemURLs::getRootPath() ?>/"><?= ChurchMetaData::getChurchName() ?></a>: <?= InputUtils::escapeHTML($calendarName) ?>
+      <a href="<?= SystemURLs::getRootPath() ?>/"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></a>: <?= InputUtils::escapeHTML($calendarName) ?>
       <?php if ($churchTz) : ?>
       <p class="text-muted small mb-0"><i class="fa-solid fa-clock me-1"></i><?= gettext('All times shown in') ?> <?= InputUtils::escapeHTML($churchTz) ?></p>
       <?php endif; ?>
