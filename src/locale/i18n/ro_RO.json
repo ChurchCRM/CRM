@@ -4295,5 +4295,6 @@
   "Invalid payment data": "Date de plată invalide",
   "No release notes available.": "Nu sunt disponibile note de lansare.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Avertisment: {{chosen}} nu include corecțiile de securitate din {{latest}}. Continuați doar dacă aveți un motiv specific.",
-  "What you'll gain": "Ce veți câștiga"
+  "What you'll gain": "Ce veți câștiga",
+  "Failed to get deposit count": "Eroare la obținerea numărului de depozite"
 }

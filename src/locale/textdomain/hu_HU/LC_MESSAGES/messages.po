@@ -17840,3 +17840,7 @@ msgstr "Figyelmeztetés: a {{chosen}} verzióból hiányoznak a {{latest}} verzi
 msgid "What you'll gain"
 msgstr "Mit nyer ezzel"
 
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nem sikerült lekérni a befizetések számát"
+

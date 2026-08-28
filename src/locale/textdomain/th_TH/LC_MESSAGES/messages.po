@@ -17478,6 +17478,10 @@ msgid "Manage Events"
 msgstr "จัดการกิจกรรม"
 
 #: 
+msgid "N/A"
+msgstr "ไม่มีข้อมูล"
+
+#: 
 msgid "New Deposit"
 msgstr "รายการฝากเงินใหม่"
 
@@ -17771,4 +17775,8 @@ msgstr "คำเตือน: {{chosen}} ขาดการแก้ไขค�
 #: 
 msgid "What you'll gain"
 msgstr "สิ่งที่คุณจะได้รับ"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "ไม่สามารถดึงจำนวนเงินฝากได้"
 

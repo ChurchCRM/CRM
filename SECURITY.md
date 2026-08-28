@@ -4,7 +4,7 @@
 
 Security patch announcements, CVE disclosures, and dependency update notices are posted in the **#security** channel on our Discord server.
 
-> 👉 **Join Discord:** [https://discord.gg/XGppbeTw](https://discord.gg/tuWyFzj3Nj) — then follow **#security** for announcements.
+> 👉 **Join Discord:** [https://discord.gg/w4mmYPSnE](https://discord.gg/w4mmYPSnE) — then follow **#security** for announcements.
 
 **Please do not:**
 - DM maintainers directly about security issues
@@ -89,12 +89,5 @@ Only the latest release branch receives security fixes.
 
 ## Developer Security
 
-For developers contributing to ChurchCRM, see the [Developer Security Guide](https://github.com/ChurchCRM/CRM/wiki/Developer-Security) which covers security best practices including Content Security Policy (CSP) compliance.
+For developers contributing to ChurchCRM, see the [Developer Security Guide](https://github.com/ChurchCRM/CRM/wiki/Developer-Security), which covers security best practices including Content Security Policy (CSP) compliance.
 
-## Community
-
-Join us on Discord: https://discord.gg/XGppbeTw
-
-- **#security** — Security announcements only (patches, CVEs, advisories). Do not post vulnerability reports or tag maintainers here.
-- **#bugs** — Non-security bug reports and general troubleshooting
-- General chat, feature requests, and questions in their respective channels

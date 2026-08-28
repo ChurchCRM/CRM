@@ -17567,6 +17567,10 @@ msgid "Manage Events"
 msgstr "إدارة الفعاليات"
 
 #: 
+msgid "N/A"
+msgstr "غير متاح"
+
+#: 
 msgid "New Deposit"
 msgstr "إيداع جديد"
 
@@ -17865,4 +17869,8 @@ msgstr "تحذير: {{chosen}} يفتقر إلى إصلاحات أمنية مض�
 #: 
 msgid "What you'll gain"
 msgstr "ما ستكسبه"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "فشل في الحصول على عدد الودائع"
 

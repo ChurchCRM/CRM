@@ -4307,5 +4307,6 @@
   "Invalid payment data": "Neplatné platební údaje",
   "No release notes available.": "Žádné poznámky k vydání nejsou k dispozici.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Varování: {{chosen}} postrádá bezpečnostní opravy obsažené ve {{latest}}. Pokračujte pouze tehdy, máte-li konkrétní důvod.",
-  "What you'll gain": "Co získáte"
+  "What you'll gain": "Co získáte",
+  "Failed to get deposit count": "Nepodařilo se získat počet vkladů"
 }

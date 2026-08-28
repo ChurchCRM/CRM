@@ -4218,6 +4218,7 @@
   "Generating...": "Generazione in corso...",
   "Geocoding request failed. Please try again.": "Richiesta di geocodifica non riuscita. Riprova.",
   "Manage Events": "Gestisci eventi",
+  "N/A": "N/D",
   "New Deposit": "Nuovo versamento",
   "No contributors found for this fund in the selected fiscal year": "Nessun offerente trovato per questo fondo nell'anno fiscale selezionato",
   "No families with an email address were found. Nothing was sent.": "Nessuna famiglia con un indirizzo email è stata trovata. Nessun messaggio è stato inviato.",
@@ -4292,5 +4293,6 @@
   "Invalid payment data": "Dati di pagamento non validi",
   "No release notes available.": "Nessuna nota di rilascio disponibile.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Avviso: {{chosen}} non include le correzioni di sicurezza presenti in {{latest}}. Procedere solo se si ha un motivo specifico.",
-  "What you'll gain": "Cosa otterrai"
+  "What you'll gain": "Cosa otterrai",
+  "Failed to get deposit count": "Impossibile ottenere il conteggio dei depositi"
 }

@@ -30,10 +30,15 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
     // ?? → ?: fix enables — if the fix regresses the /fullcalendar endpoint
     // will return 400 and the test will fail.
     const viewStart = `${dateStr.slice(0, 7)}-01T00:00:00`; // first of the month
-    const [_evYear, _evMonth] = dateStr.slice(0, 7).split('-').map(Number);
-    const _viewEndYear  = _evMonth === 12 ? _evYear + 1 : _evYear;
-    const _viewEndMonth = _evMonth === 12 ? 1 : _evMonth + 1;
-    const viewEnd = `${_viewEndYear}-${String(_viewEndMonth).padStart(2, '0')}-01T00:00:00`; // first of next month (handles month-end edge cases)
+    // Use the first instant of the *next* month as viewEnd (exclusive bound).
+    // "-31T00:00:00" is wrong for events on the 31st: the PHP filter is
+    // event_start < viewEnd (strict), so an event at 14:00 on the 31st is
+    // excluded when viewEnd is "...-31T00:00:00". Using next-month-01 is the
+    // standard FullCalendar convention and is always safe.
+    // Use UTC methods throughout so viewEnd is consistent with dateStr (also UTC).
+    const _nextYear  = target.getUTCMonth() === 11 ? target.getUTCFullYear() + 1 : target.getUTCFullYear();
+    const _nextMon   = target.getUTCMonth() === 11 ? 1 : target.getUTCMonth() + 2; // +2: getUTCMonth is 0-based
+    const viewEnd    = `${_nextYear}-${String(_nextMon).padStart(2, "0")}-01T00:00:00`;
 
     let calendarId;
     let accessToken;

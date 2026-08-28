@@ -7,13 +7,11 @@
     "one": "E-mail verzonden naar %d gezin.|E-mail verzonden naar %d gezinnen.",
     "other": ""
   },
-  "N/A": "",
   "OFX": "",
   "PDF successfully emailed to %d family.": {
     "one": "PDF succesvol gemaild naar %d gezin.|PDF succesvol gemaild naar %d gezinnen.",
     "other": ""
   },
-  "Failed to get deposit count": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""

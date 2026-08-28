@@ -17491,6 +17491,10 @@ msgid "Manage Events"
 msgstr "Upravljanje dogadajima"
 
 #: 
+msgid "N/A"
+msgstr "Nije primjenjivo"
+
+#: 
 msgid "New Deposit"
 msgstr "Novi depozit"
 
@@ -17786,4 +17790,8 @@ msgstr "Upozorenje: {{chosen}} nema sigurnosnih ispravaka uključenih u {{latest
 #: 
 msgid "What you'll gain"
 msgstr "Što ćete dobiti"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Neuspješno dohvaćanje broja depozita"
 

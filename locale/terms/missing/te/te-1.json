@@ -4,13 +4,11 @@
     "one": "%d కుటుంబానికి ఇమెయిల్ పంపబడింది.|%d కుటుంబాలకు ఇమెయిల్ పంపబడింది.",
     "other": ""
   },
-  "N/A": "",
   "OFX": "",
   "PDF successfully emailed to %d family.": {
     "one": "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.|%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.",
     "other": ""
   },
-  "Failed to get deposit count": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""

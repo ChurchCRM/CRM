@@ -17510,6 +17510,10 @@ msgid "Manage Events"
 msgstr "Quản lý sự kiện"
 
 #: 
+msgid "N/A"
+msgstr "Không áp dụng"
+
+#: 
 msgid "New Deposit"
 msgstr "Khoản nộp mới"
 
@@ -17803,4 +17807,8 @@ msgstr "Cảnh báo: {{chosen}} thiếu các bản vá bảo mật có trong {{l
 #: 
 msgid "What you'll gain"
 msgstr "Những gì bạn sẽ nhận được"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Không thể lấy số lượng tiền gửi"
 

@@ -17655,6 +17655,10 @@ msgid "Manage Events"
 msgstr "管理活動"
 
 #: 
+msgid "N/A"
+msgstr "不適用"
+
+#: 
 msgid "New Deposit"
 msgstr "新增存款"
 
@@ -17948,4 +17952,8 @@ msgstr "警告：{{chosen}} 缺少 {{latest}} 中包含的安全性修正，除�
 #: 
 msgid "What you'll gain"
 msgstr "您將獲得的改進"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "取得存款數量失敗"
 

@@ -17518,6 +17518,10 @@ msgid "Manage Events"
 msgstr "נהל אירועים"
 
 #: 
+msgid "N/A"
+msgstr "לא רלוונטי"
+
+#: 
 msgid "New Deposit"
 msgstr "הפקדון חדש"
 
@@ -17812,4 +17816,8 @@ msgstr "אזהרה: {{chosen}} חסר תיקוני אבטחה הכלולים ב-
 #: 
 msgid "What you'll gain"
 msgstr "מה תרוויח"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "כשל בקבלת ספירת הפיקדונות"
 

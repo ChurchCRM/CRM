@@ -4299,5 +4299,6 @@
   "Invalid payment data": "Nieprawidłowe dane płatności",
   "No release notes available.": "Brak dostępnych informacji o wydaniu.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Ostrzeżenie: {{chosen}} nie zawiera poprawek bezpieczeństwa zawartych w {{latest}}. Kontynuuj tylko wtedy, gdy masz konkretny powód.",
-  "What you'll gain": "Co zyskasz"
+  "What you'll gain": "Co zyskasz",
+  "Failed to get deposit count": "Nie udało się pobrać liczby depozytów"
 }
