@@ -41,8 +41,9 @@ use Slim\Routing\RouteCollectorProxy;
  */
 $app->group('/email', function (RouteCollectorProxy $group): void {
     $group->post('/send', function (Request $request, Response $response): Response {
-        // Guard: SMTP must be configured before we try to send.
-        if (!SystemConfig::isEmailEnabled()) {
+        // Guard: SMTP credentials must be present (mirrors the hasValidMailServerSettings() check
+        // that Header.php uses to set window.CRM.comm.smtpConfigured on the frontend).
+        if (!SystemConfig::hasValidMailServerSettings()) {
             return SlimUtils::renderErrorJSON(
                 $response,
                 gettext('Email sending is not configured. Please set up SMTP settings before sending.'),
@@ -67,7 +68,7 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
             );
         }
 
-        if (empty($payload['subject']) || !is_string($payload['subject'])) {
+        if (empty(trim((string)($payload['subject'] ?? ''))) || !is_string($payload['subject'])) {
             return SlimUtils::renderErrorJSON(
                 $response,
                 gettext('subject is required'),
@@ -78,7 +79,7 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
             );
         }
 
-        if (!isset($payload['body']) || !is_string($payload['body'])) {
+        if (!isset($payload['body']) || !is_string($payload['body']) || trim($payload['body']) === '') {
             return SlimUtils::renderErrorJSON(
                 $response,
                 gettext('body is required'),

@@ -36,10 +36,13 @@ class BulkEmail extends BaseEmail
             // calling the parent with an empty array and then handling recipients here.
             parent::__construct([]);
 
-            // Give the message a visible To: header (required by RFC 5322).
+            // Give the message a visible To: header (required by RFC 5322 §3.6.3).
             $fromAddress = ChurchMetaData::getChurchEmail();
             if ($fromAddress) {
                 $this->mail->addAddress($fromAddress, ChurchMetaData::getChurchName());
+            } else {
+                // No church email configured — use the conventional undisclosed-recipients placeholder.
+                $this->mail->addAddress('undisclosed-recipients:;');
             }
 
             foreach ($toAddresses as $email) {
