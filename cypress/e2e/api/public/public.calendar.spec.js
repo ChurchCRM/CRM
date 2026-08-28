@@ -30,7 +30,10 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
     // ?? → ?: fix enables — if the fix regresses the /fullcalendar endpoint
     // will return 400 and the test will fail.
     const viewStart = `${dateStr.slice(0, 7)}-01T00:00:00`; // first of the month
-    const viewEnd   = `${dateStr.slice(0, 7)}-31T00:00:00`; // past month end (safe)
+    const [_evYear, _evMonth] = dateStr.slice(0, 7).split('-').map(Number);
+    const _viewEndYear  = _evMonth === 12 ? _evYear + 1 : _evYear;
+    const _viewEndMonth = _evMonth === 12 ? 1 : _evMonth + 1;
+    const viewEnd = `${_viewEndYear}-${String(_viewEndMonth).padStart(2, '0')}-01T00:00:00`; // first of next month (avoids month-length edge cases)
 
     let calendarId;
     let accessToken;
