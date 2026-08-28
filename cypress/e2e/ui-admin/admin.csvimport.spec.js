@@ -296,6 +296,19 @@ describe(
                     expect(resp.body.BirthMonth).to.eq(3);
                     expect(resp.body.BirthDay).to.eq(15);
                 });
+
+                // bareYrWedding: WeddingDate="2018" (bare year) → family WeddingDate must be null,
+                // not today's date or any other corruption.
+                const bareYrWeddingId = byFirstName["bareYrWedding"];
+                expect(bareYrWeddingId, "bareYrWedding person exists").to.exist;
+                cy.makePrivateAdminAPICall("GET", `/api/person/${bareYrWeddingId}`, null, 200).then((personResp) => {
+                    const famId = personResp.body.FamId;
+                    expect(famId, "bareYrWedding attached to family").to.be.greaterThan(0);
+                    cy.makePrivateAdminAPICall("GET", `/api/family/${famId}`, null, 200).then((famResp) => {
+                        const wd = famResp.body.WeddingDate;
+                        expect(wd, "WeddingDate bare-year must not store any date").to.be.oneOf([null, "", undefined]);
+                    });
+                });
             });
         });
 
