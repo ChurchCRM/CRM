@@ -1,22 +1,22 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
-  "Failed to get deposit count": "",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "Failed to get deposit count": "Nem sikerült lekérni a befizetések számát",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} tag másolva",
+    "other": "{{count}} tag másolva"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ez a lista {{count}} címzettet tartalmaz — túl sok egy mailto: linkhez. Használja a Másolja a címeket funkciót.",
+    "other": "Ez a lista {{count}} címzettet tartalmaz — túl sok egy mailto: linkhez. Használja a Másolja a címeket funkciót."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Túl sok címzett az e-mail kliensnek ({{count}} > {{max}}). Használja a Másolja a címeket funkciót.",
+    "other": "Túl sok címzett az e-mail kliensnek ({{count}} > {{max}}). Használja a Másolja a címeket funkciót."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} perc van hátra",
+    "other": "{{count}} perc van hátra"
   }
 }
