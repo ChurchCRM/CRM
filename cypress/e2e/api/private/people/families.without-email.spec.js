@@ -53,4 +53,86 @@ describe("Families Without Email API", () => {
             });
         });
     });
+
+    /**
+     * Person-level email filtering test.
+     *
+     * Seeds a family with NO family-level email but a member who HAS a per_Email.
+     * The endpoint must NOT return this family (the HAVING clause must catch it).
+     * Without the fix (two separate ->having() calls overwriting each other), the
+     * per_Email constraint would have been silently dropped, and the family would
+     * incorrectly appear in the results.
+     *
+     * Lifecycle:
+     *   before()  — enable self-reg, create the test family + member with email
+     *   after()   — delete family (with members), restore self-reg to disabled
+     */
+    describe("person-level email filtering (seeded data)", () => {
+        let testFamilyId = null;
+
+        before(() => {
+            // Enable self-registration so the public register endpoint is accessible
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "admin/api/system/config/bEnableSelfRegistration",
+                { value: "1" },
+            );
+
+            // Create a family with NO family email but a member WITH a personal email.
+            // This family must NOT appear in /api/families/email/without results.
+            cy.request({
+                method: "POST",
+                url: "/api/public/register/family",
+                body: {
+                    Name: "CypressTest FamiliesWithoutEmail",
+                    Address1: "1 Cypress Lane",
+                    City: "Testville",
+                    State: "TS",
+                    Country: "US",
+                    Zip: "00000",
+                    Email: "", // no family-level email
+                    people: [
+                        {
+                            firstName: "Cypress",
+                            lastName: "TestMember",
+                            gender: 1,
+                            role: 1,
+                            email: "cypress.test.member@example.invalid", // member HAS email
+                        },
+                    ],
+                },
+            }).then((resp) => {
+                expect(resp.status).to.eq(200);
+                testFamilyId = resp.body.Id;
+            });
+        });
+
+        after(() => {
+            // Delete the seeded family and its members
+            if (testFamilyId) {
+                cy.makePrivateAdminAPICall(
+                    "DELETE",
+                    `/api/family/${testFamilyId}?deleteMembers=true`,
+                    "",
+                    200,
+                );
+            }
+            // Restore self-registration to disabled
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "admin/api/system/config/bEnableSelfRegistration",
+                { value: "0" },
+            );
+        });
+
+        it("excludes families whose members have a personal email even when the family email is empty", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/families/email/without", "", 200).then((response) => {
+                const returnedIds = response.body.families.map((f) => f.Id);
+                expect(returnedIds).to.not.include(
+                    testFamilyId,
+                    `Family ${testFamilyId} has a member with email — it must be excluded from the results`,
+                );
+            });
+        });
+    });
 });

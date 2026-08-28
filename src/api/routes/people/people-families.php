@@ -87,16 +87,15 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         // - No people in the family have Email or WorkEmail set
         // This reduces result set before hydration (O(n) families without email instead of all families).
         $familyIds = FamilyQuery::create()
-            ->filterByEmail('', Criteria::EQUAL)
+            ->where('(fam_Email IS NULL OR fam_Email = \'\')')
             ->leftJoinWithPerson()
             ->groupByFamilyId()
-            ->having('MAX(COALESCE(person_per.per_Email, \'\')) = \'\'')
-            ->having('MAX(COALESCE(person_per.per_WorkEmail, \'\')) = \'\'')
+            ->having('MAX(COALESCE(person_per.per_Email, \'\')) = \'\' AND MAX(COALESCE(person_per.per_WorkEmail, \'\')) = \'\'')
             ->select('FamilyId')
             ->find();
 
         $familiesWithoutEmails = [];
-        if (!empty($familyIds)) {
+        if ($familyIds->count() > 0) {
             $families = FamilyQuery::create()
                 ->filterById($familyIds)
                 ->find();
