@@ -17827,3 +17827,7 @@ msgstr "Waarskuwing: {{chosen}} ontbreek sekuriteitsreëlings ingesluit in {{lat
 msgid "What you'll gain"
 msgstr "Wat u sal wen"
 
+#: 
+msgid "Failed to get deposit count"
+msgstr "Kon nie die aantal deposito's kry nie"
+

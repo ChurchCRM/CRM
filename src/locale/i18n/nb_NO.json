@@ -4214,6 +4214,7 @@
   "Generating...": "Genererer...",
   "Geocoding request failed. Please try again.": "Geokodingsforsporselen mislyktes. Prov igjen.",
   "Manage Events": "Administrer arrangementer",
+  "N/A": "Ikke tilgjengelig",
   "New Deposit": "Ny innbetaling",
   "No contributors found for this fund in the selected fiscal year": "Ingen bidragsytere funnet for dette fondet i valgt regnskapsar",
   "No families with an email address were found. Nothing was sent.": "Ingen familier med e-postadresse ble funnet. Ingenting ble sendt.",
@@ -4284,5 +4285,6 @@
   "Invalid payment data": "Ugyldige betalingsdata",
   "No release notes available.": "Ingen utgivelsesnotater tilgjengelig.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Advarsel: {{chosen}} mangler sikkerhetsfikser som er inkludert i {{latest}}. Fortsett bare hvis du har en spesifikk grunn.",
-  "What you'll gain": "Hva du vil oppnå"
+  "What you'll gain": "Hva du vil oppnå",
+  "Failed to get deposit count": "Kunne ikke hente antall innskudd"
 }

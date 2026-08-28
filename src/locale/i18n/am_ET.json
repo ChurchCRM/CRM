@@ -4220,6 +4220,7 @@
   "Generating...": "በማፍጠር ላይ...",
   "Geocoding request failed. Please try again.": "የጂኦኮዲንግ ጥያቄ አልተሳካም። እባክዎ እንደገና ይሞክሩ።",
   "Manage Events": "ዝግጅቶችን አስተዳድር",
+  "N/A": "አይፈጸምም",
   "New Deposit": "አዲስ ተቀማጭ",
   "No contributors found for this fund in the selected fiscal year": "ለተመረጠው ፊስካል ዓመት ለዚህ ፈንድ ምንም አስተዋጽዖ አበርካቾች አልተገኙም",
   "No families with an email address were found. Nothing was sent.": "ኢሜል አድራሻ ያላቸው ቤተሰቦች አልተገኙም። ምንም አልተላከም።",
@@ -4294,5 +4295,6 @@
   "Invalid payment data": "ልክ ያልሆነ የክፍያ ውሂብ",
   "No release notes available.": "ምንም የዕትም ማስታወሻዎች አይገኙም።",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "ማስጠንቀቂያ፡ {{chosen}} በ{{latest}} ውስጥ የተካተቱ የደህንነት ጥገናዎች ይጎድሉታል። ልዩ ምክንያት ካለዎት ብቻ ይቀጥሉ።",
-  "What you'll gain": "የሚያገኙት"
+  "What you'll gain": "የሚያገኙት",
+  "Failed to get deposit count": "የተቀማጭ ቁጥር ማግኘት አልተሳካም"
 }

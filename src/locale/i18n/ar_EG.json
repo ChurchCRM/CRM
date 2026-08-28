@@ -4276,6 +4276,7 @@
   "Generating...": "جارٍ التوليد...",
   "Geocoding request failed. Please try again.": "فشل طلب تحديد الموقع الجغرافي. يرجى المحاولة مجددًا.",
   "Manage Events": "إدارة الفعاليات",
+  "N/A": "غير متاح",
   "New Deposit": "إيداع جديد",
   "No contributors found for this fund in the selected fiscal year": "لم يُعثر على مُساهمين لهذا الصندوق في السنة المالية المحددة",
   "No families with an email address were found. Nothing was sent.": "لم يُعثر على عائلات تمتلك عنوان بريد إلكتروني. لم يتم إرسال أي شيء.",
@@ -4354,5 +4355,6 @@
   "Invalid payment data": "بيانات الدفع غير صالحة",
   "No release notes available.": "لا تتوفر ملاحظات إصدار.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "تحذير: {{chosen}} يفتقر إلى إصلاحات أمنية مضمّنة في {{latest}}. تابع فقط إذا كان لديك سبب محدد.",
-  "What you'll gain": "ما ستكسبه"
+  "What you'll gain": "ما ستكسبه",
+  "Failed to get deposit count": "فشل في الحصول على عدد الودائع"
 }

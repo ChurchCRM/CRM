@@ -17810,3 +17810,7 @@ msgstr "Varování: {{chosen}} postrádá bezpečnostní opravy obsažené ve {{
 msgid "What you'll gain"
 msgstr "Co získáte"
 
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nepodařilo se získat počet vkladů"
+

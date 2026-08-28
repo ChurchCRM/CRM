@@ -4214,6 +4214,7 @@
   "Generating...": "Genererar...",
   "Geocoding request failed. Please try again.": "Geokodningsforfragan misslyckades. Forsok igen.",
   "Manage Events": "Hantera evenemang",
+  "N/A": "Ej tillgänglig",
   "New Deposit": "Ny insattning",
   "No contributors found for this fund in the selected fiscal year": "Inga bidragsgivare hittades for denna fond under det valda rakenskapsaret",
   "No families with an email address were found. Nothing was sent.": "Inga familjer med e-postadress hittades. Inget skickades.",
@@ -4284,5 +4285,6 @@
   "Invalid payment data": "Ogiltiga betalningsuppgifter",
   "No release notes available.": "Inga versionskommentarer tillgängliga.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Varning: {{chosen}} saknar säkerhetskorrigeringar som ingår i {{latest}}. Fortsätt bara om du har ett specifikt skäl.",
-  "What you'll gain": "Vad du kommer att vinna"
+  "What you'll gain": "Vad du kommer att vinna",
+  "Failed to get deposit count": "Misslyckades med att hämta insättningsantal"
 }

@@ -17501,6 +17501,10 @@ msgid "Manage Events"
 msgstr "Spravovat udalosti"
 
 #: 
+msgid "N/A"
+msgstr "Neuplatňuje sa"
+
+#: 
 msgid "New Deposit"
 msgstr "Novy vklad"
 
@@ -17789,4 +17793,8 @@ msgstr "Upozornenie: {{chosen}} neobsahuje bezpečnostné opravy zahrnuté vo ve
 #: 
 msgid "What you'll gain"
 msgstr "Čo získate"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nepodarilo sa získať počet vkladov"
 

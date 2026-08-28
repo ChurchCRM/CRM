@@ -1,30 +1,28 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-mail enviado para %d família.",
-    "other": "E-mail enviado para %d famílias."
+    "one": "E-mail enviado para %d família.|E-mail enviado para %d famílias.",
+    "other": ""
   },
-  "N/A": "N/D",
-  "OFX": "OFX",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF enviado com sucesso por e-mail para %d família.",
-    "other": "PDF enviado com sucesso por e-mail para %d famílias."
+    "one": "PDF enviado com sucesso por e-mail para %d família.|PDF enviado com sucesso por e-mail para %d famílias.",
+    "other": ""
   },
-  "Failed to get deposit count": "Falha ao obter contagem de depósitos",
   "Copied {{count}} members": {
-    "one": "{{count}} membro copiado",
-    "other": "{{count}} membros copiados"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Esta lista tem {{count}} destinatário — demasiados para um link mailto:. Use Copiar endereços.",
-    "other": "Esta lista tem {{count}} destinatários — demasiados para um link mailto:. Use Copiar endereços."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Destinatários a mais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar endereços.",
-    "other": "Destinatários a mais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar endereços."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min restante",
-    "other": "{{count}} min restantes"
+    "one": "",
+    "other": ""
   }
 }

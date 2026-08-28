@@ -17873,3 +17873,7 @@ msgstr "Ostrzeżenie: {{chosen}} nie zawiera poprawek bezpieczeństwa zawartych 
 msgid "What you'll gain"
 msgstr "Co zyskasz"
 
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nie udało się pobrać liczby depozytów"
+

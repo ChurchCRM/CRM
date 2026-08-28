@@ -1,22 +1,20 @@
 {
-  "CSV": "CSV",
-  "N/A": "Ei saatavilla",
-  "OFX": "OFX",
-  "Failed to get deposit count": "Talletusten määrän hakeminen epäonnistui",
+  "CSV": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "{{count}} jäsen kopioitu",
-    "other": "{{count}} jäsentä kopioitu"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Tässä listassa on {{count}} vastaanottaja — liian monta mailto:-linkkiä varten. Käytä sen sijaan Kopioi osoitteet.",
-    "other": "Tässä listassa on {{count}} vastaanottajaa — liian monta mailto:-linkkiä varten. Käytä sen sijaan Kopioi osoitteet."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Liian monta vastaanottajaa sähköpostiohjelmalle ({{count}} > {{max}}). Käytä sen sijaan Kopioi osoitteet.",
-    "other": "Liian monta vastaanottajaa sähköpostiohjelmalle ({{count}} > {{max}}). Käytä sen sijaan Kopioi osoitteet."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min jäljellä",
-    "other": "{{count}} min jäljellä"
+    "one": "",
+    "other": ""
   }
 }
