@@ -35,8 +35,10 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
     // event_start < viewEnd (strict), so an event at 14:00 on the 31st is
     // excluded when viewEnd is "...-31T00:00:00". Using next-month-01 is the
     // standard FullCalendar convention and is always safe.
-    const _nextMonth = new Date(target.getFullYear(), target.getMonth() + 1, 1);
-    const viewEnd    = `${_nextMonth.toISOString().slice(0, 7)}-01T00:00:00`;
+    // Use UTC methods throughout so viewEnd is consistent with dateStr (also UTC).
+    const _nextYear  = target.getUTCMonth() === 11 ? target.getUTCFullYear() + 1 : target.getUTCFullYear();
+    const _nextMon   = target.getUTCMonth() === 11 ? 1 : target.getUTCMonth() + 2; // +2: getUTCMonth is 0-based
+    const viewEnd    = `${_nextYear}-${String(_nextMon).padStart(2, "0")}-01T00:00:00`;
 
     let calendarId;
     let accessToken;
