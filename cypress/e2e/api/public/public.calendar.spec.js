@@ -30,7 +30,16 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
     // ?? → ?: fix enables — if the fix regresses the /fullcalendar endpoint
     // will return 400 and the test will fail.
     const viewStart = `${dateStr.slice(0, 7)}-01T00:00:00`; // first of the month
-    const viewEnd   = `${dateStr.slice(0, 7)}-31T00:00:00`; // past month end (safe)
+    // Use first day of the following month as viewEnd so it always falls AFTER
+    // any event on the last day (hardcoding "-31" fails for months with < 31
+    // days and also excludes events later in the day when the event date IS
+    // the 31st — the API filter is event.start < viewEnd).
+    const nextMonthDate = new Date(target.getFullYear(), target.getMonth() + 1, 1);
+    const viewEnd = [
+        String(nextMonthDate.getFullYear()),
+        String(nextMonthDate.getMonth() + 1).padStart(2, "0"),
+        "01",
+    ].join("-") + "T00:00:00"; // first day of next month — always past month end
 
     let calendarId;
     let accessToken;
