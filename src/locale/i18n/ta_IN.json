@@ -4220,6 +4220,7 @@
   "Generating...": "உருவாக்குகிறது...",
   "Geocoding request failed. Please try again.": "புவியியல் குறியீட்டு கோரிக்கை தோல்வியடைந்தது. மீண்டும் முயற்சிக்கவும்.",
   "Manage Events": "நிகழ்வுகளை நிர்வகி",
+  "N/A": "பொருந்தாது",
   "New Deposit": "புதிய வைப்புத்தொகை",
   "No contributors found for this fund in the selected fiscal year": "தேர்ந்தெடுக்கப்பட்ட நிதியாண்டில் இந்த நிதிக்கு பங்களிப்பாளர்கள் எவரும் இல்லை",
   "No families with an email address were found. Nothing was sent.": "மின்னஞ்சல் முகவரி உள்ள குடும்பங்கள் எதுவும் கண்டுபிடிக்கப்படவில்லை. எதுவும் அனுப்பப்படவில்லை.",
@@ -4295,6 +4296,7 @@
   "No release notes available.": "வெளியீட்டு குறிப்புகள் எதுவும் இல்லை.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "எச்சரிக்கை: {{chosen}} இல் {{latest}} இல் உள்ள பாதுகாப்பு திருத்தங்கள் இல்லை. குறிப்பிட்ட காரணம் இருந்தால் மட்டுமே தொடரவும்.",
   "What you'll gain": "நீங்கள் பெறுவது",
+  "Failed to get deposit count": "வைப்பு எண்ணிக்கையைப் பெறுவதில் தோல்வி",
   "Copied {{count}} members": {
     "one": "{{count}} உறுப்பினர்கள் நகலெடுக்கப்பட்டனர்\nசூழல்: ஒன்று",
     "other": "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — இது mailto: இணைப்புக்கு மிக அதிகம். அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\nசூழல்: ஒன்று"

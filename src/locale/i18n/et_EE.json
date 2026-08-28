@@ -4220,6 +4220,7 @@
   "Generating...": "Genereerimine...",
   "Geocoding request failed. Please try again.": "Geokodeerimise paring ebaonnestus. Palun proovige uuesti.",
   "Manage Events": "Halda uritusi",
+  "N/A": "Pole saadaval",
   "New Deposit": "Uus deposiit",
   "No contributors found for this fund in the selected fiscal year": "Valitud eelarveaastal ei leitud selle fondi jaoks annetajaid",
   "No families with an email address were found. Nothing was sent.": "E-posti aadressiga perekondi ei leitud. Midagi ei saadetud.",
@@ -4294,5 +4295,6 @@
   "Invalid payment data": "Kehtetud makseandmed",
   "No release notes available.": "Väljalaskemärkmeid pole saadaval.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Hoiatus: versioonis {{chosen}} puuduvad turvaparandused, mis sisalduvad versioonis {{latest}}. Jätkake ainult siis, kui teil on selleks konkreetne põhjus.",
-  "What you'll gain": "Mida te saate"
+  "What you'll gain": "Mida te saate",
+  "Failed to get deposit count": "Sissemaksete arvu hankimine ebaõnnestus"
 }

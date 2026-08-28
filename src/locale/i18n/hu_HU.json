@@ -4294,5 +4294,6 @@
   "Invalid payment data": "Érvénytelen fizetési adatok",
   "No release notes available.": "Nem áll rendelkezésre kiadási megjegyzés.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Figyelmeztetés: a {{chosen}} verzióból hiányoznak a {{latest}} verzióban szereplő biztonsági javítások. Csak akkor folytassa, ha erre konkrét oka van.",
-  "What you'll gain": "Mit nyer ezzel"
+  "What you'll gain": "Mit nyer ezzel",
+  "Failed to get deposit count": "Nem sikerült lekérni a befizetések számát"
 }

@@ -1,22 +1,20 @@
 {
-  "CSV": "CSV",
-  "N/A": "不适用",
-  "OFX": "OFX",
-  "Failed to get deposit count": "获取存款数量失败",
+  "CSV": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "已复制 {{count}} 名成员",
-    "other": "已复制 {{count}} 名成员"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "此列表有 {{count}} 个收件人 — 对于 mailto: 链接来说太多了。请改用复制地址。",
-    "other": "此列表有 {{count}} 个收件人 — 对于 mailto: 链接来说太多了。请改用复制地址。"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "电子邮件客户端收件人太多 ({{count}} > {{max}})。请改用复制地址。",
-    "other": "电子邮件客户端收件人太多 ({{count}} > {{max}})。请改用复制地址。"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "剩余 {{count}} 分钟",
-    "other": "剩余 {{count}} 分钟"
+    "one": "",
+    "other": ""
   }
 }

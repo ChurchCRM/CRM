@@ -17466,6 +17466,10 @@ msgid "Manage Events"
 msgstr "イベントを管理"
 
 #: 
+msgid "N/A"
+msgstr "該当なし"
+
+#: 
 msgid "New Deposit"
 msgstr "新規入金"
 
@@ -17759,4 +17763,8 @@ msgstr "警告：{{chosen}}には{{latest}}に含まれるセキュリティ修�
 #: 
 msgid "What you'll gain"
 msgstr "追加される機能"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "入金数の取得に失敗しました"
 

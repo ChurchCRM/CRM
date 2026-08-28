@@ -4297,5 +4297,6 @@
   "Invalid payment data": "Ongeldige betalingsdata",
   "No release notes available.": "Geen vrystellingsnotas beskikbaar nie.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Waarskuwing: {{chosen}} ontbreek sekuriteitsreëlings ingesluit in {{latest}}. Gaan slegs voort as u 'n spesifieke rede het.",
-  "What you'll gain": "Wat u sal wen"
+  "What you'll gain": "Wat u sal wen",
+  "Failed to get deposit count": "Kon nie die aantal deposito's kry nie"
 }

@@ -4206,6 +4206,7 @@
   "Generating...": "กำลังสร้าง...",
   "Geocoding request failed. Please try again.": "คำขอระบุพิกัดทางภูมิศาสตร์ล้มเหลว กรุณาลองใหม่อีกครั้ง",
   "Manage Events": "จัดการกิจกรรม",
+  "N/A": "ไม่มีข้อมูล",
   "New Deposit": "รายการฝากเงินใหม่",
   "No contributors found for this fund in the selected fiscal year": "ไม่พบผู้ถวายสำหรับกองทุนนี้ในปีงบประมาณที่เลือก",
   "No families with an email address were found. Nothing was sent.": "ไม่พบครอบครัวที่มีที่อยู่อีเมล ไม่มีการส่งข้อความใด",
@@ -4279,5 +4280,6 @@
   "Invalid payment data": "ข้อมูลการชำระเงินไม่ถูกต้อง",
   "No release notes available.": "ไม่มีบันทึกการเผยแพร่",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "คำเตือน: {{chosen}} ขาดการแก้ไขความปลอดภัยที่มีอยู่ใน {{latest}} ดำเนินการต่อเฉพาะเมื่อมีเหตุผลเฉพาะเจาะจงเท่านั้น",
-  "What you'll gain": "สิ่งที่คุณจะได้รับ"
+  "What you'll gain": "สิ่งที่คุณจะได้รับ",
+  "Failed to get deposit count": "ไม่สามารถดึงจำนวนเงินฝากได้"
 }
