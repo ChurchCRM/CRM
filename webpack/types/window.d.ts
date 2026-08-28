@@ -60,8 +60,6 @@ interface CRMNamespace {
     defaultEmailToAddress?: string;
     [key: string]: unknown;
   };
-  /** Whether the system SMTP is enabled and configured (bEnabledEmail + sSMTPHost). */
-  smtpEnabled?: boolean;
   [key: string]: unknown;
 }
 
