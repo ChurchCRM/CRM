@@ -61,11 +61,13 @@ class PersonService
      */
     public function getPeopleEmailsAndGroups(): array
     {
-        // Get people with emails, eagerly loading group memberships and groups to avoid N+1
+        // Get people with emails, eagerly loading group memberships and groups to avoid N+1.
+        // Use LEFT JOIN so that people with an email but no group memberships are NOT silently
+        // excluded (INNER JOIN would drop them, the same way leftJoinWithFamily() is used below).
         $people = PersonQuery::create()
             ->filterByEmail('', Criteria::NOT_EQUAL)
-            ->joinWithPerson2group2roleP2g2r()
-            ->joinWithGroup()
+            ->leftJoinWithPerson2group2roleP2g2r()
+            ->leftJoinWithGroup()
             ->orderById()
             ->distinct()
             ->find();

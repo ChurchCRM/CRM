@@ -403,6 +403,28 @@ class GroupService
 
         $memberships = $query->find();
 
+        // Batch-load role names using the group's RoleListId (avoids N+1 on ListOption lookups).
+        // Person2group2roleP2g2r has no FK to list_lst — the role name is resolved via
+        // group_grp.grp_RoleListID (lst_ID) + p2g2r_rle_ID (lst_OptionID).
+        $roleNameMap = [];
+        if (count($memberships) > 0) {
+            $group = GroupQuery::create()->findOneById((int)$groupID);
+            if ($group !== null) {
+                $listId = $group->getRoleListId();
+                $roleIds = [];
+                foreach ($memberships as $membership) {
+                    $roleIds[] = $membership->getRoleId();
+                }
+                $roleOptions = ListOptionQuery::create()
+                    ->filterById($listId)
+                    ->filterByOptionId(array_unique($roleIds))
+                    ->find();
+                foreach ($roleOptions as $option) {
+                    $roleNameMap[$option->getOptionId()] = $option->getOptionName();
+                }
+            }
+        }
+
         $members = [];
         foreach ($memberships as $membership) {
             $person = $membership->getPerson();
@@ -410,7 +432,7 @@ class GroupService
                 $members[] = [
                     'per_ID' => $person->getId(),
                     'displayName' => $person->getFullName(),
-                    'groupRole' => $membership->getListOption()?->getOptionName() ?? '',
+                    'groupRole' => $roleNameMap[$membership->getRoleId()] ?? '',
                 ];
             }
         }
