@@ -1,25 +1,25 @@
 {
-  "Code": "",
-  "Signature": "",
-  "Auto": "",
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
-  "Failed to get deposit count": "",
+  "Code": "Code",
+  "Signature": "Signature",
+  "Auto": "Auto",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "Failed to get deposit count": "Échec de l'obtention du nombre de dépôts",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} membre copié",
+    "other": "{{count}} membres copiés"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Cette liste a {{count}} destinataire — trop pour un lien mailto:. Utilisez Copier les adresses à la place.",
+    "other": "Cette liste a {{count}} destinataires — trop pour un lien mailto:. Utilisez Copier les adresses à la place."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez Copier les adresses à la place.",
+    "other": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez Copier les adresses à la place."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min restante",
+    "other": "{{count}} min restantes"
   }
 }

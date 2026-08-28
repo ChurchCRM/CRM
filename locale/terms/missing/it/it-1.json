@@ -1,24 +1,24 @@
 {
-  "Check-out": "",
-  "Auto": "",
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
-  "Failed to get deposit count": "",
+  "Check-out": "Check-out",
+  "Auto": "Auto",
+  "CSV": "CSV",
+  "N/A": "N/D",
+  "OFX": "OFX",
+  "Failed to get deposit count": "Impossibile ottenere il conteggio dei depositi",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} membro copiato",
+    "other": "{{count}} membri copiati"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Questo elenco ha {{count}} destinatario — troppi per un link mailto:. Usa Copia indirizzi.",
+    "other": "Questo elenco ha {{count}} destinatari — troppi per un link mailto:. Usa Copia indirizzi."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa Copia indirizzi.",
+    "other": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa Copia indirizzi."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min rimanente",
+    "other": "{{count}} min rimanenti"
   }
 }
