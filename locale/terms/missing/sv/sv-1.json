@@ -6,13 +6,11 @@
     "one": "E-post skickad till %d familj.|E-post skickad till %d familjer.",
     "other": ""
   },
-  "N/A": "",
   "OFX": "",
   "PDF successfully emailed to %d family.": {
     "one": "PDF har skickats via e-post till %d familj.|PDF har skickats via e-post till %d familjer.",
     "other": ""
   },
-  "Failed to get deposit count": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""

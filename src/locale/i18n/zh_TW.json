@@ -4206,6 +4206,7 @@
   "Generating...": "產生中...",
   "Geocoding request failed. Please try again.": "地理編碼請求失敗。請再試一次。",
   "Manage Events": "管理活動",
+  "N/A": "不適用",
   "New Deposit": "新增存款",
   "No contributors found for this fund in the selected fiscal year": "在所選財務年度內，此基金找不到奉獻者",
   "No families with an email address were found. Nothing was sent.": "找不到有電子郵件地址的家庭。未傳送任何郵件。",
@@ -4279,5 +4280,6 @@
   "Invalid payment data": "無效的付款資料",
   "No release notes available.": "目前沒有可用的版本說明。",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "警告：{{chosen}} 缺少 {{latest}} 中包含的安全性修正，除非有特定原因，否則請勿繼續。",
-  "What you'll gain": "您將獲得的改進"
+  "What you'll gain": "您將獲得的改進",
+  "Failed to get deposit count": "取得存款數量失敗"
 }

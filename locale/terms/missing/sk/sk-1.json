@@ -6,7 +6,6 @@
     "many": "",
     "other": ""
   },
-  "N/A": "",
   "OFX": "",
   "PDF successfully emailed to %d family.": {
     "one": "PDF úspešne odoslané %d rodine.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.",
@@ -14,7 +13,6 @@
     "many": "",
     "other": ""
   },
-  "Failed to get deposit count": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""
