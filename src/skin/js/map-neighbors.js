@@ -104,6 +104,8 @@ $(document).ready(() => {
         .catch((err) => {
           console.error("Find Neighbors: failed to load results", err);
           window.CRM.notify(i18next.t("Failed to load neighbors."), { type: "danger" });
+          listPeople = [];
+          setResultsVisible(false);
         })
         .finally(() => {
           $btn.prop("disabled", false);
