@@ -101,7 +101,7 @@ class AnniversariesCalendar implements SystemCalendar
                 $anniversary = new Event();
                 $anniversary->setId($family->getId());
                 $anniversary->setEditable(false);
-                $anniversary->setTitle(gettext('Anniversary') . ': ' . $family->getSalutation());
+                $anniversary->setTitle(gettext('Anniversary') . ': ' . $family->getName());
                 $anniversary->setStart($eventDateStr);
                 $anniversary->setURL($family->getViewURI());
                 $events->push($anniversary);
