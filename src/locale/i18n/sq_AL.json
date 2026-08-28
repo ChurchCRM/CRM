@@ -4286,5 +4286,6 @@
   "Invalid payment data": "Të dhëna pagese të pavlefshme",
   "No release notes available.": "Nuk ka shënime versioni të disponueshme.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Paralajmërim: {{chosen}} i mungojnë rregullimet e sigurisë të përfshira në {{latest}}. Vazhdoni vetëm nëse keni një arsye specifike.",
-  "What you'll gain": "Çfarë do të fitoni"
+  "What you'll gain": "Çfarë do të fitoni",
+  "Failed to get deposit count": "Dështoi marrja e numrit të depozitave"
 }

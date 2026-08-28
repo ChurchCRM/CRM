@@ -4220,6 +4220,7 @@
   "Generating...": "उत्पन्न हो रहा है...",
   "Geocoding request failed. Please try again.": "जियोकोडिंग अनुरोध विफल हुआ। कृपया पुनः प्रयास करें।",
   "Manage Events": "आयोजन प्रबंधित करें",
+  "N/A": "लागू नहीं",
   "New Deposit": "नई जमा",
   "No contributors found for this fund in the selected fiscal year": "चयनित वित्तीय वर्ष में इस कोष के लिए कोई अंशदाता नहीं मिला",
   "No families with an email address were found. Nothing was sent.": "ईमेल पते वाला कोई परिवार नहीं मिला। कुछ भी नहीं भेजा गया।",
@@ -4294,5 +4295,6 @@
   "Invalid payment data": "अमान्य भुगतान डेटा",
   "No release notes available.": "कोई रिलीज़ नोट्स उपलब्ध नहीं हैं।",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "चेतावनी: {{chosen}} में {{latest}} में शामिल सुरक्षा सुधार नहीं हैं। केवल तभी आगे बढ़ें जब आपके पास कोई विशेष कारण हो।",
-  "What you'll gain": "आपको क्या मिलेगा"
+  "What you'll gain": "आपको क्या मिलेगा",
+  "Failed to get deposit count": "जमा राशि की गणना प्राप्त करने में विफल"
 }

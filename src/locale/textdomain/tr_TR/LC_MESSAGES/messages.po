@@ -17514,6 +17514,10 @@ msgid "Manage Events"
 msgstr "Etkinlikleri Yonet"
 
 #: 
+msgid "N/A"
+msgstr "Uygulanamaz"
+
+#: 
 msgid "New Deposit"
 msgstr "Yeni Depozito"
 
@@ -17802,4 +17806,8 @@ msgstr "Uyarı: {{chosen}} sürümünde {{latest}} sürümüne dahil olan güven
 #: 
 msgid "What you'll gain"
 msgstr "Ne kazanacaksınız"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Depozito sayısı alınamadı"
 

@@ -4283,5 +4283,6 @@
   "Invalid payment data": "Hindi wastong data ng bayad",
   "No release notes available.": "Walang available na release notes.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Babala: Ang {{chosen}} ay kulang sa mga pag-aayos sa seguridad na kasama sa {{latest}}. Magpatuloy lamang kung mayroon kang partikular na dahilan.",
-  "What you'll gain": "Ano ang iyong makukuha"
+  "What you'll gain": "Ano ang iyong makukuha",
+  "Failed to get deposit count": "Nabigo sa pagkuha ng bilang ng deposito"
 }

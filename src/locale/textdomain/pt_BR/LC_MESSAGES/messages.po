@@ -17475,6 +17475,10 @@ msgid "Manage Events"
 msgstr "Gerenciar Eventos"
 
 #: 
+msgid "N/A"
+msgstr "N/D"
+
+#: 
 msgid "New Deposit"
 msgstr "Novo Depósito"
 
@@ -17763,4 +17767,8 @@ msgstr "Aviso: {{chosen}} não possui as correções de segurança incluídas em
 #: 
 msgid "What you'll gain"
 msgstr "O que você vai obter"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Falha ao obter contagem de depósitos"
 

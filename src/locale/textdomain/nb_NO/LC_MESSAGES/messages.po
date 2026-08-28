@@ -17575,6 +17575,10 @@ msgid "Manage Events"
 msgstr "Administrer arrangementer"
 
 #: 
+msgid "N/A"
+msgstr "Ikke tilgjengelig"
+
+#: 
 msgid "New Deposit"
 msgstr "Ny innbetaling"
 
@@ -17863,4 +17867,8 @@ msgstr "Advarsel: {{chosen}} mangler sikkerhetsfikser som er inkludert i {{lates
 #: 
 msgid "What you'll gain"
 msgstr "Hva du vil oppnå"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Kunne ikke hente antall innskudd"
 
