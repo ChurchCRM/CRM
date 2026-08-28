@@ -245,6 +245,60 @@ describe(
             cy.get("#summary-card").should("have.class", "d-none");
         });
 
+        it("Verify CSV Import bare-year dates do not corrupt to today; year-only BirthDate sets BirthYear alone", () => {
+            // Guards against the regression where strtotime("2020") returned
+            // today's date because PHP interpreted bare 4-digit years as a time.
+            cy.visit("admin/import/csv");
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_import_bareyear.csv", { force: true });
+            cy.get("#csv-import-form").submit();
+            cy.get("#mapping-card").should("be.visible");
+            cy.get("#execute-import").click();
+            cy.get("#summary-card").should("be.visible");
+            cy.get("#summary-imported").should("not.have.text", "0");
+
+            cy.request("GET", "/api/search/BareYrTest").then((response) => {
+                expect(response.status).to.eq(200);
+                const personsGroup = response.body.find((g) =>
+                    g.text.startsWith("Persons"),
+                );
+                expect(personsGroup, "BareYrTest persons found").to.exist;
+
+                const byFirstName = {};
+                personsGroup.children.forEach((child) => {
+                    const match = child.uri.match(/\/people\/view\/(\d+)/);
+                    if (match) byFirstName[child.text.split(" ")[0]] = match[1];
+                });
+
+                // bareYrBday: BirthDate="2020" (bare year) → BirthYear=2020, month/day not set
+                const bareYrBdayId = byFirstName["bareYrBday"];
+                expect(bareYrBdayId, "bareYrBday person exists").to.exist;
+                cy.makePrivateAdminAPICall("GET", `/api/person/${bareYrBdayId}`, null, 200).then((resp) => {
+                    expect(resp.body.BirthYear).to.eq(2020);
+                    expect(resp.body.BirthMonth).to.be.oneOf([0, null]);
+                    expect(resp.body.BirthDay).to.be.oneOf([0, null]);
+                });
+
+                // bareYrMember: MembershipDate="2019" (bare year) → must NOT become today's date
+                const bareYrMemberId = byFirstName["bareYrMember"];
+                expect(bareYrMemberId, "bareYrMember person exists").to.exist;
+                cy.makePrivateAdminAPICall("GET", `/api/person/${bareYrMemberId}`, null, 200).then((resp) => {
+                    const md = resp.body.MembershipDate;
+                    // Bare year must be dropped entirely, not stored as any date value
+                    // (including today, unix epoch, or any other corruption).
+                    expect(md, "MembershipDate bare-year must not store any date").to.be.oneOf([null, "", undefined]);
+                });
+
+                // splitBirth: BirthYear=1995, BirthMonth=3, BirthDay=15 (separate columns)
+                const splitBirthId = byFirstName["splitBirth"];
+                expect(splitBirthId, "splitBirth person exists").to.exist;
+                cy.makePrivateAdminAPICall("GET", `/api/person/${splitBirthId}`, null, 200).then((resp) => {
+                    expect(resp.body.BirthYear).to.eq(1995);
+                    expect(resp.body.BirthMonth).to.eq(3);
+                    expect(resp.body.BirthDay).to.eq(15);
+                });
+            });
+        });
+
         it("Verify CSV Import sets Classification and FamilyRole", () => {
             cy.visit("admin/import/csv");
             // Attach the classification fixture (has Classification + FamilyRole columns)

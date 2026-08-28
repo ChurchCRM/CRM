@@ -62,6 +62,9 @@ const CSV_CORE_FIELD_LABELS = [
     'Email'          => 'Email',
     'WorkEmail'      => 'Work Email',
     'BirthDate'      => 'Birth Date',
+    'BirthYear'      => 'Birth Year',
+    'BirthMonth'     => 'Birth Month',
+    'BirthDay'       => 'Birth Day',
     'MembershipDate' => 'Membership Date',
     'WeddingDate'    => 'Wedding Date',
     'Classification' => 'Classification',
@@ -89,7 +92,15 @@ const CSV_FIELD_ALIASES = [
     'MobilePhone'    => ['mobilephone', 'mobile_phone', 'mobile phone', 'cellphone', 'cell_phone', 'cell phone', 'mobile', 'cell'],
     'Email'          => ['email', 'e-mail', 'email_address', 'email address'],
     'WorkEmail'      => ['workemail', 'work_email', 'work email', 'business_email', 'business email'],
-    'BirthDate'      => ['birthdate', 'birth_date', 'birth date', 'birthday', 'dob', 'date_of_birth', 'date of birth'],
+    'BirthDate'      => ['birthdate', 'birth_date', 'birth date', 'dob', 'date_of_birth', 'date of birth'],
+    // Note: 'birthday' is intentionally excluded from BirthDate's alias list.
+    // strtolower('BirthDay') == 'birthday', so autoMapHeader()'s Priority-1
+    // canonical-key lookup routes any 'Birthday' header to the BirthDay
+    // (day-of-month) field before the alias search runs. Users whose CSV
+    // uses 'Birthday' for a full birth date should rename the column 'BirthDate'.
+    'BirthYear'      => ['birthyear', 'birth_year', 'birth year', 'yearofbirth', 'year_of_birth', 'year of birth', 'byear'],
+    'BirthMonth'     => ['birthmonth', 'birth_month', 'birth month', 'monthofbirth', 'month_of_birth', 'month of birth', 'bmonth'],
+    'BirthDay'       => ['birthdayofmonth', 'birth_day', 'birth day', 'dayofbirth', 'day_of_birth', 'day of birth', 'bday'],
     'MembershipDate' => ['membershipdate', 'membership_date', 'membership date', 'joined', 'join_date', 'join date'],
     'WeddingDate'    => ['weddingdate', 'wedding_date', 'wedding date', 'anniversary'],
     'Classification' => ['classification', 'class', 'member_type', 'member type', 'membertype', 'membership_type', 'membership type'],
@@ -99,6 +110,15 @@ const CSV_FIELD_ALIASES = [
 function autoMapHeader(string $header, array $extensionFields = []): ?string
 {
     $normalized = strtolower(trim($header));
+    // Priority 1: exact match on the canonical machine key (case-insensitive).
+    // This ensures the template round-trips cleanly — a downloaded "BirthDay"
+    // header maps back to 'BirthDay', not to the 'birthday' alias of 'BirthDate'.
+    foreach (array_keys(CSV_FIELD_ALIASES) as $field) {
+        if (strtolower($field) === $normalized) {
+            return $field;
+        }
+    }
+    // Priority 2: alias lookup for human-readable variants.
     foreach (CSV_FIELD_ALIASES as $field => $aliases) {
         if (in_array($normalized, $aliases, true)) {
             return $field;
@@ -699,8 +719,15 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         if (!empty($data['Email']))    $family->setEmail($data['Email']);
                         if (!empty($data['Envelope'])) $family->setEnvelope((int) $data['Envelope']);
                         if (!empty($data['WeddingDate'])) {
-                            $ts = strtotime($data['WeddingDate']);
-                            if ($ts !== false) $family->setWeddingdate(date('Y-m-d', $ts));
+                            // A bare 4-digit year (e.g. "2020") must not be passed to strtotime()
+                            // because PHP reads it as a time (8:20 PM) and returns today's date.
+                            // WeddingDate is a SQL DATE column — partial dates are not storable.
+                            if (!preg_match('/^\d{4}$/', $data['WeddingDate'])) {
+                                $ts = strtotime($data['WeddingDate']);
+                                if ($ts !== false) {
+                                    $family->setWeddingdate(date('Y-m-d', $ts));
+                                }
+                            }
                         }
                         $family->setDateEntered(date('YmdHis'));
                         $family->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
@@ -762,20 +789,50 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
 
                 // Birth date — see DateTimeUtils::parsePartialDate() for accepted formats.
                 // Year may be null for month-day-only inputs; BirthYear is nullable on Person.
+                // A bare 4-digit year (e.g. "2020") returns month=0/day=0/year=YYYY — we
+                // write BirthYear alone even when month and day are absent.
                 if (!empty($data['BirthDate'])) {
                     $parsed = DateTimeUtils::parsePartialDate((string) $data['BirthDate']);
-                    if ($parsed !== null && $parsed['month'] > 0 && $parsed['day'] > 0) {
-                        $person->setBirthMonth($parsed['month']);
-                        $person->setBirthDay($parsed['day']);
-                        if ($parsed['year'] !== null) {
+                    if ($parsed !== null) {
+                        if ($parsed['month'] > 0 && $parsed['day'] > 0) {
+                            $person->setBirthMonth($parsed['month']);
+                            $person->setBirthDay($parsed['day']);
+                        }
+                        if (isset($parsed['year']) && $parsed['year'] !== null) {
                             $person->setBirthYear($parsed['year']);
                         }
                     }
                 }
+                // Separate BirthYear / BirthMonth / BirthDay columns override the combined
+                // BirthDate when present in the CSV. Each column is individually optional.
+                if (isset($data['BirthYear']) && $data['BirthYear'] !== '') {
+                    if (ctype_digit($data['BirthYear']) && strlen($data['BirthYear']) === 4) {
+                        $person->setBirthYear((int) $data['BirthYear']);
+                    }
+                }
+                if (isset($data['BirthMonth']) && $data['BirthMonth'] !== '') {
+                    $bm = (int) $data['BirthMonth'];
+                    if ($bm >= 1 && $bm <= 12) {
+                        $person->setBirthMonth($bm);
+                    }
+                }
+                if (isset($data['BirthDay']) && $data['BirthDay'] !== '') {
+                    $bd = (int) $data['BirthDay'];
+                    if ($bd >= 1 && $bd <= 31) {
+                        $person->setBirthDay($bd);
+                    }
+                }
 
                 if (!empty($data['MembershipDate'])) {
-                    $ts = strtotime($data['MembershipDate']);
-                    if ($ts !== false) $person->setMembershipDate(date('Y-m-d', $ts));
+                    // A bare 4-digit year (e.g. "2020") must not be passed to strtotime()
+                    // because PHP reads it as a time (8:20 PM) and returns today's date.
+                    // MembershipDate is a SQL DATE column — partial dates are not storable.
+                    if (!preg_match('/^\d{4}$/', $data['MembershipDate'])) {
+                        $ts = strtotime($data['MembershipDate']);
+                        if ($ts !== false) {
+                            $person->setMembershipDate(date('Y-m-d', $ts));
+                        }
+                    }
                 }
 
                 // Classification: resolve name → ID (valid for any person, with or without family)
