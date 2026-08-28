@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
@@ -61,23 +62,43 @@ class PersonService
      */
     public function getPeopleEmailsAndGroups(): array
     {
-        // Get people with emails, eagerly loading group memberships and groups to avoid N+1.
+        // Step 1: Load people with emails and their group memberships.
         // Use LEFT JOIN so that people with an email but no group memberships are NOT silently
-        // excluded (INNER JOIN would drop them, the same way leftJoinWithFamily() is used below).
+        // excluded (an INNER JOIN would drop them).
+        // Group is NOT a direct relation of Person (it goes through Person2group2roleP2g2r),
+        // so it cannot be joined here; groups are batch-loaded separately below.
         $people = PersonQuery::create()
             ->filterByEmail('', Criteria::NOT_EQUAL)
             ->leftJoinWithPerson2group2roleP2g2r()
-            ->leftJoinWithGroup()
             ->orderById()
             ->distinct()
             ->find();
 
-        // Collect all unique (listId, optionId) pairs needed for role names
+        // Step 2: Collect all group IDs referenced by any membership.
+        $allGroupIds = [];
+        foreach ($people as $person) {
+            foreach ($person->getPerson2group2roleP2g2rs() as $membership) {
+                $gid = $membership->getGroupId();
+                if ($gid !== null && $gid > 0) {
+                    $allGroupIds[$gid] = true;
+                }
+            }
+        }
+
+        // Step 3: Batch-load all needed Group rows (single query — avoids N+1 on getGroup() calls).
+        $groupMap = [];
+        if (!empty($allGroupIds)) {
+            $groups = GroupQuery::create()->findPks(array_keys($allGroupIds));
+            foreach ($groups as $g) {
+                $groupMap[$g->getId()] = $g;
+            }
+        }
+
+        // Step 4: Collect all unique (listId, optionId) pairs needed for role names.
         $roleLookupsNeeded = [];
         foreach ($people as $person) {
-            $memberships = $person->getPerson2group2roleP2g2rs();
-            foreach ($memberships as $membership) {
-                $group = $membership->getGroup();
+            foreach ($person->getPerson2group2roleP2g2rs() as $membership) {
+                $group = $groupMap[$membership->getGroupId()] ?? null;
                 if ($group !== null) {
                     $listId = $group->getRoleListId();
                     $optionId = $membership->getRoleId();
@@ -108,12 +129,11 @@ class PersonService
             }
         }
 
-        // Build result using pre-loaded data (no more N+1 queries)
+        // Build result using pre-loaded data (no N+1 queries)
         $result = [];
         $processedPersonIds = [];
         foreach ($people as $person) {
             $personId = $person->getId();
-            // Skip if we've already processed this person (due to distinct() on join)
             if (isset($processedPersonIds[$personId])) {
                 continue;
             }
@@ -126,10 +146,8 @@ class PersonService
                 'lastName' => $person->getLastName(),
             ];
 
-            // Use pre-loaded data from eager-loaded relationships
-            $memberships = $person->getPerson2group2roleP2g2rs();
-            foreach ($memberships as $membership) {
-                $group = $membership->getGroup();
+            foreach ($person->getPerson2group2roleP2g2rs() as $membership) {
+                $group = $groupMap[$membership->getGroupId()] ?? null;
                 if ($group !== null) {
                     $listId = $group->getRoleListId();
                     $optionId = $membership->getRoleId();
