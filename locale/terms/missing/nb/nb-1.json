@@ -1,32 +1,30 @@
 {
-  "Data": "Data",
-  "Auto": "Auto",
-  "CSV": "CSV",
+  "Data": "",
+  "Auto": "",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-post sendt til %d familie.",
-    "other": "E-post sendt til %d familier."
+    "one": "E-post sendt til %d familie.|E-post sendt til %d familier.",
+    "other": ""
   },
-  "N/A": "Ikke tilgjengelig",
-  "OFX": "OFX",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF ble sendt på e-post til %d familie.",
-    "other": "PDF ble sendt på e-post til %d familier."
+    "one": "PDF ble sendt på e-post til %d familie.|PDF ble sendt på e-post til %d familier.",
+    "other": ""
   },
-  "Failed to get deposit count": "Kunne ikke hente antall innskudd",
   "Copied {{count}} members": {
-    "one": "{{count}} medlem kopiert",
-    "other": "{{count}} medlemmer kopiert"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Denne listen har {{count}} mottaker — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet.",
-    "other": "Denne listen har {{count}} mottakere — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "For mange mottakere for e-postklienten ({{count}} > {{max}}). Bruk Kopier adresser i stedet.",
-    "other": "For mange mottakere for e-postklienten ({{count}} > {{max}}). Bruk Kopier adresser i stedet."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min igjen",
-    "other": "{{count}} min igjen"
+    "one": "",
+    "other": ""
   }
 }

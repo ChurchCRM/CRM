@@ -4216,6 +4216,7 @@
   "Generating...": "Olusturuluyor...",
   "Geocoding request failed. Please try again.": "Cografi kodlama istegi basarisiz oldu. Lutfen tekrar deneyin.",
   "Manage Events": "Etkinlikleri Yonet",
+  "N/A": "Uygulanamaz",
   "New Deposit": "Yeni Depozito",
   "No contributors found for this fund in the selected fiscal year": "Secilen mali yilda bu fon icin bagisci bulunamadi",
   "No families with an email address were found. Nothing was sent.": "E-posta adresi olan aile bulunamadi. Hicbir sey gonderilmedi.",
@@ -4286,5 +4287,6 @@
   "Invalid payment data": "Geçersiz ödeme verisi",
   "No release notes available.": "Mevcut sürüm notu yok.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Uyarı: {{chosen}} sürümünde {{latest}} sürümüne dahil olan güvenlik düzeltmeleri eksik. Yalnızca belirli bir nedeniniz varsa devam edin.",
-  "What you'll gain": "Ne kazanacaksınız"
+  "What you'll gain": "Ne kazanacaksınız",
+  "Failed to get deposit count": "Depozito sayısı alınamadı"
 }

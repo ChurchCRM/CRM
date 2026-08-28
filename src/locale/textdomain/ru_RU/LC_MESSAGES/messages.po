@@ -17886,3 +17886,7 @@ msgstr "Внимание: в версии {{chosen}} отсутствуют ис
 msgid "What you'll gain"
 msgstr "Что вы получите"
 
+#: 
+msgid "Failed to get deposit count"
+msgstr "Не удалось получить количество депозитов"
+

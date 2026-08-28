@@ -4206,6 +4206,7 @@
   "Generating...": "Đang tạo...",
   "Geocoding request failed. Please try again.": "Yêu cầu định vị địa lý thất bại. Vui lòng thử lại.",
   "Manage Events": "Quản lý sự kiện",
+  "N/A": "Không áp dụng",
   "New Deposit": "Khoản nộp mới",
   "No contributors found for this fund in the selected fiscal year": "Không tìm thấy người dâng hiến nào cho quỹ này trong năm tài chính đã chọn",
   "No families with an email address were found. Nothing was sent.": "Không tìm thấy gia đình nào có địa chỉ email. Không có gì được gửi đi.",
@@ -4279,5 +4280,6 @@
   "Invalid payment data": "Dữ liệu thanh toán không hợp lệ",
   "No release notes available.": "Không có ghi chú phát hành nào.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Cảnh báo: {{chosen}} thiếu các bản vá bảo mật có trong {{latest}}. Chỉ tiếp tục nếu bạn có lý do cụ thể.",
-  "What you'll gain": "Những gì bạn sẽ nhận được"
+  "What you'll gain": "Những gì bạn sẽ nhận được",
+  "Failed to get deposit count": "Không thể lấy số lượng tiền gửi"
 }

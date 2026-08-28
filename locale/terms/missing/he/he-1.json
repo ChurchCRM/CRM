@@ -1,22 +1,20 @@
 {
-  "CSV": "CSV",
-  "N/A": "לא רלוונטי",
-  "OFX": "OFX",
-  "Failed to get deposit count": "כשל בקבלת ספירת הפיקדונות",
+  "CSV": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "חבר {{count}} הועתק",
-    "other": "{{count}} חברים הועתקו"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "לרשימה זו יש {{count}} נמען — יותר מדי עבור קישור mailto:. השתמש ב'העתק כתובות' במקום.",
-    "other": "לרשימה זו יש {{count}} נמענים — יותר מדי עבור קישור mailto:. השתמש ב'העתק כתובות' במקום."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "יותר מדי נמענים לקליינט הדוא\"ל ({{count}} > {{max}}). השתמש ב'העתק כתובות' במקום.",
-    "other": "יותר מדי נמענים לקליינט הדוא\"ל ({{count}} > {{max}}). השתמש ב'העתק כתובות' במקום."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "נותרה {{count}} דקה",
-    "other": "נותרו {{count}} דקות"
+    "one": "",
+    "other": ""
   }
 }

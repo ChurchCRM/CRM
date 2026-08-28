@@ -1,23 +1,21 @@
 {
-  "Data": "Data",
-  "CSV": "CSV",
-  "N/A": "T/A",
-  "OFX": "OFX",
-  "Failed to get deposit count": "Gagal mendapatkan jumlah setoran",
+  "Data": "",
+  "CSV": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "{{count}} anggota disalin",
-    "other": "{{count}} anggota disalin"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat sebagai gantinya.",
-    "other": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat sebagai gantinya."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat sebagai gantinya.",
-    "other": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat sebagai gantinya."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} menit tersisa",
-    "other": "{{count}} menit tersisa"
+    "one": "",
+    "other": ""
   }
 }

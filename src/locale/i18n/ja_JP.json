@@ -4206,6 +4206,7 @@
   "Generating...": "生成中...",
   "Geocoding request failed. Please try again.": "ジオコーディングのリクエストが失敗しました。もう一度お試しください。",
   "Manage Events": "イベントを管理",
+  "N/A": "該当なし",
   "New Deposit": "新規入金",
   "No contributors found for this fund in the selected fiscal year": "選択した会計年度にこの基金の献金者が見つかりませんでした",
   "No families with an email address were found. Nothing was sent.": "メールアドレスを持つ家族が見つかりませんでした。何も送信されませんでした。",
@@ -4279,5 +4280,6 @@
   "Invalid payment data": "無効な支払いデータ",
   "No release notes available.": "利用可能なリリースノートはありません。",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "警告：{{chosen}}には{{latest}}に含まれるセキュリティ修正が含まれていません。特別な理由がある場合にのみ続行してください。",
-  "What you'll gain": "追加される機能"
+  "What you'll gain": "追加される機能",
+  "Failed to get deposit count": "入金数の取得に失敗しました"
 }

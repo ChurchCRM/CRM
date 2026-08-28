@@ -17597,6 +17597,10 @@ msgid "Manage Events"
 msgstr "Hantera evenemang"
 
 #: 
+msgid "N/A"
+msgstr "Ej tillgänglig"
+
+#: 
 msgid "New Deposit"
 msgstr "Ny insattning"
 
@@ -17885,4 +17889,8 @@ msgstr "Varning: {{chosen}} saknar säkerhetskorrigeringar som ingår i {{latest
 #: 
 msgid "What you'll gain"
 msgstr "Vad du kommer att vinna"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Misslyckades med att hämta insättningsantal"
 
