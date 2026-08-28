@@ -17520,6 +17520,10 @@ msgid "Manage Events"
 msgstr "Διαχείριση Εκδηλώσεων"
 
 #: 
+msgid "N/A"
+msgstr "Δ/Α"
+
+#: 
 msgid "New Deposit"
 msgstr "Νέα Κατάθεση"
 
@@ -17814,4 +17818,8 @@ msgstr "Προειδοποίηση: Η έκδοση {{chosen}} δεν περιλ
 #: 
 msgid "What you'll gain"
 msgstr "Τι θα κερδίσετε"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Αποτυχία ανάκτησης αριθμού καταθέσεων"
 

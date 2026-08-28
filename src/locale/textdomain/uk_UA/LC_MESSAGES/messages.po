@@ -17833,3 +17833,7 @@ msgstr "Увага: у {{chosen}} відсутні виправлення без
 msgid "What you'll gain"
 msgstr "Що ви отримаєте"
 
+#: 
+msgid "Failed to get deposit count"
+msgstr "Не вдалося отримати кількість депозитів"
+

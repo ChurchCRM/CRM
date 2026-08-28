@@ -4216,6 +4216,7 @@
   "Generating...": "రూపొందిస్తోంది...",
   "Geocoding request failed. Please try again.": "జియోకోడింగ్ అభ్యర్థన విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి.",
   "Manage Events": "కార్యక్రమాలను నిర్వహించు",
+  "N/A": "వర్తించదు",
   "New Deposit": "కొత్త డిపాజిట్",
   "No contributors found for this fund in the selected fiscal year": "ఎంచుకున్న ఆర్థిక సంవత్సరంలో ఈ నిధికి విరాళదారులు ఎవరూ కనుగొనబడలేదు",
   "No families with an email address were found. Nothing was sent.": "ఇమెయిల్ చిరునామాతో ఏ కుటుంబాలు కనుగొనబడలేదు. ఏమీ పంపబడలేదు.",
@@ -4286,5 +4287,6 @@
   "Invalid payment data": "చెల్లని చెల్లింపు డేటా",
   "No release notes available.": "విడుదల గమనికలు అందుబాటులో లేవు.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "హెచ్చరిక: {{chosen}}లో {{latest}}లో చేర్చిన భద్రతా సవరణలు లేవు. మీకు నిర్దిష్ట కారణం ఉంటేనే కొనసాగండి.",
-  "What you'll gain": "మీరు పొందేది"
+  "What you'll gain": "మీరు పొందేది",
+  "Failed to get deposit count": "డిపాజిట్ సంఖ్యను పొందడంలో విఫలమైంది"
 }

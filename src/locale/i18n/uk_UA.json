@@ -4313,5 +4313,6 @@
   "Invalid payment data": "Недійсні дані платежу",
   "No release notes available.": "Примітки до випуску відсутні.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Увага: у {{chosen}} відсутні виправлення безпеки, включені до {{latest}}. Продовжуйте лише за наявності конкретної причини.",
-  "What you'll gain": "Що ви отримаєте"
+  "What you'll gain": "Що ви отримаєте",
+  "Failed to get deposit count": "Не вдалося отримати кількість депозитів"
 }

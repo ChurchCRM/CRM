@@ -17482,6 +17482,10 @@ msgid "Manage Events"
 msgstr "Hallinnoi tapahtumia"
 
 #: 
+msgid "N/A"
+msgstr "Ei saatavilla"
+
+#: 
 msgid "New Deposit"
 msgstr "Uusi talletus"
 
@@ -17776,4 +17780,8 @@ msgstr "Varoitus: {{chosen}} puuttuvat tietoturvakorjaukset, jotka sisältyvät 
 #: 
 msgid "What you'll gain"
 msgstr "Mitä saat"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Talletusten määrän hakeminen epäonnistui"
 

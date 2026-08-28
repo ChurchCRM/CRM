@@ -1,24 +1,23 @@
 {
-  "Fundraising": "Fundraising",
-  "Data": "Data",
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
-  "Failed to get deposit count": "Nepodařilo se získat počet vkladů",
+  "Fundraising": "",
+  "Data": "",
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "Zkopírován {{count}} člen",
-    "other": "Zkopírováno {{count}} členů"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Tento seznam má {{count}} příjemce — příliš mnoho pro odkaz mailto:. Použijte Kopírovat adresy.",
-    "other": "Tento seznam má {{count}} příjemců — příliš mnoho pro odkaz mailto:. Použijte Kopírovat adresy."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Příliš mnoho příjemců pro poštovního klienta ({{count}} > {{max}}). Použijte Kopírovat adresy.",
-    "other": "Příliš mnoho příjemců pro poštovního klienta ({{count}} > {{max}}). Použijte Kopírovat adresy."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Zbývá {{count}} min",
-    "other": "Zbývá {{count}} min"
+    "one": "",
+    "other": ""
   }
 }

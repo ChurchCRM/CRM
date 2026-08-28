@@ -4220,6 +4220,7 @@
   "Generating...": "Luodaan...",
   "Geocoding request failed. Please try again.": "Geokoodauspyynto epaonnistui. Yrita uudelleen.",
   "Manage Events": "Hallinnoi tapahtumia",
+  "N/A": "Ei saatavilla",
   "New Deposit": "Uusi talletus",
   "No contributors found for this fund in the selected fiscal year": "Talle rahastolle ei loytynyт lahjoittajia valitulla tilikaudella",
   "No families with an email address were found. Nothing was sent.": "Yhtaan perhetta sahkopostiosoitteella ei loytynyт. Mitaan ei lahetetty.",
@@ -4294,5 +4295,6 @@
   "Invalid payment data": "Virheelliset maksutiedot",
   "No release notes available.": "Julkistamismuistiinpanoja ei ole saatavilla.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Varoitus: {{chosen}} puuttuvat tietoturvakorjaukset, jotka sisältyvät versioon {{latest}}. Jatka vain, jos sinulla on erityinen syy.",
-  "What you'll gain": "Mitä saat"
+  "What you'll gain": "Mitä saat",
+  "Failed to get deposit count": "Talletusten määrän hakeminen epäonnistui"
 }

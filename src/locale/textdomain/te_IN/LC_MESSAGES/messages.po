@@ -17486,6 +17486,10 @@ msgid "Manage Events"
 msgstr "కార్యక్రమాలను నిర్వహించు"
 
 #: 
+msgid "N/A"
+msgstr "వర్తించదు"
+
+#: 
 msgid "New Deposit"
 msgstr "కొత్త డిపాజిట్"
 
@@ -17774,4 +17778,8 @@ msgstr "హెచ్చరిక: {{chosen}}లో {{latest}}లో చేర్
 #: 
 msgid "What you'll gain"
 msgstr "మీరు పొందేది"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "డిపాజిట్ సంఖ్యను పొందడంలో విఫలమైంది"
 

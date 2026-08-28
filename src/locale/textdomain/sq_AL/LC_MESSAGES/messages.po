@@ -17791,3 +17791,7 @@ msgstr "Paralajmërim: {{chosen}} i mungojnë rregullimet e sigurisë të përfs
 msgid "What you'll gain"
 msgstr "Çfarë do të fitoni"
 
+#: 
+msgid "Failed to get deposit count"
+msgstr "Dështoi marrja e numrit të depozitave"
+

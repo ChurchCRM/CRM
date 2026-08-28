@@ -17594,6 +17594,10 @@ msgid "Manage Events"
 msgstr "Veranstaltungen verwalten"
 
 #: 
+msgid "N/A"
+msgstr "k.A."
+
+#: 
 msgid "New Deposit"
 msgstr "Neue Einzahlung"
 
@@ -17888,4 +17892,8 @@ msgstr "Warnung: {{chosen}} enthält nicht die in {{latest}} enthaltenen Sicherh
 #: 
 msgid "What you'll gain"
 msgstr "Was Sie gewinnen werden"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Anzahl der Einzahlungen konnte nicht abgerufen werden"
 
