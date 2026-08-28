@@ -393,7 +393,10 @@ class DateTimeUtils
             // a time (8:20 PM) and returns today's date — a silent corruption that
             // this branch prevents. Month and day are left 0 so callers that need a
             // full DATE can reject the record cleanly.
-            return ['month' => 0, 'day' => 0, 'year' => (int) $raw];
+            // Year 0000 is treated as "no year" (null), consistent with the YYYY-MM-DD
+            // branch which returns year=null for a zero year.
+            $y = (int) $raw;
+            return ['month' => 0, 'day' => 0, 'year' => $y > 0 ? $y : null];
         }
         // Last-resort fallback for month-name / ISO datetime / etc. The
         // structural patterns above cover the formats most CSV exporters

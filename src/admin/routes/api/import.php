@@ -92,12 +92,7 @@ const CSV_FIELD_ALIASES = [
     'MobilePhone'    => ['mobilephone', 'mobile_phone', 'mobile phone', 'cellphone', 'cell_phone', 'cell phone', 'mobile', 'cell'],
     'Email'          => ['email', 'e-mail', 'email_address', 'email address'],
     'WorkEmail'      => ['workemail', 'work_email', 'work email', 'business_email', 'business email'],
-    'BirthDate'      => ['birthdate', 'birth_date', 'birth date', 'dob', 'date_of_birth', 'date of birth'],
-    // Note: 'birthday' is intentionally excluded from BirthDate's alias list.
-    // strtolower('BirthDay') == 'birthday', so autoMapHeader()'s Priority-1
-    // canonical-key lookup routes any 'Birthday' header to the BirthDay
-    // (day-of-month) field before the alias search runs. Users whose CSV
-    // uses 'Birthday' for a full birth date should rename the column 'BirthDate'.
+    'BirthDate'      => ['birthdate', 'birth_date', 'birth date', 'birthday', 'dob', 'date_of_birth', 'date of birth'],
     'BirthYear'      => ['birthyear', 'birth_year', 'birth year', 'yearofbirth', 'year_of_birth', 'year of birth', 'byear'],
     'BirthMonth'     => ['birthmonth', 'birth_month', 'birth month', 'monthofbirth', 'month_of_birth', 'month of birth', 'bmonth'],
     'BirthDay'       => ['birthdayofmonth', 'birth_day', 'birth day', 'dayofbirth', 'day_of_birth', 'day of birth', 'bday'],
@@ -109,12 +104,16 @@ const CSV_FIELD_ALIASES = [
 
 function autoMapHeader(string $header, array $extensionFields = []): ?string
 {
-    $normalized = strtolower(trim($header));
-    // Priority 1: exact match on the canonical machine key (case-insensitive).
-    // This ensures the template round-trips cleanly — a downloaded "BirthDay"
+    $trimmed    = trim($header);
+    $normalized = strtolower($trimmed);
+    // Priority 1: exact case-sensitive match on the canonical machine key.
+    // This ensures the template round-trips cleanly: a downloaded "BirthDay"
     // header maps back to 'BirthDay', not to the 'birthday' alias of 'BirthDate'.
+    // Case-sensitivity is intentional — a mixed-case header like "Birthday" does
+    // NOT match "BirthDay" here and falls through to the alias lookup, where the
+    // 'birthday' entry in BirthDate's alias list correctly routes it to BirthDate.
     foreach (array_keys(CSV_FIELD_ALIASES) as $field) {
-        if (strtolower($field) === $normalized) {
+        if ($field === $trimmed) {
             return $field;
         }
     }
@@ -819,7 +818,15 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 if (isset($data['BirthDay']) && $data['BirthDay'] !== '') {
                     $bd = (int) $data['BirthDay'];
                     if ($bd >= 1 && $bd <= 31) {
-                        $person->setBirthDay($bd);
+                        // Cross-validate against the effective BirthMonth (set from
+                        // the combined BirthDate or the standalone BirthMonth column
+                        // above) when both are known. This matches checkdate() validation
+                        // in the BirthDate path and prevents impossible dates like
+                        // BirthMonth=2 / BirthDay=30 slipping through.
+                        $effectiveBirthMonth = $person->getBirthMonth() ?? 0;
+                        if ($effectiveBirthMonth <= 0 || checkdate($effectiveBirthMonth, $bd, 2000)) {
+                            $person->setBirthDay($bd);
+                        }
                     }
                 }
 
