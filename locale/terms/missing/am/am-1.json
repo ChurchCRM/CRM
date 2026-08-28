@@ -1,22 +1,22 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
-  "Failed to get deposit count": "",
+  "CSV": "CSV",
+  "N/A": "የሚተገበር አይደለም",
+  "OFX": "OFX",
+  "Failed to get deposit count": "የተቀማጭ ቁጥርን ማግኘት አልተቻለም",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} አባል ተቀድቷል",
+    "other": "{{count}} አባላት ተቀድተዋል"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ይህ ዝርዝር {{count}} ተቀባይ አለው — ለ mailto: አገናኝ በጣም ብዙ ነው። ይልቁንስ አድራሻዎችን ቅዳ ይጠቀሙ።",
+    "other": "ይህ ዝርዝር {{count}} ተቀባዮች አሉት — ለ mailto: አገናኝ በጣም ብዙ ናቸው። ይልቁንስ አድራሻዎችን ቅዳ ይጠቀሙ።"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ለኢሜይል ደንበኛ ተቀባዮቹ ብዙ ናቸው ({{count}} > {{max}})። ይልቁንስ አድራሻዎችን ቅዳ ይጠቀሙ።",
+    "other": "ለኢሜይል ደንበኛ ተቀባዮቹ ብዙ ናቸው ({{count}} > {{max}})። ይልቁንስ አድራሻዎችን ቅዳ ይጠቀሙ።"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ደቂቃ ቀርቷል",
+    "other": "{{count}} ደቂቃዎች ቀርተዋል"
   }
 }
