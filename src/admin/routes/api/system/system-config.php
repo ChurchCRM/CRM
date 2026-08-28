@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -47,6 +48,16 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
         return SlimUtils::renderJSON($response, ['value' => '']);
     }
 
+    // Defense-in-depth: sanitize free-text config values before storage.
+    // Check ConfigItem type: only 'text' fields accept free-text (json/boolean/
+    // choice/ajax/number are structured or non-injectable). Within 'text' we scope
+    // to sChurchName specifically — other 'text' configs (sConfirm, sTaxReport,
+    // sDirectoryDisclaimer…) may legitimately contain '<'/'>' for report/PDF use
+    // and stripping them would destroy valid admin content. Those configs are
+    // protected by output escaping (the authoritative XSS control) instead.
+    if ($configItem->getType() === 'text' && $configName === 'sChurchName') {
+        $value = InputUtils::sanitizeText($value);
+    }
     SystemConfig::setValue($configName, $value);
 
     // Never return the saved value for password types
