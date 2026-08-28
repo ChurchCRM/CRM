@@ -29,8 +29,15 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
     // timezone: no timezone offset. This is exactly the format that the
     // ?? → ?: fix enables — if the fix regresses the /fullcalendar endpoint
     // will return 400 and the test will fail.
-    const viewStart = `${dateStr.slice(0, 7)}-01T00:00:00`; // first of the month
-    const viewEnd   = `${dateStr.slice(0, 7)}-31T00:00:00`; // past month end (safe)
+    //
+    // viewEnd is the 1st of the NEXT UTC month so it always lies after the
+    // event regardless of which day of the month the event falls on.
+    // Using a hardcoded "-31" would fail when today+3 is the 31st (the
+    // filter is event.Start < viewEnd, so "2026-08-31T14:00 < 2026-08-31T00:00"
+    // evaluates false and the event is excluded).
+    const viewStart = `${dateStr.slice(0, 7)}-01T00:00:00`; // first of the event's month
+    const viewEndUTC = new Date(Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 1));
+    const viewEnd = viewEndUTC.toISOString().slice(0, 10) + "T00:00:00"; // first of next month
 
     let calendarId;
     let accessToken;
