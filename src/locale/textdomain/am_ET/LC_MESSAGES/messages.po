@@ -17528,6 +17528,10 @@ msgid "Manage Events"
 msgstr "ዝግጅቶችን አስተዳድር"
 
 #: 
+msgid "N/A"
+msgstr "አይፈጸምም"
+
+#: 
 msgid "New Deposit"
 msgstr "አዲስ ተቀማጭ"
 
@@ -17822,4 +17826,8 @@ msgstr "ማስጠንቀቂያ፡ {{chosen}} በ{{latest}} ውስጥ የተካተ
 #: 
 msgid "What you'll gain"
 msgstr "የሚያገኙት"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "የተቀማጭ ቁጥር ማግኘት አልተሳካም"
 

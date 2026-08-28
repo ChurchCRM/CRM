@@ -17859,3 +17859,7 @@ msgstr "Avertisment: {{chosen}} nu include corecțiile de securitate din {{lates
 msgid "What you'll gain"
 msgstr "Ce veți câștiga"
 
+#: 
+msgid "Failed to get deposit count"
+msgstr "Eroare la obținerea numărului de depozite"
+

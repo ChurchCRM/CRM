@@ -4220,6 +4220,7 @@
   "Generating...": "Δημιουργία...",
   "Geocoding request failed. Please try again.": "Η αίτηση γεωκωδικοποίησης απέτυχε. Παρακαλούμε δοκιμάστε ξανά.",
   "Manage Events": "Διαχείριση Εκδηλώσεων",
+  "N/A": "Δ/Α",
   "New Deposit": "Νέα Κατάθεση",
   "No contributors found for this fund in the selected fiscal year": "Δεν βρέθηκαν συνεισφέροντες για αυτό το ταμείο στο επιλεγμένο οικονομικό έτος",
   "No families with an email address were found. Nothing was sent.": "Δεν βρέθηκαν οικογένειες με διεύθυνση email. Δεν εστάλη τίποτα.",
@@ -4294,5 +4295,6 @@
   "Invalid payment data": "Μη έγκυρα δεδομένα πληρωμής",
   "No release notes available.": "Δεν υπάρχουν διαθέσιμες σημειώσεις έκδοσης.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Προειδοποίηση: Η έκδοση {{chosen}} δεν περιλαμβάνει διορθώσεις ασφαλείας που περιέχονται στην {{latest}}. Συνεχίστε μόνο εάν έχετε συγκεκριμένο λόγο.",
-  "What you'll gain": "Τι θα κερδίσετε"
+  "What you'll gain": "Τι θα κερδίσετε",
+  "Failed to get deposit count": "Αποτυχία ανάκτησης αριθμού καταθέσεων"
 }

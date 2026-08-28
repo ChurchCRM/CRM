@@ -4205,6 +4205,7 @@
   "Generating...": "Menghasilkan...",
   "Geocoding request failed. Please try again.": "Permintaan geocoding gagal. Silakan coba lagi.",
   "Manage Events": "Kelola Acara",
+  "N/A": "T/A",
   "New Deposit": "Setoran Baru",
   "No contributors found for this fund in the selected fiscal year": "Tidak ditemukan penyumbang untuk dana ini pada tahun fiskal yang dipilih",
   "No families with an email address were found. Nothing was sent.": "Tidak ditemukan keluarga dengan alamat email. Tidak ada yang dikirim.",
@@ -4278,5 +4279,6 @@
   "Invalid payment data": "Data pembayaran tidak valid",
   "No release notes available.": "Tidak ada catatan rilis yang tersedia.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Peringatan: {{chosen}} tidak memiliki perbaikan keamanan yang terdapat di {{latest}}. Lanjutkan hanya jika Anda memiliki alasan tertentu.",
-  "What you'll gain": "Apa yang akan Anda dapatkan"
+  "What you'll gain": "Apa yang akan Anda dapatkan",
+  "Failed to get deposit count": "Gagal mendapatkan jumlah setoran"
 }

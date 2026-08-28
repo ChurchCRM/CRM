@@ -4213,6 +4213,7 @@
   "Generating...": "Genereren...",
   "Geocoding request failed. Please try again.": "Geolocatieverzoek mislukt. Probeer het opnieuw.",
   "Manage Events": "Evenementen beheren",
+  "N/A": "N.v.t.",
   "New Deposit": "Nieuwe storting",
   "No contributors found for this fund in the selected fiscal year": "Geen bijdragers gevonden voor dit fonds in het geselecteerde boekjaar",
   "No families with an email address were found. Nothing was sent.": "Er zijn geen gezinnen met een e-mailadres gevonden. Er is niets verzonden.",
@@ -4283,5 +4284,6 @@
   "Invalid payment data": "Ongeldige betalingsgegevens",
   "No release notes available.": "Geen releasenotities beschikbaar.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Waarschuwing: {{chosen}} mist beveiligingsfixes die zijn opgenomen in {{latest}}. Ga alleen door als u een specifieke reden heeft.",
-  "What you'll gain": "Wat u wint"
+  "What you'll gain": "Wat u wint",
+  "Failed to get deposit count": "Kan het aantal stortingen niet ophalen"
 }

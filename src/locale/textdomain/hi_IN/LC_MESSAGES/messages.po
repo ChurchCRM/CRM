@@ -17479,6 +17479,10 @@ msgid "Manage Events"
 msgstr "आयोजन प्रबंधित करें"
 
 #: 
+msgid "N/A"
+msgstr "लागू नहीं"
+
+#: 
 msgid "New Deposit"
 msgstr "नई जमा"
 
@@ -17773,4 +17777,8 @@ msgstr "चेतावनी: {{chosen}} में {{latest}} में शा�
 #: 
 msgid "What you'll gain"
 msgstr "आपको क्या मिलेगा"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "जमा राशि की गणना प्राप्त करने में विफल"
 

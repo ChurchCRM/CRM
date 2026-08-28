@@ -4242,6 +4242,7 @@
   "Generating...": "Generovanie...",
   "Geocoding request failed. Please try again.": "Poziadavka na geokodovanie zlyhala. Skuste to znova.",
   "Manage Events": "Spravovat udalosti",
+  "N/A": "Neuplatňuje sa",
   "New Deposit": "Novy vklad",
   "No contributors found for this fund in the selected fiscal year": "Pre tento fond v zvolenom fiskalnom roku neboli najdeni zinadni prispievatelia",
   "No families with an email address were found. Nothing was sent.": "Neboli najdene ziadne rodiny s e-mailovou adresou. Nic nebolo odoslane.",
@@ -4312,5 +4313,6 @@
   "Invalid payment data": "Neplatné platobné údaje",
   "No release notes available.": "Nie sú dostupné žiadne poznámky k vydaniu.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Upozornenie: {{chosen}} neobsahuje bezpečnostné opravy zahrnuté vo verzii {{latest}}. Pokračujte iba v prípade, že máte konkrétny dôvod.",
-  "What you'll gain": "Čo získate"
+  "What you'll gain": "Čo získate",
+  "Failed to get deposit count": "Nepodarilo sa získať počet vkladov"
 }

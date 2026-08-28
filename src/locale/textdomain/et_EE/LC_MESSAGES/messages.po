@@ -17519,6 +17519,10 @@ msgid "Manage Events"
 msgstr "Halda uritusi"
 
 #: 
+msgid "N/A"
+msgstr "Pole saadaval"
+
+#: 
 msgid "New Deposit"
 msgstr "Uus deposiit"
 
@@ -17813,4 +17817,8 @@ msgstr "Hoiatus: versioonis {{chosen}} puuduvad turvaparandused, mis sisalduvad 
 #: 
 msgid "What you'll gain"
 msgstr "Mida te saate"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Sissemaksete arvu hankimine ebaõnnestus"
 

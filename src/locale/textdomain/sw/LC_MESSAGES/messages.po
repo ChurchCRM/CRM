@@ -17506,6 +17506,10 @@ msgid "Manage Events"
 msgstr "Simamia Matukio"
 
 #: 
+msgid "N/A"
+msgstr "Haijulikani"
+
+#: 
 msgid "New Deposit"
 msgstr "Amana Mpya"
 
@@ -17794,4 +17798,8 @@ msgstr "Onyo: {{chosen}} inakosa marekebisho ya usalama yaliyojumuishwa katika {
 #: 
 msgid "What you'll gain"
 msgstr "Utachopata"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Imeshindwa kupata idadi ya amana"
 
