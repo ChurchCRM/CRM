@@ -1,33 +1,32 @@
 {
-  "Access": "Access",
-  "Self-service": "Self-service",
-  "Feature": "Feature",
-  "Check-out": "Check-out",
-  "Code": "Code",
-  "Live Preview": "Live Preview",
-  "Sell-through": "Sell-through",
-  "BCC Mode": "BCC Mode",
-  "Data": "Data",
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
-  "Preview": "Preview",
-  "Teller": "Teller",
-  "Failed to get deposit count": "Nabigo sa pagkuha ng bilang ng deposito",
+  "Access": "",
+  "Self-service": "",
+  "Feature": "",
+  "Check-out": "",
+  "Code": "",
+  "Live Preview": "",
+  "Sell-through": "",
+  "BCC Mode": "",
+  "Data": "",
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
+  "Preview": "",
+  "Teller": "",
   "Copied {{count}} members": {
-    "one": "{{count}} miyembro ang nakopya",
-    "other": "{{count}} miyembro ang nakopya"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Ang listahang ito ay may {{count}} tatanggap — masyadong marami para sa isang mailto: link. Gamitin ang Kopyahin ang Mga Address sa halip.",
-    "other": "Ang listahang ito ay may {{count}} tatanggap — masyadong marami para sa isang mailto: link. Gamitin ang Kopyahin ang Mga Address sa halip."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang Mga Address sa halip.",
-    "other": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin ang Kopyahin ang Mga Address sa halip."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min na natitira",
-    "other": "{{count}} min na natitira"
+    "one": "",
+    "other": ""
   }
 }

@@ -17731,3 +17731,7 @@ msgstr "Babala: Ang {{chosen}} ay kulang sa mga pag-aayos sa seguridad na kasama
 msgid "What you'll gain"
 msgstr "Ano ang iyong makukuha"
 
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nabigo sa pagkuha ng bilang ng deposito"
+

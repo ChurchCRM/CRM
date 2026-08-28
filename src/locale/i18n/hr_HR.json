@@ -4234,6 +4234,7 @@
   "Generating...": "Generiranje...",
   "Geocoding request failed. Please try again.": "Zahtjev za geokodiranje nije uspio. Molimo pokusajte ponovo.",
   "Manage Events": "Upravljanje dogadajima",
+  "N/A": "Nije primjenjivo",
   "New Deposit": "Novi depozit",
   "No contributors found for this fund in the selected fiscal year": "Nisu pronadeni priloznici za ovaj fond u odabranoj fiskalnoj godini",
   "No families with an email address were found. Nothing was sent.": "Nisu pronadene obitelji s adresom e-poste. Nista nije poslano.",
@@ -4309,5 +4310,6 @@
   "Invalid payment data": "Nevažeći podaci o uplati",
   "No release notes available.": "Nema dostupnih napomena o izdanju.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Upozorenje: {{chosen}} nema sigurnosnih ispravaka uključenih u {{latest}}. Nastavite samo ako imate poseban razlog.",
-  "What you'll gain": "Što ćete dobiti"
+  "What you'll gain": "Što ćete dobiti",
+  "Failed to get deposit count": "Neuspješno dohvaćanje broja depozita"
 }

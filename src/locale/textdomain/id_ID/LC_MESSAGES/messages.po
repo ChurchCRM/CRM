@@ -17496,6 +17496,10 @@ msgid "Manage Events"
 msgstr "Kelola Acara"
 
 #: 
+msgid "N/A"
+msgstr "T/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Setoran Baru"
 
@@ -17789,4 +17793,8 @@ msgstr "Peringatan: {{chosen}} tidak memiliki perbaikan keamanan yang terdapat d
 #: 
 msgid "What you'll gain"
 msgstr "Apa yang akan Anda dapatkan"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Gagal mendapatkan jumlah setoran"
 

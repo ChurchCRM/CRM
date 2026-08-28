@@ -17579,6 +17579,10 @@ msgid "Manage Events"
 msgstr "நிகழ்வுகளை நிர்வகி"
 
 #: 
+msgid "N/A"
+msgstr "பொருந்தாது"
+
+#: 
 msgid "New Deposit"
 msgstr "புதிய வைப்புத்தொகை"
 
@@ -17873,4 +17877,8 @@ msgstr "எச்சரிக்கை: {{chosen}} இல் {{latest}} இல�
 #: 
 msgid "What you'll gain"
 msgstr "நீங்கள் பெறுவது"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "வைப்பு எண்ணிக்கையைப் பெறுவதில் தோல்வி"
 

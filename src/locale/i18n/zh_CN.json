@@ -4206,6 +4206,7 @@
   "Generating...": "生成中……",
   "Geocoding request failed. Please try again.": "地理编码请求失败。请重试。",
   "Manage Events": "管理活动",
+  "N/A": "不适用",
   "New Deposit": "新建收款记录",
   "No contributors found for this fund in the selected fiscal year": "在所选财年内，未找到此基金的奉献者",
   "No families with an email address were found. Nothing was sent.": "未找到有邮件地址的家庭。未发送任何邮件。",
@@ -4279,5 +4280,6 @@
   "Invalid payment data": "无效的付款数据",
   "No release notes available.": "暂无发行说明。",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "警告：{{chosen}} 缺少 {{latest}} 中包含的安全修复。仅在有特定原因时才继续操作。",
-  "What you'll gain": "您将获得的改进"
+  "What you'll gain": "您将获得的改进",
+  "Failed to get deposit count": "获取存款数量失败"
 }

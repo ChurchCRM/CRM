@@ -4216,6 +4216,7 @@
   "Generating...": "A gerar...",
   "Geocoding request failed. Please try again.": "O pedido de geolocalização falhou. Por favor, tente novamente.",
   "Manage Events": "Gerir Eventos",
+  "N/A": "N/D",
   "New Deposit": "Novo Depósito",
   "No contributors found for this fund in the selected fiscal year": "Nenhum contribuinte encontrado para este fundo no ano fiscal selecionado",
   "No families with an email address were found. Nothing was sent.": "Não foram encontradas famílias com endereço de e-mail. Nada foi enviado.",
@@ -4286,5 +4287,6 @@
   "Invalid payment data": "Dados de pagamento inválidos",
   "No release notes available.": "Não há notas de versão disponíveis.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Aviso: {{chosen}} não inclui as correções de segurança presentes em {{latest}}. Prossiga apenas se tiver uma razão específica.",
-  "What you'll gain": "O que irá ganhar"
+  "What you'll gain": "O que irá ganhar",
+  "Failed to get deposit count": "Falha ao obter contagem de depósitos"
 }

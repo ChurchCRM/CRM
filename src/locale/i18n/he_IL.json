@@ -4220,6 +4220,7 @@
   "Generating...": "יוצר...",
   "Geocoding request failed. Please try again.": "בקשת הגיאו-קידוד נכשלה. אנא נסה שוב.",
   "Manage Events": "נהל אירועים",
+  "N/A": "לא רלוונטי",
   "New Deposit": "הפקדון חדש",
   "No contributors found for this fund in the selected fiscal year": "לא נמצאו תורמים לקרן זו בשנת הכספים שנבחרה",
   "No families with an email address were found. Nothing was sent.": "לא נמצאו משפחות עם כתובת דוא\"ל. לא נשלח דבר.",
@@ -4294,5 +4295,6 @@
   "Invalid payment data": "נתוני תשלום לא חוקיים",
   "No release notes available.": "אין הערות גרסה זמינות.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "אזהרה: {{chosen}} חסר תיקוני אבטחה הכלולים ב-{{latest}}. המשך רק אם יש לך סיבה ספציפית.",
-  "What you'll gain": "מה תרוויח"
+  "What you'll gain": "מה תרוויח",
+  "Failed to get deposit count": "כשל בקבלת ספירת הפיקדונות"
 }

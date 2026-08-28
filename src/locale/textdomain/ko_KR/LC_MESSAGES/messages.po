@@ -17501,6 +17501,10 @@ msgid "Manage Events"
 msgstr "행사 관리"
 
 #: 
+msgid "N/A"
+msgstr "해당 없음"
+
+#: 
 msgid "New Deposit"
 msgstr "새 입금"
 
@@ -17794,4 +17798,8 @@ msgstr "경고: {{chosen}}에는 {{latest}}에 포함된 보안 수정 사항이
 #: 
 msgid "What you'll gain"
 msgstr "업그레이드 시 얻는 것"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "입금 수 조회에 실패했습니다"
 

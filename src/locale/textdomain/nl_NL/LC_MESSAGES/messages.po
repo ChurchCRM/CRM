@@ -17466,6 +17466,10 @@ msgid "Manage Events"
 msgstr "Evenementen beheren"
 
 #: 
+msgid "N/A"
+msgstr "N.v.t."
+
+#: 
 msgid "New Deposit"
 msgstr "Nieuwe storting"
 
@@ -17754,4 +17758,8 @@ msgstr "Waarschuwing: {{chosen}} mist beveiligingsfixes die zijn opgenomen in {{
 #: 
 msgid "What you'll gain"
 msgstr "Wat u wint"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Kan het aantal stortingen niet ophalen"
 

@@ -17474,6 +17474,10 @@ msgid "Manage Events"
 msgstr "ഇവന്റുകൾ നിയന്ത്രിക്കുക"
 
 #: 
+msgid "N/A"
+msgstr "ബാധകമില്ല"
+
+#: 
 msgid "New Deposit"
 msgstr "പുതിയ നിക്ഷേപം"
 
@@ -17762,4 +17766,8 @@ msgstr "മുന്നറിയിപ്പ്: {{latest}}-ൽ ഉൾപ്പ�
 #: 
 msgid "What you'll gain"
 msgstr "നിങ്ങൾക്ക് ലഭിക്കുന്നത്"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "നിക്ഷേപ എണ്ണം ലഭ്യമായില്ല"
 

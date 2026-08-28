@@ -4215,6 +4215,7 @@
   "Generating...": "Inatengeneza...",
   "Geocoding request failed. Please try again.": "Ombi la kijiografia limeshindwa. Tafadhali jaribu tena.",
   "Manage Events": "Simamia Matukio",
+  "N/A": "Haijulikani",
   "New Deposit": "Amana Mpya",
   "No contributors found for this fund in the selected fiscal year": "Hakuna wachangiaji waliopatikana kwa mfuko huu katika mwaka wa fedha uliochaguliwa",
   "No families with an email address were found. Nothing was sent.": "Hakuna familia zenye anwani ya barua pepe zilizopatikana. Hakuna kilichotumwa.",
@@ -4285,5 +4286,6 @@
   "Invalid payment data": "Data ya malipo si sahihi",
   "No release notes available.": "Hakuna maelezo ya toleo yanayopatikana.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "Onyo: {{chosen}} inakosa marekebisho ya usalama yaliyojumuishwa katika {{latest}}. Endelea tu ikiwa una sababu maalum.",
-  "What you'll gain": "Utachopata"
+  "What you'll gain": "Utachopata",
+  "Failed to get deposit count": "Imeshindwa kupata idadi ya amana"
 }

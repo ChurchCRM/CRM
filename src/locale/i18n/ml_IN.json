@@ -4216,6 +4216,7 @@
   "Generating...": "സൃഷ്ടിക്കുന്നു...",
   "Geocoding request failed. Please try again.": "ജിയോകോഡിങ് അഭ്യർത്ഥന പരാജയപ്പെട്ടു. വീണ്ടും ശ്രമിക്കുക.",
   "Manage Events": "ഇവന്റുകൾ നിയന്ത്രിക്കുക",
+  "N/A": "ബാധകമില്ല",
   "New Deposit": "പുതിയ നിക്ഷേപം",
   "No contributors found for this fund in the selected fiscal year": "തിരഞ്ഞെടുത്ത സാമ്പത്തിക വർഷത്തിൽ ഈ ഫണ്ടിൽ സംഭാവകരെ കണ്ടെത്തിയില്ല",
   "No families with an email address were found. Nothing was sent.": "ഇമെയിൽ വിലാസമുള്ള കുടുംബങ്ങളെ കണ്ടെത്തിയില്ല. ഒന്നും അയച്ചിട്ടില്ല.",
@@ -4286,5 +4287,6 @@
   "Invalid payment data": "അസാധുവായ പേയ്‌മെന്റ് ഡാറ്റ",
   "No release notes available.": "റിലീസ് കുറിപ്പുകളൊന്നും ലഭ്യമല്ല.",
   "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason.": "മുന്നറിയിപ്പ്: {{latest}}-ൽ ഉൾപ്പെടുത്തിയ സുരക്ഷാ പരിഹാരങ്ങൾ {{chosen}}-ൽ ഇല്ല. നിർദ്ദിഷ്ട കാരണം ഉണ്ടെങ്കിൽ മാത്രം തുടരുക.",
-  "What you'll gain": "നിങ്ങൾക്ക് ലഭിക്കുന്നത്"
+  "What you'll gain": "നിങ്ങൾക്ക് ലഭിക്കുന്നത്",
+  "Failed to get deposit count": "നിക്ഷേപ എണ്ണം ലഭ്യമായില്ല"
 }
