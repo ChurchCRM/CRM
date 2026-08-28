@@ -2,7 +2,7 @@
   "CSV": "CSV",
   "N/A": "N/D",
   "OFX": "OFX",
-  "Failed to get deposit count": "Error al obtener el conteo de depósitos",
+  "Failed to get deposit count": "Error al obtener el recuento de depósitos",
   "Copied {{count}} members": {
     "one": "{{count}} miembro copiado",
     "other": "{{count}} miembros copiados"

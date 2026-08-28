@@ -1,19 +1,19 @@
 {
-  "Failed to get deposit count": "Kon nie die aantal deposito's kry nie",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "{{count}} lid gekopieer",
-    "other": "{{count}} lede gekopieer"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Hierdie lys het {{count}} ontvanger — te veel vir 'n mailto:-skakel. Gebruik eerder Kopieer adresse.",
-    "other": "Hierdie lys het {{count}} ontvangers — te veel vir 'n mailto:-skakel. Gebruik eerder Kopieer adresse."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Te veel ontvangers vir e-poskliënt ({{count}} > {{max}}). Gebruik eerder Kopieer adresse.",
-    "other": "Te veel ontvangers vir e-poskliënt ({{count}} > {{max}}). Gebruik eerder Kopieer adresse."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min oor",
-    "other": "{{count}} min oor"
+    "one": "",
+    "other": ""
   }
 }

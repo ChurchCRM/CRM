@@ -1,34 +1,34 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-mail odoslaný %d rodine.",
-    "few": "E-mail odoslaný %d rodinám.",
-    "many": "E-mail odoslaný %d rodinám.",
-    "other": "E-mail odoslaný %d rodinám."
+    "one": "E-mail odoslaný %d rodine.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.",
+    "few": "",
+    "many": "",
+    "other": ""
   },
-  "N/A": "Neuplatňuje sa",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF úspešne odoslané %d rodine.",
-    "few": "PDF úspešne odoslané %d rodinám.",
-    "many": "PDF úspešne odoslané %d rodinám.",
-    "other": "PDF úspešne odoslané %d rodinám."
+    "one": "PDF úspešne odoslané %d rodine.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.",
+    "few": "",
+    "many": "",
+    "other": ""
   },
-  "Failed to get deposit count": "Nepodarilo sa získať počet vkladov",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "Skopírovaný {{count}} člen",
-    "other": "Skopírovaných {{count}} členov"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Tento zoznam má {{count}} príjemcu — príliš veľa pre odkaz mailto:. Použite Kopírovať adresy.",
-    "other": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Použite Kopírovať adresy."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Príliš veľa príjemcov pre poštového klienta ({{count}} > {{max}}). Použite Kopírovať adresy.",
-    "other": "Príliš veľa príjemcov pre poštového klienta ({{count}} > {{max}}). Použite Kopírovať adresy."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Zostáva {{count}} min",
-    "other": "Zostáva {{count}} min"
+    "one": "",
+    "other": ""
   }
 }

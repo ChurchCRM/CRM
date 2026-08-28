@@ -1,31 +1,31 @@
 {
-  "Data": "Data",
-  "CSV": "CSV",
+  "Data": "",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "Barua pepe imetumwa kwa familia %d.",
-    "other": "Barua pepe zimetumwa kwa familia %d."
+    "one": "Barua pepe imetumwa kwa familia %d.|Barua pepe zimetumwa kwa familia %d.",
+    "other": ""
   },
-  "N/A": "Haijulikani",
-  "OFX": "OFX",
+  "N/A": "",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF imetumwa kwa mafanikio kwa familia %d.",
-    "other": "PDF zimetumwa kwa mafanikio kwa familia %d."
+    "one": "PDF imetumwa kwa mafanikio kwa familia %d.|PDF zimetumwa kwa mafanikio kwa familia %d.",
+    "other": ""
   },
-  "Failed to get deposit count": "Imeshindwa kupata idadi ya amana",
+  "Failed to get deposit count": "",
   "Copied {{count}} members": {
-    "one": "Wanachama {{count}} wamenakiliwa",
-    "other": "Wanachama {{count}} wamenakiliwa"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Orodha hii ina wapokeaji {{count}} — wengi sana kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
-    "other": "Orodha hii ina wapokeaji {{count}} — wengi sana kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Wapokeaji wengi sana kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
-    "other": "Wapokeaji wengi sana kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} dak zimesalia",
-    "other": "{{count}} dak zimesalia"
+    "one": "",
+    "other": ""
   }
 }

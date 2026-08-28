@@ -10,7 +10,7 @@
     "one": "PDF enviado com sucesso por e-mail para %d família.",
     "other": "PDF enviado com sucesso por e-mail para %d famílias."
   },
-  "Failed to get deposit count": "Falha ao obter contagem de depósitos",
+  "Failed to get deposit count": "Falha ao obter a contagem de depósitos",
   "Copied {{count}} members": {
     "one": "{{count}} membro copiado",
     "other": "{{count}} membros copiados"
