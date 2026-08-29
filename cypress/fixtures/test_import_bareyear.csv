@@ -1,0 +1,5 @@
+FamilyID,LastName,FirstName,BirthDate,BirthYear,BirthMonth,Birth Day,MembershipDate,WeddingDate
+800,BareYrTest,bareYrBday,2020,,,,,
+800,BareYrTest,bareYrMember,,,,,2019,
+800,BareYrTest,splitBirth,,1995,3,15,,
+801,BareYrTest,bareYrWedding,,,,,,2018
