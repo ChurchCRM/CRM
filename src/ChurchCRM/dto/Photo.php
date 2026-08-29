@@ -6,6 +6,7 @@ use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\ImageSupportUtils;
 
 /**
  * Photo class handles uploaded photos for Person and Family entities.
@@ -30,8 +31,6 @@ class Photo
     private ?string $photoContentType = null;
     private bool $hasUploadedPhoto = false;
 
-    public static array $validExtensions = ['png', 'jpeg', 'jpg', 'gif', 'webp'];
-
     public function __construct(string $photoType, int $id)
     {
         $this->photoType = $photoType;
@@ -41,7 +40,7 @@ class Photo
 
     public static function getValidExtensions(): array
     {
-        return self::$validExtensions;
+        return ImageSupportUtils::ALLOWED_EXTENSIONS;
     }
 
     /**
@@ -61,7 +60,7 @@ class Photo
         
         $baseName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id;
 
-        foreach (self::$validExtensions as $ext) {
+        foreach (ImageSupportUtils::ALLOWED_EXTENSIONS as $ext) {
             $photoFile = $baseName . '.' . $ext;
             if (is_file($photoFile)) {
                 $this->photoURI = $photoFile;
@@ -127,14 +126,7 @@ class Photo
         } else {
             // Fallback: derive from file extension (all new uploads are saved as .png)
             $ext = strtolower(pathinfo($this->photoURI, PATHINFO_EXTENSION));
-            $mimeMap = [
-                'jpg'  => 'image/jpeg',
-                'jpeg' => 'image/jpeg',
-                'png'  => 'image/png',
-                'gif'  => 'image/gif',
-                'webp' => 'image/webp',
-            ];
-            $this->photoContentType = $mimeMap[$ext] ?? null;
+            $this->photoContentType = ImageSupportUtils::getMimeTypeForExtension($ext);
         }
 
         return $this->photoContentType;
@@ -191,16 +183,8 @@ class Photo
             $mimeType = $uriMimeType;
         }
         
-        // Allowed image types
-        $allowedMimeTypes = [
-            'image/jpeg' => 'jpg',
-            'image/jpg' => 'jpg',
-            'image/png' => 'png',
-            'image/gif' => 'gif',
-            'image/webp' => 'webp'
-        ];
-        
-        if (!isset($allowedMimeTypes[$mimeType])) {
+        // Validate against allowed MIME types (see ImageSupportUtils for the list)
+        if (!ImageSupportUtils::isAllowedMimeType($mimeType)) {
             throw new \Exception('Invalid image type. Only JPEG, PNG, GIF, and WebP images are allowed.');
         }
         
