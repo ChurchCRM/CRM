@@ -27,11 +27,9 @@
     iconAnchor: [16, 32],
     popupAnchor: [0, -34],
   });
-  var churchPopup = document.createElement('strong');
+  var churchPopup = document.createElement("strong");
   churchPopup.textContent = cfg.churchName;
-  L.marker([cfg.churchLat, cfg.churchLng], { icon: churchIcon })
-    .bindPopup(churchPopup)
-    .addTo(map);
+  L.marker([cfg.churchLat, cfg.churchLng], { icon: churchIcon }).bindPopup(churchPopup).addTo(map);
 
   // -- Legend control (desktop, bottom-right) ---------------------------------
   var legendControl = L.control({ position: "bottomright" });
