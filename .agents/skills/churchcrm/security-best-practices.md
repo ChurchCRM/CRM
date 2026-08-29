@@ -44,6 +44,7 @@ Located in `src/ChurchCRM/Utils/InputUtils.php`
 | `escapeHTML($input)` | Output escaping for body | `<?= InputUtils::escapeHTML($name) ?>` |
 | `escapeAttribute($input)` | Output escaping for attributes | `value="<?= InputUtils::escapeAttribute($val) ?>"` |
 | `sanitizeAndEscapeText($input)` | Combined sanitization + escape | Untrusted plain text display |
+| `jsonEncodeForScript($data)` | JSON for inline `<script>` blocks | `window.data = <?= InputUtils::jsonEncodeForScript($array) ?>;` |
 
 ### Method 1: sanitizeText() - Plain Text
 
@@ -159,15 +160,64 @@ echo InputUtils::sanitizeText($_POST['comment']);
 // Could display raw content unsafely
 ```
 
+### Method 6: jsonEncodeForScript() - JSON in `<script>` Blocks
+
+Safely encode data as JSON for inline `<script>` blocks with XSS protection:
+
+```php
+// ✅ CORRECT - JSON for inline <script>
+<script>
+    window.CRM.config = <?= InputUtils::jsonEncodeForScript($configArray) ?>;
+    window.roles = <?= InputUtils::jsonEncodeForScript($rolesJS) ?>;
+</script>
+
+// Input: ['name' => 'John "The" Manager']
+// Output: {"name":"John \"The\" Manager"}
+// Prevents: <script> injection, quote breakout, HTML tag injection
+
+// ✅ CORRECT - With translatable strings
+const messages = {
+    success: <?= InputUtils::jsonEncodeForScript(gettext('Saved successfully')) ?>,
+    error: <?= InputUtils::jsonEncodeForScript(gettext('Save failed')) ?>
+};
+
+// ❌ WRONG - Raw json_encode() without flags
+const data = <?= json_encode($userInput) ?>;
+// Vulnerability: If $userInput = '{"x":"</script><img src=x onerror=alert(1)>"}',
+// it breaks out of the JSON context
+
+// ❌ WRONG - String interpolation
+const title = "<?= $title ?>";  // If title contains ", breaks quote
+// If title = 'My "Special" Title', becomes: const title = "My "Special" Title";
+
+// ❌ WRONG - Escaped HTML in JSON
+<script>
+    const config = <?= htmlspecialchars(json_encode($data)) ?>;
+</script>
+// Double-encodes entities, breaks JSON parsing
+```
+
+**Key differences from raw json_encode():**
+
+| Aspect | Raw `json_encode()` | `jsonEncodeForScript()` |
+|--------|-------------------|--------------------------|
+| Escapes `<` to prevent tag injection | ❌ No | ✅ Yes (JSON_HEX_TAG) |
+| Escapes `&` to prevent entity injection | ❌ No | ✅ Yes (JSON_HEX_AMP) |
+| Escapes quotes for context safety | ⚠️ Partial | ✅ Yes (JSON_HEX_APOS, JSON_HEX_QUOT) |
+| Throws on encoding failure | ❌ Returns false | ✅ Yes (JSON_THROW_ON_ERROR) |
+
 ### Decision Tree: Which Method?
 
 ```
-Input Type: User-generated text
+Output Target: User data in templates
+├─ Inside <script> block?
+│  ├─ YES → Use jsonEncodeForScript()
+│  └─ NO → Go to next
+├─ In HTML attribute?
+│  ├─ YES → Use escapeAttribute()
+│  └─ NO → Go to next
 ├─ Will display as plain text?
 │  ├─ YES → Use sanitizeText()
-│  └─ NO → Go to next
-├─ Will be in HTML attribute?
-│  ├─ YES → Use escapeAttribute()
 │  └─ NO → Go to next
 ├─ Will be rich text (Quill editor)?
 │  ├─ YES → Use sanitizeHTML()

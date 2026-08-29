@@ -453,7 +453,7 @@ Before committing code changes, verify:
 - [ ] No alert() calls - use window.CRM.notify() instead
 - [ ] Icons use Font Awesome only (fa-solid, fa-regular, fa-brands) — no paid variants (fa-light, fa-thin, fa-duotone, fa-sharp)
 - [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
-- [ ] Use `json_encode()` when outputting PHP values into `<script>` blocks (not string interpolation)
+- [ ] Use `InputUtils::jsonEncodeForScript()` when outputting PHP values into `<script>` blocks with XSS protection (not raw `json_encode()` or string interpolation) — see `security-best-practices.md`
 - [ ] Use `window.CRM.escapeHtml()` in JS when inserting API data into DOM via `.html()` or template literals
 - [ ] Use RedirectUtils for redirects (not manual header/withHeader)
 - [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)
