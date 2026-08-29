@@ -402,7 +402,7 @@ $families = FamilyQuery::create()
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    var listPeople = <?= json_encode($aPersonIDs) ?>;
+    var listPeople = <?= InputUtils::jsonEncodeForScript($aPersonIDs) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/GeoPage.js') ?>"></script>
 <?php

@@ -347,7 +347,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->get('/open-count', function (Request $request, Response $response): Response {
         try {
             $openCount = (new DepositService())->getOpenDepositCount();
-            $response->getBody()->write(json_encode(['count' => $openCount], JSON_THROW_ON_ERROR));
+            $response->getBody()->write(json_encode(['count' => $openCount]));
             return $response
                 ->withHeader('Content-Type', 'application/json')
                 ->withStatus(200);

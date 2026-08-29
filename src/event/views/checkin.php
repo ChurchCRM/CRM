@@ -288,7 +288,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 window.CRM = window.CRM || {};
 window.CRM.checkinEventId = <?= $eventId ?>;
-window.CRM.checkinRootPath = <?= json_encode($sRootPath) ?>;
+window.CRM.checkinRootPath = <?= InputUtils::jsonEncodeForScript($sRootPath) ?>;
 </script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/event-checkin.min.js') ?>"></script>
 

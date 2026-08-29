@@ -179,7 +179,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 window.CRM = window.CRM || {};
 window.CRM.eventTypeForm = {
   mode: 'edit',
-  currentTime: <?= json_encode($startTimeDisplay) ?>
+  currentTime: <?= InputUtils::jsonEncodeForScript($startTimeDisplay) ?>
 };
 </script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/event-types.min.js') ?>"></script>

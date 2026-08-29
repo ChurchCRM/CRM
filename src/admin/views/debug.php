@@ -705,7 +705,7 @@ $fmtBytes = static function ($bytes): string {
     // Translated strings as a JSON object — never embed raw gettext() output
     // inside JS string literals; apostrophes in translations (e.g. French
     // "s'afficher") break single-quoted JS strings.
-    var t = <?= json_encode([
+    var t = <?= InputUtils::jsonEncodeForScript([
         'unknown'        => gettext('Unknown'),
         'mismatch'       => gettext('Mismatch'),
         'issuesDetected' => gettext('Issues detected'),
@@ -713,7 +713,7 @@ $fmtBytes = static function ($bytes): string {
         'mismatchOne'    => gettext('mismatch detected'),
         'mismatchMany'   => gettext('mismatches detected'),
         'browserDiffers' => gettext('Browser differs from system config - dates may display incorrectly for this user.'),
-    ], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) ?>;
+    ], JSON_UNESCAPED_UNICODE) ?>;
 
     var initializeDebugPage = function() {
         // Populate browser timezone information with guard for older browsers
@@ -742,8 +742,8 @@ $fmtBytes = static function ($bytes): string {
         $('#browser-time').text(browserTimeString + ' (' + offsetString + ')');
         
         // Compare against baseline (configured timezone, or server if not configured)
-        var serverTimezone = <?= json_encode($serverTimezone) ?>;
-        var configuredTimezone = <?= json_encode($configuredTimezone) ?>;
+        var serverTimezone = <?= InputUtils::jsonEncodeForScript($serverTimezone) ?>;
+        var configuredTimezone = <?= InputUtils::jsonEncodeForScript($configuredTimezone) ?>;
         var baselineTimezone = configuredTimezone || serverTimezone;
         
         var browserMatchesBaseline = (browserTimezone === baselineTimezone);

@@ -1095,7 +1095,7 @@ require_once __DIR__ . '/Include/Header.php';
             { checkboxName: 'NoFormat_CellPhone', inputName: 'CellPhone' }
         ];
         <?php if (!empty($customPhoneFields)) { ?>
-        phoneFields = phoneFields.concat(<?= json_encode($customPhoneFields) ?>);
+        phoneFields = phoneFields.concat(<?= InputUtils::jsonEncodeForScript($customPhoneFields) ?>);
         <?php } ?>
         window.CRM.formUtils.initializePhoneMaskToggles(phoneFields);
 

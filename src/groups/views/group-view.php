@@ -354,10 +354,10 @@ if ($bCanManageGroups) {
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentGroup      = <?= (int) $iGroupID ?>;
-    window.CRM.currentGroupName  = <?= json_encode($thisGroup->getName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    window.CRM.currentGroupName  = <?= InputUtils::jsonEncodeForScript($thisGroup->getName()) ?>;
     window.CRM.groupIsActive     = <?= $thisGroup->isActive() ? 'true' : 'false' ?>;
     window.CRM.groupEmailExport  = <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>;
-    window.CRM.groupPhoneNumbers = <?= json_encode($sPhoneLink, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    window.CRM.groupPhoneNumbers = <?= InputUtils::jsonEncodeForScript($sPhoneLink) ?>;
 </script>
 <script src="<?= $sRootPath ?>/skin/js/GroupView.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/GroupView.js') ?>"></script>
 <?php if ($bEmailEnabled): ?>

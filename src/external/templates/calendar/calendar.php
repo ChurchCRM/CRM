@@ -57,10 +57,10 @@ require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
 // Server-side data for the FullCalendar public calendar.
 // Read by webpack/external-calendar.js after DOMContentLoaded.
 window.CRM = window.CRM || {};
-window.CRM.externalCalendarArgs = <?= json_encode([
+window.CRM.externalCalendarArgs = <?= InputUtils::jsonEncodeForScript([
     'eventSource' => $eventSource,
     'timeZone'    => $churchTz ?: 'local',
-], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
+]) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/external-calendar.min.js') ?>"></script>
 

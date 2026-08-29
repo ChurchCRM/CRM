@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
+use ChurchCRM\Utils\InputUtils;
 // Use the page title set by the route; append a setup-required note if location is missing
 if (!$mapConfig['hasLocation']) {
     $sPageTitle .= ' — ' . gettext('Setup Required');
@@ -65,7 +66,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.mapConfig = <?= json_encode($mapConfig, JSON_THROW_ON_ERROR) ?>;
+    window.CRM.mapConfig = <?= InputUtils::jsonEncodeForScript($mapConfig) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/map-view.js') ?>"></script>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
@@ -75,26 +76,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $(document).ready(function() {
         window.CRM.settingsPanel.init({
             container: '#mapAdminSettings',
-            title: <?= json_encode(gettext('Map Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+            title: <?= InputUtils::jsonEncodeForScript(gettext('Map Settings')) ?>,
             icon: 'fa-solid fa-sliders',
             settings: [
                 {
                     name: 'iMapZoom',
                     type: 'choice',
-                    label: <?= json_encode(gettext('Default Map View'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                    choices: <?= json_encode(SystemConfig::getChoices('iMapZoom'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= InputUtils::jsonEncodeForScript(gettext('Default Map View')) ?>,
+                    choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('iMapZoom')) ?>
                 },
                 {
                     name: 'bHideLatLon',
                     type: 'boolean',
-                    label: <?= json_encode(gettext('Hide Latitude/Longitude'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                    tooltip: <?= json_encode(SystemConfig::getTooltip('bHideLatLon'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Latitude/Longitude')) ?>,
+                    tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHideLatLon')) ?>
                 },
                 {
                     name: 'bHidePersonAddress',
                     type: 'boolean',
-                    label: <?= json_encode(gettext('Hide Person Address'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                    tooltip: <?= json_encode(SystemConfig::getTooltip('bHidePersonAddress'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Person Address')) ?>,
+                    tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHidePersonAddress')) ?>
                 }
             ],
             showAllSettingsLink: false

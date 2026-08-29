@@ -410,14 +410,14 @@ var logLevelMap = {
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#logSettings',
-        title: <?= json_encode(gettext('Log Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('Log Settings')) ?>,
         settings: [
             {
                 name: 'sLogLevel',
                 type: 'choice',
-                label: <?= json_encode(gettext('Log Level'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                tooltip: <?= json_encode(SystemConfig::getTooltip('sLogLevel'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                choices: <?= json_encode(SystemConfig::getChoices('sLogLevel'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Log Level')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sLogLevel')) ?>,
+                choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('sLogLevel')) ?>
             }
         ],
         onSave: function() {

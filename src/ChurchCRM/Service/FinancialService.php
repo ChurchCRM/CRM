@@ -357,7 +357,7 @@ class FinancialService
             return;
         }
         global $cnInfoCentral;
-        $currencyDenoms = json_decode($payment->cashDenominations, null, 512, JSON_THROW_ON_ERROR);
+        $currencyDenoms = json_decode($payment->cashDenominations, null, 512);
         foreach ($currencyDenoms as $cdom) {
             if (empty($payment->DepositID) || empty($cdom->currencyID) || empty($cdom->Count)) {
                 continue;
@@ -378,7 +378,7 @@ class FinancialService
         // FundSplit may arrive as a JSON string (legacy callers) or as an already-
         // decoded array (when called via submitPledgeOrPayment after normalisation).
         $FundSplit = is_string($payment->FundSplit)
-            ? json_decode($payment->FundSplit, false, 512, JSON_THROW_ON_ERROR)
+            ? json_decode($payment->FundSplit, false, 512)
             : $payment->FundSplit;
 
         // $presetGroupKey reuses the caller's GroupKey (updatePledgeOrPayment) instead of
@@ -457,7 +457,7 @@ class FinancialService
     {
         $raw = $payment->FundSplit ?? [];
         if (is_string($raw)) {
-            $raw = json_decode($raw, false, 512, JSON_THROW_ON_ERROR);
+            $raw = json_decode($raw, false, 512);
         }
         if ($raw instanceof \stdClass) {
             $raw = [$raw];
@@ -569,7 +569,7 @@ class FinancialService
         $payment->total = $total;
         $payment->total_formatted = CurrencyFormatter::format($total);
 
-        return json_encode($payment, JSON_THROW_ON_ERROR);
+        return json_encode($payment);
     }
 
     public function getDepositPDF($depID): void

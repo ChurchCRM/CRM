@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Utils;
 
+use ChurchCRM\Utils\InputUtils;
 class InputUtils
 {
     private static string $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
@@ -132,7 +133,7 @@ class InputUtils
         if (is_string($json)) {
             $trimmed = trim($json);
             try {
-                return json_decode($trimmed, true, 512, JSON_THROW_ON_ERROR);
+                return json_decode($trimmed, true, 512);
             } catch (\JsonException $e) {
                 throw new \InvalidArgumentException('Invalid JSON: ' . $e->getMessage());
             }
@@ -176,14 +177,17 @@ class InputUtils
      * JSON_THROW_ON_ERROR ensures an encoding failure throws instead of
      * silently returning false, which `<?= ?>` would render as an empty
      * string and break the surrounding JS.
+     * JSON_UNESCAPED_UNICODE preserves international characters.
      *
      * @param mixed $data
+     * @param int $flags Optional additional JSON_* flags (combined with bitwise OR)
      * @return string
      * @throws \JsonException
      */
-    public static function jsonEncodeForScript($data): string
+    public static function jsonEncodeForScript($data, int $flags = 0): string
     {
-        return json_encode($data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);
+        $baseFlags = JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR;
+        return json_encode($data, $baseFlags | $flags);
     }
 
     public static function filterChar($sInput, $size = 1): string

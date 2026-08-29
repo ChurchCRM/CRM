@@ -87,7 +87,7 @@ class SlimUtils
             ];
             return $container->get('response')->withStatus(500)
                 ->withHeader('Content-Type', 'application/json')
-                ->write(json_encode($data, JSON_THROW_ON_ERROR));
+                ->write(json_encode($data));
         });
 
         // Not found handler: returns HTML 404
@@ -396,7 +396,7 @@ class SlimUtils
      */
     public static function renderJSON(Response $response, array $obj, int $status = 200): Response
     {
-        return self::renderStringJSON($response, json_encode($obj, JSON_THROW_ON_ERROR), $status);
+        return self::renderStringJSON($response, json_encode($obj), $status);
     }
 
     /**

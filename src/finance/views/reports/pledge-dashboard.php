@@ -292,10 +292,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Currency config for footerCallback — mirrors PHP CurrencyFormatter::format()
     var _crmCur = {
-        sym: <?= json_encode(CurrencyFormatter::symbol()) ?>,
-        pos: <?= json_encode(CurrencyFormatter::position()) ?>,
-        th:  <?= json_encode(SystemConfig::getValue('sThousandsSeparator')) ?>,
-        dec: <?= json_encode(SystemConfig::getValue('sDecimalSeparator')) ?>
+        sym: <?= InputUtils::jsonEncodeForScript(CurrencyFormatter::symbol()) ?>,
+        pos: <?= InputUtils::jsonEncodeForScript(CurrencyFormatter::position()) ?>,
+        th:  <?= InputUtils::jsonEncodeForScript(SystemConfig::getValue('sThousandsSeparator')) ?>,
+        dec: <?= InputUtils::jsonEncodeForScript(SystemConfig::getValue('sDecimalSeparator')) ?>
     };
     function _fmtCur(n) {
         if (n < 0) { return '-' + _fmtCur(-n); }

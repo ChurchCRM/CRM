@@ -39,7 +39,7 @@ $i18n = [
 <div id="attendance-tab"
      data-person-id="<?= InputUtils::escapeHTML((string) $iPersonID) ?>"
      data-api-root="<?= InputUtils::escapeHTML(\ChurchCRM\dto\SystemURLs::getRootPath()) ?>"
-     data-i18n="<?= htmlspecialchars(json_encode($i18n, JSON_HEX_TAG | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR), ENT_QUOTES, 'UTF-8') ?>">
+     data-i18n="<?= htmlspecialchars(json_encode($i18n, JSON_HEX_TAG | JSON_UNESCAPED_UNICODE), ENT_QUOTES, 'UTF-8') ?>">
 
     <!-- Loading state -->
     <div class="attendance-loading text-center py-4">

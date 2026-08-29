@@ -305,14 +305,14 @@ function DoQuery()
                 $(document).ready(function() {
                     window.CRM.onLocalesReady(function() {
                         $("#addResultsToCart").click(function () {
-                            var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                            var selectedPersons = <?= InputUtils::jsonEncodeForScript($aAddToCartIDs) ?>;
                             window.CRM.cartManager.addPerson(selectedPersons, {
                                 showNotification: true
                             });
                         });
 
                         $("#removeResultsFromCart").click(function(){
-                            var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                            var selectedPersons = <?= InputUtils::jsonEncodeForScript($aAddToCartIDs) ?>;
                             window.CRM.cartManager.removePerson(selectedPersons, {
                                 confirm: true,
                                 showNotification: true

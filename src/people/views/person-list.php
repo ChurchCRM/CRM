@@ -27,7 +27,7 @@ function emptyOrUnassigned($stuff)
  */
 function emptyOrUnassignedJSON($stuff): string
 {
-    return empty($stuff) ? 'Unassigned' : InputUtils::escapeHTML(json_encode($stuff, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
+    return empty($stuff) ? 'Unassigned' : InputUtils::escapeHTML(json_encode($stuff, JSON_UNESCAPED_UNICODE));
 }
 
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
@@ -385,7 +385,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                     echo '<span class="badge bg-info-lt text-info me-1">' . InputUtils::escapeHTML($group) . '</span>';
                                 }
                                 // Add hidden span with JSON for DataTables filtering
-                                echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR)) . '</span>';
+                                echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE)) . '</span>';
                             } else {
                                 echo '<span class="text-body-secondary">—</span>';
                             }
@@ -414,7 +414,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         elseif ($column->displayFunction === 'getPropertiesString') {
                             if (is_array($columnData) && !empty($columnData)) {
                                 // Output as JSON for quote-based filter matching (HTML-escaped to prevent XSS)
-                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
+                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE));
                             } else {
                                 echo 'Unassigned';
                             }
@@ -423,7 +423,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         elseif ($column->displayFunction === 'getCustomFields') {
                             if (is_array($columnData) && !empty($columnData)) {
                                 // Output as JSON for quote-based filter matching (HTML-escaped to prevent XSS)
-                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
+                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE));
                             } else {
                                 echo 'Unassigned';
                             }
@@ -601,7 +601,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 // These columns are hidden on-screen (see columnDefs above) but exported.
                 foreach ($exportCustomFields as $cf) {
                     $columnId++;
-                    echo json_encode(['title' => $cf->getName()], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) . ",\n";
+                    echo json_encode(['title' => $cf->getName()]) . ",\n";
                 }
                 ?>
                 {
@@ -718,16 +718,16 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
         // Call webpack initializer to populate other filter lists
         var serverVars = {
-            RoleList: <?= json_encode($RoleList, JSON_THROW_ON_ERROR) ?>,
-            PropertyList: <?= json_encode($PropertyList, JSON_THROW_ON_ERROR) ?>,
-            CustomList: <?= json_encode($CustomList, JSON_THROW_ON_ERROR) ?>,
-            GroupList: <?= json_encode($GroupList, JSON_THROW_ON_ERROR) ?>,
-            ClassificationList: <?= json_encode($ClassificationList, JSON_THROW_ON_ERROR) ?>,
-            FamilyStatusList: <?= json_encode([gettext('Active'), gettext('Inactive')], JSON_THROW_ON_ERROR) ?>,
-            filterByGender: <?= json_encode($filterByGender, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
-            filterByClsId: <?= json_encode($filterByClsOptionId, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
-            filterByFmrId: <?= json_encode($filterByFmrOptionId, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
-            familyActiveStatus: <?= json_encode($familyActiveStatus, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
+            RoleList: <?= InputUtils::jsonEncodeForScript($RoleList) ?>,
+            PropertyList: <?= InputUtils::jsonEncodeForScript($PropertyList) ?>,
+            CustomList: <?= InputUtils::jsonEncodeForScript($CustomList) ?>,
+            GroupList: <?= InputUtils::jsonEncodeForScript($GroupList) ?>,
+            ClassificationList: <?= InputUtils::jsonEncodeForScript($ClassificationList) ?>,
+            FamilyStatusList: <?= InputUtils::jsonEncodeForScript([gettext('Active'), gettext('Inactive')]) ?>,
+            filterByGender: <?= InputUtils::jsonEncodeForScript($filterByGender) ?>,
+            filterByClsId: <?= InputUtils::jsonEncodeForScript($filterByClsOptionId) ?>,
+            filterByFmrId: <?= InputUtils::jsonEncodeForScript($filterByFmrOptionId) ?>,
+            familyActiveStatus: <?= InputUtils::jsonEncodeForScript($familyActiveStatus) ?>
         };
         if (window.initializePeopleListFromServer) {
             window.initializePeopleListFromServer(serverVars);
