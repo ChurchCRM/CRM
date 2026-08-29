@@ -166,58 +166,137 @@ class RestoreJob extends JobBase
     }
 
     /**
+     * Safe image file extensions that may be copied into the public Images/ webroot.
+     *
+     * This allowlist is the single source of truth for extension validation during
+     * backup restore. It must stay in sync with:
+     *   - src/Images/.htaccess  (Apache serve-side allowlist)
+     *   - docker/examples/nginx/default.conf  (nginx serve-side allowlist)
+     *
+     * SVG is intentionally excluded: SVG files served as image/svg+xml execute
+     * embedded <script> tags in browsers. Static files served by Apache/nginx
+     * do not carry the PHP-generated CSP headers, so an SVG in the public
+     * Images/ webroot would enable stored-XSS. Photo.php excludes SVG for the
+     * same reason.
+     *
+     * Fix for GHSA-v5mx-w5g6-fjpc: switched from a dangerous-extension *blocklist*
+     * (which omitted .pht and other PHP aliases) to an *allowlist* so only
+     * explicitly permitted extensions can ever reach the webroot.
+     */
+    private const ALLOWED_IMAGE_EXTENSIONS = [
+        'jpg', 'jpeg', 'png', 'gif', 'webp', 'ico', 'bmp', 'tiff', 'tif',
+    ];
+
+    /**
      * Validate that extracted Images directory contains only image files.
-     * Prevents RCE by removing any PHP/script files that may have been
-     * embedded in a malicious backup archive.
+     * Prevents RCE by silently removing any file whose extension is not in the
+     * ALLOWED_IMAGE_EXTENSIONS allowlist before the directory is copied into the
+     * public webroot.
+     *
+     * Defence-in-depth: extension allowlist check runs first (cannot be bypassed
+     * by magic-byte spoofing), followed by a MIME type sanity check that
+     * discards additional non-images the allowlist may have permitted (e.g. a
+     * corrupt .png that finfo classifies as application/octet-stream).
+     *
+     * Any file that is removed is appended to $this->Messages so the admin UI
+     * can display a tamper-detection notice even on a "successful" restore.
      *
      * @param string $dir Path to the extracted Images directory
-     * @throws Exception If executable PHP files are found (aborts restore)
+     * @throws \Exception When a disallowed file cannot be removed from the extraction directory
      */
     private function validateExtractedImages(string $dir): void
     {
-        // Aligned with Photo.php allowed types — no SVG (XSS risk) or BMP
-        $allowedMimeTypes = [
-            'image/jpeg',
-            'image/jpg',
-            'image/png',
-            'image/gif',
-            'image/webp',
-        ];
-
-        // Executable extensions that must never be copied to the webroot
-        $dangerousExtensions = ['php', 'phtml', 'php3', 'php4', 'php5', 'php7', 'phps', 'phar', 'shtml'];
-
         $iterator = new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS),
             \RecursiveIteratorIterator::LEAVES_ONLY
         );
 
-        // Create finfo instance once outside loop
+        // Create finfo instance once outside loop (used as a secondary sanity
+        // check; the extension allowlist is the primary gate).
         $finfo = new \finfo(FILEINFO_MIME_TYPE);
+
+        // MIME types that are valid for the extensions in ALLOWED_IMAGE_EXTENSIONS.
+        // Intentionally a tight set — no application/* or text/* types, and no
+        // image/svg+xml (SVG excluded — see class-level docblock).
+        $allowedMimeTypes = [
+            'image/jpeg',
+            'image/png',
+            'image/gif',
+            'image/webp',
+            'image/x-icon',
+            'image/vnd.microsoft.icon',
+            'image/bmp',
+            'image/x-bmp',
+            'image/x-ms-bmp',
+            'image/tiff',
+            'image/x-tiff',
+        ];
+
+        $removedFiles = [];
 
         foreach ($iterator as $file) {
             if (!$file->isFile()) {
                 continue;
             }
 
-            $filePath = $file->getPathname();
+            $filePath  = $file->getPathname();
             $extension = strtolower($file->getExtension());
 
-            // Immediately abort if any executable file is found
-            if (\in_array($extension, $dangerousExtensions, true)) {
-                LoggerUtils::getAppLogger()->error('Restore aborted: dangerous file found in backup archive: ' . $filePath);
-                throw new Exception('Restore aborted: backup archive contains a potentially dangerous file (' . $file->getFilename() . '). This may indicate a compromised backup.');
+            // ── Primary gate: extension allowlist ────────────────────────────
+            // Any extension not in the allowlist is removed immediately.
+            // This cannot be bypassed by magic-byte spoofing (unlike finfo alone).
+            if (!\in_array($extension, self::ALLOWED_IMAGE_EXTENSIONS, true)) {
+                LoggerUtils::getAppLogger()->warning(
+                    'Restore: removing non-image file (extension not allowed): ' . $filePath
+                );
+                if (!unlink($filePath)) {
+                    throw new Exception(
+                        'Restore aborted: could not remove disallowed file from backup ('
+                        . $file->getFilename() . '). Check file permissions.'
+                    );
+                }
+                // Escape before storing: filenames end up in $this->Messages which
+                // is rendered via jQuery .html() in restore-database.js.
+                $removedFiles[] = htmlspecialchars($file->getFilename(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                continue;
             }
 
-            // Check MIME type for all other files — remove non-images
+            // ── Secondary gate: MIME type sanity check ────────────────────────
+            // Removes allowed-extension files whose actual binary content is not
+            // a recognised image (e.g. a PHP script renamed to .png).
+            // Note: a GIF89a-prefixed PHP polyglot (e.g. shell.gif) passes BOTH
+            // this gate (finfo returns image/gif for magic bytes) AND the extension
+            // gate above (gif is in ALLOWED_IMAGE_EXTENSIONS). The defence against
+            // polyglots reaching the browser is the web-server layer:
+            // - Images/.htaccess disables PHP execution (php_flag engine off) and
+            //   removes the PHP handler (SetHandler default-handler)
+            // - The nginx location block has no PHP fastcgi handler for Images/
+            // This function's MIME check is a sanity gate for files that have an
+            // allowed extension but genuinely non-image binary content.
             $mimeType = $finfo->file($filePath);
             if (!\in_array($mimeType, $allowedMimeTypes, true)) {
-                LoggerUtils::getAppLogger()->warning('Restore: removing non-image file from backup: ' . $filePath . ' (MIME: ' . $mimeType . ')');
+                LoggerUtils::getAppLogger()->warning(
+                    'Restore: removing file with non-image MIME type: ' . $filePath
+                    . ' (extension: ' . $extension . ', MIME: ' . $mimeType . ')'
+                );
                 if (!unlink($filePath)) {
-                    // Cannot remove non-image file — abort to prevent it reaching the webroot
-                    throw new Exception('Restore aborted: could not remove non-image file from backup (' . $file->getFilename() . '). Check file permissions.');
+                    throw new Exception(
+                        'Restore aborted: could not remove non-image file from backup ('
+                        . $file->getFilename() . '). Check file permissions.'
+                    );
                 }
+                // Escape before storing: filenames end up in $this->Messages which
+                // is rendered via jQuery .html() in restore-database.js.
+                $removedFiles[] = htmlspecialchars($file->getFilename(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
             }
+        }
+
+        if (!empty($removedFiles)) {
+            $this->Messages[] = sprintf(
+                gettext('%d disallowed file(s) were removed from the backup during restore: %s. This may indicate a tampered backup.'),
+                count($removedFiles),
+                implode(', ', $removedFiles)
+            );
         }
 
         LoggerUtils::getAppLogger()->debug('Image validation passed for: ' . $dir);
