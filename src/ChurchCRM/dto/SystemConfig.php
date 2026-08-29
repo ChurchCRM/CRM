@@ -531,9 +531,10 @@ class   SystemConfig
             }
         }
 
-        // Input-level sanitization: clean text configs marked for sanitization.
-        // Same logic as the API endpoint — ensures consistency whether config is set
-        // via API or programmatically. Philosophy: sanitize at the gate.
+        // Input-level defense: strip tags from text configs marked for sanitization.
+        // NOTE: this does NOT replace output escaping. Every output context must still
+        // apply context-appropriate escaping (htmlspecialchars for HTML attributes/text,
+        // json_encode with HEX flags for JS contexts, etc.).
         if ($configItem->getType() === 'text' && $configItem->shouldSanitizeInput()) {
             $value = InputUtils::sanitizeText($value);
         }

@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 // Use the page title set by the route; append a setup-required note if location is missing
 if (!$mapConfig['hasLocation']) {
@@ -33,12 +34,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Desktop legend (injected into map overlay by Leaflet control) -->
             <div id="map-legend" class="d-none d-sm-block">
-                <div class="legend-title"><?= htmlspecialchars($mapConfig['legendTitle']) ?></div>
+                <div class="legend-title"><?= InputUtils::escapeHTML($mapConfig['legendTitle']) ?></div>
                 <?php foreach ($mapConfig['legendItems'] as $item): ?>
                     <div class="legend-item active" data-legend-id="<?= (int) $item['id'] ?>"
                          role="button" tabindex="0" aria-pressed="true">
-                        <span class="legend-dot" style="background:<?= htmlspecialchars($item['color']) ?>"></span>
-                        <span class="legend-label"><?= htmlspecialchars($item['label']) ?></span>
+                        <span class="legend-dot" style="background:<?= InputUtils::escapeAttribute($item['color']) ?>"></span>
+                        <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -46,14 +47,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Mobile legend (below the map card) -->
             <div class="card mt-2 d-block d-sm-none">
                 <div class="card-header py-2">
-                    <strong><?= htmlspecialchars($mapConfig['legendTitle']) ?></strong>
+                    <strong><?= InputUtils::escapeHTML($mapConfig['legendTitle']) ?></strong>
                 </div>
                 <div class="card-body py-2">
                     <div class="d-flex flex-wrap gap-2">
                         <?php foreach ($mapConfig['legendItems'] as $item): ?>
                             <div class="legend-item active legend-pill" data-legend-id="<?= (int) $item['id'] ?>">
-                                <span class="legend-dot" style="background:<?= htmlspecialchars($item['color']) ?>"></span>
-                                <span class="legend-label"><?= htmlspecialchars($item['label']) ?></span>
+                                <span class="legend-dot" style="background:<?= InputUtils::escapeAttribute($item['color']) ?>"></span>
+                                <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -65,7 +66,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.mapConfig = <?= json_encode($mapConfig, JSON_THROW_ON_ERROR) ?>;
+    window.CRM.mapConfig = <?= json_encode($mapConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/map-view.js') ?>"></script>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
