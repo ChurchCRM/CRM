@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -45,6 +46,19 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
     // Never overwrite a password with an empty value
     if ($isPassword && empty($value)) {
         return SlimUtils::renderJSON($response, ['value' => '']);
+    }
+
+    // Input-level sanitization: clean text configs marked for sanitization
+    // This is the authoritative XSS defense for marked configs. Output locations
+    // can trust the data and don't need escaping (escaping happens at display time
+    // only for context-specific safety like attribute values).
+    //
+    // Philosophy: sanitize at the gate (input), trust throughout the codebase.
+    // Configs NOT marked for sanitization may contain legitimate markup
+    // (e.g., sTaxReport, sDirectoryDisclaimer for PDF use) and are protected by
+    // output escaping at each use site instead.
+    if ($configItem->getType() === 'text' && $configItem->shouldSanitizeInput()) {
+        $value = InputUtils::sanitizeText($value);
     }
 
     SystemConfig::setValue($configName, $value);
