@@ -5,7 +5,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
-use ChurchCRM\Utils\InputUtils;
 // Use the page title set by the route; append a setup-required note if location is missing
 if (!$mapConfig['hasLocation']) {
     $sPageTitle .= ' — ' . gettext('Setup Required');
