@@ -17,9 +17,13 @@ use ChurchCRM\Service\SystemService;
  */
 class Photo
 {
-    // Hardcoded photo dimensions - all photos stored at this size for optimal bandwidth/storage
-    public const PHOTO_WIDTH = 200;
-    public const PHOTO_HEIGHT = 200;
+    // Maximum stored photo dimensions — images are scaled down to fit within this box (aspect-ratio
+    // preserved; smaller originals are never upscaled). 600 px retains enough detail for the
+    // full-width responsive profile display (≈ 360–420 px on desktop, full-width on mobile) and
+    // matches the avatar-loader.ts ceiling already in place for high-DPI initials rendering.
+    // Raises the previous 200 px cap (issue #8560).
+    public const PHOTO_WIDTH = 600;
+    public const PHOTO_HEIGHT = 600;
     
     // HTTP cache duration for photo responses (in seconds)
     public const CACHE_DURATION_SECONDS = 7200; // 2 hours

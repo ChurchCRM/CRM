@@ -33,50 +33,46 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
     <div class="col-lg-4">
         <!-- Photo & Info Card -->
         <div class="card mb-3">
-            <div class="card-body p-0">
-                <div class="d-flex">
-                    <!-- Photo (left) — click to upload -->
-                    <div class="flex-shrink-0 position-relative" style="width: 120px; aspect-ratio: 1 / 1;">
-                        <a href="#" id="uploadImageButton" class="d-block w-100 h-100" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" alt="" class="photo-profile w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
-                        </a>
-                        <button type="button"
-                                class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-1 d-none"
-                                data-entity-type="person"
-                                data-entity-id="<?= $person->getId() ?>"
-                                title="<?= gettext('View full photo') ?>"
-                                aria-label="<?= gettext('View full photo') ?>">
-                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
-                        </button>
-                    </div>
-                    <!-- Attributes (right) -->
-                    <div class="p-3 flex-grow-1">
-                        <?php
-                        $genderClass = "fa-question";
-                        $genderText = gettext('Unknown');
-                        if ($person->isMale()) {
-                            $genderClass = "fa-person";
-                            $genderText = gettext('Male');
-                        } elseif ($person->isFemale()) {
-                            $genderClass = "fa-person-dress";
-                            $genderText = gettext('Female');
-                        }
-                        ?>
-                        <ul class="list-unstyled mb-0">
-                            <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
-                            <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
-                            <?php if (!empty($sFamRole)) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
-                            <?php endif; ?>
-                            <?php if ($per_MembershipDate) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
-                            <?php endif; ?>
-                            <?php if ($sEnvelope !== gettext('Not assigned')) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
+            <!-- Photo (top) — full card width, responsive square; click to upload -->
+            <div class="position-relative">
+                <a href="#" id="uploadImageButton" class="d-block" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
+                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" alt="" class="photo-profile card-img-top w-100 object-fit-cover" style="aspect-ratio: 1 / 1; max-height: 400px;">
+                </a>
+                <button type="button"
+                        class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-2 d-none"
+                        data-entity-type="person"
+                        data-entity-id="<?= $person->getId() ?>"
+                        title="<?= gettext('View full photo') ?>"
+                        aria-label="<?= gettext('View full photo') ?>">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                </button>
+            </div>
+            <!-- Attributes (below photo) -->
+            <div class="card-body">
+                <?php
+                $genderClass = "fa-question";
+                $genderText = gettext('Unknown');
+                if ($person->isMale()) {
+                    $genderClass = "fa-person";
+                    $genderText = gettext('Male');
+                } elseif ($person->isFemale()) {
+                    $genderClass = "fa-person-dress";
+                    $genderText = gettext('Female');
+                }
+                ?>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
+                    <?php if (!empty($sFamRole)) : ?>
+                    <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
+                    <?php endif; ?>
+                    <?php if ($per_MembershipDate) : ?>
+                    <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
+                    <?php endif; ?>
+                    <?php if ($sEnvelope !== gettext('Not assigned')) : ?>
+                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
+                    <?php endif; ?>
+                </ul>
             </div>
         </div>
 
