@@ -94,6 +94,7 @@
           new window.TomSelect(groupEl, {
             placeholder: i18next.t("Search groups..."),
             items: [],
+            dropdownParent: "body",
             onChange: (value) => {
               selectedGroupId = value || null;
               if (!value) {
@@ -123,6 +124,7 @@
                 roleWrapper.classList.remove("d-none");
                 result.confirm.disabled = false;
                 new window.TomSelect(roleEl, {
+                  dropdownParent: "body",
                   onChange: (v) => {
                     selectedRoleId = v || null;
                   },

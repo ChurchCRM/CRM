@@ -94,6 +94,7 @@ function _showRoleModal(title, callback) {
     "shown.bs.modal",
     () => {
       new window.TomSelect(roleEl, {
+        dropdownParent: "body",
         onChange: (value) => {
           selectedRoleId = value || null;
         },
@@ -150,6 +151,7 @@ function _showGroupAndRoleModal(title, callback) {
         new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
           items: [],
+          dropdownParent: "body",
           onChange: (value) => {
             selectedGroupId = value || null;
             if (!value) {
@@ -180,6 +182,7 @@ function _showGroupAndRoleModal(title, callback) {
               roleWrapper.classList.remove("d-none");
               result.confirm.disabled = false;
               new window.TomSelect(roleEl, {
+                dropdownParent: "body",
                 onChange: (v) => {
                   selectedRoleId = v || null;
                 },
@@ -446,6 +449,7 @@ function initializeGroupView() {
       valueField: "objid",
       labelField: "text",
       searchField: "text",
+      dropdownParent: "body",
       load: (query, callback) => {
         if (query.length < 2) return callback();
         fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))

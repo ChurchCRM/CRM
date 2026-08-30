@@ -126,6 +126,7 @@ function handleAddToGroup(personId) {
         new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
           items: [],
+          dropdownParent: "body",
           onChange: (value) => {
             selectedGroupId = value || null;
             if (!value) {
@@ -188,6 +189,7 @@ function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected) {
     confirmBtn.disabled = false;
 
     new window.TomSelect(roleEl, {
+      dropdownParent: "body",
       onChange: (value) => {
         onRoleSelected(value || null);
       },
@@ -233,6 +235,7 @@ function handleChangeRole(personId, groupId, currentRoleId) {
       "shown.bs.modal",
       () => {
         const ts = new window.TomSelect(roleEl, {
+          dropdownParent: "body",
           onChange: (value) => {
             selectedRoleId = value || null;
           },
