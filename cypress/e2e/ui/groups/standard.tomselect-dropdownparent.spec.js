@@ -34,16 +34,22 @@ describe("TomSelect dropdownParent:body — remaining call sites (#9488)", () =>
         cy.window().its("CRM.localesLoaded").should("eq", true);
 
         // Wait for TomSelect to initialize on the Add Member picker.
-        // TomSelect hides the original <select> when it wraps it — that is
-        // the reliable signal that init is complete (cy.get().closest() has no retry).
-        cy.get("select#addGroupMember", { timeout: 10000 }).should("not.be.visible");
+        // TomSelect adds the 'tomselected' class to the original <select> when it wraps it.
+        // We use this class (not visibility) as the ready signal because TomSelect's
+        // ts-hidden-accessible style uses clip-path/1px dimensions, not display:none —
+        // so Cypress's :visible check would still return true even after TS init.
+        cy.get("select#addGroupMember", { timeout: 10000 }).should("have.class", "tomselected");
 
         // Click the TomSelect control (the visible input rendered by TomSelect).
         cy.get("select#addGroupMember").closest(".ts-wrapper").find(".ts-control").click();
 
         // Key assertion: the dropdown must be appended to <body>,
         // NOT trapped inside the card DOM tree.
-        cy.get("body > .ts-dropdown", { timeout: 5000 }).should("exist").and("be.visible");
+        // Note: The personSearch TomSelect uses a load callback that requires 2+
+        // characters before fetching from the API, so clicking alone shows no
+        // options. We assert existence (body > .ts-dropdown) to prove the
+        // dropdownParent:"body" fix is in effect.
+        cy.get("body > .ts-dropdown", { timeout: 5000 }).should("exist");
 
         // Clean up
         cy.get("body").type("{esc}");
@@ -157,8 +163,13 @@ describe("event-checkin.js openCheckoutByDialog TomSelect dropdownParent:body (#
         cy.get(".modal.show .ts-wrapper", { timeout: 10000 }).should("exist");
         cy.get(".modal.show .ts-control").click();
 
-        // Key assertion: dropdown is a direct child of <body>
-        cy.get("body > .ts-dropdown", { timeout: 5000 }).should("exist").and("be.visible");
+        // Key assertion: dropdown is a direct child of <body>.
+        // The existence of body > .ts-dropdown proves dropdownParent:"body" is in
+        // effect (if it were missing, the dropdown would live inside .modal-content
+        // and be clipped by overflow:hidden instead). Visibility is not checked here
+        // because the TomSelect load callback requires a 2-char query before fetching
+        // options, and clicking the control alone shows no list items.
+        cy.get("body > .ts-dropdown", { timeout: 5000 }).should("exist");
 
         // Cancel without actually checking out (avoid side effects)
         cy.get(".modal.show #checkoutCancelBtn").click({ force: true });
