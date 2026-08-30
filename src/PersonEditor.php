@@ -24,7 +24,7 @@ $sPageSubtitle = gettext('Add or edit individual person records');
 // Get the PersonID out of the querystring
 $iPersonID = 0;
 if (array_key_exists('PersonID', $_GET)) {
-    $iPersonID = (int) InputUtils::filterInt($_GET['PersonID']);
+    $iPersonID = InputUtils::filterInt($_GET['PersonID']);
 }
 $isNewPerson = $iPersonID === 0;
 

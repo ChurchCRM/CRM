@@ -19,7 +19,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 $iClassification = 0;
 if (isset($_POST['Classification'])) {
-    $iClassification = (int) InputUtils::filterInt($_POST['Classification']);
+    $iClassification = InputUtils::filterInt($_POST['Classification']);
     $_SESSION['classification'] = $iClassification;
 } elseif (isset($_SESSION['classification'])) {
     $iClassification = (int) $_SESSION['classification'];
@@ -45,7 +45,7 @@ if (isset($_POST['Confirm'])) {
     foreach ($familyArray as $fam_ID => $fam_Data) {
         $key = 'EnvelopeID_' . $fam_ID;
         if (isset($_POST[$key])) {
-            $newEnvelope = (int) InputUtils::filterInt($_POST[$key]);
+            $newEnvelope = InputUtils::filterInt($_POST[$key]);
             $priorEnvelope = $envelopesByFamID[$fam_ID];
 
             if ($newEnvelope !== $priorEnvelope) {
@@ -68,7 +68,7 @@ if (isset($_POST['SortBy'])) {
 }
 
 if (isset($_POST['AssignStartNum'])) {
-    $iAssignStartNum = (int) InputUtils::filterInt($_POST['AssignStartNum']);
+    $iAssignStartNum = InputUtils::filterInt($_POST['AssignStartNum']);
 } else {
     $iAssignStartNum = 1;
 }

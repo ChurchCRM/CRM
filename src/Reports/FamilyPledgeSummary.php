@@ -113,7 +113,7 @@ $fundTypes = '';
 if (!empty($_POST['funds'])) {
     $fundCount = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$fundCount++] = (int) InputUtils::filterInt($fundID);
+        $fund[$fundCount++] = InputUtils::filterInt($fundID);
     }
     if ($fundCount === 1) {
         if ($fund[0]) {

@@ -20,7 +20,7 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
 $nGrps = count($aGrp);
 
-$iFYID = (int) InputUtils::filterInt($_GET['FYID']);
+$iFYID = InputUtils::filterInt($_GET['FYID']);
 $dFirstSunday = InputUtils::legacyFilterInput($_GET['FirstSunday']);
 $dLastSunday = InputUtils::legacyFilterInput($_GET['LastSunday']);
 $withPictures = InputUtils::legacyFilterInput($_GET['pictures']);

@@ -87,7 +87,7 @@ if ($sSource === 'cart') {
     if (!empty($_POST['Classification'])) {
         $count = 0;
         foreach ($_POST['Classification'] as $Cls) {
-            $Class[$count++] = (int) InputUtils::filterInt($Cls);
+            $Class[$count++] = InputUtils::filterInt($Cls);
         }
         if ($count === 1) {
             if ($Class[0]) {
@@ -105,7 +105,7 @@ if ($sSource === 'cart') {
     if (!empty($_POST['FamilyRole'])) {
         $count = 0;
         foreach ($_POST['FamilyRole'] as $Fmr) {
-            $Class[$count++] = (int) InputUtils::filterInt($Fmr);
+            $Class[$count++] = InputUtils::filterInt($Fmr);
         }
         if ($count === 1) {
             if ($Class[0]) {
@@ -122,14 +122,14 @@ if ($sSource === 'cart') {
 
     if (!empty($_POST['Gender'])) {
         $sWhereExt .= 'AND per_Gender = ? ';
-        $whereParams[] = (int) InputUtils::filterInt($_POST['Gender']);
+        $whereParams[] = InputUtils::filterInt($_POST['Gender']);
         $whereTypes .= 'i';
     }
 
     if (!empty($_POST['GroupID'])) {
         $count = 0;
         foreach ($_POST['GroupID'] as $Grp) {
-            $Class[$count++] = (int) InputUtils::filterInt($Grp);
+            $Class[$count++] = InputUtils::filterInt($Grp);
         }
         if ($count === 1) {
             if ($Class[0]) {

@@ -11,7 +11,7 @@ use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 // Get the Fiscal Year ID out of the query string
-$iFYID = (int) InputUtils::filterInt($_POST['FYID']);
+$iFYID = InputUtils::filterInt($_POST['FYID']);
 if (!$iFYID) {
     $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 }

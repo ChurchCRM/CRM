@@ -35,7 +35,7 @@ $app->post('/reports', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $body      = $request->getParsedBody();
-    $iGroupID  = (int) InputUtils::filterInt($body['GroupID'] ?? '0');
+    $iGroupID  = InputUtils::filterInt($body['GroupID'] ?? '0');
     $groupRole = InputUtils::sanitizeText($body['GroupRole'] ?? '');
 
     // Validate group exists — redirect back to step 1 if not

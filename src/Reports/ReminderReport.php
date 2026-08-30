@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Get the Fiscal Year ID out of the query string
-$iFYID = (int) InputUtils::filterInt($_POST['FYID']);
+$iFYID = InputUtils::filterInt($_POST['FYID']);
 if (!$iFYID) {
     $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 }
@@ -125,7 +125,7 @@ $fundTypes = '';
 if (!empty($_POST['funds'])) {
     $fundCount = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$fundCount++] = (int) InputUtils::filterInt($fundID);
+        $fund[$fundCount++] = InputUtils::filterInt($fundID);
     }
     if ($fundCount === 1) {
         if ($fund[0]) {

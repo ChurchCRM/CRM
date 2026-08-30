@@ -17,7 +17,7 @@ use ChurchCRM\Utils\LoggerUtils;
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
 
-$iFYID = (int) InputUtils::filterInt($_GET['FYID']);
+$iFYID = InputUtils::filterInt($_GET['FYID']);
 
 class PdfPhotoBook extends ChurchInfoReport
 {

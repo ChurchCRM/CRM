@@ -19,7 +19,7 @@ $aGrp = explode(',', $iGroupID);
 $nGrps = count($aGrp);
 LoggerUtils::getAppLogger()->debug("Group ID = {$iGroupID}");
 
-$iFYID = (int) InputUtils::filterInt($_GET['FYID']);
+$iFYID = InputUtils::filterInt($_GET['FYID']);
 
 $tFirstSunday = InputUtils::filterInt($_GET['FirstSunday']);
 $tLastSunday = InputUtils::legacyFilterInput($_GET['LastSunday']);
@@ -37,8 +37,8 @@ $tNoSchool6 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool6');
 $tNoSchool7 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool7');
 $tNoSchool8 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool8');
 
-$iExtraStudents = (int)InputUtils::filterInt($_GET['ExtraStudents']);
-$iExtraTeachers = (int)InputUtils::filterInt($_GET['ExtraTeachers']);
+$iExtraStudents = InputUtils::filterInt($_GET['ExtraStudents']);
+$iExtraTeachers = InputUtils::filterInt($_GET['ExtraTeachers']);
 
 $dFirstSunday = strtotime($tFirstSunday);
 $dLastSunday = strtotime($tLastSunday);
