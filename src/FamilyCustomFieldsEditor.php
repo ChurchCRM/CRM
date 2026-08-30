@@ -272,15 +272,15 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     function confirmDeleteField(fieldName, fieldId) {
-        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
-        msg += '<br><br><strong>' + <?= json_encode(gettext('Warning')) ?> + ':</strong> ';
-        msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all family data assigned for this field!')) ?>;
+        var msg = <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
+        msg += '<br><br><strong>' + <?= InputUtils::jsonEncodeForScript(gettext('Warning')) ?> + ':</strong> ';
+        msg += <?= InputUtils::jsonEncodeForScript(gettext('By deleting this field, you will irrevocably lose all family data assigned for this field!')) ?>;
         bootbox.confirm({
-            title: <?= json_encode(gettext('Delete Confirmation')) ?>,
+            title: <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
             message: msg,
             buttons: {
-                cancel: { label: <?= json_encode(gettext('Cancel')) ?>, className: 'btn-secondary' },
-                confirm: { label: <?= json_encode(gettext('Delete')) ?>, className: 'btn-danger' }
+                cancel: { label: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>, className: 'btn-secondary' },
+                confirm: { label: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, className: 'btn-danger' }
             },
             callback: function(result) {
                 if (result) {
@@ -304,7 +304,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                     var csrfInput = document.createElement('input');
                     csrfInput.type = 'hidden';
                     csrfInput.name = 'csrf_token';
-                    csrfInput.value = <?= json_encode(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>;
+                    csrfInput.value = <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>;
                     form.appendChild(csrfInput);
 
                     document.body.appendChild(form);
@@ -327,7 +327,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         form.method = 'POST';
         form.action = 'FamilyCustomFieldsRowOps.php';
         [['OrderID', btn.data('order-id')], ['Field', btn.data('field-id')],
-         ['Action', btn.data('direction')], ['csrf_token', <?= json_encode(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>]]
+         ['Action', btn.data('direction')], ['csrf_token', <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>]]
         .forEach(function (p) {
             var inp = document.createElement('input');
             inp.type = 'hidden'; inp.name = p[0]; inp.value = p[1];
@@ -340,7 +340,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
     $(document).ready(function() {
         window.CRM.notify(
-            <?= json_encode(gettext('Field deleted successfully')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('Field deleted successfully')) ?>,
             { type: 'success' }
         );
     });

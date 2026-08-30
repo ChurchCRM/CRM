@@ -63,15 +63,15 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentFamily = <?= $family->getId() ?>;
-    window.CRM.currentFamilyName = <?= json_encode($family->getName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
+    window.CRM.currentFamilyName = <?= InputUtils::jsonEncodeForScript($family->getName()) ?>;
     window.CRM.currentActive = <?= $family->isActive() ?"true" :"false" ?>;
     window.CRM.currentFamilyView = 2;
     window.CRM.familyEmail ="<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
     window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
     <?php if ($showFamilyCheckin): ?>
     window.CRM.familyCheckin = {
-        familyPersonIds: <?= json_encode($familyPersonIds, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-        activeEvents: <?= json_encode($activeEventsForCheckin, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+        familyPersonIds: <?= InputUtils::jsonEncodeForScript($familyPersonIds) ?>,
+        activeEvents: <?= InputUtils::jsonEncodeForScript($activeEventsForCheckin) ?>
     };
     <?php endif; ?>
 </script>
@@ -644,7 +644,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 <?php if ($family->hasAddress() && $family->hasLatitudeAndLongitude()) : ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = window.CRM || {};
-    window.CRM.familyMapConfig = <?= json_encode(['lat' => (float) $family->getLatitude(), 'lng' => (float) $family->getLongitude()]) ?>;
+    window.CRM.familyMapConfig = <?= InputUtils::jsonEncodeForScript(['lat' => (float) $family->getLatitude(), 'lng' => (float) $family->getLongitude()]) ?>;
 </script>
 <?php endif; ?>
 <?php if ($showFamilyCheckin): ?>

@@ -223,7 +223,7 @@ $validationError     = $validationError ?? '';
                     </div>
                     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                         window.CRM = window.CRM || {};
-                        window.CRM.churchMapConfig = <?= json_encode([
+                        window.CRM.churchMapConfig = <?= InputUtils::jsonEncodeForScript([
                             'lat'       => $latFloat,
                             'lng'       => $lngFloat,
                             'name'      => $churchInfo['sChurchName'],

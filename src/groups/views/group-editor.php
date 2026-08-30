@@ -180,7 +180,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   var defaultRoleID = <?= ($thisGroup->getDefaultRole() ? $thisGroup->getDefaultRole() : 1) ?>;
   var dataT = 0;
-  var groupRoleData = <?= json_encode($groupRoleData) ?>;
+  var groupRoleData = <?= InputUtils::jsonEncodeForScript($groupRoleData) ?>;
   var roleCount = groupRoleData.length;
   var groupID = <?= $iGroupID ?>;
 </script>

@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 
+use ChurchCRM\Utils\InputUtils;
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -44,12 +45,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 window.CRM = window.CRM || {};
-window.CRM.eventEditorPage = <?= json_encode([
+window.CRM.eventEditorPage = <?= InputUtils::jsonEncodeForScript([
     'eventId'      => $eventId > 0 ? (int) $eventId : 0,
     'typeId'       => $iTypeID > 0 ? (int) $iTypeID : 0,
     'eventExists'  => (bool) $eventExists,
     'redirectUrl'  => $sRootPath . '/event/dashboard',
-], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+]) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/event-editor.min.js') ?>"></script>
 

@@ -252,7 +252,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create pledge'), [], 500, $e, $request);
         }
         try {
-            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
+            $paymentObj = json_decode($groupPayment, true, 512);
         } catch (\JsonException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }
@@ -355,7 +355,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update pledge'), [], 500, $e, $request);
         }
         try {
-            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
+            $paymentObj = json_decode($groupPayment, true, 512);
         } catch (\JsonException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }

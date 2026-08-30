@@ -25,7 +25,7 @@ class   SystemConfig
     private static function getSupportedLocales(): array
     {
         $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json');
-        $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
+        $locales = json_decode($localesFile, true, 512);
         $languagesChoices = [];
         foreach ($locales as $key => $value) {
             $languagesChoices[] = gettext($key) . ':' . $value['locale'];
@@ -131,11 +131,11 @@ class   SystemConfig
     private static function buildConfigs(): array
     {
         return [
-            'sLogLevel'                            => new ConfigItem('sLogLevel', 'choice', '200', gettext('Event Log severity to write, used by ORM and App Logs'), '', json_encode(SystemConfig::getMonoLogLevels(), JSON_THROW_ON_ERROR)),
+            'sLogLevel'                            => new ConfigItem('sLogLevel', 'choice', '200', gettext('Event Log severity to write, used by ORM and App Logs'), '', json_encode(SystemConfig::getMonoLogLevels())),
             'sDirClassifications'                  => new ConfigItem('sDirClassifications', 'text', '1,2,4,5', gettext('Include only these classifications in the directory, comma separated')),
-            'sDirRoleHead'                         => new ConfigItem('sDirRoleHead', 'choice', '1', gettext('These are the family role numbers designated as head of house'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
-            'sDirRoleSpouse'                       => new ConfigItem('sDirRoleSpouse', 'choice', '2', gettext('These are the family role numbers designated as spouse'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
-            'sDirRoleChild'                        => new ConfigItem('sDirRoleChild', 'choice', '3', gettext('These are the family role numbers designated as child'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
+            'sDirRoleHead'                         => new ConfigItem('sDirRoleHead', 'choice', '1', gettext('These are the family role numbers designated as head of house'), '', json_encode(SystemConfig::getFamilyRoleChoices())),
+            'sDirRoleSpouse'                       => new ConfigItem('sDirRoleSpouse', 'choice', '2', gettext('These are the family role numbers designated as spouse'), '', json_encode(SystemConfig::getFamilyRoleChoices())),
+            'sDirRoleChild'                        => new ConfigItem('sDirRoleChild', 'choice', '3', gettext('These are the family role numbers designated as child'), '', json_encode(SystemConfig::getFamilyRoleChoices())),
             'iSessionTimeout'                      => new ConfigItem('iSessionTimeout', 'number', '3600', gettext("Session timeout length in seconds\nSet to zero to disable session timeouts.")),
             'aFinanceQueries'                      => new ConfigItem('aFinanceQueries', 'text', '28,30', gettext('Comma-separated query IDs that require finance permissions to view')),
             'iMinPasswordLength'                   => new ConfigItem('iMinPasswordLength', 'number', '8', gettext('Minimum length a user may set their password to')),
@@ -145,16 +145,16 @@ class   SystemConfig
             'iPDFOutputType'                       => new ConfigItem('iPDFOutputType', 'number', '1', gettext("PDF handling mode.\n1 = Save File dialog\n2 = Open in current browser window")),
             'sDefaultCity'                         => new ConfigItem('sDefaultCity', 'text', '', gettext('Default City')),
             'sDefaultState'                        => new ConfigItem('sDefaultState', 'text', '', gettext('Default State - Must be 2-letter abbreviation!')),
-            'sDefaultCountry'                      => new ConfigItem('sDefaultCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
+            'sDefaultCountry'                      => new ConfigItem('sDefaultCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()])),
             'sToEmailAddress'                      => new ConfigItem('sToEmailAddress', 'text', '', gettext('Church email address automatically added as a removable recipient when composing emails from CRM')),
             'iSMTPTimeout'                         => new ConfigItem('iSMTPTimeout', 'number', '10', gettext('SMTP Server timeout in sec')),
             'sSMTPHost'                            => new ConfigItem('sSMTPHost', 'text', '', gettext('SMTP Server Address (mail.server.com:25)')),
             'bSMTPAuth'                            => new ConfigItem('bSMTPAuth', 'boolean', '0', gettext('Enable if your SMTP server requires a username and password')),
             'sSMTPUser'                            => new ConfigItem('sSMTPUser', 'text', '', gettext('SMTP Username')),
             'sSMTPPass'                            => new ConfigItem('sSMTPPass', 'password', '', gettext('SMTP Password')),
-            'sLanguage'                            => new ConfigItem('sLanguage', 'choice', 'en_US', gettext('Internationalization (I18n) support'), 'https://poeditor.com/join/project?hash=RABdnDSqAt', json_encode(SystemConfig::getSupportedLocales(), JSON_THROW_ON_ERROR)),
-            'iFYMonth'                             => new ConfigItem('iFYMonth', 'choice', '1', gettext('The month that starts your organization\'s fiscal year'), '', json_encode(SystemConfig::getMonthChoices(), JSON_THROW_ON_ERROR)),
-            'iMapZoom'                             => new ConfigItem('iMapZoom', 'choice', '10', gettext('Initial zoom level when opening the map'), '', json_encode(SystemConfig::getMapZoomChoices(), JSON_THROW_ON_ERROR)),
+            'sLanguage'                            => new ConfigItem('sLanguage', 'choice', 'en_US', gettext('Internationalization (I18n) support'), 'https://poeditor.com/join/project?hash=RABdnDSqAt', json_encode(SystemConfig::getSupportedLocales())),
+            'iFYMonth'                             => new ConfigItem('iFYMonth', 'choice', '1', gettext('The month that starts your organization\'s fiscal year'), '', json_encode(SystemConfig::getMonthChoices())),
+            'iMapZoom'                             => new ConfigItem('iMapZoom', 'choice', '10', gettext('Initial zoom level when opening the map'), '', json_encode(SystemConfig::getMapZoomChoices())),
             'iChurchLatitude'                      => new ConfigItem('iChurchLatitude', 'number', '', ''),
             'iChurchLongitude'                     => new ConfigItem('iChurchLongitude', 'number', '', ''),
             'bHidePersonAddress'                   => new ConfigItem('bHidePersonAddress', 'boolean', '1', gettext('When enabled, hides the address field for people not assigned to a family')),
@@ -166,7 +166,7 @@ class   SystemConfig
             'iChecksPerDepositForm'                => new ConfigItem('iChecksPerDepositForm', 'number', '14', gettext('How many checks to print per deposit slip page')),
             'bUseScannedChecks'                    => new ConfigItem('bUseScannedChecks', 'boolean', '0', gettext('Allow scanned check images to be attached to deposit records')),
             'sDistanceUnit'                        => new ConfigItem('sDistanceUnit', 'choice', 'miles', gettext('Unit used to measure distance, miles or km.'), '', '{"Choices":["' . gettext('miles') . '","' . gettext('kilometers') . '"]}'),
-            'sTimeZone'                            => new ConfigItem('sTimeZone', 'choice', 'America/New_York', gettext('Time zone'), 'https://www.php.net/manual/en/timezones.php', json_encode(['Choices' => timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
+            'sTimeZone'                            => new ConfigItem('sTimeZone', 'choice', 'America/New_York', gettext('Time zone'), 'https://www.php.net/manual/en/timezones.php', json_encode(['Choices' => timezone_identifiers_list()])),
             'bForceUppercaseZip'                   => new ConfigItem('bForceUppercaseZip', 'boolean', '0', gettext('Make user-entered zip/postcodes UPPERCASE when saving to the database.')),
             'bEnableNonDeductible'                 => new ConfigItem('bEnableNonDeductible', 'boolean', '0', gettext('Allow recording of non-tax-deductible payments in the finance module')),
             'bEnableSelfRegistration'              => new ConfigItem('bEnableSelfRegistration', 'boolean', '0', gettext('Allow visitors to create their own family record via the self-registration page')),
@@ -195,35 +195,35 @@ class   SystemConfig
             'sChurchPhone'                         => new ConfigItem('sChurchPhone', 'text', '', ''),
             'sChurchEmail'                         => new ConfigItem('sChurchEmail', 'text', '', ''),
             
-            'sTaxReport1'                          => new ConfigItem('sTaxReport1', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.')),
-            'sTaxReport2'                          => new ConfigItem('sTaxReport2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.')),
-            'sTaxReport3'                          => new ConfigItem('sTaxReport3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.')),
+            'sTaxReport1'                          => new ConfigItem('sTaxReport1', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.'), '', '', false),
+            'sTaxReport2'                          => new ConfigItem('sTaxReport2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.'), '', '', false),
+            'sTaxReport3'                          => new ConfigItem('sTaxReport3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.'), '', '', false),
             'sTaxSigner'                           => new ConfigItem('sTaxSigner', 'text', '', gettext('Tax Report signer')),
-            'sReminder1'                           => new ConfigItem('sReminder1', 'text', 'This letter shows our record of your pledge and payments for fiscal year', gettext('Verbage for the pledge reminder report')),
+            'sReminder1'                           => new ConfigItem('sReminder1', 'text', 'This letter shows our record of your pledge and payments for fiscal year', gettext('Verbage for the pledge reminder report'), '', '', false),
             'sReminderSigner'                      => new ConfigItem('sReminderSigner', 'text', '', gettext('Pledge Reminder Signer')),
-            'sReminderNoPledge'                    => new ConfigItem('sReminderNoPledge', 'text', 'Pledges: We do not have record of a pledge for from you for this fiscal year.', gettext('Verbage for the pledge reminder report - No record of a pledge')),
-            'sReminderNoPayments'                  => new ConfigItem('sReminderNoPayments', 'text', 'Payments: We do not have record of a pledge for from you for this fiscal year.', gettext('Verbage for the pledge reminder report - No record of payments')),
-            'sConfirm1'                            => new ConfigItem('sConfirm1', 'text', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', gettext('Verbage for the database information confirmation and correction report')),
-            'sConfirm2'                            => new ConfigItem('sConfirm2', 'text', 'Thank you very much for helping us to update this information.', gettext('Verbage for the database information confirmation and correction report')),
-            'sConfirm3'                            => new ConfigItem('sConfirm3', 'text', '', gettext('Verbage for the database information confirmation and correction report')),
-            'sConfirm4'                            => new ConfigItem('sConfirm4', 'text', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', gettext('Verbage for the database information confirmation and correction report')),
-            'sConfirm5'                            => new ConfigItem('sConfirm5', 'text', '', gettext('Verbage for the database information confirmation and correction report')),
-            'sConfirm6'                            => new ConfigItem('sConfirm6', 'text', '', gettext('Verbage for the database information confirmation and correction report')),
+            'sReminderNoPledge'                    => new ConfigItem('sReminderNoPledge', 'text', 'Pledges: We do not have record of a pledge for from you for this fiscal year.', gettext('Verbage for the pledge reminder report - No record of a pledge'), '', '', false),
+            'sReminderNoPayments'                  => new ConfigItem('sReminderNoPayments', 'text', 'Payments: We do not have record of a pledge for from you for this fiscal year.', gettext('Verbage for the pledge reminder report - No record of payments'), '', '', false),
+            'sConfirm1'                            => new ConfigItem('sConfirm1', 'text', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
+            'sConfirm2'                            => new ConfigItem('sConfirm2', 'text', 'Thank you very much for helping us to update this information.', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
+            'sConfirm3'                            => new ConfigItem('sConfirm3', 'text', '', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
+            'sConfirm4'                            => new ConfigItem('sConfirm4', 'text', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
+            'sConfirm5'                            => new ConfigItem('sConfirm5', 'text', '', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
+            'sConfirm6'                            => new ConfigItem('sConfirm6', 'text', '', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
             'sConfirmSigner'                       => new ConfigItem('sConfirmSigner', 'text', '', gettext('Database information confirmation and correction report signer')),
-            'sDirectoryDisclaimer1'                => new ConfigItem('sDirectoryDisclaimer1', 'text', "Every effort was made to ensure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of", gettext('Verbage for the directory report')),
-            'sDirectoryDisclaimer2'                => new ConfigItem('sDirectoryDisclaimer2', 'text', ', and the information contained in it may not be used for business or commercial purposes.', gettext('Verbage for the directory report')),
+            'sDirectoryDisclaimer1'                => new ConfigItem('sDirectoryDisclaimer1', 'text', "Every effort was made to ensure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of", gettext('Verbage for the directory report'), '', '', false),
+            'sDirectoryDisclaimer2'                => new ConfigItem('sDirectoryDisclaimer2', 'text', ', and the information contained in it may not be used for business or commercial purposes.', gettext('Verbage for the directory report'), '', '', false),
             'bDirLetterHead'                       => new ConfigItem('bDirLetterHead', 'text', '../Images/church_letterhead.jpg', gettext('Church Letterhead path and file')),
             'sZeroGivers'                          => new ConfigItem('sZeroGivers', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.')),
             'sZeroGivers2'                         => new ConfigItem('sZeroGivers2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.')),
             'sZeroGivers3'                         => new ConfigItem('sZeroGivers3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.')),
             'sChurchChkAcctNum'                    => new ConfigItem('sChurchChkAcctNum', 'text', '', gettext('Church Checking Account Number')),
             'sQBDTSettings'                        => new ConfigItem('sQBDTSettings', 'json', '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}', gettext('QuickBooks Deposit Ticket Settings')),
-            'sChurchCountry'                       => new ConfigItem('sChurchCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
+            'sChurchCountry'                       => new ConfigItem('sChurchCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()])),
             'sConfirmSincerely'                    => new ConfigItem('sConfirmSincerely', 'text', 'Sincerely', gettext('Used to end a letter before Signer')),
             'sDear'                                => new ConfigItem('sDear', 'text', 'Dear', gettext('Text before name in emails/reports')),
             'sDepositSlipType'                     => new ConfigItem('sDepositSlipType', 'choice', 'QBDT', gettext('Deposit ticket type'), '', '{"Choices":["QBDT (QuickBooks):QBDT"]}'),
-            'iPersonNameStyle'                     => new ConfigItem('iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
-            'iPersonInitialStyle'                  => new ConfigItem('iPersonInitialStyle', 'choice', '0', '', '', json_encode(SystemConfig::getInitialStyleChoices(), JSON_THROW_ON_ERROR)),
+            'iPersonNameStyle'                     => new ConfigItem('iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices())),
+            'iPersonInitialStyle'                  => new ConfigItem('iPersonInitialStyle', 'choice', '0', '', '', json_encode(SystemConfig::getInitialStyleChoices())),
             'bDisplayBillCounts'                   => new ConfigItem('bDisplayBillCounts', 'boolean', '1', gettext('Show a breakdown of bill denominations on the deposit slip report')),
             'sKioskVisibilityTimestamp'            => new ConfigItem('sKioskVisibilityTimestamp', 'text', '', gettext('KioskVisibilityTimestamp')),
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
@@ -253,7 +253,7 @@ class   SystemConfig
             'iDoNotSmsPropertyId'                  => new ConfigItem('iDoNotSmsPropertyId', 'ajax', '', gettext('Person property used to exclude members from SMS/text lists'), '', '/api/system/properties/person'),
             'bEnforceCSP'                          => new ConfigItem('bEnforceCSP', 'boolean', '0', gettext('Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.')),
             'bPHPMailerAutoTLS'                    => new ConfigItem('bPHPMailerAutoTLS', 'boolean', '0', gettext('Automatically enable SMTP encryption if offered by the relaying server.')),
-            'sPHPMailerSMTPSecure'                 => new ConfigItem('sPHPMailerSMTPSecure', 'choice', ' ', gettext('Set the encryption system to use - ssl (deprecated) or tls'), '', json_encode(SystemConfig::getSmtpEncryptionChoices(), JSON_THROW_ON_ERROR)),
+            'sPHPMailerSMTPSecure'                 => new ConfigItem('sPHPMailerSMTPSecure', 'choice', ' ', gettext('Set the encryption system to use - ssl (deprecated) or tls'), '', json_encode(SystemConfig::getSmtpEncryptionChoices())),
             'bEnabledSundaySchool'                 => new ConfigItem('bEnabledSundaySchool', 'boolean', '1', gettext('Show or hide the Sunday School module in the sidebar navigation')),
             'bEnabledFinance'                      => new ConfigItem('bEnabledFinance', 'boolean', '1', gettext('Enable Finance menu')),
             'bEnabledEvents'                       => new ConfigItem('bEnabledEvents', 'boolean', '1', gettext('Show or hide the Events section in the main navigation menu')),
@@ -277,7 +277,7 @@ class   SystemConfig
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
             // Telemetry — collection level and internal state (sTelemetryAskedVersion excluded from UI)
-            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'none', gettext('Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent.'), '', json_encode(self::getTelemetryLevelChoices(), JSON_THROW_ON_ERROR)),
+            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'none', gettext('Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent.'), '', json_encode(self::getTelemetryLevelChoices())),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
         ];
     }
@@ -366,7 +366,7 @@ class   SystemConfig
             return [];
         }
         try {
-            $data = json_decode($item->getData(), true, 512, JSON_THROW_ON_ERROR);
+            $data = json_decode($item->getData(), true, 512);
         } catch (\JsonException) {
             return [];
         }
@@ -462,7 +462,7 @@ class   SystemConfig
      */
     public static function getValueForJs(string $name): string
     {
-        return json_encode(self::getValue($name), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);
+        return json_encode(self::getValue($name));
     }
 
     /**
@@ -525,10 +525,18 @@ class   SystemConfig
             $sanitized = InputUtils::sanitizeJsonStrings($decoded);
 
             try {
-                $value = json_encode($sanitized, JSON_THROW_ON_ERROR);
+                $value = json_encode($sanitized);
             } catch (\JsonException $e) {
                 throw new \Exception(gettext('Unable to re-encode JSON for configuration') . ': ' . $name . ' - ' . $e->getMessage());
             }
+        }
+
+        // Input-level defense: strip tags from text configs marked for sanitization.
+        // NOTE: this does NOT replace output escaping. Every output context must still
+        // apply context-appropriate escaping (htmlspecialchars for HTML attributes/text,
+        // json_encode with HEX flags for JS contexts, etc.).
+        if ($configItem->getType() === 'text' && $configItem->shouldSanitizeInput()) {
+            $value = InputUtils::sanitizeText($value);
         }
 
         $configItem->setValue($value);

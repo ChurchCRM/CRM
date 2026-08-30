@@ -247,10 +247,10 @@ $(document).ready(function() {
     // Initialize the user settings panel
     window.CRM.settingsPanel.init({
         container: '#userSettingsPanel',
-        title: <?= json_encode(gettext('Quick Settings')) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('Quick Settings')) ?>,
         icon: 'fa-solid fa-user-gear',
         headerClass: 'bg-primary',
-        settings: <?= json_encode($userSettingsConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        settings: <?= InputUtils::jsonEncodeForScript($userSettingsConfig) ?>,
         onSave: function() {
             // Reload page after settings save to reflect changes
             setTimeout(function() {

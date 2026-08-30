@@ -520,7 +520,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
         </div>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM = window.CRM || {};
-            window.CRM.personMapConfig = <?= json_encode($personMapConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+            window.CRM.personMapConfig = <?= InputUtils::jsonEncodeForScript($personMapConfig) ?>;
         </script>
         <?php endif; ?>
 

@@ -72,7 +72,7 @@ class VersionUtils
         }
 
         try {
-            $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
+            $composerJson = json_decode($composerFile, true, 512);
         } catch (\JsonException $e) {
             // composer.json may be partial/invalid mid-deploy; let callers fall back.
             return null;

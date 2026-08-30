@@ -215,19 +215,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     /* Pass i18n strings and root path to the external script */
     window.CRM = window.CRM || {};
     window.CRM.funds = {
-        apiBase: <?= json_encode(SystemURLs::getRootPath() . '/finance/api/funds') ?>,
+        apiBase: <?= InputUtils::jsonEncodeForScript(SystemURLs::getRootPath() . '/finance/api/funds') ?>,
         i18n: {
-            confirmDelete:    <?= json_encode(gettext('Are you sure you want to delete this fund?')) ?>,
-            deleteWarning:    <?= json_encode(gettext('This action cannot be undone.')) ?>,
-            deleteTitle:      <?= json_encode(gettext('Delete Fund')) ?>,
-            cancel:           <?= json_encode(gettext('Cancel')) ?>,
-            delete:           <?= json_encode(gettext('Delete')) ?>,
-            deletedOk:        <?= json_encode(gettext('Fund deleted successfully.')) ?>,
-            savedOk:          <?= json_encode(gettext('Fund saved successfully.')) ?>,
-            addedOk:          <?= json_encode(gettext('Fund added successfully.')) ?>,
-            reorderedOk:      <?= json_encode(gettext('Fund order updated.')) ?>,
-            errRequired:      <?= json_encode(gettext('Fund name is required.')) ?>,
-            errServer:        <?= json_encode(gettext('An error occurred. Please try again.')) ?>
+            confirmDelete:    <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete this fund?')) ?>,
+            deleteWarning:    <?= InputUtils::jsonEncodeForScript(gettext('This action cannot be undone.')) ?>,
+            deleteTitle:      <?= InputUtils::jsonEncodeForScript(gettext('Delete Fund')) ?>,
+            cancel:           <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>,
+            delete:           <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>,
+            deletedOk:        <?= InputUtils::jsonEncodeForScript(gettext('Fund deleted successfully.')) ?>,
+            savedOk:          <?= InputUtils::jsonEncodeForScript(gettext('Fund saved successfully.')) ?>,
+            addedOk:          <?= InputUtils::jsonEncodeForScript(gettext('Fund added successfully.')) ?>,
+            reorderedOk:      <?= InputUtils::jsonEncodeForScript(gettext('Fund order updated.')) ?>,
+            errRequired:      <?= InputUtils::jsonEncodeForScript(gettext('Fund name is required.')) ?>,
+            errServer:        <?= InputUtils::jsonEncodeForScript(gettext('An error occurred. Please try again.')) ?>
         }
     };
 </script>
