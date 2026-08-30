@@ -1153,44 +1153,8 @@ msgid "Minimum Price"
 msgstr "ราคาขั้นต่ำ"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "เครื่องมือภูมิศาสตร์ครอบครัว"
-
-#: 
 msgid "Select Family"
 msgstr "เลือกครอบครัว"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "จำนวนเพื่อนบ้านสูงสุด"
-
-#: 
-msgid "Maximum distance"
-msgstr "ระยะทางสูงสุด"
-
-#: 
-msgid "Data file format"
-msgstr "รูปแบบไฟล์ข้อมูล"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "ตัวแสดงผล GPS"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "รวมครอบครัวในไฟล์พิกัด"
-
-#: 
-msgid "Neighbor Families"
-msgstr "ครอบครัวเพื่อนบ้าน"
-
-#: 
-msgid "Make Data File"
-msgstr "สร้างไฟล์ข้อมูล"
-
-#: 
-msgid "Show Neighbors"
-msgstr "แสดงเพื่อนบ้าน"
 
 #: 
 msgid "Distance"
@@ -1211,10 +1175,6 @@ msgstr "ลองจิจูด"
 #: 
 msgid "Add to Cart"
 msgstr "เพิ่มลงในตะกร้า"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "ตัดกับตะกร้า"
 
 #: 
 msgid "Remove from Cart"
@@ -1391,10 +1351,6 @@ msgstr "ส่งอีเมลทั้งหมด"
 #: 
 msgid "Family Roles"
 msgstr "บทบาทครอบครัว"
-
-#: 
-msgid "Family Geographic"
-msgstr "ภูมิศาสตร์ครอบครัว"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4235,24 +4191,8 @@ msgid "Profile Image uploaded"
 msgstr "อัปโหลดรูปโปรไฟล์แล้ว"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "แสดงเพื่อนบ้านที่มีการจัดประเภทเหล่านี้"
-
-#: 
-msgid "Please select a Family."
-msgstr "กรุณาเลือกครอบครัว"
-
-#: 
-msgid "Coordinate database file name"
-msgstr "ชื่อไฟล์ฐานข้อมูลพิกัด"
-
-#: 
 msgid "select an option"
 msgstr "เลือกตัวเลือก"
-
-#: 
-msgid "Direct me"
-msgstr "นำทางฉัน"
 
 #: 
 msgid "Your cart is empty"
@@ -9369,10 +9309,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "สร้างเอกสารใบแจ้งภาษีสำหรับผู้ถวาย"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "เครื่องมือทางภูมิศาสตร์"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "นำข้อมูลของคุณเข้าสู่ ChurchCRM"
 
@@ -10101,10 +10037,6 @@ msgstr "ดูและจัดการกลุ่มทั้งหมดใ
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "ดูและจัดการการถวายในใบรับถวาย"
-
-#: 
-msgid "View and manage family location data"
-msgstr "ดูและจัดการข้อมูลตำแหน่งครอบครัว"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17019,10 +16951,6 @@ msgstr "ต้องระบุวันที่"
 #: 
 msgid "Deleted successfully"
 msgstr "ลบเรียบร้อยแล้ว"
-
-#: 
-msgid "Deposit #"
-msgstr "เลขที่เงินฝาก"
 
 #: 
 msgid "Deposit Slip"

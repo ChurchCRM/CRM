@@ -1195,48 +1195,9 @@ msgid "Minimum Price"
 msgstr "Maximal distans"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Familj geografisk verktyg"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Välj familj:"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximum antal grannar"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maximal distans"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Filformat"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visning"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Inkludera familjer i koordinat fil"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Granfamiljer"
-
-#: 
-msgid "Make Data File"
-msgstr "Skapa informationsfil"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Visa grannar"
 
 #: 
 msgid "Distance"
@@ -1257,10 +1218,6 @@ msgstr "Longitud"
 #: 
 msgid "Add to Cart"
 msgstr "Lägg till korgen"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Bearbeta med korgen"
 
 #: 
 msgid "Remove from Cart"
@@ -1451,10 +1408,6 @@ msgstr "Skicka e-post till alla"
 #: 
 msgid "Family Roles"
 msgstr "Familjeroller"
-
-#: 
-msgid "Family Geographic"
-msgstr "Familj geografi"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4345,26 +4298,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilbild uppladdad"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Visa grannar med dessa klassificeringar"
-
-#: 
-msgid "Please select a Family."
-msgstr "Välj en familj."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Koordinera databasfilnamn"
-
-#: 
 msgid "select an option"
 msgstr "Välj ett alternativ"
-
-#: 
-msgid "Direct me"
-msgstr "Rikta mig"
 
 #: 
 msgid "Your cart is empty"
@@ -9497,10 +9432,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Generera skattebesked för givare"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografiska verktyg"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Importera dina data till ChurchCRM"
 
@@ -10229,10 +10160,6 @@ msgstr "Visa och hantera alla grupper i din församling"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Visa och hantera kollektinsamlingsbetalningar"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Visa och hantera familjers platsdata"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17147,10 +17074,6 @@ msgstr "Datum krävs"
 #: 
 msgid "Deleted successfully"
 msgstr "Borttaget"
-
-#: 
-msgid "Deposit #"
-msgstr "Insättning #"
 
 #: 
 msgid "Deposit Slip"

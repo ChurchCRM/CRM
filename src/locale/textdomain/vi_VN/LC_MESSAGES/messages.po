@@ -1167,48 +1167,9 @@ msgid "Minimum Price"
 msgstr "Giá thấp nhất"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Tìm kiếm các tín hữu ở gần nhau"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Lựa chọn Gia đình"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Hiển thị tối đa các tín hữu ở gần nhau"
-
-#: 
-msgid "Maximum distance"
-msgstr "Khoảng cách tối đa"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Định dạng tệp dữ liệu"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Trình hiển thị GPS"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Bao gồm các họ trong tệp tọa độ"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Gia đình hàng xóm"
-
-#: 
-msgid "Make Data File"
-msgstr "Tạo tập tin dữ liệu"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Hiển thị tín hữu"
 
 #: 
 msgid "Distance"
@@ -1229,10 +1190,6 @@ msgstr "Kinh độ"
 #: 
 msgid "Add to Cart"
 msgstr "Thêm vào giỏ"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Giao với giỏ"
 
 #: 
 msgid "Remove from Cart"
@@ -1411,10 +1368,6 @@ msgstr "Email cho tất cả"
 #: 
 msgid "Family Roles"
 msgstr "Vai trò Gia đình"
-
-#: 
-msgid "Family Geographic"
-msgstr "Trợ giúp địa lý"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4265,26 +4218,8 @@ msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Hiển thị tín hữu với các phân loại này"
-
-#: 
-msgid "Please select a Family."
-msgstr "Vui lòng lựa chọn gia đình."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Tên tệp cơ sở dữ liệu tọa độ"
-
-#: 
 msgid "select an option"
 msgstr "lựa chọn giá trị này"
-
-#: 
-msgid "Direct me"
-msgstr "Trực tiếp cho tôi"
 
 #: 
 msgid "Your cart is empty"
@@ -9401,10 +9336,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Tao tai lieu bao cao thue cho nguoi dang hien"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Tien ich dia ly"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Dua du lieu cua ban vao ChurchCRM"
 
@@ -10133,10 +10064,6 @@ msgstr "Xem va quan ly tat ca cac nhom trong giao xu"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Xem va quan ly cac khoan thanh toan phieu thu hien"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Xem va quan ly du lieu vi tri gia dinh"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17051,10 +16978,6 @@ msgstr "Ngày là bắt buộc"
 #: 
 msgid "Deleted successfully"
 msgstr "Đã xóa thành công"
-
-#: 
-msgid "Deposit #"
-msgstr "Số Ký gửi #"
 
 #: 
 msgid "Deposit Slip"

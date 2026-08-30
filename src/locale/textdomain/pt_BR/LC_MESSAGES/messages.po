@@ -1141,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "Preço mínimo"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Utilitários para geografia da Família"
-
-#: 
 msgid "Select Family"
 msgstr "Selecione a Família"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "Número máximo de vizinhos"
-
-#: 
-msgid "Maximum distance"
-msgstr "Máxima distância"
-
-#: 
-msgid "Data file format"
-msgstr "Formato do arquivo de dados"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Visualizador GPS"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "Incluir famílias no arquivo de coordenadas"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Famílias vizinhas"
-
-#: 
-msgid "Make Data File"
-msgstr "Criar arquivo de dados"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Mostrar vizinhos"
 
 #: 
 msgid "Distance"
@@ -1199,10 +1163,6 @@ msgstr "Longitude"
 #: 
 msgid "Add to Cart"
 msgstr "Adicionar ao Carrinho"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Cruzam com carrinho"
 
 #: 
 msgid "Remove from Cart"
@@ -1379,10 +1339,6 @@ msgstr "Enviar E-mail para Todos"
 #: 
 msgid "Family Roles"
 msgstr "Editar Papéis"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografia da Família"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4223,24 +4179,8 @@ msgid "Profile Image uploaded"
 msgstr "Imagem do Perfil Enviada"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Mostre os vizinhos com estas classificações"
-
-#: 
-msgid "Please select a Family."
-msgstr "Por favor, selecione a família"
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Nome do arquivo da base de dados de coordenadas"
-
-#: 
 msgid "select an option"
 msgstr "selecione uma opção"
-
-#: 
-msgid "Direct me"
-msgstr "Me direcione"
 
 #: 
 msgid "Your cart is empty"
@@ -9367,10 +9307,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Gerar documentos de declaração fiscal para doadores"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Utilitários Geográficos"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Digite os Seus Dados no ChurchCRM"
 
@@ -10099,10 +10035,6 @@ msgstr "Ver e gerir todos os grupos da sua congregação"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Ver e gerir pagamentos de talões de depósito"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Ver e gerir dados de localização da família"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17021,10 +16953,6 @@ msgstr "A data é obrigatória"
 #: 
 msgid "Deleted successfully"
 msgstr "Excluído com sucesso"
-
-#: 
-msgid "Deposit #"
-msgstr "Depósito nº"
 
 #: 
 msgid "Deposit Slip"

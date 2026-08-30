@@ -1141,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "ഏറ്റവും കുറഞ്ഞ വില"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "കുടുംബ ഭൂമിശാസ്ത്ര ഉപകരണങ്ങൾ"
-
-#: 
 msgid "Select Family"
 msgstr "കുടുംബം തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "ഏറ്റവും കൂടിയ അയൽക്കാരുടെ എണ്ണം"
-
-#: 
-msgid "Maximum distance"
-msgstr "ഏറ്റവും കൂടിയ ദൂരം"
-
-#: 
-msgid "Data file format"
-msgstr "ഡേറ്റ ഫയൽ ഫോർമാറ്റ്"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS വിഷ്വലൈസർ"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "കോർഡിനേറ്റ് ഫയലിൽ കുടുംബങ്ങൾ ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Neighbor Families"
-msgstr "അയൽ കുടുംബങ്ങൾ"
-
-#: 
-msgid "Make Data File"
-msgstr "ഡേറ്റ ഫയൽ ഉണ്ടാക്കുക"
-
-#: 
-msgid "Show Neighbors"
-msgstr "അയൽക്കാരെ കാണിക്കുക"
 
 #: 
 msgid "Distance"
@@ -1199,10 +1163,6 @@ msgstr "രേഖാംശം"
 #: 
 msgid "Add to Cart"
 msgstr "കാർട്ടിൽ ചേർക്കുക"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "കാർട്ടുമായി വിഭജിക്കുക"
 
 #: 
 msgid "Remove from Cart"
@@ -1379,10 +1339,6 @@ msgstr "എല്ലാവർക്കും ഇമെയിൽ"
 #: 
 msgid "Family Roles"
 msgstr "കുടുംബ പങ്കുകൾ"
-
-#: 
-msgid "Family Geographic"
-msgstr "കുടുംബ ഭൂമിശാസ്ത്രം"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4223,24 +4179,8 @@ msgid "Profile Image uploaded"
 msgstr "പ്രൊഫൈൽ ചിത്രം അപ്‌ലോഡ് ചെയ്തു"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "ഈ വർഗ്ഗീകരണങ്ങളുള്ള അയൽക്കാരെ കാണിക്കുക"
-
-#: 
-msgid "Please select a Family."
-msgstr "ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "കോർഡിനേറ്റ് ഡേറ്റാബേസ് ഫയൽ നാമം"
-
-#: 
 msgid "select an option"
 msgstr "ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Direct me"
-msgstr "എന്നെ നയിക്കൂ"
 
 #: 
 msgid "Your cart is empty"
@@ -9366,10 +9306,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "ദാതാക്കൾക്ക് നികുതി പ്രസ്താവന രേഖകൾ സൃഷ്ടിക്കുക"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "ഭൂമിശാസ്ത്ര ഉപകരണങ്ങൾ"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "നിങ്ങളുടെ ഡേറ്റ ChurchCRM-ലേക്ക് നൽകുക"
 
@@ -10098,10 +10034,6 @@ msgstr "നിങ്ങളുടെ വിശ്വാസി സമൂഹത്�
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "നിക്ഷേപ സ്ലിപ്പ് പേമെന്റുകൾ കാണുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
-
-#: 
-msgid "View and manage family location data"
-msgstr "കുടുംബ ലൊക്കേഷൻ ഡേറ്റ കാണുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17020,10 +16952,6 @@ msgstr "തീയതി ആവശ്യമാണ്"
 #: 
 msgid "Deleted successfully"
 msgstr "വിജയകരമായി ഇല്ലാതാക്കി"
-
-#: 
-msgid "Deposit #"
-msgstr "നിക്ഷേപം #"
 
 #: 
 msgid "Deposit Slip"

@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Мінімальна ціна"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Сімейні географічні утиліти"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Виберіть сім'ю"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Максимальна кількість сусідів"
-
-#: 
-msgid "Maximum distance"
-msgstr "Максимальна відстань"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Формат файлу даних"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS візуалізатор"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Включіть сім’ї у файл координат"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Сусідські сім'ї"
-
-#: 
-msgid "Make Data File"
-msgstr "Зробити файл даних"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Показати сусідів"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Довгота"
 #: 
 msgid "Add to Cart"
 msgstr "Додати в кошик"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Перетин з кошиком"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Надіслати всім електронною поштою"
 #: 
 msgid "Family Roles"
 msgstr "Сімейні ролі"
-
-#: 
-msgid "Family Geographic"
-msgstr "Family Geographic"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4254,26 +4207,8 @@ msgid "Profile Image uploaded"
 msgstr "Зображення профілю завантажено"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Покажіть сусідів з цими класифікаціями"
-
-#: 
-msgid "Please select a Family."
-msgstr "Виберіть сім’ю."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Назва файлу бази даних координат"
-
-#: 
 msgid "select an option"
 msgstr "виберіть варіант"
-
-#: 
-msgid "Direct me"
-msgstr "Спрямуй мене"
 
 #: 
 msgid "Your cart is empty"
@@ -9424,10 +9359,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Створіть податкові документи для донорів"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Географічні утиліти"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Отримайте свої дані в ChurchCRM"
 
@@ -10156,10 +10087,6 @@ msgstr "Переглядайте та керуйте всіма групами �
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Переглядайте та керуйте платежами квитанцій про депозит"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Переглядайте та керуйте даними про місцезнаходження сім'ї"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17086,10 +17013,6 @@ msgstr "Дата є обов'язковою"
 #: 
 msgid "Deleted successfully"
 msgstr "Успішно видалено"
-
-#: 
-msgid "Deposit #"
-msgstr "Депозит №"
 
 #: 
 msgid "Deposit Slip"
