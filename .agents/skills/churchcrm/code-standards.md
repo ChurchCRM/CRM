@@ -147,6 +147,26 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 
 The integrity check has **no session cache** — it runs fresh on every page load (only called on ~4 admin pages, no perf concern). There is no `clearIntegrityCache()` method.
 
+## Type Casting in Templates — Defensive Clarity <!-- learned: 2026-08-29 -->
+
+**In templates and views, use explicit type casting that matches the actual type returned by the getter:**
+
+```php
+// ✅ CORRECT — (int) cast for numeric Propel ORM IDs (no return type hint on generated base classes)
+<option value="<?= (int)$type->getId() ?>">
+
+// ✅ CORRECT — escapeAttribute() for string slug IDs (e.g. UiNotification::getId() returns 'system-update-available')
+<?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
+
+// ❌ WRONG — (int) cast on a string slug yields 0
+<?= 'data-notification-id="' . (int)$notification->getId() . '"' ?>
+
+// ❌ WRONG — escapeAttribute() is unnecessary overhead on a pure integer
+<option value="<?= InputUtils::escapeAttribute($type->getId()) ?>">
+```
+
+**Rule:** cast numeric values with `(int)`, escape string values with `InputUtils::escapeAttribute()`. Never apply `(int)` to a getter that returns a string slug.
+
 ## Strict vs Loose Comparisons — Type Safety Rules <!-- learned: 2026-03-29 -->
 
 When replacing `==`/`!=` with `===`/`!==`, you MUST cast the operands to matching types first. Legacy code uses `mysqli_fetch_array()` / `extract()` which return **strings**, not integers. Blindly switching to strict comparison breaks logic silently.

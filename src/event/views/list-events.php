@@ -122,7 +122,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <select name="type" id="type" class="form-select form-select-sm">
             <option value="All"><?= gettext('All Types') ?></option>
             <?php foreach ($eventTypesWithEvents as $type): ?>
-              <option value="<?= InputUtils::escapeAttribute($type->getId()) ?>" <?= ($type->getId() == $eType) ? 'selected' : '' ?>>
+              <option value="<?= (int)$type->getId() ?>" <?= ($type->getId() == $eType) ? 'selected' : '' ?>>
                 <?= InputUtils::escapeHTML($type->getName()) ?>
               </option>
             <?php endforeach; ?>
