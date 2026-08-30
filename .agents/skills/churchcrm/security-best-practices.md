@@ -43,8 +43,10 @@ Located in `src/ChurchCRM/Utils/InputUtils.php`
 | `sanitizeHTML($input)` | Rich text with XSS protection | Event descriptions, Quill editor |
 | `escapeHTML($input)` | Output escaping for body | `<?= InputUtils::escapeHTML($name) ?>` |
 | `escapeAttribute($input)` | Output escaping for attributes | `value="<?= InputUtils::escapeAttribute($val) ?>"` |
-| `sanitizeAndEscapeText($input)` | Combined sanitization + escape | Untrusted plain text display |
+| `sanitizeAndEscapeText($input)` | **DEPRECATED** — use separate methods | Use `sanitizeText()` + `escapeHTML()` |
 | `jsonEncodeForScript($data)` | JSON for inline `<script>` blocks | `window.data = <?= InputUtils::jsonEncodeForScript($array) ?>;` |
+| `validateEmail($input)` | RFC-compliant email validation | `$email = InputUtils::validateEmail($_POST['email']);` |
+| `isValidEmail($input)` | Email format check (returns bool) | `if (InputUtils::isValidEmail($email)) { ... }` |
 
 ### Method 1: sanitizeText() - Plain Text
 
@@ -160,7 +162,35 @@ echo InputUtils::sanitizeText($_POST['comment']);
 // Could display raw content unsafely
 ```
 
-### Method 6: jsonEncodeForScript() - JSON in `<script>` Blocks
+### Method 6: Email Validation <!-- learned: 2026-08-29 -->
+
+RFC-compliant email validation using PHP's built-in filter:
+
+```php
+// ✅ CORRECT - Validate and normalize email
+$email = InputUtils::validateEmail($_POST['email']);
+if (empty($email)) {
+    throw new HttpBadRequestException($request, 'Invalid email address');
+}
+// $email is now trimmed, lowercased, and valid
+
+// ✅ CORRECT - Check format without storing
+if (!InputUtils::isValidEmail($_POST['email'])) {
+    return SlimUtils::renderErrorJSON($response, 'Invalid email', [], 400);
+}
+
+// ❌ WRONG - Raw email without validation
+$email = trim($_POST['email']);
+// No validation - accepts "not-an-email" or "user@"
+```
+
+**Why filter_var(FILTER_VALIDATE_EMAIL)?**
+- RFC 5321/5322 compliant (proper email syntax)
+- Rejects obvious invalid formats: `"user"`, `"@domain.com"`, `"user@domain"`
+- Accepts international domain names (IDN)
+- Built-in, no external library needed
+
+### Method 7: jsonEncodeForScript() - JSON in `<script>` Blocks
 
 Safely encode data as JSON for inline `<script>` blocks with XSS protection:
 

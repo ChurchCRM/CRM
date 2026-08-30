@@ -7,15 +7,6 @@ class InputUtils
 {
     private static string $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
 
-    public static function legacyFilterInputArr(array $arr, $key, $type = 'string', $size = 1)
-    {
-        if (array_key_exists($key, $arr)) {
-            return InputUtils::legacyFilterInput($arr[$key], $type, $size);
-        } else {
-            return InputUtils::legacyFilterInput('', $type, $size);
-        }
-    }
-
     public static function translateSpecialCharset($string): string
     {
         if (empty($string)) {
@@ -36,19 +27,6 @@ class InputUtils
     public static function sanitizeText($sInput): string
     {
         return strip_tags(trim($sInput));
-    }
-
-    /**
-     * Sanitize plain text and prepare for safe HTML display
-     * Removes HTML tags, whitespace, and escapes remaining special characters
-     * Best for: User-submitted form data that should be plain text
-     * 
-     * @param string $sInput Input text to sanitize and escape
-     * @return string Safe plain text for HTML output
-     */
-    public static function sanitizeAndEscapeText($sInput): string
-    {
-        return htmlspecialchars(strip_tags(trim($sInput)), ENT_QUOTES, 'UTF-8');
     }
 
     /**
@@ -228,33 +206,38 @@ class InputUtils
         }
     }
 
-    // Sanitizes user input as a security measure
-    // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
-    // Note that a database connection must already be established for the mysqli_real_escape_string function to work.
-    public static function legacyFilterInput($sInput, $type = 'string', $size = 1)
+    /**
+     * Validate email format using RFC-compliant filter
+     * Returns trimmed, lowercased email or empty string if invalid
+     *
+     * @param string $sInput Email address to validate
+     * @return string Validated email (trimmed, lowercased) or empty string
+     */
+    public static function validateEmail(string $sInput): string
     {
-        global $cnInfoCentral;
-        if (strlen($sInput) > 0) {
-            switch ($type) {
-                case 'string':
-                    return mysqli_real_escape_string($cnInfoCentral, self::sanitizeText($sInput));
-                case 'htmltext':
-                    return mysqli_real_escape_string($cnInfoCentral, self::sanitizeHTML($sInput));
-                case 'char':
-                    return mysqli_real_escape_string($cnInfoCentral, self::filterChar($sInput, $size));
-                case 'int':
-                    return self::filterInt($sInput);
-                case 'float':
-                    return self::filterFloat($sInput);
-                case 'date':
-                    return self::filterDate($sInput);
-                default:
-                    throw new \InvalidArgumentException('Invalid "type" for legacyFilterInput provided');
-            }
-        } else {
-            // Preserve legacy behavior: for empty input, always return an empty string,
-            // allowing callers to distinguish "no value" from 0 / 0.0 and store NULL where appropriate.
+        $email = trim($sInput);
+        if (empty($email)) {
             return '';
         }
+
+        // RFC-compliant email validation using PHP's built-in filter
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            return '';
+        }
+
+        return strtolower($email);
     }
+
+    /**
+     * Check if a string is a valid email format
+     * Useful for validation in API endpoints and forms
+     *
+     * @param string $sInput Email address to check
+     * @return bool True if valid email format, false otherwise
+     */
+    public static function isValidEmail(string $sInput): bool
+    {
+        return filter_var(trim($sInput), FILTER_VALIDATE_EMAIL) !== false;
+    }
+
 }
