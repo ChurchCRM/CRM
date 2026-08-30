@@ -22,19 +22,6 @@ msgid "Check"
 msgstr "Cheque"
 
 #: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximum number of neighbours"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Neighbour Families"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Show Neighbours"
-
-#: 
 msgid "City, State, Zip"
 msgstr "City, Province, Postal Code"
 
@@ -46,11 +33,6 @@ msgstr "Default Province - Must be 2-letter abbreviation!"
 #: 
 msgid "Zip Code"
 msgstr "Postal Code"
-
-#: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Show neighbours with these classifications"
 
 #: 
 msgid "Primary Color"

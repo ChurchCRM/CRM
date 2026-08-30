@@ -1141,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "最低価格"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "世帯位置情報ユーティリティ"
-
-#: 
 msgid "Select Family"
 msgstr "世帯を選択"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "近隣住民の最大表示数"
-
-#: 
-msgid "Maximum distance"
-msgstr "最大距離"
-
-#: 
-msgid "Data file format"
-msgstr "データファイル形式"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS ビジュアライザー"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "座標ファイルに世帯を含める"
-
-#: 
-msgid "Neighbor Families"
-msgstr "近隣世帯"
-
-#: 
-msgid "Make Data File"
-msgstr "データファイルを作成"
-
-#: 
-msgid "Show Neighbors"
-msgstr "近隣住民を表示"
 
 #: 
 msgid "Distance"
@@ -1199,10 +1163,6 @@ msgstr "経度"
 #: 
 msgid "Add to Cart"
 msgstr "カートに追加"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "カートと交差選択"
 
 #: 
 msgid "Remove from Cart"
@@ -1379,10 +1339,6 @@ msgstr "全員にメール"
 #: 
 msgid "Family Roles"
 msgstr "世帯内の役割"
-
-#: 
-msgid "Family Geographic"
-msgstr "世帯位置情報"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4223,24 +4179,8 @@ msgid "Profile Image uploaded"
 msgstr "プロフィール画像をアップロード"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "これらの分類を持つ隣人を表示"
-
-#: 
-msgid "Please select a Family."
-msgstr "ファミリーを選択してください。"
-
-#: 
-msgid "Coordinate database file name"
-msgstr "座標データベースファイル名"
-
-#: 
 msgid "select an option"
 msgstr "オプションを選択"
-
-#: 
-msgid "Direct me"
-msgstr "案内してください"
 
 #: 
 msgid "Your cart is empty"
@@ -9357,10 +9297,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "献金者向け税務証明書を生成"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "地理ユーティリティ"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "データをChurchCRMに取り込む"
 
@@ -10089,10 +10025,6 @@ msgstr "教会のすべてのグループを表示・管理"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "献金預かり伝票の入金を表示・管理"
-
-#: 
-msgid "View and manage family location data"
-msgstr "家族の位置データを表示・管理"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17007,10 +16939,6 @@ msgstr "日付は必須です"
 #: 
 msgid "Deleted successfully"
 msgstr "正常に削除されました"
-
-#: 
-msgid "Deposit #"
-msgstr "預金番号"
 
 #: 
 msgid "Deposit Slip"

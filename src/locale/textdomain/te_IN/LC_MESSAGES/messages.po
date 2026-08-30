@@ -1153,44 +1153,8 @@ msgid "Minimum Price"
 msgstr "కనీస ధర"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "కుటుంబ భౌగోళిక యుటిలిటీస్"
-
-#: 
 msgid "Select Family"
 msgstr "కుటుంబాన్ని ఎంచుకోండి"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "గరిష్ట పొరుగువారి సంఖ్య"
-
-#: 
-msgid "Maximum distance"
-msgstr "గరిష్ట దూరం"
-
-#: 
-msgid "Data file format"
-msgstr "డేటా ఫైల్ ఫార్మాట్"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS విజువలైజర్"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "కోఆర్డినేట్ ఫైల్‌లో కుటుంబాలను చేర్చు"
-
-#: 
-msgid "Neighbor Families"
-msgstr "పొరుగు కుటుంబాలు"
-
-#: 
-msgid "Make Data File"
-msgstr "డేటా ఫైల్ తయారుచేయి"
-
-#: 
-msgid "Show Neighbors"
-msgstr "పొరుగువారిని చూపించు"
 
 #: 
 msgid "Distance"
@@ -1211,10 +1175,6 @@ msgstr "రేఖాంశం"
 #: 
 msgid "Add to Cart"
 msgstr "కార్ట్‌కు జోడించు"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "కార్ట్‌తో ఖండించు"
 
 #: 
 msgid "Remove from Cart"
@@ -1391,10 +1351,6 @@ msgstr "అందరికీ ఇమెయిల్ చేయి"
 #: 
 msgid "Family Roles"
 msgstr "కుటుంబ పాత్రలు"
-
-#: 
-msgid "Family Geographic"
-msgstr "కుటుంబ భౌగోళిక"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4235,24 +4191,8 @@ msgid "Profile Image uploaded"
 msgstr "ప్రొఫైల్ చిత్రం అప్‌లోడ్ చేయబడింది"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "ఈ వర్గీకరణలతో పొరుగువారిని చూపించు"
-
-#: 
-msgid "Please select a Family."
-msgstr "దయచేసి ఒక కుటుంబాన్ని ఎంచుకోండి."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "కోఆర్డినేట్ డేటాబేస్ ఫైల్ పేరు"
-
-#: 
 msgid "select an option"
 msgstr "ఒక ఎంపికను ఎంచుకోండి"
-
-#: 
-msgid "Direct me"
-msgstr "నన్ను నడిపించు"
 
 #: 
 msgid "Your cart is empty"
@@ -9378,10 +9318,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "దాతలకు పన్ను ప్రకటన పత్రాలు రూపొందించండి"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "భౌగోళిక సాధనాలు"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "మీ డేటాను ChurchCRM లో చేర్చండి"
 
@@ -10110,10 +10046,6 @@ msgstr "మీ సంఘంలోని అన్ని సమూహాలను
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "డిపాజిట్ స్లిప్ చెల్లింపులను చూసి నిర్వహించండి"
-
-#: 
-msgid "View and manage family location data"
-msgstr "కుటుంబ స్థాన డేటాను చూసి నిర్వహించండి"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17032,10 +16964,6 @@ msgstr "తేదీ అవసరం"
 #: 
 msgid "Deleted successfully"
 msgstr "విజయవంతంగా తొలగించబడింది"
-
-#: 
-msgid "Deposit #"
-msgstr "డిపాజిట్ #"
 
 #: 
 msgid "Deposit Slip"

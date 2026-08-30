@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "குறைந்தபட்ச விலை"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "குடும்ப புவியியல் பயன்பாடுகள்"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "குடும்பத்தைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "அண்டை வீட்டுக்காரர் அதிகபட்ச எண்ணிக்கை"
-
-#: 
-msgid "Maximum distance"
-msgstr "அதிகபட்ச தூரம்"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "தரவு/தகவல்கள் கோப்பு வடிவம்"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "ஜிபிஎஸ் விஷுவலைசர்/காட்சிப்படுத்துபவர்"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "ஒருங்கிணைந்த கோப்பில் குடும்பங்களைச் சேர்க்கவும்"
-
-#: 
-msgid "Neighbor Families"
-msgstr "அண்டை குடும்பங்கள்"
-
-#: 
-msgid "Make Data File"
-msgstr "தரவு/தகவல்கள் கோப்பை உருவாக்கவும்"
-
-#: 
-msgid "Show Neighbors"
-msgstr "அண்டை நாடுகளைக் காட்டு"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "தீர்க்கரேகை"
 #: 
 msgid "Add to Cart"
 msgstr "பெட்டகத்தில்/மின்வண்டி சேர்"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "மின்வண்டியுடன் வெட்டுங்கள்"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "அனைவருக்கும் மின்னஞ்சல் அ�
 #: 
 msgid "Family Roles"
 msgstr "குடும்ப பங்குகள்/பாத்திரங்கள்"
-
-#: 
-msgid "Family Geographic"
-msgstr "குடும்ப புவியியல்"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4252,26 +4205,8 @@ msgid "Profile Image uploaded"
 msgstr "சுயவிவரப் படம் பதிவேற்றப்பட்டது"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "இந்த வகைப்பாடுகளுடன் அண்டை வீட்டாரைக் காட்டு"
-
-#: 
-msgid "Please select a Family."
-msgstr "குடும்பத்தைத் தேர்ந்தெடுக்கவும்."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "ஒருங்கிணைப்பு தரவு அடிப்படை கோப்பு பெயர்"
-
-#: 
 msgid "select an option"
 msgstr "ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Direct me"
-msgstr "என்னை இயக்கு"
 
 #: 
 msgid "Your cart is empty"
@@ -9413,10 +9348,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "நன்கொடையாளர்களுக்கான வரி அறிக்கை ஆவணங்களை உருவாக்கவும்"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "புவியியல் பயன்பாடுகள்"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "உங்கள் தரவை ChurchCRM இல் சேர்க்கவும்"
 
@@ -10145,10 +10076,6 @@ msgstr "உங்கள் சபையில் உள்ள அனைத்த
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "காணிக்கை வைப்பு சீட்டு பணம் செலுத்தல்களைப் பார்த்து நிர்வகிக்கவும்"
-
-#: 
-msgid "View and manage family location data"
-msgstr "குடும்ப இருப்பிட தரவைப் பார்த்து நிர்வகிக்கவும்"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17119,10 +17046,6 @@ msgstr "தேதி தேவை"
 #: 
 msgid "Deleted successfully"
 msgstr "வெற்றிகரமாக நீக்கப்பட்டது"
-
-#: 
-msgid "Deposit #"
-msgstr "வைப்பு #"
 
 #: 
 msgid "Deposit Slip"

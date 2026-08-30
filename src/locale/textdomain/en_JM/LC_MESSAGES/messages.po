@@ -18,18 +18,6 @@ msgid "Generate Catalog"
 msgstr "Generate Catalogue"
 
 #: 
-msgid "Maximum number of neighbors"
-msgstr "Maximum number of neighbours"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Neighbour Families"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Show Neighbours"
-
-#: 
 msgid "City, State, Zip"
 msgstr "City, Parish, Zip"
 
@@ -44,10 +32,6 @@ msgstr "Default Parish - Must be 2-letter abbreviation!"
 #: 
 msgid "Internationalization (I18n) support"
 msgstr "Internationalisation (I18n) support"
-
-#: 
-msgid "Show neighbors with these classifications"
-msgstr "Show neighbours with these classifications"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."

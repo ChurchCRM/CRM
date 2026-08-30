@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Minimální cena"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Rodinné geografické nástroje"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Vyberte rodinu"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximální počet sousedů"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maximální vzdálenost"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Formát datového souboru"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Vizualizér GPS"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Zahrnout rodiny do souboru souřadnic"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Sousedící rodiny"
-
-#: 
-msgid "Make Data File"
-msgstr "Vytvořit datový soubor"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Ukázat sousedy"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Zeměpisná délka"
 #: 
 msgid "Add to Cart"
 msgstr "Přidat do košíku"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Protnout s košíkem"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "E-mail všem"
 #: 
 msgid "Family Roles"
 msgstr "Rodinné role"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografie rodiny"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4249,26 +4202,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilový obrázek nahrán"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Ukažte sousedy s těmito klasifikacemi"
-
-#: 
-msgid "Please select a Family."
-msgstr "Vyberte rodinu."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Název souboru databáze souřadnic"
-
-#: 
 msgid "select an option"
 msgstr "vyberte možnost"
-
-#: 
-msgid "Direct me"
-msgstr "Veď mě"
 
 #: 
 msgid "Your cart is empty"
@@ -9403,10 +9338,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Generovat daňové potvrzení pro dárce"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografické nástroje"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Importujte svá data do ChurchCRM"
 
@@ -10135,10 +10066,6 @@ msgstr "Zobrazit a spravovat všechny skupiny ve sboru"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Zobrazit a spravovat platby sbírek"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Zobrazit a spravovat údaje o poloze rodin"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17053,10 +16980,6 @@ msgstr "Datum je povinné"
 #: 
 msgid "Deleted successfully"
 msgstr "Úspěšně smazáno"
-
-#: 
-msgid "Deposit #"
-msgstr "Číslo vkladu"
 
 #: 
 msgid "Deposit Slip"

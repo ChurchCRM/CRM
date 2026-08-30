@@ -1188,48 +1188,9 @@ msgid "Minimum Price"
 msgstr "最低價格"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "家庭地理公用事業"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "選擇家庭"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "鄰居的最大數量"
-
-#: 
-msgid "Maximum distance"
-msgstr "最大距離"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "數據文件格式"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS可視化"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "包括家庭中的坐標文件"
-
-#: 
-msgid "Neighbor Families"
-msgstr "鄰居的家庭"
-
-#: 
-msgid "Make Data File"
-msgstr "數據文件"
-
-#: 
-msgid "Show Neighbors"
-msgstr "顯示鄰居"
 
 #: 
 msgid "Distance"
@@ -1250,10 +1211,6 @@ msgstr "經度"
 #: 
 msgid "Add to Cart"
 msgstr "添加到購物車"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "相交的購物車"
 
 #: 
 msgid "Remove from Cart"
@@ -1440,10 +1397,6 @@ msgstr "電郵所有人"
 #, fuzzy
 msgid "Family Roles"
 msgstr "家庭角色"
-
-#: 
-msgid "Family Geographic"
-msgstr "家庭地理位置"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4341,26 +4294,8 @@ msgid "Profile Image uploaded"
 msgstr "個人資料圖片已上傳"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "顯示具有以下類別的鄰居"
-
-#: 
-msgid "Please select a Family."
-msgstr "請選擇一個家庭。"
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "協調數據庫文件名"
-
-#: 
 msgid "select an option"
 msgstr "選擇一個項目"
-
-#: 
-msgid "Direct me"
-msgstr "指導我"
 
 #: 
 msgid "Your cart is empty"
@@ -9546,10 +9481,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "為奉獻者產生稅務報表文件"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "地理工具"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "將您的資料匯入 ChurchCRM"
 
@@ -10278,10 +10209,6 @@ msgstr "檢視和管理教會中的所有小組"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "檢視和管理奉獻存款單"
-
-#: 
-msgid "View and manage family location data"
-msgstr "檢視和管理家庭位置資料"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17196,10 +17123,6 @@ msgstr "日期為必填項"
 #: 
 msgid "Deleted successfully"
 msgstr "刪除成功"
-
-#: 
-msgid "Deposit #"
-msgstr "存款編號"
 
 #: 
 msgid "Deposit Slip"

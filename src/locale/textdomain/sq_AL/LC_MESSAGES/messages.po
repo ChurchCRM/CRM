@@ -1155,48 +1155,9 @@ msgid "Minimum Price"
 msgstr "Çmimi minimal"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Familjare gjeografike Utilities"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Zgjidh Family"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Numri maksimal i fqinjëve"
-
-#: 
-msgid "Maximum distance"
-msgstr "Distanca maksimale"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "File format e të dhënave"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Përfshijnë familjet në koordinojnë skedë"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Familjet fqinje"
-
-#: 
-msgid "Make Data File"
-msgstr "Bëni dhënat e file"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Shfaq Fqinjët"
 
 #: 
 msgid "Distance"
@@ -1217,10 +1178,6 @@ msgstr "Gjatësi"
 #: 
 msgid "Add to Cart"
 msgstr "Shtoni në kartën e"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Ndërpritet me Shportë"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Dërgo email të gjithëve"
 #: 
 msgid "Family Roles"
 msgstr "Rolet familjare"
-
-#: 
-msgid "Family Geographic"
-msgstr "Gjeografia e familjes"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4251,24 +4204,8 @@ msgid "Profile Image uploaded"
 msgstr "Imazhi i profilit u ngarkua"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Trego fqinjët me këto klasifikime"
-
-#: 
-msgid "Please select a Family."
-msgstr "Ju lutemi zgjidhni një familje."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Emri i skedarit të bazës së të dhënave të koordinatave"
-
-#: 
 msgid "select an option"
 msgstr "zgjidhni një opsion"
-
-#: 
-msgid "Direct me"
-msgstr "Më drejto"
 
 #: 
 msgid "Your cart is empty"
@@ -9394,10 +9331,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Gjenero dokumente të deklaratës tatimore për donatorët"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Shërbime Gjeografike"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Fut të Dhënat Tuaja në ChurchCRM"
 
@@ -10126,10 +10059,6 @@ msgstr "Shiko dhe menaxho të gjitha grupet në bashkësinë tuaj"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Shiko dhe menaxho pagesat e fletë-depozitave të ofertave"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Shiko dhe menaxho të dhënat e vendndodhjes së familjes"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17048,10 +16977,6 @@ msgstr "Data është e detyrueshme"
 #: 
 msgid "Deleted successfully"
 msgstr "Fshirë me sukses"
-
-#: 
-msgid "Deposit #"
-msgstr "Depozitë #"
 
 #: 
 msgid "Deposit Slip"

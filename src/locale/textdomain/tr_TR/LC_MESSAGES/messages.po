@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Minimum fiyat"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Aile Coğrafi Kamu Hizmetleri"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Aile seçin:"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maksimum komşu sayısı"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maksimum mesafe"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Veri Dosyası Biçimi"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS görselleştiricisi"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Aileleri koordinat dosyasına ekleyin"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Komşu aileler"
-
-#: 
-msgid "Make Data File"
-msgstr "Veri dosyası yap"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Komşuları Göster"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Boylam"
 #: 
 msgid "Add to Cart"
 msgstr "Sepete ekle"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Sepetle kesişmek"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Hepsini e -posta ile gönder"
 #: 
 msgid "Family Roles"
 msgstr "Aile rolleri"
-
-#: 
-msgid "Family Geographic"
-msgstr "Aile Geographic"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4254,26 +4207,8 @@ msgid "Profile Image uploaded"
 msgstr "Profil resmi yüklendi"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Komşuları bu sınıflandırmalarla gösterin"
-
-#: 
-msgid "Please select a Family."
-msgstr "Lütfen bir aile seçin."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Veri tabanı dosya adını koordine edin"
-
-#: 
 msgid "select an option"
 msgstr "bir seçenek seçin"
-
-#: 
-msgid "Direct me"
-msgstr "Beni yönlendir"
 
 #: 
 msgid "Your cart is empty"
@@ -9406,10 +9341,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Bağışçılar için vergi beyanı belgeleri oluştur"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Coğrafi Araçlar"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Verilerinizi ChurchCRM'e Aktarın"
 
@@ -10138,10 +10069,6 @@ msgstr "Cemaatinizdeki tüm grupları görüntüle ve yönet"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Bağış kayıt fişi ödemelerini görüntüle ve yönet"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Aile konum verilerini görüntüle ve yönet"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17060,10 +16987,6 @@ msgstr "Tarih zorunludur"
 #: 
 msgid "Deleted successfully"
 msgstr "Başarıyla silindi"
-
-#: 
-msgid "Deposit #"
-msgstr "Depozito #"
 
 #: 
 msgid "Deposit Slip"

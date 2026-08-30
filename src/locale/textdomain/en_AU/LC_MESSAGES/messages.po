@@ -94,22 +94,6 @@ msgid "Generate Catalog"
 msgstr "Generate Catalogue"
 
 #: 
-msgid "Maximum number of neighbors"
-msgstr "Maximum number of neighbours"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualiser"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Neighbour Families"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Show Neighbours"
-
-#: 
 msgid "City, State, Zip"
 msgstr "Suburb, State, Post Code"
 
@@ -137,10 +121,6 @@ msgstr "Postcode"
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Make user-entered postcodes UPPERCASE when saving to the database."
-
-#: 
-msgid "Show neighbors with these classifications"
-msgstr "Show neighbours with these classifications"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."

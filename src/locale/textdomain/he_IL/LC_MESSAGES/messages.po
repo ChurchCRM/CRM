@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "מחיר מינימלי"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "כלי עזר גאוגרפיים למשפחה"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "בחר משפחה"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "מספר שכנים מקסימלי:"
-
-#: 
-msgid "Maximum distance"
-msgstr "מרחק מקסימלי"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "פורמט קובץ נתונים"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "כלול משפחות בקובץ קואורדינטות"
-
-#: 
-msgid "Neighbor Families"
-msgstr "משפחות שכנות"
-
-#: 
-msgid "Make Data File"
-msgstr "צור קובץ נתונים"
-
-#: 
-msgid "Show Neighbors"
-msgstr "הצג שכנים"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "קו אורך"
 #: 
 msgid "Add to Cart"
 msgstr "הוסף לעגלה"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "הצטלב עם העגלה"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "שלח אימייל לכולם"
 #: 
 msgid "Family Roles"
 msgstr "תפקידי משפחה"
-
-#: 
-msgid "Family Geographic"
-msgstr "מיקום גיאוגרפי משפחתי"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4255,26 +4208,8 @@ msgid "Profile Image uploaded"
 msgstr "תמונת פרופיל הועלתה"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "הצג שכנים עם סיווגים אלה"
-
-#: 
-msgid "Please select a Family."
-msgstr "אנא בחר משפחה."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "שם קובץ מסד נתוני קואורדינטות"
-
-#: 
 msgid "select an option"
 msgstr "בחר אפשרות"
-
-#: 
-msgid "Direct me"
-msgstr "נווט אותי"
 
 #: 
 msgid "Your cart is empty"
@@ -9404,10 +9339,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "יצירת מסמכי דוח מס לתורמים"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "כלים גיאוגרפיים"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "הכניסו את הנתונים שלכם ל-ChurchCRM"
 
@@ -10136,10 +10067,6 @@ msgstr "צפייה וניהול כל הקבוצות בקהילה שלכם"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "צפייה וניהול תשלומי שוברי הפקדה"
-
-#: 
-msgid "View and manage family location data"
-msgstr "צפייה וניהול נתוני מיקום משפחות"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17058,10 +16985,6 @@ msgstr "תאריך נדרש"
 #: 
 msgid "Deleted successfully"
 msgstr "נמחק בהצלחה"
-
-#: 
-msgid "Deposit #"
-msgstr "מספר פיקדון"
 
 #: 
 msgid "Deposit Slip"

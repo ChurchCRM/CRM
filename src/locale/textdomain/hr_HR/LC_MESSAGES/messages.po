@@ -1141,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "Minimalna cijena"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Geografski alati za obitelji"
-
-#: 
 msgid "Select Family"
 msgstr "Odaberi obitelj"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "Maksimalni broj susjeda"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maksimalna udaljenost"
-
-#: 
-msgid "Data file format"
-msgstr "Format datoteke s podacima"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS vizualizator"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "Uključi obitelji u datoteku koordinata"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Susjedne obitelji"
-
-#: 
-msgid "Make Data File"
-msgstr "Kreiraj datoteku s podacima"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Prikaži susjede"
 
 #: 
 msgid "Distance"
@@ -1199,10 +1163,6 @@ msgstr "Geografska dužina"
 #: 
 msgid "Add to Cart"
 msgstr "Dodaj u košaricu"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Presjek s košaricom"
 
 #: 
 msgid "Remove from Cart"
@@ -1379,10 +1339,6 @@ msgstr "Pošalji svima e-poštu"
 #: 
 msgid "Family Roles"
 msgstr "Obiteljske uloge"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografija obitelji"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4223,24 +4179,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilna slika učitana"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Prikaži susjede s ovim klasifikacijama"
-
-#: 
-msgid "Please select a Family."
-msgstr "Molim odaberite obitelj."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Naziv datoteke koordinata baze podataka"
-
-#: 
 msgid "select an option"
 msgstr "odaberi opciju"
-
-#: 
-msgid "Direct me"
-msgstr "Navedi me"
 
 #: 
 msgid "Your cart is empty"
@@ -9372,10 +9312,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Generiraj porezne izjave za darivatelje"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografski alati"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Unesite vaše podatke u ChurchCRM"
 
@@ -10104,10 +10040,6 @@ msgstr "Pregledajte i upravljajte svim skupinama u vašoj zajednici"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Pregledajte i upravljajte uplatama uplatnice"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Pregledajte i upravljajte lokacijskim podacima obitelji"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17030,10 +16962,6 @@ msgstr "Datum je obavezan"
 #: 
 msgid "Deleted successfully"
 msgstr "Uspješno izbrisano"
-
-#: 
-msgid "Deposit #"
-msgstr "Depozit #"
 
 #: 
 msgid "Deposit Slip"
