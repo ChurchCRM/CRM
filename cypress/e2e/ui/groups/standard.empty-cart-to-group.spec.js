@@ -179,10 +179,13 @@ describe("Empty Cart to Group", () => {
         cy.get("#emptyCartToGroup").should("be.visible").click();
         cy.get(".modal.show").should("be.visible");
 
-        // Click Cancel
-        cy.get(".modal.show #crm-gs-cancel").click({ force: true });
-        // Bootstrap 5 event delegation (data-bs-dismiss) doesn't always fire with
-        // Cypress synthetic clicks in headless CI. Call hide() directly as a guarantee.
+        // Wait for Bootstrap's 300 ms fade-in to complete before hiding.
+        // Bootstrap silently ignores hide() while _isTransitioning=true (show
+        // animation still running). opacity reaches 1 only after the transition.
+        cy.get(".modal.show").should("have.css", "opacity", "1");
+
+        // Programmatic hide() is more reliable than synthetic button clicks
+        // for Bootstrap's data-bs-dismiss in headless CI.
         cy.window().then((win) => {
             const el = win.document.querySelector('[id^="crm-group-select-modal"]');
             if (el) {
