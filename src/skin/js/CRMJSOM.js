@@ -270,13 +270,6 @@ window.CRM.groups = {
 
     wrapper.addEventListener("hidden.bs.modal", cleanup, { once: true });
 
-    // Fallback timeout: ensure cleanup happens if hidden.bs.modal doesn't fire
-    setTimeout(() => {
-      if (wrapper.parentNode) {
-        cleanup();
-      }
-    }, 2000);
-
     const confirmBtn = wrapper.querySelector("#crm-gs-confirm");
     const roleWrapper = wrapper.querySelector("#crm-gs-role-wrapper");
 
