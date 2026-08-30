@@ -33,15 +33,13 @@ describe("TomSelect dropdownParent:body — remaining call sites (#9488)", () =>
         cy.window().should("have.property", "CRM");
         cy.window().its("CRM.localesLoaded").should("eq", true);
 
-        // Wait for TomSelect to initialize on the Add Member picker
-        cy.get("#addGroupMember", { timeout: 10000 }).should("exist");
+        // Wait for TomSelect to initialize on the Add Member picker.
+        // TomSelect hides the original <select> when it wraps it — that is
+        // the reliable signal that init is complete (cy.get().closest() has no retry).
+        cy.get("select#addGroupMember", { timeout: 10000 }).should("not.be.visible");
 
-        // The TomSelect wrapper sits as the parent of #addGroupMember after init.
-        // Click the visible ts-control (the search input rendered by TomSelect).
-        cy.get("#addGroupMember")
-            .closest(".ts-wrapper")
-            .find(".ts-control")
-            .click();
+        // Click the TomSelect control (the visible input rendered by TomSelect).
+        cy.get("select#addGroupMember").closest(".ts-wrapper").find(".ts-control").click();
 
         // Key assertion: the dropdown must be appended to <body>,
         // NOT trapped inside the card DOM tree.
@@ -139,12 +137,17 @@ describe("event-checkin.js openCheckoutByDialog TomSelect dropdownParent:body (#
         cy.window().should("have.property", "CRM");
         cy.window().its("CRM.localesLoaded").should("eq", true);
 
-        // Person 1 is checked in; their row appears in the server-rendered
-        // "People Checked In" table. The checkout button is inside the action
-        // dropdown — use force:true to click it without opening the dropdown.
-        cy.get("tr[data-person-id='1'] .checkout-btn", { timeout: 10000 })
+        // Person 1 is checked in; their row is in the server-rendered
+        // "People Checked In" table. Open the action dropdown first so
+        // the .checkout-btn becomes visible, then click it normally.
+        // (Clicking a hidden element with {force:true} is unreliable for
+        // jQuery delegated handlers.)
+        cy.get("tr[data-person-id='1'] [data-bs-toggle='dropdown']", { timeout: 10000 })
             .should("exist")
-            .click({ force: true });
+            .click();
+        cy.get("tr[data-person-id='1'] .checkout-btn")
+            .should("be.visible")
+            .click();
 
         // Native BS5 modal should open (no bootbox)
         cy.get(".modal.show", { timeout: 10000 }).should("exist");

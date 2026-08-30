@@ -6,6 +6,9 @@ var GV_MODAL_ID = "groupViewModal";
 function _createModal(title, bodyHtml) {
   var existing = document.getElementById(GV_MODAL_ID);
   if (existing) {
+    existing.querySelectorAll("select").forEach(function (sel) {
+      if (sel.tomselect) sel.tomselect.destroy();
+    });
     var old = window.bootstrap.Modal.getInstance(existing);
     if (old) old.dispose();
     existing.remove();

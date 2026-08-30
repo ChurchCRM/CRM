@@ -19,6 +19,9 @@ const MODAL_ID = "personGroupModal";
 function createModal(title, bodyHtml) {
   const existing = document.getElementById(MODAL_ID);
   if (existing) {
+    existing.querySelectorAll("select").forEach((sel) => {
+      if (sel.tomselect) sel.tomselect.destroy();
+    });
     const bsModal = window.bootstrap.Modal.getInstance(existing);
     if (bsModal) bsModal.dispose();
     existing.remove();
