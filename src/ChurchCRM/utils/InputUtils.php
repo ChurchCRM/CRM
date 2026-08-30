@@ -197,13 +197,14 @@ class InputUtils
 
     public static function filterInt($sInput): int
     {
-        // added this to prevent deprecation warning:
-        //   PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated
-        if ($sInput === null) {
+        if ($sInput === null || $sInput === '') {
             return 0;
         }
 
-        return intval(trim($sInput));
+        // Use filter_var for strict integer validation instead of intval
+        // which silently coerces any string to an integer (e.g., 'Mr.' → 0)
+        $result = filter_var(trim($sInput), FILTER_VALIDATE_INT);
+        return $result !== false ? $result : 0;
     }
 
     public static function filterFloat($sInput): float
