@@ -13,12 +13,16 @@
  *     view page — a page-level select inside a card that needs dropdownParent
  *     so its dropdown is not clipped by the card layout.
  *  2. The "Copy Members to Group" _showGroupAndRoleModal TomSelect — a group
- *     select rendered inside a programmatic Bootstrap 5 modal.
+ *     select rendered inside a programmatic Bootstrap 5 modal, triggered via
+ *     the "Actions → Copy to Group → All Members" toolbar button.
  *
  * The key assertion is that the TomSelect dropdown is appended as a DIRECT
  * child of <body> when opened (`body > .ts-dropdown` is visible), not nested
  * inside a `.card` or `.modal-content` ancestor. This is only true when
  * `dropdownParent: "body"` is set on the TomSelect instance.
+ *
+ * Requires: Admin session (bCanManageGroups must be true for the Actions button
+ * to be rendered).
  */
 describe("GroupView TomSelect dropdownParent regression (#9488)", () => {
     let testGroupId;
@@ -28,7 +32,7 @@ describe("GroupView TomSelect dropdownParent regression (#9488)", () => {
     before(() => {
         // Create a test group so we have a predictable group view to load.
         // Use API-key auth so we don't depend on cy.session() being properly
-        // initialised in a before() hook (cy.session() is designed for beforeEach().
+        // initialised in a before() hook (cy.session() is designed for beforeEach()).
         cy.makePrivateAdminAPICall(
             "POST",
             "/api/groups/",
@@ -46,32 +50,36 @@ describe("GroupView TomSelect dropdownParent regression (#9488)", () => {
     });
 
     beforeEach(() => {
-        cy.setupStandardSession();
+        // Admin session required: the "Actions" toolbar button (which triggers
+        // _showGroupAndRoleModal) is only rendered when bCanManageGroups is true.
+        cy.setupAdminSession();
         cy.on("uncaught:exception", () => false);
     });
 
     // ------------------------------------------------------------------ //
     // 1. "Add Member" personSearch (page-level select, bug #2 fix)
     // ------------------------------------------------------------------ //
-    it("Add Member personSearch: dropdown appends to body (dropdownParent:\"body\")", () => {
+    it('Add Member personSearch: dropdown appends to body (dropdownParent:"body")', () => {
         cy.visit(`/groups/view/${testGroupId}`);
 
-        // Wait for the page to be ready
-        cy.window().should("have.property", "CRM");
-        cy.window().its("CRM.localesLoaded").should("eq", true);
+        // Wait for TomSelect to initialize on select#addGroupMember.
+        // TomSelect wraps the <select> inside a .ts-wrapper div, so we wait
+        // for `.ts-wrapper select#addGroupMember` to appear in the DOM.
+        // This retries with Cypress's implicit timeout (up to 10 s).
+        cy.get(".ts-wrapper select#addGroupMember", { timeout: 10000 }).should("exist");
 
-        // TomSelect should have been initialized on #addGroupMember
-        cy.get("#addGroupMember").closest(".ts-wrapper").should("exist");
-
-        // Click the TomSelect control to open the dropdown
-        cy.get("#addGroupMember").closest(".ts-wrapper").find(".ts-control").click();
+        // Click the TomSelect control (the visible div, not the hidden <select>)
+        cy.get("select#addGroupMember")
+            .closest(".ts-wrapper")
+            .find(".ts-control")
+            .click();
 
         // The dropdown MUST be a direct child of <body> — not nested inside the card.
         // Without dropdownParent:"body", it would be inside .ts-wrapper inside .card-body.
         cy.get("body > .ts-dropdown").should("exist").and("be.visible");
 
-        // Typing ≥2 chars triggers the remote load callback
-        cy.get("body > .ts-dropdown input[type='text'], .ts-wrapper input[type='text']")
+        // Typing ≥2 chars triggers the remote-load callback
+        cy.get(".ts-wrapper .ts-control input")
             .first()
             .type("Ad", { delay: 50 });
 
@@ -89,41 +97,21 @@ describe("GroupView TomSelect dropdownParent regression (#9488)", () => {
     it("Copy Members to Group modal: group TomSelect dropdown appends to body", () => {
         cy.visit(`/groups/view/${testGroupId}`);
 
-        cy.window().should("have.property", "CRM");
-        cy.window().its("CRM.localesLoaded").should("eq", true);
+        // Wait for the page's Actions toolbar to be rendered (requires admin session)
+        cy.get("#group-view-toolbar").should("be.visible");
 
-        // The "Copy Members to Group" button appears on role pill dropdowns.
-        // If no role pills are rendered (group has only the default Member role
-        // which may be hidden), trigger the modal via the JS API directly.
-        cy.window().then((win) => {
-            // Manually trigger _showGroupAndRoleModal via the global function
-            // which is defined in the page scope of GroupView.js (used by the
-            // copy/move-role-to-group click handlers).
-            // _showGroupAndRoleModal is not exported; invoke it via a click on
-            // a .copy-role-to-group element, or use the window eval trick.
-            // Fall back: call the underlying groups.get() to verify API is live.
-            //
-            // The safest approach: click the first .copy-role-to-group button
-            // if it exists; otherwise skip with a note.
-            const copyBtns = win.document.querySelectorAll(".copy-role-to-group");
-            if (copyBtns.length > 0) {
-                copyBtns[0].click();
-            } else {
-                // No role pills visible — use cy.window() to call the function
-                win.eval(
-                    `(function() {
-                        if (typeof _showGroupAndRoleModal === 'function') {
-                            _showGroupAndRoleModal('Test modal', function() {});
-                        }
-                    })()`,
-                );
-            }
-        });
+        // Open the "Actions" toolbar dropdown (always visible to admin users;
+        // contains "Copy to Group → All Members" (.copy-role-to-group) regardless
+        // of how many members the group has — the "All Members" link is static HTML).
+        cy.contains("#group-view-toolbar button", "Actions").click();
 
-        // The Bootstrap 5 modal should appear
+        // "All Members" is always present in the Copy section
+        cy.get(".dropdown-menu.show .copy-role-to-group").first().click();
+
+        // The Bootstrap 5 modal created by _showGroupAndRoleModal should appear
         cy.get(".modal.show", { timeout: 8000 }).should("be.visible");
 
-        // Wait for TomSelect to init (it fires after shown.bs.modal)
+        // TomSelect is initialised inside the shown.bs.modal handler — wait for it
         cy.get(".modal.show .ts-wrapper", { timeout: 10000 }).should("exist");
 
         // Open the group TomSelect dropdown
@@ -133,7 +121,7 @@ describe("GroupView TomSelect dropdownParent regression (#9488)", () => {
         cy.get("body > .ts-dropdown").should("exist").and("be.visible");
 
         // Close the modal
-        cy.get(".modal.show .btn-close").click();
+        cy.get(".modal.show .btn-close").first().click();
         cy.get(".modal.show").should("not.exist");
     });
 });

@@ -74,7 +74,8 @@ describe("PersonView: Add to group with multiple roles", () => {
 
         // Select the multi-role group ("Angels class") via TomSelect
         cy.get("#personGroupModal .ts-control").should("be.visible").click();
-        cy.get("#personGroupModal .ts-dropdown .option")
+        // .ts-dropdown is appended to <body> (dropdownParent:"body") — NOT inside the modal
+        cy.get("body > .ts-dropdown .option")
             .contains("Angels class")
             .click();
 
@@ -108,14 +109,16 @@ describe("PersonView: Add to group with multiple roles", () => {
 
         // Select the multi-role group
         cy.get("#personGroupModal .ts-control").should("be.visible").click();
-        cy.get("#personGroupModal .ts-dropdown .option")
+        // .ts-dropdown is appended to <body> (dropdownParent:"body") — NOT inside the modal
+        cy.get("body > .ts-dropdown .option")
             .contains("Angels class")
             .click();
 
         // Role picker visible — select "Teacher" explicitly
         cy.get("#pgm-role-wrapper").should("be.visible");
         cy.get("#pgm-role-wrapper .ts-control").click();
-        cy.get("#pgm-role-wrapper .ts-dropdown .option")
+        // Role dropdown also body-mounted
+        cy.get("body > .ts-dropdown .option")
             .contains("Teacher")
             .click();
 
