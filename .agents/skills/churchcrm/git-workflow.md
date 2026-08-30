@@ -293,6 +293,7 @@ Before marking PR ready for review, ensure:
 ### Code Quality
 - [ ] PHP syntax validation passed (`npm run build:php`)
 - [ ] **Biome lint passed (`npm run lint`) — also enforced by `.githooks/pre-push`**
+- [ ] No inline fully-qualified class names — `use` import instead (HARD RULE, see `code-standards.md`)
 - [ ] Code follows project standards (read nearby files)
 
 ### Database & ORM

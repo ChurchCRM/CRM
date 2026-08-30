@@ -29,9 +29,9 @@ All code must be compatible with PHP 8.4+ and avoid deprecated patterns.
 - **Version checks**: `version_compare(phpversion(), '8.4.0', '<')`
 - **Public constants**: For shared values `public const PHOTO_WIDTH = 200;`
 
-### Import Statement Rules
+### Import Statement Rules (HARD RULE — MANDATORY) <!-- learned: 2026-08-30 -->
 
-**ALWAYS use `use` statements at the top of files instead of inline fully-qualified class names:**
+**NEVER write an inline fully-qualified class name (`\ChurchCRM\...`, `\Slim\...`, `\Propel\...`) in executable code. ALWAYS add a `use` statement instead — no exceptions, including templates/views and one-off scripts.** This applies retroactively: if you touch a file for any reason and spot an inline FQN, add the import while you're there.
 
 ```php
 // ✅ CORRECT
@@ -441,6 +441,7 @@ git add new/path/file.php
 Before committing code changes, verify:
 
 - [ ] PHP syntax validation passed (npm run build:php)
+- [ ] No inline fully-qualified class names (`\ChurchCRM\...`, `\Slim\...`, `\Propel\...`) — use a `use` import instead (HARD RULE, no exceptions)
 - [ ] Propel ORM used for all database operations (no raw SQL)
 - [ ] Asset paths use SystemURLs::getRootPath()
 - [ ] Service classes used for business logic
