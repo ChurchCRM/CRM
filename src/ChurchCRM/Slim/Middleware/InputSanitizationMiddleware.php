@@ -41,7 +41,7 @@ class InputSanitizationMiddleware implements MiddlewareInterface
             foreach ($this->fieldMap as $field => $type) {
                 if (isset($body[$field])) {
                     $body[$field] = match ($type) {
-                        'int'   => (int) filter_var($body[$field], FILTER_VALIDATE_INT),
+                        'int'   => InputUtils::filterInt($body[$field]),
                         'html'  => InputUtils::sanitizeHTML($body[$field]),
                         default => InputUtils::sanitizeText($body[$field]),
                     };
