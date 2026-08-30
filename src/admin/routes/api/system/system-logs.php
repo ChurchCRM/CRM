@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Slim\Middleware\Request\Api\InputSanitizationMiddleware;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\PathUtils;
@@ -32,10 +32,15 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         return $primaryLogsDir;
     };
     
-    // Set log level — InputSanitizationMiddleware validates integer value
+    // Set log level — validate integer value
     $group->post('/loglevel', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
-        $logLevel = (int) ($input['value'] ?? 0);
+        $logLevel = filter_var($input['value'] ?? null, FILTER_VALIDATE_INT);
+
+        // Validate integer was provided and is non-negative
+        if ($logLevel === false || $logLevel < 0) {
+            return SlimUtils::renderErrorJSON($response, 'Invalid log level. Must be a non-negative integer.', 400);
+        }
 
         // Set the configuration
         SystemConfig::setValue('sLogLevel', $logLevel);
@@ -48,7 +53,7 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         }
 
         return SlimUtils::renderJSON($response, ['success' => true, 'level' => $logLevel]);
-    })->add(InputSanitizationMiddleware::class, ['value' => 'int']);
+    });
 
     // Delete all log files
     $group->delete('', function (Request $request, Response $response, array $args): Response {
