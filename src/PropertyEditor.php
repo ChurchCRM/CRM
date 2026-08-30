@@ -20,7 +20,7 @@ $sNameError = '';
 // Get the PropertyID
 $iPropertyID = 0;
 if (array_key_exists('PropertyID', $_GET)) {
-    $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
+    $iPropertyID = InputUtils::filterInt($_GET['PropertyID']);
 }
 
 // Get the Type
@@ -55,9 +55,9 @@ $sClassError = '';
 
 // Was the form submitted?
 if (isset($_POST['Submit'])) {
-    $sName = addslashes(InputUtils::legacyFilterInput($_POST['Name']));
+    $sName = addslashes(InputUtils::filterInt($_POST['Name']));
     $sDescription = addslashes(InputUtils::legacyFilterInput($_POST['Description']));
-    $iClass = InputUtils::legacyFilterInput($_POST['Class'], 'int');
+    $iClass = InputUtils::legacyFilterInput($_POST['Class']);
     $sPrompt = InputUtils::legacyFilterInput($_POST['Prompt']);
 
     // Did they enter a name?

@@ -46,7 +46,7 @@ if (!empty($_POST['classList'])) {
 }
 
 // Get the Fiscal Year ID out of the query string
-$iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+$iFYID = InputUtils::filterInt($_POST['FYID']);
 if (!$iFYID) {
     $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 }
@@ -89,7 +89,7 @@ $sSQL .= $criteria . ' ORDER BY fam_Name';
 if (!empty($_POST['family'])) {
     $count = 0;
     foreach ($_POST['family'] as $famID) {
-        $fam[$count++] = InputUtils::legacyFilterInput($famID, 'int');
+        $fam[$count++] = InputUtils::filterInt($famID);
     }
     if ($count === 1) {
         if ($fam[0]) {
@@ -113,7 +113,7 @@ $fundTypes = '';
 if (!empty($_POST['funds'])) {
     $fundCount = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$fundCount++] = (int) InputUtils::legacyFilterInput($fundID, 'int');
+        $fund[$fundCount++] = (int) InputUtils::filterInt($fundID);
     }
     if ($fundCount === 1) {
         if ($fund[0]) {

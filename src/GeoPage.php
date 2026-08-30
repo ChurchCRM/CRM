@@ -101,10 +101,10 @@ $iFamily = -1;
 $iNumNeighbors = 15;
 $nMaxDistance = 10;
 if (array_key_exists('Family', $_GET)) {
-    $iFamily = InputUtils::legacyFilterInput($_GET['Family'], 'int');
+    $iFamily = InputUtils::filterInt($_GET['Family']);
 }
 if (array_key_exists('NumNeighbors', $_GET)) {
-    $iNumNeighbors = InputUtils::legacyFilterInput($_GET['NumNeighbors'], 'int');
+    $iNumNeighbors = InputUtils::filterInt($_GET['NumNeighbors']);
 }
 
 $bClassificationPost = false;
@@ -116,8 +116,8 @@ $sCoordFileName = '';
 //Is this the second pass?
 if (isset($_POST['FindNeighbors']) || isset($_POST['DataFile']) || isset($_POST['PersonIDList'])) {
     //Get all the variables from the request object and assign them locally
-    $iFamily = InputUtils::legacyFilterInput($_POST['Family']);
-    $iNumNeighbors = InputUtils::legacyFilterInput($_POST['NumNeighbors'], 'int');
+    $iFamily = InputUtils::filterInt($_POST['Family']);
+    $iNumNeighbors = InputUtils::legacyFilterInput($_POST['NumNeighbors']);
     $nMaxDistance = InputUtils::legacyFilterInput($_POST['MaxDistance']);
     $sCoordFileName = InputUtils::legacyFilterInput($_POST['CoordFileName']);
     if (array_key_exists('CoordFileFormat', $_POST)) {

@@ -14,7 +14,7 @@ use ChurchCRM\Utils\MiscUtils;
 $aClasses = [];
 if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] !== '') {
     foreach ($_POST['sDirClassifications'] as $Cls) {
-        $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
+        $aClasses[] = InputUtils::filterInt($Cls);
     }
     $sDirClassifications = implode(',', $aClasses);
 } else {
@@ -22,19 +22,19 @@ if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassificatio
 }
 $aHeads = [];
 foreach ($_POST['sDirRoleHead'] as $Head) {
-    $aHeads[] = InputUtils::legacyFilterInput($Head, 'int');
+    $aHeads[] = InputUtils::filterInt($Head);
 }
 $sDirRoleHeads = implode(',', $aHeads);
 
 $aSpouses = [];
 foreach ($_POST['sDirRoleSpouse'] as $Spouse) {
-    $aSpouses[] = InputUtils::legacyFilterInput($Spouse, 'int');
+    $aSpouses[] = InputUtils::filterInt($Spouse);
 }
 $sDirRoleSpouses = implode(',', $aSpouses);
 
 $aChildren = [];
 foreach ($_POST['sDirRoleChild'] as $Child) {
-    $aChildren[] = InputUtils::legacyFilterInput($Child, 'int');
+    $aChildren[] = InputUtils::filterInt($Child);
 }
 
 //Exclude inactive families
@@ -55,7 +55,7 @@ $bDirPersonalEmail = isset($_POST['bDirPersonalEmail']);
 $bDirPersonalWorkEmail = isset($_POST['bDirPersonalWorkEmail']);
 $bDirPhoto = isset($_POST['bDirPhoto']);
 
-$sChurchName = InputUtils::legacyFilterInput($_POST['sChurchName']);
+$sChurchName = InputUtils::filterInt($_POST['sChurchName']);
 $sDirectoryDisclaimer = InputUtils::legacyFilterInput($_POST['sDirectoryDisclaimer']);
 $sChurchAddress = InputUtils::legacyFilterInput($_POST['sChurchAddress']);
 $sChurchCity = InputUtils::legacyFilterInput($_POST['sChurchCity']);
@@ -65,9 +65,9 @@ $sChurchPhone = InputUtils::legacyFilterInput($_POST['sChurchPhone']);
 
 $bDirUseTitlePage = isset($_POST['bDirUseTitlePage']);
 
-$bNumberofColumns = InputUtils::legacyFilterInput($_POST['NumCols'] ?? '1', 'int');
-$sPageSize = InputUtils::legacyFilterInput($_POST['PageSize']);
-$bFontSz = InputUtils::legacyFilterInput($_POST['FSize'] ?? '8', 'int');
+$bNumberofColumns = InputUtils::legacyFilterInput($_POST['NumCols'] ?? '1');
+$sPageSize = InputUtils::filterInt($_POST['PageSize']);
+$bFontSz = InputUtils::legacyFilterInput($_POST['FSize'] ?? '8');
 $bLineSp = $bFontSz / 3;
 
 if ($sPageSize != 'letter' && $sPageSize != 'a4') {
@@ -111,7 +111,7 @@ if (!empty($_POST['GroupID'])) {
 
     $aGroups = [];
     foreach ($_POST['GroupID'] as $Grp) {
-        $aGroups[] = InputUtils::legacyFilterInput($Grp, 'int');
+        $aGroups[] = InputUtils::filterInt($Grp);
     }
     $sGroupsList = implode(',', $aGroups);
 

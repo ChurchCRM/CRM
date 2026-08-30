@@ -19,14 +19,14 @@ use ChurchCRM\Utils\RedirectUtils;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Filter values
-$letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
+$letterhead = InputUtils::filterDate($_POST['letterhead']);
 $remittance = InputUtils::legacyFilterInput($_POST['remittance']);
 $output = InputUtils::legacyFilterInput($_POST['output']);
 $sReportType = InputUtils::legacyFilterInput($_POST['ReportType']);
-$sDateStart = InputUtils::legacyFilterInput($_POST['DateStart'], 'date');
-$sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
-$iDepID = InputUtils::legacyFilterInput($_POST['deposit'], 'int');
-$iMinimum = InputUtils::legacyFilterInput($_POST['minimum'], 'int');
+$sDateStart = InputUtils::legacyFilterInput($_POST['DateStart']);
+$sDateEnd = InputUtils::filterDate($_POST['DateEnd']);
+$iDepID = InputUtils::filterInt($_POST['deposit']);
+$iMinimum = InputUtils::filterInt($_POST['minimum']);
 
 // Prepare filter arrays
 $classList = [];
@@ -39,13 +39,13 @@ if (!empty($_POST['classList'])) {
 
 if (!empty($_POST['funds'])) {
     foreach ($_POST['funds'] as $fundID) {
-        $fundIds[] = InputUtils::legacyFilterInput($fundID, 'int');
+        $fundIds[] = InputUtils::filterInt($fundID);
     }
 }
 
 if (!empty($_POST['family'])) {
     foreach ($_POST['family'] as $famID) {
-        $familyIds[] = InputUtils::legacyFilterInput($famID, 'int');
+        $familyIds[] = InputUtils::filterInt($famID);
     }
 }
 

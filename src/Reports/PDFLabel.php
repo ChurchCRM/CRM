@@ -703,12 +703,12 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 }
 
 // Standard format
-$startcol = InputUtils::legacyFilterInput($_GET['startcol'], 'int');
+$startcol = InputUtils::filterInt($_GET['startcol']);
 if ($startcol < 1) {
     $startcol = 1;
 }
 
-$startrow = InputUtils::legacyFilterInput($_GET['startrow'], 'int');
+$startrow = InputUtils::filterInt($_GET['startrow']);
 if ($startrow < 1) {
     $startrow = 1;
 }

@@ -22,7 +22,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+    $iFYID = InputUtils::filterInt($_POST['FYID']);
     $_SESSION['idefaultFY'] = $iFYID;
     RedirectUtils::redirect('Reports/ReminderReport.php?FYID=' . $_SESSION['idefaultFY']);
 } else {

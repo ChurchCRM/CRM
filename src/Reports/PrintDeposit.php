@@ -16,10 +16,10 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 $iBankSlip = 0;
 if (array_key_exists('BankSlip', $_GET)) {
-    $iBankSlip = InputUtils::legacyFilterInput($_GET['BankSlip'], 'int');
+    $iBankSlip = InputUtils::filterInt($_GET['BankSlip']);
 }
 if (!$iBankSlip && array_key_exists('report_type', $_POST)) {
-    $iBankSlip = InputUtils::legacyFilterInput($_POST['report_type'], 'int');
+    $iBankSlip = InputUtils::filterInt($_POST['report_type']);
 }
 
 $output = 'pdf';
@@ -29,7 +29,7 @@ if (array_key_exists('output', $_POST)) {
 
 $iDepositSlipID = 0;
 if (array_key_exists('deposit', $_POST)) {
-    $iDepositSlipID = InputUtils::legacyFilterInput($_POST['deposit'], 'int');
+    $iDepositSlipID = InputUtils::filterInt($_POST['deposit']);
 }
 
 if (!$iDepositSlipID && array_key_exists('iCurrentDeposit', $_SESSION)) {

@@ -152,10 +152,10 @@ $app->post('/{fundraiserId}/donated-items/editor[/{itemId}]', function (Request 
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
-    $sItem         = InputUtils::legacyFilterInput($body['Item'] ?? '');
-    $bMultibuy     = (int) InputUtils::legacyFilterInput($body['Multibuy'] ?? '0', 'int');
-    $iDonor        = (int) InputUtils::legacyFilterInput($body['Donor'] ?? '0', 'int');
-    $iBuyer        = (int) InputUtils::legacyFilterInput($body['Buyer'] ?? '0', 'int');
+    $sItem         = InputUtils::filterInt($body['Item'] ?? '');
+    $bMultibuy     = (int) InputUtils::legacyFilterInput($body['Multibuy'] ?? '0');
+    $iDonor        = (int) InputUtils::filterInt($body['Donor'] ?? '0');
+    $iBuyer        = (int) InputUtils::filterInt($body['Buyer'] ?? '0');
     $sTitle        = InputUtils::legacyFilterInput($body['Title'] ?? '');
     $sDescription  = InputUtils::legacyFilterInput($body['Description'] ?? '');
     // DECIMAL columns reject empty/non-numeric strings, so coerce blank price fields to 0.0.
@@ -233,7 +233,7 @@ $app->post('/{fundraiserId}/donated-items/{itemId}/replicate', function (Request
     $fundraiserId = (int) $args['fundraiserId'];
     $itemId       = (int) $args['itemId'];
     $body         = (array) $request->getParsedBody();
-    $iCount       = (int) InputUtils::legacyFilterInput($body['Count'] ?? '0', 'int');
+    $iCount       = (int) InputUtils::filterInt($body['Count'] ?? '0');
 
     // Scope to fundraiserId to prevent cross-fundraiser replication
     $donatedItem = DonatedItemQuery::create()

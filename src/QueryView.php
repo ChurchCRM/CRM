@@ -21,7 +21,7 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
 }
 
 // Get the QueryID from the querystring
-$iQueryID = InputUtils::legacyFilterInput($_GET['QueryID'], 'int');
+$iQueryID = InputUtils::filterInt($_GET['QueryID']);
 
 $aFinanceQueries = array_map('intval', explode(',', SystemConfig::getValue('aFinanceQueries')));
 
@@ -112,7 +112,7 @@ function ValidateInput()
                         }
                     }
 
-                    $vPOST[$qrp_Alias] = InputUtils::legacyFilterInput($_POST[$qrp_Alias], 'int');
+                    $vPOST[$qrp_Alias] = InputUtils::filterInt($_POST[$qrp_Alias]);
                     break;
 
                 // Alpha validation

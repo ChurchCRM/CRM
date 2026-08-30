@@ -55,7 +55,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-        $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'name']);
+        $aNameFields[$iFieldID] = InputUtils::filterInt($_POST[$iFieldID . 'name']);
 
         if (strlen($aNameFields[$iFieldID]) === 0) {
             $aNameErrors[$iFieldID] = true;
@@ -64,10 +64,10 @@ if (isset($_POST['SaveChanges'])) {
             $aNameErrors[$iFieldID] = false;
         }
 
-        $aFieldSecurity[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'FieldSec'], 'int');
+        $aFieldSecurity[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'FieldSec']);
 
         if (isset($_POST[$iFieldID . 'special'])) {
-            $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
+            $aSpecialFields[$iFieldID] = InputUtils::filterInt($_POST[$iFieldID . 'special']);
 
             if ($aSpecialFields[$iFieldID] === 0) {
                 $aSpecialErrors[$iFieldID] = true;
@@ -97,9 +97,9 @@ if (isset($_POST['SaveChanges'])) {
 } else {
     // Check if we're adding a field
     if (isset($_POST['AddField'])) {
-        $newFieldType = InputUtils::legacyFilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
-        $newFieldSec = InputUtils::legacyFilterInput($_POST['newFieldSec'], 'int');
+        $newFieldType = InputUtils::filterInt($_POST['newFieldType']);
+        $newFieldName = InputUtils::filterInt($_POST['newFieldName']);
+        $newFieldSec = InputUtils::legacyFilterInput($_POST['newFieldSec']);
 
         if (strlen($newFieldName) === 0) {
             $bNewNameError = true;

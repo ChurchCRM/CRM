@@ -19,12 +19,12 @@ $aGrp = explode(',', $iGroupID);
 $nGrps = count($aGrp);
 LoggerUtils::getAppLogger()->debug("Group ID = {$iGroupID}");
 
-$iFYID = (int) InputUtils::legacyFilterInput($_GET['FYID'], 'int');
+$iFYID = (int) InputUtils::filterInt($_GET['FYID']);
 
-$tFirstSunday = InputUtils::legacyFilterInput($_GET['FirstSunday']);
+$tFirstSunday = InputUtils::filterInt($_GET['FirstSunday']);
 $tLastSunday = InputUtils::legacyFilterInput($_GET['LastSunday']);
-$tAllRoles = InputUtils::legacyFilterInput($_GET['AllRoles'], 'int');
-$withPictures = InputUtils::legacyFilterInput($_GET['withPictures'], 'int');
+$tAllRoles = InputUtils::legacyFilterInput($_GET['AllRoles']);
+$withPictures = InputUtils::filterInt($_GET['withPictures']);
 
 LoggerUtils::getAppLogger()->debug("All roles = {$tAllRoles}");
 
@@ -37,8 +37,8 @@ $tNoSchool6 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool6');
 $tNoSchool7 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool7');
 $tNoSchool8 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool8');
 
-$iExtraStudents = (int)InputUtils::legacyFilterInputArr($_GET, 'ExtraStudents', 'int');
-$iExtraTeachers = (int)InputUtils::legacyFilterInputArr($_GET, 'ExtraTeachers', 'int');
+$iExtraStudents = (int)InputUtils::filterInt($_GET['ExtraStudents']);
+$iExtraTeachers = (int)InputUtils::filterInt($_GET['ExtraTeachers']);
 
 $dFirstSunday = strtotime($tFirstSunday);
 $dLastSunday = strtotime($tLastSunday);

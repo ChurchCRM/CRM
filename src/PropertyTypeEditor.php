@@ -16,7 +16,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 // Get the PropertyID
 $iPropertyTypeID = 0;
 if (array_key_exists('PropertyTypeID', $_GET)) {
-    $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
+    $iPropertyTypeID = InputUtils::filterInt($_GET['PropertyTypeID']);
 }
 
 $sPageTitle = $iPropertyTypeID > 0 ? gettext('Edit Property Type') : gettext('Add Property Type');

@@ -11,13 +11,13 @@ use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 // Get the Fiscal Year ID out of the query string
-$iFYID = (int) InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+$iFYID = (int) InputUtils::filterInt($_POST['FYID']);
 if (!$iFYID) {
     $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 }
 // Remember the chosen Fiscal Year ID
 $_SESSION['idefaultFY'] = $iFYID;
-$iRequireDonationYears = InputUtils::legacyFilterInput($_POST['RequireDonationYears'], 'int');
+$iRequireDonationYears = InputUtils::filterInt($_POST['RequireDonationYears']);
 $output = InputUtils::legacyFilterInput($_POST['output']);
 
 class PdfVotingMembers extends ChurchInfoReport

@@ -23,11 +23,11 @@ $iFamilyID = 0;
 $iDonationFamilyID = 0;
 
 if (!empty($_GET['FamilyID'])) {
-    $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::filterInt($_GET['FamilyID']);
 }
 
 if (!empty($_GET['DonationFamilyID'])) {
-    $iDonationFamilyID = InputUtils::legacyFilterInput($_GET['DonationFamilyID'], 'int');
+    $iDonationFamilyID = InputUtils::filterInt($_GET['DonationFamilyID']);
 }
 
 if (isset($_GET['CancelFamily'])) {

@@ -14,7 +14,7 @@ $sPageTitle = gettext('Electronic Transaction Details');
 $sPageSubtitle = gettext('View transaction details for a pledge payment');
 
 // Get the PledgeID out of the querystring
-$iPledgeID = InputUtils::legacyFilterInput($_GET['PledgeID'], 'int');
+$iPledgeID = InputUtils::filterInt($_GET['PledgeID']);
 $linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 
 // Security: User must have Finance permission to use this form.

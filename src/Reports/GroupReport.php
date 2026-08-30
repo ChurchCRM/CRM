@@ -11,11 +11,11 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 
 $bOnlyCartMembers = $_POST['OnlyCart'];
-$iGroupID = InputUtils::legacyFilterInput($_POST['GroupID'], 'int');
-$iMode = InputUtils::legacyFilterInput($_POST['ReportModel'], 'int');
+$iGroupID = InputUtils::filterInt($_POST['GroupID']);
+$iMode = InputUtils::filterInt($_POST['ReportModel']);
 
 if ($iMode == 1) {
-    $iRoleID = InputUtils::legacyFilterInput($_POST['GroupRole'], 'int');
+    $iRoleID = InputUtils::filterInt($_POST['GroupRole']);
 } else {
     $iRoleID = 0;
 }

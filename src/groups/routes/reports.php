@@ -35,8 +35,8 @@ $app->post('/reports', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $body      = $request->getParsedBody();
-    $iGroupID  = (int) InputUtils::legacyFilterInput($body['GroupID'] ?? '0', 'int');
-    $groupRole = InputUtils::legacyFilterInput($body['GroupRole'] ?? '', 'string');
+    $iGroupID  = (int) InputUtils::filterInt($body['GroupID'] ?? '0');
+    $groupRole = InputUtils::sanitizeText($body['GroupRole'] ?? '');
 
     // Validate group exists — redirect back to step 1 if not
     if ($iGroupID <= 0 || GroupQuery::create()->findPk($iGroupID) === null) {

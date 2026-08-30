@@ -17,9 +17,9 @@ use ChurchCRM\Utils\RedirectUtils;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Filter values
-$output = InputUtils::legacyFilterInput($_POST['output']);
-$sDateStart = InputUtils::legacyFilterInput($_POST['DateStart'], 'date');
-$sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
+$output = InputUtils::filterDate($_POST['output']);
+$sDateStart = InputUtils::legacyFilterInput($_POST['DateStart']);
+$sDateEnd = InputUtils::filterDate($_POST['DateEnd']);
 
 $letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
 $remittance = InputUtils::legacyFilterInput($_POST['remittance']);

@@ -23,13 +23,13 @@ $sPageTitle = gettext('Note Editor');
 $sPageSubtitle = gettext('Add or edit notes for people and families');
 
 if (isset($_GET['PersonID'])) {
-    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::filterInt($_GET['PersonID']);
 } else {
     $iPersonID = 0;
 }
 
 if (isset($_GET['FamilyID'])) {
-    $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::filterInt($_GET['FamilyID']);
 } else {
     $iFamilyID = 0;
 }
@@ -47,7 +47,7 @@ if (isset($_POST['Submit'])) {
     $bErrorFlag = false;
 
     // Assign all variables locally
-    $iNoteID = InputUtils::legacyFilterInput($_POST['NoteID'], 'int');
+    $iNoteID = InputUtils::filterInt($_POST['NoteID']);
     $sNoteText = InputUtils::sanitizeHTML($_POST['NoteTextInput']);
 
     // If they didn't check the private box, set the value to 0
@@ -129,7 +129,7 @@ if (isset($_POST['Submit'])) {
     // Are we loading an existing note for editing?
     if (isset($_GET['NoteID'])) {
         // Get the NoteID from the querystring
-        $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
+        $iNoteID = InputUtils::filterInt($_GET['NoteID']);
         $dbNote = NoteQuery::create()->findPk($iNoteID);
 
         // Fix (load path): guard against non-existent NoteID.

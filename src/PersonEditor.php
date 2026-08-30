@@ -24,7 +24,7 @@ $sPageSubtitle = gettext('Add or edit individual person records');
 // Get the PersonID out of the querystring
 $iPersonID = 0;
 if (array_key_exists('PersonID', $_GET)) {
-    $iPersonID = (int) InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
+    $iPersonID = (int) InputUtils::filterInt($_GET['PersonID']);
 }
 $isNewPerson = $iPersonID === 0;
 
@@ -35,7 +35,7 @@ if (array_key_exists('previousPage', $_GET)) {
 
 $queryParamFamilyId = null;
 if (array_key_exists('FamilyID', $_GET)) {
-    $queryParamFamilyId = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
+    $queryParamFamilyId = InputUtils::filterInt($_GET['FamilyID']);
 }
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
@@ -155,12 +155,12 @@ $aCustomData = [];
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
-    $sTitle = InputUtils::legacyFilterInput($_POST['Title']);
+    $sTitle = InputUtils::filterInt($_POST['Title']);
     $sFirstName = InputUtils::legacyFilterInput($_POST['FirstName']);
     $sMiddleName = InputUtils::legacyFilterInput($_POST['MiddleName']);
     $sLastName = InputUtils::legacyFilterInput($_POST['LastName']);
     $sSuffix = InputUtils::legacyFilterInput($_POST['Suffix']);
-    $iGender = InputUtils::legacyFilterInput($_POST['Gender'], 'int');
+    $iGender = InputUtils::legacyFilterInput($_POST['Gender']);
 
     // Person address stuff is normally suppressed in favor of family address info
     $sAddress1 = '';
@@ -186,11 +186,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     if (array_key_exists('Country', $_POST)) {
-        $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
+        $sCountry = InputUtils::filterInt($_POST['Country']);
     }
 
-    $iFamily = InputUtils::legacyFilterInput($_POST['Family'], 'int');
-    $iFamilyRole = InputUtils::legacyFilterInput($_POST['FamilyRole'], 'int');
+    $iFamily = InputUtils::legacyFilterInput($_POST['Family']);
+    $iFamilyRole = InputUtils::filterInt($_POST['FamilyRole']);
     $family = null;
 
     // Person data is now authoritative - no family fallback
@@ -199,7 +199,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (array_key_exists('State', $_POST)) {
         $sState = InputUtils::legacyFilterInput($_POST['State']);
     } elseif (array_key_exists('StateTextbox', $_POST)) {
-        $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
+        $sState = InputUtils::filterInt($_POST['StateTextbox']);
     }
 
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
@@ -207,19 +207,19 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
     $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
     $sWorkEmail = InputUtils::legacyFilterInput($_POST['WorkEmail']);
-    $iBirthMonth = InputUtils::legacyFilterInput($_POST['BirthMonth'], 'int');
-    $iBirthDay = InputUtils::legacyFilterInput($_POST['BirthDay'], 'int');
-    $iBirthYear = InputUtils::legacyFilterInput($_POST['BirthYear'], 'int');
+    $iBirthMonth = InputUtils::legacyFilterInput($_POST['BirthMonth']);
+    $iBirthDay = InputUtils::filterInt($_POST['BirthDay']);
+    $iBirthYear = InputUtils::filterInt($_POST['BirthYear']);
     $bHideAge = isset($_POST['HideAge']);
     $dFriendDate = InputUtils::filterDate($_POST['FriendDate']);
     $dMembershipDate = InputUtils::filterDate($_POST['MembershipDate']);
-    $iClassification = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
+    $iClassification = InputUtils::filterInt($_POST['Classification']);
     $iEnvelope = 0;
     if (array_key_exists('EnvID', $_POST)) {
-        $iEnvelope = InputUtils::legacyFilterInput($_POST['EnvID'], 'int');
+        $iEnvelope = InputUtils::filterInt($_POST['EnvID']);
     }
     if (array_key_exists('updateBirthYear', $_POST)) {
-        $iupdateBirthYear = InputUtils::legacyFilterInput($_POST['updateBirthYear'], 'int');
+        $iupdateBirthYear = InputUtils::filterInt($_POST['updateBirthYear']);
     }
 
     $sFacebook = InputUtils::sanitizeText($_POST['Facebook']);

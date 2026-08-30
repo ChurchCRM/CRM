@@ -30,7 +30,7 @@ $family = null;
 
 // Get the FamilyID from the querystring
 if (array_key_exists('FamilyID', $_GET)) {
-    $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::filterInt($_GET['FamilyID']);
 }
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
@@ -102,10 +102,10 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $nLatitude = 0.0;
     $nLongitude = 0.0;
     if (array_key_exists('Latitude', $_POST)) {
-        $nLatitude = InputUtils::legacyFilterInput($_POST['Latitude'], 'float');
+        $nLatitude = InputUtils::filterFloat($_POST['Latitude']);
     }
     if (array_key_exists('Longitude', $_POST)) {
-        $nLongitude = InputUtils::legacyFilterInput($_POST['Longitude'], 'float');
+        $nLongitude = InputUtils::filterFloat($_POST['Longitude']);
     }
 
     if (!is_numeric($nLatitude)) {
@@ -118,7 +118,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     $nEnvelope = 0;
     if (array_key_exists('Envelope', $_POST)) {
-        $nEnvelope = InputUtils::legacyFilterInput($_POST['Envelope'], 'int');
+        $nEnvelope = InputUtils::filterInt($_POST['Envelope']);
     }
 
     // Only integers are allowed as Envelope Numbers
@@ -128,9 +128,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     $iPropertyID = 0;
     if (array_key_exists('PropertyID', $_POST)) {
-        $iPropertyID = InputUtils::legacyFilterInput($_POST['PropertyID'], 'int');
+        $iPropertyID = InputUtils::filterInt($_POST['PropertyID']);
     }
-    $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate'] ?? '');
+    $dWeddingDate = InputUtils::filterInt($_POST['WeddingDate'] ?? '');
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
 
@@ -141,14 +141,14 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $aMiddleNames[$iCount] = InputUtils::legacyFilterInput($_POST["MiddleName$iCount"]);
         $aLastNames[$iCount] = InputUtils::legacyFilterInput($_POST["LastName$iCount"]);
         $aSuffix[$iCount] = InputUtils::legacyFilterInput($_POST["Suffix$iCount"]);
-        $aRoles[$iCount] = InputUtils::legacyFilterInput($_POST["Role$iCount"], 'int');
-        $aGenders[$iCount] = InputUtils::legacyFilterInput($_POST["Gender$iCount"], 'int');
-        $aBirthDays[$iCount] = InputUtils::legacyFilterInput($_POST["BirthDay$iCount"], 'int');
-        $aBirthMonths[$iCount] = InputUtils::legacyFilterInput($_POST["BirthMonth$iCount"], 'int');
-        $aBirthYears[$iCount] = InputUtils::legacyFilterInput($_POST["BirthYear$iCount"], 'int');
-        $aClassification[$iCount] = InputUtils::legacyFilterInput($_POST["Classification$iCount"], 'int');
-        $aPersonIDs[$iCount] = InputUtils::legacyFilterInput($_POST["PersonID$iCount"], 'int');
-        $aUpdateBirthYear[$iCount] = InputUtils::legacyFilterInput($_POST['UpdateBirthYear'], 'int');
+        $aRoles[$iCount] = InputUtils::legacyFilterInput($_POST["Role$iCount"]);
+        $aGenders[$iCount] = InputUtils::filterInt($_POST["Gender$iCount"]);
+        $aBirthDays[$iCount] = InputUtils::filterInt($_POST["BirthDay$iCount"]);
+        $aBirthMonths[$iCount] = InputUtils::filterInt($_POST["BirthMonth$iCount"]);
+        $aBirthYears[$iCount] = InputUtils::filterInt($_POST["BirthYear$iCount"]);
+        $aClassification[$iCount] = InputUtils::filterInt($_POST["Classification$iCount"]);
+        $aPersonIDs[$iCount] = InputUtils::filterInt($_POST["PersonID$iCount"]);
+        $aUpdateBirthYear[$iCount] = InputUtils::filterInt($_POST['UpdateBirthYear']);
 
         // Make sure first names were entered if editing existing family
         if ($iFamilyID > 0) {

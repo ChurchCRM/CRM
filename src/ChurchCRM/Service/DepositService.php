@@ -176,7 +176,7 @@ class DepositService {
     {
         $deposit = new Deposit();
         $deposit->setType($depositType);
-        $deposit->setComment(InputUtils::sanitizeAndEscapeText($depositComment));
+        $deposit->setComment(InputUtils::sanitizeText($depositComment));
         $deposit->setDate($depositDate);
         $deposit->save();
         return $deposit;

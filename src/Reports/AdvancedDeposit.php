@@ -18,13 +18,13 @@ use ChurchCRM\Utils\RedirectUtils;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Filter values
-$sort = InputUtils::legacyFilterInput($_POST['sort']);
+$sort = InputUtils::filterDate($_POST['sort']);
 $detail_level = InputUtils::legacyFilterInput($_POST['detail_level']);
 $datetype = InputUtils::legacyFilterInput($_POST['datetype']);
 $output = InputUtils::legacyFilterInput($_POST['output']);
-$sDateStart = InputUtils::legacyFilterInput($_POST['DateStart'], 'date');
-$sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
-$iDepID = InputUtils::legacyFilterInput($_POST['deposit'], 'int');
+$sDateStart = InputUtils::legacyFilterInput($_POST['DateStart']);
+$sDateEnd = InputUtils::filterDate($_POST['DateEnd']);
+$iDepID = InputUtils::filterInt($_POST['deposit']);
 
 // Prepare filter arrays
 $classList = [];
@@ -38,13 +38,13 @@ if (!empty($_POST['classList'])) {
 
 if (!empty($_POST['funds'])) {
     foreach ($_POST['funds'] as $fundID) {
-        $fundIds[] = InputUtils::legacyFilterInput($fundID, 'int');
+        $fundIds[] = InputUtils::filterInt($fundID);
     }
 }
 
 if (!empty($_POST['family'])) {
     foreach ($_POST['family'] as $famID) {
-        $familyIds[] = InputUtils::legacyFilterInput($famID, 'int');
+        $familyIds[] = InputUtils::filterInt($famID);
     }
 }
 

@@ -14,7 +14,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 // Get the Group, Property, and Action from the querystring or POST
-$iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'] ?? $_POST['OrderID'] ?? 1, 'int');
+$iOrderID = InputUtils::filterInt($_GET['OrderID'] ?? $_POST['OrderID'] ?? 1);
 $sField = InputUtils::legacyFilterInput($_GET['Field'] ?? $_POST['Field'] ?? '');
 $sAction = $_GET['Action'] ?? $_POST['Action'] ?? '';
 

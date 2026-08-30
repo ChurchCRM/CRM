@@ -23,11 +23,11 @@ if (isset($_POST['save'])) {
         $id = key($type);
         // Filter Input
         if ($current_type === 'text' || $current_type === 'textarea') {
-            $value = InputUtils::legacyFilterInput($new_value[$id]);
+            $value = InputUtils::filterFloat($new_value[$id]);
         } elseif ($current_type === 'number') {
-            $value = InputUtils::legacyFilterInput($new_value[$id], 'float');
+            $value = InputUtils::filterDate($new_value[$id]);
         } elseif ($current_type === 'date') {
-            $value = InputUtils::legacyFilterInput($new_value[$id], 'date');
+            $value = InputUtils::legacyFilterInput($new_value[$id]);
         } elseif ($current_type === 'boolean') {
             if ($new_value[$id] !== '1') {
                 $value = '';

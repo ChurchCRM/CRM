@@ -21,7 +21,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $iYear = InputUtils::legacyFilterInput($_POST['Year'], 'int');
+    $iYear = InputUtils::filterInt($_POST['Year']);
     RedirectUtils::redirect('Reports/TaxReport.php?Year=' . $iYear);
 } else {
     $iYear = date('Y') - 1;

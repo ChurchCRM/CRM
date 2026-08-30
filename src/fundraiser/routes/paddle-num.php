@@ -185,7 +185,7 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
-    $iNum   = (int) InputUtils::legacyFilterInput($body['Num'] ?? '0');
+    $iNum   = (int) InputUtils::filterInt($body['Num'] ?? '0');
     $iPerID = (int) InputUtils::legacyFilterInput($body['PerID'] ?? '0');
 
     // On reassignment: delete the old owner's multibuy rows so their statement
@@ -216,7 +216,7 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
     foreach (DonatedItemQuery::create()->filterByFrId($fundraiserId)->filterByMultibuy(1)->find() as $multibuyItem) {
         $diId     = $multibuyItem->getId();
         $mbName   = 'MBItem' . $diId;
-        $iMBCount = (int) InputUtils::legacyFilterInput($body[$mbName] ?? '0', 'int');
+        $iMBCount = (int) InputUtils::legacyFilterInput($body[$mbName] ?? '0');
 
         $numBought = MultibuyQuery::create()
             ->filterByMbPerId($iPerID)

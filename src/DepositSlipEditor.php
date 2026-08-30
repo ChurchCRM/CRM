@@ -21,7 +21,7 @@ $iDepositSlipID = 0;
 $thisDeposit = 0;
 
 if (array_key_exists('DepositSlipID', $_GET)) {
-    $iDepositSlipID = InputUtils::legacyFilterInput($_GET['DepositSlipID'], 'int');
+    $iDepositSlipID = InputUtils::filterInt($_GET['DepositSlipID']);
 }
 
 $noDeposit = true;

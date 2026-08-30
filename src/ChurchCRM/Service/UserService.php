@@ -538,8 +538,8 @@ class UserService
             $rawVal = $newValue[$id] ?? '';
             $value  = match ($currentType) {
                 'text', 'textarea' => InputUtils::legacyFilterInput($rawVal),
-                'number'           => InputUtils::legacyFilterInput($rawVal, 'float'),
-                'date'             => InputUtils::legacyFilterInput($rawVal, 'date'),
+                'number'           => InputUtils::filterFloat($rawVal),
+                'date'             => InputUtils::filterDate($rawVal),
                 'boolean'          => ($rawVal != '1') ? '' : '1',
                 default            => InputUtils::legacyFilterInput($rawVal),
             };

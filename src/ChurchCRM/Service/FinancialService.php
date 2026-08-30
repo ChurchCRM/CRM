@@ -71,7 +71,7 @@ class FinancialService
             $newRow['Nondeductible_formatted'] = CurrencyFormatter::format($row->getNondeductible());
             $newRow['Schedule'] = $row->getSchedule();
             $newRow['Method'] = $row->getMethod();
-            $newRow['Comment'] = InputUtils::sanitizeAndEscapeText($row->getComment() ?? '');
+            $newRow['Comment'] = InputUtils::sanitizeText($row->getComment() ?? '');
             $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
             $newRow['Date'] = $row->getDate('Y-m-d');
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');

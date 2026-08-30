@@ -38,14 +38,14 @@ $sDateStart = '';
 $sDateEnd = '';
 $datetype = '';
 if (array_key_exists('DateStart', $_POST)) {
-    $sDateStart = InputUtils::legacyFilterInput($_POST['DateStart'], 'date');
+    $sDateStart = InputUtils::filterDate($_POST['DateStart']);
 } elseif (array_key_exists('DateStart', $_GET)) {
-    $sDateStart = InputUtils::legacyFilterInput($_GET['DateStart'], 'date');
+    $sDateStart = InputUtils::filterDate($_GET['DateStart']);
 }
 if (array_key_exists('DateEnd', $_POST)) {
-    $sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
+    $sDateEnd = InputUtils::filterDate($_POST['DateEnd']);
 } elseif (array_key_exists('DateEnd', $_GET)) {
-    $sDateEnd = InputUtils::legacyFilterInput($_GET['DateEnd'], 'date');
+    $sDateEnd = InputUtils::filterDate($_GET['DateEnd']);
 }
 if (array_key_exists('datetype', $_POST)) {
     $datetype = InputUtils::legacyFilterInput($_POST['datetype']);
