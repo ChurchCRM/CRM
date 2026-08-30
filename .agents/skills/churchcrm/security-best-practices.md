@@ -1237,15 +1237,15 @@ custom-field labels) inserted into the DOM via `.html()`, `.append()`,
 | `/admin/api/options/*` | Text fields | ✅ InputSanitizationMiddleware | ✅ PASS | None |
 | `/admin/api/system/config/*` | Text/password | ✅ Service-layer (ConfigItem) | ✅ PASS | None |
 | `/admin/api/system/logs/loglevel` | Integer | ❌ Manual `is_numeric()` | ⚠️ WEAK | No middleware; should use InputSanitizationMiddleware |
-| `/admin/api/birthday-emails` | Text | ❌ None | ⚠️ WEAK | Missing email validation with filter_var(FILTER_VALIDATE_EMAIL) |
-| `/admin/api/import` | Mixed (token, mapping) | ❌ Manual regex only | ⚠️ WEAK | Mapping text fields not sanitized |
-| `/admin/api/upgrade` | Mixed (path, sha1) | ❌ Manual validation | ⚠️ WEAK | Path/hash need middleware sanitization |
+| `/admin/api/birthday-emails` | None (reads user profile) | ✅ Auth-gated | ✅ PASS | No user input; reads stored email from authenticated user |
+| `/admin/api/import` | CSV fields | ✅ InputUtils::sanitizeText() | ✅ PASS | Core fields sanitized in csv/execute; token validated |
+| `/admin/api/upgrade` | File path | ✅ PathUtils::resolveRealPathWithin() | ✅ PASS | Traversal prevention in place; stronger than middleware |
 | `/admin/api/database` | Enum (BackupType) | ✅ Type-checked | ✅ PASS | Enum-only input; safe |
 | `/admin/api/user-admin` | Path params | ✅ Auth middleware | ✅ PASS | No text input; path-only IDs |
 | `/admin/api/demo` | Boolean flags | ✅ Type-cast | ✅ PASS | Boolean-only input; no text fields |
 | `/admin/api/orphaned-files` | None | ✅ Read-only | ✅ PASS | GET endpoint; no input |
 
-**Summary:** 5/10 pass; 4/10 need middleware; 1/10 acceptable (enum-only)
+**Summary:** 8/10 pass; 1/10 needs middleware (loglevel); 1/10 acceptable (enum-only)
 
 ### Public API Endpoints
 
@@ -1260,10 +1260,7 @@ custom-field labels) inserted into the DOM via `.html()`, `.append()`,
 ### Recommendations
 
 **High Priority:**
-1. Add InputSanitizationMiddleware to `/admin/api/system/logs/loglevel`
-2. Add email validation to `/admin/api/birthday-emails` (filter_var FILTER_VALIDATE_EMAIL)
-3. Add middleware to `/admin/api/import` for text field sanitization
-4. Add middleware to `/admin/api/upgrade` for path validation
+1. Add proper integer validation to `/admin/api/system/logs/loglevel` (currently no type checking; already fixed in #9590)
 
 **Medium Priority:**
 1. Migrate 289 `legacyFilterInput()` calls to modern methods
