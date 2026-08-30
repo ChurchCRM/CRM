@@ -2,6 +2,8 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Slim\Middleware\Request\Api\InputSanitizationMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\PathUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -30,15 +32,10 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         return $primaryLogsDir;
     };
     
-    // Set log level
+    // Set log level — InputSanitizationMiddleware validates integer value
     $group->post('/loglevel', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
-        $logLevel = $input['value'] ?? null;
-
-        if (!$logLevel || !is_numeric($logLevel)) {
-            $response->getBody()->write(json_encode(['error' => 'Invalid log level']));
-            return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
-        }
+        $logLevel = (int) ($input['value'] ?? 0);
 
         // Set the configuration
         SystemConfig::setValue('sLogLevel', $logLevel);
@@ -50,9 +47,8 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
             // Logger might not be initialized yet, which is fine
         }
 
-        $response->getBody()->write(json_encode(['success' => true, 'level' => $logLevel]));
-        return $response->withHeader('Content-Type', 'application/json');
-    });
+        return SlimUtils::renderJSON($response, ['success' => true, 'level' => $logLevel]);
+    })->add(InputSanitizationMiddleware::class, ['value' => 'int']);
 
     // Delete all log files
     $group->delete('', function (Request $request, Response $response, array $args): Response {
