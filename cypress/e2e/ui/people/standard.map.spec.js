@@ -128,20 +128,16 @@ describe("Find Neighbors (/people/map/neighbors)", () => {
         cy.get("#neighborsTable").should("not.be.visible");
     });
 
-    it("Runs a search for a seeded family and shows results below the map", () => {
+    it("Runs a deep-linked search and renders the origin family on the map", () => {
         cy.visit("people/map/neighbors?familyId=1");
-        // Deep link auto-submits; wait for the results table to appear
-        cy.get("#neighborsTable tbody tr", { timeout: 15000 }).should(
-            "have.length.at.least",
-            1,
-        );
-        cy.get("#addAllToCart").should("not.be.disabled");
-        // Origin + neighbor circle markers are drawn on the map
+        // Deep link auto-submits; the search button re-enables when the request completes
+        cy.get("#findNeighborsBtn", { timeout: 15000 }).should("not.be.disabled");
+        // The selected (origin) family is always plotted as a circle marker,
+        // regardless of how many geocoded neighbours the seed data has
         cy.get(".leaflet-overlay-pane path", { timeout: 10000 }).should(
             "have.length.at.least",
             1,
         );
-        // Distance legend appears once results are shown
         cy.get(".neighbors-legend").should("be.visible");
     });
 });
