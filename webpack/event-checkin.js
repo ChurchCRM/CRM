@@ -485,10 +485,11 @@ $(() => {
   function openCheckoutByDialog(personId, personName, checkinId, checkinName) {
     const safeName = window.CRM.escapeHtml(String(personName));
 
-    // Build a unique modal ID so concurrent calls don't conflict.
-    // Uses a native BS5 modal (not bootbox) so TomSelect's dropdownParent: "body"
-    // works correctly — bootbox v6 has incompatibilities with that option.
-    const modalId = `crm-checkout-by-modal-${Date.now()}`;
+    // Use a fixed modal ID so concurrent calls can find and properly dispose
+    // any already-open instance before creating a new one. A Date.now()-based
+    // ID is always unique, making the getElementById dedup guard below
+    // unreachable dead code.
+    const modalId = "crm-checkout-by-modal";
 
     const bodyHtml =
       '<p class="mb-2">' +
@@ -509,7 +510,12 @@ $(() => {
       "</small>";
 
     const existing = document.getElementById(modalId);
-    if (existing) existing.remove();
+    if (existing) {
+      // Dispose the BS5 Modal instance before removing the element to avoid
+      // event-listener and backdrop leaks.
+      window.bootstrap.Modal.getInstance(existing)?.dispose();
+      existing.remove();
+    }
 
     const wrapper = document.createElement("div");
     wrapper.id = modalId;

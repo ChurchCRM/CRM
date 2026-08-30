@@ -7,7 +7,9 @@ function _createModal(title, bodyHtml) {
   var existing = document.getElementById(GV_MODAL_ID);
   if (existing) {
     existing.querySelectorAll("select").forEach(function (sel) {
-      if (sel.tomselect) sel.tomselect.destroy();
+      try {
+        if (sel.tomselect) sel.tomselect.destroy();
+      } catch (e) {}
     });
     var old = window.bootstrap.Modal.getInstance(existing);
     if (old) old.dispose();
@@ -163,6 +165,10 @@ function _showGroupAndRoleModal(title, callback) {
         var roleEl = document.getElementById("gv-role-select");
         var tsGroup = null;
         var tsRole = null;
+        // Guard: if the modal closes before getRoles() AJAX resolves, bail out
+        // of the .done() callback to prevent creating a TomSelect on a detached
+        // element (which would leave orphaned body > .ts-dropdown nodes).
+        var isOpen = true;
 
         tsGroup = new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
@@ -186,6 +192,7 @@ function _showGroupAndRoleModal(title, callback) {
             roleWrapper.classList.add("d-none");
 
             window.CRM.groups.getRoles(value).done((roles) => {
+              if (!isOpen) return; // modal closed before AJAX resolved
               if (roles.length === 0) {
                 selectedRoleId = null;
                 result.confirm.disabled = false;
@@ -216,6 +223,7 @@ function _showGroupAndRoleModal(title, callback) {
         result.el.addEventListener(
           "hidden.bs.modal",
           () => {
+            isOpen = false; // prevent in-flight getRoles() from creating orphaned TomSelect
             try {
               if (tsGroup) tsGroup.destroy();
             } catch (e) {}

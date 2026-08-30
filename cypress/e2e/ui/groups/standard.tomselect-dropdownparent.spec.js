@@ -163,13 +163,13 @@ describe("event-checkin.js openCheckoutByDialog TomSelect dropdownParent:body (#
         // Cancel without actually checking out (avoid side effects)
         cy.get(".modal.show #checkoutCancelBtn").click({ force: true });
         cy.window().then((win) => {
-            const el = win.document.querySelector('[id^="crm-checkout-by-modal"]');
+            const el = win.document.querySelector("#crm-checkout-by-modal");
             if (el) {
                 const instance = win.bootstrap?.Modal?.getInstance(el);
                 if (instance) instance.hide();
             }
         });
-        cy.get('[id^="crm-checkout-by-modal"]', { timeout: 5000 }).should("not.exist");
+        cy.get("#crm-checkout-by-modal", { timeout: 5000 }).should("not.exist");
 
         // Teardown: hidden.bs.modal destroys the TomSelect and removes the
         // body-mounted dropdown.

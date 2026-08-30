@@ -20,7 +20,9 @@ function createModal(title, bodyHtml) {
   const existing = document.getElementById(MODAL_ID);
   if (existing) {
     existing.querySelectorAll("select").forEach((sel) => {
-      if (sel.tomselect) sel.tomselect.destroy();
+      try {
+        if (sel.tomselect) sel.tomselect.destroy();
+      } catch (_e) {}
     });
     const bsModal = window.bootstrap.Modal.getInstance(existing);
     if (bsModal) bsModal.dispose();
@@ -125,6 +127,10 @@ function handleAddToGroup(personId) {
       () => {
         const roleWrapper = document.getElementById("pgm-role-wrapper");
         const roleEl = document.getElementById("pgm-role-select");
+        // Guard: if the modal closes before getRoles() AJAX resolves, bail out
+        // of the .done() callback to prevent creating a TomSelect on a detached
+        // element (which would leave orphaned body > .ts-dropdown nodes).
+        let isOpen = true;
 
         const tsGroup = new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
@@ -137,15 +143,23 @@ function handleAddToGroup(personId) {
               confirm.disabled = true;
               return;
             }
-            loadRoles(value, roleEl, roleWrapper, confirm, (roleId) => {
-              selectedRoleId = roleId;
-            });
+            loadRoles(
+              value,
+              roleEl,
+              roleWrapper,
+              confirm,
+              (roleId) => {
+                selectedRoleId = roleId;
+              },
+              () => isOpen,
+            );
           },
         });
         // Destroy TomSelect instances on close so body > .ts-dropdown is removed.
         el.addEventListener(
           "hidden.bs.modal",
           () => {
+            isOpen = false; // prevent in-flight getRoles() from creating orphaned TomSelect
             try {
               tsGroup.destroy();
             } catch (_e) {}
@@ -178,13 +192,19 @@ function handleAddToGroup(personId) {
 /**
  * Load roles for a group into a select element. If only 1 role, auto-select it
  * and hide the wrapper. If >1, show TomSelect.
+ *
+ * @param {Function} getIsOpen - Returns true while the parent modal is open.
+ *   When the modal closes before this AJAX call resolves, `getIsOpen()` returns
+ *   false and the callback bails out to avoid creating a TomSelect on a detached
+ *   element (which would leave orphaned body > .ts-dropdown nodes).
  */
-function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected) {
+function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected, getIsOpen) {
   if (roleEl.tomselect) roleEl.tomselect.destroy();
   roleEl.innerHTML = "";
   roleWrapper.classList.add("d-none");
 
   window.CRM.groups.getRoles(groupId).done((roles) => {
+    if (!getIsOpen()) return; // modal closed before AJAX resolved
     if (roles.length === 0) {
       onRoleSelected(null);
       confirmBtn.disabled = false;
