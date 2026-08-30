@@ -149,6 +149,13 @@ function getMapNeighborsView(Request $request, Response $response, array $args):
         'iFamily'              => $familyId,
         'apiUrl'               => SystemURLs::getRootPath() . '/api/map/neighbors',
         'distanceUnit'         => gettext(SystemConfig::getValue('sDistanceUnit')),
+        'mapConfig'            => [
+            'churchLat'   => ChurchMetaData::getChurchLatitude(),
+            'churchLng'   => ChurchMetaData::getChurchLongitude(),
+            'churchName'  => ChurchMetaData::getChurchName(),
+            'zoom'        => max(1, SystemConfig::getIntValue('iMapZoom') ?: 10),
+            'hasLocation' => ChurchMetaData::hasChurchLocation(),
+        ],
     ];
 
     return $renderer->render($response, 'map-neighbors-view.php', $pageArgs);

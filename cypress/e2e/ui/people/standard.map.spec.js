@@ -91,6 +91,57 @@ describe("Congregation Map (/people/map)", () => {
             cy.get("#map").should("exist").and("be.visible");
         });
     });
+});
 
-        
+/**
+ * UI tests for the Find Neighbors page (/people/map/neighbors)
+ */
+describe("Find Neighbors (/people/map/neighbors)", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    it("Has the correct page title", () => {
+        cy.visit("people/map/neighbors");
+        cy.title().should("include", "Find Neighbors");
+    });
+
+    it("Renders the Leaflet map and loads tiles", () => {
+        cy.visit("people/map/neighbors");
+        cy.get("#neighborsMap").should("exist").and("be.visible");
+        cy.get(".leaflet-tile-pane", { timeout: 10000 }).should("exist");
+    });
+
+    it("Search panel opens and closes", () => {
+        cy.visit("people/map/neighbors");
+        // Panel starts open when no ?familyId is supplied
+        cy.get("#searchPanel").should("not.have.class", "collapsed");
+        cy.get("#closeSearchPanel").click();
+        cy.get("#searchPanel").should("have.class", "collapsed");
+        cy.get("#toggleSearchPanel").click();
+        cy.get("#searchPanel").should("not.have.class", "collapsed");
+    });
+
+    it("Shows the empty state before a search is run", () => {
+        cy.visit("people/map/neighbors");
+        cy.get("#neighborsEmpty").should("be.visible");
+        cy.get("#neighborsTable").should("not.be.visible");
+    });
+
+    it("Runs a search for a seeded family and shows results below the map", () => {
+        cy.visit("people/map/neighbors?familyId=1");
+        // Deep link auto-submits; wait for the results table to appear
+        cy.get("#neighborsTable tbody tr", { timeout: 15000 }).should(
+            "have.length.at.least",
+            1,
+        );
+        cy.get("#addAllToCart").should("not.be.disabled");
+        // Origin + neighbor circle markers are drawn on the map
+        cy.get(".leaflet-overlay-pane path", { timeout: 10000 }).should(
+            "have.length.at.least",
+            1,
+        );
+        // Distance legend appears once results are shown
+        cy.get(".neighbors-legend").should("be.visible");
+    });
 });
