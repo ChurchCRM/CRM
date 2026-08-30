@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <option value="0"><?= gettext('Unassigned') ?></option>
             <option value="" disabled>-----------------------</option>
             <?php foreach ($rsGroupTypes as $groupType): ?>
-              <option value="<?= InputUtils::escapeAttribute($groupType->getOptionId()) ?>"<?= $thisGroup->getType() == $groupType->getOptionId() ? ' selected' : '' ?>><?= InputUtils::escapeHTML($groupType->getOptionName()) ?></option>
+              <option value="<?= (int)$groupType->getOptionId() ?>"<?= $thisGroup->getType() == $groupType->getOptionId() ? ' selected' : '' ?>><?= InputUtils::escapeHTML($groupType->getOptionName()) ?></option>
             <?php endforeach; ?>
           </select>
           <?php if ($thisGroup->isSundaySchool()): ?>
