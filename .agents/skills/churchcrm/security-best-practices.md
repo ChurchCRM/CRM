@@ -1228,4 +1228,43 @@ custom-field labels) inserted into the DOM via `.html()`, `.append()`,
 
 ---
 
-Last updated: July 11, 2026
+## API Middleware Coverage Audit <!-- learned: 2026-08-29 -->
+
+### Admin API Endpoints (10 routes)
+
+| Endpoint | Input | Middleware | Status | Issue |
+|----------|-------|------------|--------|-------|
+| `/admin/api/options/*` | Text fields | ✅ InputSanitizationMiddleware | ✅ PASS | None |
+| `/admin/api/system/config/*` | Text/password | ✅ Service-layer (ConfigItem) | ✅ PASS | None |
+| `/admin/api/system/logs/loglevel` | Integer | ❌ Manual `is_numeric()` | ⚠️ WEAK | No middleware; should use InputSanitizationMiddleware |
+| `/admin/api/birthday-emails` | None (reads user profile) | ✅ Auth-gated | ✅ PASS | No user input; reads stored email from authenticated user |
+| `/admin/api/import` | CSV fields | ✅ InputUtils::sanitizeText() | ✅ PASS | Core fields sanitized in csv/execute; token validated |
+| `/admin/api/upgrade` | File path | ✅ PathUtils::resolveRealPathWithin() | ✅ PASS | Traversal prevention in place; stronger than middleware |
+| `/admin/api/database` | Enum (BackupType) | ✅ Type-checked | ✅ PASS | Enum-only input; safe |
+| `/admin/api/user-admin` | Path params | ✅ Auth middleware | ✅ PASS | No text input; path-only IDs |
+| `/admin/api/demo` | Boolean flags | ✅ Type-cast | ✅ PASS | Boolean-only input; no text fields |
+| `/admin/api/orphaned-files` | None | ✅ Read-only | ✅ PASS | GET endpoint; no input |
+
+**Summary:** 8/10 pass; 1/10 needs middleware (loglevel); 1/10 acceptable (enum-only)
+
+### Public API Endpoints
+
+**Coverage:** ~70% of public routes have InputSanitizationMiddleware
+- ✅ People routes (create, edit, update)
+- ✅ Family routes (create, edit, update)
+- ✅ Event routes (create, edit, update)
+- ✅ Group routes (create, edit, update)
+- ✅ Finance routes (donations, pledges, funds)
+- ✅ Custom fields (create, edit, update)
+
+### Recommendations
+
+**High Priority:**
+1. Add proper integer validation to `/admin/api/system/logs/loglevel` (currently no type checking; already fixed in #9590)
+
+**Medium Priority:**
+1. Migrate 289 `legacyFilterInput()` calls to modern methods
+2. Audit for missing `escapeAttribute()` (336 calls vs 583 escapeHTML)
+3. Remove 5 deprecated `sanitizeAndEscapeText()` calls
+
+Last updated: August 29, 2026
