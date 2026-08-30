@@ -123,9 +123,10 @@ function handleAddToGroup(personId) {
         const roleWrapper = document.getElementById("pgm-role-wrapper");
         const roleEl = document.getElementById("pgm-role-select");
 
-        new window.TomSelect(groupEl, {
+        const tsGroup = new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
           items: [],
+          dropdownParent: "body",
           onChange: (value) => {
             selectedGroupId = value || null;
             if (!value) {
@@ -138,6 +139,21 @@ function handleAddToGroup(personId) {
             });
           },
         });
+        // Destroy TomSelect instances on close so body > .ts-dropdown is removed.
+        el.addEventListener(
+          "hidden.bs.modal",
+          () => {
+            try {
+              tsGroup.destroy();
+            } catch (_e) {}
+            if (roleEl.tomselect) {
+              try {
+                roleEl.tomselect.destroy();
+              } catch (_e) {}
+            }
+          },
+          { once: true },
+        );
       },
       { once: true },
     );
@@ -188,6 +204,7 @@ function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected) {
     confirmBtn.disabled = false;
 
     new window.TomSelect(roleEl, {
+      dropdownParent: "body",
       onChange: (value) => {
         onRoleSelected(value || null);
       },
@@ -233,6 +250,7 @@ function handleChangeRole(personId, groupId, currentRoleId) {
       "shown.bs.modal",
       () => {
         const ts = new window.TomSelect(roleEl, {
+          dropdownParent: "body",
           onChange: (value) => {
             selectedRoleId = value || null;
           },
@@ -241,6 +259,16 @@ function handleChangeRole(personId, groupId, currentRoleId) {
         if (currentRoleId) {
           ts.setValue(String(currentRoleId), true);
         }
+        // Destroy TomSelect on close to remove body > .ts-dropdown.
+        el.addEventListener(
+          "hidden.bs.modal",
+          () => {
+            try {
+              ts.destroy();
+            } catch (_e) {}
+          },
+          { once: true },
+        );
       },
       { once: true },
     );

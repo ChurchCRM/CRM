@@ -536,6 +536,7 @@ $(() => {
         labelField: "text",
         searchField: "text",
         placeholder: i18next.t("Search for supervisor..."),
+        dropdownParent: "body",
         load: (query, callback) => {
           if (query.length < 2) return callback();
           fetch(`${window.CRM.root}/api/persons/search/${encodeURIComponent(query)}`)
@@ -559,6 +560,13 @@ $(() => {
           ts.addOption({ objid: userId, text: userName });
           ts.setValue(userId);
         }
+      });
+
+      // Destroy TomSelect when the dialog closes so body > .ts-dropdown is removed.
+      dialog.one("hidden.bs.modal", () => {
+        try {
+          ts.destroy();
+        } catch (_e) {}
       });
     });
   }

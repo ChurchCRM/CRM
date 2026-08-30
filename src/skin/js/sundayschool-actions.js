@@ -90,10 +90,13 @@
         () => {
           var roleWrapper = document.getElementById("ss-role-wrapper");
           var roleEl = document.getElementById("ss-role-select");
+          var tsGroup = null;
+          var tsRole = null;
 
-          new window.TomSelect(groupEl, {
+          tsGroup = new window.TomSelect(groupEl, {
             placeholder: i18next.t("Search groups..."),
             items: [],
+            dropdownParent: "body",
             onChange: (value) => {
               selectedGroupId = value || null;
               if (!value) {
@@ -101,7 +104,12 @@
                 result.confirm.disabled = true;
                 return;
               }
-              if (roleEl.tomselect) roleEl.tomselect.destroy();
+              if (tsRole) {
+                try {
+                  tsRole.destroy();
+                } catch (e) {}
+                tsRole = null;
+              }
               roleEl.innerHTML = "";
               roleWrapper.classList.add("d-none");
 
@@ -122,7 +130,8 @@
                 );
                 roleWrapper.classList.remove("d-none");
                 result.confirm.disabled = false;
-                new window.TomSelect(roleEl, {
+                tsRole = new window.TomSelect(roleEl, {
+                  dropdownParent: "body",
                   onChange: (v) => {
                     selectedRoleId = v || null;
                   },
@@ -131,6 +140,19 @@
               });
             },
           });
+          // Destroy TomSelect instances on close so body > .ts-dropdown is removed.
+          result.el.addEventListener(
+            "hidden.bs.modal",
+            () => {
+              try {
+                if (tsGroup) tsGroup.destroy();
+              } catch (e) {}
+              try {
+                if (tsRole) tsRole.destroy();
+              } catch (e) {}
+            },
+            { once: true },
+          );
         },
         { once: true },
       );

@@ -93,11 +93,23 @@ function _showRoleModal(title, callback) {
   result.el.addEventListener(
     "shown.bs.modal",
     () => {
-      new window.TomSelect(roleEl, {
+      var ts = new window.TomSelect(roleEl, {
+        dropdownParent: "body",
         onChange: (value) => {
           selectedRoleId = value || null;
         },
       });
+      // Destroy the TomSelect to remove body > .ts-dropdown when the modal closes.
+      // Must use a closure reference because wrapper.remove() leaves ts.dropdown in <body>.
+      result.el.addEventListener(
+        "hidden.bs.modal",
+        () => {
+          try {
+            ts.destroy();
+          } catch (e) {}
+        },
+        { once: true },
+      );
     },
     { once: true },
   );
@@ -146,10 +158,13 @@ function _showGroupAndRoleModal(title, callback) {
       () => {
         var roleWrapper = document.getElementById("gv-role-wrapper");
         var roleEl = document.getElementById("gv-role-select");
+        var tsGroup = null;
+        var tsRole = null;
 
-        new window.TomSelect(groupEl, {
+        tsGroup = new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
           items: [],
+          dropdownParent: "body",
           onChange: (value) => {
             selectedGroupId = value || null;
             if (!value) {
@@ -158,7 +173,12 @@ function _showGroupAndRoleModal(title, callback) {
               return;
             }
             // Load roles for selected group
-            if (roleEl.tomselect) roleEl.tomselect.destroy();
+            if (tsRole) {
+              try {
+                tsRole.destroy();
+              } catch (e) {}
+              tsRole = null;
+            }
             roleEl.innerHTML = "";
             roleWrapper.classList.add("d-none");
 
@@ -179,7 +199,8 @@ function _showGroupAndRoleModal(title, callback) {
               );
               roleWrapper.classList.remove("d-none");
               result.confirm.disabled = false;
-              new window.TomSelect(roleEl, {
+              tsRole = new window.TomSelect(roleEl, {
+                dropdownParent: "body",
                 onChange: (v) => {
                   selectedRoleId = v || null;
                 },
@@ -188,6 +209,19 @@ function _showGroupAndRoleModal(title, callback) {
             });
           },
         });
+        // Destroy TomSelect instances on close so body > .ts-dropdown is removed.
+        result.el.addEventListener(
+          "hidden.bs.modal",
+          () => {
+            try {
+              if (tsGroup) tsGroup.destroy();
+            } catch (e) {}
+            try {
+              if (tsRole) tsRole.destroy();
+            } catch (e) {}
+          },
+          { once: true },
+        );
       },
       { once: true },
     );
@@ -446,6 +480,7 @@ function initializeGroupView() {
       valueField: "objid",
       labelField: "text",
       searchField: "text",
+      dropdownParent: "body",
       load: (query, callback) => {
         if (query.length < 2) return callback();
         fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
