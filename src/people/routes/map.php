@@ -4,18 +4,18 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/map', function (RouteCollectorProxy $group): void {
-    $group->get('/', 'getMapView');
-    $group->get('', 'getMapView');
-});
+$app->get('/map', 'getMapView');
+$app->get('/map/', 'getMapView');
+$app->get('/map/neighbors', 'getMapNeighborsView');
+$app->get('/map/neighbors/', 'getMapNeighborsView');
 
 function getMapView(Request $request, Response $response, array $args): Response
 {
@@ -74,7 +74,7 @@ function getMapView(Request $request, Response $response, array $args): Response
         }
     }
 
-    $renderer = new PhpRenderer('templates/map/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
@@ -93,24 +93,71 @@ function getMapView(Request $request, Response $response, array $args): Response
             ]),
         'sSettingsCollapseId' => 'mapAdminSettings',
         'sPageHeaderButtons' => PageHeader::buttons([
-            ['label' => gettext('Family Geographic'), 'url' => '/GeoPage.php', 'icon' => 'fa-globe', 'adminOnly' => false],
+            ['label' => gettext('Find Neighbors'), 'url' => '/people/map/neighbors', 'icon' => 'fa-people-roof', 'adminOnly' => false],
             ['label' => gettext('Map Settings'), 'collapse' => '#mapAdminSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
         ]),
         'mapConfig'        => [
-            'churchLat'    => ChurchMetaData::getChurchLatitude(),
-            'churchLng'    => ChurchMetaData::getChurchLongitude(),
-            'churchName'   => ChurchMetaData::getChurchName(),
-            'hasLocation'  => ChurchMetaData::hasChurchLocation(),
-            'zoom'         => max(1, SystemConfig::getIntValue('iMapZoom') ?: 10),
-            'groupId'      => $groupId,
-            'groupName'    => $groupName,
-            'legendType'   => $legendType,
-            'legendTitle'  => $legendTitle,
-            'apiUrl'       => SystemURLs::getRootPath() . '/api/map/families',
-            'legendItems'  => $legendItems,
-            'markerColors' => $markerColors,
+            'churchLat'     => ChurchMetaData::getChurchLatitude(),
+            'churchLng'     => ChurchMetaData::getChurchLongitude(),
+            'churchName'    => ChurchMetaData::getChurchName(),
+            'churchAddress' => ChurchMetaData::getChurchFullAddress(),
+            'hasLocation'   => ChurchMetaData::hasChurchLocation(),
+            'zoom'          => max(1, SystemConfig::getIntValue('iMapZoom') ?: 10),
+            'groupId'       => $groupId,
+            'groupName'     => $groupName,
+            'legendType'    => $legendType,
+            'legendTitle'   => $legendTitle,
+            'apiUrl'        => SystemURLs::getRootPath() . '/api/map/families',
+            'legendItems'   => $legendItems,
+            'markerColors'  => $markerColors,
         ],
     ];
 
     return $renderer->render($response, 'map-view.php', $pageArgs);
+}
+
+function getMapNeighborsView(Request $request, Response $response, array $args): Response
+{
+    $params   = $request->getQueryParams();
+    $familyId = isset($params['familyId']) ? (int) $params['familyId'] : 0;
+
+    $families = FamilyQuery::create()
+        ->filterByDateDeactivated(null)
+        ->orderByName()
+        ->find();
+
+    $aClassificationName = [0 => gettext('Unassigned')];
+    foreach (Classification::getAll() as $classification) {
+        $aClassificationName[(int) $classification->getOptionId()] = $classification->getOptionName();
+    }
+
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+    $pageArgs = [
+        'sRootPath'      => SystemURLs::getRootPath(),
+        'sPageTitle'     => gettext('Find Neighbors'),
+        'sPageSubtitle'  => gettext('Find nearby families and add them to your cart'),
+        'aBreadcrumbs'   => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Map'), '/people/map'],
+            [gettext('Find Neighbors')],
+        ]),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Map'), 'url' => '/people/map', 'icon' => 'fa-map', 'adminOnly' => false],
+        ]),
+        'families'             => $families,
+        'aClassificationName'  => $aClassificationName,
+        'iFamily'              => $familyId,
+        'apiUrl'               => SystemURLs::getRootPath() . '/api/map/neighbors',
+        'distanceUnit'         => gettext(SystemConfig::getValue('sDistanceUnit')),
+        'mapConfig'            => [
+            'churchLat'   => ChurchMetaData::getChurchLatitude(),
+            'churchLng'   => ChurchMetaData::getChurchLongitude(),
+            'churchName'  => ChurchMetaData::getChurchName(),
+            'zoom'        => max(1, SystemConfig::getIntValue('iMapZoom') ?: 10),
+            'hasLocation' => ChurchMetaData::hasChurchLocation(),
+        ],
+    ];
+
+    return $renderer->render($response, 'map-neighbors-view.php', $pageArgs);
 }

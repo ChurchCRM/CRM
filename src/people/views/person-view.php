@@ -372,6 +372,9 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                         <a class="dropdown-item" id="addGroup"><i class="fa-solid fa-users me-2"></i><?= gettext("Assign New Group") ?></a>
                     <?php } ?>
+                    <?php if ($fam_ID !== '' && $familyHasCoords) { ?>
+                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Find Neighbors") ?></a>
+                    <?php } ?>
                     <?php if ($bOkToEdit) { ?>
                         <div class="dropdown-divider"></div>
                         <h6 class="dropdown-header"><?= gettext("Photo") ?></h6>
@@ -461,67 +464,81 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     </tbody>
                 </table>
             </div>
-            <?php if (!empty($formattedMailingAddress)) : ?>
-            <div class="card-footer">
-                <div class="d-flex align-items-start gap-3">
-                    <div>
-                        <i class="fa-solid fa-location-dot me-1 text-body-secondary"></i>
-                        <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
-                        <?php
-                        $personDirectionsUrl = $person->getDirectionsUrl();
-                        $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
-                        ?>
-                        <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
-                            <div class="btn-group ms-2 directions-btn-group">
-                                <?php if (!empty($personDirectionsUrl)) : ?>
-                                    <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Directions') ?></a>
-                                <?php endif; ?>
-                                <?php if (!empty($personAppleDirectionsUrl)) : ?>
-                                <button type="button" class="btn btn-sm btn-ghost-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
-                                </button>
-                                <div class="dropdown-menu directions-provider-menu d-none">
-                                    <?php if (!empty($personDirectionsUrl)) : ?>
-                                        <a class="dropdown-item" href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
-                                            <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
-                                        </a>
-                                    <?php endif; ?>
-                                    <a class="dropdown-item apple-maps-option" href="<?= $personAppleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
-                                        <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
-                                    </a>
-                                </div>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
-                            <button type="button" class="btn btn-sm btn-ghost-success ms-1" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Refresh Coordinates') ?>">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </button>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-            <?php endif; ?>
         </div>
         <?php } ?>
 
-        <!--
-            Map config + container — unconditional on family/address presence (only
-            gated on $personMapConfig !== null), since it must render both for a
-            family's stored coordinates AND for a family-less person's own address
-            (the $fam_ID === '' branch above) — neither of which requires a family.
-            Previously this lived inside the "has family" card footer above, so the
-            family-less-with-own-address case never got a map despite the PHP setting
-            $personMapConfig for it.
-        -->
-        <?php if ($personMapConfig !== null) : ?>
-        <div class="mb-3">
-            <div id="person-map" style="height: 150px; border-radius: 4px;"></div>
+        <?php
+        // Address card — mirrors the family-view Address card. Renders when the
+        // person has a mailing address OR a map config (family-less person with
+        // their own address). The #person-map element must exist whenever
+        // $personMapConfig is set, or person-view.js's L.map() call throws.
+        $personDirectionsUrl = $person->getDirectionsUrl();
+        $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
+        ?>
+        <?php if (!empty($formattedMailingAddress) || $personMapConfig !== null) : ?>
+        <div class="card mb-3">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= gettext('Address') ?>
+                    <?php if ($familyHasCoords) : ?>
+                    <span class="badge bg-green-lt text-green ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
+                        <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
+                    </span>
+                    <?php elseif (!empty($formattedMailingAddress)) : ?>
+                    <span class="badge bg-warning text-dark ms-2" title="<?= gettext('Address entered but coordinates not yet set') ?>">
+                        <i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?>
+                    </span>
+                    <?php endif; ?>
+                </h3>
+            </div>
+            <div class="card-body">
+                <?php if (!empty($formattedMailingAddress)) : ?>
+                <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
+                <div class="mt-2 d-flex flex-wrap gap-1">
+                    <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
+                    <div class="btn-group directions-btn-group">
+                        <?php if (!empty($personDirectionsUrl)) : ?>
+                        <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?></a>
+                        <?php endif; ?>
+                        <?php if (!empty($personAppleDirectionsUrl)) : ?>
+                        <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
+                        </button>
+                        <div class="dropdown-menu directions-provider-menu d-none">
+                            <?php if (!empty($personDirectionsUrl)) : ?>
+                            <a class="dropdown-item" href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
+                            </a>
+                            <?php endif; ?>
+                            <a class="dropdown-item apple-maps-option" href="<?= $personAppleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($fam_ID) && $familyHasCoords) : ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $fam_ID ?>" class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Find Neighbors') ?>
+                    </a>
+                    <?php endif; ?>
+                    <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
+                    <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Automatically detect coordinates using address') ?>">
+                        <i class="fa-solid fa-location-dot me-1"></i><?= gettext('Refresh Coordinates') ?>
+                    </button>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+                <?php if ($personMapConfig !== null) : ?>
+                <div class="mt-2 rounded overflow-hidden">
+                    <div id="person-map" style="height: 200px;"></div>
+                </div>
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                    window.CRM = window.CRM || {};
+                    window.CRM.personMapConfig = <?= InputUtils::jsonEncodeForScript($personMapConfig) ?>;
+                </script>
+                <?php endif; ?>
+            </div>
         </div>
-        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-            window.CRM = window.CRM || {};
-            window.CRM.personMapConfig = <?= InputUtils::jsonEncodeForScript($personMapConfig) ?>;
-        </script>
         <?php endif; ?>
 
         <!--

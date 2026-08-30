@@ -27,6 +27,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="row">
     <div class="col-12">
+        <?php if ($mapConfig['hasLocation'] && $mapConfig['churchAddress'] !== ''): ?>
+        <div class="text-secondary small mb-2 d-flex align-items-center flex-wrap gap-1">
+            <i class="fa-solid fa-location-crosshairs me-1"></i>
+            <?= gettext('Map centered on') ?>
+            <strong><?= InputUtils::escapeHTML($mapConfig['churchName']) ?></strong>
+            <span class="text-body-secondary">&middot; <?= InputUtils::escapeHTML($mapConfig['churchAddress']) ?></span>
+            <a href="<?= $sRootPath ?>/admin/system/church-info" class="ms-1"><?= gettext('Change') ?></a>
+        </div>
+        <?php endif; ?>
         <div class="card">
             <div class="card-body p-0">
                 <div id="map" style="height: 600px; width: 100%;"></div>
@@ -34,6 +43,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Desktop legend (injected into map overlay by Leaflet control) -->
             <div id="map-legend" class="d-none d-sm-block">
+                <?php if ($mapConfig['hasLocation']): ?>
+                <div class="legend-static">
+                    <img src="<?= $sRootPath ?>/skin/icons/church.png" width="14" height="14" alt="" class="legend-church-icon">
+                    <span class="legend-label"><?= InputUtils::escapeHTML($mapConfig['churchName']) ?></span>
+                </div>
+                <?php endif; ?>
                 <div class="legend-title"><?= InputUtils::escapeHTML($mapConfig['legendTitle']) ?></div>
                 <?php foreach ($mapConfig['legendItems'] as $item): ?>
                     <div class="legend-item active" data-legend-id="<?= (int) $item['id'] ?>"
@@ -68,7 +83,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.mapConfig = <?= InputUtils::jsonEncodeForScript($mapConfig) ?>;
 </script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/map-view.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/people-map-view.min.js') ?>"></script>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -121,6 +136,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         letter-spacing: .04em;
         color: #6c757d;
         margin-bottom: 6px;
+    }
+
+    /* ── Fixed (non-toggle) legend row: the church ──────────────────── */
+    .legend-static {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+        padding: 3px 6px 8px;
+        margin-bottom: 4px;
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        line-height: 1.6;
+    }
+    .legend-church-icon {
+        flex-shrink: 0;
     }
 
     /* ── Shared legend item ─────────────────────────────────────────── */

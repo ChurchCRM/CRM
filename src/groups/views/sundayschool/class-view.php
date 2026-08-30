@@ -119,7 +119,7 @@ if ($bCanManageGroups) {
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Class') ?>
             </a>
             <?php endif; ?>
-            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/v2/map?groupId=<?= $iGroupId ?>">
+            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/people/map?groupId=<?= $iGroupId ?>">
                 <i class="fa-solid fa-map-location-dot me-1"></i><?= gettext('Map') ?>
             </a>
             <?php if ($canEmail): ?>

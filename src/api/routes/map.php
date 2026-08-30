@@ -163,6 +163,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
  *     ),
  *     @OA\Parameter(name="maxNeighbors", in="query", required=false, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="maxDistance", in="query", required=false, @OA\Schema(type="number", format="float")),
+ *     @OA\Parameter(name="classificationIds", in="query", required=false, @OA\Schema(type="string"), description="Comma-separated classification option IDs to filter listed people by"),
  *     @OA\Response(response=200, description="Array of neighbor families")
  * )
  */
@@ -171,6 +172,10 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
     $params       = $request->getQueryParams();
     $maxNeighbors = isset($params['maxNeighbors']) ? (int)$params['maxNeighbors'] : 15;
     $maxDistance  = isset($params['maxDistance']) ? (float)$params['maxDistance'] : 10.0;
+    $classificationIds = [];
+    if (!empty($params['classificationIds'])) {
+        $classificationIds = array_map('intval', explode(',', (string)$params['classificationIds']));
+    }
 
     /** @var \ChurchCRM\model\ChurchCRM\Family $selectedFamily */
     $selectedFamily = $request->getAttribute('family');
@@ -217,6 +222,23 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
             continue;
         }
 
+        $people = [];
+        foreach ($family->getPeopleSorted() as $person) {
+            $clsId = (int)$person->getClsId();
+            if (!empty($classificationIds) && !in_array($clsId, $classificationIds, true)) {
+                continue;
+            }
+            $people[] = [
+                'id'               => $person->getId(),
+                'name'             => $person->getFullName(),
+                'classificationId' => $clsId,
+            ];
+        }
+
+        if (empty($people)) {
+            continue;
+        }
+
         $items[] = [
             'id'           => $fid,
             'type'         => 'family',
@@ -228,6 +250,8 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
             'distanceText' => $distanceText,
             'bearing'      => GeoUtils::latLonBearing($selLat, $selLng, $lat, $lng),
             'profileUrl'   => $family->getViewURI(),
+            'directionsUrl' => $family->getDirectionsUrl(),
+            'people'       => $people,
         ];
     }
 
@@ -239,5 +263,14 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
     // limit to maxNeighbors
     $items = array_slice($items, 0, max(0, $maxNeighbors));
 
-    return SlimUtils::renderJSON($response, $items);
+    return SlimUtils::renderJSON($response, [
+        'origin' => [
+            'id'        => $familyId,
+            'name'      => $selectedFamily->getName(),
+            'address'   => $selectedFamily->getAddress(),
+            'latitude'  => $selLat,
+            'longitude' => $selLng,
+        ],
+        'neighbors' => $items,
+    ]);
 }
