@@ -7,9 +7,16 @@
 (() => {
   var SS_MODAL_ID = "ssActionModal";
 
+  function destroyModalTomSelects(el) {
+    el.querySelectorAll("select").forEach(function (sel) {
+      if (sel.tomselect) sel.tomselect.destroy();
+    });
+  }
+
   function createModal(title, bodyHtml) {
     var existing = document.getElementById(SS_MODAL_ID);
     if (existing) {
+      destroyModalTomSelects(existing);
       var old = window.bootstrap.Modal.getInstance(existing);
       if (old) old.dispose();
       existing.remove();
@@ -44,6 +51,7 @@
     wrapper.addEventListener(
       "hidden.bs.modal",
       () => {
+        destroyModalTomSelects(wrapper);
         modal.dispose();
         wrapper.remove();
       },

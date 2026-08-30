@@ -3,9 +3,16 @@
 // ------------------------------------------------------------------ //
 var GV_MODAL_ID = "groupViewModal";
 
+function _destroyModalTomSelects(el) {
+  el.querySelectorAll("select").forEach(function (sel) {
+    if (sel.tomselect) sel.tomselect.destroy();
+  });
+}
+
 function _createModal(title, bodyHtml) {
   var existing = document.getElementById(GV_MODAL_ID);
   if (existing) {
+    _destroyModalTomSelects(existing);
     var old = window.bootstrap.Modal.getInstance(existing);
     if (old) old.dispose();
     existing.remove();
@@ -42,6 +49,7 @@ function _createModal(title, bodyHtml) {
   wrapper.addEventListener(
     "hidden.bs.modal",
     () => {
+      _destroyModalTomSelects(wrapper);
       modal.dispose();
       wrapper.remove();
     },
