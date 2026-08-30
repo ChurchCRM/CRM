@@ -130,6 +130,11 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#confirm-verify">
                         <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify Info') ?>
                     </a>
+                    <?php if ($family->hasLatitudeAndLongitude()) { ?>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $family->getId() ?>">
+                        <i class="fa-solid fa-people-roof me-2"></i><?= gettext('Find Neighbors') ?>
+                    </a>
+                    <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
                         <h6 class="dropdown-header"><?= gettext("Photo") ?></h6>
@@ -455,6 +460,12 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                         </div>
                         <?php endif; ?>
                     </div>
+                    <?php endif; ?>
+                    <?php if ($family->hasLatitudeAndLongitude()) : ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $family->getId() ?>"
+                       class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Find Neighbors') ?>
+                    </a>
                     <?php endif; ?>
                     <?php if (!$family->hasLatitudeAndLongitude()) : ?>
                     <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"

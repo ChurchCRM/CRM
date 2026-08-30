@@ -263,5 +263,14 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
     // limit to maxNeighbors
     $items = array_slice($items, 0, max(0, $maxNeighbors));
 
-    return SlimUtils::renderJSON($response, $items);
+    return SlimUtils::renderJSON($response, [
+        'origin' => [
+            'id'        => $familyId,
+            'name'      => $selectedFamily->getName(),
+            'address'   => $selectedFamily->getAddress(),
+            'latitude'  => $selLat,
+            'longitude' => $selLng,
+        ],
+        'neighbors' => $items,
+    ]);
 }
