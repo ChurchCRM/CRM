@@ -7,7 +7,8 @@ concurrency:
 
 # End-of-cycle one-click flow:
 #
-#   1. publish    — finds the latest successful master Build/Test/Package run,
+#   1. publish    — finds the latest successful master Build/Test/Package run
+#                   whose package.json version matches the expected version,
 #                   downloads its ChurchCRM-<version>.zip, and creates a
 #                   GitHub Release (draft by default). The tag is auto-
 #                   detected from package.json on that build's commit, so you
@@ -42,11 +43,15 @@ on:
         type: boolean
         default: true
       run_id:
-        description: 'Optional: specific Build/Test/Package run ID to release from. Leave blank for the latest successful master build.'
+        description: 'Optional: specific Build/Test/Package run ID to release from. Leave blank for the latest successful master build matching the expected version.'
         required: false
         type: string
       release_version_override:
-        description: 'Optional: override the auto-detected release tag. Leave blank to use package.json on the source build commit.'
+        description: 'Optional: override the auto-detected release tag. Leave blank to use package.json on the source build commit. Note: providing this bypasses the version guard introduced in this workflow — use only as an explicit escape hatch.'
+        required: false
+        type: string
+      expected_version:
+        description: 'Optional: the version you expect to release (e.g. 7.6.3). Leave blank to derive from package.json on the dispatch commit (master HEAD). Used to reject a build whose package.json version does not match.'
         required: false
         type: string
 
@@ -70,29 +75,110 @@ jobs:
       release_tag: ${{ steps.tag.outputs.tag }}
       release_url: ${{ steps.release.outputs.release_url }}
     steps:
+      - name: Determine expected version
+        id: expected
+        env:
+          INPUT_EXPECTED: ${{ inputs.expected_version }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if [ -n "$INPUT_EXPECTED" ]; then
+            expected="$INPUT_EXPECTED"
+            if ! [[ "$expected" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo "::error::expected_version '$expected' does not look like a semantic version (expected X.Y.Z…). Fix the input."
+              exit 1
+            fi
+            echo "Using explicit expected_version=$expected from workflow input."
+          else
+            pkg_b64=$(gh api "repos/$GH_REPO/contents/package.json?ref=$HEAD_SHA" --jq '.content')
+            expected=$(echo "$pkg_b64" | base64 -d | jq -r '.version' 2>/dev/null) || expected=""
+            if [ -z "$expected" ] || [ "$expected" = "null" ]; then
+              echo "::error::Could not read version from package.json at HEAD ($HEAD_SHA). Pass expected_version explicitly."
+              exit 1
+            fi
+            echo "Derived expected version $expected from package.json at HEAD ($HEAD_SHA)."
+          fi
+          echo "expected=$expected" >> "$GITHUB_OUTPUT"
+
       - name: Resolve source build run
         id: run
         env:
           INPUT_RUN_ID: ${{ inputs.run_id }}
+          EXPECTED: ${{ steps.expected.outputs.expected }}
         run: |
           set -euo pipefail
+
+          # Helper: read the package.json version at a given commit SHA.
+          # Returns empty string on any error so the caller can handle it.
+          pkg_version() {
+            local sha="$1"
+            gh api "repos/$GH_REPO/contents/package.json?ref=$sha" \
+              --jq '.content' 2>/dev/null \
+              | base64 -d \
+              | jq -r '.version' 2>/dev/null \
+              || echo ""
+          }
+
           if [ -n "$INPUT_RUN_ID" ]; then
             run_id="$INPUT_RUN_ID"
             echo "Using explicit run_id=$run_id from workflow input."
           else
-            run_id=$(gh run list \
+            echo "Auto-resolving latest successful master build for version $EXPECTED..."
+
+            # Belt-and-suspenders: EXPECTED should always be set here because
+            # the Determine expected version step exits non-zero when it cannot
+            # produce a version, which skips all later steps. Guard anyway so
+            # an empty EXPECTED never silently matches an unreadable build.
+            if [ -z "$EXPECTED" ]; then
+              echo "::error::BUG: EXPECTED is empty; Determine expected version step should have caught this."
+              exit 1
+            fi
+
+            # Fetch the N most recent successful push-to-master builds and scan
+            # them newest-first, stopping at the first whose package.json version
+            # matches EXPECTED. This avoids silently picking a stale run that
+            # happened to be the only one with status=success at query time.
+            # 20 covers many release cycles of typical build cadence; raise
+            # this limit if your team ships more frequently.
+            candidates_json=$(gh run list \
               --workflow=build-test-package.yml \
               --branch=master \
               --event=push \
               --status=success \
-              --limit=1 \
-              --json databaseId \
-              --jq '.[0].databaseId // empty')
-            if [ -z "$run_id" ]; then
-              echo "::error::No successful master build found. Merge to master and wait for a green build, or pass a run_id explicitly."
+              --limit=20 \
+              --json databaseId,headSha,createdAt)
+
+            if [ "$(echo "$candidates_json" | jq 'length')" -eq 0 ]; then
+              echo "::error::No successful master builds found. Merge to master and wait for a green build, or pass a run_id explicitly."
               exit 1
             fi
-            echo "Auto-resolved latest successful master build: run_id=$run_id"
+
+            run_id=""
+            selected_created_at=""
+
+            echo "Scanning up to 20 recent candidates for version $EXPECTED:"
+            while IFS=$'\t' read -r candidate_id candidate_sha candidate_created; do
+              candidate_ver=$(pkg_version "$candidate_sha")
+              echo "  run #$candidate_id  commit ${candidate_sha:0:12}  created $candidate_created  version=${candidate_ver:-<unreadable>}"
+              if [ "$candidate_ver" = "$EXPECTED" ]; then
+                run_id="$candidate_id"
+                selected_created_at="$candidate_created"
+                echo "  ✓ Matched: run #$run_id (version $candidate_ver)"
+                break
+              fi
+            done < <(echo "$candidates_json" | jq -r '.[] | "\(.databaseId)\t\(.headSha)\t\(.createdAt)"')
+
+            if [ -z "$run_id" ]; then
+              echo "::error::No successful master build found with package.json version $EXPECTED in the last 20 runs. Either push a build that bumps package.json to $EXPECTED, pass an explicit run_id, or pass expected_version to override the version guard."
+              exit 1
+            fi
+
+            # Warn operators when the winning build is unexpectedly old.
+            MAX_AGE_DAYS=30
+            run_age_days=$(( ( $(date -u +%s) - $(date -u -d "$selected_created_at" +%s) ) / 86400 ))
+            if [ "$run_age_days" -gt "$MAX_AGE_DAYS" ]; then
+              echo "::warning::Selected build run #$run_id is $run_age_days days old (threshold: $MAX_AGE_DAYS days). Consider passing an explicit run_id from a more recent build to avoid releasing from a stale artifact."
+            fi
           fi
 
           commit=$(gh run view "$run_id" --json headSha --jq .headSha)
@@ -110,6 +196,7 @@ jobs:
           INPUT_OVERRIDE: ${{ inputs.release_version_override }}
           NEXT_VERSION: ${{ inputs.next_version }}
           COMMIT: ${{ steps.run.outputs.commit }}
+          EXPECTED: ${{ steps.expected.outputs.expected }}
         run: |
           set -euo pipefail
 
@@ -126,6 +213,14 @@ jobs:
               exit 1
             fi
             echo "Auto-detected tag=$tag from package.json at $COMMIT."
+
+            # Guard: the resolved build must carry the expected version.
+            # This catches silent mismatches (e.g. stale build run picked up by
+            # auto-resolve, or an explicit run_id pointing at the wrong release).
+            if [ "$tag" != "$EXPECTED" ]; then
+              echo "::error::Version mismatch: package.json at build commit $COMMIT contains version '$tag', but expected '$EXPECTED' (derived from master HEAD or expected_version input). The selected build run does not match the current release. Pass an explicit run_id for the correct build, or pass release_version_override to force a tag."
+              exit 1
+            fi
           fi
 
           # Sanity: next_version must differ from the tag we're about to release.
