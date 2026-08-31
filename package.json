@@ -132,7 +132,7 @@
         "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
-        "cypress": "^15.21.0",
+        "cypress": "^15.21.1",
         "cypress-split": "^1.25.0",
         "cypress-terminal-report": "^7.3.3",
         "datatables.net-plugins": "^3.0.2",
