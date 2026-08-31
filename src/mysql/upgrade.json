@@ -100,8 +100,8 @@
     "dbVersion": "7.6.2"
   },
   "current": {
-    "versions": ["7.6.2"],
+    "versions": ["7.6.2", "7.6.3"],
     "scripts": [],
-    "dbVersion": "7.6.3"
+    "dbVersion": "7.7.0"
   }
 }
