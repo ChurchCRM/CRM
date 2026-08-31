@@ -40,8 +40,11 @@ describe("TomSelect dropdownParent:body — remaining call sites (#9488)", () =>
         // so Cypress's :visible check would still return true even after TS init.
         cy.get("select#addGroupMember", { timeout: 10000 }).should("have.class", "tomselected");
 
-        // Click the TomSelect control (the visible input rendered by TomSelect).
-        cy.get("select#addGroupMember").closest(".ts-wrapper").find(".ts-control").click();
+        // TomSelect inserts .ts-wrapper as a NEXT SIBLING of the original <select>
+        // (via insertAdjacentElement('afterend',...)) — NOT as a parent wrapper.
+        // .closest() traverses ancestors only, so it never finds the sibling .ts-wrapper.
+        // Use .next(".ts-wrapper") to reach the sibling correctly.
+        cy.get("select#addGroupMember").next(".ts-wrapper").find(".ts-control").click();
 
         // Key assertion: the dropdown must be appended to <body>,
         // NOT trapped inside the card DOM tree.
