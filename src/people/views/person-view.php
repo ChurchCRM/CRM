@@ -369,7 +369,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         </li>
                     </ul>
                     <div class="px-3 pb-2">
-                        <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= (int)$fam_ID ?>#giving-history" class="btn btn-sm btn-outline-primary w-100">
+                        <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= (int)$fam_ID ?>#giving-history" class="btn btn-sm btn-outline-primary w-100">
                             <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("View Full Family Giving") ?>
                         </a>
                     </div>

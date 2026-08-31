@@ -6,7 +6,7 @@ describe("Finance Family", () => {
     });
 
     it("View a Family with Giving History section", () => {
-        cy.visit("v2/family/1");
+        cy.visit("people/family/1");
         // Page title is family name, subtitle has "Family Profile"
         cy.contains("Campbell");
         cy.contains("Family Profile");

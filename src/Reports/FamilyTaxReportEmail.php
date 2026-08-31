@@ -43,12 +43,12 @@ if (
 
 $family = FamilyQuery::create()->findPk($familyId);
 if (empty($family)) {
-    RedirectUtils::redirect('v2/family/not-found?id=' . $familyId);
+    RedirectUtils::redirect('people/family/not-found?id=' . $familyId);
 }
 
 $emailList = $family->getEmails();
 if (empty($emailList)) {
-    RedirectUtils::redirect('v2/family/' . $familyId . '?TaxEmailError=NoEmail');
+    RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailError=NoEmail');
 }
 
 // Build date range for the calendar year
@@ -71,7 +71,7 @@ $pledgeObjects = $financialService->getTaxReportData(
 );
 
 if (empty($pledgeObjects)) {
-    RedirectUtils::redirect('v2/family/' . $familyId . '?TaxEmailError=NoData');
+    RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailError=NoData');
 }
 
 // Convert to flat array
@@ -316,8 +316,8 @@ $mail->mail->Body = sprintf(
 );
 
 if ($mail->send()) {
-    RedirectUtils::redirect('v2/family/' . $familyId . '?TaxEmailSent=' . $year);
+    RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailSent=' . $year);
 } else {
     LoggerUtils::getAppLogger()->error('FamilyTaxReportEmail failed to send for family ' . $familyId . ' year ' . $year);
-    RedirectUtils::redirect('v2/family/' . $familyId . '?TaxEmailError=SendFailed');
+    RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailError=SendFailed');
 }
