@@ -1,50 +1,50 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
     "one": "E-mail enviado para %d família.|E-mail enviado para %d famílias.",
-    "other": ""
+    "other": "E-mail enviado para %d famílias."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
     "one": "PDF enviado com sucesso por e-mail para %d família.|PDF enviado com sucesso por e-mail para %d famílias.",
-    "other": ""
+    "other": "PDF enviado com sucesso por e-mail para %d famílias."
   },
-  "Anniversary: %s": "",
-  "Church": "",
-  "Classifications": "",
-  "Closest": "",
-  "Deposit #%d": "",
-  "Failed to get fundraiser count": "",
-  "Failed to load neighbors.": "",
-  "Farther": "",
-  "Farthest": "",
-  "Find Neighbors": "",
-  "Find nearby families and add them to your cart": "",
-  "Map centered on": "",
-  "Max distance": "",
-  "Max neighbors": "",
-  "Near": "",
-  "Please select a family.": "",
-  "Results": "",
-  "Same location": "",
-  "Search Neighbors": "",
-  "Select a family and click Find Neighbors to see results.": "",
-  "Selected family": "",
-  "This value must be a valid field name.": "",
+  "Anniversary: %s": "Aniversário: %s",
+  "Church": "Igreja",
+  "Classifications": "Classificações",
+  "Closest": "Mais próximo",
+  "Deposit #%d": "Depósito nº %d",
+  "Failed to get fundraiser count": "Falha ao obter a contagem de arrecadações",
+  "Failed to load neighbors.": "Falha ao carregar famílias próximas.",
+  "Farther": "Mais distante",
+  "Farthest": "Mais afastado",
+  "Find Neighbors": "Encontrar Famílias Próximas",
+  "Find nearby families and add them to your cart": "Encontre famílias próximas e adicione-as à sua seleção",
+  "Map centered on": "Mapa centralizado em",
+  "Max distance": "Distância máxima",
+  "Max neighbors": "Máximo de famílias próximas",
+  "Near": "Próximo",
+  "Please select a family.": "Por favor, selecione uma família.",
+  "Results": "Resultados",
+  "Same location": "Mesma localização",
+  "Search Neighbors": "Pesquisar Famílias Próximas",
+  "Select a family and click Find Neighbors to see results.": "Selecione uma família e clique em Encontrar Famílias Próximas para ver os resultados.",
+  "Selected family": "Família selecionada",
+  "This value must be a valid field name.": "Este valor deve ser um nome de campo válido.",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} membro copiado",
+    "other": "{{count}} membros copiados"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Esta lista possui {{count}} destinatário — muitos para um link mailto:. Use Copiar Endereços.",
+    "other": "Esta lista possui {{count}} destinatários — muitos para um link mailto:. Use Copiar Endereços."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Destinatários demais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar Endereços.",
+    "other": "Destinatários demais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar Endereços."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min restante",
+    "other": "{{count}} min restantes"
   }
 }
