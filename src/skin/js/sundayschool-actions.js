@@ -10,6 +10,11 @@
   function createModal(title, bodyHtml) {
     var existing = document.getElementById(SS_MODAL_ID);
     if (existing) {
+      existing.querySelectorAll("select").forEach(function (sel) {
+        try {
+          if (sel.tomselect) sel.tomselect.destroy();
+        } catch (e) {}
+      });
       var old = window.bootstrap.Modal.getInstance(existing);
       if (old) old.dispose();
       existing.remove();
@@ -90,10 +95,17 @@
         () => {
           var roleWrapper = document.getElementById("ss-role-wrapper");
           var roleEl = document.getElementById("ss-role-select");
+          var tsGroup = null;
+          var tsRole = null;
+          // Guard: if the modal closes before getRoles() AJAX resolves, bail out
+          // of the .done() callback to prevent creating a TomSelect on a detached
+          // element (which would leave orphaned body > .ts-dropdown nodes).
+          var isOpen = true;
 
-          new window.TomSelect(groupEl, {
+          tsGroup = new window.TomSelect(groupEl, {
             placeholder: i18next.t("Search groups..."),
             items: [],
+            dropdownParent: "body",
             onChange: (value) => {
               selectedGroupId = value || null;
               if (!value) {
@@ -101,11 +113,17 @@
                 result.confirm.disabled = true;
                 return;
               }
-              if (roleEl.tomselect) roleEl.tomselect.destroy();
+              if (tsRole) {
+                try {
+                  tsRole.destroy();
+                } catch (e) {}
+                tsRole = null;
+              }
               roleEl.innerHTML = "";
               roleWrapper.classList.add("d-none");
 
               window.CRM.groups.getRoles(value).done((roles) => {
+                if (!isOpen) return; // modal closed before AJAX resolved
                 if (roles.length === 0) {
                   selectedRoleId = null;
                   result.confirm.disabled = false;
@@ -122,7 +140,8 @@
                 );
                 roleWrapper.classList.remove("d-none");
                 result.confirm.disabled = false;
-                new window.TomSelect(roleEl, {
+                tsRole = new window.TomSelect(roleEl, {
+                  dropdownParent: "body",
                   onChange: (v) => {
                     selectedRoleId = v || null;
                   },
@@ -131,6 +150,20 @@
               });
             },
           });
+          // Destroy TomSelect instances on close so body > .ts-dropdown is removed.
+          result.el.addEventListener(
+            "hidden.bs.modal",
+            () => {
+              isOpen = false; // prevent in-flight getRoles() from creating orphaned TomSelect
+              try {
+                if (tsGroup) tsGroup.destroy();
+              } catch (e) {}
+              try {
+                if (tsRole) tsRole.destroy();
+              } catch (e) {}
+            },
+            { once: true },
+          );
         },
         { once: true },
       );
