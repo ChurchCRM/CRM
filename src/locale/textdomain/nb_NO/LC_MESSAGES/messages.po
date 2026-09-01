@@ -10482,10 +10482,6 @@ msgid "Total Check-ins"
 msgstr "Totalt antall oppmøteregistreringer"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Prøv å velge en annen arrangementstype eller et annet år."
-
-#: 
 msgid "Up to Date"
 msgstr "Oppdatert"
 
@@ -17631,14 +17627,6 @@ msgstr "Estimert verdi %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Minimumsanbud %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Ingen \"%s\"-alternativer er tilgjengelige ennå. Legg til de relevante postene først."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Ingen \"%s\"-alternativer er konfigurert ennå. Legg til de relevante postene først."
 
 #. Context: query_qry
 #: 

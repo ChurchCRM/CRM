@@ -10410,10 +10410,6 @@ msgid "Total Check-ins"
 msgstr "Registreerimisi kokku"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Proovige valida teist sündmuse tüüpi või aastat."
-
-#: 
 msgid "Up to Date"
 msgstr "Ajakohane"
 
@@ -17579,14 +17575,6 @@ msgstr "Hinnanguline väärtus %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Minimaalne pakkumine %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Ühtegi \"%s\" valikut pole veel saadaval. Lisage esmalt vastavad kirjed."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Ühtegi \"%s\" valikut pole veel seadistatud. Lisage esmalt vastavad kirjed."
 
 #. Context: query_qry
 #: 

@@ -10376,10 +10376,6 @@ msgid "Total Check-ins"
 msgstr "ആകെ ചെക്ക്-ഇനുകൾ"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "ഒരു വ്യത്യസ്ത ഇവന്റ് തരം അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക."
-
-#: 
 msgid "Up to Date"
 msgstr "അദ്യതനം"
 
@@ -17533,14 +17529,6 @@ msgstr "കണക്കാക്കിയ മൂല്യം %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "കുറഞ്ഞ ലേലം %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "ഇതുവരെ \"%s\" ഓപ്ഷനുകൾ ലഭ്യമല്ല. ആദ്യം അനുബന്ധ രേഖകൾ ചേർക്കുക."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "ഇതുവരെ \"%s\" ഓപ്ഷനുകൾ കോൺഫിഗർ ചെയ്തിട്ടില്ല. ആദ്യം അനുബന്ധ രേഖകൾ ചേർക്കുക."
 
 #. Context: query_qry
 #: 

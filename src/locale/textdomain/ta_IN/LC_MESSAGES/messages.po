@@ -10418,10 +10418,6 @@ msgid "Total Check-ins"
 msgstr "மொத்த வருகைப் பதிவுகள்"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "வேறு நிகழ்வு வகை அல்லது ஆண்டைத் தேர்ந்தெடுக்க முயற்சிக்கவும்."
-
-#: 
 msgid "Up to Date"
 msgstr "புதுப்பிக்கப்பட்டது"
 
@@ -17639,14 +17635,6 @@ msgstr "மதிப்பிடப்பட்ட மதிப்பு %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "குறைந்தபட்ச ஏலம் %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "\"%s\" விருப்பங்கள் இன்னும் கிடைக்கவில்லை. முதலில் தொடர்புடைய பதிவுகளை சேர்க்கவும்."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "\"%s\" விருப்பங்கள் இன்னும் கட்டமைக்கப்படவில்லை. முதலில் தொடர்புடைய பதிவுகளை சேர்க்கவும்."
 
 #. Context: query_qry
 #: 

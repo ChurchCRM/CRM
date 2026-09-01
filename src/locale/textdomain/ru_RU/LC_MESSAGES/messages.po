@@ -10484,10 +10484,6 @@ msgid "Total Check-ins"
 msgstr "Всего регистраций"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Попробуйте выбрать другой тип мероприятия или год."
-
-#: 
 msgid "Up to Date"
 msgstr "Актуальная версия"
 
@@ -17649,14 +17645,6 @@ msgstr "Ориентировочная стоимость: %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Минимальная ставка: %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Варианты \"%s\" пока недоступны. Сначала добавьте соответствующие записи."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Варианты \"%s\" пока не настроены. Сначала добавьте соответствующие записи."
 
 #. Context: query_qry
 #: 

@@ -10411,10 +10411,6 @@ msgid "Total Check-ins"
 msgstr "Σύνολο καταγραφών παρουσίας"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Δοκιμάστε να επιλέξετε διαφορετικό τύπο εκδήλωσης ή έτος."
-
-#: 
 msgid "Up to Date"
 msgstr "Ενημερωμένο"
 
@@ -17580,14 +17576,6 @@ msgstr "Εκτιμώμενη αξία %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Ελάχιστη προσφορά %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Δεν υπάρχουν διαθέσιμες επιλογές \"%s\" ακόμα. Προσθέστε πρώτα τις σχετικές εγγραφές."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Δεν έχουν ρυθμιστεί επιλογές \"%s\" ακόμα. Προσθέστε πρώτα τις σχετικές εγγραφές."
 
 #. Context: query_qry
 #: 

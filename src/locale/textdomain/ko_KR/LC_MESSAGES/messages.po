@@ -10397,10 +10397,6 @@ msgid "Total Check-ins"
 msgstr "총 체크인"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "다른 행사 유형이나 연도를 선택해 보세요."
-
-#: 
 msgid "Up to Date"
 msgstr "최신 상태"
 
@@ -17560,14 +17556,6 @@ msgstr "예상 가치 %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "최소 입찰가 %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "아직 \"%s\" 옵션을 사용할 수 없습니다. 먼저 관련 기록을 추가하세요."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "아직 \"%s\" 옵션이 구성되지 않았습니다. 먼저 관련 기록을 추가하세요."
 
 #. Context: query_qry
 #: 

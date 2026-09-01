@@ -10429,10 +10429,6 @@ msgid "Total Check-ins"
 msgstr "Усього реєстрацій"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Спробуйте вибрати інший тип подій або рік."
-
-#: 
 msgid "Up to Date"
 msgstr "Актуально"
 
@@ -17594,14 +17590,6 @@ msgstr "Орієнтовна вартість: %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Мінімальна ставка: %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Параметри \"%s\" ще недоступні. Спочатку додайте відповідні записи."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Параметри \"%s\" ще не налаштовані. Спочатку додайте відповідні записи."
 
 #. Context: query_qry
 #: 

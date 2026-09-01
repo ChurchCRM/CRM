@@ -10478,10 +10478,6 @@ msgid "Total Check-ins"
 msgstr "Łączna liczba rejestracji obecności"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Spróbuj wybrać inny typ wydarzenia lub rok."
-
-#: 
 msgid "Up to Date"
 msgstr "Aktualny"
 
@@ -17635,14 +17631,6 @@ msgstr "Szacowana wartość %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Minimalna oferta %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Brak dostępnych opcji \"%s\". Najpierw dodaj odpowiednie rekordy."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Brak skonfigurowanych opcji \"%s\". Najpierw dodaj odpowiednie rekordy."
 
 #. Context: query_qry
 #: 

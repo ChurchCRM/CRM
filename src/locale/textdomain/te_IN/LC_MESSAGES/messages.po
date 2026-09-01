@@ -10388,10 +10388,6 @@ msgid "Total Check-ins"
 msgstr "మొత్తం చెక్-ఇన్‌లు"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "వేరే ఈవెంట్ రకం లేదా సంవత్సరాన్ని ఎంచుకోవడానికి ప్రయత్నించండి."
-
-#: 
 msgid "Up to Date"
 msgstr "తాజాగా ఉంది"
 
@@ -17545,14 +17541,6 @@ msgstr "అంచనా విలువ %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "కనీస వేలం %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "ఇంకా \"%s\" ఎంపికలు అందుబాటులో లేవు. ముందు సంబంధిత రికార్డులను జోడించండి."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "ఇంకా \"%s\" ఎంపికలు కాన్ఫిగర్ చేయబడలేదు. ముందు సంబంధిత రికార్డులను జోడించండి."
 
 #. Context: query_qry
 #: 

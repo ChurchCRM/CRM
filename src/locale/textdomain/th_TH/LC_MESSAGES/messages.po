@@ -10379,10 +10379,6 @@ msgid "Total Check-ins"
 msgstr "จำนวนการลงเวลาเข้าทั้งหมด"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "ลองเลือกประเภทกิจกรรมหรือปีอื่น"
-
-#: 
 msgid "Up to Date"
 msgstr "เป็นเวอร์ชันล่าสุด"
 
@@ -17542,14 +17538,6 @@ msgstr "มูลค่าประมาณ %s"
 #: 
 msgid "Minimum bid %s."
 msgstr "ราคาเสนอขั้นต่ำ %s"
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "ยังไม่มีตัวเลือก \"%s\" โปรดเพิ่มข้อมูลที่เกี่ยวข้องก่อน"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "ยังไม่มีการกำหนดค่าตัวเลือก \"%s\" โปรดเพิ่มข้อมูลที่เกี่ยวข้องก่อน"
 
 #. Context: query_qry
 #: 

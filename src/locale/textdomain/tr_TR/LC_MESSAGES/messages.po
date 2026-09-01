@@ -10411,10 +10411,6 @@ msgid "Total Check-ins"
 msgstr "Toplam Giriş Sayısı"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Farklı bir etkinlik türü veya yıl seçmeyi deneyin."
-
-#: 
 msgid "Up to Date"
 msgstr "Güncel"
 
@@ -17568,14 +17564,6 @@ msgstr "Tahmini değer %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Minimum teklif %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Henüz \"%s\" seçeneği mevcut değil. Önce ilgili kayıtları ekleyin."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Henüz \"%s\" seçeneği yapılandırılmamış. Önce ilgili kayıtları ekleyin."
 
 #. Context: query_qry
 #: 

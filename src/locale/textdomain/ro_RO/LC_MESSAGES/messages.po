@@ -10479,10 +10479,6 @@ msgid "Total Check-ins"
 msgstr "Total înregistrări de prezență"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Încercați să selectați un alt tip de eveniment sau an."
-
-#: 
 msgid "Up to Date"
 msgstr "La zi"
 
@@ -17620,14 +17616,6 @@ msgstr "Valoare estimată %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Ofertă minimă %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Nu există încă opțiuni pentru \"%s\". Adăugați mai întâi înregistrările relevante."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Nu există încă opțiuni configurate pentru \"%s\". Adăugați mai întâi înregistrările relevante."
 
 #. Context: query_qry
 #: 

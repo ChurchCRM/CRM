@@ -24,5 +24,10 @@
   "Selected family": "",
   "This value must be a valid field name.": "",
   "Could not load data": "",
-  "Please refresh the page or try again later.": ""
+  "Please refresh the page or try again later.": "",
+  "Add the relevant records first.": "",
+  "All Months": "",
+  "No \"%s\" options are defined yet.": "",
+  "No events found for %s %d.": "",
+  "Try selecting a different event type, month, or year.": ""
 }
