@@ -368,20 +368,20 @@ describe("API Finance Payments - Anonymous donor / no Family (#9615)", () => {
                 200
             ).then((resp) => {
                 expect(resp.body).to.have.property("payment");
-                const parsed = resp.body.payment;
-                expect(parsed).to.have.property("GroupKey");
-                expect(parsed.GroupKey).to.be.a("string").and.to.have.length.greaterThan(0);
-                expect(parsed).to.have.property("total");
-                expect(parsed.total).to.be.closeTo(50.00, 0.01);
+                const groupKey = resp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+                const payment = resp.body.payment;
+                expect(payment).to.have.property("total");
+                expect(payment.total).to.be.closeTo(50.00, 0.01);
 
                 // Verify the record was actually persisted by fetching via group key
                 cy.makePrivateAdminAPICall(
                     "GET",
-                    "/api/payments/pledges/" + parsed.GroupKey,
+                    "/api/payments/pledges/" + groupKey,
                     null,
                     200
                 ).then((getResp) => {
-                    expect(getResp.body.groupKey).to.equal(parsed.GroupKey);
+                    expect(getResp.body.groupKey).to.equal(groupKey);
                     expect(getResp.body.pledgeOrPayment).to.equal("Payment");
                     expect(getResp.body.funds).to.be.an("array").with.length(1);
                     expect(getResp.body.total).to.be.closeTo(50.00, 0.01);
@@ -394,7 +394,7 @@ describe("API Finance Payments - Anonymous donor / no Family (#9615)", () => {
                     // Clean up — delete the anonymous pledge we just created
                     cy.makePrivateAdminAPICall(
                         "DELETE",
-                        "/api/payments/" + parsed.GroupKey,
+                        "/api/payments/" + groupKey,
                         null,
                         200
                     );
@@ -485,15 +485,15 @@ describe("API Finance Payments - Anonymous donor / no Family (#9615)", () => {
                 200
             ).then((resp) => {
                 expect(resp.body).to.have.property("payment");
-                const parsed = resp.body.payment;
-                expect(parsed).to.have.property("GroupKey");
-                expect(parsed.GroupKey).to.be.a("string").and.to.have.length.greaterThan(0);
-                expect(parsed.total).to.be.closeTo(75.00, 0.01);
+                const groupKey = resp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+                const payment = resp.body.payment;
+                expect(payment.total).to.be.closeTo(75.00, 0.01);
 
                 // Verify family data is returned correctly
                 cy.makePrivateAdminAPICall(
                     "GET",
-                    "/api/payments/pledges/" + parsed.GroupKey,
+                    "/api/payments/pledges/" + groupKey,
                     null,
                     200
                 ).then((getResp) => {
@@ -503,7 +503,7 @@ describe("API Finance Payments - Anonymous donor / no Family (#9615)", () => {
                     // Clean up
                     cy.makePrivateAdminAPICall(
                         "DELETE",
-                        "/api/payments/" + parsed.GroupKey,
+                        "/api/payments/" + groupKey,
                         null,
                         200
                     );

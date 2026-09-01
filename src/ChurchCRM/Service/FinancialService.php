@@ -535,7 +535,14 @@ class FinancialService
                 );
                 $stmt->execute([':groupKey' => $groupKey]);
             } catch (\PDOException $e) {
-                // Table does not exist in this installation — treat as non-fatal.
+                // Only suppress SQLSTATE 42S02 / MySQL error 1146 (table does not exist).
+                // All other PDO errors (deadlock, timeout, disk-full, permission denied, …)
+                // must propagate so the outer \Throwable catch can roll back the transaction.
+                $sqlState = $e->getCode();
+                $mysqlCode = $e->errorInfo[1] ?? null;
+                if ($sqlState !== '42S02' && $mysqlCode !== 1146) {
+                    throw $e;
+                }
             }
             PledgeQuery::create()->filterByGroupKey($groupKey)->delete($con);
             $this->insertPledgeorPayment($payment, $groupKey);
