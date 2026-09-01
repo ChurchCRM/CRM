@@ -1001,6 +1001,8 @@ function getEventRoster(Request $request, Response $response, array $args): Resp
         ->addAsColumn('CheckinDate', 'event_attend.checkin_date')
         ->addAsColumn('CheckoutDate', 'event_attend.checkout_date')
         ->addAsColumn('AttendStatus', '(CASE WHEN event_attend.event_id IS NOT NULL AND event_attend.checkout_date IS NULL AND event_attend.checkin_date IS NOT NULL THEN \'checked_in\' WHEN event_attend.checkout_date IS NOT NULL THEN \'checked_out\' ELSE \'not_checked_in\' END)')
+        ->orderByLastName()
+        ->orderByFirstName()
         ->find();
 
     $membersArray = [];
