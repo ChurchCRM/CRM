@@ -62,11 +62,11 @@ The following activities are within the scope of our responsible disclosure proc
 - Providing steps to reproduce and validate the vulnerability
 - Sharing proof-of-concept code or test cases (privately, through the advisory)
 
-**Out of scope** (please use [GitHub Issues](https://github.com/ChurchCRM/CRM/issues) instead):
+**Out of scope:**
 
-- General bugs with no security impact
-- Feature requests or usability concerns
-- Vulnerabilities in self-hosted infrastructure outside of the ChurchCRM application code
+- General bugs with no security impact — please use [GitHub Issues](https://github.com/ChurchCRM/CRM/issues) instead
+- Feature requests or usability concerns — please use [GitHub Issues](https://github.com/ChurchCRM/CRM/issues) instead
+- Vulnerabilities in self-hosted infrastructure outside of the ChurchCRM application and its bundled dependencies — please contact the affected site's administrator directly
 
 ## Security Best Practices
 
