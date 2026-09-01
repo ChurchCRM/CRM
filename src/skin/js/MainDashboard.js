@@ -62,17 +62,19 @@ export function initializeMainDashboard() {
   // Use a namespaced event ('error.dt.dashboard') and guard with .off() so
   // that calling initializeMainDashboard() more than once does not stack up
   // duplicate handlers.
-  $(document).off("error.dt.dashboard").on("error.dt.dashboard", (_e, settings, techNote, message) => {
-    const tableId = settings?.nTable?.id;
-    console.error(
-      `[Dashboard] DataTables AJAX error${tableId ? ` (${tableId})` : ""}:`,
-      message,
-      `(tech note #${techNote})`,
-    );
-    if (tableId) {
-      showWidgetLoadError(`#${tableId}`);
-    }
-  });
+  $(document)
+    .off("error.dt.dashboard")
+    .on("error.dt.dashboard", (_e, settings, techNote, message) => {
+      const tableId = settings?.nTable?.id;
+      console.error(
+        `[Dashboard] DataTables AJAX error${tableId ? ` (${tableId})` : ""}:`,
+        message,
+        `(tech note #${techNote})`,
+      );
+      if (tableId) {
+        showWidgetLoadError(`#${tableId}`);
+      }
+    });
 
   // Helper to generate Tabler simple avatar with initials (not clickable)
   function generateTablerAvatar(name, id, type = "person") {
