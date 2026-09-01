@@ -357,6 +357,67 @@ function DisplayQueryInfo()
     <?php
 }
 
+/**
+ * Returns the admin URL and human-readable link label for a well-known query
+ * parameter alias, so empty-state messages can direct the user to the page
+ * where the missing records are created.
+ *
+ * Returns null for aliases that have no dedicated admin page (generic fallback).
+ *
+ * @param string $alias  The qrp_Alias value from queryparameters_qrp
+ * @return array{url:string,label:string}|null
+ */
+function getQueryParameterAdminLink(string $alias): ?array
+{
+    switch ($alias) {
+        case 'PropertyID':
+            return ['url' => 'PropertyList.php?Type=p', 'label' => gettext('Person Properties')];
+        case 'volopp':
+        case 'volopp1':
+        case 'volopp2':
+            return ['url' => 'VolunteerOpportunityEditor.php', 'label' => gettext('Volunteer Opportunities')];
+        case 'event':
+            // event/editor requires AddEventsRoleAuthMiddleware (canManageEvents()),
+            // which is a stricter gate than the isAdmin() check on QueryView.php.
+            // Only return the link when the current user can actually reach the route.
+            if (AuthenticationManager::getCurrentUser()->canManageEvents()) {
+                return ['url' => 'event/editor', 'label' => gettext('Add Church Event')];
+            }
+            return null;
+    }
+    return null;
+}
+
+/**
+ * Renders the HTML for an empty-state block shown when a query-parameter
+ * select has no options (table empty or query returned zero rows).
+ *
+ * When the parameter alias is recognised, an actionable link to the relevant
+ * admin page is appended so the user knows exactly where to add the missing
+ * records (fixes #8899 — Person by Property / Volunteer Opportunities).
+ *
+ * @param string $qrp_Name  Raw parameter name string (not yet passed through gettext)
+ * @param string $qrp_Alias Parameter alias used for the admin-link lookup
+ * @return string HTML fragment
+ */
+function renderEmptyOptionState(string $qrp_Name, string $qrp_Alias): string
+{
+    $msg = InputUtils::escapeHTML(
+        sprintf(gettext('No "%s" options are defined yet.'), gettext($qrp_Name))
+    );
+    $adminLink = getQueryParameterAdminLink($qrp_Alias);
+    if ($adminLink !== null) {
+        $href  = InputUtils::escapeHTML($adminLink['url']);
+        $label = InputUtils::escapeHTML($adminLink['label']);
+        $msg  .= ' <a href="' . $href . '">' . $label . '</a>';
+    } else {
+        // Generic fallback: no dedicated admin page known for this alias.
+        // Keep the original guidance text so users still know action is required.
+        $msg .= ' ' . InputUtils::escapeHTML(gettext('Add the relevant records first.'));
+    }
+    return '<div class="text-muted small">' . $msg . '</div>';
+}
+
 function getQueryFormInput($queryParameters)
 {
     global $aErrorText;
@@ -386,10 +447,7 @@ function getQueryFormInput($queryParameters)
             }
 
             if (empty($aOptionRows)) {
-                $input = '<div class="text-muted small">' .
-                    InputUtils::escapeHTML(
-                        sprintf(gettext('No "%s" options are configured yet. Add the relevant records first.'), gettext($qrp_Name))
-                    ) . '</div>';
+                $input = renderEmptyOptionState($qrp_Name, $qrp_Alias);
             } else {
                 $input = '<select name="' . $qrp_Alias . '" class="form-select">';
                 $input .= '<option disabled selected value> -- ' . gettext('select an option') . ' -- </option>';
@@ -413,13 +471,9 @@ function getQueryFormInput($queryParameters)
             }
 
             if (empty($aOptionRows)) {
-                // #8898 / #8899: when no options exist the select previously rendered as a
-                // lone disabled placeholder, appearing greyed-out and non-functional.
-                // Show a clear empty-state message instead.
-                $input = '<div class="text-muted small">' .
-                    InputUtils::escapeHTML(
-                        sprintf(gettext('No "%s" options are available yet. Add the relevant records first.'), gettext($qrp_Name))
-                    ) . '</div>';
+                // #8899: render an actionable empty-state message linking the user
+                // to the admin page where the missing records are created.
+                $input = renderEmptyOptionState($qrp_Name, $qrp_Alias);
             } else {
                 $input = '<select name="' . $qrp_Alias . '" class="form-select">';
                 $input .= '<option disabled selected value> -- ' . gettext('select an option') . ' -- </option>';
@@ -442,11 +496,8 @@ function getQueryFormInput($queryParameters)
             }
 
             if (empty($aOptionRows)) {
-                // Same empty-state treatment as case 2 for multiselects (#8898).
-                $input = '<div class="text-muted small">' .
-                    InputUtils::escapeHTML(
-                        sprintf(gettext('No "%s" options are available yet. Add the relevant records first.'), gettext($qrp_Name))
-                    ) . '</div>';
+                // Same empty-state treatment as case 2 for multiselects (#8898 / #8899).
+                $input = renderEmptyOptionState($qrp_Name, $qrp_Alias);
             } else {
                 $input = '<select name="' . $qrp_Alias . '[]" class="form-select" size="10" multiple="multiple">';
                 $input .= '<option disabled selected value> -- ' . gettext('select an option') . ' -- </option>';
