@@ -66,11 +66,20 @@ describe("FullCalendar v7 Integration", () => {
         // silently no-ops on the unrendered calendar.
         cy.get("#calendar [data-date]", { timeout: 10000 }).should("have.length.greaterThan", 0);
 
+        // 1. changeView in its own .then() so its async FC transition completes
+        //    before cal.next() runs.  Calling changeView and next() in the same
+        //    synchronous .then() block caused changeView's completion handler to
+        //    reset the date back to September after next() had already advanced it.
+        cy.window().then((win) => {
+            win.CRM.fullcalendar.changeView("dayGridMonth");
+        });
+
+        // 2. Wait for FC to settle after changeView — day cells are re-rendered.
+        cy.get("#calendar [data-date]", { timeout: 10000 }).should("have.length.greaterThan", 0);
+
+        // 3. FC is fully settled — navigate safely.
         cy.window().then((win) => {
             const cal = win.CRM.fullcalendar;
-
-            // Ensure we are in month view so next()/prev() move by one month.
-            cal.changeView("dayGridMonth");
 
             const startMonth = cal.getDate().getMonth(); // 0-based
 
