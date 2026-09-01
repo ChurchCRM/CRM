@@ -50,27 +50,45 @@ describe("FullCalendar v7 Integration", () => {
             expect(win.CRM?.fullcalendar).to.exist;
         });
 
+        // FC v7 navigation (next/prev/today) triggers an async re-render.
+        // We must NOT assert getDate() in the same .then() as the navigation call
+        // because the internal date state may not be flushed yet.
+        // Instead, split each navigation into its own .then() and assert in a
+        // .should() block (which Cypress retries) so the test is resilient to the
+        // async update.
+        let startMonth;
+
         cy.window().then((win) => {
             const cal = win.CRM.fullcalendar;
-
             // Ensure we are in month view so next()/prev() move by one month.
             cal.changeView("dayGridMonth");
-
-            const startMonth = cal.getDate().getMonth(); // 0-based
-
-            // Advance one month
+            startMonth = cal.getDate().getMonth(); // 0-based; capture before navigation
             cal.next();
-            const expectedNext = (startMonth + 1) % 12;
-            expect(cal.getDate().getMonth(), "after next()").to.equal(expectedNext);
+        });
 
+        // Retry until FC has updated its internal date after next()
+        cy.window().should((win) => {
+            expect(win.CRM.fullcalendar.getDate().getMonth(), "after next()").to.equal(
+                (startMonth + 1) % 12,
+            );
+        });
+
+        cy.window().then((win) => {
             // Step back two months from original
-            cal.prev();
-            cal.prev();
-            const expectedPrev = (startMonth + 11) % 12; // -1 mod 12
-            expect(cal.getDate().getMonth(), "after prev()").to.equal(expectedPrev);
+            win.CRM.fullcalendar.prev();
+            win.CRM.fullcalendar.prev();
+        });
 
+        // Retry until FC has updated its internal date after two prev() calls
+        cy.window().should((win) => {
+            expect(win.CRM.fullcalendar.getDate().getMonth(), "after prev()").to.equal(
+                (startMonth + 11) % 12, // -1 mod 12
+            );
+        });
+
+        cy.window().then((win) => {
             // Return to original month
-            cal.today();
+            win.CRM.fullcalendar.today();
         });
     });
 
