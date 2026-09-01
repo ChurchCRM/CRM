@@ -17097,10 +17097,6 @@ msgid "Failed to update pledge"
 msgstr "Actualizarea angajamentului a eșuat"
 
 #: 
-msgid "Family is required"
-msgstr "Familia este obligatorie"
-
-#: 
 msgid "Financial data"
 msgstr "Date financiare"
 
@@ -17227,10 +17223,6 @@ msgstr "Planifică suportul de execuție"
 #: 
 msgid "Please enter a date"
 msgstr "Vă rugăm să introduceți o dată"
-
-#: 
-msgid "Please select a family"
-msgstr "Vă rugăm să selectați o familie"
 
 #: 
 msgid "Please select a fund for all rows"

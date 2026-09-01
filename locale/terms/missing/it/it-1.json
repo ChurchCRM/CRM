@@ -25,6 +25,8 @@
   "Select a family and click Find Neighbors to see results.": "",
   "Selected family": "",
   "This value must be a valid field name.": "",
+  "Could not load data": "",
+  "Please refresh the page or try again later.": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""

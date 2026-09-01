@@ -17001,10 +17001,6 @@ msgid "Failed to update pledge"
 msgstr "ไม่สามารถอัปเดตคำมั่นสัญญาได้"
 
 #: 
-msgid "Family is required"
-msgstr "ต้องระบุครอบครัว"
-
-#: 
 msgid "Financial data"
 msgstr "ข้อมูลทางการเงิน"
 
@@ -17131,10 +17127,6 @@ msgstr "วางแผนการสนับสนุนรันไทม์
 #: 
 msgid "Please enter a date"
 msgstr "กรุณาระบุวันที่"
-
-#: 
-msgid "Please select a family"
-msgstr "กรุณาเลือกครอบครัว"
 
 #: 
 msgid "Please select a fund for all rows"

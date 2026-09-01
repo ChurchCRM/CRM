@@ -17037,10 +17037,6 @@ msgid "Failed to update pledge"
 msgstr "Αποτυχία ενημέρωσης υπόσχεσης"
 
 #: 
-msgid "Family is required"
-msgstr "Η οικογένεια είναι υποχρεωτική"
-
-#: 
 msgid "Financial data"
 msgstr "Οικονομικά δεδομένα"
 
@@ -17167,10 +17163,6 @@ msgstr "Προγραμματισμός υποστήριξης χρόνου εκ�
 #: 
 msgid "Please enter a date"
 msgstr "Παρακαλώ εισάγετε μια ημερομηνία"
-
-#: 
-msgid "Please select a family"
-msgstr "Παρακαλώ επιλέξτε οικογένεια"
 
 #: 
 msgid "Please select a fund for all rows"

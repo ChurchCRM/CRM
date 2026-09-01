@@ -17014,10 +17014,6 @@ msgid "Failed to update pledge"
 msgstr "Gagal memperbarui janji persembahan"
 
 #: 
-msgid "Family is required"
-msgstr "Keluarga wajib dipilih"
-
-#: 
 msgid "Financial data"
 msgstr "Data keuangan"
 
@@ -17144,10 +17140,6 @@ msgstr "Rencanakan dukungan waktu proses"
 #: 
 msgid "Please enter a date"
 msgstr "Silakan masukkan tanggal"
-
-#: 
-msgid "Please select a family"
-msgstr "Silakan pilih keluarga"
 
 #: 
 msgid "Please select a fund for all rows"

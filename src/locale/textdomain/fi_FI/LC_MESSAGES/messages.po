@@ -17004,10 +17004,6 @@ msgid "Failed to update pledge"
 msgstr "Sitoumuksen päivittäminen epäonnistui"
 
 #: 
-msgid "Family is required"
-msgstr "Perhe vaaditaan"
-
-#: 
 msgid "Financial data"
 msgstr "Taloustiedot"
 
@@ -17134,10 +17130,6 @@ msgstr "Suunnittele ajonaikainen tuki"
 #: 
 msgid "Please enter a date"
 msgstr "Anna päivämäärä"
-
-#: 
-msgid "Please select a family"
-msgstr "Valitse perhe"
 
 #: 
 msgid "Please select a fund for all rows"

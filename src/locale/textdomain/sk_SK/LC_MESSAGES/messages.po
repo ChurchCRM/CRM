@@ -17029,10 +17029,6 @@ msgid "Failed to update pledge"
 msgstr "Nepodarilo sa aktualizovať záväzok"
 
 #: 
-msgid "Family is required"
-msgstr "Rodina je povinná"
-
-#: 
 msgid "Financial data"
 msgstr "Finančné údaje"
 
@@ -17159,10 +17155,6 @@ msgstr "Plánovaná podpora behu"
 #: 
 msgid "Please enter a date"
 msgstr "Zadajte dátum"
-
-#: 
-msgid "Please select a family"
-msgstr "Vyberte rodinu"
 
 #: 
 msgid "Please select a fund for all rows"

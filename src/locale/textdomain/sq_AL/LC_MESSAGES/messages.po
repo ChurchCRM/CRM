@@ -17027,10 +17027,6 @@ msgid "Failed to update pledge"
 msgstr "Dështoi përditësimi i premtimit"
 
 #: 
-msgid "Family is required"
-msgstr "Familja është e detyrueshme"
-
-#: 
 msgid "Financial data"
 msgstr "Të dhëna financiare"
 
@@ -17157,10 +17153,6 @@ msgstr "Plano mbështetjen e kohës së ekzekutimit"
 #: 
 msgid "Please enter a date"
 msgstr "Ju lutemi vendosni një datë"
-
-#: 
-msgid "Please select a family"
-msgstr "Ju lutemi zgjidhni një familje"
 
 #: 
 msgid "Please select a fund for all rows"

@@ -17080,10 +17080,6 @@ msgid "Failed to update pledge"
 msgstr "فشل في تحديث التعهد"
 
 #: 
-msgid "Family is required"
-msgstr "العائلة مطلوبة"
-
-#: 
 msgid "Financial data"
 msgstr "البيانات المالية"
 
@@ -17210,10 +17206,6 @@ msgstr "دعم وقت تشغيل الخطة"
 #: 
 msgid "Please enter a date"
 msgstr "يرجى إدخال تاريخ"
-
-#: 
-msgid "Please select a family"
-msgstr "يرجى اختيار عائلة"
 
 #: 
 msgid "Please select a fund for all rows"

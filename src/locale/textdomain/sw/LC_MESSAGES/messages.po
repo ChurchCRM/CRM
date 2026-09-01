@@ -17029,10 +17029,6 @@ msgid "Failed to update pledge"
 msgstr "Imeshindwa kusasisha ahadi ya mchango"
 
 #: 
-msgid "Family is required"
-msgstr "Familia inahitajika"
-
-#: 
 msgid "Financial data"
 msgstr "Data ya fedha"
 
@@ -17159,10 +17155,6 @@ msgstr "Panga msaada wa wakati wa utekelezaji"
 #: 
 msgid "Please enter a date"
 msgstr "Tafadhali ingiza tarehe"
-
-#: 
-msgid "Please select a family"
-msgstr "Tafadhali chagua familia"
 
 #: 
 msgid "Please select a fund for all rows"

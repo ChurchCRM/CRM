@@ -17035,10 +17035,6 @@ msgid "Failed to update pledge"
 msgstr "עדכון ההתחייבות נכשל"
 
 #: 
-msgid "Family is required"
-msgstr "משפחה נדרשת"
-
-#: 
 msgid "Financial data"
 msgstr "נתונים פיננסיים"
 
@@ -17165,10 +17161,6 @@ msgstr "תמיכת זמן ריצה מתוכנן"
 #: 
 msgid "Please enter a date"
 msgstr "אנא הזן תאריך"
-
-#: 
-msgid "Please select a family"
-msgstr "אנא בחר משפחה"
 
 #: 
 msgid "Please select a fund for all rows"

@@ -17014,10 +17014,6 @@ msgid "Failed to update pledge"
 msgstr "ప్రతిజ్ఞను నవీకరించడం విఫలమైంది"
 
 #: 
-msgid "Family is required"
-msgstr "కుటుంబం అవసరం"
-
-#: 
 msgid "Financial data"
 msgstr "ఆర్థిక డేటా"
 
@@ -17144,10 +17140,6 @@ msgstr "రన్‌టైమ్ మద్దతును ప్లాన్ చ
 #: 
 msgid "Please enter a date"
 msgstr "దయచేసి తేదీని నమోదు చేయండి"
-
-#: 
-msgid "Please select a family"
-msgstr "దయచేసి కుటుంబాన్ని ఎంచుకోండి"
 
 #: 
 msgid "Please select a fund for all rows"

@@ -16966,10 +16966,6 @@ msgid "Failed to update pledge"
 msgstr "Nabigo sa pag-update ng pangako"
 
 #: 
-msgid "Family is required"
-msgstr "Kailangan ang pamilya"
-
-#: 
 msgid "Financial data"
 msgstr "Datos ng pananalapi"
 
@@ -17096,10 +17092,6 @@ msgstr "Planuhin ang suporta sa runtime"
 #: 
 msgid "Please enter a date"
 msgstr "Mangyaring magpasok ng petsa"
-
-#: 
-msgid "Please select a family"
-msgstr "Mangyaring pumili ng pamilya"
 
 #: 
 msgid "Please select a fund for all rows"

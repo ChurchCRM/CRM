@@ -17036,10 +17036,6 @@ msgid "Failed to update pledge"
 msgstr "Annetuslubaduse uuendamine ebaõnnestus"
 
 #: 
-msgid "Family is required"
-msgstr "Pere on nõutav"
-
-#: 
 msgid "Financial data"
 msgstr "Finantsandmed"
 
@@ -17166,10 +17162,6 @@ msgstr "Planeeri käitusaja tugi"
 #: 
 msgid "Please enter a date"
 msgstr "Palun sisestage kuupäev"
-
-#: 
-msgid "Please select a family"
-msgstr "Palun valige pere"
 
 #: 
 msgid "Please select a fund for all rows"

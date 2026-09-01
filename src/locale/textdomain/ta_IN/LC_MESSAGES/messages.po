@@ -17096,10 +17096,6 @@ msgid "Failed to update pledge"
 msgstr "உறுதிமொழியை புதுப்பிக்க தோல்வியடைந்தது"
 
 #: 
-msgid "Family is required"
-msgstr "குடும்பம் தேவை"
-
-#: 
 msgid "Financial data"
 msgstr "நிதி தரவு"
 
@@ -17226,10 +17222,6 @@ msgstr "இயக்க நேர ஆதரவை திட்டமிடவு
 #: 
 msgid "Please enter a date"
 msgstr "தேதியை உள்ளிடவும்"
-
-#: 
-msgid "Please select a family"
-msgstr "ஒரு குடும்பத்தை தேர்ந்தெடுக்கவும்"
 
 #: 
 msgid "Please select a fund for all rows"

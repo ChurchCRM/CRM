@@ -17037,10 +17037,6 @@ msgid "Failed to update pledge"
 msgstr "Kon nie belofte opdateer nie"
 
 #: 
-msgid "Family is required"
-msgstr "Gesin is vereis"
-
-#: 
 msgid "Financial data"
 msgstr "Finansiële data"
 
@@ -17167,10 +17163,6 @@ msgstr "Beplan looptydondersteuning"
 #: 
 msgid "Please enter a date"
 msgstr "Voer asseblief ʼn datum in"
-
-#: 
-msgid "Please select a family"
-msgstr "Kies asseblief ʼn gesin"
 
 #: 
 msgid "Please select a fund for all rows"

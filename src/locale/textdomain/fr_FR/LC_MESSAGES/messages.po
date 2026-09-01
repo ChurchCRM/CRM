@@ -17026,10 +17026,6 @@ msgid "Failed to update pledge"
 msgstr "Échec de la mise à jour de la promesse de don"
 
 #: 
-msgid "Family is required"
-msgstr "La famille est requise"
-
-#: 
 msgid "Financial data"
 msgstr "Données financières"
 
@@ -17156,10 +17152,6 @@ msgstr "Planifier le support d'exécution"
 #: 
 msgid "Please enter a date"
 msgstr "Veuillez saisir une date"
-
-#: 
-msgid "Please select a family"
-msgstr "Veuillez sélectionner une famille"
 
 #: 
 msgid "Please select a fund for all rows"
