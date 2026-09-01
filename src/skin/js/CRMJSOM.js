@@ -569,13 +569,14 @@ window.CRM.dashboard = {
    * Replaces session-cached count, ensuring always fresh data.
    */
   loadFundraiserCount: () => {
+    const el = document.getElementById("activeFundraisers");
+    if (!el) return; // Fundraiser menu badge not present for this user (feature disabled or no permission)
     window.CRM.APIRequest({
       method: "GET",
       path: "fundraisers/active-count",
       suppressErrorDialog: true,
     }).done((data) => {
-      const el = document.getElementById("activeFundraisers");
-      if (el) el.innerText = data.count;
+      el.innerText = data.count;
     });
   },
 };
