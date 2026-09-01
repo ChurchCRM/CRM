@@ -59,6 +59,13 @@ describe("FullCalendar v7 Integration", () => {
             expect(win.CRM?.fullcalendar).to.exist;
         });
 
+        // Wait for FC to complete its render cycle — [data-date] day cells only
+        // appear after initialization is done, ensuring cal.next() will advance
+        // the date.  Without this, the stub's instant [] response lets the JS
+        // object be assigned before the calendar has rendered, and cal.next()
+        // silently no-ops on the unrendered calendar.
+        cy.get("#calendar [data-date]", { timeout: 10000 }).should("have.length.greaterThan", 0);
+
         cy.window().then((win) => {
             const cal = win.CRM.fullcalendar;
 
