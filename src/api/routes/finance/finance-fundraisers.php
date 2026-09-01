@@ -274,9 +274,18 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
 // GET /api/fundraisers/active-count — active fundraiser count for menu badge
 // Visible to all authenticated users (moved outside role-restricted group).
 // Used by JavaScript to dynamically load the badge on page load (matches Calendar pattern).
+// When the Fundraiser feature is disabled we return {count:0} with 200 instead of a
+// 403 error so the menu badge simply shows nothing rather than triggering a JS error
+// dialog on every page load (#9566/#9569).
 $app->get('/fundraisers/active-count', function (Request $request, Response $response): Response {
     $logger = LoggerUtils::getAppLogger();
     $logger->debug('[fundraisers/active-count] Endpoint called', ['user' => $GLOBALS['iUserID'] ?? null]);
+
+    // Feature disabled — return empty count gracefully; no error log spam.
+    if (!SystemConfig::getBooleanValue('bEnabledFundraiser')) {
+        $response->getBody()->write(json_encode(['count' => 0]));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+    }
 
     try {
         $logger->debug('[fundraisers/active-count] Creating FundRaiserService');
@@ -303,4 +312,4 @@ $app->get('/fundraisers/active-count', function (Request $request, Response $res
         ]);
         return SlimUtils::renderErrorJSON($response, gettext('Failed to get fundraiser count'), [], 500, $e, $request);
     }
-})->add(new FundraiserEnabledMiddleware());
+});
