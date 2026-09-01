@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-30 23:12+0000\n"
+"POT-Creation-Date: 2026-09-01 14:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2821,6 +2821,9 @@ msgstr ""
 msgid "Could not find coordinates for that address. Try entering them manually."
 msgstr ""
 
+msgid "Could not load data"
+msgstr ""
+
 msgid "Could not load note."
 msgstr ""
 
@@ -4977,9 +4980,6 @@ msgid "Family has no emails to use"
 msgstr ""
 
 msgid "Family has no street address to geocode"
-msgstr ""
-
-msgid "Family is required"
 msgstr ""
 
 msgid "Family name is required"
@@ -9071,6 +9071,9 @@ msgstr ""
 msgid "Please proceed to the classroom as soon as possible."
 msgstr ""
 
+msgid "Please refresh the page or try again later."
+msgstr ""
+
 msgid "Please review your family information below and confirm or request changes."
 msgstr ""
 
@@ -9081,9 +9084,6 @@ msgid "Please select a backup file to restore"
 msgstr ""
 
 msgid "Please select a date"
-msgstr ""
-
-msgid "Please select a family"
 msgstr ""
 
 #, php-format

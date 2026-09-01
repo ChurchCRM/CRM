@@ -50,27 +50,53 @@ describe("FullCalendar v7 Integration", () => {
             expect(win.CRM?.fullcalendar).to.exist;
         });
 
+        // FC v7 getDate() returns the first VISIBLE grid date, which may be from the
+        // prior month when the displayed month starts mid-week (e.g. October 2026 starts
+        // on Thursday, so the grid's first cell is September 27 — still month 8).
+        // Asserting on getDate().getMonth() after navigation is therefore unreliable.
+        //
+        // Correct approach: assert on data-date DOM attributes, which are stable in FC v7
+        // (v7 hashes CSS class names; data-date is the recommended stable selector).
+        // The 1st of every month is always rendered in that month's dayGridMonth view.
+        //
+        // Expected dates are computed from the wall-clock date at test runtime — the
+        // calendar always starts at the current month after a fresh page load.
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth(); // 0-based
+
+        // First day of next month
+        const nextMonth = (month + 1) % 12;
+        const nextYear = nextMonth === 0 ? year + 1 : year;
+        const nextMonthFirst = `${nextYear}-${String(nextMonth + 1).padStart(2, "0")}-01`;
+
+        // First day of previous month
+        const prevMonth = (month - 1 + 12) % 12;
+        const prevYear = prevMonth === 11 ? year - 1 : year;
+        const prevMonthFirst = `${prevYear}-${String(prevMonth + 1).padStart(2, "0")}-01`;
+
+        // Ensure we are in month view; wait for at least one day cell before navigating.
         cy.window().then((win) => {
-            const cal = win.CRM.fullcalendar;
+            win.CRM.fullcalendar.changeView("dayGridMonth");
+        });
+        cy.get("#calendar [data-date]", { timeout: 10000 }).should("have.length.greaterThan", 0);
 
-            // Ensure we are in month view so next()/prev() move by one month.
-            cal.changeView("dayGridMonth");
+        // Advance one month; the 1st of next month must appear in the grid.
+        cy.window().then((win) => {
+            win.CRM.fullcalendar.next();
+        });
+        cy.get(`#calendar [data-date="${nextMonthFirst}"]`, { timeout: 5000 }).should("exist");
 
-            const startMonth = cal.getDate().getMonth(); // 0-based
+        // Step back two months from the original; the 1st of the previous month must appear.
+        cy.window().then((win) => {
+            win.CRM.fullcalendar.prev();
+            win.CRM.fullcalendar.prev();
+        });
+        cy.get(`#calendar [data-date="${prevMonthFirst}"]`, { timeout: 5000 }).should("exist");
 
-            // Advance one month
-            cal.next();
-            const expectedNext = (startMonth + 1) % 12;
-            expect(cal.getDate().getMonth(), "after next()").to.equal(expectedNext);
-
-            // Step back two months from original
-            cal.prev();
-            cal.prev();
-            const expectedPrev = (startMonth + 11) % 12; // -1 mod 12
-            expect(cal.getDate().getMonth(), "after prev()").to.equal(expectedPrev);
-
-            // Return to original month
-            cal.today();
+        // Return to the current month.
+        cy.window().then((win) => {
+            win.CRM.fullcalendar.today();
         });
     });
 
