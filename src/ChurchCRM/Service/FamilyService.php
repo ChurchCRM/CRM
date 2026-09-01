@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\GeoUtils;
@@ -16,6 +17,13 @@ class FamilyService
      * Keeps the request within a reasonable wall-clock time (~1 req/sec throttle).
      */
     public const MAX_GEOCODE_PER_RUN = 50;
+
+    /**
+     * Maximum number of per-family failure details to include in the
+     * geocodeAllMissingFamilies() response. Prevents unbounded response payloads
+     * when many families cannot be geocoded.
+     */
+    public const MAX_FAILURE_DETAILS = 20;
 
     private $logger;
 
@@ -64,11 +72,92 @@ class FamilyService
     }
 
     /**
+     * Geocode a single family and return a structured result with a machine-
+     * readable reason on failure.
+     *
+     * Reason codes:
+     *   null                 — success (or skipped because address is empty)
+     *   'incomplete_address' — Address1 is present but city, state, and ZIP are
+     *                          all absent; Nominatim cannot resolve a street alone
+     *   'no_result'          — Nominatim returned no usable coordinates (address
+     *                          exists but could not be matched, or API was unreachable)
+     *   'error'              — an unexpected exception was thrown
+     *
+     * @param Family $family
+     * @return array{success: bool, reason: string|null}
+     */
+    private function geocodeFamilyWithReason(Family $family): array
+    {
+        $street = trim($family->getAddress1() ?? '');
+
+        // Empty street — skip geocoding (not a failure; address filter upstream
+        // should prevent this, but guard defensively for direct callers).
+        if (empty($street)) {
+            $this->logger->debug('geocodeFamilyWithReason: skipping empty address for family ' . $family->getId());
+            return ['success' => true, 'reason' => null];
+        }
+
+        // Incomplete address: street present but no city, state, or ZIP at all.
+        // Nominatim structured queries require at least one of those to succeed.
+        $city  = trim($family->getCity() ?? '');
+        $state = trim($family->getState() ?? '');
+        $zip   = trim($family->getZip() ?? '');
+        if ($city === '' && $state === '' && $zip === '') {
+            $this->logger->warning(
+                'geocodeFamilyWithReason: incomplete address (no city/state/zip) for family ' . $family->getId()
+            );
+            return ['success' => false, 'reason' => 'incomplete_address'];
+        }
+
+        try {
+            $country = $family->getCountry();
+
+            $this->logger->debug('geocodeFamilyWithReason: geocoding family ' . $family->getId());
+
+            $coords = GeoUtils::getLatLong($street, $city, $state, $zip, $country);
+            $lat    = (float) $coords['Latitude'];
+            $lng    = (float) $coords['Longitude'];
+
+            if ($lat === 0.0 && $lng === 0.0) {
+                $this->logger->warning(
+                    'geocodeFamilyWithReason: no result from Nominatim for family ' . $family->getId()
+                );
+                return ['success' => false, 'reason' => 'no_result'];
+            }
+
+            $family->setLatitude($lat);
+            $family->setLongitude($lng);
+            $family->save();
+
+            $this->logger->info(
+                'geocodeFamilyWithReason: geocoded family ' . $family->getId() . ' -> ' . $lat . ', ' . $lng
+            );
+            return ['success' => true, 'reason' => null];
+        } catch (\Throwable $e) {
+            $this->logger->warning(
+                'geocodeFamilyWithReason: exception for family ' . $family->getId() . ': ' . $e->getMessage()
+            );
+            return ['success' => false, 'reason' => 'error'];
+        }
+    }
+
+    /**
      * Geocode up to MAX_GEOCODE_PER_RUN families that are missing coordinates,
      * throttled to approximately one Nominatim API request per second to comply
      * with the fair-use policy.
      *
-     * @return array{total: int, geocoded: int, failed: int, remaining: int}
+     * The response includes a `failures` array (capped at MAX_FAILURE_DETAILS)
+     * with per-family detail for families that could not be geocoded, and a
+     * `failuresTruncated` flag when `failed > count(failures)`.
+     *
+     * @return array{
+     *   total: int,
+     *   geocoded: int,
+     *   failed: int,
+     *   remaining: int,
+     *   failures: list<array{id:int,name:string,address:string,editUrl:string,reason:string}>,
+     *   failuresTruncated: bool
+     * }
      */
     public function geocodeAllMissingFamilies(): array
     {
@@ -83,6 +172,7 @@ class FamilyService
 
         $geocoded = 0;
         $failed   = 0;
+        $failures = [];
         $count    = count($batch);
 
         $this->logger->info('geocodeAllMissingFamilies: starting batch', [
@@ -91,15 +181,28 @@ class FamilyService
         ]);
 
         foreach ($batch as $index => $family) {
-            $success = $this->autoGeocodeFamily($family);
-            if ($success) {
+            $result = $this->geocodeFamilyWithReason($family);
+
+            if ($result['success']) {
                 $geocoded++;
             } else {
                 $failed++;
+                // Collect failure detail, capped at MAX_FAILURE_DETAILS
+                if (count($failures) < self::MAX_FAILURE_DETAILS) {
+                    $failures[] = [
+                        'id'      => (int) $family->getId(),
+                        'name'    => (string) $family->getName(),
+                        'address' => (string) $family->getAddress(),
+                        'editUrl' => SystemURLs::getRootPath() . '/FamilyEditor.php?FamilyID=' . (int) $family->getId(),
+                        'reason'  => (string) $result['reason'],
+                    ];
+                }
             }
 
-            // Throttle: sleep 1 second between requests, but not after the last one
-            if ($index < $count - 1) {
+            // Throttle: sleep 1 second between iterations that actually called
+            // Nominatim. Skip the delay for 'incomplete_address' which exits
+            // before any network request is made.
+            if ($index < $count - 1 && $result['reason'] !== 'incomplete_address') {
                 sleep(1);
             }
         }
@@ -116,10 +219,12 @@ class FamilyService
         ]);
 
         return [
-            'total'     => $total,
-            'geocoded'  => $geocoded,
-            'failed'    => $failed,
-            'remaining' => $remaining,
+            'total'             => $total,
+            'geocoded'          => $geocoded,
+            'failed'            => $failed,
+            'remaining'         => $remaining,
+            'failures'          => $failures,
+            'failuresTruncated' => $failed > count($failures),
         ];
     }
 
@@ -204,48 +309,6 @@ class FamilyService
      */
     public function autoGeocodeFamily(Family $family): bool
     {
-        // Don't geocode if street address is empty
-        $street = trim($family->getAddress1() ?? '');
-        if (empty($street)) {
-            $this->logger->debug('autoGeocodeFamily: skipping empty address for family ' . $family->getId());
-            return true;
-        }
-
-        // Try to geocode using structured address components for better Nominatim accuracy
-        try {
-            $city = $family->getCity();
-            $state = $family->getState();
-            $zip = $family->getZip();
-            $country = $family->getCountry();
-
-            $this->logger->debug('autoGeocodeFamily: geocoding family ' . $family->getId());
-
-            $coords = GeoUtils::getLatLong(
-                $street,
-                $city,
-                $state,
-                $zip,
-                $country
-            );
-            $lat = (float) $coords['Latitude'];
-            $lng = (float) $coords['Longitude'];
-
-            // If geocoding failed (returns 0,0), log but don't break
-            if ($lat === 0.0 && $lng === 0.0) {
-                $this->logger->warning('autoGeocodeFamily: Could not geocode address for family ' . $family->getId());
-                return false;
-            }
-
-            // Update family coordinates and save
-            $family->setLatitude($lat);
-            $family->setLongitude($lng);
-            $family->save();
-
-            $this->logger->info('autoGeocodeFamily: Geocoded family ' . $family->getId() . ' -> ' . $lat . ', ' . $lng);
-            return true;
-        } catch (\Throwable $e) {
-            $this->logger->warning('autoGeocodeFamily error for family ' . $family->getId() . ': ' . $e->getMessage());
-            return false;
-        }
+        return $this->geocodeFamilyWithReason($family)['success'];
     }
 }

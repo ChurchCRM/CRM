@@ -108,7 +108,8 @@ declare namespace Cypress {
       method: string,
       url: string,
       body?: any,
-      expectedStatus?: number
+      expectedStatus?: number,
+      timeoutMs?: number
     ): Chainable<any>;
 
     /**
@@ -122,7 +123,8 @@ declare namespace Cypress {
       method: string,
       url: string,
       body?: any,
-      expectedStatus?: number
+      expectedStatus?: number,
+      timeoutMs?: number
     ): Chainable<any>;
 
     /**
@@ -225,7 +227,8 @@ declare namespace Cypress {
       method: string,
       url: string,
       body?: any,
-      expectedStatus?: number
+      expectedStatus?: number,
+      timeoutMs?: number
     ): Chainable<any>;
 
     /**

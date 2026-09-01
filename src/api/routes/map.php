@@ -291,8 +291,22 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
  *         @OA\JsonContent(
  *             @OA\Property(property="total",     type="integer", description="Total families missing coordinates before this run"),
  *             @OA\Property(property="geocoded",  type="integer", description="Families successfully geocoded in this batch"),
- *             @OA\Property(property="failed",    type="integer", description="Families that could not be geocoded (Nominatim returned no result)"),
- *             @OA\Property(property="remaining", type="integer", description="Families still missing coordinates after this batch (run again if > 0)")
+ *             @OA\Property(property="failed",    type="integer", description="Families that could not be geocoded"),
+ *             @OA\Property(property="remaining", type="integer", description="Families still missing coordinates after this batch (run again if > 0)"),
+ *             @OA\Property(
+ *                 property="failures",
+ *                 type="array",
+ *                 description="Per-family failure details (capped at 20 entries). Empty array when all families were geocoded.",
+ *                 @OA\Items(
+ *                     type="object",
+ *                     @OA\Property(property="id",      type="integer", description="Family ID"),
+ *                     @OA\Property(property="name",    type="string",  description="Family name"),
+ *                     @OA\Property(property="address", type="string",  description="Full street address"),
+ *                     @OA\Property(property="editUrl", type="string",  description="URL to the family editor page"),
+ *                     @OA\Property(property="reason",  type="string",  description="Machine code: 'incomplete_address' | 'no_result' | 'error'")
+ *                 )
+ *             ),
+ *             @OA\Property(property="failuresTruncated", type="boolean", description="True when failed > 20 and some failures are omitted from the array")
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized"),
