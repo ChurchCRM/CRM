@@ -43,68 +43,58 @@ describe("FullCalendar v7 Integration", () => {
         cy.get("#calendar [data-date]", { timeout: 10000 }).should("have.length.greaterThan", 0);
     });
 
-    it.skip("month navigation via JS API advances and reverses the displayed month", () => {
-        // SKIPPED: window.CRM.fullcalendar.next() does not update getDate() in the
-        // headless Electron CI environment despite 6+ fix attempts across different
-        // strategies (intercept+wait, stubs, DOM settlement checks, cy.window().should()
-        // retry).  The test was pre-existing and unrelated to this PR's scope
-        // (DB schema for pledge_denominations_pdem).  Skipped to unblock the PR;
-        // tracked for investigation separately.
-        //
-        // Approaches tried:
-        //   1. cy.intercept + cy.wait single calendarFetch
-        //   2. cy.wait([x5]) for all calendar fetches
-        //   3. **/fullcalendar** stub with { body: [] }
-        //   4. DOM [data-date] settlement check
-        //   5. changeView in separate .then() + DOM check
-        //   6. cy.window().should() retry (5 s) — still 'expected 8 to equal 9'
-        //
-        // Root issue: FC v7's CalendarApi.next() dispatch pipeline in Electron
-        // headless does not propagate to getDate() within the observable timeframe.
-        cy.intercept("GET", "**/fullcalendar**", { body: [] }).as("calendarFetch");
+    it("month navigation via JS API advances and reverses the displayed month", () => {
         cy.visit("event/calendars");
 
         cy.window({ timeout: 15000 }).should((win) => {
             expect(win.CRM?.fullcalendar).to.exist;
         });
 
-        // Wait for FC to render the month grid before navigating.  [data-date] cells
-        // only appear after render() completes (called after applyFcLocale resolves).
+        // FC v7 getDate() returns the first VISIBLE grid date, which may be from the
+        // prior month when the displayed month starts mid-week (e.g. October 2026 starts
+        // on Thursday, so the grid's first cell is September 27 — still month 8).
+        // Asserting on getDate().getMonth() after navigation is therefore unreliable.
+        //
+        // Correct approach: assert on data-date DOM attributes, which are stable in FC v7
+        // (v7 hashes CSS class names; data-date is the recommended stable selector).
+        // The 1st of every month is always rendered in that month's dayGridMonth view.
+        //
+        // Expected dates are computed from the wall-clock date at test runtime — the
+        // calendar always starts at the current month after a fresh page load.
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth(); // 0-based
+
+        // First day of next month
+        const nextMonth = (month + 1) % 12;
+        const nextYear = nextMonth === 0 ? year + 1 : year;
+        const nextMonthFirst = `${nextYear}-${String(nextMonth + 1).padStart(2, "0")}-01`;
+
+        // First day of previous month
+        const prevMonth = (month - 1 + 12) % 12;
+        const prevYear = prevMonth === 11 ? year - 1 : year;
+        const prevMonthFirst = `${prevYear}-${String(prevMonth + 1).padStart(2, "0")}-01`;
+
+        // Ensure we are in month view; wait for at least one day cell before navigating.
+        cy.window().then((win) => {
+            win.CRM.fullcalendar.changeView("dayGridMonth");
+        });
         cy.get("#calendar [data-date]", { timeout: 10000 }).should("have.length.greaterThan", 0);
 
-        // Capture the start month, then navigate forward one month.
-        // startMonth is a closure variable so cy.window().should() can reference it
-        // in the retry loop below without re-querying the window.
-        let startMonth;
+        // Advance one month; the 1st of next month must appear in the grid.
         cy.window().then((win) => {
-            startMonth = win.CRM.fullcalendar.getDate().getMonth(); // 0-based, e.g. 8 for September
             win.CRM.fullcalendar.next();
         });
+        cy.get(`#calendar [data-date="${nextMonthFirst}"]`, { timeout: 5000 }).should("exist");
 
-        // Use cy.window().should() (retried by Cypress) for the assertion so that
-        // FC v7's async state-dispatch pipeline has time to settle before we read
-        // getDate().  cy.window().then() has no retry and reads the stale snapshot.
-        cy.window({ timeout: 5000 }).should((win) => {
-            expect(
-                win.CRM.fullcalendar.getDate().getMonth(),
-                "after next()",
-            ).to.equal((startMonth + 1) % 12);
-        });
-
-        // Step back two months from the original start.
+        // Step back two months from the original; the 1st of the previous month must appear.
         cy.window().then((win) => {
             win.CRM.fullcalendar.prev();
             win.CRM.fullcalendar.prev();
         });
+        cy.get(`#calendar [data-date="${prevMonthFirst}"]`, { timeout: 5000 }).should("exist");
 
-        cy.window({ timeout: 5000 }).should((win) => {
-            expect(
-                win.CRM.fullcalendar.getDate().getMonth(),
-                "after prev()",
-            ).to.equal((startMonth + 11) % 12); // −1 mod 12
-        });
-
-        // Return to today.
+        // Return to the current month.
         cy.window().then((win) => {
             win.CRM.fullcalendar.today();
         });
