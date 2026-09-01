@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 16:43+0000\n"
+"POT-Creation-Date: 2026-09-01 17:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -798,6 +798,9 @@ msgid "All Members"
 msgstr ""
 
 msgid "All Methods"
+msgstr ""
+
+msgid "All Months"
 msgstr ""
 
 msgid "All Payments"
@@ -7974,6 +7977,10 @@ msgid "No event types defined yet."
 msgstr ""
 
 #, php-format
+msgid "No events found for %s %d."
+msgstr ""
+
+#, php-format
 msgid "No events found for %s."
 msgstr ""
 
@@ -11814,7 +11821,7 @@ msgstr ""
 msgid "Try Again"
 msgstr ""
 
-msgid "Try selecting a different event type or year."
+msgid "Try selecting a different event type, month, or year."
 msgstr ""
 
 msgid "Tuesdays"
