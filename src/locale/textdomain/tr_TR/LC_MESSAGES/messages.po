@@ -17037,10 +17037,6 @@ msgid "Failed to update pledge"
 msgstr "Taahhüt güncellenemedi"
 
 #: 
-msgid "Family is required"
-msgstr "Aile zorunludur"
-
-#: 
 msgid "Financial data"
 msgstr "Mali veri"
 
@@ -17167,10 +17163,6 @@ msgstr "Çalışma zamanı desteğini planla"
 #: 
 msgid "Please enter a date"
 msgstr "Lütfen bir tarih girin"
-
-#: 
-msgid "Please select a family"
-msgstr "Lütfen bir aile seçin"
 
 #: 
 msgid "Please select a fund for all rows"

@@ -17045,10 +17045,6 @@ msgid "Failed to update pledge"
 msgstr "ቃል-ኪዳን ማዘመን አልተሳካም"
 
 #: 
-msgid "Family is required"
-msgstr "ቤተሰብ ያስፈልጋል"
-
-#: 
 msgid "Financial data"
 msgstr "የፋይናንስ ዳታ"
 
@@ -17175,10 +17171,6 @@ msgstr "የፕላን የሩጫ ጊዜ ድጋፍ"
 #: 
 msgid "Please enter a date"
 msgstr "እባክዎ ቀን ያስገቡ"
-
-#: 
-msgid "Please select a family"
-msgstr "እባክዎ ቤተሰብ ይምረጡ"
 
 #: 
 msgid "Please select a fund for all rows"

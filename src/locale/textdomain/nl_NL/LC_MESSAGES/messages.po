@@ -16994,10 +16994,6 @@ msgid "Failed to update pledge"
 msgstr "Toezegging bijwerken mislukt"
 
 #: 
-msgid "Family is required"
-msgstr "Gezin is vereist"
-
-#: 
 msgid "Financial data"
 msgstr "Financiële gegevens"
 
@@ -17124,10 +17120,6 @@ msgstr "Runtime-ondersteuning plannen"
 #: 
 msgid "Please enter a date"
 msgstr "Voer een datum in"
-
-#: 
-msgid "Please select a family"
-msgstr "Selecteer een gezin"
 
 #: 
 msgid "Please select a fund for all rows"

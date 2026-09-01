@@ -17064,10 +17064,6 @@ msgid "Failed to update pledge"
 msgstr "A fogadalom frissítése sikertelen"
 
 #: 
-msgid "Family is required"
-msgstr "A család megadása kötelező"
-
-#: 
 msgid "Financial data"
 msgstr "Pénzügyi adatok"
 
@@ -17194,10 +17190,6 @@ msgstr "Futásidei támogatás tervezése"
 #: 
 msgid "Please enter a date"
 msgstr "Kérjük, adjon meg egy dátumot"
-
-#: 
-msgid "Please select a family"
-msgstr "Kérjük, válasszon egy családot"
 
 #: 
 msgid "Please select a fund for all rows"

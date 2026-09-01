@@ -17019,10 +17019,6 @@ msgid "Failed to update pledge"
 msgstr "서약 업데이트에 실패했습니다"
 
 #: 
-msgid "Family is required"
-msgstr "가족은 필수입니다"
-
-#: 
 msgid "Financial data"
 msgstr "재정 데이터"
 
@@ -17149,10 +17145,6 @@ msgstr "런타임 지원 계획"
 #: 
 msgid "Please enter a date"
 msgstr "날짜를 입력해 주세요"
-
-#: 
-msgid "Please select a family"
-msgstr "가족을 선택해 주세요"
 
 #: 
 msgid "Please select a fund for all rows"

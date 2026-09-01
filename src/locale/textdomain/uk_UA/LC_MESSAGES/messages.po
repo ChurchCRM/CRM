@@ -17063,10 +17063,6 @@ msgid "Failed to update pledge"
 msgstr "Не вдалося оновити обітницю"
 
 #: 
-msgid "Family is required"
-msgstr "Сім'я є обов'язковою"
-
-#: 
 msgid "Financial data"
 msgstr "Фінансові дані"
 
@@ -17193,10 +17189,6 @@ msgstr "Планування підтримки середовища викон�
 #: 
 msgid "Please enter a date"
 msgstr "Будь ласка, введіть дату"
-
-#: 
-msgid "Please select a family"
-msgstr "Будь ласка, оберіть сім'ю"
 
 #: 
 msgid "Please select a fund for all rows"

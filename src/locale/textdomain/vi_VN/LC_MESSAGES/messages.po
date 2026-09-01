@@ -17028,10 +17028,6 @@ msgid "Failed to update pledge"
 msgstr "Không thể cập nhật cam kết dâng"
 
 #: 
-msgid "Family is required"
-msgstr "Gia đình là bắt buộc"
-
-#: 
 msgid "Financial data"
 msgstr "Dữ liệu tài chính"
 
@@ -17158,10 +17154,6 @@ msgstr "Lên kế hoạch hỗ trợ thời gian chạy"
 #: 
 msgid "Please enter a date"
 msgstr "Vui lòng nhập ngày"
-
-#: 
-msgid "Please select a family"
-msgstr "Vui lòng chọn một gia đình"
 
 #: 
 msgid "Please select a fund for all rows"

@@ -17104,10 +17104,6 @@ msgid "Failed to update pledge"
 msgstr "Kunne ikke oppdatere løfte"
 
 #: 
-msgid "Family is required"
-msgstr "Familie er påkrevd"
-
-#: 
 msgid "Financial data"
 msgstr "Finansielle data"
 
@@ -17234,10 +17230,6 @@ msgstr "Planlegg kjøretidsstøtte"
 #: 
 msgid "Please enter a date"
 msgstr "Vennligst angi en dato"
-
-#: 
-msgid "Please select a family"
-msgstr "Vennligst velg en familie"
 
 #: 
 msgid "Please select a fund for all rows"

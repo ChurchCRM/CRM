@@ -17157,10 +17157,6 @@ msgid "Failed to update pledge"
 msgstr "Falha ao actualizar promessa"
 
 #: 
-msgid "Family is required"
-msgstr "A família é obrigatória"
-
-#: 
 msgid "Financial data"
 msgstr "Dados financeiros"
 
@@ -17287,10 +17283,6 @@ msgstr "Planear suporte em tempo de execução"
 #: 
 msgid "Please enter a date"
 msgstr "Por favor, introduza uma data"
-
-#: 
-msgid "Please select a family"
-msgstr "Por favor, seleccione uma família"
 
 #: 
 msgid "Please select a fund for all rows"

@@ -16989,10 +16989,6 @@ msgid "Failed to update pledge"
 msgstr "誓約の更新に失敗しました"
 
 #: 
-msgid "Family is required"
-msgstr "家族は必須です"
-
-#: 
 msgid "Financial data"
 msgstr "財務データ"
 
@@ -17119,10 +17115,6 @@ msgstr "ランタイムサポートを計画する"
 #: 
 msgid "Please enter a date"
 msgstr "日付を入力してください"
-
-#: 
-msgid "Please select a family"
-msgstr "家族を選択してください"
 
 #: 
 msgid "Please select a fund for all rows"

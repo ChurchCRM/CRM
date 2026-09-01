@@ -4110,7 +4110,6 @@
     "Failed to delete pledge": "",
     "Failed to retrieve pledge": "",
     "Failed to update pledge": "",
-    "Family is required": "",
     "Financial data": "",
     "Full — all of the above plus page views": "",
     "Full — page views, warnings, errors, and JS exceptions": "",
@@ -4143,7 +4142,6 @@
     "Payment Method": "",
     "Plan runtime support": "",
     "Please enter a date": "",
-    "Please select a family": "",
     "Please select a fund for all rows": "",
     "Pledge Details": "",
     "Pledge group not found": "",
@@ -4314,5 +4312,7 @@
     "Search Neighbors": "",
     "Select a family and click Find Neighbors to see results.": "",
     "Selected family": "",
-    "This value must be a valid field name.": ""
+    "This value must be a valid field name.": "",
+    "Could not load data": "",
+    "Please refresh the page or try again later.": ""
 }

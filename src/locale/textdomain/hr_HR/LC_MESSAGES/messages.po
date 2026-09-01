@@ -17012,10 +17012,6 @@ msgid "Failed to update pledge"
 msgstr "Nije uspjelo ažuriranje zavjeta"
 
 #: 
-msgid "Family is required"
-msgstr "Obitelj je obavezna"
-
-#: 
 msgid "Financial data"
 msgstr "Financijski podaci"
 
@@ -17142,10 +17138,6 @@ msgstr "Planiraj podršku za izvođenje"
 #: 
 msgid "Please enter a date"
 msgstr "Molimo unesite datum"
-
-#: 
-msgid "Please select a family"
-msgstr "Molimo odaberite obitelj"
 
 #: 
 msgid "Please select a fund for all rows"

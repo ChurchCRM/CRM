@@ -17173,10 +17173,6 @@ msgid "Failed to update pledge"
 msgstr "更新承諾奉獻失敗"
 
 #: 
-msgid "Family is required"
-msgstr "家庭為必填項"
-
-#: 
 msgid "Financial data"
 msgstr "財務資料"
 
@@ -17303,10 +17299,6 @@ msgstr "規劃執行時間支援"
 #: 
 msgid "Please enter a date"
 msgstr "請輸入日期"
-
-#: 
-msgid "Please select a family"
-msgstr "請選擇家庭"
 
 #: 
 msgid "Please select a fund for all rows"

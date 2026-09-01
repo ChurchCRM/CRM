@@ -17002,10 +17002,6 @@ msgid "Failed to update pledge"
 msgstr "പ്രതിജ്ഞ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: 
-msgid "Family is required"
-msgstr "കുടുംബം ആവശ്യമാണ്"
-
-#: 
 msgid "Financial data"
 msgstr "സാമ്പത്തിക ഡേറ്റ"
 
@@ -17132,10 +17128,6 @@ msgstr "റൺടൈം പിന്തുണ ആസൂത്രണം ചെയ
 #: 
 msgid "Please enter a date"
 msgstr "ദയവായി ഒരു തീയതി നൽകുക"
-
-#: 
-msgid "Please select a family"
-msgstr "ദയവായി ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Please select a fund for all rows"

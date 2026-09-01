@@ -17118,10 +17118,6 @@ msgid "Failed to update pledge"
 msgstr "Не удалось обновить обетование"
 
 #: 
-msgid "Family is required"
-msgstr "Необходимо указать семью"
-
-#: 
 msgid "Financial data"
 msgstr "Финансовые данные"
 
@@ -17248,10 +17244,6 @@ msgstr "Планирование поддержки среды выполнен�
 #: 
 msgid "Please enter a date"
 msgstr "Пожалуйста, введите дату"
-
-#: 
-msgid "Please select a family"
-msgstr "Пожалуйста, выберите семью"
 
 #: 
 msgid "Please select a fund for all rows"

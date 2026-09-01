@@ -17001,10 +17001,6 @@ msgid "Failed to update pledge"
 msgstr "प्रतिज्ञा अपडेट करने में विफल"
 
 #: 
-msgid "Family is required"
-msgstr "परिवार आवश्यक है"
-
-#: 
 msgid "Financial data"
 msgstr "वित्तीय डेटा"
 
@@ -17131,10 +17127,6 @@ msgstr "रनटाइम समर्थन की योजना बना�
 #: 
 msgid "Please enter a date"
 msgstr "कृपया एक तारीख दर्ज करें"
-
-#: 
-msgid "Please select a family"
-msgstr "कृपया एक परिवार चुनें"
 
 #: 
 msgid "Please select a fund for all rows"
