@@ -35,6 +35,11 @@ export function initializeMainDashboard() {
   function showWidgetLoadError(selector) {
     const $table = $(selector);
     if (!$table.length) return;
+    // Destroy the DataTable instance before removing the DOM node so the
+    // settings registry does not retain a stale reference to a detached element.
+    if ($.fn.dataTable && $.fn.dataTable.isDataTable($table[0])) {
+      $table.DataTable().destroy();
+    }
     $table
       .closest(".card-body")
       .html(
@@ -54,7 +59,10 @@ export function initializeMainDashboard() {
   // inline error state instead of the suppressed alert popup.
   // Note: 'error.dt' fires even when errMode is 'none' — settings.nTable is the
   // failing <table> element, so we can map it back to its CSS id.
-  $(document).on("error.dt", (_e, settings, techNote, message) => {
+  // Use a namespaced event ('error.dt.dashboard') and guard with .off() so
+  // that calling initializeMainDashboard() more than once does not stack up
+  // duplicate handlers.
+  $(document).off("error.dt.dashboard").on("error.dt.dashboard", (_e, settings, techNote, message) => {
     const tableId = settings?.nTable?.id;
     console.error(
       `[Dashboard] DataTables AJAX error${tableId ? ` (${tableId})` : ""}:`,
