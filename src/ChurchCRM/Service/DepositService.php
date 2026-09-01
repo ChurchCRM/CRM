@@ -43,8 +43,8 @@ class DepositService {
     {
         AuthService::requireUserGroupMembership('bFinance');
         $query = PledgeQuery::create()
-            ->joinWithDonationFund()
-            ->joinWithFamily();
+            ->leftJoinWithDonationFund()
+            ->leftJoinWithFamily();
         if ($depID) {
             $query->filterByDepId($depID);
         }

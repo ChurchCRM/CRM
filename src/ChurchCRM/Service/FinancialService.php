@@ -195,8 +195,8 @@ class FinancialService
 
         $pledges = PledgeQuery::create()
             ->filterByGroupKey($groupKey)
-            ->joinWithDonationFund()
-            ->joinWithFamily()
+            ->leftJoinWithDonationFund()
+            ->leftJoinWithFamily()
             ->find();
 
         if ($pledges->count() === 0) {
@@ -389,20 +389,23 @@ class FinancialService
             if ($Fund->Amount > 0) {  // Only insert a row if this fund has a non-zero amount.
                 if ($sGroupKey === null) {  // GroupKey is shared across all fund rows for one payment.
                     $iAutID = $payment->iAutID ?? null;
+                    // Normalize to string: null/absent FamilyID becomes '' so genGroupKey
+                    // (typed string) doesn't receive null and trigger a PHP 8 deprecation.
+                    $famIdStr = (string) ($payment->FamilyID ?? '');
                     if ($payment->iMethod === 'CHECK') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo, $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'credit', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'credit', $famIdStr, $Fund->FundID, $payment->Date);
                     } else {
-                        $sGroupKey = FunctionsUtils::genGroupKey('cash', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey('cash', $famIdStr, $Fund->FundID, $payment->Date);
                     }
                 }
 
                 $pledge = new Pledge();
                 $pledge
-                    ->setFamId($payment->FamilyID)
+                    ->setFamId(!empty($payment->FamilyID) ? (int) $payment->FamilyID : null)
                     ->setFyId($payment->FYID)
                     ->setDate($payment->Date)
                     ->setAmount($Fund->Amount)
