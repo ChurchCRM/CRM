@@ -13558,3 +13558,9 @@ msgid ""
 "• User demographics (if enabled in GA4)\n"
 "• Device and browser information"
 msgstr ""
+
+msgid "Could not load data"
+msgstr ""
+
+msgid "Please refresh the page or try again later."
+msgstr ""
