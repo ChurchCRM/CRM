@@ -203,7 +203,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="FYID", type="integer", description="Fiscal year ID", example=29),
      *             @OA\Property(property="type", type="string", enum={"Pledge","Payment"}, description="Record type", example="Payment"),
      *             @OA\Property(property="iMethod", type="string", enum={"CHECK","CASH","CREDITCARD","BANKDRAFT"}, description="Payment method", example="CHECK"),
-     *             @OA\Property(property="iCheckNo", type="string", nullable=true, description="Check number (required when iMethod=CHECK)", example="1234"),
+     *             @OA\Property(property="iCheckNo", type="string", nullable=true, description="Check number (conditionally required when iMethod=CHECK; see bRequireCheckNumber system setting)", example="1234"),
      *             @OA\Property(property="DepositID", type="integer", nullable=true, description="Deposit slip ID (for Payments)", example=5),
      *             @OA\Property(property="schedule", type="string", nullable=true, description="Payment schedule (for Pledges)", example="Monthly"),
      *             @OA\Property(property="tScanString", type="string", nullable=true, description="Scanned check MICR string", example=""),

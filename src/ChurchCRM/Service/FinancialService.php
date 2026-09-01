@@ -335,9 +335,13 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
         //validate that the payment options are valid
-        //If the payment method is a check, then the check number must be present, and it must not already have been used for this family
+        //If the payment method is a check and the bRequireCheckNumber setting is enabled,
+        //then the check number must be present, and it must not already have been used for this family
         //if the payment method is cash, there must not be a check number
-        if (!empty($payment->type) && $payment->type === 'Payment' && !empty($payment->iMethod) && $payment->iMethod === 'CHECK' && !isset($payment->iCheckNo)) {
+        if (SystemConfig::getBooleanValue('bRequireCheckNumber')
+            && !empty($payment->type) && $payment->type === 'Payment'
+            && !empty($payment->iMethod) && $payment->iMethod === 'CHECK'
+            && empty($payment->iCheckNo)) {
             throw new \Exception(gettext('Must specify non-zero check number'));
         }
         // detect check inconsistencies
@@ -390,7 +394,8 @@ class FinancialService
                 if ($sGroupKey === null) {  // GroupKey is shared across all fund rows for one payment.
                     $iAutID = $payment->iAutID ?? null;
                     if ($payment->iMethod === 'CHECK') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $checkNo = ($payment->iCheckNo !== null && $payment->iCheckNo !== '') ? $payment->iCheckNo : null;
+                        $sGroupKey = FunctionsUtils::genGroupKey($checkNo ?? 'check', $payment->FamilyID, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
                         $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $payment->FamilyID, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {
