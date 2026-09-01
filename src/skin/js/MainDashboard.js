@@ -18,64 +18,6 @@ export function initializeMainDashboard() {
     setTimeout(() => initializeMainDashboard(), 500);
     return;
   }
-
-  // Suppress DataTables' default obtrusive alert() popup on AJAX errors (#9566/#9570).
-  // Without this, every failing dashboard widget fires a modal that must be dismissed
-  // individually. We replace it with a per-widget inline error state via the
-  // 'error.dt' event bound below.
-  if ($.fn.dataTable) {
-    $.fn.dataTable.ext.errMode = "none";
-  }
-
-  /**
-   * Render an inline Tabler empty-state error message inside the widget's card body.
-   * Called by the 'error.dt' handler when a dashboard DataTable AJAX request fails.
-   * @param {string} selector - CSS selector for the DataTable element (e.g. "#latestFamiliesDashboardItem")
-   */
-  function showWidgetLoadError(selector) {
-    const $table = $(selector);
-    if (!$table.length) return;
-    // Destroy the DataTable instance before removing the DOM node so the
-    // settings registry does not retain a stale reference to a detached element.
-    if ($.fn.dataTable && $.fn.dataTable.isDataTable($table[0])) {
-      $table.DataTable().destroy();
-    }
-    $table
-      .closest(".card-body")
-      .html(
-        '<div class="empty py-4">' +
-          '<div class="empty-icon"><i class="fa-solid fa-triangle-exclamation fa-2x text-muted"></i></div>' +
-          '<p class="empty-title">' +
-          i18next.t("Could not load data") +
-          "</p>" +
-          '<p class="empty-subtitle text-muted">' +
-          i18next.t("Please refresh the page or try again later.") +
-          "</p>" +
-          "</div>",
-      );
-  }
-
-  // Listen for DataTables AJAX errors on all dashboard tables and render an
-  // inline error state instead of the suppressed alert popup.
-  // Note: 'error.dt' fires even when errMode is 'none' — settings.nTable is the
-  // failing <table> element, so we can map it back to its CSS id.
-  // Use a namespaced event ('error.dt.dashboard') and guard with .off() so
-  // that calling initializeMainDashboard() more than once does not stack up
-  // duplicate handlers.
-  $(document)
-    .off("error.dt.dashboard")
-    .on("error.dt.dashboard", (_e, settings, techNote, message) => {
-      const tableId = settings?.nTable?.id;
-      console.error(
-        `[Dashboard] DataTables AJAX error${tableId ? ` (${tableId})` : ""}:`,
-        message,
-        `(tech note #${techNote})`,
-      );
-      if (tableId) {
-        showWidgetLoadError(`#${tableId}`);
-      }
-    });
-
   // Helper to generate Tabler simple avatar with initials (not clickable)
   function generateTablerAvatar(name, id, type = "person") {
     const parts = name.trim().split(/\s+/);
