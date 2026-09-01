@@ -29,6 +29,16 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         ? (int) $params['year']
         : (int) DateTimeUtils::getCurrentYear();
 
+    // Month filter — null means "all months" (full-year view, default behaviour).
+    // Clamp to 1-12; ignore out-of-range values.
+    $EventMonth = null;
+    if (!empty($params['month']) && $params['month'] !== 'All') {
+        $m = (int) $params['month'];
+        if ($m >= 1 && $m <= 12) {
+            $EventMonth = $m;
+        }
+    }
+
     // --- Dashboard Stats (Propel ORM) ---
     $yearMin = $EventYear . '-01-01 00:00:00';
     $yearMax = $EventYear . '-12-31 23:59:59';
@@ -81,8 +91,10 @@ $app->get('/dashboard', function (Request $request, Response $response) {
     $monthlyData = [];
     // $now is defined once outside the foreach loop to avoid re-instantiation
     // and to use the church-configured timezone via DateTimeUtils::getToday().
+    // When a month filter is active only that month is processed; otherwise all.
+    $monthsToShow = $EventMonth !== null ? [$EventMonth] : $allMonths;
 
-    foreach ($allMonths as $mVal) {
+    foreach ($monthsToShow as $mVal) {
         $daysInMonth = DateTimeUtils::getDaysInMonth($mVal, $EventYear);
         $monthMin = sprintf('%04d-%02d-01 00:00:00', $EventYear, $mVal);
         $monthMax = sprintf('%04d-%02d-%02d 23:59:59', $EventYear, $mVal, $daysInMonth);
@@ -223,6 +235,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         'canEditEvents'          => $canEditEvents,
         'eType'                  => $eType,
         'EventYear'              => $EventYear,
+        'EventMonth'             => $EventMonth,
         'totalEventsThisYear'    => $totalEventsThisYear,
         'totalCheckInsThisYear'  => $totalCheckInsThisYear,
         'totalCurrentEvents'     => $totalCurrentEvents,
@@ -262,6 +275,9 @@ $app->post('/dashboard', function (Request $request, Response $response) {
     }
     if (!empty($body['year'])) {
         $query['year'] = $body['year'];
+    }
+    if (!empty($body['month']) && (int) $body['month'] >= 1 && (int) $body['month'] <= 12) {
+        $query['month'] = (int) $body['month'];
     }
     $target = SystemURLs::getRootPath() . '/event/dashboard';
     if (!empty($query)) {

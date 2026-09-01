@@ -56,17 +56,28 @@ describe("Events Dashboard (MVC)", () => {
             .and("match", /\/event\/repeat-editor$/);
     });
 
-    it("should have event type and year filters", () => {
+    it("should have event type, month, and year filters", () => {
         cy.visit("event/dashboard");
         cy.get("#type").should("exist");
+        cy.get("#month").should("exist");
         cy.get("#year").should("exist");
         cy.get("#type option").should("have.length.at.least", 1);
+        // Month dropdown has 13 options: 1 for "All Months" + 12 calendar months
+        cy.get("#month option").should("have.length", 13);
     });
 
     it("should filter dashboard by URL params", () => {
         cy.visit("event/dashboard?year=2024");
         cy.contains("Events Dashboard").should("exist");
         cy.url().should("include", "year=2024");
+    });
+
+    it("should filter dashboard by month URL param", () => {
+        cy.visit("event/dashboard?month=1");
+        cy.contains("Events Dashboard").should("exist");
+        cy.url().should("include", "month=1");
+        // Month select should reflect the param
+        cy.get("#month").should("have.value", "1");
     });
 
     it("should have Manage Event Types button in header", () => {
