@@ -119,7 +119,7 @@ if ($bCanManageGroups) {
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Class') ?>
             </a>
             <?php endif; ?>
-            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/v2/map?groupId=<?= $iGroupId ?>">
+            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/people/map?groupId=<?= $iGroupId ?>">
                 <i class="fa-solid fa-map-location-dot me-1"></i><?= gettext('Map') ?>
             </a>
             <?php if ($canEmail): ?>
@@ -613,7 +613,7 @@ if ($bCanManageGroups) {
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentGroup = <?= (int) $iGroupId ?>;
-    window.CRM.currentGroupName = <?= json_encode($iGroupName, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    window.CRM.currentGroupName = <?= InputUtils::jsonEncodeForScript($iGroupName) ?>;
 </script>
 <script src="<?= $sRootPath ?>/skin/js/sundayschool-actions.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/sundayschool-actions.js') ?>"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-class-view.min.js"></script>

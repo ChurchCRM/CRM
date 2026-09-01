@@ -14,6 +14,13 @@ function openNewEventModal() {
         const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
         win.showNewEventForm({ startStr: today, endStr: today, allDay: true });
     });
+    // showNewEventForm() fires 3 concurrent, unmocked API calls (calendars,
+    // event types, groups) before rendering the form — real backend latency
+    // under CI load can occasionally exceed Cypress's default ~4s command
+    // timeout even though the app itself is behaving correctly (it just shows
+    // its loading spinner longer). Wait here once, with a generous bound, so
+    // every call site below doesn't have to race that latency individually.
+    cy.get("#event-title-input", { timeout: 15000 }).should("exist");
 }
 
 describe("Standard Calendar", () => {
@@ -192,7 +199,20 @@ describe("Standard Calendar", () => {
  * admin session instead of the standard one used above.
  */
 describe("Standard Calendar — save (admin-session)", () => {
-    beforeEach(() => cy.setupAdminSession());
+    beforeEach(() => {
+        // Suppress Bootstrap/FullCalendar's null.focus() race: when the previous
+        // test's closeModal() fires refreshAllFullCalendarSources(), FullCalendar
+        // re-renders asynchronously. In subdir mode (slower API) the render
+        // callback can fire during the next test, calling .focus() on an element
+        // that was removed from the DOM — producing this uncaught exception.
+        // This is a timing artifact, not a correctness failure.
+        cy.on("uncaught:exception", (err) => {
+            if (err.message === "Cannot read properties of null (reading 'focus')") {
+                return false;
+            }
+        });
+        cy.setupAdminSession();
+    });
 
     /**
      * Regression: new-event payload sent Type:0 (invalid) when the user
@@ -237,6 +257,13 @@ describe("Standard Calendar — save (admin-session)", () => {
             expect(intercepted.request.body.PinnedCalendars).to.include(1);
             expect(intercepted.response.statusCode).to.eq(200);
         });
+        // Wait for the application's async closeModal() to remove the modal element
+        // before this test ends. Without this, saveEvent().then(closeModal) can fire
+        // during the next test's beforeEach (cy.session navigation to about:blank),
+        // causing Bootstrap to call .focus() on a null document.activeElement in
+        // headless Electron — a timing-dependent failure more common in subdir mode
+        // where the API round-trip is slightly slower.
+        cy.get("#eventEditorModal").should("not.exist");
     });
 
     /**
@@ -267,6 +294,10 @@ describe("Standard Calendar — save (admin-session)", () => {
             expect(intercepted.request.body.PinnedCalendars).to.deep.equal([]);
             expect(intercepted.response.statusCode).to.eq(200);
         });
+        // Same guard as test 1: ensure closeModal() removes the element before
+        // this test ends so the async FullCalendar re-render fires within this
+        // test's uncaught:exception handler scope rather than test 3's.
+        cy.get("#eventEditorModal").should("not.exist");
     });
 
     /**

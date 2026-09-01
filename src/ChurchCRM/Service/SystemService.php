@@ -52,7 +52,7 @@ class SystemService
 
         $unmetNames = array_map(fn (Prerequisite $o): string => $o->getName(), $unmet);
 
-        return 'Missing Prerequisites: ' . json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
+        return 'Missing Prerequisites: ' . json_encode(array_values($unmetNames));
     }
 
     private static function isTimerThresholdExceeded(string $LastTime, int $ThresholdHours): bool

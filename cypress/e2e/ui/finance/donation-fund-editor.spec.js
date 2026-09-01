@@ -118,9 +118,32 @@ describe("Finance: Donation Funds page - Access control", () => {
         cy.contains("Donation Funds");
     });
 
-    it("Redirects non-admin users to access-denied", () => {
-        cy.setupAdminSession(); // TODO: replace with setupStandardSession() when a non-admin fixture key is available
-        // For now, verifies the page loads cleanly for admins; the Slim middleware
-        // redirects non-admins to /v2/access-denied (tested in auth-middleware spec).
+    it("Allows Finance-role (non-admin) users to access /finance/funds", () => {
+        // Verifies issue #9476: Finance role should have full access to Finance module
+        // without requiring Admin. finance.only user (id=904): Finance=1, Admin=0.
+        cy.setupFinanceOnlySession();
+        cy.visit("/finance/funds");
+        cy.url().should("not.include", "access-denied");
+        cy.contains("Donation Funds");
+    });
+
+    it("Finance-role user sees Financial Settings button on dashboard", () => {
+        cy.setupFinanceOnlySession();
+        cy.visit("/finance/");
+        cy.url().should("not.include", "access-denied");
+        // Financial Settings button is admin-only; Finance-only users must not see it
+        cy.get("button").contains("Financial Settings").should("not.exist");
+    });
+
+    it("Finance-role user sees Manage Funds button on dashboard", () => {
+        cy.setupFinanceOnlySession();
+        cy.visit("/finance/");
+        cy.get("a").contains("Manage Funds").should("exist");
+    });
+
+    it("Redirects users without Finance role to access-denied", () => {
+        cy.setupNoFinanceSession();
+        cy.visit("/finance/funds", { failOnStatusCode: false });
+        cy.url().should("not.include", "/finance/funds");
     });
 });

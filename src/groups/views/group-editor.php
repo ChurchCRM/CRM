@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <option value="0"><?= gettext('Unassigned') ?></option>
             <option value="" disabled>-----------------------</option>
             <?php foreach ($rsGroupTypes as $groupType): ?>
-              <option value="<?= InputUtils::escapeAttribute($groupType->getOptionId()) ?>"<?= $thisGroup->getType() == $groupType->getOptionId() ? ' selected' : '' ?>><?= InputUtils::escapeHTML($groupType->getOptionName()) ?></option>
+              <option value="<?= (int)$groupType->getOptionId() ?>"<?= $thisGroup->getType() == $groupType->getOptionId() ? ' selected' : '' ?>><?= InputUtils::escapeHTML($groupType->getOptionName()) ?></option>
             <?php endforeach; ?>
           </select>
           <?php if ($thisGroup->isSundaySchool()): ?>
@@ -180,7 +180,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   var defaultRoleID = <?= ($thisGroup->getDefaultRole() ? $thisGroup->getDefaultRole() : 1) ?>;
   var dataT = 0;
-  var groupRoleData = <?= json_encode($groupRoleData) ?>;
+  var groupRoleData = <?= InputUtils::jsonEncodeForScript($groupRoleData) ?>;
   var roleCount = groupRoleData.length;
   var groupID = <?= $iGroupID ?>;
 </script>

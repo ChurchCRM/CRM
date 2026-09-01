@@ -1141,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "Pinakamababang Presyo"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Mga Kagamitan sa Heograpiya ng Pamilya"
-
-#: 
 msgid "Select Family"
 msgstr "Pumili ng Pamilya"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "Pinakamataas na bilang ng mga kapitbahay"
-
-#: 
-msgid "Maximum distance"
-msgstr "Pinakamataas na distansya"
-
-#: 
-msgid "Data file format"
-msgstr "Format ng data file"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "Isama ang mga pamilya sa coordinate file"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Mga Kapitbahay na Pamilya"
-
-#: 
-msgid "Make Data File"
-msgstr "Gumawa ng Data File"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Ipakita ang mga Kapitbahay"
 
 #: 
 msgid "Distance"
@@ -1199,10 +1163,6 @@ msgstr "Longhitud"
 #: 
 msgid "Add to Cart"
 msgstr "Idagdag sa Cart"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Mag-intersect sa Cart"
 
 #: 
 msgid "Remove from Cart"
@@ -1379,10 +1339,6 @@ msgstr "Mag-email sa Lahat"
 #: 
 msgid "Family Roles"
 msgstr "Mga Papel sa Pamilya"
-
-#: 
-msgid "Family Geographic"
-msgstr "Heograpiya ng Pamilya"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4223,24 +4179,8 @@ msgid "Profile Image uploaded"
 msgstr "Na-upload ang Larawan ng Profile"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Ipakita ang mga kapitbahay na may mga klasipikasyong ito"
-
-#: 
-msgid "Please select a Family."
-msgstr "Pakipili ng Pamilya."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Pangalan ng coordinate database file"
-
-#: 
 msgid "select an option"
 msgstr "pumili ng opsyon"
-
-#: 
-msgid "Direct me"
-msgstr "Ituro sa akin"
 
 #: 
 msgid "Your cart is empty"
@@ -9366,10 +9306,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Gumawa ng mga dokumento ng pahayag sa buwis para sa mga nagbibigay"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Mga Kagamitan sa Heograpiya"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Ilagay ang Iyong Data sa ChurchCRM"
 
@@ -10098,10 +10034,6 @@ msgstr "Tingnan at pamahalaan ang lahat ng grupo sa iyong kongregasyon"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Tingnan at pamahalaan ang mga pagbabayad ng deposit slip"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Tingnan at pamahalaan ang datos ng lokasyon ng pamilya"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -16986,10 +16918,6 @@ msgid "Deleted successfully"
 msgstr "Matagumpay na nabura"
 
 #: 
-msgid "Deposit #"
-msgstr "Deposito #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Resibo ng Deposito"
 
@@ -17730,4 +17658,8 @@ msgstr "Babala: Ang {{chosen}} ay kulang sa mga pag-aayos sa seguridad na kasama
 #: 
 msgid "What you'll gain"
 msgstr "Ano ang iyong makukuha"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nabigo sa pagkuha ng bilang ng deposito"
 

@@ -13,6 +13,7 @@
 import Stepper from "bs-stepper";
 import "bs-stepper/dist/css/bs-stepper.min.css";
 import { marked } from "marked";
+import { escapeHtml } from "./utils/escape-html";
 
 // Configure marked: strip raw HTML to prevent XSS from release notes
 marked.use({
@@ -173,13 +174,14 @@ function setupBackupStep() {
                     <div><strong>${i18next.t("Backup Complete")}</strong></div>
                 </div>
             </div>`);
-        $resultFiles.html(`<button class="btn btn-primary" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')">
+        $resultFiles.html(`<button class="btn btn-primary" id="downloadbutton" role="button">
                 <i class="fa-solid fa-download me-1"></i>${i18next.t("Download Backup & Continue")}
             </button>`);
         $button.addClass("d-none");
         $("#skipBackup").addClass("d-none");
 
         $("#downloadbutton").click(function () {
+          downloadBackup(data.BackupDownloadFileName);
           $(this)
             .prop("disabled", true)
             .html(`<i class="fa-solid fa-check me-1"></i>${i18next.t("Downloaded")}`);
@@ -589,18 +591,6 @@ function badgeForType(type) {
 }
 
 /**
- * Minimal HTML escaping for user-supplied strings.
- */
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-/**
  * Auto-download update when the Download & Apply step is shown.
  */
 function autoDownloadUpdate() {
@@ -780,8 +770,6 @@ function downloadBackup(filename) {
         <i class="fa-solid fa-info-circle me-2"></i>${i18next.t("Backup Downloaded, Copy on server removed")}
     </div>`);
 }
-
-window.UpgradeWizard = { downloadBackup };
 
 /**
  * Setup refresh from GitHub button.

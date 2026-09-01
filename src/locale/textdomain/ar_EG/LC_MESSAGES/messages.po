@@ -1154,48 +1154,9 @@ msgid "Minimum Price"
 msgstr "اقل سعر"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "عائلة الجغرافية المرافق"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "اختر أسرة"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "الحد الأقصى لعدد الجيران"
-
-#: 
-msgid "Maximum distance"
-msgstr "المسافة القصوي"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "تنسيق ملف البيانات"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS متخيل"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "تشمل الأسر في تنسيق ملف"
-
-#: 
-msgid "Neighbor Families"
-msgstr "الأسر المجاورة"
-
-#: 
-msgid "Make Data File"
-msgstr "إنشاء ملف البيانات"
-
-#: 
-msgid "Show Neighbors"
-msgstr "عرض الجيران"
 
 #: 
 msgid "Distance"
@@ -1216,10 +1177,6 @@ msgstr "خط الطول"
 #: 
 msgid "Add to Cart"
 msgstr "إضافة الى العربة"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "تتقاطع مع العربة"
 
 #: 
 msgid "Remove from Cart"
@@ -1398,10 +1355,6 @@ msgstr "أرسل جميع"
 #: 
 msgid "Family Roles"
 msgstr "أدوار الأسرة"
-
-#: 
-msgid "Family Geographic"
-msgstr "الجغرافية الأسرة"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4252,26 +4205,8 @@ msgid "Profile Image uploaded"
 msgstr "الصورة الشخصية مرفوع"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "تظهر الجيران مع هذه التصنيفات"
-
-#: 
-msgid "Please select a Family."
-msgstr "الرجاء اختيار الأسرة."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "تنسيق البيانات اسم ملف قاعدة"
-
-#: 
 msgid "select an option"
 msgstr "حدد اختيارا"
-
-#: 
-msgid "Direct me"
-msgstr "تدلني"
 
 #: 
 msgid "Your cart is empty"
@@ -9433,10 +9368,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "إنشاء وثائق البيانات الضريبية للمانحين"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "الأدوات الجغرافية"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "أدخل بيانات ChurchCRM الخاصة بك"
 
@@ -10165,10 +10096,6 @@ msgstr "عرض وإدارة جميع المجموعات في جماعتك"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "عرض وإدارة دفعات الإيصالات"
-
-#: 
-msgid "View and manage family location data"
-msgstr "عرض وإدارة بيانات موقع العائلة"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17105,10 +17032,6 @@ msgid "Deleted successfully"
 msgstr "تم الحذف بنجاح"
 
 #: 
-msgid "Deposit #"
-msgstr "رقم الإيداع"
-
-#: 
 msgid "Deposit Slip"
 msgstr "إيصال الإيداع"
 
@@ -17567,6 +17490,10 @@ msgid "Manage Events"
 msgstr "إدارة الفعاليات"
 
 #: 
+msgid "N/A"
+msgstr "غير متاح"
+
+#: 
 msgid "New Deposit"
 msgstr "إيداع جديد"
 
@@ -17865,4 +17792,8 @@ msgstr "تحذير: {{chosen}} يفتقر إلى إصلاحات أمنية مض�
 #: 
 msgid "What you'll gain"
 msgstr "ما ستكسبه"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "فشل في الحصول على عدد الودائع"
 

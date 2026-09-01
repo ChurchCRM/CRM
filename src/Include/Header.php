@@ -47,7 +47,7 @@ $MenuFirst = 1;
 // The symbol is JSON-encoded so any char (including '"' and backslash) produces
 // a valid CSS string literal without breaking the declaration.
 $_currencyAttrs     = ' data-currency-position="' . InputUtils::escapeAttribute(CurrencyFormatter::position()) . '"';
-$_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_THROW_ON_ERROR);
+$_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 ?>
 <!DOCTYPE html>
 <html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
@@ -102,7 +102,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
       };
 
       // Apply the server-resolved theme mode immediately (FOWT prevention).
-      window.CRM.theme.setMode(<?= json_encode($_themeMode) ?>);
+      window.CRM.theme.setMode(<?= InputUtils::jsonEncodeForScript($_themeMode) ?>);
     }());
   </script>
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
@@ -169,7 +169,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
           lang:"<?= $localeInfo->getLanguageCode() ?>",
           isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
           userId:"<?= AuthenticationManager::getCurrentUser()->getId() ?>",
-          userName:<?= json_encode(AuthenticationManager::getCurrentUser()->getPerson()?->getFullName() ?? '') ?>,
+          userName:<?= InputUtils::jsonEncodeForScript(AuthenticationManager::getCurrentUser()->getPerson()?->getFullName() ?? '') ?>,
           version:"<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>",
           systemLocale:"<?= $localeInfo->getSystemLocale() ?>",
           locale:"<?= $localeInfo->getLocale() ?>",
@@ -183,16 +183,16 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
             sDateTimeFormat:<?= DateTimeUtils::getDateTimeFormatForJs() ?>,
           },
           comm: {
-            smtpConfigured: <?= json_encode(SystemConfig::hasValidMailServerSettings()) ?>,
-            vonageEnabled: <?= json_encode(PluginManager::getPlugin('vonage')?->isConfigured() ?? false) ?>,
+            smtpConfigured: <?= InputUtils::jsonEncodeForScript(SystemConfig::hasValidMailServerSettings()) ?>,
+            vonageEnabled: <?= InputUtils::jsonEncodeForScript(PluginManager::getPlugin('vonage')?->isConfigured() ?? false) ?>,
             // Church default "to" address (sToEmailAddress); exposed only to email-enabled
             // users. The email composer offers it as a removable default recipient.
-            defaultEmailToAddress: <?= AuthenticationManager::getCurrentUser()->isEmailEnabled() ? SystemConfig::getValueForJs('sToEmailAddress') : json_encode('') ?>,
+            defaultEmailToAddress: <?= AuthenticationManager::getCurrentUser()->isEmailEnabled() ? SystemConfig::getValueForJs('sToEmailAddress') : InputUtils::jsonEncodeForScript('') ?>,
           },
           // Plugin configs from active plugins (via getClientConfig())
-          plugins: <?= json_encode(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,
+          plugins: <?= InputUtils::jsonEncodeForScript(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,
           // Legacy: keep bEnableGravatarPhotos for backward compatibility with existing JS
-          bEnableGravatarPhotos: <?= json_encode(PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false) ?>,
+          bEnableGravatarPhotos: <?= InputUtils::jsonEncodeForScript(PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false) ?>,
           plugin: {
               dataTable : {
 "pageLength": <?= $tableSize ?>,
@@ -228,17 +228,17 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
               }
           },
           permissions: {
-              addRecords: <?= json_encode($currentUser->isAddRecordsEnabled()) ?>,
-              editRecords: <?= json_encode($currentUser->isEditRecordsEnabled()) ?>,
+              addRecords: <?= InputUtils::jsonEncodeForScript($currentUser->isAddRecordsEnabled()) ?>,
+              editRecords: <?= InputUtils::jsonEncodeForScript($currentUser->isEditRecordsEnabled()) ?>,
           },
-          PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
-          telemetry: <?= json_encode([
+          PageName:<?= InputUtils::jsonEncodeForScript($_SERVER['REQUEST_URI'] ?? '') ?>,
+          telemetry: <?= InputUtils::jsonEncodeForScript([
               'level'      => TelemetryService::getLevel(),
               'key'        => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
               'endpoint'   => TelemetryService::POSTHOG_ENDPOINT,
               'distinctID' => SystemConfig::getValue('sSystemID'),
           ]) ?>,
-          currency: <?= json_encode(CurrencyFormatter::toArray(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
+          currency: <?= InputUtils::jsonEncodeForScript(CurrencyFormatter::toArray()) ?>
       });
       // Attach format() to window.CRM.currency so JS callers (DataTables, Chart.js)
       // can render localised money via window.CRM.currency.format(amount [, decimals]).
@@ -279,7 +279,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_HEX_TAG | JS
              class="navbar-brand-image rounded"
              style="height: 42px; width: auto;">
         <span class="navbar-brand-text ps-2 fs-4 fw-bold">
-          <?= ChurchMetaData::getChurchName() ?: 'ChurchCRM' ?>
+          <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
         </span>
       </a>
       <div class="collapse navbar-collapse" id="sidebar-menu">

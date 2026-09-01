@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         (function () {
-            var base = <?= json_encode($sRootPath . '/people/photos', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+            var base = <?= InputUtils::jsonEncodeForScript($sRootPath . '/people/photos') ?>;
 
             function applyFilters() {
                 var cls       = document.getElementById('classification-select').value;

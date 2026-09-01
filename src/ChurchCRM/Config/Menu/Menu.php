@@ -101,7 +101,7 @@ class Menu
         $peopleMenu->addSubMenu(new MenuItem(gettext('Photo Directory'), 'people/photos', true, 'fa-images'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-people-roof'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'people/family', true, 'fa-people-roof'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Family Map'), 'v2/map', true, 'fa-map'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Family Map'), 'people/map', true, 'fa-map'));
 
         if ($isAdmin || $isMenuOptions) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
@@ -181,7 +181,7 @@ class Menu
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
             $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-users'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
 
             $groupMenu->addSubMenu($adminMenu);
         }
@@ -299,10 +299,10 @@ class Menu
         $depositsMenu->addSubMenu(new MenuItem(gettext('Pledge Dashboard'), 'finance/pledge/dashboard', $isFinanceEnabled, 'fa-handshake'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], $isFinanceEnabled, 'fa-pen-to-square'));
 
-        if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isAdmin, 'fa-envelope'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isAdmin, 'fa-piggy-bank'));
+        if ($isFinanceEnabled) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isFinanceEnabled, 'fa-envelope'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isFinanceEnabled, 'fa-piggy-bank'));
 
             $depositsMenu->addSubMenu($adminMenu);
         }

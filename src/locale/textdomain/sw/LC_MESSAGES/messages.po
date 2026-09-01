@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Bei ya chini"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Huduma za Kijiografia za Familia"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Chagua Familia"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Idadi ya juu zaidi ya majirani"
-
-#: 
-msgid "Maximum distance"
-msgstr "Umbali wa juu zaidi"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Umbizo la faili ya data"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Jumuisha familia katika faili ya kuratibu"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Familia za Jirani"
-
-#: 
-msgid "Make Data File"
-msgstr "Tengeneza Faili ya Data"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Onyesha Majirani"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Longitude"
 #: 
 msgid "Add to Cart"
 msgstr "Ongeza kwenye Cart"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Pitana na Cart"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Tuma barua pepe kwa Wote"
 #: 
 msgid "Family Roles"
 msgstr "Majukumu ya Familia"
-
-#: 
-msgid "Family Geographic"
-msgstr "Kijiografia cha Familia"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4252,26 +4205,8 @@ msgid "Profile Image uploaded"
 msgstr "Picha ya Wasifu imepakiwa"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Onyesha majirani na uainishaji huu"
-
-#: 
-msgid "Please select a Family."
-msgstr "Tafadhali chagua Familia."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Kuratibu jina la faili la msingi wa data"
-
-#: 
 msgid "select an option"
 msgstr "chagua chaguo"
-
-#: 
-msgid "Direct me"
-msgstr "Nielekeze"
 
 #: 
 msgid "Your cart is empty"
@@ -9402,10 +9337,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Tengeneza nyaraka za taarifa ya kodi kwa wafadhili"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Zana za Kijiografia"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Ingiza Data Yako katika ChurchCRM"
 
@@ -10134,10 +10065,6 @@ msgstr "Tazama na simamia vikundi vyote katika ushirika wako"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Tazama na simamia malipo ya risiti za amana"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Tazama na simamia data ya mahali pa familia"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17054,10 +16981,6 @@ msgid "Deleted successfully"
 msgstr "Imefutwa kwa mafanikio"
 
 #: 
-msgid "Deposit #"
-msgstr "Amana #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Stakabadhi ya Amana"
 
@@ -17506,6 +17429,10 @@ msgid "Manage Events"
 msgstr "Simamia Matukio"
 
 #: 
+msgid "N/A"
+msgstr "Haijulikani"
+
+#: 
 msgid "New Deposit"
 msgstr "Amana Mpya"
 
@@ -17794,4 +17721,8 @@ msgstr "Onyo: {{chosen}} inakosa marekebisho ya usalama yaliyojumuishwa katika {
 #: 
 msgid "What you'll gain"
 msgstr "Utachopata"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Imeshindwa kupata idadi ya amana"
 

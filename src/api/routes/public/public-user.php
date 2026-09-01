@@ -54,7 +54,7 @@ $app->group('/public/user', function (RouteCollectorProxy $group): void {
 function userLogin(Request $request, Response $response, array $args): Response
 {
     $logger = LoggerUtils::getAuthLogger();
-    $body = json_decode($request->getBody(), true, 512, JSON_THROW_ON_ERROR);
+    $body = json_decode($request->getBody(), true, 512);
 
     // Use a generic error message to prevent username enumeration
     $genericError = gettext('Invalid login or password');
@@ -161,7 +161,7 @@ function passwordResetRequest(Request $request, Response $response, array $args)
 {
     $logger = LoggerUtils::getAppLogger();
 
-    $body = json_decode($request->getBody(), true, 512, JSON_THROW_ON_ERROR);
+    $body = json_decode($request->getBody(), true, 512);
     $userName = trim($body['userName'] ?? '');
 
     if (empty($userName)) {

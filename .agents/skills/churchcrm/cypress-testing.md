@@ -1303,7 +1303,7 @@ rg -l "Debug Email Connection" cypress/e2e
 different cards depending on environment (config error / success /
 failure), assert on **structural elements present in every state** — e.g.
 the new title plus a card header like "SMTP Configuration" — rather than a
-state-specific message. See `cypress/e2e/ui/admin/admin.email.spec.js` for
+state-specific message. See `cypress/e2e/ui-admin/admin.debug.spec.js` for
 the pattern.
 
 ## Test File Best Practices
@@ -1757,7 +1757,7 @@ Doubled-up `Contents/`. Same command in the user's interactive terminal works fi
 
 ```bash
 npx cypress run --config-file cypress/configs/docker.config.ts \
-  --spec "cypress/e2e/ui/admin/event-types.spec.js" \
+  --spec "cypress/e2e/ui-admin/event-types.spec.js" \
   > src/event-tests-output.txt 2>&1
 ```
 
@@ -2256,3 +2256,30 @@ SyntaxError: ... Unexpected token (NN:CC)
 ```
 
 Note: `*/` inside double-quoted strings (`"**/api/..."`) within actual code is fine — only the parser is affected by comment context.
+
+---
+
+## TomSelect DOM Structure — Sibling Not Parent <!-- learned: 2026-08-31 -->
+
+TomSelect 2.x inserts `.ts-wrapper` as the **next sibling** of the original `<select>` (using `insertAdjacentElement('afterend', self.wrapper)` in `tom-select.base.js`). The `<select>` is NOT moved inside the wrapper.
+
+**Anti-pattern** (always fails):
+```js
+cy.get("select#mySelect").closest(".ts-wrapper")  // ❌ traverses ancestors, wrapper is a sibling
+```
+
+**Correct patterns:**
+```js
+// Option A: target the immediately-following sibling directly
+cy.get("select#mySelect").next(".ts-wrapper").find(".ts-control").click();
+
+// Option B: go up to shared container, search down
+cy.get("select#mySelect").parent().find(".ts-control").click();
+
+// Option C: CSS sibling combinator
+cy.get("select#mySelect ~ .ts-wrapper > .ts-control").click();
+```
+
+**Detecting TomSelect init:** Use `should("have.class", "tomselected")` — TomSelect adds this class to the original `<select>` at the end of `setup()`. Do **not** use `should("not.be.visible")` because `ts-hidden-accessible` uses `clip-path + 1px` dimensions, not `display:none`, so Cypress's visibility check returns true.
+
+**Dropdown in body:** With `dropdownParent: "body"`, TomSelect appends `.ts-dropdown` to `<body>` at **init time** (constructor). So `cy.get("body > .ts-dropdown").should("exist")` passes even when no options are loaded and the dropdown is `display:none`.

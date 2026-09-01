@@ -101,7 +101,7 @@ class GeoUtils
                 return ['Latitude' => $lat, 'Longitude' => $long];
             }
 
-            $results = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
+            $results = json_decode($response, true, 512);
             if (empty($results) || !\is_array($results)) {
                 $logger->warning('Geocoding: No results found for address (see service log for familyId)');
                 return ['Latitude' => $lat, 'Longitude' => $long];
@@ -174,7 +174,7 @@ class GeoUtils
         $url = $url . '&destinations=' . urlencode($address2);
         $logger->debug($url);
         $gMapsResponse = file_get_contents($url);
-        $details = json_decode($gMapsResponse, true, 512, JSON_THROW_ON_ERROR);
+        $details = json_decode($gMapsResponse, true, 512);
         $matrixElements = $details['rows'][0]['elements'][0];
 
         return [

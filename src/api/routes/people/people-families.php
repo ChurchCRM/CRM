@@ -15,6 +15,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -81,21 +82,30 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
-        $families = FamilyQuery::create()->joinWithPerson()->find();
+        // Find families with no email. Use database-level filtering instead of loading all families
+        // and filtering in PHP. Only return family IDs that meet the criteria:
+        // - Family.Email is empty (NULL or '') AND
+        // - No people in the family have Email or WorkEmail set
+        // Uses raw PDO (via Propel::getConnection()) because Propel 2's ->having() does not
+        // reliably accept raw SQL strings — the GROUP BY + HAVING aggregation requires it.
+        $connection = Propel::getConnection();
+        $sql = 'SELECT fam_ID FROM family_fam'
+             . ' LEFT JOIN person_per ON person_per.per_fam_ID = family_fam.fam_ID'
+             . " WHERE (fam_Email IS NULL OR fam_Email = '')"
+             . ' GROUP BY fam_ID'
+             . " HAVING MAX(COALESCE(person_per.per_Email, '')) = ''"
+             . " AND MAX(COALESCE(person_per.per_WorkEmail, '')) = ''";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $familyIds = array_column($stmt->fetchAll(\PDO::FETCH_ASSOC), 'fam_ID');
 
         $familiesWithoutEmails = [];
-        foreach ($families as $family) {
-            if (empty($family->getEmail())) {
-                $hasEmail = false;
-                foreach ($family->getPeopleSorted() as $person) {
-                    if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) {
-                        $hasEmail = true;
-                        break;
-                    }
-                }
-                if (!$hasEmail) {
-                    $familiesWithoutEmails[] = $family->toArray();
-                }
+        if (count($familyIds) > 0) {
+            $families = FamilyQuery::create()
+                ->filterById($familyIds)
+                ->find();
+            foreach ($families as $family) {
+                $familiesWithoutEmails[] = $family->toArray();
             }
         }
 

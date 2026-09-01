@@ -1141,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "Minimálna cena"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Geografické nástroje rodiny"
-
-#: 
 msgid "Select Family"
 msgstr "Vybrať rodinu"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "Maximálny počet susedov"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maximálna vzdialenosť"
-
-#: 
-msgid "Data file format"
-msgstr "Formát dátového súboru"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS vizualizér"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "Zahrnúť rodiny do súboru súradníc"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Susedné rodiny"
-
-#: 
-msgid "Make Data File"
-msgstr "Vytvoriť dátový súbor"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Zobraziť susedov"
 
 #: 
 msgid "Distance"
@@ -1199,10 +1163,6 @@ msgstr "Zemepisná dĺžka"
 #: 
 msgid "Add to Cart"
 msgstr "Pridať do košíka"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Preniknúť s košíkom"
 
 #: 
 msgid "Remove from Cart"
@@ -1379,10 +1339,6 @@ msgstr "Poslať e-mail všetkým"
 #: 
 msgid "Family Roles"
 msgstr "Roly rodiny"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografické informácie rodiny"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4223,24 +4179,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilový obrázok nahraný"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Zobraziť susedov s týmito klasifikáciami"
-
-#: 
-msgid "Please select a Family."
-msgstr "Vyberte rodinu."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Názov súboru databázy súradníc"
-
-#: 
 msgid "select an option"
 msgstr "vyberte možnosť"
-
-#: 
-msgid "Direct me"
-msgstr "Navigovať"
 
 #: 
 msgid "Your cart is empty"
@@ -9385,10 +9325,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Generovať dokumenty daňových výkazov pre darcov"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografické nástroje"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Získajte dáta do ChurchCRM"
 
@@ -10117,10 +10053,6 @@ msgstr "Zobraziť a spravovať všetky skupiny vo vašom zbore"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Zobraziť a spravovať platby vkladových dokladov"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Zobraziť a spravovať údaje o polohe rodiny"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17049,10 +16981,6 @@ msgid "Deleted successfully"
 msgstr "Úspešne vymazané"
 
 #: 
-msgid "Deposit #"
-msgstr "Č. vkladu"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Potvrdenie o vklade"
 
@@ -17501,6 +17429,10 @@ msgid "Manage Events"
 msgstr "Spravovat udalosti"
 
 #: 
+msgid "N/A"
+msgstr "Neuplatňuje sa"
+
+#: 
 msgid "New Deposit"
 msgstr "Novy vklad"
 
@@ -17789,4 +17721,8 @@ msgstr "Upozornenie: {{chosen}} neobsahuje bezpečnostné opravy zahrnuté vo ve
 #: 
 msgid "What you'll gain"
 msgstr "Čo získate"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nepodarilo sa získať počet vkladov"
 

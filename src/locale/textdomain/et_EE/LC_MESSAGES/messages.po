@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Miinimumhind"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Perekonna geograafiline abi"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Valige perekond"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Naabrite maksimaalne arv"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maksimaalne vahemaa"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Andmefaili vorming"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS-i visualiseerija"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Lisage perekonnad koordinaadifaili"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Naabrite pered"
-
-#: 
-msgid "Make Data File"
-msgstr "Tehke andmefail"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Näita naabreid"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Pikkuskraad"
 #: 
 msgid "Add to Cart"
 msgstr "Lisa korvi"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Ristlõige korvist"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Saada e-kiri kõigile"
 #: 
 msgid "Family Roles"
 msgstr "Perekonna rollid"
-
-#: 
-msgid "Family Geographic"
-msgstr "Perekonna geograafiline"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4253,26 +4206,8 @@ msgid "Profile Image uploaded"
 msgstr "Profiilipilt on üles laaditud"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Näita naabreid järgmiste klassifikatsioonidega"
-
-#: 
-msgid "Please select a Family."
-msgstr "Valige perekond."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Koordinaatide andmebaasi faili nimi"
-
-#: 
 msgid "select an option"
 msgstr "select an option"
-
-#: 
-msgid "Direct me"
-msgstr "Juhenda mind"
 
 #: 
 msgid "Your cart is empty"
@@ -9405,10 +9340,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Looge annetajatele maksudeklaratsiooni dokumente"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geograafilised tööriistad"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Importige oma andmed ChurchCRM-i"
 
@@ -10137,10 +10068,6 @@ msgstr "Vaadake ja hallake kõiki koguduse gruppe"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Vaadake ja hallake korjanduste makseid"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Vaadake ja hallake perekondade asukohaandmeid"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17061,10 +16988,6 @@ msgid "Deleted successfully"
 msgstr "Edukalt kustutatud"
 
 #: 
-msgid "Deposit #"
-msgstr "Deposiit nr"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Deposiidi tšekk"
 
@@ -17519,6 +17442,10 @@ msgid "Manage Events"
 msgstr "Halda uritusi"
 
 #: 
+msgid "N/A"
+msgstr "Pole saadaval"
+
+#: 
 msgid "New Deposit"
 msgstr "Uus deposiit"
 
@@ -17813,4 +17740,8 @@ msgstr "Hoiatus: versioonis {{chosen}} puuduvad turvaparandused, mis sisalduvad 
 #: 
 msgid "What you'll gain"
 msgstr "Mida te saate"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Sissemaksete arvu hankimine ebaõnnestus"
 

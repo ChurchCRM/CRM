@@ -755,7 +755,7 @@ HTACCESS;
         }
 
         try {
-            $manifest = json_decode((string) file_get_contents($manifestPath), true, 32, JSON_THROW_ON_ERROR);
+            $manifest = json_decode((string) file_get_contents($manifestPath), true, 32);
         } catch (\Throwable $e) {
             throw new \RuntimeException('Plugin manifest is not valid JSON: ' . $e->getMessage());
         }

@@ -44,6 +44,7 @@ Located in `src/ChurchCRM/Utils/InputUtils.php`
 | `escapeHTML($input)` | Output escaping for body | `<?= InputUtils::escapeHTML($name) ?>` |
 | `escapeAttribute($input)` | Output escaping for attributes | `value="<?= InputUtils::escapeAttribute($val) ?>"` |
 | `sanitizeAndEscapeText($input)` | Combined sanitization + escape | Untrusted plain text display |
+| `jsonEncodeForScript($data)` | JSON for inline `<script>` blocks | `window.data = <?= InputUtils::jsonEncodeForScript($array) ?>;` |
 
 ### Method 1: sanitizeText() - Plain Text
 
@@ -159,15 +160,64 @@ echo InputUtils::sanitizeText($_POST['comment']);
 // Could display raw content unsafely
 ```
 
+### Method 6: jsonEncodeForScript() - JSON in `<script>` Blocks
+
+Safely encode data as JSON for inline `<script>` blocks with XSS protection:
+
+```php
+// ✅ CORRECT - JSON for inline <script>
+<script>
+    window.CRM.config = <?= InputUtils::jsonEncodeForScript($configArray) ?>;
+    window.roles = <?= InputUtils::jsonEncodeForScript($rolesJS) ?>;
+</script>
+
+// Input: ['name' => 'John "The" Manager']
+// Output: {"name":"John \"The\" Manager"}
+// Prevents: <script> injection, quote breakout, HTML tag injection
+
+// ✅ CORRECT - With translatable strings
+const messages = {
+    success: <?= InputUtils::jsonEncodeForScript(gettext('Saved successfully')) ?>,
+    error: <?= InputUtils::jsonEncodeForScript(gettext('Save failed')) ?>
+};
+
+// ❌ WRONG - Raw json_encode() without flags
+const data = <?= json_encode($userInput) ?>;
+// Vulnerability: If $userInput = '{"x":"</script><img src=x onerror=alert(1)>"}',
+// it breaks out of the JSON context
+
+// ❌ WRONG - String interpolation
+const title = "<?= $title ?>";  // If title contains ", breaks quote
+// If title = 'My "Special" Title', becomes: const title = "My "Special" Title";
+
+// ❌ WRONG - Escaped HTML in JSON
+<script>
+    const config = <?= htmlspecialchars(json_encode($data)) ?>;
+</script>
+// Double-encodes entities, breaks JSON parsing
+```
+
+**Key differences from raw json_encode():**
+
+| Aspect | Raw `json_encode()` | `jsonEncodeForScript()` |
+|--------|-------------------|--------------------------|
+| Escapes `<` to prevent tag injection | ❌ No | ✅ Yes (JSON_HEX_TAG) |
+| Escapes `&` to prevent entity injection | ❌ No | ✅ Yes (JSON_HEX_AMP) |
+| Escapes quotes for context safety | ⚠️ Partial | ✅ Yes (JSON_HEX_APOS, JSON_HEX_QUOT) |
+| Throws on encoding failure | ❌ Returns false | ✅ Yes (JSON_THROW_ON_ERROR) |
+
 ### Decision Tree: Which Method?
 
 ```
-Input Type: User-generated text
+Output Target: User data in templates
+├─ Inside <script> block?
+│  ├─ YES → Use jsonEncodeForScript()
+│  └─ NO → Go to next
+├─ In HTML attribute?
+│  ├─ YES → Use escapeAttribute()
+│  └─ NO → Go to next
 ├─ Will display as plain text?
 │  ├─ YES → Use sanitizeText()
-│  └─ NO → Go to next
-├─ Will be in HTML attribute?
-│  ├─ YES → Use escapeAttribute()
 │  └─ NO → Go to next
 ├─ Will be rich text (Quill editor)?
 │  ├─ YES → Use sanitizeHTML()
@@ -1178,4 +1228,43 @@ custom-field labels) inserted into the DOM via `.html()`, `.append()`,
 
 ---
 
-Last updated: July 11, 2026
+## API Middleware Coverage Audit <!-- learned: 2026-08-29 -->
+
+### Admin API Endpoints (10 routes)
+
+| Endpoint | Input | Middleware | Status | Issue |
+|----------|-------|------------|--------|-------|
+| `/admin/api/options/*` | Text fields | ✅ InputSanitizationMiddleware | ✅ PASS | None |
+| `/admin/api/system/config/*` | Text/password | ✅ Service-layer (ConfigItem) | ✅ PASS | None |
+| `/admin/api/system/logs/loglevel` | Integer | ❌ Manual `is_numeric()` | ⚠️ WEAK | No middleware; should use InputSanitizationMiddleware |
+| `/admin/api/birthday-emails` | None (reads user profile) | ✅ Auth-gated | ✅ PASS | No user input; reads stored email from authenticated user |
+| `/admin/api/import` | CSV fields | ✅ InputUtils::sanitizeText() | ✅ PASS | Core fields sanitized in csv/execute; token validated |
+| `/admin/api/upgrade` | File path | ✅ PathUtils::resolveRealPathWithin() | ✅ PASS | Traversal prevention in place; stronger than middleware |
+| `/admin/api/database` | Enum (BackupType) | ✅ Type-checked | ✅ PASS | Enum-only input; safe |
+| `/admin/api/user-admin` | Path params | ✅ Auth middleware | ✅ PASS | No text input; path-only IDs |
+| `/admin/api/demo` | Boolean flags | ✅ Type-cast | ✅ PASS | Boolean-only input; no text fields |
+| `/admin/api/orphaned-files` | None | ✅ Read-only | ✅ PASS | GET endpoint; no input |
+
+**Summary:** 8/10 pass; 1/10 needs middleware (loglevel); 1/10 acceptable (enum-only)
+
+### Public API Endpoints
+
+**Coverage:** ~70% of public routes have InputSanitizationMiddleware
+- ✅ People routes (create, edit, update)
+- ✅ Family routes (create, edit, update)
+- ✅ Event routes (create, edit, update)
+- ✅ Group routes (create, edit, update)
+- ✅ Finance routes (donations, pledges, funds)
+- ✅ Custom fields (create, edit, update)
+
+### Recommendations
+
+**High Priority:**
+1. Add proper integer validation to `/admin/api/system/logs/loglevel` (currently no type checking; already fixed in #9590)
+
+**Medium Priority:**
+1. Migrate 289 `legacyFilterInput()` calls to modern methods
+2. Audit for missing `escapeAttribute()` (336 calls vs 583 escapeHTML)
+3. Remove 5 deprecated `sanitizeAndEscapeText()` calls
+
+Last updated: August 29, 2026

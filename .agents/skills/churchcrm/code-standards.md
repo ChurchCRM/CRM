@@ -29,9 +29,9 @@ All code must be compatible with PHP 8.4+ and avoid deprecated patterns.
 - **Version checks**: `version_compare(phpversion(), '8.4.0', '<')`
 - **Public constants**: For shared values `public const PHOTO_WIDTH = 200;`
 
-### Import Statement Rules
+### Import Statement Rules (HARD RULE — MANDATORY) <!-- learned: 2026-08-30 -->
 
-**ALWAYS use `use` statements at the top of files instead of inline fully-qualified class names:**
+**NEVER write an inline fully-qualified class name (`\ChurchCRM\...`, `\Slim\...`, `\Propel\...`) in executable code. ALWAYS add a `use` statement instead — no exceptions, including templates/views and one-off scripts.** This applies retroactively: if you touch a file for any reason and spot an inline FQN, add the import while you're there.
 
 ```php
 // ✅ CORRECT
@@ -146,6 +146,26 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 `AppIntegrityService::getFilesFailingIntegrityCheck()` returns an array of **plain filename strings** (e.g., `['Include/Config.php', 'skin/v2/app.min.js']`), NOT objects with `->filename`/`->expectedhash`/`->actualhash` properties. When displaying these files in a template, render `$file` directly — not `$file->filename`.
 
 The integrity check has **no session cache** — it runs fresh on every page load (only called on ~4 admin pages, no perf concern). There is no `clearIntegrityCache()` method.
+
+## Type Casting in Templates — Defensive Clarity <!-- learned: 2026-08-29 -->
+
+**In templates and views, use explicit type casting that matches the actual type returned by the getter:**
+
+```php
+// ✅ CORRECT — (int) cast for numeric Propel ORM IDs (no return type hint on generated base classes)
+<option value="<?= (int)$type->getId() ?>">
+
+// ✅ CORRECT — escapeAttribute() for string slug IDs (e.g. UiNotification::getId() returns 'system-update-available')
+<?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
+
+// ❌ WRONG — (int) cast on a string slug yields 0
+<?= 'data-notification-id="' . (int)$notification->getId() . '"' ?>
+
+// ❌ WRONG — escapeAttribute() is unnecessary overhead on a pure integer
+<option value="<?= InputUtils::escapeAttribute($type->getId()) ?>">
+```
+
+**Rule:** cast numeric values with `(int)`, escape string values with `InputUtils::escapeAttribute()`. Never apply `(int)` to a getter that returns a string slug.
 
 ## Strict vs Loose Comparisons — Type Safety Rules <!-- learned: 2026-03-29 -->
 
@@ -441,6 +461,7 @@ git add new/path/file.php
 Before committing code changes, verify:
 
 - [ ] PHP syntax validation passed (npm run build:php)
+- [ ] No inline fully-qualified class names (`\ChurchCRM\...`, `\Slim\...`, `\Propel\...`) — use a `use` import instead (HARD RULE, no exceptions)
 - [ ] Propel ORM used for all database operations (no raw SQL)
 - [ ] Asset paths use SystemURLs::getRootPath()
 - [ ] Service classes used for business logic
@@ -453,7 +474,7 @@ Before committing code changes, verify:
 - [ ] No alert() calls - use window.CRM.notify() instead
 - [ ] Icons use Font Awesome only (fa-solid, fa-regular, fa-brands) — no paid variants (fa-light, fa-thin, fa-duotone, fa-sharp)
 - [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
-- [ ] Use `json_encode()` when outputting PHP values into `<script>` blocks (not string interpolation)
+- [ ] Use `InputUtils::jsonEncodeForScript()` when outputting PHP values into `<script>` blocks with XSS protection (not raw `json_encode()` or string interpolation) — see `security-best-practices.md`
 - [ ] Use `window.CRM.escapeHtml()` in JS when inserting API data into DOM via `.html()` or template literals
 - [ ] Use RedirectUtils for redirects (not manual header/withHeader)
 - [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)

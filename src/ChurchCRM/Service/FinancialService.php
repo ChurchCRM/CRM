@@ -195,8 +195,8 @@ class FinancialService
 
         $pledges = PledgeQuery::create()
             ->filterByGroupKey($groupKey)
-            ->joinWithDonationFund()
-            ->joinWithFamily()
+            ->leftJoinWithDonationFund()
+            ->leftJoinWithFamily()
             ->find();
 
         if ($pledges->count() === 0) {
@@ -357,7 +357,7 @@ class FinancialService
             return;
         }
         global $cnInfoCentral;
-        $currencyDenoms = json_decode($payment->cashDenominations, null, 512, JSON_THROW_ON_ERROR);
+        $currencyDenoms = json_decode($payment->cashDenominations, null, 512);
         foreach ($currencyDenoms as $cdom) {
             if (empty($payment->DepositID) || empty($cdom->currencyID) || empty($cdom->Count)) {
                 continue;
@@ -378,7 +378,7 @@ class FinancialService
         // FundSplit may arrive as a JSON string (legacy callers) or as an already-
         // decoded array (when called via submitPledgeOrPayment after normalisation).
         $FundSplit = is_string($payment->FundSplit)
-            ? json_decode($payment->FundSplit, false, 512, JSON_THROW_ON_ERROR)
+            ? json_decode($payment->FundSplit, false, 512)
             : $payment->FundSplit;
 
         // $presetGroupKey reuses the caller's GroupKey (updatePledgeOrPayment) instead of
@@ -389,20 +389,23 @@ class FinancialService
             if ($Fund->Amount > 0) {  // Only insert a row if this fund has a non-zero amount.
                 if ($sGroupKey === null) {  // GroupKey is shared across all fund rows for one payment.
                     $iAutID = $payment->iAutID ?? null;
+                    // Normalize to string: null/absent FamilyID becomes '' so genGroupKey
+                    // (typed string) doesn't receive null and trigger a PHP 8 deprecation.
+                    $famIdStr = (string) ($payment->FamilyID ?? '');
                     if ($payment->iMethod === 'CHECK') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo, $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'credit', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'credit', $famIdStr, $Fund->FundID, $payment->Date);
                     } else {
-                        $sGroupKey = FunctionsUtils::genGroupKey('cash', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey('cash', $famIdStr, $Fund->FundID, $payment->Date);
                     }
                 }
 
                 $pledge = new Pledge();
                 $pledge
-                    ->setFamId($payment->FamilyID)
+                    ->setFamId(!empty($payment->FamilyID) ? (int) $payment->FamilyID : null)
                     ->setFyId($payment->FYID)
                     ->setDate($payment->Date)
                     ->setAmount($Fund->Amount)
@@ -457,7 +460,7 @@ class FinancialService
     {
         $raw = $payment->FundSplit ?? [];
         if (is_string($raw)) {
-            $raw = json_decode($raw, false, 512, JSON_THROW_ON_ERROR);
+            $raw = json_decode($raw, false, 512);
         }
         if ($raw instanceof \stdClass) {
             $raw = [$raw];
@@ -523,10 +526,24 @@ class FinancialService
             // Remove orphaned denomination rows. pledge_denominations_pdem has no FK
             // constraint and no Propel model, so we use a parameterized statement on
             // the same connection to keep the deletion within this transaction.
-            $stmt = $con->prepare(
-                'DELETE FROM pledge_denominations_pdem WHERE pdem_plg_GroupKey = :groupKey'
-            );
-            $stmt->execute([':groupKey' => $groupKey]);
+            // The table is an optional legacy feature and may not exist in all
+            // installations (it is absent from the default Install.sql), so we
+            // swallow any PDOException here rather than aborting the whole update.
+            try {
+                $stmt = $con->prepare(
+                    'DELETE FROM pledge_denominations_pdem WHERE pdem_plg_GroupKey = :groupKey'
+                );
+                $stmt->execute([':groupKey' => $groupKey]);
+            } catch (\PDOException $e) {
+                // Only suppress SQLSTATE 42S02 / MySQL error 1146 (table does not exist).
+                // All other PDO errors (deadlock, timeout, disk-full, permission denied, …)
+                // must propagate so the outer \Throwable catch can roll back the transaction.
+                $sqlState = $e->getCode();
+                $mysqlCode = $e->errorInfo[1] ?? null;
+                if ($sqlState !== '42S02' || $mysqlCode !== 1146) {
+                    throw $e;
+                }
+            }
             PledgeQuery::create()->filterByGroupKey($groupKey)->delete($con);
             $this->insertPledgeorPayment($payment, $groupKey);
             $con->commit();
@@ -569,7 +586,7 @@ class FinancialService
         $payment->total = $total;
         $payment->total_formatted = CurrencyFormatter::format($total);
 
-        return json_encode($payment, JSON_THROW_ON_ERROR);
+        return json_encode($payment);
     }
 
     public function getDepositPDF($depID): void

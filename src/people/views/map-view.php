@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 // Use the page title set by the route; append a setup-required note if location is missing
 if (!$mapConfig['hasLocation']) {
@@ -26,6 +27,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="row">
     <div class="col-12">
+        <?php if ($mapConfig['hasLocation'] && $mapConfig['churchAddress'] !== ''): ?>
+        <div class="text-secondary small mb-2 d-flex align-items-center flex-wrap gap-1">
+            <i class="fa-solid fa-location-crosshairs me-1"></i>
+            <?= gettext('Map centered on') ?>
+            <strong><?= InputUtils::escapeHTML($mapConfig['churchName']) ?></strong>
+            <span class="text-body-secondary">&middot; <?= InputUtils::escapeHTML($mapConfig['churchAddress']) ?></span>
+            <a href="<?= $sRootPath ?>/admin/system/church-info" class="ms-1"><?= gettext('Change') ?></a>
+        </div>
+        <?php endif; ?>
         <div class="card">
             <div class="card-body p-0">
                 <div id="map" style="height: 600px; width: 100%;"></div>
@@ -33,12 +43,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Desktop legend (injected into map overlay by Leaflet control) -->
             <div id="map-legend" class="d-none d-sm-block">
-                <div class="legend-title"><?= htmlspecialchars($mapConfig['legendTitle']) ?></div>
+                <?php if ($mapConfig['hasLocation']): ?>
+                <div class="legend-static">
+                    <img src="<?= $sRootPath ?>/skin/icons/church.png" width="14" height="14" alt="" class="legend-church-icon">
+                    <span class="legend-label"><?= InputUtils::escapeHTML($mapConfig['churchName']) ?></span>
+                </div>
+                <?php endif; ?>
+                <div class="legend-title"><?= InputUtils::escapeHTML($mapConfig['legendTitle']) ?></div>
                 <?php foreach ($mapConfig['legendItems'] as $item): ?>
                     <div class="legend-item active" data-legend-id="<?= (int) $item['id'] ?>"
                          role="button" tabindex="0" aria-pressed="true">
-                        <span class="legend-dot" style="background:<?= htmlspecialchars($item['color']) ?>"></span>
-                        <span class="legend-label"><?= htmlspecialchars($item['label']) ?></span>
+                        <span class="legend-dot" style="background:<?= InputUtils::escapeAttribute($item['color']) ?>"></span>
+                        <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -46,14 +62,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Mobile legend (below the map card) -->
             <div class="card mt-2 d-block d-sm-none">
                 <div class="card-header py-2">
-                    <strong><?= htmlspecialchars($mapConfig['legendTitle']) ?></strong>
+                    <strong><?= InputUtils::escapeHTML($mapConfig['legendTitle']) ?></strong>
                 </div>
                 <div class="card-body py-2">
                     <div class="d-flex flex-wrap gap-2">
                         <?php foreach ($mapConfig['legendItems'] as $item): ?>
                             <div class="legend-item active legend-pill" data-legend-id="<?= (int) $item['id'] ?>">
-                                <span class="legend-dot" style="background:<?= htmlspecialchars($item['color']) ?>"></span>
-                                <span class="legend-label"><?= htmlspecialchars($item['label']) ?></span>
+                                <span class="legend-dot" style="background:<?= InputUtils::escapeAttribute($item['color']) ?>"></span>
+                                <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -65,9 +81,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.mapConfig = <?= json_encode($mapConfig, JSON_THROW_ON_ERROR) ?>;
+    window.CRM.mapConfig = <?= InputUtils::jsonEncodeForScript($mapConfig) ?>;
 </script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/map-view.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/people-map-view.min.js') ?>"></script>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -75,26 +91,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $(document).ready(function() {
         window.CRM.settingsPanel.init({
             container: '#mapAdminSettings',
-            title: <?= json_encode(gettext('Map Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+            title: <?= InputUtils::jsonEncodeForScript(gettext('Map Settings')) ?>,
             icon: 'fa-solid fa-sliders',
             settings: [
                 {
                     name: 'iMapZoom',
                     type: 'choice',
-                    label: <?= json_encode(gettext('Default Map View'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                    choices: <?= json_encode(SystemConfig::getChoices('iMapZoom'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= InputUtils::jsonEncodeForScript(gettext('Default Map View')) ?>,
+                    choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('iMapZoom')) ?>
                 },
                 {
                     name: 'bHideLatLon',
                     type: 'boolean',
-                    label: <?= json_encode(gettext('Hide Latitude/Longitude'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                    tooltip: <?= json_encode(SystemConfig::getTooltip('bHideLatLon'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Latitude/Longitude')) ?>,
+                    tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHideLatLon')) ?>
                 },
                 {
                     name: 'bHidePersonAddress',
                     type: 'boolean',
-                    label: <?= json_encode(gettext('Hide Person Address'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                    tooltip: <?= json_encode(SystemConfig::getTooltip('bHidePersonAddress'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Person Address')) ?>,
+                    tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHidePersonAddress')) ?>
                 }
             ],
             showAllSettingsLink: false
@@ -120,6 +136,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         letter-spacing: .04em;
         color: #6c757d;
         margin-bottom: 6px;
+    }
+
+    /* ── Fixed (non-toggle) legend row: the church ──────────────────── */
+    .legend-static {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+        padding: 3px 6px 8px;
+        margin-bottom: 4px;
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        line-height: 1.6;
+    }
+    .legend-church-icon {
+        flex-shrink: 0;
     }
 
     /* ── Shared legend item ─────────────────────────────────────────── */

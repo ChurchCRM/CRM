@@ -1,18 +1,40 @@
 {
   "CSV": "",
   "Email sent to %d family.": {
-    "one": "Письмо отправлено %d семье.|Письмо отправлено %d семьям.|Письмо отправлено %d семьям.|Письмо отправлено %d семье.",
+    "one": "Письмо отправлено %d семье.|Письмо отправлено %d семьям.|Письмо отправлено %d семьям.|Письмо отправлено %d семьи.",
     "few": "",
     "many": "",
     "other": ""
   },
   "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF успешно отправлен %d семье.|PDF успешно отправлен %d семьям.|PDF успешно отправлен %d семьям.|PDF успешно отправлен %d семье.",
+    "one": "PDF успешно отправлен %d семье.|PDF успешно отправлен %d семьям.|PDF успешно отправлен %d семьям.|PDF успешно отправлен %d семьи.",
     "few": "",
     "many": "",
     "other": ""
   },
+  "Anniversary: %s": "",
+  "Church": "",
+  "Classifications": "",
+  "Closest": "",
+  "Deposit #%d": "",
+  "Failed to get fundraiser count": "",
+  "Failed to load neighbors.": "",
+  "Farther": "",
+  "Farthest": "",
+  "Find Neighbors": "",
+  "Find nearby families and add them to your cart": "",
+  "Map centered on": "",
+  "Max distance": "",
+  "Max neighbors": "",
+  "Near": "",
+  "Please select a family.": "",
+  "Results": "",
+  "Same location": "",
+  "Search Neighbors": "",
+  "Select a family and click Find Neighbors to see results.": "",
+  "Selected family": "",
+  "This value must be a valid field name.": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""

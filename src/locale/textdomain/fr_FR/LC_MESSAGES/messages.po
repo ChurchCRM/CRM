@@ -1153,48 +1153,9 @@ msgid "Minimum Price"
 msgstr "Prix ​​minimum"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Utilitaires géographiques des familes"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Sélectionner une famille"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Le nombre maximum de voisins"
-
-#: 
-msgid "Maximum distance"
-msgstr "La distance maximale"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Format du fichier de données"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Visualisation GPS"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Inclure les familles dans le fichier de coordonnée"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Familles voisines"
-
-#: 
-msgid "Make Data File"
-msgstr "Créer un fichier de données"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Montrer les voisins"
 
 #: 
 msgid "Distance"
@@ -1215,10 +1176,6 @@ msgstr "Longitude"
 #: 
 msgid "Add to Cart"
 msgstr "Ajouter au Panier"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Intersection avec le panier"
 
 #: 
 msgid "Remove from Cart"
@@ -1397,10 +1354,6 @@ msgstr "Envoyer un Email à tous"
 #: 
 msgid "Family Roles"
 msgstr "Rôles d'une famille"
-
-#: 
-msgid "Family Geographic"
-msgstr "Famille géographique"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4251,26 +4204,8 @@ msgid "Profile Image uploaded"
 msgstr "Image de profil téléchargée"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Afficher les voisins avec ces catégories"
-
-#: 
-msgid "Please select a Family."
-msgstr "Veuillez sélectionner une famille."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Nom du fichier de la base de données de coordonnées"
-
-#: 
 msgid "select an option"
 msgstr "sélectionner une option"
-
-#: 
-msgid "Direct me"
-msgstr "Diriger moi"
 
 #: 
 msgid "Your cart is empty"
@@ -9403,10 +9338,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Générer des documents de reçu fiscal pour les donateurs"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Utilitaires géographiques"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Importer vos données dans ChurchCRM"
 
@@ -10135,10 +10066,6 @@ msgstr "Voir et gérer tous les groupes de votre assemblée"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Voir et gérer les paiements par bordereau de dépôt"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Voir et gérer les données de localisation des familles"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17051,10 +16978,6 @@ msgid "Deleted successfully"
 msgstr "Supprimé avec succès"
 
 #: 
-msgid "Deposit #"
-msgstr "Dépôt n°"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Bordereau de dépôt"
 
@@ -17505,6 +17428,10 @@ msgid "Manage Events"
 msgstr "Gérer les événements"
 
 #: 
+msgid "N/A"
+msgstr "N/D"
+
+#: 
 msgid "New Deposit"
 msgstr "Nouveau dépôt"
 
@@ -17799,4 +17726,8 @@ msgstr "Avertissement : {{chosen}} ne contient pas les correctifs de sécurité 
 #: 
 msgid "What you'll gain"
 msgstr "Ce que vous allez gagner"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Échec de la récupération du nombre de dépôts"
 

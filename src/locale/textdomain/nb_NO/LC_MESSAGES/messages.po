@@ -1193,48 +1193,9 @@ msgid "Minimum Price"
 msgstr "Maksimal avstand"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Familie Geographic Utilities"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Velg Familie:"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maksimalt antall naboer"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maksimal avstand"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Data filformat"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Inkludere familier i koordinatsystem fil"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Nabo Familier"
-
-#: 
-msgid "Make Data File"
-msgstr "Gjør datafil"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Vis Naboer"
 
 #: 
 msgid "Distance"
@@ -1255,10 +1216,6 @@ msgstr "Lengde"
 #: 
 msgid "Add to Cart"
 msgstr "Legg til handlevogn"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Snitt med Cart"
 
 #: 
 msgid "Remove from Cart"
@@ -1449,10 +1406,6 @@ msgstr "Send Epost til Alle"
 #: 
 msgid "Family Roles"
 msgstr "Familie Rolle"
-
-#: 
-msgid "Family Geographic"
-msgstr "Familie geografi"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4337,24 +4290,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilbilde lastet opp"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Vis naboer med disse klassifiseringene"
-
-#: 
-msgid "Please select a Family."
-msgstr "Vennligst velg en familie."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Filnavn for koordinatdatabase"
-
-#: 
 msgid "select an option"
 msgstr "velg et alternativ"
-
-#: 
-msgid "Direct me"
-msgstr "Led meg"
 
 #: 
 msgid "Your cart is empty"
@@ -9475,10 +9412,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Generer skatteoppgaver for givere"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografiske verktøy"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Få dataene dine inn i ChurchCRM"
 
@@ -10207,10 +10140,6 @@ msgstr "Vis og administrer alle grupper i menigheten"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Vis og administrer kollektinnskuddsbetalinger"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Vis og administrer familiens stedsdata"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17127,10 +17056,6 @@ msgid "Deleted successfully"
 msgstr "Slettet"
 
 #: 
-msgid "Deposit #"
-msgstr "Innskuddsnr."
-
-#: 
 msgid "Deposit Slip"
 msgstr "Innskuddskvittering"
 
@@ -17575,6 +17500,10 @@ msgid "Manage Events"
 msgstr "Administrer arrangementer"
 
 #: 
+msgid "N/A"
+msgstr "Ikke tilgjengelig"
+
+#: 
 msgid "New Deposit"
 msgstr "Ny innbetaling"
 
@@ -17863,4 +17792,8 @@ msgstr "Advarsel: {{chosen}} mangler sikkerhetsfikser som er inkludert i {{lates
 #: 
 msgid "What you'll gain"
 msgstr "Hva du vil oppnå"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Kunne ikke hente antall innskudd"
 

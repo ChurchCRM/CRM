@@ -1186,48 +1186,9 @@ msgid "Minimum Price"
 msgstr "Pret minim"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Utilități Geografice ale Familiilor"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Selectați familia"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Numărul maxim de vecini"
-
-#: 
-msgid "Maximum distance"
-msgstr "Distanța maximă"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Formatul fișierului de date"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Vizualizator GPS"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Includeți familiile în fișierul de coordonate"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Familiile vecine"
-
-#: 
-msgid "Make Data File"
-msgstr "Creați Fișierul de Date"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Afișați Vecinii"
 
 #: 
 msgid "Distance"
@@ -1248,10 +1209,6 @@ msgstr "Longitudine"
 #: 
 msgid "Add to Cart"
 msgstr "Adauga in cos"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Intersectati cu Cosul"
 
 #: 
 msgid "Remove from Cart"
@@ -1437,10 +1394,6 @@ msgstr "Trimite email la toți"
 #: 
 msgid "Family Roles"
 msgstr "Rolurile familiei"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografia familiei"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4317,26 +4270,8 @@ msgid "Profile Image uploaded"
 msgstr "Fotografie profil încărcată"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Afișați vecini cu aceste clasificări"
-
-#: 
-msgid "Please select a Family."
-msgstr "Alegeți o familie."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Nume fișiere coordonate în baza de date"
-
-#: 
 msgid "select an option"
 msgstr "selectează o opțiune"
-
-#: 
-msgid "Direct me"
-msgstr "Direcționează-mă"
 
 #: 
 msgid "Your cart is empty"
@@ -9474,10 +9409,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Generați documente fiscale pentru donatori"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Utilități geografice"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Introduceți datele în ChurchCRM"
 
@@ -10206,10 +10137,6 @@ msgstr "Vizualizați și gestionați toate grupurile din parohie"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Vizualizați și gestionați plățile ofertelor"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Vizualizați și gestionați datele de localizare ale familiei"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17122,10 +17049,6 @@ msgid "Deleted successfully"
 msgstr "Șters cu succes"
 
 #: 
-msgid "Deposit #"
-msgstr "Depozit #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Chitanță de depozit"
 
@@ -17858,4 +17781,8 @@ msgstr "Avertisment: {{chosen}} nu include corecțiile de securitate din {{lates
 #: 
 msgid "What you'll gain"
 msgstr "Ce veți câștiga"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Eroare la obținerea numărului de depozite"
 

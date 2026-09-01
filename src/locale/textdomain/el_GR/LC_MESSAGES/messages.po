@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Κατώτατη τιμή"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Family Geographic Utilities"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Επιλέξτε Οικογένεια"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Μέγιστος αριθμός γειτόνων"
-
-#: 
-msgid "Maximum distance"
-msgstr "Μέγιστη απόσταση"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Μορφή αρχείου δεδομένων"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Συμπεριλάβετε οικογένειες στο αρχείο συντεταγμένων"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Οικογένειες γειτόνων"
-
-#: 
-msgid "Make Data File"
-msgstr "Δημιουργία αρχείου δεδομένων"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Εμφάνιση Γείτονες"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Γεωγραφικό μήκος"
 #: 
 msgid "Add to Cart"
 msgstr "Προσθήκη στο καλάθι"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Διασταύρωση με Καλάθι"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Αποστολή email σε όλους"
 #: 
 msgid "Family Roles"
 msgstr "Οικογενειακοί ρόλοι"
-
-#: 
-msgid "Family Geographic"
-msgstr "Οικογενειακή Γεωγραφική"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4254,26 +4207,8 @@ msgid "Profile Image uploaded"
 msgstr "Η εικόνα προφίλ μεταφορτώθηκε"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Εμφάνιση γειτόνων με αυτές τις ταξινομήσεις"
-
-#: 
-msgid "Please select a Family."
-msgstr "Επιλέξτε μια οικογένεια."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Όνομα αρχείου βάσης δεδομένων συντεταγμένων"
-
-#: 
 msgid "select an option"
 msgstr "επιλέξτε μια επιλογή"
-
-#: 
-msgid "Direct me"
-msgstr "Κατευθύνει με"
 
 #: 
 msgid "Your cart is empty"
@@ -9406,10 +9341,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Δημιουργία φορολογικών βεβαιώσεων για δωρητές"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Γεωγραφικά εργαλεία"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Εισαγωγή δεδομένων στο ChurchCRM"
 
@@ -10138,10 +10069,6 @@ msgstr "Προβολή και διαχείριση όλων των ομάδων 
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Προβολή και διαχείριση πληρωμών αποδεικτικών κατάθεσης"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Προβολή και διαχείριση δεδομένων τοποθεσίας οικογενειών"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17062,10 +16989,6 @@ msgid "Deleted successfully"
 msgstr "Διαγράφηκε επιτυχώς"
 
 #: 
-msgid "Deposit #"
-msgstr "Κατάθεση #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Απόδειξη Κατάθεσης"
 
@@ -17520,6 +17443,10 @@ msgid "Manage Events"
 msgstr "Διαχείριση Εκδηλώσεων"
 
 #: 
+msgid "N/A"
+msgstr "Δ/Α"
+
+#: 
 msgid "New Deposit"
 msgstr "Νέα Κατάθεση"
 
@@ -17814,4 +17741,8 @@ msgstr "Προειδοποίηση: Η έκδοση {{chosen}} δεν περιλ
 #: 
 msgid "What you'll gain"
 msgstr "Τι θα κερδίσετε"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Αποτυχία ανάκτησης αριθμού καταθέσεων"
 

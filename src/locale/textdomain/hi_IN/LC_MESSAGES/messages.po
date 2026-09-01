@@ -1144,44 +1144,8 @@ msgid "Minimum Price"
 msgstr "न्यूनतम मूल्य"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "पारिवारिक भौगोलिक उपयोगिताएँ"
-
-#: 
 msgid "Select Family"
 msgstr "परिवार चुनें"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "पड़ोसियों की अधिकतम संख्या"
-
-#: 
-msgid "Maximum distance"
-msgstr "अधिकतम दूरी"
-
-#: 
-msgid "Data file format"
-msgstr "डेटा फ़ाइल स्वरूप"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS विज़ुअलाइज़र"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "निर्देशांक फ़ाइल में परिवारों को शामिल करें"
-
-#: 
-msgid "Neighbor Families"
-msgstr "पड़ोसी परिवार"
-
-#: 
-msgid "Make Data File"
-msgstr "डेटा फ़ाइल बनाएँ"
-
-#: 
-msgid "Show Neighbors"
-msgstr "पड़ोसी दिखाएं"
 
 #: 
 msgid "Distance"
@@ -1202,10 +1166,6 @@ msgstr "देशांतर"
 #: 
 msgid "Add to Cart"
 msgstr "कार्ट में जोड़ें"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "कार्ट के साथ इंटरसेक्ट करें"
 
 #: 
 msgid "Remove from Cart"
@@ -1382,10 +1342,6 @@ msgstr "सभी को ईमेल करें"
 #: 
 msgid "Family Roles"
 msgstr "पारिवारिक भूमिकाएँ"
-
-#: 
-msgid "Family Geographic"
-msgstr "पारिवारिक भौगोलिक"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4226,24 +4182,8 @@ msgid "Profile Image uploaded"
 msgstr "प्रोफ़ाइल छवि अपलोड की गई"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "इन वर्गीकरणों वाले पड़ोसियों को दिखाएं"
-
-#: 
-msgid "Please select a Family."
-msgstr "कृपया एक परिवार चुनें।"
-
-#: 
-msgid "Coordinate database file name"
-msgstr "समन्वय डेटाबेस फ़ाइल का नाम"
-
-#: 
 msgid "select an option"
 msgstr "एक विकल्प चुनें"
-
-#: 
-msgid "Direct me"
-msgstr "मुझे निर्देशित करें"
 
 #: 
 msgid "Your cart is empty"
@@ -9365,10 +9305,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "दानदाताओं के लिए कर विवरण दस्तावेज़ तैयार करें"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "भौगोलिक उपकरण"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "अपना डेटा ChurchCRM में लाएँ"
 
@@ -10097,10 +10033,6 @@ msgstr "अपनी मण्डली के सभी समूह देख�
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "चढ़ावा जमा पर्ची भुगतान देखें और प्रबंधित करें"
-
-#: 
-msgid "View and manage family location data"
-msgstr "परिवार स्थान डेटा देखें और प्रबंधित करें"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17021,10 +16953,6 @@ msgid "Deleted successfully"
 msgstr "सफलतापूर्वक हटाया गया"
 
 #: 
-msgid "Deposit #"
-msgstr "जमा #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "जमा पर्ची"
 
@@ -17479,6 +17407,10 @@ msgid "Manage Events"
 msgstr "आयोजन प्रबंधित करें"
 
 #: 
+msgid "N/A"
+msgstr "लागू नहीं"
+
+#: 
 msgid "New Deposit"
 msgstr "नई जमा"
 
@@ -17773,4 +17705,8 @@ msgstr "चेतावनी: {{chosen}} में {{latest}} में शा�
 #: 
 msgid "What you'll gain"
 msgstr "आपको क्या मिलेगा"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "जमा राशि की गणना प्राप्त करने में विफल"
 

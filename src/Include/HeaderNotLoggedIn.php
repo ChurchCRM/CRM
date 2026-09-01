@@ -49,10 +49,10 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     Object.assign(window.CRM, {
       root:"<?= SystemURLs::getRootPath() ?>",
       churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
-      lang:<?= json_encode($localeInfo->getLanguageCode()) ?>,
+      lang:<?= InputUtils::jsonEncodeForScript($localeInfo->getLanguageCode()) ?>,
       isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
-      systemLocale:<?= json_encode($localeInfo->getSystemLocale()) ?>,
-      locale:<?= json_encode($localeInfo->getLocale()) ?>,
-      shortLocale:<?= json_encode($localeInfo->getShortLocale()) ?>
+      systemLocale:<?= InputUtils::jsonEncodeForScript($localeInfo->getSystemLocale()) ?>,
+      locale:<?= InputUtils::jsonEncodeForScript($localeInfo->getLocale()) ?>,
+      shortLocale:<?= InputUtils::jsonEncodeForScript($localeInfo->getShortLocale()) ?>
     });
   </script>

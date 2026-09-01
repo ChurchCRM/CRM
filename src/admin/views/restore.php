@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
 
+use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $maxUploadSize = SystemService::getMaxUploadFileSize();
@@ -167,7 +168,7 @@ $isOnboarding = $isOnboarding ?? false;
 </style>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.restoreContext = <?= json_encode($isOnboarding ? 'onboarding' : 'standard') ?>;
+    window.CRM.restoreContext = <?= InputUtils::jsonEncodeForScript($isOnboarding ? 'onboarding' : 'standard') ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/restore.min.js') ?>"></script>
 

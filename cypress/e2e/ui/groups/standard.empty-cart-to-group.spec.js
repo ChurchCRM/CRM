@@ -176,13 +176,30 @@ describe("Empty Cart to Group", () => {
         // Click the cart dropdown toggle to show the menu (find by shopping cart icon)
         cy.get(".nav-item.dropdown [data-bs-toggle='dropdown'] .fa-cart-shopping").closest("[data-bs-toggle='dropdown']").click();
 
+        // Register shown.bs.modal listener BEFORE the click so we cannot miss the event.
+        // This flag lets us poll until Bootstrap sets _isTransitioning=false, which
+        // happens in the shown.bs.modal callback — AFTER the transitionend event fires.
+        // Waiting for opacity:'1' alone is insufficient: Cypress microtasks run before
+        // the transitionend macrotask, so Bootstrap's _isTransitioning may still be
+        // true when hide() is called, causing a silent no-op.
+        cy.window().then((win) => {
+            win.__crmGroupModalShown = false;
+            win.document.addEventListener(
+                "shown.bs.modal",
+                () => { win.__crmGroupModalShown = true; },
+                { once: true },
+            );
+        });
+
         cy.get("#emptyCartToGroup").should("be.visible").click();
         cy.get(".modal.show").should("be.visible");
 
-        // Click Cancel
-        cy.get(".modal.show #crm-gs-cancel").click({ force: true });
-        // Bootstrap 5 event delegation (data-bs-dismiss) doesn't always fire with
-        // Cypress synthetic clicks in headless CI. Call hide() directly as a guarantee.
+        // Poll until shown.bs.modal has fired — guarantees _isTransitioning === false
+        cy.window().should((win) => {
+            expect(win.__crmGroupModalShown, "shown.bs.modal has not yet fired").to.be.true;
+        });
+
+        // Now safe to call hide() — _isTransitioning is definitely false
         cy.window().then((win) => {
             const el = win.document.querySelector('[id^="crm-group-select-modal"]');
             if (el) {

@@ -47,18 +47,6 @@ msgid "Generate Catalog"
 msgstr "Generate Catalogue"
 
 #: 
-msgid "Maximum number of neighbors"
-msgstr "Maximum number of neighbours"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Neighbour Families"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Show Neighbours"
-
-#: 
 msgid "Fall"
 msgstr "Autumn"
 
@@ -86,10 +74,6 @@ msgstr "Internationalisation (I18n) support"
 #: 
 msgid "Zip Code"
 msgstr "Post Code"
-
-#: 
-msgid "Show neighbors with these classifications"
-msgstr "Show neighbours with these classifications"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."

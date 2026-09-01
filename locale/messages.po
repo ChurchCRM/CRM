@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-16 20:12+0000\n"
+"POT-Creation-Date: 2026-09-01 14:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1054,6 +1054,10 @@ msgid "Anniversary"
 msgstr ""
 
 msgid "Anniversary Date"
+msgstr ""
+
+#, php-format
+msgid "Anniversary: %s"
 msgstr ""
 
 msgid "Anonymous"
@@ -2256,6 +2260,9 @@ msgstr ""
 msgid "Christmas Island"
 msgstr ""
 
+msgid "Church"
+msgstr ""
+
 msgid "Church Address"
 msgstr ""
 
@@ -2357,6 +2364,9 @@ msgstr ""
 msgid "Classification"
 msgstr ""
 
+msgid "Classifications"
+msgstr ""
+
 msgid "Clean Up Files"
 msgstr ""
 
@@ -2449,6 +2459,9 @@ msgid "Closed Deposits"
 msgstr ""
 
 msgid "Closed vs Total"
+msgstr ""
+
+msgid "Closest"
 msgstr ""
 
 msgid "Closing"
@@ -2741,9 +2754,6 @@ msgstr ""
 msgid "Cook Islands"
 msgstr ""
 
-msgid "Coordinate database file name"
-msgstr ""
-
 msgid "Coordinates Updated"
 msgstr ""
 
@@ -2809,6 +2819,9 @@ msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
 msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr ""
+
+msgid "Could not load data"
 msgstr ""
 
 msgid "Could not load note."
@@ -3130,9 +3143,6 @@ msgid "Data & Reports"
 msgstr ""
 
 msgid "Data Quality"
-msgstr ""
-
-msgid "Data file format"
 msgstr ""
 
 msgid "Data is processed by PostHog on EU infrastructure."
@@ -3468,7 +3478,8 @@ msgstr ""
 msgid "Deposit"
 msgstr ""
 
-msgid "Deposit #"
+#, php-format
+msgid "Deposit #%d"
 msgstr ""
 
 msgid "Deposit Comment"
@@ -3554,9 +3565,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Diego Garcia"
-msgstr ""
-
-msgid "Direct me"
 msgstr ""
 
 msgid "Direction"
@@ -4748,6 +4756,9 @@ msgstr ""
 msgid "Failed to load groups. Please refresh the page."
 msgstr ""
 
+msgid "Failed to load neighbors."
+msgstr ""
+
 msgid "Failed to load recipients. Please try again."
 msgstr ""
 
@@ -4899,12 +4910,6 @@ msgstr ""
 msgid "Family Email"
 msgstr ""
 
-msgid "Family Geographic"
-msgstr ""
-
-msgid "Family Geographic Utilities"
-msgstr ""
-
 msgid "Family Home Phone"
 msgstr ""
 
@@ -4977,9 +4982,6 @@ msgstr ""
 msgid "Family has no street address to geocode"
 msgstr ""
 
-msgid "Family is required"
-msgstr ""
-
 msgid "Family name is required"
 msgstr ""
 
@@ -5009,6 +5011,12 @@ msgstr ""
 
 #. Context: countries
 msgid "Faroe Islands (Føroyar)"
+msgstr ""
+
+msgid "Farther"
+msgstr ""
+
+msgid "Farthest"
 msgstr ""
 
 msgid "Fastest workflow"
@@ -5167,7 +5175,13 @@ msgstr ""
 msgid "Financials"
 msgstr ""
 
+msgid "Find Neighbors"
+msgstr ""
+
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr ""
+
+msgid "Find nearby families and add them to your cart"
 msgstr ""
 
 msgid "Find past events that are still active or have un-checked-out attendees"
@@ -5461,9 +5475,6 @@ msgstr ""
 msgid "GA4 Setup Guide"
 msgstr ""
 
-msgid "GPS Visualizer"
-msgstr ""
-
 #. Context: countries
 msgid "Gabon"
 msgstr ""
@@ -5572,9 +5583,6 @@ msgid "Geocoding request failed. Please try again."
 msgstr ""
 
 msgid "Geocoding successful"
-msgstr ""
-
-msgid "Geographic Utilities"
 msgstr ""
 
 #. Context: countries
@@ -6211,9 +6219,6 @@ msgstr ""
 msgid "Include events and calendars"
 msgstr ""
 
-msgid "Include families in the coordinate file"
-msgstr ""
-
 msgid "Include family custom properties in global search."
 msgstr ""
 
@@ -6323,9 +6328,6 @@ msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit m
 msgstr ""
 
 msgid "Internationalization (I18n) support"
-msgstr ""
-
-msgid "Intersect with Cart"
 msgstr ""
 
 msgid "Invalid API credentials. Please verify your API Key and API Secret."
@@ -7046,9 +7048,6 @@ msgstr ""
 msgid "Major"
 msgstr ""
 
-msgid "Make Data File"
-msgstr ""
-
 msgid "Make Default"
 msgstr ""
 
@@ -7208,6 +7207,9 @@ msgstr ""
 msgid "Map cart items"
 msgstr ""
 
+msgid "Map centered on"
+msgstr ""
+
 msgid "Map to Field"
 msgstr ""
 
@@ -7261,7 +7263,10 @@ msgstr ""
 msgid "Max Upload Size"
 msgstr ""
 
-msgid "Maximum distance"
+msgid "Max distance"
+msgstr ""
+
+msgid "Max neighbors"
 msgstr ""
 
 msgid "Maximum length is"
@@ -7296,9 +7301,6 @@ msgid ""
 "Once the maximum has been reached, an administrator must re-enable the account.\n"
 "This feature helps to protect against automated password guessing attacks.\n"
 "Set to zero to disable this feature."
-msgstr ""
-
-msgid "Maximum number of neighbors"
 msgstr ""
 
 msgid "Maximum upload size"
@@ -7700,13 +7702,13 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
+msgid "Near"
+msgstr ""
+
 msgid "Need to remove this data later?"
 msgstr ""
 
 msgid "Needs Configuration"
-msgstr ""
-
-msgid "Neighbor Families"
 msgstr ""
 
 msgid "Neighborhood"
@@ -9069,13 +9071,13 @@ msgstr ""
 msgid "Please proceed to the classroom as soon as possible."
 msgstr ""
 
+msgid "Please refresh the page or try again later."
+msgstr ""
+
 msgid "Please review your family information below and confirm or request changes."
 msgstr ""
 
 msgid "Please select a CSV file"
-msgstr ""
-
-msgid "Please select a Family."
 msgstr ""
 
 msgid "Please select a backup file to restore"
@@ -9084,11 +9086,11 @@ msgstr ""
 msgid "Please select a date"
 msgstr ""
 
-msgid "Please select a family"
-msgstr ""
-
 #, php-format
 msgid "Please select a family role for %s."
+msgstr ""
+
+msgid "Please select a family."
 msgstr ""
 
 msgid "Please select a fund for all rows"
@@ -9794,6 +9796,9 @@ msgstr ""
 msgid "Restore your church database from a backup file"
 msgstr ""
 
+msgid "Results"
+msgstr ""
+
 msgid "Retry"
 msgstr ""
 
@@ -10032,6 +10037,9 @@ msgstr ""
 msgid "Salutation Utility"
 msgstr ""
 
+msgid "Same location"
+msgstr ""
+
 #. Context: countries
 msgid "Samoa"
 msgstr ""
@@ -10129,6 +10137,9 @@ msgid "Search Family"
 msgstr ""
 
 msgid "Search Groups"
+msgstr ""
+
+msgid "Search Neighbors"
 msgstr ""
 
 msgid "Search Payments"
@@ -10265,6 +10276,9 @@ msgstr ""
 msgid "Select a family"
 msgstr ""
 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr ""
+
 msgid "Select a fund"
 msgstr ""
 
@@ -10318,6 +10332,9 @@ msgid "Select your options above and click a backup button."
 msgstr ""
 
 msgid "Selected Language"
+msgstr ""
+
+msgid "Selected family"
 msgstr ""
 
 msgid "Selected record successfully removed from the Cart."
@@ -10539,9 +10556,6 @@ msgstr ""
 msgid "Show Family Head of House Names"
 msgstr ""
 
-msgid "Show Neighbors"
-msgstr ""
-
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr ""
 
@@ -10552,9 +10566,6 @@ msgid "Show in Profile"
 msgstr ""
 
 msgid "Show more options"
-msgstr ""
-
-msgid "Show neighbors with these classifications"
 msgstr ""
 
 msgid "Show or hide the Events menu in the main navigation."
@@ -11481,6 +11492,9 @@ msgid "This value cannot be more than %s"
 msgstr ""
 
 msgid "This value is required."
+msgstr ""
+
+msgid "This value must be a valid field name."
 msgstr ""
 
 #, php-format
@@ -12465,9 +12479,6 @@ msgid "View and manage all groups in your congregation"
 msgstr ""
 
 msgid "View and manage deposit slip payments"
-msgstr ""
-
-msgid "View and manage family location data"
 msgstr ""
 
 msgid "View and manage system log files for debugging"

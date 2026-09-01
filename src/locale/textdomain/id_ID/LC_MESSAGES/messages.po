@@ -1157,48 +1157,9 @@ msgid "Minimum Price"
 msgstr "Harga Minimum"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Utilitas Geografis Keluarga"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Pilih Keluarga"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Jumlah tetangga maksimum"
-
-#: 
-msgid "Maximum distance"
-msgstr "Jarak maksimum"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Format file data"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Sertakan keluarga dalam file koordinat"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Keluarga Tetangga"
-
-#: 
-msgid "Make Data File"
-msgstr "Buat File Data"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Tunjukkan Tetangga"
 
 #: 
 msgid "Distance"
@@ -1219,10 +1180,6 @@ msgstr "Garis bujur"
 #: 
 msgid "Add to Cart"
 msgstr "Masukkan ke keranjang"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Intersect with Cart"
 
 #: 
 msgid "Remove from Cart"
@@ -1401,10 +1358,6 @@ msgstr "Email Semua"
 #: 
 msgid "Family Roles"
 msgstr "Peran Keluarga"
-
-#: 
-msgid "Family Geographic"
-msgstr "Lokasi geografis keluarga"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4255,26 +4208,8 @@ msgid "Profile Image uploaded"
 msgstr "Gambar Profil diunggah"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Tunjukkan tetangga dengan klasifikasi ini"
-
-#: 
-msgid "Please select a Family."
-msgstr "Silakan pilih Keluarga."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Mengkoordinasikan nama file basis data"
-
-#: 
 msgid "select an option"
 msgstr "pilih satu opsi"
-
-#: 
-msgid "Direct me"
-msgstr "Arahkan saya"
 
 #: 
 msgid "Your cart is empty"
@@ -9391,10 +9326,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Buat dokumen laporan pajak untuk donatur"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Utilitas Geografis"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Masukkan Data Anda ke ChurchCRM"
 
@@ -10123,10 +10054,6 @@ msgstr "Lihat dan kelola semua grup di jemaat Anda"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Lihat dan kelola pembayaran slip setoran"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Lihat dan kelola data lokasi keluarga"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17039,10 +16966,6 @@ msgid "Deleted successfully"
 msgstr "Berhasil dihapus"
 
 #: 
-msgid "Deposit #"
-msgstr "No. Setoran"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Slip Setoran"
 
@@ -17496,6 +17419,10 @@ msgid "Manage Events"
 msgstr "Kelola Acara"
 
 #: 
+msgid "N/A"
+msgstr "T/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Setoran Baru"
 
@@ -17789,4 +17716,8 @@ msgstr "Peringatan: {{chosen}} tidak memiliki perbaikan keamanan yang terdapat d
 #: 
 msgid "What you'll gain"
 msgstr "Apa yang akan Anda dapatkan"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Gagal mendapatkan jumlah setoran"
 

@@ -1187,48 +1187,9 @@ msgid "Minimum Price"
 msgstr "最低价格"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "家庭地理公用事业"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "选择家庭"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "邻居的最大数量"
-
-#: 
-msgid "Maximum distance"
-msgstr "最大距离"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "数据文件格式"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS可视化"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "包括家庭中的坐标文件"
-
-#: 
-msgid "Neighbor Families"
-msgstr "邻居的家庭"
-
-#: 
-msgid "Make Data File"
-msgstr "数据文件"
-
-#: 
-msgid "Show Neighbors"
-msgstr "显示邻居"
 
 #: 
 msgid "Distance"
@@ -1249,10 +1210,6 @@ msgstr "经度"
 #: 
 msgid "Add to Cart"
 msgstr "添加到购物车"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "相交的购物车"
 
 #: 
 msgid "Remove from Cart"
@@ -1438,10 +1395,6 @@ msgstr "电邮所有人"
 #: 
 msgid "Family Roles"
 msgstr "家庭各式"
-
-#: 
-msgid "Family Geographic"
-msgstr "家庭地理位置"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4321,26 +4274,8 @@ msgid "Profile Image uploaded"
 msgstr "个人资料图片已上传"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "显示具有以下类别的邻居"
-
-#: 
-msgid "Please select a Family."
-msgstr "请选择一个家庭。"
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "协调数据库文件名"
-
-#: 
 msgid "select an option"
 msgstr "选择一个项目"
-
-#: 
-msgid "Direct me"
-msgstr "指导我"
 
 #: 
 msgid "Your cart is empty"
@@ -9467,10 +9402,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "为奉献者生成税务报表文件"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "地理工具"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "将您的数据导入 ChurchCRM"
 
@@ -10199,10 +10130,6 @@ msgstr "查看和管理教会中的所有小组"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "查看和管理奉献存款单"
-
-#: 
-msgid "View and manage family location data"
-msgstr "查看和管理家庭位置数据"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17119,10 +17046,6 @@ msgid "Deleted successfully"
 msgstr "删除成功"
 
 #: 
-msgid "Deposit #"
-msgstr "存款编号"
-
-#: 
 msgid "Deposit Slip"
 msgstr "存款单"
 
@@ -17576,6 +17499,10 @@ msgid "Manage Events"
 msgstr "管理活动"
 
 #: 
+msgid "N/A"
+msgstr "不适用"
+
+#: 
 msgid "New Deposit"
 msgstr "新建收款记录"
 
@@ -17869,4 +17796,8 @@ msgstr "警告：{{chosen}} 缺少 {{latest}} 中包含的安全修复。仅在�
 #: 
 msgid "What you'll gain"
 msgstr "您将获得的改进"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "获取存款数量失败"
 

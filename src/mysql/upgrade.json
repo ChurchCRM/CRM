@@ -89,9 +89,19 @@
     ],
     "dbVersion": "7.6.0"
   },
-  "current": {
+  "pre-7.6.1": {
     "versions": ["7.6.0"],
     "scripts": ["/mysql/upgrade/7.6.1-add-anniversary-queries.sql"],
     "dbVersion": "7.6.1"
+  },
+  "pre-7.6.2": {
+    "versions": ["7.6.1"],
+    "scripts": ["/mysql/upgrade/7.6.2-add-missing-fk-indexes.sql"],
+    "dbVersion": "7.6.2"
+  },
+  "current": {
+    "versions": ["7.6.2", "7.6.3"],
+    "scripts": [],
+    "dbVersion": "7.6.4"
   }
 }

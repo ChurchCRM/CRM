@@ -1141,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "Minimum Prijs"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Gezinslocatie op de landkaart"
-
-#: 
 msgid "Select Family"
 msgstr "Selecteer gezin"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "Maximum aantal buren"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maximale afstand"
-
-#: 
-msgid "Data file format"
-msgstr "Gegevens bestandsformaat"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "Neem gezinnen op in het coördinatenbestand"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Buren"
-
-#: 
-msgid "Make Data File"
-msgstr "Maak Data File"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Toon Buren"
 
 #: 
 msgid "Distance"
@@ -1199,10 +1163,6 @@ msgstr "Lengte"
 #: 
 msgid "Add to Cart"
 msgstr "Voeg resultaten toe aan werkbestand"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Doorsnede met werkbestand"
 
 #: 
 msgid "Remove from Cart"
@@ -1379,10 +1339,6 @@ msgstr "Email allen"
 #: 
 msgid "Family Roles"
 msgstr "Gezinsrollen"
-
-#: 
-msgid "Family Geographic"
-msgstr "Overzicht per gezin"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4226,24 +4182,8 @@ msgid "Profile Image uploaded"
 msgstr "Profielafbeelding geüpload"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Toon buren met deze kenmerken"
-
-#: 
-msgid "Please select a Family."
-msgstr "Selecteer een gezin"
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Bestandsnaam coördinaten database"
-
-#: 
 msgid "select an option"
 msgstr "Selecteer een optie"
-
-#: 
-msgid "Direct me"
-msgstr "Direct me"
 
 #: 
 msgid "Your cart is empty"
@@ -9370,10 +9310,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Belastingverklaringen genereren voor donateurs"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografische hulpprogramma's"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Uw gegevens importeren in ChurchCRM"
 
@@ -10102,10 +10038,6 @@ msgstr "Alle groepen in uw gemeente bekijken en beheren"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Stortingsbonbetalingen bekijken en beheren"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Gezinslocatiegegevens bekijken en beheren"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17014,10 +16946,6 @@ msgid "Deleted successfully"
 msgstr "Succesvol verwijderd"
 
 #: 
-msgid "Deposit #"
-msgstr "Storting #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Stortingsbewijs"
 
@@ -17466,6 +17394,10 @@ msgid "Manage Events"
 msgstr "Evenementen beheren"
 
 #: 
+msgid "N/A"
+msgstr "N.v.t."
+
+#: 
 msgid "New Deposit"
 msgstr "Nieuwe storting"
 
@@ -17754,4 +17686,8 @@ msgstr "Waarschuwing: {{chosen}} mist beveiligingsfixes die zijn opgenomen in {{
 #: 
 msgid "What you'll gain"
 msgstr "Wat u wint"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Kan het aantal stortingen niet ophalen"
 

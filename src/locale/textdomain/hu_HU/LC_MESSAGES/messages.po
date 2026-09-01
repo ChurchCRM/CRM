@@ -1162,48 +1162,9 @@ msgid "Minimum Price"
 msgstr "Minimum ár"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Family Geographic Utilities"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Válassza Család"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximális száma szomszédok"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maximális távolság"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Adat formátum"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Beleértve a családok koordináta fájlban"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Szomszéd családok"
-
-#: 
-msgid "Make Data File"
-msgstr "Gyártó Data File"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Megjelenítés Szomszédok"
 
 #: 
 msgid "Distance"
@@ -1224,10 +1185,6 @@ msgstr "Hosszúság"
 #: 
 msgid "Add to Cart"
 msgstr "A kosárban"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Metszet kosár"
 
 #: 
 msgid "Remove from Cart"
@@ -1412,10 +1369,6 @@ msgstr "E-mail mindenkinek"
 #: 
 msgid "Family Roles"
 msgstr "Családi szerepkörök"
-
-#: 
-msgid "Family Geographic"
-msgstr "Családi földrajzi adatok"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4288,24 +4241,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilkép feltöltve"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Szomszédok mutatása ezekkel a besorolásokkal"
-
-#: 
-msgid "Please select a Family."
-msgstr "Kérjük, válasszon egy családot."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Koordináta adatbázis fájlneve"
-
-#: 
 msgid "select an option"
 msgstr "válasszon egy opciót"
-
-#: 
-msgid "Direct me"
-msgstr "Irányítson"
 
 #: 
 msgid "Your cart is empty"
@@ -9431,10 +9368,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Adóigazolások készítése adományozók számára"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Földrajzi segédeszközök"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Adatok importálása a ChurchCRM-be"
 
@@ -10163,10 +10096,6 @@ msgstr "A gyülekezet összes csoportjának megtekintése és kezelése"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Letéti bizonylatok befizetéseinek megtekintése és kezelése"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Családi helyadatok megtekintése és kezelése"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17087,10 +17016,6 @@ msgid "Deleted successfully"
 msgstr "Sikeresen törölve"
 
 #: 
-msgid "Deposit #"
-msgstr "Befizetés #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Befizetési bizonylat"
 
@@ -17839,4 +17764,8 @@ msgstr "Figyelmeztetés: a {{chosen}} verzióból hiányoznak a {{latest}} verzi
 #: 
 msgid "What you'll gain"
 msgstr "Mit nyer ezzel"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nem sikerült lekérni a befizetések számát"
 

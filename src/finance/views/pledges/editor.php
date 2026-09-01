@@ -84,9 +84,9 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
 
                 <!-- Family Selector -->
                 <div class="col-lg-6">
-                    <label class="form-label" for="FamilyName"><?= gettext('Family') ?> <span class="text-danger">*</span></label>
+                    <label class="form-label" for="FamilyName"><?= gettext('Family') ?></label>
                     <input type="hidden" id="FamilyID" name="FamilyID" value="<?= (int) $familyId ?>">
-                    <select class="form-select" id="FamilyName" name="FamilyName" required>
+                    <select class="form-select" id="FamilyName" name="FamilyName">
                         <?php if ($familyId && $familyName): ?>
                             <option value="<?= (int) $familyId ?>" selected><?= InputUtils::escapeHTML($familyName) ?></option>
                         <?php endif; ?>
@@ -138,7 +138,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                         <?php foreach ($openDeposits as $deposit): ?>
                             <option value="<?= (int) $deposit->getId() ?>"
                                 <?= ($deposit->getId() == $pledgeDepositId) ? 'selected' : '' ?>>
-                                <?= gettext('Deposit #') . (int) $deposit->getId() ?>
+                                <?= sprintf(gettext('Deposit #%d'), (int) $deposit->getId()) ?>
                                 (<?= InputUtils::escapeHTML($deposit->getDate('Y-m-d')) ?>
                                 - <?= InputUtils::escapeHTML($deposit->getType() ?? '') ?>)
                             </option>
@@ -480,10 +480,6 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         const schedEl  = document.getElementById('Schedule');
         const schedule = schedEl ? schedEl.value : 'Once';
 
-        if (!familyId) {
-            showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please select a family')) ?>, true);
-            return null;
-        }
         if (!date) {
             showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please enter a date')) ?>, true);
             return null;
@@ -538,7 +534,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         }
 
         return {
-            FamilyID:  familyId,
+            FamilyID:  familyId || null,
             Date:      date,
             FYID:      fyid,
             type:      PLEDGE_TYPE,

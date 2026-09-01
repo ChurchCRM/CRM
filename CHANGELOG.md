@@ -10,6 +10,13 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.6.3](./changelog/7.6.3.md) | August 2026 | ChurchCRM 7.6.3 fixes backup automation, adds interactive maps and neighbor finder, improves photo resolution, enhances date importing, optimizes database performance |
+| [7.6.2](./changelog/7.6.2.md) | August 2026 | ChurchCRM 7.6.2 boosts performance and expands role autonomy for faster workflows
+
+Expanded role autonomy for Finance and Group Management staff, Database indexing optimization for faster page loads, Custom search query fixes for reliable directory filtering, Security library updates and code safety controls, Complete localization across 45+ languages |
+| [7.6.1](./changelog/7.6.1.md) | August 2026 | ChurchCRM 7.6.1 enhances upgrade experience and financial precision
+
+Redesigned Upgrade Wizard with modern release insights, Universal Currency Formatter across all financial screens, Open Deposit Indicators on Finance menu, Cart to Group tool fixes, Improved badge layouts and navigation icons |
 | [7.6.0](./changelog/7.6.0.md) | August 2026 | ChurchCRM 7.6.0 automates member care and streamlines daily ministry workflows
 
 Automated birthday emails, auto light/dark theme mode, flexible pledge splits, enhanced group role management, improved financial tables and contributor drill-down views |

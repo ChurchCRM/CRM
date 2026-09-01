@@ -1155,48 +1155,9 @@ msgid "Minimum Price"
 msgstr "ዝቅተኛ ዋጋ"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "የቤተሰብ ጂኦግራፊያዊ መገልገያዎች"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "ቤተሰብ ይምረጡ"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "ከፍተኛው የጎረቤቶች ብዛት"
-
-#: 
-msgid "Maximum distance"
-msgstr "ከፍተኛው ርቀት"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "የውሂብ ፋይል ቅርጸት"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "ጂፒኤስ ቪዥዋል"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "ቤተሰቦችን በተቀናጀ ፋይል ውስጥ ያካትቱ"
-
-#: 
-msgid "Neighbor Families"
-msgstr "የጎረቤት ቤተሰቦች"
-
-#: 
-msgid "Make Data File"
-msgstr "የውሂብ ፋይል አድርግ"
-
-#: 
-msgid "Show Neighbors"
-msgstr "ጎረቤቶችን አሳይ"
 
 #: 
 msgid "Distance"
@@ -1217,10 +1178,6 @@ msgstr "ኬንትሮስ"
 #: 
 msgid "Add to Cart"
 msgstr "ወደ ግዢው ቅርጫት ጨምር"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "በጋሪ ያቋርጡ"
 
 #: 
 msgid "Remove from Cart"
@@ -1399,10 +1356,6 @@ msgstr "ሁሉንም ኢሜይል ያድርጉ"
 #: 
 msgid "Family Roles"
 msgstr "የቤተሰብ ሚናዎች"
-
-#: 
-msgid "Family Geographic"
-msgstr "የቤተሰብ ጂኦግራፊያዊ"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4254,26 +4207,8 @@ msgid "Profile Image uploaded"
 msgstr "የመገለጫ ምስል ተለጥፏል"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "በእነዚህ ምደባዎች ጎረቤቶችን አሳይ"
-
-#: 
-msgid "Please select a Family."
-msgstr "እባክዎ ቤተሰብ ይምረጡ"
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "የዳታ መሠረት ፋይል ስም አስተባባሪ"
-
-#: 
 msgid "select an option"
 msgstr "አንድ አማራጭ ይምረጡ"
-
-#: 
-msgid "Direct me"
-msgstr "ምራኝ"
 
 #: 
 msgid "Your cart is empty"
@@ -9413,10 +9348,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "ለ ሰባ ገንዘብ መግለጫ ሰነዶች ስ"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "ጂኦግራፊያል ስርዓቶች"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "ውሎ መረጃ ወደ ChurchCRM ገብ"
 
@@ -10145,10 +10076,6 @@ msgstr "ሙሉ ቡድን ተዋጽኦ ውስጥ ይተንትን እና ይሸፍ
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "ዳቦ ሙሙ ገንዘብ ይተንትን እና ይሸፍኑ"
-
-#: 
-msgid "View and manage family location data"
-msgstr "ቤተሰብ ቦታ መረጃ ይተንትን እና ይሸፍኑ"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17070,10 +16997,6 @@ msgid "Deleted successfully"
 msgstr "በተሳካ ሁኔታ ተሰርዟል"
 
 #: 
-msgid "Deposit #"
-msgstr "ተቀማጭ #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "የተቀማጭ ደረሰኝ"
 
@@ -17528,6 +17451,10 @@ msgid "Manage Events"
 msgstr "ዝግጅቶችን አስተዳድር"
 
 #: 
+msgid "N/A"
+msgstr "አይፈጸምም"
+
+#: 
 msgid "New Deposit"
 msgstr "አዲስ ተቀማጭ"
 
@@ -17822,4 +17749,8 @@ msgstr "ማስጠንቀቂያ፡ {{chosen}} በ{{latest}} ውስጥ የተካተ
 #: 
 msgid "What you'll gain"
 msgstr "የሚያገኙት"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "የተቀማጭ ቁጥር ማግኘት አልተሳካም"
 

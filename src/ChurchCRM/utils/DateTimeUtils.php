@@ -214,7 +214,7 @@ class DateTimeUtils
             'Z' => '',     'c' => '',     'r' => '',     'U' => 'X',
         ];
 
-        return json_encode(strtr(SystemConfig::getValue('sDateTimeFormat'), $phpToMoment), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);
+        return json_encode(strtr(SystemConfig::getValue('sDateTimeFormat'), $phpToMoment));
     }
 
     /**
@@ -324,18 +324,26 @@ class DateTimeUtils
 
     /**
      * Parse a partial date in the formats CSV imports commonly produce:
-     * YYYY-MM-DD, YYYY-M-D, M/D/YYYY, M-D-YYYY, M/D/YY, M-D-YY, M/D, M-D.
+     * YYYY-MM-DD, YYYY-M-D, M/D/YYYY, M-D-YYYY, M/D/YY, M-D-YY, M/D, M-D,
+     * or a bare 4-digit year (YYYY).
      * Year may be omitted (bare "7/4") or zero ("0000-07-04") — in which case
      * the returned `year` is null.
+     *
+     * A bare 4-digit year (e.g. "2020") returns month=0 / day=0 / year=YYYY.
+     * Callers that require a full date (SQL DATE columns) must reject records
+     * where month or day is 0. Callers that store year independently
+     * (Person.BirthYear) may write the year even when month/day are absent.
      *
      * Unlike `parseAndValidate()`, this is lenient about missing years and is
      * the shared source of truth for CSV importers, which must handle both
      * month-day-only values (valid for Person.BirthYear) and full dates
      * (required for SQL DATE custom-field columns) with the same rules. The
      * previous behaviour called `strtotime()` directly, which silently
-     * assigned the current year to "7/4" and corrupted user data.
+     * assigned the current year to "7/4" and corrupted user data. It also
+     * misread a bare year like "2020" as a time (8:20 PM) and returned
+     * today's date.
      *
-     * Returns null when the input can't be interpreted as month+day.
+     * Returns null when the input can't be interpreted as a date component.
      *
      * @return array{month:int, day:int, year:?int}|null
      */
@@ -379,6 +387,16 @@ class DateTimeUtils
                 return null;
             }
             return ['month' => $month, 'day' => $day, 'year' => null];
+        }
+        if (preg_match('/^\d{4}$/', $raw)) {
+            // Bare 4-digit year (e.g. "2020"). PHP's strtotime("2020") reads this as
+            // a time (8:20 PM) and returns today's date — a silent corruption that
+            // this branch prevents. Month and day are left 0 so callers that need a
+            // full DATE can reject the record cleanly.
+            // Year 0000 is treated as "no year" (null), consistent with the YYYY-MM-DD
+            // branch which returns year=null for a zero year.
+            $y = (int) $raw;
+            return ['month' => 0, 'day' => 0, 'year' => $y > 0 ? $y : null];
         }
         // Last-resort fallback for month-name / ISO datetime / etc. The
         // structural patterns above cover the formats most CSV exporters

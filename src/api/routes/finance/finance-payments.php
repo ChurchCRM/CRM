@@ -142,8 +142,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *         description="Pledge group details",
      *         @OA\JsonContent(
      *             @OA\Property(property="groupKey", type="string", example="abc123"),
-     *             @OA\Property(property="familyId", type="integer", example=42),
-     *             @OA\Property(property="familyName", type="string", example="Smith Family"),
+     *             @OA\Property(property="familyId", type="integer", nullable=true, description="Family ID; 0 or null for anonymous donations", example=42),
+     *             @OA\Property(property="familyName", type="string", description="Family display name; empty string for anonymous donations", example="Smith Family"),
      *             @OA\Property(property="date", type="string", format="date", example="2025-01-15"),
      *             @OA\Property(property="fyId", type="integer", example=29),
      *             @OA\Property(property="method", type="string", example="CHECK"),
@@ -197,8 +197,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             required={"FamilyID","Date","FYID","type","FundSplit","iMethod"},
-     *             @OA\Property(property="FamilyID", type="integer", description="Family ID", example=42),
+     *             required={"Date","FYID","type","FundSplit","iMethod"},
+     *             @OA\Property(property="FamilyID", type="integer", nullable=true, description="Family ID — omit or pass null for anonymous/cash donations with no associated family", example=42),
      *             @OA\Property(property="Date", type="string", format="date", description="Pledge/payment date", example="2025-01-15"),
      *             @OA\Property(property="FYID", type="integer", description="Fiscal year ID", example=29),
      *             @OA\Property(property="type", type="string", enum={"Pledge","Payment"}, description="Record type", example="Payment"),
@@ -231,9 +231,6 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $payment = (object) $body;
 
             // Validate required fields
-            if (empty($payment->FamilyID)) {
-                return SlimUtils::renderErrorJSON($response, gettext('Family is required'), [], 400);
-            }
             if (empty($payment->Date)) {
                 return SlimUtils::renderErrorJSON($response, gettext('Date is required'), [], 400);
             }
@@ -252,7 +249,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create pledge'), [], 500, $e, $request);
         }
         try {
-            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
+            $paymentObj = json_decode($groupPayment, true, 512);
         } catch (\JsonException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }
@@ -278,7 +275,15 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(description="Pledge or payment fields (FamilyID, Date, FYID, type, FundSplit, iMethod, etc.)")
+     *         @OA\JsonContent(
+     *             required={"Date","FYID","type","FundSplit","iMethod"},
+     *             @OA\Property(property="FamilyID", type="integer", nullable=true, description="Family ID — omit or pass null for anonymous/cash donations with no associated family", example=42),
+     *             @OA\Property(property="Date", type="string", format="date", description="Pledge/payment date", example="2025-01-15"),
+     *             @OA\Property(property="FYID", type="integer", description="Fiscal year ID", example=29),
+     *             @OA\Property(property="type", type="string", enum={"Pledge","Payment"}, description="Record type", example="Payment"),
+     *             @OA\Property(property="iMethod", type="string", enum={"CHECK","CASH","CREDITCARD","BANKDRAFT"}, description="Payment method", example="CHECK"),
+     *             @OA\Property(property="FundSplit", type="string", description="JSON-encoded array of fund allocations")
+     *         )
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -305,9 +310,6 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $body = $request->getParsedBody() ?? [];
             $payment = (object) $body;
 
-            if (empty($payment->FamilyID)) {
-                return SlimUtils::renderErrorJSON($response, gettext('Family is required'), [], 400);
-            }
             if (empty($payment->Date)) {
                 return SlimUtils::renderErrorJSON($response, gettext('Date is required'), [], 400);
             }
@@ -355,7 +357,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update pledge'), [], 500, $e, $request);
         }
         try {
-            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
+            $paymentObj = json_decode($groupPayment, true, 512);
         } catch (\JsonException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }

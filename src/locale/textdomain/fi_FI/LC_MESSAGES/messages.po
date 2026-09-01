@@ -1148,44 +1148,8 @@ msgid "Minimum Price"
 msgstr "Vähimmäishinta"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Perheiden maantieteelliset työkalut"
-
-#: 
 msgid "Select Family"
 msgstr "Valitse perhe"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "Naapureiden enimmäismäärä"
-
-#: 
-msgid "Maximum distance"
-msgstr "Enimmäisetäisyys"
-
-#: 
-msgid "Data file format"
-msgstr "Tiedostomuoto"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS-visualisoija"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "Sisällytä perheet koordinaattitiedostoon"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Naapuriperheet"
-
-#: 
-msgid "Make Data File"
-msgstr "Luo tiedosto"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Näytä naapurit"
 
 #: 
 msgid "Distance"
@@ -1206,10 +1170,6 @@ msgstr "Pituusaste"
 #: 
 msgid "Add to Cart"
 msgstr "Lisää ostoskoriin"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Risteä ostoskorin kanssa"
 
 #: 
 msgid "Remove from Cart"
@@ -1386,10 +1346,6 @@ msgstr "Sähköpostia kaikille"
 #: 
 msgid "Family Roles"
 msgstr "Perheroolit"
-
-#: 
-msgid "Family Geographic"
-msgstr "Perheiden maantiede"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4230,24 +4186,8 @@ msgid "Profile Image uploaded"
 msgstr "Profiilikuva ladattu"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Näytä naapurit näillä luokituksilla"
-
-#: 
-msgid "Please select a Family."
-msgstr "Valitse perhe."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Koordinaattitietokannan tiedostonimi"
-
-#: 
 msgid "select an option"
 msgstr "valitse vaihtoehto"
-
-#: 
-msgid "Direct me"
-msgstr "Opasta minut"
 
 #: 
 msgid "Your cart is empty"
@@ -9368,10 +9308,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Luo verotodistukset lahjoittajille"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Maantieteelliset työkalut"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Tuo tietosi ChurchCRM:iin"
 
@@ -10100,10 +10036,6 @@ msgstr "Näytä ja hallitse kaikkia seurakunnan ryhmiä"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Näytä ja hallitse kolehtikeräysmaksuja"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Näytä ja hallitse perheiden sijaintitietoja"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17024,10 +16956,6 @@ msgid "Deleted successfully"
 msgstr "Poistettu onnistuneesti"
 
 #: 
-msgid "Deposit #"
-msgstr "Talletus #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Talletustosite"
 
@@ -17482,6 +17410,10 @@ msgid "Manage Events"
 msgstr "Hallinnoi tapahtumia"
 
 #: 
+msgid "N/A"
+msgstr "Ei saatavilla"
+
+#: 
 msgid "New Deposit"
 msgstr "Uusi talletus"
 
@@ -17776,4 +17708,8 @@ msgstr "Varoitus: {{chosen}} puuttuvat tietoturvakorjaukset, jotka sisältyvät 
 #: 
 msgid "What you'll gain"
 msgstr "Mitä saat"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Talletusten määrän hakeminen epäonnistui"
 

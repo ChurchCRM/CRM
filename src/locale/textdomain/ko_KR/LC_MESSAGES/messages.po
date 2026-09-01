@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "최소 가격"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "가족 위치 도구"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "가족 선택:"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "최대 이웃 수:"
-
-#: 
-msgid "Maximum distance"
-msgstr "최대 거리"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "데이터 파일 형식"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "좌표 파일에 포함할 가족"
-
-#: 
-msgid "Neighbor Families"
-msgstr "이웃 가족"
-
-#: 
-msgid "Make Data File"
-msgstr "데이터 파일 생성"
-
-#: 
-msgid "Show Neighbors"
-msgstr "이웃 보기"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "경도"
 #: 
 msgid "Add to Cart"
 msgstr "카트에 추가"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "카트와 교집합"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "전체 메일 발송"
 #: 
 msgid "Family Roles"
 msgstr "가족 역할"
-
-#: 
-msgid "Family Geographic"
-msgstr "가족 위치"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4252,26 +4205,8 @@ msgid "Profile Image uploaded"
 msgstr "프로필 이미지가 업로드되었습니다"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "다음 분류의 이웃을 표시"
-
-#: 
-msgid "Please select a Family."
-msgstr "가족을 선택하세요."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "좌표 데이터베이스 파일 이름"
-
-#: 
 msgid "select an option"
 msgstr "옵션을 선택하세요"
-
-#: 
-msgid "Direct me"
-msgstr "길 찾기"
 
 #: 
 msgid "Your cart is empty"
@@ -9392,10 +9327,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "기부자를 위한 세금 명세서 문서 생성"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "지리 도구"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "ChurchCRM에 데이터 가져오기"
 
@@ -10124,10 +10055,6 @@ msgstr "교회의 모든 그룹 보기 및 관리"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "헌금 입금 전표 납부 보기 및 관리"
-
-#: 
-msgid "View and manage family location data"
-msgstr "가족 위치 데이터 보기 및 관리"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17044,10 +16971,6 @@ msgid "Deleted successfully"
 msgstr "성공적으로 삭제되었습니다"
 
 #: 
-msgid "Deposit #"
-msgstr "입금 번호"
-
-#: 
 msgid "Deposit Slip"
 msgstr "입금 전표"
 
@@ -17501,6 +17424,10 @@ msgid "Manage Events"
 msgstr "행사 관리"
 
 #: 
+msgid "N/A"
+msgstr "해당 없음"
+
+#: 
 msgid "New Deposit"
 msgstr "새 입금"
 
@@ -17794,4 +17721,8 @@ msgstr "경고: {{chosen}}에는 {{latest}}에 포함된 보안 수정 사항이
 #: 
 msgid "What you'll gain"
 msgstr "업그레이드 시 얻는 것"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "입금 수 조회에 실패했습니다"
 

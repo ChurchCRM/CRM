@@ -294,8 +294,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        var ageGroupLabels = <?= json_encode(array_keys($ageGroupStats)) ?>;
-        var ageGroupValues = <?= json_encode(array_values($ageGroupStats)) ?>;
+        var ageGroupLabels = <?= InputUtils::jsonEncodeForScript(array_keys($ageGroupStats)) ?>;
+        var ageGroupValues = <?= InputUtils::jsonEncodeForScript(array_values($ageGroupStats)) ?>;
 
         var ageChartElement = document.getElementById('age-stats-bar');
         if (ageChartElement && window.ApexCharts) {
@@ -319,14 +319,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function () {
     window.CRM.settingsPanel.init({
         container: '#peopleSettings',
-        title: <?= json_encode(gettext('People Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('People Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
             {
                 name: 'bEnableSelfRegistration',
                 type: 'boolean',
-                label: <?= json_encode(gettext('Self Registration'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                tooltip: <?= json_encode(gettext('Allow visitors to self-register as new families.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Self Registration')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Allow visitors to self-register as new families.')) ?>
             }
         ],
         onSave: function () {

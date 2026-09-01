@@ -17,21 +17,15 @@
 
 import DOMPurify from "dompurify";
 import { initializeQuillEditor } from "./quill-editor.js";
+import { escapeHtml } from "./utils/escape-html";
 
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Architecture
 // ---------------------------------------------------------------------------
 
-function escapeHtml(str) {
-  if (!str) return "";
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-}
-
-// Architecture: event.Start / event.End are CHURCH wall-clock STRINGS in
+// event.Start / event.End are CHURCH wall-clock STRINGS in
 // `YYYY-MM-DDTHH:mm:ss` (timed) or `YYYY-MM-DD` (all-day). Never JS Date
 // objects in date logic. This avoids browser-tz contamination — `new Date()`,
 // `getHours()`, `getDate()` etc. all interpret in the user's local tz, which
@@ -170,7 +164,7 @@ export function isAllDay(event) {
   // Date-only string (length 10) is implicitly all-day.
   if (s.length <= 10) return true;
   const m = s.match(/T(\d{2}):(\d{2})/);
-  if (!m || m[1] !== "00" || m[2] !== "00") return false;
+  if (m?.[1] !== "00" || m?.[2] !== "00") return false;
   if (event.End) {
     const e = toWallClockString(event.End);
     if (e.length > 10) {

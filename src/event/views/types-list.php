@@ -99,7 +99,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 window.CRM = window.CRM || {};
-window.CRM.eventTypesList = { rootPath: <?= json_encode($sRootPath) ?> };
+window.CRM.eventTypesList = { rootPath: <?= InputUtils::jsonEncodeForScript($sRootPath) ?> };
 </script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/event-types-list.min.js') ?>"></script>
 

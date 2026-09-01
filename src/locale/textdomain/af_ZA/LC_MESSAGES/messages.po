@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Minimum prys"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Geografiese hulpmiddels vir gesinne"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Kies gesin"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maksimum aantal bure"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maksimum afstand"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Data lêer formaat"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Sluit gesinne in die koördinaatlêer in"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Buurgesinne"
-
-#: 
-msgid "Make Data File"
-msgstr "Maak datalêer"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Wys Bure"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Lengtegraad"
 #: 
 msgid "Add to Cart"
 msgstr "Voeg in mandjie"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Kruis met wa"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "E-pos almal"
 #: 
 msgid "Family Roles"
 msgstr "Gesinsrolle"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografiese familie"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4254,26 +4207,8 @@ msgid "Profile Image uploaded"
 msgstr "Profielprent opgelaai"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Wys bure met hierdie klassifikasies"
-
-#: 
-msgid "Please select a Family."
-msgstr "Kies 'n gesin."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Koördineer databasis lêernaam"
-
-#: 
 msgid "select an option"
 msgstr "kies 'n opsie"
-
-#: 
-msgid "Direct me"
-msgstr "Rig my"
 
 #: 
 msgid "Your cart is empty"
@@ -9406,10 +9341,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Genereer belastingsverklaring-dokumente vir donateurs"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografiese Nutsmiddele"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Kry Jou Gegewens in ChurchCRM"
 
@@ -10138,10 +10069,6 @@ msgstr "Bekyk en bestuur alle groepe in u gemeente"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Bekyk en bestuur offergawes-depositostrokies"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Bekyk en bestuur gesin-liggingdata"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -17062,10 +16989,6 @@ msgid "Deleted successfully"
 msgstr "Suksesvol uitgevee"
 
 #: 
-msgid "Deposit #"
-msgstr "Deposito #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Depositostrokie"
 
@@ -17826,4 +17749,8 @@ msgstr "Waarskuwing: {{chosen}} ontbreek sekuriteitsreëlings ingesluit in {{lat
 #: 
 msgid "What you'll gain"
 msgstr "Wat u sal wen"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Kon nie die aantal deposito's kry nie"
 
