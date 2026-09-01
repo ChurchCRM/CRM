@@ -2130,7 +2130,7 @@ DROP TABLE IF EXISTS `email_list`;
 
 --
 -- Table structure for table `pledge_denominations_pdem`
--- (added by migration 7.6.0-pledge-denominations.sql, issue #9376)
+-- (added by migration 7.6.4-pledge-denominations.sql, issue #9376)
 --
 
 DROP TABLE IF EXISTS `pledge_denominations_pdem`;

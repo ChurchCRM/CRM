@@ -7,7 +7,7 @@
  *   because PR #8482 added code referencing this table but never created it.
  *
  * The table is now created by:
- *   - src/mysql/upgrade/7.6.0-pledge-denominations.sql  (upgrade path)
+ *   - src/mysql/upgrade/7.6.4-pledge-denominations.sql  (upgrade path)
  *   - src/mysql/install/Install.sql                      (fresh install)
  *   - cypress/data/seed.sql                              (test DB)
  *
