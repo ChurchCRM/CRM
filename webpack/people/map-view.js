@@ -8,6 +8,82 @@
  * (see webpack externals: { leaflet: 'L' }). No Google Maps API key required.
  */
 import L from "leaflet";
+import { buildAPIUrl } from "../api-utils";
+
+// ---------------------------------------------------------------------------
+// "Update All Coordinates" handler
+// Registered at the top level (outside the cfg/#map guard) so the button
+// in the page header always works, even when the church has no location set.
+// ---------------------------------------------------------------------------
+const geocodeAllBtn = document.getElementById("geocodeAllBtn");
+if (geocodeAllBtn) {
+  geocodeAllBtn.addEventListener("click", () => {
+    const t = window.i18next ? window.i18next.t.bind(window.i18next) : (s) => s;
+
+    window.bootbox.confirm({
+      title: t("Update All Family Coordinates"),
+      message: t(
+        "This will geocode all families missing coordinates using Nominatim (OpenStreetMap). " +
+          "It processes up to 50 families per run at ~1 request/second. " +
+          "Continue?",
+      ),
+      buttons: {
+        confirm: { label: t("Update Coordinates"), className: "btn-primary" },
+        cancel: { label: t("Cancel"), className: "btn-secondary" },
+      },
+      callback: (result) => {
+        if (!result) return;
+
+        const originalHtml = geocodeAllBtn.innerHTML;
+        geocodeAllBtn.disabled = true;
+        geocodeAllBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1"></i>${t("Geocoding...")} `;
+
+        fetch(buildAPIUrl("map/geocode-all"), {
+          method: "POST",
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json" },
+        })
+          .then((res) => {
+            if (!res.ok) {
+              return res.json().then((body) => {
+                throw new Error(body.message || res.statusText);
+              });
+            }
+            return res.json();
+          })
+          .then((data) => {
+            geocodeAllBtn.disabled = false;
+            geocodeAllBtn.innerHTML = originalHtml;
+
+            const msg =
+              data.remaining > 0
+                ? t(
+                    `Geocoded {{geocoded}} of {{total}} families. {{remaining}} still missing — run again to continue.`,
+                    { geocoded: data.geocoded, total: data.total, remaining: data.remaining },
+                  )
+                : t(`Geocoded {{geocoded}} families ({{failed}} could not be resolved).`, {
+                    geocoded: data.geocoded,
+                    failed: data.failed,
+                  });
+
+            window.CRM.notify(msg, { type: data.geocoded > 0 ? "success" : "warning", delay: 8000 });
+
+            // Reload after a brief pause so the map refreshes with new markers
+            if (data.geocoded > 0) {
+              setTimeout(() => window.location.reload(), 2000);
+            }
+          })
+          .catch((err) => {
+            geocodeAllBtn.disabled = false;
+            geocodeAllBtn.innerHTML = originalHtml;
+            window.CRM.notify(t("Failed to update coordinates") + (err.message ? `: ${err.message}` : ""), {
+              type: "error",
+            });
+          });
+      },
+    });
+  });
+}
 
 const cfg = window.CRM.mapConfig;
 

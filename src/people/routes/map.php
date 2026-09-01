@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Service\FamilyService;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -76,6 +77,9 @@ function getMapView(Request $request, Response $response, array $args): Response
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
+    $familyService = new FamilyService();
+    $missingCoordinatesCount = $familyService->getMissingCoordinatesCount();
+
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
         'sPageTitle'         => $groupName !== null ? gettext('Group Map') : gettext('Congregation Map'),
@@ -95,6 +99,15 @@ function getMapView(Request $request, Response $response, array $args): Response
         'sPageHeaderButtons' => PageHeader::buttons([
             ['label' => gettext('Find Neighbors'), 'url' => '/people/map/neighbors', 'icon' => 'fa-people-roof', 'adminOnly' => false],
             ['label' => gettext('Map Settings'), 'collapse' => '#mapAdminSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
+            [
+                'label'     => gettext('Update All Coordinates')
+                    . ($missingCoordinatesCount > 0 ? ' (' . $missingCoordinatesCount . ')' : ''),
+                'icon'      => 'fa-map-location-dot',
+                'js'        => true,
+                'id'        => 'geocodeAllBtn',
+                'data'      => ['missing-count' => $missingCoordinatesCount],
+                'adminOnly' => true,
+            ],
         ]),
         'mapConfig'        => [
             'churchLat'     => ChurchMetaData::getChurchLatitude(),

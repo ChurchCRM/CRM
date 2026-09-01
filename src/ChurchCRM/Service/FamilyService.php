@@ -6,10 +6,17 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 class FamilyService
 {
+    /**
+     * Maximum number of families to geocode in a single call to geocodeAllMissingFamilies().
+     * Keeps the request within a reasonable wall-clock time (~1 req/sec throttle).
+     */
+    public const MAX_GEOCODE_PER_RUN = 50;
+
     private $logger;
 
     public function __construct()
@@ -17,17 +24,108 @@ class FamilyService
         $this->logger = LoggerUtils::getAppLogger();
     }
 
+    // -------------------------------------------------------------------------
+    // Coordinate helpers
+    // -------------------------------------------------------------------------
+
     /**
-     * Get count of families missing coordinate data.
+     * Build a base query selecting active families that are missing coordinates
+     * and have a geocodeable street address.
      *
-     * @return int Count of families with empty Latitude field
+     * "Missing coordinates" means latitude IS NULL or equals 0.
+     * Families without an Address1 are excluded because they cannot be geocoded.
+     *
+     * @return FamilyQuery
+     */
+    private function buildMissingCoordinatesQuery(): FamilyQuery
+    {
+        $query = FamilyQuery::create()
+            ->filterByDateDeactivated(null)
+            ->filterByAddress1(null, Criteria::ISNOTNULL)
+            ->where("TRIM(Family.Address1) != ''");
+
+        // latitude IS NULL OR latitude = 0
+        $query->condition('lat_null', 'Family.Latitude IS NULL');
+        $query->condition('lat_zero', 'Family.Latitude = ?', 0.0);
+        $query->combine(['lat_null', 'lat_zero'], 'or', 'lat_missing');
+        $query->where(['lat_missing']);
+
+        return $query;
+    }
+
+    /**
+     * Get count of active families that are missing usable coordinate data.
+     *
+     * @return int
      */
     public function getMissingCoordinatesCount(): int
     {
-        return FamilyQuery::create()
-            ->filterByLatitude(null)
-            ->count();
+        return $this->buildMissingCoordinatesQuery()->count();
     }
+
+    /**
+     * Geocode up to MAX_GEOCODE_PER_RUN families that are missing coordinates,
+     * throttled to approximately one Nominatim API request per second to comply
+     * with the fair-use policy.
+     *
+     * @return array{total: int, geocoded: int, failed: int, remaining: int}
+     */
+    public function geocodeAllMissingFamilies(): array
+    {
+        // Count the total BEFORE fetching the batch so `remaining` stays accurate
+        // even when the batch is limited by MAX_GEOCODE_PER_RUN.
+        $total = $this->getMissingCoordinatesCount();
+
+        // Fetch only the rows we will process, not all missing rows into PHP memory.
+        $batch = $this->buildMissingCoordinatesQuery()
+            ->limit(self::MAX_GEOCODE_PER_RUN)
+            ->find();
+
+        $geocoded = 0;
+        $failed   = 0;
+        $count    = count($batch);
+
+        $this->logger->info('geocodeAllMissingFamilies: starting batch', [
+            'total'     => $total,
+            'batchSize' => $count,
+        ]);
+
+        foreach ($batch as $index => $family) {
+            $success = $this->autoGeocodeFamily($family);
+            if ($success) {
+                $geocoded++;
+            } else {
+                $failed++;
+            }
+
+            // Throttle: sleep 1 second between requests, but not after the last one
+            if ($index < $count - 1) {
+                sleep(1);
+            }
+        }
+
+        // Remaining = families that still need geocoding after this run:
+        // those not included in this batch (overflow) PLUS those that failed
+        // during the batch (Nominatim returned no result for them).
+        $remaining = max(0, $total - $geocoded);
+
+        $this->logger->info('geocodeAllMissingFamilies: batch complete', [
+            'geocoded'  => $geocoded,
+            'failed'    => $failed,
+            'remaining' => $remaining,
+        ]);
+
+        return [
+            'total'     => $total,
+            'geocoded'  => $geocoded,
+            'failed'    => $failed,
+            'remaining' => $remaining,
+        ];
+    }
+
+    // -------------------------------------------------------------------------
+    // Family CRUD helpers
+    // -------------------------------------------------------------------------
 
     /**
      * Create a new Family from cart-form input fields.
