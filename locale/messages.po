@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 03:59+0000\n"
+"POT-Creation-Date: 2026-09-01 14:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4982,9 +4982,6 @@ msgstr ""
 msgid "Family has no street address to geocode"
 msgstr ""
 
-msgid "Family is required"
-msgstr ""
-
 msgid "Family name is required"
 msgstr ""
 
@@ -9087,9 +9084,6 @@ msgid "Please select a backup file to restore"
 msgstr ""
 
 msgid "Please select a date"
-msgstr ""
-
-msgid "Please select a family"
 msgstr ""
 
 #, php-format
