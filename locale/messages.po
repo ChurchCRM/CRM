@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 14:00+0000\n"
+"POT-Creation-Date: 2026-09-01 16:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -638,6 +638,9 @@ msgid "Add staff and volunteers"
 msgstr ""
 
 msgid "Add staff or volunteers as system users"
+msgstr ""
+
+msgid "Add the relevant records first."
 msgstr ""
 
 msgid "Add to Buyer List"
@@ -7831,11 +7834,7 @@ msgid "No"
 msgstr ""
 
 #, php-format
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr ""
-
-#, php-format
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
+msgid "No \"%s\" options are defined yet."
 msgstr ""
 
 #, php-format
