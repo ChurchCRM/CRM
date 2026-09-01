@@ -56,8 +56,10 @@ describe("FullCalendar v7 Integration", () => {
             expect(win.CRM?.fullcalendar).to.exist;
         });
 
-        // Wait for at least one calendar data fetch to complete before navigating.
-        cy.wait("@calendarFetch");
+        // Wait for ALL 5 calendar fetches to complete before navigating.
+        // seed.sql has 5 calendars (IDs 1–5); each issues one fullcalendar request.
+        // Waiting for only 1 left 4 in-flight and made the race condition deterministic.
+        cy.wait(["@calendarFetch", "@calendarFetch", "@calendarFetch", "@calendarFetch", "@calendarFetch"]);
 
         cy.window().then((win) => {
             const cal = win.CRM.fullcalendar;
