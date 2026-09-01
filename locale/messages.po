@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-30 23:12+0000\n"
+"POT-Creation-Date: 2026-09-01 03:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2819,6 +2819,9 @@ msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
 msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr ""
+
+msgid "Could not load data"
 msgstr ""
 
 msgid "Could not load note."
@@ -9071,6 +9074,9 @@ msgstr ""
 msgid "Please proceed to the classroom as soon as possible."
 msgstr ""
 
+msgid "Please refresh the page or try again later."
+msgstr ""
+
 msgid "Please review your family information below and confirm or request changes."
 msgstr ""
 
@@ -13557,10 +13563,4 @@ msgid ""
 "• Session duration and engagement\n"
 "• User demographics (if enabled in GA4)\n"
 "• Device and browser information"
-msgstr ""
-
-msgid "Could not load data"
-msgstr ""
-
-msgid "Please refresh the page or try again later."
 msgstr ""
