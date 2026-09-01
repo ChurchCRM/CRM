@@ -58,6 +58,21 @@ describe("Pledge Operations", () => {
         });
     });
 
+    it("Editing a pledge via the UI Save button succeeds (issue #9376 regression)", () => {
+        // Regression coverage for issue #9376: clicking Save in edit mode fires
+        // PUT /api/payments/{groupKey}, which unconditionally deletes from
+        // pledge_denominations_pdem and 500'd when that table was missing.
+        cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
+            const groupKey = resp.body.groupKey;
+            cy.visit("/finance/pledge/" + groupKey + "/edit");
+
+            cy.get("#savePledgeBtn").click();
+
+            cy.get("#pledge-toast-body").should("contain.text", "Saved successfully");
+            cy.get("#pledge-toast").should("have.class", "bg-success").and("not.have.class", "bg-danger");
+        });
+    });
+
     it("DELETE /api/payments/{groupKey} returns 404 for a nonexistent group", () => {
         cy.request({
             method: "DELETE",
