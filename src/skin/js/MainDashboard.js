@@ -56,7 +56,11 @@ export function initializeMainDashboard() {
   // failing <table> element, so we can map it back to its CSS id.
   $(document).on("error.dt", (_e, settings, techNote, message) => {
     const tableId = settings?.nTable?.id;
-    console.error(`[Dashboard] DataTables AJAX error${tableId ? ` (${tableId})` : ""}:`, message, `(tech note #${techNote})`);
+    console.error(
+      `[Dashboard] DataTables AJAX error${tableId ? ` (${tableId})` : ""}:`,
+      message,
+      `(tech note #${techNote})`,
+    );
     if (tableId) {
       showWidgetLoadError(`#${tableId}`);
     }
