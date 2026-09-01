@@ -10367,10 +10367,6 @@ msgid "Total Check-ins"
 msgstr "チェックイン合計"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "別のイベントタイプまたは年を選択してみてください。"
-
-#: 
 msgid "Up to Date"
 msgstr "最新の状態"
 
@@ -17530,14 +17526,6 @@ msgstr "推定価値 %s。"
 #: 
 msgid "Minimum bid %s."
 msgstr "最低入札価格 %s。"
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "\"%s\"のオプションはまだ利用できません。最初に関連するレコードを追加してください。"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "\"%s\"のオプションはまだ設定されていません。最初に関連するレコードを追加してください。"
 
 #. Context: query_qry
 #: 

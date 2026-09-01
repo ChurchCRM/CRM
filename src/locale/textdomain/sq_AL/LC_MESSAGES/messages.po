@@ -10401,10 +10401,6 @@ msgid "Total Check-ins"
 msgstr "Regjistrimet Totale"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Provo të zgjidhësh një lloj ose vit tjetër ngjarjesh."
-
-#: 
 msgid "Up to Date"
 msgstr "Përditesuar"
 
@@ -17554,14 +17550,6 @@ msgstr "Vlera e vlerësuar %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Oferta minimale %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Nuk ka ende opsione \"%s\" të disponueshme. Shtoni fillimisht rekordet përkatëse."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Nuk ka ende opsione \"%s\" të konfiguruara. Shtoni fillimisht rekordet përkatëse."
 
 #. Context: query_qry
 #: 

@@ -10418,10 +10418,6 @@ msgid "Total Check-ins"
 msgstr "ሙሉ ግቤት"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "ሌላ ሁነታ ዓይነት ወይም ዓመት ምረጫ ሞክር።"
-
-#: 
 msgid "Up to Date"
 msgstr "ወደ ታዋቅ"
 
@@ -17588,14 +17584,6 @@ msgstr "የተገመተ ዋጋ %s።"
 #: 
 msgid "Minimum bid %s."
 msgstr "አነስተኛ ጫረታ %s።"
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "እስካሁን ምንም \"%s\" አማራጮች አይገኙም። መጀመሪያ ተዛማጅ መዛግብትን ያክሉ።"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "እስካሁን ምንም \"%s\" አማራጮች አልተዋቀሩም። መጀመሪያ ተዛማጅ መዛግብትን ያክሉ።"
 
 #. Context: query_qry
 #: 

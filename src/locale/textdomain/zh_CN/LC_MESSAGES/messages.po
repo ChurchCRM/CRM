@@ -10472,10 +10472,6 @@ msgid "Total Check-ins"
 msgstr "签到总数"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "请尝试选择不同的活动类型或年份。"
-
-#: 
 msgid "Up to Date"
 msgstr "已是最新"
 
@@ -17635,14 +17631,6 @@ msgstr "估计价值 %s。"
 #: 
 msgid "Minimum bid %s."
 msgstr "最低出价 %s。"
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "暂无可用的\"%s\"选项。请先添加相关记录。"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "暂未配置\"%s\"选项。请先添加相关记录。"
 
 #. Context: query_qry
 #: 

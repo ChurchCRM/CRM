@@ -10396,10 +10396,6 @@ msgid "Total Check-ins"
 msgstr "Total Check-in"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Coba pilih tipe acara atau tahun yang berbeda."
-
-#: 
 msgid "Up to Date"
 msgstr "Terkini"
 
@@ -17555,14 +17551,6 @@ msgstr "Perkiraan nilai %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Penawaran minimum %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Belum ada opsi \"%s\" yang tersedia. Tambahkan catatan yang relevan terlebih dahulu."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Belum ada opsi \"%s\" yang dikonfigurasi. Tambahkan catatan yang relevan terlebih dahulu."
 
 #. Context: query_qry
 #: 

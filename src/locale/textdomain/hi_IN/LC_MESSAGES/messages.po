@@ -10375,10 +10375,6 @@ msgid "Total Check-ins"
 msgstr "कुल चेक-इन"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "कोई भिन्न कार्यक्रम प्रकार या वर्ष चुनने का प्रयास करें।"
-
-#: 
 msgid "Up to Date"
 msgstr "अप टू डेट"
 
@@ -17544,14 +17540,6 @@ msgstr "अनुमानित मूल्य %s।"
 #: 
 msgid "Minimum bid %s."
 msgstr "न्यूनतम बोली %s।"
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "अभी कोई \"%s\" विकल्प उपलब्ध नहीं है। पहले संबंधित रिकॉर्ड जोड़ें।"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "अभी कोई \"%s\" विकल्प कॉन्फ़िगर नहीं किया गया है। पहले संबंधित रिकॉर्ड जोड़ें।"
 
 #. Context: query_qry
 #: 

@@ -10411,10 +10411,6 @@ msgid "Total Check-ins"
 msgstr "Totale Kontroles"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Probeer 'n ander gebegeurtenis-tipe of jaar kies."
-
-#: 
 msgid "Up to Date"
 msgstr "Tans Bygewerk"
 
@@ -17588,14 +17584,6 @@ msgstr "Geskatte waarde %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Minimum bod %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Geen \"%s\"-opsies is nog beskikbaar nie. Voeg eers die relevante rekords by."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Geen \"%s\"-opsies is nog opgestel nie. Voeg eers die relevante rekords by."
 
 #. Context: query_qry
 #: 

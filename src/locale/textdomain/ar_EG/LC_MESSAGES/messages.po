@@ -10438,10 +10438,6 @@ msgid "Total Check-ins"
 msgstr "إجمالي عمليات تسجيل الوصول"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "حاول تحديد نوع حدث أو سنة مختلفة."
-
-#: 
 msgid "Up to Date"
 msgstr "محدث"
 
@@ -17631,14 +17627,6 @@ msgstr "القيمة التقديرية %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "الحد الأدنى للعرض %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "لا تتوفر خيارات \"%s\" بعد. أضف السجلات ذات الصلة أولاً."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "لم يتم تكوين خيارات \"%s\" بعد. أضف السجلات ذات الصلة أولاً."
 
 #. Context: query_qry
 #: 

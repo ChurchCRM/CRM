@@ -10376,10 +10376,6 @@ msgid "Total Check-ins"
 msgstr "Kabuuang mga Check-in"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Subukang pumili ng ibang uri ng kaganapan o taon."
-
-#: 
 msgid "Up to Date"
 msgstr "Napapanahon"
 
@@ -17497,14 +17493,6 @@ msgstr "Tinatayang halaga %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Pinakamababang bid %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Walang mga pagpipiliang \"%s\" na magagamit pa. Magdagdag muna ng mga kaugnay na rekord."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Walang mga pagpipiliang \"%s\" na na-configure pa. Magdagdag muna ng mga kaugnay na rekord."
 
 #. Context: query_qry
 #: 

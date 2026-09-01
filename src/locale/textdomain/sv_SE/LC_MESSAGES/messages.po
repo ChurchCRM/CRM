@@ -10502,10 +10502,6 @@ msgid "Total Check-ins"
 msgstr "Totalt antal registreringar"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Prova att välja en annan evenemangstyp eller ett annat år."
-
-#: 
 msgid "Up to Date"
 msgstr "Uppdaterad"
 
@@ -17651,14 +17647,6 @@ msgstr "Uppskattat värde %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Lägsta bud %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Inga \"%s\"-alternativ är tillgängliga ännu. Lägg till relevanta poster först."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Inga \"%s\"-alternativ är konfigurerade ännu. Lägg till relevanta poster först."
 
 #. Context: query_qry
 #: 

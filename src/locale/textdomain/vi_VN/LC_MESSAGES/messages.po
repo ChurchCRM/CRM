@@ -10406,10 +10406,6 @@ msgid "Total Check-ins"
 msgstr "Tong so dang ky vao"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Thu chon loai su kien hoac nam khac."
-
-#: 
 msgid "Up to Date"
 msgstr "Da cap nhat"
 
@@ -17569,14 +17565,6 @@ msgstr "Giá trị ước tính %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Giá đặt tối thiểu %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Chưa có tùy chọn \"%s\" nào. Vui lòng thêm các bản ghi liên quan trước."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Chưa có tùy chọn \"%s\" nào được cấu hình. Vui lòng thêm các bản ghi liên quan trước."
 
 #. Context: query_qry
 #: 

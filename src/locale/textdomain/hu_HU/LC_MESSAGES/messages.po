@@ -10438,10 +10438,6 @@ msgid "Total Check-ins"
 msgstr "Összes bejelentkezés"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Próbáljon másik eseménytípust vagy évet választani."
-
-#: 
 msgid "Up to Date"
 msgstr "Naprakész"
 
@@ -17603,14 +17599,6 @@ msgstr "Becsült érték: %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Minimális licit: %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Még nem állnak rendelkezésre \"%s\" lehetőségek. Először adja hozzá a megfelelő rekordokat."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Még nincsenek konfigurálva \"%s\" lehetőségek. Először adja hozzá a megfelelő rekordokat."
 
 #. Context: query_qry
 #: 

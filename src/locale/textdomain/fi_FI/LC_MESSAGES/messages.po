@@ -10378,10 +10378,6 @@ msgid "Total Check-ins"
 msgstr "Kirjautumisia yhteensä"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Kokeile valita eri tapahtumatyyppi tai vuosi."
-
-#: 
 msgid "Up to Date"
 msgstr "Ajan tasalla"
 
@@ -17547,14 +17543,6 @@ msgstr "Arvioitu arvo %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Vähimmäistarjous %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Ei \"%s\"-vaihtoehtoja saatavilla vielä. Lisää tarvittavat tietueet ensin."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Ei \"%s\"-vaihtoehtoja määritetty vielä. Lisää tarvittavat tietueet ensin."
 
 #. Context: query_qry
 #: 

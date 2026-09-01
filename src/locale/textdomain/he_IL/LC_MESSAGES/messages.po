@@ -10409,10 +10409,6 @@ msgid "Total Check-ins"
 msgstr "סך כל רישומי הנוכחות"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "נסו לבחור סוג אירוע או שנה אחרת."
-
-#: 
 msgid "Up to Date"
 msgstr "מעודכן"
 
@@ -17578,14 +17574,6 @@ msgstr "ערך משוער %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "הצעת מחיר מינימלית %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "אין אפשרויות \"%s\" זמינות עדיין. הוסף תחילה את הרשומות הרלוונטיות."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "אין אפשרויות \"%s\" מוגדרות עדיין. הוסף תחילה את הרשומות הרלוונטיות."
 
 #. Context: query_qry
 #: 

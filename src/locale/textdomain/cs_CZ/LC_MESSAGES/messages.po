@@ -10408,10 +10408,6 @@ msgid "Total Check-ins"
 msgstr "Celkový počet registrací"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Zkuste vybrat jiný typ události nebo rok."
-
-#: 
 msgid "Up to Date"
 msgstr "Aktuální"
 
@@ -17571,14 +17567,6 @@ msgstr "Odhadovaná hodnota %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Minimální nabídka %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Žádné možnosti \"%s\" zatím nejsou k dispozici. Nejprve přidejte příslušné záznamy."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Žádné možnosti \"%s\" zatím nejsou nakonfigurovány. Nejprve přidejte příslušné záznamy."
 
 #. Context: query_qry
 #: 

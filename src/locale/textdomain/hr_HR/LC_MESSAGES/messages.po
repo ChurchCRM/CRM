@@ -10382,10 +10382,6 @@ msgid "Total Check-ins"
 msgstr "Ukupne prijave"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Pokušajte odabrati drugu vrstu događaja ili godinu."
-
-#: 
 msgid "Up to Date"
 msgstr "Ažurirano"
 
@@ -17557,14 +17553,6 @@ msgstr "Procijenjena vrijednost %s."
 #: 
 msgid "Minimum bid %s."
 msgstr "Minimalna ponuda %s."
-
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Još nema dostupnih mogućnosti za \"%s\". Najprije dodajte odgovarajuće zapise."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Još nisu konfigurirane mogućnosti za \"%s\". Najprije dodajte odgovarajuće zapise."
 
 #. Context: query_qry
 #: 
