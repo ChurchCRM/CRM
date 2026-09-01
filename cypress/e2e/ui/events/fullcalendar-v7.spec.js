@@ -44,11 +44,20 @@ describe("FullCalendar v7 Integration", () => {
     });
 
     it("month navigation via JS API advances and reverses the displayed month", () => {
+        // Intercept the calendar event-fetch requests so we can wait for the
+        // initial load to settle before issuing navigation calls.  Without
+        // this wait, the 5 concurrent fetch requests to /api/calendars/*/fullcalendar
+        // are still in-flight when cy.window().then() fires, and calling next()/prev()
+        // while FullCalendar is mid-fetch can leave the internal date state indeterminate.
+        cy.intercept("GET", "**/api/calendars/*/fullcalendar**").as("calendarFetch");
         cy.visit("event/calendars");
 
         cy.window({ timeout: 15000 }).should((win) => {
             expect(win.CRM?.fullcalendar).to.exist;
         });
+
+        // Wait for at least one calendar data fetch to complete before navigating.
+        cy.wait("@calendarFetch");
 
         cy.window().then((win) => {
             const cal = win.CRM.fullcalendar;
