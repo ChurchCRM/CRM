@@ -101,7 +101,7 @@
   },
   "current": {
     "versions": ["7.6.2", "7.6.3"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.6.4-pledge-denominations.sql"],
     "dbVersion": "7.6.4"
   }
 }
