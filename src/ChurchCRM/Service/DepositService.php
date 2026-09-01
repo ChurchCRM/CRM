@@ -43,8 +43,8 @@ class DepositService {
     {
         AuthService::requireUserGroupMembership('bFinance');
         $query = PledgeQuery::create()
-            ->joinWithDonationFund()
-            ->joinWithFamily();
+            ->joinWithDonationFund()    // DonationFund is always required — INNER JOIN preserves data-integrity guard
+            ->leftJoinWithFamily();      // Family is optional (anonymous donors have no Family row)
         if ($depID) {
             $query->filterByDepId($depID);
         }
