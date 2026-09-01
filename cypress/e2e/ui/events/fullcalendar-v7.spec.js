@@ -44,22 +44,20 @@ describe("FullCalendar v7 Integration", () => {
     });
 
     it("month navigation via JS API advances and reverses the displayed month", () => {
-        // Intercept the calendar event-fetch requests so we can wait for the
-        // initial load to settle before issuing navigation calls.  Without
-        // this wait, the 5 concurrent fetch requests to /api/calendars/*/fullcalendar
-        // are still in-flight when cy.window().then() fires, and calling next()/prev()
-        // while FullCalendar is mid-fetch can leave the internal date state indeterminate.
-        cy.intercept("GET", "**/api/calendars/*/fullcalendar**").as("calendarFetch");
+        // Stub ALL fullcalendar event-fetch requests with an empty array so they
+        // resolve instantly.  The test only validates navigation API correctness
+        // (getDate().getMonth() changes after next()/prev()) — it never checks
+        // event data.  Stubbing eliminates the race condition that existed when
+        // both /api/calendars/*/fullcalendar and /api/systemcalendars/*/fullcalendar
+        // requests were in-flight during the navigation calls: the broader pattern
+        // "**/fullcalendar**" stubs every variant, and the instant 200+[] response
+        // means FullCalendar is fully settled before cy.window().then() runs.
+        cy.intercept("GET", "**/fullcalendar**", { body: [] }).as("calendarFetch");
         cy.visit("event/calendars");
 
         cy.window({ timeout: 15000 }).should((win) => {
             expect(win.CRM?.fullcalendar).to.exist;
         });
-
-        // Wait for ALL 5 calendar fetches to complete before navigating.
-        // seed.sql has 5 calendars (IDs 1–5); each issues one fullcalendar request.
-        // Waiting for only 1 left 4 in-flight and made the race condition deterministic.
-        cy.wait(["@calendarFetch", "@calendarFetch", "@calendarFetch", "@calendarFetch", "@calendarFetch"]);
 
         cy.window().then((win) => {
             const cal = win.CRM.fullcalendar;
