@@ -201,9 +201,20 @@ class InputUtils
             return 0;
         }
 
+        $sTrimmed = trim((string) $sInput);
+
+        // Strip leading zeros (preserving an optional sign) before validating.
+        // FILTER_VALIDATE_INT rejects zero-padded strings like "09" because it
+        // treats the leading zero as an (invalid) octal prefix, so without this
+        // normalization zero-padded month/day selects ("01".."09") silently
+        // collapse to 0.  Stripping keeps strict validation intact — non-numeric
+        // input such as 'Mr.' or '09abc' still returns 0 — while correctly
+        // parsing "09" as 9.  See issue #9623.
+        $sNormalized = preg_replace('/^([+-]?)0+(\d)/', '$1$2', $sTrimmed);
+
         // Use filter_var for strict integer validation instead of intval
         // which silently coerces any string to an integer (e.g., 'Mr.' → 0)
-        $result = filter_var(trim($sInput), FILTER_VALIDATE_INT);
+        $result = filter_var($sNormalized, FILTER_VALIDATE_INT);
         return $result !== false ? $result : 0;
     }
 
