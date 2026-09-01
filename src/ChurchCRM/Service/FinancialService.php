@@ -540,7 +540,7 @@ class FinancialService
                 // must propagate so the outer \Throwable catch can roll back the transaction.
                 $sqlState = $e->getCode();
                 $mysqlCode = $e->errorInfo[1] ?? null;
-                if ($sqlState !== '42S02' && $mysqlCode !== 1146) {
+                if ($sqlState !== '42S02' || $mysqlCode !== 1146) {
                     throw $e;
                 }
             }
