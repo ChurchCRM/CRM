@@ -526,10 +526,17 @@ class FinancialService
             // Remove orphaned denomination rows. pledge_denominations_pdem has no FK
             // constraint and no Propel model, so we use a parameterized statement on
             // the same connection to keep the deletion within this transaction.
-            $stmt = $con->prepare(
-                'DELETE FROM pledge_denominations_pdem WHERE pdem_plg_GroupKey = :groupKey'
-            );
-            $stmt->execute([':groupKey' => $groupKey]);
+            // The table is an optional legacy feature and may not exist in all
+            // installations (it is absent from the default Install.sql), so we
+            // swallow any PDOException here rather than aborting the whole update.
+            try {
+                $stmt = $con->prepare(
+                    'DELETE FROM pledge_denominations_pdem WHERE pdem_plg_GroupKey = :groupKey'
+                );
+                $stmt->execute([':groupKey' => $groupKey]);
+            } catch (\PDOException $e) {
+                // Table does not exist in this installation — treat as non-fatal.
+            }
             PledgeQuery::create()->filterByGroupKey($groupKey)->delete($con);
             $this->insertPledgeorPayment($payment, $groupKey);
             $con->commit();
