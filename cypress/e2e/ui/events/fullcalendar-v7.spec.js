@@ -45,13 +45,10 @@ describe("FullCalendar v7 Integration", () => {
 
     it("month navigation via JS API advances and reverses the displayed month", () => {
         // Stub ALL fullcalendar event-fetch requests with an empty array so they
-        // resolve instantly.  The test only validates navigation API correctness
-        // (getDate().getMonth() changes after next()/prev()) — it never checks
-        // event data.  Stubbing eliminates the race condition that existed when
-        // both /api/calendars/*/fullcalendar and /api/systemcalendars/*/fullcalendar
-        // requests were in-flight during the navigation calls: the broader pattern
-        // "**/fullcalendar**" stubs every variant, and the instant 200+[] response
-        // means FullCalendar is fully settled before cy.window().then() runs.
+        // resolve instantly.  The test validates navigation API correctness only
+        // (getDate().getMonth() changes after next()/prev()) — no event data check.
+        // Stubbing prevents races from /api/calendars/* and /api/systemcalendars/*
+        // requests being in-flight during navigation.
         cy.intercept("GET", "**/fullcalendar**", { body: [] }).as("calendarFetch");
         cy.visit("event/calendars");
 
@@ -59,43 +56,45 @@ describe("FullCalendar v7 Integration", () => {
             expect(win.CRM?.fullcalendar).to.exist;
         });
 
-        // Wait for FC to complete its render cycle — [data-date] day cells only
-        // appear after initialization is done, ensuring cal.next() will advance
-        // the date.  Without this, the stub's instant [] response lets the JS
-        // object be assigned before the calendar has rendered, and cal.next()
-        // silently no-ops on the unrendered calendar.
+        // Wait for FC to render the month grid before navigating.  [data-date] cells
+        // only appear after render() completes (called after applyFcLocale resolves).
         cy.get("#calendar [data-date]", { timeout: 10000 }).should("have.length.greaterThan", 0);
 
-        // 1. changeView in its own .then() so its async FC transition completes
-        //    before cal.next() runs.  Calling changeView and next() in the same
-        //    synchronous .then() block caused changeView's completion handler to
-        //    reset the date back to September after next() had already advanced it.
+        // Capture the start month, then navigate forward one month.
+        // startMonth is a closure variable so cy.window().should() can reference it
+        // in the retry loop below without re-querying the window.
+        let startMonth;
         cy.window().then((win) => {
-            win.CRM.fullcalendar.changeView("dayGridMonth");
+            startMonth = win.CRM.fullcalendar.getDate().getMonth(); // 0-based, e.g. 8 for September
+            win.CRM.fullcalendar.next();
         });
 
-        // 2. Wait for FC to settle after changeView — day cells are re-rendered.
-        cy.get("#calendar [data-date]", { timeout: 10000 }).should("have.length.greaterThan", 0);
+        // Use cy.window().should() (retried by Cypress) for the assertion so that
+        // FC v7's async state-dispatch pipeline has time to settle before we read
+        // getDate().  cy.window().then() has no retry and reads the stale snapshot.
+        cy.window({ timeout: 5000 }).should((win) => {
+            expect(
+                win.CRM.fullcalendar.getDate().getMonth(),
+                "after next()",
+            ).to.equal((startMonth + 1) % 12);
+        });
 
-        // 3. FC is fully settled — navigate safely.
+        // Step back two months from the original start.
         cy.window().then((win) => {
-            const cal = win.CRM.fullcalendar;
+            win.CRM.fullcalendar.prev();
+            win.CRM.fullcalendar.prev();
+        });
 
-            const startMonth = cal.getDate().getMonth(); // 0-based
+        cy.window({ timeout: 5000 }).should((win) => {
+            expect(
+                win.CRM.fullcalendar.getDate().getMonth(),
+                "after prev()",
+            ).to.equal((startMonth + 11) % 12); // −1 mod 12
+        });
 
-            // Advance one month
-            cal.next();
-            const expectedNext = (startMonth + 1) % 12;
-            expect(cal.getDate().getMonth(), "after next()").to.equal(expectedNext);
-
-            // Step back two months from original
-            cal.prev();
-            cal.prev();
-            const expectedPrev = (startMonth + 11) % 12; // -1 mod 12
-            expect(cal.getDate().getMonth(), "after prev()").to.equal(expectedPrev);
-
-            // Return to original month
-            cal.today();
+        // Return to today.
+        cy.window().then((win) => {
+            win.CRM.fullcalendar.today();
         });
     });
 
