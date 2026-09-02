@@ -1,57 +1,57 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "%d aileye e-posta gönderildi.|%d aileye e-posta gönderildi.",
-    "other": ""
+    "one": "%d aileye e-posta gönderildi.",
+    "other": "%d aileye e-posta gönderildi."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF başarıyla %d aileye e-posta ile gönderildi.|PDF başarıyla %d aileye e-posta ile gönderildi.",
-    "other": ""
+    "one": "PDF başarıyla %d aileye e-posta ile gönderildi.",
+    "other": "PDF başarıyla %d aileye e-posta ile gönderildi."
   },
-  "Anniversary: %s": "",
-  "Church": "",
-  "Classifications": "",
-  "Closest": "",
-  "Deposit #%d": "",
-  "Failed to get fundraiser count": "",
-  "Failed to load neighbors.": "",
-  "Farther": "",
-  "Farthest": "",
-  "Find Neighbors": "",
-  "Find nearby families and add them to your cart": "",
-  "Map centered on": "",
-  "Max distance": "",
-  "Max neighbors": "",
-  "Near": "",
-  "Please select a family.": "",
-  "Results": "",
-  "Same location": "",
-  "Search Neighbors": "",
-  "Select a family and click Find Neighbors to see results.": "",
-  "Selected family": "",
-  "This value must be a valid field name.": "",
-  "Could not load data": "",
-  "Please refresh the page or try again later.": "",
-  "Add the relevant records first.": "",
-  "All Months": "",
-  "No \"%s\" options are defined yet.": "",
-  "No events found for %s %d.": "",
-  "Try selecting a different event type, month, or year.": "",
+  "Anniversary: %s": "Yıldönümü: %s",
+  "Church": "Kilise",
+  "Classifications": "Sınıflandırmalar",
+  "Closest": "En yakın",
+  "Deposit #%d": "Depozito #%d",
+  "Failed to get fundraiser count": "Bağış kampanyası sayısı alınamadı",
+  "Failed to load neighbors.": "Komşular yüklenemedi.",
+  "Farther": "Daha uzak",
+  "Farthest": "En uzak",
+  "Find Neighbors": "Komşuları Bul",
+  "Find nearby families and add them to your cart": "Yakın aileleri bulun ve listenize ekleyin",
+  "Map centered on": "Harita merkezlendi:",
+  "Max distance": "Maksimum mesafe",
+  "Max neighbors": "Maksimum komşu sayısı",
+  "Near": "Yakın",
+  "Please select a family.": "Lütfen bir aile seçin.",
+  "Results": "Sonuçlar",
+  "Same location": "Aynı konum",
+  "Search Neighbors": "Komşuları Ara",
+  "Select a family and click Find Neighbors to see results.": "Bir aile seçin ve sonuçları görmek için Komşuları Bul'a tıklayın.",
+  "Selected family": "Seçilen aile",
+  "This value must be a valid field name.": "Bu değer geçerli bir alan adı olmalıdır.",
+  "Could not load data": "Veriler yüklenemedi",
+  "Please refresh the page or try again later.": "Lütfen sayfayı yenileyin veya daha sonra tekrar deneyin.",
+  "Add the relevant records first.": "Önce ilgili kayıtları ekleyin.",
+  "All Months": "Tüm Aylar",
+  "No \"%s\" options are defined yet.": "Henüz \"%s\" seçeneği tanımlanmamış.",
+  "No events found for %s %d.": "%s %d için etkinlik bulunamadı.",
+  "Try selecting a different event type, month, or year.": "Farklı bir etkinlik türü, ay veya yıl seçmeyi deneyin.",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} üye kopyalandı",
+    "other": "{{count}} üye kopyalandı"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyala'yı kullanın.",
+    "other": "Bu listede {{count}} alıcı var — mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyala'yı kullanın."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala'yı kullanın.",
+    "other": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala'yı kullanın."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} dk kaldı",
+    "other": "{{count}} dk kaldı"
   }
 }

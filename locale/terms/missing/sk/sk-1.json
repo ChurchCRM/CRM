@@ -1,61 +1,61 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-mail odoslaný %d rodine.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "E-mail odoslaný %d rodine.",
+    "few": "E-maily odoslané %d rodinám.",
+    "many": "E-mailov odoslaných %d rodinám.",
+    "other": "E-mailov odoslaných %d rodinám."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF úspešne odoslané %d rodine.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "PDF úspešne odoslané %d rodine.",
+    "few": "PDF úspešne odoslané %d rodinám.",
+    "many": "PDF úspešne odoslaných %d rodinám.",
+    "other": "PDF úspešne odoslaných %d rodinám."
   },
-  "Anniversary: %s": "",
-  "Church": "",
-  "Classifications": "",
-  "Closest": "",
-  "Deposit #%d": "",
-  "Failed to get fundraiser count": "",
-  "Failed to load neighbors.": "",
-  "Farther": "",
-  "Farthest": "",
-  "Find Neighbors": "",
-  "Find nearby families and add them to your cart": "",
-  "Map centered on": "",
-  "Max distance": "",
-  "Max neighbors": "",
-  "Near": "",
-  "Please select a family.": "",
-  "Results": "",
-  "Same location": "",
-  "Search Neighbors": "",
-  "Select a family and click Find Neighbors to see results.": "",
-  "Selected family": "",
-  "This value must be a valid field name.": "",
-  "Could not load data": "",
-  "Please refresh the page or try again later.": "",
-  "Add the relevant records first.": "",
-  "All Months": "",
-  "No \"%s\" options are defined yet.": "",
-  "No events found for %s %d.": "",
-  "Try selecting a different event type, month, or year.": "",
+  "Anniversary: %s": "Výročie: %s",
+  "Church": "Cirkev",
+  "Classifications": "Klasifikácie",
+  "Closest": "Najbližší",
+  "Deposit #%d": "Vklad č. %d",
+  "Failed to get fundraiser count": "Nepodarilo sa získať počet zbierok",
+  "Failed to load neighbors.": "Nepodarilo sa načítať susedov.",
+  "Farther": "Ďalej",
+  "Farthest": "Najďalej",
+  "Find Neighbors": "Nájsť susedov",
+  "Find nearby families and add them to your cart": "Nájdite rodiny v okolí a pridajte ich do zoznamu",
+  "Map centered on": "Mapa so stredom na",
+  "Max distance": "Maximálna vzdialenosť",
+  "Max neighbors": "Maximálny počet susedov",
+  "Near": "Blízko",
+  "Please select a family.": "Prosím, vyberte rodinu.",
+  "Results": "Výsledky",
+  "Same location": "Rovnaká poloha",
+  "Search Neighbors": "Hľadať susedov",
+  "Select a family and click Find Neighbors to see results.": "Vyberte rodinu a kliknite na Nájsť susedov, aby ste videli výsledky.",
+  "Selected family": "Vybraná rodina",
+  "This value must be a valid field name.": "Táto hodnota musí byť platný názov poľa.",
+  "Could not load data": "Údaje sa nepodarilo načítať",
+  "Please refresh the page or try again later.": "Obnovte prosím stránku alebo skúste neskôr.",
+  "Add the relevant records first.": "Najprv pridajte príslušné záznamy.",
+  "All Months": "Všetky mesiace",
+  "No \"%s\" options are defined yet.": "Zatiaľ nie sú definované žiadne možnosti \"%s\".",
+  "No events found for %s %d.": "Pre %s %d sa nenašli žiadne udalosti.",
+  "Try selecting a different event type, month, or year.": "Skúste vybrať iný typ udalosti, mesiac alebo rok.",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Skopírovaný {{count}} člen",
+    "other": "Skopírovaných {{count}} členov"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Tento zoznam má {{count}} príjemcu — príliš veľa pre odkaz mailto:. Použite Kopírovať adresy.",
+    "other": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Použite Kopírovať adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite Kopírovať adresy.",
+    "other": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite Kopírovať adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Zostáva {{count}} min",
+    "other": "Zostáva {{count}} min"
   }
 }

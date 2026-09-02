@@ -1,57 +1,57 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-mail enviado para %d família.|E-mail enviado para %d famílias.",
-    "other": ""
+    "one": "E-mail enviado para %d família.",
+    "other": "E-mails enviados para %d famílias."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF enviado com sucesso por e-mail para %d família.|PDF enviado com sucesso por e-mail para %d famílias.",
-    "other": ""
+    "one": "PDF enviado com sucesso por e-mail para %d família.",
+    "other": "PDF enviado com sucesso por e-mail para %d famílias."
   },
-  "Anniversary: %s": "",
-  "Church": "",
-  "Classifications": "",
-  "Closest": "",
-  "Deposit #%d": "",
-  "Failed to get fundraiser count": "",
-  "Failed to load neighbors.": "",
-  "Farther": "",
-  "Farthest": "",
-  "Find Neighbors": "",
-  "Find nearby families and add them to your cart": "",
-  "Map centered on": "",
-  "Max distance": "",
-  "Max neighbors": "",
-  "Near": "",
-  "Please select a family.": "",
-  "Results": "",
-  "Same location": "",
-  "Search Neighbors": "",
-  "Select a family and click Find Neighbors to see results.": "",
-  "Selected family": "",
-  "This value must be a valid field name.": "",
-  "Could not load data": "",
-  "Please refresh the page or try again later.": "",
-  "Add the relevant records first.": "",
-  "All Months": "",
-  "No \"%s\" options are defined yet.": "",
-  "No events found for %s %d.": "",
-  "Try selecting a different event type, month, or year.": "",
+  "Anniversary: %s": "Aniversário: %s",
+  "Church": "Igreja",
+  "Classifications": "Classificações",
+  "Closest": "Mais próximo",
+  "Deposit #%d": "Depósito n.º %d",
+  "Failed to get fundraiser count": "Falha ao obter a contagem de arrecadações",
+  "Failed to load neighbors.": "Falha ao carregar vizinhos.",
+  "Farther": "Mais longe",
+  "Farthest": "O mais distante",
+  "Find Neighbors": "Encontrar vizinhos",
+  "Find nearby families and add them to your cart": "Encontre famílias próximas e adicione-as ao seu carrinho",
+  "Map centered on": "Mapa centralizado em",
+  "Max distance": "Distância máxima",
+  "Max neighbors": "Máximo de vizinhos",
+  "Near": "Perto",
+  "Please select a family.": "Por favor, selecione uma família.",
+  "Results": "Resultados",
+  "Same location": "Mesma localização",
+  "Search Neighbors": "Pesquisar vizinhos",
+  "Select a family and click Find Neighbors to see results.": "Selecione uma família e clique em Encontrar vizinhos para ver os resultados.",
+  "Selected family": "Família selecionada",
+  "This value must be a valid field name.": "Este valor deve ser um nome de campo válido.",
+  "Could not load data": "Não foi possível carregar os dados",
+  "Please refresh the page or try again later.": "Atualize a página ou tente novamente mais tarde.",
+  "Add the relevant records first.": "Adicione primeiro os registros relevantes.",
+  "All Months": "Todos os meses",
+  "No \"%s\" options are defined yet.": "Ainda não há opções de \"%s\" definidas.",
+  "No events found for %s %d.": "Nenhum evento encontrado para %s %d.",
+  "Try selecting a different event type, month, or year.": "Tente selecionar um tipo de evento, mês ou ano diferente.",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} membro copiado",
+    "other": "{{count}} membros copiados"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Esta lista tem {{count}} destinatário — muitos para um link mailto:. Use Copiar endereços.",
+    "other": "Esta lista tem {{count}} destinatários — muitos para um link mailto:. Use Copiar endereços."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Destinatários demais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar endereços.",
+    "other": "Destinatários demais para o cliente de e-mail ({{count}} > {{max}}). Use Copiar endereços."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min restante",
+    "other": "{{count}} min restantes"
   }
 }
