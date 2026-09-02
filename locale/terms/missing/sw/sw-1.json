@@ -1,58 +1,58 @@
 {
-  "Data": "",
-  "CSV": "",
+  "Data": "Data",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "Barua pepe imetumwa kwa familia %d.|Barua pepe zimetumwa kwa familia %d.",
-    "other": ""
+    "one": "Barua pepe imetumwa kwa familia %d.",
+    "other": "Barua pepe zimetumwa kwa familia %d."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF imetumwa kwa mafanikio kwa familia %d.|PDF zimetumwa kwa mafanikio kwa familia %d.",
-    "other": ""
+    "one": "PDF imetumwa kwa mafanikio kwa familia %d.",
+    "other": "PDF zimetumwa kwa mafanikio kwa familia %d."
   },
-  "Anniversary: %s": "",
-  "Church": "",
-  "Classifications": "",
-  "Closest": "",
-  "Deposit #%d": "",
-  "Failed to get fundraiser count": "",
-  "Failed to load neighbors.": "",
-  "Farther": "",
-  "Farthest": "",
-  "Find Neighbors": "",
-  "Find nearby families and add them to your cart": "",
-  "Map centered on": "",
-  "Max distance": "",
-  "Max neighbors": "",
-  "Near": "",
-  "Please select a family.": "",
-  "Results": "",
-  "Same location": "",
-  "Search Neighbors": "",
-  "Select a family and click Find Neighbors to see results.": "",
-  "Selected family": "",
-  "This value must be a valid field name.": "",
-  "Could not load data": "",
-  "Please refresh the page or try again later.": "",
-  "Add the relevant records first.": "",
-  "All Months": "",
-  "No \"%s\" options are defined yet.": "",
-  "No events found for %s %d.": "",
-  "Try selecting a different event type, month, or year.": "",
+  "Anniversary: %s": "Kumbukumbu ya mwaka: %s",
+  "Church": "Kanisa",
+  "Classifications": "Uainishaji",
+  "Closest": "Karibu zaidi",
+  "Deposit #%d": "Amana #%d",
+  "Failed to get fundraiser count": "Imeshindwa kupata idadi ya ukusanyaji wa fedha",
+  "Failed to load neighbors.": "Imeshindwa kupakia majirani.",
+  "Farther": "Mbali zaidi",
+  "Farthest": "Mbali sana",
+  "Find Neighbors": "Tafuta Majirani",
+  "Find nearby families and add them to your cart": "Tafuta familia za karibu na uziongeze kwenye orodha yako",
+  "Map centered on": "Ramani imewekwa katikati ya",
+  "Max distance": "Umbali wa juu zaidi",
+  "Max neighbors": "Majirani wa juu zaidi",
+  "Near": "Karibu",
+  "Please select a family.": "Tafadhali chagua familia.",
+  "Results": "Matokeo",
+  "Same location": "Mahali pamoja",
+  "Search Neighbors": "Tafuta Majirani",
+  "Select a family and click Find Neighbors to see results.": "Chagua familia na ubonyeze Tafuta Majirani ili kuona matokeo.",
+  "Selected family": "Familia iliyochaguliwa",
+  "This value must be a valid field name.": "Thamani hii lazima iwe jina halali la uga.",
+  "Could not load data": "Imeshindwa kupakia data",
+  "Please refresh the page or try again later.": "Tafadhali onyesha upya ukurasa au jaribu tena baadaye.",
+  "Add the relevant records first.": "Ongeza rekodi zinazohusika kwanza.",
+  "All Months": "Miezi Yote",
+  "No \"%s\" options are defined yet.": "Hakuna chaguo za \"%s\" zilizowekwa bado.",
+  "No events found for %s %d.": "Hakuna matukio yaliyopatikana kwa %s %d.",
+  "Try selecting a different event type, month, or year.": "Jaribu kuchagua aina nyingine ya tukio, mwezi, au mwaka.",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Nakala ya {{count}} mwanachama imenakiliwa",
+    "other": "Nakala ya {{count}} wanachama imenakiliwa"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Orodha hii ina {{count}} mpokeaji — wengi sana kwa kiungo cha mailto:. Tumia Nakili Anwani.",
+    "other": "Orodha hii ina {{count}} wapokeaji — wengi sana kwa kiungo cha mailto:. Tumia Nakili Anwani."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Wapokeaji wengi sana kwa mteja wa barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani.",
+    "other": "Wapokeaji wengi sana kwa mteja wa barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} dak imesalia",
+    "other": "{{count}} dak zimesalia"
   }
 }

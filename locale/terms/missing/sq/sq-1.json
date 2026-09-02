@@ -1,58 +1,58 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "Email-i u dërgua tek %d familje.|Email-i u dërgua tek %d familje.",
-    "other": ""
+    "one": "Email-i u dërgua tek %d familje.",
+    "other": "Email-et u dërguan tek %d familje."
   },
-  "N/A": "",
-  "OFX": "",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF-i u dërgua me sukses me email tek %d familje.|PDF-i u dërgua me sukses me email tek %d familje.",
-    "other": ""
+    "one": "PDF-i u dërgua me sukses me email tek %d familje.",
+    "other": "PDF-et u dërguan me sukses me email tek %d familje."
   },
-  "Anniversary: %s": "",
-  "Church": "",
-  "Classifications": "",
-  "Closest": "",
-  "Deposit #%d": "",
-  "Failed to get fundraiser count": "",
-  "Failed to load neighbors.": "",
-  "Farther": "",
-  "Farthest": "",
-  "Find Neighbors": "",
-  "Find nearby families and add them to your cart": "",
-  "Map centered on": "",
-  "Max distance": "",
-  "Max neighbors": "",
-  "Near": "",
-  "Please select a family.": "",
-  "Results": "",
-  "Same location": "",
-  "Search Neighbors": "",
-  "Select a family and click Find Neighbors to see results.": "",
-  "Selected family": "",
-  "This value must be a valid field name.": "",
-  "Could not load data": "",
-  "Please refresh the page or try again later.": "",
-  "Add the relevant records first.": "",
-  "All Months": "",
-  "No \"%s\" options are defined yet.": "",
-  "No events found for %s %d.": "",
-  "Try selecting a different event type, month, or year.": "",
+  "Anniversary: %s": "Përvjetor: %s",
+  "Church": "Kisha",
+  "Classifications": "Klasifikime",
+  "Closest": "Më i afërti",
+  "Deposit #%d": "Depozitë #%d",
+  "Failed to get fundraiser count": "Nuk u mor numri i mbledhjes së fondeve",
+  "Failed to load neighbors.": "Ngarkimi i fqinjëve dështoi.",
+  "Farther": "Më larg",
+  "Farthest": "Më i largët",
+  "Find Neighbors": "Gjej Fqinjët",
+  "Find nearby families and add them to your cart": "Gjej familjet afërsisht dhe shto ato në listën tënde",
+  "Map centered on": "Harta e centruar te",
+  "Max distance": "Distanca maksimale",
+  "Max neighbors": "Fqinjët maksimalë",
+  "Near": "Afër",
+  "Please select a family.": "Ju lutemi zgjidhni një familje.",
+  "Results": "Rezultate",
+  "Same location": "I njëjti vendndodhje",
+  "Search Neighbors": "Kërko Fqinjët",
+  "Select a family and click Find Neighbors to see results.": "Zgjidhni një familje dhe klikoni Gjej Fqinjët për të parë rezultatet.",
+  "Selected family": "Familja e zgjedhur",
+  "This value must be a valid field name.": "Kjo vlerë duhet të jetë emër i vlefshëm fushe.",
+  "Could not load data": "Nuk mund të ngarkohen të dhënat",
+  "Please refresh the page or try again later.": "Ju lutemi rifreskoni faqen ose provoni përsëri më vonë.",
+  "Add the relevant records first.": "Shtoni fillimisht regjistrimet përkatëse.",
+  "All Months": "Të gjithë muajt",
+  "No \"%s\" options are defined yet.": "Asnjë opsion \"%s\" nuk është i definuar ende.",
+  "No events found for %s %d.": "Asnjë ngjarje nuk u gjet për %s %d.",
+  "Try selecting a different event type, month, or year.": "Provoni të zgjidhni një lloj tjetër ngjarjeje, muaj ose vit.",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} anëtar u kopjua",
+    "other": "{{count}} anëtarë u kopjuan"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat.",
+    "other": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Shumë marrës për klientin e emailit ({{count}} > {{max}}). Përdorni Kopjo Adresat.",
+    "other": "Shumë marrës për klientin e emailit ({{count}} > {{max}}). Përdorni Kopjo Adresat."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min e mbetur",
+    "other": "{{count}} min e mbetur"
   }
 }
