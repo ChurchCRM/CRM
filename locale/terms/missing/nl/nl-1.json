@@ -1,60 +1,60 @@
 {
-  "Code": "",
-  "Items": "",
-  "Planning": "",
-  "CSV": "",
+  "Code": "Code",
+  "Items": "Items",
+  "Planning": "Planning",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-mail verzonden naar %d gezin.|E-mail verzonden naar %d gezinnen.",
-    "other": ""
+    "one": "E-mail verzonden naar %d gezin.",
+    "other": "E-mails verzonden naar %d gezinnen."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF succesvol gemaild naar %d gezin.|PDF succesvol gemaild naar %d gezinnen.",
-    "other": ""
+    "one": "PDF succesvol gemaild naar %d gezin.",
+    "other": "PDF's succesvol gemaild naar %d gezinnen."
   },
-  "Anniversary: %s": "",
-  "Church": "",
-  "Classifications": "",
-  "Closest": "",
-  "Deposit #%d": "",
-  "Failed to get fundraiser count": "",
-  "Failed to load neighbors.": "",
-  "Farther": "",
-  "Farthest": "",
-  "Find Neighbors": "",
-  "Find nearby families and add them to your cart": "",
-  "Map centered on": "",
-  "Max distance": "",
-  "Max neighbors": "",
-  "Near": "",
-  "Please select a family.": "",
-  "Results": "",
-  "Same location": "",
-  "Search Neighbors": "",
-  "Select a family and click Find Neighbors to see results.": "",
-  "Selected family": "",
-  "This value must be a valid field name.": "",
-  "Could not load data": "",
-  "Please refresh the page or try again later.": "",
-  "Add the relevant records first.": "",
-  "All Months": "",
-  "No \"%s\" options are defined yet.": "",
-  "No events found for %s %d.": "",
-  "Try selecting a different event type, month, or year.": "",
+  "Anniversary: %s": "Jubileum: %s",
+  "Church": "Kerk",
+  "Classifications": "Classificaties",
+  "Closest": "Dichtstbij",
+  "Deposit #%d": "Storting nr. %d",
+  "Failed to get fundraiser count": "Kan het aantal fondsenwervers niet ophalen",
+  "Failed to load neighbors.": "Kan buren niet laden.",
+  "Farther": "Verder",
+  "Farthest": "Het verst",
+  "Find Neighbors": "Buren zoeken",
+  "Find nearby families and add them to your cart": "Zoek nabijgelegen gezinnen en voeg ze toe aan uw lijst",
+  "Map centered on": "Kaart gecentreerd op",
+  "Max distance": "Maximale afstand",
+  "Max neighbors": "Maximum buren",
+  "Near": "Dichtbij",
+  "Please select a family.": "Selecteer een gezin.",
+  "Results": "Resultaten",
+  "Same location": "Zelfde locatie",
+  "Search Neighbors": "Buren zoeken",
+  "Select a family and click Find Neighbors to see results.": "Selecteer een gezin en klik op Buren zoeken om resultaten te bekijken.",
+  "Selected family": "Geselecteerd gezin",
+  "This value must be a valid field name.": "Deze waarde moet een geldige veldnaam zijn.",
+  "Could not load data": "Kan geen gegevens laden",
+  "Please refresh the page or try again later.": "Vernieuw de pagina of probeer het later opnieuw.",
+  "Add the relevant records first.": "Voeg eerst de relevante records toe.",
+  "All Months": "Alle maanden",
+  "No \"%s\" options are defined yet.": "Er zijn nog geen \"%s\" opties gedefinieerd.",
+  "No events found for %s %d.": "Geen evenementen gevonden voor %s %d.",
+  "Try selecting a different event type, month, or year.": "Probeer een ander type evenement, maand of jaar te selecteren.",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} lid gekopieerd",
+    "other": "{{count}} leden gekopieerd"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Deze lijst heeft {{count}} ontvanger — te veel voor een mailto:-link. Gebruik Adressen kopiëren.",
+    "other": "Deze lijst heeft {{count}} ontvangers — te veel voor een mailto:-link. Gebruik Adressen kopiëren."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Te veel ontvangers voor de e-mailclient ({{count}} > {{max}}). Gebruik Adressen kopiëren.",
+    "other": "Te veel ontvangers voor de e-mailclient ({{count}} > {{max}}). Gebruik Adressen kopiëren."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min over",
+    "other": "{{count}} min over"
   }
 }

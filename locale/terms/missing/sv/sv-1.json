@@ -1,59 +1,59 @@
 {
-  "Data": "",
-  "Auto": "",
-  "CSV": "",
+  "Data": "Data",
+  "Auto": "Auto",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-post skickad till %d familj.|E-post skickad till %d familjer.",
-    "other": ""
+    "one": "E-post skickad till %d familj.",
+    "other": "E-post skickad till %d familjer."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF har skickats via e-post till %d familj.|PDF har skickats via e-post till %d familjer.",
-    "other": ""
+    "one": "PDF har skickats med e-post till %d familj.",
+    "other": "PDF har skickats med e-post till %d familjer."
   },
-  "Anniversary: %s": "",
-  "Church": "",
-  "Classifications": "",
-  "Closest": "",
-  "Deposit #%d": "",
-  "Failed to get fundraiser count": "",
-  "Failed to load neighbors.": "",
-  "Farther": "",
-  "Farthest": "",
-  "Find Neighbors": "",
-  "Find nearby families and add them to your cart": "",
-  "Map centered on": "",
-  "Max distance": "",
-  "Max neighbors": "",
-  "Near": "",
-  "Please select a family.": "",
-  "Results": "",
-  "Same location": "",
-  "Search Neighbors": "",
-  "Select a family and click Find Neighbors to see results.": "",
-  "Selected family": "",
-  "This value must be a valid field name.": "",
-  "Could not load data": "",
-  "Please refresh the page or try again later.": "",
-  "Add the relevant records first.": "",
-  "All Months": "",
-  "No \"%s\" options are defined yet.": "",
-  "No events found for %s %d.": "",
-  "Try selecting a different event type, month, or year.": "",
+  "Anniversary: %s": "Årsdag: %s",
+  "Church": "Kyrka",
+  "Classifications": "Klassificeringar",
+  "Closest": "Närmast",
+  "Deposit #%d": "Insättning nr %d",
+  "Failed to get fundraiser count": "Kunde inte hämta antal insamlingar",
+  "Failed to load neighbors.": "Det gick inte att läsa in grannar.",
+  "Farther": "Längre bort",
+  "Farthest": "Längst bort",
+  "Find Neighbors": "Hitta grannar",
+  "Find nearby families and add them to your cart": "Hitta familjer i närheten och lägg till dem i din lista",
+  "Map centered on": "Karta centrerad på",
+  "Max distance": "Maxavstånd",
+  "Max neighbors": "Max grannar",
+  "Near": "Nära",
+  "Please select a family.": "Välj en familj.",
+  "Results": "Resultat",
+  "Same location": "Samma plats",
+  "Search Neighbors": "Sök grannar",
+  "Select a family and click Find Neighbors to see results.": "Välj en familj och klicka på Hitta grannar för att se resultat.",
+  "Selected family": "Vald familj",
+  "This value must be a valid field name.": "Det här värdet måste vara ett giltigt fältnamn.",
+  "Could not load data": "Det gick inte att läsa in data",
+  "Please refresh the page or try again later.": "Uppdatera sidan eller försök igen senare.",
+  "Add the relevant records first.": "Lägg till relevanta poster först.",
+  "All Months": "Alla månader",
+  "No \"%s\" options are defined yet.": "Inga \"%s\"-alternativ har definierats än.",
+  "No events found for %s %d.": "Inga händelser hittades för %s %d.",
+  "Try selecting a different event type, month, or year.": "Försök att välja en annan händelsetyp, månad eller år.",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} medlem kopierad",
+    "other": "{{count}} medlemmar kopierade"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Den här listan har {{count}} mottagare — för många för en mailto:-länk. Använd Kopiera adresser istället.",
+    "other": "Den här listan har {{count}} mottagare — för många för en mailto:-länk. Använd Kopiera adresser istället."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "För många mottagare för e-postklienten ({{count}} > {{max}}). Använd Kopiera adresser istället.",
+    "other": "För många mottagare för e-postklienten ({{count}} > {{max}}). Använd Kopiera adresser istället."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min kvar",
+    "other": "{{count}} min kvar"
   }
 }
