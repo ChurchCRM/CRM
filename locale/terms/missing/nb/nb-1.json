@@ -1,59 +1,59 @@
 {
-  "Data": "Data",
-  "Auto": "Auto",
-  "CSV": "CSV",
+  "Data": "",
+  "Auto": "",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-post sendt til %d familie.",
-    "other": "E-post sendt til %d familier."
+    "one": "E-post sendt til %d familie.|E-post sendt til %d familier.",
+    "other": ""
   },
-  "OFX": "OFX",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF ble sendt på e-post til %d familie.",
-    "other": "PDF ble sendt på e-post til %d familier."
+    "one": "PDF ble sendt på e-post til %d familie.|PDF ble sendt på e-post til %d familier.",
+    "other": ""
   },
-  "Anniversary: %s": "Jubileum: %s",
-  "Church": "Kirke",
-  "Classifications": "Klassifikasjoner",
-  "Closest": "Nærmest",
-  "Deposit #%d": "Innskudd nr. %d",
-  "Failed to get fundraiser count": "Kunne ikke hente antall innsamlinger",
-  "Failed to load neighbors.": "Kunne ikke laste inn naboer.",
-  "Farther": "Lenger unna",
-  "Farthest": "Lengst unna",
-  "Find Neighbors": "Finn naboer",
-  "Find nearby families and add them to your cart": "Finn familier i nærheten og legg dem til i listen din",
-  "Map centered on": "Kart sentrert på",
-  "Max distance": "Maks avstand",
-  "Max neighbors": "Maks naboer",
-  "Near": "Nær",
-  "Please select a family.": "Velg en familie.",
-  "Results": "Resultater",
-  "Same location": "Samme sted",
-  "Search Neighbors": "Søk etter naboer",
-  "Select a family and click Find Neighbors to see results.": "Velg en familie og klikk på Finn naboer for å se resultater.",
-  "Selected family": "Valgt familie",
-  "This value must be a valid field name.": "Denne verdien må være et gyldig feltnavn.",
-  "Could not load data": "Kunne ikke laste inn data",
-  "Please refresh the page or try again later.": "Oppdater siden eller prøv igjen senere.",
-  "Add the relevant records first.": "Legg til de relevante postene først.",
-  "All Months": "Alle måneder",
-  "No \"%s\" options are defined yet.": "Ingen \"%s\"-alternativer er definert ennå.",
-  "No events found for %s %d.": "Ingen hendelser funnet for %s %d.",
-  "Try selecting a different event type, month, or year.": "Prøv å velge en annen hendelsestype, måned eller år.",
+  "Anniversary: %s": "",
+  "Church": "",
+  "Classifications": "",
+  "Closest": "",
+  "Deposit #%d": "",
+  "Failed to get fundraiser count": "",
+  "Failed to load neighbors.": "",
+  "Farther": "",
+  "Farthest": "",
+  "Find Neighbors": "",
+  "Find nearby families and add them to your cart": "",
+  "Map centered on": "",
+  "Max distance": "",
+  "Max neighbors": "",
+  "Near": "",
+  "Please select a family.": "",
+  "Results": "",
+  "Same location": "",
+  "Search Neighbors": "",
+  "Select a family and click Find Neighbors to see results.": "",
+  "Selected family": "",
+  "This value must be a valid field name.": "",
+  "Could not load data": "",
+  "Please refresh the page or try again later.": "",
+  "Add the relevant records first.": "",
+  "All Months": "",
+  "No \"%s\" options are defined yet.": "",
+  "No events found for %s %d.": "",
+  "Try selecting a different event type, month, or year.": "",
   "Copied {{count}} members": {
-    "one": "{{count}} medlem kopiert",
-    "other": "{{count}} medlemmer kopiert"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Denne listen har {{count}} mottaker — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet.",
-    "other": "Denne listen har {{count}} mottakere — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "For mange mottakere for e-postklienten ({{count}} > {{max}}). Bruk Kopier adresser i stedet.",
-    "other": "For mange mottakere for e-postklienten ({{count}} > {{max}}). Bruk Kopier adresser i stedet."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min igjen",
-    "other": "{{count}} min igjen"
+    "one": "",
+    "other": ""
   }
 }

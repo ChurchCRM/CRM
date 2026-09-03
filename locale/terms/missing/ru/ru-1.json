@@ -1,61 +1,61 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "Письмо отправлено %d семье.",
-    "few": "Письмо отправлено %d семьям.",
-    "many": "Письмо отправлено %d семьям.",
-    "other": "Письмо отправлено %d семьи."
+    "one": "Письмо отправлено %d семье.|Письмо отправлено %d семьям.|Письмо отправлено %d семьям.|Письмо отправлено %d семьи.",
+    "few": "",
+    "many": "",
+    "other": ""
   },
-  "OFX": "OFX",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF успешно отправлен %d семье.",
-    "few": "PDF успешно отправлен %d семьям.",
-    "many": "PDF успешно отправлен %d семьям.",
-    "other": "PDF успешно отправлен %d семьи."
+    "one": "PDF успешно отправлен %d семье.|PDF успешно отправлен %d семьям.|PDF успешно отправлен %d семьям.|PDF успешно отправлен %d семьи.",
+    "few": "",
+    "many": "",
+    "other": ""
   },
-  "Anniversary: %s": "Годовщина: %s",
-  "Church": "Церковь",
-  "Classifications": "Классификации",
-  "Closest": "Ближайший",
-  "Deposit #%d": "Депозит №%d",
-  "Failed to get fundraiser count": "Не удалось получить количество сборов средств",
-  "Failed to load neighbors.": "Не удалось загрузить соседей.",
-  "Farther": "Дальше",
-  "Farthest": "Самый дальний",
-  "Find Neighbors": "Найти соседей",
-  "Find nearby families and add them to your cart": "Найдите ближайшие семьи и добавьте их в список",
-  "Map centered on": "Карта центрирована на",
-  "Max distance": "Максимальное расстояние",
-  "Max neighbors": "Максимум соседей",
-  "Near": "Близко",
-  "Please select a family.": "Пожалуйста, выберите семью.",
-  "Results": "Результаты",
-  "Same location": "То же местоположение",
-  "Search Neighbors": "Поиск соседей",
-  "Select a family and click Find Neighbors to see results.": "Выберите семью и нажмите «Найти соседей», чтобы увидеть результаты.",
-  "Selected family": "Выбранная семья",
-  "This value must be a valid field name.": "Это значение должно быть допустимым именем поля.",
-  "Could not load data": "Не удалось загрузить данные",
-  "Please refresh the page or try again later.": "Обновите страницу или попробуйте позже.",
-  "Add the relevant records first.": "Сначала добавьте соответствующие записи.",
-  "All Months": "Все месяцы",
-  "No \"%s\" options are defined yet.": "Параметры \"%s\" ещё не определены.",
-  "No events found for %s %d.": "События для %s %d не найдены.",
-  "Try selecting a different event type, month, or year.": "Попробуйте выбрать другой тип события, месяц или год.",
+  "Anniversary: %s": "",
+  "Church": "",
+  "Classifications": "",
+  "Closest": "",
+  "Deposit #%d": "",
+  "Failed to get fundraiser count": "",
+  "Failed to load neighbors.": "",
+  "Farther": "",
+  "Farthest": "",
+  "Find Neighbors": "",
+  "Find nearby families and add them to your cart": "",
+  "Map centered on": "",
+  "Max distance": "",
+  "Max neighbors": "",
+  "Near": "",
+  "Please select a family.": "",
+  "Results": "",
+  "Same location": "",
+  "Search Neighbors": "",
+  "Select a family and click Find Neighbors to see results.": "",
+  "Selected family": "",
+  "This value must be a valid field name.": "",
+  "Could not load data": "",
+  "Please refresh the page or try again later.": "",
+  "Add the relevant records first.": "",
+  "All Months": "",
+  "No \"%s\" options are defined yet.": "",
+  "No events found for %s %d.": "",
+  "Try selecting a different event type, month, or year.": "",
   "Copied {{count}} members": {
-    "one": "Скопирован {{count}} участник",
-    "other": "Скопировано {{count}} участников"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "В этом списке {{count}} получатель — слишком много для ссылки mailto:. Используйте «Копировать адреса».",
-    "other": "В этом списке {{count}} получателей — слишком много для ссылки mailto:. Используйте «Копировать адреса»."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Слишком много получателей для почтового клиента ({{count}} > {{max}}). Используйте «Копировать адреса».",
-    "other": "Слишком много получателей для почтового клиента ({{count}} > {{max}}). Используйте «Копировать адреса»."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Осталось {{count}} мин",
-    "other": "Осталось {{count}} мин"
+    "one": "",
+    "other": ""
   }
 }

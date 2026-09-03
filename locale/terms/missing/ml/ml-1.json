@@ -1,57 +1,57 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "%d കുടുംബത്തിലേക്ക് ഇമെയിൽ അയച്ചു.",
-    "other": "%d കുടുംബങ്ങളിലേക്ക് ഇമെയിൽ അയച്ചു."
+    "one": "%d കുടുംബത്തിലേക്ക് ഇമെയിൽ അയച്ചു.|%d കുടുംബങ്ങളിലേക്ക് ഇമെയിൽ അയച്ചു.",
+    "other": ""
   },
-  "OFX": "OFX",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "%d കുടുംബത്തിലേക്ക് PDF വിജയകരമായി ഇമെയിൽ ചെയ്തു.",
-    "other": "%d കുടുംബങ്ങളിലേക്ക് PDF വിജയകരമായി ഇമെയിൽ ചെയ്തു."
+    "one": "%d കുടുംബത്തിലേക്ക് PDF വിജയകരമായി ഇമെയിൽ ചെയ്തു.|%d കുടുംബങ്ങളിലേക്ക് PDF വിജയകരമായി ഇമെയിൽ ചെയ്തു.",
+    "other": ""
   },
-  "Anniversary: %s": "വാർഷിക ദിനം: %s",
-  "Church": "സഭ",
-  "Classifications": "വർഗ്ഗീകരണങ്ങൾ",
-  "Closest": "ഏറ്റവും അടുത്ത്",
-  "Deposit #%d": "ഡെപ്പോസിറ്റ് #%d",
-  "Failed to get fundraiser count": "ഫണ്ട്‌ ശേഖരണ എണ്ണം ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു",
-  "Failed to load neighbors.": "അയൽക്കാരെ ലോഡ് ചെയ്യുന്നതിൽ പരാജയം.",
-  "Farther": "കൂടുതൽ ദൂരെ",
-  "Farthest": "ഏറ്റവും ദൂരെ",
-  "Find Neighbors": "അയൽക്കാരെ കണ്ടെത്തുക",
-  "Find nearby families and add them to your cart": "സമീപ കുടുംബങ്ങളെ കണ്ടെത്തി ലിസ്റ്റിൽ ചേർക്കുക",
-  "Map centered on": "ഭൂപടം ഇവിടെ കേന്ദ്രീകരിച്ചിരിക്കുന്നു",
-  "Max distance": "പരമാവധി ദൂരം",
-  "Max neighbors": "പരമാവധി അയൽക്കാർ",
-  "Near": "അടുത്ത്",
-  "Please select a family.": "ദയവായി ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക.",
-  "Results": "ഫലങ്ങൾ",
-  "Same location": "ഒരേ സ്ഥാനം",
-  "Search Neighbors": "അയൽക്കാരെ തിരയുക",
-  "Select a family and click Find Neighbors to see results.": "ഒരു കുടുംബം തിരഞ്ഞെടുത്ത് അയൽക്കാരെ കണ്ടെത്തുക ക്ലിക്ക് ചെയ്ത് ഫലങ്ങൾ കാണുക.",
-  "Selected family": "തിരഞ്ഞെടുത്ത കുടുംബം",
-  "This value must be a valid field name.": "ഈ മൂല്യം സാധുവായ ഒരു ഫീൽഡ് നാമം ആയിരിക്കണം.",
-  "Could not load data": "ഡാറ്റ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല",
-  "Please refresh the page or try again later.": "ദയവായി പേജ് റിഫ്രഷ് ചെയ്യുക അല്ലെങ്കിൽ പിന്നീട് ശ്രമിക്കുക.",
-  "Add the relevant records first.": "ആദ്യം ബന്ധപ്പെട്ട റെക്കോർഡുകൾ ചേർക്കുക.",
-  "All Months": "എല്ലാ മാസങ്ങളും",
-  "No \"%s\" options are defined yet.": "ഇതുവരെ \"%s\" ഓപ്ഷനുകൾ ഒന്നും നിർവ്വചിച്ചിട്ടില്ല.",
-  "No events found for %s %d.": "%s %d-ക്കായി ഒരു ഇവന്റും കണ്ടെത്തിയില്ല.",
-  "Try selecting a different event type, month, or year.": "മറ്റൊരു ഇവന്റ് തരം, മാസം, അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക.",
+  "Anniversary: %s": "",
+  "Church": "",
+  "Classifications": "",
+  "Closest": "",
+  "Deposit #%d": "",
+  "Failed to get fundraiser count": "",
+  "Failed to load neighbors.": "",
+  "Farther": "",
+  "Farthest": "",
+  "Find Neighbors": "",
+  "Find nearby families and add them to your cart": "",
+  "Map centered on": "",
+  "Max distance": "",
+  "Max neighbors": "",
+  "Near": "",
+  "Please select a family.": "",
+  "Results": "",
+  "Same location": "",
+  "Search Neighbors": "",
+  "Select a family and click Find Neighbors to see results.": "",
+  "Selected family": "",
+  "This value must be a valid field name.": "",
+  "Could not load data": "",
+  "Please refresh the page or try again later.": "",
+  "Add the relevant records first.": "",
+  "All Months": "",
+  "No \"%s\" options are defined yet.": "",
+  "No events found for %s %d.": "",
+  "Try selecting a different event type, month, or year.": "",
   "Copied {{count}} members": {
-    "one": "{{count}} അംഗം പകർത്തി",
-    "other": "{{count}} അംഗങ്ങൾ പകർത്തി"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ഈ ലിസ്റ്റിൽ {{count}} സ്വീകർത്താവ് ഉണ്ട് — mailto: ലിങ്കിന് ഇത് വളരെ കൂടുതൽ. വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "other": "ഈ ലിസ്റ്റിൽ {{count}} സ്വീകർത്താക്കൾ ഉണ്ട് — mailto: ലിങ്കിന് ഇത് വളരെ കൂടുതൽ. വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ഇമെയിൽ ക്ലൈന്റിന് ഇത് വളരെ കൂടുതൽ സ്വീകർത്താക്കൾ ({{count}} > {{max}}). വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
-    "other": "ഇമെയിൽ ക്ലൈന്റിന് ഇത് വളരെ കൂടുതൽ സ്വീകർത്താക്കൾ ({{count}} > {{max}}). വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} മിനിറ്റ് ശേഷിക്കുന്നു",
-    "other": "{{count}} മിനിറ്റ് ശേഷിക്കുന്നു"
+    "one": "",
+    "other": ""
   }
 }

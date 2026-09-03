@@ -1,57 +1,57 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "%d కుటుంబానికి ఇమెయిల్ పంపబడింది.",
-    "other": "%d కుటుంబాలకు ఇమెయిల్ పంపబడింది."
+    "one": "%d కుటుంబానికి ఇమెయిల్ పంపబడింది.|%d కుటుంబాలకు ఇమెయిల్ పంపబడింది.",
+    "other": ""
   },
-  "OFX": "OFX",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.",
-    "other": "%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది."
+    "one": "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.|%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.",
+    "other": ""
   },
-  "Anniversary: %s": "వార్షికోత్సవం: %s",
-  "Church": "చర్చు",
-  "Classifications": "వర్గీకరణలు",
-  "Closest": "అతి సమీపంలో",
-  "Deposit #%d": "డిపాజిట్ #%d",
-  "Failed to get fundraiser count": "నిధుల సంగ్రహణ సంఖ్య పొందడం విఫలమైంది",
-  "Failed to load neighbors.": "పక్కవారలను లోడ్ చేయడం విఫలమైంది.",
-  "Farther": "ఇంకా దూరంగా",
-  "Farthest": "అతి దూరంగా",
-  "Find Neighbors": "పక్కవారిని కనుగొను",
-  "Find nearby families and add them to your cart": "సమీపంలోని కుటుంబాలను కనుగొని మీ జాబితాలో చేర్చండి",
-  "Map centered on": "మాప్ కేంద్రీకరించబడింది",
-  "Max distance": "గరిష్ఠ దూరం",
-  "Max neighbors": "గరిష్ఠ పక్కవారులు",
-  "Near": "సమీపంలో",
-  "Please select a family.": "ఒక కుటుంబాన్ని ఎంచుకోండి.",
-  "Results": "ఫలితాలు",
-  "Same location": "అదే స్థానం",
-  "Search Neighbors": "పక్కవారిని వెతుకు",
-  "Select a family and click Find Neighbors to see results.": "ఒక కుటుంబాన్ని ఎంచుకొని ఫలితాలు చూడటానికి పక్కవారిని కనుగొను క్లిక్ చేయండి.",
-  "Selected family": "ఎంచుకొన్న కుటుంబం",
-  "This value must be a valid field name.": "ఈ విలువ సరైన ఫీల్డ్ పేరు అయి ఉండాలి.",
-  "Could not load data": "డేటా లోడ్ చేయడం విఫలమైంది",
-  "Please refresh the page or try again later.": "పేజీని రిఫ్రెష్ చేయండి లేదా తరువాత మళ్ళీ ప్రయత్నించండి.",
-  "Add the relevant records first.": "మొదట సంబంధిత రికార్డులను జోడించండి.",
-  "All Months": "అన్ని నెలలు",
-  "No \"%s\" options are defined yet.": "ఇంకా \"%s\" ఎంచికలు నిర్వచించబడలేదు.",
-  "No events found for %s %d.": "%s %d కి ఇవెంట్లు కనుగొనలేదు.",
-  "Try selecting a different event type, month, or year.": "వేరు ఇవెంట్ రకం, నెల లేదా సంవత్సరాన్ని ఎంచుకోండి.",
+  "Anniversary: %s": "",
+  "Church": "",
+  "Classifications": "",
+  "Closest": "",
+  "Deposit #%d": "",
+  "Failed to get fundraiser count": "",
+  "Failed to load neighbors.": "",
+  "Farther": "",
+  "Farthest": "",
+  "Find Neighbors": "",
+  "Find nearby families and add them to your cart": "",
+  "Map centered on": "",
+  "Max distance": "",
+  "Max neighbors": "",
+  "Near": "",
+  "Please select a family.": "",
+  "Results": "",
+  "Same location": "",
+  "Search Neighbors": "",
+  "Select a family and click Find Neighbors to see results.": "",
+  "Selected family": "",
+  "This value must be a valid field name.": "",
+  "Could not load data": "",
+  "Please refresh the page or try again later.": "",
+  "Add the relevant records first.": "",
+  "All Months": "",
+  "No \"%s\" options are defined yet.": "",
+  "No events found for %s %d.": "",
+  "Try selecting a different event type, month, or year.": "",
   "Copied {{count}} members": {
-    "one": "{{count}} సభ్యుడు కాపీ చేయబడ్డారు",
-    "other": "{{count}} సభ్యులు కాపీ చేయబడ్డారు"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ఈ బుక్కలో {{count}} అందుకునేవారు ఉన్నారు — mailto: లింక్కు చాలా ఎక్కువగా ఉంది. చిరునామాలను కాపీ చేయండి.",
-    "other": "ఈ బుక్కలో {{count}} అందుకునేవారు ఉన్నారు — mailto: లింక్కు చాలా ఎక్కువగా ఉంది. చిరునామాలను కాపీ చేయండి."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ఇమెయిల్ క్లైంట్కు చాలా ఎక్కువ అందుకునేవారు ({{count}} > {{max}}). చిరునామాలను కాపీ చేయండి.",
-    "other": "ఇమెయిల్ క్లైంట్కు చాలా ఎక్కువ అందుకునేవారు ({{count}} > {{max}}). చిరునామాలను కాపీ చేయండి."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} నిమిషం మిగిలింది",
-    "other": "{{count}} నిమిషాలు మిగిలినాయి"
+    "one": "",
+    "other": ""
   }
 }

@@ -1,60 +1,60 @@
 {
-  "Auto": "Auto",
-  "CSV": "CSV",
+  "Auto": "",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-mail wysłany do %d rodziny.",
-    "few": "E-maile wysłane do %d rodzin.",
-    "other": "E-maili wysłanych do %d rodzin."
+    "one": "E-mail wysłany do %d rodziny.|E-mail wysłany do %d rodzin.|E-mail wysłany do %d rodzin.",
+    "few": "",
+    "other": ""
   },
-  "OFX": "OFX",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF wysłany pomyślnie e-mailem do %d rodziny.",
-    "few": "PDF-y wysłane pomyślnie e-mailem do %d rodzin.",
-    "other": "PDF-ów wysłanych pomyślnie e-mailem do %d rodzin."
+    "one": "PDF został pomyślnie wysłany e-mailem do %d rodziny.|PDF został pomyślnie wysłany e-mailem do %d rodzin.|PDF został pomyślnie wysłany e-mailem do %d rodzin.",
+    "few": "",
+    "other": ""
   },
-  "Anniversary: %s": "Rocznica: %s",
-  "Church": "Kościół",
-  "Classifications": "Klasyfikacje",
-  "Closest": "Najbliższy",
-  "Deposit #%d": "Depozyt nr %d",
-  "Failed to get fundraiser count": "Nie udało się pobrać liczby zbiórek",
-  "Failed to load neighbors.": "Nie udało się załadować sąsiadów.",
-  "Farther": "Dalej",
-  "Farthest": "Najdalej",
-  "Find Neighbors": "Znajdź sąsiadów",
-  "Find nearby families and add them to your cart": "Znajdź pobliskie rodziny i dodaj je do swojego koszyka",
-  "Map centered on": "Mapa wyśrodkowana na",
-  "Max distance": "Maksymalna odległość",
-  "Max neighbors": "Maksymalna liczba sąsiadów",
-  "Near": "Blisko",
-  "Please select a family.": "Proszę wybrać rodzinę.",
-  "Results": "Wyniki",
-  "Same location": "Ta sama lokalizacja",
-  "Search Neighbors": "Szukaj sąsiadów",
-  "Select a family and click Find Neighbors to see results.": "Wybierz rodzinę i kliknij Znajdź sąsiadów, aby zobaczyć wyniki.",
-  "Selected family": "Wybrana rodzina",
-  "This value must be a valid field name.": "Ta wartość musi być prawidłową nazwą pola.",
-  "Could not load data": "Nie można załadować danych",
-  "Please refresh the page or try again later.": "Odśwież stronę lub spróbuj ponownie później.",
-  "Add the relevant records first.": "Najpierw dodaj odpowiednie rekordy.",
-  "All Months": "Wszystkie miesiące",
-  "No \"%s\" options are defined yet.": "Nie zdefiniowano jeszcze opcji \"%s\".",
-  "No events found for %s %d.": "Nie znaleziono wydarzeń dla %s %d.",
-  "Try selecting a different event type, month, or year.": "Spróbuj wybrać inny typ wydarzenia, miesiąc lub rok.",
+  "Anniversary: %s": "",
+  "Church": "",
+  "Classifications": "",
+  "Closest": "",
+  "Deposit #%d": "",
+  "Failed to get fundraiser count": "",
+  "Failed to load neighbors.": "",
+  "Farther": "",
+  "Farthest": "",
+  "Find Neighbors": "",
+  "Find nearby families and add them to your cart": "",
+  "Map centered on": "",
+  "Max distance": "",
+  "Max neighbors": "",
+  "Near": "",
+  "Please select a family.": "",
+  "Results": "",
+  "Same location": "",
+  "Search Neighbors": "",
+  "Select a family and click Find Neighbors to see results.": "",
+  "Selected family": "",
+  "This value must be a valid field name.": "",
+  "Could not load data": "",
+  "Please refresh the page or try again later.": "",
+  "Add the relevant records first.": "",
+  "All Months": "",
+  "No \"%s\" options are defined yet.": "",
+  "No events found for %s %d.": "",
+  "Try selecting a different event type, month, or year.": "",
   "Copied {{count}} members": {
-    "one": "Skopiowano {{count}} członka",
-    "other": "Skopiowano {{count}} członków"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Ta lista ma {{count}} odbiorcę — za dużo dla łącza mailto:. Użyj opcji Kopiuj adresy.",
-    "other": "Ta lista ma {{count}} odbiorców — za dużo dla łącza mailto:. Użyj opcji Kopiuj adresy."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Za dużo odbiorców dla klienta poczty ({{count}} > {{max}}). Użyj opcji Kopiuj adresy.",
-    "other": "Za dużo odbiorców dla klienta poczty ({{count}} > {{max}}). Użyj opcji Kopiuj adresy."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Pozostała {{count}} minuta",
-    "other": "Pozostało {{count}} minut"
+    "one": "",
+    "other": ""
   }
 }
