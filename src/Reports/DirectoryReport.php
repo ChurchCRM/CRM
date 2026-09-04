@@ -106,9 +106,6 @@ if (strlen($sDirClassifications)) {
 }
 
 $sWhereExt = '';
-if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {
-    $sWhereExt .= 'AND per_DateDeceased IS NULL ';
-}
 if (!empty($_POST['GroupID'])) {
     $sGroupTable = '(person_per, person2group2role_p2g2r)';
 
@@ -126,6 +123,11 @@ if (!empty($_POST['GroupID'])) {
     $sGroupTable = 'person_per';
     $sGroupsList = '';
     $sGroupBy = '';
+}
+// Apply deceased filter AFTER the group if/else so it cannot be wiped
+// by the else branch. Matches the CSVCreateFile.php pattern.
+if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {
+    $sWhereExt .= 'AND per_DateDeceased IS NULL ';
 }
 
 //Exclude inactive families
