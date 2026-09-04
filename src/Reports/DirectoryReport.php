@@ -125,7 +125,6 @@ if (!empty($_POST['GroupID'])) {
 } else {
     $sGroupTable = 'person_per';
     $sGroupsList = '';
-    $sWhereExt = '';
     $sGroupBy = '';
 }
 
