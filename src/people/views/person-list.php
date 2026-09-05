@@ -167,6 +167,25 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 </div>
 <?php endif; ?>
 
+<?php if ($personActiveStatus !== 'all'): ?>
+<div class="alert alert-info d-flex align-items-center mb-3 py-2">
+    <i class="fa-solid fa-info-circle me-2"></i>
+    <div>
+        <?php if ($personActiveStatus === 'active'): ?>
+            <?= gettext('Showing active persons only.') ?>
+            <a href="<?= SystemURLs::getRootPath() ?>/people/list?personActiveStatus=all" class="alert-link ms-1"><?= gettext('View all (including inactive)') ?></a>
+            &middot;
+            <a href="<?= SystemURLs::getRootPath() ?>/people/list?personActiveStatus=inactive" class="alert-link"><?= gettext('View inactive only') ?></a>
+        <?php else: ?>
+            <?= gettext('Showing inactive persons only.') ?>
+            <a href="<?= SystemURLs::getRootPath() ?>/people/list" class="alert-link ms-1"><?= gettext('View active only') ?></a>
+            &middot;
+            <a href="<?= SystemURLs::getRootPath() ?>/people/list?personActiveStatus=all" class="alert-link"><?= gettext('View all') ?></a>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
+
 <div class="card mb-3">
     <div class="card-header">
         <h3 class="card-title"><i class="fa-solid fa-filter me-1"></i> <span id="filters-title"></span></h3>
@@ -375,6 +394,12 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 echo ' <button class="btn btn-sm btn-outline-secondary view-person-photo ms-1" data-person-id="' . $person->getId() . '" title="' . gettext('View Photo') . '">';
                                 echo '<i class="fa-solid fa-camera"></i>';
                                 echo '</button>';
+                            }
+                            // Add inactive badge if person is deactivated
+                            if ($column->displayFunction === 'getFullName' && !$person->isActive()) {
+                                echo ' <span class="badge bg-light text-dark ms-1" title="' . gettext('Inactive') . '">';
+                                echo '<i class="fa-solid fa-power-off"></i> ' . gettext('Inactive');
+                                echo '</span>';
                             }
                         }
                         // Format groups nicely as badges - include hidden JSON for filtering

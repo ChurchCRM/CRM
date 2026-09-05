@@ -91,7 +91,10 @@
   },
   "pre-7.6.1": {
     "versions": ["7.6.0"],
-    "scripts": ["/mysql/upgrade/7.6.1-add-anniversary-queries.sql"],
+    "scripts": [
+      "/mysql/upgrade/7.6.1-add-anniversary-queries.sql",
+      "/mysql/upgrade/7.6.1-add-person-datedeactivated.sql"
+    ],
     "dbVersion": "7.6.1"
   },
   "pre-7.6.2": {

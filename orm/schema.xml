@@ -60,6 +60,7 @@
         <column name="per_Facebook" phpName="Facebook" type="VARCHAR" size="50" Description="Facebook username" />
         <column name="per_Twitter" phpName="Twitter" type="VARCHAR" size="50" Description="Twitter username" />
         <column name="per_LinkedIn" phpName="LinkedIn" type="VARCHAR" size="50" Description="LinkedIn name" />
+        <column name="per_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>

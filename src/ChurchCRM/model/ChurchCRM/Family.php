@@ -273,6 +273,22 @@ class Family extends BaseFamily implements PhotoInterface
         return false;
     }
 
+    /**
+     * Save the record without generating the automatic 'Updated' timeline note.
+     * Use when the caller creates a more specific note (e.g. status change) to
+     * avoid a duplicate generic entry. Mirrors the private pattern used by
+     * setImageFromBase64().
+     */
+    public function saveWithoutUpdateNote(\Propel\Runtime\Connection\ConnectionInterface $con = null): void
+    {
+        $this->skipPostUpdateNote = true;
+        try {
+            $this->save($con);
+        } finally {
+            $this->skipPostUpdateNote = false;
+        }
+    }
+
     public function setImageFromBase64($base64): void
     {
         $note = new Note();
