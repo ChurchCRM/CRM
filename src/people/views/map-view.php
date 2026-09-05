@@ -13,6 +13,11 @@ if (!$mapConfig['hasLocation']) {
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
+<!-- Results container for the "Update All Coordinates" bulk geocode action.
+     Populated by map-view.js; always rendered so the button works even when
+     the church has no location configured. -->
+<div id="geocodeAllResults" class="mt-2" aria-live="polite"></div>
+
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
 
 <?php if (!$mapConfig['hasLocation']): ?>

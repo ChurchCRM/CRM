@@ -43,11 +43,30 @@ class PageHeader
     /**
      * Build HTML for page header action buttons.
      *
-     * Each button: ['label' => ..., 'url' => ..., 'icon' => ...] for link buttons,
-     * or ['label' => ..., 'icon' => ..., 'collapse' => '#targetId'] for settings toggles.
-     * Buttons are only rendered for admin users unless 'adminOnly' => false is set.
+     * Each button spec is an associative array. Common keys:
+     *   - label      (string, required) — visible button text
+     *   - icon       (string, optional) — Font Awesome icon class, e.g. 'fa-map'
+     *   - adminOnly  (bool, default true) — if true, only rendered for admin users
      *
-     * @param array<array{label: string, url?: string, icon?: string, collapse?: string, adminOnly?: bool}> $buttons
+     * Button types (mutually exclusive, checked in this order):
+     *   - collapse   string '#targetId'  — Bootstrap collapse toggle
+     *   - offcanvas  string '#targetId'  — Bootstrap offcanvas trigger
+     *   - js         bool   true         — JS-wired button (no href, no inline onclick).
+     *                                      Requires 'id' key; optional 'data' array for data-* attrs.
+     *                                      Wire the click handler in the page's JS bundle.
+     *   - (default)  url    string       — link button; defaults to '#'
+     *
+     * @param array<array{
+     *     label: string,
+     *     url?: string,
+     *     icon?: string,
+     *     collapse?: string,
+     *     offcanvas?: string,
+     *     js?: bool,
+     *     id?: string,
+     *     data?: array<string, scalar>,
+     *     adminOnly?: bool
+     * }> $buttons
      * @return string HTML
      */
     public static function buttons(array $buttons): string
@@ -82,6 +101,20 @@ class PageHeader
                 $html .= '<button class="btn btn-sm btn-outline-secondary" type="button"'
                     . ' data-bs-toggle="offcanvas" data-bs-target="' . $target . '"'
                     . ' aria-controls="' . ltrim($target, '#') . '">'
+                    . $icon . $label . '</button>';
+            } elseif (!empty($btn['js'])) {
+                // JS-wired button — no href, no inline onclick (CSP-safe).
+                // Callers must wire the click handler in their JS bundle.
+                $id = isset($btn['id'])
+                    ? ' id="' . htmlspecialchars((string) $btn['id'], ENT_QUOTES, 'UTF-8') . '"'
+                    : '';
+                $dataAttrs = '';
+                foreach ((array) ($btn['data'] ?? []) as $key => $value) {
+                    $dataAttrs .= ' data-' . htmlspecialchars((string) $key, ENT_QUOTES, 'UTF-8')
+                        . '="' . htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8') . '"';
+                }
+                $html .= '<button class="btn btn-sm btn-outline-secondary" type="button"'
+                    . $id . $dataAttrs . '>'
                     . $icon . $label . '</button>';
             } else {
                 // Link button

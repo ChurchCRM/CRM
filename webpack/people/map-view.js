@@ -8,6 +8,154 @@
  * (see webpack externals: { leaflet: 'L' }). No Google Maps API key required.
  */
 import L from "leaflet";
+import { buildAPIUrl } from "../api-utils";
+
+// ---------------------------------------------------------------------------
+// "Update All Coordinates" handler
+// Registered at the top level (outside the cfg/#map guard) so the button
+// in the page header always works, even when the church has no location set.
+// ---------------------------------------------------------------------------
+const geocodeAllBtn = document.getElementById("geocodeAllBtn");
+if (geocodeAllBtn) {
+  geocodeAllBtn.addEventListener("click", () => {
+    const t = window.i18next ? window.i18next.t.bind(window.i18next) : (s) => s;
+
+    window.bootbox.confirm({
+      title: t("Update All Family Coordinates"),
+      message: t(
+        "This will geocode all families missing coordinates using Nominatim (OpenStreetMap). " +
+          "It processes up to 50 families per run at ~1 request/second. " +
+          "Continue?",
+      ),
+      buttons: {
+        confirm: { label: t("Update Coordinates"), className: "btn-primary" },
+        cancel: { label: t("Cancel"), className: "btn-secondary" },
+      },
+      callback: (result) => {
+        if (!result) return;
+
+        const originalHtml = geocodeAllBtn.innerHTML;
+        geocodeAllBtn.disabled = true;
+        geocodeAllBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1"></i>${t("Geocoding...")} `;
+
+        fetch(buildAPIUrl("map/geocode-all"), {
+          method: "POST",
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json" },
+        })
+          .then((res) => {
+            if (!res.ok) {
+              return res.json().then((body) => {
+                throw new Error(body.message || res.statusText);
+              });
+            }
+            return res.json();
+          })
+          .then((data) => {
+            geocodeAllBtn.disabled = false;
+            geocodeAllBtn.innerHTML = originalHtml;
+
+            // --- Summary toast ------------------------------------------------
+            const msg =
+              data.remaining > 0
+                ? t(
+                    `Geocoded {{geocoded}} of {{total}} families. {{remaining}} still missing — run again to continue.`,
+                    { geocoded: data.geocoded, total: data.total, remaining: data.remaining },
+                  )
+                : t(`Geocoded {{geocoded}} families ({{failed}} could not be resolved).`, {
+                    geocoded: data.geocoded,
+                    failed: data.failed,
+                  });
+
+            window.CRM.notify(msg, { type: data.geocoded > 0 ? "success" : "warning", delay: 8000 });
+
+            // --- Failure detail alert -----------------------------------------
+            const resultsContainer = document.getElementById("geocodeAllResults");
+            if (resultsContainer) {
+              // Clear any previous result from a prior run
+              resultsContainer.innerHTML = "";
+
+              if (data.failed > 0 && Array.isArray(data.failures) && data.failures.length > 0) {
+                const reasonLabel = (reason) => {
+                  if (reason === "incomplete_address") {
+                    return t("Address is incomplete (missing city, state, and ZIP)");
+                  }
+                  if (reason === "no_result") {
+                    return t("No match found — check the street address, city, and ZIP");
+                  }
+                  return t("A geocoding error occurred — try again later");
+                };
+
+                const alertEl = document.createElement("div");
+                alertEl.className = "alert alert-warning alert-dismissible fade show";
+                alertEl.setAttribute("role", "alert");
+
+                const heading = document.createElement("h6");
+                heading.className = "alert-heading mb-2";
+                heading.textContent = t(`{{count}} families could not be geocoded:`, { count: data.failed });
+                alertEl.appendChild(heading);
+
+                const list = document.createElement("ul");
+                list.className = "mb-1 ps-3";
+
+                for (const f of data.failures) {
+                  const li = document.createElement("li");
+
+                  const link = document.createElement("a");
+                  // editUrl is fully server-constructed (/FamilyEditor.php?FamilyID=<int>)
+                  // with no user-injectable components — assign directly as a URL property.
+                  link.href = f.editUrl;
+                  link.textContent = f.name || t("Unknown family");
+
+                  const addressSpan = document.createElement("span");
+                  addressSpan.className = "text-muted ms-1";
+                  addressSpan.textContent = `— ${f.address || t("No address")} (${reasonLabel(f.reason)})`;
+
+                  li.appendChild(link);
+                  li.appendChild(addressSpan);
+                  list.appendChild(li);
+                }
+                alertEl.appendChild(list);
+
+                if (data.failuresTruncated) {
+                  const more = document.createElement("small");
+                  more.className = "text-muted";
+                  more.textContent = t(`…and {{count}} more. Run again to see remaining failures.`, {
+                    count: data.failed - data.failures.length,
+                  });
+                  alertEl.appendChild(more);
+                }
+
+                // CSP-safe dismiss button (Bootstrap data-bs-dismiss, no onclick)
+                const closeBtn = document.createElement("button");
+                closeBtn.type = "button";
+                closeBtn.className = "btn-close";
+                closeBtn.setAttribute("data-bs-dismiss", "alert");
+                closeBtn.setAttribute("aria-label", t("Close"));
+                alertEl.appendChild(closeBtn);
+
+                resultsContainer.appendChild(alertEl);
+              }
+            }
+
+            // Reload after a brief pause so the map refreshes with new markers.
+            // Skip the reload when there are failure details to display:
+            // the auto-reload would clear the alert before the admin can read it.
+            if (data.geocoded > 0 && data.failed === 0) {
+              setTimeout(() => window.location.reload(), 2000);
+            }
+          })
+          .catch((err) => {
+            geocodeAllBtn.disabled = false;
+            geocodeAllBtn.innerHTML = originalHtml;
+            window.CRM.notify(t("Failed to update coordinates") + (err.message ? `: ${err.message}` : ""), {
+              type: "error",
+            });
+          });
+      },
+    });
+  });
+}
 
 const cfg = window.CRM.mapConfig;
 
