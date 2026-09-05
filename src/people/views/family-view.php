@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -66,6 +67,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
     window.CRM.currentFamilyName = <?= InputUtils::jsonEncodeForScript($family->getName()) ?>;
     window.CRM.currentActive = <?= $family->isActive() ?"true" :"false" ?>;
     window.CRM.currentFamilyView = 2;
+    window.CRM.currentFYId = <?= (int) $currentFYId ?>;
     window.CRM.familyEmail ="<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
     window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
     <?php if ($showFamilyCheckin): ?>
@@ -635,8 +637,23 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     </ul>
                     <span class="vr mx-1"></span>
                     <ul class="nav nav-pills" role="tablist">
-                        <li class="nav-item"><a class="nav-link pledge-fy-pill" href="#" data-fy=""><?= gettext("All Time") ?></a></li>
-                        <li class="nav-item"><a class="nav-link active pledge-fy-pill" href="#" data-fy="<?= $currentFY ?>"><?= sprintf(gettext("FY %s"), $currentFY) ?></a></li>
+                        <li class="nav-item"><a class="nav-link pledge-fy-pill" href="#" data-fy="0"><?= gettext("All Time") ?></a></li>
+                        <!-- Current FY is always rendered and active by default -->
+                        <li class="nav-item">
+                            <a class="nav-link active pledge-fy-pill" href="#" data-fy="<?= (int) $currentFYId ?>">
+                                <?= InputUtils::escapeHTML(FinancialService::formatFiscalYear($currentFYId)) ?>
+                            </a>
+                        </li>
+                        <!-- Additional years from this family's historical data (skip current FY, already shown) -->
+                        <?php foreach ($familyAvailableFyids as $fyId): ?>
+                        <?php if ($fyId !== $currentFYId): ?>
+                        <li class="nav-item">
+                            <a class="nav-link pledge-fy-pill" href="#" data-fy="<?= (int) $fyId ?>">
+                                <?= InputUtils::escapeHTML(FinancialService::formatFiscalYear($fyId)) ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
