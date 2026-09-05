@@ -70,6 +70,7 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ->filterByClsId($aInactiveClassificationIds, Criteria::NOT_IN)
         ->leftJoinWithFamily()
         ->where('Family.DateDeactivated is null')
+        ->filterByLiving()
         ->count();
 
     // Redirect admin users with no people to the setup dashboard

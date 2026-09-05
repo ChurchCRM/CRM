@@ -126,6 +126,7 @@ $personListColumns = [
     (object) ['name' => 'Properties', 'displayFunction' => 'getPropertiesString', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
     (object) ['name' => 'Custom', 'displayFunction' => 'getCustomFields', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
     (object) ['name' => 'Group', 'displayFunction' => 'getGroups', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => 'Deceased Status', 'displayFunction' => '', 'visible' => 'false', 'emptyOrUnassigned' => 'false', 'isDeceasedStatus' => true],
 ];
 
 ?>
@@ -217,6 +218,15 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     <select class="form-select filter-Group" multiple="multiple"></select>
                 </div>
             </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="mb-0">
+                    <label class="form-label"><?= gettext('Deceased') ?></label>
+                    <select class="form-select filter-DeceasedStatus" multiple="multiple">
+                        <option value="<?= gettext('Living') ?>"><?= gettext('Living') ?></option>
+                        <option value="<?= gettext('Deceased') ?>"><?= gettext('Deceased') ?></option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="mt-3">
             <button id="ClearFilter" type="button" class="btn btn-secondary w-100">
@@ -251,6 +261,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         'Properties' => gettext('Properties'),
                         'Custom' => gettext('Custom'),
                         'Group' => gettext('Group'),
+                        'Deceased Status' => gettext('Deceased'),
                     ];
                     foreach ($personListColumns as $column) {
                         // Output all columns - DataTables JS config controls visibility
@@ -318,9 +329,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     }
                     // Handle other columns
                     else {
-                        // Skip method call for Family Status column (handled separately below)
+                        // Skip method call for Family Status or Deceased Status columns (handled separately below)
                         if (!isset($column->isFamilyStatus) || $column->isFamilyStatus !== true) {
-                            if ($column->displayFunction === 'getCustomFields') {
+                            if (isset($column->isDeceasedStatus) && $column->isDeceasedStatus === true) {
+                                $columnData = '';
+                            } elseif ($column->displayFunction === 'getCustomFields') {
                                 // Use pre-fetched result from getCustomFieldsAll (no extra DB query)
                                 $columnData = $customFilterNames;
                             } else {
@@ -358,6 +371,10 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         // Make person name clickable and add gender icon, role, and photo icon
                         elseif (in_array($column->displayFunction, ['getFullName', 'getFirstName', 'getLastName'], true)) {
                             echo '<a href="' . $person->getViewURI() . '" class="fw-bold">' . InputUtils::escapeHTML($columnData) . '</a>';
+                            // Add deceased badge
+                            if ($person->isDeceased()) {
+                                echo ' <span class="badge bg-secondary-lt text-secondary" title="' . gettext('Deceased') . '"><i class="fa-solid fa-cross"></i></span>';
+                            }
                             // Add role in parentheses
                             $role = $person->getFamilyRoleName();
                             if (!empty($role) && $role !== 'Unassigned') {
@@ -394,6 +411,10 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         elseif (isset($column->isFamilyStatus) && $column->isFamilyStatus === true) {
                             $family = $person->getFamily();
                             echo ($family) ? InputUtils::escapeHTML($family->getStatusText()) : InputUtils::escapeHTML(gettext('Active'));
+                        }
+                        // Handle Deceased Status column (hidden for filter)
+                        elseif (isset($column->isDeceasedStatus) && $column->isDeceasedStatus === true) {
+                            echo $person->isDeceased() ? InputUtils::escapeHTML(gettext('Deceased')) : InputUtils::escapeHTML(gettext('Living'));
                         }
                         // Handle Gender column (hidden for filter) 
                         elseif ($column->displayFunction === 'getGenderName') {
@@ -582,6 +603,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     'Properties' => gettext('Properties'),
                     'Custom' => gettext('Custom'),
                     'Group' => gettext('Group'),
+                    'Deceased Status' => gettext('Deceased'),
                 ];
                 foreach ($columns as $column) {
                     // Include ALL columns - DataTables needs config for each <th>
@@ -627,7 +649,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             { sel: '.filter-Properties', colName: 'Properties', regex: false },
             { sel: '.filter-Custom', colName: 'Custom', regex: false },
             { sel: '.filter-FamilyStatus', colName: 'Family Status', regex: true },
-            { sel: '.filter-Group', colName: 'Group', regex: false }
+            { sel: '.filter-Group', colName: 'Group', regex: false },
+            { sel: '.filter-DeceasedStatus', colName: 'Deceased Status', regex: true }
         ];
 
         // Function to initialize TomSelect instances (will be called after options are populated)
@@ -678,7 +701,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             'Properties': <?php echo $columnIdMap['Properties'] ?>,
             'Custom': <?php echo $columnIdMap['Custom'] ?>,
             'Family Status': <?php echo $columnIdMap['Family Status'] ?>,
-            'Group': <?php echo $columnIdMap['Group'] ?>
+            'Group': <?php echo $columnIdMap['Group'] ?>,
+            'Deceased Status': <?php echo $columnIdMap['Deceased Status'] ?>
         };
 
         function escapeRegExp(string) {
@@ -724,6 +748,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             GroupList: <?= InputUtils::jsonEncodeForScript($GroupList) ?>,
             ClassificationList: <?= InputUtils::jsonEncodeForScript($ClassificationList) ?>,
             FamilyStatusList: <?= InputUtils::jsonEncodeForScript([gettext('Active'), gettext('Inactive')]) ?>,
+            DeceasedStatusList: <?= InputUtils::jsonEncodeForScript([gettext('Living'), gettext('Deceased')]) ?>,
             filterByGender: <?= InputUtils::jsonEncodeForScript($filterByGender) ?>,
             filterByClsId: <?= InputUtils::jsonEncodeForScript($filterByClsOptionId) ?>,
             filterByFmrId: <?= InputUtils::jsonEncodeForScript($filterByFmrOptionId) ?>,
@@ -919,6 +944,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 } else if (serverVars.familyActiveStatus === 'inactive') {
                     tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[1], false);
                 }
+            }
+
+            // Default: hide deceased — only show Living persons unless filter is cleared
+            if (tomSelectInstances['Deceased Status']) {
+                tomSelectInstances['Deceased Status'].ts.setValue(serverVars.DeceasedStatusList[0], false);
             }
         }, 100);
     } // end initializePeopleList
