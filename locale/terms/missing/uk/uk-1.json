@@ -1,61 +1,61 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
     "one": "Електронний лист надіслано %d родині.|Електронний лист надіслано %d родинам.|Електронний лист надіслано %d родинам.|Електронний лист надіслано %d родини.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "few": "Електронний лист надіслано %d родинам.",
+    "many": "Електронний лист надіслано %d родинам.",
+    "other": "Електронний лист надіслано %d родини."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
     "one": "PDF успішно надіслано %d родині.|PDF успішно надіслано %d родинам.|PDF успішно надіслано %d родинам.|PDF успішно надіслано %d родини.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "few": "PDF успішно надіслано %d родинам.",
+    "many": "PDF успішно надіслано %d родинам.",
+    "other": "PDF успішно надіслано %d родини."
   },
-  "Anniversary: %s": "",
-  "Church": "",
-  "Classifications": "",
-  "Closest": "",
-  "Deposit #%d": "",
-  "Failed to get fundraiser count": "",
-  "Failed to load neighbors.": "",
-  "Farther": "",
-  "Farthest": "",
-  "Find Neighbors": "",
-  "Find nearby families and add them to your cart": "",
-  "Map centered on": "",
-  "Max distance": "",
-  "Max neighbors": "",
-  "Near": "",
-  "Please select a family.": "",
-  "Results": "",
-  "Same location": "",
-  "Search Neighbors": "",
-  "Select a family and click Find Neighbors to see results.": "",
-  "Selected family": "",
-  "This value must be a valid field name.": "",
-  "Could not load data": "",
-  "Please refresh the page or try again later.": "",
-  "Add the relevant records first.": "",
-  "All Months": "",
-  "No \"%s\" options are defined yet.": "",
-  "No events found for %s %d.": "",
-  "Try selecting a different event type, month, or year.": "",
+  "Anniversary: %s": "Річниця: %s",
+  "Church": "Церква",
+  "Classifications": "Класифікації",
+  "Closest": "Найближчий",
+  "Deposit #%d": "Депозит № %d",
+  "Failed to get fundraiser count": "Не вдалося отримати кількість зборів коштів",
+  "Failed to load neighbors.": "Не вдалося завантажити сусідів.",
+  "Farther": "Далі",
+  "Farthest": "Найдальший",
+  "Find Neighbors": "Знайти сусідів",
+  "Find nearby families and add them to your cart": "Знайти сусідні сім'ї та додати їх до кошика",
+  "Map centered on": "Карта центрована на",
+  "Max distance": "Максимальна відстань",
+  "Max neighbors": "Максимум сусідів",
+  "Near": "Поруч",
+  "Please select a family.": "Будь ласка, оберіть сім'ю.",
+  "Results": "Результати",
+  "Same location": "Те саме місце",
+  "Search Neighbors": "Пошук сусідів",
+  "Select a family and click Find Neighbors to see results.": "Оберіть сім'ю та натисніть «Знайти сусідів», щоб побачити результати.",
+  "Selected family": "Обрана сім'я",
+  "This value must be a valid field name.": "Це значення має бути дійсним іменем поля.",
+  "Could not load data": "Не вдалося завантажити дані",
+  "Please refresh the page or try again later.": "Будь ласка, оновіть сторінку або спробуйте пізніше.",
+  "Add the relevant records first.": "Спочатку додайте відповідні записи.",
+  "All Months": "Всі місяці",
+  "No \"%s\" options are defined yet.": "Параметри \"%s\" ще не визначені.",
+  "No events found for %s %d.": "Подій для %s %d не знайдено.",
+  "Try selecting a different event type, month, or year.": "Спробуйте вибрати інший тип події, місяць або рік.",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Скопійовано {{count}} учасника",
+    "other": "Скопійовано {{count}} учасників"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "У цьому списку {{count}} отримувач — забагато для посилання mailto:. Використовуйте «Копіювати адреси».",
+    "other": "У цьому списку {{count}} отримувачів — забагато для посилання mailto:. Використовуйте «Копіювати адреси»."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Забагато отримувачів для поштового клієнта ({{count}} > {{max}}). Використовуйте «Копіювати адреси».",
+    "other": "Забагато отримувачів для поштового клієнта ({{count}} > {{max}}). Використовуйте «Копіювати адреси»."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Залишилось {{count}} хв",
+    "other": "Залишилось {{count}} хв"
   }
 }
