@@ -1,0 +1,67 @@
+import type { Page, TestInfo } from '@playwright/test';
+import fs from 'node:fs';
+import path from 'node:path';
+
+import { writeMetadata } from './metadata';
+
+export const ARTIFACTS_ROOT = path.join(__dirname, '..', 'artifacts');
+
+export interface CaptureOptions {
+  /** Must match the test's title — see the note below. */
+  name: string;
+  purpose: string;
+}
+
+/**
+ * Captures a full-page screenshot at a deterministic path and writes its
+ * metadata sidecar.
+ *
+ * The test's title MUST equal `name`. Playwright only finalizes a test's
+ * recorded video after the browser context closes, which happens after the
+ * test function itself has already returned — so there is no point inside
+ * the test where the real video file is available to rename. Instead,
+ * scripts/finalize-marketing-videos.js runs once after the whole suite
+ * finishes, reads the JSON reporter output, and matches each video
+ * attachment back to the deterministic path claimed here by test title +
+ * project name.
+ */
+export async function captureScreen(page: Page, testInfo: TestInfo, opts: CaptureOptions): Promise<void> {
+  if (testInfo.title !== opts.name) {
+    throw new Error(
+      `Test title "${testInfo.title}" must match capture name "${opts.name}" so the post-run video ` +
+        'finalize step (scripts/finalize-marketing-videos.js) can match them up.'
+    );
+  }
+
+  const device = testInfo.project.name;
+  const viewport = page.viewportSize();
+  if (!viewport) {
+    throw new Error(`No viewport configured for project "${device}"`);
+  }
+
+  const screenshotDir = path.join(ARTIFACTS_ROOT, 'screenshots', device);
+  const metadataDir = path.join(ARTIFACTS_ROOT, 'metadata', device);
+  fs.mkdirSync(screenshotDir, { recursive: true });
+  fs.mkdirSync(metadataDir, { recursive: true });
+
+  // Let AJAX-loaded content (DataTables, dashboard widgets, etc.) finish
+  // before capturing — a caller's own explicit waits get the page to a
+  // "visually ready" state, but in-flight requests can still be filling in
+  // detail. Bounded and best-effort: some pages keep a background poll
+  // alive indefinitely, which would make a strict wait hang forever.
+  await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => undefined);
+
+  const screenshotPath = path.join(screenshotDir, `${opts.name}.png`);
+  await page.screenshot({ path: screenshotPath, fullPage: true });
+
+  const videoPath = path.join(ARTIFACTS_ROOT, 'videos', device, `${opts.name}.webm`);
+
+  writeMetadata(path.join(metadataDir, `${opts.name}.json`), {
+    workflow: opts.name,
+    purpose: opts.purpose,
+    device,
+    viewport: { width: viewport.width, height: viewport.height },
+    screenshot: screenshotPath,
+    video: videoPath,
+  });
+}
