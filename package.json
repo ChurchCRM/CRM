@@ -84,7 +84,11 @@
         "docker:dev:login:web": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash",
         "docker:dev:login:db": "docker compose -f docker/docker-compose.dev.yaml exec database bash",
         "docker:dev:build": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"cd /home/ChurchCRM && npm ci && npm run build\"",
-        "docker:dev:watch": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"cd /home/ChurchCRM && npm run build:webpack:watch\""
+        "docker:dev:watch": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"cd /home/ChurchCRM && npm run build:webpack:watch\"",
+        "marketing:visuals:install": "playwright install --with-deps chromium",
+        "marketing:visuals": "run-s docker:ci:new-system:start marketing:visuals:test marketing:visuals:videos",
+        "marketing:visuals:test": "playwright test --config=playwright/playwright.config.ts",
+        "marketing:visuals:videos": "node scripts/finalize-marketing-videos.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.3.1",
@@ -128,6 +132,7 @@
     },
     "devDependencies": {
         "@biomejs/biome": "^2.5.9",
+        "@playwright/test": "^1.63.0",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.5",

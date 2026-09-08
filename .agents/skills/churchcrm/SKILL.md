@@ -92,6 +92,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Testing](./testing.md) | Writing tests, debugging, test suites |
 | [Cypress Testing](./cypress-testing.md) | E2E tests, CI/CD testing, API test patterns |
 | [Testing Migration & E2E](./testing-migration-e2e.md) | Testing strategy for migrations |
+| [Marketing Visual-Media Pipeline](./marketing-visuals-pipeline.md) | Playwright-based screenshot/video capture for marketing (`playwright/`) — separate from Cypress E2E |
 
 ### Running Cypress Locally
 
