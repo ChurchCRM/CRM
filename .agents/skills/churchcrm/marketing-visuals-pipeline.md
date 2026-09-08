@@ -28,10 +28,14 @@ checkmark.
 ## Running it
 
 ```bash
-npm run marketing:visuals:install   # once per machine
 npm run marketing:visuals           # fresh instance → seed → run all workflows
 npm run docker:ci:new-system:down   # tear down when done
 ```
+
+Requires Google Chrome installed — the pipeline drives it via
+`channel: 'chrome'` in `playwright.config.ts`, not Playwright's bundled
+Chromium, so no `playwright install` step is needed (see the "Browser
+download hangs" gotcha below).
 
 Full details, directory layout, and troubleshooting: `playwright/README.md`.
 
@@ -47,6 +51,21 @@ Four Playwright projects, run in this order (`playwright/playwright.config.ts`):
    the three end-user workflows (People & Families, Groups & Ministry,
    Events & Attendance), each declaring `dependencies: ['setup']` and
    reusing the saved `storageState` so they don't need to log in again.
+
+## Shot list mapping <!-- learned: 2026-09-08 -->
+
+The marketing screenshot shot list (hero dashboard, family record, person
+directory, group manager, calendar, attendance, communication, deposit
+entry, pledge/fund report, mobile panel, settings/permissions) is fully
+covered by `playwright/workflows/*.spec.ts` — see the table in
+`playwright/README.md` → "Shot list coverage" for the test-name mapping.
+Two shot-list requirements live in `playwright.config.ts` rather than a
+spec: **retina** (`deviceScaleFactor: 2` on every device project) and the
+**mobile viewport** (390×844, not an arbitrary breakpoint width — matches
+the shot list's "narrow viewport (390×844)" line exactly). The shot list's
+"UI detail texture crop" is a manual post-production crop of an existing
+screenshot, not something a new page/test can produce — don't try to
+automate it.
 
 ## Key patterns and gotchas learned building this
 
@@ -132,10 +151,24 @@ Four Playwright projects, run in this order (`playwright/playwright.config.ts`):
   Concurrent workers hit a filesystem race creating `outputDir`
   (`ENOTDIR` from parallel mkdir/rm on the same path) in this environment.
   A handful of screenshot workflows don't need the speed either way.
-- **This sandbox's network policy blocks Playwright's own dependencies by
-  default** — `cdn.playwright.dev` (browser download) and `deb.debian.org`
-  (the `docker:ci:new-system` image build's `apt-get update`) both needed
-  an explicit `sbx policy allow network <domain>` before anything here
-  would run at all. If you hit a `403`/`no matching allow rule` error
-  running this pipeline in a similar sandboxed environment, that's almost
+- **This sandbox's network policy blocks `deb.debian.org`** (the
+  `docker:ci:new-system` image build's `apt-get update`) by default — needs
+  an explicit `sbx policy allow network deb.debian.org` before the Docker
+  image will build. If you hit a `403`/`no matching allow rule` error
+  building the image in a similar sandboxed environment, that's almost
   certainly it, not a bug in this code.
+- **Browser download hangs — use system Chrome instead.**
+  `playwright install`'s download of its bundled Chromium from
+  `cdn.playwright.dev` (redirects to `storage.googleapis.com`) hung
+  indefinitely (30s socket timeout, repeated) in this sandbox even after
+  both hosts were added to `sbx policy allow network` — a plain `curl`/
+  `node -e "https.get(...)"` to the exact same URLs returned instantly, so
+  it's specific to Playwright's downloader (most likely its forced
+  `autoSelectFamily`/Happy-Eyeballs socket option, set directly in its
+  request code rather than inherited from Node's `--network-family-
+  autoselection` flag, so that flag can't override it), not a general
+  network block. Fix: `playwright.config.ts`'s top-level `use.channel:
+  'chrome'` makes every project launch the machine's already-installed
+  Google Chrome instead — no download, no `playwright install` step at
+  all. Requires Chrome to actually be installed on the machine running the
+  pipeline.

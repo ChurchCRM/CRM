@@ -9,9 +9,19 @@ const STORAGE_STATE_PATH = path.join(__dirname, '.auth', 'admin.json');
 // (Mobile < 768px, Tablet 768-1199.98px, Laptop/Desktop >= 1200px), using
 // one representative viewport per factor rather than full device emulation
 // (no touch/UA overrides) to keep automation simple and robust for a first
-// milestone. All four projects use the Chromium engine.
+// milestone. All four projects use the installed system Google Chrome
+// (`channel: 'chrome'` below) rather than Playwright's bundled Chromium —
+// `playwright install` downloads that bundled build from
+// cdn.playwright.dev/storage.googleapis.com, which hangs indefinitely in
+// some sandboxed/restricted-network environments. Pointing at system Chrome
+// (already present on any dev machine) skips that download entirely.
 export default defineConfig({
   testDir: '.',
+  // Playwright's default (30s) is shorter than setup-church-info's own
+  // explicit wait for the DB migration to finish (up to 120s, see
+  // #setup-success in setup/bootstrap.setup.ts) — without this, the whole
+  // test gets killed by the global timeout before that wait can complete.
+  timeout: 150000,
   globalSetup: require.resolve('./global-setup'),
   // Deliberately outside artifacts/ — Playwright wipes and recreates this
   // directory at the start of every run, which raced with our own
@@ -29,6 +39,7 @@ export default defineConfig({
   reporter: [['list'], ['json', { outputFile: path.join(__dirname, 'artifacts', 'report.json') }]],
   use: {
     baseURL: BASE_URL,
+    channel: 'chrome',
     video: 'on',
     trace: 'retain-on-failure',
     actionTimeout: 15000,
@@ -52,19 +63,37 @@ export default defineConfig({
       name: 'desktop',
       testMatch: /workflows\/.*\.spec\.ts/,
       dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 }, storageState: STORAGE_STATE_PATH },
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1440, height: 900 },
+        // Retina (shot list prep: "1440×900 browser at 2×").
+        deviceScaleFactor: 2,
+        storageState: STORAGE_STATE_PATH,
+      },
     },
     {
       name: 'tablet',
       testMatch: /workflows\/.*\.spec\.ts/,
       dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'], viewport: { width: 834, height: 1194 }, storageState: STORAGE_STATE_PATH },
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 834, height: 1194 },
+        deviceScaleFactor: 2,
+        storageState: STORAGE_STATE_PATH,
+      },
     },
     {
       name: 'mobile',
       testMatch: /workflows\/.*\.spec\.ts/,
       dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'], viewport: { width: 375, height: 812 }, storageState: STORAGE_STATE_PATH },
+      use: {
+        ...devices['Desktop Chrome'],
+        // 390×844 matches the shot list's "Mobile — one panel cropped" spec
+        // (still comfortably inside the <768px mobile breakpoint).
+        viewport: { width: 390, height: 844 },
+        deviceScaleFactor: 2,
+        storageState: STORAGE_STATE_PATH,
+      },
     },
   ],
 });
