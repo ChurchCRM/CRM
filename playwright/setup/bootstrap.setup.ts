@@ -24,6 +24,10 @@ setup('setup-church-info', async ({ page }, testInfo) => {
 
   const prereqNext = page.locator('#prerequisites-next-btn');
   await prereqNext.waitFor({ state: 'visible', timeout: 30000 });
+  // Stays disabled until the page's own async system-check AJAX calls
+  // finish ("Checking system requirements...") — visible isn't enough, and
+  // that check can take well past the 15s action timeout under load.
+  await expect(prereqNext).toBeEnabled({ timeout: 60000 });
   await humanPause(page, 600);
   await humanClick(prereqNext);
 
@@ -50,8 +54,11 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
   await humanType(page.locator('input[name=Password]'), ADMIN_INITIAL_PASSWORD);
   await humanPause(page, 300);
-  await page.locator('input[name=Password]').press('Enter');
-  await page.waitForURL(/\/changepassword/, { timeout: 15000 });
+  await Promise.all([
+    page.waitForNavigation({ waitUntil: 'load', timeout: 30000 }),
+    page.locator('input[name=Password]').press('Enter')
+  ]);
+  await expect(page).toHaveURL(/\/changepassword/);
 
   await humanType(page.locator('#OldPassword'), ADMIN_INITIAL_PASSWORD);
   await humanType(page.locator('#NewPassword1'), ADMIN_WORKING_PASSWORD);
