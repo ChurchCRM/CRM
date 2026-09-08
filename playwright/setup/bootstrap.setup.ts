@@ -27,7 +27,9 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   // Stays disabled until the page's own async system-check AJAX calls
   // finish ("Checking system requirements...") — visible isn't enough, and
   // that check can take well past the 15s action timeout under load.
-  await expect(prereqNext).toBeEnabled({ timeout: 60000 });
+  // System checks may take 2+ minutes on slower systems, matching the
+  // database setup migration timeout.
+  await expect(prereqNext).toBeEnabled({ timeout: 120000 });
   await humanPause(page, 600);
   await humanClick(prereqNext);
 
