@@ -17671,3 +17671,119 @@ msgstr "Wat u wint"
 msgid "Failed to get deposit count"
 msgstr "Kan het aantal stortingen niet ophalen"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Jubileum: %s"
+
+#: 
+msgid "Church"
+msgstr "Gemeente"
+
+#: 
+msgid "Classifications"
+msgstr "Classificaties"
+
+#: 
+msgid "Closest"
+msgstr "Dichtst bij"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Storting nr. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Kan het aantal fondsenwervers niet ophalen"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Kan buren niet laden."
+
+#: 
+msgid "Farther"
+msgstr "Verder weg"
+
+#: 
+msgid "Farthest"
+msgstr "Het verst weg"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Buren zoeken"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Zoek nabijgelegen gezinnen en voeg ze toe aan uw winkelwagen"
+
+#: 
+msgid "Map centered on"
+msgstr "Kaart gecentreerd op"
+
+#: 
+msgid "Max distance"
+msgstr "Maximale afstand"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maximale buren"
+
+#: 
+msgid "Near"
+msgstr "Dichtbij"
+
+#: 
+msgid "Please select a family."
+msgstr "Selecteer een gezin."
+
+#: 
+msgid "Results"
+msgstr "Resultaten"
+
+#: 
+msgid "Same location"
+msgstr "Zelfde locatie"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Buren zoeken"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Selecteer een gezin en klik op Buren zoeken om resultaten te zien."
+
+#: 
+msgid "Selected family"
+msgstr "Geselecteerd gezin"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Deze waarde moet een geldige veldnaam zijn."
+
+#: 
+msgid "Could not load data"
+msgstr "Kan gegevens niet laden"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Vernieuw de pagina of probeer het later opnieuw."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Voeg eerst de relevante records toe."
+
+#: 
+msgid "All Months"
+msgstr "Alle maanden"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Er zijn nog geen \"%s\" opties gedefinieerd."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Geen evenementen gevonden voor %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Probeer een ander gebeurtenistype, maand of jaar te selecteren."
+

@@ -1,52 +1,23 @@
 {
-  "Fundraising": "Fundraising",
-  "Data": "Data",
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
-  "Anniversary: %s": "Výročí: %s",
-  "Church": "Církev",
-  "Classifications": "Klasifikace",
-  "Closest": "Nejbližší",
-  "Deposit #%d": "Vklad č. %d",
-  "Failed to get fundraiser count": "Nepodařilo se získat počet fundraiserů",
-  "Failed to load neighbors.": "Nepodařilo se načíst sousedy.",
-  "Farther": "Dále",
-  "Farthest": "Nejdále",
-  "Find Neighbors": "Najít sousedy",
-  "Find nearby families and add them to your cart": "Najít blízké rodiny a přidat je do košíku",
-  "Map centered on": "Mapa vycentrována na",
-  "Max distance": "Maximální vzdálenost",
-  "Max neighbors": "Maximální počet sousedů",
-  "Near": "Blízko",
-  "Please select a family.": "Prosím vyberte rodinu.",
-  "Results": "Výsledky",
-  "Same location": "Stejné umístění",
-  "Search Neighbors": "Hledat sousedy",
-  "Select a family and click Find Neighbors to see results.": "Vyberte rodinu a klikněte na Najít sousedy pro zobrazení výsledků.",
-  "Selected family": "Vybraná rodina",
-  "This value must be a valid field name.": "Tato hodnota musí být platný název pole.",
-  "Could not load data": "Nepodařilo se načíst data",
-  "Please refresh the page or try again later.": "Obnovte stránku nebo to zkuste znovu později.",
-  "Add the relevant records first.": "Nejprve přidejte příslušné záznamy.",
-  "All Months": "Všechny měsíce",
-  "No \"%s\" options are defined yet.": "Zatím nejsou definovány žádné možnosti \"%s\".",
-  "No events found for %s %d.": "Pro %s %d nebyly nalezeny žádné události.",
-  "Try selecting a different event type, month, or year.": "Zkuste vybrat jiný typ události, měsíc nebo rok.",
+  "Fundraising": "",
+  "Data": "",
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "Zkopírován {{count}} člen",
-    "other": "Zkopírováno {{count}} členů"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Tento seznam má {{count}} příjemce — příliš mnoho pro odkaz mailto:. Použijte Kopírovat adresy.",
-    "other": "Tento seznam má {{count}} příjemců — příliš mnoho pro odkaz mailto:. Použijte Kopírovat adresy."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Použijte Kopírovat adresy.",
-    "other": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Použijte Kopírovat adresy."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Zbývá {{count}} min",
-    "other": "Zbývá {{count}} min"
+    "one": "",
+    "other": ""
   }
 }

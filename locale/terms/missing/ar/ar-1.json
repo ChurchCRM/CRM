@@ -1,49 +1,20 @@
 {
-  "CSV": "CSV",
-  "OFX": "OFX",
-  "Anniversary: %s": "الذكرى السنوية: %s",
-  "Church": "الكنيسة",
-  "Classifications": "التصنيفات",
-  "Closest": "الأقرب",
-  "Deposit #%d": "إيداع رقم %d",
-  "Failed to get fundraiser count": "فشل في الحصول على عدد جمع التبرعات",
-  "Failed to load neighbors.": "فشل في تحميل الجيران.",
-  "Farther": "أبعد",
-  "Farthest": "الأبعد",
-  "Find Neighbors": "البحث عن الجيران",
-  "Find nearby families and add them to your cart": "ابحث عن العائلات القريبة وأضفها إلى سلتك",
-  "Map centered on": "الخريطة مركزها على",
-  "Max distance": "أقصى مسافة",
-  "Max neighbors": "أقصى عدد من الجيران",
-  "Near": "قريب",
-  "Please select a family.": "الرجاء اختيار عائلة.",
-  "Results": "النتائج",
-  "Same location": "نفس الموقع",
-  "Search Neighbors": "البحث عن الجيران",
-  "Select a family and click Find Neighbors to see results.": "اختر عائلة وانقر على البحث عن الجيران لرؤية النتائج.",
-  "Selected family": "العائلة المختارة",
-  "This value must be a valid field name.": "يجب أن تكون هذه القيمة اسم حقل صالحاً.",
-  "Could not load data": "تعذّر تحميل البيانات",
-  "Please refresh the page or try again later.": "الرجاء تحديث الصفحة أو المحاولة لاحقاً.",
-  "Add the relevant records first.": "أضف السجلات ذات الصلة أولاً.",
-  "All Months": "جميع الأشهر",
-  "No \"%s\" options are defined yet.": "لم يتم تحديد أي خيارات \"%s\" حتى الآن.",
-  "No events found for %s %d.": "لم يتم العثور على أحداث لـ %s %d.",
-  "Try selecting a different event type, month, or year.": "حاول تحديد نوع حدث أو شهر أو سنة مختلفة.",
+  "CSV": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "تم نسخ {{count}} عضو",
-    "other": "تم نسخ {{count}} أعضاء"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "تحتوي هذه القائمة على {{count}} مستلم — كثير جداً لرابط mailto:. استخدم نسخ العناوين.",
-    "other": "تحتوي هذه القائمة على {{count}} مستلمين — كثير جداً لرابط mailto:. استخدم نسخ العناوين."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "عدد كبير جداً من المستلمين لعميل البريد الإلكتروني ({{count}} > {{max}}). استخدم نسخ العناوين.",
-    "other": "عدد كبير جداً من المستلمين لعميل البريد الإلكتروني ({{count}} > {{max}}). استخدم نسخ العناوين."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "متبقي {{count}} دقيقة",
-    "other": "متبقي {{count}} دقائق"
+    "one": "",
+    "other": ""
   }
 }

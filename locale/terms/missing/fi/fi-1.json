@@ -1,49 +1,20 @@
 {
-  "CSV": "CSV",
-  "OFX": "OFX",
-  "Anniversary: %s": "Vuosipäivä: %s",
-  "Church": "Seurakunta",
-  "Classifications": "Luokittelut",
-  "Closest": "Lähin",
-  "Deposit #%d": "Talletus nro %d",
-  "Failed to get fundraiser count": "Varainkeruun määrää ei voitu hakea",
-  "Failed to load neighbors.": "Naapureita ei voitu ladata.",
-  "Farther": "Kauempana",
-  "Farthest": "Kauimpana",
-  "Find Neighbors": "Etsi naapureita",
-  "Find nearby families and add them to your cart": "Etsi lähellä olevia perheitä ja lisää ne ostoskoriin",
-  "Map centered on": "Kartta keskitetty kohteeseen",
-  "Max distance": "Enimmäisetäisyys",
-  "Max neighbors": "Enimmäisnaapurit",
-  "Near": "Lähellä",
-  "Please select a family.": "Valitse perhe.",
-  "Results": "Tulokset",
-  "Same location": "Sama sijainti",
-  "Search Neighbors": "Hae naapureita",
-  "Select a family and click Find Neighbors to see results.": "Valitse perhe ja napsauta Etsi naapureita nähdäksesi tulokset.",
-  "Selected family": "Valittu perhe",
-  "This value must be a valid field name.": "Tämän arvon on oltava kelvollinen kenttänimi.",
-  "Could not load data": "Tietoja ei voitu ladata",
-  "Please refresh the page or try again later.": "Päivitä sivu tai yritä myöhemmin uudelleen.",
-  "Add the relevant records first.": "Lisää ensin asiaankuuluvat tietueet.",
-  "All Months": "Kaikki kuukaudet",
-  "No \"%s\" options are defined yet.": "\"%s\"-vaihtoehtoja ei ole vielä määritetty.",
-  "No events found for %s %d.": "Kohteelle %s %d ei löytynyt tapahtumia.",
-  "Try selecting a different event type, month, or year.": "Yritä valita eri tapahtumatyyppi, kuukausi tai vuosi.",
+  "CSV": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "{{count}} jäsen kopioitu",
-    "other": "{{count}} jäsentä kopioitu"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Tällä listalla on {{count}} vastaanottaja — liian monta mailto:-linkille. Käytä sen sijaan Kopioi osoitteet.",
-    "other": "Tällä listalla on {{count}} vastaanottajaa — liian monta mailto:-linkille. Käytä sen sijaan Kopioi osoitteet."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Liian monta vastaanottajaa sähköpostiohjelmalle ({{count}} > {{max}}). Käytä sen sijaan Kopioi osoitteet.",
-    "other": "Liian monta vastaanottajaa sähköpostiohjelmalle ({{count}} > {{max}}). Käytä sen sijaan Kopioi osoitteet."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min jäljellä",
-    "other": "{{count}} min jäljellä"
+    "one": "",
+    "other": ""
   }
 }

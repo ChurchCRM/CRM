@@ -1,52 +1,24 @@
 {
-  "Code": "Code",
-  "Signature": "Signature",
-  "Auto": "Auto",
-  "CSV": "CSV",
-  "OFX": "OFX",
-  "Anniversary: %s": "Anniversaire : %s",
-  "Church": "Église",
-  "Classifications": "Classifications",
-  "Closest": "Le plus proche",
-  "Deposit #%d": "Dépôt n° %d",
-  "Failed to get fundraiser count": "Impossible d'obtenir le nombre de collectes de fonds",
-  "Failed to load neighbors.": "Impossible de charger les voisins.",
-  "Farther": "Plus loin",
-  "Farthest": "Le plus éloigné",
-  "Find Neighbors": "Trouver des voisins",
-  "Find nearby families and add them to your cart": "Trouver des familles à proximité et les ajouter au panier",
-  "Map centered on": "Carte centrée sur",
-  "Max distance": "Distance maximale",
-  "Max neighbors": "Nombre maximum de voisins",
-  "Near": "Près",
-  "Please select a family.": "Veuillez sélectionner une famille.",
-  "Results": "Résultats",
-  "Same location": "Même emplacement",
-  "Search Neighbors": "Rechercher des voisins",
-  "Select a family and click Find Neighbors to see results.": "Sélectionnez une famille et cliquez sur Trouver des voisins pour voir les résultats.",
-  "Selected family": "Famille sélectionnée",
-  "This value must be a valid field name.": "Cette valeur doit être un nom de champ valide.",
-  "Could not load data": "Impossible de charger les données",
-  "Please refresh the page or try again later.": "Veuillez actualiser la page ou réessayer plus tard.",
-  "Add the relevant records first.": "Ajoutez d'abord les enregistrements pertinents.",
-  "All Months": "Tous les mois",
-  "No \"%s\" options are defined yet.": "Aucune option \"%s\" n'est encore définie.",
-  "No events found for %s %d.": "Aucun événement trouvé pour %s %d.",
-  "Try selecting a different event type, month, or year.": "Essayez de sélectionner un type d'événement, un mois ou une année différent.",
+  "Code": "",
+  "Signature": "",
+  "Auto": "",
+  "CSV": "",
+  "OFX": "",
+  "Classifications": "",
   "Copied {{count}} members": {
-    "one": "{{count}} membre copié",
-    "other": "{{count}} membres copiés"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Cette liste contient {{count}} destinataire — trop pour un lien mailto:. Utilisez Copier les adresses.",
-    "other": "Cette liste contient {{count}} destinataires — trop pour un lien mailto:. Utilisez Copier les adresses."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez Copier les adresses.",
-    "other": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez Copier les adresses."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} min restante",
-    "other": "{{count}} min restantes"
+    "one": "",
+    "other": ""
   }
 }

@@ -1,49 +1,20 @@
 {
-  "CSV": "CSV",
-  "OFX": "OFX",
-  "Anniversary: %s": "周年紀念：%s",
-  "Church": "教會",
-  "Classifications": "分類",
-  "Closest": "最近",
-  "Deposit #%d": "存款 #%d",
-  "Failed to get fundraiser count": "無法取得募款活動數量",
-  "Failed to load neighbors.": "載入鄰近家庭失敗。",
-  "Farther": "更遠",
-  "Farthest": "最遠",
-  "Find Neighbors": "尋找鄰近家庭",
-  "Find nearby families and add them to your cart": "尋找鄰近家庭並加入購物車",
-  "Map centered on": "地圖中心位於",
-  "Max distance": "最大距離",
-  "Max neighbors": "最多鄰居數",
-  "Near": "附近",
-  "Please select a family.": "請選擇一個家庭。",
-  "Results": "結果",
-  "Same location": "相同位置",
-  "Search Neighbors": "搜尋鄰近家庭",
-  "Select a family and click Find Neighbors to see results.": "選擇一個家庭，然後點擊尋找鄰近家庭以查看結果。",
-  "Selected family": "已選家庭",
-  "This value must be a valid field name.": "此值必須是有效的欄位名稱。",
-  "Could not load data": "無法載入資料",
-  "Please refresh the page or try again later.": "請重新整理頁面或稍後再試。",
-  "Add the relevant records first.": "請先新增相關記錄。",
-  "All Months": "所有月份",
-  "No \"%s\" options are defined yet.": "尚未定義任何「%s」選項。",
-  "No events found for %s %d.": "未找到 %s %d 的任何活動。",
-  "Try selecting a different event type, month, or year.": "請嘗試選擇不同的活動類型、月份或年份。",
+  "CSV": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "已複製 {{count}} 位成員",
-    "other": "已複製 {{count}} 位成員"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "此清單有 {{count}} 位收件人——對於 mailto: 連結來說太多了。請使用複製地址。",
-    "other": "此清單有 {{count}} 位收件人——對於 mailto: 連結來說太多了。請使用複製地址。"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "電子郵件客戶端的收件人太多 ({{count}} > {{max}})。請使用複製地址。",
-    "other": "電子郵件客戶端的收件人太多 ({{count}} > {{max}})。請使用複製地址。"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "剩餘 {{count}} 分鐘",
-    "other": "剩餘 {{count}} 分鐘"
+    "one": "",
+    "other": ""
   }
 }

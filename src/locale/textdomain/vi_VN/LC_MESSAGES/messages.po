@@ -17715,3 +17715,119 @@ msgstr "Những gì bạn sẽ nhận được"
 msgid "Failed to get deposit count"
 msgstr "Không thể lấy số lượng tiền gửi"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Kỷ niệm: %s"
+
+#: 
+msgid "Church"
+msgstr "Nhà thờ"
+
+#: 
+msgid "Classifications"
+msgstr "Phân loại"
+
+#: 
+msgid "Closest"
+msgstr "Gần nhất"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Tiền gửi #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Không lấy được số lượng sự kiện gây quỹ"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Không tải được danh sách hàng xóm."
+
+#: 
+msgid "Farther"
+msgstr "Xa hơn"
+
+#: 
+msgid "Farthest"
+msgstr "Xa nhất"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Tìm hàng xóm"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Tìm các gia đình lân cận và thêm vào giỏ hàng"
+
+#: 
+msgid "Map centered on"
+msgstr "Bản đồ tập trung vào"
+
+#: 
+msgid "Max distance"
+msgstr "Khoảng cách tối đa"
+
+#: 
+msgid "Max neighbors"
+msgstr "Số hàng xóm tối đa"
+
+#: 
+msgid "Near"
+msgstr "Gần"
+
+#: 
+msgid "Please select a family."
+msgstr "Vui lòng chọn một gia đình."
+
+#: 
+msgid "Results"
+msgstr "Kết quả"
+
+#: 
+msgid "Same location"
+msgstr "Cùng vị trí"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Tìm kiếm hàng xóm"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Chọn một gia đình và nhấp vào Tìm hàng xóm để xem kết quả."
+
+#: 
+msgid "Selected family"
+msgstr "Gia đình được chọn"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Giá trị này phải là tên trường hợp lệ."
+
+#: 
+msgid "Could not load data"
+msgstr "Không thể tải dữ liệu"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Vui lòng làm mới trang hoặc thử lại sau."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Trước tiên hãy thêm các bản ghi liên quan."
+
+#: 
+msgid "All Months"
+msgstr "Tất cả các tháng"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Chưa có tùy chọn \"%s\" nào được xác định."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Không tìm thấy sự kiện nào cho %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Hãy thử chọn loại sự kiện, tháng hoặc năm khác."
+

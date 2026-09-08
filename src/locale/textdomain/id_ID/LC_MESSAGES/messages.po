@@ -17701,3 +17701,119 @@ msgstr "Apa yang akan Anda dapatkan"
 msgid "Failed to get deposit count"
 msgstr "Gagal mendapatkan jumlah setoran"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Hari Jadi: %s"
+
+#: 
+msgid "Church"
+msgstr "Gereja"
+
+#: 
+msgid "Classifications"
+msgstr "Klasifikasi"
+
+#: 
+msgid "Closest"
+msgstr "Terdekat"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Setoran #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Gagal mendapatkan jumlah penggalangan dana"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Gagal memuat tetangga."
+
+#: 
+msgid "Farther"
+msgstr "Lebih jauh"
+
+#: 
+msgid "Farthest"
+msgstr "Paling jauh"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Temukan Tetangga"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Temukan keluarga terdekat dan tambahkan ke keranjang"
+
+#: 
+msgid "Map centered on"
+msgstr "Peta berpusat pada"
+
+#: 
+msgid "Max distance"
+msgstr "Jarak maksimal"
+
+#: 
+msgid "Max neighbors"
+msgstr "Jumlah tetangga maksimal"
+
+#: 
+msgid "Near"
+msgstr "Dekat"
+
+#: 
+msgid "Please select a family."
+msgstr "Silakan pilih keluarga."
+
+#: 
+msgid "Results"
+msgstr "Hasil"
+
+#: 
+msgid "Same location"
+msgstr "Lokasi sama"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Cari Tetangga"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Pilih keluarga dan klik Temukan Tetangga untuk melihat hasilnya."
+
+#: 
+msgid "Selected family"
+msgstr "Keluarga yang dipilih"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Nilai ini harus berupa nama bidang yang valid."
+
+#: 
+msgid "Could not load data"
+msgstr "Tidak dapat memuat data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Harap segarkan halaman atau coba lagi nanti."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Tambahkan catatan yang relevan terlebih dahulu."
+
+#: 
+msgid "All Months"
+msgstr "Semua Bulan"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Belum ada pilihan \"%s\" yang ditentukan."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Tidak ada acara yang ditemukan untuk %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Coba pilih jenis acara, bulan, atau tahun yang berbeda."
+

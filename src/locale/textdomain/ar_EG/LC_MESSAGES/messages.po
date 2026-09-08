@@ -17777,3 +17777,119 @@ msgstr "ما ستكسبه"
 msgid "Failed to get deposit count"
 msgstr "فشل في الحصول على عدد الودائع"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "الذكرى السنوية: %s"
+
+#: 
+msgid "Church"
+msgstr "الكنيسة"
+
+#: 
+msgid "Classifications"
+msgstr "التصنيفات"
+
+#: 
+msgid "Closest"
+msgstr "الأقرب"
+
+#: 
+msgid "Deposit #%d"
+msgstr "إيداع رقم %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "فشل في الحصول على عدد جمع التبرعات"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "فشل في تحميل الجيران."
+
+#: 
+msgid "Farther"
+msgstr "أبعد"
+
+#: 
+msgid "Farthest"
+msgstr "الأبعد"
+
+#: 
+msgid "Find Neighbors"
+msgstr "البحث عن الجيران"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "ابحث عن العائلات القريبة وأضفها إلى سلتك"
+
+#: 
+msgid "Map centered on"
+msgstr "الخريطة مركزها على"
+
+#: 
+msgid "Max distance"
+msgstr "أقصى مسافة"
+
+#: 
+msgid "Max neighbors"
+msgstr "أقصى عدد من الجيران"
+
+#: 
+msgid "Near"
+msgstr "قريب"
+
+#: 
+msgid "Please select a family."
+msgstr "الرجاء اختيار عائلة."
+
+#: 
+msgid "Results"
+msgstr "النتائج"
+
+#: 
+msgid "Same location"
+msgstr "نفس الموقع"
+
+#: 
+msgid "Search Neighbors"
+msgstr "البحث عن الجيران"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "اختر عائلة وانقر على البحث عن الجيران لرؤية النتائج."
+
+#: 
+msgid "Selected family"
+msgstr "العائلة المختارة"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "يجب أن تكون هذه القيمة اسم حقل صالحاً."
+
+#: 
+msgid "Could not load data"
+msgstr "تعذّر تحميل البيانات"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "الرجاء تحديث الصفحة أو المحاولة لاحقاً."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "أضف السجلات ذات الصلة أولاً."
+
+#: 
+msgid "All Months"
+msgstr "جميع الأشهر"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "لم يتم تحديد أي خيارات \"%s\" حتى الآن."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "لم يتم العثور على أحداث لـ %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "حاول تحديد نوع حدث أو شهر أو سنة مختلفة."
+

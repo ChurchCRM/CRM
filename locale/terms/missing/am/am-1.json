@@ -1,49 +1,20 @@
 {
-  "CSV": "CSV",
-  "OFX": "OFX",
-  "Anniversary: %s": "ዓመታዊ በዓል: %s",
-  "Church": "ቤተ ክርስቲያን",
-  "Classifications": "ምደባዎች",
-  "Closest": "ቅርብ",
-  "Deposit #%d": "ተቀማጭ ቁ.%d",
-  "Failed to get fundraiser count": "የገንዘብ ማሰባሰቢያ ቁጥር ማግኘት አልተቻለም",
-  "Failed to load neighbors.": "ጎረቤቶችን መጫን አልተቻለም።",
-  "Farther": "ይበልጥ ሩቅ",
-  "Farthest": "እጅግ ሩቅ",
-  "Find Neighbors": "ጎረቤቶችን ፈልግ",
-  "Find nearby families and add them to your cart": "ቅርብ ቤተሰቦችን ፈልግ እና ወደ ቅርጫትህ አስጨምር",
-  "Map centered on": "ካርታ ያተኮረ በ",
-  "Max distance": "ከፍተኛ ርቀት",
-  "Max neighbors": "ከፍተኛ ጎረቤቶች",
-  "Near": "ቅርብ",
-  "Please select a family.": "እባክዎ ቤተሰብ ይምረጡ።",
-  "Results": "ውጤቶች",
-  "Same location": "ተመሳሳይ ቦታ",
-  "Search Neighbors": "ጎረቤቶችን ፈልግ",
-  "Select a family and click Find Neighbors to see results.": "ቤተሰብ ይምረጡ እና ውጤቶችን ለማየት ጎረቤቶችን ፈልግ ን ጠቅ ያድርጉ።",
-  "Selected family": "የተመረጠ ቤተሰብ",
-  "This value must be a valid field name.": "ይህ ዋጋ ትክክለኛ የመስክ ስም መሆን አለበት።",
-  "Could not load data": "ዳታ መጫን አልተቻለም",
-  "Please refresh the page or try again later.": "እባክዎ ገጹን ያድሱ ወይም ቆይተው እንደገና ይሞክሩ።",
-  "Add the relevant records first.": "አስቀድሞ ተዛማጅ መዝገቦችን ያስጨምሩ።",
-  "All Months": "ሁሉም ወሮች",
-  "No \"%s\" options are defined yet.": "የ\"%s\" አማራጮች እስካሁን አልተገለጹም።",
-  "No events found for %s %d.": "ለ%s %d ምንም ዝግጅቶች አልተገኙም።",
-  "Try selecting a different event type, month, or year.": "ሌላ ዝግጅት አይነት፣ ወር ወይም ዓመት ለመምረጥ ሞክሩ።",
+  "CSV": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "{{count}} አባል ተቀድቷል",
-    "other": "{{count}} አባሎች ተቀድተዋል"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ይህ ዝርዝር {{count}} ተቀባይ አለው — ለ mailto: አገናኝ በጣም ብዙ። አድራሻዎችን ቅዳ ን ይጠቀሙ።",
-    "other": "ይህ ዝርዝር {{count}} ተቀባዮች አሉት — ለ mailto: አገናኝ በጣም ብዙ። አድራሻዎችን ቅዳ ን ይጠቀሙ።"
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ለኢሜይል ደንበኛ ተቀባዮች በጣም ብዙ ናቸው ({{count}} > {{max}}). አድራሻዎችን ቅዳ ን ይጠቀሙ።",
-    "other": "ለኢሜይል ደንበኛ ተቀባዮች በጣም ብዙ ናቸው ({{count}} > {{max}}). አድራሻዎችን ቅዳ ን ይጠቀሙ።"
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} ደቂቃ ቀርቷል",
-    "other": "{{count}} ደቂቃዎች ቀርተዋል"
+    "one": "",
+    "other": ""
   }
 }

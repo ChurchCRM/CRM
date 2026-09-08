@@ -17777,3 +17777,119 @@ msgstr "Hva du vil oppnå"
 msgid "Failed to get deposit count"
 msgstr "Kunne ikke hente antall innskudd"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Jubileum: %s"
+
+#: 
+msgid "Church"
+msgstr "Menighet"
+
+#: 
+msgid "Classifications"
+msgstr "Klassifiseringer"
+
+#: 
+msgid "Closest"
+msgstr "Nærmest"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Innskudd nr. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Kunne ikke hente antall innsamlingsaksjoner"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Kunne ikke laste inn naboer."
+
+#: 
+msgid "Farther"
+msgstr "Lenger unna"
+
+#: 
+msgid "Farthest"
+msgstr "Lengst unna"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Finn naboer"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Finn familier i nærheten og legg dem til i handlekurven"
+
+#: 
+msgid "Map centered on"
+msgstr "Kart sentrert på"
+
+#: 
+msgid "Max distance"
+msgstr "Maksimal avstand"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksimalt antall naboer"
+
+#: 
+msgid "Near"
+msgstr "Nær"
+
+#: 
+msgid "Please select a family."
+msgstr "Velg en familie."
+
+#: 
+msgid "Results"
+msgstr "Resultater"
+
+#: 
+msgid "Same location"
+msgstr "Samme sted"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Søk etter naboer"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Velg en familie og klikk på Finn naboer for å se resultatene."
+
+#: 
+msgid "Selected family"
+msgstr "Valgt familie"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Denne verdien må være et gyldig feltnavn."
+
+#: 
+msgid "Could not load data"
+msgstr "Kunne ikke laste inn data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Oppdater siden eller prøv igjen senere."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Legg til de relevante postene først."
+
+#: 
+msgid "All Months"
+msgstr "Alle måneder"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Ingen \"%s\"-alternativer er definert ennå."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Ingen hendelser funnet for %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Prøv å velge en annen hendelsestype, måned eller år."
+

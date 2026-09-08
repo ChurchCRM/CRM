@@ -1,57 +1,28 @@
 {
-  "CSV": "CSV",
+  "CSV": "",
   "Email sent to %d family.": {
-    "one": "%d కుటుంబానికి ఇమెయిల్ పంపబడింది.|%d కుటుంబాలకు ఇమెయిల్ పంపబడింది.",
-    "other": "%d కుటుంబాలకు ఇమెయిల్ పంపబడింది."
+    "one": "%d కుటుంబానికి ఇమెయిల్ పంపబడింది.|%d కుటుంబాలకు ఇమెయిల్ పంపబడింది.|%d కుటుంబాలకు ఇమెయిల్ పంపబడింది.",
+    "other": ""
   },
-  "OFX": "OFX",
+  "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.|%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.",
-    "other": "%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది."
+    "one": "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.|%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.|%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.",
+    "other": ""
   },
-  "Anniversary: %s": "వార్షికోత్సవం: %s",
-  "Church": "చర్చి",
-  "Classifications": "వర్గీకరణలు",
-  "Closest": "సమీపంలో ఉన్న",
-  "Deposit #%d": "డిపాజిట్ #%d",
-  "Failed to get fundraiser count": "నిధులు సేకరణ సంఖ్యను పొందడం విఫలమైంది",
-  "Failed to load neighbors.": "పొరుగువారిని లోడ్ చేయడం విఫలమైంది.",
-  "Farther": "మరింత దూరంగా",
-  "Farthest": "అతి దూరంగా",
-  "Find Neighbors": "పొరుగువారిని కనుగొనండి",
-  "Find nearby families and add them to your cart": "సమీపంలోని కుటుంబాలను కనుగొని మీ కార్ట్‌కు జోడించండి",
-  "Map centered on": "మ్యాప్ కేంద్రీకృతం:",
-  "Max distance": "గరిష్ట దూరం",
-  "Max neighbors": "గరిష్ట పొరుగువారు",
-  "Near": "సమీపంలో",
-  "Please select a family.": "దయచేసి ఒక కుటుంబాన్ని ఎంచుకోండి.",
-  "Results": "ఫలితాలు",
-  "Same location": "అదే స్థానం",
-  "Search Neighbors": "పొరుగువారిని శోధించండి",
-  "Select a family and click Find Neighbors to see results.": "ఒక కుటుంబాన్ని ఎంచుకొని ఫలితాలను చూడటానికి పొరుగువారిని కనుగొనండి క్లిక్ చేయండి.",
-  "Selected family": "ఎంచుకున్న కుటుంబం",
-  "This value must be a valid field name.": "ఈ విలువ చెల్లుబాటు అయ్యే ఫీల్డ్ పేరు అయి ఉండాలి.",
-  "Could not load data": "డేటాను లోడ్ చేయలేకపోయింది",
-  "Please refresh the page or try again later.": "దయచేసి పేజీని రిఫ్రెష్ చేయండి లేదా తర్వాత మళ్లీ ప్రయత్నించండి.",
-  "Add the relevant records first.": "ముందు సంబంధిత రికార్డులను జోడించండి.",
-  "All Months": "అన్ని నెలలు",
-  "No \"%s\" options are defined yet.": "\"%s\" ఎంపికలు ఇంకా నిర్వచించబడలేదు.",
-  "No events found for %s %d.": "%s %d కోసం ఏ ఈవెంట్లూ కనుగొనబడలేదు.",
-  "Try selecting a different event type, month, or year.": "వేరే ఈవెంట్ రకం, నెల లేదా సంవత్సరాన్ని ఎంచుకోవడానికి ప్రయత్నించండి.",
   "Copied {{count}} members": {
-    "one": "{{count}} సభ్యుడు కాపీ చేయబడ్డాడు",
-    "other": "{{count}} సభ్యులు కాపీ చేయబడ్డారు"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "ఈ జాబితాలో {{count}} స్వీకర్త ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలను కాపీ చేయండి.",
-    "other": "ఈ జాబితాలో {{count}} స్వీకర్తలు ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలను కాపీ చేయండి."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "ఇమెయిల్ క్లయింట్‌కు స్వీకర్తలు చాలా ఎక్కువ ({{count}} > {{max}}). బదులుగా చిరునామాలను కాపీ చేయండి.",
-    "other": "ఇమెయిల్ క్లయింట్‌కు స్వీకర్తలు చాలా ఎక్కువ ({{count}} > {{max}}). బదులుగా చిరునామాలను కాపీ చేయండి."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} నిమిషం మిగిలింది",
-    "other": "{{count}} నిమిషాలు మిగిలాయి"
+    "one": "",
+    "other": ""
   }
 }
