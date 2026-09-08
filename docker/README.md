@@ -199,3 +199,12 @@ Reference configurations for production-like deployments are in `examples/`:
 - **FrankenPHP** (`examples/docker-compose.frankenphp.yaml`)
 
 See `examples/README.md` for details.
+
+---
+
+Official Release Images
+---
+
+Pre-built, versioned images (Apache and PHP-FPM) are published to DockerHub automatically on every
+GitHub release. See [`DOCKER_RELEASE.md`](DOCKER_RELEASE.md) for available tags, quick start, and
+the one-time DockerHub credentials setup.
