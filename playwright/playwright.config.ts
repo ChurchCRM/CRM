@@ -49,6 +49,9 @@ export default defineConfig({
     // screenshots are marketing material, not test evidence, and that
     // banner has no business being in either.
     timezoneId: 'America/Chicago',
+    // Capture only the visible viewport, not full-page scroll
+    // (see https://github.com/ChurchCRM/ChurchCRM.io/issues/100)
+    screenshot: { mode: 'only-on-failure', fullPage: false },
   },
   projects: [
     {
