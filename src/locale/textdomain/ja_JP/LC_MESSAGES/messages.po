@@ -17676,3 +17676,119 @@ msgstr "追加される機能"
 msgid "Failed to get deposit count"
 msgstr "入金数の取得に失敗しました"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "記念日: %s"
+
+#: 
+msgid "Church"
+msgstr "教会"
+
+#: 
+msgid "Classifications"
+msgstr "分類"
+
+#: 
+msgid "Closest"
+msgstr "最も近い"
+
+#: 
+msgid "Deposit #%d"
+msgstr "入金 #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "募金活動の件数を取得できませんでした"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "近隣を読み込めませんでした。"
+
+#: 
+msgid "Farther"
+msgstr "さらに遠い"
+
+#: 
+msgid "Farthest"
+msgstr "最も遠い"
+
+#: 
+msgid "Find Neighbors"
+msgstr "近隣を検索"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "近くの家族を検索してカートに追加"
+
+#: 
+msgid "Map centered on"
+msgstr "マップの中心:"
+
+#: 
+msgid "Max distance"
+msgstr "最大距離"
+
+#: 
+msgid "Max neighbors"
+msgstr "最大近隣数"
+
+#: 
+msgid "Near"
+msgstr "近く"
+
+#: 
+msgid "Please select a family."
+msgstr "家族を選択してください。"
+
+#: 
+msgid "Results"
+msgstr "結果"
+
+#: 
+msgid "Same location"
+msgstr "同じ場所"
+
+#: 
+msgid "Search Neighbors"
+msgstr "近隣を検索"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "家族を選択して「近隣を検索」をクリックすると結果が表示されます。"
+
+#: 
+msgid "Selected family"
+msgstr "選択した家族"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "この値は有効なフィールド名である必要があります。"
+
+#: 
+msgid "Could not load data"
+msgstr "データを読み込めませんでした"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "ページを更新するか、後でもう一度お試しください。"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "最初に関連するレコードを追加してください。"
+
+#: 
+msgid "All Months"
+msgstr "すべての月"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "\"%s\" オプションはまだ定義されていません。"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d のイベントが見つかりませんでした。"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "別のイベントタイプ、月、または年を選択してみてください。"
+

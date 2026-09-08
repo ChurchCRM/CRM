@@ -1,49 +1,20 @@
 {
-  "CSV": "CSV",
-  "OFX": "OFX",
-  "Anniversary: %s": "Επέτειος: %s",
-  "Church": "Εκκλησία",
-  "Classifications": "Κατηγοριοποιήσεις",
-  "Closest": "Πλησιέστερο",
-  "Deposit #%d": "Κατάθεση #%d",
-  "Failed to get fundraiser count": "Αποτυχία λήψης αριθμού συγκεντρώσεων κεφαλαίων",
-  "Failed to load neighbors.": "Αποτυχία φόρτωσης γειτόνων.",
-  "Farther": "Πιο μακριά",
-  "Farthest": "Πιο απομακρυσμένο",
-  "Find Neighbors": "Εύρεση γειτόνων",
-  "Find nearby families and add them to your cart": "Βρείτε κοντινές οικογένειες και προσθέστε τις στο καλάθι σας",
-  "Map centered on": "Χάρτης με κέντρο στο",
-  "Max distance": "Μέγιστη απόσταση",
-  "Max neighbors": "Μέγιστος αριθμός γειτόνων",
-  "Near": "Κοντά",
-  "Please select a family.": "Παρακαλώ επιλέξτε μια οικογένεια.",
-  "Results": "Αποτελέσματα",
-  "Same location": "Ίδια τοποθεσία",
-  "Search Neighbors": "Αναζήτηση γειτόνων",
-  "Select a family and click Find Neighbors to see results.": "Επιλέξτε μια οικογένεια και κάντε κλικ στο Εύρεση γειτόνων για να δείτε τα αποτελέσματα.",
-  "Selected family": "Επιλεγμένη οικογένεια",
-  "This value must be a valid field name.": "Αυτή η τιμή πρέπει να είναι έγκυρο όνομα πεδίου.",
-  "Could not load data": "Δεν ήταν δυνατή η φόρτωση δεδομένων",
-  "Please refresh the page or try again later.": "Ανανεώστε τη σελίδα ή δοκιμάστε ξανά αργότερα.",
-  "Add the relevant records first.": "Προσθέστε πρώτα τις σχετικές εγγραφές.",
-  "All Months": "Όλοι οι μήνες",
-  "No \"%s\" options are defined yet.": "Δεν έχουν οριστεί ακόμα επιλογές \"%s\".",
-  "No events found for %s %d.": "Δεν βρέθηκαν εκδηλώσεις για %s %d.",
-  "Try selecting a different event type, month, or year.": "Δοκιμάστε να επιλέξετε διαφορετικό τύπο εκδήλωσης, μήνα ή έτος.",
+  "CSV": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "Αντιγράφηκε {{count}} μέλος",
-    "other": "Αντιγράφηκαν {{count}} μέλη"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Αυτή η λίστα έχει {{count}} παραλήπτη — πάρα πολλοί για σύνδεσμο mailto:. Χρησιμοποιήστε Αντιγραφή διευθύνσεων.",
-    "other": "Αυτή η λίστα έχει {{count}} παραλήπτες — πάρα πολλοί για σύνδεσμο mailto:. Χρησιμοποιήστε Αντιγραφή διευθύνσεων."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Πάρα πολλοί παραλήπτες για το πρόγραμμα email ({{count}} > {{max}}). Χρησιμοποιήστε Αντιγραφή διευθύνσεων.",
-    "other": "Πάρα πολλοί παραλήπτες για το πρόγραμμα email ({{count}} > {{max}}). Χρησιμοποιήστε Αντιγραφή διευθύνσεων."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "Απομένει {{count}} λεπτό",
-    "other": "Απομένουν {{count}} λεπτά"
+    "one": "",
+    "other": ""
   }
 }

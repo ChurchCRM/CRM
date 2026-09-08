@@ -17706,3 +17706,119 @@ msgstr "업그레이드 시 얻는 것"
 msgid "Failed to get deposit count"
 msgstr "입금 수 조회에 실패했습니다"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "기념일: %s"
+
+#: 
+msgid "Church"
+msgstr "교회"
+
+#: 
+msgid "Classifications"
+msgstr "분류"
+
+#: 
+msgid "Closest"
+msgstr "가장 가까운"
+
+#: 
+msgid "Deposit #%d"
+msgstr "입금 #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "모금 행사 수를 가져오지 못했습니다"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "이웃을 불러오지 못했습니다."
+
+#: 
+msgid "Farther"
+msgstr "더 멀리"
+
+#: 
+msgid "Farthest"
+msgstr "가장 멀리"
+
+#: 
+msgid "Find Neighbors"
+msgstr "이웃 찾기"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "근처 가정을 찾아 장바구니에 추가하세요"
+
+#: 
+msgid "Map centered on"
+msgstr "지도 중심:"
+
+#: 
+msgid "Max distance"
+msgstr "최대 거리"
+
+#: 
+msgid "Max neighbors"
+msgstr "최대 이웃 수"
+
+#: 
+msgid "Near"
+msgstr "근처"
+
+#: 
+msgid "Please select a family."
+msgstr "가정을 선택해 주세요."
+
+#: 
+msgid "Results"
+msgstr "결과"
+
+#: 
+msgid "Same location"
+msgstr "같은 위치"
+
+#: 
+msgid "Search Neighbors"
+msgstr "이웃 검색"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "가정을 선택하고 이웃 찾기를 클릭하여 결과를 확인하세요."
+
+#: 
+msgid "Selected family"
+msgstr "선택된 가정"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "이 값은 유효한 필드 이름이어야 합니다."
+
+#: 
+msgid "Could not load data"
+msgstr "데이터를 불러올 수 없습니다"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "페이지를 새로 고치거나 나중에 다시 시도하세요."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "먼저 관련 레코드를 추가하세요."
+
+#: 
+msgid "All Months"
+msgstr "모든 달"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "아직 \"%s\" 옵션이 정의되지 않았습니다."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d에 대한 행사를 찾을 수 없습니다."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "다른 행사 유형, 달 또는 연도를 선택해 보세요."
+

@@ -17781,3 +17781,119 @@ msgstr "Co zyskasz"
 msgid "Failed to get deposit count"
 msgstr "Nie udało się pobrać liczby depozytów"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Rocznica: %s"
+
+#: 
+msgid "Church"
+msgstr "Kościół"
+
+#: 
+msgid "Classifications"
+msgstr "Klasyfikacje"
+
+#: 
+msgid "Closest"
+msgstr "Najbliższy"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Depozyt nr %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Nie udało się uzyskać liczby zbiórek"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Nie udało się załadować sąsiadów."
+
+#: 
+msgid "Farther"
+msgstr "Dalej"
+
+#: 
+msgid "Farthest"
+msgstr "Najdalej"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Znajdź sąsiadów"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Znajdź pobliskie rodziny i dodaj je do koszyka"
+
+#: 
+msgid "Map centered on"
+msgstr "Mapa wyśrodkowana na"
+
+#: 
+msgid "Max distance"
+msgstr "Maksymalna odległość"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksymalna liczba sąsiadów"
+
+#: 
+msgid "Near"
+msgstr "Blisko"
+
+#: 
+msgid "Please select a family."
+msgstr "Proszę wybrać rodzinę."
+
+#: 
+msgid "Results"
+msgstr "Wyniki"
+
+#: 
+msgid "Same location"
+msgstr "Ta sama lokalizacja"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Szukaj sąsiadów"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Wybierz rodzinę i kliknij Znajdź sąsiadów, aby zobaczyć wyniki."
+
+#: 
+msgid "Selected family"
+msgstr "Wybrana rodzina"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Ta wartość musi być prawidłową nazwą pola."
+
+#: 
+msgid "Could not load data"
+msgstr "Nie udało się załadować danych"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Odśwież stronę lub spróbuj ponownie później."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Najpierw dodaj odpowiednie rekordy."
+
+#: 
+msgid "All Months"
+msgstr "Wszystkie miesiące"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Nie zdefiniowano jeszcze żadnych opcji \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Nie znaleziono wydarzeń dla %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Spróbuj wybrać inny typ wydarzenia, miesiąc lub rok."
+

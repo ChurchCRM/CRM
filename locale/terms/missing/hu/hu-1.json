@@ -1,50 +1,21 @@
 {
-  "CSV": "CSV",
-  "N/A": "N/A",
-  "OFX": "OFX",
-  "Anniversary: %s": "Évforduló: %s",
-  "Church": "Gyülekezet",
-  "Classifications": "Besorolások",
-  "Closest": "Legközelebb",
-  "Deposit #%d": "%d. sz. befizetés",
-  "Failed to get fundraiser count": "Nem sikerült lekérni a gyűjtések számát",
-  "Failed to load neighbors.": "Nem sikerült betölteni a szomszédokat.",
-  "Farther": "Távolabb",
-  "Farthest": "Legtávolabb",
-  "Find Neighbors": "Szomszédok keresése",
-  "Find nearby families and add them to your cart": "Közeli családok keresése és hozzáadása a kosárhoz",
-  "Map centered on": "Térkép középpontja:",
-  "Max distance": "Maximális távolság",
-  "Max neighbors": "Szomszédok maximuma",
-  "Near": "Közel",
-  "Please select a family.": "Kérjük, válasszon egy családot.",
-  "Results": "Eredmények",
-  "Same location": "Azonos helyszín",
-  "Search Neighbors": "Szomszédok keresése",
-  "Select a family and click Find Neighbors to see results.": "Válasszon egy családot, majd kattintson a Szomszédok keresése gombra az eredmények megtekintéséhez.",
-  "Selected family": "Kiválasztott család",
-  "This value must be a valid field name.": "Ennek az értéknek érvényes mezőnévnek kell lennie.",
-  "Could not load data": "Az adatok nem tölthetők be",
-  "Please refresh the page or try again later.": "Kérjük, frissítse az oldalt, vagy próbálja meg később.",
-  "Add the relevant records first.": "Először adja hozzá a kapcsolódó rekordokat.",
-  "All Months": "Minden hónap",
-  "No \"%s\" options are defined yet.": "Még nem lettek megadva \"%s\" lehetőségek.",
-  "No events found for %s %d.": "Nem találhatók események ehhez: %s %d.",
-  "Try selecting a different event type, month, or year.": "Próbáljon más eseménytípust, hónapot vagy évet választani.",
+  "CSV": "",
+  "N/A": "",
+  "OFX": "",
   "Copied {{count}} members": {
-    "one": "{{count}} tag másolva",
-    "other": "{{count}} tag másolva"
+    "one": "",
+    "other": ""
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Ez a lista {{count}} címzettet tartalmaz — túl sokat egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót.",
-    "other": "Ez a lista {{count}} címzettet tartalmaz — túl sokat egy mailto: hivatkozáshoz. Használja a Címek másolása funkciót."
+    "one": "",
+    "other": ""
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Túl sok a címzett a levelezőprogramhoz ({{count}} > {{max}}). Használja a Címek másolása funkciót.",
-    "other": "Túl sok a címzett a levelezőprogramhoz ({{count}} > {{max}}). Használja a Címek másolása funkciót."
+    "one": "",
+    "other": ""
   },
   "{{count}} min left": {
-    "one": "{{count}} perc van hátra",
-    "other": "{{count}} perc van hátra"
+    "one": "",
+    "other": ""
   }
 }

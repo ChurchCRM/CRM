@@ -17693,3 +17693,119 @@ msgstr "Mitä saat"
 msgid "Failed to get deposit count"
 msgstr "Talletusten määrän hakeminen epäonnistui"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Vuosipäivä: %s"
+
+#: 
+msgid "Church"
+msgstr "Seurakunta"
+
+#: 
+msgid "Classifications"
+msgstr "Luokittelut"
+
+#: 
+msgid "Closest"
+msgstr "Lähin"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Talletus nro %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Varainkeruun määrää ei voitu hakea"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Naapureita ei voitu ladata."
+
+#: 
+msgid "Farther"
+msgstr "Kauempana"
+
+#: 
+msgid "Farthest"
+msgstr "Kauimpana"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Etsi naapureita"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Etsi lähellä olevia perheitä ja lisää ne ostoskoriin"
+
+#: 
+msgid "Map centered on"
+msgstr "Kartta keskitetty kohteeseen"
+
+#: 
+msgid "Max distance"
+msgstr "Enimmäisetäisyys"
+
+#: 
+msgid "Max neighbors"
+msgstr "Enimmäisnaapurit"
+
+#: 
+msgid "Near"
+msgstr "Lähellä"
+
+#: 
+msgid "Please select a family."
+msgstr "Valitse perhe."
+
+#: 
+msgid "Results"
+msgstr "Tulokset"
+
+#: 
+msgid "Same location"
+msgstr "Sama sijainti"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Hae naapureita"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Valitse perhe ja napsauta Etsi naapureita nähdäksesi tulokset."
+
+#: 
+msgid "Selected family"
+msgstr "Valittu perhe"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Tämän arvon on oltava kelvollinen kenttänimi."
+
+#: 
+msgid "Could not load data"
+msgstr "Tietoja ei voitu ladata"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Päivitä sivu tai yritä myöhemmin uudelleen."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Lisää ensin asiaankuuluvat tietueet."
+
+#: 
+msgid "All Months"
+msgstr "Kaikki kuukaudet"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "\"%s\"-vaihtoehtoja ei ole vielä määritetty."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Kohteelle %s %d ei löytynyt tapahtumia."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Yritä valita eri tapahtumatyyppi, kuukausi tai vuosi."
+
