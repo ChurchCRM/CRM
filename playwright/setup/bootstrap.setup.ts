@@ -49,18 +49,18 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await page.locator('#setup-success').waitFor({ state: 'visible', timeout: 120000 });
   await humanPause(page, 800);
   await humanClick(page.locator('#continue-to-login'));
-  await page.waitForURL(/\/session\/begin/, { timeout: 10000 });
+  await page.waitForURL(/\/session\/begin/, { timeout: 30000 });
 
   // First admin login — forced password change.
   await page.goto('/login');
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
   await humanType(page.locator('input[name=Password]'), ADMIN_INITIAL_PASSWORD);
   await humanPause(page, 300);
-  await Promise.all([
-    page.waitForNavigation({ waitUntil: 'load', timeout: 30000 }),
-    page.locator('input[name=Password]').press('Enter')
-  ]);
-  await expect(page).toHaveURL(/\/changepassword/);
+  await page.locator('input[name=Password]').press('Enter');
+  // waitForURL (not waitForNavigation, which only fires on the first
+  // navigation event) correctly handles the /login -> /changepassword
+  // redirect regardless of how many hops it takes.
+  await page.waitForURL(/\/changepassword/, { timeout: 30000 });
 
   await humanType(page.locator('#OldPassword'), ADMIN_INITIAL_PASSWORD);
   await humanType(page.locator('#NewPassword1'), ADMIN_WORKING_PASSWORD);
@@ -91,7 +91,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
 
   await humanPause(page, 500);
   await humanClick(page.locator('#church-info-form button[type=submit]'));
-  await page.getByText('Church information saved successfully').waitFor({ state: 'visible', timeout: 10000 });
+  await page.getByText('Church information saved successfully').first().waitFor({ state: 'visible', timeout: 10000 });
   await humanPause(page, 800);
 
   await captureScreen(page, testInfo, {

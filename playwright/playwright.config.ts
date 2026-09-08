@@ -9,12 +9,15 @@ const STORAGE_STATE_PATH = path.join(__dirname, '.auth', 'admin.json');
 // (Mobile < 768px, Tablet 768-1199.98px, Laptop/Desktop >= 1200px), using
 // one representative viewport per factor rather than full device emulation
 // (no touch/UA overrides) to keep automation simple and robust for a first
-// milestone. All four projects use the installed system Google Chrome
-// (`channel: 'chrome'` below) rather than Playwright's bundled Chromium —
-// `playwright install` downloads that bundled build from
-// cdn.playwright.dev/storage.googleapis.com, which hangs indefinitely in
-// some sandboxed/restricted-network environments. Pointing at system Chrome
-// (already present on any dev machine) skips that download entirely.
+// milestone. All four projects use Playwright's bundled Chromium (installed
+// via `npm run marketing:visuals:install`) — a `channel: 'chrome'` variant
+// was tried to sidestep a browser-download hang in one sandboxed
+// environment, but that requires Google Chrome to actually be installed on
+// whatever machine runs this, which isn't a safe assumption (confirmed
+// broken in a fresh environment with only Playwright's own Chromium
+// present). If the bundled-Chromium download hangs for you, allow
+// `cdn.playwright.dev` in your network policy first — that fixed it in
+// every case actually observed.
 export default defineConfig({
   testDir: '.',
   // Playwright's default (30s) is shorter than setup-church-info's own
@@ -39,7 +42,6 @@ export default defineConfig({
   reporter: [['list'], ['json', { outputFile: path.join(__dirname, 'artifacts', 'report.json') }]],
   use: {
     baseURL: BASE_URL,
-    channel: 'chrome',
     video: 'on',
     trace: 'retain-on-failure',
     actionTimeout: 15000,
