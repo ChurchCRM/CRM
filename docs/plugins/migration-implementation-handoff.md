@@ -14,10 +14,15 @@ failure, lifecycle and recovery validation. No receipt plugin is implemented.
   `ChurchCRM/CRM`, and push/admin access. Fork Actions is enabled. Repository-local
   author identity is `mitk5 <326325718+mitk5@users.noreply.github.com>`; `origin`
   targets the fork and `upstream` preserves ChurchCRM/CRM.
-- Local validation below covers the reviewed 53-file implementation on that base.
-  Hosted results will be recorded after publication and actual workflow completion.
+- Published implementation: [`ddcfa3965388e8f0c21c04669275713fdf463fb1`](https://github.com/mitk5/CRM/commit/ddcfa3965388e8f0c21c04669275713fdf463fb1),
+  containing the reviewed 53-file change. The Linux evidence below tests that exact
+  commit. This handoff's evidence update is a separate documentation-only commit.
+- [Published branch](https://github.com/mitk5/CRM/tree/feature/community-plugin-migrations)
+  and [implementation diff](https://github.com/mitk5/CRM/compare/caacc36a865a454f4f5b935daa940f500927f72a...ddcfa3965388e8f0c21c04669275713fdf463fb1).
 - No upstream issue, PR, merge, release or deployment has been performed.
-- No hosted CI run/job URL exists yet. The Linux matrix remains **not run**.
+- [Linux CI run 34299382732](https://github.com/mitk5/CRM/actions/runs/34299382732)
+  completed successfully on the fork's feature-branch push. Both database jobs
+  and both dependency modes passed, including the mandatory symlink subcase.
 
 ## Architecture and contract
 
@@ -120,29 +125,48 @@ are used. Temporary packages and database dumps are not part of the source diff.
 | PHPStan level 6, three migration infrastructure classes | No errors; exit 0 | Targeted analysis |
 | Plugin security scanner | 0 errors, 2 reviewed warnings; exit 0 | Generated Perpl prepared statements; documentation hostname is not an outbound call |
 | Workflow YAML, both ORM XML schemas, migration JSON; `git diff --check` | Passed | Static format checks |
-| Linux, PHP 8.4, MySQL 8.0 | **Not run** | Fork access verified; hosted execution pending |
-| Linux, PHP 8.4, MariaDB 10.11 | **Not run** | Fork access verified; hosted execution pending |
+| Linux, PHP 8.4.25, MySQL 8.0.46; development dependencies | 40 passed, 0 failed; exit 0 | No skips; symlink subcase executed |
+| Linux, PHP 8.4.25, MySQL 8.0.46; production dependencies, generator commands absent | 40 passed, 0 failed; exit 0 | No skips; symlink subcase executed |
+| Linux, PHP 8.4.25, MariaDB 10.11.19-MariaDB-ubu2204; development dependencies | 40 passed, 0 failed; exit 0 | No skips; symlink subcase executed |
+| Linux, PHP 8.4.25, MariaDB 10.11.19-MariaDB-ubu2204; production dependencies, generator commands absent | 40 passed, 0 failed; exit 0 | No skips; symlink subcase executed |
 | Full Cypress browser suite | **Not run** | Targeted real Slim route/view tests were used |
 
-The workflow runs both dependency modes for both engines and prints exact PHP/DB
-versions plus git SHA. MariaDB 10.11 matches the baseline Docker configuration;
-MySQL 8.0 supplies a fixed MySQL family target. Linux must execute the symlink
-subcase. Push triggers explicitly include this feature branch, so an upstream PR
-is unnecessary to start validation on an enabled fork. Workflow permissions are
-read-only, checkout credentials are not persisted, and services use only disposable
-test credentials. Do not interpret this configuration as hosted execution.
+Hosted job logs: [MySQL 8.0](https://github.com/mitk5/CRM/actions/runs/34299382732/job/102302860281)
+and [MariaDB 10.11](https://github.com/mitk5/CRM/actions/runs/34299382732/job/102302860108).
+Both recorded Linux kernel `6.17.0-1022-azure`, the implementation SHA and exact
+PHP/database versions above. Both also passed core Composer install/model build,
+the security scanner (0 errors, 2 reviewed generated-code warnings), and targeted
+PHPStan level 6. Every validation step completed successfully; none was skipped.
+
+Each job runs `php tests/plugin-migrations/run.php`, then installs locked
+production dependencies with `composer install --no-dev --no-scripts --no-plugins
+--no-interaction --prefer-dist`, removes generator commands from the runtime and
+runs the same suite with `PLUGIN_MIGRATION_TEST_PRODUCTION=1`. Logs include passing
+process-death boundaries, cross-DDL lock exclusion, uninstall retention/cleanup,
+shipped model reads/writes, and coordinated full backup restore of plugin and
+unrelated core records in both modes. There is no Linux symlink-unavailable note;
+the harness fails on Linux if that subcase cannot execute.
+
+The inspected fork Actions setting was enabled; the migration workflow was active.
+Its actual trigger was `push`. Branch filters include this feature branch and
+master; pull-request path filters and workflow_dispatch also remain available.
+No job condition suppresses fork validation. Workflow permissions are read-only,
+checkout credentials are not persisted, and services use only disposable test
+credentials. MariaDB 10.11 matches the baseline Docker configuration; MySQL 8.0
+supplies a fixed MySQL family target. No upstream PR was needed to run validation.
 
 ## Findings, fixes and remaining review decisions
 
 | Priority | Finding | Disposition |
 |---|---|---|
-| P1 | Repeated/trailing hyphens allowed overlapping owned-table prefixes | Reproduced; canonical migration IDs enforced and regression tested |
+| P1 | Repeated/trailing hyphens allowed overlapping owned-table prefixes | Reproduced; canonical migrating plugin IDs enforced and regression tested |
 | P1 | A community descriptor could replace a discovered core ID | Reproduced; core identity preserved and regression tested |
 | P2 | Skipping destructive callbacks left same-process cron hooks and loaded instances alive | Reproduced; core captures/removes lifecycle action/filter registrations; disables before removal |
 | P2 | Failed re-enable approval left an existing loaded instance operational | Reproduced; failure detaches instance/hooks and marks readiness error |
-| P2 | Linux/MySQL/MariaDB CI evidence missing | Unresolved publication/validation prerequisite; no run claimed |
-| P2 | Non-atomic DDL needs conservative full recovery and writer quiescence | Working local process/restore tests; policy requires maintainer agreement |
+| P2 | Linux/MySQL/MariaDB CI evidence was missing | Resolved: both actual Linux jobs passed in both dependency modes, including symlinks |
+| P2 | Non-atomic DDL needs conservative full recovery and writer quiescence | Local and both Linux engine process/restore tests pass; recovery policy remains an unresolved maintainer decision |
 | P2 | Already-versioned development databases do not rerun the current core upgrade block | Maintainers must select the actual shipping upgrade slot; do not assume a future release |
+| P2 | External workers and already-running requests outlive core-owned callback cleanup | External-worker cleanup and maintenance draining remain unresolved maintainer decisions |
 | P3 | Removing all Perpl Generator classes breaks runtime queries | Invalid test packaging assumption corrected: retain required Model/PropelTypes, remove commands only |
 
 Core-managed cleanup cannot revoke an already-built route collector, already
@@ -163,10 +187,11 @@ forward-only failure recovery; release/upgrade slot; and current approved-regist
 availability/version requirements at boot. Permission validation now rejects
 unknown plugin capability names, a deliberate compatibility restriction.
 
-Recommendation: **ready for upstream design discussion locally; code-review
-publication awaits the real Linux matrix results**. A subsequent feature PR also
-needs the repository-required linked user
-documentation issue; neither that issue nor a PR is authorized in this task.
+Recommendation: **ready for upstream design and code review**, with the shipping
+upgrade slot, conservative recovery policy and external-worker cleanup explicitly
+unresolved. This is not a release or deployment recommendation. A subsequent
+feature PR also needs the repository-required linked user documentation issue;
+neither that issue nor a PR is authorized in this task.
 
 ## Scoped file inventory
 
