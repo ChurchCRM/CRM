@@ -15,4 +15,18 @@ test.describe('Settings', () => {
       purpose: 'Show user/permission management — self-hosted control story',
     });
   });
+
+  test('admin-plugin-management', async ({ page }, testInfo) => {
+    // Route: src/plugins/index.php ("/plugins/management/..."), gated to
+    // admins. Reinforces the plugin ecosystem story — core + community
+    // plugins, verification/risk badges, all managed from one screen.
+    await page.goto('/plugins/management');
+    await expect(page.locator('[data-plugin-id]').first()).toBeVisible({ timeout: 15000 });
+    await humanPause(page, 600);
+
+    await captureScreen(page, testInfo, {
+      name: 'admin-plugin-management',
+      purpose: 'Show the plugin management admin page — core and community plugins',
+    });
+  });
 });
