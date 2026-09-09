@@ -121,6 +121,7 @@ jobs:
         id: pr
         uses: actions/github-script@v9
         with:
+          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const path = require('path');
@@ -188,12 +189,12 @@ jobs:
               console.error('Failed to create PR:', error);
               throw error;
             }
-          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Comment on PR
         if: steps.pr.outputs.pr_created == 'true'
         uses: actions/github-script@v9
         with:
+          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
             const marketingRepo = '${{ github.event.inputs.marketing_repo }}' || 'ChurchCRM/marketing';
             const [owner, repo] = marketingRepo.split('/');
@@ -211,7 +212,6 @@ jobs:
                     `Generated from CRM commit: [\`${{ github.sha }}\`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n\n` +
                     `**Preview available in artifacts:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`
             });
-          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
 
   notify-completion:
     name: Notify Completion
