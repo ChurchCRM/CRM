@@ -109,6 +109,7 @@ export default defineConfig({
       // Screenshot tests run once per test, capturing all viewports (desktop/tablet/mobile)
       // in a single page load. Tests manually resize viewport between captures.
       // This is 3x faster than running separate desktop/tablet/mobile projects.
+      // Viewport sizes: Desktop 1440×900, iPad 1024×768, iPhone Pro Max 430×932
       name: 'screenshots',
       testMatch: /workflows\/.*\.spec\.ts/,
       dependencies: ['setup'],

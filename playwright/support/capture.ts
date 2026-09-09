@@ -47,8 +47,8 @@ interface ViewportConfig {
 
 const VIEWPORTS: ViewportConfig[] = [
   { device: 'desktop', width: 1440, height: 900 },
-  { device: 'tablet', width: 834, height: 1194 },
-  { device: 'mobile', width: 390, height: 844 },
+  { device: 'tablet', width: 1024, height: 768 },
+  { device: 'mobile', width: 430, height: 932 },
 ];
 
 export async function captureScreen(page: Page, testInfo: TestInfo, opts: CaptureOptions): Promise<void> {
