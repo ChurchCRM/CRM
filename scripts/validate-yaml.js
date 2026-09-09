@@ -65,12 +65,60 @@ yamlFiles.forEach(file => {
       });
     }
 
+    // Additional checks for GitHub Actions workflows
+    if (file.includes('.github/workflows/')) {
+      validateWorkflow(file, content);
+    }
+
     console.log(`✓ ${file}`);
   } catch (error) {
     console.error(`✘ ${file}: ${error.message}`);
     hasErrors = true;
   }
 });
+
+function validateWorkflow(file, content) {
+  // Parse YAML to check workflow structure
+  try {
+    const yaml = require('yaml');
+    const workflow = yaml.parse(content);
+
+    // Check required top-level fields
+    if (!workflow.name) {
+      throw new Error('Missing required field: name');
+    }
+
+    if (!workflow.on) {
+      throw new Error('Missing required field: on (trigger events)');
+    }
+
+    if (!workflow.jobs || typeof workflow.jobs !== 'object') {
+      throw new Error('Missing required field: jobs (must be an object)');
+    }
+
+    // Validate jobs structure
+    Object.entries(workflow.jobs).forEach(([jobName, jobConfig]) => {
+      if (!jobConfig.runs_on) {
+        throw new Error(`Job "${jobName}": missing required field runs-on`);
+      }
+
+      if (!jobConfig.steps || !Array.isArray(jobConfig.steps)) {
+        throw new Error(`Job "${jobName}": missing required field steps (must be array)`);
+      }
+
+      jobConfig.steps.forEach((step, stepIdx) => {
+        if (!step.name && !step.run) {
+          throw new Error(`Job "${jobName}" step ${stepIdx + 1}: must have either name or run`);
+        }
+      });
+    });
+  } catch (e) {
+    if (e.message && e.message.startsWith('Missing required field:')) {
+      throw e;
+    }
+    // Ignore YAML parsing errors - already caught above
+  }
+}
 
 if (hasErrors) {
   console.error('');
