@@ -7,7 +7,7 @@ use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\FamilyPledgeSummaryService;
-use ChurchCRM\utils\FiscalYearUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
