@@ -5,7 +5,7 @@ import { humanClick, humanPause, humanSelect, humanType } from '../support/human
 
 /**
  * A visitor self-registering their family — no login, no staff involvement.
- * Runs unauthenticated (this 'videos' project has no storageState), against
+ * Runs unauthenticated (this 'recordings' project has no storageState), against
  * the public /external/register/ wizard (src/external/routes/register.php,
  * gated behind bEnableSelfRegistration — enabled in the demo config).
  * "Whitfield", matching people-family.spec.ts's people-family-new-family,
