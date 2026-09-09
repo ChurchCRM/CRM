@@ -21,7 +21,9 @@ test.describe('People & Families', () => {
     // DataTables paginates (src/people/views/family-list.php) — with 62
     // demo families, "Scott" isn't on the default first page, so search
     // for it instead of filtering whatever rows happen to be rendered.
-    await humanType(page.locator('#families_filter input'), 'Scott');
+    // DataTables 2.x's search box has no #{table}_filter wrapper (that's
+    // the 1.x id) — its input lives at `.dt-search input` (id `dt-search-N`).
+    await humanType(page.locator('.dt-search input'), 'Scott');
     await humanPause(page, 500);
     const scottRow = rows.filter({ hasText: 'Scott' }).first();
     await expect(scottRow).toBeVisible({ timeout: 15000 });

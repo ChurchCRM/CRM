@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause } from '../support/human';
+import { humanClick, humanPause, humanType } from '../support/human';
 
 /**
  * themeMode ('ui.style': 'auto' | 'default' | 'dark') is a per-user setting
@@ -61,6 +61,12 @@ test.describe('Dark Mode', () => {
       await page.reload();
       await expect(page.locator('html[data-bs-theme="dark"]')).toBeAttached({ timeout: 10000 });
       await expect(rows.first()).toBeVisible({ timeout: 15000 });
+      await humanPause(page, 500);
+
+      // With 62 demo families, "Scott" isn't on the default first page —
+      // search for it (same DataTables 2.x `.dt-search input`, not the
+      // 1.x `#{table}_filter` wrapper, as people-family.spec.ts).
+      await humanType(page.locator('.dt-search input'), 'Scott');
       await humanPause(page, 500);
 
       const scottRow = rows.filter({ hasText: 'Scott' }).first();
