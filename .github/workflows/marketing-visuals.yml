@@ -15,6 +15,7 @@ on:
 permissions:
   contents: read
   actions: read
+  pull-requests: write
 
 jobs:
   generate-visuals:
@@ -117,8 +118,10 @@ jobs:
       - name: Create Pull Request
         id: pr
         uses: actions/github-script@v9
+        env:
+          MARKETING_TOKEN: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
         with:
-          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+          github-token: ${{ env.MARKETING_TOKEN }}
           script: |
             const fs = require('fs');
             const path = require('path');
@@ -152,8 +155,10 @@ jobs:
             execSync(`git push origin ${branch}`);
 
             // Create pull request
-            const octokit = github.getOctokit('${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}');
-            const [owner, repo] = '${{ github.event.inputs.marketing_repo || 'ChurchCRM/marketing' }}'.split('/');
+            const token = '${{ secrets.MARKETING_REPO_TOKEN }}' || '${{ secrets.GITHUB_TOKEN }}';
+            const octokit = github.getOctokit(token);
+            const marketingRepo = '${{ github.event.inputs.marketing_repo || "ChurchCRM/marketing" }}';
+            const [owner, repo] = marketingRepo.split('/');
 
             try {
               const pr = await octokit.rest.pulls.create({
@@ -192,13 +197,17 @@ Generated from ChurchCRM/CRM run [${{ github.run_id }}](https://github.com/${{ g
       - name: Comment on PR
         if: steps.pr.outputs.pr_created == 'true'
         uses: actions/github-script@v9
+        env:
+          MARKETING_TOKEN: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
         with:
-          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+          github-token: ${{ env.MARKETING_TOKEN }}
           script: |
-            const [owner, repo] = '${{ github.event.inputs.marketing_repo || 'ChurchCRM/marketing' }}'.split('/');
+            const marketingRepo = '${{ github.event.inputs.marketing_repo || "ChurchCRM/marketing" }}';
+            const [owner, repo] = marketingRepo.split('/');
             const prNumber = parseInt('${{ steps.pr.outputs.pr_number }}');
 
-            const octokit = github.getOctokit('${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}');
+            const token = '${{ secrets.MARKETING_REPO_TOKEN }}' || '${{ secrets.GITHUB_TOKEN }}';
+            const octokit = github.getOctokit(token);
 
             await octokit.rest.issues.createComment({
               owner,
