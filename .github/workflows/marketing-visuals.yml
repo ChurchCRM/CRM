@@ -1,4 +1,4 @@
-name: Marketing Visuals - Generate & Update
+name: Marketing Visuals - Generate and Update
 
 on:
   workflow_dispatch:
