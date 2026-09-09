@@ -1,27 +1,14 @@
 describe('Custom Links Plugin UI - Security & Functionality', () => {
     before(() => {
-        // Enable the custom-links plugin before running tests
+        // Use the authenticated API helper: session-only enables require CSRF.
         cy.setupAdminSession();
-        cy.request({
-            method: 'POST',
-            url: '/plugins/api/plugins/custom-links/enable',
-            headers: { 'Content-Type': 'application/json' },
-            failOnStatusCode: false
-        }).then((response) => {
-            // Plugin may already be enabled, that's OK
-            expect(response.status).to.be.oneOf([200, 400]);
-        });
+        cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/custom-links/enable');
     });
 
     after(() => {
         // Disable the plugin after tests to leave clean state
         cy.setupAdminSession();
-        cy.request({
-            method: 'POST',
-            url: '/plugins/api/plugins/custom-links/disable',
-            headers: { 'Content-Type': 'application/json' },
-            failOnStatusCode: false
-        });
+        cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/custom-links/disable');
     });
 
     beforeEach(() => {
