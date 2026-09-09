@@ -152,7 +152,8 @@ jobs:
             execSync(`git push origin ${branch}`);
 
             // Create pull request
-            const token = '${{ secrets.MARKETING_REPO_TOKEN }}' || '${{ secrets.GITHUB_TOKEN }}';
+            const marketingRepoToken = '${{ secrets.MARKETING_REPO_TOKEN }}';
+            const token = marketingRepoToken || '${{ secrets.GITHUB_TOKEN }}';
             const octokit = github.getOctokit(token);
             const marketingRepo = '${{ github.event.inputs.marketing_repo || "ChurchCRM/marketing" }}';
             const [owner, repo] = marketingRepo.split('/');
@@ -201,7 +202,8 @@ Generated from ChurchCRM/CRM run [${{ github.run_id }}](https://github.com/${{ g
             const [owner, repo] = marketingRepo.split('/');
             const prNumber = parseInt('${{ steps.pr.outputs.pr_number }}');
 
-            const token = '${{ secrets.MARKETING_REPO_TOKEN }}' || '${{ secrets.GITHUB_TOKEN }}';
+            const marketingRepoToken = '${{ secrets.MARKETING_REPO_TOKEN }}';
+            const token = marketingRepoToken || '${{ secrets.GITHUB_TOKEN }}';
             const octokit = github.getOctokit(token);
 
             await octokit.rest.issues.createComment({
