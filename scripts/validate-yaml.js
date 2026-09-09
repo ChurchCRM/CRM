@@ -30,6 +30,11 @@ if (yamlFiles.length === 0) {
 let hasErrors = false;
 
 yamlFiles.forEach(file => {
+  // Skip files that don't exist (e.g., deleted files in git staging)
+  if (!fs.existsSync(file)) {
+    return;
+  }
+
   try {
     const content = fs.readFileSync(file, 'utf-8');
 

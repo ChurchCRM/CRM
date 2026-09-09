@@ -96,7 +96,8 @@
         "marketing:screenshots": "playwright test --config=playwright/playwright.config.ts",
         "marketing:screenshots:chrome": "BROWSER_CHANNEL=chrome playwright test --config=playwright/playwright.config.ts",
         "marketing:chrome": "run-s docker:ci:new-system:start marketing:screenshots:chrome marketing:videos",
-        "marketing:videos": "node scripts/finalize-marketing-videos.js"
+        "marketing:videos": "node scripts/finalize-marketing-videos.js",
+        "publish:visuals": "./scripts/publish-marketing-visuals.sh"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.3.1",
