@@ -11,6 +11,8 @@ on:
         description: 'Branch to push artifacts to'
         required: false
         default: 'screenshots'
+  release:
+    types: [published]
 
 permissions:
   contents: read
