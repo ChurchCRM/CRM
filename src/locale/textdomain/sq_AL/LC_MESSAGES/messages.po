@@ -17700,3 +17700,119 @@ msgstr "Çfarë do të fitoni"
 msgid "Failed to get deposit count"
 msgstr "Dështoi marrja e numrit të depozitave"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Përvjetori: %s"
+
+#: 
+msgid "Church"
+msgstr "Kisha"
+
+#: 
+msgid "Classifications"
+msgstr "Klasifikimet"
+
+#: 
+msgid "Closest"
+msgstr "Më i afërt"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Depozita #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Dështoi marrja e numrit të mbledhjes së fondeve"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Dështoi ngarkimi i fqinjëve."
+
+#: 
+msgid "Farther"
+msgstr "Më larg"
+
+#: 
+msgid "Farthest"
+msgstr "Më i largëti"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Gjej Fqinjët"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Gjeni familjet afër dhe shtojini në shportën tuaj"
+
+#: 
+msgid "Map centered on"
+msgstr "Harta e centruar te"
+
+#: 
+msgid "Max distance"
+msgstr "Distanca maksimale"
+
+#: 
+msgid "Max neighbors"
+msgstr "Numri maksimal i fqinjëve"
+
+#: 
+msgid "Near"
+msgstr "Afër"
+
+#: 
+msgid "Please select a family."
+msgstr "Ju lutem zgjidhni një familje."
+
+#: 
+msgid "Results"
+msgstr "Rezultatet"
+
+#: 
+msgid "Same location"
+msgstr "I njëjti vend"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Kërko Fqinjët"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Zgjidhni një familje dhe klikoni Gjej Fqinjët për të parë rezultatet."
+
+#: 
+msgid "Selected family"
+msgstr "Familja e zgjedhur"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Kjo vlerë duhet të jetë një emër fushe i vlefshëm."
+
+#: 
+msgid "Could not load data"
+msgstr "Nuk mund të ngarkoheshin të dhënat"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Ju lutem rifreskoni faqen ose provoni sërish më vonë."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Shtoni fillimisht regjistrimet përkatëse."
+
+#: 
+msgid "All Months"
+msgstr "Të gjithë muajt"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Nuk janë përcaktuar ende asnjë opsion \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Nuk u gjetën ngjarje për %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Provoni të zgjidhni një lloj tjetër ngjarjeje, muaji ose viti."
+

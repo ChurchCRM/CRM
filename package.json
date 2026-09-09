@@ -36,8 +36,13 @@
         "composer:update": "cd src/ && composer update",
         "deploy:clean": "run-s preinstall build",
         "build:signatures": "node scripts/generate-signatures-node.js",
-        "build:php:validate": "node scripts/validate-php-syntax.js",
-        "build:php:validate:all": "node scripts/validate-php-syntax.js --all",
+        "build:php:validate": "run-s build:php:validate:syntax build:php:validate:namespaces build:php:validate:use-statements build:php:validate:orm",
+        "build:php:validate:all": "run-s build:php:validate:syntax:all build:php:validate:namespaces build:php:validate:use-statements build:php:validate:orm",
+        "build:php:validate:syntax": "node scripts/validate-php-syntax.js",
+        "build:php:validate:syntax:all": "node scripts/validate-php-syntax.js --all",
+        "build:php:validate:namespaces": "node scripts/validate-namespace-case.js",
+        "build:php:validate:use-statements": "node scripts/validate-use-statement-case.js",
+        "build:php:validate:orm": "node scripts/validate-orm-base-classes.js",
         "format:web": "biome format --write .",
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-build.js",
@@ -84,7 +89,11 @@
         "docker:dev:login:web": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash",
         "docker:dev:login:db": "docker compose -f docker/docker-compose.dev.yaml exec database bash",
         "docker:dev:build": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"cd /home/ChurchCRM && npm ci && npm run build\"",
-        "docker:dev:watch": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"cd /home/ChurchCRM && npm run build:webpack:watch\""
+        "docker:dev:watch": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"cd /home/ChurchCRM && npm run build:webpack:watch\"",
+        "marketing:visuals:install": "playwright install --with-deps chromium",
+        "marketing:visuals": "run-s docker:ci:new-system:start marketing:visuals:test marketing:visuals:videos",
+        "marketing:visuals:test": "playwright test --config=playwright/playwright.config.ts",
+        "marketing:visuals:videos": "node scripts/finalize-marketing-videos.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.3.1",
@@ -127,7 +136,8 @@
         "tom-select": "^2.6.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.5.9",
+        "@biomejs/biome": "^2.5.12",
+        "@playwright/test": "^1.63.0",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.5",

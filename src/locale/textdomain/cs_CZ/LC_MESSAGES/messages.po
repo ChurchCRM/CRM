@@ -17717,3 +17717,119 @@ msgstr "Co získáte"
 msgid "Failed to get deposit count"
 msgstr "Nepodařilo se získat počet vkladů"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Výročí: %s"
+
+#: 
+msgid "Church"
+msgstr "Církev"
+
+#: 
+msgid "Classifications"
+msgstr "Klasifikace"
+
+#: 
+msgid "Closest"
+msgstr "Nejbližší"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Vklad č. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Nepodařilo se získat počet fundraiserů"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Nepodařilo se načíst sousedy."
+
+#: 
+msgid "Farther"
+msgstr "Dále"
+
+#: 
+msgid "Farthest"
+msgstr "Nejdále"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Najít sousedy"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Najít blízké rodiny a přidat je do košíku"
+
+#: 
+msgid "Map centered on"
+msgstr "Mapa vycentrována na"
+
+#: 
+msgid "Max distance"
+msgstr "Maximální vzdálenost"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maximální počet sousedů"
+
+#: 
+msgid "Near"
+msgstr "Blízko"
+
+#: 
+msgid "Please select a family."
+msgstr "Prosím vyberte rodinu."
+
+#: 
+msgid "Results"
+msgstr "Výsledky"
+
+#: 
+msgid "Same location"
+msgstr "Stejné umístění"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Hledat sousedy"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Vyberte rodinu a klikněte na Najít sousedy pro zobrazení výsledků."
+
+#: 
+msgid "Selected family"
+msgstr "Vybraná rodina"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Tato hodnota musí být platný název pole."
+
+#: 
+msgid "Could not load data"
+msgstr "Nepodařilo se načíst data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Obnovte stránku nebo to zkuste znovu později."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Nejprve přidejte příslušné záznamy."
+
+#: 
+msgid "All Months"
+msgstr "Všechny měsíce"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Zatím nejsou definovány žádné možnosti \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Pro %s %d nebyly nalezeny žádné události."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Zkuste vybrat jiný typ události, měsíc nebo rok."
+

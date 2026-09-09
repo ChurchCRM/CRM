@@ -17740,3 +17740,119 @@ msgstr "Що ви отримаєте"
 msgid "Failed to get deposit count"
 msgstr "Не вдалося отримати кількість депозитів"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Річниця: %s"
+
+#: 
+msgid "Church"
+msgstr "Церква"
+
+#: 
+msgid "Classifications"
+msgstr "Класифікації"
+
+#: 
+msgid "Closest"
+msgstr "Найближчий"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Депозит № %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Не вдалося отримати кількість зборів коштів"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Не вдалося завантажити сусідів."
+
+#: 
+msgid "Farther"
+msgstr "Далі"
+
+#: 
+msgid "Farthest"
+msgstr "Найдальший"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Знайти сусідів"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Знайти сусідні сім'ї та додати їх до кошика"
+
+#: 
+msgid "Map centered on"
+msgstr "Карта центрована на"
+
+#: 
+msgid "Max distance"
+msgstr "Максимальна відстань"
+
+#: 
+msgid "Max neighbors"
+msgstr "Максимум сусідів"
+
+#: 
+msgid "Near"
+msgstr "Поруч"
+
+#: 
+msgid "Please select a family."
+msgstr "Будь ласка, оберіть сім'ю."
+
+#: 
+msgid "Results"
+msgstr "Результати"
+
+#: 
+msgid "Same location"
+msgstr "Те саме місце"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Пошук сусідів"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Оберіть сім'ю та натисніть «Знайти сусідів», щоб побачити результати."
+
+#: 
+msgid "Selected family"
+msgstr "Обрана сім'я"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Це значення має бути дійсним іменем поля."
+
+#: 
+msgid "Could not load data"
+msgstr "Не вдалося завантажити дані"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Будь ласка, оновіть сторінку або спробуйте пізніше."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Спочатку додайте відповідні записи."
+
+#: 
+msgid "All Months"
+msgstr "Всі місяці"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Параметри \"%s\" ще не визначені."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Подій для %s %d не знайдено."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Спробуйте вибрати інший тип події, місяць або рік."
+

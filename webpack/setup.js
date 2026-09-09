@@ -368,7 +368,7 @@ window.Stepper = Stepper;
     updateGroupStatus(groupKey);
 
     $.ajax({
-      url: "./SystemIntegrityCheck",
+      url: `${rootPath}/setup/SystemIntegrityCheck`,
       method: "GET",
     })
       .done((data) => {
@@ -433,7 +433,7 @@ window.Stepper = Stepper;
     });
 
     $.ajax({
-      url: "./SystemPrerequisiteCheck",
+      url: `${rootPath}/setup/SystemPrerequisiteCheck`,
       method: "GET",
       contentType: "application/json",
     })
@@ -457,7 +457,7 @@ window.Stepper = Stepper;
 
   function checkFilesystem() {
     $.ajax({
-      url: "./SystemFilesystemCheck",
+      url: `${rootPath}/setup/SystemFilesystemCheck`,
       method: "GET",
       contentType: "application/json",
     })
@@ -481,7 +481,7 @@ window.Stepper = Stepper;
 
   function checkLocales() {
     $.ajax({
-      url: "./SystemLocaleCheck",
+      url: `${rootPath}/setup/SystemLocaleCheck`,
       method: "GET",
       contentType: "application/json",
     })

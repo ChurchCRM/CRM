@@ -17766,3 +17766,119 @@ msgstr "Ce veți câștiga"
 msgid "Failed to get deposit count"
 msgstr "Eroare la obținerea numărului de depozite"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Aniversare: %s"
+
+#: 
+msgid "Church"
+msgstr "Biserică"
+
+#: 
+msgid "Classifications"
+msgstr "Clasificări"
+
+#: 
+msgid "Closest"
+msgstr "Cel mai apropiat"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Depozit nr. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Nu s-a putut obține numărul strângerilor de fonduri"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Nu s-au putut încărca vecinii."
+
+#: 
+msgid "Farther"
+msgstr "Mai departe"
+
+#: 
+msgid "Farthest"
+msgstr "Cel mai depărtat"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Găsire vecini"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Găsiți familii din apropiere și adăugați-le în coș"
+
+#: 
+msgid "Map centered on"
+msgstr "Hartă centrată pe"
+
+#: 
+msgid "Max distance"
+msgstr "Distanță maximă"
+
+#: 
+msgid "Max neighbors"
+msgstr "Număr maxim de vecini"
+
+#: 
+msgid "Near"
+msgstr "Aproape"
+
+#: 
+msgid "Please select a family."
+msgstr "Vă rugăm să selectați o familie."
+
+#: 
+msgid "Results"
+msgstr "Rezultate"
+
+#: 
+msgid "Same location"
+msgstr "Aceeași locație"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Căutare vecini"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Selectați o familie și faceți clic pe Găsire vecini pentru a vedea rezultatele."
+
+#: 
+msgid "Selected family"
+msgstr "Familie selectată"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Această valoare trebuie să fie un nume de câmp valid."
+
+#: 
+msgid "Could not load data"
+msgstr "Nu s-au putut încărca datele"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Vă rugăm să actualizați pagina sau să încercați din nou mai târziu."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Adăugați mai întâi înregistrările relevante."
+
+#: 
+msgid "All Months"
+msgstr "Toate lunile"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Nu există încă opțiuni \"%s\" definite."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Nu s-au găsit evenimente pentru %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Încercați să selectați un alt tip de eveniment, lună sau an."
+
