@@ -58,6 +58,12 @@ function main() {
       continue;
     }
 
+    // Skip if video file doesn't exist (test failed before video was recorded)
+    if (!fs.existsSync(videoAttachment.path)) {
+      console.warn(`⚠️  Video not found: ${videoAttachment.path}`);
+      continue;
+    }
+
     const destination = path.join(VIDEOS_ROOT, workflowTest.projectName, `${workflowTest.title}.webm`);
     fs.mkdirSync(path.dirname(destination), { recursive: true });
     fs.copyFileSync(videoAttachment.path, destination);
